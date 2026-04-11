@@ -554,6 +554,8 @@ h2 {
 
 .legal-content {
     padding: 3rem 4rem;
+    text-align: justify; 
+    hyphens: auto; 
 }
 
 .legal-content h3 {
@@ -563,10 +565,7 @@ h2 {
     font-size: 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 0.5rem;
-}
-
-.legal-content h3:first-child {
-    margin-top: 0;
+    text-align: left; 
 }
 
 .legal-content p {
@@ -579,6 +578,7 @@ h2 {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
     color: #cbd5e1;
+    text-align: left; 
 }
 
 .legal-content li {
