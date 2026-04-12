@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* ========================================== */
 /* 0. BASE STYLES & BACKGROUND IMAGE          */
 /* Pure Clinical Theme: Green & White         */
@@ -136,7 +139,7 @@ h2 {
 }
 
 .logo-img {
-    height: 60px; /* Kept your larger size! */
+    height: 80px; 
     width: auto;
 }
 
@@ -455,7 +458,7 @@ h2 {
 /* Very dark, rich forest green footer        */
 /* ========================================== */
 .site-footer {
-    background: #022c22; /* Very deep, solid green */
+    background: #01120E; /* Very deep, solid green */
     padding: 4rem 2rem 2rem 2rem;
     color: #94a3b8;
 }
@@ -471,7 +474,7 @@ h2 {
 
 /* Kept your White Box Premium Frame fix! */
 .footer-logo {
-    height: 60px; /* Kept your larger size! */
+    height: 80px; /* Kept your larger size! */
     margin-bottom: 1rem;
     background-color: #ffffff; 
     padding: 8px 16px; 
@@ -591,7 +594,90 @@ h2 {
 }
 
 /* ========================================== */
-/* 12. MOBILE RESPONSIVENESS (PHONES/TABLETS) */
+/* 14. AUTH PAGES (REGISTER & LOGIN)          */
+/* Controls the layout for login/signup forms */
+/* ========================================== */
+
+/* Centers the card on the screen */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Base card for standard Login */
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 3rem 2.5rem;
+}
+
+/* Expanded card for Detailed Registration */
+.wide-card {
+    max-width: 700px; 
+    padding: 3rem 3rem;
+}
+
+/* Two-column grid layout */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem;
+}
+
+/* Link at the bottom of the form */
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+.auth-footer a {
+    color: #059669;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Custom Dropdown Menus */
+.custom-select {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #cbd5e1;
+    padding: 0.85rem;
+    border-radius: 8px;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%; 
+}
+
+.custom-select:disabled {
+    background: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* Small note text */
+.form-note {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #059669;
+    font-style: italic;
+}
+
+/* Force two-column grid into one column on small phones */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0; 
+    }
+}
+
+/* ========================================== */
+/* MOBILE RESPONSIVENESS (PHONES/TABLETS) */
 /* ========================================== */
 @media (max-width: 768px) {
     .nav-container { flex-direction: column; gap: 1rem; padding: 1rem; }
