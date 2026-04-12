@@ -1,10 +1,112 @@
-// --- 1. DYNAMIC DATA ENGINE ---
+// ==========================================
+// 1. STATE VARIABLES
+// ==========================================
 let subjectTree = {}; 
 let systemTree = {};
 let examTree = {};
-let allQuestions = []; // Stores the actual rows to count questions
+let allQuestions = []; 
 let currentView = "subject"; 
+let currentMode = "practice"; 
+let selectedCart = new Set(); 
+let popupHistory = []; 
+let attemptedQuestions = []; // Dummy array for future Local Storage
 
+// ==========================================
+// 2. DOM ELEMENTS
+// ==========================================
+const subjectsGrid = document.getElementById('subjects-grid');
+const popupOverlay = document.getElementById('popup-overlay');
+const popupTitle = document.getElementById('popup-title');
+const popupList = document.getElementById('popup-list');
+const popupBack = document.getElementById('popup-back');
+const popupClose = document.getElementById('popup-close');
+const globalSearch = document.getElementById('global-search');
+const unattemptedFilter = document.getElementById('unattempted-filter');
+const sidebarEl = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+const viewTitle = document.getElementById('current-view-title');
+
+// ==========================================
+// 3. EVENT LISTENERS
+// ==========================================
+
+// Search & Filter
+globalSearch.addEventListener('input', renderGrid);
+unattemptedFilter.addEventListener('change', renderGrid);
+
+// Top Mode Buttons
+document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
+document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
+
+// Sidebar Navigation
+document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
+document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
+document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
+
+// Sidebar Open/Close
+document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
+document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
+sidebarOverlay.onclick = () => toggleSidebar(false);
+
+// Popup Navigation
+popupBack.onclick = () => {
+    popupHistory.pop(); 
+    const prev = popupHistory[popupHistory.length - 1]; 
+    openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
+};
+popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; };
+popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; } }
+
+// ==========================================
+// 4. CORE FUNCTIONS
+// ==========================================
+
+function toggleSidebar(show) {
+    if (show) {
+        sidebarEl.classList.add('active');
+        sidebarOverlay.style.display = 'block';
+    } else {
+        sidebarEl.classList.remove('active');
+        sidebarOverlay.style.display = 'none';
+    }
+}
+
+function changeView(viewName, titleText) {
+    currentView = viewName;
+    if (viewTitle) viewTitle.textContent = titleText;
+
+    // Update highlights
+    document.querySelectorAll('.sidebar-links a').forEach(link => {
+        link.classList.remove('active-link');
+    });
+    const activeLink = document.getElementById('nav-' + viewName);
+    if (activeLink) activeLink.classList.add('active-link');
+
+    // Reset UI
+    toggleSidebar(false);
+    popupHistory = []; 
+    popupOverlay.style.display = 'none';
+    globalSearch.value = ""; // Clear search on tab switch
+    
+    renderGrid();
+}
+
+function switchMode(mode) {
+    currentMode = mode;
+    selectedCart.clear();
+    document.getElementById('cart-count').textContent = `0 Topics Selected`;
+    document.getElementById('start-exam-btn').disabled = true;
+
+    if (mode === 'practice') {
+        document.getElementById('mode-practice').className = "btn-solid active-mode";
+        document.getElementById('mode-exam').className = "btn-outline";
+        document.getElementById('exam-cart').style.display = "none";
+    } else {
+        document.getElementById('mode-exam').className = "btn-solid active-mode";
+        document.getElementById('mode-practice').className = "btn-outline";
+        document.getElementById('exam-cart').style.display = "flex";
+    }
+}
 
 async function loadDataAndBuildTree() {
     try {
@@ -51,22 +153,21 @@ async function loadDataAndBuildTree() {
 
             if (!Subject || Subject === "") return;
 
-            // Save row for counting
             allQuestions.push({ Exam, Subject, Chapter, Topic });
 
-            // 1. Build SUBJECT Tree
+            // Build SUBJECT Tree
             if (!subjectTree[Subject]) subjectTree[Subject] = {};
             if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
             if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
 
-            // 2. Build SYSTEM Tree
+            // Build SYSTEM Tree
             if (Chapter) {
                 if (!systemTree[Chapter]) systemTree[Chapter] = {};
                 if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
                 if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
             }
 
-            // 3. Build EXAM Tree
+            // Build EXAM Tree
             if (Exam) {
                 if (!examTree[Exam]) examTree[Exam] = {};
                 if (!examTree[Exam][Subject]) examTree[Exam][Subject] = [];
@@ -81,15 +182,11 @@ async function loadDataAndBuildTree() {
     }
 }
 
-// Helper: Count questions based on current path AND filters
 function getQuestionCount(view, pathArr, customPool = null) {
     const pool = customPool || allQuestions;
     return pool.filter(q => {
-        // 1. Unattempted Filter Logic (Assumes we have a unique ID for questions later)
-        // For now, it passes everything until we build the quiz engine
         if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
 
-        // 2. Path Logic
         if (view === 'subject') {
             if (pathArr[0] && q.Subject !== pathArr[0]) return false;
             if (pathArr[1] && q.Chapter !== pathArr[1]) return false;
@@ -107,32 +204,24 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }).length;
 }
 
-// Event Listeners for Search and Filter
-globalSearch.addEventListener('input', renderGrid);
-unattemptedFilter.addEventListener('change', renderGrid);
-
-// --- RENDER ACTIVE GRID (WITH SEARCH) ---
 function renderGrid() {
     if (!subjectsGrid) return;
     subjectsGrid.innerHTML = '';
     
     const query = globalSearch.value.toLowerCase().trim();
 
-    // IF SEARCHING: Show dynamic Search Results
     if (query !== '') {
         const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
-            // Search across Subject, Chapter, and Topic
             const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic}`.toLowerCase();
             return textToSearch.includes(query);
         });
 
         if (matchedQuestions.length === 0) {
-            subjectsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No questions found matching "${query}"</p>`;
+            subjectsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b; margin-top: 2rem;">No questions found matching "${query}"</p>`;
             return;
         }
 
-        // Extract unique topics from matches
         let matchedTopicsObj = {};
         matchedQuestions.forEach(q => { if (q.Topic) matchedTopicsObj[q.Topic] = null; });
 
@@ -146,12 +235,11 @@ function renderGrid() {
             </div>
             <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
         `;
-        card.onclick = () => openPopup(`Search: ${query}`, matchedTopicsObj, 'Topic', [], false);
+        card.onclick = () => openPopup(`Search: "${query}"`, matchedTopicsObj, 'Topic', [], false);
         subjectsGrid.appendChild(card);
-        return; // Stop here so we don't draw the normal grid
+        return; 
     }
 
-    // IF NOT SEARCHING: Draw normal grid
     let activeTree = {};
     if (currentView === 'subject') activeTree = subjectTree;
     if (currentView === 'system') activeTree = systemTree;
@@ -160,7 +248,6 @@ function renderGrid() {
     Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
         
-        // Hide card if filter is on and there are 0 unattempted questions
         if (unattemptedFilter.checked && qCount === 0) return;
 
         let doneDummy = 0; 
@@ -180,43 +267,6 @@ function renderGrid() {
     });
 }
 
-// --- 2. STATE VARIABLES ---
-let currentMode = "practice"; 
-let selectedCart = new Set(); 
-let popupHistory = []; 
-
-const subjectsGrid = document.getElementById('subjects-grid');
-const popupOverlay = document.getElementById('popup-overlay');
-const popupTitle = document.getElementById('popup-title');
-const popupList = document.getElementById('popup-list');
-const popupBack = document.getElementById('popup-back');
-const globalSearch = document.getElementById('global-search');
-const unattemptedFilter = document.getElementById('unattempted-filter');
-
-// Dummy array for future Local Storage (IDs of questions you've answered)
-let attemptedQuestions = [];
-
-// ... (Keep your switchMode and Sidebar functions exactly as they were) ...
-function switchMode(mode) {
-    currentMode = mode;
-    selectedCart.clear();
-    document.getElementById('cart-count').textContent = `0 Topics Selected`;
-    document.getElementById('start-exam-btn').disabled = true;
-
-    if (mode === 'practice') {
-        document.getElementById('mode-practice').className = "btn-solid active-mode";
-        document.getElementById('mode-exam').className = "btn-outline";
-        document.getElementById('exam-cart').style.display = "none";
-    } else {
-        document.getElementById('mode-exam').className = "btn-solid active-mode";
-        document.getElementById('mode-practice').className = "btn-outline";
-        document.getElementById('exam-cart').style.display = "flex";
-    }
-}
-document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
-document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
-
-// --- 4. POPUP & HISTORY LOGIC ---
 function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
 
@@ -225,12 +275,11 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     popupOverlay.style.display = 'flex';
     popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
 
-    // 🌟 ADD "PRACTICE FULL" BUTTON AT THE TOP 🌟
     if (currentMode === 'practice') {
         const fullCount = getQuestionCount(currentView, pathArr);
         const practiceAllDiv = document.createElement('div');
         practiceAllDiv.className = 'list-item';
-        practiceAllDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.1)'; // Highlighted green
+        practiceAllDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.1)'; 
         practiceAllDiv.style.border = '1px solid #10b981';
         practiceAllDiv.innerHTML = `
             <div style="flex-grow: 1;">
@@ -245,7 +294,6 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         popupList.appendChild(practiceAllDiv);
     }
 
-    // Render list items dynamically
     if (Array.isArray(dataObj)) {
         dataObj.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
     } else {
@@ -260,14 +308,13 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const labelDiv = document.createElement('div');
     labelDiv.style.flexGrow = '1';
     
-    // Calculate questions for this specific row
     const qCount = getQuestionCount(currentView, itemPath);
-    let doneDummy = 0; // We will link this to local storage later
+    let doneDummy = 0; 
 
     labelDiv.innerHTML = `
         <div class="card-header-flex">
             <span style="font-weight: 600; display: flex; align-items: center;">
-                ${currentMode === 'exam' ? `<input type="checkbox" style="margin-right: 10px;" id="cb-${itemName}">` : ''}
+                ${currentMode === 'exam' ? `<input type="checkbox" style="margin-right: 10px;" id="cb-${itemName.replace(/\s+/g, '-')}">` : ''}
                 ${itemName}
             </span>
             <span class="card-count">${doneDummy} / ${qCount}</span>
@@ -291,7 +338,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     itemDiv.appendChild(actionBtn);
     popupList.appendChild(itemDiv);
 
-    // Exam Mode Checkbox Logic
     if (currentMode === 'exam') {
         const cb = itemDiv.querySelector('input[type="checkbox"]');
         cb.checked = selectedCart.has(itemName);
@@ -304,46 +350,8 @@ function renderListItem(itemName, nextData, level, itemPath) {
     }
 }
 
-
-// Setup standard UI interactions
-popupBack.onclick = () => {
-    popupHistory.pop(); 
-    const prev = popupHistory[popupHistory.length - 1]; 
-    openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
-};
-document.getElementById('popup-close').onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; };
-popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; } }
-
-// Sidebar logic
-function changeView(viewName, titleText) {
-    // 1. Update the state
-    currentView = viewName;
-    
-    // 2. Force the Header Title to update
-    const viewTitle = document.getElementById('current-view-title');
-    if (viewTitle) {
-        viewTitle.textContent = titleText;
-    }
-
-    // 3. Force Sidebar Highlights to update
-    document.querySelectorAll('.sidebar-links a').forEach(link => {
-        link.classList.remove('active-link');
-    });
-
-    const activeLink = document.getElementById('nav-' + viewName);
-    if (activeLink) {
-        activeLink.classList.add('active-link');
-    }
-
-    // 4. Close Sidebar and Reset UI
-    toggleSidebar(false);
-    popupHistory = []; 
-    popupOverlay.style.display = 'none';
-    
-    // 5. Redraw the grid with the new tree
-    renderGrid();
-}
-
-// Init
+// ==========================================
+// 5. INITIALIZATION
+// ==========================================
 switchMode('practice');
 loadDataAndBuildTree();
