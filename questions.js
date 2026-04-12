@@ -208,6 +208,8 @@ popupOverlay.onclick = (e) => {
     if(e.target === popupOverlay) popupOverlay.style.display = 'none';
 }
 
-// Initialize the screen
-renderGrid();
+// ==========================================
+// INITIALIZE THE SCREEN
+// ==========================================
 switchMode('practice');
+loadDataAndBuildTree();
