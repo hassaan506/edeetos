@@ -2,46 +2,57 @@
 let syllabusTree = {}; 
 let allQuestions = []; // Stores the actual question data for later
 
-// Function to fetch the JSON file and build the tree
 async function loadDataAndBuildTree() {
     try {
-        // We will assume you save your converted Excel file as 'questions.json'
-        const response = await fetch('questions.json'); 
-        allQuestions = await response.json();
+        // 1. Fetch from your specific subfolder
+        // We use encodeURIComponent to handle the spaces in "FCPS Part 1" safely
+        const csvPath = 'Data/FCPS%20Part%201.csv';
+        const response = await fetch(csvPath);
+        
+        if (!response.ok) throw new Error("CSV not found at " + csvPath);
 
-        // Automatically sort everything into Subject > Chapter > Topic > Subtopic
-        allQuestions.forEach(row => {
-            const subject = row.Subject;
-            const chapter = row.Chapter;
-            const topic = row.Topic;
-            const subtopic = row.SubTopic;
+        const csvData = await response.text();
 
-            // If the subject doesn't exist in our tree yet, create it
-            if (!syllabusTree[subject]) syllabusTree[subject] = {};
-            
-            // If the chapter doesn't exist under the subject, create it
-            if (!syllabusTree[subject][chapter]) syllabusTree[subject][chapter] = {};
-            
-            // If the topic doesn't exist under the chapter, create an array for subtopics
-            if (!syllabusTree[subject][chapter][topic]) syllabusTree[subject][chapter][topic] = [];
+        // 2. Convert CSV text into a format JS understands
+        Papa.parse(csvData, {
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                allQuestions = results.data;
+                syllabusTree = {}; // Reset the tree to fill it with CSV data
 
-            // Finally, add the subtopic to the array (if it's not already there)
-            if (!syllabusTree[subject][chapter][topic].includes(subtopic)) {
-                syllabusTree[subject][chapter][topic].push(subtopic);
+                // 3. The "Tree Builder" Loop
+                allQuestions.forEach(row => {
+                    const { Subject, Chapter, Topic, SubTopic } = row;
+
+                    if (!Subject) return; // Ignore empty rows
+
+                    // Create Subject if new
+                    if (!syllabusTree[Subject]) syllabusTree[Subject] = {};
+                    
+                    // Create Chapter if new
+                    if (!syllabusTree[Subject][Chapter]) syllabusTree[Subject][Chapter] = {};
+                    
+                    // Create Topic array if new
+                    if (!syllabusTree[Subject][Chapter][Topic]) syllabusTree[Subject][Chapter][Topic] = [];
+
+                    // Add SubTopic to the Topic list
+                    if (SubTopic && !syllabusTree[Subject][Chapter][Topic].includes(SubTopic)) {
+                        syllabusTree[Subject][Chapter][Topic].push(SubTopic);
+                    }
+                });
+
+                console.log("Syllabus Tree Built successfully from CSV!");
+                renderGrid(); // This draws the cards on your screen
             }
         });
 
-        // Now that the tree is built dynamically, render the grid on the screen!
-        renderGrid();
-
     } catch (error) {
-        console.error("Error loading the questions data:", error);
-        subjectsGrid.innerHTML = `<p style="color: red;">Failed to load data. Make sure questions.json exists.</p>`;
+        console.error("CSV Load Failed:", error);
+        // If the CSV fails to load, we show the Mock Data so the page isn't empty
+        renderGrid(); 
     }
 }
-
-loadDataAndBuildTree();
-
 
 // --- 2. STATE VARIABLES ---
 let currentMode = "practice"; // 'practice' or 'exam'
