@@ -31,17 +31,19 @@ const viewTitle = document.getElementById('current-view-title');
 // 3. EVENT LISTENERS
 // ==========================================
 
-// Autocomplete Search Logic
+// Replace the search listener in questions.js
 globalSearch.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();
     
-    if (query === '') {
+    if (query.length < 2) { // Only show results after 2 characters
         searchDropdown.style.display = 'none';
         return;
     }
 
     const matchedQuestions = allQuestions.filter(q => {
         if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
+        
+        // Search across EVERY field: Subject, Chapter, Topic, and Question Text
         const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
         return textToSearch.includes(query);
     });
@@ -49,37 +51,29 @@ globalSearch.addEventListener('input', (e) => {
     searchDropdown.innerHTML = '';
 
     if (matchedQuestions.length === 0) {
-        searchDropdown.innerHTML = `<div class="search-item"><div class="search-item-snippet">No questions found matching "${query}"</div></div>`;
+        searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
     } else {
-        matchedQuestions.slice(0, 50).forEach(q => {
+        matchedQuestions.slice(0, 30).forEach(q => { // Show top 30 matches
             const div = document.createElement('div');
             div.className = 'search-item';
             
-            const title = `${q.Subject || ''} ${q.Chapter ? '> ' + q.Chapter : ''}`.trim();
-            const snippet = q.Question ? q.Question.substring(0, 80) + '...' : 'No question text available';
+            const title = `${q.Subject} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
+            const questionSnippet = q.Question ? q.Question.substring(0, 90) + "..." : "No text";
 
             div.innerHTML = `
-                <div class="search-item-title">${title}</div>
-                <div class="search-item-snippet">${snippet}</div>
+                <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
+                <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
             `;
             
             div.onclick = () => {
-                alert(`Ready to launch Quiz for: \n${q.Question}`);
+                alert(`Starting question from: ${title}`);
                 searchDropdown.style.display = 'none';
-                globalSearch.value = ''; 
+                globalSearch.value = '';
             };
-            
             searchDropdown.appendChild(div);
         });
     }
     searchDropdown.style.display = 'block';
-});
-
-// Close dropdown when clicking outside
-document.addEventListener('click', (e) => {
-    if (!globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
-        searchDropdown.style.display = 'none';
-    }
 });
 
 // Filter & Buttons
@@ -365,4 +359,4 @@ function renderListItem(itemName, nextData, level, itemPath) {
 // 5. INITIALIZATION
 // ==========================================
 switchMode('practice');
-loadDataAndBuildTree();
+loadDataAndBuildTree();=]['

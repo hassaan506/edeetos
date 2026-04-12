@@ -255,52 +255,33 @@
     accent-color: #10b981;
 }
 
-/* Add this to questions.css under the Search section */
+/* Update this in questions.css */
 .search-dropdown {
     position: absolute;
-    top: 100%; /* Pushes it right below the search bar */
+    top: 100%; 
     left: 0;
     width: 100%;
-    background: #ffffff;
+    background: #ffffff !important; /* Forces solid white background */
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    max-height: 350px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Stronger shadow to lift it */
+    max-height: 400px;
     overflow-y: auto;
-    z-index: 2500;
-    margin-top: 8px;
+    z-index: 9999 !important; /* Ensures it sits on top of EVERYTHING */
+    margin-top: 10px;
 }
 
 .search-item {
-    padding: 12px 16px;
+    padding: 15px 20px;
     border-bottom: 1px solid #f1f5f9;
+    background: #ffffff; /* Ensures each item is opaque */
     cursor: pointer;
-    transition: background 0.2s;
-    text-align: left;
-}
-
-.search-item:last-child {
-    border-bottom: none;
+    transition: all 0.2s ease;
 }
 
 .search-item:hover {
     background: #f8fafc;
-    border-left: 3px solid #10b981;
-}
-
-.search-item-title {
-    font-weight: 800;
-    color: #1e293b;
-    font-size: 0.95rem;
-    margin-bottom: 4px;
-}
-
-.search-item-snippet {
-    color: #64748b;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    border-left: 4px solid #10b981;
 }
 
 @media (max-width: 1024px) {
