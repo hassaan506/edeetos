@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EDEETOS</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Back to Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section-container auth-wrapper">
+        <div class="glass-panel auth-card">
+            <h2>Welcome Back</h2>
+            <p class="section-description">Log in to continue your medical journey.</p>
+            
+            <form id="login-form" class="contact-form">
+                <div class="form-group">
+                    <label>Email or Username</label>
+                    <input type="text" id="login-identifier" placeholder="hassaan@example.com or hassaan2026" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-solid form-btn">Log In</button>
+            </form>
+
+            <p class="auth-footer">New to EDEETOS? <a href="register.html">Create Account</a></p>
+        </div>
+    </section>
+
+    <script type="module" src="login.js"></script>
+
+</body>
+</html>
