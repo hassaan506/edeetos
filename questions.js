@@ -125,26 +125,6 @@ function switchMode(mode) {
 modePracticeBtn.addEventListener('click', () => switchMode('practice'));
 modeExamBtn.addEventListener('click', () => switchMode('exam'));
 
-// --- 4. RENDER INITIAL GRID ---
-function renderGrid() {
-    if (!subjectsGrid) return;
-    subjectsGrid.innerHTML = '';
-    
-    Object.keys(syllabusTree).forEach(subject => {
-        const card = document.createElement('div');
-        card.className = 'glass-panel feature-card';
-        card.style.cursor = 'pointer';
-        card.innerHTML = `
-            <div class="icon">📚</div>
-            <h3>${subject}</h3>
-            <p>Click to browse chapters</p>
-        `;
-        // Pass false to indicate this is a fresh click, not a 'Back' navigation
-        card.onclick = () => openPopup(subject, syllabusTree[subject], 'Subject', false);
-        subjectsGrid.appendChild(card);
-    });
-}
-
 // --- 5. POPUP NAVIGATION & HISTORY LOGIC ---
 function openPopup(title, dataObj, level, isBackNav = false) {
     // If we are moving forward, save the current screen to history
