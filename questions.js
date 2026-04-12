@@ -7,31 +7,55 @@ async function loadDataAndBuildTree() {
         const csvPath = 'Data/fcps_part1.csv';
         const response = await fetch(csvPath);
         
-        if (!response.ok) throw new Error("CSV not found");
+        if (!response.ok) throw new Error("CSV file not found at " + csvPath);
 
         const csvText = await response.text();
 
-        // --- MANUAL CSV PARSER ---
-        const rows = csvText.split('\n').map(row => row.split(','));
-        const headers = rows[0].map(h => h.trim()); // Get Subject, Chapter, etc.
-        const dataRows = rows.slice(1); // Get all rows after the header
+        // --- THE VANILLA CSV PARSER ---
+        // This safely reads Excel CSVs, ignoring commas inside of questions/options!
+        function parseCSV(text) {
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (l of text) {
+                if ('"' === l) {
+                    if (s && l === p) row[i] += l;
+                    s = !s;
+                } else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) {
+                    if ('\r' === p) row[i] = row[i].slice(0, -1);
+                    row = ret[++r] = [l = '']; i = 0;
+                } else row[i] += l;
+                p = l;
+            }
+            return ret;
+        }
+
+        // 1. Parse the text
+        const rows = parseCSV(csvText);
+        
+        // 2. Extract Headers (Subject, Chapter, Topic, etc.)
+        const headers = rows[0].map(h => h ? h.trim() : "");
+        const dataRows = rows.slice(1);
 
         syllabusTree = {}; 
 
+        // 3. Build the Tree
         dataRows.forEach(row => {
-            if (row.length < headers.length) return; // Skip empty/broken rows
+            if (row.length < 2) return; // Skip completely empty rows at the bottom of Excel
 
-            // Create an object for the row based on headers
             let rowObj = {};
             headers.forEach((header, index) => {
                 rowObj[header] = row[index] ? row[index].trim() : "";
             });
 
-            // Use the data to build the tree
-            const { Subject, Chapter, Topic, SubTopic } = rowObj;
+            // Extract using the exact spelling from your Excel screenshot
+            const Subject = rowObj.Subject;
+            const Chapter = rowObj.Chapter;
+            const Topic = rowObj.Topic;
+            const SubTopic = rowObj.SubTopic;
 
-            if (!Subject) return;
+            if (!Subject || Subject === "") return;
 
+            // Build the hierarchy
             if (!syllabusTree[Subject]) syllabusTree[Subject] = {};
             if (!syllabusTree[Subject][Chapter]) syllabusTree[Subject][Chapter] = {};
             if (!syllabusTree[Subject][Chapter][Topic]) syllabusTree[Subject][Chapter][Topic] = [];
@@ -41,15 +65,15 @@ async function loadDataAndBuildTree() {
             }
         });
 
-        console.log("Tree built using Manual Parser!");
+        console.log("Tree successfully built with Vanilla JS!");
         renderGrid();
 
     } catch (error) {
-        console.error("Load Error:", error);
+        console.error("Data Load Error:", error);
+        // Fallback to ensure the page doesn't break
         renderGrid(); 
     }
 }
-
 
 // --- 2. STATE VARIABLES ---
 let currentMode = "practice"; // 'practice' or 'exam'
