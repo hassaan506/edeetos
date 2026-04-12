@@ -76,6 +76,13 @@ globalSearch.addEventListener('input', (e) => {
     searchDropdown.style.display = 'block';
 });
 
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
+        searchDropdown.style.display = 'none';
+    }
+});
+
 // Filter & Buttons
 unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
@@ -359,4 +366,4 @@ function renderListItem(itemName, nextData, level, itemPath) {
 // 5. INITIALIZATION
 // ==========================================
 switchMode('practice');
-loadDataAndBuildTree();=]['
+loadDataAndBuildTree();
