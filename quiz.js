@@ -21,11 +21,11 @@ const explanationBtn = document.getElementById('show-explanation-btn');
 const explanationModal = document.getElementById('explanation-modal');
 const explanationText = document.getElementById('explanation-text');
 const closeExplanationBtn = document.getElementById('close-explanation');
-const progressDisplay = document.getElementById('progress-display');
 const questionIdBadge = document.getElementById('question-id-badge');
+const numberGrid = document.getElementById('number-grid');
 
 // ==========================================
-// 2. INITIALIZE SESSION FROM LOCAL STORAGE
+// 2. INITIALIZE SESSION
 // ==========================================
 function loadSession() {
     const storedData = localStorage.getItem('edeetos_active_quiz');
@@ -33,33 +33,26 @@ function loadSession() {
         quizQueue = JSON.parse(storedData);
         if (quizQueue.length > 0) {
             startTimer();
+            buildNumberGrid();
             loadQuestion(0);
         } else {
             alert("Quiz queue is empty.");
             window.location.href = 'questions.html';
         }
     } else {
-        // No data found, kick them back to the bank
         window.location.href = 'questions.html';
     }
 }
 
-// Convert your raw CSV row into the format the Quiz UI needs
 function formatCSVQuestion(rawCsvRow) {
-    // Determine the correct answer. (Adjust 'Answer' to match your exact CSV header)
     const correctLetter = (rawCsvRow['Answer'] || rawCsvRow['Correct Answer'] || '').toString().trim().toUpperCase();
-
     const options = [];
-    // Loop through A, B, C, D, E columns from your CSV
+    
     ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
-        // Adjust these to match your exact CSV headers for options (e.g., 'Option A' or just 'A')
         const optText = rawCsvRow[`Option ${letter}`] || rawCsvRow[letter]; 
-        
         if (optText && optText.trim() !== '') {
             options.push({
-                id: letter,
                 text: optText,
-                // It is correct if the Answer column matches this letter
                 isCorrect: correctLetter.startsWith(letter) || correctLetter === optText.toUpperCase()
             });
         }
@@ -69,52 +62,64 @@ function formatCSVQuestion(rawCsvRow) {
         text: rawCsvRow.Question || "Missing Question Text in Database",
         options: options,
         explanation: rawCsvRow.Explanation || "No explanation provided for this question.",
-        isSolvedInDatabase: false // We will connect this to a real database later
+        isSolvedInDatabase: false 
     };
 }
 
 // ==========================================
-// 3. RENDER THE QUESTION
+// 3. RENDER THE QUESTION & GRID
 // ==========================================
+function buildNumberGrid() {
+    numberGrid.innerHTML = '';
+    quizQueue.forEach((_, index) => {
+        const numBtn = document.createElement('div');
+        numBtn.className = 'grid-num';
+        numBtn.id = `grid-num-${index}`;
+        numBtn.textContent = index + 1;
+        numBtn.onclick = () => loadQuestion(index);
+        numberGrid.appendChild(numBtn);
+    });
+}
+
+function updateGridStyles() {
+    document.querySelectorAll('.grid-num').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById(`grid-num-${currentIndex}`);
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
 function loadQuestion(index) {
     currentIndex = index;
     const rawData = quizQueue[currentIndex];
     currentQuestionData = formatCSVQuestion(rawData);
 
-    // Reset State
     wrongAttempts = 0;
     hasAnsweredCorrectly = false;
     updateFeedbackBar();
     explanationBtn.classList.add('hidden');
     explanationModal.classList.add('hidden');
 
-    // Update UI Headers
-    progressDisplay.textContent = `${currentIndex + 1} / ${quizQueue.length}`;
     questionIdBadge.textContent = `Question ${currentIndex + 1}`;
-    
-    // Set Text
     questionTextEl.textContent = currentQuestionData.text;
     explanationText.textContent = currentQuestionData.explanation;
 
-    // Render Options
     optionsContainer.innerHTML = '';
     currentQuestionData.options.forEach(opt => {
         const optBox = document.createElement('div');
         optBox.className = 'option-box';
+        // Note: No A/B/C/D letter injected here! Matches old app perfectly.
         optBox.innerHTML = `
-            <div class="option-content">
-                <div class="option-letter">${opt.id}</div>
-                <div class="option-text">${opt.text}</div>
-            </div>
+            <div class="option-text">${opt.text}</div>
             <i class="fas fa-eye eye-icon" title="Strikeout option"></i>
         `;
         optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
         optionsContainer.appendChild(optBox);
     });
+
+    updateGridStyles();
 }
 
 // ==========================================
-// 4. INTERACTION LOGIC ("Red-Until-Right")
+// 4. INTERACTION LOGIC
 // ==========================================
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
@@ -134,6 +139,9 @@ function handleOptionClick(event, optionData, optionElement) {
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
         
+        const activeGridBtn = document.getElementById(`grid-num-${currentIndex}`);
+        if(activeGridBtn) activeGridBtn.classList.add('solved');
+
         explanationBtn.classList.remove('hidden'); 
         setTimeout(() => explanationModal.classList.remove('hidden'), 400);
     }
@@ -168,7 +176,6 @@ closeExplanationBtn.onclick = () => explanationModal.classList.add('hidden');
 
 document.getElementById('next-btn').onclick = () => {
     if (currentIndex < quizQueue.length - 1) loadQuestion(currentIndex + 1);
-    else alert("You have reached the end of this quiz session!");
 };
 
 document.getElementById('prev-btn').onclick = () => {

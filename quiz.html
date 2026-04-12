@@ -10,33 +10,23 @@
 </head>
 <body class="quiz-body">
     
-    <header class="quiz-header">
-        <button id="exit-btn" class="exit-btn" onclick="window.location.href='questions.html'">⬅ Exit Session</button>
-        <div class="stats-container">
-            <div class="stat-box">
-                <span class="stat-label">Total Time</span>
-                <span class="stat-value" id="timer-display">00:00</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-label">Skipped</span>
-                <span class="stat-value" id="skipped-display">0</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-label">Total MCQs</span>
-                <span class="stat-value" id="progress-display">1 / 1</span>
+    <div class="blue-header-bg"></div>
+
+    <div class="quiz-content-wrapper">
+        <div class="top-nav">
+            <button class="exit-btn" onclick="window.location.href='questions.html'">Exit Session</button>
+            <div class="top-stats">
+                <span id="timer-display">00:00</span>
             </div>
         </div>
-    </header>
 
-    <main class="quiz-container">
-        <div class="question-card glass-panel">
-            
-            <div class="card-utilities">
-                <span id="question-id-badge" class="badge-blue">Question 1</span>
+        <div class="question-card">
+            <div class="card-header">
+                <div class="question-pill" id="question-id-badge">Question 1</div>
                 <div class="icon-group">
-                    <button class="icon-btn" title="Notes"><i class="fas fa-pen"></i></button>
-                    <button class="icon-btn" title="Bookmark"><i class="far fa-star"></i></button>
-                    <button class="icon-btn" title="Report"><i class="far fa-flag"></i></button>
+                    <button class="icon-btn"><i class="fas fa-pen"></i></button>
+                    <button class="icon-btn"><i class="far fa-star"></i></button>
+                    <button class="icon-btn"><i class="far fa-flag"></i></button>
                 </div>
             </div>
 
@@ -54,25 +44,28 @@
 
             <div class="options-container" id="options-container">
                 </div>
-
-            <div class="card-actions">
-                <button id="show-explanation-btn" class="btn-outline hidden">Show Explanation</button>
+            
+            <div style="text-align: center; margin-top: 1rem;">
+                <button id="show-explanation-btn" class="btn-outline hidden" style="border-color: #0084ff; color: #0084ff;">Show Explanation</button>
             </div>
         </div>
-    </main>
 
-    <div id="explanation-modal" class="modal-overlay hidden">
-        <div class="modal-content glass-panel">
-            <h3 style="color: #059669; margin-bottom: 1rem;">Explanation</h3>
-            <p id="explanation-text">This is the explanation text.</p>
-            <button id="close-explanation" class="btn-solid" style="margin-top: 1.5rem; width: 100%;">Got it</button>
+        <div class="number-grid" id="number-grid">
+            </div>
+
+        <div class="bottom-actions">
+            <button id="prev-btn" class="prev-icon-btn"><i class="fas fa-arrow-left"></i></button>
+            <button id="next-btn" class="next-action-btn">Next</button>
         </div>
     </div>
 
-    <footer class="quiz-footer">
-        <button id="prev-btn" class="nav-btn"><i class="fas fa-arrow-left"></i></button>
-        <button id="next-btn" class="nav-btn next-btn">Next <i class="fas fa-arrow-right"></i></button>
-    </footer>
+    <div id="explanation-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 style="color: #0084ff; margin-bottom: 1rem;">Explanation</h3>
+            <p id="explanation-text">Explanation text.</p>
+            <button id="close-explanation" class="btn-solid" style="margin-top: 1.5rem; width: 100%; background: #0084ff;">Got it</button>
+        </div>
+    </div>
 
     <script src="quiz.js"></script>
 </body>
