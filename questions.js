@@ -4,52 +4,54 @@ let allQuestions = []; // Stores the actual question data for later
 
 async function loadDataAndBuildTree() {
     try {
-        // 1. Fetch from your specific subfolder
-        // We use encodeURIComponent to handle the spaces in "FCPS Part 1" safely
-        const csvPath = 'Data/FCPS%20Part%201.csv';
+        // Clean path with the new filename
+        const csvPath = 'Data/fcps_part1.csv';
         const response = await fetch(csvPath);
         
-        if (!response.ok) throw new Error("CSV not found at " + csvPath);
+        if (!response.ok) {
+            throw new Error(`File not found: ${csvPath}. Check if the filename is exactly fcps_part1.csv in the Data folder.`);
+        }
 
         const csvData = await response.text();
 
-        // 2. Convert CSV text into a format JS understands
         Papa.parse(csvData, {
             header: true,
             skipEmptyLines: true,
             complete: function(results) {
+                if (results.data.length === 0) {
+                    console.error("CSV is empty. Check your file content.");
+                    return;
+                }
+
                 allQuestions = results.data;
-                syllabusTree = {}; // Reset the tree to fill it with CSV data
+                syllabusTree = {}; 
 
-                // 3. The "Tree Builder" Loop
                 allQuestions.forEach(row => {
-                    const { Subject, Chapter, Topic, SubTopic } = row;
+                    // Using lowercase variables to match your logic
+                    const subject = row.Subject;
+                    const chapter = row.Chapter;
+                    const topic = row.Topic;
+                    const subtopic = row.SubTopic;
 
-                    if (!Subject) return; // Ignore empty rows
+                    if (!subject) return; 
 
-                    // Create Subject if new
-                    if (!syllabusTree[Subject]) syllabusTree[Subject] = {};
-                    
-                    // Create Chapter if new
-                    if (!syllabusTree[Subject][Chapter]) syllabusTree[Subject][Chapter] = {};
-                    
-                    // Create Topic array if new
-                    if (!syllabusTree[Subject][Chapter][Topic]) syllabusTree[Subject][Chapter][Topic] = [];
+                    if (!syllabusTree[subject]) syllabusTree[subject] = {};
+                    if (!syllabusTree[subject][chapter]) syllabusTree[subject][chapter] = {};
+                    if (!syllabusTree[subject][chapter][topic]) syllabusTree[subject][chapter][topic] = [];
 
-                    // Add SubTopic to the Topic list
-                    if (SubTopic && !syllabusTree[Subject][Chapter][Topic].includes(SubTopic)) {
-                        syllabusTree[Subject][Chapter][Topic].push(SubTopic);
+                    if (subtopic && !syllabusTree[subject][chapter][topic].includes(subtopic)) {
+                        syllabusTree[subject][chapter][topic].push(subtopic);
                     }
                 });
 
-                console.log("Syllabus Tree Built successfully from CSV!");
-                renderGrid(); // This draws the cards on your screen
+                console.log("Success! Tree built from CSV:", syllabusTree);
+                renderGrid(); 
             }
         });
 
     } catch (error) {
-        console.error("CSV Load Failed:", error);
-        // If the CSV fails to load, we show the Mock Data so the page isn't empty
+        console.error("CSV Load Error:", error);
+        // Fallback so the page isn't totally blank during testing
         renderGrid(); 
     }
 }
