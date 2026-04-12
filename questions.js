@@ -4,57 +4,52 @@ let allQuestions = []; // Stores the actual question data for later
 
 async function loadDataAndBuildTree() {
     try {
-        // Clean path with the new filename
         const csvPath = 'Data/fcps_part1.csv';
         const response = await fetch(csvPath);
         
-        if (!response.ok) {
-            throw new Error(`File not found: ${csvPath}. Check if the filename is exactly fcps_part1.csv in the Data folder.`);
-        }
+        if (!response.ok) throw new Error("CSV not found");
 
-        const csvData = await response.text();
+        const csvText = await response.text();
 
-        Papa.parse(csvData, {
-            header: true,
-            skipEmptyLines: true,
-            complete: function(results) {
-                if (results.data.length === 0) {
-                    console.error("CSV is empty. Check your file content.");
-                    return;
-                }
+        // --- MANUAL CSV PARSER ---
+        const rows = csvText.split('\n').map(row => row.split(','));
+        const headers = rows[0].map(h => h.trim()); // Get Subject, Chapter, etc.
+        const dataRows = rows.slice(1); // Get all rows after the header
 
-                allQuestions = results.data;
-                syllabusTree = {}; 
+        syllabusTree = {}; 
 
-                allQuestions.forEach(row => {
-                    // Using lowercase variables to match your logic
-                    const subject = row.Subject;
-                    const chapter = row.Chapter;
-                    const topic = row.Topic;
-                    const subtopic = row.SubTopic;
+        dataRows.forEach(row => {
+            if (row.length < headers.length) return; // Skip empty/broken rows
 
-                    if (!subject) return; 
+            // Create an object for the row based on headers
+            let rowObj = {};
+            headers.forEach((header, index) => {
+                rowObj[header] = row[index] ? row[index].trim() : "";
+            });
 
-                    if (!syllabusTree[subject]) syllabusTree[subject] = {};
-                    if (!syllabusTree[subject][chapter]) syllabusTree[subject][chapter] = {};
-                    if (!syllabusTree[subject][chapter][topic]) syllabusTree[subject][chapter][topic] = [];
+            // Use the data to build the tree
+            const { Subject, Chapter, Topic, SubTopic } = rowObj;
 
-                    if (subtopic && !syllabusTree[subject][chapter][topic].includes(subtopic)) {
-                        syllabusTree[subject][chapter][topic].push(subtopic);
-                    }
-                });
+            if (!Subject) return;
 
-                console.log("Success! Tree built from CSV:", syllabusTree);
-                renderGrid(); 
+            if (!syllabusTree[Subject]) syllabusTree[Subject] = {};
+            if (!syllabusTree[Subject][Chapter]) syllabusTree[Subject][Chapter] = {};
+            if (!syllabusTree[Subject][Chapter][Topic]) syllabusTree[Subject][Chapter][Topic] = [];
+
+            if (SubTopic && !syllabusTree[Subject][Chapter][Topic].includes(SubTopic)) {
+                syllabusTree[Subject][Chapter][Topic].push(SubTopic);
             }
         });
 
+        console.log("Tree built using Manual Parser!");
+        renderGrid();
+
     } catch (error) {
-        console.error("CSV Load Error:", error);
-        // Fallback so the page isn't totally blank during testing
+        console.error("Load Error:", error);
         renderGrid(); 
     }
 }
+
 
 // --- 2. STATE VARIABLES ---
 let currentMode = "practice"; // 'practice' or 'exam'
