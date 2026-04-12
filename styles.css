@@ -1,6 +1,6 @@
 /* ========================================== */
 /* 0. BASE STYLES & BACKGROUND IMAGE          */
-/* Controls font, margins, and the deep neon background */
+/* Fresh Clinical Theme: White, Blue, Green   */
 /* ========================================== */
 * {
     box-sizing: border-box;
@@ -11,35 +11,33 @@
 
 body {
     line-height: 1.6;
-    background-color: #050b14;
+    background-color: #f8fafc; /* Very light, clean gray/white */
+    /* Soft glowing orbs of Blue and Green in the background */
     background-image: 
-        radial-gradient(at 0% 0%, rgba(0, 229, 255, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(41, 98, 255, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(124, 77, 255, 0.1) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, rgba(0, 229, 255, 0.1) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
     background-attachment: fixed;
-    color: #cbd5e1;
+    color: #334155; /* Dark slate text for perfect readability */
     min-height: 100vh;
 }
 
 /* ========================================== */
 /* A. THE MASTER GLASS UTILITY                */
-/* This single class is applied to ALL boxes to make them look like dark glass */
+/* Frosted White Ice Glass                    */
 /* ========================================== */
 .glass-panel {
-    background: rgba(13, 22, 45, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    border-left: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft, light shadow */
     border-radius: 16px;
 }
 
 /* ========================================== */
 /* B. BUTTONS & REUSABLE LAYOUTS              */
-/* Controls how standard text, containers, and buttons look everywhere */
 /* ========================================== */
 .section-container {
     padding: 5rem 2rem;
@@ -50,14 +48,14 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 0.5rem;
-    color: #ffffff;
+    color: #0f172a; /* Very dark blue/black */
     font-size: 2.5rem;
     letter-spacing: 1px;
 }
 
 .section-description {
     text-align: center;
-    color: #94a3b8;
+    color: #64748b;
     margin-bottom: 3rem;
     font-size: 1.1rem;
 }
@@ -68,7 +66,6 @@ h2 {
     gap: 2rem;
 }
 
-/* Base button shape */
 .btn-outline, .btn-solid, .btn-large {
     padding: 0.5rem 1.25rem;
     border-radius: 8px;
@@ -79,46 +76,49 @@ h2 {
     display: inline-block;
 }
 
-/* Cyan filled button */
 .btn-solid {
-    background: #00e5ff; 
-    color: #050b14 !important;
+    background: #2563eb; /* Trustworthy Medical Blue */
+    color: #ffffff !important;
     border: none;
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
 }
 
-/* Cyan hollow button */
 .btn-outline {
-    background: rgba(0, 229, 255, 0.1);
-    border: 1px solid #00e5ff;
-    color: #00e5ff !important;
+    background: transparent;
+    border: 2px solid #059669; /* Success Green */
+    color: #059669 !important;
 }
 
-/* Large blue hero button */
 .btn-large {
-    background: #2962ff;
+    background: #059669; /* Green call to action stands out */
     color: white !important;
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
     margin-top: 1.5rem;
-    box-shadow: 0 0 20px rgba(41, 98, 255, 0.4);
-    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+    border: none;
 }
 
-.btn-outline:hover, .btn-solid:hover, .btn-large:hover {
+.btn-outline:hover {
+    background: rgba(5, 150, 105, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+}
+
+.btn-solid:hover, .btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    filter: brightness(110%);
 }
 
 /* ========================================== */
 /* 1. NAVIGATION BAR STYLES                   */
 /* ========================================== */
 .navbar {
-    background: rgba(5, 11, 20, 0.85); 
+    background: rgba(255, 255, 255, 0.85); 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -135,9 +135,8 @@ h2 {
 }
 
 .logo-img {
-    height: 40px;
+    height: 80px;
     width: auto;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
 }
 
 .nav-links {
@@ -150,14 +149,13 @@ h2 {
 
 .nav-links a {
     text-decoration: none;
-    color: #94a3b8;
-    font-weight: 500;
+    color: #475569;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #00e5ff;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    color: #2563eb; /* Blue hover */
 }
 
 /* ========================================== */
@@ -171,15 +169,14 @@ h2 {
 .hero-content h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: #0f172a;
     line-height: 1.1;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
 .hero-content .subtitle {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00e5ff;
+    color: #2563eb;
     margin-bottom: 1rem;
 }
 
@@ -193,14 +190,14 @@ h2 {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .course-title {
-    color: #00e5ff;
+    color: #2563eb;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     padding-bottom: 0.5rem;
 }
 
@@ -215,17 +212,16 @@ h2 {
 }
 
 .objectives-grid li {
-    border-left: 3px solid #00e5ff;
+    border-left: 4px solid #10b981; /* Green accent line */
     padding: 1.5rem;
     display: flex;
     align-items: center;
-    color: #e2e8f0;
-    font-weight: 500;
+    color: #334155;
+    font-weight: 600;
 }
 
 /* ========================================== */
 /* 5. TEAM PROFILE STYLES                     */
-/* Includes the image crop fix                */
 /* ========================================== */
 .team-members {
     display: flex;
@@ -247,21 +243,21 @@ h2 {
     height: 150px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    object-position: top; /* Prevents hair from getting cropped */
+    object-position: top;
     border-radius: 50%;
-    border: 3px solid #00e5ff; 
+    border: 4px solid #ffffff; 
     margin-bottom: 1.25rem;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .member-profile h3 {
-    color: #ffffff;
+    color: #0f172a;
     font-size: 1.25rem;
 }
 
 .member-role {
-    color: #00e5ff;
-    font-weight: 500;
+    color: #2563eb;
+    font-weight: 600;
     margin-top: 0.25rem;
 }
 
@@ -279,13 +275,13 @@ h2 {
 
 .stat-number {
     font-size: 3rem;
-    color: #00e5ff;
-    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    color: #2563eb;
+    font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
 .stat-label {
-    color: #94a3b8;
+    color: #64748b;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -299,14 +295,14 @@ h2 {
 }
 
 .step-number {
-    color: #00e5ff;
+    color: #10b981; /* Green steps */
     font-size: 2.5rem;
+    font-weight: bold;
     margin-bottom: 1rem;
-    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
 .step-title {
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
 }
@@ -323,7 +319,7 @@ h2 {
 
 .faq-item {
     padding: 1.5rem 2rem;
-    border-left: 3px solid #2962ff;
+    border-left: 4px solid #2563eb;
     margin-bottom: 1.5rem; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -334,11 +330,11 @@ h2 {
 
 .faq-item:hover {
     transform: translateX(5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(41, 98, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
-    color: #00e5ff; 
+    color: #0f172a; 
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
@@ -351,7 +347,7 @@ h2 {
 }
 
 .contact-title {
-    color: #00e5ff;
+    color: #0f172a;
     margin-bottom: 2rem;
     font-size: 1.5rem;
 }
@@ -364,27 +360,27 @@ h2 {
 }
 
 .info-item h4 {
-    color: #ffffff;
+    color: #334155;
     margin-bottom: 0.25rem;
 }
 
 .info-icon {
     font-size: 1.5rem;
-    background: rgba(0, 229, 255, 0.1);
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
     padding: 1rem;
     border-radius: 50%;
-    border: 1px solid rgba(0, 229, 255, 0.3);
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
 }
 
 .contact-link {
-    color: #cbd5e1;
+    color: #2563eb;
     text-decoration: none;
+    font-weight: 500;
     transition: color 0.3s;
 }
 
 .contact-link:hover {
-    color: #00e5ff;
+    color: #1d4ed8;
 }
 
 .contact-form {
@@ -400,20 +396,19 @@ h2 {
 }
 
 .contact-form label {
-    color: #94a3b8;
+    color: #475569;
     font-size: 0.9rem;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
 
-/* The dark glowing input boxes */
 .contact-form input,
 .contact-form textarea {
-    background: rgba(5, 11, 20, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #cbd5e1;
     padding: 0.85rem;
     border-radius: 8px;
-    color: #ffffff;
+    color: #0f172a;
     font-family: inherit;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -422,9 +417,9 @@ h2 {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #00e5ff;
-    background: rgba(0, 229, 255, 0.05);
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .form-btn {
@@ -442,11 +437,13 @@ h2 {
 
 .cta-content {
     padding: 5rem 2rem;
-    background: linear-gradient(135deg, rgba(13, 22, 45, 0.8) 0%, rgba(41, 98, 255, 0.2) 100%);
+    /* Soft blue gradient for the CTA banner */
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border: 1px solid rgba(255,255,255,1);
 }
 
 .cta-content p {
-    color: #cbd5e1;
+    color: #475569;
     font-size: 1.2rem;
     max-width: 600px;
     margin: 1rem auto 2rem auto;
@@ -454,12 +451,12 @@ h2 {
 
 /* ========================================== */
 /* 11. FOOTER STYLES                          */
+/* Dark blue footer to ground the light page  */
 /* ========================================== */
 .site-footer {
-    background: rgba(5, 11, 20, 0.9);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0f172a; /* Solid dark blue/slate */
     padding: 4rem 2rem 2rem 2rem;
-    color: #64748b;
+    color: #94a3b8;
 }
 
 .footer-container {
@@ -472,9 +469,9 @@ h2 {
 }
 
 .footer-logo {
-    height: 40px;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+    height: 150px;
+    margin-bottom: 1rem;   
+    mix-blend-mode: screen; 
 }
 
 .footer-brand p {
@@ -501,14 +498,18 @@ h2 {
 }
 
 .footer-links a:hover, .footer-bottom a:hover {
-    color: #00e5ff;
+    color: #38bdf8; /* Light blue hover */
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
 }
 
 .social-icons a {
-    color: #00e5ff;
+    color: #ffffff;
     text-decoration: none;
-    border: 1px solid rgba(0, 229, 255, 0.3);
-    /* Forces them into perfect glowing circles */
+    background: rgba(255, 255, 255, 0.1);
     width: 45px;
     height: 45px;
     display: flex;
@@ -520,15 +521,14 @@ h2 {
 }
 
 .social-icons a:hover {
-    background: rgba(0, 229, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    background: #2563eb;
     transform: translateY(-3px);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.9rem;
 }
 
@@ -542,13 +542,12 @@ h2 {
 
 .legal-hero h1 {
     font-size: 3rem;
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
 .legal-hero .subtitle {
-    color: #00e5ff;
+    color: #2563eb;
     font-weight: bold;
 }
 
@@ -559,25 +558,25 @@ h2 {
 }
 
 .legal-content h3 {
-    color: #00e5ff;
+    color: #2563eb;
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding-bottom: 0.5rem;
     text-align: left; 
 }
 
 .legal-content p {
     margin-bottom: 1.5rem;
-    color: #cbd5e1;
+    color: #475569;
     font-size: 1.1rem;
 }
 
 .legal-content ul {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
-    color: #cbd5e1;
+    color: #475569;
     text-align: left; 
 }
 
@@ -587,7 +586,6 @@ h2 {
 
 /* ========================================== */
 /* 12. MOBILE RESPONSIVENESS (PHONES/TABLETS) */
-/* Forces text and margins to shrink on small screens */
 /* ========================================== */
 @media (max-width: 768px) {
     .nav-container { flex-direction: column; gap: 1rem; padding: 1rem; }
