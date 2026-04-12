@@ -124,12 +124,12 @@
 }
 
 /* ========================================== */
-/* PREMIUM SUBJECT CARDS & 5-COLUMN GRID      */
+/* SLEEK APP CARDS & PROGRESS BARS            */
 /* ========================================== */
 #subjects-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr); /* 4 looks better for wide text cards */
+    gap: 1.2rem;
     width: 100%;
     padding: 1rem;
     padding-bottom: 150px; 
@@ -138,36 +138,61 @@
 #subjects-grid .feature-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    transition: all 0.3s ease;
-    border-top: 4px solid transparent;
+    justify-content: center;
+    padding: 1.2rem;
+    transition: all 0.2s ease;
+    border-left: 4px solid #10b981; /* Green accent line on the left */
+    border-top: none;
+    text-align: left;
+    align-items: stretch;
 }
 
 #subjects-grid .feature-card:hover {
-    transform: translateY(-5px);
-    border-top: 4px solid #10b981;
-    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
 }
 
-#subjects-grid .feature-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    background: rgba(16, 185, 129, 0.1);
-    width: 80px;
-    height: 80px;
+.card-header-flex {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    margin-bottom: 12px;
+    gap: 10px;
 }
 
-#subjects-grid .feature-card h3 {
-    color: #064e3b;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+.card-title {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1.05rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.card-count {
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    background-color: #e2e8f0;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #10b981;
+    transition: width 0.3s ease;
+}
+
+/* Make list items look like the cards */
+.list-item .card-header-flex {
+    margin-bottom: 8px;
 }
 
 @media (max-width: 1024px) {
