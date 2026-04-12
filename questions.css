@@ -165,3 +165,47 @@
     color: #64748b;
     font-size: 0.95rem;
 }
+
+#subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+/* ========================================== */
+/* SIDEBAR STYLES (EDEETOS PREMIUM)           */
+/* ========================================== */
+.sidebar {
+    position: fixed;
+    top: 0; left: -300px; /* Hidden by default */
+    width: 280px; height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 2000;
+    transition: left 0.3s ease;
+    border-radius: 0 20px 20px 0;
+    padding: 2rem 1.5rem;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.active { left: 0; }
+
+.sidebar-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
+    z-index: 1999;
+}
+
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 2px solid rgba(16, 185, 129, 0.2); padding-bottom: 1rem; }
+
+.sidebar-links { list-style: none; padding: 0; }
+.sidebar-category { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; font-weight: bold; margin-bottom: 0.8rem; letter-spacing: 1px; }
+.sidebar-links li a {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.8rem 1rem; color: #334155; text-decoration: none;
+    font-weight: 600; border-radius: 8px; transition: 0.2s;
+    margin-bottom: 0.5rem;
+}
+.sidebar-links li a:hover, .sidebar-links li a.active-link {
+    background: rgba(16, 185, 129, 0.1); color: #059669;
+}

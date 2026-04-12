@@ -9,17 +9,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="dashboard.html" class="nav-logo">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
-            </a>
-            <ul class="nav-links">
-			<li><a href="dashboard.html" class="btn-outline">⬅ Back to Dashboard</a></li>
-			</ul>
+<div id="sidebar-overlay" class="sidebar-overlay" style="display: none;"></div>
+    <div id="sidebar" class="sidebar glass-panel">
+        <div class="sidebar-header">
+            <h2 style="color: #059669; font-size: 1.5rem; margin: 0;">Menu</h2>
+            <button id="close-sidebar" class="icon-btn" style="color: #64748b; background: transparent; font-size: 1.2rem;">✖</button>
         </div>
-    </nav>
-
+        
+        <ul class="sidebar-links">
+            <li class="sidebar-category">Study Modes</li>
+            <li><a href="#" id="nav-system"><span class="icon">🫀</span> System Wise</a></li>
+            <li><a href="#" id="nav-subject"><span class="icon">📚</span> Subject Wise</a></li>
+            <li><a href="#" id="nav-exam"><span class="icon">📝</span> Past Papers</a></li>
+            <li><a href="#" id="nav-flash"><span class="icon">⚡</span> Flash Cards</a></li>
+            
+            <li class="sidebar-category" style="margin-top: 2rem;">Quick Links</li>
+            <li><a href="dashboard.html"><span class="icon">🏠</span> Back to Dashboard</a></li>
+        </ul>
+    </div>
+	
+	<nav class="navbar">
+		<div class="nav-container" style="justify-content: flex-start; gap: 1rem;">
+			<button id="open-sidebar" class="icon-btn" style="background: transparent; color: #064e3b; font-size: 1.5rem; padding: 0.5rem;">☰</button>
+			<a href="dashboard.html" class="nav-logo">
+				<img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
+			</a>
+			<h3 id="current-view-title" style="margin-left: auto; color: #059669;">Subject Wise</h3>
+		</div>
+	</nav>
+	
     <section class="section-container" id="selection-screen">
         
         <div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">

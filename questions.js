@@ -1,18 +1,21 @@
 // --- 1. DYNAMIC DATA ENGINE ---
 let syllabusTree = {}; 
-let allQuestions = []; // Stores the actual question data for later
+let allQuestions = []; 
+
+// --- 1. DYNAMIC DATA ENGINE ---
+let subjectTree = {}; 
+let systemTree = {};
+let examTree = {};
+let currentView = "subject"; // defaults to Subject Wise
 
 async function loadDataAndBuildTree() {
     try {
         const csvPath = 'Data/fcps_part1.csv';
         const response = await fetch(csvPath);
-        
-        if (!response.ok) throw new Error("CSV file not found at " + csvPath);
+        if (!response.ok) throw new Error("CSV file not found");
 
         const csvText = await response.text();
 
-        // --- THE VANILLA CSV PARSER ---
-        // This safely reads Excel CSVs, ignoring commas inside of questions/options!
         function parseCSV(text) {
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
             for (l of text) {
@@ -29,55 +32,61 @@ async function loadDataAndBuildTree() {
             return ret;
         }
 
-        // 1. Parse the text
         const rows = parseCSV(csvText);
-        
-        // 2. Extract Headers (Subject, Chapter, Topic, etc.)
         const headers = rows[0].map(h => h ? h.trim() : "");
         const dataRows = rows.slice(1);
 
-        syllabusTree = {}; 
+        // Reset trees
+        subjectTree = {}; systemTree = {}; examTree = {};
 
-        // 3. Build the Tree
         dataRows.forEach(row => {
-            if (row.length < 2) return; // Skip completely empty rows at the bottom of Excel
+            if (row.length < 2) return; 
 
             let rowObj = {};
             headers.forEach((header, index) => {
                 rowObj[header] = row[index] ? row[index].trim() : "";
             });
 
-            // Extract using the exact spelling from your Excel screenshot
+            // Make sure these match your Excel column names!
+            const Exam = rowObj.Exam;
             const Subject = rowObj.Subject;
             const Chapter = rowObj.Chapter;
             const Topic = rowObj.Topic;
-            const SubTopic = rowObj.SubTopic;
 
             if (!Subject || Subject === "") return;
 
-            // Build the hierarchy
-            if (!syllabusTree[Subject]) syllabusTree[Subject] = {};
-            if (!syllabusTree[Subject][Chapter]) syllabusTree[Subject][Chapter] = {};
-            if (!syllabusTree[Subject][Chapter][Topic]) syllabusTree[Subject][Chapter][Topic] = [];
+            // 1. Build SUBJECT Tree (Subject -> Chapter -> Topic)
+            if (!subjectTree[Subject]) subjectTree[Subject] = {};
+            if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
+            if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
 
-            if (SubTopic && !syllabusTree[Subject][Chapter][Topic].includes(SubTopic)) {
-                syllabusTree[Subject][Chapter][Topic].push(SubTopic);
+            // 2. Build SYSTEM Tree (Chapter -> Subject -> Topic)
+            if (Chapter) {
+                if (!systemTree[Chapter]) systemTree[Chapter] = {};
+                if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
+                if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
+            }
+
+            // 3. Build EXAM Tree (Exam -> Subject -> Topic)
+            if (Exam) {
+                if (!examTree[Exam]) examTree[Exam] = {};
+                if (!examTree[Exam][Subject]) examTree[Exam][Subject] = [];
+                if (Topic && !examTree[Exam][Subject].includes(Topic)) examTree[Exam][Subject].push(Topic);
             }
         });
 
-        console.log("Tree successfully built with Vanilla JS!");
+        console.log("All 3 Data Trees Built Successfully!");
         renderGrid();
 
     } catch (error) {
         console.error("Data Load Error:", error);
-        // Fallback to ensure the page doesn't break
-        renderGrid(); 
     }
 }
 
 // --- 2. STATE VARIABLES ---
-let currentMode = "practice"; // 'practice' or 'exam'
-let selectedCart = new Set(); // Stores checked topics for Exam Mode
+let currentMode = "practice"; 
+let selectedCart = new Set(); 
+let popupHistory = []; // <-- NEW: Memory Stack for the Back Button
 
 // UI Elements
 const subjectsGrid = document.getElementById('subjects-grid');
@@ -88,7 +97,6 @@ const examCart = document.getElementById('exam-cart');
 const cartCount = document.getElementById('cart-count');
 const startExamBtn = document.getElementById('start-exam-btn');
 
-// Popup Elements
 const popupOverlay = document.getElementById('popup-overlay');
 const popupTitle = document.getElementById('popup-title');
 const popupList = document.getElementById('popup-list');
@@ -119,7 +127,9 @@ modeExamBtn.addEventListener('click', () => switchMode('exam'));
 
 // --- 4. RENDER INITIAL GRID ---
 function renderGrid() {
+    if (!subjectsGrid) return;
     subjectsGrid.innerHTML = '';
+    
     Object.keys(syllabusTree).forEach(subject => {
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
@@ -129,27 +139,35 @@ function renderGrid() {
             <h3>${subject}</h3>
             <p>Click to browse chapters</p>
         `;
-        card.onclick = () => openPopup(subject, syllabusTree[subject], 'Subject');
+        // Pass false to indicate this is a fresh click, not a 'Back' navigation
+        card.onclick = () => openPopup(subject, syllabusTree[subject], 'Subject', false);
         subjectsGrid.appendChild(card);
     });
 }
 
-// --- 5. POPUP DRILL-DOWN LOGIC ---
-function openPopup(title, dataObj, level) {
+// --- 5. POPUP NAVIGATION & HISTORY LOGIC ---
+function openPopup(title, dataObj, level, isBackNav = false) {
+    // If we are moving forward, save the current screen to history
+    if (!isBackNav) {
+        popupHistory.push({ title, dataObj, level });
+    }
+
     popupTitle.textContent = title;
     popupList.innerHTML = '';
     popupOverlay.style.display = 'flex';
 
-    // If we are looking at an array (Subtopics)
-    if (Array.isArray(dataObj)) {
-        dataObj.forEach(subtopic => {
-            renderListItem(subtopic, subtopic, 'Subtopic');
-        });
+    // Toggle Back button visibility
+    if (popupHistory.length > 1) {
+        popupBack.style.display = 'inline-block'; // Show if deeper than 1 level
     } else {
-        // If we are looking at an Object (Chapters or Topics)
-        Object.keys(dataObj).forEach(key => {
-            renderListItem(key, dataObj[key], level);
-        });
+        popupBack.style.display = 'none'; // Hide if at the root (Subject)
+    }
+
+    // Render Arrays (Topics) or Objects (Chapters)
+    if (Array.isArray(dataObj)) {
+        dataObj.forEach(topic => renderListItem(topic, null, 'Topic'));
+    } else {
+        Object.keys(dataObj).forEach(key => renderListItem(key, dataObj[key], level));
     }
 }
 
@@ -160,7 +178,6 @@ function renderListItem(itemName, nextData, level) {
     const labelDiv = document.createElement('div');
     labelDiv.style.flexGrow = '1';
     
-    // Add Checkbox for Exam Mode
     if (currentMode === 'exam') {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -180,14 +197,14 @@ function renderListItem(itemName, nextData, level) {
     labelDiv.appendChild(textSpan);
     itemDiv.appendChild(labelDiv);
 
-    // Action Button
     const actionBtn = document.createElement('button');
     actionBtn.className = 'btn-outline mini-btn';
     actionBtn.style.marginTop = '0';
     
-    if (Array.isArray(nextData) || typeof nextData === 'object') {
-        actionBtn.textContent = 'View Contents ➡';
-        actionBtn.onclick = () => openPopup(itemName, nextData, 'NextLevel');
+    // If nextData exists, it's a Chapter. If null, it's a Topic.
+    if (nextData) {
+        actionBtn.textContent = 'View Topics ➡';
+        actionBtn.onclick = () => openPopup(itemName, nextData, 'Chapter', false);
     } else {
         actionBtn.textContent = currentMode === 'practice' ? 'Practice Now' : 'Select';
     }
@@ -196,20 +213,96 @@ function renderListItem(itemName, nextData, level) {
     popupList.appendChild(itemDiv);
 }
 
-// --- 6. CART & POPUP CONTROLS ---
+// --- 6. CART & BUTTON CONTROLS ---
 function updateCartUI() {
     cartCount.textContent = `${selectedCart.size} Topics Selected`;
     startExamBtn.disabled = selectedCart.size === 0;
 }
 
-popupClose.onclick = () => popupOverlay.style.display = 'none';
-// Hide popup if clicking outside the glass panel
+// The "Back" Button Logic
+popupBack.onclick = () => {
+    popupHistory.pop(); // Remove the current screen
+    const previousScreen = popupHistory[popupHistory.length - 1]; // Get the previous screen
+    // Open it, passing 'true' so it doesn't get added to history again
+    openPopup(previousScreen.title, previousScreen.dataObj, previousScreen.level, true);
+};
+
+// The "Close" Button Logic (Resets everything)
+popupClose.onclick = () => {
+    popupHistory = []; // Wipe memory
+    popupOverlay.style.display = 'none';
+};
+
 popupOverlay.onclick = (e) => {
-    if(e.target === popupOverlay) popupOverlay.style.display = 'none';
+    if(e.target === popupOverlay) {
+        popupHistory = [];
+        popupOverlay.style.display = 'none';
+    }
 }
 
-// ==========================================
-// INITIALIZE THE SCREEN
-// ==========================================
+// Initialize
 switchMode('practice');
 loadDataAndBuildTree();
+
+// --- 7. SIDEBAR CONTROLS ---
+const sidebarEl = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+const viewTitle = document.getElementById('current-view-title');
+
+function toggleSidebar(show) {
+    if (show) {
+        sidebarEl.classList.add('active');
+        sidebarOverlay.style.display = 'block';
+    } else {
+        sidebarEl.classList.remove('active');
+        sidebarOverlay.style.display = 'none';
+    }
+}
+
+document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
+document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
+sidebarOverlay.onclick = () => toggleSidebar(false);
+
+// View Switchers
+function changeView(viewName, titleText) {
+    currentView = viewName;
+    viewTitle.textContent = titleText;
+    toggleSidebar(false);
+    
+    // Clear history to prevent popup bugs when switching modes
+    popupHistory = []; 
+    popupOverlay.style.display = 'none';
+    
+    // Highlight active link
+    document.querySelectorAll('.sidebar-links a').forEach(a => a.classList.remove('active-link'));
+    document.getElementById('nav-' + viewName).classList.add('active-link');
+
+    renderGrid();
+}
+
+document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
+document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
+document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
+
+// Modify renderGrid to use the correct tree!
+function renderGrid() {
+    if (!subjectsGrid) return;
+    subjectsGrid.innerHTML = '';
+    
+    // Determine which tree to draw based on sidebar selection
+    let activeTree = {};
+    if (currentView === 'subject') activeTree = subjectTree;
+    if (currentView === 'system') activeTree = systemTree;
+    if (currentView === 'exam') activeTree = examTree;
+    
+    Object.keys(activeTree).forEach(cardTitle => {
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.innerHTML = `
+            <div class="icon">📚</div>
+            <h3>${cardTitle}</h3>
+        `;
+        card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', false);
+        subjectsGrid.appendChild(card);
+    });
+}
