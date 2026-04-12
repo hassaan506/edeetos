@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EDEETOS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 1rem;">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section-container">
+        <div class="glass-panel" style="padding: 3rem; text-align: center; max-width: 800px; margin: 0 auto;">
+            
+            <h2 style="color: #059669; margin-bottom: 0.5rem;">
+                Welcome, <span id="user-name">Loading...</span>
+            </h2>
+            
+            <p class="section-description" style="margin-bottom: 2rem;">
+                Target Exam: <strong id="user-exam" style="color: #064e3b;">Loading...</strong>
+            </p>
+
+            <div style="padding: 2rem; background: rgba(5, 150, 105, 0.1); border-radius: 8px;">
+                <p style="color: #475569; font-weight: 500;">
+                    This is your secure student dashboard. More features coming soon!
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <script type="module" src="dashboard.js"></script>
+
+</body>
+</html>
