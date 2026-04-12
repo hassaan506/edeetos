@@ -9,7 +9,7 @@ let currentView = "subject";
 let currentMode = "practice"; 
 let selectedCart = new Set(); 
 let popupHistory = []; 
-let attemptedQuestions = []; // Dummy array for future Local Storage
+let attemptedQuestions = []; 
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -21,6 +21,7 @@ const popupList = document.getElementById('popup-list');
 const popupBack = document.getElementById('popup-back');
 const popupClose = document.getElementById('popup-close');
 const globalSearch = document.getElementById('global-search');
+const searchDropdown = document.getElementById('search-dropdown');
 const unattemptedFilter = document.getElementById('unattempted-filter');
 const sidebarEl = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -30,11 +31,59 @@ const viewTitle = document.getElementById('current-view-title');
 // 3. EVENT LISTENERS
 // ==========================================
 
-// Search & Filter
-globalSearch.addEventListener('input', renderGrid);
-unattemptedFilter.addEventListener('change', renderGrid);
+// Autocomplete Search Logic
+globalSearch.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (query === '') {
+        searchDropdown.style.display = 'none';
+        return;
+    }
 
-// Top Mode Buttons
+    const matchedQuestions = allQuestions.filter(q => {
+        if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
+        const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
+        return textToSearch.includes(query);
+    });
+
+    searchDropdown.innerHTML = '';
+
+    if (matchedQuestions.length === 0) {
+        searchDropdown.innerHTML = `<div class="search-item"><div class="search-item-snippet">No questions found matching "${query}"</div></div>`;
+    } else {
+        matchedQuestions.slice(0, 50).forEach(q => {
+            const div = document.createElement('div');
+            div.className = 'search-item';
+            
+            const title = `${q.Subject || ''} ${q.Chapter ? '> ' + q.Chapter : ''}`.trim();
+            const snippet = q.Question ? q.Question.substring(0, 80) + '...' : 'No question text available';
+
+            div.innerHTML = `
+                <div class="search-item-title">${title}</div>
+                <div class="search-item-snippet">${snippet}</div>
+            `;
+            
+            div.onclick = () => {
+                alert(`Ready to launch Quiz for: \n${q.Question}`);
+                searchDropdown.style.display = 'none';
+                globalSearch.value = ''; 
+            };
+            
+            searchDropdown.appendChild(div);
+        });
+    }
+    searchDropdown.style.display = 'block';
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
+        searchDropdown.style.display = 'none';
+    }
+});
+
+// Filter & Buttons
+unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
@@ -42,8 +91,6 @@ document.getElementById('mode-exam').addEventListener('click', () => switchMode(
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
-
-// Sidebar Open/Close
 document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
 document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 sidebarOverlay.onclick = () => toggleSidebar(false);
@@ -75,18 +122,17 @@ function changeView(viewName, titleText) {
     currentView = viewName;
     if (viewTitle) viewTitle.textContent = titleText;
 
-    // Update highlights
     document.querySelectorAll('.sidebar-links a').forEach(link => {
         link.classList.remove('active-link');
     });
     const activeLink = document.getElementById('nav-' + viewName);
     if (activeLink) activeLink.classList.add('active-link');
 
-    // Reset UI
     toggleSidebar(false);
     popupHistory = []; 
     popupOverlay.style.display = 'none';
-    globalSearch.value = ""; // Clear search on tab switch
+    globalSearch.value = ""; 
+    searchDropdown.style.display = 'none';
     
     renderGrid();
 }
@@ -150,24 +196,21 @@ async function loadDataAndBuildTree() {
             const Subject = rowObj.Subject;
             const Chapter = rowObj.Chapter;
             const Topic = rowObj.Topic;
-
+            const Question = rowObj.Question; // Captures question for search
+            
             if (!Subject || Subject === "") return;
-
-            allQuestions.push({ Exam, Subject, Chapter, Topic });
-
-            // Build SUBJECT Tree
+            allQuestions.push({ Exam, Subject, Chapter, Topic, Question });
+           
             if (!subjectTree[Subject]) subjectTree[Subject] = {};
             if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
             if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
 
-            // Build SYSTEM Tree
             if (Chapter) {
                 if (!systemTree[Chapter]) systemTree[Chapter] = {};
                 if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
                 if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
             }
 
-            // Build EXAM Tree
             if (Exam) {
                 if (!examTree[Exam]) examTree[Exam] = {};
                 if (!examTree[Exam][Subject]) examTree[Exam][Subject] = [];
@@ -208,38 +251,6 @@ function renderGrid() {
     if (!subjectsGrid) return;
     subjectsGrid.innerHTML = '';
     
-    const query = globalSearch.value.toLowerCase().trim();
-
-    if (query !== '') {
-        const matchedQuestions = allQuestions.filter(q => {
-            if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
-            const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic}`.toLowerCase();
-            return textToSearch.includes(query);
-        });
-
-        if (matchedQuestions.length === 0) {
-            subjectsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b; margin-top: 2rem;">No questions found matching "${query}"</p>`;
-            return;
-        }
-
-        let matchedTopicsObj = {};
-        matchedQuestions.forEach(q => { if (q.Topic) matchedTopicsObj[q.Topic] = null; });
-
-        const card = document.createElement('div');
-        card.className = 'glass-panel feature-card';
-        card.style.cursor = 'pointer';
-        card.innerHTML = `
-            <div class="card-header-flex">
-                <h3 class="card-title">🔍 Search Results</h3>
-                <span class="card-count">0 / ${matchedQuestions.length}</span>
-            </div>
-            <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
-        `;
-        card.onclick = () => openPopup(`Search: "${query}"`, matchedTopicsObj, 'Topic', [], false);
-        subjectsGrid.appendChild(card);
-        return; 
-    }
-
     let activeTree = {};
     if (currentView === 'subject') activeTree = subjectTree;
     if (currentView === 'system') activeTree = systemTree;
