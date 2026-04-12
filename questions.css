@@ -122,3 +122,46 @@
     cursor: pointer;
     accent-color: #059669;
 }
+
+/* ========================================== */
+/* PREMIUM SUBJECT CARDS                      */
+/* ========================================== */
+#subjects-grid .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    transition: all 0.3s ease;
+    border-top: 4px solid transparent;
+}
+
+#subjects-grid .feature-card:hover {
+    transform: translateY(-5px);
+    border-top: 4px solid #10b981;
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
+}
+
+#subjects-grid .feature-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+#subjects-grid .feature-card h3 {
+    color: #064e3b;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+#subjects-grid .feature-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
