@@ -124,14 +124,23 @@
 }
 
 /* ========================================== */
-/* PREMIUM SUBJECT CARDS                      */
+/* PREMIUM SUBJECT CARDS & 5-COLUMN GRID      */
 /* ========================================== */
+#subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 150px; 
+}
+
 #subjects-grid .feature-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1rem;
     transition: all 0.3s ease;
     border-top: 4px solid transparent;
 }
@@ -158,19 +167,19 @@
 #subjects-grid .feature-card h3 {
     color: #064e3b;
     margin-bottom: 0.5rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
-#subjects-grid .feature-card p {
-    color: #64748b;
-    font-size: 0.95rem;
+@media (max-width: 1024px) {
+    #subjects-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-#subjects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    width: 100%;
+@media (max-width: 600px) {
+    #subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    #subjects-grid .feature-card h3 { font-size: 1rem; }
 }
 
 /* ========================================== */
@@ -178,7 +187,7 @@
 /* ========================================== */
 .sidebar {
     position: fixed;
-    top: 0; left: -300px; /* Hidden by default */
+    top: 0; left: -300px; 
     width: 280px; height: 100vh;
     background: rgba(255, 255, 255, 0.95);
     z-index: 2000;
@@ -208,4 +217,107 @@
 }
 .sidebar-links li a:hover, .sidebar-links li a.active-link {
     background: rgba(16, 185, 129, 0.1); color: #059669;
+}
+
+/* ========================================== */
+/* EXAM MODE FLOATING DOCK                    */
+/* ========================================== */
+.exam-action-bar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.exam-action-bar .cart-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.2rem;
+    color: #064e3b;
+}
+
+.exam-action-bar .cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.exam-action-bar .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.exam-action-bar .input-group label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.exam-action-bar input[type="number"] {
+    width: 100px;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    text-align: center;
+    font-weight: bold;
+    color: #0f172a;
+    outline: none;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+
+.exam-action-bar input[type="number"]:focus {
+    border-color: #10b981;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.exam-action-bar .start-btn {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+}
+
+.exam-action-bar .start-btn:disabled {
+    background: #cbd5e1;
+    box-shadow: none;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .exam-action-bar {
+        flex-direction: column; 
+        gap: 1.5rem;
+        padding: 1.5rem;
+        bottom: 10px;
+        width: 92%;
+    }
+    .exam-action-bar .cart-controls {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    .exam-action-bar .input-group label { font-size: 0.65rem; }
+    .exam-action-bar input[type="number"] { width: 80px; }
+    .exam-action-bar .start-btn { width: 100%; margin-top: 0.5rem; }
 }

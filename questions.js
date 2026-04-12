@@ -1,8 +1,4 @@
 // --- 1. DYNAMIC DATA ENGINE ---
-let syllabusTree = {}; 
-let allQuestions = []; 
-
-// --- 1. DYNAMIC DATA ENGINE ---
 let subjectTree = {}; 
 let systemTree = {};
 let examTree = {};
@@ -47,7 +43,6 @@ async function loadDataAndBuildTree() {
                 rowObj[header] = row[index] ? row[index].trim() : "";
             });
 
-            // Make sure these match your Excel column names!
             const Exam = rowObj.Exam;
             const Subject = rowObj.Subject;
             const Chapter = rowObj.Chapter;
@@ -86,7 +81,7 @@ async function loadDataAndBuildTree() {
 // --- 2. STATE VARIABLES ---
 let currentMode = "practice"; 
 let selectedCart = new Set(); 
-let popupHistory = []; // <-- NEW: Memory Stack for the Back Button
+let popupHistory = []; 
 
 // UI Elements
 const subjectsGrid = document.getElementById('subjects-grid');
@@ -125,25 +120,20 @@ function switchMode(mode) {
 modePracticeBtn.addEventListener('click', () => switchMode('practice'));
 modeExamBtn.addEventListener('click', () => switchMode('exam'));
 
-// --- 5. POPUP NAVIGATION & HISTORY LOGIC ---
+// --- 4. POPUP NAVIGATION & HISTORY LOGIC ---
 function openPopup(title, dataObj, level, isBackNav = false) {
-    // If we are moving forward, save the current screen to history
-    if (!isBackNav) {
-        popupHistory.push({ title, dataObj, level });
-    }
+    if (!isBackNav) popupHistory.push({ title, dataObj, level });
 
     popupTitle.textContent = title;
     popupList.innerHTML = '';
     popupOverlay.style.display = 'flex';
 
-    // Toggle Back button visibility
     if (popupHistory.length > 1) {
-        popupBack.style.display = 'inline-block'; // Show if deeper than 1 level
+        popupBack.style.display = 'inline-block'; 
     } else {
-        popupBack.style.display = 'none'; // Hide if at the root (Subject)
+        popupBack.style.display = 'none'; 
     }
 
-    // Render Arrays (Topics) or Objects (Chapters)
     if (Array.isArray(dataObj)) {
         dataObj.forEach(topic => renderListItem(topic, null, 'Topic'));
     } else {
@@ -157,6 +147,8 @@ function renderListItem(itemName, nextData, level) {
 
     const labelDiv = document.createElement('div');
     labelDiv.style.flexGrow = '1';
+    labelDiv.style.display = 'flex';
+    labelDiv.style.alignItems = 'center';
     
     if (currentMode === 'exam') {
         const checkbox = document.createElement('input');
@@ -181,7 +173,6 @@ function renderListItem(itemName, nextData, level) {
     actionBtn.className = 'btn-outline mini-btn';
     actionBtn.style.marginTop = '0';
     
-    // If nextData exists, it's a Chapter. If null, it's a Topic.
     if (nextData) {
         actionBtn.textContent = 'View Topics ➡';
         actionBtn.onclick = () => openPopup(itemName, nextData, 'Chapter', false);
@@ -193,23 +184,20 @@ function renderListItem(itemName, nextData, level) {
     popupList.appendChild(itemDiv);
 }
 
-// --- 6. CART & BUTTON CONTROLS ---
+// --- 5. CART & BUTTON CONTROLS ---
 function updateCartUI() {
     cartCount.textContent = `${selectedCart.size} Topics Selected`;
     startExamBtn.disabled = selectedCart.size === 0;
 }
 
-// The "Back" Button Logic
 popupBack.onclick = () => {
-    popupHistory.pop(); // Remove the current screen
-    const previousScreen = popupHistory[popupHistory.length - 1]; // Get the previous screen
-    // Open it, passing 'true' so it doesn't get added to history again
+    popupHistory.pop(); 
+    const previousScreen = popupHistory[popupHistory.length - 1]; 
     openPopup(previousScreen.title, previousScreen.dataObj, previousScreen.level, true);
 };
 
-// The "Close" Button Logic (Resets everything)
 popupClose.onclick = () => {
-    popupHistory = []; // Wipe memory
+    popupHistory = []; 
     popupOverlay.style.display = 'none';
 };
 
@@ -220,11 +208,7 @@ popupOverlay.onclick = (e) => {
     }
 }
 
-// Initialize
-switchMode('practice');
-loadDataAndBuildTree();
-
-// --- 7. SIDEBAR CONTROLS ---
+// --- 6. SIDEBAR CONTROLS ---
 const sidebarEl = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
 const viewTitle = document.getElementById('current-view-title');
@@ -243,17 +227,14 @@ document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
 document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 sidebarOverlay.onclick = () => toggleSidebar(false);
 
-// View Switchers
 function changeView(viewName, titleText) {
     currentView = viewName;
     viewTitle.textContent = titleText;
     toggleSidebar(false);
     
-    // Clear history to prevent popup bugs when switching modes
     popupHistory = []; 
     popupOverlay.style.display = 'none';
     
-    // Highlight active link
     document.querySelectorAll('.sidebar-links a').forEach(a => a.classList.remove('active-link'));
     document.getElementById('nav-' + viewName).classList.add('active-link');
 
@@ -264,12 +245,11 @@ document.getElementById('nav-subject').onclick = () => changeView('subject', 'Su
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
 
-// Modify renderGrid to use the correct tree!
+// --- 7. RENDER ACTIVE GRID ---
 function renderGrid() {
     if (!subjectsGrid) return;
     subjectsGrid.innerHTML = '';
     
-    // Determine which tree to draw based on sidebar selection
     let activeTree = {};
     if (currentView === 'subject') activeTree = subjectTree;
     if (currentView === 'system') activeTree = systemTree;
@@ -278,6 +258,7 @@ function renderGrid() {
     Object.keys(activeTree).forEach(cardTitle => {
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
+        card.style.cursor = 'pointer';
         card.innerHTML = `
             <div class="icon">📚</div>
             <h3>${cardTitle}</h3>
@@ -286,3 +267,7 @@ function renderGrid() {
         subjectsGrid.appendChild(card);
     });
 }
+
+// --- INITIALIZE ---
+switchMode('practice');
+loadDataAndBuildTree();
