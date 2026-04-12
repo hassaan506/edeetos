@@ -45,23 +45,27 @@ function loadSession() {
 }
 
 function formatCSVQuestion(rawCsvRow) {
-    const correctLetter = (rawCsvRow['Answer'] || rawCsvRow['Correct Answer'] || '').toString().trim().toUpperCase();
+    // Matches your 'CorrectAnswer' column (e.g., "D")
+    const correctLetter = (rawCsvRow['CorrectAnswer'] || '').toString().trim().toUpperCase();
     const options = [];
     
+    // Maps your exact columns: OptionA, OptionB, OptionC, OptionD, OptionE
     ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
-        const optText = rawCsvRow[`Option ${letter}`] || rawCsvRow[letter]; 
+        const optText = rawCsvRow[`Option${letter}`]; 
+        
         if (optText && optText.trim() !== '') {
             options.push({
                 text: optText,
-                isCorrect: correctLetter.startsWith(letter) || correctLetter === optText.toUpperCase()
+                // Matches the letter in CorrectAnswer to the current option
+                isCorrect: correctLetter === letter
             });
         }
     });
 
     return {
-        text: rawCsvRow.Question || "Missing Question Text in Database",
+        text: rawCsvRow.Question || "Missing Question Text",
         options: options,
-        explanation: rawCsvRow.Explanation || "No explanation provided for this question.",
+        explanation: rawCsvRow.Explanation || "No explanation provided.",
         isSolvedInDatabase: false 
     };
 }

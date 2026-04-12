@@ -1,5 +1,5 @@
 /* ========================================== */
-/* QUIZ INTERFACE (MATCHING OLD APP)          */
+/* QUIZ INTERFACE (EDEETOS GREEN THEME)       */
 /* ========================================== */
 .quiz-body {
     background: #f0f4f8;
@@ -9,11 +9,11 @@
     position: relative;
 }
 
-/* The sweeping blue curve */
+/* Green header background curve */
 .blue-header-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 35vh;
-    background: #0084ff; /* Vibrant blue from screenshot */
+    background: #059669; /* EDEETOS Green */
     border-bottom-left-radius: 15%;
     border-bottom-right-radius: 15%;
     z-index: 0;
@@ -68,16 +68,20 @@
 }
 
 .question-pill {
-    background: #e0f2fe; color: #0284c7;
-    padding: 0.4rem 1.2rem; border-radius: 20px;
-    font-weight: bold; font-size: 0.85rem;
+    background: #d1fae5; /* Light green bg */
+    color: #065f46; /* Dark green text */
+    padding: 0.4rem 1.2rem; 
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
 }
 
 .icon-group { display: flex; gap: 0.8rem; }
 .icon-btn {
     background: transparent; border: none; font-size: 1.2rem;
-    color: #000; cursor: pointer; transition: 0.2s;
+    color: #475569; cursor: pointer; transition: 0.2s;
 }
+.icon-btn:hover { color: #10b981; }
 
 .feedback-tracker { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; }
 .feedback-bar-bg { flex-grow: 1; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
@@ -86,8 +90,13 @@
 .count-green { color: #10b981; font-weight: bold; font-size: 0.85rem; }
 
 .question-text {
-    font-size: 1.2rem; font-weight: 700; color: #1e293b;
-    line-height: 1.6; margin-bottom: 2rem; letter-spacing: 0.3px;
+    font-size: 1.4rem; /* Large font size */
+    font-weight: 700; /* Bold */
+    color: #1e293b;
+    line-height: 1.7; 
+    text-align: justify; /* Justified text alignment */
+    margin-bottom: 2rem; 
+    letter-spacing: 0.3px;
 }
 
 /* --- OPTIONS (NO LETTERS) --- */
@@ -100,7 +109,7 @@
     background: white;
 }
 
-.option-box:hover:not(.locked) { border-color: #cbd5e1; background: #f8fafc; }
+.option-box:hover:not(.locked) { border-color: #10b981; background: #f8fafc; }
 .option-text { font-size: 1rem; color: #0f172a; font-weight: 600; pointer-events: none; }
 
 .eye-icon { color: #cbd5e1; font-size: 1.1rem; transition: 0.2s; }
@@ -126,7 +135,7 @@
     font-weight: bold; color: #64748b; cursor: pointer; transition: 0.2s;
 }
 
-.grid-num.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+.grid-num.active { background: #10b981; color: white; border-color: #10b981; }
 .grid-num.solved { border-color: #10b981; color: #10b981; }
 
 /* --- BOTTOM ACTIONS --- */
@@ -141,12 +150,12 @@
 
 .next-action-btn {
     flex-grow: 1; border-radius: 12px; border: none;
-    background: #0084ff; color: white; font-weight: bold;
+    background: #10b981; color: white; font-weight: bold;
     font-size: 1.1rem; cursor: pointer; transition: 0.2s;
 }
-.next-action-btn:hover { background: #0070d8; }
+.next-action-btn:hover { background: #059669; }
 
-/* --- MODAL --- */
+/* --- MODAL & BUTTONS --- */
 .hidden { display: none !important; }
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -154,3 +163,6 @@
     display: flex; justify-content: center; align-items: center; z-index: 3000;
 }
 .modal-content { background: white; padding: 2rem; border-radius: 16px; width: 90%; max-width: 500px; }
+
+#show-explanation-btn { border-color: #10b981; color: #10b981; }
+#close-explanation { background: #10b981; border: none; color: white; padding: 10px; border-radius: 8px; cursor: pointer; }
