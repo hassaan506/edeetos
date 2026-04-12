@@ -10,7 +10,7 @@ if (authMenu) {
         if (user) {
             // IF LOGGED IN: Change the buttons
             authMenu.innerHTML = `
-                <li><a href="#" class="btn-solid">My Dashboard</a></li>
+                <li><a href="dashboard.html" class="btn-solid">My Dashboard</a></li>
                 <li><button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 1rem;">Logout</button></li>
             `;
 
