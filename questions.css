@@ -128,7 +128,7 @@
 /* ========================================== */
 #subjects-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 looks better for wide text cards */
+    grid-template-columns: repeat(5, 1fr);
     gap: 1.2rem;
     width: 100%;
     padding: 1rem;
@@ -194,6 +194,67 @@
 .list-item .card-header-flex {
     margin-bottom: 8px;
 }
+
+/* ========================================== */
+/* SEARCH AND FILTER BAR                      */
+/* ========================================== */
+.search-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+}
+
+.search-wrapper {
+    position: relative;
+    flex-grow: 1;
+    min-width: 250px;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+    background: #f8fafc;
+}
+
+.search-wrapper input:focus {
+    border-color: #10b981;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #064e3b;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filter-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #10b981;
+}
+
 
 @media (max-width: 1024px) {
     #subjects-grid { grid-template-columns: repeat(3, 1fr); }

@@ -5,6 +5,7 @@ let examTree = {};
 let allQuestions = []; // Stores the actual rows to count questions
 let currentView = "subject"; 
 
+
 async function loadDataAndBuildTree() {
     try {
         const csvPath = 'Data/fcps_part1.csv';
@@ -80,9 +81,15 @@ async function loadDataAndBuildTree() {
     }
 }
 
-// Helper: Count questions based on current path
-function getQuestionCount(view, pathArr) {
-    return allQuestions.filter(q => {
+// Helper: Count questions based on current path AND filters
+function getQuestionCount(view, pathArr, customPool = null) {
+    const pool = customPool || allQuestions;
+    return pool.filter(q => {
+        // 1. Unattempted Filter Logic (Assumes we have a unique ID for questions later)
+        // For now, it passes everything until we build the quiz engine
+        if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
+
+        // 2. Path Logic
         if (view === 'subject') {
             if (pathArr[0] && q.Subject !== pathArr[0]) return false;
             if (pathArr[1] && q.Chapter !== pathArr[1]) return false;
@@ -100,6 +107,79 @@ function getQuestionCount(view, pathArr) {
     }).length;
 }
 
+// Event Listeners for Search and Filter
+globalSearch.addEventListener('input', renderGrid);
+unattemptedFilter.addEventListener('change', renderGrid);
+
+// --- RENDER ACTIVE GRID (WITH SEARCH) ---
+function renderGrid() {
+    if (!subjectsGrid) return;
+    subjectsGrid.innerHTML = '';
+    
+    const query = globalSearch.value.toLowerCase().trim();
+
+    // IF SEARCHING: Show dynamic Search Results
+    if (query !== '') {
+        const matchedQuestions = allQuestions.filter(q => {
+            if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
+            // Search across Subject, Chapter, and Topic
+            const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic}`.toLowerCase();
+            return textToSearch.includes(query);
+        });
+
+        if (matchedQuestions.length === 0) {
+            subjectsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No questions found matching "${query}"</p>`;
+            return;
+        }
+
+        // Extract unique topics from matches
+        let matchedTopicsObj = {};
+        matchedQuestions.forEach(q => { if (q.Topic) matchedTopicsObj[q.Topic] = null; });
+
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.style.cursor = 'pointer';
+        card.innerHTML = `
+            <div class="card-header-flex">
+                <h3 class="card-title">🔍 Search Results</h3>
+                <span class="card-count">0 / ${matchedQuestions.length}</span>
+            </div>
+            <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+        `;
+        card.onclick = () => openPopup(`Search: ${query}`, matchedTopicsObj, 'Topic', [], false);
+        subjectsGrid.appendChild(card);
+        return; // Stop here so we don't draw the normal grid
+    }
+
+    // IF NOT SEARCHING: Draw normal grid
+    let activeTree = {};
+    if (currentView === 'subject') activeTree = subjectTree;
+    if (currentView === 'system') activeTree = systemTree;
+    if (currentView === 'exam') activeTree = examTree;
+    
+    Object.keys(activeTree).forEach(cardTitle => {
+        const qCount = getQuestionCount(currentView, [cardTitle]);
+        
+        // Hide card if filter is on and there are 0 unattempted questions
+        if (unattemptedFilter.checked && qCount === 0) return;
+
+        let doneDummy = 0; 
+        
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.style.cursor = 'pointer';
+        card.innerHTML = `
+            <div class="card-header-flex">
+                <h3 class="card-title">${cardTitle}</h3>
+                <span class="card-count">${doneDummy} / ${qCount}</span>
+            </div>
+            <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+        `;
+        card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
+        subjectsGrid.appendChild(card);
+    });
+}
+
 // --- 2. STATE VARIABLES ---
 let currentMode = "practice"; 
 let selectedCart = new Set(); 
@@ -110,6 +190,11 @@ const popupOverlay = document.getElementById('popup-overlay');
 const popupTitle = document.getElementById('popup-title');
 const popupList = document.getElementById('popup-list');
 const popupBack = document.getElementById('popup-back');
+const globalSearch = document.getElementById('global-search');
+const unattemptedFilter = document.getElementById('unattempted-filter');
+
+// Dummy array for future Local Storage (IDs of questions you've answered)
+let attemptedQuestions = [];
 
 // ... (Keep your switchMode and Sidebar functions exactly as they were) ...
 function switchMode(mode) {
@@ -219,36 +304,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     }
 }
 
-// --- Render Main Cards ---
-function renderGrid() {
-    if (!subjectsGrid) return;
-    subjectsGrid.innerHTML = '';
-    
-    let activeTree = {};
-    if (currentView === 'subject') activeTree = subjectTree;
-    if (currentView === 'system') activeTree = systemTree;
-    if (currentView === 'exam') activeTree = examTree;
-    
-    Object.keys(activeTree).forEach(cardTitle => {
-        const qCount = getQuestionCount(currentView, [cardTitle]);
-        let doneDummy = 0; // Will be dynamic later
-        
-        const card = document.createElement('div');
-        card.className = 'glass-panel feature-card';
-        card.style.cursor = 'pointer';
-        card.innerHTML = `
-            <div class="card-header-flex">
-                <h3 class="card-title">${cardTitle}</h3>
-                <span class="card-count">${doneDummy} / ${qCount}</span>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar-fill" style="width: 0%;"></div>
-            </div>
-        `;
-        card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
-        subjectsGrid.appendChild(card);
-    });
-}
 
 // Setup standard UI interactions
 popupBack.onclick = () => {
@@ -261,18 +316,33 @@ popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = [
 
 // Sidebar logic
 function changeView(viewName, titleText) {
+    // 1. Update the state
     currentView = viewName;
-    document.getElementById('current-view-title').textContent = titleText;
-    document.getElementById('sidebar').classList.remove('active');
-    document.getElementById('sidebar-overlay').style.display = 'none';
-    popupHistory = []; popupOverlay.style.display = 'none';
+    
+    // 2. Force the Header Title to update
+    const viewTitle = document.getElementById('current-view-title');
+    if (viewTitle) {
+        viewTitle.textContent = titleText;
+    }
+
+    // 3. Force Sidebar Highlights to update
+    document.querySelectorAll('.sidebar-links a').forEach(link => {
+        link.classList.remove('active-link');
+    });
+
+    const activeLink = document.getElementById('nav-' + viewName);
+    if (activeLink) {
+        activeLink.classList.add('active-link');
+    }
+
+    // 4. Close Sidebar and Reset UI
+    toggleSidebar(false);
+    popupHistory = []; 
+    popupOverlay.style.display = 'none';
+    
+    // 5. Redraw the grid with the new tree
     renderGrid();
 }
-document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
-document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
-document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
-document.getElementById('open-sidebar').onclick = () => { document.getElementById('sidebar').classList.add('active'); document.getElementById('sidebar-overlay').style.display = 'block'; }
-document.getElementById('close-sidebar').onclick = () => { document.getElementById('sidebar').classList.remove('active'); document.getElementById('sidebar-overlay').style.display = 'none'; }
 
 // Init
 switchMode('practice');
