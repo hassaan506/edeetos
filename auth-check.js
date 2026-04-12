@@ -24,7 +24,7 @@ if (authMenu) {
         } else {
             // IF LOGGED OUT: Show normal Register/Login buttons
             authMenu.innerHTML = `
-                <li><a href="Register.html" class="btn-outline">Register</a></li>
+                <li><a href="register.html" class="btn-outline">Register</a></li>
                 <li><a href="login.html" class="btn-solid">Log In</a></li>
             `;
         }
