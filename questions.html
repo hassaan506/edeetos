@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Bank - EDEETOS</title>
+	<link rel="stylesheet" href="global.css">
+	<link rel="stylesheet" href="questions.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-logo">
+                <img src="pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Back to Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section-container" id="selection-screen">
+        
+        <div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">
+            <h2 style="color: #064e3b; margin-bottom: 1rem;">Select Study Mode</h2>
+            <div class="mode-toggle">
+                <button id="mode-practice" class="btn-solid active-mode">Practice Mode</button>
+                <button id="mode-exam" class="btn-outline">Exam Mode</button>
+            </div>
+            <p id="mode-description" style="margin-top: 1rem; color: #475569; font-size: 0.9rem;">
+                Practice Mode: Instant feedback, detailed explanations, pause & resume anytime.
+            </p>
+        </div>
+
+        <div class="feature-grid" id="subjects-grid">
+            </div>
+
+        <div id="exam-cart" class="glass-panel" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; z-index: 100; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <strong style="color: #059669;" id="cart-count">0 Topics Selected</strong>
+                <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                    <input type="number" id="exam-q-count" placeholder="Questions (e.g. 50)" style="width: 120px; padding: 0.5rem; border-radius: 4px; border: 1px solid #cbd5e1;">
+                    <input type="number" id="exam-timer" placeholder="Minutes (e.g. 60)" style="width: 120px; padding: 0.5rem; border-radius: 4px; border: 1px solid #cbd5e1;">
+                </div>
+            </div>
+            <button class="btn-solid" id="start-exam-btn" disabled>Start Exam</button>
+        </div>
+    </section>
+
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="glass-panel popup-content">
+            <div class="popup-header">
+                <button id="popup-back" class="icon-btn">⬅ Back</button>
+                <h3 id="popup-title">Anatomy</h3>
+                <button id="popup-close" class="icon-btn">✖</button>
+            </div>
+            <div class="popup-body" id="popup-list">
+                </div>
+        </div>
+    </div>
+
+    <section class="section-container" id="quiz-screen" style="display: none;">
+        <div class="glass-panel" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #059669;">Quiz Interface Coming Next!</h2>
+            <button class="btn-outline" onclick="location.reload()" style="display: block; margin: 2rem auto;">Go Back to Selection</button>
+        </div>
+    </section>
+
+    <script type="module" src="questions.js"></script>
+</body>
+</html>
