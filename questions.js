@@ -31,11 +31,10 @@ const viewTitle = document.getElementById('current-view-title');
 // 3. EVENT LISTENERS
 // ==========================================
 
-// Replace the search listener in questions.js
 globalSearch.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();
     
-    if (query.length < 2) { // Only show results after 2 characters
+    if (query.length < 2) { 
         searchDropdown.style.display = 'none';
         return;
     }
@@ -43,7 +42,6 @@ globalSearch.addEventListener('input', (e) => {
     const matchedQuestions = allQuestions.filter(q => {
         if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
         
-        // Search across EVERY field: Subject, Chapter, Topic, and Question Text
         const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
         return textToSearch.includes(query);
     });
@@ -53,7 +51,7 @@ globalSearch.addEventListener('input', (e) => {
     if (matchedQuestions.length === 0) {
         searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
     } else {
-        matchedQuestions.slice(0, 30).forEach(q => { // Show top 30 matches
+        matchedQuestions.slice(0, 30).forEach(q => { 
             const div = document.createElement('div');
             div.className = 'search-item';
             
@@ -65,10 +63,11 @@ globalSearch.addEventListener('input', (e) => {
                 <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
             `;
             
+            // LAUNCH QUIZ DIRECTLY FROM SEARCH
             div.onclick = () => {
-                alert(`Starting question from: ${title}`);
                 searchDropdown.style.display = 'none';
                 globalSearch.value = '';
+                window.launchQuiz([q]); 
             };
             searchDropdown.appendChild(div);
         });
@@ -76,19 +75,25 @@ globalSearch.addEventListener('input', (e) => {
     searchDropdown.style.display = 'block';
 });
 
-// Close dropdown when clicking outside
 document.addEventListener('click', (e) => {
     if (!globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
         searchDropdown.style.display = 'none';
     }
 });
 
-// Filter & Buttons
 unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
-// Sidebar Navigation
+// LAUNCH EXAM FROM BOTTOM DOCK
+document.getElementById('start-exam-btn').addEventListener('click', () => {
+    const paths = Array.from(selectedCart).map(str => JSON.parse(str));
+    const examPool = allQuestions.filter(q => {
+        return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
+    });
+    window.launchQuiz(examPool);
+});
+
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
@@ -96,7 +101,6 @@ document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
 document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 sidebarOverlay.onclick = () => toggleSidebar(false);
 
-// Popup Navigation
 popupBack.onclick = () => {
     popupHistory.pop(); 
     const prev = popupHistory[popupHistory.length - 1]; 
@@ -193,14 +197,14 @@ async function loadDataAndBuildTree() {
                 rowObj[header] = row[index] ? row[index].trim() : "";
             });
 
+            // FIX: We now push the ENTIRE row object so quiz.js gets Options and Explanations
+            if (!rowObj.Subject || rowObj.Subject === "") return;
+            allQuestions.push(rowObj); 
+           
             const Exam = rowObj.Exam;
             const Subject = rowObj.Subject;
             const Chapter = rowObj.Chapter;
             const Topic = rowObj.Topic;
-            const Question = rowObj.Question; // Captures question for search
-            
-            if (!Subject || Subject === "") return;
-            allQuestions.push({ Exam, Subject, Chapter, Topic, Question });
            
             if (!subjectTree[Subject]) subjectTree[Subject] = {};
             if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
@@ -293,6 +297,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         practiceAllDiv.className = 'list-item';
         practiceAllDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.1)'; 
         practiceAllDiv.style.border = '1px solid #10b981';
+        
         practiceAllDiv.innerHTML = `
             <div style="flex-grow: 1;">
                 <div class="card-header-flex">
@@ -301,9 +306,15 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
                 </div>
                 <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
             </div>
-            <button class="btn-solid mini-btn" style="margin-left: 15px;">Start ➡</button>
+            <button class="btn-solid mini-btn practice-full-btn" style="margin-left: 15px;">Start ➡</button>
         `;
         popupList.appendChild(practiceAllDiv);
+        
+        // LAUNCH QUIZ FROM "PRACTICE FULL"
+        practiceAllDiv.querySelector('.practice-full-btn').onclick = () => {
+            const pool = allQuestions.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
+            window.launchQuiz(pool);
+        };
     }
 
     if (Array.isArray(dataObj)) {
@@ -311,6 +322,18 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     } else {
         Object.keys(dataObj).forEach(key => renderListItem(key, dataObj[key], level, [...pathArr, key]));
     }
+}
+
+function getLeafPaths(dataObj, currentPath) {
+    if (!dataObj) return [];
+    if (Array.isArray(dataObj)) {
+        return dataObj.map(topic => JSON.stringify([...currentPath, topic]));
+    }
+    let leaves = [];
+    Object.keys(dataObj).forEach(key => {
+        leaves = leaves.concat(getLeafPaths(dataObj[key], [...currentPath, key]));
+    });
+    return leaves;
 }
 
 function renderListItem(itemName, nextData, level, itemPath) {
@@ -326,7 +349,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
     labelDiv.innerHTML = `
         <div class="card-header-flex">
             <span style="font-weight: 600; display: flex; align-items: center;">
-                ${currentMode === 'exam' ? `<input type="checkbox" style="margin-right: 10px;" id="cb-${itemName.replace(/\s+/g, '-')}">` : ''}
+                ${currentMode === 'exam' ? `<input type="checkbox" style="margin-right: 10px;">` : ''}
                 ${itemName}
             </span>
             <span class="card-count">${doneDummy} / ${qCount}</span>
@@ -344,7 +367,16 @@ function renderListItem(itemName, nextData, level, itemPath) {
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = () => openPopup(itemName, nextData, 'Chapter', itemPath, false);
     } else {
-        actionBtn.textContent = currentMode === 'practice' ? 'Practice' : 'Select';
+        if (currentMode === 'practice') {
+            actionBtn.textContent = 'Practice';
+            // LAUNCH QUIZ FROM INDIVIDUAL LEAF TOPIC
+            actionBtn.onclick = () => {
+                const pool = allQuestions.filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
+                window.launchQuiz(pool);
+            };
+        } else {
+            actionBtn.textContent = 'Select';
+        }
     }
     
     itemDiv.appendChild(actionBtn);
@@ -352,10 +384,14 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     if (currentMode === 'exam') {
         const cb = itemDiv.querySelector('input[type="checkbox"]');
-        cb.checked = selectedCart.has(itemName);
+        const leafPaths = nextData ? getLeafPaths(nextData, itemPath) : [JSON.stringify(itemPath)];
+        
+        cb.checked = leafPaths.length > 0 && leafPaths.every(path => selectedCart.has(path));
+        
         cb.onchange = (e) => {
-            if (e.target.checked) selectedCart.add(itemName);
-            else selectedCart.delete(itemName);
+            if (e.target.checked) leafPaths.forEach(path => selectedCart.add(path));
+            else leafPaths.forEach(path => selectedCart.delete(path));
+            
             document.getElementById('cart-count').textContent = `${selectedCart.size} Topics Selected`;
             document.getElementById('start-exam-btn').disabled = selectedCart.size === 0;
         };
@@ -363,7 +399,21 @@ function renderListItem(itemName, nextData, level, itemPath) {
 }
 
 // ==========================================
-// 5. INITIALIZATION
+// 5. THE BRIDGE: LAUNCH QUIZ
+// ==========================================
+window.launchQuiz = function(questionsArray) {
+    if (!questionsArray || questionsArray.length === 0) {
+        alert("No questions found for this selection!");
+        return;
+    }
+    // Save to local storage for quiz.js to read
+    localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
+    // Redirect to the newly created quiz page
+    window.location.href = 'quiz.html';
+};
+
+// ==========================================
+// 6. INITIALIZATION
 // ==========================================
 switchMode('practice');
 loadDataAndBuildTree();
