@@ -1,6 +1,6 @@
 /* ========================================== */
 /* 0. BASE STYLES & BACKGROUND IMAGE          */
-/* Fresh Clinical Theme: White, Blue, Green   */
+/* Pure Clinical Theme: Green & White         */
 /* ========================================== */
 * {
     box-sizing: border-box;
@@ -11,13 +11,13 @@
 
 body {
     line-height: 1.6;
-    background-color: #f8fafc; /* Very light, clean gray/white */
-    /* Soft glowing orbs of Blue and Green in the background */
+    background-color: #f8fafc; /* Very light, clean soft-white */
+    /* Soft, subtle glowing orbs of purely Green tones */
     background-image: 
-        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(5, 150, 105, 0.05) 0px, transparent 50%);
     background-attachment: fixed;
     color: #334155; /* Dark slate text for perfect readability */
     min-height: 100vh;
@@ -28,11 +28,11 @@ body {
 /* Frosted White Ice Glass                    */
 /* ========================================== */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft, light shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
 }
 
@@ -48,7 +48,7 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 0.5rem;
-    color: #0f172a; /* Very dark blue/black */
+    color: #064e3b; /* Very dark forest green for headings */
     font-size: 2.5rem;
     letter-spacing: 1px;
 }
@@ -76,26 +76,27 @@ h2 {
     display: inline-block;
 }
 
+/* All buttons are now matching shades of Medical Green */
 .btn-solid {
-    background: #2563eb; /* Trustworthy Medical Blue */
+    background: #059669; /* Primary Emerald Green */
     color: #ffffff !important;
     border: none;
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid #059669; /* Success Green */
+    border: 2px solid #059669;
     color: #059669 !important;
 }
 
 .btn-large {
-    background: #059669; /* Green call to action stands out */
+    background: #047857; /* Slightly deeper green for the main Hero button */
     color: white !important;
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
     margin-top: 1.5rem;
-    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 15px rgba(4, 120, 87, 0.3);
     border: none;
 }
 
@@ -135,7 +136,7 @@ h2 {
 }
 
 .logo-img {
-    height: 80px;
+    height: 60px; /* Kept your larger size! */
     width: auto;
 }
 
@@ -155,7 +156,7 @@ h2 {
 }
 
 .nav-links a:hover {
-    color: #2563eb; /* Blue hover */
+    color: #059669; /* Green hover */
 }
 
 /* ========================================== */
@@ -169,14 +170,14 @@ h2 {
 .hero-content h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    color: #0f172a;
+    color: #064e3b;
     line-height: 1.1;
 }
 
 .hero-content .subtitle {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2563eb;
+    color: #059669;
     margin-bottom: 1rem;
 }
 
@@ -194,7 +195,7 @@ h2 {
 }
 
 .course-title {
-    color: #2563eb;
+    color: #059669;
     margin-bottom: 1rem;
     font-size: 1.5rem;
     border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -212,7 +213,7 @@ h2 {
 }
 
 .objectives-grid li {
-    border-left: 4px solid #10b981; /* Green accent line */
+    border-left: 4px solid #10b981; /* Lighter mint green accent */
     padding: 1.5rem;
     display: flex;
     align-items: center;
@@ -245,18 +246,18 @@ h2 {
     object-fit: cover;
     object-position: top;
     border-radius: 50%;
-    border: 4px solid #ffffff; 
+    border: 4px solid #10b981; /* Mint green ring around photo */
     margin-bottom: 1.25rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .member-profile h3 {
-    color: #0f172a;
+    color: #064e3b;
     font-size: 1.25rem;
 }
 
 .member-role {
-    color: #2563eb;
+    color: #059669;
     font-weight: 600;
     margin-top: 0.25rem;
 }
@@ -275,7 +276,7 @@ h2 {
 
 .stat-number {
     font-size: 3rem;
-    color: #2563eb;
+    color: #059669;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
@@ -295,14 +296,14 @@ h2 {
 }
 
 .step-number {
-    color: #10b981; /* Green steps */
+    color: #10b981; 
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
 .step-title {
-    color: #0f172a;
+    color: #064e3b;
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
 }
@@ -319,7 +320,7 @@ h2 {
 
 .faq-item {
     padding: 1.5rem 2rem;
-    border-left: 4px solid #2563eb;
+    border-left: 4px solid #059669;
     margin-bottom: 1.5rem; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -334,7 +335,7 @@ h2 {
 }
 
 .faq-question {
-    color: #0f172a; 
+    color: #064e3b; 
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
@@ -347,7 +348,7 @@ h2 {
 }
 
 .contact-title {
-    color: #0f172a;
+    color: #064e3b;
     margin-bottom: 2rem;
     font-size: 1.5rem;
 }
@@ -366,21 +367,21 @@ h2 {
 
 .info-icon {
     font-size: 1.5rem;
-    color: #2563eb;
-    background: rgba(37, 99, 235, 0.1);
+    color: #059669;
+    background: rgba(5, 150, 105, 0.1);
     padding: 1rem;
     border-radius: 50%;
 }
 
 .contact-link {
-    color: #2563eb;
+    color: #059669;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .contact-link:hover {
-    color: #1d4ed8;
+    color: #047857;
 }
 
 .contact-form {
@@ -417,9 +418,9 @@ h2 {
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #059669;
     background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
 }
 
 .form-btn {
@@ -437,8 +438,8 @@ h2 {
 
 .cta-content {
     padding: 5rem 2rem;
-    /* Soft blue gradient for the CTA banner */
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    /* Soft green gradient for the CTA banner */
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
     border: 1px solid rgba(255,255,255,1);
 }
 
@@ -451,10 +452,10 @@ h2 {
 
 /* ========================================== */
 /* 11. FOOTER STYLES                          */
-/* Dark blue footer to ground the light page  */
+/* Very dark, rich forest green footer        */
 /* ========================================== */
 .site-footer {
-    background: #0f172a; /* Solid dark blue/slate */
+    background: #022c22; /* Very deep, solid green */
     padding: 4rem 2rem 2rem 2rem;
     color: #94a3b8;
 }
@@ -468,14 +469,17 @@ h2 {
     margin-bottom: 3rem;
 }
 
+/* Kept your White Box Premium Frame fix! */
 .footer-logo {
-    height: 150px;
-    margin-bottom: 1rem;   
-    mix-blend-mode: screen; 
+    height: 60px; /* Kept your larger size! */
+    margin-bottom: 1rem;
+    background-color: #ffffff; 
+    padding: 8px 16px; 
+    border-radius: 8px; 
 }
 
 .footer-brand p {
-    color: #94a3b8;
+    color: #a7f3d0; /* Very soft light green text */
 }
 
 .footer-links h4, .footer-social h4 {
@@ -492,13 +496,13 @@ h2 {
 }
 
 .footer-links a, .footer-bottom a {
-    color: #94a3b8;
+    color: #a7f3d0;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover, .footer-bottom a:hover {
-    color: #38bdf8; /* Light blue hover */
+    color: #ffffff; /* Hovers to bright white */
 }
 
 .social-icons {
@@ -507,9 +511,9 @@ h2 {
 }
 
 .social-icons a {
-    color: #ffffff;
+    color: #022c22; /* Dark green icon */
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: #a7f3d0; /* Light mint circle */
     width: 45px;
     height: 45px;
     display: flex;
@@ -521,8 +525,9 @@ h2 {
 }
 
 .social-icons a:hover {
-    background: #2563eb;
+    background: #ffffff;
     transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .footer-bottom {
@@ -542,15 +547,16 @@ h2 {
 
 .legal-hero h1 {
     font-size: 3rem;
-    color: #0f172a;
+    color: #064e3b;
     margin-bottom: 0.5rem;
 }
 
 .legal-hero .subtitle {
-    color: #2563eb;
+    color: #059669;
     font-weight: bold;
 }
 
+/* Kept your Justified text update! */
 .legal-content {
     padding: 3rem 4rem;
     text-align: justify; 
@@ -558,7 +564,7 @@ h2 {
 }
 
 .legal-content h3 {
-    color: #2563eb;
+    color: #059669;
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
@@ -595,4 +601,5 @@ h2 {
     .hero-content .subtitle { font-size: 1.2rem; }
     .section-container { padding: 3rem 1rem; }
     h2 { font-size: 2rem; }
+    .legal-content { padding: 2rem 1.5rem; }
 }
