@@ -5,7 +5,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 .quiz-body {
-    background: #e2f1ea; /* Soft base */
+    background: #e2f1ea; 
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -13,7 +13,7 @@
     overflow-x: hidden;
 }
 
-/* --- THE AMBIENT BLOBS (Makes the glass visible!) --- */
+/* --- AMBIENT BLOBS --- */
 .quiz-body::before {
     content: ''; position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
     background: rgba(16, 185, 129, 0.4); filter: blur(120px); border-radius: 50%; z-index: 0;
@@ -23,7 +23,7 @@
     background: rgba(4, 120, 87, 0.3); filter: blur(150px); border-radius: 50%; z-index: 0;
 }
 
-.blue-header-bg { display: none; } /* Removed the harsh solid header */
+.blue-header-bg { display: none; } 
 
 .quiz-content-wrapper {
     position: relative; z-index: 10;
@@ -31,16 +31,16 @@
     display: flex; flex-direction: column; align-items: center;
 }
 
-/* --- TOP NAV (Glassmorphic) --- */
+/* --- TOP NAV --- */
 .top-nav { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
 
 .exit-btn, .top-stats {
-    background: rgba(255, 255, 255, 0.4); /* High transparency */
+    background: rgba(255, 255, 255, 0.4); 
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.6);
     color: #064e3b; padding: 0.7rem 1.5rem; border-radius: 16px;
     font-weight: bold; box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
 }
 
 .exit-btn:hover { background: rgba(255, 255, 255, 0.7); transform: translateY(-3px); }
@@ -48,14 +48,13 @@
 /* --- 1. THE MAIN GLASS CARD --- */
 .question-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.45); /* VERY transparent to show blobs */
+    background: rgba(255, 255, 255, 0.45); 
     backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    border-top: 1px solid rgba(255, 255, 255, 1); /* Creates a shiny top edge */
+    border-top: 1px solid rgba(255, 255, 255, 1); 
     padding: 3rem; border-radius: 28px; 
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
-    will-change: transform, opacity;
 }
 
 .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px dashed rgba(255, 255, 255, 0.6); padding-bottom: 1rem; }
@@ -79,9 +78,9 @@
     padding: 1.2rem 1.5rem; 
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.8);
     border-radius: 16px; cursor: pointer; 
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .option-box:hover:not(.locked) { 
@@ -90,42 +89,57 @@
     box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
 }
 
-.option-text { font-size: 1.05rem; color: #1e293b; font-weight: 700; pointer-events: none; }
+.option-text { font-size: 1.05rem; color: #1e293b; font-weight: 700; pointer-events: none; transition: color 0.2s ease; }
 .eye-icon { color: #94a3b8; font-size: 1.2rem; transition: 0.2s; }
 .eye-icon:hover { color: #ef4444; }
 
-/* States set by JS */
-.option-box.incorrect { border-color: #ef4444; background: rgba(254, 242, 242, 0.8); color: #ef4444; }
-.option-box.correct { border-color: #10b981; background: rgba(236, 253, 245, 0.9); color: #10b981; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); }
+/* HIGH CONTRAST STATES (FIXED VISIBILITY) */
+.option-box.incorrect { 
+    border-color: #ef4444 !important; 
+    background: rgba(254, 226, 226, 0.9) !important; 
+}
+.option-box.incorrect .option-text { color: #991b1b !important; }
+
+.option-box.correct { 
+    border-color: #10b981 !important; 
+    background: #10b981 !important; 
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4) !important; 
+}
+.option-box.correct .option-text { color: white !important; }
+.option-box.correct .eye-icon { color: rgba(255,255,255,0.7); }
+
 .option-box.strikethrough .option-text { text-decoration: line-through; opacity: 0.4; }
 .option-box.strikethrough .eye-icon { color: #ef4444; }
 .locked { pointer-events: none; }
 
-/* --- 3. ANIMATION KEYFRAMES (The Magic) --- */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-8px); }
-    40%, 80% { transform: translateX(8px); }
+/* --- 3. ANIMATION CLASSES (FIXED) --- */
+.apply-shake { animation: shakeError 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes shakeError {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-8px, 0, 0); }
+    40%, 60% { transform: translate3d(8px, 0, 0); }
 }
 
+.apply-pop { animation: popSuccess 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both; }
 @keyframes popSuccess {
     0% { transform: scale(1); }
-    50% { transform: scale(1.03); background: #10b981; }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-@keyframes slideOutLeft { to { transform: translateX(-150%); opacity: 0; } }
-@keyframes slideInRight { from { transform: translateX(150%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-@keyframes slideOutRight { to { transform: translateX(150%); opacity: 0; } }
-@keyframes slideInLeft { from { transform: translateX(-150%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+/* Card Sliding Animations */
+.slide-out-left { animation: slideOutLeft 0.3s forwards; }
+.slide-in-right { animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.slide-out-right { animation: slideOutRight 0.3s forwards; }
+.slide-in-left { animation: slideInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-@keyframes modalSpring {
-    0% { transform: scale(0.8) translateY(50px); opacity: 0; }
-    70% { transform: scale(1.05) translateY(-10px); opacity: 1; }
-    100% { transform: scale(1) translateY(0); opacity: 1; }
-}
+@keyframes slideOutLeft { to { transform: translateX(-100%); opacity: 0; } }
+@keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideOutRight { to { transform: translateX(100%); opacity: 0; } }
+@keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-/* --- BOTTOM CONTROLS --- */
+/* --- 4. BOTTOM CONTROLS --- */
 .number-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 2.5rem; width: 100%; }
 .grid-num {
     width: 42px; height: 42px; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px);
@@ -147,28 +161,107 @@
 .next-action-btn { flex-grow: 1; background: #10b981; color: white; font-size: 1.15rem; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); }
 .next-action-btn:hover { transform: translateX(4px); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4); }
 
-/* --- MODAL (Spring animation) --- */
-.hidden { display: none !important; }
+/* --- 5. MODAL (FIXED ANIMATION) --- */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px);
     display: flex; justify-content: center; align-items: center; z-index: 3000;
+    
+    /* Reliable transitions instead of display:none */
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
+
+.modal-overlay.show {
+    opacity: 1; pointer-events: auto;
+}
+
 .modal-content { 
     background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
     padding: 2.5rem; border-radius: 24px; width: 90%; max-width: 500px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-    /* The Spring Animation */
-    animation: modalSpring 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    /* Spring animation setup */
+    transform: scale(0.8) translateY(30px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#show-explanation-btn { border-color: #10b981; color: #10b981; border-radius: 12px; font-weight: bold; padding: 0.6rem 1.5rem; transition: 0.2s; background: rgba(255, 255, 255, 0.5); cursor: pointer; }
+.modal-overlay.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+#show-explanation-btn { border-color: #10b981; color: #10b981; border-radius: 12px; font-weight: bold; padding: 0.6rem 1.5rem; transition: 0.2s; background: rgba(255, 255, 255, 0.5); cursor: pointer; display: none; }
+#show-explanation-btn.visible { display: inline-block; }
+#show-explanation-btn:hover { background: #ecfdf5; transform: scale(1.05); }
+
 #close-explanation { background: #10b981; border: none; color: white; padding: 12px; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 1.5rem; box-shadow: 0 4px 10px rgba(16,185,129,0.3); }
 #close-explanation:hover { background: #059669; transform: translateY(-2px); }
 
+/* ========================================== */
+/* MOBILE RESPONSIVE: COMPACT & COMFORTABLE   */
+/* ========================================== */
 @media (max-width: 768px) {
-    .quiz-content-wrapper { padding: 1rem 0.5rem; }
-    .question-card { padding: 1.5rem; border-radius: 20px; }
-    .question-text { font-size: 1.15rem; }
+    /* 1. Reduce overall wrapper padding */
+    .quiz-content-wrapper {
+        padding: 0.8rem 0.5rem; /* Tighter margins */
+    }
+
+    /* 2. Shrink the main card significantly */
+    .question-card {
+        padding: 1.25rem; /* Reduced from 3rem to stop it feeling 'too big' */
+        border-radius: 20px;
+        width: 96%; /* Leave a small gap on the sides */
+    }
+
+    /* 3. Scale down text so it doesn't 'hit' the face */
+    .question-text {
+        font-size: 1.1rem; /* Much smaller than 1.4rem */
+        margin-bottom: 1.2rem;
+        line-height: 1.4;
+    }
+
+    .option-box {
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        min-height: 45px; /* Compact height */
+    }
+
+    .option-text {
+        font-size: 0.9rem; /* Smaller text for options */
+    }
+
+    /* 4. Shrink the ambient blobs to reduce brightness glare */
+    .quiz-body::before { width: 80vw; height: 80vw; filter: blur(80px); }
+    .quiz-body::after { width: 90vw; height: 90vw; filter: blur(100px); }
+
+    /* 5. Compact Headers and Stats */
+    .exit-btn, .top-stats {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 10px;
+    }
+
+    /* 6. Smaller Grid and Nav buttons */
+    .grid-num {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .prev-icon-btn {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .next-action-btn {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    /* 7. Narrow the Explanation Modal */
+    .modal-content {
+        padding: 1.5rem;
+        width: 94%;
+        border-radius: 20px;
+    }
 }
