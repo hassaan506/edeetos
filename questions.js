@@ -96,8 +96,9 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
     } else {
         examPool = examPool.sort(() => 0.5 - Math.random());
     }
-
-    window.launchQuiz(examPool, 'exam', timerInput);
+	const generatedTitle = generateExamTitle(paths, currentView);
+    
+	window.launchQuiz(examPool, 'exam', timerInput);
 });
 
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
@@ -145,6 +146,44 @@ function changeView(viewName, titleText) {
     searchDropdown.style.display = 'none';
     
     renderGrid();
+}
+function generateExamTitle(paths, currentView) {
+    if (!paths || paths.length === 0) return "Custom Exam";
+
+    const topLevels = new Set();
+    const subLevels = new Set();
+
+    paths.forEach(p => {
+        if (p[0]) topLevels.add(p[0]); // e.g., Subject (Anatomy) or Exam (FCPS 2018)
+        if (p[1]) subLevels.add(p[1]); // e.g., Chapter (Breast)
+    });
+
+    const topArr = Array.from(topLevels);
+    const subArr = Array.from(subLevels);
+
+    // RULE 1: If they are looking at Past Papers (exam view)
+    if (currentView === 'exam') {
+        return topArr.join(" + "); 
+    }
+
+    // RULE 2: If only ONE main subject is selected
+    if (topArr.length === 1) {
+        // If they selected a lot of sub-chapters, or selected the whole root
+        if (subArr.length > 3 || subArr.length === 0) {
+            return `${topArr[0]} (Full)`; 
+        } else {
+            // "Surgery - Breast + Thyroid"
+            return `${topArr[0]} - ${subArr.join(" + ")}`;
+        }
+    } 
+    // RULE 3: Multiple subjects selected
+    else {
+        if (topArr.length <= 3) {
+            return topArr.join(" + "); // "Anatomy + Surgery"
+        } else {
+            return `Mixed Exam (${topArr.length} Topics)`; 
+        }
+    }
 }
 
 function switchMode(mode) {
@@ -447,16 +486,25 @@ function renderListItem(itemName, nextData, level, itemPath) {
 // ==========================================
 // 5. THE BRIDGE: LAUNCH QUIZ
 // ==========================================
-window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0) {
+window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
     if (!questionsArray || questionsArray.length === 0) {
         alert("No questions found for this selection!");
         return;
     }
+    
+    // Save the questions
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
-    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes }));
+    
+    // NEW: We now save the examName in the config!
+    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
+        mode: mode, 
+        timer: timerMinutes,
+        examName: examName // The smart title gets saved here
+    }));
     
     window.location.href = 'quiz.html';
 };
+
 
 switchMode('practice');
 loadDataAndBuildTree();

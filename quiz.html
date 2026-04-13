@@ -26,7 +26,7 @@
                 <div class="card-header">
                     <div class="question-pill" id="question-id-badge">Question 1</div>
                     <div class="icon-group">
-                        <button class="icon-btn"><i class="fas fa-pen"></i></button>
+                        <button id="note-btn" class="icon-btn"><i class="fas fa-pen"></i></button>
                         <button id="bookmark-btn" class="icon-btn"><i class="far fa-star"></i></button>
                         <button class="icon-btn"><i class="far fa-flag"></i></button>
                     </div>
@@ -80,6 +80,23 @@
             <button id="close-explanation" class="btn-solid" style="margin-top: 1.5rem; width: 100%; background: #0084ff;">Got it</button>
         </div>
     </div>
+	
+	<div id="notes-modal" class="modal-overlay">
+    <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
+        <h3 style="color: #064e3b; margin-bottom: 1rem;">
+            <i class="fas fa-pen"></i> My Notes
+        </h3>
+        
+        <textarea id="note-input" placeholder="Type your personal notes here..." 
+            style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; resize: vertical; margin-bottom: 1rem; font-family: inherit;">
+        </textarea>
+        
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+            <button id="close-notes-btn" class="btn-outline">Cancel</button>
+            <button id="save-note-btn" class="btn-solid">Save Note</button>
+        </div>
+    </div>
+</div>
 
     <script type="module" src="quiz.js"></script>
 </body>
