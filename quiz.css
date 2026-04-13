@@ -244,6 +244,11 @@ body.mode-exam #prev-btn {
     100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
+.fa-star.fas, .fa-star.fa-solid {
+    color: #ffca28; /* Gold color */
+}
+
+
 /* ========================================== */
 /* 8. ULTRA-COMPACT MOBILE RESPONSIVENESS     */
 /* ========================================== */

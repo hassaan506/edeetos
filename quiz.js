@@ -130,19 +130,22 @@ function loadQuestion(index) {
     currentIndex = index;
     currentQuestionData = quizQueue[currentIndex];
 
+    // Ensure question is formatted if it's still raw CSV data
     if (!currentQuestionData.options) {
         quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
         currentQuestionData = quizQueue[currentIndex];
     }
 
+    // Reset local state for the current view
     wrongAttempts = 0;
     hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; 
     
+    // UI Reset
     if (!isExamMode) updateFeedbackBar();
     explanationBtn.style.display = 'none'; 
     explanationModal.classList.remove('show');
 
-    // EXAM UI LOGIC
+    // === EXAM UI LOGIC ===
     if (isExamMode) {
         questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber} / ${quizQueue.length}`;
         
@@ -154,6 +157,7 @@ function loadQuestion(index) {
             skipBtn.style.display = 'block';
         }
 
+        // Change button text on the last question
         if (currentIndex === quizQueue.length - 1) {
             document.getElementById('next-btn').textContent = "Submit Exam";
         } else {
@@ -163,14 +167,17 @@ function loadQuestion(index) {
         questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber}`;
     }
 
+    // Set Text Content
     questionTextEl.textContent = currentQuestionData.text;
     explanationText.textContent = currentQuestionData.explanation;
 
+    // Render Options
     optionsContainer.innerHTML = '';
     currentQuestionData.options.forEach(opt => {
         const optBox = document.createElement('div');
         optBox.className = 'option-box';
         
+        // Restore previous selection visuals
         if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
             optBox.classList.add('selected');
         } else if (!isExamMode && hasAnsweredCorrectly && opt.isCorrect) {
@@ -185,6 +192,43 @@ function loadQuestion(index) {
         optionsContainer.appendChild(optBox);
     });
 
+    // === BOOKMARK LOGIC (FIXED) ===
+    const bookmarkBtn = document.getElementById('bookmark-btn');
+    if (bookmarkBtn) {
+        const starIcon = bookmarkBtn.querySelector('i');
+
+        // 1. Set initial visual state based on data
+        if (currentQuestionData.isBookmarked) {
+            starIcon.classList.remove('far', 'fa-regular');
+            starIcon.classList.add('fas', 'fa-solid');
+        } else {
+            starIcon.classList.remove('fas', 'fa-solid');
+            starIcon.classList.add('far', 'fa-regular');
+        }
+
+        // 2. Fresh click handler for the current question
+        bookmarkBtn.onclick = (e) => {
+            e.preventDefault();
+            
+            // Toggle local data
+            currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
+
+            // Toggle Visuals
+            if (currentQuestionData.isBookmarked) {
+                starIcon.classList.replace('far', 'fas');
+                starIcon.classList.add('fa-solid');
+            } else {
+                starIcon.classList.replace('fas', 'far');
+                starIcon.classList.remove('fa-solid');
+            }
+
+            // Sync with Firebase
+            toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+        };
+    }
+
+    updateGridStyles();
+}
     // ==========================================
     // BOOKMARK UI SYNC (NEW)
     // ==========================================
@@ -247,14 +291,23 @@ async function savePracticeProgress(questionId, isCorrect) {
 // ==========================================
 // EXAM MODE DATABASE SYNC 
 // ==========================================
+// ==========================================
+// EXAM MODE DATABASE SYNC (UPDATED)
+// ==========================================
 async function saveExamProgress(correctIds, mistakeIds) {
+    console.log("🚀 Initiating Exam Save...");
+    console.log("Correct IDs to save:", correctIds);
+    console.log("Mistake IDs to save:", mistakeIds);
+
     const user = auth.currentUser;
-    if (!user) return; // Do nothing if not logged in
+    if (!user) {
+        console.error("⚠️ Cannot save exam: No user is logged in.");
+        return; 
+    }
 
     const userRef = doc(db, "users", user.uid);
     
     try {
-        // We use the spread operator (...) to push multiple IDs into the array at once
         let updates = {};
         
         if (correctIds.length > 0) {
@@ -264,13 +317,15 @@ async function saveExamProgress(correctIds, mistakeIds) {
             updates.mistakes = arrayUnion(...mistakeIds);
         }
 
-        // Only write to the database if there is something to update
         if (Object.keys(updates).length > 0) {
             await setDoc(userRef, updates, { merge: true });
+            console.log("✅ Exam progress successfully saved to Firebase!");
+        } else {
+            console.log("ℹ️ No questions were answered, nothing to save.");
         }
         
     } catch (error) {
-        console.error("Error saving exam progress to Firebase:", error);
+        console.error("❌ Error saving exam progress to Firebase:", error);
     }
 }
 
