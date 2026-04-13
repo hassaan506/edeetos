@@ -55,9 +55,12 @@ function loadSession() {
         window.location.href = 'questions.html';
         return;
     }
+    
+    // Check for different ways the ID column might be named in the CSV
     quizQueue.forEach((q, i) => {     
         if (!q.originalNumber) {
-            q.originalNumber = q.QuestionID || (i + 1); 
+            const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
+            q.originalNumber = idFromCSV || (i + 1); 
         }
     });
 	
@@ -71,16 +74,13 @@ function loadSession() {
                 
                 if (docSnap.exists()) {
                     const dbData = docSnap.data();
-                    const savedNotes = dbData.notes || {}; // Get notes map
-                    const savedBookmarks = dbData.bookmarks || []; // Get bookmarks array
-                    const solvedList = dbData.solvedQuestions || []; // Get solved list
+                    const savedNotes = dbData.notes || {}; 
+                    const savedBookmarks = dbData.bookmarks || []; 
+                    
                     quizQueue.forEach(q => {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
-                        
-                        if (solvedList.includes(q.originalNumber)) {
-                            q.isSolvedInDatabase = true;
-                        }
+                        q.isSolvedInDatabase = false; // Forces Practice Mode not to auto-solve!
                     });
                     console.log("✅ Data successfully merged with questions!");
                 }
@@ -114,15 +114,17 @@ function formatCSVQuestion(rawCsvRow) {
         options: options,
         explanation: rawCsvRow.Explanation || "No explanation provided.",
         
-        originalNumber: rawCsvRow.QuestionID || rawCsvRow.originalNumber,
+        // Ensure ID is perfectly carried over
+        originalNumber: rawCsvRow['QuestionID'] || rawCsvRow['Question ID'] || rawCsvRow['ID'] || rawCsvRow['id'] || rawCsvRow.originalNumber,
         
         isBookmarked: rawCsvRow.isBookmarked || false,
         userNote: rawCsvRow.userNote || "",
-        isSolvedInDatabase: rawCsvRow.isSolvedInDatabase || false,
+        isSolvedInDatabase: false, // Ensures it doesn't auto-solve!
         
         hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
         userSelectedAnswer: rawCsvRow.userSelectedAnswer || null
     };	
+} // <-- This crucial closing bracket was missing!
 
 function buildNumberGrid() {
     numberGrid.innerHTML = '';
@@ -274,39 +276,31 @@ function loadQuestion(index) {
             }
         }
 
-// === NOTES LOGIC ===
+        // === NOTES LOGIC ===
         const noteBtn = document.getElementById('note-btn');
         if (noteBtn) {
             noteBtn.onclick = (e) => {
                 e.preventDefault();
-                // 1. Pre-fill the text area if they already wrote a note for this question
                 if (noteInput) {
                     noteInput.value = currentQuestionData.userNote || ""; 
                 }
-                // 2. Show the modal
                 if (notesModal) notesModal.classList.add('show');
             };
         }
 
-        // 3. Handle the Save Button
         if (saveNoteBtn) {
             saveNoteBtn.onclick = () => {
                 const typedNote = noteInput.value.trim();
-                
-                // Save it locally so it stays on screen if they navigate back and forth
                 currentQuestionData.userNote = typedNote; 
                 
-                // Send it to Firebase! (Using the function we wrote earlier)
                 if (typeof saveNoteToFirebase === "function") {
                     saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
                 }
                 
-                // Close the modal
                 notesModal.classList.remove('show');
             };
         }
 
-        // 4. Handle the Cancel Button
         if (closeNotesBtn) {
             closeNotesBtn.onclick = () => {
                 notesModal.classList.remove('show');
@@ -344,9 +338,6 @@ async function savePracticeProgress(questionId, isCorrect) {
     }
 }
 
-// ==========================================
-// EXAM MODE DATABASE SYNC (UPDATED WITH HISTORY)
-// ==========================================
 async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions) {
     console.log("🚀 Initiating Exam Save...");
     
@@ -358,7 +349,6 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     try {
         let updates = {};
         
-        // 1. Update the master lists of questions seen/missed
         if (correctIds.length > 0) {
             updates.solvedQuestions = arrayUnion(...correctIds);
         }
@@ -366,8 +356,6 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
             updates.mistakes = arrayUnion(...mistakeIds);
         }
 
-        // 2. Create the Exam History Record
-        // We will pull the examName from your localStorage config, or default to "Custom Exam"
         const examTitle = quizConfig.examName || "Custom Exam"; 
         
         const examRecord = {
@@ -375,13 +363,11 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
             score: correctCount,
             total: totalQuestions,
             percentage: Math.round((correctCount / totalQuestions) * 100),
-            date: new Date().toISOString() // Saves the exact time they finished
+            date: new Date().toISOString() 
         };
 
-        // Add this record to a new array in Firebase called 'examHistory'
         updates.examHistory = arrayUnion(examRecord);
 
-        // 3. Send it all to Firebase
         if (Object.keys(updates).length > 0) {
             await setDoc(userRef, updates, { merge: true });
             console.log("✅ Exam progress and history successfully saved to Firebase!");
@@ -406,18 +392,13 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     }
 }
 
-// ==========================================
-// NOTES SYNC FUNCTION
-// ==========================================
 async function saveNoteToFirebase(questionId, noteText) {
     const user = auth.currentUser;
-    if (!user) return; // Do nothing if not logged in
+    if (!user) return; 
 
     const userRef = doc(db, "users", user.uid);
     
     try {
-        // By wrapping the key in brackets and using dot notation, 
-        // Firebase knows to update just ONE specific note inside the "notes" folder!
         await setDoc(userRef, {
             [`notes.${questionId}`]: noteText
         }, { merge: true });
@@ -500,10 +481,6 @@ function showResults() {
             mistakeIds.push(q.originalNumber);
         }
     });
-
-    if (isExamMode) {
-        saveExamProgress(correctIds, mistakeIds);
-    }
 
     const total = quizQueue.length;
     const percentage = Math.round((correctCount / total) * 100);
