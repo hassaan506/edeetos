@@ -127,107 +127,121 @@ function triggerSlideTransition(newIndex, direction) {
 }
 
 function loadQuestion(index) {
-    currentIndex = index;
-    currentQuestionData = quizQueue[currentIndex];
-
-    // Ensure question is formatted if it's still raw CSV data
-    if (!currentQuestionData.options) {
-        quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
+    try { // START OF SAFETY NET
+        console.log("🚀 Attempting to load question index:", index);
+        
+        currentIndex = index;
         currentQuestionData = quizQueue[currentIndex];
-    }
 
-    // Reset local state for the current view
-    wrongAttempts = 0;
-    hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; 
-    
-    // UI Reset
-    if (!isExamMode) updateFeedbackBar();
-    explanationBtn.style.display = 'none'; 
-    explanationModal.classList.remove('show');
+        // 1. Check if data even exists!
+        if (!currentQuestionData) {
+            console.error("❌ CRITICAL ERROR: No data found at index", index);
+            return; 
+        }
 
-    // === EXAM UI LOGIC ===
-    if (isExamMode) {
-        questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber} / ${quizQueue.length}`;
+        if (!currentQuestionData.options) {
+            quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
+            currentQuestionData = quizQueue[currentIndex];
+        }
+
+        wrongAttempts = 0;
+        hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; 
         
-        if (currentQuestionData.hasBeenSkipped) {
-            skippedWarningEl.classList.remove('hidden');
-            skipBtn.style.display = 'none'; 
-        } else {
-            skippedWarningEl.classList.add('hidden');
-            skipBtn.style.display = 'block';
-        }
-
-        // Change button text on the last question
-        if (currentIndex === quizQueue.length - 1) {
-            document.getElementById('next-btn').textContent = "Submit Exam";
-        } else {
-            document.getElementById('next-btn').textContent = "Next";
-        }
-    } else {
-        questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber}`;
-    }
-
-    // Set Text Content
-    questionTextEl.textContent = currentQuestionData.text;
-    explanationText.textContent = currentQuestionData.explanation;
-
-    // Render Options
-    optionsContainer.innerHTML = '';
-    currentQuestionData.options.forEach(opt => {
-        const optBox = document.createElement('div');
-        optBox.className = 'option-box';
+        if (!isExamMode) updateFeedbackBar();
         
-        // Restore previous selection visuals
-        if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
-            optBox.classList.add('selected');
-        } else if (!isExamMode && hasAnsweredCorrectly && opt.isCorrect) {
-            optBox.classList.add('correct');
-        }
+        // 2. Check if explanation elements exist in HTML
+        if (explanationBtn) explanationBtn.style.display = 'none'; 
+        if (explanationModal) explanationModal.classList.remove('show');
 
-        optBox.innerHTML = `
-            <div class="option-text">${opt.text}</div>
-            <i class="fas fa-eye eye-icon" title="Strikeout option"></i>
-        `;
-        optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
-        optionsContainer.appendChild(optBox);
-    });
-
-    // === BOOKMARK LOGIC (FIXED) ===
-    const bookmarkBtn = document.getElementById('bookmark-btn');
-    if (bookmarkBtn) {
-        const starIcon = bookmarkBtn.querySelector('i');
-
-        // 1. Set initial visual state based on data
-        if (currentQuestionData.isBookmarked) {
-            starIcon.classList.remove('far', 'fa-regular');
-            starIcon.classList.add('fas', 'fa-solid');
-        } else {
-            starIcon.classList.remove('fas', 'fa-solid');
-            starIcon.classList.add('far', 'fa-regular');
-        }
-
-        // 2. Fresh click handler for the current question
-        bookmarkBtn.onclick = (e) => {
-            e.preventDefault();
+        // === EXAM UI LOGIC ===
+        if (isExamMode) {
+            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber} / ${quizQueue.length}`;
             
-            // Toggle local data
-            currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
-
-            // Toggle Visuals
-            if (currentQuestionData.isBookmarked) {
-                starIcon.classList.replace('far', 'fas');
-                starIcon.classList.add('fa-solid');
+            if (currentQuestionData.hasBeenSkipped) {
+                if (skippedWarningEl) skippedWarningEl.classList.remove('hidden');
+                if (skipBtn) skipBtn.style.display = 'none'; 
             } else {
-                starIcon.classList.replace('fas', 'far');
-                starIcon.classList.remove('fa-solid');
+                if (skippedWarningEl) skippedWarningEl.classList.add('hidden');
+                if (skipBtn) skipBtn.style.display = 'block';
             }
 
-            // Sync with Firebase
-            toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
-        };
-    }
+            const nextBtn = document.getElementById('next-btn');
+            if (nextBtn) {
+                if (currentIndex === quizQueue.length - 1) {
+                    nextBtn.textContent = "Submit Exam";
+                } else {
+                    nextBtn.textContent = "Next";
+                }
+            }
+        } else {
+            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber}`;
+        }
 
-    updateGridStyles();
+        // 3. This is the step that overwrites "LOADING QUESTION"
+        if (questionTextEl) questionTextEl.textContent = currentQuestionData.text;
+        if (explanationText) explanationText.textContent = currentQuestionData.explanation;
+
+        if (optionsContainer) {
+            optionsContainer.innerHTML = '';
+            currentQuestionData.options.forEach(opt => {
+                const optBox = document.createElement('div');
+                optBox.className = 'option-box';
+                
+                if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+                    optBox.classList.add('selected');
+                } else if (!isExamMode && hasAnsweredCorrectly && opt.isCorrect) {
+                    optBox.classList.add('correct');
+                }
+
+                optBox.innerHTML = `
+                    <div class="option-text">${opt.text}</div>
+                    <i class="fas fa-eye eye-icon" title="Strikeout option"></i>
+                `;
+                optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
+                optionsContainer.appendChild(optBox);
+            });
+        }
+
+        // === BOOKMARK LOGIC ===
+        const bookmarkBtn = document.getElementById('bookmark-btn');
+        if (bookmarkBtn) {
+            const starIcon = bookmarkBtn.querySelector('i');
+            
+            // Safety check: Does the <i> tag actually exist inside the button?
+            if (!starIcon) {
+                console.warn("⚠️ Bookmark button found, but the <i> star icon inside it is missing in the HTML!");
+            } else {
+                if (currentQuestionData.isBookmarked) {
+                    starIcon.classList.remove('far', 'fa-regular');
+                    starIcon.classList.add('fas', 'fa-solid');
+                } else {
+                    starIcon.classList.remove('fas', 'fa-solid');
+                    starIcon.classList.add('far', 'fa-regular');
+                }
+
+                bookmarkBtn.onclick = (e) => {
+                    e.preventDefault();
+                    currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
+
+                    if (currentQuestionData.isBookmarked) {
+                        starIcon.classList.replace('far', 'fas');
+                        starIcon.classList.add('fa-solid');
+                    } else {
+                        starIcon.classList.replace('fas', 'far');
+                        starIcon.classList.remove('fa-solid');
+                    }
+
+                    toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+                };
+            }
+        }
+
+        updateGridStyles();
+        console.log("✅ Question loaded successfully!");
+
+    } catch (error) { // END OF SAFETY NET
+        console.error("🚨 CRASH inside loadQuestion:", error);
+    }
 }
     // ==========================================
     // BOOKMARK UI SYNC (NEW)
