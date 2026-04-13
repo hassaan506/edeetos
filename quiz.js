@@ -55,12 +55,13 @@ function loadSession() {
         window.location.href = 'questions.html';
         return;
     }
-    
-    // Check for different ways the ID column might be named in the CSV
+
+    // Set stable originalNumber for DB tracking
     quizQueue.forEach((q, i) => {     
         if (!q.originalNumber) {
             const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
-            q.originalNumber = idFromCSV || (i + 1); 
+            // Fallback to q-1, q-2 so it doesn't accidentally pull string numbers
+            q.originalNumber = idFromCSV || `q-${i + 1}`; 
         }
     });
 	
@@ -77,6 +78,17 @@ function loadSession() {
                     const savedNotes = dbData.notes || {}; 
                     const savedBookmarks = dbData.bookmarks || []; 
                     
+                    // ==========================================
+                    // RECOVERY CODE: This is what was missing!
+                    // It grabs any notes that were accidentally saved wrong
+                    // ==========================================
+                    Object.keys(dbData).forEach(key => {
+                        if (key.startsWith('notes.')) {
+                            const recoveredId = key.substring(6); // Removes the "notes." part
+                            savedNotes[recoveredId] = dbData[key];
+                        }
+                    });
+
                     quizQueue.forEach(q => {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
@@ -85,7 +97,7 @@ function loadSession() {
                     console.log("✅ Data successfully merged with questions!");
                 }
             } catch (error) {
-                console.error("❌ Error fetching Firebase data:", error);
+                console.error("❌ Firebase Load Error:", error);
             }
         } else {
             console.warn("⚠️ No user logged in. Starting quiz without saved data.");
@@ -195,9 +207,9 @@ function loadQuestion(index) {
         if (explanationBtn) explanationBtn.style.display = 'none'; 
         if (explanationModal) explanationModal.classList.remove('show');
 
-        // === EXAM UI LOGIC ===
+// === EXAM UI LOGIC ===
         if (isExamMode) {
-            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber} / ${quizQueue.length}`;
+            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentIndex + 1} / ${quizQueue.length}`;
             
             if (currentQuestionData.hasBeenSkipped) {
                 if (skippedWarningEl) skippedWarningEl.classList.remove('hidden');
@@ -216,8 +228,9 @@ function loadQuestion(index) {
                 }
             }
         } else {
-            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber}`;
+            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentIndex + 1}`;
         }
+		
 
         if (questionTextEl) questionTextEl.textContent = currentQuestionData.text;
         if (explanationText) explanationText.textContent = currentQuestionData.explanation;
@@ -392,6 +405,9 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     }
 }
 
+// ==========================================
+// NOTES SYNC FUNCTION (FIXED)
+// ==========================================
 async function saveNoteToFirebase(questionId, noteText) {
     const user = auth.currentUser;
     if (!user) return; 
@@ -399,15 +415,18 @@ async function saveNoteToFirebase(questionId, noteText) {
     const userRef = doc(db, "users", user.uid);
     
     try {
-        await setDoc(userRef, {
-            [`notes.${questionId}`]: noteText
-        }, { merge: true });
+        // FIX: Create a proper nested object so Firebase merges it correctly
+        const noteUpdate = { notes: {} };
+        noteUpdate.notes[questionId] = noteText;
+
+        await setDoc(userRef, noteUpdate, { merge: true });
         
-        console.log(`✅ Note saved for Question ${questionId}`);
+        console.log(`✅ Note saved securely for Question ${questionId}`);
     } catch (error) {
         console.error("❌ Error saving note to Firebase:", error);
     }
 }
+
 
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
