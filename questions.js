@@ -1,3 +1,7 @@
+import { auth, db } from './firebase-config.js';
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 // ==========================================
 // 1. STATE VARIABLES
 // ==========================================
@@ -505,6 +509,71 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
     window.location.href = 'quiz.html';
 };
 
+// ==========================================
+// 6. FIREBASE PROGRESS SYNC
+// ==========================================
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        const userRef = doc(db, "users", user.uid);
+        
+        try {
+            const docSnap = await getDoc(userRef);
+            
+            if (docSnap.exists()) {
+                const dbData = docSnap.data();
+                
+                // 1. Grab the arrays from Firebase
+                const solvedList = dbData.solvedQuestions || [];
+                const mistakesList = dbData.mistakes || [];
+                const bookmarksList = dbData.bookmarks || [];
+                
+                // 2. Calculate the Math
+                const totalAttempts = solvedList.length + mistakesList.length;
+                let accuracy = 0;
+                if (totalAttempts > 0) {
+                    accuracy = Math.round((solvedList.length / totalAttempts) * 100);
+                }
+
+                // 3. Inject the REAL data into your HTML!
+                document.getElementById('stat-solved').textContent = solvedList.length;
+                document.getElementById('stat-mistakes').textContent = mistakesList.length;
+                document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
+                document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+                document.getElementById('stat-accuracy-fraction').textContent = `(${solvedList.length}/${totalAttempts})`;
+
+                // 4. Unlock the buttons if they actually have mistakes or bookmarks
+                const btnMistakes = document.getElementById('btn-practice-mistakes');
+                const btnBookmarks = document.getElementById('btn-review-bookmarks');
+
+                if (mistakesList.length > 0) {
+                    btnMistakes.disabled = false;
+                    btnMistakes.style.opacity = "1";
+                    btnMistakes.style.cursor = "pointer";
+                    
+                    btnMistakes.onclick = () => launchCustomQuiz(mistakesList, "My Mistakes");
+                } else {
+                    btnMistakes.style.opacity = "0.5";
+                }
+
+                if (bookmarksList.length > 0) {
+                    btnBookmarks.disabled = false;
+                    btnBookmarks.style.opacity = "1";
+                    btnBookmarks.style.cursor = "pointer";
+                    
+                    btnBookmarks.onclick = () => launchCustomQuiz(bookmarksList, "My Bookmarks");
+                } else {
+                    btnBookmarks.style.opacity = "0.5";
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching stats:", error);
+        }
+    }
+});
+
+function launchCustomQuiz(questionIds, examTitle) {
+    console.log(`Getting ready to launch ${examTitle} with IDs:`, questionIds);
+}
 
 switchMode('practice');
 loadDataAndBuildTree();

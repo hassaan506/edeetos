@@ -55,12 +55,9 @@ function loadSession() {
         window.location.href = 'questions.html';
         return;
     }
-
-    // Set stable originalNumber for DB tracking
     quizQueue.forEach((q, i) => {     
         if (!q.originalNumber) {
             const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
-            // Fallback to q-1, q-2 so it doesn't accidentally pull string numbers
             q.originalNumber = idFromCSV || `q-${i + 1}`; 
         }
     });
@@ -78,10 +75,6 @@ function loadSession() {
                     const savedNotes = dbData.notes || {}; 
                     const savedBookmarks = dbData.bookmarks || []; 
                     
-                    // ==========================================
-                    // RECOVERY CODE: This is what was missing!
-                    // It grabs any notes that were accidentally saved wrong
-                    // ==========================================
                     Object.keys(dbData).forEach(key => {
                         if (key.startsWith('notes.')) {
                             const recoveredId = key.substring(6); // Removes the "notes." part
