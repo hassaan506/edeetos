@@ -44,8 +44,11 @@ function loadSession() {
     if (storedData) {
         quizQueue = JSON.parse(storedData);
         if (quizQueue.length > 0) {
-            // Assign original tracking numbers for logical sequence display
-            quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = i + 1; });
+            // Assign original tracking numbers and default bookmark state
+            quizQueue.forEach((q, i) => { 
+                if (!q.originalNumber) q.originalNumber = i + 1; 
+                if (q.isBookmarked === undefined) q.isBookmarked = false;
+            });
             startTimer();
             if (!isExamMode) buildNumberGrid(); 
             loadQuestion(0);
@@ -91,7 +94,7 @@ function buildNumberGrid() {
         if (q.isSolvedInDatabase) numBtn.classList.add('solved');
 
         numBtn.onclick = () => {
-            if (isExamMode) return; // Completely lock grid in exam mode
+            if (isExamMode) return; 
             if(index === currentIndex) return;
             const direction = index > currentIndex ? 'right' : 'left';
             triggerSlideTransition(index, direction);
@@ -127,13 +130,10 @@ function triggerSlideTransition(newIndex, direction) {
 }
 
 function loadQuestion(index) {
-    try { // START OF SAFETY NET
-        console.log("🚀 Attempting to load question index:", index);
-        
+    try { 
         currentIndex = index;
         currentQuestionData = quizQueue[currentIndex];
 
-        // 1. Check if data even exists!
         if (!currentQuestionData) {
             console.error("❌ CRITICAL ERROR: No data found at index", index);
             return; 
@@ -149,7 +149,6 @@ function loadQuestion(index) {
         
         if (!isExamMode) updateFeedbackBar();
         
-        // 2. Check if explanation elements exist in HTML
         if (explanationBtn) explanationBtn.style.display = 'none'; 
         if (explanationModal) explanationModal.classList.remove('show');
 
@@ -177,7 +176,6 @@ function loadQuestion(index) {
             if (questionIdBadge) questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber}`;
         }
 
-        // 3. This is the step that overwrites "LOADING QUESTION"
         if (questionTextEl) questionTextEl.textContent = currentQuestionData.text;
         if (explanationText) explanationText.textContent = currentQuestionData.explanation;
 
@@ -207,7 +205,6 @@ function loadQuestion(index) {
         if (bookmarkBtn) {
             const starIcon = bookmarkBtn.querySelector('i');
             
-            // Safety check: Does the <i> tag actually exist inside the button?
             if (!starIcon) {
                 console.warn("⚠️ Bookmark button found, but the <i> star icon inside it is missing in the HTML!");
             } else {
@@ -237,60 +234,25 @@ function loadQuestion(index) {
         }
 
         updateGridStyles();
-        console.log("✅ Question loaded successfully!");
 
-    } catch (error) { // END OF SAFETY NET
+    } catch (error) { 
         console.error("🚨 CRASH inside loadQuestion:", error);
     }
 }
-    // ==========================================
-    // BOOKMARK UI SYNC (NEW)
-    // ==========================================
-    const bookmarkBtn = document.getElementById('bookmark-btn');
-    if (bookmarkBtn) {
-        // Check if this question is already bookmarked in our local state
-        if (currentQuestionData.isBookmarked) {
-            bookmarkBtn.classList.replace('far', 'fas'); // Change empty star to solid
-        } else {
-            bookmarkBtn.classList.replace('fas', 'far'); // Change solid star to empty
-        }
-
-        // Attach the click handler
-        bookmarkBtn.onclick = () => {
-            // Toggle local state
-            currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
-
-            // Visual toggle
-            if (currentQuestionData.isBookmarked) {
-                bookmarkBtn.classList.replace('far', 'fas');
-            } else {
-                bookmarkBtn.classList.replace('fas', 'far');
-            }
-
-            // Save to Firebase (using the function we wrote in the previous step)
-            toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
-        };
-    }
-
-    updateGridStyles();
-}
 
 // ==========================================
-// DATABASE SYNC FUNCTIONS
+// 3. DATABASE SYNC FUNCTIONS
 // ==========================================
 async function savePracticeProgress(questionId, isCorrect) {
     const user = auth.currentUser;
-    if (!user) return; // If the user isn't logged in, do nothing
+    if (!user) return; 
 
-    // Point to this specific user's document in the "users" collection
     const userRef = doc(db, "users", user.uid);
     
     try {
-        // setDoc with { merge: true } is safe: it creates the document if the 
-        // user is brand new, or just updates it if they already exist!
         if (isCorrect) {
             await setDoc(userRef, {
-                solvedQuestions: arrayUnion(questionId) // Adds to the list without duplicates
+                solvedQuestions: arrayUnion(questionId) 
             }, { merge: true });
         } else {
             await setDoc(userRef, {
@@ -302,22 +264,11 @@ async function savePracticeProgress(questionId, isCorrect) {
     }
 }
 
-// ==========================================
-// EXAM MODE DATABASE SYNC 
-// ==========================================
-// ==========================================
-// EXAM MODE DATABASE SYNC (UPDATED)
-// ==========================================
 async function saveExamProgress(correctIds, mistakeIds) {
     console.log("🚀 Initiating Exam Save...");
-    console.log("Correct IDs to save:", correctIds);
-    console.log("Mistake IDs to save:", mistakeIds);
-
+    
     const user = auth.currentUser;
-    if (!user) {
-        console.error("⚠️ Cannot save exam: No user is logged in.");
-        return; 
-    }
+    if (!user) return; 
 
     const userRef = doc(db, "users", user.uid);
     
@@ -334,26 +285,19 @@ async function saveExamProgress(correctIds, mistakeIds) {
         if (Object.keys(updates).length > 0) {
             await setDoc(userRef, updates, { merge: true });
             console.log("✅ Exam progress successfully saved to Firebase!");
-        } else {
-            console.log("ℹ️ No questions were answered, nothing to save.");
         }
-        
     } catch (error) {
         console.error("❌ Error saving exam progress to Firebase:", error);
     }
 }
 
-// ==========================================
-// BOOKMARK SYNC FUNCTION
-// ==========================================
 async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     const user = auth.currentUser;
-    if (!user) return; // Do nothing if not logged in
+    if (!user) return; 
 
     const userRef = doc(db, "users", user.uid);
     
     try {
-        // If isBookmarking is true, we add it. If false, we remove it.
         await setDoc(userRef, {
             bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
         }, { merge: true });
@@ -378,8 +322,6 @@ function handleOptionClick(event, optionData, optionElement) {
 
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
-    // ... inside handleOptionClick ...
-    
     if (!optionData.isCorrect) {
         optionElement.classList.remove('apply-shake');
         void optionElement.offsetWidth;
@@ -387,7 +329,6 @@ function handleOptionClick(event, optionData, optionElement) {
         wrongAttempts++;
         updateFeedbackBar();
         
-        // NEW: Save the mistake to Firebase
         savePracticeProgress(currentQuestionData.originalNumber, false); 
         
     } else {
@@ -400,7 +341,6 @@ function handleOptionClick(event, optionData, optionElement) {
         updateFeedbackBar();
         document.getElementById(`grid-num-${currentIndex}`).classList.add('solved');
         
-        // NEW: Save the solved question to Firebase
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
         explanationBtn.style.display = 'inline-block'; 
@@ -428,6 +368,7 @@ function showResults() {
     let correctCount = 0;
     let correctIds = [];
     let mistakeIds = [];
+    
     quizQueue.forEach(q => {
         let correctOpt = q.options.find(o => o.isCorrect);
         if (correctOpt && q.userSelectedAnswer === correctOpt.text) {
@@ -448,10 +389,7 @@ function showResults() {
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
-    // Target the Result Screen
     const resultsEl = document.getElementById('exam-result-screen');
-    
-    // Trigger the beautiful CSS pop-in animation
     resultsEl.classList.remove('hidden');
     resultsEl.classList.add('result-pop-in'); 
     
@@ -523,7 +461,7 @@ document.getElementById('next-btn').onclick = () => {
 };
 
 document.getElementById('prev-btn').onclick = () => {
-    if (isExamMode) return; // Completely blocked in exam mode
+    if (isExamMode) return; 
     if (currentIndex > 0) triggerSlideTransition(currentIndex - 1, 'left');
 };
 
