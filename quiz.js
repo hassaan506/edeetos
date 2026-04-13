@@ -1,3 +1,6 @@
+import { auth, db } from './firebase-config.js';
+import { doc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
 // ==========================================
@@ -189,6 +192,33 @@ function loadQuestion(index) {
 // ==========================================
 // 3. OPTION SELECTION LOGIC
 // ==========================================
+// ==========================================
+// DATABASE SYNC FUNCTIONS
+// ==========================================
+async function savePracticeProgress(questionId, isCorrect) {
+    const user = auth.currentUser;
+    if (!user) return; // If the user isn't logged in, do nothing
+
+    // Point to this specific user's document in the "users" collection
+    const userRef = doc(db, "users", user.uid);
+    
+    try {
+        // setDoc with { merge: true } is safe: it creates the document if the 
+        // user is brand new, or just updates it if they already exist!
+        if (isCorrect) {
+            await setDoc(userRef, {
+                solvedQuestions: arrayUnion(questionId) // Adds to the list without duplicates
+            }, { merge: true });
+        } else {
+            await setDoc(userRef, {
+                mistakes: arrayUnion(questionId)
+            }, { merge: true });
+        }
+    } catch (error) {
+        console.error("Error saving to Firebase:", error);
+    }
+}
+
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
         optionElement.classList.toggle('strikethrough');
@@ -205,12 +235,18 @@ function handleOptionClick(event, optionData, optionElement) {
 
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
+    // ... inside handleOptionClick ...
+    
     if (!optionData.isCorrect) {
         optionElement.classList.remove('apply-shake');
         void optionElement.offsetWidth;
         optionElement.classList.add('incorrect', 'apply-shake');
         wrongAttempts++;
         updateFeedbackBar();
+        
+        // NEW: Save the mistake to Firebase
+        savePracticeProgress(currentQuestionData.originalNumber, false); 
+        
     } else {
         optionElement.classList.remove('apply-pop');
         void optionElement.offsetWidth; 
@@ -220,6 +256,10 @@ function handleOptionClick(event, optionData, optionElement) {
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
         document.getElementById(`grid-num-${currentIndex}`).classList.add('solved');
+        
+        // NEW: Save the solved question to Firebase
+        savePracticeProgress(currentQuestionData.originalNumber, true); 
+        
         explanationBtn.style.display = 'inline-block'; 
         setTimeout(() => explanationModal.classList.add('show'), 600);
     }

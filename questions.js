@@ -152,22 +152,26 @@ function switchMode(mode) {
     selectedCart.clear();
     document.getElementById('cart-count').textContent = `0 Topics Selected`;
     document.getElementById('start-exam-btn').disabled = true;
-
     const searchBar = document.querySelector('.search-filter-bar');
-
+    const modeDesc = document.getElementById('mode-description'); // Target the text line
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
         document.getElementById('exam-cart').style.display = "none";
-        if (searchBar) searchBar.style.display = "flex"; // Show search and filters
+        if (modeDesc) {
+            modeDesc.textContent = "Practice Mode: Instant feedback, detailed explanations, pause & resume anytime.";
+        }        
+        if (searchBar) searchBar.style.display = "flex"; 
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
         document.getElementById('exam-cart').style.display = "flex";
-        if (searchBar) searchBar.style.display = "none"; // Hide search and filters in Exam Mode
+        if (modeDesc) {
+            modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, and skipped questions appear at the end.";
+        }        
+        if (searchBar) searchBar.style.display = "none"; 
     }
-    
-    renderGrid(); // Re-render grid to apply/remove progress bars
+    renderGrid(); 
 }
 
 async function loadDataAndBuildTree() {
