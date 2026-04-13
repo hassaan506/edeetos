@@ -63,11 +63,11 @@ globalSearch.addEventListener('input', (e) => {
                 <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
             `;
             
-            // LAUNCH QUIZ DIRECTLY FROM SEARCH
+            // LAUNCH QUIZ DIRECTLY FROM SEARCH (PRACTICE MODE)
             div.onclick = () => {
                 searchDropdown.style.display = 'none';
                 globalSearch.value = '';
-                window.launchQuiz([q]); 
+                window.launchQuiz([q], 'practice', 0); 
             };
             searchDropdown.appendChild(div);
         });
@@ -85,13 +85,33 @@ unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
-// LAUNCH EXAM FROM BOTTOM DOCK
+// ==========================================
+// LAUNCH EXAM FROM BOTTOM DOCK (FIXED!)
+// ==========================================
 document.getElementById('start-exam-btn').addEventListener('click', () => {
     const paths = Array.from(selectedCart).map(str => JSON.parse(str));
-    const examPool = allQuestions.filter(q => {
+    let examPool = allQuestions.filter(q => {
         return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
     });
-    window.launchQuiz(examPool);
+
+    const qCountInput = parseInt(document.getElementById('exam-q-count').value);
+    const timerInput = parseInt(document.getElementById('exam-timer').value);
+
+    // Validate Timer
+    if (!timerInput || timerInput <= 0 || isNaN(timerInput)) {
+        alert("Please enter a valid time in minutes.");
+        return;
+    }
+
+    // Shuffle and Limit Questions
+    if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) {
+        examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+    } else {
+        examPool = examPool.sort(() => 0.5 - Math.random());
+    }
+
+    // Launch with Exam Config
+    window.launchQuiz(examPool, 'exam', timerInput);
 });
 
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
@@ -197,7 +217,6 @@ async function loadDataAndBuildTree() {
                 rowObj[header] = row[index] ? row[index].trim() : "";
             });
 
-            // FIX: We now push the ENTIRE row object so quiz.js gets Options and Explanations
             if (!rowObj.Subject || rowObj.Subject === "") return;
             allQuestions.push(rowObj); 
            
@@ -313,7 +332,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         // LAUNCH QUIZ FROM "PRACTICE FULL"
         practiceAllDiv.querySelector('.practice-full-btn').onclick = () => {
             const pool = allQuestions.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
-            window.launchQuiz(pool);
+            window.launchQuiz(pool, 'practice', 0);
         };
     }
 
@@ -372,7 +391,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
             // LAUNCH QUIZ FROM INDIVIDUAL LEAF TOPIC
             actionBtn.onclick = () => {
                 const pool = allQuestions.filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
-                window.launchQuiz(pool);
+                window.launchQuiz(pool, 'practice', 0);
             };
         } else {
             actionBtn.textContent = 'Select';
@@ -401,14 +420,15 @@ function renderListItem(itemName, nextData, level, itemPath) {
 // ==========================================
 // 5. THE BRIDGE: LAUNCH QUIZ
 // ==========================================
-window.launchQuiz = function(questionsArray) {
+window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0) {
     if (!questionsArray || questionsArray.length === 0) {
         alert("No questions found for this selection!");
         return;
     }
-    // Save to local storage for quiz.js to read
+    // Save questions and quiz configuration to local storage
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
-    // Redirect to the newly created quiz page
+    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes }));
+    
     window.location.href = 'quiz.html';
 };
 

@@ -1,5 +1,5 @@
 // ==========================================
-// 1. STATE VARIABLES & DATA LOAD
+// 1. STATE VARIABLES & CONFIG LOAD
 // ==========================================
 let quizQueue = [];
 let currentIndex = 0;
@@ -8,6 +8,11 @@ let wrongAttempts = 0;
 let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
+
+// Load Config from Bridge
+const configStr = localStorage.getItem('edeetos_quiz_config');
+const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
+const isExamMode = quizConfig.mode === 'exam';
 
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
@@ -22,9 +27,15 @@ const explanationText = document.getElementById('explanation-text');
 const closeExplanationBtn = document.getElementById('close-explanation');
 const questionIdBadge = document.getElementById('question-id-badge');
 const numberGrid = document.getElementById('number-grid');
+const skipBtn = document.getElementById('skip-btn');
 
-// Remove conflicting classes on load
 explanationModal.classList.remove('hidden');
+
+// Setup UI for Exam Mode
+if (isExamMode) {
+    document.body.classList.add('mode-exam');
+    sessionSeconds = quizConfig.timer * 60; // Convert minutes to seconds for countdown
+}
 
 function loadSession() {
     const storedData = localStorage.getItem('edeetos_active_quiz');
@@ -50,7 +61,7 @@ function formatCSVQuestion(rawCsvRow) {
         const optKey = `Option${letter}`;
         const optText = rawCsvRow[optKey]; 
         if (optText && optText.trim() !== '') {
-            options.push({ text: optText, isCorrect: correctLetter === letter });
+            options.push({ text: optText, isCorrect: correctLetter === letter, letter: letter });
         }
     });
 
@@ -58,18 +69,25 @@ function formatCSVQuestion(rawCsvRow) {
         text: rawCsvRow.Question || "Missing Question Text",
         options: options,
         explanation: rawCsvRow.Explanation || "No explanation provided.",
-        isSolvedInDatabase: false 
+        isSolvedInDatabase: false,
+        hasBeenSkipped: false,
+        userSelectedAnswer: null // Tracks exam answer
     };
 }
 
 function buildNumberGrid() {
     numberGrid.innerHTML = '';
-    quizQueue.forEach((_, index) => {
+    quizQueue.forEach((q, index) => {
         const numBtn = document.createElement('div');
         numBtn.className = 'grid-num';
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
         
+        // Restore answered state if user jumps around
+        if (q.userSelectedAnswer || q.isSolvedInDatabase) {
+            numBtn.classList.add(isExamMode ? 'answered' : 'solved');
+        }
+
         numBtn.onclick = () => {
             if(index === currentIndex) return;
             const direction = index > currentIndex ? 'right' : 'left';
@@ -86,20 +104,16 @@ function updateGridStyles() {
 }
 
 // ==========================================
-// 2. SLIDE TRANSITIONS (NEXT/PREV)
+// 2. SLIDE TRANSITIONS & RENDER
 // ==========================================
 function triggerSlideTransition(newIndex, direction) {
     const outClass = direction === 'right' ? 'slide-out-left' : 'slide-out-right';
     const inClass = direction === 'right' ? 'slide-in-right' : 'slide-in-left';
 
-    // 1. Clear old classes and force reflow
     cardEl.className = 'question-card';
     void cardEl.offsetWidth; 
-    
-    // 2. Slide Out
     cardEl.classList.add(outClass);
     
-    // 3. Wait for slide out, swap data, then Slide In
     setTimeout(() => {
         loadQuestion(newIndex);
         cardEl.className = 'question-card'; 
@@ -110,14 +124,27 @@ function triggerSlideTransition(newIndex, direction) {
 
 function loadQuestion(index) {
     currentIndex = index;
-    const rawData = quizQueue[currentIndex];
-    currentQuestionData = formatCSVQuestion(rawData);
+    currentQuestionData = quizQueue[currentIndex];
+
+    // Format if not formatted yet
+    if (!currentQuestionData.options) {
+        quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
+        currentQuestionData = quizQueue[currentIndex];
+    }
 
     wrongAttempts = 0;
-    hasAnsweredCorrectly = false;
-    updateFeedbackBar();
-    explanationBtn.style.display = 'none'; // Hide explanation button initially
+    hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; // Persist practice state
+    
+    if (!isExamMode) updateFeedbackBar();
+    explanationBtn.style.display = 'none'; 
     explanationModal.classList.remove('show');
+
+    // Skip Button Logic
+    if (isExamMode && !currentQuestionData.hasBeenSkipped && !currentQuestionData.userSelectedAnswer) {
+        skipBtn.style.display = 'block';
+    } else {
+        skipBtn.style.display = 'none';
+    }
 
     questionIdBadge.textContent = `Question ${currentIndex + 1}`;
     questionTextEl.textContent = currentQuestionData.text;
@@ -127,6 +154,14 @@ function loadQuestion(index) {
     currentQuestionData.options.forEach(opt => {
         const optBox = document.createElement('div');
         optBox.className = 'option-box';
+        
+        // Restore previous states
+        if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+            optBox.classList.add('selected');
+        } else if (!isExamMode && hasAnsweredCorrectly && opt.isCorrect) {
+            optBox.classList.add('correct');
+        }
+
         optBox.innerHTML = `
             <div class="option-text">${opt.text}</div>
             <i class="fas fa-eye eye-icon" title="Strikeout option"></i>
@@ -139,39 +174,51 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 3. RIGHT/WRONG ANIMATIONS
+// 3. RIGHT/WRONG vs EXAM SELECTION
 // ==========================================
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
         optionElement.classList.toggle('strikethrough');
         return; 
     }
+
+    // --- EXAM MODE BEHAVIOR ---
+    if (isExamMode) {
+        // Clear other selections
+        document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
+        optionElement.classList.add('selected');
+        
+        // Save Answer
+        currentQuestionData.userSelectedAnswer = optionData.text;
+        document.getElementById(`grid-num-${currentIndex}`).classList.add('answered');
+        
+        // Hide Skip Button once answered
+        skipBtn.style.display = 'none';
+        return; 
+    }
+
+    // --- PRACTICE MODE BEHAVIOR ---
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
     if (!optionData.isCorrect) {
-        // FORCE SHAKE
         optionElement.classList.remove('apply-shake');
-        void optionElement.offsetWidth; // Reflow
+        void optionElement.offsetWidth;
         optionElement.classList.add('incorrect', 'apply-shake');
         
         wrongAttempts++;
         updateFeedbackBar();
     } else {
-        // FORCE POP
         optionElement.classList.remove('apply-pop');
-        void optionElement.offsetWidth; // Reflow
+        void optionElement.offsetWidth; 
         optionElement.classList.add('correct', 'apply-pop');
         
         hasAnsweredCorrectly = true;
+        currentQuestionData.isSolvedInDatabase = true; // Save solved state locally
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
         
-        const activeGridBtn = document.getElementById(`grid-num-${currentIndex}`);
-        if(activeGridBtn) activeGridBtn.classList.add('solved');
-
+        document.getElementById(`grid-num-${currentIndex}`).classList.add('solved');
         explanationBtn.style.display = 'inline-block'; 
-        
-        // Show modal with animation
         setTimeout(() => explanationModal.classList.add('show'), 600);
     }
 }
@@ -188,17 +235,53 @@ function updateFeedbackBar() {
     }
 }
 
+// ==========================================
+// 4. TIMER & SKIP LOGIC
+// ==========================================
 function startTimer() {
     timerInterval = setInterval(() => {
-        sessionSeconds++;
+        if (isExamMode) {
+            sessionSeconds--; // Countdown
+            if (sessionSeconds <= 0) {
+                clearInterval(timerInterval);
+                alert("Time is up! Your exam will now be submitted.");
+                window.location.href = 'questions.html'; // Or redirect to a results page
+                return;
+            }
+        } else {
+            sessionSeconds++; // Countup
+        }
+
         const mins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
         const secs = (sessionSeconds % 60).toString().padStart(2, '0');
         timerDisplay.textContent = `${mins}:${secs}`;
     }, 1000);
 }
 
+// SKIP LOGIC
+skipBtn.onclick = () => {
+    // 1. Remove the current question from the array
+    let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
+    
+    // 2. Mark it so it can't be skipped again
+    skippedQuestion.hasBeenSkipped = true;
+    
+    // 3. Push it to the very end of the array
+    quizQueue.push(skippedQuestion);
+    
+    // 4. Rebuild the visual grid to reflect the new order
+    buildNumberGrid();
+    
+    // 5. The next question naturally falls into the currentIndex, so just trigger a reload
+    // Edge case: if we skipped the very last item, pull index back by 1
+    if (currentIndex >= quizQueue.length) {
+        currentIndex = quizQueue.length - 1;
+    }
+    triggerSlideTransition(currentIndex, 'right');
+};
+
 // ==========================================
-// 4. MODAL & NAVIGATION CONTROLS
+// 5. MODAL & NAVIGATION CONTROLS
 // ==========================================
 explanationBtn.onclick = () => explanationModal.classList.add('show');
 closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
