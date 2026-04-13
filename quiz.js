@@ -1,5 +1,6 @@
 import { auth, db } from './firebase-config.js';
-import { doc, setDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, setDoc, getDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
@@ -45,23 +46,52 @@ if (isExamMode) {
 
 function loadSession() {
     const storedData = localStorage.getItem('edeetos_active_quiz');
-    if (storedData) {
-        quizQueue = JSON.parse(storedData);
-        if (quizQueue.length > 0) {
-            // Assign original tracking numbers and default bookmark state
-            quizQueue.forEach((q, i) => { 
-                if (!q.originalNumber) q.originalNumber = i + 1; 
-                if (q.isBookmarked === undefined) q.isBookmarked = false;
-            });
-            startTimer();
-            if (!isExamMode) buildNumberGrid(); 
-            loadQuestion(0);
-        } else {
-            window.location.href = 'questions.html';
-        }
-    } else {
+    if (!storedData) {
         window.location.href = 'questions.html';
+        return;
     }
+    quizQueue = JSON.parse(storedData);
+    if (quizQueue.length === 0) {
+        window.location.href = 'questions.html';
+        return;
+    }
+    quizQueue.forEach((q, i) => { 
+        if (!q.originalNumber) q.originalNumber = i + 1; 
+    });
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            console.log("👤 User verified! Fetching saved notes and bookmarks...");
+            const userRef = doc(db, "users", user.uid);
+            
+            try {
+                const docSnap = await getDoc(userRef);
+                
+                if (docSnap.exists()) {
+                    const dbData = docSnap.data();
+                    const savedNotes = dbData.notes || {}; // Get notes map
+                    const savedBookmarks = dbData.bookmarks || []; // Get bookmarks array
+                    const solvedList = dbData.solvedQuestions || []; // Get solved list
+                    quizQueue.forEach(q => {
+                        q.isBookmarked = savedBookmarks.includes(q.originalNumber);
+                        q.userNote = savedNotes[q.originalNumber] || "";
+                        
+                        if (solvedList.includes(q.originalNumber)) {
+                            q.isSolvedInDatabase = true;
+                        }
+                    });
+                    console.log("✅ Data successfully merged with questions!");
+                }
+            } catch (error) {
+                console.error("❌ Error fetching Firebase data:", error);
+            }
+        } else {
+            console.warn("⚠️ No user logged in. Starting quiz without saved data.");
+        }
+       
+        startTimer();
+        if (!isExamMode) buildNumberGrid(); 
+        loadQuestion(0);
+    });
 }
 
 function formatCSVQuestion(rawCsvRow) {
@@ -80,10 +110,14 @@ function formatCSVQuestion(rawCsvRow) {
         text: rawCsvRow.Question || "Missing Question Text",
         options: options,
         explanation: rawCsvRow.Explanation || "No explanation provided.",
-        isSolvedInDatabase: false,
-        hasBeenSkipped: false,
-        userSelectedAnswer: null,
-        originalNumber: rawCsvRow.originalNumber 
+        originalNumber: rawCsvRow.originalNumber,
+        
+        isBookmarked: rawCsvRow.isBookmarked || false,
+        userNote: rawCsvRow.userNote || "",
+        isSolvedInDatabase: rawCsvRow.isSolvedInDatabase || false,
+        
+        hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
+        userSelectedAnswer: rawCsvRow.userSelectedAnswer || null
     };
 }
 
