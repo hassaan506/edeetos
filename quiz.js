@@ -254,16 +254,16 @@ function showResults() {
     const total = quizQueue.length;
     const percentage = Math.round((correctCount / total) * 100);
     
+    // Hide the quiz question UI completely
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
+    // Target the Result Screen
     const resultsEl = document.getElementById('exam-result-screen');
-    resultsEl.classList.remove('hidden');
     
-    // Trigger CSS Animation
-    resultsEl.style.animation = 'none';
-    void resultsEl.offsetWidth;
-    resultsEl.style.animation = 'popSuccess 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+    // Trigger the beautiful CSS pop-in animation
+    resultsEl.classList.remove('hidden');
+    resultsEl.classList.add('result-pop-in'); 
     
     const titleEl = document.getElementById('result-title');
     const scoreEl = document.getElementById('result-score');

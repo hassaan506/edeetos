@@ -32,7 +32,7 @@
 .quiz-content-wrapper {
     position: relative; z-index: 10;
     max-width: 850px; width: 100%; margin: 0 auto; 
-    padding: 1.5vh 1rem; /* Reduced from 2rem to save vertical space */
+    padding: 1.5vh 1rem; 
     display: flex; flex-direction: column; align-items: center;
 }
 
@@ -57,10 +57,10 @@
     backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-top: 1px solid rgba(255, 255, 255, 1); 
-    padding: 1.5rem 2.5rem; /* Drastically reduced from 3rem */
+    padding: 1.5rem 2.5rem; 
     border-radius: 20px; 
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem; /* Reduced margin */
+    margin-bottom: 1.5rem; 
 }
 
 .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; border-bottom: 2px dashed rgba(255, 255, 255, 0.6); padding-bottom: 0.8rem; }
@@ -79,11 +79,11 @@
 .question-text { font-size: 1.15rem; font-weight: 700; color: #0f172a; line-height: 1.5; text-align: justify; margin-bottom: 1.2rem; }
 
 /* --- 2. GLASS OPTIONS --- */
-.options-container { display: flex; flex-direction: column; gap: 0.5rem; } /* Tighter gap */
+.options-container { display: flex; flex-direction: column; gap: 0.5rem; } 
 
 .option-box {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 0.8rem 1.2rem; /* Thinner options */
+    padding: 0.8rem 1.2rem; 
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.8);
@@ -178,42 +178,7 @@
 #close-explanation:hover { background: #059669; transform: translateY(-2px); }
 
 /* ========================================== */
-/* EXAM MODE SPECIFIC STYLES & SKIP BUTTON    */
-/* ========================================== */
-
-/* Hide tools and feedback when in Exam Mode */
-body.mode-exam .icon-group,
-body.mode-exam .feedback-tracker,
-body.mode-exam #show-explanation-btn {
-    display: none !important;
-}
-
-/* Skip Button Styling */
-.skip-btn {
-    background: #f59e0b; color: white; border: none; border-radius: 12px;
-    font-weight: bold; font-size: 1.05rem; padding: 0.6rem 1.2rem;
-    cursor: pointer; transition: 0.2s; box-shadow: 0 8px 15px rgba(245, 158, 11, 0.2);
-    display: none; /* Hidden by default, JS reveals it */
-}
-.skip-btn:hover { background: #d97706; transform: translateY(-3px); }
-
-/* Selected Option State (Exam Mode Only) */
-.option-box.selected {
-    border-color: #3b82f6 !important; 
-    background: rgba(59, 130, 246, 0.1) !important; 
-    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2) !important; 
-}
-.option-box.selected .option-text { color: #1d4ed8 !important; }
-
-/* Grid answered state */
-.grid-num.answered { border-color: #3b82f6; color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
-
-@media (max-width: 768px) {
-    .skip-btn { font-size: 0.95rem; padding: 0.6rem 1rem; }
-}
-
-/* ========================================== */
-/* EXAM MODE SPECIFIC STYLES                  */
+/* 6. EXAM MODE SPECIFIC STYLES               */
 /* ========================================== */
 
 /* Hide tools, feedback, grid, and prev button in Exam Mode */
@@ -257,7 +222,7 @@ body.mode-exam #prev-btn {
 }
 .option-box.selected .option-text { color: #1d4ed8 !important; }
 
-/* --- RESULT SCREEN STYLING --- */
+/* --- 7. RESULT SCREEN FIX & ANIMATION --- */
 #exam-result-screen {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
@@ -265,13 +230,22 @@ body.mode-exam #prev-btn {
     border-radius: 24px;
     padding: 3rem 2rem;
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    transform: scale(0.9);
-    opacity: 0;
-    /* Animation is triggered via JS */
+    display: none; /* Keeps it out of the flow until JS triggers it */
+}
+
+/* This class triggers the pop-in and forces opacity to 1 */
+.result-pop-in {
+    display: block !important;
+    animation: resultPopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes resultPopIn {
+    0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 /* ========================================== */
-/* ULTRA-COMPACT MOBILE RESPONSIVENESS        */
+/* 8. ULTRA-COMPACT MOBILE RESPONSIVENESS     */
 /* ========================================== */
 @media (max-width: 768px) {
     .quiz-content-wrapper { padding: 0.5rem; justify-content: flex-start; }
@@ -286,8 +260,9 @@ body.mode-exam #prev-btn {
     .top-nav { margin-bottom: 1rem; }
     .grid-num { width: 30px; height: 30px; font-size: 0.8rem; border-radius: 8px; }
     .number-grid { gap: 0.4rem; margin-bottom: 1.5rem; }
-    .prev-icon-btn { width: 45px; height: 45px; font-size: 1rem; border-radius: 12px; }
-    .next-action-btn { font-size: 1rem; padding: 0.6rem; border-radius: 12px; }
+    .prev-icon-btn, .skip-btn { height: 42px; }
+    .prev-icon-btn { width: 42px; font-size: 1rem; border-radius: 12px; }
+    .next-action-btn { font-size: 1rem; padding: 0.5rem; border-radius: 12px; height: 42px; }
     .modal-content { padding: 1.5rem; width: 95%; border-radius: 16px; }
     .quiz-body::before { width: 90vw; height: 90vw; filter: blur(60px); }
     .quiz-body::after { width: 100vw; height: 100vw; filter: blur(80px); }

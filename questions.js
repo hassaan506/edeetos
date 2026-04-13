@@ -153,15 +153,21 @@ function switchMode(mode) {
     document.getElementById('cart-count').textContent = `0 Topics Selected`;
     document.getElementById('start-exam-btn').disabled = true;
 
+    const searchBar = document.querySelector('.search-filter-bar');
+
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
         document.getElementById('exam-cart').style.display = "none";
+        if (searchBar) searchBar.style.display = "flex"; // Show search and filters
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
         document.getElementById('exam-cart').style.display = "flex";
+        if (searchBar) searchBar.style.display = "none"; // Hide search and filters in Exam Mode
     }
+    
+    renderGrid(); // Re-render grid to apply/remove progress bars
 }
 
 async function loadDataAndBuildTree() {
@@ -266,15 +272,19 @@ function renderGrid() {
         if (unattemptedFilter.checked && qCount === 0) return;
         let doneDummy = 0; 
         
+        // Hide counters and progress bar in Exam Mode
+        const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneDummy} / ${qCount}</span>` : '';
+        const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>` : '';
+
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
         card.style.cursor = 'pointer';
         card.innerHTML = `
             <div class="card-header-flex">
                 <h3 class="card-title">${cardTitle}</h3>
-                <span class="card-count">${doneDummy} / ${qCount}</span>
+                ${countHtml}
             </div>
-            <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+            ${progressHtml}
         `;
         card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
         subjectsGrid.appendChild(card);
@@ -289,7 +299,6 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     popupOverlay.style.display = 'flex';
     popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
 
-    // BULK PRACTICE BUTTON
     if (currentMode === 'practice') {
         const fullCount = getQuestionCount(currentView, pathArr);
         const practiceAllDiv = document.createElement('div');
@@ -313,19 +322,17 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         };
     }
 
-    // BULK SELECT BUTTON (EXAM MODE FIX)
     if (currentMode === 'exam') {
-        const fullCount = getQuestionCount(currentView, pathArr);
         const selectAllDiv = document.createElement('div');
         selectAllDiv.className = 'list-item';
         selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)'; 
         selectAllDiv.style.border = '1px solid #3b82f6';
         
+        // Removed the counter for Exam Mode
         selectAllDiv.innerHTML = `
             <div style="flex-grow: 1;">
                 <div class="card-header-flex">
                     <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
-                    <span class="card-count" style="color: #2563eb;">0 / ${fullCount}</span>
                 </div>
             </div>
             <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
@@ -367,12 +374,15 @@ function getLeafPaths(dataObj, currentPath) {
 function renderListItem(itemName, nextData, level, itemPath) {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'list-item';
-
     const labelDiv = document.createElement('div');
     labelDiv.style.flexGrow = '1';
     
     const qCount = getQuestionCount(currentView, itemPath);
     let doneDummy = 0; 
+
+    // Hide counters and progress bar in Exam Mode
+    const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneDummy} / ${qCount}</span>` : '';
+    const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>` : '';
 
     labelDiv.innerHTML = `
         <div class="card-header-flex">
@@ -380,9 +390,9 @@ function renderListItem(itemName, nextData, level, itemPath) {
                 ${currentMode === 'exam' ? `<input type="checkbox" style="margin-right: 10px;">` : ''}
                 ${itemName}
             </span>
-            <span class="card-count">${doneDummy} / ${qCount}</span>
+            ${countHtml}
         </div>
-        <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+        ${progressHtml}
     `;
 
     itemDiv.appendChild(labelDiv);
@@ -402,7 +412,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
                 window.launchQuiz(pool, 'practice', 0);
             };
         } else {
-            // EXAM MODE SELECT BUTTON FIX
             actionBtn.textContent = 'Select';
             actionBtn.onclick = () => {
                 const cb = itemDiv.querySelector('input[type="checkbox"]');
@@ -445,8 +454,5 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
     window.location.href = 'quiz.html';
 };
 
-// ==========================================
-// 6. INITIALIZATION
-// ==========================================
 switchMode('practice');
 loadDataAndBuildTree();
