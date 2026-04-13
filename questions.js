@@ -102,7 +102,7 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
     }
 	const generatedTitle = generateExamTitle(paths, currentView);
     
-	window.launchQuiz(examPool, 'exam', timerInput);
+	window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
 });
 
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
@@ -151,6 +151,7 @@ function changeView(viewName, titleText) {
     
     renderGrid();
 }
+
 function generateExamTitle(paths, currentView) {
     if (!paths || paths.length === 0) return "Custom Exam";
 
@@ -158,32 +159,24 @@ function generateExamTitle(paths, currentView) {
     const subLevels = new Set();
 
     paths.forEach(p => {
-        if (p[0]) topLevels.add(p[0]); // e.g., Subject (Anatomy) or Exam (FCPS 2018)
-        if (p[1]) subLevels.add(p[1]); // e.g., Chapter (Breast)
+        if (p[0]) topLevels.add(p[0]); 
+        if (p[1]) subLevels.add(p[1]); 
     });
 
     const topArr = Array.from(topLevels);
     const subArr = Array.from(subLevels);
 
-    // RULE 1: If they are looking at Past Papers (exam view)
-    if (currentView === 'exam') {
-        return topArr.join(" + "); 
-    }
+    if (currentView === 'exam') return topArr.join(" + "); 
 
-    // RULE 2: If only ONE main subject is selected
     if (topArr.length === 1) {
-        // If they selected a lot of sub-chapters, or selected the whole root
         if (subArr.length > 3 || subArr.length === 0) {
             return `${topArr[0]} (Full)`; 
         } else {
-            // "Surgery - Breast + Thyroid"
             return `${topArr[0]} - ${subArr.join(" + ")}`;
         }
-    } 
-    // RULE 3: Multiple subjects selected
-    else {
+    } else {
         if (topArr.length <= 3) {
-            return topArr.join(" + "); // "Anatomy + Surgery"
+            return topArr.join(" + "); 
         } else {
             return `Mixed Exam (${topArr.length} Topics)`; 
         }
@@ -196,22 +189,18 @@ function switchMode(mode) {
     document.getElementById('cart-count').textContent = `0 Topics Selected`;
     document.getElementById('start-exam-btn').disabled = true;
     const searchBar = document.querySelector('.search-filter-bar');
-    const modeDesc = document.getElementById('mode-description'); // Target the text line
+    const modeDesc = document.getElementById('mode-description');
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
         document.getElementById('exam-cart').style.display = "none";
-        if (modeDesc) {
-            modeDesc.textContent = "Practice Mode: Instant feedback, detailed explanations, pause & resume anytime.";
-        }        
+        if (modeDesc) modeDesc.textContent = "Practice Mode: Instant feedback, detailed explanations, pause & resume anytime.";
         if (searchBar) searchBar.style.display = "flex"; 
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
         document.getElementById('exam-cart').style.display = "flex";
-        if (modeDesc) {
-            modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, and skipped questions appear at the end.";
-        }        
+        if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, and skipped questions appear at the end.";
         if (searchBar) searchBar.style.display = "none"; 
     }
     renderGrid(); 
@@ -246,7 +235,7 @@ async function loadDataAndBuildTree() {
 
         subjectTree = {}; systemTree = {}; examTree = {}; allQuestions = [];
 
-        dataRows.forEach(row => {
+        dataRows.forEach((row, rowIndex) => {
             if (row.length < 2) return; 
             let rowObj = {};
             headers.forEach((header, index) => {
@@ -254,6 +243,12 @@ async function loadDataAndBuildTree() {
             });
 
             if (!rowObj.Subject || rowObj.Subject === "") return;
+            
+            // Assign a fallback ID if missing
+            if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
+                rowObj.QuestionID = `q-${rowIndex + 1}`;
+            }
+
             allQuestions.push(rowObj); 
            
             const Exam = rowObj.Exam;
@@ -286,7 +281,7 @@ async function loadDataAndBuildTree() {
 function getQuestionCount(view, pathArr, customPool = null) {
     const pool = customPool || allQuestions;
     return pool.filter(q => {
-        if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
+        if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
         if (view === 'subject') {
             if (pathArr[0] && q.Subject !== pathArr[0]) return false;
@@ -327,7 +322,6 @@ function renderGrid() {
         const qCount = getQuestionCount(currentView, [cardTitle]);
         if (unattemptedFilter.checked && qCount === 0) return;
         
-        // FIX: Use the new helper to get real numbers!
         const doneCount = getSolvedCount(currentView, [cardTitle]);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         
@@ -386,7 +380,6 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)'; 
         selectAllDiv.style.border = '1px solid #3b82f6';
         
-        // Removed the counter for Exam Mode
         selectAllDiv.innerHTML = `
             <div style="flex-grow: 1;">
                 <div class="card-header-flex">
@@ -436,17 +429,11 @@ function renderListItem(itemName, nextData, level, itemPath) {
     labelDiv.style.flexGrow = '1';
     
     const qCount = getQuestionCount(currentView, itemPath);
-    // FIX: Calculate real solved counts for the popups!
     const doneCount = getSolvedCount(currentView, itemPath);
     const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
     const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
     const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
-	
-
-    // Hide counters and progress bar in Exam Mode
-    const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneDummy} / ${qCount}</span>` : '';
-    const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>` : '';
 
     labelDiv.innerHTML = `
         <div class="card-header-flex">
@@ -512,17 +499,12 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
         alert("No questions found for this selection!");
         return;
     }
-    
-    // Save the questions
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
-    
-    // NEW: We now save the examName in the config!
     localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
         mode: mode, 
         timer: timerMinutes,
-        examName: examName // The smart title gets saved here
+        examName: examName 
     }));
-    
     window.location.href = 'quiz.html';
 };
 
@@ -537,34 +519,32 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 
-                // Load arrays (converting everything to strings for safe ID matching)
                 const solvedList = (dbData.solvedQuestions || []).map(id => String(id));
                 const mistakesList = (dbData.mistakes || []).map(id => String(id));
                 const bookmarksList = (dbData.bookmarks || []).map(id => String(id));
                 
-                // IMPORTANT: Update global array so renderGrid knows what is solved!
                 attemptedQuestions = solvedList; 
-                renderGrid(); // Redraw the grid with the new green bars!
+                renderGrid(); // Redraws grid to show green bars!
 
                 const totalAttempts = solvedList.length + mistakesList.length;
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
 
-                // Inject UI Stats
-                document.getElementById('stat-solved').textContent = solvedList.length;
-                document.getElementById('stat-mistakes').textContent = mistakesList.length;
-                document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
-                document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+                // Safely update the DOM if elements exist
+                if(document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
+                if(document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = mistakesList.length;
+                if(document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
+                if(document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
 
                 // Handle Buttons
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
                 const btnBookmarks = document.getElementById('btn-review-bookmarks');
 
-                if (mistakesList.length > 0) {
+                if (btnMistakes && mistakesList.length > 0) {
                     btnMistakes.disabled = false;
                     btnMistakes.style.cursor = "pointer";
                     btnMistakes.onclick = () => launchCustomQuiz(mistakesList, "Review Mistakes");
                 }
-                if (bookmarksList.length > 0) {
+                if (btnBookmarks && bookmarksList.length > 0) {
                     btnBookmarks.disabled = false;
                     btnBookmarks.style.cursor = "pointer";
                     btnBookmarks.onclick = () => launchCustomQuiz(bookmarksList, "My Bookmarks");
@@ -574,11 +554,8 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// Helper to launch quizzes from Custom Arrays (Mistakes/Bookmarks)
 function launchCustomQuiz(questionIds, examTitle) {
-    // Filter the main pool to only find questions matching the IDs in Firebase
     const customPool = allQuestions.filter(q => questionIds.includes(getQID(q)));
-
     if (customPool.length > 0) {
         window.launchQuiz(customPool, 'practice', 0, examTitle);
     } else {
@@ -586,39 +563,44 @@ function launchCustomQuiz(questionIds, examTitle) {
     }
 }
 
-// Wire up the Detailed Analytics Modal
-document.getElementById('btn-view-analytics').onclick = () => {
-    const body = document.getElementById('analytics-body');
-    body.innerHTML = ''; // Clear old data
-    
-    // Loop through subjects to build performance bars
-    Object.keys(subjectTree).forEach(subject => {
-        const total = getQuestionCount('subject', [subject]);
-        const solved = getSolvedCount('subject', [subject]);
-        if (total === 0) return;
+// Wire up the Detailed Analytics Modal safely
+const btnAnalytics = document.getElementById('btn-view-analytics');
+if (btnAnalytics) {
+    btnAnalytics.onclick = () => {
+        const body = document.getElementById('analytics-body');
+        body.innerHTML = ''; 
         
-        const percent = Math.round((solved / total) * 100);
-        let barColor = percent > 70 ? '#10b981' : (percent > 40 ? '#f59e0b' : '#ef4444');
+        Object.keys(subjectTree).forEach(subject => {
+            const total = getQuestionCount('subject', [subject]);
+            const solved = getSolvedCount('subject', [subject]);
+            if (total === 0) return;
+            
+            const percent = Math.round((solved / total) * 100);
+            let barColor = percent > 70 ? '#10b981' : (percent > 40 ? '#f59e0b' : '#ef4444');
 
-        body.innerHTML += `
-            <div style="margin-bottom: 1.2rem;">
-                <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b;">
-                    <span>${subject}</span>
-                    <span>${percent}% <span style="color:#64748b; font-weight:normal; font-size:0.8rem;">(${solved}/${total})</span></span>
+            body.innerHTML += `
+                <div style="margin-bottom: 1.2rem;">
+                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b;">
+                        <span>${subject}</span>
+                        <span>${percent}% <span style="color:#64748b; font-weight:normal; font-size:0.8rem;">(${solved}/${total})</span></span>
+                    </div>
+                    <div class="progress-container" style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="width: ${percent}%; background: ${barColor}; height: 100%; transition: width 0.5s ease;"></div>
+                    </div>
                 </div>
-                <div class="progress-container" style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
-                    <div style="width: ${percent}%; background: ${barColor}; height: 100%; transition: width 0.5s ease;"></div>
-                </div>
-            </div>
-        `;
-    });
-    
-    document.getElementById('analytics-modal').style.display = 'flex';
-};
+            `;
+        });
+        
+        document.getElementById('analytics-modal').style.display = 'flex';
+    };
+}
 
-document.getElementById('close-analytics').onclick = () => {
-    document.getElementById('analytics-modal').style.display = 'none';
-};
+const closeAnalytics = document.getElementById('close-analytics');
+if (closeAnalytics) {
+    closeAnalytics.onclick = () => {
+        document.getElementById('analytics-modal').style.display = 'none';
+    };
+}
 
 switchMode('practice');
 loadDataAndBuildTree();
