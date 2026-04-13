@@ -30,31 +30,25 @@ const viewTitle = document.getElementById('current-view-title');
 // ==========================================
 // 3. EVENT LISTENERS
 // ==========================================
-
 globalSearch.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase().trim();
-    
     if (query.length < 2) { 
         searchDropdown.style.display = 'none';
         return;
     }
-
     const matchedQuestions = allQuestions.filter(q => {
         if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
-        
         const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
         return textToSearch.includes(query);
     });
 
     searchDropdown.innerHTML = '';
-
     if (matchedQuestions.length === 0) {
         searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
     } else {
         matchedQuestions.slice(0, 30).forEach(q => { 
             const div = document.createElement('div');
             div.className = 'search-item';
-            
             const title = `${q.Subject} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
             const questionSnippet = q.Question ? q.Question.substring(0, 90) + "..." : "No text";
 
@@ -62,8 +56,6 @@ globalSearch.addEventListener('input', (e) => {
                 <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
                 <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
             `;
-            
-            // LAUNCH QUIZ DIRECTLY FROM SEARCH (PRACTICE MODE)
             div.onclick = () => {
                 searchDropdown.style.display = 'none';
                 globalSearch.value = '';
@@ -85,9 +77,6 @@ unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
-// ==========================================
-// LAUNCH EXAM FROM BOTTOM DOCK (FIXED!)
-// ==========================================
 document.getElementById('start-exam-btn').addEventListener('click', () => {
     const paths = Array.from(selectedCart).map(str => JSON.parse(str));
     let examPool = allQuestions.filter(q => {
@@ -97,20 +86,17 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
     const qCountInput = parseInt(document.getElementById('exam-q-count').value);
     const timerInput = parseInt(document.getElementById('exam-timer').value);
 
-    // Validate Timer
     if (!timerInput || timerInput <= 0 || isNaN(timerInput)) {
         alert("Please enter a valid time in minutes.");
         return;
     }
 
-    // Shuffle and Limit Questions
     if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) {
         examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
     } else {
         examPool = examPool.sort(() => 0.5 - Math.random());
     }
 
-    // Launch with Exam Config
     window.launchQuiz(examPool, 'exam', timerInput);
 });
 
@@ -132,7 +118,6 @@ popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = [
 // ==========================================
 // 4. CORE FUNCTIONS
 // ==========================================
-
 function toggleSidebar(show) {
     if (show) {
         sidebarEl.classList.add('active');
@@ -184,7 +169,6 @@ async function loadDataAndBuildTree() {
         const csvPath = 'Data/fcps_part1.csv';
         const response = await fetch(csvPath);
         if (!response.ok) throw new Error("CSV file not found");
-
         const csvText = await response.text();
 
         function parseCSV(text) {
@@ -211,7 +195,6 @@ async function loadDataAndBuildTree() {
 
         dataRows.forEach(row => {
             if (row.length < 2) return; 
-
             let rowObj = {};
             headers.forEach((header, index) => {
                 rowObj[header] = row[index] ? row[index].trim() : "";
@@ -241,9 +224,7 @@ async function loadDataAndBuildTree() {
                 if (Topic && !examTree[Exam][Subject].includes(Topic)) examTree[Exam][Subject].push(Topic);
             }
         });
-
         renderGrid();
-
     } catch (error) {
         console.error("Data Load Error:", error);
     }
@@ -282,9 +263,7 @@ function renderGrid() {
     
     Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
-        
         if (unattemptedFilter.checked && qCount === 0) return;
-
         let doneDummy = 0; 
         
         const card = document.createElement('div');
@@ -310,6 +289,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     popupOverlay.style.display = 'flex';
     popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
 
+    // BULK PRACTICE BUTTON
     if (currentMode === 'practice') {
         const fullCount = getQuestionCount(currentView, pathArr);
         const practiceAllDiv = document.createElement('div');
@@ -323,16 +303,45 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
                     <span style="font-weight: bold; color: #064e3b;">Practice Full ${title}</span>
                     <span class="card-count" style="color: #059669;">0 / ${fullCount}</span>
                 </div>
-                <div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>
             </div>
             <button class="btn-solid mini-btn practice-full-btn" style="margin-left: 15px;">Start ➡</button>
         `;
         popupList.appendChild(practiceAllDiv);
-        
-        // LAUNCH QUIZ FROM "PRACTICE FULL"
         practiceAllDiv.querySelector('.practice-full-btn').onclick = () => {
             const pool = allQuestions.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
             window.launchQuiz(pool, 'practice', 0);
+        };
+    }
+
+    // BULK SELECT BUTTON (EXAM MODE FIX)
+    if (currentMode === 'exam') {
+        const fullCount = getQuestionCount(currentView, pathArr);
+        const selectAllDiv = document.createElement('div');
+        selectAllDiv.className = 'list-item';
+        selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)'; 
+        selectAllDiv.style.border = '1px solid #3b82f6';
+        
+        selectAllDiv.innerHTML = `
+            <div style="flex-grow: 1;">
+                <div class="card-header-flex">
+                    <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
+                    <span class="card-count" style="color: #2563eb;">0 / ${fullCount}</span>
+                </div>
+            </div>
+            <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
+        `;
+        popupList.appendChild(selectAllDiv);
+        
+        selectAllDiv.querySelector('.select-all-btn').onclick = () => {
+            const allCbs = popupList.querySelectorAll('input[type="checkbox"]');
+            let allAreChecked = true;
+            allCbs.forEach(cb => { if (!cb.checked) allAreChecked = false; });
+            
+            allCbs.forEach(cb => {
+                cb.checked = !allAreChecked; 
+                cb.dispatchEvent(new Event('change'));
+            });
+            selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
         };
     }
 
@@ -388,13 +397,18 @@ function renderListItem(itemName, nextData, level, itemPath) {
     } else {
         if (currentMode === 'practice') {
             actionBtn.textContent = 'Practice';
-            // LAUNCH QUIZ FROM INDIVIDUAL LEAF TOPIC
             actionBtn.onclick = () => {
                 const pool = allQuestions.filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
                 window.launchQuiz(pool, 'practice', 0);
             };
         } else {
+            // EXAM MODE SELECT BUTTON FIX
             actionBtn.textContent = 'Select';
+            actionBtn.onclick = () => {
+                const cb = itemDiv.querySelector('input[type="checkbox"]');
+                cb.checked = !cb.checked;
+                cb.dispatchEvent(new Event('change'));
+            };
         }
     }
     
@@ -425,7 +439,6 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
         alert("No questions found for this selection!");
         return;
     }
-    // Save questions and quiz configuration to local storage
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
     localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes }));
     

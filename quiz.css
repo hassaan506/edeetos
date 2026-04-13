@@ -257,6 +257,19 @@ body.mode-exam #prev-btn {
 }
 .option-box.selected .option-text { color: #1d4ed8 !important; }
 
+/* --- RESULT SCREEN STYLING --- */
+#exam-result-screen {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transform: scale(0.9);
+    opacity: 0;
+    /* Animation is triggered via JS */
+}
+
 /* ========================================== */
 /* ULTRA-COMPACT MOBILE RESPONSIVENESS        */
 /* ========================================== */

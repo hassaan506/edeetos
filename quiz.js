@@ -31,7 +31,6 @@ const skippedWarningEl = document.getElementById('skipped-warning');
 
 explanationModal.classList.remove('hidden');
 
-// Exam Mode Setup
 if (isExamMode) {
     document.body.classList.add('mode-exam');
     sessionSeconds = quizConfig.timer * 60; 
@@ -42,8 +41,10 @@ function loadSession() {
     if (storedData) {
         quizQueue = JSON.parse(storedData);
         if (quizQueue.length > 0) {
+            // Assign original tracking numbers for logical sequence display
+            quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = i + 1; });
             startTimer();
-            if (!isExamMode) buildNumberGrid(); // Only build grid for practice
+            if (!isExamMode) buildNumberGrid(); 
             loadQuestion(0);
         } else {
             window.location.href = 'questions.html';
@@ -71,7 +72,8 @@ function formatCSVQuestion(rawCsvRow) {
         explanation: rawCsvRow.Explanation || "No explanation provided.",
         isSolvedInDatabase: false,
         hasBeenSkipped: false,
-        userSelectedAnswer: null 
+        userSelectedAnswer: null,
+        originalNumber: rawCsvRow.originalNumber 
     };
 }
 
@@ -86,6 +88,7 @@ function buildNumberGrid() {
         if (q.isSolvedInDatabase) numBtn.classList.add('solved');
 
         numBtn.onclick = () => {
+            if (isExamMode) return; // Completely lock grid in exam mode
             if(index === currentIndex) return;
             const direction = index > currentIndex ? 'right' : 'left';
             triggerSlideTransition(index, direction);
@@ -138,25 +141,24 @@ function loadQuestion(index) {
 
     // EXAM UI LOGIC
     if (isExamMode) {
-        questionIdBadge.textContent = `Question ${currentIndex + 1} / ${quizQueue.length}`;
+        // Track the original sequence number so skipping feels logical
+        questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber} / ${quizQueue.length}`;
         
-        // Show/Hide Skipped Warning
         if (currentQuestionData.hasBeenSkipped) {
             skippedWarningEl.classList.remove('hidden');
-            skipBtn.style.display = 'none'; // Cannot skip twice
+            skipBtn.style.display = 'none'; 
         } else {
             skippedWarningEl.classList.add('hidden');
             skipBtn.style.display = 'block';
         }
 
-        // Transform Next into Submit on final question
         if (currentIndex === quizQueue.length - 1) {
             document.getElementById('next-btn').textContent = "Submit Exam";
         } else {
             document.getElementById('next-btn').textContent = "Next";
         }
     } else {
-        questionIdBadge.textContent = `Question ${currentIndex + 1}`;
+        questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber}`;
     }
 
     questionTextEl.textContent = currentQuestionData.text;
@@ -197,13 +199,10 @@ function handleOptionClick(event, optionData, optionElement) {
         document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
         optionElement.classList.add('selected');
         currentQuestionData.userSelectedAnswer = optionData.text;
-        
-        // Hide Skip Button once an answer is selected
         skipBtn.style.display = 'none';
         return; 
     }
 
-    // Practice Mode Logic
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
     if (!optionData.isCorrect) {
@@ -255,13 +254,16 @@ function showResults() {
     const total = quizQueue.length;
     const percentage = Math.round((correctCount / total) * 100);
     
-    // Hide Quiz UI
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
-    // Show Result UI
     const resultsEl = document.getElementById('exam-result-screen');
     resultsEl.classList.remove('hidden');
+    
+    // Trigger CSS Animation
+    resultsEl.style.animation = 'none';
+    void resultsEl.offsetWidth;
+    resultsEl.style.animation = 'popSuccess 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
     
     const titleEl = document.getElementById('result-title');
     const scoreEl = document.getElementById('result-score');
@@ -269,11 +271,11 @@ function showResults() {
     scoreEl.textContent = `You scored ${correctCount} out of ${total} (${percentage}%)`;
     
     if (percentage >= 75) {
-        titleEl.textContent = "🎉 Passed!";
-        titleEl.style.color = "#10b981";
+        titleEl.innerHTML = `<i class="fas fa-check-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #10b981;"></i> 🎉 Passed!`;
+        titleEl.style.color = "#065f46";
     } else {
-        titleEl.textContent = "❌ Failed";
-        titleEl.style.color = "#ef4444";
+        titleEl.innerHTML = `<i class="fas fa-times-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #ef4444;"></i> ❌ Failed`;
+        titleEl.style.color = "#991b1b";
     }
 }
 
@@ -304,7 +306,6 @@ skipBtn.onclick = () => {
     let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
     skippedQuestion.hasBeenSkipped = true;
     quizQueue.push(skippedQuestion);
-    
     triggerSlideTransition(currentIndex, 'right');
 };
 
@@ -332,6 +333,7 @@ document.getElementById('next-btn').onclick = () => {
 };
 
 document.getElementById('prev-btn').onclick = () => {
+    if (isExamMode) return; // Completely blocked in exam mode
     if (currentIndex > 0) triggerSlideTransition(currentIndex - 1, 'left');
 };
 
