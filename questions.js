@@ -14,6 +14,7 @@ let currentMode = "practice";
 let selectedCart = new Set(); 
 let popupHistory = []; 
 let attemptedQuestions = []; 
+let userExamHistory = []; // NEW: Holds past exam data!
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -523,19 +524,18 @@ onAuthStateChanged(auth, async (user) => {
                 const mistakesList = (dbData.mistakes || []).map(id => String(id));
                 const bookmarksList = (dbData.bookmarks || []).map(id => String(id));
                 
+                userExamHistory = dbData.examHistory || []; // Grab exams!
                 attemptedQuestions = solvedList; 
-                renderGrid(); // Redraws grid to show green bars!
+                renderGrid(); 
 
                 const totalAttempts = solvedList.length + mistakesList.length;
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
 
-                // Safely update the DOM if elements exist
                 if(document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
                 if(document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = mistakesList.length;
                 if(document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
                 if(document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
 
-                // Handle Buttons
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
                 const btnBookmarks = document.getElementById('btn-review-bookmarks');
 
@@ -554,21 +554,38 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
+// Fixed fuzzy-matcher so it ignores "Ghost Data" from older versions
 function launchCustomQuiz(questionIds, examTitle) {
-    const customPool = allQuestions.filter(q => questionIds.includes(getQID(q)));
+    const safeIds = questionIds.map(String);
+    
+    const customPool = allQuestions.filter(q => {
+        const qid1 = String(q['QuestionID']);
+        const qid2 = String(q['Question ID']);
+        const qid3 = String(q['ID']);
+        const qid4 = String(q['id']);
+        const possibleIds = [qid1, qid2, qid3, qid4, `q-${qid1}`, qid1.replace('q-', '')];
+        
+        return safeIds.some(id => possibleIds.includes(id));
+    });
+
     if (customPool.length > 0) {
         window.launchQuiz(customPool, 'practice', 0, examTitle);
     } else {
-        alert("We couldn't find those specific questions in the database.");
+        alert("No matching questions found! The mistakes saved in your profile are likely 'ghost data' from older tests before we fixed the ID system. Try practicing a new topic!");
     }
 }
 
-// Wire up the Detailed Analytics Modal safely
+// Rewritten Analytics Modal to include Exams
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
         const body = document.getElementById('analytics-body');
-        body.innerHTML = ''; 
+        
+        // 1. Progress Bars Section
+        let html = `<div style="margin-bottom: 2rem;">
+                        <h4 style="color: #064e3b; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
+                            <i class="fas fa-chart-bar"></i> Subject Performance
+                        </h4>`;
         
         Object.keys(subjectTree).forEach(subject => {
             const total = getQuestionCount('subject', [subject]);
@@ -578,7 +595,7 @@ if (btnAnalytics) {
             const percent = Math.round((solved / total) * 100);
             let barColor = percent > 70 ? '#10b981' : (percent > 40 ? '#f59e0b' : '#ef4444');
 
-            body.innerHTML += `
+            html += `
                 <div style="margin-bottom: 1.2rem;">
                     <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b;">
                         <span>${subject}</span>
@@ -590,7 +607,44 @@ if (btnAnalytics) {
                 </div>
             `;
         });
+        html += `</div>`;
+
+        // 2. Exam History Section
+        html += `<div style="margin-bottom: 1rem;">
+                    <h4 style="color: #064e3b; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
+                        <i class="fas fa-history"></i> Recent Exams
+                    </h4>`;
         
+        if (!userExamHistory || userExamHistory.length === 0) {
+            html += `<div style="text-align: center; color: #64748b; padding: 1rem; background: #f8fafc; border-radius: 8px; font-size: 0.9rem;">No exams completed yet.</div>`;
+        } else {
+            html += `<div style="max-height: 250px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <tr style="background: #f1f5f9; text-align: left; position: sticky; top: 0;">
+                                <th style="padding: 10px; border-bottom: 1px solid #cbd5e1; color: #475569;">Date</th>
+                                <th style="padding: 10px; border-bottom: 1px solid #cbd5e1; color: #475569;">Exam</th>
+                                <th style="padding: 10px; border-bottom: 1px solid #cbd5e1; color: #475569;">Score</th>
+                            </tr>`;
+            
+            const sortedExams = [...userExamHistory].reverse();
+            sortedExams.forEach(exam => {
+                const d = new Date(exam.date);
+                const dateStr = d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+                const scoreColor = exam.percentage >= 75 ? '#10b981' : '#ef4444';
+                
+                html += `
+                    <tr style="border-bottom: 1px solid #e2e8f0; background: #fff;">
+                        <td style="padding: 10px; color: #64748b; white-space: nowrap;">${dateStr}</td>
+                        <td style="padding: 10px; font-weight: 600; color: #1e293b;">${exam.examName || 'Custom Exam'}</td>
+                        <td style="padding: 10px; color: ${scoreColor}; font-weight: bold;">${exam.percentage}%</td>
+                    </tr>
+                `;
+            });
+            html += `</table></div>`;
+        }
+        html += `</div>`;
+
+        body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
     };
 }
