@@ -1,5 +1,5 @@
 import { auth, db } from './firebase-config.js';
-import { doc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, setDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
@@ -144,7 +144,6 @@ function loadQuestion(index) {
 
     // EXAM UI LOGIC
     if (isExamMode) {
-        // Track the original sequence number so skipping feels logical
         questionIdBadge.textContent = `Question ${currentQuestionData.originalNumber} / ${quizQueue.length}`;
         
         if (currentQuestionData.hasBeenSkipped) {
@@ -186,12 +185,38 @@ function loadQuestion(index) {
         optionsContainer.appendChild(optBox);
     });
 
+    // ==========================================
+    // BOOKMARK UI SYNC (NEW)
+    // ==========================================
+    const bookmarkBtn = document.getElementById('bookmark-btn');
+    if (bookmarkBtn) {
+        // Check if this question is already bookmarked in our local state
+        if (currentQuestionData.isBookmarked) {
+            bookmarkBtn.classList.replace('far', 'fas'); // Change empty star to solid
+        } else {
+            bookmarkBtn.classList.replace('fas', 'far'); // Change solid star to empty
+        }
+
+        // Attach the click handler
+        bookmarkBtn.onclick = () => {
+            // Toggle local state
+            currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
+
+            // Visual toggle
+            if (currentQuestionData.isBookmarked) {
+                bookmarkBtn.classList.replace('far', 'fas');
+            } else {
+                bookmarkBtn.classList.replace('fas', 'far');
+            }
+
+            // Save to Firebase (using the function we wrote in the previous step)
+            toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+        };
+    }
+
     updateGridStyles();
 }
 
-// ==========================================
-// 3. OPTION SELECTION LOGIC
-// ==========================================
 // ==========================================
 // DATABASE SYNC FUNCTIONS
 // ==========================================
@@ -216,6 +241,55 @@ async function savePracticeProgress(questionId, isCorrect) {
         }
     } catch (error) {
         console.error("Error saving to Firebase:", error);
+    }
+}
+
+// ==========================================
+// EXAM MODE DATABASE SYNC 
+// ==========================================
+async function saveExamProgress(correctIds, mistakeIds) {
+    const user = auth.currentUser;
+    if (!user) return; // Do nothing if not logged in
+
+    const userRef = doc(db, "users", user.uid);
+    
+    try {
+        // We use the spread operator (...) to push multiple IDs into the array at once
+        let updates = {};
+        
+        if (correctIds.length > 0) {
+            updates.solvedQuestions = arrayUnion(...correctIds);
+        }
+        if (mistakeIds.length > 0) {
+            updates.mistakes = arrayUnion(...mistakeIds);
+        }
+
+        // Only write to the database if there is something to update
+        if (Object.keys(updates).length > 0) {
+            await setDoc(userRef, updates, { merge: true });
+        }
+        
+    } catch (error) {
+        console.error("Error saving exam progress to Firebase:", error);
+    }
+}
+
+// ==========================================
+// BOOKMARK SYNC FUNCTION
+// ==========================================
+async function toggleBookmarkInFirebase(questionId, isBookmarking) {
+    const user = auth.currentUser;
+    if (!user) return; // Do nothing if not logged in
+
+    const userRef = doc(db, "users", user.uid);
+    
+    try {
+        // If isBookmarking is true, we add it. If false, we remove it.
+        await setDoc(userRef, {
+            bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
+        }, { merge: true });
+    } catch (error) {
+        console.error("Error updating bookmark in Firebase:", error);
     }
 }
 
@@ -281,20 +355,27 @@ function updateFeedbackBar() {
 // 4. EXAM SUBMISSION & RESULTS
 // ==========================================
 function showResults() {
-    clearInterval(timerInterval);
-    
+    clearInterval(timerInterval);    
     let correctCount = 0;
+    let correctIds = [];
+    let mistakeIds = [];
     quizQueue.forEach(q => {
         let correctOpt = q.options.find(o => o.isCorrect);
         if (correctOpt && q.userSelectedAnswer === correctOpt.text) {
             correctCount++;
+            correctIds.push(q.originalNumber);
+        } else if (q.userSelectedAnswer) {
+            mistakeIds.push(q.originalNumber);
         }
     });
+
+    if (isExamMode) {
+        saveExamProgress(correctIds, mistakeIds);
+    }
 
     const total = quizQueue.length;
     const percentage = Math.round((correctCount / total) * 100);
     
-    // Hide the quiz question UI completely
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
