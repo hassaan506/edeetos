@@ -4,13 +4,12 @@
 let quizQueue = [];
 let currentIndex = 0;
 let currentQuestionData = null;
-
 let wrongAttempts = 0;
 let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
 
-// DOM Elements
+const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
 const questionTextEl = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
@@ -24,9 +23,9 @@ const closeExplanationBtn = document.getElementById('close-explanation');
 const questionIdBadge = document.getElementById('question-id-badge');
 const numberGrid = document.getElementById('number-grid');
 
-// ==========================================
-// 2. INITIALIZE SESSION
-// ==========================================
+// Remove conflicting classes on load
+explanationModal.classList.remove('hidden');
+
 function loadSession() {
     const storedData = localStorage.getItem('edeetos_active_quiz');
     if (storedData) {
@@ -36,7 +35,6 @@ function loadSession() {
             buildNumberGrid();
             loadQuestion(0);
         } else {
-            alert("Quiz queue is empty.");
             window.location.href = 'questions.html';
         }
     } else {
@@ -45,20 +43,14 @@ function loadSession() {
 }
 
 function formatCSVQuestion(rawCsvRow) {
-    // Matches your 'CorrectAnswer' column (e.g., "D")
     const correctLetter = (rawCsvRow['CorrectAnswer'] || '').toString().trim().toUpperCase();
     const options = [];
     
-    // Maps your exact columns: OptionA, OptionB, OptionC, OptionD, OptionE
     ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
-        const optText = rawCsvRow[`Option${letter}`]; 
-        
+        const optKey = `Option${letter}`;
+        const optText = rawCsvRow[optKey]; 
         if (optText && optText.trim() !== '') {
-            options.push({
-                text: optText,
-                // Matches the letter in CorrectAnswer to the current option
-                isCorrect: correctLetter === letter
-            });
+            options.push({ text: optText, isCorrect: correctLetter === letter });
         }
     });
 
@@ -70,9 +62,6 @@ function formatCSVQuestion(rawCsvRow) {
     };
 }
 
-// ==========================================
-// 3. RENDER THE QUESTION & GRID
-// ==========================================
 function buildNumberGrid() {
     numberGrid.innerHTML = '';
     quizQueue.forEach((_, index) => {
@@ -80,7 +69,12 @@ function buildNumberGrid() {
         numBtn.className = 'grid-num';
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
-        numBtn.onclick = () => loadQuestion(index);
+        
+        numBtn.onclick = () => {
+            if(index === currentIndex) return;
+            const direction = index > currentIndex ? 'right' : 'left';
+            triggerSlideTransition(index, direction);
+        };
         numberGrid.appendChild(numBtn);
     });
 }
@@ -91,6 +85,29 @@ function updateGridStyles() {
     if (activeBtn) activeBtn.classList.add('active');
 }
 
+// ==========================================
+// 2. SLIDE TRANSITIONS (NEXT/PREV)
+// ==========================================
+function triggerSlideTransition(newIndex, direction) {
+    const outClass = direction === 'right' ? 'slide-out-left' : 'slide-out-right';
+    const inClass = direction === 'right' ? 'slide-in-right' : 'slide-in-left';
+
+    // 1. Clear old classes and force reflow
+    cardEl.className = 'question-card';
+    void cardEl.offsetWidth; 
+    
+    // 2. Slide Out
+    cardEl.classList.add(outClass);
+    
+    // 3. Wait for slide out, swap data, then Slide In
+    setTimeout(() => {
+        loadQuestion(newIndex);
+        cardEl.className = 'question-card'; 
+        void cardEl.offsetWidth; 
+        cardEl.classList.add(inClass);
+    }, 300);
+}
+
 function loadQuestion(index) {
     currentIndex = index;
     const rawData = quizQueue[currentIndex];
@@ -99,8 +116,8 @@ function loadQuestion(index) {
     wrongAttempts = 0;
     hasAnsweredCorrectly = false;
     updateFeedbackBar();
-    explanationBtn.classList.add('hidden');
-    explanationModal.classList.add('hidden');
+    explanationBtn.style.display = 'none'; // Hide explanation button initially
+    explanationModal.classList.remove('show');
 
     questionIdBadge.textContent = `Question ${currentIndex + 1}`;
     questionTextEl.textContent = currentQuestionData.text;
@@ -110,7 +127,6 @@ function loadQuestion(index) {
     currentQuestionData.options.forEach(opt => {
         const optBox = document.createElement('div');
         optBox.className = 'option-box';
-        // Note: No A/B/C/D letter injected here! Matches old app perfectly.
         optBox.innerHTML = `
             <div class="option-text">${opt.text}</div>
             <i class="fas fa-eye eye-icon" title="Strikeout option"></i>
@@ -123,7 +139,7 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 4. INTERACTION LOGIC
+// 3. RIGHT/WRONG ANIMATIONS
 // ==========================================
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
@@ -133,21 +149,30 @@ function handleOptionClick(event, optionData, optionElement) {
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
     if (!optionData.isCorrect) {
-        optionElement.classList.add('incorrect');
+        // FORCE SHAKE
+        optionElement.classList.remove('apply-shake');
+        void optionElement.offsetWidth; // Reflow
+        optionElement.classList.add('incorrect', 'apply-shake');
+        
         wrongAttempts++;
         updateFeedbackBar();
     } else {
-        optionElement.classList.add('correct');
-        hasAnsweredCorrectly = true;
+        // FORCE POP
+        optionElement.classList.remove('apply-pop');
+        void optionElement.offsetWidth; // Reflow
+        optionElement.classList.add('correct', 'apply-pop');
         
+        hasAnsweredCorrectly = true;
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
         
         const activeGridBtn = document.getElementById(`grid-num-${currentIndex}`);
         if(activeGridBtn) activeGridBtn.classList.add('solved');
 
-        explanationBtn.classList.remove('hidden'); 
-        setTimeout(() => explanationModal.classList.remove('hidden'), 400);
+        explanationBtn.style.display = 'inline-block'; 
+        
+        // Show modal with animation
+        setTimeout(() => explanationModal.classList.add('show'), 600);
     }
 }
 
@@ -173,18 +198,17 @@ function startTimer() {
 }
 
 // ==========================================
-// 5. NAVIGATION CONTROLS
+// 4. MODAL & NAVIGATION CONTROLS
 // ==========================================
-explanationBtn.onclick = () => explanationModal.classList.remove('hidden');
-closeExplanationBtn.onclick = () => explanationModal.classList.add('hidden');
+explanationBtn.onclick = () => explanationModal.classList.add('show');
+closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
 
 document.getElementById('next-btn').onclick = () => {
-    if (currentIndex < quizQueue.length - 1) loadQuestion(currentIndex + 1);
+    if (currentIndex < quizQueue.length - 1) triggerSlideTransition(currentIndex + 1, 'right');
 };
 
 document.getElementById('prev-btn').onclick = () => {
-    if (currentIndex > 0) loadQuestion(currentIndex - 1);
+    if (currentIndex > 0) triggerSlideTransition(currentIndex - 1, 'left');
 };
 
-// Start the engine
 loadSession();
