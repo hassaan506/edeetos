@@ -213,6 +213,51 @@ body.mode-exam #show-explanation-btn {
 }
 
 /* ========================================== */
+/* EXAM MODE SPECIFIC STYLES                  */
+/* ========================================== */
+
+/* Hide tools, feedback, grid, and prev button in Exam Mode */
+body.mode-exam .icon-group,
+body.mode-exam .feedback-tracker,
+body.mode-exam #show-explanation-btn,
+body.mode-exam .number-grid,
+body.mode-exam #prev-btn {
+    display: none !important;
+}
+
+/* Skipped Warning Banner */
+.skipped-warning {
+    background: #fffbeb; 
+    color: #d97706; 
+    padding: 0.8rem 1rem; 
+    border-radius: 12px; 
+    font-weight: bold; 
+    margin-bottom: 1.5rem; 
+    text-align: center; 
+    border: 1px solid #fcd34d;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.1);
+}
+
+.hidden { display: none !important; }
+
+/* Skip Button Styling */
+.skip-btn {
+    background: #f59e0b; color: white; border: none; border-radius: 12px;
+    font-weight: bold; font-size: 1rem; padding: 0.5rem 1.2rem;
+    cursor: pointer; transition: 0.2s; box-shadow: 0 8px 15px rgba(245, 158, 11, 0.2);
+    display: none; height: 46px; 
+}
+.skip-btn:hover { background: #d97706; transform: translateY(-2px); }
+
+/* Selected Option State (Exam Mode Only) */
+.option-box.selected { 
+    border-color: #3b82f6 !important; 
+    background: rgba(59, 130, 246, 0.1) !important; 
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2) !important; 
+}
+.option-box.selected .option-text { color: #1d4ed8 !important; }
+
+/* ========================================== */
 /* ULTRA-COMPACT MOBILE RESPONSIVENESS        */
 /* ========================================== */
 @media (max-width: 768px) {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Session - EDEETOS</title>
+    <title>Session - EDEETOS</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,39 +21,52 @@
         </div>
 
         <div class="question-card">
-            <div class="card-header">
-                <div class="question-pill" id="question-id-badge">Question 1</div>
-                <div class="icon-group">
-                    <button class="icon-btn"><i class="fas fa-pen"></i></button>
-                    <button class="icon-btn"><i class="far fa-star"></i></button>
-                    <button class="icon-btn"><i class="far fa-flag"></i></button>
-                </div>
-            </div>
-
-            <div class="feedback-tracker">
-                <span class="count-red" id="wrong-count">0 ✖</span>
-                <div class="feedback-bar-bg">
-                    <div class="feedback-bar-fill" id="feedback-fill" style="width: 0%;"></div>
-                </div>
-                <span class="count-green" id="right-count">0 ✔</span>
-            </div>
-
-            <div class="question-text" id="question-text">
-                Loading question...
-            </div>
-
-            <div class="options-container" id="options-container">
-                </div>
             
-            <div style="text-align: center; margin-top: 1rem;">
-                <button id="show-explanation-btn" class="btn-outline hidden" style="border-color: #0084ff; color: #0084ff;">Show Explanation</button>
+            <div id="quiz-ui-container">
+                <div class="card-header">
+                    <div class="question-pill" id="question-id-badge">Question 1</div>
+                    <div class="icon-group">
+                        <button class="icon-btn"><i class="fas fa-pen"></i></button>
+                        <button class="icon-btn"><i class="far fa-star"></i></button>
+                        <button class="icon-btn"><i class="far fa-flag"></i></button>
+                    </div>
+                </div>
+
+                <div class="feedback-tracker">
+                    <span class="count-red" id="wrong-count">0 ✖</span>
+                    <div class="feedback-bar-bg">
+                        <div class="feedback-bar-fill" id="feedback-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="count-green" id="right-count">0 ✔</span>
+                </div>
+
+                <div id="skipped-warning" class="skipped-warning hidden">
+                    <i class="fas fa-exclamation-circle"></i> You previously skipped this question. You must answer it now.
+                </div>
+
+                <div class="question-text" id="question-text">
+                    Loading question...
+                </div>
+
+                <div class="options-container" id="options-container">
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button id="show-explanation-btn" class="btn-outline hidden" style="border-color: #0084ff; color: #0084ff;">Show Explanation</button>
+                </div>
             </div>
+
+            <div id="exam-result-screen" class="hidden" style="text-align: center; padding: 2rem 0;">
+                <h2 id="result-title" style="font-size: 2.5rem; margin-bottom: 1rem;"></h2>
+                <p id="result-score" style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 2.5rem;"></p>
+                <button class="btn-solid" onclick="window.location.href='questions.html'" style="padding: 1rem 2.5rem; font-size: 1.2rem; border-radius: 12px; background: #10b981; color: white; border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(16,185,129,0.3);">Return to Dashboard</button>
+            </div>
+
         </div>
 
-        <div class="number-grid" id="number-grid">
-            </div>
+        <div class="number-grid" id="number-grid"></div>
 
-        <div class="bottom-actions">
+        <div class="bottom-actions" id="bottom-actions-container">
             <button id="prev-btn" class="prev-icon-btn"><i class="fas fa-arrow-left"></i></button>
             <button id="skip-btn" class="skip-btn">Skip</button>
             <button id="next-btn" class="next-action-btn">Next</button>

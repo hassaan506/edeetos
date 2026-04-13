@@ -9,7 +9,6 @@ let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
 
-// Load Config from Bridge
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
 const isExamMode = quizConfig.mode === 'exam';
@@ -28,13 +27,14 @@ const closeExplanationBtn = document.getElementById('close-explanation');
 const questionIdBadge = document.getElementById('question-id-badge');
 const numberGrid = document.getElementById('number-grid');
 const skipBtn = document.getElementById('skip-btn');
+const skippedWarningEl = document.getElementById('skipped-warning');
 
 explanationModal.classList.remove('hidden');
 
-// Setup UI for Exam Mode
+// Exam Mode Setup
 if (isExamMode) {
     document.body.classList.add('mode-exam');
-    sessionSeconds = quizConfig.timer * 60; // Convert minutes to seconds for countdown
+    sessionSeconds = quizConfig.timer * 60; 
 }
 
 function loadSession() {
@@ -43,7 +43,7 @@ function loadSession() {
         quizQueue = JSON.parse(storedData);
         if (quizQueue.length > 0) {
             startTimer();
-            buildNumberGrid();
+            if (!isExamMode) buildNumberGrid(); // Only build grid for practice
             loadQuestion(0);
         } else {
             window.location.href = 'questions.html';
@@ -71,7 +71,7 @@ function formatCSVQuestion(rawCsvRow) {
         explanation: rawCsvRow.Explanation || "No explanation provided.",
         isSolvedInDatabase: false,
         hasBeenSkipped: false,
-        userSelectedAnswer: null // Tracks exam answer
+        userSelectedAnswer: null 
     };
 }
 
@@ -83,10 +83,7 @@ function buildNumberGrid() {
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
         
-        // Restore answered state if user jumps around
-        if (q.userSelectedAnswer || q.isSolvedInDatabase) {
-            numBtn.classList.add(isExamMode ? 'answered' : 'solved');
-        }
+        if (q.isSolvedInDatabase) numBtn.classList.add('solved');
 
         numBtn.onclick = () => {
             if(index === currentIndex) return;
@@ -98,6 +95,7 @@ function buildNumberGrid() {
 }
 
 function updateGridStyles() {
+    if (isExamMode) return;
     document.querySelectorAll('.grid-num').forEach(btn => btn.classList.remove('active'));
     const activeBtn = document.getElementById(`grid-num-${currentIndex}`);
     if (activeBtn) activeBtn.classList.add('active');
@@ -126,27 +124,41 @@ function loadQuestion(index) {
     currentIndex = index;
     currentQuestionData = quizQueue[currentIndex];
 
-    // Format if not formatted yet
     if (!currentQuestionData.options) {
         quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
         currentQuestionData = quizQueue[currentIndex];
     }
 
     wrongAttempts = 0;
-    hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; // Persist practice state
+    hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; 
     
     if (!isExamMode) updateFeedbackBar();
     explanationBtn.style.display = 'none'; 
     explanationModal.classList.remove('show');
 
-    // Skip Button Logic
-    if (isExamMode && !currentQuestionData.hasBeenSkipped && !currentQuestionData.userSelectedAnswer) {
-        skipBtn.style.display = 'block';
+    // EXAM UI LOGIC
+    if (isExamMode) {
+        questionIdBadge.textContent = `Question ${currentIndex + 1} / ${quizQueue.length}`;
+        
+        // Show/Hide Skipped Warning
+        if (currentQuestionData.hasBeenSkipped) {
+            skippedWarningEl.classList.remove('hidden');
+            skipBtn.style.display = 'none'; // Cannot skip twice
+        } else {
+            skippedWarningEl.classList.add('hidden');
+            skipBtn.style.display = 'block';
+        }
+
+        // Transform Next into Submit on final question
+        if (currentIndex === quizQueue.length - 1) {
+            document.getElementById('next-btn').textContent = "Submit Exam";
+        } else {
+            document.getElementById('next-btn').textContent = "Next";
+        }
     } else {
-        skipBtn.style.display = 'none';
+        questionIdBadge.textContent = `Question ${currentIndex + 1}`;
     }
 
-    questionIdBadge.textContent = `Question ${currentIndex + 1}`;
     questionTextEl.textContent = currentQuestionData.text;
     explanationText.textContent = currentQuestionData.explanation;
 
@@ -155,7 +167,6 @@ function loadQuestion(index) {
         const optBox = document.createElement('div');
         optBox.className = 'option-box';
         
-        // Restore previous states
         if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
             optBox.classList.add('selected');
         } else if (!isExamMode && hasAnsweredCorrectly && opt.isCorrect) {
@@ -174,7 +185,7 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 3. RIGHT/WRONG vs EXAM SELECTION
+// 3. OPTION SELECTION LOGIC
 // ==========================================
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
@@ -182,41 +193,33 @@ function handleOptionClick(event, optionData, optionElement) {
         return; 
     }
 
-    // --- EXAM MODE BEHAVIOR ---
     if (isExamMode) {
-        // Clear other selections
         document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
         optionElement.classList.add('selected');
-        
-        // Save Answer
         currentQuestionData.userSelectedAnswer = optionData.text;
-        document.getElementById(`grid-num-${currentIndex}`).classList.add('answered');
         
-        // Hide Skip Button once answered
+        // Hide Skip Button once an answer is selected
         skipBtn.style.display = 'none';
         return; 
     }
 
-    // --- PRACTICE MODE BEHAVIOR ---
+    // Practice Mode Logic
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
     if (!optionData.isCorrect) {
         optionElement.classList.remove('apply-shake');
         void optionElement.offsetWidth;
         optionElement.classList.add('incorrect', 'apply-shake');
-        
         wrongAttempts++;
         updateFeedbackBar();
     } else {
         optionElement.classList.remove('apply-pop');
         void optionElement.offsetWidth; 
         optionElement.classList.add('correct', 'apply-pop');
-        
         hasAnsweredCorrectly = true;
-        currentQuestionData.isSolvedInDatabase = true; // Save solved state locally
+        currentQuestionData.isSolvedInDatabase = true; 
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
-        
         document.getElementById(`grid-num-${currentIndex}`).classList.add('solved');
         explanationBtn.style.display = 'inline-block'; 
         setTimeout(() => explanationModal.classList.add('show'), 600);
@@ -236,20 +239,59 @@ function updateFeedbackBar() {
 }
 
 // ==========================================
-// 4. TIMER & SKIP LOGIC
+// 4. EXAM SUBMISSION & RESULTS
+// ==========================================
+function showResults() {
+    clearInterval(timerInterval);
+    
+    let correctCount = 0;
+    quizQueue.forEach(q => {
+        let correctOpt = q.options.find(o => o.isCorrect);
+        if (correctOpt && q.userSelectedAnswer === correctOpt.text) {
+            correctCount++;
+        }
+    });
+
+    const total = quizQueue.length;
+    const percentage = Math.round((correctCount / total) * 100);
+    
+    // Hide Quiz UI
+    document.getElementById('quiz-ui-container').style.display = 'none';
+    document.getElementById('bottom-actions-container').style.display = 'none';
+    
+    // Show Result UI
+    const resultsEl = document.getElementById('exam-result-screen');
+    resultsEl.classList.remove('hidden');
+    
+    const titleEl = document.getElementById('result-title');
+    const scoreEl = document.getElementById('result-score');
+    
+    scoreEl.textContent = `You scored ${correctCount} out of ${total} (${percentage}%)`;
+    
+    if (percentage >= 75) {
+        titleEl.textContent = "🎉 Passed!";
+        titleEl.style.color = "#10b981";
+    } else {
+        titleEl.textContent = "❌ Failed";
+        titleEl.style.color = "#ef4444";
+    }
+}
+
+// ==========================================
+// 5. TIMER & SKIP LOGIC
 // ==========================================
 function startTimer() {
     timerInterval = setInterval(() => {
         if (isExamMode) {
-            sessionSeconds--; // Countdown
+            sessionSeconds--; 
             if (sessionSeconds <= 0) {
                 clearInterval(timerInterval);
-                alert("Time is up! Your exam will now be submitted.");
-                window.location.href = 'questions.html'; // Or redirect to a results page
+                alert("Time is up! Submitting exam automatically.");
+                showResults();
                 return;
             }
         } else {
-            sessionSeconds++; // Countup
+            sessionSeconds++; 
         }
 
         const mins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
@@ -258,36 +300,35 @@ function startTimer() {
     }, 1000);
 }
 
-// SKIP LOGIC
 skipBtn.onclick = () => {
-    // 1. Remove the current question from the array
     let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
-    
-    // 2. Mark it so it can't be skipped again
     skippedQuestion.hasBeenSkipped = true;
-    
-    // 3. Push it to the very end of the array
     quizQueue.push(skippedQuestion);
     
-    // 4. Rebuild the visual grid to reflect the new order
-    buildNumberGrid();
-    
-    // 5. The next question naturally falls into the currentIndex, so just trigger a reload
-    // Edge case: if we skipped the very last item, pull index back by 1
-    if (currentIndex >= quizQueue.length) {
-        currentIndex = quizQueue.length - 1;
-    }
     triggerSlideTransition(currentIndex, 'right');
 };
 
 // ==========================================
-// 5. MODAL & NAVIGATION CONTROLS
+// 6. MODAL & NAVIGATION CONTROLS
 // ==========================================
 explanationBtn.onclick = () => explanationModal.classList.add('show');
 closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
 
 document.getElementById('next-btn').onclick = () => {
-    if (currentIndex < quizQueue.length - 1) triggerSlideTransition(currentIndex + 1, 'right');
+    if (isExamMode) {
+        if (!currentQuestionData.userSelectedAnswer) {
+            alert("Please select an answer. If you are stuck, click Skip.");
+            return;
+        }
+        if (currentIndex === quizQueue.length - 1) {
+            showResults();
+            return;
+        }
+    }
+
+    if (currentIndex < quizQueue.length - 1) {
+        triggerSlideTransition(currentIndex + 1, 'right');
+    }
 };
 
 document.getElementById('prev-btn').onclick = () => {
