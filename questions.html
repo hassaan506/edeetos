@@ -41,30 +41,36 @@
 	</nav>
 	
     <section class="section-container" id="selection-screen">
-	<div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">
-            <h2 style="color: #1e293b; margin-bottom: 1rem; border-bottom: 1px dashed #cbd5e1; padding-bottom: 0.5rem; display: inline-block;">
-                📊 FCPS Part 1 Progress
-            </h2>
+	<div class="glass-panel" style="margin-bottom: 2rem; padding: 1rem 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
             
-            <div style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                <div>✅ FCPS Part 1 Solved: <strong id="stat-solved" style="color: #0284c7;">0</strong></div>
-                <div>🎯 Accuracy: <strong id="stat-accuracy" style="color: #334155;">0%</strong> <span style="font-size: 0.9rem; color: #64748b;" id="stat-accuracy-fraction">(0/0)</span></div>
-                <div>❌ Pending Mistakes: <strong id="stat-mistakes" style="color: #ef4444;">0</strong></div>
-                <div>⭐ Bookmarked: <strong id="stat-bookmarks" style="color: #eab308;">0</strong></div>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+                <div style="font-weight: bold; color: #064e3b; font-size: 1.1rem;"><i class="fas fa-chart-pie"></i> Progress</div>
+                <div style="font-size: 0.95rem; color: #475569; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span>✅ Solved: <strong id="stat-solved" style="color: #0284c7;">0</strong></span>
+                    <span>🎯 Accuracy: <strong id="stat-accuracy" style="color: #334155;">0%</strong></span>
+                    <span>❌ Mistakes: <strong id="stat-mistakes" style="color: #ef4444;">0</strong></span>
+                    <span>⭐ Bookmarks: <strong id="stat-bookmarks" style="color: #eab308;">0</strong></span>
+                </div>
             </div>
 
-            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                <button id="btn-practice-mistakes" class="btn-outline" style="border-color: #f59e0b; color: #b45309;" disabled>
-                    ⚠️ Practice Mistakes
-                </button>
-                <button id="btn-review-bookmarks" class="btn-outline" style="border-color: #3b82f6; color: #1d4ed8;" disabled>
-                    ⭐ Review Bookmarks
-                </button>
-                <button id="btn-view-analytics" class="btn-outline" style="color: #475569;">
-                    View Detailed Analytics 📈
-                </button>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button id="btn-practice-mistakes" class="btn-outline mini-btn" style="border-color: #f59e0b; color: #b45309;" disabled>⚠️ Practice Mistakes</button>
+                <button id="btn-review-bookmarks" class="btn-outline mini-btn" style="border-color: #3b82f6; color: #1d4ed8;" disabled>⭐ Review Bookmarks</button>
+                <button id="btn-view-analytics" class="btn-outline mini-btn" style="color: #475569;">📈 View Analytics</button>
             </div>
         </div>
+
+        <div id="analytics-modal" class="popup-overlay" style="display: none;">
+            <div class="glass-panel popup-content" style="max-width: 500px;">
+                <div class="popup-header">
+                    <h3 style="color: #064e3b;"><i class="fas fa-chart-line"></i> Performance Report</h3>
+                    <button id="close-analytics" class="icon-btn">✖</button>
+                </div>
+                <div class="popup-body" id="analytics-body" style="padding-top: 1rem;">
+                    </div>
+            </div>
+        </div>
+		
         <div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">
             <h2 style="color: #064e3b; margin-bottom: 1rem;">Select Study Mode</h2>
             <div class="mode-toggle">

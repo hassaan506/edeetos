@@ -305,6 +305,15 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }).length;
 }
 
+function getQID(q) {
+    return String(q['QuestionID'] || q['Question ID'] || q['ID'] || q['id']);
+}
+
+function getSolvedCount(view, pathArr) {
+    const attemptedPool = allQuestions.filter(q => attemptedQuestions.includes(getQID(q)));
+    return getQuestionCount(view, pathArr, attemptedPool);
+}
+
 function renderGrid() {
     if (!subjectsGrid) return;
     subjectsGrid.innerHTML = '';
@@ -317,11 +326,13 @@ function renderGrid() {
     Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
         if (unattemptedFilter.checked && qCount === 0) return;
-        let doneDummy = 0; 
         
-        // Hide counters and progress bar in Exam Mode
-        const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneDummy} / ${qCount}</span>` : '';
-        const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: 0%;"></div></div>` : '';
+        // FIX: Use the new helper to get real numbers!
+        const doneCount = getSolvedCount(currentView, [cardTitle]);
+        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+        
+        const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
+        const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
 
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
@@ -425,7 +436,13 @@ function renderListItem(itemName, nextData, level, itemPath) {
     labelDiv.style.flexGrow = '1';
     
     const qCount = getQuestionCount(currentView, itemPath);
-    let doneDummy = 0; 
+    // FIX: Calculate real solved counts for the popups!
+    const doneCount = getSolvedCount(currentView, itemPath);
+    const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+
+    const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
+    const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
+	
 
     // Hide counters and progress bar in Exam Mode
     const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneDummy} / ${qCount}</span>` : '';
@@ -510,70 +527,98 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
 };
 
 // ==========================================
-// 6. FIREBASE PROGRESS SYNC
+// 6. FIREBASE PROGRESS & DASHBOARD SYNC
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         const userRef = doc(db, "users", user.uid);
-        
         try {
             const docSnap = await getDoc(userRef);
-            
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 
-                // 1. Grab the arrays from Firebase
-                const solvedList = dbData.solvedQuestions || [];
-                const mistakesList = dbData.mistakes || [];
-                const bookmarksList = dbData.bookmarks || [];
+                // Load arrays (converting everything to strings for safe ID matching)
+                const solvedList = (dbData.solvedQuestions || []).map(id => String(id));
+                const mistakesList = (dbData.mistakes || []).map(id => String(id));
+                const bookmarksList = (dbData.bookmarks || []).map(id => String(id));
                 
-                // 2. Calculate the Math
-                const totalAttempts = solvedList.length + mistakesList.length;
-                let accuracy = 0;
-                if (totalAttempts > 0) {
-                    accuracy = Math.round((solvedList.length / totalAttempts) * 100);
-                }
+                // IMPORTANT: Update global array so renderGrid knows what is solved!
+                attemptedQuestions = solvedList; 
+                renderGrid(); // Redraw the grid with the new green bars!
 
-                // 3. Inject the REAL data into your HTML!
+                const totalAttempts = solvedList.length + mistakesList.length;
+                let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
+
+                // Inject UI Stats
                 document.getElementById('stat-solved').textContent = solvedList.length;
                 document.getElementById('stat-mistakes').textContent = mistakesList.length;
                 document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
                 document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
-                document.getElementById('stat-accuracy-fraction').textContent = `(${solvedList.length}/${totalAttempts})`;
 
-                // 4. Unlock the buttons if they actually have mistakes or bookmarks
+                // Handle Buttons
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
                 const btnBookmarks = document.getElementById('btn-review-bookmarks');
 
                 if (mistakesList.length > 0) {
                     btnMistakes.disabled = false;
-                    btnMistakes.style.opacity = "1";
                     btnMistakes.style.cursor = "pointer";
-                    
-                    btnMistakes.onclick = () => launchCustomQuiz(mistakesList, "My Mistakes");
-                } else {
-                    btnMistakes.style.opacity = "0.5";
+                    btnMistakes.onclick = () => launchCustomQuiz(mistakesList, "Review Mistakes");
                 }
-
                 if (bookmarksList.length > 0) {
                     btnBookmarks.disabled = false;
-                    btnBookmarks.style.opacity = "1";
                     btnBookmarks.style.cursor = "pointer";
-                    
                     btnBookmarks.onclick = () => launchCustomQuiz(bookmarksList, "My Bookmarks");
-                } else {
-                    btnBookmarks.style.opacity = "0.5";
                 }
             }
-        } catch (error) {
-            console.error("Error fetching stats:", error);
-        }
+        } catch (error) { console.error("Error fetching stats:", error); }
     }
 });
 
+// Helper to launch quizzes from Custom Arrays (Mistakes/Bookmarks)
 function launchCustomQuiz(questionIds, examTitle) {
-    console.log(`Getting ready to launch ${examTitle} with IDs:`, questionIds);
+    // Filter the main pool to only find questions matching the IDs in Firebase
+    const customPool = allQuestions.filter(q => questionIds.includes(getQID(q)));
+
+    if (customPool.length > 0) {
+        window.launchQuiz(customPool, 'practice', 0, examTitle);
+    } else {
+        alert("We couldn't find those specific questions in the database.");
+    }
 }
+
+// Wire up the Detailed Analytics Modal
+document.getElementById('btn-view-analytics').onclick = () => {
+    const body = document.getElementById('analytics-body');
+    body.innerHTML = ''; // Clear old data
+    
+    // Loop through subjects to build performance bars
+    Object.keys(subjectTree).forEach(subject => {
+        const total = getQuestionCount('subject', [subject]);
+        const solved = getSolvedCount('subject', [subject]);
+        if (total === 0) return;
+        
+        const percent = Math.round((solved / total) * 100);
+        let barColor = percent > 70 ? '#10b981' : (percent > 40 ? '#f59e0b' : '#ef4444');
+
+        body.innerHTML += `
+            <div style="margin-bottom: 1.2rem;">
+                <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b;">
+                    <span>${subject}</span>
+                    <span>${percent}% <span style="color:#64748b; font-weight:normal; font-size:0.8rem;">(${solved}/${total})</span></span>
+                </div>
+                <div class="progress-container" style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="width: ${percent}%; background: ${barColor}; height: 100%; transition: width 0.5s ease;"></div>
+                </div>
+            </div>
+        `;
+    });
+    
+    document.getElementById('analytics-modal').style.display = 'flex';
+};
+
+document.getElementById('close-analytics').onclick = () => {
+    document.getElementById('analytics-modal').style.display = 'none';
+};
 
 switchMode('practice');
 loadDataAndBuildTree();
