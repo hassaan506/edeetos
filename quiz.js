@@ -55,9 +55,12 @@ function loadSession() {
         window.location.href = 'questions.html';
         return;
     }
-    quizQueue.forEach((q, i) => { 
-        if (!q.originalNumber) q.originalNumber = i + 1; 
+    quizQueue.forEach((q, i) => {     
+        if (!q.originalNumber) {
+            q.originalNumber = q.QuestionID || (i + 1); 
+        }
     });
+	
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             console.log("👤 User verified! Fetching saved notes and bookmarks...");
@@ -110,7 +113,8 @@ function formatCSVQuestion(rawCsvRow) {
         text: rawCsvRow.Question || "Missing Question Text",
         options: options,
         explanation: rawCsvRow.Explanation || "No explanation provided.",
-        originalNumber: rawCsvRow.originalNumber,
+        
+        originalNumber: rawCsvRow.QuestionID || rawCsvRow.originalNumber,
         
         isBookmarked: rawCsvRow.isBookmarked || false,
         userNote: rawCsvRow.userNote || "",
@@ -118,8 +122,7 @@ function formatCSVQuestion(rawCsvRow) {
         
         hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
         userSelectedAnswer: rawCsvRow.userSelectedAnswer || null
-    };
-}
+    };	
 
 function buildNumberGrid() {
     numberGrid.innerHTML = '';
