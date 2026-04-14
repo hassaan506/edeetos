@@ -248,6 +248,24 @@ body.mode-exam #prev-btn {
     color: #ffca28; /* Gold color */
 }
 
+/* Navigation Grid Status Colors */
+.grid-num.active {
+    background-color: #3b82f6 !important; /* Blue for current question */
+    color: white !important;
+    border-color: #3b82f6 !important;
+}
+
+.grid-num.correct {
+    border-color: #10b981; /* Green for passed */
+    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.grid-num.incorrect {
+    border-color: #ef4444; /* Red for mistakes */
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
 
 /* ========================================== */
 /* 8. ULTRA-COMPACT MOBILE RESPONSIVENESS     */

@@ -55,21 +55,21 @@ function loadSession() {
         window.location.href = 'questions.html';
         return;
     }
+
     quizQueue.forEach((q, i) => {     
         if (!q.originalNumber) {
             const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
             q.originalNumber = idFromCSV || `q-${i + 1}`; 
         }
+        // Initialize local session state for colors
+        q.sessionState = null; 
     });
 	
     onAuthStateChanged(auth, async (user) => {
         if (user) {
-            console.log("👤 User verified! Fetching saved notes and bookmarks...");
             const userRef = doc(db, "users", user.uid);
-            
             try {
                 const docSnap = await getDoc(userRef);
-                
                 if (docSnap.exists()) {
                     const dbData = docSnap.data();
                     const savedNotes = dbData.notes || {}; 
@@ -77,7 +77,7 @@ function loadSession() {
                     
                     Object.keys(dbData).forEach(key => {
                         if (key.startsWith('notes.')) {
-                            const recoveredId = key.substring(6); // Removes the "notes." part
+                            const recoveredId = key.substring(6); 
                             savedNotes[recoveredId] = dbData[key];
                         }
                     });
@@ -85,15 +85,11 @@ function loadSession() {
                     quizQueue.forEach(q => {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
-                        q.isSolvedInDatabase = false; // Forces Practice Mode not to auto-solve!
                     });
-                    console.log("✅ Data successfully merged with questions!");
                 }
             } catch (error) {
                 console.error("❌ Firebase Load Error:", error);
             }
-        } else {
-            console.warn("⚠️ No user logged in. Starting quiz without saved data.");
         }
        
         startTimer();
@@ -105,7 +101,6 @@ function loadSession() {
 function formatCSVQuestion(rawCsvRow) {
     const correctLetter = (rawCsvRow['CorrectAnswer'] || '').toString().trim().toUpperCase();
     const options = [];
-    
     ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
         const optKey = `Option${letter}`;
         const optText = rawCsvRow[optKey]; 
@@ -118,29 +113,28 @@ function formatCSVQuestion(rawCsvRow) {
         text: rawCsvRow.Question || "Missing Question Text",
         options: options,
         explanation: rawCsvRow.Explanation || "No explanation provided.",
-        
-        // Ensure ID is perfectly carried over
-        originalNumber: rawCsvRow['QuestionID'] || rawCsvRow['Question ID'] || rawCsvRow['ID'] || rawCsvRow['id'] || rawCsvRow.originalNumber,
-        
+        originalNumber: rawCsvRow.originalNumber,
         isBookmarked: rawCsvRow.isBookmarked || false,
         userNote: rawCsvRow.userNote || "",
-        isSolvedInDatabase: false, // Ensures it doesn't auto-solve!
-        
+        sessionState: rawCsvRow.sessionState || null,
         hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
         userSelectedAnswer: rawCsvRow.userSelectedAnswer || null
     };	
-} // <-- This crucial closing bracket was missing!
+}
 
 function buildNumberGrid() {
     numberGrid.innerHTML = '';
     quizQueue.forEach((q, index) => {
         const numBtn = document.createElement('div');
         numBtn.className = 'grid-num';
+        
+        // Apply existing local session colors if they navigated back
+        if (q.sessionState === 'correct') numBtn.classList.add('correct');
+        if (q.sessionState === 'wrong') numBtn.classList.add('incorrect');
+        
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
         
-        if (q.isSolvedInDatabase) numBtn.classList.add('solved');
-
         numBtn.onclick = () => {
             if (isExamMode) return; 
             if(index === currentIndex) return;
@@ -149,6 +143,7 @@ function buildNumberGrid() {
         };
         numberGrid.appendChild(numBtn);
     });
+    updateGridStyles();
 }
 
 function updateGridStyles() {
@@ -182,114 +177,82 @@ function loadQuestion(index) {
         currentIndex = index;
         currentQuestionData = quizQueue[currentIndex];
 
-        if (!currentQuestionData) {
-            console.error("❌ CRITICAL ERROR: No data found at index", index);
-            return; 
-        }
-
         if (!currentQuestionData.options) {
             quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
             currentQuestionData = quizQueue[currentIndex];
         }
 
         wrongAttempts = 0;
-        hasAnsweredCorrectly = currentQuestionData.isSolvedInDatabase; 
+        // Lock answer if they got it right previously in THIS session
+        hasAnsweredCorrectly = (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct'); 
         
         if (!isExamMode) updateFeedbackBar();
         
-        if (explanationBtn) explanationBtn.style.display = 'none'; 
-        if (explanationModal) explanationModal.classList.remove('show');
-
-// === EXAM UI LOGIC ===
-        if (isExamMode) {
-            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentIndex + 1} / ${quizQueue.length}`;
-            
-            if (currentQuestionData.hasBeenSkipped) {
-                if (skippedWarningEl) skippedWarningEl.classList.remove('hidden');
-                if (skipBtn) skipBtn.style.display = 'none'; 
-            } else {
-                if (skippedWarningEl) skippedWarningEl.classList.add('hidden');
-                if (skipBtn) skipBtn.style.display = 'block';
-            }
-
-            const nextBtn = document.getElementById('next-btn');
-            if (nextBtn) {
-                if (currentIndex === quizQueue.length - 1) {
-                    nextBtn.textContent = "Submit Exam";
-                } else {
-                    nextBtn.textContent = "Next";
-                }
-            }
+        if (hasAnsweredCorrectly && !isExamMode) {
+            explanationBtn.style.display = 'inline-block';
         } else {
-            if (questionIdBadge) questionIdBadge.textContent = `Question ${currentIndex + 1}`;
-        }
-		
-
-        if (questionTextEl) questionTextEl.textContent = currentQuestionData.text;
-        if (explanationText) explanationText.textContent = currentQuestionData.explanation;
-
-        if (optionsContainer) {
-            optionsContainer.innerHTML = '';
-            currentQuestionData.options.forEach(opt => {
-                const optBox = document.createElement('div');
-                optBox.className = 'option-box';
-                
-                if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
-                    optBox.classList.add('selected');
-                } else if (!isExamMode && hasAnsweredCorrectly && opt.isCorrect) {
-                    optBox.classList.add('correct');
-                }
-
-                optBox.innerHTML = `
-                    <div class="option-text">${opt.text}</div>
-                    <i class="fas fa-eye eye-icon" title="Strikeout option"></i>
-                `;
-                optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
-                optionsContainer.appendChild(optBox);
-            });
+            explanationBtn.style.display = 'none'; 
+            explanationModal.classList.remove('show');
         }
 
-        // === BOOKMARK LOGIC ===
+        const displayNum = currentIndex + 1;
+        if (questionIdBadge) {
+            questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
+        }
+
+        if (isExamMode) {
+            if (currentQuestionData.hasBeenSkipped) {
+                skippedWarningEl.classList.remove('hidden');
+                skipBtn.style.display = 'none'; 
+            } else {
+                skippedWarningEl.classList.add('hidden');
+                skipBtn.style.display = 'block';
+            }
+            document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
+        }
+
+        questionTextEl.textContent = currentQuestionData.text;
+        explanationText.textContent = currentQuestionData.explanation;
+
+        optionsContainer.innerHTML = '';
+        currentQuestionData.options.forEach(opt => {
+            const optBox = document.createElement('div');
+            optBox.className = 'option-box';
+            
+            if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+                optBox.classList.add('selected');
+            } else if (!isExamMode && hasAnsweredCorrectly) {
+                if (opt.isCorrect) optBox.classList.add('correct');
+                optBox.classList.add('locked');
+            }
+
+            optBox.innerHTML = `<div class="option-text">${opt.text}</div><i class="fas fa-eye eye-icon"></i>`;
+            optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
+            optionsContainer.appendChild(optBox);
+        });
+
+        // BOOKMARK
         const bookmarkBtn = document.getElementById('bookmark-btn');
         if (bookmarkBtn) {
             const starIcon = bookmarkBtn.querySelector('i');
-            
-            if (!starIcon) {
-                console.warn("⚠️ Bookmark button found, but the <i> star icon inside it is missing in the HTML!");
-            } else {
-                if (currentQuestionData.isBookmarked) {
-                    starIcon.classList.remove('far', 'fa-regular');
-                    starIcon.classList.add('fas', 'fa-solid');
-                } else {
-                    starIcon.classList.remove('fas', 'fa-solid');
-                    starIcon.classList.add('far', 'fa-regular');
-                }
+            if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
+            else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
 
-                bookmarkBtn.onclick = (e) => {
-                    e.preventDefault();
-                    currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
-
-                    if (currentQuestionData.isBookmarked) {
-                        starIcon.classList.replace('far', 'fas');
-                        starIcon.classList.add('fa-solid');
-                    } else {
-                        starIcon.classList.replace('fas', 'far');
-                        starIcon.classList.remove('fa-solid');
-                    }
-
-                    toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
-                };
-            }
+            bookmarkBtn.onclick = (e) => {
+                e.preventDefault();
+                currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
+                if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
+                else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
+                toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+            };
         }
 
-        // === NOTES LOGIC ===
+        // NOTES
         const noteBtn = document.getElementById('note-btn');
         if (noteBtn) {
             noteBtn.onclick = (e) => {
                 e.preventDefault();
-                if (noteInput) {
-                    noteInput.value = currentQuestionData.userNote || ""; 
-                }
+                if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
                 if (notesModal) notesModal.classList.add('show');
             };
         }
@@ -298,19 +261,15 @@ function loadQuestion(index) {
             saveNoteBtn.onclick = () => {
                 const typedNote = noteInput.value.trim();
                 currentQuestionData.userNote = typedNote; 
-                
                 if (typeof saveNoteToFirebase === "function") {
                     saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
                 }
-                
                 notesModal.classList.remove('show');
             };
         }
 
         if (closeNotesBtn) {
-            closeNotesBtn.onclick = () => {
-                notesModal.classList.remove('show');
-            };
+            closeNotesBtn.onclick = () => notesModal.classList.remove('show');
         }
 		
         updateGridStyles();
@@ -331,8 +290,11 @@ async function savePracticeProgress(questionId, isCorrect) {
     
     try {
         if (isCorrect) {
+            // FIX: If they answer correctly, REMOVE it from both mistakes arrays!
             await setDoc(userRef, {
-                solvedQuestions: arrayUnion(questionId) 
+                solvedQuestions: arrayUnion(questionId),
+                mistakes: arrayRemove(questionId),      
+                examMistakes: arrayRemove(questionId)   
             }, { merge: true });
         } else {
             await setDoc(userRef, {
@@ -346,7 +308,6 @@ async function savePracticeProgress(questionId, isCorrect) {
 
 async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions) {
     console.log("🚀 Initiating Exam Save...");
-    
     const user = auth.currentUser;
     if (!user) return; 
 
@@ -355,15 +316,17 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     try {
         let updates = {};
         
+        // FIX: Exam progress is now isolated from Practice progress!
         if (correctIds.length > 0) {
-            updates.solvedQuestions = arrayUnion(...correctIds);
+            updates.examSolvedQuestions = arrayUnion(...correctIds);
+            updates.mistakes = arrayRemove(...correctIds);      // Clear past practice mistakes
+            updates.examMistakes = arrayRemove(...correctIds);  // Clear past exam mistakes
         }
         if (mistakeIds.length > 0) {
-            updates.mistakes = arrayUnion(...mistakeIds);
+            updates.examMistakes = arrayUnion(...mistakeIds);
         }
 
         const examTitle = quizConfig.examName || "Custom Exam"; 
-        
         const examRecord = {
             examName: examTitle,
             score: correctCount,
@@ -376,7 +339,7 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
 
         if (Object.keys(updates).length > 0) {
             await setDoc(userRef, updates, { merge: true });
-            console.log("✅ Exam progress and history successfully saved to Firebase!");
+            console.log("✅ Exam progress securely saved and isolated!");
         }
     } catch (error) {
         console.error("❌ Error saving exam progress to Firebase:", error);
@@ -386,40 +349,24 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
 async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     const user = auth.currentUser;
     if (!user) return; 
-
     const userRef = doc(db, "users", user.uid);
-    
     try {
         await setDoc(userRef, {
             bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
         }, { merge: true });
-    } catch (error) {
-        console.error("Error updating bookmark in Firebase:", error);
-    }
+    } catch (error) { console.error("Error updating bookmark in Firebase:", error); }
 }
 
-// ==========================================
-// NOTES SYNC FUNCTION (FIXED)
-// ==========================================
 async function saveNoteToFirebase(questionId, noteText) {
     const user = auth.currentUser;
     if (!user) return; 
-
     const userRef = doc(db, "users", user.uid);
-    
     try {
-        // FIX: Create a proper nested object so Firebase merges it correctly
         const noteUpdate = { notes: {} };
         noteUpdate.notes[questionId] = noteText;
-
         await setDoc(userRef, noteUpdate, { merge: true });
-        
-        console.log(`✅ Note saved securely for Question ${questionId}`);
-    } catch (error) {
-        console.error("❌ Error saving note to Firebase:", error);
-    }
+    } catch (error) { console.error("Error saving note:", error); }
 }
-
 
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
@@ -444,6 +391,13 @@ function handleOptionClick(event, optionData, optionElement) {
         wrongAttempts++;
         updateFeedbackBar();
         
+        // Mark Navigation Grid Red
+        if (!currentQuestionData.sessionState) {
+            currentQuestionData.sessionState = 'wrong'; 
+            const btn = document.getElementById(`grid-num-${currentIndex}`);
+            if (btn) btn.classList.add('incorrect');
+        }
+        
         savePracticeProgress(currentQuestionData.originalNumber, false); 
         
     } else {
@@ -451,11 +405,20 @@ function handleOptionClick(event, optionData, optionElement) {
         void optionElement.offsetWidth; 
         optionElement.classList.add('correct', 'apply-pop');
         hasAnsweredCorrectly = true;
-        currentQuestionData.isSolvedInDatabase = true; 
+        
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
-        document.getElementById(`grid-num-${currentIndex}`).classList.add('solved');
+
+        // Mark Navigation Grid Green (if they didn't fail it first)
+        if (!currentQuestionData.sessionState) {
+            currentQuestionData.sessionState = 'correct'; 
+            const btn = document.getElementById(`grid-num-${currentIndex}`);
+            if (btn) btn.classList.add('correct');
+        } else if (currentQuestionData.sessionState === 'wrong') {
+            currentQuestionData.sessionState = 'wrong_then_correct';
+        }
         
+        // This instantly DELETES the mistake from Firebase!
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
         explanationBtn.style.display = 'inline-block'; 
