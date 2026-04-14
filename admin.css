@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 /* ========================================== */
-/* BASE ADMIN THEME                           */
+/* STRICT RESETS & BASE THEME                 */
 /* ========================================== */
+* {
+    box-sizing: border-box;
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+}
+
 body {
     margin: 0; 
     padding: 0; 
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
     background: linear-gradient(to bottom, #10b981 0%, #10b981 280px, #f0fdf4 280px, #f0fdf4 100%);
     min-height: 100vh; 
     color: #1e293b;
@@ -24,13 +28,15 @@ body {
 .top-bar {
     background: #1e293b; 
     color: white; 
-    border-radius: 20px; 
+    border-radius: 16px; 
     padding: 1rem 2rem;
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     margin-bottom: 2rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .top-bar-left { 
@@ -44,20 +50,21 @@ body {
 .q-count-badge { 
     background: #334155; 
     font-size: 0.75rem; 
-    padding: 0.3rem 0.8rem; 
+    padding: 0.4rem 0.8rem; 
     border-radius: 20px; 
-    font-weight: 600; 
+    font-weight: 700; 
 }
 
 .exit-btn {
     background: #334155; 
     color: white; 
     border: none; 
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 20px; 
     cursor: pointer; 
     font-weight: 800; 
     transition: background 0.2s;
+    margin: 0;
 }
 
 .exit-btn:hover { background: #475569; }
@@ -84,6 +91,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
     transition: all 0.2s; 
     font-size: 1rem;
+    margin: 0;
 }
 
 .admin-tab.active { 
@@ -93,17 +101,20 @@ body {
 }
 
 /* ========================================== */
-/* MAIN CONTENT AREAS                         */
+/* MAIN CONTENT AREAS & SEARCH                */
 /* ========================================== */
 .admin-content { margin-top: 1rem; }
 .page-title { color: #064e3b; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 800; }
 
 .search-wrapper { 
     display: flex; 
+    align-items: stretch;
+    background: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
     border-radius: 12px; 
     overflow: hidden; 
     margin-bottom: 1.5rem; 
+    border: 2px solid #e2e8f0;
 }
 
 .search-input { 
@@ -112,8 +123,8 @@ body {
     padding: 1rem 1.5rem; 
     font-size: 1rem; 
     outline: none; 
-    font-family: 'Nunito', sans-serif; 
     font-weight: 600;
+    width: 100%;
 }
 
 .search-btn { 
@@ -124,6 +135,8 @@ body {
     font-weight: 800; 
     font-size: 1rem; 
     cursor: pointer; 
+    margin: 0;
+    border-radius: 0; /* Overrides global css rounded buttons */
 }
 
 .glass-box { 
@@ -136,7 +149,7 @@ body {
 /* ========================================== */
 /* FORMS AND INPUTS                           */
 /* ========================================== */
-.form-group { margin-bottom: 1.2rem; text-align: left; }
+.form-group { margin-bottom: 1.2rem; text-align: left; width: 100%; }
 .form-group label { display: block; font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.5rem; }
 .form-group select, .form-group input { 
     width: 100%; 
@@ -144,7 +157,6 @@ body {
     border: 2px solid #e2e8f0; 
     border-radius: 8px; 
     outline: none; 
-    font-family: 'Nunito', sans-serif; 
     font-weight: 600; 
     color: #1e293b;
 }
@@ -159,6 +171,10 @@ body {
     cursor: pointer; 
     width: 100%; 
     transition: background 0.2s;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn-solid:hover { background: #059669; }
 
@@ -172,6 +188,39 @@ body {
     width: 100%; 
     margin-top: 0.5rem; 
     color: #64748b;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Specialized Icon Button (For Settings/Delete) */
+.btn-action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+    padding: 0;
+    margin: 0;
+}
+.btn-action-icon:hover { background: #2563eb; }
+
+.btn-action-del {
+    background: transparent;
+    border: 2px solid #ef4444;
+    color: #ef4444;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0;
 }
 
 /* ========================================== */
@@ -179,10 +228,7 @@ body {
 /* ========================================== */
 .popup-overlay { 
     position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh; 
+    top: 0; left: 0; width: 100vw; height: 100vh; 
     background: rgba(15, 23, 42, 0.7); 
     backdrop-filter: blur(4px); 
     z-index: 2000; 
@@ -193,18 +239,19 @@ body {
 
 .popup-content { 
     background: white; 
-    border-radius: 12px; 
-    padding: 1.5rem; 
-    width: 90%; 
+    border-radius: 16px; 
+    padding: 2rem; 
+    width: 95%; 
     max-width: 450px; 
     max-height: 90vh; 
     overflow-y: auto; 
     text-align: center; 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
 }
 
 .subs-box { 
-    border: 1px solid #e2e8f0; 
-    border-radius: 8px; 
+    border: 2px solid #e2e8f0; 
+    border-radius: 10px; 
     padding: 1rem; 
     margin-bottom: 1rem; 
     text-align: left; 
@@ -214,7 +261,7 @@ body {
 }
 
 .subs-box.active-sub { border-color: #6ee7b7; background: #ecfdf5; }
-.grant-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; }
+.grant-box { background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 10px; padding: 1.2rem; margin-bottom: 1.5rem; }
 
 /* ========================================== */
 /* BADGES                                     */
@@ -222,7 +269,7 @@ body {
 .badge { 
     font-size: 0.7rem; 
     font-weight: 800; 
-    padding: 0.2rem 0.6rem; 
+    padding: 0.25rem 0.6rem; 
     border-radius: 20px; 
     display: inline-block;
 }

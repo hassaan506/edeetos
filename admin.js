@@ -19,16 +19,22 @@ const subsListEl = document.getElementById('user-subscriptions-list');
 const btnMakeStudent = document.getElementById('btn-make-student');
 const btnMakeMentor = document.getElementById('btn-make-mentor');
 const btnMakeAdmin = document.getElementById('btn-make-admin');
+const btnGrantAccess = document.getElementById('btn-grant-access');
 
 let allUsersData = [];
 let editingUser = null;
 
+// ==========================================
+// 1. SECURITY & DYNAMIC QUESTION COUNTER
+// ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         const userRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(userRef);
         
-        if (!docSnap.exists() || docSnap.data().role !== 'MANAGEMENT') {
+        const role = docSnap.exists() ? (docSnap.data().role || '').toUpperCase() : '';
+        
+        if (role !== 'MANAGEMENT' && role !== 'ADMIN') {
             alert("Unauthorized Access.");
             window.location.href = 'dashboard.html';
             return;
@@ -55,26 +61,41 @@ async function calculateTotalQuestions() {
                     totalQuestions += (lines.length - 1);
                 }
             }
-        } catch (e) {}
+        } catch (e) {} // Silently skip missing CSV files
     }
-    document.getElementById('total-q-count').textContent = `Questions: ${totalQuestions}`;
+    const totalEl = document.getElementById('total-q-count');
+    if (totalEl) totalEl.textContent = `Questions: ${totalQuestions}`;
 }
 
-window.switchView = function(e, viewName) {
-    document.getElementById('view-users').style.display = 'none';
-    document.getElementById('view-keys').style.display = 'none';
-    document.getElementById('view-payments').style.display = 'none';
-    document.getElementById('view-reports').style.display = 'none';
-    
-    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-    
-    document.getElementById(`view-${viewName}`).style.display = 'block';
-    e.currentTarget.classList.add('active');
+// Exit logic
+document.getElementById('btn-exit-admin').addEventListener('click', () => { window.location.href = 'dashboard.html'; });
+document.getElementById('btn-close-edit-modal').addEventListener('click', () => { editModal.style.display = 'none'; });
 
-    if(viewName === 'keys') fetchKeys();
-    if(viewName === 'payments') fetchPayments();
-}
+// ==========================================
+// 2. TAB ROUTING
+// ==========================================
+document.querySelectorAll('.admin-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+        const viewName = e.currentTarget.getAttribute('data-view');
+        
+        document.getElementById('view-users').style.display = 'none';
+        document.getElementById('view-keys').style.display = 'none';
+        document.getElementById('view-payments').style.display = 'none';
+        document.getElementById('view-reports').style.display = 'none';
+        
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        
+        document.getElementById(`view-${viewName}`).style.display = 'block';
+        e.currentTarget.classList.add('active');
 
+        if(viewName === 'keys') fetchKeys();
+        if(viewName === 'payments') fetchPayments();
+    });
+});
+
+// ==========================================
+// 3. USER MANAGEMENT (FETCH & SORT)
+// ==========================================
 async function fetchAllUsers() {
     try {
         const querySnapshot = await getDocs(collection(db, "users"));
@@ -86,11 +107,13 @@ async function fetchAllUsers() {
             allUsersData.push(data);
         });
 
-        const rolePriority = { 'MANAGEMENT': 1, 'MENTOR': 2, 'STUDENT': 3 };
+        // SORT BY PRIORITY: Management (1) -> Mentor (2) -> Student (3)
+        const rolePriority = { 'MANAGEMENT': 1, 'ADMIN': 1, 'MENTOR': 2, 'STUDENT': 3 };
+        
         allUsersData.sort((a, b) => {
-            const roleA = a.role || 'STUDENT';
-            const roleB = b.role || 'STUDENT';
-            return rolePriority[roleA] - rolePriority[roleB];
+            const roleA = (a.role || 'STUDENT').toUpperCase();
+            const roleB = (b.role || 'STUDENT').toUpperCase();
+            return (rolePriority[roleA] || 3) - (rolePriority[roleB] || 3);
         });
 
         userCountEl.textContent = allUsersData.length;
@@ -108,9 +131,9 @@ function renderUsers(usersArray) {
     }
 
     usersArray.forEach(user => {
-        const role = user.role || 'STUDENT';
+        const role = (user.role || 'STUDENT').toUpperCase();
         let roleHtml = '';
-        if (role === 'MANAGEMENT') roleHtml = `<span class="badge b-admin">Admin</span>`;
+        if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="badge b-admin">Admin</span>`;
         else if (role === 'MENTOR') roleHtml = `<span class="badge b-mentor">Mentor</span>`;
         else roleHtml = `<span class="badge b-student">Student</span>`;
         
@@ -123,7 +146,7 @@ function renderUsers(usersArray) {
                     const daysLeft = Math.ceil((new Date(expiry) - new Date()) / (1000 * 60 * 60 * 24));
                     expiryText = daysLeft > 0 ? `${daysLeft}d left` : 'Expired';
                 }
-                coursesHtml += `<span class="badge b-course">${courseKey.replace('_', ' ').toUpperCase()}</span> <span class="badge b-time">${expiryText}</span>`;
+                coursesHtml += `<span class="badge b-course">${courseKey.replace('_', ' ').toUpperCase()}</span> <span class="badge b-time">${expiryText}</span> `;
             });
         }
 
@@ -132,18 +155,18 @@ function renderUsers(usersArray) {
         const userPhone = user.phone || "No Phone";
 
         const card = document.createElement('div');
-        card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid #f1f5f9;";
+        card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0.5rem; border-bottom: 2px solid #f1f5f9;";
         card.innerHTML = `
             <div style="flex-grow: 1;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.4rem;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
                     <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${userName}</div>
-                    <div style="font-size: 0.8rem; color: #64748b;">✉️ ${userEmail} &nbsp;|&nbsp; 📞 ${userPhone}</div>
+                    <div style="font-size: 0.85rem; color: #64748b; font-weight: 600;">✉️ ${userEmail} &nbsp;|&nbsp; 📞 ${userPhone}</div>
                 </div>
-                <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">${roleHtml} ${coursesHtml}</div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">${roleHtml} ${coursesHtml}</div>
             </div>
-            <button class="btn-solid" style="width: 40px; height: 40px; padding: 0; background: #3b82f6; flex-shrink: 0; margin-left: 1rem;"><i class="fas fa-cog"></i></button>
+            <button class="btn-action-icon btn-edit-user"><i class="fas fa-cog"></i></button>
         `;
-        card.querySelector('button').onclick = () => openEditModal(user);
+        card.querySelector('.btn-edit-user').addEventListener('click', () => openEditModal(user));
         usersListEl.appendChild(card);
     });
 }
@@ -161,22 +184,27 @@ function executeSearch() {
     });
     renderUsers(filtered);
 }
+
 searchBtn.addEventListener('click', executeSearch);
 searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
 
+// ==========================================
+// 5. EDIT USER MODAL & ROLES
+// ==========================================
 function openEditModal(user) {
     editingUser = user;
     editNameEl.textContent = user.fullName || "Unknown User";
     editEmailEl.textContent = user.email || "No Email Provided";
     editPhoneEl.textContent = user.phone || "No Phone Provided";
     editUidEl.textContent = `ID: ${user.uid}`;
+    
     renderSubscriptions();
     editModal.style.display = 'flex';
 }
 
-btnMakeStudent.onclick = () => changeUserRole('STUDENT');
-btnMakeMentor.onclick = () => changeUserRole('MENTOR');
-btnMakeAdmin.onclick = () => changeUserRole('MANAGEMENT');
+btnMakeStudent.addEventListener('click', () => changeUserRole('STUDENT'));
+btnMakeMentor.addEventListener('click', () => changeUserRole('MENTOR'));
+btnMakeAdmin.addEventListener('click', () => changeUserRole('MANAGEMENT'));
 
 async function changeUserRole(newRole) {
     if(confirm(`Change this user's role to ${newRole}?`)) {
@@ -187,10 +215,13 @@ async function changeUserRole(newRole) {
     }
 }
 
+// ==========================================
+// 6. SUBSCRIPTIONS LOGIC
+// ==========================================
 function renderSubscriptions() {
     subsListEl.innerHTML = '';
     if (!editingUser.subscriptions || Object.keys(editingUser.subscriptions).length === 0) {
-        subsListEl.innerHTML = '<p style="font-size: 0.8rem; color: #94a3b8;">No active subscriptions.</p>';
+        subsListEl.innerHTML = '<p style="font-size: 0.9rem; color: #94a3b8; font-weight: bold;">No active subscriptions.</p>';
         return;
     }
 
@@ -208,23 +239,23 @@ function renderSubscriptions() {
         const box = document.createElement('div');
         box.className = `subs-box ${isExpired ? '' : 'active-sub'}`;
         box.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <i class="fas ${isExpired ? 'fa-times-circle' : 'fa-check-circle'}" style="color: ${isExpired ? '#ef4444' : '#10b981'}; font-size: 1.2rem;"></i>
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <i class="fas ${isExpired ? 'fa-times-circle' : 'fa-check-circle'}" style="color: ${isExpired ? '#ef4444' : '#10b981'}; font-size: 1.4rem;"></i>
                 <div>
-                    <div style="font-weight: 800; color: #1e293b; font-size: 0.9rem;">${courseKey.replace('_', ' ').toUpperCase()}</div>
-                    <div style="font-size: 0.7rem; color: #64748b;">Premium Access</div>
+                    <div style="font-weight: 800; color: #1e293b; font-size: 1rem;">${courseKey.replace('_', ' ').toUpperCase()}</div>
+                    <div style="font-size: 0.75rem; color: #64748b; font-weight: bold;">Premium Access</div>
                 </div>
             </div>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div style="text-align: right; background: ${isExpired ? '#fee2e2' : '#f1f5f9'}; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid ${isExpired ? '#fca5a5' : '#e2e8f0'};">
-                    <div style="font-size: 0.75rem; font-weight: 800; color: ${isExpired ? '#991b1b' : '#334155'};">${expiryText}</div>
-                    ${isExpired ? '<div style="font-size: 0.6rem; color: #ef4444;">Expired</div>' : ''}
+                <div style="text-align: right; background: ${isExpired ? '#fee2e2' : '#f1f5f9'}; padding: 0.3rem 0.6rem; border-radius: 6px; border: 1px solid ${isExpired ? '#fca5a5' : '#e2e8f0'};">
+                    <div style="font-size: 0.8rem; font-weight: 800; color: ${isExpired ? '#991b1b' : '#334155'};">${expiryText}</div>
+                    ${isExpired ? '<div style="font-size: 0.65rem; font-weight: bold; color: #ef4444;">Expired</div>' : ''}
                 </div>
-                <button class="btn-outline" style="border-color: #fca5a5; color: #ef4444; padding: 0.4rem; width: auto; margin: 0;"><i class="fas fa-times"></i></button>
+                <button class="btn-action-del"><i class="fas fa-trash-alt"></i></button>
             </div>
         `;
         
-        box.querySelector('button').onclick = async () => {
+        box.querySelector('.btn-action-del').addEventListener('click', async () => {
             if(confirm(`Remove access to ${courseKey}?`)) {
                 let newSubs = { ...editingUser.subscriptions };
                 delete newSubs[courseKey];
@@ -233,12 +264,13 @@ function renderSubscriptions() {
                 renderSubscriptions();
                 fetchAllUsers();
             }
-        };
+        });
         subsListEl.appendChild(box);
     });
 }
 
-window.grantAccess = async function() {
+btnGrantAccess.addEventListener('click', async () => {
+    btnGrantAccess.textContent = "Saving...";
     const course = document.getElementById('grant-course').value;
     const days = document.getElementById('grant-duration').value;
     
@@ -252,40 +284,55 @@ window.grantAccess = async function() {
     let currentSubs = editingUser.subscriptions || {};
     currentSubs[course] = expiryValue;
 
-    await updateDoc(doc(db, "users", editingUser.uid), { 
-        subscriptions: currentSubs,
-        isPremium: true
-    });
-    
-    editingUser.subscriptions = currentSubs;
-    renderSubscriptions();
-    fetchAllUsers();
-};
+    try {
+        await updateDoc(doc(db, "users", editingUser.uid), { 
+            subscriptions: currentSubs,
+            isPremium: true 
+        });
+        editingUser.subscriptions = currentSubs;
+        renderSubscriptions();
+        fetchAllUsers();
+    } catch (e) {
+        console.error(e);
+        alert("Failed to grant access.");
+    } finally {
+        btnGrantAccess.textContent = "Grant Access";
+    }
+});
 
 // ==========================================
 // 7. KEY GENERATION LOGIC
 // ==========================================
-window.generateKey = async function() {
-    const course = document.getElementById('key-course').value;
-    const duration = document.getElementById('key-duration').value;
-    let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
-    const usage = parseInt(document.getElementById('key-usage').value) || 1;
-    const expiry = document.getElementById('key-expiry').value;
+const btnGenerateKey = document.getElementById('btn-generate-key');
+if (btnGenerateKey) {
+    btnGenerateKey.addEventListener('click', async () => {
+        const course = document.getElementById('key-course').value;
+        const duration = document.getElementById('key-duration').value;
+        let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
+        const usage = parseInt(document.getElementById('key-usage').value) || 1;
+        const expiry = document.getElementById('key-expiry').value;
 
-    if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+        if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
-    try {
-        await setDoc(doc(db, "keys", customCode), {
-            code: customCode, course: course, duration: duration, maxUsage: usage,
-            usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
-        });
-        alert("Key Generated: " + customCode);
-        document.getElementById('key-custom').value = '';
-        fetchKeys();
-    } catch(e) {
-        console.error(e);
-        alert("Error generating key.");
-    }
+        btnGenerateKey.textContent = "Generating...";
+        btnGenerateKey.disabled = true;
+
+        try {
+            await setDoc(doc(db, "keys", customCode), {
+                code: customCode, course: course, duration: duration, maxUsage: usage,
+                usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
+            });
+            alert("Key Generated: " + customCode);
+            document.getElementById('key-custom').value = '';
+            fetchKeys();
+        } catch(e) {
+            console.error(e);
+            alert("Error generating key.");
+        } finally {
+            btnGenerateKey.textContent = "Generate Key";
+            btnGenerateKey.disabled = false;
+        }
+    });
 }
 
 async function fetchKeys() {
@@ -294,22 +341,23 @@ async function fetchKeys() {
     tbody.innerHTML = '';
     qSnap.forEach(d => {
         const data = d.data();
-        tbody.innerHTML += `
-            <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 1rem; font-weight: bold;">${data.code}</td>
-                <td><span class="badge b-course">${data.course}</span></td>
-                <td>${data.usedCount} / ${data.maxUsage}</td>
-                <td><button class="btn-outline" style="padding: 0.3rem 0.6rem; color: #ef4444; border-color: #ef4444; width: auto;" onclick="deleteKey('${data.code}')">Del</button></td>
-            </tr>
+        const tr = document.createElement('tr');
+        tr.style = "border-bottom: 2px solid #f1f5f9;";
+        tr.innerHTML = `
+            <td style="padding: 1.2rem; font-weight: 800; font-size: 1.05rem; color: #1e293b;">${data.code}</td>
+            <td><span class="badge b-course">${data.course.replace('_', ' ').toUpperCase()}</span></td>
+            <td style="font-weight: 700; color: #475569;">${data.usedCount} / ${data.maxUsage}</td>
+            <td><button class="btn-action-del btn-del-key">Delete</button></td>
         `;
+        
+        tr.querySelector('.btn-del-key').addEventListener('click', async () => {
+            if(confirm("Delete this key?")) {
+                await deleteDoc(doc(db, "keys", data.code));
+                fetchKeys();
+            }
+        });
+        tbody.appendChild(tr);
     });
-}
-
-window.deleteKey = async function(code) {
-    if(confirm("Delete this key?")) {
-        await deleteDoc(doc(db, "keys", code));
-        fetchKeys();
-    }
 }
 
 // ==========================================
@@ -329,24 +377,18 @@ async function fetchPayments() {
         const card = document.createElement('div');
         card.style = "background: white; border: 2px solid #3b82f6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative;";
         card.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #cbd5e1; padding-bottom: 1rem; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
                 <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    ${data.courses.map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c}</span>`).join('')}
+                    ${data.courses.map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
                     <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
                 </div>
             </div>
-            <div style="text-align: center; margin-bottom: 1rem;">
-                <div style="width: 100px; height: 100px; background: #e2e8f0; border-radius: 8px; margin: 0 auto 0.5rem auto; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
-                    <i class="fas fa-image" style="font-size: 2rem;"></i>
-                </div>
-                <a href="#" style="color: #10b981; font-weight: bold; font-size: 0.85rem; text-decoration: none;"><i class="fas fa-search"></i> View Receipt</a>
-            </div>
-            <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+            <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0;">
                 <div style="flex: 1;">
-                    <label style="font-size: 0.7rem; font-weight: bold; color: #64748b; text-transform: uppercase;">Approve Duration:</label>
-                    <select class="approve-duration" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-weight: bold;">
-                        <option value="${data.durationDays}">${data.planName}</option>
+                    <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Approve Duration:</label>
+                    <select class="approve-duration" style="width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-weight: bold; color: #1e293b; outline: none;">
+                        <option value="${data.durationDays}">${data.planName} (Requested)</option>
                         <option value="1">1 Day</option>
                         <option value="7">1 Week</option>
                         <option value="15">15 Days</option>
@@ -357,49 +399,52 @@ async function fetchPayments() {
                         <option value="lifetime">Lifetime</option>
                     </select>
                 </div>
-                <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0;">Approve</button>
-                <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0;">Reject</button>
+                <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Approve</button>
+                <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Reject</button>
             </div>
         `;
 
-        card.querySelector('.btn-approve').onclick = () => approvePayment(d.id, data.userId, data.courses, card.querySelector('.approve-duration').value);
-        card.querySelector('.btn-reject').onclick = () => rejectPayment(d.id);
+        card.querySelector('.btn-approve').addEventListener('click', async () => {
+            const btn = card.querySelector('.btn-approve');
+            btn.textContent = "Saving...";
+            try {
+                const durationDays = card.querySelector('.approve-duration').value;
+                const uRef = doc(db, "users", data.userId);
+                const uSnap = await getDoc(uRef);
+                
+                if(!uSnap.exists()) return alert("User not found in database.");
+
+                let expiryValue = "lifetime";
+                if(durationDays !== "lifetime") {
+                    const date = new Date();
+                    date.setDate(date.getDate() + parseInt(durationDays));
+                    expiryValue = date.toISOString();
+                }
+
+                let currentSubs = uSnap.data().subscriptions || {};
+                data.courses.forEach(c => currentSubs[c] = expiryValue);
+
+                await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
+                await updateDoc(doc(db, "payment_requests", d.id), { status: 'approved' });
+
+                alert("Payment approved and access granted!");
+                fetchPayments();
+            } catch (e) {
+                console.error(e);
+                alert("Error approving payment");
+                btn.textContent = "Approve";
+            }
+        });
+
+        card.querySelector('.btn-reject').addEventListener('click', async () => {
+            if(confirm("Reject this payment?")) {
+                await updateDoc(doc(db, "payment_requests", d.id), { status: 'rejected' });
+                fetchPayments();
+            }
+        });
+
         list.appendChild(card);
     });
 
-    if(!hasPending) list.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending payment requests.</p>';
-}
-
-window.approvePayment = async function(reqId, userId, courses, durationDays) {
-    try {
-        const uRef = doc(db, "users", userId);
-        const uSnap = await getDoc(uRef);
-        if(!uSnap.exists()) return alert("User not found");
-
-        let expiryValue = "lifetime";
-        if(durationDays !== "lifetime") {
-            const date = new Date();
-            date.setDate(date.getDate() + parseInt(durationDays));
-            expiryValue = date.toISOString();
-        }
-
-        let currentSubs = uSnap.data().subscriptions || {};
-        courses.forEach(c => currentSubs[c] = expiryValue);
-
-        await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
-        await updateDoc(doc(db, "payment_requests", reqId), { status: 'approved' });
-
-        alert("Payment approved and access granted!");
-        fetchPayments();
-    } catch (e) {
-        console.error(e);
-        alert("Error approving payment");
-    }
-}
-
-window.rejectPayment = async function(reqId) {
-    if(confirm("Reject this payment?")) {
-        await updateDoc(doc(db, "payment_requests", reqId), { status: 'rejected' });
-        fetchPayments();
-    }
+    if(!hasPending) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending payment requests.</p>';
 }
