@@ -9,20 +9,20 @@
 </head>
 <body style="background-color: #f0fdf4;">
 
-    <nav class="navbar" style="background: white; border-bottom: 1px solid #e2e8f0; padding: 0.8rem 2rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;">
-            <div style="flex: 1;"></div>
-            <div style="flex: 1; display: flex; justify-content: center;">
+    <nav class="dashboard-nav">
+        <div class="nav-inner">
+            <div class="nav-spacer"></div>
+            <div class="nav-logo-box">
                 <a href="index.html"><img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;"></a>
             </div>
-            <div class="nav-actions" style="flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 0.8rem;">
-                <button id="btn-admin-panel" class="btn-solid" style="display: none; background: #a855f7; color: white; font-weight: 700; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(168, 85, 247, 0.2);">
-                    🛡️ Admin Panel
+            <div class="nav-actions">
+                <button id="btn-admin-panel" class="btn-solid btn-nav-admin" style="display: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; align-items: center; gap: 5px;">
+                    🛡️ Admin
                 </button>
-                <button id="btn-open-premium" class="btn-solid" style="background: #fbbf24; color: #b45309; font-weight: 700; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(251, 191, 36, 0.2);">
-                    👑 Buy Premium
+                <button id="btn-open-premium" class="btn-solid btn-nav-premium" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px;">
+                    👑 Premium
                 </button>
-                <button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 0.9rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 20px; cursor: pointer; color: #059669; border-color: #059669;">
+                <button id="logout-btn" class="btn-outline btn-nav-logout" style="padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">
                     Logout
                 </button>
             </div>
@@ -30,17 +30,19 @@
     </nav>
 
     <section class="section-container" style="padding-top: 3rem;">
-		<div style="text-align: center; margin-bottom: 3.5rem;">
-            <h1 style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #1e293b; font-size: 2rem;">
-                Welcome, <span id="user-name" style="color: #059669; margin-left: 8px; margin-right: 12px;">...</span>
+        
+        <div class="dashboard-header">
+            <h1 class="welcome-header">
+                <span>Welcome,</span>
+                <span id="user-name" class="highlight-text">...</span>
                 <span class="status-badge badge-free" id="subscription-status">Free Tier</span>
             </h1>
             <p style="color: #64748b; font-size: 1rem;">Select your course below to begin.</p>
 		</div>
 
         <div class="course-dash-grid">
-            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; text-align: center;">
-                <div class="icon" style="font-size: 3.5rem; margin-bottom: 1rem;">📚</div>
+            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="icon">📚</div>
                 <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Study Vault</h3>
                 <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Access notes and lectures for your specific exam.</p>
                 <button class="btn-solid mini-btn" style="width: 100%;">Open Vault</button>
@@ -54,7 +56,7 @@
                     <span id="free-warning-text" style="color: #d97706; font-size: 0.75rem; font-weight: 700;">(Free users limited to 50Qs/subject)</span>
                 </p>
                 
-                <div class="select-wrapper" style="width: 100%; text-align: left; margin-bottom: 1rem;">
+                <div class="select-wrapper" style="margin-bottom: 1rem;">
                     <select id="course-dropdown" class="custom-select">
                         <optgroup label="FCPS Series">
                             <option value="fcps_part1">📘 FCPS Part 1</option>
@@ -80,8 +82,8 @@
                 </button>
             </div>
 
-            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; text-align: center;">
-                <div class="icon" style="font-size: 3.5rem; margin-bottom: 1rem;">🩺</div>
+            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="icon">🩺</div>
                 <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">My Mentor</h3>
                 <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Book a session or message your dedicated guide.</p>
                 <button id="btn-contact-mentor" class="btn-solid mini-btn" style="width: 100%;">Contact Mentor</button>
