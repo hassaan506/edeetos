@@ -61,7 +61,6 @@ function loadSession() {
             const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
             q.originalNumber = idFromCSV || `q-${i + 1}`; 
         }
-        // Initialize local session state for colors
         q.sessionState = null; 
     });
 	
@@ -75,6 +74,10 @@ function loadSession() {
                     const savedNotes = dbData.notes || {}; 
                     const savedBookmarks = dbData.bookmarks || []; 
                     
+                    // NEW: Pull historical lists to restore grid colors!
+                    const solvedList = dbData.solvedQuestions || [];
+                    const mistakesList = dbData.mistakes || [];
+                    
                     Object.keys(dbData).forEach(key => {
                         if (key.startsWith('notes.')) {
                             const recoveredId = key.substring(6); 
@@ -85,6 +88,13 @@ function loadSession() {
                     quizQueue.forEach(q => {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
+                        
+                        // NEW: Restore red/green status based on Firebase history
+                        if (solvedList.includes(q.originalNumber)) {
+                            q.sessionState = 'correct';
+                        } else if (mistakesList.includes(q.originalNumber)) {
+                            q.sessionState = 'wrong';
+                        }
                     });
                 }
             } catch (error) {
@@ -290,13 +300,23 @@ async function savePracticeProgress(questionId, isCorrect) {
     
     try {
         if (isCorrect) {
-            // FIX: If they answer correctly, REMOVE it from both mistakes arrays!
-            await setDoc(userRef, {
-                solvedQuestions: arrayUnion(questionId),
-                mistakes: arrayRemove(questionId),      
-                examMistakes: arrayRemove(questionId)   
-            }, { merge: true });
+            // 1. Check if they are currently inside the "Practice Mistakes" quiz
+            const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
+            
+            // 2. Always count it as solved
+            let updates = {
+                solvedQuestions: arrayUnion(questionId) 
+            };
+
+            // 3. ONLY delete the mistake if they are actively in the Mistakes mode!
+            if (isReviewMistakesMode) {
+                updates.mistakes = arrayRemove(questionId);      
+                updates.examMistakes = arrayRemove(questionId);   
+            }
+
+            await setDoc(userRef, updates, { merge: true });
         } else {
+            // If they get it wrong, always log it as a mistake
             await setDoc(userRef, {
                 mistakes: arrayUnion(questionId)
             }, { merge: true });

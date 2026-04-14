@@ -14,7 +14,13 @@ let currentMode = "practice";
 let selectedCart = new Set(); 
 let popupHistory = []; 
 let attemptedQuestions = []; 
-let userExamHistory = []; // NEW: Holds past exam data!
+let userExamHistory = [];
+
+// NEW: Global arrays to hold custom filtered data
+let globalPracticeMistakes = [];
+let globalExamMistakes = [];
+let globalBookmarks = [];
+let activeCustomPool = null; // Tells the app to "lock in" to mistakes/bookmarks
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -42,7 +48,7 @@ globalSearch.addEventListener('input', (e) => {
         return;
     }
     const matchedQuestions = allQuestions.filter(q => {
-        if (unattemptedFilter.checked && attemptedQuestions.includes(q.QuestionID)) return false;
+        if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
         const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
         return textToSearch.includes(query);
     });
@@ -106,6 +112,7 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
 	window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
 });
 
+// Clear custom pool when changing views
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
@@ -118,8 +125,10 @@ popupBack.onclick = () => {
     const prev = popupHistory[popupHistory.length - 1]; 
     openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
 };
-popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; };
-popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; } }
+
+// IMPORTANT: Clear the custom pool if they close the popup!
+popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; };
+popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; } }
 
 // ==========================================
 // 4. CORE FUNCTIONS
@@ -136,6 +145,7 @@ function toggleSidebar(show) {
 
 function changeView(viewName, titleText) {
     currentView = viewName;
+    activeCustomPool = null; // Reset custom modes
     if (viewTitle) viewTitle.textContent = titleText;
 
     document.querySelectorAll('.sidebar-links a').forEach(link => {
@@ -155,32 +165,22 @@ function changeView(viewName, titleText) {
 
 function generateExamTitle(paths, currentView) {
     if (!paths || paths.length === 0) return "Custom Exam";
-
     const topLevels = new Set();
     const subLevels = new Set();
-
     paths.forEach(p => {
         if (p[0]) topLevels.add(p[0]); 
         if (p[1]) subLevels.add(p[1]); 
     });
-
     const topArr = Array.from(topLevels);
     const subArr = Array.from(subLevels);
 
     if (currentView === 'exam') return topArr.join(" + "); 
-
     if (topArr.length === 1) {
-        if (subArr.length > 3 || subArr.length === 0) {
-            return `${topArr[0]} (Full)`; 
-        } else {
-            return `${topArr[0]} - ${subArr.join(" + ")}`;
-        }
+        if (subArr.length > 3 || subArr.length === 0) return `${topArr[0]} (Full)`; 
+        else return `${topArr[0]} - ${subArr.join(" + ")}`;
     } else {
-        if (topArr.length <= 3) {
-            return topArr.join(" + "); 
-        } else {
-            return `Mixed Exam (${topArr.length} Topics)`; 
-        }
+        if (topArr.length <= 3) return topArr.join(" + "); 
+        else return `Mixed Exam (${topArr.length} Topics)`; 
     }
 }
 
@@ -244,8 +244,6 @@ async function loadDataAndBuildTree() {
             });
 
             if (!rowObj.Subject || rowObj.Subject === "") return;
-            
-            // Assign a fallback ID if missing
             if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
                 rowObj.QuestionID = `q-${rowIndex + 1}`;
             }
@@ -279,23 +277,62 @@ async function loadDataAndBuildTree() {
     }
 }
 
+// Helper to dynamically build sub-trees for Mistakes/Bookmarks
+function buildSubTree(pool) {
+    let tree = {};
+    pool.forEach(q => {
+        const Subject = q.Subject || "Uncategorized";
+        const Chapter = q.Chapter || "";
+        const Topic = q.Topic || "";
+
+        if (currentView === 'subject') {
+            if (!tree[Subject]) tree[Subject] = {};
+            if (Chapter) {
+                if (!tree[Subject][Chapter]) tree[Subject][Chapter] = [];
+                if (Topic && !tree[Subject][Chapter].includes(Topic)) tree[Subject][Chapter].push(Topic);
+            }
+        } else if (currentView === 'system') {
+            if (Chapter) {
+                if (!tree[Chapter]) tree[Chapter] = {};
+                if (!tree[Chapter][Subject]) tree[Chapter][Subject] = [];
+                if (Topic && !tree[Chapter][Subject].includes(Topic)) tree[Chapter][Subject].push(Topic);
+            }
+        }
+    });
+    return tree;
+}
+
+// UPDATED: Now supports activeCustomPool and pseudo-roots for the Mistakes Popup!
 function getQuestionCount(view, pathArr, customPool = null) {
-    const pool = customPool || allQuestions;
+    let pool = customPool || activeCustomPool || allQuestions;
+    
+    // Handle the pseudo-roots dynamically created for the mistakes popup
+    let paths = [...pathArr];
+    if (paths[0] === "Practice Mistakes") {
+        pool = pool.filter(q => globalPracticeMistakes.includes(getQID(q)));
+        paths.shift();
+    } else if (paths[0] === "Exam Mistakes") {
+        pool = pool.filter(q => globalExamMistakes.includes(getQID(q)));
+        paths.shift();
+    }
+
+    if (paths.length === 0) return pool.filter(q => !unattemptedFilter.checked || !attemptedQuestions.includes(getQID(q))).length;
+
     return pool.filter(q => {
         if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
         if (view === 'subject') {
-            if (pathArr[0] && q.Subject !== pathArr[0]) return false;
-            if (pathArr[1] && q.Chapter !== pathArr[1]) return false;
-            if (pathArr[2] && q.Topic !== pathArr[2]) return false;
+            if (paths[0] && q.Subject !== paths[0]) return false;
+            if (paths[1] && q.Chapter !== paths[1]) return false;
+            if (paths[2] && q.Topic !== paths[2]) return false;
         } else if (view === 'system') {
-            if (pathArr[0] && q.Chapter !== pathArr[0]) return false;
-            if (pathArr[1] && q.Subject !== pathArr[1]) return false;
-            if (pathArr[2] && q.Topic !== pathArr[2]) return false;
+            if (paths[0] && q.Chapter !== paths[0]) return false;
+            if (paths[1] && q.Subject !== paths[1]) return false;
+            if (paths[2] && q.Topic !== paths[2]) return false;
         } else if (view === 'exam') {
-            if (pathArr[0] && q.Exam !== pathArr[0]) return false;
-            if (pathArr[1] && q.Subject !== pathArr[1]) return false;
-            if (pathArr[2] && q.Topic !== pathArr[2]) return false;
+            if (paths[0] && q.Exam !== paths[0]) return false;
+            if (paths[1] && q.Subject !== paths[1]) return false;
+            if (paths[2] && q.Topic !== paths[2]) return false;
         }
         return true;
     }).length;
@@ -370,8 +407,13 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         `;
         popupList.appendChild(practiceAllDiv);
         practiceAllDiv.querySelector('.practice-full-btn').onclick = () => {
-            const pool = allQuestions.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
-            window.launchQuiz(pool, 'practice', 0);
+            const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
+            
+            // Name the session "Review Mistakes" if they are in the custom pool!
+            let launchTitle = title;
+            if (activeCustomPool && title !== "⭐ Bookmarks") launchTitle = "Review Mistakes";
+            
+            window.launchQuiz(pool, 'practice', 0, launchTitle);
         };
     }
 
@@ -460,8 +502,12 @@ function renderListItem(itemName, nextData, level, itemPath) {
         if (currentMode === 'practice') {
             actionBtn.textContent = 'Practice';
             actionBtn.onclick = () => {
-                const pool = allQuestions.filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
-                window.launchQuiz(pool, 'practice', 0);
+                const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
+                
+                let launchTitle = itemName;
+                if (activeCustomPool && itemName !== "⭐ Bookmarks") launchTitle = "Review Mistakes";
+                
+                window.launchQuiz(pool, 'practice', 0, launchTitle);
             };
         } else {
             actionBtn.textContent = 'Select';
@@ -501,11 +547,7 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
         return;
     }
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
-    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
-        mode: mode, 
-        timer: timerMinutes,
-        examName: examName 
-    }));
+    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
     window.location.href = 'quiz.html';
 };
 
@@ -521,128 +563,97 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 
                 const solvedList = (dbData.solvedQuestions || []).map(id => String(id));
-                const mistakesList = (dbData.mistakes || []).map(id => String(id));
-                const bookmarksList = (dbData.bookmarks || []).map(id => String(id));
                 
-                userExamHistory = dbData.examHistory || []; // Grab exams!
+                // Get mistakes safely
+                globalPracticeMistakes = (dbData.mistakes || []).map(id => String(id));
+                globalExamMistakes = (dbData.examMistakes || []).map(id => String(id));
+                globalBookmarks = (dbData.bookmarks || []).map(id => String(id));
+                
+                userExamHistory = dbData.examHistory || []; 
                 attemptedQuestions = solvedList; 
                 renderGrid(); 
 
-                const totalAttempts = solvedList.length + mistakesList.length;
+                const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+                const totalAttempts = solvedList.length + allMistakes.length;
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
 
                 if(document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
-                if(document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = mistakesList.length;
-                if(document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
+                if(document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
+                if(document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
                 if(document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
 
+                // Handle Categorized Mistakes Menu
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
-                const btnBookmarks = document.getElementById('btn-review-bookmarks');
-
-                if (btnMistakes && mistakesList.length > 0) {
+                if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
                     btnMistakes.style.cursor = "pointer";
-                    btnMistakes.onclick = () => launchCustomQuiz(mistakesList, "Review Mistakes");
+                    btnMistakes.onclick = () => {
+                        const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)));
+                        const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)));
+
+                        let combinedTree = {};
+                        if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
+                        if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
+
+                        activeCustomPool = [...pPool, ...ePool]; 
+                        openPopup("⚠️ Review Mistakes", combinedTree, 'Level1', []);
+                    };
                 }
-                if (btnBookmarks && bookmarksList.length > 0) {
+
+                // Handle Categorized Bookmarks Menu
+                const btnBookmarks = document.getElementById('btn-review-bookmarks');
+                if (btnBookmarks && globalBookmarks.length > 0) {
                     btnBookmarks.disabled = false;
                     btnBookmarks.style.cursor = "pointer";
-                    btnBookmarks.onclick = () => launchCustomQuiz(bookmarksList, "My Bookmarks");
+                    btnBookmarks.onclick = () => {
+                        const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)));
+                        activeCustomPool = bPool;
+                        openPopup("⭐ Bookmarks", buildSubTree(bPool), 'Level1', []);
+                    };
                 }
             }
         } catch (error) { console.error("Error fetching stats:", error); }
     }
 });
 
-// Fixed fuzzy-matcher so it ignores "Ghost Data" from older versions
-function launchCustomQuiz(questionIds, examTitle) {
-    const safeIds = questionIds.map(String);
-    
-    const customPool = allQuestions.filter(q => {
-        const qid1 = String(q['QuestionID']);
-        const qid2 = String(q['Question ID']);
-        const qid3 = String(q['ID']);
-        const qid4 = String(q['id']);
-        const possibleIds = [qid1, qid2, qid3, qid4, `q-${qid1}`, qid1.replace('q-', '')];
-        
-        return safeIds.some(id => possibleIds.includes(id));
-    });
-
-    if (customPool.length > 0) {
-        window.launchQuiz(customPool, 'practice', 0, examTitle);
-    } else {
-        alert("No matching questions found! The mistakes saved in your profile are likely 'ghost data' from older tests before we fixed the ID system. Try practicing a new topic!");
-    }
-}
-
-// Rewritten Analytics Modal to include Exams
+// Analytics Modal
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
         const body = document.getElementById('analytics-body');
+        let html = `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px;">Subject Stats</h4>`;
         
-        // 1. Progress Bars Section
-        let html = `<div style="margin-bottom: 2rem;">
-                        <h4 style="color: #064e3b; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
-                            <i class="fas fa-chart-bar"></i> Subject Performance
-                        </h4>`;
-        
-        Object.keys(subjectTree).forEach(subject => {
-            const total = getQuestionCount('subject', [subject]);
-            const solved = getSolvedCount('subject', [subject]);
+        Object.keys(subjectTree).forEach(sub => {
+            const total = getQuestionCount('subject', [sub], allQuestions); // Force allQuestions for accuracy graph
+            const solved = getSolvedCount('subject', [sub]);
             if (total === 0) return;
-            
-            const percent = Math.round((solved / total) * 100);
-            let barColor = percent > 70 ? '#10b981' : (percent > 40 ? '#f59e0b' : '#ef4444');
-
-            html += `
-                <div style="margin-bottom: 1.2rem;">
-                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b;">
-                        <span>${subject}</span>
-                        <span>${percent}% <span style="color:#64748b; font-weight:normal; font-size:0.8rem;">(${solved}/${total})</span></span>
-                    </div>
-                    <div class="progress-container" style="background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden;">
-                        <div style="width: ${percent}%; background: ${barColor}; height: 100%; transition: width 0.5s ease;"></div>
-                    </div>
-                </div>
-            `;
+            const pct = Math.round((solved / total) * 100);
+            html += `<div style="margin: 10px 0;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+                            <span>${sub}</span><span>${pct}% (${solved}/${total})</span>
+                        </div>
+                        <div style="background:#e2e8f0; height:6px; border-radius:3px; overflow:hidden; margin-top:4px;">
+                            <div style="width:${pct}%; background:#10b981; height:100%;"></div>
+                        </div>
+                     </div>`;
         });
-        html += `</div>`;
 
-        // 2. Exam History Section
-        html += `<div style="margin-bottom: 1rem;">
-                    <h4 style="color: #064e3b; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
-                        <i class="fas fa-history"></i> Recent Exams
-                    </h4>`;
-        
-        if (!userExamHistory || userExamHistory.length === 0) {
-            html += `<div style="text-align: center; color: #64748b; padding: 1rem; background: #f8fafc; border-radius: 8px; font-size: 0.9rem;">No exams completed yet.</div>`;
+        html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:20px;">Recent Exams</h4>`;
+        if (userExamHistory.length === 0) {
+            html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
         } else {
-            html += `<div style="max-height: 250px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                            <tr style="background: #f1f5f9; text-align: left; position: sticky; top: 0;">
-                                <th style="padding: 10px; border-bottom: 1px solid #cbd5e1; color: #475569;">Date</th>
-                                <th style="padding: 10px; border-bottom: 1px solid #cbd5e1; color: #475569;">Exam</th>
-                                <th style="padding: 10px; border-bottom: 1px solid #cbd5e1; color: #475569;">Score</th>
-                            </tr>`;
-            
-            const sortedExams = [...userExamHistory].reverse();
-            sortedExams.forEach(exam => {
-                const d = new Date(exam.date);
-                const dateStr = d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-                const scoreColor = exam.percentage >= 75 ? '#10b981' : '#ef4444';
-                
-                html += `
-                    <tr style="border-bottom: 1px solid #e2e8f0; background: #fff;">
-                        <td style="padding: 10px; color: #64748b; white-space: nowrap;">${dateStr}</td>
-                        <td style="padding: 10px; font-weight: 600; color: #1e293b;">${exam.examName || 'Custom Exam'}</td>
-                        <td style="padding: 10px; color: ${scoreColor}; font-weight: bold;">${exam.percentage}%</td>
-                    </tr>
-                `;
+            html += `<div style="font-size:0.8rem; max-height:200px; overflow-y:auto;">
+                        <table style="width:100%; text-align:left;">
+                            <tr style="color:#64748b;"><th>Date</th><th>Subject</th><th>Score</th></tr>`;
+            userExamHistory.reverse().forEach(ex => {
+                html += `<tr style="border-top:1px solid #f1f5f9;">
+                            <td style="padding:5px 0;">${new Date(ex.date).toLocaleDateString()}</td>
+                            <td>${ex.examName}</td>
+                            <td style="color:${ex.percentage >= 75 ? '#10b981' : '#ef4444'}; font-weight:bold;">${ex.percentage}%</td>
+                         </tr>`;
             });
             html += `</table></div>`;
         }
-        html += `</div>`;
 
         body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
@@ -650,11 +661,7 @@ if (btnAnalytics) {
 }
 
 const closeAnalytics = document.getElementById('close-analytics');
-if (closeAnalytics) {
-    closeAnalytics.onclick = () => {
-        document.getElementById('analytics-modal').style.display = 'none';
-    };
-}
+if (closeAnalytics) closeAnalytics.onclick = () => document.getElementById('analytics-modal').style.display = 'none';
 
 switchMode('practice');
 loadDataAndBuildTree();

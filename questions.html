@@ -41,41 +41,103 @@
 	</nav>
 	
     <section class="section-container" id="selection-screen">
-	<div class="glass-panel" style="margin-bottom: 2rem; padding: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 5px;">
-        <div style="text-align: center; flex: 1;">
-            <div style="font-size: 0.6rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Solved</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;" id="stat-solved">0</div>
-        </div>
-        <div style="text-align: center; flex: 1;">
-            <div style="font-size: 0.6rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Accuracy</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #334155;" id="stat-accuracy">0%</div>
-        </div>
-        <div style="text-align: center; flex: 1;">
-            <div style="font-size: 0.6rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Mistakes</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #ef4444;" id="stat-mistakes">0</div>
-        </div>
-        <div style="text-align: center; flex: 1;">
-            <div style="font-size: 0.6rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Bookmarks</div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: #eab308;" id="stat-bookmarks">0</div>
-        </div>
-    </div>
+	<section class="section-container" id="selection-screen">
+        
+        <style>
+            /* Default: Desktop Single Row Layout (Matches Screenshot) */
+            .prog-dash {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .prog-stats {
+                display: flex;
+                gap: 2.5rem;
+                align-items: center;
+            }
+            .prog-stat-box {
+                text-align: center;
+            }
+            .prog-stat-title {
+                font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 0.2rem;
+            }
+            .prog-actions {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+            .prog-actions-row {
+                display: flex;
+                gap: 0.75rem;
+            }
+            
+            /* Mobile View Layout (< 800px width) */
+            @media (max-width: 800px) {
+                .prog-dash {
+                    flex-direction: column;
+                    gap: 1.5rem;
+                    padding: 1rem;
+                }
+                .prog-stats {
+                    width: 100%;
+                    justify-content: space-between;
+                    gap: 5px;
+                }
+                .prog-actions {
+                    width: 100%;
+                    flex-direction: column;
+                }
+                .prog-actions-row {
+                    width: 100%;
+                    justify-content: center;
+                }
+                .prog-actions-row button {
+                    flex: 1;
+                    max-width: 160px;
+                }
+                #btn-view-analytics {
+                    width: 100%;
+                    max-width: 325px;
+                }
+            }
+        </style>
 
-    <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; width: 100%;">
-        <div style="display: flex; gap: 0.5rem; width: 100%; justify-content: center;">
-            <button id="btn-practice-mistakes" class="btn-outline" style="flex: 1; max-width: 160px; border-color: #fca5a5; color: #059669; padding: 0.5rem; font-weight: 600; font-size: 0.8rem;" disabled>
-                ⚠️ Mistakes
-            </button>
-            <button id="btn-review-bookmarks" class="btn-outline" style="flex: 1; max-width: 160px; border-color: #fde047; color: #059669; padding: 0.5rem; font-weight: 600; font-size: 0.8rem;" disabled>
-                ⭐ Bookmarks
-            </button>
+        <div class="glass-panel prog-dash">
+            <div class="prog-stats">
+                <div class="prog-stat-box">
+                    <div class="prog-stat-title">Solved</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #059669;" id="stat-solved">0</div>
+                </div>
+                <div class="prog-stat-box">
+                    <div class="prog-stat-title">Accuracy</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #334155;" id="stat-accuracy">0%</div>
+                </div>
+                <div class="prog-stat-box">
+                    <div class="prog-stat-title">Mistakes</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #ef4444;" id="stat-mistakes">0</div>
+                </div>
+                <div class="prog-stat-box">
+                    <div class="prog-stat-title">Bookmarks</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #eab308;" id="stat-bookmarks">0</div>
+                </div>
+            </div>
+
+            <div class="prog-actions">
+                <div class="prog-actions-row">
+                    <button id="btn-practice-mistakes" class="btn-outline" style="border-color: #fca5a5; color: #059669; padding: 0.6rem 1.2rem; font-weight: 600; font-size: 0.9rem;" disabled>
+                        ⚠️ Mistakes
+                    </button>
+                    <button id="btn-review-bookmarks" class="btn-outline" style="border-color: #fde047; color: #059669; padding: 0.6rem 1.2rem; font-weight: 600; font-size: 0.9rem;" disabled>
+                        ⭐ Bookmarks
+                    </button>
+                </div>
+                <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; padding: 0.7rem 1.5rem; font-weight: 600; border-radius: 8px; white-space: nowrap; color: white;">
+                    📈 View Detailed Analytics
+                </button>
+            </div>
         </div>
-        <button id="btn-view-analytics" class="btn-solid" style="width: 100%; max-width: 325px; background: #0f172a; padding: 0.7rem; font-weight: 600; border-radius: 8px;">
-            📈 View Detailed Analytics
-        </button>
-    </div>
-</div>
 	
         <div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">
             <h2 style="color: #064e3b; margin-bottom: 1rem;">Select Study Mode</h2>
