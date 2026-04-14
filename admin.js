@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // DOM Elements
 const usersListEl = document.getElementById('users-list');
@@ -23,9 +23,6 @@ const btnMakeAdmin = document.getElementById('btn-make-admin');
 let allUsersData = [];
 let editingUser = null;
 
-// ==========================================
-// 1. SECURITY & DYNAMIC QUESTION COUNTER
-// ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         const userRef = doc(db, "users", user.uid);
@@ -58,17 +55,12 @@ async function calculateTotalQuestions() {
                     totalQuestions += (lines.length - 1);
                 }
             }
-        } catch (e) {
-            // Ignore missing files
-        }
+        } catch (e) {}
     }
     document.getElementById('total-q-count').textContent = `Questions: ${totalQuestions}`;
 }
 
-// ==========================================
-// 2. TAB ROUTING
-// ==========================================
-window.switchView = function(viewName) {
+window.switchView = function(e, viewName) {
     document.getElementById('view-users').style.display = 'none';
     document.getElementById('view-keys').style.display = 'none';
     document.getElementById('view-payments').style.display = 'none';
@@ -77,12 +69,12 @@ window.switchView = function(viewName) {
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
     
     document.getElementById(`view-${viewName}`).style.display = 'block';
-    event.currentTarget.classList.add('active');
+    e.currentTarget.classList.add('active');
+
+    if(viewName === 'keys') fetchKeys();
+    if(viewName === 'payments') fetchPayments();
 }
 
-// ==========================================
-// 3. USER MANAGEMENT (FETCH & SORT)
-// ==========================================
 async function fetchAllUsers() {
     try {
         const querySnapshot = await getDocs(collection(db, "users"));
@@ -94,9 +86,7 @@ async function fetchAllUsers() {
             allUsersData.push(data);
         });
 
-        // SORT BY PRIORITY: Management (1) -> Mentor (2) -> Student (3)
         const rolePriority = { 'MANAGEMENT': 1, 'MENTOR': 2, 'STUDENT': 3 };
-        
         allUsersData.sort((a, b) => {
             const roleA = a.role || 'STUDENT';
             const roleB = b.role || 'STUDENT';
@@ -158,38 +148,28 @@ function renderUsers(usersArray) {
     });
 }
 
-// ==========================================
-// 4. ADVANCED SEARCH
-// ==========================================
 function executeSearch() {
     const query = searchInput.value.toLowerCase().trim();
     if (!query) { renderUsers(allUsersData); return; }
     
-    // Search across Name, Email, AND Phone
     const filtered = allUsersData.filter(u => {
         const nameMatch = (u.fullName || "").toLowerCase().includes(query);
         const emailMatch = (u.email || "").toLowerCase().includes(query);
         const phoneMatch = (u.phone || "").toLowerCase().includes(query);
         const uidMatch = u.uid.toLowerCase().includes(query);
-        
         return nameMatch || emailMatch || phoneMatch || uidMatch;
     });
     renderUsers(filtered);
 }
-
 searchBtn.addEventListener('click', executeSearch);
 searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
 
-// ==========================================
-// 5. EDIT USER MODAL & ROLES
-// ==========================================
 function openEditModal(user) {
     editingUser = user;
     editNameEl.textContent = user.fullName || "Unknown User";
     editEmailEl.textContent = user.email || "No Email Provided";
     editPhoneEl.textContent = user.phone || "No Phone Provided";
     editUidEl.textContent = `ID: ${user.uid}`;
-    
     renderSubscriptions();
     editModal.style.display = 'flex';
 }
@@ -207,9 +187,6 @@ async function changeUserRole(newRole) {
     }
 }
 
-// ==========================================
-// 6. SUBSCRIPTIONS LOGIC
-// ==========================================
 function renderSubscriptions() {
     subsListEl.innerHTML = '';
     if (!editingUser.subscriptions || Object.keys(editingUser.subscriptions).length === 0) {
@@ -257,7 +234,6 @@ function renderSubscriptions() {
                 fetchAllUsers();
             }
         };
-
         subsListEl.appendChild(box);
     });
 }
@@ -269,7 +245,6 @@ window.grantAccess = async function() {
     let expiryValue = "lifetime";
     if (days !== "lifetime") {
         const date = new Date();
-        // Correct JavaScript Date addition math
         date.setDate(date.getDate() + parseInt(days));
         expiryValue = date.toISOString();
     }
@@ -279,10 +254,152 @@ window.grantAccess = async function() {
 
     await updateDoc(doc(db, "users", editingUser.uid), { 
         subscriptions: currentSubs,
-        isPremium: true // Ensure they get the global premium flag
+        isPremium: true
     });
     
     editingUser.subscriptions = currentSubs;
     renderSubscriptions();
     fetchAllUsers();
 };
+
+// ==========================================
+// 7. KEY GENERATION LOGIC
+// ==========================================
+window.generateKey = async function() {
+    const course = document.getElementById('key-course').value;
+    const duration = document.getElementById('key-duration').value;
+    let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
+    const usage = parseInt(document.getElementById('key-usage').value) || 1;
+    const expiry = document.getElementById('key-expiry').value;
+
+    if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    try {
+        await setDoc(doc(db, "keys", customCode), {
+            code: customCode, course: course, duration: duration, maxUsage: usage,
+            usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
+        });
+        alert("Key Generated: " + customCode);
+        document.getElementById('key-custom').value = '';
+        fetchKeys();
+    } catch(e) {
+        console.error(e);
+        alert("Error generating key.");
+    }
+}
+
+async function fetchKeys() {
+    const qSnap = await getDocs(collection(db, "keys"));
+    const tbody = document.getElementById('keys-table-body');
+    tbody.innerHTML = '';
+    qSnap.forEach(d => {
+        const data = d.data();
+        tbody.innerHTML += `
+            <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 1rem; font-weight: bold;">${data.code}</td>
+                <td><span class="badge b-course">${data.course}</span></td>
+                <td>${data.usedCount} / ${data.maxUsage}</td>
+                <td><button class="btn-outline" style="padding: 0.3rem 0.6rem; color: #ef4444; border-color: #ef4444; width: auto;" onclick="deleteKey('${data.code}')">Del</button></td>
+            </tr>
+        `;
+    });
+}
+
+window.deleteKey = async function(code) {
+    if(confirm("Delete this key?")) {
+        await deleteDoc(doc(db, "keys", code));
+        fetchKeys();
+    }
+}
+
+// ==========================================
+// 8. PAYMENT REQUEST LOGIC
+// ==========================================
+async function fetchPayments() {
+    const qSnap = await getDocs(collection(db, "payment_requests"));
+    const list = document.getElementById('payments-list');
+    list.innerHTML = '';
+    let hasPending = false;
+    
+    qSnap.forEach(d => {
+        const data = d.data();
+        if(data.status !== 'pending') return;
+        hasPending = true;
+
+        const card = document.createElement('div');
+        card.style = "background: white; border: 2px solid #3b82f6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative;";
+        card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #cbd5e1; padding-bottom: 1rem; margin-bottom: 1rem;">
+                <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    ${data.courses.map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c}</span>`).join('')}
+                    <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-bottom: 1rem;">
+                <div style="width: 100px; height: 100px; background: #e2e8f0; border-radius: 8px; margin: 0 auto 0.5rem auto; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
+                    <i class="fas fa-image" style="font-size: 2rem;"></i>
+                </div>
+                <a href="#" style="color: #10b981; font-weight: bold; font-size: 0.85rem; text-decoration: none;"><i class="fas fa-search"></i> View Receipt</a>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+                <div style="flex: 1;">
+                    <label style="font-size: 0.7rem; font-weight: bold; color: #64748b; text-transform: uppercase;">Approve Duration:</label>
+                    <select class="approve-duration" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-weight: bold;">
+                        <option value="${data.durationDays}">${data.planName}</option>
+                        <option value="1">1 Day</option>
+                        <option value="7">1 Week</option>
+                        <option value="15">15 Days</option>
+                        <option value="30">1 Month</option>
+                        <option value="90">3 Months</option>
+                        <option value="180">6 Months</option>
+                        <option value="365">1 Year</option>
+                        <option value="lifetime">Lifetime</option>
+                    </select>
+                </div>
+                <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0;">Approve</button>
+                <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0;">Reject</button>
+            </div>
+        `;
+
+        card.querySelector('.btn-approve').onclick = () => approvePayment(d.id, data.userId, data.courses, card.querySelector('.approve-duration').value);
+        card.querySelector('.btn-reject').onclick = () => rejectPayment(d.id);
+        list.appendChild(card);
+    });
+
+    if(!hasPending) list.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending payment requests.</p>';
+}
+
+window.approvePayment = async function(reqId, userId, courses, durationDays) {
+    try {
+        const uRef = doc(db, "users", userId);
+        const uSnap = await getDoc(uRef);
+        if(!uSnap.exists()) return alert("User not found");
+
+        let expiryValue = "lifetime";
+        if(durationDays !== "lifetime") {
+            const date = new Date();
+            date.setDate(date.getDate() + parseInt(durationDays));
+            expiryValue = date.toISOString();
+        }
+
+        let currentSubs = uSnap.data().subscriptions || {};
+        courses.forEach(c => currentSubs[c] = expiryValue);
+
+        await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
+        await updateDoc(doc(db, "payment_requests", reqId), { status: 'approved' });
+
+        alert("Payment approved and access granted!");
+        fetchPayments();
+    } catch (e) {
+        console.error(e);
+        alert("Error approving payment");
+    }
+}
+
+window.rejectPayment = async function(reqId) {
+    if(confirm("Reject this payment?")) {
+        await updateDoc(doc(db, "payment_requests", reqId), { status: 'rejected' });
+        fetchPayments();
+    }
+}

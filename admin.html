@@ -16,7 +16,6 @@
 
         .admin-container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
 
-        /* Floating Dark Top Bar */
         .top-bar {
             background: #1e293b; color: white; border-radius: 20px; padding: 1rem 2rem;
             display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;
@@ -30,7 +29,6 @@
         }
         .exit-btn:hover { background: #475569; }
 
-        /* Tabs Container */
         .tabs-container { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
         .admin-tab {
             background: white; border: none; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 800;
@@ -39,7 +37,6 @@
         }
         .admin-tab.active { background: #10b981; color: white; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); }
 
-        /* Main Content Box */
         .admin-content { margin-top: 1rem; }
         .page-title { color: #064e3b; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 800; }
         
@@ -49,23 +46,19 @@
 
         .glass-box { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
 
-        /* Generic Forms */
         .form-group { margin-bottom: 1.2rem; text-align: left; }
         .form-group label { display: block; font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.5rem; }
         .form-group select, .form-group input { width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; outline: none; font-family: 'Nunito', sans-serif; font-weight: 600; color: #1e293b;}
         .btn-solid { background: #10b981; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%; transition: background 0.2s;}
         .btn-solid:hover { background: #059669; }
 
-        /* Modals */
         .popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 2000; display: none; align-items: center; justify-content: center; }
         .popup-content { background: white; border-radius: 12px; padding: 1.5rem; width: 90%; max-width: 450px; max-height: 90vh; overflow-y: auto; text-align: center; }
         
-        /* Edit User Specific Styles */
         .subs-box { border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: left; display: flex; justify-content: space-between; align-items: center; }
         .subs-box.active-sub { border-color: #6ee7b7; background: #ecfdf5; }
         .grant-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; }
         
-        /* Badges */
         .badge { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 20px; display: inline-block;}
         .b-admin { background: #f3e8ff; color: #8b5cf6; }
         .b-mentor { background: #fef08a; color: #b45309; }
@@ -87,10 +80,10 @@
         </div>
 
         <div class="tabs-container">
-            <button class="admin-tab" onclick="switchView('reports')"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
-            <button class="admin-tab" onclick="switchView('payments')"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
-            <button class="admin-tab" onclick="switchView('keys')"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
-            <button class="admin-tab active" onclick="switchView('users')"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
+            <button class="admin-tab" onclick="switchView(event, 'reports')"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
+            <button class="admin-tab" onclick="switchView(event, 'payments')"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
+            <button class="admin-tab" onclick="switchView(event, 'keys')"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
+            <button class="admin-tab active" onclick="switchView(event, 'users')"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
         </div>
 
         <div id="view-users" class="admin-content">

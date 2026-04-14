@@ -1,278 +1,249 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, collection, query, where, getDocs, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+let currentUserData = null;
+let currentUserId = null;
 
 // ==========================================
-// STATE VARIABLES
-// ==========================================
-let currentUser = null;
-let currentRole = 'STUDENT';
-let currentChatId = null;
-let chatUnsubscribe = null; 
-let requestUnsubscribe = null;
-
-// DOM Elements
-const userNameEl = document.getElementById('user-name');
-const subStatusEl = document.getElementById('subscription-status');
-const logoutBtn = document.getElementById('logout-btn');
-
-// Chat DOM Elements
-const btnOpenMentors = document.getElementById('btn-open-mentors');
-const mentorListModal = document.getElementById('mentor-list-modal');
-const mentorsContainer = document.getElementById('mentors-container');
-const incomingRequestModal = document.getElementById('incoming-request-modal');
-const incomingStudentName = document.getElementById('incoming-student-name');
-const btnAcceptChat = document.getElementById('btn-accept-chat');
-const btnRejectChat = document.getElementById('btn-reject-chat');
-const liveChatModal = document.getElementById('live-chat-modal');
-const chatMessages = document.getElementById('chat-messages');
-const chatForm = document.getElementById('chat-form');
-const chatInput = document.getElementById('chat-input');
-const btnEndChat = document.getElementById('btn-end-chat');
-
-// ==========================================
-// AUTHENTICATION & INITIALIZATION
+// 1. DASHBOARD LOAD & BADGE FIX
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-        currentUser = user;
+        currentUserId = user.uid;
         const userRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userRef);
-        
-        if (docSnap.exists()) {
-            const dbData = docSnap.data();
-            userNameEl.textContent = dbData.fullName || "Doctor";
-            currentRole = dbData.role || 'STUDENT';
-            
-            // Handle Pro Badge logic
-            if (dbData.isPremium) {
-                subStatusEl.textContent = "Premium";
-                subStatusEl.className = "status-badge badge-pro";
-                document.getElementById('free-warning-text').style.display = 'none';
-            }
+        try {
+            const docSnap = await getDoc(userRef);
 
-            // If the user is a MENTOR, start listening for incoming chat requests
-            if (currentRole === 'MENTOR' || currentRole === 'MANAGEMENT') {
-                listenForIncomingRequests();
-                btnOpenMentors.textContent = "You are a Mentor (Waiting...)";
-                btnOpenMentors.disabled = true;
+            if (docSnap.exists()) {
+                currentUserData = docSnap.data();
+                
+                document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
+                
+                const subStatus = document.getElementById('subscription-status');
+                const freeWarning = document.getElementById('free-warning-text');
+                const userRole = (currentUserData.role || '').toUpperCase();
+
+                // Clear previous classes/styles
+                subStatus.className = "status-badge";
+                subStatus.style.background = "";
+                subStatus.style.color = "";
+                subStatus.style.border = "";
+
+                // Logic: Admin > Premium > Free
+                if (userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
+                    subStatus.textContent = "Admin";
+                    subStatus.style.background = "#f3e8ff";
+                    subStatus.style.color = "#8b5cf6";
+                    subStatus.style.border = "1px solid #c084fc";
+                    
+                    document.getElementById('btn-admin-panel').style.display = 'flex';
+                    if (freeWarning) freeWarning.style.display = 'none';
+                    
+                } else if (currentUserData.isPremium) {
+                    subStatus.textContent = "Premium";
+                    subStatus.className = "status-badge badge-pro";
+                    if (freeWarning) freeWarning.style.display = 'none';
+                    
+                } else {
+                    subStatus.textContent = "Free Tier";
+                    subStatus.className = "status-badge badge-free";
+                    if (freeWarning) freeWarning.style.display = 'inline';
+                }
             }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
         }
     } else {
-        window.location.href = 'index.html'; // Redirect to login if not authenticated
+        window.location.href = 'index.html'; 
     }
 });
 
-logoutBtn.addEventListener('click', () => {
-    signOut(auth).then(() => {
-        window.location.href = 'index.html';
+// ==========================================
+// 2. NAVIGATION & ROUTING
+// ==========================================
+document.getElementById('logout-btn').addEventListener('click', () => {
+    signOut(auth).then(() => { window.location.href = 'index.html'; });
+});
+
+document.getElementById('btn-admin-panel').addEventListener('click', () => {
+    window.location.href = 'admin.html';
+});
+
+document.getElementById('btn-contact-mentor').addEventListener('click', () => {
+    window.location.href = 'mentor.html';
+});
+
+document.getElementById('btn-open-premium').addEventListener('click', () => {
+    document.getElementById('premium-modal').style.display = 'flex';
+    updatePrices();
+});
+
+document.querySelectorAll('.btn-close-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.target.closest('.popup-overlay').style.display = 'none';
+    });
+});
+
+window.addEventListener('load', () => {
+    const savedCourse = localStorage.getItem('edeetos_active_course');
+    if (savedCourse) document.getElementById('course-dropdown').value = savedCourse;
+});
+
+document.getElementById('btn-launch-course').addEventListener('click', () => {
+    const selectedCourse = document.getElementById('course-dropdown').value;
+    localStorage.setItem('edeetos_active_course', selectedCourse);
+    window.location.href = 'questions.html';
+});
+
+// ==========================================
+// 3. UI MODALS & PRICING TABS
+// ==========================================
+const tabBuy = document.getElementById('tab-buy');
+const tabRedeem = document.getElementById('tab-redeem');
+const viewBuy = document.getElementById('view-buy');
+const viewRedeem = document.getElementById('view-redeem');
+
+tabBuy.addEventListener('click', () => {
+    tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab';
+    viewBuy.style.display = 'block'; viewRedeem.style.display = 'none';
+});
+
+tabRedeem.addEventListener('click', () => {
+    tabRedeem.className = 'active-tab'; tabBuy.className = 'inactive-tab';
+    viewRedeem.style.display = 'block'; viewBuy.style.display = 'none';
+});
+
+const courseSelectorModal = document.getElementById('course-selector-modal');
+document.getElementById('btn-open-course-selector').addEventListener('click', () => {
+    courseSelectorModal.style.display = 'flex';
+});
+
+document.getElementById('btn-confirm-courses').addEventListener('click', () => {
+    const checkedCount = document.querySelectorAll('.course-check:checked').length;
+    if (checkedCount === 0) return alert("You must select at least one course.");
+    document.getElementById('selected-courses-text').textContent = `${checkedCount} Course${checkedCount > 1 ? 's' : ''} Selected`;
+    courseSelectorModal.style.display = 'none';
+    updatePrices();
+});
+
+const basePrices = [50, 150, 250, 400, 1000, 1500, 2500, 3500];
+const maxPrices = [200, 500, 800, 1500, 3000, 4000, 4500, 5000];
+
+function updatePrices() {
+    const count = Math.max(1, document.querySelectorAll('.course-check:checked').length);
+    const multiplier = 1 + ((count - 1) * 0.25); 
+
+    for(let i = 0; i < 8; i++) {
+        let calculatedPrice = Math.round(basePrices[i] * multiplier);
+        if (calculatedPrice > maxPrices[i]) calculatedPrice = maxPrices[i];
+        const priceEl = document.getElementById('price-' + i);
+        if(priceEl) priceEl.textContent = 'Rs. ' + calculatedPrice.toLocaleString();
+    }
+}
+
+document.querySelectorAll('.plan-card').forEach(card => {
+    card.addEventListener('click', function() {
+        document.querySelectorAll('.plan-card').forEach(c => {
+            c.classList.remove('selected');
+            const lifePrice = c.querySelector('#price-7');
+            if (lifePrice) lifePrice.style.color = '#1e293b'; 
+        });
+        this.classList.add('selected');
+        const lifePrice = this.querySelector('#price-7');
+        if (lifePrice) lifePrice.style.color = '#d97706';
     });
 });
 
 // ==========================================
-// 1. STUDENT: FETCH AND REQUEST MENTOR
+// 4. SUBMIT PAYMENT REQUEST
 // ==========================================
-btnOpenMentors.addEventListener('click', async () => {
-    if (currentRole === 'MENTOR' || currentRole === 'MANAGEMENT') return; // Mentors don't request mentors
-
-    mentorListModal.style.display = 'flex';
-    mentorsContainer.innerHTML = '<p style="text-align: center; color: #94a3b8;">Finding available mentors...</p>';
-
-    try {
-        const usersRef = collection(db, "users");
-        // Query for mentors. NOTE: Ensure your Firestore rules allow reading users with role 'MENTOR'
-        const q = query(usersRef, where("role", "in", ["MENTOR", "MANAGEMENT"]));
-        const querySnapshot = await getDocs(q);
-        
-        mentorsContainer.innerHTML = '';
-        
-        if (querySnapshot.empty) {
-            mentorsContainer.innerHTML = '<p style="text-align: center; color: #ef4444;">No mentors are currently online.</p>';
+const btnSubmitPayment = document.getElementById('btn-submit-payment');
+if (btnSubmitPayment) {
+    btnSubmitPayment.addEventListener('click', async () => {
+        if(!currentUserId) {
+            alert("Authentication error. Please refresh and try again.");
             return;
         }
 
-        querySnapshot.forEach((docSnap) => {
-            const mentorData = docSnap.data();
-            const mentorId = docSnap.id;
-            
-            const card = document.createElement('div');
-            card.className = 'mentor-card';
-            card.innerHTML = `
-                <div>
-                    <div style="font-weight: 800; color: #1e293b;">${mentorData.fullName || 'Verified Mentor'}</div>
-                    <div style="font-size: 0.75rem; color: #10b981; font-weight: bold;">🟢 Online</div>
-                </div>
-                <button class="btn-solid" style="padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; border: none; background: #0f172a;" onclick="requestChat('${mentorId}', '${mentorData.fullName}')">
-                    Request Chat
-                </button>
-            `;
-            mentorsContainer.appendChild(card);
-        });
+        btnSubmitPayment.textContent = "Submitting...";
+        btnSubmitPayment.disabled = true;
 
-    } catch (error) {
-        console.error("Error fetching mentors:", error);
-        mentorsContainer.innerHTML = '<p style="text-align: center; color: #ef4444;">Error loading mentors.</p>';
-    }
-});
-
-// Expose to window so the inline onclick in the HTML card works
-window.requestChat = async function(mentorId, mentorName) {
-    mentorsContainer.innerHTML = `<p style="text-align: center; color: #d97706; font-weight: bold;">Sending request to ${mentorName}... Please wait.</p>`;
-    
-    try {
-        // Create a new document in the 'chats' collection
-        const chatRef = await addDoc(collection(db, "chats"), {
-            studentId: currentUser.uid,
-            studentName: userNameEl.textContent,
-            mentorId: mentorId,
-            mentorName: mentorName,
-            status: 'pending', // 'pending', 'active', 'ended'
-            createdAt: serverTimestamp()
-        });
-
-        currentChatId = chatRef.id;
+        const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
+        const selectedPlan = document.querySelector('.plan-card.selected');
         
-        // Now listen to see if the mentor accepts it!
-        listenForChatAcceptance(currentChatId);
+        const durationDays = selectedPlan.getAttribute('data-days');
+        const planName = selectedPlan.getAttribute('data-name');
+        const fallbackEmail = auth.currentUser ? auth.currentUser.email : "Unknown Email";
 
-    } catch (error) {
-        console.error("Error requesting chat:", error);
-        mentorsContainer.innerHTML = '<p style="text-align: center; color: #ef4444;">Failed to send request.</p>';
-    }
-};
-
-function listenForChatAcceptance(chatId) {
-    const chatRef = doc(db, "chats", chatId);
-    
-    chatUnsubscribe = onSnapshot(chatRef, (docSnap) => {
-        if (docSnap.exists()) {
-            const data = docSnap.data();
+        try {
+            await addDoc(collection(db, "payment_requests"), {
+                userId: currentUserId,
+                userEmail: currentUserData.email || fallbackEmail,
+                courses: courses,
+                durationDays: durationDays,
+                planName: planName,
+                status: 'pending',
+                timestamp: serverTimestamp()
+            });
             
-            if (data.status === 'active') {
-                // Mentor accepted! Close list, open live chat
-                mentorListModal.style.display = 'none';
-                openLiveChat(chatId);
-            } else if (data.status === 'ended' || data.status === 'rejected') {
-                alert("The mentor is unavailable right now.");
-                mentorListModal.style.display = 'none';
-                if (chatUnsubscribe) chatUnsubscribe();
-            }
+            alert("Payment request submitted successfully! Please wait for admin approval.");
+            document.getElementById('premium-modal').style.display = 'none';
+        } catch (e) {
+            console.error("Payment submission error: ", e);
+            alert("Failed to submit request. Please try again later.");
+        } finally {
+            btnSubmitPayment.textContent = "Confirm & Submit Request";
+            btnSubmitPayment.disabled = false;
         }
     });
 }
 
 // ==========================================
-// 2. MENTOR: LISTEN FOR AND ACCEPT REQUESTS
+// 5. REDEEM CODE 
 // ==========================================
-function listenForIncomingRequests() {
-    const chatsRef = collection(db, "chats");
-    const q = query(chatsRef, where("mentorId", "==", currentUser.uid), where("status", "==", "pending"));
-    
-    requestUnsubscribe = onSnapshot(q, (snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-            if (change.type === "added") {
-                const data = change.doc.data();
-                currentChatId = change.doc.id;
-                
-                incomingStudentName.textContent = data.studentName || "A Student";
-                incomingRequestModal.style.display = 'flex';
+const btnRedeem = document.getElementById('btn-submit-redeem');
+if (btnRedeem) {
+    btnRedeem.addEventListener('click', async () => {
+        const codeInput = document.getElementById('redeem-input').value.trim().toUpperCase();
+        if(codeInput.length < 3) return alert("Invalid code.");
+
+        try {
+            const keyRef = doc(db, "keys", codeInput);
+            const keySnap = await getDoc(keyRef);
+
+            if(!keySnap.exists()) return alert("Code is invalid or does not exist.");
+            const keyData = keySnap.data();
+
+            if(keyData.usedCount >= keyData.maxUsage) return alert("This code has reached its maximum usage limit.");
+            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) return alert("This code has expired.");
+
+            let expiryValue = "lifetime";
+            if(keyData.duration !== "lifetime") {
+                const d = new Date();
+                d.setDate(d.getDate() + parseInt(keyData.duration));
+                expiryValue = d.toISOString();
             }
-        });
-    });
-}
 
-btnAcceptChat.addEventListener('click', async () => {
-    incomingRequestModal.style.display = 'none';
-    if (!currentChatId) return;
+            let currentSubs = currentUserData.subscriptions || {};
+            if(keyData.course === 'ALL') {
+                 ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'].forEach(c => currentSubs[c] = expiryValue);
+            } else {
+                currentSubs[keyData.course] = expiryValue;
+            }
 
-    // Update status to active
-    await updateDoc(doc(db, "chats", currentChatId), { status: 'active' });
-    openLiveChat(currentChatId);
-});
+            await updateDoc(doc(db, "users", currentUserId), {
+                subscriptions: currentSubs,
+                isPremium: true
+            });
+            await updateDoc(keyRef, { usedCount: keyData.usedCount + 1 });
 
-btnRejectChat.addEventListener('click', async () => {
-    incomingRequestModal.style.display = 'none';
-    if (!currentChatId) return;
+            alert("Code redeemed successfully! Premium access granted.");
+            window.location.reload();
 
-    await updateDoc(doc(db, "chats", currentChatId), { status: 'rejected' });
-    currentChatId = null;
-});
-
-// ==========================================
-// 3. SHARED: LIVE CHAT ENGINE
-// ==========================================
-function openLiveChat(chatId) {
-    liveChatModal.style.display = 'flex';
-    chatMessages.innerHTML = ''; // Clear previous messages
-    
-    // Listen for new messages in the subcollection
-    const messagesRef = collection(db, "chats", chatId, "messages");
-    const q = query(messagesRef, orderBy("timestamp", "asc"));
-    
-    // If there's an existing listener, kill it
-    if (chatUnsubscribe) chatUnsubscribe();
-    
-    chatUnsubscribe = onSnapshot(q, (snapshot) => {
-        chatMessages.innerHTML = ''; // Re-render all messages to ensure order
-        
-        snapshot.forEach((docSnap) => {
-            const msg = docSnap.data();
-            const isMe = msg.senderId === currentUser.uid;
-            
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `msg-bubble ${isMe ? 'msg-sent' : 'msg-received'}`;
-            msgDiv.textContent = msg.text;
-            
-            chatMessages.appendChild(msgDiv);
-        });
-        
-        // Auto-scroll to bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    });
-
-    // Also listen to the main chat document to see if the OTHER person ended it
-    onSnapshot(doc(db, "chats", chatId), (docSnap) => {
-        if (docSnap.exists() && docSnap.data().status === 'ended') {
-            alert("The chat session has ended.");
-            closeChatUI();
+        } catch (e) {
+            console.error("Redemption error: ", e);
+            alert("Error redeeming code.");
         }
     });
-}
-
-chatForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const text = chatInput.value.trim();
-    if (!text || !currentChatId) return;
-
-    chatInput.value = ''; // clear input immediately
-
-    try {
-        await addDoc(collection(db, "chats", currentChatId, "messages"), {
-            senderId: currentUser.uid,
-            text: text,
-            timestamp: serverTimestamp()
-        });
-    } catch (error) {
-        console.error("Error sending message:", error);
-    }
-});
-
-btnEndChat.addEventListener('click', async () => {
-    if (!currentChatId) return;
-    
-    if (confirm("Are you sure you want to end this chat? A transcript will be saved.")) {
-        await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
-        
-        // In a real production app, this status update triggers a Firebase Cloud Function 
-        // to securely fetch the transcript and send the email via SendGrid/Nodemailer.
-        alert("Chat ended! A transcript will be sent to your registered email address.");
-        
-        closeChatUI();
-    }
-});
-
-function closeChatUI() {
-    liveChatModal.style.display = 'none';
-    if (chatUnsubscribe) chatUnsubscribe();
-    currentChatId = null;
 }
