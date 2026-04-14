@@ -72,25 +72,22 @@ function loadSession() {
                 const docSnap = await getDoc(userRef);
                 if (docSnap.exists()) {
                     const dbData = docSnap.data();
-                    const savedNotes = dbData.notes || {}; 
-                    const savedBookmarks = dbData.bookmarks || []; 
                     
-                    const solvedList = dbData.solvedQuestions || [];
-                    const mistakesList = dbData.mistakes || [];
-                    const examMistakesList = dbData.examMistakes || [];
+                    // ISOLATE: Grab the data specific to the course they are currently taking
+                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                    const courseData = dbData[activeCourse] || {};
                     
-                    Object.keys(dbData).forEach(key => {
-                        if (key.startsWith('notes.')) {
-                            const recoveredId = key.substring(6); 
-                            savedNotes[recoveredId] = dbData[key];
-                        }
-                    });
+                    const savedNotes = courseData.notes || {}; 
+                    const savedBookmarks = courseData.bookmarks || []; 
+                    const solvedList = courseData.solvedQuestions || [];
+                    const mistakesList = courseData.mistakes || [];
+                    const examMistakesList = courseData.examMistakes || [];
 
                     quizQueue.forEach(q => {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
                         
-                        // FIX: Mistakes take priority! If it's a mistake, it stays red historically.
+                        // Mistakes take priority! If it's a mistake, it stays red historically.
                         if (mistakesList.includes(q.originalNumber) || examMistakesList.includes(q.originalNumber)) {
                             q.historicalState = 'wrong';
                         } else if (solvedList.includes(q.originalNumber)) {
@@ -142,7 +139,6 @@ function buildNumberGrid() {
         
         const stateToShow = q.sessionState || q.historicalState;
         
-        // FIX: 'wrong_then_correct' now properly adds the red 'incorrect' class!
         if (stateToShow === 'correct') {
             numBtn.classList.add('correct');
         } else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') {
@@ -296,34 +292,38 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 3. DATABASE SYNC FUNCTIONS
+// 3. DATABASE SYNC FUNCTIONS (COURSE ISOLATED)
 // ==========================================
 async function savePracticeProgress(questionId, isCorrect) {
     const user = auth.currentUser;
     if (!user) return; 
 
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
     
-    try {
-        if (isCorrect) {
-            const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
-            
-            let updates = {
-                solvedQuestions: arrayUnion(questionId) 
-            };
+    // Dynamic paths for Firebase Dot Notation
+    const solvedPath = `${activeCourse}.solvedQuestions`;
+    const mistakesPath = `${activeCourse}.mistakes`;
+    const examMistakesPath = `${activeCourse}.examMistakes`;
+    
+    let updates = {};
 
-            // ONLY remove the mistake if they are actively in Practice Mistakes mode!
-            if (isReviewMistakesMode) {
-                updates.mistakes = arrayRemove(questionId);      
-                updates.examMistakes = arrayRemove(questionId);   
-            }
+    if (isCorrect) {
+        const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
+        
+        updates[solvedPath] = arrayUnion(questionId); 
 
-            await setDoc(userRef, updates, { merge: true });
-        } else {
-            await setDoc(userRef, {
-                mistakes: arrayUnion(questionId)
-            }, { merge: true });
+        // ONLY remove the mistake if they are actively in Practice Mistakes mode!
+        if (isReviewMistakesMode) {
+            updates[mistakesPath] = arrayRemove(questionId);      
+            updates[examMistakesPath] = arrayRemove(questionId);   
         }
+    } else {
+        updates[mistakesPath] = arrayUnion(questionId);
+    }
+
+    try {
+        await setDoc(userRef, updates, { merge: true });
     } catch (error) {
         console.error("Error saving to Firebase:", error);
     }
@@ -333,18 +333,19 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     const user = auth.currentUser;
     if (!user) return; 
 
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
     
     try {
         let updates = {};
         
         if (correctIds.length > 0) {
-            updates.examSolvedQuestions = arrayUnion(...correctIds);
-            updates.mistakes = arrayRemove(...correctIds);      
-            updates.examMistakes = arrayRemove(...correctIds);  
+            updates[`${activeCourse}.examSolvedQuestions`] = arrayUnion(...correctIds);
+            updates[`${activeCourse}.mistakes`] = arrayRemove(...correctIds);      
+            updates[`${activeCourse}.examMistakes`] = arrayRemove(...correctIds);  
         }
         if (mistakeIds.length > 0) {
-            updates.examMistakes = arrayUnion(...mistakeIds);
+            updates[`${activeCourse}.examMistakes`] = arrayUnion(...mistakeIds);
         }
 
         const examTitle = quizConfig.examName || "Custom Exam"; 
@@ -356,7 +357,7 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
             date: new Date().toISOString() 
         };
 
-        updates.examHistory = arrayUnion(examRecord);
+        updates[`${activeCourse}.examHistory`] = arrayUnion(examRecord);
 
         if (Object.keys(updates).length > 0) {
             await setDoc(userRef, updates, { merge: true });
@@ -369,10 +370,13 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
 async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     const user = auth.currentUser;
     if (!user) return; 
+    
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
+    
     try {
         await setDoc(userRef, {
-            bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
+            [`${activeCourse}.bookmarks`]: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
         }, { merge: true });
     } catch (error) { console.error("Error updating bookmark in Firebase:", error); }
 }
@@ -380,11 +384,15 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
 async function saveNoteToFirebase(questionId, noteText) {
     const user = auth.currentUser;
     if (!user) return; 
+    
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
+    
     try {
-        const noteUpdate = { notes: {} };
-        noteUpdate.notes[questionId] = noteText;
-        await setDoc(userRef, noteUpdate, { merge: true });
+        // Dot notation builds the nested object perfectly without overwriting
+        await setDoc(userRef, {
+            [`${activeCourse}.notes.${questionId}`]: noteText
+        }, { merge: true });
     } catch (error) { console.error("Error saving note:", error); }
 }
 
@@ -415,7 +423,7 @@ function handleOptionClick(event, optionData, optionElement) {
             currentQuestionData.sessionState = 'wrong'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
             if (btn) {
-                btn.classList.remove('correct'); // Ensure green is gone
+                btn.classList.remove('correct'); 
                 btn.classList.add('incorrect');
             }
         }
@@ -435,12 +443,11 @@ function handleOptionClick(event, optionData, optionElement) {
             currentQuestionData.sessionState = 'correct'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
             if (btn) {
-                btn.classList.remove('incorrect'); // Clean up any historical red
+                btn.classList.remove('incorrect');
                 btn.classList.add('correct');
             }
         } else if (currentQuestionData.sessionState === 'wrong') {
             currentQuestionData.sessionState = 'wrong_then_correct';
-            // It deliberately stays RED here because they failed it first!
         }
         
         savePracticeProgress(currentQuestionData.originalNumber, true); 

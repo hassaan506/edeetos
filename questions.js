@@ -206,9 +206,14 @@ function switchMode(mode) {
 
 async function loadDataAndBuildTree() {
     try {
-        const csvPath = 'Data/fcps_part1.csv';
+        // 1. Ask local storage which course they clicked (default to fcps_part1 if missing)
+        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+        
+        // 2. Dynamically plug that name into the CSV path!
+        const csvPath = `Data/${activeCourse}.csv`; 
+        
         const response = await fetch(csvPath);
-        if (!response.ok) throw new Error("CSV file not found");
+        if (!response.ok) throw new Error("CSV file not found: " + csvPath);
         const csvText = await response.text();
 
         function parseCSV(text) {
@@ -555,12 +560,16 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 
-                const solvedList = (dbData.solvedQuestions || []).map(id => String(id));
-                globalPracticeMistakes = (dbData.mistakes || []).map(id => String(id));
-                globalExamMistakes = (dbData.examMistakes || []).map(id => String(id));
-                globalBookmarks = (dbData.bookmarks || []).map(id => String(id));
+                // ISOLATE: Grab only the data for the active course!
+                const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                const courseData = dbData[activeCourse] || {}; 
                 
-                userExamHistory = dbData.examHistory || []; 
+                const solvedList = (courseData.solvedQuestions || []).map(id => String(id));
+                globalPracticeMistakes = (courseData.mistakes || []).map(id => String(id));
+                globalExamMistakes = (courseData.examMistakes || []).map(id => String(id));
+                globalBookmarks = (courseData.bookmarks || []).map(id => String(id));
+                
+                userExamHistory = courseData.examHistory || []; 
                 attemptedQuestions = solvedList; 
                 renderGrid(); 
 
@@ -716,30 +725,37 @@ if (closeResetModal) {
 document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
         const type = e.target.getAttribute('data-type');
+        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
         
         switch(type) {
             case "1": 
-                pendingUpdates = { solvedQuestions: [], mistakes: [], examMistakes: [], bookmarks: [], examHistory: [] };
+                pendingUpdates = { 
+                    [`${activeCourse}.solvedQuestions`]: [], 
+                    [`${activeCourse}.mistakes`]: [], 
+                    [`${activeCourse}.examMistakes`]: [], 
+                    [`${activeCourse}.bookmarks`]: [], 
+                    [`${activeCourse}.examHistory`]: [] 
+                };
                 pendingResetMsg = "All progress has been fully reset!";
-                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress? This cannot be undone.";
+                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course? This cannot be undone.";
                 break;
             case "2":
-                pendingUpdates = { mistakes: [], examMistakes: [] };
+                pendingUpdates = { [`${activeCourse}.mistakes`]: [], [`${activeCourse}.examMistakes`]: [] };
                 pendingResetMsg = "All mistakes have been cleared!";
                 confirmText.textContent = "Are you sure you want to clear your Mistake history?";
                 break;
             case "3":
-                pendingUpdates = { bookmarks: [] };
+                pendingUpdates = { [`${activeCourse}.bookmarks`]: [] };
                 pendingResetMsg = "All bookmarks have been cleared!";
                 confirmText.textContent = "Are you sure you want to delete all your Bookmarks?";
                 break;
             case "4":
-                pendingUpdates = { examHistory: [] };
+                pendingUpdates = { [`${activeCourse}.examHistory`]: [] };
                 pendingResetMsg = "Exam history has been cleared!";
                 confirmText.textContent = "Are you sure you want to delete your Past Exam scores?";
                 break;
             case "5":
-                pendingUpdates = { solvedQuestions: [] };
+                pendingUpdates = { [`${activeCourse}.solvedQuestions`]: [] };
                 pendingResetMsg = "Solved questions have been cleared!";
                 confirmText.textContent = "Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.";
                 break;
@@ -813,19 +829,19 @@ if (btnJourney) {
         trophiesGrid.innerHTML = trophies.map(t => {
             const isUnlocked = solvedCount >= t.req;
             const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
-            const bgColor = isUnlocked ? '#ffffff' : '#f8fafc';
-            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.5);';
+            const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
+            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
             const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
 
             return `
-                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.8rem; border-radius: 10px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 8px rgba(0,0,0,0.05)' : 'none'};">
-                    <div style="font-size: 2rem; margin-right: 0.8rem; ${iconStyle}">${t.icon}</div>
+                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
+                    <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
                     <div style="flex-grow: 1;">
-                        <div style="font-weight: 800; color: ${textColor}; font-size: 1rem; margin-bottom: 0.1rem;">${t.title}</div>
+                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
                         <div style="font-size: 0.75rem; color: #64748b;">Solve ${t.req} Questions</div>
                     </div>
-                    <div style="font-size: 1.2rem;">
+                    <div style="font-size: 1.3rem;">
                         ${statusIcon}
                     </div>
                 </div>

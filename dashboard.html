@@ -6,6 +6,50 @@
     <title>Dashboard - EDEETOS</title>
 	<link rel="stylesheet" href="global.css">
 	<link rel="stylesheet" href="dashboard.css">
+    <style>
+        /* Custom Styles for the Multi-Course Selector */
+        .course-category {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #064e3b;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            font-size: 1.3rem;
+            text-align: left;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.2rem;
+        }
+        .course-card-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.05rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            backdrop-filter: blur(10px);
+        }
+        .course-card-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1);
+            border-color: #10b981;
+            color: #059669;
+        }
+        .course-icon {
+            font-size: 2.5rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,13 +64,13 @@
         </div>
     </nav>
 
-		<section class="section-container">
+    <section class="section-container">
 		<div class="dashboard-header">
 			<h1>Welcome, <span id="user-name" class="highlight-text">Doctor</span></h1>
-			<p>Current Path: <strong id="user-exam">Medical Student</strong></p>
+			<p>Current Path: <strong id="user-exam">Medical Professional</strong></p>
 		</div>
 
-		<div class="feature-grid">
+        <div class="feature-grid" style="margin-bottom: 2rem;">
 			<div class="glass-panel feature-card">
 				<div class="icon">📚</div>
 				<h3>Study Vault</h3>
@@ -35,21 +79,50 @@
 			</div>
 
 			<div class="glass-panel feature-card">
-				<div class="icon">✍️</div>
-				<h3>Question Bank</h3>
-				<p>Test your knowledge with targeted high-yield MCQs.</p>
-				<a href="questions.html" class="btn-solid mini-btn">Start Practice</a>
-			</div>
-	
-			<div class="glass-panel feature-card">
 				<div class="icon">🩺</div>
 				<h3>My Mentor</h3>
 				<p>Book a session or message your dedicated guide.</p>
 				<button class="btn-solid mini-btn">Contact Mentor</button>
 			</div>
 		</div>
-		</section>
 
+        <div class="glass-panel" style="padding: 2rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="color: #064e3b; font-size: 1.8rem; margin-bottom: 0.5rem;">✍️ Question Banks</h2>
+                <p style="color: #64748b;">Select your active course to start practicing targeted high-yield MCQs.</p>
+            </div>
+
+            <h3 class="course-category">FCPS Series</h3>
+            <div class="course-grid">
+                <button class="course-card-btn" onclick="launchCourse('fcps_part1')"><div class="course-icon">📘</div>FCPS Part 1</button>
+                <button class="course-card-btn" onclick="launchCourse('fcps_part2')"><div class="course-icon">📗</div>FCPS Part 2</button>
+                <button class="course-card-btn" onclick="launchCourse('fcps_imm')"><div class="course-icon">📙</div>FCPS IMM</button>
+            </div>
+
+            <h3 class="course-category">MRCS Series</h3>
+            <div class="course-grid">
+                <button class="course-card-btn" onclick="launchCourse('mrcs_part1')"><div class="course-icon">🇬🇧</div>MRCS Part 1</button>
+                <button class="course-card-btn" onclick="launchCourse('mrcs_part2')"><div class="course-icon">🏥</div>MRCS Part 2</button>
+            </div>
+
+            <h3 class="course-category">MBBS Journey</h3>
+            <div class="course-grid">
+                <button class="course-card-btn" onclick="launchCourse('mbbs_year1')"><div class="course-icon">🧬</div>MBBS Year 1</button>
+                <button class="course-card-btn" onclick="launchCourse('mbbs_year2')"><div class="course-icon">🔬</div>MBBS Year 2</button>
+                <button class="course-card-btn" onclick="launchCourse('mbbs_year3')"><div class="course-icon">💊</div>MBBS Year 3</button>
+                <button class="course-card-btn" onclick="launchCourse('mbbs_year4')"><div class="course-icon">👂</div>MBBS Year 4</button>
+                <button class="course-card-btn" onclick="launchCourse('mbbs_year5')"><div class="course-icon">🎓</div>MBBS Year 5</button>
+            </div>
+        </div>
+
+	</section>
+
+    <script>
+        function launchCourse(courseId) {
+            localStorage.setItem('edeetos_active_course', courseId);
+            window.location.href = 'questions.html';
+        }
+    </script>
     <script type="module" src="dashboard.js"></script>
 
 </body>
