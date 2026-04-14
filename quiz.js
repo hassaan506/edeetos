@@ -62,7 +62,7 @@ function loadSession() {
             q.originalNumber = idFromCSV || `q-${i + 1}`; 
         }
         q.sessionState = null; 
-        q.historicalState = null; // NEW: Tracks history without locking the question
+        q.historicalState = null; 
     });
 	
     onAuthStateChanged(auth, async (user) => {
@@ -77,6 +77,7 @@ function loadSession() {
                     
                     const solvedList = dbData.solvedQuestions || [];
                     const mistakesList = dbData.mistakes || [];
+                    const examMistakesList = dbData.examMistakes || [];
                     
                     Object.keys(dbData).forEach(key => {
                         if (key.startsWith('notes.')) {
@@ -89,11 +90,11 @@ function loadSession() {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
                         
-                        // FIX: Save to historicalState so it colors the grid, but leaves the question unlocked!
-                        if (solvedList.includes(q.originalNumber)) {
-                            q.historicalState = 'correct';
-                        } else if (mistakesList.includes(q.originalNumber)) {
+                        // FIX: Mistakes take priority! If it's a mistake, it stays red historically.
+                        if (mistakesList.includes(q.originalNumber) || examMistakesList.includes(q.originalNumber)) {
                             q.historicalState = 'wrong';
+                        } else if (solvedList.includes(q.originalNumber)) {
+                            q.historicalState = 'correct';
                         }
                     });
                 }
@@ -139,10 +140,14 @@ function buildNumberGrid() {
         const numBtn = document.createElement('div');
         numBtn.className = 'grid-num';
         
-        // FIX: Look at current session first, fallback to historical colors
         const stateToShow = q.sessionState || q.historicalState;
-        if (stateToShow === 'correct' || stateToShow === 'wrong_then_correct') numBtn.classList.add('correct');
-        if (stateToShow === 'wrong') numBtn.classList.add('incorrect');
+        
+        // FIX: 'wrong_then_correct' now properly adds the red 'incorrect' class!
+        if (stateToShow === 'correct') {
+            numBtn.classList.add('correct');
+        } else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') {
+            numBtn.classList.add('incorrect');
+        }
         
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
@@ -195,7 +200,6 @@ function loadQuestion(index) {
         }
 
         wrongAttempts = 0;
-        // FIX: Question only locks if answered correctly IN THIS SESSION.
         hasAnsweredCorrectly = (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct'); 
         
         if (!isExamMode) updateFeedbackBar();
@@ -308,6 +312,7 @@ async function savePracticeProgress(questionId, isCorrect) {
                 solvedQuestions: arrayUnion(questionId) 
             };
 
+            // ONLY remove the mistake if they are actively in Practice Mistakes mode!
             if (isReviewMistakesMode) {
                 updates.mistakes = arrayRemove(questionId);      
                 updates.examMistakes = arrayRemove(questionId);   
@@ -409,7 +414,10 @@ function handleOptionClick(event, optionData, optionElement) {
         if (!currentQuestionData.sessionState) {
             currentQuestionData.sessionState = 'wrong'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) btn.classList.add('incorrect');
+            if (btn) {
+                btn.classList.remove('correct'); // Ensure green is gone
+                btn.classList.add('incorrect');
+            }
         }
         
         savePracticeProgress(currentQuestionData.originalNumber, false); 
@@ -432,6 +440,7 @@ function handleOptionClick(event, optionData, optionElement) {
             }
         } else if (currentQuestionData.sessionState === 'wrong') {
             currentQuestionData.sessionState = 'wrong_then_correct';
+            // It deliberately stays RED here because they failed it first!
         }
         
         savePracticeProgress(currentQuestionData.originalNumber, true); 

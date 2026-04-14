@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 1. STATE VARIABLES
@@ -16,11 +16,10 @@ let popupHistory = [];
 let attemptedQuestions = []; 
 let userExamHistory = [];
 
-// NEW: Global arrays to hold custom filtered data
 let globalPracticeMistakes = [];
 let globalExamMistakes = [];
 let globalBookmarks = [];
-let activeCustomPool = null; // Tells the app to "lock in" to mistakes/bookmarks
+let activeCustomPool = null; 
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -112,7 +111,6 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
 	window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
 });
 
-// Clear custom pool when changing views
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
@@ -126,7 +124,6 @@ popupBack.onclick = () => {
     openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
 };
 
-// IMPORTANT: Clear the custom pool if they close the popup!
 popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; };
 popupOverlay.onclick = (e) => { if(e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; } }
 
@@ -145,7 +142,7 @@ function toggleSidebar(show) {
 
 function changeView(viewName, titleText) {
     currentView = viewName;
-    activeCustomPool = null; // Reset custom modes
+    activeCustomPool = null; 
     if (viewTitle) viewTitle.textContent = titleText;
 
     document.querySelectorAll('.sidebar-links a').forEach(link => {
@@ -277,7 +274,6 @@ async function loadDataAndBuildTree() {
     }
 }
 
-// Helper to dynamically build sub-trees for Mistakes/Bookmarks
 function buildSubTree(pool) {
     let tree = {};
     pool.forEach(q => {
@@ -302,11 +298,9 @@ function buildSubTree(pool) {
     return tree;
 }
 
-// UPDATED: Now supports activeCustomPool and pseudo-roots for the Mistakes Popup!
 function getQuestionCount(view, pathArr, customPool = null) {
     let pool = customPool || activeCustomPool || allQuestions;
     
-    // Handle the pseudo-roots dynamically created for the mistakes popup
     let paths = [...pathArr];
     if (paths[0] === "Practice Mistakes") {
         pool = pool.filter(q => globalPracticeMistakes.includes(getQID(q)));
@@ -409,7 +403,6 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         practiceAllDiv.querySelector('.practice-full-btn').onclick = () => {
             const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
             
-            // Name the session "Review Mistakes" if they are in the custom pool!
             let launchTitle = title;
             if (activeCustomPool && title !== "⭐ Bookmarks") launchTitle = "Review Mistakes";
             
@@ -563,8 +556,6 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 
                 const solvedList = (dbData.solvedQuestions || []).map(id => String(id));
-                
-                // Get mistakes safely
                 globalPracticeMistakes = (dbData.mistakes || []).map(id => String(id));
                 globalExamMistakes = (dbData.examMistakes || []).map(id => String(id));
                 globalBookmarks = (dbData.bookmarks || []).map(id => String(id));
@@ -582,7 +573,6 @@ onAuthStateChanged(auth, async (user) => {
                 if(document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
                 if(document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
 
-                // Handle Categorized Mistakes Menu
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
@@ -600,7 +590,6 @@ onAuthStateChanged(auth, async (user) => {
                     };
                 }
 
-                // Handle Categorized Bookmarks Menu
                 const btnBookmarks = document.getElementById('btn-review-bookmarks');
                 if (btnBookmarks && globalBookmarks.length > 0) {
                     btnBookmarks.disabled = false;
@@ -624,7 +613,7 @@ if (btnAnalytics) {
         let html = `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px;">Subject Stats</h4>`;
         
         Object.keys(subjectTree).forEach(sub => {
-            const total = getQuestionCount('subject', [sub], allQuestions); // Force allQuestions for accuracy graph
+            const total = getQuestionCount('subject', [sub], allQuestions);
             const solved = getSolvedCount('subject', [sub]);
             if (total === 0) return;
             const pct = Math.round((solved / total) * 100);
@@ -662,6 +651,111 @@ if (btnAnalytics) {
 
 const closeAnalytics = document.getElementById('close-analytics');
 if (closeAnalytics) closeAnalytics.onclick = () => document.getElementById('analytics-modal').style.display = 'none';
+
+// ==========================================
+// 7. CUSTOM RESET PROGRESS UI
+// ==========================================
+const btnReset = document.getElementById('btn-reset-progress');
+const resetModal = document.getElementById('reset-modal');
+const closeResetModal = document.getElementById('close-reset-modal');
+const optionsContainer = document.getElementById('reset-options-container');
+const confirmContainer = document.getElementById('reset-confirm-container');
+const btnCancelReset = document.getElementById('btn-cancel-reset');
+const btnConfirmReset = document.getElementById('btn-confirm-reset');
+const confirmText = document.getElementById('reset-confirm-text');
+
+let pendingUpdates = {};
+let pendingResetMsg = "";
+
+if (btnReset) {
+    btnReset.onclick = () => {
+        optionsContainer.style.display = 'flex';
+        confirmContainer.style.display = 'none';
+        resetModal.style.display = 'flex';
+    };
+}
+
+if (closeResetModal) {
+    closeResetModal.onclick = () => resetModal.style.display = 'none';
+}
+
+document.querySelectorAll('.reset-option-btn').forEach(btn => {
+    btn.onclick = (e) => {
+        const type = e.target.getAttribute('data-type');
+        
+        switch(type) {
+            case "1": 
+                pendingUpdates = { solvedQuestions: [], mistakes: [], examMistakes: [], bookmarks: [], examHistory: [] };
+                pendingResetMsg = "All progress has been fully reset!";
+                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress? This cannot be undone.";
+                break;
+            case "2":
+                pendingUpdates = { mistakes: [], examMistakes: [] };
+                pendingResetMsg = "All mistakes have been cleared!";
+                confirmText.textContent = "Are you sure you want to clear your Mistake history?";
+                break;
+            case "3":
+                pendingUpdates = { bookmarks: [] };
+                pendingResetMsg = "All bookmarks have been cleared!";
+                confirmText.textContent = "Are you sure you want to delete all your Bookmarks?";
+                break;
+            case "4":
+                pendingUpdates = { examHistory: [] };
+                pendingResetMsg = "Exam history has been cleared!";
+                confirmText.textContent = "Are you sure you want to delete your Past Exam scores?";
+                break;
+            case "5":
+                pendingUpdates = { solvedQuestions: [] };
+                pendingResetMsg = "Solved questions have been cleared!";
+                confirmText.textContent = "Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.";
+                break;
+        }
+        
+        // Switch to the confirmation view inside the modal
+        optionsContainer.style.display = 'none';
+        confirmContainer.style.display = 'block';
+    };
+});
+
+if (btnCancelReset) {
+    btnCancelReset.onclick = () => {
+        confirmContainer.style.display = 'none';
+        optionsContainer.style.display = 'flex';
+    };
+}
+
+if (btnConfirmReset) {
+    btnConfirmReset.onclick = async () => {
+        const user = auth.currentUser;
+        if (!user) {
+            alert("You must be logged in to reset progress.");
+            return;
+        }
+        
+        btnConfirmReset.textContent = "Clearing...";
+        btnConfirmReset.disabled = true;
+
+        try {
+            const userRef = doc(db, "users", user.uid);
+            await setDoc(userRef, pendingUpdates, { merge: true });
+            
+            confirmText.innerHTML = `✅ ${pendingResetMsg}`;
+            btnCancelReset.style.display = 'none';
+            btnConfirmReset.style.display = 'none';
+            
+            // Reload after showing success message briefly
+            setTimeout(() => {
+                location.reload(); 
+            }, 1500);
+            
+        } catch (err) {
+            console.error("Reset Error:", err);
+            confirmText.textContent = "❌ Error clearing data. Check console.";
+            btnConfirmReset.textContent = "Try Again";
+            btnConfirmReset.disabled = false;
+        }
+    };
+}
 
 switchMode('practice');
 loadDataAndBuildTree();
