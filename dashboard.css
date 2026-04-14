@@ -1,7 +1,6 @@
 /* ========================================== */
-/* DASHBOARD STYLES                           */
+/* DASHBOARD CORE STYLES                      */
 /* ========================================== */
-
 .dashboard-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -50,3 +49,177 @@
     font-size: 0.95rem;
     line-height: 1.5;
 }
+
+/* ========================================== */
+/* DROPDOWNS & BADGES                         */
+/* ========================================== */
+.select-wrapper { 
+    position: relative; 
+    width: 100%; 
+}
+
+.custom-select {
+    width: 100%; 
+    padding: 0.8rem 1.2rem; 
+    font-size: 0.95rem; 
+    color: #1e293b;
+    background-color: #f8fafc; 
+    border: 2px solid #e2e8f0; 
+    border-radius: 8px;
+    appearance: none; 
+    cursor: pointer; 
+    font-weight: 600; 
+    outline: none; 
+    transition: all 0.2s ease;
+}
+
+.custom-select:focus { 
+    border-color: #10b981; 
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); 
+}
+
+.select-wrapper::after {
+    content: '▼'; 
+    font-size: 0.8rem; 
+    color: #64748b; 
+    position: absolute;
+    right: 1.2rem; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    pointer-events: none;
+}
+
+.status-badge {
+    display: inline-block; 
+    padding: 0.25rem 0.75rem; 
+    border-radius: 20px;
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    vertical-align: middle; 
+    cursor: default; 
+    pointer-events: none;
+}
+
+.badge-free { background: #fffbeb; color: #d97706; border: 1px solid #fcd34d; }
+.badge-pro { background: #ecfdf5; color: #059669; border: 1px solid #6ee7b7; }
+
+/* ========================================== */
+/* LAYOUT GRIDS & RESPONSIVENESS              */
+/* ========================================== */
+.course-dash-grid {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+    align-items: stretch; 
+    max-width: 1100px; 
+    margin: 0 auto 3rem auto;
+}
+
+@media (max-width: 950px) {
+    .course-dash-grid { grid-template-columns: 1fr; }
+    .nav-actions { flex-direction: column; gap: 0.5rem; }
+}
+
+/* ========================================== */
+/* MODALS & POPUPS                            */
+/* ========================================== */
+.popup-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(4px);
+    z-index: 1000; 
+    display: none; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.popup-content {
+    background: white; 
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.active-tab {
+    flex: 1; 
+    background: white; 
+    border-radius: 6px; 
+    padding: 0.5rem; 
+    font-weight: 700; 
+    font-size: 0.85rem; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    text-align: center; 
+    color: #1e293b;
+}
+
+.inactive-tab {
+    flex: 1; 
+    padding: 0.5rem; 
+    font-weight: 600; 
+    font-size: 0.85rem; 
+    color: #64748b; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: color 0.2s;
+}
+
+.inactive-tab:hover { color: #1e293b; }
+
+.premium-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+
+.plan-card {
+    border: 2px solid #e2e8f0; 
+    border-radius: 10px; 
+    padding: 1rem; 
+    text-align: center;
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+    background: white;
+}
+
+.plan-card:hover, .plan-card.selected { 
+    border-color: #fbbf24; 
+    background: #fffbeb; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+}
+
+.plan-duration { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; }
+.plan-price { font-size: 1.1rem; color: #1e293b; font-weight: 800; margin-top: 0.2rem; transition: color 0.2s; }
+
+.bank-details {
+    background: #f8fafc; 
+    border: 1px dashed #cbd5e1; 
+    border-radius: 10px;
+    padding: 1rem; 
+    font-size: 0.85rem; 
+    color: #475569; 
+    text-align: left; 
+    margin-bottom: 1.5rem;
+}
+
+.bank-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #e2e8f0; padding: 0.4rem 0; }
+.bank-row:last-child { border-bottom: none; }
+.bank-val { font-weight: 700; color: #1e293b; }
+
+.course-checkbox-label {
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+    background: #f8fafc; 
+    border: 1px solid #e2e8f0; 
+    padding: 0.5rem 1rem; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    color: #334155;
+    transition: all 0.2s;
+}
+
+.course-checkbox-label:hover { border-color: #cbd5e1; }
+.course-check { accent-color: #10b981; transform: scale(1.2); }

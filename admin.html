@@ -5,67 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edeetos Preparation - Admin Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
-        
-        body {
-            margin: 0; padding: 0; font-family: 'Nunito', 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #10b981 0%, #10b981 280px, #f0fdf4 280px, #f0fdf4 100%);
-            min-height: 100vh; color: #1e293b;
-        }
-
-        .admin-container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
-
-        .top-bar {
-            background: #1e293b; color: white; border-radius: 20px; padding: 1rem 2rem;
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .top-bar-left { display: flex; align-items: center; gap: 1rem; font-weight: 800; font-size: 1.2rem; }
-        .q-count-badge { background: #334155; font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600; }
-        .exit-btn {
-            background: #334155; color: white; border: none; padding: 0.5rem 1.5rem;
-            border-radius: 20px; cursor: pointer; font-weight: 800; transition: background 0.2s;
-        }
-        .exit-btn:hover { background: #475569; }
-
-        .tabs-container { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .admin-tab {
-            background: white; border: none; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 800;
-            color: #475569; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); transition: all 0.2s; font-size: 1rem;
-        }
-        .admin-tab.active { background: #10b981; color: white; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); }
-
-        .admin-content { margin-top: 1rem; }
-        .page-title { color: #064e3b; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 800; }
-        
-        .search-wrapper { display: flex; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
-        .search-input { flex-grow: 1; border: none; padding: 1rem 1.5rem; font-size: 1rem; outline: none; font-family: 'Nunito', sans-serif; font-weight: 600;}
-        .search-btn { background: #10b981; color: white; border: none; padding: 0 2rem; font-weight: 800; font-size: 1rem; cursor: pointer; }
-
-        .glass-box { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
-
-        .form-group { margin-bottom: 1.2rem; text-align: left; }
-        .form-group label { display: block; font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.5rem; }
-        .form-group select, .form-group input { width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; outline: none; font-family: 'Nunito', sans-serif; font-weight: 600; color: #1e293b;}
-        .btn-solid { background: #10b981; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%; transition: background 0.2s;}
-        .btn-solid:hover { background: #059669; }
-
-        .popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 2000; display: none; align-items: center; justify-content: center; }
-        .popup-content { background: white; border-radius: 12px; padding: 1.5rem; width: 90%; max-width: 450px; max-height: 90vh; overflow-y: auto; text-align: center; }
-        
-        .subs-box { border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: left; display: flex; justify-content: space-between; align-items: center; }
-        .subs-box.active-sub { border-color: #6ee7b7; background: #ecfdf5; }
-        .grant-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; }
-        
-        .badge { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 20px; display: inline-block;}
-        .b-admin { background: #f3e8ff; color: #8b5cf6; }
-        .b-mentor { background: #fef08a; color: #b45309; }
-        .b-student { background: #f1f5f9; color: #64748b; }
-        .b-course { background: #e0f2fe; color: #0369a1; }
-        .b-time { background: #dbeafe; color: #0284c7; }
-    </style>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
@@ -76,14 +16,14 @@
                 <i class="fas fa-shield-alt" style="color: #ef4444;"></i> Super Admin 
                 <span class="q-count-badge" id="total-q-count">Questions: Loading...</span>
             </div>
-            <button class="exit-btn" onclick="window.location.href='dashboard.html'">Exit</button>
+            <button class="exit-btn" id="btn-exit-admin">Exit</button>
         </div>
 
         <div class="tabs-container">
-            <button class="admin-tab" onclick="switchView(event, 'reports')"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
-            <button class="admin-tab" onclick="switchView(event, 'payments')"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
-            <button class="admin-tab" onclick="switchView(event, 'keys')"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
-            <button class="admin-tab active" onclick="switchView(event, 'users')"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
+            <button class="admin-tab" data-view="reports"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
+            <button class="admin-tab" data-view="payments"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
+            <button class="admin-tab" data-view="keys"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
+            <button class="admin-tab active" data-view="users"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
         </div>
 
         <div id="view-users" class="admin-content">
@@ -154,7 +94,7 @@
                         <input type="date" id="key-expiry">
                     </div>
                 </div>
-                <button class="btn-solid" onclick="generateKey()">Generate Key</button>
+                <button id="btn-generate-key" class="btn-solid">Generate Key</button>
             </div>
 
             <div class="glass-box" style="padding: 0;">
@@ -227,7 +167,7 @@
                             <option value="lifetime">Lifetime</option>
                         </select>
                     </div>
-                    <button class="btn-solid" onclick="grantAccess()" style="padding: 0.6rem;">Grant Access</button>
+                    <button id="btn-grant-access" class="btn-solid" style="padding: 0.6rem;">Grant Access</button>
                 </div>
 
                 <label style="font-size: 0.75rem; font-weight: 800; color: #b45309; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">⚠️ Account Actions</label>
@@ -241,11 +181,10 @@
                 </div>
             </div>
 
-            <button onclick="document.getElementById('edit-user-modal').style.display='none'" class="btn-outline" style="border: none; text-decoration: underline; margin-top: 1.5rem;">Close</button>
+            <button id="btn-close-edit-modal" class="btn-outline" style="border: none; text-decoration: underline; margin-top: 1.5rem;">Close</button>
         </div>
     </div>
 
     <script type="module" src="admin.js"></script>
-
 </body>
 </html>

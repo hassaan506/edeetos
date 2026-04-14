@@ -6,7 +6,7 @@ let currentUserData = null;
 let currentUserId = null;
 
 // ==========================================
-// 1. DASHBOARD LOAD & BADGE FIX
+// 1. DASHBOARD LOAD & BADGE LOGIC
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -24,13 +24,11 @@ onAuthStateChanged(auth, async (user) => {
                 const freeWarning = document.getElementById('free-warning-text');
                 const userRole = (currentUserData.role || '').toUpperCase();
 
-                // Clear previous classes/styles
                 subStatus.className = "status-badge";
                 subStatus.style.background = "";
                 subStatus.style.color = "";
                 subStatus.style.border = "";
 
-                // Logic: Admin > Premium > Free
                 if (userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     subStatus.textContent = "Admin";
                     subStatus.style.background = "#f3e8ff";
@@ -60,7 +58,7 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 // ==========================================
-// 2. NAVIGATION & ROUTING
+// 2. NAVIGATION BUTTONS
 // ==========================================
 document.getElementById('logout-btn').addEventListener('click', () => {
     signOut(auth).then(() => { window.location.href = 'index.html'; });
@@ -87,7 +85,10 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
 
 window.addEventListener('load', () => {
     const savedCourse = localStorage.getItem('edeetos_active_course');
-    if (savedCourse) document.getElementById('course-dropdown').value = savedCourse;
+    if (savedCourse) {
+        const drop = document.getElementById('course-dropdown');
+        if(drop) drop.value = savedCourse;
+    }
 });
 
 document.getElementById('btn-launch-course').addEventListener('click', () => {
@@ -97,19 +98,19 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
 });
 
 // ==========================================
-// 3. UI MODALS & PRICING TABS
+// 3. PRICING MODAL TABS & LOGIC
 // ==========================================
 const tabBuy = document.getElementById('tab-buy');
 const tabRedeem = document.getElementById('tab-redeem');
 const viewBuy = document.getElementById('view-buy');
 const viewRedeem = document.getElementById('view-redeem');
 
-tabBuy.addEventListener('click', () => {
+if(tabBuy) tabBuy.addEventListener('click', () => {
     tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab';
     viewBuy.style.display = 'block'; viewRedeem.style.display = 'none';
 });
 
-tabRedeem.addEventListener('click', () => {
+if(tabRedeem) tabRedeem.addEventListener('click', () => {
     tabRedeem.className = 'active-tab'; tabBuy.className = 'inactive-tab';
     viewRedeem.style.display = 'block'; viewBuy.style.display = 'none';
 });
@@ -161,10 +162,7 @@ document.querySelectorAll('.plan-card').forEach(card => {
 const btnSubmitPayment = document.getElementById('btn-submit-payment');
 if (btnSubmitPayment) {
     btnSubmitPayment.addEventListener('click', async () => {
-        if(!currentUserId) {
-            alert("Authentication error. Please refresh and try again.");
-            return;
-        }
+        if(!currentUserId) return alert("Authentication error. Please refresh.");
 
         btnSubmitPayment.textContent = "Submitting...";
         btnSubmitPayment.disabled = true;
@@ -191,7 +189,7 @@ if (btnSubmitPayment) {
             document.getElementById('premium-modal').style.display = 'none';
         } catch (e) {
             console.error("Payment submission error: ", e);
-            alert("Failed to submit request. Please try again later.");
+            alert("Failed to submit request.");
         } finally {
             btnSubmitPayment.textContent = "Confirm & Submit Request";
             btnSubmitPayment.disabled = false;
@@ -208,15 +206,34 @@ if (btnRedeem) {
         const codeInput = document.getElementById('redeem-input').value.trim().toUpperCase();
         if(codeInput.length < 3) return alert("Invalid code.");
 
+        btnRedeem.textContent = "Verifying...";
+        btnRedeem.disabled = true;
+
         try {
             const keyRef = doc(db, "keys", codeInput);
             const keySnap = await getDoc(keyRef);
 
-            if(!keySnap.exists()) return alert("Code is invalid or does not exist.");
+            if(!keySnap.exists()) {
+                alert("Code is invalid or does not exist.");
+                btnRedeem.textContent = "Redeem Now";
+                btnRedeem.disabled = false;
+                return;
+            }
+            
             const keyData = keySnap.data();
 
-            if(keyData.usedCount >= keyData.maxUsage) return alert("This code has reached its maximum usage limit.");
-            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) return alert("This code has expired.");
+            if(keyData.usedCount >= keyData.maxUsage) {
+                alert("This code has reached its maximum usage limit.");
+                btnRedeem.textContent = "Redeem Now";
+                btnRedeem.disabled = false;
+                return;
+            }
+            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) {
+                alert("This code has expired.");
+                btnRedeem.textContent = "Redeem Now";
+                btnRedeem.disabled = false;
+                return;
+            }
 
             let expiryValue = "lifetime";
             if(keyData.duration !== "lifetime") {
@@ -244,6 +261,8 @@ if (btnRedeem) {
         } catch (e) {
             console.error("Redemption error: ", e);
             alert("Error redeeming code.");
+            btnRedeem.textContent = "Redeem Now";
+            btnRedeem.disabled = false;
         }
     });
 }
