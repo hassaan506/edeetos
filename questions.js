@@ -819,13 +819,13 @@ if (btnJourney) {
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
 
             return `
-                <div class="glass-panel" style="display: flex; align-items: center; padding: 1.2rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 10px rgba(0,0,0,0.05)' : 'none'};">
-                    <div style="font-size: 2.8rem; margin-right: 1.2rem; ${iconStyle}">${t.icon}</div>
+                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.8rem; border-radius: 10px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 8px rgba(0,0,0,0.05)' : 'none'};">
+                    <div style="font-size: 2rem; margin-right: 0.8rem; ${iconStyle}">${t.icon}</div>
                     <div style="flex-grow: 1;">
-                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.2rem; margin-bottom: 0.2rem;">${t.title}</div>
-                        <div style="font-size: 0.8rem; color: #64748b;">Solve ${t.req} Questions</div>
+                        <div style="font-weight: 800; color: ${textColor}; font-size: 1rem; margin-bottom: 0.1rem;">${t.title}</div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Solve ${t.req} Questions</div>
                     </div>
-                    <div style="font-size: 1.5rem;">
+                    <div style="font-size: 1.2rem;">
                         ${statusIcon}
                     </div>
                 </div>
