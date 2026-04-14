@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/fi
 import { doc, getDoc, collection, query, where, getDocs, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 let currentUser = null;
+let currentUserData = null;
 let currentRole = 'STUDENT';
 let currentChatId = null;
 let chatUnsubscribe = null; 
@@ -32,7 +33,8 @@ onAuthStateChanged(auth, async (user) => {
         const docSnap = await getDoc(userRef);
         
         if (docSnap.exists()) {
-            currentRole = docSnap.data().role || 'STUDENT';
+            currentUserData = docSnap.data();
+            currentRole = currentUserData.role || 'STUDENT';
             
             if (currentRole === 'MENTOR' || currentRole === 'MANAGEMENT') {
                 hubSubtitle.textContent = "You are online and ready to assist students.";
@@ -93,7 +95,8 @@ async function requestChat(mentorId, mentorName) {
     try {
         const chatRef = await addDoc(collection(db, "chats"), {
             studentId: currentUser.uid,
-            studentName: "Student", // Replace with actual user name if needed
+            studentName: currentUserData ? (currentUserData.fullName || currentUser.email) : "Student",
+            studentEmail: currentUser.email || "No Email",
             mentorId: mentorId,
             mentorName: mentorName,
             status: 'pending', 
@@ -147,8 +150,9 @@ function listenForIncomingRequests() {
                 <div>
                     <div style="font-weight: 800; color: #b45309; font-size: 1.1rem;">🔔 New Request!</div>
                     <div style="font-size: 0.9rem; color: #1e293b; font-weight: bold;">From: ${data.studentName}</div>
+                    <div style="font-size: 0.75rem; color: #64748b;">${data.studentEmail}</div>
                 </div>
-                <div style="display: flex; gap: 0.5rem;">
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
                     <button class="btn-outline btn-reject" style="border-color: #ef4444; color: #ef4444; padding: 0.5rem 1rem;">Decline</button>
                     <button class="btn-solid btn-accept" style="background: #10b981; border: none; padding: 0.5rem 1rem;">Accept</button>
                 </div>
@@ -228,9 +232,43 @@ chatForm.addEventListener('submit', async (e) => {
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
-    if (confirm("End chat session? A transcript will be sent to your email.")) {
+    if (confirm("End chat session? A transcript will be prepared for the student.")) {
         await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
-        alert("Session Ended. Transcript saved.");
-        window.location.href = 'dashboard.html';
+        
+        try {
+            const messagesRef = collection(db, "chats", currentChatId, "messages");
+            const q = query(messagesRef, orderBy("timestamp", "asc"));
+            const { getDocs } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+            const snapshot = await getDocs(q);
+            
+            let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
+            transcriptText += "Mentorship provided by Edeetos (edeetos@gmail.com)\n\n";
+            
+            snapshot.forEach((docSnap) => {
+                const msg = docSnap.data();
+                const sender = msg.senderId === currentUser.uid ? "Mentor" : "Student";
+                transcriptText += `[${sender}]: ${msg.text}\n`;
+            });
+            
+            const chatDoc = await getDoc(doc(db, "chats", currentChatId));
+            let studentEmail = "student@gmail.com";
+            if (chatDoc.exists() && chatDoc.data().studentEmail) {
+                studentEmail = chatDoc.data().studentEmail;
+            }
+
+            const subject = encodeURIComponent("Your Edeetos Mentorship Transcript");
+            const body = encodeURIComponent(transcriptText);
+
+            window.location.href = `mailto:${studentEmail}?cc=edeetos@gmail.com&subject=${subject}&body=${body}`;
+            alert("Session Ended. Email client opening with transcript.");
+            
+        } catch(e) {
+            console.error("Transcript Error", e);
+            alert("Session Ended, but transcript generation failed.");
+        }
+
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 1500);
     }
 });

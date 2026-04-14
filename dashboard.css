@@ -260,5 +260,24 @@
     text-transform: uppercase;
 }
 .sub-lifetime { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
-.sub-active { background: #dcfce3; color: #16a34a; border: 1px solid #86efac; }
 .sub-expired { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+
+/* Mobile Modal Shrink Fix */
+@media (max-width: 480px) {
+    .popup-content {
+        padding: 1.5rem 1rem !important;
+        width: 100% !important;
+        max-height: 90vh !important;
+        border-radius: 12px !important;
+    }
+    .premium-grid {
+        grid-template-columns: 1fr !important;
+    }
+    #profile-form > div {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem !important;
+    }
+    .popup-content h2 {
+        font-size: 1.4rem !important;
+    }
+}
