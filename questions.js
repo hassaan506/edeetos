@@ -8,7 +8,7 @@ import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/f
 let subjectTree = {}; 
 let systemTree = {};
 let examTree = {};
-let allQuestions = []; 
+let allQuestions = []; // The final pool used by the UI
 let currentView = "subject"; 
 let currentMode = "practice"; 
 let selectedCart = new Set(); 
@@ -20,6 +20,7 @@ let globalPracticeMistakes = [];
 let globalExamMistakes = [];
 let globalBookmarks = [];
 let activeCustomPool = null; 
+let isPremiumUser = false;
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -204,12 +205,48 @@ function switchMode(mode) {
     renderGrid(); 
 }
 
+// ==========================================
+// 5. FREE TIER DISTRIBUTION ALGORITHM
+// ==========================================
+function filterQuestionsForFreeTier(rawQuestions) {
+    let filteredList = [];
+    const questionsBySubject = {};
+    
+    // Step 1: Group everything by Subject -> Topic
+    rawQuestions.forEach(q => {
+        const sub = q.Subject || "Uncategorized";
+        const top = q.Topic || "General";
+        if (!questionsBySubject[sub]) questionsBySubject[sub] = {};
+        if (!questionsBySubject[sub][top]) questionsBySubject[sub][top] = [];
+        questionsBySubject[sub][top].push(q);
+    });
+
+    // Step 2: Extract exactly 50 questions per subject, distributed evenly among topics
+    Object.keys(questionsBySubject).forEach(sub => {
+        const topics = Object.keys(questionsBySubject[sub]);
+        const numTopics = topics.length;
+        
+        const baseQuota = Math.floor(50 / numTopics);
+        let remainder = 50 % numTopics;
+
+        topics.forEach(top => {
+            const quota = baseQuota + (remainder > 0 ? 1 : 0);
+            if (remainder > 0) remainder--;
+            
+            // Grab the allowed number of questions from this topic
+            filteredList.push(...questionsBySubject[sub][top].slice(0, quota));
+        });
+    });
+    
+    return filteredList;
+}
+
+// ==========================================
+// 6. CSV LOADER & TREE BUILDER
+// ==========================================
 async function loadDataAndBuildTree() {
     try {
-        // 1. Ask local storage which course they clicked (default to fcps_part1 if missing)
         const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-        
-        // 2. Dynamically plug that name into the CSV path!
         const csvPath = `Data/${activeCourse}.csv`; 
         
         const response = await fetch(csvPath);
@@ -236,7 +273,7 @@ async function loadDataAndBuildTree() {
         const headers = rows[0].map(h => h ? h.trim() : "");
         const dataRows = rows.slice(1);
 
-        subjectTree = {}; systemTree = {}; examTree = {}; allQuestions = [];
+        let masterQuestions = [];
 
         dataRows.forEach((row, rowIndex) => {
             if (row.length < 2) return; 
@@ -250,8 +287,20 @@ async function loadDataAndBuildTree() {
                 rowObj.QuestionID = `q-${rowIndex + 1}`;
             }
 
-            allQuestions.push(rowObj); 
-           
+            masterQuestions.push(rowObj); 
+        });
+
+        // APPLY THE FREE TIER FILTER IF THEY ARE NOT PREMIUM!
+        if (!isPremiumUser) {
+            allQuestions = filterQuestionsForFreeTier(masterQuestions);
+        } else {
+            allQuestions = [...masterQuestions];
+        }
+
+        // Now build the trees based on the final filtered list
+        subjectTree = {}; systemTree = {}; examTree = {};
+        
+        allQuestions.forEach(rowObj => {
             const Exam = rowObj.Exam;
             const Subject = rowObj.Subject;
             const Chapter = rowObj.Chapter;
@@ -273,6 +322,7 @@ async function loadDataAndBuildTree() {
                 if (Topic && !examTree[Exam][Subject].includes(Topic)) examTree[Exam][Subject].push(Topic);
             }
         });
+
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
@@ -537,7 +587,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
 }
 
 // ==========================================
-// 5. THE BRIDGE: LAUNCH QUIZ
+// 7. THE BRIDGE: LAUNCH QUIZ
 // ==========================================
 window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
     if (!questionsArray || questionsArray.length === 0) {
@@ -550,7 +600,7 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
 };
 
 // ==========================================
-// 6. FIREBASE PROGRESS & DASHBOARD SYNC
+// 8. FIREBASE PROGRESS & DATA INITIALIZATION
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -560,7 +610,10 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 
-                // ISOLATE: Grab only the data for the active course!
+                // 1. Check Subscription Status
+                isPremiumUser = dbData.isPremium === true;
+
+                // 2. Isolate data for the active course
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 const courseData = dbData[activeCourse] || {}; 
                 
@@ -571,8 +624,11 @@ onAuthStateChanged(auth, async (user) => {
                 
                 userExamHistory = courseData.examHistory || []; 
                 attemptedQuestions = solvedList; 
-                renderGrid(); 
+                
+                // 3. Now that we know their status, load and filter the CSV!
+                await loadDataAndBuildTree();
 
+                // 4. Update the UI Dashboards
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
                 const totalAttempts = solvedList.length + allMistakes.length;
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
@@ -694,7 +750,7 @@ const closeAnalytics = document.getElementById('close-analytics');
 if (closeAnalytics) closeAnalytics.onclick = () => document.getElementById('analytics-modal').style.display = 'none';
 
 // ==========================================
-// 7. CUSTOM RESET PROGRESS UI
+// 9. CUSTOM RESET PROGRESS UI
 // ==========================================
 const btnReset = document.getElementById('btn-reset-progress');
 const resetModal = document.getElementById('reset-modal');
@@ -806,7 +862,7 @@ if (btnConfirmReset) {
 }
 
 // ==========================================
-// 8. TROPHY / JOURNEY SYSTEM
+// 10. TROPHY / JOURNEY SYSTEM
 // ==========================================
 const btnJourney = document.getElementById('btn-view-journey');
 const journeyModal = document.getElementById('journey-modal');
@@ -863,4 +919,3 @@ if (journeyModal) {
 }
 
 switchMode('practice');
-loadDataAndBuildTree();
