@@ -21,10 +21,10 @@
         </div>
 
         <div class="tabs-container">
-            <button class="admin-tab" data-view="reports"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
-            <button class="admin-tab" data-view="payments"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
-            <button class="admin-tab" data-view="keys"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
-            <button class="admin-tab active" data-view="users"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
+            <button class="admin-tab" onclick="switchView('reports')"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
+            <button class="admin-tab" onclick="switchView('payments')"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
+            <button class="admin-tab" onclick="switchView('keys')"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
+            <button class="admin-tab active" onclick="switchView('users')"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
         </div>
 
         <div id="view-users" class="admin-content">
@@ -95,7 +95,7 @@
                         <input type="date" id="key-expiry">
                     </div>
                 </div>
-                <button id="btn-generate-key" class="btn-solid" style="margin-top: 1rem;">Generate Key</button>
+                <button id="btn-generate-key" class="btn-solid" style="margin-top: 1rem;" onclick="generateKey()">Generate Key</button>
             </div>
 
             <div class="glass-box" style="padding: 0; overflow-x: auto;">
@@ -118,7 +118,7 @@
 
         <div id="view-reports" class="admin-content" style="display: none;">
             <h2 class="page-title">Flagged Reports</h2>
-            <p style="color: #64748b;">System logs and user reports will appear here.</p>
+            <p style="color: #64748b; padding: 2rem; text-align: center;">System logs and user reports will appear here.</p>
         </div>
 
     </div>
@@ -168,7 +168,7 @@
                             <option value="lifetime">Lifetime</option>
                         </select>
                     </div>
-                    <button id="btn-grant-access" class="btn-solid" style="padding: 0.8rem; margin: 0;">Grant Access</button>
+                    <button id="btn-grant-access" class="btn-solid" style="padding: 0.8rem; margin: 0;" onclick="grantAccess()">Grant Access</button>
                 </div>
 
                 <label style="font-size: 0.75rem; font-weight: 800; color: #b45309; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">⚠️ Account Actions</label>

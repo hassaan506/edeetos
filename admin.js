@@ -8,18 +8,12 @@ const userCountEl = document.getElementById('user-count');
 const searchInput = document.getElementById('admin-search-input');
 const searchBtn = document.getElementById('admin-search-btn');
 
-// Modal Elements
 const editModal = document.getElementById('edit-user-modal');
 const editNameEl = document.getElementById('edit-user-name');
 const editEmailEl = document.getElementById('edit-user-email');
 const editPhoneEl = document.getElementById('edit-user-phone');
 const editUidEl = document.getElementById('edit-user-uid');
 const subsListEl = document.getElementById('user-subscriptions-list');
-
-const btnMakeStudent = document.getElementById('btn-make-student');
-const btnMakeMentor = document.getElementById('btn-make-mentor');
-const btnMakeAdmin = document.getElementById('btn-make-admin');
-const btnGrantAccess = document.getElementById('btn-grant-access');
 
 let allUsersData = [];
 let editingUser = null;
@@ -57,44 +51,45 @@ async function calculateTotalQuestions() {
             if (response.ok) {
                 const text = await response.text();
                 const lines = text.split('\n').filter(line => line.trim().length > 0);
-                if (lines.length > 1) {
-                    totalQuestions += (lines.length - 1);
-                }
+                if (lines.length > 1) totalQuestions += (lines.length - 1);
             }
-        } catch (e) {} // Silently skip missing CSV files
+        } catch (e) {} 
     }
     const totalEl = document.getElementById('total-q-count');
     if (totalEl) totalEl.textContent = `Questions: ${totalQuestions}`;
 }
 
-// Exit logic
-document.getElementById('btn-exit-admin').addEventListener('click', () => { window.location.href = 'dashboard.html'; });
-document.getElementById('btn-close-edit-modal').addEventListener('click', () => { editModal.style.display = 'none'; });
+// Exit & Close Modal
+const btnExit = document.getElementById('btn-exit-admin');
+if(btnExit) btnExit.addEventListener('click', () => { window.location.href = 'dashboard.html'; });
+
+const btnCloseEdit = document.getElementById('btn-close-edit-modal');
+if(btnCloseEdit) btnCloseEdit.addEventListener('click', () => { editModal.style.display = 'none'; });
 
 // ==========================================
-// 2. TAB ROUTING
+// 2. TAB ROUTING (HARD-WIRED to Window)
 // ==========================================
-document.querySelectorAll('.admin-tab').forEach(tab => {
-    tab.addEventListener('click', (e) => {
-        const viewName = e.currentTarget.getAttribute('data-view');
-        
-        document.getElementById('view-users').style.display = 'none';
-        document.getElementById('view-keys').style.display = 'none';
-        document.getElementById('view-payments').style.display = 'none';
-        document.getElementById('view-reports').style.display = 'none';
-        
-        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-        
-        document.getElementById(`view-${viewName}`).style.display = 'block';
-        e.currentTarget.classList.add('active');
-
-        if(viewName === 'keys') fetchKeys();
-        if(viewName === 'payments') fetchPayments();
+window.switchView = function(viewName) {
+    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports'];
+    views.forEach(v => {
+        const el = document.getElementById(v);
+        if (el) el.style.display = 'none';
     });
-});
+    
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    
+    const targetView = document.getElementById(`view-${viewName}`);
+    if (targetView) targetView.style.display = 'block';
+    
+    const activeTab = document.querySelector(`.admin-tab[onclick*="${viewName}"]`);
+    if (activeTab) activeTab.classList.add('active');
+
+    if(viewName === 'keys') fetchKeys();
+    if(viewName === 'payments') fetchPayments();
+};
 
 // ==========================================
-// 3. USER MANAGEMENT (FETCH & SORT)
+// 3. USER MANAGEMENT
 // ==========================================
 async function fetchAllUsers() {
     try {
@@ -107,7 +102,6 @@ async function fetchAllUsers() {
             allUsersData.push(data);
         });
 
-        // SORT BY PRIORITY: Management (1) -> Mentor (2) -> Student (3)
         const rolePriority = { 'MANAGEMENT': 1, 'ADMIN': 1, 'MENTOR': 2, 'STUDENT': 3 };
         
         allUsersData.sort((a, b) => {
@@ -116,15 +110,17 @@ async function fetchAllUsers() {
             return (rolePriority[roleA] || 3) - (rolePriority[roleB] || 3);
         });
 
-        userCountEl.textContent = allUsersData.length;
+        if(userCountEl) userCountEl.textContent = allUsersData.length;
         renderUsers(allUsersData);
     } catch (error) {
-        usersListEl.innerHTML = '<p style="color: red; text-align: center;">Failed to load database.</p>';
+        if(usersListEl) usersListEl.innerHTML = '<p style="color: red; text-align: center;">Failed to load database.</p>';
     }
 }
 
 function renderUsers(usersArray) {
+    if(!usersListEl) return;
     usersListEl.innerHTML = '';
+    
     if (usersArray.length === 0) {
         usersListEl.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No matching users found.</p>';
         return;
@@ -172,6 +168,7 @@ function renderUsers(usersArray) {
 }
 
 function executeSearch() {
+    if(!searchInput) return;
     const query = searchInput.value.toLowerCase().trim();
     if (!query) { renderUsers(allUsersData); return; }
     
@@ -185,26 +182,30 @@ function executeSearch() {
     renderUsers(filtered);
 }
 
-searchBtn.addEventListener('click', executeSearch);
-searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
+if(searchBtn) searchBtn.addEventListener('click', executeSearch);
+if(searchInput) searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
 
 // ==========================================
-// 5. EDIT USER MODAL & ROLES
+// 4. EDIT USER MODAL & ROLES
 // ==========================================
 function openEditModal(user) {
     editingUser = user;
-    editNameEl.textContent = user.fullName || "Unknown User";
-    editEmailEl.textContent = user.email || "No Email Provided";
-    editPhoneEl.textContent = user.phone || "No Phone Provided";
-    editUidEl.textContent = `ID: ${user.uid}`;
+    if(editNameEl) editNameEl.textContent = user.fullName || "Unknown User";
+    if(editEmailEl) editEmailEl.textContent = user.email || "No Email Provided";
+    if(editPhoneEl) editPhoneEl.textContent = user.phone || "No Phone Provided";
+    if(editUidEl) editUidEl.textContent = `ID: ${user.uid}`;
     
     renderSubscriptions();
-    editModal.style.display = 'flex';
+    if(editModal) editModal.style.display = 'flex';
 }
 
-btnMakeStudent.addEventListener('click', () => changeUserRole('STUDENT'));
-btnMakeMentor.addEventListener('click', () => changeUserRole('MENTOR'));
-btnMakeAdmin.addEventListener('click', () => changeUserRole('MANAGEMENT'));
+const btnMakeStudent = document.getElementById('btn-make-student');
+const btnMakeMentor = document.getElementById('btn-make-mentor');
+const btnMakeAdmin = document.getElementById('btn-make-admin');
+
+if(btnMakeStudent) btnMakeStudent.addEventListener('click', () => changeUserRole('STUDENT'));
+if(btnMakeMentor) btnMakeMentor.addEventListener('click', () => changeUserRole('MENTOR'));
+if(btnMakeAdmin) btnMakeAdmin.addEventListener('click', () => changeUserRole('MANAGEMENT'));
 
 async function changeUserRole(newRole) {
     if(confirm(`Change this user's role to ${newRole}?`)) {
@@ -216,9 +217,10 @@ async function changeUserRole(newRole) {
 }
 
 // ==========================================
-// 6. SUBSCRIPTIONS LOGIC
+// 5. SUBSCRIPTIONS LOGIC
 // ==========================================
 function renderSubscriptions() {
+    if(!subsListEl) return;
     subsListEl.innerHTML = '';
     if (!editingUser.subscriptions || Object.keys(editingUser.subscriptions).length === 0) {
         subsListEl.innerHTML = '<p style="font-size: 0.9rem; color: #94a3b8; font-weight: bold;">No active subscriptions.</p>';
@@ -269,8 +271,11 @@ function renderSubscriptions() {
     });
 }
 
-btnGrantAccess.addEventListener('click', async () => {
-    btnGrantAccess.textContent = "Saving...";
+// Hard-wired to Window
+window.grantAccess = async function() {
+    const btn = document.getElementById('btn-grant-access');
+    if(btn) { btn.textContent = "Saving..."; btn.disabled = true; }
+    
     const course = document.getElementById('grant-course').value;
     const days = document.getElementById('grant-duration').value;
     
@@ -296,48 +301,46 @@ btnGrantAccess.addEventListener('click', async () => {
         console.error(e);
         alert("Failed to grant access.");
     } finally {
-        btnGrantAccess.textContent = "Grant Access";
+        if(btn) { btn.textContent = "Grant Access"; btn.disabled = false; }
     }
-});
+};
 
 // ==========================================
-// 7. KEY GENERATION LOGIC
+// 6. KEY GENERATION LOGIC
 // ==========================================
-const btnGenerateKey = document.getElementById('btn-generate-key');
-if (btnGenerateKey) {
-    btnGenerateKey.addEventListener('click', async () => {
-        const course = document.getElementById('key-course').value;
-        const duration = document.getElementById('key-duration').value;
-        let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
-        const usage = parseInt(document.getElementById('key-usage').value) || 1;
-        const expiry = document.getElementById('key-expiry').value;
+window.generateKey = async function() {
+    const btn = document.getElementById('btn-generate-key');
+    if(btn) { btn.textContent = "Generating..."; btn.disabled = true; }
 
-        if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+    const course = document.getElementById('key-course').value;
+    const duration = document.getElementById('key-duration').value;
+    let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
+    const usage = parseInt(document.getElementById('key-usage').value) || 1;
+    const expiry = document.getElementById('key-expiry').value;
 
-        btnGenerateKey.textContent = "Generating...";
-        btnGenerateKey.disabled = true;
+    if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
-        try {
-            await setDoc(doc(db, "keys", customCode), {
-                code: customCode, course: course, duration: duration, maxUsage: usage,
-                usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
-            });
-            alert("Key Generated: " + customCode);
-            document.getElementById('key-custom').value = '';
-            fetchKeys();
-        } catch(e) {
-            console.error(e);
-            alert("Error generating key.");
-        } finally {
-            btnGenerateKey.textContent = "Generate Key";
-            btnGenerateKey.disabled = false;
-        }
-    });
-}
+    try {
+        await setDoc(doc(db, "keys", customCode), {
+            code: customCode, course: course, duration: duration, maxUsage: usage,
+            usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
+        });
+        alert("Key Generated: " + customCode);
+        document.getElementById('key-custom').value = '';
+        fetchKeys();
+    } catch(e) {
+        console.error(e);
+        alert("Error generating key.");
+    } finally {
+        if(btn) { btn.textContent = "Generate Key"; btn.disabled = false; }
+    }
+};
 
 async function fetchKeys() {
     const qSnap = await getDocs(collection(db, "keys"));
     const tbody = document.getElementById('keys-table-body');
+    if(!tbody) return;
+    
     tbody.innerHTML = '';
     qSnap.forEach(d => {
         const data = d.data();
@@ -361,11 +364,13 @@ async function fetchKeys() {
 }
 
 // ==========================================
-// 8. PAYMENT REQUEST LOGIC
+// 7. PAYMENT REQUEST LOGIC
 // ==========================================
 async function fetchPayments() {
     const qSnap = await getDocs(collection(db, "payment_requests"));
     const list = document.getElementById('payments-list');
+    if(!list) return;
+    
     list.innerHTML = '';
     let hasPending = false;
     

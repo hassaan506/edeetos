@@ -3,14 +3,14 @@
 /* ========================================== */
 /* STRICT RESETS & BASE THEME                 */
 /* ========================================== */
-* {
+*, *::before, *::after {
     box-sizing: border-box;
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
 }
 
 body {
     margin: 0; 
     padding: 0; 
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
     background: linear-gradient(to bottom, #10b981 0%, #10b981 280px, #f0fdf4 280px, #f0fdf4 100%);
     min-height: 100vh; 
     color: #1e293b;
@@ -92,6 +92,7 @@ body {
     transition: all 0.2s; 
     font-size: 1rem;
     margin: 0;
+    outline: none;
 }
 
 .admin-tab.active { 
@@ -123,6 +124,7 @@ body {
     padding: 1rem 1.5rem; 
     font-size: 1rem; 
     outline: none; 
+    font-family: 'Nunito', sans-serif; 
     font-weight: 600;
     width: 100%;
 }
@@ -136,7 +138,7 @@ body {
     font-size: 1rem; 
     cursor: pointer; 
     margin: 0;
-    border-radius: 0; /* Overrides global css rounded buttons */
+    border-radius: 0; 
 }
 
 .glass-box { 
@@ -193,7 +195,6 @@ body {
     align-items: center;
 }
 
-/* Specialized Icon Button (For Settings/Delete) */
 .btn-action-icon {
     display: flex;
     align-items: center;
