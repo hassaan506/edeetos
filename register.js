@@ -24,6 +24,9 @@ if (registerForm) {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
+            const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
+            localStorage.setItem("edeetos_session_id", newToken);
+
             // 3. Save the complete detailed profile to the Firestore database
             await setDoc(doc(db, "users", user.uid), {
                 fullName: name,
@@ -35,6 +38,7 @@ if (registerForm) {
                 targetExam: exam,
                 location: location,
                 role: "student", // Automatically locked to student
+                sessionToken: newToken,
                 createdAt: new Date().toISOString()
             });
 

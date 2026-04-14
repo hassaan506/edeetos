@@ -8,6 +8,8 @@ let currentRole = 'STUDENT';
 let currentChatId = null;
 let chatUnsubscribe = null; 
 let requestUnsubscribe = null;
+let statusUnsubscribe = null;
+let localMessages = [];
 
 const studentView = document.getElementById('student-view');
 const mentorView = document.getElementById('mentor-view');
@@ -181,19 +183,24 @@ function openLiveChat(chatId, partnerName) {
     chatPartnerName.textContent = partnerName;
     liveChatView.style.display = 'flex';
     chatMessages.innerHTML = ''; 
+    localMessages = [];
     
     // 1. Listen for new messages
     const messagesRef = collection(db, "chats", chatId, "messages");
     const q = query(messagesRef, orderBy("timestamp", "asc"));
     
     if (chatUnsubscribe) chatUnsubscribe(); // Clear old listeners
+    if (statusUnsubscribe) statusUnsubscribe(); 
     
     chatUnsubscribe = onSnapshot(q, (snapshot) => {
         chatMessages.innerHTML = ''; 
+        localMessages = []; // Re-sync local RAM arrays
+        
         snapshot.forEach((docSnap) => {
             const msg = docSnap.data();
-            const isMe = msg.senderId === currentUser.uid;
+            localMessages.push(msg); // Push securely into RAM 
             
+            const isMe = msg.senderId === currentUser.uid;
             const msgDiv = document.createElement('div');
             msgDiv.className = `msg-bubble ${isMe ? 'msg-sent' : 'msg-received'}`;
             msgDiv.textContent = msg.text;
@@ -203,12 +210,34 @@ function openLiveChat(chatId, partnerName) {
     });
 
     // 2. Listen to see if the OTHER person ended the chat
-    onSnapshot(doc(db, "chats", chatId), (docSnap) => {
+    statusUnsubscribe = onSnapshot(doc(db, "chats", chatId), (docSnap) => {
         if (docSnap.exists() && docSnap.data().status === 'ended') {
-            alert("The other person has ended the chat. Transcript will be saved.");
-            window.location.href = 'dashboard.html';
+            alert("The other person has ended the chat. A transcript text document will now download to your device.");
+            generateAndDownloadTranscript();
+            setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
         }
     });
+}
+
+function generateAndDownloadTranscript() {
+    let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
+    transcriptText += "Mentorship provided by Edeetos\n";
+    
+    const pName = chatPartnerName.textContent.replace("Dr. ", "");
+    transcriptText += `Participants: ${currentUserData ? currentUserData.fullName : "Me"} & ${pName}\n\n`;
+    
+    localMessages.forEach((msg) => {
+        const sender = msg.senderId === currentUser.uid ? "You" : chatPartnerName.textContent;
+        transcriptText += `[${sender}]: ${msg.text}\n`;
+    });
+
+    const blob = new Blob([transcriptText], { type: "text/plain" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `Edeetos_Chat_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 // Send Message
@@ -228,43 +257,38 @@ chatForm.addEventListener('submit', async (e) => {
     } catch (error) { console.error("Error sending message:", error); }
 });
 
-// End Chat & "Email Transcript"
+// End Chat & "Save Transcript"
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
-    if (confirm("End chat session? A transcript will be prepared for the student.")) {
+    // Confirm and explain that it's physically removed from DB
+    if (confirm("End session? A text transcript will be downloaded and the chat will be permanently erased from the network.")) {
+        
+        // 1. Alert the other user immediately so their system triggers their local download snapshot
         await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
         
+        // 2. Generate the initiator's transcript directly from RAM
+        generateAndDownloadTranscript();
+        
         try {
+            // 3. Initiate Full Database Wiping (No Saving)
+            const { deleteDoc, getDocs, collection, query } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+            
+            // Delete all sub-messages systematically to clear data
             const messagesRef = collection(db, "chats", currentChatId, "messages");
-            const q = query(messagesRef, orderBy("timestamp", "asc"));
-            const { getDocs } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-            const snapshot = await getDocs(q);
-            
-            let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
-            transcriptText += "Mentorship provided by Edeetos (edeetos@gmail.com)\n\n";
-            
-            snapshot.forEach((docSnap) => {
-                const msg = docSnap.data();
-                const sender = msg.senderId === currentUser.uid ? "Mentor" : "Student";
-                transcriptText += `[${sender}]: ${msg.text}\n`;
-            });
-            
-            const chatDoc = await getDoc(doc(db, "chats", currentChatId));
-            let studentEmail = "student@gmail.com";
-            if (chatDoc.exists() && chatDoc.data().studentEmail) {
-                studentEmail = chatDoc.data().studentEmail;
+            const snapshot = await getDocs(messagesRef);
+            for (const d of snapshot.docs) {
+                 await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
             }
-
-            const subject = encodeURIComponent("Your Edeetos Mentorship Transcript");
-            const body = encodeURIComponent(transcriptText);
-
-            window.location.href = `mailto:${studentEmail}?cc=edeetos@gmail.com&subject=${subject}&body=${body}`;
-            alert("Session Ended. Email client opening with transcript.");
+            
+            // Delete the parent chat ticket itself
+            await deleteDoc(doc(db, "chats", currentChatId));
+            
+            alert("Session Ended. Record completely purged and transcript downloaded.");
             
         } catch(e) {
-            console.error("Transcript Error", e);
-            alert("Session Ended, but transcript generation failed.");
+            console.error("Cleanup Error", e);
+            alert("Session Ended. Transcript downloaded.");
         }
 
         setTimeout(() => {

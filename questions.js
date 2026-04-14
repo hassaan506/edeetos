@@ -291,7 +291,9 @@ async function loadDataAndBuildTree() {
         });
 
         // APPLY THE FREE TIER FILTER IF THEY ARE NOT PREMIUM!
-        if (!isPremiumUser) {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            allQuestions = masterQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+        } else if (!isPremiumUser) {
             allQuestions = filterQuestionsForFreeTier(masterQuestions);
         } else {
             allQuestions = [...masterQuestions];
@@ -667,6 +669,19 @@ onAuthStateChanged(auth, async (user) => {
                 }
             }
         } catch (error) { console.error("Error fetching stats:", error); }
+    } else {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            isPremiumUser = false;
+            await loadDataAndBuildTree();
+            
+            const lockUI = () => alert("Please register an account to access this feature.");
+            const btnMistakes = document.getElementById('btn-practice-mistakes');
+            if (btnMistakes) { btnMistakes.disabled = false; btnMistakes.onclick = lockUI; }
+            const btnBookmarks = document.getElementById('btn-review-bookmarks');
+            if (btnBookmarks) { btnBookmarks.disabled = false; btnBookmarks.onclick = lockUI; }
+        } else {
+            window.location.href = 'login.html';
+        }
     }
 });
 
@@ -674,6 +689,9 @@ onAuthStateChanged(auth, async (user) => {
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            return alert("Please register an account to view detailed Analytics.");
+        }
         const body = document.getElementById('analytics-body');
         
         let activeTree = {};

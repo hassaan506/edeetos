@@ -67,7 +67,21 @@ onAuthStateChanged(auth, async (user) => {
             console.error("Error fetching user data:", error);
         }
     } else {
-        window.location.href = 'index.html'; 
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            currentUserId = 'guest';
+            currentUserData = { role: 'GUEST', fullName: 'Guest User', isPremium: false };
+            document.getElementById('user-name').textContent = "Guest User";
+            
+            const subStatus = document.getElementById('subscription-status');
+            const freeWarning = document.getElementById('free-warning-text');
+            if (subStatus) {
+                subStatus.textContent = "Guest Mode";
+                subStatus.className = "status-badge badge-free";
+            }
+            if (freeWarning) freeWarning.style.display = 'inline';
+        } else {
+            window.location.href = 'index.html'; 
+        }
     }
 });
 
@@ -75,7 +89,10 @@ onAuthStateChanged(auth, async (user) => {
 // 2. NAVIGATION BUTTONS
 // ==========================================
 document.getElementById('logout-btn').addEventListener('click', () => {
-    signOut(auth).then(() => { window.location.href = 'index.html'; });
+    localStorage.removeItem('edeetos_guest_mode');
+    signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => {
+        window.location.href = 'index.html';
+    });
 });
 
 document.getElementById('btn-admin-panel').addEventListener('click', () => {
@@ -83,10 +100,12 @@ document.getElementById('btn-admin-panel').addEventListener('click', () => {
 });
 
 document.getElementById('btn-contact-mentor').addEventListener('click', () => {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Mentorship.");
     window.location.href = 'mentor.html';
 });
 
 document.getElementById('btn-open-premium').addEventListener('click', () => {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to upgrade to Premium.");
     document.getElementById('premium-modal').style.display = 'flex';
     updatePrices();
 });
@@ -359,6 +378,7 @@ if (btnRedeem) {
 const btnOpenProfile = document.getElementById('btn-open-profile');
 if (btnOpenProfile) {
     btnOpenProfile.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access your Profile.");
         if (!currentUserData) return alert("User data loading, please wait...");
         document.getElementById('profile-modal').style.display = 'flex';
         

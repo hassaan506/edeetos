@@ -36,7 +36,13 @@ if (loginForm) {
             }
 
             // STEP 2: Now that we definitely have the email, log them in!
-            await signInWithEmailAndPassword(auth, loginEmail, password);
+            const userCred = await signInWithEmailAndPassword(auth, loginEmail, password);
+            
+            const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
+            localStorage.setItem("edeetos_session_id", newToken);
+            
+            const { doc, updateDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+            await updateDoc(doc(db, "users", userCred.user.uid), { sessionToken: newToken });
             
             alert("Login Successful! Opening your Dashboard...");
             window.location.href = "dashboard.html"; 
@@ -45,5 +51,15 @@ if (loginForm) {
             // If they type a wrong password or bad username, tell them beautifully
             alert("Login failed: " + error.message);
         }
+    });
+}
+
+const btnGuest = document.getElementById('btn-guest');
+if (btnGuest) {
+    btnGuest.addEventListener('click', () => {
+        localStorage.removeItem('edeetos_session_id');
+        localStorage.setItem('edeetos_guest_mode', 'true');
+        alert("Entering Guest Mode. You will have limited access to questions.");
+        window.location.href = "dashboard.html";
     });
 }

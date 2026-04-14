@@ -98,11 +98,15 @@ function loadSession() {
             } catch (error) {
                 console.error("❌ Firebase Load Error:", error);
             }
+        } else {
+            if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+                startTimer();
+                if (!isExamMode) buildNumberGrid(); 
+                loadQuestion(0);
+            } else {
+                window.location.href = 'login.html';
+            }
         }
-       
-        startTimer();
-        if (!isExamMode) buildNumberGrid(); 
-        loadQuestion(0);
     });
 }
 
@@ -223,8 +227,8 @@ function loadQuestion(index) {
             document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
         }
 
-        questionTextEl.textContent = currentQuestionData.text;
-        explanationText.textContent = currentQuestionData.explanation;
+        questionTextEl.innerHTML = currentQuestionData.text;
+        explanationText.innerHTML = currentQuestionData.explanation;
 
         optionsContainer.innerHTML = '';
         currentQuestionData.options.forEach(opt => {
@@ -252,6 +256,7 @@ function loadQuestion(index) {
 
             bookmarkBtn.onclick = (e) => {
                 e.preventDefault();
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
                 currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
                 if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
                 else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
@@ -264,6 +269,7 @@ function loadQuestion(index) {
         if (noteBtn) {
             noteBtn.onclick = (e) => {
                 e.preventDefault();
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to save personal notes.");
                 if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
                 if (notesModal) notesModal.classList.add('show');
             };
@@ -353,6 +359,7 @@ function loadQuestion(index) {
 // 3. DATABASE SYNC FUNCTIONS (COURSE ISOLATED)
 // ==========================================
 async function savePracticeProgress(questionId, isCorrect) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return; 
 
@@ -388,6 +395,7 @@ async function savePracticeProgress(questionId, isCorrect) {
 }
 
 async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return; 
 
