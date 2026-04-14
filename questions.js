@@ -812,15 +812,21 @@ if (btnJourney) {
         
         trophiesGrid.innerHTML = trophies.map(t => {
             const isUnlocked = solvedCount >= t.req;
+            const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
+            const bgColor = isUnlocked ? '#ffffff' : '#f8fafc';
+            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.5);';
+            const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
+            const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
+
             return `
-                <div style="display: flex; align-items: center; padding: 1rem; border-radius: 12px; background: ${isUnlocked ? '#ffffff' : '#f8fafc'}; border: 2px solid ${isUnlocked ? '#fbbf24' : '#e2e8f0'}; box-shadow: ${isUnlocked ? '0 4px 6px rgba(0,0,0,0.05)' : 'none'}; transition: transform 0.2s;">
-                    <div style="font-size: 2.5rem; margin-right: 1rem; filter: ${isUnlocked ? 'none' : 'grayscale(100%) opacity(0.4)'};">${t.icon}</div>
+                <div class="glass-panel" style="display: flex; align-items: center; padding: 1.2rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 10px rgba(0,0,0,0.05)' : 'none'};">
+                    <div style="font-size: 2.8rem; margin-right: 1.2rem; ${iconStyle}">${t.icon}</div>
                     <div style="flex-grow: 1;">
-                        <div style="font-weight: 800; color: ${isUnlocked ? '#1e293b' : '#94a3b8'}; font-size: 1.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">Solve ${t.req} Questions</div>
+                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.2rem; margin-bottom: 0.2rem;">${t.title}</div>
+                        <div style="font-size: 0.8rem; color: #64748b;">Solve ${t.req} Questions</div>
                     </div>
-                    <div style="font-size: 1.5rem; color: ${isUnlocked ? '#10b981' : '#cbd5e1'};">
-                        <i class="fas ${isUnlocked ? 'fa-check-circle' : 'fa-lock'}"></i>
+                    <div style="font-size: 1.5rem;">
+                        ${statusIcon}
                     </div>
                 </div>
             `;
