@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // DOM Elements
 const usersListEl = document.getElementById('users-list');
@@ -366,15 +366,19 @@ async function fetchKeys() {
 // ==========================================
 // 7. PAYMENT REQUEST LOGIC
 // ==========================================
-async function fetchPayments() {
-    const qSnap = await getDocs(collection(db, "payment_requests"));
+let unsubscribePayments = null;
+
+function fetchPayments() {
     const list = document.getElementById('payments-list');
     if(!list) return;
     
-    list.innerHTML = '';
-    let hasPending = false;
-    
-    qSnap.forEach(d => {
+    if (unsubscribePayments) return; // Already listening
+
+    unsubscribePayments = onSnapshot(collection(db, "payment_requests"), (qSnap) => {
+        list.innerHTML = '';
+        let hasPending = false;
+        
+        qSnap.forEach(d => {
         const data = d.data();
         if(data.status !== 'pending') return;
         hasPending = true;
@@ -434,7 +438,6 @@ async function fetchPayments() {
                 await updateDoc(doc(db, "payment_requests", d.id), { status: 'approved' });
 
                 alert("Payment approved and access granted!");
-                fetchPayments();
             } catch (e) {
                 console.error(e);
                 alert("Error approving payment");
@@ -445,7 +448,6 @@ async function fetchPayments() {
         card.querySelector('.btn-reject').addEventListener('click', async () => {
             if(confirm("Reject this payment?")) {
                 await updateDoc(doc(db, "payment_requests", d.id), { status: 'rejected' });
-                fetchPayments();
             }
         });
 
@@ -453,4 +455,5 @@ async function fetchPayments() {
     });
 
     if(!hasPending) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending payment requests.</p>';
+    });
 }
