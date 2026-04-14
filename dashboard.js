@@ -161,6 +161,8 @@ document.querySelectorAll('.plan-card').forEach(card => {
 // ==========================================
 function compressImage(file) {
     return new Promise((resolve, reject) => {
+        if (!file) return reject(new Error("No file provided"));
+        
         const reader = new FileReader();
         reader.onload = event => {
             const img = new Image();
@@ -190,28 +192,35 @@ function compressImage(file) {
 const btnSubmitPayment = document.getElementById('btn-submit-payment');
 if (btnSubmitPayment) {
     btnSubmitPayment.addEventListener('click', async () => {
-        if(!currentUserId) return alert("Authentication error. Please refresh.");
+        // Ensure user is logged in
+        if(!currentUserId) return alert("Authentication error. Please refresh the page.");
 
+        // Change button state
         btnSubmitPayment.textContent = "Submitting...";
         btnSubmitPayment.disabled = true;
 
-        const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
-        const selectedPlan = document.querySelector('.plan-card.selected');
-        
-        const durationDays = selectedPlan.getAttribute('data-days');
-        const planName = selectedPlan.getAttribute('data-name');
-        const fallbackEmail = auth.currentUser ? auth.currentUser.email : "Unknown Email";
-
-        const fileInput = document.getElementById('payment-proof');
-        const file = fileInput.files[0];
-        if (!file) {
-            alert("Please upload your payment proof.");
-            btnSubmitPayment.textContent = "Confirm & Submit Request";
-            btnSubmitPayment.disabled = false;
-            return;
-        }
-
         try {
+            // Moved all element fetching inside the try block to catch any unexpected HTML errors
+            const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
+            const selectedPlan = document.querySelector('.plan-card.selected');
+            
+            if (!selectedPlan) throw new Error("No plan selected.");
+
+            const durationDays = selectedPlan.getAttribute('data-days');
+            const planName = selectedPlan.getAttribute('data-name');
+            const fallbackEmail = auth.currentUser ? auth.currentUser.email : "Unknown Email";
+
+            const fileInput = document.getElementById('payment-proof');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert("Please upload your payment proof.");
+                // Reset button if returning early
+                btnSubmitPayment.textContent = "Confirm & Submit Request";
+                btnSubmitPayment.disabled = false;
+                return;
+            }
+
             let receiptUrl = "";
             try {
                 receiptUrl = await compressImage(file);
@@ -223,9 +232,13 @@ if (btnSubmitPayment) {
                 return;
             }
 
-            await addDoc(collection(db, "payment_requests"), {
+            // Using optional chaining (?.) so it won't crash if currentUserData is temporarily null
+            const userEmailToSave = currentUserData?.email || fallbackEmail;
+
+            // Prepare the Firestore request
+            const submitPromise = addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId,
-                userEmail: currentUserData.email || fallbackEmail,
+                userEmail: userEmailToSave,
                 courses: courses,
                 durationDays: durationDays,
                 planName: planName,
@@ -233,13 +246,23 @@ if (btnSubmitPayment) {
                 status: 'pending',
                 timestamp: serverTimestamp()
             });
+
+            // Set up a 12-second timeout in case Firebase hangs due to a weak connection
+            const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => reject(new Error("Request timed out. Please check your internet connection.")), 12000);
+            });
+
+            // Race the upload against the timeout. Whichever finishes first wins!
+            await Promise.race([submitPromise, timeoutPromise]);
             
             alert("Payment request submitted successfully! Please wait for admin approval.");
             document.getElementById('premium-modal').style.display = 'none';
+
         } catch (e) {
             console.error("Payment submission error: ", e);
-            alert("Failed to submit request.");
+            alert("Failed to submit request: " + (e.message || "An unknown error occurred."));
         } finally {
+            // This 'finally' block is guaranteed to run, resetting your button safely
             btnSubmitPayment.textContent = "Confirm & Submit Request";
             btnSubmitPayment.disabled = false;
         }
