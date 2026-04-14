@@ -7,19 +7,19 @@
 	<link rel="stylesheet" href="global.css">
 	<link rel="stylesheet" href="dashboard.css">
     <style>
-        /* Custom Dropdown & Badge Styles */
+        /* Custom Dropdown Styles */
         .select-wrapper {
             position: relative;
             width: 100%;
         }
         .custom-select {
             width: 100%;
-            padding: 1rem 1.2rem;
-            font-size: 1.05rem;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
             color: #1e293b;
             background-color: #f8fafc;
             border: 2px solid #e2e8f0;
-            border-radius: 10px;
+            border-radius: 8px;
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -42,20 +42,18 @@
             transform: translateY(-50%);
             pointer-events: none;
         }
+
+        /* Non-Clickable Status Badge */
         .status-badge {
             display: inline-block;
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
-            margin-left: 10px;
             vertical-align: middle;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .status-badge:hover {
-            transform: scale(1.05);
+            cursor: default; /* Strictly non-clickable */
+            pointer-events: none;
         }
         .badge-free {
             background: #fffbeb;
@@ -66,6 +64,25 @@
             background: #ecfdf5;
             color: #059669;
             border: 1px solid #6ee7b7;
+        }
+
+        /* Strict 3-Column Layout */
+        .course-dash-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            align-items: stretch;
+            max-width: 1100px;
+            margin: 0 auto 3rem auto;
+        }
+        @media (max-width: 950px) {
+            .course-dash-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
 
         /* Essential Popup Styles */
@@ -146,79 +163,91 @@
         .course-check { accent-color: #10b981; transform: scale(1.2); }
     </style>
 </head>
-<body>
+<body style="background-color: #f0fdf4;">
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
-            </a>
-            <ul class="nav-links">
-                <li><button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 1rem;">Logout</button></li>
-            </ul>
+    <nav class="navbar" style="background: white; border-bottom: 1px solid #e2e8f0; padding: 0.8rem 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;">
+            
+            <div style="flex: 1;"></div>
+
+            <div style="flex: 1; display: flex; justify-content: center;">
+                <a href="index.html">
+                    <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;">
+                </a>
+            </div>
+
+            <div class="nav-actions" style="flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 1rem;">
+                <button onclick="document.getElementById('premium-modal').style.display='flex'" class="btn-solid" style="background: #fbbf24; color: #b45309; font-weight: 800; border: none; padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(251, 191, 36, 0.2);">
+                    👑 Buy Premium
+                </button>
+                <button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 0.95rem; padding: 0.5rem 1.2rem; border-radius: 20px; cursor: pointer;">
+                    Logout
+                </button>
+            </div>
+
         </div>
     </nav>
 
-    <section class="section-container">
-		<div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
-            <div>
-                <h1 style="display: flex; align-items: center;">
-                    Welcome, <span id="user-name" class="highlight-text" style="margin-left: 8px;">Doctor</span>
-                    <span class="status-badge badge-free" id="subscription-status" onclick="document.getElementById('premium-modal').style.display='flex'">Free Tier</span>
-                </h1>
-                <p>Select your course below to begin.</p>
-            </div>
+    <section class="section-container" style="padding-top: 3rem;">
+        
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+            <h1 style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #1e293b; font-size: 2rem;">
+                Welcome, <span id="user-name" style="color: #059669; margin-left: 8px; margin-right: 12px;">Doctor</span>
+                <span class="status-badge badge-free" id="subscription-status">Free Tier</span>
+            </h1>
+            <p style="color: #64748b; font-size: 1rem;">Select your course below to begin.</p>
 		</div>
 
-		<div class="feature-grid" style="margin-bottom: 2rem;">
-			<div class="glass-panel feature-card">
-				<div class="icon">📚</div>
-				<h3>Study Vault</h3>
-				<p>Access notes and lectures for your specific exam.</p>
-				<button class="btn-solid mini-btn">Open Vault</button>
-			</div>
-
-			<div class="glass-panel feature-card">
-				<div class="icon">🩺</div>
-				<h3>My Mentor</h3>
-				<p>Book a session or message your dedicated guide.</p>
-				<button class="btn-solid mini-btn">Contact Mentor</button>
-			</div>
-		</div>
-
-        <div class="glass-panel" style="padding: 2.5rem; max-width: 600px; margin: 0 auto; text-align: center;">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem;">✍️</div>
-            <h2 style="color: #064e3b; font-size: 1.8rem; margin-bottom: 0.5rem;">Question Bank</h2>
-            <p style="color: #64748b; margin-bottom: 2rem;">
-                Select your active course. <br>
-                <span id="free-warning-text" style="color: #d97706; font-size: 0.85rem; font-weight: 600;">(Free users are limited to 50 questions per subject)</span>
-            </p>
-
-            <div class="select-wrapper" style="text-align: left; margin-bottom: 1.5rem;">
-                <label for="course-dropdown" style="display: block; font-weight: 700; color: #334155; margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase;">Active Course</label>
-                <select id="course-dropdown" class="custom-select">
-                    <optgroup label="FCPS Series">
-                        <option value="fcps_part1">📘 FCPS Part 1</option>
-                        <option value="fcps_part2">📗 FCPS Part 2</option>
-                        <option value="fcps_imm">📙 FCPS IMM</option>
-                    </optgroup>
-                    <optgroup label="MRCS Series">
-                        <option value="mrcs_part1">🇬🇧 MRCS Part 1</option>
-                        <option value="mrcs_part2">🏥 MRCS Part 2</option>
-                    </optgroup>
-                    <optgroup label="MBBS Journey">
-                        <option value="mbbs_year1">🧬 MBBS Year 1</option>
-                        <option value="mbbs_year2">🔬 MBBS Year 2</option>
-                        <option value="mbbs_year3">💊 MBBS Year 3</option>
-                        <option value="mbbs_year4">👂 MBBS Year 4</option>
-                        <option value="mbbs_year5">🎓 MBBS Year 5</option>
-                    </optgroup>
-                </select>
+        <div class="course-dash-grid">
+            
+            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; text-align: center;">
+                <div class="icon" style="font-size: 3.5rem; margin-bottom: 1rem;">📚</div>
+                <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Study Vault</h3>
+                <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Access notes and lectures for your specific exam.</p>
+                <button class="btn-solid mini-btn" style="width: 100%;">Open Vault</button>
             </div>
 
-            <button onclick="launchCourse()" class="btn-solid" style="width: 100%; background: #10b981; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">
-                Launch Question Bank ➡
-            </button>
+            <div class="glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; text-align: center; border: 2px solid #10b981; position: relative; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);">
+                <div class="icon" style="font-size: 3.5rem; margin-bottom: 1rem;">✍️</div>
+                <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Question Bank</h3>
+                <p style="color: #64748b; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                    Select your active course. <br>
+                    <span id="free-warning-text" style="color: #d97706; font-size: 0.75rem; font-weight: 700;">(Free users limited to 50Qs/subject)</span>
+                </p>
+                
+                <div class="select-wrapper" style="width: 100%; text-align: left; margin-bottom: 1rem;">
+                    <select id="course-dropdown" class="custom-select">
+                        <optgroup label="FCPS Series">
+                            <option value="fcps_part1">📘 FCPS Part 1</option>
+                            <option value="fcps_part2">📗 FCPS Part 2</option>
+                            <option value="fcps_imm">📙 FCPS IMM</option>
+                        </optgroup>
+                        <optgroup label="MRCS Series">
+                            <option value="mrcs_part1">🇬🇧 MRCS Part 1</option>
+                            <option value="mrcs_part2">🏥 MRCS Part 2</option>
+                        </optgroup>
+                        <optgroup label="MBBS Journey">
+                            <option value="mbbs_year1">🧬 MBBS Year 1</option>
+                            <option value="mbbs_year2">🔬 MBBS Year 2</option>
+                            <option value="mbbs_year3">💊 MBBS Year 3</option>
+                            <option value="mbbs_year4">👂 MBBS Year 4</option>
+                            <option value="mbbs_year5">🎓 MBBS Year 5</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <button onclick="launchCourse()" class="btn-solid" style="width: 100%; background: #10b981; border: none; padding: 0.85rem; border-radius: 8px; font-size: 1.05rem; font-weight: bold; color: white; cursor: pointer; transition: all 0.2s;">
+                    Launch ➡
+                </button>
+            </div>
+
+            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; text-align: center;">
+                <div class="icon" style="font-size: 3.5rem; margin-bottom: 1rem;">🩺</div>
+                <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">My Mentor</h3>
+                <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Request a live chat session with a dedicated guide.</p>
+                <button class="btn-solid mini-btn" style="width: 100%;">Contact Mentor</button>
+            </div>
+
         </div>
 	</section>
 
@@ -236,7 +265,7 @@
             <div id="view-buy">
                 <div style="text-align: left; font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.5rem;">1. Select Courses to Unlock</div>
                 
-                <button id="btn-open-course-selector" class="btn-outline" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; margin-bottom: 1.5rem; border-color: #cbd5e1; color: #334155;">
+                <button id="btn-open-course-selector" class="btn-outline" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; margin-bottom: 1.5rem; border-color: #cbd5e1; color: #334155; background: white;">
                     <span id="selected-courses-text" style="font-weight: 700;">1 Course Selected</span>
                     <span style="font-size: 0.8rem;">⚙️ Edit</span>
                 </button>
@@ -268,9 +297,9 @@
                 </div>
 
                 <div style="text-align: left; font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.5rem;">Upload Payment Proof</div>
-                <input type="file" style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.8rem;">
+                <input type="file" style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.8rem; background: white;">
 
-                <button class="btn-solid" style="width: 100%; background: #d97706; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 0.5rem;">
+                <button class="btn-solid" style="width: 100%; background: #d97706; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 0.5rem; cursor: pointer;">
                     Confirm & Submit Request
                 </button>
                 <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 1rem;">Access usually granted within 30 minutes.</div>
@@ -283,7 +312,7 @@
                 <label style="font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Access Code</label>
                 <input type="text" id="redeem-input" placeholder="e.g. EDEETOS-XXXX-XXXX" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; margin-top: 0.5rem; margin-bottom: 1.5rem; font-family: monospace; font-size: 1.1rem; text-align: center; text-transform: uppercase; outline: none;">
                 
-                <button id="btn-submit-redeem" class="btn-solid" style="width: 100%; background: #10b981; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 1rem;">
+                <button id="btn-submit-redeem" class="btn-solid" style="width: 100%; background: #10b981; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 1rem; cursor: pointer;">
                     Redeem Now
                 </button>
             </div>
@@ -315,20 +344,19 @@
                 <label class="course-checkbox-label"><input type="checkbox" class="course-check" value="mbbs_year5"> MBBS Year 5</label>
             </div>
 
-            <button id="btn-confirm-courses" class="btn-solid" style="width: 100%; background: #0f172a; color: white; padding: 0.8rem; border-radius: 8px; border: none; font-weight: bold;">
+            <button id="btn-confirm-courses" class="btn-solid" style="width: 100%; background: #0f172a; color: white; padding: 0.8rem; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;">
                 Done
             </button>
         </div>
     </div>
 
     <script>
-        // Load saved course on start
         window.onload = () => {
             const savedCourse = localStorage.getItem('edeetos_active_course');
             if (savedCourse) {
                 document.getElementById('course-dropdown').value = savedCourse;
             }
-            updatePrices(); // Init the pricing calculator
+            updatePrices();
         };
 
         function launchCourse() {
@@ -337,9 +365,6 @@
             window.location.href = 'questions.html';
         }
 
-        // ==========================================
-        // TAB SWITCHING LOGIC (BUY vs REDEEM)
-        // ==========================================
         function switchTab(tabName) {
             const tabBuy = document.getElementById('tab-buy');
             const tabRedeem = document.getElementById('tab-redeem');
@@ -359,7 +384,6 @@
             }
         }
 
-        // Redeem Code Action
         document.getElementById('btn-submit-redeem').onclick = () => {
             const code = document.getElementById('redeem-input').value.trim();
             if (code.length < 5) {
@@ -367,12 +391,8 @@
                 return;
             }
             alert("Code '" + code + "' submitted for verification! (Database hook pending)");
-            // Handle Firebase code verification here in the future
         };
 
-        // ==========================================
-        // NESTED COURSE SELECTOR LOGIC
-        // ==========================================
         const courseSelectorModal = document.getElementById('course-selector-modal');
         
         document.getElementById('btn-open-course-selector').onclick = () => {
@@ -380,46 +400,32 @@
         };
 
         document.getElementById('btn-confirm-courses').onclick = () => {
-            // Ensure at least ONE is always checked
             const checkedCount = document.querySelectorAll('.course-check:checked').length;
             if (checkedCount === 0) {
                 alert("You must select at least one course.");
                 return;
             }
-            
             document.getElementById('selected-courses-text').textContent = `${checkedCount} Course${checkedCount > 1 ? 's' : ''} Selected`;
             courseSelectorModal.style.display = 'none';
             updatePrices();
         };
 
-        // ==========================================
-        // DYNAMIC PRICING ENGINE
-        // ==========================================
-        // Base Prices for 1 Course
         const basePrices = [50, 150, 250, 400, 1000, 1500, 2500, 3500];
-        
-        // Absolute Maximums regardless of how many courses are selected
         const maxPrices = [200, 500, 800, 1500, 3000, 4000, 4500, 5000];
 
         function updatePrices() {
             const count = Math.max(1, document.querySelectorAll('.course-check:checked').length);
-            
-            // Formula: Add 25% to the base price for every additional course selected
             const multiplier = 1 + ((count - 1) * 0.25); 
 
             for(let i = 0; i < 8; i++) {
                 let calculatedPrice = Math.round(basePrices[i] * multiplier);
-                
-                // Cap the price at the absolute maximums
                 if (calculatedPrice > maxPrices[i]) {
                     calculatedPrice = maxPrices[i];
                 }
-                
                 document.getElementById('price-' + i).textContent = 'Rs. ' + calculatedPrice.toLocaleString();
             }
         }
 
-        // Attach listeners to the plan cards so they are selectable
         document.querySelectorAll('.plan-card').forEach(card => {
             card.addEventListener('click', function() {
                 document.querySelectorAll('.plan-card').forEach(c => {
@@ -434,6 +440,7 @@
             });
         });
     </script>
+    
     <script type="module" src="dashboard.js"></script>
 
 </body>
