@@ -62,6 +62,7 @@ function loadSession() {
             q.originalNumber = idFromCSV || `q-${i + 1}`; 
         }
         q.sessionState = null; 
+        q.historicalState = null; // NEW: Tracks history without locking the question
     });
 	
     onAuthStateChanged(auth, async (user) => {
@@ -74,7 +75,6 @@ function loadSession() {
                     const savedNotes = dbData.notes || {}; 
                     const savedBookmarks = dbData.bookmarks || []; 
                     
-                    // NEW: Pull historical lists to restore grid colors!
                     const solvedList = dbData.solvedQuestions || [];
                     const mistakesList = dbData.mistakes || [];
                     
@@ -89,11 +89,11 @@ function loadSession() {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
                         
-                        // NEW: Restore red/green status based on Firebase history
+                        // FIX: Save to historicalState so it colors the grid, but leaves the question unlocked!
                         if (solvedList.includes(q.originalNumber)) {
-                            q.sessionState = 'correct';
+                            q.historicalState = 'correct';
                         } else if (mistakesList.includes(q.originalNumber)) {
-                            q.sessionState = 'wrong';
+                            q.historicalState = 'wrong';
                         }
                     });
                 }
@@ -127,6 +127,7 @@ function formatCSVQuestion(rawCsvRow) {
         isBookmarked: rawCsvRow.isBookmarked || false,
         userNote: rawCsvRow.userNote || "",
         sessionState: rawCsvRow.sessionState || null,
+        historicalState: rawCsvRow.historicalState || null,
         hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
         userSelectedAnswer: rawCsvRow.userSelectedAnswer || null
     };	
@@ -138,9 +139,10 @@ function buildNumberGrid() {
         const numBtn = document.createElement('div');
         numBtn.className = 'grid-num';
         
-        // Apply existing local session colors if they navigated back
-        if (q.sessionState === 'correct') numBtn.classList.add('correct');
-        if (q.sessionState === 'wrong') numBtn.classList.add('incorrect');
+        // FIX: Look at current session first, fallback to historical colors
+        const stateToShow = q.sessionState || q.historicalState;
+        if (stateToShow === 'correct' || stateToShow === 'wrong_then_correct') numBtn.classList.add('correct');
+        if (stateToShow === 'wrong') numBtn.classList.add('incorrect');
         
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
@@ -193,7 +195,7 @@ function loadQuestion(index) {
         }
 
         wrongAttempts = 0;
-        // Lock answer if they got it right previously in THIS session
+        // FIX: Question only locks if answered correctly IN THIS SESSION.
         hasAnsweredCorrectly = (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct'); 
         
         if (!isExamMode) updateFeedbackBar();
@@ -300,15 +302,12 @@ async function savePracticeProgress(questionId, isCorrect) {
     
     try {
         if (isCorrect) {
-            // 1. Check if they are currently inside the "Practice Mistakes" quiz
             const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
             
-            // 2. Always count it as solved
             let updates = {
                 solvedQuestions: arrayUnion(questionId) 
             };
 
-            // 3. ONLY delete the mistake if they are actively in the Mistakes mode!
             if (isReviewMistakesMode) {
                 updates.mistakes = arrayRemove(questionId);      
                 updates.examMistakes = arrayRemove(questionId);   
@@ -316,7 +315,6 @@ async function savePracticeProgress(questionId, isCorrect) {
 
             await setDoc(userRef, updates, { merge: true });
         } else {
-            // If they get it wrong, always log it as a mistake
             await setDoc(userRef, {
                 mistakes: arrayUnion(questionId)
             }, { merge: true });
@@ -327,7 +325,6 @@ async function savePracticeProgress(questionId, isCorrect) {
 }
 
 async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions) {
-    console.log("🚀 Initiating Exam Save...");
     const user = auth.currentUser;
     if (!user) return; 
 
@@ -336,11 +333,10 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     try {
         let updates = {};
         
-        // FIX: Exam progress is now isolated from Practice progress!
         if (correctIds.length > 0) {
             updates.examSolvedQuestions = arrayUnion(...correctIds);
-            updates.mistakes = arrayRemove(...correctIds);      // Clear past practice mistakes
-            updates.examMistakes = arrayRemove(...correctIds);  // Clear past exam mistakes
+            updates.mistakes = arrayRemove(...correctIds);      
+            updates.examMistakes = arrayRemove(...correctIds);  
         }
         if (mistakeIds.length > 0) {
             updates.examMistakes = arrayUnion(...mistakeIds);
@@ -359,10 +355,9 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
 
         if (Object.keys(updates).length > 0) {
             await setDoc(userRef, updates, { merge: true });
-            console.log("✅ Exam progress securely saved and isolated!");
         }
     } catch (error) {
-        console.error("❌ Error saving exam progress to Firebase:", error);
+        console.error("Error saving exam progress to Firebase:", error);
     }
 }
 
@@ -411,7 +406,6 @@ function handleOptionClick(event, optionData, optionElement) {
         wrongAttempts++;
         updateFeedbackBar();
         
-        // Mark Navigation Grid Red
         if (!currentQuestionData.sessionState) {
             currentQuestionData.sessionState = 'wrong'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
@@ -429,16 +423,17 @@ function handleOptionClick(event, optionData, optionElement) {
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
 
-        // Mark Navigation Grid Green (if they didn't fail it first)
         if (!currentQuestionData.sessionState) {
             currentQuestionData.sessionState = 'correct'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) btn.classList.add('correct');
+            if (btn) {
+                btn.classList.remove('incorrect'); // Clean up any historical red
+                btn.classList.add('correct');
+            }
         } else if (currentQuestionData.sessionState === 'wrong') {
             currentQuestionData.sessionState = 'wrong_then_correct';
         }
         
-        // This instantly DELETES the mistake from Firebase!
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
         explanationBtn.style.display = 'inline-block'; 
