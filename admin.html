@@ -68,6 +68,7 @@
         /* Badges */
         .badge { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 20px; display: inline-block;}
         .b-admin { background: #f3e8ff; color: #8b5cf6; }
+        .b-mentor { background: #fef08a; color: #b45309; }
         .b-student { background: #f1f5f9; color: #64748b; }
         .b-course { background: #e0f2fe; color: #0369a1; }
         .b-time { background: #dbeafe; color: #0284c7; }
@@ -95,10 +96,10 @@
         <div id="view-users" class="admin-content">
             <h2 class="page-title">User Manager</h2>
             <div class="search-wrapper">
-                <input type="text" id="admin-search-input" class="search-input" placeholder="User UID or Email...">
+                <input type="text" id="admin-search-input" class="search-input" placeholder="Search by Name, Email, or Phone Number...">
                 <button id="admin-search-btn" class="search-btn">Search</button>
             </div>
-            <div class="glass-box" style="padding: 0; max-height: 500px; overflow-y: auto;">
+            <div class="glass-box" style="padding: 0; max-height: 550px; overflow-y: auto;">
                 <div style="font-size: 0.8rem; color: #64748b; font-weight: 800; padding: 1rem; border-bottom: 1px solid #e2e8f0;">
                     <span id="user-count">0</span> Users
                 </div>
@@ -115,10 +116,22 @@
                     <div class="form-group" style="grid-column: span 2;">
                         <label>Key for Course:</label>
                         <select id="key-course">
-                            <option value="fcps_part1">FCPS Part 1</option>
-                            <option value="fcps_part2">FCPS Part 2</option>
-                            <option value="mrcs_part1">MRCS Part 1</option>
-                            <option value="mbbs_year5">MBBS Year 5</option>
+                            <optgroup label="FCPS Series">
+                                <option value="fcps_part1">FCPS Part 1</option>
+                                <option value="fcps_part2">FCPS Part 2</option>
+                                <option value="fcps_imm">FCPS IMM</option>
+                            </optgroup>
+                            <optgroup label="MRCS Series">
+                                <option value="mrcs_part1">MRCS Part 1</option>
+                                <option value="mrcs_part2">MRCS Part 2</option>
+                            </optgroup>
+                            <optgroup label="MBBS Journey">
+                                <option value="mbbs_year1">MBBS Year 1</option>
+                                <option value="mbbs_year2">MBBS Year 2</option>
+                                <option value="mbbs_year3">MBBS Year 3</option>
+                                <option value="mbbs_year4">MBBS Year 4</option>
+                                <option value="mbbs_year5">MBBS Year 5</option>
+                            </optgroup>
                             <option value="ALL">All Courses (Full Premium)</option>
                         </select>
                     </div>
@@ -127,8 +140,11 @@
                         <select id="key-duration">
                             <option value="1">1 Day</option>
                             <option value="7">1 Week</option>
+                            <option value="15">15 Days</option>
                             <option value="30">1 Month</option>
+                            <option value="90">3 Months</option>
                             <option value="180">6 Months</option>
+                            <option value="365">1 Year</option>
                             <option value="lifetime">Lifetime</option>
                         </select>
                     </div>
@@ -175,8 +191,10 @@
 
     <div id="edit-user-modal" class="popup-overlay">
         <div class="popup-content">
-            <h2 style="color: #1e3a8a; margin: 0; font-weight: 800;">User</h2>
+            <h2 style="color: #1e3a8a; margin: 0; font-weight: 800;">User Profile</h2>
+            <p id="edit-user-name" style="font-weight: 800; font-size: 1.2rem; color: #064e3b; margin: 0.5rem 0 0 0;">Username</p>
             <p id="edit-user-email" style="font-weight: 700; color: #3b82f6; margin: 0.2rem 0;">user@example.com</p>
+            <p id="edit-user-phone" style="font-weight: 600; color: #475569; margin: 0.2rem 0;">Phone Number</p>
             <p id="edit-user-uid" style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 1.5rem;">ID: ...</p>
             
             <div style="text-align: left;">
@@ -188,14 +206,31 @@
                     <label style="font-size: 0.85rem; font-weight: 800; color: #064e3b; margin-bottom: 0.5rem; display: block;">🎁 Grant New Access</label>
                     <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
                         <select id="grant-course" style="flex: 2; padding: 0.6rem; border: 1px solid #bbf7d0; border-radius: 6px; outline: none; font-family: inherit;">
-                            <option value="fcps_part1">FCPS Part 1</option>
-                            <option value="fcps_part2">FCPS Part 2</option>
-                            <option value="mrcs_part1">MRCS Part 1</option>
-                            <option value="mbbs_year5">MBBS Year 5</option>
+                            <optgroup label="FCPS Series">
+                                <option value="fcps_part1">FCPS Part 1</option>
+                                <option value="fcps_part2">FCPS Part 2</option>
+                                <option value="fcps_imm">FCPS IMM</option>
+                            </optgroup>
+                            <optgroup label="MRCS Series">
+                                <option value="mrcs_part1">MRCS Part 1</option>
+                                <option value="mrcs_part2">MRCS Part 2</option>
+                            </optgroup>
+                            <optgroup label="MBBS Journey">
+                                <option value="mbbs_year1">MBBS Year 1</option>
+                                <option value="mbbs_year2">MBBS Year 2</option>
+                                <option value="mbbs_year3">MBBS Year 3</option>
+                                <option value="mbbs_year4">MBBS Year 4</option>
+                                <option value="mbbs_year5">MBBS Year 5</option>
+                            </optgroup>
                         </select>
                         <select id="grant-duration" style="flex: 1; padding: 0.6rem; border: 1px solid #bbf7d0; border-radius: 6px; outline: none; font-family: inherit;">
                             <option value="1">1 Day</option>
+                            <option value="7">1 Week</option>
+                            <option value="15">15 Days</option>
                             <option value="30">1 Month</option>
+                            <option value="90">3 Months</option>
+                            <option value="180">6 Months</option>
+                            <option value="365">1 Year</option>
                             <option value="lifetime">Lifetime</option>
                         </select>
                     </div>
@@ -204,9 +239,12 @@
 
                 <label style="font-size: 0.75rem; font-weight: 800; color: #b45309; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">⚠️ Account Actions</label>
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <button id="btn-toggle-admin" class="btn-solid" style="background: #475569;">⬇ Remove Admin Access</button>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button id="btn-make-student" class="btn-outline" style="flex: 1; border-color: #64748b; color: #64748b; margin: 0; padding: 0.5rem;">Make Student</button>
+                        <button id="btn-make-mentor" class="btn-outline" style="flex: 1; border-color: #b45309; color: #b45309; margin: 0; padding: 0.5rem;">Make Mentor</button>
+                        <button id="btn-make-admin" class="btn-outline" style="flex: 1; border-color: #8b5cf6; color: #8b5cf6; margin: 0; padding: 0.5rem;">Make Admin</button>
+                    </div>
                     <button class="btn-solid" style="background: #ef4444;">⛔ Ban User</button>
-                    <button class="btn-solid" style="background: #7f1d1d;">🗑️ Delete User</button>
                 </div>
             </div>
 

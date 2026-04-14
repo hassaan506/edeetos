@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, getDocs, doc, getDoc, setDoc, updateDoc, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, getDocs, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // DOM Elements
 const usersListEl = document.getElementById('users-list');
@@ -10,10 +10,15 @@ const searchBtn = document.getElementById('admin-search-btn');
 
 // Modal Elements
 const editModal = document.getElementById('edit-user-modal');
+const editNameEl = document.getElementById('edit-user-name');
 const editEmailEl = document.getElementById('edit-user-email');
+const editPhoneEl = document.getElementById('edit-user-phone');
 const editUidEl = document.getElementById('edit-user-uid');
 const subsListEl = document.getElementById('user-subscriptions-list');
-const btnToggleAdmin = document.getElementById('btn-toggle-admin');
+
+const btnMakeStudent = document.getElementById('btn-make-student');
+const btnMakeMentor = document.getElementById('btn-make-mentor');
+const btnMakeAdmin = document.getElementById('btn-make-admin');
 
 let allUsersData = [];
 let editingUser = null;
@@ -33,15 +38,13 @@ onAuthStateChanged(auth, async (user) => {
         }
 
         fetchAllUsers();
-        calculateTotalQuestions(); // Trigger the dynamic counter!
+        calculateTotalQuestions();
     } else {
         window.location.href = 'index.html';
     }
 });
 
-// Dynamic Question Counter (Fetches your CSVs)
 async function calculateTotalQuestions() {
-    // List all possible courses you have CSVs for
     const courses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     let totalQuestions = 0;
     
@@ -50,17 +53,15 @@ async function calculateTotalQuestions() {
             const response = await fetch(`Data/${course}.csv`);
             if (response.ok) {
                 const text = await response.text();
-                // Count lines, subtract 1 for the header row
                 const lines = text.split('\n').filter(line => line.trim().length > 0);
                 if (lines.length > 1) {
                     totalQuestions += (lines.length - 1);
                 }
             }
         } catch (e) {
-            // Ignore errors if a CSV file doesn't exist yet
+            // Ignore missing files
         }
     }
-    
     document.getElementById('total-q-count').textContent = `Questions: ${totalQuestions}`;
 }
 
@@ -68,30 +69,40 @@ async function calculateTotalQuestions() {
 // 2. TAB ROUTING
 // ==========================================
 window.switchView = function(viewName) {
-    // Hide all views
     document.getElementById('view-users').style.display = 'none';
     document.getElementById('view-keys').style.display = 'none';
     document.getElementById('view-payments').style.display = 'none';
     document.getElementById('view-reports').style.display = 'none';
     
-    // Remove active class from tabs
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
     
-    // Show selected view
     document.getElementById(`view-${viewName}`).style.display = 'block';
     event.currentTarget.classList.add('active');
 }
 
 // ==========================================
-// 3. USER MANAGEMENT
+// 3. USER MANAGEMENT (FETCH & SORT)
 // ==========================================
 async function fetchAllUsers() {
     try {
         const querySnapshot = await getDocs(collection(db, "users"));
         allUsersData = [];
+        
         querySnapshot.forEach((doc) => {
-            let data = doc.data(); data.uid = doc.id; allUsersData.push(data);
+            let data = doc.data(); 
+            data.uid = doc.id; 
+            allUsersData.push(data);
         });
+
+        // SORT BY PRIORITY: Management (1) -> Mentor (2) -> Student (3)
+        const rolePriority = { 'MANAGEMENT': 1, 'MENTOR': 2, 'STUDENT': 3 };
+        
+        allUsersData.sort((a, b) => {
+            const roleA = a.role || 'STUDENT';
+            const roleB = b.role || 'STUDENT';
+            return rolePriority[roleA] - rolePriority[roleB];
+        });
+
         userCountEl.textContent = allUsersData.length;
         renderUsers(allUsersData);
     } catch (error) {
@@ -101,11 +112,17 @@ async function fetchAllUsers() {
 
 function renderUsers(usersArray) {
     usersListEl.innerHTML = '';
-    if (usersArray.length === 0) return;
+    if (usersArray.length === 0) {
+        usersListEl.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No matching users found.</p>';
+        return;
+    }
 
     usersArray.forEach(user => {
         const role = user.role || 'STUDENT';
-        const roleHtml = role === 'MANAGEMENT' ? `<span class="badge b-admin">Admin</span>` : '';
+        let roleHtml = '';
+        if (role === 'MANAGEMENT') roleHtml = `<span class="badge b-admin">Admin</span>`;
+        else if (role === 'MENTOR') roleHtml = `<span class="badge b-mentor">Mentor</span>`;
+        else roleHtml = `<span class="badge b-student">Student</span>`;
         
         let coursesHtml = '';
         if (user.subscriptions) {
@@ -120,51 +137,79 @@ function renderUsers(usersArray) {
             });
         }
 
+        const userName = user.fullName || "Unknown User";
+        const userEmail = user.email || "No Email";
+        const userPhone = user.phone || "No Phone";
+
         const card = document.createElement('div');
-        card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #f1f5f9;";
+        card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid #f1f5f9;";
         card.innerHTML = `
-            <div>
-                <div style="font-weight: 800; color: #1e293b; margin-bottom: 0.3rem;">${user.email || user.uid}</div>
-                <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">${roleHtml} ${coursesHtml}</div>
+            <div style="flex-grow: 1;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.4rem;">
+                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${userName}</div>
+                    <div style="font-size: 0.8rem; color: #64748b;">✉️ ${userEmail} &nbsp;|&nbsp; 📞 ${userPhone}</div>
+                </div>
+                <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">${roleHtml} ${coursesHtml}</div>
             </div>
-            <button class="btn-solid" style="width: 40px; height: 40px; padding: 0; background: #3b82f6;"><i class="fas fa-cog"></i></button>
+            <button class="btn-solid" style="width: 40px; height: 40px; padding: 0; background: #3b82f6; flex-shrink: 0; margin-left: 1rem;"><i class="fas fa-cog"></i></button>
         `;
         card.querySelector('button').onclick = () => openEditModal(user);
         usersListEl.appendChild(card);
     });
 }
 
-// Search Logic
+// ==========================================
+// 4. ADVANCED SEARCH
+// ==========================================
 function executeSearch() {
     const query = searchInput.value.toLowerCase().trim();
     if (!query) { renderUsers(allUsersData); return; }
-    const filtered = allUsersData.filter(u => (u.email || "").toLowerCase().includes(query) || u.uid.toLowerCase().includes(query));
+    
+    // Search across Name, Email, AND Phone
+    const filtered = allUsersData.filter(u => {
+        const nameMatch = (u.fullName || "").toLowerCase().includes(query);
+        const emailMatch = (u.email || "").toLowerCase().includes(query);
+        const phoneMatch = (u.phone || "").toLowerCase().includes(query);
+        const uidMatch = u.uid.toLowerCase().includes(query);
+        
+        return nameMatch || emailMatch || phoneMatch || uidMatch;
+    });
     renderUsers(filtered);
 }
+
 searchBtn.addEventListener('click', executeSearch);
 searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
 
 // ==========================================
-// 4. EDIT USER MODAL
+// 5. EDIT USER MODAL & ROLES
 // ==========================================
 function openEditModal(user) {
     editingUser = user;
-    editEmailEl.textContent = user.email || "No Email";
+    editNameEl.textContent = user.fullName || "Unknown User";
+    editEmailEl.textContent = user.email || "No Email Provided";
+    editPhoneEl.textContent = user.phone || "No Phone Provided";
     editUidEl.textContent = `ID: ${user.uid}`;
     
-    // Toggle Admin Button Logic
-    if (user.role === 'MANAGEMENT') {
-        btnToggleAdmin.textContent = "⬇ Remove Admin Access";
-        btnToggleAdmin.onclick = () => changeUserRole('STUDENT');
-    } else {
-        btnToggleAdmin.textContent = "⬆ Grant Admin Access";
-        btnToggleAdmin.onclick = () => changeUserRole('MANAGEMENT');
-    }
-
     renderSubscriptions();
     editModal.style.display = 'flex';
 }
 
+btnMakeStudent.onclick = () => changeUserRole('STUDENT');
+btnMakeMentor.onclick = () => changeUserRole('MENTOR');
+btnMakeAdmin.onclick = () => changeUserRole('MANAGEMENT');
+
+async function changeUserRole(newRole) {
+    if(confirm(`Change this user's role to ${newRole}?`)) {
+        await updateDoc(doc(db, "users", editingUser.uid), { role: newRole });
+        editingUser.role = newRole;
+        alert(`Role successfully updated to ${newRole}.`);
+        fetchAllUsers();
+    }
+}
+
+// ==========================================
+// 6. SUBSCRIPTIONS LOGIC
+// ==========================================
 function renderSubscriptions() {
     subsListEl.innerHTML = '';
     if (!editingUser.subscriptions || Object.keys(editingUser.subscriptions).length === 0) {
@@ -202,7 +247,6 @@ function renderSubscriptions() {
             </div>
         `;
         
-        // Remove Sub Logic
         box.querySelector('button').onclick = async () => {
             if(confirm(`Remove access to ${courseKey}?`)) {
                 let newSubs = { ...editingUser.subscriptions };
@@ -225,6 +269,7 @@ window.grantAccess = async function() {
     let expiryValue = "lifetime";
     if (days !== "lifetime") {
         const date = new Date();
+        // Correct JavaScript Date addition math
         date.setDate(date.getDate() + parseInt(days));
         expiryValue = date.toISOString();
     }
@@ -234,19 +279,10 @@ window.grantAccess = async function() {
 
     await updateDoc(doc(db, "users", editingUser.uid), { 
         subscriptions: currentSubs,
-        isPremium: true // Ensure they get the badge
+        isPremium: true // Ensure they get the global premium flag
     });
     
     editingUser.subscriptions = currentSubs;
     renderSubscriptions();
     fetchAllUsers();
 };
-
-async function changeUserRole(newRole) {
-    if(confirm(`Change role to ${newRole}?`)) {
-        await updateDoc(doc(db, "users", editingUser.uid), { role: newRole });
-        editingUser.role = newRole;
-        openEditModal(editingUser); // Refresh modal
-        fetchAllUsers();
-    }
-}
