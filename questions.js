@@ -610,16 +610,47 @@ const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
         const body = document.getElementById('analytics-body');
-        let html = `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px;">Subject Stats</h4>`;
         
-        Object.keys(subjectTree).forEach(sub => {
-            const total = getQuestionCount('subject', [sub], allQuestions);
-            const solved = getSolvedCount('subject', [sub]);
-            if (total === 0) return;
+        // Dynamically get the correct tree and title based on the current View
+        let activeTree = {};
+        let statTitle = "";
+        let itemLabel = "";
+
+        if (currentView === 'subject') {
+            activeTree = subjectTree;
+            statTitle = "Subject Stats";
+            itemLabel = "subjects";
+        } else if (currentView === 'system') {
+            activeTree = systemTree;
+            statTitle = "System Stats";
+            itemLabel = "systems";
+        } else if (currentView === 'exam') {
+            activeTree = examTree;
+            statTitle = "Past Paper Stats";
+            itemLabel = "past papers";
+        }
+
+        let html = `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px;">${statTitle}</h4>`;
+        
+        let itemAdded = false;
+
+        Object.keys(activeTree).forEach(key => {
+            const total = getQuestionCount(currentView, [key], allQuestions);
+            const solved = getSolvedCount(currentView, [key]);
+            
+            // Check if the user has made mistakes in this section too
+            const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+            const mistakesInSection = getQuestionCount(currentView, [key], allQuestions.filter(q => allMistakes.includes(getQID(q))));
+
+            // IF NO SOLVED QUESTIONS AND NO MISTAKES = Hide the section
+            if (solved === 0 && mistakesInSection === 0) return;
+            
+            itemAdded = true;
+            
             const pct = Math.round((solved / total) * 100);
             html += `<div style="margin: 10px 0;">
                         <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span>${sub}</span><span>${pct}% (${solved}/${total})</span>
+                            <span>${key}</span><span>${pct}% (${solved}/${total})</span>
                         </div>
                         <div style="background:#e2e8f0; height:6px; border-radius:3px; overflow:hidden; margin-top:4px;">
                             <div style="width:${pct}%; background:#10b981; height:100%;"></div>
@@ -627,13 +658,17 @@ if (btnAnalytics) {
                      </div>`;
         });
 
+        if (!itemAdded) {
+            html += `<p style="font-size:0.8rem; color:#64748b; text-align:center; padding: 1rem 0;">No ${itemLabel} attempted yet.</p>`;
+        }
+
         html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:20px;">Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
         } else {
             html += `<div style="font-size:0.8rem; max-height:200px; overflow-y:auto;">
                         <table style="width:100%; text-align:left;">
-                            <tr style="color:#64748b;"><th>Date</th><th>Subject</th><th>Score</th></tr>`;
+                            <tr style="color:#64748b;"><th>Date</th><th>Exam</th><th>Score</th></tr>`;
             userExamHistory.reverse().forEach(ex => {
                 html += `<tr style="border-top:1px solid #f1f5f9;">
                             <td style="padding:5px 0;">${new Date(ex.date).toLocaleDateString()}</td>
@@ -668,7 +703,9 @@ let pendingUpdates = {};
 let pendingResetMsg = "";
 
 if (btnReset) {
-    btnReset.onclick = () => {
+    btnReset.onclick = (e) => {
+        if (e) e.preventDefault(); 
+        toggleSidebar(false); 
         optionsContainer.style.display = 'flex';
         confirmContainer.style.display = 'none';
         resetModal.style.display = 'flex';
@@ -711,7 +748,6 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
                 break;
         }
         
-        // Switch to the confirmation view inside the modal
         optionsContainer.style.display = 'none';
         confirmContainer.style.display = 'block';
     };
@@ -743,7 +779,6 @@ if (btnConfirmReset) {
             btnCancelReset.style.display = 'none';
             btnConfirmReset.style.display = 'none';
             
-            // Reload after showing success message briefly
             setTimeout(() => {
                 location.reload(); 
             }, 1500);
