@@ -45,50 +45,62 @@
 	
     <section class="section-container" id="selection-screen">
         
-        <style>
-            /* Default: Desktop Layout */
+<style>
+            /* Default: Desktop Single Row Layout */
             .prog-dash {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 1.5rem;
+                padding: 1.2rem 1.5rem;
                 margin-bottom: 2rem;
-                gap: 2rem;
+                gap: 1.5rem;
             }
             .prog-stats {
                 display: flex;
-                gap: 2.5rem;
+                gap: 2rem;
                 align-items: center;
             }
             .prog-stat-box {
                 text-align: center;
             }
             .prog-stat-title {
-                font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem;
+                font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 0.2rem;
             }
-            /* Clean 2x2 Grid for the action buttons */
+            /* Desktop: All 4 Buttons in a Single Horizontal Line */
             .prog-actions {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
-                width: 100%;
-                max-width: 380px;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                flex-wrap: nowrap;
+            }
+            .prog-actions button {
+                white-space: nowrap;
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+                font-weight: 600;
             }
             
-            /* Mobile View Layout (< 800px width) */
-            @media (max-width: 800px) {
+            /* Mobile View Layout (< 1000px width) */
+            @media (max-width: 1000px) {
                 .prog-dash {
                     flex-direction: column;
                     gap: 1.5rem;
-                    padding: 1.2rem;
+                    padding: 1rem;
                 }
                 .prog-stats {
                     width: 100%;
                     justify-content: space-between;
                     gap: 5px;
                 }
+                /* Mobile: Snaps to a clean 2x2 grid so buttons aren't squished */
                 .prog-actions {
-                    max-width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    width: 100%;
+                    gap: 0.75rem;
+                }
+                .prog-actions button {
+                    width: 100%;
                 }
             }
         </style>
@@ -97,38 +109,30 @@
             <div class="prog-stats">
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Solved</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #059669;" id="stat-solved">0</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #059669;" id="stat-solved">0</div>
                 </div>
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Accuracy</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #334155;" id="stat-accuracy">0%</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #334155;" id="stat-accuracy">0%</div>
                 </div>
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Mistakes</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #ef4444;" id="stat-mistakes">0</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #ef4444;" id="stat-mistakes">0</div>
                 </div>
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Bookmarks</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #eab308;" id="stat-bookmarks">0</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #eab308;" id="stat-bookmarks">0</div>
                 </div>
             </div>
 
             <div class="prog-actions">
-                <button id="btn-practice-mistakes" class="btn-outline" style="border-color: #fca5a5; color: #059669; padding: 0.7rem; font-weight: 600; font-size: 0.9rem;" disabled>
-                    ⚠️ Mistakes
-                </button>
-                <button id="btn-review-bookmarks" class="btn-outline" style="border-color: #fde047; color: #059669; padding: 0.7rem; font-weight: 600; font-size: 0.9rem;" disabled>
-                    ⭐ Bookmarks
-                </button>
-                <button id="btn-view-journey" class="btn-outline" style="border-color: #fbbf24; color: #b45309; background: #fffbeb; padding: 0.7rem; font-weight: 700; font-size: 0.9rem;">
-                    🏆 Journey
-                </button>
-                <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; color: white; border: none; padding: 0.7rem; font-weight: 600; font-size: 0.9rem;">
-                    📈 Analytics
-                </button>
+                <button id="btn-practice-mistakes" class="btn-outline" style="border-color: #fca5a5; color: #059669;" disabled>⚠️ Mistakes</button>
+                <button id="btn-review-bookmarks" class="btn-outline" style="border-color: #fde047; color: #059669;" disabled>⭐ Bookmarks</button>
+                <button id="btn-view-journey" class="btn-outline" style="border-color: #fbbf24; color: #b45309; background: #fffbeb;">🏆 Journey</button>
+                <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; color: white; border: none;">📈 Performance</button>
             </div>
         </div>
-
+		
         <div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">
             <h2 style="color: #064e3b; margin-bottom: 1rem;">Select Study Mode</h2>
             <div class="mode-toggle">
