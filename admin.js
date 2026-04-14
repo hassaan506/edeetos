@@ -364,9 +364,18 @@ async function fetchKeys() {
 }
 
 // ==========================================
-// 7. PAYMENT REQUEST LOGIC
+// 7. PAYMENT REQUEST LOGIC & RECEIPT MODAL
 // ==========================================
 let unsubscribePayments = null;
+
+// Modal Close Logic
+const receiptModal = document.getElementById('receipt-modal');
+const btnCloseReceipt = document.getElementById('btn-close-receipt');
+if (btnCloseReceipt && receiptModal) {
+    btnCloseReceipt.addEventListener('click', () => {
+        receiptModal.style.display = 'none';
+    });
+}
 
 function fetchPayments() {
     const list = document.getElementById('payments-list');
@@ -379,89 +388,101 @@ function fetchPayments() {
         let hasPending = false;
         
         qSnap.forEach(d => {
-        const data = d.data();
-        if(data.status !== 'pending') return;
-        hasPending = true;
+            const data = d.data();
+            if(data.status !== 'pending') return;
+            hasPending = true;
 
-        const card = document.createElement('div');
-        card.style = "background: white; border: 2px solid #3b82f6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative;";
-        card.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
-                <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    ${data.courses.map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
-                    <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
+            const card = document.createElement('div');
+            card.style = "background: white; border: 2px solid #3b82f6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative;";
+            card.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
+                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        ${data.courses.map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
+                        <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
+                    </div>
                 </div>
-            </div>
-            ${data.receiptUrl ? `
-            <div style="text-align: center; margin: 1.5rem 0;">
-                <img src="${data.receiptUrl}" style="width: 120px; height: 160px; object-fit: cover; border-radius: 12px; border: 2px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Payment Receipt" />
-                <div style="margin-top: 0.8rem;">
-                    <a href="${data.receiptUrl}" target="_blank" style="color: #10b981; font-weight: 800; text-decoration: none; font-size: 1rem; font-family: inherit;">
-                        <span style="font-size: 1.1rem; margin-right: 5px;">🔍</span> View Receipt
-                    </a>
+                ${data.receiptUrl ? `
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <img src="${data.receiptUrl}" style="width: 120px; height: 160px; object-fit: cover; border-radius: 12px; border: 2px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Payment Receipt" />
+                    <div style="margin-top: 0.8rem;">
+                        <span class="view-receipt-trigger" style="color: #10b981; font-weight: 800; cursor: pointer; font-size: 1rem; font-family: inherit;">
+                            <span style="font-size: 1.1rem; margin-right: 5px;">🔍</span> View Receipt
+                        </span>
+                    </div>
+                </div>` : `<div style="margin-bottom: 1rem; font-size: 0.8rem; color: #ef4444; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> No Receipt Attached</div>`}
+                <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Approve Duration:</label>
+                        <select class="approve-duration" style="width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-weight: bold; color: #1e293b; outline: none;">
+                            <option value="${data.durationDays}">${data.planName} (Requested)</option>
+                            <option value="1">1 Day</option>
+                            <option value="7">1 Week</option>
+                            <option value="15">15 Days</option>
+                            <option value="30">1 Month</option>
+                            <option value="90">3 Months</option>
+                            <option value="180">6 Months</option>
+                            <option value="365">1 Year</option>
+                            <option value="lifetime">Lifetime</option>
+                        </select>
+                    </div>
+                    <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Approve</button>
+                    <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Reject</button>
                 </div>
-            </div>` : `<div style="margin-bottom: 1rem; font-size: 0.8rem; color: #ef4444; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> No Receipt Attached</div>`}
-            <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0;">
-                <div style="flex: 1;">
-                    <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Approve Duration:</label>
-                    <select class="approve-duration" style="width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-weight: bold; color: #1e293b; outline: none;">
-                        <option value="${data.durationDays}">${data.planName} (Requested)</option>
-                        <option value="1">1 Day</option>
-                        <option value="7">1 Week</option>
-                        <option value="15">15 Days</option>
-                        <option value="30">1 Month</option>
-                        <option value="90">3 Months</option>
-                        <option value="180">6 Months</option>
-                        <option value="365">1 Year</option>
-                        <option value="lifetime">Lifetime</option>
-                    </select>
-                </div>
-                <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Approve</button>
-                <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Reject</button>
-            </div>
-        `;
+            `;
 
-        card.querySelector('.btn-approve').addEventListener('click', async () => {
-            const btn = card.querySelector('.btn-approve');
-            btn.textContent = "Saving...";
-            try {
-                const durationDays = card.querySelector('.approve-duration').value;
-                const uRef = doc(db, "users", data.userId);
-                const uSnap = await getDoc(uRef);
-                
-                if(!uSnap.exists()) return alert("User not found in database.");
+            // Open Receipt Modal Logic
+            const viewTrigger = card.querySelector('.view-receipt-trigger');
+            if (viewTrigger) {
+                viewTrigger.addEventListener('click', () => {
+                    const modalImg = document.getElementById('receipt-modal-img');
+                    if (receiptModal && modalImg) {
+                        modalImg.src = data.receiptUrl; // Pass the image data to the modal
+                        receiptModal.style.display = 'flex'; // Show the modal
+                    }
+                });
+            }
 
-                let expiryValue = "lifetime";
-                if(durationDays !== "lifetime") {
-                    const date = new Date();
-                    date.setDate(date.getDate() + parseInt(durationDays));
-                    expiryValue = date.toISOString();
+            card.querySelector('.btn-approve').addEventListener('click', async () => {
+                const btn = card.querySelector('.btn-approve');
+                btn.textContent = "Saving...";
+                try {
+                    const durationDays = card.querySelector('.approve-duration').value;
+                    const uRef = doc(db, "users", data.userId);
+                    const uSnap = await getDoc(uRef);
+                    
+                    if(!uSnap.exists()) return alert("User not found in database.");
+
+                    let expiryValue = "lifetime";
+                    if(durationDays !== "lifetime") {
+                        const date = new Date();
+                        date.setDate(date.getDate() + parseInt(durationDays));
+                        expiryValue = date.toISOString();
+                    }
+
+                    let currentSubs = uSnap.data().subscriptions || {};
+                    data.courses.forEach(c => currentSubs[c] = expiryValue);
+
+                    await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
+                    await updateDoc(doc(db, "payment_requests", d.id), { status: 'approved' });
+
+                    alert("Payment approved and access granted!");
+                } catch (e) {
+                    console.error(e);
+                    alert("Error approving payment");
+                    btn.textContent = "Approve";
                 }
+            });
 
-                let currentSubs = uSnap.data().subscriptions || {};
-                data.courses.forEach(c => currentSubs[c] = expiryValue);
+            card.querySelector('.btn-reject').addEventListener('click', async () => {
+                if(confirm("Reject this payment?")) {
+                    await updateDoc(doc(db, "payment_requests", d.id), { status: 'rejected' });
+                }
+            });
 
-                await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
-                await updateDoc(doc(db, "payment_requests", d.id), { status: 'approved' });
-
-                alert("Payment approved and access granted!");
-            } catch (e) {
-                console.error(e);
-                alert("Error approving payment");
-                btn.textContent = "Approve";
-            }
+            list.appendChild(card);
         });
 
-        card.querySelector('.btn-reject').addEventListener('click', async () => {
-            if(confirm("Reject this payment?")) {
-                await updateDoc(doc(db, "payment_requests", d.id), { status: 'rejected' });
-            }
-        });
-
-        list.appendChild(card);
-    });
-
-    if(!hasPending) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending payment requests.</p>';
+        if(!hasPending) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending payment requests.</p>';
     });
 }

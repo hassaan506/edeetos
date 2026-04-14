@@ -186,6 +186,18 @@
         </div>
     </div>
 
+<div id="receipt-modal" class="popup-overlay" style="display: none; z-index: 2000;">
+        <div class="popup-content" style="max-width: 600px; width: 95%; padding: 1.5rem; text-align: center; position: relative;">
+            <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem;">Payment Receipt</h3>
+            <div style="max-height: 70vh; overflow-y: auto; margin-bottom: 1rem; background: #f8fafc; border-radius: 8px; padding: 0.5rem; border: 1px solid #e2e8f0;">
+                <img id="receipt-modal-img" src="" alt="Full Receipt" style="max-width: 100%; height: auto; border-radius: 4px;">
+            </div>
+            <button id="btn-close-receipt" class="btn-solid" style="width: 100%; background: #64748b; border: none; padding: 0.8rem; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">
+                Close Receipt
+            </button>
+        </div>
+    </div>
+	
     <script type="module" src="admin.js?v=2"></script>
 </body>
 </html>
