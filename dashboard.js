@@ -159,6 +159,30 @@ document.querySelectorAll('.plan-card').forEach(card => {
 // ==========================================
 // 4. SUBMIT PAYMENT REQUEST
 // ==========================================
+function compressImage(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = event => {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 800;
+                let scaleSize = 1;
+                if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
+                canvas.width = img.width * scaleSize;
+                canvas.height = img.height * scaleSize;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                resolve(canvas.toDataURL('image/jpeg', 0.6));
+            }
+            img.onerror = error => reject(error);
+        };
+        reader.onerror = error => reject(error);
+    });
+}
+
 const btnSubmitPayment = document.getElementById('btn-submit-payment');
 if (btnSubmitPayment) {
     btnSubmitPayment.addEventListener('click', async () => {
@@ -184,9 +208,15 @@ if (btnSubmitPayment) {
         }
 
         try {
-            const storageRef = ref(storage, `receipts/${currentUserId}_${Date.now()}_${file.name}`);
-            await uploadBytes(storageRef, file);
-            const receiptUrl = await getDownloadURL(storageRef);
+            let receiptUrl = "";
+            try {
+                const storageRef = ref(storage, `receipts/${currentUserId}_${Date.now()}_${file.name}`);
+                await uploadBytes(storageRef, file);
+                receiptUrl = await getDownloadURL(storageRef);
+            } catch(uploadErr) {
+                console.warn("Storage upload failed, falling back to base64 compression. Error: ", uploadErr);
+                receiptUrl = await compressImage(file);
+            }
 
             await addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId,
