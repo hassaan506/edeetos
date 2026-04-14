@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edeetos Preparation - Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Admin Theme matching the Screenshot */
+        body {
+            margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #10b981 0%, #10b981 320px, #f0fdf4 320px, #f0fdf4 100%);
+            min-height: 100vh; color: #1e293b;
+        }
+
+        .admin-container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        /* Floating Dark Top Bar */
+        .top-bar {
+            background: #1e293b; color: white; border-radius: 20px; padding: 1.2rem 2rem;
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .top-bar-left { display: flex; align-items: center; gap: 1rem; font-weight: bold; font-size: 1.2rem; }
+        .q-count-badge { background: #334155; font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: normal; }
+        .exit-btn {
+            background: #334155; color: white; border: none; padding: 0.6rem 1.5rem;
+            border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.2s;
+        }
+        .exit-btn:hover { background: #475569; }
+
+        /* Tabs Container */
+        .tabs-container { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+        .admin-tab {
+            background: white; border: none; padding: 0.8rem 2rem; border-radius: 12px; font-weight: bold;
+            color: #475569; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); transition: all 0.2s;
+        }
+        .admin-tab.active { background: #10b981; color: white; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); }
+
+        /* Main Content Box */
+        .admin-content { margin-top: 1rem; }
+        .page-title { color: #064e3b; font-size: 1.5rem; margin-bottom: 1rem; }
+        
+        /* Search Bar */
+        .search-wrapper { display: flex; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
+        .search-input { flex-grow: 1; border: none; padding: 1rem 1.5rem; font-size: 1rem; outline: none; }
+        .search-btn { background: #10b981; color: white; border: none; padding: 0 2rem; font-weight: bold; font-size: 1rem; cursor: pointer; }
+
+        /* User List Area */
+        .user-list-container {
+            background: white; border-radius: 12px; padding: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            max-height: 500px; overflow-y: auto;
+        }
+        .list-header { font-size: 0.8rem; color: #64748b; font-weight: bold; margin-bottom: 1rem; padding-left: 0.5rem; }
+        
+        .user-card {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 0.5rem; border-bottom: 1px solid #f1f5f9;
+        }
+        .user-card:last-child { border-bottom: none; }
+        
+        .user-info { display: flex; flex-direction: column; gap: 0.4rem; }
+        .user-email { font-weight: 700; color: #1e293b; font-size: 1.05rem; }
+        
+        .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .adm-badge { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; }
+        .badge-role-admin { color: #8b5cf6; background: #f3e8ff; }
+        .badge-role-student { color: #64748b; background: #f1f5f9; }
+        .badge-tier-free { color: #94a3b8; border: 1px solid #e2e8f0; }
+        .badge-tier-pro { color: #10b981; border: 1px solid #10b981; }
+        .badge-course { background: #ecfdf5; color: #059669; border: 1px solid #6ee7b7; border-radius: 20px; padding: 0.2rem 0.8rem; }
+
+        .btn-settings {
+            background: #3b82f6; color: white; border: none; width: 40px; height: 40px; border-radius: 8px;
+            font-size: 1.1rem; cursor: pointer; transition: background 0.2s;
+        }
+        .btn-settings:hover { background: #2563eb; }
+
+        /* Generic Popup Overlay */
+        .popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
+        }
+        .popup-content { background: white; border-radius: 12px; padding: 2rem; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+        
+        .form-group { margin-bottom: 1.2rem; text-align: left; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: bold; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .form-group select, .form-group input { width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 8px; outline: none; }
+        
+        .btn-solid { background: #10b981; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 1rem;}
+        .btn-outline { background: transparent; border: 2px solid #e2e8f0; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 0.5rem; color: #64748b;}
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <i class="fas fa-shield-alt" style="color: #ef4444;"></i> Super Admin 
+                <span class="q-count-badge">Questions: 4370</span>
+            </div>
+            <button class="exit-btn" onclick="window.location.href='dashboard.html'">Exit</button>
+        </div>
+
+        <div class="tabs-container">
+            <button class="admin-tab"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
+            <button class="admin-tab"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
+            <button class="admin-tab"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
+            <button class="admin-tab active"><i class="fas fa-users"></i> Users</button>
+        </div>
+
+        <div class="admin-content">
+            <h2 class="page-title">User Manager</h2>
+            
+            <div class="search-wrapper">
+                <input type="text" id="admin-search-input" class="search-input" placeholder="User UID or Email...">
+                <button id="admin-search-btn" class="search-btn">Search</button>
+            </div>
+
+            <div class="user-list-container">
+                <div class="list-header"><span id="user-count">0</span> Users (Hidden: 0 | Ghosts: 0)</div>
+                <div id="users-list">
+                    <p style="text-align: center; color: #94a3b8; padding: 2rem;">Loading users database...</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="edit-user-modal" class="popup-overlay">
+        <div class="popup-content">
+            <h2 style="color: #1e3a8a; margin-top: 0;">Edit User</h2>
+            <p id="edit-user-email" style="font-weight: bold; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">user@example.com</p>
+            
+            <div class="form-group">
+                <label>Platform Role</label>
+                <select id="edit-role">
+                    <option value="STUDENT">Student</option>
+                    <option value="MENTOR">Mentor</option>
+                    <option value="MANAGEMENT">Management (Admin)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Subscription Tier</label>
+                <select id="edit-premium">
+                    <option value="false">Free Tier</option>
+                    <option value="true">Premium Access</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Grant Course Access (E.g. FCPS Part 1)</label>
+                <select id="edit-add-course">
+                    <option value="">-- Select a Course to Add --</option>
+                    <option value="fcps_part1">FCPS Part 1</option>
+                    <option value="mrcs_part1">MRCS Part 1</option>
+                    <option value="mbbs_year5">MBBS Final Year</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Expiry Date (For added course)</label>
+                <input type="date" id="edit-expiry-date">
+                <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 0.2rem;">Leave blank for Lifetime Access.</p>
+            </div>
+
+            <button id="btn-save-user" class="btn-solid">Save Changes</button>
+            <button onclick="document.getElementById('edit-user-modal').style.display='none'" class="btn-outline">Cancel</button>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+
+</body>
+</html>

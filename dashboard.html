@@ -8,97 +8,45 @@
 	<link rel="stylesheet" href="dashboard.css">
     <style>
         /* Custom Dropdown Styles */
-        .select-wrapper {
-            position: relative;
-            width: 100%;
-        }
+        .select-wrapper { position: relative; width: 100%; }
         .custom-select {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            font-size: 0.95rem;
-            color: #1e293b;
-            background-color: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            cursor: pointer;
-            font-weight: 600;
-            outline: none;
-            transition: all 0.2s ease;
+            width: 100%; padding: 0.8rem 1.2rem; font-size: 0.95rem; color: #1e293b;
+            background-color: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px;
+            appearance: none; cursor: pointer; font-weight: 600; outline: none; transition: all 0.2s ease;
         }
-        .custom-select:focus {
-            border-color: #10b981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
+        .custom-select:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
         .select-wrapper::after {
-            content: '▼';
-            font-size: 0.8rem;
-            color: #64748b;
-            position: absolute;
-            right: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
+            content: '▼'; font-size: 0.8rem; color: #64748b; position: absolute;
+            right: 1.2rem; top: 50%; transform: translateY(-50%); pointer-events: none;
         }
 
         /* Non-Clickable Status Badge */
         .status-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            vertical-align: middle;
-            cursor: default; /* Strictly non-clickable */
-            pointer-events: none;
+            display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+            vertical-align: middle; cursor: default; pointer-events: none;
         }
-        .badge-free {
-            background: #fffbeb;
-            color: #d97706;
-            border: 1px solid #fcd34d;
-        }
-        .badge-pro {
-            background: #ecfdf5;
-            color: #059669;
-            border: 1px solid #6ee7b7;
-        }
+        .badge-free { background: #fffbeb; color: #d97706; border: 1px solid #fcd34d; }
+        .badge-pro { background: #ecfdf5; color: #059669; border: 1px solid #6ee7b7; }
 
         /* Strict 3-Column Layout */
         .course-dash-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            align-items: stretch;
-            max-width: 1100px;
-            margin: 0 auto 3rem auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+            align-items: stretch; max-width: 1100px; margin: 0 auto 3rem auto;
         }
         @media (max-width: 950px) {
-            .course-dash-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-actions {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+            .course-dash-grid { grid-template-columns: 1fr; }
+            .nav-actions { flex-direction: column; gap: 0.5rem; }
         }
 
         /* Essential Popup Styles */
         .popup-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
         }
         .popup-content {
-            background: white;
-            border-radius: 16px;
+            background: white; border-radius: 16px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
@@ -115,48 +63,26 @@
         }
         .inactive-tab:hover { color: #1e293b; }
 
-        .premium-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
+        .premium-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
         .plan-card {
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: white;
+            border: 2px solid #e2e8f0; border-radius: 10px; padding: 1rem; text-align: center;
+            cursor: pointer; transition: all 0.2s ease; background: white;
         }
-        .plan-card:hover, .plan-card.selected {
-            border-color: #fbbf24;
-            background: #fffbeb;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+        .plan-card:hover, .plan-card.selected { border-color: #fbbf24; background: #fffbeb; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .plan-duration { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; }
         .plan-price { font-size: 1.1rem; color: #1e293b; font-weight: 800; margin-top: 0.2rem; transition: color 0.2s; }
         
         .bank-details {
-            background: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            border-radius: 10px;
-            padding: 1rem;
-            font-size: 0.85rem;
-            color: #475569;
-            text-align: left;
-            margin-bottom: 1.5rem;
+            background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px;
+            padding: 1rem; font-size: 0.85rem; color: #475569; text-align: left; margin-bottom: 1.5rem;
         }
         .bank-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #e2e8f0; padding: 0.4rem 0; }
         .bank-row:last-child { border-bottom: none; }
         .bank-val { font-weight: 700; color: #1e293b; }
 
-        /* Course Selector inside Modal */
         .course-checkbox-label {
-            display: flex; align-items: center; gap: 0.5rem;
-            background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.5rem 1rem;
-            border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; color: #334155;
+            display: flex; align-items: center; gap: 0.5rem; background: #f8fafc; border: 1px solid #e2e8f0; 
+            padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; color: #334155;
             transition: all 0.2s;
         }
         .course-checkbox-label:hover { border-color: #cbd5e1; }
@@ -171,12 +97,14 @@
             <div style="flex: 1;"></div>
 
             <div style="flex: 1; display: flex; justify-content: center;">
-                <a href="index.html">
-                    <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;">
-                </a>
+                <a href="index.html"><img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;"></a>
             </div>
 
             <div class="nav-actions" style="flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 1rem;">
+                <button id="btn-admin-panel" onclick="window.location.href='admin.html'" class="btn-solid" style="display: none; background: #8b5cf6; color: white; font-weight: 800; border: none; padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);">
+                    🛡️ Admin Panel
+                </button>
+                
                 <button onclick="document.getElementById('premium-modal').style.display='flex'" class="btn-solid" style="background: #fbbf24; color: #b45309; font-weight: 800; border: none; padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(251, 191, 36, 0.2);">
                     👑 Buy Premium
                 </button>
@@ -190,7 +118,7 @@
 
     <section class="section-container" style="padding-top: 3rem;">
         
-        <div style="text-align: center; margin-bottom: 3.5rem;">
+		<div style="text-align: center; margin-bottom: 3.5rem;">
             <h1 style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; color: #1e293b; font-size: 2rem;">
                 Welcome, <span id="user-name" style="color: #059669; margin-left: 8px; margin-right: 12px;">Doctor</span>
                 <span class="status-badge badge-free" id="subscription-status">Free Tier</span>
@@ -288,9 +216,7 @@
                 </div>
 
                 <div class="bank-details">
-                    <div style="font-weight: 800; color: #334155; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 5px;">
-                        🏦 Bank Transfer Details
-                    </div>
+                    <div style="font-weight: 800; color: #334155; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 5px;">🏦 Bank Transfer Details</div>
                     <div class="bank-row"><span>EasyPaisa/JazzCash:</span><span class="bank-val">0334 341 2168</span></div>
                     <div class="bank-row"><span>Bank:</span><span class="bank-val">Meezan Bank</span></div>
                     <div class="bank-row"><span>Account No:</span><span class="bank-val">01860104738754</span></div>
@@ -326,7 +252,6 @@
             <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; text-align: center;">Select Courses</h3>
             
             <div style="max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; padding-right: 5px;">
-                
                 <div style="font-size: 0.7rem; font-weight: 800; color: #94a3b8; margin-top: 0.5rem;">FCPS SERIES</div>
                 <label class="course-checkbox-label"><input type="checkbox" class="course-check" value="fcps_part1" checked> FCPS Part 1</label>
                 <label class="course-checkbox-label"><input type="checkbox" class="course-check" value="fcps_part2"> FCPS Part 2</label>
@@ -353,9 +278,7 @@
     <script>
         window.onload = () => {
             const savedCourse = localStorage.getItem('edeetos_active_course');
-            if (savedCourse) {
-                document.getElementById('course-dropdown').value = savedCourse;
-            }
+            if (savedCourse) { document.getElementById('course-dropdown').value = savedCourse; }
             updatePrices();
         };
 
@@ -372,39 +295,27 @@
             const viewRedeem = document.getElementById('view-redeem');
 
             if (tabName === 'buy') {
-                tabBuy.className = 'active-tab';
-                tabRedeem.className = 'inactive-tab';
-                viewBuy.style.display = 'block';
-                viewRedeem.style.display = 'none';
+                tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab';
+                viewBuy.style.display = 'block'; viewRedeem.style.display = 'none';
             } else {
-                tabRedeem.className = 'active-tab';
-                tabBuy.className = 'inactive-tab';
-                viewRedeem.style.display = 'block';
-                viewBuy.style.display = 'none';
+                tabRedeem.className = 'active-tab'; tabBuy.className = 'inactive-tab';
+                viewRedeem.style.display = 'block'; viewBuy.style.display = 'none';
             }
         }
 
         document.getElementById('btn-submit-redeem').onclick = () => {
             const code = document.getElementById('redeem-input').value.trim();
-            if (code.length < 5) {
-                alert("Please enter a valid code.");
-                return;
-            }
+            if (code.length < 5) { alert("Please enter a valid code."); return; }
             alert("Code '" + code + "' submitted for verification! (Database hook pending)");
         };
 
         const courseSelectorModal = document.getElementById('course-selector-modal');
         
-        document.getElementById('btn-open-course-selector').onclick = () => {
-            courseSelectorModal.style.display = 'flex';
-        };
+        document.getElementById('btn-open-course-selector').onclick = () => { courseSelectorModal.style.display = 'flex'; };
 
         document.getElementById('btn-confirm-courses').onclick = () => {
             const checkedCount = document.querySelectorAll('.course-check:checked').length;
-            if (checkedCount === 0) {
-                alert("You must select at least one course.");
-                return;
-            }
+            if (checkedCount === 0) { alert("You must select at least one course."); return; }
             document.getElementById('selected-courses-text').textContent = `${checkedCount} Course${checkedCount > 1 ? 's' : ''} Selected`;
             courseSelectorModal.style.display = 'none';
             updatePrices();
@@ -419,9 +330,7 @@
 
             for(let i = 0; i < 8; i++) {
                 let calculatedPrice = Math.round(basePrices[i] * multiplier);
-                if (calculatedPrice > maxPrices[i]) {
-                    calculatedPrice = maxPrices[i];
-                }
+                if (calculatedPrice > maxPrices[i]) calculatedPrice = maxPrices[i];
                 document.getElementById('price-' + i).textContent = 'Rs. ' + calculatedPrice.toLocaleString();
             }
         }
@@ -432,9 +341,7 @@
                     c.classList.remove('selected');
                     if (c.querySelector('#price-7')) c.querySelector('#price-7').style.color = '#1e293b'; 
                 });
-                
                 this.classList.add('selected');
-                
                 const lifePrice = this.querySelector('#price-7');
                 if (lifePrice) lifePrice.style.color = '#d97706';
             });
@@ -443,5 +350,21 @@
     
     <script type="module" src="dashboard.js"></script>
 
+    <script type="module">
+        import { auth, db } from './firebase-config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const userRef = doc(db, "users", user.uid);
+                const docSnap = await getDoc(userRef);
+                if (docSnap.exists() && docSnap.data().role === 'MANAGEMENT') {
+                    // Show the hidden Admin Panel button!
+                    document.getElementById('btn-admin-panel').style.display = 'flex';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
