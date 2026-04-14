@@ -611,7 +611,6 @@ if (btnAnalytics) {
     btnAnalytics.onclick = () => {
         const body = document.getElementById('analytics-body');
         
-        // Dynamically get the correct tree and title based on the current View
         let activeTree = {};
         let statTitle = "";
         let itemLabel = "";
@@ -638,11 +637,9 @@ if (btnAnalytics) {
             const total = getQuestionCount(currentView, [key], allQuestions);
             const solved = getSolvedCount(currentView, [key]);
             
-            // Check if the user has made mistakes in this section too
             const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
             const mistakesInSection = getQuestionCount(currentView, [key], allQuestions.filter(q => allMistakes.includes(getQID(q))));
 
-            // IF NO SOLVED QUESTIONS AND NO MISTAKES = Hide the section
             if (solved === 0 && mistakesInSection === 0) return;
             
             itemAdded = true;
@@ -789,6 +786,57 @@ if (btnConfirmReset) {
             btnConfirmReset.textContent = "Try Again";
             btnConfirmReset.disabled = false;
         }
+    };
+}
+
+// ==========================================
+// 8. TROPHY / JOURNEY SYSTEM
+// ==========================================
+const btnJourney = document.getElementById('btn-view-journey');
+const journeyModal = document.getElementById('journey-modal');
+const closeJourneyBtn = document.getElementById('close-journey-btn');
+const trophiesGrid = document.getElementById('trophies-grid');
+
+const trophies = [
+    { title: "Novice", req: 10, icon: "👶" },
+    { title: "Bronze", req: 100, icon: "🥉" },
+    { title: "Silver", req: 500, icon: "🥈" },
+    { title: "Gold", req: 1000, icon: "🥇" },
+    { title: "Diamond", req: 2000, icon: "💎" },
+    { title: "Master", req: 5000, icon: "👑" }
+];
+
+if (btnJourney) {
+    btnJourney.onclick = () => {
+        const solvedCount = attemptedQuestions.length;
+        
+        trophiesGrid.innerHTML = trophies.map(t => {
+            const isUnlocked = solvedCount >= t.req;
+            return `
+                <div style="display: flex; align-items: center; padding: 1rem; border-radius: 12px; background: ${isUnlocked ? '#ffffff' : '#f8fafc'}; border: 2px solid ${isUnlocked ? '#fbbf24' : '#e2e8f0'}; box-shadow: ${isUnlocked ? '0 4px 6px rgba(0,0,0,0.05)' : 'none'}; transition: transform 0.2s;">
+                    <div style="font-size: 2.5rem; margin-right: 1rem; filter: ${isUnlocked ? 'none' : 'grayscale(100%) opacity(0.4)'};">${t.icon}</div>
+                    <div style="flex-grow: 1;">
+                        <div style="font-weight: 800; color: ${isUnlocked ? '#1e293b' : '#94a3b8'}; font-size: 1.1rem;">${t.title}</div>
+                        <div style="font-size: 0.75rem; color: #64748b;">Solve ${t.req} Questions</div>
+                    </div>
+                    <div style="font-size: 1.5rem; color: ${isUnlocked ? '#10b981' : '#cbd5e1'};">
+                        <i class="fas ${isUnlocked ? 'fa-check-circle' : 'fa-lock'}"></i>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        journeyModal.style.display = 'flex';
+    };
+}
+
+if (closeJourneyBtn) {
+    closeJourneyBtn.onclick = () => journeyModal.style.display = 'none';
+}
+
+if (journeyModal) {
+    journeyModal.onclick = (e) => {
+        if(e.target === journeyModal) journeyModal.style.display = 'none';
     };
 }
 

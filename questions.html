@@ -68,18 +68,18 @@
             }
             .prog-actions {
                 display: flex;
-                gap: 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
                 align-items: center;
             }
             .prog-actions-row {
                 display: flex;
-                gap: 0.75rem;
-            }
-            .reset-btn-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 gap: 0.5rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .prog-actions-row button {
+                flex: 1;
             }
             
             /* Mobile View Layout (< 800px width) */
@@ -96,22 +96,6 @@
                 }
                 .prog-actions {
                     width: 100%;
-                    flex-direction: column;
-                }
-                .prog-actions-row {
-                    width: 100%;
-                    justify-content: center;
-                }
-                .prog-actions-row button {
-                    flex: 1;
-                    max-width: 160px;
-                }
-                .reset-btn-wrapper {
-                    width: 100%;
-                }
-                #btn-view-analytics {
-                    width: 100%;
-                    max-width: 325px;
                 }
             }
         </style>
@@ -138,16 +122,19 @@
 
             <div class="prog-actions">
                 <div class="prog-actions-row">
-                    <button id="btn-practice-mistakes" class="btn-outline" style="border-color: #fca5a5; color: #059669; padding: 0.6rem 1.2rem; font-weight: 600; font-size: 0.9rem;" disabled>
+                    <button id="btn-practice-mistakes" class="btn-outline" style="border-color: #fca5a5; color: #059669; padding: 0.6rem; font-weight: 600; font-size: 0.85rem;" disabled>
                         ⚠️ Mistakes
                     </button>
-                    <button id="btn-review-bookmarks" class="btn-outline" style="border-color: #fde047; color: #059669; padding: 0.6rem 1.2rem; font-weight: 600; font-size: 0.9rem;" disabled>
+                    <button id="btn-review-bookmarks" class="btn-outline" style="border-color: #fde047; color: #059669; padding: 0.6rem; font-weight: 600; font-size: 0.85rem;" disabled>
                         ⭐ Bookmarks
                     </button>
                 </div>
-                <div class="reset-btn-wrapper">
-                    <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; padding: 0.7rem 1.5rem; font-weight: 600; border-radius: 8px; white-space: nowrap; color: white;">
-                        📈 View Detailed Analytics
+                <div class="prog-actions-row">
+                    <button id="btn-view-journey" class="btn-solid" style="background: #fffbeb; border: 1px solid #fbbf24; color: #b45309; padding: 0.6rem; font-weight: 700; border-radius: 8px; font-size: 0.9rem;">
+                        🏆 Journey
+                    </button>
+                    <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; padding: 0.6rem; font-weight: 600; border-radius: 8px; color: white; font-size: 0.9rem;">
+                        📈 Analytics
                     </button>
                 </div>
             </div>
@@ -216,6 +203,23 @@
             </div>
             <div class="popup-body" id="analytics-body" style="padding-top: 1rem;">
                 </div>
+        </div>
+    </div>
+
+    <div id="journey-modal" class="popup-overlay" style="display: none;">
+        <div class="glass-panel popup-content" style="max-width: 600px; width: 95%; padding: 2rem 1.5rem; background: #f8fafc; border-radius: 16px;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
+                <h2 style="color: #1e3a8a; margin: 0; font-family: 'Nunito', 'Comic Sans MS', sans-serif; font-weight: 800; font-size: 1.8rem;">Your Journey</h2>
+                <p style="color: #64748b; font-size: 0.9rem; margin-top: 0.5rem;">Track your progress and unlock mastery.</p>
+            </div>
+            
+            <div id="trophies-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                </div>
+
+            <button id="close-journey-btn" class="btn-solid" style="width: 100%; background: #10b981; border: none; padding: 1rem; font-weight: bold; border-radius: 12px; font-size: 1.1rem; color: white; cursor: pointer;">
+                Close
+            </button>
         </div>
     </div>
 
