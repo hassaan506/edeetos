@@ -19,6 +19,9 @@
                 <button id="btn-admin-panel" class="btn-solid btn-nav-admin" style="display: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; align-items: center; gap: 5px;">
                     🛡️ Admin
                 </button>
+                <button id="btn-open-profile" class="btn-solid btn-nav-profile" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; background: #3b82f6; color: white;">
+                    👤 Profile
+                </button>
                 <button id="btn-open-premium" class="btn-solid btn-nav-premium" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px;">
                     👑 Premium
                 </button>
@@ -182,6 +185,74 @@
             <button id="btn-confirm-courses" class="btn-solid" style="width: 100%; background: #0f172a; color: white; padding: 0.8rem; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;">
                 Done
             </button>
+        </div>
+    </div>
+
+    <div id="profile-modal" class="popup-overlay" style="display: none;">
+        <div class="popup-content" style="max-width: 500px; width: 95%; max-height: 95vh; overflow-y: auto; padding: 2.5rem 2rem; position: relative; text-align: left;">
+            <button class="btn-close-modal" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b;">&times;</button>
+            
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <div style="font-size: 3rem; margin-bottom: 0.5rem;">👤</div>
+                <h2 style="color: #1e293b; margin: 0; font-weight: 800; font-size: 1.8rem;">My Profile</h2>
+                <div id="prof-role-badge" class="status-badge" style="margin-top: 0.5rem;">STUDENT</div>
+            </div>
+
+            <!-- Profile Form -->
+            <form id="profile-form">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <label class="prof-label">Full Name</label>
+                        <input type="text" id="prof-name" class="prof-input" required>
+                    </div>
+                    <div>
+                        <label class="prof-label">Username</label>
+                        <input type="text" id="prof-username" class="prof-input input-disabled" disabled>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label class="prof-label">Email Address</label>
+                    <input type="email" id="prof-email" class="prof-input input-disabled" disabled>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <label class="prof-label">Phone</label>
+                        <input type="text" id="prof-phone" class="prof-input">
+                    </div>
+                    <div>
+                        <label class="prof-label">Institution</label>
+                        <input type="text" id="prof-uni" class="prof-input">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                    <div>
+                        <label class="prof-label">Year of Study</label>
+                        <input type="text" id="prof-year" class="prof-input">
+                    </div>
+                    <div>
+                        <label class="prof-label">Location</label>
+                        <input type="text" id="prof-location" class="prof-input">
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-save-profile" class="btn-solid" style="width: 100%; background: #10b981; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; cursor: pointer;">
+                    Save Profile Changes
+                </button>
+            </form>
+
+            <hr style="border: none; border-top: 1px dashed #cbd5e1; margin: 2rem 0;">
+
+            <!-- Subscriptions Section -->
+            <div id="prof-subscriptions">
+                <h3 style="color: #334155; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800;">Active Subscriptions</h3>
+                <div id="prof-subs-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <!-- JS injects here -->
+                </div>
+            </div>
+            
         </div>
     </div>
 

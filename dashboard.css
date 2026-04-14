@@ -198,3 +198,67 @@
         margin: 0.3rem auto 0 auto;
     }
 }
+
+/* ========================================== */
+/* 6. PROFILE MODAL STYLES                    */
+/* ========================================== */
+.prof-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.prof-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.prof-input:focus {
+    border-color: #3b82f6;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input-disabled {
+    background-color: #e2e8f0 !important;
+    color: #64748b;
+    cursor: not-allowed;
+    border-color: #cbd5e1;
+}
+
+.sub-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+.sub-name {
+    font-weight: 800;
+    color: #334155;
+    font-size: 0.95rem;
+}
+.sub-tag {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.sub-lifetime { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
+.sub-active { background: #dcfce3; color: #16a34a; border: 1px solid #86efac; }
+.sub-expired { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }

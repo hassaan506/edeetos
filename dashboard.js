@@ -338,3 +338,98 @@ if (btnRedeem) {
         }
     });
 }
+
+// ==========================================
+// 6. PROFILE MODAL LOGIC 
+// ==========================================
+const btnOpenProfile = document.getElementById('btn-open-profile');
+if (btnOpenProfile) {
+    btnOpenProfile.addEventListener('click', () => {
+        if (!currentUserData) return alert("User data loading, please wait...");
+        document.getElementById('profile-modal').style.display = 'flex';
+        
+        // Populate form
+        document.getElementById('prof-role-badge').textContent = (currentUserData.role || 'STUDENT').toUpperCase();
+        document.getElementById('prof-name').value = currentUserData.fullName || '';
+        document.getElementById('prof-username').value = currentUserData.username || '';
+        document.getElementById('prof-email').value = currentUserData.email || '';
+        document.getElementById('prof-phone').value = currentUserData.phone || '';
+        document.getElementById('prof-uni').value = currentUserData.institution || '';
+        document.getElementById('prof-year').value = currentUserData.yearOfStudy || '';
+        document.getElementById('prof-location').value = currentUserData.location || '';
+        
+        // Subscriptions
+        const subsList = document.getElementById('prof-subs-list');
+        subsList.innerHTML = '';
+        
+        const subs = currentUserData.subscriptions || {};
+        const courseNames = {
+            'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
+            'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
+            'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5'
+        };
+        
+        let hasSubs = false;
+        for (const [key, expiry] of Object.entries(subs)) {
+            hasSubs = true;
+            const name = courseNames[key] || key;
+            const item = document.createElement('div');
+            item.className = 'sub-item';
+            
+            let badgeHtml = '';
+            if (expiry === 'lifetime') {
+                badgeHtml = '<span class="sub-tag sub-lifetime">Lifetime</span>';
+            } else {
+                const expDate = new Date(expiry);
+                if (expDate < new Date()) {
+                    badgeHtml = '<span class="sub-tag sub-expired">Expired</span>';
+                } else {
+                    badgeHtml = `<span class="sub-tag sub-active">Active till ${expDate.toLocaleDateString()}</span>`;
+                }
+            }
+            item.innerHTML = `<span class="sub-name">${name}</span>${badgeHtml}`;
+            subsList.appendChild(item);
+        }
+        
+        if (!hasSubs) {
+            subsList.innerHTML = '<div style="color: #64748b; font-size: 0.9rem; text-align: center; padding: 1rem;">No active subscriptions found.</div>';
+        }
+    });
+}
+
+const profileForm = document.getElementById('profile-form');
+if (profileForm) {
+    profileForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btnSave = document.getElementById('btn-save-profile');
+        btnSave.textContent = "Saving...";
+        btnSave.disabled = true;
+        
+        try {
+            await updateDoc(doc(db, "users", currentUserId), {
+                fullName: document.getElementById('prof-name').value,
+                phone: document.getElementById('prof-phone').value,
+                institution: document.getElementById('prof-uni').value,
+                yearOfStudy: document.getElementById('prof-year').value,
+                location: document.getElementById('prof-location').value
+            });
+            
+            currentUserData.fullName = document.getElementById('prof-name').value;
+            currentUserData.phone = document.getElementById('prof-phone').value;
+            currentUserData.institution = document.getElementById('prof-uni').value;
+            currentUserData.yearOfStudy = document.getElementById('prof-year').value;
+            currentUserData.location = document.getElementById('prof-location').value;
+            
+            document.getElementById('user-name').textContent = currentUserData.fullName;
+            
+            alert("Profile updated successfully!");
+            document.getElementById('profile-modal').style.display = 'none';
+        } catch (error) {
+            console.error("Error updating profile: ", error);
+            alert("Failed to update profile.");
+        } finally {
+            btnSave.textContent = "Save Profile Changes";
+            btnSave.disabled = false;
+        }
+    });
+}
