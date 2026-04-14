@@ -41,16 +41,16 @@
 	</nav>
 	
     <section class="section-container" id="selection-screen">
-	<section class="section-container" id="selection-screen">
         
         <style>
-            /* Default: Desktop Single Row Layout (Matches Screenshot) */
+            /* Default: Desktop Single Row Layout */
             .prog-dash {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 padding: 1.2rem 1.5rem;
                 margin-bottom: 2rem;
+                gap: 2rem;
             }
             .prog-stats {
                 display: flex;
@@ -71,6 +71,12 @@
             .prog-actions-row {
                 display: flex;
                 gap: 0.75rem;
+            }
+            .reset-btn-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
             }
             
             /* Mobile View Layout (< 800px width) */
@@ -96,6 +102,9 @@
                 .prog-actions-row button {
                     flex: 1;
                     max-width: 160px;
+                }
+                .reset-btn-wrapper {
+                    width: 100%;
                 }
                 #btn-view-analytics {
                     width: 100%;
@@ -133,12 +142,17 @@
                         ⭐ Bookmarks
                     </button>
                 </div>
-                <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; padding: 0.7rem 1.5rem; font-weight: 600; border-radius: 8px; white-space: nowrap; color: white;">
-                    📈 View Detailed Analytics
-                </button>
+                <div class="reset-btn-wrapper">
+                    <button id="btn-view-analytics" class="btn-solid" style="background: #0f172a; padding: 0.7rem 1.5rem; font-weight: 600; border-radius: 8px; white-space: nowrap; color: white;">
+                        📈 View Detailed Analytics
+                    </button>
+                    <button id="btn-reset-progress" style="background: transparent; border: none; color: #ef4444; font-size: 0.75rem; font-weight: 700; cursor: pointer; text-decoration: underline; text-transform: uppercase;">
+                        🗑️ Reset Progress
+                    </button>
+                </div>
             </div>
         </div>
-	
+
         <div class="glass-panel" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem;">
             <h2 style="color: #064e3b; margin-bottom: 1rem;">Select Study Mode</h2>
             <div class="mode-toggle">
@@ -149,13 +163,13 @@
                 Practice Mode: Instant feedback, detailed explanations, pause & resume anytime.
             </p>
         </div>
-		<div class="glass-panel search-filter-bar">
+		
+        <div class="glass-panel search-filter-bar">
            <div class="search-wrapper">
 			<i class="fas fa-search"></i>
 			<input type="text" id="global-search" placeholder="Search subject, topic, or question text...">
 			<div id="search-dropdown" class="search-dropdown" style="display: none;"></div>
-		</div>
-
+		   </div>
             <label class="filter-wrapper">
                 <input type="checkbox" id="unattempted-filter">
                 <span>Unattempted Only</span>
@@ -194,7 +208,7 @@
         </div>
     </div>
 
-<div id="analytics-modal" class="popup-overlay" style="display: none;">
+    <div id="analytics-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content" style="max-width: 600px; width: 95%; max-height: 90vh; overflow-y: auto;">
             <div class="popup-header">
                 <h3 style="color: #064e3b;"><i class="fas fa-chart-line"></i> Performance Report</h3>
@@ -204,8 +218,8 @@
                 </div>
         </div>
     </div>
-	
-	<div id="reset-modal" class="popup-overlay" style="display: none;">
+
+    <div id="reset-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content" style="max-width: 450px; width: 90%;">
             <div class="popup-header">
                 <h3 style="color: #ef4444;"><i class="fas fa-trash-alt"></i> Reset Progress</h3>
