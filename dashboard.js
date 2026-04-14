@@ -1,7 +1,7 @@
-import { auth, db } from './firebase-config.js';
+import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 let currentUserData = null;
 let currentUserId = null;
 
@@ -174,13 +174,27 @@ if (btnSubmitPayment) {
         const planName = selectedPlan.getAttribute('data-name');
         const fallbackEmail = auth.currentUser ? auth.currentUser.email : "Unknown Email";
 
+        const fileInput = document.getElementById('payment-proof');
+        const file = fileInput.files[0];
+        if (!file) {
+            alert("Please upload your payment proof.");
+            btnSubmitPayment.textContent = "Confirm & Submit Request";
+            btnSubmitPayment.disabled = false;
+            return;
+        }
+
         try {
+            const storageRef = ref(storage, `receipts/${currentUserId}_${Date.now()}_${file.name}`);
+            await uploadBytes(storageRef, file);
+            const receiptUrl = await getDownloadURL(storageRef);
+
             await addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId,
                 userEmail: currentUserData.email || fallbackEmail,
                 courses: courses,
                 durationDays: durationDays,
                 planName: planName,
+                receiptUrl: receiptUrl,
                 status: 'pending',
                 timestamp: serverTimestamp()
             });

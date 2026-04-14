@@ -389,6 +389,7 @@ async function fetchPayments() {
                     <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
                 </div>
             </div>
+            ${data.receiptUrl ? `<div style="margin-bottom: 1rem;"><a href="${data.receiptUrl}" target="_blank" style="color: #3b82f6; font-weight: bold; text-decoration: underline;"><i class="fas fa-external-link-alt"></i> View Payment Receipt</a></div>` : `<div style="margin-bottom: 1rem; font-size: 0.8rem; color: #ef4444; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> No Receipt Attached</div>`}
             <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0;">
                 <div style="flex: 1;">
                     <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Approve Duration:</label>
