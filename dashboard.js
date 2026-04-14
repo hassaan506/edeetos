@@ -162,24 +162,28 @@ document.querySelectorAll('.plan-card').forEach(card => {
 function compressImage(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.readAsDataURL(file);
         reader.onload = event => {
             const img = new Image();
-            img.src = event.target.result;
             img.onload = () => {
-                const canvas = document.createElement('canvas');
-                const MAX_WIDTH = 800;
-                let scaleSize = 1;
-                if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
-                canvas.width = img.width * scaleSize;
-                canvas.height = img.height * scaleSize;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                resolve(canvas.toDataURL('image/jpeg', 0.6));
+                try {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 800;
+                    let scaleSize = 1;
+                    if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
+                    canvas.width = img.width * scaleSize;
+                    canvas.height = img.height * scaleSize;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    resolve(canvas.toDataURL('image/jpeg', 0.6));
+                } catch (e) {
+                    reject(e);
+                }
             }
-            img.onerror = error => reject(error);
+            img.onerror = () => reject(new Error("Invalid image file"));
+            img.src = event.target.result;
         };
-        reader.onerror = error => reject(error);
+        reader.onerror = () => reject(new Error("File read failed"));
+        reader.readAsDataURL(file);
     });
 }
 
@@ -210,12 +214,13 @@ if (btnSubmitPayment) {
         try {
             let receiptUrl = "";
             try {
-                const storageRef = ref(storage, `receipts/${currentUserId}_${Date.now()}_${file.name}`);
-                await uploadBytes(storageRef, file);
-                receiptUrl = await getDownloadURL(storageRef);
-            } catch(uploadErr) {
-                console.warn("Storage upload failed, falling back to base64 compression. Error: ", uploadErr);
                 receiptUrl = await compressImage(file);
+            } catch(uploadErr) {
+                console.warn("Base64 compression failed. Error: ", uploadErr);
+                alert("Could not process the image. Please use a valid picture format (JPG/PNG).");
+                btnSubmitPayment.textContent = "Confirm & Submit Request";
+                btnSubmitPayment.disabled = false;
+                return;
             }
 
             await addDoc(collection(db, "payment_requests"), {
