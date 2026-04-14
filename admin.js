@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // DOM Elements
 const usersListEl = document.getElementById('users-list');
@@ -33,6 +33,17 @@ onAuthStateChanged(auth, async (user) => {
             window.location.href = 'dashboard.html';
             return;
         }
+
+        // GLOBAL MENTOR PING LISTENER
+        const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
+        onSnapshot(qChats, (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "added") {
+                    const data = change.doc.data();
+                    alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Please open the Mentorship Hub to accept the chat.`);
+                }
+            });
+        });
 
         fetchAllUsers();
         calculateTotalQuestions();
@@ -86,6 +97,7 @@ window.switchView = function(viewName) {
 
     if(viewName === 'keys') fetchKeys();
     if(viewName === 'payments') fetchPayments();
+    if(viewName === 'reports') fetchReports();
 };
 
 // ==========================================
@@ -484,5 +496,89 @@ function fetchPayments() {
         });
 
         if(!hasPending) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending payment requests.</p>';
+    });
+}
+
+// ==========================================
+// 8. REPORTED QUESTIONS LOGIC
+// ==========================================
+let unsubscribeReports = null;
+
+async function fetchReports() {
+    const list = document.getElementById('reports-list');
+    if(!list) return;
+    
+    if (unsubscribeReports) return; 
+
+    const { query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+
+    unsubscribeReports = onSnapshot(collection(db, "reported_questions"), (qSnap) => {
+        list.innerHTML = '';
+        let hasReports = false;
+        
+        const reportsDocs = [];
+        qSnap.forEach(d => reportsDocs.push({ id: d.id, ...d.data() }));
+
+        reportsDocs.sort((a, b) => {
+            if (!a.timestamp || !b.timestamp) return 0;
+            return b.timestamp.toMillis() - a.timestamp.toMillis(); // Descending Order
+        });
+
+        reportsDocs.forEach(data => {
+            hasReports = true;
+
+            const card = document.createElement('div');
+            card.style = "background: white; border-left: 4px solid #ef4444; border-radius: 8px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);";
+            
+            let dateStr = "Unknown Date";
+            if (data.timestamp) dateStr = data.timestamp.toDate().toLocaleString();
+
+            card.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                    <div>
+                        <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">Question ID: <span style="color: #ef4444;">${data.questionId}</span></div>
+                        <div style="font-size: 0.8rem; color: #64748b; margin-top: 0.2rem;"><i class="fas fa-file-alt"></i> ${data.courseFile.replace('_', ' ').toUpperCase()}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge b-course" style="background: #fee2e2; color: #ef4444;"><i class="fas fa-exclamation-circle"></i> Reported</span>
+                        <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 0.3rem;">${dateStr}</div>
+                    </div>
+                </div>
+                
+                <div style="background: #f8fafc; border: 1px dashed #cbd5e1; padding: 0.8rem; border-radius: 6px; margin-bottom: 1rem;">
+                    <div style="font-size: 0.7rem; font-weight: bold; color: #94a3b8; text-transform: uppercase;">Question Snippet:</div>
+                    <div style="color: #475569; font-size: 0.9rem; font-style: italic;">"${data.questionText}"</div>
+                </div>
+
+                <div>
+                    <div style="font-size: 0.75rem; font-weight: bold; color: #0f172a; text-transform: uppercase;">Reporter's Reason:</div>
+                    <p style="color: #1e293b; font-size: 0.95rem; margin-top: 0.3rem; margin-bottom: 1rem;">${data.reason}</p>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 0.8rem;">
+                    <div style="font-size: 0.8rem; color: #64748b;">
+                        <strong>Reported by:</strong> ${data.userEmail}
+                    </div>
+                    <button class="btn-outline btn-resolve-report" style="border-color: #10b981; color: #10b981; padding: 0.4rem 1rem; font-size: 0.8rem;">Mark Resolved</button>
+                </div>
+            `;
+
+            card.querySelector('.btn-resolve-report').addEventListener('click', async () => {
+                if(confirm("Are you sure you want to resolve and delete this report?")) {
+                    try {
+                        const { deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+                        await deleteDoc(doc(db, "reported_questions", data.id));
+                        alert("Report resolved and removed!");
+                    } catch (e) {
+                        console.error("Error resolving report: ", e);
+                        alert("Failed to resolve report.");
+                    }
+                }
+            });
+
+            list.appendChild(card);
+        });
+
+        if(!hasReports) list.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No reported questions at the moment. 🎉</p>';
     });
 }

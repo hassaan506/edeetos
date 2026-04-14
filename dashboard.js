@@ -1,6 +1,6 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 let currentUserData = null;
 let currentUserId = null;
@@ -48,6 +48,20 @@ onAuthStateChanged(auth, async (user) => {
                     subStatus.className = "status-badge badge-free";
                     if (freeWarning) freeWarning.style.display = 'inline';
                 }
+
+                // GLOBAL MENTOR PING LISTENER
+                if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
+                    const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
+                    onSnapshot(qChats, (snapshot) => {
+                        snapshot.docChanges().forEach((change) => {
+                            if (change.type === "added") {
+                                const data = change.doc.data();
+                                alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Please open the Mentorship Hub to accept the chat.`);
+                            }
+                        });
+                    });
+                }
+
             }
         } catch (error) {
             console.error("Error fetching user data:", error);

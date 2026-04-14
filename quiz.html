@@ -28,7 +28,7 @@
                     <div class="icon-group">
                         <button id="note-btn" class="icon-btn"><i class="fas fa-pen"></i></button>
                         <button id="bookmark-btn" class="icon-btn"><i class="far fa-star"></i></button>
-                        <button class="icon-btn"><i class="far fa-flag"></i></button>
+                        <button id="btn-report" class="icon-btn"><i class="far fa-flag"></i></button>
                     </div>
                 </div>
 
@@ -81,22 +81,40 @@
         </div>
     </div>
 	
-	<div id="notes-modal" class="modal-overlay">
-    <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
-        <h3 style="color: #064e3b; margin-bottom: 1rem;">
-            <i class="fas fa-pen"></i> My Notes
-        </h3>
-        
-        <textarea id="note-input" placeholder="Type your personal notes here..." 
-            style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; resize: vertical; margin-bottom: 1rem; font-family: inherit;">
-        </textarea>
-        
-        <div style="display: flex; justify-content: flex-end; gap: 10px;">
-            <button id="close-notes-btn" class="btn-outline">Cancel</button>
-            <button id="save-note-btn" class="btn-solid">Save Note</button>
+    <div id="notes-modal" class="modal-overlay">
+        <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
+            <h3 style="color: #064e3b; margin-bottom: 1rem;">
+                <i class="fas fa-pen"></i> My Notes
+            </h3>
+            
+            <textarea id="note-input" placeholder="Type your personal notes here..." 
+                style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; resize: vertical; margin-bottom: 1rem; font-family: inherit;">
+            </textarea>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="close-notes-btn" class="btn-outline">Cancel</button>
+                <button id="save-note-btn" class="btn-solid">Save Note</button>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- Report Modal -->
+    <div id="report-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
+            <h3 style="color: #991b1b; margin-bottom: 1rem;">
+                <i class="fas fa-flag"></i> Report Question
+            </h3>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Spot an error? Tell us why this question, answer, or explanation is incorrect.</p>
+            
+            <textarea id="report-reason-input" placeholder="Explain the issue here (e.g., Typo, Incorrect option marked as correct, etc.)..." 
+                style="width: 100%; height: 120px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; resize: vertical; margin-bottom: 1rem; font-family: inherit;"></textarea>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="close-report-btn" class="btn-outline" style="border-color: #94a3b8; color: #64748b;">Cancel</button>
+                <button id="submit-report-btn" class="btn-solid" style="background: #ef4444; border: none;">Submit Report</button>
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="quiz.js"></script>
 </body>

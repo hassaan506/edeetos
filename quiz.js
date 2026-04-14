@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc, getDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
@@ -284,6 +284,64 @@ function loadQuestion(index) {
             closeNotesBtn.onclick = () => notesModal.classList.remove('show');
         }
 		
+        // REPORT QUESTION
+        const btnReport = document.getElementById('btn-report');
+        const reportModal = document.getElementById('report-modal');
+        const closeReportBtn = document.getElementById('close-report-btn');
+        const submitReportBtn = document.getElementById('submit-report-btn');
+        const reportReasonInput = document.getElementById('report-reason-input');
+
+        if (btnReport) {
+            btnReport.onclick = () => {
+                reportReasonInput.value = "";
+                if (reportModal) reportModal.classList.remove('hidden');
+                if (reportModal) reportModal.classList.add('show');
+            };
+        }
+
+        if (closeReportBtn) {
+            closeReportBtn.onclick = () => {
+                if (reportModal) reportModal.classList.remove('show');
+                setTimeout(() => reportModal.classList.add('hidden'), 300);
+            };
+        }
+
+        if (submitReportBtn) {
+            submitReportBtn.onclick = async () => {
+                const reason = reportReasonInput.value.trim();
+                if (!reason) return alert("Please specify why you are reporting this question.");
+                
+                const user = auth.currentUser;
+                if (!user) return alert("Authentication error.");
+
+                submitReportBtn.textContent = "Submitting...";
+                submitReportBtn.disabled = true;
+
+                try {
+                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
+                    await addDoc(collection(db, "reported_questions"), {
+                        userId: user.uid,
+                        userEmail: user.email || "Unknown Email",
+                        questionId: currentQuestionData.originalNumber,
+                        courseFile: activeCourse,
+                        questionText: currentQuestionData.text ? currentQuestionData.text.substring(0, 100) + "..." : "No text",
+                        reason: reason,
+                        timestamp: serverTimestamp()
+                    });
+                    
+                    alert("Report submitted successfully. Thank you!");
+                    if (reportModal) reportModal.classList.remove('show');
+                    setTimeout(() => reportModal.classList.add('hidden'), 300);
+                } catch (e) {
+                    console.error("Error reporting question: ", e);
+                    alert("Failed to submit report.");
+                } finally {
+                    submitReportBtn.textContent = "Submit Report";
+                    submitReportBtn.disabled = false;
+                }
+            };
+        }
+
         updateGridStyles();
 
     } catch (error) { 
@@ -389,10 +447,9 @@ async function saveNoteToFirebase(questionId, noteText) {
     const userRef = doc(db, "users", user.uid);
     
     try {
-        // Dot notation builds the nested object perfectly without overwriting
-        await setDoc(userRef, {
+        await updateDoc(userRef, {
             [`${activeCourse}.notes.${questionId}`]: noteText
-        }, { merge: true });
+        });
     } catch (error) { console.error("Error saving note:", error); }
 }
 
