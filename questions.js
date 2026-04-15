@@ -206,9 +206,9 @@ function switchMode(mode) {
 }
 
 // ==========================================
-// 5. FREE TIER DISTRIBUTION ALGORITHM
+// 5. QUESTION DISTRIBUTION ALGORITHM
 // ==========================================
-function filterQuestionsForFreeTier(rawQuestions) {
+function applyTierLimits(rawQuestions, limitPerSubject) {
     let filteredList = [];
     const questionsBySubject = {};
     
@@ -221,13 +221,13 @@ function filterQuestionsForFreeTier(rawQuestions) {
         questionsBySubject[sub][top].push(q);
     });
 
-    // Step 2: Extract exactly 50 questions per subject, distributed evenly among topics
+    // Step 2: Extract exactly the limit per subject, distributed evenly among topics
     Object.keys(questionsBySubject).forEach(sub => {
         const topics = Object.keys(questionsBySubject[sub]);
         const numTopics = topics.length;
         
-        const baseQuota = Math.floor(50 / numTopics);
-        let remainder = 50 % numTopics;
+        const baseQuota = Math.floor(limitPerSubject / numTopics);
+        let remainder = limitPerSubject % numTopics;
 
         topics.forEach(top => {
             const quota = baseQuota + (remainder > 0 ? 1 : 0);
@@ -290,29 +290,13 @@ async function loadDataAndBuildTree() {
             masterQuestions.push(rowObj); 
         });
 
-        function filterQuestionsForFreeTier(rawQuestions) {
-            let filteredList = [];
-            const questionsByTarget = {};
-            
-            rawQuestions.forEach(q => {
-                const targetKey = q.Subject || "General";
-                if (!questionsByTarget[targetKey]) questionsByTarget[targetKey] = [];
-                questionsByTarget[targetKey].push(q);
-            });
-
-            for (const targetKey in questionsByTarget) {
-                filteredList = filteredList.concat(questionsByTarget[targetKey].slice(0, 50));
-            }
-            return filteredList;
-        }
-
-        // APPLY THE FREE TIER FILTER IF THEY ARE NOT PREMIUM!
+        // APPLY THE PROPER FILTER BASED ON USER TIER
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            allQuestions = masterQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
+            allQuestions = applyTierLimits(masterQuestions, 20); // Guests: 20 per subject
         } else if (!isPremiumUser) {
-            allQuestions = filterQuestionsForFreeTier(masterQuestions);
+            allQuestions = applyTierLimits(masterQuestions, 50); // Free Users: 50 per subject
         } else {
-            allQuestions = [...masterQuestions];
+            allQuestions = [...masterQuestions]; // Premium: All questions
         }
 
         // Now build the trees based on the final filtered list

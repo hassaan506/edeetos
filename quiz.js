@@ -73,7 +73,6 @@ function loadSession() {
                 if (docSnap.exists()) {
                     const dbData = docSnap.data();
                     
-                    // ISOLATE: Grab the data specific to the course they are currently taking
                     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                     const courseData = dbData[activeCourse] || {};
                     
@@ -87,7 +86,6 @@ function loadSession() {
                         q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                         q.userNote = savedNotes[q.originalNumber] || "";
                         
-                        // Mistakes take priority! If it's a mistake, it stays red historically.
                         if (mistakesList.includes(q.originalNumber) || examMistakesList.includes(q.originalNumber)) {
                             q.historicalState = 'wrong';
                         } else if (solvedList.includes(q.originalNumber)) {
@@ -98,7 +96,6 @@ function loadSession() {
             } catch (error) {
                 console.error("❌ Firebase Load Error:", error);
             } finally {
-                // 🛠️ THE FIX: Always start the quiz after checking Firebase!
                 startTimer();
                 if (!isExamMode) buildNumberGrid(); 
                 loadQuestion(0);
