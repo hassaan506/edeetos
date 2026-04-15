@@ -129,8 +129,6 @@ function formatCSVQuestion(rawCsvRow) {
             options.push({ text: optText, isCorrect: correctLetter === letter, letter: letter });
         }
     });
-
-	shuffleArray(options);
     
 	const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
 
@@ -244,6 +242,7 @@ function loadQuestion(index) {
         explanationText.innerHTML = currentQuestionData.explanation || "No explanation provided.";
 
         optionsContainer.innerHTML = '';
+		shuffleArray(currentQuestionData.options);
         currentQuestionData.options.forEach(opt => {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
