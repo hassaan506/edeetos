@@ -223,7 +223,7 @@ function generateAndDownloadTranscript() {
     let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
     transcriptText += "Mentorship provided by Edeetos\n";
     
-    const pName = chatPartnerName.textContent.replace("Dr. ", "");
+    const pName = chatPartnerName.textContent.replace("", "");
     transcriptText += `Participants: ${currentUserData ? currentUserData.fullName : "Me"} & ${pName}\n\n`;
     
     localMessages.forEach((msg) => {

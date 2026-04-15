@@ -97,6 +97,11 @@ function loadSession() {
                 }
             } catch (error) {
                 console.error("❌ Firebase Load Error:", error);
+            } finally {
+                // 🛠️ THE FIX: Always start the quiz after checking Firebase!
+                startTimer();
+                if (!isExamMode) buildNumberGrid(); 
+                loadQuestion(0);
             }
         } else {
             if (localStorage.getItem('edeetos_guest_mode') === 'true') {
