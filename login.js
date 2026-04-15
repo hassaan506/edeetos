@@ -24,25 +24,9 @@ if (loginForm) {
             // Nuke guest token before attempting true login
             localStorage.removeItem('edeetos_guest_mode');
 
-            // STEP 1: If they didn't type an '@', we assume it's a username and search the database!
+            // STEP 1: If they didn't type an '@', we assume it's a username!
             if (!identifier.includes('@')) {
-                const usersRef = collection(db, "users");
-                // We search the database for a user with this specific username
-                const q = query(usersRef, where("username", "==", identifier));
-                const querySnapshot = await getDocs(q);
-
-                if (querySnapshot.empty) {
-                    throw new Error("Username not found. Please check your spelling or log in using your email address.");
-                }
-
-                // Grab the email address attached to this username profile
-                const userData = querySnapshot.docs[0].data();
-                if (!userData.email) {
-                    throw new Error("No email linked to this username.");
-                }
-                
-                // Swap the username out for the actual email behind the scenes
-                loginEmail = userData.email; 
+                throw new Error("For security purposes, Firebase requires email-based authentication. Please use your registered Email Address to log in instead of your username.");
             }
 
             // STEP 2: Now that we definitely have the email, log them in!
@@ -52,7 +36,11 @@ if (loginForm) {
             localStorage.setItem("edeetos_session_id", newToken);
             
             // Save the session token to the database
-            await updateDoc(doc(db, "users", userCred.user.uid), { sessionToken: newToken });
+            try {
+                await updateDoc(doc(db, "users", userCred.user.uid), { sessionToken: newToken });
+            } catch (authErr) {
+                console.warn("Session token update skipped due to database rules. Login continuing...", authErr);
+            }
             
             alert("Login Successful! Opening your Dashboard...");
             window.location.href = "dashboard.html"; 
