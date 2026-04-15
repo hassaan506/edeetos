@@ -10,7 +10,7 @@ if (registerForm) {
 
         // 1. Grab EVERY piece of data from the new detailed form
         const name = document.querySelector('#reg-name').value;
-        const username = document.querySelector('#reg-username').value;
+        const username = document.querySelector('#reg-username').value.toLowerCase().trim();
         const email = document.querySelector('#reg-email').value;
         const phone = document.querySelector('#reg-phone').value;
         const uni = document.querySelector('#reg-uni').value;

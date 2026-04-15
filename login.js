@@ -13,9 +13,12 @@ if (loginForm) {
         const identifier = document.querySelector('#login-identifier').value.trim();
         const password = document.querySelector('#login-password').value;
         
-        let loginEmail = identifier; // Assume it's an email at first
+        let loginEmail = identifier.toLowerCase(); 
 
         try {
+            // Nuke guest token before attempting true login
+            localStorage.removeItem('edeetos_guest_mode');
+
             // STEP 1: If they didn't type an '@', they must have typed a username!
             if (!identifier.includes('@')) {
                 
@@ -26,7 +29,7 @@ if (loginForm) {
 
                 // If the database comes up empty
                 if (querySnapshot.empty) {
-                    throw new Error("Username not found. Please check your spelling or try your email.");
+                    throw new Error("Username not found. Older usernames may be case-sensitive. Please use your Email Address instead to guarantee entry.");
                 }
 
                 // If found, grab the hidden email attached to that username
@@ -56,9 +59,15 @@ if (loginForm) {
 
 const btnGuest = document.getElementById('btn-guest');
 if (btnGuest) {
-    btnGuest.addEventListener('click', () => {
+    btnGuest.addEventListener('click', async () => {
         localStorage.removeItem('edeetos_session_id');
         localStorage.setItem('edeetos_guest_mode', 'true');
+        
+        try {
+            const { signOut } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js");
+            await signOut(auth);
+        } catch(e) { }
+
         alert("Entering Guest Mode. You will have limited access to questions.");
         window.location.href = "dashboard.html";
     });

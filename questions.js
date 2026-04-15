@@ -898,6 +898,9 @@ const trophies = [
 
 if (btnJourney) {
     btnJourney.onclick = () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            return alert("Please register an account to track your Journey and unlock trophies.");
+        }
         const solvedCount = attemptedQuestions.length;
         
         trophiesGrid.innerHTML = trophies.map(t => {

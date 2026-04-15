@@ -3,6 +3,41 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
+// ==========================================
+// 0. GLOBAL UI OVERRIDE (BEAUTIFUL ALERTS)
+// ==========================================
+window.alert = function(message) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; z-index:999999;';
+
+    const box = document.createElement('div');
+    box.style.cssText = 'background:white; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.2); text-align:center; width:90%; max-width:400px; transform:scale(0.8); opacity:0; transition:all 0.3s ease;';
+
+    const msg = document.createElement('p');
+    msg.textContent = message;
+    msg.style.cssText = 'color:#334155; font-size:1.1rem; font-weight:bold; margin-bottom:1.5rem;';
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Understood';
+    btn.style.cssText = 'background:#059669; color:white; border:none; padding:0.6rem 2rem; border-radius:8px; cursor:pointer; font-weight:bold; font-size:1rem;';
+    
+    btn.onclick = () => {
+        box.style.opacity = '0';
+        box.style.transform = 'scale(0.8)';
+        setTimeout(() => document.body.removeChild(overlay), 300);
+    };
+
+    box.appendChild(msg);
+    box.appendChild(btn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(() => {
+        box.style.opacity = '1';
+        box.style.transform = 'scale(1)';
+    });
+};
+
 const firebaseConfig = {
     apiKey: "AIzaSyDDP1qj2w7YmteqO5DnquFKyW7KKQ9hUx8",
     authDomain: "edeetos-68fd3.firebaseapp.com",
@@ -71,6 +106,17 @@ document.addEventListener('keydown', (e) => {
         document.body.style.display = 'none';
         setTimeout(() => document.body.style.display = 'block', 1000);
     }
+});
+
+// Snipping Tool OS-Level Blocker (Defocus)
+document.addEventListener('visibilitychange', () => {
+    document.body.style.filter = document.hidden ? 'blur(10px) brightness(0)' : 'none';
+});
+window.addEventListener('blur', () => {
+    document.body.style.filter = 'blur(10px) brightness(0)';
+});
+window.addEventListener('focus', () => {
+    document.body.style.filter = 'none';
 });
 
 export { auth, db, storage };

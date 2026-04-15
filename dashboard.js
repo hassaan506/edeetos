@@ -51,11 +51,11 @@ onAuthStateChanged(auth, async (user) => {
 
                 // GLOBAL MENTOR PING LISTENER
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
-                    const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
+                    const qChats = query(collection(db, "chats"), where("mentorId", "==", currentUserId));
                     onSnapshot(qChats, (snapshot) => {
                         snapshot.docChanges().forEach((change) => {
-                            if (change.type === "added") {
-                                const data = change.doc.data();
+                            const data = change.doc.data();
+                            if (change.type === "added" && data.status === "pending") {
                                 alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Please open the Mentorship Hub to accept the chat.`);
                             }
                         });

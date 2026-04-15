@@ -170,18 +170,18 @@
             </div>
 
             <div class="glass-panel form-panel">
-                <form class="contact-form">
+                <form id="contact-form" class="contact-form">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" placeholder="Dr. John Doe" required>
+                        <input type="text" id="contact-name" placeholder="Dr. John Doe" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" placeholder="john@example.com" required>
+                        <input type="email" id="contact-email" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea rows="4" placeholder="How can we help you?" required></textarea>
+                        <textarea id="contact-msg" rows="4" placeholder="How can we help you?" required></textarea>
                     </div>
                     <button type="submit" class="btn-solid form-btn">Send Message</button>
                 </form>
@@ -229,7 +229,8 @@
         </div>
     </footer>
 	
-<script type="module" src="auth-check.js"></script>
+    <script type="module" src="auth-check.js"></script>
+    <script type="module" src="index.js"></script>
 
 </body>
 </html>
