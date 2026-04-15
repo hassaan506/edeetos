@@ -292,6 +292,7 @@ if (btnBanUser) {
             }
         }
     });
+}	
 	// 👇 --- NEW UNBAN USER LOGIC --- 👇
 const btnUnbanUser = document.getElementById('btn-unban-user');
 
