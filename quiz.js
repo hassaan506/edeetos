@@ -1,5 +1,5 @@
 import { auth, db } from './firebase-config.js';
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
@@ -69,7 +69,41 @@ function loadSession() {
                 const docSnap = await getDoc(userRef);
                 if (docSnap.exists()) {
                     const dbData = docSnap.data();
-                    
+                    if (dbData.isBanned || dbData.role === 'BANNED') {
+                        
+                        // 1. Create the inescapable full-screen lockout overlay
+                        const lockoutScreen = document.createElement('div');
+                        lockoutScreen.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);";
+                        
+                        lockoutScreen.innerHTML = `
+                            <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
+                            <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; margin-top: 0;">Account Suspended</h1>
+                            <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem; padding: 0 1.5rem;">
+                                Your account has been restricted due to policy violations. You no longer have access to EDEETOS materials, questions, or premium features.
+                            </p>
+                            <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); transition: transform 0.2s;">
+                                Log Out
+                            </button>
+                        `;
+                        
+                        // 2. Add it to the page and kill scrolling/interaction
+                        document.body.appendChild(lockoutScreen);
+                        document.body.style.overflow = 'hidden'; 
+                        
+                        // 3. Add the logout functionality to the button inside the overlay
+                        document.getElementById('btn-banned-logout').addEventListener('click', async () => {
+                            document.getElementById('btn-banned-logout').textContent = "Logging out...";
+                            try {
+                                await signOut(auth);
+                                window.location.href = 'index.html';
+                            } catch (error) {
+                                window.location.href = 'index.html';
+                            }
+                        });
+                        
+                        return; // Stop the quiz from loading!
+                    }
+					
                     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                     const courseData = dbData[activeCourse] || {};
                     

@@ -508,12 +508,13 @@ body {
 	
     #edit-user-modal {
         align-items: flex-start !important; 
-        padding-top: 1.5rem !important; /* Gives it just a tiny breathing room from the URL bar */
-        padding-bottom: 1.5rem !important;
+        padding-top: 0.5rem !important; /* Reduced from 1.5rem to almost zero! */
+        padding-bottom: 0.5rem !important;
     }
 
     #edit-user-modal .popup-content {
-        max-height: 90vh !important; /* Increased from 80vh to 90vh */
+        margin-top: 0 !important; /* Kills any hidden browser margins */
+        max-height: 95vh !important; /* Increased to 95% of screen height */
         overflow-y: auto !important; 
         padding: 1rem !important; 
     }

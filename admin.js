@@ -155,9 +155,15 @@ function renderUsers(usersArray) {
     usersArray.forEach(user => {
         const role = (user.role || 'STUDENT').toUpperCase();
         let roleHtml = '';
-        if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="badge b-admin">Admin</span>`;
-        else if (role === 'MENTOR') roleHtml = `<span class="badge b-mentor">Mentor</span>`;
-        else roleHtml = `<span class="badge b-student">Student</span>`;
+        if (user.isBanned || role === 'BANNED') {
+            roleHtml = `<span class="badge" style="background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5;">Banned</span>`;
+        } else if (role === 'MANAGEMENT' || role === 'ADMIN') {
+            roleHtml = `<span class="badge b-admin">Admin</span>`;
+        } else if (role === 'MENTOR') {
+            roleHtml = `<span class="badge b-mentor">Mentor</span>`;
+        } else {
+            roleHtml = `<span class="badge b-student">Student</span>`;
+        }
         
         let coursesHtml = '';
         if (user.subscriptions) {
@@ -220,7 +226,16 @@ function openEditModal(user) {
     if(editEmailEl) editEmailEl.textContent = user.email || "No Email Provided";
     if(editPhoneEl) editPhoneEl.textContent = user.phone || "No Phone Provided";
     if(editUidEl) editUidEl.textContent = `ID: ${user.uid}`;
+    const banBtn = document.getElementById('btn-ban-user');
+    const unbanBtn = document.getElementById('btn-unban-user');
     
+    if (user.isBanned || user.role === 'BANNED') {
+        if (banBtn) banBtn.style.display = 'none';   // Hide Ban
+        if (unbanBtn) unbanBtn.style.display = 'block'; // Show Unban
+    } else {
+        if (banBtn) banBtn.style.display = 'block';     // Show Ban
+        if (unbanBtn) unbanBtn.style.display = 'none';  // Hide Unban
+    }
     renderSubscriptions();
     if(editModal) editModal.style.display = 'flex';
 }
@@ -277,7 +292,44 @@ if (btnBanUser) {
             }
         }
     });
+	// 👇 --- NEW UNBAN USER LOGIC --- 👇
+const btnUnbanUser = document.getElementById('btn-unban-user');
+
+if (btnUnbanUser) {
+    btnUnbanUser.addEventListener('click', async () => {
+        if (confirm(`✅ Are you sure you want to UNBAN ${editingUser.fullName || 'this user'}?\n\nThey will be restored as a regular Student.`)) {
+            
+            btnUnbanUser.textContent = "Unbanning...";
+            btnUnbanUser.disabled = true;
+            
+            try {
+                // Update Firestore to remove ban flags and restore them as a Student
+                await updateDoc(doc(db, "users", editingUser.uid), { 
+                    role: 'STUDENT',
+                    isBanned: false
+                    // Note: We don't restore premium subscriptions automatically for security. 
+                    // You can re-grant them using the "Grant Access" tool if needed!
+                });
+                
+                alert("User has been successfully unbanned!");
+                
+                // Close the modal and refresh the list
+                const editModalLocal = document.getElementById('edit-user-modal');
+                if (editModalLocal) editModalLocal.style.display = 'none';
+                
+                fetchAllUsers();
+                
+            } catch (error) {
+                console.error("Error unbanning user:", error);
+                alert("Failed to unban user. Please check your connection.");
+            } finally {
+                btnUnbanUser.innerHTML = "✅ Unban User";
+                btnUnbanUser.disabled = false;
+            }
+        }
+    });
 }
+
 
 // ==========================================
 // 5. SUBSCRIPTIONS LOGIC

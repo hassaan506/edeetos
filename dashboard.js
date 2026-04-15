@@ -22,7 +22,49 @@ onAuthStateChanged(auth, async (user) => {
 
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
-                
+if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
+                    
+                    // 1. Visually change the underlying dashboard UI
+                    document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
+                    if (subStatus) {
+                        subStatus.textContent = "BANNED";
+                        subStatus.className = "status-badge";
+                        subStatus.style.background = "#fee2e2";
+                        subStatus.style.color = "#ef4444";
+                        subStatus.style.border = "1px solid #fca5a5";
+                    }
+                    
+                    // 2. Create the inescapable full-screen lockout overlay
+                    const lockoutScreen = document.createElement('div');
+                    lockoutScreen.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);";
+                    
+                    lockoutScreen.innerHTML = `
+                        <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
+                        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; margin-top: 0;">Account Suspended</h1>
+                        <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem; padding: 0 1.5rem;">
+                            Your account has been restricted due to policy violations. You no longer have access to EDEETOS materials, questions, or premium features.
+                        </p>
+                        <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); transition: transform 0.2s;">
+                            Log Out
+                        </button>
+                    `;
+                    
+                    // 3. Add it to the page and kill scrolling
+                    document.body.appendChild(lockoutScreen);
+                    document.body.style.overflow = 'hidden'; // Prevents them from scrolling down
+                    
+                    // 4. Add the logout functionality to the button inside the overlay
+                    document.getElementById('btn-banned-logout').addEventListener('click', () => {
+                        document.getElementById('btn-banned-logout').textContent = "Logging out...";
+                        signOut(auth).then(() => {
+                            window.location.href = 'index.html';
+                        }).catch(() => {
+                            window.location.href = 'index.html';
+                        });
+                    });
+                    
+                    return; // Stop the rest of the dashboard from loading!
+                }				
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
                 
                 const userRole = (currentUserData.role || '').toUpperCase();
