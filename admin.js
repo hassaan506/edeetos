@@ -23,30 +23,38 @@ let editingUser = null;
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-        const userRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userRef);
-        
-        const role = docSnap.exists() ? (docSnap.data().role || '').toUpperCase() : '';
-        
-        if (role !== 'MANAGEMENT' && role !== 'ADMIN') {
-            alert("Unauthorized Access.");
-            window.location.href = 'dashboard.html';
-            return;
-        }
+        try {
+            const userRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(userRef);
+            
+            const role = docSnap.exists() ? (docSnap.data().role || '').toUpperCase() : '';
+            
+            if (role !== 'MANAGEMENT' && role !== 'ADMIN') {
+                alert("Unauthorized Access.");
+                window.location.href = 'dashboard.html';
+                return;
+            }
 
-        // GLOBAL MENTOR PING LISTENER
-        const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
-        onSnapshot(qChats, (snapshot) => {
-            snapshot.docChanges().forEach((change) => {
-                if (change.type === "added") {
-                    const data = change.doc.data();
-                    alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Please open the Mentorship Hub to accept the chat.`);
-                }
+            // GLOBAL MENTOR PING LISTENER
+            const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
+            onSnapshot(qChats, (snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === "added") {
+                        const data = change.doc.data();
+                        alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Please open the Mentorship Hub to accept the chat.`);
+                    }
+                });
             });
-        });
 
-        fetchAllUsers();
-        calculateTotalQuestions();
+            fetchAllUsers();
+            calculateTotalQuestions();
+        } catch (error) {
+            console.error("Admin Panel Auth Init Error:", error);
+            alert("Database permission error. Firebase is blocking your access to the users database. Error: " + error.message);
+            // Default load so they at least don't hang if they want to try anyway
+            fetchAllUsers();
+            calculateTotalQuestions();
+        }
     } else {
         window.location.href = 'index.html';
     }
