@@ -670,17 +670,25 @@ const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
 
 if (shortcutsBtn) {
     shortcutsBtn.addEventListener('click', () => {
-        if(shortcutsModal) shortcutsModal.classList.remove('hidden');
+        if(shortcutsModal) {
+            shortcutsModal.classList.remove('hidden');
+            shortcutsModal.classList.add('show');
+            shortcutsModal.style.display = 'flex'; // Failsafe to guarantee it opens!
+        }
     });
 }
 if (closeShortcutsBtn) {
     closeShortcutsBtn.addEventListener('click', () => {
-        if(shortcutsModal) shortcutsModal.classList.add('hidden');
+        if(shortcutsModal) {
+            shortcutsModal.classList.add('hidden');
+            shortcutsModal.classList.remove('show');
+            setTimeout(() => { shortcutsModal.style.display = 'none'; }, 300); // Failsafe to close
+        }
     });
 }
 
 document.addEventListener('keydown', (e) => {
-    // 1. Ignore shortcuts if the user is typing in any input or textarea (like the notes/report box)
+    // 1. Ignore shortcuts if the user is typing in any input or textarea
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
         return; 
@@ -720,7 +728,9 @@ document.addEventListener('keydown', (e) => {
             break;
         case 'Escape':
             e.preventDefault();
-            if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) shortcutsModal.classList.add('hidden');
+            if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
+                if(closeShortcutsBtn) closeShortcutsBtn.click();
+            }
             else if (isExplanationOpen) document.getElementById('close-explanation').click();
             else if (notesModalLocal && notesModalLocal.classList.contains('show')) document.getElementById('close-notes-btn').click();
             else if (reportModalLocal && reportModalLocal.classList.contains('show')) document.getElementById('close-report-btn').click();
@@ -730,8 +740,8 @@ document.addEventListener('keydown', (e) => {
             e.preventDefault();
             if (isExplanationOpen) {
                 document.getElementById('close-explanation').click();
-            } else if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) {
-                shortcutsModal.classList.add('hidden');
+            } else if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
+                if(closeShortcutsBtn) closeShortcutsBtn.click();
             } else if (isExamMode) {
                 // In Exam mode, Enter acts as Next/Submit
                 if(nextBtnLocal) nextBtnLocal.click();
@@ -759,7 +769,6 @@ document.addEventListener('keydown', (e) => {
 
 function selectOptionByIndex(index) {
     if (hasAnsweredCorrectly && !isExamMode) return; 
-    // FIX: Look for the option-boxes you generate, not radio buttons!
     const options = document.querySelectorAll('.option-box');
     if (options && options[index]) {
         options[index].click(); 
