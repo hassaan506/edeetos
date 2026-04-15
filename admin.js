@@ -241,6 +241,43 @@ async function changeUserRole(newRole) {
         fetchAllUsers();
     }
 }
+const btnBanUser = document.getElementById('btn-ban-user');
+
+if (btnBanUser) {
+    btnBanUser.addEventListener('click', async () => {
+        // Double check to prevent accidental bans
+        if (confirm(`🚨 Are you absolutely sure you want to BAN ${editingUser.fullName || 'this user'}?\n\nThis will revoke all their premium access and mark their account as banned.`)) {
+            
+            btnBanUser.textContent = "Banning...";
+            btnBanUser.disabled = true;
+            
+            try {
+                // Update Firestore to wipe subscriptions and change role to BANNED
+                await updateDoc(doc(db, "users", editingUser.uid), { 
+                    role: 'BANNED',
+                    isBanned: true,
+                    subscriptions: {}, // Wipes all premium access
+                    isPremium: false
+                });
+                
+                alert("User has been successfully banned and all access revoked.");
+                
+                // Close the modal and refresh the list
+                const editModalLocal = document.getElementById('edit-user-modal');
+                if (editModalLocal) editModalLocal.style.display = 'none';
+                
+                fetchAllUsers();
+                
+            } catch (error) {
+                console.error("Error banning user:", error);
+                alert("Failed to ban user. Please check your connection.");
+            } finally {
+                btnBanUser.innerHTML = "⛔ Ban User";
+                btnBanUser.disabled = false;
+            }
+        }
+    });
+}
 
 // ==========================================
 // 5. SUBSCRIPTIONS LOGIC
