@@ -88,6 +88,22 @@ unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
+// Allow Enter key to trigger Start Exam natively since these inputs aren't in a real <form>
+const examQInput = document.getElementById('exam-q-count');
+const examTimerInput = document.getElementById('exam-timer');
+const startExamBtn = document.getElementById('start-exam-btn');
+
+if (examQInput) {
+    examQInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') startExamBtn.click();
+    });
+}
+if (examTimerInput) {
+    examTimerInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') startExamBtn.click();
+    });
+}
+
 document.getElementById('start-exam-btn').addEventListener('click', () => {
     const paths = Array.from(selectedCart).map(str => JSON.parse(str));
     let examPool = allQuestions.filter(q => {

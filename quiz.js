@@ -642,3 +642,104 @@ document.getElementById('prev-btn').onclick = () => {
 };
 
 loadSession();
+
+// ==========================================
+// KEYBOARD SHORTCUTS
+// ==========================================
+const shortcutsBtn = document.getElementById('shortcuts-btn');
+const shortcutsModal = document.getElementById('shortcuts-modal');
+const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
+
+if (shortcutsBtn) {
+    shortcutsBtn.addEventListener('click', () => {
+        if(shortcutsModal) shortcutsModal.classList.remove('hidden');
+    });
+}
+if (closeShortcutsBtn) {
+    closeShortcutsBtn.addEventListener('click', () => {
+        if(shortcutsModal) shortcutsModal.classList.add('hidden');
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    // 1. Ignore shortcuts if the user is typing in any input or textarea
+    const activeEl = document.activeElement;
+    if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
+        return; 
+    }
+
+    // 2. Handle Explanation Modal Scroll Hijacking (Up/Down)
+    const explanationModalLocal = document.getElementById('explanation-modal');
+    if (explanationModalLocal && !explanationModalLocal.classList.contains('hidden')) {
+        const modalContent = document.querySelector('#explanation-modal .modal-content');
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            modalContent.scrollTop -= 40;
+            return;
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            modalContent.scrollTop += 40;
+            return;
+        }
+    }
+
+    switch(e.key) {
+        case 'ArrowRight':
+            e.preventDefault();
+            if(nextBtn) nextBtn.click();
+            break;
+        case 'ArrowLeft':
+            e.preventDefault();
+            const pBtn = document.getElementById('prev-btn');
+            if(pBtn) pBtn.click();
+            break;
+        case 'Escape':
+            e.preventDefault();
+            // Close modals first if any are open
+            if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) shortcutsModal.classList.add('hidden');
+            else if (explanationModalLocal && !explanationModalLocal.classList.contains('hidden')) document.getElementById('close-explanation').click();
+            else if (document.getElementById('notes-modal') && document.getElementById('notes-modal').classList.contains('show')) document.getElementById('close-notes-btn').click();
+            else if (document.getElementById('report-modal') && !document.getElementById('report-modal').classList.contains('hidden')) document.getElementById('close-report-btn').click();
+            else window.location.href = 'questions.html'; 
+            break;
+        case 'Enter':
+            // In Exam Mode, Enter acts as submitting the question. So click Next.
+            if (isExamMode) {
+                e.preventDefault();
+                if(nextBtn) nextBtn.click();
+            } else if (explanationModalLocal && !explanationModalLocal.classList.contains('hidden')) {
+                e.preventDefault();
+                document.getElementById('close-explanation').click();
+            }
+            break;
+        case 'p':
+        case 'P':
+            e.preventDefault();
+            if (isExamMode && skipBtn) skipBtn.click();
+            break;
+        case 's':
+        case 'S':
+            e.preventDefault();
+            if (currentQuestionData) document.getElementById('bookmark-btn').click();
+            break;
+            
+        // Map Keys A-E and 1-5 to Option Selection
+        case 'a': case 'A': case '1': selectOptionByIndex(0); break;
+        case 'b': case 'B': case '2': selectOptionByIndex(1); break;
+        case 'c': case 'C': case '3': selectOptionByIndex(2); break;
+        case 'd': case 'D': case '4': selectOptionByIndex(3); break;
+        case 'e': case 'E': case '5': selectOptionByIndex(4); break;
+    }
+});
+
+function selectOptionByIndex(index) {
+    if (hasAnsweredCorrectly && !isExamMode) return; 
+    const optionLabels = document.querySelectorAll('.option-label input[type="radio"]');
+    if (optionLabels && optionLabels[index]) {
+        optionLabels[index].click(); // This triggers the change event attached to labels naturally
+    } else {
+        // Fallback if structured differently
+        const altLabels = document.querySelectorAll('.option-box');
+        if (altLabels && altLabels[index]) altLabels[index].click();
+    }
+}

@@ -15,7 +15,8 @@
     <div class="quiz-content-wrapper">
         <div class="top-nav">
             <button class="exit-btn" onclick="window.location.href='questions.html'">Exit Session</button>
-            <div class="top-stats">
+            <div class="top-stats" style="display: flex; align-items: center;">
+                <button id="shortcuts-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.2rem 0.5rem; font-size: 0.85rem; margin-right: 15px;"><i class="fas fa-keyboard"></i> Shortcuts</button>
                 <span id="timer-display">00:00</span>
             </div>
         </div>
@@ -95,6 +96,23 @@
                 <button id="close-notes-btn" class="btn-outline">Cancel</button>
                 <button id="save-note-btn" class="btn-solid">Save Note</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div id="shortcuts-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="max-width: 400px; width: 90%; text-align: left;">
+            <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.8;">
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">⬅</kbd> / <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">➡</kbd> : Next/Prev Question</li>
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">A-E</kbd> / <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">1-5</kbd> : Select Option</li>
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">Enter</kbd> : Submit Answer (Exam)</li>
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">P</kbd> : Skip Question (Exam)</li>
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">S</kbd> : Bookmark Question</li>
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">⬆</kbd> / <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">⬇</kbd> : Scroll Explanation</li>
+                <li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">Esc</kbd> : Go Back / Exit</li>
+            </ul>
+            <button id="close-shortcuts-btn" class="btn-solid" style="width: 100%; margin-top: 1.5rem; background: #0f172a;">Got it</button>
         </div>
     </div>
 
