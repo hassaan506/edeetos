@@ -368,31 +368,27 @@ async function savePracticeProgress(questionId, isCorrect) {
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
     
-    // Dynamic paths for Firebase Dot Notation
-    const solvedPath = `${activeCourse}.solvedQuestions`;
-    const mistakesPath = `${activeCourse}.mistakes`;
-    const examMistakesPath = `${activeCourse}.examMistakes`;
-    
-    let updates = {};
+    // We build the object cleanly here so Firebase merges it perfectly
+    let courseUpdates = {};
 
     if (isCorrect) {
         const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
         
-        updates[solvedPath] = arrayUnion(questionId); 
+        courseUpdates.solvedQuestions = arrayUnion(questionId); 
 
         // ONLY remove the mistake if they are actively in Practice Mistakes mode!
         if (isReviewMistakesMode) {
-            updates[mistakesPath] = arrayRemove(questionId);      
-            updates[examMistakesPath] = arrayRemove(questionId);   
+            courseUpdates.mistakes = arrayRemove(questionId);      
+            courseUpdates.examMistakes = arrayRemove(questionId);   
         }
     } else {
-        updates[mistakesPath] = arrayUnion(questionId);
+        courseUpdates.mistakes = arrayUnion(questionId);
     }
 
     try {
-        await setDoc(userRef, updates, { merge: true });
+        await setDoc(userRef, { [activeCourse]: courseUpdates }, { merge: true });
     } catch (error) {
-        console.error("Error saving to Firebase:", error);
+        console.error("Error saving practice progress:", error);
     }
 }
 
@@ -405,15 +401,15 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     const userRef = doc(db, "users", user.uid);
     
     try {
-        let updates = {};
+        let courseUpdates = {};
         
         if (correctIds.length > 0) {
-            updates[`${activeCourse}.examSolvedQuestions`] = arrayUnion(...correctIds);
-            updates[`${activeCourse}.mistakes`] = arrayRemove(...correctIds);      
-            updates[`${activeCourse}.examMistakes`] = arrayRemove(...correctIds);  
+            courseUpdates.solvedQuestions = arrayUnion(...correctIds);
+            courseUpdates.mistakes = arrayRemove(...correctIds);      
+            courseUpdates.examMistakes = arrayRemove(...correctIds);  
         }
         if (mistakeIds.length > 0) {
-            updates[`${activeCourse}.examMistakes`] = arrayUnion(...mistakeIds);
+            courseUpdates.examMistakes = arrayUnion(...mistakeIds);
         }
 
         const examTitle = quizConfig.examName || "Custom Exam"; 
@@ -425,17 +421,18 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
             date: new Date().toISOString() 
         };
 
-        updates[`${activeCourse}.examHistory`] = arrayUnion(examRecord);
+        courseUpdates.examHistory = arrayUnion(examRecord);
 
-        if (Object.keys(updates).length > 0) {
-            await setDoc(userRef, updates, { merge: true });
+        if (Object.keys(courseUpdates).length > 0) {
+            await setDoc(userRef, { [activeCourse]: courseUpdates }, { merge: true });
         }
     } catch (error) {
-        console.error("Error saving exam progress to Firebase:", error);
+        console.error("Error saving exam progress:", error);
     }
 }
 
 async function toggleBookmarkInFirebase(questionId, isBookmarking) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return; 
     
@@ -444,9 +441,30 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     
     try {
         await setDoc(userRef, {
-            [`${activeCourse}.bookmarks`]: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
+            [activeCourse]: {
+                bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
+            }
         }, { merge: true });
-    } catch (error) { console.error("Error updating bookmark in Firebase:", error); }
+    } catch (error) { console.error("Error updating bookmark:", error); }
+}
+
+async function saveNoteToFirebase(questionId, noteText) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+    const user = auth.currentUser;
+    if (!user) return; 
+    
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+    const userRef = doc(db, "users", user.uid);
+    
+    try {
+        await setDoc(userRef, {
+            [activeCourse]: {
+                notes: {
+                    [questionId]: noteText
+                }
+            }
+        }, { merge: true });
+    } catch (error) { console.error("Error saving note:", error); }
 }
 
 async function saveNoteToFirebase(questionId, noteText) {
