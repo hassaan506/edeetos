@@ -194,9 +194,13 @@ function renderUsers(usersArray) {
         card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0.5rem; border-bottom: 2px solid #f1f5f9;";
         card.innerHTML = `
             <div style="flex-grow: 1;">
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
+                <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; gap: 0.2rem;">
                     <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${userName}</div>
-                    <div style="font-size: 0.85rem; color: #64748b; font-weight: 600;">📧 ${userEmail} &nbsp;|&nbsp; 📞 ${userPhone}</div>
+                    <div style="display: flex; flex-wrap: wrap; font-size: 0.85rem; color: #64748b; font-weight: 600; gap: 0.5rem;">
+                        <span style="white-space: nowrap;">📧 ${userEmail}</span>
+                        <span style="color: #cbd5e1;">|</span>
+                        <span style="white-space: nowrap;">📞 ${userPhone}</span>
+                    </div>
                 </div>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">${roleHtml} ${coursesHtml}</div>
             </div>
