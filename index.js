@@ -29,8 +29,15 @@ if (contactForm) {
             alert("Thank you for reaching out! A member of the EDEETOS team will get back to you shortly.");
             contactForm.reset();
         } catch (error) {
-            console.error(error);
-            alert("Error sending message. Please try emailing us directly or Contact us on Whatsapp!");
+            console.error("Firebase DB error:", error);
+            
+            // Fallback: If Firebase blocks the message, format it for WhatsApp and open it directly!
+            const waText = `*New EDEETOS Inquiry*\n\n*Name:* ${name}\n*Email:* ${email}\n*WhatsApp:* ${whatsapp}\n*Message:* ${msg}`;
+            const whatsappUrl = `https://wa.me/923202289180?text=${encodeURIComponent(waText)}`;
+            
+            alert("Database connection blocked. We are seamlessly redirecting you to WhatsApp so you can send this directly to our team!");
+            window.open(whatsappUrl, '_blank');
+            
         } finally {
             submitBtn.textContent = "Send Message";
             submitBtn.disabled = false;
