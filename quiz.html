@@ -10,6 +10,13 @@
 </head>
 <body class="quiz-body">
     
+    <div id="anti-screenshot-screen" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000000; z-index: 2147483647; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <i class="fas fa-user-shield" style="color: #475569; font-size: 4rem; margin-bottom: 1.5rem;"></i>
+        <h2 style="color: white; font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem;">Screenshots Prohibited</h2>
+        <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1rem; max-width: 400px;">For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
+        <button onclick="document.getElementById('anti-screenshot-screen').style.display='none'" class="btn-solid" style="margin-top: 2rem; background: #ef4444; border: none; padding: 0.8rem 2.5rem; border-radius: 8px; color: white; cursor: pointer; font-weight: bold;">I Understand</button>
+    </div>
+
     <div class="blue-header-bg"></div>
 
     <div class="quiz-content-wrapper">
@@ -99,7 +106,6 @@
         </div>
     </div>
 
-    <!-- Keyboard Shortcuts Modal -->
     <div id="shortcuts-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content" style="max-width: 400px; width: 90%; text-align: left;">
             <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
@@ -116,7 +122,6 @@
         </div>
     </div>
 
-    <!-- Report Modal -->
     <div id="report-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
             <h3 style="color: #991b1b; margin-bottom: 1rem;">

@@ -662,23 +662,31 @@ if (closeShortcutsBtn) {
 }
 
 document.addEventListener('keydown', (e) => {
-    // 1. Ignore shortcuts if the user is typing in any input or textarea
+    // 1. Ignore shortcuts if the user is typing in any input or textarea (like the notes/report box)
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
         return; 
     }
 
-    // 2. Handle Explanation Modal Scroll Hijacking (Up/Down)
+    // Grab elements dynamically so they are always found
+    const nextBtnLocal = document.getElementById('next-btn');
+    const prevBtnLocal = document.getElementById('prev-btn');
     const explanationModalLocal = document.getElementById('explanation-modal');
-    if (explanationModalLocal && !explanationModalLocal.classList.contains('hidden')) {
-        const modalContent = document.querySelector('#explanation-modal .modal-content');
+    const notesModalLocal = document.getElementById('notes-modal');
+    const reportModalLocal = document.getElementById('report-modal');
+
+    const isExplanationOpen = explanationModalLocal && explanationModalLocal.classList.contains('show');
+
+    // 2. Handle Explanation Modal Scroll Hijacking (Up/Down)
+    if (isExplanationOpen) {
+        const modalContent = explanationModalLocal.querySelector('.modal-content');
         if (e.key === 'ArrowUp') {
             e.preventDefault();
-            modalContent.scrollTop -= 40;
+            if(modalContent) modalContent.scrollTop -= 40;
             return;
         } else if (e.key === 'ArrowDown') {
             e.preventDefault();
-            modalContent.scrollTop += 40;
+            if(modalContent) modalContent.scrollTop += 40;
             return;
         }
     }
@@ -686,30 +694,29 @@ document.addEventListener('keydown', (e) => {
     switch(e.key) {
         case 'ArrowRight':
             e.preventDefault();
-            if(nextBtn) nextBtn.click();
+            if(nextBtnLocal) nextBtnLocal.click();
             break;
         case 'ArrowLeft':
             e.preventDefault();
-            const pBtn = document.getElementById('prev-btn');
-            if(pBtn) pBtn.click();
+            if(prevBtnLocal) prevBtnLocal.click();
             break;
         case 'Escape':
             e.preventDefault();
-            // Close modals first if any are open
             if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) shortcutsModal.classList.add('hidden');
-            else if (explanationModalLocal && !explanationModalLocal.classList.contains('hidden')) document.getElementById('close-explanation').click();
-            else if (document.getElementById('notes-modal') && document.getElementById('notes-modal').classList.contains('show')) document.getElementById('close-notes-btn').click();
-            else if (document.getElementById('report-modal') && !document.getElementById('report-modal').classList.contains('hidden')) document.getElementById('close-report-btn').click();
+            else if (isExplanationOpen) document.getElementById('close-explanation').click();
+            else if (notesModalLocal && notesModalLocal.classList.contains('show')) document.getElementById('close-notes-btn').click();
+            else if (reportModalLocal && reportModalLocal.classList.contains('show')) document.getElementById('close-report-btn').click();
             else window.location.href = 'questions.html'; 
             break;
         case 'Enter':
-            // In Exam Mode, Enter acts as submitting the question. So click Next.
-            if (isExamMode) {
-                e.preventDefault();
-                if(nextBtn) nextBtn.click();
-            } else if (explanationModalLocal && !explanationModalLocal.classList.contains('hidden')) {
-                e.preventDefault();
+            e.preventDefault();
+            if (isExplanationOpen) {
                 document.getElementById('close-explanation').click();
+            } else if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) {
+                shortcutsModal.classList.add('hidden');
+            } else if (isExamMode) {
+                // In Exam mode, Enter acts as Next/Submit
+                if(nextBtnLocal) nextBtnLocal.click();
             }
             break;
         case 'p':
@@ -734,12 +741,28 @@ document.addEventListener('keydown', (e) => {
 
 function selectOptionByIndex(index) {
     if (hasAnsweredCorrectly && !isExamMode) return; 
-    const optionLabels = document.querySelectorAll('.option-label input[type="radio"]');
-    if (optionLabels && optionLabels[index]) {
-        optionLabels[index].click(); // This triggers the change event attached to labels naturally
-    } else {
-        // Fallback if structured differently
-        const altLabels = document.querySelectorAll('.option-box');
-        if (altLabels && altLabels[index]) altLabels[index].click();
+    // FIX: Look for the option-boxes you generate, not radio buttons!
+    const options = document.querySelectorAll('.option-box');
+    if (options && options[index]) {
+        options[index].click(); 
     }
 }
+
+// ==========================================
+// ANTI-SCREENSHOT LOGIC 
+// ==========================================
+let isScreenshotBlockEnabled = true; // Enabled by default
+
+// Listen for the Print Screen key
+document.addEventListener("keyup", (e) => {
+    if (isScreenshotBlockEnabled && e.key === "PrintScreen") {
+        // Overwrite clipboard to stop the image from saving
+        navigator.clipboard.writeText("Screenshots are disabled for copyright protection.");
+        
+        // Show our brand new Pitch-Black warning screen!
+        document.getElementById('anti-screenshot-screen').style.display = 'flex';
+    }
+});
+
+// REMEMBER: Turn this off for admins inside your onAuthStateChanged function:
+// if (role === 'ADMIN' || role === 'MANAGEMENT') isScreenshotBlockEnabled = false;
