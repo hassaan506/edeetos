@@ -42,204 +42,72 @@ if (isExamMode) {
     sessionSeconds = quizConfig.timer * 60; 
 }
 
-function loadQuestion(index) {
-    try { 
-        currentIndex = index;
-        currentQuestionData = quizQueue[currentIndex];
-
-        if (!currentQuestionData.options) {
-            quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
-            currentQuestionData = quizQueue[currentIndex];
-        }
-
-        wrongAttempts = 0;
-        hasAnsweredCorrectly = (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct'); 
-        
-        if (!isExamMode) updateFeedbackBar();
-        
-        // ADDED SAFETY: Check if explanation elements exist before modifying
-        if (hasAnsweredCorrectly && !isExamMode) {
-            if (explanationBtn) explanationBtn.style.display = 'inline-block';
-        } else {
-            if (explanationBtn) explanationBtn.style.display = 'none'; 
-            if (explanationModal) {
-                explanationModal.classList.remove('show');
-                explanationModal.classList.add('hidden');
-            }
-        }
-
-        const displayNum = currentIndex + 1;
-        if (questionIdBadge) {
-            questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
-        }
-
-        if (isExamMode) {
-            if (currentQuestionData.hasBeenSkipped) {
-                if (skippedWarningEl) skippedWarningEl.classList.remove('hidden');
-                if (skipBtn) skipBtn.style.display = 'none'; 
-            } else {
-                if (skippedWarningEl) skippedWarningEl.classList.add('hidden');
-                if (skipBtn) skipBtn.style.display = 'block';
-            }
-            const nextBtn = document.getElementById('next-btn');
-            if (nextBtn) {
-                nextBtn.textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
-            }
-        }
-
-        if (questionTextEl) questionTextEl.innerHTML = currentQuestionData.text;
-        if (explanationText) explanationText.innerHTML = currentQuestionData.explanation;
-
-        if (optionsContainer) {
-            optionsContainer.innerHTML = '';
-            currentQuestionData.options.forEach(opt => {
-                const optBox = document.createElement('div');
-                optBox.className = 'option-box';
-                
-                if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
-                    optBox.classList.add('selected');
-                } else if (!isExamMode && hasAnsweredCorrectly) {
-                    if (opt.isCorrect) optBox.classList.add('correct');
-                    optBox.classList.add('locked');
-                }
-
-                optBox.innerHTML = `<div class="option-text">${opt.text}</div><i class="fas fa-eye eye-icon"></i>`;
-                optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
-                optionsContainer.appendChild(optBox);
-            });
-        }
-
-        // BOOKMARK
-        const bookmarkBtn = document.getElementById('bookmark-btn');
-        if (bookmarkBtn) {
-            const starIcon = bookmarkBtn.querySelector('i');
-            if (starIcon) {
-                if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
-                else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
-            }
-
-            bookmarkBtn.onclick = (e) => {
-                e.preventDefault();
-                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
-                currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
-                
-                if (starIcon) {
-                    if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
-                    else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
-                }
-                toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
-            };
-        }
-
-        // NOTES
-        const noteBtn = document.getElementById('note-btn');
-        if (noteBtn) {
-            noteBtn.onclick = (e) => {
-                e.preventDefault();
-                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to save personal notes.");
-                if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
-                if (notesModal) {
-                    notesModal.classList.remove('hidden');
-                    notesModal.classList.add('show');
-                }
-            };
-        }
-
-        if (saveNoteBtn) {
-            saveNoteBtn.onclick = () => {
-                if (noteInput) {
-                    const typedNote = noteInput.value.trim();
-                    currentQuestionData.userNote = typedNote; 
-                    if (typeof saveNoteToFirebase === "function") {
-                        saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
-                    }
-                }
-                if (notesModal) {
-                    notesModal.classList.remove('show');
-                    setTimeout(() => notesModal.classList.add('hidden'), 300);
-                }
-            };
-        }
-
-        if (closeNotesBtn) {
-            closeNotesBtn.onclick = () => {
-                if (notesModal) {
-                    notesModal.classList.remove('show');
-                    setTimeout(() => notesModal.classList.add('hidden'), 300);
-                }
-            };
-        }
-		
-        // REPORT QUESTION
-        const btnReport = document.getElementById('btn-report');
-        const reportModal = document.getElementById('report-modal');
-        const closeReportBtn = document.getElementById('close-report-btn');
-        const submitReportBtn = document.getElementById('submit-report-btn');
-        const reportReasonInput = document.getElementById('report-reason-input');
-
-        if (btnReport) {
-            btnReport.onclick = () => {
-                if (reportReasonInput) reportReasonInput.value = "";
-                if (reportModal) {
-                    reportModal.classList.remove('hidden');
-                    reportModal.classList.add('show');
-                }
-            };
-        }
-
-        if (closeReportBtn) {
-            closeReportBtn.onclick = () => {
-                if (reportModal) {
-                    reportModal.classList.remove('show');
-                    setTimeout(() => reportModal.classList.add('hidden'), 300);
-                }
-            };
-        }
-
-        if (submitReportBtn) {
-            submitReportBtn.onclick = async () => {
-                if (!reportReasonInput) return;
-                const reason = reportReasonInput.value.trim();
-                if (!reason) return alert("Please specify why you are reporting this question.");
-                
-                const user = auth.currentUser;
-                if (!user) return alert("Authentication error.");
-
-                submitReportBtn.textContent = "Submitting...";
-                submitReportBtn.disabled = true;
-
-                try {
-                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
-                    await addDoc(collection(db, "reported_questions"), {
-                        userId: user.uid,
-                        userEmail: user.email || "Unknown Email",
-                        questionId: currentQuestionData.originalNumber,
-                        courseFile: activeCourse,
-                        questionText: currentQuestionData.text ? currentQuestionData.text.substring(0, 100) + "..." : "No text",
-                        reason: reason,
-                        timestamp: serverTimestamp()
-                    });
-                    
-                    alert("Report submitted successfully. Thank you!");
-                    if (reportModal) {
-                        reportModal.classList.remove('show');
-                        setTimeout(() => reportModal.classList.add('hidden'), 300);
-                    }
-                } catch (e) {
-                    console.error("Error reporting question: ", e);
-                    alert("Failed to submit report.");
-                } finally {
-                    submitReportBtn.textContent = "Submit Report";
-                    submitReportBtn.disabled = false;
-                }
-            };
-        }
-
-        updateGridStyles();
-
-    } catch (error) { 
-        console.error("🚨 CRASH inside loadQuestion:", error);
+function loadSession() {
+    const storedData = localStorage.getItem('edeetos_active_quiz');
+    if (!storedData) {
+        window.location.href = 'questions.html';
+        return;
     }
+    quizQueue = JSON.parse(storedData);
+    if (quizQueue.length === 0) {
+        window.location.href = 'questions.html';
+        return;
+    }
+
+    quizQueue.forEach((q, i) => {     
+        if (!q.originalNumber) {
+            const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
+            q.originalNumber = idFromCSV || `q-${i + 1}`; 
+        }
+        q.sessionState = null; 
+        q.historicalState = null; 
+    });
+	
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const userRef = doc(db, "users", user.uid);
+            try {
+                const docSnap = await getDoc(userRef);
+                if (docSnap.exists()) {
+                    const dbData = docSnap.data();
+                    
+                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                    const courseData = dbData[activeCourse] || {};
+                    
+                    const savedNotes = courseData.notes || {}; 
+                    const savedBookmarks = courseData.bookmarks || []; 
+                    const solvedList = courseData.solvedQuestions || [];
+                    const mistakesList = courseData.mistakes || [];
+                    const examMistakesList = courseData.examMistakes || [];
+
+                    quizQueue.forEach(q => {
+                        q.isBookmarked = savedBookmarks.includes(q.originalNumber);
+                        q.userNote = savedNotes[q.originalNumber] || "";
+                        
+                        if (mistakesList.includes(q.originalNumber) || examMistakesList.includes(q.originalNumber)) {
+                            q.historicalState = 'wrong';
+                        } else if (solvedList.includes(q.originalNumber)) {
+                            q.historicalState = 'correct';
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error("❌ Firebase Load Error:", error);
+            } finally {
+                startTimer();
+                if (!isExamMode) buildNumberGrid(); 
+                loadQuestion(0);
+            }
+        } else {
+            if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+                startTimer();
+                if (!isExamMode) buildNumberGrid(); 
+                loadQuestion(0);
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+    });
 }
 
 function formatCSVQuestion(rawCsvRow) {
@@ -319,6 +187,186 @@ function triggerSlideTransition(newIndex, direction) {
         void cardEl.offsetWidth; 
         cardEl.classList.add(inClass);
     }, 300);
+}
+
+function loadQuestion(index) {
+    try { 
+        currentIndex = index;
+        currentQuestionData = quizQueue[currentIndex];
+
+        if (!currentQuestionData.options) {
+            quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
+            currentQuestionData = quizQueue[currentIndex];
+        }
+
+        wrongAttempts = 0;
+        hasAnsweredCorrectly = (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct'); 
+        
+        if (!isExamMode) updateFeedbackBar();
+        
+        if (hasAnsweredCorrectly && !isExamMode) {
+            explanationBtn.style.display = 'inline-block';
+        } else {
+            explanationBtn.style.display = 'none'; 
+            explanationModal.classList.remove('show');
+            explanationModal.classList.add('hidden');
+        }
+
+        const displayNum = currentIndex + 1;
+        if (questionIdBadge) {
+            questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
+        }
+
+        if (isExamMode) {
+            if (currentQuestionData.hasBeenSkipped) {
+                skippedWarningEl.classList.remove('hidden');
+                skipBtn.style.display = 'none'; 
+            } else {
+                skippedWarningEl.classList.add('hidden');
+                skipBtn.style.display = 'block';
+            }
+            document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
+        }
+
+        questionTextEl.innerHTML = currentQuestionData.text;
+        explanationText.innerHTML = currentQuestionData.explanation;
+
+        optionsContainer.innerHTML = '';
+        currentQuestionData.options.forEach(opt => {
+            const optBox = document.createElement('div');
+            optBox.className = 'option-box';
+            
+            if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+                optBox.classList.add('selected');
+            } else if (!isExamMode && hasAnsweredCorrectly) {
+                if (opt.isCorrect) optBox.classList.add('correct');
+                optBox.classList.add('locked');
+            }
+
+            optBox.innerHTML = `<div class="option-text">${opt.text}</div><i class="fas fa-eye eye-icon"></i>`;
+            optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
+            optionsContainer.appendChild(optBox);
+        });
+
+        // BOOKMARK
+        const bookmarkBtn = document.getElementById('bookmark-btn');
+        if (bookmarkBtn) {
+            const starIcon = bookmarkBtn.querySelector('i');
+            if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
+            else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
+
+            bookmarkBtn.onclick = (e) => {
+                e.preventDefault();
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
+                currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
+                if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
+                else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
+                toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+            };
+        }
+
+        // NOTES
+        const noteBtn = document.getElementById('note-btn');
+        if (noteBtn) {
+            noteBtn.onclick = (e) => {
+                e.preventDefault();
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to save personal notes.");
+                if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
+                if (notesModal) {
+                    notesModal.classList.remove('hidden');
+                    notesModal.classList.add('show');
+                }
+            };
+        }
+
+        if (saveNoteBtn) {
+            saveNoteBtn.onclick = () => {
+                const typedNote = noteInput.value.trim();
+                currentQuestionData.userNote = typedNote; 
+                if (typeof saveNoteToFirebase === "function") {
+                    saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
+                }
+                notesModal.classList.remove('show');
+                setTimeout(() => notesModal.classList.add('hidden'), 300);
+            };
+        }
+
+        if (closeNotesBtn) {
+            closeNotesBtn.onclick = () => {
+                notesModal.classList.remove('show');
+                setTimeout(() => notesModal.classList.add('hidden'), 300);
+            };
+        }
+		
+        // REPORT QUESTION
+        const btnReport = document.getElementById('btn-report');
+        const reportModal = document.getElementById('report-modal');
+        const closeReportBtn = document.getElementById('close-report-btn');
+        const submitReportBtn = document.getElementById('submit-report-btn');
+        const reportReasonInput = document.getElementById('report-reason-input');
+
+        if (btnReport) {
+            btnReport.onclick = () => {
+                reportReasonInput.value = "";
+                if (reportModal) {
+                    reportModal.classList.remove('hidden');
+                    reportModal.classList.add('show');
+                }
+            };
+        }
+
+        if (closeReportBtn) {
+            closeReportBtn.onclick = () => {
+                if (reportModal) {
+                    reportModal.classList.remove('show');
+                    setTimeout(() => reportModal.classList.add('hidden'), 300);
+                }
+            };
+        }
+
+        if (submitReportBtn) {
+            submitReportBtn.onclick = async () => {
+                const reason = reportReasonInput.value.trim();
+                if (!reason) return alert("Please specify why you are reporting this question.");
+                
+                const user = auth.currentUser;
+                if (!user) return alert("Authentication error.");
+
+                submitReportBtn.textContent = "Submitting...";
+                submitReportBtn.disabled = true;
+
+                try {
+                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
+                    await addDoc(collection(db, "reported_questions"), {
+                        userId: user.uid,
+                        userEmail: user.email || "Unknown Email",
+                        questionId: currentQuestionData.originalNumber,
+                        courseFile: activeCourse,
+                        questionText: currentQuestionData.text ? currentQuestionData.text.substring(0, 100) + "..." : "No text",
+                        reason: reason,
+                        timestamp: serverTimestamp()
+                    });
+                    
+                    alert("Report submitted successfully. Thank you!");
+                    if (reportModal) {
+                        reportModal.classList.remove('show');
+                        setTimeout(() => reportModal.classList.add('hidden'), 300);
+                    }
+                } catch (e) {
+                    console.error("Error reporting question: ", e);
+                    alert("Failed to submit report.");
+                } finally {
+                    submitReportBtn.textContent = "Submit Report";
+                    submitReportBtn.disabled = false;
+                }
+            };
+        }
+
+        updateGridStyles();
+
+    } catch (error) { 
+        console.error("🚨 CRASH inside loadQuestion:", error);
+    }
 }
 
 // ==========================================
@@ -495,17 +543,14 @@ function handleOptionClick(event, optionData, optionElement) {
 }
 
 function updateFeedbackBar() {
-    if (wrongCountEl) wrongCountEl.textContent = `${wrongAttempts} ✖`;
-    if (rightCountEl) rightCountEl.textContent = `${hasAnsweredCorrectly ? 1 : 0} ✔`;
+    wrongCountEl.textContent = `${wrongAttempts} ✖`;
+    rightCountEl.textContent = `${hasAnsweredCorrectly ? 1 : 0} ✔`;
     const totalAttempts = wrongAttempts + (hasAnsweredCorrectly ? 1 : 0);
-    
-    if (feedbackFill) {
-        if (totalAttempts > 0) {
-            const percentGreen = (hasAnsweredCorrectly ? 1 : 0) / totalAttempts * 100;
-            feedbackFill.style.width = `${percentGreen}%`;
-        } else {
-            feedbackFill.style.width = `0%`;
-        }
+    if (totalAttempts > 0) {
+        const percentGreen = (hasAnsweredCorrectly ? 1 : 0) / totalAttempts * 100;
+        feedbackFill.style.width = `${percentGreen}%`;
+    } else {
+        feedbackFill.style.width = `0%`;
     }
 }
 
@@ -579,14 +624,12 @@ function startTimer() {
     }, 1000);
 }
 
-if (skipBtn) {
-    skipBtn.onclick = () => {
-        let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
-        skippedQuestion.hasBeenSkipped = true;
-        quizQueue.push(skippedQuestion);
-        triggerSlideTransition(currentIndex, 'right');
-    };
-}
+skipBtn.onclick = () => {
+    let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
+    skippedQuestion.hasBeenSkipped = true;
+    quizQueue.push(skippedQuestion);
+    triggerSlideTransition(currentIndex, 'right');
+};
 
 // ==========================================
 // 6. MODAL & NAVIGATION CONTROLS
@@ -604,40 +647,27 @@ if (closeExplanationBtn) {
     };
 }
 
-const nextBtnGlobal = document.getElementById('next-btn');
-if (nextBtnGlobal) {
-    nextBtnGlobal.onclick = () => {
-        if (isExamMode) {
-            if (!currentQuestionData.userSelectedAnswer) {
-                alert("Please select an answer. If you are stuck, click Skip.");
-                return;
-            }
-            if (currentIndex === quizQueue.length - 1) {
-                showResults();
-                return;
-            }
+document.getElementById('next-btn').onclick = () => {
+    if (isExamMode) {
+        if (!currentQuestionData.userSelectedAnswer) {
+            alert("Please select an answer. If you are stuck, click Skip.");
+            return;
         }
-
-        if (currentIndex < quizQueue.length - 1) {
-            triggerSlideTransition(currentIndex + 1, 'right');
+        if (currentIndex === quizQueue.length - 1) {
+            showResults();
+            return;
         }
-    };
-}
+    }
 
-const prevBtnGlobal = document.getElementById('prev-btn');
-if (prevBtnGlobal) {
-    prevBtnGlobal.onclick = () => {
-        if (isExamMode) return; 
-        if (currentIndex > 0) triggerSlideTransition(currentIndex - 1, 'left');
-    };
-}
+    if (currentIndex < quizQueue.length - 1) {
+        triggerSlideTransition(currentIndex + 1, 'right');
+    }
+};
 
-// THIS MIGHT BE MISSING! See note above.
-if (typeof loadSession === "function") {
-    loadSession();
-} else {
-    console.warn("⚠️ EDEETOS WARNING: loadSession() is not defined in this file. The quiz cannot start without fetching the questions!");
-}
+document.getElementById('prev-btn').onclick = () => {
+    if (isExamMode) return; 
+    if (currentIndex > 0) triggerSlideTransition(currentIndex - 1, 'left');
+};
 
 // ==========================================
 // KEYBOARD SHORTCUTS
@@ -647,8 +677,7 @@ const shortcutsModal = document.getElementById('shortcuts-modal');
 const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
 
 if (shortcutsBtn) {
-    shortcutsBtn.addEventListener('click', (e) => {
-        e.preventDefault(); 
+    shortcutsBtn.addEventListener('click', () => {
         if(shortcutsModal) {
             shortcutsModal.classList.remove('hidden');
             shortcutsModal.classList.add('show');
@@ -657,8 +686,7 @@ if (shortcutsBtn) {
     });
 }
 if (closeShortcutsBtn) {
-    closeShortcutsBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+    closeShortcutsBtn.addEventListener('click', () => {
         if(shortcutsModal) {
             shortcutsModal.classList.add('hidden');
             shortcutsModal.classList.remove('show');
@@ -708,14 +736,14 @@ document.addEventListener('keydown', (e) => {
             if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
                 if(closeShortcutsBtn) closeShortcutsBtn.click();
             }
-            else if (isExplanationOpen && document.getElementById('close-explanation')) document.getElementById('close-explanation').click();
-            else if (notesModalLocal && notesModalLocal.classList.contains('show') && document.getElementById('close-notes-btn')) document.getElementById('close-notes-btn').click();
-            else if (reportModalLocal && reportModalLocal.classList.contains('show') && document.getElementById('close-report-btn')) document.getElementById('close-report-btn').click();
+            else if (isExplanationOpen) document.getElementById('close-explanation').click();
+            else if (notesModalLocal && notesModalLocal.classList.contains('show')) document.getElementById('close-notes-btn').click();
+            else if (reportModalLocal && reportModalLocal.classList.contains('show')) document.getElementById('close-report-btn').click();
             else window.location.href = 'questions.html'; 
             break;
         case 'Enter':
             e.preventDefault();
-            if (isExplanationOpen && document.getElementById('close-explanation')) {
+            if (isExplanationOpen) {
                 document.getElementById('close-explanation').click();
             } else if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
                 if(closeShortcutsBtn) closeShortcutsBtn.click();
@@ -731,8 +759,7 @@ document.addEventListener('keydown', (e) => {
         case 's':
         case 'S':
             e.preventDefault();
-            const bkmrkBtn = document.getElementById('bookmark-btn');
-            if (currentQuestionData && bkmrkBtn) bkmrkBtn.click();
+            if (currentQuestionData) document.getElementById('bookmark-btn').click();
             break;
             
         case 'a': case 'A': case '1': selectOptionByIndex(0); break;
@@ -759,7 +786,9 @@ let isScreenshotBlockEnabled = true;
 document.addEventListener("keyup", (e) => {
     if (isScreenshotBlockEnabled && e.key === "PrintScreen") {
         navigator.clipboard.writeText("Screenshots are disabled for copyright protection.");
-        const antiScreenshot = document.getElementById('anti-screenshot-screen');
-        if (antiScreenshot) antiScreenshot.style.display = 'flex';
+        document.getElementById('anti-screenshot-screen').style.display = 'flex';
     }
 });
+
+loadSession();
+
