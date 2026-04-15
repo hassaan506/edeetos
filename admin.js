@@ -61,8 +61,21 @@ async function calculateTotalQuestions() {
             const response = await fetch(`Data/${course}.csv`);
             if (response.ok) {
                 const text = await response.text();
-                const lines = text.split('\n').filter(line => line.trim().length > 0);
-                if (lines.length > 1) totalQuestions += (lines.length - 1);
+                
+                // Split the text into lines
+                const lines = text.split('\n');
+                
+                // Filter out lines that are completely empty OR just contain commas (e.g., ",,,,,,,")
+                const validLines = lines.filter(line => {
+                    // Temporarily remove all commas to see if there is actual text left
+                    const cleanedLine = line.replace(/,/g, '').trim();
+                    return cleanedLine.length > 0;
+                });
+
+                // If we have data (header + at least one question)
+                if (validLines.length > 1) {
+                    totalQuestions += (validLines.length - 1); // Subtract 1 for the header row
+                }
             }
         } catch (e) {} 
     }
