@@ -37,8 +37,6 @@ const noteInput = document.getElementById('note-input');
 const closeNotesBtn = document.getElementById('close-notes-btn');
 const saveNoteBtn = document.getElementById('save-note-btn');
 
-explanationModal.classList.remove('hidden');
-
 if (isExamMode) {
     document.body.classList.add('mode-exam');
     sessionSeconds = quizConfig.timer * 60; 
@@ -211,6 +209,7 @@ function loadQuestion(index) {
         } else {
             explanationBtn.style.display = 'none'; 
             explanationModal.classList.remove('show');
+            explanationModal.classList.add('hidden');
         }
 
         const displayNum = currentIndex + 1;
@@ -273,7 +272,10 @@ function loadQuestion(index) {
                 e.preventDefault();
                 if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to save personal notes.");
                 if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
-                if (notesModal) notesModal.classList.add('show');
+                if (notesModal) {
+                    notesModal.classList.remove('hidden');
+                    notesModal.classList.add('show');
+                }
             };
         }
 
@@ -285,11 +287,15 @@ function loadQuestion(index) {
                     saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
                 }
                 notesModal.classList.remove('show');
+                setTimeout(() => notesModal.classList.add('hidden'), 300);
             };
         }
 
         if (closeNotesBtn) {
-            closeNotesBtn.onclick = () => notesModal.classList.remove('show');
+            closeNotesBtn.onclick = () => {
+                notesModal.classList.remove('show');
+                setTimeout(() => notesModal.classList.add('hidden'), 300);
+            };
         }
 		
         // REPORT QUESTION
@@ -302,15 +308,19 @@ function loadQuestion(index) {
         if (btnReport) {
             btnReport.onclick = () => {
                 reportReasonInput.value = "";
-                if (reportModal) reportModal.classList.remove('hidden');
-                if (reportModal) reportModal.classList.add('show');
+                if (reportModal) {
+                    reportModal.classList.remove('hidden');
+                    reportModal.classList.add('show');
+                }
             };
         }
 
         if (closeReportBtn) {
             closeReportBtn.onclick = () => {
-                if (reportModal) reportModal.classList.remove('show');
-                setTimeout(() => reportModal.classList.add('hidden'), 300);
+                if (reportModal) {
+                    reportModal.classList.remove('show');
+                    setTimeout(() => reportModal.classList.add('hidden'), 300);
+                }
             };
         }
 
@@ -338,8 +348,10 @@ function loadQuestion(index) {
                     });
                     
                     alert("Report submitted successfully. Thank you!");
-                    if (reportModal) reportModal.classList.remove('show');
-                    setTimeout(() => reportModal.classList.add('hidden'), 300);
+                    if (reportModal) {
+                        reportModal.classList.remove('show');
+                        setTimeout(() => reportModal.classList.add('hidden'), 300);
+                    }
                 } catch (e) {
                     console.error("Error reporting question: ", e);
                     alert("Failed to submit report.");
@@ -368,15 +380,12 @@ async function savePracticeProgress(questionId, isCorrect) {
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
     
-    // We build the object cleanly here so Firebase merges it perfectly
     let courseUpdates = {};
 
     if (isCorrect) {
         const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
-        
         courseUpdates.solvedQuestions = arrayUnion(questionId); 
 
-        // ONLY remove the mistake if they are actively in Practice Mistakes mode!
         if (isReviewMistakesMode) {
             courseUpdates.mistakes = arrayRemove(questionId);      
             courseUpdates.examMistakes = arrayRemove(questionId);   
@@ -467,20 +476,6 @@ async function saveNoteToFirebase(questionId, noteText) {
     } catch (error) { console.error("Error saving note:", error); }
 }
 
-async function saveNoteToFirebase(questionId, noteText) {
-    const user = auth.currentUser;
-    if (!user) return; 
-    
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-    const userRef = doc(db, "users", user.uid);
-    
-    try {
-        await updateDoc(userRef, {
-            [`${activeCourse}.notes.${questionId}`]: noteText
-        });
-    } catch (error) { console.error("Error saving note:", error); }
-}
-
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
         optionElement.classList.toggle('strikethrough');
@@ -538,7 +533,12 @@ function handleOptionClick(event, optionData, optionElement) {
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
         explanationBtn.style.display = 'inline-block'; 
-        setTimeout(() => explanationModal.classList.add('show'), 600);
+        setTimeout(() => {
+            if (explanationModal) {
+                explanationModal.classList.remove('hidden');
+                explanationModal.classList.add('show');
+            }
+        }, 600);
     }
 }
 
@@ -574,7 +574,7 @@ function showResults() {
     });
 
     const total = quizQueue.length;
-    const percentage = Math.round((correctCount / total) * 100);
+    const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     
 	if (isExamMode) {
         saveExamProgress(correctIds, mistakeIds, correctCount, total);
@@ -634,8 +634,18 @@ skipBtn.onclick = () => {
 // ==========================================
 // 6. MODAL & NAVIGATION CONTROLS
 // ==========================================
-explanationBtn.onclick = () => explanationModal.classList.add('show');
-closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
+if (explanationBtn) {
+    explanationBtn.onclick = () => {
+        explanationModal.classList.remove('hidden');
+        explanationModal.classList.add('show');
+    };
+}
+if (closeExplanationBtn) {
+    closeExplanationBtn.onclick = () => {
+        explanationModal.classList.remove('show');
+        setTimeout(() => explanationModal.classList.add('hidden'), 300);
+    };
+}
 
 document.getElementById('next-btn').onclick = () => {
     if (isExamMode) {
@@ -673,7 +683,7 @@ if (shortcutsBtn) {
         if(shortcutsModal) {
             shortcutsModal.classList.remove('hidden');
             shortcutsModal.classList.add('show');
-            shortcutsModal.style.display = 'flex'; // Failsafe to guarantee it opens!
+            shortcutsModal.style.display = 'flex'; 
         }
     });
 }
@@ -682,19 +692,17 @@ if (closeShortcutsBtn) {
         if(shortcutsModal) {
             shortcutsModal.classList.add('hidden');
             shortcutsModal.classList.remove('show');
-            setTimeout(() => { shortcutsModal.style.display = 'none'; }, 300); // Failsafe to close
+            setTimeout(() => { shortcutsModal.style.display = 'none'; }, 300);
         }
     });
 }
 
 document.addEventListener('keydown', (e) => {
-    // 1. Ignore shortcuts if the user is typing in any input or textarea
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
         return; 
     }
 
-    // Grab elements dynamically so they are always found
     const nextBtnLocal = document.getElementById('next-btn');
     const prevBtnLocal = document.getElementById('prev-btn');
     const explanationModalLocal = document.getElementById('explanation-modal');
@@ -703,7 +711,6 @@ document.addEventListener('keydown', (e) => {
 
     const isExplanationOpen = explanationModalLocal && explanationModalLocal.classList.contains('show');
 
-    // 2. Handle Explanation Modal Scroll Hijacking (Up/Down)
     if (isExplanationOpen) {
         const modalContent = explanationModalLocal.querySelector('.modal-content');
         if (e.key === 'ArrowUp') {
@@ -743,7 +750,6 @@ document.addEventListener('keydown', (e) => {
             } else if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
                 if(closeShortcutsBtn) closeShortcutsBtn.click();
             } else if (isExamMode) {
-                // In Exam mode, Enter acts as Next/Submit
                 if(nextBtnLocal) nextBtnLocal.click();
             }
             break;
@@ -758,7 +764,6 @@ document.addEventListener('keydown', (e) => {
             if (currentQuestionData) document.getElementById('bookmark-btn').click();
             break;
             
-        // Map Keys A-E and 1-5 to Option Selection
         case 'a': case 'A': case '1': selectOptionByIndex(0); break;
         case 'b': case 'B': case '2': selectOptionByIndex(1); break;
         case 'c': case 'C': case '3': selectOptionByIndex(2); break;
@@ -778,18 +783,11 @@ function selectOptionByIndex(index) {
 // ==========================================
 // ANTI-SCREENSHOT LOGIC 
 // ==========================================
-let isScreenshotBlockEnabled = true; // Enabled by default
+let isScreenshotBlockEnabled = true; 
 
-// Listen for the Print Screen key
 document.addEventListener("keyup", (e) => {
     if (isScreenshotBlockEnabled && e.key === "PrintScreen") {
-        // Overwrite clipboard to stop the image from saving
         navigator.clipboard.writeText("Screenshots are disabled for copyright protection.");
-        
-        // Show our brand new Pitch-Black warning screen!
         document.getElementById('anti-screenshot-screen').style.display = 'flex';
     }
 });
-
-// REMEMBER: Turn this off for admins inside your onAuthStateChanged function:
-// if (role === 'ADMIN' || role === 'MANAGEMENT') isScreenshotBlockEnabled = false;
