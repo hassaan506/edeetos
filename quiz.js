@@ -1,7 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
 // ==========================================
@@ -109,6 +108,14 @@ function loadSession() {
         }
     });
 }
+// Function to randomly shuffle an array (Fisher-Yates algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 function formatCSVQuestion(rawCsvRow) {
     const correctLetter = (rawCsvRow['CorrectAnswer'] || rawCsvRow['correctAnswer'] || '').toString().trim().toUpperCase();
@@ -123,7 +130,9 @@ function formatCSVQuestion(rawCsvRow) {
         }
     });
 
-    const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
+	shuffleArray(options);
+    
+	const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
 
     return {
         text: rawCsvRow.Question || rawCsvRow.question || "Missing Question Text",
@@ -213,7 +222,6 @@ function loadQuestion(index) {
         } else {
             explanationBtn.style.display = 'none'; 
             explanationModal.classList.remove('show');
-            explanationModal.classList.add('hidden');
         }
 
         const displayNum = currentIndex + 1;
@@ -647,7 +655,6 @@ if (explanationBtn) {
 if (closeExplanationBtn) {
     closeExplanationBtn.onclick = () => {
         explanationModal.classList.remove('show');
-        setTimeout(() => explanationModal.classList.add('hidden'), 300);
     };
 }
 
