@@ -81,7 +81,7 @@ if(btnCloseEdit) btnCloseEdit.addEventListener('click', () => { editModal.style.
 // 2. TAB ROUTING (HARD-WIRED to Window)
 // ==========================================
 window.switchView = function(viewName) {
-    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports'];
+    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports', 'view-messages'];
     views.forEach(v => {
         const el = document.getElementById(v);
         if (el) el.style.display = 'none';
@@ -98,6 +98,7 @@ window.switchView = function(viewName) {
     if(viewName === 'keys') fetchKeys();
     if(viewName === 'payments') fetchPayments();
     if(viewName === 'reports') fetchReports();
+    if(viewName === 'messages') fetchMessages(); 
 };
 
 // ==========================================
@@ -168,7 +169,7 @@ function renderUsers(usersArray) {
             <div style="flex-grow: 1;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
                     <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${userName}</div>
-                    <div style="font-size: 0.85rem; color: #64748b; font-weight: 600;">✉️ ${userEmail} &nbsp;|&nbsp; 📞 ${userPhone}</div>
+                    <div style="font-size: 0.85rem; color: #64748b; font-weight: 600;">📧 ${userEmail} &nbsp;|&nbsp; 📞 ${userPhone}</div>
                 </div>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">${roleHtml} ${coursesHtml}</div>
             </div>
@@ -380,7 +381,6 @@ async function fetchKeys() {
 // ==========================================
 let unsubscribePayments = null;
 
-// Modal Close Logic
 const receiptModal = document.getElementById('receipt-modal');
 const btnCloseReceipt = document.getElementById('btn-close-receipt');
 if (btnCloseReceipt && receiptModal) {
@@ -393,7 +393,7 @@ function fetchPayments() {
     const list = document.getElementById('payments-list');
     if(!list) return;
     
-    if (unsubscribePayments) return; // Already listening
+    if (unsubscribePayments) return;
 
     unsubscribePayments = onSnapshot(collection(db, "payment_requests"), (qSnap) => {
         list.innerHTML = '';
@@ -443,14 +443,13 @@ function fetchPayments() {
                 </div>
             `;
 
-            // Open Receipt Modal Logic
             const viewTrigger = card.querySelector('.view-receipt-trigger');
             if (viewTrigger) {
                 viewTrigger.addEventListener('click', () => {
                     const modalImg = document.getElementById('receipt-modal-img');
                     if (receiptModal && modalImg) {
-                        modalImg.src = data.receiptUrl; // Pass the image data to the modal
-                        receiptModal.style.display = 'flex'; // Show the modal
+                        modalImg.src = data.receiptUrl; 
+                        receiptModal.style.display = 'flex'; 
                     }
                 });
             }
@@ -521,7 +520,7 @@ async function fetchReports() {
 
         reportsDocs.sort((a, b) => {
             if (!a.timestamp || !b.timestamp) return 0;
-            return b.timestamp.toMillis() - a.timestamp.toMillis(); // Descending Order
+            return b.timestamp.toMillis() - a.timestamp.toMillis();
         });
 
         reportsDocs.forEach(data => {
@@ -579,6 +578,103 @@ async function fetchReports() {
             list.appendChild(card);
         });
 
-        if(!hasReports) list.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No reported questions at the moment. 🎉</p>';
+        if(!hasReports) list.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No reported questions at the moment. ✨</p>';
+    });
+}
+
+// ==========================================
+// 9. CONTACT MESSAGES LOGIC
+// ==========================================
+let unsubscribeMessages = null;
+
+async function fetchMessages() {
+    const list = document.getElementById('messages-list');
+    if(!list) return;
+    
+    if (unsubscribeMessages) return; 
+
+    const { collection, onSnapshot, doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+
+    unsubscribeMessages = onSnapshot(collection(db, "contact_messages"), (qSnap) => {
+        list.innerHTML = '';
+        let hasMessages = false;
+        
+        const messagesDocs = [];
+        qSnap.forEach(d => messagesDocs.push({ id: d.id, ...d.data() }));
+
+        // Sort by newest first
+        messagesDocs.sort((a, b) => {
+            const dateA = new Date(a.timestamp || 0);
+            const dateB = new Date(b.timestamp || 0);
+            return dateB - dateA; 
+        });
+
+        messagesDocs.forEach(data => {
+            hasMessages = true;
+
+            const card = document.createElement('div');
+            card.className = "message-card";
+            
+            let dateStr = "Unknown Date";
+            if (data.timestamp) {
+                dateStr = new Date(data.timestamp).toLocaleString(undefined, {
+                    month: 'short', day: 'numeric', year: 'numeric', 
+                    hour: 'numeric', minute: 'numeric'
+                });
+            }
+
+            // Clean the WhatsApp number for the URL (removes spaces, +, -, etc.)
+            const cleanWhatsapp = data.whatsapp ? data.whatsapp.replace(/[^0-9]/g, '') : '';
+
+            card.innerHTML = `
+                <div class="message-header">
+                    <div>
+                        <div class="message-title">${data.name}</div>
+                        <div class="message-email" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 5px;">
+                            <span>
+                                <i class="fas fa-envelope"></i> 
+                                <a href="mailto:${data.email}">${data.email}</a>
+                            </span>
+                            ${data.whatsapp ? `
+                            <span>
+                                <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.1em;"></i> 
+                                <a href="https://wa.me/${cleanWhatsapp}" target="_blank" style="color: #10b981; text-decoration: none;">${data.whatsapp}</a>
+                            </span>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="message-date">${dateStr}</div>
+                </div>
+                
+                <div class="message-body">${data.message}</div>
+
+                <div class="message-footer">
+                    <button class="btn-outline btn-delete-msg">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            `;
+
+            // Delete functionality
+            card.querySelector('.btn-delete-msg').addEventListener('click', async () => {
+                if(confirm("Are you sure you want to delete this message?")) {
+                    const btn = card.querySelector('.btn-delete-msg');
+                    btn.textContent = "Deleting...";
+                    btn.disabled = true;
+                    try {
+                        await deleteDoc(doc(db, "contact_messages", data.id));
+                    } catch (e) {
+                        console.error("Error deleting message: ", e);
+                        alert("Failed to delete message.");
+                        btn.textContent = "Delete";
+                        btn.disabled = false;
+                    }
+                }
+            });
+
+            list.appendChild(card);
+        });
+
+        if(!hasMessages) list.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No new messages. Your inbox is clean! ✨</p>';
     });
 }

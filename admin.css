@@ -279,3 +279,120 @@ body {
 .b-student { background: #f1f5f9; color: #64748b; }
 .b-course { background: #e0f2fe; color: #0369a1; }
 .b-time { background: #dbeafe; color: #0284c7; }
+
+/* ========================================== */
+/* MESSAGES TAB STYLES (RESPONSIVE)           */
+/* ========================================== */
+.message-card {
+    background: white;
+    border-left: 4px solid #3b82f6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.message-title {
+    font-weight: 800;
+    color: #1e293b;
+    font-size: 1.15rem;
+}
+
+.message-email {
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+    font-weight: 700;
+}
+
+.message-email a {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.message-email a:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.message-date {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.message-body {
+    background: #f8fafc;
+    padding: 1.2rem;
+    border-radius: 8px;
+    color: #334155;
+    font-size: 0.95rem;
+    border: 1px solid #e2e8f0;
+    white-space: pre-wrap; /* Keeps the user's paragraph breaks */
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.message-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 1rem;
+}
+
+.btn-delete-msg {
+    border-color: #ef4444;
+    color: #ef4444;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    margin: 0;
+    background: transparent;
+    transition: all 0.2s;
+}
+
+.btn-delete-msg:hover {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 600px) {
+    .message-card {
+        padding: 1rem;
+    }
+    
+    .message-header {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .message-date {
+        text-align: left;
+        margin-top: 0.2rem;
+    }
+    
+    .message-footer {
+        justify-content: stretch; /* Makes button full width on small phones */
+    }
+    
+    .btn-delete-msg {
+        width: 100%;
+        justify-content: center;
+    }
+}

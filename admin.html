@@ -20,11 +20,12 @@
             <button class="exit-btn" id="btn-exit-admin">Exit</button>
         </div>
 
-        <div class="tabs-container">
+        <<div class="tabs-container">
             <button class="admin-tab" onclick="switchView('reports')"><i class="fas fa-flag" style="color: #ef4444;"></i> Reports</button>
             <button class="admin-tab" onclick="switchView('payments')"><i class="fas fa-file-invoice-dollar" style="color: #f59e0b;"></i> Payments</button>
             <button class="admin-tab" onclick="switchView('keys')"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
             <button class="admin-tab active" onclick="switchView('users')"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
+            <button class="admin-tab" onclick="switchView('messages')"><i class="fas fa-envelope" style="color: #3b82f6;"></i> Messages</button>
         </div>
 
         <div id="view-users" class="admin-content">
@@ -120,6 +121,13 @@
             <h2 class="page-title"><i class="fas fa-flag" style="color: #ef4444;"></i> Flagged Reports</h2>
             <div id="reports-list">
                 <p style="color: #64748b; padding: 2rem; text-align: center;">System logs and user reports will appear here.</p>
+            </div>
+        </div>
+		
+		<div id="view-messages" class="admin-content" style="display: none;">
+            <h2 class="page-title"><i class="fas fa-envelope" style="color: #3b82f6;"></i> Contact Messages</h2>
+            <div id="messages-list">
+                <p style="color: #64748b; padding: 2rem; text-align: center;">Loading messages...</p>
             </div>
         </div>
 
