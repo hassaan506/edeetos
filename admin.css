@@ -505,4 +505,41 @@ body {
     .message-title { font-size: 1rem; }
     .message-email { font-size: 0.75rem; }
     .message-body { padding: 0.8rem; font-size: 0.85rem; }
+	
+	#edit-user-modal .popup-content {
+        max-height: 80vh !important; 
+        overflow-y: auto !important; 
+        padding: 1rem !important; 
+    }
+
+    /* Shrink the top text and gaps */
+    #edit-user-modal h2 { font-size: 1.2rem !important; }
+    #edit-user-name { font-size: 1.1rem !important; margin-top: 0.2rem !important; }
+    #edit-user-email, #edit-user-phone { font-size: 0.85rem !important; }
+    #edit-user-uid { margin-bottom: 0.8rem !important; font-size: 0.65rem !important; }
+
+    /* Make the Grant Access box much tighter */
+    .grant-box {
+        padding: 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    .grant-box select { padding: 0.5rem !important; font-size: 0.85rem !important; }
+    #btn-grant-access { padding: 0.6rem !important; font-size: 0.85rem !important; margin-top: 0.5rem !important;}
+
+    /* Shrink the Action Buttons */
+    #edit-user-modal .btn-outline,
+    #edit-user-modal .btn-solid {
+        padding: 0.6rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Turn the Close link into a clear, visible button at the bottom */
+    #btn-close-edit-modal {
+        margin-top: 1rem !important;
+        background: #f1f5f9 !important; 
+        border: 1px solid #cbd5e1 !important;
+        text-decoration: none !important;
+        display: block !important;
+        width: 100% !important;
+    }
 }
