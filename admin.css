@@ -371,8 +371,87 @@ body {
     color: #dc2626;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 600px) {
+/* ========================================== */
+/* COMPREHENSIVE MOBILE RESPONSIVENESS        */
+/* ========================================== */
+@media (max-width: 768px) {
+    /* 1. Container & Top Bar Fixes */
+    .admin-container {
+        padding: 1rem 0.5rem; 
+    }
+    
+    .top-bar {
+        padding: 1rem;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    /* 2. Tabs Fixes (Make them wrap nicely and fill space) */
+    .tabs-container {
+        gap: 0.5rem;
+    }
+    
+    .admin-tab {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.85rem;
+        flex-grow: 1; /* Forces tabs to share space equally */
+        justify-content: center;
+    }
+
+    /* 3. Search Bar Fixes (Stack vertically) */
+    .search-wrapper {
+        flex-direction: column;
+        border-radius: 12px;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+    
+    .search-input {
+        border-radius: 12px;
+        margin-bottom: 0.5rem;
+        border: 2px solid #e2e8f0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .search-btn {
+        border-radius: 12px;
+        padding: 0.8rem;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 4. Glass Box & Popups */
+    .glass-box {
+        padding: 1rem;
+    }
+    
+    .popup-content {
+        padding: 1.5rem 1rem;
+    }
+
+    /* 5. User Tab Fixes (.subs-box and .grant-box) */
+    .subs-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .subs-box > div:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .subs-box button {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    /* 6. Messages Tab Fixes (Keeping your original logic) */
     .message-card {
         padding: 1rem;
     }
@@ -388,7 +467,7 @@ body {
     }
     
     .message-footer {
-        justify-content: stretch; /* Makes button full width on small phones */
+        justify-content: stretch; 
     }
     
     .btn-delete-msg {

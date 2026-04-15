@@ -335,25 +335,34 @@ function loadQuestion(index) {
             };
         }
 
-        if (submitReportBtn) {
+if (submitReportBtn) {
             submitReportBtn.onclick = async () => {
                 const reason = reportReasonInput.value.trim();
                 if (!reason) return alert("Please specify why you are reporting this question.");
                 
+                // 1. Handle Guest Mode Gracefully
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+                    return alert("Please register an account to report questions.");
+                }
+
                 const user = auth.currentUser;
-                if (!user) return alert("Authentication error.");
+                if (!user) return alert("Authentication error. Please log in again.");
 
                 submitReportBtn.textContent = "Submitting...";
                 submitReportBtn.disabled = true;
 
                 try {
                     const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
+                    
+                    // Safely convert question text to a string just in case it's pure HTML or numbers
+                    const qText = currentQuestionData.text ? String(currentQuestionData.text).substring(0, 100) + "..." : "No text";
+
                     await addDoc(collection(db, "reported_questions"), {
                         userId: user.uid,
                         userEmail: user.email || "Unknown Email",
                         questionId: currentQuestionData.originalNumber,
                         courseFile: activeCourse,
-                        questionText: currentQuestionData.text ? currentQuestionData.text.substring(0, 100) + "..." : "No text",
+                        questionText: qText,
                         reason: reason,
                         timestamp: serverTimestamp()
                     });
@@ -361,18 +370,17 @@ function loadQuestion(index) {
                     alert("Report submitted successfully. Thank you!");
                     if (reportModal) {
                         reportModal.classList.remove('show');
-                        setTimeout(() => reportModal.classList.add('hidden'), 300);
+                        // Removed the 'hidden' logic since we rely purely on the 'show' class now!
                     }
                 } catch (e) {
                     console.error("Error reporting question: ", e);
-                    alert("Failed to submit report.");
+                    alert("Failed to submit report. Please check your internet connection or try again later.");
                 } finally {
                     submitReportBtn.textContent = "Submit Report";
                     submitReportBtn.disabled = false;
                 }
             };
         }
-
         updateGridStyles();
 
     } catch (error) { 
