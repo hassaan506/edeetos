@@ -506,8 +506,14 @@ body {
     .message-email { font-size: 0.75rem; }
     .message-body { padding: 0.8rem; font-size: 0.85rem; }
 	
-	#edit-user-modal .popup-content {
-        max-height: 80vh !important; 
+    #edit-user-modal {
+        align-items: flex-start !important; 
+        padding-top: 1.5rem !important; /* Gives it just a tiny breathing room from the URL bar */
+        padding-bottom: 1.5rem !important;
+    }
+
+    #edit-user-modal .popup-content {
+        max-height: 90vh !important; /* Increased from 80vh to 90vh */
         overflow-y: auto !important; 
         padding: 1rem !important; 
     }
