@@ -30,14 +30,7 @@ if (contactForm) {
             contactForm.reset();
         } catch (error) {
             console.error("Firebase DB error:", error);
-            
-            // Fallback: If Firebase blocks the message, format it for WhatsApp and open it directly!
-            const waText = `*New EDEETOS Inquiry*\n\n*Name:* ${name}\n*Email:* ${email}\n*WhatsApp:* ${whatsapp}\n*Message:* ${msg}`;
-            const whatsappUrl = `https://wa.me/923202289180?text=${encodeURIComponent(waText)}`;
-            
-            alert("Database connection blocked. We are seamlessly redirecting you to WhatsApp so you can send this directly to our team!");
-            window.open(whatsappUrl, '_blank');
-            
+            alert("Security Error: Your database rules are blocking incoming messages from public users. Please update your Firebase Rules to allow 'contact_messages'.");
         } finally {
             submitBtn.textContent = "Send Message";
             submitBtn.disabled = false;
