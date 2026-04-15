@@ -111,20 +111,24 @@ function loadSession() {
 }
 
 function formatCSVQuestion(rawCsvRow) {
-    const correctLetter = (rawCsvRow['CorrectAnswer'] || '').toString().trim().toUpperCase();
+    const correctLetter = (rawCsvRow['CorrectAnswer'] || rawCsvRow['correctAnswer'] || '').toString().trim().toUpperCase();
     const options = [];
+    
     ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
-        const optKey = `Option${letter}`;
-        const optText = rawCsvRow[optKey]; 
+        const optKeyUpper = `Option${letter}`;
+        const optKeyLower = `option${letter}`;
+        const optText = rawCsvRow[optKeyUpper] || rawCsvRow[optKeyLower]; 
         if (optText && optText.trim() !== '') {
             options.push({ text: optText, isCorrect: correctLetter === letter, letter: letter });
         }
     });
 
+    const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
+
     return {
-        text: rawCsvRow.Question || "Missing Question Text",
+        text: rawCsvRow.Question || rawCsvRow.question || "Missing Question Text",
         options: options,
-        explanation: rawCsvRow.Explanation || "No explanation provided.",
+        explanation: rawExplanation,
         originalNumber: rawCsvRow.originalNumber,
         isBookmarked: rawCsvRow.isBookmarked || false,
         userNote: rawCsvRow.userNote || "",
@@ -228,8 +232,8 @@ function loadQuestion(index) {
             document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
         }
 
-        questionTextEl.innerHTML = currentQuestionData.text;
-        explanationText.innerHTML = currentQuestionData.explanation;
+        questionTextEl.innerHTML = currentQuestionData.text || "Missing Question";
+        explanationText.innerHTML = currentQuestionData.explanation || "No explanation provided.";
 
         optionsContainer.innerHTML = '';
         currentQuestionData.options.forEach(opt => {
@@ -751,6 +755,21 @@ document.addEventListener('keydown', (e) => {
                 if(nextBtnLocal) nextBtnLocal.click();
             }
             break;
+		case 'x':
+        case 'X':
+            e.preventDefault();
+            // Only allow opening if they've answered correctly and it's not an exam
+            if (hasAnsweredCorrectly && !isExamMode) {
+                if (isExplanationOpen) {
+                    // If it's already open, close it
+                    document.getElementById('close-explanation').click();
+                } else if (explanationBtn) {
+                    // If it's closed, open it
+                    explanationBtn.click();
+                }
+            }
+            break;
+			
         case 'p':
         case 'P':
             e.preventDefault();

@@ -170,7 +170,26 @@
     transform: scale(0.8) translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .modal-overlay.show .modal-content { transform: scale(1) translateY(0); }
+#explanation-modal .modal-content {
+    background: rgba(236, 253, 245, 0.98); /* Soft, elegant green background */
+    border: 2px solid rgba(16, 185, 129, 0.4); /* Green tinted border */
+    max-width: 800px; /* Makes it much wider for desktop (default was 500px) */
+    max-height: 80vh; /* Restricts maximum height to 80% of the screen */
+    overflow-y: auto; /* Creates a scrollbar if the explanation is too long! */
+}
 
+/* Make the title text dark green instead of blue to match the theme */
+#explanation-modal .modal-content h3 {
+    color: #065f46 !important; 
+}
+
+/* Update the "Got it" button inside to match the new background */
+#explanation-modal #close-explanation {
+    background: #059669;
+}
+#explanation-modal #close-explanation:hover {
+    background: #047857;
+}
 #show-explanation-btn { border-color: #10b981; color: #10b981; border-radius: 10px; font-weight: bold; padding: 0.5rem 1.2rem; font-size: 0.9rem; transition: 0.2s; background: rgba(255, 255, 255, 0.5); cursor: pointer; display: none; }
 #show-explanation-btn:hover { background: #ecfdf5; transform: scale(1.05); }
 
