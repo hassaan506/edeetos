@@ -9,6 +9,9 @@ let currentUserId = null;
 // 1. DASHBOARD LOAD & BADGE LOGIC
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
+    const freeWarning = document.getElementById('free-warning-text');
+    const subStatus = document.getElementById('subscription-status');
+
     if (user) {
         currentUserId = user.uid;
         const userRef = doc(db, "users", user.uid);
@@ -20,66 +23,66 @@ onAuthStateChanged(auth, async (user) => {
                 
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
                 
-                const subStatus = document.getElementById('subscription-status');
-                const freeWarning = document.getElementById('free-warning-text');
                 const userRole = (currentUserData.role || '').toUpperCase();
 
-                subStatus.className = "status-badge";
-                subStatus.style.background = "";
-                subStatus.style.color = "";
-                subStatus.style.border = "";
+                if(subStatus) {
+                    subStatus.className = "status-badge";
+                    subStatus.style.background = "";
+                    subStatus.style.color = "";
+                    subStatus.style.border = "";
+                }
 
                 if (userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
-                    subStatus.textContent = "Admin";
-                    subStatus.style.background = "#f3e8ff";
-                    subStatus.style.color = "#8b5cf6";
-                    subStatus.style.border = "1px solid #c084fc";
-                    
+                    if(subStatus) {
+                        subStatus.textContent = "Admin";
+                        subStatus.style.background = "#f3e8ff";
+                        subStatus.style.color = "#8b5cf6";
+                        subStatus.style.border = "1px solid #c084fc";
+                    }
                     document.getElementById('btn-admin-panel').style.display = 'flex';
                     if (freeWarning) freeWarning.style.display = 'none';
                     
                 } else if (currentUserData.isPremium) {
-                    subStatus.textContent = "Premium";
-                    subStatus.className = "status-badge badge-pro";
+                    if(subStatus) {
+                        subStatus.textContent = "Premium";
+                        subStatus.className = "status-badge badge-pro";
+                    }
                     if (freeWarning) freeWarning.style.display = 'none';
                     
                 } else {
-                    subStatus.textContent = "Free Tier";
-                    subStatus.className = "status-badge badge-free";
-                    if (freeWarning) freeWarning.style.display = 'inline';
+                    if(subStatus) {
+                        subStatus.textContent = "Free Tier";
+                        subStatus.className = "status-badge badge-free";
+                    }
+                    if (freeWarning) {
+                        freeWarning.style.display = 'inline';
+                        freeWarning.textContent = "(Free users limited to 50Qs/subject)";
+                    }
                 }
-
-                // GLOBAL MENTOR PING LISTENER
-                if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
-                    const qChats = query(collection(db, "chats"), where("mentorId", "==", currentUserId));
-                    onSnapshot(qChats, (snapshot) => {
-                        snapshot.docChanges().forEach((change) => {
-                            const data = change.doc.data();
-                            if (change.type === "added" && data.status === "pending") {
-                                alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Please open the Mentorship Hub to accept the chat.`);
-                            }
-                        });
-                    });
-                }
-
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
     } else {
+        // GUEST MODE LOGIC
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            currentUserId = 'guest';
-            currentUserData = { role: 'GUEST', fullName: 'Guest User', isPremium: false };
-            document.getElementById('user-name').textContent = "Guest User";
+            document.getElementById('user-name').textContent = "Guest";
             
-            const subStatus = document.getElementById('subscription-status');
-            const freeWarning = document.getElementById('free-warning-text');
-            if (subStatus) {
+            if(subStatus) {
                 subStatus.textContent = "Guest Mode";
                 subStatus.className = "status-badge badge-free";
+                subStatus.style.background = "#e2e8f0"; // Gray color for guests
+                subStatus.style.color = "#475569";
+                subStatus.style.borderColor = "#cbd5e1";
             }
-            if (freeWarning) freeWarning.style.display = 'inline';
+            
+            if (freeWarning) {
+                freeWarning.style.display = 'inline';
+                freeWarning.textContent = "(Guests limited to 20Qs/subject)";
+                freeWarning.style.color = "#64748b"; // Subtle gray color
+            }
         } else {
+            // Not a guest and not logged in
             window.location.href = 'index.html'; 
         }
     }
