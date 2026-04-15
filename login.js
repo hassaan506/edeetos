@@ -21,21 +21,7 @@ if (loginForm) {
 
             // STEP 1: If they didn't type an '@', they must have typed a username!
             if (!identifier.includes('@')) {
-                
-                // Search the 'users' database folder for this exact username
-                const usersRef = collection(db, "users");
-                const q = query(usersRef, where("username", "==", identifier));
-                const querySnapshot = await getDocs(q);
-
-                // If the database comes up empty
-                if (querySnapshot.empty) {
-                    throw new Error("Username not found. Older usernames may be case-sensitive. Please use your Email Address instead to guarantee entry.");
-                }
-
-                // If found, grab the hidden email attached to that username
-                querySnapshot.forEach((doc) => {
-                    loginEmail = doc.data().email;
-                });
+                throw new Error("For security purposes, Firebase requires email-based authentication. Please use your registered Email Address to log in instead of your username.");
             }
 
             // STEP 2: Now that we definitely have the email, log them in!

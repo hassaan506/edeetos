@@ -290,6 +290,22 @@ async function loadDataAndBuildTree() {
             masterQuestions.push(rowObj); 
         });
 
+        function filterQuestionsForFreeTier(rawQuestions) {
+            let filteredList = [];
+            const questionsByTarget = {};
+            
+            rawQuestions.forEach(q => {
+                const targetKey = q.Subject || "General";
+                if (!questionsByTarget[targetKey]) questionsByTarget[targetKey] = [];
+                questionsByTarget[targetKey].push(q);
+            });
+
+            for (const targetKey in questionsByTarget) {
+                filteredList = filteredList.concat(questionsByTarget[targetKey].slice(0, 50));
+            }
+            return filteredList;
+        }
+
         // APPLY THE FREE TIER FILTER IF THEY ARE NOT PREMIUM!
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             allQuestions = masterQuestions.sort(() => 0.5 - Math.random()).slice(0, 20);
@@ -606,6 +622,7 @@ window.launchQuiz = function(questionsArray, mode = 'practice', timerMinutes = 0
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
+        localStorage.removeItem('edeetos_guest_mode');
         const userRef = doc(db, "users", user.uid);
         try {
             const docSnap = await getDoc(userRef);
