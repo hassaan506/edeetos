@@ -359,19 +359,51 @@ async function fetchKeys() {
         const data = d.data();
         const tr = document.createElement('tr');
         tr.style = "border-bottom: 2px solid #f1f5f9;";
+        
+        // Added the copy button right next to the code text
         tr.innerHTML = `
-            <td style="padding: 1.2rem; font-weight: 800; font-size: 1.05rem; color: #1e293b;">${data.code}</td>
+            <td style="padding: 1.2rem; font-weight: 800; font-size: 1.05rem; color: #1e293b;">
+                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                    ${data.code}
+                    <button class="btn-action-icon btn-copy-key" style="width: 28px; height: 28px; font-size: 0.8rem; background: #f1f5f9; color: #3b82f6; border: 1px solid #cbd5e1; box-shadow: none;" title="Copy Key">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </td>
             <td><span class="badge b-course">${data.course.replace('_', ' ').toUpperCase()}</span></td>
             <td style="font-weight: 700; color: #475569;">${data.usedCount} / ${data.maxUsage}</td>
             <td><button class="btn-action-del btn-del-key">Delete</button></td>
         `;
         
+        // Logic for the Copy Button
+        const copyBtn = tr.querySelector('.btn-copy-key');
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(data.code);
+                
+                // Visual feedback: change to a green checkmark
+                copyBtn.innerHTML = '<i class="fas fa-check" style="color: #10b981;"></i>';
+                copyBtn.style.borderColor = '#10b981';
+                
+                // Change back to copy icon after 2 seconds
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+                    copyBtn.style.borderColor = '#cbd5e1';
+                }, 2000);
+            } catch (err) {
+                console.error("Failed to copy text: ", err);
+                alert("Clipboard access denied. Please allow clipboard permissions in your browser.");
+            }
+        });
+
+        // Logic for the Delete Button (unchanged)
         tr.querySelector('.btn-del-key').addEventListener('click', async () => {
             if(confirm("Delete this key?")) {
                 await deleteDoc(doc(db, "keys", data.code));
                 fetchKeys();
             }
         });
+        
         tbody.appendChild(tr);
     });
 }
