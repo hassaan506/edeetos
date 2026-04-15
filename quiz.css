@@ -287,6 +287,58 @@ body.mode-exam #prev-btn {
 }
 
 /* ========================================== */
+/* EXPLANATION LAYOUT (IMAGE + TEXT)           */
+/* ========================================== */
+
+.explanation-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.explanation-text {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #1e293b;
+}
+
+.explanation-image {
+    flex: 1;
+    text-align: right;
+}
+
+.explanation-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: auto;
+}
+
+/* Optional: prevent oversized images on desktop */
+@media (min-width: 769px) {
+    .explanation-image img {
+        max-width: 350px;
+    }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .explanation-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .explanation-image {
+        text-align: center;
+    }
+
+    .explanation-image img {
+        max-width: 100%;
+    }
+}
+
+/* ========================================== */
 /* 8. ULTRA-COMPACT MOBILE RESPONSIVENESS     */
 /* ========================================== */
 @media (max-width: 768px) {
@@ -309,3 +361,4 @@ body.mode-exam #prev-btn {
     .quiz-body::before { width: 90vw; height: 90vw; filter: blur(60px); }
     .quiz-body::after { width: 100vw; height: 100vw; filter: blur(80px); }
 }
+
