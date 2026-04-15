@@ -1,7 +1,9 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+// 👉 We added query, where, and onSnapshot to this import line!
 import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
 let currentUserData = null;
 let currentUserId = null;
 
@@ -59,6 +61,52 @@ onAuthStateChanged(auth, async (user) => {
                         freeWarning.textContent = "(Free users limited to 50Qs/subject)";
                     }
                 }
+
+                // 👉 NEW: GLOBAL MENTOR NOTIFICATIONS
+                if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
+                    
+                    // UX Improvement: Update their dashboard card text since they ARE the mentor
+                    const btnMentor = document.getElementById('btn-contact-mentor');
+                    if (btnMentor) {
+                        btnMentor.textContent = "Open Mentorship Hub";
+                        const cardH3 = btnMentor.parentElement.querySelector('h3');
+                        const cardP = btnMentor.parentElement.querySelector('p');
+                        if (cardH3) cardH3.textContent = "Mentorship Hub";
+                        if (cardP) cardP.textContent = "Manage incoming student chat requests.";
+                    }
+
+                    // Real-time listener for incoming chats
+                    const chatsRef = collection(db, "chats");
+                    const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
+                    
+                    onSnapshot(q, (snapshot) => {
+                        let banner = document.getElementById('mentor-alert-banner');
+                        
+                        if (!snapshot.empty) {
+                            // If someone is calling, create and show the pulsing red banner!
+                            if (!banner) {
+                                banner = document.createElement('div');
+                                banner.id = 'mentor-alert-banner';
+                                banner.style = "position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #ef4444; color: white; padding: 12px 24px; border-radius: 30px; font-weight: 800; font-size: 1.1rem; z-index: 9999; cursor: pointer; display: flex; align-items: center; gap: 10px;";
+                                banner.innerHTML = `<span>🚨</span> <span>Incoming Chat Request! Click here to answer.</span>`;
+                                banner.onclick = () => window.location.href = 'mentor.html';
+                                document.body.appendChild(banner);
+                                
+                                // Injecting animation CSS safely
+                                if(!document.getElementById('pulse-anim-style')) {
+                                    const style = document.createElement('style');
+                                    style.id = 'pulse-anim-style';
+                                    style.innerHTML = `@keyframes alertPulse { 0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } } #mentor-alert-banner { animation: alertPulse 1.5s infinite; }`;
+                                    document.head.appendChild(style);
+                                }
+                            }
+                            banner.style.display = 'flex';
+                        } else {
+                            // If they hang up or the chat is answered, hide the banner
+                            if (banner) banner.style.display = 'none';
+                        }
+                    });
+                }
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
@@ -71,7 +119,7 @@ onAuthStateChanged(auth, async (user) => {
             if(subStatus) {
                 subStatus.textContent = "Guest Mode";
                 subStatus.className = "status-badge badge-free";
-                subStatus.style.background = "#e2e8f0"; // Gray color for guests
+                subStatus.style.background = "#e2e8f0"; 
                 subStatus.style.color = "#475569";
                 subStatus.style.borderColor = "#cbd5e1";
             }
@@ -79,15 +127,13 @@ onAuthStateChanged(auth, async (user) => {
             if (freeWarning) {
                 freeWarning.style.display = 'inline';
                 freeWarning.textContent = "(Guests limited to 20Qs/subject)";
-                freeWarning.style.color = "#64748b"; // Subtle gray color
+                freeWarning.style.color = "#64748b"; 
             }
         } else {
-            // Not a guest and not logged in
             window.location.href = 'index.html'; 
         }
     }
 });
-
 // ==========================================
 // 2. NAVIGATION BUTTONS
 // ==========================================

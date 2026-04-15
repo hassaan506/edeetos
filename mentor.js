@@ -74,7 +74,7 @@ async function fetchAvailableMentors() {
             card.className = 'mentor-card';
             card.innerHTML = `
                 <div>
-                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">Dr. ${mentorData.fullName || 'Verified Mentor'}</div>
+                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${mentorData.fullName || 'Verified Mentor'}</div>
                     <div style="font-size: 0.8rem; color: #10b981; font-weight: bold;">🟢 Available Now</div>
                 </div>
                 <button class="btn-solid" style="padding: 0.6rem 1.2rem; border-radius: 8px; border: none; background: #0f172a; font-weight: bold; cursor: pointer;">
@@ -92,7 +92,8 @@ async function fetchAvailableMentors() {
 }
 
 async function requestChat(mentorId, mentorName) {
-    mentorsList.innerHTML = `<div style="text-align: center; padding: 2rem;"><p style="color: #d97706; font-weight: bold; font-size: 1.2rem;">Ringing Dr. ${mentorName}...</p><p style="color: #64748b;">Please wait for them to accept the chat.</p></div>`;
+    // Removed the "Dr." prefix from the Ringing text below
+    mentorsList.innerHTML = `<div style="text-align: center; padding: 2rem;"><p style="color: #d97706; font-weight: bold; font-size: 1.2rem;">Ringing ${mentorName}...</p><p style="color: #64748b;">Please wait for them to accept the chat.</p></div>`;
     
     try {
         const chatRef = await addDoc(collection(db, "chats"), {
@@ -113,7 +114,8 @@ async function requestChat(mentorId, mentorName) {
                 const data = docSnap.data();
                 if (data.status === 'active') {
                     studentView.style.display = 'none';
-                    openLiveChat(currentChatId, "Dr. " + mentorName);
+                    // Removed the "Dr. " prefix from the openLiveChat call below
+                    openLiveChat(currentChatId, mentorName);
                 } else if (data.status === 'rejected' || data.status === 'ended') {
                     alert("Mentor is currently busy or ended the chat.");
                     window.location.reload();
