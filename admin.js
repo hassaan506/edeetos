@@ -66,7 +66,7 @@ async function calculateTotalQuestions() {
     
     for (const course of courses) {
         try {
-            const response = await fetch(`Data/${course}.csv`);
+            const response = await fetch(`Data/${course}.csv`, { cache: 'no-cache' });
             if (response.ok) {
                 const text = await response.text();
                 

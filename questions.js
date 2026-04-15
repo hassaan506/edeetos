@@ -265,7 +265,7 @@ async function loadDataAndBuildTree() {
         const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
         const csvPath = `Data/${activeCourse}.csv`;
 
-        const response = await fetch(csvPath);
+        const response = await fetch(csvPath, { cache: 'no-cache' });
         if (!response.ok) throw new Error("CSV file not found: " + csvPath);
         const csvText = await response.text();
 
