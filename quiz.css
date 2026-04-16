@@ -364,22 +364,21 @@ body.mode-exam #prev-btn {
 /* 2. DESKTOP LAYOUT (Floating Sidebar Grid)  */
 /* ========================================== */
 @media (min-width: 1024px) {
-    /* 1. Undo the accidental split and push the card to the left */
-    #quiz-ui-container {
-        display: block !important; 
-    }
-    
+    /* 1. Undo the squish! Center the question card and buttons beautifully */
     #quiz-ui-container, 
     #bottom-actions-container {
-        margin-right: 340px !important; /* Creates a massive empty space on the right edge */
+        margin-right: auto !important;
+        margin-left: auto !important;
+        max-width: 850px !important; /* Prevents the card from stretching too wide on massive screens */
+        display: block !important;
     }
 
-    /* 2. Pin the Number Grid permanently in that empty space */
+    /* 2. Pin the Number Grid to the far right edge of the monitor */
     #number-grid {
         position: fixed !important;
-        top: 100px !important; /* Sits nicely below your top navbar */
+        top: 100px !important; 
         right: 20px !important;
-        width: 300px !important;
+        width: 320px !important;
         max-height: 80vh !important;
         
         /* Glassmorphism styling to match your theme */
