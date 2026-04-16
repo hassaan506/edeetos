@@ -328,7 +328,7 @@ async function loadDataAndBuildTree() {
             if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
             if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
 
-            if (Chapter) {
+            if (Chapter && Chapter.toLowerCase().includes('system')) {
                 if (!systemTree[Chapter]) systemTree[Chapter] = {};
                 if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
                 if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
@@ -361,7 +361,7 @@ function buildSubTree(pool) {
                 if (Topic && !tree[Subject][Chapter].includes(Topic)) tree[Subject][Chapter].push(Topic);
             }
         } else if (currentView === 'system') {
-            if (Chapter) {
+            if (Chapter && Chapter.toLowerCase().includes('system')) {
                 if (!tree[Chapter]) tree[Chapter] = {};
                 if (!tree[Chapter][Subject]) tree[Chapter][Subject] = [];
                 if (Topic && !tree[Chapter][Subject].includes(Topic)) tree[Chapter][Subject].push(Topic);
