@@ -321,22 +321,83 @@ body.mode-exam #prev-btn {
 }
 
 /* ========================================== */
-/* MOBILE SPACING FOR NEXT/PREV BUTTONS       */
+/* 1. MOBILE BUTTON FIX (Squished Buttons)    */
 /* ========================================== */
+#bottom-actions-container {
+    display: flex !important;
+    gap: 15px !important; /* Puts a clean gap between Prev and Next */
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+}
 
-@media (max-width: 768px) {
-    /* 1. Add extra margin (empty space) above and below the buttons */
-    #bottom-actions-container {
-        margin-top: 1.8rem !important; 
-        margin-bottom: 1.8rem !important;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+/* Make the previous button a perfect square that doesn't get crushed */
+#prev-btn {
+    flex: 0 0 60px !important; /* Locks width to 60px */
+    height: 55px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+/* Make the next button stretch beautifully across the rest of the screen */
+#next-btn {
+    flex: 1 !important; /* Stretches to fill remaining space */
+    height: 55px !important;
+    border-radius: 12px !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+}
+
+/* Keep the number grid compact on Mobile */
+@media (max-width: 1023px) {
+    #number-grid {
+        max-height: 160px !important;
+        overflow-y: auto !important;
+        padding: 0.5rem !important;
+    }
+}
+
+/* ========================================== */
+/* 2. DESKTOP LAYOUT (Number Grid on Right)   */
+/* ========================================== */
+@media (min-width: 1024px) {
+    /* Turn the whole quiz area into a 2-column grid */
+    #quiz-ui-container {
+        display: grid !important;
+        grid-template-columns: 1fr 350px !important; /* Left side stretches, Right side is 350px */
+        gap: 2rem !important;
+        align-items: start !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
     }
 
-    /* 2. Make the buttons themselves slightly taller for easier thumb tapping */
-    #bottom-actions-container button {
-        padding: 0.8rem 1.5rem !important; 
-        font-size: 1rem !important;
+    /* Keep the Question Card in Column 1 */
+    .question-card {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Keep the Buttons in Column 1, directly under the Question Card */
+    #bottom-actions-container {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+    }
+
+    /* Move the Number Grid to Column 2, and stretch it tall! */
+    #number-grid {
+        grid-column: 2 !important;
+        grid-row: 1 / span 2 !important; /* Spans from top to bottom */
+        max-height: 80vh !important; /* Lets it fill 80% of the screen height */
+        background: rgba(255, 255, 255, 0.5) !important;
+        padding: 1.5rem !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+        overflow-y: auto !important;
+        align-content: flex-start !important;
     }
 }
 
