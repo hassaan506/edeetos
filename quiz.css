@@ -321,90 +321,86 @@ body.mode-exam #prev-btn {
 }
 
 /* ========================================== */
-/* 1. MOBILE BUTTON FIX (Squished Buttons)    */
+/* FINAL DESKTOP & MOBILE LAYOUT FIX          */
 /* ========================================== */
-#bottom-actions-container {
-    display: flex !important;
-    gap: 15px !important; /* Puts a clean gap between Prev and Next */
-    margin-top: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-    width: 100% !important;
+
+/* --- MOBILE & GENERAL FIXES --- */
+@media (max-width: 1023px) {
+    .desktop-layout-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .desktop-right-column {
+        width: 100% !important;
+    }
 }
 
-/* Make the previous button a perfect square that doesn't get crushed */
+/* Force buttons to ALWAYS be side-by-side, regardless of screen size */
+#bottom-actions-container {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    gap: 15px !important;
+    margin-top: 15px !important;
+    margin-bottom: 1.5rem !important;
+}
+
 #prev-btn {
-    flex: 0 0 60px !important; /* Locks width to 60px */
+    flex: 0 0 60px !important;
     height: 55px !important;
     border-radius: 12px !important;
+    padding: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 0 !important;
 }
 
-/* Make the next button stretch beautifully across the rest of the screen */
 #next-btn {
-    flex: 1 !important; /* Stretches to fill remaining space */
+    flex: 1 !important;
     height: 55px !important;
     border-radius: 12px !important;
     font-size: 1.1rem !important;
     font-weight: bold !important;
 }
 
-/* Keep the number grid compact on Mobile */
-@media (max-width: 1023px) {
-    #number-grid {
-        max-height: 160px !important;
-        overflow-y: auto !important;
-        padding: 0.5rem !important;
-    }
-}
-
-/* ========================================== */
-/* 2. DESKTOP LAYOUT (Perfect Flexbox Split)  */
-/* ========================================== */
+/* --- DESKTOP LAYOUT --- */
 @media (min-width: 1024px) {
-    /* 1. Undo the squish! Let the card look completely normal again */
-    #quiz-ui-container, #bottom-actions-container {
-        margin: 0 !important;
-        max-width: none !important;
-        width: 100% !important;
-    }
-
-    /* 2. Create the 2-column layout */
+    /* 1. Center the wrapper perfectly with your top bar */
     .desktop-layout-wrapper {
         display: flex !important;
-        gap: 25px !important;
-        align-items: stretch !important; /* Forces the right column to match the left column's height */
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 30px !important;
+        max-width: 1050px !important; /* Perfect width for Card + Grid */
+        margin: 0 auto !important;    /* Centers on screen */
         width: 100% !important;
-        max-width: 1300px !important;
-        margin: 0 auto !important; /* Centers the whole UI nicely */
     }
 
-    /* 3. The Left side takes up all available space naturally */
+    /* 2. Left Column: Allow the question card to be normal width */
     .desktop-left-column {
-        flex: 1 !important; 
-        min-width: 0 !important;
+        flex: 1 !important;
+        max-width: 750px !important; 
         display: flex !important;
         flex-direction: column !important;
     }
 
-    /* 4. The Right side creates a strict boundary for the grid */
+    /* 3. Right Column: Strict width for the sidebar */
     .desktop-right-column {
-        width: 320px !important;
-        position: relative !important; 
+        flex: 0 0 320px !important; 
+        display: block !important;
     }
 
-    /* 5. The Grid locks to all 4 corners of the Right Column, perfectly matching the Question Card height! */
+    /* 4. The Number Grid: Standalone tall sidebar */
     #number-grid {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important; 
-        height: auto !important;
-        max-height: none !important;
-        overflow-y: auto !important; /* Scrolls internally if there are 100+ numbers */
+        position: relative !important; 
+        top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+        width: 100% !important;
+        
+        /* This makes it dynamically tall, but stops it from breaking the page */
+        height: calc(100vh - 200px) !important; 
+        max-height: 650px !important; 
         
         background: rgba(255, 255, 255, 0.85) !important;
         backdrop-filter: blur(12px) !important;
@@ -412,21 +408,9 @@ body.mode-exam #prev-btn {
         border-radius: 16px !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
         padding: 1.5rem !important;
+        overflow-y: auto !important; /* Allows scrolling inside the grid */
+        align-content: flex-start !important;
         margin-top: 0 !important;
-    }
-}
-
-/* Ensure the new wrapper doesn't break your mobile layout */
-@media (max-width: 1023px) {
-    .desktop-layout-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-    .desktop-right-column {
-        width: 100%;
-    }
-    #number-grid {
-        position: static !important; /* Normal flow on mobile */
     }
 }
 
