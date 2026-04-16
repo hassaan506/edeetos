@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 1. STATE VARIABLES
@@ -815,7 +815,8 @@ if (closeResetModal) {
 
 document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
-        const type = e.target.getAttribute('data-type');
+        // FIX 1: Safely get the type even if they click the icon inside the button
+        const type = btn.getAttribute('data-type'); 
         const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
 
         switch (type) {
@@ -877,7 +878,9 @@ if (btnConfirmReset) {
 
         try {
             const userRef = doc(db, "users", user.uid);
-            await setDoc(userRef, pendingUpdates, { merge: true });
+            
+            // FIX 2: Use updateDoc so it actually updates the nested database folders!
+            await updateDoc(userRef, pendingUpdates);
 
             confirmText.innerHTML = `✅ ${pendingResetMsg}`;
             btnCancelReset.style.display = 'none';
