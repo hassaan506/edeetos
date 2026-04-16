@@ -314,6 +314,12 @@ body.mode-exam #prev-btn {
     border-radius: 8px;
     height: auto;
 }
+
+#bottom-actions-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 /* ========================================== */
 /* COMPACT NUMBER GRID FIX                    */
 /* ========================================== */
@@ -336,6 +342,7 @@ body.mode-exam #prev-btn {
     background: #cbd5e1;
     border-radius: 4px;
 }
+
 
 /* Optional: prevent oversized images on desktop */
 @media (min-width: 769px) {
