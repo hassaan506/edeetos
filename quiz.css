@@ -314,6 +314,28 @@ body.mode-exam #prev-btn {
     border-radius: 8px;
     height: auto;
 }
+/* ========================================== */
+/* COMPACT NUMBER GRID FIX                    */
+/* ========================================== */
+#number-grid {
+    max-height: 150px !important; /* Locks the height to roughly 3-4 rows */
+    overflow-y: auto !important;  /* Allows scrolling INSIDE the grid */
+    padding-right: 5px !important; /* Adds slight padding so the scrollbar doesn't cover numbers */
+    align-content: flex-start;
+}
+
+/* Make the scrollbar look elegant and thin on mobile/desktop */
+#number-grid::-webkit-scrollbar {
+    width: 6px;
+}
+#number-grid::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+#number-grid::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
 
 /* Optional: prevent oversized images on desktop */
 @media (min-width: 769px) {
