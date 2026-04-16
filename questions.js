@@ -629,13 +629,31 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
 
-                // 1. Check Subscription Status
-                isPremiumUser = dbData.isPremium === true;
-
-                // 2. Isolate data for the active course
+// 1. Get the active course first
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 const courseData = dbData[activeCourse] || {};
 
+                // 2. COURSE-SPECIFIC PREMIUM CHECK
+                isPremiumUser = false; // Default to free tier
+                
+                // Admins always get premium access
+                if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
+                    isPremiumUser = true;
+                } 
+                // Check if they own THIS specific course
+                else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
+                    const expiry = dbData.subscriptions[activeCourse];
+                    if (expiry === 'lifetime') {
+                        isPremiumUser = true;
+                    } else {
+                        // Check if it has expired
+                        const expiryDate = new Date(expiry);
+                        if (expiryDate >= new Date()) {
+                            isPremiumUser = true;
+                        }
+                    }
+                }
+				
                 const solvedList = (courseData.solvedQuestions || []).map(id => String(id));
                 globalPracticeMistakes = (courseData.mistakes || []).map(id => String(id));
                 globalExamMistakes = (courseData.examMistakes || []).map(id => String(id));
