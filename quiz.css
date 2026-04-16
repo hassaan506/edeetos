@@ -361,38 +361,75 @@ body.mode-exam #prev-btn {
 }
 
 /* ========================================== */
-/* 2. DESKTOP LAYOUT (Floating Sidebar Grid)  */
+/* 2. DESKTOP LAYOUT (Perfect Flexbox Split)  */
 /* ========================================== */
 @media (min-width: 1024px) {
-    /* 1. Undo the squish! Center the question card and buttons beautifully */
-    #quiz-ui-container, 
-    #bottom-actions-container {
-        margin-right: auto !important;
-        margin-left: auto !important;
-        max-width: 850px !important; /* Prevents the card from stretching too wide on massive screens */
-        display: block !important;
+    /* 1. Undo the squish! Let the card look completely normal again */
+    #quiz-ui-container, #bottom-actions-container {
+        margin: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
     }
 
-    /* 2. Pin the Number Grid to the far right edge of the monitor */
-    #number-grid {
-        position: fixed !important;
-        top: 100px !important; 
-        right: 20px !important;
+    /* 2. Create the 2-column layout */
+    .desktop-layout-wrapper {
+        display: flex !important;
+        gap: 25px !important;
+        align-items: stretch !important; /* Forces the right column to match the left column's height */
+        width: 100% !important;
+        max-width: 1300px !important;
+        margin: 0 auto !important; /* Centers the whole UI nicely */
+    }
+
+    /* 3. The Left side takes up all available space naturally */
+    .desktop-left-column {
+        flex: 1 !important; 
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 4. The Right side creates a strict boundary for the grid */
+    .desktop-right-column {
         width: 320px !important;
-        max-height: 80vh !important;
+        position: relative !important; 
+    }
+
+    /* 5. The Grid locks to all 4 corners of the Right Column, perfectly matching the Question Card height! */
+    #number-grid {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important; 
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important; /* Scrolls internally if there are 100+ numbers */
         
-        /* Glassmorphism styling to match your theme */
         background: rgba(255, 255, 255, 0.85) !important;
         backdrop-filter: blur(12px) !important;
         border: 1px solid #cbd5e1 !important;
         border-radius: 16px !important;
-        box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.08) !important;
-        
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
         padding: 1.5rem !important;
-        overflow-y: auto !important;
-        z-index: 100 !important;
+        margin-top: 0 !important;
     }
 }
+
+/* Ensure the new wrapper doesn't break your mobile layout */
+@media (max-width: 1023px) {
+    .desktop-layout-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .desktop-right-column {
+        width: 100%;
+    }
+    #number-grid {
+        position: static !important; /* Normal flow on mobile */
+    }
+}
+
 /* ========================================== */
 /* COMPACT NUMBER GRID FIX                    */
 /* ========================================== */
