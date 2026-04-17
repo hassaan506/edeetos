@@ -75,10 +75,9 @@
 .count-red { color: #ef4444; }
 .count-green { color: #10b981; }
 
-/* Scaled down Question Text */
 .question-text { font-size: 1.15rem; font-weight: 700; color: #0f172a; line-height: 1.5; text-align: justify; margin-bottom: 1.2rem; }
 
-/* --- 2. GLASS OPTIONS --- */
+/* --- 2. GLASS OPTIONS (WITH iOS FIXES) --- */
 .options-container { display: flex; flex-direction: column; gap: 0.5rem; } 
 
 .option-box {
@@ -87,8 +86,15 @@
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 12px; cursor: pointer; 
+    border-radius: 12px;  
     transition: all 0.2s ease;
+    
+    /* 🚨 iOS SAFARI CLICK FIXES 🚨 */
+    cursor: pointer !important; 
+    touch-action: manipulation !important; 
+    -webkit-tap-highlight-color: transparent !important; 
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .option-box:hover:not(.locked) { 
@@ -98,7 +104,7 @@
 }
 
 .option-text { font-size: 0.95rem; color: #1e293b; font-weight: 600; pointer-events: none; transition: color 0.2s ease; }
-.eye-icon { color: #94a3b8; font-size: 1rem; transition: 0.2s; }
+.eye-icon { color: #94a3b8; font-size: 1rem; transition: 0.2s; pointer-events: auto; }
 .eye-icon:hover { color: #ef4444; }
 
 /* HIGH CONTRAST STATES */
@@ -109,7 +115,7 @@
 .option-box.correct .eye-icon { color: rgba(255,255,255,0.7); }
 .option-box.strikethrough .option-text { text-decoration: line-through; opacity: 0.4; }
 .option-box.strikethrough .eye-icon { color: #ef4444; }
-.locked { pointer-events: none; }
+.locked { pointer-events: none !important; }
 
 /* --- 3. ANIMATION CLASSES --- */
 .apply-shake { animation: shakeError 0.5s cubic-bezier(.36,.07,.19,.97) both; }
@@ -127,7 +133,6 @@
     100% { transform: scale(1); }
 }
 
-/* Sliding Animations */
 .slide-out-left { animation: slideOutLeft 0.3s forwards; }
 .slide-in-right { animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .slide-out-right { animation: slideOutRight 0.3s forwards; }
@@ -171,60 +176,36 @@
 }
 .modal-overlay.show .modal-content { transform: scale(1) translateY(0); }
 #explanation-modal .modal-content {
-    background: rgba(236, 253, 245, 0.98); /* Soft, elegant green background */
-    border: 2px solid rgba(16, 185, 129, 0.4); /* Green tinted border */
-    max-width: 800px; /* Makes it much wider for desktop (default was 500px) */
-    max-height: 80vh; /* Restricts maximum height to 80% of the screen */
-    overflow-y: auto; /* Creates a scrollbar if the explanation is too long! */
+    background: rgba(236, 253, 245, 0.98); 
+    border: 2px solid rgba(16, 185, 129, 0.4); 
+    max-width: 800px; 
+    max-height: 80vh; 
+    overflow-y: auto; 
 }
 
-/* Make the title text dark green instead of blue to match the theme */
-#explanation-modal .modal-content h3 {
-    color: #065f46 !important; 
-}
-
-/* Update the "Got it" button inside to match the new background */
-#explanation-modal #close-explanation {
-    background: #059669;
-}
-#explanation-modal #close-explanation:hover {
-    background: #047857;
-}
+#explanation-modal .modal-content h3 { color: #065f46 !important; }
+#explanation-modal #close-explanation { background: #059669; }
+#explanation-modal #close-explanation:hover { background: #047857; }
 #show-explanation-btn { border-color: #10b981; color: #10b981; border-radius: 10px; font-weight: bold; padding: 0.5rem 1.2rem; font-size: 0.9rem; transition: 0.2s; background: rgba(255, 255, 255, 0.5); cursor: pointer; display: none; }
 #show-explanation-btn:hover { background: #ecfdf5; transform: scale(1.05); }
 
 #close-explanation { background: #10b981; border: none; color: white; padding: 10px; border-radius: 10px; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 1.2rem; box-shadow: 0 4px 10px rgba(16,185,129,0.3); }
 #close-explanation:hover { background: #059669; transform: translateY(-2px); }
 
-/* ========================================== */
-/* 6. EXAM MODE SPECIFIC STYLES               */
-/* ========================================== */
-
-/* Hide tools, feedback, grid, and prev button in Exam Mode */
+/* --- 6. EXAM MODE STYLES --- */
 body.mode-exam .icon-group,
 body.mode-exam .feedback-tracker,
 body.mode-exam #show-explanation-btn,
 body.mode-exam .number-grid,
-body.mode-exam #prev-btn {
-    display: none !important;
-}
+body.mode-exam #prev-btn { display: none !important; }
 
-/* Skipped Warning Banner */
 .skipped-warning {
-    background: #fffbeb; 
-    color: #d97706; 
-    padding: 0.8rem 1rem; 
-    border-radius: 12px; 
-    font-weight: bold; 
-    margin-bottom: 1.5rem; 
-    text-align: center; 
-    border: 1px solid #fcd34d;
+    background: #fffbeb; color: #d97706; padding: 0.8rem 1rem; border-radius: 12px; 
+    font-weight: bold; margin-bottom: 1.5rem; text-align: center; border: 1px solid #fcd34d;
     box-shadow: 0 4px 10px rgba(245, 158, 11, 0.1);
 }
-
 .hidden { display: none !important; }
 
-/* Skip Button Styling */
 .skip-btn {
     background: #f59e0b; color: white; border: none; border-radius: 12px;
     font-weight: bold; font-size: 1rem; padding: 0.5rem 1.2rem;
@@ -233,239 +214,116 @@ body.mode-exam #prev-btn {
 }
 .skip-btn:hover { background: #d97706; transform: translateY(-2px); }
 
-/* Selected Option State (Exam Mode Only) */
-.option-box.selected { 
-    border-color: #3b82f6 !important; 
-    background: rgba(59, 130, 246, 0.1) !important; 
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2) !important; 
-}
+.option-box.selected { border-color: #3b82f6 !important; background: rgba(59, 130, 246, 0.1) !important; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2) !important; }
 .option-box.selected .option-text { color: #1d4ed8 !important; }
 
 /* --- 7. RESULT SCREEN FIX & ANIMATION --- */
 #exam-result-screen {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 24px;
-    padding: 3rem 2rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    display: none; /* Keeps it out of the flow until JS triggers it */
+    background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 24px;
+    padding: 3rem 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: none; 
 }
+.result-pop-in { display: block !important; animation: resultPopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes resultPopIn { 0% { transform: scale(0.8) translateY(30px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+.fa-star.fas, .fa-star.fa-solid { color: #ffca28; }
+.grid-num.active { background-color: #3b82f6 !important; color: white !important; border-color: #3b82f6 !important; }
+.grid-num.correct { border-color: #10b981; color: #10b981; background-color: rgba(16, 185, 129, 0.1); }
+.grid-num.incorrect { border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.1); }
 
-/* This class triggers the pop-in and forces opacity to 1 */
-.result-pop-in {
-    display: block !important;
-    animation: resultPopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes resultPopIn {
-    0% { transform: scale(0.8) translateY(30px); opacity: 0; }
-    100% { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-.fa-star.fas, .fa-star.fa-solid {
-    color: #ffca28; /* Gold color */
-}
-
-/* Navigation Grid Status Colors */
-.grid-num.active {
-    background-color: #3b82f6 !important; /* Blue for current question */
-    color: white !important;
-    border-color: #3b82f6 !important;
-}
-
-.grid-num.correct {
-    border-color: #10b981; /* Green for passed */
-    color: #10b981;
-    background-color: rgba(16, 185, 129, 0.1);
-}
-
-.grid-num.incorrect {
-    border-color: #ef4444; /* Red for mistakes */
-    color: #ef4444;
-    background-color: rgba(239, 68, 68, 0.1);
-}
-
-/* ========================================== */
-/* EXPLANATION LAYOUT (IMAGE + TEXT)           */
-/* ========================================== */
-
-.explanation-container {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.explanation-text {
-    flex: 1;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #1e293b;
-}
-
-.explanation-image {
-    flex: 1;
-    text-align: right;
-}
-
-.explanation-image img {
-    max-width: 100%;
-    border-radius: 8px;
-    height: auto;
-}
+/* --- 8. EXPLANATION LAYOUT --- */
+.explanation-container { display: flex; gap: 20px; align-items: flex-start; width: 100%; }
+.explanation-text { flex: 1; font-size: 0.95rem; line-height: 1.5; color: #1e293b; }
+.explanation-image { flex: 1; text-align: right; }
+.explanation-image img { max-width: 100%; border-radius: 8px; height: auto; }
 
 #bottom-actions-container {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    display: flex !important; flex-direction: row !important; width: 100% !important;
+    gap: 15px !important; margin-top: 15px !important; margin-bottom: 1.5rem !important;
+}
+#prev-btn { flex: 0 0 60px !important; height: 55px !important; border-radius: 12px !important; padding: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+#next-btn { flex: 1 !important; height: 55px !important; border-radius: 12px !important; font-size: 1.1rem !important; font-weight: bold !important; }
+
+/* ========================================== */
+/* 9. MULTIPLAYER LIVE ROSTER UI FIX          */
+/* ========================================== */
+
+#mp-roster-box {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
+    z-index: 1000 !important;
+    padding: 1.2rem !important;
+    transition: all 0.3s ease !important;
+    /* We strip out the inline JS positioning here */
+    top: auto !important; right: auto !important; left: auto !important;
 }
 
-/* ========================================== */
-/* FINAL DESKTOP & MOBILE LAYOUT FIX          */
-/* ========================================== */
+/* 📱 MOBILE & TABLET: Roster sits directly above the question card */
+@media (max-width: 1099px) {
+    #mp-roster-box {
+        position: relative !important;
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
 
-/* --- MOBILE & GENERAL FIXES --- */
+/* 💻 DESKTOP: Roster floats intelligently to the right */
+@media (min-width: 1100px) {
+    #mp-roster-box {
+        position: fixed !important;
+        top: 80px !important;
+        /* This calculates the exact space available so it NEVER overlaps your text */
+        right: max(20px, calc(50vw - 650px)) !important; 
+        width: 250px !important;
+    }
+}
+
+
+/* ========================================== */
+/* 10. DESKTOP & MOBILE RESPONSIVENESS        */
+/* ========================================== */
 @media (max-width: 1023px) {
-    .desktop-layout-wrapper {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-    .desktop-right-column {
-        width: 100% !important;
-    }
+    .desktop-layout-wrapper { display: flex !important; flex-direction: column !important; width: 100% !important; }
+    .desktop-right-column { width: 100% !important; }
 }
 
-/* Force buttons to ALWAYS be side-by-side, regardless of screen size */
-#bottom-actions-container {
-    display: flex !important;
-    flex-direction: row !important;
-    width: 100% !important;
-    gap: 15px !important;
-    margin-top: 15px !important;
-    margin-bottom: 1.5rem !important;
-}
-
-#prev-btn {
-    flex: 0 0 60px !important;
-    height: 55px !important;
-    border-radius: 12px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-#next-btn {
-    flex: 1 !important;
-    height: 55px !important;
-    border-radius: 12px !important;
-    font-size: 1.1rem !important;
-    font-weight: bold !important;
-}
-
-/* --- DESKTOP LAYOUT --- */
 @media (min-width: 1024px) {
-    /* 1. Center the wrapper perfectly with your top bar */
     .desktop-layout-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: flex-start !important;
-        gap: 30px !important;
-        max-width: 1050px !important; /* Perfect width for Card + Grid */
-        margin: 0 auto !important;    /* Centers on screen */
-        width: 100% !important;
+        display: flex !important; flex-direction: row !important; justify-content: center !important;
+        align-items: flex-start !important; gap: 30px !important; max-width: 1050px !important; 
+        margin: 0 auto !important; width: 100% !important;
     }
+    .desktop-left-column { flex: 1 !important; max-width: 750px !important; display: flex !important; flex-direction: column !important; }
+    .desktop-right-column { flex: 0 0 320px !important; display: block !important; }
 
-    /* 2. Left Column: Allow the question card to be normal width */
-    .desktop-left-column {
-        flex: 1 !important;
-        max-width: 750px !important; 
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    /* 3. Right Column: Strict width for the sidebar */
-    .desktop-right-column {
-        flex: 0 0 320px !important; 
-        display: block !important;
-    }
-
-    /* 4. The Number Grid: Standalone tall sidebar */
     #number-grid {
-        position: relative !important; 
-        top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
-        width: 100% !important;
-        
-        /* This makes it dynamically tall, but stops it from breaking the page */
-        height: calc(100vh - 200px) !important; 
-        max-height: 650px !important; 
-        
-        background: rgba(255, 255, 255, 0.85) !important;
-        backdrop-filter: blur(12px) !important;
-        border: 1px solid #cbd5e1 !important;
-        border-radius: 16px !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-        padding: 1.5rem !important;
-        overflow-y: auto !important; /* Allows scrolling inside the grid */
-        align-content: flex-start !important;
-        margin-top: 0 !important;
+        position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+        width: 100% !important; height: calc(100vh - 200px) !important; max-height: 650px !important; 
+        background: rgba(255, 255, 255, 0.85) !important; backdrop-filter: blur(12px) !important;
+        border: 1px solid #cbd5e1 !important; border-radius: 16px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important; padding: 1.5rem !important;
+        overflow-y: auto !important; align-content: flex-start !important; margin-top: 0 !important;
     }
 }
 
-/* ========================================== */
-/* COMPACT NUMBER GRID FIX                    */
-/* ========================================== */
 #number-grid {
-    max-height: 150px !important; /* Locks the height to roughly 3-4 rows */
-    overflow-y: auto !important;  /* Allows scrolling INSIDE the grid */
-    padding-right: 5px !important; /* Adds slight padding so the scrollbar doesn't cover numbers */
-    align-content: flex-start;
+    max-height: 150px !important; overflow-y: auto !important; padding-right: 5px !important; align-content: flex-start;
 }
+#number-grid::-webkit-scrollbar { width: 6px; }
+#number-grid::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); border-radius: 4px; }
+#number-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-/* Make the scrollbar look elegant and thin on mobile/desktop */
-#number-grid::-webkit-scrollbar {
-    width: 6px;
-}
-#number-grid::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-}
-#number-grid::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
-}
-
-
-
-/* Optional: prevent oversized images on desktop */
-@media (min-width: 769px) {
-    .explanation-image img {
-        max-width: 350px;
-    }
-}
-
-/* MOBILE RESPONSIVENESS */
+@media (min-width: 769px) { .explanation-image img { max-width: 350px; } }
 @media (max-width: 768px) {
-    .explanation-container {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .explanation-image {
-        text-align: center;
-    }
-
-    .explanation-image img {
-        max-width: 100%;
-    }
-}
-
-/* ========================================== */
-/* 8. ULTRA-COMPACT MOBILE RESPONSIVENESS     */
-/* ========================================== */
-@media (max-width: 768px) {
+    .explanation-container { flex-direction: column; gap: 12px; }
+    .explanation-image { text-align: center; }
+    .explanation-image img { max-width: 100%; }
+    
     .quiz-content-wrapper { padding: 0.5rem; justify-content: flex-start; }
     .question-card { padding: 1rem; border-radius: 16px; margin-bottom: 1rem; }
     .question-text { font-size: 1rem; margin-bottom: 1rem; line-height: 1.4; }
@@ -485,4 +343,3 @@ body.mode-exam #prev-btn {
     .quiz-body::before { width: 90vw; height: 90vw; filter: blur(60px); }
     .quiz-body::after { width: 100vw; height: 100vw; filter: blur(80px); }
 }
-

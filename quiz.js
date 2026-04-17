@@ -310,6 +310,7 @@ function loadQuestion(index) {
         currentQuestionData.options.forEach(opt => {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
+			optBox.style.cursor = 'pointer';
             
             if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
@@ -729,7 +730,7 @@ if (roomRef) {
                 rosterBox.id = 'mp-roster-box';
                 // Floats the roster on the top right of the screen
                 rosterBox.style.cssText = "position: fixed; top: 100px; right: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 220px; z-index: 1000; border: 1px solid #e2e8f0;";
-                document.body.appendChild(rosterBox);
+                cardEl.parentElement.insertBefore(rosterBox, cardEl);
             }
 
             let rosterHtml = `<h4 style="margin: 0 0 10px 0; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; color: #0f172a; font-size: 1rem;">Live Roster</h4>`;
