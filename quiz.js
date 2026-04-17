@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
 // ==========================================
@@ -11,6 +11,8 @@ let wrongAttempts = 0;
 let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
+let activeRoomId = localStorage.getItem('active_study_room');
+let roomRef = activeRoomId ? doc(db, "study_rooms", activeRoomId) : null;
 
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
@@ -62,94 +64,138 @@ function loadSession() {
         q.historicalState = null; 
     });
 	
-    onAuthStateChanged(auth, async (user) => {
-        if (user) {
-            const userRef = doc(db, "users", user.uid);
-            try {
-                const docSnap = await getDoc(userRef);
-                if (docSnap.exists()) {
-                    const dbData = docSnap.data();
-                    if (dbData.isBanned || dbData.role === 'BANNED') {
-                        
-                        // 1. Create the inescapable full-screen lockout overlay
-                        const lockoutScreen = document.createElement('div');
-                        lockoutScreen.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);";
-                        
-                        lockoutScreen.innerHTML = `
-                            <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
-                            <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; margin-top: 0;">Account Suspended</h1>
-                            <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem; padding: 0 1.5rem;">
-                                Your account has been restricted due to policy violations. You no longer have access to EDEETOS materials, questions, or premium features.
-                            </p>
-                            <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); transition: transform 0.2s;">
-                                Log Out
-                            </button>
-                        `;
-                        
-                        // 2. Add it to the page and kill scrolling/interaction
-                        document.body.appendChild(lockoutScreen);
-                        document.body.style.overflow = 'hidden'; 
-                        
-                        // 3. Add the logout functionality to the button inside the overlay
-                        document.getElementById('btn-banned-logout').addEventListener('click', async () => {
-                            document.getElementById('btn-banned-logout').textContent = "Logging out...";
-                            try {
-                                await signOut(auth);
-                                window.location.href = 'index.html';
-                            } catch (error) {
-                                window.location.href = 'index.html';
-                            }
-                        });
-                        
-                        return; // Stop the quiz from loading!
-                    }
-					
-                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-                    const courseData = dbData[activeCourse] || {};
-                    
-                    const savedNotes = courseData.notes || {}; 
-                    const savedBookmarks = courseData.bookmarks || []; 
-                    const solvedList = courseData.solvedQuestions || [];
-                    const mistakesList = courseData.mistakes || [];
-                    const examMistakesList = courseData.examMistakes || [];
+    let currentUserId = null; // ✅ GLOBAL (make sure this exists at top of file)
 
-                    quizQueue.forEach(q => {
-                        q.isBookmarked = savedBookmarks.includes(q.originalNumber);
-                        q.userNote = savedNotes[q.originalNumber] || "";
-                        
-                        if (mistakesList.includes(q.originalNumber) || examMistakesList.includes(q.originalNumber)) {
-                            q.historicalState = 'wrong';
-                        } else if (solvedList.includes(q.originalNumber)) {
-                            q.historicalState = 'correct';
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        currentUserId = user.uid; // ✅ CRITICAL FIX (for group study)
+
+        const userRef = doc(db, "users", user.uid);
+
+        try {
+            const docSnap = await getDoc(userRef);
+
+            if (docSnap.exists()) {
+                const dbData = docSnap.data();
+
+                // 🚫 BANNED USER CHECK
+                if (dbData.isBanned || dbData.role === 'BANNED') {
+
+                    const lockoutScreen = document.createElement('div');
+                    lockoutScreen.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        background-color: rgba(15, 23, 42, 0.95);
+                        z-index: 2147483647;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        backdrop-filter: blur(10px);
+                    `;
+
+                    lockoutScreen.innerHTML = `
+                        <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
+                        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Account Suspended</h1>
+                        <p style="color: #94a3b8; font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem;">
+                            Your account has been restricted due to policy violations.
+                        </p>
+                        <button id="btn-banned-logout"
+                            style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer;">
+                            Log Out
+                        </button>
+                    `;
+
+                    document.body.appendChild(lockoutScreen);
+                    document.body.style.overflow = 'hidden';
+
+                    document.getElementById('btn-banned-logout').addEventListener('click', async () => {
+                        try {
+                            await signOut(auth);
+                        } catch (error) {
+                            console.error("Logout error:", error);
                         }
+                        window.location.href = 'index.html';
                     });
+
+                    return; // ❗ STOP QUIZ
                 }
-            } catch (error) {
-                console.error("❌ Firebase Load Error:", error);
-            } finally {
-                startTimer();
-                if (!isExamMode) buildNumberGrid(); 
-                loadQuestion(0);
+
+                // 📚 LOAD USER COURSE DATA
+                const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                const courseData = dbData[activeCourse] || {};
+
+                const savedNotes = courseData.notes || {};
+                const savedBookmarks = courseData.bookmarks || [];
+                const solvedList = courseData.solvedQuestions || [];
+                const mistakesList = courseData.mistakes || [];
+                const examMistakesList = courseData.examMistakes || [];
+
+                quizQueue.forEach(q => {
+                    q.isBookmarked = savedBookmarks.includes(q.originalNumber);
+                    q.userNote = savedNotes[q.originalNumber] || "";
+
+                    if (
+                        mistakesList.includes(q.originalNumber) ||
+                        examMistakesList.includes(q.originalNumber)
+                    ) {
+                        q.historicalState = 'wrong';
+                    } else if (solvedList.includes(q.originalNumber)) {
+                        q.historicalState = 'correct';
+                    }
+                });
             }
-        } else {
-            if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+
+        } catch (error) {
+            console.error("❌ Firebase Load Error:", error);
+        } finally {
+            // ✅ SAFE START (only if questions exist)
+            if (quizQueue && quizQueue.length > 0) {
                 startTimer();
-                if (!isExamMode) buildNumberGrid(); 
+                if (!isExamMode) buildNumberGrid();
                 loadQuestion(0);
             } else {
-                window.location.href = 'login.html';
+                console.error("🚨 Quiz queue is empty or not loaded!");
+                alert("No questions found. Please go back and select questions again.");
+                window.location.href = 'questions.html';
             }
         }
-    });
-	}
+
+    } else {
+        // 👤 GUEST MODE
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            if (quizQueue && quizQueue.length > 0) {
+                startTimer();
+                if (!isExamMode) buildNumberGrid();
+                loadQuestion(0);
+            } else {
+                alert("No questions found. Please go back.");
+                window.location.href = 'questions.html';
+            }
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+});
+
 
 async function syncNextQuestion(newIndex) {
-    if (activeRoomId && localStorage.getItem('is_study_guest') !== 'true') {
+    const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+    // ❌ Guests should NOT control navigation
+    if (isGuest) return;
+
+    if (activeRoomId) {
         await updateDoc(doc(db, "study_rooms", activeRoomId), {
             currentQuestionIndex: newIndex
         });
     }
 }
+
 // Function to randomly shuffle an array (Fisher-Yates algorithm)
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -719,14 +765,40 @@ document.getElementById('next-btn').onclick = () => {
         }
     }
 
+document.getElementById('next-btn').onclick = () => {
+    if (isExamMode) {
+        if (!currentQuestionData.userSelectedAnswer) {
+            alert("Please select an answer. If you are stuck, click Skip.");
+            return;
+        }
+
+        if (currentIndex === quizQueue.length - 1) {
+            showResults();
+            return;
+        }
+    }
+
     if (currentIndex < quizQueue.length - 1) {
-        triggerSlideTransition(currentIndex + 1, 'right');
+        const newIndex = currentIndex + 1;
+
+        // ✅ SYNC WITH GROUP
+        syncNextQuestion(newIndex);
+
+        triggerSlideTransition(newIndex, 'right');
     }
 };
 
 document.getElementById('prev-btn').onclick = () => {
-    if (isExamMode) return; 
-    if (currentIndex > 0) triggerSlideTransition(currentIndex - 1, 'left');
+    if (isExamMode) return;
+
+    if (currentIndex > 0) {
+        const newIndex = currentIndex - 1;
+
+        // ✅ SYNC WITH GROUP
+        syncNextQuestion(newIndex);
+
+        triggerSlideTransition(newIndex, 'left');
+    }
 };
 
 // ==========================================
@@ -976,21 +1048,24 @@ if (btnJoin) {
         };
     }
 	
-	onSnapshot(roomRef, (snapshot) => {
-            const data = snapshot.data();
-            if (!data || data.status === "ended") {
-                alert("The host has ended the study session.");
-                localStorage.removeItem('active_study_room');
-                localStorage.removeItem('is_study_guest');
-                window.location.href = 'questions.html';
-                return;
-            }
+if (roomRef) {
+    onSnapshot(roomRef, (snapshot) => {
+        const data = snapshot.data();
 
-            if (data.currentQuestionIndex !== currentIndex) {
-                const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
-                triggerSlideTransition(data.currentQuestionIndex, direction);
-            }
-        });
+        if (!data || data.status === "ended") {
+            alert("The host has ended the study session.");
+            localStorage.removeItem('active_study_room');
+            localStorage.removeItem('is_study_guest');
+            window.location.href = 'questions.html';
+            return;
+        }
+
+        if (data.currentQuestionIndex !== currentIndex) {
+            const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
+            triggerSlideTransition(data.currentQuestionIndex, direction);
+        }
+    });
+}
 
 loadSession();
 
