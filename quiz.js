@@ -24,7 +24,7 @@ let hasAnsweredCurrentQuestion = false;
 
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
-const isExamMode = quizConfig.mode === 'exam';
+const isExamMode = (quizConfig.mode === 'exam') && !activeRoomId;
 
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
@@ -321,7 +321,10 @@ function loadQuestion(index) {
         currentQuestionData.options.forEach(opt => {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
-			optBox.style.cursor = 'pointer';
+            optBox.style.cursor = 'pointer';
+            optBox.setAttribute('role', 'button');
+            optBox.setAttribute('tabindex', '0');
+            optBox.setAttribute('onclick', 'void(0);');
             
             if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
@@ -331,7 +334,10 @@ function loadQuestion(index) {
             }
 
             optBox.innerHTML = `<div class="option-text">${opt.text}</div><i class="fas fa-eye eye-icon"></i>`;
-            optBox.onclick = (e) => handleOptionClick(e, opt, optBox);
+            optBox.addEventListener('click', (e) => {
+                e.preventDefault();
+                handleOptionClick(e, opt, optBox);
+            });
             optionsContainer.appendChild(optBox);
         });
 
@@ -744,24 +750,24 @@ if (roomRef) {
                 cardEl.parentElement.insertBefore(rosterBox, cardEl);
             }
 
-            let rosterHtml = `<h4 style="margin: 0 0 10px 0; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; color: #0f172a; font-size: 1rem;">Live Roster</h4>`;
+            let rosterHtml = `<h4 style="margin: 0 0 15px 0; border-bottom: 2px solid rgba(255,255,255,0.5); padding-bottom: 10px; color: #0f172a; font-size: 1.1rem; text-align: center; font-weight: 800; letter-spacing: 0.5px;"><i class="fas fa-users" style="margin-right: 8px; color: #10b981;"></i>Live Roster</h4>`;
             
             Object.keys(activeMembers).forEach(uid => {
                 const name = activeMembers[uid];
                 const hasAnswered = currentAnswers.hasOwnProperty(uid);
                 const isMe = uid === currentUserId;
                 
-                const statusColor = hasAnswered ? "#10b981" : "#cbd5e1"; 
+                const statusColor = hasAnswered ? "#10b981" : "#94a3b8"; 
                 const statusText = hasAnswered ? "Locked In" : "Thinking";
                 const nameWeight = isMe ? "800" : "500";
                 
                 rosterHtml += `
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                        <span style="font-size: 0.9rem; font-weight: ${nameWeight}; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${name}">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; background: rgba(255,255,255,0.4); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                        <span style="font-size: 0.95rem; font-weight: ${nameWeight}; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${name}">
                             ${name} ${isMe ? "(You)" : ""}
                         </span>
-                        <span style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #64748b; font-weight: 600;">
-                            ${statusText} <div style="width: 10px; height: 10px; border-radius: 50%; background: ${statusColor};"></div>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #475569; font-weight: 700;">
+                            ${statusText} <div style="width: 10px; height: 10px; border-radius: 50%; background: ${statusColor}; border: 1px solid rgba(255,255,255,0.8);"></div>
                         </span>
                     </div>
                 `;
@@ -883,6 +889,10 @@ if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.
 if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
 
 document.getElementById('next-btn').onclick = () => {
+    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+        alert("Only the host can jump to different questions.");
+        return;
+    }
     if (isExamMode) {
         if (!currentQuestionData.userSelectedAnswer) return alert("Please select an answer. If you are stuck, click Skip.");
         if (currentIndex === quizQueue.length - 1) return showResults();
@@ -896,6 +906,10 @@ document.getElementById('next-btn').onclick = () => {
 };
 
 document.getElementById('prev-btn').onclick = () => {
+    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+        alert("Only the host can jump to different questions.");
+        return;
+    }
     if (isExamMode) return;
     if (currentIndex > 0) {
         const newIndex = currentIndex - 1;
@@ -962,11 +976,14 @@ document.addEventListener("keyup", (e) => {
 // ==========================================
 // 8. GROUP STUDY: LEAVE LOGIC
 // ==========================================
-const leaveBtn = document.getElementById('leave-room-btn');
-if (activeRoomId && leaveBtn) {
-    leaveBtn.style.display = 'inline-block';
-
-    leaveBtn.onclick = async () => {
+const exitBtn = document.querySelector('.exit-btn');
+if (activeRoomId && exitBtn) {
+    exitBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Leave Room';
+    exitBtn.style.color = '#ef4444';
+    exitBtn.style.borderColor = '#ef4444';
+    
+    exitBtn.onclick = async (e) => {
+        e.preventDefault();
         if (!confirm("Are you sure you want to leave the study group?")) return;
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
@@ -974,7 +991,6 @@ if (activeRoomId && leaveBtn) {
             if (!isGuest) {
                 await updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() });
             } else {
-                // Remove self from active roster
                 await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
             }
         } catch (error) { console.error("Error leaving room:", error); } 

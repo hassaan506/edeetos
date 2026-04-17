@@ -247,14 +247,15 @@ body.mode-exam #prev-btn { display: none !important; }
 /* 9. MULTIPLAYER LIVE ROSTER UI FIX          */
 /* ========================================== */
 #mp-roster-box {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
     border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
+    border-top: 1px solid rgba(255, 255, 255, 1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1) !important;
     z-index: 1000 !important;
-    padding: 1.2rem !important;
+    padding: 1.5rem !important;
     transition: all 0.3s ease !important;
 }
 
@@ -272,55 +273,9 @@ body.mode-exam #prev-btn { display: none !important; }
 @media (min-width: 1200px) {
     #mp-roster-box {
         position: absolute !important;
-        top: 60px !important; /* Pushed down 60px to make room for the Leave Button */
+        top: 0 !important;
         right: -280px !important; 
         width: 250px !important;
-    }
-}
-
-/* ========================================== */
-/* 11. MULTIPLAYER LEAVE ROOM BUTTON          */
-/* ========================================== */
-#leave-room-btn {
-    display: none; 
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.5);
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.05);
-    text-align: center;
-}
-
-#leave-room-btn:hover {
-    background: #ef4444;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
-}
-
-/* 📱 MOBILE & TABLET: Full-width banner inside the top of the card */
-@media (max-width: 1199px) {
-    #leave-room-btn {
-        width: 100% !important;
-        padding: 0.8rem !important;
-        font-size: 0.9rem !important;
-        margin-bottom: 1.2rem !important;
-    }
-}
-
-/* 💻 DESKTOP: Ripped out of the card, stacked cleanly above the Roster */
-@media (min-width: 1200px) {
-    #leave-room-btn {
-        position: absolute !important;
-        top: 0 !important;
-        right: -280px !important; /* Locks it to the exact same column as the Roster */
-        width: 250px !important;
-        padding: 0.8rem !important;
-        font-size: 1rem !important;
-        margin-bottom: 0 !important;
     }
 }
 /* ========================================== */
