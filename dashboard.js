@@ -652,3 +652,32 @@ if (profileForm) {
         }
     });
 }
+
+// dashboard.js Logic
+document.getElementById('btn-create-room').onclick = async () => {
+    const roomId = Math.floor(1000 + Math.random() * 9000).toString();
+    const activeCourse = localStorage.getItem('edeetos_active_course');
+    
+    // Create the room in Firebase
+    await setDoc(doc(db, "study_rooms", roomId), {
+        hostId: currentUserId,
+        course: activeCourse,
+        currentQuestionIndex: 0,
+        status: "waiting",
+        createdAt: serverTimestamp()
+    });
+
+    alert(`Room Created! Share this code with your friends: ${roomId}`);
+    // Redirect to questions.html to pick questions for the group
+    localStorage.setItem('active_study_room', roomId);
+    window.location.href = 'questions.html';
+};
+
+document.getElementById('btn-join-room').onclick = () => {
+    const code = prompt("Enter 4-digit Room Code:");
+    if (code) {
+        localStorage.setItem('active_study_room', code);
+        localStorage.setItem('is_study_guest', 'true');
+        window.location.href = 'quiz.html'; // Guests go straight to quiz
+    }
+};

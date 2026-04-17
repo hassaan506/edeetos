@@ -141,6 +141,27 @@ function loadSession() {
             }
         }
     });
+	const activeRoomId = localStorage.getItem('active_study_room');
+
+	if (activeRoomId) {
+		const roomRef = doc(db, "study_rooms", activeRoomId);
+		
+		// Listen for real-time changes
+		onSnapshot(roomRef, (snapshot) => {
+			const data = snapshot.data();
+			if (data && data.currentQuestionIndex !== currentIndex) {
+				// Automatically jump to the question the host is on!
+				triggerSlideTransition(data.currentQuestionIndex, 'right');
+			}
+		});
+	}
+
+async function syncNextQuestion(newIndex) {
+    if (activeRoomId && localStorage.getItem('is_study_guest') !== 'true') {
+        await updateDoc(doc(db, "study_rooms", activeRoomId), {
+            currentQuestionIndex: newIndex
+        });
+    }
 }
 // Function to randomly shuffle an array (Fisher-Yates algorithm)
 function shuffleArray(array) {
