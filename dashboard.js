@@ -168,11 +168,10 @@ onAuthStateChanged(auth, async (user) => {
                             }
                         });
 
-                        if (pendingExams.length > 0) {
-                            // Create a container on the dashboard for assigned exams
-                            const dashboardContainer = document.querySelector('.dashboard-container') || document.body;
+if (pendingExams.length > 0) {
+                            const dashboardContainer = document.querySelector('.section-container') || document.body;
+                            const headerElement = document.querySelector('.dashboard-header');
                             
-// Start of UI update replacing old inline styles
                             const examsCard = document.createElement('div');
                             examsCard.className = 'glass-panel assigned-exams-container'; 
                             
@@ -181,7 +180,7 @@ onAuthStateChanged(auth, async (user) => {
                                     <i class="fas fa-clipboard-list"></i> Assigned Exams (${pendingExams.length})
                                 </h3>
                                 <p class="assigned-exams-desc">Your mentor has assigned you the following tasks.</p>
-                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div class="assigned-exam-list">
                             `;
 
                             pendingExams.forEach((exam, index) => {
@@ -202,8 +201,12 @@ onAuthStateChanged(auth, async (user) => {
                             examsHtml += `</div>`;
                             examsCard.innerHTML = examsHtml;
                             
-                            // Insert it at the top of the dashboard
-                            dashboardContainer.insertBefore(examsCard, dashboardContainer.firstChild);
+                            // Insert it right after the Welcome text
+                            if (headerElement && headerElement.nextSibling) {
+                                dashboardContainer.insertBefore(examsCard, headerElement.nextSibling);
+                            } else {
+                                dashboardContainer.insertBefore(examsCard, dashboardContainer.firstChild);
+                            }
 
                             // Add click listeners to launch the quizzes
                             pendingExams.forEach((exam, index) => {
