@@ -208,21 +208,33 @@ if (pendingExams.length > 0) {
                                 dashboardContainer.insertBefore(examsCard, dashboardContainer.firstChild);
                             }
 
-                            // Add click listeners to launch the quizzes
+// Add click listeners to launch the quizzes
                             pendingExams.forEach((exam, index) => {
-                                document.getElementById(`launch-assigned-${index}`).addEventListener('click', () => {
-                                    localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
-                                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
-                                        mode: 'exam', 
-                                        timer: exam.timerMinutes, 
-                                        examName: exam.title 
-                                    }));
-                                    localStorage.setItem('edeetos_assigned_exam_id', exam.id);
-                                    
-                                    window.location.href = 'quiz.html';
+                                const launchBtn = document.getElementById(`launch-assigned-${index}`);
+                                
+                                launchBtn.addEventListener('click', () => {
+                                    // 1. Instant Visual Feedback!
+                                    // Change the button so they know it is working
+                                    launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
+                                    launchBtn.style.opacity = "0.8";
+                                    launchBtn.style.pointerEvents = "none"; // Prevents double-clicking
+
+                                    // 2. The "Breathe" Timeout
+                                    // We wait 50ms so the browser has time to render the new button text 
+                                    // before we lock up the main thread with heavy JSON stringifying.
+                                    setTimeout(() => {
+                                        localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
+                                        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
+                                            mode: 'exam', 
+                                            timer: exam.timerMinutes, 
+                                            examName: exam.title 
+                                        }));
+                                        localStorage.setItem('edeetos_assigned_exam_id', exam.id);
+                                        
+                                        window.location.href = 'quiz.html';
+                                    }, 50);
                                 });
-                            });
-                        }
+                            });                        }
                     } catch (examErr) {
                         console.error("Error fetching assigned exams:", examErr);
                     }
