@@ -256,7 +256,7 @@ setTimeout(() => {
                         document.body.removeChild(modalOverlay);
                     });
 
-                    // Confirm Button
+// Confirm Button
                     document.getElementById('btn-confirm-assign').addEventListener('click', async () => {
                         const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
                         const selectedStudentIds = Array.from(checkedBoxes).map(cb => cb.value);
@@ -270,11 +270,16 @@ setTimeout(() => {
                         confirmBtn.disabled = true;
 
                         try {
+                            // 🚀 THE FIX: Sanitize the data! 
+                            // This instantly strips out any hidden 'undefined' values that the CSV loader 
+                            // might have left behind, which Firestore heavily rejects.
+                            const cleanExamPool = JSON.parse(JSON.stringify(examPool));
+
                             await addDoc(collection(db, "assigned_exams"), {
                                 title: generatedTitle,
                                 assignedBy: auth.currentUser.uid,
-                                assignedTo: selectedStudentIds, // Supports multiple selections!
-                                questions: examPool,
+                                assignedTo: selectedStudentIds, 
+                                questions: cleanExamPool,
                                 timerMinutes: timerInput,
                                 isCompletedBy: [],
                                 createdAt: serverTimestamp()
@@ -284,7 +289,9 @@ setTimeout(() => {
                             document.body.removeChild(modalOverlay);
                         } catch (error) {
                             console.error("Error assigning exam: ", error);
-                            alert("Failed to assign exam.");
+                            // 🚨 Show the EXACT error on the screen so we don't have to guess!
+                            alert("Firebase Error: " + error.message);
+                            
                             confirmBtn.textContent = "Assign Exam";
                             confirmBtn.disabled = false;
                         }
