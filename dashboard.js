@@ -669,7 +669,7 @@ btnCreate.onclick = async () => {
         return alert("Please register to use Group Study.");
     }
 
-    const roomId = crypto.randomUUID().slice(0, 6).toUpperCase();
+	const roomId = Math.floor(1000 + Math.random() * 9000).toString();
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
 
     btnCreate.textContent = "Creating...";
@@ -684,7 +684,77 @@ btnCreate.onclick = async () => {
             createdAt: serverTimestamp()
         });
 
-        alert(`Room Created! Code: ${roomId}`);
+        const modal = document.createElement('div');
+modal.style.cssText = `
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+`;
+
+modal.innerHTML = `
+    <div style="
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 350px;
+        width: 90%;
+    ">
+        <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
+        <p style="margin-bottom: 15px;">Share this code:</p>
+
+        <div id="room-code-box" style="
+            font-size: 2rem;
+            font-weight: bold;
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 8px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        ">${roomId}</div>
+
+        <button id="copy-room-code" style="
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        ">Copy Code</button>
+
+        <br>
+
+        <button id="enter-room" style="
+            padding: 10px 20px;
+            border: none;
+            background: #10b981;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        ">Enter Room</button>
+    </div>
+`;
+
+document.body.appendChild(modal);
+
+// Copy logic
+document.getElementById('copy-room-code').onclick = () => {
+    navigator.clipboard.writeText(roomId);
+    document.getElementById('copy-room-code').textContent = "Copied ✔️";
+};
+
+// Enter room
+document.getElementById('enter-room').onclick = () => {
+    localStorage.setItem('active_study_room', roomId);
+    localStorage.removeItem('is_study_guest');
+    window.location.href = 'questions.html';
+};
 
         localStorage.setItem('active_study_room', roomId);
         localStorage.removeItem('is_study_guest');
