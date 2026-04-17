@@ -1,9 +1,8 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 // 👉 We added query, where, and onSnapshot to this import line!
-import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-
 let currentUserData = null;
 let currentUserId = null;
 
@@ -22,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
 
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
-if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
+                if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
                     
                     // 1. Visually change the underlying dashboard UI
                     document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
@@ -104,7 +103,7 @@ if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
                     }
                 }
 
-                // 👉 NEW: GLOBAL MENTOR NOTIFICATIONS
+                // 👉 GLOBAL MENTOR NOTIFICATIONS
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     
                     // UX Improvement: Update their dashboard card text since they ARE the mentor
@@ -149,6 +148,85 @@ if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
                         }
                     });
                 }
+
+                // ==========================================
+                // 👉 NEW: STUDENT FEATURE: FETCH ASSIGNED EXAMS
+                // ==========================================
+                if (userRole === 'STUDENT' || currentUserData.isPremium) {
+                    const examsRef = collection(db, "assigned_exams");
+                    const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
+                    
+                    try {
+                        const examsSnapshot = await getDocs(assignedQuery);
+                        const pendingExams = [];
+                        
+                        examsSnapshot.forEach((docSnap) => {
+                            const data = docSnap.data();
+                            // Only show exams they haven't completed yet
+                            if (!data.isCompletedBy || !data.isCompletedBy.includes(currentUserId)) {
+                                pendingExams.push({ id: docSnap.id, ...data });
+                            }
+                        });
+
+                        if (pendingExams.length > 0) {
+                            // Create a container on the dashboard for assigned exams
+                            const dashboardContainer = document.querySelector('.dashboard-container') || document.body;
+                            
+                            const examsCard = document.createElement('div');
+                            examsCard.className = 'glass-panel';
+                            examsCard.style.cssText = "margin-top: 2rem; border: 2px solid #3b82f6; background: rgba(59, 130, 246, 0.05);";
+                            
+                            let examsHtml = `
+                                <h3 style="color: #1e3a8a; margin-bottom: 1rem;">
+                                    <i class="fas fa-clipboard-list"></i> Assigned Exams (${pendingExams.length})
+                                </h3>
+                                <p style="color: #475569; margin-bottom: 1rem;">Your mentor has assigned you the following tasks.</p>
+                                <div style="display: flex; flex-direction: column; gap: 10px;">
+                            `;
+
+                            pendingExams.forEach((exam, index) => {
+                                examsHtml += `
+                                    <div style="background: white; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                        <div>
+                                            <strong style="color: #0f172a;">${exam.title}</strong>
+                                            <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">
+                                                ⏱ ${exam.timerMinutes} Minutes • 📝 ${exam.questions.length} Questions
+                                            </div>
+                                        </div>
+                                        <button id="launch-assigned-${index}" class="btn-solid mini-btn" style="background: #3b82f6;">Start Exam</button>
+                                    </div>
+                                `;
+                            });
+
+                            examsHtml += `</div>`;
+                            examsCard.innerHTML = examsHtml;
+                            
+                            // Insert it at the top of the dashboard
+                            dashboardContainer.insertBefore(examsCard, dashboardContainer.firstChild);
+
+                            // Add click listeners to launch the quizzes
+                            pendingExams.forEach((exam, index) => {
+                                document.getElementById(`launch-assigned-${index}`).addEventListener('click', () => {
+                                    localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
+                                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
+                                        mode: 'exam', 
+                                        timer: exam.timerMinutes, 
+                                        examName: exam.title 
+                                    }));
+                                    localStorage.setItem('edeetos_assigned_exam_id', exam.id);
+                                    
+                                    window.location.href = 'quiz.html';
+                                });
+                            });
+                        }
+                    } catch (examErr) {
+                        console.error("Error fetching assigned exams:", examErr);
+                    }
+                }
+                // ==========================================
+                // END NEW ASSIGNED EXAMS LOGIC
+                // ==========================================
+
             }
         } catch (error) {
             console.error("Error fetching user data:", error);

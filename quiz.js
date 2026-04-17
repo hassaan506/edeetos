@@ -466,8 +466,8 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
         let courseUpdates = {};
         
         if (correctIds.length > 0) {
-            courseUpdates.solvedQuestions = arrayUnion(...correctIds);
-            courseUpdates.mistakes = arrayRemove(...correctIds);      
+            // We only remove from examMistakes here if they finally got it right.
+            // We removed solvedQuestions and mistakes updates to keep Practice Mode isolated!
             courseUpdates.examMistakes = arrayRemove(...correctIds);  
         }
         if (mistakeIds.length > 0) {

@@ -1,7 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // ==========================================
 // 1. STATE VARIABLES
 // ==========================================
@@ -21,6 +20,7 @@ let globalExamMistakes = [];
 let globalBookmarks = [];
 let activeCustomPool = null;
 let isPremiumUser = false;
+let currentUserRole = "STUDENT";
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -127,7 +127,79 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
 
     window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
 });
+// ==========================================
+// MENTOR FEATURE: ASSIGN EXAM TO STUDENT
+// ==========================================
+// Wait for the DOM to load, then inject the Assign button if they are a mentor
+setTimeout(() => {
+    if (currentUserRole === 'MENTOR' || currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') {
+        const startBtn = document.getElementById('start-exam-btn');
+        if (startBtn && startBtn.parentElement) {
+            const assignBtn = document.createElement('button');
+            assignBtn.className = "btn-outline";
+            assignBtn.textContent = "Assign to Student";
+            assignBtn.style.marginLeft = "10px";
+            assignBtn.id = "assign-exam-btn";
+            
+            // Insert it right after the Start Exam button
+            startBtn.parentElement.appendChild(assignBtn);
 
+            assignBtn.addEventListener('click', async () => {
+                const paths = Array.from(selectedCart).map(str => JSON.parse(str));
+                let examPool = allQuestions.filter(q => {
+                    return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
+                });
+
+                const qCountInput = parseInt(document.getElementById('exam-q-count').value);
+                const timerInput = parseInt(document.getElementById('exam-timer').value);
+
+                if (!timerInput || timerInput <= 0 || isNaN(timerInput)) {
+                    alert("Please enter a valid time in minutes.");
+                    return;
+                }
+
+                if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) {
+                    examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+                } else {
+                    examPool = examPool.sort(() => 0.5 - Math.random());
+                }
+
+                if (examPool.length === 0) {
+                    return alert("No questions selected!");
+                }
+
+                // Ask the mentor for the Student's User ID
+                const studentUid = prompt("Enter the Student's User ID (UID) to assign this exam:");
+                if (!studentUid) return;
+
+                const generatedTitle = generateExamTitle(paths, currentView) + " (Assigned)";
+
+                assignBtn.textContent = "Assigning...";
+                assignBtn.disabled = true;
+
+                try {
+                    await addDoc(collection(db, "assigned_exams"), {
+                        title: generatedTitle,
+                        assignedBy: auth.currentUser.uid,
+                        assignedTo: [studentUid.trim()], 
+                        questions: examPool, // Saving the actual questions for the student
+                        timerMinutes: timerInput,
+                        isCompletedBy: [],
+                        createdAt: serverTimestamp()
+                    });
+                    
+                    alert("Exam successfully assigned to the student!");
+                } catch (error) {
+                    console.error("Error assigning exam: ", error);
+                    alert("Failed to assign exam.");
+                } finally {
+                    assignBtn.textContent = "Assign to Student";
+                    assignBtn.disabled = false;
+                }
+            });
+        }
+    }
+}, 1500); // Slight delay to ensure Firebase loaded the user role
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
@@ -628,7 +700,7 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
-
+				currentUserRole = dbData.role || 'STUDENT';
 // 1. Get the active course first
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 const courseData = dbData[activeCourse] || {};
