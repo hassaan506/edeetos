@@ -302,3 +302,105 @@
     
     .course-dash-grid { grid-template-columns: 1fr !important; }
 }
+/* ========================================== */
+/* 7. ASSIGNED EXAMS WIDGET (RESPONSIVE)      */
+/* ========================================== */
+.assigned-exams-container {
+    margin: 2rem auto;
+    max-width: 1100px;
+    border: 2px solid #3b82f6;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.assigned-exams-title {
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.assigned-exams-desc {
+    color: #475569;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+}
+
+.assigned-exam-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.assigned-exam-card {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    gap: 15px; 
+}
+
+.assigned-exam-info {
+    flex: 1; 
+}
+
+.assigned-exam-name {
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+
+.assigned-exam-meta {
+    font-size: 0.85rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; 
+}
+
+.btn-start-exam {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap; 
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.btn-start-exam:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* --- MOBILE SPECIFIC LAYOUT --- */
+@media (max-width: 768px) {
+    .assigned-exams-container {
+        margin: 1rem;
+        padding: 1.2rem;
+    }
+    
+    .assigned-exam-card {
+        flex-direction: column; 
+        align-items: stretch; 
+        gap: 15px;
+    }
+    
+    .btn-start-exam {
+        width: 100%; 
+        text-align: center;
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+}
