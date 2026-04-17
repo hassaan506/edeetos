@@ -246,7 +246,6 @@ body.mode-exam #prev-btn { display: none !important; }
 /* ========================================== */
 /* 9. MULTIPLAYER LIVE ROSTER UI FIX          */
 /* ========================================== */
-
 #mp-roster-box {
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(20px) !important;
@@ -259,7 +258,6 @@ body.mode-exam #prev-btn { display: none !important; }
     transition: all 0.3s ease !important;
 }
 
-/* 📱 MOBILE, TABLET & ZOOMED SCREENS: Roster sits directly above the question card */
 @media (max-width: 1199px) {
     #mp-roster-box {
         position: relative !important;
@@ -271,17 +269,60 @@ body.mode-exam #prev-btn { display: none !important; }
     }
 }
 
-/* 💻 DESKTOP: Roster attaches absolutely to the wrapper so it zooms perfectly */
 @media (min-width: 1200px) {
     #mp-roster-box {
         position: absolute !important;
-        top: 0 !important;
-        /* Pushes it exactly 280px to the right of the main card container */
+        top: 60px !important; /* Pushed down 60px to make room for the Leave Button */
         right: -280px !important; 
         width: 250px !important;
     }
 }
 
+/* ========================================== */
+/* 11. MULTIPLAYER LEAVE ROOM BUTTON          */
+/* ========================================== */
+#leave-room-btn {
+    display: none; 
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.05);
+    text-align: center;
+}
+
+#leave-room-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* 📱 MOBILE & TABLET: Full-width banner inside the top of the card */
+@media (max-width: 1199px) {
+    #leave-room-btn {
+        width: 100% !important;
+        padding: 0.8rem !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+}
+
+/* 💻 DESKTOP: Ripped out of the card, stacked cleanly above the Roster */
+@media (min-width: 1200px) {
+    #leave-room-btn {
+        position: absolute !important;
+        top: 0 !important;
+        right: -280px !important; /* Locks it to the exact same column as the Roster */
+        width: 250px !important;
+        padding: 0.8rem !important;
+        font-size: 1rem !important;
+        margin-bottom: 0 !important;
+    }
+}
 /* ========================================== */
 /* 10. DESKTOP & MOBILE RESPONSIVENESS        */
 /* ========================================== */
@@ -340,38 +381,4 @@ body.mode-exam #prev-btn { display: none !important; }
     .modal-content { padding: 1.5rem; width: 95%; border-radius: 16px; }
     .quiz-body::before { width: 90vw; height: 90vw; filter: blur(60px); }
     .quiz-body::after { width: 100vw; height: 100vw; filter: blur(80px); }
-}
-/* ========================================== */
-/* 11. MULTIPLAYER LEAVE ROOM BUTTON          */
-/* ========================================== */
-
-#leave-room-btn {
-    display: none; /* Hidden by default; JS will unhide it when in a room */
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.5);
-    padding: 0.5rem 1.2rem;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.05);
-    align-self: flex-start; /* Keeps it neatly aligned to the left */
-}
-
-#leave-room-btn:hover {
-    background: #ef4444;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
-}
-
-/* On mobile, make sure it doesn't stretch weirdly */
-@media (max-width: 768px) {
-    #leave-room-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.8rem;
-    }
 }
