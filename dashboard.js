@@ -1,7 +1,7 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 // 👉 We added query, where, and onSnapshot to this import line!
-import { doc, getDoc, updateDoc, addDoc, collection, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 let currentUserData = null;
 let currentUserId = null;
@@ -656,8 +656,6 @@ if (profileForm) {
 // ==========================================
 // 🚀 GROUP STUDY LOGIC
 // ==========================================
-import { setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
 // 1. Create a Room (Host)
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
@@ -671,7 +669,7 @@ btnCreate.onclick = async () => {
         return alert("Please register to use Group Study.");
     }
 
-    const roomId = Math.floor(1000 + Math.random() * 9000).toString();
+    const roomId = crypto.randomUUID().slice(0, 6).toUpperCase();
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
 
     btnCreate.textContent = "Creating...";
