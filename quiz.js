@@ -286,8 +286,7 @@ function loadQuestion(index) {
         }
 
         wrongAttempts = 0;
-        hasAnsweredCorrectly = (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct'); 
-        
+		hasAnsweredCorrectly = false;        
         if (!isExamMode) updateFeedbackBar();
         
         if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
@@ -898,10 +897,14 @@ document.getElementById('next-btn').onclick = () => {
         if (currentIndex === quizQueue.length - 1) return showResults();
     }
 
-    if (currentIndex < quizQueue.length - 1) {
+if (currentIndex < quizQueue.length - 1) {
         const newIndex = currentIndex + 1;
         syncNextQuestion(newIndex);
         triggerSlideTransition(newIndex, 'right');
+    } else if (!isExamMode) {
+        // Give the user a clear ending when they finish a practice set!
+        alert("Great job! You have completed this practice session.");
+        window.location.href = 'questions.html'; 
     }
 };
 

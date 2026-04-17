@@ -1022,8 +1022,24 @@ if (btnAnalytics) {
                 </button>
             `;
         } else {
-            html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top: 0;">System Diagnostics</h4>`;
-            html += `<p style="font-size:0.85rem; color:#64748b;">Not enough data to calculate weaknesses yet. Keep practicing!</p>`;
+            // Count total attempts to see if they actually played, or if they are just new
+            const totalAttemptsCount = Object.values(stats).reduce((sum, data) => sum + data.attempted, 0);
+
+            if (totalAttemptsCount >= 3) {
+                // They answered questions, but had NO mistakes!
+                html += `<h4 style="color:#059669; border-bottom:2px solid #d1fae5; padding-bottom:5px; margin-top: 0;">🌟 Flawless Performance</h4>`;
+                html += `<p style="font-size:0.85rem; color:#065f46; margin-bottom: 15px;">Incredible! You have no critical weaknesses in your attempted topics. You are getting everything correct.</p>`;
+                html += `
+                    <div style="padding: 15px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-check-circle" style="font-size: 2rem; color: #10b981; margin-bottom: 10px;"></i>
+                        <div style="font-weight: bold; color: #047857;">All Systems Optimal!</div>
+                        <div style="font-size: 0.8rem; color: #065f46; margin-top: 5px;">Keep up the amazing work! 🚀</div>
+                    </div>`;
+            } else {
+                // They truly don't have enough data yet
+                html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top: 0;">System Diagnostics</h4>`;
+                html += `<p style="font-size:0.85rem; color:#64748b;">Not enough data to calculate weaknesses yet. Answer at least 3 questions in a topic to unlock analytics!</p>`;
+            }
         }
 
         // KEEP THE OLD EXAM HISTORY AT THE BOTTOM
@@ -1080,7 +1096,7 @@ if (btnAnalytics) {
                 }
 
                 // Launch the quiz
-                window.launchQuiz(finalQuiz, 'practice', 0, "🚨 Weakness Gauntlet");
+					window.launchQuiz(finalQuiz, 'practice', 0, "Review Mistakes");
             };
         }
     };
