@@ -939,7 +939,9 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// Analytics Modal
+// ==========================================
+// 11. THE WEAKNESS ENGINE & ANALYTICS
+// ==========================================
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
@@ -948,55 +950,84 @@ if (btnAnalytics) {
         }
         const body = document.getElementById('analytics-body');
 
-        let activeTree = {};
-        let statTitle = "";
-        let itemLabel = "";
+        // 1. CALCULATE GRANULAR WEAKNESSES
+        let stats = {};
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
 
-        if (currentView === 'subject') {
-            activeTree = subjectTree;
-            statTitle = "Subject Stats";
-            itemLabel = "subjects";
-        } else if (currentView === 'system') {
-            activeTree = systemTree;
-            statTitle = "System Stats";
-            itemLabel = "systems";
-        } else if (currentView === 'exam') {
-            activeTree = examTree;
-            statTitle = "Past Paper Stats";
-            itemLabel = "past papers";
-        }
+        allQuestions.forEach(q => {
+            // Group by the most specific category available
+            const topicName = q.Topic || q.Chapter || q.Subject || "General";
+            const qId = getQID(q);
+            
+            if (!stats[topicName]) {
+                stats[topicName] = { total: 0, attempted: 0, mistakes: 0, questions: [] };
+            }
+            
+            stats[topicName].total++;
+            stats[topicName].questions.push(q);
 
-        let html = `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px;">${statTitle}</h4>`;
+            const isAttempted = attemptedQuestions.includes(qId) || allMistakes.includes(qId);
+            const isMistake = allMistakes.includes(qId);
 
-        let itemAdded = false;
-
-        Object.keys(activeTree).forEach(key => {
-            const total = getQuestionCount(currentView, [key], allQuestions);
-            const solved = getSolvedCount(currentView, [key]);
-
-            const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-            const mistakesInSection = getQuestionCount(currentView, [key], allQuestions.filter(q => allMistakes.includes(getQID(q))));
-
-            if (solved === 0 && mistakesInSection === 0) return;
-
-            itemAdded = true;
-
-            const pct = Math.round((solved / total) * 100);
-            html += `<div style="margin: 10px 0;">
-                        <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
-                            <span>${key}</span><span>${pct}% (${solved}/${total})</span>
-                        </div>
-                        <div style="background:#e2e8f0; height:6px; border-radius:3px; overflow:hidden; margin-top:4px;">
-                            <div style="width:${pct}%; background:#10b981; height:100%;"></div>
-                        </div>
-                     </div>`;
+            if (isAttempted) {
+                stats[topicName].attempted++;
+                if (isMistake) stats[topicName].mistakes++;
+            }
         });
 
-        if (!itemAdded) {
-            html += `<p style="font-size:0.8rem; color:#64748b; text-align:center; padding: 1rem 0;">No ${itemLabel} attempted yet.</p>`;
+        // Filter and sort to find actual weaknesses (Must have attempted at least 3 questions to form a pattern)
+        let weaknesses = [];
+        Object.keys(stats).forEach(topic => {
+            const data = stats[topic];
+            if (data.attempted >= 3 && data.mistakes > 0) {
+                const accuracy = Math.round(((data.attempted - data.mistakes) / data.attempted) * 100);
+                weaknesses.push({
+                    topic: topic,
+                    accuracy: accuracy,
+                    mistakes: data.mistakes,
+                    attempted: data.attempted,
+                    pool: data.questions
+                });
+            }
+        });
+
+        // Sort by lowest accuracy first, then highest volume of mistakes
+        weaknesses.sort((a, b) => a.accuracy - b.accuracy || b.mistakes - a.mistakes);
+        const topWeaknesses = weaknesses.slice(0, 5); // Get the 5 worst topics
+
+        // 2. BUILD THE UI
+        let html = ``;
+
+        // THE BRUTAL TRUTH SECTION
+        if (topWeaknesses.length > 0) {
+            html += `<h4 style="color:#991b1b; border-bottom:2px solid #fee2e2; padding-bottom:5px; margin-top: 0;">🚨 Critical Weaknesses</h4>`;
+            html += `<p style="font-size:0.85rem; color:#475569; margin-bottom: 15px;">You are currently underperforming in these specific areas.</p>`;
+            
+            topWeaknesses.forEach(w => {
+                html += `
+                    <div style="margin: 10px 0; padding: 10px; background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight: bold; color: #7f1d1d;">
+                            <span>${w.topic}</span><span>${w.accuracy}% Accuracy</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: #991b1b; margin-top: 4px;">
+                            ${w.mistakes} mistakes out of ${w.attempted} attempts.
+                        </div>
+                    </div>`;
+            });
+
+            // INJECT THE TARGETED GAUNTLET BUTTON
+            html += `
+                <button id="btn-weakness-gauntlet" style="width: 100%; margin-top: 15px; background: #ef4444; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); transition: 0.2s;">
+                    Generate Targeted Weakness Quiz (20 Qs)
+                </button>
+            `;
+        } else {
+            html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top: 0;">System Diagnostics</h4>`;
+            html += `<p style="font-size:0.85rem; color:#64748b;">Not enough data to calculate weaknesses yet. Keep practicing!</p>`;
         }
 
-        html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:20px;">Recent Exams</h4>`;
+        // KEEP THE OLD EXAM HISTORY AT THE BOTTOM
+        html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:25px;">Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
         } else {
@@ -1015,6 +1046,43 @@ if (btnAnalytics) {
 
         body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
+
+        // 3. ATTACH THE GAUNTLET LOGIC
+        const gauntletBtn = document.getElementById('btn-weakness-gauntlet');
+        if (gauntletBtn) {
+            gauntletBtn.onclick = () => {
+                gauntletBtn.textContent = "Compiling Quiz...";
+                gauntletBtn.disabled = true;
+
+                // Combine all questions from their worst topics
+                let weakPool = [];
+                topWeaknesses.forEach(w => weakPool.push(...w.pool));
+
+                // Filter out questions they've already answered correctly (force them to see new ones or mistakes)
+                weakPool = weakPool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
+
+                // If somehow the pool is empty, grab the mistakes directly
+                if (weakPool.length === 0) {
+                    weakPool = allQuestions.filter(q => allMistakes.includes(getQID(q)));
+                }
+
+                // Shuffle the weak pool
+                weakPool = weakPool.sort(() => 0.5 - Math.random());
+
+                // Cap it at 20 questions maximum
+                const finalQuiz = weakPool.slice(0, 20);
+
+                if (finalQuiz.length === 0) {
+                    alert("No questions available for these topics.");
+                    gauntletBtn.textContent = "Generate Targeted Weakness Quiz (20 Qs)";
+                    gauntletBtn.disabled = false;
+                    return;
+                }
+
+                // Launch the quiz
+                window.launchQuiz(finalQuiz, 'practice', 0, "🚨 Weakness Gauntlet");
+            };
+        }
     };
 }
 
