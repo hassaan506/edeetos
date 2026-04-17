@@ -140,7 +140,7 @@ onAuthStateChanged(auth, async (user) => {
             // Only auto-start if they aren't waiting in a multiplayer lobby
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
-                if (!isExamMode && !activeRoomId) buildNumberGrid();
+				if (!isExamMode) buildNumberGrid();
                 loadQuestion(0);
             }
         }
@@ -149,7 +149,7 @@ onAuthStateChanged(auth, async (user) => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
-                if (!isExamMode && !activeRoomId) buildNumberGrid();
+                if (!isExamMode) buildNumberGrid();
                 loadQuestion(0);
             }
         } else {
@@ -219,10 +219,21 @@ function buildNumberGrid() {
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
         
-        numBtn.onclick = () => {
+numBtn.onclick = () => {
             if (isExamMode) return; 
+            
+            // Lock out guests
+            if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+                alert("Only the host can jump to different questions.");
+                return;
+            }
+            
             if(index === currentIndex) return;
             const direction = index > currentIndex ? 'right' : 'left';
+            
+            // Sync host clicks to the group
+            if (activeRoomId) syncNextQuestion(index); 
+            
             triggerSlideTransition(index, direction);
         };
         numberGrid.appendChild(numBtn);
