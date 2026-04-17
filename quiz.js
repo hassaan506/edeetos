@@ -1,8 +1,9 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-let currentUserId = null; // MOVED TO TOP OF FILE
+let currentUserId = null; 
+let currentUserData = null;
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
@@ -14,8 +15,12 @@ let wrongAttempts = 0;
 let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
+
+// Multiplayer specific states
 let activeRoomId = localStorage.getItem('active_study_room');
 let roomRef = activeRoomId ? doc(db, "study_rooms", activeRoomId) : null;
+let hasRevealedCurrentQuestion = false;
+let hasAnsweredCurrentQuestion = false;
 
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
@@ -47,6 +52,11 @@ if (isExamMode) {
 }
 
 function loadSession() {
+    // If you are a guest in a study room, do NOT load from local storage. Wait for Firebase.
+    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+        return; 
+    }
+
     const storedData = localStorage.getItem('edeetos_active_quiz');
     if (!storedData) {
         window.location.href = 'questions.html';
@@ -66,12 +76,11 @@ function loadSession() {
         q.sessionState = null; 
         q.historicalState = null; 
     });
-} // CLOSED loadSession CORRECTLY
+}
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         currentUserId = user.uid; 
-
         const userRef = doc(db, "users", user.uid);
 
         try {
@@ -79,56 +88,35 @@ onAuthStateChanged(auth, async (user) => {
 
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
+                currentUserData = dbData;
+
+                // MULTIPLAYER ATTENDANCE SYNC
+                if (activeRoomId) {
+                    await updateDoc(roomRef, {
+                        [`activeMembers.${currentUserId}`]: dbData.fullName || "Student"
+                    });
+                }
 
                 if (dbData.isBanned || dbData.role === 'BANNED') {
-
                     const lockoutScreen = document.createElement('div');
-                    lockoutScreen.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100vw;
-                        height: 100vh;
-                        background-color: rgba(15, 23, 42, 0.95);
-                        z-index: 2147483647;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        text-align: center;
-                        backdrop-filter: blur(10px);
-                    `;
-
+                    lockoutScreen.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
                     lockoutScreen.innerHTML = `
                         <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
                         <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Account Suspended</h1>
-                        <p style="color: #94a3b8; font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem;">
-                            Your account has been restricted due to policy violations.
-                        </p>
-                        <button id="btn-banned-logout"
-                            style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer;">
-                            Log Out
-                        </button>
+                        <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer;">Log Out</button>
                     `;
-
                     document.body.appendChild(lockoutScreen);
                     document.body.style.overflow = 'hidden';
 
                     document.getElementById('btn-banned-logout').addEventListener('click', async () => {
-                        try {
-                            await signOut(auth);
-                        } catch (error) {
-                            console.error("Logout error:", error);
-                        }
+                        await signOut(auth);
                         window.location.href = 'index.html';
                     });
-
                     return; 
                 }
 
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 const courseData = dbData[activeCourse] || {};
-
                 const savedNotes = courseData.notes || {};
                 const savedBookmarks = courseData.bookmarks || [];
                 const solvedList = courseData.solvedQuestions || [];
@@ -138,11 +126,7 @@ onAuthStateChanged(auth, async (user) => {
                 quizQueue.forEach(q => {
                     q.isBookmarked = savedBookmarks.includes(q.originalNumber);
                     q.userNote = savedNotes[q.originalNumber] || "";
-
-                    if (
-                        mistakesList.includes(q.originalNumber) ||
-                        examMistakesList.includes(q.originalNumber)
-                    ) {
+                    if (mistakesList.includes(q.originalNumber) || examMistakesList.includes(q.originalNumber)) {
                         q.historicalState = 'wrong';
                     } else if (solvedList.includes(q.originalNumber)) {
                         q.historicalState = 'correct';
@@ -151,16 +135,13 @@ onAuthStateChanged(auth, async (user) => {
             }
 
         } catch (error) {
-            console.error("❌ Firebase Load Error:", error);
+            console.error("Firebase Load Error:", error);
         } finally {
+            // Only auto-start if they aren't waiting in a multiplayer lobby
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
-                if (!isExamMode) buildNumberGrid();
+                if (!isExamMode && !activeRoomId) buildNumberGrid();
                 loadQuestion(0);
-            } else {
-                console.error("🚨 Quiz queue is empty or not loaded!");
-                alert("No questions found. Please go back and select questions again.");
-                window.location.href = 'questions.html';
             }
         }
 
@@ -168,11 +149,8 @@ onAuthStateChanged(auth, async (user) => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
-                if (!isExamMode) buildNumberGrid();
+                if (!isExamMode && !activeRoomId) buildNumberGrid();
                 loadQuestion(0);
-            } else {
-                alert("No questions found. Please go back.");
-                window.location.href = 'questions.html';
             }
         } else {
             window.location.href = 'login.html';
@@ -182,7 +160,6 @@ onAuthStateChanged(auth, async (user) => {
 
 async function syncNextQuestion(newIndex) {
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
-
     if (isGuest) return;
 
     if (activeRoomId) {
@@ -236,12 +213,8 @@ function buildNumberGrid() {
         numBtn.className = 'grid-num';
         
         const stateToShow = q.sessionState || q.historicalState;
-        
-        if (stateToShow === 'correct') {
-            numBtn.classList.add('correct');
-        } else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') {
-            numBtn.classList.add('incorrect');
-        }
+        if (stateToShow === 'correct') numBtn.classList.add('correct');
+        else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') numBtn.classList.add('incorrect');
         
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
@@ -288,6 +261,14 @@ function loadQuestion(index) {
         currentIndex = index;
         currentQuestionData = quizQueue[currentIndex];
 
+        // Reset Multiplayer states
+        hasRevealedCurrentQuestion = false;
+        hasAnsweredCurrentQuestion = false;
+        const waitEl = document.getElementById('multiplayer-waiting-text');
+        if (waitEl) waitEl.style.display = 'none';
+        const forceBtn = document.getElementById('host-force-reveal-btn');
+        if (forceBtn) forceBtn.style.display = 'none';
+
         if (!currentQuestionData.options) {
             quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
             currentQuestionData = quizQueue[currentIndex];
@@ -298,7 +279,7 @@ function loadQuestion(index) {
         
         if (!isExamMode) updateFeedbackBar();
         
-        if (hasAnsweredCorrectly && !isExamMode) {
+        if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
             explanationBtn.style.display = 'inline-block';
         } else {
             explanationBtn.style.display = 'none'; 
@@ -332,7 +313,7 @@ function loadQuestion(index) {
             
             if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
-            } else if (!isExamMode && hasAnsweredCorrectly) {
+            } else if (!isExamMode && hasAnsweredCorrectly && !activeRoomId) {
                 if (opt.isCorrect) optBox.classList.add('correct');
                 optBox.classList.add('locked');
             }
@@ -342,7 +323,6 @@ function loadQuestion(index) {
             optionsContainer.appendChild(optBox);
         });
 
-        // BOOKMARK
         const bookmarkBtn = document.getElementById('bookmark-btn');
         if (bookmarkBtn) {
             const starIcon = bookmarkBtn.querySelector('i');
@@ -359,7 +339,6 @@ function loadQuestion(index) {
             };
         }
 
-        // NOTES
         const noteBtn = document.getElementById('note-btn');
         if (noteBtn) {
             noteBtn.onclick = (e) => {
@@ -377,9 +356,7 @@ function loadQuestion(index) {
             saveNoteBtn.onclick = () => {
                 const typedNote = noteInput.value.trim();
                 currentQuestionData.userNote = typedNote; 
-                if (typeof saveNoteToFirebase === "function") {
-                    saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
-                }
+                saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
                 notesModal.classList.remove('show');
                 setTimeout(() => notesModal.classList.add('hidden'), 300);
             };
@@ -392,7 +369,6 @@ function loadQuestion(index) {
             };
         }
 		
-        // REPORT QUESTION
         const btnReport = document.getElementById('btn-report');
         const reportModal = document.getElementById('report-modal');
         const closeReportBtn = document.getElementById('close-report-btn');
@@ -448,9 +424,7 @@ function loadQuestion(index) {
                     });
                     
                     alert("Report submitted successfully. Thank you!");
-                    if (reportModal) {
-                        reportModal.classList.remove('show');
-                    }
+                    if (reportModal) reportModal.classList.remove('show');
                 } catch (e) {
                     console.error("Error reporting question: ", e);
                     alert("Failed to submit report. Please check your internet connection or try again later.");
@@ -468,7 +442,7 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 3. DATABASE SYNC FUNCTIONS (COURSE ISOLATED)
+// 3. DATABASE SYNC FUNCTIONS
 // ==========================================
 async function savePracticeProgress(questionId, isCorrect) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
@@ -477,7 +451,6 @@ async function savePracticeProgress(questionId, isCorrect) {
 
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
-    
     let courseUpdates = {};
 
     if (isCorrect) {
@@ -494,9 +467,7 @@ async function savePracticeProgress(questionId, isCorrect) {
 
     try {
         await setDoc(userRef, { [activeCourse]: courseUpdates }, { merge: true });
-    } catch (error) {
-        console.error("Error saving practice progress:", error);
-    }
+    } catch (error) { console.error("Error saving practice progress:", error); }
 }
 
 async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions) {
@@ -509,13 +480,8 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     
     try {
         let courseUpdates = {};
-        
-        if (correctIds.length > 0) {
-            courseUpdates.examMistakes = arrayRemove(...correctIds);  
-        }
-        if (mistakeIds.length > 0) {
-            courseUpdates.examMistakes = arrayUnion(...mistakeIds);
-        }
+        if (correctIds.length > 0) courseUpdates.examMistakes = arrayRemove(...correctIds);  
+        if (mistakeIds.length > 0) courseUpdates.examMistakes = arrayUnion(...mistakeIds);
 
         const examTitle = quizConfig.examName || "Custom Exam"; 
         const examRecord = {
@@ -525,15 +491,12 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
             percentage: Math.round((correctCount / totalQuestions) * 100),
             date: new Date().toISOString() 
         };
-
         courseUpdates.examHistory = arrayUnion(examRecord);
 
         if (Object.keys(courseUpdates).length > 0) {
             await setDoc(userRef, { [activeCourse]: courseUpdates }, { merge: true });
         }
-    } catch (error) {
-        console.error("Error saving exam progress:", error);
-    }
+    } catch (error) { console.error("Error saving exam progress:", error); }
 }
 
 async function toggleBookmarkInFirebase(questionId, isBookmarking) {
@@ -545,11 +508,7 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     const userRef = doc(db, "users", user.uid);
     
     try {
-        await setDoc(userRef, {
-            [activeCourse]: {
-                bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId)
-            }
-        }, { merge: true });
+        await setDoc(userRef, { [activeCourse]: { bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId) } }, { merge: true });
     } catch (error) { console.error("Error updating bookmark:", error); }
 }
 
@@ -562,13 +521,7 @@ async function saveNoteToFirebase(questionId, noteText) {
     const userRef = doc(db, "users", user.uid);
     
     try {
-        await setDoc(userRef, {
-            [activeCourse]: {
-                notes: {
-                    [questionId]: noteText
-                }
-            }
-        }, { merge: true });
+        await setDoc(userRef, { [activeCourse]: { notes: { [questionId]: noteText } } }, { merge: true });
     } catch (error) { console.error("Error saving note:", error); }
 }
 
@@ -586,6 +539,20 @@ function handleOptionClick(event, optionData, optionElement) {
         return; 
     }
 
+    // MULTIPLAYER OVERRIDE
+    if (activeRoomId) {
+        if (hasAnsweredCurrentQuestion || hasRevealedCurrentQuestion) return;
+        hasAnsweredCurrentQuestion = true;
+
+        optionElement.style.border = "2px solid #3b82f6";
+        document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
+
+        // Push answer to Cloud
+        updateDoc(roomRef, { [`answers.${currentIndex}.${currentUserId}`]: optionData.text });
+        return;
+    }
+
+    // NORMAL SOLO MODE
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
     if (!optionData.isCorrect) {
@@ -598,12 +565,8 @@ function handleOptionClick(event, optionData, optionElement) {
         if (!currentQuestionData.sessionState) {
             currentQuestionData.sessionState = 'wrong'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) {
-                btn.classList.remove('correct'); 
-                btn.classList.add('incorrect');
-            }
+            if (btn) { btn.classList.remove('correct'); btn.classList.add('incorrect'); }
         }
-        
         savePracticeProgress(currentQuestionData.originalNumber, false); 
         
     } else {
@@ -618,10 +581,7 @@ function handleOptionClick(event, optionData, optionElement) {
         if (!currentQuestionData.sessionState) {
             currentQuestionData.sessionState = 'correct'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) {
-                btn.classList.remove('incorrect');
-                btn.classList.add('correct');
-            }
+            if (btn) { btn.classList.remove('incorrect'); btn.classList.add('correct'); }
         } else if (currentQuestionData.sessionState === 'wrong') {
             currentQuestionData.sessionState = 'wrong_then_correct';
         }
@@ -651,7 +611,191 @@ function updateFeedbackBar() {
 }
 
 // ==========================================
-// 4. EXAM SUBMISSION & RESULTS
+// 4. MULTIPLAYER SYNC ENGINE
+// ==========================================
+function revealMultiplayerAnswers(answersObj, activeMembersMap) {
+    hasRevealedCurrentQuestion = true;
+
+    const waitEl = document.getElementById('multiplayer-waiting-text');
+    if (waitEl) waitEl.style.display = 'none';
+
+    const forceBtn = document.getElementById('host-force-reveal-btn');
+    if (forceBtn) forceBtn.style.display = 'none';
+
+    // Grade local user silently
+    const myAnswerText = answersObj[currentUserId];
+    if (myAnswerText) {
+        const myOpt = currentQuestionData.options.find(o => o.text === myAnswerText);
+        if (myOpt) {
+            if (myOpt.isCorrect) {
+                hasAnsweredCorrectly = true;
+                savePracticeProgress(currentQuestionData.originalNumber, true);
+            } else {
+                wrongAttempts++;
+                savePracticeProgress(currentQuestionData.originalNumber, false);
+            }
+        }
+    }
+    
+    updateFeedbackBar();
+    explanationBtn.style.display = 'inline-block';
+    document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
+
+    // Inject visual feedback and tags for all voters
+    document.querySelectorAll('.option-box').forEach(box => {
+        const textDiv = box.querySelector('.option-text');
+        const optText = textDiv ? textDiv.textContent : '';
+        const isOptCorrect = currentQuestionData.options.find(o => o.text === optText)?.isCorrect;
+
+        if (isOptCorrect) box.classList.add('correct', 'apply-pop');
+        else if (Object.values(answersObj).includes(optText)) box.classList.add('incorrect');
+
+        // Look for anyone who voted for this box
+        const voters = Object.keys(answersObj).filter(uid => answersObj[uid] === optText);
+        if (voters.length > 0) {
+            const tagContainer = document.createElement('div');
+            tagContainer.style.cssText = "display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; width: 100%;";
+            voters.forEach(uid => {
+                const name = activeMembersMap[uid] || "Student";
+                const isMe = uid === currentUserId;
+                const bg = isMe ? "#3b82f6" : "rgba(0,0,0,0.1)";
+                const color = isMe ? "white" : "inherit";
+                tagContainer.innerHTML += `<span style="background: ${bg}; color: ${color}; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">${name}</span>`;
+            });
+            box.appendChild(tagContainer);
+        }
+    });
+}
+
+if (roomRef) {
+    onSnapshot(roomRef, (snapshot) => {
+        const data = snapshot.data();
+
+        if (!data || data.status === "ended") {
+            alert("The host has ended the study session.");
+            localStorage.removeItem('active_study_room');
+            localStorage.removeItem('is_study_guest');
+            window.location.href = 'questions.html';
+            return;
+        }
+
+        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+        // 1. LOBBY STATE (Guests waiting for Host)
+        if (data.status === "waiting" && isGuest) {
+            if (!document.getElementById('mp-lobby-screen')) {
+                const lobby = document.createElement('div');
+                lobby.id = 'mp-lobby-screen';
+                lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0f172a; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
+                lobby.innerHTML = `
+                    <i class="fas fa-users" style="font-size: 4rem; color: #3b82f6; margin-bottom: 20px;"></i>
+                    <h2 style="font-family: 'Nunito', sans-serif;">Waiting for Host...</h2>
+                    <p style="color: #94a3b8; margin-top: 10px;">The host is picking the test material. Hang tight.</p>
+                `;
+                document.body.appendChild(lobby);
+            }
+            return;
+        }
+
+        // 2. GAME INITIATION (Guests download questions)
+        if (data.status === "playing" && isGuest) {
+            const lobby = document.getElementById('mp-lobby-screen');
+            if (lobby) lobby.remove();
+
+            if (!quizQueue || quizQueue.length === 0) {
+                quizQueue = data.questions;
+                quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                loadQuestion(data.currentQuestionIndex || 0);
+            }
+        }
+
+        // 3. SYNC PAGE NAVIGATION
+        if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
+            const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
+            triggerSlideTransition(data.currentQuestionIndex, direction);
+        }
+
+// 4. LIVE VOTING TRACKER & VISUAL ROSTER
+        if (data.status === "playing" && activeRoomId) {
+            const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
+            const activeMembers = data.activeMembers || {};
+            const answerCount = Object.keys(currentAnswers).length;
+            const memberCount = Object.keys(activeMembers).length || 1;
+
+            // --- INJECT VISUAL ROSTER HERE ---
+            let rosterBox = document.getElementById('mp-roster-box');
+            if (!rosterBox) {
+                rosterBox = document.createElement('div');
+                rosterBox.id = 'mp-roster-box';
+                // Floats the roster on the top right of the screen
+                rosterBox.style.cssText = "position: fixed; top: 100px; right: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 220px; z-index: 1000; border: 1px solid #e2e8f0;";
+                document.body.appendChild(rosterBox);
+            }
+
+            let rosterHtml = `<h4 style="margin: 0 0 10px 0; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; color: #0f172a; font-size: 1rem;">Live Roster</h4>`;
+            
+            Object.keys(activeMembers).forEach(uid => {
+                const name = activeMembers[uid];
+                const hasAnswered = currentAnswers.hasOwnProperty(uid);
+                const isMe = uid === currentUserId;
+                
+                const statusColor = hasAnswered ? "#10b981" : "#cbd5e1"; 
+                const statusText = hasAnswered ? "Locked In" : "Thinking";
+                const nameWeight = isMe ? "800" : "500";
+                
+                rosterHtml += `
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="font-size: 0.9rem; font-weight: ${nameWeight}; color: #334155; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${name}">
+                            ${name} ${isMe ? "(You)" : ""}
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #64748b; font-weight: 600;">
+                            ${statusText} <div style="width: 10px; height: 10px; border-radius: 50%; background: ${statusColor};"></div>
+                        </span>
+                    </div>
+                `;
+            });
+            rosterBox.innerHTML = rosterHtml;
+            // --- END VISUAL ROSTER ---
+
+            let waitEl = document.getElementById('multiplayer-waiting-text');
+            if (!waitEl) {
+                waitEl = document.createElement('div');
+                waitEl.id = 'multiplayer-waiting-text';
+                waitEl.style.cssText = "text-align: center; margin-top: 15px; font-weight: bold; color: #3b82f6; display: none;";
+                optionsContainer.parentElement.appendChild(waitEl);
+            }
+
+            if (hasAnsweredCurrentQuestion && !hasRevealedCurrentQuestion) {
+                waitEl.style.display = 'block';
+                waitEl.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Waiting for others... (${answerCount}/${memberCount} answered)`;
+            }
+
+            if (!isGuest && !hasRevealedCurrentQuestion) {
+                let forceBtn = document.getElementById('host-force-reveal-btn');
+                if (!forceBtn) {
+                    forceBtn = document.createElement('button');
+                    forceBtn.id = 'host-force-reveal-btn';
+                    forceBtn.className = 'btn-outline';
+                    forceBtn.style.cssText = "margin-top: 15px; width: 100%; border-color: #ef4444; color: #ef4444;";
+                    forceBtn.innerHTML = "Force Reveal Answers (Someone disconnected?)";
+                    optionsContainer.parentElement.appendChild(forceBtn);
+                    forceBtn.onclick = () => updateDoc(roomRef, { [`forceReveal.${currentIndex}`]: true });
+                }
+                forceBtn.style.display = (answerCount > 0 && answerCount < memberCount) ? 'block' : 'none';
+            }
+
+            const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
+
+            // Trigger standard reveal
+            if ((answerCount >= memberCount || forceReveal) && !hasRevealedCurrentQuestion && answerCount > 0) {
+                revealMultiplayerAnswers(currentAnswers, data.activeMembers);
+            }
+        }
+    });
+}
+
+// ==========================================
+// 5. EXAM SUBMISSION & RESULTS
 // ==========================================
 function showResults() {
     clearInterval(timerInterval);    
@@ -672,9 +816,7 @@ function showResults() {
     const total = quizQueue.length;
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     
-	if (isExamMode) {
-        saveExamProgress(correctIds, mistakeIds, correctCount, total);
-    }
+	if (isExamMode) saveExamProgress(correctIds, mistakeIds, correctCount, total);
 	
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
@@ -698,7 +840,7 @@ function showResults() {
 }
 
 // ==========================================
-// 5. TIMER & SKIP LOGIC
+// 6. TIMER & MODAL NAVIGATION
 // ==========================================
 function startTimer() {
     timerInterval = setInterval(() => {
@@ -710,9 +852,7 @@ function startTimer() {
                 showResults();
                 return;
             }
-        } else {
-            sessionSeconds++; 
-        }
+        } else { sessionSeconds++; }
 
         const mins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
         const secs = (sessionSeconds % 60).toString().padStart(2, '0');
@@ -727,163 +867,64 @@ skipBtn.onclick = () => {
     triggerSlideTransition(currentIndex, 'right');
 };
 
-// ==========================================
-// 6. MODAL & NAVIGATION CONTROLS
-// ==========================================
-if (explanationBtn) {
-    explanationBtn.onclick = () => {
-        explanationModal.classList.remove('hidden');
-        explanationModal.classList.add('show');
-    };
-}
-if (closeExplanationBtn) {
-    closeExplanationBtn.onclick = () => {
-        explanationModal.classList.remove('show');
-    };
-}
+if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.remove('hidden'); explanationModal.classList.add('show'); };
+if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
 
-// SINGLE CORRECT NEXT BTN LOGIC
 document.getElementById('next-btn').onclick = () => {
     if (isExamMode) {
-        if (!currentQuestionData.userSelectedAnswer) {
-            alert("Please select an answer. If you are stuck, click Skip.");
-            return;
-        }
-
-        if (currentIndex === quizQueue.length - 1) {
-            showResults();
-            return;
-        }
+        if (!currentQuestionData.userSelectedAnswer) return alert("Please select an answer. If you are stuck, click Skip.");
+        if (currentIndex === quizQueue.length - 1) return showResults();
     }
 
     if (currentIndex < quizQueue.length - 1) {
         const newIndex = currentIndex + 1;
-
-        // ✅ SYNC WITH GROUP
         syncNextQuestion(newIndex);
-
         triggerSlideTransition(newIndex, 'right');
     }
 };
 
 document.getElementById('prev-btn').onclick = () => {
     if (isExamMode) return;
-
     if (currentIndex > 0) {
         const newIndex = currentIndex - 1;
-
-        // ✅ SYNC WITH GROUP
         syncNextQuestion(newIndex);
-
         triggerSlideTransition(newIndex, 'left');
     }
 };
 
 // ==========================================
-// KEYBOARD SHORTCUTS
+// 7. HOTKEYS & PROTECTIONS
 // ==========================================
 const shortcutsBtn = document.getElementById('shortcuts-btn');
 const shortcutsModal = document.getElementById('shortcuts-modal');
 const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
 
-if (shortcutsBtn) {
-    shortcutsBtn.addEventListener('click', () => {
-        if(shortcutsModal) {
-            shortcutsModal.classList.remove('hidden');
-            shortcutsModal.classList.add('show');
-            shortcutsModal.style.display = 'flex'; 
-        }
-    });
-}
-if (closeShortcutsBtn) {
-    closeShortcutsBtn.addEventListener('click', () => {
-        if(shortcutsModal) {
-            shortcutsModal.classList.add('hidden');
-            shortcutsModal.classList.remove('show');
-            setTimeout(() => { shortcutsModal.style.display = 'none'; }, 300);
-        }
-    });
-}
+if (shortcutsBtn) shortcutsBtn.addEventListener('click', () => { if(shortcutsModal) { shortcutsModal.classList.remove('hidden'); shortcutsModal.classList.add('show'); shortcutsModal.style.display = 'flex'; } });
+if (closeShortcutsBtn) closeShortcutsBtn.addEventListener('click', () => { if(shortcutsModal) { shortcutsModal.classList.add('hidden'); shortcutsModal.classList.remove('show'); setTimeout(() => { shortcutsModal.style.display = 'none'; }, 300); } });
 
 document.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
-    if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
-        return; 
-    }
+    if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) return; 
 
     const nextBtnLocal = document.getElementById('next-btn');
     const prevBtnLocal = document.getElementById('prev-btn');
     const explanationModalLocal = document.getElementById('explanation-modal');
-    const notesModalLocal = document.getElementById('notes-modal');
-    const reportModalLocal = document.getElementById('report-modal');
-
     const isExplanationOpen = explanationModalLocal && explanationModalLocal.classList.contains('show');
 
     if (isExplanationOpen) {
         const modalContent = explanationModalLocal.querySelector('.modal-content');
-        if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            if(modalContent) modalContent.scrollTop -= 40;
-            return;
-        } else if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            if(modalContent) modalContent.scrollTop += 40;
-            return;
-        }
+        if (e.key === 'ArrowUp') { e.preventDefault(); if(modalContent) modalContent.scrollTop -= 40; return; } 
+        else if (e.key === 'ArrowDown') { e.preventDefault(); if(modalContent) modalContent.scrollTop += 40; return; }
     }
 
     switch(e.key) {
-        case 'ArrowRight':
-            e.preventDefault();
-            if(nextBtnLocal) nextBtnLocal.click();
-            break;
-        case 'ArrowLeft':
-            e.preventDefault();
-            if(prevBtnLocal) prevBtnLocal.click();
-            break;
-        case 'Escape':
-            e.preventDefault();
-            if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
-                if(closeShortcutsBtn) closeShortcutsBtn.click();
-            }
-            else if (isExplanationOpen) document.getElementById('close-explanation').click();
-            else if (notesModalLocal && notesModalLocal.classList.contains('show')) document.getElementById('close-notes-btn').click();
-            else if (reportModalLocal && reportModalLocal.classList.contains('show')) document.getElementById('close-report-btn').click();
-            else window.location.href = 'questions.html'; 
-            break;
-        case 'Enter':
-            e.preventDefault();
-            if (isExplanationOpen) {
-                document.getElementById('close-explanation').click();
-            } else if (shortcutsModal && (!shortcutsModal.classList.contains('hidden') || shortcutsModal.style.display === 'flex')) {
-                if(closeShortcutsBtn) closeShortcutsBtn.click();
-            } else if (isExamMode) {
-                if(nextBtnLocal) nextBtnLocal.click();
-            }
-            break;
-		case 'x':
-        case 'X':
-            e.preventDefault();
-            if (hasAnsweredCorrectly && !isExamMode) {
-                if (isExplanationOpen) {
-                    document.getElementById('close-explanation').click();
-                } else if (explanationBtn) {
-                    explanationBtn.click();
-                }
-            }
-            break;
-			
-        case 'p':
-        case 'P':
-            e.preventDefault();
-            if (isExamMode && skipBtn) skipBtn.click();
-            break;
-        case 's':
-        case 'S':
-            e.preventDefault();
-            if (currentQuestionData) document.getElementById('bookmark-btn').click();
-            break;
-            
+        case 'ArrowRight': e.preventDefault(); if(nextBtnLocal) nextBtnLocal.click(); break;
+        case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
+        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else window.location.href = 'questions.html'; break;
+        case 'Enter': e.preventDefault(); if (isExplanationOpen) document.getElementById('close-explanation').click(); else if (isExamMode && nextBtnLocal) nextBtnLocal.click(); break;
+		case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) document.getElementById('close-explanation').click(); else explanationBtn.click(); } break;
+        case 'p': case 'P': e.preventDefault(); if (isExamMode && skipBtn) skipBtn.click(); break;
+        case 's': case 'S': e.preventDefault(); if (currentQuestionData) document.getElementById('bookmark-btn').click(); break;
         case 'a': case 'A': case '1': selectOptionByIndex(0); break;
         case 'b': case 'B': case '2': selectOptionByIndex(1); break;
         case 'c': case 'C': case '3': selectOptionByIndex(2); break;
@@ -895,16 +936,10 @@ document.addEventListener('keydown', (e) => {
 function selectOptionByIndex(index) {
     if (hasAnsweredCorrectly && !isExamMode) return; 
     const options = document.querySelectorAll('.option-box');
-    if (options && options[index]) {
-        options[index].click(); 
-    }
+    if (options && options[index]) options[index].click(); 
 }
 
-// ==========================================
-// ANTI-SCREENSHOT LOGIC 
-// ==========================================
 let isScreenshotBlockEnabled = true; 
-
 document.addEventListener("keyup", (e) => {
     if (isScreenshotBlockEnabled && e.key === "PrintScreen") {
         navigator.clipboard.writeText("Screenshots are disabled for copyright protection.");
@@ -913,126 +948,30 @@ document.addEventListener("keyup", (e) => {
 });
 
 // ==========================================
-// 🚀 GROUP STUDY LOGIC
-// ==========================================
-
-// 1. Create a Room (Host)
-const btnCreate = document.getElementById('btn-create-room');
-if (btnCreate) {
-    btnCreate.onclick = async () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
-        
-        const roomId = Math.floor(1000 + Math.random() * 9000).toString();
-        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-        
-        btnCreate.textContent = "Creating...";
-        btnCreate.disabled = true;
-
-        try {
-            await setDoc(doc(db, "study_rooms", roomId), {
-                hostId: currentUserId,
-                course: activeCourse,
-                currentQuestionIndex: 0,
-                status: "waiting",
-                createdAt: serverTimestamp()
-            });
-
-            alert(`Room Created! Share this 4-digit code with your friends: ${roomId}`);
-            
-            localStorage.setItem('active_study_room', roomId);
-            localStorage.removeItem('is_study_guest'); 
-            
-            window.location.href = 'questions.html';
-        } catch (error) {
-            console.error("Room creation error:", error);
-            alert("Failed to create room. Check your internet or Firebase permissions.");
-            btnCreate.textContent = "Create";
-            btnCreate.disabled = false;
-        }
-    };
-}
-
-// 2. Join a Room (Participant)
-const btnJoin = document.getElementById('btn-join-room');
-if (btnJoin) {
-    btnJoin.onclick = async () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
-        
-        const code = prompt("Enter the 4-digit Room Code from your friend:");
-        if (!code) return;
-
-        try {
-            const roomRef = doc(db, "study_rooms", code.trim());
-            const roomSnap = await getDoc(roomRef);
-
-            if (roomSnap.exists()) {
-                localStorage.setItem('active_study_room', code.trim());
-                localStorage.setItem('is_study_guest', 'true'); 
-                
-                alert("Room joined! Redirecting to the quiz...");
-                window.location.href = 'quiz.html';
-            } else {
-                alert("Room not found. Please check the code.");
-            }
-        } catch (error) {
-            console.error("Join error:", error);
-            alert("Error joining room.");
-        }
-    };
-}
-
-// ==========================================
-// 👥 GROUP STUDY: LEAVE ROOM LOGIC
+// 8. GROUP STUDY: LEAVE LOGIC
 // ==========================================
 const leaveBtn = document.getElementById('leave-room-btn');
 if (activeRoomId && leaveBtn) {
     leaveBtn.style.display = 'inline-block';
 
     leaveBtn.onclick = async () => {
-        const confirmLeave = confirm("Are you sure you want to leave the study group? This will stop syncing your screen.");
-        if (!confirmLeave) return;
-
+        if (!confirm("Are you sure you want to leave the study group?")) return;
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
         try {
             if (!isGuest) {
-                await updateDoc(doc(db, "study_rooms", activeRoomId), {
-                    status: "ended",
-                    endedAt: serverTimestamp()
-                });
+                await updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() });
+            } else {
+                // Remove self from active roster
+                await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
             }
-
-            localStorage.removeItem('active_study_room');
-            localStorage.removeItem('is_study_guest');
-
-            alert("You have left the group. Redirecting to questions...");
-            window.location.href = 'questions.html';
-        } catch (error) {
-            console.error("Error leaving room:", error);
+        } catch (error) { console.error("Error leaving room:", error); } 
+        finally {
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
             window.location.href = 'questions.html';
         }
     };
-}
-	
-if (roomRef) {
-    onSnapshot(roomRef, (snapshot) => {
-        const data = snapshot.data();
-
-        if (!data || data.status === "ended") {
-            alert("The host has ended the study session.");
-            localStorage.removeItem('active_study_room');
-            localStorage.removeItem('is_study_guest');
-            window.location.href = 'questions.html';
-            return;
-        }
-
-        if (data.currentQuestionIndex !== currentIndex) {
-            const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
-            triggerSlideTransition(data.currentQuestionIndex, direction);
-        }
-    });
 }
 
 loadSession();

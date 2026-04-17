@@ -787,13 +787,50 @@ function renderListItem(itemName, nextData, level, itemPath) {
 }
 
 // ==========================================
-// 7. THE BRIDGE: LAUNCH QUIZ
+// 7. THE BRIDGE: LAUNCH QUIZ (MULTIPLAYER UPGRADED)
 // ==========================================
-window.launchQuiz = function (questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
+window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
     if (!questionsArray || questionsArray.length === 0) {
         alert("No questions found for this selection!");
         return;
     }
+
+    const roomId = localStorage.getItem('active_study_room');
+    const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+    // 🚀 IF HOSTING A GROUP STUDY ROOM: Upload to Firebase instead of playing solo
+    if (roomId && !isGuest) {
+        try {
+            document.body.style.cursor = 'wait'; // Show loading cursor
+            
+            // Clean the data to prevent Firebase from crashing on undefined values
+            const cleanPool = JSON.parse(JSON.stringify(questionsArray));
+
+            // Push the payload to the active room
+            await updateDoc(doc(db, "study_rooms", roomId), {
+                questions: cleanPool,
+                quizConfig: { mode, timer: timerMinutes, examName },
+                status: 'playing', // Signals to the waiting guests that the game has started!
+                currentQuestionIndex: 0,
+                memberAnswers: {} // We will use this in Phase 2 to track who picked what
+            });
+
+            // Save locally for the host as well
+            localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
+            localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+
+            document.body.style.cursor = 'default';
+            window.location.href = 'quiz.html';
+            return;
+        } catch (error) {
+            console.error("Failed to sync room:", error);
+            alert("Error syncing questions to the study room. Check your internet connection.");
+            document.body.style.cursor = 'default';
+            return;
+        }
+    }
+
+    // 👤 NORMAL SOLO MODE (If they are not in a group)
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
     localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
     window.location.href = 'quiz.html';
