@@ -128,9 +128,8 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
     window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
 });
 // ==========================================
-// MENTOR FEATURE: ASSIGN EXAM TO STUDENT
+// MENTOR FEATURE: ASSIGN EXAM TO STUDENT(S)
 // ==========================================
-// Wait for the DOM to load, then inject the Assign button if they are a mentor
 setTimeout(() => {
     if (currentUserRole === 'MENTOR' || currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') {
         const startBtn = document.getElementById('start-exam-btn');
@@ -141,7 +140,6 @@ setTimeout(() => {
             assignBtn.style.marginLeft = "10px";
             assignBtn.id = "assign-exam-btn";
             
-            // Insert it right after the Start Exam button
             startBtn.parentElement.appendChild(assignBtn);
 
             assignBtn.addEventListener('click', async () => {
@@ -168,30 +166,133 @@ setTimeout(() => {
                     return alert("No questions selected!");
                 }
 
-                // Ask the mentor for the Student's User ID
-                const studentUid = prompt("Enter the Student's User ID (UID) to assign this exam:");
-                if (!studentUid) return;
-
                 const generatedTitle = generateExamTitle(paths, currentView) + " (Assigned)";
 
-                assignBtn.textContent = "Assigning...";
+                // Change button state while fetching users
+                assignBtn.textContent = "Loading Students...";
                 assignBtn.disabled = true;
 
                 try {
-                    await addDoc(collection(db, "assigned_exams"), {
-                        title: generatedTitle,
-                        assignedBy: auth.currentUser.uid,
-                        assignedTo: [studentUid.trim()], 
-                        questions: examPool, // Saving the actual questions for the student
-                        timerMinutes: timerInput,
-                        isCompletedBy: [],
-                        createdAt: serverTimestamp()
-                    });
+                    // 1. Fetch Students from Firestore
+                    const usersRef = collection(db, "users");
+                    const userSnap = await getDocs(usersRef);
                     
-                    alert("Exam successfully assigned to the student!");
+                    let studentsList = [];
+                    userSnap.forEach(docSnap => {
+                        const data = docSnap.data();
+                        const role = (data.role || 'STUDENT').toUpperCase();
+                        // Filter out mentors, admins, and banned users
+                        if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
+                            studentsList.push({
+                                id: docSnap.id,
+                                name: data.fullName || "Unnamed User",
+                                email: data.email || "No Email"
+                            });
+                        }
+                    });
+
+                    // 2. Build the UI Modal dynamically
+                    const modalOverlay = document.createElement('div');
+                    modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+                    
+                    let modalHtml = `
+                        <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                            <h3 style="color: #1e3a8a; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
+                            
+                            <input type="text" id="student-search-input" placeholder="Search by name or email..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;">
+                            
+                            <div id="student-list-container" style="overflow-y: auto; flex-grow: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+                    `;
+
+                    if (studentsList.length === 0) {
+                        modalHtml += `<div style="text-align: center; color: #64748b; padding: 20px;">No students found.</div>`;
+                    } else {
+                        // Sort students alphabetically by name
+                        studentsList.sort((a, b) => a.name.localeCompare(b.name)).forEach(student => {
+                            modalHtml += `
+                                <label class="student-item" style="display: flex; align-items: center; padding: 10px; border-radius: 6px; background: #f8fafc; cursor: pointer; transition: background 0.2s; border: 1px solid transparent;">
+                                    <input type="checkbox" class="student-checkbox" value="${student.id}" style="margin-right: 12px; transform: scale(1.2);">
+                                    <div style="display: flex; flex-direction: column;">
+                                        <span class="student-name" style="font-weight: bold; color: #0f172a;">${student.name}</span>
+                                        <span class="student-email" style="font-size: 0.85rem; color: #64748b;">${student.email}</span>
+                                    </div>
+                                </label>
+                            `;
+                        });
+                    }
+
+                    modalHtml += `
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                                <button id="btn-cancel-assign" class="btn-outline" style="padding: 10px 20px;">Cancel</button>
+                                <button id="btn-confirm-assign" class="btn-solid" style="padding: 10px 20px; background: #3b82f6; border: none;">Assign Exam</button>
+                            </div>
+                        </div>
+                    `;
+
+                    modalOverlay.innerHTML = modalHtml;
+                    document.body.appendChild(modalOverlay);
+
+                    // 3. Add interactions to the modal
+                    const searchInput = document.getElementById('student-search-input');
+                    const studentItems = document.querySelectorAll('.student-item');
+
+                    // Search filtering
+                    searchInput.addEventListener('input', (e) => {
+                        const term = e.target.value.toLowerCase();
+                        studentItems.forEach(item => {
+                            const name = item.querySelector('.student-name').textContent.toLowerCase();
+                            const email = item.querySelector('.student-email').textContent.toLowerCase();
+                            if (name.includes(term) || email.includes(term)) {
+                                item.style.display = 'flex';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+
+                    // Cancel Button
+                    document.getElementById('btn-cancel-assign').addEventListener('click', () => {
+                        document.body.removeChild(modalOverlay);
+                    });
+
+                    // Confirm Button
+                    document.getElementById('btn-confirm-assign').addEventListener('click', async () => {
+                        const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
+                        const selectedStudentIds = Array.from(checkedBoxes).map(cb => cb.value);
+
+                        if (selectedStudentIds.length === 0) {
+                            return alert("Please select at least one student!");
+                        }
+
+                        const confirmBtn = document.getElementById('btn-confirm-assign');
+                        confirmBtn.textContent = "Assigning...";
+                        confirmBtn.disabled = true;
+
+                        try {
+                            await addDoc(collection(db, "assigned_exams"), {
+                                title: generatedTitle,
+                                assignedBy: auth.currentUser.uid,
+                                assignedTo: selectedStudentIds, // Supports multiple selections!
+                                questions: examPool,
+                                timerMinutes: timerInput,
+                                isCompletedBy: [],
+                                createdAt: serverTimestamp()
+                            });
+                            
+                            alert(`Exam successfully assigned to ${selectedStudentIds.length} student(s)!`);
+                            document.body.removeChild(modalOverlay);
+                        } catch (error) {
+                            console.error("Error assigning exam: ", error);
+                            alert("Failed to assign exam.");
+                            confirmBtn.textContent = "Assign Exam";
+                            confirmBtn.disabled = false;
+                        }
+                    });
+
                 } catch (error) {
-                    console.error("Error assigning exam: ", error);
-                    alert("Failed to assign exam.");
+                    console.error("Error fetching students:", error);
+                    alert("Failed to load students list.");
                 } finally {
                     assignBtn.textContent = "Assign to Student";
                     assignBtn.disabled = false;
@@ -199,7 +300,9 @@ setTimeout(() => {
             });
         }
     }
-}, 1500); // Slight delay to ensure Firebase loaded the user role
+}, 1500);
+
+
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
