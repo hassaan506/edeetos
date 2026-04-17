@@ -673,11 +673,64 @@ document.getElementById('btn-create-room').onclick = async () => {
     window.location.href = 'questions.html';
 };
 
-document.getElementById('btn-join-room').onclick = () => {
-    const code = prompt("Enter 4-digit Room Code:");
-    if (code) {
-        localStorage.setItem('active_study_room', code);
-        localStorage.setItem('is_study_guest', 'true');
-        window.location.href = 'quiz.html'; // Guests go straight to quiz
-    }
-};
+// ==========================================
+// CUSTOM JOIN ROOM MODAL LOGIC
+// ==========================================
+const joinModal = document.getElementById('join-room-modal');
+const btnJoin = document.getElementById('btn-join-room');
+const btnCloseJoin = document.getElementById('btn-close-join');
+const btnSubmitJoin = document.getElementById('btn-submit-join');
+const joinInput = document.getElementById('join-room-input');
+
+// 1. Open Modal
+if (btnJoin) {
+    btnJoin.onclick = () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
+        joinInput.value = ""; // Clear old entry
+        joinModal.style.display = 'flex';
+        joinInput.focus();
+    };
+}
+
+// 2. Close Modal
+if (btnCloseJoin) {
+    btnCloseJoin.onclick = () => joinModal.style.display = 'none';
+}
+
+// 3. Handle Joining
+if (btnSubmitJoin) {
+    btnSubmitJoin.onclick = async () => {
+        const code = joinInput.value.trim();
+        if (code.length !== 4) return alert("Please enter a valid 4-digit code.");
+
+        btnSubmitJoin.textContent = "Verifying...";
+        btnSubmitJoin.disabled = true;
+
+        try {
+            const roomRef = doc(db, "study_rooms", code);
+            const roomSnap = await getDoc(roomRef);
+
+            if (roomSnap.exists()) {
+                localStorage.setItem('active_study_room', code);
+                localStorage.setItem('is_study_guest', 'true'); 
+                
+                // Visual feedback before redirect
+                btnSubmitJoin.style.background = "#10b981";
+                btnSubmitJoin.textContent = "✅ Connected!";
+                
+                setTimeout(() => {
+                    window.location.href = 'quiz.html';
+                }, 800);
+            } else {
+                alert("Room not found. Please double-check the code with your friend.");
+                btnSubmitJoin.textContent = "Join Room";
+                btnSubmitJoin.disabled = false;
+            }
+        } catch (error) {
+            console.error("Join error:", error);
+            alert("Error connecting to room. Check your connection.");
+            btnSubmitJoin.textContent = "Join Room";
+            btnSubmitJoin.disabled = false;
+        }
+    };
+}

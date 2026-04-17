@@ -91,16 +91,16 @@
                 <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Book a session or message your dedicated guide.</p>
                 <button id="btn-contact-mentor" class="btn-solid mini-btn" style="width: 100%;">Contact Mentor</button>
             </div>
-			<div class="glass-panel feature-card">
-				<div class="icon">👥</div>
-				<h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Group Study</h3>
-				<p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Study with friends in real-time.</p>
-				<div style="display: flex; gap: 5px;">
-					<button id="btn-create-room" class="btn-solid mini-btn" style="flex: 1;">Create</button>
-					<button id="btn-join-room" class="btn-outline mini-btn" style="flex: 1;">Join</button>
-				</div>
+			<div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="icon">👥</div>
+                <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Group Study</h3>
+                <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Study with friends in real-time.</p>
+                <div style="display: flex; gap: 8px; width: 100%;">
+                    <button id="btn-create-room" class="btn-solid mini-btn" style="flex: 1; background: #3b82f6;">Create</button>
+                    <button id="btn-join-room" class="btn-outline mini-btn" style="flex: 1; border-color: #3b82f6; color: #3b82f6;">Join</button>
+                </div>
+            </div>
 			</div>
-        </div>
 	</section>
 
     <div id="premium-modal" class="popup-overlay">
@@ -264,6 +264,24 @@
             
         </div>
     </div>
+	<div id="join-room-modal" class="popup-overlay" style="display: none;">
+    <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔑</div>
+        <h2 style="color: #1e3a8a; margin: 0; font-weight: 800; font-size: 1.5rem;">Join Group Study</h2>
+        <p style="color: #64748b; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+            Enter the 4-digit code provided by your friend to sync your screens.
+        </p>
+
+        <input type="text" id="join-room-input" placeholder="e.g. 1234" 
+               style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 10px; margin-bottom: 1.5rem; font-family: monospace; font-size: 1.5rem; text-align: center; font-weight: 800; outline: none; letter-spacing: 5px;">
+
+        <button id="btn-submit-join" class="btn-solid" style="width: 100%; background: #3b82f6; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 1rem; cursor: pointer;">
+            Join Room
+        </button>
+        
+        <button id="btn-close-join" style="background: none; border: none; color: #64748b; font-weight: 600; cursor: pointer; text-decoration: underline;">Cancel</button>
+    </div>
+</div>
 
     <script type="module" src="dashboard.js?v=2"></script>
 </body>

@@ -141,19 +141,6 @@ function loadSession() {
             }
         }
     });
-	const activeRoomId = localStorage.getItem('active_study_room');
-
-	if (activeRoomId) {
-		const roomRef = doc(db, "study_rooms", activeRoomId);
-		
-		// Listen for real-time changes
-		onSnapshot(roomRef, (snapshot) => {
-			const data = snapshot.data();
-			if (data && data.currentQuestionIndex !== currentIndex) {
-				// Automatically jump to the question the host is on!
-				triggerSlideTransition(data.currentQuestionIndex, 'right');
-			}
-		});
 	}
 
 async function syncNextQuestion(newIndex) {
@@ -877,6 +864,133 @@ document.addEventListener("keyup", (e) => {
         document.getElementById('anti-screenshot-screen').style.display = 'flex';
     }
 });
+
+// ==========================================
+// 🚀 GROUP STUDY LOGIC
+// ==========================================
+
+// 1. Create a Room (Host)
+const btnCreate = document.getElementById('btn-create-room');
+if (btnCreate) {
+    btnCreate.onclick = async () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
+        
+        // Generate a random 4-digit code
+        const roomId = Math.floor(1000 + Math.random() * 9000).toString();
+        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+        
+        btnCreate.textContent = "Creating...";
+        btnCreate.disabled = true;
+
+        try {
+            // Create the room document in Firestore
+            await setDoc(doc(db, "study_rooms", roomId), {
+                hostId: currentUserId,
+                course: activeCourse,
+                currentQuestionIndex: 0,
+                status: "waiting",
+                createdAt: serverTimestamp()
+            });
+
+            alert(`Room Created! Share this 4-digit code with your friends: ${roomId}`);
+            
+            // Save room info to local storage
+            localStorage.setItem('active_study_room', roomId);
+            localStorage.removeItem('is_study_guest'); // You are the host
+            
+            // Redirect to questions page to pick the content
+            window.location.href = 'questions.html';
+        } catch (error) {
+            console.error("Room creation error:", error);
+            alert("Failed to create room. Check your internet or Firebase permissions.");
+            btnCreate.textContent = "Create";
+            btnCreate.disabled = false;
+        }
+    };
+}
+
+// 2. Join a Room (Participant)
+const btnJoin = document.getElementById('btn-join-room');
+if (btnJoin) {
+    btnJoin.onclick = async () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
+        
+        const code = prompt("Enter the 4-digit Room Code from your friend:");
+        if (!code) return;
+
+        try {
+            const roomRef = doc(db, "study_rooms", code.trim());
+            const roomSnap = await getDoc(roomRef);
+
+            if (roomSnap.exists()) {
+                localStorage.setItem('active_study_room', code.trim());
+                localStorage.setItem('is_study_guest', 'true'); // You are the guest/participant
+                
+                alert("Room joined! Redirecting to the quiz...");
+                window.location.href = 'quiz.html';
+            } else {
+                alert("Room not found. Please check the code.");
+            }
+        } catch (error) {
+            console.error("Join error:", error);
+            alert("Error joining room.");
+        }
+    };
+}
+
+// ==========================================
+    // 👥 GROUP STUDY: LEAVE ROOM LOGIC
+    // ==========================================
+    const leaveBtn = document.getElementById('leave-room-btn');
+    if (activeRoomId && leaveBtn) {
+        leaveBtn.style.display = 'inline-block'; // Show the button only if in a room
+
+        leaveBtn.onclick = async () => {
+            const confirmLeave = confirm("Are you sure you want to leave the study group? This will stop syncing your screen.");
+            if (!confirmLeave) return;
+
+            const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+            try {
+                // If Host leaves, we can optionally mark the room as ended
+                if (!isGuest) {
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), {
+                        status: "ended",
+                        endedAt: serverTimestamp()
+                    });
+                }
+
+                // Clean up local storage
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+
+                alert("You have left the group. Redirecting to questions...");
+                window.location.href = 'questions.html';
+            } catch (error) {
+                console.error("Error leaving room:", error);
+                // Fallback cleanup if Firebase fails
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                window.location.href = 'questions.html';
+            }
+        };
+    }
+	
+	onSnapshot(roomRef, (snapshot) => {
+            const data = snapshot.data();
+            if (!data || data.status === "ended") {
+                alert("The host has ended the study session.");
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                window.location.href = 'questions.html';
+                return;
+            }
+
+            if (data.currentQuestionIndex !== currentIndex) {
+                const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
+                triggerSlideTransition(data.currentQuestionIndex, direction);
+            }
+        });
 
 loadSession();
 
