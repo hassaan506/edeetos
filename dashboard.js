@@ -675,7 +675,7 @@ btnCreate.onclick = async () => {
     btnCreate.textContent = "Creating...";
     btnCreate.disabled = true;
 
-    try {
+try {
         await setDoc(doc(db, "study_rooms", roomId), {
             hostId: currentUserId,
             course: activeCourse,
@@ -685,90 +685,87 @@ btnCreate.onclick = async () => {
         });
 
         const modal = document.createElement('div');
-modal.style.cssText = `
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-`;
+        modal.style.cssText = `
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        `;
 
-modal.innerHTML = `
-    <div style="
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        text-align: center;
-        max-width: 350px;
-        width: 90%;
-    ">
-        <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
-        <p style="margin-bottom: 15px;">Share this code:</p>
+        modal.innerHTML = `
+            <div style="
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                text-align: center;
+                max-width: 350px;
+                width: 90%;
+            ">
+                <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
+                <p style="margin-bottom: 15px;">Share this code:</p>
 
-        <div id="room-code-box" style="
-            font-size: 2rem;
-            font-weight: bold;
-            background: #f1f5f9;
-            padding: 10px;
-            border-radius: 8px;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-        ">${roomId}</div>
+                <div id="room-code-box" style="
+                    font-size: 2rem;
+                    font-weight: bold;
+                    background: #f1f5f9;
+                    padding: 10px;
+                    border-radius: 8px;
+                    letter-spacing: 4px;
+                    margin-bottom: 20px;
+                ">${roomId}</div>
 
-        <button id="copy-room-code" style="
-            margin-bottom: 10px;
-            padding: 10px 20px;
-            border: none;
-            background: #3b82f6;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-        ">Copy Code</button>
+                <button id="copy-room-code" style="
+                    margin-bottom: 10px;
+                    padding: 10px 20px;
+                    border: none;
+                    background: #3b82f6;
+                    color: white;
+                    border-radius: 8px;
+                    cursor: pointer;
+                ">Copy Code</button>
 
-        <br>
+                <br>
 
-        <button id="enter-room" style="
-            padding: 10px 20px;
-            border: none;
-            background: #10b981;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-        ">Enter Room</button>
-    </div>
-`;
+                <button id="enter-room" style="
+                    padding: 10px 20px;
+                    border: none;
+                    background: #10b981;
+                    color: white;
+                    border-radius: 8px;
+                    cursor: pointer;
+                ">Enter Room</button>
+            </div>
+        `;
 
-document.body.appendChild(modal);
+        document.body.appendChild(modal);
 
-// Copy logic
-document.getElementById('copy-room-code').onclick = () => {
-    navigator.clipboard.writeText(roomId);
-    document.getElementById('copy-room-code').textContent = "Copied ✔️";
-};
+        // Reset the button state now that the process is done
+        btnCreate.textContent = "Create Room";
+        btnCreate.disabled = false;
 
-// Enter room
-document.getElementById('enter-room').onclick = () => {
-    localStorage.setItem('active_study_room', roomId);
-    localStorage.removeItem('is_study_guest');
-    window.location.href = 'questions.html';
-};
+        // Copy logic
+        document.getElementById('copy-room-code').onclick = () => {
+            navigator.clipboard.writeText(roomId);
+            document.getElementById('copy-room-code').textContent = "Copied ✔️";
+        };
 
-        localStorage.setItem('active_study_room', roomId);
-        localStorage.removeItem('is_study_guest');
+        // Enter room logic (This is where the redirect belongs)
+        document.getElementById('enter-room').onclick = () => {
+            localStorage.setItem('active_study_room', roomId);
+            localStorage.removeItem('is_study_guest');
+            window.location.href = 'questions.html';
+        };
 
-        window.location.href = 'questions.html';
     } catch (error) {
         console.error(error);
         alert("Failed to create room.");
-        btnCreate.textContent = "Create";
+        btnCreate.textContent = "Create Room";
         btnCreate.disabled = false;
     }
-};
-}
-
 // ==========================================
 // CUSTOM JOIN ROOM MODAL LOGIC
 // ==========================================
