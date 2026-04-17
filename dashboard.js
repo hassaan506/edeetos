@@ -172,28 +172,29 @@ onAuthStateChanged(auth, async (user) => {
                             // Create a container on the dashboard for assigned exams
                             const dashboardContainer = document.querySelector('.dashboard-container') || document.body;
                             
+// Start of UI update replacing old inline styles
                             const examsCard = document.createElement('div');
-                            examsCard.className = 'glass-panel';
-                            examsCard.style.cssText = "margin-top: 2rem; border: 2px solid #3b82f6; background: rgba(59, 130, 246, 0.05);";
+                            examsCard.className = 'glass-panel assigned-exams-container'; 
                             
                             let examsHtml = `
-                                <h3 style="color: #1e3a8a; margin-bottom: 1rem;">
+                                <h3 class="assigned-exams-title">
                                     <i class="fas fa-clipboard-list"></i> Assigned Exams (${pendingExams.length})
                                 </h3>
-                                <p style="color: #475569; margin-bottom: 1rem;">Your mentor has assigned you the following tasks.</p>
-                                <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <p class="assigned-exams-desc">Your mentor has assigned you the following tasks.</p>
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
                             `;
 
                             pendingExams.forEach((exam, index) => {
                                 examsHtml += `
-                                    <div style="background: white; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                                        <div>
-                                            <strong style="color: #0f172a;">${exam.title}</strong>
-                                            <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">
-                                                ⏱ ${exam.timerMinutes} Minutes • 📝 ${exam.questions.length} Questions
+                                    <div class="assigned-exam-card">
+                                        <div class="assigned-exam-info">
+                                            <div class="assigned-exam-name">${exam.title}</div>
+                                            <div class="assigned-exam-meta">
+                                                <span>⏱ ${exam.timerMinutes} Minutes</span>
+                                                <span>📝 ${exam.questions.length} Questions</span>
                                             </div>
                                         </div>
-                                        <button id="launch-assigned-${index}" class="btn-solid mini-btn" style="background: #3b82f6;">Start Exam</button>
+                                        <button id="launch-assigned-${index}" class="btn-start-exam">Start Exam</button>
                                     </div>
                                 `;
                             });
