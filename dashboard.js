@@ -653,25 +653,58 @@ if (profileForm) {
     });
 }
 
-// dashboard.js Logic
-document.getElementById('btn-create-room').onclick = async () => {
-    const roomId = Math.floor(1000 + Math.random() * 9000).toString();
-    const activeCourse = localStorage.getItem('edeetos_active_course');
-    
-    // Create the room in Firebase
-    await setDoc(doc(db, "study_rooms", roomId), {
-        hostId: currentUserId,
-        course: activeCourse,
-        currentQuestionIndex: 0,
-        status: "waiting",
-        createdAt: serverTimestamp()
-    });
+// ==========================================
+// 🚀 GROUP STUDY LOGIC
+// ==========================================
+import { setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    alert(`Room Created! Share this code with your friends: ${roomId}`);
-    // Redirect to questions.html to pick questions for the group
-    localStorage.setItem('active_study_room', roomId);
-    window.location.href = 'questions.html';
-};
+// 1. Create a Room (Host)
+const btnCreate = document.getElementById('btn-create-room');
+if (btnCreate) {
+    btnCreate.onclick = async () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
+        
+        // Generate a random 4-digit code
+        const roomId = Math.floor(1000 + Math.random() * 9000).toString();
+        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+        
+        btnCreate.textContent = "Creating...";
+        btnCreate.disabled = true;
+
+        try {
+            // Create the room document in Firestore
+            await setDoc(doc(db, "study_rooms", roomId), {
+                hostId: currentUserId,
+                course: activeCourse,
+                currentQuestionIndex: 0,
+                status: "waiting",
+                createdAt: serverTimestamp()
+            });
+
+            alert(`Room Created! Share this 4-digit code with your friends: ${roomId}`);
+            
+            localStorage.setItem('active_study_room', roomId);
+            localStorage.removeItem('is_study_guest'); 
+            
+            window.location.href = 'questions.html';
+        } catch (error) {
+            console.error("Room creation error:", error);
+            alert("Failed to create room. Check your Firebase Rules!");
+            btnCreate.textContent = "Create";
+            btnCreate.disabled = false;
+        }
+    };
+}
+
+// 2. Open Join Modal
+const btnJoin = document.getElementById('btn-join-room');
+if (btnJoin) {
+    btnJoin.onclick = () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
+        const joinModal = document.getElementById('join-room-modal');
+        if(joinModal) joinModal.style.display = 'flex';
+    };
+}
 
 // ==========================================
 // CUSTOM JOIN ROOM MODAL LOGIC
