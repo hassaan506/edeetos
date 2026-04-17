@@ -1,6 +1,5 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-// 👉 We added query, where, and onSnapshot to this import line!
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 let currentUserData = null;
@@ -50,7 +49,7 @@ onAuthStateChanged(auth, async (user) => {
                     
                     // 3. Add it to the page and kill scrolling
                     document.body.appendChild(lockoutScreen);
-                    document.body.style.overflow = 'hidden'; // Prevents them from scrolling down
+                    document.body.style.overflow = 'hidden';
                     
                     // 4. Add the logout functionality to the button inside the overlay
                     document.getElementById('btn-banned-logout').addEventListener('click', () => {
@@ -62,7 +61,7 @@ onAuthStateChanged(auth, async (user) => {
                         });
                     });
                     
-                    return; // Stop the rest of the dashboard from loading!
+                    return; 
                 }				
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
                 
@@ -106,7 +105,6 @@ onAuthStateChanged(auth, async (user) => {
                 // 👉 GLOBAL MENTOR NOTIFICATIONS
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     
-                    // UX Improvement: Update their dashboard card text since they ARE the mentor
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
                         btnMentor.textContent = "Open Mentorship Hub";
@@ -116,7 +114,6 @@ onAuthStateChanged(auth, async (user) => {
                         if (cardP) cardP.textContent = "Manage incoming student chat requests.";
                     }
 
-                    // Real-time listener for incoming chats
                     const chatsRef = collection(db, "chats");
                     const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
                     
@@ -124,7 +121,6 @@ onAuthStateChanged(auth, async (user) => {
                         let banner = document.getElementById('mentor-alert-banner');
                         
                         if (!snapshot.empty) {
-                            // If someone is calling, create and show the pulsing red banner!
                             if (!banner) {
                                 banner = document.createElement('div');
                                 banner.id = 'mentor-alert-banner';
@@ -133,7 +129,6 @@ onAuthStateChanged(auth, async (user) => {
                                 banner.onclick = () => window.location.href = 'mentor.html';
                                 document.body.appendChild(banner);
                                 
-                                // Injecting animation CSS safely
                                 if(!document.getElementById('pulse-anim-style')) {
                                     const style = document.createElement('style');
                                     style.id = 'pulse-anim-style';
@@ -143,14 +138,13 @@ onAuthStateChanged(auth, async (user) => {
                             }
                             banner.style.display = 'flex';
                         } else {
-                            // If they hang up or the chat is answered, hide the banner
                             if (banner) banner.style.display = 'none';
                         }
                     });
                 }
 
                 // ==========================================
-                // 👉 NEW: STUDENT FEATURE: FETCH ASSIGNED EXAMS
+                // 👉 STUDENT FEATURE: FETCH ASSIGNED EXAMS
                 // ==========================================
                 if (userRole === 'STUDENT' || currentUserData.isPremium) {
                     const examsRef = collection(db, "assigned_exams");
@@ -162,13 +156,12 @@ onAuthStateChanged(auth, async (user) => {
                         
                         examsSnapshot.forEach((docSnap) => {
                             const data = docSnap.data();
-                            // Only show exams they haven't completed yet
                             if (!data.isCompletedBy || !data.isCompletedBy.includes(currentUserId)) {
                                 pendingExams.push({ id: docSnap.id, ...data });
                             }
                         });
 
-if (pendingExams.length > 0) {
+                        if (pendingExams.length > 0) {
                             const dashboardContainer = document.querySelector('.section-container') || document.body;
                             const headerElement = document.querySelector('.dashboard-header');
                             
@@ -201,27 +194,20 @@ if (pendingExams.length > 0) {
                             examsHtml += `</div>`;
                             examsCard.innerHTML = examsHtml;
                             
-                            // Insert it right after the Welcome text
                             if (headerElement && headerElement.nextSibling) {
                                 dashboardContainer.insertBefore(examsCard, headerElement.nextSibling);
                             } else {
                                 dashboardContainer.insertBefore(examsCard, dashboardContainer.firstChild);
                             }
 
-// Add click listeners to launch the quizzes
                             pendingExams.forEach((exam, index) => {
                                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
                                 
                                 launchBtn.addEventListener('click', () => {
-                                    // 1. Instant Visual Feedback!
-                                    // Change the button so they know it is working
                                     launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
                                     launchBtn.style.opacity = "0.8";
-                                    launchBtn.style.pointerEvents = "none"; // Prevents double-clicking
+                                    launchBtn.style.pointerEvents = "none";
 
-                                    // 2. The "Breathe" Timeout
-                                    // We wait 50ms so the browser has time to render the new button text 
-                                    // before we lock up the main thread with heavy JSON stringifying.
                                     setTimeout(() => {
                                         localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
                                         localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
@@ -234,14 +220,12 @@ if (pendingExams.length > 0) {
                                         window.location.href = 'quiz.html';
                                     }, 50);
                                 });
-                            });                        }
+                            });                        
+                        }
                     } catch (examErr) {
                         console.error("Error fetching assigned exams:", examErr);
                     }
                 }
-                // ==========================================
-                // END NEW ASSIGNED EXAMS LOGIC
-                // ==========================================
 
             }
         } catch (error) {
@@ -410,15 +394,12 @@ function compressImage(file) {
 const btnSubmitPayment = document.getElementById('btn-submit-payment');
 if (btnSubmitPayment) {
     btnSubmitPayment.addEventListener('click', async () => {
-        // Ensure user is logged in
         if(!currentUserId) return alert("Authentication error. Please refresh the page.");
 
-        // Change button state
         btnSubmitPayment.textContent = "Submitting...";
         btnSubmitPayment.disabled = true;
 
         try {
-            // Moved all element fetching inside the try block to catch any unexpected HTML errors
             const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
             const selectedPlan = document.querySelector('.plan-card.selected');
             
@@ -433,7 +414,6 @@ if (btnSubmitPayment) {
             
             if (!file) {
                 alert("Please upload your payment proof.");
-                // Reset button if returning early
                 btnSubmitPayment.textContent = "Confirm & Submit Request";
                 btnSubmitPayment.disabled = false;
                 return;
@@ -450,10 +430,8 @@ if (btnSubmitPayment) {
                 return;
             }
 
-            // Using optional chaining (?.) so it won't crash if currentUserData is temporarily null
             const userEmailToSave = currentUserData?.email || fallbackEmail;
 
-            // Prepare the Firestore request
             const submitPromise = addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId,
                 userEmail: userEmailToSave,
@@ -465,12 +443,10 @@ if (btnSubmitPayment) {
                 timestamp: serverTimestamp()
             });
 
-            // Set up a 12-second timeout in case Firebase hangs due to a weak connection
             const timeoutPromise = new Promise((_, reject) => {
                 setTimeout(() => reject(new Error("Request timed out. Please check your internet connection.")), 12000);
             });
 
-            // Race the upload against the timeout. Whichever finishes first wins!
             await Promise.race([submitPromise, timeoutPromise]);
             
             alert("Payment request submitted successfully! Please wait for admin approval.");
@@ -480,7 +456,6 @@ if (btnSubmitPayment) {
             console.error("Payment submission error: ", e);
             alert("Failed to submit request: " + (e.message || "An unknown error occurred."));
         } finally {
-            // This 'finally' block is guaranteed to run, resetting your button safely
             btnSubmitPayment.textContent = "Confirm & Submit Request";
             btnSubmitPayment.disabled = false;
         }
@@ -567,7 +542,6 @@ if (btnOpenProfile) {
         if (!currentUserData) return alert("User data loading, please wait...");
         document.getElementById('profile-modal').style.display = 'flex';
         
-        // Populate form
         document.getElementById('prof-role-badge').textContent = (currentUserData.role || 'STUDENT').toUpperCase();
         document.getElementById('prof-name').value = currentUserData.fullName || '';
         document.getElementById('prof-username').value = currentUserData.username || '';
@@ -577,7 +551,6 @@ if (btnOpenProfile) {
         document.getElementById('prof-year').value = currentUserData.yearOfStudy || '';
         document.getElementById('prof-location').value = currentUserData.location || '';
         
-        // Subscriptions
         const subsList = document.getElementById('prof-subs-list');
         subsList.innerHTML = '';
         
@@ -659,113 +632,113 @@ if (profileForm) {
 // 1. Create a Room (Host)
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
-btnCreate.onclick = async () => {
-    if (!currentUserId) {
-        alert("User not loaded yet. Please wait...");
-        return;
-    }
+    btnCreate.onclick = async () => {
+        if (!currentUserId) {
+            alert("User not loaded yet. Please wait...");
+            return;
+        }
 
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        return alert("Please register to use Group Study.");
-    }
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            return alert("Please register to use Group Study.");
+        }
 
-	const roomId = Math.floor(1000 + Math.random() * 9000).toString();
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+        const roomId = Math.floor(1000 + Math.random() * 9000).toString();
+        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
 
-    btnCreate.textContent = "Creating...";
-    btnCreate.disabled = true;
+        btnCreate.textContent = "Creating...";
+        btnCreate.disabled = true;
 
-try {
-        await setDoc(doc(db, "study_rooms", roomId), {
-            hostId: currentUserId,
-            course: activeCourse,
-            currentQuestionIndex: 0,
-            status: "waiting",
-            createdAt: serverTimestamp()
-        });
+        try {
+            await setDoc(doc(db, "study_rooms", roomId), {
+                hostId: currentUserId,
+                course: activeCourse,
+                currentQuestionIndex: 0,
+                status: "waiting",
+                createdAt: serverTimestamp()
+            });
 
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-        `;
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0; left: 0;
+                width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 99999;
+            `;
 
-        modal.innerHTML = `
-            <div style="
-                background: white;
-                padding: 30px;
-                border-radius: 12px;
-                text-align: center;
-                max-width: 350px;
-                width: 90%;
-            ">
-                <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
-                <p style="margin-bottom: 15px;">Share this code:</p>
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 30px;
+                    border-radius: 12px;
+                    text-align: center;
+                    max-width: 350px;
+                    width: 90%;
+                ">
+                    <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
+                    <p style="margin-bottom: 15px;">Share this code:</p>
 
-                <div id="room-code-box" style="
-                    font-size: 2rem;
-                    font-weight: bold;
-                    background: #f1f5f9;
-                    padding: 10px;
-                    border-radius: 8px;
-                    letter-spacing: 4px;
-                    margin-bottom: 20px;
-                ">${roomId}</div>
+                    <div id="room-code-box" style="
+                        font-size: 2rem;
+                        font-weight: bold;
+                        background: #f1f5f9;
+                        padding: 10px;
+                        border-radius: 8px;
+                        letter-spacing: 4px;
+                        margin-bottom: 20px;
+                    ">${roomId}</div>
 
-                <button id="copy-room-code" style="
-                    margin-bottom: 10px;
-                    padding: 10px 20px;
-                    border: none;
-                    background: #3b82f6;
-                    color: white;
-                    border-radius: 8px;
-                    cursor: pointer;
-                ">Copy Code</button>
+                    <button id="copy-room-code" style="
+                        margin-bottom: 10px;
+                        padding: 10px 20px;
+                        border: none;
+                        background: #3b82f6;
+                        color: white;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    ">Copy Code</button>
 
-                <br>
+                    <br>
 
-                <button id="enter-room" style="
-                    padding: 10px 20px;
-                    border: none;
-                    background: #10b981;
-                    color: white;
-                    border-radius: 8px;
-                    cursor: pointer;
-                ">Enter Room</button>
-            </div>
-        `;
+                    <button id="enter-room" style="
+                        padding: 10px 20px;
+                        border: none;
+                        background: #10b981;
+                        color: white;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    ">Enter Room</button>
+                </div>
+            `;
 
-        document.body.appendChild(modal);
+            document.body.appendChild(modal);
 
-        // Reset the button state now that the process is done
-        btnCreate.textContent = "Create Room";
-        btnCreate.disabled = false;
+            btnCreate.textContent = "Create Room";
+            btnCreate.disabled = false;
 
-        // Copy logic
-        document.getElementById('copy-room-code').onclick = () => {
-            navigator.clipboard.writeText(roomId);
-            document.getElementById('copy-room-code').textContent = "Copied ✔️";
-        };
+            document.getElementById('copy-room-code').onclick = () => {
+                navigator.clipboard.writeText(roomId);
+                document.getElementById('copy-room-code').textContent = "Copied ✔️";
+            };
 
-        // Enter room logic (This is where the redirect belongs)
-        document.getElementById('enter-room').onclick = () => {
-            localStorage.setItem('active_study_room', roomId);
-            localStorage.removeItem('is_study_guest');
-            window.location.href = 'questions.html';
-        };
+            document.getElementById('enter-room').onclick = () => {
+                localStorage.setItem('active_study_room', roomId);
+                localStorage.removeItem('is_study_guest');
+                window.location.href = 'questions.html';
+            };
 
-    } catch (error) {
-        console.error(error);
-        alert("Failed to create room.");
-        btnCreate.textContent = "Create Room";
-        btnCreate.disabled = false;
-    }
+        } catch (error) {
+            console.error(error);
+            alert("Failed to create room.");
+            btnCreate.textContent = "Create Room";
+            btnCreate.disabled = false;
+        }
+    };
+}
+
 // ==========================================
 // CUSTOM JOIN ROOM MODAL LOGIC
 // ==========================================
@@ -775,22 +748,19 @@ const btnCloseJoin = document.getElementById('btn-close-join');
 const btnSubmitJoin = document.getElementById('btn-submit-join');
 const joinInput = document.getElementById('join-room-input');
 
-// 1. Open Modal
 if (btnJoin) {
     btnJoin.onclick = () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
-        joinInput.value = ""; // Clear old entry
+        joinInput.value = ""; 
         joinModal.style.display = 'flex';
         joinInput.focus();
     };
 }
 
-// 2. Close Modal
 if (btnCloseJoin) {
     btnCloseJoin.onclick = () => joinModal.style.display = 'none';
 }
 
-// 3. Handle Joining
 if (btnSubmitJoin) {
     btnSubmitJoin.onclick = async () => {
         const code = joinInput.value.trim();
@@ -807,7 +777,6 @@ if (btnSubmitJoin) {
                 localStorage.setItem('active_study_room', code);
                 localStorage.setItem('is_study_guest', 'true'); 
                 
-                // Visual feedback before redirect
                 btnSubmitJoin.style.background = "#10b981";
                 btnSubmitJoin.textContent = "✅ Connected!";
                 

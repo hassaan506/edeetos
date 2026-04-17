@@ -1,6 +1,9 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+let currentUserId = null; // MOVED TO TOP OF FILE
+
 // ==========================================
 // 1. STATE VARIABLES & CONFIG LOAD
 // ==========================================
@@ -63,12 +66,11 @@ function loadSession() {
         q.sessionState = null; 
         q.historicalState = null; 
     });
-	
-    let currentUserId = null; // ✅ GLOBAL (make sure this exists at top of file)
+} // CLOSED loadSession CORRECTLY
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-        currentUserId = user.uid; // ✅ CRITICAL FIX (for group study)
+        currentUserId = user.uid; 
 
         const userRef = doc(db, "users", user.uid);
 
@@ -78,7 +80,6 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
 
-                // 🚫 BANNED USER CHECK
                 if (dbData.isBanned || dbData.role === 'BANNED') {
 
                     const lockoutScreen = document.createElement('div');
@@ -122,10 +123,9 @@ onAuthStateChanged(auth, async (user) => {
                         window.location.href = 'index.html';
                     });
 
-                    return; // ❗ STOP QUIZ
+                    return; 
                 }
 
-                // 📚 LOAD USER COURSE DATA
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 const courseData = dbData[activeCourse] || {};
 
@@ -153,7 +153,6 @@ onAuthStateChanged(auth, async (user) => {
         } catch (error) {
             console.error("❌ Firebase Load Error:", error);
         } finally {
-            // ✅ SAFE START (only if questions exist)
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
                 if (!isExamMode) buildNumberGrid();
@@ -166,7 +165,6 @@ onAuthStateChanged(auth, async (user) => {
         }
 
     } else {
-        // 👤 GUEST MODE
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
@@ -182,11 +180,9 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-
 async function syncNextQuestion(newIndex) {
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-    // ❌ Guests should NOT control navigation
     if (isGuest) return;
 
     if (activeRoomId) {
@@ -196,7 +192,6 @@ async function syncNextQuestion(newIndex) {
     }
 }
 
-// Function to randomly shuffle an array (Fisher-Yates algorithm)
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -423,12 +418,11 @@ function loadQuestion(index) {
             };
         }
 
-if (submitReportBtn) {
+        if (submitReportBtn) {
             submitReportBtn.onclick = async () => {
                 const reason = reportReasonInput.value.trim();
                 if (!reason) return alert("Please specify why you are reporting this question.");
                 
-                // 1. Handle Guest Mode Gracefully
                 if (localStorage.getItem('edeetos_guest_mode') === 'true') {
                     return alert("Please register an account to report questions.");
                 }
@@ -441,8 +435,6 @@ if (submitReportBtn) {
 
                 try {
                     const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
-                    
-                    // Safely convert question text to a string just in case it's pure HTML or numbers
                     const qText = currentQuestionData.text ? String(currentQuestionData.text).substring(0, 100) + "..." : "No text";
 
                     await addDoc(collection(db, "reported_questions"), {
@@ -458,7 +450,6 @@ if (submitReportBtn) {
                     alert("Report submitted successfully. Thank you!");
                     if (reportModal) {
                         reportModal.classList.remove('show');
-                        // Removed the 'hidden' logic since we rely purely on the 'show' class now!
                     }
                 } catch (e) {
                     console.error("Error reporting question: ", e);
@@ -520,8 +511,6 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
         let courseUpdates = {};
         
         if (correctIds.length > 0) {
-            // We only remove from examMistakes here if they finally got it right.
-            // We removed solvedQuestions and mistakes updates to keep Practice Mode isolated!
             courseUpdates.examMistakes = arrayRemove(...correctIds);  
         }
         if (mistakeIds.length > 0) {
@@ -753,18 +742,7 @@ if (closeExplanationBtn) {
     };
 }
 
-document.getElementById('next-btn').onclick = () => {
-    if (isExamMode) {
-        if (!currentQuestionData.userSelectedAnswer) {
-            alert("Please select an answer. If you are stuck, click Skip.");
-            return;
-        }
-        if (currentIndex === quizQueue.length - 1) {
-            showResults();
-            return;
-        }
-    }
-
+// SINGLE CORRECT NEXT BTN LOGIC
 document.getElementById('next-btn').onclick = () => {
     if (isExamMode) {
         if (!currentQuestionData.userSelectedAnswer) {
@@ -886,13 +864,10 @@ document.addEventListener('keydown', (e) => {
 		case 'x':
         case 'X':
             e.preventDefault();
-            // Only allow opening if they've answered correctly and it's not an exam
             if (hasAnsweredCorrectly && !isExamMode) {
                 if (isExplanationOpen) {
-                    // If it's already open, close it
                     document.getElementById('close-explanation').click();
                 } else if (explanationBtn) {
-                    // If it's closed, open it
                     explanationBtn.click();
                 }
             }
@@ -947,7 +922,6 @@ if (btnCreate) {
     btnCreate.onclick = async () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to use Group Study.");
         
-        // Generate a random 4-digit code
         const roomId = Math.floor(1000 + Math.random() * 9000).toString();
         const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
         
@@ -955,7 +929,6 @@ if (btnCreate) {
         btnCreate.disabled = true;
 
         try {
-            // Create the room document in Firestore
             await setDoc(doc(db, "study_rooms", roomId), {
                 hostId: currentUserId,
                 course: activeCourse,
@@ -966,11 +939,9 @@ if (btnCreate) {
 
             alert(`Room Created! Share this 4-digit code with your friends: ${roomId}`);
             
-            // Save room info to local storage
             localStorage.setItem('active_study_room', roomId);
-            localStorage.removeItem('is_study_guest'); // You are the host
+            localStorage.removeItem('is_study_guest'); 
             
-            // Redirect to questions page to pick the content
             window.location.href = 'questions.html';
         } catch (error) {
             console.error("Room creation error:", error);
@@ -996,7 +967,7 @@ if (btnJoin) {
 
             if (roomSnap.exists()) {
                 localStorage.setItem('active_study_room', code.trim());
-                localStorage.setItem('is_study_guest', 'true'); // You are the guest/participant
+                localStorage.setItem('is_study_guest', 'true'); 
                 
                 alert("Room joined! Redirecting to the quiz...");
                 window.location.href = 'quiz.html';
@@ -1011,42 +982,39 @@ if (btnJoin) {
 }
 
 // ==========================================
-    // 👥 GROUP STUDY: LEAVE ROOM LOGIC
-    // ==========================================
-    const leaveBtn = document.getElementById('leave-room-btn');
-    if (activeRoomId && leaveBtn) {
-        leaveBtn.style.display = 'inline-block'; // Show the button only if in a room
+// 👥 GROUP STUDY: LEAVE ROOM LOGIC
+// ==========================================
+const leaveBtn = document.getElementById('leave-room-btn');
+if (activeRoomId && leaveBtn) {
+    leaveBtn.style.display = 'inline-block';
 
-        leaveBtn.onclick = async () => {
-            const confirmLeave = confirm("Are you sure you want to leave the study group? This will stop syncing your screen.");
-            if (!confirmLeave) return;
+    leaveBtn.onclick = async () => {
+        const confirmLeave = confirm("Are you sure you want to leave the study group? This will stop syncing your screen.");
+        if (!confirmLeave) return;
 
-            const isGuest = localStorage.getItem('is_study_guest') === 'true';
+        const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-            try {
-                // If Host leaves, we can optionally mark the room as ended
-                if (!isGuest) {
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), {
-                        status: "ended",
-                        endedAt: serverTimestamp()
-                    });
-                }
-
-                // Clean up local storage
-                localStorage.removeItem('active_study_room');
-                localStorage.removeItem('is_study_guest');
-
-                alert("You have left the group. Redirecting to questions...");
-                window.location.href = 'questions.html';
-            } catch (error) {
-                console.error("Error leaving room:", error);
-                // Fallback cleanup if Firebase fails
-                localStorage.removeItem('active_study_room');
-                localStorage.removeItem('is_study_guest');
-                window.location.href = 'questions.html';
+        try {
+            if (!isGuest) {
+                await updateDoc(doc(db, "study_rooms", activeRoomId), {
+                    status: "ended",
+                    endedAt: serverTimestamp()
+                });
             }
-        };
-    }
+
+            localStorage.removeItem('active_study_room');
+            localStorage.removeItem('is_study_guest');
+
+            alert("You have left the group. Redirecting to questions...");
+            window.location.href = 'questions.html';
+        } catch (error) {
+            console.error("Error leaving room:", error);
+            localStorage.removeItem('active_study_room');
+            localStorage.removeItem('is_study_guest');
+            window.location.href = 'questions.html';
+        }
+    };
+}
 	
 if (roomRef) {
     onSnapshot(roomRef, (snapshot) => {
@@ -1068,4 +1036,3 @@ if (roomRef) {
 }
 
 loadSession();
-
