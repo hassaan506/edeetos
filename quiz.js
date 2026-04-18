@@ -688,11 +688,9 @@ if (roomRef) {
     onSnapshot(roomRef, (snapshot) => {
         const data = snapshot.data();
 
-        if (!data || data.status === "ended") {
-            alert("The host has ended the study session.");
-            localStorage.removeItem('active_study_room');
-            localStorage.removeItem('is_study_guest');
-            window.location.href = 'questions.html';
+if (!data || data.status === "ended") {
+            // Trigger the modal, passing 'true' to indicate they are a guest
+            showPracticeCompleteModal(true);
             return;
         }
 
@@ -857,6 +855,38 @@ function showResults() {
 }
 
 // ==========================================
+// Custom Completion Modal
+// ==========================================
+function showPracticeCompleteModal(isGuest = false) {
+    // Prevent creating multiple modals if Firebase triggers this twice
+    if (document.getElementById('practice-complete-modal')) return; 
+
+    const modal = document.createElement('div');
+    modal.id = 'practice-complete-modal';
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+
+    const title = isGuest ? "Session Ended" : "Practice Complete!";
+    const desc = isGuest ? "The host has finished the session and closed the study room." : "Great job! You have finished all the questions.";
+
+    modal.innerHTML = `
+        <i class="fas fa-check-circle" style="color: #10b981; font-size: 5rem; margin-bottom: 1.5rem;"></i>
+        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">${title}</h1>
+        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem;">${desc}</p>
+        <button id="btn-practice-home" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Return Home</button>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+
+    // Wait for the user to click the button before redirecting
+    document.getElementById('btn-practice-home').addEventListener('click', () => {
+        localStorage.removeItem('active_study_room');
+        localStorage.removeItem('is_study_guest');
+        window.location.href = 'questions.html';
+    });
+}
+
+// ==========================================
 // 6. TIMER & MODAL NAVIGATION
 // ==========================================
 function startTimer() {
@@ -887,7 +917,7 @@ skipBtn.onclick = () => {
 if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.remove('hidden'); explanationModal.classList.add('show'); };
 if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
 
-document.getElementById('next-btn').onclick = () => {
+document.getElementById('next-btn').onclick = async () => {
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
         alert("Only the host can jump to different questions.");
         return;
@@ -897,14 +927,23 @@ document.getElementById('next-btn').onclick = () => {
         if (currentIndex === quizQueue.length - 1) return showResults();
     }
 
-if (currentIndex < quizQueue.length - 1) {
+    if (currentIndex < quizQueue.length - 1) {
         const newIndex = currentIndex + 1;
         syncNextQuestion(newIndex);
         triggerSlideTransition(newIndex, 'right');
     } else if (!isExamMode) {
-        // Give the user a clear ending when they finish a practice set!
-        alert("Great job! You have completed this practice session.");
-        window.location.href = 'questions.html'; 
+        if (activeRoomId && localStorage.getItem('is_study_guest') !== 'true') {
+            try {
+                await updateDoc(doc(db, "study_rooms", activeRoomId), {
+                    status: "ended",
+                    endedAt: serverTimestamp()
+                });
+            } catch (error) {
+                console.error("Error ending room:", error);
+            }
+        }
+        
+        showPracticeCompleteModal(false);
     }
 };
 

@@ -361,16 +361,26 @@ function changeView(viewName, titleText) {
 
 function generateExamTitle(paths, currentView) {
     if (!paths || paths.length === 0) return "Custom Exam";
+    
     const topLevels = new Set();
     const subLevels = new Set();
+    
     paths.forEach(p => {
-        if (p[0]) topLevels.add(p[0]);
-        if (p[1]) subLevels.add(p[1]);
+        if (p[0]) topLevels.add(p[0]); // For 'exam', this is the Year
+        if (p[1]) subLevels.add(p[1]); // For 'exam', this is the Paper Name
     });
+    
     const topArr = Array.from(topLevels);
     const subArr = Array.from(subLevels);
 
-    if (currentView === 'exam') return topArr.join(" + ");
+    if (currentView === 'exam') {
+        if (topArr.length === 1) {
+            if (subArr.length === 0) return `${topArr[0]} (All Papers)`;
+            return `${topArr[0]} - ${subArr.join(" + ")}`; 
+        } else {
+            return subArr.length > 0 ? subArr.join(" + ") : topArr.join(" + "); 
+        }
+    }
     if (topArr.length === 1) {
         if (subArr.length > 3 || subArr.length === 0) return `${topArr[0]} (Full)`;
         else return `${topArr[0]} - ${subArr.join(" + ")}`;
@@ -516,10 +526,13 @@ async function loadDataAndBuildTree() {
                 if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
             }
 
-            if (Exam) {
-                if (!examTree[Exam]) examTree[Exam] = {};
-                if (!examTree[Exam][Subject]) examTree[Exam][Subject] = [];
-                if (Topic && !examTree[Exam][Subject].includes(Topic)) examTree[Exam][Subject].push(Topic);
+			if (Exam) {
+                const Year = rowObj.Year || "Other Years"; 
+                
+                if (!examTree[Year]) examTree[Year] = {};
+                if (!examTree[Year][Exam]) examTree[Year][Exam] = {};
+                if (!examTree[Year][Exam][Subject]) examTree[Year][Exam][Subject] = [];
+                if (Topic && !examTree[Year][Exam][Subject].includes(Topic)) examTree[Year][Exam][Subject].push(Topic);
             }
         });
 
@@ -578,10 +591,12 @@ function getQuestionCount(view, pathArr, customPool = null) {
             if (paths[0] && q.Chapter !== paths[0]) return false;
             if (paths[1] && q.Subject !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
-        } else if (view === 'exam') {
-            if (paths[0] && q.Exam !== paths[0]) return false;
-            if (paths[1] && q.Subject !== paths[1]) return false;
-            if (paths[2] && q.Topic !== paths[2]) return false;
+		} else if (view === 'exam') {
+            const qYear = q.Year || "Other Years";
+            if (paths[0] && qYear !== paths[0]) return false;
+            if (paths[1] && q.Exam !== paths[1]) return false;
+            if (paths[2] && q.Subject !== paths[2]) return false;
+            if (paths[3] && q.Topic !== paths[3]) return false;
         }
         return true;
     }).length;
