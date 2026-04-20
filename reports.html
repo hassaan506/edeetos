@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Reports - EDEETOS</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="reports.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: #f8fafc; margin: 0; height: 100vh; display: flex; flex-direction: column;">
+
+    <nav class="dashboard-nav">
+        <div class="nav-inner">
+            <div class="nav-logo-box">
+                <a href="dashboard.html"><img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;"></a>
+            </div>
+            <div class="nav-actions">
+                <button onclick="window.location.href='dashboard.html'" class="btn-outline" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">
+                    ⬅ Back to Dashboard
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reports-container">
+        
+        <aside class="reports-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-users"></i> Students</h2>
+                <input type="text" id="search-students" class="search-input" placeholder="Search by name or email...">
+            </div>
+            <div id="student-list" class="student-list">
+                <div class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading records...</p>
+                </div>
+            </div>
+        </aside>
+
+        <main id="report-details" class="reports-main">
+            <div class="empty-state">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Select a Student</h3>
+                <p>Click on a student from the list to view their detailed performance report.</p>
+            </div>
+        </main>
+
+    </div>
+
+    <script type="module" src="studentReports.js"></script>
+</body>
+</html>

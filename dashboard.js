@@ -1,7 +1,9 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// 🐛 BUG FIX: Imported 'arrayUnion' to help us update the completed exams list
+import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
 let currentUserData = null;
 let currentUserId = null;
 
@@ -67,6 +69,22 @@ onAuthStateChanged(auth, async (user) => {
                 
                 const userRole = (currentUserData.role || '').toUpperCase();
 
+                // 🐛 BUG FIX: Verify if the premium subscription is genuinely active by checking dates
+                let hasActiveSubscription = false;
+                if (currentUserData.isPremium && currentUserData.subscriptions) {
+                    for (const expiry of Object.values(currentUserData.subscriptions)) {
+                        if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
+                            hasActiveSubscription = true;
+                            break; // Stop looking as soon as we find one active plan
+                        }
+                    }
+                }
+                
+                // If they are marked as premium but all dates have passed, downgrade them in the database!
+                if (currentUserData.isPremium && !hasActiveSubscription) {
+                    updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading user:", err));
+                }
+
                 if(subStatus) {
                     subStatus.className = "status-badge";
                     subStatus.style.background = "";
@@ -84,7 +102,7 @@ onAuthStateChanged(auth, async (user) => {
                     document.getElementById('btn-admin-panel').style.display = 'flex';
                     if (freeWarning) freeWarning.style.display = 'none';
                     
-                } else if (currentUserData.isPremium) {
+                } else if (hasActiveSubscription) { // 🐛 BUG FIX: Using our verified true/false variable instead of currentUserData.isPremium
                     if(subStatus) {
                         subStatus.textContent = "Premium";
                         subStatus.className = "status-badge badge-pro";
@@ -146,7 +164,7 @@ onAuthStateChanged(auth, async (user) => {
                 // ==========================================
                 // 👉 STUDENT FEATURE: FETCH ASSIGNED EXAMS
                 // ==========================================
-                if (userRole === 'STUDENT' || currentUserData.isPremium) {
+                if (userRole === 'STUDENT' || hasActiveSubscription) { // 🐛 BUG FIX: Also changed this to hasActiveSubscription
                     const examsRef = collection(db, "assigned_exams");
                     const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
                     
@@ -203,10 +221,20 @@ onAuthStateChanged(auth, async (user) => {
                             pendingExams.forEach((exam, index) => {
                                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
                                 
-                                launchBtn.addEventListener('click', () => {
+                                launchBtn.addEventListener('click', async () => {
                                     launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
                                     launchBtn.style.opacity = "0.8";
                                     launchBtn.style.pointerEvents = "none";
+
+                                    // 🐛 BUG FIX: Add the student to 'isCompletedBy' instantly so it counts as attempted
+                                    try {
+                                        const examRefToUpdate = doc(db, "assigned_exams", exam.id);
+                                        await updateDoc(examRefToUpdate, {
+                                            isCompletedBy: arrayUnion(currentUserId)
+                                        });
+                                    } catch (err) {
+                                        console.error("Failed to register exam attempt:", err);
+                                    }
 
                                     setTimeout(() => {
                                         localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
@@ -254,6 +282,7 @@ onAuthStateChanged(auth, async (user) => {
         }
     }
 });
+
 // ==========================================
 // 2. NAVIGATION BUTTONS
 // ==========================================

@@ -19,6 +19,11 @@
                 <button id="btn-admin-panel" class="btn-solid btn-nav-admin" style="display: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; align-items: center; gap: 5px;">
                     🛡️ Admin
                 </button>
+                
+				<button id="btn-reports-panel" onclick="window.location.href='reports.html'" class="btn-solid btn-nav-reports" style="display: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; align-items: center; gap: 5px; background: #6366f1; color: white; cursor: pointer;">
+					📊 Reports
+				</button>
+
                 <button id="btn-open-profile" class="btn-solid btn-nav-profile" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; background: #3b82f6; color: white;">
                     👤 Profile
                 </button>
@@ -207,7 +212,6 @@
                 <div id="prof-role-badge" class="status-badge" style="margin-top: 0.5rem;">STUDENT</div>
             </div>
 
-            <!-- Profile Form -->
             <form id="profile-form">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
                     <div>
@@ -254,12 +258,10 @@
 
             <hr style="border: none; border-top: 1px dashed #cbd5e1; margin: 2rem 0;">
 
-            <!-- Subscriptions Section -->
             <div id="prof-subscriptions">
                 <h3 style="color: #334155; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800;">Active Subscriptions</h3>
                 <div id="prof-subs-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
-                    <!-- JS injects here -->
-                </div>
+                    </div>
             </div>
             
         </div>
@@ -284,5 +286,6 @@
 </div>
 
     <script type="module" src="dashboard.js?v=2"></script>
+    <script type="module" src="studentReports.js"></script>
 </body>
 </html>
