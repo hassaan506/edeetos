@@ -327,31 +327,29 @@ body {
 /* ==========================================
    7. MOBILE RESPONSIVENESS FIXES
    ========================================== */
-@media (max-width: 950px) {
-    /* Stack the stats grid down to a 1-column layout on tablets */
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-}
-
 @media (max-width: 768px) {
-    /* Stack the whole container vertically instead of side-by-side */
+    /* 1. Unlock the body height so the page can scroll normally on phones */
+    body {
+        height: auto !important;
+        display: block !important;
+        overflow-x: hidden;
+    }
+
+    /* 2. Stack the layout vertically */
     .reports-container {
         flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-        height: auto; /* Let it flow down the page naturally */
-        min-height: calc(100vh - 80px);
-        overflow-y: auto; /* Allow scrolling */
-        margin-top: 60px;
+        padding: 10px;
+        gap: 20px;
+        height: auto !important; 
+        margin-top: 10px; 
+        overflow: visible !important;
     }
 
-    /* Make the sidebar full width, but limit height so it's a scrollable box at the top */
+    /* 3. Sidebar (Student List) */
     .reports-sidebar {
         width: 100%;
         max-width: 100%;
-        height: 350px; /* Fixed height so they can scroll the student list */
+        height: 350px; /* Keep it as a scrollable box so they can find students */
         flex-shrink: 0;
         border-radius: 16px;
     }
@@ -359,12 +357,12 @@ body {
     .sidebar-header { padding: 15px; }
     .student-list { padding: 10px 15px; }
 
-    /* Make the main details panel full width below it */
+    /* 4. Main Details Panel */
     .reports-main {
         width: 100%;
-        padding: 20px;
-        height: auto; 
-        overflow: visible; /* Prevent double scrollbars on mobile */
+        padding: 20px 15px;
+        height: auto !important;
+        overflow: visible !important; /* Let it expand fully down the page */
         border-radius: 16px;
     }
 
