@@ -1,11 +1,11 @@
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-// 🐛 BUG FIX: Imported 'arrayUnion' to help us update the completed exams list
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 let currentUserData = null;
 let currentUserId = null;
+let hasCheckedDowngrade = false; // 🐛 BUG FIX: Added our Lock Variable here!
 
 // ==========================================
 // 1. DASHBOARD LOAD & BADGE LOGIC
@@ -69,7 +69,7 @@ onAuthStateChanged(auth, async (user) => {
                 
                 const userRole = (currentUserData.role || '').toUpperCase();
 
-                // 🐛 BUG FIX: Verify if the premium subscription is genuinely active by checking dates
+                // Verify if the premium subscription is genuinely active by checking dates
                 let hasActiveSubscription = false;
                 if (currentUserData.isPremium && currentUserData.subscriptions) {
                     for (const expiry of Object.values(currentUserData.subscriptions)) {
@@ -80,8 +80,10 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
                 
-                // If they are marked as premium but all dates have passed, downgrade them in the database!
-                if (currentUserData.isPremium && !hasActiveSubscription) {
+                // 🐛 BUG FIX: The Anti-Loop Lock! 
+                // Only attempt to downgrade ONCE per session to stop the infinite ping-pong refresh.
+                if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
+                    hasCheckedDowngrade = true; // Lock it!
                     updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading user:", err));
                 }
 
@@ -102,7 +104,7 @@ onAuthStateChanged(auth, async (user) => {
                     document.getElementById('btn-admin-panel').style.display = 'flex';
                     if (freeWarning) freeWarning.style.display = 'none';
                     
-                } else if (hasActiveSubscription) { // 🐛 BUG FIX: Using our verified true/false variable instead of currentUserData.isPremium
+                } else if (hasActiveSubscription) { 
                     if(subStatus) {
                         subStatus.textContent = "Premium";
                         subStatus.className = "status-badge badge-pro";
@@ -123,7 +125,8 @@ onAuthStateChanged(auth, async (user) => {
                 // 👉 GLOBAL MENTOR NOTIFICATIONS
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     const btnReports = document.getElementById('btn-reports-panel');
-					if (btnReports) btnReports.style.display = 'flex';
+                    if (btnReports) btnReports.style.display = 'flex';
+                    
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
                         btnMentor.textContent = "Open Mentorship Hub";
@@ -165,7 +168,7 @@ onAuthStateChanged(auth, async (user) => {
                 // ==========================================
                 // 👉 STUDENT FEATURE: FETCH ASSIGNED EXAMS
                 // ==========================================
-                if (userRole === 'STUDENT' || hasActiveSubscription) { // 🐛 BUG FIX: Also changed this to hasActiveSubscription
+                if (userRole === 'STUDENT' || hasActiveSubscription) {
                     const examsRef = collection(db, "assigned_exams");
                     const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
                     
@@ -227,7 +230,6 @@ onAuthStateChanged(auth, async (user) => {
                                     launchBtn.style.opacity = "0.8";
                                     launchBtn.style.pointerEvents = "none";
 
-                                    // 🐛 BUG FIX: Add the student to 'isCompletedBy' instantly so it counts as attempted
                                     try {
                                         const examRefToUpdate = doc(db, "assigned_exams", exam.id);
                                         await updateDoc(examRefToUpdate, {

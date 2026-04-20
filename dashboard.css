@@ -115,7 +115,7 @@
 }
 
 /* ========================================== */
-/* 4. MODALS & PREMIUM POPUP (THE FIX)        */
+/* 4. MODALS & PREMIUM POPUP                  */
 /* ========================================== */
 .popup-overlay {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -165,7 +165,7 @@
 .course-check { accent-color: #10b981; transform: scale(1.2); }
 
 /* ========================================== */
-/* 5. MOBILE RESPONSIVENESS FIXES             */
+/* 5. MOBILE RESPONSIVENESS FIXES (UPDATED)   */
 /* ========================================== */
 @media (max-width: 950px) {
     .course-dash-grid { grid-template-columns: 1fr; }
@@ -173,18 +173,29 @@
 
 @media (max-width: 768px) {
     .dashboard-nav { padding: 0.8rem 1rem; }
-    .nav-inner { flex-direction: row; justify-content: space-between; align-items: center; }
-    .nav-spacer { display: none; }
-    .nav-logo-box { width: auto; flex: none; }
-    .nav-logo-box img { height: 32px !important; }
     
-    .nav-actions { width: auto; flex: none; justify-content: flex-end; gap: 0.4rem; }
+    /* Center everything and stack vertically */
+    .nav-inner { flex-direction: column; justify-content: center; align-items: center; gap: 12px; }
+    .nav-spacer { display: none; }
+    
+    /* Make logo neat at the top */
+    .nav-logo-box { width: auto; flex: none; }
+    .nav-logo-box img { height: 36px !important; }
+    
+    /* Wrap buttons onto multiple lines dynamically */
+    .nav-actions { width: 100%; flex: none; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+    
+    /* Let buttons grow to fill the available space evenly */
     .nav-actions button {
-        padding: 0.4rem 0.6rem !important;
-        font-size: 0.75rem !important;
+        padding: 0.5rem 0.8rem !important;
+        font-size: 0.8rem !important;
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+        display: flex;
     }
     
-    .dashboard-header { margin-bottom: 2.5rem; margin-top: -1rem; padding: 0 1rem; }
+    .dashboard-header { margin-bottom: 2.5rem; margin-top: 0.5rem; padding: 0 1rem; }
     .welcome-header { 
         font-size: 1.4rem; 
         justify-content: center;
@@ -193,7 +204,7 @@
     }
     .welcome-header #user-name { font-size: 1.6rem; }
     #subscription-status {
-        width: 100%; /* Force badge to new line if flex is wrapping */
+        width: 100%; 
         max-width: max-content;
         margin: 0.3rem auto 0 auto;
     }
