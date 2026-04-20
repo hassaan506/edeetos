@@ -122,7 +122,8 @@ onAuthStateChanged(auth, async (user) => {
 
                 // 👉 GLOBAL MENTOR NOTIFICATIONS
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
-                    
+                    const btnReports = document.getElementById('btn-reports-panel');
+					if (btnReports) btnReports.style.display = 'flex';
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
                         btnMentor.textContent = "Open Mentorship Hub";
