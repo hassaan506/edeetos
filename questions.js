@@ -366,9 +366,126 @@ function changeView(viewName, titleText) {
     searchDropdown.style.display = 'none';
 
     if (viewName === 'book') {
-        renderBooksGrid();
+        subjectsGrid.innerHTML = ''; // Clear the grid
+        openBookSelectionPopup();    // Launch the popup instead
     } else {
         renderGrid();
+    }
+}
+
+function openBookSelectionPopup() {
+    popupHistory = []; 
+    popupTitle.textContent = "Select a Book";
+    popupList.innerHTML = '';
+    popupOverlay.style.display = 'flex';
+    popupBack.style.display = 'none';
+
+    availableBooks.forEach(book => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'list-item';
+        itemDiv.innerHTML = `
+            <div style="flex-grow: 1; font-weight: bold; color: #1e3a8a;">
+                ${book.title}
+            </div>
+            <button class="btn-solid mini-btn">Open ➡</button>
+        `;
+        
+        itemDiv.querySelector('button').onclick = () => {
+            popupOverlay.style.display = 'none'; // Close the selection popup
+            loadAndRenderBookChapters(book);     // Fetch data and populate main grid
+        };
+        
+        popupList.appendChild(itemDiv);
+    });
+}
+
+async function loadAndRenderBookChapters(book) {
+    try {
+        document.body.style.cursor = 'wait';
+        if (viewTitle) viewTitle.textContent = book.title;
+
+        // Fetch using the exact case-sensitive path
+        const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
+        if (!response.ok) throw new Error("File not found");
+        const csvText = await response.text();
+
+        function parseCSV(text) {
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (l of text) {
+                if ('"' === l) {
+                    if (s && l === p) row[i] += l;
+                    s = !s;
+                } else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) {
+                    if ('\r' === p) row[i] = row[i].slice(0, -1);
+                    row = ret[++r] = [l = '']; i = 0;
+                } else row[i] += l;
+                p = l;
+            }
+            return ret;
+        }
+
+        const rows = parseCSV(csvText);
+        const headers = rows[0].map(h => h ? h.trim() : "");
+        let bookQuestions = [];
+
+        rows.slice(1).forEach((row, rowIndex) => {
+            if (row.length < 2) return;
+            let rowObj = {};
+            headers.forEach((header, index) => {
+                rowObj[header] = row[index] ? row[index].trim() : "";
+            });
+            if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
+                rowObj.QuestionID = `${book.file}-q-${rowIndex + 1}`;
+            }
+            bookQuestions.push(rowObj);
+        });
+
+        let tempBookTree = {};
+        bookQuestions.forEach(q => {
+            const chapter = q.Chapter || "Uncategorized";
+            const topic = q.Topic || "General";
+            if (!tempBookTree[chapter]) tempBookTree[chapter] = [];
+            if (!tempBookTree[chapter].includes(topic)) tempBookTree[chapter].push(topic);
+        });
+
+        activeCustomPool = bookQuestions;
+        
+        // Render chapters directly to the main grid
+        if (!subjectsGrid) return;
+        subjectsGrid.innerHTML = '';
+
+        Object.keys(tempBookTree).forEach(chapterName => {
+            const qCount = getQuestionCount('book', [chapterName]);
+            const doneCount = getSolvedCount('book', [chapterName]);
+            const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+
+            const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
+            const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
+
+            const card = document.createElement('div');
+            card.className = 'glass-panel feature-card';
+            card.style.cursor = 'pointer';
+            card.innerHTML = `
+                <div class="card-header-flex">
+                    <h3 class="card-title">${chapterName}</h3>
+                    ${countHtml}
+                </div>
+                ${progressHtml}
+            `;
+            
+            // Clicking a chapter on the grid opens the Topics popup
+            card.onclick = () => openPopup(chapterName, tempBookTree[chapterName], 'Level1', [chapterName], false);
+            
+            subjectsGrid.appendChild(card);
+        });
+
+        document.body.style.cursor = 'default';
+
+    } catch (error) {
+        document.body.style.cursor = 'default';
+        console.error("Error loading book:", error);
+        alert("Failed to load book data. Ensure your CSV is inside the /Books folder.");
     }
 }
 
