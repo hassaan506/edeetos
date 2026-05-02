@@ -41,9 +41,9 @@ const availableBooks = [
     { file: "firstaid_step1", title: "First Aid Step 1" },
     { file: "rafiullah", title: "Rafiullah FCPS" },
     { file: "im_medicine", title: "Irfan Masood - Medicine" },
-    { file: "im_surgery", title: "Irfan Masood - Surgery" }
-	{ file: "brs_patho", title: "BRS - Pathology" }
-	{ file: "brs_physio", title: "BRS - Physiology" }
+    { file: "im_surgery", title: "Irfan Masood - Surgery" },
+    { file: "brs_patho", title: "BRS - Pathology" },
+    { file: "brs_physio", title: "BRS - Physiology" }
 ];
 
 // ==========================================
@@ -859,8 +859,10 @@ function renderListItem(itemName, nextData, level, itemPath) {
             actionBtn.onclick = () => {
                 const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
 
-                let launchTitle = itemName;
-                if (activeCustomPool && itemName !== "⭐ Bookmarks") launchTitle = "Review Mistakes";
+				let launchTitle = itemName;
+				if (activeCustomPool && itemName !== "⭐ Bookmarks" && currentView !== 'book') {
+					launchTitle = "Review Mistakes";
+				}
 
                 window.launchQuiz(pool, 'practice', 0, launchTitle);
             };
