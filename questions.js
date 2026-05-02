@@ -809,7 +809,7 @@ async function loadAndOpenBook(book) {
         document.body.style.cursor = 'wait';
         const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
         if (!response.ok) throw new Error("File not found");
-        const csvText = await response.text();
+        const csvText = (await response.text()).replace(/^\uFEFF/, '');
 
         function parseCSV(text) {
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
@@ -1614,7 +1614,7 @@ async function injectBooksGlobally() {
         try {
             const response = await fetch(`Books/${book.file}.csv`, { cache: 'force-cache' });
             if (!response.ok) continue;
-            const csvText = await response.text();
+            const csvText = (await response.text()).replace(/^\uFEFF/, '');
             
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
             for (l of csvText) {
