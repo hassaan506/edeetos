@@ -682,7 +682,7 @@ function renderBooksGrid() {
 async function loadAndOpenBook(book) {
     try {
         document.body.style.cursor = 'wait';
-        const response = await fetch(`books/${book.file}.csv`, { cache: 'no-cache' });
+        const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
         if (!response.ok) throw new Error("File not found");
         const csvText = await response.text();
 
