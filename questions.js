@@ -37,6 +37,14 @@ const unattemptedFilter = document.getElementById('unattempted-filter');
 const sidebarEl = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
 const viewTitle = document.getElementById('current-view-title');
+const availableBooks = [
+    { file: "firstaid_step1", title: "First Aid Step 1" },
+    { file: "rafiullah", title: "Rafiullah FCPS" },
+    { file: "im_medicine", title: "Irfan Masood - Medicine" },
+    { file: "im_surgery", title: "Irfan Masood - Surgery" }
+	{ file: "brs_patho", title: "BRS - Pathology" }
+	{ file: "brs_physio", title: "BRS - Physiology" }
+];
 
 // ==========================================
 // 3. EVENT LISTENERS
@@ -313,6 +321,7 @@ setTimeout(() => {
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
+document.getElementById('nav-book').onclick = () => changeView('book', 'Books');
 document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
 document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 sidebarOverlay.onclick = () => toggleSidebar(false);
@@ -356,7 +365,11 @@ function changeView(viewName, titleText) {
     globalSearch.value = "";
     searchDropdown.style.display = 'none';
 
-    renderGrid();
+    if (viewName === 'book') {
+        renderBooksGrid();
+    } else {
+        renderGrid();
+    }
 }
 
 function generateExamTitle(paths, currentView) {
@@ -597,7 +610,10 @@ function getQuestionCount(view, pathArr, customPool = null) {
             if (paths[1] && q.Exam !== paths[1]) return false;
             if (paths[2] && q.Subject !== paths[2]) return false;
             if (paths[3] && q.Topic !== paths[3]) return false;
-        }
+        } else if (view === 'book') {
+			if (paths[0] && q.Chapter !== paths[0]) return false;
+			if (paths[1] && q.Topic !== paths[1]) return false;
+		}
         return true;
     }).length;
 }
@@ -643,6 +659,82 @@ function renderGrid() {
         card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
         subjectsGrid.appendChild(card);
     });
+}
+
+function renderBooksGrid() {
+    if (!subjectsGrid) return;
+    subjectsGrid.innerHTML = '';
+
+    availableBooks.forEach(book => {
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.style.cursor = 'pointer';
+        card.innerHTML = `
+            <div class="card-header-flex">
+                <h3 class="card-title">${book.title}</h3>
+            </div>
+        `;
+        card.onclick = () => loadAndOpenBook(book);
+        subjectsGrid.appendChild(card);
+    });
+}
+
+async function loadAndOpenBook(book) {
+    try {
+        document.body.style.cursor = 'wait';
+        const response = await fetch(`books/${book.file}.csv`, { cache: 'no-cache' });
+        if (!response.ok) throw new Error("File not found");
+        const csvText = await response.text();
+
+        function parseCSV(text) {
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (l of text) {
+                if ('"' === l) {
+                    if (s && l === p) row[i] += l;
+                    s = !s;
+                } else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) {
+                    if ('\r' === p) row[i] = row[i].slice(0, -1);
+                    row = ret[++r] = [l = '']; i = 0;
+                } else row[i] += l;
+                p = l;
+            }
+            return ret;
+        }
+
+        const rows = parseCSV(csvText);
+        const headers = rows[0].map(h => h ? h.trim() : "");
+        let bookQuestions = [];
+
+        rows.slice(1).forEach((row, rowIndex) => {
+            if (row.length < 2) return;
+            let rowObj = {};
+            headers.forEach((header, index) => {
+                rowObj[header] = row[index] ? row[index].trim() : "";
+            });
+            if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
+                rowObj.QuestionID = `${book.file}-q-${rowIndex + 1}`;
+            }
+            bookQuestions.push(rowObj);
+        });
+
+        let tempBookTree = {};
+        bookQuestions.forEach(q => {
+            const chapter = q.Chapter || "Uncategorized";
+            const topic = q.Topic || "General";
+            if (!tempBookTree[chapter]) tempBookTree[chapter] = [];
+            if (!tempBookTree[chapter].includes(topic)) tempBookTree[chapter].push(topic);
+        });
+
+        activeCustomPool = bookQuestions;
+        document.body.style.cursor = 'default';
+        openPopup(book.title, tempBookTree, 'Level1', []);
+
+    } catch (error) {
+        document.body.style.cursor = 'default';
+        console.error("Error loading book:", error);
+        alert("Failed to load book data.");
+    }
 }
 
 function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
@@ -908,7 +1000,53 @@ onAuthStateChanged(auth, async (user) => {
                 if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
                 if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
                 if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+				// --- SPACED REPETITION UI INJECTOR ---
+                const revisions = courseData.revisions || {};
+                const now = Date.now();
+                const dueTopics = [];
 
+                // Filter for topics that are due
+                Object.keys(revisions).forEach(topic => {
+                    if (revisions[topic].dueDate <= now && revisions[topic].status !== 'missed') {
+                        dueTopics.push({ topic: topic, step: revisions[topic].intervalStep });
+                    }
+                });
+
+                const revisionContainer = document.getElementById('spaced-repetition-container');
+
+                if (dueTopics.length > 0 && revisionContainer) {
+                    const revisionCard = document.createElement('div');
+                    revisionCard.className = 'glass-panel';
+                    revisionCard.style.border = '2px solid #f59e0b';
+                    revisionCard.style.backgroundColor = '#fffbeb';
+                    revisionCard.style.marginBottom = '2rem';
+                    
+                    let revHtml = `
+                        <h3 style="color: #b45309; margin-bottom: 10px; margin-top: 0;">
+                            <i class="fas fa-sync-alt"></i> Due for Revision (${dueTopics.length})
+                        </h3>
+                        <p style="font-size: 0.9rem; color: #92400e; margin-bottom: 15px;">Review these topics now to optimize memory retention.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    `;
+
+                    dueTopics.forEach(item => {
+                        revHtml += `
+                            <button class="btn-solid mini-btn" style="background: #f59e0b; border: none; color: white; cursor: pointer; padding: 8px 15px; border-radius: 8px; font-weight: bold;" 
+                                    onclick="window.generateRevisionQuiz('${item.topic}')">
+                                ${item.topic} (Day ${item.step})
+                            </button>
+                        `;
+                    });
+
+                    revHtml += `</div>`;
+                    revisionCard.innerHTML = revHtml;
+                    
+                    revisionContainer.innerHTML = ''; 
+                    revisionContainer.appendChild(revisionCard);
+                } else if (revisionContainer) {
+                    revisionContainer.innerHTML = '';
+                }
+                // --- END SPACED REPETITION UI ---
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
@@ -1294,5 +1432,55 @@ if (journeyModal) {
         if (e.target === journeyModal) journeyModal.style.display = 'none';
     };
 }
+// --- SPACED REPETITION GENERATOR ---
+window.generateRevisionQuiz = function(topicName) {
+    const topicPool = allQuestions.filter(q => q.Topic === topicName || q.Chapter === topicName);
+
+    if (topicPool.length === 0) return alert("No questions available for this topic.");
+
+    const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+
+    let weakPool = [];
+    let strongPool = [];
+
+    topicPool.forEach(q => {
+        const qId = getQID(q);
+        if (allMistakes.includes(qId)) {
+            weakPool.push(q);
+        } else if (attemptedQuestions.includes(qId)) {
+            strongPool.push(q);
+        }
+    });
+
+weakPool = weakPool.sort(() => 0.5 - Math.random());
+    strongPool = strongPool.sort(() => 0.5 - Math.random());
+
+    // Calculate dynamic quiz size based on actual performance
+    // Grab up to 35 weak questions. If they have more than 35 mistakes, save them for the next interval.
+    const targetWeak = Math.min(weakPool.length, 35);
+
+    // Keep the ratio tight. Strong questions should be roughly 40% of whatever the weak count is.
+    // Minimum 5 strong questions just to prevent them from feeling like they are failing everything.
+    const targetStrong = targetWeak > 0 ? Math.max(Math.floor(targetWeak * 0.4), 5) : 15;
+
+    let finalQuiz = [];
+    finalQuiz.push(...weakPool.slice(0, targetWeak));
+    finalQuiz.push(...strongPool.slice(0, targetStrong));
+
+    // If they have almost no mistakes (e.g., 2 weak questions), pad the quiz with strong questions 
+    // up to a minimum floor of 15 questions so it still feels like a real revision session.
+    if (finalQuiz.length < 15) {
+        const remainingStrong = strongPool.slice(targetStrong);
+        finalQuiz.push(...remainingStrong.slice(0, 15 - finalQuiz.length));
+    }
+
+    finalQuiz = finalQuiz.sort(() => 0.5 - Math.random());
+
+    if (finalQuiz.length === 0) return alert("Not enough data to generate a revision.");
+
+    // Launch quiz with a special title so the updater knows it was a revision
+    window.launchQuiz(finalQuiz, 'practice', 0, `Revision: ${topicName}`);
+};
 
 switchMode('practice');
+

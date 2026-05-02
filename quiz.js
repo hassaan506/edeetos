@@ -832,7 +832,7 @@ function showResults() {
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     
 	if (isExamMode) saveExamProgress(correctIds, mistakeIds, correctCount, total);
-	
+	updateSpacedRepetition();
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
@@ -858,6 +858,7 @@ function showResults() {
 // Custom Completion Modal
 // ==========================================
 function showPracticeCompleteModal(isGuest = false) {
+	updateSpacedRepetition();
     // Prevent creating multiple modals if Firebase triggers this twice
     if (document.getElementById('practice-complete-modal')) return; 
 
@@ -1042,6 +1043,64 @@ if (activeRoomId && exitBtn) {
             window.location.href = 'questions.html';
         }
     };
+}
+// --- SPACED REPETITION UPDATER ---
+async function updateSpacedRepetition() {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+    const user = auth.currentUser;
+    if (!user) return;
+
+    // Isolate the topics from the current session
+    const topicsAttempted = [...new Set(quizQueue.map(q => q.Topic || q.Chapter).filter(Boolean))];
+    if (topicsAttempted.length === 0) return;
+
+    let correctCount = 0;
+    quizQueue.forEach(q => {
+        const correctOpt = q.options.find(o => o.isCorrect);
+        if ((q.userSelectedAnswer && q.userSelectedAnswer === correctOpt.text) || q.sessionState === 'correct') {
+            correctCount++;
+        }
+    });
+
+    const accuracy = quizQueue.length > 0 ? (correctCount / quizQueue.length) * 100 : 0;
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+    const userRef = doc(db, "users", user.uid);
+    
+    try {
+        const docSnap = await getDoc(userRef);
+        const dbData = docSnap.data();
+        const currentRevisions = (dbData[activeCourse] && dbData[activeCourse].revisions) ? dbData[activeCourse].revisions : {};
+        
+        let updates = {};
+
+        topicsAttempted.forEach(topic => {
+            let currentStep = currentRevisions[topic] ? currentRevisions[topic].intervalStep : 0;
+            
+            // Advance the interval if they score 80% or higher. Brutal reset if they fail.
+            if (accuracy >= 80) {
+                currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
+            } else {
+                currentStep = 1; 
+            }
+
+            const daysToAdd = currentStep;
+            const nextDueTime = Date.now() + (daysToAdd * 24 * 60 * 60 * 1000);
+
+            updates[`${activeCourse}.revisions.${topic}`] = {
+                dueDate: nextDueTime,
+                intervalStep: currentStep,
+                lastAccuracy: accuracy,
+                status: "pending"
+            };
+        });
+
+        if (Object.keys(updates).length > 0) {
+            await updateDoc(userRef, updates, { merge: true });
+        }
+
+    } catch (error) {
+        console.error("Failed to update spaced repetition schedule:", error);
+    }
 }
 
 loadSession();
