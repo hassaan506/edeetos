@@ -351,6 +351,11 @@ function toggleSidebar(show) {
 function changeView(viewName, titleText) {
     currentView = viewName;
     activeCustomPool = null;
+    
+    // Save the user's location to browser memory
+    localStorage.setItem('edeetos_last_view', viewName);
+    localStorage.setItem('edeetos_last_title', titleText);
+
     if (viewTitle) viewTitle.textContent = titleText;
 
     document.querySelectorAll('.sidebar-links a').forEach(link => {
@@ -366,8 +371,8 @@ function changeView(viewName, titleText) {
     searchDropdown.style.display = 'none';
 
     if (viewName === 'book') {
-        subjectsGrid.innerHTML = ''; // Clear the grid
-        openBookSelectionPopup();    // Launch the popup instead
+        if (subjectsGrid) subjectsGrid.innerHTML = ''; 
+        openBookSelectionPopup();    
     } else {
         renderGrid();
     }
@@ -713,11 +718,13 @@ function getQuestionCount(view, pathArr, customPool = null) {
     return pool.filter(q => {
         if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
-        if (view === 'subject') {
+		if (view === 'subject') {
+            if (q.isBookQuestion) return false; // Keep books off the main grid
             if (paths[0] && q.Subject !== paths[0]) return false;
             if (paths[1] && q.Chapter !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
         } else if (view === 'system') {
+            if (q.isBookQuestion) return false; // Keep books off the system grid
             if (paths[0] && q.Chapter !== paths[0]) return false;
             if (paths[1] && q.Subject !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
@@ -740,7 +747,8 @@ function getQID(q) {
 }
 
 function getSolvedCount(view, pathArr) {
-    const attemptedPool = allQuestions.filter(q => attemptedQuestions.includes(getQID(q)));
+    const pool = activeCustomPool || allQuestions;
+    const attemptedPool = pool.filter(q => attemptedQuestions.includes(getQID(q)));
     return getQuestionCount(view, pathArr, attemptedPool);
 }
 
@@ -1109,8 +1117,9 @@ onAuthStateChanged(auth, async (user) => {
 
                 // 3. Now that we know their status, load and filter the CSV!
                 await loadDataAndBuildTree();
-
-                // 4. Update the UI Dashboards
+				await injectBooksGlobally(); // Inject book data for global analytics
+                
+				// 4. Update the UI Dashboards
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
                 const totalAttempts = solvedList.length + allMistakes.length;
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
@@ -1600,6 +1609,44 @@ weakPool = weakPool.sort(() => 0.5 - Math.random());
     // Launch quiz with a special title so the updater knows it was a revision
     window.launchQuiz(finalQuiz, 'practice', 0, `Revision: ${topicName}`);
 };
+async function injectBooksGlobally() {
+    for (const book of availableBooks) {
+        try {
+            const response = await fetch(`Books/${book.file}.csv`, { cache: 'force-cache' });
+            if (!response.ok) continue;
+            const csvText = await response.text();
+            
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (l of csvText) {
+                if ('"' === l) { if (s && l === p) row[i] += l; s = !s; }
+                else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) { if ('\r' === p) row[i] = row[i].slice(0, -1); row = ret[++r] = [l = '']; i = 0; }
+                else row[i] += l; p = l;
+            }
+            
+            const headers = ret[0].map(h => h ? h.trim() : "");
+            ret.slice(1).forEach((row, rowIndex) => {
+                if (row.length < 2) return;
+                let q = {};
+                headers.forEach((header, index) => { q[header] = row[index] ? row[index].trim() : ""; });
+                
+                // Ensure IDs match exactly how they are generated in the Book popup
+                if (!q.QuestionID && !q['Question ID'] && !q.ID && !q.id) {
+                    q.QuestionID = `${book.file}-q-${rowIndex + 1}`;
+                }
+                
+                q.isBookQuestion = true; // Tag it so it stays hidden from main grids
+                allQuestions.push(q);
+            });
+        } catch (error) {
+            console.warn(`Silently failed to load ${book.file} into global pool.`);
+        }
+    }
+}
 
 switchMode('practice');
 
+// Read memory and restore the last used section
+const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
+const lastTitle = localStorage.getItem('edeetos_last_title') || 'Subject Wise';
+changeView(lastView, lastTitle);
