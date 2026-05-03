@@ -831,8 +831,6 @@ function showResults() {
     const total = quizQueue.length;
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     
-	if (isExamMode) saveExamProgress(correctIds, mistakeIds, correctCount, total);
-	updateSpacedRepetition();
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
@@ -852,14 +850,27 @@ function showResults() {
         titleEl.innerHTML = `<i class="fas fa-times-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #ef4444;"></i> ❌ Failed`;
         titleEl.style.color = "#991b1b";
     }
+
+    // FIX: Override the hardcoded button to await saves before redirecting
+    const returnBtn = resultsEl.querySelector('button');
+    if (returnBtn) {
+        returnBtn.onclick = async (e) => {
+            e.preventDefault();
+            returnBtn.textContent = "Saving Exam Data...";
+            returnBtn.disabled = true;
+
+            if (isExamMode) await saveExamProgress(correctIds, mistakeIds, correctCount, total);
+            await updateSpacedRepetition();
+
+            window.location.href = 'questions.html';
+        };
+    }
 }
 
 // ==========================================
 // Custom Completion Modal
 // ==========================================
 function showPracticeCompleteModal(isGuest = false) {
-	updateSpacedRepetition();
-    // Prevent creating multiple modals if Firebase triggers this twice
     if (document.getElementById('practice-complete-modal')) return; 
 
     const modal = document.createElement('div');
@@ -873,14 +884,20 @@ function showPracticeCompleteModal(isGuest = false) {
         <i class="fas fa-check-circle" style="color: #10b981; font-size: 5rem; margin-bottom: 1.5rem;"></i>
         <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">${title}</h1>
         <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem;">${desc}</p>
-        <button id="btn-practice-home" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Return Home</button>
+        <button id="btn-practice-home" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Save & Return Home</button>
     `;
     
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 
-    // Wait for the user to click the button before redirecting
-    document.getElementById('btn-practice-home').addEventListener('click', () => {
+    // FIX: Await the save before allowing the browser to navigate away
+    document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
+        const btn = e.target;
+        btn.textContent = "Saving Progress...";
+        btn.disabled = true;
+        
+        await updateSpacedRepetition();
+        
         localStorage.removeItem('active_study_room');
         localStorage.removeItem('is_study_guest');
         window.location.href = 'questions.html';
@@ -1066,12 +1083,16 @@ if (globalExitBtn) {
 
 // --- SPACED REPETITION UPDATER ---
 async function updateSpacedRepetition() {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+    // 1. Guest check - Revisions don't work for guests
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+        console.log("Guest mode active: Skipping revisions.");
+        return;
+    }
     const user = auth.currentUser;
     if (!user) return;
 
-    // Isolate the topics from the current session
-    const topicsAttempted = [...new Set(quizQueue.map(q => q.Topic || q.Chapter).filter(Boolean))];
+    // 2. Safely grab topics
+    const topicsAttempted = [...new Set(quizQueue.map(q => q.Topic || q.Chapter || "General").filter(Boolean))];
     if (topicsAttempted.length === 0) return;
 
     let correctCount = 0;
@@ -1088,29 +1109,26 @@ async function updateSpacedRepetition() {
     
     try {
         const docSnap = await getDoc(userRef);
-        const dbData = docSnap.data();
+        const dbData = docSnap.data() || {};
         const currentRevisions = (dbData[activeCourse] && dbData[activeCourse].revisions) ? dbData[activeCourse].revisions : {};
         
-        let updates = {};
+        let revisionsData = {};
 
         topicsAttempted.forEach(topic => {
-            let currentStep = currentRevisions[topic] ? currentRevisions[topic].intervalStep : 0;
+            // FIX: Remove dots from topic names so Firestore doesn't crash
+            const cleanTopic = topic.replace(/\./g, '-'); 
+            let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
             
-            // Advance the interval if they score 80% or higher. Brutal reset if they fail.
             if (accuracy >= 80) {
                 currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
             } else {
                 currentStep = 1; 
             }
 
-            const daysToAdd = currentStep;
-            
-            // NOTE: Normal logic is Date.now() + (daysToAdd * 24 * 60 * 60 * 1000);
-            // I have changed this to subtract 10 seconds purely for testing so it shows up immediately.
-            // Change the minus (-) back to a plus (+) when you are done testing.
+            // TESTING ONLY: Subtract 10 seconds. Change this to a plus (+) when done testing!
             const nextDueTime = Date.now() - 10000; 
 
-            updates[`${activeCourse}.revisions.${topic}`] = {
+            revisionsData[cleanTopic] = {
                 dueDate: nextDueTime,
                 intervalStep: currentStep,
                 lastAccuracy: accuracy,
@@ -1118,10 +1136,14 @@ async function updateSpacedRepetition() {
             };
         });
 
-        if (Object.keys(updates).length > 0) {
-            // FIX: Removed { merge: true }. updateDoc merges natively.
-            await updateDoc(userRef, updates);
-        }
+        // FIX: Bulletproof save using setDoc with merge: true
+        await setDoc(userRef, {
+            [activeCourse]: {
+                revisions: revisionsData
+            }
+        }, { merge: true });
+        
+        console.log("Revisions successfully saved!");
 
     } catch (error) {
         console.error("Failed to update spaced repetition schedule:", error);
