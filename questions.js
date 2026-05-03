@@ -445,6 +445,13 @@ async function loadAndRenderBookChapters(book) {
             }
             bookQuestions.push(rowObj);
         });
+		
+		if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            bookQuestions = applyTierLimits(bookQuestions, 20);
+        } else if (!isPremiumUser) {
+            bookQuestions = applyTierLimits(bookQuestions, 50);
+        }		
+
 
         let tempBookTree = {};
         bookQuestions.forEach(q => {
@@ -551,33 +558,36 @@ function switchMode(mode) {
 // ==========================================
 // 5. QUESTION DISTRIBUTION ALGORITHM
 // ==========================================
-function applyTierLimits(rawQuestions, limitPerSubject) {
+// ==========================================
+// 5. QUESTION DISTRIBUTION ALGORITHM
+// ==========================================
+function applyTierLimits(rawQuestions, limitPerCategory) {
     let filteredList = [];
-    const questionsBySubject = {};
+    const questionsByCategory = {};
 
-    // Step 1: Group everything by Subject -> Topic
+    // Step 1: Group everything by Subject (or Chapter for books) -> Topic
     rawQuestions.forEach(q => {
-        const sub = q.Subject || "Uncategorized";
+        const cat = q.Subject || q.Chapter || "Uncategorized";
         const top = q.Topic || "General";
-        if (!questionsBySubject[sub]) questionsBySubject[sub] = {};
-        if (!questionsBySubject[sub][top]) questionsBySubject[sub][top] = [];
-        questionsBySubject[sub][top].push(q);
+        if (!questionsByCategory[cat]) questionsByCategory[cat] = {};
+        if (!questionsByCategory[cat][top]) questionsByCategory[cat][top] = [];
+        questionsByCategory[cat][top].push(q);
     });
 
-    // Step 2: Extract exactly the limit per subject, distributed evenly among topics
-    Object.keys(questionsBySubject).forEach(sub => {
-        const topics = Object.keys(questionsBySubject[sub]);
+    // Step 2: Extract exactly the limit per category, distributed evenly among topics
+    Object.keys(questionsByCategory).forEach(cat => {
+        const topics = Object.keys(questionsByCategory[cat]);
         const numTopics = topics.length;
 
-        const baseQuota = Math.floor(limitPerSubject / numTopics);
-        let remainder = limitPerSubject % numTopics;
+        const baseQuota = Math.floor(limitPerCategory / numTopics);
+        let remainder = limitPerCategory % numTopics;
 
         topics.forEach(top => {
             const quota = baseQuota + (remainder > 0 ? 1 : 0);
             if (remainder > 0) remainder--;
 
             // Grab the allowed number of questions from this topic
-            filteredList.push(...questionsBySubject[sub][top].slice(0, quota));
+            filteredList.push(...questionsByCategory[cat][top].slice(0, quota));
         });
     });
 
@@ -684,17 +694,18 @@ function buildSubTree(pool) {
         const Chapter = q.Chapter || "";
         const Topic = q.Topic || "";
 
-        if (currentView === 'subject') {
+        if (q.isBookQuestion) {
+            if (!tree["Books"]) tree["Books"] = {};
+            if (!tree["Books"][Subject]) tree["Books"][Subject] = {}; 
+            if (Chapter) {
+                if (!tree["Books"][Subject][Chapter]) tree["Books"][Subject][Chapter] = [];
+                if (Topic && !tree["Books"][Subject][Chapter].includes(Topic)) tree["Books"][Subject][Chapter].push(Topic);
+            }
+        } else {
             if (!tree[Subject]) tree[Subject] = {};
             if (Chapter) {
                 if (!tree[Subject][Chapter]) tree[Subject][Chapter] = [];
                 if (Topic && !tree[Subject][Chapter].includes(Topic)) tree[Subject][Chapter].push(Topic);
-            }
-        } else if (currentView === 'system') {
-            if (Chapter && Chapter.toLowerCase().includes('system')) {
-                if (!tree[Chapter]) tree[Chapter] = {};
-                if (!tree[Chapter][Subject]) tree[Chapter][Subject] = [];
-                if (Topic && !tree[Chapter][Subject].includes(Topic)) tree[Chapter][Subject].push(Topic);
             }
         }
     });
@@ -715,29 +726,49 @@ function getQuestionCount(view, pathArr, customPool = null) {
 
     if (paths.length === 0) return pool.filter(q => !unattemptedFilter.checked || !attemptedQuestions.includes(getQID(q))).length;
 
+    // Detect if we are rendering counts inside a Global Custom Pool popup
+    const isGlobalPool = activeCustomPool && 
+        (popupTitle.textContent.includes("Bookmarks") || popupTitle.textContent.includes("Review Mistakes"));
+
     return pool.filter(q => {
         if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
-		if (view === 'subject') {
-            if (q.isBookQuestion) return false; // Keep books off the main grid
+        // Force standard Subject grouping logic for Mistakes and Bookmarks
+		if (isGlobalPool) {
+            if (paths[0] === "Books") {
+                if (!q.isBookQuestion) return false;
+                if (paths[1] && q.Subject !== paths[1]) return false;
+                if (paths[2] && q.Chapter !== paths[2]) return false;
+                if (paths[3] && q.Topic !== paths[3]) return false;
+                return true;
+            } else {
+                if (q.isBookQuestion) return false;
+                const Subject = q.Subject || "Uncategorized";
+                if (paths[0] && Subject !== paths[0]) return false;
+                if (paths[1] && q.Chapter !== paths[1]) return false;
+                if (paths[2] && q.Topic !== paths[2]) return false;
+                return true;
+
+        if (view === 'subject') {
+            if (q.isBookQuestion) return false; // Keep books off the main subject grid
             if (paths[0] && q.Subject !== paths[0]) return false;
             if (paths[1] && q.Chapter !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
         } else if (view === 'system') {
-            if (q.isBookQuestion) return false; // Keep books off the system grid
+            if (q.isBookQuestion) return false; 
             if (paths[0] && q.Chapter !== paths[0]) return false;
             if (paths[1] && q.Subject !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
-		} else if (view === 'exam') {
+        } else if (view === 'exam') {
             const qYear = q.Year || "Other Years";
             if (paths[0] && qYear !== paths[0]) return false;
             if (paths[1] && q.Exam !== paths[1]) return false;
             if (paths[2] && q.Subject !== paths[2]) return false;
             if (paths[3] && q.Topic !== paths[3]) return false;
         } else if (view === 'book') {
-			if (paths[0] && q.Chapter !== paths[0]) return false;
-			if (paths[1] && q.Topic !== paths[1]) return false;
-		}
+            if (paths[0] && q.Chapter !== paths[0]) return false;
+            if (paths[1] && q.Topic !== paths[1]) return false;
+        }
         return true;
     }).length;
 }
@@ -842,7 +873,11 @@ async function loadAndOpenBook(book) {
             }
             bookQuestions.push(rowObj);
         });
-
+		if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            bookQuestions = applyTierLimits(bookQuestions, 20);
+        } else if (!isPremiumUser) {
+            bookQuestions = applyTierLimits(bookQuestions, 50);
+        }
         let tempBookTree = {};
         bookQuestions.forEach(q => {
             const chapter = q.Chapter || "Uncategorized";
@@ -1609,6 +1644,7 @@ weakPool = weakPool.sort(() => 0.5 - Math.random());
     // Launch quiz with a special title so the updater knows it was a revision
     window.launchQuiz(finalQuiz, 'practice', 0, `Revision: ${topicName}`);
 };
+
 async function injectBooksGlobally() {
     for (const book of availableBooks) {
         try {
@@ -1625,19 +1661,30 @@ async function injectBooksGlobally() {
             }
             
             const headers = ret[0].map(h => h ? h.trim() : "");
+            let tempBookQs = [];
+            
             ret.slice(1).forEach((row, rowIndex) => {
                 if (row.length < 2) return;
                 let q = {};
                 headers.forEach((header, index) => { q[header] = row[index] ? row[index].trim() : ""; });
                 
-                // Ensure IDs match exactly how they are generated in the Book popup
                 if (!q.QuestionID && !q['Question ID'] && !q.ID && !q.id) {
                     q.QuestionID = `${book.file}-q-${rowIndex + 1}`;
                 }
                 
-                q.isBookQuestion = true; // Tag it so it stays hidden from main grids
-                allQuestions.push(q);
+                q.isBookQuestion = true; 
+                q.Subject = book.title; // Assign book title as Subject so it categorizes perfectly
+                tempBookQs.push(q);
             });
+
+            // Enforce Tier Limits
+            if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+                tempBookQs = applyTierLimits(tempBookQs, 20);
+            } else if (!isPremiumUser) {
+                tempBookQs = applyTierLimits(tempBookQs, 50);
+            }
+
+            allQuestions.push(...tempBookQs);
         } catch (error) {
             console.warn(`Silently failed to load ${book.file} into global pool.`);
         }
