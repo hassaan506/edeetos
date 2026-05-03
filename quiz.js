@@ -1017,33 +1017,53 @@ document.addEventListener("keyup", (e) => {
 });
 
 // ==========================================
-// 8. GROUP STUDY: LEAVE LOGIC
+// 8. EXIT LOGIC (Solo & Group Study)
 // ==========================================
-const exitBtn = document.querySelector('.exit-btn');
-if (activeRoomId && exitBtn) {
-    exitBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Leave Room';
-    exitBtn.style.color = '#ef4444';
-    exitBtn.style.borderColor = '#ef4444';
-    
-    exitBtn.onclick = async (e) => {
+const globalExitBtn = document.getElementById('global-exit-btn');
+
+if (globalExitBtn) {
+    // If it's a multiplayer room, style it differently
+    if (activeRoomId) {
+        globalExitBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Leave Room';
+        globalExitBtn.style.color = '#ef4444';
+        globalExitBtn.style.borderColor = '#ef4444';
+    }
+
+    globalExitBtn.onclick = async (e) => {
         e.preventDefault();
-        if (!confirm("Are you sure you want to leave the study group?")) return;
-        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+        
+        // If it's multiplayer, ask for confirmation
+        if (activeRoomId && !confirm("Are you sure you want to leave the study group?")) {
+            return;
+        }
+
+        globalExitBtn.textContent = "Saving...";
+        globalExitBtn.disabled = true;
 
         try {
-            if (!isGuest) {
-                await updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() });
-            } else {
-                await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
+            // 1. Always save spaced repetition progress first
+            await updateSpacedRepetition();
+
+            // 2. Handle multiplayer teardown if applicable
+            if (activeRoomId) {
+                const isGuest = localStorage.getItem('is_study_guest') === 'true';
+                if (!isGuest) {
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() });
+                } else {
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
+                }
             }
-        } catch (error) { console.error("Error leaving room:", error); } 
-        finally {
+        } catch (error) { 
+            console.error("Error during exit sequence:", error); 
+        } finally {
+            // 3. Clear memory and redirect
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
             window.location.href = 'questions.html';
         }
     };
 }
+
 // --- SPACED REPETITION UPDATER ---
 async function updateSpacedRepetition() {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
@@ -1084,7 +1104,11 @@ async function updateSpacedRepetition() {
             }
 
             const daysToAdd = currentStep;
-            const nextDueTime = Date.now() + (daysToAdd * 24 * 60 * 60 * 1000);
+            
+            // NOTE: Normal logic is Date.now() + (daysToAdd * 24 * 60 * 60 * 1000);
+            // I have changed this to subtract 10 seconds purely for testing so it shows up immediately.
+            // Change the minus (-) back to a plus (+) when you are done testing.
+            const nextDueTime = Date.now() - 10000; 
 
             updates[`${activeCourse}.revisions.${topic}`] = {
                 dueDate: nextDueTime,
@@ -1095,7 +1119,8 @@ async function updateSpacedRepetition() {
         });
 
         if (Object.keys(updates).length > 0) {
-            await updateDoc(userRef, updates, { merge: true });
+            // FIX: Removed { merge: true }. updateDoc merges natively.
+            await updateDoc(userRef, updates);
         }
 
     } catch (error) {
