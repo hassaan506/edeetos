@@ -734,7 +734,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
         if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
         // Force standard Subject grouping logic for Mistakes and Bookmarks
-		if (isGlobalPool) {
+        if (isGlobalPool) {
             if (paths[0] === "Books") {
                 if (!q.isBookQuestion) return false;
                 if (paths[1] && q.Subject !== paths[1]) return false;
@@ -748,6 +748,8 @@ function getQuestionCount(view, pathArr, customPool = null) {
                 if (paths[1] && q.Chapter !== paths[1]) return false;
                 if (paths[2] && q.Topic !== paths[2]) return false;
                 return true;
+            }
+        }
 
         if (view === 'subject') {
             if (q.isBookQuestion) return false; // Keep books off the main subject grid
