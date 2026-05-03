@@ -1227,11 +1227,12 @@ onAuthStateChanged(auth, async (user) => {
                     revisionContainer.innerHTML = '';
                 }
                 // --- END SPACED REPETITION UI ---
-                const btnMistakes = document.getElementById('btn-practice-mistakes');
+				const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
                     btnMistakes.style.cursor = "pointer";
-					isGlobalPopupActive = true;
+                    btnMistakes.onclick = () => {
+                        isGlobalPopupActive = true;
                         const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)));
                         const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)));
 
