@@ -21,6 +21,7 @@ let globalBookmarks = [];
 let activeCustomPool = null;
 let isPremiumUser = false;
 let currentUserRole = "STUDENT";
+let isGlobalPopupActive = false;
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -332,8 +333,8 @@ popupBack.onclick = () => {
     openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
 };
 
-popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; };
-popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; } }
+popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; isGlobalPopupActive = false; };
+popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; isGlobalPopupActive = false; } }
 
 // ==========================================
 // 4. CORE FUNCTIONS
@@ -351,7 +352,7 @@ function toggleSidebar(show) {
 function changeView(viewName, titleText) {
     currentView = viewName;
     activeCustomPool = null;
-    
+    isGlobalPopupActive = false;
     // Save the user's location to browser memory
     localStorage.setItem('edeetos_last_view', viewName);
     localStorage.setItem('edeetos_last_title', titleText);
@@ -451,7 +452,10 @@ async function loadAndRenderBookChapters(book) {
         } else if (!isPremiumUser) {
             bookQuestions = applyTierLimits(bookQuestions, 50);
         }		
-
+		bookQuestions.forEach(q => {
+            q.isBookQuestion = true;
+            q.Subject = book.title;
+        });
 
         let tempBookTree = {};
         bookQuestions.forEach(q => {
@@ -724,17 +728,16 @@ function getQuestionCount(view, pathArr, customPool = null) {
         paths.shift();
     }
 
-    if (paths.length === 0) return pool.filter(q => !unattemptedFilter.checked || !attemptedQuestions.includes(getQID(q))).length;
-
-    // Detect if we are rendering counts inside a Global Custom Pool popup
-    const isGlobalPool = activeCustomPool && 
-        (popupTitle.textContent.includes("Bookmarks") || popupTitle.textContent.includes("Review Mistakes"));
+    if (paths.length === 0) {
+        return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || !attemptedQuestions.includes(getQID(q))).length;
+    }
 
     return pool.filter(q => {
-        if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+        // Ignore the global unattempted filter inside Mistakes/Bookmarks
+        if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
         // Force standard Subject grouping logic for Mistakes and Bookmarks
-        if (isGlobalPool) {
+        if (isGlobalPopupActive) {
             if (paths[0] === "Books") {
                 if (!q.isBookQuestion) return false;
                 if (paths[1] && q.Subject !== paths[1]) return false;
@@ -748,11 +751,11 @@ function getQuestionCount(view, pathArr, customPool = null) {
                 if (paths[1] && q.Chapter !== paths[1]) return false;
                 if (paths[2] && q.Topic !== paths[2]) return false;
                 return true;
-            }
+            } 
         }
 
         if (view === 'subject') {
-            if (q.isBookQuestion) return false; // Keep books off the main subject grid
+            if (q.isBookQuestion) return false; 
             if (paths[0] && q.Subject !== paths[0]) return false;
             if (paths[1] && q.Chapter !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
@@ -880,6 +883,10 @@ async function loadAndOpenBook(book) {
         } else if (!isPremiumUser) {
             bookQuestions = applyTierLimits(bookQuestions, 50);
         }
+		bookQuestions.forEach(q => {
+            q.isBookQuestion = true;
+            q.Subject = book.title;
+        });
         let tempBookTree = {};
         bookQuestions.forEach(q => {
             const chapter = q.Chapter || "Uncategorized";
@@ -989,11 +996,19 @@ function renderListItem(itemName, nextData, level, itemPath) {
     labelDiv.style.flexGrow = '1';
 
     const qCount = getQuestionCount(currentView, itemPath);
-    const doneCount = getSolvedCount(currentView, itemPath);
-    const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+    
+    let countHtml = '';
+    let progressHtml = '';
 
-    const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
-    const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
+    if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
+        // Clean, neutral badge for Mistakes and Bookmarks (No confusing progress bars)
+        countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
+    } else if (currentMode === 'practice') {
+        const doneCount = getSolvedCount(currentView, itemPath);
+        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+        countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+        progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+    }
 
     labelDiv.innerHTML = `
         <div class="card-header-flex">
@@ -1021,10 +1036,10 @@ function renderListItem(itemName, nextData, level, itemPath) {
             actionBtn.onclick = () => {
                 const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
 
-				let launchTitle = itemName;
-				if (activeCustomPool && itemName !== "⭐ Bookmarks" && currentView !== 'book') {
-					launchTitle = "Review Mistakes";
-				}
+                let launchTitle = itemName;
+                if (activeCustomPool && itemName !== "⭐ Bookmarks" && currentView !== 'book') {
+                    launchTitle = "Review Mistakes";
+                }
 
                 window.launchQuiz(pool, 'practice', 0, launchTitle);
             };
@@ -1216,7 +1231,7 @@ onAuthStateChanged(auth, async (user) => {
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
                     btnMistakes.style.cursor = "pointer";
-                    btnMistakes.onclick = () => {
+					isGlobalPopupActive = true;
                         const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)));
                         const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)));
 
@@ -1234,6 +1249,7 @@ onAuthStateChanged(auth, async (user) => {
                     btnBookmarks.disabled = false;
                     btnBookmarks.style.cursor = "pointer";
                     btnBookmarks.onclick = () => {
+						isGlobalPopupActive = true;
                         const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)));
                         activeCustomPool = bPool;
                         openPopup("⭐ Bookmarks", buildSubTree(bPool), 'Level1', []);
