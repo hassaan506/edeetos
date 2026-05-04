@@ -442,3 +442,66 @@
     .exam-action-bar input[type="number"] { width: 80px; }
     .exam-action-bar .start-btn { width: 100%; margin-top: 0.5rem; }
 }
+
+/* ========================================== */
+/* 9. SPACED REPETITION UI                    */
+/* ========================================== */
+#spaced-repetition-container {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: block;
+    clear: both;
+}
+
+.revision-card {
+    background: #fffbeb;
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.revision-card h3 {
+    color: #b45309;
+    margin: 0;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.revision-card p {
+    color: #92400e;
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+
+.revision-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.revision-btn {
+    background: #f59e0b;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.revision-btn:hover {
+    background: #d97706;
+}

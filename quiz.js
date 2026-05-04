@@ -1083,16 +1083,14 @@ if (globalExitBtn) {
 
 // --- SPACED REPETITION UPDATER ---
 async function updateSpacedRepetition() {
-    // 1. Guest check - Revisions don't work for guests
     if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        console.log("Guest mode active: Skipping revisions.");
         return;
     }
     const user = auth.currentUser;
     if (!user) return;
 
-    // 2. Safely grab topics
-    const topicsAttempted = [...new Set(quizQueue.map(q => q.Topic || q.Chapter || "General").filter(Boolean))];
+    // FIX 1: Look at Topic, then Chapter, then Subject before defaulting to General
+    const topicsAttempted = [...new Set(quizQueue.map(q => q.Topic || q.Chapter || q.Subject || "General").filter(Boolean))];
     if (topicsAttempted.length === 0) return;
 
     let correctCount = 0;
@@ -1115,9 +1113,7 @@ async function updateSpacedRepetition() {
         let revisionsData = {};
 
         topicsAttempted.forEach(topic => {
-            // FIX: Remove dots from topic names so Firestore doesn't crash
-            const cleanTopic = topic.replace(/\./g, '-'); 
-            let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
+            let currentStep = currentRevisions[topic] ? currentRevisions[topic].intervalStep : 0;
             
             if (accuracy >= 80) {
                 currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
@@ -1125,10 +1121,10 @@ async function updateSpacedRepetition() {
                 currentStep = 1; 
             }
 
-            // TESTING ONLY: Subtract 10 seconds. Change this to a plus (+) when done testing!
+            // TESTING ONLY: Set to trigger immediately.
             const nextDueTime = Date.now() - 10000; 
 
-            revisionsData[cleanTopic] = {
+            revisionsData[topic] = {
                 dueDate: nextDueTime,
                 intervalStep: currentStep,
                 lastAccuracy: accuracy,
@@ -1136,14 +1132,12 @@ async function updateSpacedRepetition() {
             };
         });
 
-        // FIX: Bulletproof save using setDoc with merge: true
+        // FIX 2: Deep object merge. This safely handles names with dots/spaces.
         await setDoc(userRef, {
             [activeCourse]: {
                 revisions: revisionsData
             }
         }, { merge: true });
-        
-        console.log("Revisions successfully saved!");
 
     } catch (error) {
         console.error("Failed to update spaced repetition schedule:", error);

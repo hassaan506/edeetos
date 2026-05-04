@@ -1185,7 +1185,6 @@ onAuthStateChanged(auth, async (user) => {
                 const now = Date.now();
                 const dueTopics = [];
 
-                // Filter for topics that are due
                 Object.keys(revisions).forEach(topic => {
                     if (revisions[topic].dueDate <= now && revisions[topic].status !== 'missed') {
                         dueTopics.push({ topic: topic, step: revisions[topic].intervalStep });
@@ -1196,23 +1195,19 @@ onAuthStateChanged(auth, async (user) => {
 
                 if (dueTopics.length > 0 && revisionContainer) {
                     const revisionCard = document.createElement('div');
-                    revisionCard.className = 'glass-panel';
-                    revisionCard.style.border = '2px solid #f59e0b';
-                    revisionCard.style.backgroundColor = '#fffbeb';
-                    revisionCard.style.marginBottom = '2rem';
+                    revisionCard.className = 'revision-card'; // Using the new CSS class
                     
                     let revHtml = `
-                        <h3 style="color: #b45309; margin-bottom: 10px; margin-top: 0;">
-                            <i class="fas fa-sync-alt"></i> Due for Revision (${dueTopics.length})
-                        </h3>
-                        <p style="font-size: 0.9rem; color: #92400e; margin-bottom: 15px;">Review these topics now to optimize memory retention.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <h3><i class="fas fa-sync-alt"></i> Due for Revision (${dueTopics.length})</h3>
+                        <p>Review these topics now to optimize memory retention.</p>
+                        <div class="revision-btn-group">
                     `;
 
                     dueTopics.forEach(item => {
+                        // Safely escape single quotes in topic names
+                        const safeTopic = item.topic.replace(/'/g, "\\'");
                         revHtml += `
-                            <button class="btn-solid mini-btn" style="background: #f59e0b; border: none; color: white; cursor: pointer; padding: 8px 15px; border-radius: 8px; font-weight: bold;" 
-                                    onclick="window.generateRevisionQuiz('${item.topic}')">
+                            <button class="revision-btn" onclick="window.generateRevisionQuiz('${safeTopic}')">
                                 ${item.topic} (Day ${item.step})
                             </button>
                         `;
@@ -1616,7 +1611,8 @@ if (journeyModal) {
 }
 // --- SPACED REPETITION GENERATOR ---
 window.generateRevisionQuiz = function(topicName) {
-    const topicPool = allQuestions.filter(q => q.Topic === topicName || q.Chapter === topicName);
+    // FIX 3: Add q.Subject to the filter criteria
+    const topicPool = allQuestions.filter(q => q.Topic === topicName || q.Chapter === topicName || q.Subject === topicName);
 
     if (topicPool.length === 0) return alert("No questions available for this topic.");
 
@@ -1634,23 +1630,16 @@ window.generateRevisionQuiz = function(topicName) {
         }
     });
 
-weakPool = weakPool.sort(() => 0.5 - Math.random());
+    weakPool = weakPool.sort(() => 0.5 - Math.random());
     strongPool = strongPool.sort(() => 0.5 - Math.random());
 
-    // Calculate dynamic quiz size based on actual performance
-    // Grab up to 35 weak questions. If they have more than 35 mistakes, save them for the next interval.
     const targetWeak = Math.min(weakPool.length, 35);
-
-    // Keep the ratio tight. Strong questions should be roughly 40% of whatever the weak count is.
-    // Minimum 5 strong questions just to prevent them from feeling like they are failing everything.
     const targetStrong = targetWeak > 0 ? Math.max(Math.floor(targetWeak * 0.4), 5) : 15;
 
     let finalQuiz = [];
     finalQuiz.push(...weakPool.slice(0, targetWeak));
     finalQuiz.push(...strongPool.slice(0, targetStrong));
 
-    // If they have almost no mistakes (e.g., 2 weak questions), pad the quiz with strong questions 
-    // up to a minimum floor of 15 questions so it still feels like a real revision session.
     if (finalQuiz.length < 15) {
         const remainingStrong = strongPool.slice(targetStrong);
         finalQuiz.push(...remainingStrong.slice(0, 15 - finalQuiz.length));
@@ -1660,7 +1649,6 @@ weakPool = weakPool.sort(() => 0.5 - Math.random());
 
     if (finalQuiz.length === 0) return alert("Not enough data to generate a revision.");
 
-    // Launch quiz with a special title so the updater knows it was a revision
     window.launchQuiz(finalQuiz, 'practice', 0, `Revision: ${topicName}`);
 };
 
