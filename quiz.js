@@ -1139,7 +1139,7 @@ async function updateSpacedRepetition() {
             }
 
             // Production Math: Pushes the due date into the future.
-            const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
+            const nextDueTime = Date.now() - 10000;
 
             revisionsData[cleanTopic] = {
                 dueDate: nextDueTime,
