@@ -1090,29 +1090,21 @@ async function updateSpacedRepetition() {
     const user = auth.currentUser;
     if (!user) return;
 
-    // 1. DYNAMIC CONTEXT: Grab the exact name of the session you started
-    let targetRevisionName = quizConfig.examName;
-
-    // If you are taking a generated revision quiz, strip the prefix to update the original name
-    if (targetRevisionName && targetRevisionName.startsWith("Revision: ")) {
-        targetRevisionName = targetRevisionName.replace("Revision: ", "");
+    let targetName = quizConfig.examName;
+    if (!targetName) targetName = "General";
+    if (targetName.startsWith("Revision: ")) {
+        targetName = targetName.replace("Revision: ", "");
     }
 
-    // 2. SMART FALLBACK: If it's a mixed exam or mistakes, extract individual topics instead
-    const invalidNames = ["Practice Session", "Review Mistakes", "Custom Exam"];
     let topicsAttempted = [];
+    const genericNames = ["Practice Session", "Review Mistakes", "Custom Exam"];
 
-    if (!targetRevisionName || invalidNames.includes(targetRevisionName)) {
-        const getRevisionName = (q) => {
-            if (q.Topic && q.Topic.toLowerCase() !== 'general') return q.Topic;
-            if (q.Chapter && q.Chapter.toLowerCase() !== 'general') return q.Chapter;
-            if (q.Subject && q.Subject.toLowerCase() !== 'general') return q.Subject;
-            return "General";
-        };
-        topicsAttempted = [...new Set(quizQueue.map(getRevisionName).filter(Boolean))];
+    if (genericNames.includes(targetName)) {
+        // Group by the highest logical tier available to prevent topic fragmentation
+        topicsAttempted = [...new Set(quizQueue.map(q => q.Subject || q.Chapter || q.Topic).filter(Boolean))];
     } else {
-        // Use the exact Subject, Chapter, or Topic you clicked in the UI
-        topicsAttempted = [targetRevisionName];
+        // Force the system to use the EXACT button you clicked (e.g., "Histology")
+        topicsAttempted = [targetName];
     }
 
     if (topicsAttempted.length === 0) return;
@@ -1140,14 +1132,13 @@ async function updateSpacedRepetition() {
             const cleanTopic = topic.replace(/\./g, '-'); 
             let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
             
-            // Advance the interval if they score 80% or higher. Reset if they fail.
             if (accuracy >= 80) {
                 currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
             } else {
                 currentStep = 1; 
             }
 
-            // PRODUCTION TIME MATH: Pushes the due date into the future based on currentStep
+            // Production Math: Pushes the due date into the future.
             const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
 
             revisionsData[cleanTopic] = {
