@@ -190,7 +190,7 @@ function formatCSVQuestion(rawCsvRow) {
         }
     });
     
-	const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
+    const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
 
     return {
         text: rawCsvRow.Question || rawCsvRow.question || "Missing Question Text",
@@ -202,7 +202,10 @@ function formatCSVQuestion(rawCsvRow) {
         sessionState: rawCsvRow.sessionState || null,
         historicalState: rawCsvRow.historicalState || null,
         hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
-        userSelectedAnswer: rawCsvRow.userSelectedAnswer || null
+        userSelectedAnswer: rawCsvRow.userSelectedAnswer || null,
+        Subject: rawCsvRow.Subject || "",
+        Chapter: rawCsvRow.Chapter || "",
+        Topic: rawCsvRow.Topic || ""
     };	
 }
 
