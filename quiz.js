@@ -1132,14 +1132,14 @@ async function updateSpacedRepetition() {
             const cleanTopic = topic.replace(/\./g, '-'); 
             let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
             
-            if (accuracy >= 80) {
+            if (accuracy >= 75) {
                 currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
             } else {
                 currentStep = 1; 
             }
 
             // Production Math: Pushes the due date into the future.
-            const nextDueTime = Date.now() - 10000;
+            const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
 
             revisionsData[cleanTopic] = {
                 dueDate: nextDueTime,
