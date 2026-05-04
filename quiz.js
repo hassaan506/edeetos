@@ -1086,14 +1086,18 @@ if (globalExitBtn) {
 
 // --- SPACED REPETITION UPDATER ---
 async function updateSpacedRepetition() {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        return;
-    }
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return;
 
-    // FIX 1: Look at Topic, then Chapter, then Subject before defaulting to General
-    const topicsAttempted = [...new Set(quizQueue.map(q => q.Topic || q.Chapter || q.Subject || "General").filter(Boolean))];
+    // SMART EXTRACTOR: Ignores "General" and prioritizes the most meaningful name
+    const getRevisionName = (q) => {
+        if (q.Topic && q.Topic.toLowerCase() !== 'general') return q.Topic;
+        if (q.Chapter && q.Chapter.toLowerCase() !== 'general') return q.Chapter;
+        return q.Subject || "General";
+    };
+
+    const topicsAttempted = [...new Set(quizQueue.map(getRevisionName).filter(Boolean))];
     if (topicsAttempted.length === 0) return;
 
     let correctCount = 0;
@@ -1116,7 +1120,8 @@ async function updateSpacedRepetition() {
         let revisionsData = {};
 
         topicsAttempted.forEach(topic => {
-            let currentStep = currentRevisions[topic] ? currentRevisions[topic].intervalStep : 0;
+            const cleanTopic = topic.replace(/\./g, '-'); 
+            let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
             
             if (accuracy >= 80) {
                 currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
@@ -1124,10 +1129,9 @@ async function updateSpacedRepetition() {
                 currentStep = 1; 
             }
 
-            // TESTING ONLY: Set to trigger immediately.
-            const nextDueTime = Date.now() - 10000; 
+            const nextDueTime = Date.now() - 10000; // Testing hack
 
-            revisionsData[topic] = {
+            revisionsData[cleanTopic] = {
                 dueDate: nextDueTime,
                 intervalStep: currentStep,
                 lastAccuracy: accuracy,
@@ -1135,7 +1139,6 @@ async function updateSpacedRepetition() {
             };
         });
 
-        // FIX 2: Deep object merge. This safely handles names with dots/spaces.
         await setDoc(userRef, {
             [activeCourse]: {
                 revisions: revisionsData

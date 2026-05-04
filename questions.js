@@ -1477,7 +1477,8 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
                     [`${activeCourse}.mistakes`]: [],
                     [`${activeCourse}.examMistakes`]: [],
                     [`${activeCourse}.bookmarks`]: [],
-                    [`${activeCourse}.examHistory`]: []
+                    [`${activeCourse}.examHistory`]: [],
+                    [`${activeCourse}.revisions`]: {} // KILLS GHOST REVISIONS
                 };
                 pendingResetMsg = "All progress has been fully reset!";
                 confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course? This cannot be undone.";
@@ -1609,9 +1610,9 @@ if (journeyModal) {
         if (e.target === journeyModal) journeyModal.style.display = 'none';
     };
 }
+
 // --- SPACED REPETITION GENERATOR ---
 window.generateRevisionQuiz = function(topicName) {
-    // FIX 3: Add q.Subject to the filter criteria
     const topicPool = allQuestions.filter(q => q.Topic === topicName || q.Chapter === topicName || q.Subject === topicName);
 
     if (topicPool.length === 0) return alert("No questions available for this topic.");
@@ -1633,16 +1634,22 @@ window.generateRevisionQuiz = function(topicName) {
     weakPool = weakPool.sort(() => 0.5 - Math.random());
     strongPool = strongPool.sort(() => 0.5 - Math.random());
 
-    const targetWeak = Math.min(weakPool.length, 35);
-    const targetStrong = targetWeak > 0 ? Math.max(Math.floor(targetWeak * 0.4), 5) : 15;
-
     let finalQuiz = [];
-    finalQuiz.push(...weakPool.slice(0, targetWeak));
-    finalQuiz.push(...strongPool.slice(0, targetStrong));
 
-    if (finalQuiz.length < 15) {
-        const remainingStrong = strongPool.slice(targetStrong);
-        finalQuiz.push(...remainingStrong.slice(0, 15 - finalQuiz.length));
+    // FAILSAFE: If history was wiped but the user clicked the button anyway
+    if (weakPool.length === 0 && strongPool.length === 0) {
+        finalQuiz = topicPool.sort(() => 0.5 - Math.random()).slice(0, 15);
+    } else {
+        const targetWeak = Math.min(weakPool.length, 35);
+        const targetStrong = targetWeak > 0 ? Math.max(Math.floor(targetWeak * 0.4), 5) : 15;
+
+        finalQuiz.push(...weakPool.slice(0, targetWeak));
+        finalQuiz.push(...strongPool.slice(0, targetStrong));
+
+        if (finalQuiz.length < 15) {
+            const remainingStrong = strongPool.slice(targetStrong);
+            finalQuiz.push(...remainingStrong.slice(0, 15 - finalQuiz.length));
+        }
     }
 
     finalQuiz = finalQuiz.sort(() => 0.5 - Math.random());
