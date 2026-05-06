@@ -917,7 +917,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (currentMode === 'practice') {
         const fullCount = getQuestionCount(currentView, pathArr);
         const practiceAllDiv = document.createElement('div');
-        practiceAllDiv.className = 'list-item';
+        practiceAllDiv.className = 'list-item hero-item';
         practiceAllDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
         practiceAllDiv.style.border = '1px solid #10b981';
 
@@ -943,7 +943,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
 
     if (currentMode === 'exam') {
         const selectAllDiv = document.createElement('div');
-        selectAllDiv.className = 'list-item';
+        selectAllDiv.className = 'list-item hero-item';
         selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
         selectAllDiv.style.border = '1px solid #3b82f6';
 
