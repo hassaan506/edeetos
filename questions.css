@@ -248,7 +248,7 @@
     padding: 1.2rem; /* Reduced outer padding slightly */
     overflow-y: auto;
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); 
     gap: 0.8rem;
     align-items: stretch; 
 }
@@ -258,7 +258,7 @@
     flex-direction: column; 
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0.8rem; /* Reduced from 1.2rem to make the card more compact */
+    padding: 1rem; /* Reduced from 1.2rem to make the card more compact */
     background: #ffffff;
     border-radius: 10px;
     border: 1px solid #e2e8f0;
@@ -304,12 +304,25 @@
 
 /* --- HERO ITEM (Practice Full / Select All) --- */
 .hero-item {
-    grid-column: 1 / -1; /* Forces the item to span across all available columns */
-    justify-self: center; /* Centers the item horizontally in the row */
-    width: 100%;
-    max-width: 350px; /* Prevents it from stretching across the entire screen */
-    border-width: 2px; /* Makes it pop a little more than the regular cards */
-    margin-bottom: 0.5rem; /* Adds a little breathing room before the grid starts */
+    grid-column: 1 / -1; /* Spans entirely across all available columns */
+    width: 100%; /* Stretches to fill the space without leaving gaps */
+    border-width: 2px;
+    margin-bottom: 0.5rem;
+    flex-direction: row; /* Flips this specific card back to horizontal */
+    align-items: center; /* Centers the text and button perfectly */
+}
+
+/* Stops the text from stretching too far */
+.hero-item > div:first-child {
+    width: auto;
+    flex-grow: 1;
+}
+
+/* Prevents the button from becoming massive when the card stretches */
+.hero-item button, 
+.hero-item .mini-btn {
+    width: auto; 
+    padding: 0.6rem 2rem;
 }
 
 /* ========================================== */
