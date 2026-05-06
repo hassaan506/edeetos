@@ -245,28 +245,26 @@
 .icon-btn:hover { color: #10b981; }
 
 .popup-body {
-    padding: 1.5rem;
+    padding: 1.2rem; /* Reduced outer padding slightly */
     overflow-y: auto;
-    display: grid; /* Changed from flex to grid */
-    /* This creates responsive columns that are at least 220px wide */
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-    gap: 1rem;
-    align-items: stretch; /* Ensures all cards in a row are the same height */
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 0.8rem;
+    align-items: stretch; 
 }
 
-/* Ensure list items look like sleek vertical cards */
 .list-item {
     display: flex;
-    flex-direction: column; /* Stacks the title and button vertically */
+    flex-direction: column; 
     justify-content: space-between;
     align-items: flex-start;
-    padding: 1.2rem;
+    padding: 0.8rem; /* Reduced from 1.2rem to make the card more compact */
     background: #ffffff;
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     transition: all 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    gap: 1rem; /* Adds space between text and the button */
+    gap: 0.6rem; /* Tighter gap between the title and the button */
 }
 
 .list-item:hover {
