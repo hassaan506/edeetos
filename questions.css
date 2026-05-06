@@ -247,36 +247,61 @@
 .popup-body {
     padding: 1.5rem;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    display: grid; /* Changed from flex to grid */
+    /* This creates responsive columns that are at least 220px wide */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
     gap: 1rem;
+    align-items: stretch; /* Ensures all cards in a row are the same height */
 }
 
-/* Ensure list items look like sleek cards */
+/* Ensure list items look like sleek vertical cards */
 .list-item {
     display: flex;
+    flex-direction: column; /* Stacks the title and button vertically */
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 1.2rem;
     background: #ffffff;
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     transition: all 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    gap: 1rem; /* Adds space between text and the button */
 }
 
 .list-item:hover {
     border-color: #10b981;
     box-shadow: 0 5px 15px rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
-.list-item .card-header-flex { margin-bottom: 8px; }
+/* Forces the text container inside the item to take up full width */
+.list-item > div:first-child {
+    width: 100%;
+}
+
+.list-item .card-header-flex { 
+    margin-bottom: 8px; 
+    align-items: flex-start; /* Aligns checkbox and text to the top */
+}
 
 .list-item input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
     accent-color: #10b981;
+    flex-shrink: 0; /* Prevents the checkbox from squishing */
+    margin-top: 2px;
+}
+
+/* Makes the buttons inside the cards full-width for a cleaner UI */
+.list-item button, 
+.list-item .mini-btn {
+    width: 100%;
+    margin-left: 0 !important; /* Overrides inline Javascript margins */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ========================================== */
