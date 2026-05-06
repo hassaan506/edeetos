@@ -719,10 +719,14 @@ if (!data || data.status === "ended") {
         if (data.status === "playing" && isGuest) {
             const lobby = document.getElementById('mp-lobby-screen');
             if (lobby) lobby.remove();
+            const isNewBatch = !quizQueue || quizQueue.length === 0 || 
+                               (data.questions && data.questions.length > 0 && quizQueue[0].text !== data.questions[0].text);
 
-            if (!quizQueue || quizQueue.length === 0) {
+            if (isNewBatch && data.questions) {
                 quizQueue = data.questions;
                 quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                
+                buildNumberGrid(); // Rebuild the number grid UI for the new set!
                 loadQuestion(data.currentQuestionIndex || 0);
             }
         }
@@ -893,7 +897,6 @@ function showPracticeCompleteModal(isGuest = false) {
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 
-    // FIX: Await the save before allowing the browser to navigate away
     document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
         const btn = e.target;
         btn.textContent = "Saving Progress...";
@@ -901,8 +904,11 @@ function showPracticeCompleteModal(isGuest = false) {
         
         await updateSpacedRepetition();
         
-        localStorage.removeItem('active_study_room');
-        localStorage.removeItem('is_study_guest');
+        if (!activeRoomId) {
+            localStorage.removeItem('active_study_room');
+            localStorage.removeItem('is_study_guest');
+        }
+        
         window.location.href = 'questions.html';
     });
 }
@@ -956,11 +962,13 @@ document.getElementById('next-btn').onclick = async () => {
         if (activeRoomId && localStorage.getItem('is_study_guest') !== 'true') {
             try {
                 await updateDoc(doc(db, "study_rooms", activeRoomId), {
-                    status: "ended",
-                    endedAt: serverTimestamp()
+                    status: "waiting",
+                    answers: deleteField(),
+                    memberAnswers: deleteField(),
+                    forceReveal: deleteField()
                 });
             } catch (error) {
-                console.error("Error ending room:", error);
+                console.error("Error resetting room:", error);
             }
         }
         
