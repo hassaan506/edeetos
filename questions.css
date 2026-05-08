@@ -472,21 +472,38 @@
     
     .exam-action-bar {
         flex-direction: column; 
-        gap: 1.5rem;
-        padding: 1.5rem;
+        gap: 1rem;
+        padding: 1.2rem;
         bottom: 10px;
-        width: 92%;
+        width: 95%;
     }
     
     .exam-action-bar .cart-controls {
+        display: flex;
+        flex-wrap: wrap; /* Allows the button to drop below the inputs */
         width: 100%;
-        justify-content: space-space-between;
-        gap: 0.5rem;
+        justify-content: space-between;
+        gap: 0.8rem;
     }
     
-    .exam-action-bar .input-group label { font-size: 0.65rem; }
-    .exam-action-bar input[type="number"] { width: 80px; }
-    .exam-action-bar .start-btn { width: 100%; margin-top: 0.5rem; }
+    .exam-action-bar .input-group {
+        flex: 1; /* Makes the inputs share the top row equally */
+        min-width: 45%; 
+    }
+
+    .exam-action-bar .input-group label { 
+        font-size: 0.7rem; 
+    }
+    
+    .exam-action-bar input[type="number"] { 
+        width: 100%; /* Fills its half of the row */
+    }
+    
+    .exam-action-bar .start-btn { 
+        width: 100%; /* Forces the button to take the full bottom row */
+        margin-top: 0.5rem; 
+        flex-shrink: 0;
+    }
 }
 
 /* ========================================== */

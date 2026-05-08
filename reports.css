@@ -339,7 +339,7 @@ body {
     .reports-container {
         flex-direction: column;
         padding: 10px;
-        gap: 20px;
+        gap: 15px;
         height: auto !important; 
         margin-top: 10px; 
         overflow: visible !important;
@@ -349,9 +349,9 @@ body {
     .reports-sidebar {
         width: 100%;
         max-width: 100%;
-        height: 350px; /* Keep it as a scrollable box so they can find students */
+        height: 350px; /* Keep it as a scrollable box so they can find students easily */
         flex-shrink: 0;
-        border-radius: 16px;
+        border-radius: 12px;
     }
 
     .sidebar-header { padding: 15px; }
@@ -360,21 +360,36 @@ body {
     /* 4. Main Details Panel */
     .reports-main {
         width: 100%;
-        padding: 20px 15px;
+        max-width: 100%;
+        padding: 15px;
+        border-radius: 12px;
         height: auto !important;
-        overflow: visible !important; /* Let it expand fully down the page */
-        border-radius: 16px;
+        /* Prevent inner elements from expanding past the screen */
+        min-width: 0; 
     }
 
-    .details-header h1 {
-        font-size: 1.6rem;
+    /* 5. Fix Stats Grid (Stack cards into 1 column instead of squeezing them) */
+    .stats-grid,
+    .overview-cards,
+    .report-cards {
+        grid-template-columns: 1fr !important; 
+        gap: 10px;
     }
-    
-    .stat-value {
-        font-size: 2.2rem;
+
+    /* 6. Fix History Table (Allows horizontal scrolling instead of breaking layout) */
+    .history-table,
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        white-space: nowrap; /* Keep table cells from wrapping into vertical towers */
     }
-    
-    .empty-state i {
-        font-size: 3rem;
+
+    /* 7. Text Scaling */
+    .reports-main h2, 
+    .reports-main h3 {
+        font-size: 1.25rem;
+        word-wrap: break-word;
     }
 }

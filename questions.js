@@ -38,7 +38,12 @@ const unattemptedFilter = document.getElementById('unattempted-filter');
 const sidebarEl = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
 const viewTitle = document.getElementById('current-view-title');
-const availableBooks = [
+const savedCourse = localStorage.getItem('edeetos_active_course');
+if (!savedCourse) {
+    window.location.href = 'dashboard.html';
+}
+const activeCourse = savedCourse;
+const allBooks = [
     { file: "firstaid_step1", title: "First Aid Step 1" },
     { file: "rafiullah", title: "Rafiullah FCPS" },
     { file: "im_medicine", title: "Irfan Masood - Medicine" },
@@ -46,6 +51,12 @@ const availableBooks = [
     { file: "brs_patho", title: "BRS - Pathology" },
     { file: "brs_physio", title: "BRS - Physiology" }
 ];
+const availableBooks = allBooks.filter(book => {
+    if (book.file === "rafiullah") {
+        return activeCourse.startsWith("fcps_"); 
+    }    
+    return true; 
+});
 
 // ==========================================
 // 3. EVENT LISTENERS
@@ -603,7 +614,7 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
 // ==========================================
 async function loadDataAndBuildTree() {
     try {
-        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+        const activeCourse = localStorage.getItem('edeetos_active_course');
         const csvPath = `Data/${activeCourse}.csv`;
 
         const response = await fetch(csvPath, { cache: 'no-cache' });
@@ -1135,7 +1146,7 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
 				currentUserRole = dbData.role || 'STUDENT';
 // 1. Get the active course first
-                const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                const activeCourse = localStorage.getItem('edeetos_active_course');
                 const courseData = dbData[activeCourse] || {};
 
                 // 2. COURSE-SPECIFIC PREMIUM CHECK
@@ -1468,7 +1479,7 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
         // FIX 1: Safely get the type even if they click the icon inside the button
         const type = btn.getAttribute('data-type'); 
-        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+        const activeCourse = localStorage.getItem('edeetos_active_course');
 
         switch (type) {
             case "1":

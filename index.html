@@ -23,9 +23,15 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <div id="auth-menu" style="display: flex; gap: 1.5rem; align-items: center;">
-                    <li><a href="register.html" class="btn-outline">Register</a></li>
-                    <li><a href="login.html" class="btn-solid">Log In</a></li>
-                </div>
+    <li>
+        <button id="install-app-btn" class="btn-solid" style="display: none; background: #0f172a; color: white;">
+            <i class="fas fa-download"></i> Install App
+        </button>
+    </li>
+    
+    <li><a href="register.html" class="btn-outline">Register</a></li>
+    <li><a href="login.html" class="btn-solid">Log In</a></li>
+</div>
             </ul>
         </div>
     </nav>
@@ -235,6 +241,12 @@
 	
     <script type="module" src="auth-check.js"></script>
     <script type="module" src="index.js"></script>
-
+<div id="ios-install-banner" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 2px solid #10b981; padding: 1.5rem; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 9999; text-align: center;">
+    <button id="close-ios-banner" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 1.2rem; color: #64748b; cursor: pointer;">✖</button>
+    <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 0.5rem;">Install EDEETOS on your iPhone</h3>
+    <p style="color: #475569; font-size: 0.95rem; margin-bottom: 0;">
+        Tap the <strong>Share</strong> icon <i class="fas fa-external-link-alt" style="color: #3b82f6;"></i> below, then select <br><strong>"Add to Home Screen"</strong> <i class="fas fa-plus-square" style="color: #64748b;"></i> to install this app.
+    </p>
+</div>
 </body>
 </html>

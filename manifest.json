@@ -1,0 +1,20 @@
+{
+  "name": "EDEETOS",
+  "short_name": "EDEETOS",
+  "start_url": "/login.html",
+  "display": "standalone",
+  "background_color": "#f0fdf4",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "/Pictures/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/Pictures/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
