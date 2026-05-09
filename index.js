@@ -44,7 +44,7 @@ const manualModal = document.getElementById('manual-install-modal');
 const closeManualBtn = document.getElementById('close-manual-install');
 
 // Detect if the user is already in a standalone PWA
-const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+const isAppStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
 // Listen for the browser determining the app is installable
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -64,7 +64,7 @@ if (closeManualBtn) {
 // Add click event to your button
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
-        if (isStandalone) {
+        if (isAppStandalone) {
             alert("Great news! You are already using the installed version of EDEETOS.");
             return;
         }
@@ -109,12 +109,7 @@ const isIos = () => {
     return /iphone|ipad|ipod/.test(userAgent);
 };
 
-// 2. Detect if the app is already installed (Safari uses the 'standalone' property)
-const isStandalone = () => {
-    return ('standalone' in window.navigator) && window.navigator.standalone;
-};
-
-// 3. Detect if the user is actually using Safari 
+// 2. Detect if the user is actually using Safari 
 // (Chrome on iOS cannot install PWAs to the home screen)
 const isSafari = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -126,7 +121,7 @@ const iosBanner = document.getElementById('ios-install-banner');
 const closeIosBannerBtn = document.getElementById('close-ios-banner');
 
 if (iosBanner && closeIosBannerBtn) {
-    if (isIos() && isSafari() && !isStandalone()) {
+    if (isIos() && isSafari() && !isAppStandalone) {
         // Wait a few seconds before showing it so it isn't too aggressive
         setTimeout(() => {
             iosBanner.style.display = 'block';
@@ -138,25 +133,3 @@ if (iosBanner && closeIosBannerBtn) {
         iosBanner.style.display = 'none';
     });
 }
-let deferredPrompt;
-const installBtn = document.getElementById('install-app-btn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Save the event so it can be triggered later
-  e.preventDefault();
-  deferredPrompt = e;
-  // Make the button visible if it was hidden
-  installBtn.style.display = 'inline-block';
-});
-
-installBtn.addEventListener('click', async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User choice: ${outcome}`);
-    deferredPrompt = null;
-  } else {
-    // Show your manual install modal if the prompt isn't supported
-    document.getElementById('manual-install-modal').style.display = 'flex';
-  }
-});
