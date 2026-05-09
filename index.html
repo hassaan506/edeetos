@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDEETOS - Go Beyond Yourself!</title>
+    
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,23 +24,28 @@
                 <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
             </a>
             
-            <ul class="nav-links">
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <button id="install-app-btn" class="btn-solid" style="display: none; background: #0f172a; color: white;">
-                        <i class="fas fa-download"></i> Install App
-                    </button>
-                </li>
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                
+                <ul class="nav-links" style="margin: 0; padding: 0;">
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    
+                    <li>
+                        <a id="install-app-btn" class="btn-solid" style="display: none; background: #0f172a; color: white; cursor: pointer;">
+                            <i class="fas fa-download"></i> Install App
+                        </a>
+                    </li>
+                </ul>
 
-                <div id="auth-menu" style="display: flex; gap: 1.5rem; align-items: center;">
+                <ul id="auth-menu" style="display: flex; gap: 1.5rem; align-items: center; list-style: none; margin: 0; padding: 0;">
                     <li><a href="register.html" class="btn-outline">Register</a></li>
                     <li><a href="login.html" class="btn-solid">Log In</a></li>
-                </div>
-            </ul>
+                </ul>
+
+            </div>
         </div>
     </nav>
 
@@ -47,7 +53,7 @@
         <div class="hero-content">
             <h1>Welcome to EDEETOS</h1>
             <p class="subtitle">Created by medical professionals, for medical students.</p>
-            <p>Guiding, encouraging, and mentoring you through FCPS, MBBS, and MRCS/MRCP to reach your highest potential.</p>
+            <p style="font-size: 1.1rem; color: #475569; max-width: 700px; margin: 0 auto 2.5rem auto;">Guiding, encouraging, and mentoring you through FCPS, MBBS, and MRCS/MRCP to reach your highest potential.</p>
             <a href="#courses" class="btn-large">Explore Programs</a>
         </div>
     </header>
