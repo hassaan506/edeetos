@@ -122,11 +122,8 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
 
     const knownCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     
-    // Check which courses have data to build the dropdown
-    let availableCourses = [];
-    knownCourses.forEach(c => {
-        if (student[c]) availableCourses.push(c);
-    });
+    // Always show all courses in the dropdown, even if no data exists yet
+    let availableCourses = [...knownCourses];
 
     let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Courses / Overview</option>`;
     availableCourses.forEach(c => {

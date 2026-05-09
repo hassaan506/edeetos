@@ -40,24 +40,35 @@ if (contactForm) {
 // Variable to store the install event
 let deferredPrompt;
 const installBtn = document.getElementById('install-app-btn');
+const manualModal = document.getElementById('manual-install-modal');
+const closeManualBtn = document.getElementById('close-manual-install');
+
+// Detect if the user is already in a standalone PWA
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
 // Listen for the browser determining the app is installable
 window.addEventListener('beforeinstallprompt', (e) => {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
-    
     // Stash the event so it can be triggered later
     deferredPrompt = e;
-    
-    // Unhide your custom Install button
-    if (installBtn) {
-        installBtn.style.display = 'inline-block';
-    }
 });
+
+// Close manual modal
+if (closeManualBtn) {
+    closeManualBtn.addEventListener('click', () => {
+        if (manualModal) manualModal.style.display = 'none';
+    });
+}
 
 // Add click event to your button
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
+        if (isStandalone) {
+            alert("Great news! You are already using the installed version of EDEETOS.");
+            return;
+        }
+
         if (deferredPrompt) {
             // Show the browser's official install prompt
             deferredPrompt.prompt();
@@ -72,11 +83,13 @@ if (installBtn) {
             
             // We've used the prompt, and can't use it again, discard it
             deferredPrompt = null;
-            
-            // Hide the button since they either installed it or declined
-            installBtn.style.display = 'none';
         } else {
-            alert("The app cannot be automatically installed on this device right now. You can manually install it by opening your browser's menu and selecting 'Add to Home Screen' or 'Install App'.");
+            // Browser isn't providing the prompt, show manual instructions
+            if (manualModal) {
+                manualModal.style.display = 'flex';
+            } else {
+                alert("Please install manually from your browser menu (Add to Home Screen).");
+            }
         }
     });
 }
