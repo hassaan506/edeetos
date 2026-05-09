@@ -40,11 +40,6 @@ if (contactForm) {
 // Variable to store the install event
 let deferredPrompt;
 const installBtn = document.getElementById('install-app-btn');
-const manualModal = document.getElementById('manual-install-modal');
-const closeManualBtn = document.getElementById('close-manual-install');
-
-// Detect if the user is already in a standalone PWA
-const isAppStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
 // Listen for the browser determining the app is installable
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -52,23 +47,15 @@ window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     // Stash the event so it can be triggered later
     deferredPrompt = e;
+    // ONLY show the button when we are 100% sure we can install it
+    if (installBtn) {
+        installBtn.style.display = 'inline-block';
+    }
 });
-
-// Close manual modal
-if (closeManualBtn) {
-    closeManualBtn.addEventListener('click', () => {
-        if (manualModal) manualModal.style.display = 'none';
-    });
-}
 
 // Add click event to your button
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
-        if (isAppStandalone) {
-            alert("Great news! You are already using the installed version of EDEETOS.");
-            return;
-        }
-
         if (deferredPrompt) {
             // Show the browser's official install prompt
             deferredPrompt.prompt();
@@ -83,13 +70,8 @@ if (installBtn) {
             
             // We've used the prompt, and can't use it again, discard it
             deferredPrompt = null;
-        } else {
-            // Browser isn't providing the prompt, show manual instructions
-            if (manualModal) {
-                manualModal.style.display = 'flex';
-            } else {
-                alert("Please install manually from your browser menu (Add to Home Screen).");
-            }
+            // Hide the button after interaction
+            installBtn.style.display = 'none';
         }
     });
 }
