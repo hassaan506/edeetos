@@ -51,14 +51,14 @@ window.addEventListener('beforeinstallprompt', (e) => {
     
     // Unhide your custom Install button
     if (installBtn) {
-        installBtn.style.display = 'block';
+        installBtn.style.display = 'inline-block';
     }
 });
 
 // Add click event to your button
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
-        if (deferredPrompt !== null) {
+        if (deferredPrompt) {
             // Show the browser's official install prompt
             deferredPrompt.prompt();
             
@@ -75,6 +75,8 @@ if (installBtn) {
             
             // Hide the button since they either installed it or declined
             installBtn.style.display = 'none';
+        } else {
+            alert("The app cannot be automatically installed on this device right now. You can manually install it by opening your browser's menu and selecting 'Add to Home Screen' or 'Install App'.");
         }
     });
 }

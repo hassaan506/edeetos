@@ -109,7 +109,7 @@ if (searchInput) {
 // ==========================================
 // 5. COMPREHENSIVE STUDENT REPORT GENERATOR (CLEAN UI)
 // ==========================================
-function displayDetailedReport(student) {
+function displayDetailedReport(student, activeCourseFilter = 'all') {
     if (!student) {
         detailsPanel.innerHTML = `
             <div class="empty-state">
@@ -120,15 +120,29 @@ function displayDetailedReport(student) {
         return;
     }
 
-    // --- 1. AGGREGATE DATA ACROSS ALL COURSES ---
     const knownCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     
+    // Check which courses have data to build the dropdown
+    let availableCourses = [];
+    knownCourses.forEach(c => {
+        if (student[c]) availableCourses.push(c);
+    });
+
+    let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Courses / Overview</option>`;
+    availableCourses.forEach(c => {
+        const isSelected = activeCourseFilter === c ? 'selected' : '';
+        courseOptionsHtml += `<option value="${c}" ${isSelected}>${c.replace('_', ' ').toUpperCase()}</option>`;
+    });
+
+    // --- 1. AGGREGATE DATA BASED ON FILTER ---
     let globalHistory = [];
     let totalSolved = 0;
     let globalMistakesSet = new Set();
     let coursesHtml = '';
 
-    knownCourses.forEach(courseKey => {
+    const coursesToProcess = activeCourseFilter === 'all' ? availableCourses : [activeCourseFilter];
+
+    coursesToProcess.forEach(courseKey => {
         const courseData = student[courseKey];
         if (courseData) {
             // Aggregate Solved Questions
@@ -241,14 +255,20 @@ function displayDetailedReport(student) {
 
     // --- 3. RENDER EVERYTHING USING CLEAN CLASSES ---
     detailsPanel.innerHTML = `
-        <div class="details-header">
-            <div>
+        <div class="details-header" style="flex-wrap: wrap; gap: 15px;">
+            <div style="flex: 1; min-width: 250px;">
                 <h1>${student.fullName || 'Unknown Student'}</h1>
                 <div class="details-meta">
                     📧 ${student.email || 'No email'} | 📞 ${student.phone || 'No phone'}
                 </div>
+                <div style="margin-top: 15px;">
+                    <label style="font-weight: bold; font-size: 0.9rem; color: #64748b; margin-right: 10px;">Select Course/Book:</label>
+                    <select id="course-filter" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-weight: 600; outline: none; cursor: pointer; color: #1e293b; background: white;">
+                        ${courseOptionsHtml}
+                    </select>
+                </div>
             </div>
-            <div class="role-badge">
+            <div class="role-badge" style="height: max-content;">
                 ${student.targetExam || student.role || 'Student'}
             </div>
         </div>
@@ -284,4 +304,9 @@ function displayDetailedReport(student) {
             
         </div>
     `;
+
+    // Attach event listener to dropdown to re-render when changed
+    document.getElementById('course-filter').addEventListener('change', (e) => {
+        displayDetailedReport(student, e.target.value);
+    });
 }

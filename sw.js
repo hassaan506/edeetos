@@ -1,4 +1,4 @@
-const CACHE_NAME = 'edeetos-app-v1';
+const CACHE_NAME = 'edeetos-app-v3';
 
 // We are caching your core authentication files here
 const ASSETS_TO_CACHE = [
