@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDEETOS - Master Your Medical Exams</title>
+    <title>EDEETOS - Go Beyond Yourself!</title>
     
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="index.css">
@@ -26,11 +26,12 @@
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#courses">Courses</a></li>
-                    <li><a href="#about">Why Us</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#team">Team</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
-                        <a id="install-app-btn" class="btn-solid install-btn" style="display: none;">
+                        <a id="install-app-btn" class="install-btn" style="display: none;">
                             <i class="fas fa-download"></i> Install App
                         </a>
                     </li>
@@ -48,7 +49,7 @@
         <div class="hero-content">
             <h1>Welcome to EDEETOS</h1>
             <p class="subtitle">Created by medical professionals, for medical students.</p>
-            <p class="hero-desc">Guiding, encouraging, and mentoring you through FCPS, MBBS, and MRCS to reach your highest potential.</p>
+            <p class="hero-desc">Guiding, encouraging, and mentoring you through FCPS, MBBS, and MRCS/MRCP to reach your highest potential.</p>
             <a href="#courses" class="btn-large">Explore Programs</a>
         </div>
     </header>
@@ -61,71 +62,35 @@
         
         <div class="grid-container">
             <div class="card glass-panel text-center">
-                <i class="fas fa-stethoscope course-icon"></i>
                 <h3 class="course-title">FCPS</h3>
                 <p>Comprehensive preparation for Part 1, IMM, and Part 2. Access high-yield notes and topic tests.</p>
             </div>
             <div class="card glass-panel text-center">
-                <i class="fas fa-dna course-icon"></i>
                 <h3 class="course-title">MBBS</h3>
                 <p>Complete guidance from 1st to 5th year. Build a strong conceptual understanding of core modules.</p>
             </div>
             <div class="card glass-panel text-center">
-                <i class="fas fa-hospital-user course-icon"></i>
                 <h3 class="course-title">MRCS / MRCP</h3>
                 <p>Targeted practice materials, video lectures, and live sessions for your royal college exams.</p>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section-container bg-light">
+    <section id="about" class="section-container">
         <div class="section-header">
             <h2>Why Choose EDEETOS?</h2>
-            <p class="section-description">A comprehensive, data-driven ecosystem designed for medical excellence.</p>
         </div>
-        
-        <div class="features-grid">
-            <div class="feature-card glass-panel">
-                <i class="fas fa-user-graduate feature-icon"></i>
-                <h3>Freshers Support</h3>
-                <p>Dedicated guidance to help you navigate your early years in medical school.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-calendar-alt feature-icon"></i>
-                <h3>Smart Scheduling</h3>
-                <p>Personalized timetabling to ensure you cover all modules and syllabus requirements efficiently.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-users feature-icon"></i>
-                <h3>Live Group Study</h3>
-                <p>Create synchronized study rooms. Sync your screen and solve complex MCQs with peers in real-time.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-book-medical feature-icon"></i>
-                <h3>Premium Resources</h3>
-                <p>Access highly detailed notes, visual explanations, and comprehensive video lectures.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-chart-pie feature-icon"></i>
-                <h3>Mentor Oversight</h3>
-                <p>Elite mentors review your specific performance analytics to assign targeted exams and identify weaknesses.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-microscope feature-icon"></i>
-                <h3>Research Guidance</h3>
-                <p>Expert assistance with medical research methodologies, thesis writing, and proposal development.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-brain feature-icon"></i>
-                <h3>Spaced Repetition</h3>
-                <p>Our algorithms track your accuracy and schedule targeted revisions exactly when you need them.</p>
-            </div>
-            <div class="feature-card glass-panel">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                <h3>Platform Integrity</h3>
-                <p>Advanced security protocols protect our exclusive question banks, ensuring a premium, private environment.</p>
-            </div>
-        </div>
+        <ul class="objectives-grid">
+            <li class="glass-panel">Guidance and support for freshers</li>
+            <li class="glass-panel">Scheduling and timetabling</li>
+            <li class="glass-panel">Live discussion sessions</li>
+            <li class="glass-panel">Detailed notes & Video lectures</li>
+            <li class="glass-panel">Progress tracking & reports</li>
+            <li class="glass-panel">Research & proposal guidance</li>
+            <li class="glass-panel" style="color: #059669;">Live multiplayer group study</li>
+            <li class="glass-panel" style="color: #059669;">Spaced repetition algorithms</li>
+            <li class="glass-panel" style="color: #059669;">Targeted weakness analytics</li>
+        </ul>
     </section>
 
     <section id="team" class="section-container">
@@ -170,7 +135,7 @@
             <div class="card glass-panel step-card">
                 <h3 class="step-number">1</h3>
                 <h4 class="step-title">Choose Your Path</h4>
-                <p>Select your target exam and access customized study materials.</p>
+                <p>Select your target exam (FCPS, MBBS, MRCS) and access customized study materials.</p>
             </div>
             <div class="card glass-panel step-card">
                 <h3 class="step-number">2</h3>
@@ -193,15 +158,15 @@
         
         <div class="faq-container">
             <div class="glass-panel faq-item">
-                <h4 class="faq-question"><i class="fas fa-question-circle faq-icon"></i> Are the MCQs up to date?</h4>
+                <h4 class="faq-question">Are the MCQs up to date?</h4>
                 <p class="faq-answer">Yes, our medical professionals regularly update the question banks to reflect the latest exam patterns and guidelines.</p>
             </div>
             <div class="glass-panel faq-item">
-                <h4 class="faq-question"><i class="fas fa-mobile-alt faq-icon"></i> Can I access this on my phone?</h4>
+                <h4 class="faq-question">Can I access this on my phone?</h4>
                 <p class="faq-answer">Absolutely. The EDEETOS platform is fully optimized for mobile devices, so you can study anywhere, anytime.</p>
             </div>
             <div class="glass-panel faq-item">
-                <h4 class="faq-question"><i class="fas fa-user-md faq-icon"></i> Do I get access to mentors?</h4>
+                <h4 class="faq-question">Do I get access to mentors?</h4>
                 <p class="faq-answer">Yes, our premium plans include 1-on-1 guidance from specialists who have successfully cleared the exams you are preparing for.</p>
             </div>
         </div>
@@ -218,7 +183,7 @@
                 <h3 class="contact-title">Reach Out Directly</h3>
                 
                 <div class="info-item">
-                    <span class="info-icon"><i class="fas fa-envelope"></i></span>
+                    <span class="info-icon">✉️</span>
                     <div>
                         <h4>Email</h4>
                         <p><a href="mailto:edeetos@gmail.com" class="contact-link">edeetos@gmail.com</a></p>
@@ -226,7 +191,7 @@
                 </div>
                 
                 <div class="info-item">
-                    <span class="info-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="info-icon">💬</span>
                     <div>
                         <h4>WhatsApp / Phone</h4>
                         <p><a href="https://wa.me/923202289180" class="contact-link" target="_blank">+92 320 2289180</a></p>
@@ -252,7 +217,7 @@
                         <label>Message</label>
                         <textarea id="contact-msg" rows="4" placeholder="How can we help you?" required></textarea>
                     </div>
-                    <button type="submit" class="btn-solid form-btn">Send Message</button>
+                    <button type="submit" class="form-btn">Send Message</button>
                 </form>
             </div>
         </div>
@@ -313,12 +278,7 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-              console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-              console.error('Service Worker registration failed:', error);
-            });
+            .catch(error => console.error('Service Worker registration failed:', error));
         });
       }
     </script>
