@@ -1,15 +1,12 @@
 /* ==========================================
-   REPORTS PAGE STYLES - PREMIUM GLASSMORPHISM
+   1. REPORTS PAGE BASE STYLES
    ========================================== */
-
-/* 1. Base Gradient Background (Overrides the plain HTML body) */
 body {
     background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 50%, #f3e8ff 100%) !important;
     background-attachment: fixed !important;
     font-family: 'Nunito', sans-serif; 
 }
 
-/* 2. Main Layout - Floating Glass Panels */
 .reports-container {
     display: flex;
     flex-grow: 1;
@@ -21,7 +18,9 @@ body {
     box-sizing: border-box;
 }
 
-/* 3. Left Sidebar (Student List) - Frosted Glass */
+/* ==========================================
+   2. SIDEBAR & SEARCH
+   ========================================== */
 .reports-sidebar {
     width: 35%;
     max-width: 420px;
@@ -29,313 +28,269 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 24px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     overflow: hidden;
 }
 
 .sidebar-header {
     padding: 25px 25px 15px 25px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .sidebar-header h2 {
     margin: 0 0 15px 0;
     color: #1e293b;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 800;
 }
 
-/* Translucent Search Bar */
 .search-input {
     width: 100%;
     padding: 12px 15px;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
     font-family: inherit;
-    box-sizing: border-box;
-    outline: none;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .search-input:focus {
-    background: rgba(255, 255, 255, 0.8);
+    outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
 .student-list {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 15px 25px 25px 25px;
+    padding: 15px 25px;
 }
 
-/* Sleek Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.7); }
-
-/* Individual Student Cards - Floating Effect */
 .student-item {
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 16px;
-    margin-bottom: 12px;
+    padding: 12px 15px;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 10px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
 }
 
 .student-item:hover {
-    background: rgba(255, 255, 255, 0.85);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    border-color: #bae6fd;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-color: #e2e8f0;
 }
 
 .student-item.active {
-    background: linear-gradient(135deg, rgba(239, 246, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
-    border: 1px solid #3b82f6;
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
-    transform: scale(1.02);
+    background: #eff6ff;
+    border-color: #3b82f6;
 }
 
 .student-name {
     font-weight: 800;
     color: #0f172a;
-    margin-bottom: 4px;
     font-size: 1.05rem;
+    margin-bottom: 3px;
 }
 
 .student-email {
     font-size: 0.85rem;
     color: #64748b;
+    font-weight: 600;
 }
 
-/* 4. Right Main Panel (Details) - Frosted Glass */
+/* ==========================================
+   3. MAIN PANEL & EMPTY STATE
+   ========================================== */
 .reports-main {
     flex-grow: 1;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 24px;
-    padding: 40px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     overflow-y: auto;
 }
 
-/* Empty & Loading States */
-.empty-state, .loading-state {
-    height: 100%;
+.empty-state {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    color: #64748b;
+    justify-content: center;
+    height: 100%;
+    color: #94a3b8;
     text-align: center;
 }
 
 .empty-state i {
-    font-size: 5rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 20px;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
-}
-
-.loading-state i {
-    font-size: 3rem;
-    color: #3b82f6;
-    margin-bottom: 15px;
-}
-
-/* Details Header */
-.details-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
-
-.details-header h1 {
-    margin: 0 0 8px 0;
-    color: #0f172a;
-    font-size: 2.2rem;
-    font-weight: 900;
-}
-
-.details-meta {
-    color: #475569;
-    font-size: 1rem;
-}
-
-.course-badge {
-    font-weight: 800;
-    color: #2563eb;
-    background: rgba(219, 234, 254, 0.7);
-    padding: 4px 10px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-/* 5. Stat Cards - Color Tinted Glass */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-bottom: 35px;
-}
-
-.stat-card {
-    padding: 25px 20px;
-    border-radius: 20px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-    transition: transform 0.3s ease;
-}
-
-.stat-card:hover { transform: translateY(-5px); }
-
-/* Green Tinted Glass */
-.stat-card.green { 
-    background: rgba(220, 252, 231, 0.5); 
-    border: 1px solid rgba(187, 247, 208, 0.8); 
-}
-.stat-card.green .stat-title { color: #166534; }
-.stat-card.green .stat-value { color: #15803d; }
-
-/* Red Tinted Glass */
-.stat-card.red { 
-    background: rgba(254, 226, 226, 0.5); 
-    border: 1px solid rgba(254, 202, 202, 0.8); 
-}
-.stat-card.red .stat-title { color: #991b1b; }
-.stat-card.red .stat-value { color: #b91c1c; }
-
-/* Blue Tinted Glass */
-.stat-card.blue { 
-    background: rgba(224, 242, 254, 0.5); 
-    border: 1px solid rgba(186, 230, 253, 0.8); 
-}
-.stat-card.blue .stat-title { color: #1e40af; }
-.stat-card.blue .stat-value { color: #1d4ed8; }
-
-.stat-title {
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-}
-
-.stat-value {
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1;
-}
-
-/* 6. History Table - Frosted Layout */
-.history-section h3 {
-    color: #1e293b;
-    margin-bottom: 20px;
-    font-size: 1.4rem;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto; /* Allows horizontal scrolling on mobile */
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-.history-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 16px;
-    overflow: hidden;
-    min-width: 500px; /* Ensures the table doesn't squish too much */
-}
-
-.history-table th, .history-table td {
-    padding: 16px 20px;
-    text-align: left;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-}
-
-.history-table th {
-    background: rgba(241, 245, 249, 0.7);
-    color: #475569;
-    font-weight: 800;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.history-table tr {
-    transition: background 0.2s;
-}
-
-.history-table tr:hover {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.history-table td {
-    color: #334155;
-    font-size: 0.95rem;
-}
-
-.history-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* Badges */
-.badge-assigned {
-    font-size: 0.7rem;
-    background: rgba(224, 231, 255, 0.8);
-    color: #4338ca;
-    padding: 4px 10px;
-    border-radius: 12px;
-    margin-left: 10px;
-    font-weight: 800;
-    box-shadow: 0 2px 4px rgba(67, 56, 202, 0.1);
-    white-space: nowrap;
-}
-
-.badge-self {
-    font-size: 0.7rem;
-    background: rgba(241, 245, 249, 0.8);
-    color: #64748b;
-    padding: 4px 10px;
-    border-radius: 12px;
-    margin-left: 10px;
-    font-weight: 700;
-    white-space: nowrap;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
 }
 
 /* ==========================================
-   7. MOBILE RESPONSIVENESS FIXES
+   4. NEW UI CLASSES FOR DETAILED REPORTS
+   ========================================== */
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 1.5rem;
+}
+
+.details-header h1 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.details-meta {
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+}
+
+.role-badge {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    color: #10b981;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    text-align: center;
+}
+
+.stat-title {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value { font-size: 2rem; font-weight: 800; }
+.stat-card.blue .stat-value { color: #3b82f6; }
+.stat-card.green .stat-value { color: #10b981; }
+.stat-card.yellow .stat-value { color: #f59e0b; }
+.stat-card.red .stat-value { color: #ef4444; }
+
+/* Sections & Topics */
+.detailed-reports-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.report-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.report-card h3 {
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-group {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.course-group-title {
+    background: #e2e8f0;
+    padding: 0.8rem 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.topic-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px dashed #e2e8f0;
+}
+.topic-row:last-child { border-bottom: none; }
+.topic-name { font-weight: 700; color: #334155; font-size: 0.9rem; }
+.topic-name i { color: #64748b; margin-right: 8px; }
+.topic-stats { display: flex; gap: 15px; text-align: right; font-size: 0.85rem; color: #64748b; }
+
+.empty-data-text { color: #94a3b8; font-style: italic; padding: 1rem; text-align: center; }
+
+/* History Table Styling */
+.history-table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 1rem; }
+.history-table th { padding: 1rem; border-bottom: 2px solid #e2e8f0; color: #64748b; font-size: 0.85rem; text-transform: uppercase; }
+.history-table td { padding: 1rem; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; color: #475569; }
+
+/* Badges & Colors */
+.badge-assigned { background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-left: 8px; }
+.badge-self { background: #f1f5f9; color: #475569; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-left: 8px; }
+
+.text-green { color: #10b981 !important; }
+.text-yellow { color: #f59e0b !important; }
+.text-red { color: #ef4444 !important; }
+.text-blue { color: #3b82f6 !important; }
+.fw-bold { font-weight: 700 !important; }
+.course-tag { font-size: 0.85rem; color: #64748b; text-transform: uppercase; }
+.time-text { font-size: 0.9rem; color: #64748b; }
+.table-responsive { overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch; }
+
+/* ==========================================
+   5. MOBILE RESPONSIVENESS FIXES
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Unlock the body height so the page can scroll normally on phones */
+    /* Unlock the body height */
     body {
         height: auto !important;
         display: block !important;
         overflow-x: hidden;
     }
 
-    /* 2. Stack the layout vertically */
+    /* Stack the layout vertically */
     .reports-container {
         flex-direction: column;
         padding: 10px;
@@ -345,11 +300,11 @@ body {
         overflow: visible !important;
     }
 
-    /* 3. Sidebar (Student List) */
+    /* Scrollable Sidebar on top */
     .reports-sidebar {
         width: 100%;
         max-width: 100%;
-        height: 350px; /* Keep it as a scrollable box so they can find students easily */
+        height: 350px; 
         flex-shrink: 0;
         border-radius: 12px;
     }
@@ -357,39 +312,24 @@ body {
     .sidebar-header { padding: 15px; }
     .student-list { padding: 10px 15px; }
 
-    /* 4. Main Details Panel */
+    /* Main Details Panel constraints */
     .reports-main {
         width: 100%;
         max-width: 100%;
         padding: 15px;
         border-radius: 12px;
         height: auto !important;
-        /* Prevent inner elements from expanding past the screen */
         min-width: 0; 
     }
 
-    /* 5. Fix Stats Grid (Stack cards into 1 column instead of squeezing them) */
-    .stats-grid,
-    .overview-cards,
-    .report-cards {
+    /* Stack Cards */
+    .stats-grid, .detailed-reports-grid {
         grid-template-columns: 1fr !important; 
-        gap: 10px;
+        gap: 15px;
     }
 
-    /* 6. Fix History Table (Allows horizontal scrolling instead of breaking layout) */
-    .history-table,
-    table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        white-space: nowrap; /* Keep table cells from wrapping into vertical towers */
-    }
-
-    /* 7. Text Scaling */
-    .reports-main h2, 
-    .reports-main h3 {
-        font-size: 1.25rem;
-        word-wrap: break-word;
+    /* Allow Tables to scroll horizontally without breaking layout */
+    .history-table {
+        white-space: nowrap;
     }
 }

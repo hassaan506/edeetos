@@ -86,7 +86,8 @@ function renderStudentList(list) {
             document.querySelectorAll('.student-item').forEach(el => el.classList.remove('active'));
             item.classList.add('active');
             
-            renderStudentDetails(student);
+            // Call the upgraded god-view function
+            displayDetailedReport(student);
         });
 
         studentListContainer.appendChild(item);
@@ -105,89 +106,182 @@ if (searchInput) {
     });
 }
 
-// 5. Render the Main Details Panel
-function renderStudentDetails(student) {
-    // Get the course the mentor/admin currently has active in their own local storage
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+// ==========================================
+// 5. COMPREHENSIVE STUDENT REPORT GENERATOR (CLEAN UI)
+// ==========================================
+function displayDetailedReport(student) {
+    if (!student) {
+        detailsPanel.innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-user-slash" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
+                <h3>Student Data Not Found</h3>
+                <p>Unable to load detailed records for this user.</p>
+            </div>`;
+        return;
+    }
+
+    // --- 1. AGGREGATE DATA ACROSS ALL COURSES ---
+    const knownCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     
-    // Extract data
-    const courseData = student[activeCourse] || {};
-    const solvedCount = courseData.solvedQuestions ? courseData.solvedQuestions.length : 0;
-    
-    // Calculate unique mistakes
-    const practiceMistakes = courseData.mistakes || [];
-    const examMistakes = courseData.examMistakes || [];
-    const totalUniqueMistakes = [...new Set([...practiceMistakes, ...examMistakes])].length;
+    let globalHistory = [];
+    let totalSolved = 0;
+    let globalMistakesSet = new Set();
+    let coursesHtml = '';
 
-    // Calculate accuracy
-    const totalAttempts = solvedCount + totalUniqueMistakes;
-    const accuracy = totalAttempts > 0 ? Math.round((solvedCount / totalAttempts) * 100) : 0;
-    const examHistory = courseData.examHistory || [];
+    knownCourses.forEach(courseKey => {
+        const courseData = student[courseKey];
+        if (courseData) {
+            // Aggregate Solved Questions
+            if (courseData.solvedQuestions) {
+                totalSolved += courseData.solvedQuestions.length;
+            }
 
-    // Build the UI using our clean CSS classes
-    let html = `
-        <div class="details-header">
-            <h1>${student.fullName || "Unnamed User"}</h1>
-            <div class="details-meta">${student.email || "No Email"} &bull; Viewing Data For: <span class="course-badge">${activeCourse}</span></div>
-        </div>
+            // Aggregate Unique Mistakes
+            if (courseData.mistakes) {
+                courseData.mistakes.forEach(m => globalMistakesSet.add(m));
+            }
+            if (courseData.examMistakes) {
+                courseData.examMistakes.forEach(m => globalMistakesSet.add(m));
+            }
 
-        <div class="stats-grid">
-            <div class="stat-card green">
-                <div class="stat-title">Total Solved</div>
-                <div class="stat-value">${solvedCount}</div>
-            </div>
-            <div class="stat-card red">
-                <div class="stat-title">Total Mistakes</div>
-                <div class="stat-value">${totalUniqueMistakes}</div>
-            </div>
-            <div class="stat-card blue">
-                <div class="stat-title">Overall Accuracy</div>
-                <div class="stat-value">${accuracy}%</div>
-            </div>
-        </div>
+            // Aggregate Exam History
+            if (courseData.examHistory) {
+                const taggedHistory = courseData.examHistory.map(ex => ({ ...ex, courseName: courseKey }));
+                globalHistory.push(...taggedHistory);
+            }
 
-        <div class="history-section">
-            <h3>Exam History</h3>
-    `;
+            // Build Topic & Subject Breakdown
+            if (courseData.revisions && Object.keys(courseData.revisions).length > 0) {
+                const topics = courseData.revisions;
+                let topicRows = '';
+                
+                Object.keys(topics).forEach(topicName => {
+                    const data = topics[topicName];
+                    const accClass = data.lastAccuracy >= 75 ? 'text-green' : (data.lastAccuracy >= 50 ? 'text-yellow' : 'text-red');
+                    
+                    topicRows += `
+                        <div class="topic-row">
+                            <div class="topic-name">
+                                <i class="fas fa-book-open"></i> ${topicName.replace(/-/g, ' ').toUpperCase()}
+                            </div>
+                            <div class="topic-stats">
+                                <span>Accuracy: <strong class="${accClass}">${data.lastAccuracy}%</strong></span>
+                                <span>Level: <strong>Stage ${data.intervalStep || 1}</strong></span>
+                            </div>
+                        </div>
+                    `;
+                });
 
-    if (examHistory.length === 0) {
-        html += `<div class="empty-state" style="height: 100px;"><p>No exams taken yet.</p></div>`;
+                coursesHtml += `
+                    <div class="course-group">
+                        <div class="course-group-title">
+                            📘 ${courseKey.replace('_', ' ').toUpperCase()}
+                        </div>
+                        ${topicRows}
+                    </div>
+                `;
+            }
+        }
+    });
+
+    if (!coursesHtml) {
+        coursesHtml = `<p class="empty-data-text">No specific topic or book data recorded yet.</p>`;
+    }
+
+    // Sort global history from newest to oldest
+    globalHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Calculate Global Stats
+    const totalMistakes = globalMistakesSet.size;
+    const totalAttempts = totalSolved + totalMistakes;
+    const overallAccuracy = totalAttempts > 0 ? Math.round((totalSolved / totalAttempts) * 100) : 0;
+
+    // --- 2. BUILD EXAM HISTORY TABLE ---
+    let historyHtml = '';
+    if (globalHistory.length === 0) {
+        historyHtml = `<p class="empty-data-text">No exams attempted yet.</p>`;
     } else {
-        html += `
-            <table class="history-table">
+        historyHtml = `
+            <table class="history-table detailed-history">
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Exam Name</th>
+                        <th>Exam / Source</th>
+                        <th>Course</th>
                         <th>Score</th>
-                        <th>Time Spent</th>
+                        <th>Solved</th>
+                        <th>Mistakes</th>
+                        <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
         `;
 
-        // Reverse to show newest exams at the top
-        examHistory.slice().reverse().forEach(ex => {
-            const isAssigned = ex.examName.includes("(Assigned)");
+        globalHistory.forEach(ex => {
+            const isAssigned = ex.examName && ex.examName.includes("(Assigned)");
             const badgeHtml = isAssigned ? `<span class="badge-assigned">Assigned</span>` : `<span class="badge-self">Self-Practice</span>`;
             
-            // Dynamic text color for score based on percentage
-            const scoreColor = ex.percentage >= 75 ? '#15803d' : (ex.percentage >= 50 ? '#d97706' : '#b91c1c');
-            const timeSpentStr = ex.timeSpentMinutes ? `${ex.timeSpentMinutes} min` : "N/A";
+            const scoreClass = ex.percentage >= 75 ? 'text-green' : (ex.percentage >= 50 ? 'text-yellow' : 'text-red');
+            const timeStr = ex.timeSpentMinutes ? `${ex.timeSpentMinutes} min` : "N/A";
 
-            html += `
+            historyHtml += `
                 <tr>
                     <td>${new Date(ex.date).toLocaleDateString()}</td>
-                    <td style="font-weight: 500;">${ex.examName} ${badgeHtml}</td>
-                    <td style="font-weight: bold; color: ${scoreColor};">${ex.percentage}%</td>
-                    <td>${timeSpentStr}</td>
+                    <td class="fw-bold">${ex.examName || 'Practice Session'} ${badgeHtml}</td>
+                    <td class="course-tag">${ex.courseName ? ex.courseName.replace('_', ' ') : '-'}</td>
+                    <td class="fw-bold ${scoreClass}">${ex.percentage || 0}%</td>
+                    <td class="fw-bold">${ex.totalQuestions || '-'}</td>
+                    <td class="fw-bold text-red">${ex.mistakes || '-'}</td>
+                    <td class="time-text">${timeStr}</td>
                 </tr>
             `;
         });
-
-        html += `</tbody></table>`;
+        historyHtml += `</tbody></table>`;
     }
 
-    html += `</div>`;
-    detailsPanel.innerHTML = html;
+    // --- 3. RENDER EVERYTHING USING CLEAN CLASSES ---
+    detailsPanel.innerHTML = `
+        <div class="details-header">
+            <div>
+                <h1>${student.fullName || 'Unknown Student'}</h1>
+                <div class="details-meta">
+                    📧 ${student.email || 'No email'} | 📞 ${student.phone || 'No phone'}
+                </div>
+            </div>
+            <div class="role-badge">
+                ${student.targetExam || student.role || 'Student'}
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="stat-title">Total Solved</div>
+                <div class="stat-value">${totalSolved}</div>
+            </div>
+            <div class="stat-card ${overallAccuracy >= 75 ? 'green' : (overallAccuracy >= 50 ? 'yellow' : 'red')}">
+                <div class="stat-title">Global Accuracy</div>
+                <div class="stat-value">${overallAccuracy}%</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-title">Total Mistakes</div>
+                <div class="stat-value">${totalMistakes}</div>
+            </div>
+        </div>
+
+        <div class="detailed-reports-grid">
+            
+            <div class="report-card">
+                <h3><i class="fas fa-layer-group text-blue"></i> Subject & Topic Proficiency</h3>
+                ${coursesHtml}
+            </div>
+
+            <div class="report-card">
+                <h3><i class="fas fa-history text-green"></i> Complete Exam History</h3>
+                <div class="table-responsive">
+                    ${historyHtml}
+                </div>
+            </div>
+            
+        </div>
+    `;
 }

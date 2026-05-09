@@ -1100,17 +1100,23 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         try {
             document.body.style.cursor = 'wait'; // Show loading cursor
             
-            // Clean the data to prevent Firebase from crashing on undefined values
-            const cleanPool = JSON.parse(JSON.stringify(questionsArray));
+            // FIX 1: Cap the questions for Multiplayer to prevent the 1MB Firestore limit crash!
+            let safeArray = questionsArray;
+            if (questionsArray.length > 50) {
+                safeArray = questionsArray.sort(() => 0.5 - Math.random()).slice(0, 50);
+            }
 
-            // Push the payload to the active room
-            await updateDoc(doc(db, "study_rooms", roomId), {
+            // Clean the data to prevent Firebase from crashing on undefined values
+            const cleanPool = JSON.parse(JSON.stringify(safeArray));
+
+            // FIX 2: Use setDoc with { merge: true } instead of updateDoc. 
+            await setDoc(doc(db, "study_rooms", roomId), {
                 questions: cleanPool,
                 quizConfig: { mode, timer: timerMinutes, examName },
-                status: 'playing', // Signals to the waiting guests that the game has started!
+                status: 'playing', 
                 currentQuestionIndex: 0,
-                memberAnswers: {} // We will use this in Phase 2 to track who picked what
-            });
+                memberAnswers: {} 
+            }, { merge: true });
 
             // Save locally for the host as well
             localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
@@ -1121,7 +1127,7 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
             return;
         } catch (error) {
             console.error("Failed to sync room:", error);
-            alert("Error syncing questions to the study room. Check your internet connection.");
+            alert("Firebase Error: " + error.message);
             document.body.style.cursor = 'default';
             return;
         }
