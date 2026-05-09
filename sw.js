@@ -1,15 +1,16 @@
 const CACHE_NAME = 'edeetos-app-v3';
 
-// We are caching your core authentication files here
 const ASSETS_TO_CACHE = [
-  '/login.html',
-  '/login.js',
-  '/register.html',
-  '/register.js',
-  '/global.css',
-  '/auth.css',
-  '/firebase-config.js',
-  '/auth-check.js'
+  "./", // Caches the main directory (index.html)
+  "./index.html",
+  "./login.html",
+  "./login.js",
+  "./register.html",
+  "./register.js",
+  "./global.css",
+  "./auth.css",
+  "./firebase-config.js",
+  "./auth-check.js"
 ];
 
 // Install event: Caches the initial assets

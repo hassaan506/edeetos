@@ -138,3 +138,25 @@ if (iosBanner && closeIosBannerBtn) {
         iosBanner.style.display = 'none';
     });
 }
+let deferredPrompt;
+const installBtn = document.getElementById('install-app-btn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Save the event so it can be triggered later
+  e.preventDefault();
+  deferredPrompt = e;
+  // Make the button visible if it was hidden
+  installBtn.style.display = 'inline-block';
+});
+
+installBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User choice: ${outcome}`);
+    deferredPrompt = null;
+  } else {
+    // Show your manual install modal if the prompt isn't supported
+    document.getElementById('manual-install-modal').style.display = 'flex';
+  }
+});
