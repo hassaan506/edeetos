@@ -1191,8 +1191,9 @@ if (genericNames.includes(targetName)) {
 
     let correctCount = 0;
     quizQueue.forEach(q => {
+        if (!q || !q.options || !Array.isArray(q.options)) return;        
         const correctOpt = q.options.find(o => o.isCorrect);
-        if ((q.userSelectedAnswer && q.userSelectedAnswer === correctOpt.text) || q.sessionState === 'correct') {
+        if (correctOpt && ((q.userSelectedAnswer && q.userSelectedAnswer === correctOpt.text) || q.sessionState === 'correct')) {
             correctCount++;
         }
     });
