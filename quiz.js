@@ -26,6 +26,13 @@ const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
 const isExamMode = (quizConfig.mode === 'exam') && !activeRoomId;
 
+// ---------- NEW HELPER ----------
+// Checks if the current quiz session is from a book (not a course)
+function isBookSession() {
+    return quizQueue.length > 0 && quizQueue[0]?.isBookQuestion === true;
+}
+// ---------------------------------
+
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
 const questionTextEl = document.getElementById('question-text');
@@ -116,12 +123,26 @@ onAuthStateChanged(auth, async (user) => {
                 }
 
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                // Load progress from BOTH the course and the books bucket
                 const courseData = dbData[activeCourse] || {};
-                const savedNotes = courseData.notes || {};
-                const savedBookmarks = courseData.bookmarks || [];
-                const solvedList = courseData.solvedQuestions || [];
-                const mistakesList = courseData.mistakes || [];
-                const examMistakesList = courseData.examMistakes || [];
+                const booksData = dbData.books || {};
+                const savedNotes = { ...(courseData.notes || {}), ...(booksData.notes || {}) };
+                const savedBookmarks = [
+                    ...(courseData.bookmarks || []),
+                    ...(booksData.bookmarks || [])
+                ];
+                const solvedList = [
+                    ...(courseData.solvedQuestions || []),
+                    ...(booksData.solvedQuestions || [])
+                ];
+                const mistakesList = [
+                    ...(courseData.mistakes || []),
+                    ...(booksData.mistakes || [])
+                ];
+                const examMistakesList = [
+                    ...(courseData.examMistakes || []),
+                    ...(booksData.examMistakes || [])
+                ];
 
                 quizQueue.forEach(q => {
                     q.isBookmarked = savedBookmarks.includes(q.originalNumber);
@@ -140,7 +161,7 @@ onAuthStateChanged(auth, async (user) => {
             // Only auto-start if they aren't waiting in a multiplayer lobby
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
-				if (!isExamMode) buildNumberGrid();
+                if (!isExamMode) buildNumberGrid();
                 loadQuestion(0);
             }
         }
@@ -222,7 +243,7 @@ function buildNumberGrid() {
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
         
-numBtn.onclick = () => {
+        numBtn.onclick = () => {
             if (isExamMode) return; 
             
             // Lock out guests
@@ -289,7 +310,7 @@ function loadQuestion(index) {
         }
 
         wrongAttempts = 0;
-		hasAnsweredCorrectly = false;        
+        hasAnsweredCorrectly = false;        
         if (!isExamMode) updateFeedbackBar();
         
         if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
@@ -319,7 +340,7 @@ function loadQuestion(index) {
         explanationText.innerHTML = currentQuestionData.explanation || "No explanation provided.";
 
         optionsContainer.innerHTML = '';
-		shuffleArray(currentQuestionData.options);
+        shuffleArray(currentQuestionData.options);
         currentQuestionData.options.forEach(opt => {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
@@ -462,31 +483,32 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 3. DATABASE SYNC FUNCTIONS
+// 3. DATABASE SYNC FUNCTIONS (MODIFIED)
 // ==========================================
 async function savePracticeProgress(questionId, isCorrect) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return; 
 
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
-    let courseUpdates = {};
+    // Use 'books' bucket for book sessions, otherwise the active course
+    const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
+    let updates = {};
 
     if (isCorrect) {
         const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
-        courseUpdates.solvedQuestions = arrayUnion(questionId); 
+        updates.solvedQuestions = arrayUnion(questionId); 
 
         if (isReviewMistakesMode) {
-            courseUpdates.mistakes = arrayRemove(questionId);      
-            courseUpdates.examMistakes = arrayRemove(questionId);   
+            updates.mistakes = arrayRemove(questionId);      
+            updates.examMistakes = arrayRemove(questionId);   
         }
     } else {
-        courseUpdates.mistakes = arrayUnion(questionId);
+        updates.mistakes = arrayUnion(questionId);
     }
 
     try {
-        await setDoc(userRef, { [activeCourse]: courseUpdates }, { merge: true });
+        await setDoc(userRef, { [rootKey]: updates }, { merge: true });
     } catch (error) { console.error("Error saving practice progress:", error); }
 }
 
@@ -495,13 +517,13 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     const user = auth.currentUser;
     if (!user) return; 
 
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
+    const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     
     try {
-        let courseUpdates = {};
-        if (correctIds.length > 0) courseUpdates.examMistakes = arrayRemove(...correctIds);  
-        if (mistakeIds.length > 0) courseUpdates.examMistakes = arrayUnion(...mistakeIds);
+        let updates = {};
+        if (correctIds.length > 0) updates.examMistakes = arrayRemove(...correctIds);  
+        if (mistakeIds.length > 0) updates.examMistakes = arrayUnion(...mistakeIds);
 
         const examTitle = quizConfig.examName || "Custom Exam"; 
         const examRecord = {
@@ -511,10 +533,10 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
             percentage: Math.round((correctCount / totalQuestions) * 100),
             date: new Date().toISOString() 
         };
-        courseUpdates.examHistory = arrayUnion(examRecord);
+        updates.examHistory = arrayUnion(examRecord);
 
-        if (Object.keys(courseUpdates).length > 0) {
-            await setDoc(userRef, { [activeCourse]: courseUpdates }, { merge: true });
+        if (Object.keys(updates).length > 0) {
+            await setDoc(userRef, { [rootKey]: updates }, { merge: true });
         }
     } catch (error) { console.error("Error saving exam progress:", error); }
 }
@@ -524,11 +546,11 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     const user = auth.currentUser;
     if (!user) return; 
     
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
+    const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     
     try {
-        await setDoc(userRef, { [activeCourse]: { bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId) } }, { merge: true });
+        await setDoc(userRef, { [rootKey]: { bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId) } }, { merge: true });
     } catch (error) { console.error("Error updating bookmark:", error); }
 }
 
@@ -537,11 +559,11 @@ async function saveNoteToFirebase(questionId, noteText) {
     const user = auth.currentUser;
     if (!user) return; 
     
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
+    const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     
     try {
-        await setDoc(userRef, { [activeCourse]: { notes: { [questionId]: noteText } } }, { merge: true });
+        await setDoc(userRef, { [rootKey]: { notes: { [questionId]: noteText } } }, { merge: true });
     } catch (error) { console.error("Error saving note:", error); }
 }
 
@@ -691,8 +713,7 @@ if (roomRef) {
     onSnapshot(roomRef, (snapshot) => {
         const data = snapshot.data();
 
-if (!data || data.status === "ended") {
-            // Trigger the modal, passing 'true' to indicate they are a guest
+        if (!data || data.status === "ended") {
             showPracticeCompleteModal(true);
             return;
         }
@@ -726,7 +747,7 @@ if (!data || data.status === "ended") {
                 quizQueue = data.questions;
                 quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
                 
-                buildNumberGrid(); // Rebuild the number grid UI for the new set!
+                buildNumberGrid();
                 loadQuestion(data.currentQuestionIndex || 0);
             }
         }
@@ -737,19 +758,17 @@ if (!data || data.status === "ended") {
             triggerSlideTransition(data.currentQuestionIndex, direction);
         }
 
-// 4. LIVE VOTING TRACKER & VISUAL ROSTER
+        // 4. LIVE VOTING TRACKER & VISUAL ROSTER
         if (data.status === "playing" && activeRoomId) {
             const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
             const activeMembers = data.activeMembers || {};
             const answerCount = Object.keys(currentAnswers).length;
             const memberCount = Object.keys(activeMembers).length || 1;
 
-            // --- INJECT VISUAL ROSTER HERE ---
             let rosterBox = document.getElementById('mp-roster-box');
             if (!rosterBox) {
                 rosterBox = document.createElement('div');
                 rosterBox.id = 'mp-roster-box';
-                // Floats the roster on the top right of the screen
                 rosterBox.style.cssText = "position: fixed; top: 100px; right: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 220px; z-index: 1000; border: 1px solid #e2e8f0;";
                 cardEl.parentElement.insertBefore(rosterBox, cardEl);
             }
@@ -777,7 +796,6 @@ if (!data || data.status === "ended") {
                 `;
             });
             rosterBox.innerHTML = rosterHtml;
-            // --- END VISUAL ROSTER ---
 
             let waitEl = document.getElementById('multiplayer-waiting-text');
             if (!waitEl) {
@@ -858,7 +876,6 @@ function showResults() {
         titleEl.style.color = "#991b1b";
     }
 
-    // FIX: Override the hardcoded button to await saves before redirecting
     const returnBtn = resultsEl.querySelector('button');
     if (returnBtn) {
         returnBtn.onclick = async (e) => {
@@ -1019,7 +1036,7 @@ document.addEventListener('keydown', (e) => {
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
         case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else window.location.href = 'questions.html'; break;
         case 'Enter': e.preventDefault(); if (isExplanationOpen) document.getElementById('close-explanation').click(); else if (isExamMode && nextBtnLocal) nextBtnLocal.click(); break;
-		case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) document.getElementById('close-explanation').click(); else explanationBtn.click(); } break;
+        case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) document.getElementById('close-explanation').click(); else explanationBtn.click(); } break;
         case 'p': case 'P': e.preventDefault(); if (isExamMode && skipBtn) skipBtn.click(); break;
         case 's': case 'S': e.preventDefault(); if (currentQuestionData) document.getElementById('bookmark-btn').click(); break;
         case 'a': case 'A': case '1': selectOptionByIndex(0); break;
@@ -1164,10 +1181,9 @@ async function updateSpacedRepetition() {
         const docSnap = await getDoc(userRef);
         const dbData = docSnap.data() || {};
 
-        const isBookSession = quizQueue.some(q => q.isBookQuestion);
-
-        // FIX: Look in the correct 'revisions' object so we don't wipe your past history
-        const currentRevisions = isBookSession
+        const isBookSessionLocal = isBookSession();   // use our helper
+        // Look in the correct 'revisions' object so we don't wipe past history
+        const currentRevisions = isBookSessionLocal
                 ? (dbData.books?.revisions || {})
                 : (dbData[activeCourse]?.revisions || {});
 
@@ -1180,12 +1196,12 @@ async function updateSpacedRepetition() {
             const chapter = question.Chapter || question.chapter || "Unknown Chapter";
             const topic = question.Topic || question.topic || "Unknown Topic";
 
-            const sourceType = question.isBookQuestion ? 'book' : 'course';
+            // sourceName for books uses the stored bookName (file name)
             const sourceName = question.isBookQuestion
                     ? (question.bookName || question.Subject || 'Reference Book')
                     : activeCourse;
 
-            // FIX: Use a safe delimiter '::' instead of replacing spaces with underscores
+            // Use a safe delimiter '::' instead of replacing spaces with underscores
             const topicId = `${subject}::${chapter}::${topic}::${sourceName}`.replace(/[.#$/[\]]/g, '');
 
             let isCorrect = false;
@@ -1209,7 +1225,8 @@ async function updateSpacedRepetition() {
             const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
 
             revisionsData[topicId] = {
-                subject, chapter, topic, sourceType, sourceName,
+                subject, chapter, topic, sourceType: question.isBookQuestion ? 'book' : 'course',
+                sourceName: sourceName,
                 solvedQuestionsCount: solvedCount, mistakesCount,
                 accuracy, lastAccuracy: accuracy,
                 dueDate: nextDueTime, intervalStep: currentStep, status: "pending",
@@ -1217,7 +1234,7 @@ async function updateSpacedRepetition() {
             };
         });
 
-        if (isBookSession) {
+        if (isBookSessionLocal) {
             await setDoc(userRef, { books: { revisions: revisionsData } }, { merge: true });
         } else {
             await setDoc(userRef, { [activeCourse]: { revisions: revisionsData } }, { merge: true });
