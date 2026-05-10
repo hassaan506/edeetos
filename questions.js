@@ -53,11 +53,31 @@ const allBooks = [
 ];
 const availableBooks = allBooks.filter(book => {
     if (book.file === "rafiullah") {
-        return activeCourse.startsWith("fcps_"); 
+        return activeCourse.startsWith("fcps_part1"); 
     }    
     return true; 
 });
 
+// ==========================================
+// MULTIPLAYER CLEANUP & HOST BANNER
+// ==========================================
+const activeRoomId = localStorage.getItem('active_study_room');
+const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+if (activeRoomId) {
+    if (isGuest) {
+        // BUG FIX 1: Guests shouldn't be on the dashboard while in a room. 
+        // If they are here, they manually left or the room ended. Clean it up so solo practice works!
+        localStorage.removeItem('active_study_room');
+        localStorage.removeItem('is_study_guest');
+    } else {
+        // UX BONUS: Let the Host know their guests are waiting!
+        const hostBanner = document.createElement('div');
+        hostBanner.style.cssText = "background: #f59e0b; color: white; text-align: center; padding: 12px; font-weight: bold; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 6px rgba(0,0,0,0.1);";
+        hostBanner.innerHTML = `<i class="fas fa-users"></i> You are currently hosting a Study Room! Your guests are waiting in the lobby. Select a topic and click Start to resume.`;
+        document.body.prepend(hostBanner);
+    }
+}
 // ==========================================
 // 3. EVENT LISTENERS
 // ==========================================
@@ -1098,7 +1118,7 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     // 🚀 IF HOSTING A GROUP STUDY ROOM: Upload to Firebase instead of playing solo
     if (roomId && !isGuest) {
         try {
-            document.body.style.cursor = 'wait'; // Show loading cursor
+            document.body.style.cursor = 'wait'; 
             
             // FIX 1: Cap the questions for Multiplayer to prevent the 1MB Firestore limit crash!
             let safeArray = questionsArray;
@@ -1109,13 +1129,15 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
             // Clean the data to prevent Firebase from crashing on undefined values
             const cleanPool = JSON.parse(JSON.stringify(safeArray));
 
-            // FIX 2: Use setDoc with { merge: true } instead of updateDoc. 
+            // 🚀 BUG FIX 2: Reset answers and forceReveal so old votes don't contaminate the new quiz!
             await setDoc(doc(db, "study_rooms", roomId), {
                 questions: cleanPool,
                 quizConfig: { mode, timer: timerMinutes, examName },
                 status: 'playing', 
                 currentQuestionIndex: 0,
-                memberAnswers: {} 
+                answers: {},        // <-- WIPES OLD VOTES
+                memberAnswers: {},
+                forceReveal: {}     // <-- WIPES OLD REVEALS
             }, { merge: true });
 
             // Save locally for the host as well

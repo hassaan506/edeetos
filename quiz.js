@@ -1052,20 +1052,70 @@ const globalExitBtn = document.getElementById('global-exit-btn');
 if (globalExitBtn) {
     // If it's a multiplayer room, style it differently
     if (activeRoomId) {
+        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
         globalExitBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Leave Room';
         globalExitBtn.style.color = '#ef4444';
         globalExitBtn.style.borderColor = '#ef4444';
+
+        // --- NEW: Add "Return to Lobby" button for the Host ---
+        if (!isGuest) {
+            const lobbyBtn = document.createElement('button');
+            lobbyBtn.id = 'host-lobby-btn';
+            lobbyBtn.className = globalExitBtn.className; // Inherit existing classes
+            lobbyBtn.innerHTML = '<i class="fas fa-undo"></i> Return to Lobby';
+            
+            // Style it to stand out (Yellow/Orange) but not look like a destructive exit
+            lobbyBtn.style.color = '#f59e0b';
+            lobbyBtn.style.borderColor = '#f59e0b';
+            lobbyBtn.style.marginRight = '10px';
+
+            // Insert it right before the Leave Room button
+            globalExitBtn.parentNode.insertBefore(lobbyBtn, globalExitBtn);
+
+            lobbyBtn.onclick = async (e) => {
+                e.preventDefault();
+                if (!confirm("Stop the current quiz and return everyone to the lobby to pick new questions?")) {
+                    return;
+                }
+
+                lobbyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Returning...';
+                lobbyBtn.disabled = true;
+                globalExitBtn.style.display = 'none'; // Hide leave button to prevent double clicks
+
+                try {
+                    // 1. Save host's spaced repetition data before ending this set
+                    await updateSpacedRepetition();
+
+                    // 2. Reset the room to the waiting state
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), {
+                        status: "waiting",
+                        answers: deleteField(),
+                        memberAnswers: deleteField(),
+                        forceReveal: deleteField(),
+                        currentQuestionIndex: 0
+                    });
+
+                    // 3. Send host back to the dashboard to pick new questions!
+                    // Guests will stay in the room and see the "Waiting for Host..." screen.
+                    window.location.href = 'questions.html';
+                } catch (error) {
+                    console.error("Error returning to lobby:", error);
+                    lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+                }
+            };
+        }
     }
 
     globalExitBtn.onclick = async (e) => {
         e.preventDefault();
         
         // If it's multiplayer, ask for confirmation
-        if (activeRoomId && !confirm("Are you sure you want to leave the study group?")) {
+        if (activeRoomId && !confirm("Are you sure you want to completely leave and end the study group?")) {
             return;
         }
 
-        globalExitBtn.textContent = "Saving...";
+        globalExitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
         globalExitBtn.disabled = true;
 
         try {
@@ -1076,8 +1126,10 @@ if (globalExitBtn) {
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
                 if (!isGuest) {
+                    // Host leaves: Destroys the room
                     await updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() });
                 } else {
+                    // Guest leaves: Removes their name from the roster
                     await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
                 }
             }
@@ -1108,10 +1160,16 @@ async function updateSpacedRepetition() {
     const genericNames = ["Practice Session", "Review Mistakes", "Custom Exam"];
 
     if (genericNames.includes(targetName)) {
-        // Group by the highest logical tier available to prevent topic fragmentation
+        // The code attempts to read the columns from your CSV file here
         topicsAttempted = [...new Set(quizQueue.map(q => q.Subject || q.Chapter || q.Topic).filter(Boolean))];
+        
+        // NEW SAFEGUARD: If the CSV columns are empty, fallback to a default name 
+        // so it doesn't crash or create invisible database entries.
+        if (topicsAttempted.length === 0) {
+            topicsAttempted = ["Uncategorized Practice"];
+        }
     } else {
-        // Force the system to use the EXACT button you clicked (e.g., "Histology")
+        // Force the system to use the EXACT button you clicked
         topicsAttempted = [targetName];
     }
 
@@ -1137,7 +1195,8 @@ async function updateSpacedRepetition() {
         let revisionsData = {};
 
         topicsAttempted.forEach(topic => {
-            const cleanTopic = topic.replace(/\./g, '-'); 
+            // Clean the topic name so Firebase doesn't crash on invalid characters
+            const cleanTopic = String(topic).replace(/\./g, '-'); 
             let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
             
             if (accuracy >= 75) {

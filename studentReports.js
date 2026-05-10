@@ -120,7 +120,33 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         return;
     }
 
-    const knownCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
+    // 1. UPDATED: Added the missing books to the known courses array
+    const knownCourses = [
+        'fcps_part1', 'fcps_part2', 'fcps_imm', 
+        'mrcs_part1', 'mrcs_part2', 
+        'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5',
+        'firstaid_step1', 'rafiullah', 'im_medicine', 'im_surgery', 'brs_patho', 'brs_physio'
+    ];
+
+    // 2. NEW: Added a mapping to display proper, clean titles for the UI
+    const courseTitles = {
+        'fcps_part1': 'FCPS Part 1',
+        'fcps_part2': 'FCPS Part 2',
+        'fcps_imm': 'FCPS IMM',
+        'mrcs_part1': 'MRCS Part 1',
+        'mrcs_part2': 'MRCS Part 2',
+        'mbbs_year1': 'MBBS Year 1',
+        'mbbs_year2': 'MBBS Year 2',
+        'mbbs_year3': 'MBBS Year 3',
+        'mbbs_year4': 'MBBS Year 4',
+        'mbbs_year5': 'MBBS Year 5',
+        'firstaid_step1': 'First Aid Step 1',
+        'rafiullah': 'Rafiullah FCPS',
+        'im_medicine': 'Irfan Masood - Medicine',
+        'im_surgery': 'Irfan Masood - Surgery',
+        'brs_patho': 'BRS - Pathology',
+        'brs_physio': 'BRS - Physiology'
+    };
     
     // Always show all courses in the dropdown, even if no data exists yet
     let availableCourses = [...knownCourses];
@@ -128,7 +154,9 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
     let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Courses / Overview</option>`;
     availableCourses.forEach(c => {
         const isSelected = activeCourseFilter === c ? 'selected' : '';
-        courseOptionsHtml += `<option value="${c}" ${isSelected}>${c.replace('_', ' ').toUpperCase()}</option>`;
+        // UPDATED: Use the courseTitles mapping for the dropdown labels
+        const displayTitle = courseTitles[c] || c.replace('_', ' ').toUpperCase();
+        courseOptionsHtml += `<option value="${c}" ${isSelected}>${displayTitle}</option>`;
     });
 
     // --- 1. AGGREGATE DATA BASED ON FILTER ---
@@ -183,10 +211,12 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
                     `;
                 });
 
+                // UPDATED: Use the courseTitles mapping for the section headers
+                const sectionTitle = courseTitles[courseKey] || courseKey.replace('_', ' ').toUpperCase();
                 coursesHtml += `
                     <div class="course-group">
                         <div class="course-group-title">
-                            📘 ${courseKey.replace('_', ' ').toUpperCase()}
+                            📘 ${sectionTitle}
                         </div>
                         ${topicRows}
                     </div>
@@ -234,12 +264,15 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
             
             const scoreClass = ex.percentage >= 75 ? 'text-green' : (ex.percentage >= 50 ? 'text-yellow' : 'text-red');
             const timeStr = ex.timeSpentMinutes ? `${ex.timeSpentMinutes} min` : "N/A";
+            
+            // UPDATED: Use the mapping for the table rows as well
+            const tableCourseName = ex.courseName ? (courseTitles[ex.courseName] || ex.courseName.replace('_', ' ')) : '-';
 
             historyHtml += `
                 <tr>
                     <td>${new Date(ex.date).toLocaleDateString()}</td>
                     <td class="fw-bold">${ex.examName || 'Practice Session'} ${badgeHtml}</td>
-                    <td class="course-tag">${ex.courseName ? ex.courseName.replace('_', ' ') : '-'}</td>
+                    <td class="course-tag">${tableCourseName}</td>
                     <td class="fw-bold ${scoreClass}">${ex.percentage || 0}%</td>
                     <td class="fw-bold">${ex.totalQuestions || '-'}</td>
                     <td class="fw-bold text-red">${ex.mistakes || '-'}</td>
