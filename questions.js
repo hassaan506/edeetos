@@ -1,6 +1,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 // ==========================================
 // 1. STATE VARIABLES
 // ==========================================
@@ -38,11 +39,13 @@ const unattemptedFilter = document.getElementById('unattempted-filter');
 const sidebarEl = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
 const viewTitle = document.getElementById('current-view-title');
+
 const savedCourse = localStorage.getItem('edeetos_active_course');
 if (!savedCourse) {
     window.location.href = 'dashboard.html';
 }
 const activeCourse = savedCourse;
+
 const allBooks = [
     { file: "firstaid_step1", title: "First Aid Step 1" },
     { file: "rafiullah", title: "Rafiullah FCPS" },
@@ -53,7 +56,7 @@ const allBooks = [
 ];
 const availableBooks = allBooks.filter(book => {
     if (book.file === "rafiullah") {
-        return activeCourse.startsWith("fcps_part1"); 
+        return activeCourse && activeCourse.startsWith("fcps_part1"); 
     }    
     return true; 
 });
@@ -75,6 +78,7 @@ if (activeRoomId) {
         document.body.prepend(hostBanner);
     }
 }
+
 // ==========================================
 // 3. EVENT LISTENERS
 // ==========================================
@@ -350,6 +354,24 @@ popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupHistory = 
 // ==========================================
 // 4. CORE FUNCTIONS
 // ==========================================
+
+// Extracted parseCSV globally to prevent duplicating this code everywhere
+function parseCSV(text) {
+    let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+    for (l of text) {
+        if ('"' === l) {
+            if (s && l === p) row[i] += l;
+            s = !s;
+        } else if (',' === l && s) l = row[++i] = '';
+        else if ('\n' === l && s) {
+            if ('\r' === p) row[i] = row[i].slice(0, -1);
+            row = ret[++r] = [l = '']; i = 0;
+        } else row[i] += l;
+        p = l;
+    }
+    return ret;
+}
+
 function toggleSidebar(show) {
     if (show) {
         sidebarEl.classList.add('active');
@@ -422,25 +444,9 @@ async function loadAndRenderBookChapters(book) {
 
         const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
         if (!response.ok) throw new Error("File not found");
-        const csvText = await response.text();
+        const csvText = (await response.text()).replace(/^\uFEFF/, ''); // Strip potential BOM characters
 
-        function parseCSV(text) {
-            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-            for (l of text) {
-                if ('"' === l) {
-                    if (s && l === p) row[i] += l;
-                    s = !s;
-                } else if (',' === l && s) l = row[++i] = '';
-                else if ('\n' === l && s) {
-                    if ('\r' === p) row[i] = row[i].slice(0, -1);
-                    row = ret[++r] = [l = '']; i = 0;
-                } else row[i] += l;
-                p = l;
-            }
-            return ret;
-        }
-
-        const rows = parseCSV(csvText);
+        const rows = parseCSV(csvText); // Calling our globally extracted parseCSV function
         const headers = rows[0].map(h => h ? h.trim() : "");
         let bookQuestions = [];
 
@@ -612,25 +618,9 @@ async function loadDataAndBuildTree() {
 
         const response = await fetch(csvPath, { cache: 'no-cache' });
         if (!response.ok) throw new Error("CSV file not found: " + csvPath);
-        const csvText = await response.text();
+        const csvText = (await response.text()).replace(/^\uFEFF/, ''); // Strip BOM here too
 
-        function parseCSV(text) {
-            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-            for (l of text) {
-                if ('"' === l) {
-                    if (s && l === p) row[i] += l;
-                    s = !s;
-                } else if (',' === l && s) l = row[++i] = '';
-                else if ('\n' === l && s) {
-                    if ('\r' === p) row[i] = row[i].slice(0, -1);
-                    row = ret[++r] = [l = '']; i = 0;
-                } else row[i] += l;
-                p = l;
-            }
-            return ret;
-        }
-
-        const rows = parseCSV(csvText);
+        const rows = parseCSV(csvText); // Calling our globally extracted parseCSV function
         const headers = rows[0].map(h => h ? h.trim() : "");
         const dataRows = rows.slice(1);
 
@@ -860,23 +850,7 @@ async function loadAndOpenBook(book) {
         if (!response.ok) throw new Error("File not found");
         const csvText = (await response.text()).replace(/^\uFEFF/, '');
 
-        function parseCSV(text) {
-            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-            for (l of text) {
-                if ('"' === l) {
-                    if (s && l === p) row[i] += l;
-                    s = !s;
-                } else if (',' === l && s) l = row[++i] = '';
-                else if ('\n' === l && s) {
-                    if ('\r' === p) row[i] = row[i].slice(0, -1);
-                    row = ret[++r] = [l = '']; i = 0;
-                } else row[i] += l;
-                p = l;
-            }
-            return ret;
-        }
-
-        const rows = parseCSV(csvText);
+        const rows = parseCSV(csvText); // Calling our globally extracted parseCSV function
         const headers = rows[0].map(h => h ? h.trim() : "");
         let bookQuestions = [];
 
@@ -1151,10 +1125,8 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
 				currentUserRole = dbData.role || 'STUDENT';
-                const activeCourse = localStorage.getItem('edeetos_active_course');
-                const courseData = dbData[activeCourse] || {};
+				isPremiumUser = false;
 
-                isPremiumUser = false; 
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
                     isPremiumUser = true;
                 } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
@@ -1168,28 +1140,101 @@ onAuthStateChanged(auth, async (user) => {
                         }
                     }
                 }
-				
-                const solvedList = (courseData.solvedQuestions || []).map(id => String(id));
-                globalPracticeMistakes = (courseData.mistakes || []).map(id => String(id));
-                globalExamMistakes = (courseData.examMistakes || []).map(id => String(id));
-                globalBookmarks = (courseData.bookmarks || []).map(id => String(id));
+                
+                // Note: The duplicated check block mapping to `activeCourse` that caused the TDZ crash has been successfully removed here.
 
-                userExamHistory = courseData.examHistory || [];
+                // ==========================================
+                // LOAD COURSE DATA
+                // ==========================================
+
+                const courseData = dbData[activeCourse] || {};
+
+                // ==========================================
+                // LOAD BOOK DATA
+                // ==========================================
+
+                const booksData = dbData.books || {};
+
+                // ==========================================
+                // COURSE STATS
+                // ==========================================
+
+                const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
+                const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
+                const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
+                const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
+
+                // ==========================================
+                // BOOK STATS
+                // ==========================================
+
+                const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
+                const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
+                const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
+                const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
+
+                // ==========================================
+                // MERGED GLOBAL DATA
+                // ==========================================
+
+                const solvedList = [...new Set([...courseSolved, ...bookSolved])];
+                globalPracticeMistakes = [...new Set([...coursePracticeMistakes, ...bookPracticeMistakes])];
+                globalExamMistakes = [...new Set([...courseExamMistakes, ...bookExamMistakes])];
+                globalBookmarks = [...new Set([...courseBookmarks, ...bookBookmarks])];
+
+                // ==========================================
+                // EXAM HISTORY
+                // ==========================================
+
+                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
+
+                // ==========================================
+                // ATTEMPTS
+                // ==========================================
+
                 attemptedQuestions = solvedList;
 
+                // ==========================================
+                // LOAD DATA
+                // ==========================================
+
                 await loadDataAndBuildTree();
-				await injectBooksGlobally(); 
-                
+                await injectBooksGlobally();
+
+                // ==========================================
+                // ANALYTICS
+                // ==========================================
+
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
                 const totalAttempts = solvedList.length + allMistakes.length;
+
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
 
-                if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
-                if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
-                if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
-                if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+                // ==========================================
+                // UPDATE DASHBOARD
+                // ==========================================
+
+                if (document.getElementById('stat-solved')) {
+                    document.getElementById('stat-solved').textContent = solvedList.length;
+                }
+
+                if (document.getElementById('stat-mistakes')) {
+                    document.getElementById('stat-mistakes').textContent = allMistakes.length;
+                }
+
+                if (document.getElementById('stat-bookmarks')) {
+                    document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
+                }
+
+                if (document.getElementById('stat-accuracy')) {
+                    document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+                }
                 
-                const revisions = courseData.revisions || {};
+                const revisions = {
+                    ...(courseData.revisions || {}),
+                    ...(booksData.revisions || {})
+                };
+                
                 const now = Date.now();
                 const dueTopics = [];
 
@@ -1212,9 +1257,9 @@ onAuthStateChanged(auth, async (user) => {
                     `;
 
                     dueTopics.forEach(item => {
-                        const safeTopic = item.topic.replace(/'/g, "\\'");
+                        const safeTopic = encodeURIComponent(item.topic);
                         revHtml += `
-                            <button class="revision-btn" onclick="window.generateRevisionQuiz('${safeTopic}')">
+                            <button class="revision-btn" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
                                 ${item.topic} (Day ${item.step})
                             </button>
                         `;
@@ -1594,51 +1639,157 @@ if (journeyModal) {
     };
 }
 
-// --- SPACED REPETITION GENERATOR ---
-window.generateRevisionQuiz = function(topicName) {
-    const topicPool = allQuestions.filter(q => q.Topic === topicName || q.Chapter === topicName || q.Subject === topicName);
+window.generateRevisionQuiz = function(topicId) {
 
-    if (topicPool.length === 0) return alert("No questions available for this topic.");
+    if (!topicId) {
+        return alert("Invalid revision topic.");
+    }
+
+    // =========================================
+    // PARSE TOPIC ID
+    // =========================================
+
+    const parts = topicId.split('_');
+
+    const sourceName = parts.pop();
+
+    const topic = parts.pop() || '';
+
+    const chapter = parts.pop() || '';
+
+    const subject = parts.join('_') || '';
+
+    // =========================================
+    // DETERMINE BOOK / COURSE
+    // =========================================
+
+    const isBookRevision =
+        sourceName.toLowerCase().includes('book') ||
+        sourceName.toLowerCase().includes('firstaid') ||
+        sourceName.toLowerCase().includes('rafiullah') ||
+        sourceName.toLowerCase().includes('brs');
+
+    // =========================================
+    // FILTER QUESTIONS
+    // =========================================
+
+    const topicPool = allQuestions.filter(q => {
+
+        const qSubject = q.Subject || q.subject || '';
+        const qChapter = q.Chapter || q.chapter || '';
+        const qTopic = q.Topic || q.topic || '';
+        const qIsBook = q.isBookQuestion || false;
+
+        // =====================================
+        // STRICT MATCHING
+        // =====================================
+        const hierarchyMatch = (
+            qSubject.trim().toLowerCase() === subject.trim().toLowerCase() &&
+            qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() &&
+            qTopic.trim().toLowerCase() === topic.trim().toLowerCase()
+        );
+
+        // =====================================
+        // BOOK / COURSE SEPARATION
+        // =====================================
+        const sourceMatch = isBookRevision ? qIsBook : !qIsBook;
+
+        return hierarchyMatch && sourceMatch;
+    });
+
+    // =========================================
+    // NO QUESTIONS
+    // =========================================
+
+    if (topicPool.length === 0) {
+
+        console.warn(
+            "No matching questions found for:",
+            { subject, chapter, topic, sourceName }
+        );
+
+        return alert("No questions available for this revision topic.");
+    }
+
+    // =========================================
+    // MISTAKES + ATTEMPTS
+    // =========================================
 
     const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
 
     let weakPool = [];
     let strongPool = [];
+    let untouchedPool = [];
 
     topicPool.forEach(q => {
+
         const qId = getQID(q);
+
         if (allMistakes.includes(qId)) {
             weakPool.push(q);
         } else if (attemptedQuestions.includes(qId)) {
             strongPool.push(q);
+        } else {
+            untouchedPool.push(q);
         }
     });
 
+    // =========================================
+    // SHUFFLE
+    // =========================================
+
     weakPool = weakPool.sort(() => 0.5 - Math.random());
     strongPool = strongPool.sort(() => 0.5 - Math.random());
+    untouchedPool = untouchedPool.sort(() => 0.5 - Math.random());
+
+    // =========================================
+    // QUIZ GENERATION
+    // =========================================
 
     let finalQuiz = [];
 
-    if (weakPool.length === 0 && strongPool.length === 0) {
-        finalQuiz = topicPool.sort(() => 0.5 - Math.random()).slice(0, 15);
-    } else {
-        const targetWeak = Math.min(weakPool.length, 35);
-        const targetStrong = targetWeak > 0 ? Math.max(Math.floor(targetWeak * 0.4), 5) : 15;
+    // PRIORITIZE WEAK QUESTIONS
+    finalQuiz.push(...weakPool.slice(0, 20));
 
-        finalQuiz.push(...weakPool.slice(0, targetWeak));
-        finalQuiz.push(...strongPool.slice(0, targetStrong));
+    // THEN STRONG QUESTIONS
+    finalQuiz.push(...strongPool.slice(0, 10));
 
-        if (finalQuiz.length < 15) {
-            const remainingStrong = strongPool.slice(targetStrong);
-            finalQuiz.push(...remainingStrong.slice(0, 15 - finalQuiz.length));
-        }
+    // THEN NEW QUESTIONS
+    finalQuiz.push(...untouchedPool.slice(0, 25 - finalQuiz.length));
+
+    // =========================================
+    // FALLBACK
+    // =========================================
+
+    if (finalQuiz.length < 15) {
+        const remaining = topicPool.filter(q => !finalQuiz.includes(q));
+        finalQuiz.push(...remaining.slice(0, 15 - finalQuiz.length));
     }
 
-    finalQuiz = finalQuiz.sort(() => 0.5 - Math.random());
+    // =========================================
+    // FINAL SHUFFLE
+    // =========================================
 
-    if (finalQuiz.length === 0) return alert("Not enough data to generate a revision.");
+    finalQuiz = [...new Set(finalQuiz)].sort(() => 0.5 - Math.random());
 
-    window.launchQuiz(finalQuiz, 'practice', 0, `Revision: ${topicName}`);
+    // =========================================
+    // EMPTY SAFETY
+    // =========================================
+
+    if (finalQuiz.length === 0) {
+        return alert("Not enough data to generate revision.");
+    }
+
+    // =========================================
+    // LAUNCH
+    // =========================================
+
+    window.launchQuiz(
+        finalQuiz,
+        'practice',
+        0,
+        `Revision: ${subject} ➡ ${chapter} ➡ ${topic}`
+    );
 };
 
 async function injectBooksGlobally() {
@@ -1648,18 +1799,11 @@ async function injectBooksGlobally() {
             if (!response.ok) continue;
             const csvText = (await response.text()).replace(/^\uFEFF/, '');
             
-            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-            for (l of csvText) {
-                if ('"' === l) { if (s && l === p) row[i] += l; s = !s; }
-                else if (',' === l && s) l = row[++i] = '';
-                else if ('\n' === l && s) { if ('\r' === p) row[i] = row[i].slice(0, -1); row = ret[++r] = [l = '']; i = 0; }
-                else row[i] += l; p = l;
-            }
-            
-            const headers = ret[0].map(h => h ? h.trim() : "");
+            const rows = parseCSV(csvText); // Calling our globally extracted parseCSV function
+            const headers = rows[0].map(h => h ? h.trim() : "");
             let tempBookQs = [];
             
-            ret.slice(1).forEach((row, rowIndex) => {
+            rows.slice(1).forEach((row, rowIndex) => {
                 // STRICT FILTER: Ignore empty rows and ghost commas from Excel
                 if (row.join('').replace(/,/g, '').trim() === '') return;
 

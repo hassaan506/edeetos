@@ -1147,98 +1147,262 @@ if (globalExitBtn) {
     };
 }
 
-// --- SPACED REPETITION UPDATER ---
 async function updateSpacedRepetition() {
+
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+
     const user = auth.currentUser;
+
     if (!user) return;
 
-    let targetName = quizConfig.examName;
-    if (!targetName) targetName = "General";
+    let targetName = quizConfig.examName || "General";
+
     if (targetName.startsWith("Revision: ")) {
         targetName = targetName.replace("Revision: ", "");
     }
 
-    let topicsAttempted = [];
-    const genericNames = ["Practice Session", "Review Mistakes", "Custom Exam"];
+    const genericNames = [
+        "Practice Session",
+        "Review Mistakes",
+        "Custom Exam"
+    ];
 
-if (genericNames.includes(targetName)) {
-        // Build the FULL hierarchy string (Subject ➡ Chapter ➡ Topic)
-        topicsAttempted = [...new Set(quizQueue.map(q => {
-            let hierarchy = [];
-            
-            // If it's a book, tag it and add the book title first
-            if (q.isBookQuestion) {
-                hierarchy.push("📕 " + (q.Subject || "Reference Book"));
-                if (q.Chapter) hierarchy.push(q.Chapter);
-                if (q.Topic) hierarchy.push(q.Topic);
-            } 
-            // Standard course hierarchy
-            else {
-                if (q.Subject) hierarchy.push(q.Subject);
-                if (q.Chapter) hierarchy.push(q.Chapter);
-                if (q.Topic) hierarchy.push(q.Topic);
-            }
-            
-            return hierarchy.length > 0 ? hierarchy.join(" ➡ ") : "Uncategorized Practice";
-        }).filter(Boolean))];
-    } else {
-        // Force the system to use the EXACT button you clicked
-        topicsAttempted = [targetName];
-    }
+    const activeCourse =
+        localStorage.getItem('edeetos_active_course') ||
+        'fcps_part1';
 
-    if (topicsAttempted.length === 0) return;
-
-    let correctCount = 0;
-    quizQueue.forEach(q => {
-        if (!q || !q.options || !Array.isArray(q.options)) return;        
-        const correctOpt = q.options.find(o => o.isCorrect);
-        if (correctOpt && ((q.userSelectedAnswer && q.userSelectedAnswer === correctOpt.text) || q.sessionState === 'correct')) {
-            correctCount++;
-        }
-    });
-
-    const accuracy = quizQueue.length > 0 ? (correctCount / quizQueue.length) * 100 : 0;
-    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
-    
-    try {
-        const docSnap = await getDoc(userRef);
-        const dbData = docSnap.data() || {};
-        const currentRevisions = (dbData[activeCourse] && dbData[activeCourse].revisions) ? dbData[activeCourse].revisions : {};
-        
-        let revisionsData = {};
 
-        topicsAttempted.forEach(topic => {
-            // Clean the topic name so Firebase doesn't crash on invalid characters
-            const cleanTopic = String(topic).replace(/\./g, '-'); 
-            let currentStep = currentRevisions[cleanTopic] ? currentRevisions[cleanTopic].intervalStep : 0;
-            
-            if (accuracy >= 75) {
-                currentStep = currentStep === 0 ? 1 : (currentStep === 1 ? 7 : (currentStep === 7 ? 15 : 30));
-            } else {
-                currentStep = 1; 
+    try {
+
+        const docSnap = await getDoc(userRef);
+
+        const dbData = docSnap.data() || {};
+
+        // =========================================
+        // DETERMINE STORAGE LOCATION
+        // =========================================
+
+        const isBookSession =
+            quizQueue.some(q => q.isBookQuestion);
+
+        const storageKey =
+            isBookSession
+                ? 'books'
+                : activeCourse;
+
+        const currentRevisions =
+            isBookSession
+                ? (dbData.books || {})
+                : (
+                    dbData[activeCourse]?.revisions || {}
+                );
+
+        const revisionsData = {};
+
+        // =========================================
+        // PROCESS EACH QUESTION
+        // =========================================
+
+        quizQueue.forEach(question => {
+
+            if (!question) return;
+
+            // =====================================
+            // HIERARCHY
+            // =====================================
+
+            const subject =
+                question.Subject ||
+                question.subject ||
+                "Unknown Subject";
+
+            const chapter =
+                question.Chapter ||
+                question.chapter ||
+                "Unknown Chapter";
+
+            const topic =
+                question.Topic ||
+                question.topic ||
+                "Unknown Topic";
+
+            // =====================================
+            // SOURCE
+            // =====================================
+
+            const sourceType =
+                question.isBookQuestion
+                    ? 'book'
+                    : 'course';
+
+            const sourceName =
+                question.isBookQuestion
+                    ? (
+                        question.bookName ||
+                        question.Subject ||
+                        'Reference Book'
+                    )
+                    : activeCourse;
+
+            // =====================================
+            // UNIQUE TOPIC ID
+            // =====================================
+
+            const topicId = `
+                ${subject}_${chapter}_${topic}_${sourceName}
+            `
+            .replace(/[.#$/[\]]/g, '')
+            .replace(/\s+/g, '_');
+
+            // =====================================
+            // CORRECTNESS
+            // =====================================
+
+            let isCorrect = false;
+
+            if (
+                question.options &&
+                Array.isArray(question.options)
+            ) {
+
+                const correctOption =
+                    question.options.find(
+                        o => o.isCorrect
+                    );
+
+                isCorrect =
+                    correctOption &&
+                    (
+                        question.userSelectedAnswer === correctOption.text
+                        ||
+                        question.sessionState === 'correct'
+                    );
             }
 
-            // Production Math: Pushes the due date into the future.
-            const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
+            // =====================================
+            // EXISTING DATA
+            // =====================================
 
-            revisionsData[cleanTopic] = {
+            const existing =
+                currentRevisions[topicId] || {};
+
+            const solvedCount =
+                (existing.solvedQuestionsCount || 0) + 1;
+
+            const mistakesCount =
+                (existing.mistakesCount || 0) +
+                (isCorrect ? 0 : 1);
+
+            const accuracy =
+                Math.round(
+                    (
+                        (solvedCount - mistakesCount)
+                        /
+                        solvedCount
+                    ) * 100
+                );
+
+            // =====================================
+            // SPACED REPETITION
+            // =====================================
+
+            let currentStep =
+                existing.intervalStep || 0;
+
+            if (accuracy >= 75) {
+
+                currentStep =
+                    currentStep === 0
+                        ? 1
+                        : currentStep === 1
+                            ? 7
+                            : currentStep === 7
+                                ? 15
+                                : 30;
+
+            } else {
+
+                currentStep = 1;
+            }
+
+            const nextDueTime =
+                Date.now() +
+                (
+                    currentStep *
+                    24 *
+                    60 *
+                    60 *
+                    1000
+                );
+
+            // =====================================
+            // SAVE COMPLETE ANALYTICS
+            // =====================================
+
+            revisionsData[topicId] = {
+
+                // Hierarchy
+                subject,
+                chapter,
+                topic,
+
+                // Source
+                sourceType,
+                sourceName,
+
+                // Analytics
+                solvedQuestionsCount: solvedCount,
+                mistakesCount,
+
+                accuracy,
+                lastAccuracy: accuracy,
+
+                // Spaced repetition
                 dueDate: nextDueTime,
                 intervalStep: currentStep,
-                lastAccuracy: accuracy,
-                status: "pending"
+                status: "pending",
+
+                // Metadata
+                updatedAt: Date.now()
             };
         });
 
-        await setDoc(userRef, {
-            [activeCourse]: {
-                revisions: revisionsData
-            }
-        }, { merge: true });
+        // =========================================
+        // SAVE SEPARATELY
+        // =========================================
+
+        if (isBookSession) {
+
+            await setDoc(userRef, {
+
+                books: {
+                    revisions: revisionsData
+                }
+
+            }, { merge: true });
+
+        } else {
+
+            await setDoc(userRef, {
+
+                [activeCourse]: {
+                    revisions: revisionsData
+                }
+
+            }, { merge: true });
+        }
+
+        console.log(
+            "✅ Spaced repetition analytics updated successfully"
+        );
 
     } catch (error) {
-        console.error("Failed to update spaced repetition schedule:", error);
+
+        console.error(
+            "❌ Failed to update spaced repetition:",
+            error
+        );
     }
 }
 
