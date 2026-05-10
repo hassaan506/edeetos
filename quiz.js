@@ -963,7 +963,7 @@ document.getElementById('next-btn').onclick = async () => {
             try {
                 await updateDoc(doc(db, "study_rooms", activeRoomId), {
                     status: "waiting",
-                    answers: deleteField(),
+                    answers: {},
                     memberAnswers: deleteField(),
                     forceReveal: deleteField()
                 });
@@ -1090,7 +1090,7 @@ if (globalExitBtn) {
                     // 2. Reset the room to the waiting state
                     await updateDoc(doc(db, "study_rooms", activeRoomId), {
                         status: "waiting",
-                        answers: deleteField(),
+                        answers: {},
                         memberAnswers: deleteField(),
                         forceReveal: deleteField(),
                         currentQuestionIndex: 0
