@@ -21,19 +21,14 @@ onAuthStateChanged(auth, async (user) => {
             
             if (docSnap.exists()) {
                 const data = docSnap.data();
-                // Safely convert to string to prevent crashes if role is accidentally a number or null
                 const role = String(data.role || '').toUpperCase();
                 
-                // If they are not staff, kick them back to the dashboard
                 if (role !== 'MENTOR' && role !== 'ADMIN' && role !== 'MANAGEMENT') {
                     window.location.href = 'dashboard.html';
                 } else {
-                    // They are authorized! Fetch the students.
                     fetchStudents();
                 }
             } else {
-                // FALLBACK: User is authenticated but missing a Firestore profile
-                console.error("User document not found in Firestore.");
                 if (studentListContainer) {
                     studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Error: Profile not found. Access denied.</p></div>`;
                 }
@@ -45,7 +40,7 @@ onAuthStateChanged(auth, async (user) => {
             }
         }
     } else {
-        window.location.href = 'index.html'; // Kick out guests
+        window.location.href = 'index.html';
     }
 });
 
@@ -55,7 +50,6 @@ async function fetchStudents() {
         const usersRef = collection(db, "users");
         const userSnap = await getDocs(usersRef);
         
-        // Reset the array just in case this function is called multiple times
         studentsData = []; 
         
         userSnap.forEach(docSnap => {
@@ -67,7 +61,6 @@ async function fetchStudents() {
             }
         });
 
-        // Sort alphabetically
         studentsData.sort((a, b) => (a.fullName || "A").localeCompare(b.fullName || "A"));
         
         if (studentListContainer) {
@@ -77,7 +70,7 @@ async function fetchStudents() {
     } catch (error) {
         console.error("Failed to load students:", error);
         if (studentListContainer) {
-            studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Database Error: Failed to fetch students. Do you have Firestore security rules configured correctly?</p></div>`;
+            studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Database Error: Failed to fetch students.</p></div>`;
         }
     }
 }
@@ -103,11 +96,9 @@ function renderStudentList(list) {
         `;
 
         item.addEventListener('click', () => {
-            // Remove 'active' class from all items, add to the clicked one
             document.querySelectorAll('.student-item').forEach(el => el.classList.remove('active'));
             item.classList.add('active');
             
-            // Call the upgraded god-view function
             if (typeof displayDetailedReport === 'function') {
                 displayDetailedReport(student);
             }
@@ -218,9 +209,6 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
     const sourceStats = {};
     const heatmapData = {};
 
-    // ==================================================
-    // STEP 1: GATHER ALL DATA (COURSES + BOOKS)
-    // ==================================================
     let allRevisions = [];
 
     // Collect Course Data
@@ -257,9 +245,6 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         }
     }
 
-    // ==================================================
-    // STEP 2: PROCESS & FILTER THE GATHERED DATA
-    // ==================================================
     allRevisions.forEach(item => {
         const topicId = item.topicId;
         const data = item.data;
@@ -274,21 +259,21 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
             sourceName = isBook ? subject : (titles[item.parentCourse] || 'Unknown Course');
         }
 
-        const solved = data.correctAnswers || data.solved || data.solvedQuestionsCount || 0;
-        const mistakes = data.wrongAnswers || data.mistakes || data.mistakesCount || 0;
+        const solved = data.solvedQuestionsCount || 0;
+        const mistakes = data.mistakesCount || 0;
         const attempts = solved + mistakes;
-        const accuracy = data.lastAccuracy ?? data.accuracy ?? (attempts > 0 ? Math.round((solved / attempts) * 100) : 0);
+        const accuracy = data.lastAccuracy ?? (attempts > 0 ? Math.round((solved / attempts) * 100) : 0);
 
-        // --- FILTERING LOGIC ---
+        // --- FILTERING LOGIC (UPDATED) ---
         let shouldInclude = false;
         
         if (activeCourseFilter === 'all') {
             shouldInclude = true;
         } else if (referenceBooks.includes(activeCourseFilter)) {
             // User selected a specific book filter (e.g. 'firstaid_step1')
-            const expectedBookTitle = titles[activeCourseFilter]; 
-            // Check if the current item belongs to this book
-            if (isBook && (sourceName === expectedBookTitle || subject === expectedBookTitle || data.sourceName === activeCourseFilter)) {
+            // The stored sourceName for books is now the book file name (e.g. 'firstaid_step1')
+            // or might still be the title for old data, so check both.
+            if (isBook && (data.sourceName === activeCourseFilter || data.sourceName === titles[activeCourseFilter])) {
                 shouldInclude = true;
             }
         } else if (standardCourses.includes(activeCourseFilter)) {
@@ -303,41 +288,31 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         totalSolved += solved;
         totalMistakes += mistakes;
 
-        // =========================
-        // SUBJECT ANALYTICS
-        // =========================
+        // Subject analytics
         if (!subjectStats[subject]) {
             subjectStats[subject] = { solved: 0, mistakes: 0 };
         }
         subjectStats[subject].solved += solved;
         subjectStats[subject].mistakes += mistakes;
 
-        // =========================
-        // CHAPTER ANALYTICS
-        // =========================
+        // Chapter analytics
         if (!chapterStats[chapter]) {
             chapterStats[chapter] = { solved: 0, mistakes: 0 };
         }
         chapterStats[chapter].solved += solved;
         chapterStats[chapter].mistakes += mistakes;
 
-        // =========================
-        // TOPIC ANALYTICS
-        // =========================
+        // Topic analytics
         topicStats[topic] = { accuracy, solved, mistakes };
 
-        // =========================
-        // SOURCE ANALYTICS
-        // =========================
+        // Source analytics
         if (!sourceStats[sourceName]) {
             sourceStats[sourceName] = { solved: 0, mistakes: 0 };
         }
         sourceStats[sourceName].solved += solved;
         sourceStats[sourceName].mistakes += mistakes;
 
-        // =========================
-        // HEATMAP
-        // =========================
+        // Heatmap
         const level = accuracy >= 80 ? 'excellent' : accuracy >= 60 ? 'good' : accuracy >= 40 ? 'average' : 'weak';
         heatmapData[topic] = level;
 
@@ -367,9 +342,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
     const totalAttempts = totalSolved + totalMistakes;
     const overallAccuracy = totalAttempts > 0 ? Math.round((totalSolved / totalAttempts) * 100) : 0;
 
-    // =========================================
-    // WEAKEST SUBJECT
-    // =========================================
+    // Weakest subject
     let weakestSubject = 'N/A';
     let weakestSubjectAccuracy = 100;
 
@@ -382,9 +355,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         }
     });
 
-    // =========================================
-    // WEAKEST CHAPTER
-    // =========================================
+    // Weakest chapter
     let weakestChapter = 'N/A';
     let weakestChapterAccuracy = 100;
 
@@ -397,9 +368,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         }
     });
 
-    // =========================================
-    // STRONGEST TOPIC
-    // =========================================
+    // Strongest topic
     let strongestTopic = 'N/A';
     let strongestAccuracy = 0;
 
@@ -410,9 +379,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         }
     });
 
-    // =========================================
-    // COURSE/BOOK PERFORMANCE
-    // =========================================
+    // Source performance
     let sourcePerformanceHtml = '';
 
     Object.entries(sourceStats).forEach(([source, stats]) => {
@@ -427,9 +394,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         `;
     });
 
-    // =========================================
-    // HEATMAP
-    // =========================================
+    // Heatmap
     let heatmapHtml = '';
     Object.entries(heatmapData).forEach(([topic, level]) => {
         heatmapHtml += `
@@ -437,34 +402,24 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         `;
     });
 
-    // =========================================
-    // MENTOR ANALYTICS
-    // =========================================
+    // Mentor insight
     const mentorInsight = `
         Student has solved ${totalSolved} questions
         with ${overallAccuracy}% overall accuracy.
         Weakest area is ${weakestSubject}.
     `;
 
-    // =========================================
-    // COMPARATIVE REPORT
-    // =========================================
+    // Comparative report
     const averageStudentAccuracy = 65;
     const comparisonDiff = overallAccuracy - averageStudentAccuracy;
     const comparisonText = comparisonDiff >= 0 ? `+${comparisonDiff}% above average` : `${comparisonDiff}% below average`;
 
-    // =========================================
-    // EXAM HISTORY
-    // =========================================
+    // Exam history
     examHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
     let historyHtml = '';
 
     if (examHistory.length === 0) {
-        historyHtml = `
-            <p class="empty-data-text">
-                No Exam History
-            </p>
-        `;
+        historyHtml = `<p class="empty-data-text">No Exam History</p>`;
     } else {
         historyHtml = `
             <table class="history-table">
@@ -486,10 +441,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
                 </tr>
             `;
         });
-        historyHtml += `
-                </tbody>
-            </table>
-        `;
+        historyHtml += `</tbody></table>`;
     }
 
     detailsPanel.innerHTML = `
@@ -520,9 +472,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
             </div>
             <div class="stat-card yellow">
                 <div class="stat-title">Strongest Topic</div>
-                <div class="stat-value" style="font-size:1rem;">
-                    ${strongestTopic}
-                </div>
+                <div class="stat-value" style="font-size:1rem;">${strongestTopic}</div>
             </div>
         </div>
 
@@ -562,9 +512,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
 
         <div class="report-card">
             <h3>🧠 Mentor Insights</h3>
-            <div class="mentor-insight">
-                ${mentorInsight}
-            </div>
+            <div class="mentor-insight">${mentorInsight}</div>
         </div>
 
         <div class="report-card">
@@ -578,9 +526,7 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         </div>
     `;
 
-    document
-        .getElementById('course-filter')
-        .addEventListener('change', (e) => {
-            displayDetailedReport(student, e.target.value);
-        });
+    document.getElementById('course-filter').addEventListener('change', (e) => {
+        displayDetailedReport(student, e.target.value);
+    });
 }
