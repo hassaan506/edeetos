@@ -20,7 +20,9 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             
             if (docSnap.exists()) {
-                const role = (docSnap.data().role || '').toUpperCase();
+                const data = docSnap.data();
+                // Safely convert to string to prevent crashes if role is accidentally a number or null
+                const role = String(data.role || '').toUpperCase();
                 
                 // If they are not staff, kick them back to the dashboard
                 if (role !== 'MENTOR' && role !== 'ADMIN' && role !== 'MANAGEMENT') {
@@ -29,9 +31,18 @@ onAuthStateChanged(auth, async (user) => {
                     // They are authorized! Fetch the students.
                     fetchStudents();
                 }
+            } else {
+                // FALLBACK: User is authenticated but missing a Firestore profile
+                console.error("User document not found in Firestore.");
+                if (studentListContainer) {
+                    studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Error: Profile not found. Access denied.</p></div>`;
+                }
             }
         } catch (error) {
             console.error("Auth check failed:", error);
+            if (studentListContainer) {
+                studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Authentication Error. Check your console.</p></div>`;
+            }
         }
     } else {
         window.location.href = 'index.html'; // Kick out guests
@@ -44,9 +55,12 @@ async function fetchStudents() {
         const usersRef = collection(db, "users");
         const userSnap = await getDocs(usersRef);
         
+        // Reset the array just in case this function is called multiple times
+        studentsData = []; 
+        
         userSnap.forEach(docSnap => {
             const data = docSnap.data();
-            const role = (data.role || 'STUDENT').toUpperCase();
+            const role = String(data.role || 'STUDENT').toUpperCase();
             
             if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
                 studentsData.push({ id: docSnap.id, ...data });
@@ -55,16 +69,23 @@ async function fetchStudents() {
 
         // Sort alphabetically
         studentsData.sort((a, b) => (a.fullName || "A").localeCompare(b.fullName || "A"));
-        renderStudentList(studentsData);
+        
+        if (studentListContainer) {
+            renderStudentList(studentsData);
+        }
 
     } catch (error) {
         console.error("Failed to load students:", error);
-        studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Failed to load data. Check console.</p></div>`;
+        if (studentListContainer) {
+            studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Database Error: Failed to fetch students. Do you have Firestore security rules configured correctly?</p></div>`;
+        }
     }
 }
 
 // 3. Render the sidebar list
 function renderStudentList(list) {
+    if (!studentListContainer) return;
+
     studentListContainer.innerHTML = '';
 
     if (list.length === 0) {
@@ -87,118 +108,9 @@ function renderStudentList(list) {
             item.classList.add('active');
             
             // Call the upgraded god-view function
-            displayDetailedReport(student);
-        });
-
-        studentListContainer.appendChild(item);
-    });
-}
-
-// 4. Search Filter Logic
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = studentsData.filter(s => 
-            (s.fullName && s.fullName.toLowerCase().includes(term)) || 
-            (s.email && s.email.toLowerCase().includes(term))
-        );
-        renderStudentList(filtered);
-    });
-}
-
-// ==========================================
-// 5. COMPREHENSIVE STUDENT REPORT GENERATOR (CLEAN UI)
-// ==========================================
-import { auth, db } from './firebase-config.js';
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-// ==========================================
-// STUDENT REPORTS LOGIC
-// ==========================================
-
-const studentListContainer = document.getElementById('student-list');
-const searchInput = document.getElementById('search-students');
-const detailsPanel = document.getElementById('report-details');
-
-let studentsData = [];
-
-// 1. Security Check: Ensure only authorized users are here
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        try {
-            const userRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(userRef);
-            
-            if (docSnap.exists()) {
-                const role = (docSnap.data().role || '').toUpperCase();
-                
-                // If they are not staff, kick them back to the dashboard
-                if (role !== 'MENTOR' && role !== 'ADMIN' && role !== 'MANAGEMENT') {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    // They are authorized! Fetch the students.
-                    fetchStudents();
-                }
+            if (typeof displayDetailedReport === 'function') {
+                displayDetailedReport(student);
             }
-        } catch (error) {
-            console.error("Auth check failed:", error);
-        }
-    } else {
-        window.location.href = 'index.html'; // Kick out guests
-    }
-});
-
-// 2. Fetch all standard students
-async function fetchStudents() {
-    try {
-        const usersRef = collection(db, "users");
-        const userSnap = await getDocs(usersRef);
-        
-        userSnap.forEach(docSnap => {
-            const data = docSnap.data();
-            const role = (data.role || 'STUDENT').toUpperCase();
-            
-            if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
-                studentsData.push({ id: docSnap.id, ...data });
-            }
-        });
-
-        // Sort alphabetically
-        studentsData.sort((a, b) => (a.fullName || "A").localeCompare(b.fullName || "A"));
-        renderStudentList(studentsData);
-
-    } catch (error) {
-        console.error("Failed to load students:", error);
-        studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Failed to load data. Check console.</p></div>`;
-    }
-}
-
-// 3. Render the sidebar list
-function renderStudentList(list) {
-    studentListContainer.innerHTML = '';
-
-    if (list.length === 0) {
-        studentListContainer.innerHTML = `<div class="empty-state"><p>No students found.</p></div>`;
-        return;
-    }
-
-    list.forEach(student => {
-        const item = document.createElement('div');
-        item.className = 'student-item';
-        
-        item.innerHTML = `
-            <div class="student-name">${student.fullName || "Unnamed User"}</div>
-            <div class="student-email">${student.email || "No Email"}</div>
-        `;
-
-        item.addEventListener('click', () => {
-            // Remove 'active' class from all items, add to the clicked one
-            document.querySelectorAll('.student-item').forEach(el => el.classList.remove('active'));
-            item.classList.add('active');
-            
-            // Call the upgraded god-view function
-            displayDetailedReport(student);
         });
 
         studentListContainer.appendChild(item);
