@@ -120,92 +120,93 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         return;
     }
 
-    // Books are removed from here because they live INSIDE these root courses!
-    const knownCourses = [
-        'fcps_part1', 'fcps_part2', 'fcps_imm', 
-        'mrcs_part1', 'mrcs_part2', 
-        'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'
-    ];
+    // 1. Restore both Courses AND Books for the Dropdown
+    const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
+    const referenceBooks = ['firstaid_step1', 'rafiullah', 'im_medicine', 'im_surgery', 'brs_patho', 'brs_physio'];
 
-    const courseTitles = {
-        'fcps_part1': 'FCPS Part 1',
-        'fcps_part2': 'FCPS Part 2',
-        'fcps_imm': 'FCPS IMM',
-        'mrcs_part1': 'MRCS Part 1',
-        'mrcs_part2': 'MRCS Part 2',
-        'mbbs_year1': 'MBBS Year 1',
-        'mbbs_year2': 'MBBS Year 2',
-        'mbbs_year3': 'MBBS Year 3',
-        'mbbs_year4': 'MBBS Year 4',
-        'mbbs_year5': 'MBBS Year 5'
+    const titles = {
+        'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
+        'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
+        'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5',
+        'firstaid_step1': 'First Aid Step 1', 'rafiullah': 'Rafiullah FCPS',
+        'im_medicine': 'Irfan Masood - Medicine', 'im_surgery': 'Irfan Masood - Surgery',
+        'brs_patho': 'BRS - Pathology', 'brs_physio': 'BRS - Physiology'
     };
     
-    let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Standard Courses</option>`;
-    knownCourses.forEach(c => {
-        const isSelected = activeCourseFilter === c ? 'selected' : '';
-        courseOptionsHtml += `<option value="${c}" ${isSelected}>${courseTitles[c]}</option>`;
+    // Build an organized dropdown menu
+    let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Standard Courses & Books</option>`;
+    
+    courseOptionsHtml += `<optgroup label="Standard Courses">`;
+    standardCourses.forEach(c => {
+        courseOptionsHtml += `<option value="${c}" ${activeCourseFilter === c ? 'selected' : ''}>${titles[c]}</option>`;
     });
+    courseOptionsHtml += `</optgroup><optgroup label="Reference Books">`;
+    referenceBooks.forEach(b => {
+        courseOptionsHtml += `<option value="${b}" ${activeCourseFilter === b ? 'selected' : ''}>${titles[b]}</option>`;
+    });
+    courseOptionsHtml += `</optgroup>`;
 
     let globalHistory = [];
     let totalSolved = 0;
     let globalMistakesSet = new Set();
     let coursesHtml = '';
 
-    const coursesToProcess = activeCourseFilter === 'all' ? knownCourses : [activeCourseFilter];
+    const isBookFilter = referenceBooks.includes(activeCourseFilter);
+    const filterTitle = isBookFilter ? titles[activeCourseFilter] : null;
 
-    coursesToProcess.forEach(courseKey => {
+    // We loop through the standard courses, because books are saved INSIDE them!
+    standardCourses.forEach(courseKey => {
         const courseData = student[courseKey];
         if (courseData) {
-            if (courseData.solvedQuestions) totalSolved += courseData.solvedQuestions.length;
-            if (courseData.mistakes) courseData.mistakes.forEach(m => globalMistakesSet.add(m));
-            if (courseData.examMistakes) courseData.examMistakes.forEach(m => globalMistakesSet.add(m));
-            if (courseData.examHistory) {
-                const taggedHistory = courseData.examHistory.map(ex => ({ ...ex, courseName: courseKey }));
-                globalHistory.push(...taggedHistory);
+            
+            // Only aggregate stats if we are looking at 'all', or if this matches the selected course
+            if (activeCourseFilter === 'all' || activeCourseFilter === courseKey || isBookFilter) {
+                if (courseData.solvedQuestions) totalSolved += courseData.solvedQuestions.length;
+                if (courseData.mistakes) courseData.mistakes.forEach(m => globalMistakesSet.add(m));
+                if (courseData.examMistakes) courseData.examMistakes.forEach(m => globalMistakesSet.add(m));
+                
+                if (courseData.examHistory) {
+                    const taggedHistory = courseData.examHistory.map(ex => ({ ...ex, courseName: courseKey }));
+                    globalHistory.push(...taggedHistory);
+                }
             }
 
+            // Build Topic Breakdown
             if (courseData.revisions && Object.keys(courseData.revisions).length > 0) {
                 const topics = courseData.revisions;
-                let standardTopicRows = '';
-                let bookRows = '';
+                let topicRows = '';
                 
                 Object.keys(topics).forEach(topicName => {
+                    // FILTERING LOGIC: If looking for a specific book, skip non-matching topics
+                    if (isBookFilter && !topicName.includes(filterTitle)) return;
+                    // If looking for a specific standard course, skip books
+                    if (activeCourseFilter === courseKey && topicName.includes('📕')) return;
+
                     const data = topics[topicName];
                     const accClass = data.lastAccuracy >= 75 ? 'text-green' : (data.lastAccuracy >= 50 ? 'text-yellow' : 'text-red');
                     
-                    const rowHtml = `
-                        <div class="topic-row" style="padding: 10px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between;">
-                            <div class="topic-name" style="font-weight: 600; color: #1e293b;">
+                    topicRows += `
+                        <div class="topic-row" style="padding: 10px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                            <div class="topic-name" style="font-weight: 600; color: #1e293b; font-size: 0.9rem; max-width: 60%;">
                                 ${topicName.replace(/-/g, ' ')}
                             </div>
-                            <div class="topic-stats" style="font-size: 0.85rem; color: #64748b;">
-                                <span style="margin-right: 15px;">Accuracy: <strong class="${accClass}">${data.lastAccuracy}%</strong></span>
-                                <span>Spaced Repetition: <strong>Stage ${data.intervalStep || 1}</strong></span>
+                            <div class="topic-stats" style="font-size: 0.85rem; color: #64748b; text-align: right;">
+                                <span style="display: block; margin-bottom: 3px;">Accuracy: <strong class="${accClass}">${data.lastAccuracy}%</strong></span>
+                                <span>Level: <strong>Stage ${data.intervalStep || 1}</strong></span>
                             </div>
                         </div>
                     `;
-
-                    // Separate books from standard course topics automatically
-                    if (topicName.includes('📕')) {
-                        bookRows += rowHtml;
-                    } else {
-                        standardTopicRows += rowHtml;
-                    }
                 });
 
-                const sectionTitle = courseTitles[courseKey];
-                
-                coursesHtml += `<div class="course-group" style="margin-bottom: 25px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px;">`;
-                coursesHtml += `<h3 style="color: #0f172a; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px;">🎓 ${sectionTitle} Progress</h3>`;
-                
-                if (standardTopicRows) {
-                    coursesHtml += `<h4 style="color: #3b82f6; margin-top: 15px; font-size: 0.9rem; text-transform: uppercase;">Standard Topics</h4>${standardTopicRows}`;
+                if (topicRows) {
+                    const sectionDisplayTitle = isBookFilter ? filterTitle : titles[courseKey];
+                    coursesHtml += `
+                        <div class="course-group" style="margin-bottom: 25px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px;">
+                            <h3 style="color: #0f172a; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-top: 0;">📘 ${sectionDisplayTitle}</h3>
+                            ${topicRows}
+                        </div>
+                    `;
                 }
-                if (bookRows) {
-                    coursesHtml += `<h4 style="color: #8b5cf6; margin-top: 15px; font-size: 0.9rem; text-transform: uppercase;">Reference Books</h4>${bookRows}`;
-                }
-                
-                coursesHtml += `</div>`;
             }
         }
     });
@@ -259,28 +260,32 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
                     📧 ${student.email || 'No email'}
                 </div>
                 <div>
-                    <label style="font-weight: bold; font-size: 0.9rem; color: #475569; margin-right: 10px;">Filter by Enrollment:</label>
-                    <select id="course-filter" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; outline: none;">
+                    <label style="font-weight: bold; font-size: 0.9rem; color: #475569; margin-right: 10px;">Select Course or Book:</label>
+                    <select id="course-filter" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-weight: 600; outline: none;">
                         ${courseOptionsHtml}
                     </select>
                 </div>
             </div>
         </div>
 
-        <div class="stats-grid" style="display: flex; gap: 15px; margin: 20px 0;">
-            <div class="stat-card" style="flex: 1; background: #eff6ff; padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6;">
-                <div class="stat-title" style="color: #1e3a8a; font-weight: bold;">Total Solved</div>
-                <div class="stat-value" style="font-size: 1.8rem; color: #1d4ed8;">${totalSolved}</div>
+        <div class="stats-grid" style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+            <div class="stat-card" style="flex: 1; min-width: 120px; background: #eff6ff; padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                <div class="stat-title" style="color: #1e3a8a; font-weight: bold; font-size: 0.9rem;">Total Solved</div>
+                <div class="stat-value" style="font-size: 1.8rem; color: #1d4ed8; font-weight: 800;">${totalSolved}</div>
             </div>
-            <div class="stat-card" style="flex: 1; background: #ecfdf5; padding: 20px; border-radius: 12px; border-left: 4px solid #10b981;">
-                <div class="stat-title" style="color: #064e3b; font-weight: bold;">Global Accuracy</div>
-                <div class="stat-value" style="font-size: 1.8rem; color: #047857;">${overallAccuracy}%</div>
+            <div class="stat-card" style="flex: 1; min-width: 120px; background: #ecfdf5; padding: 20px; border-radius: 12px; border-left: 4px solid #10b981;">
+                <div class="stat-title" style="color: #064e3b; font-weight: bold; font-size: 0.9rem;">Global Accuracy</div>
+                <div class="stat-value" style="font-size: 1.8rem; color: #047857; font-weight: 800;">${overallAccuracy}%</div>
+            </div>
+            <div class="stat-card" style="flex: 1; min-width: 120px; background: #fef2f2; padding: 20px; border-radius: 12px; border-left: 4px solid #ef4444;">
+                <div class="stat-title" style="color: #7f1d1d; font-weight: bold; font-size: 0.9rem;">Total Mistakes</div>
+                <div class="stat-value" style="font-size: 1.8rem; color: #b91c1c; font-weight: 800;">${totalMistakes}</div>
             </div>
         </div>
 
         <div class="detailed-reports-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
             <div class="report-card">
-                <h3 style="margin-bottom: 15px;"><i class="fas fa-layer-group text-blue"></i> Subject & Topic Proficiency</h3>
+                <h3 style="margin-bottom: 15px;"><i class="fas fa-layer-group text-blue"></i> Full Topic Proficiency</h3>
                 ${coursesHtml}
             </div>
             <div class="report-card" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px;">

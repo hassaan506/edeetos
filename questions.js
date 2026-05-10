@@ -66,12 +66,9 @@ const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
 if (activeRoomId) {
     if (isGuest) {
-        // BUG FIX 1: Guests shouldn't be on the dashboard while in a room. 
-        // If they are here, they manually left or the room ended. Clean it up so solo practice works!
         localStorage.removeItem('active_study_room');
         localStorage.removeItem('is_study_guest');
     } else {
-        // UX BONUS: Let the Host know their guests are waiting!
         const hostBanner = document.createElement('div');
         hostBanner.style.cssText = "background: #f59e0b; color: white; text-align: center; padding: 12px; font-weight: bold; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 6px rgba(0,0,0,0.1);";
         hostBanner.innerHTML = `<i class="fas fa-users"></i> You are currently hosting a Study Room! Your guests are waiting in the lobby. Select a topic and click Start to resume.`;
@@ -128,7 +125,6 @@ unattemptedFilter.addEventListener('change', renderGrid);
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
-// Allow Enter key to trigger Start Exam natively since these inputs aren't in a real <form>
 const examQInput = document.getElementById('exam-q-count');
 const examTimerInput = document.getElementById('exam-timer');
 const startExamBtn = document.getElementById('start-exam-btn');
@@ -167,6 +163,7 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
 
     window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
 });
+
 // ==========================================
 // MENTOR FEATURE: ASSIGN EXAM TO STUDENT(S)
 // ==========================================
@@ -208,12 +205,10 @@ setTimeout(() => {
 
                 const generatedTitle = generateExamTitle(paths, currentView) + " (Assigned)";
 
-                // Change button state while fetching users
                 assignBtn.textContent = "Loading Students...";
                 assignBtn.disabled = true;
 
                 try {
-                    // 1. Fetch Students from Firestore
                     const usersRef = collection(db, "users");
                     const userSnap = await getDocs(usersRef);
                     
@@ -221,7 +216,6 @@ setTimeout(() => {
                     userSnap.forEach(docSnap => {
                         const data = docSnap.data();
                         const role = (data.role || 'STUDENT').toUpperCase();
-                        // Filter out mentors, admins, and banned users
                         if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
                             studentsList.push({
                                 id: docSnap.id,
@@ -231,23 +225,19 @@ setTimeout(() => {
                         }
                     });
 
-                    // 2. Build the UI Modal dynamically
                     const modalOverlay = document.createElement('div');
                     modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
                     
                     let modalHtml = `
                         <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
                             <h3 style="color: #1e3a8a; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
-                            
                             <input type="text" id="student-search-input" placeholder="Search by name or email..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;">
-                            
                             <div id="student-list-container" style="overflow-y: auto; flex-grow: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
                     `;
 
                     if (studentsList.length === 0) {
                         modalHtml += `<div style="text-align: center; color: #64748b; padding: 20px;">No students found.</div>`;
                     } else {
-                        // Sort students alphabetically by name
                         studentsList.sort((a, b) => a.name.localeCompare(b.name)).forEach(student => {
                             modalHtml += `
                                 <label class="student-item" style="display: flex; align-items: center; padding: 10px; border-radius: 6px; background: #f8fafc; cursor: pointer; transition: background 0.2s; border: 1px solid transparent;">
@@ -273,11 +263,9 @@ setTimeout(() => {
                     modalOverlay.innerHTML = modalHtml;
                     document.body.appendChild(modalOverlay);
 
-                    // 3. Add interactions to the modal
                     const searchInput = document.getElementById('student-search-input');
                     const studentItems = document.querySelectorAll('.student-item');
 
-                    // Search filtering
                     searchInput.addEventListener('input', (e) => {
                         const term = e.target.value.toLowerCase();
                         studentItems.forEach(item => {
@@ -291,12 +279,10 @@ setTimeout(() => {
                         });
                     });
 
-                    // Cancel Button
                     document.getElementById('btn-cancel-assign').addEventListener('click', () => {
                         document.body.removeChild(modalOverlay);
                     });
 
-// Confirm Button
                     document.getElementById('btn-confirm-assign').addEventListener('click', async () => {
                         const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
                         const selectedStudentIds = Array.from(checkedBoxes).map(cb => cb.value);
@@ -310,9 +296,6 @@ setTimeout(() => {
                         confirmBtn.disabled = true;
 
                         try {
-                            // 🚀 THE FIX: Sanitize the data! 
-                            // This instantly strips out any hidden 'undefined' values that the CSV loader 
-                            // might have left behind, which Firestore heavily rejects.
                             const cleanExamPool = JSON.parse(JSON.stringify(examPool));
 
                             await addDoc(collection(db, "assigned_exams"), {
@@ -329,9 +312,7 @@ setTimeout(() => {
                             document.body.removeChild(modalOverlay);
                         } catch (error) {
                             console.error("Error assigning exam: ", error);
-                            // 🚨 Show the EXACT error on the screen so we don't have to guess!
                             alert("Firebase Error: " + error.message);
-                            
                             confirmBtn.textContent = "Assign Exam";
                             confirmBtn.disabled = false;
                         }
@@ -348,7 +329,6 @@ setTimeout(() => {
         }
     }
 }, 1500);
-
 
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
@@ -384,7 +364,6 @@ function changeView(viewName, titleText) {
     currentView = viewName;
     activeCustomPool = null;
     isGlobalPopupActive = false;
-    // Save the user's location to browser memory
     localStorage.setItem('edeetos_last_view', viewName);
     localStorage.setItem('edeetos_last_title', titleText);
 
@@ -428,8 +407,8 @@ function openBookSelectionPopup() {
         `;
         
         itemDiv.querySelector('button').onclick = () => {
-            popupOverlay.style.display = 'none'; // Close the selection popup
-            loadAndRenderBookChapters(book);     // Fetch data and populate main grid
+            popupOverlay.style.display = 'none'; 
+            loadAndRenderBookChapters(book);     
         };
         
         popupList.appendChild(itemDiv);
@@ -441,7 +420,6 @@ async function loadAndRenderBookChapters(book) {
         document.body.style.cursor = 'wait';
         if (viewTitle) viewTitle.textContent = book.title;
 
-        // Fetch using the exact case-sensitive path
         const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
         if (!response.ok) throw new Error("File not found");
         const csvText = await response.text();
@@ -467,7 +445,9 @@ async function loadAndRenderBookChapters(book) {
         let bookQuestions = [];
 
         rows.slice(1).forEach((row, rowIndex) => {
-            if (row.length < 2) return;
+            // STRICT FILTER: Ignore empty rows and ghost commas from Excel
+            if (row.join('').replace(/,/g, '').trim() === '') return;
+
             let rowObj = {};
             headers.forEach((header, index) => {
                 rowObj[header] = row[index] ? row[index].trim() : "";
@@ -475,6 +455,7 @@ async function loadAndRenderBookChapters(book) {
             if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
                 rowObj.QuestionID = `${book.file}-q-${rowIndex + 1}`;
             }
+
             bookQuestions.push(rowObj);
         });
 		
@@ -490,15 +471,14 @@ async function loadAndRenderBookChapters(book) {
 
         let tempBookTree = {};
         bookQuestions.forEach(q => {
-            const chapter = q.Chapter || "Uncategorized";
-            const topic = q.Topic || "General";
-            if (!tempBookTree[chapter]) tempBookTree[chapter] = [];
-            if (!tempBookTree[chapter].includes(topic)) tempBookTree[chapter].push(topic);
+            if (q.Chapter) { // Only build if chapter exists
+                if (!tempBookTree[q.Chapter]) tempBookTree[q.Chapter] = [];
+                if (q.Topic && !tempBookTree[q.Chapter].includes(q.Topic)) tempBookTree[q.Chapter].push(q.Topic);
+            }
         });
 
         activeCustomPool = bookQuestions;
         
-        // Render chapters directly to the main grid
         if (!subjectsGrid) return;
         subjectsGrid.innerHTML = '';
 
@@ -521,7 +501,6 @@ async function loadAndRenderBookChapters(book) {
                 ${progressHtml}
             `;
             
-            // Clicking a chapter on the grid opens the Topics popup
             card.onclick = () => openPopup(chapterName, tempBookTree[chapterName], 'Level1', [chapterName], false);
             
             subjectsGrid.appendChild(card);
@@ -543,8 +522,8 @@ function generateExamTitle(paths, currentView) {
     const subLevels = new Set();
     
     paths.forEach(p => {
-        if (p[0]) topLevels.add(p[0]); // For 'exam', this is the Year
-        if (p[1]) subLevels.add(p[1]); // For 'exam', this is the Paper Name
+        if (p[0]) topLevels.add(p[0]); 
+        if (p[1]) subLevels.add(p[1]); 
     });
     
     const topArr = Array.from(topLevels);
@@ -593,23 +572,19 @@ function switchMode(mode) {
 // ==========================================
 // 5. QUESTION DISTRIBUTION ALGORITHM
 // ==========================================
-// ==========================================
-// 5. QUESTION DISTRIBUTION ALGORITHM
-// ==========================================
 function applyTierLimits(rawQuestions, limitPerCategory) {
     let filteredList = [];
     const questionsByCategory = {};
 
-    // Step 1: Group everything by Subject (or Chapter for books) -> Topic
     rawQuestions.forEach(q => {
-        const cat = q.Subject || q.Chapter || "Uncategorized";
-        const top = q.Topic || "General";
+        // Internal mapping only for grouping limits, doesn't affect UI
+        const cat = q.Subject || q.Chapter || "_internal_cat_";
+        const top = q.Topic || "_internal_top_";
         if (!questionsByCategory[cat]) questionsByCategory[cat] = {};
         if (!questionsByCategory[cat][top]) questionsByCategory[cat][top] = [];
         questionsByCategory[cat][top].push(q);
     });
 
-    // Step 2: Extract exactly the limit per category, distributed evenly among topics
     Object.keys(questionsByCategory).forEach(cat => {
         const topics = Object.keys(questionsByCategory[cat]);
         const numTopics = topics.length;
@@ -620,8 +595,6 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
         topics.forEach(top => {
             const quota = baseQuota + (remainder > 0 ? 1 : 0);
             if (remainder > 0) remainder--;
-
-            // Grab the allowed number of questions from this topic
             filteredList.push(...questionsByCategory[cat][top].slice(0, quota));
         });
     });
@@ -664,7 +637,9 @@ async function loadDataAndBuildTree() {
         let masterQuestions = [];
 
         dataRows.forEach((row, rowIndex) => {
-            if (row.length < 2) return;
+            // STRICT FILTER: Ignore empty rows and ghost commas
+            if (row.join('').replace(/,/g, '').trim() === '') return;
+
             let rowObj = {};
             headers.forEach((header, index) => {
                 rowObj[header] = row[index] ? row[index].trim() : "";
@@ -678,41 +653,47 @@ async function loadDataAndBuildTree() {
             masterQuestions.push(rowObj);
         });
 
-        // APPLY THE PROPER FILTER BASED ON USER TIER
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            allQuestions = applyTierLimits(masterQuestions, 20); // Guests: 20 per subject
+            allQuestions = applyTierLimits(masterQuestions, 20); 
         } else if (!isPremiumUser) {
-            allQuestions = applyTierLimits(masterQuestions, 50); // Free Users: 50 per subject
+            allQuestions = applyTierLimits(masterQuestions, 50); 
         } else {
-            allQuestions = [...masterQuestions]; // Premium: All questions
+            allQuestions = [...masterQuestions]; 
         }
 
-        // Now build the trees based on the final filtered list
         subjectTree = {}; systemTree = {}; examTree = {};
 
+        // Only build branches if the data actually exists
         allQuestions.forEach(rowObj => {
             const Exam = rowObj.Exam;
             const Subject = rowObj.Subject;
             const Chapter = rowObj.Chapter;
             const Topic = rowObj.Topic;
 
-            if (!subjectTree[Subject]) subjectTree[Subject] = {};
-            if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
-            if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
+            if (Subject) {
+                if (!subjectTree[Subject]) subjectTree[Subject] = {};
+                if (Chapter) {
+                    if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
+                    if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
+                }
+            }
 
             if (Chapter && Chapter.toLowerCase().includes('system')) {
                 if (!systemTree[Chapter]) systemTree[Chapter] = {};
-                if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
-                if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
+                if (Subject) {
+                    if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
+                    if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
+                }
             }
 
 			if (Exam) {
                 const Year = rowObj.Year || "Other Years"; 
-                
                 if (!examTree[Year]) examTree[Year] = {};
                 if (!examTree[Year][Exam]) examTree[Year][Exam] = {};
-                if (!examTree[Year][Exam][Subject]) examTree[Year][Exam][Subject] = [];
-                if (Topic && !examTree[Year][Exam][Subject].includes(Topic)) examTree[Year][Exam][Subject].push(Topic);
+                if (Subject) {
+                    if (!examTree[Year][Exam][Subject]) examTree[Year][Exam][Subject] = [];
+                    if (Topic && !examTree[Year][Exam][Subject].includes(Topic)) examTree[Year][Exam][Subject].push(Topic);
+                }
             }
         });
 
@@ -725,22 +706,26 @@ async function loadDataAndBuildTree() {
 function buildSubTree(pool) {
     let tree = {};
     pool.forEach(q => {
-        const Subject = q.Subject || "Uncategorized";
-        const Chapter = q.Chapter || "";
-        const Topic = q.Topic || "";
+        const Subject = q.Subject;
+        const Chapter = q.Chapter;
+        const Topic = q.Topic;
 
         if (q.isBookQuestion) {
             if (!tree["Books"]) tree["Books"] = {};
-            if (!tree["Books"][Subject]) tree["Books"][Subject] = {}; 
-            if (Chapter) {
-                if (!tree["Books"][Subject][Chapter]) tree["Books"][Subject][Chapter] = [];
-                if (Topic && !tree["Books"][Subject][Chapter].includes(Topic)) tree["Books"][Subject][Chapter].push(Topic);
+            if (Subject) {
+                if (!tree["Books"][Subject]) tree["Books"][Subject] = {}; 
+                if (Chapter) {
+                    if (!tree["Books"][Subject][Chapter]) tree["Books"][Subject][Chapter] = [];
+                    if (Topic && !tree["Books"][Subject][Chapter].includes(Topic)) tree["Books"][Subject][Chapter].push(Topic);
+                }
             }
         } else {
-            if (!tree[Subject]) tree[Subject] = {};
-            if (Chapter) {
-                if (!tree[Subject][Chapter]) tree[Subject][Chapter] = [];
-                if (Topic && !tree[Subject][Chapter].includes(Topic)) tree[Subject][Chapter].push(Topic);
+            if (Subject) {
+                if (!tree[Subject]) tree[Subject] = {};
+                if (Chapter) {
+                    if (!tree[Subject][Chapter]) tree[Subject][Chapter] = [];
+                    if (Topic && !tree[Subject][Chapter].includes(Topic)) tree[Subject][Chapter].push(Topic);
+                }
             }
         }
     });
@@ -764,10 +749,8 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     return pool.filter(q => {
-        // Ignore the global unattempted filter inside Mistakes/Bookmarks
         if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
 
-        // Force standard Subject grouping logic for Mistakes and Bookmarks
         if (isGlobalPopupActive) {
             if (paths[0] === "Books") {
                 if (!q.isBookQuestion) return false;
@@ -777,8 +760,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
                 return true;
             } else {
                 if (q.isBookQuestion) return false;
-                const Subject = q.Subject || "Uncategorized";
-                if (paths[0] && Subject !== paths[0]) return false;
+                if (paths[0] && q.Subject !== paths[0]) return false;
                 if (paths[1] && q.Chapter !== paths[1]) return false;
                 if (paths[2] && q.Topic !== paths[2]) return false;
                 return true;
@@ -899,7 +881,9 @@ async function loadAndOpenBook(book) {
         let bookQuestions = [];
 
         rows.slice(1).forEach((row, rowIndex) => {
-            if (row.length < 2) return;
+            // STRICT FILTER: Ignore empty rows and ghost commas
+            if (row.join('').replace(/,/g, '').trim() === '') return;
+
             let rowObj = {};
             headers.forEach((header, index) => {
                 rowObj[header] = row[index] ? row[index].trim() : "";
@@ -907,6 +891,7 @@ async function loadAndOpenBook(book) {
             if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
                 rowObj.QuestionID = `${book.file}-q-${rowIndex + 1}`;
             }
+
             bookQuestions.push(rowObj);
         });
 		if (localStorage.getItem('edeetos_guest_mode') === 'true') {
@@ -920,10 +905,10 @@ async function loadAndOpenBook(book) {
         });
         let tempBookTree = {};
         bookQuestions.forEach(q => {
-            const chapter = q.Chapter || "Uncategorized";
-            const topic = q.Topic || "General";
-            if (!tempBookTree[chapter]) tempBookTree[chapter] = [];
-            if (!tempBookTree[chapter].includes(topic)) tempBookTree[chapter].push(topic);
+            if (q.Chapter) { // Only build if chapter exists
+                if (!tempBookTree[q.Chapter]) tempBookTree[q.Chapter] = [];
+                if (q.Topic && !tempBookTree[q.Chapter].includes(q.Topic)) tempBookTree[q.Chapter].push(q.Topic);
+            }
         });
 
         activeCustomPool = bookQuestions;
@@ -1032,7 +1017,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     let progressHtml = '';
 
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
-        // Clean, neutral badge for Mistakes and Bookmarks (No confusing progress bars)
         countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
     } else if (currentMode === 'practice') {
         const doneCount = getSolvedCount(currentView, itemPath);
@@ -1115,32 +1099,27 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     const roomId = localStorage.getItem('active_study_room');
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-    // 🚀 IF HOSTING A GROUP STUDY ROOM: Upload to Firebase instead of playing solo
     if (roomId && !isGuest) {
         try {
             document.body.style.cursor = 'wait'; 
             
-            // FIX 1: Cap the questions for Multiplayer to prevent the 1MB Firestore limit crash!
             let safeArray = questionsArray;
             if (questionsArray.length > 50) {
                 safeArray = questionsArray.sort(() => 0.5 - Math.random()).slice(0, 50);
             }
 
-            // Clean the data to prevent Firebase from crashing on undefined values
             const cleanPool = JSON.parse(JSON.stringify(safeArray));
 
-            // 🚀 BUG FIX 2: Reset answers and forceReveal so old votes don't contaminate the new quiz!
             await setDoc(doc(db, "study_rooms", roomId), {
                 questions: cleanPool,
                 quizConfig: { mode, timer: timerMinutes, examName },
                 status: 'playing', 
                 currentQuestionIndex: 0,
-                answers: {},        // <-- WIPES OLD VOTES
+                answers: {},       
                 memberAnswers: {},
-                forceReveal: {}     // <-- WIPES OLD REVEALS
+                forceReveal: {}     
             }, { merge: true });
 
-            // Save locally for the host as well
             localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
             localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
 
@@ -1155,7 +1134,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-    // 👤 NORMAL SOLO MODE (If they are not in a group)
     localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
     localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
     window.location.href = 'quiz.html';
@@ -1173,24 +1151,17 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
 				currentUserRole = dbData.role || 'STUDENT';
-// 1. Get the active course first
                 const activeCourse = localStorage.getItem('edeetos_active_course');
                 const courseData = dbData[activeCourse] || {};
 
-                // 2. COURSE-SPECIFIC PREMIUM CHECK
-                isPremiumUser = false; // Default to free tier
-                
-                // Admins always get premium access
+                isPremiumUser = false; 
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
                     isPremiumUser = true;
-                } 
-                // Check if they own THIS specific course
-                else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
+                } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
                     const expiry = dbData.subscriptions[activeCourse];
                     if (expiry === 'lifetime') {
                         isPremiumUser = true;
                     } else {
-                        // Check if it has expired
                         const expiryDate = new Date(expiry);
                         if (expiryDate >= new Date()) {
                             isPremiumUser = true;
@@ -1206,11 +1177,9 @@ onAuthStateChanged(auth, async (user) => {
                 userExamHistory = courseData.examHistory || [];
                 attemptedQuestions = solvedList;
 
-                // 3. Now that we know their status, load and filter the CSV!
                 await loadDataAndBuildTree();
-				await injectBooksGlobally(); // Inject book data for global analytics
+				await injectBooksGlobally(); 
                 
-				// 4. Update the UI Dashboards
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
                 const totalAttempts = solvedList.length + allMistakes.length;
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
@@ -1219,7 +1188,7 @@ onAuthStateChanged(auth, async (user) => {
                 if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
                 if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
                 if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
-				// --- SPACED REPETITION UI INJECTOR ---
+                
                 const revisions = courseData.revisions || {};
                 const now = Date.now();
                 const dueTopics = [];
@@ -1234,7 +1203,7 @@ onAuthStateChanged(auth, async (user) => {
 
                 if (dueTopics.length > 0 && revisionContainer) {
                     const revisionCard = document.createElement('div');
-                    revisionCard.className = 'revision-card'; // Using the new CSS class
+                    revisionCard.className = 'revision-card';
                     
                     let revHtml = `
                         <h3><i class="fas fa-sync-alt"></i> Due for Revision (${dueTopics.length})</h3>
@@ -1243,7 +1212,6 @@ onAuthStateChanged(auth, async (user) => {
                     `;
 
                     dueTopics.forEach(item => {
-                        // Safely escape single quotes in topic names
                         const safeTopic = item.topic.replace(/'/g, "\\'");
                         revHtml += `
                             <button class="revision-btn" onclick="window.generateRevisionQuiz('${safeTopic}')">
@@ -1260,7 +1228,6 @@ onAuthStateChanged(auth, async (user) => {
                 } else if (revisionContainer) {
                     revisionContainer.innerHTML = '';
                 }
-                // --- END SPACED REPETITION UI ---
 				const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
@@ -1319,13 +1286,11 @@ if (btnAnalytics) {
         }
         const body = document.getElementById('analytics-body');
 
-        // 1. CALCULATE GRANULAR WEAKNESSES
         let stats = {};
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
 
         allQuestions.forEach(q => {
-            // Group by the most specific category available
-            const topicName = q.Topic || q.Chapter || q.Subject || "General";
+            const topicName = q.Topic || q.Chapter || q.Subject || "Core Material";
             const qId = getQID(q);
             
             if (!stats[topicName]) {
@@ -1344,7 +1309,6 @@ if (btnAnalytics) {
             }
         });
 
-        // Filter and sort to find actual weaknesses (Must have attempted at least 3 questions to form a pattern)
         let weaknesses = [];
         Object.keys(stats).forEach(topic => {
             const data = stats[topic];
@@ -1360,14 +1324,11 @@ if (btnAnalytics) {
             }
         });
 
-        // Sort by lowest accuracy first, then highest volume of mistakes
         weaknesses.sort((a, b) => a.accuracy - b.accuracy || b.mistakes - a.mistakes);
-        const topWeaknesses = weaknesses.slice(0, 5); // Get the 5 worst topics
+        const topWeaknesses = weaknesses.slice(0, 5); 
 
-        // 2. BUILD THE UI
         let html = ``;
 
-        // THE BRUTAL TRUTH SECTION
         if (topWeaknesses.length > 0) {
             html += `<h4 style="color:#991b1b; border-bottom:2px solid #fee2e2; padding-bottom:5px; margin-top: 0;">🚨 Critical Weaknesses</h4>`;
             html += `<p style="font-size:0.85rem; color:#475569; margin-bottom: 15px;">You are currently underperforming in these specific areas.</p>`;
@@ -1384,18 +1345,15 @@ if (btnAnalytics) {
                     </div>`;
             });
 
-            // INJECT THE TARGETED GAUNTLET BUTTON
             html += `
                 <button id="btn-weakness-gauntlet" style="width: 100%; margin-top: 15px; background: #ef4444; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); transition: 0.2s;">
                     Generate Targeted Weakness Quiz (20 Qs)
                 </button>
             `;
         } else {
-            // Count total attempts to see if they actually played, or if they are just new
             const totalAttemptsCount = Object.values(stats).reduce((sum, data) => sum + data.attempted, 0);
 
             if (totalAttemptsCount >= 3) {
-                // They answered questions, but had NO mistakes!
                 html += `<h4 style="color:#059669; border-bottom:2px solid #d1fae5; padding-bottom:5px; margin-top: 0;">🌟 Flawless Performance</h4>`;
                 html += `<p style="font-size:0.85rem; color:#065f46; margin-bottom: 15px;">Incredible! You have no critical weaknesses in your attempted topics. You are getting everything correct.</p>`;
                 html += `
@@ -1405,13 +1363,11 @@ if (btnAnalytics) {
                         <div style="font-size: 0.8rem; color: #065f46; margin-top: 5px;">Keep up the amazing work! 🚀</div>
                     </div>`;
             } else {
-                // They truly don't have enough data yet
                 html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top: 0;">System Diagnostics</h4>`;
                 html += `<p style="font-size:0.85rem; color:#64748b;">Not enough data to calculate weaknesses yet. Answer at least 3 questions in a topic to unlock analytics!</p>`;
             }
         }
 
-        // KEEP THE OLD EXAM HISTORY AT THE BOTTOM
         html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:25px;">Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
@@ -1432,29 +1388,22 @@ if (btnAnalytics) {
         body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
 
-        // 3. ATTACH THE GAUNTLET LOGIC
         const gauntletBtn = document.getElementById('btn-weakness-gauntlet');
         if (gauntletBtn) {
             gauntletBtn.onclick = () => {
                 gauntletBtn.textContent = "Compiling Quiz...";
                 gauntletBtn.disabled = true;
 
-                // Combine all questions from their worst topics
                 let weakPool = [];
                 topWeaknesses.forEach(w => weakPool.push(...w.pool));
 
-                // Filter out questions they've already answered correctly (force them to see new ones or mistakes)
                 weakPool = weakPool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
 
-                // If somehow the pool is empty, grab the mistakes directly
                 if (weakPool.length === 0) {
                     weakPool = allQuestions.filter(q => allMistakes.includes(getQID(q)));
                 }
 
-                // Shuffle the weak pool
                 weakPool = weakPool.sort(() => 0.5 - Math.random());
-
-                // Cap it at 20 questions maximum
                 const finalQuiz = weakPool.slice(0, 20);
 
                 if (finalQuiz.length === 0) {
@@ -1463,9 +1412,7 @@ if (btnAnalytics) {
                     gauntletBtn.disabled = false;
                     return;
                 }
-
-                // Launch the quiz
-					window.launchQuiz(finalQuiz, 'practice', 0, "Review Mistakes");
+                window.launchQuiz(finalQuiz, 'practice', 0, "Review Mistakes");
             };
         }
     };
@@ -1505,7 +1452,6 @@ if (closeResetModal) {
 
 document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
-        // FIX 1: Safely get the type even if they click the icon inside the button
         const type = btn.getAttribute('data-type'); 
         const activeCourse = localStorage.getItem('edeetos_active_course');
 
@@ -1517,7 +1463,7 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
                     [`${activeCourse}.examMistakes`]: [],
                     [`${activeCourse}.bookmarks`]: [],
                     [`${activeCourse}.examHistory`]: [],
-                    [`${activeCourse}.revisions`]: {} // KILLS GHOST REVISIONS
+                    [`${activeCourse}.revisions`]: {} 
                 };
                 pendingResetMsg = "All progress has been fully reset!";
                 confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course? This cannot be undone.";
@@ -1569,8 +1515,6 @@ if (btnConfirmReset) {
 
         try {
             const userRef = doc(db, "users", user.uid);
-            
-            // FIX 2: Use updateDoc so it actually updates the nested database folders!
             await updateDoc(userRef, pendingUpdates);
 
             confirmText.innerHTML = `✅ ${pendingResetMsg}`;
@@ -1675,7 +1619,6 @@ window.generateRevisionQuiz = function(topicName) {
 
     let finalQuiz = [];
 
-    // FAILSAFE: If history was wiped but the user clicked the button anyway
     if (weakPool.length === 0 && strongPool.length === 0) {
         finalQuiz = topicPool.sort(() => 0.5 - Math.random()).slice(0, 15);
     } else {
@@ -1717,7 +1660,9 @@ async function injectBooksGlobally() {
             let tempBookQs = [];
             
             ret.slice(1).forEach((row, rowIndex) => {
-                if (row.length < 2) return;
+                // STRICT FILTER: Ignore empty rows and ghost commas from Excel
+                if (row.join('').replace(/,/g, '').trim() === '') return;
+
                 let q = {};
                 headers.forEach((header, index) => { q[header] = row[index] ? row[index].trim() : ""; });
                 
@@ -1726,11 +1671,11 @@ async function injectBooksGlobally() {
                 }
                 
                 q.isBookQuestion = true; 
-                q.Subject = book.title; // Assign book title as Subject so it categorizes perfectly
+                q.Subject = book.title; 
+
                 tempBookQs.push(q);
             });
 
-            // Enforce Tier Limits
             if (localStorage.getItem('edeetos_guest_mode') === 'true') {
                 tempBookQs = applyTierLimits(tempBookQs, 20);
             } else if (!isPremiumUser) {
@@ -1746,7 +1691,6 @@ async function injectBooksGlobally() {
 
 switchMode('practice');
 
-// Read memory and restore the last used section
 const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
 const lastTitle = localStorage.getItem('edeetos_last_title') || 'Subject Wise';
 changeView(lastView, lastTitle);

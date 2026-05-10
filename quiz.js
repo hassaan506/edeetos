@@ -1162,26 +1162,26 @@ async function updateSpacedRepetition() {
     let topicsAttempted = [];
     const genericNames = ["Practice Session", "Review Mistakes", "Custom Exam"];
 
-    if (genericNames.includes(targetName)) {
-        // The code attempts to read the columns from your CSV file here
-        // REPLACE WITH THIS:
-        // Prioritize the specific Topic first. If empty, fallback to Chapter, then Subject.
+if (genericNames.includes(targetName)) {
+        // Build the FULL hierarchy string (Subject ➡ Chapter ➡ Topic)
         topicsAttempted = [...new Set(quizQueue.map(q => {
-            let specificTopic = q.Topic || q.Chapter || q.Subject;
+            let hierarchy = [];
             
-            // If this question came from a book, prefix it so the mentor knows!
-            if (q.isBookQuestion && q.Subject) {
-                return `📕 ${q.Subject} - ${specificTopic}`; 
+            // If it's a book, tag it and add the book title first
+            if (q.isBookQuestion) {
+                hierarchy.push("📕 " + (q.Subject || "Reference Book"));
+                if (q.Chapter) hierarchy.push(q.Chapter);
+                if (q.Topic) hierarchy.push(q.Topic);
+            } 
+            // Standard course hierarchy
+            else {
+                if (q.Subject) hierarchy.push(q.Subject);
+                if (q.Chapter) hierarchy.push(q.Chapter);
+                if (q.Topic) hierarchy.push(q.Topic);
             }
-            return specificTopic;
             
+            return hierarchy.length > 0 ? hierarchy.join(" ➡ ") : "Uncategorized Practice";
         }).filter(Boolean))];
-        
-        // NEW SAFEGUARD: If the CSV columns are empty, fallback to a default name 
-        // so it doesn't crash or create invisible database entries.
-        if (topicsAttempted.length === 0) {
-            topicsAttempted = ["Uncategorized Practice"];
-        }
     } else {
         // Force the system to use the EXACT button you clicked
         topicsAttempted = [targetName];
