@@ -110,194 +110,686 @@ if (searchInput) {
 // 5. COMPREHENSIVE STUDENT REPORT GENERATOR (CLEAN UI)
 // ==========================================
 function displayDetailedReport(student, activeCourseFilter = 'all') {
+
     if (!student) {
         detailsPanel.innerHTML = `
             <div class="empty-state">
-                <i class="fas fa-user-slash" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
-                <h3>Student Data Not Found</h3>
-                <p>Unable to load detailed records for this user.</p>
-            </div>`;
+                <h3>No Student Selected</h3>
+            </div>
+        `;
         return;
     }
 
-    // 1. Restore both Courses AND Books for the Dropdown
-    const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
-    const referenceBooks = ['firstaid_step1', 'rafiullah', 'im_medicine', 'im_surgery', 'brs_patho', 'brs_physio'];
+    const standardCourses = [
+        'fcps_part1',
+        'fcps_part2',
+        'fcps_imm',
+        'mrcs_part1',
+        'mrcs_part2',
+        'mbbs_year1',
+        'mbbs_year2',
+        'mbbs_year3',
+        'mbbs_year4',
+        'mbbs_year5'
+    ];
+
+    const referenceBooks = [
+        'firstaid_step1',
+        'rafiullah',
+        'im_medicine',
+        'im_surgery',
+        'brs_patho',
+        'brs_physio'
+    ];
 
     const titles = {
-        'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
-        'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
-        'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5',
-        'firstaid_step1': 'First Aid Step 1', 'rafiullah': 'Rafiullah FCPS',
-        'im_medicine': 'Irfan Masood - Medicine', 'im_surgery': 'Irfan Masood - Surgery',
-        'brs_patho': 'BRS - Pathology', 'brs_physio': 'BRS - Physiology'
+        'fcps_part1': 'FCPS Part 1',
+        'fcps_part2': 'FCPS Part 2',
+        'fcps_imm': 'FCPS IMM',
+        'mrcs_part1': 'MRCS Part 1',
+        'mrcs_part2': 'MRCS Part 2',
+        'mbbs_year1': 'MBBS Year 1',
+        'mbbs_year2': 'MBBS Year 2',
+        'mbbs_year3': 'MBBS Year 3',
+        'mbbs_year4': 'MBBS Year 4',
+        'mbbs_year5': 'MBBS Year 5',
+
+        'firstaid_step1': 'First Aid Step 1',
+        'rafiullah': 'Rafiullah FCPS',
+        'im_medicine': 'Irfan Masood Medicine',
+        'im_surgery': 'Irfan Masood Surgery',
+        'brs_patho': 'BRS Pathology',
+        'brs_physio': 'BRS Physiology'
     };
-    
-    // Build an organized dropdown menu
-    let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Standard Courses & Books</option>`;
-    
-    courseOptionsHtml += `<optgroup label="Standard Courses">`;
-    standardCourses.forEach(c => {
-        courseOptionsHtml += `<option value="${c}" ${activeCourseFilter === c ? 'selected' : ''}>${titles[c]}</option>`;
-    });
-    courseOptionsHtml += `</optgroup><optgroup label="Reference Books">`;
-    referenceBooks.forEach(b => {
-        courseOptionsHtml += `<option value="${b}" ${activeCourseFilter === b ? 'selected' : ''}>${titles[b]}</option>`;
-    });
-    courseOptionsHtml += `</optgroup>`;
 
-    let globalHistory = [];
+    let filterOptions = `<option value="all">All Courses & Books</option>`;
+
+    filterOptions += `<optgroup label="Courses">`;
+
+    standardCourses.forEach(course => {
+        filterOptions += `
+            <option value="${course}" ${activeCourseFilter === course ? 'selected' : ''}>
+                ${titles[course]}
+            </option>
+        `;
+    });
+
+    filterOptions += `</optgroup>`;
+
+    filterOptions += `<optgroup label="Books">`;
+
+    referenceBooks.forEach(book => {
+        filterOptions += `
+            <option value="${book}" ${activeCourseFilter === book ? 'selected' : ''}>
+                ${titles[book]}
+            </option>
+        `;
+    });
+
+    filterOptions += `</optgroup>`;
+
     let totalSolved = 0;
-    let globalMistakesSet = new Set();
-    let coursesHtml = '';
+    let totalMistakes = 0;
+    let topicHtml = '';
+    let examHistory = [];
 
-    const isBookFilter = referenceBooks.includes(activeCourseFilter);
-    const filterTitle = isBookFilter ? titles[activeCourseFilter] : null;
+    const subjectStats = {};
+    const chapterStats = {};
+    const topicStats = {};
+    const sourceStats = {};
+    const heatmapData = {};
 
-    // We loop through the standard courses, because books are saved INSIDE them!
     standardCourses.forEach(courseKey => {
+
         const courseData = student[courseKey];
-        if (courseData) {
-            
-            // Only aggregate stats if we are looking at 'all', or if this matches the selected course
-            if (activeCourseFilter === 'all' || activeCourseFilter === courseKey || isBookFilter) {
-                if (courseData.solvedQuestions) totalSolved += courseData.solvedQuestions.length;
-                if (courseData.mistakes) courseData.mistakes.forEach(m => globalMistakesSet.add(m));
-                if (courseData.examMistakes) courseData.examMistakes.forEach(m => globalMistakesSet.add(m));
-                
-                if (courseData.examHistory) {
-                    const taggedHistory = courseData.examHistory.map(ex => ({ ...ex, courseName: courseKey }));
-                    globalHistory.push(...taggedHistory);
-                }
+
+        if (!courseData) return;
+
+        const revisions = courseData.revisions || {};
+
+        Object.entries(revisions).forEach(([topicId, data]) => {
+
+            const sourceType =
+                data.sourceType ||
+                (topicId.includes('📕') ? 'book' : 'course');
+
+            const sourceName =
+                data.sourceName ||
+                titles[courseKey];
+
+            const solved =
+                data.correctAnswers ||
+                data.solved ||
+                data.solvedQuestionsCount ||
+                0;
+
+            const mistakes =
+                data.wrongAnswers ||
+                data.mistakes ||
+                data.mistakesCount ||
+                0;
+
+            const attempts = solved + mistakes;
+
+            const accuracy =
+                data.lastAccuracy ??
+                data.accuracy ??
+                (attempts > 0
+                    ? Math.round((solved / attempts) * 100)
+                    : 0);
+
+            const subject =
+                data.subject ||
+                'Unknown Subject';
+
+            const chapter =
+                data.chapter ||
+                'Unknown Chapter';
+
+            const topic =
+                data.topic ||
+                topicId.replace(/-/g, ' ');
+
+            const isBookFilter =
+                referenceBooks.includes(activeCourseFilter);
+
+            const shouldInclude = (
+
+                activeCourseFilter === 'all'
+
+                ||
+
+                (
+                    activeCourseFilter === courseKey &&
+                    sourceType === 'course'
+                )
+
+                ||
+
+                (
+                    isBookFilter &&
+                    activeCourseFilter === sourceName
+                )
+
+            );
+
+            if (!shouldInclude) return;
+
+            totalSolved += solved;
+            totalMistakes += mistakes;
+
+            // =========================
+            // SUBJECT ANALYTICS
+            // =========================
+
+            if (!subjectStats[subject]) {
+                subjectStats[subject] = {
+                    solved: 0,
+                    mistakes: 0
+                };
             }
 
-            // Build Topic Breakdown
-            if (courseData.revisions && Object.keys(courseData.revisions).length > 0) {
-                const topics = courseData.revisions;
-                let topicRows = '';
-                
-                Object.keys(topics).forEach(topicName => {
-                    // FILTERING LOGIC: If looking for a specific book, skip non-matching topics
-                    if (isBookFilter && !topicName.includes(filterTitle)) return;
-                    // If looking for a specific standard course, skip books
-                    if (activeCourseFilter === courseKey && topicName.includes('📕')) return;
+            subjectStats[subject].solved += solved;
+            subjectStats[subject].mistakes += mistakes;
 
-                    const data = topics[topicName];
-                    const accClass = data.lastAccuracy >= 75 ? 'text-green' : (data.lastAccuracy >= 50 ? 'text-yellow' : 'text-red');
-                    
-                    topicRows += `
-                        <div class="topic-row" style="padding: 10px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
-                            <div class="topic-name" style="font-weight: 600; color: #1e293b; font-size: 0.9rem; max-width: 60%;">
-                                ${topicName.replace(/-/g, ' ')}
-                            </div>
-                            <div class="topic-stats" style="font-size: 0.85rem; color: #64748b; text-align: right;">
-                                <span style="display: block; margin-bottom: 3px;">Accuracy: <strong class="${accClass}">${data.lastAccuracy}%</strong></span>
-                                <span>Level: <strong>Stage ${data.intervalStep || 1}</strong></span>
-                            </div>
-                        </div>
-                    `;
-                });
+            // =========================
+            // CHAPTER ANALYTICS
+            // =========================
 
-                if (topicRows) {
-                    const sectionDisplayTitle = isBookFilter ? filterTitle : titles[courseKey];
-                    coursesHtml += `
-                        <div class="course-group" style="margin-bottom: 25px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px;">
-                            <h3 style="color: #0f172a; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-top: 0;">📘 ${sectionDisplayTitle}</h3>
-                            ${topicRows}
-                        </div>
-                    `;
-                }
+            if (!chapterStats[chapter]) {
+                chapterStats[chapter] = {
+                    solved: 0,
+                    mistakes: 0
+                };
             }
+
+            chapterStats[chapter].solved += solved;
+            chapterStats[chapter].mistakes += mistakes;
+
+            // =========================
+            // TOPIC ANALYTICS
+            // =========================
+
+            topicStats[topic] = {
+                accuracy,
+                solved,
+                mistakes
+            };
+
+            // =========================
+            // SOURCE ANALYTICS
+            // =========================
+
+            if (!sourceStats[sourceName]) {
+                sourceStats[sourceName] = {
+                    solved: 0,
+                    mistakes: 0
+                };
+            }
+
+            sourceStats[sourceName].solved += solved;
+            sourceStats[sourceName].mistakes += mistakes;
+
+            // =========================
+            // HEATMAP
+            // =========================
+
+            const level =
+                accuracy >= 80
+                    ? 'excellent'
+                    : accuracy >= 60
+                        ? 'good'
+                        : accuracy >= 40
+                            ? 'average'
+                            : 'weak';
+
+            heatmapData[topic] = level;
+
+            const accClass =
+                accuracy >= 75
+                    ? 'text-green'
+                    : accuracy >= 50
+                        ? 'text-yellow'
+                        : 'text-red';
+
+            topicHtml += `
+                <div class="topic-row">
+
+                    <div class="topic-hierarchy">
+
+                        <div class="subject-name">
+                            ${subject}
+                        </div>
+
+                        <div class="chapter-name">
+                            ${chapter}
+                        </div>
+
+                        <div class="topic-name">
+                            ${topic}
+                        </div>
+
+                        <div class="topic-source">
+                            ${sourceType === 'book' ? '📕 Book' : '🎓 Course'}
+                            •
+                            ${sourceName}
+                        </div>
+
+                    </div>
+
+                    <div class="topic-stats">
+
+                        <div>
+                            Accuracy:
+                            <strong class="${accClass}">
+                                ${accuracy}%
+                            </strong>
+                        </div>
+
+                        <div>
+                            Solved:
+                            <strong>
+                                ${solved}
+                            </strong>
+                        </div>
+
+                        <div>
+                            Mistakes:
+                            <strong class="text-red">
+                                ${mistakes}
+                            </strong>
+                        </div>
+
+                        <div>
+                            Stage:
+                            <strong>
+                                ${data.intervalStep || 1}
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+        });
+
+        if (courseData.examHistory) {
+            examHistory.push(...courseData.examHistory);
         }
     });
 
-    if (!coursesHtml) {
-        coursesHtml = `<p class="empty-data-text" style="color: #64748b; font-style: italic;">No topic or book data recorded yet for this selection.</p>`;
-    }
-
-    globalHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
-    const totalMistakes = globalMistakesSet.size;
     const totalAttempts = totalSolved + totalMistakes;
-    const overallAccuracy = totalAttempts > 0 ? Math.round((totalSolved / totalAttempts) * 100) : 0;
+
+    const overallAccuracy =
+        totalAttempts > 0
+            ? Math.round((totalSolved / totalAttempts) * 100)
+            : 0;
+
+    // =========================================
+    // WEAKEST SUBJECT
+    // =========================================
+
+    let weakestSubject = 'N/A';
+    let weakestSubjectAccuracy = 100;
+
+    Object.entries(subjectStats).forEach(([name, stats]) => {
+
+        const attempts = stats.solved + stats.mistakes;
+
+        const accuracy =
+            attempts > 0
+                ? Math.round((stats.solved / attempts) * 100)
+                : 0;
+
+        if (accuracy < weakestSubjectAccuracy) {
+            weakestSubjectAccuracy = accuracy;
+            weakestSubject = name;
+        }
+    });
+
+    // =========================================
+    // WEAKEST CHAPTER
+    // =========================================
+
+    let weakestChapter = 'N/A';
+    let weakestChapterAccuracy = 100;
+
+    Object.entries(chapterStats).forEach(([name, stats]) => {
+
+        const attempts = stats.solved + stats.mistakes;
+
+        const accuracy =
+            attempts > 0
+                ? Math.round((stats.solved / attempts) * 100)
+                : 0;
+
+        if (accuracy < weakestChapterAccuracy) {
+            weakestChapterAccuracy = accuracy;
+            weakestChapter = name;
+        }
+    });
+
+    // =========================================
+    // STRONGEST TOPIC
+    // =========================================
+
+    let strongestTopic = 'N/A';
+    let strongestAccuracy = 0;
+
+    Object.entries(topicStats).forEach(([topic, stats]) => {
+
+        if (stats.accuracy > strongestAccuracy) {
+            strongestAccuracy = stats.accuracy;
+            strongestTopic = topic;
+        }
+    });
+
+    // =========================================
+    // COURSE/BOOK PERFORMANCE
+    // =========================================
+
+    let sourcePerformanceHtml = '';
+
+    Object.entries(sourceStats).forEach(([source, stats]) => {
+
+        const attempts = stats.solved + stats.mistakes;
+
+        const accuracy =
+            attempts > 0
+                ? Math.round((stats.solved / attempts) * 100)
+                : 0;
+
+        sourcePerformanceHtml += `
+            <div class="analytics-card">
+
+                <div class="analytics-title">
+                    ${source}
+                </div>
+
+                <div class="analytics-value">
+                    ${accuracy}%
+                </div>
+
+            </div>
+        `;
+    });
+
+    // =========================================
+    // HEATMAP
+    // =========================================
+
+    let heatmapHtml = '';
+
+    Object.entries(heatmapData).forEach(([topic, level]) => {
+
+        heatmapHtml += `
+            <div class="heatmap-box ${level}">
+                ${topic}
+            </div>
+        `;
+    });
+
+    // =========================================
+    // MENTOR ANALYTICS
+    // =========================================
+
+    const mentorInsight = `
+        Student has solved ${totalSolved} questions
+        with ${overallAccuracy}% overall accuracy.
+        Weakest area is ${weakestSubject}.
+    `;
+
+    // =========================================
+    // COMPARATIVE REPORT
+    // =========================================
+
+    const averageStudentAccuracy = 65;
+
+    const comparisonDiff =
+        overallAccuracy - averageStudentAccuracy;
+
+    const comparisonText =
+        comparisonDiff >= 0
+            ? `+${comparisonDiff}% above average`
+            : `${comparisonDiff}% below average`;
+
+    // =========================================
+    // EXAM HISTORY
+    // =========================================
+
+    examHistory.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
 
     let historyHtml = '';
-    if (globalHistory.length === 0) {
-        historyHtml = `<p class="empty-data-text" style="color: #64748b;">No exams attempted yet.</p>`;
-    } else {
+
+    if (examHistory.length === 0) {
+
         historyHtml = `
-            <table class="history-table detailed-history" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <p class="empty-data-text">
+                No Exam History
+            </p>
+        `;
+
+    } else {
+
+        historyHtml = `
+            <table class="history-table">
+
                 <thead>
-                    <tr style="background: #f8fafc; text-align: left; border-bottom: 2px solid #cbd5e1;">
-                        <th style="padding: 10px;">Date</th>
-                        <th style="padding: 10px;">Exam</th>
-                        <th style="padding: 10px;">Score</th>
-                        <th style="padding: 10px;">Time</th>
+                    <tr>
+                        <th>Date</th>
+                        <th>Exam</th>
+                        <th>Score</th>
                     </tr>
                 </thead>
+
                 <tbody>
         `;
 
-        globalHistory.forEach(ex => {
-            const scoreClass = ex.percentage >= 75 ? 'text-green' : (ex.percentage >= 50 ? 'text-yellow' : 'text-red');
-            const timeStr = ex.timeSpentMinutes ? `${ex.timeSpentMinutes} min` : "N/A";
+        examHistory.forEach(exam => {
+
             historyHtml += `
-                <tr style="border-bottom: 1px solid #e2e8f0;">
-                    <td style="padding: 10px;">${new Date(ex.date).toLocaleDateString()}</td>
-                    <td style="padding: 10px; font-weight: bold;">${ex.examName || 'Practice Session'}</td>
-                    <td style="padding: 10px; font-weight: bold;" class="${scoreClass}">${ex.percentage || 0}%</td>
-                    <td style="padding: 10px; color: #64748b;">${timeStr}</td>
+                <tr>
+
+                    <td>
+                        ${new Date(exam.date).toLocaleDateString()}
+                    </td>
+
+                    <td>
+                        ${exam.examName || 'Practice'}
+                    </td>
+
+                    <td>
+                        ${exam.percentage || 0}%
+                    </td>
+
                 </tr>
             `;
         });
-        historyHtml += `</tbody></table>`;
+
+        historyHtml += `
+                </tbody>
+            </table>
+        `;
     }
 
     detailsPanel.innerHTML = `
-        <div class="details-header" style="flex-wrap: wrap; gap: 15px;">
-            <div style="flex: 1; min-width: 250px;">
-                <h1>${student.fullName || 'Unknown Student'}</h1>
-                <div class="details-meta" style="color: #64748b; margin-bottom: 15px;">
-                    📧 ${student.email || 'No email'}
+
+        <div class="details-header">
+
+            <div>
+
+                <h1>
+                    ${student.fullName || 'Student'}
+                </h1>
+
+                <div class="details-meta">
+                    ${student.email || ''}
                 </div>
-                <div>
-                    <label style="font-weight: bold; font-size: 0.9rem; color: #475569; margin-right: 10px;">Select Course or Book:</label>
-                    <select id="course-filter" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-weight: 600; outline: none;">
-                        ${courseOptionsHtml}
-                    </select>
-                </div>
+
             </div>
+
+            <div>
+
+                <select id="course-filter">
+
+                    ${filterOptions}
+
+                </select>
+
+            </div>
+
         </div>
 
-        <div class="stats-grid" style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
-            <div class="stat-card" style="flex: 1; min-width: 120px; background: #eff6ff; padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6;">
-                <div class="stat-title" style="color: #1e3a8a; font-weight: bold; font-size: 0.9rem;">Total Solved</div>
-                <div class="stat-value" style="font-size: 1.8rem; color: #1d4ed8; font-weight: 800;">${totalSolved}</div>
-            </div>
-            <div class="stat-card" style="flex: 1; min-width: 120px; background: #ecfdf5; padding: 20px; border-radius: 12px; border-left: 4px solid #10b981;">
-                <div class="stat-title" style="color: #064e3b; font-weight: bold; font-size: 0.9rem;">Global Accuracy</div>
-                <div class="stat-value" style="font-size: 1.8rem; color: #047857; font-weight: 800;">${overallAccuracy}%</div>
-            </div>
-            <div class="stat-card" style="flex: 1; min-width: 120px; background: #fef2f2; padding: 20px; border-radius: 12px; border-left: 4px solid #ef4444;">
-                <div class="stat-title" style="color: #7f1d1d; font-weight: bold; font-size: 0.9rem;">Total Mistakes</div>
-                <div class="stat-value" style="font-size: 1.8rem; color: #b91c1c; font-weight: 800;">${totalMistakes}</div>
-            </div>
-        </div>
+        <!-- MAIN STATS -->
 
-        <div class="detailed-reports-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-            <div class="report-card">
-                <h3 style="margin-bottom: 15px;"><i class="fas fa-layer-group text-blue"></i> Full Topic Proficiency</h3>
-                ${coursesHtml}
+        <div class="stats-grid">
+
+            <div class="stat-card blue">
+                <div class="stat-title">Solved</div>
+                <div class="stat-value">${totalSolved}</div>
             </div>
-            <div class="report-card" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px;">
-                <h3 style="margin-bottom: 15px;"><i class="fas fa-history text-green"></i> Exam History</h3>
-                <div class="table-responsive">
-                    ${historyHtml}
+
+            <div class="stat-card green">
+                <div class="stat-title">Accuracy</div>
+                <div class="stat-value">${overallAccuracy}%</div>
+            </div>
+
+            <div class="stat-card red">
+                <div class="stat-title">Mistakes</div>
+                <div class="stat-value">${totalMistakes}</div>
+            </div>
+
+            <div class="stat-card yellow">
+                <div class="stat-title">Strongest Topic</div>
+                <div class="stat-value" style="font-size:1rem;">
+                    ${strongestTopic}
                 </div>
             </div>
+
+        </div>
+
+        <!-- ANALYTICS -->
+
+        <div class="report-card">
+
+            <h3>📊 Advanced Analytics</h3>
+
+            <div class="analytics-grid">
+
+                <div class="analytics-card">
+                    <div class="analytics-title">
+                        Weakest Subject
+                    </div>
+
+                    <div class="analytics-value text-red">
+                        ${weakestSubject}
+                    </div>
+
+                    <small>
+                        ${weakestSubjectAccuracy}%
+                    </small>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-title">
+                        Weakest Chapter
+                    </div>
+
+                    <div class="analytics-value text-yellow">
+                        ${weakestChapter}
+                    </div>
+
+                    <small>
+                        ${weakestChapterAccuracy}%
+                    </small>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-title">
+                        Comparative Report
+                    </div>
+
+                    <div class="analytics-value text-blue">
+                        ${comparisonText}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOOK / COURSE PERFORMANCE -->
+
+        <div class="report-card">
+
+            <h3>📚 Course & Book Performance</h3>
+
+            <div class="analytics-grid">
+
+                ${sourcePerformanceHtml}
+
+            </div>
+
+        </div>
+
+        <!-- HEATMAP -->
+
+        <div class="report-card">
+
+            <h3>🔥 Performance Heatmap</h3>
+
+            <div class="heatmap-grid">
+
+                ${heatmapHtml}
+
+            </div>
+
+        </div>
+
+        <!-- MENTOR INSIGHT -->
+
+        <div class="report-card">
+
+            <h3>🧠 Mentor Insights</h3>
+
+            <div class="mentor-insight">
+
+                ${mentorInsight}
+
+            </div>
+
+        </div>
+
+        <!-- TOPIC PROFICIENCY -->
+
+        <div class="report-card">
+
+            <h3>📘 Full Topic Proficiency</h3>
+
+            ${topicHtml || '<p>No Data Available</p>'}
+
+        </div>
+
+        <!-- EXAMS -->
+
+        <div class="report-card">
+
+            <h3>📝 Exam History</h3>
+
+            ${historyHtml}
+
         </div>
     `;
 
-    document.getElementById('course-filter').addEventListener('change', (e) => {
-        displayDetailedReport(student, e.target.value);
-    });
+    document
+        .getElementById('course-filter')
+        .addEventListener('change', (e) => {
+
+            displayDetailedReport(
+                student,
+                e.target.value
+            );
+        });
 }

@@ -333,3 +333,101 @@ body {
         white-space: nowrap;
     }
 }
+
+.analytics-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.analytics-card{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:18px;
+    text-align:center;
+}
+
+.analytics-title{
+    font-size:0.9rem;
+    color:#64748b;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.analytics-value{
+    font-size:1.2rem;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.topic-hierarchy{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.subject-name{
+    font-size:1rem;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.chapter-name{
+    font-size:0.9rem;
+    font-weight:700;
+    color:#334155;
+}
+
+.topic-name{
+    font-size:0.85rem;
+    color:#64748b;
+}
+
+.topic-source{
+    font-size:0.75rem;
+    color:#94a3b8;
+    font-weight:700;
+}
+
+.heatmap-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.heatmap-box{
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:0.8rem;
+    font-weight:700;
+    color:white;
+}
+
+.heatmap-box.excellent{
+    background:#10b981;
+}
+
+.heatmap-box.good{
+    background:#3b82f6;
+}
+
+.heatmap-box.average{
+    background:#f59e0b;
+}
+
+.heatmap-box.weak{
+    background:#ef4444;
+}
+
+.mentor-insight{
+    background:#eff6ff;
+    border-left:5px solid #3b82f6;
+    padding:18px;
+    border-radius:12px;
+    font-size:0.95rem;
+    line-height:1.7;
+    color:#1e293b;
+}
