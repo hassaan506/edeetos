@@ -74,7 +74,6 @@ async function calculateTotalQuestions() {
         'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5'
     };
 
-    // NEW: We brought the books over!
     const referenceBooks = [
         { file: "firstaid_step1", title: "First Aid Step 1" },
         { file: "rafiullah", title: "Rafiullah FCPS" },
@@ -85,7 +84,10 @@ async function calculateTotalQuestions() {
     ];
 
     let totalQuestions = 0;
-    let breakdownHtml = `<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">`; 
+    
+    // 🔥 FIX: Locked the height to 180px and added a scrollbar
+    let breakdownHtml = `<div style="max-height: 180px; overflow-y: auto; padding-right: 5px; margin-top: 10px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 12px;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
 
     // Helper function to fetch, count, and build the UI tags cleanly
     async function fetchAndCount(path, displayTitle, badgeColor, textColor) {
@@ -100,9 +102,10 @@ async function calculateTotalQuestions() {
                     const count = validLines.length - 1; // Subtract header
                     totalQuestions += count;
                     
+                    // 🔥 FIX: Switched to inline-flex and tight padding to make beautiful pill badges
                     breakdownHtml += `
-                        <span style="background: ${badgeColor}; color: ${textColor}; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.1);">
-                            ${displayTitle}: <span style="color: #0f172a;">${count}</span>
+                        <span style="background: ${badgeColor}; color: ${textColor}; padding: 3px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.05); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            ${displayTitle} <span style="background: rgba(255,255,255,0.5); color: #0f172a; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">${count}</span>
                         </span>`;
                 }
             }
@@ -118,24 +121,25 @@ async function calculateTotalQuestions() {
 
     // Add a visual separator for the books
     breakdownHtml += `</div>
-        <div style="margin-top: 15px; margin-bottom: 8px; color: #8b5cf6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase;">
+        <div style="margin: 12px 0 6px 0; color: #8b5cf6; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
             <i class="fas fa-book"></i> Reference Books
         </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">`;
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
 
     // 2. Fetch and count Reference Books (Purple Tags)
     for (const book of referenceBooks) {
         await fetchAndCount(`Books/${book.file}.csv`, book.title, '#ede9fe', '#5b21b6');
     }
 
-    breakdownHtml += `</div>`;
+    breakdownHtml += `</div></div>`; // Close the scroll container!
 
     // Inject everything into the UI
     const totalEl = document.getElementById('total-q-count');
     if (totalEl) {
         totalEl.innerHTML = `
-            <div style="font-size: 1.1rem; font-weight: 800; color: #1e293b;">
-                Total Database Questions: <span style="color: #3b82f6;">${totalQuestions}</span>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #1e293b; display: flex; justify-content: space-between; align-items: center;">
+                <span>Total Database Questions:</span>
+                <span style="background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.9rem;">${totalQuestions}</span>
             </div>
             ${breakdownHtml}
         `;
