@@ -1450,7 +1450,7 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
         const type = btn.getAttribute('data-type'); 
         const activeCourse = localStorage.getItem('edeetos_active_course');
 
-        switch (type) {
+switch (type) {
             case "1":
                 pendingUpdates = {
                     [`${activeCourse}.solvedQuestions`]: [],
@@ -1458,28 +1458,48 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
                     [`${activeCourse}.examMistakes`]: [],
                     [`${activeCourse}.bookmarks`]: [],
                     [`${activeCourse}.examHistory`]: [],
-                    [`${activeCourse}.revisions`]: {} 
+                    [`${activeCourse}.revisions`]: {},
+                    [`books.solvedQuestions`]: [],
+                    [`books.mistakes`]: [],
+                    [`books.examMistakes`]: [],
+                    [`books.bookmarks`]: [],
+                    [`books.examHistory`]: [],
+                    [`books.revisions`]: {} 
                 };
                 pendingResetMsg = "All progress has been fully reset!";
-                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course? This cannot be undone.";
+                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course and your books? This cannot be undone.";
                 break;
             case "2":
-                pendingUpdates = { [`${activeCourse}.mistakes`]: [], [`${activeCourse}.examMistakes`]: [] };
+                pendingUpdates = { 
+                    [`${activeCourse}.mistakes`]: [], 
+                    [`${activeCourse}.examMistakes`]: [],
+                    [`books.mistakes`]: [], 
+                    [`books.examMistakes`]: [] 
+                };
                 pendingResetMsg = "All mistakes have been cleared!";
                 confirmText.textContent = "Are you sure you want to clear your Mistake history?";
                 break;
             case "3":
-                pendingUpdates = { [`${activeCourse}.bookmarks`]: [] };
+                pendingUpdates = { 
+                    [`${activeCourse}.bookmarks`]: [],
+                    [`books.bookmarks`]: [] 
+                };
                 pendingResetMsg = "All bookmarks have been cleared!";
                 confirmText.textContent = "Are you sure you want to delete all your Bookmarks?";
                 break;
             case "4":
-                pendingUpdates = { [`${activeCourse}.examHistory`]: [] };
+                pendingUpdates = { 
+                    [`${activeCourse}.examHistory`]: [],
+                    [`books.examHistory`]: [] 
+                };
                 pendingResetMsg = "Exam history has been cleared!";
                 confirmText.textContent = "Are you sure you want to delete your Past Exam scores?";
                 break;
             case "5":
-                pendingUpdates = { [`${activeCourse}.solvedQuestions`]: [] };
+                pendingUpdates = { 
+                    [`${activeCourse}.solvedQuestions`]: [],
+                    [`books.solvedQuestions`]: [] 
+                };
                 pendingResetMsg = "Solved questions have been cleared!";
                 confirmText.textContent = "Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.";
                 break;

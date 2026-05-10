@@ -1183,14 +1183,14 @@ async function updateSpacedRepetition() {
         const docSnap = await getDoc(userRef);
         const dbData = docSnap.data() || {};
 
-        const isBookSessionLocal = isBookSession();   // use our helper
-        // Look in the correct 'revisions' object so we don't wipe past history
+        const isBookSessionLocal = isBookSession();   
         const currentRevisions = isBookSessionLocal
                 ? (dbData.books?.revisions || {})
                 : (dbData[activeCourse]?.revisions || {});
 
         const revisionsData = {};
 
+        // 🔥 PHASE 1: Accumulate counts safely in memory
         quizQueue.forEach(question => {
             if (!question) return;
 
@@ -1198,12 +1198,10 @@ async function updateSpacedRepetition() {
             const chapter = question.Chapter || question.chapter || "Unknown Chapter";
             const topic = question.Topic || question.topic || "Unknown Topic";
 
-            // sourceName for books uses the stored bookName (file name)
             const sourceName = question.isBookQuestion
                     ? (question.bookName || question.Subject || 'Reference Book')
                     : activeCourse;
 
-            // Use a safe delimiter '::' instead of replacing spaces with underscores
             const topicId = `${subject}::${chapter}::${topic}::${sourceName}`.replace(/[.#$/[\]]/g, '');
 
             let isCorrect = false;
@@ -1212,30 +1210,47 @@ async function updateSpacedRepetition() {
                 isCorrect = correctOption && (question.userSelectedAnswer === correctOption.text || question.sessionState === 'correct');
             }
 
-            const existing = currentRevisions[topicId] || {};
-            const solvedCount = (existing.solvedQuestionsCount || 0) + 1;
-            const mistakesCount = (existing.mistakesCount || 0) + (isCorrect ? 0 : 1);
-            const accuracy = Math.round(((solvedCount - mistakesCount) / solvedCount) * 100);
+            // If this is the first time we see this topic in THIS loop, grab the DB baseline
+            if (!revisionsData[topicId]) {
+                const existing = currentRevisions[topicId] || {};
+                revisionsData[topicId] = {
+                    subject, chapter, topic, 
+                    sourceType: question.isBookQuestion ? 'book' : 'course',
+                    sourceName: sourceName,
+                    solvedQuestionsCount: existing.solvedQuestionsCount || 0,
+                    mistakesCount: existing.mistakesCount || 0,
+                    intervalStep: existing.intervalStep || 0,
+                    status: "pending"
+                };
+            }
 
-            let currentStep = existing.intervalStep || 0;
+            // Safely increment the running totals!
+            revisionsData[topicId].solvedQuestionsCount += 1;
+            if (!isCorrect) {
+                revisionsData[topicId].mistakesCount += 1;
+            }
+        });
+
+        // 🔥 PHASE 2: Calculate Spaced Repetition logic based on the final totals
+        Object.keys(revisionsData).forEach(topicId => {
+            const data = revisionsData[topicId];
+            const accuracy = Math.round(((data.solvedQuestionsCount - data.mistakesCount) / data.solvedQuestionsCount) * 100);
+
+            let currentStep = data.intervalStep;
             if (accuracy >= 75) {
                 currentStep = currentStep === 0 ? 1 : currentStep === 1 ? 7 : currentStep === 7 ? 15 : 30;
             } else {
                 currentStep = 1;
             }
 
-            const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
-
-            revisionsData[topicId] = {
-                subject, chapter, topic, sourceType: question.isBookQuestion ? 'book' : 'course',
-                sourceName: sourceName,
-                solvedQuestionsCount: solvedCount, mistakesCount,
-                accuracy, lastAccuracy: accuracy,
-                dueDate: nextDueTime, intervalStep: currentStep, status: "pending",
-                updatedAt: Date.now()
-            };
+            data.accuracy = accuracy;
+            data.lastAccuracy = accuracy;
+            data.intervalStep = currentStep;
+            data.dueDate = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
+            data.updatedAt = Date.now();
         });
 
+        // Save to Firebase
         if (isBookSessionLocal) {
             await setDoc(userRef, { books: { revisions: revisionsData } }, { merge: true });
         } else {

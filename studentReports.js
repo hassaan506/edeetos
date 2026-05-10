@@ -12,7 +12,7 @@ const detailsPanel = document.getElementById('report-details');
 
 let studentsData = [];
 
-// 1. Security Check: Ensure only authorized users are here
+// 1. Security Check
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         try {
@@ -20,27 +20,19 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             
             if (docSnap.exists()) {
-                const data = docSnap.data();
-                const role = String(data.role || '').toUpperCase();
+                const role = (docSnap.data().role || '').toUpperCase();
                 
                 if (role !== 'MENTOR' && role !== 'ADMIN' && role !== 'MANAGEMENT') {
                     window.location.href = 'dashboard.html';
                 } else {
                     fetchStudents();
                 }
-            } else {
-                if (studentListContainer) {
-                    studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Error: Profile not found. Access denied.</p></div>`;
-                }
             }
         } catch (error) {
             console.error("Auth check failed:", error);
-            if (studentListContainer) {
-                studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Authentication Error. Check your console.</p></div>`;
-            }
         }
     } else {
-        window.location.href = 'index.html';
+        window.location.href = 'index.html'; 
     }
 });
 
@@ -50,11 +42,9 @@ async function fetchStudents() {
         const usersRef = collection(db, "users");
         const userSnap = await getDocs(usersRef);
         
-        studentsData = []; 
-        
         userSnap.forEach(docSnap => {
             const data = docSnap.data();
-            const role = String(data.role || 'STUDENT').toUpperCase();
+            const role = (data.role || 'STUDENT').toUpperCase();
             
             if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
                 studentsData.push({ id: docSnap.id, ...data });
@@ -62,23 +52,16 @@ async function fetchStudents() {
         });
 
         studentsData.sort((a, b) => (a.fullName || "A").localeCompare(b.fullName || "A"));
-        
-        if (studentListContainer) {
-            renderStudentList(studentsData);
-        }
+        renderStudentList(studentsData);
 
     } catch (error) {
         console.error("Failed to load students:", error);
-        if (studentListContainer) {
-            studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Database Error: Failed to fetch students.</p></div>`;
-        }
+        studentListContainer.innerHTML = `<div class="empty-state"><p style="color: red;">Failed to load data. Check console.</p></div>`;
     }
 }
 
 // 3. Render the sidebar list
 function renderStudentList(list) {
-    if (!studentListContainer) return;
-
     studentListContainer.innerHTML = '';
 
     if (list.length === 0) {
@@ -98,17 +81,13 @@ function renderStudentList(list) {
         item.addEventListener('click', () => {
             document.querySelectorAll('.student-item').forEach(el => el.classList.remove('active'));
             item.classList.add('active');
-            
-            if (typeof displayDetailedReport === 'function') {
-                displayDetailedReport(student);
-            }
+            displayDetailedReport(student);
         });
 
         studentListContainer.appendChild(item);
     });
 }
 
-// 4. Search Filter Logic
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
@@ -121,198 +100,225 @@ if (searchInput) {
 }
 
 // ==========================================
-// 5. COMPREHENSIVE STUDENT REPORT GENERATOR (CLEAN UI)
+// 4. THE DATA WAREHOUSE (CSV FETCHING)
 // ==========================================
-function displayDetailedReport(student, activeCourseFilter = 'all') {
+const standardCourses = [
+    'fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 
+    'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'
+];
+const referenceBooks = [
+    'firstaid_step1', 'rafiullah', 'im_medicine', 'im_surgery', 'brs_patho', 'brs_physio'
+];
+const titles = {
+    'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
+    'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
+    'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3',
+    'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5',
+    'firstaid_step1': 'First Aid Step 1', 'rafiullah': 'Rafiullah FCPS',
+    'im_medicine': 'Irfan Masood Medicine', 'im_surgery': 'Irfan Masood Surgery',
+    'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology'
+};
+
+let globalQuestionBank = {};
+let bankLoadPromise = null;
+
+function parseCSV(text) {
+    let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+    for (l of text) {
+        if ('"' === l) {
+            if (s && l === p) row[i] += l;
+            s = !s;
+        } else if (',' === l && s) l = row[++i] = '';
+        else if ('\n' === l && s) {
+            if ('\r' === p) row[i] = row[i].slice(0, -1);
+            row = ret[++r] = [l = '']; i = 0;
+        } else row[i] += l;
+        p = l;
+    }
+    return ret;
+}
+
+// Fetches ALL CSVs and builds a master dictionary of IDs -> Metadata
+async function preloadQuestionBank() {
+    if (bankLoadPromise) return bankLoadPromise;
+
+    bankLoadPromise = (async () => {
+        const allFiles = [...standardCourses, ...referenceBooks];
+        
+        await Promise.all(allFiles.map(async (fileKey) => {
+            const isBook = referenceBooks.includes(fileKey);
+            const folder = isBook ? 'Books' : 'Data';
+            
+            try {
+                const res = await fetch(`${folder}/${fileKey}.csv`);
+                if (!res.ok) return;
+                
+                const text = (await res.text()).replace(/^\uFEFF/, '');
+                const rows = parseCSV(text);
+                const headers = rows[0].map(h => h ? h.trim() : "");
+                
+                globalQuestionBank[fileKey] = {};
+                
+                rows.slice(1).forEach((row, rowIndex) => {
+                    if (row.join('').replace(/,/g, '').trim() === '') return;
+                    
+                    let q = {};
+                    headers.forEach((h, i) => q[h] = row[i] ? row[i].trim() : "");
+                    
+                    let fallbackPrefix = isBook ? `${fileKey}-` : '';
+                    let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${rowIndex + 1}`);
+                    
+                    globalQuestionBank[fileKey][qId] = {
+                        Subject: isBook ? (titles[fileKey] || q.Subject) : (q.Subject || 'Unknown Subject'),
+                        Chapter: q.Chapter || 'Unknown Chapter',
+                        Topic: q.Topic || 'Unknown Topic'
+                    };
+                });
+            } catch(e) {
+                console.warn(`Could not load ${fileKey}.csv`, e);
+            }
+        }));
+    })();
+
+    return bankLoadPromise;
+}
+
+// ==========================================
+// 5. COMPREHENSIVE STUDENT REPORT GENERATOR
+// ==========================================
+async function displayDetailedReport(student, activeCourseFilter = 'all') {
 
     if (!student) {
-        detailsPanel.innerHTML = `
-            <div class="empty-state">
-                <h3>No Student Selected</h3>
-            </div>
-        `;
+        detailsPanel.innerHTML = `<div class="empty-state"><h3>No Student Selected</h3></div>`;
         return;
     }
 
-    const standardCourses = [
-        'fcps_part1',
-        'fcps_part2',
-        'fcps_imm',
-        'mrcs_part1',
-        'mrcs_part2',
-        'mbbs_year1',
-        'mbbs_year2',
-        'mbbs_year3',
-        'mbbs_year4',
-        'mbbs_year5'
-    ];
+    // Show loading state while parsing CSVs
+    detailsPanel.innerHTML = `
+        <div class="empty-state" style="display:flex; flex-direction:column; align-items:center; gap:15px;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #3b82f6;"></i>
+            <h3 style="color: #1e293b;">Compiling Raw Data from CSVs...</h3>
+            <p style="color: #64748b;">Mapping database IDs to original question files.</p>
+        </div>
+    `;
 
-    const referenceBooks = [
-        'firstaid_step1',
-        'rafiullah',
-        'im_medicine',
-        'im_surgery',
-        'brs_patho',
-        'brs_physio'
-    ];
-
-    const titles = {
-        'fcps_part1': 'FCPS Part 1',
-        'fcps_part2': 'FCPS Part 2',
-        'fcps_imm': 'FCPS IMM',
-        'mrcs_part1': 'MRCS Part 1',
-        'mrcs_part2': 'MRCS Part 2',
-        'mbbs_year1': 'MBBS Year 1',
-        'mbbs_year2': 'MBBS Year 2',
-        'mbbs_year3': 'MBBS Year 3',
-        'mbbs_year4': 'MBBS Year 4',
-        'mbbs_year5': 'MBBS Year 5',
-
-        'firstaid_step1': 'First Aid Step 1',
-        'rafiullah': 'Rafiullah FCPS',
-        'im_medicine': 'Irfan Masood Medicine',
-        'im_surgery': 'Irfan Masood Surgery',
-        'brs_patho': 'BRS Pathology',
-        'brs_physio': 'BRS Physiology'
-    };
+    // Ensure our Data Warehouse is built
+    await preloadQuestionBank();
 
     let filterOptions = `<option value="all">All Courses & Books</option>`;
-
     filterOptions += `<optgroup label="Courses">`;
-    standardCourses.forEach(course => {
-        filterOptions += `
-            <option value="${course}" ${activeCourseFilter === course ? 'selected' : ''}>
-                ${titles[course]}
-            </option>
-        `;
-    });
+    standardCourses.forEach(course => filterOptions += `<option value="${course}" ${activeCourseFilter === course ? 'selected' : ''}>${titles[course]}</option>`);
+    filterOptions += `</optgroup><optgroup label="Books">`;
+    referenceBooks.forEach(book => filterOptions += `<option value="${book}" ${activeCourseFilter === book ? 'selected' : ''}>${titles[book]}</option>`);
     filterOptions += `</optgroup>`;
 
-    filterOptions += `<optgroup label="Books">`;
-    referenceBooks.forEach(book => {
-        filterOptions += `
-            <option value="${book}" ${activeCourseFilter === book ? 'selected' : ''}>
-                ${titles[book]}
-            </option>
-        `;
-    });
-    filterOptions += `</optgroup>`;
-
-    let totalSolved = 0;
-    let totalMistakes = 0;
-    let topicHtml = '';
     let examHistory = [];
+    let rawSolved = [];
+    let rawMistakes = [];
 
+    // Dump all raw IDs with their buckets
+    standardCourses.forEach(c => {
+        if (student[c]) {
+            [...new Set(student[c].solvedQuestions || [])].forEach(id => rawSolved.push({id: String(id), bucket: c}));
+            const mistakes = [...new Set([...(student[c].mistakes || []), ...(student[c].examMistakes || [])])];
+            mistakes.forEach(id => rawMistakes.push({id: String(id), bucket: c}));
+            if (student[c].examHistory) examHistory.push(...student[c].examHistory);
+        }
+    });
+
+    if (student.books) {
+        [...new Set(student.books.solvedQuestions || [])].forEach(id => rawSolved.push({id: String(id), bucket: 'books'}));
+        const mistakes = [...new Set([...(student.books.mistakes || []), ...(student.books.examMistakes || [])])];
+        mistakes.forEach(id => rawMistakes.push({id: String(id), bucket: 'books'}));
+        if (student.books.examHistory) examHistory.push(...student.books.examHistory);
+    }
+
+    // Process all raw IDs into topics!
+    const processedTopics = {};
+
+    function processId(id, isMistake, bucket) {
+        let meta = null;
+        let isBook = false;
+        let sourceKey = bucket;
+
+        if (bucket === 'books') {
+            for (const book of referenceBooks) {
+                if (globalQuestionBank[book] && globalQuestionBank[book][id]) {
+                    meta = globalQuestionBank[book][id];
+                    isBook = true;
+                    sourceKey = book;
+                    break;
+                }
+            }
+        } else {
+            if (globalQuestionBank[bucket] && globalQuestionBank[bucket][id]) {
+                meta = globalQuestionBank[bucket][id];
+                isBook = false;
+                sourceKey = bucket;
+            }
+        }
+
+        const sourceName = titles[sourceKey] || sourceKey || 'Unknown Source';
+        const subject = meta ? meta.Subject : 'Unknown Subject';
+        const chapter = meta ? meta.Chapter : 'Unknown Chapter';
+        const topic = meta ? meta.Topic : 'Unknown Topic';
+
+        const key = `${subject}::${chapter}::${topic}::${sourceKey}`;
+
+        if (!processedTopics[key]) {
+            processedTopics[key] = { subject, chapter, topic, isBook, sourceName, sourceKey, solved: 0, mistakes: 0 };
+        }
+
+        if (isMistake) processedTopics[key].mistakes++;
+        else processedTopics[key].solved++;
+    }
+
+    rawSolved.forEach(item => processId(item.id, false, item.bucket));
+    rawMistakes.forEach(item => processId(item.id, true, item.bucket));
+
+    // Calculate Final Stats
+    let absoluteSolved = 0;
+    let absoluteMistakes = 0;
     const subjectStats = {};
     const chapterStats = {};
     const topicStats = {};
     const sourceStats = {};
     const heatmapData = {};
+    let topicHtml = '';
 
-    let allRevisions = [];
-
-    // Collect Course Data
-    standardCourses.forEach(courseKey => {
-        if (student[courseKey]) {
-            const revs = student[courseKey].revisions || {};
-            Object.entries(revs).forEach(([tId, rev]) => {
-                allRevisions.push({
-                    topicId: tId,
-                    data: rev,
-                    parentCourse: courseKey,
-                    isBookNode: false
-                });
-            });
-            if (student[courseKey].examHistory) {
-                examHistory.push(...student[courseKey].examHistory);
-            }
-        }
-    });
-
-    // Collect Books Data
-    if (student.books) {
-        const revs = student.books.revisions || {};
-        Object.entries(revs).forEach(([tId, rev]) => {
-            allRevisions.push({
-                topicId: tId,
-                data: rev,
-                parentCourse: 'books',
-                isBookNode: true
-            });
-        });
-        if (student.books.examHistory) {
-            examHistory.push(...student.books.examHistory);
-        }
-    }
-
-    allRevisions.forEach(item => {
-        const topicId = item.topicId;
-        const data = item.data;
-
-        const isBook = item.isBookNode || data.sourceType === 'book' || topicId.includes('📕');
-        const subject = data.subject || 'Unknown Subject';
-        const chapter = data.chapter || 'Unknown Chapter';
-        const topic = data.topic || topicId.replace(/-/g, ' ');
-
-        let sourceName = data.sourceName;
-        if (!sourceName) {
-            sourceName = isBook ? subject : (titles[item.parentCourse] || 'Unknown Course');
-        }
-
-        const solved = data.solvedQuestionsCount || 0;
-        const mistakes = data.mistakesCount || 0;
+    Object.values(processedTopics).forEach(data => {
+        const { subject, chapter, topic, isBook, sourceName, sourceKey, solved, mistakes } = data;
         const attempts = solved + mistakes;
-        const accuracy = data.lastAccuracy ?? (attempts > 0 ? Math.round((solved / attempts) * 100) : 0);
+        const accuracy = attempts > 0 ? Math.round((solved / attempts) * 100) : 0;
 
-        // --- FILTERING LOGIC (UPDATED) ---
         let shouldInclude = false;
-        
         if (activeCourseFilter === 'all') {
             shouldInclude = true;
         } else if (referenceBooks.includes(activeCourseFilter)) {
-            // User selected a specific book filter (e.g. 'firstaid_step1')
-            // The stored sourceName for books is now the book file name (e.g. 'firstaid_step1')
-            // or might still be the title for old data, so check both.
-            if (isBook && (data.sourceName === activeCourseFilter || data.sourceName === titles[activeCourseFilter])) {
-                shouldInclude = true;
-            }
+            if (isBook && sourceKey === activeCourseFilter) shouldInclude = true;
         } else if (standardCourses.includes(activeCourseFilter)) {
-            // User selected a specific course filter
-            if (!isBook && item.parentCourse === activeCourseFilter) {
-                shouldInclude = true;
-            }
+            if (!isBook && sourceKey === activeCourseFilter) shouldInclude = true;
         }
 
         if (!shouldInclude) return;
 
-        totalSolved += solved;
-        totalMistakes += mistakes;
+        absoluteSolved += solved;
+        absoluteMistakes += mistakes;
 
-        // Subject analytics
-        if (!subjectStats[subject]) {
-            subjectStats[subject] = { solved: 0, mistakes: 0 };
-        }
+        if (!subjectStats[subject]) subjectStats[subject] = { solved: 0, mistakes: 0 };
         subjectStats[subject].solved += solved;
         subjectStats[subject].mistakes += mistakes;
 
-        // Chapter analytics
-        if (!chapterStats[chapter]) {
-            chapterStats[chapter] = { solved: 0, mistakes: 0 };
-        }
+        if (!chapterStats[chapter]) chapterStats[chapter] = { solved: 0, mistakes: 0 };
         chapterStats[chapter].solved += solved;
         chapterStats[chapter].mistakes += mistakes;
 
-        // Topic analytics
         topicStats[topic] = { accuracy, solved, mistakes };
 
-        // Source analytics
-        if (!sourceStats[sourceName]) {
-            sourceStats[sourceName] = { solved: 0, mistakes: 0 };
-        }
+        if (!sourceStats[sourceName]) sourceStats[sourceName] = { solved: 0, mistakes: 0 };
         sourceStats[sourceName].solved += solved;
         sourceStats[sourceName].mistakes += mistakes;
 
-        // Heatmap
         const level = accuracy >= 80 ? 'excellent' : accuracy >= 60 ? 'good' : accuracy >= 40 ? 'average' : 'weak';
         heatmapData[topic] = level;
 
@@ -328,64 +334,44 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
                         ${isBook ? '📕 Book' : '🎓 Course'} • ${sourceName}
                     </div>
                 </div>
-
                 <div class="topic-stats">
                     <div>Accuracy: <strong class="${accClass}">${accuracy}%</strong></div>
                     <div>Solved: <strong>${solved}</strong></div>
                     <div>Mistakes: <strong class="text-red">${mistakes}</strong></div>
-                    <div>Stage: <strong>${data.intervalStep || 1}</strong></div>
                 </div>
             </div>
         `;
     });
 
-    const totalAttempts = totalSolved + totalMistakes;
-    const overallAccuracy = totalAttempts > 0 ? Math.round((totalSolved / totalAttempts) * 100) : 0;
+    const absoluteAttempts = absoluteSolved + absoluteMistakes;
+    const overallAccuracy = absoluteAttempts > 0 ? Math.round((absoluteSolved / absoluteAttempts) * 100) : 0;
 
-    // Weakest subject
     let weakestSubject = 'N/A';
     let weakestSubjectAccuracy = 100;
-
     Object.entries(subjectStats).forEach(([name, stats]) => {
         const attempts = stats.solved + stats.mistakes;
         const accuracy = attempts > 0 ? Math.round((stats.solved / attempts) * 100) : 0;
-        if (accuracy < weakestSubjectAccuracy) {
-            weakestSubjectAccuracy = accuracy;
-            weakestSubject = name;
-        }
+        if (accuracy < weakestSubjectAccuracy) { weakestSubjectAccuracy = accuracy; weakestSubject = name; }
     });
 
-    // Weakest chapter
     let weakestChapter = 'N/A';
     let weakestChapterAccuracy = 100;
-
     Object.entries(chapterStats).forEach(([name, stats]) => {
         const attempts = stats.solved + stats.mistakes;
         const accuracy = attempts > 0 ? Math.round((stats.solved / attempts) * 100) : 0;
-        if (accuracy < weakestChapterAccuracy) {
-            weakestChapterAccuracy = accuracy;
-            weakestChapter = name;
-        }
+        if (accuracy < weakestChapterAccuracy) { weakestChapterAccuracy = accuracy; weakestChapter = name; }
     });
 
-    // Strongest topic
     let strongestTopic = 'N/A';
     let strongestAccuracy = 0;
-
     Object.entries(topicStats).forEach(([topic, stats]) => {
-        if (stats.accuracy > strongestAccuracy) {
-            strongestAccuracy = stats.accuracy;
-            strongestTopic = topic;
-        }
+        if (stats.accuracy > strongestAccuracy) { strongestAccuracy = stats.accuracy; strongestTopic = topic; }
     });
 
-    // Source performance
     let sourcePerformanceHtml = '';
-
     Object.entries(sourceStats).forEach(([source, stats]) => {
         const attempts = stats.solved + stats.mistakes;
         const accuracy = attempts > 0 ? Math.round((stats.solved / attempts) * 100) : 0;
-
         sourcePerformanceHtml += `
             <div class="analytics-card">
                 <div class="analytics-title">${source}</div>
@@ -394,55 +380,25 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         `;
     });
 
-    // Heatmap
     let heatmapHtml = '';
     Object.entries(heatmapData).forEach(([topic, level]) => {
-        heatmapHtml += `
-            <div class="heatmap-box ${level}">${topic}</div>
-        `;
+        heatmapHtml += `<div class="heatmap-box ${level}">${topic}</div>`;
     });
 
-    // Mentor insight
-    const mentorInsight = `
-        Student has solved ${totalSolved} questions
-        with ${overallAccuracy}% overall accuracy.
-        Weakest area is ${weakestSubject}.
-    `;
-
-    // Comparative report
-    const averageStudentAccuracy = 65;
-    const comparisonDiff = overallAccuracy - averageStudentAccuracy;
-    const comparisonText = comparisonDiff >= 0 ? `+${comparisonDiff}% above average` : `${comparisonDiff}% below average`;
-
-    // Exam history
     examHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
-    let historyHtml = '';
-
-    if (examHistory.length === 0) {
-        historyHtml = `<p class="empty-data-text">No Exam History</p>`;
-    } else {
-        historyHtml = `
-            <table class="history-table">
-                <thead>
+    let historyHtml = examHistory.length === 0 ? `<p class="empty-data-text">No Exam History</p>` : `
+        <table class="history-table">
+            <thead><tr><th>Date</th><th>Exam</th><th>Score</th></tr></thead>
+            <tbody>
+                ${examHistory.map(exam => `
                     <tr>
-                        <th>Date</th>
-                        <th>Exam</th>
-                        <th>Score</th>
+                        <td>${new Date(exam.date).toLocaleDateString()}</td>
+                        <td>${exam.examName || 'Practice'}</td>
+                        <td>${exam.percentage || 0}%</td>
                     </tr>
-                </thead>
-                <tbody>
-        `;
-        examHistory.forEach(exam => {
-            historyHtml += `
-                <tr>
-                    <td>${new Date(exam.date).toLocaleDateString()}</td>
-                    <td>${exam.examName || 'Practice'}</td>
-                    <td>${exam.percentage || 0}%</td>
-                </tr>
-            `;
-        });
-        historyHtml += `</tbody></table>`;
-    }
+                `).join('')}
+            </tbody>
+        </table>`;
 
     detailsPanel.innerHTML = `
         <div class="details-header">
@@ -459,16 +415,16 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
 
         <div class="stats-grid">
             <div class="stat-card blue">
-                <div class="stat-title">Solved</div>
-                <div class="stat-value">${totalSolved}</div>
+                <div class="stat-title">Absolute Solved</div>
+                <div class="stat-value">${absoluteSolved}</div>
             </div>
             <div class="stat-card green">
-                <div class="stat-title">Accuracy</div>
+                <div class="stat-title">True Accuracy</div>
                 <div class="stat-value">${overallAccuracy}%</div>
             </div>
             <div class="stat-card red">
-                <div class="stat-title">Mistakes</div>
-                <div class="stat-value">${totalMistakes}</div>
+                <div class="stat-title">Absolute Mistakes</div>
+                <div class="stat-value">${absoluteMistakes}</div>
             </div>
             <div class="stat-card yellow">
                 <div class="stat-title">Strongest Topic</div>
@@ -482,16 +438,12 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
                 <div class="analytics-card">
                     <div class="analytics-title">Weakest Subject</div>
                     <div class="analytics-value text-red">${weakestSubject}</div>
-                    <small>${weakestSubjectAccuracy}%</small>
+                    <small>${weakestSubject === 'N/A' ? '' : weakestSubjectAccuracy + '%'}</small>
                 </div>
                 <div class="analytics-card">
                     <div class="analytics-title">Weakest Chapter</div>
                     <div class="analytics-value text-yellow">${weakestChapter}</div>
-                    <small>${weakestChapterAccuracy}%</small>
-                </div>
-                <div class="analytics-card">
-                    <div class="analytics-title">Comparative Report</div>
-                    <div class="analytics-value text-blue">${comparisonText}</div>
+                    <small>${weakestChapter === 'N/A' ? '' : weakestChapterAccuracy + '%'}</small>
                 </div>
             </div>
         </div>
@@ -499,20 +451,15 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         <div class="report-card">
             <h3>📚 Course & Book Performance</h3>
             <div class="analytics-grid">
-                ${sourcePerformanceHtml}
+                ${sourcePerformanceHtml || '<p>No Data Available</p>'}
             </div>
         </div>
 
         <div class="report-card">
             <h3>🔥 Performance Heatmap</h3>
             <div class="heatmap-grid">
-                ${heatmapHtml}
+                ${heatmapHtml || '<p>No Data Available</p>'}
             </div>
-        </div>
-
-        <div class="report-card">
-            <h3>🧠 Mentor Insights</h3>
-            <div class="mentor-insight">${mentorInsight}</div>
         </div>
 
         <div class="report-card">
