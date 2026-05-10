@@ -1148,261 +1148,85 @@ if (globalExitBtn) {
 }
 
 async function updateSpacedRepetition() {
-
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
-
     const user = auth.currentUser;
-
     if (!user) return;
 
     let targetName = quizConfig.examName || "General";
-
     if (targetName.startsWith("Revision: ")) {
         targetName = targetName.replace("Revision: ", "");
     }
 
-    const genericNames = [
-        "Practice Session",
-        "Review Mistakes",
-        "Custom Exam"
-    ];
-
-    const activeCourse =
-        localStorage.getItem('edeetos_active_course') ||
-        'fcps_part1';
-
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
 
     try {
-
         const docSnap = await getDoc(userRef);
-
         const dbData = docSnap.data() || {};
 
-        // =========================================
-        // DETERMINE STORAGE LOCATION
-        // =========================================
+        const isBookSession = quizQueue.some(q => q.isBookQuestion);
 
-        const isBookSession =
-            quizQueue.some(q => q.isBookQuestion);
-
-        const storageKey =
-            isBookSession
-                ? 'books'
-                : activeCourse;
-
-        const currentRevisions =
-            isBookSession
-                ? (dbData.books || {})
-                : (
-                    dbData[activeCourse]?.revisions || {}
-                );
+        // FIX: Look in the correct 'revisions' object so we don't wipe your past history
+        const currentRevisions = isBookSession
+                ? (dbData.books?.revisions || {})
+                : (dbData[activeCourse]?.revisions || {});
 
         const revisionsData = {};
 
-        // =========================================
-        // PROCESS EACH QUESTION
-        // =========================================
-
         quizQueue.forEach(question => {
-
             if (!question) return;
 
-            // =====================================
-            // HIERARCHY
-            // =====================================
+            const subject = question.Subject || question.subject || "Unknown Subject";
+            const chapter = question.Chapter || question.chapter || "Unknown Chapter";
+            const topic = question.Topic || question.topic || "Unknown Topic";
 
-            const subject =
-                question.Subject ||
-                question.subject ||
-                "Unknown Subject";
-
-            const chapter =
-                question.Chapter ||
-                question.chapter ||
-                "Unknown Chapter";
-
-            const topic =
-                question.Topic ||
-                question.topic ||
-                "Unknown Topic";
-
-            // =====================================
-            // SOURCE
-            // =====================================
-
-            const sourceType =
-                question.isBookQuestion
-                    ? 'book'
-                    : 'course';
-
-            const sourceName =
-                question.isBookQuestion
-                    ? (
-                        question.bookName ||
-                        question.Subject ||
-                        'Reference Book'
-                    )
+            const sourceType = question.isBookQuestion ? 'book' : 'course';
+            const sourceName = question.isBookQuestion
+                    ? (question.bookName || question.Subject || 'Reference Book')
                     : activeCourse;
 
-            // =====================================
-            // UNIQUE TOPIC ID
-            // =====================================
-
-            const topicId = `
-                ${subject}_${chapter}_${topic}_${sourceName}
-            `
-            .replace(/[.#$/[\]]/g, '')
-            .replace(/\s+/g, '_');
-
-            // =====================================
-            // CORRECTNESS
-            // =====================================
+            // FIX: Use a safe delimiter '::' instead of replacing spaces with underscores
+            const topicId = `${subject}::${chapter}::${topic}::${sourceName}`.replace(/[.#$/[\]]/g, '');
 
             let isCorrect = false;
-
-            if (
-                question.options &&
-                Array.isArray(question.options)
-            ) {
-
-                const correctOption =
-                    question.options.find(
-                        o => o.isCorrect
-                    );
-
-                isCorrect =
-                    correctOption &&
-                    (
-                        question.userSelectedAnswer === correctOption.text
-                        ||
-                        question.sessionState === 'correct'
-                    );
+            if (question.options && Array.isArray(question.options)) {
+                const correctOption = question.options.find(o => o.isCorrect);
+                isCorrect = correctOption && (question.userSelectedAnswer === correctOption.text || question.sessionState === 'correct');
             }
 
-            // =====================================
-            // EXISTING DATA
-            // =====================================
+            const existing = currentRevisions[topicId] || {};
+            const solvedCount = (existing.solvedQuestionsCount || 0) + 1;
+            const mistakesCount = (existing.mistakesCount || 0) + (isCorrect ? 0 : 1);
+            const accuracy = Math.round(((solvedCount - mistakesCount) / solvedCount) * 100);
 
-            const existing =
-                currentRevisions[topicId] || {};
-
-            const solvedCount =
-                (existing.solvedQuestionsCount || 0) + 1;
-
-            const mistakesCount =
-                (existing.mistakesCount || 0) +
-                (isCorrect ? 0 : 1);
-
-            const accuracy =
-                Math.round(
-                    (
-                        (solvedCount - mistakesCount)
-                        /
-                        solvedCount
-                    ) * 100
-                );
-
-            // =====================================
-            // SPACED REPETITION
-            // =====================================
-
-            let currentStep =
-                existing.intervalStep || 0;
-
+            let currentStep = existing.intervalStep || 0;
             if (accuracy >= 75) {
-
-                currentStep =
-                    currentStep === 0
-                        ? 1
-                        : currentStep === 1
-                            ? 7
-                            : currentStep === 7
-                                ? 15
-                                : 30;
-
+                currentStep = currentStep === 0 ? 1 : currentStep === 1 ? 7 : currentStep === 7 ? 15 : 30;
             } else {
-
                 currentStep = 1;
             }
 
-            const nextDueTime =
-                Date.now() +
-                (
-                    currentStep *
-                    24 *
-                    60 *
-                    60 *
-                    1000
-                );
-
-            // =====================================
-            // SAVE COMPLETE ANALYTICS
-            // =====================================
+            const nextDueTime = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
 
             revisionsData[topicId] = {
-
-                // Hierarchy
-                subject,
-                chapter,
-                topic,
-
-                // Source
-                sourceType,
-                sourceName,
-
-                // Analytics
-                solvedQuestionsCount: solvedCount,
-                mistakesCount,
-
-                accuracy,
-                lastAccuracy: accuracy,
-
-                // Spaced repetition
-                dueDate: nextDueTime,
-                intervalStep: currentStep,
-                status: "pending",
-
-                // Metadata
+                subject, chapter, topic, sourceType, sourceName,
+                solvedQuestionsCount: solvedCount, mistakesCount,
+                accuracy, lastAccuracy: accuracy,
+                dueDate: nextDueTime, intervalStep: currentStep, status: "pending",
                 updatedAt: Date.now()
             };
         });
 
-        // =========================================
-        // SAVE SEPARATELY
-        // =========================================
-
         if (isBookSession) {
-
-            await setDoc(userRef, {
-
-                books: {
-                    revisions: revisionsData
-                }
-
-            }, { merge: true });
-
+            await setDoc(userRef, { books: { revisions: revisionsData } }, { merge: true });
         } else {
-
-            await setDoc(userRef, {
-
-                [activeCourse]: {
-                    revisions: revisionsData
-                }
-
-            }, { merge: true });
+            await setDoc(userRef, { [activeCourse]: { revisions: revisionsData } }, { merge: true });
         }
 
-        console.log(
-            "✅ Spaced repetition analytics updated successfully"
-        );
+        console.log("✅ Spaced repetition analytics updated successfully");
 
     } catch (error) {
-
-        console.error(
-            "❌ Failed to update spaced repetition:",
-            error
-        );
+        console.error("❌ Failed to update spaced repetition:", error);
     }
 }
 

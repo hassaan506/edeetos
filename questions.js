@@ -1210,25 +1210,13 @@ onAuthStateChanged(auth, async (user) => {
 
                 let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
 
+// ==========================================
+                // UPDATE DASHBOARD UI
                 // ==========================================
-                // UPDATE DASHBOARD
-                // ==========================================
-
-                if (document.getElementById('stat-solved')) {
-                    document.getElementById('stat-solved').textContent = solvedList.length;
-                }
-
-                if (document.getElementById('stat-mistakes')) {
-                    document.getElementById('stat-mistakes').textContent = allMistakes.length;
-                }
-
-                if (document.getElementById('stat-bookmarks')) {
-                    document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
-                }
-
-                if (document.getElementById('stat-accuracy')) {
-                    document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
-                }
+                if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
+                if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
+                if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
+                if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
                 
                 const revisions = {
                     ...(courseData.revisions || {}),
@@ -1238,9 +1226,14 @@ onAuthStateChanged(auth, async (user) => {
                 const now = Date.now();
                 const dueTopics = [];
 
-                Object.keys(revisions).forEach(topic => {
-                    if (revisions[topic].dueDate <= now && revisions[topic].status !== 'missed') {
-                        dueTopics.push({ topic: topic, step: revisions[topic].intervalStep });
+                // FIX: Use the displayName so the UI looks beautiful
+                Object.keys(revisions).forEach(topicId => {
+                    if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
+                        dueTopics.push({ 
+                            id: topicId, 
+                            displayName: revisions[topicId].topic || "Review Topic",
+                            step: revisions[topicId].intervalStep 
+                        });
                     }
                 });
 
@@ -1257,22 +1250,22 @@ onAuthStateChanged(auth, async (user) => {
                     `;
 
                     dueTopics.forEach(item => {
-                        const safeTopic = encodeURIComponent(item.topic);
+                        const safeTopic = encodeURIComponent(item.id);
                         revHtml += `
                             <button class="revision-btn" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
-                                ${item.topic} (Day ${item.step})
+                                ${item.displayName} (Day ${item.step})
                             </button>
                         `;
                     });
 
                     revHtml += `</div>`;
                     revisionCard.innerHTML = revHtml;
-                    
                     revisionContainer.innerHTML = ''; 
                     revisionContainer.appendChild(revisionCard);
                 } else if (revisionContainer) {
                     revisionContainer.innerHTML = '';
                 }
+				
 				const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
@@ -1646,149 +1639,95 @@ window.generateRevisionQuiz = function(topicId) {
     }
 
     // =========================================
-    // PARSE TOPIC ID
+    // FIX: SAFE PARSE TOPIC ID
     // =========================================
+    let subject, chapter, topic, sourceName;
 
-    const parts = topicId.split('_');
-
-    const sourceName = parts.pop();
-
-    const topic = parts.pop() || '';
-
-    const chapter = parts.pop() || '';
-
-    const subject = parts.join('_') || '';
+    const parts = topicId.split('::');
+    
+    if (parts.length >= 4) {
+        // New safe format
+        subject = parts[0];
+        chapter = parts[1];
+        topic = parts[2];
+        sourceName = parts[3];
+    } else {
+        // Legacy fallback for old data
+        const oldParts = topicId.split('_');
+        sourceName = oldParts.pop();
+        topic = oldParts.pop() || '';
+        chapter = oldParts.pop() || '';
+        subject = oldParts.join('_') || '';
+    }
 
     // =========================================
-    // DETERMINE BOOK / COURSE
+    // FIX: BULLETPROOF BOOK CHECK
     // =========================================
-
-    const isBookRevision =
-        sourceName.toLowerCase().includes('book') ||
-        sourceName.toLowerCase().includes('firstaid') ||
-        sourceName.toLowerCase().includes('rafiullah') ||
-        sourceName.toLowerCase().includes('brs');
+    const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+    // If the source name isn't the course, it must be a book!
+    const isBookRevision = (sourceName !== currentActiveCourse);
 
     // =========================================
     // FILTER QUESTIONS
     // =========================================
 
     const topicPool = allQuestions.filter(q => {
-
         const qSubject = q.Subject || q.subject || '';
         const qChapter = q.Chapter || q.chapter || '';
         const qTopic = q.Topic || q.topic || '';
         const qIsBook = q.isBookQuestion || false;
 
-        // =====================================
-        // STRICT MATCHING
-        // =====================================
         const hierarchyMatch = (
             qSubject.trim().toLowerCase() === subject.trim().toLowerCase() &&
             qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() &&
             qTopic.trim().toLowerCase() === topic.trim().toLowerCase()
         );
 
-        // =====================================
-        // BOOK / COURSE SEPARATION
-        // =====================================
         const sourceMatch = isBookRevision ? qIsBook : !qIsBook;
 
         return hierarchyMatch && sourceMatch;
     });
 
-    // =========================================
-    // NO QUESTIONS
-    // =========================================
-
     if (topicPool.length === 0) {
-
-        console.warn(
-            "No matching questions found for:",
-            { subject, chapter, topic, sourceName }
-        );
-
+        console.warn("No matching questions found for:", { subject, chapter, topic, sourceName });
         return alert("No questions available for this revision topic.");
     }
 
-    // =========================================
-    // MISTAKES + ATTEMPTS
-    // =========================================
-
     const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-
     let weakPool = [];
     let strongPool = [];
     let untouchedPool = [];
 
     topicPool.forEach(q => {
-
         const qId = getQID(q);
-
-        if (allMistakes.includes(qId)) {
-            weakPool.push(q);
-        } else if (attemptedQuestions.includes(qId)) {
-            strongPool.push(q);
-        } else {
-            untouchedPool.push(q);
-        }
+        if (allMistakes.includes(qId)) weakPool.push(q);
+        else if (attemptedQuestions.includes(qId)) strongPool.push(q);
+        else untouchedPool.push(q);
     });
-
-    // =========================================
-    // SHUFFLE
-    // =========================================
 
     weakPool = weakPool.sort(() => 0.5 - Math.random());
     strongPool = strongPool.sort(() => 0.5 - Math.random());
     untouchedPool = untouchedPool.sort(() => 0.5 - Math.random());
 
-    // =========================================
-    // QUIZ GENERATION
-    // =========================================
-
     let finalQuiz = [];
-
-    // PRIORITIZE WEAK QUESTIONS
     finalQuiz.push(...weakPool.slice(0, 20));
-
-    // THEN STRONG QUESTIONS
     finalQuiz.push(...strongPool.slice(0, 10));
-
-    // THEN NEW QUESTIONS
     finalQuiz.push(...untouchedPool.slice(0, 25 - finalQuiz.length));
-
-    // =========================================
-    // FALLBACK
-    // =========================================
 
     if (finalQuiz.length < 15) {
         const remaining = topicPool.filter(q => !finalQuiz.includes(q));
         finalQuiz.push(...remaining.slice(0, 15 - finalQuiz.length));
     }
 
-    // =========================================
-    // FINAL SHUFFLE
-    // =========================================
-
     finalQuiz = [...new Set(finalQuiz)].sort(() => 0.5 - Math.random());
 
-    // =========================================
-    // EMPTY SAFETY
-    // =========================================
-
-    if (finalQuiz.length === 0) {
-        return alert("Not enough data to generate revision.");
-    }
-
-    // =========================================
-    // LAUNCH
-    // =========================================
+    if (finalQuiz.length === 0) return alert("Not enough data to generate revision.");
 
     window.launchQuiz(
         finalQuiz,
         'practice',
         0,
-        `Revision: ${subject} ➡ ${chapter} ➡ ${topic}`
+        `Revision: ${topic}`
     );
 };
 
