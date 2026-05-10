@@ -120,15 +120,13 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         return;
     }
 
-    // 1. UPDATED: Added the missing books to the known courses array
+    // Books are removed from here because they live INSIDE these root courses!
     const knownCourses = [
         'fcps_part1', 'fcps_part2', 'fcps_imm', 
         'mrcs_part1', 'mrcs_part2', 
-        'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5',
-        'firstaid_step1', 'rafiullah', 'im_medicine', 'im_surgery', 'brs_patho', 'brs_physio'
+        'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'
     ];
 
-    // 2. NEW: Added a mapping to display proper, clean titles for the UI
     const courseTitles = {
         'fcps_part1': 'FCPS Part 1',
         'fcps_part2': 'FCPS Part 2',
@@ -139,203 +137,161 @@ function displayDetailedReport(student, activeCourseFilter = 'all') {
         'mbbs_year2': 'MBBS Year 2',
         'mbbs_year3': 'MBBS Year 3',
         'mbbs_year4': 'MBBS Year 4',
-        'mbbs_year5': 'MBBS Year 5',
-        'firstaid_step1': 'First Aid Step 1',
-        'rafiullah': 'Rafiullah FCPS',
-        'im_medicine': 'Irfan Masood - Medicine',
-        'im_surgery': 'Irfan Masood - Surgery',
-        'brs_patho': 'BRS - Pathology',
-        'brs_physio': 'BRS - Physiology'
+        'mbbs_year5': 'MBBS Year 5'
     };
     
-    // Always show all courses in the dropdown, even if no data exists yet
-    let availableCourses = [...knownCourses];
-
-    let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Courses / Overview</option>`;
-    availableCourses.forEach(c => {
+    let courseOptionsHtml = `<option value="all" ${activeCourseFilter === 'all' ? 'selected' : ''}>All Standard Courses</option>`;
+    knownCourses.forEach(c => {
         const isSelected = activeCourseFilter === c ? 'selected' : '';
-        // UPDATED: Use the courseTitles mapping for the dropdown labels
-        const displayTitle = courseTitles[c] || c.replace('_', ' ').toUpperCase();
-        courseOptionsHtml += `<option value="${c}" ${isSelected}>${displayTitle}</option>`;
+        courseOptionsHtml += `<option value="${c}" ${isSelected}>${courseTitles[c]}</option>`;
     });
 
-    // --- 1. AGGREGATE DATA BASED ON FILTER ---
     let globalHistory = [];
     let totalSolved = 0;
     let globalMistakesSet = new Set();
     let coursesHtml = '';
 
-    const coursesToProcess = activeCourseFilter === 'all' ? availableCourses : [activeCourseFilter];
+    const coursesToProcess = activeCourseFilter === 'all' ? knownCourses : [activeCourseFilter];
 
     coursesToProcess.forEach(courseKey => {
         const courseData = student[courseKey];
         if (courseData) {
-            // Aggregate Solved Questions
-            if (courseData.solvedQuestions) {
-                totalSolved += courseData.solvedQuestions.length;
-            }
-
-            // Aggregate Unique Mistakes
-            if (courseData.mistakes) {
-                courseData.mistakes.forEach(m => globalMistakesSet.add(m));
-            }
-            if (courseData.examMistakes) {
-                courseData.examMistakes.forEach(m => globalMistakesSet.add(m));
-            }
-
-            // Aggregate Exam History
+            if (courseData.solvedQuestions) totalSolved += courseData.solvedQuestions.length;
+            if (courseData.mistakes) courseData.mistakes.forEach(m => globalMistakesSet.add(m));
+            if (courseData.examMistakes) courseData.examMistakes.forEach(m => globalMistakesSet.add(m));
             if (courseData.examHistory) {
                 const taggedHistory = courseData.examHistory.map(ex => ({ ...ex, courseName: courseKey }));
                 globalHistory.push(...taggedHistory);
             }
 
-            // Build Topic & Subject Breakdown
             if (courseData.revisions && Object.keys(courseData.revisions).length > 0) {
                 const topics = courseData.revisions;
-                let topicRows = '';
+                let standardTopicRows = '';
+                let bookRows = '';
                 
                 Object.keys(topics).forEach(topicName => {
                     const data = topics[topicName];
                     const accClass = data.lastAccuracy >= 75 ? 'text-green' : (data.lastAccuracy >= 50 ? 'text-yellow' : 'text-red');
                     
-                    topicRows += `
-                        <div class="topic-row">
-                            <div class="topic-name">
-                                <i class="fas fa-book-open"></i> ${topicName.replace(/-/g, ' ').toUpperCase()}
+                    const rowHtml = `
+                        <div class="topic-row" style="padding: 10px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between;">
+                            <div class="topic-name" style="font-weight: 600; color: #1e293b;">
+                                ${topicName.replace(/-/g, ' ')}
                             </div>
-                            <div class="topic-stats">
-                                <span>Accuracy: <strong class="${accClass}">${data.lastAccuracy}%</strong></span>
-                                <span>Level: <strong>Stage ${data.intervalStep || 1}</strong></span>
+                            <div class="topic-stats" style="font-size: 0.85rem; color: #64748b;">
+                                <span style="margin-right: 15px;">Accuracy: <strong class="${accClass}">${data.lastAccuracy}%</strong></span>
+                                <span>Spaced Repetition: <strong>Stage ${data.intervalStep || 1}</strong></span>
                             </div>
                         </div>
                     `;
+
+                    // Separate books from standard course topics automatically
+                    if (topicName.includes('📕')) {
+                        bookRows += rowHtml;
+                    } else {
+                        standardTopicRows += rowHtml;
+                    }
                 });
 
-                // UPDATED: Use the courseTitles mapping for the section headers
-                const sectionTitle = courseTitles[courseKey] || courseKey.replace('_', ' ').toUpperCase();
-                coursesHtml += `
-                    <div class="course-group">
-                        <div class="course-group-title">
-                            📘 ${sectionTitle}
-                        </div>
-                        ${topicRows}
-                    </div>
-                `;
+                const sectionTitle = courseTitles[courseKey];
+                
+                coursesHtml += `<div class="course-group" style="margin-bottom: 25px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px;">`;
+                coursesHtml += `<h3 style="color: #0f172a; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px;">🎓 ${sectionTitle} Progress</h3>`;
+                
+                if (standardTopicRows) {
+                    coursesHtml += `<h4 style="color: #3b82f6; margin-top: 15px; font-size: 0.9rem; text-transform: uppercase;">Standard Topics</h4>${standardTopicRows}`;
+                }
+                if (bookRows) {
+                    coursesHtml += `<h4 style="color: #8b5cf6; margin-top: 15px; font-size: 0.9rem; text-transform: uppercase;">Reference Books</h4>${bookRows}`;
+                }
+                
+                coursesHtml += `</div>`;
             }
         }
     });
 
     if (!coursesHtml) {
-        coursesHtml = `<p class="empty-data-text">No specific topic or book data recorded yet.</p>`;
+        coursesHtml = `<p class="empty-data-text" style="color: #64748b; font-style: italic;">No topic or book data recorded yet for this selection.</p>`;
     }
 
-    // Sort global history from newest to oldest
     globalHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // Calculate Global Stats
     const totalMistakes = globalMistakesSet.size;
     const totalAttempts = totalSolved + totalMistakes;
     const overallAccuracy = totalAttempts > 0 ? Math.round((totalSolved / totalAttempts) * 100) : 0;
 
-    // --- 2. BUILD EXAM HISTORY TABLE ---
     let historyHtml = '';
     if (globalHistory.length === 0) {
-        historyHtml = `<p class="empty-data-text">No exams attempted yet.</p>`;
+        historyHtml = `<p class="empty-data-text" style="color: #64748b;">No exams attempted yet.</p>`;
     } else {
         historyHtml = `
-            <table class="history-table detailed-history">
+            <table class="history-table detailed-history" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
                 <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Exam / Source</th>
-                        <th>Course</th>
-                        <th>Score</th>
-                        <th>Solved</th>
-                        <th>Mistakes</th>
-                        <th>Time</th>
+                    <tr style="background: #f8fafc; text-align: left; border-bottom: 2px solid #cbd5e1;">
+                        <th style="padding: 10px;">Date</th>
+                        <th style="padding: 10px;">Exam</th>
+                        <th style="padding: 10px;">Score</th>
+                        <th style="padding: 10px;">Time</th>
                     </tr>
                 </thead>
                 <tbody>
         `;
 
         globalHistory.forEach(ex => {
-            const isAssigned = ex.examName && ex.examName.includes("(Assigned)");
-            const badgeHtml = isAssigned ? `<span class="badge-assigned">Assigned</span>` : `<span class="badge-self">Self-Practice</span>`;
-            
             const scoreClass = ex.percentage >= 75 ? 'text-green' : (ex.percentage >= 50 ? 'text-yellow' : 'text-red');
             const timeStr = ex.timeSpentMinutes ? `${ex.timeSpentMinutes} min` : "N/A";
-            
-            // UPDATED: Use the mapping for the table rows as well
-            const tableCourseName = ex.courseName ? (courseTitles[ex.courseName] || ex.courseName.replace('_', ' ')) : '-';
-
             historyHtml += `
-                <tr>
-                    <td>${new Date(ex.date).toLocaleDateString()}</td>
-                    <td class="fw-bold">${ex.examName || 'Practice Session'} ${badgeHtml}</td>
-                    <td class="course-tag">${tableCourseName}</td>
-                    <td class="fw-bold ${scoreClass}">${ex.percentage || 0}%</td>
-                    <td class="fw-bold">${ex.totalQuestions || '-'}</td>
-                    <td class="fw-bold text-red">${ex.mistakes || '-'}</td>
-                    <td class="time-text">${timeStr}</td>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">${new Date(ex.date).toLocaleDateString()}</td>
+                    <td style="padding: 10px; font-weight: bold;">${ex.examName || 'Practice Session'}</td>
+                    <td style="padding: 10px; font-weight: bold;" class="${scoreClass}">${ex.percentage || 0}%</td>
+                    <td style="padding: 10px; color: #64748b;">${timeStr}</td>
                 </tr>
             `;
         });
         historyHtml += `</tbody></table>`;
     }
 
-    // --- 3. RENDER EVERYTHING USING CLEAN CLASSES ---
     detailsPanel.innerHTML = `
         <div class="details-header" style="flex-wrap: wrap; gap: 15px;">
             <div style="flex: 1; min-width: 250px;">
                 <h1>${student.fullName || 'Unknown Student'}</h1>
-                <div class="details-meta">
-                    📧 ${student.email || 'No email'} | 📞 ${student.phone || 'No phone'}
+                <div class="details-meta" style="color: #64748b; margin-bottom: 15px;">
+                    📧 ${student.email || 'No email'}
                 </div>
-                <div style="margin-top: 15px;">
-                    <label style="font-weight: bold; font-size: 0.9rem; color: #64748b; margin-right: 10px;">Select Course/Book:</label>
-                    <select id="course-filter" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-weight: 600; outline: none; cursor: pointer; color: #1e293b; background: white;">
+                <div>
+                    <label style="font-weight: bold; font-size: 0.9rem; color: #475569; margin-right: 10px;">Filter by Enrollment:</label>
+                    <select id="course-filter" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; outline: none;">
                         ${courseOptionsHtml}
                     </select>
                 </div>
             </div>
-            <div class="role-badge" style="height: max-content;">
-                ${student.targetExam || student.role || 'Student'}
+        </div>
+
+        <div class="stats-grid" style="display: flex; gap: 15px; margin: 20px 0;">
+            <div class="stat-card" style="flex: 1; background: #eff6ff; padding: 20px; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                <div class="stat-title" style="color: #1e3a8a; font-weight: bold;">Total Solved</div>
+                <div class="stat-value" style="font-size: 1.8rem; color: #1d4ed8;">${totalSolved}</div>
+            </div>
+            <div class="stat-card" style="flex: 1; background: #ecfdf5; padding: 20px; border-radius: 12px; border-left: 4px solid #10b981;">
+                <div class="stat-title" style="color: #064e3b; font-weight: bold;">Global Accuracy</div>
+                <div class="stat-value" style="font-size: 1.8rem; color: #047857;">${overallAccuracy}%</div>
             </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card blue">
-                <div class="stat-title">Total Solved</div>
-                <div class="stat-value">${totalSolved}</div>
-            </div>
-            <div class="stat-card ${overallAccuracy >= 75 ? 'green' : (overallAccuracy >= 50 ? 'yellow' : 'red')}">
-                <div class="stat-title">Global Accuracy</div>
-                <div class="stat-value">${overallAccuracy}%</div>
-            </div>
-            <div class="stat-card red">
-                <div class="stat-title">Total Mistakes</div>
-                <div class="stat-value">${totalMistakes}</div>
-            </div>
-        </div>
-
-        <div class="detailed-reports-grid">
-            
+        <div class="detailed-reports-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
             <div class="report-card">
-                <h3><i class="fas fa-layer-group text-blue"></i> Subject & Topic Proficiency</h3>
+                <h3 style="margin-bottom: 15px;"><i class="fas fa-layer-group text-blue"></i> Subject & Topic Proficiency</h3>
                 ${coursesHtml}
             </div>
-
-            <div class="report-card">
-                <h3><i class="fas fa-history text-green"></i> Complete Exam History</h3>
+            <div class="report-card" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px;">
+                <h3 style="margin-bottom: 15px;"><i class="fas fa-history text-green"></i> Exam History</h3>
                 <div class="table-responsive">
                     ${historyHtml}
                 </div>
             </div>
-            
         </div>
     `;
 
-    // Attach event listener to dropdown to re-render when changed
     document.getElementById('course-filter').addEventListener('change', (e) => {
         displayDetailedReport(student, e.target.value);
     });

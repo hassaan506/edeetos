@@ -1084,25 +1084,28 @@ if (globalExitBtn) {
                 globalExitBtn.style.display = 'none'; // Hide leave button to prevent double clicks
 
                 try {
-                    // 1. Save host's spaced repetition data before ending this set
-                    await updateSpacedRepetition();
+                // 1. Save host's spaced repetition data before ending this set
+                await updateSpacedRepetition();
 
-                    // 2. Reset the room to the waiting state
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), {
-                        status: "waiting",
-                        answers: {},
-                        memberAnswers: deleteField(),
-                        forceReveal: deleteField(),
-                        currentQuestionIndex: 0
-                    });
+                // 2. THE NUCLEAR FIX: Use setDoc with merge instead of updateDoc
+                await setDoc(doc(db, "study_rooms", activeRoomId), {
+                    status: "waiting",
+                    answers: {},           
+                    memberAnswers: {},     
+                    forceReveal: {},       
+                    currentQuestionIndex: 0
+                }, { merge: true });
 
-                    // 3. Send host back to the dashboard to pick new questions!
-                    // Guests will stay in the room and see the "Waiting for Host..." screen.
-                    window.location.href = 'questions.html';
-                } catch (error) {
-                    console.error("Error returning to lobby:", error);
-                    lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
-                }
+                // 3. Send host back to the dashboard to pick new questions!
+                window.location.href = 'questions.html';
+            } catch (error) {
+                console.error("🔥 Firebase Error returning to lobby:", error);
+                
+                // 🚨 FORCE THE ERROR TO SHOW ON SCREEN:
+                alert("FIREBASE ERROR: " + error.message);
+                
+                lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+            }
             };
         }
     }
@@ -1161,7 +1164,18 @@ async function updateSpacedRepetition() {
 
     if (genericNames.includes(targetName)) {
         // The code attempts to read the columns from your CSV file here
-        topicsAttempted = [...new Set(quizQueue.map(q => q.Subject || q.Chapter || q.Topic).filter(Boolean))];
+        // REPLACE WITH THIS:
+        // Prioritize the specific Topic first. If empty, fallback to Chapter, then Subject.
+        topicsAttempted = [...new Set(quizQueue.map(q => {
+            let specificTopic = q.Topic || q.Chapter || q.Subject;
+            
+            // If this question came from a book, prefix it so the mentor knows!
+            if (q.isBookQuestion && q.Subject) {
+                return `📕 ${q.Subject} - ${specificTopic}`; 
+            }
+            return specificTopic;
+            
+        }).filter(Boolean))];
         
         // NEW SAFEGUARD: If the CSV columns are empty, fallback to a default name 
         // so it doesn't crash or create invisible database entries.

@@ -61,34 +61,85 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 async function calculateTotalQuestions() {
-    const courses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
+    const standardCourses = [
+        'fcps_part1', 'fcps_part2', 'fcps_imm', 
+        'mrcs_part1', 'mrcs_part2', 
+        'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'
+    ];
+
+    const courseTitles = {
+        'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
+        'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
+        'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 
+        'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5'
+    };
+
+    // NEW: We brought the books over!
+    const referenceBooks = [
+        { file: "firstaid_step1", title: "First Aid Step 1" },
+        { file: "rafiullah", title: "Rafiullah FCPS" },
+        { file: "im_medicine", title: "Irfan Masood - Medicine" },
+        { file: "im_surgery", title: "Irfan Masood - Surgery" },
+        { file: "brs_patho", title: "BRS - Pathology" },
+        { file: "brs_physio", title: "BRS - Physiology" }
+    ];
+
     let totalQuestions = 0;
-    
-    for (const course of courses) {
+    let breakdownHtml = `<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">`; 
+
+    // Helper function to fetch, count, and build the UI tags cleanly
+    async function fetchAndCount(path, displayTitle, badgeColor, textColor) {
         try {
-            const response = await fetch(`Data/${course}.csv`, { cache: 'no-cache' });
+            const response = await fetch(path, { cache: 'no-cache' });
             if (response.ok) {
                 const text = await response.text();
+                // Filter out empty lines or lines with just commas
+                const validLines = text.split('\n').filter(line => line.replace(/,/g, '').trim().length > 0);
                 
-                // Split the text into lines
-                const lines = text.split('\n');
-                
-                // Filter out lines that are completely empty OR just contain commas (e.g., ",,,,,,,")
-                const validLines = lines.filter(line => {
-                    // Temporarily remove all commas to see if there is actual text left
-                    const cleanedLine = line.replace(/,/g, '').trim();
-                    return cleanedLine.length > 0;
-                });
-
-                // If we have data (header + at least one question)
                 if (validLines.length > 1) {
-                    totalQuestions += (validLines.length - 1); // Subtract 1 for the header row
+                    const count = validLines.length - 1; // Subtract header
+                    totalQuestions += count;
+                    
+                    breakdownHtml += `
+                        <span style="background: ${badgeColor}; color: ${textColor}; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.1);">
+                            ${displayTitle}: <span style="color: #0f172a;">${count}</span>
+                        </span>`;
                 }
             }
-        } catch (e) {} 
+        } catch (e) {
+            console.error(`Failed to load ${displayTitle}`, e);
+        }
     }
+
+    // 1. Fetch and count Standard Courses (Grey Tags)
+    for (const course of standardCourses) {
+        await fetchAndCount(`Data/${course}.csv`, courseTitles[course], '#e2e8f0', '#334155');
+    }
+
+    // Add a visual separator for the books
+    breakdownHtml += `</div>
+        <div style="margin-top: 15px; margin-bottom: 8px; color: #8b5cf6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase;">
+            <i class="fas fa-book"></i> Reference Books
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">`;
+
+    // 2. Fetch and count Reference Books (Purple Tags)
+    for (const book of referenceBooks) {
+        await fetchAndCount(`Books/${book.file}.csv`, book.title, '#ede9fe', '#5b21b6');
+    }
+
+    breakdownHtml += `</div>`;
+
+    // Inject everything into the UI
     const totalEl = document.getElementById('total-q-count');
-    if (totalEl) totalEl.textContent = `Questions: ${totalQuestions}`;
+    if (totalEl) {
+        totalEl.innerHTML = `
+            <div style="font-size: 1.1rem; font-weight: 800; color: #1e293b;">
+                Total Database Questions: <span style="color: #3b82f6;">${totalQuestions}</span>
+            </div>
+            ${breakdownHtml}
+        `;
+    }
 }
 
 // Exit & Close Modal
