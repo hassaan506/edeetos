@@ -226,7 +226,7 @@ function formatCSVQuestion(rawCsvRow) {
         userSelectedAnswer: rawCsvRow.userSelectedAnswer || null,
         Subject: rawCsvRow.Subject || "",
         Chapter: rawCsvRow.Chapter || "",
-        Topic: rawCsvRow.Topic || ""
+        Topic: rawCsvRow.Topic || "",
 		isBookQuestion: rawCsvRow.isBookQuestion || false,
         bookName: rawCsvRow.bookName || ""
     };	
