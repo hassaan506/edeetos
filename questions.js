@@ -348,29 +348,31 @@ popupBack.onclick = () => {
     openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
 };
 
-popupClose.onclick = () => { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; isGlobalPopupActive = false; };
-popupOverlay.onclick = (e) => { if (e.target === popupOverlay) { popupHistory = []; popupOverlay.style.display = 'none'; activeCustomPool = null; isGlobalPopupActive = false; } }
+popupClose.onclick = () => { 
+    popupHistory = []; 
+    popupOverlay.style.display = 'none'; 
+    activeCustomPool = null; 
+    isGlobalPopupActive = false; 
+    // Clear the saved state so it doesn't auto-open next time
+    localStorage.removeItem('edeetos_saved_popup_path'); 
+    localStorage.removeItem('edeetos_saved_popup_title');
+};
+
+popupOverlay.onclick = (e) => { 
+    if (e.target === popupOverlay) { 
+        popupHistory = []; 
+        popupOverlay.style.display = 'none'; 
+        activeCustomPool = null; 
+        isGlobalPopupActive = false; 
+        // Clear the saved state here too
+        localStorage.removeItem('edeetos_saved_popup_path');
+        localStorage.removeItem('edeetos_saved_popup_title');
+    } 
+};
 
 // ==========================================
 // 4. CORE FUNCTIONS
 // ==========================================
-
-// Extracted parseCSV globally to prevent duplicating this code everywhere
-function parseCSV(text) {
-    let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-    for (l of text) {
-        if ('"' === l) {
-            if (s && l === p) row[i] += l;
-            s = !s;
-        } else if (',' === l && s) l = row[++i] = '';
-        else if ('\n' === l && s) {
-            if ('\r' === p) row[i] = row[i].slice(0, -1);
-            row = ret[++r] = [l = '']; i = 0;
-        } else row[i] += l;
-        p = l;
-    }
-    return ret;
-}
 
 function toggleSidebar(show) {
     if (show) {
@@ -442,39 +444,27 @@ async function loadAndRenderBookChapters(book) {
         document.body.style.cursor = 'wait';
         if (viewTitle) viewTitle.textContent = book.title;
 
-        const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
-        if (!response.ok) throw new Error("File not found");
-        const csvText = (await response.text()).replace(/^\uFEFF/, ''); // Strip potential BOM characters
+        const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+        if (!response.ok) throw new Error("JSON file not found");
+        
+        let bookQuestions = await response.json();
 
-        const rows = parseCSV(csvText); // Calling our globally extracted parseCSV function
-        const headers = rows[0].map(h => h ? h.trim() : "");
-        let bookQuestions = [];
-
-        rows.slice(1).forEach((row, rowIndex) => {
-            // STRICT FILTER: Ignore empty rows and ghost commas from Excel
-            if (row.join('').replace(/,/g, '').trim() === '') return;
-
-            let rowObj = {};
-            headers.forEach((header, index) => {
-                rowObj[header] = row[index] ? row[index].trim() : "";
-            });
-            if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
-                rowObj.QuestionID = `${book.file}-q-${rowIndex + 1}`;
-            }
-
-            bookQuestions.push(rowObj);
+        bookQuestions.forEach(q => {
+            q.QuestionID = q.id;
+            q.Subject = book.title;
+            q.Chapter = q.chapter;
+            q.Topic = q.topic;
+            q.Exam = q.exams;
+            q.Year = q.year;
+            q.isBookQuestion = true;
+            q.bookName = book.file;
         });
-		
+
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             bookQuestions = applyTierLimits(bookQuestions, 20);
         } else if (!isPremiumUser) {
             bookQuestions = applyTierLimits(bookQuestions, 50);
         }		
-        bookQuestions.forEach(q => {
-            q.isBookQuestion = true;
-            q.bookName = book.file;          // <--- NEW: store file name for saving/reports
-            q.Subject = book.title;
-        });
 
         let tempBookTree = {};
         bookQuestions.forEach(q => {
@@ -509,16 +499,13 @@ async function loadAndRenderBookChapters(book) {
             `;
             
             card.onclick = () => openPopup(chapterName, tempBookTree[chapterName], 'Level1', [chapterName], false);
-            
             subjectsGrid.appendChild(card);
         });
 
         document.body.style.cursor = 'default';
-
     } catch (error) {
         document.body.style.cursor = 'default';
         console.error("Error loading book:", error);
-        alert("Failed to load book data. Ensure your CSV is inside the /Books folder.");
     }
 }
 
@@ -614,33 +601,27 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
 // ==========================================
 async function loadDataAndBuildTree() {
     try {
-        const activeCourse = localStorage.getItem('edeetos_active_course');
-        const csvPath = `Data/${activeCourse}.csv`;
+        // Strictly use the global activeCourse. If it's missing, the top-level script already redirects them.
+        if (!activeCourse) return; 
+        
+        const [questionsRes, hierarchyRes] = await Promise.all([
+            fetch(`Data/${activeCourse}_questions.json`, { cache: 'no-cache' }),
+            fetch(`Data/${activeCourse}_hierarchy.json`, { cache: 'no-cache' })
+        ]);
 
-        const response = await fetch(csvPath, { cache: 'no-cache' });
-        if (!response.ok) throw new Error("CSV file not found: " + csvPath);
-        const csvText = (await response.text()).replace(/^\uFEFF/, ''); // Strip BOM here too
+        if (!questionsRes.ok || !hierarchyRes.ok) throw new Error("JSON files not found");
 
-        const rows = parseCSV(csvText);
-        const headers = rows[0].map(h => h ? h.trim() : "");
-        const dataRows = rows.slice(1);
+        const masterQuestions = await questionsRes.json();
+        const hierarchyData = await hierarchyRes.json();
 
-        let masterQuestions = [];
-
-        dataRows.forEach((row, rowIndex) => {
-            if (row.join('').replace(/,/g, '').trim() === '') return;
-
-            let rowObj = {};
-            headers.forEach((header, index) => {
-                rowObj[header] = row[index] ? row[index].trim() : "";
-            });
-
-            if (!rowObj.Subject || rowObj.Subject === "") return;
-            if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
-                rowObj.QuestionID = `q-${rowIndex + 1}`;
-            }
-
-            masterQuestions.push(rowObj);
+        // Map lowercase JSON keys to the Uppercase keys your frontend relies on
+        masterQuestions.forEach(q => {
+            q.QuestionID = q.id;
+            q.Subject = q.subject;
+            q.Chapter = q.chapter;
+            q.Topic = q.topic;
+            q.Year = q.year;
+            q.Exam = q.exams; 
         });
 
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
@@ -651,40 +632,10 @@ async function loadDataAndBuildTree() {
             allQuestions = [...masterQuestions]; 
         }
 
-        subjectTree = {}; systemTree = {}; examTree = {};
-
-        allQuestions.forEach(rowObj => {
-            const Exam = rowObj.Exam;
-            const Subject = rowObj.Subject;
-            const Chapter = rowObj.Chapter;
-            const Topic = rowObj.Topic;
-
-            if (Subject) {
-                if (!subjectTree[Subject]) subjectTree[Subject] = {};
-                if (Chapter) {
-                    if (!subjectTree[Subject][Chapter]) subjectTree[Subject][Chapter] = [];
-                    if (Topic && !subjectTree[Subject][Chapter].includes(Topic)) subjectTree[Subject][Chapter].push(Topic);
-                }
-            }
-
-            if (Chapter && Chapter.toLowerCase().includes('system')) {
-                if (!systemTree[Chapter]) systemTree[Chapter] = {};
-                if (Subject) {
-                    if (!systemTree[Chapter][Subject]) systemTree[Chapter][Subject] = [];
-                    if (Topic && !systemTree[Chapter][Subject].includes(Topic)) systemTree[Chapter][Subject].push(Topic);
-                }
-            }
-
-            if (Exam) {
-                const Year = rowObj.Year || "Other Years"; 
-                if (!examTree[Year]) examTree[Year] = {};
-                if (!examTree[Year][Exam]) examTree[Year][Exam] = {};
-                if (Subject) {
-                    if (!examTree[Year][Exam][Subject]) examTree[Year][Exam][Subject] = [];
-                    if (Topic && !examTree[Year][Exam][Subject].includes(Topic)) examTree[Year][Exam][Subject].push(Topic);
-                }
-            }
-        });
+        // Inject the pre-built hierarchy trees directly
+        subjectTree = hierarchyData.subjects || {};
+        systemTree = hierarchyData.systems || {};
+        examTree = hierarchyData.exams || {};
 
         renderGrid();
     } catch (error) {
@@ -769,7 +720,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
         } else if (view === 'exam') {
             const qYear = q.Year || "Other Years";
             if (paths[0] && qYear !== paths[0]) return false;
-            if (paths[1] && q.Exam !== paths[1]) return false;
+            if (paths[1] && (!q.Exam || !q.Exam.includes(paths[1]))) return false;
             if (paths[2] && q.Subject !== paths[2]) return false;
             if (paths[3] && q.Topic !== paths[3]) return false;
         } else if (view === 'book') {
@@ -845,37 +796,28 @@ function renderBooksGrid() {
 async function loadAndOpenBook(book) {
     try {
         document.body.style.cursor = 'wait';
-        const response = await fetch(`Books/${book.file}.csv`, { cache: 'no-cache' });
-        if (!response.ok) throw new Error("File not found");
-        const csvText = (await response.text()).replace(/^\uFEFF/, '');
+        const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+        if (!response.ok) throw new Error("JSON file not found");
+        
+        let bookQuestions = await response.json();
 
-        const rows = parseCSV(csvText);
-        const headers = rows[0].map(h => h ? h.trim() : "");
-        let bookQuestions = [];
-
-        rows.slice(1).forEach((row, rowIndex) => {
-            if (row.join('').replace(/,/g, '').trim() === '') return;
-
-            let rowObj = {};
-            headers.forEach((header, index) => {
-                rowObj[header] = row[index] ? row[index].trim() : "";
-            });
-            if (!rowObj.QuestionID && !rowObj['Question ID'] && !rowObj.ID && !rowObj.id) {
-                rowObj.QuestionID = `${book.file}-q-${rowIndex + 1}`;
-            }
-
-            bookQuestions.push(rowObj);
+        bookQuestions.forEach(q => {
+            q.QuestionID = q.id;
+            q.Subject = book.title;
+            q.Chapter = q.chapter;
+            q.Topic = q.topic;
+            q.Exam = q.exams;
+            q.Year = q.year;
+            q.isBookQuestion = true;
+            q.bookName = book.file;
         });
+
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             bookQuestions = applyTierLimits(bookQuestions, 20);
         } else if (!isPremiumUser) {
             bookQuestions = applyTierLimits(bookQuestions, 50);
         }
-        bookQuestions.forEach(q => {
-            q.isBookQuestion = true;
-            q.bookName = book.file;          // <--- NEW
-            q.Subject = book.title;
-        });
+
         let tempBookTree = {};
         bookQuestions.forEach(q => {
             if (q.Chapter) {
@@ -891,7 +833,6 @@ async function loadAndOpenBook(book) {
     } catch (error) {
         document.body.style.cursor = 'default';
         console.error("Error loading book:", error);
-        alert("Failed to load book data.");
     }
 }
 
@@ -899,6 +840,8 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
 
     popupTitle.textContent = title;
+	localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
+    localStorage.setItem('edeetos_saved_popup_title', title);
     popupList.innerHTML = '';
     popupOverlay.style.display = 'flex';
     popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
@@ -1165,6 +1108,7 @@ onAuthStateChanged(auth, async (user) => {
 
                 await loadDataAndBuildTree();
                 await injectBooksGlobally();
+				restoreLastState();
 
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
                 const totalAttempts = solvedList.length + allMistakes.length;
@@ -1698,29 +1642,20 @@ window.generateRevisionQuiz = function(topicId) {
 async function injectBooksGlobally() {
     for (const book of availableBooks) {
         try {
-            const response = await fetch(`Books/${book.file}.csv`, { cache: 'force-cache' });
+            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
             if (!response.ok) continue;
-            const csvText = (await response.text()).replace(/^\uFEFF/, '');
             
-            const rows = parseCSV(csvText);
-            const headers = rows[0].map(h => h ? h.trim() : "");
-            let tempBookQs = [];
+            let tempBookQs = await response.json();
             
-            rows.slice(1).forEach((row, rowIndex) => {
-                if (row.join('').replace(/,/g, '').trim() === '') return;
-
-                let q = {};
-                headers.forEach((header, index) => { q[header] = row[index] ? row[index].trim() : ""; });
-                
-                if (!q.QuestionID && !q['Question ID'] && !q.ID && !q.id) {
-                    q.QuestionID = `${book.file}-q-${rowIndex + 1}`;
-                }
-                
-                q.isBookQuestion = true;
-                q.bookName = book.file;   // <--- NEW
+            tempBookQs.forEach(q => {
+                q.QuestionID = q.id;
                 q.Subject = book.title;
-
-                tempBookQs.push(q);
+                q.Chapter = q.chapter;
+                q.Topic = q.topic;
+                q.Exam = q.exams;
+                q.Year = q.year;
+                q.isBookQuestion = true;
+                q.bookName = book.file;
             });
 
             if (localStorage.getItem('edeetos_guest_mode') === 'true') {
@@ -1736,6 +1671,47 @@ async function injectBooksGlobally() {
     }
 }
 
-switchMode('practice');
+function restoreLastState() {
+    switchMode('practice');
+    const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
+    const lastTitle = localStorage.getItem('edeetos_last_title') || 'Subject Wise';
+    
+    changeView(lastView, lastTitle);
 
-const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
+    // If you were in a book, stop here to avoid aggressive auto-fetching.
+    if (lastView === 'book') return; 
+
+    const savedPathStr = localStorage.getItem('edeetos_saved_popup_path');
+    const savedTitle = localStorage.getItem('edeetos_saved_popup_title');
+
+    if (savedPathStr && savedTitle) {
+        try {
+            const pathArr = JSON.parse(savedPathStr);
+            if (pathArr.length === 0) return;
+
+            let currentTree = {};
+            if (lastView === 'subject') currentTree = subjectTree;
+            else if (lastView === 'system') currentTree = systemTree;
+            else if (lastView === 'exam') currentTree = examTree;
+
+            let dataObj = currentTree;
+            let isValid = true;
+            
+            // Drill down into the JSON tree to find your exact location
+            for (let i = 0; i < pathArr.length; i++) {
+                if (dataObj[pathArr[i]]) {
+                    dataObj = dataObj[pathArr[i]];
+                } else {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (isValid) {
+                openPopup(savedTitle, dataObj, 'Restored', pathArr, false);
+            }
+        } catch (e) {
+            console.error("Failed to restore popup state", e);
+        }
+    }
+}

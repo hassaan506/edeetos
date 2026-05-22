@@ -198,38 +198,42 @@ function shuffleArray(array) {
     return array;
 }
 
-function formatCSVQuestion(rawCsvRow) {
-    const correctLetter = (rawCsvRow['CorrectAnswer'] || rawCsvRow['correctAnswer'] || '').toString().trim().toUpperCase();
-    const options = [];
-    
-    ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
-        const optKeyUpper = `Option${letter}`;
-        const optKeyLower = `option${letter}`;
-        const optText = rawCsvRow[optKeyUpper] || rawCsvRow[optKeyLower]; 
-        if (optText && optText.trim() !== '') {
-            options.push({ text: optText, isCorrect: correctLetter === letter, letter: letter });
-        }
-    });
-    
-    const rawExplanation = rawCsvRow.Explanation || rawCsvRow.explanation || "No explanation provided.";
+function formatJSONQuestion(q) {
+    // If it is already formatted (like during a multiplayer sync), just return it
+    if (Array.isArray(q.options)) return q;
+
+    const correctLetter = (q.correctAnswer || q.CorrectAnswer || '').toString().trim().toUpperCase();
+    const formattedOptions = [];
+
+    // Parse the new JSON dictionary format { A: "...", B: "..." }
+    if (q.options && typeof q.options === 'object') {
+        ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
+            const optText = q.options[letter];
+            if (optText && optText.trim() !== '') {
+                formattedOptions.push({ text: optText, isCorrect: correctLetter === letter, letter: letter });
+            }
+        });
+    }
 
     return {
-        text: rawCsvRow.Question || rawCsvRow.question || "Missing Question Text",
-        options: options,
-        explanation: rawExplanation,
-        originalNumber: rawCsvRow.originalNumber,
-        isBookmarked: rawCsvRow.isBookmarked || false,
-        userNote: rawCsvRow.userNote || "",
-        sessionState: rawCsvRow.sessionState || null,
-        historicalState: rawCsvRow.historicalState || null,
-        hasBeenSkipped: rawCsvRow.hasBeenSkipped || false,
-        userSelectedAnswer: rawCsvRow.userSelectedAnswer || null,
-        Subject: rawCsvRow.Subject || "",
-        Chapter: rawCsvRow.Chapter || "",
-        Topic: rawCsvRow.Topic || "",
-		isBookQuestion: rawCsvRow.isBookQuestion || false,
-        bookName: rawCsvRow.bookName || ""
-    };	
+        text: q.question || q.Question || "Missing Question Text",
+        options: formattedOptions,
+        explanation: q.explanation || q.Explanation || "No explanation provided.",
+        originalNumber: q.QuestionID || q.id || q.originalNumber || `q-${Math.random()}`,
+        isBookmarked: q.isBookmarked || false,
+        userNote: q.userNote || "",
+        sessionState: q.sessionState || null,
+        historicalState: q.historicalState || null,
+        hasBeenSkipped: q.hasBeenSkipped || false,
+        userSelectedAnswer: q.userSelectedAnswer || null,
+        
+        // Exact mappings for course and book hierarchy
+        Subject: q.Subject || q.subject || "",
+        Chapter: q.Chapter || q.chapter || "",
+        Topic: q.Topic || q.topic || "",
+        isBookQuestion: q.isBookQuestion || false,
+        bookName: q.bookName || ""
+    };
 }
 
 function buildNumberGrid() {
@@ -306,8 +310,8 @@ function loadQuestion(index) {
         const forceBtn = document.getElementById('host-force-reveal-btn');
         if (forceBtn) forceBtn.style.display = 'none';
 
-        if (!currentQuestionData.options) {
-            quizQueue[currentIndex] = formatCSVQuestion(currentQuestionData);
+		if (!currentQuestionData.options || !Array.isArray(currentQuestionData.options)) {
+            quizQueue[currentIndex] = formatJSONQuestion(currentQuestionData);
             currentQuestionData = quizQueue[currentIndex];
         }
 
@@ -879,15 +883,17 @@ function showResults() {
     }
 
     const returnBtn = resultsEl.querySelector('button');
-    if (returnBtn) {
+if (returnBtn) {
         returnBtn.onclick = async (e) => {
             e.preventDefault();
             returnBtn.textContent = "Saving Exam Data...";
             returnBtn.disabled = true;
 
-            if (isExamMode) await saveExamProgress(correctIds, mistakeIds, correctCount, total);
-            await updateSpacedRepetition();
+            const tasks = [];
+            if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total));
+            tasks.push(updateSpacedRepetition());
 
+            await Promise.all(tasks);
             window.location.href = 'questions.html';
         };
     }
@@ -1092,73 +1098,63 @@ if (globalExitBtn) {
             // Insert it right before the Leave Room button
             globalExitBtn.parentNode.insertBefore(lobbyBtn, globalExitBtn);
 
-            lobbyBtn.onclick = async (e) => {
+lobbyBtn.onclick = async (e) => {
                 e.preventDefault();
-                if (!confirm("Stop the current quiz and return everyone to the lobby to pick new questions?")) {
-                    return;
-                }
+                if (!confirm("Stop the current quiz and return everyone to the lobby to pick new questions?")) return;
 
                 lobbyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Returning...';
                 lobbyBtn.disabled = true;
-                globalExitBtn.style.display = 'none'; // Hide leave button to prevent double clicks
+                globalExitBtn.style.display = 'none';
 
                 try {
-                // 1. Save host's spaced repetition data before ending this set
-                await updateSpacedRepetition();
+                    // Fire both network requests simultaneously
+                    const tasks = [
+                        updateSpacedRepetition(),
+                        setDoc(doc(db, "study_rooms", activeRoomId), {
+                            status: "waiting",
+                            answers: {},           
+                            memberAnswers: {},     
+                            forceReveal: {},       
+                            currentQuestionIndex: 0
+                        }, { merge: true })
+                    ];
+                    await Promise.all(tasks);
 
-                // 2. THE NUCLEAR FIX: Use setDoc with merge instead of updateDoc
-                await setDoc(doc(db, "study_rooms", activeRoomId), {
-                    status: "waiting",
-                    answers: {},           
-                    memberAnswers: {},     
-                    forceReveal: {},       
-                    currentQuestionIndex: 0
-                }, { merge: true });
-
-                // 3. Send host back to the dashboard to pick new questions!
-                window.location.href = 'questions.html';
-            } catch (error) {
-                console.error("🔥 Firebase Error returning to lobby:", error);
-                
-                // 🚨 FORCE THE ERROR TO SHOW ON SCREEN:
-                alert("FIREBASE ERROR: " + error.message);
-                
-                lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
-            }
+                    window.location.href = 'questions.html';
+                } catch (error) {
+                    console.error("🔥 Firebase Error:", error);
+                    lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+                }
             };
         }
     }
 
-    globalExitBtn.onclick = async (e) => {
+globalExitBtn.onclick = async (e) => {
         e.preventDefault();
         
-        // If it's multiplayer, ask for confirmation
-        if (activeRoomId && !confirm("Are you sure you want to completely leave and end the study group?")) {
-            return;
-        }
+        if (activeRoomId && !confirm("Are you sure you want to completely leave and end the study group?")) return;
 
         globalExitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
         globalExitBtn.disabled = true;
 
         try {
-            // 1. Always save spaced repetition progress first
-            await updateSpacedRepetition();
+            const tasks = [updateSpacedRepetition()];
 
-            // 2. Handle multiplayer teardown if applicable
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
                 if (!isGuest) {
-                    // Host leaves: Destroys the room
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() });
+                    tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() }));
                 } else {
-                    // Guest leaves: Removes their name from the roster
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
+                    tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() }));
                 }
             }
+
+            // Blast all writes to Firebase concurrently
+            await Promise.all(tasks);
+
         } catch (error) { 
             console.error("Error during exit sequence:", error); 
         } finally {
-            // 3. Clear memory and redirect
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
             window.location.href = 'questions.html';
@@ -1180,8 +1176,8 @@ async function updateSpacedRepetition() {
     const userRef = doc(db, "users", user.uid);
 
     try {
-        const docSnap = await getDoc(userRef);
-        const dbData = docSnap.data() || {};
+        // 🔥 THE SPEED FIX: Use the cached memory instead of downloading the whole DB again.
+        const dbData = currentUserData || {};
 
         const isBookSessionLocal = isBookSession();   
         const currentRevisions = isBookSessionLocal
@@ -1190,7 +1186,6 @@ async function updateSpacedRepetition() {
 
         const revisionsData = {};
 
-        // 🔥 PHASE 1: Accumulate counts safely in memory
         quizQueue.forEach(question => {
             if (!question) return;
 
@@ -1210,7 +1205,6 @@ async function updateSpacedRepetition() {
                 isCorrect = correctOption && (question.userSelectedAnswer === correctOption.text || question.sessionState === 'correct');
             }
 
-            // If this is the first time we see this topic in THIS loop, grab the DB baseline
             if (!revisionsData[topicId]) {
                 const existing = currentRevisions[topicId] || {};
                 revisionsData[topicId] = {
@@ -1224,14 +1218,12 @@ async function updateSpacedRepetition() {
                 };
             }
 
-            // Safely increment the running totals!
             revisionsData[topicId].solvedQuestionsCount += 1;
             if (!isCorrect) {
                 revisionsData[topicId].mistakesCount += 1;
             }
         });
 
-        // 🔥 PHASE 2: Calculate Spaced Repetition logic based on the final totals
         Object.keys(revisionsData).forEach(topicId => {
             const data = revisionsData[topicId];
             const accuracy = Math.round(((data.solvedQuestionsCount - data.mistakesCount) / data.solvedQuestionsCount) * 100);
@@ -1250,15 +1242,11 @@ async function updateSpacedRepetition() {
             data.updatedAt = Date.now();
         });
 
-        // Save to Firebase
         if (isBookSessionLocal) {
             await setDoc(userRef, { books: { revisions: revisionsData } }, { merge: true });
         } else {
             await setDoc(userRef, { [activeCourse]: { revisions: revisionsData } }, { merge: true });
         }
-
-        console.log("✅ Spaced repetition analytics updated successfully");
-
     } catch (error) {
         console.error("❌ Failed to update spaced repetition:", error);
     }

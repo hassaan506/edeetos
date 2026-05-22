@@ -1,0 +1,46 @@
+{
+    "subjects": {
+        "": {
+            "Pulmonology": {
+                "Acute Respiratory Distress Syndrome": 12,
+                "Asthma": 30,
+                "Bronchiectasis": 6,
+                "COPD": 27,
+                "Cystic Fibrosis": 6,
+                "Empyema": 3,
+                "Fungal Diseases": 9,
+                "Hypersensitivity Pneumonitis": 6,
+                "Lung Cancer": 20,
+                "Occupational Lung Diseases": 12,
+                "Pleural Effusion": 11,
+                "Pneumonia": 35,
+                "Pneumothorax": 4,
+                "Pulmonary Embolism": 18,
+                "Pulmonary Function Tests": 9,
+                "Pulmonary Hypertension": 15,
+                "Respiratory Complications of Systemic Diseases": 4,
+                "Respiratory Failure": 6,
+                "Restrictive Lung Diseases": 5,
+                "Sarcoidosis": 10,
+                "Tuberculosis": 50
+            },
+            "Nephrology": {
+                "Acute Kidney Injury": 16,
+                "Adult Polycystic Kidney Disease": 7,
+                "Chronic Kidney Disease": 18,
+                "Diseases of Prostate Gland": 16,
+                "Nephritic Syndrome": 24,
+                "Nephrotic Syndrome": 25,
+                "Renal Cell Carcinoma": 8,
+                "Renal Replacement Therapy": 11,
+                "Renal Tubular Acidosis": 7,
+                "Urinary Tract Calculi": 17,
+                "Urinary Tract Infections": 21
+            }
+        }
+    },
+    "systems": {},
+    "exams": {
+        "Other Years": {}
+    }
+}
