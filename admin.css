@@ -550,50 +550,37 @@ body {
         width: 100% !important;
     }
 }
+
 /* ==========================================
    FIX: TOTAL QUESTIONS BOX OVERFLOW (LAPTOP & MOBILE)
    ========================================== */
 
-/* 1. Lock the height of the entire block and add a scrollbar */
-#total-q-count {
-    max-height: 220px; 
-    overflow-y: auto;  
-    overflow-x: hidden;
-    padding-right: 8px; 
-    margin-top: 10px;
-    border-top: 1px dashed #e2e8f0;
-    padding-top: 15px;
-}
-
-/* 2. Create a clean, modern scrollbar for this specific box */
-#total-q-count::-webkit-scrollbar {
+/* Create a clean, modern scrollbar for the dynamically injected breakdown container */
+#total-q-count div[style*="overflow-y"]::-webkit-scrollbar {
     width: 6px;
 }
-#total-q-count::-webkit-scrollbar-track {
+#total-q-count div[style*="overflow-y"]::-webkit-scrollbar-track {
     background: #f8fafc; 
     border-radius: 4px;
 }
-#total-q-count::-webkit-scrollbar-thumb {
+#total-q-count div[style*="overflow-y"]::-webkit-scrollbar-thumb {
     background: #cbd5e1; 
     border-radius: 4px;
 }
 
-/* 3. Forcefully shrink the massive tags into compact pills */
-#total-q-count span[style*="padding"] {
-    padding: 3px 8px !important;
-    font-size: 0.75rem !important;
-    border-radius: 12px !important;
-    display: inline-block !important;
-    white-space: nowrap !important;
-}
-
-/* 4. Ultra-compact mode for Mobile Phones */
+/* Ultra-compact mode for Mobile Phones */
 @media (max-width: 768px) {
-    #total-q-count {
-        max-height: 160px; /* Make it even shorter on phones */
-        background: #f8fafc; /* Give it a slight background so it looks like a contained list */
+    #total-q-count div[style*="overflow-y"] {
+        max-height: 180px !important; 
+        background: #f8fafc !important; 
         border: 1px solid #e2e8f0;
-        padding: 10px;
+        padding: 10px !important;
         border-radius: 10px;
+    }
+    
+    /* Safely scale down the pills for mobile without breaking flexbox */
+    #total-q-count span[style*="padding"] {
+        padding: 4px 8px !important;
+        font-size: 0.75rem !important;
     }
 }

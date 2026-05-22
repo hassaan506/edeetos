@@ -911,9 +911,15 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
 
 function getLeafPaths(dataObj, currentPath) {
     if (!dataObj) return [];
+    
     if (Array.isArray(dataObj)) {
         return dataObj.map(topic => JSON.stringify([...currentPath, topic]));
     }
+    
+    if (typeof dataObj !== 'object') {
+        return [JSON.stringify(currentPath)];
+    }
+    
     let leaves = [];
     Object.keys(dataObj).forEach(key => {
         leaves = leaves.concat(getLeafPaths(dataObj[key], [...currentPath, key]));
@@ -954,11 +960,14 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     itemDiv.appendChild(labelDiv);
 
-    const actionBtn = document.createElement('button');
+const actionBtn = document.createElement('button');
     actionBtn.className = 'btn-outline mini-btn';
     actionBtn.style.marginLeft = '15px';
 
-    if (nextData) {
+    // 🔥 THE FIX: Explicitly check if the next level is an object, not just a number
+    const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
+
+    if (hasSubLevels) {
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = () => openPopup(itemName, nextData, 'Chapter', itemPath, false);
     } else {

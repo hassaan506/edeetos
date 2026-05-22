@@ -85,24 +85,19 @@ async function calculateTotalQuestions() {
 
     let totalQuestions = 0;
     
-    // 🔥 FIX: Locked the height to 180px and added a scrollbar
     let breakdownHtml = `<div style="max-height: 180px; overflow-y: auto; padding-right: 5px; margin-top: 10px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 12px;">
                             <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
 
-    // Helper function to fetch, count, and build the UI tags cleanly
+    // THE FIX: Fetch the JSON files and get the array length
     async function fetchAndCount(path, displayTitle, badgeColor, textColor) {
         try {
             const response = await fetch(path, { cache: 'no-cache' });
             if (response.ok) {
-                const text = await response.text();
-                // Filter out empty lines or lines with just commas
-                const validLines = text.split('\n').filter(line => line.replace(/,/g, '').trim().length > 0);
-                
-                if (validLines.length > 1) {
-                    const count = validLines.length - 1; // Subtract header
+                const data = await response.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    const count = data.length;
                     totalQuestions += count;
                     
-                    // 🔥 FIX: Switched to inline-flex and tight padding to make beautiful pill badges
                     breakdownHtml += `
                         <span style="background: ${badgeColor}; color: ${textColor}; padding: 3px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.05); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
                             ${displayTitle} <span style="background: rgba(255,255,255,0.5); color: #0f172a; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">${count}</span>
@@ -114,26 +109,24 @@ async function calculateTotalQuestions() {
         }
     }
 
-    // 1. Fetch and count Standard Courses (Grey Tags)
+    // 1. Point to Course JSONs
     for (const course of standardCourses) {
-        await fetchAndCount(`Data/${course}.csv`, courseTitles[course], '#e2e8f0', '#334155');
+        await fetchAndCount(`Data/${course}_questions.json`, courseTitles[course], '#e2e8f0', '#334155');
     }
 
-    // Add a visual separator for the books
     breakdownHtml += `</div>
         <div style="margin: 12px 0 6px 0; color: #8b5cf6; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
             <i class="fas fa-book"></i> Reference Books
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
 
-    // 2. Fetch and count Reference Books (Purple Tags)
+    // 2. Point to Book JSONs
     for (const book of referenceBooks) {
-        await fetchAndCount(`Books/${book.file}.csv`, book.title, '#ede9fe', '#5b21b6');
+        await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
     }
 
-    breakdownHtml += `</div></div>`; // Close the scroll container!
+    breakdownHtml += `</div></div>`;
 
-    // Inject everything into the UI
     const totalEl = document.getElementById('total-q-count');
     if (totalEl) {
         totalEl.innerHTML = `
