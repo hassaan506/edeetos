@@ -1,18 +1,38 @@
 [
     {
-        "id": "FA-NEPHRO-POTTER-01",
+        "id": "FA-Nephro-ABP & RTA-001",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A fetus develops severe oligohydramnios early in gestation. Which of the following best explains the mechanism by which oligohydramnios causes Potter sequence?",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A 45-year-old female presents to the emergency department with a severe panic attack. She is hyperventilating and complains of perioral numbness. Arterial blood gas analysis is most likely to reveal which of the following sets of abnormalities?",
         "options": {
-            "A": "Direct toxic effect of amniotic fluid",
-            "B": "Placental insufficiency leading to growth restriction",
-            "C": "Reduced cushioning and compression of the fetus",
-            "D": "Maternal hypertension causing renal ischemia",
-            "E": "Fetal cardiac failure causing venous congestion"
+            "A": "Decreased pH, decreased HCO3, decreased pCO2",
+            "B": "Increased pH, decreased HCO3, decreased pCO2",
+            "C": "Increased pH, increased HCO3, increased pCO2",
+            "D": "Decreased pH, increased HCO3, increased pCO2",
+            "E": "Decreased pH, normal HCO3, increased pCO2"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A patient with chronic kidney disease presents with profound lethargy. Laboratory evaluation reveals a metabolic acidosis with an elevated anion gap. Which of the following is the most appropriate mathematical formula used to calculate this patient's anion gap?",
+        "options": {
+            "A": "Na+ + (Cl- + HCO3-)",
+            "B": "Na+ - (Cl- - HCO3-)",
+            "C": "Na+ - (Cl- + HCO3-)",
+            "D": "(Na+ + K+) - (Cl- + HCO3-)",
+            "E": "Cl- - (Na+ + HCO3-)"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -20,19 +40,339 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-02",
+        "id": "FA-Nephro-ABP & RTA-003",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Which of the following is NOT a typical feature of Potter sequence?",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A patient is evaluated for chronic, non-anion gap metabolic acidosis. The physician suspects a Type 1 Renal Tubular Acidosis (RTA). Which of the following combinations of findings is most characteristic of this specific defect?",
         "options": {
-            "A": "Pulmonary hypoplasia",
-            "B": "Flattened nose and low\u2011set ears",
-            "C": "Wrinkled skin",
-            "D": "Bowed legs and clubbed feet",
-            "E": "Broad thumbs and big toes"
+            "A": "Urine pH > 5.5 and calcium phosphate kidney stones",
+            "B": "Urine pH < 5.5 and hypophosphatemic rickets",
+            "C": "Urine pH < 5.5 and hyperkalemia",
+            "D": "Urine pH > 5.5 and severe hyperkalemia",
+            "E": "Urine pH < 5.5 and uric acid stones"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A 50-year-old diabetic male with chronic kidney disease is taking an ACE inhibitor for hypertension. Routine lab work reveals a non-anion gap metabolic acidosis and significant hyperkalemia. Urine pH is 5.2. Which type of renal tubular acidosis does this patient most likely have?",
+        "options": {
+            "A": "Type 1 RTA",
+            "B": "Type 2 RTA",
+            "C": "Type 3 RTA",
+            "D": "Type 4 RTA",
+            "E": "Proximal RTA"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A child presents with growth retardation and signs of hypophosphatemic rickets. Laboratory testing indicates a defect in the proximal convoluted tubule's ability to reabsorb bicarbonate, leading to its excretion in the urine. This condition is designated as which type of Renal Tubular Acidosis?",
+        "options": {
+            "A": "Type 1 RTA",
+            "B": "Type 2 RTA",
+            "C": "Type 3 RTA",
+            "D": "Type 4 RTA",
+            "E": "Distal RTA"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A patient receives a large volume of normal saline infusion during a prolonged hospitalization. Subsequent blood work reveals a non-anion gap metabolic acidosis. According to standard physiological mnemonics, which of the following is also a recognized cause of a normal anion gap metabolic acidosis?",
+        "options": {
+            "A": "Diabetic ketoacidosis",
+            "B": "Uremia",
+            "C": "Salicylate toxicity",
+            "D": "Diarrhea",
+            "E": "Lactic acidosis"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A pregnant female in her third trimester presents for a routine checkup. Arterial blood gas shows an elevated pH, decreased HCO3, and decreased pCO2. Her physiological state is a recognized cause of which acid-base disturbance?",
+        "options": {
+            "A": "Metabolic alkalosis",
+            "B": "Metabolic acidosis",
+            "C": "Respiratory alkalosis",
+            "D": "Respiratory acidosis",
+            "E": "Mixed metabolic and respiratory acidosis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A patient is brought to the ED after ingesting a large amount of antifreeze (ethylene glycol). He has a severe high anion gap metabolic acidosis. According to the MUDPILES mnemonic, which of the following common over-the-counter medications can also cause a high anion gap acidosis in overdose?",
+        "options": {
+            "A": "Ibuprofen",
+            "B": "Loratadine",
+            "C": "Paracetamol",
+            "D": "Omeprazole",
+            "E": "Diphenhydramine"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A patient with primary adrenal insufficiency (Addison disease) presents with fatigue. Lab work reveals a metabolic acidosis. Upon calculating the anion gap, it falls within the normal range (6-12 mEq/L). According to the HARDASS mnemonic, which of the following is also a cause of a normal anion gap acidosis?",
+        "options": {
+            "A": "Methanol toxicity",
+            "B": "Uremia",
+            "C": "Salicylate toxicity",
+            "D": "Hyperchloremia/hyperalimentation",
+            "E": "Diabetic ketoacidosis"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-ABP & RTA-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acid Base Physiology & Renal Tubular Acidosis",
+        "question": "A 60-year-old male on high-dose NSAIDs develops hyperkalemia and a non-anion gap metabolic acidosis. He is diagnosed with hypoaldosteronism. According to the mnemonic \"NO 4LDOESTERONE\", which type of Renal Tubular Acidosis does this represent?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": "Type 5"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A 65-year-old male is admitted with severe congestive heart failure exacerbation. His urine output drops significantly. Laboratory tests show a BUN of 45 mg/dL and a serum creatinine of 1.5 mg/dL. Fractional excretion of sodium (FENa) is 0.5%. What type of casts are most commonly associated with this specific pre-renal etiology?",
+        "options": {
+            "A": "WBC casts",
+            "B": "RBC casts",
+            "C": "Hyaline casts",
+            "D": "Granular casts",
+            "E": "Waxy casts"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A patient undergoes a contrast-enhanced CT scan. Two days later, his serum creatinine acutely rises from 1.0 mg/dL to 2.8 mg/dL. Urinalysis reveals specific casts indicative of tubular epithelial damage. Which type of casts are classically seen in this patient's condition?",
+        "options": {
+            "A": "Hyaline casts",
+            "B": "Muddy brown granular casts",
+            "C": "WBC casts with eosinophils",
+            "D": "Dysmorphic RBC casts",
+            "E": "Fatty casts"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A 40-year-old female is treated with ibuprofen for chronic back pain. Three weeks later, she develops a fever, maculopapular rash, and rising serum creatinine. Urinalysis reveals WBC casts and pyuria with the presence of eosinophils. Which region of the kidney is primarily inflamed in this condition?",
+        "options": {
+            "A": "Glomerular basement membrane",
+            "B": "Renal papilla",
+            "C": "Tubular epithelium",
+            "D": "Renal interstitium",
+            "E": "Renal pelvis"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A 25-year-old male with a known history of sickle cell disease presents with sudden onset of gross hematuria and flank pain. He is diagnosed with acute kidney injury due to damage to a specific structural region of the kidney highly susceptible to ischemia in this condition. Which condition has he most likely developed?",
+        "options": {
+            "A": "Acute interstitial nephritis",
+            "B": "Acute tubular necrosis",
+            "C": "Renal papillary necrosis",
+            "D": "Post-streptococcal glomerulonephritis",
+            "E": "Bilateral ureteral obstruction"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A patient with severe dehydration is suspected of having a prerenal acute kidney injury. In addition to a BUN/Cr ratio >20, what specific Fractional Excretion of Sodium (FENa) value strictly defines this prerenal state?",
+        "options": {
+            "A": "<1%",
+            "B": ">1%",
+            "C": ">2%",
+            "D": "<2%",
+            "E": ">3%"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A patient recovering from septic shock develops acute tubular necrosis. The kidneys are unable to reabsorb Na+ or H2O. What specific Urine Osmolality value is classically expected in this intrinsic AKI state?",
+        "options": {
+            "A": ">500 mOsm/kg",
+            "B": ">400 mOsm/kg",
+            "C": "<350 mOsm/kg",
+            "D": "<100 mOsm/kg",
+            "E": "Variable mOsm/kg"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "An elderly male with benign prostatic hyperplasia presents with complete urinary retention. He develops postrenal AKI. Which class of medications is classically known to precipitate postrenal AKI by causing urethral compression or neurogenic bladder issues?",
+        "options": {
+            "A": "Beta-blockers",
+            "B": "Anticholinergics",
+            "C": "ACE inhibitors",
+            "D": "Loop diuretics",
+            "E": "Calcium channel blockers"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-AKI-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Acute Kidney Injury",
+        "question": "A patient develops a fever, rash, and eosinophiluria. He was recently prescribed a medication for gastric reflux. According to the \"5 Ps\" of Acute Interstitial Nephritis, which specific drug class is responsible?",
+        "options": {
+            "A": "Penicillins",
+            "B": "Pain-free (NSAIDs)",
+            "C": "Pee (Diuretics)",
+            "D": "Proton pump inhibitors (PPIs)",
+            "E": "Rifampin"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Glomerulus & Renal Physiology",
+        "question": "A medical student is studying the glomerular filtration barrier. The endothelium of the glomerulus acts as a size barrier. Molecules larger than what specific size are primarily prevented from being filtered by this endothelium?",
+        "options": {
+            "A": "10 nm",
+            "B": "20-30 nm",
+            "C": "50-60 nm",
+            "D": "80 nm",
+            "E": "100 nm"
         },
         "correctAnswer": "E",
         "explanation": "",
@@ -40,19 +380,19 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-03",
+        "id": "FA-Nephro-Physio-002",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Potter sequence includes extremity defects. Which of the following best describes the typical extremity findings?",
+        "topic": "Glomerulus & Renal Physiology",
+        "question": "A patient has a suspected decline in renal function. The physician decides to order a blood test that can be used to estimate GFR, as an alternative to creatinine. Which of the following endogenous substances is routinely used for this purpose?",
         "options": {
-            "A": "Radial ray defect",
-            "B": "Postaxial polydactyly",
-            "C": "Bowed legs and clubbed feet",
-            "D": "Syndactyly of fingers",
-            "E": "Phocomelia"
+            "A": "Para-aminohippuric acid (PAH)",
+            "B": "Urea",
+            "C": "Cystatin C",
+            "D": "Inulin",
+            "E": "Albumin"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -60,19 +400,39 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-04",
+        "id": "FA-Nephro-Physio-003",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Which intrauterine event is the direct trigger for the Potter sequence?",
+        "topic": "Glomerulus & Renal Physiology",
+        "question": "A patient presents with a severe ureteral stone causing complete obstruction of the right ureter. According to the principles of glomerular dynamics, how will this constriction of the ureter alter GFR, RPF, and the filtration fraction (FF) in the affected kidney?",
         "options": {
-            "A": "Maternal drug exposure",
-            "B": "Fetal anaemia",
-            "C": "Oligohydramnios",
-            "D": "Polyhydramnios",
-            "E": "Placenta previa"
+            "A": "Decreased GFR, Unchanged RPF, Decreased FF",
+            "B": "Decreased GFR, Decreased RPF, Unchanged FF",
+            "C": "Increased GFR, Unchanged RPF, Increased FF",
+            "D": "Decreased GFR, Increased RPF, Decreased FF",
+            "E": "Unchanged GFR, Decreased RPF, Increased FF"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Incontinence-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "A 50-year-old multiparous woman complains of urinary leakage every time she laughs, coughs, or sneezes. The underlying mechanism is an increase in intra-abdominal pressure overcoming an incompetent outlet. Which of the following is the recommended first-line treatment for her specific condition?",
+        "options": {
+            "A": "Oxybutynin",
+            "B": "Alpha-blockers",
+            "C": "Kegel exercises",
+            "D": "Catheterization",
+            "E": "Mirabegron"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -80,13 +440,1373 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-05",
+        "id": "FA-Nephro-Incontinence-002",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Autosomal dominant polycystic kidney disease (ADPKD) is most commonly caused by a mutation on which chromosome?",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "A 65-year-old male with a history of benign prostatic hyperplasia (BPH) presents with continuous dribbling of urine and a sensation of incomplete emptying. Post-void residual volume is significantly increased. Which medication class is most appropriate to relieve the obstruction in this type of incontinence?",
+        "options": {
+            "A": "Antimuscarinics",
+            "B": "Cholinergic agonists",
+            "C": "Alpha-1 receptor antagonists",
+            "D": "Beta-3 receptor agonists",
+            "E": "Nicotinic receptor antagonists"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Incontinence-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "A 70-year-old female suffers from sudden, overwhelming urges to urinate, frequently resulting in leakage before reaching the bathroom. This urgency incontinence is driven by detrusor muscle overactivity. Which class of medication, acting to relax the detrusor, is an appropriate pharmacological treatment?",
+        "options": {
+            "A": "Muscarinic M3 receptor antagonists",
+            "B": "Alpha-1 receptor antagonists",
+            "C": "Cholinergic agonists",
+            "D": "Nicotinic receptor agonists",
+            "E": "Beta-1 receptor blockers"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Incontinence-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "A patient receives a medication to treat urinary retention. The drug stimulates contraction of the detrusor muscle. Which specific receptor is targeted by this cholinergic agonist?",
+        "options": {
+            "A": "Alpha-1 receptor",
+            "B": "Beta-3 receptor",
+            "C": "Nicotinic receptor",
+            "D": "M3 receptor",
+            "E": "Beta-2 receptor"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Incontinence-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "Voluntary control over the external urethral sphincter is mediated by the pudendal nerve. Which type of receptor directly controls this somatic process?",
+        "options": {
+            "A": "Alpha-1 receptor",
+            "B": "Beta-3 receptor",
+            "C": "Nicotinic receptor",
+            "D": "Muscarinic M3 receptor",
+            "E": "Muscarinic M1 receptor"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Incontinence-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "During the normal micturition reflex, the bladder fills and stretches, activating mechanoreceptors. This physical stretch information is carried towards the spinal cord primarily by which specific set of nerves?",
+        "options": {
+            "A": "Efferent parasympathetic fibers",
+            "B": "Pudendal nerve fibers",
+            "C": "Afferent pelvic splanchnic nerves",
+            "D": "Sympathetic hypogastric nerves",
+            "E": "Somatic motor fibers"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Incontinence-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Micturition & Urinary Incontinence",
+        "question": "A 40-year-old female with a history of Multiple Sclerosis presents with urinary leakage and a high post-void residual volume. Her underlying neurological disease leads to incomplete emptying. Which specific type of incontinence is this?",
+        "options": {
+            "A": "Stress incontinence",
+            "B": "Urgency incontinence",
+            "C": "Overflow incontinence",
+            "D": "Functional incontinence",
+            "E": "Mixed incontinence"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 7-year-old boy presents with peripheral and periorbital edema, hypertension, and cola-colored urine. His mother notes he had a skin infection diagnosed as impetigo three weeks ago. Laboratory testing reveals decreased C3 levels. The underlying pathogenesis of this patient's renal condition is mediated by which of the following mechanisms?",
+        "options": {
+            "A": "Type I hypersensitivity",
+            "B": "Type II hypersensitivity",
+            "C": "Type III hypersensitivity",
+            "D": "Type IV hypersensitivity",
+            "E": "Direct bacterial toxicity to the glomerulus"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 10-year-old girl develops acute poststreptococcal glomerulonephritis following a severe sore throat. If a renal biopsy were performed, what would be the expected finding on electron microscopy?",
+        "options": {
+            "A": "Subendothelial immune complex humps",
+            "B": "Subepithelial immune complex humps",
+            "C": "Intramembranous deposits",
+            "D": "Effacement of podocyte foot processes",
+            "E": "Basket-weave appearance of the basement membrane"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 55-year-old male presents with hemoptysis and rapidly declining renal function. A renal biopsy reveals a crescent moon shape in the glomeruli on light microscopy. Immunofluorescence demonstrates a linear pattern of deposition. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Granulomatosis with polyangiitis",
+            "B": "Goodpasture syndrome",
+            "C": "Acute poststreptococcal glomerulonephritis",
+            "D": "IgA nephropathy",
+            "E": "Diffuse proliferative glomerulonephritis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A patient is being evaluated for rapidly progressive glomerulonephritis. Renal biopsy confirms the presence of crescents on light microscopy, but immunofluorescence is completely negative. Which of the following conditions is most consistent with these biopsy findings?",
+        "options": {
+            "A": "Microscopic polyangiitis",
+            "B": "Goodpasture syndrome",
+            "C": "Alport syndrome",
+            "D": "Membranoproliferative glomerulonephritis",
+            "E": "Acute poststreptococcal glomerulonephritis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 22-year-old male presents with episodic gross hematuria. He reports having a mild respiratory infection just two days prior to the onset of the hematuria. Renal biopsy reveals mesangial proliferation. Immunofluorescence would most likely show deposition of which of the following in the mesangium?",
+        "options": {
+            "A": "IgG and C3",
+            "B": "IgM",
+            "C": "IgA",
+            "D": "Fibrinogen",
+            "E": "Type IV collagen"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 14-year-old boy is evaluated for chronic microscopic hematuria, progressive sensorineural hearing loss, and bilateral lens dislocations. Family history is significant for an uncle who required a kidney transplant. The underlying genetic mutation in this condition most directly affects which structural component?",
+        "options": {
+            "A": "Type I collagen",
+            "B": "Type III collagen",
+            "C": "Type IV collagen",
+            "D": "Fibronectin",
+            "E": "Heparan sulfate"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A patient with chronic Hepatitis C infection develops edema and heavy proteinuria. Renal biopsy reveals a \"tram-track\" appearance on both light microscopy and immunofluorescence. This specific morphological change is primarily due to which of the following processes?",
+        "options": {
+            "A": "Mesangial growth and splitting of the basement membrane",
+            "B": "Fusion of podocyte foot processes",
+            "C": "Subepithelial deposition of IgG",
+            "D": "Nonenzymatic glycation of the mesangium",
+            "E": "Ischemic necrosis of the tubular epithelium"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A patient is diagnosed with Type II Membranoproliferative Glomerulonephritis. Laboratory evaluation demonstrates the presence of C3 nephritic factor. In this specific subtype, where are the immune deposits typically located on electron microscopy?",
+        "options": {
+            "A": "Subepithelial space",
+            "B": "Subendothelial space",
+            "C": "Intramembranous space",
+            "D": "Mesangial matrix",
+            "E": "Parietal layer of Bowman's capsule"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A patient is suspected of having a nephritic syndrome based on hematuria and hypertension. To fit the classic definition of \"mild proteinuria\" seen in nephritic syndromes, the 24-hour urine protein must fall below what specific threshold?",
+        "options": {
+            "A": "<1.0 g/day",
+            "B": "<2.5 g/day",
+            "C": "<3.0 g/day",
+            "D": "<3.5 g/day",
+            "E": "<4.0 g/day"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A patient with acute poststreptococcal glomerulonephritis presents with \"cola-colored\" urine. The hematuria is classified as glomerular in origin due to inflammation and GBM damage. Which characteristic finding on urinalysis strictly confirms that the RBCs are of glomerular origin?",
+        "options": {
+            "A": "Isomorphic RBCs",
+            "B": "Dysmorphic RBCs",
+            "C": "RBC fragments",
+            "D": "Hemoglobin casts",
+            "E": "Clumped RBCs"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-011",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 45-year-old patient presents with rapidly declining renal function. Biopsy shows crescents on LM. Immunofluorescence is strictly negative. While Granulomatosis with polyangiitis and microscopic polyangiitis are possibilities, which other condition classically presents with a negative IF?",
+        "options": {
+            "A": "Goodpasture syndrome",
+            "B": "Eosinophilic polyangiitis",
+            "C": "IgA nephropathy",
+            "D": "Lupus nephritis",
+            "E": "Poststreptococcal glomerulonephritis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-012",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 20-year-old male presents with episodic gross hematuria. He reports having a gastrointestinal infection just 3 days ago. Renal biopsy reveals mesangial proliferation. The timing of this hematuria (2-4 days post-infection) is the classic hallmark of which condition?",
+        "options": {
+            "A": "Acute poststreptococcal glomerulonephritis",
+            "B": "IgA Nephropathy",
+            "C": "Membranoproliferative glomerulonephritis",
+            "D": "Alport syndrome",
+            "E": "Goodpasture syndrome"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-013",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 12-year-old boy presents with hematuria and sensorineural deafness. The physician suspects Alport Syndrome, which is caused by a mutation in Type IV collagen. According to the classic mnemonic, what other specific issue does this patient most likely have?",
+        "options": {
+            "A": "Skin lesions",
+            "B": "Cardiac defects",
+            "C": "Eye problems",
+            "D": "Hepatic cysts",
+            "E": "Pulmonary hypoplasia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephritic-014",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephritic Syndromes",
+        "question": "A 40-year-old male with chronic Hepatitis B infection presents with a mixed nephrotic and nephritic picture. Biopsy demonstrates a \"tram-track\" appearance. This finding is classically secondary to which specific type of glomerulonephritis?",
+        "options": {
+            "A": "Type I Membranoproliferative GM",
+            "B": "Type II Membranoproliferative GM",
+            "C": "Membranous Nephropathy",
+            "D": "Diffuse Proliferative GM",
+            "E": "Focal Segmental Glomerulosclerosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A 35-year-old male presents with unilateral colicky flank pain radiating to the groin. Ultrasound confirms hydronephrosis. Urinalysis shows envelope-shaped crystals. He has a history of Crohn's disease resulting in malabsorption. Which of the following is the most appropriate long-term pharmacological treatment to prevent recurrence of this specific stone?",
+        "options": {
+            "A": "Allopurinol",
+            "B": "Broad-spectrum antibiotics",
+            "C": "Thiazide diuretics",
+            "D": "Loop diuretics",
+            "E": "Calcium supplements"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A 40-year-old female presents with recurrent urinary tract infections. Imaging reveals a large staghorn calculus in the right kidney. Urinalysis shows a urine pH of 8.5 and coffin-lid shaped crystals. Infection with which of the following urease-positive organisms is the most likely underlying cause?",
+        "options": {
+            "A": "Escherichia coli",
+            "B": "Proteus mirabilis",
+            "C": "Staphylococcus saprophyticus",
+            "D": "Enterococcus faecalis",
+            "E": "Pseudomonas aeruginosa"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A 15-year-old boy with a history of recurrent kidney stones is found to have six-sided hexagon-shaped crystals in his urine. His urine pH is decreased. The underlying pathogenesis is a recessive defect in the proximal convoluted tubule's ability to transport certain amino acids. Which of the following is one of the specific amino acids affected?",
+        "options": {
+            "A": "Alanine",
+            "B": "Glutamine",
+            "C": "Arginine",
+            "D": "Methionine",
+            "E": "Phenylalanine"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A 60-year-old male with a long history of gout presents with acute left-sided flank pain and hematuria. An abdominal X-ray does not reveal any radiopaque stones, but a non-contrast CT confirms a calculus in the left ureter. Urine microscopy shows rhomboid-shaped crystals. Which of the following is the most appropriate treatment strategy for this specific type of stone?",
+        "options": {
+            "A": "Acidifying the urine",
+            "B": "Surgical removal only",
+            "C": "Administering thiazide diuretics",
+            "D": "Alkylating the urine with sodium bicarbonate",
+            "E": "Lithotripsy"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A 45-year-old female admits to taking massive daily doses of a specific vitamin supplement, which subsequently leads to the development of radiopaque, envelope-shaped kidney stones. Which vitamin abuse is a known risk factor for calcium oxalate stones?",
+        "options": {
+            "A": "Vitamin A",
+            "B": "Vitamin B12",
+            "C": "Vitamin C",
+            "D": "Vitamin D",
+            "E": "Vitamin E"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A 60-year-old patient with leukemia undergoes aggressive chemotherapy. The increased cell turnover significantly raises his risk for developing a specific type of radiolucent, rhomboid-shaped kidney stone. Which type of stone is this?",
+        "options": {
+            "A": "Calcium oxalate",
+            "B": "Calcium phosphate",
+            "C": "Struvite",
+            "D": "Cystine",
+            "E": "Uric acid"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Stone-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrolithiasis",
+        "question": "A patient is diagnosed with a severe right-sided ureteral stone. Ultrasound confirms a dilation of the renal pelvis. Which principle correctly describes the anatomical relationship of this dilation in hydronephrosis?",
+        "options": {
+            "A": "Dilation occurs distal to the obstruction",
+            "B": "Dilation occurs proximal to the obstruction",
+            "C": "Dilation only occurs bilaterally",
+            "D": "Dilation is restricted to the minor calyces",
+            "E": "Dilation strictly spares the renal pelvis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron  & Tubular Defects",
+        "question": "A patient is prescribed acetazolamide for altitude sickness. In addition to causing metabolic acidosis, this drug can precipitate an allergic reaction in patients with which of the following specific sensitivities?",
+        "options": {
+            "A": "Penicillin allergy",
+            "B": "Aspirin allergy",
+            "C": "Peanut allergy",
+            "D": "Sulfa allergy",
+            "E": "Iodine allergy"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron  & Tubular Defects",
+        "question": "A 60-year-old male with hypertension is started on a thiazide diuretic. At his follow-up, laboratory results show several expected elevations (HyperGLUC). Which of the following is also a recognized adverse effect of this medication class?",
+        "options": {
+            "A": "Hyperkalemia",
+            "B": "Hyperlipidemia",
+            "C": "Hypocalcemia",
+            "D": "Metabolic acidosis",
+            "E": "Ototoxicity"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron  & Tubular Defects",
+        "question": "A young adult is diagnosed with Liddle Syndrome, an autosomal dominant condition increasing sodium reabsorption. Which of the following is the most appropriate pharmacological treatment for this specific syndrome?",
+        "options": {
+            "A": "Hydrochlorothiazide",
+            "B": "Furosemide",
+            "C": "K+ sparing diuretics",
+            "D": "ACE inhibitors",
+            "E": "Acetazolamide"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A mountain climber takes a carbonic anhydrase inhibitor to prevent altitude sickness. Two days later, he develops metabolic acidosis. Which section of the nephron is the primary site of action for this medication?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Descending limb of the loop of Henle",
+            "C": "Thick ascending limb of the loop of Henle",
+            "D": "Distal convoluted tubule",
+            "E": "Collecting duct"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A child presents with failure to thrive. Laboratory tests reveal excretion of amino acids, glucose, bicarbonate, and phosphate, resulting in metabolic acidosis. A defect in which renal segment is responsible for this condition, known as Fanconi syndrome?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Thin descending limb",
+            "C": "Thick ascending limb",
+            "D": "Distal convoluted tubule",
+            "E": "Collecting duct"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A patient with elevated intracranial pressure is treated with an osmotic diuretic that increases tubular fluid osmolarity. Which part of the nephron is the primary site of action for this drug?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Descending limb of the loop of Henle",
+            "C": "Thick ascending limb of the loop of Henle",
+            "D": "Distal convoluted tubule",
+            "E": "Collecting duct"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A 70-year-old male with elevated intracranial pressure is being considered for mannitol therapy. A review of his medical history reveals a condition that makes this drug strictly contraindicated. Which of the following conditions is an absolute contraindication for mannitol?",
+        "options": {
+            "A": "Glaucoma",
+            "B": "Congestive heart failure",
+            "C": "Hyperuricemia",
+            "D": "Metabolic alkalosis",
+            "E": "Hypercalcemia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A patient is treated for acute pulmonary edema with an intravenous diuretic that inhibits the Na+/K+/2Cl- cotransporter, disrupting the hypertonicity of the medulla. The patient subsequently develops ototoxicity. Which medication was most likely administered?",
+        "options": {
+            "A": "Hydrochlorothiazide",
+            "B": "Spironolactone",
+            "C": "Furosemide",
+            "D": "Acetazolamide",
+            "E": "Mannitol"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A patient receiving long-term loop diuretic therapy presents with an episode of acute renal colic. Imaging confirms a calcium oxalate kidney stone. The diuretic used precipitates these stones by acting on which segment of the nephron?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Descending limb of the loop of Henle",
+            "C": "Thick ascending limb of the loop of Henle",
+            "D": "Distal convoluted tubule",
+            "E": "Collecting duct"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A child presents with poor growth. Laboratory findings show hypokalemia and metabolic alkalosis. The condition is due to an inherited defect in the thick ascending loop, functionally mimicking the effects of loop diuretics. Which syndrome is this?",
+        "options": {
+            "A": "Fanconi syndrome",
+            "B": "Gitelman syndrome",
+            "C": "Liddle syndrome",
+            "D": "Bartter syndrome",
+            "E": "Syndrome of Apparent Mineralocorticoid Excess"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-011",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A 55-year-old male on a diuretic for hypertension routinely shows elevated serum glucose, uric acid, and calcium levels (HyperGLUC). What is the mechanism of action of the prescribed diuretic class?",
+        "options": {
+            "A": "Carbonic anhydrase inhibition",
+            "B": "Inhibition of the Na+/K+/2Cl- cotransporter",
+            "C": "Inhibition of NaCl reabsorption in the DCT",
+            "D": "Aldosterone receptor antagonism",
+            "E": "Osmotic diuresis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-012",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A teenager presents with hypokalemia, hypomagnesemia, and metabolic alkalosis. The genetic defect involved mimics the action of thiazide diuretics. Which segment of the nephron contains the reabsorption defect in this specific syndrome?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Thick ascending limb of the loop of Henle",
+            "C": "Distal convoluted tubule",
+            "D": "Cortical collecting duct",
+            "E": "Medullary collecting duct"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-013",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A patient with liver cirrhosis and hepatic ascites is started on a diuretic. Weeks later, he complains of tender breast enlargement. Which specific potassium-sparing diuretic, known for its anti-androgen effects, was most likely prescribed?",
+        "options": {
+            "A": "Furosemide",
+            "B": "Hydrochlorothiazide",
+            "C": "Amiloride",
+            "D": "Spironolactone",
+            "E": "Triamterene"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-014",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A patient develops nephrogenic diabetes insipidus. Which specific potassium-sparing diuretic is uniquely noted for its use in treating this particular condition?",
+        "options": {
+            "A": "Spironolactone",
+            "B": "Eplerenone",
+            "C": "Amiloride",
+            "D": "Triamterene",
+            "E": "Acetazolamide"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-015",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A young patient presents with severe hypertension and hypokalemia. Genetic testing reveals an autosomal dominant mutation causing decreased degradation of sodium channels in the collecting tubules. Which syndrome is this?",
+        "options": {
+            "A": "Bartter syndrome",
+            "B": "Gitelman syndrome",
+            "C": "Liddle syndrome",
+            "D": "Fanconi syndrome",
+            "E": "Syndrome of Apparent Mineralocorticoid Excess"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephron-016",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephron & Tubular Defects",
+        "question": "A child presents with severe hypertension, hypokalemia, and metabolic alkalosis. The diagnosis is Syndrome of Apparent Mineralocorticoid Excess (S.A.M.E.). The pathogenesis fundamentally involves a decreased ability to convert which of the following?",
+        "options": {
+            "A": "Cortisone to cortisol",
+            "B": "Cortisol to cortisone",
+            "C": "Angiotensin I to Angiotensin II",
+            "D": "Aldosterone to corticosterone",
+            "E": "Progesterone to deoxycorticosterone"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 45-year-old male with nephrotic syndrome develops a pulmonary embolism. The hypercoagulable state in nephrotic syndrome is primarily driven by the urinary loss of which of the following?",
+        "options": {
+            "A": "Albumin",
+            "B": "Immunoglobulins",
+            "C": "Antithrombin III",
+            "D": "Plasminogen",
+            "E": "Fibrinogen"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 6-year-old child is diagnosed with a nephrotic syndrome. The severe proteinuria seen in this condition is fundamentally due to an impaired charge barrier resulting from damage to which specific structure?",
+        "options": {
+            "A": "Glomerular basement membrane",
+            "B": "Endothelial fenestrations",
+            "C": "Podocytes",
+            "D": "Macula densa",
+            "E": "Mesangial cells"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 5-year-old boy develops severe edema following a viral immunization. Light microscopy of a renal biopsy appears normal. If an electron microscopy were performed, what would be the most likely specific finding?",
+        "options": {
+            "A": "Subendothelial immune complex deposition",
+            "B": "Spike and dome appearance",
+            "C": "Effacement of podocyte foot processes",
+            "D": "Mesangial expansion and sclerosis",
+            "E": "Splitting of the basement membrane"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 4-year-old girl is diagnosed with Minimal Change Disease. Her parents ask about the expected course of treatment. What is the classic therapeutic response associated with this specific disease?",
+        "options": {
+            "A": "Poor response to corticosteroids",
+            "B": "Strong response to corticosteroids",
+            "C": "Requires immediate kidney transplantation",
+            "D": "Responsive only to cyclophosphamide",
+            "E": "Worsens rapidly with ACE inhibitors"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 35-year-old African American male with a history of HIV infection presents with nephrotic-range proteinuria. A renal biopsy is performed. Given the most likely diagnosis, what would be the expected finding on light microscopy?",
+        "options": {
+            "A": "Normal glomeruli",
+            "B": "Diffuse capillary and GBM thickening",
+            "C": "Segmental sclerosis and hyalinosis",
+            "D": "Wire looping of capillaries",
+            "E": "Kimmelstiel-Wilson nodules"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A patient with a history of heroin abuse develops Focal Segmental Glomerulosclerosis. Compared to minimal change disease, how is this patient's disease most likely to respond to standard therapy?",
+        "options": {
+            "A": "Rapid and complete remission",
+            "B": "Strong initial response with frequent relapses",
+            "C": "Poor response to corticosteroids",
+            "D": "Dramatic improvement followed by acute renal failure",
+            "E": "Response depends entirely on age"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 50-year-old male with chronic Hepatitis B infection presents with heavy proteinuria. Renal biopsy demonstrates a \"spike and dome\" appearance on electron microscopy. What is the most common pathogenesis for the primary form of this specific nephropathy?",
+        "options": {
+            "A": "T-cell mediated cytokine release",
+            "B": "Antibodies to Phospholipase A2 receptor",
+            "C": "Nonenzymatic glycation of the basement membrane",
+            "D": "Mutation in the type IV collagen gene",
+            "E": "Circulating IgA immune complexes"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A patient taking penicillamine develops massive proteinuria. Renal biopsy reveals diffuse capillary thickening with a granular IF pattern. Which of the following infections is also a classic secondary cause of this specific renal pathology?",
+        "options": {
+            "A": "HIV infection",
+            "B": "Heroin abuse",
+            "C": "Syphilis infection",
+            "D": "Sickle cell trait",
+            "E": "Streptococcal pharyngitis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 60-year-old male with poorly controlled type 2 diabetes is found to have microalbuminuria. What is the initial pathophysiological mechanism that leads to glomerular hypertrophy and scarring in diabetic glomerulonephropathy?",
+        "options": {
+            "A": "Antibody deposition against the GBM",
+            "B": "Nonenzymatic glycation causing hyperfiltration",
+            "C": "T-cell mediated podocyte effacement",
+            "D": "Ischemic injury to the renal medulla",
+            "E": "Immune complex deposition in the mesangium"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A patient with long-standing diabetes progresses to end-stage renal disease. Review of a renal biopsy reveals prominent eosinophilic glomerulosclerosis. What is the classic name for these specific nodular lesions?",
+        "options": {
+            "A": "Aschoff bodies",
+            "B": "Kimmelstiel-Wilson lesions",
+            "C": "Mallory bodies",
+            "D": "Ghon complexes",
+            "E": "Lewy bodies"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-011",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 28-year-old female with systemic lupus erythematosus presents with nephrotic-range proteinuria. A renal biopsy is performed. Which classic histological finding on light microscopy is highly characteristic of Diffuse Proliferative Glomerulonephritis?",
+        "options": {
+            "A": "Segmental sclerosis",
+            "B": "Nodular glomerulosclerosis",
+            "C": "Wire looping of capillaries",
+            "D": "Crescent formation in Bowman's space",
+            "E": "Normal glomerular architecture"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-012",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A patient with systemic lupus erythematosus is diagnosed with Diffuse Proliferative Glomerulonephritis. Electron microscopy of the renal biopsy is most likely to show immune complex deposition (IgG & C3) in which specific location?",
+        "options": {
+            "A": "Subepithelial space",
+            "B": "Intramembranous or subendothelial space",
+            "C": "Exclusively within the mesangium",
+            "D": "Along the parietal layer of Bowman's capsule",
+            "E": "Exclusively within the podocyte foot processes"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-013",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 4-year-old boy develops generalized edema. His mother reports he recently received his standard childhood vaccines. A diagnosis of Minimal Change Disease is made. Which of the following is a recognized 4I's cause of this disease?",
+        "options": {
+            "A": "Ischemia",
+            "B": "Immunization",
+            "C": "Infarction",
+            "D": "Infiltration",
+            "E": "Iatrogenic injury"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-014",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 45-year-old morbidly obese male presents with heavy proteinuria and edema. Renal biopsy shows segmental sclerosis and hyalinosis. Which primary glomerular disease is classically associated with obesity as a secondary cause?",
+        "options": {
+            "A": "Minimal Change Disease",
+            "B": "Membranous Nephropathy",
+            "C": "Focal Segmental Glomerulosclerosis",
+            "D": "Diffuse Proliferative Glomerulonephritis",
+            "E": "Diabetic Glomerulonephropathy"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-015",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A patient with rheumatoid arthritis is treated with gold salts. Six months later, he develops massive proteinuria. A renal biopsy reveals diffuse capillary and GBM thickening with \"spike & dome\" appearance on EM. Which other medication is classically known to cause this specific nephropathy?",
+        "options": {
+            "A": "Acetaminophen",
+            "B": "Penicillamine",
+            "C": "Lisinopril",
+            "D": "Furosemide",
+            "E": "Prednisone"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Nephrotic-016",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Nephrotic Syndromes",
+        "question": "A 55-year-old male with a 20-year history of diabetes mellitus is informed that he has end-stage renal disease (ESRD). In the United States, what is the most common overall cause of ESRD?",
+        "options": {
+            "A": "Hypertensive nephrosclerosis",
+            "B": "Polycystic kidney disease",
+            "C": "Diabetic glomerulonephropathy",
+            "D": "Focal segmental glomerulosclerosis",
+            "E": "Membranous nephropathy"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A neonate presents with a flattened nose, low-set ears, clubbed feet, and severe respiratory distress shortly after birth. Prenatal records indicate severe oligohydramnios. Which of the following is the primary cause of this neonate's respiratory distress?",
+        "options": {
+            "A": "Surfactant deficiency",
+            "B": "Meconium aspiration",
+            "C": "Pulmonary hypoplasia",
+            "D": "Tracheoesophageal fistula",
+            "E": "Congenital diaphragmatic hernia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A 45-year-old male presents with recurrent flank pain, hematuria, and a new diagnosis of hypertension. Family history is significant for a father who died of a ruptured Berry aneurysm. An ultrasound confirms multiple cysts in the renal cortex and medulla. A mutation on which chromosome is most likely responsible?",
+        "options": {
+            "A": "Chromosome 4",
+            "B": "Chromosome 16",
+            "C": "Chromosome 22",
+            "D": "Chromosome 11",
+            "E": "Chromosome 6"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A patient with known autosomal dominant polycystic kidney disease presents for routine follow-up. Blood pressure is 155/95 mmHg. Which of the following medication classes is the recommended treatment for his hypertension?",
+        "options": {
+            "A": "Beta-blockers",
+            "B": "Calcium channel blockers",
+            "C": "Angiotensin-converting enzyme inhibitors",
+            "D": "Thiazide diuretics",
+            "E": "Alpha-blockers"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "An infant is born with enlarged, echogenic kidneys and signs of Potter sequence. Genetic testing reveals an autosomal recessive subtype of polycystic kidney disease. The cysts in this specific condition are primarily due to a dilation of which structures?",
+        "options": {
+            "A": "Glomerular capsule",
+            "B": "Proximal convoluted tubule",
+            "C": "Loop of Henle",
+            "D": "Collecting ducts",
+            "E": "Afferent arterioles"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "Ultrasound of a newborn reveals a unilateral cystic, non-functional kidney. The other kidney is completely normal. What is the most accurate statement regarding the pathogenesis of this multicystic dysplastic kidney?",
+        "options": {
+            "A": "It is due to a mutation on chromosome 16",
+            "B": "It is an inherited autosomal recessive condition",
+            "C": "It results from an abnormal interaction between the ureteric bud and metanephric mesenchyme",
+            "D": "It is caused by chronic placental insufficiency",
+            "E": "It is classically caused by posterior urethral valves"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A fetus is diagnosed with complete unilateral renal agenesis. Embryologically, this defect occurs because which primary structure completely fails to develop and differentiate?",
+        "options": {
+            "A": "Mesonephric duct",
+            "B": "Paramesonephric duct",
+            "C": "Ureteric bud",
+            "D": "Urogenital sinus",
+            "E": "Metanephric vesicle"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A male infant is evaluated for a weak urinary stream and a distended bladder. Ultrasound shows bilateral hydronephrosis. A voiding cystourethrogram is ordered to confirm the most common cause of bladder outlet obstruction in males. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Ureteropelvic junction obstruction",
+            "B": "Multicystic dysplastic kidney",
+            "C": "Posterior urethral valves",
+            "D": "Autosomal recessive polycystic kidney disease",
+            "E": "Vesicoureteral reflux"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A neonate with Potter Sequence exhibits a flattened face and pulmonary hypoplasia. According to the standard mnemonic, which of the following physical findings is also a direct result of fetal compression in this sequence?",
+        "options": {
+            "A": "Macular cherry-red spot",
+            "B": "Wrinkled skin",
+            "C": "Cleft palate",
+            "D": "Webbed neck",
+            "E": "Polydactyly"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A 30-year-old male is newly diagnosed with Autosomal Dominant Polycystic Kidney Disease (ADPKD). Which of the following cardiovascular anomalies is highly associated with this specific condition?",
+        "options": {
+            "A": "Ventricular septal defect",
+            "B": "Coarctation of the aorta",
+            "C": "Mitral valve prolapse",
+            "D": "Patent ductus arteriosus",
+            "E": "Hypertrophic cardiomyopathy"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Potter & Related-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Potter Sequence & Related Conditions",
+        "question": "A patient with a strong family history of polycystic kidney disease undergoes genetic counseling. The counselor explains that 85% of cases are due to a PKD1 mutation. On which chromosome is this specific mutation located?",
         "options": {
             "A": "Chromosome 4",
             "B": "Chromosome 6",
@@ -100,39 +1820,19 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-06",
+        "id": "FA-Nephro-RAAS-001",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "The majority of ADPKD cases (85%) result from a mutation in which gene?",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "During a state of volume depletion, specialized chemoreceptor cells in the distal convoluted tubule detect a change in sodium chloride concentration. What substance is secreted by the macula densa in direct response?",
         "options": {
-            "A": "PKD2",
-            "B": "PKD1",
-            "C": "PKHD1",
-            "D": "TSC2",
-            "E": "VHL"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-07",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "ADPKD is characterized by multiple cysts in which locations?",
-        "options": {
-            "A": "Renal cortex only",
-            "B": "Renal medulla only",
-            "C": "Renal cortex and medulla",
-            "D": "Renal pelvis only",
-            "E": "Ureters and bladder"
+            "A": "Renin",
+            "B": "Angiotensinogen",
+            "C": "Prostaglandins",
+            "D": "Norepinephrine",
+            "E": "Aldosterone"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -140,39 +1840,259 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-08",
+        "id": "FA-Nephro-RAAS-002",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Which of the following extrarenal findings is NOT typically associated with ADPKD according to the text?",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A patient experiences severe hypotension. Baroreceptor-lined cells surrounding the afferent arterioles sense the decreased renal perfusion pressure. These juxtaglomerular cells directly secrete which of the following into the bloodstream?",
+        "options": {
+            "A": "Angiotensin II",
+            "B": "Aldosterone",
+            "C": "Renin",
+            "D": "Angiotensin-converting enzyme",
+            "E": "Antidiuretic hormone"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A patient is prescribed a medication that blocks the conversion of Angiotensin I to Angiotensin II via ACE. Where are the vascular endothelial cells that primarily facilitate this specific conversion located?",
+        "options": {
+            "A": "Juxtaglomerular apparatus of the kidney",
+            "B": "Hepatocytes in the liver",
+            "C": "Vascular endothelial cells of the lungs",
+            "D": "Macula densa of the distal tubule",
+            "E": "Zona glomerulosa of the adrenal cortex"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "In response to systemic hypotension, Angiotensin II is produced. Within the kidney, Angiotensin II directly increases the reabsorption of sodium, bicarbonate, and water primarily at which specific segment?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Thin descending limb",
+            "C": "Thick ascending limb",
+            "D": "Distal convoluted tubule",
+            "E": "Collecting duct"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A patient with hyperaldosteronism is hypokalemic and alkalotic. Aldosterone increases acid secretion by upregulating the H+/ATPase pump. In which specific cell type does this primarily occur?",
+        "options": {
+            "A": "Principal cells of the collecting duct",
+            "B": "Alpha-intercalated cells of the collecting duct",
+            "C": "Macula densa cells of the DCT",
+            "D": "Juxtaglomerular cells of the afferent arteriole",
+            "E": "Podocytes of the glomerulus"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A 68-year-old male smoker presents with severe secondary hypertension. Ultrasound reveals asymmetric kidney sizes. Which underlying pathology is the most common cause of this condition in this demographic?",
+        "options": {
+            "A": "Fibromuscular dysplasia of the distal renal artery",
+            "B": "Atherosclerosis on the proximal 1/3 of the renal artery",
+            "C": "Autosomal dominant polycystic kidney disease",
+            "D": "Renin-secreting tumor of the juxtaglomerular apparatus",
+            "E": "Bilateral renal artery stenosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A 28-year-old female presents with severe hypertension. Angiography of the renal arteries reveals a classic \"string of beads\" appearance. Which segment of the vasculature is typically affected in this fibromuscular dysplasia?",
+        "options": {
+            "A": "Proximal 1/3 of the main renal artery",
+            "B": "Distal 2/3 of the renal artery and segmental branches",
+            "C": "Renal vein and its tributaries",
+            "D": "Afferent arteriole exclusively",
+            "E": "Efferent arteriole exclusively"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A 70-year-old patient with hypertension is started on an ACE inhibitor. Three days later, labs reveal a sudden, dramatic spike in serum creatinine. Which underlying condition should be most strongly suspected?",
+        "options": {
+            "A": "Unilateral renal artery stenosis",
+            "B": "Bilateral renal artery stenosis",
+            "C": "Fibromuscular dysplasia",
+            "D": "Minimal change disease",
+            "E": "Acute interstitial nephritis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "The Renin-Angiotensin-Aldosterone System is activated during hypotension. Renin is secreted by the kidneys and acts on angiotensinogen. In which specific organ is angiotensinogen primarily synthesized?",
+        "options": {
+            "A": "Kidneys",
+            "B": "Lungs",
+            "C": "Liver",
+            "D": "Adrenal glands",
+            "E": "Hypothalamus"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A trauma patient experiences massive hemorrhage, leading to low systemic blood pressure. This triggers sympathetic activation. The release of which specific neurotransmitter directly signals the juxtaglomerular cells in this pathway?",
+        "options": {
+            "A": "Acetylcholine",
+            "B": "Dopamine",
+            "C": "Serotonin",
+            "D": "Epinephrine",
+            "E": "Norepinephrine"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-011",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "Aldosterone is synthesized in the adrenal glands and binds to receptors in the kidney. In the principal cells, aldosterone promotes sodium absorption and potassium secretion via the upregulation of which specific channel?",
+        "options": {
+            "A": "Na+/K+/2Cl- cotransporter",
+            "B": "ENaC",
+            "C": "Aquaporins",
+            "D": "H+/ATPase",
+            "E": "Na+/Cl- cotransporter"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RAAS-012",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "RAAS & Renovascular Disease",
+        "question": "A 35-year-old female presents with severe, difficult-to-control hypertension. Angiography reveals a \"string of beads\" appearance in her renal arteries. What is the classic demographic for this specific cause of renovascular disease?",
+        "options": {
+            "A": "Elderly males who smoke",
+            "B": "Elderly females with diabetes",
+            "C": "Young-middle aged women",
+            "D": "Children under 10 years",
+            "E": "African American males over 50"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Ana-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Anatomy",
+        "question": "During a routine abdominal CT scan, an incidental finding of a horseshoe kidney is noted. During fetal development, the normal ascent of these fused kidneys to their T12-L3 location was most likely arrested by which anatomical structure?",
+        "options": {
+            "A": "Superior mesenteric artery",
+            "B": "Inferior mesenteric artery",
+            "C": "Common iliac artery",
+            "D": "Celiac trunk",
+            "E": "Renal artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Ana-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Anatomy",
+        "question": "A 15-year-old female with Turner syndrome undergoes abdominal imaging, which reveals a horseshoe kidney. Due to this anatomical anomaly, she is at increased risk for which of the following specific complications?",
         "options": {
             "A": "Berry aneurysms",
             "B": "Hepatic cysts",
-            "C": "Mitral valve prolapse",
-            "D": "Diverticulosis",
-            "E": "Renal cell carcinoma"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-09",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Which class of medication is specifically recommended to slow progression of renal disease in ADPKD?",
-        "options": {
-            "A": "Beta\u2011blockers",
-            "B": "Calcium channel blockers",
-            "C": "ACE inhibitors",
-            "D": "Thiazide diuretics",
-            "E": "Loop diuretics"
+            "C": "Recurrent urinary tract infections",
+            "D": "Pulmonary hypoplasia",
+            "E": "Adrenal insufficiency"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -180,159 +2100,19 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-10",
+        "id": "FA-Nephro-Ana-003",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "An infant born with bilateral enlarged cystic kidneys and features of Potter sequence most likely has which form of polycystic kidney disease?",
+        "topic": "Renal Anatomy",
+        "question": "A 40-year-old man presents with severe, colicky flank pain radiating to the groin. A ureteral calculus is suspected. Which of the following is one of the distinct anatomical narrowings where a stone is most likely to cause ureteral obstruction?",
         "options": {
-            "A": "ADPKD",
-            "B": "ARPKD",
-            "C": "Acquired cystic disease",
-            "D": "Simple renal cysts",
-            "E": "Medullary cystic disease"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-11",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Multicystic dysplastic kidney results from:",
-        "options": {
-            "A": "Chromosomal duplication",
-            "B": "A genetic mutation on chromosome 16",
-            "C": "Abnormal interaction between ureteric bud and metanephric mesenchyme",
-            "D": "Post\u2011infectious scarring",
-            "E": "Teratogen exposure"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-12",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Which of the following statements about multicystic dysplastic kidney is correct?",
-        "options": {
-            "A": "It is always hereditary",
-            "B": "It is almost always bilateral",
-            "C": "It is largely non\u2011hereditary and usually unilateral",
-            "D": "It always requires nephrectomy",
-            "E": "It predominantly affects females"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-13",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Bilateral multicystic dysplastic kidney can lead to which of the following?",
-        "options": {
-            "A": "VACTERL association",
-            "B": "Potter sequence",
-            "C": "Beckwith\u2011Wiedemann syndrome",
-            "D": "Prune belly syndrome",
-            "E": "CHARGE syndrome"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-14",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Renal agenesis occurs when:",
-        "options": {
-            "A": "The metanephric mesenchyme fails to induce the ureteric bud",
-            "B": "The ureteric bud does not develop, failing to induce differentiation of the metanephric mesenchyme",
-            "C": "The mesonephric duct persists",
-            "D": "The cloaca fails to divide",
-            "E": "There is a defect on chromosome 16"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-15",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Which of the following is the most common cause of bladder outlet obstruction in male neonates?",
-        "options": {
-            "A": "Ureterocele",
-            "B": "Posterior urethral valve",
-            "C": "Anterior urethral valve",
-            "D": "Urethral atresia",
-            "E": "Prune belly syndrome"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-16",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A voiding cystourethrogram is ordered to confirm the diagnosis of posterior urethral valve. Which other imaging modality can also be used?",
-        "options": {
-            "A": "Renal angiography",
-            "B": "Ultrasound",
-            "C": "Intravenous urography",
-            "D": "Nuclear renal scan",
-            "E": "CT urogram"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-17",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A 42\u2011year\u2011old man with hypertension and a family history presents with flank pain and microscopic hematuria. Ultrasound shows bilateral renal cysts with a few hepatic cysts. What is the most likely diagnosis?",
-        "options": {
-            "A": "Autosomal recessive polycystic kidney disease",
-            "B": "Multicystic dysplastic kidney",
-            "C": "Acquired cystic kidney disease",
-            "D": "Autosomal dominant polycystic kidney disease",
-            "E": "Medullary sponge kidney"
+            "A": "Renal hilum",
+            "B": "Major calyx",
+            "C": "Urethral meatus",
+            "D": "Pelvic inlet",
+            "E": "Bladder neck"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -340,119 +2120,79 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-POTTER-18",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A 30\u2011year\u2011old woman with ADPKD undergoes echocardiography for a murmur. A midsystolic click and late systolic murmur are found. Which cardiac valve abnormality is most likely?",
-        "options": {
-            "A": "Aortic stenosis",
-            "B": "Mitral valve prolapse",
-            "C": "Tricuspid regurgitation",
-            "D": "Pulmonic stenosis",
-            "E": "Mitral stenosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-19",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A 50\u2011year\u2011old man with ADPKD develops worsening hypertension and rising creatinine. Which of the following drug classes is specifically recommended to slow progression of his renal disease?",
-        "options": {
-            "A": "Beta\u2011blockers",
-            "B": "Calcium channel blockers",
-            "C": "ACE inhibitors",
-            "D": "Thiazide diuretics",
-            "E": "Loop diuretics"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-20",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A 35\u2011year\u2011old woman with ADPKD suddenly collapses at home and is found to have a subarachnoid hemorrhage. Which of the following extrarenal manifestations of ADPKD is the most likely underlying cause?",
-        "options": {
-            "A": "Hepatic cyst rupture",
-            "B": "Mitral valve prolapse",
-            "C": "Berry aneurysm rupture",
-            "D": "Diverticulosis",
-            "E": "Renal cell carcinoma"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-21",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "A couple who lost a previous newborn to respiratory failure from pulmonary hypoplasia now has a second baby with oligohydramnios. Ultrasound shows bilaterally enlarged, echogenic kidneys. Which form of polycystic kidney disease is most consistent with this presentation?",
-        "options": {
-            "A": "ADPKD",
-            "B": "ARPKD",
-            "C": "Multicystic dysplastic kidney",
-            "D": "Simple renal cysts",
-            "E": "Medullary cystic kidney disease"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-POTTER-22",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Potter Sequence",
-        "question": "Severe oligohydramnios during fetal development causes Potter sequence primarily by:",
-        "options": {
-            "A": "Toxic metabolite accumulation",
-            "B": "Direct renal parenchymal damage",
-            "C": "Reduced cushioning and compression of the fetus",
-            "D": "Maternal hypertension",
-            "E": "Placental infarcts"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-01",
+        "id": "FA-Nephro-Ana-004",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Anatomy",
-        "question": "The kidneys normally ascend to their final anatomical position by which week of gestation?",
+        "question": "A 35-year-old female undergoes a total abdominal hysterectomy. During the procedure, the surgeon ligates the uterine artery. Which critical structure must be carefully identified and protected, as it passes immediately inferior to this artery?",
+        "options": {
+            "A": "Fallopian tube",
+            "B": "Ovarian artery",
+            "C": "Ureter",
+            "D": "Internal iliac artery",
+            "E": "Round ligament"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Ana-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Anatomy",
+        "question": "A patient in profound shock develops acute kidney injury. The renal medulla is particularly prone to ischemia in such states. What primary anatomical/physiological factor accounts for this vulnerability?",
+        "options": {
+            "A": "It receives all of the cardiac output",
+            "B": "It receives less blood flow than the renal cortex",
+            "C": "It is supplied solely by the vasa recta",
+            "D": "It lacks a venous drainage system",
+            "E": "It contains no efferent arterioles"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Ana-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Anatomy",
+        "question": "A 25-year-old male presents with a sudden onset, left-sided varicocele that does not empty when recumbent. An abdominal mass compressing a major vessel is suspected. Which normal anatomical feature makes the left testicle more prone to this presentation compared to the right?",
+        "options": {
+            "A": "The left testicular artery originates higher on the aorta",
+            "B": "The left renal vein is shorter than the right",
+            "C": "The left gonadal vein drains directly into the left renal vein",
+            "D": "The right gonadal vein drains into the right renal vein",
+            "E": "The left pampiniform plexus has fewer venous valves"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Ana-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Anatomy",
+        "question": "During normal fetal development, the kidneys ascend from the pelvis to their final anatomical location. By which gestational week does this ascent to the T12-L3 level typically complete?",
         "options": {
             "A": "Week 4",
-            "B": "Week 6",
+            "B": "Week 5",
             "C": "Week 9",
             "D": "Week 12",
-            "E": "Week 16"
+            "E": "Week 36"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -460,119 +2200,19 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-ANA-02",
+        "id": "FA-Nephro-Ana-008",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Anatomy",
-        "question": "After normal ascent, the kidneys are located at which vertebral level?",
+        "question": "A surgeon is performing a complex pelvic operation on a male patient. While tracing the path of the ureter, the surgeon notes that it flows \"under the bridge\" before entering the bladder. In males, which structure represents this \"bridge\"?",
         "options": {
-            "A": "T10\u2013T11",
-            "B": "L1\u2013L2",
-            "C": "L3\u2013L4",
-            "D": "L5\u2013S1",
-            "E": "T12\u2013L1"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-03",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "In a horseshoe kidney, fusion occurs at which poles?",
-        "options": {
-            "A": "Superior poles",
-            "B": "Inferior poles",
-            "C": "Anterior surfaces",
-            "D": "Posterior surfaces",
-            "E": "Lateral margins"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-04",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "Horseshoe kidney fails to ascend normally because it becomes trapped under which artery?",
-        "options": {
-            "A": "Celiac trunk",
-            "B": "Superior mesenteric artery",
+            "A": "Uterine artery",
+            "B": "Internal iliac artery",
             "C": "Inferior mesenteric artery",
-            "D": "Common iliac artery",
-            "E": "Renal artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-05",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A child with horseshoe kidney is at increased risk for all of the following EXCEPT:",
-        "options": {
-            "A": "Urinary tract infections",
-            "B": "Hydronephrosis",
-            "C": "Renal stones",
-            "D": "Renal cancer",
-            "E": "Polycystic liver disease"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-06",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "Horseshoe kidney has a higher incidence in which group of conditions?",
-        "options": {
-            "A": "Connective tissue disorders",
-            "B": "Chromosomal aneuploidies such as trisomies 13, 18, and 21",
-            "C": "Metabolic storage diseases",
-            "D": "Vascular malformations",
-            "E": "Neural tube defects"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-07",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "Which of the following is NOT one of the three common points of ureteric obstruction?",
-        "options": {
-            "A": "Ureteropelvic junction",
-            "B": "Pelvic inlet",
-            "C": "Ureterovesical junction",
-            "D": "Where the ureter crosses the aortic bifurcation",
-            "E": "Where the ureter crosses the common iliac vessels"
+            "D": "Vas deferens",
+            "E": "Gonadal artery"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -580,59 +2220,19 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-ANA-08",
+        "id": "FA-Nephro-Ana-009",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Anatomy",
-        "question": "During hysterectomy, the ureter is at greatest risk of injury when it passes directly inferior to which structure?",
-        "options": {
-            "A": "Ovarian artery",
-            "B": "Uterine artery",
-            "C": "Round ligament",
-            "D": "Infundibulopelvic ligament",
-            "E": "Broad ligament"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-09",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "The proximal portion of the ureter receives its blood supply primarily from which artery?",
-        "options": {
-            "A": "Gonadal artery",
-            "B": "Renal artery",
-            "C": "Common iliac artery",
-            "D": "Internal iliac artery",
-            "E": "Aorta"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-10",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "Which of the following arteries does NOT directly supply the ureter according to the text?",
+        "question": "A 50-year-old female undergoes radiation therapy for pelvic organ malignancy, leading to ischemic stricture of the distal ureter. The distal portion of the ureter primarily receives its blood supply from branches of which major artery?",
         "options": {
             "A": "Renal artery",
             "B": "Gonadal artery",
             "C": "Common iliac artery",
-            "D": "Superior mesenteric artery",
-            "E": "Superior vesical artery"
+            "D": "Internal iliac artery",
+            "E": "Superior mesenteric artery"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -640,319 +2240,39 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-ANA-11",
+        "id": "FA-Nephro-Ana-010",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Anatomy",
-        "question": "In the renal blood flow sequence, the vessel that directly gives rise to the afferent arteriole is the:",
+        "question": "A red blood cell enters the renal artery and travels through the kidney. After passing through the interlobar artery, which specific vascular structure will it enter next?",
         "options": {
-            "A": "Arcuate artery",
-            "B": "Interlobar artery",
-            "C": "Segmental artery",
+            "A": "Segmental artery",
+            "B": "Arcuate artery",
+            "C": "Afferent arteriole",
             "D": "Interlobular artery",
             "E": "Efferent arteriole"
         },
-        "correctAnswer": "D",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-12",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "Which portion of the kidney is most susceptible to ischemia despite receiving a large fraction of cardiac output?",
-        "options": {
-            "A": "Renal cortex",
-            "B": "Renal medulla",
-            "C": "Renal pelvis",
-            "D": "Major calyces",
-            "E": "Ureter"
-        },
         "correctAnswer": "B",
         "explanation": "",
         "isBookQuestion": true,
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-ANA-13",
+        "id": "FA-Nephro-Ana-011",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Anatomy",
-        "question": "The left renal vein is longer than the right and receives additional tributaries from the left gonadal vein and which other vein?",
+        "question": "A 45-year-old male presents with a left-sided varicocele. Anatomically, the left renal vein receives blood from the left gonadal vein. Which other major vein directly acts as an additional tributary to the left renal vein?",
         "options": {
-            "A": "Right suprarenal vein",
-            "B": "Left suprarenal vein",
-            "C": "Hemiazygos vein",
-            "D": "Portal vein",
-            "E": "Inferior phrenic vein"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-14",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A 6\u2011year\u2011old girl with recurrent febrile UTIs is found to have a midline abdominal mass. CT shows fused inferior renal poles lying anterior to the aorta, trapped below the inferior mesenteric artery. What is the embryologic explanation for this anomaly?",
-        "options": {
-            "A": "Failure of ureteric bud induction",
-            "B": "Abnormal ascent due to entrapment under the IMA",
-            "C": "Premature degeneration of the mesonephros",
-            "D": "Duplication of the collecting system",
-            "E": "Obstruction at the ureteropelvic junction"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-15",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A 45\u2011year\u2011old woman undergoes a hysterectomy for fibroids. Postoperatively she develops flank pain, and a ureterovaginal fistula is diagnosed. The ureter was most likely injured at the point where it passes directly inferior to which structure?",
-        "options": {
-            "A": "Ovarian artery",
-            "B": "Uterine artery",
-            "C": "Round ligament",
-            "D": "Infundibulopelvic ligament",
-            "E": "Broad ligament"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-16",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A 55\u2011year\u2011old man with atrial fibrillation develops sudden right flank pain and hematuria. CT shows a wedge\u2011shaped renal infarct at the corticomedullary junction. An embolus from the left atrium most likely occluded which vessel?",
-        "options": {
-            "A": "Interlobar artery",
-            "B": "Segmental artery",
-            "C": "Arcuate artery",
-            "D": "Interlobular artery",
-            "E": "Afferent arteriole"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-17",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A patient with a 7 mm renal stone is experiencing severe colicky pain radiating to the groin. The stone is most likely lodged at the narrowest point of the ureter, which is the:",
-        "options": {
-            "A": "Ureteropelvic junction",
-            "B": "Pelvic inlet",
-            "C": "Ureterovesical junction",
-            "D": "Mid\u2011ureter at L3",
-            "E": "Crossing of the gonadal vessels"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-18",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "During an aortoiliac bypass surgery, the common iliac artery is temporarily clamped. Which portion of the ureter is at greatest risk of ischemic injury due to disruption of its blood supply from this artery?",
-        "options": {
-            "A": "Proximal ureter",
-            "B": "Mid\u2011ureter",
-            "C": "Distal pelvic ureter",
-            "D": "Intravesical ureter",
-            "E": "Ureteropelvic junction"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-19",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A 30\u2011year\u2011old woman with a large pelvic mass is found to have unilateral hydronephrosis. The mass is compressing the ureter at the level where it crosses the common iliac vessels. This point of narrowing is known as the:",
-        "options": {
-            "A": "Ureteropelvic junction",
-            "B": "Pelvic inlet",
-            "C": "Ureterovesical junction",
-            "D": "Intramural tunnel",
-            "E": "Pubocervical ligament"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-20",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A 60\u2011year\u2011old man in septic shock develops acute tubular necrosis predominantly affecting the renal medulla. The medulla is more susceptible to ischemic injury because it:",
-        "options": {
-            "A": "Receives more blood flow than the cortex",
-            "B": "Is perfused solely by venous blood",
-            "C": "Has a lower metabolic rate",
-            "D": "Receives less blood flow than the cortex",
-            "E": "Is supplied directly by the renal artery"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-21",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A left nephrectomy is planned for a donor. The surgeon notes that the left renal vein is longer than the right and must ligate additional tributaries. Which of the following veins normally drains into the left renal vein?",
-        "options": {
-            "A": "Right gonadal vein",
-            "B": "Left suprarenal vein",
-            "C": "Hemiazygos vein",
-            "D": "Portal vein",
-            "E": "Superior mesenteric vein"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-22",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "At what vertebral level do the kidneys ultimately come to rest after normal ascent?",
-        "options": {
-            "A": "T10\u2013T11",
-            "B": "L1\u2013L2",
-            "C": "L3\u2013L4",
-            "D": "L5\u2013S1",
-            "E": "T12\u2013L1"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-23",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "During a paediatric surgery rotation, a resident learns that the most common cause of bladder outlet obstruction in males is:",
-        "options": {
-            "A": "Ureterocele",
-            "B": "Urethral stricture",
-            "C": "Posterior urethral valve",
-            "D": "Neurogenic bladder",
-            "E": "Anterior urethral valve"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-24",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "The most common cause of bladder outlet obstruction in male neonates is:",
-        "options": {
-            "A": "Ureterocele",
-            "B": "Posterior urethral valve",
-            "C": "Anterior urethral valve",
-            "D": "Urethral atresia",
-            "E": "Neurogenic bladder"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-25",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "A renal calculus lodges at the most common site of ureteric obstruction. Which of the following is NOT a typical point of narrowing?",
-        "options": {
-            "A": "Ureteropelvic junction",
-            "B": "Pelvic inlet",
-            "C": "Ureterovesical junction",
-            "D": "Pelvic outlet",
-            "E": "Where ureter crosses the common iliac vessels"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-ANA-26",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "During hysterectomy, the ureter is most directly at risk when it passes inferior to which structure?",
-        "options": {
-            "A": "Uterine artery",
-            "B": "Ovarian artery",
-            "C": "Round ligament",
-            "D": "Infundibulopelvic ligament",
-            "E": "Broad ligament"
+            "A": "Left suprarenal vein",
+            "B": "Right gonadal vein",
+            "C": "Inferior mesenteric vein",
+            "D": "Splenic vein",
+            "E": "Hepatic vein"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -960,59 +2280,19 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-ANA-27",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Anatomy",
-        "question": "Bilateral multicystic dysplastic kidney can lead to which intrauterine sequence?",
-        "options": {
-            "A": "VACTERL association",
-            "B": "Oligohydramnios (Potter) sequence",
-            "C": "CHARGE syndrome",
-            "D": "Prune belly syndrome",
-            "E": "Beckwith\u2011Wiedemann syndrome"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-01",
+        "id": "FA-Nephro-Embryo-001",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Embryology",
-        "question": "The pronephros, mesonephros, and metanephros are derived from which embryonic germ layer?",
-        "options": {
-            "A": "Ectoderm",
-            "B": "Mesoderm",
-            "C": "Endoderm",
-            "D": "Neural crest",
-            "E": "Surface ectoderm"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-02",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "At which week of gestation does the pronephros first appear?",
+        "question": "Embryological development of the kidneys begins with a temporary structure that acts as a blueprint and eventually degenerates. At what week of gestation does this structure initially form?",
         "options": {
             "A": "Week 2",
             "B": "Week 3",
             "C": "Week 4",
             "D": "Week 5",
-            "E": "Week 6"
+            "E": "Week 10"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1020,19 +2300,39 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-EMBRYO-03",
+        "id": "FA-Nephro-Embryo-002",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Embryology",
-        "question": "The pronephros is best described as:",
+        "question": "A 30-year-old male undergoes a fertility evaluation, and imaging reveals an anomaly in his reproductive organs. The structures involved are embryologically derived from the mesonephros, which acts as a \"middleman\" kidney. When does this specific precursor structure primarily appear during gestation?",
         "options": {
-            "A": "The permanent adult kidney",
-            "B": "The primary excretory organ until birth",
-            "C": "A temporary non\u2011functional structure that appears in week 3 and then degenerates",
-            "D": "A structure that gives rise to the collecting ducts",
-            "E": "The embryonic tissue that forms the ureteric bud"
+            "A": "Week 3",
+            "B": "Week 4",
+            "C": "Week 5",
+            "D": "Week 10",
+            "E": "Week 36"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Embryo-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Embryology",
+        "question": "A fetal ultrasound at 18 weeks shows normally developing permanent kidneys. The structure responsible for becoming the mature kidney (metanephros) originally appeared at which gestational week?",
+        "options": {
+            "A": "Week 3",
+            "B": "Week 4",
+            "C": "Week 5",
+            "D": "Week 9",
+            "E": "Week 12"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1040,399 +2340,39 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-EMBRYO-04",
+        "id": "FA-Nephro-Embryo-004",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Embryology",
-        "question": "Which embryonic kidney functions as the primary secretory organ until week 9 of gestation?",
+        "question": "A neonate is born with bilateral renal agenesis. This condition most likely resulted from a failure of interaction between the metanephric mesenchyme and which of the following embryological structures?",
         "options": {
             "A": "Pronephros",
-            "B": "Mesonephros",
-            "C": "Metanephros",
-            "D": "Ureteric bud",
-            "E": "Metanephric mesenchyme"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-05",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The mesonephros appears in which week?",
-        "options": {
-            "A": "Week 2",
-            "B": "Week 3",
-            "C": "Week 4",
-            "D": "Week 5",
-            "E": "Week 8"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-06",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The mesonephros degenerates by which gestational week?",
-        "options": {
-            "A": "Week 4",
-            "B": "Week 8",
-            "C": "Week 12",
-            "D": "Week 16",
-            "E": "Week 20"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-07",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "Which structure gives rise to the ureter, renal pelvis, calyces, and collecting ducts?",
-        "options": {
-            "A": "Metanephric mesenchyme",
             "B": "Mesonephric duct",
-            "C": "Ureteric bud",
-            "D": "Pronephros",
-            "E": "Allantois"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-08",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The glomerulus, proximal convoluted tubule, loop of Henle, and distal convoluted tubule are derived from which embryologic tissue?",
-        "options": {
-            "A": "Ureteric bud",
-            "B": "Mesonephric duct",
-            "C": "Metanephric mesenchyme",
-            "D": "Urogenital sinus",
-            "E": "Paramesonephric duct"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-09",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The ureteric bud arises directly from which structure?",
-        "options": {
-            "A": "Metanephric mesenchyme",
-            "B": "Cloaca",
             "C": "Urogenital sinus",
-            "D": "Mesonephric duct",
-            "E": "Allantois"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-10",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "Failure of the ureteric bud to develop leads to:",
-        "options": {
-            "A": "Autosomal recessive polycystic kidney disease",
-            "B": "Multicystic dysplastic kidney",
-            "C": "Horseshoe kidney",
-            "D": "Renal agenesis",
-            "E": "Posterior urethral valve"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-11",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "Abnormal communication between the ureteric bud and metanephric mesenchyme can result in all of the following EXCEPT:",
-        "options": {
-            "A": "Renal agenesis",
-            "B": "Dysplastic kidneys",
-            "C": "Multicystic dysplastic kidney",
-            "D": "Horseshoe kidney",
-            "E": "Malformed kidneys"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-12",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "By which gestational week does the metanephros become the mature permanent kidney?",
-        "options": {
-            "A": "Week 24",
-            "B": "Week 28",
-            "C": "Week 32",
-            "D": "Week 36",
-            "E": "Week 40"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-13",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The mesonephros contributes to the development of which system?",
-        "options": {
-            "A": "Female reproductive tract",
-            "B": "Male reproductive organs",
-            "C": "Adrenal cortex",
-            "D": "Gastrointestinal tract",
-            "E": "Nervous system"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-14",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "A 28\u2011year\u2011old pregnant woman at 8 weeks gestation is found on ultrasound to have anhydramnios and no visible fetal kidneys. After termination, autopsy confirms bilateral renal agenesis. Failure of which embryonic structure is the direct cause?",
-        "options": {
-            "A": "Mesonephric duct",
-            "B": "Ureteric bud",
-            "C": "Metanephric mesenchyme",
-            "D": "Pronephros",
-            "E": "Urogenital sinus"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-15",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "A 6\u2011month\u2011old infant with hypertension and a palpable flank mass is found to have a non\u2011functioning cystic kidney. Histology shows primitive tubules and cartilage, consistent with abnormal interaction between ureteric bud and metanephric mesenchyme. What is the most likely diagnosis?",
-        "options": {
-            "A": "Autosomal recessive polycystic kidney disease",
-            "B": "Multicystic dysplastic kidney",
-            "C": "Wilms tumor",
-            "D": "Nephroblastomatosis",
-            "E": "Simple renal cyst"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-16",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "A newborn male has a distended bladder, weak urinary stream, and bilateral hydronephrosis on ultrasound. A voiding cystourethrogram reveals obstruction at the posterior urethra. The obstructing tissue is a remnant of which embryonic structure?",
-        "options": {
-            "A": "Urogenital sinus",
-            "B": "Mesonephric duct",
-            "C": "Metanephric mesenchyme",
             "D": "Ureteric bud",
-            "E": "Allantois"
+            "E": "Wolffian duct"
         },
-        "correctAnswer": "A",
+        "correctAnswer": "D",
         "explanation": "",
         "isBookQuestion": true,
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-EMBRYO-17",
+        "id": "FA-Nephro-Embryo-005",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Embryology",
-        "question": "A 32\u2011year\u2011old man being evaluated for infertility is found to have congenital bilateral absence of the vas deferens. This ductal system normally develops from which embryonic structure?",
+        "question": "Which of the following mature renal structures is derived directly from the metanephric mesenchyme rather than the ureteric bud?",
         "options": {
-            "A": "Pronephros",
-            "B": "Mesonephros",
-            "C": "Metanephros",
-            "D": "Ureteric bud",
-            "E": "Paramesonephric duct"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-18",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "A neonate is diagnosed with a dysplastic kidney in which the collecting ducts and pelvicalyceal system are normal, but the glomeruli and convoluted tubules are malformed. This pattern suggests a defect in which embryologic tissue?",
-        "options": {
-            "A": "Ureteric bud",
-            "B": "Mesonephric duct",
-            "C": "Metanephric mesenchyme",
-            "D": "Pronephros",
-            "E": "Urogenital sinus"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-19",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "In renal embryology, the pronephros is best described as:",
-        "options": {
-            "A": "The permanent kidney",
-            "B": "A temporary blueprint that forms in week 3",
-            "C": "The primary secretory organ until birth",
-            "D": "A structure that forms the collecting system",
-            "E": "An outpouching of the allantois"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-20",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The pronephros is best described as:",
-        "options": {
-            "A": "The permanent kidney",
-            "B": "The primary excretory organ until birth",
-            "C": "A temporary blueprint that appears in week 3 and then degenerates",
-            "D": "The structure that gives rise to the collecting ducts",
-            "E": "An embryonic tumor"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-21",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "During nephron development, the glomerulus through distal convoluted tubule is derived from which embryologic tissue?",
-        "options": {
-            "A": "Ureteric bud",
-            "B": "Mesonephric duct",
-            "C": "Metanephric mesenchyme",
-            "D": "Pronephric tubules",
-            "E": "Urogenital sinus"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-22",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "A newborn male has a distended bladder and oligohydramnios. A voiding cystourethrogram shows obstruction at the posterior urethra. The most likely diagnosis is:",
-        "options": {
-            "A": "Ureteropelvic junction obstruction",
-            "B": "Prune belly syndrome",
-            "C": "Posterior urethral valve",
-            "D": "Bladder exstrophy",
-            "E": "Ureterocele"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "isBookQuestion": true,
-        "bookName": "firstaid_step1"
-    },
-    {
-        "id": "FA-NEPHRO-EMBRYO-23",
-        "year": "Other Years",
-        "exams": [],
-        "subject": "",
-        "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "A 6-year-old boy with horseshoe kidney is at increased risk for all of the following EXCEPT:",
-        "options": {
-            "A": "Urinary tract infections",
-            "B": "Hydronephrosis",
-            "C": "Renal stones",
-            "D": "Renal cancer",
-            "E": "Polycystic liver disease"
+            "A": "Collecting ducts",
+            "B": "Renal pelves",
+            "C": "Major calyces",
+            "D": "Ureters",
+            "E": "Distal convoluted tubule"
         },
         "correctAnswer": "E",
         "explanation": "",
@@ -1440,19 +2380,179 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-EMBRYO-24",
+        "id": "FA-Nephro-Embryo-006",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
         "topic": "Renal Embryology",
-        "question": "The first kidney structure to appear is a temporary blueprint that forms in which week of gestation?",
+        "question": "A prenatal ultrasound at 20 weeks reveals unilateral hydronephrosis in a fetus. A congenital obstruction is suspected at the site that is typically the last to canalize during development. Which specific structure is most likely obstructed?",
         "options": {
-            "A": "Week 2",
-            "B": "Week 3",
-            "C": "Week 4",
-            "D": "Week 5",
-            "E": "Week 6"
+            "A": "Ureterovesical junction",
+            "B": "Urethral meatus",
+            "C": "Ureteropelvic junction",
+            "D": "Bladder neck",
+            "E": "Renal calyx"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Embryo-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Embryology",
+        "question": "A developmental biologist is tracking the cellular lineage of the human renal system. By utilizing specific cellular markers during early gestation, she isolates the precursor cells that will eventually form the pronephros, mesonephros, and metanephros. All three of these embryological structures are exclusively derived from which primary germ layer?",
+        "options": {
+            "A": "Ectoderm",
+            "B": "Endoderm",
+            "C": "Mesoderm",
+            "D": "Neural crest",
+            "E": "Neuroectoderm"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Embryo-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Embryology",
+        "question": "A neonate undergoes genetic evaluation for a congenital renal anomaly. A mutation is found that specifically disrupts the normal branching of the ureteric bud during embryogenesis. Which of the following mature structures will be most directly affected by this specific defect?",
+        "options": {
+            "A": "Glomerulus",
+            "B": "Proximal convoluted tubule",
+            "C": "Loop of Henle",
+            "D": "Distal convoluted tubule",
+            "E": "Collecting ducts"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Embryo-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Embryology",
+        "question": "Normal embryological development of the renal system involves the sequential formation of three distinct structures. The permanent kidney, or metanephros, initially arises in week 5 of gestation. By which specific gestational week is the canalization of this structure typically complete?",
+        "options": {
+            "A": "Week 8",
+            "B": "Week 9",
+            "C": "Week 10",
+            "D": "Week 12",
+            "E": "Week 36"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Embryo-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Embryology",
+        "question": "The mesonephros serves as the primary secretory organ for the developing fetus during early gestation. While it plays a crucial role in the development of male reproductive organs, its renal function is strictly temporary. By which gestational week does the mesonephros fully degenerate?",
+        "options": {
+            "A": "Week 5",
+            "B": "Week 9",
+            "C": "Week 10",
+            "D": "Week 12",
+            "E": "Week 36"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Embryo-011",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Embryology",
+        "question": "A fetus is evaluated at 7 weeks of gestation. At this specific stage of development, which structure serves as the primary secretory organ before it eventually degenerates?",
+        "options": {
+            "A": "Pronephros",
+            "B": "Metanephros",
+            "C": "Mesonephros",
+            "D": "Ureteric bud",
+            "E": "Metanephric mesenchyme"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "A 60-year-old male smoker with obesity presents with painless hematuria and a palpable right-sided flank mass. A biopsy of the mass reveals polygonal clear cells loaded with lipids. What is the most common subtype of this primary renal malignancy?",
+        "options": {
+            "A": "Urothelial carcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Clear cell renal cell carcinoma",
+            "D": "Renal oncocytoma",
+            "E": "Wilms tumor"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "A patient diagnosed with renal cell carcinoma presents with a significantly elevated hematocrit. This finding is determined to be a paraneoplastic syndrome due to ectopic hormone production by the tumor. Which hormone is the tumor most likely secreting?",
+        "options": {
+            "A": "Adrenocorticotropic hormone (ACTH)",
+            "B": "Parathyroid hormone-related protein (PTHrP)",
+            "C": "Renin",
+            "D": "Erythropoietin (EPO)",
+            "E": "Antidiuretic hormone (ADH)"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "A 3-year-old child presents with a large, unilateral flank mass, hematuria, and hypertension. Genetic testing reveals a loss of a tumor suppressor gene on chromosome 11 (WT1/WT2 mutation). Histology shows a triphasic pattern. This malignancy is frequently associated with which of the following clinical syndromes?",
+        "options": {
+            "A": "Goodpasture syndrome",
+            "B": "WAGR syndrome",
+            "C": "Alport syndrome",
+            "D": "Fanconi syndrome",
+            "E": "Potter sequence"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1460,19 +2560,39 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-EMBRYO-25",
+        "id": "FA-Nephro-Neoplasm-004",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The kidneys normally ascend to their final anatomical position by which week of gestation?",
+        "topic": "Renal Neoplasms",
+        "question": "A 55-year-old male who worked for decades in a factory using aniline dyes presents with painless hematuria. Cystoscopy reveals a mass in the bladder. Given his specific occupational exposure, he is at highest risk for which of the following malignancies?",
         "options": {
-            "A": "Week 4",
-            "B": "Week 6",
-            "C": "Week 9",
-            "D": "Week 12",
-            "E": "Week 16"
+            "A": "Renal cell carcinoma",
+            "B": "Squamous cell carcinoma of the bladder",
+            "C": "Wilms tumor",
+            "D": "Urothelial carcinoma",
+            "E": "Renal oncocytoma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "An Egyptian male with a known history of chronic Schistosoma haematobium infection presents with hematuria. A bladder mass is discovered. The chronic inflammation of the bladder wall in this patient most strongly predisposes him to which specific type of carcinoma?",
+        "options": {
+            "A": "Clear cell carcinoma",
+            "B": "Urothelial carcinoma",
+            "C": "Squamous cell carcinoma",
+            "D": "Adenocarcinoma of the bladder",
+            "E": "Renal oncocytoma"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1480,21 +2600,821 @@
         "bookName": "firstaid_step1"
     },
     {
-        "id": "FA-NEPHRO-EMBRYO-26",
+        "id": "FA-Nephro-Neoplasm-006",
         "year": "Other Years",
         "exams": [],
         "subject": "",
         "chapter": "Nephrology",
-        "topic": "Renal Embryology",
-        "question": "The mesonephros degenerates completely by which week?",
+        "topic": "Renal Neoplasms",
+        "question": "A 30-year-old patient is found to have bilateral renal masses. Family history is significant for multiple relatives with similar kidney tumors at a young age. This hereditary presentation of Renal Cell Carcinoma is most classically associated with the inactivation of which specific gene?",
         "options": {
-            "A": "Week 6",
-            "B": "Week 9",
-            "C": "Week 12",
-            "D": "Week 16",
-            "E": "Week 20"
+            "A": "WT1",
+            "B": "WT2",
+            "C": "VHL",
+            "D": "BRCA1",
+            "E": "TP53"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "A renal mass is incidentally discovered on an abdominal CT scan. After surgical excision, pathology identifies it as a benign tumor originating from the collecting ducts, characterized by enlarged, eosinophilic cells with an increased number of mitochondria. What is the diagnosis?",
+        "options": {
+            "A": "Renal Cell Carcinoma",
+            "B": "Wilms Tumor",
+            "C": "Urothelial Carcinoma",
+            "D": "Renal Oncocytoma",
+            "E": "Squamous Cell Carcinoma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "A 65-year-old obese male smoker is diagnosed with a sporadic Renal Cell Carcinoma. These sporadic tumors are classically found in which specific anatomical region of the kidney?",
+        "options": {
+            "A": "Renal pelvis",
+            "B": "Major calyces",
+            "C": "Lower poles",
+            "D": "Upper poles",
+            "E": "Renal hilum"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Neoplasm-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Neoplasms",
+        "question": "A patient presents with painless hematuria. He has a history of long-term use of cyclophosphamide. He is diagnosed with the most common lower urinary tract malignancy. While it most commonly affects the bladder, it can also involve other structures. Which of the following is one of those structures?",
+        "options": {
+            "A": "Glomerulus",
+            "B": "Renal cortex",
+            "C": "Renal calyces",
+            "D": "Loop of Henle",
+            "E": "Efferent arteriole"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A novel pharmacological agent is being studied. The renal clearance of this drug is calculated and found to be strictly equal to the patient's glomerular filtration rate (GFR). Which of the following best describes the renal handling of this substance?",
+        "options": {
+            "A": "Net tubular secretion occurs",
+            "B": "Net tubular reabsorption occurs",
+            "C": "It is completely blocked by the glomerular basement membrane",
+            "D": "It is freely filtered with no net secretion or reabsorption",
+            "E": "It is metabolized by the proximal tubule"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "In an experimental setting, a patient is infused with para-aminohippuric acid (PAH). The clearance of PAH is then calculated. This specific value is primarily used to provide an estimate of which of the following renal parameters?",
+        "options": {
+            "A": "Glomerular filtration rate",
+            "B": "Effective renal plasma flow",
+            "C": "Filtration fraction",
+            "D": "Renal blood flow",
+            "E": "Free water clearance"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A 28-year-old pregnant female presents for routine labs. Her estimated GFR is noted to be elevated compared to normal non-pregnant ranges. Which of the following is the most appropriate interpretation of this finding?",
+        "options": {
+            "A": "It indicates early diabetic nephropathy",
+            "B": "It is a normal physiological association with pregnancy",
+            "C": "It suggests pre-eclampsia",
+            "D": "It is an artifact due to increased protein intake",
+            "E": "It reflects a pathological decrease in efferent resistance"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A patient has their glomerular filtration rate estimated using endogenous creatinine clearance. Why does creatinine clearance typically slightly overestimate the true GFR?",
+        "options": {
+            "A": "Creatinine is actively reabsorbed in the proximal tubule",
+            "B": "Creatinine is heavily bound to albumin",
+            "C": "Creatinine is moderately secreted by the kidneys",
+            "D": "Inulin is partially secreted by the distal convoluted tubule",
+            "E": "Creatinine is rapidly metabolized by the renal cortex"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A patient has an estimated GFR of 120 mL/min and an effective renal plasma flow (RPF) of 600 mL/min. What is the calculated filtration fraction (FF), and is it considered roughly normal?",
+        "options": {
+            "A": "10% which is low",
+            "B": "20% which is normal",
+            "C": "30% which is high",
+            "D": "40% which is high",
+            "E": "5% which is low"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A patient presents with massive proteinuria, specifically consisting of negatively charged albumin. A defect in which specific structural component of the glomerular filtration barrier is most likely responsible for the loss of this charge barrier?",
+        "options": {
+            "A": "Glomerular endothelial fenestrations",
+            "B": "Mesangial cells",
+            "C": "Basement membrane and podocyte foot processes",
+            "D": "Parietal layer of Bowman's capsule",
+            "E": "Macula densa"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A 65-year-old male with chronic osteoarthritis takes high-dose NSAIDs daily. He presents with elevated serum creatinine. How do NSAIDs primarily alter glomerular dynamics to reduce GFR?",
+        "options": {
+            "A": "Preferential dilation of the efferent arteriole",
+            "B": "Preferential constriction of the afferent arteriole",
+            "C": "Increased permeability of the glomerular basement membrane",
+            "D": "Direct toxicity to the proximal convoluted tubule",
+            "E": "Obstruction of the collecting ducts"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A patient with heart failure is started on an ACE inhibitor, which blocks the normal action of Angiotensin II. According to changes in glomerular dynamics, how will this medication affect the efferent arteriole and the resulting filtration fraction (FF)?",
+        "options": {
+            "A": "Constricts efferent arteriole and increases FF",
+            "B": "Dilates efferent arteriole and increases FF",
+            "C": "Constricts efferent arteriole and decreases FF",
+            "D": "Dilates efferent arteriole and decreases FF",
+            "E": "No effect on efferent arteriole and no change in FF"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A runner completes a marathon without adequate fluid intake and becomes severely dehydrated. According to established changes in glomerular dynamics, what combination of changes is most expected regarding GFR, RPF, and Filtration Fraction (FF)?",
+        "options": {
+            "A": "Increased GFR, increased RPF, decreased FF",
+            "B": "Decreased GFR, markedly decreased RPF, increased FF",
+            "C": "Decreased GFR, decreased RPF, decreased FF",
+            "D": "Increased GFR, decreased RPF, increased FF",
+            "E": "Decreased GFR, increased RPF, no change in FF"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Physio-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Renal Physiology",
+        "question": "A patient develops severe liver cirrhosis resulting in a decreased plasma protein concentration. According to the principles of glomerular dynamics, how will this alteration affect Glomerular Filtration Rate (GFR) and Filtration Fraction (FF)?",
+        "options": {
+            "A": "Decreased GFR and decreased FF",
+            "B": "Increased GFR and increased FF",
+            "C": "Decreased GFR and increased FF",
+            "D": "Increased GFR and decreased FF",
+            "E": "Unchanged GFR and unchanged FF"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Urea-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urea Cycle",
+        "question": "A neonate becomes increasingly lethargic and develops seizures on the third day of life. Blood tests reveal severe hyperammonemia, decreased blood urea nitrogen (BUN), and markedly elevated orotic acid levels. The patient most likely has an inherited defect in which of the following enzymes?",
+        "options": {
+            "A": "Carbamoyl phosphate synthetase 1",
+            "B": "Arginosuccinate synthetase",
+            "C": "Arginase",
+            "D": "Ornithine transcarbamylase",
+            "E": "Arginosuccinate lyase"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Urea-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urea Cycle",
+        "question": "A patient with advanced liver cirrhosis presents with altered mental status, asterixis, and cerebral edema. The accumulation of ammonia is crossing the blood-brain barrier. In a normal, healthy state, the final conversion of ammonia into urea is primarily achieved for excretion by which organ?",
+        "options": {
+            "A": "Kidneys",
+            "B": "Liver",
+            "C": "Brain",
+            "D": "Spleen",
+            "E": "Pancreas"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Urea-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urea Cycle",
+        "question": "During the normal physiological clearance of ammonia, the formation of citrulline takes place exclusively within a specific cellular compartment. Where does this specific step of the urea cycle occur?",
+        "options": {
+            "A": "Renal cytoplasm",
+            "B": "Hepatic mitochondria",
+            "C": "Hepatic smooth endoplasmic reticulum",
+            "D": "Renal mitochondria",
+            "E": "Hepatic cytoplasm"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Urea-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urea Cycle",
+        "question": "A patient with profound renal failure has severely elevated levels of urea in their blood. The excess urea leads to significant systemic toxicity. Which of the following is a direct, classical symptom of excess urea (uremia)?",
+        "options": {
+            "A": "Cerebral edema",
+            "B": "Pericarditis",
+            "C": "Asterixis",
+            "D": "Maculopapular rash",
+            "E": "Hemolytic anemia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Urea-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urea Cycle",
+        "question": "A patient with severe liver cirrhosis develops lethargy and asterixis due to hyperammonemia. Treatment is divided into conservative and medical approaches. In addition to a low protein diet, which specific medical therapy is indicated?",
+        "options": {
+            "A": "Lactulose",
+            "B": "Corticosteroids",
+            "C": "Hemodialysis",
+            "D": "Allopurinol",
+            "E": "Sodium bicarbonate"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-Urea-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urea Cycle",
+        "question": "A male infant is diagnosed with Ornithine Transcarbamylase Deficiency, the most commonly inherited condition affecting the urea cycle. What is the specific genetic inheritance pattern of this condition?",
+        "options": {
+            "A": "Autosomal dominant",
+            "B": "Autosomal recessive",
+            "C": "X-linked dominant",
+            "D": "X-linked recessive",
+            "E": "Mitochondrial inheritance"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A 22-year-old female presents with dysuria. Urine dipstick is strongly positive for nitrites. Which of the following gram-negative organisms is most likely responsible for this specific urinalysis finding?",
+        "options": {
+            "A": "Staphylococcus saprophyticus",
+            "B": "Enterococcus faecalis",
+            "C": "Escherichia coli",
+            "D": "Candida albicans",
+            "E": "Streptococcus pyogenes"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A pregnant patient in her third trimester presents with hypertension. Urinalysis reveals heavily positive protein. Which of the following conditions is most strongly associated with this finding?",
+        "options": {
+            "A": "Urinary tract infection",
+            "B": "Acute interstitial nephritis",
+            "C": "Pre-eclampsia",
+            "D": "Rhabdomyolysis",
+            "E": "Diabetes insipidus"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A patient presents with flank pain. Urinalysis reveals an alkalotic urine pH of 9.0. Which of the following is the most likely cause of this highly alkaline urine?",
+        "options": {
+            "A": "Type 2 Renal Tubular Acidosis",
+            "B": "Type 4 Renal Tubular Acidosis",
+            "C": "Diabetic Ketoacidosis",
+            "D": "Urease-positive urinary tract infection (e.g., Proteus)",
+            "E": "Starvation"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A military recruit undergoes intense physical training and complains of severe muscle pain. Urine dipstick is strongly positive for \"Large Blood.\" What is the most likely cause of this urinalysis finding?",
+        "options": {
+            "A": "Nephrotic syndrome",
+            "B": "Rhabdomyolysis",
+            "C": "Hemolysis",
+            "D": "Biliary obstruction",
+            "E": "Pyelonephritis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A patient is evaluated for severe polyuria. A fluid deprivation test is performed, and the patient's urine specific gravity remains extremely low at 1.000. Which of the following conditions is highly associated with this finding?",
+        "options": {
+            "A": "Dehydration",
+            "B": "Syndrome of inappropriate antidiuretic hormone secretion (SIADH)",
+            "C": "Diabetes insipidus",
+            "D": "Cushing's syndrome",
+            "E": "Pre-eclampsia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A patient receiving intravenous electrolyte therapy becomes difficult to arouse. Examination reveals absent deep tendon reflexes, bradycardia, and respiratory depression. Which specific electrolyte abnormality is directly causing these symptoms?",
+        "options": {
+            "A": "Hypernatremia",
+            "B": "Hypocalcemia",
+            "C": "Hypermagnesemia",
+            "D": "Hypokalemia",
+            "E": "Hyperkalemia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A 45-year-old alcoholic male presents with involuntary muscle contractions. An electrocardiogram reveals polymorphic ventricular tachycardia (Torsades). Which electrolyte derangement is classically associated with this presentation?",
+        "options": {
+            "A": "Hypercalcemia",
+            "B": "Hypomagnesemia",
+            "C": "Hypernatremia",
+            "D": "Hyperphosphatemia",
+            "E": "Hyponatremia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A patient in acute renal failure undergoes an ECG, which shows tall-T waves and widened QRS complexes. This ECG pattern is the hallmark of which electrolyte abnormality?",
+        "options": {
+            "A": "Hyponatremia",
+            "B": "Hypokalemia",
+            "C": "Hyperkalemia",
+            "D": "Hypercalcemia",
+            "E": "Hypophosphatemia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "Following a thyroidectomy, a patient complains of tingling. Tapping the cheek anterior to the earlobe results in twitching of the facial muscles (Chvostek sign). This clinical sign indicates which electrolyte abnormality?",
+        "options": {
+            "A": "Hypercalcemia",
+            "B": "Hypocalcemia",
+            "C": "Hypokalemia",
+            "D": "Hypernatremia",
+            "E": "Hypermagnesemia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A patient with a history of jaundice provides a urine sample. The dipstick is highly positive for urobilinogen. Which of the following conditions is a primary cause of isolated elevated urobilinogen on urinalysis?",
+        "options": {
+            "A": "Urinary tract infection",
+            "B": "Diabetic ketoacidosis",
+            "C": "Hemolysis",
+            "D": "Dehydration",
+            "E": "Nephrotic syndrome"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-011",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A chronic alcoholic is brought to the ED after days of heavy drinking and poor oral intake. Urinalysis reveals high levels of ketones. Which specific condition is most likely responsible for this finding?",
+        "options": {
+            "A": "Pre-eclampsia",
+            "B": "Starvation",
+            "C": "Alcoholic ketoacidosis",
+            "D": "Diabetic ketoacidosis",
+            "E": "Type 1 RTA"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-012",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A medical student is interpreting a normal urinalysis report. According to standard reference ranges, what is the normal range for urine specific gravity?",
+        "options": {
+            "A": "1.000 - 1.005",
+            "B": "1.005 - 1.030",
+            "C": "1.010 - 1.050",
+            "D": "1.020 - 1.040",
+            "E": "1.030 - 1.060"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-013",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A 24-hour urine collection is ordered for a healthy adult to evaluate glucose excretion. What is the standard reference value for normal glucose excretion over 24 hours?",
+        "options": {
+            "A": "<10 mg/24hrs",
+            "B": "<50 mg/24hrs",
+            "C": "<100 mg/24hrs",
+            "D": "<150 mg/24hrs",
+            "E": "<200 mg/24hrs"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-RFT-014",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinalysis & Renal Functions Test",
+        "question": "A 60-year-old female with chronic kidney disease complains of severe bone pain. Laboratory tests show significant hypophosphatemia. In adults, low phosphorus levels directly lead to which of the following bone pathologies?",
+        "options": {
+            "A": "Ricketts",
+            "B": "Osteoporosis",
+            "C": "Osteomalacia",
+            "D": "Paget's disease",
+            "E": "Osteopetrosis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A 22-year-old sexually active female presents with dysuria, frequency, and suprapubic tenderness. Urine dipstick is positive for leukocyte esterase and nitrites. Urine culture eventually grows a Gram-negative, leading cause of lower UTIs. Which organism is most likely responsible?",
+        "options": {
+            "A": "Staphylococcus saprophyticus",
+            "B": "Enterococcus species",
+            "C": "Escherichia coli",
+            "D": "Pseudomonas aeruginosa",
+            "E": "Proteus mirabilis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A young male presents with dysuria and pyuria. Routine urine cultures return completely negative for the usual urinary pathogens. According to clinical protocols, which of the following organisms should be strongly suspected in this presentation of sterile pyuria?",
+        "options": {
+            "A": "Proteus mirabilis",
+            "B": "Klebsiella pneumoniae",
+            "C": "Neisseria gonorrhoeae",
+            "D": "Staphylococcus saprophyticus",
+            "E": "Enterococcus faecalis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A patient with a long-term indwelling catheter develops a multi-drug resistant urinary tract infection. The pathogen is identified as a Gram-negative rod. Based on common associations, which organism is a highly suspected culprit in this specific scenario?",
+        "options": {
+            "A": "Staphylococcus saprophyticus",
+            "B": "Pseudomonas aeruginosa",
+            "C": "Streptococcus pyogenes",
+            "D": "Neisseria meningitidis",
+            "E": "Haemophilus influenzae"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A 45-year-old female presents with fever, chills, nausea, and severe right-sided flank pain. Urinalysis shows numerous WBCs. A CT scan reveals perinephric stranding with striated parenchymal enhancement. This clinical picture is most consistent with infection of which specific anatomical level?",
+        "options": {
+            "A": "Urethra",
+            "B": "Bladder",
+            "C": "Ureter",
+            "D": "Kidney",
+            "E": "Prostate"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A 25-year-old female experiences recurrent lower urinary tract infections. Anatomically, women are significantly more likely to develop UTIs compared to men. By what specific factor does their shorter urethra increase this risk?",
+        "options": {
+            "A": "2x more likely",
+            "B": "5x more likely",
+            "C": "10x more likely",
+            "D": "20x more likely",
+            "E": "50x more likely"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A patient develops an upper urinary tract infection (acute pyelonephritis). What is the recommended broad sequence of pharmacological treatment for an upper UTI?",
+        "options": {
+            "A": "Immediate surgical drainage",
+            "B": "Short-course TMP/SMX alone",
+            "C": "Broad spectrum followed by targeted antibiotics",
+            "D": "Antifungal therapy followed by antibiotics",
+            "E": "Strictly conservative management with fluids"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Nephro-UTI-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Nephrology",
+        "topic": "Urinary Tract Infection",
+        "question": "A 50-year-old male with a history of recurrent kidney infections is evaluated for worsening renal function. A CT scan shows shrunken and atrophied renal tubules with prominent cortical scarring. This specific pathological finding is the hallmark of which condition?",
+        "options": {
+            "A": "Acute pyelonephritis",
+            "B": "Chronic pyelonephritis",
+            "C": "Renal cell carcinoma",
+            "D": "Acute tubular necrosis",
+            "E": "Minimal change disease"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "isBookQuestion": true,
         "bookName": "firstaid_step1"

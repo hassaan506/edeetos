@@ -36,6 +36,23 @@
                 "Renal Tubular Acidosis": 7,
                 "Urinary Tract Calculi": 17,
                 "Urinary Tract Infections": 21
+            },
+            "Cardiology": {
+                "Acute Coronoary Syndrome": 27,
+                "Acute Rheumatic Fever": 9,
+                "Arrhythmias": 40,
+                "Cardiomyopathies": 11,
+                "Congenital Heart Diseases": 20,
+                "Congestive Heart Failure": 21,
+                "Coronary Heart Disease": 15,
+                "Diseases of Aorta": 6,
+                "Diseases of Pericardium": 10,
+                "Electrocardiogram (ECG)": 13,
+                "Heart Sounds": 4,
+                "Hypertension": 8,
+                "Infective Endocarditis": 9,
+                "Pulmonary Edema": 4,
+                "Valvular Heart Disease": 21
             }
         }
     },
