@@ -29,28 +29,31 @@
                 "Hemorrhage": 2,
                 "Brainstem": 1,
                 "Infections": 1,
-                "Basal Ganglia": 2
+                "Basal Ganglia": 2,
+                "": 12
             },
             "Renal System": {
                 "Nephrotic Syndrome": 3,
-                "Glomerulus": 1
+                "Glomerulus": 1,
+                "": 4
             },
             "Endocrine System": {
                 "Autoimmune Polyendocrine Syndromes": 2,
                 "Diabetes Mellitus": 1,
                 "Thyroid Gland": 20,
                 "Adrenal Gland": 3,
-                "Parathyroid Gland": 1
+                "Parathyroid Gland": 1,
+                "": 1
             },
             "Genetics": {
                 "Chromosomal Abnormalities": 10,
-                "Chromosomal Inheritance": 6,
-                "": 1
+                "Chromosomal Inheritance": 6
             },
             "Musculoskeletal System": {
                 "Connective Tissue Disorders": 8,
                 "Bone & Soft Tissue": 3,
-                "Osteodystrophy": 2
+                "Osteodystrophy": 2,
+                "": 4
             },
             "Thorax": {
                 "Mediastinum": 1,
@@ -59,7 +62,8 @@
             "Reproductive System": {
                 "Testis": 2,
                 "Uterus": 1,
-                "Female Genital Tract": 2
+                "Female Genital Tract": 2,
+                "": 8
             },
             "General Pathology": {
                 "Cell Injury": 29,
@@ -73,7 +77,8 @@
                 "Calcification": 1,
                 "Neoplasia": 3,
                 "Organelles": 2,
-                "Cell Cycle": 4
+                "Cell Cycle": 4,
+                "": 9
             },
             "Neoplasia": {
                 "Oncogenes & Tumor Suppressors": 7,
@@ -81,8 +86,7 @@
                 "Radiation\u2011induced Tumors": 1,
                 "Squamous Cell Carcinoma": 1,
                 "Viral Oncogenesis": 1,
-                "Staging": 1,
-                "": 1
+                "Staging": 1
             },
             "Respiratory System": {
                 "Lung Cancer": 2,
@@ -93,7 +97,8 @@
                 "Chronic Bronchitis": 2,
                 "Pleura": 3,
                 "Sarcoidosis": 1,
-                "Interstitial Lung Disease": 1
+                "Interstitial Lung Disease": 1,
+                "": 10
             },
             "Vascular System": {
                 "Arteriolosclerosis": 1,
@@ -110,7 +115,8 @@
                 "Valvular Heart Disease": 3,
                 "Shock": 7,
                 "Atherosclerosis": 1,
-                "Rheumatic Fever": 2
+                "Rheumatic Fever": 2,
+                "": 12
             },
             "Gastrointestinal System": {
                 "Stomach": 1,
@@ -118,12 +124,14 @@
                 "Colon": 2,
                 "Polyposis Syndromes": 2,
                 "Esophagus": 8,
-                "Appendix": 1
+                "Appendix": 1,
+                "": 13
             },
             "Immune System": {
                 "Hypersensitivity": 6,
                 "Transplantation": 3,
-                "HIV": 1
+                "HIV": 1,
+                "": 20
             },
             "Head & Neck": {
                 "Salivary Glands": 1,
@@ -132,17 +140,14 @@
             "Urology": {
                 "Prostate": 1
             },
-            "Cell Injury": {
+            "Integumentary System": {
                 "": 2
             },
-            "Acid-Base": {
-                "": 3
+            "Hematologic System": {
+                "": 19
             },
-            "Hematology": {
-                "": 3
-            },
-            "Cell Biology": {
-                "": 1
+            "General": {
+                "": 6
             }
         },
         "Physiology": {
@@ -152,7 +157,7 @@
                 "Acid\u2011Base Balance": 5,
                 "Glomerulus": 9,
                 "RAAS": 4,
-                "": 1
+                "": 6
             },
             "Endocrine System": {
                 "Hormones": 6,
@@ -163,7 +168,8 @@
                 "Calcium Disorders": 1,
                 "Pineal Gland": 2,
                 "Thyroid Gland": 1,
-                "Bone Metabolism": 1
+                "Bone Metabolism": 1,
+                "": 8
             },
             "Hematological System": {
                 "Cells": 4,
@@ -184,7 +190,7 @@
                 "Neural Development": 1,
                 "Sleep": 1,
                 "Cranial Nerves": 1,
-                "": 1
+                "": 7
             },
             "Cardiovascular System": {
                 "Heart Failure": 1,
@@ -197,13 +203,14 @@
                 "Heart Sounds": 1,
                 "Hypertension": 1,
                 "Jugular Venous Pulse": 2,
-                "": 1
+                "": 17
             },
             "Gastrointestinal System": {
                 "Motility": 6,
                 "Hormones": 4,
                 "Digestion & Absorption": 4,
-                "Stomach": 1
+                "Stomach": 1,
+                "": 12
             },
             "Respiratory System": {
                 "Lung Volumes": 6,
@@ -213,18 +220,20 @@
                 "Obstructive Lung Diseases": 2,
                 "Ventilation\u2011Perfusion": 2,
                 "Pregnancy": 2,
-                "": 2
+                "": 13
             },
             "Immune System": {
                 "Inflammation": 2,
-                "Antibodies": 1
+                "Antibodies": 1,
+                "": 14
             },
             "Reproductive System": {
                 "Male Reproduction": 4,
                 "Menstrual Cycle": 3,
                 "Hormones": 3,
                 "Menopause": 2,
-                "Placenta": 1
+                "Placenta": 1,
+                "": 4
             },
             "Cell Physiology": {
                 "Cell Cycle": 2,
@@ -240,7 +249,11 @@
                 "Vision": 2
             },
             "Musculoskeletal System": {
-                "Muscles": 4
+                "Muscles": 4,
+                "": 1
+            },
+            "Hematologic System": {
+                "": 4
             }
         },
         "Pediatrics": {
@@ -287,8 +300,7 @@
             },
             "Genetics": {
                 "Chromosomal Abnormalities": 1,
-                "Skeletal Dysplasia": 1,
-                "": 1
+                "Skeletal Dysplasia": 1
             },
             "Renal System": {
                 "Fluid & Electrolytes": 1
@@ -311,11 +323,8 @@
             "Endocrine System": {
                 "Puberty": 1
             },
-            "Neurology": {
-                "": 2
-            },
-            "Hematology": {
-                "": 2
+            "Nutrition": {
+                "": 4
             }
         },
         "Medicine": {
@@ -341,7 +350,8 @@
                 "Pituitary Gland": 2,
                 "Stress Physiology": 4,
                 "Parathyroid Gland": 4,
-                "Calcium Disorders": 2
+                "Calcium Disorders": 2,
+                "": 25
             },
             "Musculoskeletal System": {
                 "Connective Tissue Disorders": 3,
@@ -351,7 +361,8 @@
                 "Vasculitis": 1,
                 "Rheumatoid Arthritis": 1,
                 "Raynaud Phenomenon": 3,
-                "Sj\u00f6gren Syndrome": 1
+                "Sj\u00f6gren Syndrome": 1,
+                "": 10
             },
             "Cardiovascular System": {
                 "Rheumatic Fever": 2,
@@ -366,7 +377,8 @@
                 "Pericardium": 1,
                 "Lipid Disorders": 1,
                 "Cardiovascular Risk": 2,
-                "Congenital Heart Disease": 1
+                "Congenital Heart Disease": 1,
+                "": 35
             },
             "Renal System": {
                 "Acid\u2011Base Balance": 8,
@@ -381,7 +393,8 @@
                 "Urethra": 1,
                 "Ureter": 1,
                 "Pulmonary Edema": 1,
-                "Kidney": 2
+                "Kidney": 2,
+                "": 12
             },
             "Immune System": {
                 "Inflammation": 6,
@@ -392,7 +405,8 @@
                 "Immunity": 5,
                 "Complement System": 1,
                 "Antigen Presentation": 1,
-                "Antibodies": 2
+                "Antibodies": 2,
+                "": 3
             },
             "Gastrointestinal System": {
                 "Digestion & Absorption": 6,
@@ -402,7 +416,8 @@
                 "Inflammatory Bowel Disease": 1,
                 "Liver": 1,
                 "Peritoneum": 1,
-                "Peritonium": 1
+                "Peritonium": 1,
+                "": 24
             },
             "Hepatobiliary System": {
                 "Liver": 12,
@@ -431,7 +446,8 @@
                 "Paraneoplastic Syndromes": 3,
                 "Neuromuscular Disorders": 1,
                 "Movement Disorders": 1,
-                "Visual Pathway": 1
+                "Visual Pathway": 1,
+                "": 27
             },
             "Respiratory System": {
                 "Pulmonary Embolism": 2,
@@ -446,17 +462,18 @@
                 "Lung Volumes": 1,
                 "Pleura": 1,
                 "Restrictive Lung Disease": 1,
-                "Spirometry": 1
+                "Spirometry": 1,
+                "": 14
             },
             "Oncology": {
                 "Paraneoplastic Syndromes": 1,
                 "Thyroid Gland": 2,
-                "Multiple Myeloma": 1,
-                "": 2
+                "Multiple Myeloma": 1
             },
             "Reproductive System": {
                 "Prostate": 1,
-                "Sexually Transmitted Infections": 2
+                "Sexually Transmitted Infections": 2,
+                "": 3
             },
             "Infectious Diseases": {
                 "Parasitic Infections": 2,
@@ -466,8 +483,7 @@
                 "Leishmaniasis": 2,
                 "Infectious Mononucleosis": 2,
                 "Toxic Shock Syndrome": 1,
-                "Rabies": 1,
-                "": 8
+                "Rabies": 1
             },
             "Head & Neck": {
                 "Ear": 3
@@ -485,7 +501,8 @@
             },
             "Toxicology": {
                 "Snake Bite": 2,
-                "Poisoning & Antidotes": 2
+                "Poisoning & Antidotes": 2,
+                "": 1
             },
             "Skin": {
                 "Infectious Skin Disorders": 1,
@@ -511,32 +528,11 @@
             "Vitals": {
                 "Temperature Measurement": 1
             },
-            "Cardiology": {
-                "": 4
+            "Hematologic System": {
+                "": 7
             },
-            "Pulmonology": {
-                "": 2
-            },
-            "Neurology": {
-                "": 8
-            },
-            "Endocrinology": {
-                "": 4
-            },
-            "Nephrology": {
+            "General": {
                 "": 1
-            },
-            "Gastroenterology": {
-                "": 3
-            },
-            "Hematology": {
-                "": 1
-            },
-            "Nutrition": {
-                "": 2
-            },
-            "Hepatology": {
-                "": 2
             }
         },
         "Gynecology & Obstetrics": {
@@ -589,7 +585,8 @@
         },
         "Microbiology": {
             "Nervous System": {
-                "Meningitis": 3
+                "Meningitis": 3,
+                "": 8
             },
             "Bacteriology": {
                 "Gram\u2011positive cocci": 9,
@@ -600,8 +597,7 @@
             "Virology": {
                 "Herpesviruses": 3,
                 "Liver": 5,
-                "Viral exanthems": 1,
-                "": 1
+                "Viral exanthems": 1
             },
             "Parasitology": {
                 "Infections": 10
@@ -613,11 +609,11 @@
                 "Colon": 1,
                 "Food poisoning": 1,
                 "Viral haemorrhagic fevers": 1,
-                "Infections": 1
+                "Infections": 1,
+                "": 10
             },
             "Mycology": {
-                "Infections": 3,
-                "": 2
+                "Infections": 3
             },
             "Infection Control": {
                 "Disinfection": 3,
@@ -633,6 +629,30 @@
             },
             "Hematological System": {
                 "Infections": 1
+            },
+            "Respiratory System": {
+                "": 10
+            },
+            "Integumentary System": {
+                "": 5
+            },
+            "Infectious Disease": {
+                "": 2
+            },
+            "Renal System": {
+                "": 2
+            },
+            "General": {
+                "": 3
+            },
+            "Musculoskeletal System": {
+                "": 1
+            },
+            "Hematologic System": {
+                "": 2
+            },
+            "Immune System": {
+                "": 1
             }
         },
         "Pharmacology": {
@@ -647,15 +667,18 @@
                 "General Anesthesia": 11,
                 "Local Anesthesia": 4,
                 "Analgesics & NSAIDs": 5,
-                "Antiepileptic": 1
+                "Antiepileptic": 1,
+                "": 14
             },
             "Cardiovascular System": {
                 "Antihypertensives & Antianginal": 10,
                 "Antiarrhythmics & Inotropes": 17,
-                "Lipid\u2011Lowering Drugs": 3
+                "Lipid\u2011Lowering Drugs": 3,
+                "": 23
             },
             "Renal System": {
-                "Diuretics": 15
+                "Diuretics": 15,
+                "": 5
             },
             "Anesthesiology": {
                 "Monitoring": 1,
@@ -669,11 +692,12 @@
                 "Allergic Rhinitis": 1,
                 "Antihistamines": 1,
                 "Altitude Sickness": 2,
-                "": 1
+                "": 9
             },
             "Toxicology": {
                 "Teratogens": 5,
-                "Poisoning & Antidotes": 3
+                "Poisoning & Antidotes": 3,
+                "": 2
             },
             "Hematological System": {
                 "Anticoagulants & Antiplatelets": 11,
@@ -685,7 +709,7 @@
                 "Acid\u2011Base Balance": 6,
                 "Motility": 2,
                 "Inflammatory Bowel Disease": 2,
-                "": 1
+                "": 11
             },
             "Pharmacokinetics": {
                 "Drug Interactions": 14,
@@ -699,7 +723,8 @@
                 "Thyroid Gland": 5,
                 "Pituitary Gland": 4,
                 "Osteoporosis & Bone Metabolism": 2,
-                "Antidiabetic Therapy": 5
+                "Antidiabetic Therapy": 5,
+                "": 5
             },
             "Antimicrobials": {
                 "Antitubercular Therapy": 6,
@@ -713,34 +738,24 @@
                 "Chemotherapy": 8
             },
             "Musculoskeletal System": {
-                "DMARDs": 1
+                "DMARDs": 1,
+                "": 7
             },
             "Immune System": {
-                "Immunosuppressants": 1
-            },
-            "Cardiovascular": {
+                "Immunosuppressants": 1,
                 "": 2
             },
-            "Endocrine": {
-                "": 2
-            },
-            "Central Nervous System": {
-                "": 3
-            },
-            "Hematology": {
-                "": 2
-            },
-            "Antimicrobial Drugs": {
+            "Hematologic System": {
                 "": 5
             },
-            "Antivirals": {
+            "Reproductive System": {
+                "": 5
+            },
+            "Integumentary System": {
                 "": 1
             },
-            "Ophthalmology": {
-                "": 1
-            },
-            "Anesthesia": {
-                "": 1
+            "General": {
+                "": 8
             }
         },
         "Surgery": {
@@ -755,7 +770,8 @@
                 "Duodenum": 1,
                 "Esophagus": 2,
                 "Bowel Obstruction": 3,
-                "Intestine": 1
+                "Intestine": 1,
+                "": 14
             },
             "Trauma": {
                 "Abdomen": 8,
@@ -780,8 +796,7 @@
                 "Osteoarthritis": 3,
                 "Trauma": 1,
                 "Lower Limb": 5,
-                "Thrombosis & Embolism": 1,
-                "": 1
+                "Thrombosis & Embolism": 1
             },
             "Hepatobiliary System": {
                 "Liver": 1,
@@ -810,7 +825,8 @@
                 "Pneumothorax": 2
             },
             "Endocrine System": {
-                "Thyroid Gland": 8
+                "Thyroid Gland": 8,
+                "": 2
             },
             "Postoperative Complications": {
                 "Steroid Effects": 1,
@@ -822,8 +838,7 @@
             },
             "Thoracic Surgery": {
                 "Thoracentesis / Chest Tube Insertion": 1,
-                "Needle Thoracostomy": 1,
-                "": 2
+                "Needle Thoracostomy": 1
             },
             "Perioperative Care": {
                 "ERAS Protocols": 3
@@ -838,19 +853,20 @@
                 "Foot": 1
             },
             "Nervous System": {
-                "Regional Anesthesia": 1
+                "Regional Anesthesia": 1,
+                "": 1
             },
-            "Trauma Surgery": {
+            "Respiratory System": {
+                "": 1
+            },
+            "Renal System": {
+                "": 5
+            },
+            "Reproductive System": {
+                "": 3
+            },
+            "Musculoskeletal System": {
                 "": 2
-            },
-            "Abdomen": {
-                "": 4
-            },
-            "Neurosurgery": {
-                "": 1
-            },
-            "Vascular Surgery": {
-                "": 1
             }
         },
         "Embryology": {
@@ -859,26 +875,31 @@
             },
             "Gastrointestinal System": {
                 "Congenital Anomalies": 2,
-                "Derivatives": 2
+                "Derivatives": 2,
+                "": 2
             },
             "Cardiovascular System": {
-                "Congenital Heart Disease": 2
+                "Congenital Heart Disease": 2,
+                "": 2
             },
             "Renal System": {
                 "Congenital Anomalies": 1,
                 "Kidney": 4
             },
             "Nervous System": {
-                "Neural Development": 1
+                "Neural Development": 1,
+                "": 2
             },
             "Musculoskeletal System": {
-                "Somites": 3
+                "Somites": 3,
+                "": 5
             },
             "Reproductive System": {
                 "Placenta": 1,
                 "Genital Development": 3,
                 "Gonads": 2,
-                "Primordial Germ Cells": 2
+                "Primordial Germ Cells": 2,
+                "": 1
             },
             "Organogenesis": {
                 "Liver": 1
@@ -891,6 +912,9 @@
             },
             "Hematological System": {
                 "Derivatives": 1
+            },
+            "Respiratory System": {
+                "": 2
             }
         },
         "Biochemistry": {
@@ -903,13 +927,15 @@
                 "Urea Cycle": 2,
                 "Energy": 1,
                 "Protein": 1,
-                "": 3
+                "": 16
             },
             "Endocrine System": {
-                "Hormones": 7
+                "Hormones": 7,
+                "": 5
             },
             "Musculoskeletal System": {
-                "Collagen": 1
+                "Collagen": 1,
+                "": 3
             },
             "Skin": {
                 "Fatty Acid": 1
@@ -917,13 +943,37 @@
             "Genetics": {
                 "Chromosomal Inheritance": 2,
                 "Chromosomal Abnormalities": 1,
-                "": 1
+                "": 2
             },
             "General Biochemistry": {
                 "Enzymes": 1
             },
             "Hepatobiliary System": {
                 "Liver": 1
+            },
+            "Hematologic System": {
+                "": 6
+            },
+            "Nervous System": {
+                "": 8
+            },
+            "Nutrition": {
+                "": 9
+            },
+            "Respiratory System": {
+                "": 1
+            },
+            "Renal System": {
+                "": 1
+            },
+            "Immune System": {
+                "": 2
+            },
+            "General": {
+                "": 3
+            },
+            "Gastrointestinal System": {
+                "": 4
             }
         },
         "Anatomy": {
@@ -932,8 +982,7 @@
                 "Lymphatics": 6,
                 "Bones & Joints": 2,
                 "Pelvic Floor & Perineum": 6,
-                "Vasculature": 2,
-                "": 3
+                "Vasculature": 2
             },
             "Reproductive System": {
                 "Testis": 3,
@@ -941,7 +990,8 @@
                 "Ovary": 2,
                 "Labia Majora": 1,
                 "Uterus": 1,
-                "Seminal Vesicles": 1
+                "Seminal Vesicles": 1,
+                "": 6
             },
             "Upper Limb": {
                 "Brachial Plexus": 4,
@@ -951,15 +1001,15 @@
                 "Forearm": 2,
                 "Arm": 1,
                 "Lymphatics": 2,
-                "Elbow": 2,
-                "": 3
+                "Elbow": 2
             },
             "Cardiovascular System": {
                 "Pericardium": 4,
                 "Aorta": 2,
                 "Heart": 11,
                 "Coronary Circulation": 4,
-                "Cardiac Function": 1
+                "Cardiac Function": 1,
+                "": 7
             },
             "Hepatobiliary System": {
                 "Bile Duct": 1,
@@ -982,7 +1032,7 @@
                 "Sensory System": 1,
                 "Autonomic Nervous System": 1,
                 "Cerebellum": 2,
-                "": 4
+                "": 44
             },
             "Gastrointestinal System": {
                 "Colon": 5,
@@ -997,7 +1047,8 @@
                 "Spleen": 1,
                 "Appendix": 1,
                 "Anus": 2,
-                "Spermatic cord": 1
+                "Spermatic cord": 1,
+                "": 10
             },
             "Thorax": {
                 "Diaphragm": 5,
@@ -1015,13 +1066,13 @@
                 "Joints": 1,
                 "Muscles": 6,
                 "Hip": 1,
-                "Popliteal Fossa": 1,
-                "": 3
+                "Popliteal Fossa": 1
             },
             "Renal System": {
                 "Kidney": 3,
                 "Urethra": 2,
-                "Ureter": 1
+                "Ureter": 1,
+                "": 2
             },
             "Head & Neck": {
                 "Cranial Nerves": 9,
@@ -1041,26 +1092,24 @@
                 "Orbit": 1,
                 "Spinal Cord": 1,
                 "Facial Vasculature": 1,
-                "Thyroid Gland": 1,
-                "": 5
+                "Thyroid Gland": 1
             },
             "Respiratory System": {
                 "Pleura": 2,
                 "Bronchus": 6,
-                "Lung Segments": 2
+                "Lung Segments": 2,
+                "": 10
             },
             "Urology": {
                 "Prostate": 2
             },
             "Musculoskeletal System": {
                 "Muscles": 2,
-                "Bone & Soft Tissue": 1
+                "Bone & Soft Tissue": 1,
+                "": 19
             },
-            "Embryology": {
-                "": 2
-            },
-            "Abdomen": {
-                "": 2
+            "Endocrine System": {
+                "": 1
             }
         },
         "Radiology": {
@@ -1080,7 +1129,8 @@
         },
         "Community Medicine": {
             "Ethics": {
-                "Medical Ethics": 1
+                "Medical Ethics": 1,
+                "": 1
             },
             "Biostatistics": {
                 "Graph": 1,
@@ -1105,6 +1155,12 @@
             "Communicable Diseases": {
                 "Onchocerciasis": 1,
                 "Trachoma": 3
+            },
+            "General": {
+                "": 4
+            },
+            "Research Methodology": {
+                "": 3
             }
         },
         "Histology": {
@@ -1118,7 +1174,8 @@
                 "Uterus": 2,
                 "Fallopian Tube": 1,
                 "Epithelium": 1,
-                "Spermatogenesis": 1
+                "Spermatogenesis": 1,
+                "": 1
             },
             "Head & Neck": {
                 "Eye": 1,
@@ -1126,29 +1183,159 @@
             },
             "Endocrine System": {
                 "Thyroid Gland": 1,
-                "Pituitary Gland": 1
+                "Pituitary Gland": 1,
+                "": 2
             },
             "Nervous System": {
                 "Neurophysiology": 1
             },
             "Gastrointestinal System": {
                 "Stomach": 1,
-                "Intestine": 1
+                "Intestine": 1,
+                "": 1
             },
             "Respiratory System": {
-                "Lungs": 2
+                "Lungs": 2,
+                "": 3
             },
             "Hematological System": {
                 "Cells": 2
+            },
+            "Integumentary System": {
+                "": 1
+            },
+            "Hematologic System": {
+                "": 1
+            },
+            "Renal System": {
+                "": 2
+            },
+            "Musculoskeletal System": {
+                "": 1
             }
         },
         "": {
             "": {
-                "": 61
+                "": 200
+            },
+            "Surgery": {
+                "": 35
+            },
+            "Pulmonology": {
+                "": 1
+            },
+            "Gynecology": {
+                "": 5
+            },
+            "Oncology": {
+                "": 5
+            },
+            "Biochemistry": {
+                "": 7
+            },
+            "Pharmacology": {
+                "": 17
+            },
+            "Anatomy": {
+                "": 20
+            },
+            "Neurology": {
+                "": 11
+            },
+            "Urology": {
+                "": 2
+            },
+            "Genetics": {
+                "": 11
+            },
+            "Cardiology": {
+                "": 4
+            },
+            "Pathology": {
+                "": 17
+            },
+            "Physiology": {
+                "": 12
+            },
+            "Gastroenterology": {
+                "": 6
+            },
+            "Immunology": {
+                "": 5
+            },
+            "Pediatrics": {
+                "": 3
+            },
+            "Endocrinology": {
+                "": 3
+            },
+            "Infectious Disease": {
+                "": 3
+            },
+            "Microbiology": {
+                "": 6
+            },
+            "Radiology": {
+                "": 2
+            },
+            "Biostatistics": {
+                "": 1
+            },
+            "Embryology": {
+                "": 2
+            },
+            "Hematology": {
+                "": 6
+            },
+            "Histology": {
+                "": 2
+            },
+            "Toxicology": {
+                "": 1
+            },
+            "Obstetrics": {
+                "": 3
+            },
+            "Medicine": {
+                "": 5
+            },
+            "Medical Ethics": {
+                "": 1
+            },
+            "Orthopedics": {
+                "": 2
+            },
+            "Nutrition": {
+                "": 1
+            }
+        },
+        "Gynecology": {
+            "Reproductive System": {
+                "": 6
+            }
+        },
+        "Psychiatry": {
+            "Nervous System": {
+                "": 2
+            },
+            "General": {
+                "": 2
             }
         },
         "Obstetrics": {
-            "Antenatal Care": {
+            "Endocrine System": {
+                "": 1
+            },
+            "Infectious Disease": {
+                "": 1
+            },
+            "Reproductive System": {
+                "": 1
+            },
+            "Cardiovascular System": {
+                "": 1
+            },
+            "Immune System": {
                 "": 1
             }
         }
@@ -1209,14 +1396,16 @@
                 "Acid\u2011Base Balance": 5,
                 "Glomerulus": 9,
                 "RAAS": 4,
-                "": 1
+                "": 6
             },
             "Pharmacology": {
-                "Diuretics": 15
+                "Diuretics": 15,
+                "": 5
             },
             "Pathology": {
                 "Nephrotic Syndrome": 3,
-                "Glomerulus": 1
+                "Glomerulus": 1,
+                "": 4
             },
             "Medicine": {
                 "Acid\u2011Base Balance": 8,
@@ -1231,12 +1420,14 @@
                 "Urethra": 1,
                 "Ureter": 1,
                 "Pulmonary Edema": 1,
-                "Kidney": 2
+                "Kidney": 2,
+                "": 12
             },
             "Anatomy": {
                 "Kidney": 3,
                 "Urethra": 2,
-                "Ureter": 1
+                "Ureter": 1,
+                "": 2
             },
             "Embryology": {
                 "Congenital Anomalies": 1,
@@ -1244,11 +1435,24 @@
             },
             "Pediatrics": {
                 "Fluid & Electrolytes": 1
+            },
+            "Surgery": {
+                "": 5
+            },
+            "Microbiology": {
+                "": 2
+            },
+            "Biochemistry": {
+                "": 1
+            },
+            "Histology": {
+                "": 2
             }
         },
         "Nervous System": {
             "Microbiology": {
-                "Meningitis": 3
+                "Meningitis": 3,
+                "": 8
             },
             "Pharmacology": {
                 "Opioids": 4,
@@ -1261,7 +1465,8 @@
                 "General Anesthesia": 11,
                 "Local Anesthesia": 4,
                 "Analgesics & NSAIDs": 5,
-                "Antiepileptic": 1
+                "Antiepileptic": 1,
+                "": 14
             },
             "Pathology": {
                 "Demyelinating Diseases": 1,
@@ -1281,7 +1486,8 @@
                 "Hemorrhage": 2,
                 "Brainstem": 1,
                 "Infections": 1,
-                "Basal Ganglia": 2
+                "Basal Ganglia": 2,
+                "": 12
             },
             "Medicine": {
                 "Neuromuscular Junction": 1,
@@ -1299,7 +1505,8 @@
                 "Paraneoplastic Syndromes": 3,
                 "Neuromuscular Disorders": 1,
                 "Movement Disorders": 1,
-                "Visual Pathway": 1
+                "Visual Pathway": 1,
+                "": 27
             },
             "Physiology": {
                 "Electrophysiology": 3,
@@ -1315,7 +1522,7 @@
                 "Neural Development": 1,
                 "Sleep": 1,
                 "Cranial Nerves": 1,
-                "": 1
+                "": 7
             },
             "Anatomy": {
                 "Brainstem": 4,
@@ -1333,20 +1540,28 @@
                 "Sensory System": 1,
                 "Autonomic Nervous System": 1,
                 "Cerebellum": 2,
-                "": 4
+                "": 44
             },
             "Radiology": {
                 "Hemorrhage": 2,
                 "Head": 1
             },
             "Embryology": {
-                "Neural Development": 1
+                "Neural Development": 1,
+                "": 2
             },
             "Histology": {
                 "Neurophysiology": 1
             },
             "Surgery": {
-                "Regional Anesthesia": 1
+                "Regional Anesthesia": 1,
+                "": 1
+            },
+            "Psychiatry": {
+                "": 2
+            },
+            "Biochemistry": {
+                "": 8
             }
         },
         "Endocrine System": {
@@ -1360,14 +1575,16 @@
                 "Pituitary Gland": 2,
                 "Stress Physiology": 4,
                 "Parathyroid Gland": 4,
-                "Calcium Disorders": 2
+                "Calcium Disorders": 2,
+                "": 25
             },
             "Pathology": {
                 "Autoimmune Polyendocrine Syndromes": 2,
                 "Diabetes Mellitus": 1,
                 "Thyroid Gland": 20,
                 "Adrenal Gland": 3,
-                "Parathyroid Gland": 1
+                "Parathyroid Gland": 1,
+                "": 1
             },
             "Physiology": {
                 "Hormones": 6,
@@ -1378,27 +1595,38 @@
                 "Calcium Disorders": 1,
                 "Pineal Gland": 2,
                 "Thyroid Gland": 1,
-                "Bone Metabolism": 1
+                "Bone Metabolism": 1,
+                "": 8
             },
             "Biochemistry": {
-                "Hormones": 7
+                "Hormones": 7,
+                "": 5
             },
             "Pharmacology": {
                 "Corticosteroids": 6,
                 "Thyroid Gland": 5,
                 "Pituitary Gland": 4,
                 "Osteoporosis & Bone Metabolism": 2,
-                "Antidiabetic Therapy": 5
+                "Antidiabetic Therapy": 5,
+                "": 5
             },
             "Surgery": {
-                "Thyroid Gland": 8
+                "Thyroid Gland": 8,
+                "": 2
             },
             "Histology": {
                 "Thyroid Gland": 1,
-                "Pituitary Gland": 1
+                "Pituitary Gland": 1,
+                "": 2
             },
             "Pediatrics": {
                 "Puberty": 1
+            },
+            "Obstetrics": {
+                "": 1
+            },
+            "Anatomy": {
+                "": 1
             }
         },
         "Cardiovascular System": {
@@ -1409,7 +1637,8 @@
             "Pharmacology": {
                 "Antihypertensives & Antianginal": 10,
                 "Antiarrhythmics & Inotropes": 17,
-                "Lipid\u2011Lowering Drugs": 3
+                "Lipid\u2011Lowering Drugs": 3,
+                "": 23
             },
             "Medicine": {
                 "Rheumatic Fever": 2,
@@ -1424,17 +1653,20 @@
                 "Pericardium": 1,
                 "Lipid Disorders": 1,
                 "Cardiovascular Risk": 2,
-                "Congenital Heart Disease": 1
+                "Congenital Heart Disease": 1,
+                "": 35
             },
             "Embryology": {
-                "Congenital Heart Disease": 2
+                "Congenital Heart Disease": 2,
+                "": 2
             },
             "Anatomy": {
                 "Pericardium": 4,
                 "Aorta": 2,
                 "Heart": 11,
                 "Coronary Circulation": 4,
-                "Cardiac Function": 1
+                "Cardiac Function": 1,
+                "": 7
             },
             "Physiology": {
                 "Heart Failure": 1,
@@ -1447,7 +1679,7 @@
                 "Heart Sounds": 1,
                 "Hypertension": 1,
                 "Jugular Venous Pulse": 2,
-                "": 1
+                "": 17
             },
             "Surgery": {
                 "Shock": 1
@@ -1456,7 +1688,8 @@
                 "Valvular Heart Disease": 3,
                 "Shock": 7,
                 "Atherosclerosis": 1,
-                "Rheumatic Fever": 2
+                "Rheumatic Fever": 2,
+                "": 12
             },
             "Histology": {
                 "Aorta": 1
@@ -1466,6 +1699,9 @@
             },
             "Radiology": {
                 "Aorta": 1
+            },
+            "Obstetrics": {
+                "": 1
             }
         },
         "Musculoskeletal System": {
@@ -1477,31 +1713,47 @@
                 "Vasculitis": 1,
                 "Rheumatoid Arthritis": 1,
                 "Raynaud Phenomenon": 3,
-                "Sj\u00f6gren Syndrome": 1
+                "Sj\u00f6gren Syndrome": 1,
+                "": 10
             },
             "Pathology": {
                 "Connective Tissue Disorders": 8,
                 "Bone & Soft Tissue": 3,
-                "Osteodystrophy": 2
+                "Osteodystrophy": 2,
+                "": 4
             },
             "Radiology": {
                 "Spinal Cord": 1
             },
             "Biochemistry": {
-                "Collagen": 1
+                "Collagen": 1,
+                "": 3
             },
             "Pharmacology": {
-                "DMARDs": 1
+                "DMARDs": 1,
+                "": 7
             },
             "Embryology": {
-                "Somites": 3
+                "Somites": 3,
+                "": 5
             },
             "Physiology": {
-                "Muscles": 4
+                "Muscles": 4,
+                "": 1
             },
             "Anatomy": {
                 "Muscles": 2,
-                "Bone & Soft Tissue": 1
+                "Bone & Soft Tissue": 1,
+                "": 19
+            },
+            "Surgery": {
+                "": 2
+            },
+            "Microbiology": {
+                "": 1
+            },
+            "Histology": {
+                "": 1
             }
         },
         "Respiratory System": {
@@ -1511,7 +1763,7 @@
                 "Allergic Rhinitis": 1,
                 "Antihistamines": 1,
                 "Altitude Sickness": 2,
-                "": 1
+                "": 9
             },
             "Medicine": {
                 "Pulmonary Embolism": 2,
@@ -1526,7 +1778,8 @@
                 "Lung Volumes": 1,
                 "Pleura": 1,
                 "Restrictive Lung Disease": 1,
-                "Spirometry": 1
+                "Spirometry": 1,
+                "": 14
             },
             "Pathology": {
                 "Lung Cancer": 2,
@@ -1537,7 +1790,8 @@
                 "Chronic Bronchitis": 2,
                 "Pleura": 3,
                 "Sarcoidosis": 1,
-                "Interstitial Lung Disease": 1
+                "Interstitial Lung Disease": 1,
+                "": 10
             },
             "Physiology": {
                 "Lung Volumes": 6,
@@ -1547,7 +1801,7 @@
                 "Obstructive Lung Diseases": 2,
                 "Ventilation\u2011Perfusion": 2,
                 "Pregnancy": 2,
-                "": 2
+                "": 13
             },
             "Pediatrics": {
                 "Neonatal Examination": 1,
@@ -1558,16 +1812,31 @@
             "Anatomy": {
                 "Pleura": 2,
                 "Bronchus": 6,
-                "Lung Segments": 2
+                "Lung Segments": 2,
+                "": 10
             },
             "Histology": {
-                "Lungs": 2
+                "Lungs": 2,
+                "": 3
+            },
+            "Microbiology": {
+                "": 10
+            },
+            "Surgery": {
+                "": 1
+            },
+            "Embryology": {
+                "": 2
+            },
+            "Biochemistry": {
+                "": 1
             }
         },
         "Gastrointestinal System": {
             "Embryology": {
                 "Congenital Anomalies": 2,
-                "Derivatives": 2
+                "Derivatives": 2,
+                "": 2
             },
             "Surgery": {
                 "Appendix": 5,
@@ -1576,7 +1845,8 @@
                 "Duodenum": 1,
                 "Esophagus": 2,
                 "Bowel Obstruction": 3,
-                "Intestine": 1
+                "Intestine": 1,
+                "": 14
             },
             "Medicine": {
                 "Digestion & Absorption": 6,
@@ -1586,7 +1856,8 @@
                 "Inflammatory Bowel Disease": 1,
                 "Liver": 1,
                 "Peritoneum": 1,
-                "Peritonium": 1
+                "Peritonium": 1,
+                "": 24
             },
             "Anatomy": {
                 "Colon": 5,
@@ -1601,14 +1872,15 @@
                 "Spleen": 1,
                 "Appendix": 1,
                 "Anus": 2,
-                "Spermatic cord": 1
+                "Spermatic cord": 1,
+                "": 10
             },
             "Pharmacology": {
                 "Antiemetics": 7,
                 "Acid\u2011Base Balance": 6,
                 "Motility": 2,
                 "Inflammatory Bowel Disease": 2,
-                "": 1
+                "": 11
             },
             "Pediatrics": {
                 "Abdomen": 1,
@@ -1619,7 +1891,8 @@
                 "Motility": 6,
                 "Hormones": 4,
                 "Digestion & Absorption": 4,
-                "Stomach": 1
+                "Stomach": 1,
+                "": 12
             },
             "Pathology": {
                 "Stomach": 1,
@@ -1627,17 +1900,23 @@
                 "Colon": 2,
                 "Polyposis Syndromes": 2,
                 "Esophagus": 8,
-                "Appendix": 1
+                "Appendix": 1,
+                "": 13
             },
             "Microbiology": {
                 "Colon": 1,
                 "Food poisoning": 1,
                 "Viral haemorrhagic fevers": 1,
-                "Infections": 1
+                "Infections": 1,
+                "": 10
             },
             "Histology": {
                 "Stomach": 1,
-                "Intestine": 1
+                "Intestine": 1,
+                "": 1
+            },
+            "Biochemistry": {
+                "": 4
             }
         },
         "Immune System": {
@@ -1650,22 +1929,35 @@
                 "Immunity": 5,
                 "Complement System": 1,
                 "Antigen Presentation": 1,
-                "Antibodies": 2
+                "Antibodies": 2,
+                "": 3
             },
             "Pediatrics": {
                 "DiGeorge Syndrome": 1
             },
             "Physiology": {
                 "Inflammation": 2,
-                "Antibodies": 1
+                "Antibodies": 1,
+                "": 14
             },
             "Pathology": {
                 "Hypersensitivity": 6,
                 "Transplantation": 3,
-                "HIV": 1
+                "HIV": 1,
+                "": 20
             },
             "Pharmacology": {
-                "Immunosuppressants": 1
+                "Immunosuppressants": 1,
+                "": 2
+            },
+            "Biochemistry": {
+                "": 2
+            },
+            "Microbiology": {
+                "": 1
+            },
+            "Obstetrics": {
+                "": 1
             }
         },
         "Hepatobiliary System": {
@@ -1709,35 +2001,53 @@
                 "Ovary": 2,
                 "Labia Majora": 1,
                 "Uterus": 1,
-                "Seminal Vesicles": 1
+                "Seminal Vesicles": 1,
+                "": 6
             },
             "Pathology": {
                 "Testis": 2,
                 "Uterus": 1,
-                "Female Genital Tract": 2
+                "Female Genital Tract": 2,
+                "": 8
             },
             "Medicine": {
                 "Prostate": 1,
-                "Sexually Transmitted Infections": 2
+                "Sexually Transmitted Infections": 2,
+                "": 3
             },
             "Physiology": {
                 "Male Reproduction": 4,
                 "Menstrual Cycle": 3,
                 "Hormones": 3,
                 "Menopause": 2,
-                "Placenta": 1
+                "Placenta": 1,
+                "": 4
             },
             "Histology": {
                 "Uterus": 2,
                 "Fallopian Tube": 1,
                 "Epithelium": 1,
-                "Spermatogenesis": 1
+                "Spermatogenesis": 1,
+                "": 1
             },
             "Embryology": {
                 "Placenta": 1,
                 "Genital Development": 3,
                 "Gonads": 2,
-                "Primordial Germ Cells": 2
+                "Primordial Germ Cells": 2,
+                "": 1
+            },
+            "Gynecology": {
+                "": 6
+            },
+            "Pharmacology": {
+                "": 5
+            },
+            "Obstetrics": {
+                "": 1
+            },
+            "Surgery": {
+                "": 3
             }
         },
         "Vascular System": {
@@ -1746,9 +2056,41 @@
                 "Vascular Disorders": 7
             }
         },
-        "Central Nervous System": {
+        "Integumentary System": {
+            "Histology": {
+                "": 1
+            },
+            "Pathology": {
+                "": 2
+            },
+            "Microbiology": {
+                "": 5
+            },
             "Pharmacology": {
-                "": 3
+                "": 1
+            }
+        },
+        "Hematologic System": {
+            "Pharmacology": {
+                "": 5
+            },
+            "Medicine": {
+                "": 7
+            },
+            "Pathology": {
+                "": 19
+            },
+            "Biochemistry": {
+                "": 6
+            },
+            "Physiology": {
+                "": 4
+            },
+            "Microbiology": {
+                "": 2
+            },
+            "Histology": {
+                "": 1
             }
         }
     },
@@ -3596,43 +3938,193 @@
                     "Inborn Errors of Metabolism": 1,
                     "Neonatal Cholestasis": 1
                 }
+            },
+            "Surgery - 7 April (N)": {
+                "": {
+                    "": 192
+                }
+            },
+            "Surgery - 8 April (M)": {
+                "": {
+                    "": 7
+                }
             }
         },
         "Other Years": {},
         "2025": {
             "Medicine - 4 August (E)": {
-                "": {
-                    "": 60
+                "Anatomy": {
+                    "": 34
+                },
+                "Gynecology": {
+                    "": 3
+                },
+                "Physiology": {
+                    "": 14
+                },
+                "Biochemistry": {
+                    "": 12
+                },
+                "Histology": {
+                    "": 1
+                },
+                "Medicine": {
+                    "": 40
+                },
+                "Microbiology": {
+                    "": 14
+                },
+                "Surgery": {
+                    "": 13
+                },
+                "Pathology": {
+                    "": 16
+                },
+                "Community Medicine": {
+                    "": 1
                 },
                 "Pharmacology": {
-                    "": 19
+                    "": 23
+                },
+                "Psychiatry": {
+                    "": 2
+                },
+                "Embryology": {
+                    "": 2
+                },
+                "Obstetrics": {
+                    "": 3
+                }
+            },
+            "Medicine - 5 August (M)": {
+                "Pharmacology": {
+                    "": 23
+                },
+                "Biochemistry": {
+                    "": 15
+                },
+                "Microbiology": {
+                    "": 11
+                },
+                "Medicine": {
+                    "": 44
+                },
+                "Pathology": {
+                    "": 39
+                },
+                "Embryology": {
+                    "": 4
+                },
+                "Surgery": {
+                    "": 7
+                },
+                "Physiology": {
+                    "": 29
+                },
+                "Anatomy": {
+                    "": 20
+                },
+                "Pediatrics": {
+                    "": 1
+                },
+                "Histology": {
+                    "": 3
+                },
+                "Community Medicine": {
+                    "": 1
+                },
+                "Psychiatry": {
+                    "": 1
+                }
+            },
+            "Medicine - 5 August (E)": {
+                "Pathology": {
+                    "": 34
+                },
+                "Medicine": {
+                    "": 41
+                },
+                "Anatomy": {
+                    "": 24
+                },
+                "Physiology": {
+                    "": 20
+                },
+                "Microbiology": {
+                    "": 10
+                },
+                "Biochemistry": {
+                    "": 14
+                },
+                "Pharmacology": {
+                    "": 28
+                },
+                "Community Medicine": {
+                    "": 4
+                },
+                "Pediatrics": {
+                    "": 1
+                },
+                "Surgery": {
+                    "": 5
+                },
+                "Histology": {
+                    "": 6
+                },
+                "Embryology": {
+                    "": 4
+                }
+            },
+            "Medicine - 6 August (M)": {
+                "Pharmacology": {
+                    "": 23
                 },
                 "Medicine": {
                     "": 37
                 },
-                "Microbiology": {
-                    "": 3
-                },
-                "Pathology": {
-                    "": 11
-                },
-                "Surgery": {
-                    "": 11
-                },
                 "Anatomy": {
-                    "": 22
-                },
-                "Physiology": {
-                    "": 5
+                    "": 21
                 },
                 "Biochemistry": {
-                    "": 4
+                    "": 19
                 },
-                "Pediatrics": {
-                    "": 5
+                "Pathology": {
+                    "": 31
+                },
+                "Gynecology": {
+                    "": 3
+                },
+                "Physiology": {
+                    "": 23
+                },
+                "Surgery": {
+                    "": 3
+                },
+                "Community Medicine": {
+                    "": 2
+                },
+                "Histology": {
+                    "": 2
+                },
+                "Microbiology": {
+                    "": 9
                 },
                 "Obstetrics": {
+                    "": 2
+                },
+                "Embryology": {
+                    "": 4
+                },
+                "Psychiatry": {
                     "": 1
+                },
+                "Pediatrics": {
+                    "": 2
+                }
+            },
+            "Medicine - 6 August (E)": {
+                "": {
+                    "": 197
                 }
             }
         }
