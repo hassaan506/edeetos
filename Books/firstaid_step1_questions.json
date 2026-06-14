@@ -3418,5 +3418,3105 @@
         "explanation": "",
         "isBookQuestion": true,
         "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antibodies & MHC-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antibodies & MHC",
+        "question": "A 22-year-old female develops Toxic Shock Syndrome after prolonged use of a vaginal tampon. She presents with fever, vomiting, diarrhea, rash, and signs of shock. The causative organism, Staphylococcus aureus, releases TSST-1. What is the specific mechanism of action of this toxin?",
+        "options": {
+            "A": "It releases erythrogenic toxin A",
+            "B": "It fixes complement via the Fc region",
+            "C": "It cross-links the beta chain of the TCR to MHC class II on APCs",
+            "D": "It promotes somatic hypermutation",
+            "E": "It directly destroys the Fab fragment of immunoglobulins"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antibodies & MHC-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antibodies & MHC",
+        "question": "A patient undergoes serological testing which reveals an immunoglobulin isotype that is described as a massive pentamer. This specific antibody is the first produced during an immune response and is classically associated with cold autoimmune hemolytic anemia. Which region of this antibody is primarily responsible for fixing complement?",
+        "options": {
+            "A": "The Fab fragment",
+            "B": "The Fc region",
+            "C": "The variable region of the light chain",
+            "D": "The hinge region",
+            "E": "The antigen-binding site"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antibodies & MHC-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antibodies & MHC",
+        "question": "A 30-year-old male is evaluated for a suspected immunodeficiency after presenting with recurrent airway and GI infections, along with an episode of anaphylaxis during a blood transfusion. Testing reveals normal levels of IgG and IgM but undetectable levels of another isotype, increasing his susceptibility to Giardia. Which specific structure typically produces the deficient immunoglobulin in a healthy individual?",
+        "options": {
+            "A": "Bone marrow",
+            "B": "Thymus",
+            "C": "Peyer patches",
+            "D": "Liver",
+            "E": "Splenic red pulp"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antibodies & MHC-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antibodies & MHC",
+        "question": "Which region of an immunoglobulin molecule strictly determines its specific isotype?",
+        "options": {
+            "A": "Variable region of the light chain",
+            "B": "Variable region of the heavy chain",
+            "C": "Fab fragment",
+            "D": "Fc region",
+            "E": "Disulfide hinge"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antibodies & MHC-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antibodies & MHC",
+        "question": "MHC Class I molecules are expressed by all nucleated cells. They are structurally associated with which specific protein?",
+        "options": {
+            "A": "Invariant chain protein",
+            "B": "Beta-2 microglobulin",
+            "C": "CD14",
+            "D": "Superantigen",
+            "E": "TCR alpha chain"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antiretrovirals-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antiretrovirals",
+        "question": "A patient newly diagnosed with HIV is prescribed a regimen including Abacavir and Tenofovir. These drugs competitively inhibit nucleotide binding to reverse transcriptase. What unique structural feature distinguishes Tenofovir from the other NRTIs in its class according to the text?",
+        "options": {
+            "A": "It is the only one that binds gp41",
+            "B": "It is the only NRTI that isn't a nucleoside",
+            "C": "It contains \"VIR\" in the middle of its name",
+            "D": "It targets the CD4 receptor directly",
+            "E": "It prevents the maturation of new viruses"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antiretrovirals-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antiretrovirals",
+        "question": "A patient on a highly active antiretroviral therapy (HAART) regimen presents for a follow-up. Blood work reveals increased creatine kinase levels, and the patient reports significant recent weight gain. Which class of medication, recognizable by the suffix \"-tegra\", is responsible for these adverse effects?",
+        "options": {
+            "A": "Protease Inhibitors",
+            "B": "NRTIs",
+            "C": "NNRTIs",
+            "D": "Integrase Inhibitors",
+            "E": "Entry/Fusion Inhibitors"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antiretrovirals-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antiretrovirals",
+        "question": "An HIV-positive patient is started on a new medication regimen. The physician monitors the patient for hyperglycemia and GI intolerance, which are common adverse effects of a drug class that prevents the maturation of new viruses. Which specific drug belongs to this class?",
+        "options": {
+            "A": "Nevirapine",
+            "B": "Enfuvirtide",
+            "C": "Atazanavir",
+            "D": "Raltegravir",
+            "E": "Zidovudine"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antiretrovirals-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antiretrovirals",
+        "question": "A patient is prescribed Nevirapine as part of their antiretroviral therapy. This drug binds to reverse transcriptase at a different site than NRTIs. Which of the following is a known adverse effect specifically associated with this drug class?",
+        "options": {
+            "A": "Myelosuppression",
+            "B": "Nephrotoxicity",
+            "C": "Rash and hepatotoxicity",
+            "D": "Increase creatine kinase",
+            "E": "Hyperglycemia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Antiretrovirals-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Antiretrovirals",
+        "question": "Non-Nucleoside Reverse Transcriptase Inhibitors (NNRTIs) bind directly to reverse transcriptase. Which of the following drugs belongs to this specific class?",
+        "options": {
+            "A": "Abacavir",
+            "B": "Tenofovir",
+            "C": "Efavirenz",
+            "D": "Dolutegravir",
+            "E": "Atazanavir"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "Which of the following is an energy-dependent programmed cell death process that does not induce acute inflammation?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Caseous necrosis",
+            "C": "Apoptosis",
+            "D": "Liquefactive necrosis",
+            "E": "Fibrinoid necrosis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "Fat necrosis characterized by saponification is classically seen following trauma to which of the following organs?",
+        "options": {
+            "A": "Liver and spleen",
+            "B": "Heart and lungs",
+            "C": "Brain and spinal cord",
+            "D": "Breast and pancreas",
+            "E": "Kidneys and adrenal glands"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "A cell undergoes injury resulting in DNA damage. This decreases hormonal stimulation and inactivates Bcl-2, allowing Bax and Bak to promote the release of a specific molecule that activates caspases. Which molecule is released from the mitochondria?",
+        "options": {
+            "A": "Perforin",
+            "B": "Granzyme B",
+            "C": "Cytochrome C",
+            "D": "Fas Ligand",
+            "E": "TNF-alpha"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "A 65-year-old male suffers an ischemic infarction of the brain. Months later, imaging reveals that the dead tissue has undergone enzymatic lysis, leaving a fluid-filled cavity. Which type of necrosis is characteristic of this finding?",
+        "options": {
+            "A": "Coagulative",
+            "B": "Liquefactive",
+            "C": "Gangrenous",
+            "D": "Caseous",
+            "E": "Fibrinoid"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "A patient presents with acute pancreatitis. Inflammation and trauma release lipases that join with calcium to form chalky-white deposits in the adipose tissue. What is the specific term for this calcium deposition process?",
+        "options": {
+            "A": "Saponification",
+            "B": "Caseation",
+            "C": "Coagulation",
+            "D": "Liquefaction",
+            "E": "Fibrinoid deposition"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "A child presents with hepatosplenomegaly, generalized lymphadenopathy, and laboratory signs of autoimmunity. Genetic analysis reveals defective FasL and Fas binding preventing extrinsic apoptosis. What is the diagnosis?",
+        "options": {
+            "A": "Autoimmune Lymphoproliferative Syndrome",
+            "B": "Follicular Lymphoma",
+            "C": "Chronic Granulomatous Disease",
+            "D": "Leukocyte Adhesion Deficiency",
+            "E": "Chediak Higashi Syndrome"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Apoptosis Vs Necrosis-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Apoptosis Vs Necrosis",
+        "question": "A patient is diagnosed with Follicular Lymphoma. Cytogenetic analysis reveals a t[14:18] translocation. This mutation increases tumorigenesis by overexpressing a protein that actively decreases caspase activation. Which protein is overexpressed?",
+        "options": {
+            "A": "Bax",
+            "B": "Bak",
+            "C": "Cytochrome C",
+            "D": "Bcl-2",
+            "E": "FasL"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Carcinogens-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Carcinogens",
+        "question": "A 45-year-old shipyard worker with a long history of handling old roof insulation presents with shortness of breath. He is found to have a malignancy related to asbestos exposure. Which of the following is the most likely cancer to develop over time in this patient?",
+        "options": {
+            "A": "Mesothelioma",
+            "B": "Bronchogenic Carcinoma",
+            "C": "Hepatic Angiosarcoma",
+            "D": "Transitional Carcinoma",
+            "E": "Hepatocellular Carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Carcinogens-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Carcinogens",
+        "question": "A 55-year-old male presents with hematuria. His occupational history reveals long-term exposure to benzadines in a dye manufacturing plant. He also has a 20 pack-year smoking history, exposing him to naphthylamines. Because both of these exposures contain aromatic amines, he is at highest risk for which type of cancer?",
+        "options": {
+            "A": "Gastric cancer",
+            "B": "Lung Carcinoma",
+            "C": "Papillary Thyroid Cancer",
+            "D": "Transitional Carcinoma",
+            "E": "Squamous Cell Carcinoma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Carcinogens-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Carcinogens",
+        "question": "An outbreak of liver cancer is observed in a community where diets consist heavily of stored grains and peanuts. Investigation reveals contamination by Aspergillus. Which specific carcinogen produced by this mold is responsible for causing Hepatocellular Carcinoma?",
+        "options": {
+            "A": "Arsenic",
+            "B": "Vinyl Chloride",
+            "C": "Nitrosamines",
+            "D": "Aflatoxin",
+            "E": "Heavy Metals"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Carcinogens-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Carcinogens",
+        "question": "Exposure to aromatic amines, such as benzadines found in dyes, is heavily linked to the development of which specific cancer?",
+        "options": {
+            "A": "Hepatocellular carcinoma",
+            "B": "Transitional carcinoma",
+            "C": "Mesothelioma",
+            "D": "Gastric cancer",
+            "E": "Squamous cell carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Carcinogens-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Carcinogens",
+        "question": "Infection-induced urticaria is a type of nonallergic hypersensitivity. Which parasitic infection is explicitly noted to cause this reaction?",
+        "options": {
+            "A": "Mycoplasma",
+            "B": "Rotavirus",
+            "C": "Anisakis simplex",
+            "D": "Giardia lamblia",
+            "E": "Cryptosporidium"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cardinal Signs of Inflammation-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cardinal Signs of Inflammation",
+        "question": "A patient presents with a systemic infection and a fever. Interleukin-1 (IL-1) production is increased. IL-1 directly leads to the increased production of which mediator that stimulates the thermoregulatory centers in the hypothalamus?",
+        "options": {
+            "A": "Histamine",
+            "B": "Bradykinin",
+            "C": "Nitric Oxide",
+            "D": "PGE2",
+            "E": "Serotonin"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cardinal Signs of Inflammation-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cardinal Signs of Inflammation",
+        "question": "A 55-year-old male is admitted with a severe bacterial infection. The physician orders an acute phase reactant level specifically used to help follow the progression of bacterial infections. Which marker is ordered?",
+        "options": {
+            "A": "C-Reactive Protein (CRP)",
+            "B": "Procalcitonin",
+            "C": "Ferritin",
+            "D": "Serum Amyloid",
+            "E": "Erythrocyte Sedimentation Rate (ESR)"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cardinal Signs of Inflammation-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cardinal Signs of Inflammation",
+        "question": "A blood culture from a septic patient grows gram-negative bacteria. The outer membrane of these bacteria contains lipopolysaccharide (LPS) endotoxin. LPS triggers macrophage activation via TLR4/CD14, leading to the release of a cytokine that causes both fever and hypotension. Which cytokine is this?",
+        "options": {
+            "A": "IL-1",
+            "B": "IL-6",
+            "C": "TNF-alpha",
+            "D": "Nitric oxide",
+            "E": "C3a"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cardinal Signs of Inflammation-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cardinal Signs of Inflammation",
+        "question": "A physician is investigating a patient with a high Erythrocyte Sedimentation Rate (ESR). Based on the \"NAPKIN\" mnemonic, which of the following is a known cause of high ESR?",
+        "options": {
+            "A": "Microcytosis",
+            "B": "Heart failure",
+            "C": "Polycythemia",
+            "D": "Sickle cell anemia",
+            "E": "Pregnancy"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cardinal Signs of Inflammation-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cardinal Signs of Inflammation",
+        "question": "Which inflammatory mediator is primarily responsible for mediating the symptom of pain (dolor)?",
+        "options": {
+            "A": "Histamine",
+            "B": "Nitric oxide",
+            "C": "Bradykinin",
+            "D": "Serotonin",
+            "E": "Interleukin-1"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cardinal Signs of Inflammation-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cardinal Signs of Inflammation",
+        "question": "Endotoxins are toxic molecules bound to the outer wall of bacteria. Which specific component of the endotoxin is responsible for macrophage activation and shock?",
+        "options": {
+            "A": "O-antigen",
+            "B": "Core polysaccharide",
+            "C": "Lipid A",
+            "D": "Peptidoglycan",
+            "E": "Teichoic acid"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "A 4-year-old boy is diagnosed with an immunodeficiency characterized by impaired double-stranded DNA break repair and cell-cycle checkpoint control. This leads to a failure in the G1 to S transition. According to the text, this condition is caused by a mutation in which of the following genes?",
+        "options": {
+            "A": "ATM",
+            "B": "TP53",
+            "C": "BCL-2",
+            "D": "Rb",
+            "E": "MYC"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "A 35-year-old male is treated for testicular cancer with an antineoplastic agent that works by generating free radicals. He subsequently presents with progressive shortness of breath and a non-productive cough. Imaging suggests pulmonary fibrosis. Which drug was most likely administered?",
+        "options": {
+            "A": "Bleomycin",
+            "B": "Paclitaxel",
+            "C": "Cisplatin",
+            "D": "Etoposide",
+            "E": "Methotrexate"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "A patient with an autoimmune disease is stabilized on Azathioprine. He recently develops gout, and his physician considers prescribing a gout medication like allopurinol. Co-administration risks severe liver toxicity because Azathioprine is directly metabolized by which enzyme?",
+        "options": {
+            "A": "Thymidylate synthase",
+            "B": "Dihydrofolate reductase",
+            "C": "Ribonucleotide reductase",
+            "D": "Xanthine oxidase",
+            "E": "Topoisomerase I"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "A 60-year-old patient with colon cancer is treated with a pyrimidine analog. A few weeks later, he develops painful erythema and swelling on the palms of his hands and the soles of his feet (Hand-foot syndrome). Which of the following is the specific enzyme inhibited by this drug?",
+        "options": {
+            "A": "Ribonucleotide reductase",
+            "B": "Thymidylate synthase",
+            "C": "Topoisomerase II",
+            "D": "Beta-tubulin",
+            "E": "Xanthine oxidase"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "A patient receiving chemotherapy for a solid tumor develops prominent peripheral neuropathy. The responsible drug binds to beta-tubulin, preventing the assembly of microtubules. Based on the provided pharmacology tables, which drug is this?",
+        "options": {
+            "A": "Vincristine",
+            "B": "Vinblastine",
+            "C": "Paclitaxel",
+            "D": "Cisplatin",
+            "E": "Carmustine"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "A 50-year-old patient with an aggressive brain tumor requires chemotherapy. The oncologist selects an alkylating agent specifically because it can cross the blood-brain barrier. Which drug is this, keeping in mind its potential for CNS toxicity?",
+        "options": {
+            "A": "Cisplatin",
+            "B": "Cyclophosphamide",
+            "C": "Carmustine",
+            "D": "Bleomycin",
+            "E": "Dactinomycin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "Which antimetabolite drug specifically functions by inhibiting ribonucleotide reductase?",
+        "options": {
+            "A": "Methotrexate",
+            "B": "5-Fluorouracil",
+            "C": "Cytarabine",
+            "D": "Hydroxyurea",
+            "E": "Cladribine"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cell Cycle Pharmacology-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cell Cycle Pharmacology",
+        "question": "Topoisomerase I inhibitors, such as Irinotecan, work by preventing DNA unwinding. They are recognized by which distinct suffix?",
+        "options": {
+            "A": "#NAME?",
+            "B": "#NAME?",
+            "C": "#NAME?",
+            "D": "#NAME?",
+            "E": "#NAME?"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "A 55-year-old male with prolonged carpal tunnel syndrome shows marked flattening of his thenar eminence. Which of the following mechanisms is primarily responsible for the reduction in cell size within this muscle tissue?",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Autophagic vacuole fusion",
+            "C": "Ubiquitin-proteasome degradation",
+            "D": "Stem cell proliferation",
+            "E": "Metaplastic transformation"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "A 65-year-old male undergoes a biopsy of an enlarged prostate gland. The pathology report indicates benign prostatic hyperplasia. Based on this cellular adaptation, what is his risk of developing prostate cancer directly from this specific lesion?",
+        "options": {
+            "A": "High risk of direct transformation to adenocarcinoma",
+            "B": "Increased risk due to stem cell proliferation",
+            "C": "No increased risk",
+            "D": "Progresses to dysplasia before cancer",
+            "E": "Moderate risk dependent on stress level"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "A 45-year-old female with long-standing persistent acid reflux undergoes endoscopy, revealing a change from squamous to columnar epithelium in the lower esophagus. If the stress persists, this adaptation may directly transform into which of the following?",
+        "options": {
+            "A": "Hypertrophy",
+            "B": "Dysplasia",
+            "C": "Apoptosis",
+            "D": "Aplasia",
+            "E": "Autophagy"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "A biopsy of a mucosal lesion shows disordered cell growth and proliferation of precancerous cells. Which feature strictly distinguishes early dysplasia from an established carcinoma in this context?",
+        "options": {
+            "A": "It is early and reversible",
+            "B": "It involves a change in cell type",
+            "C": "It features ubiquitin tagging",
+            "D": "It decreases cell size",
+            "E": "It is strictly irreversible"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "An ultrasound of a fetus reveals the complete failure of cellular development of the left renal system during embryogenesis. Which term best describes this pathological finding?",
+        "options": {
+            "A": "Atrophy",
+            "B": "Hyperplasia",
+            "C": "Aplasia",
+            "D": "Dysplasia",
+            "E": "Metaplasia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "A bodybuilder heavily trains his skeletal muscles, resulting in noticeably increased muscle mass. Since skeletal muscle is a permanent cell population, the increase in size is strictly due to hypertrophy. Which other cell type is also considered a permanent cell population capable only of hypertrophy in response to stress?",
+        "options": {
+            "A": "Skin surface epithelium",
+            "B": "Hematopoietic stem cells",
+            "C": "Endometrial lining",
+            "D": "Nerves",
+            "E": "Conjunctival epithelium"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "A 10-year-old child from a developing country with severe malnutrition presents with vision issues. Examination reveals simple squamous epithelium has transitioned to stratified keratinized squamous epithelium in the conjunctiva (keratomalacia). This is due to a deficiency of which vitamin?",
+        "options": {
+            "A": "Vitamin C",
+            "B": "Vitamin D",
+            "C": "Vitamin E",
+            "D": "Vitamin A",
+            "E": "Vitamin B12"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "Which mechanism of cellular atrophy involves intermediate filaments being tagged and subsequently removed by proteasomes?",
+        "options": {
+            "A": "Autophagy",
+            "B": "Apoptosis",
+            "C": "Ubiquitin-proteasome pathway",
+            "D": "Metaplasia",
+            "E": "Dysplasia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "Which of the following conditions is an exception that features metaplasia but carries no increased risk of dysplasia transformation?",
+        "options": {
+            "A": "Barrett's esophagus",
+            "B": "Apocrine metaplasia of breast",
+            "C": "Endometrial hyperplasia",
+            "D": "Keratomalacia",
+            "E": "Cervical metaplasia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Cellular Adaptation-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Cellular Adaptation",
+        "question": "Hyperplasia involves an increase in the number of cells. Which cell population is strictly unable to undergo hyperplasia?",
+        "options": {
+            "A": "Labile cells",
+            "B": "Stable cells",
+            "C": "Stem cells",
+            "D": "Permanent cells",
+            "E": "Epithelial cells"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chemotoxicity & Monoclonals-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chemotoxicity & Monoclonals",
+        "question": "Dilated cardiomyopathy is a severe, known adverse effect associated with which class of chemotherapeutic agents?",
+        "options": {
+            "A": "Taxanes",
+            "B": "Vinca Alkaloids",
+            "C": "Anthracyclines",
+            "D": "Topoisomerase Inhibitors",
+            "E": "Microtubule Inhibitors"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chemotoxicity & Monoclonals-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chemotoxicity & Monoclonals",
+        "question": "Which monoclonal antibody specifically targets VEGF to inhibit blood vessel formation in tumors?",
+        "options": {
+            "A": "Rituximab",
+            "B": "Cetuximab",
+            "C": "Bevacizumab",
+            "D": "Trastuzumab",
+            "E": "Eculizumab"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chemotoxicity & Monoclonals-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chemotoxicity & Monoclonals",
+        "question": "A pathologist is examining an undifferentiated tumor biopsy. To determine the tissue of origin, an immunohistochemical stain is performed, which tests positive for Desmin. This finding indicates the tumor originated from which of the following tissues?",
+        "options": {
+            "A": "Epidermis",
+            "B": "Mesenchyme",
+            "C": "Neuroglia",
+            "D": "Muscle",
+            "E": "Neuroendocrine cells"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chemotoxicity & Monoclonals-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chemotoxicity & Monoclonals",
+        "question": "A 60-year-old female is receiving Cyclophosphamide for a solid tumor. She presents to the clinic complaining of gross hematuria. The physician suspects a specific organ toxicity associated with this cross-linking DNA agent. According to the Chemotoxicity Bear, which organ is primarily affected?",
+        "options": {
+            "A": "Heart",
+            "B": "Lungs",
+            "C": "Ears",
+            "D": "Bladder",
+            "E": "Kidneys"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chemotoxicity & Monoclonals-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chemotoxicity & Monoclonals",
+        "question": "A 40-year-old female with Rheumatoid Arthritis is started on Rituximab, a monoclonal antibody that targets CD20. Her physician warns her about a rare but severe neurological complication, particularly if she is a carrier of the JC virus. What is this associated risk?",
+        "options": {
+            "A": "Dilated cardiomyopathy",
+            "B": "Progressive multifocal leukoencephalopathy (PML)",
+            "C": "Tuberculosis reactivation",
+            "D": "Agranulocytosis",
+            "E": "Hemorrhage"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chronic Inflammation-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chronic Inflammation",
+        "question": "A 25-year-old male presents with a persistent viral infection. During the immune response, extracellular antigens are phagocytosed by macrophages and presented to helper T-cells. For full CD4+ T-cell activation, a second activation signal is required. Which interaction provides this specific signal?",
+        "options": {
+            "A": "CD40 receptor on B cell binding CD40L",
+            "B": "B7 on the APC binding to CD28 on the T-cell",
+            "C": "TCR binding to MHC Class II",
+            "D": "TCR binding to MHC Class I",
+            "E": "Fas ligand binding to Fas receptor"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chronic Inflammation-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chronic Inflammation",
+        "question": "An 8-month-old male infant presents with a history of recurrent bacterial infections, notably Giardia and Enterovirus. Laboratory workup reveals barely present lymphoid tissue and severely reduced levels of all immunoglobulins. Genetic testing identifies a mutation in a tyrosine kinase gene. This X-linked recessive condition primarily results in a failure of which process?",
+        "options": {
+            "A": "Isotype switching",
+            "B": "T-cell receptor rearrangement",
+            "C": "B-cell maturation",
+            "D": "Macrophage activation",
+            "E": "CD8+ T-cell activation"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chronic Inflammation-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chronic Inflammation",
+        "question": "A patient is diagnosed with Hyper-IgM syndrome, characterized by recurrent pyogenic infections at mucosal sites. Laboratory results show markedly elevated IgM and decreased IgA, IgG, and IgE. This condition is directly caused by a mutation that prevents the second activation signal for B-cells. Which structure is mutated in this syndrome?",
+        "options": {
+            "A": "B7 or CD28",
+            "B": "MHC Class II or TCR",
+            "C": "CD40L or CD40 receptor",
+            "D": "BTK gene",
+            "E": "IL-4 or IL-5 receptors"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chronic Inflammation-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chronic Inflammation",
+        "question": "A patient with an autoimmune disorder is found to have defective T-cell activation. Normally, CD8+ cytotoxic T-cells are activated when intracellular antigens are processed and presented on specific surface molecules. Which cell types normally express the MHC class required to activate CD8+ T-cells?",
+        "options": {
+            "A": "Only antigen-presenting cells",
+            "B": "Only B-lymphocytes",
+            "C": "All nucleated cells",
+            "D": "Only mature helper T-cells",
+            "E": "Only thymic epithelial cells"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chronic Inflammation-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chronic Inflammation",
+        "question": "For full activation, a B-cell requires a second activation signal from a helper T-cell. This is achieved by the CD40 receptor on the B-cell binding to which ligand?",
+        "options": {
+            "A": "B7",
+            "B": "CD28",
+            "C": "CD40L",
+            "D": "TCR",
+            "E": "MHC Class II"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Chronic Inflammation-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Chronic Inflammation",
+        "question": "Bruton's Agammaglobulinemia is an X-linked recessive disorder preventing B-cell maturation. It is caused by a mutation in a gene encoding which type of enzyme?",
+        "options": {
+            "A": "Tyrosine kinase",
+            "B": "Protease",
+            "C": "Phospholipase",
+            "D": "Hydroxylase",
+            "E": "Reductase"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "A patient undergoing radiation therapy for a tumor develops local tissue damage. The photons induce direct cellular and DNA damage via enzyme oxidation and ionization. Which free radical, generated via the hydrolysis of water, is considered the most damaging in this process?",
+        "options": {
+            "A": "Superoxide anion",
+            "B": "Hydrogen peroxide",
+            "C": "Hydroxyl radical",
+            "D": "Nitric oxide",
+            "E": "Carbon tetrachloride"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "A 4-year-old boy suffers from recurrent infections with Staphylococcus aureus and Serratia. A nitroblue tetrazolium (NBT) dye test is performed and the dye stays yellow/colourless. This patient most likely has an X-linked deficiency in which of the following enzymes?",
+        "options": {
+            "A": "Catalase",
+            "B": "Superoxide Dismutase",
+            "C": "Myeloperoxidase",
+            "D": "NADPH Oxidase",
+            "E": "Glutathione peroxidase"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "A 60-year-old man suffers a myocardial infarction. Blood flow is medically restored to the heart tissue, but cardiac enzymes subsequently leak further into the blood. The reactivation of enzymes and a burst of which entity is primarily responsible for this secondary damage via peroxidation of lipids?",
+        "options": {
+            "A": "Platelets",
+            "B": "Complement proteins",
+            "C": "Free radicals",
+            "D": "Fibroblasts",
+            "E": "Eosinophils"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "A patient diagnosed with Wilson's disease presents with hepatic damage due to excess metal accumulation. Through which specific reaction do metals like Fe2+ and Cu generate hydroxyl free radicals in this condition?",
+        "options": {
+            "A": "Oxidative phosphorylation",
+            "B": "Fenton reaction",
+            "C": "P450 metabolism",
+            "D": "Respiratory burst",
+            "E": "Autolysis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "A patient has a known deficiency in Myeloperoxidase. According to the provided diagram, this increases their risk of infection particularly from which organism, because HOCl is important for killing it?",
+        "options": {
+            "A": "Staphylococcus aureus",
+            "B": "Serratia",
+            "C": "Pseudomonas",
+            "D": "Aspergillus",
+            "E": "Candida"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "Which enzyme specifically generates superoxide ions during the inflammatory respiratory burst?",
+        "options": {
+            "A": "Myeloperoxidase",
+            "B": "Superoxide dismutase",
+            "C": "Catalase",
+            "D": "NADPH oxidase",
+            "E": "Glutathione peroxidase"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Free Radical Injury-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Free Radical Injury",
+        "question": "The Fenton reaction damages hepatocytes in Hemochromatosis by generating which specific free radical?",
+        "options": {
+            "A": "Superoxide anion",
+            "B": "Hydrogen peroxide",
+            "C": "Hydroxyl radical",
+            "D": "Nitric oxide",
+            "E": "Carbon tetrachloride"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "A patient tests positive for HIV. The virus utilizes specific envelope proteins to attach to and enter host cells. Which viral protein is explicitly responsible for fusing with the host membrane and facilitating viral entry?",
+        "options": {
+            "A": "p24",
+            "B": "p17",
+            "C": "gp120",
+            "D": "gp41",
+            "E": "Reverse transcriptase"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "A 30-year-old male presents with weight loss and opportunistic infections. An HIV-1/2 Ag/Ab immunoassay is performed. This diagnostic test detects the amount of IgG antibodies against HIV-1/2, as well as the number of specific capsid proteins, which provides high sensitivity and specificity. Which capsid protein is measured?",
+        "options": {
+            "A": "p17",
+            "B": "gp120",
+            "C": "p24",
+            "D": "gp41",
+            "E": "CCR5"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "A researcher is studying HIV infectivity. They isolate a strain of HIV that strictly targets T-cells. Based on co-receptor binding rules, this specific viral strain relies on interacting with which co-receptor found on T-cells?",
+        "options": {
+            "A": "CCR5",
+            "B": "CXCR4",
+            "C": "CD8",
+            "D": "CD20",
+            "E": "gp120"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "A 45-year-old untreated HIV-positive male presents with severe headaches and neurological deficits. His latest CD4 count is 85 cells/mm3. At this specific CD4 level (<100/mm3), which of the following organisms becomes a new risk for opportunistic infection that was not a primary risk at higher counts (e.g., >200)?",
+        "options": {
+            "A": "Candida",
+            "B": "Epstein-Barr Virus (EBV)",
+            "C": "Pneumocystis jirovecii",
+            "D": "JC Virus",
+            "E": "Toxoplasma gondii"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "A 40-year-old untreated HIV-positive female is evaluated for AIDS-defining conditions. She presents with month-long diarrhea, fever, and myalgia. To meet the precise definition of Wasting Syndrome, she must also have experienced a specific percentage of body weight loss over 6 months. What is the required weight loss threshold?",
+        "options": {
+            "A": ">5% body weight",
+            "B": ">10% body weight",
+            "C": ">15% body weight",
+            "D": ">20% body weight",
+            "E": ">25% body weight"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "A 35-year-old male has been living with untreated HIV for several years. According to the serology graph of untreated infection, as the patient transitions into the final crisis stage (AIDS), which of the following immunological events occurs concurrently with the sharp decline of CD4+ T cells and the rise of HIV RNA?",
+        "options": {
+            "A": "Sharp spike in anti-envelope antibody (gp120)",
+            "B": "Immediate recovery of p24 antigen",
+            "C": "Exhaustion of CD8+ T cells",
+            "D": "Rapid proliferation of mucosal membrane infections",
+            "E": "Peak of viral dissemination to lymphoid organs"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "During HIV infection, the virus uses the gp41 envelope protein for which specific function?",
+        "options": {
+            "A": "Attachment to CD4+ cells",
+            "B": "Fusion and Entry",
+            "C": "Creating dsDNA from viral RNA",
+            "D": "Integration into host genome",
+            "E": "Capsid assembly"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-HIV-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "HIV",
+        "question": "When HIV infects macrophages rather than T-cells, it relies on binding to which specific co-receptor?",
+        "options": {
+            "A": "CXCR4",
+            "B": "CCR5",
+            "C": "CD8",
+            "D": "CD20",
+            "E": "CD40"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypersensitivity-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypersensitivity",
+        "question": "A 25-year-old female presents to the clinic complaining of localized pain, swelling, and arthralgia at an injection site hours after receiving a booster dose of a vaccine. The physician suspects an Arthus reaction. This type of reaction is characterized by the deposition of immune complexes against self-antigens in tissues. Which type of hypersensitivity is this?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": "Type 5"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypersensitivity-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypersensitivity",
+        "question": "A 35-year-old male develops a severely pruritic rash two days after hiking through a wooded area where he was exposed to Poison Ivy. This reaction is mediated by APCs migrating to lymph nodes to sensitize T-cells, which then return to the site. Which mechanism is primarily responsible for the tissue destruction seen in this late-stage response?",
+        "options": {
+            "A": "Immediate degranulation of histamine and tryptase",
+            "B": "Antibodies reacting to self-antigens leading to a cytotoxic response",
+            "C": "Immune complexes activating the complement cascade",
+            "D": "CD8+ T-cells binding to somatic cells with antigen",
+            "E": "Systemic mast cell degranulation"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypersensitivity-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypersensitivity",
+        "question": "A patient is treated with intravenous vancomycin for a severe bacterial infection. Shortly after administration, the patient develops a delayed response characterized by localized tissue destruction. The physician notes that vancomycin acts as a pseudoallergen. Which type of hypersensitivity reaction is associated with this presentation?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": "Arthus reaction"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypersensitivity-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypersensitivity",
+        "question": "A patient in the emergency department receives a dose of intravenous radiocontrast dye for a CT scan. Within minutes, he develops urticaria, edema, and hypotension. The patient has absolutely no history of previous sensitization to this dye. This direct activation of mast cells is termed a pseudoallergy. Which other drug is classically known to cause this specific type of nonallergic hypersensitivity?",
+        "options": {
+            "A": "Penicillin",
+            "B": "Ceftriaxone",
+            "C": "Vancomycin",
+            "D": "Methotrexate",
+            "E": "Cyclophosphamide"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypersensitivity-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypersensitivity",
+        "question": "Which type of hypersensitivity reaction is defined by the deposition of immune complexes against self-antigens in tissues?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": "Pseudoallergy"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypersensitivity-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypersensitivity",
+        "question": "Goodpasture's syndrome and Rheumatic fever are classic examples of which type of hypersensitivity reaction?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": "Serum sickness"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "A 25-year-old rescued from a house fire presents with cherry-red skin and a severe headache. Blood gas analysis reveals a normal PaO2 but decreased SaO2. Which of the following is the most likely cause of these findings?",
+        "options": {
+            "A": "Carbon monoxide poisoning",
+            "B": "Methemoglobinemia",
+            "C": "Anemia",
+            "D": "High altitude exposure",
+            "E": "Hypoventilation"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "A patient treated with sulfate drugs develops cyanosis and chocolate-colored blood. The iron in the heme is oxidized to Fe3+ and cannot bind oxygen. What is the appropriate specific treatment for this condition?",
+        "options": {
+            "A": "Supplemental oxygen",
+            "B": "Blood transfusion",
+            "C": "IV methylene blue",
+            "D": "Corticosteroids",
+            "E": "Broad-spectrum antibiotics"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "A patient experiences severe shock resulting in generalized hypotension and poor perfusion to multiple organs. Which specific area of the liver is most susceptible to this ischemic injury?",
+        "options": {
+            "A": "Central vein (Zone III)",
+            "B": "Portal triad",
+            "C": "Hepatic artery",
+            "D": "Bile ductules",
+            "E": "Kupffer cells"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "A cell is subjected to low oxygen, leading to decreased ATP production. The cell switches to anaerobic respiration, increasing lactic acid and lowering pH. Which defining feature of reversible cell injury is primarily caused by the subsequent failure of the Na+/K+ and Ca2+ pumps?",
+        "options": {
+            "A": "Rupture of lysosomes",
+            "B": "Generalized swelling",
+            "C": "Lysis of endoplasmic reticulum",
+            "D": "Nuclear pyknosis",
+            "E": "Myelin figures"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "A pathologist examines tissue subjected to prolonged ischemia and notes profoundly damaged cells exhibiting karyorrhexis and large mitochondrial densities. An increase in which intracellular ion is a key mediator in activating the hydrolytic enzymes responsible for this irreversible membrane damage?",
+        "options": {
+            "A": "Potassium",
+            "B": "Sodium",
+            "C": "Calcium",
+            "D": "Magnesium",
+            "E": "Chloride"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "Which area of the brain is highly susceptible to ischemic injury due to decreased arterial perfusion?",
+        "options": {
+            "A": "Purkinje cells",
+            "B": "Medulla oblongata",
+            "C": "Hypothalamus",
+            "D": "Thalamus",
+            "E": "Pons"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Hypoxia & Cellular Injury-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Hypoxia & Cellular Injury",
+        "question": "Reversible cellular injury is characterized by which of the following morphological changes?",
+        "options": {
+            "A": "Rupture of lysosomes",
+            "B": "Karyorrhexis",
+            "C": "Myelin figures",
+            "D": "Generalized swelling",
+            "E": "Nuclear pyknosis"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "A kidney transplant recipient is maintained on Tacrolimus to prevent graft rejection. This drug acts as a Calcineurin inhibitor. By inhibiting Calcineurin, Tacrolimus directly decreases the transcription of which specific cytokine?",
+        "options": {
+            "A": "IL-1",
+            "B": "IL-2",
+            "C": "IL-3",
+            "D": "IL-4",
+            "E": "IL-6"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "A patient receiving an organ transplant is prescribed Sirolimus. Unlike Tacrolimus, which decreases the transcription of interleukins, Sirolimus prevents cellular proliferation by decreasing responsiveness to IL-2. It achieves this by inhibiting which specific target?",
+        "options": {
+            "A": "Calcineurin",
+            "B": "IMP dehydrogenase",
+            "C": "mTOR",
+            "D": "NF-kB",
+            "E": "PRPP amidotransferase"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "A patient with rheumatoid disease is prescribed Mycophenolate as a glucocorticoid-sparing agent. The patient is warned about the risk of GI upset, pancytopenia, and hypertension. This drug is also distinctly associated with an invasive infection of which virus?",
+        "options": {
+            "A": "Epstein-Barr Virus (EBV)",
+            "B": "Cytomegalovirus (CMV)",
+            "C": "HIV",
+            "D": "JC Virus",
+            "E": "Rotavirus"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "A patient with a severe bacterial infection presents with a high fever and elevated levels of acute phase reactants. According to the \"HOT T-BONE stEAK\" mnemonic, which interleukin is primarily responsible for stimulating the production of acute phase reactants (the \"aKute\" in stEAK)?",
+        "options": {
+            "A": "IL-1",
+            "B": "IL-2",
+            "C": "IL-4",
+            "D": "IL-5",
+            "E": "IL-6"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "Cyclosporine is an immunosuppressant used for psoriasis and rheumatoid arthritis. It exerts its effect by binding cyclophilin and directly inhibiting which molecule?",
+        "options": {
+            "A": "mTOR",
+            "B": "Calcineurin",
+            "C": "IMP dehydrogenase",
+            "D": "NF-kB",
+            "E": "PRPP amidotransferase"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "Interleukin-3 (IL-3) has which of the following primary functions in the immune system?",
+        "options": {
+            "A": "Stimulates T cells",
+            "B": "Stimulates bone marrow",
+            "C": "Stimulates IgE production",
+            "D": "Stimulates IgA production",
+            "E": "Stimulates acute phase reactants"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Immunosuppressants-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Immunosuppressants",
+        "question": "A patient with chronic granulomatous disease (CGD) is treated with a specific immunotherapy to help manage their condition. Which interferon is specifically indicated for the treatment of this disease?",
+        "options": {
+            "A": "Aldesleukin",
+            "B": "IFN-alpha",
+            "C": "IFN-beta",
+            "D": "IFN-gamma",
+            "E": "TNF-alpha"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Lymph Node & Spleen-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Lymph Node & Spleen",
+        "question": "A 15-year-old male is infected with the Epstein-Barr Virus (EBV), leading to extreme immune activation and generalized lymphadenopathy. A biopsy of an enlarged lymph node would most likely show marked hyperplasia in which specific region, known to contain high endothelial venules and T-cells?",
+        "options": {
+            "A": "Medullary cords",
+            "B": "Primary follicles",
+            "C": "Secondary follicles",
+            "D": "Medullary sinuses",
+            "E": "Paracortex"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Lymph Node & Spleen-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Lymph Node & Spleen",
+        "question": "A patient with Job Syndrome presents with retained baby teeth, coarse facies, dermatological problems, and recurrent abscesses. This condition is characterized by increased IgE and increased fractures. It is directly caused by a mutation in STAT3, which leads to a decrease in which specific cell population?",
+        "options": {
+            "A": "Treg cells",
+            "B": "Th1 cells",
+            "C": "Th2 cells",
+            "D": "Th17 cells",
+            "E": "Cytotoxic T-cells"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Lymph Node & Spleen-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Lymph Node & Spleen",
+        "question": "Regulatory T-cells (Treg) play a crucial role in modulating the immune response and promoting self-tolerance. They attenuate the immune response by secreting specific interleukins and cytokines. Which of the following is secreted by Treg cells for this purpose?",
+        "options": {
+            "A": "IL-17",
+            "B": "IL-21",
+            "C": "IL-22",
+            "D": "IL-10",
+            "E": "IFN-gamma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Lymph Node & Spleen-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Lymph Node & Spleen",
+        "question": "A patient undergoes an emergency splenectomy following abdominal trauma. Because the spleen's red pulp filtration system and macrophages are removed, the patient must receive vaccinations against encapsulated organisms. According to the provided mnemonic, which of the following is considered an encapsulated organism?",
+        "options": {
+            "A": "Staphylococcus aureus",
+            "B": "Streptococcus pyogenes",
+            "C": "Cryptococcus neoformans",
+            "D": "Mycobacterium tuberculosis",
+            "E": "Treponema pallidum"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Lymph Node & Spleen-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Lymph Node & Spleen",
+        "question": "Which region of the lymph node undergoes extreme hyperplasia during viral infections like EBV because it contains T-cells and high endothelial venules?",
+        "options": {
+            "A": "Primary follicle",
+            "B": "Secondary follicle",
+            "C": "Medullary cords",
+            "D": "Medullary sinuses",
+            "E": "Paracortex"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Lymph Node & Spleen-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Lymph Node & Spleen",
+        "question": "Regulatory T-cells (Treg) suppress the immune response to promote self-tolerance. A mutation in which gene causes IPEX syndrome by directly disrupting Treg function?",
+        "options": {
+            "A": "STAT3",
+            "B": "FOXP3",
+            "C": "BTK",
+            "D": "AIRE",
+            "E": "PIGA"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "Macrophages predominate in the late stages of acute inflammation. They are directly derived from which circulating cell type?",
+        "options": {
+            "A": "Eosinophils",
+            "B": "Basophils",
+            "C": "Neutrophils",
+            "D": "Lymphocytes",
+            "E": "Monocytes"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "Granulomatous inflammation is a subtype of chronic inflammation. Which cytokine secreted by Th1 cells is responsible for activating macrophages to form epithelioid cells?",
+        "options": {
+            "A": "IL-12",
+            "B": "IL-10",
+            "C": "IFN-gamma",
+            "D": "TNF-alpha",
+            "E": "TGF-beta"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "Two to three days after an initial acute injury, macrophages dominate the site. If the outcome is successful resolution and healing, which anti-inflammatory cytokines are primarily secreted by the macrophages?",
+        "options": {
+            "A": "IL-8 and TNF-alpha",
+            "B": "IFN-gamma and IL-12",
+            "C": "IL-1 and IL-6",
+            "D": "IL-10 and TGF-beta",
+            "E": "PDGF and FGF"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "A tissue injury is undergoing the repair phase. Macrophages at the site begin secreting fibrogenic and angiogenic factors. Which of the following is specifically an angiogenic factor secreted during this process?",
+        "options": {
+            "A": "IL-10",
+            "B": "VEGF",
+            "C": "CD14",
+            "D": "IFN-gamma",
+            "E": "TNF-alpha"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "An infant develops a disseminated fungal infection. Immunological evaluation reveals that the patient's macrophages are not being activated by T-cells because of a receptor defect. Which receptor is deficient?",
+        "options": {
+            "A": "IL-10 receptor",
+            "B": "TGF-beta receptor",
+            "C": "IL-12 receptor",
+            "D": "TNF-alpha receptor",
+            "E": "CD14"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "A 40-year-old female with sarcoidosis is found to have elevated serum calcium levels. Her hypercalcemia is driven by increased amounts of activated Vitamin D. Which enzyme, produced by macrophages in high concentrations during granulomatous inflammation, is responsible?",
+        "options": {
+            "A": "NADPH oxidase",
+            "B": "1-alpha-hydroxylase",
+            "C": "Phospholipase A2",
+            "D": "Myeloperoxidase",
+            "E": "Cyclooxygenase"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Macrophages & Granuloma-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Macrophages & Granuloma",
+        "question": "A pathologist examining a lung biopsy from a patient with a chronic cough and fever notes a granuloma with a soft, friable \"cheese-like\" central necrosis. Which of the following infections is classically associated with this caseating presentation?",
+        "options": {
+            "A": "Cat Scratch disease",
+            "B": "Beryllium exposure",
+            "C": "Crohn's disease",
+            "D": "Sarcoidosis",
+            "E": "Tuberculosis"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Mediators of Inflammation-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Mediators of Inflammation",
+        "question": "A 15-year-old female presents with recurrent Neisseria infections. Immunologic workup is most likely to reveal a deficiency in which component of the complement system?",
+        "options": {
+            "A": "C1-4",
+            "B": "C3b",
+            "C": "Terminal complement (C5-9)",
+            "D": "C3 convertase",
+            "E": "MAC inhibitor"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Mediators of Inflammation-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Mediators of Inflammation",
+        "question": "A patient experiencing an acute asthmatic reaction develops severe bronchospasm and increased vascular permeability. Which set of arachidonic acid metabolites, produced via the lipoxygenase pathway, mediates these specific symptoms?",
+        "options": {
+            "A": "PGI2, PGD2, PGE2",
+            "B": "LTC4, LTD4, LTE4",
+            "C": "Thromboxane A2",
+            "D": "LTB4 only",
+            "E": "Phospholipase A2"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Mediators of Inflammation-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Mediators of Inflammation",
+        "question": "A 35-year-old male presents with fatigue and episodic dark urine. Testing reveals a defect in the PIGA gene, which prevents the formation of GPI anchors for complement inhibitors. This defect directly leads to which of the following?",
+        "options": {
+            "A": "Impaired neutrophil chemotaxis",
+            "B": "Defective classical pathway activation",
+            "C": "Recurrent pyogenic infections",
+            "D": "Complement mediated RBC lysis",
+            "E": "Mast cell degranulation"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Mediators of Inflammation-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Mediators of Inflammation",
+        "question": "A macrophage encounters a pathogen and its Toll-Like Receptor (TLR) is activated by a Pathogen-Associated Molecular Pattern (PAMP). This activation upregulates a specific nuclear transcription factor that increases the production of immune response genes. What is this transcription factor?",
+        "options": {
+            "A": "CD14",
+            "B": "NF-kB",
+            "C": "C3 convertase",
+            "D": "PIGA",
+            "E": "LTB4"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Mediators of Inflammation-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Mediators of Inflammation",
+        "question": "Which of the following complement proteins functions primarily as an opsonin by binding to LPS on bacteria?",
+        "options": {
+            "A": "C3a",
+            "B": "C5a",
+            "C": "C3b",
+            "D": "C5b",
+            "E": "MAC (C6-9)"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Mediators of Inflammation-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Mediators of Inflammation",
+        "question": "Paroxysmal Nocturnal Hemoglobinuria (PNH) involves a defect in the PIGA gene. This prevents the formation of GPI anchors for which system?",
+        "options": {
+            "A": "Coagulation cascade",
+            "B": "Complement inhibitors",
+            "C": "Toll-like receptors",
+            "D": "Arachidonic acid metabolites",
+            "E": "Kinase cascade"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "A biopsy of a mass reveals poorly differentiated cells that have invaded local adjacent tissues. The pathologist notes that these cells exhibit a marked decrease in programmed cell death. Which genetic mutation best explains this specific resistance to cell death according to the TEASE GRAID hallmarks of cancer?",
+        "options": {
+            "A": "Decreased E-Cadherin function",
+            "B": "Increased telomerase expression",
+            "C": "Mutation in TP53 or BCL2",
+            "D": "Decreased MHC1 expression",
+            "E": "Increased pro-angiogenic factors"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "Tumor cells uniquely alter their cellular energetics to support rapid growth, a phenomenon known as the Warburg effect. This dysregulation primarily involves shifting glucose metabolism towards which of the following pathways?",
+        "options": {
+            "A": "Oxidative phosphorylation",
+            "B": "Gluconeogenesis",
+            "C": "Glycolysis",
+            "D": "Beta-oxidation",
+            "E": "Pentose phosphate pathway"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "A public health researcher is reviewing the epidemiology of cancer in adults. According to incidence statistics, which type of cancer is the most frequently diagnosed in adult females?",
+        "options": {
+            "A": "Lung cancer",
+            "B": "Colon/rectum cancer",
+            "C": "Breast cancer",
+            "D": "Melanoma",
+            "E": "Squamous cell carcinoma"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "A pediatric patient is diagnosed with a benign tumor. Pathological examination reveals the cellular origin of the tumor to be myocytes. What is the specific diagnosis based on this cellular origin?",
+        "options": {
+            "A": "Hemangioma",
+            "B": "Osteoma",
+            "C": "Adenoma",
+            "D": "Rhabdomyoma",
+            "E": "Fibroma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "An oncologist is evaluating a patient's tumor staging and grading. The pathology report notes that the tumor cells are poorly differentiated. According to the principles of tumor grading, what does this microscopic finding indicate regarding the patient's prognosis?",
+        "options": {
+            "A": "Better prognosis because the cells are localized",
+            "B": "Worse prognosis because the cells are dissimilar to the original tissue",
+            "C": "Excellent prognosis due to a low grade",
+            "D": "Indeterminate prognosis dependent entirely on metastasis",
+            "E": "Better prognosis due to slow growth"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "A 50-year-old male is diagnosed with Hepatocellular carcinoma. While most carcinomas spread via the lymphatic system, this specific cancer is a known exception. By which route does Hepatocellular carcinoma primarily spread?",
+        "options": {
+            "A": "Lymphatically",
+            "B": "Perineural invasion",
+            "C": "Hematogenously",
+            "D": "Transcoelomic seeding",
+            "E": "Direct contiguous extension"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "A 65-year-old male with a history of prostate cancer complains of severe, deep pain in his femur. Imaging confirms the presence of bone metastases. Based on common metastatic pathways (\"Painful Breasts Kill The Long Bones\"), which of the following primary tumors is also highly likely to metastasize to the bone?",
+        "options": {
+            "A": "Colon",
+            "B": "Stomach",
+            "C": "Kidney",
+            "D": "Melanoma",
+            "E": "Pancreas"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-008",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "A cervical biopsy reveals cellular pleomorphism and an increased nuclear-to-cytoplasmic ratio. However, the basement membrane remains completely intact and the dysplasia is deemed irreversible. Which stage of neoplastic progression does this represent?",
+        "options": {
+            "A": "Normal cells",
+            "B": "Reversible dysplasia",
+            "C": "Carcinoma in situ",
+            "D": "Invasive carcinoma",
+            "E": "Metastatic carcinoma"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-009",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "Benign neoplasms are well-differentiated tumors that remain localized. Which of the following is the correct term for a benign tumor of melanocytic origin?",
+        "options": {
+            "A": "Fibroma",
+            "B": "Adenoma",
+            "C": "Nevus",
+            "D": "Melanoma",
+            "E": "Rhabdomyoma"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neoplasms-010",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neoplasms",
+        "question": "The single most important prognostic factor in tumor staging is determined by which component of the TNM system?",
+        "options": {
+            "A": "Tumor size (T)",
+            "B": "Regional lymph node involvement (N)",
+            "C": "Distant metastasis (M)",
+            "D": "Tumor grading",
+            "E": "Microscopic differentiation"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neutrophil Arrival & Function-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neutrophil Arrival & Function",
+        "question": "An infant's umbilical cord separates unusually late. The infant suffers from recurrent bacterial skin infections, but the lesions completely lack pus. Blood tests show a high concentration of dysfunctional neutrophils. This presentation is characteristic of an autosomal recessive defect in which molecule?",
+        "options": {
+            "A": "CD18 integrin",
+            "B": "Sialyl-Lewis X",
+            "C": "E-selectin",
+            "D": "PECAM-1",
+            "E": "Von-Willebrand factor"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neutrophil Arrival & Function-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neutrophil Arrival & Function",
+        "question": "During acute inflammation, a neutrophil successfully adheres to the blood vessel wall and begins to migrate across the endothelial barrier into the tissue. This transmigration specifically requires which of the following cell adhesion molecules?",
+        "options": {
+            "A": "ICAM-1",
+            "B": "VCAM-1",
+            "C": "PECAM-1",
+            "D": "P-selectin",
+            "E": "LTB4"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neutrophil Arrival & Function-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neutrophil Arrival & Function",
+        "question": "A young child presents with albinism, a history of frequent infections, and recurrent hemorrhage. Microscopic examination of cells shows a failure in phagolysosome formation due to a microtubule dysfunction caused by a defect in the LYST gene. What is the diagnosis?",
+        "options": {
+            "A": "Leukocyte Adhesion Deficiency",
+            "B": "Autoimmune Lymphoproliferative Syndrome",
+            "C": "Chediak Higashi Syndrome",
+            "D": "Chronic Granulomatous Disease",
+            "E": "Paroxysmal Nocturnal Hemoglobinuria"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neutrophil Arrival & Function-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neutrophil Arrival & Function",
+        "question": "During the initial rolling phase of leukocyte extravasation, cytokines such as TNF-a and IL-1 induce the expression of a specific selectin on the endothelium to act as a \"speed bump\". Which molecule is induced by these cytokines?",
+        "options": {
+            "A": "P-selectin",
+            "B": "Integrin",
+            "C": "PECAM-1",
+            "D": "E-selectin",
+            "E": "Sialyl-Lewis X"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neutrophil Arrival & Function-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neutrophil Arrival & Function",
+        "question": "During leukocyte extravasation, which molecule explicitly facilitates the transmigration of neutrophils across the endothelial barrier?",
+        "options": {
+            "A": "P-selectin",
+            "B": "E-selectin",
+            "C": "ICAM-1",
+            "D": "PECAM-1",
+            "E": "Sialyl-Lewis X"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Neutrophil Arrival & Function-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Neutrophil Arrival & Function",
+        "question": "Chediak Higashi Syndrome is characterized by a defect in the LYST gene leading to microtubule dysfunction. This primarily impairs which phase of neutrophil function?",
+        "options": {
+            "A": "Margination",
+            "B": "Rolling",
+            "C": "Transmigration",
+            "D": "Phagolysosome formation",
+            "E": "Oxidative burst"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Tumor Suppressors-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Tumor Suppressors & Oncogenes",
+        "question": "A gain of function mutation in the BCR-ABL signal transducer is classically associated with which type of malignancy?",
+        "options": {
+            "A": "Retinoblastoma",
+            "B": "Melanoma",
+            "C": "Chronic Myeloid Leukemia",
+            "D": "Gastrointestinal stromal tumor",
+            "E": "Small lung cell cancer"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "Dystrophic calcification occurs in dead and diseased tissues. Which of the following accurately describes the serum calcium levels in this process?",
+        "options": {
+            "A": "Markedly elevated",
+            "B": "Normal",
+            "C": "Slightly elevated",
+            "D": "Markedly decreased",
+            "E": "Variable dependent on diet"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "Type 2 Diabetes is associated with localized amyloidosis in the pancreas. Which specific fibrin protein is deposited?",
+        "options": {
+            "A": "Calcitonin",
+            "B": "B-amyloid proteins",
+            "C": "Transthyretin",
+            "D": "Atrial Natriuretic Peptide",
+            "E": "Islet amyloid polypeptide"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "A 40-year-old female undergoes a mammogram which reveals localized calcifications in an area of diseased/necrotic breast tissue. Her serum calcium levels are completely normal. Which type of calcification is this?",
+        "options": {
+            "A": "Metastatic calcification",
+            "B": "Systemic calcification",
+            "C": "Primary calcification",
+            "D": "Dystrophic calcification",
+            "E": "Secondary calcification"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "A patient with abnormal serum calcium levels develops diffuse calcium deposition in normal tissues. Based on the provided associated conditions mnemonic \"MG STOP\", which of the following is associated with this type of calcification?",
+        "options": {
+            "A": "Osteosarcoma",
+            "B": "Prolactinoma",
+            "C": "Angiosarcoma",
+            "D": "Acute myeloid leukemia",
+            "E": "Hepatocellular carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "A 65-year-old male with multiple myeloma develops organ dysfunction. Biopsy of the affected tissue stained with Congo red shows apple-green birefringence. These deposits are primarily composed of which misfolded protein?",
+        "options": {
+            "A": "AL amyloids (light chains)",
+            "B": "AA amyloids",
+            "C": "Calcitonin",
+            "D": "B-amyloid proteins",
+            "E": "Transthyretin"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-006",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "An elderly patient with a long history of Type 2 Diabetes is found to have amyloid deposits localized entirely within the pancreas. What is the specific fibrin protein deposited in this condition?",
+        "options": {
+            "A": "B-amyloid proteins",
+            "B": "Atrial Natriuretic Peptide",
+            "C": "Islet amyloid polypeptide",
+            "D": "Transthyretin",
+            "E": "Calcitonin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Radiation, Calcification & Amyloidosis-007",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Radiation, Calcification & Amyloidosis",
+        "question": "A 55-year-old male with chronic kidney failure has been on long-term dialysis. He begins to experience joint pain and neuropathy. This is likely due to localized amyloidosis via the deposition of which protein?",
+        "options": {
+            "A": "AA Amyloids",
+            "B": "B2-microglobulin",
+            "C": "Calcitonin",
+            "D": "Transthyretin",
+            "E": "Islet amyloid polypeptide"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Thymus & Pathologies-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Thymus & Pathologies",
+        "question": "During T-cell maturation in the thymus, double-positive (CD4+/CD8+) T-cells must demonstrate they can bind self-MHC to survive. In which specific anatomical region of the thymus does this positive selection occur?",
+        "options": {
+            "A": "Medulla",
+            "B": "Hassan's corpuscles",
+            "C": "Cortex",
+            "D": "Paracortex",
+            "E": "Third pharyngeal pouch"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Thymus & Pathologies-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Thymus & Pathologies",
+        "question": "A neonate presents with tetralogy of Fallot, abnormal facies, and a cleft palate. A chest X-ray shows an absent sail sign. Laboratory tests reveal hypocalcemia and an absolute decreased T-cell count. The atypical development of which embryological structure is responsible for this patient's syndrome?",
+        "options": {
+            "A": "1st and 2nd pharyngeal pouches",
+            "B": "2nd and 3rd pharyngeal pouches",
+            "C": "3rd and 4th pharyngeal pouches",
+            "D": "4th and 5th pharyngeal pouches",
+            "E": "Hassan's corpuscles"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Thymus & Pathologies-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Thymus & Pathologies",
+        "question": "A young child with severe recurrent bacterial, fungal, and viral infections is found to have Severe Combined Immunodeficiency (SCID). Genetic analysis reveals a defect that leads to the toxic buildup of a specific metabolite within lymphocytes. The deficiency of which enzyme is causing this presentation?",
+        "options": {
+            "A": "Tyrosine kinase (BTK)",
+            "B": "Adenosine Deaminase (ADA)",
+            "C": "IL-2 receptor gamma chain",
+            "D": "AIRE",
+            "E": "FoxP3"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Thymus & Pathologies-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Thymus & Pathologies",
+        "question": "The thymus arises embryologically from which of the following structures?",
+        "options": {
+            "A": "1st pharyngeal pouch",
+            "B": "2nd pharyngeal pouch",
+            "C": "3rd pharyngeal pouch",
+            "D": "4th pharyngeal pouch",
+            "E": "5th pharyngeal pouch"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Thymus & Pathologies-005",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Thymus & Pathologies",
+        "question": "In Autoimmune Polyendocrine Syndrome 1, a mutation in the AIRE gene leads to an inability to eliminate self-reactive T-cells. This failure occurs during which specific thymic process?",
+        "options": {
+            "A": "Positive selection",
+            "B": "Cortical maturation",
+            "C": "Negative selection",
+            "D": "Progenitor production",
+            "E": "Thymic involution"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transfusion Reactions-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transfusion Reactions",
+        "question": "During a blood transfusion, a patient suddenly develops a fever, chills, hemoglobinuria, and signs of disseminated intravascular coagulation (DIC). This reaction occurs within the first 24 hours and is typically caused by ABO incompatibility. What is the underlying immunological mechanism of this acute reaction?",
+        "options": {
+            "A": "Type 1 Hypersensitivity",
+            "B": "Type 2 Hypersensitivity causing intravascular hemolysis",
+            "C": "Type 3 Hypersensitivity",
+            "D": "Preformed cytokines produced by WBCs in donor blood",
+            "E": "Donor antileukocyte antibodies activating host neutrophils"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transfusion Reactions-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transfusion Reactions",
+        "question": "A pediatric patient receives a packed red blood cell transfusion and develops a fever and chills 3 hours later. The reaction is determined to be a Febrile Non-Hemolytic Transfusion Reaction. How could instances of this specific reaction best be reduced?",
+        "options": {
+            "A": "Administering epinephrine prior to transfusion",
+            "B": "Using strictly Rh-compatible blood",
+            "C": "Washing the red blood cells to remove IgA",
+            "D": "Using leukoreduced blood products",
+            "E": "Irradiating the blood products"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transfusion Reactions-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transfusion Reactions",
+        "question": "A patient receives a blood transfusion and rapidly develops bilateral pulmonary edema and hypotension. A chest X-ray shows interstitial infiltrates. The physician diagnoses Transfusion Related Lung Injury (TRALI). What is the primary two-hit mechanism responsible for TRALI?",
+        "options": {
+            "A": "Mast cell allergy to donor IgA and systemic histamine release",
+            "B": "Rh incompatibility and extravascular hemolysis",
+            "C": "Neutrophil aggregation in lungs and activation by donor antileukocyte antibodies",
+            "D": "ABO incompatibility and complement activation",
+            "E": "Preformed cytokines from donor WBCs and host T-cell proliferation"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transfusion Reactions-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transfusion Reactions",
+        "question": "Febrile non-hemolytic transfusion reactions occur within 1-6 hours. They are primarily caused by which of the following mechanisms?",
+        "options": {
+            "A": "ABO incompatibility",
+            "B": "Preformed antibodies in the host",
+            "C": "Preformed cytokines from donor WBCs",
+            "D": "IgA allergy",
+            "E": "Donor antileukocyte antibodies"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transplant Rejection-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transplant Rejection",
+        "question": "A patient receives a kidney transplant. Within minutes, the graft becomes cyanotic and mottled. A biopsy shows thrombi forming in the graft vessels and ischemia leading to fibrinoid necrosis. This reaction is mediated by preformed antibodies reacting to donor tissue. What is the definitive treatment for this specific type of rejection?",
+        "options": {
+            "A": "Administer high-dose immunosuppressants",
+            "B": "Wait for the reaction to self-limit",
+            "C": "Remove the graft",
+            "D": "Administer anti-histamines",
+            "E": "Transfuse irradiated blood"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transplant Rejection-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transplant Rejection",
+        "question": "Six months after receiving a liver transplant, a patient develops signs of organ dysfunction. A biopsy suggests Vanishing Bile Duct Syndrome. This chronic rejection process is characterized by which of the following pathological sequences?",
+        "options": {
+            "A": "Preformed antibodies causing immediate thrombosis",
+            "B": "Smooth muscle proliferation leading to tissue atrophy",
+            "C": "CD8+ cells responding directly to MHCs causing acute necrosis",
+            "D": "Donor T-cells reacting against the host",
+            "E": "Mast cell degranulation in the graft vessels"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Transplant Rejection-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Transplant Rejection",
+        "question": "Acute transplant rejection occurs weeks to months after the procedure. The cellular response in acute rejection is an example of which type of hypersensitivity?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": "Arthus reaction"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Tumor Suppressors-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Tumor Suppressors & Oncogenes",
+        "question": "The RB gene is a cell-checkpoint tumor suppressor. The normal RB protein prevents progression to the S-phase by blocking which transcription factor?",
+        "options": {
+            "A": "E2F",
+            "B": "p53",
+            "C": "beta-catenin",
+            "D": "NF-kB",
+            "E": "BRCA1"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Tumor Suppressors-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Tumor Suppressors & Oncogenes",
+        "question": "A 4-year-old child is diagnosed with Retinoblastoma. Genetic analysis reveals an inherited autosomal dominant mutation in the RB gene on Chromosome 13. How does the normal, unmutated RB protein function to suppress tumor growth?",
+        "options": {
+            "A": "It inhibits the Wnt/B-catenin pathway",
+            "B": "It codes for P16 to block the cell cycle",
+            "C": "It prevents the E2F transcription factor from progressing the cell from G1 to S phase",
+            "D": "It acts as a signal transducer in the RAS pathway",
+            "E": "It suppresses the production of growth factor receptors like HER-2"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Tumor Suppressors-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Tumor Suppressors & Oncogenes",
+        "question": "A 35-year-old female with a strong family history of cancer is diagnosed with breast cancer. Genetic testing reveals a germline mutation in the TP53 gene, confirming a diagnosis of Li-Fraumeni syndrome. In addition to breast cancer, patients with this SBLA syndrome are at high risk for which of the following malignancies?",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "Mantle cell lymphoma",
+            "C": "Astrocytoma",
+            "D": "Adrenal gland tumors",
+            "E": "Retinoblastoma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Tumor Suppressors-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Tumor Suppressors & Oncogenes",
+        "question": "A patient is diagnosed with Medullary Thyroid Cancer. Genetic analysis identifies a gain-of-function mutation in an oncogene that codes for a growth factor receptor. Which of the following oncogenes is most likely mutated in this patient?",
+        "options": {
+            "A": "HER-2",
+            "B": "RET",
+            "C": "KIT",
+            "D": "L-MYC",
+            "E": "BCR-ABL"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Vaccine Types-001",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Vaccine Types",
+        "question": "A 28-year-old pregnant female is being evaluated for routine immunizations. According to the properties of different vaccine types, which of the following vaccines is absolutely contraindicated in her condition because it could potentially become virulent?",
+        "options": {
+            "A": "Classic Influenza vaccine",
+            "B": "Intranasal Influenza vaccine",
+            "C": "Hepatitis A vaccine",
+            "D": "Rabies vaccine",
+            "E": "Hepatitis B vaccine"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Vaccine Types-002",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Vaccine Types",
+        "question": "A premature infant is scheduled to receive the Hepatitis B Virus (HBV) vaccine, which is a subunit vaccine. What is the correct protocol regarding the dosing of this vaccine for a premature infant?",
+        "options": {
+            "A": "Vaccination is delayed until chronological age matches a full-term infant",
+            "B": "Dosage is significantly reduced based on the infant's weight",
+            "C": "Dosage is calculated based strictly on the infant's height and weight percentiles",
+            "D": "The infant is vaccinated based on chronological age; weight and height do not factor into dosage",
+            "E": "Subunit vaccines are contraindicated in premature infants"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Vaccine Types-003",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Vaccine Types",
+        "question": "A patient traveling to an endemic area receives a vaccine that strictly provides a humoral response. It does not provide a cellular response, requires booster shots, and is considered safer than live vaccines. Based on the RIP ACE mnemonic, which of the following is an example of this type of vaccine?",
+        "options": {
+            "A": "Yellow Fever",
+            "B": "Rabies",
+            "C": "Epidemic typhus",
+            "D": "Diphtheria",
+            "E": "Hepatitis B Virus (HBV)"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
+    },
+    {
+        "id": "FA-Patho & Immuno-Vaccine Types-004",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "Pathology & Immunology",
+        "topic": "Vaccine Types",
+        "question": "Which of the following vaccines provides both a humoral and cellular response and is contraindicated in pregnant patients?",
+        "options": {
+            "A": "Rabies",
+            "B": "Hepatitis B",
+            "C": "Influenza (classic)",
+            "D": "Yellow Fever",
+            "E": "Diphtheria toxoid"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "firstaid_step1"
     }
 ]
