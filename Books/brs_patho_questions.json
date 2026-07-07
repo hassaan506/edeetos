@@ -3760,6 +3760,66 @@
         "bookName": "brs_patho"
     },
     {
+        "id": "BRS-P-404",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "IMMUNOLOGY",
+        "topic": "",
+        "question": "Which of the following acts as an opsonin?",
+        "options": {
+            "A": "IgG",
+            "B": "IgM",
+            "C": "C5a",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-405",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "IMMUNOLOGY",
+        "topic": "",
+        "question": "Which immunoglobulin is produced first during a primary immune response?",
+        "options": {
+            "A": "IgG",
+            "B": "IgA",
+            "C": "IgM",
+            "D": "IgE",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-406",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "IMMUNOLOGY",
+        "topic": "",
+        "question": "Which immunoglobulin is secreted in saliva to prevent organism adherence?",
+        "options": {
+            "A": "IgA",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
         "id": "BRS-P-189",
         "year": "Other Years",
         "exams": [],
@@ -4150,6 +4210,146 @@
         "options": {
             "A": "Gardnerella vaginalis",
             "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-389",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "HPV-16 inhibits the Rb tumor suppressor protein through which viral protein?",
+        "options": {
+            "A": "E7 protein",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-403",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "Viruses damage host cells primarily by:",
+        "options": {
+            "A": "Mitochondrial damage",
+            "B": "Nuclear membrane damage",
+            "C": "Altering protein synthesis",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-408",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "Diabetic patient with oral thrush and esophagitis is most likely infected with:",
+        "options": {
+            "A": "Candida",
+            "B": "Candida albicans",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-409",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "What is a special defining feature of Clostridium species?",
+        "options": {
+            "A": "Facultative anaerobe",
+            "B": "Spore-forming bacteria",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-410",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "A child with a history of honey ingestion develops paralysis. Organism?",
+        "options": {
+            "A": "C. botulinum",
+            "B": "C. difficile",
+            "C": "C. perfringens",
+            "D": "C. tetani",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-411",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "Which stage of the malaria parasite is taken up from a human by a mosquito?",
+        "options": {
+            "A": "Sporozoite",
+            "B": "Merozoite",
+            "C": "Gametocyte",
+            "D": "Trophozoite",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-414",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "MICROBIOLOGY",
+        "topic": "",
+        "question": "Epstein-Barr Virus (EBV) is most commonly associated with:",
+        "options": {
+            "A": "Infectious mononucleosis",
+            "B": "Burkitt lymphoma",
             "C": "",
             "D": "",
             "E": ""
@@ -4700,6 +4900,26 @@
         "bookName": "brs_patho"
     },
     {
+        "id": "BRS-P-398",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "NEUROLOGY",
+        "topic": "",
+        "question": "Horner syndrome presenting with ptosis and facial anhidrosis (without anhidrosis of the arm) indicates a lesion in which neuron?",
+        "options": {
+            "A": "Second-order (preganglionic) neuron",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
         "id": "BRS-P-236",
         "year": "Other Years",
         "exams": [],
@@ -4749,6 +4969,106 @@
         "question": "What is the primary function of the retinal pigment epithelium?",
         "options": {
             "A": "Absorbs scattered light and phagocytoses photoreceptor outer segments",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-390",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "OPHTHALMOLOGY",
+        "topic": "",
+        "question": "Kayser-Fleischer rings in Wilson disease are best detected by:",
+        "options": {
+            "A": "Slit-lamp examination",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-392",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "OPHTHALMOLOGY",
+        "topic": "",
+        "question": "What is the classic ocular manifestation of Neurofibromatosis type 1 (NF-1)?",
+        "options": {
+            "A": "Lisch nodules",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-395",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "OPHTHALMOLOGY",
+        "topic": "",
+        "question": "Which muscle is responsible for pupil constriction?",
+        "options": {
+            "A": "Sphincter pupillae",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-396",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "OPHTHALMOLOGY",
+        "topic": "",
+        "question": "What is the most common complication following pterygium surgery?",
+        "options": {
+            "A": "Recurrence",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-397",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "OPHTHALMOLOGY",
+        "topic": "",
+        "question": "A patient with Rheumatoid Arthritis presents with a painful red eye. Most likely diagnosis?",
+        "options": {
+            "A": "Scleritis",
             "B": "",
             "C": "",
             "D": "",
@@ -5631,6 +5951,26 @@
             "A": "p53 / Rb / APC",
             "B": "",
             "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-407",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PATHOLOGY",
+        "topic": "",
+        "question": "In IgA nephropathy, which cell clears immune complexes? (Variant)",
+        "options": {
+            "A": "Macrophage",
+            "B": "Monocyte",
+            "C": "Killer cell",
             "D": "",
             "E": ""
         },
@@ -6680,6 +7020,166 @@
         "bookName": "brs_patho"
     },
     {
+        "id": "BRS-P-400",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "What is the reversal agent for benzodiazepine overdose?",
+        "options": {
+            "A": "Flumazenil",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-401",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "Drug of choice for hypertension in a diabetic patient:",
+        "options": {
+            "A": "Beta blocker",
+            "B": "ACE inhibitor",
+            "C": "Calcium channel blocker",
+            "D": "Diuretic",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-402",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "A patient with a bone fracture is given an opioid. Which is a partial \u03bc-opioid agonist?",
+        "options": {
+            "A": "Buprenorphine",
+            "B": "Morphine",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-412",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "A patient has repeated relapses of malaria. What is the next treatment to eradicate liver hypnozoites?",
+        "options": {
+            "A": "Artemether",
+            "B": "TMP-SMX",
+            "C": "Primaquine",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-415",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "Patient allergic to penicillin needs a systemic antibiotic. Which should be given?",
+        "options": {
+            "A": "Ampicillin",
+            "B": "Ceftriaxone",
+            "C": "Vancomycin",
+            "D": "Amoxicillin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-416",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "Patient develops rash/urticaria after taking an anti-parasitic drug (Mazzotti reaction). Which drug was most likely given?",
+        "options": {
+            "A": "Albendazole",
+            "B": "Praziquantel",
+            "C": "Pyrantel pamoate",
+            "D": "Ivermectin",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-417",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "Reversal agent for non-depolarizing neuromuscular blockers is:",
+        "options": {
+            "A": "Naloxone",
+            "B": "Neostigmine",
+            "C": "Flumazenil",
+            "D": "Atropine",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-418",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHARMACOLOGY",
+        "topic": "",
+        "question": "Antidote for opioid overdose is:",
+        "options": {
+            "A": "Atropine",
+            "B": "Naloxone",
+            "C": "Neostigmine",
+            "D": "Flumazenil",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
         "id": "BRS-P-335",
         "year": "Other Years",
         "exams": [],
@@ -7320,6 +7820,66 @@
         "bookName": "brs_patho"
     },
     {
+        "id": "BRS-P-391",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHYSIOLOGY",
+        "topic": "",
+        "question": "Calculate Expiratory Reserve Volume (ERV) if Functional Residual Capacity (FRC) is 3500 mL and Residual Volume (RV) is 1000 mL.",
+        "options": {
+            "A": "2500 mL",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-393",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHYSIOLOGY",
+        "topic": "",
+        "question": "Which neurotransmitter is responsible for skeletal muscle contraction at the neuromuscular junction?",
+        "options": {
+            "A": "Acetylcholine",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-394",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "PHYSIOLOGY",
+        "topic": "",
+        "question": "SA node pacemaker activity is primarily due to:",
+        "options": {
+            "A": "Funny Na+ current and Ca2+ influx",
+            "B": "",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
         "id": "BRS-P-367",
         "year": "Other Years",
         "exams": [],
@@ -7495,6 +8055,46 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-399",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "RADIOLOGY",
+        "topic": "",
+        "question": "Gold standard imaging for spinal cord lesions is:",
+        "options": {
+            "A": "X-ray",
+            "B": "CT Scan",
+            "C": "MRI",
+            "D": "Ultrasound",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "isBookQuestion": true,
+        "bookName": "brs_patho"
+    },
+    {
+        "id": "BRS-P-413",
+        "year": "Other Years",
+        "exams": [],
+        "subject": "",
+        "chapter": "RADIOLOGY",
+        "topic": "",
+        "question": "Ureteric stone confirmed on ultrasound. Next best investigation?",
+        "options": {
+            "A": "X-ray",
+            "B": "Repeat ultrasound",
+            "C": "MRI",
+            "D": "Non-contrast CT",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "isBookQuestion": true,
         "bookName": "brs_patho"
