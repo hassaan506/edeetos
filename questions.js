@@ -8,7 +8,7 @@ import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, ge
 let subjectTree = {};
 let systemTree = {};
 let examTree = {};
-let allQuestions = []; // The final pool used by the UI
+let allQuestions = []; 
 let currentView = "subject";
 let currentMode = "practice";
 let selectedCart = new Set();
@@ -22,7 +22,11 @@ let globalBookmarks = [];
 let activeCustomPool = null;
 let isPremiumUser = false;
 let currentUserRole = "STUDENT";
+let currentUserData = null; // Stored globally for access checks
 let isGlobalPopupActive = false;
+
+// Performance Optimization: Cache books so they only download once when clicked!
+const loadedBooksCache = {}; 
 
 // ==========================================
 // 2. DOM ELEMENTS
@@ -52,7 +56,8 @@ const allBooks = [
     { file: "im_medicine", title: "Irfan Masood - Medicine" },
     { file: "im_surgery", title: "Irfan Masood - Surgery" },
     { file: "brs_patho", title: "BRS - Pathology" },
-    { file: "brs_physio", title: "BRS - Physiology" }
+    { file: "brs_physio", title: "BRS - Physiology" },
+    { file: "doubleAA", title: "Double AA" }
 ];
 const availableBooks = allBooks.filter(book => {
     if (book.file === "rafiullah") {
@@ -125,7 +130,11 @@ document.addEventListener('click', (e) => {
     }
 });
 
-unattemptedFilter.addEventListener('change', renderGrid);
+unattemptedFilter.addEventListener('change', () => {
+    if (currentView === 'book') renderBooksGrid();
+    else renderGrid();
+});
+
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
@@ -144,28 +153,29 @@ if (examTimerInput) {
     });
 }
 
+// THE UNIFIED CART LAUNCHER
 document.getElementById('start-exam-btn').addEventListener('click', () => {
     const paths = Array.from(selectedCart).map(str => JSON.parse(str));
-    let examPool = allQuestions.filter(q => {
+    let pool = (activeCustomPool || allQuestions).filter(q => {
         return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
     });
 
     const qCountInput = parseInt(document.getElementById('exam-q-count').value);
     const timerInput = parseInt(document.getElementById('exam-timer').value);
 
-    if (!timerInput || timerInput <= 0 || isNaN(timerInput)) {
-        alert("Please enter a valid time in minutes.");
+    if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
+        alert("Please enter a valid time in minutes for Exam Mode.");
         return;
     }
 
-    if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) {
-        examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+    if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
+        pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
     } else {
-        examPool = examPool.sort(() => 0.5 - Math.random());
+        pool = pool.sort(() => 0.5 - Math.random());
     }
+    
     const generatedTitle = generateExamTitle(paths, currentView);
-
-    window.launchQuiz(examPool, 'exam', timerInput, generatedTitle);
+    window.launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
 });
 
 // ==========================================
@@ -337,7 +347,7 @@ setTimeout(() => {
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
-document.getElementById('nav-book').onclick = () => changeView('book', 'Books');
+document.getElementById('nav-book').onclick = () => changeView('book', 'Books Library');
 document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
 document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 sidebarOverlay.onclick = () => toggleSidebar(false);
@@ -353,7 +363,6 @@ popupClose.onclick = () => {
     popupOverlay.style.display = 'none'; 
     activeCustomPool = null; 
     isGlobalPopupActive = false; 
-    // Clear the saved state so it doesn't auto-open next time
     localStorage.removeItem('edeetos_saved_popup_path'); 
     localStorage.removeItem('edeetos_saved_popup_title');
 };
@@ -364,7 +373,6 @@ popupOverlay.onclick = (e) => {
         popupOverlay.style.display = 'none'; 
         activeCustomPool = null; 
         isGlobalPopupActive = false; 
-        // Clear the saved state here too
         localStorage.removeItem('edeetos_saved_popup_path');
         localStorage.removeItem('edeetos_saved_popup_title');
     } 
@@ -373,6 +381,16 @@ popupOverlay.onclick = (e) => {
 // ==========================================
 // 4. CORE FUNCTIONS
 // ==========================================
+
+function checkPremiumAccess(itemKey) {
+    if (currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') return true;
+    if (!currentUserData || !currentUserData.subscriptions) return false;
+    
+    const expiry = currentUserData.subscriptions[itemKey] || currentUserData.subscriptions['ALL'];
+    if (!expiry) return false;
+    if (expiry === 'lifetime') return true;
+    return new Date(expiry) > new Date();
+}
 
 function toggleSidebar(show) {
     if (show) {
@@ -406,66 +424,77 @@ function changeView(viewName, titleText) {
     searchDropdown.style.display = 'none';
 
     if (viewName === 'book') {
-        if (subjectsGrid) subjectsGrid.innerHTML = ''; 
-        openBookSelectionPopup();    
+        renderBooksGrid();    
     } else {
         renderGrid();
     }
 }
 
-function openBookSelectionPopup() {
-    popupHistory = []; 
-    popupTitle.textContent = "Select a Book";
-    popupList.innerHTML = '';
-    popupOverlay.style.display = 'flex';
-    popupBack.style.display = 'none';
+// NEW: Renders the available books properly on the grid with premium locks
+function renderBooksGrid() {
+    if (!subjectsGrid) return;
+    subjectsGrid.innerHTML = '';
 
     availableBooks.forEach(book => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'list-item';
-        itemDiv.innerHTML = `
-            <div style="flex-grow: 1; font-weight: bold; color: #1e3a8a;">
-                ${book.title}
+        const isUnlocked = checkPremiumAccess(book.file);
+        
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.style.cursor = isUnlocked ? 'pointer' : 'not-allowed';
+        card.style.opacity = isUnlocked ? '1' : '0.6';
+        
+        card.innerHTML = `
+            <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 10px;">
+                <h3 class="card-title" style="color: #1e3a8a;">${book.title}</h3>
+                ${isUnlocked ? '<i class="fas fa-book-open" style="color: #10b981; font-size: 1.2rem;"></i>' : '<i class="fas fa-lock" style="color: #ef4444; font-size: 1.2rem;"></i>'}
             </div>
-            <button class="btn-solid mini-btn">Open ➡</button>
+            <div style="font-size: 0.8rem; font-weight: bold; color: ${isUnlocked ? '#059669' : '#b91c1c'};">
+                ${isUnlocked ? '✅ Access Granted' : '🔒 Premium Subscription Required'}
+            </div>
         `;
         
-        itemDiv.querySelector('button').onclick = () => {
-            popupOverlay.style.display = 'none'; 
-            loadAndRenderBookChapters(book);     
+        card.onclick = () => {
+            if (isUnlocked) {
+                loadAndOpenBook(book);
+            } else {
+                alert(`You do not have premium access to ${book.title}. Please visit the Dashboard to unlock it.`);
+            }
         };
         
-        popupList.appendChild(itemDiv);
+        subjectsGrid.appendChild(card);
     });
 }
 
-async function loadAndRenderBookChapters(book) {
+// NEW: Lazy-loads books only when the user clicks them, making the site insanely fast.
+async function loadAndOpenBook(book) {
     try {
         document.body.style.cursor = 'wait';
-        if (viewTitle) viewTitle.textContent = book.title;
-
-        const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
-        if (!response.ok) throw new Error("JSON file not found");
         
-        let bookQuestions = await response.json();
+        if (!loadedBooksCache[book.file]) {
+            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
+            if (!response.ok) throw new Error("JSON file not found");
+            
+            let bookQuestions = await response.json();
+            bookQuestions.forEach(q => {
+                q.QuestionID = q.id;
+                q.Subject = book.title;
+                q.Chapter = q.chapter;
+                q.Topic = q.topic;
+                q.Exam = q.exams;
+                q.Year = q.year;
+                q.isBookQuestion = true;
+                q.bookName = book.file;
+            });
+            
+            loadedBooksCache[book.file] = bookQuestions;
+            
+            // Add to the global pool so Unattempted logic works while in this book!
+            allQuestions = allQuestions.filter(q => q.bookName !== book.file);
+            allQuestions.push(...bookQuestions);
+        }
 
-        bookQuestions.forEach(q => {
-            q.QuestionID = q.id;
-            q.Subject = book.title;
-            q.Chapter = q.chapter;
-            q.Topic = q.topic;
-            q.Exam = q.exams;
-            q.Year = q.year;
-            q.isBookQuestion = true;
-            q.bookName = book.file;
-        });
-
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            bookQuestions = applyTierLimits(bookQuestions, 20);
-        } else if (!isPremiumUser) {
-            bookQuestions = applyTierLimits(bookQuestions, 50);
-        }		
-
+        let bookQuestions = loadedBooksCache[book.file];
+        
         let tempBookTree = {};
         bookQuestions.forEach(q => {
             if (q.Chapter) {
@@ -475,42 +504,18 @@ async function loadAndRenderBookChapters(book) {
         });
 
         activeCustomPool = bookQuestions;
-        
-        if (!subjectsGrid) return;
-        subjectsGrid.innerHTML = '';
-
-        Object.keys(tempBookTree).forEach(chapterName => {
-            const qCount = getQuestionCount('book', [chapterName]);
-            const doneCount = getSolvedCount('book', [chapterName]);
-            const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-
-            const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
-            const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
-
-            const card = document.createElement('div');
-            card.className = 'glass-panel feature-card';
-            card.style.cursor = 'pointer';
-            card.innerHTML = `
-                <div class="card-header-flex">
-                    <h3 class="card-title">${chapterName}</h3>
-                    ${countHtml}
-                </div>
-                ${progressHtml}
-            `;
-            
-            card.onclick = () => openPopup(chapterName, tempBookTree[chapterName], 'Level1', [chapterName], false);
-            subjectsGrid.appendChild(card);
-        });
-
         document.body.style.cursor = 'default';
+        openPopup(book.title, tempBookTree, 'Level1', []);
+
     } catch (error) {
         document.body.style.cursor = 'default';
         console.error("Error loading book:", error);
+        alert("Failed to load book content.");
     }
 }
 
 function generateExamTitle(paths, currentView) {
-    if (!paths || paths.length === 0) return "Custom Exam";
+    if (!paths || paths.length === 0) return "Custom Practice";
     
     const topLevels = new Set();
     const subLevels = new Set();
@@ -536,31 +541,45 @@ function generateExamTitle(paths, currentView) {
         else return `${topArr[0]} - ${subArr.join(" + ")}`;
     } else {
         if (topArr.length <= 3) return topArr.join(" + ");
-        else return `Mixed Exam (${topArr.length} Topics)`;
+        else return `Mixed Session (${topArr.length} Topics)`;
     }
 }
 
+// NEW: Unified Cart Switching
 function switchMode(mode) {
     currentMode = mode;
-    selectedCart.clear();
-    document.getElementById('cart-count').textContent = `0 Topics Selected`;
-    document.getElementById('start-exam-btn').disabled = true;
+    
     const searchBar = document.querySelector('.search-filter-bar');
     const modeDesc = document.getElementById('mode-description');
+    const startBtn = document.getElementById('start-exam-btn');
+    
+    // THE CART IS NOW ALWAYS VISIBLE
+    document.getElementById('exam-cart').style.display = "flex";
+    startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
+
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
-        document.getElementById('exam-cart').style.display = "none";
-        if (modeDesc) modeDesc.textContent = "Practice Mode: Instant feedback, detailed explanations, pause & resume anytime.";
+        if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         if (searchBar) searchBar.style.display = "flex";
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
-        document.getElementById('exam-cart').style.display = "flex";
-        if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, and skipped questions appear at the end.";
+        if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         if (searchBar) searchBar.style.display = "none";
     }
-    renderGrid();
+    
+    if (currentView === 'book') renderBooksGrid();
+    else renderGrid();
+
+    // Soft-refresh the popup to show checkboxes if it's currently open
+    if (popupOverlay.style.display === 'flex') {
+        const current = popupHistory[popupHistory.length - 1];
+        if (current) {
+            popupHistory.pop(); 
+            openPopup(current.title, current.dataObj, current.level, current.pathArr, false);
+        }
+    }
 }
 
 // ==========================================
@@ -571,7 +590,6 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
     const questionsByCategory = {};
 
     rawQuestions.forEach(q => {
-        // Internal mapping only for grouping limits, doesn't affect UI
         const cat = q.Subject || q.Chapter || "_internal_cat_";
         const top = q.Topic || "_internal_top_";
         if (!questionsByCategory[cat]) questionsByCategory[cat] = {};
@@ -597,11 +615,10 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
 }
 
 // ==========================================
-// 6. CSV LOADER & TREE BUILDER
+// 6. JSON LOADER & TREE BUILDER
 // ==========================================
 async function loadDataAndBuildTree() {
     try {
-        // Strictly use the global activeCourse. If it's missing, the top-level script already redirects them.
         if (!activeCourse) return; 
         
         const [questionsRes, hierarchyRes] = await Promise.all([
@@ -614,7 +631,6 @@ async function loadDataAndBuildTree() {
         const masterQuestions = await questionsRes.json();
         const hierarchyData = await hierarchyRes.json();
 
-        // Map lowercase JSON keys to the Uppercase keys your frontend relies on
         masterQuestions.forEach(q => {
             q.QuestionID = q.id;
             q.Subject = q.subject;
@@ -632,7 +648,6 @@ async function loadDataAndBuildTree() {
             allQuestions = [...masterQuestions]; 
         }
 
-        // Inject the pre-built hierarchy trees directly
         subjectTree = hierarchyData.subjects || {};
         systemTree = hierarchyData.systems || {};
         examTree = hierarchyData.exams || {};
@@ -757,8 +772,8 @@ function renderGrid() {
         const doneCount = getSolvedCount(currentView, [cardTitle]);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
-        const countHtml = currentMode === 'practice' ? `<span class="card-count">${doneCount} / ${qCount}</span>` : '';
-        const progressHtml = currentMode === 'practice' ? `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>` : '';
+        const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+        const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
 
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
@@ -775,67 +790,7 @@ function renderGrid() {
     });
 }
 
-function renderBooksGrid() {
-    if (!subjectsGrid) return;
-    subjectsGrid.innerHTML = '';
-
-    availableBooks.forEach(book => {
-        const card = document.createElement('div');
-        card.className = 'glass-panel feature-card';
-        card.style.cursor = 'pointer';
-        card.innerHTML = `
-            <div class="card-header-flex">
-                <h3 class="card-title">${book.title}</h3>
-            </div>
-        `;
-        card.onclick = () => loadAndOpenBook(book);
-        subjectsGrid.appendChild(card);
-    });
-}
-
-async function loadAndOpenBook(book) {
-    try {
-        document.body.style.cursor = 'wait';
-        const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
-        if (!response.ok) throw new Error("JSON file not found");
-        
-        let bookQuestions = await response.json();
-
-        bookQuestions.forEach(q => {
-            q.QuestionID = q.id;
-            q.Subject = book.title;
-            q.Chapter = q.chapter;
-            q.Topic = q.topic;
-            q.Exam = q.exams;
-            q.Year = q.year;
-            q.isBookQuestion = true;
-            q.bookName = book.file;
-        });
-
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            bookQuestions = applyTierLimits(bookQuestions, 20);
-        } else if (!isPremiumUser) {
-            bookQuestions = applyTierLimits(bookQuestions, 50);
-        }
-
-        let tempBookTree = {};
-        bookQuestions.forEach(q => {
-            if (q.Chapter) {
-                if (!tempBookTree[q.Chapter]) tempBookTree[q.Chapter] = [];
-                if (q.Topic && !tempBookTree[q.Chapter].includes(q.Topic)) tempBookTree[q.Chapter].push(q.Topic);
-            }
-        });
-
-        activeCustomPool = bookQuestions;
-        document.body.style.cursor = 'default';
-        openPopup(book.title, tempBookTree, 'Level1', []);
-
-    } catch (error) {
-        document.body.style.cursor = 'default';
-        console.error("Error loading book:", error);
-    }
-}
-
+// NEW: Unified Select All Cart logic for the popup
 function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
 
@@ -846,61 +801,33 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     popupOverlay.style.display = 'flex';
     popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
 
-    if (currentMode === 'practice') {
-        const fullCount = getQuestionCount(currentView, pathArr);
-        const practiceAllDiv = document.createElement('div');
-        practiceAllDiv.className = 'list-item hero-item';
-        practiceAllDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
-        practiceAllDiv.style.border = '1px solid #10b981';
+    // UNIVERSAL SELECT ALL BUTTON
+    const selectAllDiv = document.createElement('div');
+    selectAllDiv.className = 'list-item hero-item';
+    selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
+    selectAllDiv.style.border = '1px solid #3b82f6';
 
-        practiceAllDiv.innerHTML = `
-            <div style="flex-grow: 1;">
-                <div class="card-header-flex">
-                    <span style="font-weight: bold; color: #064e3b;">Practice Full ${title}</span>
-                    <span class="card-count" style="color: #059669;">0 / ${fullCount}</span>
-                </div>
+    selectAllDiv.innerHTML = `
+        <div style="flex-grow: 1;">
+            <div class="card-header-flex">
+                <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
             </div>
-            <button class="btn-solid mini-btn practice-full-btn" style="margin-left: 15px;">Start ➡</button>
-        `;
-        popupList.appendChild(practiceAllDiv);
-        practiceAllDiv.querySelector('.practice-full-btn').onclick = () => {
-            const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
+        </div>
+        <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
+    `;
+    popupList.appendChild(selectAllDiv);
 
-            let launchTitle = title;
-            if (activeCustomPool && title !== "⭐ Bookmarks") launchTitle = "Review Mistakes";
+    selectAllDiv.querySelector('.select-all-btn').onclick = () => {
+        const allCbs = popupList.querySelectorAll('.item-checkbox');
+        let allAreChecked = true;
+        allCbs.forEach(cb => { if (!cb.checked) allAreChecked = false; });
 
-            window.launchQuiz(pool, 'practice', 0, launchTitle);
-        };
-    }
-
-    if (currentMode === 'exam') {
-        const selectAllDiv = document.createElement('div');
-        selectAllDiv.className = 'list-item hero-item';
-        selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
-        selectAllDiv.style.border = '1px solid #3b82f6';
-
-        selectAllDiv.innerHTML = `
-            <div style="flex-grow: 1;">
-                <div class="card-header-flex">
-                    <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
-                </div>
-            </div>
-            <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
-        `;
-        popupList.appendChild(selectAllDiv);
-
-        selectAllDiv.querySelector('.select-all-btn').onclick = () => {
-            const allCbs = popupList.querySelectorAll('input[type="checkbox"]');
-            let allAreChecked = true;
-            allCbs.forEach(cb => { if (!cb.checked) allAreChecked = false; });
-
-            allCbs.forEach(cb => {
-                cb.checked = !allAreChecked;
-                cb.dispatchEvent(new Event('change'));
-            });
-            selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
-        };
-    }
+        allCbs.forEach(cb => {
+            cb.checked = !allAreChecked;
+            cb.dispatchEvent(new Event('change'));
+        });
+        selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
+    };
 
     if (Array.isArray(dataObj)) {
         dataObj.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
@@ -911,14 +838,8 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
 
 function getLeafPaths(dataObj, currentPath) {
     if (!dataObj) return [];
-    
-    if (Array.isArray(dataObj)) {
-        return dataObj.map(topic => JSON.stringify([...currentPath, topic]));
-    }
-    
-    if (typeof dataObj !== 'object') {
-        return [JSON.stringify(currentPath)];
-    }
+    if (Array.isArray(dataObj)) return dataObj.map(topic => JSON.stringify([...currentPath, topic]));
+    if (typeof dataObj !== 'object') return [JSON.stringify(currentPath)];
     
     let leaves = [];
     Object.keys(dataObj).forEach(key => {
@@ -927,6 +848,7 @@ function getLeafPaths(dataObj, currentPath) {
     return leaves;
 }
 
+// NEW: Unified rendering item logic for cart checkboxes
 function renderListItem(itemName, nextData, level, itemPath) {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'list-item';
@@ -940,80 +862,62 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
         countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
-    } else if (currentMode === 'practice') {
+    } else {
         const doneCount = getSolvedCount(currentView, itemPath);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
         progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
     }
 
+    const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
+
     labelDiv.innerHTML = `
         <div class="card-header-flex">
             <span style="font-weight: 600; display: flex; align-items: center;">
-                ${currentMode === 'exam' ? `<input type="checkbox" style="margin-right: 10px;">` : ''}
+                ${!hasSubLevels ? `<input type="checkbox" class="item-checkbox" style="margin-right: 10px; transform: scale(1.2);">` : ''}
                 ${itemName}
             </span>
             ${countHtml}
         </div>
         ${progressHtml}
     `;
-
     itemDiv.appendChild(labelDiv);
 
-const actionBtn = document.createElement('button');
-    actionBtn.className = 'btn-outline mini-btn';
-    actionBtn.style.marginLeft = '15px';
-
-    // 🔥 THE FIX: Explicitly check if the next level is an object, not just a number
-    const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
-
     if (hasSubLevels) {
+        const actionBtn = document.createElement('button');
+        actionBtn.className = 'btn-outline mini-btn';
+        actionBtn.style.marginLeft = '15px';
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = () => openPopup(itemName, nextData, 'Chapter', itemPath, false);
+        itemDiv.appendChild(actionBtn);
     } else {
-        if (currentMode === 'practice') {
-            actionBtn.textContent = 'Practice';
-            actionBtn.onclick = () => {
-                const pool = (activeCustomPool || allQuestions).filter(q => getQuestionCount(currentView, itemPath, [q]) > 0);
-
-                let launchTitle = itemName;
-                if (activeCustomPool && itemName !== "⭐ Bookmarks" && currentView !== 'book') {
-                    launchTitle = "Review Mistakes";
-                }
-
-                window.launchQuiz(pool, 'practice', 0, launchTitle);
-            };
-        } else {
-            actionBtn.textContent = 'Select';
-            actionBtn.onclick = () => {
-                const cb = itemDiv.querySelector('input[type="checkbox"]');
-                cb.checked = !cb.checked;
-                cb.dispatchEvent(new Event('change'));
-            };
-        }
-    }
-
-    itemDiv.appendChild(actionBtn);
-    popupList.appendChild(itemDiv);
-
-    if (currentMode === 'exam') {
-        const cb = itemDiv.querySelector('input[type="checkbox"]');
-        const leafPaths = nextData ? getLeafPaths(nextData, itemPath) : [JSON.stringify(itemPath)];
-
-        cb.checked = leafPaths.length > 0 && leafPaths.every(path => selectedCart.has(path));
+        const cb = itemDiv.querySelector('.item-checkbox');
+        const leafPaths = [JSON.stringify(itemPath)];
+        
+        cb.checked = selectedCart.has(leafPaths[0]);
 
         cb.onchange = (e) => {
-            if (e.target.checked) leafPaths.forEach(path => selectedCart.add(path));
-            else leafPaths.forEach(path => selectedCart.delete(path));
+            if (e.target.checked) selectedCart.add(leafPaths[0]);
+            else selectedCart.delete(leafPaths[0]);
 
             document.getElementById('cart-count').textContent = `${selectedCart.size} Topics Selected`;
             document.getElementById('start-exam-btn').disabled = selectedCart.size === 0;
         };
+
+        itemDiv.style.cursor = 'pointer';
+        itemDiv.onclick = (e) => {
+            if (e.target !== cb) {
+                cb.checked = !cb.checked;
+                cb.dispatchEvent(new Event('change'));
+            }
+        };
     }
+
+    popupList.appendChild(itemDiv);
 }
 
 // ==========================================
-// 7. THE BRIDGE: LAUNCH QUIZ (MULTIPLAYER UPGRADED)
+// 7. THE BRIDGE: LAUNCH QUIZ
 // ==========================================
 window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
     if (!questionsArray || questionsArray.length === 0) {
@@ -1075,6 +979,7 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
+                currentUserData = dbData; // Set global
                 currentUserRole = dbData.role || 'STUDENT';
                 isPremiumUser = false;
 
@@ -1095,7 +1000,6 @@ onAuthStateChanged(auth, async (user) => {
                 const courseData = dbData[activeCourse] || {};
                 const booksData = dbData.books || {};
 
-                // MERGE both sources for global arrays
                 const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
                 const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
                 const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
@@ -1116,7 +1020,8 @@ onAuthStateChanged(auth, async (user) => {
                 attemptedQuestions = solvedList;
 
                 await loadDataAndBuildTree();
-                await injectBooksGlobally();
+                
+                // NO LONGER INJECTING ALL BOOKS HERE! Speed Boost!
 				restoreLastState();
 
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
@@ -1151,19 +1056,24 @@ onAuthStateChanged(auth, async (user) => {
 
                 if (dueTopics.length > 0 && revisionContainer) {
                     const revisionCard = document.createElement('div');
-                    revisionCard.className = 'revision-card';
+                    revisionCard.className = 'glass-panel feature-card';
+                    revisionCard.style.borderColor = '#3b82f6';
+                    revisionCard.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.15)';
                     
                     let revHtml = `
-                        <h3><i class="fas fa-sync-alt"></i> Due for Revision (${dueTopics.length})</h3>
-                        <p>Review these topics now to optimize memory retention.</p>
-                        <div class="revision-btn-group">
+                        <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
+                            <h3 class="card-title" style="color: #1e3a8a;"><i class="fas fa-sync-alt" style="color: #3b82f6;"></i> Due for Revision (${dueTopics.length})</h3>
+                        </div>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px;">Review these topics now to optimize memory retention based on spaced repetition.</p>
+                        <div style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; padding-right: 5px;">
                     `;
 
                     dueTopics.forEach(item => {
                         const safeTopic = encodeURIComponent(item.id);
                         revHtml += `
-                            <button class="revision-btn" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
-                                ${item.displayName} (Day ${item.step})
+                            <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border-color: #cbd5e1; padding: 10px;" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                                <span style="font-weight: 700; color: #334155;">${item.displayName}</span>
+                                <span class="badge" style="background: #e0f2fe; color: #0369a1; border-radius: 12px; font-size: 0.75rem;">Day ${item.step}</span>
                             </button>
                         `;
                     });
@@ -1562,7 +1472,7 @@ if (journeyModal) {
     };
 }
 
-window.generateRevisionQuiz = function(topicId) {
+window.generateRevisionQuiz = async function(topicId) {
 
     if (!topicId) {
         return alert("Invalid revision topic.");
@@ -1587,6 +1497,37 @@ window.generateRevisionQuiz = function(topicId) {
 
     const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const isBookRevision = (sourceName !== currentActiveCourse);
+
+    // NEW: LAZY LOAD THE BOOK IF NEEDED FOR REVISION!
+    if (isBookRevision) {
+        const book = availableBooks.find(b => b.file === sourceName);
+        if (book && !loadedBooksCache[book.file]) {
+            try {
+                document.body.style.cursor = 'wait';
+                const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
+                if (response.ok) {
+                    let bookQuestions = await response.json();
+                    bookQuestions.forEach(q => {
+                        q.QuestionID = q.id;
+                        q.Subject = book.title;
+                        q.Chapter = q.chapter;
+                        q.Topic = q.topic;
+                        q.Exam = q.exams;
+                        q.Year = q.year;
+                        q.isBookQuestion = true;
+                        q.bookName = book.file;
+                    });
+                    loadedBooksCache[book.file] = bookQuestions;
+                    allQuestions = allQuestions.filter(q => q.bookName !== book.file);
+                    allQuestions.push(...bookQuestions);
+                }
+            } catch(e) { 
+                console.error(e); 
+            } finally {
+                document.body.style.cursor = 'default';
+            }
+        }
+    }
 
     const topicPool = allQuestions.filter(q => {
         const qSubject = q.Subject || q.subject || '';
@@ -1648,38 +1589,6 @@ window.generateRevisionQuiz = function(topicId) {
     );
 };
 
-async function injectBooksGlobally() {
-    for (const book of availableBooks) {
-        try {
-            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
-            if (!response.ok) continue;
-            
-            let tempBookQs = await response.json();
-            
-            tempBookQs.forEach(q => {
-                q.QuestionID = q.id;
-                q.Subject = book.title;
-                q.Chapter = q.chapter;
-                q.Topic = q.topic;
-                q.Exam = q.exams;
-                q.Year = q.year;
-                q.isBookQuestion = true;
-                q.bookName = book.file;
-            });
-
-            if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-                tempBookQs = applyTierLimits(tempBookQs, 20);
-            } else if (!isPremiumUser) {
-                tempBookQs = applyTierLimits(tempBookQs, 50);
-            }
-
-            allQuestions.push(...tempBookQs);
-        } catch (error) {
-            console.warn(`Silently failed to load ${book.file} into global pool.`);
-        }
-    }
-}
-
 function restoreLastState() {
     switchMode('practice');
     const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
@@ -1687,7 +1596,7 @@ function restoreLastState() {
     
     changeView(lastView, lastTitle);
 
-    // If you were in a book, stop here to avoid aggressive auto-fetching.
+    // If you were in a book, stop here. Books require user clicks to lazy load now.
     if (lastView === 'book') return; 
 
     const savedPathStr = localStorage.getItem('edeetos_saved_popup_path');
@@ -1706,7 +1615,6 @@ function restoreLastState() {
             let dataObj = currentTree;
             let isValid = true;
             
-            // Drill down into the JSON tree to find your exact location
             for (let i = 0; i < pathArr.length; i++) {
                 if (dataObj[pathArr[i]]) {
                     dataObj = dataObj[pathArr[i]];

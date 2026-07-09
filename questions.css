@@ -20,8 +20,41 @@
     border-radius: 6px;
 }
 
+/* Dashboard Metrics Top Bar */
+.prog-dash {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+.prog-stats {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.prog-stat-box {
+    text-align: center;
+}
+.prog-stat-title {
+    font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 0.2rem;
+}
+.prog-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: nowrap;
+}
+.prog-actions button {
+    white-space: nowrap;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
 /* ========================================== */
-/* 2. SEARCH AND FILTER BAR (Z-INDEX OPTIMIZED)*/
+/* 2. SEARCH AND FILTER BAR (Z-INDEX FIX)     */
 /* ========================================== */
 .search-filter-bar {
     display: flex;
@@ -33,14 +66,14 @@
     margin-bottom: 2rem;
     border-radius: 12px;
     position: relative; 
-    z-index: 10; /* Lifts the whole bar above the grid */
+    z-index: 10; 
 }
 
 .search-wrapper {
     position: relative;
     flex-grow: 1;
     min-width: 250px;
-    z-index: 5001; /* Brings search to the very front */
+    z-index: 5001; 
 }
 
 .search-wrapper i {
@@ -97,7 +130,7 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
     max-height: 400px;
     overflow-y: auto;
-    z-index: 9999 !important; /* Forces it above EVERYTHING */
+    z-index: 9999 !important; 
     margin-top: 10px;
 }
 
@@ -119,14 +152,14 @@
 }
 
 /* ========================================== */
-/* 3. APP CARDS & 4-COLUMN GRID               */
+/* 3. MAIN TOPIC CARDS & PROGRESS BARS        */
 /* ========================================== */
 #subjects-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for wider text & progress bars */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 1.2rem;
     width: 100%;
-    padding: 1rem;
+    padding: 0.2rem;
     padding-bottom: 150px; /* Space for the bottom exam dock */
 }
 
@@ -136,7 +169,7 @@
     justify-content: center;
     padding: 1.2rem;
     transition: all 0.3s ease;
-    border-left: 4px solid #10b981; /* Premium Green edge */
+    border-left: 4px solid #10b981; 
     border-top: none;
     text-align: left;
     align-items: stretch;
@@ -156,21 +189,20 @@
 }
 
 .card-title {
-    font-weight: 700;
+    font-weight: 800;
     color: #1e293b;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin: 0;
     line-height: 1.3;
 }
 
 .card-count {
     color: #64748b;
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     white-space: nowrap;
 }
 
-/* --- PROGRESS BARS --- */
 .progress-container {
     width: 100%;
     background-color: #e2e8f0;
@@ -186,12 +218,12 @@
 }
 
 /* ========================================== */
-/* 4. GLASSMORPHISM POPUP NAVIGATION          */
+/* 4. GLASSMORPHISM DRILL-DOWN POPUPS         */
 /* ========================================== */
 .popup-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15, 23, 42, 0.6); /* Slightly darker slate overlay */
+    background: rgba(15, 23, 42, 0.7); 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: none; 
@@ -208,7 +240,7 @@
     flex-direction: column;
     padding: 0;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -223,13 +255,14 @@
     align-items: center;
     padding: 1.5rem;
     border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-    background: rgba(255, 255, 255, 1);
+    background: #ffffff;
 }
 
 .popup-header h3 {
     margin: 0;
     color: #064e3b;
     font-size: 1.25rem;
+    font-weight: 800;
 }
 
 .icon-btn {
@@ -245,88 +278,84 @@
 .icon-btn:hover { color: #10b981; }
 
 .popup-body {
-    padding: 1.2rem; /* Reduced outer padding slightly */
+    padding: 1.2rem; 
     overflow-y: auto;
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); 
-    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 1rem;
     align-items: stretch; 
 }
 
+/* --- THE CHECKBOX LIST ITEMS --- */
 .list-item {
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
     align-items: flex-start;
-    padding: 1rem; /* Reduced from 1.2rem to make the card more compact */
+    padding: 1.2rem; 
     background: #ffffff;
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     transition: all 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    gap: 0.6rem; /* Tighter gap between the title and the button */
+    gap: 0.8rem; 
+    user-select: none;
 }
 
 .list-item:hover {
-    border-color: #10b981;
-    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.1);
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    border-color: #3b82f6; /* Blue hover for checkboxes */
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px); 
 }
 
-/* Forces the text container inside the item to take up full width */
-.list-item > div:first-child {
-    width: 100%;
-}
+.list-item > div:first-child { width: 100%; }
+.list-item .card-header-flex { margin-bottom: 8px; align-items: flex-start; }
 
-.list-item .card-header-flex { 
-    margin-bottom: 8px; 
-    align-items: flex-start; /* Aligns checkbox and text to the top */
-}
-
+/* Custom Styling for the Multi-Select Checkboxes */
 .list-item input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
-    accent-color: #10b981;
-    flex-shrink: 0; /* Prevents the checkbox from squishing */
-    margin-top: 2px;
+    accent-color: #3b82f6; /* Blue accent for selection */
+    flex-shrink: 0; 
+    margin-top: 1px;
+    margin-right: 12px !important;
 }
 
-/* Makes the buttons inside the cards full-width for a cleaner UI */
 .list-item button, 
 .list-item .mini-btn {
     width: 100%;
-    margin-left: 0 !important; /* Overrides inline Javascript margins */
+    margin-left: 0 !important; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* --- HERO ITEM (Practice Full / Select All) --- */
+/* --- HERO ITEM (Select All Button) --- */
 .hero-item {
-    grid-column: 1 / -1; /* Spans entirely across all available columns */
-    width: 100%; /* Stretches to fill the space without leaving gaps */
+    grid-column: 1 / -1; 
+    width: 100%; 
     border-width: 2px;
     margin-bottom: 0.5rem;
-    flex-direction: row; /* Flips this specific card back to horizontal */
-    align-items: center; /* Centers the text and button perfectly */
+    flex-direction: row; 
+    align-items: center; 
+    padding: 1rem 1.5rem;
 }
 
-/* Stops the text from stretching too far */
 .hero-item > div:first-child {
     width: auto;
     flex-grow: 1;
 }
 
-/* Prevents the button from becoming massive when the card stretches */
 .hero-item button, 
 .hero-item .mini-btn {
     width: auto; 
-    padding: 0.6rem 2rem;
+    padding: 0.6rem 2.5rem;
+    font-size: 0.95rem;
 }
 
 /* ========================================== */
-/* 5. SIDEBAR STYLES (SLIDE-IN MENU)          */
+/* 5. SIDEBAR STYLES                          */
 /* ========================================== */
 .sidebar {
     position: fixed;
@@ -380,7 +409,7 @@
 }
 
 /* ========================================== */
-/* 6. EXAM MODE FLOATING DOCK (BOTTOM CART)   */
+/* 6. UNIVERSAL CART (BOTTOM DOCK)            */
 /* ========================================== */
 .exam-action-bar {
     position: fixed;
@@ -393,7 +422,7 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.4); /* Blue theme for selection */
     border-radius: 16px;
     padding: 1rem 2rem;
     display: flex;
@@ -404,7 +433,7 @@
 
 .exam-action-bar .cart-info {
     display: flex; align-items: center; gap: 0.8rem;
-    font-size: 1.2rem; color: #064e3b; font-weight: bold;
+    font-size: 1.2rem; color: #1e3a8a; font-weight: 800;
 }
 
 .exam-action-bar .cart-controls {
@@ -435,24 +464,32 @@
 }
 
 .exam-action-bar input[type="number"]:focus {
-    border-color: #10b981;
+    border-color: #3b82f6;
     background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
 .exam-action-bar .start-btn {
     padding: 0.8rem 2.5rem;
     font-size: 1.1rem;
     border-radius: 8px;
+    background: #3b82f6; /* Blue matching cart */
 }
 
 /* ========================================== */
-/* 7. SCROLLBAR BEAUTIFICATION                */
+/* 7. MENTOR UI EXTENSIONS                    */
 /* ========================================== */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+/* Added by JS for mentors to assign exams */
+#assign-exam-btn {
+    border-color: #8b5cf6;
+    color: #8b5cf6;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+#assign-exam-btn:hover {
+    background: #f3e8ff;
+}
 
 /* ========================================== */
 /* 8. RESPONSIVE MEDIA QUERIES                */
@@ -464,9 +501,31 @@
 }
 
 /* Mobile Phones */
+@media (max-width: 1000px) {
+    .prog-dash {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    .prog-stats {
+        width: 100%;
+        justify-content: space-between;
+        gap: 5px;
+    }
+    .prog-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 0.75rem;
+    }
+    .prog-actions button {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     #subjects-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 Column for mobile readability */
+        grid-template-columns: repeat(1, 1fr); 
         gap: 1rem;
     }
     
@@ -480,14 +539,14 @@
     
     .exam-action-bar .cart-controls {
         display: flex;
-        flex-wrap: wrap; /* Allows the button to drop below the inputs */
+        flex-wrap: wrap; 
         width: 100%;
         justify-content: space-between;
         gap: 0.8rem;
     }
     
     .exam-action-bar .input-group {
-        flex: 1; /* Makes the inputs share the top row equally */
+        flex: 1; 
         min-width: 45%; 
     }
 
@@ -496,75 +555,26 @@
     }
     
     .exam-action-bar input[type="number"] { 
-        width: 100%; /* Fills its half of the row */
+        width: 100%; 
     }
     
     .exam-action-bar .start-btn { 
-        width: 100%; /* Forces the button to take the full bottom row */
+        width: 100%; 
         margin-top: 0.5rem; 
         flex-shrink: 0;
+    }
+    
+    #assign-exam-btn {
+        margin-left: 0 !important;
+        margin-top: 0.5rem;
+        width: 100%;
     }
 }
 
 /* ========================================== */
-/* 9. SPACED REPETITION UI                    */
+/* 9. SCROLLBAR BEAUTIFICATION                */
 /* ========================================== */
-#spaced-repetition-container {
-    width: 100%;
-    margin-bottom: 2rem;
-    display: block;
-    clear: both;
-}
-
-.revision-card {
-    background: #fffbeb;
-    border: 2px solid #f59e0b;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: left;
-}
-
-.revision-card h3 {
-    color: #b45309;
-    margin: 0;
-    font-size: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-}
-
-.revision-card p {
-    color: #92400e;
-    font-size: 0.9rem;
-    margin: 0 0 10px 0;
-    line-height: 1.4;
-}
-
-.revision-btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-}
-
-.revision-btn {
-    background: #f59e0b;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    white-space: nowrap;
-}
-
-.revision-btn:hover {
-    background: #d97706;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
