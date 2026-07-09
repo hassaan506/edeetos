@@ -2,7 +2,6 @@ import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// DOM Elements
 const usersListEl = document.getElementById('users-list');
 const userCountEl = document.getElementById('user-count');
 const searchInput = document.getElementById('admin-search-input');
@@ -18,6 +17,17 @@ const subsListEl = document.getElementById('user-subscriptions-list');
 let allUsersData = [];
 let editingUser = null;
 
+const courseNamesMap = {
+    'mbbs_year1': 'MBBS 1st Year', 'mbbs_year2': 'MBBS 2nd Year', 'mbbs_year3': 'MBBS 3rd Year', 'mbbs_year4': 'MBBS 4th Year', 'mbbs_year5': 'MBBS 5th Year',
+    'fcps_imm': 'FCPS IMM', 'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2',
+    'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2'
+};
+
+const mergedNamesMap = { 
+    ...courseNamesMap, 
+    'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA', 'NONE': 'No Course'
+};
+
 // ==========================================
 // 1. SECURITY & DYNAMIC QUESTION COUNTER
 // ==========================================
@@ -28,14 +38,10 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             
             const role = docSnap.exists() ? (docSnap.data().role || '').toUpperCase() : '';
-            
             if (role !== 'MANAGEMENT' && role !== 'ADMIN') {
-                alert("Unauthorized Access.");
-                window.location.href = 'dashboard.html';
-                return;
+                alert("Unauthorized Access."); window.location.href = 'dashboard.html'; return;
             }
 
-            // GLOBAL MENTOR PING LISTENER
             const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
             onSnapshot(qChats, (snapshot) => {
                 snapshot.docChanges().forEach((change) => {
@@ -51,9 +57,7 @@ onAuthStateChanged(auth, async (user) => {
         } catch (error) {
             console.error("Admin Panel Auth Init Error:", error);
             alert("Database permission error. Firebase is blocking your access to the users database. Error: " + error.message);
-            // Default load so they at least don't hang if they want to try anyway
-            fetchAllUsers();
-            calculateTotalQuestions();
+            fetchAllUsers(); calculateTotalQuestions();
         }
     } else {
         window.location.href = 'index.html';
@@ -61,34 +65,16 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 async function calculateTotalQuestions() {
-    const standardCourses = [
-        'fcps_part1', 'fcps_part2', 'fcps_imm', 
-        'mrcs_part1', 'mrcs_part2', 
-        'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'
-    ];
-
-    const courseTitles = {
-        'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
-        'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
-        'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 
-        'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5'
-    };
-
+    const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     const referenceBooks = [
-        { file: "firstaid_step1", title: "First Aid Step 1" },
-        { file: "rafiullah", title: "Rafiullah FCPS" },
-        { file: "im_medicine", title: "Irfan Masood - Medicine" },
-        { file: "im_surgery", title: "Irfan Masood - Surgery" },
-        { file: "brs_patho", title: "BRS - Pathology" },
-        { file: "brs_physio", title: "BRS - Physiology" }
+        { file: "firstaid_step1", title: "First Aid Step 1" }, { file: "rafiullah", title: "Rafiullah FCPS" },
+        { file: "im_medicine", title: "Irfan Masood - Medicine" }, { file: "im_surgery", title: "Irfan Masood - Surgery" },
+        { file: "brs_patho", title: "BRS - Pathology" }, { file: "brs_physio", title: "BRS - Physiology" }
     ];
 
     let totalQuestions = 0;
-    
-    let breakdownHtml = `<div style="max-height: 180px; overflow-y: auto; padding-right: 5px; margin-top: 10px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 12px;">
-                            <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
+    let breakdownHtml = `<div style="max-height: 180px; overflow-y: auto; padding-right: 5px; margin-top: 10px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 12px;"><div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
 
-    // THE FIX: Fetch the JSON files and get the array length
     async function fetchAndCount(path, displayTitle, badgeColor, textColor) {
         try {
             const response = await fetch(path, { cache: 'no-cache' });
@@ -97,49 +83,23 @@ async function calculateTotalQuestions() {
                 if (Array.isArray(data) && data.length > 0) {
                     const count = data.length;
                     totalQuestions += count;
-                    
-                    breakdownHtml += `
-                        <span style="background: ${badgeColor}; color: ${textColor}; padding: 3px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.05); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
-                            ${displayTitle} <span style="background: rgba(255,255,255,0.5); color: #0f172a; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">${count}</span>
-                        </span>`;
+                    breakdownHtml += `<span style="background: ${badgeColor}; color: ${textColor}; padding: 3px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.05); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">${displayTitle} <span style="background: rgba(255,255,255,0.5); color: #0f172a; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">${count}</span></span>`;
                 }
             }
-        } catch (e) {
-            console.error(`Failed to load ${displayTitle}`, e);
-        }
+        } catch (e) {}
     }
 
-    // 1. Point to Course JSONs
-    for (const course of standardCourses) {
-        await fetchAndCount(`Data/${course}_questions.json`, courseTitles[course], '#e2e8f0', '#334155');
-    }
-
-    breakdownHtml += `</div>
-        <div style="margin: 12px 0 6px 0; color: #8b5cf6; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
-            <i class="fas fa-book"></i> Reference Books
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
-
-    // 2. Point to Book JSONs
-    for (const book of referenceBooks) {
-        await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
-    }
-
+    for (const course of standardCourses) await fetchAndCount(`Data/${course}_questions.json`, courseNamesMap[course], '#e2e8f0', '#334155');
+    breakdownHtml += `</div><div style="margin: 12px 0 6px 0; color: #8b5cf6; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-book"></i> Reference Books</div><div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
+    for (const book of referenceBooks) await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
     breakdownHtml += `</div></div>`;
 
     const totalEl = document.getElementById('total-q-count');
     if (totalEl) {
-        totalEl.innerHTML = `
-            <div style="font-size: 1.05rem; font-weight: 800; color: #1e293b; display: flex; justify-content: space-between; align-items: center;">
-                <span>Total Database Questions:</span>
-                <span style="background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.9rem;">${totalQuestions}</span>
-            </div>
-            ${breakdownHtml}
-        `;
+        totalEl.innerHTML = `<div style="font-size: 1.05rem; font-weight: 800; color: #1e293b; display: flex; justify-content: space-between; align-items: center;"><span>Total Database Questions:</span><span style="background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.9rem;">${totalQuestions}</span></div>${breakdownHtml}`;
     }
 }
 
-// Exit & Close Modal
 const btnExit = document.getElementById('btn-exit-admin');
 if(btnExit) btnExit.addEventListener('click', () => { window.location.href = 'dashboard.html'; });
 
@@ -147,14 +107,11 @@ const btnCloseEdit = document.getElementById('btn-close-edit-modal');
 if(btnCloseEdit) btnCloseEdit.addEventListener('click', () => { editModal.style.display = 'none'; });
 
 // ==========================================
-// 2. TAB ROUTING (HARD-WIRED to Window)
+// 2. TAB ROUTING
 // ==========================================
 window.switchView = function(viewName) {
-    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports', 'view-messages'];
-    views.forEach(v => {
-        const el = document.getElementById(v);
-        if (el) el.style.display = 'none';
-    });
+    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports', 'view-messages', 'view-requests'];
+    views.forEach(v => { const el = document.getElementById(v); if (el) el.style.display = 'none'; });
     
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
     
@@ -168,10 +125,97 @@ window.switchView = function(viewName) {
     if(viewName === 'payments') fetchPayments();
     if(viewName === 'reports') fetchReports();
     if(viewName === 'messages') fetchMessages(); 
+    if(viewName === 'requests') fetchRequests(); 
 };
 
 // ==========================================
-// 3. USER MANAGEMENT
+// 3. COURSE CHANGE REQUESTS LOGIC
+// ==========================================
+let unsubscribeRequests = null;
+
+async function fetchRequests() {
+    const list = document.getElementById('requests-list');
+    if(!list) return;
+    if (unsubscribeRequests) return;
+
+    const qReq = query(collection(db, "users"), where("courseChangeRequested", "==", true));
+    
+    unsubscribeRequests = onSnapshot(qReq, (qSnap) => {
+        list.innerHTML = '';
+        let hasRequests = false;
+        
+        qSnap.forEach(d => {
+            hasRequests = true;
+            const data = d.data();
+            const userId = d.id;
+            
+            const currentCourse = data.selectedCourse ? (courseNamesMap[data.selectedCourse] || data.selectedCourse) : "None Assigned";
+            const newCourse = data.requestedCourse ? (courseNamesMap[data.requestedCourse] || data.requestedCourse) : "Unknown Course";
+
+            const card = document.createElement('div');
+            card.style = "background: white; border: 2px solid #8b5cf6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(139, 92, 246, 0.1);";
+            card.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.fullName || 'Unknown User'}</div>
+                        <div style="font-size: 0.85rem; color: #64748b;">${data.email || 'No Email'} | ${data.phone || 'No Phone'}</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Current Course</div>
+                        <div style="color: #ef4444; font-weight: bold; font-size: 1rem; margin-top: 0.3rem;">${currentCourse}</div>
+                    </div>
+                    <i class="fas fa-arrow-right" style="color: #cbd5e1; font-size: 1.2rem;"></i>
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Requested Course</div>
+                        <div style="color: #10b981; font-weight: bold; font-size: 1.1rem; margin-top: 0.3rem;">${newCourse}</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn-solid btn-approve-req" style="flex: 1; background: #10b981; border: none; padding: 0.8rem; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">✅ Approve Change</button>
+                    <button class="btn-outline btn-reject-req" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; border-radius: 8px; font-weight: bold; cursor: pointer; background: transparent;">❌ Reject</button>
+                </div>
+            `;
+
+            card.querySelector('.btn-approve-req').addEventListener('click', async () => {
+                const btn = card.querySelector('.btn-approve-req');
+                btn.textContent = "Approving..."; btn.disabled = true;
+                try {
+                    await updateDoc(doc(db, "users", userId), {
+                        selectedCourse: data.requestedCourse, courseChangeRequested: false, requestedCourse: null
+                    });
+                    fetchAllUsers(); 
+                } catch (e) {
+                    console.error(e); alert("Error approving request.");
+                    btn.textContent = "✅ Approve Change"; btn.disabled = false;
+                }
+            });
+
+            card.querySelector('.btn-reject-req').addEventListener('click', async () => {
+                if(confirm("Are you sure you want to reject this course change request?")) {
+                    const btn = card.querySelector('.btn-reject-req');
+                    btn.textContent = "Rejecting..."; btn.disabled = true;
+                    try {
+                        await updateDoc(doc(db, "users", userId), { courseChangeRequested: false, requestedCourse: null });
+                    } catch (e) {
+                        console.error(e); alert("Error rejecting request.");
+                        btn.textContent = "❌ Reject"; btn.disabled = false;
+                    }
+                }
+            });
+
+            list.appendChild(card);
+        });
+
+        if(!hasRequests) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending course change requests.</p>';
+    });
+}
+
+// ==========================================
+// 4. USER MANAGEMENT
 // ==========================================
 async function fetchAllUsers() {
     try {
@@ -211,15 +255,10 @@ function renderUsers(usersArray) {
     usersArray.forEach(user => {
         const role = (user.role || 'STUDENT').toUpperCase();
         let roleHtml = '';
-        if (user.isBanned || role === 'BANNED') {
-            roleHtml = `<span class="badge" style="background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5;">Banned</span>`;
-        } else if (role === 'MANAGEMENT' || role === 'ADMIN') {
-            roleHtml = `<span class="badge b-admin">Admin</span>`;
-        } else if (role === 'MENTOR') {
-            roleHtml = `<span class="badge b-mentor">Mentor</span>`;
-        } else {
-            roleHtml = `<span class="badge b-student">Student</span>`;
-        }
+        if (user.isBanned || role === 'BANNED') roleHtml = `<span class="badge" style="background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5;">Banned</span>`;
+        else if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="badge b-admin">Admin</span>`;
+        else if (role === 'MENTOR') roleHtml = `<span class="badge b-mentor">Mentor</span>`;
+        else roleHtml = `<span class="badge b-student">Student</span>`;
         
         let coursesHtml = '';
         if (user.subscriptions) {
@@ -230,7 +269,8 @@ function renderUsers(usersArray) {
                     const daysLeft = Math.ceil((new Date(expiry) - new Date()) / (1000 * 60 * 60 * 24));
                     expiryText = daysLeft > 0 ? `${daysLeft}d left` : 'Expired';
                 }
-                coursesHtml += `<span class="badge b-course">${courseKey.replace('_', ' ').toUpperCase()}</span> <span class="badge b-time">${expiryText}</span> `;
+                const displayName = mergedNamesMap[courseKey] || courseKey.replace('_', ' ').toUpperCase();
+                coursesHtml += `<span class="badge b-course">${displayName}</span> <span class="badge b-time">${expiryText}</span> `;
             });
         }
 
@@ -245,9 +285,7 @@ function renderUsers(usersArray) {
                 <div style="display: flex; flex-direction: column; margin-bottom: 0.5rem; gap: 0.2rem;">
                     <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${userName}</div>
                     <div style="display: flex; flex-wrap: wrap; font-size: 0.85rem; color: #64748b; font-weight: 600; gap: 0.5rem;">
-                        <span style="white-space: nowrap;">📧 ${userEmail}</span>
-                        <span style="color: #cbd5e1;">|</span>
-                        <span style="white-space: nowrap;">📞 ${userPhone}</span>
+                        <span style="white-space: nowrap;">📧 ${userEmail}</span><span style="color: #cbd5e1;">|</span><span style="white-space: nowrap;">📞 ${userPhone}</span>
                     </div>
                 </div>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">${roleHtml} ${coursesHtml}</div>
@@ -278,7 +316,7 @@ if(searchBtn) searchBtn.addEventListener('click', executeSearch);
 if(searchInput) searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
 
 // ==========================================
-// 4. EDIT USER MODAL & ROLES
+// 5. EDIT USER MODAL & ROLES
 // ==========================================
 function openEditModal(user) {
     editingUser = user;
@@ -290,11 +328,11 @@ function openEditModal(user) {
     const unbanBtn = document.getElementById('btn-unban-user');
     
     if (user.isBanned || user.role === 'BANNED') {
-        if (banBtn) banBtn.style.display = 'none';   // Hide Ban
-        if (unbanBtn) unbanBtn.style.display = 'block'; // Show Unban
+        if (banBtn) banBtn.style.display = 'none';   
+        if (unbanBtn) unbanBtn.style.display = 'block'; 
     } else {
-        if (banBtn) banBtn.style.display = 'block';     // Show Ban
-        if (unbanBtn) unbanBtn.style.display = 'none';  // Hide Unban
+        if (banBtn) banBtn.style.display = 'block';     
+        if (unbanBtn) unbanBtn.style.display = 'none';  
     }
     renderSubscriptions();
     if(editModal) editModal.style.display = 'flex';
@@ -316,84 +354,47 @@ async function changeUserRole(newRole) {
         fetchAllUsers();
     }
 }
-const btnBanUser = document.getElementById('btn-ban-user');
 
+const btnBanUser = document.getElementById('btn-ban-user');
 if (btnBanUser) {
     btnBanUser.addEventListener('click', async () => {
-        // Double check to prevent accidental bans
         if (confirm(`🚨 Are you absolutely sure you want to BAN ${editingUser.fullName || 'this user'}?\n\nThis will revoke all their premium access and mark their account as banned.`)) {
-            
-            btnBanUser.textContent = "Banning...";
-            btnBanUser.disabled = true;
-            
+            btnBanUser.textContent = "Banning..."; btnBanUser.disabled = true;
             try {
-                // Update Firestore to wipe subscriptions and change role to BANNED
-                await updateDoc(doc(db, "users", editingUser.uid), { 
-                    role: 'BANNED',
-                    isBanned: true,
-                    subscriptions: {}, // Wipes all premium access
-                    isPremium: false
-                });
-                
+                await updateDoc(doc(db, "users", editingUser.uid), { role: 'BANNED', isBanned: true, subscriptions: {}, isPremium: false });
                 alert("User has been successfully banned and all access revoked.");
-                
-                // Close the modal and refresh the list
-                const editModalLocal = document.getElementById('edit-user-modal');
-                if (editModalLocal) editModalLocal.style.display = 'none';
-                
+                if (editModal) editModal.style.display = 'none';
                 fetchAllUsers();
-                
             } catch (error) {
-                console.error("Error banning user:", error);
-                alert("Failed to ban user. Please check your connection.");
+                console.error("Error banning user:", error); alert("Failed to ban user. Please check your connection.");
             } finally {
-                btnBanUser.innerHTML = "⛔ Ban User";
-                btnBanUser.disabled = false;
+                btnBanUser.innerHTML = "⛔ Ban User"; btnBanUser.disabled = false;
             }
         }
     });
 }	
-	// 👇 --- NEW UNBAN USER LOGIC --- 👇
-const btnUnbanUser = document.getElementById('btn-unban-user');
 
+const btnUnbanUser = document.getElementById('btn-unban-user');
 if (btnUnbanUser) {
     btnUnbanUser.addEventListener('click', async () => {
         if (confirm(`✅ Are you sure you want to UNBAN ${editingUser.fullName || 'this user'}?\n\nThey will be restored as a regular Student.`)) {
-            
-            btnUnbanUser.textContent = "Unbanning...";
-            btnUnbanUser.disabled = true;
-            
+            btnUnbanUser.textContent = "Unbanning..."; btnUnbanUser.disabled = true;
             try {
-                // Update Firestore to remove ban flags and restore them as a Student
-                await updateDoc(doc(db, "users", editingUser.uid), { 
-                    role: 'STUDENT',
-                    isBanned: false
-                    // Note: We don't restore premium subscriptions automatically for security. 
-                    // You can re-grant them using the "Grant Access" tool if needed!
-                });
-                
+                await updateDoc(doc(db, "users", editingUser.uid), { role: 'STUDENT', isBanned: false });
                 alert("User has been successfully unbanned!");
-                
-                // Close the modal and refresh the list
-                const editModalLocal = document.getElementById('edit-user-modal');
-                if (editModalLocal) editModalLocal.style.display = 'none';
-                
+                if (editModal) editModal.style.display = 'none';
                 fetchAllUsers();
-                
             } catch (error) {
-                console.error("Error unbanning user:", error);
-                alert("Failed to unban user. Please check your connection.");
+                console.error("Error unbanning user:", error); alert("Failed to unban user.");
             } finally {
-                btnUnbanUser.innerHTML = "✅ Unban User";
-                btnUnbanUser.disabled = false;
+                btnUnbanUser.innerHTML = "✅ Unban User"; btnUnbanUser.disabled = false;
             }
         }
     });
 }
 
-
 // ==========================================
-// 5. SUBSCRIPTIONS LOGIC
+// 6. SUBSCRIPTIONS LOGIC
 // ==========================================
 function renderSubscriptions() {
     if(!subsListEl) return;
@@ -414,13 +415,15 @@ function renderSubscriptions() {
             expiryText = dateObj.toLocaleDateString();
         }
 
+        const displayName = mergedNamesMap[courseKey] || courseKey.replace('_', ' ').toUpperCase();
+
         const box = document.createElement('div');
         box.className = `subs-box ${isExpired ? '' : 'active-sub'}`;
         box.innerHTML = `
             <div style="display: flex; align-items: center; gap: 0.8rem;">
                 <i class="fas ${isExpired ? 'fa-times-circle' : 'fa-check-circle'}" style="color: ${isExpired ? '#ef4444' : '#10b981'}; font-size: 1.4rem;"></i>
                 <div>
-                    <div style="font-weight: 800; color: #1e293b; font-size: 1rem;">${courseKey.replace('_', ' ').toUpperCase()}</div>
+                    <div style="font-weight: 800; color: #1e293b; font-size: 1rem;">${displayName}</div>
                     <div style="font-size: 0.75rem; color: #64748b; font-weight: bold;">Premium Access</div>
                 </div>
             </div>
@@ -434,7 +437,7 @@ function renderSubscriptions() {
         `;
         
         box.querySelector('.btn-action-del').addEventListener('click', async () => {
-            if(confirm(`Remove access to ${courseKey}?`)) {
+            if(confirm(`Remove access to ${displayName}?`)) {
                 let newSubs = { ...editingUser.subscriptions };
                 delete newSubs[courseKey];
                 await updateDoc(doc(db, "users", editingUser.uid), { subscriptions: newSubs });
@@ -447,7 +450,6 @@ function renderSubscriptions() {
     });
 }
 
-// Hard-wired to Window
 window.grantAccess = async function() {
     const btn = document.getElementById('btn-grant-access');
     if(btn) { btn.textContent = "Saving..."; btn.disabled = true; }
@@ -482,7 +484,7 @@ window.grantAccess = async function() {
 };
 
 // ==========================================
-// 6. KEY GENERATION LOGIC
+// 7. KEY GENERATION LOGIC
 // ==========================================
 window.generateKey = async function() {
     const btn = document.getElementById('btn-generate-key');
@@ -490,19 +492,29 @@ window.generateKey = async function() {
 
     const course = document.getElementById('key-course').value;
     const duration = document.getElementById('key-duration').value;
-    let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
     const usage = parseInt(document.getElementById('key-usage').value) || 1;
     const expiry = document.getElementById('key-expiry').value;
+    let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
+
+    // Pull selected books
+    const selectedBooks = Array.from(document.querySelectorAll('.key-book-check:checked')).map(cb => cb.value);
 
     if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
     try {
         await setDoc(doc(db, "keys", customCode), {
-            code: customCode, course: course, duration: duration, maxUsage: usage,
-            usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
+            code: customCode, 
+            course: course, 
+            books: selectedBooks, // Added books array
+            duration: duration, 
+            maxUsage: usage,
+            usedCount: 0, 
+            expiryDate: expiry || null, 
+            createdAt: new Date().toISOString()
         });
         alert("Key Generated: " + customCode);
         document.getElementById('key-custom').value = '';
+        document.querySelectorAll('.key-book-check').forEach(cb => cb.checked = false); // Clear checks
         fetchKeys();
     } catch(e) {
         console.error(e);
@@ -523,7 +535,13 @@ async function fetchKeys() {
         const tr = document.createElement('tr');
         tr.style = "border-bottom: 2px solid #f1f5f9;";
         
-        // Added the copy button right next to the code text
+        // Build display for books attached to key
+        let booksHtml = '';
+        if (data.books && data.books.length > 0) {
+            const bookTitles = data.books.map(b => mergedNamesMap[b] || b).join(', ');
+            booksHtml = `<div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">+ Books: ${bookTitles}</div>`;
+        }
+
         tr.innerHTML = `
             <td style="padding: 1.2rem; font-weight: 800; font-size: 1.05rem; color: #1e293b;">
                 <div style="display: flex; align-items: center; gap: 0.8rem;">
@@ -533,33 +551,27 @@ async function fetchKeys() {
                     </button>
                 </div>
             </td>
-            <td><span class="badge b-course">${data.course.replace('_', ' ').toUpperCase()}</span></td>
+            <td>
+                <span class="badge b-course">${mergedNamesMap[data.course] || data.course.replace('_', ' ').toUpperCase()}</span>
+                ${booksHtml}
+            </td>
             <td style="font-weight: 700; color: #475569;">${data.usedCount} / ${data.maxUsage}</td>
             <td><button class="btn-action-del btn-del-key">Delete</button></td>
         `;
         
-        // Logic for the Copy Button
         const copyBtn = tr.querySelector('.btn-copy-key');
         copyBtn.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(data.code);
-                
-                // Visual feedback: change to a green checkmark
                 copyBtn.innerHTML = '<i class="fas fa-check" style="color: #10b981;"></i>';
                 copyBtn.style.borderColor = '#10b981';
-                
-                // Change back to copy icon after 2 seconds
                 setTimeout(() => {
                     copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
                     copyBtn.style.borderColor = '#cbd5e1';
                 }, 2000);
-            } catch (err) {
-                console.error("Failed to copy text: ", err);
-                alert("Clipboard access denied. Please allow clipboard permissions in your browser.");
-            }
+            } catch (err) { alert("Clipboard access denied."); }
         });
 
-        // Logic for the Delete Button (unchanged)
         tr.querySelector('.btn-del-key').addEventListener('click', async () => {
             if(confirm("Delete this key?")) {
                 await deleteDoc(doc(db, "keys", data.code));
@@ -572,7 +584,7 @@ async function fetchKeys() {
 }
 
 // ==========================================
-// 7. PAYMENT REQUEST LOGIC & RECEIPT MODAL
+// 8. PAYMENT REQUEST LOGIC
 // ==========================================
 let unsubscribePayments = null;
 
@@ -605,7 +617,8 @@ function fetchPayments() {
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
                     <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        ${data.courses.map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
+                        ${(data.courses || []).map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
+                        ${(data.books || []).map(b => `<span class="badge b-admin" style="background: #5b21b6; color: white;">${b.replace('_', ' ').toUpperCase()}</span>`).join('')}
                         <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
                     </div>
                 </div>
@@ -667,7 +680,8 @@ function fetchPayments() {
                     }
 
                     let currentSubs = uSnap.data().subscriptions || {};
-                    data.courses.forEach(c => currentSubs[c] = expiryValue);
+                    (data.courses || []).forEach(c => currentSubs[c] = expiryValue);
+                    (data.books || []).forEach(b => currentSubs[b] = expiryValue);
 
                     await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
                     await updateDoc(doc(db, "payment_requests", d.id), { status: 'approved' });
@@ -694,7 +708,7 @@ function fetchPayments() {
 }
 
 // ==========================================
-// 8. REPORTED QUESTIONS LOGIC
+// 9. REPORTED QUESTIONS LOGIC
 // ==========================================
 let unsubscribeReports = null;
 
@@ -778,7 +792,7 @@ async function fetchReports() {
 }
 
 // ==========================================
-// 9. CONTACT MESSAGES LOGIC
+// 10. CONTACT MESSAGES LOGIC
 // ==========================================
 let unsubscribeMessages = null;
 
@@ -797,7 +811,6 @@ async function fetchMessages() {
         const messagesDocs = [];
         qSnap.forEach(d => messagesDocs.push({ id: d.id, ...d.data() }));
 
-        // Sort by newest first
         messagesDocs.sort((a, b) => {
             const dateA = new Date(a.timestamp || 0);
             const dateB = new Date(b.timestamp || 0);
@@ -818,7 +831,6 @@ async function fetchMessages() {
                 });
             }
 
-            // Clean the WhatsApp number for the URL (removes spaces, +, -, etc.)
             const cleanWhatsapp = data.whatsapp ? data.whatsapp.replace(/[^0-9]/g, '') : '';
 
             card.innerHTML = `
@@ -850,7 +862,6 @@ async function fetchMessages() {
                 </div>
             `;
 
-            // Delete functionality
             card.querySelector('.btn-delete-msg').addEventListener('click', async () => {
                 if(confirm("Are you sure you want to delete this message?")) {
                     const btn = card.querySelector('.btn-delete-msg');

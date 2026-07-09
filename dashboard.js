@@ -605,11 +605,18 @@ if (btnRedeem) {
                 expiryValue = d.toISOString();
             }
 
-            let currentSubs = currentUserData.subscriptions || {};
+let currentSubs = currentUserData.subscriptions || {};
+            
+            // 1. Process Course Assignment
             if(keyData.course === 'ALL') {
                  ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'].forEach(c => currentSubs[c] = expiryValue);
-            } else {
+            } else if (keyData.course && keyData.course !== 'NONE') {
                 currentSubs[keyData.course] = expiryValue;
+            }
+
+            // 2. Process Book Add-ons
+            if (keyData.books && Array.isArray(keyData.books)) {
+                keyData.books.forEach(book => currentSubs[book] = expiryValue);
             }
 
             await updateDoc(doc(db, "users", currentUserId), {
