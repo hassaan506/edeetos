@@ -55,35 +55,33 @@
                         <input type="text" id="reg-uni" placeholder="Aga Khan University" required>
                     </div>
                     <div class="form-group">
-                        <label>Year of Study</label>
-                        <select id="reg-year" class="custom-select" required>
-                            <option value="" disabled selected>Select Year...</option>
-                            <option value="1st Year">1st Year MBBS</option>
-                            <option value="2nd Year">2nd Year MBBS</option>
-                            <option value="3rd Year">3rd Year MBBS</option>
-                            <option value="4th Year">4th Year MBBS</option>
-                            <option value="Final Year">Final Year MBBS</option>
-                            <option value="House Job">House Job / Intern</option>
-                            <option value="Resident">Resident / PG</option>
-                        </select>
+                        <label>City / Country</label>
+                        <input type="text" id="reg-location" placeholder="Karachi, Pakistan" required>
                     </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label>Target Exam</label>
-                        <select id="reg-exam" class="custom-select" required>
-                            <option value="" disabled selected>Select Exam...</option>
-                            <option value="FCPS Part 1">FCPS Part 1</option>
-                            <option value="FCPS IMM">FCPS IMM</option>
-                            <option value="FCPS Part 2">FCPS Part 2</option>
-                            <option value="MBBS Prof">MBBS Professional</option>
-                            <option value="MRCS / MRCP">MRCS / MRCP</option>
+                    <div class="form-group" style="width: 100%;">
+                        <label>Select Your Access Course</label>
+                        <select id="reg-course" class="custom-select" required>
+                            <option value="" disabled selected>Select the specific course you want to access...</option>
+                            
+                            <option value="mbbs_year1">MBBS 1st Year</option>
+                            <option value="mbbs_year2">MBBS 2nd Year</option>
+                            <option value="mbbs_year3">MBBS 3rd Year</option>
+                            <option value="mbbs_year4">MBBS 4th Year</option>
+                            <option value="mbbs_year5">MBBS 5th Year</option>
+                            
+                            <option value="fcps_imm">FCPS IMM</option>
+                            <option value="fcps_part1">FCPS Part 1</option>
+                            <option value="fcps_part2">FCPS Part 2</option>
+                            
+                            <option value="mrcs_part1">MRCS Part 1</option>
+                            <option value="mrcs_part2">MRCS Part 2</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label>City / Country</label>
-                        <input type="text" id="reg-location" placeholder="Karachi, Pakistan" required>
+                        <small style="color: #666; font-size: 0.85rem; margin-top: 5px; display: block;">
+                            Note: You will only have access to this specific course. Changing it later requires Admin approval.
+                        </small>
                     </div>
                 </div>
 
