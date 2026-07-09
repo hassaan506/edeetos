@@ -5,7 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/fireba
 
 let currentUserData = null;
 let currentUserId = null;
-let hasCheckedDowngrade = false; // 🐛 BUG FIX: Added our Lock Variable here!
+let hasCheckedDowngrade = false;
 
 const courseNamesMap = {
     'mbbs_year1': 'MBBS 1st Year',
@@ -19,6 +19,13 @@ const courseNamesMap = {
     'mrcs_part1': 'MRCS Part 1',
     'mrcs_part2': 'MRCS Part 2'
 };
+
+// Map used to render the nice names in the Profile Subscriptions list
+const mergedNamesMap = { 
+    ...courseNamesMap, 
+    'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA'
+};
+
 // ==========================================
 // 1. DASHBOARD LOAD & BADGE LOGIC
 // ==========================================
@@ -29,13 +36,24 @@ onAuthStateChanged(auth, async (user) => {
     if (user) {
         currentUserId = user.uid;
         const userRef = doc(db, "users", user.uid);
+        
+        // ⚡ SPEED BOOST: Fast UI Render from Cache
+        const cachedUser = sessionStorage.getItem('edeetos_dash_cache');
+        if (cachedUser && document.getElementById('user-name').textContent === "...") {
+            try {
+                const tempUser = JSON.parse(cachedUser);
+                document.getElementById('user-name').textContent = tempUser.fullName || "Doctor";
+            } catch (e) { console.warn("Cache parse failed"); }
+        }
+
         try {
             const docSnap = await getDoc(userRef);
 
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
+                sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); // Save for instant next load
+                
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
-                    
                     // 1. Visually change the underlying dashboard UI
                     document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
                     if (subStatus) {
@@ -77,8 +95,10 @@ onAuthStateChanged(auth, async (user) => {
                     
                     return; 
                 }				
+                
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
-                // NEW: POPULATE THE LOCKED COURSE ON THE DASHBOARD
+                
+                // POPULATE THE LOCKED COURSE ON THE DASHBOARD
                 const userCourseCode = currentUserData.selectedCourse; 
                 const activeCourseEl = document.getElementById('active-course-name');
                 if (activeCourseEl) {
@@ -86,9 +106,21 @@ onAuthStateChanged(auth, async (user) => {
                         activeCourseEl.textContent = courseNamesMap[userCourseCode] || "Unknown Course";
                     } else {
                         activeCourseEl.textContent = "No Course Assigned";
-                        activeCourseEl.style.color = "#ef4444"; // Make it red to warn the user
+                        activeCourseEl.style.color = "#ef4444"; 
                     }
                 }
+
+                // DYNAMICALLY INJECT LOCKED COURSE INTO PREMIUM MODAL
+                const dynamicCourseContainer = document.getElementById('dynamic-course-container');
+                if (dynamicCourseContainer) {
+                    if (userCourseCode) {
+                        const courseName = courseNamesMap[userCourseCode] || "Unknown Course";
+                        dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label" style="opacity: 0.7; cursor: not-allowed;"><input type="checkbox" class="course-check" value="${userCourseCode}" checked onclick="return false;"> ${courseName} (Locked to Profile)</label>`;
+                    } else {
+                        dynamicCourseContainer.innerHTML = `<div style="color: #ef4444; font-size: 0.8rem; font-weight: bold;">Action Required: Request a course in your Profile first.</div>`;
+                    }
+                }
+
                 const userRole = (currentUserData.role || '').toUpperCase();
 
                 // Verify if the premium subscription is genuinely active by checking dates
@@ -97,15 +129,14 @@ onAuthStateChanged(auth, async (user) => {
                     for (const expiry of Object.values(currentUserData.subscriptions)) {
                         if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
                             hasActiveSubscription = true;
-                            break; // Stop looking as soon as we find one active plan
+                            break; 
                         }
                     }
                 }
                 
-                // 🐛 BUG FIX: The Anti-Loop Lock! 
-                // Only attempt to downgrade ONCE per session to stop the infinite ping-pong refresh.
+                // The Anti-Loop Lock! Only attempt to downgrade ONCE per session.
                 if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
-                    hasCheckedDowngrade = true; // Lock it!
+                    hasCheckedDowngrade = true; 
                     updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading user:", err));
                 }
 
@@ -313,6 +344,7 @@ onAuthStateChanged(auth, async (user) => {
 // ==========================================
 document.getElementById('logout-btn').addEventListener('click', () => {
     localStorage.removeItem('edeetos_guest_mode');
+    sessionStorage.removeItem('edeetos_dash_cache');
     signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => {
         window.location.href = 'index.html';
     });
@@ -323,12 +355,18 @@ document.getElementById('btn-admin-panel').addEventListener('click', () => {
 });
 
 document.getElementById('btn-contact-mentor').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Mentorship.");
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+        alert("Please register to access Mentorship.");
+        return;
+    }
     window.location.href = 'mentor.html';
 });
 
 document.getElementById('btn-open-premium').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to upgrade to Premium.");
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+        alert("Please register to upgrade to Premium.");
+        return;
+    }
     document.getElementById('premium-modal').style.display = 'flex';
     updatePrices();
 });
@@ -339,17 +377,9 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
     });
 });
 
-window.addEventListener('load', () => {
-    const savedCourse = localStorage.getItem('edeetos_active_course');
-    if (savedCourse) {
-        const drop = document.getElementById('course-dropdown');
-        if(drop) drop.value = savedCourse;
-    }
-});
-
 document.getElementById('btn-launch-course').addEventListener('click', () => {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        localStorage.setItem('edeetos_active_course', 'fcps_part1'); // Guests default to FCPS
+        localStorage.setItem('edeetos_active_course', 'fcps_part1'); 
         window.location.href = 'questions.html';
         return;
     }
@@ -358,7 +388,7 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
         localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse);
         window.location.href = 'questions.html';
     } else {
-        alert("Your assigned course is still loading or missing. Please refresh the page.");
+        alert("Your assigned course is missing. Please request one in your Profile.");
     }
 });
 
@@ -386,25 +416,42 @@ document.getElementById('btn-open-course-selector').addEventListener('click', ()
 });
 
 document.getElementById('btn-confirm-courses').addEventListener('click', () => {
-    const checkedCount = document.querySelectorAll('.course-check:checked').length;
-    if (checkedCount === 0) return alert("You must select at least one course.");
-    document.getElementById('selected-courses-text').textContent = `${checkedCount} Course${checkedCount > 1 ? 's' : ''} Selected`;
+    const courseCount = document.querySelectorAll('.course-check:checked').length;
+    const bookCount = document.querySelectorAll('.book-check:checked').length;
+    
+    if (courseCount === 0 && bookCount === 0) return alert("You must select at least one course or book.");
+    
     courseSelectorModal.style.display = 'none';
     updatePrices();
 });
 
-const basePrices = [50, 150, 250, 400, 1000, 1500, 2500, 3500];
-const maxPrices = [200, 500, 800, 1500, 3000, 4000, 4500, 5000];
-
 function updatePrices() {
-    const count = Math.max(1, document.querySelectorAll('.course-check:checked').length);
-    const multiplier = 1 + ((count - 1) * 0.25); 
+    const courseCount = document.querySelectorAll('.course-check:checked').length;
+    const bookCount = document.querySelectorAll('.book-check:checked').length;
+
+    // Book Price Calc
+    let bookBaseTotal = bookCount * 500;
+    let bookDiscount = 0;
+    if (bookCount >= 5) bookDiscount = 0.30;      
+    else if (bookCount >= 3) bookDiscount = 0.20; 
+    else if (bookCount >= 2) bookDiscount = 0.10; 
+    
+    let finalBookTotal = bookBaseTotal * (1 - bookDiscount);
+
+    // Max cap is 5000 for courses.
+    const basePrices = [50, 150, 250, 400, 1000, 1500, 2500, 5000];
 
     for(let i = 0; i < 8; i++) {
-        let calculatedPrice = Math.round(basePrices[i] * multiplier);
-        if (calculatedPrice > maxPrices[i]) calculatedPrice = maxPrices[i];
+        let coursePrice = courseCount > 0 ? basePrices[i] : 0;
+        let totalPrice = Math.round(coursePrice + finalBookTotal);
+        
         const priceEl = document.getElementById('price-' + i);
-        if(priceEl) priceEl.textContent = 'Rs. ' + calculatedPrice.toLocaleString();
+        if(priceEl) priceEl.textContent = 'Rs. ' + totalPrice.toLocaleString();
+    }
+
+    const summaryText = document.getElementById('selected-courses-text');
+    if (summaryText) {
+        summaryText.textContent = `${courseCount} Course | ${bookCount} Book${bookCount !== 1 ? 's' : ''}`;
     }
 }
 
@@ -464,6 +511,7 @@ if (btnSubmitPayment) {
 
         try {
             const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
+            const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value); // Grab books!
             const selectedPlan = document.querySelector('.plan-card.selected');
             
             if (!selectedPlan) throw new Error("No plan selected.");
@@ -499,6 +547,7 @@ if (btnSubmitPayment) {
                 userId: currentUserId,
                 userEmail: userEmailToSave,
                 courses: courses,
+                books: books, // Save books to Database!
                 durationDays: durationDays,
                 planName: planName,
                 receiptUrl: receiptUrl,
@@ -609,18 +658,16 @@ if (btnOpenProfile) {
         document.getElementById('prof-name').value = currentUserData.fullName || '';
         document.getElementById('prof-username').value = currentUserData.username || '';
         document.getElementById('prof-email').value = currentUserData.email || '';
-document.getElementById('prof-phone').value = currentUserData.phone || '';
+        document.getElementById('prof-phone').value = currentUserData.phone || '';
         document.getElementById('prof-uni').value = currentUserData.institution || '';
         document.getElementById('prof-location').value = currentUserData.location || '';
 
-        // NEW: Populate the read-only course field in the profile
-// NEW: Populate the read-only course field in the profile
         const userCourseCode = currentUserData.selectedCourse;
         const displayField = document.getElementById('prof-course-display');
         if(displayField) {
             displayField.value = userCourseCode ? (courseNamesMap[userCourseCode] || "Unknown Course") : "None (Action Required)";
         }        
-        // Disable request button if a request is already pending
+        
         const btnChange = document.getElementById('btn-request-course-change');
         if (btnChange && currentUserData.courseChangeRequested) {
             btnChange.textContent = "Change Request Pending Admin Approval...";
@@ -632,16 +679,11 @@ document.getElementById('prof-phone').value = currentUserData.phone || '';
         subsList.innerHTML = '';
         
         const subs = currentUserData.subscriptions || {};
-        const courseNames = {
-            'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
-            'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
-            'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3', 'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5'
-        };
-        
         let hasSubs = false;
+
         for (const [key, expiry] of Object.entries(subs)) {
             hasSubs = true;
-            const name = courseNames[key] || key;
+            const name = mergedNamesMap[key] || key;
             const item = document.createElement('div');
             item.className = 'sub-item';
             
@@ -665,7 +707,7 @@ document.getElementById('prof-phone').value = currentUserData.phone || '';
         }
     });
 }
-// NEW: Handle Course Change Request Clicks
+
 const btnRequestChange = document.getElementById('btn-request-course-change');
 if (btnRequestChange) {
     btnRequestChange.addEventListener('click', async () => {
@@ -690,6 +732,7 @@ if (btnRequestChange) {
         }
     });
 }
+
 const profileForm = document.getElementById('profile-form');
 if (profileForm) {
     profileForm.addEventListener('submit', async (e) => {
@@ -699,7 +742,7 @@ if (profileForm) {
         btnSave.disabled = true;
         
         try {
-await updateDoc(doc(db, "users", currentUserId), {
+            await updateDoc(doc(db, "users", currentUserId), {
                 fullName: document.getElementById('prof-name').value,
                 phone: document.getElementById('prof-phone').value,
                 institution: document.getElementById('prof-uni').value,
@@ -712,6 +755,7 @@ await updateDoc(doc(db, "users", currentUserId), {
             currentUserData.location = document.getElementById('prof-location').value;
             
             document.getElementById('user-name').textContent = currentUserData.fullName;
+            sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); // Update cache
             
             alert("Profile updated successfully!");
             document.getElementById('profile-modal').style.display = 'none';
@@ -728,7 +772,6 @@ await updateDoc(doc(db, "users", currentUserId), {
 // ==========================================
 // 🚀 GROUP STUDY LOGIC
 // ==========================================
-// 1. Create a Room (Host)
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
     btnCreate.onclick = async () => {
@@ -738,7 +781,7 @@ if (btnCreate) {
         }
 
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            return alert("Please register to use Group Study.");
+            return alert("Guest accounts cannot host Group Study sessions. Please register for an account.");
         }
 
         const roomId = Math.floor(1000 + Math.random() * 9000).toString();
@@ -758,63 +801,22 @@ if (btnCreate) {
 
             const modal = document.createElement('div');
             modal.style.cssText = `
-                position: fixed;
-                top: 0; left: 0;
-                width: 100vw; height: 100vh;
-                background: rgba(0,0,0,0.7);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 99999;
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.7); display: flex; justify-content: center;
+                align-items: center; z-index: 99999;
             `;
 
             modal.innerHTML = `
-                <div style="
-                    background: white;
-                    padding: 30px;
-                    border-radius: 12px;
-                    text-align: center;
-                    max-width: 350px;
-                    width: 90%;
-                ">
+                <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; max-width: 350px; width: 90%;">
                     <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
                     <p style="margin-bottom: 15px;">Share this code:</p>
-
-                    <div id="room-code-box" style="
-                        font-size: 2rem;
-                        font-weight: bold;
-                        background: #f1f5f9;
-                        padding: 10px;
-                        border-radius: 8px;
-                        letter-spacing: 4px;
-                        margin-bottom: 20px;
-                    ">${roomId}</div>
-
-                    <button id="copy-room-code" style="
-                        margin-bottom: 10px;
-                        padding: 10px 20px;
-                        border: none;
-                        background: #3b82f6;
-                        color: white;
-                        border-radius: 8px;
-                        cursor: pointer;
-                    ">Copy Code</button>
-
-                    <br>
-
-                    <button id="enter-room" style="
-                        padding: 10px 20px;
-                        border: none;
-                        background: #10b981;
-                        color: white;
-                        border-radius: 8px;
-                        cursor: pointer;
-                    ">Enter Room</button>
+                    <div id="room-code-box" style="font-size: 2rem; font-weight: bold; background: #f1f5f9; padding: 10px; border-radius: 8px; letter-spacing: 4px; margin-bottom: 20px;">${roomId}</div>
+                    <button id="copy-room-code" style="margin-bottom: 10px; padding: 10px 20px; border: none; background: #3b82f6; color: white; border-radius: 8px; cursor: pointer;">Copy Code</button><br>
+                    <button id="enter-room" style="padding: 10px 20px; border: none; background: #10b981; color: white; border-radius: 8px; cursor: pointer;">Enter Room</button>
                 </div>
             `;
 
             document.body.appendChild(modal);
-
             btnCreate.textContent = "Create Room";
             btnCreate.disabled = false;
 
@@ -838,9 +840,6 @@ if (btnCreate) {
     };
 }
 
-// ==========================================
-// CUSTOM JOIN ROOM MODAL LOGIC
-// ==========================================
 const joinModal = document.getElementById('join-room-modal');
 const btnJoin = document.getElementById('btn-join-room');
 const btnCloseJoin = document.getElementById('btn-close-join');
@@ -879,25 +878,21 @@ if (btnSubmitJoin) {
                 const roomData = roomSnap.data();
                 const roomCourse = roomData.course;
 
-                // 🛑 ANTI-LOOPHOLE CHECK: Does the guest have Premium for this specific course?
+                // 🛑 ANTI-LOOPHOLE CHECK: Premium required for this course
                 let hasPremiumAccess = false;
                 const subs = currentUserData.subscriptions || {};
                 const expiry = subs[roomCourse] || subs['ALL'];
 
-                if (expiry) {
-                    if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
-                        hasPremiumAccess = true;
-                    }
+                if (expiry && (expiry === 'lifetime' || new Date(expiry) > new Date())) {
+                    hasPremiumAccess = true;
                 }
                 
-                // Allow Admins/Management to bypass the paywall
                 const role = (currentUserData.role || '').toUpperCase();
                 if (role === 'ADMIN' || role === 'MANAGEMENT') hasPremiumAccess = true;
 
                 if (!hasPremiumAccess) {
                     alert(`Access Denied 🛑\n\nThis room is studying the Premium Question Bank for ${courseNamesMap[roomCourse] || roomCourse}. You must have an active subscription for this course to join your friend!`);
                     
-                    // Close the join modal and instantly open the Premium modal to get the sale!
                     joinModal.style.display = 'none';
                     document.getElementById('premium-modal').style.display = 'flex';
                     if (typeof updatePrices === 'function') updatePrices();
@@ -907,7 +902,6 @@ if (btnSubmitJoin) {
                     return;
                 }
 
-                // ✅ If they passed the Premium check, let them in!
                 localStorage.setItem('active_study_room', code);
                 localStorage.setItem('is_study_guest', 'true'); 
                 
