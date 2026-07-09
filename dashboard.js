@@ -20,7 +20,6 @@ const courseNamesMap = {
     'mrcs_part2': 'MRCS Part 2'
 };
 
-// Map used to render the nice names in the Profile Subscriptions list
 const mergedNamesMap = { 
     ...courseNamesMap, 
     'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA'
@@ -37,7 +36,6 @@ onAuthStateChanged(auth, async (user) => {
         currentUserId = user.uid;
         const userRef = doc(db, "users", user.uid);
         
-        // ⚡ SPEED BOOST: Fast UI Render from Cache
         const cachedUser = sessionStorage.getItem('edeetos_dash_cache');
         if (cachedUser && document.getElementById('user-name').textContent === "...") {
             try {
@@ -51,10 +49,9 @@ onAuthStateChanged(auth, async (user) => {
 
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
-                sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); // Save for instant next load
+                sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
                 
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
-                    // 1. Visually change the underlying dashboard UI
                     document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
                     if (subStatus) {
                         subStatus.textContent = "BANNED";
@@ -64,7 +61,6 @@ onAuthStateChanged(auth, async (user) => {
                         subStatus.style.border = "1px solid #fca5a5";
                     }
                     
-                    // 2. Create the inescapable full-screen lockout overlay
                     const lockoutScreen = document.createElement('div');
                     lockoutScreen.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);";
                     
@@ -79,11 +75,9 @@ onAuthStateChanged(auth, async (user) => {
                         </button>
                     `;
                     
-                    // 3. Add it to the page and kill scrolling
                     document.body.appendChild(lockoutScreen);
                     document.body.style.overflow = 'hidden';
                     
-                    // 4. Add the logout functionality to the button inside the overlay
                     document.getElementById('btn-banned-logout').addEventListener('click', () => {
                         document.getElementById('btn-banned-logout').textContent = "Logging out...";
                         signOut(auth).then(() => {
@@ -98,7 +92,6 @@ onAuthStateChanged(auth, async (user) => {
                 
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
                 
-                // POPULATE THE LOCKED COURSE ON THE DASHBOARD
                 const userCourseCode = currentUserData.selectedCourse; 
                 const activeCourseEl = document.getElementById('active-course-name');
                 if (activeCourseEl) {
@@ -110,7 +103,6 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
 
-                // DYNAMICALLY INJECT LOCKED COURSE INTO PREMIUM MODAL
                 const dynamicCourseContainer = document.getElementById('dynamic-course-container');
                 if (dynamicCourseContainer) {
                     if (userCourseCode) {
@@ -123,7 +115,6 @@ onAuthStateChanged(auth, async (user) => {
 
                 const userRole = (currentUserData.role || '').toUpperCase();
 
-                // Verify if the premium subscription is genuinely active by checking dates
                 let hasActiveSubscription = false;
                 if (currentUserData.isPremium && currentUserData.subscriptions) {
                     for (const expiry of Object.values(currentUserData.subscriptions)) {
@@ -134,7 +125,6 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
                 
-                // The Anti-Loop Lock! Only attempt to downgrade ONCE per session.
                 if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
                     hasCheckedDowngrade = true; 
                     updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading user:", err));
@@ -175,7 +165,6 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
 
-                // 👉 GLOBAL MENTOR NOTIFICATIONS
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     const btnReports = document.getElementById('btn-reports-panel');
                     if (btnReports) btnReports.style.display = 'flex';
@@ -218,9 +207,6 @@ onAuthStateChanged(auth, async (user) => {
                     });
                 }
 
-                // ==========================================
-                // 👉 STUDENT FEATURE: FETCH ASSIGNED EXAMS
-                // ==========================================
                 if (userRole === 'STUDENT' || hasActiveSubscription) {
                     const examsRef = collection(db, "assigned_exams");
                     const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
@@ -316,7 +302,6 @@ onAuthStateChanged(auth, async (user) => {
             console.error("Error fetching user data:", error);
         }
     } else {
-        // GUEST MODE LOGIC
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             document.getElementById('user-name').textContent = "Guest";
             
@@ -429,21 +414,22 @@ function updatePrices() {
     const courseCount = document.querySelectorAll('.course-check:checked').length;
     const bookCount = document.querySelectorAll('.book-check:checked').length;
 
-    // Book Price Calc
-    let bookBaseTotal = bookCount * 500;
     let bookDiscount = 0;
     if (bookCount >= 5) bookDiscount = 0.30;      
     else if (bookCount >= 3) bookDiscount = 0.20; 
     else if (bookCount >= 2) bookDiscount = 0.10; 
-    
-    let finalBookTotal = bookBaseTotal * (1 - bookDiscount);
 
-    // Max cap is 5000 for courses.
-    const basePrices = [50, 150, 250, 400, 1000, 1500, 2500, 5000];
+    // Base course max 5000. Base book max 500. Adjust these arrays to change pricing.
+    const baseCoursePrices = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
+    const baseBookPrices = [20, 50, 80, 120, 250, 350, 450, 500];
 
     for(let i = 0; i < 8; i++) {
-        let coursePrice = courseCount > 0 ? basePrices[i] : 0;
-        let totalPrice = Math.round(coursePrice + finalBookTotal);
+        let coursePrice = courseCount > 0 ? baseCoursePrices[i] : 0;
+        
+        let rawBookTotal = bookCount * baseBookPrices[i];
+        let discountedBookTotal = rawBookTotal * (1 - bookDiscount);
+        
+        let totalPrice = Math.round(coursePrice + discountedBookTotal);
         
         const priceEl = document.getElementById('price-' + i);
         if(priceEl) priceEl.textContent = 'Rs. ' + totalPrice.toLocaleString();
@@ -511,7 +497,7 @@ if (btnSubmitPayment) {
 
         try {
             const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
-            const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value); // Grab books!
+            const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value);
             const selectedPlan = document.querySelector('.plan-card.selected');
             
             if (!selectedPlan) throw new Error("No plan selected.");
@@ -547,7 +533,7 @@ if (btnSubmitPayment) {
                 userId: currentUserId,
                 userEmail: userEmailToSave,
                 courses: courses,
-                books: books, // Save books to Database!
+                books: books,
                 durationDays: durationDays,
                 planName: planName,
                 receiptUrl: receiptUrl,
@@ -709,28 +695,47 @@ if (btnOpenProfile) {
 }
 
 const btnRequestChange = document.getElementById('btn-request-course-change');
-if (btnRequestChange) {
-    btnRequestChange.addEventListener('click', async () => {
-        const confirmRequest = confirm("Would you like to notify an Administrator to change your course? You will need to tell them which course you want to switch to.");
-        
-        if (confirmRequest) {
-            btnRequestChange.textContent = "Submitting Request...";
+const courseChangeModal = document.getElementById('course-change-modal');
+
+if (btnRequestChange && courseChangeModal) {
+    btnRequestChange.addEventListener('click', () => {
+        courseChangeModal.style.display = 'flex';
+    });
+    
+    const btnSubmitChange = document.getElementById('btn-submit-course-change');
+    if (btnSubmitChange) {
+        btnSubmitChange.addEventListener('click', async () => {
+            const newCourse = document.getElementById('new-course-request-select').value;
+            if (!newCourse) return alert("Please select a new course from the dropdown first.");
+            
+            btnSubmitChange.textContent = "Submitting...";
+            btnSubmitChange.disabled = true;
+            
             try {
                 await updateDoc(doc(db, "users", currentUserId), {
-                    courseChangeRequested: true
+                    courseChangeRequested: true,
+                    requestedCourse: newCourse 
                 });
+                
                 currentUserData.courseChangeRequested = true;
-                btnRequestChange.textContent = "Request Sent (Pending Approval)";
+                currentUserData.requestedCourse = newCourse;
+                
+                btnRequestChange.textContent = "Change Request Pending Admin Approval...";
                 btnRequestChange.style.color = "#94a3b8";
                 btnRequestChange.style.pointerEvents = "none";
-                alert("Request submitted! An Admin will review it shortly.");
+                
+                alert(`Request to switch to ${courseNamesMap[newCourse] || newCourse} submitted! An Admin will review it shortly.`);
+                courseChangeModal.style.display = 'none';
+                
             } catch (error) {
                 console.error(error);
-                alert("Failed to submit request.");
-                btnRequestChange.textContent = "Request Course Change";
+                alert("Failed to submit request. Please check your internet connection.");
+            } finally {
+                btnSubmitChange.textContent = "Submit Request";
+                btnSubmitChange.disabled = false;
             }
-        }
-    });
+        });
+    }
 }
 
 const profileForm = document.getElementById('profile-form');
@@ -755,7 +760,7 @@ if (profileForm) {
             currentUserData.location = document.getElementById('prof-location').value;
             
             document.getElementById('user-name').textContent = currentUserData.fullName;
-            sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); // Update cache
+            sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
             
             alert("Profile updated successfully!");
             document.getElementById('profile-modal').style.display = 'none';
@@ -878,7 +883,6 @@ if (btnSubmitJoin) {
                 const roomData = roomSnap.data();
                 const roomCourse = roomData.course;
 
-                // 🛑 ANTI-LOOPHOLE CHECK: Premium required for this course
                 let hasPremiumAccess = false;
                 const subs = currentUserData.subscriptions || {};
                 const expiry = subs[roomCourse] || subs['ALL'];

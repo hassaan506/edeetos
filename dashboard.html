@@ -173,7 +173,7 @@
                 </div>
 
                 <!-- BOOKS ADD-ON SECTION -->
-                <div style="font-size: 0.75rem; font-weight: 800; color: #d97706; margin-top: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px;">BOOK ADD-ONS (+Rs. 500 Each)</div>
+                <div style="font-size: 0.75rem; font-weight: 800; color: #d97706; margin-top: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px;">BOOK ADD-ONS</div>
                 <div style="font-size: 0.65rem; color: #64748b; margin-bottom: 0.5rem;">Buy 2+ (10% Off) | Buy 3+ (20% Off) | Buy 5+ (30% Off)</div>
                 
                 <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="firstaid_step1"> First Aid Step 1</label>
@@ -263,6 +263,33 @@
         </div>
     </div>
 	
+    <!-- COURSE CHANGE REQUEST MODAL -->
+    <div id="course-change-modal" class="popup-overlay" style="display: none; z-index: 1002;">
+        <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: left;">
+            <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; text-align: center;">Request Course Change</h3>
+            <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.5rem; text-align: center;">Select the new course you want to switch to. An Admin will review your request.</p>
+            
+            <select id="new-course-request-select" class="custom-select" style="margin-bottom: 1.5rem; width: 100%;">
+                <option value="" disabled selected>Select new course...</option>
+                <option value="mbbs_year1">MBBS 1st Year</option>
+                <option value="mbbs_year2">MBBS 2nd Year</option>
+                <option value="mbbs_year3">MBBS 3rd Year</option>
+                <option value="mbbs_year4">MBBS 4th Year</option>
+                <option value="mbbs_year5">MBBS 5th Year</option>
+                <option value="fcps_imm">FCPS IMM</option>
+                <option value="fcps_part1">FCPS Part 1</option>
+                <option value="fcps_part2">FCPS Part 2</option>
+                <option value="mrcs_part1">MRCS Part 1</option>
+                <option value="mrcs_part2">MRCS Part 2</option>
+            </select>
+
+            <button id="btn-submit-course-change" class="btn-solid" style="width: 100%; background: #d97706; color: white; padding: 0.8rem; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; margin-bottom: 0.5rem;">
+                Submit Request
+            </button>
+            <button class="btn-close-modal" style="width: 100%; background: none; border: none; color: #64748b; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0.5rem;">Cancel</button>
+        </div>
+    </div>
+
     <!-- JOIN ROOM MODAL -->
     <div id="join-room-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: center;">
