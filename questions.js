@@ -1173,20 +1173,28 @@ onAuthStateChanged(auth, async (user) => {
                         <div style="display: flex; flex-direction: column; gap: 20px; max-height: 400px; overflow-y: auto; padding-right: 10px;">
                     `;
 
-                    // 3. Render HTML for each Day group
+// 3. Render HTML for each Day group (Collapsible Accordion)
                     sortedDays.forEach(day => {
                         revHtml += `
-                            <div class="revision-day-group">
-                                <h4 style="margin: 0 0 10px 0; color: #1e3a8a; font-size: 0.95rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">
-                                    <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 6px;"></i> Day ${day}
-                                </h4>
-                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <div class="revision-day-group" style="margin-bottom: 10px;">
+                                <!-- The Clickable Day Header -->
+                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #cbd5e1; background: #f8fafc; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = '#eff6ff'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = '#cbd5e1'; this.style.background = '#f8fafc'; }">
+                                    <div style="font-weight: 700; color: #1e293b; font-size: 1rem;">
+                                        <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 8px;"></i> Day ${day}
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <span class="badge" style="background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
+                                        <i class="fas fa-chevron-down toggle-icon" style="color: #64748b; transition: transform 0.3s;"></i>
+                                    </div>
+                                </button>
+                                
+                                <!-- The Hidden Content that expands -->
+                                <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #cbd5e1; margin-left: 5px;">
                         `;
 
                         groupedByDay[day].forEach(item => {
                             const safeTopic = encodeURIComponent(item.id);
                             
-                            // Creates the: Subject > Chapter > Topic display
                             const displayPath = `
                                 <span style="color:#64748b; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span></span>
                                 <span style="color:#92400e; font-size: 0.95rem;">${item.topic}</span>
@@ -1209,9 +1217,6 @@ onAuthStateChanged(auth, async (user) => {
                     });
 
                     revHtml += `</div>`;
-                    revisionCard.innerHTML = revHtml;
-                    revisionContainer.innerHTML = ''; 
-                    revisionContainer.appendChild(revisionCard);
                 } else if (revisionContainer) {
                     revisionContainer.innerHTML = '';
                 }
