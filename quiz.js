@@ -65,7 +65,6 @@ if (isExamMode) {
 }
 
 function loadSession() {
-    // If you are a guest in a study room, do NOT load from local storage. Wait for Firebase.
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
         return; 
     }
@@ -108,13 +107,11 @@ onAuthStateChanged(auth, async (user) => {
                 // ==========================================
                 const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
                 if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
-                    // Unlock everything for Admins/Management
                     window.isScreenshotBlockEnabled = false;
                     document.body.style.userSelect = 'auto';
                     document.body.style.webkitUserSelect = 'auto';
                     document.oncontextmenu = null;
                 } else {
-                    // Lock down students and standard users
                     window.isScreenshotBlockEnabled = true;
                     document.body.style.userSelect = 'none';
                     document.body.style.webkitUserSelect = 'none';
@@ -122,7 +119,6 @@ onAuthStateChanged(auth, async (user) => {
                 }
                 // ==========================================
 
-                // MULTIPLAYER ATTENDANCE SYNC
                 if (activeRoomId) {
                     await updateDoc(roomRef, {
                         [`activeMembers.${currentUserId}`]: dbData.fullName || "Student"
@@ -148,7 +144,6 @@ onAuthStateChanged(auth, async (user) => {
                 }
 
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-                // Load progress from BOTH the course and the books bucket
                 const courseData = dbData[activeCourse] || {};
                 const booksData = dbData.books || {};
                 const savedNotes = { ...(courseData.notes || {}), ...(booksData.notes || {}) };
@@ -183,7 +178,6 @@ onAuthStateChanged(auth, async (user) => {
         } catch (error) {
             console.error("Firebase Load Error:", error);
         } finally {
-            // Only auto-start if they aren't waiting in a multiplayer lobby
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
                 if (!isExamMode) buildNumberGrid();
@@ -224,13 +218,11 @@ function shuffleArray(array) {
 }
 
 function formatJSONQuestion(q) {
-    // If it is already formatted (like during a multiplayer sync), just return it
     if (Array.isArray(q.options)) return q;
 
     const correctLetter = (q.correctAnswer || q.CorrectAnswer || '').toString().trim().toUpperCase();
     const formattedOptions = [];
 
-    // Parse the new JSON dictionary format { A: "...", B: "..." }
     if (q.options && typeof q.options === 'object') {
         ['A', 'B', 'C', 'D', 'E'].forEach(letter => {
             const optText = q.options[letter];
@@ -244,6 +236,7 @@ function formatJSONQuestion(q) {
         text: q.question || q.Question || "Missing Question Text",
         options: formattedOptions,
         explanation: q.explanation || q.Explanation || "No explanation provided.",
+        hint: q.hint || q.Hint || "", // Pulls directly from CSV/JSON
         originalNumber: q.QuestionID || q.id || q.originalNumber || `q-${Math.random()}`,
         isBookmarked: q.isBookmarked || false,
         userNote: q.userNote || "",
@@ -252,7 +245,6 @@ function formatJSONQuestion(q) {
         hasBeenSkipped: q.hasBeenSkipped || false,
         userSelectedAnswer: q.userSelectedAnswer || null,
         
-        // Exact mappings for course and book hierarchy
         Subject: q.Subject || q.subject || "",
         Chapter: q.Chapter || q.chapter || "",
         Topic: q.Topic || q.topic || "",
@@ -277,7 +269,6 @@ function buildNumberGrid() {
         numBtn.onclick = () => {
             if (isExamMode) return; 
             
-            // Lock out guests
             if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
                 alert("Only the host can jump to different questions.");
                 return;
@@ -286,7 +277,6 @@ function buildNumberGrid() {
             if(index === currentIndex) return;
             const direction = index > currentIndex ? 'right' : 'left';
             
-            // Sync host clicks to the group
             if (activeRoomId) syncNextQuestion(index); 
             
             triggerSlideTransition(index, direction);
@@ -327,7 +317,6 @@ function loadQuestion(index) {
         currentIndex = index;
         currentQuestionData = quizQueue[currentIndex];
 
-        // Reset Multiplayer states
         hasRevealedCurrentQuestion = false;
         hasAnsweredCurrentQuestion = false;
         const waitEl = document.getElementById('multiplayer-waiting-text');
@@ -335,17 +324,21 @@ function loadQuestion(index) {
         const forceBtn = document.getElementById('host-force-reveal-btn');
         if (forceBtn) forceBtn.style.display = 'none';
 
-		if (!currentQuestionData.options || !Array.isArray(currentQuestionData.options)) {
+        if (!currentQuestionData.options || !Array.isArray(currentQuestionData.options)) {
             quizQueue[currentIndex] = formatJSONQuestion(currentQuestionData);
             currentQuestionData = quizQueue[currentIndex];
         }
 
         wrongAttempts = 0;
         hasAnsweredCorrectly = false;
-		if (aiHintBtn) aiHintBtn.style.display = 'none'; // Hide AI hint on new question        
-        if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; // Reset toolkit
+        
+        if (aiHintBtn) {
+            aiHintBtn.style.display = 'none'; 
+            aiHintBtn.innerHTML = `<i class="fas fa-lightbulb"></i> Hint`; // Standardize UI
+        }
+        
+        if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; 
         if (!isExamMode) updateFeedbackBar();
-		
         
         if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
             explanationBtn.style.display = 'inline-block';
@@ -525,7 +518,6 @@ async function savePracticeProgress(questionId, isCorrect) {
     if (!user) return; 
 
     const userRef = doc(db, "users", user.uid);
-    // Use 'books' bucket for book sessions, otherwise the active course
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     let updates = {};
 
@@ -615,7 +607,6 @@ function handleOptionClick(event, optionData, optionElement) {
         return; 
     }
 
-    // MULTIPLAYER OVERRIDE
     if (activeRoomId) {
         if (hasAnsweredCurrentQuestion || hasRevealedCurrentQuestion) return;
         hasAnsweredCurrentQuestion = true;
@@ -623,12 +614,10 @@ function handleOptionClick(event, optionData, optionElement) {
         optionElement.style.border = "2px solid #3b82f6";
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
 
-        // Push answer to Cloud
         updateDoc(roomRef, { [`answers.${currentIndex}.${currentUserId}`]: optionData.text });
         return;
     }
 
-    // NORMAL SOLO MODE
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
     if (!optionData.isCorrect) {
@@ -704,7 +693,6 @@ if (!floatingHighlightBtn) {
 }
 
 if (questionTextEl) {
-    // Surgically bypass anti-cheat ONLY for the question text
     questionTextEl.style.userSelect = 'text';
     questionTextEl.style.webkitUserSelect = 'text';
 
@@ -720,12 +708,10 @@ if (questionTextEl) {
             floatingHighlightBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
             floatingHighlightBtn.style.display = 'flex';
             
-            // Highlight Button Logic
             document.getElementById('tool-hl-yellow').onclick = () => {
                 applyTextFormat(range, selection, 'background-color: #fef08a; padding: 2px 4px; border-radius: 4px; color: #1e293b;');
             };
             
-            // Strikethrough Button Logic
             document.getElementById('tool-hl-strike').onclick = () => {
                 applyTextFormat(range, selection, 'text-decoration: line-through; color: #94a3b8;');
             };
@@ -734,7 +720,6 @@ if (questionTextEl) {
         }
     });
 
-    // Hide toolkit when clicking elsewhere
     document.addEventListener('mousedown', (e) => {
         if (e.target.closest('#floating-toolkit') === null) {
             floatingHighlightBtn.style.display = 'none';
@@ -766,7 +751,6 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     const forceBtn = document.getElementById('host-force-reveal-btn');
     if (forceBtn) forceBtn.style.display = 'none';
 
-    // Grade local user silently
     const myAnswerText = answersObj[currentUserId];
     if (myAnswerText) {
         const myOpt = currentQuestionData.options.find(o => o.text === myAnswerText);
@@ -785,7 +769,6 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     explanationBtn.style.display = 'inline-block';
     document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
 
-    // Inject visual feedback and tags for all voters
     document.querySelectorAll('.option-box').forEach(box => {
         const textDiv = box.querySelector('.option-text');
         const optText = textDiv ? textDiv.textContent : '';
@@ -794,7 +777,6 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
         if (isOptCorrect) box.classList.add('correct', 'apply-pop');
         else if (Object.values(answersObj).includes(optText)) box.classList.add('incorrect');
 
-        // Look for anyone who voted for this box
         const voters = Object.keys(answersObj).filter(uid => answersObj[uid] === optText);
         if (voters.length > 0) {
             const tagContainer = document.createElement('div');
@@ -822,7 +804,6 @@ if (roomRef) {
 
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-        // 1. LOBBY STATE (Guests waiting for Host)
         if (data.status === "waiting" && isGuest) {
             if (!document.getElementById('mp-lobby-screen')) {
                 const lobby = document.createElement('div');
@@ -838,7 +819,6 @@ if (roomRef) {
             return;
         }
 
-        // 2. GAME INITIATION (Guests download questions)
         if (data.status === "playing" && isGuest) {
             const lobby = document.getElementById('mp-lobby-screen');
             if (lobby) lobby.remove();
@@ -854,13 +834,11 @@ if (roomRef) {
             }
         }
 
-        // 3. SYNC PAGE NAVIGATION
         if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
             const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
             triggerSlideTransition(data.currentQuestionIndex, direction);
         }
 
-        // 4. LIVE VOTING TRACKER & VISUAL ROSTER
         if (data.status === "playing" && activeRoomId) {
             const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
             const activeMembers = data.activeMembers || {};
@@ -928,7 +906,6 @@ if (roomRef) {
 
             const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
 
-            // Trigger standard reveal
             if ((answerCount >= memberCount || forceReveal) && !hasRevealedCurrentQuestion && answerCount > 0) {
                 revealMultiplayerAnswers(currentAnswers, data.activeMembers);
             }
@@ -979,7 +956,7 @@ function showResults() {
     }
 
     const returnBtn = resultsEl.querySelector('button');
-if (returnBtn) {
+    if (returnBtn) {
         returnBtn.onclick = async (e) => {
             e.preventDefault();
             returnBtn.textContent = "Saving Exam Data...";
@@ -1039,7 +1016,6 @@ function showPracticeCompleteModal(isGuest = false) {
 // ==========================================
 function startTimer() {
     timerInterval = setInterval(() => {
-        // 1. Handle Global Session Timer
         if (isExamMode) {
             sessionSeconds--; 
             if (sessionSeconds <= 0) {
@@ -1056,21 +1032,17 @@ function startTimer() {
         const sSecs = (sessionSeconds % 60).toString().padStart(2, '0');
         if (timerDisplay) timerDisplay.textContent = `${sMins}:${sSecs}`;
 
-        // 2. Handle Individual Question Timer & AI Hint Trigger
         if (currentQuestionData) {
             if (!currentQuestionData.timeSpent) currentQuestionData.timeSpent = 0;
             currentQuestionData.timeSpent++;
 
-            // Format and update Question Timer UI
             const qMins = Math.floor(currentQuestionData.timeSpent / 60).toString().padStart(2, '0');
             const qSecs = (currentQuestionData.timeSpent % 60).toString().padStart(2, '0');
             if (qTimerDisplay) qTimerDisplay.textContent = `${qMins}:${qSecs}`;
 
-            // Trigger AI Hint Button to appear after 15 seconds in Practice Mode
             if (!isExamMode && !hasAnsweredCorrectly && currentQuestionData.timeSpent === 15) {
                 if (aiHintBtn) {
                     aiHintBtn.style.display = 'inline-flex';
-                    // Optional: Add a subtle pop-in CSS animation class later
                     aiHintBtn.classList.add('pop-in'); 
                 }
             }
@@ -1085,7 +1057,6 @@ skipBtn.onclick = () => {
     triggerSlideTransition(currentIndex, 'right');
 };
 
-// Lab Values Toggle
 if (labValuesBtn) labValuesBtn.onclick = () => {
     if (labValuesModal) {
         labValuesModal.classList.remove('hidden');
@@ -1096,46 +1067,39 @@ if (closeLabValuesBtn) closeLabValuesBtn.onclick = () => {
     if (labValuesModal) labValuesModal.classList.remove('show');
 };
 
-// Next Button inside Explanation Modal
 if (modalNextBtn) {
     modalNextBtn.onclick = () => {
-        if (closeExplanationBtn) closeExplanationBtn.click(); // Close the modal
-        document.getElementById('next-btn').click();          // Trigger the main next logic
+        if (closeExplanationBtn) closeExplanationBtn.click(); 
+        document.getElementById('next-btn').click();          
     };
 }
 
 if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.remove('hidden'); explanationModal.classList.add('show'); };
 if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
 
-// AI Tutor Hint Logic
+// Database Driven Hint Logic
 if (aiHintBtn) {
     aiHintBtn.onclick = () => {
         if (!currentQuestionData) return;
         
-        // Simulate AI thinking delay for UX
         const originalText = aiHintBtn.innerHTML;
-        aiHintBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Analyzing...`;
+        aiHintBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
         aiHintBtn.disabled = true;
 
         setTimeout(() => {
-            // Intelligent extraction: Grab the first sentence of the explanation as a hint
-            const fullExplanation = currentQuestionData.explanation || "";
-            let hintText = fullExplanation.split('.')[0];
+            let hintText = currentQuestionData.hint;
             
-            // Fallback if explanation is empty or too short
-            if (!hintText || hintText.length < 15) {
-                hintText = "Analyze the patient's primary symptoms, labs, and time-course carefully";
+            if (!hintText || hintText.trim() === "") {
+                hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, labs, and time-course carefully.";
             }
 
-            // Fire an alert (We will upgrade this to a sleek UI modal later)
-            alert(`🤖 AI Tutor Hint:\n\n${hintText}...`);
+            alert(`💡 Hint:\n\n${hintText}`);
 
-            // Reset and hide the button
             aiHintBtn.innerHTML = originalText;
             aiHintBtn.disabled = false;
             aiHintBtn.style.display = 'none'; 
             
-        }, 800); 
+        }, 400); 
     };
 }
 
@@ -1231,17 +1195,14 @@ function selectOptionByIndex(index) {
     if (options && options[index]) options[index].click(); 
 }
 
-// Global Anti-Cheat State (Defaults to true to protect before auth loads)
 window.isScreenshotBlockEnabled = true; 
 
-// 1. Global Copy Blocker
 document.addEventListener('copy', (e) => {
     if (window.isScreenshotBlockEnabled) {
         e.preventDefault();
     }
 });
 
-// 2. Global Screenshot Blocker & Popup Trigger
 document.addEventListener("keyup", (e) => {
     if (window.isScreenshotBlockEnabled && e.key === "PrintScreen") {
         navigator.clipboard.writeText("Screenshots are disabled for copyright protection.");
@@ -1256,7 +1217,6 @@ document.addEventListener("keyup", (e) => {
 const globalExitBtn = document.getElementById('global-exit-btn');
 
 if (globalExitBtn) {
-    // If it's a multiplayer room, style it differently
     if (activeRoomId) {
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
@@ -1264,22 +1224,19 @@ if (globalExitBtn) {
         globalExitBtn.style.color = '#ef4444';
         globalExitBtn.style.borderColor = '#ef4444';
 
-        // --- NEW: Add "Return to Lobby" button for the Host ---
         if (!isGuest) {
             const lobbyBtn = document.createElement('button');
             lobbyBtn.id = 'host-lobby-btn';
-            lobbyBtn.className = globalExitBtn.className; // Inherit existing classes
+            lobbyBtn.className = globalExitBtn.className; 
             lobbyBtn.innerHTML = '<i class="fas fa-undo"></i> Return to Lobby';
             
-            // Style it to stand out (Yellow/Orange) but not look like a destructive exit
             lobbyBtn.style.color = '#f59e0b';
             lobbyBtn.style.borderColor = '#f59e0b';
             lobbyBtn.style.marginRight = '10px';
 
-            // Insert it right before the Leave Room button
             globalExitBtn.parentNode.insertBefore(lobbyBtn, globalExitBtn);
 
-lobbyBtn.onclick = async (e) => {
+            lobbyBtn.onclick = async (e) => {
                 e.preventDefault();
                 if (!confirm("Stop the current quiz and return everyone to the lobby to pick new questions?")) return;
 
@@ -1288,7 +1245,6 @@ lobbyBtn.onclick = async (e) => {
                 globalExitBtn.style.display = 'none';
 
                 try {
-                    // Fire both network requests simultaneously
                     const tasks = [
                         updateSpacedRepetition(),
                         setDoc(doc(db, "study_rooms", activeRoomId), {
@@ -1310,7 +1266,7 @@ lobbyBtn.onclick = async (e) => {
         }
     }
 
-globalExitBtn.onclick = async (e) => {
+    globalExitBtn.onclick = async (e) => {
         e.preventDefault();
         
         if (activeRoomId && !confirm("Are you sure you want to completely leave and end the study group?")) return;
@@ -1330,7 +1286,6 @@ globalExitBtn.onclick = async (e) => {
                 }
             }
 
-            // Blast all writes to Firebase concurrently
             await Promise.all(tasks);
 
         } catch (error) { 
@@ -1357,7 +1312,6 @@ async function updateSpacedRepetition() {
     const userRef = doc(db, "users", user.uid);
 
     try {
-        // 🔥 THE SPEED FIX: Use the cached memory instead of downloading the whole DB again.
         const dbData = currentUserData || {};
 
         const isBookSessionLocal = isBookSession();   
