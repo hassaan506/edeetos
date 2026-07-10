@@ -103,11 +103,12 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
 
-                const dynamicCourseContainer = document.getElementById('dynamic-course-container');
+const dynamicCourseContainer = document.getElementById('dynamic-course-container');
                 if (dynamicCourseContainer) {
                     if (userCourseCode) {
                         const courseName = courseNamesMap[userCourseCode] || "Unknown Course";
-                        dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label" style="opacity: 0.7; cursor: not-allowed;"><input type="checkbox" class="course-check" value="${userCourseCode}" checked onclick="return false;"> ${courseName} (Locked to Profile)</label>`;
+                        // Course is no longer locked. It defaults to checked, but can be freely unchecked.
+                        dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label" style="cursor: pointer; font-weight: bold;"><input type="checkbox" class="course-check" value="${userCourseCode}" checked> ${courseName}</label>`;
                     } else {
                         dynamicCourseContainer.innerHTML = `<div style="color: #ef4444; font-size: 0.8rem; font-weight: bold;">Action Required: Request a course in your Profile first.</div>`;
                     }
@@ -222,45 +223,79 @@ onAuthStateChanged(auth, async (user) => {
                             }
                         });
 
-                        if (pendingExams.length > 0) {
+if (pendingExams.length > 0) {
                             const dashboardContainer = document.querySelector('.section-container') || document.body;
                             const headerElement = document.querySelector('.dashboard-header');
                             
-                            const examsCard = document.createElement('div');
-                            examsCard.className = 'glass-panel assigned-exams-container'; 
+                            // 1. Build the elegant notification banner
+                            const notifyCard = document.createElement('div');
+                            notifyCard.className = 'glass-panel';
+                            notifyCard.style.cssText = "background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #10b981; border-radius: 16px; padding: 20px; margin-bottom: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2); transition: transform 0.2s;";
                             
-                            let examsHtml = `
-                                <h3 class="assigned-exams-title">
-                                    <i class="fas fa-clipboard-list"></i> Assigned Exams (${pendingExams.length})
-                                </h3>
-                                <p class="assigned-exams-desc">Your mentor has assigned you the following tasks.</p>
-                                <div class="assigned-exam-list">
+                            notifyCard.innerHTML = `
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div style="background: #10b981; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(16,185,129,0.3);">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                    <div>
+                                        <h3 style="margin: 0 0 5px 0; color: #064e3b; font-weight: 800; font-size: 1.2rem;">New Mentor Assignments</h3>
+                                        <p style="margin: 0; color: #059669; font-size: 0.9rem; font-weight: 600;">You have ${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''} waiting for you.</p>
+                                    </div>
+                                </div>
+                                <button class="btn-solid" style="background: #059669; padding: 10px 20px; border-radius: 12px; border: none; font-size: 0.95rem;">View Tasks</button>
+                            `;
+
+                            notifyCard.onmouseover = () => notifyCard.style.transform = "translateY(-3px)";
+                            notifyCard.onmouseout = () => notifyCard.style.transform = "translateY(0)";
+
+                            if (headerElement && headerElement.nextSibling) {
+                                dashboardContainer.insertBefore(notifyCard, headerElement.nextSibling);
+                            } else {
+                                dashboardContainer.insertBefore(notifyCard, dashboardContainer.firstChild);
+                            }
+
+                            // 2. Build the hidden tasks modal
+                            const taskModal = document.createElement('div');
+                            taskModal.id = 'assigned-tasks-modal';
+                            taskModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+                            
+                            let modalHtml = `
+                                <div class="glass-panel" style="background: white; padding: 25px; border-radius: 16px; width: 90%; max-width: 550px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px;">
+                                        <h3 style="color: #064e3b; margin: 0; font-size: 1.3rem;"><i class="fas fa-clipboard-check" style="color: #10b981; margin-right: 8px;"></i> Assigned Tasks</h3>
+                                        <button id="close-tasks-modal" style="font-size: 1.5rem; color: #64748b; background: none; border: none; cursor: pointer; padding: 0;">&times;</button>
+                                    </div>
+                                    <div style="overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 15px; padding-right: 5px;">
                             `;
 
                             pendingExams.forEach((exam, index) => {
-                                examsHtml += `
-                                    <div class="assigned-exam-card">
-                                        <div class="assigned-exam-info">
-                                            <div class="assigned-exam-name">${exam.title}</div>
-                                            <div class="assigned-exam-meta">
-                                                <span>⏱ ${exam.timerMinutes} Minutes</span>
-                                                <span>📝 ${exam.questions.length} Questions</span>
+                                modalHtml += `
+                                    <div style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 15px; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                                        <div>
+                                            <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem; margin-bottom: 5px;">${exam.title}</div>
+                                            <div style="display: flex; gap: 10px; font-size: 0.8rem; font-weight: 700;">
+                                                <span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px;"><i class="fas fa-clock"></i> ${exam.timerMinutes} Min</span>
+                                                <span style="background: #f3e8ff; color: #7e22ce; padding: 4px 8px; border-radius: 6px;"><i class="fas fa-layer-group"></i> ${exam.questions.length} Qs</span>
                                             </div>
                                         </div>
-                                        <button id="launch-assigned-${index}" class="btn-start-exam">Start Exam</button>
+                                        <button id="launch-assigned-${index}" class="btn-solid" style="background: #3b82f6; padding: 10px 20px; border: none; border-radius: 8px;">Start Now</button>
                                     </div>
                                 `;
                             });
 
-                            examsHtml += `</div>`;
-                            examsCard.innerHTML = examsHtml;
-                            
-                            if (headerElement && headerElement.nextSibling) {
-                                dashboardContainer.insertBefore(examsCard, headerElement.nextSibling);
-                            } else {
-                                dashboardContainer.insertBefore(examsCard, dashboardContainer.firstChild);
-                            }
+                            modalHtml += `
+                                    </div>
+                                </div>
+                            `;
+                            taskModal.innerHTML = modalHtml;
+                            document.body.appendChild(taskModal);
 
+                            // 3. Wire up the open/close triggers
+                            notifyCard.onclick = () => taskModal.style.display = 'flex';
+                            document.getElementById('close-tasks-modal').onclick = () => taskModal.style.display = 'none';
+                            taskModal.onclick = (e) => { if(e.target === taskModal) taskModal.style.display = 'none'; };
+
+                            // 4. Wire up the Exam Launch logic
                             pendingExams.forEach((exam, index) => {
                                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
                                 
@@ -290,7 +325,7 @@ onAuthStateChanged(auth, async (user) => {
                                         window.location.href = 'quiz.html';
                                     }, 50);
                                 });
-                            });                        
+                            });
                         }
                     } catch (examErr) {
                         console.error("Error fetching assigned exams:", examErr);
@@ -363,17 +398,75 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
 });
 
 document.getElementById('btn-launch-course').addEventListener('click', () => {
+    // 1. GUEST FLOW: Show Popup Selector
     if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        localStorage.setItem('edeetos_active_course', 'fcps_part1'); 
-        window.location.href = 'questions.html';
+        let guestModal = document.getElementById('guest-course-modal');
+        if (!guestModal) {
+            guestModal = document.createElement('div');
+            guestModal.id = 'guest-course-modal';
+            guestModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+            
+            guestModal.innerHTML = `
+                <div class="glass-panel" style="background: white; padding: 25px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                    <h3 style="color: #1e3a8a; margin-top: 0; font-size: 1.3rem;"><i class="fas fa-user-graduate" style="color: #3b82f6; margin-right: 8px;"></i> Select Demo Course</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Which course would you like to explore as a guest today?</p>
+                    
+                    <select id="guest-course-select" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; margin-bottom: 20px; font-weight: bold; color: #1e293b; outline: none;">
+                        <optgroup label="FCPS Series">
+                            <option value="fcps_part1">FCPS Part 1</option>
+                            <option value="fcps_part2">FCPS Part 2</option>
+                            <option value="fcps_imm">FCPS IMM</option>
+                        </optgroup>
+                        <optgroup label="MRCS Series">
+                            <option value="mrcs_part1">MRCS Part 1</option>
+                            <option value="mrcs_part2">MRCS Part 2</option>
+                        </optgroup>
+                        <optgroup label="MBBS Journey">
+                            <option value="mbbs_year1">MBBS Year 1</option>
+                            <option value="mbbs_year2">MBBS Year 2</option>
+                            <option value="mbbs_year3">MBBS Year 3</option>
+                            <option value="mbbs_year4">MBBS Year 4</option>
+                            <option value="mbbs_year5">MBBS Year 5</option>
+                        </optgroup>
+                    </select>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button id="btn-cancel-guest" class="btn-outline" style="flex: 1; margin: 0;">Cancel</button>
+                        <button id="btn-confirm-guest" class="btn-solid" style="flex: 1; margin: 0; background: #10b981;">Explore</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(guestModal);
+            
+            document.getElementById('btn-cancel-guest').onclick = () => guestModal.style.display = 'none';
+            document.getElementById('btn-confirm-guest').onclick = () => {
+                const selected = document.getElementById('guest-course-select').value;
+                localStorage.setItem('edeetos_active_course', selected);
+                window.location.href = 'questions.html';
+            };
+        }
+        guestModal.style.display = 'flex';
         return;
     }
 
-    if (currentUserData && currentUserData.selectedCourse) {
-        localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse);
-        window.location.href = 'questions.html';
-    } else {
-        alert("Your assigned course is missing. Please request one in your Profile.");
+    // 2. PREMIUM FLOW: Check for courses OR standalone books
+    if (currentUserData) {
+        let activeSub = null;
+        if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) {
+            // Find the first valid subscription they own (could be a book)
+            activeSub = Object.keys(currentUserData.subscriptions)[0];
+        }
+
+        if (currentUserData.selectedCourse) {
+            localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse);
+            window.location.href = 'questions.html';
+        } else if (activeSub) {
+            // Let them pass if they bought a book but have no assigned course
+            localStorage.setItem('edeetos_active_course', activeSub);
+            window.location.href = 'questions.html';
+        } else {
+            alert("Your assigned course is missing. Please request one in your Profile.");
+        }
     }
 });
 
@@ -496,8 +589,15 @@ if (btnSubmitPayment) {
         btnSubmitPayment.disabled = true;
 
         try {
-            const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
+			const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
             const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value);
+            if (courses.length === 0 && books.length === 0) {
+                alert("You must select at least one course or book to proceed.");
+                btnSubmitPayment.textContent = "Confirm & Submit Request";
+                btnSubmitPayment.disabled = false;
+                return;
+            }
+
             const selectedPlan = document.querySelector('.plan-card.selected');
             
             if (!selectedPlan) throw new Error("No plan selected.");

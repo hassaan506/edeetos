@@ -103,21 +103,12 @@ body {
     border-left: 4px solid #cbd5e1;
 }
 
-/* Update List Styling */
-.update-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .update-list li {
     margin-bottom: 1.2rem;
     color: #475569;
     font-size: 0.95rem;
     line-height: 1.6;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    display: block; /* Removed flexbox to fix text alignment */
 }
 
 .update-list li:last-child {
@@ -136,12 +127,15 @@ body {
 .tag-major { background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5; }
 
 .badge {
+    display: inline-block;
+    vertical-align: middle;
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 0.7rem;
     font-weight: 800;
     white-space: nowrap;
-    margin-top: 3px;
+    margin-right: 8px;
+    margin-top: -2px;
 }
 
 .badge-feature { background: #dcfce7; color: #059669; border: 1px solid #a7f3d0; }
@@ -156,6 +150,5 @@ body {
     .timeline::before { left: -0.5rem; }
     .timeline-marker { left: -1.05rem; width: 16px; height: 16px; }
     .timeline-content { padding: 1.5rem; }
-    .update-list li { flex-direction: column; gap: 6px; }
     .badge { width: fit-content; }
 }

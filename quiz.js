@@ -52,6 +52,12 @@ const notesModal = document.getElementById('notes-modal');
 const noteInput = document.getElementById('note-input');
 const closeNotesBtn = document.getElementById('close-notes-btn');
 const saveNoteBtn = document.getElementById('save-note-btn');
+const qTimerDisplay = document.getElementById('question-timer-display');
+const labValuesBtn = document.getElementById('lab-values-btn');
+const labValuesModal = document.getElementById('lab-values-modal');
+const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
+const modalNextBtn = document.getElementById('modal-next-btn');
+const aiHintBtn = document.getElementById('ai-hint-btn');
 
 if (isExamMode) {
     document.body.classList.add('mode-exam');
@@ -96,6 +102,25 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 currentUserData = dbData;
+
+                // ==========================================
+                // ANTI-CHEAT SECURITY MEASURES
+                // ==========================================
+                const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
+                if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
+                    // Unlock everything for Admins/Management
+                    window.isScreenshotBlockEnabled = false;
+                    document.body.style.userSelect = 'auto';
+                    document.body.style.webkitUserSelect = 'auto';
+                    document.oncontextmenu = null;
+                } else {
+                    // Lock down students and standard users
+                    window.isScreenshotBlockEnabled = true;
+                    document.body.style.userSelect = 'none';
+                    document.body.style.webkitUserSelect = 'none';
+                    document.oncontextmenu = (e) => e.preventDefault();
+                }
+                // ==========================================
 
                 // MULTIPLAYER ATTENDANCE SYNC
                 if (activeRoomId) {
@@ -316,8 +341,11 @@ function loadQuestion(index) {
         }
 
         wrongAttempts = 0;
-        hasAnsweredCorrectly = false;        
+        hasAnsweredCorrectly = false;
+		if (aiHintBtn) aiHintBtn.style.display = 'none'; // Hide AI hint on new question        
+        if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; // Reset toolkit
         if (!isExamMode) updateFeedbackBar();
+		
         
         if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
             explanationBtn.style.display = 'inline-block';
@@ -659,6 +687,74 @@ function updateFeedbackBar() {
 }
 
 // ==========================================
+// CLINICAL HIGHLIGHTER & STRIKETHROUGH
+// ==========================================
+let floatingHighlightBtn = document.getElementById('floating-toolkit');
+
+if (!floatingHighlightBtn) {
+    floatingHighlightBtn = document.createElement('div');
+    floatingHighlightBtn.id = 'floating-toolkit';
+    floatingHighlightBtn.style.cssText = 'position: absolute; display: none; background: #1e293b; padding: 6px; border-radius: 8px; z-index: 1000; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); gap: 6px;';
+    
+    floatingHighlightBtn.innerHTML = `
+        <button id="tool-hl-yellow" style="background: #eab308; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;" title="Highlight"><i class="fas fa-highlighter"></i></button>
+        <button id="tool-hl-strike" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: line-through;" title="Strike">S</button>
+    `;
+    document.body.appendChild(floatingHighlightBtn);
+}
+
+if (questionTextEl) {
+    // Surgically bypass anti-cheat ONLY for the question text
+    questionTextEl.style.userSelect = 'text';
+    questionTextEl.style.webkitUserSelect = 'text';
+
+    questionTextEl.addEventListener('mouseup', (e) => {
+        const selection = window.getSelection();
+        const selectedText = selection.toString().trim();
+        
+        if (selectedText.length > 0) {
+            const range = selection.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            
+            floatingHighlightBtn.style.top = `${rect.top + window.scrollY - 45}px`;
+            floatingHighlightBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
+            floatingHighlightBtn.style.display = 'flex';
+            
+            // Highlight Button Logic
+            document.getElementById('tool-hl-yellow').onclick = () => {
+                applyTextFormat(range, selection, 'background-color: #fef08a; padding: 2px 4px; border-radius: 4px; color: #1e293b;');
+            };
+            
+            // Strikethrough Button Logic
+            document.getElementById('tool-hl-strike').onclick = () => {
+                applyTextFormat(range, selection, 'text-decoration: line-through; color: #94a3b8;');
+            };
+        } else {
+            floatingHighlightBtn.style.display = 'none';
+        }
+    });
+
+    // Hide toolkit when clicking elsewhere
+    document.addEventListener('mousedown', (e) => {
+        if (e.target.closest('#floating-toolkit') === null) {
+            floatingHighlightBtn.style.display = 'none';
+        }
+    });
+}
+
+function applyTextFormat(range, selection, inlineStyles) {
+    const mark = document.createElement('span');
+    mark.style.cssText = inlineStyles;
+    try {
+        range.surroundContents(mark);
+    } catch (err) {
+        console.warn("Cannot format across multiple paragraphs. Select text within a single block.");
+    }
+    selection.removeAllRanges();
+    floatingHighlightBtn.style.display = 'none';
+}
+
+// ==========================================
 // 4. MULTIPLAYER SYNC ENGINE
 // ==========================================
 function revealMultiplayerAnswers(answersObj, activeMembersMap) {
@@ -943,6 +1039,7 @@ function showPracticeCompleteModal(isGuest = false) {
 // ==========================================
 function startTimer() {
     timerInterval = setInterval(() => {
+        // 1. Handle Global Session Timer
         if (isExamMode) {
             sessionSeconds--; 
             if (sessionSeconds <= 0) {
@@ -951,11 +1048,33 @@ function startTimer() {
                 showResults();
                 return;
             }
-        } else { sessionSeconds++; }
+        } else { 
+            sessionSeconds++; 
+        }
 
-        const mins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
-        const secs = (sessionSeconds % 60).toString().padStart(2, '0');
-        timerDisplay.textContent = `${mins}:${secs}`;
+        const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
+        const sSecs = (sessionSeconds % 60).toString().padStart(2, '0');
+        if (timerDisplay) timerDisplay.textContent = `${sMins}:${sSecs}`;
+
+        // 2. Handle Individual Question Timer & AI Hint Trigger
+        if (currentQuestionData) {
+            if (!currentQuestionData.timeSpent) currentQuestionData.timeSpent = 0;
+            currentQuestionData.timeSpent++;
+
+            // Format and update Question Timer UI
+            const qMins = Math.floor(currentQuestionData.timeSpent / 60).toString().padStart(2, '0');
+            const qSecs = (currentQuestionData.timeSpent % 60).toString().padStart(2, '0');
+            if (qTimerDisplay) qTimerDisplay.textContent = `${qMins}:${qSecs}`;
+
+            // Trigger AI Hint Button to appear after 15 seconds in Practice Mode
+            if (!isExamMode && !hasAnsweredCorrectly && currentQuestionData.timeSpent === 15) {
+                if (aiHintBtn) {
+                    aiHintBtn.style.display = 'inline-flex';
+                    // Optional: Add a subtle pop-in CSS animation class later
+                    aiHintBtn.classList.add('pop-in'); 
+                }
+            }
+        }
     }, 1000);
 }
 
@@ -966,8 +1085,59 @@ skipBtn.onclick = () => {
     triggerSlideTransition(currentIndex, 'right');
 };
 
+// Lab Values Toggle
+if (labValuesBtn) labValuesBtn.onclick = () => {
+    if (labValuesModal) {
+        labValuesModal.classList.remove('hidden');
+        labValuesModal.classList.add('show');
+    }
+};
+if (closeLabValuesBtn) closeLabValuesBtn.onclick = () => {
+    if (labValuesModal) labValuesModal.classList.remove('show');
+};
+
+// Next Button inside Explanation Modal
+if (modalNextBtn) {
+    modalNextBtn.onclick = () => {
+        if (closeExplanationBtn) closeExplanationBtn.click(); // Close the modal
+        document.getElementById('next-btn').click();          // Trigger the main next logic
+    };
+}
+
 if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.remove('hidden'); explanationModal.classList.add('show'); };
 if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
+
+// AI Tutor Hint Logic
+if (aiHintBtn) {
+    aiHintBtn.onclick = () => {
+        if (!currentQuestionData) return;
+        
+        // Simulate AI thinking delay for UX
+        const originalText = aiHintBtn.innerHTML;
+        aiHintBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Analyzing...`;
+        aiHintBtn.disabled = true;
+
+        setTimeout(() => {
+            // Intelligent extraction: Grab the first sentence of the explanation as a hint
+            const fullExplanation = currentQuestionData.explanation || "";
+            let hintText = fullExplanation.split('.')[0];
+            
+            // Fallback if explanation is empty or too short
+            if (!hintText || hintText.length < 15) {
+                hintText = "Analyze the patient's primary symptoms, labs, and time-course carefully";
+            }
+
+            // Fire an alert (We will upgrade this to a sleek UI modal later)
+            alert(`🤖 AI Tutor Hint:\n\n${hintText}...`);
+
+            // Reset and hide the button
+            aiHintBtn.innerHTML = originalText;
+            aiHintBtn.disabled = false;
+            aiHintBtn.style.display = 'none'; 
+            
+        }, 800); 
+    };
+}
 
 document.getElementById('next-btn').onclick = async () => {
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
@@ -1061,11 +1231,22 @@ function selectOptionByIndex(index) {
     if (options && options[index]) options[index].click(); 
 }
 
-let isScreenshotBlockEnabled = true; 
+// Global Anti-Cheat State (Defaults to true to protect before auth loads)
+window.isScreenshotBlockEnabled = true; 
+
+// 1. Global Copy Blocker
+document.addEventListener('copy', (e) => {
+    if (window.isScreenshotBlockEnabled) {
+        e.preventDefault();
+    }
+});
+
+// 2. Global Screenshot Blocker & Popup Trigger
 document.addEventListener("keyup", (e) => {
-    if (isScreenshotBlockEnabled && e.key === "PrintScreen") {
+    if (window.isScreenshotBlockEnabled && e.key === "PrintScreen") {
         navigator.clipboard.writeText("Screenshots are disabled for copyright protection.");
-        document.getElementById('anti-screenshot-screen').style.display = 'flex';
+        const screen = document.getElementById('anti-screenshot-screen');
+        if (screen) screen.style.display = 'flex';
     }
 });
 

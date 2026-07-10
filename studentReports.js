@@ -12,7 +12,7 @@ const detailsPanel = document.getElementById('report-details');
 
 let studentsData = [];
 
-// 1. Security Check
+// 1. Security Check & Routing
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         try {
@@ -20,11 +20,30 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             
             if (docSnap.exists()) {
-                const role = (docSnap.data().role || '').toUpperCase();
+                const userData = { id: docSnap.id, ...docSnap.data() };
+                const role = (userData.role || 'STUDENT').toUpperCase();
                 
-                if (role !== 'MENTOR' && role !== 'ADMIN' && role !== 'MANAGEMENT') {
+                if (role === 'BANNED') {
                     window.location.href = 'dashboard.html';
+                    return;
+                }
+
+                if (role === 'STUDENT') {
+                    // Hide the left sidebar (search and student list)
+                    if (searchInput) searchInput.parentElement.style.display = 'none';
+                    if (studentListContainer) studentListContainer.parentElement.style.display = 'none';
+                    
+                    // Expand the details panel to full width
+                    if (detailsPanel) {
+                        detailsPanel.style.width = '100%';
+                        detailsPanel.style.maxWidth = '100%';
+                        detailsPanel.style.flex = '1';
+                    }
+                    
+                    // Directly load the student's own data
+                    displayDetailedReport(userData);
                 } else {
+                    // Admins and Mentors get the full list
                     fetchStudents();
                 }
             }

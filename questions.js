@@ -78,13 +78,44 @@ const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
 if (activeRoomId) {
     if (isGuest) {
+        // Automatically remove guests from the room if they back out to the questions grid
         localStorage.removeItem('active_study_room');
         localStorage.removeItem('is_study_guest');
     } else {
+        // Create an interactive Host Banner
         const hostBanner = document.createElement('div');
-        hostBanner.style.cssText = "background: #f59e0b; color: white; text-align: center; padding: 12px; font-weight: bold; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 6px rgba(0,0,0,0.1);";
-        hostBanner.innerHTML = `<i class="fas fa-users"></i> You are currently hosting a Study Room! Your guests are waiting in the lobby. Select a topic and click Start to resume.`;
+        hostBanner.style.cssText = "background: #f59e0b; color: white; padding: 12px 20px; font-weight: bold; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;";
+        
+        hostBanner.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-users"></i> 
+                <span>You are hosting Study Room <strong style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; letter-spacing: 1px;">${activeRoomId}</strong>. Select a topic and click Start to resume.</span>
+            </div>
+            <button id="btn-exit-host-room" style="background: #dc2626; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s; box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);">Exit Room</button>
+        `;
         document.body.prepend(hostBanner);
+
+        // Wire up the Exit button
+        document.getElementById('btn-exit-host-room').addEventListener('click', async () => {
+            if(confirm("Are you sure you want to close this study room? Guests will be disconnected.")) {
+                const btn = document.getElementById('btn-exit-host-room');
+                btn.textContent = "Closing...";
+                btn.disabled = true;
+                btn.style.background = "#991b1b";
+                
+                try {
+                    // Tell Firebase the room is closed so guests know it's over
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'closed' });
+                } catch(e) {
+                    console.warn("Could not sync room closure to Firebase:", e);
+                }
+                
+                // Clear host storage and remove the banner
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                hostBanner.remove();
+            }
+        });
     }
 }
 

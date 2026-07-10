@@ -22,9 +22,26 @@
     <div class="quiz-content-wrapper">
         <div class="top-nav">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
-            <div class="top-stats" style="display: flex; align-items: center;">
-                <button id="shortcuts-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.2rem 0.5rem; font-size: 0.85rem; margin-right: 15px;"><i class="fas fa-keyboard"></i> Shortcuts</button>
-                <span id="timer-display">00:00</span>
+            <div class="top-stats" style="display: flex; align-items: center; gap: 10px;">
+                
+                <!-- NEW: Lab Values Button -->
+                <button id="lab-values-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-flask"></i> Labs</button>
+                
+                <button id="shortcuts-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-keyboard"></i> Keys</button>
+                
+                <!-- NEW: Dual Timer Display -->
+                <div style="display: flex; align-items: center; background: rgba(0,0,0,0.2); padding: 0.2rem 0.8rem; border-radius: 8px; gap: 15px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
+                        <span style="font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Current Q</span>
+                        <span id="question-timer-display" style="color: #cbd5e1; font-size: 0.9rem; font-weight: bold;">00:00</span>
+                    </div>
+                    <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+                    <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
+                        <span style="font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Total Time</span>
+                        <span id="timer-display" style="color: white; font-size: 1rem; font-weight: bold;">00:00</span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -52,15 +69,17 @@
                     <i class="fas fa-exclamation-circle"></i> You previously skipped this question. You must answer it now.
                 </div>
 
-                <div class="question-text" id="question-text">
+                <div class="question-text" id="question-text" style="line-height: 1.7;">
                     Loading question...
                 </div>
 
                 <div class="options-container" id="options-container">
                 </div>
                 
-                <div style="text-align: center; margin-top: 1rem;">
-                    <button id="show-explanation-btn" class="btn-outline" style="border-color: #0084ff; color: #0084ff; display: none;">Show Explanation</button>
+                <!-- NEW: Action Buttons Container -->
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 1.5rem;">
+                    <button id="ai-hint-btn" class="btn-solid" style="background: #8b5cf6; border: none; padding: 0.8rem 1.5rem; display: none; align-items: center; gap: 8px; border-radius: 8px;"><i class="fas fa-robot"></i> AI Hint</button>
+                    <button id="show-explanation-btn" class="btn-outline" style="border-color: #0084ff; color: #0084ff; display: none; padding: 0.8rem 1.5rem; border-radius: 8px;">Show Explanation</button>
                 </div>
             </div>
 
@@ -79,18 +98,46 @@
         
 		<div class="number-grid" id="number-grid"></div>
 
-			
     </div>
 
-<div id="explanation-modal" class="modal-overlay">
-        <div class="glass-panel modal-content">
-            <h3 style="color: #065f46; margin-bottom: 1rem;">Explanation</h3>
-            <p id="explanation-text">Explanation text.</p>
-            <button id="close-explanation" class="btn-solid" style="margin-top: 1.5rem; width: 100%;">Got it</button>
+    <!-- UPGRADED: Explanation Modal with Next Button -->
+    <div id="explanation-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="max-width: 650px; width: 90%;">
+            <h3 style="color: #065f46; margin-bottom: 1rem;"><i class="fas fa-book-open"></i> Explanation</h3>
+            <div id="explanation-text" style="max-height: 50vh; overflow-y: auto; text-align: left; margin-bottom: 1.5rem; padding-right: 10px; line-height: 1.6;">Explanation text.</div>
+            <div style="display: flex; gap: 10px;">
+                <button id="close-explanation" class="btn-outline" style="flex: 1;">Close</button>
+                <button id="modal-next-btn" class="btn-solid" style="flex: 1; background: #10b981; border: none;">Next Question <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Reference / Lab Values Sheet -->
+    <div id="lab-values-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="max-width: 600px; width: 95%;">
+            <h3 style="color: #1e3a8a; margin-bottom: 1rem; text-align: center;"><i class="fas fa-flask" style="color: #3b82f6; margin-right: 8px;"></i> Normal Laboratory Values</h3>
+            <div style="max-height: 65vh; overflow-y: auto; text-align: left; font-size: 0.9rem; color: #334155; padding-right: 5px;">
+                <table style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
+                    <tr style="background: #f1f5f9; color: #1e293b;"><th style="padding: 10px; border: 1px solid #cbd5e1; text-align: left;">Test</th><th style="padding: 10px; border: 1px solid #cbd5e1; text-align: left;">Reference Range</th></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Hemoglobin (Hb)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Male: 13.5-17.5 g/dL | Female: 12.0-15.5 g/dL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">White Blood Cells (WBC)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">4,500 - 11,000 /µL</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Platelets</td><td style="padding: 10px; border: 1px solid #e2e8f0;">150,000 - 450,000 /µL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Sodium (Na)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">135 - 145 mEq/L</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Potassium (K)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">3.5 - 5.0 mEq/L</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Creatinine</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.6 - 1.2 mg/dL</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Blood Urea Nitrogen (BUN)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">7 - 20 mg/dL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Glucose (Fasting)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">70 - 99 mg/dL</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Calcium (Total)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">8.5 - 10.5 mg/dL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">pH (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">7.35 - 7.45</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">pCO2 (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">35 - 45 mmHg</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">HCO3 (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">22 - 26 mEq/L</td></tr>
+                </table>
+            </div>
+            <button id="close-lab-values-btn" class="btn-solid" style="margin-top: 1.5rem; width: 100%; background: #1e293b; border: none;">Close Reference</button>
         </div>
     </div>
 	
-    <div id="notes-modal" class="modal-overlay">
+    <div id="notes-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
             <h3 style="color: #064e3b; margin-bottom: 1rem;">
                 <i class="fas fa-pen"></i> My Notes

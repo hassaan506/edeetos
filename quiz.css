@@ -37,7 +37,7 @@
 }
 
 /* --- TOP NAV --- */
-.top-nav { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.top-nav { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px; }
 
 .exit-btn, .top-stats {
     background: rgba(255, 255, 255, 0.4); 
@@ -76,6 +76,16 @@
 .count-green { color: #10b981; }
 
 .question-text { font-size: 1.15rem; font-weight: 700; color: #0f172a; line-height: 1.5; text-align: justify; margin-bottom: 1.2rem; }
+
+/* Custom Clinical Vignette Selection Color */
+#question-text::selection {
+    background: rgba(59, 130, 246, 0.3); /* Soft blue */
+    color: inherit;
+}
+#question-text *::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: inherit;
+}
 
 /* --- 2. GLASS OPTIONS (WITH iOS FIXES) --- */
 .options-container { display: flex; flex-direction: column; gap: 0.5rem; } 
@@ -142,6 +152,13 @@
 @keyframes slideOutRight { to { transform: translateX(100%); opacity: 0; } }
 @keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
+/* AI Hint Button Animation */
+.pop-in { animation: gentlePopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes gentlePopIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 /* --- 4. BOTTOM CONTROLS --- */
 .number-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-bottom: 1rem; width: 100%; }
 .grid-num {
@@ -180,22 +197,17 @@
     border: 2px solid rgba(16, 185, 129, 0.4); 
     max-width: 800px; 
     max-height: 80vh; 
-    overflow-y: auto; 
 }
 
 #explanation-modal .modal-content h3 { color: #065f46 !important; }
-#explanation-modal #close-explanation { background: #059669; }
-#explanation-modal #close-explanation:hover { background: #047857; }
 #show-explanation-btn { border-color: #10b981; color: #10b981; border-radius: 10px; font-weight: bold; padding: 0.5rem 1.2rem; font-size: 0.9rem; transition: 0.2s; background: rgba(255, 255, 255, 0.5); cursor: pointer; display: none; }
 #show-explanation-btn:hover { background: #ecfdf5; transform: scale(1.05); }
-
-#close-explanation { background: #10b981; border: none; color: white; padding: 10px; border-radius: 10px; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 1.2rem; box-shadow: 0 4px 10px rgba(16,185,129,0.3); }
-#close-explanation:hover { background: #059669; transform: translateY(-2px); }
 
 /* --- 6. EXAM MODE STYLES --- */
 body.mode-exam .icon-group,
 body.mode-exam .feedback-tracker,
 body.mode-exam #show-explanation-btn,
+body.mode-exam #ai-hint-btn,
 body.mode-exam .number-grid,
 body.mode-exam #prev-btn { display: none !important; }
 
@@ -257,6 +269,11 @@ body.mode-exam #prev-btn { display: none !important; }
     z-index: 1000 !important;
     padding: 1.5rem !important;
     transition: all 0.3s ease !important;
+}
+
+/* --- LAB VALUES TABLE ENHANCEMENT --- */
+#lab-values-modal table tr:hover {
+    background-color: #f1f5f9 !important;
 }
 
 @media (max-width: 1199px) {
@@ -326,8 +343,11 @@ body.mode-exam #prev-btn { display: none !important; }
     .card-header { margin-bottom: 1rem; padding-bottom: 0.5rem; }
     .question-pill { padding: 0.3rem 0.8rem; font-size: 0.75rem; }
     .icon-btn { font-size: 1rem; padding: 0.3rem; }
+    
+    .top-nav { margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
+    .top-stats { width: 100%; justify-content: space-between; }
     .exit-btn, .top-stats { padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 10px; }
-    .top-nav { margin-bottom: 1rem; }
+
     .grid-num { width: 30px; height: 30px; font-size: 0.8rem; border-radius: 8px; }
     .number-grid { gap: 0.4rem; margin-bottom: 1.5rem; }
     .prev-icon-btn, .skip-btn { height: 42px; }
