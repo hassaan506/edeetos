@@ -522,7 +522,21 @@
         width: 100%;
     }
 }
+.popup-content {
+        position: absolute;
+        bottom: 0;
+        max-height: 75vh;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        padding-bottom: 20px; /* Extra padding for easier scrolling on mobile */
+    }
 
+    @keyframes slideUp {
+        0% { opacity: 0; transform: translateY(100%); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
 @media (max-width: 768px) {
     #subjects-grid {
         grid-template-columns: repeat(1, 1fr); 

@@ -52,13 +52,17 @@ const activeCourse = savedCourse;
 
 const allBooks = [
     { file: "firstaid_step1", title: "First Aid Step 1" },
+    { file: "firstaid_step2", title: "First Aid Step 2" },
     { file: "rafiullah", title: "Rafiullah FCPS" },
     { file: "im_medicine", title: "Irfan Masood - Medicine" },
     { file: "im_surgery", title: "Irfan Masood - Surgery" },
+    { file: "im_pathology", title: "Irfan Masood - Pathology" },
+    { file: "im_pediatrics", title: "Irfan Masood - Pediatrics" },
     { file: "brs_patho", title: "BRS - Pathology" },
     { file: "brs_physio", title: "BRS - Physiology" },
     { file: "doubleAA", title: "Double AA" }
 ];
+
 const availableBooks = allBooks.filter(book => {
     if (book.file === "rafiullah") {
         return activeCourse && activeCourse.startsWith("fcps_part1"); 
@@ -87,41 +91,49 @@ if (activeRoomId) {
 // ==========================================
 // 3. EVENT LISTENERS
 // ==========================================
+let searchTimeout;
 globalSearch.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
     const query = e.target.value.toLowerCase().trim();
-    if (query.length < 2) {
+    
+    if (query.length < 3) {
         searchDropdown.style.display = 'none';
         return;
     }
-    const matchedQuestions = allQuestions.filter(q => {
-        if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-        const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
-        return textToSearch.includes(query);
-    });
 
-    searchDropdown.innerHTML = '';
-    if (matchedQuestions.length === 0) {
-        searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
-    } else {
-        matchedQuestions.slice(0, 30).forEach(q => {
-            const div = document.createElement('div');
-            div.className = 'search-item';
-            const title = `${q.Subject} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
-            const questionSnippet = q.Question ? q.Question.substring(0, 90) + "..." : "No text";
-
-            div.innerHTML = `
-                <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
-                <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
-            `;
-            div.onclick = () => {
-                searchDropdown.style.display = 'none';
-                globalSearch.value = '';
-                window.launchQuiz([q], 'practice', 0);
-            };
-            searchDropdown.appendChild(div);
+    // Wait 350ms after typing stops to prevent browser freeze
+    searchTimeout = setTimeout(() => {
+        const matchedQuestions = allQuestions.filter(q => {
+            if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+            const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
+            return textToSearch.includes(query);
         });
-    }
-    searchDropdown.style.display = 'block';
+
+        searchDropdown.innerHTML = '';
+        if (matchedQuestions.length === 0) {
+            searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
+        } else {
+            matchedQuestions.slice(0, 30).forEach(q => {
+                const div = document.createElement('div');
+                div.className = 'search-item';
+                const title = `${q.Subject} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
+                const questionSnippet = q.Question ? q.Question.substring(0, 90) + "..." : "No text";
+
+                div.innerHTML = `
+                    <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
+                    <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
+                `;
+                div.onclick = () => {
+                    searchDropdown.style.display = 'none';
+                    globalSearch.value = '';
+                    // Instantly launch this single question
+                    window.launchQuiz([q], 'practice', 0);
+                };
+                searchDropdown.appendChild(div);
+            });
+        }
+        searchDropdown.style.display = 'block';
+    }, 350);
 });
 
 document.addEventListener('click', (e) => {
@@ -552,7 +564,7 @@ function switchMode(mode) {
     const searchBar = document.querySelector('.search-filter-bar');
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
-    
+    const inputGroups = document.querySelectorAll('.exam-action-bar .input-group');
     // THE CART IS NOW ALWAYS VISIBLE
     document.getElementById('exam-cart').style.display = "flex";
     startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
@@ -560,11 +572,14 @@ function switchMode(mode) {
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
+		inputGroups.forEach(group => group.style.display = 'none');
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         if (searchBar) searchBar.style.display = "flex";
+		
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
+		inputGroups.forEach(group => group.style.display = 'flex');
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         if (searchBar) searchBar.style.display = "none";
     }
@@ -871,13 +886,23 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
 
+const isLeaf = !hasSubLevels;
+    let instantStartBtn = '';
+    if (isLeaf) {
+        const safePath = encodeURIComponent(JSON.stringify(itemPath));
+        instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
+    }
+
     labelDiv.innerHTML = `
-        <div class="card-header-flex">
+        <div class="card-header-flex" style="align-items: center;">
             <span style="font-weight: 600; display: flex; align-items: center;">
                 ${!hasSubLevels ? `<input type="checkbox" class="item-checkbox" style="margin-right: 10px; transform: scale(1.2);">` : ''}
                 ${itemName}
             </span>
-            ${countHtml}
+            <div style="display: flex; align-items: center; gap: 8px;">
+                ${countHtml}
+                ${instantStartBtn}
+            </div>
         </div>
         ${progressHtml}
     `;
@@ -1060,20 +1085,20 @@ onAuthStateChanged(auth, async (user) => {
                     revisionCard.style.borderColor = '#3b82f6';
                     revisionCard.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.15)';
                     
-                    let revHtml = `
+let revHtml = `
                         <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-                            <h3 class="card-title" style="color: #1e3a8a;"><i class="fas fa-sync-alt" style="color: #3b82f6;"></i> Due for Revision (${dueTopics.length})</h3>
+                            <h3 class="card-title" style="color: #0f172a;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision (${dueTopics.length})</h3>
                         </div>
-                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px;">Review these topics now to optimize memory retention based on spaced repetition.</p>
-                        <div style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; padding-right: 5px;">
+                        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Review these topics now to optimize memory retention.</p>
+                        <div style="display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto; padding-right: 5px;">
                     `;
 
                     dueTopics.forEach(item => {
                         const safeTopic = encodeURIComponent(item.id);
                         revHtml += `
-                            <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border-color: #cbd5e1; padding: 10px;" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
-                                <span style="font-weight: 700; color: #334155;">${item.displayName}</span>
-                                <span class="badge" style="background: #e0f2fe; color: #0369a1; border-radius: 12px; font-size: 0.75rem;">Day ${item.step}</span>
+                            <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                                <span style="font-weight: 700; color: #92400e; font-size: 0.95rem;">${item.displayName}</span>
+                                <span class="badge" style="background: #f59e0b; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">Day ${item.step}</span>
                             </button>
                         `;
                     });
@@ -1632,3 +1657,17 @@ function restoreLastState() {
         }
     }
 }
+window.startInstantPractice = function(encodedPath) {
+    const pathArr = JSON.parse(decodeURIComponent(encodedPath));
+    let pool = activeCustomPool || allQuestions;
+    
+    // Filter questions just for this single topic
+    let finalPool = pool.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
+    
+    if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
+    
+    // Randomize and launch instantly in practice mode
+    finalPool = finalPool.sort(() => 0.5 - Math.random());
+    const generatedTitle = generateExamTitle([pathArr], currentView);
+    window.launchQuiz(finalPool, 'practice', 0, generatedTitle);
+};
