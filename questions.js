@@ -1014,7 +1014,8 @@ onAuthStateChanged(auth, async (user) => {
 				// ==========================================
                 // ANTI-CHEAT SECURITY MEASURES
                 // ==========================================
-                if (currentUserRole !== 'ADMIN' && currentUserRole !== 'MANAGEMENT') {
+                const roleUpper = (currentUserRole || 'STUDENT').toUpperCase();
+                if (roleUpper !== 'ADMIN' && roleUpper !== 'MANAGEMENT') {
                     // Disable text selection highlighting
                     document.body.style.userSelect = 'none';
                     document.body.style.webkitUserSelect = 'none';
@@ -1025,22 +1026,21 @@ onAuthStateChanged(auth, async (user) => {
                     // Disable copying
                     document.addEventListener('copy', e => {
                         e.preventDefault();
-                        alert("Copying text is disabled on this platform.");
                     });
 
-                    // Deter screenshots (Print Screen key)
-                    document.addEventListener('keyup', (e) => {
+                    // Deter screenshots silently (Prevents the white-screen freeze bug)
+                    window.addEventListener('keyup', (e) => {
                         if (e.key === 'PrintScreen') {
-                            navigator.clipboard.writeText(''); // Clear the clipboard
-                            alert("Screenshots are disabled to protect copyright material.");
+                            navigator.clipboard.writeText('Screenshots are disabled on this platform.'); 
                         }
                     });
                 } else {
-                    // Admins are allowed to copy and select
+                    // Admins are allowed to copy, select, and screenshot safely
                     document.body.style.userSelect = 'auto';
                     document.body.style.webkitUserSelect = 'auto';
                 }
                 // ==========================================
+                isPremiumUser = false;
                 isPremiumUser = false;
 
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
@@ -1102,11 +1102,23 @@ onAuthStateChanged(auth, async (user) => {
                 const now = Date.now();
                 const dueTopics = [];
 
-                Object.keys(revisions).forEach(topicId => {
+Object.keys(revisions).forEach(topicId => {
                     if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
+                        let topicName = revisions[topicId].topic || "Review Topic";
+                        
+                        // If Firebase saved it as "Unknown Topic", smartly extract the real name from the ID string
+                        if (topicName === "Unknown Topic" || topicName === "Review Topic") {
+                            const parts = topicId.split('::');
+                            if (parts.length >= 3) {
+                                topicName = parts[2]; // Usually the topic is the 3rd part of the ID
+                            } else {
+                                topicName = topicId.split('_').pop(); // Fallback extraction
+                            }
+                        }
+
                         dueTopics.push({ 
                             id: topicId, 
-                            displayName: revisions[topicId].topic || "Review Topic",
+                            displayName: topicName,
                             step: revisions[topicId].intervalStep 
                         });
                     }
@@ -1119,6 +1131,9 @@ onAuthStateChanged(auth, async (user) => {
                     revisionCard.className = 'glass-panel feature-card';
                     revisionCard.style.borderColor = '#3b82f6';
                     revisionCard.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.15)';
+                    revisionCard.style.padding = '22px'; // Adds beautiful breathing room inside the box
+                    revisionCard.style.gridColumn = '1 / -1'; // Prevents grid squishing on desktop
+                    revisionCard.style.marginBottom = '20px';
                     
 let revHtml = `
                         <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
