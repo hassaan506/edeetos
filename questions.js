@@ -885,15 +885,8 @@ function renderListItem(itemName, nextData, level, itemPath) {
     }
 
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
-
-const isLeaf = !hasSubLevels;
-    let instantStartBtn = '';
-    if (isLeaf) {
-        const safePath = encodeURIComponent(JSON.stringify(itemPath));
-        instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
-    }
-
-const safePath = encodeURIComponent(JSON.stringify(itemPath));
+    
+    const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
     // Give EVERY item a Start button
