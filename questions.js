@@ -1154,30 +1154,51 @@ onAuthStateChanged(auth, async (user) => {
                 // Sort the days numerically (Day 1, Day 3, Day 7...)
                 const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
 
-                const revisionContainer = document.getElementById('spaced-repetition-container');
+const revisionContainer = document.getElementById('spaced-repetition-container');
 
                 if (dueTopics.length > 0 && revisionContainer) {
+                    // 1. Create the small, clean trigger card on the dashboard
                     const revisionCard = document.createElement('div');
                     revisionCard.className = 'glass-panel feature-card';
-                    revisionCard.style.borderColor = '#3b82f6';
-                    revisionCard.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.15)';
-                    revisionCard.style.padding = '22px'; 
+                    revisionCard.style.borderColor = '#f59e0b';
+                    revisionCard.style.boxShadow = '0 10px 25px -5px rgba(245, 158, 11, 0.15)';
+                    revisionCard.style.padding = '20px'; 
                     revisionCard.style.gridColumn = '1 / -1'; 
                     revisionCard.style.marginBottom = '20px';
+                    revisionCard.style.cursor = 'pointer';
+                    revisionCard.style.display = 'flex';
+                    revisionCard.style.justifyContent = 'space-between';
+                    revisionCard.style.alignItems = 'center';
 
-                    let revHtml = `
-                        <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-                            <h3 class="card-title" style="color: #0f172a;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision (${dueTopics.length} Topics)</h3>
+                    revisionCard.innerHTML = `
+                        <div>
+                            <h3 class="card-title" style="color: #92400e; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
+                            <p style="color: #b45309; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
                         </div>
-                        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Review these topics now to optimize memory retention.</p>
-                        <div style="display: flex; flex-direction: column; gap: 20px; max-height: 400px; overflow-y: auto; padding-right: 10px;">
+                        <button class="btn-solid" style="background: #f59e0b; border: none; padding: 10px 20px;">View Plan</button>
                     `;
 
-// 3. Render HTML for each Day group (Collapsible Accordion)
+                    // 2. Build the Popup Modal dynamically
+                    let existingModal = document.getElementById('revision-popup-modal');
+                    if (existingModal) existingModal.remove(); // Clean up old modal if it exists
+
+                    const modalOverlay = document.createElement('div');
+                    modalOverlay.id = 'revision-popup-modal';
+                    modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+
+                    let modalHtml = `
+                        <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 15px;">
+                                <h3 style="color: #1e3a8a; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
+                                <button id="close-revision-popup" style="font-size: 1.5rem; color: #64748b; background: none; border: none; cursor: pointer;">&times;</button>
+                            </div>
+                            <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
+                    `;
+
+                    // 3. Add the Days and Topics inside the Modal
                     sortedDays.forEach(day => {
-                        revHtml += `
-                            <div class="revision-day-group" style="margin-bottom: 10px;">
-                                <!-- The Clickable Day Header -->
+                        modalHtml += `
+                            <div class="revision-day-group">
                                 <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #cbd5e1; background: #f8fafc; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = '#eff6ff'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = '#cbd5e1'; this.style.background = '#f8fafc'; }">
                                     <div style="font-weight: 700; color: #1e293b; font-size: 1rem;">
                                         <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 8px;"></i> Day ${day}
@@ -1188,19 +1209,17 @@ onAuthStateChanged(auth, async (user) => {
                                     </div>
                                 </button>
                                 
-                                <!-- The Hidden Content that expands -->
                                 <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #cbd5e1; margin-left: 5px;">
                         `;
 
                         groupedByDay[day].forEach(item => {
                             const safeTopic = encodeURIComponent(item.id);
-                            
                             const displayPath = `
                                 <span style="color:#64748b; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span></span>
                                 <span style="color:#92400e; font-size: 0.95rem;">${item.topic}</span>
                             `;
 
-                            revHtml += `
+                            modalHtml += `
                                 <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
                                     <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
                                         ${displayPath}
@@ -1210,16 +1229,32 @@ onAuthStateChanged(auth, async (user) => {
                             `;
                         });
 
-                        revHtml += `
-                                </div>
-                            </div>
-                        `;
+                        modalHtml += `</div></div>`;
                     });
 
-                    revHtml += `</div>`;
-					revisionCard.innerHTML = revHtml;
+                    modalHtml += `</div></div>`;
+                    modalOverlay.innerHTML = modalHtml;
+                    document.body.appendChild(modalOverlay);
+
+                    // 4. Connect the click events to open and close the modal
+                    revisionCard.onclick = () => {
+                        modalOverlay.style.display = 'flex';
+                    };
+
+                    const closeBtn = modalOverlay.querySelector('#close-revision-popup');
+                    closeBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        modalOverlay.style.display = 'none';
+                    };
+
+                    modalOverlay.onclick = (e) => {
+                        if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+                    };
+
+                    // Finally, attach the trigger card to the screen
                     revisionContainer.innerHTML = ''; 
                     revisionContainer.appendChild(revisionCard);
+
                 } else if (revisionContainer) {
                     revisionContainer.innerHTML = '';
                 }

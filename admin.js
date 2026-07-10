@@ -67,13 +67,25 @@ onAuthStateChanged(auth, async (user) => {
 async function calculateTotalQuestions() {
     const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     const referenceBooks = [
-        { file: "firstaid_step1", title: "First Aid Step 1" }, { file: "rafiullah", title: "Rafiullah FCPS" },
-        { file: "im_medicine", title: "Irfan Masood - Medicine" }, { file: "im_surgery", title: "Irfan Masood - Surgery" },
-        { file: "brs_patho", title: "BRS - Pathology" }, { file: "brs_physio", title: "BRS - Physiology" }
+        { file: "firstaid_step1", title: "First Aid Step 1" }, 
+        { file: "firstaid_step2", title: "First Aid Step 2" },
+        { file: "rafiullah", title: "Rafiullah FCPS" },
+        { file: "im_medicine", title: "Irfan Masood - Medicine" }, 
+        { file: "im_surgery", title: "Irfan Masood - Surgery" },
+        { file: "im_pathology", title: "Irfan Masood - Pathology" },
+        { file: "im_pediatrics", title: "Irfan Masood - Pediatrics" },
+        { file: "brs_patho", title: "BRS - Pathology" }, 
+        { file: "brs_physio", title: "BRS - Physiology" },
+        { file: "doubleAA", title: "Double AA" }
     ];
 
     let totalQuestions = 0;
-    let breakdownHtml = `<div style="max-height: 180px; overflow-y: auto; padding-right: 5px; margin-top: 10px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 12px;"><div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
+    
+    // Build a cleaner, better spaced HTML string for the new breakdown box
+    let breakdownHtml = `
+        <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 8px;">Core Courses</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+    `;
 
     async function fetchAndCount(path, displayTitle, badgeColor, textColor) {
         try {
@@ -83,20 +95,34 @@ async function calculateTotalQuestions() {
                 if (Array.isArray(data) && data.length > 0) {
                     const count = data.length;
                     totalQuestions += count;
-                    breakdownHtml += `<span style="background: ${badgeColor}; color: ${textColor}; padding: 3px 8px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.05); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">${displayTitle} <span style="background: rgba(255,255,255,0.5); color: #0f172a; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">${count}</span></span>`;
+                    breakdownHtml += `<span style="background: ${badgeColor}; color: ${textColor}; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; border: 1px solid rgba(0,0,0,0.05); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;">${displayTitle} <span style="background: rgba(255,255,255,0.6); color: #0f172a; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">${count} Qs</span></span>`;
                 }
             }
         } catch (e) {}
     }
 
-    for (const course of standardCourses) await fetchAndCount(`Data/${course}_questions.json`, courseNamesMap[course], '#e2e8f0', '#334155');
-    breakdownHtml += `</div><div style="margin: 12px 0 6px 0; color: #8b5cf6; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-book"></i> Reference Books</div><div style="display: flex; flex-wrap: wrap; gap: 6px;">`;
+    // Fetch Standard Courses
+    for (const course of standardCourses) await fetchAndCount(`Data/${course}_questions.json`, courseNamesMap[course], '#f1f5f9', '#334155');
+    
+    breakdownHtml += `</div><div style="margin: 20px 0 8px 0; color: #8b5cf6; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-book-open"></i> Reference Books</div><div style="display: flex; flex-wrap: wrap; gap: 8px;">`;
+    
+    // Fetch Reference Books
     for (const book of referenceBooks) await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
-    breakdownHtml += `</div></div>`;
+    breakdownHtml += `</div>`;
 
+    // 1. Update the tiny badge in the top bar with JUST the number
     const totalEl = document.getElementById('total-q-count');
     if (totalEl) {
-        totalEl.innerHTML = `<div style="font-size: 1.05rem; font-weight: 800; color: #1e293b; display: flex; justify-content: space-between; align-items: center;"><span>Total Database Questions:</span><span style="background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.9rem;">${totalQuestions}</span></div>${breakdownHtml}`;
+        totalEl.innerHTML = `<i class="fas fa-layer-group"></i> Total Qs: ${totalQuestions.toLocaleString()}`;
+    }
+
+    // 2. Put the massive breakdown inside our new dedicated UI box
+    const breakdownBox = document.getElementById('database-breakdown-box');
+    const breakdownContent = document.getElementById('database-breakdown-content');
+    
+    if (breakdownBox && breakdownContent) {
+        breakdownBox.style.display = 'block';
+        breakdownContent.innerHTML = breakdownHtml;
     }
 }
 
@@ -324,16 +350,36 @@ function openEditModal(user) {
     if(editEmailEl) editEmailEl.textContent = user.email || "No Email Provided";
     if(editPhoneEl) editPhoneEl.textContent = user.phone || "No Phone Provided";
     if(editUidEl) editUidEl.textContent = `ID: ${user.uid}`;
+    
     const banBtn = document.getElementById('btn-ban-user');
     const unbanBtn = document.getElementById('btn-unban-user');
-    
-    if (user.isBanned || user.role === 'BANNED') {
-        if (banBtn) banBtn.style.display = 'none';   
-        if (unbanBtn) unbanBtn.style.display = 'block'; 
+    const makeStudentBtn = document.getElementById('btn-make-student');
+    const makeMentorBtn = document.getElementById('btn-make-mentor');
+    const makeAdminBtn = document.getElementById('btn-make-admin');
+
+    const isSuperAdmin = user.uid === 'KpNtNoeNVveHO9Ga2Kc9dxuhvZp2';
+    const isSelf = auth.currentUser && user.uid === auth.currentUser.uid;
+
+    if (isSuperAdmin || isSelf) {
+        if (banBtn) banBtn.style.display = 'none';
+        if (unbanBtn) unbanBtn.style.display = 'none';
+        if (makeStudentBtn) makeStudentBtn.style.display = 'none';
+        if (makeMentorBtn) makeMentorBtn.style.display = 'none';
+        if (makeAdminBtn) makeAdminBtn.style.display = 'none';
     } else {
-        if (banBtn) banBtn.style.display = 'block';     
-        if (unbanBtn) unbanBtn.style.display = 'none';  
+        if (makeStudentBtn) makeStudentBtn.style.display = 'block';
+        if (makeMentorBtn) makeMentorBtn.style.display = 'block';
+        if (makeAdminBtn) makeAdminBtn.style.display = 'block';
+
+        if (user.isBanned || user.role === 'BANNED') {
+            if (banBtn) banBtn.style.display = 'none';
+            if (unbanBtn) unbanBtn.style.display = 'block';
+        } else {
+            if (banBtn) banBtn.style.display = 'block';
+            if (unbanBtn) unbanBtn.style.display = 'none';
+        }
     }
+    
     renderSubscriptions();
     if(editModal) editModal.style.display = 'flex';
 }
@@ -347,6 +393,10 @@ if(btnMakeMentor) btnMakeMentor.addEventListener('click', () => changeUserRole('
 if(btnMakeAdmin) btnMakeAdmin.addEventListener('click', () => changeUserRole('MANAGEMENT'));
 
 async function changeUserRole(newRole) {
+    if (editingUser.uid === 'KpNtNoeNVveHO9Ga2Kc9dxuhvZp2' || editingUser.uid === auth.currentUser.uid) {
+        return alert("Action denied. You cannot modify the Super Admin or your own role.");
+    }
+
     if(confirm(`Change this user's role to ${newRole}?`)) {
         await updateDoc(doc(db, "users", editingUser.uid), { role: newRole });
         editingUser.role = newRole;
@@ -358,6 +408,10 @@ async function changeUserRole(newRole) {
 const btnBanUser = document.getElementById('btn-ban-user');
 if (btnBanUser) {
     btnBanUser.addEventListener('click', async () => {
+        if (editingUser.uid === 'KpNtNoeNVveHO9Ga2Kc9dxuhvZp2' || editingUser.uid === auth.currentUser.uid) {
+            return alert("Action denied. You cannot ban the Super Admin or yourself.");
+        }
+
         if (confirm(`🚨 Are you absolutely sure you want to BAN ${editingUser.fullName || 'this user'}?\n\nThis will revoke all their premium access and mark their account as banned.`)) {
             btnBanUser.textContent = "Banning..."; btnBanUser.disabled = true;
             try {
