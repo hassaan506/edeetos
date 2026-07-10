@@ -1217,6 +1217,9 @@ onAuthStateChanged(auth, async (user) => {
                     });
 
                     revHtml += `</div>`;
+					revisionCard.innerHTML = revHtml;
+                    revisionContainer.innerHTML = ''; 
+                    revisionContainer.appendChild(revisionCard);
                 } else if (revisionContainer) {
                     revisionContainer.innerHTML = '';
                 }
