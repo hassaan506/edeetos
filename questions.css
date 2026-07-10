@@ -537,10 +537,12 @@
         0% { opacity: 0; transform: translateY(100%); }
         100% { opacity: 1; transform: translateY(0); }
     }
+	
 @media (max-width: 768px) {
-    #subjects-grid {
+#subjects-grid {
         grid-template-columns: repeat(1, 1fr); 
         gap: 1rem;
+        padding-bottom: 220px !important; /* Pushes the grid up so the cart doesn't block it */
     }
     
     .exam-action-bar {

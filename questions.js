@@ -893,10 +893,16 @@ const isLeaf = !hasSubLevels;
         instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
     }
 
+const safePath = encodeURIComponent(JSON.stringify(itemPath));
+    const pathStr = JSON.stringify(itemPath);
+
+    // Give EVERY item a Start button
+    const instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
+
     labelDiv.innerHTML = `
         <div class="card-header-flex" style="align-items: center;">
             <span style="font-weight: 600; display: flex; align-items: center;">
-                ${!hasSubLevels ? `<input type="checkbox" class="item-checkbox" style="margin-right: 10px; transform: scale(1.2);">` : ''}
+                <input type="checkbox" class="item-checkbox" style="margin-right: 12px; transform: scale(1.3); cursor: pointer;">
                 ${itemName}
             </span>
             <div style="display: flex; align-items: center; gap: 8px;">
@@ -908,34 +914,40 @@ const isLeaf = !hasSubLevels;
     `;
     itemDiv.appendChild(labelDiv);
 
+    // Setup checkbox logic for ALL items (Chapters and Topics)
+    const cb = itemDiv.querySelector('.item-checkbox');
+    cb.checked = selectedCart.has(pathStr);
+
+    cb.onchange = (e) => {
+        if (e.target.checked) selectedCart.add(pathStr);
+        else selectedCart.delete(pathStr);
+
+        const cartCountEl = document.getElementById('cart-count');
+        const startBtnEl = document.getElementById('start-exam-btn');
+        if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
+        if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
+    };
+
+    // Make clicking the row toggle the checkbox (unless they click a button)
+    itemDiv.style.cursor = 'pointer';
+    itemDiv.onclick = (e) => {
+        if (e.target !== cb && e.target.tagName !== 'BUTTON') {
+            cb.checked = !cb.checked;
+            cb.dispatchEvent(new Event('change'));
+        }
+    };
+
+    // If it's a chapter, add the "View ➡" button to see inside it
     if (hasSubLevels) {
         const actionBtn = document.createElement('button');
         actionBtn.className = 'btn-outline mini-btn';
         actionBtn.style.marginLeft = '15px';
         actionBtn.textContent = 'View ➡';
-        actionBtn.onclick = () => openPopup(itemName, nextData, 'Chapter', itemPath, false);
+        actionBtn.onclick = (e) => {
+            e.stopPropagation(); // Prevent the checkbox from toggling when opening the folder
+            openPopup(itemName, nextData, 'Chapter', itemPath, false);
+        };
         itemDiv.appendChild(actionBtn);
-    } else {
-        const cb = itemDiv.querySelector('.item-checkbox');
-        const leafPaths = [JSON.stringify(itemPath)];
-        
-        cb.checked = selectedCart.has(leafPaths[0]);
-
-        cb.onchange = (e) => {
-            if (e.target.checked) selectedCart.add(leafPaths[0]);
-            else selectedCart.delete(leafPaths[0]);
-
-            document.getElementById('cart-count').textContent = `${selectedCart.size} Topics Selected`;
-            document.getElementById('start-exam-btn').disabled = selectedCart.size === 0;
-        };
-
-        itemDiv.style.cursor = 'pointer';
-        itemDiv.onclick = (e) => {
-            if (e.target !== cb) {
-                cb.checked = !cb.checked;
-                cb.dispatchEvent(new Event('change'));
-            }
-        };
     }
 
     popupList.appendChild(itemDiv);
@@ -1006,6 +1018,36 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 currentUserData = dbData; // Set global
                 currentUserRole = dbData.role || 'STUDENT';
+				// ==========================================
+                // ANTI-CHEAT SECURITY MEASURES
+                // ==========================================
+                if (currentUserRole !== 'ADMIN' && currentUserRole !== 'MANAGEMENT') {
+                    // Disable text selection highlighting
+                    document.body.style.userSelect = 'none';
+                    document.body.style.webkitUserSelect = 'none';
+                    
+                    // Disable right-click menu
+                    document.addEventListener('contextmenu', e => e.preventDefault());
+                    
+                    // Disable copying
+                    document.addEventListener('copy', e => {
+                        e.preventDefault();
+                        alert("Copying text is disabled on this platform.");
+                    });
+
+                    // Deter screenshots (Print Screen key)
+                    document.addEventListener('keyup', (e) => {
+                        if (e.key === 'PrintScreen') {
+                            navigator.clipboard.writeText(''); // Clear the clipboard
+                            alert("Screenshots are disabled to protect copyright material.");
+                        }
+                    });
+                } else {
+                    // Admins are allowed to copy and select
+                    document.body.style.userSelect = 'auto';
+                    document.body.style.webkitUserSelect = 'auto';
+                }
+                // ==========================================
                 isPremiumUser = false;
 
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
