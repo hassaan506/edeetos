@@ -96,9 +96,9 @@ body {
 }
 
 .admin-tab.active { 
-    background: #10b981; 
+    background: #1e293b; /* Dark navy blue to pop against the green header */
     color: white; 
-    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); 
+    box-shadow: 0 10px 15px -3px rgba(30, 41, 59, 0.4); 
 }
 
 /* ========================================== */
@@ -551,6 +551,39 @@ body {
     }
 }
 
+/* 9. Database Breakdown Mobile Strict Layout */
+    #database-breakdown-box {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #database-breakdown-box h3 {
+        font-size: 1.05rem !important;
+    }
+
+    /* Force the flex rows into a rigid 2-column grid on mobile */
+    #database-breakdown-content > div[style*="display: flex"] {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px !important;
+    }
+
+    /* Restructure the individual pills to fit the tight mobile grid */
+    #database-breakdown-content span[style*="display: inline-flex"] {
+        padding: 6px 8px !important;
+        font-size: 0.65rem !important;
+        width: 100%;
+        justify-content: space-between; /* Pushes the title left and the count right */
+        white-space: normal !important;
+        text-align: left;
+    }
+    
+    /* Shrink the inner question count bubble */
+    #database-breakdown-content span[style*="background: rgba"] {
+        padding: 2px 5px !important;
+        font-size: 0.6rem !important;
+        flex-shrink: 0; /* Prevents the number bubble from squishing */
+    }
 /* ==========================================
    FIX: TOTAL QUESTIONS BOX OVERFLOW (LAPTOP & MOBILE)
    ========================================== */

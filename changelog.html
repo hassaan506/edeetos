@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="changelog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body style="background-color: #f8fafc;">
+<body>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -22,10 +22,10 @@
     </nav>
 
     <header class="changelog-header section-container">
-        <div class="header-content text-center">
-            <h1 style="color: #1e3a8a; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">EDEETOS Changelog</h1>
+        <div class="header-content" style="text-align: center;">
+            <h1 style="color: #1e3a8a; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Platform Updates</h1>
             <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                Stay up to date with the latest features, performance upgrades, and bug fixes added to your study platform.
+                A complete record of all features, performance upgrades, and security protocols deployed to EDEETOS.
             </p>
         </div>
     </header>
@@ -33,51 +33,106 @@
     <section class="section-container" style="max-width: 800px; margin: 0 auto; padding-bottom: 4rem;">
         <div class="timeline">
 
+            <!-- JULY 10 UPDATE -->
             <div class="timeline-item">
-                <div class="timeline-date">Just Now</div>
+                <div class="timeline-date">July 10, 2026</div>
                 <div class="timeline-marker"></div>
-                <div class="glass-panel timeline-content">
+                <div class="timeline-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
+                        <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v2.2.0 - Smart Performance & Security</h2>
+                        <span class="tag tag-major">Major Update</span>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="badge badge-feature">Feature</span> <strong>Smart Training Hub:</strong> Completely replaced the generic analytics engine. The system now calculates exact Strengths and Weaknesses, allowing you to launch Targeted Focus, Redemption Mode, or Balanced Mix quizzes directly from the dashboard.</li>
+                        <li><span class="badge badge-security">Security</span> <strong>Anti-Cheat Protocol:</strong> Deployed a silent clipboard interceptor. The platform now actively blocks right-clicking, text selection, copying, and silently neutralizes Print Screen attempts to protect intellectual property.</li>
+                        <li><span class="badge badge-update">Admin</span> <strong>Dashboard Redesign:</strong> Built a dedicated, responsive grid interface for the Admin Database Overview to prevent UI cramping on mobile devices.</li>
+                        <li><span class="badge badge-security">Security</span> <strong>Role Protection:</strong> Hardcoded security logic to prevent admins from accidentally banning the Super Admin account or revoking their own access.</li>
+                        <li><span class="badge badge-update">Legal</span> <strong>Terms & Privacy Overhaul:</strong> Updated legal documentation to explicitly cover the new Smart Training Hub data usage, outline the strict screenshot bans, and removed outdated PWA references.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- JULY 9 UPDATE -->
+            <div class="timeline-item">
+                <div class="timeline-date">July 9, 2026</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
+                        <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v2.1.0 - Spaced Repetition & Mobile Layout</h2>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="badge badge-update">UI/UX</span> <strong>Revision Accordions:</strong> Overhauled the "Due for Revision" block. Topics are now intelligently grouped by Day inside clickable, expanding accordion cards to prevent cognitive overload.</li>
+                        <li><span class="badge badge-fix">Bug Fix</span> <strong>Mobile Grid Blocking:</strong> Fixed a critical CSS issue where the floating exam cart blocked the bottom row of subjects on mobile phones. The cart now docks cleanly to the bottom of the screen.</li>
+                        <li><span class="badge badge-update">UI/UX</span> <strong>Practice Mode UI:</strong> The system now automatically hides the exam timer and question count inputs when Practice Mode is selected, keeping the interface clean.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- JULY 8 UPDATE -->
+            <div class="timeline-item">
+                <div class="timeline-date">July 8, 2026</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
+                        <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v2.0.5 - Navigation & Content Expansion</h2>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="badge badge-feature">Feature</span> <strong>Instant Start Buttons:</strong> Added the ability to bypass the cart and instantly launch quizzes directly from individual Chapters and Topics.</li>
+                        <li><span class="badge badge-feature">Feature</span> <strong>Chapter Multi-Select:</strong> Added checkboxes to the Chapter level, allowing users to select entire chapters for practice rather than clicking individual topics.</li>
+                        <li><span class="badge badge-perf">Performance</span> <strong>Search Bar Optimization:</strong> Implemented a debounce function on the search bar to prevent browser freezing while typing. Fixed a capitalization logic error so question previews now successfully load in the dropdown.</li>
+                        <li><span class="badge badge-feature">Content</span> <strong>Library Expansion:</strong> Added First Aid Step 2, Irfan Masood Pathology, and Irfan Masood Pediatrics to the core database and admin generator arrays.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- JULY 7 UPDATE (PREVIOUS) -->
+            <div class="timeline-item">
+                <div class="timeline-date">July 7, 2026</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
                         <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v2.0.0 - The Performance & Cart Update</h2>
                         <span class="tag tag-major">Major Update</span>
                     </div>
                     <ul class="update-list">
-                        <li><span class="badge badge-perf">Performance</span> <strong>Lazy-Loading Engine:</strong> Books and heavy question banks now load on-demand, reducing initial dashboard load times by up to 80%.</li>
-                        <li><span class="badge badge-feature">Feature</span> <strong>Unified Study Cart:</strong> Practice and Exam modes now share a powerful multi-select cart system allowing you to mix and match multiple topics across subjects.</li>
-                        <li><span class="badge badge-feature">Feature</span> <strong>Premium Book Locks:</strong> Books in the library are now individually locked and display real-time access status based on your subscription.</li>
-                        <li><span class="badge badge-update">UI/UX</span> <strong>Spaced Repetition Overhaul:</strong> The "Due for Revision" panel has been completely redesigned to match the modern glassmorphism aesthetic.</li>
-                        <li><span class="badge badge-fix">Bug Fix</span> Fixed an issue where switching between Practice and Exam modes inside a book would accidentally clear the topic selection grid.</li>
+                        <li><span class="badge badge-perf">Performance</span> <strong>Lazy-Loading Engine:</strong> Books and heavy question banks now load on-demand, reducing initial dashboard load times by up to 80%[cite: 12].</li>
+                        <li><span class="badge badge-feature">Feature</span> <strong>Unified Study Cart:</strong> Practice and Exam modes now share a powerful multi-select cart system allowing you to mix and match multiple topics across subjects[cite: 12].</li>
+                        <li><span class="badge badge-feature">Feature</span> <strong>Premium Book Locks:</strong> Books in the library are now individually locked and display real-time access status based on your subscription[cite: 12].</li>
+                        <li><span class="badge badge-update">UI/UX</span> <strong>Spaced Repetition Overhaul:</strong> The "Due for Revision" panel has been completely redesigned to match the modern glassmorphism aesthetic[cite: 12].</li>
+                        <li><span class="badge badge-fix">Bug Fix</span> Fixed an issue where switching between Practice and Exam modes inside a book would accidentally clear the topic selection grid[cite: 12].</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- JULY 6 UPDATE (PREVIOUS) -->
             <div class="timeline-item">
-                <div class="timeline-date">Recently</div>
+                <div class="timeline-date">July 6, 2026</div>
                 <div class="timeline-marker"></div>
-                <div class="glass-panel timeline-content">
+                <div class="timeline-content">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
                         <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v1.9.0 - Admin & Access Controls</h2>
                     </div>
                     <ul class="update-list">
-                        <li><span class="badge badge-feature">Feature</span> <strong>Course Change Requests:</strong> Students can now officially request an Admin to change their assigned exam course via the Profile menu.</li>
-                        <li><span class="badge badge-update">System</span> <strong>Book Bundle Pricing:</strong> The Premium checkout now automatically applies 10%, 20%, and 30% discount mathematics when purchasing multiple reference books.</li>
-                        <li><span class="badge badge-security">Security</span> <strong>Group Study Loophole Closed:</strong> Free tier users are now strictly prevented from using 4-digit room codes to bypass paywalls and join Premium study sessions.</li>
-                        <li><span class="badge badge-feature">Feature</span> <strong>Advanced Key Generation:</strong> Admins can now generate redeem codes that grant access to specific individual books alongside standard courses.</li>
+                        <li><span class="badge badge-feature">Feature</span> <strong>Course Change Requests:</strong> Students can now officially request an Admin to change their assigned exam course via the Profile menu[cite: 12].</li>
+                        <li><span class="badge badge-update">System</span> <strong>Book Bundle Pricing:</strong> The Premium checkout now automatically applies 10%, 20%, and 30% discount mathematics when purchasing multiple reference books[cite: 12].</li>
+                        <li><span class="badge badge-security">Security</span> <strong>Group Study Loophole Closed:</strong> Free tier users are now strictly prevented from using 4-digit room codes to bypass paywalls and join Premium study sessions[cite: 12].</li>
+                        <li><span class="badge badge-feature">Feature</span> <strong>Advanced Key Generation:</strong> Admins can now generate redeem codes that grant access to specific individual books alongside standard courses[cite: 12].</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- JULY 5 UPDATE (PREVIOUS) -->
             <div class="timeline-item">
-                <div class="timeline-date">Earlier</div>
+                <div class="timeline-date">July 5, 2026</div>
                 <div class="timeline-marker"></div>
-                <div class="glass-panel timeline-content">
+                <div class="timeline-content">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
                         <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v1.8.0 - Strict Course Targeting</h2>
                     </div>
                     <ul class="update-list">
-                        <li><span class="badge badge-feature">Feature</span> <strong>Locked Dashboards:</strong> The Question Bank launcher is now strictly locked to the student's assigned database course, preventing accidental access to irrelevant exams.</li>
-                        <li><span class="badge badge-update">UI/UX</span> <strong>Streamlined Registration:</strong> Removed redundant 'Target Exam' and 'Year of Study' dropdowns in favor of a single master "Access Course" selector to speed up onboarding.</li>
-                        <li><span class="badge badge-fix">Bug Fix</span> Removed hardcoded fallback defaults that were forcing unassigned legacy users into the FCPS Part 1 database.</li>
+                        <li><span class="badge badge-feature">Feature</span> <strong>Locked Dashboards:</strong> The Question Bank launcher is now strictly locked to the student's assigned database course, preventing accidental access to irrelevant exams[cite: 12].</li>
+                        <li><span class="badge badge-update">UI/UX</span> <strong>Streamlined Registration:</strong> Removed redundant 'Target Exam' and 'Year of Study' dropdowns in favor of a single master "Access Course" selector to speed up onboarding[cite: 12].</li>
+                        <li><span class="badge badge-fix">Bug Fix</span> Removed hardcoded fallback defaults that were forcing unassigned legacy users into the FCPS Part 1 database[cite: 12].</li>
                     </ul>
                 </div>
             </div>
