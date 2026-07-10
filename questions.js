@@ -101,11 +101,15 @@ globalSearch.addEventListener('input', (e) => {
         return;
     }
 
-    // Wait 350ms after typing stops to prevent browser freeze
+// Wait 350ms after typing stops to prevent browser freeze
     searchTimeout = setTimeout(() => {
         const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-            const textToSearch = `${q.Subject} ${q.Chapter} ${q.Topic} ${q.Question || ''}`.toLowerCase();
+            
+            // Smartly grab the question text no matter how it's capitalized in your database
+            const questionText = q.Question || q.question || q.text || q.statement || "";
+            
+            const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
             return textToSearch.includes(query);
         });
 
@@ -116,8 +120,11 @@ globalSearch.addEventListener('input', (e) => {
             matchedQuestions.slice(0, 30).forEach(q => {
                 const div = document.createElement('div');
                 div.className = 'search-item';
-                const title = `${q.Subject} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
-                const questionSnippet = q.Question ? q.Question.substring(0, 90) + "..." : "No text";
+                const title = `${q.Subject || 'Unknown Subject'} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
+                
+                // Grab the text for the snippet preview
+                const questionText = q.Question || q.question || q.text || q.statement || "";
+                const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
 
                 div.innerHTML = `
                     <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
@@ -1102,27 +1109,50 @@ onAuthStateChanged(auth, async (user) => {
                 const now = Date.now();
                 const dueTopics = [];
 
-Object.keys(revisions).forEach(topicId => {
+// 1. Extract and Parse Topics
+                Object.keys(revisions).forEach(topicId => {
                     if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
-                        let topicName = revisions[topicId].topic || "Review Topic";
+                        let subj = "", chap = "", top = "";
                         
-                        // If Firebase saved it as "Unknown Topic", smartly extract the real name from the ID string
-                        if (topicName === "Unknown Topic" || topicName === "Review Topic") {
-                            const parts = topicId.split('::');
-                            if (parts.length >= 3) {
-                                topicName = parts[2]; // Usually the topic is the 3rd part of the ID
-                            } else {
-                                topicName = topicId.split('_').pop(); // Fallback extraction
-                            }
+                        // Smart extraction from the ID string
+                        const parts = topicId.split('::');
+                        if (parts.length >= 4) {
+                            subj = parts[0];
+                            chap = parts[1];
+                            top = parts[2];
+                        } else {
+                            const oldParts = topicId.split('_');
+                            oldParts.pop(); // Remove source name
+                            top = oldParts.pop() || '';
+                            chap = oldParts.pop() || '';
+                            subj = oldParts.join('_') || '';
                         }
+
+                        // Fallback text if anything is empty
+                        subj = subj || "General";
+                        chap = chap || "Section";
+                        top = top || revisions[topicId].topic || "Review Topic";
+                        if (top === "Unknown Topic") top = "Topic";
 
                         dueTopics.push({ 
                             id: topicId, 
-                            displayName: topicName,
-                            step: revisions[topicId].intervalStep 
+                            subject: subj,
+                            chapter: chap,
+                            topic: top,
+                            step: revisions[topicId].intervalStep || 1 
                         });
                     }
                 });
+
+                // 2. Group Topics by Day
+                const groupedByDay = {};
+                dueTopics.forEach(item => {
+                    if (!groupedByDay[item.step]) groupedByDay[item.step] = [];
+                    groupedByDay[item.step].push(item);
+                });
+
+                // Sort the days numerically (Day 1, Day 3, Day 7...)
+                const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
 
                 const revisionContainer = document.getElementById('spaced-repetition-container');
 
@@ -1131,25 +1161,50 @@ Object.keys(revisions).forEach(topicId => {
                     revisionCard.className = 'glass-panel feature-card';
                     revisionCard.style.borderColor = '#3b82f6';
                     revisionCard.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.15)';
-                    revisionCard.style.padding = '22px'; // Adds beautiful breathing room inside the box
-                    revisionCard.style.gridColumn = '1 / -1'; // Prevents grid squishing on desktop
+                    revisionCard.style.padding = '22px'; 
+                    revisionCard.style.gridColumn = '1 / -1'; 
                     revisionCard.style.marginBottom = '20px';
-                    
-let revHtml = `
+
+                    let revHtml = `
                         <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-                            <h3 class="card-title" style="color: #0f172a;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision (${dueTopics.length})</h3>
+                            <h3 class="card-title" style="color: #0f172a;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision (${dueTopics.length} Topics)</h3>
                         </div>
                         <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 15px;">Review these topics now to optimize memory retention.</p>
-                        <div style="display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto; padding-right: 5px;">
+                        <div style="display: flex; flex-direction: column; gap: 20px; max-height: 400px; overflow-y: auto; padding-right: 10px;">
                     `;
 
-                    dueTopics.forEach(item => {
-                        const safeTopic = encodeURIComponent(item.id);
+                    // 3. Render HTML for each Day group
+                    sortedDays.forEach(day => {
                         revHtml += `
-                            <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
-                                <span style="font-weight: 700; color: #92400e; font-size: 0.95rem;">${item.displayName}</span>
-                                <span class="badge" style="background: #f59e0b; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">Day ${item.step}</span>
-                            </button>
+                            <div class="revision-day-group">
+                                <h4 style="margin: 0 0 10px 0; color: #1e3a8a; font-size: 0.95rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">
+                                    <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 6px;"></i> Day ${day}
+                                </h4>
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                        `;
+
+                        groupedByDay[day].forEach(item => {
+                            const safeTopic = encodeURIComponent(item.id);
+                            
+                            // Creates the: Subject > Chapter > Topic display
+                            const displayPath = `
+                                <span style="color:#64748b; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span></span>
+                                <span style="color:#92400e; font-size: 0.95rem;">${item.topic}</span>
+                            `;
+
+                            revHtml += `
+                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                                    <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
+                                        ${displayPath}
+                                    </div>
+                                    <i class="fas fa-play-circle" style="color: #f59e0b; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
+                                </button>
+                            `;
+                        });
+
+                        revHtml += `
+                                </div>
+                            </div>
                         `;
                     });
 
@@ -1209,7 +1264,7 @@ let revHtml = `
 });
 
 // ==========================================
-// 11. THE WEAKNESS ENGINE & ANALYTICS
+// 11. SMART PERFORMANCE & ANALYTICS ENGINE
 // ==========================================
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
@@ -1222,6 +1277,7 @@ if (btnAnalytics) {
         let stats = {};
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
 
+        // 1. Gather all data
         allQuestions.forEach(q => {
             const topicName = q.Topic || q.Chapter || q.Subject || "Core Material";
             const qId = getQID(q);
@@ -1242,76 +1298,126 @@ if (btnAnalytics) {
             }
         });
 
-        let weaknesses = [];
-        Object.keys(stats).forEach(topic => {
-            const data = stats[topic];
-            if (data.attempted >= 3 && data.mistakes > 0) {
-                const accuracy = Math.round(((data.attempted - data.mistakes) / data.attempted) * 100);
-                weaknesses.push({
-                    topic: topic,
-                    accuracy: accuracy,
-                    mistakes: data.mistakes,
-                    attempted: data.attempted,
-                    pool: data.questions
-                });
-            }
-        });
+        // 2. Process Topics (Minimum 3 attempts to qualify for analytics)
+        let processedTopics = Object.keys(stats).map(topic => {
+            const d = stats[topic];
+            return {
+                topic: topic,
+                attempted: d.attempted,
+                mistakes: d.mistakes,
+                accuracy: d.attempted > 0 ? Math.round(((d.attempted - d.mistakes) / d.attempted) * 100) : 0,
+                pool: d.questions
+            };
+        }).filter(t => t.attempted >= 3);
 
-        weaknesses.sort((a, b) => a.accuracy - b.accuracy || b.mistakes - a.mistakes);
-        const topWeaknesses = weaknesses.slice(0, 5); 
+        // Sort into Weaknesses (Below 70%) and Strengths (70% and above)
+        let weaknesses = processedTopics.filter(t => t.accuracy < 70).sort((a, b) => a.accuracy - b.accuracy || b.mistakes - a.mistakes).slice(0, 4);
+        let strengths = processedTopics.filter(t => t.accuracy >= 70).sort((a, b) => b.accuracy - a.accuracy).slice(0, 4);
 
         let html = ``;
 
-        if (topWeaknesses.length > 0) {
-            html += `<h4 style="color:#991b1b; border-bottom:2px solid #fee2e2; padding-bottom:5px; margin-top: 0;">🚨 Critical Weaknesses</h4>`;
-            html += `<p style="font-size:0.85rem; color:#475569; margin-bottom: 15px;">You are currently underperforming in these specific areas.</p>`;
-            
-            topWeaknesses.forEach(w => {
-                html += `
-                    <div style="margin: 10px 0; padding: 10px; background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px;">
-                        <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight: bold; color: #7f1d1d;">
-                            <span>${w.topic}</span><span>${w.accuracy}% Accuracy</span>
-                        </div>
-                        <div style="font-size: 0.8rem; color: #991b1b; margin-top: 4px;">
-                            ${w.mistakes} mistakes out of ${w.attempted} attempts.
-                        </div>
-                    </div>`;
-            });
-
+        // --- SECTION 1: PERFORMANCE OVERVIEW ---
+        if (processedTopics.length === 0) {
             html += `
-                <button id="btn-weakness-gauntlet" style="width: 100%; margin-top: 15px; background: #ef4444; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); transition: 0.2s;">
-                    Generate Targeted Weakness Quiz (20 Qs)
-                </button>
+                <div style="text-align: center; padding: 30px 10px;">
+                    <i class="fas fa-chart-pie" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 15px;"></i>
+                    <h3 style="color: #334155; margin-bottom: 5px;">Not Enough Data</h3>
+                    <p style="color: #64748b; font-size: 0.9rem;">Answer at least 3 questions in any topic to unlock your Smart Performance Dashboard.</p>
+                </div>
             `;
         } else {
-            const totalAttemptsCount = Object.values(stats).reduce((sum, data) => sum + data.attempted, 0);
-
-            if (totalAttemptsCount >= 3) {
-                html += `<h4 style="color:#059669; border-bottom:2px solid #d1fae5; padding-bottom:5px; margin-top: 0;">🌟 Flawless Performance</h4>`;
-                html += `<p style="font-size:0.85rem; color:#065f46; margin-bottom: 15px;">Incredible! You have no critical weaknesses in your attempted topics. You are getting everything correct.</p>`;
-                html += `
-                    <div style="padding: 15px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; text-align: center;">
-                        <i class="fas fa-check-circle" style="font-size: 2rem; color: #10b981; margin-bottom: 10px;"></i>
-                        <div style="font-weight: bold; color: #047857;">All Systems Optimal!</div>
-                        <div style="font-size: 0.8rem; color: #065f46; margin-top: 5px;">Keep up the amazing work! 🚀</div>
-                    </div>`;
+            // --- SECTION 2: STRENGTHS & WEAKNESSES GRID ---
+            html += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">`;
+            
+            // Weaknesses Column
+            html += `<div style="background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 15px;">
+                        <h4 style="color:#991b1b; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #fecaca; padding-bottom: 5px;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i> Priority Review</h4>`;
+            if (weaknesses.length === 0) {
+                html += `<div style="color: #10b981; font-weight: bold; font-size: 0.85rem;"><i class="fas fa-check"></i> No critical weaknesses!</div>`;
             } else {
-                html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top: 0;">System Diagnostics</h4>`;
-                html += `<p style="font-size:0.85rem; color:#64748b;">Not enough data to calculate weaknesses yet. Answer at least 3 questions in a topic to unlock analytics!</p>`;
+                weaknesses.forEach(w => {
+                    html += `
+                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #fecaca;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight: bold; color: #7f1d1d;">
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;">${w.topic}</span>
+                                <span>${w.accuracy}%</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: #b91c1c; margin-top: 4px;">${w.mistakes} mistakes / ${w.attempted} attempts</div>
+                        </div>`;
+                });
             }
+            html += `</div>`;
+
+            // Strengths Column
+            html += `<div style="background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 12px; padding: 15px;">
+                        <h4 style="color:#065f46; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #a7f3d0; padding-bottom: 5px;"><i class="fas fa-star" style="color: #10b981; margin-right: 5px;"></i> Top Strengths</h4>`;
+            if (strengths.length === 0) {
+                html += `<div style="color: #64748b; font-size: 0.85rem;">Keep practicing to build your strengths!</div>`;
+            } else {
+                strengths.forEach(s => {
+                    html += `
+                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #a7f3d0;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight: bold; color: #047857;">
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;">${s.topic}</span>
+                                <span>${s.accuracy}%</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: #059669; margin-top: 4px;">Mastered ${s.attempted - s.mistakes} / ${s.attempted}</div>
+                        </div>`;
+                });
+            }
+            html += `</div></div>`;
+
+            // --- SECTION 3: SMART TRAINING HUB ---
+            html += `
+                <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Smart Training Hub</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px;">
+            `;
+
+            // Button 1: Redemption Mode
+            const totalMistakesCount = allMistakes.length;
+            if (totalMistakesCount > 0) {
+                html += `<button id="btn-train-redemption" class="btn-solid" style="background: #f59e0b; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
+                            <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Redemption Mode</span>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px;">Revisit ${totalMistakesCount} Mistakes</span>
+                         </button>`;
+            }
+
+            // Button 2: Targeted Focus (Only if weaknesses exist)
+            if (weaknesses.length > 0) {
+                html += `<button id="btn-train-focus" class="btn-solid" style="background: #ef4444; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
+                            <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-bullseye" style="margin-right: 8px;"></i> Targeted Focus</span>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px;">Drill 15 Qs on Weakest Topic</span>
+                         </button>`;
+            }
+
+            // Button 3: Balanced Mix
+            if (strengths.length > 0 && weaknesses.length > 0) {
+                html += `<button id="btn-train-mix" class="btn-solid" style="background: #3b82f6; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
+                            <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Balanced Mix</span>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px;">30 Qs (Strengths + Weaknesses)</span>
+                         </button>`;
+            }
+
+            html += `</div>`;
         }
 
-        html += `<h4 style="color:#064e3b; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:25px;">Recent Exams</h4>`;
+        // --- SECTION 4: EXAM HISTORY ---
+        html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
         } else {
-            html += `<div style="font-size:0.8rem; max-height:200px; overflow-y:auto;">
-                        <table style="width:100%; text-align:left;">
-                            <tr style="color:#64748b;"><th>Date</th><th>Exam</th><th>Score</th></tr>`;
-            userExamHistory.reverse().forEach(ex => {
-                html += `<tr style="border-top:1px solid #f1f5f9;">
-                            <td style="padding:5px 0;">${new Date(ex.date).toLocaleDateString()}</td>
-                            <td>${ex.examName}</td>
+            html += `<div style="font-size:0.85rem; max-height:180px; overflow-y:auto;">
+                        <table style="width:100%; text-align:left; border-collapse: collapse;">
+                            <tr style="color:#64748b; border-bottom: 2px solid #e2e8f0;">
+                                <th style="padding: 8px 0;">Date</th>
+                                <th style="padding: 8px 0;">Exam Name</th>
+                                <th style="padding: 8px 0;">Score</th>
+                            </tr>`;
+            // Show only top 10 most recent
+            userExamHistory.slice().reverse().slice(0, 10).forEach(ex => {
+                html += `<tr style="border-bottom:1px solid #f1f5f9;">
+                            <td style="padding:10px 0; color: #475569;">${new Date(ex.date).toLocaleDateString()}</td>
+                            <td style="color: #1e293b; font-weight: 500;">${ex.examName}</td>
                             <td style="color:${ex.percentage >= 75 ? '#10b981' : '#ef4444'}; font-weight:bold;">${ex.percentage}%</td>
                          </tr>`;
             });
@@ -1321,31 +1427,56 @@ if (btnAnalytics) {
         body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
 
-        const gauntletBtn = document.getElementById('btn-weakness-gauntlet');
-        if (gauntletBtn) {
-            gauntletBtn.onclick = () => {
-                gauntletBtn.textContent = "Compiling Quiz...";
-                gauntletBtn.disabled = true;
+        // --- EVENT LISTENERS FOR SMART TRAINING HUB ---
 
-                let weakPool = [];
-                topWeaknesses.forEach(w => weakPool.push(...w.pool));
+        // 1. Redemption Mode (All Mistakes)
+        const btnRedemption = document.getElementById('btn-train-redemption');
+        if (btnRedemption) {
+            btnRedemption.onclick = () => {
+                btnRedemption.textContent = "Loading...";
+                let pool = allQuestions.filter(q => allMistakes.includes(getQID(q))).sort(() => 0.5 - Math.random());
+                if (pool.length > 50) pool = pool.slice(0, 50); // Cap at 50 to avoid overwhelm
+                window.launchQuiz(pool, 'practice', 0, "Redemption Mode");
+            };
+        }
 
-                weakPool = weakPool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
+        // 2. Targeted Focus (Worst Topic)
+        const btnFocus = document.getElementById('btn-train-focus');
+        if (btnFocus) {
+            btnFocus.onclick = () => {
+                btnFocus.textContent = "Loading...";
+                const worstTopic = weaknesses[0]; // The absolute worst topic
+                // Grab unattempted or mistake questions from this topic
+                let pool = worstTopic.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
+                if (pool.length === 0) pool = worstTopic.pool; // Fallback if they've somehow perfected it recently
+                
+                pool = pool.sort(() => 0.5 - Math.random()).slice(0, 15);
+                window.launchQuiz(pool, 'practice', 0, `Targeted Focus: ${worstTopic.topic}`);
+            };
+        }
 
-                if (weakPool.length === 0) {
-                    weakPool = allQuestions.filter(q => allMistakes.includes(getQID(q)));
-                }
+        // 3. Balanced Mix (Strengths + Weaknesses)
+        const btnMix = document.getElementById('btn-train-mix');
+        if (btnMix) {
+            btnMix.onclick = () => {
+                btnMix.textContent = "Loading...";
+                let mixPool = [];
+                
+                // Take questions from top 2 weaknesses
+                weaknesses.slice(0, 2).forEach(w => {
+                    let q = w.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
+                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 10)); // 20 Qs from weak
+                });
 
-                weakPool = weakPool.sort(() => 0.5 - Math.random());
-                const finalQuiz = weakPool.slice(0, 20);
+                // Take questions from top 2 strengths to build confidence
+                strengths.slice(0, 2).forEach(s => {
+                    let q = s.pool.filter(q => !attemptedQuestions.includes(getQID(q)));
+                    if (q.length === 0) q = s.pool; // Fallback to already answered
+                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 5)); // 10 Qs from strong
+                });
 
-                if (finalQuiz.length === 0) {
-                    alert("No questions available for these topics.");
-                    gauntletBtn.textContent = "Generate Targeted Weakness Quiz (20 Qs)";
-                    gauntletBtn.disabled = false;
-                    return;
-                }
-                window.launchQuiz(finalQuiz, 'practice', 0, "Review Mistakes");
+                mixPool = mixPool.sort(() => 0.5 - Math.random());
+                window.launchQuiz(mixPool, 'practice', 0, "Balanced Mix (30 Qs)");
             };
         }
     };
