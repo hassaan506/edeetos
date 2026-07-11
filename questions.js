@@ -231,9 +231,13 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
 // ==========================================
 // MENTOR FEATURE: ASSIGN EXAM TO STUDENT(S)
 // ==========================================
-setTimeout(() => {
+function initMentorFeatures() {
     if (currentUserRole === 'MENTOR' || currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') {
         const startBtn = document.getElementById('start-exam-btn');
+        
+        // Prevent duplicate buttons if this function is called multiple times
+        if (document.getElementById('assign-exam-btn')) return;
+
         if (startBtn && startBtn.parentElement) {
             const assignBtn = document.createElement('button');
             assignBtn.className = "btn-outline";
@@ -252,7 +256,7 @@ setTimeout(() => {
                 const qCountInput = parseInt(document.getElementById('exam-q-count').value);
                 const timerInput = parseInt(document.getElementById('exam-timer').value);
 
-                // UPGRADE: Only enforce the timer if the current mode is 'exam'
+                // Enforce the timer only if the current mode is 'exam'
                 if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
                     alert("Please enter a valid time in minutes for Exam mode.");
                     return;
@@ -370,7 +374,7 @@ setTimeout(() => {
                                 assignedBy: auth.currentUser.uid,
                                 assignedTo: selectedStudentIds, 
                                 questions: cleanExamPool,
-                                mode: currentMode, // Tells the student dashboard what type of UI to launch
+                                mode: currentMode,
                                 timerMinutes: finalTimer,
                                 isCompletedBy: [],
                                 createdAt: serverTimestamp()
@@ -396,7 +400,7 @@ setTimeout(() => {
             });
         }
     }
-}, 1500);
+}
 
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
@@ -1053,6 +1057,7 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 currentUserData = dbData; // Set global
                 currentUserRole = dbData.role || 'STUDENT';
+				initMentorFeatures();
 				// ==========================================
                 // ANTI-CHEAT SECURITY MEASURES
                 // ==========================================
@@ -1713,23 +1718,28 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", reward: "3 Weeks Premium Free" }
 ];
 
+// Pre-calculate the cumulative requirements for RPG-style leveling
+let currentCum = 0;
+const processedTrophies = trophies.map(t => {
+    const prev = currentCum;
+    currentCum += t.req;
+    return { ...t, cumulativeReq: currentCum, previousCum: prev };
+});
+
 // --- MILESTONE POPUP LOGIC ---
 function checkMilestones(currentFlawless) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
 
-    // Use a user-specific storage key to prevent overlap if multiple accounts use the same browser
     const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
     let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-    // Find trophies where the requirement is met but it has not been unlocked yet
-    const newlyUnlocked = trophies.filter(t => currentFlawless >= t.req && !unlockedTiers.includes(t.title));
+    // Find trophies where the cumulative requirement is met but not unlocked yet
+    const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title));
 
     if (newlyUnlocked.length > 0) {
-        // Show the popup for the highest newly unlocked tier
         const highestNew = newlyUnlocked[newlyUnlocked.length - 1];
         showMilestonePopup(highestNew);
 
-        // Save to local storage so it does not trigger again on next load
         newlyUnlocked.forEach(t => unlockedTiers.push(t.title));
         localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
     }
@@ -1747,7 +1757,7 @@ function showMilestonePopup(trophy) {
         <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
             <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
             <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
-            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by solving ${trophy.req} flawless questions.</p>
+            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing this tier's ${trophy.req} flawless questions!</p>
             ${rewardHtml}
             <button id="close-milestone-btn" class="btn-solid" style="background: #3b82f6; border: none; width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Continue Journey</button>
         </div>
@@ -1760,7 +1770,6 @@ function showMilestonePopup(trophy) {
     modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
 }
 
-// Automatically check milestones 2 seconds after the dashboard loads to ensure Firebase data is ready
 onAuthStateChanged(auth, (user) => {
     if (user) {
         setTimeout(() => {
@@ -1781,8 +1790,19 @@ if (btnJourney) {
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
 
-        trophiesGrid.innerHTML = trophies.map(t => {
-            const isUnlocked = flawlessCount >= t.req;
+        trophiesGrid.innerHTML = processedTrophies.map(t => {
+            const isUnlocked = flawlessCount >= t.cumulativeReq;
+            
+            // Calculate step progress for the visual display
+            let progress = 0;
+            if (isUnlocked) {
+                progress = t.req;
+            } else if (flawlessCount > t.previousCum) {
+                progress = flawlessCount - t.previousCum;
+            } else {
+                progress = 0;
+            }
+
             const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
             const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
             const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
@@ -1798,7 +1818,7 @@ if (btnJourney) {
                     <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
                     <div style="flex-grow: 1;">
                         <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">${flawlessCount} / ${t.req} Flawless Qs</div>
+                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>
                         ${rewardHtml}
                     </div>
                     <div style="font-size: 1.3rem;">
