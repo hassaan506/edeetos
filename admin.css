@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
-/* ========================================== */
-/* STRICT RESETS & BASE THEME                 */
-/* ========================================== */
+/* === FEATURE: STRICT RESETS & BASE THEME === */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -22,9 +20,11 @@ body {
     padding: 1.5rem; 
 }
 
-/* ========================================== */
-/* TOP BAR & TABS                             */
-/* ========================================== */
+@media (max-width: 768px) {
+    .admin-container { padding: 0.5rem; }
+}
+
+/* === FEATURE: TOP BAR & TABS === */
 .top-bar {
     background: #1e293b; 
     color: white; 
@@ -96,14 +96,43 @@ body {
 }
 
 .admin-tab.active { 
-    background: #1e293b; /* Dark navy blue to pop against the green header */
+    background: #1e293b; 
     color: white; 
     box-shadow: 0 10px 15px -3px rgba(30, 41, 59, 0.4); 
 }
 
-/* ========================================== */
-/* MAIN CONTENT AREAS & SEARCH                */
-/* ========================================== */
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 0.8rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .top-bar-left { font-size: 0.9rem; gap: 0.5rem; }
+    .q-count-badge { padding: 0.2rem 0.5rem; font-size: 0.65rem; }
+    .exit-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 12px; margin-left: 0.5rem; }
+    
+    .tabs-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+    }
+    .admin-tab {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        width: 100%;
+        justify-content: center;
+        border-radius: 8px;
+    }
+    .admin-tab:last-child:nth-child(odd) {
+        grid-column: span 2;
+    }
+}
+
+/* === FEATURE: MAIN CONTENT AREAS & SEARCH === */
 .admin-content { margin-top: 1rem; }
 .page-title { color: #064e3b; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 800; }
 
@@ -148,9 +177,31 @@ body {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); 
 }
 
-/* ========================================== */
-/* FORMS AND INPUTS                           */
-/* ========================================== */
+@media (max-width: 768px) {
+    .page-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .glass-box { padding: 0.8rem; border-radius: 10px; }
+    
+    .search-wrapper {
+        margin-bottom: 1rem;
+        flex-direction: row;
+        border-radius: 8px;
+    }
+    .search-input {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+        border: 1px solid #e2e8f0;
+        border-right: none;
+        border-radius: 8px 0 0 8px;
+        margin: 0;
+    }
+    .search-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        border-radius: 0 8px 8px 0;
+    }
+}
+
+/* === FEATURE: FORMS AND INPUTS === */
 .form-group { margin-bottom: 1.2rem; text-align: left; width: 100%; }
 .form-group label { display: block; font-size: 0.8rem; font-weight: 800; color: #64748b; margin-bottom: 0.5rem; }
 .form-group select, .form-group input { 
@@ -224,9 +275,37 @@ body {
     margin: 0;
 }
 
-/* ========================================== */
-/* MODALS AND POPUPS                          */
-/* ========================================== */
+/* === FEATURE: USERS LIST OVERRIDES === */
+@media (max-width: 768px) {
+    #users-list > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        background: white !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        padding: 1.2rem !important;
+        margin-bottom: 1rem !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        position: relative !important;
+    }
+    #users-list > div > div:first-child {
+        width: 100% !important;
+    }
+    #users-list > div > div:first-child > div:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.4rem !important;
+        margin-bottom: 1rem !important;
+        padding-right: 2.5rem !important;
+    }
+    #users-list .btn-edit-user {
+        position: absolute !important;
+        top: 1.2rem !important;
+        right: 1.2rem !important;
+    }
+}
+
+/* === FEATURE: MODALS AND POPUPS === */
 .popup-overlay { 
     position: fixed; 
     top: 0; left: 0; width: 100vw; height: 100vh; 
@@ -264,9 +343,62 @@ body {
 .subs-box.active-sub { border-color: #6ee7b7; background: #ecfdf5; }
 .grant-box { background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 10px; padding: 1.2rem; margin-bottom: 1.5rem; }
 
-/* ========================================== */
-/* BADGES                                     */
-/* ========================================== */
+@media (max-width: 768px) {
+    .popup-content { padding: 1.2rem; }
+    
+    .subs-box {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0.8rem !important;
+        gap: 0.5rem !important;
+    }
+    .subs-box > div {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        width: auto !important;
+        gap: 0.5rem !important;
+    }
+    
+    .grant-box > div:first-of-type {
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+    }
+    .grant-box select { width: 100% !important; }
+    .grant-box { padding: 0.8rem !important; margin-bottom: 0.8rem !important; }
+    
+    #btn-grant-access { padding: 0.6rem !important; font-size: 0.85rem !important; margin-top: 0.5rem !important;}
+    
+    #edit-user-modal {
+        align-items: flex-start !important; 
+        padding-top: 0.5rem !important; 
+        padding-bottom: 0.5rem !important;
+    }
+    #edit-user-modal .popup-content {
+        margin-top: 0 !important; 
+        max-height: 95vh !important; 
+        overflow-y: auto !important; 
+        padding: 1rem !important; 
+    }
+    #edit-user-modal h2 { font-size: 1.2rem !important; }
+    #edit-user-name { font-size: 1.1rem !important; margin-top: 0.2rem !important; }
+    #edit-user-email, #edit-user-phone { font-size: 0.85rem !important; }
+    #edit-user-uid { margin-bottom: 0.8rem !important; font-size: 0.65rem !important; }
+    #edit-user-modal .btn-outline, #edit-user-modal .btn-solid { padding: 0.6rem !important; font-size: 0.85rem !important; }
+    
+    #btn-close-edit-modal {
+        margin-top: 1rem !important;
+        background: #f1f5f9 !important; 
+        border: 1px solid #cbd5e1 !important;
+        text-decoration: none !important;
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+/* === FEATURE: BADGES === */
 .badge { 
     font-size: 0.7rem; 
     font-weight: 800; 
@@ -280,9 +412,16 @@ body {
 .b-course { background: #e0f2fe; color: #0369a1; }
 .b-time { background: #dbeafe; color: #0284c7; }
 
-/* ========================================== */
-/* MESSAGES TAB STYLES (RESPONSIVE)           */
-/* ========================================== */
+@media (max-width: 768px) {
+    .badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+        display: inline-block;
+        margin-bottom: 0.4rem;
+    }
+}
+
+/* === FEATURE: MESSAGES TAB STYLES === */
 .message-card {
     background: white;
     border-left: 4px solid #3b82f6;
@@ -344,7 +483,7 @@ body {
     color: #334155;
     font-size: 0.95rem;
     border: 1px solid #e2e8f0;
-    white-space: pre-wrap; /* Keeps the user's paragraph breaks */
+    white-space: pre-wrap; 
     line-height: 1.6;
     margin-bottom: 1rem;
 }
@@ -371,224 +510,14 @@ body {
     color: #dc2626;
 }
 
-/* ========================================== */
-/* ULTRA-COMPACT MOBILE RESPONSIVENESS        */
-/* ========================================== */
 @media (max-width: 768px) {
-    /* 1. Global Scale Down */
-    .admin-container { padding: 0.5rem; }
-    .page-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .glass-box { padding: 0.8rem; border-radius: 10px; }
-
-    /* 2. Top Bar - Tighter Row */
-    .top-bar {
-        padding: 0.8rem;
-        border-radius: 10px;
-        margin-bottom: 1rem;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .top-bar-left { font-size: 0.9rem; gap: 0.5rem; }
-    .q-count-badge { padding: 0.2rem 0.5rem; font-size: 0.65rem; }
-    .exit-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; border-radius: 12px; margin-left: 0.5rem; }
-
-    /* 3. Tabs - Clean Uniform Grid */
-    .tabs-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.4rem;
-        margin-bottom: 1rem;
-    }
-    .admin-tab {
-        padding: 0.5rem;
-        font-size: 0.75rem;
-        width: 100%;
-        justify-content: center;
-        border-radius: 8px;
-    }
-    .admin-tab:last-child:nth-child(odd) {
-        grid-column: span 2;
-    }
-
-    /* 4. Search Bar - Slim Inline Box */
-    .search-wrapper {
-        margin-bottom: 1rem;
-        flex-direction: row;
-        border-radius: 8px;
-    }
-    .search-input {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.85rem;
-        border: 1px solid #e2e8f0;
-        border-right: none;
-        border-radius: 8px 0 0 8px;
-        margin: 0;
-    }
-    .search-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
-        border-radius: 0 8px 8px 0;
-    }
-
-    /* 5. MAIN USER LIST REDESIGN (Sleek Mobile Cards) */
-    #users-list > div {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        background: white !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 12px !important;
-        padding: 1.2rem !important;
-        margin-bottom: 1rem !important;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-        position: relative !important;
-    }
-
-    #users-list > div > div:first-child {
-        width: 100% !important;
-    }
-
-    #users-list > div > div:first-child > div:first-child {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 0.4rem !important;
-        margin-bottom: 1rem !important;
-        padding-right: 2.5rem !important;
-    }
-
-    #users-list .btn-edit-user {
-        position: absolute !important;
-        top: 1.2rem !important;
-        right: 1.2rem !important;
-    }
-
-    /* 6. MODAL FIXES (Subscriptions & Grant Access) */
-    /* Forces the subscription box to be a clean left-to-right row */
-    .subs-box {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 0.8rem !important;
-        gap: 0.5rem !important;
-    }
-
-    /* Keeps the inner icon/text groups as neat rows */
-    .subs-box > div {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        width: auto !important;
-        gap: 0.5rem !important;
-    }
-
-    /* Stack the Grant Access dropdowns */
-    .grant-box > div:first-of-type {
-        flex-direction: column !important;
-        gap: 0.8rem !important;
-    }
-    .grant-box select {
-        width: 100% !important;
-    }
-
-    /* 7. Badges - Smaller */
-    .badge {
-        font-size: 0.65rem;
-        padding: 0.2rem 0.5rem;
-        display: inline-block;
-        margin-bottom: 0.4rem;
-    }
-
-    /* 8. Popups & Messages */
-    .popup-content { padding: 1.2rem; }
     .message-card { padding: 0.8rem; }
     .message-title { font-size: 1rem; }
     .message-email { font-size: 0.75rem; }
     .message-body { padding: 0.8rem; font-size: 0.85rem; }
-	
-    #edit-user-modal {
-        align-items: flex-start !important; 
-        padding-top: 0.5rem !important; /* Reduced from 1.5rem to almost zero! */
-        padding-bottom: 0.5rem !important;
-    }
-
-    #edit-user-modal .popup-content {
-        margin-top: 0 !important; /* Kills any hidden browser margins */
-        max-height: 95vh !important; /* Increased to 95% of screen height */
-        overflow-y: auto !important; 
-        padding: 1rem !important; 
-    }
-
-    /* Shrink the top text and gaps */
-    #edit-user-modal h2 { font-size: 1.2rem !important; }
-    #edit-user-name { font-size: 1.1rem !important; margin-top: 0.2rem !important; }
-    #edit-user-email, #edit-user-phone { font-size: 0.85rem !important; }
-    #edit-user-uid { margin-bottom: 0.8rem !important; font-size: 0.65rem !important; }
-
-    /* Make the Grant Access box much tighter */
-    .grant-box {
-        padding: 0.8rem !important;
-        margin-bottom: 0.8rem !important;
-    }
-    .grant-box select { padding: 0.5rem !important; font-size: 0.85rem !important; }
-    #btn-grant-access { padding: 0.6rem !important; font-size: 0.85rem !important; margin-top: 0.5rem !important;}
-
-    /* Shrink the Action Buttons */
-    #edit-user-modal .btn-outline,
-    #edit-user-modal .btn-solid {
-        padding: 0.6rem !important;
-        font-size: 0.85rem !important;
-    }
-
-    /* Turn the Close link into a clear, visible button at the bottom */
-    #btn-close-edit-modal {
-        margin-top: 1rem !important;
-        background: #f1f5f9 !important; 
-        border: 1px solid #cbd5e1 !important;
-        text-decoration: none !important;
-        display: block !important;
-        width: 100% !important;
-    }
 }
 
-/* 9. Database Breakdown Mobile Strict Layout */
-    #database-breakdown-box {
-        padding: 1rem !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    #database-breakdown-box h3 {
-        font-size: 1.05rem !important;
-    }
-
-    /* Force the flex rows into a rigid 2-column grid on mobile */
-    #database-breakdown-content > div[style*="display: flex"] {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 6px !important;
-    }
-
-    /* Restructure the individual pills to fit the tight mobile grid */
-    #database-breakdown-content span[style*="display: inline-flex"] {
-        padding: 6px 8px !important;
-        font-size: 0.65rem !important;
-        width: 100%;
-        justify-content: space-between; /* Pushes the title left and the count right */
-        white-space: normal !important;
-        text-align: left;
-    }
-    
-    /* Shrink the inner question count bubble */
-    #database-breakdown-content span[style*="background: rgba"] {
-        padding: 2px 5px !important;
-        font-size: 0.6rem !important;
-        flex-shrink: 0; /* Prevents the number bubble from squishing */
-    }
-/* ==========================================
-   FIX: TOTAL QUESTIONS BOX OVERFLOW (LAPTOP & MOBILE)
-   ========================================== */
-
-/* Create a clean, modern scrollbar for the dynamically injected breakdown container */
+/* === FEATURE: DATABASE BREAKDOWN & TOTAL QUESTIONS === */
 #total-q-count div[style*="overflow-y"]::-webkit-scrollbar {
     width: 6px;
 }
@@ -601,8 +530,36 @@ body {
     border-radius: 4px;
 }
 
-/* Ultra-compact mode for Mobile Phones */
 @media (max-width: 768px) {
+    #database-breakdown-box {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    #database-breakdown-box h3 {
+        font-size: 1.05rem !important;
+    }
+    
+    #database-breakdown-content > div[style*="display: flex"] {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px !important;
+    }
+    
+    #database-breakdown-content span[style*="display: inline-flex"] {
+        padding: 6px 8px !important;
+        font-size: 0.65rem !important;
+        width: 100%;
+        justify-content: space-between; 
+        white-space: normal !important;
+        text-align: left;
+    }
+    
+    #database-breakdown-content span[style*="background: rgba"] {
+        padding: 2px 5px !important;
+        font-size: 0.6rem !important;
+        flex-shrink: 0; 
+    }
+    
     #total-q-count div[style*="overflow-y"] {
         max-height: 180px !important; 
         background: #f8fafc !important; 
@@ -611,7 +568,6 @@ body {
         border-radius: 10px;
     }
     
-    /* Safely scale down the pills for mobile without breaking flexbox */
     #total-q-count span[style*="padding"] {
         padding: 4px 8px !important;
         font-size: 0.75rem !important;

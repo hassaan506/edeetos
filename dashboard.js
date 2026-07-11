@@ -1,3 +1,4 @@
+// === FEATURE: FIREBASE IMPORTS & GLOBALS ===
 import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -8,16 +9,9 @@ let currentUserId = null;
 let hasCheckedDowngrade = false;
 
 const courseNamesMap = {
-    'mbbs_year1': 'MBBS 1st Year',
-    'mbbs_year2': 'MBBS 2nd Year',
-    'mbbs_year3': 'MBBS 3rd Year',
-    'mbbs_year4': 'MBBS 4th Year',
-    'mbbs_year5': 'MBBS 5th Year',
-    'fcps_imm': 'FCPS IMM',
-    'fcps_part1': 'FCPS Part 1',
-    'fcps_part2': 'FCPS Part 2',
-    'mrcs_part1': 'MRCS Part 1',
-    'mrcs_part2': 'MRCS Part 2'
+    'mbbs_year1': 'MBBS 1st Year', 'mbbs_year2': 'MBBS 2nd Year', 'mbbs_year3': 'MBBS 3rd Year', 'mbbs_year4': 'MBBS 4th Year', 'mbbs_year5': 'MBBS 5th Year',
+    'fcps_imm': 'FCPS IMM', 'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2',
+    'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2'
 };
 
 const mergedNamesMap = { 
@@ -25,9 +19,7 @@ const mergedNamesMap = {
     'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA'
 };
 
-// ==========================================
-// 1. DASHBOARD LOAD & BADGE LOGIC
-// ==========================================
+// === FEATURE: DASHBOARD LOAD, ROLES, & BADGES ===
 onAuthStateChanged(auth, async (user) => {
     const freeWarning = document.getElementById('free-warning-text');
     const subStatus = document.getElementById('subscription-status');
@@ -51,6 +43,7 @@ onAuthStateChanged(auth, async (user) => {
                 currentUserData = docSnap.data();
                 sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
                 
+                // 1. Check Banned Status
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
                     document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
                     if (subStatus) {
@@ -90,6 +83,7 @@ onAuthStateChanged(auth, async (user) => {
                     return; 
                 }				
                 
+                // 2. Set UI Elements
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
                 
                 const userCourseCode = currentUserData.selectedCourse; 
@@ -103,19 +97,18 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
 
-const dynamicCourseContainer = document.getElementById('dynamic-course-container');
+                const dynamicCourseContainer = document.getElementById('dynamic-course-container');
                 if (dynamicCourseContainer) {
                     if (userCourseCode) {
                         const courseName = courseNamesMap[userCourseCode] || "Unknown Course";
-                        // Course is no longer locked. It defaults to checked, but can be freely unchecked.
                         dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label" style="cursor: pointer; font-weight: bold;"><input type="checkbox" class="course-check" value="${userCourseCode}" checked> ${courseName}</label>`;
                     } else {
                         dynamicCourseContainer.innerHTML = `<div style="color: #ef4444; font-size: 0.8rem; font-weight: bold;">Action Required: Request a course in your Profile first.</div>`;
                     }
                 }
 
+                // 3. Subscription Downgrade Check
                 const userRole = (currentUserData.role || '').toUpperCase();
-
                 let hasActiveSubscription = false;
                 if (currentUserData.isPremium && currentUserData.subscriptions) {
                     for (const expiry of Object.values(currentUserData.subscriptions)) {
@@ -131,6 +124,7 @@ const dynamicCourseContainer = document.getElementById('dynamic-course-container
                     updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading user:", err));
                 }
 
+                // 4. Role Based Badges
                 if(subStatus) {
                     subStatus.className = "status-badge";
                     subStatus.style.background = "";
@@ -166,6 +160,7 @@ const dynamicCourseContainer = document.getElementById('dynamic-course-container
                     }
                 }
 
+                // 5. Mentor Specific Logic
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     const btnReports = document.getElementById('btn-reports-panel');
                     if (btnReports) btnReports.style.display = 'flex';
@@ -208,6 +203,7 @@ const dynamicCourseContainer = document.getElementById('dynamic-course-container
                     });
                 }
 
+                // 6. Assigned Exams Logic (Dynamic Task UI)
                 if (userRole === 'STUDENT' || hasActiveSubscription) {
                     const examsRef = collection(db, "assigned_exams");
                     const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
@@ -223,11 +219,10 @@ const dynamicCourseContainer = document.getElementById('dynamic-course-container
                             }
                         });
 
-if (pendingExams.length > 0) {
+                        if (pendingExams.length > 0) {
                             const dashboardContainer = document.querySelector('.section-container') || document.body;
                             const headerElement = document.querySelector('.dashboard-header');
                             
-                            // 1. Build the elegant notification banner
                             const notifyCard = document.createElement('div');
                             notifyCard.className = 'glass-panel';
                             notifyCard.style.cssText = "background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #10b981; border-radius: 16px; padding: 20px; margin-bottom: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2); transition: transform 0.2s;";
@@ -254,7 +249,6 @@ if (pendingExams.length > 0) {
                                 dashboardContainer.insertBefore(notifyCard, dashboardContainer.firstChild);
                             }
 
-                            // 2. Build the hidden tasks modal
                             const taskModal = document.createElement('div');
                             taskModal.id = 'assigned-tasks-modal';
                             taskModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
@@ -290,15 +284,12 @@ if (pendingExams.length > 0) {
                             taskModal.innerHTML = modalHtml;
                             document.body.appendChild(taskModal);
 
-                            // 3. Wire up the open/close triggers
                             notifyCard.onclick = () => taskModal.style.display = 'flex';
                             document.getElementById('close-tasks-modal').onclick = () => taskModal.style.display = 'none';
                             taskModal.onclick = (e) => { if(e.target === taskModal) taskModal.style.display = 'none'; };
 
-                            // 4. Wire up the Exam Launch logic
                             pendingExams.forEach((exam, index) => {
                                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
-                                
                                 launchBtn.addEventListener('click', async () => {
                                     launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
                                     launchBtn.style.opacity = "0.8";
@@ -337,6 +328,7 @@ if (pendingExams.length > 0) {
             console.error("Error fetching user data:", error);
         }
     } else {
+        // 7. Handle Logged Out / Guest Mode
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             document.getElementById('user-name').textContent = "Guest";
             
@@ -359,9 +351,7 @@ if (pendingExams.length > 0) {
     }
 });
 
-// ==========================================
-// 2. NAVIGATION BUTTONS
-// ==========================================
+// === FEATURE: NAVIGATION BUTTONS & COURSE LAUNCH ===
 document.getElementById('logout-btn').addEventListener('click', () => {
     localStorage.removeItem('edeetos_guest_mode');
     sessionStorage.removeItem('edeetos_dash_cache');
@@ -398,7 +388,6 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
 });
 
 document.getElementById('btn-launch-course').addEventListener('click', () => {
-    // 1. GUEST FLOW: Show Popup Selector
     if (localStorage.getItem('edeetos_guest_mode') === 'true') {
         let guestModal = document.getElementById('guest-course-modal');
         if (!guestModal) {
@@ -449,11 +438,9 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
         return;
     }
 
-    // 2. PREMIUM FLOW: Check for courses OR standalone books
     if (currentUserData) {
         let activeSub = null;
         if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) {
-            // Find the first valid subscription they own (could be a book)
             activeSub = Object.keys(currentUserData.subscriptions)[0];
         }
 
@@ -461,7 +448,6 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
             localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse);
             window.location.href = 'questions.html';
         } else if (activeSub) {
-            // Let them pass if they bought a book but have no assigned course
             localStorage.setItem('edeetos_active_course', activeSub);
             window.location.href = 'questions.html';
         } else {
@@ -470,9 +456,7 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
     }
 });
 
-// ==========================================
-// 3. PRICING MODAL TABS & LOGIC
-// ==========================================
+// === FEATURE: PREMIUM MODAL LOGIC & CALCULATOR ===
 const tabBuy = document.getElementById('tab-buy');
 const tabRedeem = document.getElementById('tab-redeem');
 const viewBuy = document.getElementById('view-buy');
@@ -512,16 +496,13 @@ function updatePrices() {
     else if (bookCount >= 3) bookDiscount = 0.20; 
     else if (bookCount >= 2) bookDiscount = 0.10; 
 
-    // Base course max 5000. Base book max 500. Adjust these arrays to change pricing.
     const baseCoursePrices = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
     const baseBookPrices = [20, 50, 80, 120, 250, 350, 450, 500];
 
     for(let i = 0; i < 8; i++) {
         let coursePrice = courseCount > 0 ? baseCoursePrices[i] : 0;
-        
         let rawBookTotal = bookCount * baseBookPrices[i];
         let discountedBookTotal = rawBookTotal * (1 - bookDiscount);
-        
         let totalPrice = Math.round(coursePrice + discountedBookTotal);
         
         const priceEl = document.getElementById('price-' + i);
@@ -547,9 +528,7 @@ document.querySelectorAll('.plan-card').forEach(card => {
     });
 });
 
-// ==========================================
-// 4. SUBMIT PAYMENT REQUEST
-// ==========================================
+// === FEATURE: PAYMENT PROOF UPLOAD ===
 function compressImage(file) {
     return new Promise((resolve, reject) => {
         if (!file) return reject(new Error("No file provided"));
@@ -589,7 +568,7 @@ if (btnSubmitPayment) {
         btnSubmitPayment.disabled = true;
 
         try {
-			const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
+            const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
             const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value);
             if (courses.length === 0 && books.length === 0) {
                 alert("You must select at least one course or book to proceed.");
@@ -599,7 +578,6 @@ if (btnSubmitPayment) {
             }
 
             const selectedPlan = document.querySelector('.plan-card.selected');
-            
             if (!selectedPlan) throw new Error("No plan selected.");
 
             const durationDays = selectedPlan.getAttribute('data-days');
@@ -660,9 +638,7 @@ if (btnSubmitPayment) {
     });
 }
 
-// ==========================================
-// 5. REDEEM CODE 
-// ==========================================
+// === FEATURE: REDEEM CODE ===
 const btnRedeem = document.getElementById('btn-submit-redeem');
 if (btnRedeem) {
     btnRedeem.addEventListener('click', async () => {
@@ -705,16 +681,14 @@ if (btnRedeem) {
                 expiryValue = d.toISOString();
             }
 
-let currentSubs = currentUserData.subscriptions || {};
+            let currentSubs = currentUserData.subscriptions || {};
             
-            // 1. Process Course Assignment
             if(keyData.course === 'ALL') {
                  ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'].forEach(c => currentSubs[c] = expiryValue);
             } else if (keyData.course && keyData.course !== 'NONE') {
                 currentSubs[keyData.course] = expiryValue;
             }
 
-            // 2. Process Book Add-ons
             if (keyData.books && Array.isArray(keyData.books)) {
                 keyData.books.forEach(book => currentSubs[book] = expiryValue);
             }
@@ -737,9 +711,7 @@ let currentSubs = currentUserData.subscriptions || {};
     });
 }
 
-// ==========================================
-// 6. PROFILE MODAL LOGIC 
-// ==========================================
+// === FEATURE: USER PROFILE MANAGEMENT ===
 const btnOpenProfile = document.getElementById('btn-open-profile');
 if (btnOpenProfile) {
     btnOpenProfile.addEventListener('click', () => {
@@ -881,9 +853,7 @@ if (profileForm) {
     });
 }
 
-// ==========================================
-// 🚀 GROUP STUDY LOGIC
-// ==========================================
+// === FEATURE: GROUP STUDY & ROOM GENERATION ===
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
     btnCreate.onclick = async () => {

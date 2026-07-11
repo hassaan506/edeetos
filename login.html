@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - EDEETOS</title>
+    
+    <!-- === FEATURE: GLOBAL ASSETS === -->
     <link rel="stylesheet" href="global.css">
-	<link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="auth.css">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="EDEETOS">
@@ -13,6 +15,7 @@
 </head>
 <body>
 
+    <!-- === FEATURE: NAVIGATION === -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -24,6 +27,7 @@
         </div>
     </nav>
 
+    <!-- === FEATURE: AUTHENTICATION FORM === -->
     <section class="section-container auth-wrapper">
         <div class="glass-panel auth-card">
             <h2>Welcome Back</h2>
@@ -42,26 +46,14 @@
 
                 <button type="submit" class="btn-solid form-btn">Log In</button>
             </form>
+            
             <button id="btn-guest" class="btn-outline form-btn" style="width: 100%; margin-top: 10px;">Continue as Guest</button>
 
             <p class="auth-footer">New to EDEETOS? <a href="register.html">Create Account</a></p>
         </div>
     </section>
 
+    <!-- === FEATURE: SCRIPTS === -->
     <script type="module" src="login.js?v=2"></script>
-
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-              console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch(error => {
-              console.error('Service Worker registration failed:', error);
-            });
-        });
-      }
-    </script>
 </body>
 </html>

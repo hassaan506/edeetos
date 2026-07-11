@@ -1,9 +1,13 @@
+// === FEATURE: FIREBASE IMPORTS ===
 import { auth, db } from "./firebase-config.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { collection, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// === FEATURE: DOM ELEMENTS ===
 const loginForm = document.querySelector('#login-form');
+const btnGuest = document.getElementById('btn-guest');
 
+// === FEATURE: REGISTERED USER LOGIN ===
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault(); 
@@ -22,10 +26,9 @@ if (loginForm) {
             // Nuke guest token before attempting true login
             localStorage.removeItem('edeetos_guest_mode');
 
-            // STEP 1: If they didn't type an '@', it's a username. Search the database!
+            // Username Resolution Logic
             if (!identifier.includes('@')) {
                 const usersRef = collection(db, "users");
-                // Search the database for the exact username
                 const q = query(usersRef, where("username", "==", identifier));
                 const querySnapshot = await getDocs(q);
 
@@ -33,23 +36,21 @@ if (loginForm) {
                     throw new Error("Username not found. Please check your spelling or log in using your email address.");
                 }
 
-                // Grab the email address attached to this username profile
                 const userData = querySnapshot.docs[0].data();
                 if (!userData.email) {
                     throw new Error("No email linked to this username.");
                 }
                 
-                // Swap the username out for the actual email
                 loginEmail = userData.email; 
             }
 
-            // STEP 2: Now log them in using the email
+            // Firebase Authentication
             const userCred = await signInWithEmailAndPassword(auth, loginEmail, password);
             
+            // Session Token Generation
             const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
             localStorage.setItem("edeetos_session_id", newToken);
             
-            // Save the session token to the database
             try {
                 await updateDoc(doc(db, "users", userCred.user.uid), { sessionToken: newToken });
             } catch (authErr) {
@@ -67,9 +68,10 @@ if (loginForm) {
     });
 }
 
-const btnGuest = document.getElementById('btn-guest');
+// === FEATURE: GUEST MODE LOGIN ===
 if (btnGuest) {
     btnGuest.addEventListener('click', async () => {
+        // Swap out valid tokens for guest mode flag
         localStorage.removeItem('edeetos_session_id');
         localStorage.setItem('edeetos_guest_mode', 'true');
         

@@ -1,22 +1,9 @@
+// === FEATURE: FIREBASE IMPORTS ===
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const usersListEl = document.getElementById('users-list');
-const userCountEl = document.getElementById('user-count');
-const searchInput = document.getElementById('admin-search-input');
-const searchBtn = document.getElementById('admin-search-btn');
-
-const editModal = document.getElementById('edit-user-modal');
-const editNameEl = document.getElementById('edit-user-name');
-const editEmailEl = document.getElementById('edit-user-email');
-const editPhoneEl = document.getElementById('edit-user-phone');
-const editUidEl = document.getElementById('edit-user-uid');
-const subsListEl = document.getElementById('user-subscriptions-list');
-
-let allUsersData = [];
-let editingUser = null;
-
+// === FEATURE: GLOBAL CONFIGURATION & MAPPINGS ===
 const courseNamesMap = {
     'mbbs_year1': 'MBBS 1st Year', 'mbbs_year2': 'MBBS 2nd Year', 'mbbs_year3': 'MBBS 3rd Year', 'mbbs_year4': 'MBBS 4th Year', 'mbbs_year5': 'MBBS 5th Year',
     'fcps_imm': 'FCPS IMM', 'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2',
@@ -28,9 +15,7 @@ const mergedNamesMap = {
     'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA', 'NONE': 'No Course'
 };
 
-// ==========================================
-// 1. SECURITY & DYNAMIC QUESTION COUNTER
-// ==========================================
+// === FEATURE: ADMIN AUTHENTICATION & INITIALIZATION ===
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         try {
@@ -64,6 +49,10 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
+const btnExit = document.getElementById('btn-exit-admin');
+if(btnExit) btnExit.addEventListener('click', () => { window.location.href = 'dashboard.html'; });
+
+// === FEATURE: DYNAMIC QUESTION COUNTER ===
 async function calculateTotalQuestions() {
     const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     const referenceBooks = [
@@ -81,7 +70,6 @@ async function calculateTotalQuestions() {
 
     let totalQuestions = 0;
     
-    // Build a cleaner, better spaced HTML string for the new breakdown box
     let breakdownHtml = `
         <div style="font-size: 0.8rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 8px;">Core Courses</div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px;">
@@ -101,22 +89,18 @@ async function calculateTotalQuestions() {
         } catch (e) {}
     }
 
-    // Fetch Standard Courses
     for (const course of standardCourses) await fetchAndCount(`Data/${course}_questions.json`, courseNamesMap[course], '#f1f5f9', '#334155');
     
     breakdownHtml += `</div><div style="margin: 20px 0 8px 0; color: #8b5cf6; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-book-open"></i> Reference Books</div><div style="display: flex; flex-wrap: wrap; gap: 8px;">`;
     
-    // Fetch Reference Books
     for (const book of referenceBooks) await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
     breakdownHtml += `</div>`;
 
-    // 1. Update the tiny badge in the top bar with JUST the number
     const totalEl = document.getElementById('total-q-count');
     if (totalEl) {
         totalEl.innerHTML = `<i class="fas fa-layer-group"></i> Total Qs: ${totalQuestions.toLocaleString()}`;
     }
 
-    // 2. Put the massive breakdown inside our new dedicated UI box
     const breakdownBox = document.getElementById('database-breakdown-box');
     const breakdownContent = document.getElementById('database-breakdown-content');
     
@@ -126,15 +110,7 @@ async function calculateTotalQuestions() {
     }
 }
 
-const btnExit = document.getElementById('btn-exit-admin');
-if(btnExit) btnExit.addEventListener('click', () => { window.location.href = 'dashboard.html'; });
-
-const btnCloseEdit = document.getElementById('btn-close-edit-modal');
-if(btnCloseEdit) btnCloseEdit.addEventListener('click', () => { editModal.style.display = 'none'; });
-
-// ==========================================
-// 2. TAB ROUTING
-// ==========================================
+// === FEATURE: UI NAVIGATION & TABS ===
 window.switchView = function(viewName) {
     const views = ['view-users', 'view-keys', 'view-payments', 'view-reports', 'view-messages', 'view-requests'];
     views.forEach(v => { const el = document.getElementById(v); if (el) el.style.display = 'none'; });
@@ -154,95 +130,13 @@ window.switchView = function(viewName) {
     if(viewName === 'requests') fetchRequests(); 
 };
 
-// ==========================================
-// 3. COURSE CHANGE REQUESTS LOGIC
-// ==========================================
-let unsubscribeRequests = null;
+// === FEATURE: USER MANAGEMENT & SEARCH ===
+const usersListEl = document.getElementById('users-list');
+const userCountEl = document.getElementById('user-count');
+const searchInput = document.getElementById('admin-search-input');
+const searchBtn = document.getElementById('admin-search-btn');
+let allUsersData = [];
 
-async function fetchRequests() {
-    const list = document.getElementById('requests-list');
-    if(!list) return;
-    if (unsubscribeRequests) return;
-
-    const qReq = query(collection(db, "users"), where("courseChangeRequested", "==", true));
-    
-    unsubscribeRequests = onSnapshot(qReq, (qSnap) => {
-        list.innerHTML = '';
-        let hasRequests = false;
-        
-        qSnap.forEach(d => {
-            hasRequests = true;
-            const data = d.data();
-            const userId = d.id;
-            
-            const currentCourse = data.selectedCourse ? (courseNamesMap[data.selectedCourse] || data.selectedCourse) : "None Assigned";
-            const newCourse = data.requestedCourse ? (courseNamesMap[data.requestedCourse] || data.requestedCourse) : "Unknown Course";
-
-            const card = document.createElement('div');
-            card.style = "background: white; border: 2px solid #8b5cf6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(139, 92, 246, 0.1);";
-            card.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
-                    <div>
-                        <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.fullName || 'Unknown User'}</div>
-                        <div style="font-size: 0.85rem; color: #64748b;">${data.email || 'No Email'} | ${data.phone || 'No Phone'}</div>
-                    </div>
-                </div>
-                
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1rem; border-radius: 8px;">
-                    <div style="flex: 1; text-align: center;">
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Current Course</div>
-                        <div style="color: #ef4444; font-weight: bold; font-size: 1rem; margin-top: 0.3rem;">${currentCourse}</div>
-                    </div>
-                    <i class="fas fa-arrow-right" style="color: #cbd5e1; font-size: 1.2rem;"></i>
-                    <div style="flex: 1; text-align: center;">
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Requested Course</div>
-                        <div style="color: #10b981; font-weight: bold; font-size: 1.1rem; margin-top: 0.3rem;">${newCourse}</div>
-                    </div>
-                </div>
-
-                <div style="display: flex; gap: 1rem;">
-                    <button class="btn-solid btn-approve-req" style="flex: 1; background: #10b981; border: none; padding: 0.8rem; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">✅ Approve Change</button>
-                    <button class="btn-outline btn-reject-req" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; border-radius: 8px; font-weight: bold; cursor: pointer; background: transparent;">❌ Reject</button>
-                </div>
-            `;
-
-            card.querySelector('.btn-approve-req').addEventListener('click', async () => {
-                const btn = card.querySelector('.btn-approve-req');
-                btn.textContent = "Approving..."; btn.disabled = true;
-                try {
-                    await updateDoc(doc(db, "users", userId), {
-                        selectedCourse: data.requestedCourse, courseChangeRequested: false, requestedCourse: null
-                    });
-                    fetchAllUsers(); 
-                } catch (e) {
-                    console.error(e); alert("Error approving request.");
-                    btn.textContent = "✅ Approve Change"; btn.disabled = false;
-                }
-            });
-
-            card.querySelector('.btn-reject-req').addEventListener('click', async () => {
-                if(confirm("Are you sure you want to reject this course change request?")) {
-                    const btn = card.querySelector('.btn-reject-req');
-                    btn.textContent = "Rejecting..."; btn.disabled = true;
-                    try {
-                        await updateDoc(doc(db, "users", userId), { courseChangeRequested: false, requestedCourse: null });
-                    } catch (e) {
-                        console.error(e); alert("Error rejecting request.");
-                        btn.textContent = "❌ Reject"; btn.disabled = false;
-                    }
-                }
-            });
-
-            list.appendChild(card);
-        });
-
-        if(!hasRequests) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending course change requests.</p>';
-    });
-}
-
-// ==========================================
-// 4. USER MANAGEMENT
-// ==========================================
 async function fetchAllUsers() {
     try {
         const querySnapshot = await getDocs(collection(db, "users"));
@@ -341,9 +235,17 @@ function executeSearch() {
 if(searchBtn) searchBtn.addEventListener('click', executeSearch);
 if(searchInput) searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') executeSearch(); });
 
-// ==========================================
-// 5. EDIT USER MODAL & ROLES
-// ==========================================
+// === FEATURE: USER PROFILE EDITING & ROLES ===
+const editModal = document.getElementById('edit-user-modal');
+const editNameEl = document.getElementById('edit-user-name');
+const editEmailEl = document.getElementById('edit-user-email');
+const editPhoneEl = document.getElementById('edit-user-phone');
+const editUidEl = document.getElementById('edit-user-uid');
+let editingUser = null;
+
+const btnCloseEdit = document.getElementById('btn-close-edit-modal');
+if(btnCloseEdit) btnCloseEdit.addEventListener('click', () => { editModal.style.display = 'none'; });
+
 function openEditModal(user) {
     editingUser = user;
     if(editNameEl) editNameEl.textContent = user.fullName || "Unknown User";
@@ -447,9 +349,9 @@ if (btnUnbanUser) {
     });
 }
 
-// ==========================================
-// 6. SUBSCRIPTIONS LOGIC
-// ==========================================
+// === FEATURE: USER SUBSCRIPTIONS LOGIC ===
+const subsListEl = document.getElementById('user-subscriptions-list');
+
 function renderSubscriptions() {
     if(!subsListEl) return;
     subsListEl.innerHTML = '';
@@ -537,9 +439,7 @@ window.grantAccess = async function() {
     }
 };
 
-// ==========================================
-// 7. KEY GENERATION LOGIC
-// ==========================================
+// === FEATURE: KEY GENERATION & MANAGEMENT ===
 window.generateKey = async function() {
     const btn = document.getElementById('btn-generate-key');
     if(btn) { btn.textContent = "Generating..."; btn.disabled = true; }
@@ -550,7 +450,6 @@ window.generateKey = async function() {
     const expiry = document.getElementById('key-expiry').value;
     let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
 
-    // Pull selected books
     const selectedBooks = Array.from(document.querySelectorAll('.key-book-check:checked')).map(cb => cb.value);
 
     if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -559,7 +458,7 @@ window.generateKey = async function() {
         await setDoc(doc(db, "keys", customCode), {
             code: customCode, 
             course: course, 
-            books: selectedBooks, // Added books array
+            books: selectedBooks,
             duration: duration, 
             maxUsage: usage,
             usedCount: 0, 
@@ -568,7 +467,7 @@ window.generateKey = async function() {
         });
         alert("Key Generated: " + customCode);
         document.getElementById('key-custom').value = '';
-        document.querySelectorAll('.key-book-check').forEach(cb => cb.checked = false); // Clear checks
+        document.querySelectorAll('.key-book-check').forEach(cb => cb.checked = false); 
         fetchKeys();
     } catch(e) {
         console.error(e);
@@ -589,7 +488,6 @@ async function fetchKeys() {
         const tr = document.createElement('tr');
         tr.style = "border-bottom: 2px solid #f1f5f9;";
         
-        // Build display for books attached to key
         let booksHtml = '';
         if (data.books && data.books.length > 0) {
             const bookTitles = data.books.map(b => mergedNamesMap[b] || b).join(', ');
@@ -637,9 +535,91 @@ async function fetchKeys() {
     });
 }
 
-// ==========================================
-// 8. PAYMENT REQUEST LOGIC
-// ==========================================
+// === FEATURE: COURSE CHANGE REQUESTS ===
+let unsubscribeRequests = null;
+
+async function fetchRequests() {
+    const list = document.getElementById('requests-list');
+    if(!list) return;
+    if (unsubscribeRequests) return;
+
+    const qReq = query(collection(db, "users"), where("courseChangeRequested", "==", true));
+    
+    unsubscribeRequests = onSnapshot(qReq, (qSnap) => {
+        list.innerHTML = '';
+        let hasRequests = false;
+        
+        qSnap.forEach(d => {
+            hasRequests = true;
+            const data = d.data();
+            const userId = d.id;
+            
+            const currentCourse = data.selectedCourse ? (courseNamesMap[data.selectedCourse] || data.selectedCourse) : "None Assigned";
+            const newCourse = data.requestedCourse ? (courseNamesMap[data.requestedCourse] || data.requestedCourse) : "Unknown Course";
+
+            const card = document.createElement('div');
+            card.style = "background: white; border: 2px solid #8b5cf6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(139, 92, 246, 0.1);";
+            card.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.fullName || 'Unknown User'}</div>
+                        <div style="font-size: 0.85rem; color: #64748b;">${data.email || 'No Email'} | ${data.phone || 'No Phone'}</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1rem; border-radius: 8px;">
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Current Course</div>
+                        <div style="color: #ef4444; font-weight: bold; font-size: 1rem; margin-top: 0.3rem;">${currentCourse}</div>
+                    </div>
+                    <i class="fas fa-arrow-right" style="color: #cbd5e1; font-size: 1.2rem;"></i>
+                    <div style="flex: 1; text-align: center;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Requested Course</div>
+                        <div style="color: #10b981; font-weight: bold; font-size: 1.1rem; margin-top: 0.3rem;">${newCourse}</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn-solid btn-approve-req" style="flex: 1; background: #10b981; border: none; padding: 0.8rem; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">✅ Approve Change</button>
+                    <button class="btn-outline btn-reject-req" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; border-radius: 8px; font-weight: bold; cursor: pointer; background: transparent;">❌ Reject</button>
+                </div>
+            `;
+
+            card.querySelector('.btn-approve-req').addEventListener('click', async () => {
+                const btn = card.querySelector('.btn-approve-req');
+                btn.textContent = "Approving..."; btn.disabled = true;
+                try {
+                    await updateDoc(doc(db, "users", userId), {
+                        selectedCourse: data.requestedCourse, courseChangeRequested: false, requestedCourse: null
+                    });
+                    fetchAllUsers(); 
+                } catch (e) {
+                    console.error(e); alert("Error approving request.");
+                    btn.textContent = "✅ Approve Change"; btn.disabled = false;
+                }
+            });
+
+            card.querySelector('.btn-reject-req').addEventListener('click', async () => {
+                if(confirm("Are you sure you want to reject this course change request?")) {
+                    const btn = card.querySelector('.btn-reject-req');
+                    btn.textContent = "Rejecting..."; btn.disabled = true;
+                    try {
+                        await updateDoc(doc(db, "users", userId), { courseChangeRequested: false, requestedCourse: null });
+                    } catch (e) {
+                        console.error(e); alert("Error rejecting request.");
+                        btn.textContent = "❌ Reject"; btn.disabled = false;
+                    }
+                }
+            });
+
+            list.appendChild(card);
+        });
+
+        if(!hasRequests) list.innerHTML = '<p style="text-align: center; font-weight: bold; color: #94a3b8; padding: 2rem;">No pending course change requests.</p>';
+    });
+}
+
+// === FEATURE: PAYMENT REQUEST LOGIC ===
 let unsubscribePayments = null;
 
 const receiptModal = document.getElementById('receipt-modal');
@@ -761,9 +741,7 @@ function fetchPayments() {
     });
 }
 
-// ==========================================
-// 9. REPORTED QUESTIONS LOGIC
-// ==========================================
+// === FEATURE: REPORTED QUESTIONS LOGIC ===
 let unsubscribeReports = null;
 
 async function fetchReports() {
@@ -845,9 +823,7 @@ async function fetchReports() {
     });
 }
 
-// ==========================================
-// 10. CONTACT MESSAGES LOGIC
-// ==========================================
+// === FEATURE: CONTACT MESSAGES LOGIC ===
 let unsubscribeMessages = null;
 
 async function fetchMessages() {

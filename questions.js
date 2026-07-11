@@ -1,10 +1,9 @@
+// === FEATURE: FIREBASE IMPORTS ===
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// ==========================================
-// 1. STATE VARIABLES
-// ==========================================
+// === FEATURE: STATE VARIABLES & CONFIG ===
 let subjectTree = {};
 let systemTree = {};
 let examTree = {};
@@ -22,15 +21,12 @@ let globalBookmarks = [];
 let activeCustomPool = null;
 let isPremiumUser = false;
 let currentUserRole = "STUDENT";
-let currentUserData = null; // Stored globally for access checks
+let currentUserData = null; 
 let isGlobalPopupActive = false;
 
-// Performance Optimization: Cache books so they only download once when clicked!
+// Cache books so they only download once when clicked
 const loadedBooksCache = {}; 
 
-// ==========================================
-// 2. DOM ELEMENTS
-// ==========================================
 const subjectsGrid = document.getElementById('subjects-grid');
 const popupOverlay = document.getElementById('popup-overlay');
 const popupTitle = document.getElementById('popup-title');
@@ -70,19 +66,15 @@ const availableBooks = allBooks.filter(book => {
     return true; 
 });
 
-// ==========================================
-// MULTIPLAYER CLEANUP & HOST BANNER
-// ==========================================
+// === FEATURE: MULTIPLAYER HOST BANNER ===
 const activeRoomId = localStorage.getItem('active_study_room');
 const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
 if (activeRoomId) {
     if (isGuest) {
-        // Automatically remove guests from the room if they back out to the questions grid
         localStorage.removeItem('active_study_room');
         localStorage.removeItem('is_study_guest');
     } else {
-        // Create an interactive Host Banner
         const hostBanner = document.createElement('div');
         hostBanner.style.cssText = "background: #f59e0b; color: white; padding: 12px 20px; font-weight: bold; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;";
         
@@ -95,7 +87,6 @@ if (activeRoomId) {
         `;
         document.body.prepend(hostBanner);
 
-        // Wire up the Exit button
         document.getElementById('btn-exit-host-room').addEventListener('click', async () => {
             if(confirm("Are you sure you want to close this study room? Guests will be disconnected.")) {
                 const btn = document.getElementById('btn-exit-host-room');
@@ -104,13 +95,11 @@ if (activeRoomId) {
                 btn.style.background = "#991b1b";
                 
                 try {
-                    // Tell Firebase the room is closed so guests know it's over
                     await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'closed' });
                 } catch(e) {
                     console.warn("Could not sync room closure to Firebase:", e);
                 }
                 
-                // Clear host storage and remove the banner
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
                 hostBanner.remove();
@@ -119,9 +108,7 @@ if (activeRoomId) {
     }
 }
 
-// ==========================================
-// 3. EVENT LISTENERS
-// ==========================================
+// === FEATURE: EVENT LISTENERS & GLOBAL SEARCH ===
 let searchTimeout;
 globalSearch.addEventListener('input', (e) => {
     clearTimeout(searchTimeout);
@@ -132,14 +119,11 @@ globalSearch.addEventListener('input', (e) => {
         return;
     }
 
-// Wait 350ms after typing stops to prevent browser freeze
     searchTimeout = setTimeout(() => {
         const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
             
-            // Smartly grab the question text no matter how it's capitalized in your database
             const questionText = q.Question || q.question || q.text || q.statement || "";
-            
             const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
             return textToSearch.includes(query);
         });
@@ -153,7 +137,6 @@ globalSearch.addEventListener('input', (e) => {
                 div.className = 'search-item';
                 const title = `${q.Subject || 'Unknown Subject'} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
                 
-                // Grab the text for the snippet preview
                 const questionText = q.Question || q.question || q.text || q.statement || "";
                 const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
 
@@ -164,7 +147,6 @@ globalSearch.addEventListener('input', (e) => {
                 div.onclick = () => {
                     searchDropdown.style.display = 'none';
                     globalSearch.value = '';
-                    // Instantly launch this single question
                     window.launchQuiz([q], 'practice', 0);
                 };
                 searchDropdown.appendChild(div);
@@ -181,8 +163,11 @@ document.addEventListener('click', (e) => {
 });
 
 unattemptedFilter.addEventListener('change', () => {
-    if (currentView === 'book') renderBooksGrid();
-    else renderGrid();
+    if (currentView === 'book') {
+        renderBooksGrid();
+    } else {
+        renderGrid();
+    }
 });
 
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
@@ -203,7 +188,6 @@ if (examTimerInput) {
     });
 }
 
-// THE UNIFIED CART LAUNCHER
 document.getElementById('start-exam-btn').addEventListener('click', () => {
     const paths = Array.from(selectedCart).map(str => JSON.parse(str));
     let pool = (activeCustomPool || allQuestions).filter(q => {
@@ -228,14 +212,11 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
     window.launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
 });
 
-// ==========================================
-// MENTOR FEATURE: ASSIGN EXAM TO STUDENT(S)
-// ==========================================
+// === FEATURE: MENTOR EXAM ASSIGNMENT LOGIC ===
 function initMentorFeatures() {
     if (currentUserRole === 'MENTOR' || currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') {
         const startBtn = document.getElementById('start-exam-btn');
         
-        // Prevent duplicate buttons if this function is called multiple times
         if (document.getElementById('assign-exam-btn')) return;
 
         if (startBtn && startBtn.parentElement) {
@@ -256,7 +237,6 @@ function initMentorFeatures() {
                 const qCountInput = parseInt(document.getElementById('exam-q-count').value);
                 const timerInput = parseInt(document.getElementById('exam-timer').value);
 
-                // Enforce the timer only if the current mode is 'exam'
                 if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
                     alert("Please enter a valid time in minutes for Exam mode.");
                     return;
@@ -402,6 +382,7 @@ function initMentorFeatures() {
     }
 }
 
+// === FEATURE: NAVIGATION VIEW RENDERING ===
 document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
 document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
 document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
@@ -435,10 +416,6 @@ popupOverlay.onclick = (e) => {
         localStorage.removeItem('edeetos_saved_popup_title');
     } 
 };
-
-// ==========================================
-// 4. CORE FUNCTIONS
-// ==========================================
 
 function checkPremiumAccess(itemKey) {
     if (currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') return true;
@@ -488,7 +465,7 @@ function changeView(viewName, titleText) {
     }
 }
 
-// NEW: Renders the available books properly on the grid with premium locks
+// === FEATURE: BOOKS LAZY LOADING & RENDERING ===
 function renderBooksGrid() {
     if (!subjectsGrid) return;
     subjectsGrid.innerHTML = '';
@@ -523,7 +500,6 @@ function renderBooksGrid() {
     });
 }
 
-// NEW: Lazy-loads books only when the user clicks them, making the site insanely fast.
 async function loadAndOpenBook(book) {
     try {
         document.body.style.cursor = 'wait';
@@ -546,7 +522,6 @@ async function loadAndOpenBook(book) {
             
             loadedBooksCache[book.file] = bookQuestions;
             
-            // Add to the global pool so Unattempted logic works while in this book!
             allQuestions = allQuestions.filter(q => q.bookName !== book.file);
             allQuestions.push(...bookQuestions);
         }
@@ -603,7 +578,6 @@ function generateExamTitle(paths, currentView) {
     }
 }
 
-// NEW: Unified Cart Switching
 function switchMode(mode) {
     currentMode = mode;
     
@@ -611,21 +585,21 @@ function switchMode(mode) {
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
     const inputGroups = document.querySelectorAll('.exam-action-bar .input-group');
-    // THE CART IS NOW ALWAYS VISIBLE
+    
     document.getElementById('exam-cart').style.display = "flex";
     startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
 
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
-		inputGroups.forEach(group => group.style.display = 'none');
+        inputGroups.forEach(group => group.style.display = 'none');
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         if (searchBar) searchBar.style.display = "flex";
-		
+        
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
-		inputGroups.forEach(group => group.style.display = 'flex');
+        inputGroups.forEach(group => group.style.display = 'flex');
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         if (searchBar) searchBar.style.display = "none";
     }
@@ -633,7 +607,6 @@ function switchMode(mode) {
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
 
-    // Soft-refresh the popup to show checkboxes if it's currently open
     if (popupOverlay.style.display === 'flex') {
         const current = popupHistory[popupHistory.length - 1];
         if (current) {
@@ -643,9 +616,7 @@ function switchMode(mode) {
     }
 }
 
-// ==========================================
-// 5. QUESTION DISTRIBUTION ALGORITHM
-// ==========================================
+// === FEATURE: QUESTION DISTRIBUTION ALGORITHM ===
 function applyTierLimits(rawQuestions, limitPerCategory) {
     let filteredList = [];
     const questionsByCategory = {};
@@ -675,9 +646,7 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
     return filteredList;
 }
 
-// ==========================================
-// 6. JSON LOADER & TREE BUILDER
-// ==========================================
+// === FEATURE: MAIN JSON LOADER & TREE BUILDING ===
 async function loadDataAndBuildTree() {
     try {
         if (!activeCourse) return; 
@@ -851,18 +820,17 @@ function renderGrid() {
     });
 }
 
-// NEW: Unified Select All Cart logic for the popup
 function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
 
     popupTitle.textContent = title;
-	localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
+    localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
     localStorage.setItem('edeetos_saved_popup_title', title);
     popupList.innerHTML = '';
     popupOverlay.style.display = 'flex';
     popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
 
-    // UNIVERSAL SELECT ALL BUTTON
+    // Select All Button Container
     const selectAllDiv = document.createElement('div');
     selectAllDiv.className = 'list-item hero-item';
     selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
@@ -909,7 +877,6 @@ function getLeafPaths(dataObj, currentPath) {
     return leaves;
 }
 
-// NEW: Unified rendering item logic for cart checkboxes
 function renderListItem(itemName, nextData, level, itemPath) {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'list-item';
@@ -931,11 +898,9 @@ function renderListItem(itemName, nextData, level, itemPath) {
     }
 
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
-    
     const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
-    // Give EVERY item a Start button
     const instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
     labelDiv.innerHTML = `
@@ -953,7 +918,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     `;
     itemDiv.appendChild(labelDiv);
 
-    // Setup checkbox logic for ALL items (Chapters and Topics)
     const cb = itemDiv.querySelector('.item-checkbox');
     cb.checked = selectedCart.has(pathStr);
 
@@ -967,7 +931,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
         if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
     };
 
-    // Make clicking the row toggle the checkbox (unless they click a button)
     itemDiv.style.cursor = 'pointer';
     itemDiv.onclick = (e) => {
         if (e.target !== cb && e.target.tagName !== 'BUTTON') {
@@ -976,14 +939,13 @@ function renderListItem(itemName, nextData, level, itemPath) {
         }
     };
 
-    // If it's a chapter, add the "View ➡" button to see inside it
     if (hasSubLevels) {
         const actionBtn = document.createElement('button');
         actionBtn.className = 'btn-outline mini-btn';
         actionBtn.style.marginLeft = '15px';
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = (e) => {
-            e.stopPropagation(); // Prevent the checkbox from toggling when opening the folder
+            e.stopPropagation(); 
             openPopup(itemName, nextData, 'Chapter', itemPath, false);
         };
         itemDiv.appendChild(actionBtn);
@@ -992,9 +954,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
     popupList.appendChild(itemDiv);
 }
 
-// ==========================================
-// 7. THE BRIDGE: LAUNCH QUIZ
-// ==========================================
+// === FEATURE: LAUNCH QUIZ BRIDGE ===
 window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
     if (!questionsArray || questionsArray.length === 0) {
         alert("No questions found for this selection!");
@@ -1044,9 +1004,7 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     window.location.href = 'quiz.html';
 };
 
-// ==========================================
-// 8. FIREBASE PROGRESS & DATA INITIALIZATION
-// ==========================================
+// === FEATURE: FIREBASE PROGRESS & DATA INITIALIZATION ===
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         localStorage.removeItem('edeetos_guest_mode');
@@ -1055,39 +1013,10 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
-                currentUserData = dbData; // Set global
+                currentUserData = dbData; 
                 currentUserRole = dbData.role || 'STUDENT';
-				initMentorFeatures();
-				// ==========================================
-                // ANTI-CHEAT SECURITY MEASURES
-                // ==========================================
-                const roleUpper = (currentUserRole || 'STUDENT').toUpperCase();
-                if (roleUpper !== 'ADMIN' && roleUpper !== 'MANAGEMENT') {
-                    // Disable text selection highlighting
-                    document.body.style.userSelect = 'none';
-                    document.body.style.webkitUserSelect = 'none';
-                    
-                    // Disable right-click menu
-                    document.addEventListener('contextmenu', e => e.preventDefault());
-                    
-                    // Disable copying
-                    document.addEventListener('copy', e => {
-                        e.preventDefault();
-                    });
-
-                    // Deter screenshots silently (Prevents the white-screen freeze bug)
-                    window.addEventListener('keyup', (e) => {
-                        if (e.key === 'PrintScreen') {
-                            navigator.clipboard.writeText('Screenshots are disabled on this platform.'); 
-                        }
-                    });
-                } else {
-                    // Admins are allowed to copy, select, and screenshot safely
-                    document.body.style.userSelect = 'auto';
-                    document.body.style.webkitUserSelect = 'auto';
-                }
-                // ==========================================
-                isPremiumUser = false;
+                initMentorFeatures();
+                
                 isPremiumUser = false;
 
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
@@ -1127,9 +1056,7 @@ onAuthStateChanged(auth, async (user) => {
                 attemptedQuestions = solvedList;
 
                 await loadDataAndBuildTree();
-                
-                // NO LONGER INJECTING ALL BOOKS HERE! Speed Boost!
-				restoreLastState();
+                restoreLastState();
 
                 const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
                 const totalAttempts = solvedList.length + allMistakes.length;
@@ -1149,12 +1076,10 @@ onAuthStateChanged(auth, async (user) => {
                 const now = Date.now();
                 const dueTopics = [];
 
-// 1. Extract and Parse Topics
                 Object.keys(revisions).forEach(topicId => {
                     if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
                         let subj = "", chap = "", top = "";
                         
-                        // Smart extraction from the ID string
                         const parts = topicId.split('::');
                         if (parts.length >= 4) {
                             subj = parts[0];
@@ -1162,13 +1087,12 @@ onAuthStateChanged(auth, async (user) => {
                             top = parts[2];
                         } else {
                             const oldParts = topicId.split('_');
-                            oldParts.pop(); // Remove source name
+                            oldParts.pop(); 
                             top = oldParts.pop() || '';
                             chap = oldParts.pop() || '';
                             subj = oldParts.join('_') || '';
                         }
 
-                        // Fallback text if anything is empty
                         subj = subj || "General";
                         chap = chap || "Section";
                         top = top || revisions[topicId].topic || "Review Topic";
@@ -1184,20 +1108,16 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 });
 
-                // 2. Group Topics by Day
                 const groupedByDay = {};
                 dueTopics.forEach(item => {
                     if (!groupedByDay[item.step]) groupedByDay[item.step] = [];
                     groupedByDay[item.step].push(item);
                 });
 
-                // Sort the days numerically (Day 1, Day 3, Day 7...)
                 const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
-
-const revisionContainer = document.getElementById('spaced-repetition-container');
+                const revisionContainer = document.getElementById('spaced-repetition-container');
 
                 if (dueTopics.length > 0 && revisionContainer) {
-                    // 1. Create the small, clean trigger card on the dashboard
                     const revisionCard = document.createElement('div');
                     revisionCard.className = 'glass-panel feature-card';
                     revisionCard.style.borderColor = '#f59e0b';
@@ -1218,9 +1138,8 @@ const revisionContainer = document.getElementById('spaced-repetition-container')
                         <button class="btn-solid" style="background: #f59e0b; border: none; padding: 10px 20px;">View Plan</button>
                     `;
 
-                    // 2. Build the Popup Modal dynamically
                     let existingModal = document.getElementById('revision-popup-modal');
-                    if (existingModal) existingModal.remove(); // Clean up old modal if it exists
+                    if (existingModal) existingModal.remove(); 
 
                     const modalOverlay = document.createElement('div');
                     modalOverlay.id = 'revision-popup-modal';
@@ -1235,7 +1154,6 @@ const revisionContainer = document.getElementById('spaced-repetition-container')
                             <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
                     `;
 
-                    // 3. Add the Days and Topics inside the Modal
                     sortedDays.forEach(day => {
                         modalHtml += `
                             <div class="revision-day-group">
@@ -1276,7 +1194,6 @@ const revisionContainer = document.getElementById('spaced-repetition-container')
                     modalOverlay.innerHTML = modalHtml;
                     document.body.appendChild(modalOverlay);
 
-                    // 4. Connect the click events to open and close the modal
                     revisionCard.onclick = () => {
                         modalOverlay.style.display = 'flex';
                     };
@@ -1291,14 +1208,13 @@ const revisionContainer = document.getElementById('spaced-repetition-container')
                         if (e.target === modalOverlay) modalOverlay.style.display = 'none';
                     };
 
-                    // Finally, attach the trigger card to the screen
                     revisionContainer.innerHTML = ''; 
                     revisionContainer.appendChild(revisionCard);
 
                 } else if (revisionContainer) {
                     revisionContainer.innerHTML = '';
                 }
-				
+                
                 const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes && allMistakes.length > 0) {
                     btnMistakes.disabled = false;
@@ -1329,7 +1245,9 @@ const revisionContainer = document.getElementById('spaced-repetition-container')
                     };
                 }
             }
-        } catch (error) { console.error("Error fetching stats:", error); }
+        } catch (error) { 
+            console.error("Error fetching stats:", error); 
+        }
     } else {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             isPremiumUser = false;
@@ -1346,9 +1264,7 @@ const revisionContainer = document.getElementById('spaced-repetition-container')
     }
 });
 
-// ==========================================
-// 11. SMART PERFORMANCE & ANALYTICS ENGINE
-// ==========================================
+// === FEATURE: SMART PERFORMANCE & ANALYTICS ENGINE ===
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
@@ -1360,7 +1276,6 @@ if (btnAnalytics) {
         let stats = {};
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
 
-        // 1. Gather all data
         allQuestions.forEach(q => {
             const topicName = q.Topic || q.Chapter || q.Subject || "Core Material";
             const qId = getQID(q);
@@ -1381,7 +1296,6 @@ if (btnAnalytics) {
             }
         });
 
-        // 2. Process Topics (Minimum 3 attempts to qualify for analytics)
         let processedTopics = Object.keys(stats).map(topic => {
             const d = stats[topic];
             return {
@@ -1393,13 +1307,11 @@ if (btnAnalytics) {
             };
         }).filter(t => t.attempted >= 3);
 
-        // Sort into Weaknesses (Below 70%) and Strengths (70% and above)
         let weaknesses = processedTopics.filter(t => t.accuracy < 70).sort((a, b) => a.accuracy - b.accuracy || b.mistakes - a.mistakes).slice(0, 4);
         let strengths = processedTopics.filter(t => t.accuracy >= 70).sort((a, b) => b.accuracy - a.accuracy).slice(0, 4);
 
         let html = ``;
 
-        // --- SECTION 1: PERFORMANCE OVERVIEW ---
         if (processedTopics.length === 0) {
             html += `
                 <div style="text-align: center; padding: 30px 10px;">
@@ -1409,10 +1321,8 @@ if (btnAnalytics) {
                 </div>
             `;
         } else {
-            // --- SECTION 2: STRENGTHS & WEAKNESSES GRID ---
             html += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">`;
             
-            // Weaknesses Column
             html += `<div style="background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 15px;">
                         <h4 style="color:#991b1b; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #fecaca; padding-bottom: 5px;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i> Priority Review</h4>`;
             if (weaknesses.length === 0) {
@@ -1431,7 +1341,6 @@ if (btnAnalytics) {
             }
             html += `</div>`;
 
-            // Strengths Column
             html += `<div style="background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 12px; padding: 15px;">
                         <h4 style="color:#065f46; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #a7f3d0; padding-bottom: 5px;"><i class="fas fa-star" style="color: #10b981; margin-right: 5px;"></i> Top Strengths</h4>`;
             if (strengths.length === 0) {
@@ -1450,13 +1359,11 @@ if (btnAnalytics) {
             }
             html += `</div></div>`;
 
-            // --- SECTION 3: SMART TRAINING HUB ---
             html += `
                 <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Smart Training Hub</h4>
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px;">
             `;
 
-            // Button 1: Redemption Mode
             const totalMistakesCount = allMistakes.length;
             if (totalMistakesCount > 0) {
                 html += `<button id="btn-train-redemption" class="btn-solid" style="background: #f59e0b; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
@@ -1465,7 +1372,6 @@ if (btnAnalytics) {
                          </button>`;
             }
 
-            // Button 2: Targeted Focus (Only if weaknesses exist)
             if (weaknesses.length > 0) {
                 html += `<button id="btn-train-focus" class="btn-solid" style="background: #ef4444; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
                             <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-bullseye" style="margin-right: 8px;"></i> Targeted Focus</span>
@@ -1473,7 +1379,6 @@ if (btnAnalytics) {
                          </button>`;
             }
 
-            // Button 3: Balanced Mix
             if (strengths.length > 0 && weaknesses.length > 0) {
                 html += `<button id="btn-train-mix" class="btn-solid" style="background: #3b82f6; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
                             <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Balanced Mix</span>
@@ -1484,7 +1389,6 @@ if (btnAnalytics) {
             html += `</div>`;
         }
 
-        // --- SECTION 4: EXAM HISTORY ---
         html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
@@ -1496,7 +1400,6 @@ if (btnAnalytics) {
                                 <th style="padding: 8px 0;">Exam Name</th>
                                 <th style="padding: 8px 0;">Score</th>
                             </tr>`;
-            // Show only top 10 most recent
             userExamHistory.slice().reverse().slice(0, 10).forEach(ex => {
                 html += `<tr style="border-bottom:1px solid #f1f5f9;">
                             <td style="padding:10px 0; color: #475569;">${new Date(ex.date).toLocaleDateString()}</td>
@@ -1510,52 +1413,44 @@ if (btnAnalytics) {
         body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
 
-        // --- EVENT LISTENERS FOR SMART TRAINING HUB ---
-
-        // 1. Redemption Mode (All Mistakes)
         const btnRedemption = document.getElementById('btn-train-redemption');
         if (btnRedemption) {
             btnRedemption.onclick = () => {
                 btnRedemption.textContent = "Loading...";
                 let pool = allQuestions.filter(q => allMistakes.includes(getQID(q))).sort(() => 0.5 - Math.random());
-                if (pool.length > 50) pool = pool.slice(0, 50); // Cap at 50 to avoid overwhelm
+                if (pool.length > 50) pool = pool.slice(0, 50); 
                 window.launchQuiz(pool, 'practice', 0, "Redemption Mode");
             };
         }
 
-        // 2. Targeted Focus (Worst Topic)
         const btnFocus = document.getElementById('btn-train-focus');
         if (btnFocus) {
             btnFocus.onclick = () => {
                 btnFocus.textContent = "Loading...";
-                const worstTopic = weaknesses[0]; // The absolute worst topic
-                // Grab unattempted or mistake questions from this topic
+                const worstTopic = weaknesses[0]; 
                 let pool = worstTopic.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
-                if (pool.length === 0) pool = worstTopic.pool; // Fallback if they've somehow perfected it recently
+                if (pool.length === 0) pool = worstTopic.pool; 
                 
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, 15);
                 window.launchQuiz(pool, 'practice', 0, `Targeted Focus: ${worstTopic.topic}`);
             };
         }
 
-        // 3. Balanced Mix (Strengths + Weaknesses)
         const btnMix = document.getElementById('btn-train-mix');
         if (btnMix) {
             btnMix.onclick = () => {
                 btnMix.textContent = "Loading...";
                 let mixPool = [];
                 
-                // Take questions from top 2 weaknesses
                 weaknesses.slice(0, 2).forEach(w => {
                     let q = w.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
-                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 10)); // 20 Qs from weak
+                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 10)); 
                 });
 
-                // Take questions from top 2 strengths to build confidence
                 strengths.slice(0, 2).forEach(s => {
                     let q = s.pool.filter(q => !attemptedQuestions.includes(getQID(q)));
-                    if (q.length === 0) q = s.pool; // Fallback to already answered
-                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 5)); // 10 Qs from strong
+                    if (q.length === 0) q = s.pool; 
+                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 5)); 
                 });
 
                 mixPool = mixPool.sort(() => 0.5 - Math.random());
@@ -1568,9 +1463,7 @@ if (btnAnalytics) {
 const closeAnalytics = document.getElementById('close-analytics');
 if (closeAnalytics) closeAnalytics.onclick = () => document.getElementById('analytics-modal').style.display = 'none';
 
-// ==========================================
-// 9. CUSTOM RESET PROGRESS UI
-// ==========================================
+// === FEATURE: CUSTOM RESET PROGRESS UI ===
 const btnReset = document.getElementById('btn-reset-progress');
 const resetModal = document.getElementById('reset-modal');
 const closeResetModal = document.getElementById('close-reset-modal');
@@ -1602,7 +1495,7 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
         const type = btn.getAttribute('data-type'); 
         const activeCourse = localStorage.getItem('edeetos_active_course');
 
-switch (type) {
+        switch (type) {
             case "1":
                 pendingUpdates = {
                     [`${activeCourse}.solvedQuestions`]: [],
@@ -1701,9 +1594,7 @@ if (btnConfirmReset) {
     };
 }
 
-// ==========================================
-// 10. TROPHY / JOURNEY SYSTEM & MILESTONES
-// ==========================================
+// === FEATURE: TROPHY / JOURNEY SYSTEM & MILESTONES ===
 const btnJourney = document.getElementById('btn-view-journey');
 const journeyModal = document.getElementById('journey-modal');
 const closeJourneyBtn = document.getElementById('close-journey-btn');
@@ -1718,7 +1609,6 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", reward: "3 Weeks Premium Free" }
 ];
 
-// Pre-calculate the cumulative requirements for RPG-style leveling
 let currentCum = 0;
 const processedTrophies = trophies.map(t => {
     const prev = currentCum;
@@ -1726,14 +1616,12 @@ const processedTrophies = trophies.map(t => {
     return { ...t, cumulativeReq: currentCum, previousCum: prev };
 });
 
-// --- MILESTONE POPUP LOGIC ---
 function checkMilestones(currentFlawless) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
 
     const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
     let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-    // Find trophies where the cumulative requirement is met but not unlocked yet
     const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title));
 
     if (newlyUnlocked.length > 0) {
@@ -1779,7 +1667,6 @@ onAuthStateChanged(auth, (user) => {
         }, 2000);
     }
 });
-// --- END MILESTONE POPUP LOGIC ---
 
 if (btnJourney) {
     btnJourney.onclick = () => {
@@ -1793,7 +1680,6 @@ if (btnJourney) {
         trophiesGrid.innerHTML = processedTrophies.map(t => {
             const isUnlocked = flawlessCount >= t.cumulativeReq;
             
-            // Calculate step progress for the visual display
             let progress = 0;
             if (isUnlocked) {
                 progress = t.req;
@@ -1842,6 +1728,7 @@ if (journeyModal) {
     };
 }
 
+// === FEATURE: REVISION GENERATOR ===
 window.generateRevisionQuiz = async function(topicId) {
 
     if (!topicId) {
@@ -1868,7 +1755,6 @@ window.generateRevisionQuiz = async function(topicId) {
     const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const isBookRevision = (sourceName !== currentActiveCourse);
 
-    // NEW: LAZY LOAD THE BOOK IF NEEDED FOR REVISION!
     if (isBookRevision) {
         const book = availableBooks.find(b => b.file === sourceName);
         if (book && !loadedBooksCache[book.file]) {
@@ -1966,7 +1852,6 @@ function restoreLastState() {
     
     changeView(lastView, lastTitle);
 
-    // If you were in a book, stop here. Books require user clicks to lazy load now.
     if (lastView === 'book') return; 
 
     const savedPathStr = localStorage.getItem('edeetos_saved_popup_path');
@@ -2002,17 +1887,3 @@ function restoreLastState() {
         }
     }
 }
-window.startInstantPractice = function(encodedPath) {
-    const pathArr = JSON.parse(decodeURIComponent(encodedPath));
-    let pool = activeCustomPool || allQuestions;
-    
-    // Filter questions just for this single topic
-    let finalPool = pool.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
-    
-    if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
-    
-    // Randomize and launch instantly in practice mode
-    finalPool = finalPool.sort(() => 0.5 - Math.random());
-    const generatedTitle = generateExamTitle([pathArr], currentView);
-    window.launchQuiz(finalPool, 'practice', 0, generatedTitle);
-};

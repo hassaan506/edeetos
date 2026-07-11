@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - EDEETOS</title>
-	<link rel="stylesheet" href="global.css">
-	<link rel="stylesheet" href="dashboard.css">
+    
+    <!-- === FEATURE: GLOBAL STYLES === -->
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body style="background-color: #f0fdf4;">
 
+    <!-- === FEATURE: DASHBOARD NAVIGATION === -->
     <nav class="dashboard-nav">
         <div class="nav-inner">
             <div class="nav-spacer"></div>
@@ -20,9 +23,9 @@
                     🛡️ Admin
                 </button>
                 
-				<button id="btn-reports-panel" onclick="window.location.href='reports.html?v=7'" class="btn-solid btn-nav-reports" style="display: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; align-items: center; gap: 5px; background: #6366f1; color: white; cursor: pointer;">
-					📊 Reports
-				</button>
+                <button id="btn-reports-panel" onclick="window.location.href='reports.html?v=7'" class="btn-solid btn-nav-reports" style="display: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; align-items: center; gap: 5px; background: #6366f1; color: white; cursor: pointer;">
+                    📊 Reports
+                </button>
 
                 <button id="btn-open-profile" class="btn-solid btn-nav-profile" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; background: #3b82f6; color: white;">
                     👤 Profile
@@ -39,6 +42,7 @@
 
     <section class="section-container" style="padding-top: 3rem;">
         
+        <!-- === FEATURE: USER WELCOME HEADER === -->
         <div class="dashboard-header">
             <h1 class="welcome-header">
                 <span>Welcome,</span>
@@ -46,9 +50,12 @@
                 <span class="status-badge badge-free" id="subscription-status">Free Tier</span>
             </h1>
             <p style="color: #64748b; font-size: 1rem;">Here is your personalized study dashboard.</p>
-		</div>
+        </div>
 
+        <!-- === FEATURE: MAIN DASHBOARD CARDS === -->
         <div class="course-dash-grid">
+            
+            <!-- Study Vault Card -->
             <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div class="icon">📚</div>
                 <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Study Vault</h3>
@@ -56,6 +63,7 @@
                 <button class="btn-solid mini-btn" style="width: 100%;" onclick="alert('Study Vault modules are currently in development and will be available soon!')">Open Vault</button>
             </div>
 
+            <!-- Question Bank Card -->
             <div class="glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem; text-align: center; border: 2px solid #10b981; position: relative; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);">
                 <div class="icon" style="font-size: 3.5rem; margin-bottom: 1rem;">✍️</div>
                 <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Question Bank</h3>
@@ -73,13 +81,16 @@
                 </button>
             </div>
 
+            <!-- My Mentor Card -->
             <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div class="icon">🩺</div>
                 <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">My Mentor</h3>
                 <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Book a session or message your dedicated guide.</p>
                 <button id="btn-contact-mentor" class="btn-solid mini-btn" style="width: 100%;">Contact Mentor</button>
             </div>
-			<div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            
+            <!-- Group Study Card -->
+            <div class="glass-panel feature-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div class="icon">👥</div>
                 <h3 style="color: #064e3b; font-size: 1.4rem; margin-bottom: 0.5rem;">Group Study</h3>
                 <p style="color: #64748b; margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem;">Study with friends in real-time.</p>
@@ -88,10 +99,10 @@
                     <button id="btn-join-room" class="btn-outline mini-btn" style="flex: 1; border-color: #3b82f6; color: #10b981;">Join</button>
                 </div>
             </div>
-		</div>
-	</section>
+        </div>
+    </section>
 
-    <!-- PREMIUM MODAL -->
+    <!-- === FEATURE: PREMIUM UNLOCK MODAL === -->
     <div id="premium-modal" class="popup-overlay" style="display: none;">
         <div class="popup-content" style="max-width: 420px; width: 95%; max-height: 95vh; overflow-y: auto; padding: 2rem 1.5rem; text-align: center; position: relative;">
             <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👑</div>
@@ -158,21 +169,21 @@
         </div>
     </div>
 
-    <!-- DYNAMIC CONTENT SELECTOR MODAL -->
+    <!-- === FEATURE: COURSE SELECTOR MODAL === -->
     <div id="course-selector-modal" class="popup-overlay" style="display: none; z-index: 1001;">
         <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 1.5rem; text-align: left;">
             <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; text-align: center;">Select Your Resources</h3>
             
             <div style="max-height: 50vh; overflow-y: auto; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; padding-right: 5px;">
                 
-                <!-- DYNAMIC LOCKED COURSE -->
+                <!-- Assigned Course Display -->
                 <div style="font-size: 0.75rem; font-weight: 800; color: #3b82f6; margin-top: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px;">ASSIGNED EXAM COURSE</div>
                 
                 <div id="dynamic-course-container" style="margin-top: 0.5rem; margin-bottom: 1rem;">
                     <div style="color: #64748b; font-size: 0.8rem;">Loading your course...</div>
                 </div>
 
-                <!-- BOOKS ADD-ON SECTION -->
+                <!-- Book Add-Ons Selection -->
                 <div style="font-size: 0.75rem; font-weight: 800; color: #d97706; margin-top: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px;">BOOK ADD-ONS</div>
                 <div style="font-size: 0.65rem; color: #64748b; margin-bottom: 0.5rem;">Buy 2+ (10% Off) | Buy 3+ (20% Off) | Buy 5+ (30% Off)</div>
                 
@@ -195,7 +206,7 @@
         </div>
     </div>
 
-    <!-- PROFILE MODAL -->
+    <!-- === FEATURE: USER PROFILE MODAL === -->
     <div id="profile-modal" class="popup-overlay" style="display: none;">
         <div class="popup-content" style="max-width: 500px; width: 95%; max-height: 95vh; overflow-y: auto; padding: 2.5rem 2rem; position: relative; text-align: left;">
             <button class="btn-close-modal" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b;">&times;</button>
@@ -262,8 +273,8 @@
             
         </div>
     </div>
-	
-    <!-- COURSE CHANGE REQUEST MODAL -->
+    
+    <!-- === FEATURE: COURSE CHANGE MODAL === -->
     <div id="course-change-modal" class="popup-overlay" style="display: none; z-index: 1002;">
         <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: left;">
             <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; text-align: center;">Request Course Change</h3>
@@ -290,7 +301,7 @@
         </div>
     </div>
 
-    <!-- JOIN ROOM MODAL -->
+    <!-- === FEATURE: JOIN GROUP STUDY MODAL === -->
     <div id="join-room-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: center;">
             <div style="font-size: 3rem; margin-bottom: 1rem;">🔑</div>
@@ -309,7 +320,8 @@
             <button id="btn-close-join" class="btn-close-modal" style="background: none; border: none; color: #64748b; font-weight: 600; cursor: pointer; text-decoration: underline;">Cancel</button>
         </div>
     </div>
-	
+    
+    <!-- === FEATURE: FOOTER === -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -327,12 +339,12 @@
             </div>
         </div>
         
-		
-<div class="footer-bottom">
+        <div class="footer-bottom">
             <p>&copy; 2026 EDEETOS. All rights reserved. | <a href="changelog.html">Changelog</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
         </div>
     </footer>
 
+    <!-- === FEATURE: SCRIPTS === -->
     <script type="module" src="dashboard.js?v=3"></script>
 </body>
 </html>
