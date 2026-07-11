@@ -22,16 +22,16 @@ let roomRef = activeRoomId ? doc(db, "study_rooms", activeRoomId) : null;
 let hasRevealedCurrentQuestion = false;
 let hasAnsweredCurrentQuestion = false;
 
+// Exam mode tracking
+let hasShownSkipPopup = false;
+
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
 const isExamMode = (quizConfig.mode === 'exam') && !activeRoomId;
 
-// ---------- NEW HELPER ----------
-// Checks if the current quiz session is from a book (not a course)
 function isBookSession() {
     return quizQueue.length > 0 && quizQueue[0]?.isBookQuestion === true;
 }
-// ---------------------------------
 
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
@@ -87,6 +87,7 @@ function loadSession() {
         }
         q.sessionState = null; 
         q.historicalState = null; 
+        q.sequenceNumber = i + 1; // Tracks original sequence for proper display counting
     });
 }
 
@@ -102,9 +103,6 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 currentUserData = dbData;
 
-                // ==========================================
-                // ANTI-CHEAT SECURITY MEASURES
-                // ==========================================
                 const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
                 if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
                     window.isScreenshotBlockEnabled = false;
@@ -117,7 +115,6 @@ onAuthStateChanged(auth, async (user) => {
                     document.body.style.webkitUserSelect = 'none';
                     document.oncontextmenu = (e) => e.preventDefault();
                 }
-                // ==========================================
 
                 if (activeRoomId) {
                     await updateDoc(roomRef, {
@@ -236,15 +233,15 @@ function formatJSONQuestion(q) {
         text: q.question || q.Question || "Missing Question Text",
         options: formattedOptions,
         explanation: q.explanation || q.Explanation || "No explanation provided.",
-        hint: q.hint || q.Hint || "", // Pulls directly from CSV/JSON
+        hint: q.hint || q.Hint || "", 
         originalNumber: q.QuestionID || q.id || q.originalNumber || `q-${Math.random()}`,
         isBookmarked: q.isBookmarked || false,
         userNote: q.userNote || "",
         sessionState: q.sessionState || null,
         historicalState: q.historicalState || null,
         hasBeenSkipped: q.hasBeenSkipped || false,
+        sequenceNumber: q.sequenceNumber || 1, // Ensure sequence transfers
         userSelectedAnswer: q.userSelectedAnswer || null,
-        
         Subject: q.Subject || q.subject || "",
         Chapter: q.Chapter || q.chapter || "",
         Topic: q.Topic || q.topic || "",
@@ -312,6 +309,23 @@ function triggerSlideTransition(newIndex, direction) {
     }, 300);
 }
 
+function showSkippedModal() {
+    const modal = document.createElement('div');
+    modal.id = 'skipped-popup-modal';
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.innerHTML = `
+        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 5rem; margin-bottom: 1.5rem;"></i>
+        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Skipped Questions Phase</h1>
+        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem; max-width: 500px;">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
+        <button id="btn-understood-skip" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Understood (Enter)</button>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('btn-understood-skip').onclick = () => {
+        modal.remove();
+    };
+}
+
 function loadQuestion(index) {
     try { 
         currentIndex = index;
@@ -334,7 +348,7 @@ function loadQuestion(index) {
         
         if (aiHintBtn) {
             aiHintBtn.style.display = 'none'; 
-            aiHintBtn.innerHTML = `<i class="fas fa-lightbulb"></i> Hint`; // Standardize UI
+            aiHintBtn.innerHTML = `<i class="fas fa-lightbulb"></i> Hint`; 
         }
         
         if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; 
@@ -347,7 +361,7 @@ function loadQuestion(index) {
             explanationModal.classList.remove('show');
         }
 
-        const displayNum = currentIndex + 1;
+        const displayNum = currentQuestionData.sequenceNumber || (currentIndex + 1);
         if (questionIdBadge) {
             questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
         }
@@ -356,6 +370,11 @@ function loadQuestion(index) {
             if (currentQuestionData.hasBeenSkipped) {
                 skippedWarningEl.classList.remove('hidden');
                 skipBtn.style.display = 'none'; 
+                
+                if (!hasShownSkipPopup) {
+                    showSkippedModal();
+                    hasShownSkipPopup = true;
+                }
             } else {
                 skippedWarningEl.classList.add('hidden');
                 skipBtn.style.display = 'block';
@@ -510,7 +529,7 @@ function loadQuestion(index) {
 }
 
 // ==========================================
-// 3. DATABASE SYNC FUNCTIONS (MODIFIED)
+// 3. DATABASE SYNC FUNCTIONS
 // ==========================================
 async function savePracticeProgress(questionId, isCorrect) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
@@ -1063,6 +1082,29 @@ if (labValuesBtn) labValuesBtn.onclick = () => {
         labValuesModal.classList.add('show');
     }
 };
+// --- NEW LAB VALUES SEARCH LOGIC ---
+const labSearchInput = document.getElementById('lab-search-input');
+if (labSearchInput) {
+    labSearchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        // Target the rows inside the specific table we just added the ID to
+        const rows = document.querySelectorAll('#lab-values-table tr');
+        
+        rows.forEach((row, index) => {
+            if (index === 0) return; // Skip the header row
+            
+            // Get the text from the first cell (Test Name)
+            const testName = row.cells[0]?.textContent.toLowerCase() || "";
+            
+            if (testName.includes(query)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+}
+// -----------------------------------
 if (closeLabValuesBtn) closeLabValuesBtn.onclick = () => {
     if (labValuesModal) labValuesModal.classList.remove('show');
 };
@@ -1161,6 +1203,14 @@ if (closeShortcutsBtn) closeShortcutsBtn.addEventListener('click', () => { if(sh
 document.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) return; 
+
+    const skippedModal = document.getElementById('skipped-popup-modal');
+    if (skippedModal && e.key === 'Enter') {
+        e.preventDefault();
+        const understoodBtn = document.getElementById('btn-understood-skip');
+        if (understoodBtn) understoodBtn.click();
+        return; 
+    }
 
     const nextBtnLocal = document.getElementById('next-btn');
     const prevBtnLocal = document.getElementById('prev-btn');

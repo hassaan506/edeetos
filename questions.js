@@ -252,10 +252,13 @@ setTimeout(() => {
                 const qCountInput = parseInt(document.getElementById('exam-q-count').value);
                 const timerInput = parseInt(document.getElementById('exam-timer').value);
 
-                if (!timerInput || timerInput <= 0 || isNaN(timerInput)) {
-                    alert("Please enter a valid time in minutes.");
+                // UPGRADE: Only enforce the timer if the current mode is 'exam'
+                if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
+                    alert("Please enter a valid time in minutes for Exam mode.");
                     return;
                 }
+
+                const finalTimer = currentMode === 'exam' ? timerInput : 0;
 
                 if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) {
                     examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
@@ -267,7 +270,7 @@ setTimeout(() => {
                     return alert("No questions selected!");
                 }
 
-                const generatedTitle = generateExamTitle(paths, currentView) + " (Assigned)";
+                const generatedTitle = generateExamTitle(paths, currentView) + (currentMode === 'practice' ? " (Practice Assignment)" : " (Exam Assignment)");
 
                 assignBtn.textContent = "Loading Students...";
                 assignBtn.disabled = true;
@@ -367,7 +370,8 @@ setTimeout(() => {
                                 assignedBy: auth.currentUser.uid,
                                 assignedTo: selectedStudentIds, 
                                 questions: cleanExamPool,
-                                timerMinutes: timerInput,
+                                mode: currentMode, // Tells the student dashboard what type of UI to launch
+                                timerMinutes: finalTimer,
                                 isCompletedBy: [],
                                 createdAt: serverTimestamp()
                             });
@@ -1693,7 +1697,7 @@ if (btnConfirmReset) {
 }
 
 // ==========================================
-// 10. TROPHY / JOURNEY SYSTEM
+// 10. TROPHY / JOURNEY SYSTEM & MILESTONES
 // ==========================================
 const btnJourney = document.getElementById('btn-view-journey');
 const journeyModal = document.getElementById('journey-modal');
@@ -1701,35 +1705,101 @@ const closeJourneyBtn = document.getElementById('close-journey-btn');
 const trophiesGrid = document.getElementById('trophies-grid');
 
 const trophies = [
-    { title: "Novice", req: 10, icon: "👶" },
-    { title: "Bronze", req: 100, icon: "🥉" },
-    { title: "Silver", req: 500, icon: "🥈" },
-    { title: "Gold", req: 1000, icon: "🥇" },
-    { title: "Diamond", req: 2000, icon: "💎" },
-    { title: "Master", req: 5000, icon: "👑" }
+    { title: "Novice", req: 10, icon: "👶", reward: null },
+    { title: "Bronze", req: 100, icon: "🥉", reward: null },
+    { title: "Silver", req: 500, icon: "🥈", reward: "3 Days Premium Free" },
+    { title: "Gold", req: 1000, icon: "🥇", reward: "1 Week Premium Free" },
+    { title: "Diamond", req: 2000, icon: "💎", reward: "2 Weeks Premium Free" },
+    { title: "Master", req: 5000, icon: "👑", reward: "3 Weeks Premium Free" }
 ];
+
+// --- MILESTONE POPUP LOGIC ---
+function checkMilestones(currentFlawless) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+
+    // Use a user-specific storage key to prevent overlap if multiple accounts use the same browser
+    const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
+    let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+    // Find trophies where the requirement is met but it has not been unlocked yet
+    const newlyUnlocked = trophies.filter(t => currentFlawless >= t.req && !unlockedTiers.includes(t.title));
+
+    if (newlyUnlocked.length > 0) {
+        // Show the popup for the highest newly unlocked tier
+        const highestNew = newlyUnlocked[newlyUnlocked.length - 1];
+        showMilestonePopup(highestNew);
+
+        // Save to local storage so it does not trigger again on next load
+        newlyUnlocked.forEach(t => unlockedTiers.push(t.title));
+        localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
+    }
+}
+
+function showMilestonePopup(trophy) {
+    const modal = document.createElement('div');
+    modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
+    
+    const rewardHtml = trophy.reward 
+        ? `<div style="background: #ecfdf5; border: 1px solid #10b981; color: #065f46; padding: 12px; border-radius: 8px; margin: 15px 0; font-weight: bold; display: inline-block;"><i class="fas fa-gift"></i> Reward Unlocked: ${trophy.reward}</div>` 
+        : `<div style="margin: 15px 0;"></div>`;
+
+    modal.innerHTML = `
+        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
+            <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
+            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by solving ${trophy.req} flawless questions.</p>
+            ${rewardHtml}
+            <button id="close-milestone-btn" class="btn-solid" style="background: #3b82f6; border: none; width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Continue Journey</button>
+        </div>
+        <style>
+            @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        </style>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
+}
+
+// Automatically check milestones 2 seconds after the dashboard loads to ensure Firebase data is ready
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        setTimeout(() => {
+            const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+            const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+            checkMilestones(flawlessCount);
+        }, 2000);
+    }
+});
+// --- END MILESTONE POPUP LOGIC ---
 
 if (btnJourney) {
     btnJourney.onclick = () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             return alert("Please register an account to track your Journey and unlock trophies.");
         }
-        const solvedCount = attemptedQuestions.length;
+        
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
 
         trophiesGrid.innerHTML = trophies.map(t => {
-            const isUnlocked = solvedCount >= t.req;
+            const isUnlocked = flawlessCount >= t.req;
             const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
             const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
             const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
             const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
+            
+            const rewardHtml = t.reward 
+                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.reward}</div>` 
+                : '';
 
             return `
                 <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
                     <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
                     <div style="flex-grow: 1;">
                         <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">Solve ${t.req} Questions</div>
+                        <div style="font-size: 0.75rem; color: #64748b;">${flawlessCount} / ${t.req} Flawless Qs</div>
+                        ${rewardHtml}
                     </div>
                     <div style="font-size: 1.3rem;">
                         ${statusIcon}

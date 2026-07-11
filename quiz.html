@@ -112,12 +112,18 @@
         </div>
     </div>
 
-    <!-- NEW: Reference / Lab Values Sheet -->
+<!-- NEW: Reference / Lab Values Sheet (Upgraded with Search) -->
     <div id="lab-values-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content" style="max-width: 600px; width: 95%;">
             <h3 style="color: #1e3a8a; margin-bottom: 1rem; text-align: center;"><i class="fas fa-flask" style="color: #3b82f6; margin-right: 8px;"></i> Normal Laboratory Values</h3>
-            <div style="max-height: 65vh; overflow-y: auto; text-align: left; font-size: 0.9rem; color: #334155; padding-right: 5px;">
-                <table style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
+            
+            <!-- SEARCH BAR INJECTED HERE -->
+            <input type="text" id="lab-search-input" placeholder="Search lab test (e.g., Sodium, pH, WBC)..." 
+                style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit; font-size: 1rem;">
+            
+            <div style="max-height: 60vh; overflow-y: auto; text-align: left; font-size: 0.9rem; color: #334155; padding-right: 5px;">
+                <!-- ADDED ID TO TABLE FOR JS TARGETING -->
+                <table id="lab-values-table" style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
                     <tr style="background: #f1f5f9; color: #1e293b;"><th style="padding: 10px; border: 1px solid #cbd5e1; text-align: left;">Test</th><th style="padding: 10px; border: 1px solid #cbd5e1; text-align: left;">Reference Range</th></tr>
                     <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Hemoglobin (Hb)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Male: 13.5-17.5 g/dL | Female: 12.0-15.5 g/dL</td></tr>
                     <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">White Blood Cells (WBC)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">4,500 - 11,000 /µL</td></tr>
