@@ -311,7 +311,7 @@
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
-    align-items: stretch; 
+    align-items: stretch;
     padding: 1.2rem; 
     background: #ffffff;
     border-radius: 10px;
@@ -328,12 +328,12 @@
     transform: translateY(-2px); 
 }
 
-.list-item > div:first-child { width: 100%; }
-
 .list-item .card-header-flex { 
     margin-bottom: 8px; 
     align-items: center; 
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;   
+    gap: 10px;
+    width: 100%;
 }
 
 .list-item input[type="checkbox"] {
@@ -346,15 +346,13 @@
     margin-right: 12px !important;
 }
 
-/* Explicitly stop the inline "Start" button from stretching */
 .list-item .card-header-flex button,
 .list-item .card-header-flex .mini-btn {
-    width: auto !important;
-    flex-shrink: 0;
-    white-space: nowrap;
+    width: auto !important
+    flex-shrink: 0;       
+    white-space: nowrap;  
 }
 
-/* Target ONLY the action button at the bottom of the card to span 100% */
 .list-item > button:last-child, 
 .list-item > .mini-btn:last-child {
     width: 100%;
