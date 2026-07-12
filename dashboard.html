@@ -147,6 +147,13 @@
                 <div style="text-align: left; font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.5rem;">Upload Payment Proof</div>
                 <input type="file" id="payment-proof" accept="image/*" style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.8rem; background: white;">
 
+				<div style="text-align: left; font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.5rem;">Apply Promo Code</div>
+                <div style="margin-bottom: 5px; display: flex; gap: 10px;">
+                    <input type="text" id="promo-input" placeholder="e.g. WINTER20" style="flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: monospace; text-transform: uppercase; outline: none; font-size: 0.95rem;">
+                    <button id="btn-apply-promo" class="btn-solid" style="background: #3b82f6; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; transition: 0.2s;">Apply</button>
+                </div>
+                <div id="promo-message" style="font-size: 0.85rem; font-weight: bold; margin-bottom: 1.5rem; text-align: left; min-height: 20px;"></div>
+				
                 <button id="btn-submit-payment" class="btn-solid" style="width: 100%; background: #d97706; border: none; padding: 1rem; border-radius: 10px; font-size: 1.1rem; font-weight: bold; color: white; margin-bottom: 0.5rem; cursor: pointer;">
                     Confirm & Submit Request
                 </button>
