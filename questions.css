@@ -262,12 +262,14 @@
     padding: 0;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.98);
-    animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* NEW: Premium ease-out deceleration curve for desktop slide-up */
+    animation: premiumSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes popIn {
-    0% { opacity: 0; transform: scale(0.95) translateY(20px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
+@keyframes premiumSlideUp {
+    0% { opacity: 0; transform: translateY(80px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .popup-header {
@@ -307,11 +309,12 @@
     align-items: stretch; 
 }
 
+/* --- THE CHECKBOX LIST ITEMS --- */
 .list-item {
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
-    align-items: stretch;
+    align-items: stretch; 
     padding: 1.2rem; 
     background: #ffffff;
     border-radius: 10px;
@@ -331,7 +334,7 @@
 .list-item .card-header-flex { 
     margin-bottom: 8px; 
     align-items: center; 
-    flex-wrap: nowrap;   
+    flex-wrap: nowrap; 
     gap: 10px;
     width: 100%;
 }
@@ -346,13 +349,15 @@
     margin-right: 12px !important;
 }
 
+/* Prevents the start buttons from stretching and fixes alignment */
 .list-item .card-header-flex button,
 .list-item .card-header-flex .mini-btn {
-    width: auto !important
-    flex-shrink: 0;       
-    white-space: nowrap;  
+    width: auto !important; 
+    flex-shrink: 0;         
+    white-space: nowrap;    
 }
 
+/* Targets the bottom 'View' action button to span fully */
 .list-item > button:last-child, 
 .list-item > .mini-btn:last-child {
     width: 100%;
@@ -555,11 +560,13 @@
         width: 100%;
         max-width: 100%;
         border-radius: 20px 20px 0 0;
-        animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        
+        /* NEW: Mobile bottom drawer full slide-up animation */
+        animation: mobileBottomSheet 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         padding-bottom: 20px; 
     }
 
-    @keyframes slideUp {
+    @keyframes mobileBottomSheet {
         0% { opacity: 0; transform: translateY(100%); }
         100% { opacity: 1; transform: translateY(0); }
     }
