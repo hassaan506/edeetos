@@ -1,4 +1,3 @@
-// === FEATURE: FIREBASE IMPORTS & GLOBAL STATE ===
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -6,6 +5,9 @@ import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, ad
 let currentUserId = null; 
 let currentUserData = null;
 
+// ==========================================
+// 1. STATE VARIABLES & CONFIG LOAD
+// ==========================================
 let quizQueue = [];
 let currentIndex = 0;
 let currentQuestionData = null;
@@ -29,7 +31,6 @@ function isBookSession() {
     return quizQueue.length > 0 && quizQueue[0]?.isBookQuestion === true;
 }
 
-// === FEATURE: DOM ELEMENTS ===
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
 const questionTextEl = document.getElementById('question-text');
@@ -61,7 +62,6 @@ if (isExamMode) {
     sessionSeconds = quizConfig.timer * 60; 
 }
 
-// === FEATURE: SESSION INITIALIZATION & AUTHENTICATION ===
 function loadSession() {
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
         return; 
@@ -89,6 +89,72 @@ function loadSession() {
     });
 }
 
+// ==========================================
+// 2. SCOPED SECURITY & ANTI-CHEAT
+// ==========================================
+function applySecurityMeasures(role) {
+    const roleUpper = (role || 'STUDENT').toUpperCase();
+    
+    // Scoped check: Only arm the traps if the question interface actually exists on this page
+    const isSecurePage = document.querySelector('.question-card') !== null;
+    
+    window.handleContextMenu = (e) => e.preventDefault();
+    window.handleCopy = (e) => e.preventDefault();
+    
+    window.handleKeyUp = (e) => {
+        if (e.key === 'PrintScreen') {
+            navigator.clipboard.writeText('Screenshots are disabled for copyright protection.'); 
+            const screen = document.getElementById('anti-screenshot-screen');
+            if (screen) screen.style.display = 'flex';
+        }
+    };
+    
+    window.handleVisibility = () => {
+        if (document.visibilityState === 'hidden') {
+            document.body.style.filter = 'blur(15px)';
+        } else {
+            document.body.style.filter = 'none';
+        }
+    };
+    
+    window.handleBlur = () => {
+        document.body.style.filter = 'blur(15px)';
+    };
+    
+    window.handleFocus = () => {
+        document.body.style.filter = 'none';
+    };
+
+    // If the user is an admin, OR if this script is running on an unprotected page, disable restrictions.
+    if (!isSecurePage || roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
+        document.body.style.userSelect = 'auto';
+        document.body.style.webkitUserSelect = 'auto';
+        document.body.style.filter = 'none';
+        
+        document.removeEventListener('contextmenu', window.handleContextMenu);
+        document.removeEventListener('copy', window.handleCopy);
+        window.removeEventListener('keyup', window.handleKeyUp);
+        document.removeEventListener('visibilitychange', window.handleVisibility);
+        window.removeEventListener('blur', window.handleBlur);
+        window.removeEventListener('focus', window.handleFocus);
+        return; 
+    }
+
+    // Enforce strict restrictions for regular students on the protected page
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    
+    document.addEventListener('contextmenu', window.handleContextMenu);
+    document.addEventListener('copy', window.handleCopy);
+    window.addEventListener('keyup', window.handleKeyUp);
+    document.addEventListener('visibilitychange', window.handleVisibility);
+    window.addEventListener('blur', window.handleBlur);
+    window.addEventListener('focus', window.handleFocus);
+}
+
+// ==========================================
+// 3. INITIALIZATION & FIREBASE AUTH
+// ==========================================
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         currentUserId = user.uid; 
@@ -100,6 +166,11 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 currentUserData = dbData;
+
+                const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
+                
+                // Engage the scoped security checks immediately upon detecting the user role
+                applySecurityMeasures(roleUpper);
 
                 if (activeRoomId) {
                     await updateDoc(roomRef, {
@@ -180,7 +251,9 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// === FEATURE: QUESTION RENDERING & LOGIC ===
+// ==========================================
+// 4. SLIDE TRANSITIONS & RENDER
+// ==========================================
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -222,6 +295,79 @@ function formatJSONQuestion(q) {
         Topic: q.Topic || q.topic || "",
         isBookQuestion: q.isBookQuestion || false,
         bookName: q.bookName || ""
+    };
+}
+
+function buildNumberGrid() {
+    numberGrid.innerHTML = '';
+    quizQueue.forEach((q, index) => {
+        const numBtn = document.createElement('div');
+        numBtn.className = 'grid-num';
+        
+        const stateToShow = q.sessionState || q.historicalState;
+        if (stateToShow === 'correct') numBtn.classList.add('correct');
+        else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') numBtn.classList.add('incorrect');
+        
+        numBtn.id = `grid-num-${index}`;
+        numBtn.textContent = index + 1;
+        
+        numBtn.onclick = () => {
+            if (isExamMode) return; 
+            
+            if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+                alert("Only the host can jump to different questions.");
+                return;
+            }
+            
+            if(index === currentIndex) return;
+            const direction = index > currentIndex ? 'right' : 'left';
+            
+            if (activeRoomId) syncNextQuestion(index); 
+            
+            triggerSlideTransition(index, direction);
+        };
+        numberGrid.appendChild(numBtn);
+    });
+    updateGridStyles();
+}
+
+function updateGridStyles() {
+    if (isExamMode) return;
+    document.querySelectorAll('.grid-num').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById(`grid-num-${currentIndex}`);
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
+function triggerSlideTransition(newIndex, direction) {
+    const outClass = direction === 'right' ? 'slide-out-left' : 'slide-out-right';
+    const inClass = direction === 'right' ? 'slide-in-right' : 'slide-in-left';
+
+    cardEl.className = 'question-card';
+    void cardEl.offsetWidth; 
+    cardEl.classList.add(outClass);
+    
+    setTimeout(() => {
+        loadQuestion(newIndex);
+        cardEl.className = 'question-card'; 
+        void cardEl.offsetWidth; 
+        cardEl.classList.add(inClass);
+    }, 300);
+}
+
+function showSkippedModal() {
+    const modal = document.createElement('div');
+    modal.id = 'skipped-popup-modal';
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.innerHTML = `
+        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 5rem; margin-bottom: 1.5rem;"></i>
+        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Skipped Questions Phase</h1>
+        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem; max-width: 500px;">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
+        <button id="btn-understood-skip" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Understood (Enter)</button>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('btn-understood-skip').onclick = () => {
+        modal.remove();
     };
 }
 
@@ -309,152 +455,138 @@ function loadQuestion(index) {
             optionsContainer.appendChild(optBox);
         });
 
-        initBookmarkTool();
-        initNotesTool();
-        initReportTool();
-        if (!isExamMode) updateGridStyles();
+        const bookmarkBtn = document.getElementById('bookmark-btn');
+        if (bookmarkBtn) {
+            const starIcon = bookmarkBtn.querySelector('i');
+            if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
+            else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
+
+            bookmarkBtn.onclick = (e) => {
+                e.preventDefault();
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
+                currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
+                if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
+                else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
+                toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+            };
+        }
+
+        const noteBtn = document.getElementById('note-btn');
+        if (noteBtn) {
+            noteBtn.onclick = (e) => {
+                e.preventDefault();
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to save personal notes.");
+                if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
+                if (notesModal) {
+                    notesModal.classList.remove('hidden');
+                    notesModal.classList.add('show');
+                }
+            };
+        }
+
+        if (saveNoteBtn) {
+            saveNoteBtn.onclick = () => {
+                const typedNote = noteInput.value.trim();
+                currentQuestionData.userNote = typedNote; 
+                saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
+                notesModal.classList.remove('show');
+                setTimeout(() => notesModal.classList.add('hidden'), 300);
+            };
+        }
+
+        if (closeNotesBtn) {
+            closeNotesBtn.onclick = () => {
+                notesModal.classList.remove('show');
+                setTimeout(() => notesModal.classList.add('hidden'), 300);
+            };
+        }
+		
+        const btnReport = document.getElementById('btn-report');
+        const reportModal = document.getElementById('report-modal');
+        const closeReportBtn = document.getElementById('close-report-btn');
+        const submitReportBtn = document.getElementById('submit-report-btn');
+        const reportReasonInput = document.getElementById('report-reason-input');
+
+        if (btnReport) {
+            btnReport.onclick = () => {
+                reportReasonInput.value = "";
+                if (reportModal) {
+                    reportModal.classList.remove('hidden');
+                    reportModal.classList.add('show');
+                }
+            };
+        }
+
+        if (closeReportBtn) {
+            closeReportBtn.onclick = () => {
+                if (reportModal) {
+                    reportModal.classList.remove('show');
+                    setTimeout(() => reportModal.classList.add('hidden'), 300);
+                }
+            };
+        }
+
+        if (submitReportBtn) {
+            submitReportBtn.onclick = async () => {
+                const reason = reportReasonInput.value.trim();
+                if (!reason) return alert("Please specify why you are reporting this question.");
+                
+                if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+                    return alert("Please register an account to report questions.");
+                }
+
+                const user = auth.currentUser;
+                if (!user) return alert("Authentication error. Please log in again.");
+
+                submitReportBtn.textContent = "Submitting...";
+                submitReportBtn.disabled = true;
+
+                try {
+                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
+                    const qText = currentQuestionData.text ? String(currentQuestionData.text).substring(0, 100) + "..." : "No text";
+
+                    await addDoc(collection(db, "reported_questions"), {
+                        userId: user.uid,
+                        userEmail: user.email || "Unknown Email",
+                        questionId: currentQuestionData.originalNumber,
+                        courseFile: activeCourse,
+                        questionText: qText,
+                        reason: reason,
+                        timestamp: serverTimestamp()
+                    });
+                    
+                    alert("Report submitted successfully. Thank you!");
+                    if (reportModal) reportModal.classList.remove('show');
+                } catch (e) {
+                    console.error("Error reporting question: ", e);
+                    alert("Failed to submit report. Please check your internet connection or try again later.");
+                } finally {
+                    submitReportBtn.textContent = "Submit Report";
+                    submitReportBtn.disabled = false;
+                }
+            };
+        }
+        updateGridStyles();
 
     } catch (error) { 
-        console.error("CRASH inside loadQuestion:", error);
+        console.error("🚨 CRASH inside loadQuestion:", error);
     }
 }
 
-function handleOptionClick(event, optionData, optionElement) {
-    if (event.target.classList.contains('eye-icon')) {
-        optionElement.classList.toggle('strikethrough');
-        return; 
-    }
-
-    if (isExamMode) {
-        document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
-        optionElement.classList.add('selected');
-        currentQuestionData.userSelectedAnswer = optionData.text;
-        skipBtn.style.display = 'none';
-        return; 
-    }
+// ==========================================
+// 5. DATABASE SYNC FUNCTIONS
+// ==========================================
+async function syncNextQuestion(newIndex) {
+    const isGuest = localStorage.getItem('is_study_guest') === 'true';
+    if (isGuest) return;
 
     if (activeRoomId) {
-        if (hasAnsweredCurrentQuestion || hasRevealedCurrentQuestion) return;
-        hasAnsweredCurrentQuestion = true;
-
-        optionElement.style.border = "2px solid #3b82f6";
-        document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
-
-        updateDoc(roomRef, { [`answers.${currentIndex}.${currentUserId}`]: optionData.text });
-        return;
-    }
-
-    if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
-
-    if (!optionData.isCorrect) {
-        optionElement.classList.remove('apply-shake');
-        void optionElement.offsetWidth;
-        optionElement.classList.add('incorrect', 'apply-shake');
-        wrongAttempts++;
-        updateFeedbackBar();
-        
-        if (!currentQuestionData.sessionState) {
-            currentQuestionData.sessionState = 'wrong'; 
-            const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) { btn.classList.remove('correct'); btn.classList.add('incorrect'); }
-        }
-        savePracticeProgress(currentQuestionData.originalNumber, false); 
-        
-    } else {
-        optionElement.classList.remove('apply-pop');
-        void optionElement.offsetWidth; 
-        optionElement.classList.add('correct', 'apply-pop');
-        hasAnsweredCorrectly = true;
-        
-        document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
-        updateFeedbackBar();
-
-        if (!currentQuestionData.sessionState) {
-            currentQuestionData.sessionState = 'correct'; 
-            const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) { btn.classList.remove('incorrect'); btn.classList.add('correct'); }
-        } else if (currentQuestionData.sessionState === 'wrong') {
-            currentQuestionData.sessionState = 'wrong_then_correct';
-        }
-        
-        savePracticeProgress(currentQuestionData.originalNumber, true); 
-        
-        explanationBtn.style.display = 'inline-block'; 
-        setTimeout(() => {
-            if (explanationModal) {
-                explanationModal.classList.remove('hidden');
-                explanationModal.classList.add('show');
-            }
-        }, 600);
+        await updateDoc(doc(db, "study_rooms", activeRoomId), {
+            currentQuestionIndex: newIndex
+        });
     }
 }
 
-// === FEATURE: GRID & TRANSITIONS ===
-function buildNumberGrid() {
-    numberGrid.innerHTML = '';
-    quizQueue.forEach((q, index) => {
-        const numBtn = document.createElement('div');
-        numBtn.className = 'grid-num';
-        
-        const stateToShow = q.sessionState || q.historicalState;
-        if (stateToShow === 'correct') numBtn.classList.add('correct');
-        else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') numBtn.classList.add('incorrect');
-        
-        numBtn.id = `grid-num-${index}`;
-        numBtn.textContent = index + 1;
-        
-        numBtn.onclick = () => {
-            if (isExamMode) return; 
-            if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
-                alert("Only the host can jump to different questions.");
-                return;
-            }
-            if(index === currentIndex) return;
-            const direction = index > currentIndex ? 'right' : 'left';
-            if (activeRoomId) syncNextQuestion(index); 
-            triggerSlideTransition(index, direction);
-        };
-        numberGrid.appendChild(numBtn);
-    });
-    updateGridStyles();
-}
-
-function updateGridStyles() {
-    if (isExamMode) return;
-    document.querySelectorAll('.grid-num').forEach(btn => btn.classList.remove('active'));
-    const activeBtn = document.getElementById(`grid-num-${currentIndex}`);
-    if (activeBtn) activeBtn.classList.add('active');
-}
-
-function triggerSlideTransition(newIndex, direction) {
-    const outClass = direction === 'right' ? 'slide-out-left' : 'slide-out-right';
-    const inClass = direction === 'right' ? 'slide-in-right' : 'slide-in-left';
-
-    cardEl.className = 'question-card';
-    void cardEl.offsetWidth; 
-    cardEl.classList.add(outClass);
-    
-    setTimeout(() => {
-        loadQuestion(newIndex);
-        cardEl.className = 'question-card'; 
-        void cardEl.offsetWidth; 
-        cardEl.classList.add(inClass);
-    }, 300);
-}
-
-function updateFeedbackBar() {
-    wrongCountEl.textContent = `${wrongAttempts} ✖`;
-    rightCountEl.textContent = `${hasAnsweredCorrectly ? 1 : 0} ✔`;
-    const totalAttempts = wrongAttempts + (hasAnsweredCorrectly ? 1 : 0);
-    if (totalAttempts > 0) {
-        const percentGreen = (hasAnsweredCorrectly ? 1 : 0) / totalAttempts * 100;
-        feedbackFill.style.width = `${percentGreen}%`;
-    } else {
-        feedbackFill.style.width = `0%`;
-    }
-}
-
-// === FEATURE: DATABASE SYNC FUNCTIONS ===
 async function savePracticeProgress(questionId, isCorrect) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
@@ -536,18 +668,91 @@ async function saveNoteToFirebase(questionId, noteText) {
     } catch (error) { console.error("Error saving note:", error); }
 }
 
-async function syncNextQuestion(newIndex) {
-    const isGuest = localStorage.getItem('is_study_guest') === 'true';
-    if (isGuest) return;
+function handleOptionClick(event, optionData, optionElement) {
+    if (event.target.classList.contains('eye-icon')) {
+        optionElement.classList.toggle('strikethrough');
+        return; 
+    }
+
+    if (isExamMode) {
+        document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
+        optionElement.classList.add('selected');
+        currentQuestionData.userSelectedAnswer = optionData.text;
+        skipBtn.style.display = 'none';
+        return; 
+    }
 
     if (activeRoomId) {
-        await updateDoc(doc(db, "study_rooms", activeRoomId), {
-            currentQuestionIndex: newIndex
-        });
+        if (hasAnsweredCurrentQuestion || hasRevealedCurrentQuestion) return;
+        hasAnsweredCurrentQuestion = true;
+
+        optionElement.style.border = "2px solid #3b82f6";
+        document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
+
+        updateDoc(roomRef, { [`answers.${currentIndex}.${currentUserId}`]: optionData.text });
+        return;
+    }
+
+    if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
+
+    if (!optionData.isCorrect) {
+        optionElement.classList.remove('apply-shake');
+        void optionElement.offsetWidth;
+        optionElement.classList.add('incorrect', 'apply-shake');
+        wrongAttempts++;
+        updateFeedbackBar();
+        
+        if (!currentQuestionData.sessionState) {
+            currentQuestionData.sessionState = 'wrong'; 
+            const btn = document.getElementById(`grid-num-${currentIndex}`);
+            if (btn) { btn.classList.remove('correct'); btn.classList.add('incorrect'); }
+        }
+        savePracticeProgress(currentQuestionData.originalNumber, false); 
+        
+    } else {
+        optionElement.classList.remove('apply-pop');
+        void optionElement.offsetWidth; 
+        optionElement.classList.add('correct', 'apply-pop');
+        hasAnsweredCorrectly = true;
+        
+        document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
+        updateFeedbackBar();
+
+        if (!currentQuestionData.sessionState) {
+            currentQuestionData.sessionState = 'correct'; 
+            const btn = document.getElementById(`grid-num-${currentIndex}`);
+            if (btn) { btn.classList.remove('incorrect'); btn.classList.add('correct'); }
+        } else if (currentQuestionData.sessionState === 'wrong') {
+            currentQuestionData.sessionState = 'wrong_then_correct';
+        }
+        
+        savePracticeProgress(currentQuestionData.originalNumber, true); 
+        
+        explanationBtn.style.display = 'inline-block'; 
+        setTimeout(() => {
+            if (explanationModal) {
+                explanationModal.classList.remove('hidden');
+                explanationModal.classList.add('show');
+            }
+        }, 600);
     }
 }
 
-// === FEATURE: TOOLS & HIGHLIGHTER ===
+function updateFeedbackBar() {
+    wrongCountEl.textContent = `${wrongAttempts} ✖`;
+    rightCountEl.textContent = `${hasAnsweredCorrectly ? 1 : 0} ✔`;
+    const totalAttempts = wrongAttempts + (hasAnsweredCorrectly ? 1 : 0);
+    if (totalAttempts > 0) {
+        const percentGreen = (hasAnsweredCorrectly ? 1 : 0) / totalAttempts * 100;
+        feedbackFill.style.width = `${percentGreen}%`;
+    } else {
+        feedbackFill.style.width = `0%`;
+    }
+}
+
+// ==========================================
+// 6. CLINICAL HIGHLIGHTER & STRIKETHROUGH
+// ==========================================
 let floatingHighlightBtn = document.getElementById('floating-toolkit');
 
 if (!floatingHighlightBtn) {
@@ -609,135 +814,9 @@ function applyTextFormat(range, selection, inlineStyles) {
     floatingHighlightBtn.style.display = 'none';
 }
 
-function initBookmarkTool() {
-    const bookmarkBtn = document.getElementById('bookmark-btn');
-    if (bookmarkBtn) {
-        const starIcon = bookmarkBtn.querySelector('i');
-        if (currentQuestionData.isBookmarked) {
-            starIcon.classList.replace('far', 'fas');
-            starIcon.classList.add('fa-solid');
-        } else {
-            starIcon.classList.replace('fas', 'far');
-            starIcon.classList.remove('fa-solid');
-        }
-
-        bookmarkBtn.onclick = (e) => {
-            e.preventDefault();
-            if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
-            currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
-            if (currentQuestionData.isBookmarked) {
-                starIcon.classList.replace('far', 'fas');
-                starIcon.classList.add('fa-solid');
-            } else {
-                starIcon.classList.replace('fas', 'far');
-                starIcon.classList.remove('fa-solid');
-            }
-            toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
-        };
-    }
-}
-
-function initNotesTool() {
-    const noteBtn = document.getElementById('note-btn');
-    if (noteBtn) {
-        noteBtn.onclick = (e) => {
-            e.preventDefault();
-            if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to save personal notes.");
-            if (noteInput) noteInput.value = currentQuestionData.userNote || ""; 
-            if (notesModal) {
-                notesModal.classList.remove('hidden');
-                notesModal.classList.add('show');
-            }
-        };
-    }
-
-    if (saveNoteBtn) {
-        saveNoteBtn.onclick = () => {
-            const typedNote = noteInput.value.trim();
-            currentQuestionData.userNote = typedNote; 
-            saveNoteToFirebase(currentQuestionData.originalNumber, typedNote);
-            notesModal.classList.remove('show');
-            setTimeout(() => notesModal.classList.add('hidden'), 300);
-        };
-    }
-
-    if (closeNotesBtn) {
-        closeNotesBtn.onclick = () => {
-            notesModal.classList.remove('show');
-            setTimeout(() => notesModal.classList.add('hidden'), 300);
-        };
-    }
-}
-
-function initReportTool() {
-    const btnReport = document.getElementById('btn-report');
-    const reportModal = document.getElementById('report-modal');
-    const closeReportBtn = document.getElementById('close-report-btn');
-    const submitReportBtn = document.getElementById('submit-report-btn');
-    const reportReasonInput = document.getElementById('report-reason-input');
-
-    if (btnReport) {
-        btnReport.onclick = () => {
-            reportReasonInput.value = "";
-            if (reportModal) {
-                reportModal.classList.remove('hidden');
-                reportModal.classList.add('show');
-            }
-        };
-    }
-
-    if (closeReportBtn) {
-        closeReportBtn.onclick = () => {
-            if (reportModal) {
-                reportModal.classList.remove('show');
-                setTimeout(() => reportModal.classList.add('hidden'), 300);
-            }
-        };
-    }
-
-    if (submitReportBtn) {
-        submitReportBtn.onclick = async () => {
-            const reason = reportReasonInput.value.trim();
-            if (!reason) return alert("Please specify why you are reporting this question.");
-            
-            if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-                return alert("Please register an account to report questions.");
-            }
-
-            const user = auth.currentUser;
-            if (!user) return alert("Authentication error. Please log in again.");
-
-            submitReportBtn.textContent = "Submitting...";
-            submitReportBtn.disabled = true;
-
-            try {
-                const activeCourse = localStorage.getItem('edeetos_active_course') || 'Unknown Course';
-                const qText = currentQuestionData.text ? String(currentQuestionData.text).substring(0, 100) + "..." : "No text";
-
-                await addDoc(collection(db, "reported_questions"), {
-                    userId: user.uid,
-                    userEmail: user.email || "Unknown Email",
-                    questionId: currentQuestionData.originalNumber,
-                    courseFile: activeCourse,
-                    questionText: qText,
-                    reason: reason,
-                    timestamp: serverTimestamp()
-                });
-                
-                alert("Report submitted successfully. Thank you!");
-                if (reportModal) reportModal.classList.remove('show');
-            } catch (e) {
-                console.error("Error reporting question: ", e);
-                alert("Failed to submit report. Please check your internet connection or try again later.");
-            } finally {
-                submitReportBtn.textContent = "Submit Report";
-                submitReportBtn.disabled = false;
-            }
-        };
-    }
-}
-
-// === FEATURE: MULTIPLAYER SYNC ENGINE ===
+// ==========================================
+// 7. MULTIPLAYER SYNC ENGINE
+// ==========================================
 function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     hasRevealedCurrentQuestion = true;
 
@@ -909,7 +988,9 @@ if (roomRef) {
     });
 }
 
-// === FEATURE: EXAM SUBMISSION & RESULTS ===
+// ==========================================
+// 8. EXAM SUBMISSION & RESULTS
+// ==========================================
 function showResults() {
     clearInterval(timerInterval);    
     let correctCount = 0;
@@ -958,6 +1039,7 @@ function showResults() {
 
             const tasks = [];
             if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total));
+            tasks.push(updateSpacedRepetition());
 
             await Promise.all(tasks);
             window.location.href = 'questions.html';
@@ -990,6 +1072,8 @@ function showPracticeCompleteModal(isGuest = false) {
         btn.textContent = "Saving Progress...";
         btn.disabled = true;
         
+        await updateSpacedRepetition();
+        
         if (!activeRoomId) {
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
@@ -999,24 +1083,9 @@ function showPracticeCompleteModal(isGuest = false) {
     });
 }
 
-function showSkippedModal() {
-    const modal = document.createElement('div');
-    modal.id = 'skipped-popup-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
-    modal.innerHTML = `
-        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 5rem; margin-bottom: 1.5rem;"></i>
-        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Skipped Questions Phase</h1>
-        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem; max-width: 500px;">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
-        <button id="btn-understood-skip" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Understood (Enter)</button>
-    `;
-    document.body.appendChild(modal);
-
-    document.getElementById('btn-understood-skip').onclick = () => {
-        modal.remove();
-    };
-}
-
-// === FEATURE: TIMER, NAVIGATION & MODALS ===
+// ==========================================
+// 9. TIMER & MODAL NAVIGATION
+// ==========================================
 function startTimer() {
     timerInterval = setInterval(() => {
         if (isExamMode) {
@@ -1053,6 +1122,77 @@ function startTimer() {
     }, 1000);
 }
 
+skipBtn.onclick = () => {
+    let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
+    skippedQuestion.hasBeenSkipped = true;
+    quizQueue.push(skippedQuestion);
+    triggerSlideTransition(currentIndex, 'right');
+};
+
+if (labValuesBtn) labValuesBtn.onclick = () => {
+    if (labValuesModal) {
+        labValuesModal.classList.remove('hidden');
+        labValuesModal.classList.add('show');
+    }
+};
+
+const labSearchInput = document.getElementById('lab-search-input');
+if (labSearchInput) {
+    labSearchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('#lab-values-table tr');
+        
+        rows.forEach((row, index) => {
+            if (index === 0) return; 
+            const testName = row.cells[0]?.textContent.toLowerCase() || "";
+            if (testName.includes(query)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+}
+
+if (closeLabValuesBtn) closeLabValuesBtn.onclick = () => {
+    if (labValuesModal) labValuesModal.classList.remove('show');
+};
+
+if (modalNextBtn) {
+    modalNextBtn.onclick = () => {
+        if (closeExplanationBtn) closeExplanationBtn.click(); 
+        document.getElementById('next-btn').click();          
+    };
+}
+
+if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.remove('hidden'); explanationModal.classList.add('show'); };
+if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
+
+if (aiHintBtn) {
+    aiHintBtn.onclick = () => {
+        if (!currentQuestionData) return;
+        
+        const originalText = aiHintBtn.innerHTML;
+        aiHintBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
+        aiHintBtn.disabled = true;
+
+        setTimeout(() => {
+            let hintText = currentQuestionData.hint;
+            
+            if (!hintText || hintText.trim() === "") {
+                hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, labs, and time-course carefully.";
+            }
+
+            alert(`💡 Hint:\n\n${hintText}`);
+
+            aiHintBtn.innerHTML = originalText;
+            aiHintBtn.disabled = false;
+            aiHintBtn.style.display = 'none'; 
+            
+        }, 400); 
+    };
+}
+
 document.getElementById('next-btn').onclick = async () => {
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
         alert("Only the host can jump to different questions.");
@@ -1080,6 +1220,7 @@ document.getElementById('next-btn').onclick = async () => {
                 console.error("Error resetting room:", error);
             }
         }
+        
         showPracticeCompleteModal(false);
     }
 };
@@ -1097,85 +1238,9 @@ document.getElementById('prev-btn').onclick = () => {
     }
 };
 
-skipBtn.onclick = () => {
-    let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
-    skippedQuestion.hasBeenSkipped = true;
-    quizQueue.push(skippedQuestion);
-    triggerSlideTransition(currentIndex, 'right');
-};
-
-if (labValuesBtn) {
-    labValuesBtn.onclick = () => {
-        if (labValuesModal) {
-            labValuesModal.classList.remove('hidden');
-            labValuesModal.classList.add('show');
-        }
-    };
-}
-
-const labSearchInput = document.getElementById('lab-search-input');
-if (labSearchInput) {
-    labSearchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('#lab-values-table tr');
-        
-        rows.forEach((row, index) => {
-            if (index === 0) return; 
-            const testName = row.cells[0]?.textContent.toLowerCase() || "";
-            if (testName.includes(query)) row.style.display = '';
-            else row.style.display = 'none';
-        });
-    });
-}
-
-if (closeLabValuesBtn) {
-    closeLabValuesBtn.onclick = () => {
-        if (labValuesModal) labValuesModal.classList.remove('show');
-    };
-}
-
-if (modalNextBtn) {
-    modalNextBtn.onclick = () => {
-        if (closeExplanationBtn) closeExplanationBtn.click(); 
-        document.getElementById('next-btn').click();          
-    };
-}
-
-if (explanationBtn) {
-    explanationBtn.onclick = () => { 
-        explanationModal.classList.remove('hidden'); 
-        explanationModal.classList.add('show'); 
-    };
-}
-
-if (closeExplanationBtn) {
-    closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
-}
-
-if (aiHintBtn) {
-    aiHintBtn.onclick = () => {
-        if (!currentQuestionData) return;
-        
-        const originalText = aiHintBtn.innerHTML;
-        aiHintBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
-        aiHintBtn.disabled = true;
-
-        setTimeout(() => {
-            let hintText = currentQuestionData.hint;
-            if (!hintText || hintText.trim() === "") {
-                hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, labs, and time-course carefully.";
-            }
-
-            alert(`💡 Hint:\n\n${hintText}`);
-
-            aiHintBtn.innerHTML = originalText;
-            aiHintBtn.disabled = false;
-            aiHintBtn.style.display = 'none'; 
-        }, 400); 
-    };
-}
-
-// === FEATURE: HOTKEYS ===
+// ==========================================
+// 10. HOTKEYS & EVENT LISTENERS
+// ==========================================
 const shortcutsBtn = document.getElementById('shortcuts-btn');
 const shortcutsModal = document.getElementById('shortcuts-modal');
 const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
@@ -1228,8 +1293,11 @@ function selectOptionByIndex(index) {
     if (options && options[index]) options[index].click(); 
 }
 
-// === FEATURE: EXIT LOGIC ===
+// ==========================================
+// 11. EXIT LOGIC (Solo & Group Study)
+// ==========================================
 const globalExitBtn = document.getElementById('global-exit-btn');
+
 if (globalExitBtn) {
     if (activeRoomId) {
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
@@ -1260,6 +1328,7 @@ if (globalExitBtn) {
 
                 try {
                     const tasks = [
+                        updateSpacedRepetition(),
                         setDoc(doc(db, "study_rooms", activeRoomId), {
                             status: "waiting",
                             answers: {},           
@@ -1272,7 +1341,7 @@ if (globalExitBtn) {
 
                     window.location.href = 'questions.html';
                 } catch (error) {
-                    console.error("Firebase Error:", error);
+                    console.error("🔥 Firebase Error:", error);
                     lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
                 }
             };
@@ -1288,7 +1357,7 @@ if (globalExitBtn) {
         globalExitBtn.disabled = true;
 
         try {
-            const tasks = [];
+            const tasks = [updateSpacedRepetition()];
 
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
@@ -1309,6 +1378,95 @@ if (globalExitBtn) {
             window.location.href = 'questions.html';
         }
     };
+}
+
+async function updateSpacedRepetition() {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+    const user = auth.currentUser;
+    if (!user) return;
+
+    let targetName = quizConfig.examName || "General";
+    if (targetName.startsWith("Revision: ")) {
+        targetName = targetName.replace("Revision: ", "");
+    }
+
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+    const userRef = doc(db, "users", user.uid);
+
+    try {
+        const dbData = currentUserData || {};
+
+        const isBookSessionLocal = isBookSession();   
+        const currentRevisions = isBookSessionLocal
+                ? (dbData.books?.revisions || {})
+                : (dbData[activeCourse]?.revisions || {});
+
+        const revisionsData = {};
+
+        quizQueue.forEach(question => {
+            if (!question) return;
+
+            const subject = question.Subject || question.subject || "Unknown Subject";
+            const chapter = question.Chapter || question.chapter || "Unknown Chapter";
+            const topic = question.Topic || question.topic || "Unknown Topic";
+
+            const sourceName = question.isBookQuestion
+                    ? (question.bookName || question.Subject || 'Reference Book')
+                    : activeCourse;
+
+            const topicId = `${subject}::${chapter}::${topic}::${sourceName}`.replace(/[.#$/[\]]/g, '');
+
+            let isCorrect = false;
+            if (question.options && Array.isArray(question.options)) {
+                const correctOption = question.options.find(o => o.isCorrect);
+                isCorrect = correctOption && (question.userSelectedAnswer === correctOption.text || question.sessionState === 'correct');
+            }
+
+            if (!revisionsData[topicId]) {
+                const existing = currentRevisions[topicId] || {};
+                revisionsData[topicId] = {
+                    subject, chapter, topic, 
+                    sourceType: question.isBookQuestion ? 'book' : 'course',
+                    sourceName: sourceName,
+                    solvedQuestionsCount: existing.solvedQuestionsCount || 0,
+                    mistakesCount: existing.mistakesCount || 0,
+                    intervalStep: existing.intervalStep || 0,
+                    status: "pending"
+                };
+            }
+
+            revisionsData[topicId].solvedQuestionsCount += 1;
+            if (!isCorrect) {
+                revisionsData[topicId].mistakesCount += 1;
+            }
+        });
+
+        Object.keys(revisionsData).forEach(topicId => {
+            const data = revisionsData[topicId];
+            const accuracy = Math.round(((data.solvedQuestionsCount - data.mistakesCount) / data.solvedQuestionsCount) * 100);
+
+            let currentStep = data.intervalStep;
+            if (accuracy >= 75) {
+                currentStep = currentStep === 0 ? 1 : currentStep === 1 ? 7 : currentStep === 7 ? 15 : 30;
+            } else {
+                currentStep = 1;
+            }
+
+            data.accuracy = accuracy;
+            data.lastAccuracy = accuracy;
+            data.intervalStep = currentStep;
+            data.dueDate = Date.now() + (currentStep * 24 * 60 * 60 * 1000);
+            data.updatedAt = Date.now();
+        });
+
+        if (isBookSessionLocal) {
+            await setDoc(userRef, { books: { revisions: revisionsData } }, { merge: true });
+        } else {
+            await setDoc(userRef, { [activeCourse]: { revisions: revisionsData } }, { merge: true });
+        }
+    } catch (error) {
+        console.error("❌ Failed to update spaced repetition:", error);
+    }
 }
 
 loadSession();
