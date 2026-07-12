@@ -1,9 +1,10 @@
-// === FEATURE: FIREBASE IMPORTS ===
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// === FEATURE: STATE VARIABLES & CONFIG ===
+// ==========================================
+// 1. STATE VARIABLES & CONFIGURATION
+// ==========================================
 let subjectTree = {};
 let systemTree = {};
 let examTree = {};
@@ -24,21 +25,7 @@ let currentUserRole = "STUDENT";
 let currentUserData = null; 
 let isGlobalPopupActive = false;
 
-// Cache books so they only download once when clicked
 const loadedBooksCache = {}; 
-
-const subjectsGrid = document.getElementById('subjects-grid');
-const popupOverlay = document.getElementById('popup-overlay');
-const popupTitle = document.getElementById('popup-title');
-const popupList = document.getElementById('popup-list');
-const popupBack = document.getElementById('popup-back');
-const popupClose = document.getElementById('popup-close');
-const globalSearch = document.getElementById('global-search');
-const searchDropdown = document.getElementById('search-dropdown');
-const unattemptedFilter = document.getElementById('unattempted-filter');
-const sidebarEl = document.getElementById('sidebar');
-const sidebarOverlay = document.getElementById('sidebar-overlay');
-const viewTitle = document.getElementById('current-view-title');
 
 const savedCourse = localStorage.getItem('edeetos_active_course');
 if (!savedCourse) {
@@ -66,7 +53,91 @@ const availableBooks = allBooks.filter(book => {
     return true; 
 });
 
-// === FEATURE: MULTIPLAYER HOST BANNER ===
+// ==========================================
+// 2. DOM ELEMENTS
+// ==========================================
+const subjectsGrid = document.getElementById('subjects-grid');
+const popupOverlay = document.getElementById('popup-overlay');
+const popupTitle = document.getElementById('popup-title');
+const popupList = document.getElementById('popup-list');
+const popupBack = document.getElementById('popup-back');
+const popupClose = document.getElementById('popup-close');
+const globalSearch = document.getElementById('global-search');
+const searchDropdown = document.getElementById('search-dropdown');
+const unattemptedFilter = document.getElementById('unattempted-filter');
+const sidebarEl = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+const viewTitle = document.getElementById('current-view-title');
+const examQInput = document.getElementById('exam-q-count');
+const examTimerInput = document.getElementById('exam-timer');
+const startExamBtn = document.getElementById('start-exam-btn');
+
+// ==========================================
+// 3. SECURITY & ANTI-CHEAT
+// ==========================================
+function applySecurityMeasures(role) {
+    const roleUpper = (role || 'STUDENT').toUpperCase();
+    
+    // Check if we are actually on the exam/practice page by looking for a unique element
+    const isSecurePage = document.getElementById('subjects-grid') !== null;
+    
+    // Define exact handlers so we can add/remove them cleanly
+    window.handleContextMenu = (e) => e.preventDefault();
+    window.handleCopy = (e) => e.preventDefault();
+    
+    window.handleKeyUp = (e) => {
+        if (e.key === 'PrintScreen') {
+            navigator.clipboard.writeText('Screenshots are disabled on this platform.'); 
+            alert('Screenshots are strictly prohibited on this platform.');
+        }
+    };
+    
+    window.handleVisibility = () => {
+        if (document.visibilityState === 'hidden') {
+            document.body.style.filter = 'blur(15px)';
+        } else {
+            document.body.style.filter = 'none';
+        }
+    };
+    
+    window.handleBlur = () => {
+        document.body.style.filter = 'blur(15px)';
+    };
+    
+    window.handleFocus = () => {
+        document.body.style.filter = 'none';
+    };
+
+    // If the user is an admin, OR if this script is running on a non-secure page, disable all restrictions.
+    if (!isSecurePage || roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
+        document.body.style.userSelect = 'auto';
+        document.body.style.webkitUserSelect = 'auto';
+        document.body.style.filter = 'none';
+        
+        document.removeEventListener('contextmenu', window.handleContextMenu);
+        document.removeEventListener('copy', window.handleCopy);
+        window.removeEventListener('keyup', window.handleKeyUp);
+        document.removeEventListener('visibilitychange', window.handleVisibility);
+        window.removeEventListener('blur', window.handleBlur);
+        window.removeEventListener('focus', window.handleFocus);
+        return; 
+    }
+
+    // Enforce restrictions strictly for students on the secure page
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    
+    document.addEventListener('contextmenu', window.handleContextMenu);
+    document.addEventListener('copy', window.handleCopy);
+    window.addEventListener('keyup', window.handleKeyUp);
+    document.addEventListener('visibilitychange', window.handleVisibility);
+    window.addEventListener('blur', window.handleBlur);
+    window.addEventListener('focus', window.handleFocus);
+}
+
+// ==========================================
+// 4. MULTIPLAYER & STUDY ROOMS
+// ==========================================
 const activeRoomId = localStorage.getItem('active_study_room');
 const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
@@ -108,7 +179,58 @@ if (activeRoomId) {
     }
 }
 
-// === FEATURE: EVENT LISTENERS & GLOBAL SEARCH ===
+// ==========================================
+// 5. NAVIGATION & SIDEBAR
+// ==========================================
+function toggleSidebar(show) {
+    if (show) {
+        sidebarEl.classList.add('active');
+        sidebarOverlay.style.display = 'block';
+    } else {
+        sidebarEl.classList.remove('active');
+        sidebarOverlay.style.display = 'none';
+    }
+}
+
+document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
+document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
+document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
+document.getElementById('nav-book').onclick = () => changeView('book', 'Books Library');
+document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
+document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
+sidebarOverlay.onclick = () => toggleSidebar(false);
+
+function changeView(viewName, titleText) {
+    currentView = viewName;
+    activeCustomPool = null;
+    isGlobalPopupActive = false;
+    localStorage.setItem('edeetos_last_view', viewName);
+    localStorage.setItem('edeetos_last_title', titleText);
+
+    if (viewTitle) viewTitle.textContent = titleText;
+
+    document.querySelectorAll('.sidebar-links a').forEach(link => {
+        link.classList.remove('active-link');
+    });
+    const activeLink = document.getElementById('nav-' + viewName);
+    if (activeLink) activeLink.classList.add('active-link');
+
+    toggleSidebar(false);
+    popupHistory = [];
+    popupOverlay.style.display = 'none';
+    globalSearch.value = "";
+    searchDropdown.style.display = 'none';
+
+    if (viewName === 'book') {
+        renderBooksGrid();    
+    } else {
+        renderGrid();
+    }
+}
+
+// ==========================================
+// 6. GLOBAL SEARCH SYSTEM
+// ==========================================
 let searchTimeout;
 globalSearch.addEventListener('input', (e) => {
     clearTimeout(searchTimeout);
@@ -122,7 +244,6 @@ globalSearch.addEventListener('input', (e) => {
     searchTimeout = setTimeout(() => {
         const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-            
             const questionText = q.Question || q.question || q.text || q.statement || "";
             const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
             return textToSearch.includes(query);
@@ -163,19 +284,331 @@ document.addEventListener('click', (e) => {
 });
 
 unattemptedFilter.addEventListener('change', () => {
-    if (currentView === 'book') {
-        renderBooksGrid();
-    } else {
-        renderGrid();
-    }
+    if (currentView === 'book') renderBooksGrid();
+    else renderGrid();
 });
 
+// ==========================================
+// 7. CORE VIEWS & GRID RENDERING
+// ==========================================
+function renderGrid() {
+    if (!subjectsGrid) return;
+    subjectsGrid.innerHTML = '';
+
+    let activeTree = {};
+    if (currentView === 'subject') activeTree = subjectTree;
+    if (currentView === 'system') activeTree = systemTree;
+    if (currentView === 'exam') activeTree = examTree;
+
+    Object.keys(activeTree).forEach(cardTitle => {
+        const qCount = getQuestionCount(currentView, [cardTitle]);
+        if (unattemptedFilter.checked && qCount === 0) return;
+
+        const doneCount = getSolvedCount(currentView, [cardTitle]);
+        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+
+        const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+        const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.style.cursor = 'pointer';
+        card.innerHTML = `
+            <div class="card-header-flex">
+                <h3 class="card-title">${cardTitle}</h3>
+                ${countHtml}
+            </div>
+            ${progressHtml}
+        `;
+        card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
+        subjectsGrid.appendChild(card);
+    });
+}
+
+function checkPremiumAccess(itemKey) {
+    if (currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') return true;
+    if (!currentUserData || !currentUserData.subscriptions) return false;
+    
+    const expiry = currentUserData.subscriptions[itemKey] || currentUserData.subscriptions['ALL'];
+    if (!expiry) return false;
+    if (expiry === 'lifetime') return true;
+    return new Date(expiry) > new Date();
+}
+
+function renderBooksGrid() {
+    if (!subjectsGrid) return;
+    subjectsGrid.innerHTML = '';
+
+    availableBooks.forEach(book => {
+        const isUnlocked = checkPremiumAccess(book.file);
+        
+        const card = document.createElement('div');
+        card.className = 'glass-panel feature-card';
+        card.style.cursor = isUnlocked ? 'pointer' : 'not-allowed';
+        card.style.opacity = isUnlocked ? '1' : '0.6';
+        
+        card.innerHTML = `
+            <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 10px;">
+                <h3 class="card-title" style="color: #1e3a8a;">${book.title}</h3>
+                ${isUnlocked ? '<i class="fas fa-book-open" style="color: #10b981; font-size: 1.2rem;"></i>' : '<i class="fas fa-lock" style="color: #ef4444; font-size: 1.2rem;"></i>'}
+            </div>
+            <div style="font-size: 0.8rem; font-weight: bold; color: ${isUnlocked ? '#059669' : '#b91c1c'};">
+                ${isUnlocked ? '✅ Access Granted' : '🔒 Premium Subscription Required'}
+            </div>
+        `;
+        
+        card.onclick = () => {
+            if (isUnlocked) {
+                loadAndOpenBook(book);
+            } else {
+                alert(`You do not have premium access to ${book.title}. Please visit the Dashboard to unlock it.`);
+            }
+        };
+        
+        subjectsGrid.appendChild(card);
+    });
+}
+
+async function loadAndOpenBook(book) {
+    try {
+        document.body.style.cursor = 'wait';
+        
+        if (!loadedBooksCache[book.file]) {
+            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
+            if (!response.ok) throw new Error("JSON file not found");
+            
+            let bookQuestions = await response.json();
+            bookQuestions.forEach(q => {
+                q.QuestionID = q.id;
+                q.Subject = book.title;
+                q.Chapter = q.chapter;
+                q.Topic = q.topic;
+                q.Exam = q.exams;
+                q.Year = q.year;
+                q.isBookQuestion = true;
+                q.bookName = book.file;
+            });
+            
+            loadedBooksCache[book.file] = bookQuestions;
+            
+            allQuestions = allQuestions.filter(q => q.bookName !== book.file);
+            allQuestions.push(...bookQuestions);
+        }
+
+        let bookQuestions = loadedBooksCache[book.file];
+        
+        let tempBookTree = {};
+        bookQuestions.forEach(q => {
+            if (q.Chapter) {
+                if (!tempBookTree[q.Chapter]) tempBookTree[q.Chapter] = [];
+                if (q.Topic && !tempBookTree[q.Chapter].includes(q.Topic)) tempBookTree[q.Chapter].push(q.Topic);
+            }
+        });
+
+        activeCustomPool = bookQuestions;
+        document.body.style.cursor = 'default';
+        openPopup(book.title, tempBookTree, 'Level1', []);
+
+    } catch (error) {
+        document.body.style.cursor = 'default';
+        console.error("Error loading book:", error);
+        alert("Failed to load book content.");
+    }
+}
+
+// ==========================================
+// 8. POPUP, CART & CHECKBOXES
+// ==========================================
+popupBack.onclick = () => {
+    popupHistory.pop();
+    const prev = popupHistory[popupHistory.length - 1];
+    openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
+};
+
+popupClose.onclick = () => { 
+    popupHistory = []; 
+    popupOverlay.style.display = 'none'; 
+    activeCustomPool = null; 
+    isGlobalPopupActive = false; 
+    localStorage.removeItem('edeetos_saved_popup_path'); 
+    localStorage.removeItem('edeetos_saved_popup_title');
+};
+
+popupOverlay.onclick = (e) => { 
+    if (e.target === popupOverlay) { 
+        popupHistory = []; 
+        popupOverlay.style.display = 'none'; 
+        activeCustomPool = null; 
+        isGlobalPopupActive = false; 
+        localStorage.removeItem('edeetos_saved_popup_path');
+        localStorage.removeItem('edeetos_saved_popup_title');
+    } 
+};
+
+function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
+    if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
+
+    popupTitle.textContent = title;
+	localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
+    localStorage.setItem('edeetos_saved_popup_title', title);
+    popupList.innerHTML = '';
+    popupOverlay.style.display = 'flex';
+    popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
+
+    const selectAllDiv = document.createElement('div');
+    selectAllDiv.className = 'list-item hero-item';
+    selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
+    selectAllDiv.style.border = '1px solid #3b82f6';
+
+    selectAllDiv.innerHTML = `
+        <div style="flex-grow: 1;">
+            <div class="card-header-flex">
+                <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
+            </div>
+        </div>
+        <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
+    `;
+    popupList.appendChild(selectAllDiv);
+
+    selectAllDiv.querySelector('.select-all-btn').onclick = () => {
+        const allCbs = popupList.querySelectorAll('.item-checkbox');
+        let allAreChecked = true;
+        allCbs.forEach(cb => { if (!cb.checked) allAreChecked = false; });
+
+        allCbs.forEach(cb => {
+            cb.checked = !allAreChecked;
+            cb.dispatchEvent(new Event('change'));
+        });
+        selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
+    };
+
+    if (Array.isArray(dataObj)) {
+        dataObj.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
+    } else {
+        Object.keys(dataObj).forEach(key => renderListItem(key, dataObj[key], level, [...pathArr, key]));
+    }
+}
+
+function renderListItem(itemName, nextData, level, itemPath) {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'list-item';
+    const labelDiv = document.createElement('div');
+    labelDiv.style.flexGrow = '1';
+
+    const qCount = getQuestionCount(currentView, itemPath);
+    
+    let countHtml = '';
+    let progressHtml = '';
+
+    if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
+        countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
+    } else {
+        const doneCount = getSolvedCount(currentView, itemPath);
+        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+        countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+        progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+    }
+
+    const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
+    
+    const safePath = encodeURIComponent(JSON.stringify(itemPath));
+    const pathStr = JSON.stringify(itemPath);
+
+    const instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
+
+    labelDiv.innerHTML = `
+        <div class="card-header-flex" style="align-items: center;">
+            <span style="font-weight: 600; display: flex; align-items: center;">
+                <input type="checkbox" class="item-checkbox" style="margin-right: 12px; transform: scale(1.3); cursor: pointer;">
+                ${itemName}
+            </span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                ${countHtml}
+                ${instantStartBtn}
+            </div>
+        </div>
+        ${progressHtml}
+    `;
+    itemDiv.appendChild(labelDiv);
+
+    const cb = itemDiv.querySelector('.item-checkbox');
+    cb.checked = selectedCart.has(pathStr);
+
+    cb.onchange = (e) => {
+        if (e.target.checked) selectedCart.add(pathStr);
+        else selectedCart.delete(pathStr);
+
+        const cartCountEl = document.getElementById('cart-count');
+        const startBtnEl = document.getElementById('start-exam-btn');
+        if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
+        if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
+    };
+
+    itemDiv.style.cursor = 'pointer';
+    itemDiv.onclick = (e) => {
+        if (e.target !== cb && e.target.tagName !== 'BUTTON') {
+            cb.checked = !cb.checked;
+            cb.dispatchEvent(new Event('change'));
+        }
+    };
+
+    if (hasSubLevels) {
+        const actionBtn = document.createElement('button');
+        actionBtn.className = 'btn-outline mini-btn';
+        actionBtn.style.marginLeft = '15px';
+        actionBtn.textContent = 'View ➡';
+        actionBtn.onclick = (e) => {
+            e.stopPropagation(); 
+            openPopup(itemName, nextData, 'Chapter', itemPath, false);
+        };
+        itemDiv.appendChild(actionBtn);
+    }
+
+    popupList.appendChild(itemDiv);
+}
+
+// ==========================================
+// 9. EXAM LAUNCH & MODES
+// ==========================================
 document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
 document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
-const examQInput = document.getElementById('exam-q-count');
-const examTimerInput = document.getElementById('exam-timer');
-const startExamBtn = document.getElementById('start-exam-btn');
+function switchMode(mode) {
+    currentMode = mode;
+    
+    const searchBar = document.querySelector('.search-filter-bar');
+    const modeDesc = document.getElementById('mode-description');
+    const startBtn = document.getElementById('start-exam-btn');
+    const inputGroups = document.querySelectorAll('.exam-action-bar .input-group');
+    
+    document.getElementById('exam-cart').style.display = "flex";
+    startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
+
+    if (mode === 'practice') {
+        document.getElementById('mode-practice').className = "btn-solid active-mode";
+        document.getElementById('mode-exam').className = "btn-outline";
+		inputGroups.forEach(group => group.style.display = 'none');
+        if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
+        if (searchBar) searchBar.style.display = "flex";
+    } else {
+        document.getElementById('mode-exam').className = "btn-solid active-mode";
+        document.getElementById('mode-practice').className = "btn-outline";
+		inputGroups.forEach(group => group.style.display = 'flex');
+        if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
+        if (searchBar) searchBar.style.display = "none";
+    }
+    
+    if (currentView === 'book') renderBooksGrid();
+    else renderGrid();
+
+    if (popupOverlay.style.display === 'flex') {
+        const current = popupHistory[popupHistory.length - 1];
+        if (current) {
+            popupHistory.pop(); 
+            openPopup(current.title, current.dataObj, current.level, current.pathArr, false);
+        }
+    }
+}
 
 if (examQInput) {
     examQInput.addEventListener('keydown', (e) => {
@@ -212,7 +645,102 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
     window.launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
 });
 
-// === FEATURE: MENTOR EXAM ASSIGNMENT LOGIC ===
+window.startInstantPractice = function(encodedPath) {
+    const pathArr = JSON.parse(decodeURIComponent(encodedPath));
+    let pool = activeCustomPool || allQuestions;
+    
+    let finalPool = pool.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
+    
+    if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
+    
+    finalPool = finalPool.sort(() => 0.5 - Math.random());
+    const generatedTitle = generateExamTitle([pathArr], currentView);
+    window.launchQuiz(finalPool, 'practice', 0, generatedTitle);
+};
+
+window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
+    if (!questionsArray || questionsArray.length === 0) {
+        alert("No questions found for this selection!");
+        return;
+    }
+
+    const roomId = localStorage.getItem('active_study_room');
+    const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+    if (roomId && !isGuest) {
+        try {
+            document.body.style.cursor = 'wait'; 
+            
+            let safeArray = questionsArray;
+            if (questionsArray.length > 50) {
+                safeArray = questionsArray.sort(() => 0.5 - Math.random()).slice(0, 50);
+            }
+
+            const cleanPool = JSON.parse(JSON.stringify(safeArray));
+
+            await setDoc(doc(db, "study_rooms", roomId), {
+                questions: cleanPool,
+                quizConfig: { mode, timer: timerMinutes, examName },
+                status: 'playing', 
+                currentQuestionIndex: 0,
+                answers: {},       
+                memberAnswers: {},
+                forceReveal: {}     
+            }, { merge: true });
+
+            localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
+            localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+
+            document.body.style.cursor = 'default';
+            window.location.href = 'quiz.html';
+            return;
+        } catch (error) {
+            console.error("Failed to sync room:", error);
+            alert("Firebase Error: " + error.message);
+            document.body.style.cursor = 'default';
+            return;
+        }
+    }
+
+    localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
+    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+    window.location.href = 'quiz.html';
+};
+
+function generateExamTitle(paths, currentView) {
+    if (!paths || paths.length === 0) return "Custom Practice";
+    
+    const topLevels = new Set();
+    const subLevels = new Set();
+    
+    paths.forEach(p => {
+        if (p[0]) topLevels.add(p[0]); 
+        if (p[1]) subLevels.add(p[1]); 
+    });
+    
+    const topArr = Array.from(topLevels);
+    const subArr = Array.from(subLevels);
+
+    if (currentView === 'exam') {
+        if (topArr.length === 1) {
+            if (subArr.length === 0) return `${topArr[0]} (All Papers)`;
+            return `${topArr[0]} - ${subArr.join(" + ")}`; 
+        } else {
+            return subArr.length > 0 ? subArr.join(" + ") : topArr.join(" + "); 
+        }
+    }
+    if (topArr.length === 1) {
+        if (subArr.length > 3 || subArr.length === 0) return `${topArr[0]} (Full)`;
+        else return `${topArr[0]} - ${subArr.join(" + ")}`;
+    } else {
+        if (topArr.length <= 3) return topArr.join(" + ");
+        else return `Mixed Session (${topArr.length} Topics)`;
+    }
+}
+
+// ==========================================
+// 10. MENTOR & ASSIGNMENT SYSTEM
+// ==========================================
 function initMentorFeatures() {
     if (currentUserRole === 'MENTOR' || currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') {
         const startBtn = document.getElementById('start-exam-btn');
@@ -382,241 +910,9 @@ function initMentorFeatures() {
     }
 }
 
-// === FEATURE: NAVIGATION VIEW RENDERING ===
-document.getElementById('nav-subject').onclick = () => changeView('subject', 'Subject Wise');
-document.getElementById('nav-system').onclick = () => changeView('system', 'System Wise');
-document.getElementById('nav-exam').onclick = () => changeView('exam', 'Past Papers');
-document.getElementById('nav-book').onclick = () => changeView('book', 'Books Library');
-document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
-document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
-sidebarOverlay.onclick = () => toggleSidebar(false);
-
-popupBack.onclick = () => {
-    popupHistory.pop();
-    const prev = popupHistory[popupHistory.length - 1];
-    openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
-};
-
-popupClose.onclick = () => { 
-    popupHistory = []; 
-    popupOverlay.style.display = 'none'; 
-    activeCustomPool = null; 
-    isGlobalPopupActive = false; 
-    localStorage.removeItem('edeetos_saved_popup_path'); 
-    localStorage.removeItem('edeetos_saved_popup_title');
-};
-
-popupOverlay.onclick = (e) => { 
-    if (e.target === popupOverlay) { 
-        popupHistory = []; 
-        popupOverlay.style.display = 'none'; 
-        activeCustomPool = null; 
-        isGlobalPopupActive = false; 
-        localStorage.removeItem('edeetos_saved_popup_path');
-        localStorage.removeItem('edeetos_saved_popup_title');
-    } 
-};
-
-function checkPremiumAccess(itemKey) {
-    if (currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') return true;
-    if (!currentUserData || !currentUserData.subscriptions) return false;
-    
-    const expiry = currentUserData.subscriptions[itemKey] || currentUserData.subscriptions['ALL'];
-    if (!expiry) return false;
-    if (expiry === 'lifetime') return true;
-    return new Date(expiry) > new Date();
-}
-
-function toggleSidebar(show) {
-    if (show) {
-        sidebarEl.classList.add('active');
-        sidebarOverlay.style.display = 'block';
-    } else {
-        sidebarEl.classList.remove('active');
-        sidebarOverlay.style.display = 'none';
-    }
-}
-
-function changeView(viewName, titleText) {
-    currentView = viewName;
-    activeCustomPool = null;
-    isGlobalPopupActive = false;
-    localStorage.setItem('edeetos_last_view', viewName);
-    localStorage.setItem('edeetos_last_title', titleText);
-
-    if (viewTitle) viewTitle.textContent = titleText;
-
-    document.querySelectorAll('.sidebar-links a').forEach(link => {
-        link.classList.remove('active-link');
-    });
-    const activeLink = document.getElementById('nav-' + viewName);
-    if (activeLink) activeLink.classList.add('active-link');
-
-    toggleSidebar(false);
-    popupHistory = [];
-    popupOverlay.style.display = 'none';
-    globalSearch.value = "";
-    searchDropdown.style.display = 'none';
-
-    if (viewName === 'book') {
-        renderBooksGrid();    
-    } else {
-        renderGrid();
-    }
-}
-
-// === FEATURE: BOOKS LAZY LOADING & RENDERING ===
-function renderBooksGrid() {
-    if (!subjectsGrid) return;
-    subjectsGrid.innerHTML = '';
-
-    availableBooks.forEach(book => {
-        const isUnlocked = checkPremiumAccess(book.file);
-        
-        const card = document.createElement('div');
-        card.className = 'glass-panel feature-card';
-        card.style.cursor = isUnlocked ? 'pointer' : 'not-allowed';
-        card.style.opacity = isUnlocked ? '1' : '0.6';
-        
-        card.innerHTML = `
-            <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 10px;">
-                <h3 class="card-title" style="color: #1e3a8a;">${book.title}</h3>
-                ${isUnlocked ? '<i class="fas fa-book-open" style="color: #10b981; font-size: 1.2rem;"></i>' : '<i class="fas fa-lock" style="color: #ef4444; font-size: 1.2rem;"></i>'}
-            </div>
-            <div style="font-size: 0.8rem; font-weight: bold; color: ${isUnlocked ? '#059669' : '#b91c1c'};">
-                ${isUnlocked ? '✅ Access Granted' : '🔒 Premium Subscription Required'}
-            </div>
-        `;
-        
-        card.onclick = () => {
-            if (isUnlocked) {
-                loadAndOpenBook(book);
-            } else {
-                alert(`You do not have premium access to ${book.title}. Please visit the Dashboard to unlock it.`);
-            }
-        };
-        
-        subjectsGrid.appendChild(card);
-    });
-}
-
-async function loadAndOpenBook(book) {
-    try {
-        document.body.style.cursor = 'wait';
-        
-        if (!loadedBooksCache[book.file]) {
-            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
-            if (!response.ok) throw new Error("JSON file not found");
-            
-            let bookQuestions = await response.json();
-            bookQuestions.forEach(q => {
-                q.QuestionID = q.id;
-                q.Subject = book.title;
-                q.Chapter = q.chapter;
-                q.Topic = q.topic;
-                q.Exam = q.exams;
-                q.Year = q.year;
-                q.isBookQuestion = true;
-                q.bookName = book.file;
-            });
-            
-            loadedBooksCache[book.file] = bookQuestions;
-            
-            allQuestions = allQuestions.filter(q => q.bookName !== book.file);
-            allQuestions.push(...bookQuestions);
-        }
-
-        let bookQuestions = loadedBooksCache[book.file];
-        
-        let tempBookTree = {};
-        bookQuestions.forEach(q => {
-            if (q.Chapter) {
-                if (!tempBookTree[q.Chapter]) tempBookTree[q.Chapter] = [];
-                if (q.Topic && !tempBookTree[q.Chapter].includes(q.Topic)) tempBookTree[q.Chapter].push(q.Topic);
-            }
-        });
-
-        activeCustomPool = bookQuestions;
-        document.body.style.cursor = 'default';
-        openPopup(book.title, tempBookTree, 'Level1', []);
-
-    } catch (error) {
-        document.body.style.cursor = 'default';
-        console.error("Error loading book:", error);
-        alert("Failed to load book content.");
-    }
-}
-
-function generateExamTitle(paths, currentView) {
-    if (!paths || paths.length === 0) return "Custom Practice";
-    
-    const topLevels = new Set();
-    const subLevels = new Set();
-    
-    paths.forEach(p => {
-        if (p[0]) topLevels.add(p[0]); 
-        if (p[1]) subLevels.add(p[1]); 
-    });
-    
-    const topArr = Array.from(topLevels);
-    const subArr = Array.from(subLevels);
-
-    if (currentView === 'exam') {
-        if (topArr.length === 1) {
-            if (subArr.length === 0) return `${topArr[0]} (All Papers)`;
-            return `${topArr[0]} - ${subArr.join(" + ")}`; 
-        } else {
-            return subArr.length > 0 ? subArr.join(" + ") : topArr.join(" + "); 
-        }
-    }
-    if (topArr.length === 1) {
-        if (subArr.length > 3 || subArr.length === 0) return `${topArr[0]} (Full)`;
-        else return `${topArr[0]} - ${subArr.join(" + ")}`;
-    } else {
-        if (topArr.length <= 3) return topArr.join(" + ");
-        else return `Mixed Session (${topArr.length} Topics)`;
-    }
-}
-
-function switchMode(mode) {
-    currentMode = mode;
-    
-    const searchBar = document.querySelector('.search-filter-bar');
-    const modeDesc = document.getElementById('mode-description');
-    const startBtn = document.getElementById('start-exam-btn');
-    const inputGroups = document.querySelectorAll('.exam-action-bar .input-group');
-    
-    document.getElementById('exam-cart').style.display = "flex";
-    startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
-
-    if (mode === 'practice') {
-        document.getElementById('mode-practice').className = "btn-solid active-mode";
-        document.getElementById('mode-exam').className = "btn-outline";
-        inputGroups.forEach(group => group.style.display = 'none');
-        if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
-        if (searchBar) searchBar.style.display = "flex";
-        
-    } else {
-        document.getElementById('mode-exam').className = "btn-solid active-mode";
-        document.getElementById('mode-practice').className = "btn-outline";
-        inputGroups.forEach(group => group.style.display = 'flex');
-        if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
-        if (searchBar) searchBar.style.display = "none";
-    }
-    
-    if (currentView === 'book') renderBooksGrid();
-    else renderGrid();
-
-    if (popupOverlay.style.display === 'flex') {
-        const current = popupHistory[popupHistory.length - 1];
-        if (current) {
-            popupHistory.pop(); 
-            openPopup(current.title, current.dataObj, current.level, current.pathArr, false);
-        }
-    }
-}
-
-// === FEATURE: QUESTION DISTRIBUTION ALGORITHM ===
+// ==========================================
+// 11. DATA LOADING & HIERARCHY TREES
+// ==========================================
 function applyTierLimits(rawQuestions, limitPerCategory) {
     let filteredList = [];
     const questionsByCategory = {};
@@ -646,7 +942,6 @@ function applyTierLimits(rawQuestions, limitPerCategory) {
     return filteredList;
 }
 
-// === FEATURE: MAIN JSON LOADER & TREE BUILDING ===
 async function loadDataAndBuildTree() {
     try {
         if (!activeCourse) return; 
@@ -786,85 +1081,6 @@ function getSolvedCount(view, pathArr) {
     return getQuestionCount(view, pathArr, attemptedPool);
 }
 
-function renderGrid() {
-    if (!subjectsGrid) return;
-    subjectsGrid.innerHTML = '';
-
-    let activeTree = {};
-    if (currentView === 'subject') activeTree = subjectTree;
-    if (currentView === 'system') activeTree = systemTree;
-    if (currentView === 'exam') activeTree = examTree;
-
-    Object.keys(activeTree).forEach(cardTitle => {
-        const qCount = getQuestionCount(currentView, [cardTitle]);
-        if (unattemptedFilter.checked && qCount === 0) return;
-
-        const doneCount = getSolvedCount(currentView, [cardTitle]);
-        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-
-        const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
-        const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
-
-        const card = document.createElement('div');
-        card.className = 'glass-panel feature-card';
-        card.style.cursor = 'pointer';
-        card.innerHTML = `
-            <div class="card-header-flex">
-                <h3 class="card-title">${cardTitle}</h3>
-                ${countHtml}
-            </div>
-            ${progressHtml}
-        `;
-        card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
-        subjectsGrid.appendChild(card);
-    });
-}
-
-function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
-    if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
-
-    popupTitle.textContent = title;
-    localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
-    localStorage.setItem('edeetos_saved_popup_title', title);
-    popupList.innerHTML = '';
-    popupOverlay.style.display = 'flex';
-    popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
-
-    // Select All Button Container
-    const selectAllDiv = document.createElement('div');
-    selectAllDiv.className = 'list-item hero-item';
-    selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
-    selectAllDiv.style.border = '1px solid #3b82f6';
-
-    selectAllDiv.innerHTML = `
-        <div style="flex-grow: 1;">
-            <div class="card-header-flex">
-                <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
-            </div>
-        </div>
-        <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
-    `;
-    popupList.appendChild(selectAllDiv);
-
-    selectAllDiv.querySelector('.select-all-btn').onclick = () => {
-        const allCbs = popupList.querySelectorAll('.item-checkbox');
-        let allAreChecked = true;
-        allCbs.forEach(cb => { if (!cb.checked) allAreChecked = false; });
-
-        allCbs.forEach(cb => {
-            cb.checked = !allAreChecked;
-            cb.dispatchEvent(new Event('change'));
-        });
-        selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
-    };
-
-    if (Array.isArray(dataObj)) {
-        dataObj.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
-    } else {
-        Object.keys(dataObj).forEach(key => renderListItem(key, dataObj[key], level, [...pathArr, key]));
-    }
-}
-
 function getLeafPaths(dataObj, currentPath) {
     if (!dataObj) return [];
     if (Array.isArray(dataObj)) return dataObj.map(topic => JSON.stringify([...currentPath, topic]));
@@ -877,394 +1093,387 @@ function getLeafPaths(dataObj, currentPath) {
     return leaves;
 }
 
-function renderListItem(itemName, nextData, level, itemPath) {
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'list-item';
-    const labelDiv = document.createElement('div');
-    labelDiv.style.flexGrow = '1';
+// ==========================================
+// 12. PROGRESS RESET SYSTEM
+// ==========================================
+const btnReset = document.getElementById('btn-reset-progress');
+const resetModal = document.getElementById('reset-modal');
+const closeResetModal = document.getElementById('close-reset-modal');
+const optionsContainer = document.getElementById('reset-options-container');
+const confirmContainer = document.getElementById('reset-confirm-container');
+const btnCancelReset = document.getElementById('btn-cancel-reset');
+const btnConfirmReset = document.getElementById('btn-confirm-reset');
+const confirmText = document.getElementById('reset-confirm-text');
 
-    const qCount = getQuestionCount(currentView, itemPath);
-    
-    let countHtml = '';
-    let progressHtml = '';
+let pendingUpdates = {};
+let pendingResetMsg = "";
 
-    if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
-        countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
-    } else {
-        const doneCount = getSolvedCount(currentView, itemPath);
-        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-        countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
-        progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
-    }
-
-    const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
-    const safePath = encodeURIComponent(JSON.stringify(itemPath));
-    const pathStr = JSON.stringify(itemPath);
-
-    const instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
-
-    labelDiv.innerHTML = `
-        <div class="card-header-flex" style="align-items: center;">
-            <span style="font-weight: 600; display: flex; align-items: center;">
-                <input type="checkbox" class="item-checkbox" style="margin-right: 12px; transform: scale(1.3); cursor: pointer;">
-                ${itemName}
-            </span>
-            <div style="display: flex; align-items: center; gap: 8px;">
-                ${countHtml}
-                ${instantStartBtn}
-            </div>
-        </div>
-        ${progressHtml}
-    `;
-    itemDiv.appendChild(labelDiv);
-
-    const cb = itemDiv.querySelector('.item-checkbox');
-    cb.checked = selectedCart.has(pathStr);
-
-    cb.onchange = (e) => {
-        if (e.target.checked) selectedCart.add(pathStr);
-        else selectedCart.delete(pathStr);
-
-        const cartCountEl = document.getElementById('cart-count');
-        const startBtnEl = document.getElementById('start-exam-btn');
-        if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
-        if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
+if (btnReset) {
+    btnReset.onclick = (e) => {
+        if (e) e.preventDefault();
+        toggleSidebar(false);
+        optionsContainer.style.display = 'flex';
+        confirmContainer.style.display = 'none';
+        resetModal.style.display = 'flex';
     };
-
-    itemDiv.style.cursor = 'pointer';
-    itemDiv.onclick = (e) => {
-        if (e.target !== cb && e.target.tagName !== 'BUTTON') {
-            cb.checked = !cb.checked;
-            cb.dispatchEvent(new Event('change'));
-        }
-    };
-
-    if (hasSubLevels) {
-        const actionBtn = document.createElement('button');
-        actionBtn.className = 'btn-outline mini-btn';
-        actionBtn.style.marginLeft = '15px';
-        actionBtn.textContent = 'View ➡';
-        actionBtn.onclick = (e) => {
-            e.stopPropagation(); 
-            openPopup(itemName, nextData, 'Chapter', itemPath, false);
-        };
-        itemDiv.appendChild(actionBtn);
-    }
-
-    popupList.appendChild(itemDiv);
 }
 
-// === FEATURE: LAUNCH QUIZ BRIDGE ===
-window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinutes = 0, examName = "Practice Session") {
-    if (!questionsArray || questionsArray.length === 0) {
-        alert("No questions found for this selection!");
-        return;
-    }
+if (closeResetModal) {
+    closeResetModal.onclick = () => resetModal.style.display = 'none';
+}
 
-    const roomId = localStorage.getItem('active_study_room');
-    const isGuest = localStorage.getItem('is_study_guest') === 'true';
+document.querySelectorAll('.reset-option-btn').forEach(btn => {
+    btn.onclick = (e) => {
+        const type = btn.getAttribute('data-type'); 
+        const activeCourse = localStorage.getItem('edeetos_active_course');
 
-    if (roomId && !isGuest) {
-        try {
-            document.body.style.cursor = 'wait'; 
-            
-            let safeArray = questionsArray;
-            if (questionsArray.length > 50) {
-                safeArray = questionsArray.sort(() => 0.5 - Math.random()).slice(0, 50);
-            }
-
-            const cleanPool = JSON.parse(JSON.stringify(safeArray));
-
-            await setDoc(doc(db, "study_rooms", roomId), {
-                questions: cleanPool,
-                quizConfig: { mode, timer: timerMinutes, examName },
-                status: 'playing', 
-                currentQuestionIndex: 0,
-                answers: {},       
-                memberAnswers: {},
-                forceReveal: {}     
-            }, { merge: true });
-
-            localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
-            localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-
-            document.body.style.cursor = 'default';
-            window.location.href = 'quiz.html';
-            return;
-        } catch (error) {
-            console.error("Failed to sync room:", error);
-            alert("Firebase Error: " + error.message);
-            document.body.style.cursor = 'default';
-            return;
-        }
-    }
-
-    localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
-    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-    window.location.href = 'quiz.html';
-};
-
-// === FEATURE: FIREBASE PROGRESS & DATA INITIALIZATION ===
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        localStorage.removeItem('edeetos_guest_mode');
-        const userRef = doc(db, "users", user.uid);
-        try {
-            const docSnap = await getDoc(userRef);
-            if (docSnap.exists()) {
-                const dbData = docSnap.data();
-                currentUserData = dbData; 
-                currentUserRole = dbData.role || 'STUDENT';
-                initMentorFeatures();
-                
-                isPremiumUser = false;
-
-                if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
-                    isPremiumUser = true;
-                } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
-                    const expiry = dbData.subscriptions[activeCourse];
-                    if (expiry === 'lifetime') {
-                        isPremiumUser = true;
-                    } else {
-                        const expiryDate = new Date(expiry);
-                        if (expiryDate >= new Date()) {
-                            isPremiumUser = true;
-                        }
-                    }
-                }
-                
-                const courseData = dbData[activeCourse] || {};
-                const booksData = dbData.books || {};
-
-                const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
-                const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
-                const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
-                const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
-
-                const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
-                const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
-                const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
-                const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
-
-                const solvedList = [...new Set([...courseSolved, ...bookSolved])];
-                globalPracticeMistakes = [...new Set([...coursePracticeMistakes, ...bookPracticeMistakes])];
-                globalExamMistakes = [...new Set([...courseExamMistakes, ...bookExamMistakes])];
-                globalBookmarks = [...new Set([...courseBookmarks, ...bookBookmarks])];
-
-                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
-
-                attemptedQuestions = solvedList;
-
-                await loadDataAndBuildTree();
-                restoreLastState();
-
-                const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-                const totalAttempts = solvedList.length + allMistakes.length;
-
-                let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
-
-                if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
-                if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
-                if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
-                if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
-                
-                const revisions = {
-                    ...(courseData.revisions || {}),
-                    ...(booksData.revisions || {})
+        switch (type) {
+            case "1":
+                pendingUpdates = {
+                    [`${activeCourse}.solvedQuestions`]: [],
+                    [`${activeCourse}.mistakes`]: [],
+                    [`${activeCourse}.examMistakes`]: [],
+                    [`${activeCourse}.bookmarks`]: [],
+                    [`${activeCourse}.examHistory`]: [],
+                    [`${activeCourse}.revisions`]: {},
+                    [`books.solvedQuestions`]: [],
+                    [`books.mistakes`]: [],
+                    [`books.examMistakes`]: [],
+                    [`books.bookmarks`]: [],
+                    [`books.examHistory`]: [],
+                    [`books.revisions`]: {} 
                 };
-                
-                const now = Date.now();
-                const dueTopics = [];
-
-                Object.keys(revisions).forEach(topicId => {
-                    if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
-                        let subj = "", chap = "", top = "";
-                        
-                        const parts = topicId.split('::');
-                        if (parts.length >= 4) {
-                            subj = parts[0];
-                            chap = parts[1];
-                            top = parts[2];
-                        } else {
-                            const oldParts = topicId.split('_');
-                            oldParts.pop(); 
-                            top = oldParts.pop() || '';
-                            chap = oldParts.pop() || '';
-                            subj = oldParts.join('_') || '';
-                        }
-
-                        subj = subj || "General";
-                        chap = chap || "Section";
-                        top = top || revisions[topicId].topic || "Review Topic";
-                        if (top === "Unknown Topic") top = "Topic";
-
-                        dueTopics.push({ 
-                            id: topicId, 
-                            subject: subj,
-                            chapter: chap,
-                            topic: top,
-                            step: revisions[topicId].intervalStep || 1 
-                        });
-                    }
-                });
-
-                const groupedByDay = {};
-                dueTopics.forEach(item => {
-                    if (!groupedByDay[item.step]) groupedByDay[item.step] = [];
-                    groupedByDay[item.step].push(item);
-                });
-
-                const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
-                const revisionContainer = document.getElementById('spaced-repetition-container');
-
-                if (dueTopics.length > 0 && revisionContainer) {
-                    const revisionCard = document.createElement('div');
-                    revisionCard.className = 'glass-panel feature-card';
-                    revisionCard.style.borderColor = '#f59e0b';
-                    revisionCard.style.boxShadow = '0 10px 25px -5px rgba(245, 158, 11, 0.15)';
-                    revisionCard.style.padding = '20px'; 
-                    revisionCard.style.gridColumn = '1 / -1'; 
-                    revisionCard.style.marginBottom = '20px';
-                    revisionCard.style.cursor = 'pointer';
-                    revisionCard.style.display = 'flex';
-                    revisionCard.style.justifyContent = 'space-between';
-                    revisionCard.style.alignItems = 'center';
-
-                    revisionCard.innerHTML = `
-                        <div>
-                            <h3 class="card-title" style="color: #92400e; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
-                            <p style="color: #b45309; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
-                        </div>
-                        <button class="btn-solid" style="background: #f59e0b; border: none; padding: 10px 20px;">View Plan</button>
-                    `;
-
-                    let existingModal = document.getElementById('revision-popup-modal');
-                    if (existingModal) existingModal.remove(); 
-
-                    const modalOverlay = document.createElement('div');
-                    modalOverlay.id = 'revision-popup-modal';
-                    modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
-
-                    let modalHtml = `
-                        <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 15px;">
-                                <h3 style="color: #1e3a8a; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
-                                <button id="close-revision-popup" style="font-size: 1.5rem; color: #64748b; background: none; border: none; cursor: pointer;">&times;</button>
-                            </div>
-                            <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
-                    `;
-
-                    sortedDays.forEach(day => {
-                        modalHtml += `
-                            <div class="revision-day-group">
-                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #cbd5e1; background: #f8fafc; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = '#eff6ff'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = '#cbd5e1'; this.style.background = '#f8fafc'; }">
-                                    <div style="font-weight: 700; color: #1e293b; font-size: 1rem;">
-                                        <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 8px;"></i> Day ${day}
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 12px;">
-                                        <span class="badge" style="background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
-                                        <i class="fas fa-chevron-down toggle-icon" style="color: #64748b; transition: transform 0.3s;"></i>
-                                    </div>
-                                </button>
-                                
-                                <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #cbd5e1; margin-left: 5px;">
-                        `;
-
-                        groupedByDay[day].forEach(item => {
-                            const safeTopic = encodeURIComponent(item.id);
-                            const displayPath = `
-                                <span style="color:#64748b; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span></span>
-                                <span style="color:#92400e; font-size: 0.95rem;">${item.topic}</span>
-                            `;
-
-                            modalHtml += `
-                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
-                                    <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
-                                        ${displayPath}
-                                    </div>
-                                    <i class="fas fa-play-circle" style="color: #f59e0b; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
-                                </button>
-                            `;
-                        });
-
-                        modalHtml += `</div></div>`;
-                    });
-
-                    modalHtml += `</div></div>`;
-                    modalOverlay.innerHTML = modalHtml;
-                    document.body.appendChild(modalOverlay);
-
-                    revisionCard.onclick = () => {
-                        modalOverlay.style.display = 'flex';
-                    };
-
-                    const closeBtn = modalOverlay.querySelector('#close-revision-popup');
-                    closeBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        modalOverlay.style.display = 'none';
-                    };
-
-                    modalOverlay.onclick = (e) => {
-                        if (e.target === modalOverlay) modalOverlay.style.display = 'none';
-                    };
-
-                    revisionContainer.innerHTML = ''; 
-                    revisionContainer.appendChild(revisionCard);
-
-                } else if (revisionContainer) {
-                    revisionContainer.innerHTML = '';
-                }
-                
-                const btnMistakes = document.getElementById('btn-practice-mistakes');
-                if (btnMistakes && allMistakes.length > 0) {
-                    btnMistakes.disabled = false;
-                    btnMistakes.style.cursor = "pointer";
-                    btnMistakes.onclick = () => {
-                        isGlobalPopupActive = true;
-                        const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)));
-                        const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)));
-
-                        let combinedTree = {};
-                        if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
-                        if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
-
-                        activeCustomPool = [...pPool, ...ePool];
-                        openPopup("⚠️ Review Mistakes", combinedTree, 'Level1', []);
-                    };
-                }
-
-                const btnBookmarks = document.getElementById('btn-review-bookmarks');
-                if (btnBookmarks && globalBookmarks.length > 0) {
-                    btnBookmarks.disabled = false;
-                    btnBookmarks.style.cursor = "pointer";
-                    btnBookmarks.onclick = () => {
-                        isGlobalPopupActive = true;
-                        const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)));
-                        activeCustomPool = bPool;
-                        openPopup("⭐ Bookmarks", buildSubTree(bPool), 'Level1', []);
-                    };
-                }
-            }
-        } catch (error) { 
-            console.error("Error fetching stats:", error); 
+                pendingResetMsg = "All progress has been fully reset!";
+                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course and your books? This cannot be undone.";
+                break;
+            case "2":
+                pendingUpdates = { 
+                    [`${activeCourse}.mistakes`]: [], 
+                    [`${activeCourse}.examMistakes`]: [],
+                    [`books.mistakes`]: [], 
+                    [`books.examMistakes`]: [] 
+                };
+                pendingResetMsg = "All mistakes have been cleared!";
+                confirmText.textContent = "Are you sure you want to clear your Mistake history?";
+                break;
+            case "3":
+                pendingUpdates = { 
+                    [`${activeCourse}.bookmarks`]: [],
+                    [`books.bookmarks`]: [] 
+                };
+                pendingResetMsg = "All bookmarks have been cleared!";
+                confirmText.textContent = "Are you sure you want to delete all your Bookmarks?";
+                break;
+            case "4":
+                pendingUpdates = { 
+                    [`${activeCourse}.examHistory`]: [],
+                    [`books.examHistory`]: [] 
+                };
+                pendingResetMsg = "Exam history has been cleared!";
+                confirmText.textContent = "Are you sure you want to delete your Past Exam scores?";
+                break;
+            case "5":
+                pendingUpdates = { 
+                    [`${activeCourse}.solvedQuestions`]: [],
+                    [`books.solvedQuestions`]: [] 
+                };
+                pendingResetMsg = "Solved questions have been cleared!";
+                confirmText.textContent = "Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.";
+                break;
         }
-    } else {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            isPremiumUser = false;
-            await loadDataAndBuildTree();
 
-            const lockUI = () => alert("Please register an account to access this feature.");
-            const btnMistakes = document.getElementById('btn-practice-mistakes');
-            if (btnMistakes) { btnMistakes.disabled = false; btnMistakes.onclick = lockUI; }
-            const btnBookmarks = document.getElementById('btn-review-bookmarks');
-            if (btnBookmarks) { btnBookmarks.disabled = false; btnBookmarks.onclick = lockUI; }
-        } else {
-            window.location.href = 'login.html';
-        }
-    }
+        optionsContainer.style.display = 'none';
+        confirmContainer.style.display = 'block';
+    };
 });
 
-// === FEATURE: SMART PERFORMANCE & ANALYTICS ENGINE ===
+if (btnCancelReset) {
+    btnCancelReset.onclick = () => {
+        confirmContainer.style.display = 'none';
+        optionsContainer.style.display = 'flex';
+    };
+}
+
+if (btnConfirmReset) {
+    btnConfirmReset.onclick = async () => {
+        const user = auth.currentUser;
+        if (!user) {
+            alert("You must be logged in to reset progress.");
+            return;
+        }
+
+        btnConfirmReset.textContent = "Clearing...";
+        btnConfirmReset.disabled = true;
+
+        try {
+            const userRef = doc(db, "users", user.uid);
+            await updateDoc(userRef, pendingUpdates);
+
+            confirmText.innerHTML = `✅ ${pendingResetMsg}`;
+            btnCancelReset.style.display = 'none';
+            btnConfirmReset.style.display = 'none';
+
+            setTimeout(() => {
+                location.reload();
+            }, 1500);
+
+        } catch (err) {
+            console.error("Reset Error:", err);
+            confirmText.textContent = "❌ Error clearing data. Check console.";
+            btnConfirmReset.textContent = "Try Again";
+            btnConfirmReset.disabled = false;
+        }
+    };
+}
+
+// ==========================================
+// 13. TROPHIES & MILESTONES
+// ==========================================
+const btnJourney = document.getElementById('btn-view-journey');
+const journeyModal = document.getElementById('journey-modal');
+const closeJourneyBtn = document.getElementById('close-journey-btn');
+const trophiesGrid = document.getElementById('trophies-grid');
+
+const trophies = [
+    { title: "Novice", req: 10, icon: "👶", reward: null },
+    { title: "Bronze", req: 100, icon: "🥉", reward: null },
+    { title: "Silver", req: 500, icon: "🥈", reward: "3 Days Premium Free" },
+    { title: "Gold", req: 1000, icon: "🥇", reward: "1 Week Premium Free" },
+    { title: "Diamond", req: 2000, icon: "💎", reward: "2 Weeks Premium Free" },
+    { title: "Master", req: 5000, icon: "👑", reward: "3 Weeks Premium Free" }
+];
+
+let currentCum = 0;
+const processedTrophies = trophies.map(t => {
+    const prev = currentCum;
+    currentCum += t.req;
+    return { ...t, cumulativeReq: currentCum, previousCum: prev };
+});
+
+function checkMilestones(currentFlawless) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+
+    const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
+    let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+    const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title));
+
+    if (newlyUnlocked.length > 0) {
+        const highestNew = newlyUnlocked[newlyUnlocked.length - 1];
+        showMilestonePopup(highestNew);
+
+        newlyUnlocked.forEach(t => unlockedTiers.push(t.title));
+        localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
+    }
+}
+
+function showMilestonePopup(trophy) {
+    const modal = document.createElement('div');
+    modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
+    
+    const rewardHtml = trophy.reward 
+        ? `<div style="background: #ecfdf5; border: 1px solid #10b981; color: #065f46; padding: 12px; border-radius: 8px; margin: 15px 0; font-weight: bold; display: inline-block;"><i class="fas fa-gift"></i> Reward Unlocked: ${trophy.reward}</div>` 
+        : `<div style="margin: 15px 0;"></div>`;
+
+    modal.innerHTML = `
+        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
+            <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
+            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing this tier's ${trophy.req} flawless questions!</p>
+            ${rewardHtml}
+            <button id="close-milestone-btn" class="btn-solid" style="background: #3b82f6; border: none; width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Continue Journey</button>
+        </div>
+        <style>
+            @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        </style>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
+}
+
+if (btnJourney) {
+    btnJourney.onclick = () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            return alert("Please register an account to track your Journey and unlock trophies.");
+        }
+        
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+
+        trophiesGrid.innerHTML = processedTrophies.map(t => {
+            const isUnlocked = flawlessCount >= t.cumulativeReq;
+            
+            let progress = 0;
+            if (isUnlocked) {
+                progress = t.req;
+            } else if (flawlessCount > t.previousCum) {
+                progress = flawlessCount - t.previousCum;
+            } else {
+                progress = 0;
+            }
+
+            const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
+            const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
+            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
+            const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
+            const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
+            
+            const rewardHtml = t.reward 
+                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.reward}</div>` 
+                : '';
+
+            return `
+                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
+                    <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
+                    <div style="flex-grow: 1;">
+                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
+                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>
+                        ${rewardHtml}
+                    </div>
+                    <div style="font-size: 1.3rem;">
+                        ${statusIcon}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        journeyModal.style.display = 'flex';
+    };
+}
+
+if (closeJourneyBtn) {
+    closeJourneyBtn.onclick = () => journeyModal.style.display = 'none';
+}
+
+if (journeyModal) {
+    journeyModal.onclick = (e) => {
+        if (e.target === journeyModal) journeyModal.style.display = 'none';
+    };
+}
+
+// ==========================================
+// 14. REVISIONS & SPACED REPETITION
+// ==========================================
+window.generateRevisionQuiz = async function(topicId) {
+
+    if (!topicId) {
+        return alert("Invalid revision topic.");
+    }
+
+    let subject, chapter, topic, sourceName;
+
+    const parts = topicId.split('::');
+    
+    if (parts.length >= 4) {
+        subject = parts[0];
+        chapter = parts[1];
+        topic = parts[2];
+        sourceName = parts[3];
+    } else {
+        const oldParts = topicId.split('_');
+        sourceName = oldParts.pop();
+        topic = oldParts.pop() || '';
+        chapter = oldParts.pop() || '';
+        subject = oldParts.join('_') || '';
+    }
+
+    const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+    const isBookRevision = (sourceName !== currentActiveCourse);
+
+    if (isBookRevision) {
+        const book = availableBooks.find(b => b.file === sourceName);
+        if (book && !loadedBooksCache[book.file]) {
+            try {
+                document.body.style.cursor = 'wait';
+                const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
+                if (response.ok) {
+                    let bookQuestions = await response.json();
+                    bookQuestions.forEach(q => {
+                        q.QuestionID = q.id;
+                        q.Subject = book.title;
+                        q.Chapter = q.chapter;
+                        q.Topic = q.topic;
+                        q.Exam = q.exams;
+                        q.Year = q.year;
+                        q.isBookQuestion = true;
+                        q.bookName = book.file;
+                    });
+                    loadedBooksCache[book.file] = bookQuestions;
+                    allQuestions = allQuestions.filter(q => q.bookName !== book.file);
+                    allQuestions.push(...bookQuestions);
+                }
+            } catch(e) { 
+                console.error(e); 
+            } finally {
+                document.body.style.cursor = 'default';
+            }
+        }
+    }
+
+    const topicPool = allQuestions.filter(q => {
+        const qSubject = q.Subject || q.subject || '';
+        const qChapter = q.Chapter || q.chapter || '';
+        const qTopic = q.Topic || q.topic || '';
+        const qIsBook = q.isBookQuestion || false;
+
+        const hierarchyMatch = (
+            qSubject.trim().toLowerCase() === subject.trim().toLowerCase() &&
+            qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() &&
+            qTopic.trim().toLowerCase() === topic.trim().toLowerCase()
+        );
+
+        const sourceMatch = isBookRevision ? qIsBook : !qIsBook;
+
+        return hierarchyMatch && sourceMatch;
+    });
+
+    if (topicPool.length === 0) {
+        console.warn("No matching questions found for:", { subject, chapter, topic, sourceName });
+        return alert("No questions available for this revision topic.");
+    }
+
+    const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+    let weakPool = [];
+    let strongPool = [];
+    let untouchedPool = [];
+
+    topicPool.forEach(q => {
+        const qId = getQID(q);
+        if (allMistakes.includes(qId)) weakPool.push(q);
+        else if (attemptedQuestions.includes(qId)) strongPool.push(q);
+        else untouchedPool.push(q);
+    });
+
+    weakPool = weakPool.sort(() => 0.5 - Math.random());
+    strongPool = strongPool.sort(() => 0.5 - Math.random());
+    untouchedPool = untouchedPool.sort(() => 0.5 - Math.random());
+
+    let finalQuiz = [];
+    finalQuiz.push(...weakPool.slice(0, 20));
+    finalQuiz.push(...strongPool.slice(0, 10));
+    finalQuiz.push(...untouchedPool.slice(0, 25 - finalQuiz.length));
+
+    if (finalQuiz.length < 15) {
+        const remaining = topicPool.filter(q => !finalQuiz.includes(q));
+        finalQuiz.push(...remaining.slice(0, 15 - finalQuiz.length));
+    }
+
+    finalQuiz = [...new Set(finalQuiz)].sort(() => 0.5 - Math.random());
+
+    if (finalQuiz.length === 0) return alert("Not enough data to generate revision.");
+
+    window.launchQuiz(
+        finalQuiz,
+        'practice',
+        0,
+        `Revision: ${topic}`
+    );
+};
+
+// ==========================================
+// 15. SMART ANALYTICS ENGINE
+// ==========================================
 const btnAnalytics = document.getElementById('btn-view-analytics');
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
@@ -1463,388 +1672,9 @@ if (btnAnalytics) {
 const closeAnalytics = document.getElementById('close-analytics');
 if (closeAnalytics) closeAnalytics.onclick = () => document.getElementById('analytics-modal').style.display = 'none';
 
-// === FEATURE: CUSTOM RESET PROGRESS UI ===
-const btnReset = document.getElementById('btn-reset-progress');
-const resetModal = document.getElementById('reset-modal');
-const closeResetModal = document.getElementById('close-reset-modal');
-const optionsContainer = document.getElementById('reset-options-container');
-const confirmContainer = document.getElementById('reset-confirm-container');
-const btnCancelReset = document.getElementById('btn-cancel-reset');
-const btnConfirmReset = document.getElementById('btn-confirm-reset');
-const confirmText = document.getElementById('reset-confirm-text');
-
-let pendingUpdates = {};
-let pendingResetMsg = "";
-
-if (btnReset) {
-    btnReset.onclick = (e) => {
-        if (e) e.preventDefault();
-        toggleSidebar(false);
-        optionsContainer.style.display = 'flex';
-        confirmContainer.style.display = 'none';
-        resetModal.style.display = 'flex';
-    };
-}
-
-if (closeResetModal) {
-    closeResetModal.onclick = () => resetModal.style.display = 'none';
-}
-
-document.querySelectorAll('.reset-option-btn').forEach(btn => {
-    btn.onclick = (e) => {
-        const type = btn.getAttribute('data-type'); 
-        const activeCourse = localStorage.getItem('edeetos_active_course');
-
-        switch (type) {
-            case "1":
-                pendingUpdates = {
-                    [`${activeCourse}.solvedQuestions`]: [],
-                    [`${activeCourse}.mistakes`]: [],
-                    [`${activeCourse}.examMistakes`]: [],
-                    [`${activeCourse}.bookmarks`]: [],
-                    [`${activeCourse}.examHistory`]: [],
-                    [`${activeCourse}.revisions`]: {},
-                    [`books.solvedQuestions`]: [],
-                    [`books.mistakes`]: [],
-                    [`books.examMistakes`]: [],
-                    [`books.bookmarks`]: [],
-                    [`books.examHistory`]: [],
-                    [`books.revisions`]: {} 
-                };
-                pendingResetMsg = "All progress has been fully reset!";
-                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course and your books? This cannot be undone.";
-                break;
-            case "2":
-                pendingUpdates = { 
-                    [`${activeCourse}.mistakes`]: [], 
-                    [`${activeCourse}.examMistakes`]: [],
-                    [`books.mistakes`]: [], 
-                    [`books.examMistakes`]: [] 
-                };
-                pendingResetMsg = "All mistakes have been cleared!";
-                confirmText.textContent = "Are you sure you want to clear your Mistake history?";
-                break;
-            case "3":
-                pendingUpdates = { 
-                    [`${activeCourse}.bookmarks`]: [],
-                    [`books.bookmarks`]: [] 
-                };
-                pendingResetMsg = "All bookmarks have been cleared!";
-                confirmText.textContent = "Are you sure you want to delete all your Bookmarks?";
-                break;
-            case "4":
-                pendingUpdates = { 
-                    [`${activeCourse}.examHistory`]: [],
-                    [`books.examHistory`]: [] 
-                };
-                pendingResetMsg = "Exam history has been cleared!";
-                confirmText.textContent = "Are you sure you want to delete your Past Exam scores?";
-                break;
-            case "5":
-                pendingUpdates = { 
-                    [`${activeCourse}.solvedQuestions`]: [],
-                    [`books.solvedQuestions`]: [] 
-                };
-                pendingResetMsg = "Solved questions have been cleared!";
-                confirmText.textContent = "Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.";
-                break;
-        }
-
-        optionsContainer.style.display = 'none';
-        confirmContainer.style.display = 'block';
-    };
-});
-
-if (btnCancelReset) {
-    btnCancelReset.onclick = () => {
-        confirmContainer.style.display = 'none';
-        optionsContainer.style.display = 'flex';
-    };
-}
-
-if (btnConfirmReset) {
-    btnConfirmReset.onclick = async () => {
-        const user = auth.currentUser;
-        if (!user) {
-            alert("You must be logged in to reset progress.");
-            return;
-        }
-
-        btnConfirmReset.textContent = "Clearing...";
-        btnConfirmReset.disabled = true;
-
-        try {
-            const userRef = doc(db, "users", user.uid);
-            await updateDoc(userRef, pendingUpdates);
-
-            confirmText.innerHTML = `✅ ${pendingResetMsg}`;
-            btnCancelReset.style.display = 'none';
-            btnConfirmReset.style.display = 'none';
-
-            setTimeout(() => {
-                location.reload();
-            }, 1500);
-
-        } catch (err) {
-            console.error("Reset Error:", err);
-            confirmText.textContent = "❌ Error clearing data. Check console.";
-            btnConfirmReset.textContent = "Try Again";
-            btnConfirmReset.disabled = false;
-        }
-    };
-}
-
-// === FEATURE: TROPHY / JOURNEY SYSTEM & MILESTONES ===
-const btnJourney = document.getElementById('btn-view-journey');
-const journeyModal = document.getElementById('journey-modal');
-const closeJourneyBtn = document.getElementById('close-journey-btn');
-const trophiesGrid = document.getElementById('trophies-grid');
-
-const trophies = [
-    { title: "Novice", req: 10, icon: "👶", reward: null },
-    { title: "Bronze", req: 100, icon: "🥉", reward: null },
-    { title: "Silver", req: 500, icon: "🥈", reward: "3 Days Premium Free" },
-    { title: "Gold", req: 1000, icon: "🥇", reward: "1 Week Premium Free" },
-    { title: "Diamond", req: 2000, icon: "💎", reward: "2 Weeks Premium Free" },
-    { title: "Master", req: 5000, icon: "👑", reward: "3 Weeks Premium Free" }
-];
-
-let currentCum = 0;
-const processedTrophies = trophies.map(t => {
-    const prev = currentCum;
-    currentCum += t.req;
-    return { ...t, cumulativeReq: currentCum, previousCum: prev };
-});
-
-function checkMilestones(currentFlawless) {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
-
-    const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
-    let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
-
-    const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title));
-
-    if (newlyUnlocked.length > 0) {
-        const highestNew = newlyUnlocked[newlyUnlocked.length - 1];
-        showMilestonePopup(highestNew);
-
-        newlyUnlocked.forEach(t => unlockedTiers.push(t.title));
-        localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
-    }
-}
-
-function showMilestonePopup(trophy) {
-    const modal = document.createElement('div');
-    modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
-    
-    const rewardHtml = trophy.reward 
-        ? `<div style="background: #ecfdf5; border: 1px solid #10b981; color: #065f46; padding: 12px; border-radius: 8px; margin: 15px 0; font-weight: bold; display: inline-block;"><i class="fas fa-gift"></i> Reward Unlocked: ${trophy.reward}</div>` 
-        : `<div style="margin: 15px 0;"></div>`;
-
-    modal.innerHTML = `
-        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-            <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
-            <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
-            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing this tier's ${trophy.req} flawless questions!</p>
-            ${rewardHtml}
-            <button id="close-milestone-btn" class="btn-solid" style="background: #3b82f6; border: none; width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Continue Journey</button>
-        </div>
-        <style>
-            @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        </style>
-    `;
-    document.body.appendChild(modal);
-
-    modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
-}
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        setTimeout(() => {
-            const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-            const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
-            checkMilestones(flawlessCount);
-        }, 2000);
-    }
-});
-
-if (btnJourney) {
-    btnJourney.onclick = () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            return alert("Please register an account to track your Journey and unlock trophies.");
-        }
-        
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-        const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
-
-        trophiesGrid.innerHTML = processedTrophies.map(t => {
-            const isUnlocked = flawlessCount >= t.cumulativeReq;
-            
-            let progress = 0;
-            if (isUnlocked) {
-                progress = t.req;
-            } else if (flawlessCount > t.previousCum) {
-                progress = flawlessCount - t.previousCum;
-            } else {
-                progress = 0;
-            }
-
-            const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
-            const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
-            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
-            const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
-            const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
-            
-            const rewardHtml = t.reward 
-                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.reward}</div>` 
-                : '';
-
-            return `
-                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
-                    <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
-                    <div style="flex-grow: 1;">
-                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>
-                        ${rewardHtml}
-                    </div>
-                    <div style="font-size: 1.3rem;">
-                        ${statusIcon}
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        journeyModal.style.display = 'flex';
-    };
-}
-
-if (closeJourneyBtn) {
-    closeJourneyBtn.onclick = () => journeyModal.style.display = 'none';
-}
-
-if (journeyModal) {
-    journeyModal.onclick = (e) => {
-        if (e.target === journeyModal) journeyModal.style.display = 'none';
-    };
-}
-
-// === FEATURE: REVISION GENERATOR ===
-window.generateRevisionQuiz = async function(topicId) {
-
-    if (!topicId) {
-        return alert("Invalid revision topic.");
-    }
-
-    let subject, chapter, topic, sourceName;
-
-    const parts = topicId.split('::');
-    
-    if (parts.length >= 4) {
-        subject = parts[0];
-        chapter = parts[1];
-        topic = parts[2];
-        sourceName = parts[3];
-    } else {
-        const oldParts = topicId.split('_');
-        sourceName = oldParts.pop();
-        topic = oldParts.pop() || '';
-        chapter = oldParts.pop() || '';
-        subject = oldParts.join('_') || '';
-    }
-
-    const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-    const isBookRevision = (sourceName !== currentActiveCourse);
-
-    if (isBookRevision) {
-        const book = availableBooks.find(b => b.file === sourceName);
-        if (book && !loadedBooksCache[book.file]) {
-            try {
-                document.body.style.cursor = 'wait';
-                const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
-                if (response.ok) {
-                    let bookQuestions = await response.json();
-                    bookQuestions.forEach(q => {
-                        q.QuestionID = q.id;
-                        q.Subject = book.title;
-                        q.Chapter = q.chapter;
-                        q.Topic = q.topic;
-                        q.Exam = q.exams;
-                        q.Year = q.year;
-                        q.isBookQuestion = true;
-                        q.bookName = book.file;
-                    });
-                    loadedBooksCache[book.file] = bookQuestions;
-                    allQuestions = allQuestions.filter(q => q.bookName !== book.file);
-                    allQuestions.push(...bookQuestions);
-                }
-            } catch(e) { 
-                console.error(e); 
-            } finally {
-                document.body.style.cursor = 'default';
-            }
-        }
-    }
-
-    const topicPool = allQuestions.filter(q => {
-        const qSubject = q.Subject || q.subject || '';
-        const qChapter = q.Chapter || q.chapter || '';
-        const qTopic = q.Topic || q.topic || '';
-        const qIsBook = q.isBookQuestion || false;
-
-        const hierarchyMatch = (
-            qSubject.trim().toLowerCase() === subject.trim().toLowerCase() &&
-            qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() &&
-            qTopic.trim().toLowerCase() === topic.trim().toLowerCase()
-        );
-
-        const sourceMatch = isBookRevision ? qIsBook : !qIsBook;
-
-        return hierarchyMatch && sourceMatch;
-    });
-
-    if (topicPool.length === 0) {
-        console.warn("No matching questions found for:", { subject, chapter, topic, sourceName });
-        return alert("No questions available for this revision topic.");
-    }
-
-    const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-    let weakPool = [];
-    let strongPool = [];
-    let untouchedPool = [];
-
-    topicPool.forEach(q => {
-        const qId = getQID(q);
-        if (allMistakes.includes(qId)) weakPool.push(q);
-        else if (attemptedQuestions.includes(qId)) strongPool.push(q);
-        else untouchedPool.push(q);
-    });
-
-    weakPool = weakPool.sort(() => 0.5 - Math.random());
-    strongPool = strongPool.sort(() => 0.5 - Math.random());
-    untouchedPool = untouchedPool.sort(() => 0.5 - Math.random());
-
-    let finalQuiz = [];
-    finalQuiz.push(...weakPool.slice(0, 20));
-    finalQuiz.push(...strongPool.slice(0, 10));
-    finalQuiz.push(...untouchedPool.slice(0, 25 - finalQuiz.length));
-
-    if (finalQuiz.length < 15) {
-        const remaining = topicPool.filter(q => !finalQuiz.includes(q));
-        finalQuiz.push(...remaining.slice(0, 15 - finalQuiz.length));
-    }
-
-    finalQuiz = [...new Set(finalQuiz)].sort(() => 0.5 - Math.random());
-
-    if (finalQuiz.length === 0) return alert("Not enough data to generate revision.");
-
-    window.launchQuiz(
-        finalQuiz,
-        'practice',
-        0,
-        `Revision: ${topic}`
-    );
-};
-
+// ==========================================
+// 16. STATE RESTORATION
+// ==========================================
 function restoreLastState() {
     switchMode('practice');
     const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
@@ -1887,3 +1717,273 @@ function restoreLastState() {
         }
     }
 }
+
+// ==========================================
+// 17. INITIALIZATION & AUTHENTICATION
+// ==========================================
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        localStorage.removeItem('edeetos_guest_mode');
+        const userRef = doc(db, "users", user.uid);
+        try {
+            const docSnap = await getDoc(userRef);
+            if (docSnap.exists()) {
+                const dbData = docSnap.data();
+                currentUserData = dbData; 
+                currentUserRole = dbData.role || 'STUDENT';
+                
+                // Initialize Role-Based Security
+                applySecurityMeasures(currentUserRole);
+                
+                // Initialize Mentor Tools if allowed
+                initMentorFeatures();
+                
+                isPremiumUser = false;
+                if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
+                    isPremiumUser = true;
+                } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
+                    const expiry = dbData.subscriptions[activeCourse];
+                    if (expiry === 'lifetime') {
+                        isPremiumUser = true;
+                    } else {
+                        const expiryDate = new Date(expiry);
+                        if (expiryDate >= new Date()) {
+                            isPremiumUser = true;
+                        }
+                    }
+                }
+                
+                const courseData = dbData[activeCourse] || {};
+                const booksData = dbData.books || {};
+
+                const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
+                const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
+                const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
+                const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
+
+                const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
+                const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
+                const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
+                const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
+
+                const solvedList = [...new Set([...courseSolved, ...bookSolved])];
+                globalPracticeMistakes = [...new Set([...coursePracticeMistakes, ...bookPracticeMistakes])];
+                globalExamMistakes = [...new Set([...courseExamMistakes, ...bookExamMistakes])];
+                globalBookmarks = [...new Set([...courseBookmarks, ...bookBookmarks])];
+
+                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
+
+                attemptedQuestions = solvedList;
+
+                await loadDataAndBuildTree();
+                restoreLastState();
+
+                const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+                const totalAttempts = solvedList.length + allMistakes.length;
+                let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
+
+                if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
+                if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
+                if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
+                if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+                
+                // --- Spaced Repetition Block ---
+                const revisions = {
+                    ...(courseData.revisions || {}),
+                    ...(booksData.revisions || {})
+                };
+                
+                const now = Date.now();
+                const dueTopics = [];
+
+                Object.keys(revisions).forEach(topicId => {
+                    if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
+                        let subj = "", chap = "", top = "";
+                        
+                        const parts = topicId.split('::');
+                        if (parts.length >= 4) {
+                            subj = parts[0];
+                            chap = parts[1];
+                            top = parts[2];
+                        } else {
+                            const oldParts = topicId.split('_');
+                            oldParts.pop(); 
+                            top = oldParts.pop() || '';
+                            chap = oldParts.pop() || '';
+                            subj = oldParts.join('_') || '';
+                        }
+
+                        subj = subj || "General";
+                        chap = chap || "Section";
+                        top = top || revisions[topicId].topic || "Review Topic";
+                        if (top === "Unknown Topic") top = "Topic";
+
+                        dueTopics.push({ 
+                            id: topicId, 
+                            subject: subj,
+                            chapter: chap,
+                            topic: top,
+                            step: revisions[topicId].intervalStep || 1 
+                        });
+                    }
+                });
+
+                const groupedByDay = {};
+                dueTopics.forEach(item => {
+                    if (!groupedByDay[item.step]) groupedByDay[item.step] = [];
+                    groupedByDay[item.step].push(item);
+                });
+
+                const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
+                const revisionContainer = document.getElementById('spaced-repetition-container');
+
+                if (dueTopics.length > 0 && revisionContainer) {
+                    const revisionCard = document.createElement('div');
+                    revisionCard.className = 'glass-panel feature-card';
+                    revisionCard.style.borderColor = '#f59e0b';
+                    revisionCard.style.boxShadow = '0 10px 25px -5px rgba(245, 158, 11, 0.15)';
+                    revisionCard.style.padding = '20px'; 
+                    revisionCard.style.gridColumn = '1 / -1'; 
+                    revisionCard.style.marginBottom = '20px';
+                    revisionCard.style.cursor = 'pointer';
+                    revisionCard.style.display = 'flex';
+                    revisionCard.style.justifyContent = 'space-between';
+                    revisionCard.style.alignItems = 'center';
+
+                    revisionCard.innerHTML = `
+                        <div>
+                            <h3 class="card-title" style="color: #92400e; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
+                            <p style="color: #b45309; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
+                        </div>
+                        <button class="btn-solid" style="background: #f59e0b; border: none; padding: 10px 20px;">View Plan</button>
+                    `;
+
+                    let existingModal = document.getElementById('revision-popup-modal');
+                    if (existingModal) existingModal.remove(); 
+
+                    const modalOverlay = document.createElement('div');
+                    modalOverlay.id = 'revision-popup-modal';
+                    modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+
+                    let modalHtml = `
+                        <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 15px;">
+                                <h3 style="color: #1e3a8a; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
+                                <button id="close-revision-popup" style="font-size: 1.5rem; color: #64748b; background: none; border: none; cursor: pointer;">&times;</button>
+                            </div>
+                            <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
+                    `;
+
+                    sortedDays.forEach(day => {
+                        modalHtml += `
+                            <div class="revision-day-group">
+                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #cbd5e1; background: #f8fafc; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = '#eff6ff'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = '#cbd5e1'; this.style.background = '#f8fafc'; }">
+                                    <div style="font-weight: 700; color: #1e293b; font-size: 1rem;">
+                                        <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 8px;"></i> Day ${day}
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <span class="badge" style="background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
+                                        <i class="fas fa-chevron-down toggle-icon" style="color: #64748b; transition: transform 0.3s;"></i>
+                                    </div>
+                                </button>
+                                
+                                <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #cbd5e1; margin-left: 5px;">
+                        `;
+
+                        groupedByDay[day].forEach(item => {
+                            const safeTopic = encodeURIComponent(item.id);
+                            const displayPath = `
+                                <span style="color:#64748b; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span></span>
+                                <span style="color:#92400e; font-size: 0.95rem;">${item.topic}</span>
+                            `;
+
+                            modalHtml += `
+                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                                    <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
+                                        ${displayPath}
+                                    </div>
+                                    <i class="fas fa-play-circle" style="color: #f59e0b; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
+                                </button>
+                            `;
+                        });
+
+                        modalHtml += `</div></div>`;
+                    });
+
+                    modalHtml += `</div></div>`;
+                    modalOverlay.innerHTML = modalHtml;
+                    document.body.appendChild(modalOverlay);
+
+                    revisionCard.onclick = () => {
+                        modalOverlay.style.display = 'flex';
+                    };
+
+                    const closeBtn = modalOverlay.querySelector('#close-revision-popup');
+                    closeBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        modalOverlay.style.display = 'none';
+                    };
+
+                    modalOverlay.onclick = (e) => {
+                        if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+                    };
+
+                    revisionContainer.innerHTML = ''; 
+                    revisionContainer.appendChild(revisionCard);
+
+                } else if (revisionContainer) {
+                    revisionContainer.innerHTML = '';
+                }
+				
+                const btnMistakes = document.getElementById('btn-practice-mistakes');
+                if (btnMistakes && allMistakes.length > 0) {
+                    btnMistakes.disabled = false;
+                    btnMistakes.style.cursor = "pointer";
+                    btnMistakes.onclick = () => {
+                        isGlobalPopupActive = true;
+                        const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)));
+                        const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)));
+
+                        let combinedTree = {};
+                        if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
+                        if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
+
+                        activeCustomPool = [...pPool, ...ePool];
+                        openPopup("⚠️ Review Mistakes", combinedTree, 'Level1', []);
+                    };
+                }
+
+                const btnBookmarks = document.getElementById('btn-review-bookmarks');
+                if (btnBookmarks && globalBookmarks.length > 0) {
+                    btnBookmarks.disabled = false;
+                    btnBookmarks.style.cursor = "pointer";
+                    btnBookmarks.onclick = () => {
+                        isGlobalPopupActive = true;
+                        const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)));
+                        activeCustomPool = bPool;
+                        openPopup("⭐ Bookmarks", buildSubTree(bPool), 'Level1', []);
+                    };
+                }
+                
+                setTimeout(() => {
+                    const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+                    checkMilestones(flawlessCount);
+                }, 2000);
+
+            }
+        } catch (error) { console.error("Error fetching stats:", error); }
+    } else {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            isPremiumUser = false;
+            await loadDataAndBuildTree();
+
+            const lockUI = () => alert("Please register an account to access this feature.");
+            const btnMistakes = document.getElementById('btn-practice-mistakes');
+            if (btnMistakes) { btnMistakes.disabled = false; btnMistakes.onclick = lockUI; }
+            const btnBookmarks = document.getElementById('btn-review-bookmarks');
+            if (btnBookmarks) { btnBookmarks.disabled = false; btnBookmarks.onclick = lockUI; }
+        } else {
+            window.location.href = 'login.html';
+        }
+    }
+});
