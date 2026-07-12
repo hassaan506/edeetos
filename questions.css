@@ -304,12 +304,11 @@
     padding: 1.2rem; 
     overflow-y: auto;
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 1rem;
     align-items: stretch; 
 }
 
-/* --- THE CHECKBOX LIST ITEMS --- */
 .list-item {
     display: flex;
     flex-direction: column; 
@@ -323,6 +322,7 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     gap: 0.8rem; 
     user-select: none;
+    box-sizing: border-box; 
 }
 
 .list-item:hover {
@@ -334,9 +334,10 @@
 .list-item .card-header-flex { 
     margin-bottom: 8px; 
     align-items: center; 
-    flex-wrap: nowrap; 
+    flex-wrap: wrap; 
     gap: 10px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .list-item input[type="checkbox"] {
