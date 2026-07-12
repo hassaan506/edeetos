@@ -19,6 +19,69 @@ const mergedNamesMap = {
     'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA'
 };
 
+// === FEATURE: SCOPED SECURITY & ANTI-CHEAT ===
+function applySecurityMeasures(role) {
+    const roleUpper = (role || 'STUDENT').toUpperCase();
+    
+    // Only arm the traps if the question card actually exists on this page
+    const isSecurePage = document.querySelector('.question-card') !== null;
+    
+    // Define exact handlers so we can add/remove them cleanly
+    window.handleContextMenu = (e) => e.preventDefault();
+    window.handleCopy = (e) => e.preventDefault();
+    
+    window.handleKeyUp = (e) => {
+        if (e.key === 'PrintScreen') {
+            navigator.clipboard.writeText('Screenshots are disabled for copyright protection.'); 
+            const screen = document.getElementById('anti-screenshot-screen');
+            if (screen) screen.style.display = 'flex';
+            alert('Screenshots are strictly prohibited on this platform.');
+        }
+    };
+    
+    window.handleVisibility = () => {
+        if (document.visibilityState === 'hidden') {
+            document.body.style.filter = 'blur(15px)';
+        } else {
+            document.body.style.filter = 'none';
+        }
+    };
+    
+    window.handleBlur = () => {
+        document.body.style.filter = 'blur(15px)';
+    };
+    
+    window.handleFocus = () => {
+        document.body.style.filter = 'none';
+    };
+
+    // If the user is an admin, OR if this script is running on a dashboard/unprotected page, explicitly disable restrictions.
+    if (!isSecurePage || roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
+        document.body.style.userSelect = 'auto';
+        document.body.style.webkitUserSelect = 'auto';
+        document.body.style.filter = 'none';
+        
+        document.removeEventListener('contextmenu', window.handleContextMenu);
+        document.removeEventListener('copy', window.handleCopy);
+        window.removeEventListener('keyup', window.handleKeyUp);
+        document.removeEventListener('visibilitychange', window.handleVisibility);
+        window.removeEventListener('blur', window.handleBlur);
+        window.removeEventListener('focus', window.handleFocus);
+        return; 
+    }
+
+    // Enforce strict restrictions for regular students on the protected page
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    
+    document.addEventListener('contextmenu', window.handleContextMenu);
+    document.addEventListener('copy', window.handleCopy);
+    window.addEventListener('keyup', window.handleKeyUp);
+    document.addEventListener('visibilitychange', window.handleVisibility);
+    window.addEventListener('blur', window.handleBlur);
+    window.addEventListener('focus', window.handleFocus);
+}
+
 // === FEATURE: DASHBOARD LOAD, ROLES, & BADGES ===
 onAuthStateChanged(auth, async (user) => {
     const freeWarning = document.getElementById('free-warning-text');
@@ -42,6 +105,11 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
                 sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
+                
+                const userRoleUpper = (currentUserData.role || 'STUDENT').toUpperCase();
+                
+                // Actively enforce or disable security based on page and role
+                applySecurityMeasures(userRoleUpper);
                 
                 // 1. Check Banned Status
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
@@ -331,6 +399,9 @@ onAuthStateChanged(auth, async (user) => {
         // 7. Handle Logged Out / Guest Mode
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             document.getElementById('user-name').textContent = "Guest";
+            
+            // Actively disable security for guest accounts on unprotected pages
+            applySecurityMeasures('GUEST');
             
             if(subStatus) {
                 subStatus.textContent = "Guest Mode";
