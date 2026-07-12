@@ -573,3 +573,64 @@ body {
         font-size: 0.75rem !important;
     }
 }
+/* ==========================================
+   MOBILE OPTIMIZATIONS: PAYMENTS & MODALS
+   ========================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Fix Payment Request Cards */
+    #payments-list > div {
+        padding: 1rem !important; 
+    }
+    
+    /* Stack the Email and Course Badges cleanly */
+    #payments-list > div > div:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.8rem !important;
+    }
+    
+    /* Stack the Action Row (Dropdown + Approve/Reject) */
+    #payments-list > div > div:last-child {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.8rem !important;
+        padding: 1rem !important;
+    }
+    
+    #payments-list > div > div:last-child > div {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+    
+    /* Ensure action buttons are full width and easy to tap */
+    #payments-list .btn-approve, 
+    #payments-list .btn-reject {
+        width: 100% !important;
+        margin-top: 0.5rem !important;
+        padding: 0.9rem !important;
+    }
+
+    /* 2. Fix Receipt Modal Close Button */
+    #receipt-modal .popup-content {
+        display: flex !important;
+        flex-direction: column !important;
+        max-height: 85vh !important; /* Locks modal safely inside the screen */
+        padding: 1.2rem !important;
+        overflow: hidden !important; /* Stops the outer modal from scrolling */
+    }
+
+    /* Allows the receipt image to scroll internally */
+    #receipt-modal .popup-content > div:nth-of-type(1) {
+        flex: 1 1 auto !important;
+        overflow-y: auto !important;
+        margin-bottom: 1rem !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Permanently pins the close button to the bottom */
+    #btn-close-receipt {
+        flex-shrink: 0 !important; 
+        margin: 0 !important;
+    }
+}

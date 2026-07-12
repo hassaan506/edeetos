@@ -637,6 +637,11 @@ function fetchPayments() {
     
     if (unsubscribePayments) return;
 
+    // Pricing logic maps (Matches dashboard calculator)
+    const durationIndexMap = { "1": 0, "7": 1, "15": 2, "30": 3, "90": 4, "180": 5, "365": 6, "lifetime": 7 };
+    const baseCoursePrices = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
+    const baseBookPrices = [20, 50, 80, 120, 250, 350, 450, 500];
+
     unsubscribePayments = onSnapshot(collection(db, "payment_requests"), (qSnap) => {
         list.innerHTML = '';
         let hasPending = false;
@@ -646,17 +651,57 @@ function fetchPayments() {
             if(data.status !== 'pending') return;
             hasPending = true;
 
+            // --- Calculate Expected Price ---
+            const courseCount = (data.courses || []).length;
+            const bookCount = (data.books || []).length;
+            const durationIdx = durationIndexMap[data.durationDays] !== undefined ? durationIndexMap[data.durationDays] : 7;
+
+            // Bundle logic
+            let bookDiscount = 0;
+            if (bookCount >= 5) bookDiscount = 0.30;
+            else if (bookCount >= 3) bookDiscount = 0.20;
+            else if (bookCount >= 2) bookDiscount = 0.10;
+
+            let coursePrice = courseCount > 0 ? baseCoursePrices[durationIdx] : 0;
+            let rawBookTotal = bookCount * baseBookPrices[durationIdx];
+            let discountedBookTotal = rawBookTotal * (1 - bookDiscount);
+
+            let expectedTotal = Math.round(coursePrice + discountedBookTotal);
+            let originalTotal = expectedTotal;
+            let promoHtml = '';
+
+            // Promo logic
+            if (data.appliedPromoCode && data.promoDiscountApplied > 0) {
+                expectedTotal = Math.round(expectedTotal * (1 - (data.promoDiscountApplied / 100)));
+                promoHtml = `
+                    <div style="background: #fdf2f8; border: 1px dashed #f472b6; color: #be185d; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 800; margin-top: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span>🎟️ Promo: ${data.appliedPromoCode}</span>
+                        <span>-${data.promoDiscountApplied}%</span>
+                    </div>
+                    <div style="font-size: 0.75rem; color: #94a3b8; text-decoration: line-through; text-align: right; margin-top: 4px;">Original: Rs. ${originalTotal.toLocaleString()}</div>
+                `;
+            }
+
+            // --- Build the UI Card ---
             const card = document.createElement('div');
             card.style = "background: white; border: 2px solid #3b82f6; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative;";
             card.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
-                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem; word-break: break-all;">${data.userEmail}</div>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                         ${(data.courses || []).map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
                         ${(data.books || []).map(b => `<span class="badge b-admin" style="background: #5b21b6; color: white;">${b.replace('_', ' ').toUpperCase()}</span>`).join('')}
                         <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
                     </div>
                 </div>
+                
+                <!-- Expected Payment Box -->
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.5rem;">
+                    <div style="font-size: 0.75rem; color: #64748b; font-weight: 800; text-transform: uppercase;">Expected Payment</div>
+                    <div style="font-size: 1.8rem; font-weight: 800; color: #10b981;">Rs. ${expectedTotal.toLocaleString()}</div>
+                    ${promoHtml}
+                </div>
+
                 ${data.receiptUrl ? `
                 <div style="text-align: center; margin: 1.5rem 0;">
                     <img src="${data.receiptUrl}" style="width: 120px; height: 160px; object-fit: cover; border-radius: 12px; border: 2px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" alt="Payment Receipt" />
@@ -666,8 +711,9 @@ function fetchPayments() {
                         </span>
                     </div>
                 </div>` : `<div style="margin-bottom: 1rem; font-size: 0.8rem; color: #ef4444; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> No Receipt Attached</div>`}
-                <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0;">
-                    <div style="flex: 1;">
+                
+                <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 150px;">
                         <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Approve Duration:</label>
                         <select class="approve-duration" style="width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-weight: bold; color: #1e293b; outline: none;">
                             <option value="${data.durationDays}">${data.planName} (Requested)</option>
@@ -681,8 +727,10 @@ function fetchPayments() {
                             <option value="lifetime">Lifetime</option>
                         </select>
                     </div>
-                    <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Approve</button>
-                    <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Reject</button>
+                    <div style="display: flex; gap: 10px; flex: 1; min-width: 200px;">
+                        <button class="btn-solid btn-approve" style="flex: 1; padding: 0.8rem; margin: 0; margin-top: 1.4rem;">Approve</button>
+                        <button class="btn-outline btn-reject" style="flex: 1; border-color: #ef4444; color: #ef4444; padding: 0.8rem; margin: 0; margin-top: 1.4rem; background: transparent;">Reject</button>
+                    </div>
                 </div>
             `;
 
