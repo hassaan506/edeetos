@@ -112,7 +112,7 @@ async function calculateTotalQuestions() {
 
 // === FEATURE: UI NAVIGATION & TABS ===
 window.switchView = function(viewName) {
-    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports', 'view-messages', 'view-requests'];
+    const views = ['view-users', 'view-keys', 'view-payments', 'view-reports', 'view-messages', 'view-requests', 'view-promos'];
     views.forEach(v => { const el = document.getElementById(v); if (el) el.style.display = 'none'; });
     
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
@@ -127,7 +127,8 @@ window.switchView = function(viewName) {
     if(viewName === 'payments') fetchPayments();
     if(viewName === 'reports') fetchReports();
     if(viewName === 'messages') fetchMessages(); 
-    if(viewName === 'requests') fetchRequests(); 
+    if(viewName === 'requests') fetchRequests();
+	if(viewName === 'promos') fetchPromos();	
 };
 
 // === FEATURE: USER MANAGEMENT & SEARCH ===
@@ -914,3 +915,122 @@ async function fetchMessages() {
         if(!hasMessages) list.innerHTML = '<p style="text-align: center; color: #64748b; padding: 2rem;">No new messages. Your inbox is clean! ✨</p>';
     });
 }
+
+// === FEATURE: PROMO CODES MANAGEMENT ===
+window.generatePromo = async function() {
+    const btn = document.getElementById('btn-generate-promo');
+    if(btn) { btn.textContent = "Creating..."; btn.disabled = true; }
+
+    const codeInput = document.getElementById('promo-code').value.trim().toUpperCase();
+    const discountInput = parseInt(document.getElementById('promo-discount').value);
+    const expiryInput = document.getElementById('promo-expiry').value;
+
+    if (!codeInput || isNaN(discountInput) || discountInput <= 0 || discountInput > 100) {
+        alert("Please enter a valid promo code and a discount percentage between 1 and 100.");
+        if(btn) { btn.textContent = "Create Promo"; btn.disabled = false; }
+        return;
+    }
+
+    try {
+        // We use the code string itself as the Document ID for fast querying
+        await setDoc(doc(db, "promo_codes", codeInput), {
+            code: codeInput,
+            discountPercentage: discountInput,
+            isActive: true,
+            expiryDate: expiryInput || null,
+            createdAt: new Date().toISOString()
+        });
+        
+        alert("Promo Code Created: " + codeInput);
+        document.getElementById('promo-code').value = '';
+        document.getElementById('promo-discount').value = '';
+        document.getElementById('promo-expiry').value = '';
+    } catch(e) {
+        console.error(e);
+        alert("Error creating promo code.");
+    } finally {
+        if(btn) { btn.textContent = "Create Promo"; btn.disabled = false; }
+    }
+};
+
+let unsubscribePromos = null;
+
+window.fetchPromos = async function() {
+    const tbody = document.getElementById('promos-table-body');
+    if(!tbody) return;
+    
+    // Prevent duplicate listeners
+    if (unsubscribePromos) return;
+
+    unsubscribePromos = onSnapshot(collection(db, "promo_codes"), (qSnap) => {
+        tbody.innerHTML = '';
+        let hasPromos = false;
+
+        qSnap.forEach(d => {
+            hasPromos = true;
+            const data = d.data();
+            const tr = document.createElement('tr');
+            tr.style = "border-bottom: 1px solid #f1f5f9;";
+            
+            let expiryText = "No Expiry";
+            let isExpired = false;
+            
+            if (data.expiryDate) {
+                const expDate = new Date(data.expiryDate);
+                expiryText = expDate.toLocaleDateString();
+                if (expDate < new Date()) isExpired = true;
+            }
+            
+            const statusBadge = data.isActive && !isExpired 
+                ? `<span class="badge" style="background: #dcfce7; color: #166534;">Active</span>`
+                : `<span class="badge" style="background: #fee2e2; color: #991b1b;">${isExpired ? 'Expired' : 'Inactive'}</span>`;
+
+            tr.innerHTML = `
+                <td style="padding: 1.2rem; font-weight: 800; font-size: 1.05rem; color: #1e293b; font-family: monospace;">
+                    ${data.code}
+                </td>
+                <td style="font-weight: 800; color: #10b981;">
+                    ${data.discountPercentage}% OFF
+                </td>
+                <td>
+                    <div style="margin-bottom: 5px;">${statusBadge}</div>
+                    <div style="font-size: 0.75rem; color: #64748b;">Exp: ${expiryText}</div>
+                </td>
+                <td>
+                    <button class="btn-action-del btn-toggle-promo" style="border-color: #f59e0b; color: #f59e0b; margin-right: 5px;" title="${data.isActive ? 'Deactivate' : 'Activate'}">
+                        <i class="fas fa-power-off"></i>
+                    </button>
+                    <button class="btn-action-del btn-del-promo" title="Delete Promo">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            `;
+            
+            // Action: Toggle Active Status
+            tr.querySelector('.btn-toggle-promo').addEventListener('click', async () => {
+                try {
+                    await updateDoc(doc(db, "promo_codes", data.code), { isActive: !data.isActive });
+                } catch(e) {
+                    alert("Failed to toggle status.");
+                }
+            });
+
+            // Action: Hard Delete Promo
+            tr.querySelector('.btn-del-promo').addEventListener('click', async () => {
+                if(confirm(`Are you sure you want to completely delete the promo code ${data.code}?`)) {
+                    try {
+                        await deleteDoc(doc(db, "promo_codes", data.code));
+                    } catch(e) {
+                        alert("Failed to delete promo code.");
+                    }
+                }
+            });
+            
+            tbody.appendChild(tr);
+        });
+
+        if(!hasPromos) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem; color: #94a3b8;">No promo codes found.</td></tr>';
+        }
+    });
+};

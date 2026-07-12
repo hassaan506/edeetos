@@ -24,6 +24,7 @@ body {
 .reports-sidebar {
     width: 35%;
     max-width: 420px;
+    min-width: 280px; /* NEW: Protects from being crushed */
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -33,6 +34,7 @@ body {
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+    flex-shrink: 0; /* NEW: Prevents flexbox from shrinking it below min-width */
 }
 
 .sidebar-header {
@@ -56,6 +58,7 @@ body {
     font-size: 0.95rem;
     background: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
+    box-sizing: border-box; /* NEW: Keeps padding inside width boundaries */
 }
 
 .search-input:focus {
@@ -80,6 +83,9 @@ body {
     border: 1px solid transparent;
     box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box; /* NEW: Ensures padding doesn't overflow container */
+    overflow: hidden;       /* NEW: Contains truncated children */
 }
 
 .student-item:hover {
@@ -98,12 +104,22 @@ body {
     color: #0f172a;
     font-size: 1.05rem;
     margin-bottom: 3px;
+    /* NEW: Truncates text with ... instead of wrapping vertically */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .student-email {
     font-size: 0.85rem;
     color: #64748b;
     font-weight: 600;
+    /* NEW: Truncates text with ... instead of wrapping vertically */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 /* ==========================================

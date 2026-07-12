@@ -465,6 +465,10 @@ const tabRedeem = document.getElementById('tab-redeem');
 const viewBuy = document.getElementById('view-buy');
 const viewRedeem = document.getElementById('view-redeem');
 
+// NEW: Promo Code State Variables
+let activePromoCode = null;
+let activePromoDiscount = 0; // Stored as a percentage (e.g., 20 for 20%)
+
 if(tabBuy) tabBuy.addEventListener('click', () => {
     tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab';
     viewBuy.style.display = 'block'; viewRedeem.style.display = 'none';
@@ -490,6 +494,61 @@ document.getElementById('btn-confirm-courses').addEventListener('click', () => {
     updatePrices();
 });
 
+// NEW: Promo Code Validation Logic
+const btnApplyPromo = document.getElementById('btn-apply-promo');
+if (btnApplyPromo) {
+    btnApplyPromo.addEventListener('click', async () => {
+        const codeInput = document.getElementById('promo-input').value.trim().toUpperCase();
+        const msgBox = document.getElementById('promo-message');
+        
+        if (!codeInput) {
+            activePromoCode = null;
+            activePromoDiscount = 0;
+            msgBox.textContent = "";
+            updatePrices();
+            return;
+        }
+
+        btnApplyPromo.textContent = "Checking...";
+        btnApplyPromo.disabled = true;
+
+        try {
+            const promoRef = doc(db, "promo_codes", codeInput);
+            const promoSnap = await getDoc(promoRef);
+            
+            if (promoSnap.exists()) {
+                const data = promoSnap.data();
+                
+                // Check if active and not expired
+                const isNotExpired = !data.expiryDate || new Date(data.expiryDate) > new Date();
+                
+                if (data.isActive && isNotExpired) {
+                    activePromoCode = codeInput;
+                    activePromoDiscount = data.discountPercentage || 0;
+                    
+                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`;
+                    msgBox.style.color = "#10b981";
+                    updatePrices();
+                } else {
+                    throw new Error("This code is expired or inactive.");
+                }
+            } else {
+                throw new Error("Invalid promo code.");
+            }
+        } catch (e) {
+            activePromoCode = null;
+            activePromoDiscount = 0;
+            msgBox.textContent = `❌ ${e.message || "Invalid code"}`;
+            msgBox.style.color = "#ef4444";
+            updatePrices();
+        } finally {
+            btnApplyPromo.textContent = "Apply";
+            btnApplyPromo.disabled = false;
+        }
+    });
+}
+
+// UPDATED: Pricing Calculator with Promo integration
 function updatePrices() {
     const courseCount = document.querySelectorAll('.course-check:checked').length;
     const bookCount = document.querySelectorAll('.book-check:checked').length;
@@ -506,7 +565,13 @@ function updatePrices() {
         let coursePrice = courseCount > 0 ? baseCoursePrices[i] : 0;
         let rawBookTotal = bookCount * baseBookPrices[i];
         let discountedBookTotal = rawBookTotal * (1 - bookDiscount);
+        
         let totalPrice = Math.round(coursePrice + discountedBookTotal);
+        
+        // Apply Promo Code Discount if active
+        if (activePromoDiscount > 0) {
+            totalPrice = Math.round(totalPrice * (1 - (activePromoDiscount / 100)));
+        }
         
         const priceEl = document.getElementById('price-' + i);
         if(priceEl) priceEl.textContent = 'Rs. ' + totalPrice.toLocaleString();
@@ -610,6 +675,7 @@ if (btnSubmitPayment) {
 
             const userEmailToSave = currentUserData?.email || fallbackEmail;
 
+            // UPDATED: Now submits the promo code data to the database
             const submitPromise = addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId,
                 userEmail: userEmailToSave,
@@ -618,6 +684,8 @@ if (btnSubmitPayment) {
                 durationDays: durationDays,
                 planName: planName,
                 receiptUrl: receiptUrl,
+                appliedPromoCode: activePromoCode,       // NEW
+                promoDiscountApplied: activePromoDiscount, // NEW
                 status: 'pending',
                 timestamp: serverTimestamp()
             });
@@ -629,6 +697,13 @@ if (btnSubmitPayment) {
             await Promise.race([submitPromise, timeoutPromise]);
             
             alert("Payment request submitted successfully! Please wait for admin approval.");
+            
+            // Clean up states on success
+            activePromoCode = null;
+            activePromoDiscount = 0;
+            document.getElementById('promo-input').value = "";
+            document.getElementById('promo-message').textContent = "";
+            
             document.getElementById('premium-modal').style.display = 'none';
 
         } catch (e) {

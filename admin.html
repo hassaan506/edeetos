@@ -31,6 +31,7 @@
             <button class="admin-tab" onclick="switchView('keys')"><i class="fas fa-key" style="color: #d97706;"></i> Keys</button>
             <button class="admin-tab active" onclick="switchView('users')"><i class="fas fa-users" style="color: #10b981;"></i> Users</button>
             <button class="admin-tab" onclick="switchView('messages')"><i class="fas fa-envelope" style="color: #3b82f6;"></i> Messages</button>
+			<button class="admin-tab" onclick="switchView('promos')"><i class="fas fa-tags" style="color: #ec4899;"></i> Promos</button>
         </div>
 
         <!-- === FEATURE: USERS MANAGEMENT VIEW === -->
@@ -185,7 +186,46 @@
                 <p style="color: #64748b; padding: 2rem; text-align: center;">Loading messages...</p>
             </div>
         </div>
+		<!-- === FEATURE: PROMO CODES VIEW === -->
+        <div id="view-promos" class="admin-content" style="display: none;">
+            <h2 class="page-title"><i class="fas fa-tags" style="color: #ec4899;"></i> Promo Codes Manager</h2>
+            
+            <!-- Promo Creation Form -->
+            <div class="glass-box" style="margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Promo Code (e.g. WINTER20)</label>
+                        <input type="text" id="promo-code" placeholder="Enter code string" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label>Discount Percentage (%)</label>
+                        <input type="number" id="promo-discount" placeholder="e.g. 20" min="1" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Expires On (Optional)</label>
+                        <input type="date" id="promo-expiry">
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button id="btn-generate-promo" class="btn-solid" onclick="generatePromo()">Create Promo</button>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Active Promos Table -->
+            <div class="glass-box" style="padding: 0; overflow-x: auto;">
+                <table style="width: 100%; text-align: left; border-collapse: collapse; font-size: 0.95rem;">
+                    <tr style="border-bottom: 2px solid #e2e8f0; color: #64748b;">
+                        <th style="padding: 1.2rem;">Code</th>
+                        <th>Discount</th>
+                        <th>Status / Expiry</th>
+                        <th>Action</th>
+                    </tr>
+                    <tbody id="promos-table-body">
+                        <tr><td colspan="4" style="text-align: center; padding: 2rem; color: #94a3b8;">Loading promos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <!-- === FEATURE: MODALS === -->
