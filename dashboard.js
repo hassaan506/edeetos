@@ -161,7 +161,8 @@ onAuthStateChanged(auth, async (user) => {
                         freeWarning.textContent = "(Free users limited to 50Qs/subject)";
                     }
                 }
-
+				const btnReports = document.getElementById('btn-reports-panel');
+				if (btnReports) btnReports.style.display = 'flex';
                 // 5. Mentor Specific Logic
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     const btnReports = document.getElementById('btn-reports-panel');

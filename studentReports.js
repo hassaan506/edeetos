@@ -12,6 +12,20 @@ const detailsPanel = document.getElementById('report-details');
 
 let studentsData = [];
 
+// ==========================================
+// TIME FORMATTING HELPER
+// ==========================================
+function formatTime(totalSeconds) {
+    if (!totalSeconds || isNaN(totalSeconds)) return '0s';
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = Math.floor(totalSeconds % 60);
+    
+    if (h > 0) return `${h}h ${m}m`;
+    if (m > 0) return `${m}m ${s}s`;
+    return `${s}s`;
+}
+
 // 1. Security Check & Routing
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -43,8 +57,8 @@ onAuthStateChanged(auth, async (user) => {
                     // Directly load the student's own data
                     displayDetailedReport(userData);
                 } else {
-                    // Admins and Mentors get the full list
-                    fetchStudents();
+                    // Admins and Mentors get the full list (and their own profile)
+                    fetchStudents(userData);
                 }
             }
         } catch (error) {
@@ -55,9 +69,19 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// 2. Fetch all standard students
-async function fetchStudents() {
+// 2. Fetch all standard students & Include the logged-in Mentor
+async function fetchStudents(currentUserData) {
     try {
+        studentsData = [];
+        
+        // ADD CURRENT MENTOR/ADMIN FIRST
+        if (currentUserData) {
+            studentsData.push({
+                ...currentUserData,
+                fullName: (currentUserData.fullName || "My Account") + " (Me)"
+            });
+        }
+
         const usersRef = collection(db, "users");
         const userSnap = await getDocs(usersRef);
         
@@ -65,12 +89,22 @@ async function fetchStudents() {
             const data = docSnap.data();
             const role = (data.role || 'STUDENT').toUpperCase();
             
+            // Only add actual students to the rest of the list
             if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
-                studentsData.push({ id: docSnap.id, ...data });
+                // Prevent duplicating the current user if they somehow slip through
+                if (docSnap.id !== currentUserData.id) {
+                    studentsData.push({ id: docSnap.id, ...data });
+                }
             }
         });
 
-        studentsData.sort((a, b) => (a.fullName || "A").localeCompare(b.fullName || "A"));
+        // Sort alphabetically, but keep "(Me)" at the top
+        studentsData.sort((a, b) => {
+            if (a.id === currentUserData.id) return -1;
+            if (b.id === currentUserData.id) return 1;
+            return (a.fullName || "A").localeCompare(b.fullName || "A");
+        });
+        
         renderStudentList(studentsData);
 
     } catch (error) {
@@ -92,8 +126,15 @@ function renderStudentList(list) {
         const item = document.createElement('div');
         item.className = 'student-item';
         
+        // Highlight the Mentor's own profile slightly differently
+        const isMe = student.fullName.includes("(Me)");
+        if (isMe) {
+            item.style.borderLeft = "4px solid #8b5cf6";
+            item.style.backgroundColor = "#f8fafc";
+        }
+        
         item.innerHTML = `
-            <div class="student-name">${student.fullName || "Unnamed User"}</div>
+            <div class="student-name" style="${isMe ? 'color: #8b5cf6;' : ''}">${student.fullName || "Unnamed User"}</div>
             <div class="student-email">${student.email || "No Email"}</div>
         `;
 
@@ -234,14 +275,32 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     let examHistory = [];
     let rawSolved = [];
     let rawMistakes = [];
+    
+    // Time Tracking Variables
+    let totalPracticeTime = 0; // in seconds
+    let totalExamTime = 0; // in seconds
+    let totalExamQuestions = 0;
 
-    // Dump all raw IDs with their buckets
+    // Dump all raw IDs with their buckets & track time
     standardCourses.forEach(c => {
         if (student[c]) {
             [...new Set(student[c].solvedQuestions || [])].forEach(id => rawSolved.push({id: String(id), bucket: c}));
             const mistakes = [...new Set([...(student[c].mistakes || []), ...(student[c].examMistakes || [])])];
             mistakes.forEach(id => rawMistakes.push({id: String(id), bucket: c}));
-            if (student[c].examHistory) examHistory.push(...student[c].examHistory);
+            
+            // Collect practice time if it exists in DB
+            if (student[c].practiceTimeSpent) {
+                totalPracticeTime += student[c].practiceTimeSpent;
+            }
+
+            // Collect exam history and exam time
+            if (student[c].examHistory) {
+                student[c].examHistory.forEach(exam => {
+                    examHistory.push(exam);
+                    if (exam.timeSpent) totalExamTime += exam.timeSpent;
+                    if (exam.totalQuestions) totalExamQuestions += exam.totalQuestions;
+                });
+            }
         }
     });
 
@@ -249,7 +308,18 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         [...new Set(student.books.solvedQuestions || [])].forEach(id => rawSolved.push({id: String(id), bucket: 'books'}));
         const mistakes = [...new Set([...(student.books.mistakes || []), ...(student.books.examMistakes || [])])];
         mistakes.forEach(id => rawMistakes.push({id: String(id), bucket: 'books'}));
-        if (student.books.examHistory) examHistory.push(...student.books.examHistory);
+        
+        if (student.books.practiceTimeSpent) {
+            totalPracticeTime += student.books.practiceTimeSpent;
+        }
+
+        if (student.books.examHistory) {
+            student.books.examHistory.forEach(exam => {
+                examHistory.push(exam);
+                if (exam.timeSpent) totalExamTime += exam.timeSpent;
+                if (exam.totalQuestions) totalExamQuestions += exam.totalQuestions;
+            });
+        }
     }
 
     // Process all raw IDs into topics!
@@ -365,6 +435,10 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     const absoluteAttempts = absoluteSolved + absoluteMistakes;
     const overallAccuracy = absoluteAttempts > 0 ? Math.round((absoluteSolved / absoluteAttempts) * 100) : 0;
 
+    // Calculate Average Times
+    const avgPracticeTimePerQ = absoluteAttempts > 0 ? (totalPracticeTime / absoluteAttempts) : 0;
+    const avgExamTimePerQ = totalExamQuestions > 0 ? (totalExamTime / totalExamQuestions) : 0;
+
     let weakestSubject = 'N/A';
     let weakestSubjectAccuracy = 100;
     Object.entries(subjectStats).forEach(([name, stats]) => {
@@ -404,18 +478,32 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         heatmapHtml += `<div class="heatmap-box ${level}">${topic}</div>`;
     });
 
+    // Exam History Table to include Time Metrics
     examHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
     let historyHtml = examHistory.length === 0 ? `<p class="empty-data-text">No Exam History</p>` : `
         <table class="history-table">
-            <thead><tr><th>Date</th><th>Exam</th><th>Score</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Exam</th>
+                    <th>Score</th>
+                    <th>Total Time</th>
+                    <th>Avg Time / Q</th>
+                </tr>
+            </thead>
             <tbody>
-                ${examHistory.map(exam => `
+                ${examHistory.map(exam => {
+                    const examAvg = exam.totalQuestions && exam.timeSpent ? (exam.timeSpent / exam.totalQuestions) : 0;
+                    return `
                     <tr>
                         <td>${new Date(exam.date).toLocaleDateString()}</td>
                         <td>${exam.examName || 'Practice'}</td>
                         <td>${exam.percentage || 0}%</td>
+                        <td>${formatTime(exam.timeSpent)}</td>
+                        <td>${formatTime(examAvg)}</td>
                     </tr>
-                `).join('')}
+                    `;
+                }).join('')}
             </tbody>
         </table>`;
 
@@ -448,6 +536,22 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
             <div class="stat-card yellow">
                 <div class="stat-title">Strongest Topic</div>
                 <div class="stat-value" style="font-size:1rem;">${strongestTopic}</div>
+            </div>
+        </div>
+
+        <div class="report-card">
+            <h3>⏱️ Time Tracking Analytics</h3>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="analytics-title">Total Practice Time</div>
+                    <div class="analytics-value text-blue">${formatTime(totalPracticeTime)}</div>
+                    <small>Avg: ${formatTime(avgPracticeTimePerQ)} / question</small>
+                </div>
+                <div class="analytics-card">
+                    <div class="analytics-title">Total Exam Time</div>
+                    <div class="analytics-value text-blue">${formatTime(totalExamTime)}</div>
+                    <small>Avg: ${formatTime(avgExamTimePerQ)} / question</small>
+                </div>
             </div>
         </div>
 
