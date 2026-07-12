@@ -1,52 +1,6 @@
-// === FEATURE: FIREBASE DATABASE IMPORTS ===
 import { db } from "./firebase-config.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// === FEATURE: SECURITY & ACCESS CONTROL ===
-function lockDownContent() {
-    console.log("Security: Lockdown engaged. User does not have admin/management privileges.");
-    
-    // Add CSS class to prevent mouse text highlighting
-    document.body.classList.add("security-locked");
-
-    // Block Right-Click Context Menu
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-    });
-
-    // Block Keyboard Copying (Ctrl+C, Cmd+C)
-    document.addEventListener('copy', (e) => {
-        e.preventDefault();
-    });
-
-    // Intercept specific keystrokes (PrintScreen, Ctrl+C)
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'PrintScreen') {
-            navigator.clipboard.writeText(''); 
-            e.preventDefault();
-        }
-        
-        if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C')) {
-            e.preventDefault();
-        }
-    });
-}
-
-function initializeSecurity() {
-    // Replace this string with your actual Firebase Auth user role check
-    const currentUserRole = "student"; 
-    
-    if (currentUserRole !== "admin" && currentUserRole !== "management") {
-        lockDownContent();
-    } else {
-        console.log("Security: Full access granted. Role verified as admin/management.");
-    }
-}
-
-initializeSecurity();
-
-
-// === FEATURE: CONTACT FORM SUBMISSION ===
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {

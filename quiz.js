@@ -90,69 +90,6 @@ function loadSession() {
 }
 
 // ==========================================
-// 2. SCOPED SECURITY & ANTI-CHEAT
-// ==========================================
-function applySecurityMeasures(role) {
-    const roleUpper = (role || 'STUDENT').toUpperCase();
-    
-    // Scoped check: Only arm the traps if the question interface actually exists on this page
-    const isSecurePage = document.querySelector('.question-card') !== null;
-    
-    window.handleContextMenu = (e) => e.preventDefault();
-    window.handleCopy = (e) => e.preventDefault();
-    
-    window.handleKeyUp = (e) => {
-        if (e.key === 'PrintScreen') {
-            navigator.clipboard.writeText('Screenshots are disabled for copyright protection.'); 
-            const screen = document.getElementById('anti-screenshot-screen');
-            if (screen) screen.style.display = 'flex';
-        }
-    };
-    
-    window.handleVisibility = () => {
-        if (document.visibilityState === 'hidden') {
-            document.body.style.filter = 'blur(15px)';
-        } else {
-            document.body.style.filter = 'none';
-        }
-    };
-    
-    window.handleBlur = () => {
-        document.body.style.filter = 'blur(15px)';
-    };
-    
-    window.handleFocus = () => {
-        document.body.style.filter = 'none';
-    };
-
-    // If the user is an admin, OR if this script is running on an unprotected page, disable restrictions.
-    if (!isSecurePage || roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
-        document.body.style.userSelect = 'auto';
-        document.body.style.webkitUserSelect = 'auto';
-        document.body.style.filter = 'none';
-        
-        document.removeEventListener('contextmenu', window.handleContextMenu);
-        document.removeEventListener('copy', window.handleCopy);
-        window.removeEventListener('keyup', window.handleKeyUp);
-        document.removeEventListener('visibilitychange', window.handleVisibility);
-        window.removeEventListener('blur', window.handleBlur);
-        window.removeEventListener('focus', window.handleFocus);
-        return; 
-    }
-
-    // Enforce strict restrictions for regular students on the protected page
-    document.body.style.userSelect = 'none';
-    document.body.style.webkitUserSelect = 'none';
-    
-    document.addEventListener('contextmenu', window.handleContextMenu);
-    document.addEventListener('copy', window.handleCopy);
-    window.addEventListener('keyup', window.handleKeyUp);
-    document.addEventListener('visibilitychange', window.handleVisibility);
-    window.addEventListener('blur', window.handleBlur);
-    window.addEventListener('focus', window.handleFocus);
-}
-
-// ==========================================
 // 3. INITIALIZATION & FIREBASE AUTH
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
@@ -168,9 +105,6 @@ onAuthStateChanged(auth, async (user) => {
                 currentUserData = dbData;
 
                 const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
-                
-                // Engage the scoped security checks immediately upon detecting the user role
-                applySecurityMeasures(roleUpper);
 
                 if (activeRoomId) {
                     await updateDoc(roomRef, {

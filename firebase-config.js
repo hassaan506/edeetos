@@ -3,9 +3,7 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-// ==========================================
 // 0. GLOBAL UI OVERRIDE (BEAUTIFUL ALERTS)
-// ==========================================
 window.alert = function(message) {
     const overlay = document.createElement('div');
     overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; z-index:999999;';
@@ -54,69 +52,82 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// GLOBAL MULTIPLE DEVICE LOGIN RESTRICTOR
+// SECURITY & ANTI-CHEAT ENGINE
+function enforceSecurity() {
+    const isSecurePage = window.location.pathname.includes('quiz') || window.location.pathname.includes('questions') || document.querySelector('.question-card') !== null;
+    
+    if (!isSecurePage) return;
+
+    document.addEventListener('contextmenu', e => e.preventDefault()); 
+    document.addEventListener('copy', e => { 
+        e.preventDefault(); 
+        alert("Copying text is strictly disabled for security."); 
+    }); 
+    document.addEventListener('cut', e => e.preventDefault()); 
+
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'PrintScreen') {
+            navigator.clipboard.writeText(''); 
+            document.body.style.display = 'none'; 
+            alert("Screenshots are strictly prohibited.");
+            setTimeout(() => document.body.style.display = 'block', 500);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'PrintScreen' || 
+           (e.ctrlKey && ['p','c','s','u'].includes(e.key.toLowerCase())) || 
+           (e.metaKey && ['c','s','p'].includes(e.key.toLowerCase())) ||
+           (e.shiftKey && e.metaKey && ['s','3','4','5'].includes(e.key.toLowerCase()))) {
+            
+            document.body.style.display = 'none';
+            setTimeout(() => document.body.style.display = 'block', 1000);
+        }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        document.body.style.filter = document.hidden ? 'blur(10px) brightness(0)' : 'none';
+    });
+    window.addEventListener('blur', () => {
+        document.body.style.filter = 'blur(10px) brightness(0)';
+    });
+    window.addEventListener('focus', () => {
+        document.body.style.filter = 'none';
+    });
+}
+
+// GLOBAL MULTIPLE DEVICE LOGIN RESTRICTOR & ROLE CHECK
 onAuthStateChanged(auth, (user) => {
     if (user) {
         if (!window.__sessionListenerAttached) {
             window.__sessionListenerAttached = true;
             onSnapshot(doc(db, "users", user.uid), (docSnap) => {
                 if (docSnap.exists()) {
+                    const data = docSnap.data();
                     const localToken = localStorage.getItem("edeetos_session_id");
-                    const dbToken = docSnap.data().sessionToken;
+                    const dbToken = data.sessionToken;
                     
-                    // If the tokens do not match, another device logged into this account
                     if (dbToken && localToken && dbToken !== localToken) {
                         alert("Security Alert: Your account was logged into from another device. You will now be signed out.");
                         localStorage.removeItem("edeetos_session_id");
                         signOut(auth).then(() => {
                             window.location.href = "login.html";
                         });
+                        return;
+                    }
+
+                    const role = (data.role || 'STUDENT').toUpperCase();
+                    if (role !== 'ADMIN' && role !== 'MANAGEMENT') {
+                        enforceSecurity();
+                    } else {
+                        console.log("Security bypassed: Admin/Management privileges recognized.");
                     }
                 }
             });
         }
+    } else {
+        enforceSecurity();
     }
-});
-
-// ==========================================
-// ANTI-SCREENCAP & ANTI-COPY PROTECTION
-// ==========================================
-document.addEventListener('contextmenu', e => e.preventDefault()); // Disable right click
-document.addEventListener('copy', e => { 
-    e.preventDefault(); 
-    alert("Copying text is strictly disabled for security."); 
-}); 
-document.addEventListener('cut', e => e.preventDefault()); 
-
-document.addEventListener('keyup', (e) => {
-    if (e.key === 'PrintScreen') {
-        navigator.clipboard.writeText(''); 
-        document.body.style.display = 'none'; 
-        alert("Screenshots are strictly prohibited.");
-        setTimeout(() => document.body.style.display = 'block', 500);
-    }
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'PrintScreen' || 
-       (e.ctrlKey && ['p','c','s','u'].includes(e.key.toLowerCase())) || 
-       (e.metaKey && ['c','s','p'].includes(e.key.toLowerCase())) ||
-       (e.shiftKey && e.metaKey && ['s','3','4','5'].includes(e.key.toLowerCase()))) {
-        
-        document.body.style.display = 'none';
-        setTimeout(() => document.body.style.display = 'block', 1000);
-    }
-});
-
-// Snipping Tool OS-Level Blocker (Defocus)
-document.addEventListener('visibilitychange', () => {
-    document.body.style.filter = document.hidden ? 'blur(10px) brightness(0)' : 'none';
-});
-window.addEventListener('blur', () => {
-    document.body.style.filter = 'blur(10px) brightness(0)';
-});
-window.addEventListener('focus', () => {
-    document.body.style.filter = 'none';
 });
 
 export { auth, db, storage };

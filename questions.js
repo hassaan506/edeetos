@@ -73,69 +73,6 @@ const examTimerInput = document.getElementById('exam-timer');
 const startExamBtn = document.getElementById('start-exam-btn');
 
 // ==========================================
-// 3. SECURITY & ANTI-CHEAT
-// ==========================================
-function applySecurityMeasures(role) {
-    const roleUpper = (role || 'STUDENT').toUpperCase();
-    
-    // Check if we are actually on the exam/practice page by looking for a unique element
-    const isSecurePage = document.getElementById('subjects-grid') !== null;
-    
-    // Define exact handlers so we can add/remove them cleanly
-    window.handleContextMenu = (e) => e.preventDefault();
-    window.handleCopy = (e) => e.preventDefault();
-    
-    window.handleKeyUp = (e) => {
-        if (e.key === 'PrintScreen') {
-            navigator.clipboard.writeText('Screenshots are disabled on this platform.'); 
-            alert('Screenshots are strictly prohibited on this platform.');
-        }
-    };
-    
-    window.handleVisibility = () => {
-        if (document.visibilityState === 'hidden') {
-            document.body.style.filter = 'blur(15px)';
-        } else {
-            document.body.style.filter = 'none';
-        }
-    };
-    
-    window.handleBlur = () => {
-        document.body.style.filter = 'blur(15px)';
-    };
-    
-    window.handleFocus = () => {
-        document.body.style.filter = 'none';
-    };
-
-    // If the user is an admin, OR if this script is running on a non-secure page, disable all restrictions.
-    if (!isSecurePage || roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
-        document.body.style.userSelect = 'auto';
-        document.body.style.webkitUserSelect = 'auto';
-        document.body.style.filter = 'none';
-        
-        document.removeEventListener('contextmenu', window.handleContextMenu);
-        document.removeEventListener('copy', window.handleCopy);
-        window.removeEventListener('keyup', window.handleKeyUp);
-        document.removeEventListener('visibilitychange', window.handleVisibility);
-        window.removeEventListener('blur', window.handleBlur);
-        window.removeEventListener('focus', window.handleFocus);
-        return; 
-    }
-
-    // Enforce restrictions strictly for students on the secure page
-    document.body.style.userSelect = 'none';
-    document.body.style.webkitUserSelect = 'none';
-    
-    document.addEventListener('contextmenu', window.handleContextMenu);
-    document.addEventListener('copy', window.handleCopy);
-    window.addEventListener('keyup', window.handleKeyUp);
-    document.addEventListener('visibilitychange', window.handleVisibility);
-    window.addEventListener('blur', window.handleBlur);
-    window.addEventListener('focus', window.handleFocus);
-}
-
-// ==========================================
 // 4. MULTIPLAYER & STUDY ROOMS
 // ==========================================
 const activeRoomId = localStorage.getItem('active_study_room');
@@ -1731,9 +1668,6 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 currentUserData = dbData; 
                 currentUserRole = dbData.role || 'STUDENT';
-                
-                // Initialize Role-Based Security
-                applySecurityMeasures(currentUserRole);
                 
                 // Initialize Mentor Tools if allowed
                 initMentorFeatures();
