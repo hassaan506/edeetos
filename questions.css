@@ -1,5 +1,5 @@
 /* ========================================== */
-/* 1. STUDY MODE TOGGLE & BASE BUTTONS        */
+/* 1. BASE UTILITIES & BUTTONS                */
 /* ========================================== */
 .mode-toggle {
     display: inline-flex;
@@ -20,7 +20,15 @@
     border-radius: 6px;
 }
 
-/* Dashboard Metrics Top Bar */
+/* Scrollbar Beautification */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ========================================== */
+/* 2. PROGRESS BARS & DASHBOARD METRICS       */
+/* ========================================== */
 .prog-dash {
     display: flex;
     align-items: center;
@@ -29,23 +37,32 @@
     margin-bottom: 2rem;
     gap: 1.5rem;
 }
+
 .prog-stats {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
+
 .prog-stat-box {
     text-align: center;
 }
+
 .prog-stat-title {
-    font-size: 0.7rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 0.2rem;
+    font-size: 0.7rem; 
+    color: #64748b; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    margin-bottom: 0.2rem;
 }
+
 .prog-actions {
     display: flex;
     align-items: center;
     gap: 0.6rem;
     flex-wrap: nowrap;
 }
+
 .prog-actions button {
     white-space: nowrap;
     padding: 0.6rem 1rem;
@@ -53,8 +70,22 @@
     font-weight: 600;
 }
 
+.progress-container {
+    width: 100%;
+    background-color: #e2e8f0;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #10b981;
+    transition: width 0.4s ease;
+}
+
 /* ========================================== */
-/* 2. SEARCH AND FILTER BAR (Z-INDEX FIX)     */
+/* 3. SEARCH & FILTER BAR                     */
 /* ========================================== */
 .search-filter-bar {
     display: flex;
@@ -118,7 +149,6 @@
     cursor: pointer;
 }
 
-/* --- AUTOCOMPLETE DROPDOWN --- */
 .search-dropdown {
     position: absolute;
     top: 100%; 
@@ -152,7 +182,7 @@
 }
 
 /* ========================================== */
-/* 3. MAIN TOPIC CARDS & PROGRESS BARS        */
+/* 4. MAIN SUBJECT CARDS & GRID               */
 /* ========================================== */
 #subjects-grid {
     display: grid;
@@ -160,7 +190,7 @@
     gap: 1.2rem;
     width: 100%;
     padding: 0.2rem;
-    padding-bottom: 150px; /* Space for the bottom exam dock */
+    padding-bottom: 150px; 
 }
 
 #subjects-grid .feature-card {
@@ -183,9 +213,10 @@
 .card-header-flex {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     margin-bottom: 12px;
     gap: 10px;
+    width: 100%;
 }
 
 .card-title {
@@ -194,6 +225,9 @@
     font-size: 0.95rem;
     margin: 0;
     line-height: 1.3;
+    flex-grow: 1; 
+    min-width: 0; 
+    word-wrap: break-word;
 }
 
 .card-count {
@@ -201,24 +235,11 @@
     font-size: 0.75rem;
     font-weight: 700;
     white-space: nowrap;
-}
-
-.progress-container {
-    width: 100%;
-    background-color: #e2e8f0;
-    height: 6px;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    background-color: #10b981;
-    transition: width 0.4s ease;
+    flex-shrink: 0; 
 }
 
 /* ========================================== */
-/* 4. GLASSMORPHISM DRILL-DOWN POPUPS         */
+/* 5. POPUP MODALS & CHAPTER LIST ITEMS       */
 /* ========================================== */
 .popup-overlay {
     position: fixed;
@@ -286,12 +307,11 @@
     align-items: stretch; 
 }
 
-/* --- THE CHECKBOX LIST ITEMS --- */
 .list-item {
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch; 
     padding: 1.2rem; 
     background: #ffffff;
     border-radius: 10px;
@@ -303,27 +323,40 @@
 }
 
 .list-item:hover {
-    border-color: #3b82f6; /* Blue hover for checkboxes */
+    border-color: #3b82f6; 
     box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
     transform: translateY(-2px); 
 }
 
 .list-item > div:first-child { width: 100%; }
-.list-item .card-header-flex { margin-bottom: 8px; align-items: flex-start; }
 
-/* Custom Styling for the Multi-Select Checkboxes */
+.list-item .card-header-flex { 
+    margin-bottom: 8px; 
+    align-items: center; 
+    flex-wrap: nowrap; 
+}
+
 .list-item input[type="checkbox"] {
     width: 22px;
     height: 22px;
     cursor: pointer;
-    accent-color: #3b82f6; /* Blue accent for selection */
+    accent-color: #3b82f6; 
     flex-shrink: 0; 
     margin-top: 1px;
     margin-right: 12px !important;
 }
 
-.list-item button, 
-.list-item .mini-btn {
+/* Explicitly stop the inline "Start" button from stretching */
+.list-item .card-header-flex button,
+.list-item .card-header-flex .mini-btn {
+    width: auto !important;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Target ONLY the action button at the bottom of the card to span 100% */
+.list-item > button:last-child, 
+.list-item > .mini-btn:last-child {
     width: 100%;
     margin-left: 0 !important; 
     display: flex;
@@ -331,7 +364,6 @@
     align-items: center;
 }
 
-/* --- HERO ITEM (Select All Button) --- */
 .hero-item {
     grid-column: 1 / -1; 
     width: 100%; 
@@ -349,13 +381,13 @@
 
 .hero-item button, 
 .hero-item .mini-btn {
-    width: auto; 
+    width: auto !important; 
     padding: 0.6rem 2.5rem;
     font-size: 0.95rem;
 }
 
 /* ========================================== */
-/* 5. SIDEBAR STYLES                          */
+/* 6. SIDEBAR COMPONENT                       */
 /* ========================================== */
 .sidebar {
     position: fixed;
@@ -409,7 +441,7 @@
 }
 
 /* ========================================== */
-/* 6. UNIVERSAL CART (BOTTOM DOCK)            */
+/* 7. UNIVERSAL EXAM CART (BOTTOM DOCK)       */
 /* ========================================== */
 .exam-action-bar {
     position: fixed;
@@ -422,7 +454,7 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(59, 130, 246, 0.4); /* Blue theme for selection */
+    border: 1px solid rgba(59, 130, 246, 0.4); 
     border-radius: 16px;
     padding: 1rem 2rem;
     display: flex;
@@ -473,13 +505,9 @@
     padding: 0.8rem 2.5rem;
     font-size: 1.1rem;
     border-radius: 8px;
-    background: #3b82f6; /* Blue matching cart */
+    background: #3b82f6; 
 }
 
-/* ========================================== */
-/* 7. MENTOR UI EXTENSIONS                    */
-/* ========================================== */
-/* Added by JS for mentors to assign exams */
 #assign-exam-btn {
     border-color: #8b5cf6;
     color: #8b5cf6;
@@ -521,8 +549,8 @@
     .prog-actions button {
         width: 100%;
     }
-}
-.popup-content {
+    
+    .popup-content {
         position: absolute;
         bottom: 0;
         max-height: 75vh;
@@ -530,19 +558,20 @@
         max-width: 100%;
         border-radius: 20px 20px 0 0;
         animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        padding-bottom: 20px; /* Extra padding for easier scrolling on mobile */
+        padding-bottom: 20px; 
     }
 
     @keyframes slideUp {
         0% { opacity: 0; transform: translateY(100%); }
         100% { opacity: 1; transform: translateY(0); }
     }
-	
+}
+
 @media (max-width: 768px) {
-#subjects-grid {
+    #subjects-grid {
         grid-template-columns: repeat(1, 1fr); 
         gap: 1rem;
-        padding-bottom: 220px !important; /* Pushes the grid up so the cart doesn't block it */
+        padding-bottom: 220px !important; 
     }
     
     .exam-action-bar {
@@ -586,11 +615,3 @@
         width: 100%;
     }
 }
-
-/* ========================================== */
-/* 9. SCROLLBAR BEAUTIFICATION                */
-/* ========================================== */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
