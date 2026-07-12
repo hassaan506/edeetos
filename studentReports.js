@@ -174,9 +174,11 @@ const titles = {
     'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',
     'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3',
     'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5',
-    'firstaid_step1': 'First Aid Step 1', 'rafiullah': 'Rafiullah FCPS',
+    'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2',
+	'rafiullah': 'Rafiullah FCPS', 'doubleAA': 'Double AA FCPS',
     'im_medicine': 'Irfan Masood Medicine', 'im_surgery': 'Irfan Masood Surgery',
-    'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology'
+	'im_pathology': 'Irfan Masood Pathology', 'im_pediatrics': 'Irfan Masood Pediatrics',
+	'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 
 };
 
 let globalQuestionBank = {};
@@ -198,49 +200,51 @@ function parseCSV(text) {
     return ret;
 }
 
-// Fetches ALL CSVs and builds a master dictionary of IDs -> Metadata
-async function preloadQuestionBank() {
-    if (bankLoadPromise) return bankLoadPromise;
+// Optimized lazy loader targeting only the relevant file asset
+async function loadTargetedFileToBank(fileKey) {
+    if (globalQuestionBank[fileKey]) return; // Already loaded
 
-    bankLoadPromise = (async () => {
+    const isBook = referenceBooks.includes(fileKey);
+    const folder = isBook ? 'Books' : 'Data';
+
+    try {
+        const res = await fetch(`${folder}/${fileKey}.csv`);
+        if (!res.ok) return;
+
+        const text = (await res.text()).replace(/^\uFEFF/, '');
+        const rows = parseCSV(text);
+        const headers = rows[0].map(h => h ? h.trim() : "");
+
+        if (!globalQuestionBank[fileKey]) globalQuestionBank[fileKey] = {};
+
+        rows.slice(1).forEach((row, rowIndex) => {
+            if (row.join('').replace(/,/g, '').trim() === '') return;
+
+            let q = {};
+            headers.forEach((h, i) => q[h] = row[i] ? row[i].trim() : "");
+
+            let fallbackPrefix = isBook ? `${fileKey}-` : '';
+            let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${rowIndex + 1}`);
+
+            globalQuestionBank[fileKey][qId] = {
+                Subject: isBook ? (titles[fileKey] || q.Subject) : (q.Subject || 'Unknown Subject'),
+                Chapter: q.Chapter || 'Unknown Chapter',
+                Topic: q.Topic || 'Unknown Topic'
+            };
+        });
+    } catch(e) {
+        console.warn(`Could not lazy-load database map for ${fileKey}`, e);
+    }
+}
+
+// Helper to load either everything or just the requested filter
+async function loadRequiredBanks(activeCourseFilter) {
+    if (activeCourseFilter === 'all') {
         const allFiles = [...standardCourses, ...referenceBooks];
-        
-        await Promise.all(allFiles.map(async (fileKey) => {
-            const isBook = referenceBooks.includes(fileKey);
-            const folder = isBook ? 'Books' : 'Data';
-            
-            try {
-                const res = await fetch(`${folder}/${fileKey}.csv`);
-                if (!res.ok) return;
-                
-                const text = (await res.text()).replace(/^\uFEFF/, '');
-                const rows = parseCSV(text);
-                const headers = rows[0].map(h => h ? h.trim() : "");
-                
-                globalQuestionBank[fileKey] = {};
-                
-                rows.slice(1).forEach((row, rowIndex) => {
-                    if (row.join('').replace(/,/g, '').trim() === '') return;
-                    
-                    let q = {};
-                    headers.forEach((h, i) => q[h] = row[i] ? row[i].trim() : "");
-                    
-                    let fallbackPrefix = isBook ? `${fileKey}-` : '';
-                    let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${rowIndex + 1}`);
-                    
-                    globalQuestionBank[fileKey][qId] = {
-                        Subject: isBook ? (titles[fileKey] || q.Subject) : (q.Subject || 'Unknown Subject'),
-                        Chapter: q.Chapter || 'Unknown Chapter',
-                        Topic: q.Topic || 'Unknown Topic'
-                    };
-                });
-            } catch(e) {
-                console.warn(`Could not load ${fileKey}.csv`, e);
-            }
-        }));
-    })();
-
-    return bankLoadPromise;
+        await Promise.all(allFiles.map(file => loadTargetedFileToBank(file)));
+    } else {
+        await loadTargetedFileToBank(activeCourseFilter);
+    }
 }
 
 // ==========================================
@@ -262,8 +266,8 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         </div>
     `;
 
-    // Ensure our Data Warehouse is built
-    await preloadQuestionBank();
+	// Ensure our targeted Data Warehouse is built
+	await loadRequiredBanks(activeCourseFilter);
 
     let filterOptions = `<option value="all">All Courses & Books</option>`;
     filterOptions += `<optgroup label="Courses">`;

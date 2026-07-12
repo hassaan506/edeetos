@@ -737,15 +737,23 @@ if (questionTextEl) {
 }
 
 function applyTextFormat(range, selection, inlineStyles) {
-    const mark = document.createElement('span');
-    mark.style.cssText = inlineStyles;
     try {
-        range.surroundContents(mark);
+        const mark = document.createElement('span');
+        mark.style.cssText = inlineStyles;
+
+        // Extract the selected content safely to handle compound nodes
+        const fragment = range.extractContents();
+        mark.appendChild(fragment);
+        range.insertNode(mark);
     } catch (err) {
-        console.warn("Cannot format across multiple paragraphs. Select text within a single block.");
+        console.warn("Highlighter fallback applied for compound node layouts.");
+        // Non-destructive fallback if node structure is too complex
+        const mark = document.createElement('mark');
+        mark.style.cssText = inlineStyles;
+        range.surroundContents(mark);
     }
     selection.removeAllRanges();
-    floatingHighlightBtn.style.display = 'none';
+    if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none';
 }
 
 // ==========================================
@@ -1403,4 +1411,54 @@ async function updateSpacedRepetition() {
     }
 }
 
-loadSession();
+// ==========================================
+// 12. TAB CLOSURE SAFETY & GHOST USER CLEANUP
+// ==========================================
+function checkAndRestoreAbortedSession() {
+    const backupStr = localStorage.getItem('edeetos_aborted_session_backup');
+    if (backupStr) {
+        if (confirm("We noticed your last practice session ended unexpectedly. Would you like to restore your progress?")) {
+            const backup = JSON.parse(backupStr);
+            quizQueue = backup.queue;
+            // Need to parse config again to restore the object
+            const restoredConfig = backup.config; 
+            currentIndex = backup.index;
+            sessionSeconds = backup.seconds;
+            localStorage.removeItem('edeetos_aborted_session_backup');
+            return true;
+        }
+        localStorage.removeItem('edeetos_aborted_session_backup');
+    }
+    return false;
+}
+
+window.addEventListener('beforeunload', (e) => {
+    // Save progress locally if they close the tab unexpectedly
+    if (quizQueue && quizQueue.length > 0 && !isExamMode && !activeRoomId) {
+        localStorage.setItem('edeetos_aborted_session_backup', JSON.stringify({
+            queue: quizQueue,
+            config: quizConfig,
+            index: currentIndex,
+            seconds: sessionSeconds
+        }));
+    }
+});
+
+window.addEventListener('unload', () => {
+    // Remove the user from the study room instantly if they close the window
+    if (activeRoomId) {
+        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+        if (isGuest && currentUserId && roomRef) {
+            import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js").then(({ updateDoc, deleteField }) => {
+                updateDoc(roomRef, {
+                    [`activeMembers.${currentUserId}`]: deleteField()
+                });
+            });
+        }
+    }
+});
+
+// Boot up the session, checking for backups first
+if (!checkAndRestoreAbortedSession()) {
+    loadSession();
+}

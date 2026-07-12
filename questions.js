@@ -639,9 +639,22 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-    localStorage.setItem('edeetos_active_quiz', JSON.stringify(questionsArray));
-    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-    window.location.href = 'quiz.html';
+// Prevent QuotaExceededError (5MB LocalStorage Limit)
+    let safeStorageArray = questionsArray;
+    if (safeStorageArray.length > 200) {
+        alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
+        safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
+    }
+
+    try {
+        localStorage.setItem('edeetos_active_quiz', JSON.stringify(safeStorageArray));
+        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+        window.location.href = 'quiz.html';
+    } catch (e) {
+        alert("Device storage full. Please clear your browser cache to load this quiz.");
+        console.error("Storage Error:", e);
+        document.body.style.cursor = 'default';
+    }
 };
 
 function generateExamTitle(paths, currentView) {
