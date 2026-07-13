@@ -1,7 +1,6 @@
 // === FEATURE: FIREBASE IMPORTS ===
-import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 
 // === FEATURE: ADMIN AUTHENTICATION & INITIALIZATION ===
@@ -788,8 +787,6 @@ async function fetchReports() {
     
     if (unsubscribeReports) return; 
 
-    const { query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-
     unsubscribeReports = onSnapshot(collection(db, "reported_questions"), (qSnap) => {
         list.innerHTML = '';
         let hasReports = false;
@@ -844,7 +841,6 @@ async function fetchReports() {
             card.querySelector('.btn-resolve-report').addEventListener('click', async () => {
                 if(confirm("Are you sure you want to resolve and delete this report?")) {
                     try {
-                        const { deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
                         await deleteDoc(doc(db, "reported_questions", data.id));
                         alert("Report resolved and removed!");
                     } catch (e) {
@@ -869,8 +865,6 @@ async function fetchMessages() {
     if(!list) return;
     
     if (unsubscribeMessages) return; 
-
-    const { collection, onSnapshot, doc, deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
 
     unsubscribeMessages = onSnapshot(collection(db, "contact_messages"), (qSnap) => {
         list.innerHTML = '';
