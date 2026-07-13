@@ -131,3 +131,14 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export { auth, db, storage };
+
+export const courseNamesMap = {
+    'mbbs_year1': 'MBBS 1st Year', 'mbbs_year2': 'MBBS 2nd Year', 'mbbs_year3': 'MBBS 3rd Year', 'mbbs_year4': 'MBBS 4th Year', 'mbbs_year5': 'MBBS 5th Year',
+    'fcps_imm': 'FCPS IMM', 'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2',
+    'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2'
+};
+
+export const mergedNamesMap = { 
+    ...courseNamesMap, 
+    'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA', 'NONE': 'No Course'
+};

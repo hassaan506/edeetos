@@ -1184,13 +1184,14 @@ const journeyModal = document.getElementById('journey-modal');
 const closeJourneyBtn = document.getElementById('close-journey-btn');
 const trophiesGrid = document.getElementById('trophies-grid');
 
+// We use 'rewardDays' as an integer now to safely calculate subscription extensions
 const trophies = [
-    { title: "Novice", req: 10, icon: "👶", reward: null },
-    { title: "Bronze", req: 100, icon: "🥉", reward: null },
-    { title: "Silver", req: 500, icon: "🥈", reward: "3 Days Premium Free" },
-    { title: "Gold", req: 1000, icon: "🥇", reward: "1 Week Premium Free" },
-    { title: "Diamond", req: 2000, icon: "💎", reward: "2 Weeks Premium Free" },
-    { title: "Master", req: 5000, icon: "👑", reward: "3 Weeks Premium Free" }
+    { title: "Novice", req: 10, icon: "👶", rewardDays: 0 },
+    { title: "Bronze", req: 100, icon: "🥉", rewardDays: 0 },
+    { title: "Silver", req: 500, icon: "🥈", rewardDays: 3 },
+    { title: "Gold", req: 1000, icon: "🥇", rewardDays: 7 },
+    { title: "Diamond", req: 2000, icon: "💎", rewardDays: 14 },
+    { title: "Master", req: 5000, icon: "👑", rewardDays: 21 }
 ];
 
 let currentCum = 0;
@@ -1219,19 +1220,57 @@ function checkMilestones(currentFlawless) {
 
 function showMilestonePopup(trophy) {
     const modal = document.createElement('div');
+    modal.id = 'milestone-reward-modal';
     modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
     
-    const rewardHtml = trophy.reward 
-        ? `<div style="background: #ecfdf5; border: 1px solid #10b981; color: #065f46; padding: 12px; border-radius: 8px; margin: 15px 0; font-weight: bold; display: inline-block;"><i class="fas fa-gift"></i> Reward Unlocked: ${trophy.reward}</div>` 
-        : `<div style="margin: 15px 0;"></div>`;
+    // 1. Determine the user's current subscription status for this specific course
+    let subStatus = "free";
+    const currentSub = currentUserData?.subscriptions?.[activeCourse] || currentUserData?.subscriptions?.['ALL'];
+    
+    if (currentSub === 'lifetime') {
+        subStatus = 'lifetime';
+    } else if (currentSub && new Date(currentSub) > new Date()) {
+        subStatus = 'active';
+    }
+
+    // 2. Build the choice UI dynamically
+    let rewardOptionsHtml = '';
+    if (trophy.rewardDays > 0) {
+        if (subStatus === 'lifetime') {
+            rewardOptionsHtml = `
+                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Since you hold a Lifetime subscription, select your alternative reward:</p>
+                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book</button>
+                </div>
+            `;
+        } else if (subStatus === 'active') {
+            rewardOptionsHtml = `
+                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Choose your reward:</p>
+                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Extend Subscription (+${trophy.rewardDays} Days)</button>
+                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book Instead</button>
+                </div>
+            `;
+        } else {
+            rewardOptionsHtml = `
+                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Choose your reward:</p>
+                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Activate Premium (${trophy.rewardDays} Days)</button>
+                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book</button>
+                </div>
+            `;
+        }
+    } else {
+        rewardOptionsHtml = `<div style="margin: 15px 0;"></div>`;
+    }
 
     modal.innerHTML = `
         <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
             <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
             <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
-            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing this tier's ${trophy.req} flawless questions!</p>
-            ${rewardHtml}
-            <button id="close-milestone-btn" class="btn-solid" style="background: #3b82f6; border: none; width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Continue Journey</button>
+            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
+            ${rewardOptionsHtml}
+            <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Dismiss</button>
         </div>
         <style>
             @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -1239,9 +1278,86 @@ function showMilestonePopup(trophy) {
     `;
     document.body.appendChild(modal);
 
+    // 3. Attach Event Listeners
     modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
+
+    const btnExtend = modal.querySelector('#btn-extend-sub');
+    if (btnExtend) {
+        btnExtend.onclick = async () => {
+            btnExtend.textContent = "Processing...";
+            btnExtend.disabled = true;
+            await grantSubscriptionReward(trophy.rewardDays);
+            modal.remove();
+        };
+    }
+
+    const btnBook = modal.querySelector('#btn-claim-book');
+    if (btnBook) {
+        btnBook.onclick = async () => {
+            btnBook.textContent = "Processing...";
+            btnBook.disabled = true;
+            await claimBookReward(trophy.title);
+            modal.remove();
+        };
+    }
 }
 
+// 4. Backend Update Logics
+async function grantSubscriptionReward(daysToAdd) {
+    try {
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        let currentSubs = currentUserData.subscriptions || {};
+        let currentExpiry = currentSubs[activeCourse];
+
+        let newExpiryDate = new Date();
+        if (currentExpiry && currentExpiry !== 'lifetime') {
+            const existingDate = new Date(currentExpiry);
+            // Ensure we only add days to a future date, not a past expired date
+            if (existingDate > newExpiryDate) {
+                newExpiryDate = existingDate;
+            }
+        }
+        newExpiryDate.setDate(newExpiryDate.getDate() + daysToAdd);
+
+        currentSubs[activeCourse] = newExpiryDate.toISOString();
+
+        await updateDoc(userRef, {
+            subscriptions: currentSubs,
+            isPremium: true
+        });
+
+        // Update local state instantly
+        currentUserData.subscriptions = currentSubs;
+        currentUserData.isPremium = true;
+
+        alert(`Success! Your access to ${activeCourse.replace('_', ' ').toUpperCase()} has been extended by ${daysToAdd} days.`);
+    } catch (err) {
+        console.error("Error extending sub:", err);
+        alert("Failed to process subscription reward. Please check your connection.");
+    }
+}
+
+async function claimBookReward(trophyTitle) {
+    try {
+        const requestRef = collection(db, "reward_claims");
+        await addDoc(requestRef, {
+            userId: auth.currentUser.uid,
+            userEmail: currentUserData.email || "Unknown",
+            rewardType: "book",
+            milestone: trophyTitle,
+            relatedCourse: activeCourse,
+            status: "pending",
+            timestamp: serverTimestamp()
+        });
+
+        alert("Your Book reward request has been submitted to the team! We will coordinate delivery shortly.");
+    } catch (err) {
+        console.error("Error claiming book:", err);
+        alert("Failed to claim book reward. Please try again later.");
+    }
+}
+
+// 5. Journey View Grid Rendering
 if (btnJourney) {
     btnJourney.onclick = () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
@@ -1269,8 +1385,8 @@ if (btnJourney) {
             const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
             
-            const rewardHtml = t.reward 
-                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.reward}</div>` 
+            const rewardHtml = t.rewardDays > 0 
+                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardDays} Days Premium or Book</div>` 
                 : '';
 
             return `

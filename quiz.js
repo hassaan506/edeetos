@@ -705,35 +705,69 @@ if (questionTextEl) {
     questionTextEl.style.userSelect = 'text';
     questionTextEl.style.webkitUserSelect = 'text';
 
-    questionTextEl.addEventListener('mouseup', (e) => {
+    const handleTextSelection = () => {
+        // A short timeout ensures mobile OS native selection finishes registering
+        setTimeout(() => {
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+            
+            // Ensure selection is actually inside the question text
+            if (selectedText.length > 0 && questionTextEl.contains(selection.anchorNode)) {
+                const range = selection.getRangeAt(0);
+                const rect = range.getBoundingClientRect();
+                
+                floatingHighlightBtn.style.top = `${rect.top + window.scrollY - 45}px`;
+                // Center the popup over the selection
+                floatingHighlightBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
+                floatingHighlightBtn.style.display = 'flex';
+                
+                // Use mousedown/touchstart to apply styling BEFORE the browser clears the selection
+                const applyYellow = (e) => {
+                    e.preventDefault(); 
+                    applyTextFormat(range, selection, 'background-color: #fef08a; padding: 2px 4px; border-radius: 4px; color: #1e293b;');
+                };
+                
+                const applyStrike = (e) => {
+                    e.preventDefault(); 
+                    applyTextFormat(range, selection, 'text-decoration: line-through; color: #94a3b8;');
+                };
+
+                const toolYellow = document.getElementById('tool-hl-yellow');
+                const toolStrike = document.getElementById('tool-hl-strike');
+
+                toolYellow.onmousedown = applyYellow;
+                toolYellow.ontouchstart = applyYellow;
+                
+                toolStrike.onmousedown = applyStrike;
+                toolStrike.ontouchstart = applyStrike;
+
+            } else {
+                floatingHighlightBtn.style.display = 'none';
+            }
+        }, 50);
+    };
+
+    // Listen for desktop mouse release and mobile touch release
+    questionTextEl.addEventListener('mouseup', handleTextSelection);
+    questionTextEl.addEventListener('touchend', handleTextSelection);
+
+    // Actively monitor for selection changes/clears
+    document.addEventListener('selectionchange', () => {
         const selection = window.getSelection();
-        const selectedText = selection.toString().trim();
-        
-        if (selectedText.length > 0) {
-            const range = selection.getRangeAt(0);
-            const rect = range.getBoundingClientRect();
-            
-            floatingHighlightBtn.style.top = `${rect.top + window.scrollY - 45}px`;
-            floatingHighlightBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
-            floatingHighlightBtn.style.display = 'flex';
-            
-            document.getElementById('tool-hl-yellow').onclick = () => {
-                applyTextFormat(range, selection, 'background-color: #fef08a; padding: 2px 4px; border-radius: 4px; color: #1e293b;');
-            };
-            
-            document.getElementById('tool-hl-strike').onclick = () => {
-                applyTextFormat(range, selection, 'text-decoration: line-through; color: #94a3b8;');
-            };
-        } else {
-            floatingHighlightBtn.style.display = 'none';
+        if (selection.toString().trim().length === 0) {
+             floatingHighlightBtn.style.display = 'none';
         }
     });
 
-    document.addEventListener('mousedown', (e) => {
+    // Hide toolkit when tapping/clicking elsewhere
+    const hideToolkit = (e) => {
         if (e.target.closest('#floating-toolkit') === null) {
             floatingHighlightBtn.style.display = 'none';
         }
-    });
+    };
+
+    document.addEventListener('mousedown', hideToolkit);
+    document.addEventListener('touchstart', hideToolkit, { passive: true });
 }
 
 function applyTextFormat(range, selection, inlineStyles) {

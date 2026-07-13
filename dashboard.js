@@ -3,21 +3,11 @@ import { auth, db, storage } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-
+import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 let currentUserData = null;
 let currentUserId = null;
 let hasCheckedDowngrade = false;
 
-const courseNamesMap = {
-    'mbbs_year1': 'MBBS 1st Year', 'mbbs_year2': 'MBBS 2nd Year', 'mbbs_year3': 'MBBS 3rd Year', 'mbbs_year4': 'MBBS 4th Year', 'mbbs_year5': 'MBBS 5th Year',
-    'fcps_imm': 'FCPS IMM', 'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2',
-    'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2'
-};
-
-const mergedNamesMap = { 
-    ...courseNamesMap, 
-    'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA'
-};
 
 // === FEATURE: DASHBOARD LOAD, ROLES, & BADGES ===
 onAuthStateChanged(auth, async (user) => {
