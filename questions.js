@@ -1184,14 +1184,14 @@ const journeyModal = document.getElementById('journey-modal');
 const closeJourneyBtn = document.getElementById('close-journey-btn');
 const trophiesGrid = document.getElementById('trophies-grid');
 
-// We use 'rewardDays' as an integer now to safely calculate subscription extensions
+// Decoupled value from unit to support both hours and days
 const trophies = [
-    { title: "Novice", req: 10, icon: "👶", rewardDays: 0 },
-    { title: "Bronze", req: 100, icon: "🥉", rewardDays: 0 },
-    { title: "Silver", req: 500, icon: "🥈", rewardDays: 3 },
-    { title: "Gold", req: 1000, icon: "🥇", rewardDays: 7 },
-    { title: "Diamond", req: 2000, icon: "💎", rewardDays: 14 },
-    { title: "Master", req: 5000, icon: "👑", rewardDays: 21 }
+    { title: "Novice", req: 10, icon: "👶", rewardValue: 1, rewardUnit: "Hour" },
+    { title: "Bronze", req: 100, icon: "🥉", rewardValue: 1, rewardUnit: "Day" },
+    { title: "Silver", req: 500, icon: "🥈", rewardValue: 3, rewardUnit: "Days" },
+    { title: "Gold", req: 1000, icon: "🥇", rewardValue: 7, rewardUnit: "Days" },
+    { title: "Diamond", req: 2000, icon: "💎", rewardValue: 14, rewardUnit: "Days" },
+    { title: "Master", req: 5000, icon: "👑", rewardValue: 21, rewardUnit: "Days" }
 ];
 
 let currentCum = 0;
@@ -1233,9 +1233,9 @@ function showMilestonePopup(trophy) {
         subStatus = 'active';
     }
 
-    // 2. Build the choice UI dynamically
+    // 2. Build the choice UI dynamically based on the new rewardValue and rewardUnit
     let rewardOptionsHtml = '';
-    if (trophy.rewardDays > 0) {
+    if (trophy.rewardValue > 0) {
         if (subStatus === 'lifetime') {
             rewardOptionsHtml = `
                 <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
@@ -1247,7 +1247,7 @@ function showMilestonePopup(trophy) {
             rewardOptionsHtml = `
                 <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
                     <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Choose your reward:</p>
-                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Extend Subscription (+${trophy.rewardDays} Days)</button>
+                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Extend Subscription (+${trophy.rewardValue} ${trophy.rewardUnit})</button>
                     <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book Instead</button>
                 </div>
             `;
@@ -1255,7 +1255,7 @@ function showMilestonePopup(trophy) {
             rewardOptionsHtml = `
                 <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
                     <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Choose your reward:</p>
-                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Activate Premium (${trophy.rewardDays} Days)</button>
+                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Activate Premium (${trophy.rewardValue} ${trophy.rewardUnit})</button>
                     <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book</button>
                 </div>
             `;
@@ -1286,7 +1286,8 @@ function showMilestonePopup(trophy) {
         btnExtend.onclick = async () => {
             btnExtend.textContent = "Processing...";
             btnExtend.disabled = true;
-            await grantSubscriptionReward(trophy.rewardDays);
+            // Pass both value and unit to backend logic
+            await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit);
             modal.remove();
         };
     }
@@ -1303,7 +1304,8 @@ function showMilestonePopup(trophy) {
 }
 
 // 4. Backend Update Logics
-async function grantSubscriptionReward(daysToAdd) {
+// Now accepts value and unit to handle both hours and days accurately
+async function grantSubscriptionReward(rewardValue, rewardUnit) {
     try {
         const userRef = doc(db, "users", auth.currentUser.uid);
         let currentSubs = currentUserData.subscriptions || {};
@@ -1312,12 +1314,18 @@ async function grantSubscriptionReward(daysToAdd) {
         let newExpiryDate = new Date();
         if (currentExpiry && currentExpiry !== 'lifetime') {
             const existingDate = new Date(currentExpiry);
-            // Ensure we only add days to a future date, not a past expired date
+            // Ensure we only add time to a future date, not a past expired date
             if (existingDate > newExpiryDate) {
                 newExpiryDate = existingDate;
             }
         }
-        newExpiryDate.setDate(newExpiryDate.getDate() + daysToAdd);
+        
+        // Execute correct math based on the unit string
+        if (rewardUnit === "Hour") {
+            newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue);
+        } else {
+            newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue);
+        }
 
         currentSubs[activeCourse] = newExpiryDate.toISOString();
 
@@ -1330,7 +1338,7 @@ async function grantSubscriptionReward(daysToAdd) {
         currentUserData.subscriptions = currentSubs;
         currentUserData.isPremium = true;
 
-        alert(`Success! Your access to ${activeCourse.replace('_', ' ').toUpperCase()} has been extended by ${daysToAdd} days.`);
+        alert(`Success! Your access to ${activeCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
     } catch (err) {
         console.error("Error extending sub:", err);
         alert("Failed to process subscription reward. Please check your connection.");
@@ -1385,8 +1393,9 @@ if (btnJourney) {
             const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
             
-            const rewardHtml = t.rewardDays > 0 
-                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardDays} Days Premium or Book</div>` 
+            // Generate reward text dynamically based on available properties
+            const rewardHtml = t.rewardValue > 0 
+                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium or Book</div>` 
                 : '';
 
             return `
@@ -1417,6 +1426,7 @@ if (journeyModal) {
         if (e.target === journeyModal) journeyModal.style.display = 'none';
     };
 }
+
 
 // ==========================================
 // 14. REVISIONS & SPACED REPETITION
