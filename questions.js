@@ -1193,9 +1193,12 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", rewardValue: 21, rewardUnit: "Days" }
 ];
 
-const processedTrophies = trophies.map((t, index, arr) => {
-    const prev = index === 0 ? 0 : arr[index - 1].req;
-    return { ...t, cumulativeReq: t.req, previousCum: prev };
+// FIX: Correctly accumulate requirements for delta milestones (10, 110, 610...)
+let cumulativeSum = 0;
+const processedTrophies = trophies.map((t) => {
+    const previousCum = cumulativeSum;
+    cumulativeSum += t.req;
+    return { ...t, cumulativeReq: cumulativeSum, previousCum: previousCum };
 });
 
 function checkMilestones(currentFlawless) {
@@ -1206,16 +1209,41 @@ function checkMilestones(currentFlawless) {
 
     const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title));
 
+    // FIX: Push to an unclaimed queue so rewards aren't lost if the user dismisses the popup
     if (newlyUnlocked.length > 0) {
-        const highestNew = newlyUnlocked[newlyUnlocked.length - 1];
-        showMilestonePopup(highestNew);
-
-        newlyUnlocked.forEach(t => unlockedTiers.push(t.title));
+        let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
+        
+        newlyUnlocked.forEach(t => {
+            unlockedTiers.push(t.title);
+            if (!unclaimed.some(u => u.title === t.title)) {
+                unclaimed.push(t);
+            }
+        });
+        
         localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
+        localStorage.setItem('edeetos_unclaimed_rewards', JSON.stringify(unclaimed));
+    }
+    
+    triggerNextUnclaimedPopup();
+}
+
+function triggerNextUnclaimedPopup() {
+    let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
+    if (unclaimed.length > 0) {
+        showMilestonePopup(unclaimed[0]);
     }
 }
 
+function removeUnclaimedReward(title) {
+    let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
+    unclaimed = unclaimed.filter(t => t.title !== title);
+    localStorage.setItem('edeetos_unclaimed_rewards', JSON.stringify(unclaimed));
+}
+
 function showMilestonePopup(trophy) {
+    const existing = document.getElementById('milestone-reward-modal');
+    if (existing) existing.remove();
+
     const modal = document.createElement('div');
     modal.id = 'milestone-reward-modal';
     modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
@@ -1237,43 +1265,56 @@ function showMilestonePopup(trophy) {
 
     let rewardOptionsHtml = '';
     if (trophy.rewardValue > 0) {
+        const isLifetime = subStatus === 'lifetime';
+        
+        // FIX: Unified selection UI so users clearly pick Course OR Book before confirming
         rewardOptionsHtml = `
             <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
-                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Select your Reward:</p>
+                <p style="font-size: 0.95rem; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">Choose ONE Reward:</p>
                 
-                ${subStatus !== 'lifetime' ? `
-                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #e2e8f0;">
-                    <label style="font-size: 0.8rem; font-weight: bold; color: #1e3a8a; display: block; margin-bottom: 5px;">Target Course for Extension:</label>
-                    <select id="reward-course-selection" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;">
-                        ${courseOptionsHtml}
-                    </select>
-                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">
-                        Extend Course Access (+${trophy.rewardValue} ${trophy.rewardUnit})
-                    </button>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+                    ${!isLifetime ? `
+                    <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
+                            <input type="radio" name="rewardChoice" value="course" checked style="transform: scale(1.2);"> 
+                            Extend Course Access (+${trophy.rewardValue} ${trophy.rewardUnit})
+                        </label>
+                        <div id="course-selection-div" style="padding-left: 24px; transition: 0.3s;">
+                            <select id="reward-course-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
+                                ${courseOptionsHtml}
+                            </select>
+                        </div>
+                    </div>
+                    ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You have Lifetime Course Access.</div>'}
+                    
+                    <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
+                            <input type="radio" name="rewardChoice" value="book" ${isLifetime ? 'checked' : ''} style="transform: scale(1.2);">
+                            Claim a Study Book
+                        </label>
+                        <div id="book-selection-div" style="padding-left: 24px; ${isLifetime ? '' : 'pointer-events: none;'} transition: 0.3s;">
+                            <select id="reward-book-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
+                                <option value="" disabled selected>Select a Study Book...</option>
+                                ${bookOptionsHtml}
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                ` : '<div style="margin-bottom: 10px; color: #059669; font-weight: bold; font-size: 0.85rem;">You have Lifetime Access. Claim a book below instead.</div>'}
-                
-                <div>
-                    <label style="font-size: 0.8rem; font-weight: bold; color: #064e3b; display: block; margin-bottom: 5px;">Or Claim a Study Book:</label>
-                    <select id="reward-book-selection" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;">
-                        <option value="" disabled selected>Select a Study Book...</option>
-                        ${bookOptionsHtml}
-                    </select>
-                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">
-                        Claim Study Book
-                    </button>
-                </div>
+
+                <button id="btn-confirm-reward" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.2s;">
+                    Claim Selected Reward
+                </button>
             </div>
         `;
     }
 
     modal.innerHTML = `
-        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-            <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
-            <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
-            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
+        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto;">
+            <div style="font-size: 4.5rem; margin-bottom: 10px; line-height: 1;">${trophy.icon}</div>
+            <h2 style="color: #1e3a8a; margin-bottom: 10px; font-size: 1.6rem;">Milestone Reached!</h2>
+            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 5px;">You achieved the <strong style="color: #0f172a;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
             ${rewardOptionsHtml}
-            <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1.1rem; cursor: pointer; border-radius: 8px;">Dismiss</button>
+            <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1rem; cursor: pointer; border-radius: 8px;">Claim Later</button>
         </div>
         <style>
             @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -1281,35 +1322,61 @@ function showMilestonePopup(trophy) {
     `;
     document.body.appendChild(modal);
 
-    modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
+    modal.querySelector('#close-milestone-btn').onclick = () => modal.remove(); // Unclaimed reward is preserved
 
-    const btnExtend = modal.querySelector('#btn-extend-sub');
-    if (btnExtend) {
-        btnExtend.onclick = async () => {
-            const targetCourse = modal.querySelector('#reward-course-selection').value;
-            btnExtend.textContent = "Processing...";
-            btnExtend.disabled = true;
-            await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse);
-            modal.remove();
-        };
-    }
+    if (trophy.rewardValue > 0) {
+        const radios = modal.querySelectorAll('input[name="rewardChoice"]');
+        const courseDiv = modal.querySelector('#course-selection-div');
+        const bookContainerDiv = modal.querySelector('#book-container-div');
+        const bookDiv = modal.querySelector('#book-selection-div');
 
-    const btnBook = modal.querySelector('#btn-claim-book');
-    if (btnBook) {
-        btnBook.onclick = async () => {
-            const selectedBook = modal.querySelector('#reward-book-selection').value;
-            if (!selectedBook) {
-                return alert("You must select a book from the dropdown first.");
+        // Toggle UI states based on radio selection
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'course') {
+                    if (courseDiv) { courseDiv.parentElement.style.opacity = '1'; courseDiv.style.pointerEvents = 'auto'; }
+                    if (bookContainerDiv) { bookContainerDiv.style.opacity = '0.6'; bookDiv.style.pointerEvents = 'none'; }
+                } else {
+                    if (courseDiv) { courseDiv.parentElement.style.opacity = '0.6'; courseDiv.style.pointerEvents = 'none'; }
+                    if (bookContainerDiv) { bookContainerDiv.style.opacity = '1'; bookDiv.style.pointerEvents = 'auto'; }
+                }
+            });
+        });
+
+        const btnConfirm = modal.querySelector('#btn-confirm-reward');
+        btnConfirm.onclick = async () => {
+            const selectedType = modal.querySelector('input[name="rewardChoice"]:checked')?.value || (subStatus === 'lifetime' ? 'book' : 'course');
+            
+            btnConfirm.textContent = "Processing...";
+            btnConfirm.disabled = true;
+
+            try {
+                if (selectedType === 'course') {
+                    const targetCourse = modal.querySelector('#reward-course-selection').value;
+                    await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse);
+                } else {
+                    const selectedBook = modal.querySelector('#reward-book-selection').value;
+                    if (!selectedBook) {
+                        btnConfirm.textContent = "Claim Selected Reward";
+                        btnConfirm.disabled = false;
+                        return alert("You must select a book from the dropdown first.");
+                    }
+                    await claimBookReward(trophy.title, selectedBook);
+                }
+                
+                // Clear the reward only on success
+                removeUnclaimedReward(trophy.title);
+                modal.remove();
+                triggerNextUnclaimedPopup();
+                
+            } catch (err) {
+                btnConfirm.textContent = "Claim Selected Reward";
+                btnConfirm.disabled = false;
             }
-            btnBook.textContent = "Processing...";
-            btnBook.disabled = true;
-            await claimBookReward(trophy.title, selectedBook);
-            modal.remove();
         };
     }
 }
 
-// 4. Backend Update Logics
 async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse) {
     try {
         if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
@@ -1350,6 +1417,7 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse) {
     } catch (err) {
         console.error("Error extending sub:", err);
         alert("Failed to process subscription reward. Please check your connection.");
+        throw err; 
     }
 }
 
@@ -1373,10 +1441,10 @@ async function claimBookReward(trophyTitle, selectedBook) {
     } catch (err) {
         console.error("Error claiming book:", err);
         alert("Failed to claim book reward. Please try again later.");
+        throw err;
     }
 }
 
-// 5. Journey View Grid Rendering
 if (btnJourney) {
     btnJourney.onclick = () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
