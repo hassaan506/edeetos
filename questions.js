@@ -1184,7 +1184,6 @@ const journeyModal = document.getElementById('journey-modal');
 const closeJourneyBtn = document.getElementById('close-journey-btn');
 const trophiesGrid = document.getElementById('trophies-grid');
 
-// Decoupled value from unit to support both hours and days
 const trophies = [
     { title: "Novice", req: 10, icon: "👶", rewardValue: 1, rewardUnit: "Hour" },
     { title: "Bronze", req: 100, icon: "🥉", rewardValue: 1, rewardUnit: "Day" },
@@ -1194,11 +1193,10 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", rewardValue: 21, rewardUnit: "Days" }
 ];
 
-let currentCum = 0;
-const processedTrophies = trophies.map(t => {
-    const prev = currentCum;
-    currentCum += t.req;
-    return { ...t, cumulativeReq: currentCum, previousCum: prev };
+// FIX 1: Use absolute values instead of compounding cumulative math
+const processedTrophies = trophies.map((t, index, arr) => {
+    const prev = index === 0 ? 0 : arr[index - 1].req;
+    return { ...t, cumulativeReq: t.req, previousCum: prev };
 });
 
 function checkMilestones(currentFlawless) {
@@ -1223,7 +1221,6 @@ function showMilestonePopup(trophy) {
     modal.id = 'milestone-reward-modal';
     modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
     
-    // 1. Determine the user's current subscription status for this specific course
     let subStatus = "free";
     const currentSub = currentUserData?.subscriptions?.[activeCourse] || currentUserData?.subscriptions?.['ALL'];
     
@@ -1233,39 +1230,47 @@ function showMilestonePopup(trophy) {
         subStatus = 'active';
     }
 
-    // 2. Build the choice UI dynamically based on the new rewardValue and rewardUnit
+    // FIX 2: Generate dynamic dropdown options for courses and books
+    const courseOptionsHtml = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5']
+        .map(c => `<option value="${c}" ${c === activeCourse ? 'selected' : ''}>${c.toUpperCase().replace('_', ' ')}</option>`)
+        .join('');
+
+    const bookOptionsHtml = availableBooks.map(b => `<option value="${b.title}">${b.title}</option>`).join('');
+
     let rewardOptionsHtml = '';
     if (trophy.rewardValue > 0) {
-        if (subStatus === 'lifetime') {
-            rewardOptionsHtml = `
-                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
-                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Since you hold a Lifetime subscription, select your alternative reward:</p>
-                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book</button>
+        rewardOptionsHtml = `
+            <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
+                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Select your Reward:</p>
+                
+                ${subStatus !== 'lifetime' ? `
+                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #e2e8f0;">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #1e3a8a; display: block; margin-bottom: 5px;">Target Course for Extension:</label>
+                    <select id="reward-course-selection" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;">
+                        ${courseOptionsHtml}
+                    </select>
+                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">
+                        Extend Course Access (+${trophy.rewardValue} ${trophy.rewardUnit})
+                    </button>
                 </div>
-            `;
-        } else if (subStatus === 'active') {
-            rewardOptionsHtml = `
-                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
-                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Choose your reward:</p>
-                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Extend Subscription (+${trophy.rewardValue} ${trophy.rewardUnit})</button>
-                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book Instead</button>
+                ` : '<div style="margin-bottom: 10px; color: #059669; font-weight: bold; font-size: 0.85rem;">You have Lifetime Access. Claim a book below instead.</div>'}
+                
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #064e3b; display: block; margin-bottom: 5px;">Or Claim a Study Book:</label>
+                    <select id="reward-book-selection" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;">
+                        <option value="" disabled selected>Select a Study Book...</option>
+                        ${bookOptionsHtml}
+                    </select>
+                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">
+                        Claim Study Book
+                    </button>
                 </div>
-            `;
-        } else {
-            rewardOptionsHtml = `
-                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
-                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; font-weight: bold;">Choose your reward:</p>
-                    <button id="btn-extend-sub" class="btn-solid" style="background: #3b82f6; width: 100%; border: none; padding: 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer;">Activate Premium (${trophy.rewardValue} ${trophy.rewardUnit})</button>
-                    <button id="btn-claim-book" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 10px; border-radius: 8px; cursor: pointer;">Claim a Study Book</button>
-                </div>
-            `;
-        }
-    } else {
-        rewardOptionsHtml = `<div style="margin: 15px 0;"></div>`;
+            </div>
+        `;
     }
 
     modal.innerHTML = `
-        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
             <div style="font-size: 5rem; margin-bottom: 10px;">${trophy.icon}</div>
             <h2 style="color: #1e3a8a; margin-bottom: 10px;">Milestone Reached!</h2>
             <p style="color: #475569; font-size: 1.1rem; margin-bottom: 5px;">You achieved the <strong>${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
@@ -1278,16 +1283,15 @@ function showMilestonePopup(trophy) {
     `;
     document.body.appendChild(modal);
 
-    // 3. Attach Event Listeners
     modal.querySelector('#close-milestone-btn').onclick = () => modal.remove();
 
     const btnExtend = modal.querySelector('#btn-extend-sub');
     if (btnExtend) {
         btnExtend.onclick = async () => {
+            const targetCourse = modal.querySelector('#reward-course-selection').value;
             btnExtend.textContent = "Processing...";
             btnExtend.disabled = true;
-            // Pass both value and unit to backend logic
-            await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit);
+            await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse);
             modal.remove();
         };
     }
@@ -1295,26 +1299,28 @@ function showMilestonePopup(trophy) {
     const btnBook = modal.querySelector('#btn-claim-book');
     if (btnBook) {
         btnBook.onclick = async () => {
+            const selectedBook = modal.querySelector('#reward-book-selection').value;
+            if (!selectedBook) {
+                return alert("You must select a book from the dropdown first.");
+            }
             btnBook.textContent = "Processing...";
             btnBook.disabled = true;
-            await claimBookReward(trophy.title);
+            await claimBookReward(trophy.title, selectedBook);
             modal.remove();
         };
     }
 }
 
 // 4. Backend Update Logics
-async function grantSubscriptionReward(rewardValue, rewardUnit) {
+// FIX 3: Target the specific course selected by the user
+async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse) {
     try {
-        if (!auth?.currentUser?.uid) {
-            return alert("Authentication error: Session lost.");
-        }
+        if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
 
         const userRef = doc(db, "users", auth.currentUser.uid);
         
-        // Safely handle missing currentUserData using optional chaining
         let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
-        let currentExpiry = currentSubs[activeCourse];
+        let currentExpiry = currentSubs[targetCourse];
 
         let newExpiryDate = new Date();
         
@@ -1331,113 +1337,47 @@ async function grantSubscriptionReward(rewardValue, rewardUnit) {
             newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue);
         }
 
-        currentSubs[activeCourse] = newExpiryDate.toISOString();
+        currentSubs[targetCourse] = newExpiryDate.toISOString();
 
         await updateDoc(userRef, {
             subscriptions: currentSubs,
             isPremium: true
         });
 
-        // Safely update local state
         if (currentUserData) {
             currentUserData.subscriptions = currentSubs;
             currentUserData.isPremium = true;
         }
 
-        alert(`Success! Your access to ${activeCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
+        alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
     } catch (err) {
         console.error("Error extending sub:", err);
         alert("Failed to process subscription reward. Please check your connection.");
     }
 }
 
-async function claimBookReward(trophyTitle) {
+async function claimBookReward(trophyTitle, selectedBook) {
     try {
-        if (!auth?.currentUser?.uid) {
-            return alert("Authentication error: Session lost.");
-        }
+        if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
 
         const requestRef = collection(db, "reward_claims");
         await addDoc(requestRef, {
             userId: auth.currentUser.uid,
-            // Safe fallback if currentUserData is null
             userEmail: currentUserData?.email || "Unknown",
             rewardType: "book",
+            selectedBook: selectedBook, 
             milestone: trophyTitle,
             relatedCourse: activeCourse,
             status: "pending",
             timestamp: serverTimestamp()
         });
 
-        alert("Your Book reward request has been submitted to the team! We will coordinate delivery shortly.");
+        alert(`Your request for "${selectedBook}" has been submitted! We will coordinate delivery shortly.`);
     } catch (err) {
         console.error("Error claiming book:", err);
         alert("Failed to claim book reward. Please try again later.");
     }
 }
-
-// 5. Journey View Grid Rendering
-if (btnJourney) {
-    btnJourney.onclick = () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            return alert("Please register an account to track your Journey and unlock trophies.");
-        }
-        
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-        const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
-
-        trophiesGrid.innerHTML = processedTrophies.map(t => {
-            const isUnlocked = flawlessCount >= t.cumulativeReq;
-            
-            let progress = 0;
-            if (isUnlocked) {
-                progress = t.req;
-            } else if (flawlessCount > t.previousCum) {
-                progress = flawlessCount - t.previousCum;
-            } else {
-                progress = 0;
-            }
-
-            const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
-            const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
-            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
-            const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
-            const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
-            
-            // Generate reward text dynamically based on available properties
-            const rewardHtml = t.rewardValue > 0 
-                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium or Book</div>` 
-                : '';
-
-            return `
-                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
-                    <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
-                    <div style="flex-grow: 1;">
-                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>
-                        ${rewardHtml}
-                    </div>
-                    <div style="font-size: 1.3rem;">
-                        ${statusIcon}
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        journeyModal.style.display = 'flex';
-    };
-}
-
-if (closeJourneyBtn) {
-    closeJourneyBtn.onclick = () => journeyModal.style.display = 'none';
-}
-
-if (journeyModal) {
-    journeyModal.onclick = (e) => {
-        if (e.target === journeyModal) journeyModal.style.display = 'none';
-    };
-}
-
 
 // ==========================================
 // 14. REVISIONS & SPACED REPETITION
