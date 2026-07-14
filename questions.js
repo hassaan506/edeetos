@@ -1206,10 +1206,16 @@ function checkMilestones(currentFlawless) {
 
     const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
     let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
+    
+    // Read the permanent database history, not just local storage
+    const dbClaimed = currentUserData?.claimedMilestones || [];
 
-    const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title));
+    const newlyUnlocked = processedTrophies.filter(t => 
+        currentFlawless >= t.cumulativeReq && 
+        !unlockedTiers.includes(t.title) &&
+        !dbClaimed.includes(t.title) // Stops the loop if they already claimed it in the database
+    );
 
-    // FIX: Push to an unclaimed queue so rewards aren't lost if the user dismisses the popup
     if (newlyUnlocked.length > 0) {
         let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
         
@@ -1349,9 +1355,9 @@ function showMilestonePopup(trophy) {
             btnConfirm.disabled = true;
 
             try {
-                if (selectedType === 'course') {
+				if (selectedType === 'course') {
                     const targetCourse = modal.querySelector('#reward-course-selection').value;
-                    await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse);
+                    await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
                 } else {
                     const selectedBook = modal.querySelector('#reward-book-selection').value;
                     if (!selectedBook) {
@@ -1375,23 +1381,53 @@ function showMilestonePopup(trophy) {
     }
 }
 
-async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse) {
+async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, milestoneTitle) {
     try {
         if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
 
-        const requestRef = collection(db, "reward_claims");
-        await addDoc(requestRef, {
-            userId: auth.currentUser.uid,
-            userEmail: currentUserData?.email || "Unknown",
-            rewardType: "course_extension",
-            extensionValue: rewardValue,
-            extensionUnit: rewardUnit,
-            targetCourse: targetCourse,
-            status: "pending",
-            timestamp: serverTimestamp()
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        
+        let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
+        let currentExpiry = currentSubs[targetCourse];
+        let newExpiryDate = new Date();
+
+        // Calculate the new expiration date
+        if (currentExpiry && currentExpiry !== 'lifetime') {
+            const existingDate = new Date(currentExpiry);
+            if (existingDate > newExpiryDate) {
+                newExpiryDate = existingDate;
+            }
+        }
+
+        if (rewardUnit === "Hour") {
+            newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue);
+        } else {
+            newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue);
+        }
+
+        currentSubs[targetCourse] = newExpiryDate.toISOString();
+
+        // Get the existing milestones from the database and add the new one
+        let claimedMilestones = currentUserData?.claimedMilestones || [];
+        if (!claimedMilestones.includes(milestoneTitle)) {
+            claimedMilestones.push(milestoneTitle);
+        }
+
+        // Write directly to the database
+        await updateDoc(userRef, {
+            subscriptions: currentSubs,
+            isPremium: true,
+            claimedMilestones: claimedMilestones
         });
 
-        alert(`Your request to extend ${targetCourse.replace('_', ' ').toUpperCase()} by ${rewardValue} ${rewardUnit} has been submitted for approval.`);
+        // Update local state so the UI reacts instantly
+        if (currentUserData) {
+            currentUserData.subscriptions = currentSubs;
+            currentUserData.isPremium = true;
+            currentUserData.claimedMilestones = claimedMilestones;
+        }
+
+        alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
     } catch (err) {
         console.error("Error extending sub:", err);
         alert("Firebase Error: " + err.message);
