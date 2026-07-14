@@ -1,13 +1,12 @@
 // === FEATURE: FIREBASE IMPORTS & GLOBALS ===
-import { auth, db, storage } from './firebase-config.js';
+import { auth, db, storage, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
+
 let currentUserData = null;
 let currentUserId = null;
 let hasCheckedDowngrade = false;
-
 
 // === FEATURE: DASHBOARD LOAD, ROLES, & BADGES ===
 onAuthStateChanged(auth, async (user) => {
