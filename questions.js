@@ -1304,23 +1304,27 @@ function showMilestonePopup(trophy) {
 }
 
 // 4. Backend Update Logics
-// Now accepts value and unit to handle both hours and days accurately
 async function grantSubscriptionReward(rewardValue, rewardUnit) {
     try {
+        if (!auth?.currentUser?.uid) {
+            return alert("Authentication error: Session lost.");
+        }
+
         const userRef = doc(db, "users", auth.currentUser.uid);
-        let currentSubs = currentUserData.subscriptions || {};
+        
+        // Safely handle missing currentUserData using optional chaining
+        let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
         let currentExpiry = currentSubs[activeCourse];
 
         let newExpiryDate = new Date();
+        
         if (currentExpiry && currentExpiry !== 'lifetime') {
             const existingDate = new Date(currentExpiry);
-            // Ensure we only add time to a future date, not a past expired date
             if (existingDate > newExpiryDate) {
-                newExpiryDate = existingDate;
+                newExpiryDate = new Date(existingDate);
             }
         }
         
-        // Execute correct math based on the unit string
         if (rewardUnit === "Hour") {
             newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue);
         } else {
@@ -1334,9 +1338,11 @@ async function grantSubscriptionReward(rewardValue, rewardUnit) {
             isPremium: true
         });
 
-        // Update local state instantly
-        currentUserData.subscriptions = currentSubs;
-        currentUserData.isPremium = true;
+        // Safely update local state
+        if (currentUserData) {
+            currentUserData.subscriptions = currentSubs;
+            currentUserData.isPremium = true;
+        }
 
         alert(`Success! Your access to ${activeCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
     } catch (err) {
@@ -1347,10 +1353,15 @@ async function grantSubscriptionReward(rewardValue, rewardUnit) {
 
 async function claimBookReward(trophyTitle) {
     try {
+        if (!auth?.currentUser?.uid) {
+            return alert("Authentication error: Session lost.");
+        }
+
         const requestRef = collection(db, "reward_claims");
         await addDoc(requestRef, {
             userId: auth.currentUser.uid,
-            userEmail: currentUserData.email || "Unknown",
+            // Safe fallback if currentUserData is null
+            userEmail: currentUserData?.email || "Unknown",
             rewardType: "book",
             milestone: trophyTitle,
             relatedCourse: activeCourse,
