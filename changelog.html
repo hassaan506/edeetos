@@ -46,14 +46,14 @@
                             <span class="tag tag-major">Major Update</span>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-security">Security</span> <strong>Database Loophole Closed:</strong> Updated Firebase Security Rules to make the `claimedMilestones` array append-only. This prevents users from clearing their local storage to claim rewards multiple times, securing premium access.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Instant Digital Book Rewards:</strong> Book milestone rewards now instantly grant lifetime digital access in the database instead of generating manual support tickets.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Smart Reward Filtering:</strong> The milestone system now scans your database profile and dynamically disables book options you already own, gracefully handling users who have unlocked all content.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Session Exit Safety:</strong> Resolved the "ghost session" bug where intentional practice exits triggered the aborted session recovery popup on the next load.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Forgot Password Flow:</strong> Integrated native Firebase credential recovery directly into the login interface.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Cumulative Trophy Math:</strong> Rewrote the milestone logic so trophies now correctly scale based on cumulative flawless questions (e.g., 10, 110, 610) rather than breaking on flat requirements.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Unclaimed Rewards Queue:</strong> If a student accidentally closes a milestone popup without claiming it, the system now saves it to a persistent queue and re-displays it on the next page load.</li>
-                            <li><span class="badge badge-update">UI/UX</span> <strong>Unified Claim Interface:</strong> Replaced disjointed claim buttons with a clean, radio-button selection interface that explicitly guides the user to choose either a Course Extension or a Book claim.</li>
+                            <li><span class="badge badge-security">Security</span> <strong>Prevented Reward Cheating:</strong> Fixed an exploit where resetting course progress or clearing data could allow a user to claim the same milestone reward multiple times[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Instant Study Book Unlocks:</strong> Claiming a milestone book reward now opens the digital book in your account immediately. No more waiting for admin deployment or manual coordination[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Smart Reward Options:</strong> The milestone pop-up now automatically checks what you own. It hides books or courses you already have lifetime access to so you never accidentally pick a redundant reward[cite: 11].</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Fixed False Session Warnings:</strong> Fixed an issue where exiting a quiz cleanly using the exit buttons still caused a false "session ended unexpectedly" warning on your next visit[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Instant Password Reset:</strong> Added a standard "Forgot Password" link to the login screen so you can securely reset your credentials via email without messaging support[cite: 11].</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Accurate Milestone Tracking:</strong> Fixed the milestone counter logic. Trophies now correctly calculate your running total of flawless answers (10, 110, 610) instead of throwing off the math[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Saved Claim Alerts:</strong> If you close the milestone window without picking a reward, the platform saves your choice and displays it on your dashboard next time so you never lose an earned prize[cite: 11].</li>
+                            <li><span class="badge badge-update">UI/UX</span> <strong>Streamlined Choices:</strong> Rebuilt the milestone unlock window into a single, clean menu that lets you clearly toggle between a course extension and an instant book claim before submitting[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -67,9 +67,9 @@
                             <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.0.9 - Journey Rewards & Mentor Upgrades</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-feature">Feature</span> <strong>Journey Rewards System:</strong> Transformed the Trophy system into a reward engine. Students who achieve milestones based on "flawless" question attempts (no mistakes) now unlock scaled Premium Subscription time (up to 3 weeks).</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Milestone Popups:</strong> Built an automated celebration system that detects when a student crosses a flawless question threshold and displays a dynamic popup with their unlocked rank and reward.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Mentor Assignment Timers:</strong> Adjusted the Mentor logic so that assigning a Practice Session no longer erroneously requires entering an Exam timer limit.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Journey Rewards System:</strong> Transformed the Trophy system into a reward engine[cite: 11]. Students who achieve milestones based on "flawless" question attempts (no mistakes) now unlock scaled Premium Subscription time (up to 3 weeks)[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Milestone Popups:</strong> Built an automated celebration system that detects when a student crosses a flawless question threshold and displays a dynamic popup with their unlocked rank and reward[cite: 11].</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Mentor Assignment Timers:</strong> Adjusted the Mentor logic so that assigning a Practice Session no longer erroneously requires entering an Exam timer limit[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -83,12 +83,12 @@
                             <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.0.8 - The Clinical Testing Interface</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-feature">Feature</span> <strong>Clinical Text Tools:</strong> Added a custom text highlighter and strikethrough tool specifically for clinical vignettes, allowing students to filter distractors without breaking anti-cheat protocols.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Dual Time Tracking:</strong> Deployed a dual-timer engine that tracks global session time alongside individual question time to power future pacing analytics.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Database-Driven Hints:</strong> Replaced generic hints with a direct database pipeline that pulls specific clinical nudges from a dedicated 'Hint' column in the specific course files, activating after 15 seconds.</li>
-                            <li><span class="badge badge-feature">Content</span> <strong>Comprehensive Lab Reference:</strong> Integrated a floating, fully expanded FCPS/MRCS-level clinical laboratory reference sheet (CBC, LFTs, ABGs, Electrolytes) directly into the testing interface.</li>
-                            <li><span class="badge badge-security">Security</span> <strong>Admin Anti-Cheat Bypass:</strong> Rewrote the global security interceptors. The clipboard and PrintScreen blockers now successfully authenticate roles, freeing Admins to copy/screenshot while keeping students strictly locked down.</li>
-                            <li><span class="badge badge-update">UI/UX</span> <strong>Accessibility Overhaul:</strong> Upgraded top navigation, timer, and lab value UI components to a high-contrast dark slate theme for optimal readability. Added rapid 'Next Question' routing inside the explanation modal.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Clinical Text Tools:</strong> Added a custom text highlighter and strikethrough tool specifically for clinical vignettes, allowing students to filter distractors without breaking anti-cheat protocols[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Dual Time Tracking:</strong> Deployed a dual-timer engine that tracks global session time alongside individual question time to power future pacing analytics[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Database-Driven Hints:</strong> Replaced generic hints with a direct database pipeline that pulls specific clinical nudges from a dedicated 'Hint' column in the specific course files, activating after 15 seconds[cite: 11].</li>
+                            <li><span class="badge badge-feature">Content</span> <strong>Comprehensive Lab Reference:</strong> Integrated a floating, fully expanded FCPS/MRCS-level clinical laboratory reference sheet (CBC, LFTs, ABGs, Electrolytes) directly into the testing interface[cite: 11].</li>
+                            <li><span class="badge badge-security">Security</span> <strong>Admin Anti-Cheat Bypass:</strong> Rewrote the global security interceptors[cite: 11]. The clipboard and PrintScreen blockers now successfully authenticate roles, freeing Admins to copy/screenshot while keeping students strictly locked down[cite: 11].</li>
+                            <li><span class="badge badge-update">UI/UX</span> <strong>Accessibility Overhaul:</strong> Upgraded top navigation, timer, and lab value UI components to a high-contrast dark slate theme for optimal readability[cite: 11]. Added rapid 'Next Question' routing inside the explanation modal[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -106,11 +106,11 @@
                             <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.0.7 - Smart Performance & Security</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-feature">Feature</span> <strong>Smart Training Hub:</strong> Completely replaced the generic analytics engine. The system now calculates exact Strengths and Weaknesses, allowing you to launch Targeted Focus, Redemption Mode, or Balanced Mix quizzes directly from the dashboard.</li>
-                            <li><span class="badge badge-security">Security</span> <strong>Anti-Cheat Protocol:</strong> Deployed a silent clipboard interceptor. The platform now actively blocks right-clicking, text selection, copying, and silently neutralizes Print Screen attempts to protect intellectual property.</li>
-                            <li><span class="badge badge-update">Admin</span> <strong>Dashboard Redesign:</strong> Built a dedicated, responsive grid interface for the Admin Database Overview to prevent UI cramping on mobile devices.</li>
-                            <li><span class="badge badge-security">Security</span> <strong>Role Protection:</strong> Hardcoded security logic to prevent admins from accidentally banning the Super Admin account or revoking their own access.</li>
-                            <li><span class="badge badge-update">Legal</span> <strong>Terms & Privacy Overhaul:</strong> Updated legal documentation to explicitly cover the new Smart Training Hub data usage, outline the strict screenshot bans, and removed outdated PWA references.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Smart Training Hub:</strong> Completely replaced the generic analytics engine[cite: 11]. The system now calculates exact Strengths and Weaknesses, allowing you to launch Targeted Focus, Redemption Mode, or Balanced Mix quizzes directly from the dashboard[cite: 11].</li>
+                            <li><span class="badge badge-security">Security</span> <strong>Anti-Cheat Protocol:</strong> Deployed a silent clipboard interceptor[cite: 11]. The platform now actively blocks right-clicking, text selection, copying, and silently neutralizes Print Screen attempts to protect intellectual property[cite: 11].</li>
+                            <li><span class="badge badge-update">Admin</span> <strong>Dashboard Redesign:</strong> Built a dedicated, responsive grid interface for the Admin Database Overview to prevent UI cramping on mobile devices[cite: 11].</li>
+                            <li><span class="badge badge-security">Security</span> <strong>Role Protection:</strong> Hardcoded security logic to prevent admins from accidentally banning the Super Admin account or revoking their own access[cite: 11].</li>
+                            <li><span class="badge badge-update">Legal</span> <strong>Terms & Privacy Overhaul:</strong> Updated legal documentation to explicitly cover the new Smart Training Hub data usage, outline the strict screenshot bans, and removed outdated PWA references[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
                             <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v1.0.6 - Spaced Repetition & Mobile Layout</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-update">UI/UX</span> <strong>Revision Accordions:</strong> Overhauled the "Due for Revision" block. Topics are now intelligently grouped by Day inside clickable, expanding accordion cards to prevent cognitive overload.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Mobile Grid Blocking:</strong> Fixed a critical CSS issue where the floating exam cart blocked the bottom row of subjects on mobile phones. The cart now docks cleanly to the bottom of the screen.</li>
-                            <li><span class="badge badge-update">UI/UX</span> <strong>Practice Mode UI:</strong> The system now automatically hides the exam timer and question count inputs when Practice Mode is selected, keeping the interface clean.</li>
+                            <li><span class="badge badge-update">UI/UX</span> <strong>Revision Accordions:</strong> Overhauled the "Due for Revision" block[cite: 11]. Topics are now intelligently grouped by Day inside clickable, expanding accordion cards to prevent cognitive overload[cite: 11].</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Mobile Grid Blocking:</strong> Fixed a critical CSS issue where the floating exam cart blocked the bottom row of subjects on mobile phones[cite: 11]. The cart now docks cleanly to the bottom of the screen[cite: 11].</li>
+                            <li><span class="badge badge-update">UI/UX</span> <strong>Practice Mode UI:</strong> The system now automatically hides the exam timer and question count inputs when Practice Mode is selected, keeping the interface clean[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -140,10 +140,10 @@
                             <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v1.0.5 - Navigation & Content Expansion</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-feature">Feature</span> <strong>Instant Start Buttons:</strong> Added the ability to bypass the cart and instantly launch quizzes directly from individual Chapters and Topics.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Chapter Multi-Select:</strong> Added checkboxes to the Chapter level, allowing users to select entire chapters for practice rather than clicking individual topics.</li>
-                            <li><span class="badge badge-perf">Performance</span> <strong>Search Bar Optimization:</strong> Implemented a debounce function on the search bar to prevent browser freezing while typing. Fixed a capitalization logic error so question previews now successfully load in the dropdown.</li>
-                            <li><span class="badge badge-feature">Content</span> <strong>Library Expansion:</strong> Added First Aid Step 2, Irfan Masood Pathology, and Irfan Masood Pediatrics to the core database and admin generator arrays.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Instant Start Buttons:</strong> Added the ability to bypass the cart and instantly launch quizzes directly from individual Chapters and Topics[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Chapter Multi-Select:</strong> Added checkboxes to the Chapter level, allowing users to select entire chapters for practice rather than clicking individual topics[cite: 11].</li>
+                            <li><span class="badge badge-perf">Performance</span> <strong>Search Bar Optimization:</strong> Implemented a debounce function on the search bar to prevent browser freezing while typing[cite: 11]. Fixed a capitalization logic error so question previews now successfully load in the dropdown[cite: 11].</li>
+                            <li><span class="badge badge-feature">Content</span> <strong>Library Expansion:</strong> Added First Aid Step 2, Irfan Masood Pathology, and Irfan Masood Pediatrics to the core database and admin generator arrays[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -162,11 +162,11 @@
                             <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.0.4 - The Performance & Cart Update</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-perf">Performance</span> <strong>Lazy-Loading Engine:</strong> Books and heavy question banks now load on-demand, reducing initial dashboard load times by up to 80%.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Unified Study Cart:</strong> Practice and Exam modes now share a powerful multi-select cart system allowing you to mix and match multiple topics across subjects.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Premium Book Locks:</strong> Books in the library are now individually locked and display real-time access status based on your subscription.</li>
-                            <li><span class="badge badge-update">UI/UX</span> <strong>Spaced Repetition Overhaul:</strong> The "Due for Revision" panel has been completely redesigned to match the modern glassmorphism aesthetic.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> Fixed an issue where switching between Practice and Exam modes inside a book would accidentally clear the topic selection grid.</li>
+                            <li><span class="badge badge-perf">Performance</span> <strong>Lazy-Loading Engine:</strong> Books and heavy question banks now load on-demand, reducing initial dashboard load times by up to 80%[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Unified Study Cart:</strong> Practice and Exam modes now share a powerful multi-select cart system allowing you to mix and match multiple topics across subjects[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Premium Book Locks:</strong> Books in the library are now individually locked and display real-time access status based on your subscription[cite: 11].</li>
+                            <li><span class="badge badge-update">UI/UX</span> <strong>Spaced Repetition Overhaul:</strong> The "Due for Revision" panel has been completely redesigned to match the modern glassmorphism aesthetic[cite: 11].</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> Fixed an issue where switching between Practice and Exam modes inside a book would accidentally clear the topic selection grid[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -180,10 +180,10 @@
                             <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v1.0.3 - Admin & Access Controls</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-feature">Feature</span> <strong>Course Change Requests:</strong> Students can now officially request an Admin to change their assigned exam course via the Profile menu.</li>
-                            <li><span class="badge badge-update">System</span> <strong>Book Bundle Pricing:</strong> The Premium checkout now automatically applies 10%, 20%, and 30% discount mathematics when purchasing multiple reference books.</li>
-                            <li><span class="badge badge-security">Security</span> <strong>Group Study Loophole Closed:</strong> Free tier users are now strictly prevented from using 4-digit room codes to bypass paywalls and join Premium study sessions.</li>
-                            <li><span class="badge badge-feature">Feature</span> <strong>Advanced Key Generation:</strong> Admins can now generate redeem codes that grant access to specific individual books alongside standard courses.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Course Change Requests:</strong> Students can now officially request an Admin to change their assigned exam course via the Profile menu[cite: 11].</li>
+                            <li><span class="badge badge-update">System</span> <strong>Book Bundle Pricing:</strong> The Premium checkout now automatically applies 10%, 20%, and 30% discount mathematics when purchasing multiple reference books[cite: 11].</li>
+                            <li><span class="badge badge-security">Security</span> <strong>Group Study Loophole Closed:</strong> Free tier users are now strictly prevented from using 4-digit room codes to bypass paywalls and join Premium study sessions[cite: 11].</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Advanced Key Generation:</strong> Admins can now generate redeem codes that grant access to specific individual books alongside standard courses[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
@@ -197,9 +197,9 @@
                             <h2 style="margin: 0; color: #1e293b; font-size: 1.4rem;">v1.0.2 - Strict Course Targeting</h2>
                         </div>
                         <ul class="update-list">
-                            <li><span class="badge badge-feature">Feature</span> <strong>Locked Dashboards:</strong> The Question Bank launcher is now strictly locked to the student's assigned database course, preventing accidental access to irrelevant exams.</li>
-                            <li><span class="badge badge-update">UI/UX</span> <strong>Streamlined Registration:</strong> Removed redundant 'Target Exam' and 'Year of Study' dropdowns in favor of a single master "Access Course" selector to speed up onboarding.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> Removed hardcoded fallback defaults that were forcing unassigned legacy users into the FCPS Part 1 database.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Locked Dashboards:</strong> The Question Bank launcher is now strictly locked to the student's assigned database course, preventing accidental access to irrelevant exams[cite: 11].</li>
+                            <li><span class="badge badge-update">UI/UX</span> <strong>Streamlined Registration:</strong> Removed redundant 'Target Exam' and 'Year of Study' dropdowns in favor of a single master "Access Course" selector to speed up onboarding[cite: 11].</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> Removed hardcoded fallback defaults that were forcing unassigned legacy users into the FCPS Part 1 database[cite: 11].</li>
                         </ul>
                     </div>
                 </div>
