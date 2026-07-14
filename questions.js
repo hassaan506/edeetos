@@ -1193,7 +1193,7 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", rewardValue: 21, rewardUnit: "Days" }
 ];
 
-// FIX: Correctly accumulate requirements for delta milestones (10, 110, 610...)
+// Correctly accumulate requirements for delta milestones
 let cumulativeSum = 0;
 const processedTrophies = trophies.map((t) => {
     const previousCum = cumulativeSum;
@@ -1207,13 +1207,12 @@ function checkMilestones(currentFlawless) {
     const storageKey = `edeetos_unlocked_tiers_${auth.currentUser?.uid || 'user'}`;
     let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
     
-    // Read the permanent database history, not just local storage
     const dbClaimed = currentUserData?.claimedMilestones || [];
 
     const newlyUnlocked = processedTrophies.filter(t => 
         currentFlawless >= t.cumulativeReq && 
         !unlockedTiers.includes(t.title) &&
-        !dbClaimed.includes(t.title) // Stops the loop if they already claimed it in the database
+        !dbClaimed.includes(t.title) 
     );
 
     if (newlyUnlocked.length > 0) {
@@ -1263,53 +1262,78 @@ function showMilestonePopup(trophy) {
         subStatus = 'active';
     }
 
-	const courseOptionsHtml = `<option value="${activeCourse}" selected>${activeCourse.toUpperCase().replace('_', ' ')}</option>`;
+    const isLifetime = subStatus === 'lifetime';
+    const courseOptionsHtml = `<option value="${activeCourse}" selected>${activeCourse.toUpperCase().replace('_', ' ')}</option>`;
 
-    const bookOptionsHtml = availableBooks.map(b => `<option value="${b.title}">${b.title}</option>`).join('');
+    // SECURE BOOK LOGIC: Filter out books the user already owns
+    let claimableBooksCount = 0;
+    const bookOptionsHtml = availableBooks.map(b => {
+        const hasLifetimeBook = currentUserData?.subscriptions?.[b.file] === 'lifetime';
+        if (hasLifetimeBook) {
+            return `<option value="${b.file}" disabled>✅ ${b.title} (Owned)</option>`;
+        }
+        claimableBooksCount++;
+        return `<option value="${b.file}">${b.title}</option>`;
+    }).join('');
+
+    const allBooksOwned = claimableBooksCount === 0;
 
     let rewardOptionsHtml = '';
     if (trophy.rewardValue > 0) {
-        const isLifetime = subStatus === 'lifetime';
         
-        // FIX: Unified selection UI so users clearly pick Course OR Book before confirming
-        rewardOptionsHtml = `
-            <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
-                <p style="font-size: 0.95rem; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">Choose ONE Reward:</p>
-                
-                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
-                    ${!isLifetime ? `
-                    <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px;">
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
-                            <input type="radio" name="rewardChoice" value="course" checked style="transform: scale(1.2);"> 
-                            Extend Course Access (+${trophy.rewardValue} ${trophy.rewardUnit})
-                        </label>
-                        <div id="course-selection-div" style="padding-left: 24px; transition: 0.3s;">
-                            <select id="reward-course-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
-                                ${courseOptionsHtml}
-                            </select>
-                        </div>
-                    </div>
-                    ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You have Lifetime Course Access.</div>'}
-                    
-                    <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
-                            <input type="radio" name="rewardChoice" value="book" ${isLifetime ? 'checked' : ''} style="transform: scale(1.2);">
-                            Claim a Study Book
-                        </label>
-                        <div id="book-selection-div" style="padding-left: 24px; ${isLifetime ? '' : 'pointer-events: none;'} transition: 0.3s;">
-                            <select id="reward-book-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
-                                <option value="" disabled selected>Select a Study Book...</option>
-                                ${bookOptionsHtml}
-                            </select>
-                        </div>
-                    </div>
+        if (isLifetime && allBooksOwned) {
+            // Edge Case: The user has unlocked the course and every single book.
+            rewardOptionsHtml = `
+                <div style="margin-top: 15px; text-align: center; background: #ecfdf5; padding: 15px; border-radius: 8px; border: 1px solid #a7f3d0;">
+                    <div style="color: #059669; font-weight: bold; font-size: 0.95rem;">✅ You already own all available content!</div>
+                    <p style="font-size: 0.8rem; color: #047857; margin-top: 5px;">There are no more rewards to claim. Amazing job!</p>
                 </div>
+            `;
+        } else {
+            // Standard Case: The user has at least one valid reward to claim.
+            rewardOptionsHtml = `
+                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
+                    <p style="font-size: 0.95rem; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">Choose ONE Reward:</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+                        
+                        ${!isLifetime ? `
+                        <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
+                                <input type="radio" name="rewardChoice" value="course" checked style="transform: scale(1.2);"> 
+                                Extend Course Access (+${trophy.rewardValue} ${trophy.rewardUnit})
+                            </label>
+                            <div id="course-selection-div" style="padding-left: 24px; transition: 0.3s;">
+                                <select id="reward-course-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
+                                    ${courseOptionsHtml}
+                                </select>
+                            </div>
+                        </div>
+                        ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You have Lifetime Course Access.</div>'}
+                        
+                        ${!allBooksOwned ? `
+                        <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
+                                <input type="radio" name="rewardChoice" value="book" ${isLifetime ? 'checked' : ''} style="transform: scale(1.2);">
+                                Claim a Study Book
+                            </label>
+                            <div id="book-selection-div" style="padding-left: 24px; ${isLifetime ? '' : 'pointer-events: none;'} transition: 0.3s;">
+                                <select id="reward-book-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
+                                    <option value="" disabled selected>Select a Study Book...</option>
+                                    ${bookOptionsHtml}
+                                </select>
+                            </div>
+                        </div>
+                        ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You own all available Books.</div>'}
 
-                <button id="btn-confirm-reward" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.2s;">
-                    Claim Selected Reward
-                </button>
-            </div>
-        `;
+                    </div>
+
+                    <button id="btn-confirm-reward" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.2s;">
+                        Claim Selected Reward
+                    </button>
+                </div>
+            `;
+        }
     }
 
     modal.innerHTML = `
@@ -1318,7 +1342,7 @@ function showMilestonePopup(trophy) {
             <h2 style="color: #1e3a8a; margin-bottom: 10px; font-size: 1.6rem;">Milestone Reached!</h2>
             <p style="color: #475569; font-size: 1.05rem; margin-bottom: 5px;">You achieved the <strong style="color: #0f172a;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
             ${rewardOptionsHtml}
-            <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1rem; cursor: pointer; border-radius: 8px;">Claim Later</button>
+            <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1rem; cursor: pointer; border-radius: 8px;">Dismiss</button>
         </div>
         <style>
             @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -1326,15 +1350,28 @@ function showMilestonePopup(trophy) {
     `;
     document.body.appendChild(modal);
 
-    modal.querySelector('#close-milestone-btn').onclick = () => modal.remove(); // Unclaimed reward is preserved
+    const closeBtn = modal.querySelector('#close-milestone-btn');
+    
+    // If they have nothing left to claim, dismiss means permanently ignoring this milestone.
+    if (isLifetime && allBooksOwned) {
+        closeBtn.onclick = () => {
+            removeUnclaimedReward(trophy.title);
+            modal.remove();
+            triggerNextUnclaimedPopup();
+        };
+    } else {
+        // Normal dismiss leaves it in the unclaimed queue
+        closeBtn.onclick = () => {
+            modal.remove();
+        };
+    }
 
-    if (trophy.rewardValue > 0) {
+    if (trophy.rewardValue > 0 && !(isLifetime && allBooksOwned)) {
         const radios = modal.querySelectorAll('input[name="rewardChoice"]');
         const courseDiv = modal.querySelector('#course-selection-div');
         const bookContainerDiv = modal.querySelector('#book-container-div');
         const bookDiv = modal.querySelector('#book-selection-div');
 
-        // Toggle UI states based on radio selection
         radios.forEach(radio => {
             radio.addEventListener('change', (e) => {
                 if (e.target.value === 'course') {
@@ -1348,36 +1385,37 @@ function showMilestonePopup(trophy) {
         });
 
         const btnConfirm = modal.querySelector('#btn-confirm-reward');
-        btnConfirm.onclick = async () => {
-            const selectedType = modal.querySelector('input[name="rewardChoice"]:checked')?.value || (subStatus === 'lifetime' ? 'book' : 'course');
-            
-            btnConfirm.textContent = "Processing...";
-            btnConfirm.disabled = true;
+        if (btnConfirm) {
+            btnConfirm.onclick = async () => {
+                const selectedType = modal.querySelector('input[name="rewardChoice"]:checked')?.value || (isLifetime ? 'book' : 'course');
+                
+                btnConfirm.textContent = "Processing...";
+                btnConfirm.disabled = true;
 
-            try {
-				if (selectedType === 'course') {
-                    const targetCourse = modal.querySelector('#reward-course-selection').value;
-                    await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
-                } else {
-                    const selectedBook = modal.querySelector('#reward-book-selection').value;
-                    if (!selectedBook) {
-                        btnConfirm.textContent = "Claim Selected Reward";
-                        btnConfirm.disabled = false;
-                        return alert("You must select a book from the dropdown first.");
+                try {
+                    if (selectedType === 'course') {
+                        const targetCourse = modal.querySelector('#reward-course-selection').value;
+                        await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
+                    } else {
+                        const selectedBook = modal.querySelector('#reward-book-selection').value;
+                        if (!selectedBook) {
+                            btnConfirm.textContent = "Claim Selected Reward";
+                            btnConfirm.disabled = false;
+                            return alert("You must select a book from the dropdown first.");
+                        }
+                        await claimBookReward(trophy.title, selectedBook);
                     }
-                    await claimBookReward(trophy.title, selectedBook);
+                    
+                    removeUnclaimedReward(trophy.title);
+                    modal.remove();
+                    triggerNextUnclaimedPopup();
+                    
+                } catch (err) {
+                    btnConfirm.textContent = "Claim Selected Reward";
+                    btnConfirm.disabled = false;
                 }
-                
-                // Clear the reward only on success
-                removeUnclaimedReward(trophy.title);
-                modal.remove();
-                triggerNextUnclaimedPopup();
-                
-            } catch (err) {
-                btnConfirm.textContent = "Claim Selected Reward";
-                btnConfirm.disabled = false;
-            }
-        };
+            };
+        }
     }
 }
 
@@ -1391,7 +1429,6 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, mi
         let currentExpiry = currentSubs[targetCourse];
         let newExpiryDate = new Date();
 
-        // Calculate the new expiration date
         if (currentExpiry && currentExpiry !== 'lifetime') {
             const existingDate = new Date(currentExpiry);
             if (existingDate > newExpiryDate) {
@@ -1407,20 +1444,17 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, mi
 
         currentSubs[targetCourse] = newExpiryDate.toISOString();
 
-        // Get the existing milestones from the database and add the new one
         let claimedMilestones = currentUserData?.claimedMilestones || [];
         if (!claimedMilestones.includes(milestoneTitle)) {
             claimedMilestones.push(milestoneTitle);
         }
 
-        // Write directly to the database
         await updateDoc(userRef, {
             subscriptions: currentSubs,
             isPremium: true,
             claimedMilestones: claimedMilestones
         });
 
-        // Update local state so the UI reacts instantly
         if (currentUserData) {
             currentUserData.subscriptions = currentSubs;
             currentUserData.isPremium = true;
@@ -1434,28 +1468,35 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, mi
     }
 }
 
-async function claimBookReward(trophyTitle, selectedBook) {
+async function claimBookReward(trophyTitle, selectedBookFile) {
     try {
-        if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
+        if (!auth?.currentUser?.uid) return alert('Authentication error: Session lost.');
 
-        const requestRef = collection(db, "reward_claims");
-        await addDoc(requestRef, {
-            userId: auth.currentUser.uid,
-            userEmail: currentUserData?.email || "Unknown",
-            rewardType: "book",
-            selectedBook: selectedBook, 
-            milestone: trophyTitle,
-            relatedCourse: activeCourse,
-            status: "pending",
-            timestamp: serverTimestamp()
+        const userRef = doc(db, 'users', auth.currentUser.uid);
+        
+        let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
+        
+        currentSubs[selectedBookFile] = 'lifetime';
+
+        let claimedMilestones = currentUserData?.claimedMilestones || [];
+        if (!claimedMilestones.includes(trophyTitle)) {
+            claimedMilestones.push(trophyTitle);
+        }
+
+        await updateDoc(userRef, {
+            subscriptions: currentSubs,
+            claimedMilestones: claimedMilestones
         });
 
-        alert(`Your request for "${selectedBook}" has been submitted! We will coordinate delivery shortly.`);
+        if (currentUserData) {
+            currentUserData.subscriptions = currentSubs;
+            currentUserData.claimedMilestones = claimedMilestones;
+        }
+
+        alert('Success! Your book is unlocked and available in your library.');
     } catch (err) {
-        console.error("Error claiming book:", err);
-        // Expose the real error message to the user
-        alert("Firebase Error: " + err.message + "\n\n(This usually means your Firestore Security Rules are blocking the write.)");
-        throw err;
+        console.error('Error claiming book:', err);
+        alert('Firebase Error: ' + err.message);
     }
 }
 
@@ -1518,6 +1559,7 @@ if (journeyModal) {
         if (e.target === journeyModal) journeyModal.style.display = 'none';
     };
 }
+
 
 // ==========================================
 // 14. REVISIONS & SPACED REPETITION

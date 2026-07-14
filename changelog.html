@@ -47,10 +47,13 @@
                         </div>
                         <ul class="update-list">
                             <li><span class="badge badge-security">Security</span> <strong>Database Loophole Closed:</strong> Updated Firebase Security Rules to make the `claimedMilestones` array append-only. This prevents users from clearing their local storage to claim rewards multiple times, securing premium access.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Instant Digital Book Rewards:</strong> Book milestone rewards now instantly grant lifetime digital access in the database instead of generating manual support tickets.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Smart Reward Filtering:</strong> The milestone system now scans your database profile and dynamically disables book options you already own, gracefully handling users who have unlocked all content.</li>
+                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Session Exit Safety:</strong> Resolved the "ghost session" bug where intentional practice exits triggered the aborted session recovery popup on the next load.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Forgot Password Flow:</strong> Integrated native Firebase credential recovery directly into the login interface.</li>
                             <li><span class="badge badge-fix">Bug Fix</span> <strong>Cumulative Trophy Math:</strong> Rewrote the milestone logic so trophies now correctly scale based on cumulative flawless questions (e.g., 10, 110, 610) rather than breaking on flat requirements.</li>
                             <li><span class="badge badge-feature">Feature</span> <strong>Unclaimed Rewards Queue:</strong> If a student accidentally closes a milestone popup without claiming it, the system now saves it to a persistent queue and re-displays it on the next page load.</li>
                             <li><span class="badge badge-update">UI/UX</span> <strong>Unified Claim Interface:</strong> Replaced disjointed claim buttons with a clean, radio-button selection interface that explicitly guides the user to choose either a Course Extension or a Book claim.</li>
-                            <li><span class="badge badge-fix">Bug Fix</span> <strong>Dynamic Course Targeting:</strong> The reward dropdown now specifically targets the student's active enrolled course instead of displaying all platform courses.</li>
                         </ul>
                     </div>
                 </div>

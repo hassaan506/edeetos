@@ -967,6 +967,17 @@ if (roomRef) {
 // ==========================================
 // 8. EXAM SUBMISSION & RESULTS
 // ==========================================
+
+// NEW FEATURE: Intentional Exit Flag
+let isIntentionalExit = false;
+
+// NEW FEATURE: Helper function to navigate away safely without triggering backups
+function exitSafely(url) {
+    isIntentionalExit = true;
+    localStorage.removeItem('edeetos_aborted_session_backup');
+    window.location.href = url;
+}
+
 function showResults() {
     clearInterval(timerInterval);    
     let correctCount = 0;
@@ -1018,7 +1029,7 @@ function showResults() {
             tasks.push(updateSpacedRepetition());
 
             await Promise.all(tasks);
-            window.location.href = 'questions.html';
+            exitSafely('questions.html'); // UPDATED: Use safe exit
         };
     }
 }
@@ -1055,7 +1066,7 @@ function showPracticeCompleteModal(isGuest = false) {
             localStorage.removeItem('is_study_guest');
         }
         
-        window.location.href = 'questions.html';
+        exitSafely('questions.html'); // UPDATED: Use safe exit
     });
 }
 
@@ -1250,7 +1261,7 @@ document.addEventListener('keydown', (e) => {
     switch(e.key) {
         case 'ArrowRight': e.preventDefault(); if(nextBtnLocal) nextBtnLocal.click(); break;
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
-        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else window.location.href = 'questions.html'; break;
+        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else exitSafely('questions.html'); break; // UPDATED: Use safe exit
         case 'Enter': e.preventDefault(); if (isExplanationOpen) document.getElementById('close-explanation').click(); else if (isExamMode && nextBtnLocal) nextBtnLocal.click(); break;
         case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) document.getElementById('close-explanation').click(); else explanationBtn.click(); } break;
         case 'p': case 'P': e.preventDefault(); if (isExamMode && skipBtn) skipBtn.click(); break;
@@ -1315,7 +1326,7 @@ if (globalExitBtn) {
                     ];
                     await Promise.all(tasks);
 
-                    window.location.href = 'questions.html';
+                    exitSafely('questions.html'); // UPDATED: Use safe exit
                 } catch (error) {
                     console.error("🔥 Firebase Error:", error);
                     lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
@@ -1351,7 +1362,7 @@ if (globalExitBtn) {
         } finally {
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
-            window.location.href = 'questions.html';
+            exitSafely('questions.html'); // UPDATED: Use safe exit
         }
     };
 }
@@ -1467,8 +1478,8 @@ function checkAndRestoreAbortedSession() {
 }
 
 window.addEventListener('beforeunload', (e) => {
-    // Save progress locally if they close the tab unexpectedly
-    if (quizQueue && quizQueue.length > 0 && !isExamMode && !activeRoomId) {
+    // UPDATED: Only save the backup if the exit flag is false
+    if (!isIntentionalExit && quizQueue && quizQueue.length > 0 && !isExamMode && !activeRoomId) {
         localStorage.setItem('edeetos_aborted_session_backup', JSON.stringify({
             queue: quizQueue,
             config: quizConfig,
