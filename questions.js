@@ -1257,9 +1257,7 @@ function showMilestonePopup(trophy) {
         subStatus = 'active';
     }
 
-    const courseOptionsHtml = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5']
-        .map(c => `<option value="${c}" ${c === activeCourse ? 'selected' : ''}>${c.toUpperCase().replace('_', ' ')}</option>`)
-        .join('');
+	const courseOptionsHtml = `<option value="${activeCourse}" selected>${activeCourse.toUpperCase().replace('_', ' ')}</option>`;
 
     const bookOptionsHtml = availableBooks.map(b => `<option value="${b.title}">${b.title}</option>`).join('');
 
@@ -1381,43 +1379,22 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse) {
     try {
         if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
 
-        const userRef = doc(db, "users", auth.currentUser.uid);
-        
-        let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
-        let currentExpiry = currentSubs[targetCourse];
-
-        let newExpiryDate = new Date();
-        
-        if (currentExpiry && currentExpiry !== 'lifetime') {
-            const existingDate = new Date(currentExpiry);
-            if (existingDate > newExpiryDate) {
-                newExpiryDate = new Date(existingDate);
-            }
-        }
-        
-        if (rewardUnit === "Hour") {
-            newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue);
-        } else {
-            newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue);
-        }
-
-        currentSubs[targetCourse] = newExpiryDate.toISOString();
-
-        await updateDoc(userRef, {
-            subscriptions: currentSubs,
-            isPremium: true
+        const requestRef = collection(db, "reward_claims");
+        await addDoc(requestRef, {
+            userId: auth.currentUser.uid,
+            userEmail: currentUserData?.email || "Unknown",
+            rewardType: "course_extension",
+            extensionValue: rewardValue,
+            extensionUnit: rewardUnit,
+            targetCourse: targetCourse,
+            status: "pending",
+            timestamp: serverTimestamp()
         });
 
-        if (currentUserData) {
-            currentUserData.subscriptions = currentSubs;
-            currentUserData.isPremium = true;
-        }
-
-        alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
+        alert(`Your request to extend ${targetCourse.replace('_', ' ').toUpperCase()} by ${rewardValue} ${rewardUnit} has been submitted for approval.`);
     } catch (err) {
         console.error("Error extending sub:", err);
-        alert("Failed to process subscription reward. Please check your connection.");
-        throw err; 
+        alert("Firebase Error: " + err.message);
     }
 }
 
@@ -1440,7 +1417,8 @@ async function claimBookReward(trophyTitle, selectedBook) {
         alert(`Your request for "${selectedBook}" has been submitted! We will coordinate delivery shortly.`);
     } catch (err) {
         console.error("Error claiming book:", err);
-        alert("Failed to claim book reward. Please try again later.");
+        // Expose the real error message to the user
+        alert("Firebase Error: " + err.message + "\n\n(This usually means your Firestore Security Rules are blocking the write.)");
         throw err;
     }
 }
