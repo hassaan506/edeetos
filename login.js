@@ -2,10 +2,12 @@
 import { auth, db } from "./firebase-config.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { collection, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // === FEATURE: DOM ELEMENTS ===
 const loginForm = document.querySelector('#login-form');
 const btnGuest = document.getElementById('btn-guest');
+const forgotPasswordLink = document.getElementById('forgot-password-link');
 
 // === FEATURE: REGISTERED USER LOGIN ===
 if (loginForm) {
@@ -82,5 +84,39 @@ if (btnGuest) {
 
         alert("Entering Guest Mode. You will have limited access to questions.");
         window.location.href = "dashboard.html";
+    });
+}
+
+// === FEATURE: FORGOT PASSWORD ===
+if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        // Grab the current value from the identifier input
+        const identifierInput = document.querySelector('#login-identifier').value.trim();
+        let resetEmail = identifierInput;
+
+        // If the field is empty or contains a username (no '@'), explicitly ask for an email
+        if (!resetEmail || !resetEmail.includes('@')) {
+            resetEmail = prompt("Please enter the email address associated with your account to reset your password:");
+        } else {
+            // Confirm with the user if the field already contains an email
+            const confirmEmail = confirm(`Send password reset link to ${resetEmail}?`);
+            if (!confirmEmail) return;
+        }
+
+        // Validate that we have a functional email address before sending to Firebase
+        if (!resetEmail || !resetEmail.includes('@')) {
+            return alert("A valid email address is required to reset your password.");
+        }
+
+        try {
+            // Trigger Firebase's built-in reset email function
+            await sendPasswordResetEmail(auth, resetEmail);
+            alert("Password reset email sent! Please check your inbox and spam folder.");
+        } catch (error) {
+            console.error("Password Reset Error:", error);
+            alert("Failed to send reset email: " + error.message);
+        }
     });
 }
