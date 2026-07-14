@@ -1193,7 +1193,6 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", rewardValue: 21, rewardUnit: "Days" }
 ];
 
-// FIX 1: Use absolute values instead of compounding cumulative math
 const processedTrophies = trophies.map((t, index, arr) => {
     const prev = index === 0 ? 0 : arr[index - 1].req;
     return { ...t, cumulativeReq: t.req, previousCum: prev };
@@ -1230,7 +1229,6 @@ function showMilestonePopup(trophy) {
         subStatus = 'active';
     }
 
-    // FIX 2: Generate dynamic dropdown options for courses and books
     const courseOptionsHtml = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5']
         .map(c => `<option value="${c}" ${c === activeCourse ? 'selected' : ''}>${c.toUpperCase().replace('_', ' ')}</option>`)
         .join('');
@@ -1312,7 +1310,6 @@ function showMilestonePopup(trophy) {
 }
 
 // 4. Backend Update Logics
-// FIX 3: Target the specific course selected by the user
 async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse) {
     try {
         if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
@@ -1377,6 +1374,67 @@ async function claimBookReward(trophyTitle, selectedBook) {
         console.error("Error claiming book:", err);
         alert("Failed to claim book reward. Please try again later.");
     }
+}
+
+// 5. Journey View Grid Rendering
+if (btnJourney) {
+    btnJourney.onclick = () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            return alert("Please register an account to track your Journey and unlock trophies.");
+        }
+        
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+
+        trophiesGrid.innerHTML = processedTrophies.map(t => {
+            const isUnlocked = flawlessCount >= t.cumulativeReq;
+            
+            let progress = 0;
+            if (isUnlocked) {
+                progress = t.req;
+            } else if (flawlessCount > t.previousCum) {
+                progress = flawlessCount - t.previousCum;
+            } else {
+                progress = 0;
+            }
+
+            const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
+            const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
+            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
+            const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
+            const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
+            
+            const rewardHtml = t.rewardValue > 0 
+                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium or Book</div>` 
+                : '';
+
+            return `
+                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
+                    <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
+                    <div style="flex-grow: 1;">
+                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
+                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>
+                        ${rewardHtml}
+                    </div>
+                    <div style="font-size: 1.3rem;">
+                        ${statusIcon}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        journeyModal.style.display = 'flex';
+    };
+}
+
+if (closeJourneyBtn) {
+    closeJourneyBtn.onclick = () => journeyModal.style.display = 'none';
+}
+
+if (journeyModal) {
+    journeyModal.onclick = (e) => {
+        if (e.target === journeyModal) journeyModal.style.display = 'none';
+    };
 }
 
 // ==========================================
