@@ -166,9 +166,22 @@ const standardCourses = [
     'fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 
     'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'
 ];
+
 const referenceBooks = [
-    'firstaid_step1', 'rafiullah', 'im_medicine', 'im_surgery', 'brs_patho', 'brs_physio'
+    'firstaid_step1',
+    'firstaid_step2',
+    'rafiullah',
+    'im_medicine',
+    'im_surgery',
+    'im_pathology',
+    'im_pediatrics',
+    'brs_patho',
+    'brs_physio',
+    'doubleAA',
+    'RWR',
+    'pretest_surgery'
 ];
+
 const titles = {
     'fcps_part1': 'FCPS Part 1', 'fcps_part2': 'FCPS Part 2', 'fcps_imm': 'FCPS IMM',
     'mrcs_part1': 'MRCS Part 1', 'mrcs_part2': 'MRCS Part 2',

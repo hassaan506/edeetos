@@ -313,7 +313,8 @@ async function loadAndOpenBook(book) {
         document.body.style.cursor = 'wait';
         
         if (!loadedBooksCache[book.file]) {
-            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
+            // Updated code for questions.js
+			const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
             if (!response.ok) throw new Error("JSON file not found");
             
             let bookQuestions = await response.json();
@@ -1597,7 +1598,8 @@ window.generateRevisionQuiz = async function(topicId) {
         if (book && !loadedBooksCache[book.file]) {
             try {
                 document.body.style.cursor = 'wait';
-                const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'force-cache' });
+				// Updated code for questions.js
+				const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
                 if (response.ok) {
                     let bookQuestions = await response.json();
                     bookQuestions.forEach(q => {
