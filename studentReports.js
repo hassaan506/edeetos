@@ -175,10 +175,10 @@ const titles = {
     'mbbs_year1': 'MBBS Year 1', 'mbbs_year2': 'MBBS Year 2', 'mbbs_year3': 'MBBS Year 3',
     'mbbs_year4': 'MBBS Year 4', 'mbbs_year5': 'MBBS Year 5',
     'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2',
-	'rafiullah': 'Rafiullah FCPS', 'doubleAA': 'Double AA FCPS',
-    'im_medicine': 'Irfan Masood Medicine', 'im_surgery': 'Irfan Masood Surgery',
-	'im_pathology': 'Irfan Masood Pathology', 'im_pediatrics': 'Irfan Masood Pediatrics',
-	'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 
+	'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics',
+	'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology',
+	'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA',
+	'RWR': 'Residents Way to Residency', 'pretest_surgery': 'Pretest Surgery' 
 };
 
 let globalQuestionBank = {};
