@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "year": "Other Years",
+        "year": "",
         "exams": [],
         "subject": "",
         "chapter": "Cardiovascular",
@@ -16,6 +16,7 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "brs_physio"
     }
