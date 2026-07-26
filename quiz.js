@@ -1170,7 +1170,27 @@ if (aiHintBtn) {
                 hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, labs, and time-course carefully.";
             }
 
-            alert(`💡 Hint:\n\n${hintText}`);
+            // Create a dynamic modal to render the HTML hint properly
+            const hintModal = document.createElement('div');
+            hintModal.id = 'dynamic-hint-modal';
+            hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
+            
+            hintModal.innerHTML = `
+                <div style="background: white; padding: 30px; border-radius: 16px; max-width: 500px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+                    <h2 style="color: #f59e0b; margin-top: 0; margin-bottom: 15px; font-family: 'Nunito', sans-serif;"><i class="fas fa-lightbulb"></i> Hint</h2>
+                    <div style="color: #334155; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; text-align: left;">
+                        ${hintText}
+                    </div>
+                    <button id="close-dynamic-hint" style="background: #3b82f6; color: white; border: none; padding: 0.8rem 2rem; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; width: 100%; transition: 0.3s;">Got it!</button>
+                </div>
+            `;
+            
+            document.body.appendChild(hintModal);
+
+            // Close the modal and remove it from the DOM when clicked
+            document.getElementById('close-dynamic-hint').onclick = () => {
+                hintModal.remove();
+            };
 
             aiHintBtn.innerHTML = originalText;
             aiHintBtn.disabled = false;
