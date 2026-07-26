@@ -44,6 +44,8 @@ const allBooks = [
     { file: "brs_patho", title: "BRS - Pathology" },
     { file: "brs_physio", title: "BRS - Physiology" },
     { file: "doubleAA", title: "Double AA" }
+	{ file: "RWR", title: "Residents Way to Residency" },
+    { file: "pretest_surgery", title: "Pretest Surgery" }
 ];
 
 const availableBooks = allBooks.filter(book => {
