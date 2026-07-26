@@ -140,5 +140,17 @@ export const courseNamesMap = {
 
 export const mergedNamesMap = { 
     ...courseNamesMap, 
-    'firstaid_step1': 'First Aid Step 1', 'firstaid_step2': 'First Aid Step 2', 'im_medicine': 'IM Medicine', 'im_surgery': 'IM Surgery', 'im_pathology': 'IM Pathology', 'im_pediatrics': 'IM Pediatrics', 'brs_patho': 'BRS Pathology', 'brs_physio': 'BRS Physiology', 'rafiullah': 'Rafiullah', 'doubleAA': 'Double AA', 'RWR': 'Residents Way to Residency', 'pretest_surgery': 'Pretest Surgery', 'NONE': 'No Course'
- 
+    'firstaid_step1': 'First Aid Step 1', 
+    'firstaid_step2': 'First Aid Step 2', 
+    'im_medicine': 'IM Medicine', 
+    'im_surgery': 'IM Surgery', 
+    'im_pathology': 'IM Pathology', 
+    'im_pediatrics': 'IM Pediatrics', 
+    'brs_patho': 'BRS Pathology', 
+    'brs_physio': 'BRS Physiology', 
+    'rafiullah': 'Rafiullah', 
+    'doubleAA': 'Double AA', 
+    'RWR': 'Residents Way to Residency', 
+    'pretest_surgery': 'Pretest Surgery', 
+    'NONE': 'No Course'
+};
