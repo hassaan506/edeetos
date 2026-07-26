@@ -1396,17 +1396,17 @@ function showMilestonePopup(trophy) {
                 btnConfirm.disabled = true;
 
                 try {
-                    if (selectedType === 'course') {
-                        const targetCourse = modal.querySelector('#reward-course-selection').value;
-                        await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
-                    } else {
-                        const selectedBook = modal.querySelector('#reward-book-selection').value;
-                        if (!selectedBook) {
-                            btnConfirm.textContent = "Claim Selected Reward";
-                            btnConfirm.disabled = false;
-                            return alert("You must select a book from the dropdown first.");
-                        }
-                        await claimBookReward(trophy.title, selectedBook);
+				if (selectedType === 'course') {
+					const targetCourse = modal.querySelector('#reward-course-selection').value;
+					await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
+				} else {
+					const selectedBook = modal.querySelector('#reward-book-selection').value;
+					if (!selectedBook) {
+						btnConfirm.textContent = "Claim Selected Reward";
+						btnConfirm.disabled = false;
+						return alert("You must select a book from the dropdown first.");
+					}
+                    await claimBookReward(trophy.rewardValue, trophy.rewardUnit, trophy.title, selectedBook);
                     }
                     
                     removeUnclaimedReward(trophy.title);
@@ -1471,7 +1471,7 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, mi
     }
 }
 
-async function claimBookReward(trophyTitle, selectedBookFile) {
+async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBookFile) {
     try {
         if (!auth?.currentUser?.uid) return alert('Authentication error: Session lost.');
 
@@ -1479,7 +1479,25 @@ async function claimBookReward(trophyTitle, selectedBookFile) {
         
         let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
         
-        currentSubs[selectedBookFile] = 'lifetime';
+        // Date calculation logic starts here
+        let currentExpiry = currentSubs[selectedBookFile];
+        let newExpiryDate = new Date();
+
+        if (currentExpiry && currentExpiry !== 'lifetime') {
+            const existingDate = new Date(currentExpiry);
+            if (existingDate > newExpiryDate) {
+                newExpiryDate = existingDate;
+            }
+        }
+
+        if (rewardUnit === "Hour") {
+            newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue);
+        } else {
+            newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue);
+        }
+
+        currentSubs[selectedBookFile] = newExpiryDate.toISOString();
+        // Date calculation logic ends here
 
         let claimedMilestones = currentUserData?.claimedMilestones || [];
         if (!claimedMilestones.includes(trophyTitle)) {
@@ -1496,7 +1514,7 @@ async function claimBookReward(trophyTitle, selectedBookFile) {
             currentUserData.claimedMilestones = claimedMilestones;
         }
 
-        alert('Success! Your book is unlocked and available in your library.');
+        alert(`Success! Your book is unlocked for ${rewardValue} ${rewardUnit}.`);
     } catch (err) {
         console.error('Error claiming book:', err);
         alert('Firebase Error: ' + err.message);

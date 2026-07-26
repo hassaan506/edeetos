@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 let currentUserId = null; 
 let currentUserData = null;
@@ -547,7 +547,21 @@ async function savePracticeProgress(questionId, isCorrect) {
     } catch (error) { console.error("Error saving practice progress:", error); }
 }
 
-async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions) {
+async function savePracticeTime(timeInSeconds) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+    const user = auth.currentUser;
+    if (!user || timeInSeconds <= 0) return; 
+
+    const userRef = doc(db, "users", user.uid);
+    const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
+    
+    try {
+        // Uses increment to continuously add to their lifetime practice total
+        await setDoc(userRef, { [rootKey]: { practiceTimeSpent: increment(timeInSeconds) } }, { merge: true });
+    } catch (error) { console.error("Error saving practice time:", error); }
+}
+
+async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions, timeSpent) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return; 
@@ -564,8 +578,9 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
         const examRecord = {
             examName: examTitle,
             score: correctCount,
-            total: totalQuestions,
+            totalQuestions: totalQuestions, // Fixed typo: changed 'total' to 'totalQuestions' to match reports
             percentage: Math.round((correctCount / totalQuestions) * 100),
+            timeSpent: timeSpent, // Included the new time tracking variable
             date: new Date().toISOString() 
         };
         updates.examHistory = arrayUnion(examRecord);
@@ -1017,7 +1032,7 @@ function showResults() {
         titleEl.style.color = "#991b1b";
     }
 
-    const returnBtn = resultsEl.querySelector('button');
+const returnBtn = resultsEl.querySelector('button');
     if (returnBtn) {
         returnBtn.onclick = async (e) => {
             e.preventDefault();
@@ -1025,11 +1040,14 @@ function showResults() {
             returnBtn.disabled = true;
 
             const tasks = [];
-            if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total));
+            // Calculate time taken (Total allotted time minus the remaining countdown seconds)
+            const timeTaken = (quizConfig.timer * 60) - sessionSeconds; 
+            
+            if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
             tasks.push(updateSpacedRepetition());
 
             await Promise.all(tasks);
-            exitSafely('questions.html'); // UPDATED: Use safe exit
+            exitSafely('questions.html'); 
         };
     }
 }
@@ -1054,19 +1072,23 @@ function showPracticeCompleteModal(isGuest = false) {
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 
-    document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
+document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
         const btn = e.target;
         btn.textContent = "Saving Progress...";
         btn.disabled = true;
         
-        await updateSpacedRepetition();
+        const tasks = [updateSpacedRepetition()];
+        // Pushes the practice time to the database
+        if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds));
+        
+        await Promise.all(tasks);
         
         if (!activeRoomId) {
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
         }
         
-        exitSafely('questions.html'); // UPDATED: Use safe exit
+        exitSafely('questions.html'); 
     });
 }
 
@@ -1336,6 +1358,7 @@ if (globalExitBtn) {
                 try {
                     const tasks = [
                         updateSpacedRepetition(),
+                        !isExamMode ? savePracticeTime(sessionSeconds) : Promise.resolve(), // Saves practice time
                         setDoc(doc(db, "study_rooms", activeRoomId), {
                             status: "waiting",
                             answers: {},           
@@ -1346,7 +1369,7 @@ if (globalExitBtn) {
                     ];
                     await Promise.all(tasks);
 
-                    exitSafely('questions.html'); // UPDATED: Use safe exit
+                    exitSafely('questions.html'); 
                 } catch (error) {
                     console.error("🔥 Firebase Error:", error);
                     lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
@@ -1365,6 +1388,7 @@ if (globalExitBtn) {
 
         try {
             const tasks = [updateSpacedRepetition()];
+            if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds)); // Saves practice time
 
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
@@ -1382,7 +1406,7 @@ if (globalExitBtn) {
         } finally {
             localStorage.removeItem('active_study_room');
             localStorage.removeItem('is_study_guest');
-            exitSafely('questions.html'); // UPDATED: Use safe exit
+            exitSafely('questions.html'); 
         }
     };
 }
