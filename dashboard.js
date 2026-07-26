@@ -101,14 +101,16 @@ onAuthStateChanged(auth, async (user) => {
                 // 3. Subscription Downgrade Check
                 const userRole = (currentUserData.role || '').toUpperCase();
                 let hasActiveSubscription = false;
-                if (currentUserData.isPremium && currentUserData.subscriptions) {
-                    for (const expiry of Object.values(currentUserData.subscriptions)) {
-                        if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
-                            hasActiveSubscription = true;
-                            break; 
-                        }
-                    }
-                }
+				// From your subscription downgrade check
+				if (currentUserData.isPremium && currentUserData.subscriptions) {
+					for (const expiry of Object.values(currentUserData.subscriptions)) {
+						// The code immediately grants access if 'lifetime' is detected
+						if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
+							hasActiveSubscription = true;
+							break; 
+						}
+					}
+				}
                 
                 if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
                     hasCheckedDowngrade = true; 
@@ -820,11 +822,12 @@ if (btnOpenProfile) {
             item.className = 'sub-item';
             
             let badgeHtml = '';
-            if (expiry === 'lifetime') {
-                badgeHtml = '<span class="sub-tag sub-lifetime">Lifetime</span>';
-            } else {
-                const expDate = new Date(expiry);
-                if (expDate < new Date()) {
+			if (expiry === 'lifetime') {
+				badgeHtml = '<span class="sub-tag sub-lifetime">Lifetime</span>';
+			} else {
+				// Standard date checking logic
+				const expDate = new Date(expiry);
+				if (expDate < new Date()) {
                     badgeHtml = '<span class="sub-tag sub-expired">Expired</span>';
                 } else {
                     badgeHtml = `<span class="sub-tag sub-active">Active till ${expDate.toLocaleDateString()}</span>`;
