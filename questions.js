@@ -34,18 +34,18 @@ if (!savedCourse) {
 const activeCourse = savedCourse;
 
 const allBooks = [
-    { file: "firstaid_step1", title: "First Aid Step 1" },
-    { file: "firstaid_step2", title: "First Aid Step 2" },
-    { file: "rafiullah", title: "Rafiullah FCPS" },
-    { file: "im_medicine", title: "Irfan Masood - Medicine" },
-    { file: "im_surgery", title: "Irfan Masood - Surgery" },
-    { file: "im_pathology", title: "Irfan Masood - Pathology" },
-    { file: "im_pediatrics", title: "Irfan Masood - Pediatrics" },
     { file: "brs_patho", title: "BRS - Pathology" },
     { file: "brs_physio", title: "BRS - Physiology" },
     { file: "doubleAA", title: "Double AA" },
-	{ file: "RWR", title: "Residents Way to Residency" },
-    { file: "pretest_surgery", title: "Pretest Surgery" }
+    { file: "firstaid_step1", title: "First Aid Step 1" },
+    { file: "firstaid_step2", title: "First Aid Step 2" },
+    { file: "im_medicine", title: "Irfan Masood - Medicine" },
+    { file: "im_pathology", title: "Irfan Masood - Pathology" },
+    { file: "im_pediatrics", title: "Irfan Masood - Pediatrics" },
+    { file: "im_surgery", title: "Irfan Masood - Surgery" },
+    { file: "pretest_surgery", title: "Pretest Surgery" },
+    { file: "rafiullah", title: "Rafiullah FCPS" },
+	{ file: "RWR", title: "Residents Way to Residency" }
 ];
 
 const availableBooks = allBooks.filter(book => {
