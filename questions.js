@@ -928,7 +928,39 @@ async function loadDataAndBuildTree() {
 
         subjectTree = hierarchyData.subjects || {};
         systemTree = hierarchyData.systems || {};
-        examTree = hierarchyData.exams || {};
+examTree = {};
+        masterQuestions.forEach(q => {
+            // 1. Clean and split the comma-separated years
+            let qYears = [];
+            if (Array.isArray(q.Year)) {
+                qYears = q.Year.map(y => String(y).trim());
+            } else if (typeof q.Year === 'string') {
+                qYears = q.Year.split(',').map(y => y.trim());
+            } else if (q.Year) {
+                qYears = [String(q.Year).trim()];
+            } else {
+                qYears = ["Other Years"];
+            }
+
+            // 2. Ensure exams are mapped to a valid array
+            let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
+            if (qExams.length === 0) qExams = ["Other Exams"];
+
+            let subj = q.Subject || "Unknown Subject";
+            let topic = q.Topic || "Unknown Topic";
+
+            // 3. Inject the data into individual Year folders
+            qYears.forEach(year => {
+                if (!examTree[year]) examTree[year] = {};
+                qExams.forEach(exam => {
+                    if (!examTree[year][exam]) examTree[year][exam] = {};
+                    if (!examTree[year][exam][subj]) examTree[year][exam][subj] = [];
+                    if (!examTree[year][exam][subj].includes(topic)) {
+                        examTree[year][exam][subj].push(topic);
+                    }
+                });
+            });
+        });
 
         renderGrid();
     } catch (error) {
