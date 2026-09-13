@@ -228,7 +228,9 @@ function formatJSONQuestion(q) {
         Chapter: q.Chapter || q.chapter || "",
         Topic: q.Topic || q.topic || "",
         isBookQuestion: q.isBookQuestion || false,
-        bookName: q.bookName || ""
+        bookName: q.bookName || "",
+		Year: q.Year || q.year || "",
+        Exam: q.Exam || q.exams || []
     };
 }
 
@@ -361,6 +363,42 @@ function loadQuestion(index) {
             document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
         }
 
+        // --- NEW: Render Exam & Year Badges ONLY in Practice Mode ---
+        const examYearInfo = document.getElementById('exam-year-info');
+        if (examYearInfo) {
+            examYearInfo.innerHTML = ''; 
+            let badgesHTML = '';
+            
+            let yearData = currentQuestionData.Year || currentQuestionData.year;
+            let yearList = [];
+            if (Array.isArray(yearData)) yearList = yearData;
+            else if (typeof yearData === 'string' && yearData.trim() !== '') yearList = yearData.split(',');
+
+            let examData = currentQuestionData.Exam || currentQuestionData.exams;
+            let examList = Array.isArray(examData) ? examData : (examData ? [examData] : []);
+
+            // Strict check: Only show if data exists AND we are NOT in Exam Mode
+            if ((yearList.length > 0 || examList.length > 0) && !isExamMode) {
+                examYearInfo.style.display = 'flex';
+                
+                if (yearList.length > 0) {
+                    badgesHTML += `<span style="background: #e2e8f0; color: #475569; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;"><i class="fas fa-history" style="margin-right: 4px;"></i> ${yearList.join(', ')}</span>`;
+                }
+                
+                examList.forEach(ex => {
+                    if (ex.trim()) {
+                        badgesHTML += `<span style="background: rgba(59, 130, 246, 0.15); color: #1e3a8a; border: 1px solid rgba(59, 130, 246, 0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;"><i class="fas fa-file-signature" style="margin-right: 4px;"></i> ${ex.trim()}</span>`;
+                    }
+                });
+                
+                examYearInfo.innerHTML = badgesHTML;
+            } else {
+                // Forces the container to hide, preventing visual ghosting during exams
+                examYearInfo.style.display = 'none';
+            }
+        }
+        // -----------------------------------------------------------
+
         questionTextEl.innerHTML = currentQuestionData.text || "Missing Question";
         explanationText.innerHTML = currentQuestionData.explanation || "No explanation provided.";
 
@@ -434,7 +472,7 @@ function loadQuestion(index) {
                 setTimeout(() => notesModal.classList.add('hidden'), 300);
             };
         }
-		
+        
         const btnReport = document.getElementById('btn-report');
         const reportModal = document.getElementById('report-modal');
         const closeReportBtn = document.getElementById('close-report-btn');

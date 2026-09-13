@@ -1010,10 +1010,26 @@ function getQuestionCount(view, pathArr, customPool = null) {
             if (paths[0] && q.Chapter !== paths[0]) return false;
             if (paths[1] && q.Subject !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
-        } else if (view === 'exam') {
-            const qYear = q.Year || "Other Years";
-            if (paths[0] && qYear !== paths[0]) return false;
-            if (paths[1] && (!q.Exam || !q.Exam.includes(paths[1]))) return false;
+		} else if (view === 'exam') {
+            // 1. Handle Years (Split comma-separated strings into an array)
+            let qYears = [];
+            if (Array.isArray(q.Year)) {
+                qYears = q.Year.map(y => String(y).trim());
+            } else if (typeof q.Year === 'string') {
+                qYears = q.Year.split(',').map(y => y.trim());
+            } else if (q.Year) {
+                qYears = [String(q.Year).trim()];
+            } else {
+                qYears = ["Other Years"];
+            }
+            
+            if (paths[0] && !qYears.includes(paths[0])) return false;
+            
+            // 2. Handle Exams (Ensure it parses your JSON array correctly)
+            let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
+            if (paths[1] && !qExams.includes(paths[1])) return false;
+            
+            // 3. Handle standard Subjects and Topics
             if (paths[2] && q.Subject !== paths[2]) return false;
             if (paths[3] && q.Topic !== paths[3]) return false;
         } else if (view === 'book') {
