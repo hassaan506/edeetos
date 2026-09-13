@@ -930,7 +930,6 @@ async function loadDataAndBuildTree() {
         systemTree = hierarchyData.systems || {};
 examTree = {};
         masterQuestions.forEach(q => {
-            // 1. Clean and split the comma-separated years
             let qYears = [];
             if (Array.isArray(q.Year)) {
                 qYears = q.Year.map(y => String(y).trim());
@@ -942,17 +941,27 @@ examTree = {};
                 qYears = ["Other Years"];
             }
 
-            // 2. Ensure exams are mapped to a valid array
             let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
             if (qExams.length === 0) qExams = ["Other Exams"];
 
             let subj = q.Subject || "Unknown Subject";
             let topic = q.Topic || "Unknown Topic";
 
-            // 3. Inject the data into individual Year folders
-            qYears.forEach(year => {
-                if (!examTree[year]) examTree[year] = {};
-                qExams.forEach(exam => {
+            // Map each exam to its correct year based on string matching or fallback order
+            qExams.forEach(exam => {
+                // Try to extract a 2-digit or 4-digit year from the exam string (e.g., "08/25" -> 2025)
+                let matchedYear = null;
+                const yearMatch = exam.match(/\/(25|26|2025|2026)\b/);
+                if (yearMatch) {
+                    let rawY = yearMatch[1];
+                    matchedYear = rawY.length === 2 ? `20${rawY}` : rawY;
+                }
+
+                // Determine which year folder this exam actually belongs in
+                let targetYears = matchedYear && qYears.includes(matchedYear) ? [matchedYear] : qYears;
+
+                targetYears.forEach(year => {
+                    if (!examTree[year]) examTree[year] = {};
                     if (!examTree[year][exam]) examTree[year][exam] = {};
                     if (!examTree[year][exam][subj]) examTree[year][exam][subj] = [];
                     if (!examTree[year][exam][subj].includes(topic)) {
@@ -961,7 +970,6 @@ examTree = {};
                 });
             });
         });
-
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
