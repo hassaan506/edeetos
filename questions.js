@@ -422,10 +422,44 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
     };
 
-    if (Array.isArray(dataObj)) {
-        dataObj.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
+if (Array.isArray(dataObj)) {
+        // Sort topics alphabetically for a cleaner UI
+        let sortedTopics = [...dataObj].sort((a, b) => a.localeCompare(b));
+        sortedTopics.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
     } else {
-        Object.keys(dataObj).forEach(key => renderListItem(key, dataObj[key], level, [...pathArr, key]));
+        let keys = Object.keys(dataObj);
+        
+        // Custom chronological sort strictly for the Past Papers (Exams) view
+        if (currentView === 'exam' && level === 'Level1') {
+            keys.sort((a, b) => {
+                const getMonth = (str) => {
+                    // Extract the month number from the MM/YY format (e.g., captures "01" from "01/26")
+                    const match = str.match(/\b(\d{2})\/\d{2}\b/);
+                    if (match) return parseInt(match[1], 10);
+                    
+                    // Fallback: Check for month names if the MM/YY format is missing
+                    const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+                    const lowerStr = str.toLowerCase();
+                    for (let i = 0; i < months.length; i++) {
+                        if (lowerStr.includes(months[i])) return i + 1;
+                    }
+                    return 99; // Fallback for unknown formats
+                };
+                
+                const monthA = getMonth(a);
+                const monthB = getMonth(b);
+                
+                // Sort by month first
+                if (monthA !== monthB) return monthA - monthB;
+                // If the month is identical, sort alphabetically by Subject name
+                return a.localeCompare(b);
+            });
+        } else {
+            // Apply a default alphabetical sort for Subjects, Chapters, and Systems
+            keys.sort((a, b) => a.localeCompare(b));
+        }
+
+        keys.forEach(key => renderListItem(key, dataObj[key], level, [...pathArr, key]));
     }
 }
 

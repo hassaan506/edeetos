@@ -1,5 +1,57 @@
 {
     "subjects": {
+        "Physiology": {
+            "Body Fluids": {
+                "": 1
+            },
+            "Cardiovascular System": {
+                "": 144
+            },
+            "Endocrine System": {
+                "": 99
+            },
+            "Gastrointestinal System": {
+                "": 83
+            },
+            "General": {
+                "": 38
+            },
+            "Hematological System": {
+                "": 30
+            },
+            "Immune System": {
+                "": 8
+            },
+            "Metabolism": {
+                "": 1
+            },
+            "Musculoskeletal System": {
+                "": 17
+            },
+            "Nervous System": {
+                "": 164
+            },
+            "Renal System": {
+                "The Kidneys & Ureters": 73,
+                "Urinary Tract Calculi": 1,
+                "Chronic Kidney Disease": 5,
+                "Acid Base": 7,
+                "Acute Kidney Injury": 2,
+                "Urinary Tract Infection": 2,
+                "Nephrotic Syndromes": 2,
+                "Renal Replacement Therapy": 1,
+                "Micturition & Urinary Incontinence": 1
+            },
+            "Reproductive System": {
+                "": 106
+            },
+            "Respiratory System": {
+                "": 177
+            },
+            "Special Senses": {
+                "": 19
+            }
+        },
         "Anatomy": {
             "Cardiovascular System": {
                 "": 127
@@ -29,10 +81,15 @@
                 "": 178
             },
             "Nervous System": {
-                "": 532
+                "": 533
             },
             "Renal System": {
-                "": 25
+                "The Kidneys & Ureters": 12,
+                "The Prostate & Seminal Vesicles": 4,
+                "Urethra & Penis": 4,
+                "The Urinary Bladder": 3,
+                "Transplantation": 1,
+                "Benign Prostatic Hyperplasia": 1
             },
             "Reproductive System": {
                 "": 85
@@ -86,7 +143,7 @@
             "Genetics": {
                 "": 1
             },
-            "Hematologic System": {
+            "Hematological System": {
                 "": 30
             },
             "Immune System": {
@@ -111,29 +168,14 @@
                 "": 1
             },
             "Renal System": {
-                "": 4
+                "Urinary Tract Calculi": 2,
+                "Chronic Kidney Disease": 2
             },
             "Reproductive System": {
                 "": 1
             },
             "Special Senses": {
                 "": 15
-            }
-        },
-        "Biostatistics": {
-            "General": {
-                "": 36
-            }
-        },
-        "Community Medicine": {
-            "General": {
-                "": 23
-            },
-            "Reproductive System": {
-                "": 1
-            },
-            "Special Senses": {
-                "": 1
             }
         },
         "Embryology": {
@@ -149,7 +191,7 @@
             "General": {
                 "": 5
             },
-            "Hematologic System": {
+            "Hematological System": {
                 "": 2
             },
             "Musculoskeletal System": {
@@ -159,7 +201,9 @@
                 "": 13
             },
             "Renal System": {
-                "": 22
+                "Potter Sequence & Related Conditions": 4,
+                "The Kidneys & Ureters": 11,
+                "The Urinary Bladder": 7
             },
             "Reproductive System": {
                 "": 36
@@ -189,7 +233,7 @@
             "General": {
                 "": 53
             },
-            "Hematologic System": {
+            "Hematological System": {
                 "": 10
             },
             "Immune System": {
@@ -208,7 +252,7 @@
                 "": 1
             },
             "Renal System": {
-                "": 7
+                "Polycystic Kidney Disease": 7
             },
             "Reproductive System": {
                 "": 50
@@ -218,67 +262,6 @@
             },
             "Special Senses": {
                 "": 1
-            }
-        },
-        "Gynecology": {
-            "Reproductive System": {
-                "": 6
-            }
-        },
-        "Hematology": {
-            "Hematologic System": {
-                "": 2
-            }
-        },
-        "Histology": {
-            "Gastrointestinal System": {
-                "": 1
-            },
-            "General": {
-                "": 1
-            },
-            "Immune System": {
-                "": 1
-            },
-            "Musculoskeletal System": {
-                "": 1
-            },
-            "Respiratory System": {
-                "": 2
-            }
-        },
-        "Immunology": {
-            "Endocrine System": {
-                "": 4
-            },
-            "Gastrointestinal System": {
-                "": 4
-            },
-            "General": {
-                "": 1
-            },
-            "Hematologic System": {
-                "": 1
-            },
-            "Immune System": {
-                "": 147
-            },
-            "Integumentary System": {
-                "": 1
-            },
-            "Musculoskeletal System": {
-                "": 1
-            },
-            "Reproductive System": {
-                "": 1
-            },
-            "Respiratory System": {
-                "": 1
-            }
-        },
-        "Medical Ethics": {
-            "General": {
-                "": 15
             }
         },
         "Medicine": {
@@ -294,11 +277,8 @@
             "General": {
                 "": 45
             },
-            "Hematologic System": {
-                "": 140
-            },
             "Hematological System": {
-                "": 3
+                "": 143
             },
             "Immune System": {
                 "": 29
@@ -316,7 +296,21 @@
                 "": 173
             },
             "Renal System": {
-                "": 55
+                "Chronic Kidney Disease": 9,
+                "Acid Base": 2,
+                "Acute Kidney Injury": 6,
+                "Transplantation": 1,
+                "Urinary Tract Infection": 3,
+                "Renal Cell Carcinoma": 5,
+                "Micturition & Urinary Incontinence": 5,
+                "The Kidneys & Ureters": 5,
+                "Nephritic Syndromes": 5,
+                "Nephrotic Syndromes": 3,
+                "The Urinary Bladder": 2,
+                "Renal Tubular Acidosis": 2,
+                "Urinary Tract Calculi": 2,
+                "Renal Replacement Therapy": 2,
+                "Urethra & Penis": 1
             },
             "Reproductive System": {
                 "": 243
@@ -341,7 +335,7 @@
             "General": {
                 "": 85
             },
-            "Hematologic System": {
+            "Hematological System": {
                 "": 8
             },
             "Immune System": {
@@ -360,7 +354,8 @@
                 "": 40
             },
             "Renal System": {
-                "": 9
+                "Urinary Tract Infection": 8,
+                "Nephritic Syndromes": 1
             },
             "Reproductive System": {
                 "": 30
@@ -370,10 +365,8 @@
             },
             "Special Senses": {
                 "": 11
-            }
-        },
-        "Neurology": {
-            "Nervous System": {
+            },
+            "Sterilization": {
                 "": 1
             }
         },
@@ -388,40 +381,9 @@
                 "": 10
             }
         },
-        "Obstetrics/Gynecology": {
-            "Reproductive System": {
-                "": 1
-            }
-        },
-        "Oncology": {
-            "Endocrine System": {
-                "": 2
-            },
-            "Gastrointestinal System": {
-                "": 6
-            },
-            "General": {
-                "": 7
-            },
-            "Hematologic System": {
-                "": 2
-            },
-            "Integumentary System": {
-                "": 1
-            },
-            "Musculoskeletal System": {
-                "": 1
-            },
-            "Nervous System": {
-                "": 1
-            },
-            "Reproductive System": {
-                "": 7
-            }
-        },
         "Pathology": {
             "Cardiovascular System": {
-                "": 91
+                "": 92
             },
             "Endocrine System": {
                 "": 48
@@ -435,11 +397,8 @@
             "General Pathology": {
                 "": 2
             },
-            "Hematologic System": {
-                "": 138
-            },
             "Hematological System": {
-                "": 1
+                "": 139
             },
             "Immune System": {
                 "": 67
@@ -457,7 +416,18 @@
                 "": 90
             },
             "Renal System": {
-                "": 44
+                "The Urinary Bladder": 4,
+                "Chronic Kidney Disease": 3,
+                "Nephritic Syndromes": 12,
+                "Urinary Tract Calculi": 4,
+                "Nephrotic Syndromes": 7,
+                "The Kidneys & Ureters": 2,
+                "Acute Kidney Injury": 3,
+                "Transplantation": 1,
+                "Renal Cell Carcinoma": 3,
+                "Urethra & Penis": 1,
+                "Benign Prostatic Hyperplasia": 1,
+                "Polycystic Kidney Disease": 1
             },
             "Reproductive System": {
                 "": 77
@@ -471,7 +441,7 @@
         },
         "Pediatrics": {
             "Cardiovascular System": {
-                "": 3
+                "": 4
             },
             "Endocrine System": {
                 "": 1
@@ -482,7 +452,7 @@
             "General": {
                 "": 1
             },
-            "Hematologic System": {
+            "Hematological System": {
                 "": 3
             },
             "Metabolic System": {
@@ -508,14 +478,8 @@
             "General": {
                 "": 124
             },
-            "Hematologic System": {
-                "": 49
-            },
             "Hematological System": {
-                "": 1
-            },
-            "Hematology": {
-                "": 1
+                "": 51
             },
             "Immune System": {
                 "": 21
@@ -542,85 +506,24 @@
                 "": 1
             },
             "Renal System": {
-                "": 50
+                "The Urinary Bladder": 4,
+                "Urinary Tract Calculi": 5,
+                "Chronic Kidney Disease": 17,
+                "The Kidneys & Ureters": 11,
+                "Renal Replacement Therapy": 1,
+                "Acid Base": 12
             },
             "Reproductive System": {
                 "": 59
             },
             "Respiratory System": {
-                "": 65
+                "": 66
             },
             "Special Senses": {
                 "": 12
-            }
-        },
-        "Physiology": {
-            "Body Fluids": {
-                "": 1
-            },
-            "Cardiovascular System": {
-                "": 144
-            },
-            "Endocrine System": {
-                "": 98
-            },
-            "Gastrointestinal System": {
-                "": 83
-            },
-            "General": {
-                "": 38
-            },
-            "Hematologic System": {
-                "": 30
-            },
-            "Immune System": {
-                "": 8
-            },
-            "Metabolism": {
-                "": 1
-            },
-            "Musculoskeletal System": {
-                "": 17
-            },
-            "Nervous System": {
-                "": 164
-            },
-            "Renal System": {
-                "": 97
-            },
-            "Reproductive System": {
-                "": 106
-            },
-            "Respiratory System": {
-                "": 177
-            },
-            "Special Senses": {
-                "": 19
-            }
-        },
-        "Psychiatry": {
-            "General": {
-                "": 12
-            },
-            "Nervous System": {
-                "": 4
-            }
-        },
-        "Radiology": {
-            "Gastrointestinal System": {
-                "": 1
-            },
-            "General": {
-                "": 3
-            },
-            "Nervous System": {
-                "": 1
             }
         },
         "Surgery": {
-            "Abdomen": {
-                "": 1
-            },
             "Cardiovascular System": {
                 "": 9
             },
@@ -628,12 +531,12 @@
                 "": 5
             },
             "Gastrointestinal System": {
-                "": 54
+                "": 56
             },
             "General": {
                 "": 30
             },
-            "Hematologic System": {
+            "Hematological System": {
                 "": 4
             },
             "Immune System": {
@@ -649,13 +552,149 @@
                 "": 3
             },
             "Renal System": {
-                "": 13
+                "The Kidneys & Ureters": 6,
+                "The Urinary Bladder": 1,
+                "Urinary Tract Calculi": 2,
+                "Benign Prostatic Hyperplasia": 2,
+                "Transplantation": 2
             },
             "Reproductive System": {
                 "": 46
             },
             "Respiratory System": {
                 "": 11
+            }
+        },
+        "Immunology": {
+            "Endocrine System": {
+                "": 4
+            },
+            "Gastrointestinal System": {
+                "": 4
+            },
+            "General": {
+                "": 1
+            },
+            "Hematological System": {
+                "": 1
+            },
+            "Immune System": {
+                "": 147
+            },
+            "Integumentary System": {
+                "": 1
+            },
+            "Musculoskeletal System": {
+                "": 1
+            },
+            "Reproductive System": {
+                "": 1
+            },
+            "Respiratory System": {
+                "": 1
+            }
+        },
+        "Oncology": {
+            "Endocrine System": {
+                "": 2
+            },
+            "Gastrointestinal System": {
+                "": 6
+            },
+            "General": {
+                "": 7
+            },
+            "Hematological System": {
+                "": 2
+            },
+            "Integumentary System": {
+                "": 1
+            },
+            "Musculoskeletal System": {
+                "": 1
+            },
+            "Nervous System": {
+                "": 1
+            },
+            "Reproductive System": {
+                "": 7
+            }
+        },
+        "Histology": {
+            "Gastrointestinal System": {
+                "": 1
+            },
+            "General": {
+                "": 1
+            },
+            "Immune System": {
+                "": 1
+            },
+            "Musculoskeletal System": {
+                "": 1
+            },
+            "Respiratory System": {
+                "": 2
+            }
+        },
+        "Radiology": {
+            "Gastrointestinal System": {
+                "": 1
+            },
+            "General": {
+                "": 3
+            },
+            "Nervous System": {
+                "": 1
+            }
+        },
+        "Biostatistics": {
+            "General": {
+                "": 36
+            }
+        },
+        "Community Medicine": {
+            "General": {
+                "": 23
+            },
+            "Reproductive System": {
+                "": 1
+            },
+            "Special Senses": {
+                "": 1
+            }
+        },
+        "Medical Ethics": {
+            "General": {
+                "": 15
+            }
+        },
+        "Psychiatry": {
+            "General": {
+                "": 12
+            },
+            "Nervous System": {
+                "": 4
+            }
+        },
+        "Hematology": {
+            "Hematological System": {
+                "": 2
+            }
+        },
+        "Neurology": {
+            "Nervous System": {
+                "": 1
+            }
+        },
+        "Gynecology": {
+            "Reproductive System": {
+                "": 6
+            }
+        },
+        "Obstetrics/Gynecology": {
+            "Reproductive System": {
+                "": 1
             }
         }
     },
@@ -689,10 +728,10 @@
                 "": 2
             },
             "Pathology": {
-                "": 91
+                "": 92
             },
             "Pediatrics": {
-                "": 3
+                "": 4
             },
             "Pharmacology": {
                 "": 133
@@ -742,7 +781,7 @@
                 "": 79
             },
             "Physiology": {
-                "": 98
+                "": 99
             },
             "Surgery": {
                 "": 5
@@ -795,7 +834,48 @@
                 "": 1
             },
             "Surgery": {
-                "": 54
+                "": 56
+            }
+        },
+        "Hematological System": {
+            "Biochemistry": {
+                "": 30
+            },
+            "Embryology": {
+                "": 2
+            },
+            "Genetics": {
+                "": 10
+            },
+            "Hematology": {
+                "": 2
+            },
+            "Immunology": {
+                "": 1
+            },
+            "Medicine": {
+                "": 143
+            },
+            "Microbiology": {
+                "": 8
+            },
+            "Oncology": {
+                "": 2
+            },
+            "Pathology": {
+                "": 139
+            },
+            "Pediatrics": {
+                "": 3
+            },
+            "Pharmacology": {
+                "": 51
+            },
+            "Physiology": {
+                "": 30
+            },
+            "Surgery": {
+                "": 4
             }
         },
         "Immune System": {
@@ -865,6 +945,26 @@
                 "": 2
             }
         },
+        "Metabolic System": {
+            "Biochemistry": {
+                "": 202
+            },
+            "Genetics": {
+                "": 4
+            },
+            "Medicine": {
+                "": 5
+            },
+            "Pathology": {
+                "": 8
+            },
+            "Pediatrics": {
+                "": 1
+            },
+            "Pharmacology": {
+                "": 3
+            }
+        },
         "Musculoskeletal System": {
             "Anatomy": {
                 "": 178
@@ -914,7 +1014,7 @@
         },
         "Nervous System": {
             "Anatomy": {
-                "": 532
+                "": 533
             },
             "Anesthesia": {
                 "": 17
@@ -964,34 +1064,85 @@
         },
         "Renal System": {
             "Anatomy": {
-                "": 25
+                "The Kidneys & Ureters": 12,
+                "The Prostate & Seminal Vesicles": 4,
+                "Urethra & Penis": 4,
+                "The Urinary Bladder": 3,
+                "Transplantation": 1,
+                "Benign Prostatic Hyperplasia": 1
             },
             "Biochemistry": {
-                "": 4
+                "Urinary Tract Calculi": 2,
+                "Chronic Kidney Disease": 2
             },
             "Embryology": {
-                "": 22
+                "Potter Sequence & Related Conditions": 4,
+                "The Kidneys & Ureters": 11,
+                "The Urinary Bladder": 7
             },
             "Genetics": {
-                "": 7
+                "Polycystic Kidney Disease": 7
             },
             "Medicine": {
-                "": 55
+                "Chronic Kidney Disease": 9,
+                "Acid Base": 2,
+                "Acute Kidney Injury": 6,
+                "Transplantation": 1,
+                "Urinary Tract Infection": 3,
+                "Renal Cell Carcinoma": 5,
+                "Micturition & Urinary Incontinence": 5,
+                "The Kidneys & Ureters": 5,
+                "Nephritic Syndromes": 5,
+                "Nephrotic Syndromes": 3,
+                "The Urinary Bladder": 2,
+                "Renal Tubular Acidosis": 2,
+                "Urinary Tract Calculi": 2,
+                "Renal Replacement Therapy": 2,
+                "Urethra & Penis": 1
             },
             "Microbiology": {
-                "": 9
+                "Urinary Tract Infection": 8,
+                "Nephritic Syndromes": 1
             },
             "Pathology": {
-                "": 44
+                "The Urinary Bladder": 4,
+                "Chronic Kidney Disease": 3,
+                "Nephritic Syndromes": 12,
+                "Urinary Tract Calculi": 4,
+                "Nephrotic Syndromes": 7,
+                "The Kidneys & Ureters": 2,
+                "Acute Kidney Injury": 3,
+                "Transplantation": 1,
+                "Renal Cell Carcinoma": 3,
+                "Urethra & Penis": 1,
+                "Benign Prostatic Hyperplasia": 1,
+                "Polycystic Kidney Disease": 1
             },
             "Pharmacology": {
-                "": 50
+                "The Urinary Bladder": 4,
+                "Urinary Tract Calculi": 5,
+                "Chronic Kidney Disease": 17,
+                "The Kidneys & Ureters": 11,
+                "Renal Replacement Therapy": 1,
+                "Acid Base": 12
             },
             "Physiology": {
-                "": 97
+                "The Kidneys & Ureters": 73,
+                "Urinary Tract Calculi": 1,
+                "Chronic Kidney Disease": 5,
+                "Acid Base": 7,
+                "Acute Kidney Injury": 2,
+                "Urinary Tract Infection": 2,
+                "Nephrotic Syndromes": 2,
+                "Renal Replacement Therapy": 1,
+                "Micturition & Urinary Incontinence": 1
             },
             "Surgery": {
-                "": 13
+                "The Kidneys & Ureters": 6,
+                "The Urinary Bladder": 1,
+                "Urinary Tract Calculi": 2,
+                "Benign Prostatic Hyperplasia": 2,
+                "Transplantation": 2
             }
         },
         "Reproductive System": {
@@ -1073,7 +1224,7 @@
                 "": 111
             },
             "Pharmacology": {
-                "": 65
+                "": 66
             },
             "Physiology": {
                 "": 177
@@ -1081,129 +1232,81 @@
             "Surgery": {
                 "": 11
             }
-        },
-        "Hematologic System": {
-            "Biochemistry": {
-                "": 30
-            },
-            "Embryology": {
-                "": 2
-            },
-            "Genetics": {
-                "": 10
-            },
-            "Hematology": {
-                "": 2
-            },
-            "Immunology": {
-                "": 1
-            },
-            "Medicine": {
-                "": 140
-            },
-            "Microbiology": {
-                "": 8
-            },
-            "Oncology": {
-                "": 2
-            },
-            "Pathology": {
-                "": 138
-            },
-            "Pediatrics": {
-                "": 3
-            },
-            "Pharmacology": {
-                "": 49
-            },
-            "Physiology": {
-                "": 30
-            },
-            "Surgery": {
-                "": 4
-            }
-        },
-        "Metabolic System": {
-            "Biochemistry": {
-                "": 202
-            },
-            "Genetics": {
-                "": 4
-            },
-            "Medicine": {
-                "": 5
-            },
-            "Pathology": {
-                "": 8
-            },
-            "Pediatrics": {
-                "": 1
-            },
-            "Pharmacology": {
-                "": 3
-            }
-        },
-        "Hematological System": {
-            "Medicine": {
-                "": 3
-            },
-            "Pathology": {
-                "": 1
-            },
-            "Pharmacology": {
-                "": 1
-            }
         }
     },
     "exams": {
         "2026": {
             "Anesthesia - 01/26 - January 5 - Morning": {
+                "Physiology": {
+                    "": 22,
+                    "The Kidneys & Ureters": 1
+                },
                 "Anatomy": {
                     "": 30
                 },
                 "Anesthesia": {
                     "": 5
                 },
-                "Biochemistry": {
-                    "": 4
-                },
-                "Embryology": {
-                    "": 1
-                },
                 "Forensic Medicine": {
                     "": 1
-                },
-                "Genetics": {
-                    "": 2
-                },
-                "Immunology": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 23
-                },
-                "Microbiology": {
-                    "": 4
                 },
                 "Pathology": {
                     "": 12
                 },
                 "Pharmacology": {
-                    "": 49
+                    "": 44,
+                    "Chronic Kidney Disease": 1,
+                    "Acid Base": 3,
+                    "The Kidneys & Ureters": 1
                 },
-                "Physiology": {
+                "Biochemistry": {
+                    "": 4
+                },
+                "Genetics": {
+                    "": 2
+                },
+                "Medicine": {
                     "": 23
                 },
                 "Surgery": {
                     "": 3
+                },
+                "Microbiology": {
+                    "": 4
+                },
+                "Immunology": {
+                    "": 1
+                },
+                "Embryology": {
+                    "": 1
                 }
             },
             "Medicine - 07/26 - July 9 - Afternoon": {
                 "Anatomy": {
-                    "": 24
+                    "": 23,
+                    "The Urinary Bladder": 1
                 },
-                "Anesthesia": {
-                    "": 1
+                "Medicine": {
+                    "": 36,
+                    "Transplantation": 1
+                },
+                "Pathology": {
+                    "": 17,
+                    "The Kidneys & Ureters": 1
+                },
+                "Pharmacology": {
+                    "": 16,
+                    "Acid Base": 2
+                },
+                "Physiology": {
+                    "": 25,
+                    "Chronic Kidney Disease": 1,
+                    "Urinary Tract Infection": 1,
+                    "The Kidneys & Ureters": 1,
+                    "Acid Base": 1
+                },
+                "Surgery": {
+                    "": 5
                 },
                 "Biochemistry": {
                     "": 11
@@ -1211,52 +1314,63 @@
                 "Embryology": {
                     "": 3
                 },
-                "Genetics": {
-                    "": 4
-                },
-                "Immunology": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 37
-                },
                 "Microbiology": {
                     "": 6
                 },
                 "Oncology": {
                     "": 2
                 },
-                "Pathology": {
-                    "": 18
-                },
-                "Pharmacology": {
-                    "": 18
-                },
-                "Physiology": {
-                    "": 29
+                "Genetics": {
+                    "": 3,
+                    "Polycystic Kidney Disease": 1
                 },
                 "Psychiatry": {
                     "": 1
                 },
-                "Surgery": {
-                    "": 5
+                "Anesthesia": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 1
                 }
             },
             "Surgery - 07/26 - July 09 - Afternoon": {
                 "Anatomy": {
-                    "": 37
+                    "": 36,
+                    "The Urinary Bladder": 1
                 },
                 "Anesthesia": {
                     "": 2
                 },
-                "Biochemistry": {
-                    "": 6
+                "Medicine": {
+                    "": 34,
+                    "Chronic Kidney Disease": 1
                 },
-                "Biostatistics": {
-                    "": 1
+                "Pathology": {
+                    "": 28,
+                    "Chronic Kidney Disease": 1
+                },
+                "Pharmacology": {
+                    "": 15,
+                    "Acid Base": 1
+                },
+                "Surgery": {
+                    "": 15
+                },
+                "Physiology": {
+                    "": 16,
+                    "Chronic Kidney Disease": 2,
+                    "Urinary Tract Infection": 1,
+                    "The Kidneys & Ureters": 1
                 },
                 "Embryology": {
                     "": 5
+                },
+                "Microbiology": {
+                    "": 9
+                },
+                "Biostatistics": {
+                    "": 1
                 },
                 "Genetics": {
                     "": 2
@@ -1264,81 +1378,70 @@
                 "Histology": {
                     "": 1
                 },
-                "Immunology": {
-                    "": 2
-                },
-                "Medicine": {
-                    "": 35
-                },
-                "Microbiology": {
-                    "": 9
-                },
                 "Oncology": {
                     "": 3
-                },
-                "Pathology": {
-                    "": 29
-                },
-                "Pharmacology": {
-                    "": 16
-                },
-                "Physiology": {
-                    "": 20
                 },
                 "Psychiatry": {
                     "": 1
                 },
-                "Surgery": {
-                    "": 15
+                "Biochemistry": {
+                    "": 6
+                },
+                "Immunology": {
+                    "": 2
                 }
             },
             "Medicine - 07/26 - July 7 - Evening": {
                 "Anatomy": {
                     "": 34
                 },
+                "Medicine": {
+                    "": 29,
+                    "Nephritic Syndromes": 2
+                },
+                "Pathology": {
+                    "": 22,
+                    "Nephritic Syndromes": 1
+                },
+                "Pharmacology": {
+                    "": 21,
+                    "The Urinary Bladder": 1,
+                    "Chronic Kidney Disease": 1,
+                    "Acid Base": 1,
+                    "The Kidneys & Ureters": 1
+                },
+                "Physiology": {
+                    "": 20,
+                    "The Kidneys & Ureters": 6,
+                    "Acid Base": 1
+                },
                 "Biochemistry": {
                     "": 13
+                },
+                "Microbiology": {
+                    "": 12
+                },
+                "Surgery": {
+                    "": 2,
+                    "Urinary Tract Calculi": 2
                 },
                 "Biostatistics": {
                     "": 1
                 },
                 "Genetics": {
-                    "": 7
+                    "": 6,
+                    "Polycystic Kidney Disease": 1
                 },
                 "Immunology": {
                     "": 4
                 },
-                "Medicine": {
-                    "": 31
-                },
-                "Microbiology": {
-                    "": 12
-                },
-                "Pathology": {
-                    "": 23
-                },
-                "Pharmacology": {
-                    "": 25
-                },
-                "Physiology": {
-                    "": 27
-                },
                 "Psychiatry": {
                     "": 1
-                },
-                "Surgery": {
-                    "": 4
                 }
             },
             "Radiology - 07/26 - July 08 - Morning": {
                 "Anatomy": {
                     "": 35
-                },
-                "Biochemistry": {
-                    "": 5
-                },
-                "Biostatistics": {
-                    "": 2
                 },
                 "Embryology": {
                     "": 5
@@ -1346,43 +1449,69 @@
                 "Genetics": {
                     "": 3
                 },
+                "Medicine": {
+                    "": 32
+                },
+                "Pathology": {
+                    "": 29,
+                    "Nephritic Syndromes": 1
+                },
+                "Physiology": {
+                    "": 15,
+                    "The Kidneys & Ureters": 1
+                },
+                "Biochemistry": {
+                    "": 5
+                },
+                "Pharmacology": {
+                    "": 10
+                },
                 "Histology": {
                     "": 1
                 },
-                "Immunology": {
+                "Microbiology": {
+                    "": 8,
+                    "Urinary Tract Infection": 1
+                },
+                "Oncology": {
+                    "": 1
+                },
+                "Surgery": {
+                    "": 9
+                },
+                "Biostatistics": {
                     "": 2
                 },
                 "Medical Ethics": {
                     "": 1
                 },
-                "Medicine": {
-                    "": 32
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Oncology": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 30
-                },
-                "Pharmacology": {
-                    "": 10
-                },
-                "Physiology": {
-                    "": 16
-                },
                 "Radiology": {
                     "": 1
                 },
-                "Surgery": {
-                    "": 9
+                "Immunology": {
+                    "": 2
                 }
             },
             "Medicine - 01/26 - January 8 - Morning": {
                 "Anatomy": {
                     "": 25
+                },
+                "Medicine": {
+                    "": 26,
+                    "The Urinary Bladder": 1
+                },
+                "Pathology": {
+                    "": 25,
+                    "Nephritic Syndromes": 1
+                },
+                "Pharmacology": {
+                    "": 15,
+                    "Chronic Kidney Disease": 1,
+                    "Acid Base": 1
+                },
+                "Physiology": {
+                    "": 27,
+                    "The Kidneys & Ureters": 5
                 },
                 "Biochemistry": {
                     "": 5
@@ -1390,32 +1519,21 @@
                 "Embryology": {
                     "": 2
                 },
-                "Genetics": {
+                "Microbiology": {
+                    "": 4
+                },
+                "Surgery": {
+                    "": 1,
+                    "Benign Prostatic Hyperplasia": 1
+                },
+                "Medical Ethics": {
                     "": 1
                 },
                 "Immunology": {
                     "": 5
                 },
-                "Medical Ethics": {
+                "Genetics": {
                     "": 1
-                },
-                "Medicine": {
-                    "": 27
-                },
-                "Microbiology": {
-                    "": 4
-                },
-                "Pathology": {
-                    "": 26
-                },
-                "Pharmacology": {
-                    "": 17
-                },
-                "Physiology": {
-                    "": 32
-                },
-                "Surgery": {
-                    "": 2
                 }
             },
             "Radiology - 07/26 - July 07 - Morning": {
@@ -1425,67 +1543,61 @@
                 "Anesthesia": {
                     "": 2
                 },
-                "Biochemistry": {
-                    "": 8
-                },
-                "Biostatistics": {
-                    "": 2
-                },
                 "Embryology": {
-                    "": 8
-                },
-                "Genetics": {
-                    "": 3
-                },
-                "Histology": {
-                    "": 1
-                },
-                "Immunology": {
-                    "": 4
-                },
-                "Medical Ethics": {
-                    "": 1
+                    "": 5,
+                    "The Kidneys & Ureters": 2,
+                    "The Urinary Bladder": 1
                 },
                 "Medicine": {
-                    "": 28
-                },
-                "Microbiology": {
-                    "": 8
-                },
-                "Oncology": {
-                    "": 2
+                    "": 27,
+                    "Renal Tubular Acidosis": 1
                 },
                 "Pathology": {
-                    "": 26
+                    "": 25,
+                    "Acute Kidney Injury": 1
                 },
                 "Pharmacology": {
                     "": 8
                 },
                 "Physiology": {
-                    "": 25
+                    "": 24,
+                    "The Kidneys & Ureters": 1
+                },
+                "Oncology": {
+                    "": 2
+                },
+                "Biochemistry": {
+                    "": 8
+                },
+                "Immunology": {
+                    "": 4
                 },
                 "Radiology": {
                     "": 2
                 },
                 "Surgery": {
                     "": 4
+                },
+                "Biostatistics": {
+                    "": 2
+                },
+                "Genetics": {
+                    "": 3
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Microbiology": {
+                    "": 7,
+                    "Urinary Tract Infection": 1
+                },
+                "Histology": {
+                    "": 1
                 }
             },
             "Medicine - 01/26 - January 5 - Evening": {
                 "Anatomy": {
                     "": 31
-                },
-                "Biochemistry": {
-                    "": 9
-                },
-                "Embryology": {
-                    "": 2
-                },
-                "Genetics": {
-                    "": 4
-                },
-                "Immunology": {
-                    "": 8
                 },
                 "Medicine": {
                     "": 23
@@ -1494,39 +1606,55 @@
                     "": 10
                 },
                 "Pathology": {
-                    "": 26
+                    "": 25,
+                    "Nephrotic Syndromes": 1
                 },
                 "Pharmacology": {
-                    "": 27
+                    "": 25,
+                    "The Kidneys & Ureters": 1,
+                    "The Urinary Bladder": 1
                 },
                 "Physiology": {
-                    "": 38
+                    "": 32,
+                    "The Kidneys & Ureters": 6
+                },
+                "Embryology": {
+                    "": 1,
+                    "The Kidneys & Ureters": 1
+                },
+                "Genetics": {
+                    "": 4
+                },
+                "Immunology": {
+                    "": 8
+                },
+                "Biochemistry": {
+                    "": 9
                 }
             },
             "Medicine - 04/26 - April 8 - Evening": {
                 "Anatomy": {
                     "": 22
                 },
-                "Biochemistry": {
-                    "": 13
-                },
-                "Biostatistics": {
-                    "": 2
-                },
-                "Embryology": {
-                    "": 1
-                },
-                "Genetics": {
-                    "": 6
-                },
-                "Immunology": {
-                    "": 5
-                },
                 "Medicine": {
                     "": 38
                 },
+                "Pharmacology": {
+                    "": 19,
+                    "Renal Replacement Therapy": 1
+                },
+                "Physiology": {
+                    "": 22,
+                    "The Kidneys & Ureters": 2
+                },
                 "Microbiology": {
                     "": 10
+                },
+                "Biochemistry": {
+                    "": 13
+                },
+                "Embryology": {
+                    "": 1
                 },
                 "Pathology": {
                     "": 19
@@ -1534,28 +1662,55 @@
                 "Pediatrics": {
                     "": 1
                 },
-                "Pharmacology": {
-                    "": 20
-                },
-                "Physiology": {
-                    "": 24
+                "Biostatistics": {
+                    "": 2
                 },
                 "Psychiatry": {
                     "": 1
                 },
                 "Surgery": {
                     "": 5
+                },
+                "Immunology": {
+                    "": 5
+                },
+                "Genetics": {
+                    "": 6
                 }
             },
             "Medicine - 04/26 - April 9 - Night": {
                 "Anatomy": {
-                    "": 24
+                    "": 23,
+                    "The Kidneys & Ureters": 1
                 },
-                "Anesthesia": {
-                    "": 1
+                "Medicine": {
+                    "": 53,
+                    "Micturition & Urinary Incontinence": 1,
+                    "Nephritic Syndromes": 1,
+                    "The Urinary Bladder": 1
+                },
+                "Pathology": {
+                    "": 20,
+                    "Renal Cell Carcinoma": 1
+                },
+                "Pharmacology": {
+                    "": 20
+                },
+                "Physiology": {
+                    "": 24,
+                    "The Kidneys & Ureters": 3,
+                    "Micturition & Urinary Incontinence": 1
                 },
                 "Biochemistry": {
                     "": 9
+                },
+                "Microbiology": {
+                    "": 7,
+                    "Nephritic Syndromes": 1,
+                    "Urinary Tract Infection": 1
+                },
+                "Anesthesia": {
+                    "": 1
                 },
                 "Biostatistics": {
                     "": 1
@@ -1563,28 +1718,13 @@
                 "Genetics": {
                     "": 2
                 },
+                "Psychiatry": {
+                    "": 1
+                },
                 "Immunology": {
                     "": 7
                 },
-                "Medicine": {
-                    "": 56
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Pathology": {
-                    "": 21
-                },
                 "Pediatrics": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 20
-                },
-                "Physiology": {
-                    "": 28
-                },
-                "Psychiatry": {
                     "": 1
                 }
             },
@@ -1592,255 +1732,287 @@
                 "Anatomy": {
                     "": 38
                 },
-                "Anesthesia": {
-                    "": 2
-                },
-                "Biochemistry": {
-                    "": 9
-                },
                 "Embryology": {
                     "": 1
                 },
                 "Genetics": {
                     "": 6
                 },
-                "Immunology": {
-                    "": 3
-                },
-                "Medical Ethics": {
-                    "": 2
-                },
                 "Medicine": {
-                    "": 28
+                    "": 27,
+                    "Chronic Kidney Disease": 1
                 },
                 "Microbiology": {
                     "": 8
                 },
-                "Neurology": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 22
-                },
                 "Pharmacology": {
-                    "": 22
+                    "": 21,
+                    "Chronic Kidney Disease": 1
                 },
                 "Physiology": {
                     "": 14
                 },
+                "Biochemistry": {
+                    "": 9
+                },
+                "Pathology": {
+                    "": 21,
+                    "Polycystic Kidney Disease": 1
+                },
                 "Surgery": {
                     "": 2
+                },
+                "Anesthesia": {
+                    "": 2
+                },
+                "Medical Ethics": {
+                    "": 2
+                },
+                "Immunology": {
+                    "": 3
+                },
+                "Neurology": {
+                    "": 1
                 }
             },
             "Gynecology - 04/26 - April 8 - Morning": {
                 "Anatomy": {
-                    "": 30
+                    "": 28,
+                    "The Kidneys & Ureters": 1,
+                    "Urethra & Penis": 1
                 },
                 "Biochemistry": {
+                    "": 13
+                },
+                "Genetics": {
+                    "": 8
+                },
+                "Medicine": {
+                    "": 36
+                },
+                "Physiology": {
+                    "": 18
+                },
+                "Pharmacology": {
+                    "": 21,
+                    "Urinary Tract Calculi": 1
+                },
+                "Embryology": {
+                    "": 7,
+                    "Potter Sequence & Related Conditions": 1
+                },
+                "Microbiology": {
+                    "": 7
+                },
+                "Pathology": {
+                    "": 14
+                },
+                "Surgery": {
+                    "": 2
+                },
+                "Biostatistics": {
+                    "": 1
+                },
+                "Community Medicine": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 1
+                }
+            },
+            "Surgery - 04/26 - April 7 - Night": {
+                "Anatomy": {
+                    "": 27,
+                    "The Prostate & Seminal Vesicles": 1
+                },
+                "Genetics": {
+                    "": 8
+                },
+                "Medicine": {
+                    "": 34
+                },
+                "Pathology": {
+                    "": 41
+                },
+                "Pharmacology": {
+                    "": 17,
+                    "Chronic Kidney Disease": 1
+                },
+                "Physiology": {
+                    "": 16,
+                    "Urinary Tract Calculi": 1
+                },
+                "Embryology": {
+                    "": 4,
+                    "The Kidneys & Ureters": 1
+                },
+                "Microbiology": {
+                    "": 9
+                },
+                "Pediatrics": {
+                    "": 1
+                },
+                "Surgery": {
                     "": 13
                 },
                 "Biostatistics": {
                     "": 1
                 },
-                "Community Medicine": {
+                "Medical Ethics": {
                     "": 1
-                },
-                "Embryology": {
-                    "": 8
-                },
-                "Genetics": {
-                    "": 8
-                },
-                "Immunology": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 36
-                },
-                "Microbiology": {
-                    "": 7
-                },
-                "Pathology": {
-                    "": 14
-                },
-                "Pharmacology": {
-                    "": 22
-                },
-                "Physiology": {
-                    "": 18
-                },
-                "Surgery": {
-                    "": 2
-                }
-            },
-            "Surgery - 04/26 - April 7 - Night": {
-                "Anatomy": {
-                    "": 28
                 },
                 "Biochemistry": {
                     "": 9
                 },
-                "Biostatistics": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 5
-                },
-                "Genetics": {
-                    "": 8
-                },
                 "Immunology": {
                     "": 3
-                },
-                "Medical Ethics": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 35
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Pathology": {
-                    "": 41
-                },
-                "Pediatrics": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 18
-                },
-                "Physiology": {
-                    "": 17
-                },
-                "Surgery": {
-                    "": 12
                 }
             },
             "Radiology - 01/26 - January 5 - Morning": {
                 "Anatomy": {
-                    "": 49
+                    "": 48,
+                    "Urethra & Penis": 1
+                },
+                "Medicine": {
+                    "": 35,
+                    "Acid Base": 1
+                },
+                "Pathology": {
+                    "": 34,
+                    "Benign Prostatic Hyperplasia": 1
+                },
+                "Pharmacology": {
+                    "": 15,
+                    "Urinary Tract Calculi": 1
+                },
+                "Physiology": {
+                    "": 19,
+                    "The Kidneys & Ureters": 1
+                },
+                "Embryology": {
+                    "": 6,
+                    "The Kidneys & Ureters": 1
                 },
                 "Biochemistry": {
                     "": 8
                 },
-                "Community Medicine": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 7
-                },
-                "Genetics": {
-                    "": 4
-                },
-                "Immunology": {
-                    "": 3
-                },
-                "Medicine": {
-                    "": 36
-                },
                 "Microbiology": {
                     "": 3
-                },
-                "Pathology": {
-                    "": 35
                 },
                 "Pediatrics": {
                     "": 2
                 },
-                "Pharmacology": {
-                    "": 16
-                },
-                "Physiology": {
-                    "": 20
-                },
                 "Surgery": {
-                    "": 6
-                }
-            },
-            "Surgery - 01/26 - January 6 - Evening": {
-                "Anatomy": {
-                    "": 46
-                },
-                "Anesthesia": {
-                    "": 2
-                },
-                "Biochemistry": {
-                    "": 8
-                },
-                "Biostatistics": {
-                    "": 2
-                },
-                "Embryology": {
-                    "": 8
+                    "": 5,
+                    "Transplantation": 1
                 },
                 "Genetics": {
                     "": 4
                 },
                 "Immunology": {
+                    "": 3
+                },
+                "Community Medicine": {
                     "": 1
+                }
+            },
+            "Surgery - 01/26 - January 6 - Evening": {
+                "Anatomy": {
+                    "": 45,
+                    "The Prostate & Seminal Vesicles": 1
+                },
+                "Biochemistry": {
+                    "": 8
+                },
+                "Embryology": {
+                    "": 7,
+                    "The Kidneys & Ureters": 1
                 },
                 "Medicine": {
-                    "": 22
-                },
-                "Microbiology": {
-                    "": 6
+                    "": 21,
+                    "Urinary Tract Infection": 1
                 },
                 "Pathology": {
                     "": 39
                 },
                 "Pharmacology": {
-                    "": 17
+                    "": 15,
+                    "The Urinary Bladder": 1,
+                    "Chronic Kidney Disease": 1
+                },
+                "Microbiology": {
+                    "": 6
                 },
                 "Physiology": {
-                    "": 26
+                    "": 21,
+                    "The Kidneys & Ureters": 5
+                },
+                "Genetics": {
+                    "": 4
                 },
                 "Surgery": {
-                    "": 8
+                    "": 7,
+                    "The Kidneys & Ureters": 1
+                },
+                "Biostatistics": {
+                    "": 2
+                },
+                "Immunology": {
+                    "": 1
+                },
+                "Anesthesia": {
+                    "": 2
                 }
             },
             "Radiology - 04/26 - April 8 - Evening": {
                 "Anatomy": {
-                    "": 46
+                    "": 45,
+                    "The Kidneys & Ureters": 1
                 },
                 "Biochemistry": {
                     "": 7
                 },
-                "Biostatistics": {
-                    "": 1
-                },
                 "Embryology": {
                     "": 7
                 },
-                "Genetics": {
-                    "": 3
-                },
-                "Immunology": {
-                    "": 5
-                },
                 "Medicine": {
-                    "": 37
-                },
-                "Microbiology": {
-                    "": 8
+                    "": 33,
+                    "Chronic Kidney Disease": 1,
+                    "Acute Kidney Injury": 2,
+                    "The Kidneys & Ureters": 1
                 },
                 "Pathology": {
-                    "": 29
+                    "": 28,
+                    "Renal Cell Carcinoma": 1
                 },
                 "Pediatrics": {
                     "": 3
                 },
                 "Pharmacology": {
-                    "": 16
+                    "": 15,
+                    "The Kidneys & Ureters": 1
                 },
                 "Physiology": {
-                    "": 21
+                    "": 19,
+                    "The Kidneys & Ureters": 2
+                },
+                "Microbiology": {
+                    "": 8
+                },
+                "Biostatistics": {
+                    "": 1
                 },
                 "Psychiatry": {
                     "": 1
                 },
                 "Surgery": {
                     "": 2
+                },
+                "Immunology": {
+                    "": 5
+                },
+                "Genetics": {
+                    "": 3
                 }
             },
             "Gynecology - 07/26 - July 08 - Evening": {
@@ -1850,32 +2022,10 @@
                 "Anesthesia": {
                     "": 1
                 },
-                "Biochemistry": {
-                    "": 7
-                },
-                "Biostatistics": {
-                    "": 3
-                },
-                "Embryology": {
-                    "": 2
-                },
-                "Genetics": {
-                    "": 6
-                },
-                "Immunology": {
-                    "": 2
-                },
-                "Medical Ethics": {
-                    "": 1
-                },
                 "Medicine": {
-                    "": 58
-                },
-                "Microbiology": {
-                    "": 4
-                },
-                "Oncology": {
-                    "": 1
+                    "": 56,
+                    "Chronic Kidney Disease": 1,
+                    "Micturition & Urinary Incontinence": 1
                 },
                 "Pathology": {
                     "": 21
@@ -1884,177 +2034,232 @@
                     "": 19
                 },
                 "Physiology": {
-                    "": 11
+                    "": 10,
+                    "The Kidneys & Ureters": 1
+                },
+                "Microbiology": {
+                    "": 4
                 },
                 "Surgery": {
                     "": 4
+                },
+                "Biostatistics": {
+                    "": 3
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 2
+                },
+                "Biochemistry": {
+                    "": 7
+                },
+                "Embryology": {
+                    "": 1,
+                    "The Urinary Bladder": 1
+                },
+                "Genetics": {
+                    "": 6
+                },
+                "Oncology": {
+                    "": 1
                 }
             },
             "Surgery - 04/26 - April 8 - Morning": {
                 "Anatomy": {
-                    "": 41
+                    "": 39,
+                    "The Urinary Bladder": 1,
+                    "The Kidneys & Ureters": 1
+                },
+                "Embryology": {
+                    "": 4,
+                    "The Urinary Bladder": 1
+                },
+                "Medicine": {
+                    "": 18,
+                    "Renal Cell Carcinoma": 1
+                },
+                "Pathology": {
+                    "": 21
+                },
+                "Physiology": {
+                    "": 13,
+                    "The Kidneys & Ureters": 2,
+                    "Chronic Kidney Disease": 1
                 },
                 "Biochemistry": {
                     "": 14
                 },
-                "Community Medicine": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 5
-                },
-                "Genetics": {
-                    "": 9
-                },
-                "Immunology": {
-                    "": 2
-                },
-                "Medicine": {
-                    "": 19
-                },
                 "Microbiology": {
                     "": 17
                 },
-                "Oncology": {
+                "Pharmacology": {
+                    "": 18,
+                    "Chronic Kidney Disease": 2
+                },
+                "Surgery": {
+                    "": 4
+                },
+                "Community Medicine": {
                     "": 1
                 },
-                "Pathology": {
-                    "": 21
-                },
-                "Pharmacology": {
-                    "": 20
-                },
-                "Physiology": {
-                    "": 16
+                "Genetics": {
+                    "": 9
                 },
                 "Psychiatry": {
                     "": 1
                 },
-                "Surgery": {
-                    "": 4
+                "Oncology": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 2
                 }
             },
             "Medicine - 01/26 - January 7 - Morning": {
                 "Anatomy": {
-                    "": 32
+                    "": 31,
+                    "The Prostate & Seminal Vesicles": 1
+                },
+                "Medicine": {
+                    "": 25,
+                    "Chronic Kidney Disease": 1,
+                    "Acute Kidney Injury": 1,
+                    "Renal Cell Carcinoma": 1
+                },
+                "Pathology": {
+                    "": 21
+                },
+                "Pharmacology": {
+                    "": 19,
+                    "Chronic Kidney Disease": 1,
+                    "Acid Base": 1
+                },
+                "Physiology": {
+                    "": 45,
+                    "The Kidneys & Ureters": 2,
+                    "Nephrotic Syndromes": 1
                 },
                 "Biochemistry": {
                     "": 7
                 },
-                "Biostatistics": {
-                    "": 1
-                },
-                "Community Medicine": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 3
-                },
-                "Genetics": {
-                    "": 3
-                },
                 "Immunology": {
                     "": 8
-                },
-                "Medicine": {
-                    "": 28
                 },
                 "Microbiology": {
                     "": 9
                 },
-                "Pathology": {
-                    "": 21
-                },
-                "Pharmacology": {
-                    "": 21
-                },
-                "Physiology": {
-                    "": 48
-                },
-                "Surgery": {
+                "Biostatistics": {
                     "": 1
-                }
-            },
-            "Medicine - 04/26 - April 7 - Morning": {
-                "Anatomy": {
-                    "": 29
-                },
-                "Biochemistry": {
-                    "": 2
                 },
                 "Community Medicine": {
                     "": 1
                 },
-                "Embryology": {
+                "Surgery": {
                     "": 1
                 },
-                "Genetics": {
-                    "": 5
-                },
-                "Immunology": {
-                    "": 3
-                },
-                "Medical Ethics": {
+                "Embryology": {
+                    "The Kidneys & Ureters": 1,
                     "": 2
                 },
-                "Medicine": {
-                    "": 35
+                "Genetics": {
+                    "": 3
+                }
+            },
+            "Medicine - 04/26 - April 7 - Morning": {
+                "Anatomy": {
+                    "": 26,
+                    "Transplantation": 1,
+                    "The Kidneys & Ureters": 2
                 },
-                "Microbiology": {
-                    "": 4
+                "Medicine": {
+                    "": 34,
+                    "Nephrotic Syndromes": 1
+                },
+                "Pharmacology": {
+                    "": 20,
+                    "The Kidneys & Ureters": 1
+                },
+                "Physiology": {
+                    "": 24,
+                    "The Kidneys & Ureters": 6,
+                    "Renal Replacement Therapy": 1
                 },
                 "Pathology": {
                     "": 20
                 },
-                "Pharmacology": {
-                    "": 21
+                "Embryology": {
+                    "": 1
                 },
-                "Physiology": {
-                    "": 31
+                "Microbiology": {
+                    "": 4
+                },
+                "Community Medicine": {
+                    "": 1
+                },
+                "Genetics": {
+                    "": 3,
+                    "Polycystic Kidney Disease": 2
+                },
+                "Medical Ethics": {
+                    "": 2
                 },
                 "Surgery": {
                     "": 2
+                },
+                "Biochemistry": {
+                    "": 2
+                },
+                "Immunology": {
+                    "": 3
                 }
             },
             "Medicine - 07/26 - July 10 - Morning": {
                 "Anatomy": {
-                    "": 13
-                },
-                "Anesthesia": {
-                    "": 1
-                },
-                "Biochemistry": {
-                    "": 6
-                },
-                "Biostatistics": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 4
-                },
-                "Genetics": {
-                    "": 6
-                },
-                "Immunology": {
-                    "": 4
+                    "": 12,
+                    "The Urinary Bladder": 1
                 },
                 "Medicine": {
-                    "": 62
-                },
-                "Microbiology": {
-                    "": 5
+                    "": 60,
+                    "Acute Kidney Injury": 2
                 },
                 "Pathology": {
-                    "": 16
+                    "": 13,
+                    "Nephrotic Syndromes": 1,
+                    "Renal Cell Carcinoma": 1,
+                    "Nephritic Syndromes": 1
                 },
                 "Pharmacology": {
                     "": 24
                 },
                 "Physiology": {
-                    "": 17
+                    "": 16,
+                    "Acid Base": 1
+                },
+                "Biostatistics": {
+                    "": 1
+                },
+                "Genetics": {
+                    "": 6
+                },
+                "Microbiology": {
+                    "": 5
+                },
+                "Immunology": {
+                    "": 4
+                },
+                "Biochemistry": {
+                    "": 6
+                },
+                "Anesthesia": {
+                    "": 1
                 },
                 "Psychiatry": {
                     "": 2
+                },
+                "Embryology": {
+                    "": 4
                 }
             },
             "Surgery - 07/26 - July 08 - Afternoon": {
@@ -2064,20 +2269,8 @@
                 "Anesthesia": {
                     "": 2
                 },
-                "Biochemistry": {
-                    "": 7
-                },
-                "Biostatistics": {
-                    "": 1
-                },
                 "Embryology": {
                     "": 2
-                },
-                "Immunology": {
-                    "": 3
-                },
-                "Medical Ethics": {
-                    "": 1
                 },
                 "Medicine": {
                     "": 44
@@ -2085,23 +2278,37 @@
                 "Microbiology": {
                     "": 13
                 },
-                "Oncology": {
+                "Pharmacology": {
+                    "": 17,
+                    "Urinary Tract Calculi": 1,
+                    "The Kidneys & Ureters": 2
+                },
+                "Physiology": {
+                    "": 11
+                },
+                "Surgery": {
                     "": 4
                 },
                 "Pathology": {
                     "": 20
                 },
-                "Pharmacology": {
-                    "": 20
+                "Oncology": {
+                    "": 4
                 },
-                "Physiology": {
-                    "": 11
+                "Biostatistics": {
+                    "": 1
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 3
+                },
+                "Biochemistry": {
+                    "": 7
                 },
                 "Psychiatry": {
                     "": 1
-                },
-                "Surgery": {
-                    "": 4
                 }
             },
             "Medicine - 04/26 - April 9 - Morning": {
@@ -2111,47 +2318,53 @@
                 "Biochemistry": {
                     "": 8
                 },
-                "Community Medicine": {
-                    "": 3
-                },
-                "Embryology": {
-                    "": 3
-                },
-                "Genetics": {
-                    "": 7
-                },
-                "Immunology": {
-                    "": 3
-                },
-                "Medical Ethics": {
-                    "": 1
-                },
                 "Medicine": {
-                    "": 39
-                },
-                "Microbiology": {
-                    "": 13
-                },
-                "Oncology": {
-                    "": 1
+                    "": 38,
+                    "Chronic Kidney Disease": 1
                 },
                 "Pathology": {
-                    "": 25
-                },
-                "Pediatrics": {
-                    "": 1
+                    "": 22,
+                    "Urinary Tract Calculi": 2,
+                    "Nephritic Syndromes": 1
                 },
                 "Pharmacology": {
                     "": 25
                 },
                 "Physiology": {
-                    "": 19
+                    "": 18,
+                    "The Kidneys & Ureters": 1
+                },
+                "Immunology": {
+                    "": 3
+                },
+                "Microbiology": {
+                    "": 13
+                },
+                "Surgery": {
+                    "": 1,
+                    "Benign Prostatic Hyperplasia": 1
+                },
+                "Community Medicine": {
+                    "": 3
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Oncology": {
+                    "": 1
+                },
+                "Genetics": {
+                    "": 7
+                },
+                "Pediatrics": {
+                    "": 1
+                },
+                "Embryology": {
+                    "": 2,
+                    "The Urinary Bladder": 1
                 },
                 "Psychiatry": {
                     "": 1
-                },
-                "Surgery": {
-                    "": 2
                 }
             },
             "Medicine - 04/26 - April 8 - Night": {
@@ -2161,114 +2374,106 @@
                 "Biochemistry": {
                     "": 11
                 },
-                "Biostatistics": {
-                    "": 1
+                "Medicine": {
+                    "": 44,
+                    "Renal Replacement Therapy": 1
                 },
-                "Genetics": {
+                "Pathology": {
+                    "": 19,
+                    "Nephrotic Syndromes": 1,
+                    "Nephritic Syndromes": 1
+                },
+                "Pharmacology": {
+                    "": 28,
+                    "The Kidneys & Ureters": 1
+                },
+                "Physiology": {
+                    "": 17,
+                    "Acid Base": 1
+                },
+                "Surgery": {
                     "": 4
                 },
-                "Immunology": {
-                    "": 5
-                },
-                "Medical Ethics": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 45
-                },
                 "Microbiology": {
-                    "": 8
+                    "": 7,
+                    "Urinary Tract Infection": 1
                 },
                 "Oncology": {
                     "": 2
                 },
-                "Pathology": {
-                    "": 21
-                },
                 "Pediatrics": {
                     "": 1
                 },
-                "Pharmacology": {
-                    "": 29
+                "Biostatistics": {
+                    "": 1
                 },
-                "Physiology": {
-                    "": 18
+                "Genetics": {
+                    "": 3,
+                    "Polycystic Kidney Disease": 1
                 },
-                "Surgery": {
-                    "": 4
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 5
                 }
             },
             "Medicine - 01/26 - January 6 - Evening": {
                 "Anatomy": {
-                    "": 46
-                },
-                "Anesthesia": {
-                    "": 2
-                },
-                "Biochemistry": {
-                    "": 8
-                },
-                "Biostatistics": {
-                    "": 2
+                    "": 45,
+                    "The Prostate & Seminal Vesicles": 1
                 },
                 "Embryology": {
-                    "": 7
-                },
-                "Genetics": {
-                    "": 4
-                },
-                "Immunology": {
-                    "": 2
+                    "": 6,
+                    "The Kidneys & Ureters": 1
                 },
                 "Medicine": {
-                    "": 22
-                },
-                "Microbiology": {
-                    "": 5
+                    "": 21,
+                    "Urinary Tract Infection": 1
                 },
                 "Pathology": {
                     "": 39
                 },
                 "Pharmacology": {
-                    "": 18
+                    "": 16,
+                    "Chronic Kidney Disease": 1,
+                    "The Urinary Bladder": 1
+                },
+                "Microbiology": {
+                    "": 5
                 },
                 "Physiology": {
-                    "": 27
-                },
-                "Surgery": {
-                    "": 6
-                }
-            },
-            "Radiology - 01/26 - January 6 - Morning": {
-                "Anatomy": {
-                    "": 45
-                },
-                "Biochemistry": {
-                    "": 9
-                },
-                "Biostatistics": {
-                    "": 2
-                },
-                "Community Medicine": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 4
+                    "": 22,
+                    "The Kidneys & Ureters": 5
                 },
                 "Genetics": {
                     "": 4
                 },
+                "Surgery": {
+                    "": 5,
+                    "The Kidneys & Ureters": 1
+                },
+                "Biochemistry": {
+                    "": 8
+                },
+                "Biostatistics": {
+                    "": 2
+                },
                 "Immunology": {
                     "": 2
                 },
+                "Anesthesia": {
+                    "": 2
+                }
+            },
+            "Radiology - 01/26 - January 6 - Morning": {
+                "Anatomy": {
+                    "": 42,
+                    "Urethra & Penis": 1,
+                    "The Kidneys & Ureters": 2
+                },
                 "Medicine": {
                     "": 30
-                },
-                "Microbiology": {
-                    "": 2
-                },
-                "Pathology": {
-                    "": 23
                 },
                 "Pharmacology": {
                     "": 13
@@ -2276,25 +2481,73 @@
                 "Physiology": {
                     "": 11
                 },
+                "Embryology": {
+                    "": 3,
+                    "The Urinary Bladder": 1
+                },
+                "Immunology": {
+                    "": 2
+                },
+                "Biochemistry": {
+                    "": 8,
+                    "Urinary Tract Calculi": 1
+                },
+                "Genetics": {
+                    "": 4
+                },
+                "Microbiology": {
+                    "": 2
+                },
+                "Pathology": {
+                    "": 23
+                },
                 "Surgery": {
-                    "": 3
+                    "": 2,
+                    "The Kidneys & Ureters": 1
+                },
+                "Biostatistics": {
+                    "": 2
+                },
+                "Community Medicine": {
+                    "": 1
                 }
             },
             "Surgery - 01/26 - January 7 - Evening": {
                 "Anatomy": {
                     "": 32
                 },
-                "Anesthesia": {
-                    "": 2
+                "Embryology": {
+                    "": 3
+                },
+                "Medicine": {
+                    "": 28,
+                    "Chronic Kidney Disease": 1,
+                    "Nephrotic Syndromes": 1
+                },
+                "Pathology": {
+                    "": 23
+                },
+                "Pharmacology": {
+                    "": 13
+                },
+                "Physiology": {
+                    "": 20,
+                    "The Kidneys & Ureters": 1
                 },
                 "Biochemistry": {
                     "": 7
                 },
+                "Surgery": {
+                    "": 6
+                },
+                "Microbiology": {
+                    "": 8
+                },
+                "Anesthesia": {
+                    "": 2
+                },
                 "Biostatistics": {
                     "": 1
-                },
-                "Embryology": {
-                    "": 3
                 },
                 "Genetics": {
                     "": 3
@@ -2302,105 +2555,78 @@
                 "Immunology": {
                     "": 1
                 },
-                "Medicine": {
-                    "": 30
-                },
-                "Microbiology": {
-                    "": 8
-                },
-                "Obstetrics/Gynecology": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 23
-                },
                 "Pediatrics": {
                     "": 1
                 },
-                "Pharmacology": {
-                    "": 13
-                },
-                "Physiology": {
-                    "": 21
-                },
-                "Surgery": {
-                    "": 6
+                "Obstetrics/Gynecology": {
+                    "": 1
                 }
             },
             "Gynecology - 07/26 - July 08 - Morning": {
                 "Anatomy": {
-                    "": 21
+                    "": 20,
+                    "The Kidneys & Ureters": 1
                 },
-                "Anesthesia": {
+                "Genetics": {
+                    "": 6
+                },
+                "Medicine": {
+                    "": 62,
+                    "Micturition & Urinary Incontinence": 1
+                },
+                "Pathology": {
+                    "": 25,
+                    "Nephrotic Syndromes": 1,
+                    "Nephritic Syndromes": 2
+                },
+                "Physiology": {
+                    "": 19,
+                    "The Kidneys & Ureters": 1
+                },
+                "Pharmacology": {
+                    "": 16
+                },
+                "Oncology": {
+                    "": 1
+                },
+                "Biostatistics": {
+                    "": 1
+                },
+                "Embryology": {
+                    "": 6,
+                    "Potter Sequence & Related Conditions": 2
+                },
+                "Microbiology": {
+                    "": 5,
+                    "Urinary Tract Infection": 1
+                },
+                "Surgery": {
+                    "": 13
+                },
+                "Immunology": {
                     "": 1
                 },
                 "Biochemistry": {
                     "": 10
                 },
-                "Biostatistics": {
+                "Anesthesia": {
                     "": 1
-                },
-                "Embryology": {
-                    "": 8
-                },
-                "Genetics": {
-                    "": 6
-                },
-                "Immunology": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 63
-                },
-                "Microbiology": {
-                    "": 6
                 },
                 "Obstetrics": {
                     "": 1
-                },
-                "Oncology": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 28
-                },
-                "Pharmacology": {
-                    "": 16
-                },
-                "Physiology": {
-                    "": 20
-                },
-                "Surgery": {
-                    "": 13
                 }
             },
             "Gynecology - 01/26 - January 6 - Morning": {
                 "Anatomy": {
-                    "": 26
+                    "": 24,
+                    "The Kidneys & Ureters": 2
                 },
                 "Biochemistry": {
                     "": 14
                 },
-                "Biostatistics": {
-                    "": 1
-                },
-                "Community Medicine": {
-                    "": 3
-                },
-                "Embryology": {
-                    "": 7
-                },
-                "Genetics": {
-                    "": 2
-                },
-                "Immunology": {
-                    "": 2
-                },
                 "Medicine": {
-                    "": 54
-                },
-                "Microbiology": {
-                    "": 7
+                    "": 53,
+                    "Micturition & Urinary Incontinence": 1
                 },
                 "Pathology": {
                     "": 22
@@ -2410,6 +2636,25 @@
                 },
                 "Physiology": {
                     "": 31
+                },
+                "Embryology": {
+                    "": 6,
+                    "The Urinary Bladder": 1
+                },
+                "Microbiology": {
+                    "": 7
+                },
+                "Biostatistics": {
+                    "": 1
+                },
+                "Community Medicine": {
+                    "": 3
+                },
+                "Immunology": {
+                    "": 2
+                },
+                "Genetics": {
+                    "": 2
                 },
                 "Surgery": {
                     "": 3
@@ -2420,28 +2665,12 @@
                     "": 14
                 },
                 "Biochemistry": {
-                    "": 5
-                },
-                "Biostatistics": {
-                    "": 1
-                },
-                "Community Medicine": {
-                    "": 2
-                },
-                "Embryology": {
-                    "": 6
-                },
-                "Genetics": {
-                    "": 5
+                    "": 4,
+                    "Urinary Tract Calculi": 1
                 },
                 "Medicine": {
-                    "": 45
-                },
-                "Microbiology": {
-                    "": 6
-                },
-                "Obstetrics/Gynecology": {
-                    "": 1
+                    "": 44,
+                    "Micturition & Urinary Incontinence": 1
                 },
                 "Pathology": {
                     "": 25
@@ -2450,10 +2679,30 @@
                     "": 16
                 },
                 "Physiology": {
-                    "": 19
+                    "": 18,
+                    "The Kidneys & Ureters": 1
+                },
+                "Embryology": {
+                    "": 5,
+                    "The Urinary Bladder": 1
+                },
+                "Microbiology": {
+                    "": 6
                 },
                 "Surgery": {
                     "": 9
+                },
+                "Biostatistics": {
+                    "": 1
+                },
+                "Community Medicine": {
+                    "": 2
+                },
+                "Genetics": {
+                    "": 5
+                },
+                "Obstetrics/Gynecology": {
+                    "": 1
                 }
             },
             "Medicine - 07/26 - July 9 - Morning": {
@@ -2463,38 +2712,47 @@
                 "Biochemistry": {
                     "": 13
                 },
-                "Biostatistics": {
-                    "": 1
+                "Medicine": {
+                    "": 25,
+                    "Nephritic Syndromes": 1,
+                    "The Kidneys & Ureters": 1,
+                    "Renal Cell Carcinoma": 1
+                },
+                "Pathology": {
+                    "": 20,
+                    "Transplantation": 1,
+                    "The Urinary Bladder": 1
+                },
+                "Pharmacology": {
+                    "": 17,
+                    "The Kidneys & Ureters": 1
+                },
+                "Physiology": {
+                    "": 18,
+                    "The Kidneys & Ureters": 3
                 },
                 "Embryology": {
                     "": 3
                 },
-                "Genetics": {
-                    "": 11
-                },
-                "Immunology": {
-                    "": 2
-                },
-                "Medicine": {
-                    "": 28
-                },
                 "Microbiology": {
-                    "": 10
+                    "": 9,
+                    "Urinary Tract Infection": 1
                 },
                 "Oncology": {
                     "": 2
                 },
-                "Pathology": {
-                    "": 22
-                },
-                "Pharmacology": {
-                    "": 18
-                },
-                "Physiology": {
-                    "": 21
-                },
                 "Surgery": {
                     "": 5
+                },
+                "Biostatistics": {
+                    "": 1
+                },
+                "Genetics": {
+                    "": 10,
+                    "Polycystic Kidney Disease": 1
+                },
+                "Immunology": {
+                    "": 2
                 }
             },
             "Medicine - 04/26 - April 9 - Evening": {
@@ -2504,43 +2762,50 @@
                 "Biochemistry": {
                     "": 8
                 },
-                "Community Medicine": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 2
-                },
                 "Genetics": {
                     "": 7
                 },
-                "Immunology": {
-                    "": 5
-                },
                 "Medicine": {
-                    "": 33
+                    "": 31,
+                    "The Kidneys & Ureters": 1,
+                    "Urinary Tract Infection": 1
+                },
+                "Pharmacology": {
+                    "": 24,
+                    "The Kidneys & Ureters": 1
+                },
+                "Physiology": {
+                    "": 31,
+                    "Acid Base": 1,
+                    "The Kidneys & Ureters": 1
                 },
                 "Microbiology": {
                     "": 7
                 },
+                "Pathology": {
+                    "": 20,
+                    "Nephritic Syndromes": 1,
+                    "Chronic Kidney Disease": 1
+                },
                 "Oncology": {
                     "": 2
-                },
-                "Pathology": {
-                    "": 22
                 },
                 "Pediatrics": {
                     "": 2
                 },
-                "Pharmacology": {
-                    "": 25
+                "Surgery": {
+                    "": 2
                 },
-                "Physiology": {
-                    "": 33
+                "Community Medicine": {
+                    "": 1
                 },
                 "Psychiatry": {
                     "": 1
                 },
-                "Surgery": {
+                "Immunology": {
+                    "": 5
+                },
+                "Embryology": {
                     "": 2
                 }
             },
@@ -2554,46 +2819,81 @@
                 "Biochemistry": {
                     "": 14
                 },
+                "Medicine": {
+                    "": 27,
+                    "Acid Base": 1,
+                    "Chronic Kidney Disease": 1
+                },
+                "Pathology": {
+                    "": 17,
+                    "Nephrotic Syndromes": 1,
+                    "Polycystic Kidney Disease": 1
+                },
+                "Pharmacology": {
+                    "": 30
+                },
+                "Physiology": {
+                    "": 13,
+                    "Acid Base": 1,
+                    "The Kidneys & Ureters": 4
+                },
+                "Surgery": {
+                    "": 7
+                },
                 "Biostatistics": {
                     "": 1
                 },
                 "Genetics": {
                     "": 3
                 },
-                "Immunology": {
-                    "": 2
-                },
                 "Medical Ethics": {
                     "": 2
-                },
-                "Medicine": {
-                    "": 29
                 },
                 "Microbiology": {
                     "": 5
                 },
+                "Immunology": {
+                    "": 2
+                },
                 "Neurology": {
                     "": 1
-                },
-                "Pathology": {
-                    "": 19
-                },
-                "Pharmacology": {
-                    "": 30
-                },
-                "Physiology": {
-                    "": 18
-                },
-                "Surgery": {
-                    "": 7
                 }
             },
             "Gynecology - 01/26 - January 5 - Morning": {
                 "Anatomy": {
                     "": 15
                 },
-                "Biochemistry": {
-                    "": 7
+                "Medicine": {
+                    "": 26
+                },
+                "Obstetrics": {
+                    "": 13
+                },
+                "Pathology": {
+                    "": 30,
+                    "Nephrotic Syndromes": 1,
+                    "Urethra & Penis": 1
+                },
+                "Pediatrics": {
+                    "": 3
+                },
+                "Pharmacology": {
+                    "": 27,
+                    "Acid Base": 1
+                },
+                "Physiology": {
+                    "": 37,
+                    "The Kidneys & Ureters": 1
+                },
+                "Surgery": {
+                    "": 7,
+                    "The Kidneys & Ureters": 1
+                },
+                "Embryology": {
+                    "": 6
+                },
+                "Microbiology": {
+                    "": 9
                 },
                 "Biostatistics": {
                     "": 1
@@ -2601,14 +2901,14 @@
                 "Community Medicine": {
                     "": 1
                 },
-                "Embryology": {
-                    "": 6
-                },
                 "Genetics": {
                     "": 1
                 },
-                "Gynecology": {
-                    "": 6
+                "Psychiatry": {
+                    "": 2
+                },
+                "Biochemistry": {
+                    "": 7
                 },
                 "Hematology": {
                     "": 2
@@ -2616,134 +2916,38 @@
                 "Immunology": {
                     "": 1
                 },
-                "Medicine": {
-                    "": 26
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Obstetrics": {
-                    "": 13
-                },
-                "Pathology": {
-                    "": 32
-                },
-                "Pediatrics": {
-                    "": 3
-                },
-                "Pharmacology": {
-                    "": 28
-                },
-                "Physiology": {
-                    "": 38
-                },
-                "Psychiatry": {
-                    "": 2
-                },
-                "Surgery": {
-                    "": 8
-                }
-            },
-            "Anesthesia - 07/26 - July 07 - Morning": {
-                "Anatomy": {
-                    "": 26
-                },
-                "Anesthesia": {
-                    "": 7
-                },
-                "Biochemistry": {
-                    "": 8
-                },
-                "Biostatistics": {
-                    "": 2
-                },
-                "Embryology": {
-                    "": 3
-                },
-                "Genetics": {
-                    "": 3
-                },
-                "Histology": {
-                    "": 1
-                },
-                "Immunology": {
-                    "": 3
-                },
-                "Medical Ethics": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 29
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Oncology": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 19
-                },
-                "Pharmacology": {
-                    "": 25
-                },
-                "Physiology": {
-                    "": 30
-                },
-                "Radiology": {
-                    "": 1
-                },
-                "Surgery": {
-                    "": 4
-                }
-            },
-            "Gynecology - 04/26 - April 8 - Evening": {
-                "Anatomy": {
-                    "": 20
-                },
-                "Biochemistry": {
-                    "": 6
-                },
-                "Biostatistics": {
-                    "": 4
-                },
-                "Community Medicine": {
-                    "": 2
-                },
-                "Embryology": {
-                    "": 7
-                },
-                "Genetics": {
-                    "": 7
-                },
-                "Immunology": {
-                    "": 2
-                },
-                "Medicine": {
-                    "": 43
-                },
-                "Microbiology": {
-                    "": 12
-                },
-                "Pathology": {
-                    "": 26
-                },
-                "Pharmacology": {
-                    "": 15
-                },
-                "Physiology": {
-                    "": 20
-                },
-                "Surgery": {
+                "Gynecology": {
                     "": 6
                 }
             },
             "Anesthesia - 07/26 - July 07 - Evening": {
-                "Anatomy": {
-                    "": 15
-                },
                 "Anesthesia": {
                     "": 10
+                },
+                "Medicine": {
+                    "": 10
+                },
+                "Pharmacology": {
+                    "": 33,
+                    "Acid Base": 1
+                },
+                "Physiology": {
+                    "": 14,
+                    "The Kidneys & Ureters": 1
+                },
+                "Surgery": {
+                    "": 4,
+                    "Transplantation": 1
+                },
+                "Oncology": {
+                    "": 2
+                },
+                "Pathology": {
+                    "": 9,
+                    "Chronic Kidney Disease": 1
+                },
+                "Anatomy": {
+                    "": 15
                 },
                 "Biochemistry": {
                     "": 14
@@ -2751,41 +2955,126 @@
                 "Biostatistics": {
                     "": 1
                 },
-                "Embryology": {
-                    "": 1
-                },
                 "Genetics": {
                     "": 2
-                },
-                "Immunology": {
-                    "": 7
                 },
                 "Medical Ethics": {
                     "": 1
                 },
-                "Medicine": {
-                    "": 10
-                },
                 "Microbiology": {
                     "": 4
                 },
-                "Oncology": {
-                    "": 2
+                "Immunology": {
+                    "": 7
+                },
+                "Embryology": {
+                    "": 1
+                },
+                "Radiology": {
+                    "": 1
+                }
+            },
+            "Gynecology - 04/26 - April 8 - Evening": {
+                "Biochemistry": {
+                    "": 6
+                },
+                "Embryology": {
+                    "": 7
+                },
+                "Medicine": {
+                    "": 43
                 },
                 "Pathology": {
-                    "": 10
+                    "": 25,
+                    "Acute Kidney Injury": 1
                 },
                 "Pharmacology": {
-                    "": 34
+                    "": 15
                 },
                 "Physiology": {
-                    "": 15
+                    "": 20
+                },
+                "Anatomy": {
+                    "": 20
+                },
+                "Microbiology": {
+                    "": 12
+                },
+                "Biostatistics": {
+                    "": 4
+                },
+                "Community Medicine": {
+                    "": 2
+                },
+                "Genetics": {
+                    "": 7
+                },
+                "Surgery": {
+                    "": 4,
+                    "The Urinary Bladder": 1,
+                    "The Kidneys & Ureters": 1
+                },
+                "Immunology": {
+                    "": 2
+                }
+            },
+            "Anesthesia - 07/26 - July 07 - Morning": {
+                "Genetics": {
+                    "": 3
+                },
+                "Medicine": {
+                    "": 27,
+                    "The Kidneys & Ureters": 1,
+                    "Urethra & Penis": 1
+                },
+                "Pathology": {
+                    "": 18,
+                    "Acute Kidney Injury": 1
+                },
+                "Pharmacology": {
+                    "": 25
+                },
+                "Physiology": {
+                    "": 30
+                },
+                "Surgery": {
+                    "": 4
+                },
+                "Anatomy": {
+                    "": 26
+                },
+                "Biochemistry": {
+                    "": 8
+                },
+                "Embryology": {
+                    "": 1,
+                    "The Kidneys & Ureters": 1,
+                    "Potter Sequence & Related Conditions": 1
+                },
+                "Immunology": {
+                    "": 3
+                },
+                "Anesthesia": {
+                    "": 7
+                },
+                "Biostatistics": {
+                    "": 2
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Microbiology": {
+                    "": 8,
+                    "Urinary Tract Infection": 1
+                },
+                "Oncology": {
+                    "": 1
                 },
                 "Radiology": {
                     "": 1
                 },
-                "Surgery": {
-                    "": 5
+                "Histology": {
+                    "": 1
                 }
             }
         },
@@ -2794,20 +3083,20 @@
                 "Anatomy": {
                     "": 3
                 },
+                "Medicine": {
+                    "": 1
+                },
+                "Pharmacology": {
+                    "": 3
+                },
                 "Biochemistry": {
                     "": 1
                 },
                 "Immunology": {
                     "": 2
                 },
-                "Medicine": {
-                    "": 1
-                },
                 "Pathology": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 3
+                    "Nephrotic Syndromes": 1
                 }
             },
             "Surgery - 04/26 - April 7 - Night": {
@@ -2822,20 +3111,104 @@
                 "Anatomy": {
                     "": 1
                 },
+                "Pharmacology": {
+                    "": 1
+                },
                 "Immunology": {
                     "": 1
                 },
                 "Pathology": {
+                    "": 1
+                }
+            },
+            "Medicine - 08/25 - August 6 - Morning": {
+                "Medicine": {
+                    "": 1
+                },
+                "Pathology": {
+                    "": 1
+                }
+            },
+            "Radiology - 01/26 - January 6 - Morning": {
+                "Pathology": {
+                    "": 1
+                },
+                "Medicine": {
                     "": 1
                 },
                 "Pharmacology": {
                     "": 1
                 }
             },
-            "Radiology - 04/26 - April 7 - Morning": {
+            "Surgery - 08/25 - August 7 - Morning": {
+                "Pathology": {
+                    "": 2
+                },
+                "Pharmacology": {
+                    "": 2
+                },
+                "Immunology": {
+                    "": 1
+                },
+                "Embryology": {
+                    "": 1
+                }
+            },
+            "Medicine - 04/26 - April 7 - Morning": {
+                "Pathology": {
+                    "": 1
+                }
+            },
+            "Medicine - 08/25 - August 5 - Evening": {
+                "Medicine": {
+                    "": 1
+                },
+                "Pharmacology": {
+                    "": 1
+                },
                 "Anatomy": {
                     "": 1
                 },
+                "Pathology": {
+                    "Nephrotic Syndromes": 1
+                }
+            },
+            "Medicine - 08/25 - August 6 - Evening": {
+                "Pharmacology": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 2
+                },
+                "Anatomy": {
+                    "": 2
+                }
+            },
+            "Medicine - 08/25 - August 5 - Morning": {
+                "Biochemistry": {
+                    "": 2
+                },
+                "Microbiology": {
+                    "Urinary Tract Infection": 1
+                }
+            },
+            "Anesthesia - 04/26 - April 7 - Morning": {
+                "Biochemistry": {
+                    "": 1
+                },
+                "Microbiology": {
+                    "Urinary Tract Infection": 1
+                }
+            },
+            "Radiology - 04/26 - April 7 - Morning": {
+                "Biochemistry": {
+                    "": 1
+                },
+                "Anatomy": {
+                    "": 1
+                }
+            },
+            "Surgery - 01/26 - January 6 - Evening": {
                 "Biochemistry": {
                     "": 1
                 }
@@ -2856,92 +3229,8 @@
                     "": 1
                 }
             },
-            "Medicine - 08/25 - August 5 - Evening": {
-                "Anatomy": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 1
-                }
-            },
-            "Medicine - 08/25 - August 6 - Evening": {
-                "Anatomy": {
-                    "": 2
-                },
-                "Immunology": {
-                    "": 2
-                },
-                "Pharmacology": {
-                    "": 1
-                }
-            },
-            "Medicine - 08/25 - August 5 - Morning": {
-                "Biochemistry": {
-                    "": 2
-                },
-                "Microbiology": {
-                    "": 1
-                }
-            },
-            "Anesthesia - 04/26 - April 7 - Morning": {
-                "Biochemistry": {
-                    "": 1
-                },
-                "Microbiology": {
-                    "": 1
-                }
-            },
-            "Surgery - 01/26 - January 6 - Evening": {
-                "Biochemistry": {
-                    "": 1
-                }
-            },
             "Medicine - 01/26 - January 6 - Evening": {
                 "Embryology": {
-                    "": 1
-                }
-            },
-            "Surgery - 08/25 - August 7 - Morning": {
-                "Embryology": {
-                    "": 1
-                },
-                "Immunology": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 2
-                },
-                "Pharmacology": {
-                    "": 2
-                }
-            },
-            "Medicine - 08/25 - August 6 - Morning": {
-                "Medicine": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 1
-                }
-            },
-            "Radiology - 01/26 - January 6 - Morning": {
-                "Medicine": {
-                    "": 1
-                },
-                "Pathology": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 1
-                }
-            },
-            "Medicine - 04/26 - April 7 - Morning": {
-                "Pathology": {
                     "": 1
                 }
             }
@@ -2949,54 +3238,46 @@
         "2025": {
             "Surgery - 08/25 - August 7 - Morning": {
                 "Anatomy": {
-                    "": 35
-                },
-                "Biochemistry": {
-                    "": 12
+                    "": 36
                 },
                 "Embryology": {
                     "": 5
                 },
-                "Genetics": {
-                    "": 5
-                },
-                "Histology": {
-                    "": 2
-                },
-                "Immunology": {
-                    "": 10
-                },
                 "Medicine": {
-                    "": 31
-                },
-                "Microbiology": {
-                    "": 17
+                    "": 30
                 },
                 "Pathology": {
                     "": 29
                 },
                 "Pharmacology": {
-                    "": 19
+                    "": 20
                 },
                 "Physiology": {
-                    "": 23
+                    "": 21
+                },
+                "Immunology": {
+                    "": 10
+                },
+                "Genetics": {
+                    "": 5
+                },
+                "Microbiology": {
+                    "": 18
+                },
+                "Biochemistry": {
+                    "": 12
                 },
                 "Surgery": {
+                    "": 2
+                },
+                "Histology": {
                     "": 2
                 }
             },
             "Medicine - 08/25 - August 5 - Evening": {
                 "Anatomy": {
-                    "": 24
-                },
-                "Anesthesia": {
-                    "": 1
-                },
-                "Biochemistry": {
-                    "": 12
-                },
-                "Community Medicine": {
-                    "": 2
+                    "": 22,
+                    "The Kidneys & Ureters": 2
                 },
                 "Embryology": {
                     "": 4
@@ -3004,40 +3285,82 @@
                 "Genetics": {
                     "": 5
                 },
-                "Immunology": {
-                    "": 6
-                },
-                "Medical Ethics": {
-                    "": 1
-                },
                 "Medicine": {
-                    "": 44
+                    "": 43,
+                    "Renal Replacement Therapy": 1
+                },
+                "Pathology": {
+                    "": 23,
+                    "Nephritic Syndromes": 1,
+                    "Urinary Tract Calculi": 1
+                },
+                "Pharmacology": {
+                    "": 24,
+                    "Chronic Kidney Disease": 1,
+                    "Acid Base": 1
+                },
+                "Physiology": {
+                    "": 21,
+                    "The Kidneys & Ureters": 2
                 },
                 "Microbiology": {
                     "": 8
                 },
-                "Pathology": {
-                    "": 25
-                },
                 "Pediatrics": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 26
-                },
-                "Physiology": {
-                    "": 23
-                },
-                "Psychiatry": {
                     "": 1
                 },
                 "Surgery": {
                     "": 3
+                },
+                "Anesthesia": {
+                    "": 1
+                },
+                "Biochemistry": {
+                    "": 11,
+                    "Chronic Kidney Disease": 1
+                },
+                "Community Medicine": {
+                    "": 2
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Psychiatry": {
+                    "": 1
+                },
+                "Immunology": {
+                    "": 6
                 }
             },
             "Surgery - 08/25 - August 6 - Evening": {
                 "Anatomy": {
                     "": 41
+                },
+                "Medicine": {
+                    "": 36,
+                    "Chronic Kidney Disease": 1,
+                    "The Kidneys & Ureters": 1
+                },
+                "Pathology": {
+                    "": 23,
+                    "The Urinary Bladder": 1
+                },
+                "Pediatrics": {
+                    "": 3
+                },
+                "Pharmacology": {
+                    "": 15,
+                    "Chronic Kidney Disease": 2,
+                    "Urinary Tract Calculi": 1
+                },
+                "Physiology": {
+                    "": 24,
+                    "The Kidneys & Ureters": 3,
+                    "Acute Kidney Injury": 1
+                },
+                "Embryology": {
+                    "": 3,
+                    "The Kidneys & Ureters": 1
                 },
                 "Biochemistry": {
                     "": 7
@@ -3045,46 +3368,46 @@
                 "Biostatistics": {
                     "": 1
                 },
-                "Embryology": {
-                    "": 4
-                },
                 "Genetics": {
+                    "": 2
+                },
+                "Microbiology": {
+                    "": 10
+                },
+                "Surgery": {
                     "": 2
                 },
                 "Immunology": {
                     "": 5
                 },
-                "Medicine": {
-                    "": 38
-                },
-                "Microbiology": {
-                    "": 10
-                },
                 "Oncology": {
                     "": 1
-                },
-                "Pathology": {
-                    "": 25
-                },
-                "Pediatrics": {
-                    "": 2
-                },
-                "Pharmacology": {
-                    "": 18
-                },
-                "Physiology": {
-                    "": 28
-                },
-                "Surgery": {
-                    "": 2
                 }
             },
             "Medicine - 08/25 - August 6 - Evening": {
                 "Anatomy": {
                     "": 32
                 },
-                "Anesthesia": {
-                    "": 1
+                "Medicine": {
+                    "": 33,
+                    "Renal Cell Carcinoma": 1,
+                    "Urinary Tract Calculi": 1,
+                    "Chronic Kidney Disease": 1
+                },
+                "Pathology": {
+                    "": 31,
+                    "The Urinary Bladder": 2,
+                    "Urinary Tract Calculi": 1,
+                    "The Kidneys & Ureters": 1
+                },
+                "Pharmacology": {
+                    "": 16,
+                    "Chronic Kidney Disease": 3
+                },
+                "Physiology": {
+                    "": 26,
+                    "The Kidneys & Ureters": 4,
+                    "Acute Kidney Injury": 1
                 },
                 "Biochemistry": {
                     "": 9
@@ -3095,17 +3418,8 @@
                 "Community Medicine": {
                     "": 1
                 },
-                "Embryology": {
-                    "": 5
-                },
                 "Genetics": {
                     "": 2
-                },
-                "Immunology": {
-                    "": 4
-                },
-                "Medicine": {
-                    "": 36
                 },
                 "Microbiology": {
                     "": 12
@@ -3113,76 +3427,113 @@
                 "Oncology": {
                     "": 1
                 },
-                "Pathology": {
-                    "": 35
-                },
                 "Pediatrics": {
                     "": 1
                 },
-                "Pharmacology": {
-                    "": 19
+                "Immunology": {
+                    "": 4
                 },
-                "Physiology": {
-                    "": 31
+                "Anesthesia": {
+                    "": 1
+                },
+                "Embryology": {
+                    "": 4,
+                    "The Kidneys & Ureters": 1
                 }
             },
             "Medicine - 08/25 - August 5 - Morning": {
                 "Anatomy": {
                     "": 18
                 },
-                "Anesthesia": {
-                    "": 1
-                },
                 "Biochemistry": {
-                    "": 13
-                },
-                "Community Medicine": {
-                    "": 1
-                },
-                "Embryology": {
-                    "": 3
+                    "": 12,
+                    "Chronic Kidney Disease": 1
                 },
                 "Genetics": {
-                    "": 9
-                },
-                "Immunology": {
-                    "": 9
-                },
-                "Medical Ethics": {
-                    "": 1
+                    "": 8,
+                    "Polycystic Kidney Disease": 1
                 },
                 "Medicine": {
-                    "": 48
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Oncology": {
-                    "": 1
+                    "": 47,
+                    "Renal Cell Carcinoma": 1
                 },
                 "Pathology": {
                     "": 28
                 },
+                "Pharmacology": {
+                    "": 22,
+                    "The Kidneys & Ureters": 1
+                },
+                "Physiology": {
+                    "": 24,
+                    "Acid Base": 1
+                },
+                "Microbiology": {
+                    "": 9
+                },
                 "Pediatrics": {
                     "": 2
                 },
-                "Pharmacology": {
-                    "": 23
+                "Anesthesia": {
+                    "": 1
                 },
-                "Physiology": {
-                    "": 25
+                "Community Medicine": {
+                    "": 1
+                },
+                "Medical Ethics": {
+                    "": 1
+                },
+                "Oncology": {
+                    "": 1
                 },
                 "Psychiatry": {
                     "": 1
                 },
+                "Immunology": {
+                    "": 9
+                },
+                "Embryology": {
+                    "": 3
+                },
                 "Surgery": {
-                    "": 1
+                    "The Kidneys & Ureters": 1
                 }
             },
             "Medicine - 08/25 - August 6 - Morning": {
                 "Anatomy": {
                     "": 18
                 },
+                "Embryology": {
+                    "": 4,
+                    "The Kidneys & Ureters": 1
+                },
+                "Genetics": {
+                    "": 6
+                },
+                "Medicine": {
+                    "": 38,
+                    "Renal Tubular Acidosis": 1
+                },
+                "Microbiology": {
+                    "": 9
+                },
+                "Pathology": {
+                    "": 23,
+                    "Nephritic Syndromes": 2
+                },
+                "Pediatrics": {
+                    "": 3
+                },
+                "Pharmacology": {
+                    "": 22,
+                    "Chronic Kidney Disease": 1
+                },
+                "Physiology": {
+                    "": 14
+                },
+                "Immunology": {
+                    "": 13
+                },
                 "Biochemistry": {
                     "": 18
                 },
@@ -3192,33 +3543,6 @@
                 "Community Medicine": {
                     "": 2
                 },
-                "Embryology": {
-                    "": 5
-                },
-                "Genetics": {
-                    "": 6
-                },
-                "Immunology": {
-                    "": 13
-                },
-                "Medicine": {
-                    "": 39
-                },
-                "Microbiology": {
-                    "": 9
-                },
-                "Pathology": {
-                    "": 25
-                },
-                "Pediatrics": {
-                    "": 3
-                },
-                "Pharmacology": {
-                    "": 23
-                },
-                "Physiology": {
-                    "": 14
-                },
                 "Psychiatry": {
                     "": 1
                 },
@@ -3228,116 +3552,76 @@
             },
             "Medicine - 08/25 - August 4 - Evening": {
                 "Anatomy": {
-                    "": 37
+                    "": 36,
+                    "Benign Prostatic Hyperplasia": 1
                 },
-                "Anesthesia": {
+                "Genetics": {
+                    "": 2
+                },
+                "Medicine": {
+                    "": 36,
+                    "Acute Kidney Injury": 1,
+                    "Nephrotic Syndromes": 1,
+                    "Nephritic Syndromes": 1,
+                    "Chronic Kidney Disease": 1,
+                    "Urinary Tract Calculi": 1
+                },
+                "Pathology": {
+                    "": 16
+                },
+                "Pharmacology": {
+                    "": 24,
+                    "Urinary Tract Calculi": 1
+                },
+                "Physiology": {
+                    "": 10,
+                    "Chronic Kidney Disease": 1,
+                    "Nephrotic Syndromes": 1
+                },
+                "Microbiology": {
+                    "": 14,
+                    "Urinary Tract Infection": 1
+                },
+                "Pediatrics": {
+                    "": 1
+                },
+                "Surgery": {
+                    "": 7
+                },
+                "Community Medicine": {
+                    "": 1
+                },
+                "Psychiatry": {
                     "": 1
                 },
                 "Biochemistry": {
                     "": 11
                 },
-                "Community Medicine": {
+                "Immunology": {
+                    "": 1
+                },
+                "Anesthesia": {
                     "": 1
                 },
                 "Embryology": {
                     "": 2
-                },
-                "Genetics": {
-                    "": 2
-                },
-                "Immunology": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 41
-                },
-                "Microbiology": {
-                    "": 15
-                },
-                "Pathology": {
-                    "": 16
-                },
-                "Pediatrics": {
-                    "": 1
-                },
-                "Pharmacology": {
-                    "": 25
-                },
-                "Physiology": {
-                    "": 12
-                },
-                "Psychiatry": {
-                    "": 1
-                },
-                "Surgery": {
-                    "": 7
                 }
             }
         },
         "2025, 2026": {
             "Surgery - 08/25 - August 6 - Evening": {
-                "Anatomy": {
-                    "": 1
-                },
                 "Medicine": {
                     "": 2
-                }
-            },
-            "Radiology - 07/26 - July 08 - Morning": {
+                },
                 "Anatomy": {
-                    "": 2
-                },
-                "Medicine": {
-                    "": 1
-                },
-                "Microbiology": {
-                    "": 1
-                }
-            },
-            "Surgery - 08/25 - August 7 - Morning": {
-                "Anatomy": {
-                    "": 1
-                },
-                "Microbiology": {
                     "": 1
                 }
             },
             "Surgery - 07/26 - July 09 - Afternoon": {
-                "Anatomy": {
-                    "": 1
-                },
                 "Medicine": {
                     "": 2
-                }
-            },
-            "Medicine - 08/25 - August 5 - Morning": {
+                },
                 "Anatomy": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 1
-                }
-            },
-            "Medicine - 08/25 - August 4 - Evening": {
-                "Biochemistry": {
-                    "": 1
-                },
-                "Medicine": {
-                    "": 1
-                }
-            },
-            "Radiology - 01/26 - January 6 - Morning": {
-                "Biochemistry": {
-                    "": 1
-                }
-            },
-            "Medicine - 08/25 - August 5 - Evening": {
-                "Genetics": {
-                    "": 1
-                }
-            },
-            "Surgery - 07/26 - July 08 - Afternoon": {
-                "Genetics": {
                     "": 1
                 }
             },
@@ -3354,6 +3638,44 @@
                     "": 1
                 }
             },
+            "Surgery - 08/25 - August 7 - Morning": {
+                "Microbiology": {
+                    "": 1
+                },
+                "Anatomy": {
+                    "": 1
+                }
+            },
+            "Radiology - 07/26 - July 08 - Morning": {
+                "Microbiology": {
+                    "": 1
+                },
+                "Anatomy": {
+                    "": 1,
+                    "Urethra & Penis": 1
+                },
+                "Medicine": {
+                    "": 1
+                }
+            },
+            "Medicine - 08/25 - August 4 - Evening": {
+                "Biochemistry": {
+                    "": 1
+                },
+                "Medicine": {
+                    "": 1
+                }
+            },
+            "Radiology - 01/26 - January 6 - Morning": {
+                "Biochemistry": {
+                    "": 1
+                }
+            },
+            "Gynecology - 01/26 - January 6 - Morning": {
+                "Pathology": {
+                    "": 1
+                }
+            },
             "Radiology - 04/26 - April 7 - Morning": {
                 "Medicine": {
                     "": 1
@@ -3364,13 +3686,26 @@
                     "": 1
                 }
             },
-            "Medicine - 07/26 - July 9 - Afternoon": {
+            "Medicine - 08/25 - August 5 - Morning": {
+                "Anatomy": {
+                    "Urethra & Penis": 1
+                },
                 "Medicine": {
                     "": 1
                 }
             },
-            "Gynecology - 01/26 - January 6 - Morning": {
-                "Pathology": {
+            "Medicine - 08/25 - August 5 - Evening": {
+                "Genetics": {
+                    "": 1
+                }
+            },
+            "Surgery - 07/26 - July 08 - Afternoon": {
+                "Genetics": {
+                    "": 1
+                }
+            },
+            "Medicine - 07/26 - July 9 - Afternoon": {
+                "Medicine": {
                     "": 1
                 }
             }
