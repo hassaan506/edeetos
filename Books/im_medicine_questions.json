@@ -1626,8 +1626,8 @@
         "question": "A 28-year-old athlete with a family history of sudden cardiac death is diagnosed with Hypertrophic Cardiomyopathy. The physician evaluates the patient's risk profile to determine if an Implantable Cardiac Defibrillator (ICD) is indicated for primary prevention. According to the clinical pearl, which of the following specific echocardiographic findings is an indication for an ICD in HCM?",
         "options": {
             "A": "Ejection fraction strictly < 35%",
-            "B": "Left ventricular wall thickness \u2265 30 mm",
-            "C": "Left ventricular end-systolic diameter \u2265 55 mm",
+            "B": "Left ventricular wall thickness ≥ 30 mm",
+            "C": "Left ventricular end-systolic diameter ≥ 55 mm",
             "D": "Presence of systolic anterior motion (SAM) of the mitral valve",
             "E": "Asymmetrical septal hypertrophy without outflow obstruction"
         },
@@ -2759,9 +2759,9 @@
         "topic": "Coronary Heart Disease",
         "question": "A 55-year-old female experiences chest pain while walking outside in a cold wind. The pain resolves after a few minutes of rest. Her physician explains that her stable angina is due to ischemia from a fixed atheromatous stenosis. According to the text, this stenosis typically involves at least how many coronary arteries?",
         "options": {
-            "A": "\u2265 1",
-            "B": "\u2265 2",
-            "C": "\u2265 3",
+            "A": "≥ 1",
+            "B": "≥ 2",
+            "C": "≥ 3",
             "D": "Only the Left Anterior Descending (LAD)",
             "E": "Only the Right Coronary Artery (RCA)"
         },
@@ -2927,11 +2927,11 @@
         "topic": "Coronary Heart Disease",
         "question": "A patient is diagnosed with Ventricular Tachycardia (VT). According to the strict definition provided in the text, VT is defined as consecutive premature ventricular contractions (PVCs) at a rate between 100 and 250 bpm. What is the minimum number of consecutive PVCs required to define this rhythm?",
         "options": {
-            "A": "\u2265 2",
-            "B": "\u2265 3",
-            "C": "\u2265 5",
-            "D": "\u2265 10",
-            "E": "\u2265 15"
+            "A": "≥ 2",
+            "B": "≥ 3",
+            "C": "≥ 5",
+            "D": "≥ 10",
+            "E": "≥ 15"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -3998,7 +3998,7 @@
         "topic": "Infective Endocarditis",
         "question": "A patient meets the Modified Duke's Criteria for a definitive diagnosis of infective endocarditis by having one major criterion and three minor criteria. Which of the following clinical findings is explicitly classified as a \"Major Criterion\"?",
         "options": {
-            "A": "Fever \u2265 38\u00b0C",
+            "A": "Fever ≥ 38°C",
             "B": "Predisposing heart lesion (e.g., MVP)",
             "C": "Embolic phenomenon (e.g., Janeway lesions)",
             "D": "Persistent positive blood cultures taken > 12 hours apart",
@@ -4041,7 +4041,7 @@
         "question": "A physician strongly suspects infective endocarditis in a patient with a new murmur and fever. To ensure accurate diagnosis and guide antibiotic therapy, blood cultures must be drawn. According to the stated diagnostic protocol, what is the required procedure for obtaining these cultures?",
         "options": {
             "A": "Obtain a single large-volume sample from a central venous catheter",
-            "B": "Obtain at least 3 sets of cultures spaced \u2265 1 hour apart before commencing antibiotics",
+            "B": "Obtain at least 3 sets of cultures spaced ≥ 1 hour apart before commencing antibiotics",
             "C": "Administer empiric broad-spectrum antibiotics first, then draw 2 sets of cultures",
             "D": "Obtain 6 sets of cultures simultaneously from the exact same venipuncture site",
             "E": "Perform a transesophageal echocardiogram before any blood cultures are drawn"
@@ -4148,7 +4148,7 @@
             "A": "Thickened, immobile cusps with a fish-mouth orifice",
             "B": "Concentric left ventricular hypertrophy with a narrow outflow tract",
             "C": "Vegetations strictly isolated to the tricuspid valve",
-            "D": "Billowing of the mitral valve leaflet \u2265 2 mm above the mitral annulus",
+            "D": "Billowing of the mitral valve leaflet ≥ 2 mm above the mitral annulus",
             "E": "Massive left atrial dilation with a large mural thrombus"
         },
         "correctAnswer": "D",
@@ -4630,7 +4630,7 @@
         "options": {
             "A": "Urine output of <0.5 mL/kg/hour for 4 hours",
             "B": "Abrupt increase in serum creatinine of 0.2 mg/dL within 48 hours",
-            "C": "Abrupt increase in serum creatinine of \u2265 50% within 48 hours",
+            "C": "Abrupt increase in serum creatinine of ≥ 50% within 48 hours",
             "D": "Urine output of <1.0 mL/kg/hour for 6 hours",
             "E": "Gradual increase in serum creatinine by 30% over 1 week"
         },
@@ -4859,11 +4859,11 @@
         "topic": "Acute Kidney Injury",
         "question": "Fractional Excretion of Sodium (FENa) is a useful tool to differentiate between pre-renal and intrinsic acute kidney injury. Which of the following represents the correct mathematical formula for calculating FENa?",
         "options": {
-            "A": "(Urine sodium / Urine creatinine) \u00d7 (Plasma sodium / Plasma creatinine)",
-            "B": "(Urine sodium / Plasma sodium) \u00f7 (Urine creatinine / Plasma creatinine)",
-            "C": "(Plasma sodium / Urine sodium) \u00f7 (Plasma creatinine / Urine creatinine)",
-            "D": "(Urine sodium \u00d7 Plasma sodium) \u00f7 (Urine creatinine \u00d7 Plasma creatinine)",
-            "E": "(Urine creatinine / Plasma sodium) \u00f7 (Urine sodium / Plasma creatinine)"
+            "A": "(Urine sodium / Urine creatinine) × (Plasma sodium / Plasma creatinine)",
+            "B": "(Urine sodium / Plasma sodium) ÷ (Urine creatinine / Plasma creatinine)",
+            "C": "(Plasma sodium / Urine sodium) ÷ (Plasma creatinine / Urine creatinine)",
+            "D": "(Urine sodium × Plasma sodium) ÷ (Urine creatinine × Plasma creatinine)",
+            "E": "(Urine creatinine / Plasma sodium) ÷ (Urine sodium / Plasma creatinine)"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -5450,7 +5450,7 @@
             "A": "Alpha blockers alone",
             "B": "5-alpha-reductase inhibitors alone",
             "C": "Transurethral resection of the prostate (TURP)",
-            "D": "5-alpha-reductase inhibitors \u00b1 alpha-blocker",
+            "D": "5-alpha-reductase inhibitors ± alpha-blocker",
             "E": "Open prostatectomy"
         },
         "correctAnswer": "D",
@@ -5972,7 +5972,7 @@
         "topic": "Nephritic Syndrome",
         "question": "A 30-year-old patient presents with edema. The physician is trying to distinguish clinically between a nephritic and a nephrotic syndrome. According to standard definitions, which of the following findings is specifically characteristic of a nephritic syndrome rather than nephrotic?",
         "options": {
-            "A": "Massive proteinuria (\u2265 3.5 g/day)",
+            "A": "Massive proteinuria (≥ 3.5 g/day)",
             "B": "Hypoalbuminemia (< 3 g/dL)",
             "C": "Oliguria",
             "D": "Hyperlipidemia",
@@ -6686,11 +6686,11 @@
         "topic": "Nephrotic Syndrome",
         "question": "A patient is undergoing a workup for suspected nephrotic syndrome. A 24-hour urine collection is ordered. According to the strict definition, what is the minimum daily loss of protein required to confirm \"massive proteinuria\"?",
         "options": {
-            "A": "\u2265 1.5 grams",
-            "B": "\u2265 2.0 grams",
-            "C": "\u2265 3.0 grams",
-            "D": "\u2265 3.5 grams",
-            "E": "\u2265 4.5 grams"
+            "A": "≥ 1.5 grams",
+            "B": "≥ 2.0 grams",
+            "C": "≥ 3.0 grams",
+            "D": "≥ 3.5 grams",
+            "E": "≥ 4.5 grams"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -8324,11 +8324,11 @@
         "topic": "Acute Respiratory Distress Syndrome",
         "question": "A patient is intubated and mechanically ventilated for severe ARDS. To minimize ventilator-induced lung injury, the physician strictly sets the tidal volume according to standard protocols. What is the targeted tidal volume (low-tidal volume ventilation) in this scenario?",
         "options": {
-            "A": "\u2264 4 mL/kg",
-            "B": "\u2264 6 mL/kg",
-            "C": "\u2264 8 mL/kg",
-            "D": "\u2264 10 mL/kg",
-            "E": "\u2264 12 mL/kg"
+            "A": "≤ 4 mL/kg",
+            "B": "≤ 6 mL/kg",
+            "C": "≤ 8 mL/kg",
+            "D": "≤ 10 mL/kg",
+            "E": "≤ 12 mL/kg"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -8408,11 +8408,11 @@
         "topic": "Acute Respiratory Distress Syndrome",
         "question": "A patient with ARDS is on mechanical ventilation. To prevent alveolar barotrauma, the respiratory therapist continuously monitors the airway pressures. The plateau pressure must be strictly maintained below what specific threshold?",
         "options": {
-            "A": "\u2264 15 cm of water",
-            "B": "\u2264 20 cm of water",
-            "C": "\u2264 25 cm of water",
-            "D": "\u2264 30 cm of water",
-            "E": "\u2264 40 cm of water"
+            "A": "≤ 15 cm of water",
+            "B": "≤ 20 cm of water",
+            "C": "≤ 25 cm of water",
+            "D": "≤ 30 cm of water",
+            "E": "≤ 40 cm of water"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -8429,11 +8429,11 @@
         "topic": "Acute Respiratory Distress Syndrome",
         "question": "A patient with ARDS is placed on mechanical ventilation. To prevent volutrauma and protect the fragile lungs, the intensivist utilizes \"low-tidal volume\" mechanical ventilation. What is the specific target maintenance level for this tidal volume?",
         "options": {
-            "A": "\u2264 4 mL/kg",
-            "B": "\u2264 6 mL/kg",
-            "C": "\u2264 8 mL/kg",
-            "D": "\u2264 10 mL/kg",
-            "E": "\u2264 12 mL/kg"
+            "A": "≤ 4 mL/kg",
+            "B": "≤ 6 mL/kg",
+            "C": "≤ 8 mL/kg",
+            "D": "≤ 10 mL/kg",
+            "E": "≤ 12 mL/kg"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -8642,7 +8642,7 @@
             "A": "After 3 days",
             "B": "After 5 days",
             "C": "Between 7 and 13 days",
-            "D": "\u2265 14 days",
+            "D": "≥ 14 days",
             "E": "After 21 days"
         },
         "correctAnswer": "D",
@@ -8681,11 +8681,11 @@
         "topic": "Acute Respiratory Distress Syndrome",
         "question": "While managing an ARDS patient on a mechanical ventilator, the respiratory therapist continuously monitors airway pressures to prevent barotrauma. What is the maximum acceptable target for the plateau pressure (measured on the ventilator)?",
         "options": {
-            "A": "\u2264 15 cm of water",
-            "B": "\u2264 20 cm of water",
-            "C": "\u2264 30 cm of water",
-            "D": "\u2264 40 cm of water",
-            "E": "\u2264 50 cm of water"
+            "A": "≤ 15 cm of water",
+            "B": "≤ 20 cm of water",
+            "C": "≤ 30 cm of water",
+            "D": "≤ 40 cm of water",
+            "E": "≤ 50 cm of water"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -8849,11 +8849,11 @@
         "topic": "Asthma",
         "question": "A 25-year-old man undergoes spirometry for suspected asthma. He is given an inhaled bronchodilator (albuterol) during the test. Which of the following changes in his FEV1 would fulfill the diagnostic criteria for a reversible airway obstruction?",
         "options": {
-            "A": "Increase of \u2265 5% (and 50 ml)",
-            "B": "Increase of \u2265 10% (and 100 ml)",
-            "C": "Increase of \u2265 15% (and 200 ml)",
-            "D": "Increase of \u2265 20% (and 300 ml)",
-            "E": "Increase of \u2265 25% (and 400 ml)"
+            "A": "Increase of ≥ 5% (and 50 ml)",
+            "B": "Increase of ≥ 10% (and 100 ml)",
+            "C": "Increase of ≥ 15% (and 200 ml)",
+            "D": "Increase of ≥ 20% (and 300 ml)",
+            "E": "Increase of ≥ 25% (and 400 ml)"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -9164,11 +9164,11 @@
         "topic": "Asthma",
         "question": "A patient with a history of intermittent cough undergoes a methacholine challenge test to differentiate between asthma and COPD. Which of the following findings would indicate a positive test for asthma?",
         "options": {
-            "A": "Decreased FEV1 \u2265 10%",
-            "B": "Increased FEV1 \u2265 15%",
+            "A": "Decreased FEV1 ≥ 10%",
+            "B": "Increased FEV1 ≥ 15%",
             "C": "No decrease in FEV1",
-            "D": "Decreased FEV1 \u2265 20%",
-            "E": "Increased FVC \u2265 20%"
+            "D": "Decreased FEV1 ≥ 20%",
+            "E": "Increased FVC ≥ 20%"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -9627,10 +9627,10 @@
         "question": "What is the defined goal for daily symptoms to achieve \"complete control\" in asthma therapy?",
         "options": {
             "A": "No daily symptoms",
-            "B": "\u2264 1 time/week",
-            "C": "\u2264 2 times/week",
-            "D": "\u2264 3 times/week",
-            "E": "\u2264 4 times/week"
+            "B": "≤ 1 time/week",
+            "C": "≤ 2 times/week",
+            "D": "≤ 3 times/week",
+            "E": "≤ 4 times/week"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -9710,8 +9710,8 @@
         "topic": "Asthma",
         "question": "When performing a Methacholine-Challenge Test, which finding differentiates COPD from asthma?",
         "options": {
-            "A": "Positive test with decreased FEV1 \u2265 20%",
-            "B": "Positive test with increased FEV1 \u2265 15%",
+            "A": "Positive test with decreased FEV1 ≥ 20%",
+            "B": "Positive test with increased FEV1 ≥ 15%",
             "C": "Negative test with no decrease in FEV1",
             "D": "Negative test with increased FVC",
             "E": "Positive test with increased PEF"
@@ -9752,11 +9752,11 @@
         "topic": "Asthma",
         "question": "Which of the following changes in Forced Expiratory Volume in 1 second (FEV1) after 6 minutes of exercise meets the diagnostic criteria for asthma?",
         "options": {
-            "A": "Decrease of \u2265 5%",
-            "B": "Decrease of \u2265 10%",
-            "C": "Decrease of \u2265 15%",
-            "D": "Increase of \u2265 15%",
-            "E": "Increase of \u2265 20%"
+            "A": "Decrease of ≥ 5%",
+            "B": "Decrease of ≥ 10%",
+            "C": "Decrease of ≥ 15%",
+            "D": "Increase of ≥ 15%",
+            "E": "Increase of ≥ 20%"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -10424,11 +10424,11 @@
         "topic": "Chronic Obstructive Pulmonary Disease",
         "question": "A patient with very advanced COPD is being considered for Long-Term Oxygen Therapy (LTOT). To derive mortality benefit, the physician checks his arterial blood gas. What is the explicit PaO2 indication threshold for initiating LTOT in this patient?",
         "options": {
-            "A": "PaO2 \u2264 65 mmHg",
-            "B": "PaO2 \u2264 60 mmHg",
-            "C": "PaO2 \u2264 55 mmHg",
-            "D": "PaO2 \u2264 50 mmHg",
-            "E": "PaO2 \u2264 45 mmHg"
+            "A": "PaO2 ≤ 65 mmHg",
+            "B": "PaO2 ≤ 60 mmHg",
+            "C": "PaO2 ≤ 55 mmHg",
+            "D": "PaO2 ≤ 50 mmHg",
+            "E": "PaO2 ≤ 45 mmHg"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -10781,10 +10781,10 @@
         "topic": "Chronic Obstructive Pulmonary Disease",
         "question": "A patient with severe COPD is being evaluated for Long-Term Oxygen Therapy (LTOT). According to management guidelines, which of the following is a direct indication for initiating this therapy?",
         "options": {
-            "A": "PaO2 \u2264 65 mmHg",
-            "B": "SaO2 \u2264 92%",
+            "A": "PaO2 ≤ 65 mmHg",
+            "B": "SaO2 ≤ 92%",
             "C": "PaCO2 > 45 mmHg",
-            "D": "PaO2 \u2264 55 mmHg",
+            "D": "PaO2 ≤ 55 mmHg",
             "E": "PaO2 > 60 mmHg"
         },
         "correctAnswer": "D",
@@ -14307,7 +14307,7 @@
         "subject": "",
         "chapter": "Pulmonology",
         "topic": "Pneumonia",
-        "question": "A 75-year-old patient with CAP is evaluated using the CURB-65 criteria. He is confused, has a BUN of 35 mg/dL, a respiratory rate of 32/min, a blood pressure of 85/55 mmHg, and is over 65. His score is 5. According to this scoring system, a score of \u2265 3 specifically indicates the need for which of the following?",
+        "question": "A 75-year-old patient with CAP is evaluated using the CURB-65 criteria. He is confused, has a BUN of 35 mg/dL, a respiratory rate of 32/min, a blood pressure of 85/55 mmHg, and is over 65. His score is 5. According to this scoring system, a score of ≥ 3 specifically indicates the need for which of the following?",
         "options": {
             "A": "Outpatient management with oral macrolides",
             "B": "Inpatient management on a general medical floor",
@@ -15046,7 +15046,7 @@
         "options": {
             "A": "Exactly 3 months",
             "B": "1 to 2 months",
-            "C": "\u2265 3 Months",
+            "C": "≥ 3 Months",
             "D": "Indefinite (For Life)",
             "E": "6 weeks"
         },
@@ -15254,11 +15254,11 @@
         "topic": "Pulmonary Embolism",
         "question": "A patient with a confirmed pulmonary embolism is started on a Low-Molecular Weight Heparin (LMWH) like Enoxaparin. Oral warfarin is also initiated on day 1. According to the overlapping treatment protocol, LMWH should not be discontinued until the patient's INR reaches a specific target for at least 24 hours. What is this target INR?",
         "options": {
-            "A": "\u2265 1.5",
-            "B": "\u2265 2.0",
-            "C": "\u2265 3.0",
-            "D": "\u2265 3.5",
-            "E": "\u2265 4.0"
+            "A": "≥ 1.5",
+            "B": "≥ 2.0",
+            "C": "≥ 3.0",
+            "D": "≥ 3.5",
+            "E": "≥ 4.0"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -16305,7 +16305,7 @@
         "question": "During right heart catheterization, a patient with pulmonary hypertension is given inhaled nitric oxide to test for a \"Positive Vasoreactive Response.\" What hemodynamic change defines a positive response, identifying patients who will benefit from Calcium Channel Blockers?",
         "options": {
             "A": "Increase in pulmonary artery pressure > 10 mm with increased cardiac output",
-            "B": "Decrease in pulmonary artery pressure \u2265 10 mm to a level < 40 mmHg with stable cardiac output",
+            "B": "Decrease in pulmonary artery pressure ≥ 10 mm to a level < 40 mmHg with stable cardiac output",
             "C": "Decrease in PCWP to < 10 mmHg with systemic hypotension",
             "D": "Decrease in right atrial pressure by 50%",
             "E": "Increase in mixed venous oxygen saturation > 90%"
@@ -19685,8 +19685,8 @@
         "topic": "Adrenal Gland",
         "question": "In a normal person undergoing an Overnight Dexamethasone Suppression Test, what is the expected cortisol level that indicates normal suppression?",
         "options": {
-            "A": "<3.5 \u00b5g/24 hour",
-            "B": "<45 \u00b5g/24 hour",
+            "A": "<3.5 µg/24 hour",
+            "B": "<45 µg/24 hour",
             "C": "<50 nmol/L",
             "D": ">50 nmol/L",
             "E": "Completely undetectable"
@@ -19725,13 +19725,13 @@
         "subject": "",
         "chapter": "Endocrinology",
         "topic": "Adrenal Gland",
-        "question": "For an individual \u2265 18 years old, what is the normal reference range for a 24-hour urinary free cortisol assay?",
+        "question": "For an individual ≥ 18 years old, what is the normal reference range for a 24-hour urinary free cortisol assay?",
         "options": {
             "A": "<50 nmol/L",
-            "B": "3.5 - 45 \u00b5g/24 hour",
-            "C": ">50 \u00b5g/24 hour",
+            "B": "3.5 - 45 µg/24 hour",
+            "C": ">50 µg/24 hour",
             "D": "20% rise above baseline",
-            "E": "0.1 - 2.5 \u00b5g/24 hour"
+            "E": "0.1 - 2.5 µg/24 hour"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -19749,7 +19749,7 @@
         "question": "How many 24-hour urinary free cortisol tests should be performed to adequately confirm a positive diagnostic finding?",
         "options": {
             "A": "A single test is sufficient",
-            "B": "\u2265 2 tests should be performed",
+            "B": "≥ 2 tests should be performed",
             "C": "3 consecutive tests over 3 days always",
             "D": "Exactly 5 tests",
             "E": "It should only be performed once after a sodium load"
@@ -19791,7 +19791,7 @@
         "question": "According to the clinical pearl for suspected Cushing's syndrome, what is the protocol if any of the initial three screening tests are abnormal?",
         "options": {
             "A": "Proceed directly to trans-sphenoidal surgery",
-            "B": "Repeat \u2265 1 of the above 3 tests to confirm with \u2265 2 concordant abnormal tests",
+            "B": "Repeat ≥ 1 of the above 3 tests to confirm with ≥ 2 concordant abnormal tests",
             "C": "Order an immediate BIPSS",
             "D": "Assume the patient is normal if the other two tests were negative",
             "E": "Start empiric glucocorticoid replacement therapy"
@@ -20586,7 +20586,7 @@
         "subject": "",
         "chapter": "Endocrinology",
         "topic": "Adrenal Gland",
-        "question": "A patient undergoes a Short Synacthen test to evaluate suspected adrenal insufficiency. After the intramuscular administration of 250 \u00b5g of ACTH, the 30-minute plasma cortisol level fails to increase above 500 nmol/L. Subsequent testing reveals a High baseline ACTH level. What is the definitive diagnosis?",
+        "question": "A patient undergoes a Short Synacthen test to evaluate suspected adrenal insufficiency. After the intramuscular administration of 250 µg of ACTH, the 30-minute plasma cortisol level fails to increase above 500 nmol/L. Subsequent testing reveals a High baseline ACTH level. What is the definitive diagnosis?",
         "options": {
             "A": "Normal adrenal axis response",
             "B": "Secondary adrenal insufficiency",
@@ -20612,7 +20612,7 @@
             "A": "Cortisol firmly suppresses to below 50 nmol/l",
             "B": "Cortisol remains completely unchanged from baseline",
             "C": "Cortisol increases to strictly between 200 and 400 nmol/l",
-            "D": "Cortisol increases to > 500 nmol/l (> 18 \u00b5g/dL)",
+            "D": "Cortisol increases to > 500 nmol/l (> 18 µg/dL)",
             "E": "Cortisol immediately drops to zero followed by a rapid spike"
         },
         "correctAnswer": "D",
@@ -20927,7 +20927,7 @@
             "A": "Classic 21-Hydroxylase Deficiency",
             "B": "Non-classic 21-Hydroxylase Deficiency",
             "C": "17-Hydroxylase Deficiency",
-            "D": "11\u03b2-Hydroxylase Deficiency",
+            "D": "11β-Hydroxylase Deficiency",
             "E": "Complete Androgen Insensitivity Syndrome"
         },
         "correctAnswer": "B",
@@ -20947,7 +20947,7 @@
         "options": {
             "A": "21-Hydroxylase Deficiency",
             "B": "17-Hydroxylase Deficiency",
-            "C": "11\u03b2-Hydroxylase Deficiency",
+            "C": "11β-Hydroxylase Deficiency",
             "D": "Aromatase Deficiency",
             "E": "5-alpha-reductase deficiency"
         },
@@ -20967,10 +20967,10 @@
         "question": "A young child is brought to the clinic due to signs of severe, early masculinization. During the physical exam, the child is found to have marked hypertension. Blood tests show decreased cortisol, increased sex hormones (androgens), and decreased aldosterone. However, a specific mineralocorticoid precursor is highly elevated, explaining the hypertension. What is the elevated precursor, and what is the diagnosis?",
         "options": {
             "A": "Elevated renin; 21-Hydroxylase deficiency",
-            "B": "Elevated 11-deoxycorticosterone; 11\u03b2-hydroxylase deficiency",
+            "B": "Elevated 11-deoxycorticosterone; 11β-hydroxylase deficiency",
             "C": "Elevated angiotensin II; 17-Hydroxylase deficiency",
             "D": "Elevated DHEA; Non-classic 21-Hydroxylase deficiency",
-            "E": "Elevated 17-hydroxyprogesterone; 11\u03b2-hydroxylase deficiency"
+            "E": "Elevated 17-hydroxyprogesterone; 11β-hydroxylase deficiency"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -22500,7 +22500,7 @@
         "question": "A patient is diagnosed with a prolactinoma. Their fasting serum prolactin level is reported to be 6500 mU/l. Based purely on this specific serum prolactin level, what is the most likely morphological classification of this tumor?",
         "options": {
             "A": "It is a microadenoma < 10mm",
-            "B": "It is a macroadenoma \u2265 10 mm",
+            "B": "It is a macroadenoma ≥ 10 mm",
             "C": "It is a physiological hyperplasia, not a tumor",
             "D": "It is an entirely non-functioning adenoma",
             "E": "It is a malignant pituitary carcinoma"
@@ -22646,7 +22646,7 @@
         "topic": "Pituitary Gland",
         "question": "A patient is suspected of having acromegaly based on physical features. The endocrinologist orders an Oral Glucose Tolerance Test (OGTT) as a very sensitive diagnostic tool. Which of the following specific responses during the OGTT confirms the diagnosis of acromegaly?",
         "options": {
-            "A": "Serum GH successfully suppresses to below 0.5 \u00b5g/L",
+            "A": "Serum GH successfully suppresses to below 0.5 µg/L",
             "B": "Serum GH fails to suppress or paradoxically rises in response to the glucose load",
             "C": "Serum IGF-1 drops to undetectable levels",
             "D": "Blood glucose drops precipitously, causing severe hypoglycemia",
@@ -23043,7 +23043,7 @@
         "subject": "",
         "chapter": "Endocrinology",
         "topic": "Pituitary Gland",
-        "question": "A patient with persistent polyuria undergoes a Water-deprivation Test. After 8 hours of water deprivation, her urine fails to concentrate adequately (<600 mOsm/kg). She is then given desmopressin 2 \u00b5g IM (Stage-II). Following the injection, her urine osmolality rises significantly to >600 mOsm/kg. What is the definitive diagnosis?",
+        "question": "A patient with persistent polyuria undergoes a Water-deprivation Test. After 8 hours of water deprivation, her urine fails to concentrate adequately (<600 mOsm/kg). She is then given desmopressin 2 µg IM (Stage-II). Following the injection, her urine osmolality rises significantly to >600 mOsm/kg. What is the definitive diagnosis?",
         "options": {
             "A": "Nephrogenic Diabetes Insipidus",
             "B": "Central Diabetes Insipidus",
@@ -23864,11 +23864,11 @@
         "topic": "Thyroid Gland",
         "question": "A 72-year-old man with a known history of Ischemic Heart Disease (IHD) is diagnosed with hypothyroidism. What is the recommended starting dose of levothyroxine for this patient to avoid precipitating angina or myocardial infarction?",
         "options": {
-            "A": "100 - 150 \u00b5g/day",
-            "B": "50 \u00b5g/day",
-            "C": "75 \u00b5g/day",
-            "D": "25 \u00b5g/day",
-            "E": "1.5 - 1.7 \u00b5g/kg/day"
+            "A": "100 - 150 µg/day",
+            "B": "50 µg/day",
+            "C": "75 µg/day",
+            "D": "25 µg/day",
+            "E": "1.5 - 1.7 µg/kg/day"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -23886,9 +23886,9 @@
         "question": "A 28-year-old pregnant woman with preexisting hypothyroidism comes for a routine prenatal visit. She has been on a stable dose of levothyroxine prior to pregnancy. What adjustment in her levothyroxine dosage is generally required, and what is the physiological reason for it?",
         "options": {
             "A": "Decrease the dose because of decreased thyroxin-binding globulin (TBG)",
-            "B": "Increase the dose by 25-50 \u00b5g because of increased thyroxin-binding globulin (TBG)",
+            "B": "Increase the dose by 25-50 µg because of increased thyroxin-binding globulin (TBG)",
             "C": "Keep the dose unchanged to prevent fetal thyrotoxicosis",
-            "D": "Increase the dose by 100 \u00b5g due to increased maternal catabolism",
+            "D": "Increase the dose by 100 µg due to increased maternal catabolism",
             "E": "Decrease the dose because fetal thyroid production suppresses maternal TSH"
         },
         "correctAnswer": "B",
@@ -23967,7 +23967,7 @@
         "subject": "",
         "chapter": "Endocrinology",
         "topic": "Thyroid Gland",
-        "question": "A 78-year-old woman is brought to the emergency department during winter with an altered level of consciousness. She is hypothermic (34\u00b0C), hypotensive, and hypoventilating. Laboratory tests reveal hypoglycemia and hyponatremia. The physician suspects a severe endocrine emergency with a 50% mortality rate. If a lumbar puncture is performed, what findings are most expected in her Cerebrospinal Fluid (CSF)?",
+        "question": "A 78-year-old woman is brought to the emergency department during winter with an altered level of consciousness. She is hypothermic (34°C), hypotensive, and hypoventilating. Laboratory tests reveal hypoglycemia and hyponatremia. The physician suspects a severe endocrine emergency with a 50% mortality rate. If a lumbar puncture is performed, what findings are most expected in her Cerebrospinal Fluid (CSF)?",
         "options": {
             "A": "Decreased pressure and normal protein",
             "B": "Normal pressure and decreased protein",
@@ -23991,7 +23991,7 @@
         "question": "A 70-year-old male is admitted with suspected myxedema coma. While awaiting biochemical confirmation of the diagnosis, the physician decides to initiate immediate treatment. Which of the following is the most appropriate initial pharmacological management step for his thyroid status?",
         "options": {
             "A": "High-dose oral levothyroxine (T4)",
-            "B": "IV bolus of 20 \u00b5g Tri-iodothyronin (T3) followed by 20 \u00b5g 8-hourly",
+            "B": "IV bolus of 20 µg Tri-iodothyronin (T3) followed by 20 µg 8-hourly",
             "C": "Oral carbimazole",
             "D": "IV bolus of normal saline only",
             "E": "Radioactive iodine therapy"
@@ -24135,7 +24135,7 @@
         "subject": "",
         "chapter": "Endocrinology",
         "topic": "Thyroid Gland",
-        "question": "When evaluating a patient for suspected Graves' disease, which specific autoantibodies can be detected in 80\u201390% of patients and are highly helpful in making the diagnosis?",
+        "question": "When evaluating a patient for suspected Graves' disease, which specific autoantibodies can be detected in 80–90% of patients and are highly helpful in making the diagnosis?",
         "options": {
             "A": "Anti-thyroid peroxidase (anti-TPO) antibodies",
             "B": "Anti-thyroglobulin antibodies",
@@ -24725,11 +24725,11 @@
         "topic": "Thyroid Gland",
         "question": "What is the established normal reference range for Thyroid Stimulating Hormone (TSH)?",
         "options": {
-            "A": "0.5 \u2013 5 mU/L",
-            "B": "4.5 \u2013 12 \u00b5g/dl",
-            "C": "115 \u2013 190 ng/dl",
-            "D": "0.1 \u2013 2.5 mU/L",
-            "E": "5 \u2013 10 mU/L"
+            "A": "0.5 – 5 mU/L",
+            "B": "4.5 – 12 µg/dl",
+            "C": "115 – 190 ng/dl",
+            "D": "0.1 – 2.5 mU/L",
+            "E": "5 – 10 mU/L"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -24788,11 +24788,11 @@
         "topic": "Thyroid Gland",
         "question": "What is the recommended standard weight-based dosage for life-long levothyroxine replacement therapy?",
         "options": {
-            "A": "0.3 \u2013 0.5 \u00b5g/kg/day",
-            "B": "1.5 \u2013 1.7 \u00b5g/kg/day",
-            "C": "2.0 \u2013 2.5 \u00b5g/kg/day",
-            "D": "5.0 \u2013 7.5 \u00b5g/kg/day",
-            "E": "10 \u2013 15 \u00b5g/kg/day"
+            "A": "0.3 – 0.5 µg/kg/day",
+            "B": "1.5 – 1.7 µg/kg/day",
+            "C": "2.0 – 2.5 µg/kg/day",
+            "D": "5.0 – 7.5 µg/kg/day",
+            "E": "10 – 15 µg/kg/day"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -24914,9 +24914,9 @@
         "topic": "Thyroid Gland",
         "question": "What is the typical age range of onset and the gender predominance associated with Graves' disease?",
         "options": {
-            "A": "20 \u2013 30 years, equal male and female incidence",
-            "B": "30 \u2013 50 years, female predominance of 7:1",
-            "C": "50 \u2013 70 years, male predominance of 10:1",
+            "A": "20 – 30 years, equal male and female incidence",
+            "B": "30 – 50 years, female predominance of 7:1",
+            "C": "50 – 70 years, male predominance of 10:1",
             "D": "Childhood onset, female predominance of 3:1",
             "E": "Over 60 years, equal male and female incidence"
         },
@@ -24998,11 +24998,11 @@
         "topic": "Thyroid Gland",
         "question": "What is the recommended starting daily dose range for Propylthiouracil (PTU) when managing hyperthyroidism?",
         "options": {
-            "A": "10 \u2013 20 mg daily",
-            "B": "40 \u2013 60 mg daily",
-            "C": "100 \u2013 150 mg daily",
-            "D": "400 \u2013 600 mg daily",
-            "E": "800 \u2013 1000 mg daily"
+            "A": "10 – 20 mg daily",
+            "B": "40 – 60 mg daily",
+            "C": "100 – 150 mg daily",
+            "D": "400 – 600 mg daily",
+            "E": "800 – 1000 mg daily"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -25437,7 +25437,7 @@
         "subject": "",
         "chapter": "Endocrinology",
         "topic": "Thyroid Gland",
-        "question": "A 40-year-old female with a history of untreated Graves' disease is brought to the emergency department with a temperature of 104\u00b0F, severe tachycardia, agitation, and confusion. Her blood pressure is 160/60 mmHg. She is diagnosed with a medical emergency carrying a 10% mortality rate. Which of the following cardiovascular manifestations is most characteristic of this crisis?",
+        "question": "A 40-year-old female with a history of untreated Graves' disease is brought to the emergency department with a temperature of 104°F, severe tachycardia, agitation, and confusion. Her blood pressure is 160/60 mmHg. She is diagnosed with a medical emergency carrying a 10% mortality rate. Which of the following cardiovascular manifestations is most characteristic of this crisis?",
         "options": {
             "A": "Diastolic hypertension with narrow pulse pressure",
             "B": "Systolic hypertension with wide pulse pressure",
@@ -25901,7 +25901,7 @@
         "topic": "Turner Syndrome",
         "question": "A 16-year-old female with a webbed neck and a broad chest with wide-spaced nipples presents for the evaluation of primary amenorrhea. Based on epidemiological data, what is the most common cause of primary amenorrhea in women?",
         "options": {
-            "A": "M\u00fcllerian agenesis",
+            "A": "Müllerian agenesis",
             "B": "Polycystic Ovarian Syndrome",
             "C": "Turner Syndrome",
             "D": "Kallmann syndrome",
@@ -26745,7 +26745,7 @@
             "B": "Vitelline duct",
             "C": "Umbilical vein",
             "D": "Mesonephric duct",
-            "E": "M\u00fcllerian duct"
+            "E": "Müllerian duct"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -31635,7 +31635,7 @@
         "question": "A 45-year-old obese patient with dyslipidemia is diagnosed with Non-Alcoholic Fatty Liver Disease (NAFLD). A biopsy evaluates for Non-Alcoholic Steatohepatitis (NASH). How is NASH specifically defined?",
         "options": {
             "A": "NAFL + Mallory-Denk bodies",
-            "B": "NAFL + inflammation \u00b1 fibrosis",
+            "B": "NAFL + inflammation ± fibrosis",
             "C": "NAFL + severe bridging necrosis",
             "D": "NAFL + positive autoantibodies",
             "E": "NAFL + granuloma formation"
@@ -34113,7 +34113,7 @@
         "question": "A patient with HBeAg negative chronic Hepatitis B has an HBV DNA level of 5000 IU/mL but normal ALT. A liver biopsy is considered to determine if treatment is indicated. What specific biopsy finding would mandate treatment?",
         "options": {
             "A": "Stage 1 fibrosis only",
-            "B": "Marked inflammation & fibrosis (stage \u2265 2 fibrosis)",
+            "B": "Marked inflammation & fibrosis (stage ≥ 2 fibrosis)",
             "C": "Hepatic steatosis",
             "D": "Granuloma formation",
             "E": "Multi-acinar necrosis"
@@ -34322,8 +34322,8 @@
         "topic": "Hepatitis",
         "question": "A patient with an acute Hepatitis C infection has not spontaneously cleared the virus by 10 weeks. What is the specifically indicated treatment agents and duration?",
         "options": {
-            "A": "Pegylated Interferon-\u03b1 \u00b1 Ribavirin x 12 - 24 weeks",
-            "B": "Pegylated Interferon-\u03b1 + Boceprevir x 48 weeks",
+            "A": "Pegylated Interferon-α ± Ribavirin x 12 - 24 weeks",
+            "B": "Pegylated Interferon-α + Boceprevir x 48 weeks",
             "C": "Lamivudine x 48 weeks",
             "D": "Corticosteroids + Azathioprine x 24 weeks",
             "E": "Supportive care only"
@@ -34343,11 +34343,11 @@
         "topic": "Hepatitis",
         "question": "A patient is diagnosed with chronic Hepatitis C, Genotype 1. What constitutes the standard \"Triple Therapy\" for this specific genotype?",
         "options": {
-            "A": "Pegylated Interferon-\u03b1, Ribavirin, and Lamivudine",
-            "B": "Pegylated Interferon-\u03b1, Ribavirin, and a Protease Inhibitor (Boceprevir, Telaprevir)",
-            "C": "Pegylated Interferon-\u03b1, Entecavir, and Tenofovir",
+            "A": "Pegylated Interferon-α, Ribavirin, and Lamivudine",
+            "B": "Pegylated Interferon-α, Ribavirin, and a Protease Inhibitor (Boceprevir, Telaprevir)",
+            "C": "Pegylated Interferon-α, Entecavir, and Tenofovir",
             "D": "Ribavirin, Telaprevir, and Corticosteroids",
-            "E": "Pegylated Interferon-\u03b1, Ribavirin, and N-acetylcysteine"
+            "E": "Pegylated Interferon-α, Ribavirin, and N-acetylcysteine"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -34448,8 +34448,8 @@
         "topic": "Hepatitis",
         "question": "A patient with autoimmune hepatitis is evaluated for treatment. Treatment is indicated if LFTs are 5 times the upper limit of normal PLUS what specific IgG finding?",
         "options": {
-            "A": "IgG levels \u2265 1.5 times upper limit of normal",
-            "B": "IgG levels \u2265 2 times upper limit of normal",
+            "A": "IgG levels ≥ 1.5 times upper limit of normal",
+            "B": "IgG levels ≥ 2 times upper limit of normal",
             "C": "Normal IgG levels",
             "D": "IgG levels < 2 times upper limit of normal",
             "E": "Absent IgG"
