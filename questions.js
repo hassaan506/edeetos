@@ -1931,18 +1931,14 @@ const allMistakesSet = new Set([...globalPracticeMistakes, ...globalExamMistakes
             html += `</div>`;
         }
 
-        html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
+html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
         } else {
+            html += `<div style="width: 100%; height: 200px; margin-bottom: 20px;"><canvas id="examScoreChart"></canvas></div>`;
             html += `<div style="font-size:0.85rem; max-height:180px; overflow-y:auto;">
-                        <table style="width:100%; text-align:left; border-collapse: collapse;">
-                            <tr style="color:#64748b; border-bottom: 2px solid #e2e8f0;">
-                                <th style="padding: 8px 0;">Date</th>
-                                <th style="padding: 8px 0;">Exam Name</th>
-                                <th style="padding: 8px 0;">Score</th>
-                                <th style="padding: 8px 0;">Avg Time/Q</th>
-                            </tr>`;
+                        <table style="width:100%; text-align:left; border-collapse: collapse;">`
+						
             userExamHistory.slice().reverse().slice(0, 10).forEach(ex => {
                 const totalSecs = ex.timeSpent || 0;
                 const totalQs = ex.totalQuestions || 1;
@@ -1961,8 +1957,43 @@ const allMistakesSet = new Set([...globalPracticeMistakes, ...globalExamMistakes
             html += `</table></div>`;
         }
 
-        body.innerHTML = html;
+body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
+
+        if (userExamHistory.length > 0) {
+            const ctx = document.getElementById('examScoreChart');
+            if (ctx) {
+                if (window.examChartInstance) window.examChartInstance.destroy();
+                
+                const recentExams = userExamHistory.slice().reverse().slice(0, 10).reverse();
+                const labels = recentExams.map(ex => new Date(ex.date).toLocaleDateString(undefined, {month: 'short', day: 'numeric'}));
+                const scores = recentExams.map(ex => ex.percentage);
+
+                window.examChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Exam Score (%)',
+                            data: scores,
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3,
+                            pointBackgroundColor: '#10b981',
+                            pointRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, max: 100 } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        }
 
         const btnRedemption = document.getElementById('btn-train-redemption');
         if (btnRedemption) {
