@@ -194,19 +194,18 @@ function openLiveChat(chatId, partnerName) {
     if (chatUnsubscribe) chatUnsubscribe(); // Clear old listeners
     if (statusUnsubscribe) statusUnsubscribe(); 
     
-    chatUnsubscribe = onSnapshot(q, (snapshot) => {
-        chatMessages.innerHTML = ''; 
-        localMessages = []; // Re-sync local RAM arrays
-        
-        snapshot.forEach((docSnap) => {
-            const msg = docSnap.data();
-            localMessages.push(msg); // Push securely into RAM 
-            
-            const isMe = msg.senderId === currentUser.uid;
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `msg-bubble ${isMe ? 'msg-sent' : 'msg-received'}`;
-            msgDiv.textContent = msg.text;
-            chatMessages.appendChild(msgDiv);
+chatUnsubscribe = onSnapshot(q, (snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+            if (change.type === "added") {
+                const msg = change.doc.data();
+                localMessages.push(msg); // Push securely into RAM for the transcript
+                
+                const isMe = msg.senderId === currentUser.uid;
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `msg-bubble ${isMe ? 'msg-sent' : 'msg-received'}`;
+                msgDiv.textContent = msg.text;
+                chatMessages.appendChild(msgDiv);
+            }
         });
         chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
     });
@@ -264,37 +263,30 @@ btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
     // Confirm and explain that it's physically removed from DB
-    if (confirm("End session? A text transcript will be downloaded and the chat will be permanently erased from the network.")) {
+if (confirm("End session? A text transcript will be downloaded and the chat will be permanently erased from the network.")) {
         
-        // 1. Alert the other user immediately so their system triggers their local download snapshot
+        // 1. Alert the other user immediately
         await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
-        
-        // 2. Generate the initiator's transcript directly from RAM
         generateAndDownloadTranscript();
         
-        try {
-            // 3. Initiate Full Database Wiping (No Saving)
-            const { deleteDoc, getDocs, collection, query } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-            
-            // Delete all sub-messages systematically to clear data
-            const messagesRef = collection(db, "chats", currentChatId, "messages");
-            const snapshot = await getDocs(messagesRef);
-            for (const d of snapshot.docs) {
-                 await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
+        alert("Session Ended. Transcript downloaded. The room will completely purge in 3 seconds.");
+        
+        setTimeout(async () => {
+            try {
+                // 3. Delayed Database Wiping allows the student's device to catch the 'ended' state
+                const { deleteDoc, getDocs, collection } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+                
+                const messagesRef = collection(db, "chats", currentChatId, "messages");
+                const snapshot = await getDocs(messagesRef);
+                for (const d of snapshot.docs) {
+                     await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
+                }
+                
+                await deleteDoc(doc(db, "chats", currentChatId));
+            } catch(e) {
+                console.error("Cleanup Error", e);
             }
-            
-            // Delete the parent chat ticket itself
-            await deleteDoc(doc(db, "chats", currentChatId));
-            
-            alert("Session Ended. Record completely purged and transcript downloaded.");
-            
-        } catch(e) {
-            console.error("Cleanup Error", e);
-            alert("Session Ended. Transcript downloaded.");
-        }
-
-        setTimeout(() => {
             window.location.href = 'dashboard.html';
-        }, 1500);
+        }, 3000);
     }
 });

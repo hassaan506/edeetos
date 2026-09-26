@@ -412,11 +412,15 @@ function loadQuestion(index) {
             optBox.setAttribute('tabindex', '0');
             optBox.setAttribute('onclick', 'void(0);');
             
-            if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
             } else if (!isExamMode && hasAnsweredCorrectly && !activeRoomId) {
                 if (opt.isCorrect) optBox.classList.add('correct');
                 optBox.classList.add('locked');
+            }
+
+            if (currentQuestionData.eliminatedOptions && currentQuestionData.eliminatedOptions.includes(opt.text)) {
+                optBox.classList.add('strikethrough');
             }
 
             optBox.innerHTML = `<div class="option-text">${opt.text}</div><i class="fas fa-eye eye-icon"></i>`;
@@ -568,11 +572,9 @@ async function savePracticeProgress(questionId, isCorrect) {
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     let updates = {};
 
-    if (isCorrect) {
-        const isReviewMistakesMode = (quizConfig.examName === "Review Mistakes");
+if (isCorrect) {
         updates.solvedQuestions = arrayUnion(questionId); 
-
-        if (isReviewMistakesMode) {
+        if (wrongAttempts === 0) {
             updates.mistakes = arrayRemove(questionId);      
             updates.examMistakes = arrayRemove(questionId);   
         }
@@ -658,6 +660,16 @@ async function saveNoteToFirebase(questionId, noteText) {
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.classList.contains('eye-icon')) {
         optionElement.classList.toggle('strikethrough');
+        
+        if (!currentQuestionData.eliminatedOptions) {
+            currentQuestionData.eliminatedOptions = [];
+        }
+        
+        if (optionElement.classList.contains('strikethrough')) {
+            currentQuestionData.eliminatedOptions.push(optionData.text);
+        } else {
+            currentQuestionData.eliminatedOptions = currentQuestionData.eliminatedOptions.filter(t => t !== optionData.text);
+        }
         return; 
     }
 
@@ -1037,12 +1049,12 @@ function showResults() {
     let correctIds = [];
     let mistakeIds = [];
     
-    quizQueue.forEach(q => {
+quizQueue.forEach(q => {
         let correctOpt = q.options.find(o => o.isCorrect);
         if (correctOpt && q.userSelectedAnswer === correctOpt.text) {
             correctCount++;
             correctIds.push(q.originalNumber);
-        } else if (q.userSelectedAnswer) {
+        } else {
             mistakeIds.push(q.originalNumber);
         }
     });
@@ -1081,11 +1093,19 @@ const returnBtn = resultsEl.querySelector('button');
             // Calculate time taken (Total allotted time minus the remaining countdown seconds)
             const timeTaken = (quizConfig.timer * 60) - sessionSeconds; 
             
-            if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
+if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
             tasks.push(updateSpacedRepetition());
 
+            const assignedExamId = localStorage.getItem('edeetos_assigned_exam_id');
+            if (assignedExamId && currentUserId) {
+                tasks.push(updateDoc(doc(db, "assigned_exams", assignedExamId), {
+                    isCompletedBy: arrayUnion(currentUserId)
+                }));
+            }
+
             await Promise.all(tasks);
-            exitSafely('questions.html'); 
+            localStorage.removeItem('edeetos_assigned_exam_id');
+            exitSafely('questions.html');
         };
     }
 }
@@ -1133,8 +1153,41 @@ document.getElementById('btn-practice-home').addEventListener('click', async (e)
 // ==========================================
 // 9. TIMER & MODAL NAVIGATION
 // ==========================================
+let isPaused = false;
+
+const pauseOverlay = document.createElement('div');
+pauseOverlay.id = 'pause-overlay';
+pauseOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.98); z-index: 999999; display: none; flex-direction: column; justify-content: center; align-items: center; color: white;";
+pauseOverlay.innerHTML = `
+    <i class="fas fa-pause-circle" style="font-size: 5rem; color: #3b82f6; margin-bottom: 20px;"></i>
+    <h1 style="font-family: 'Nunito', sans-serif; margin-bottom: 10px;">Session Paused</h1>
+    <p style="color: #94a3b8; margin-bottom: 30px;">Timer is frozen. Question text is hidden to prevent cheating.</p>
+    <button id="btn-resume-quiz" class="btn-solid" style="background: #10b981; border: none; padding: 15px 30px; border-radius: 12px; font-size: 1.2rem; cursor: pointer; font-weight: bold; color: white;">Resume Session</button>
+`;
+document.body.appendChild(pauseOverlay);
+
+document.getElementById('btn-resume-quiz').onclick = () => {
+    isPaused = false;
+    pauseOverlay.style.display = 'none';
+};
+
 function startTimer() {
+    if (timerDisplay && timerDisplay.parentElement && !document.getElementById('pause-btn')) {
+        const pauseBtn = document.createElement('button');
+        pauseBtn.id = 'pause-btn';
+        pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+        pauseBtn.style.cssText = "background: #1e293b; border: 1px solid #475569; color: white; padding: 4px 10px; border-radius: 6px; cursor: pointer; margin-left: 15px; font-size: 0.8rem; font-weight: bold;";
+        timerDisplay.parentElement.appendChild(pauseBtn);
+        
+        pauseBtn.onclick = () => {
+            isPaused = true;
+            pauseOverlay.style.display = 'flex';
+        };
+    }
+
     timerInterval = setInterval(() => {
+        if (isPaused) return; 
+
         if (isExamMode) {
             sessionSeconds--; 
             if (sessionSeconds <= 0) {
@@ -1474,7 +1527,7 @@ async function updateSpacedRepetition() {
 
         quizQueue.forEach(question => {
             if (!question) return;
-
+			if (!question.userSelectedAnswer && !question.sessionState) return;
             const subject = question.Subject || question.subject || "Unknown Subject";
             const chapter = question.Chapter || question.chapter || "Unknown Chapter";
             const topic = question.Topic || question.topic || "Unknown Topic";
@@ -1572,14 +1625,16 @@ window.addEventListener('beforeunload', (e) => {
 });
 
 window.addEventListener('unload', () => {
-    // Remove the user from the study room instantly if they close the window
+    // Clean up the study room instantly if a user closes the window
     if (activeRoomId) {
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
-        if (isGuest && currentUserId && roomRef) {
+        if (roomRef) {
             import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js").then(({ updateDoc, deleteField }) => {
-                updateDoc(roomRef, {
-                    [`activeMembers.${currentUserId}`]: deleteField()
-                });
+                if (isGuest && currentUserId) {
+                    updateDoc(roomRef, { [`activeMembers.${currentUserId}`]: deleteField() });
+                } else if (!isGuest) {
+                    updateDoc(roomRef, { status: "ended" });
+                }
             });
         }
     }

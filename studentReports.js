@@ -197,21 +197,6 @@ const titles = {
 let globalQuestionBank = {};
 let bankLoadPromise = null;
 
-function parseCSV(text) {
-    let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-    for (l of text) {
-        if ('"' === l) {
-            if (s && l === p) row[i] += l;
-            s = !s;
-        } else if (',' === l && s) l = row[++i] = '';
-        else if ('\n' === l && s) {
-            if ('\r' === p) row[i] = row[i].slice(0, -1);
-            row = ret[++r] = [l = '']; i = 0;
-        } else row[i] += l;
-        p = l;
-    }
-    return ret;
-}
 
 // Optimized lazy loader targeting only the relevant file asset
 async function loadTargetedFileToBank(fileKey) {
@@ -221,23 +206,15 @@ async function loadTargetedFileToBank(fileKey) {
     const folder = isBook ? 'Books' : 'Data';
 
     try {
-        const res = await fetch(`${folder}/${fileKey}.csv`);
+        const res = await fetch(`${folder}/${fileKey}_questions.json`);
         if (!res.ok) return;
 
-        const text = (await res.text()).replace(/^\uFEFF/, '');
-        const rows = parseCSV(text);
-        const headers = rows[0].map(h => h ? h.trim() : "");
-
+        const questions = await res.json();
         if (!globalQuestionBank[fileKey]) globalQuestionBank[fileKey] = {};
 
-        rows.slice(1).forEach((row, rowIndex) => {
-            if (row.join('').replace(/,/g, '').trim() === '') return;
-
-            let q = {};
-            headers.forEach((h, i) => q[h] = row[i] ? row[i].trim() : "");
-
+        questions.forEach((q, index) => {
             let fallbackPrefix = isBook ? `${fileKey}-` : '';
-            let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${rowIndex + 1}`);
+            let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${index + 1}`);
 
             globalQuestionBank[fileKey][qId] = {
                 Subject: isBook ? (titles[fileKey] || q.Subject) : (q.Subject || 'Unknown Subject'),

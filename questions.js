@@ -609,10 +609,16 @@ document.getElementById('start-exam-btn').addEventListener('click', () => {
         return;
     }
 
-    if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
-        pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+if (currentMode === 'exam') {
+        if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
+            pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+        } else {
+            pool = pool.sort(() => 0.5 - Math.random());
+        }
     } else {
-        pool = pool.sort(() => 0.5 - Math.random());
+        if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
+            pool = pool.slice(0, qCountInput);
+        }
     }
     
     const generatedTitle = generateExamTitle(paths, currentView);
@@ -627,7 +633,7 @@ window.startInstantPractice = function(encodedPath) {
     
     if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
     
-    finalPool = finalPool.sort(() => 0.5 - Math.random());
+    
     const generatedTitle = generateExamTitle([pathArr], currentView);
     window.launchQuiz(finalPool, 'practice', 0, generatedTitle);
 };
@@ -677,10 +683,15 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     }
 
 // Prevent QuotaExceededError (5MB LocalStorage Limit)
-    let safeStorageArray = questionsArray;
+let safeStorageArray = questionsArray;
     if (safeStorageArray.length > 200) {
-        alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
-        safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
+        if (mode === 'exam') {
+            alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
+            safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
+        } else {
+            alert("Your selection is massive. To prevent browser memory crashes, we have selected the first 200 questions from this pool for your current session.");
+            safeStorageArray = safeStorageArray.slice(0, 200);
+        }
     }
 
     try {
@@ -1804,7 +1815,8 @@ if (btnAnalytics) {
         const body = document.getElementById('analytics-body');
 
         let stats = {};
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+const allMistakesSet = new Set([...globalPracticeMistakes, ...globalExamMistakes]);
+        const attemptedSet = new Set(attemptedQuestions);
 
         allQuestions.forEach(q => {
             const topicName = q.Topic || q.Chapter || q.Subject || "Core Material";
@@ -1817,8 +1829,8 @@ if (btnAnalytics) {
             stats[topicName].total++;
             stats[topicName].questions.push(q);
 
-            const isAttempted = attemptedQuestions.includes(qId) || allMistakes.includes(qId);
-            const isMistake = allMistakes.includes(qId);
+            const isAttempted = attemptedSet.has(qId) || allMistakesSet.has(qId);
+            const isMistake = allMistakesSet.has(qId);
 
             if (isAttempted) {
                 stats[topicName].attempted++;
@@ -1929,12 +1941,21 @@ if (btnAnalytics) {
                                 <th style="padding: 8px 0;">Date</th>
                                 <th style="padding: 8px 0;">Exam Name</th>
                                 <th style="padding: 8px 0;">Score</th>
+                                <th style="padding: 8px 0;">Avg Time/Q</th>
                             </tr>`;
             userExamHistory.slice().reverse().slice(0, 10).forEach(ex => {
+                const totalSecs = ex.timeSpent || 0;
+                const totalQs = ex.totalQuestions || 1;
+                const avgSecs = Math.round(totalSecs / totalQs);
+                const avgMins = Math.floor(avgSecs / 60);
+                const remainSecs = (avgSecs % 60).toString().padStart(2, '0');
+                const timeString = totalSecs > 0 ? `${avgMins}m ${remainSecs}s` : "N/A";
+                
                 html += `<tr style="border-bottom:1px solid #f1f5f9;">
                             <td style="padding:10px 0; color: #475569;">${new Date(ex.date).toLocaleDateString()}</td>
                             <td style="color: #1e293b; font-weight: 500;">${ex.examName}</td>
                             <td style="color:${ex.percentage >= 75 ? '#10b981' : '#ef4444'}; font-weight:bold;">${ex.percentage}%</td>
+                            <td style="color: #475569; font-weight: 500;">${timeString}</td>
                          </tr>`;
             });
             html += `</table></div>`;

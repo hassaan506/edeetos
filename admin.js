@@ -308,7 +308,7 @@ if (btnBanUser) {
         if (confirm(`🚨 Are you absolutely sure you want to BAN ${editingUser.fullName || 'this user'}?\n\nThis will revoke all their premium access and mark their account as banned.`)) {
             btnBanUser.textContent = "Banning..."; btnBanUser.disabled = true;
             try {
-                await updateDoc(doc(db, "users", editingUser.uid), { role: 'BANNED', isBanned: true, subscriptions: {}, isPremium: false });
+                await updateDoc(doc(db, "users", editingUser.uid), { role: 'BANNED', isBanned: true });
                 alert("User has been successfully banned and all access revoked.");
                 if (editModal) editModal.style.display = 'none';
                 fetchAllUsers();

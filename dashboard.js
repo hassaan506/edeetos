@@ -289,15 +289,6 @@ onAuthStateChanged(auth, async (user) => {
                                     launchBtn.style.opacity = "0.8";
                                     launchBtn.style.pointerEvents = "none";
 
-                                    try {
-                                        const examRefToUpdate = doc(db, "assigned_exams", exam.id);
-                                        await updateDoc(examRefToUpdate, {
-                                            isCompletedBy: arrayUnion(currentUserId)
-                                        });
-                                    } catch (err) {
-                                        console.error("Failed to register exam attempt:", err);
-                                    }
-
                                     setTimeout(() => {
                                         localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
                                         localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
