@@ -1094,7 +1094,13 @@ quizQueue.forEach(q => {
         titleEl.style.color = "#991b1b";
     }
 
-const ghostBtn = document.getElementById('btn-challenge-ghost');
+    const ghostBtn = document.getElementById('btn-challenge-ghost');
+    const shareModal = document.getElementById('share-challenge-modal');
+    const shareMsgEl = document.getElementById('share-message-text');
+    const copyShareBtn = document.getElementById('btn-copy-share');
+    const whatsappShareBtn = document.getElementById('btn-whatsapp-share');
+    const closeShareBtn = document.getElementById('close-share-modal');
+
     if (isExamMode && ghostBtn) {
         ghostBtn.style.display = 'inline-block';
         
@@ -1107,10 +1113,11 @@ const ghostBtn = document.getElementById('btn-challenge-ghost');
             const code = Math.random().toString(36).substring(2, 7).toUpperCase();
             
             try {
-                const cleanQueue = JSON.parse(JSON.stringify(quizQueue));
+                // Aggressively strip undefined values so Firestore doesn't throw a permission/validation error
+                const cleanQueue = JSON.parse(JSON.stringify(quizQueue, (k, v) => v === undefined ? null : v));
                 
                 await setDoc(doc(db, "ghost_challenges", code), {
-                    hostName: currentUserData?.fullName || "A Friend",
+                    hostName: (currentUserData && currentUserData.fullName) ? currentUserData.fullName : "A Friend",
                     score: correctCount,
                     total: total,
                     timeTaken: timeTaken,
@@ -1119,25 +1126,62 @@ const ghostBtn = document.getElementById('btn-challenge-ghost');
                     timestamp: serverTimestamp()
                 });
                 
-                // Format the exact message text you want to send
-                const challengeText = `I just scored ${correctCount}/${total} on my exam! 👻 Can you beat my score?\n\nEnter my Challenge Code: ${code}`;
+                // Format the share message
+                const challengeText = `I just scored ${correctCount}/${total} on my exam! 👻 I challenge you to beat my pace and score.\n\nEnter my Challenge Code: *${code}*`;
                 
-                if (navigator.clipboard && window.isSecureContext) {
-                    navigator.clipboard.writeText(challengeText).then(() => {
-                        ghostBtn.innerHTML = `Code: <strong>${code}</strong> (Message Copied!)`;
-                    }).catch(err => {
-                        console.warn("Clipboard access denied.", err);
-                        prompt("Copy this challenge message:", challengeText);
-                        ghostBtn.innerHTML = `Code: <strong>${code}</strong>`;
-                    });
-                } else {
-                    // Fallback for non-secure HTTP environments or strict browsers
-                    prompt("Copy this challenge message:", challengeText);
-                    ghostBtn.innerHTML = `Code: <strong>${code}</strong>`;
+                // Set modal values
+                if (shareMsgEl) shareMsgEl.innerText = challengeText;
+                
+                if (whatsappShareBtn) {
+                    whatsappShareBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(challengeText)}`;
                 }
+
+                if (copyShareBtn) {
+                    copyShareBtn.onclick = () => {
+                        if (navigator.clipboard && window.isSecureContext) {
+                            navigator.clipboard.writeText(challengeText).then(() => {
+                                copyShareBtn.innerHTML = `<i class="fas fa-check"></i> Copied!`;
+                                setTimeout(() => copyShareBtn.innerHTML = `<i class="fas fa-copy"></i> Copy Message`, 2000);
+                            });
+                        } else {
+                            // Old browser/HTTP fallback
+                            const textArea = document.createElement("textarea");
+                            textArea.value = challengeText;
+                            document.body.appendChild(textArea);
+                            textArea.select();
+                            try {
+                                document.execCommand('copy');
+                                copyShareBtn.innerHTML = `<i class="fas fa-check"></i> Copied!`;
+                                setTimeout(() => copyShareBtn.innerHTML = `<i class="fas fa-copy"></i> Copy Message`, 2000);
+                            } catch (err) {
+                                prompt("Copy this challenge message:", challengeText);
+                            }
+                            document.body.removeChild(textArea);
+                        }
+                    };
+                }
+
+                if (closeShareBtn) {
+                    closeShareBtn.onclick = () => {
+                        shareModal.classList.remove('show');
+                        setTimeout(() => shareModal.classList.add('hidden'), 300);
+                    };
+                }
+                
+                ghostBtn.innerHTML = `👻 Challenge Code: <strong>${code}</strong>`;
+                ghostBtn.disabled = false; // Allow re-opening the modal
+                
+                // Show the share modal
+                if (shareModal) {
+                    shareModal.classList.remove('hidden');
+                    shareModal.classList.add('show');
+                }
+                
             } catch (err) {
                 console.error("Ghost Link Error:", err);
                 ghostBtn.textContent = "Error Generating Link";
+                ghostBtn.disabled = false;
+                alert("Failed to save challenge. Ensure you are connected to the internet and Firestore security rules allow writes.");
             }
         };
     }
@@ -1268,7 +1312,7 @@ function startTimer() {
         const pauseBtn = document.createElement('button');
         pauseBtn.id = 'pause-btn';
         pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-        pauseBtn.style.cssText = "background: #1e293b; border: 1px solid #475569; color: white; padding: 4px 10px; border-radius: 6px; cursor: pointer; margin-left: 15px; font-size: 0.8rem; font-weight: bold;";
+        pauseBtn.style.cssText = "background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #065f46; padding: 4px 10px; border-radius: 6px; cursor: pointer; margin-left: 15px; font-size: 0.8rem; font-weight: bold; transition: all 0.2s;";
         timerDisplay.parentElement.appendChild(pauseBtn);
         
         pauseBtn.onclick = () => {

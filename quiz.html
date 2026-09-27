@@ -25,20 +25,20 @@
             <div class="top-stats" style="display: flex; align-items: center; gap: 10px;">
                 
                 <!-- NEW: Lab Values Button -->
-                <button id="lab-values-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-flask"></i> Labs</button>
+                <button id="lab-values-btn" class="icon-btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-flask"></i> Labs</button>
                 
-                <button id="shortcuts-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-keyboard"></i> Keys</button>
+                <button id="shortcuts-btn" class="icon-btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-keyboard"></i> Keys</button>
                 
 <!-- NEW: Dual Timer Display -->
-                <div style="display: flex; align-items: center; background: rgba(0,0,0,0.2); padding: 0.2rem 0.8rem; border-radius: 8px; gap: 15px;">
+                <div style="display: flex; align-items: center; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.2rem 0.8rem; border-radius: 8px; gap: 15px;">
                     <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
-                        <span style="font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Current Q</span>
-                        <span id="question-timer-display" style="color: #cbd5e1; font-size: 0.9rem; font-weight: bold;">00:00</span>
+                        <span style="font-size: 0.65rem; color: #065f46; text-transform: uppercase; font-weight: bold;">Current Q</span>
+                        <span id="question-timer-display" style="color: #047857; font-size: 0.9rem; font-weight: bold;">00:00</span>
                     </div>
-                    <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+                    <div style="width: 1px; height: 20px; background: rgba(16, 185, 129, 0.3);"></div>
                     <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
-                        <span style="font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Total Time</span>
-                        <span id="timer-display" style="color: white; font-size: 1rem; font-weight: bold;">00:00</span>
+                        <span style="font-size: 0.65rem; color: #065f46; text-transform: uppercase; font-weight: bold;">Total Time</span>
+                        <span id="timer-display" style="color: #064e3b; font-size: 1rem; font-weight: bold;">00:00</span>
                     </div>
                 </div>
             </div>
@@ -285,6 +285,24 @@
             <div style="display: flex; justify-content: flex-end; gap: 10px;">
                 <button id="close-report-btn" class="btn-outline" style="border-color: #94a3b8; color: #64748b;">Cancel</button>
                 <button id="submit-report-btn" class="btn-solid" style="background: #ef4444; border: none;">Submit Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Share Challenge Modal -->
+    <div id="share-challenge-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="max-width: 450px; width: 90%; text-align: center;">
+            <h3 style="color: #a855f7; margin-bottom: 1rem;"><i class="fas fa-share-alt"></i> Challenge a Friend</h3>
+            <p style="color: #475569; font-size: 0.95rem; margin-bottom: 1.5rem;">Your challenge code is ready! Share it with your friends to see if they can beat your score.</p>
+            
+            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; padding: 15px; border-radius: 12px; margin-bottom: 1.5rem; text-align: left;">
+                <p id="share-message-text" style="color: #1e293b; font-size: 1rem; line-height: 1.5; margin: 0; user-select: all;"></p>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="btn-copy-share" class="btn-solid" style="background: #3b82f6; border: none; padding: 0.8rem; border-radius: 8px; font-weight: bold; width: 100%; cursor: pointer; transition: 0.3s;"><i class="fas fa-copy"></i> Copy Message</button>
+                <a id="btn-whatsapp-share" target="_blank" class="btn-solid" style="background: #25D366; color: white; text-decoration: none; border: none; padding: 0.8rem; border-radius: 8px; font-weight: bold; display: block; width: 100%; transition: 0.3s;"><i class="fab fa-whatsapp"></i> Share via WhatsApp</a>
+                <button id="close-share-modal" class="btn-outline" style="padding: 0.8rem; border-radius: 8px; width: 100%; margin-top: 5px;">Close</button>
             </div>
         </div>
     </div>
