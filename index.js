@@ -36,3 +36,38 @@ if (contactForm) {
         }
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeBtn = document.getElementById('dark-mode-toggle');
+    if (!darkModeBtn) return;
+
+    const icon = darkModeBtn.querySelector('i');
+    
+    // Check saved preference on load
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (icon) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+
+    // Toggle logic
+    darkModeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        if (isDark) {
+            if (icon) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+            localStorage.setItem('theme', 'dark');
+        } else {
+            if (icon) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});

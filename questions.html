@@ -17,9 +17,7 @@
             <h2 style="color: #059669; font-size: 1.5rem; margin: 0;">Menu</h2>
             <button id="close-sidebar" class="icon-btn" style="color: #64748b; background: transparent; font-size: 1.2rem;">✖</button>
         </div>
-                    <button id="dark-mode-toggle" class="icon-btn" style="background: transparent; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; padding: 0.5rem 0.8rem; font-size: 1.2rem; transition: 0.3s; color: #475569;">
-			<i class="fas fa-moon"></i>
-			</button>
+
         <ul class="sidebar-links">
             <li class="sidebar-category">Study Modes</li>
             <li><a href="#" id="nav-system"><span class="icon">🧠</span> System Wise</a></li>
@@ -29,23 +27,27 @@
             
             <li class="sidebar-category" style="margin-top: 2rem;">Settings</li>
             <li><a href="#" id="btn-reset-progress" style="color: #ef4444;"><span class="icon">🗑️</span> Reset Progress</a></li>
-
             <li class="sidebar-category" style="margin-top: 1rem;">Quick Links</li>
             <li><a href="dashboard.html"><span class="icon">🏠</span> Back to Dashboard</a></li>
         </ul>
     </div>
 	
-    <nav class="navbar">
-		<div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 1rem;">
-			<div style="display: flex; align-items: center; gap: 0.5rem;">
-				<button id="open-sidebar" class="icon-btn" style="background: transparent; color: #064e3b; font-size: 1.5rem;">☰</button>
-				<a href="dashboard.html" class="nav-logo">
-					<img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;">
-				</a>
-			</div>
-			<h3 id="current-view-title" style="color: #059669; font-size: 1rem; font-weight: 800; white-space: nowrap;">Subject Wise</h3>
-		</div>
-	</nav>
+<nav class="navbar">
+    <div class="nav-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <button id="open-sidebar" class="icon-btn" style="background: transparent; color: #064e3b; font-size: 1.5rem;">☰</button>
+            <a href="dashboard.html" class="nav-logo">
+                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;">
+            </a>
+        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <h3 id="current-view-title" style="color: #059669; font-size: 1rem; font-weight: 800; white-space: nowrap; margin: 0;">Subject Wise</h3>
+            <button id="dark-mode-toggle" class="icon-btn" style="display: flex; justify-content: center; align-items: center; width: 35px; height: 35px; background: transparent; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 1.1rem; transition: 0.3s; color: #475569; padding: 0;">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
 	
     <section class="section-container" id="selection-screen">
 
