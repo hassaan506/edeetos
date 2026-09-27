@@ -337,7 +337,41 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 // === FEATURE: NAVIGATION BUTTONS & COURSE LAUNCH ===
-document.getElementById('logout-btn').addEventListener('click', () => {
+const btnOpenNotes = document.getElementById('btn-open-notes');
+if (btnOpenNotes) {
+    btnOpenNotes.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Notes.");
+        if (!currentUserData) return alert("User data loading, please wait...");
+        
+        const modal = document.getElementById('notes-vault-modal');
+        const listEl = document.getElementById('notes-vault-list');
+        modal.style.display = 'flex';
+        
+        const activeCourse = currentUserData.selectedCourse;
+        const notesObj = (activeCourse && currentUserData[activeCourse] && currentUserData[activeCourse].notes) ? currentUserData[activeCourse].notes : {};
+        
+        listEl.innerHTML = '';
+        const noteKeys = Object.keys(notesObj);
+        
+        if (noteKeys.length === 0) {
+            listEl.innerHTML = '<div style="color: #64748b; text-align: center; padding: 2rem;">You haven\'t saved any notes yet.</div>';
+            return;
+        }
+        
+        noteKeys.forEach(qId => {
+            if (!notesObj[qId].trim()) return;
+            const noteCard = document.createElement('div');
+            noteCard.style.cssText = "background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;";
+            noteCard.innerHTML = `
+                <div style="font-size: 0.75rem; font-weight: 800; color: #3b82f6; margin-bottom: 0.5rem; text-transform: uppercase;">Question ID: ${qId}</div>
+                <div style="color: #334155; font-size: 0.95rem; line-height: 1.5; white-space: pre-wrap;">${notesObj[qId]}</div>
+            `;
+            listEl.appendChild(noteCard);
+        });
+    });
+}
+
+	document.getElementById('logout-btn').addEventListener('click', () => {
     localStorage.removeItem('edeetos_guest_mode');
     sessionStorage.removeItem('edeetos_dash_cache');
     signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => {

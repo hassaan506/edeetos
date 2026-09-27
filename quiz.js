@@ -62,30 +62,35 @@ if (isExamMode) {
     sessionSeconds = quizConfig.timer * 60; 
 }
 
-function loadSession() {
-    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
-        return; 
-    }
+async function loadSession() {
+    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') return;
+    if (quizQueue && quizQueue.length > 0) return; // Skip if a backup was already restored
 
-    const storedData = localStorage.getItem('edeetos_active_quiz');
-    if (!storedData) {
-        window.location.href = 'questions.html';
-        return;
-    }
-    quizQueue = JSON.parse(storedData);
-    if (quizQueue.length === 0) {
-        window.location.href = 'questions.html';
-        return;
-    }
+    return new Promise((resolve) => {
+        const request = indexedDB.open("EdeetosDB", 1);
+        
+        request.onupgradeneeded = (e) => { e.target.result.createObjectStore("quiz_sessions"); };
 
-    quizQueue.forEach((q, i) => {     
-        if (!q.originalNumber) {
-            const idFromCSV = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'];
-            q.originalNumber = idFromCSV || `q-${i + 1}`; 
-        }
-        q.sessionState = null; 
-        q.historicalState = null; 
-        q.sequenceNumber = i + 1; 
+        request.onsuccess = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains("quiz_sessions")) return window.location.href = 'questions.html';
+            
+            const tx = db.transaction("quiz_sessions", "readonly");
+            const req = tx.objectStore("quiz_sessions").get("active_quiz_queue");
+            
+            req.onsuccess = () => {
+                if (!req.result || req.result.length === 0) return window.location.href = 'questions.html';
+                quizQueue = req.result;
+                quizQueue.forEach((q, i) => {     
+                    q.originalNumber = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'] || `q-${i + 1}`; 
+                    q.sessionState = null; 
+                    q.historicalState = null; 
+                    q.sequenceNumber = i + 1; 
+                });
+                resolve();
+            };
+        };
+        request.onerror = () => window.location.href = 'questions.html';
     });
 }
 
@@ -93,6 +98,8 @@ function loadSession() {
 // 3. INITIALIZATION & FIREBASE AUTH
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
+    await loadSession(); // FORCE THE QUEUE TO LOAD BEFORE FIREBASE CHECKS IT
+    
     if (user) {
         currentUserId = user.uid; 
         const userRef = doc(db, "users", user.uid);
@@ -113,6 +120,10 @@ onAuthStateChanged(auth, async (user) => {
                 }
 
                 if (dbData.isBanned || dbData.role === 'BANNED') {
+                    indexedDB.deleteDatabase("EdeetosDB");
+                    localStorage.removeItem('edeetos_active_quiz');
+                    localStorage.removeItem('edeetos_quiz_config');
+                    
                     const lockoutScreen = document.createElement('div');
                     lockoutScreen.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
                     lockoutScreen.innerHTML = `
@@ -1040,6 +1051,7 @@ let isIntentionalExit = false;
 function exitSafely(url) {
     isIntentionalExit = true;
     localStorage.removeItem('edeetos_aborted_session_backup');
+    localStorage.removeItem('edeetos_ghost_data');
     window.location.href = url;
 }
 
@@ -1081,30 +1093,90 @@ quizQueue.forEach(q => {
         titleEl.innerHTML = `<i class="fas fa-times-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #ef4444;"></i> ❌ Failed`;
         titleEl.style.color = "#991b1b";
     }
+const ghostBtn = document.getElementById('btn-challenge-ghost');
+    if (isExamMode && ghostBtn) {
+        ghostBtn.style.display = 'inline-block';
+        ghostBtn.onclick = async (e) => {
+            e.preventDefault();
+            ghostBtn.textContent = "Generating Code...";
+            ghostBtn.disabled = true;
+            
+            const timeTaken = (quizConfig.timer * 60) - sessionSeconds;
+            const code = Math.random().toString(36).substring(2, 7).toUpperCase();
+            
+            try {
+                await setDoc(doc(db, "ghost_challenges", code), {
+                    hostName: currentUserData.fullName || "A Friend",
+                    score: correctCount,
+                    total: total,
+                    timeTaken: timeTaken,
+                    calcMinutes: quizConfig.timer,
+                    queue: quizQueue,
+                    timestamp: serverTimestamp()
+                });
+                ghostBtn.innerHTML = `Code: <strong>${code}</strong> (Copied!)`;
+                navigator.clipboard.writeText(code);
+            } catch (err) {
+                console.error(err);
+                ghostBtn.textContent = "Error Generating Link";
+            }
+        };
+    }
+const returnBtn = document.getElementById('btn-return-home');
+    const reviewBtn = document.getElementById('btn-review-exam-mistakes');
+    
+    // Core function to push the score to Firebase
+    const saveExamData = async () => {
+        const timeTaken = (quizConfig.timer * 60) - sessionSeconds; 
+        const tasks = [];
+        if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
+        tasks.push(updateSpacedRepetition());
 
-const returnBtn = resultsEl.querySelector('button');
+        const assignedExamId = localStorage.getItem('edeetos_assigned_exam_id');
+        if (assignedExamId && currentUserId) {
+            tasks.push(updateDoc(doc(db, "assigned_exams", assignedExamId), {
+                isCompletedBy: arrayUnion(currentUserId)
+            }));
+        }
+        await Promise.all(tasks);
+        localStorage.removeItem('edeetos_assigned_exam_id');
+    };
+
+    if (mistakeIds.length > 0 && reviewBtn) {
+        reviewBtn.style.display = 'inline-block';
+        reviewBtn.onclick = async (e) => {
+            e.preventDefault();
+            reviewBtn.textContent = "Loading Review...";
+            reviewBtn.disabled = true;
+            if (returnBtn) returnBtn.disabled = true;
+            
+            await saveExamData();
+            
+            // Set up a new practice session with only the mistakes using IndexedDB
+            const mistakeQuestions = quizQueue.filter(q => mistakeIds.includes(q.originalNumber));
+            const request = indexedDB.open("EdeetosDB", 1);
+            
+            request.onsuccess = (e) => {
+                const idb = e.target.result;
+                const tx = idb.transaction("quiz_sessions", "readwrite");
+                tx.objectStore("quiz_sessions").put(mistakeQuestions, "active_quiz_queue");
+                
+                tx.oncomplete = () => {
+                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'practice', timer: 0, examName: 'Exam Review' }));
+                    window.location.reload(); 
+                };
+            };
+        };
+    }
+
     if (returnBtn) {
         returnBtn.onclick = async (e) => {
             e.preventDefault();
             returnBtn.textContent = "Saving Exam Data...";
             returnBtn.disabled = true;
+            if (reviewBtn) reviewBtn.disabled = true;
 
-            const tasks = [];
-            // Calculate time taken (Total allotted time minus the remaining countdown seconds)
-            const timeTaken = (quizConfig.timer * 60) - sessionSeconds; 
-            
-if (isExamMode) tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
-            tasks.push(updateSpacedRepetition());
-
-            const assignedExamId = localStorage.getItem('edeetos_assigned_exam_id');
-            if (assignedExamId && currentUserId) {
-                tasks.push(updateDoc(doc(db, "assigned_exams", assignedExamId), {
-                    isCompletedBy: arrayUnion(currentUserId)
-                }));
-            }
-
-            await Promise.all(tasks);
-            localStorage.removeItem('edeetos_assigned_exam_id');
+            await saveExamData();
             exitSafely('questions.html');
         };
     }
@@ -1200,10 +1272,35 @@ function startTimer() {
             sessionSeconds++; 
         }
 
-        const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
+const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
         const sSecs = (sessionSeconds % 60).toString().padStart(2, '0');
-        if (timerDisplay) timerDisplay.textContent = `${sMins}:${sSecs}`;
-
+        if (timerDisplay) {
+            timerDisplay.textContent = `${sMins}:${sSecs}`;
+            
+            if (isExamMode && sessionSeconds <= 300 && sessionSeconds > 0) {
+                if (!document.getElementById('timer-stress-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'timer-stress-style';
+                    style.innerHTML = `@keyframes pulseRed { 0% { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.4); transform: scale(1); } 50% { color: #f87171; text-shadow: 0 0 20px rgba(239, 68, 68, 0.8); transform: scale(1.1); } 100% { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.4); transform: scale(1); } } .stress-active { animation: pulseRed 1s infinite; color: #ef4444 !important; }`;
+                    document.head.appendChild(style);
+                }
+                timerDisplay.classList.add('stress-active');
+            } else {
+                timerDisplay.classList.remove('stress-active');
+            }
+        }
+const ghostDataStr = localStorage.getItem('edeetos_ghost_data');
+        if (ghostDataStr && isExamMode) {
+            const gData = JSON.parse(ghostDataStr);
+            document.getElementById('ghost-tracker-wrapper').style.display = 'block';
+            document.getElementById('ghost-name-display').textContent = `👻 ${gData.hostName}'s Pace`;
+            document.getElementById('ghost-target-display').textContent = `Target: ${gData.score}/${gData.total}`;
+            
+            const timePassed = (quizConfig.timer * 60) - sessionSeconds;
+            const progress = Math.min((timePassed / gData.timeTaken) * 100, 100);
+            document.getElementById('ghost-bar-fill').style.width = `${progress}%`;
+        }
+		
         if (currentQuestionData) {
             if (!currentQuestionData.timeSpent) currentQuestionData.timeSpent = 0;
             currentQuestionData.timeSpent++;
@@ -1640,7 +1737,4 @@ window.addEventListener('unload', () => {
     }
 });
 
-// Boot up the session, checking for backups first
-if (!checkAndRestoreAbortedSession()) {
-    loadSession();
-}
+checkAndRestoreAbortedSession();

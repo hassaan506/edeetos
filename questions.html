@@ -94,10 +94,30 @@
 			<input type="text" id="global-search" placeholder="Search subject, topic, or question text...">
 			<div id="search-dropdown" class="search-dropdown" style="display: none;"></div>
 		   </div>
-            <label class="filter-wrapper">
-                <input type="checkbox" id="unattempted-filter">
-                <span>Unattempted Only</span>
-            </label>
+<div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <label class="filter-wrapper">
+                    <input type="checkbox" id="unattempted-filter">
+                    <span>Unattempted Only</span>
+                </label>
+<button id="btn-quick-mock" class="btn-solid" style="background: #8b5cf6; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);">
+                    ⚡ Quick Mock Exam
+                </button>
+                <button id="btn-join-ghost" class="btn-outline" style="border-color: #a855f7; color: #9333ea; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    🏁 Join Ghost Race
+                </button>
+            </div>
+        </div>
+
+        <div id="mock-exam-modal" class="popup-overlay" style="display: none; z-index: 9000;">
+            <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: center;">
+                <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem;">⚡ Quick Mock Exam</h3>
+                <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">Enter the number of questions. The timer will automatically be set to 1.2 minutes per question.</p>
+                <input type="number" id="mock-q-count" value="100" min="5" max="300" style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1.2rem; text-align: center; font-weight: bold; margin-bottom: 1.5rem; outline: none;">
+                <div style="display: flex; gap: 10px;">
+                    <button id="btn-cancel-mock" class="btn-outline" style="flex: 1;">Cancel</button>
+                    <button id="btn-start-mock" class="btn-solid" style="flex: 1; background: #8b5cf6; border: none;">Start Exam</button>
+                </div>
+            </div>
         </div>
 
         <div id="subjects-grid"></div>

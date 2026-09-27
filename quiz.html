@@ -29,7 +29,7 @@
                 
                 <button id="shortcuts-btn" class="icon-btn" style="color: white; background: rgba(255,255,255,0.2); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-keyboard"></i> Keys</button>
                 
-                <!-- NEW: Dual Timer Display -->
+<!-- NEW: Dual Timer Display -->
                 <div style="display: flex; align-items: center; background: rgba(0,0,0,0.2); padding: 0.2rem 0.8rem; border-radius: 8px; gap: 15px;">
                     <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
                         <span style="font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Current Q</span>
@@ -41,7 +41,17 @@
                         <span id="timer-display" style="color: white; font-size: 1rem; font-weight: bold;">00:00</span>
                     </div>
                 </div>
-
+            </div>
+            
+            <!-- GHOST TRACKER -->
+            <div id="ghost-tracker-wrapper" style="display: none; width: 100%; margin-top: 15px; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #e9d5ff; font-weight: bold; margin-bottom: 6px;">
+                    <span id="ghost-name-display">Ghost 👻</span>
+                    <span id="ghost-target-display">Target: 0%</span>
+                </div>
+                <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.4); border-radius: 4px; overflow: hidden;">
+                    <div id="ghost-bar-fill" style="height: 100%; background: #a855f7; width: 0%; box-shadow: 0 0 10px rgba(168,85,247,0.8); transition: width 1s linear;"></div>
+                </div>
             </div>
         </div>
 
@@ -85,10 +95,14 @@
                 </div>
             </div>
 
-            <div id="exam-result-screen" class="hidden" style="text-align: center; padding: 2rem 0;">
+<div id="exam-result-screen" class="hidden" style="text-align: center; padding: 2rem 0;">
                 <h2 id="result-title" style="font-size: 2.5rem; margin-bottom: 1rem;"></h2>
                 <p id="result-score" style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 2.5rem;"></p>
-                <button class="btn-solid" onclick="window.location.href='questions.html'" style="padding: 1rem 2.5rem; font-size: 1.2rem; border-radius: 12px; background: #10b981; color: white; border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(16,185,129,0.3);">Return to Dashboard</button>
+<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button id="btn-challenge-ghost" class="btn-solid" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius: 12px; background: #a855f7; color: white; border: none; display: none; cursor: pointer; font-weight: bold; box-shadow: 0 10px 20px rgba(168,85,247,0.3);">👻 Challenge a Friend</button>
+                    <button id="btn-review-exam-mistakes" class="btn-outline" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius: 12px; border-color: #f59e0b; color: #d97706; display: none; cursor: pointer; font-weight: bold;">Review Mistakes</button>
+                    <button id="btn-return-home" class="btn-solid" style="padding: 1rem 2.5rem; font-size: 1.2rem; border-radius: 12px; background: #10b981; color: white; border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(16,185,129,0.3);">Save & Return</button>
+                </div>
             </div>
 
         </div>

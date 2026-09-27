@@ -27,6 +27,9 @@
                     📊 Reports
                 </button>
 
+				<button id="btn-open-notes" class="btn-solid" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; background: #10b981; color: white; cursor: pointer;">
+                    📝 Notes
+                </button>
                 <button id="btn-open-profile" class="btn-solid btn-nav-profile" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; border: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; background: #3b82f6; color: white;">
                     👤 Profile
                 </button>
@@ -328,6 +331,19 @@
         </div>
     </div>
     
+    <!-- === FEATURE: NOTES VAULT MODAL === -->
+    <div id="notes-vault-modal" class="popup-overlay" style="display: none; z-index: 2000;">
+        <div class="glass-panel popup-content" style="max-width: 600px; width: 90%; max-height: 85vh; display: flex; flex-direction: column; padding: 2rem; text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem;">
+                <h3 style="color: #1e3a8a; margin: 0; font-size: 1.4rem;">📝 My Notes Vault</h3>
+                <button class="btn-close-modal" style="background: none; border: none; font-size: 1.5rem; color: #64748b; cursor: pointer;">&times;</button>
+            </div>
+            <div id="notes-vault-list" style="overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 1rem; padding-right: 5px;">
+                <div style="color: #64748b; text-align: center; padding: 2rem;">Loading notes...</div>
+            </div>
+        </div>
+    </div>
+
     <!-- === FEATURE: FOOTER === -->
     <footer class="site-footer">
         <div class="footer-container">

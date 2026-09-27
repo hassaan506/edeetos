@@ -192,6 +192,20 @@ globalSearch.addEventListener('input', (e) => {
         if (matchedQuestions.length === 0) {
             searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
         } else {
+            const quizAllBtn = document.createElement('div');
+            quizAllBtn.className = 'search-item';
+            quizAllBtn.style.cssText = 'background: #3b82f6; color: white; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid #2563eb; border-radius: 12px 12px 0 0; cursor: pointer;';
+            const limitCount = Math.min(matchedQuestions.length, 50);
+            quizAllBtn.innerHTML = `<i class="fas fa-play-circle" style="margin-right: 8px;"></i> Create Quiz from Search (${limitCount} Qs)`;
+            
+            quizAllBtn.onclick = () => {
+                searchDropdown.style.display = 'none';
+                globalSearch.value = '';
+                const pool = matchedQuestions.slice(0, 50);
+                window.launchQuiz(pool, 'practice', 0, `Search: ${query}`);
+            };
+            searchDropdown.appendChild(quizAllBtn);
+
             matchedQuestions.slice(0, 30).forEach(q => {
                 const div = document.createElement('div');
                 div.className = 'search-item';
@@ -313,8 +327,7 @@ async function loadAndOpenBook(book) {
         document.body.style.cursor = 'wait';
         
         if (!loadedBooksCache[book.file]) {
-            // Updated code for questions.js
-			const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
             if (!response.ok) throw new Error("JSON file not found");
             
             let bookQuestions = await response.json();
@@ -422,40 +435,32 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         selectAllDiv.querySelector('.select-all-btn').textContent = allAreChecked ? 'Select All' : 'Deselect All';
     };
 
-if (Array.isArray(dataObj)) {
-        // Sort topics alphabetically for a cleaner UI
+    if (Array.isArray(dataObj)) {
         let sortedTopics = [...dataObj].sort((a, b) => a.localeCompare(b));
         sortedTopics.forEach(topic => renderListItem(topic, null, 'Topic', [...pathArr, topic]));
     } else {
         let keys = Object.keys(dataObj);
         
-        // Custom chronological sort strictly for the Past Papers (Exams) view
         if (currentView === 'exam' && level === 'Level1') {
             keys.sort((a, b) => {
                 const getMonth = (str) => {
-                    // Extract the month number from the MM/YY format (e.g., captures "01" from "01/26")
                     const match = str.match(/\b(\d{2})\/\d{2}\b/);
                     if (match) return parseInt(match[1], 10);
-                    
-                    // Fallback: Check for month names if the MM/YY format is missing
                     const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
                     const lowerStr = str.toLowerCase();
                     for (let i = 0; i < months.length; i++) {
                         if (lowerStr.includes(months[i])) return i + 1;
                     }
-                    return 99; // Fallback for unknown formats
+                    return 99; 
                 };
                 
                 const monthA = getMonth(a);
                 const monthB = getMonth(b);
                 
-                // Sort by month first
                 if (monthA !== monthB) return monthA - monthB;
-                // If the month is identical, sort alphabetically by Subject name
                 return a.localeCompare(b);
             });
         } else {
-            // Apply a default alphabetical sort for Subjects, Chapters, and Systems
             keys.sort((a, b) => a.localeCompare(b));
         }
 
@@ -594,6 +599,93 @@ if (examTimerInput) {
         if (e.key === 'Enter') startExamBtn.click();
     });
 }
+const btnQuickMock = document.getElementById('btn-quick-mock');
+const mockModal = document.getElementById('mock-exam-modal');
+const mockQCount = document.getElementById('mock-q-count');
+const btnJoinGhost = document.getElementById('btn-join-ghost');
+
+if (btnJoinGhost) {
+    btnJoinGhost.addEventListener('click', async () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to race ghosts.");
+        const code = prompt("Enter the 5-character Ghost Code from your friend:");
+        if (!code) return;
+        
+        btnJoinGhost.textContent = "Loading...";
+        try {
+            const ghostSnap = await getDoc(doc(db, "ghost_challenges", code.trim().toUpperCase()));
+            if (!ghostSnap.exists()) {
+                btnJoinGhost.innerHTML = '🏁 Join Ghost Race';
+                return alert("Invalid or expired Ghost Code.");
+            }
+            const ghostData = ghostSnap.data();
+            localStorage.setItem('edeetos_ghost_data', JSON.stringify(ghostData));
+            
+            document.body.style.cursor = 'wait';
+            const request = indexedDB.open("EdeetosDB", 1);
+            
+            request.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains("quiz_sessions")) db.createObjectStore("quiz_sessions");
+            };
+            
+            request.onsuccess = (e) => {
+                const idb = e.target.result;
+                const tx = idb.transaction("quiz_sessions", "readwrite");
+                tx.objectStore("quiz_sessions").put(ghostData.queue, "active_quiz_queue");
+                tx.oncomplete = () => {
+                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: ghostData.calcMinutes, examName: 'Ghost Race vs ' + ghostData.hostName }));
+                    window.location.href = 'quiz.html';
+                };
+            };
+        } catch (err) {
+            console.error(err);
+            alert("Failed to load ghost challenge.");
+            btnJoinGhost.innerHTML = '🏁 Join Ghost Race';
+        }
+    });
+}
+
+const btnCancelMock = document.getElementById('btn-cancel-mock');
+const btnStartMock = document.getElementById('btn-start-mock');
+
+if (btnQuickMock && mockModal) {
+    btnQuickMock.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to take mock exams.");
+        mockModal.style.display = 'flex';
+        mockQCount.focus();
+    });
+    btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
+    
+    btnStartMock.addEventListener('click', () => {
+        let count = parseInt(mockQCount.value);
+        if (!count || count < 5) return alert("Please enter a valid number of questions (minimum 5).");
+
+        btnStartMock.textContent = "Generating...";
+        btnStartMock.disabled = true;
+
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        let freshPool = allQuestions.filter(q => !attemptedQuestions.includes(getQID(q)) && !allMistakes.includes(getQID(q)) && !q.isBookQuestion);
+
+        if (freshPool.length < count) {
+            freshPool = allQuestions.filter(q => !q.isBookQuestion);
+        }
+
+        if (freshPool.length === 0) {
+            btnStartMock.textContent = "Start Exam";
+            btnStartMock.disabled = false;
+            return alert("No questions available for a mock exam.");
+        }
+
+        const finalPool = freshPool.sort(() => 0.5 - Math.random()).slice(0, count);
+        const calcMinutes = Math.ceil(count * 1.2);
+
+        mockModal.style.display = 'none';
+        btnStartMock.textContent = "Start Exam";
+        btnStartMock.disabled = false;
+
+        window.launchQuiz(finalPool, 'exam', calcMinutes, `Mock Exam (${count} Qs)`);
+    });
+}
 
 document.getElementById('start-exam-btn').addEventListener('click', () => {
     const paths = Array.from(selectedCart).map(str => JSON.parse(str));
@@ -682,27 +774,28 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-// Prevent QuotaExceededError (5MB LocalStorage Limit)
-let safeStorageArray = questionsArray;
-    if (safeStorageArray.length > 200) {
-        if (mode === 'exam') {
-            alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
-            safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
-        } else {
-            alert("Your selection is massive. To prevent browser memory crashes, we have selected the first 200 questions from this pool for your current session.");
-            safeStorageArray = safeStorageArray.slice(0, 200);
-        }
-    }
-
-    try {
-        localStorage.setItem('edeetos_active_quiz', JSON.stringify(safeStorageArray));
-        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-        window.location.href = 'quiz.html';
-    } catch (e) {
-        alert("Device storage full. Please clear your browser cache to load this quiz.");
-        console.error("Storage Error:", e);
-        document.body.style.cursor = 'default';
-    }
+    document.body.style.cursor = 'wait';
+    const request = indexedDB.open("EdeetosDB", 1);
+    
+    request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains("quiz_sessions")) db.createObjectStore("quiz_sessions");
+    };
+    
+    request.onsuccess = (e) => {
+        const db = e.target.result;
+        const tx = db.transaction("quiz_sessions", "readwrite");
+        tx.objectStore("quiz_sessions").put(questionsArray, "active_quiz_queue");
+        
+        tx.oncomplete = () => {
+            localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+            window.location.href = 'quiz.html';
+        };
+        tx.onerror = () => {
+            alert("Storage error. Please clear your browser cache.");
+            document.body.style.cursor = 'default';
+        };
+    };
 };
 
 function generateExamTitle(paths, currentView) {
@@ -807,7 +900,7 @@ function initMentorFeatures() {
                     
                     let modalHtml = `
                         <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                            <h3 style="color: #1e3a8a; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
+                            <h3 style="color: #1e3a8a; margin: 0; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
                             <input type="text" id="student-search-input" placeholder="Search by name or email..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;">
                             <div id="student-list-container" style="overflow-y: auto; flex-grow: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
                     `;
@@ -1717,7 +1810,6 @@ window.generateRevisionQuiz = async function(topicId) {
         if (book && !loadedBooksCache[book.file]) {
             try {
                 document.body.style.cursor = 'wait';
-				// Updated code for questions.js
 				const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
                 if (response.ok) {
                     let bookQuestions = await response.json();
@@ -1815,7 +1907,8 @@ if (btnAnalytics) {
         const body = document.getElementById('analytics-body');
 
         let stats = {};
-const allMistakesSet = new Set([...globalPracticeMistakes, ...globalExamMistakes]);
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        const allMistakesSet = new Set(allMistakes);
         const attemptedSet = new Set(attemptedQuestions);
 
         allQuestions.forEach(q => {
@@ -1931,7 +2024,7 @@ const allMistakesSet = new Set([...globalPracticeMistakes, ...globalExamMistakes
             html += `</div>`;
         }
 
-html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
+        html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
             html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
         } else {
@@ -1957,7 +2050,7 @@ html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bott
             html += `</table></div>`;
         }
 
-body.innerHTML = html;
+        body.innerHTML = html;
         document.getElementById('analytics-modal').style.display = 'flex';
 
         if (userExamHistory.length > 0) {

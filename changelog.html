@@ -36,6 +36,29 @@
             <!-- PAGE 1 -->
             <div id="page-1" class="changelog-page active">
 
+                <!-- LATEST UPDATE -->
+                <div class="timeline-item">
+                    <div class="timeline-date">September 27, 2026</div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
+                            <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.1.3 - The Ghost Racing & Scale Update</h2>
+                            <span class="tag tag-major">Major Update</span>
+                        </div>
+                        <ul class="update-list">
+                            <li><span class="badge badge-feature">Feature</span> <strong>Asynchronous Ghost Racing:</strong> Generate a 5-letter challenge code after finishing an exam. Friends who join will see a purple progress bar tracking your exact completion pace as a "Ghost" at the top of their screen.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Quick Mock Exams:</strong> Added a frictionless mock exam generator next to the search bar to instantly pull a custom mix of unattempted questions with automated timers.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Visual Analytics:</strong> Upgraded the Performance Report with Chart.js to visualize historical exam scores via interactive line graphs.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Post-Exam Review Mode:</strong> Added a "Review Mistakes" button on the final exam screen to instantly relaunch a practice session containing only the questions you failed.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Notes Vault:</strong> Built a centralized vault on the dashboard to aggregate and display all of your saved question notes in one place.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Search-to-Quiz:</strong> Instantly convert any keyword search into a custom 50-question practice block directly from the search dropdown.</li>
+                            <li><span class="badge badge-feature">Feature</span> <strong>Exam Stress Timer:</strong> The exam timer now dynamically pulses red when you drop below the 5-minute mark to simulate high-pressure testing environments.</li>
+                            <li><span class="badge badge-perf">Performance</span> <strong>IndexedDB Core Rewrite:</strong> Ripped out the 5MB browser LocalStorage bottleneck. The quiz engine now runs on IndexedDB, preventing mobile browser crashes when loading 10,000+ questions.</li>
+                            <li><span class="badge badge-security">Security</span> <strong>Offline Ban Exploit Patched:</strong> The system now instantly executes a physical wipe of the local IndexedDB database if it detects a banned user, permanently destroying unauthorized offline access.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <!-- SEPTEMBER 27 UPDATE (v1.1.2) -->
                 <div class="timeline-item">
                     <div class="timeline-date">September 27, 2026</div>
@@ -43,7 +66,6 @@
                     <div class="timeline-content">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
                             <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.1.2 - The Core Engine & Analytics Update</h2>
-                            <span class="tag tag-major">Major Update</span>
                         </div>
                         <ul class="update-list">
                             <li><span class="badge badge-feature">Content</span> <strong>Massive FCPS Expansion:</strong> The core FCPS question bank has been officially expanded from 7,350 to <strong>13,102</strong> high-yield questions.</li>
@@ -74,6 +96,11 @@
                         </ul>
                     </div>
                 </div>
+
+            </div>
+
+            <!-- PAGE 2 -->
+            <div id="page-2" class="changelog-page">
                 
                 <!-- JULY 14 UPDATE (v1.1.0) -->
                 <div class="timeline-item">
@@ -82,7 +109,6 @@
                     <div class="timeline-content">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
                             <h2 style="margin: 0; color: #064e3b; font-size: 1.4rem;">v1.1.0 - Reward System Overhaul & Security Patch</h2>
-                            <span class="tag tag-major">Major Update</span>
                         </div>
                         <ul class="update-list">
                             <li><span class="badge badge-security">Security</span> <strong>Prevented Reward Cheating:</strong> Fixed an exploit where resetting course progress or clearing data could allow a user to claim the same milestone reward multiple times.</li>
@@ -112,10 +138,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <!-- PAGE 2 -->
-            <div id="page-2" class="changelog-page">
                 
                 <!-- JULY 12 UPDATE (v1.0.8) -->
                 <div class="timeline-item">
@@ -135,6 +157,10 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <!-- PAGE 3 -->
+            <div id="page-3" class="changelog-page">
 
                 <!-- JULY 10 UPDATE -->
                 <div class="timeline-item">
@@ -189,8 +215,8 @@
 
             </div>
 
-            <!-- PAGE 3 -->
-            <div id="page-3" class="changelog-page">
+            <!-- PAGE 4 -->
+            <div id="page-4" class="changelog-page">
                 
                 <!-- JULY 7 UPDATE -->
                 <div class="timeline-item">
@@ -251,6 +277,7 @@
             <button class="page-btn active" onclick="window.changePage(1)">1</button>
             <button class="page-btn" onclick="window.changePage(2)">2</button>
             <button class="page-btn" onclick="window.changePage(3)">3</button>
+            <button class="page-btn" onclick="window.changePage(4)">4</button>
         </div>
 
     </section>
