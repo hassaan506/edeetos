@@ -629,9 +629,9 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
         const examRecord = {
             examName: examTitle,
             score: correctCount,
-            totalQuestions: totalQuestions, // Fixed typo: changed 'total' to 'totalQuestions' to match reports
+            totalQuestions: totalQuestions, 
             percentage: Math.round((correctCount / totalQuestions) * 100),
-            timeSpent: timeSpent, // Included the new time tracking variable
+            timeSpent: timeSpent, 
             date: new Date().toISOString() 
         };
         updates.examHistory = arrayUnion(examRecord);
@@ -1097,6 +1097,7 @@ quizQueue.forEach(q => {
 const ghostBtn = document.getElementById('btn-challenge-ghost');
     if (isExamMode && ghostBtn) {
         ghostBtn.style.display = 'inline-block';
+        
         ghostBtn.onclick = async (e) => {
             e.preventDefault();
             ghostBtn.textContent = "Generating Code...";
@@ -1106,11 +1107,9 @@ const ghostBtn = document.getElementById('btn-challenge-ghost');
             const code = Math.random().toString(36).substring(2, 7).toUpperCase();
             
             try {
-                // 1. Safely strip any undefined properties before sending to Firestore
                 const cleanQueue = JSON.parse(JSON.stringify(quizQueue));
                 
                 await setDoc(doc(db, "ghost_challenges", code), {
-                    // 2. Safely check if currentUserData exists
                     hostName: currentUserData?.fullName || "A Friend",
                     score: correctCount,
                     total: total,
@@ -1120,13 +1119,21 @@ const ghostBtn = document.getElementById('btn-challenge-ghost');
                     timestamp: serverTimestamp()
                 });
                 
-                ghostBtn.innerHTML = `Code: <strong>${code}</strong>`;
+                // Format the exact message text you want to send
+                const challengeText = `I just scored ${correctCount}/${total} on my exam! 👻 Can you beat my score?\n\nEnter my Challenge Code: ${code}`;
                 
-                // 3. Separate the clipboard logic so HTTP environments don't crash the upload
                 if (navigator.clipboard && window.isSecureContext) {
-                    navigator.clipboard.writeText(code).then(() => {
-                        ghostBtn.innerHTML = `Code: <strong>${code}</strong> (Copied!)`;
-                    }).catch(err => console.warn("Clipboard access denied.", err));
+                    navigator.clipboard.writeText(challengeText).then(() => {
+                        ghostBtn.innerHTML = `Code: <strong>${code}</strong> (Message Copied!)`;
+                    }).catch(err => {
+                        console.warn("Clipboard access denied.", err);
+                        prompt("Copy this challenge message:", challengeText);
+                        ghostBtn.innerHTML = `Code: <strong>${code}</strong>`;
+                    });
+                } else {
+                    // Fallback for non-secure HTTP environments or strict browsers
+                    prompt("Copy this challenge message:", challengeText);
+                    ghostBtn.innerHTML = `Code: <strong>${code}</strong>`;
                 }
             } catch (err) {
                 console.error("Ghost Link Error:", err);
