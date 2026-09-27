@@ -1093,6 +1093,7 @@ quizQueue.forEach(q => {
         titleEl.innerHTML = `<i class="fas fa-times-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #ef4444;"></i> ❌ Failed`;
         titleEl.style.color = "#991b1b";
     }
+
 const ghostBtn = document.getElementById('btn-challenge-ghost');
     if (isExamMode && ghostBtn) {
         ghostBtn.style.display = 'inline-block';
@@ -1105,23 +1106,35 @@ const ghostBtn = document.getElementById('btn-challenge-ghost');
             const code = Math.random().toString(36).substring(2, 7).toUpperCase();
             
             try {
+                // 1. Safely strip any undefined properties before sending to Firestore
+                const cleanQueue = JSON.parse(JSON.stringify(quizQueue));
+                
                 await setDoc(doc(db, "ghost_challenges", code), {
-                    hostName: currentUserData.fullName || "A Friend",
+                    // 2. Safely check if currentUserData exists
+                    hostName: currentUserData?.fullName || "A Friend",
                     score: correctCount,
                     total: total,
                     timeTaken: timeTaken,
                     calcMinutes: quizConfig.timer,
-                    queue: quizQueue,
+                    queue: cleanQueue,
                     timestamp: serverTimestamp()
                 });
-                ghostBtn.innerHTML = `Code: <strong>${code}</strong> (Copied!)`;
-                navigator.clipboard.writeText(code);
+                
+                ghostBtn.innerHTML = `Code: <strong>${code}</strong>`;
+                
+                // 3. Separate the clipboard logic so HTTP environments don't crash the upload
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(code).then(() => {
+                        ghostBtn.innerHTML = `Code: <strong>${code}</strong> (Copied!)`;
+                    }).catch(err => console.warn("Clipboard access denied.", err));
+                }
             } catch (err) {
-                console.error(err);
+                console.error("Ghost Link Error:", err);
                 ghostBtn.textContent = "Error Generating Link";
             }
         };
     }
+
 const returnBtn = document.getElementById('btn-return-home');
     const reviewBtn = document.getElementById('btn-review-exam-mistakes');
     

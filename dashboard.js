@@ -336,10 +336,10 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// === FEATURE: NAVIGATION BUTTONS & COURSE LAUNCH ===
 const btnOpenNotes = document.getElementById('btn-open-notes');
 if (btnOpenNotes) {
-    btnOpenNotes.addEventListener('click', () => {
+    // 1. Made the function asynchronous to allow background fetching
+    btnOpenNotes.addEventListener('click', async () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Notes.");
         if (!currentUserData) return alert("User data loading, please wait...");
         
@@ -350,20 +350,49 @@ if (btnOpenNotes) {
         const activeCourse = currentUserData.selectedCourse;
         const notesObj = (activeCourse && currentUserData[activeCourse] && currentUserData[activeCourse].notes) ? currentUserData[activeCourse].notes : {};
         
-        listEl.innerHTML = '';
         const noteKeys = Object.keys(notesObj);
         
         if (noteKeys.length === 0) {
             listEl.innerHTML = '<div style="color: #64748b; text-align: center; padding: 2rem;">You haven\'t saved any notes yet.</div>';
             return;
         }
+
+        // 2. Temporarily show a loading spinner while fetching the database
+        listEl.innerHTML = '<div style="color: #64748b; text-align: center; padding: 2rem; font-weight: bold;"><i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Loading question data...</div>';
+
+        // 3. Fetch the full questions database to cross-reference the IDs
+        let allQuestions = [];
+        try {
+            const res = await fetch(`Data/${activeCourse}_questions.json`);
+            if (res.ok) {
+                allQuestions = await res.json();
+            }
+        } catch(e) {
+            console.warn("Could not load question database for notes:", e);
+        }
+
+        listEl.innerHTML = '';
         
         noteKeys.forEach(qId => {
             if (!notesObj[qId].trim()) return;
+            
+            // 4. Search the array for the matching ID
+            let questionStem = "Unknown Question / Not Found in Current Database";
+            const matchedQ = allQuestions.find(q => String(q.QuestionID || q.id || q['Question ID'] || q.originalNumber) === String(qId));
+            
+            // 5. Extract the text and truncate it to 150 characters so it doesn't flood the UI
+            if (matchedQ) {
+                const rawText = matchedQ.question || matchedQ.Question || matchedQ.text || matchedQ.statement || "Image/Table Based Question";
+                questionStem = rawText.substring(0, 150) + (rawText.length > 150 ? "..." : "");
+            }
+
             const noteCard = document.createElement('div');
             noteCard.style.cssText = "background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;";
             noteCard.innerHTML = `
-                <div style="font-size: 0.75rem; font-weight: 800; color: #3b82f6; margin-bottom: 0.5rem; text-transform: uppercase;">Question ID: ${qId}</div>
+                <div style="font-size: 0.7rem; font-weight: 800; color: #94a3b8; margin-bottom: 0.4rem; text-transform: uppercase;">ID: ${qId}</div>
+                <div style="font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px dashed #cbd5e1; line-height: 1.4;">
+                    "${questionStem}"
+                </div>
                 <div style="color: #334155; font-size: 0.95rem; line-height: 1.5; white-space: pre-wrap;">${notesObj[qId]}</div>
             `;
             listEl.appendChild(noteCard);

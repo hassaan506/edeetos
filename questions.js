@@ -1723,9 +1723,13 @@ if (btnJourney) {
         
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+        
+        // 1. We must explicitly check Firebase to see if you have already claimed this specific tier
+        const dbClaimed = currentUserData?.claimedMilestones || [];
 
         trophiesGrid.innerHTML = processedTrophies.map(t => {
             const isUnlocked = flawlessCount >= t.cumulativeReq;
+            const isClaimed = dbClaimed.includes(t.title);
             
             let progress = 0;
             if (isUnlocked) {
@@ -1742,9 +1746,17 @@ if (btnJourney) {
             const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
             
-            const rewardHtml = t.rewardValue > 0 
-                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium or Book</div>` 
-                : '';
+            // 2. Dynamically render a functional Claim Button if the tier is unlocked but unredeemed
+            let rewardHtml = '';
+            if (t.rewardValue > 0) {
+                if (isUnlocked && !isClaimed) {
+                    rewardHtml = `<button class="btn-solid mini-btn manual-claim-btn" data-title="${t.title}" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem; background: #f59e0b; border: none; cursor: pointer; width: 100%; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);"><i class="fas fa-gift"></i> Claim Reward</button>`;
+                } else if (isClaimed) {
+                    rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
+                } else {
+                    rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium or Book</div>`;
+                }
+            }
 
             return `
                 <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
@@ -1760,6 +1772,18 @@ if (btnJourney) {
                 </div>
             `;
         }).join('');
+
+        // 3. Attach the event listener to force the Reward UI to spawn when clicked
+        document.querySelectorAll('.manual-claim-btn').forEach(btn => {
+            btn.onclick = () => {
+                const targetTitle = btn.getAttribute('data-title');
+                const targetTrophy = processedTrophies.find(tr => tr.title === targetTitle);
+                if (targetTrophy) {
+                    journeyModal.style.display = 'none'; 
+                    showMilestonePopup(targetTrophy);
+                }
+            };
+        });
 
         journeyModal.style.display = 'flex';
     };

@@ -1,448 +1,100 @@
 /* ==========================================
    1. REPORTS PAGE BASE STYLES
    ========================================== */
-body {
-    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 50%, #f3e8ff 100%) !important;
-    background-attachment: fixed !important;
-    font-family: 'Nunito', sans-serif; 
-}
-
-.reports-container {
-    display: flex;
-    flex-grow: 1;
-    overflow: hidden;
-    margin-top: 70px; 
-    padding: 25px 35px 35px 35px;
-    gap: 30px;
-    height: calc(100vh - 130px);
-    box-sizing: border-box;
-}
+body { background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 50%, #f3e8ff 100%) !important; background-attachment: fixed !important; font-family: 'Inter', sans-serif; transition: background 0.4s ease; }
+.reports-container { display: flex; flex-grow: 1; overflow: hidden; margin-top: 70px; padding: 25px 35px 35px 35px; gap: 30px; height: calc(100vh - 130px); box-sizing: border-box; }
 
 /* ==========================================
    2. SIDEBAR & SEARCH
    ========================================== */
-.reports-sidebar {
-    width: 35%;
-    max-width: 420px;
-    min-width: 280px; /* NEW: Protects from being crushed */
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    flex-shrink: 0; /* NEW: Prevents flexbox from shrinking it below min-width */
-}
-
-.sidebar-header {
-    padding: 25px 25px 15px 25px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.sidebar-header h2 {
-    margin: 0 0 15px 0;
-    color: #1e293b;
-    font-size: 1.4rem;
-    font-weight: 800;
-}
-
-.search-input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    background: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-    box-sizing: border-box; /* NEW: Keeps padding inside width boundaries */
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-.student-list {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 15px 25px;
-}
-
-.student-item {
-    padding: 12px 15px;
-    background: white;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    transition: all 0.2s ease;
-    width: 100%;
-    box-sizing: border-box; /* NEW: Ensures padding doesn't overflow container */
-    overflow: hidden;       /* NEW: Contains truncated children */
-}
-
-.student-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border-color: #e2e8f0;
-}
-
-.student-item.active {
-    background: #eff6ff;
-    border-color: #3b82f6;
-}
-
-.student-name {
-    font-weight: 800;
-    color: #0f172a;
-    font-size: 1.05rem;
-    margin-bottom: 3px;
-    /* NEW: Truncates text with ... instead of wrapping vertically */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-}
-
-.student-email {
-    font-size: 0.85rem;
-    color: #64748b;
-    font-weight: 600;
-    /* NEW: Truncates text with ... instead of wrapping vertically */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-}
+.reports-sidebar { width: 35%; max-width: 420px; min-width: 280px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08); overflow: hidden; flex-shrink: 0; transition: all 0.3s ease; }
+.sidebar-header { padding: 30px 25px 20px 25px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.sidebar-header h2 { margin: 0 0 15px 0; color: #0f172a; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+.search-input { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 0.95rem; font-weight: 500; background: #f8fafc; transition: all 0.2s ease; box-sizing: border-box; color: #0f172a; }
+.search-input:focus { outline: none; border-color: #3b82f6; background: white; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
+.student-list { flex-grow: 1; overflow-y: auto; padding: 15px 25px; }
+.student-item { padding: 15px; background: white; border-radius: 14px; margin-bottom: 12px; cursor: pointer; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; box-sizing: border-box; overflow: hidden; }
+.student-item:hover { transform: translateY(-3px); box-shadow: 0 8px 15px -3px rgba(0,0,0,0.05); border-color: #cbd5e1; }
+.student-item.active { background: #eff6ff; border-color: #3b82f6; box-shadow: 0 8px 15px -3px rgba(59, 130, 246, 0.15); }
+.student-name { font-weight: 800; color: #0f172a; font-size: 1.05rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.student-email { font-size: 0.85rem; color: #64748b; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
 
 /* ==========================================
    3. MAIN PANEL & EMPTY STATE
    ========================================== */
-.reports-main {
-    flex-grow: 1;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-    overflow-y: auto;
-}
-
-.empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: #94a3b8;
-    text-align: center;
-}
-
-.empty-state i {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    color: #cbd5e1;
-}
+.reports-main { flex-grow: 1; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 1); border-radius: 24px; padding: 40px; box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08); overflow-y: auto; transition: all 0.3s ease; }
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #94a3b8; text-align: center; }
+.empty-state i { font-size: 5rem; margin-bottom: 1.5rem; color: #cbd5e1; }
 
 /* ==========================================
    4. UI CLASSES FOR DETAILED REPORTS
    ========================================== */
-.details-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 1.5rem;
-}
-
-.details-header h1 {
-    margin: 0;
-    color: #0f172a;
-    font-size: 1.8rem;
-    font-weight: 800;
-}
-
-.details-meta {
-    color: #64748b;
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-top: 0.3rem;
-}
-
-/* Course Filter Dropdown */
-#course-filter {
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid #cbd5e1;
-    font-family: inherit;
-    font-size: 0.95rem;
-    background: white;
-    cursor: pointer;
-    outline: none;
-}
-
-#course-filter:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-/* Stats Grid */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-}
-
-.stat-card {
-    background: white;
-    border: 1px solid #e2e8f0;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    text-align: center;
-}
-
-.stat-title {
-    color: #64748b;
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-}
-
-.stat-value { font-size: 2rem; font-weight: 800; }
+.details-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 1.5rem; }
+.details-header h1 { margin: 0; color: #0f172a; font-size: 2rem; font-weight: 900; letter-spacing: -0.5px; }
+.details-meta { color: #64748b; font-weight: 600; font-size: 1rem; margin-top: 0.5rem; }
+#course-filter { padding: 12px 18px; border-radius: 12px; border: 2px solid #e2e8f0; font-family: inherit; font-size: 0.95rem; font-weight: 600; background: white; cursor: pointer; outline: none; transition: all 0.2s; color: #0f172a; }
+#course-filter:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+.stat-card { background: white; border: 1px solid #e2e8f0; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); text-align: center; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05); }
+.stat-title { color: #64748b; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
+.stat-value { font-size: 2.5rem; font-weight: 900; line-height: 1; }
 .stat-card.blue .stat-value { color: #3b82f6; }
 .stat-card.green .stat-value { color: #10b981; }
 .stat-card.yellow .stat-value { color: #f59e0b; }
 .stat-card.red .stat-value { color: #ef4444; }
-
-/* Analytics Grid */
-.analytics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.analytics-card {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 18px;
-    text-align: center;
-}
-
-.analytics-title {
-    font-size: 0.9rem;
-    color: #64748b;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.analytics-value {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #0f172a;
-}
-
-/* Sections & Topics */
-.report-card {
-    background: white;
-    border: 1px solid #e2e8f0;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    margin-bottom: 2rem;
-}
-
-.report-card h3 {
-    color: #1e293b;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.topic-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0.8rem;
-    border-bottom: 1px dashed #e2e8f0;
-}
-
+.analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+.analytics-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; }
+.analytics-title { font-size: 0.95rem; color: #64748b; font-weight: 700; margin-bottom: 12px; }
+.analytics-value { font-size: 1.4rem; font-weight: 900; color: #0f172a; }
+.report-card { background: white; border: 1px solid #e2e8f0; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); margin-bottom: 2.5rem; transition: all 0.3s ease; }
+.report-card h3 { color: #0f172a; margin-top: 0; margin-bottom: 1.5rem; font-weight: 800; font-size: 1.3rem; display: flex; align-items: center; gap: 12px; }
+.topic-row { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1rem; border-bottom: 1px dashed #e2e8f0; }
 .topic-row:last-child { border-bottom: none; }
-
-.topic-hierarchy {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.subject-name { font-size: 1rem; font-weight: 800; color: #0f172a; }
-.chapter-name { font-size: 0.9rem; font-weight: 700; color: #334155; }
+.topic-hierarchy { display: flex; flex-direction: column; gap: 4px; }
+.subject-name { font-size: 1.05rem; font-weight: 800; color: #0f172a; }
+.chapter-name { font-size: 0.95rem; font-weight: 600; color: #475569; }
 .topic-name { font-size: 0.85rem; color: #64748b; }
-.topic-source { font-size: 0.75rem; color: #94a3b8; font-weight: 700; }
-
-.topic-stats { 
-    display: flex; 
-    gap: 15px; 
-    text-align: right; 
-    font-size: 0.85rem; 
-    color: #64748b; 
-}
-
-/* Heatmap */
-.heatmap-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.heatmap-box {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: white;
-}
-
+.topic-source { font-size: 0.75rem; color: #94a3b8; font-weight: 800; text-transform: uppercase; }
+.topic-stats { display: flex; gap: 15px; text-align: right; font-size: 0.9rem; color: #64748b; font-weight: 500; }
+.heatmap-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
+.heatmap-box { padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 800; color: white; box-shadow: inset 0 2px 4px rgba(255,255,255,0.2); }
 .heatmap-box.excellent { background: #10b981; }
 .heatmap-box.good { background: #3b82f6; }
 .heatmap-box.average { background: #f59e0b; }
 .heatmap-box.weak { background: #ef4444; }
+.mentor-insight { background: #eff6ff; border-left: 6px solid #3b82f6; padding: 1.5rem; border-radius: 16px; font-size: 1rem; line-height: 1.7; color: #1e3a8a; font-weight: 500; }
+.history-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1rem; }
+.history-table th { padding: 1.2rem 1rem; border-bottom: 2px solid #e2e8f0; color: #64748b; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.history-table td { padding: 1.2rem 1rem; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem; color: #334155; font-weight: 500; }
 
-/* Mentor Insight Box */
-.mentor-insight {
-    background: #eff6ff;
-    border-left: 5px solid #3b82f6;
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #1e293b;
-}
-
-/* History Table Styling */
-.history-table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 1rem; }
-.history-table th { padding: 1rem; border-bottom: 2px solid #e2e8f0; color: #64748b; font-size: 0.85rem; text-transform: uppercase; }
-.history-table td { padding: 1rem; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; color: #475569; }
-
-/* Utility Classes */
-.empty-data-text { color: #94a3b8; font-style: italic; padding: 1rem; text-align: center; }
-.text-green { color: #10b981 !important; }
-.text-yellow { color: #f59e0b !important; }
-.text-red { color: #ef4444 !important; }
-.text-blue { color: #3b82f6 !important; }
-
-
-/* ==========================================
-   5. MOBILE RESPONSIVENESS FIXES
-   ========================================== */
-@media (max-width: 768px) {
-    /* Unlock the body height */
-    body {
-        height: auto !important;
-        display: block !important;
-        overflow-x: hidden;
-    }
-
-    /* Stack the layout vertically */
-    .reports-container {
-        flex-direction: column;
-        padding: 10px;
-        gap: 15px;
-        height: auto !important; 
-        margin-top: 10px; 
-        overflow: visible !important;
-    }
-
-    /* Scrollable Sidebar on top */
-    .reports-sidebar {
-        width: 100%;
-        max-width: 100%;
-        height: 300px; /* Reduced slightly for better mobile view */
-        flex-shrink: 0;
-        border-radius: 12px;
-    }
-
-    .sidebar-header { padding: 15px; }
-    .student-list { padding: 10px 15px; }
-
-    /* Main Details Panel constraints */
-    .reports-main {
-        width: 100%;
-        max-width: 100%;
-        padding: 15px;
-        border-radius: 12px;
-        height: auto !important;
-        min-width: 0; 
-    }
-
-    /* Fix Header & Dropdown collisions */
-    .details-header {
-        flex-direction: column;
-        gap: 15px;
-        align-items: stretch; /* Make children fill width */
-    }
-
-    #course-filter {
-        width: 100%; /* Force dropdown to full width */
-    }
-
-    /* Stack Cards */
-    .stats-grid, .analytics-grid {
-        grid-template-columns: 1fr !important; 
-        gap: 15px;
-    }
-
-    /* Fix Topic Rows Crushing */
-    .topic-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        background: #f8fafc;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 10px;
-        border: 1px solid #e2e8f0;
-    }
-
-    .topic-stats {
-        width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap; /* Allow stats to wrap if needed */
-        text-align: left;
-        background: white;
-        padding: 10px;
-        border-radius: 8px;
-        border: 1px solid #cbd5e1;
-    }
-
-    /* Reduce padding on Report Cards */
-    .report-card {
-        padding: 1rem;
-    }
-
-    /* Allow Tables to scroll horizontally without breaking layout */
-    .history-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap; /* Prevent text wrapping inside cells */
-        width: 100%;
-    }
-}
+/* === FEATURE: DARK MODE (REPORTS) === */
+body.dark-mode { background: linear-gradient(135deg, #0f172a 0%, #064e3b 50%, #1e1b4b 100%) !important; }
+.dark-mode .reports-sidebar { background: rgba(30, 41, 59, 0.6); border-color: rgba(51, 65, 85, 0.8); }
+.dark-mode .sidebar-header { border-bottom-color: rgba(255, 255, 255, 0.05); }
+.dark-mode .sidebar-header h2 { color: #f8fafc; }
+.dark-mode .search-input { background: #0f172a; border-color: #334155; color: #f8fafc; }
+.dark-mode .search-input:focus { border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15); }
+.dark-mode .student-item { background: #0f172a; border-color: #334155; }
+.dark-mode .student-item:hover { border-color: #475569; }
+.dark-mode .student-item.active { background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; box-shadow: 0 8px 15px -3px rgba(56, 189, 248, 0.15); }
+.dark-mode .student-name { color: #f8fafc; }
+.dark-mode .student-email { color: #94a3b8; }
+.dark-mode .reports-main { background: rgba(30, 41, 59, 0.7); border-color: rgba(51, 65, 85, 0.8); }
+.dark-mode .details-header { border-bottom-color: #334155; }
+.dark-mode .details-header h1 { color: #f8fafc; }
+.dark-mode .details-meta { color: #94a3b8; }
+.dark-mode #course-filter { background: #0f172a; border-color: #334155; color: #f8fafc; }
+.dark-mode #course-filter:focus { border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15); }
+.dark-mode .stat-card { background: #0f172a; border-color: #334155; }
+.dark-mode .analytics-card { background: #0f172a; border-color: #334155; }
+.dark-mode .analytics-title { color: #94a3b8; }
+.dark-mode .analytics-value { color: #f8fafc; }
+.dark-mode .report-card { background: #1e293b; border-color: #334155; }
+.dark-mode .report-card h3 { color: #f8fafc; }
+.dark-mode .topic-row { border-bottom-color: #334155; }
+.dark-mode .subject-name { color: #f8fafc; }
+.dark-mode .chapter-name { color: #cbd5e1; }
+.dark-mode .mentor-insight { background: rgba(56, 189, 248, 0.1); color: #bae6fd; border-left-color: #38bdf8; }
+.dark-mode .history-table th { border-bottom-color: #334155; color: #94a3b8; }
+.dark-mode .history-table td { border-bottom-color: rgba(255, 255, 255, 0.05); color: #cbd5e1; }
