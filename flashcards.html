@@ -36,13 +36,14 @@
     <!-- FLASHCARD TRAINING SCREEN -->
     <section class="section-container" id="fc-training-screen" style="display: none; max-width: 900px; padding: 2rem 1rem;">
         
-        <div class="fc-header-bar">
-            <button id="btn-back-decks" class="icon-btn"><i class="fas fa-arrow-left"></i> Decks</button>
+<div class="fc-header-bar">
+            <!-- Modern Glassy Back Button -->
+            <button id="btn-back-decks" class="fc-glass-btn"><i class="fas fa-arrow-left"></i> Back to Decks</button>
             <div class="fc-progress-pill">
                 <i class="fas fa-layer-group"></i> <span id="fc-progress-text">1 / 10</span>
             </div>
         </div>
-
+		
         <div class="flashcard-container" id="flashcard-container">
             <div class="flashcard-inner" id="flashcard-inner">
                 
@@ -85,11 +86,12 @@
 
         <!-- NAVIGATION & RECALL CONTROLS -->
         <div class="fc-bottom-controls">
-            <button id="btn-prev-card" class="btn-outline control-btn prev-btn" style="display: none;"><i class="fas fa-arrow-left"></i> Previous</button>
+            <button id="btn-prev-card" class="fc-glass-btn prev-btn" style="display: none;"><i class="fas fa-arrow-left"></i> Previous</button>
             
             <div id="fc-eval-controls" class="eval-controls" style="display: none;">
-                <button class="btn-solid control-btn hard-btn" id="btn-eval-hard"><i class="fas fa-redo"></i> Review Again</button>
-                <button class="btn-solid control-btn easy-btn" id="btn-eval-easy"><i class="fas fa-check"></i> Got It</button>
+                <!-- High-Contrast Modern Buttons -->
+                <button class="control-btn hard-btn" id="btn-eval-hard"><i class="fas fa-redo"></i> Review Again</button>
+                <button class="control-btn easy-btn" id="btn-eval-easy"><i class="fas fa-check"></i> Got It</button>
             </div>
         </div>
 
