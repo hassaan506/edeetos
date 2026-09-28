@@ -59,7 +59,11 @@
             
             <div id="quiz-ui-container">
                 <div class="card-header">
-                    <div class="question-pill" id="question-id-badge">Question 1</div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div class="question-pill" id="question-id-badge">Question 1</div>
+                        <!-- NEW: DIFFICULTY BADGE -->
+                        <div id="question-difficulty-badge" style="display: none;"></div>
+                    </div>
                     <div class="icon-group">
                         <button id="note-btn" class="icon-btn"><i class="fas fa-pen"></i></button>
                         <button id="bookmark-btn" class="icon-btn"><i class="far fa-star"></i></button>

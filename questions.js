@@ -73,6 +73,9 @@ const viewTitle = document.getElementById('current-view-title');
 const examQInput = document.getElementById('exam-q-count');
 const examTimerInput = document.getElementById('exam-timer');
 const startExamBtn = document.getElementById('start-exam-btn');
+const diffEasyFilter = document.getElementById('diff-easy-filter');
+const diffMediumFilter = document.getElementById('diff-medium-filter');
+const diffHardFilter = document.getElementById('diff-hard-filter');
 
 // ==========================================
 // 4. MULTIPLAYER & STUDY ROOMS
@@ -181,8 +184,9 @@ globalSearch.addEventListener('input', (e) => {
     }
 
     searchTimeout = setTimeout(() => {
-        const matchedQuestions = allQuestions.filter(q => {
+		const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+            if (!passesDifficultyFilter(q)) return false; // NEW: Block from search results 
             const questionText = q.Question || q.question || q.text || q.statement || "";
             const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
             return textToSearch.includes(query);
@@ -236,10 +240,45 @@ document.addEventListener('click', (e) => {
     }
 });
 
-unattemptedFilter.addEventListener('change', () => {
+// --- NEW DIFFICULTY FILTER LOGIC ---
+function passesDifficultyFilter(q) {
+    if (!diffEasyFilter || !diffMediumFilter || !diffHardFilter) return true;
+    
+    const easy = diffEasyFilter.checked;
+    const medium = diffMediumFilter.checked;
+    const hard = diffHardFilter.checked;
+    
+    // If nothing is checked, return true (show everything)
+    if (!easy && !medium && !hard) return true; 
+    
+    const qDiff = (q.Difficulty || q.difficulty || "").toLowerCase().trim();
+    
+    if (easy && qDiff === 'easy') return true;
+    if (medium && qDiff === 'medium') return true;
+    if (hard && qDiff === 'hard') return true;
+    
+    return false;
+}
+
+function triggerFilterUpdate() {
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
-});
+    
+    // If the topic popup is currently open, we must refresh it so the question counts update live
+    if (popupOverlay.style.display === 'flex') {
+        const current = popupHistory[popupHistory.length - 1];
+        if (current) {
+            popupHistory.pop();
+            openPopup(current.title, current.dataObj, current.level, current.pathArr, false);
+        }
+    }
+}
+
+unattemptedFilter.addEventListener('change', triggerFilterUpdate);
+if (diffEasyFilter) diffEasyFilter.addEventListener('change', triggerFilterUpdate);
+if (diffMediumFilter) diffMediumFilter.addEventListener('change', triggerFilterUpdate);
+if (diffHardFilter) diffHardFilter.addEventListener('change', triggerFilterUpdate);
+
 
 // ==========================================
 // 7. CORE VIEWS & GRID RENDERING
@@ -1158,9 +1197,11 @@ function getQuestionCount(view, pathArr, customPool = null) {
         return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || !attemptedQuestions.includes(getQID(q))).length;
     }
 
-    return pool.filter(q => {
+return pool.filter(q => {
+        // --- NEW: Difficulty Filter Override ---
+        if (!passesDifficultyFilter(q)) return false;
+        
         if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-
         if (isGlobalPopupActive) {
             if (paths[0] === "Books") {
                 if (!q.isBookQuestion) return false;

@@ -99,18 +99,35 @@
 			<div id="search-dropdown" class="search-dropdown" style="display: none;"></div>
 		   </div>
 <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                <label class="filter-wrapper">
-                    <input type="checkbox" id="unattempted-filter">
-                    <span>Unattempted Only</span>
-                </label>
-<button id="btn-quick-mock" class="btn-solid" style="background: #8b5cf6; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);">
-                    ⚡ Quick Mock Exam
-                </button>
-                <button id="btn-join-challenge" class="btn-outline" style="border-color: #a855f7; color: #9333ea; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
-                    🏁 Join Friend Challenge
-                </button>
-            </div>
-        </div>
+    <label class="filter-wrapper">
+        <input type="checkbox" id="unattempted-filter">
+        <span>Unattempted</span>
+    </label>
+    
+    <div style="width: 1px; height: 20px; background: #cbd5e1; margin: 0 5px;"></div>
+    
+    <label class="filter-wrapper" style="color: #10b981;">
+        <input type="checkbox" id="diff-easy-filter" value="easy">
+        <span>Easy</span>
+    </label>
+    <label class="filter-wrapper" style="color: #f59e0b;">
+        <input type="checkbox" id="diff-medium-filter" value="medium">
+        <span>Medium</span>
+    </label>
+    <label class="filter-wrapper" style="color: #ef4444;">
+        <input type="checkbox" id="diff-hard-filter" value="hard">
+        <span>Hard</span>
+    </label>
+
+    <div style="width: 1px; height: 20px; background: #cbd5e1; margin: 0 5px;"></div>
+
+    <button id="btn-quick-mock" class="btn-solid" style="background: #8b5cf6; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);">
+        ⚡ Quick Mock Exam
+    </button>
+    <button id="btn-join-challenge" class="btn-outline" style="border-color: #a855f7; color: #9333ea; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: bold; cursor: pointer;">
+        🏁 Join Friend Challenge
+    </button>
+</div>
 
         <div id="mock-exam-modal" class="popup-overlay" style="display: none; z-index: 9000;">
             <div class="glass-panel popup-content" style="max-width: 400px; width: 90%; padding: 2rem; text-align: center;">

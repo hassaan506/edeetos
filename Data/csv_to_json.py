@@ -94,19 +94,23 @@ def assign_question_ids(csv_path):
         question_id_column = None
 
         for field in fieldnames:
+
             if field and field.strip().lower() in {
                 'questionid',
                 'question id',
                 'id'
             }:
+
                 question_id_column = field
                 break
 
         if question_id_column is None:
+
             print("  ERROR: QuestionID column not found.")
             return
 
         for row in reader:
+
             rows.append(row)
 
     # --------------------------------------------------------
@@ -119,15 +123,21 @@ def assign_question_ids(csv_path):
 
     for row in rows:
 
-        q_id = row.get(question_id_column, "").strip()
+        q_id = row.get(
+            question_id_column,
+            ""
+        ).strip()
 
         if q_id:
 
             normalized_id = q_id.upper()
 
             if normalized_id in existing_ids:
+
                 duplicate_ids.append(q_id)
+
             else:
+
                 existing_ids.add(normalized_id)
 
     # --------------------------------------------------------
@@ -136,10 +146,15 @@ def assign_question_ids(csv_path):
 
     if duplicate_ids:
 
-        print("  WARNING: Duplicate QuestionIDs already exist:")
+        print(
+            "  WARNING: Duplicate QuestionIDs already exist:"
+        )
 
         for duplicate in duplicate_ids:
-            print(f"    - {duplicate}")
+
+            print(
+                f"    - {duplicate}"
+            )
 
         print(
             "  Existing IDs were NOT changed."
@@ -153,11 +168,16 @@ def assign_question_ids(csv_path):
 
     for row in rows:
 
-        q_id = row.get(question_id_column, "").strip()
+        q_id = row.get(
+            question_id_column,
+            ""
+        ).strip()
 
         if not q_id:
 
-            new_id = generate_unique_id(existing_ids)
+            new_id = generate_unique_id(
+                existing_ids
+            )
 
             row[question_id_column] = new_id
 
@@ -183,6 +203,7 @@ def assign_question_ids(csv_path):
         )
 
         writer.writeheader()
+
         writer.writerows(rows)
 
     print(
@@ -202,7 +223,9 @@ def process_directory(directory, is_book=False):
 
     if not os.path.exists(directory):
 
-        print(f"Directory not found: {directory}")
+        print(
+            f"Directory not found: {directory}"
+        )
 
         return
 
@@ -220,9 +243,13 @@ def process_directory(directory, is_book=False):
 
     for csv_path in csv_files:
 
-        filename = os.path.basename(csv_path)
+        filename = os.path.basename(
+            csv_path
+        )
 
-        base_name = os.path.splitext(filename)[0]
+        base_name = os.path.splitext(
+            filename
+        )[0]
 
         print(
             f"\nProcessing {base_name}..."
@@ -233,7 +260,9 @@ def process_directory(directory, is_book=False):
         # Assign / preserve QuestionIDs
         # ----------------------------------------------------
 
-        assign_question_ids(csv_path)
+        assign_question_ids(
+            csv_path
+        )
 
         # ----------------------------------------------------
         # THEN:
@@ -306,6 +335,11 @@ def process_directory(directory, is_book=False):
                     {'topic'}
                 )
 
+                difficulty = get_column_value(
+                    row,
+                    {'difficulty'}
+                )
+
                 year = get_column_value(
                     row,
                     {'year'}
@@ -317,7 +351,10 @@ def process_directory(directory, is_book=False):
 
                 exams_raw = get_column_value(
                     row,
-                    {'exams', 'exam'}
+                    {
+                        'exams',
+                        'exam'
+                    }
                 )
 
                 exams_list = [
@@ -343,6 +380,8 @@ def process_directory(directory, is_book=False):
                     "chapter": chapter,
 
                     "topic": topic,
+
+                    "difficulty": difficulty,
 
                     "question": get_column_value(
                         row,
@@ -403,7 +442,9 @@ def process_directory(directory, is_book=False):
 
                     question_obj["bookName"] = base_name
 
-                questions.append(question_obj)
+                questions.append(
+                    question_obj
+                )
 
                 # =================================================
                 # BUILD TREES

@@ -222,7 +222,7 @@ function formatJSONQuestion(q) {
         });
     }
 
-    return {
+return {
         text: q.question || q.Question || "Missing Question Text",
         options: formattedOptions,
         explanation: q.explanation || q.Explanation || "No explanation provided.",
@@ -240,8 +240,9 @@ function formatJSONQuestion(q) {
         Topic: q.Topic || q.topic || "",
         isBookQuestion: q.isBookQuestion || false,
         bookName: q.bookName || "",
-		Year: q.Year || q.year || "",
-        Exam: q.Exam || q.exams || []
+        Year: q.Year || q.year || "",
+        Exam: q.Exam || q.exams || [],
+        Difficulty: q.Difficulty || q.difficulty || ""
     };
 }
 
@@ -356,6 +357,28 @@ function loadQuestion(index) {
         const displayNum = currentQuestionData.sequenceNumber || (currentIndex + 1);
         if (questionIdBadge) {
             questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
+        }
+
+        // --- NEW: DYNAMIC DIFFICULTY TAG ---
+        const diffBadge = document.getElementById('question-difficulty-badge');
+        if (diffBadge) {
+            const diffText = (currentQuestionData.Difficulty || "").toLowerCase().trim();
+            
+            // Note: We use strict inline styles here so the dark-mode CSS override for the standard question-pill doesn't ruin the semantic colors (green/yellow/red).
+            const baseStyle = "display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.5px;";
+            
+            if (diffText === 'easy') {
+                diffBadge.textContent = "Easy";
+                diffBadge.style.cssText = `${baseStyle} background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3);`;
+            } else if (diffText === 'medium') {
+                diffBadge.textContent = "Medium";
+                diffBadge.style.cssText = `${baseStyle} background: rgba(245, 158, 11, 0.15); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.3);`;
+            } else if (diffText === 'hard') {
+                diffBadge.textContent = "Hard";
+                diffBadge.style.cssText = `${baseStyle} background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3);`;
+            } else {
+                diffBadge.style.display = "none";
+            }
         }
 
         if (isExamMode) {
