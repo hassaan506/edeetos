@@ -1051,7 +1051,7 @@ let isIntentionalExit = false;
 function exitSafely(url) {
     isIntentionalExit = true;
     localStorage.removeItem('edeetos_aborted_session_backup');
-    localStorage.removeItem('edeetos_ghost_data');
+    localStorage.removeItem('edeetos_challenge_data');
     window.location.href = url;
 }
 
@@ -1094,20 +1094,20 @@ quizQueue.forEach(q => {
         titleEl.style.color = "#991b1b";
     }
 
-    const ghostBtn = document.getElementById('btn-challenge-ghost');
+    const challengeBtn = document.getElementById('btn-challenge-friend');
     const shareModal = document.getElementById('share-challenge-modal');
     const shareMsgEl = document.getElementById('share-message-text');
     const copyShareBtn = document.getElementById('btn-copy-share');
     const whatsappShareBtn = document.getElementById('btn-whatsapp-share');
     const closeShareBtn = document.getElementById('close-share-modal');
 
-    if (isExamMode && ghostBtn) {
-        ghostBtn.style.display = 'inline-block';
+    if (isExamMode && challengeBtn) {
+        challengeBtn.style.display = 'inline-block';
         
-        ghostBtn.onclick = async (e) => {
+        challengeBtn.onclick = async (e) => {
             e.preventDefault();
-            ghostBtn.textContent = "Generating Code...";
-            ghostBtn.disabled = true;
+            challengeBtn.textContent = "Generating Code...";
+            challengeBtn.disabled = true;
             
             const timeTaken = (quizConfig.timer * 60) - sessionSeconds;
             const code = Math.random().toString(36).substring(2, 7).toUpperCase();
@@ -1116,7 +1116,7 @@ quizQueue.forEach(q => {
                 // Aggressively strip undefined values so Firestore doesn't throw a permission/validation error
                 const cleanQueue = JSON.parse(JSON.stringify(quizQueue, (k, v) => v === undefined ? null : v));
                 
-                await setDoc(doc(db, "ghost_challenges", code), {
+                await setDoc(doc(db, "friend_challenges", code), {
                     hostName: (currentUserData && currentUserData.fullName) ? currentUserData.fullName : "A Friend",
                     score: correctCount,
                     total: total,
@@ -1126,8 +1126,8 @@ quizQueue.forEach(q => {
                     timestamp: serverTimestamp()
                 });
                 
-                // Format the share message
-                const challengeText = `I just scored ${correctCount}/${total} on my exam! 👻 I challenge you to beat my pace and score.\n\nEnter my Challenge Code: *${code}*`;
+                // Format the share message (Upgraded and expanded)
+                const challengeText = `I just wrapped up a rigorous mock exam on EDEETOS and scored ${correctCount} out of ${total}! 🎯\n\nThink you have what it takes to beat my accuracy and time? Step up to the Friend Challenge and prove it.\n\nDrop my Challenge Code in the app: *${code}*\n\nLet's see who really knows their stuff!`;
                 
                 // Set modal values
                 if (shareMsgEl) shareMsgEl.innerText = challengeText;
@@ -1168,8 +1168,8 @@ quizQueue.forEach(q => {
                     };
                 }
                 
-                ghostBtn.innerHTML = `👻 Challenge Code: <strong>${code}</strong>`;
-                ghostBtn.disabled = false; // Allow re-opening the modal
+                challengeBtn.innerHTML = `🎯 Challenge Code: <strong>${code}</strong>`;
+                challengeBtn.disabled = false; // Allow re-opening the modal
                 
                 // Show the share modal
                 if (shareModal) {
@@ -1178,9 +1178,9 @@ quizQueue.forEach(q => {
                 }
                 
             } catch (err) {
-                console.error("Ghost Link Error:", err);
-                ghostBtn.textContent = "Error Generating Link";
-                ghostBtn.disabled = false;
+                console.error("Challenge Link Error:", err);
+                challengeBtn.textContent = "Error Generating Link";
+                challengeBtn.disabled = false;
                 alert("Failed to save challenge. Ensure you are connected to the internet and Firestore security rules allow writes.");
             }
         };
@@ -1353,16 +1353,16 @@ const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
                 timerDisplay.classList.remove('stress-active');
             }
         }
-const ghostDataStr = localStorage.getItem('edeetos_ghost_data');
-        if (ghostDataStr && isExamMode) {
-            const gData = JSON.parse(ghostDataStr);
-            document.getElementById('ghost-tracker-wrapper').style.display = 'block';
-            document.getElementById('ghost-name-display').textContent = `👻 ${gData.hostName}'s Pace`;
-            document.getElementById('ghost-target-display').textContent = `Target: ${gData.score}/${gData.total}`;
+const challengeDataStr = localStorage.getItem('edeetos_challenge_data');
+        if (challengeDataStr && isExamMode) {
+            const cData = JSON.parse(challengeDataStr);
+            document.getElementById('challenge-tracker-wrapper').style.display = 'block';
+            document.getElementById('challenge-name-display').textContent = `${cData.hostName}'s Pace`;
+            document.getElementById('challenge-target-display').textContent = `Target: ${cData.score}/${cData.total}`;
             
             const timePassed = (quizConfig.timer * 60) - sessionSeconds;
-            const progress = Math.min((timePassed / gData.timeTaken) * 100, 100);
-            document.getElementById('ghost-bar-fill').style.width = `${progress}%`;
+            const progress = Math.min((timePassed / cData.timeTaken) * 100, 100);
+            document.getElementById('challenge-bar-fill').style.width = `${progress}%`;
         }
 		
         if (currentQuestionData) {
@@ -1753,7 +1753,7 @@ async function updateSpacedRepetition() {
 }
 
 // ==========================================
-// 12. TAB CLOSURE SAFETY & GHOST USER CLEANUP
+// 12. TAB CLOSURE SAFETY & CHALLENGE USER CLEANUP
 // ==========================================
 function checkAndRestoreAbortedSession() {
     const backupStr = localStorage.getItem('edeetos_aborted_session_backup');

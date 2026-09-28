@@ -502,8 +502,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
                 ${itemName}
             </span>
             <div style="display: flex; align-items: center; gap: 8px;">
-                ${countHtml}
-                ${instantStartBtn}
+                ${countHtml}${instantStartBtn}
             </div>
         </div>
         ${progressHtml}
@@ -602,23 +601,23 @@ if (examTimerInput) {
 const btnQuickMock = document.getElementById('btn-quick-mock');
 const mockModal = document.getElementById('mock-exam-modal');
 const mockQCount = document.getElementById('mock-q-count');
-const btnJoinGhost = document.getElementById('btn-join-ghost');
+const btnJoinChallenge = document.getElementById('btn-join-challenge');
 
-if (btnJoinGhost) {
-    btnJoinGhost.addEventListener('click', async () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to race ghosts.");
-        const code = prompt("Enter the 5-character Ghost Code from your friend:");
+if (btnJoinChallenge) {
+    btnJoinChallenge.addEventListener('click', async () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to join a challenge.");
+        const code = prompt("Enter the 5-character Challenge Code from your friend:");
         if (!code) return;
         
-        btnJoinGhost.textContent = "Loading...";
+        btnJoinChallenge.textContent = "Loading...";
         try {
-            const ghostSnap = await getDoc(doc(db, "ghost_challenges", code.trim().toUpperCase()));
-            if (!ghostSnap.exists()) {
-                btnJoinGhost.innerHTML = '🏁 Join Ghost Race';
-                return alert("Invalid or expired Ghost Code.");
+            const challengeSnap = await getDoc(doc(db, "friend_challenges", code.trim().toUpperCase()));
+            if (!challengeSnap.exists()) {
+                btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
+                return alert("Invalid or expired Challenge Code.");
             }
-            const ghostData = ghostSnap.data();
-            localStorage.setItem('edeetos_ghost_data', JSON.stringify(ghostData));
+            const challengeData = challengeSnap.data();
+            localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
             
             document.body.style.cursor = 'wait';
             const request = indexedDB.open("EdeetosDB", 1);
@@ -631,16 +630,16 @@ if (btnJoinGhost) {
             request.onsuccess = (e) => {
                 const idb = e.target.result;
                 const tx = idb.transaction("quiz_sessions", "readwrite");
-                tx.objectStore("quiz_sessions").put(ghostData.queue, "active_quiz_queue");
+                tx.objectStore("quiz_sessions").put(challengeData.queue, "active_quiz_queue");
                 tx.oncomplete = () => {
-                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: ghostData.calcMinutes, examName: 'Ghost Race vs ' + ghostData.hostName }));
+                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: challengeData.calcMinutes, examName: 'Friend Challenge vs ' + challengeData.hostName }));
                     window.location.href = 'quiz.html';
                 };
             };
         } catch (err) {
             console.error(err);
-            alert("Failed to load ghost challenge.");
-            btnJoinGhost.innerHTML = '🏁 Join Ghost Race';
+            alert("Failed to load friend challenge.");
+            btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
         }
     });
 }
@@ -815,14 +814,14 @@ function generateExamTitle(paths, currentView) {
     if (currentView === 'exam') {
         if (topArr.length === 1) {
             if (subArr.length === 0) return `${topArr[0]} (All Papers)`;
-            return `${topArr[0]} - ${subArr.join(" + ")}`; 
+            return `${topArr[0]} -${subArr.join(" + ")}`; 
         } else {
             return subArr.length > 0 ? subArr.join(" + ") : topArr.join(" + "); 
         }
     }
     if (topArr.length === 1) {
         if (subArr.length > 3 || subArr.length === 0) return `${topArr[0]} (Full)`;
-        else return `${topArr[0]} - ${subArr.join(" + ")}`;
+        else return `${topArr[0]} -${subArr.join(" + ")}`;
     } else {
         if (topArr.length <= 3) return topArr.join(" + ");
         else return `Mixed Session (${topArr.length} Topics)`;
@@ -1537,8 +1536,7 @@ function showMilestonePopup(trophy) {
         <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto;">
             <div style="font-size: 4.5rem; margin-bottom: 10px; line-height: 1;">${trophy.icon}</div>
             <h2 style="color: #1e3a8a; margin-bottom: 10px; font-size: 1.6rem;">Milestone Reached!</h2>
-            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 5px;">You achieved the <strong style="color: #0f172a;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
-            ${rewardOptionsHtml}
+            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 5px;">You achieved the <strong style="color: #0f172a;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>${rewardOptionsHtml}
             <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1rem; cursor: pointer; border-radius: 8px;">Dismiss</button>
         </div>
         <style>
@@ -1658,7 +1656,7 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, mi
             currentUserData.claimedMilestones = claimedMilestones;
         }
 
-        alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue} ${rewardUnit}.`);
+        alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue}${rewardUnit}.`);
     } catch (err) {
         console.error("Error extending sub:", err);
         alert("Firebase Error: " + err.message);
@@ -1708,7 +1706,7 @@ async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBoo
             currentUserData.claimedMilestones = claimedMilestones;
         }
 
-        alert(`Success! Your book is unlocked for ${rewardValue} ${rewardUnit}.`);
+        alert(`Success! Your book is unlocked for ${rewardValue}${rewardUnit}.`);
     } catch (err) {
         console.error('Error claiming book:', err);
         alert('Firebase Error: ' + err.message);
@@ -1754,17 +1752,16 @@ if (btnJourney) {
                 } else if (isClaimed) {
                     rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                 } else {
-                    rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium or Book</div>`;
+                    rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium or Book</div>`;
                 }
             }
 
             return `
-                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow: ${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
+                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow:${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
                     <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
                     <div style="flex-grow: 1;">
                         <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>
-                        ${rewardHtml}
+                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>${rewardHtml}
                     </div>
                     <div style="font-size: 1.3rem;">
                         ${statusIcon}

@@ -645,33 +645,65 @@
     }
 }
 
-/* === FEATURE: DARK MODE (QUESTIONS) === */
-.dark-mode .mode-toggle { background: rgba(0, 0, 0, 0.4); }
-.dark-mode .prog-dash .prog-stat-title { color: #94a3b8; }
+/* ========================================== */
+/* 9. TRUE DARK MODE (AUGMENTED OVERRIDES)    */
+/* ========================================== */
+.dark-mode body { background-color: #0f172a !important; color: #e2e8f0 !important; }
+.dark-mode .glass-panel { background: rgba(30, 41, 59, 0.85) !important; border-color: #334155 !important; }
+
+/* Grid Cards */
+.dark-mode #subjects-grid .feature-card { background: rgba(30, 41, 59, 0.75) !important; border-top: 1px solid rgba(255,255,255,0.05) !important; border-left-color: #10b981 !important; }
+.dark-mode #subjects-grid .feature-card:hover { background: rgba(30, 41, 59, 0.95) !important; border-left-color: #34d399 !important; box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5) !important; }
+.dark-mode .card-title { color: #f8fafc !important; }
+.dark-mode .card-count { background: #0f172a !important; color: #94a3b8 !important; }
+
+/* Dashboard Typography */
+.dark-mode h2, .dark-mode h3 { color: #f8fafc !important; }
+.dark-mode .prog-dash .prog-stat-title { color: #94a3b8 !important; }
 .dark-mode .prog-dash .prog-stat-box div:last-child { color: #f8fafc !important; }
-.dark-mode .search-wrapper input { background: #0f172a; border-color: #334155; color: #f8fafc; }
-.dark-mode .search-wrapper input:focus { border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15); }
-.dark-mode .search-dropdown { background: #1e293b !important; border-color: #334155; }
-.dark-mode .search-item { background: #1e293b; border-bottom-color: #334155; }
-.dark-mode .search-item:hover { background: #0f172a; }
-.dark-mode .search-item-title { color: #38bdf8; }
-.dark-mode .search-item-snippet { color: #94a3b8; }
-.dark-mode .filter-wrapper { color: #cbd5e1; }
-.dark-mode .card-title { color: #f8fafc; }
-.dark-mode .card-count { background: #0f172a; color: #94a3b8; }
-.dark-mode .popup-content { background: #1e293b; border-color: #334155; box-shadow: 0 -20px 40px rgba(0,0,0,0.5); }
-.dark-mode .popup-header { background: #1e293b; border-bottom-color: #334155; }
-.dark-mode .popup-header h3 { color: #f8fafc; }
-.dark-mode .popup-body { background: #0f172a; }
-.dark-mode .list-item { background: #1e293b; border-color: #334155; }
-.dark-mode .list-item:hover { border-color: #38bdf8; }
-.dark-mode .list-item .card-count { background: #0f172a; color: #94a3b8; }
+.dark-mode #mode-description { color: #94a3b8 !important; }
+
+/* Controls & Inputs */
+.dark-mode .mode-toggle { background: rgba(0, 0, 0, 0.4) !important; }
+.dark-mode .icon-btn { background: #1e293b !important; color: #cbd5e1 !important; }
+.dark-mode .icon-btn:hover { background: #334155 !important; color: #f8fafc !important; }
+.dark-mode .filter-wrapper { color: #cbd5e1 !important; }
+.dark-mode .search-wrapper input { background: #0f172a !important; border-color: #334155 !important; color: #f8fafc !important; }
+.dark-mode .search-wrapper input:focus { border-color: #38bdf8 !important; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15) !important; }
+.dark-mode input[type="number"] { background: #0f172a !important; border-color: #334155 !important; color: #f8fafc !important; }
+
+/* Search Dropdown */
+.dark-mode .search-dropdown { background: #1e293b !important; border-color: #334155 !important; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6) !important; }
+.dark-mode .search-item { background: #1e293b !important; border-bottom-color: #334155 !important; }
+.dark-mode .search-item:hover { background: #0f172a !important; }
+.dark-mode .search-item-title { color: #e2e8f0 !important; }
+.dark-mode .search-item-snippet { color: #94a3b8 !important; }
+
+/* Popups & Lists */
+.dark-mode .popup-content { background: #1e293b !important; border-color: #334155 !important; box-shadow: 0 -20px 40px rgba(0,0,0,0.5) !important; }
+.dark-mode .popup-header { background: #1e293b !important; border-bottom-color: #334155 !important; }
+.dark-mode .popup-body { background: #0f172a !important; }
+.dark-mode .list-item { background: #1e293b !important; border-color: #334155 !important; }
+.dark-mode .list-item:hover { border-color: #38bdf8 !important; background: #0f172a !important; }
 .dark-mode .hero-item { background: rgba(56, 189, 248, 0.1) !important; border-color: #38bdf8 !important; }
 .dark-mode .hero-item span { color: #e0f2fe !important; }
-.dark-mode .sidebar { background: #1e293b; border-color: #334155; box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3); }
-.dark-mode .sidebar-header h2 { color: #10b981; }
-.dark-mode .sidebar-links li a { color: #cbd5e1; }
-.dark-mode .sidebar-links li a:hover { background: rgba(255, 255, 255, 0.05); }
-.dark-mode .exam-action-bar { background: rgba(30, 41, 59, 0.85); border-color: rgba(51, 65, 85, 0.8); }
-.dark-mode .exam-action-bar .cart-info { color: #f8fafc; }
-.dark-mode .exam-action-bar input { background: #0f172a; border-color: #334155; color: #f8fafc; }
+
+/* Sidebar */
+.dark-mode .sidebar { background: #1e293b !important; border-color: #334155 !important; box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5) !important; }
+.dark-mode .sidebar-header h2 { color: #10b981 !important; }
+.dark-mode .sidebar-links li a { color: #cbd5e1 !important; }
+.dark-mode .sidebar-links li a:hover { background: rgba(255, 255, 255, 0.05) !important; }
+.dark-mode .sidebar-category { color: #64748b !important; }
+
+/* Bottom Action Bar */
+.dark-mode .exam-action-bar { background: rgba(30, 41, 59, 0.85) !important; border-color: rgba(51, 65, 85, 0.8) !important; }
+.dark-mode .exam-action-bar .cart-info { color: #f8fafc !important; }
+
+/* Reset & Journey Modals */
+.dark-mode .reset-option-btn { color: #cbd5e1 !important; border-color: #334155 !important; }
+.dark-mode .reset-option-btn:hover { background: #334155 !important; }
+.dark-mode #reset-confirm-text { color: #f8fafc !important; }
+.dark-mode #journey-modal p { color: #94a3b8 !important; }
+.dark-mode #trophies-grid .glass-panel { background: #1e293b !important; border-color: #334155 !important; }
+.dark-mode #trophies-grid .glass-panel div[style*="color: #1e3a8a"] { color: #f8fafc !important; }
+.dark-mode #trophies-grid .glass-panel div[style*="color: #94a3b8"] { color: #94a3b8 !important; }
