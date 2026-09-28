@@ -260,18 +260,29 @@
 }
 
 /* === FEATURE: DARK MODE (DASHBOARD) === */
+body.dark-mode {
+    background-color: #0b0f19;
+    color: #f8fafc;
+}
+
 .dark-mode .dashboard-nav { background: rgba(15, 23, 42, 0.85); border-bottom-color: rgba(51, 65, 85, 0.8); }
 .dark-mode .nav-actions button, .dark-mode .nav-actions a { color: #f8fafc; }
 .dark-mode .nav-actions button:hover, .dark-mode .nav-actions a:hover { background: rgba(255, 255, 255, 0.1); }
 .dark-mode .welcome-header, .dark-mode .welcome-header span { color: #f8fafc; }
 .dark-mode .welcome-header .highlight-text { color: #38bdf8; }
 .dark-mode .dashboard-header p { color: #94a3b8 !important; }
+
+/* Dashboard Cards */
 .dark-mode .feature-card { border-color: rgba(51, 65, 85, 0.8); background: rgba(30, 41, 59, 0.6); }
 .dark-mode .feature-card:hover { background: rgba(30, 41, 59, 0.9); border-color: #3b82f6; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5); }
-.dark-mode .feature-card h3 { color: #f8fafc; }
-.dark-mode .popup-content { background: #1e293b; border-color: rgba(51, 65, 85, 0.8); }
+.dark-mode .feature-card h3 { color: #f8fafc !important; }
+
+/* Modals Container */
+.dark-mode .popup-content { background: #1e293b; border-color: rgba(51, 65, 85, 0.8); color: #f8fafc; }
 .dark-mode .popup-content h2, .dark-mode .popup-content h3 { color: #f8fafc !important; }
-.dark-mode .popup-content p, .dark-mode .popup-content div { color: #cbd5e1 !important; }
+.dark-mode .popup-content p { color: #94a3b8 !important; }
+
+/* Premium Modal Plans & Tabs */
 .dark-mode .active-tab { background: #334155; color: #f8fafc; border: 1px solid #475569; }
 .dark-mode .inactive-tab { color: #94a3b8; }
 .dark-mode .inactive-tab:hover { color: #f8fafc; }
@@ -283,9 +294,65 @@
 .dark-mode .bank-val { color: #f8fafc; }
 .dark-mode .course-checkbox-label { background: #0f172a; border-color: #334155; color: #cbd5e1; }
 .dark-mode .course-checkbox-label:hover { background: #1e293b; border-color: #475569; }
-.dark-mode .prof-input, .dark-mode .custom-select { background: #0f172a; border-color: #334155; color: #f8fafc; }
-.dark-mode .prof-input:focus, .dark-mode .custom-select:focus { background: #1e293b; border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
-.dark-mode .prof-input.input-disabled { background: #020617 !important; color: #475569; border-color: #1e293b; }
+
+/* ======================================================== */
+/* THE FIX: UNIVERSAL INPUTS & WHITE BOX ERADICATION        */
+/* ======================================================== */
+
+/* 1. Target ALL text boxes, file uploads, and selects */
+.dark-mode input[type="text"],
+.dark-mode input[type="email"],
+.dark-mode input[type="file"],
+.dark-mode input[type="number"],
+.dark-mode select,
+.dark-mode .prof-input, 
+.dark-mode .custom-select {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+.dark-mode input:focus, 
+.dark-mode select:focus,
+.dark-mode .prof-input:focus { 
+    background: #1e293b !important; 
+    border-color: #3b82f6 !important; 
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important; 
+    outline: none;
+}
+.dark-mode .prof-input.input-disabled { background: #020617 !important; color: #475569 !important; border-color: #1e293b !important; }
+
+/* 2. Fix the hardcoded white course selector button */
+.dark-mode #btn-open-course-selector {
+    background: #0f172a !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+/* 3. Override Javascript Inline Backgrounds (The White Flash Fix) */
+.dark-mode div[style*="background: white"], 
+.dark-mode .glass-panel[style*="background: white"],
+.dark-mode div[style*="background: #f8fafc"] {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* 4. Override Javascript Inline Text Colors */
+.dark-mode div[style*="color: #1e3a8a"],
+.dark-mode div[style*="color: #064e3b"],
+.dark-mode h2[style*="color: #1e3a8a"],
+.dark-mode h3[style*="color: #064e3b"],
+.dark-mode h3[style*="color: #1e3a8a"] {
+    color: #f8fafc !important;
+}
+
+.dark-mode p[style*="color: #64748b"],
+.dark-mode div[style*="color: #64748b"],
+.dark-mode div[style*="color: #475569"] {
+    color: #94a3b8 !important;
+}
+
+/* Subscriptions & Assigned Tasks */
 .dark-mode .sub-item { background: #0f172a; border-color: #334155; }
 .dark-mode .sub-name { color: #f8fafc; }
 .dark-mode .assigned-exams-container { background: rgba(59, 130, 246, 0.05); border-color: #334155; }
