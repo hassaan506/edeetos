@@ -60,6 +60,7 @@
     gap: 6px;
     text-decoration: none;
     border: none;
+    white-space: nowrap; /* Add this to prevent text wrapping */
 }
 
 .nav-actions button:hover, .nav-actions a:hover {

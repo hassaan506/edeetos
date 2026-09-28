@@ -70,7 +70,12 @@
     align-items: center;
     justify-content: center;
 }
-
+.icon-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
 .icon-btn:hover { background: rgba(255, 255, 255, 0.8); color: #047857; border-color: rgba(16, 185, 129, 0.4); transform: scale(1.05); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15); }
 
 /* --- 1. THE MAIN GLASS CARD --- */
