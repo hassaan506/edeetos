@@ -1,0 +1,55 @@
+/* === FEATURES PAGE STYLING === */
+body {
+    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 50%, #f3e8ff 100%);
+    background-attachment: fixed;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.hero-section { text-align: center; }
+.badge-pill { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(255, 255, 255, 0.6); color: #0ea5e9; font-weight: 800; border-radius: 50px; font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 4px 10px rgba(0,0,0,0.02);}
+.hero-content h1 { font-size: 4rem; font-weight: 900; color: #0f172a; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; transition: color 0.3s; }
+.hero-desc { font-size: 1.25rem; color: #475569; margin: 0 auto; line-height: 1.6; max-width: 700px; transition: color 0.3s; }
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    padding: 2.5rem;
+    text-align: left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.feature-card h3 {
+    color: #0f172a;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.feature-card p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* === DARK MODE === */
+body.dark-mode { background: linear-gradient(135deg, #0f172a 0%, #064e3b 50%, #1e1b4b 100%); color: #f8fafc; }
+.dark-mode .hero-content h1, .dark-mode h2, .dark-mode .feature-card h3 { color: #f8fafc; }
+.dark-mode .hero-desc, .dark-mode .feature-card p { color: #cbd5e1; }
+.dark-mode .badge-pill { background: rgba(56, 189, 248, 0.1); color: #bae6fd; border-color: rgba(56, 189, 248, 0.3); }
+.dark-mode h2 { border-bottom-color: #334155 !important; }
+.dark-mode .feature-card { background: rgba(30, 41, 59, 0.7); border-color: rgba(51, 65, 85, 0.8); }
+.dark-mode .feature-card:hover { background: rgba(30, 41, 59, 0.9); border-color: #38bdf8; }
