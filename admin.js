@@ -2,6 +2,15 @@ import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+let allUsersData = [];
+
+// === HELPER: Cross-Reference UID to Real Name ===
+function getUserName(uid) {
+    if (!allUsersData || allUsersData.length === 0) return uid; 
+    const user = allUsersData.find(u => u.uid === uid);
+    return user ? user.fullName : "Unknown User";
+}
+
 // === AUTHENTICATION & INITIALIZATION ===
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -13,9 +22,9 @@ onAuthStateChanged(auth, async (user) => {
                 alert("Unauthorized Access."); window.location.href = 'dashboard.html'; return;
             }
             
-            // Init Default Loaders
+            // Critical: Await fetching users FIRST so cross-referencing names works instantly for all other modules.
+            await fetchAllUsers();
             calculateTotalQuestions();
-            fetchAllUsers();
             
             // Listeners for side modules
             fetchStudyRooms();
@@ -112,7 +121,6 @@ async function calculateTotalQuestions() {
 // === 2. USER MANAGER & EDITING (GOD MODE) ===
 const usersListEl = document.getElementById('users-list');
 const userCountEl = document.getElementById('user-count');
-let allUsersData = [];
 
 async function fetchAllUsers() {
     try {
@@ -253,7 +261,6 @@ document.getElementById('btn-wipe-progress').onclick = async () => {
     const confirmText = prompt(`Type WIPE to delete ALL study progress (Mistakes, Bookmarks, Exam History) for ${editingUser.email}.`);
     if (confirmText === 'WIPE') {
         try {
-            // Re-fetch the user to safely wipe the dynamic objects
             const uRef = doc(db, "users", editingUser.uid);
             const snap = await getDoc(uRef);
             if(!snap.exists()) return;
@@ -338,14 +345,16 @@ function fetchStudyRooms() {
         const list = document.getElementById('studyrooms-list');
         if(!list) return;
         list.innerHTML = '';
-        if(snap.empty) return list.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: #94a3b8;">No active rooms.</td></tr>';
+        if(snap.empty) return list.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">No active rooms.</td></tr>';
         
         snap.forEach(d => {
             const data = d.data();
+            const hostName = getUserName(data.hostId);
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><strong>${d.id}</strong></td>
                 <td>${courseNamesMap[data.course] || data.course || 'Unknown'}</td>
+                <td>${hostName}</td>
                 <td><span class="badge ${data.status === 'ended' ? 'b-student' : 'b-admin'}">${data.status}</span></td>
                 <td>
                     <button class="btn-action-del btn-end-room" ${data.status === 'ended' ? 'disabled style="opacity:0.5;"' : ''}>End</button>
@@ -367,14 +376,18 @@ function fetchFriendChallenges() {
         const list = document.getElementById('challenges-list');
         if(!list) return;
         list.innerHTML = '';
-        if(snap.empty) return list.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: #94a3b8;">No challenges found.</td></tr>';
+        if(snap.empty) return list.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 2rem; color: #94a3b8;">No challenges found.</td></tr>';
         
         snap.forEach(d => {
             const data = d.data();
+            const attempts = data.attemptedBy ? data.attemptedBy.length : (data.attempts || 0);
+            const examDetails = `${data.total || '?'} Qs (${data.calcMinutes || '?'} Min)`;
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><strong>${d.id}</strong></td>
                 <td>${data.hostName}</td>
+                <td><span style="background: #f1f5f9; padding: 4px 8px; border-radius: 6px; font-size: 0.85rem;">${examDetails}</span></td>
+                <td><span class="badge b-course">${attempts} Attempt(s)</span></td>
                 <td>${data.score} / ${data.total}</td>
                 <td><button class="btn-action-del btn-del-chal">Delete</button></td>
             `;
@@ -384,7 +397,7 @@ function fetchFriendChallenges() {
     });
 }
 
-// === 5. ASSIGNED EXAMS ===
+// === 5. ASSIGNED EXAMS (PULLS REAL-TIME SCORE FROM STUDENT HISTORY) ===
 let unsubExams = null;
 function fetchAssignedExams() {
     if(unsubExams) return;
@@ -392,15 +405,41 @@ function fetchAssignedExams() {
         const list = document.getElementById('assigned-list');
         if(!list) return;
         list.innerHTML = '';
-        if(snap.empty) return list.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 2rem; color: #94a3b8;">No assigned exams.</td></tr>';
+        if(snap.empty) return list.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">No assigned exams.</td></tr>';
         
         snap.forEach(d => {
             const data = d.data();
             const dateStr = data.createdAt ? data.createdAt.toDate().toLocaleDateString() : 'N/A';
+            
+            // Build the student completion list and map scores dynamically
+            let studentsHtml = '';
+            (data.assignedTo || []).forEach(uid => {
+                const sName = getUserName(uid);
+                const isDone = (data.isCompletedBy || []).includes(uid);
+                let scoreText = `<span style="color:#f59e0b; font-weight:bold; font-size:0.75rem;">Pending</span>`;
+                
+                if (isDone) {
+                    let foundScore = null;
+                    const sDoc = allUsersData.find(u => u.uid === uid);
+                    if (sDoc) {
+                        const allHist = [];
+                        Object.keys(sDoc).forEach(k => {
+                            if (sDoc[k] && sDoc[k].examHistory) allHist.push(...sDoc[k].examHistory);
+                        });
+                        // Match the exam exactly by title
+                        const match = allHist.reverse().find(ex => ex.examName === data.title);
+                        if (match) foundScore = `${match.percentage}% (${match.score}/${match.totalQuestions})`;
+                    }
+                    scoreText = `<span style="color:#10b981; font-weight:bold; font-size:0.75rem;">Done ${foundScore ? '- ' + foundScore : ''}</span>`;
+                }
+                studentsHtml += `<div style="margin-bottom: 4px; display:flex; justify-content:space-between; align-items:center; background:#f8fafc; padding:4px 8px; border-radius:6px; border:1px solid #e2e8f0; font-size:0.85rem;"><span>${sName}</span> ${scoreText}</div>`;
+            });
+
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><strong>${data.title}</strong></td>
-                <td>${data.questions?.length || 0} Qs | ${data.timerMinutes} Min</td>
+                <td><strong>${data.title}</strong><div style="font-size:0.8rem; color:#64748b; margin-top:4px;">${data.questions?.length || 0} Qs | ${data.timerMinutes} Min</div></td>
+                <td>${getUserName(data.assignedBy)}</td>
+                <td style="min-width: 250px;">${studentsHtml || '<span style="color:#94a3b8;">No students</span>'}</td>
                 <td>${dateStr}</td>
                 <td><button class="btn-action-del btn-del-exam">Delete</button></td>
             `;
@@ -716,7 +755,7 @@ async function fetchRequests() {
     });
 }
 
-// === 11. REPORTS ===
+// === 11. REPORTS (GOD MODE SOLVER) ===
 let unsubReps = null;
 async function fetchReports() {
     if (unsubReps) return; 
@@ -739,10 +778,10 @@ async function fetchReports() {
                 <p style="color:#1e293b; font-size:0.95rem;"><strong>Reason:</strong> ${data.reason}</p>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; border-top:1px solid #e2e8f0; padding-top:10px;">
                     <small style="color:#64748b;">By: ${data.userEmail}</small>
-                    <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;">Delete</button>
+                    <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;"><i class="fas fa-check"></i> Mark Solved & Delete</button>
                 </div>
             `;
-            card.querySelector('.btn-res').onclick = () => { if(confirm("Delete report?")) deleteDoc(doc(db, "reported_questions", d.id)); };
+            card.querySelector('.btn-res').onclick = () => { if(confirm("Are you sure this issue is fixed?")) deleteDoc(doc(db, "reported_questions", d.id)); };
             list.appendChild(card);
         });
     });
