@@ -2057,7 +2057,7 @@ if (btnAnalytics) {
             html += `</div></div>`;
 
             html += `
-                <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Smart Training Hub</h4>
+                <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Performance Drills</h4>
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px;">
             `;
 

@@ -417,6 +417,30 @@ if (btnOpenNotes) {
     });
 }
 
+const btnOpenFlashcards = document.getElementById('btn-open-flashcards');
+if (btnOpenFlashcards) {
+    btnOpenFlashcards.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            alert("Please register an account to access Flashcards.");
+            return;
+        }
+        
+        if (currentUserData) {
+            let activeSub = null;
+            if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) {
+                activeSub = Object.keys(currentUserData.subscriptions)[0];
+            }
+
+            if (currentUserData.selectedCourse || activeSub) {
+                localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse || activeSub);
+                window.location.href = 'flashcards.html';
+            } else {
+                alert("Your assigned course is missing. Please request one in your Profile.");
+            }
+        }
+    });
+}
+
 function renderNotes(notesArray) {
     const listEl = document.getElementById('notes-vault-list');
     listEl.innerHTML = '';

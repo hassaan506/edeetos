@@ -1,0 +1,46 @@
+/* ========================================== */
+/* FLASHCARD ENGINE STYLES                    */
+/* ========================================== */
+.fc-body { background-color: #f8fafc; color: #0f172a; transition: all 0.3s ease; }
+
+.deck-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+.deck-card {
+    background: white; border: 2px solid #e2e8f0; border-radius: 16px; padding: 1.5rem;
+    cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); text-align: left;
+}
+.deck-card:hover { transform: translateY(-4px); border-color: #a855f7; box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.2); }
+.deck-title { font-size: 1.2rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; }
+.deck-count { font-size: 0.85rem; font-weight: 800; color: #a855f7; background: #f3e8ff; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+
+/* 3D Flip Mechanics */
+.flashcard-container { width: 100%; height: 500px; perspective: 1500px; cursor: pointer; margin-top: 1rem; }
+.flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+.flashcard-inner.is-flipped { transform: rotateY(180deg); }
+
+.flashcard-front, .flashcard-back {
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 24px; padding: 2.5rem; background: #ffffff; border: 2px solid #e2e8f0;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow-y: auto;
+}
+
+.flashcard-back { transform: rotateY(180deg); border-color: #a855f7; }
+
+.flashcard-front::-webkit-scrollbar, .flashcard-back::-webkit-scrollbar { width: 6px; }
+.flashcard-front::-webkit-scrollbar-thumb, .flashcard-back::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* Dark Mode Overrides */
+body.dark-mode { background-color: #0f172a; color: #f8fafc; }
+.dark-mode .navbar { background: rgba(15, 23, 42, 0.85); border-bottom-color: #334155; }
+.dark-mode .deck-card { background: #1e293b; border-color: #334155; }
+.dark-mode .deck-card:hover { border-color: #a855f7; }
+.dark-mode .deck-title { color: #f8fafc; }
+.dark-mode .deck-count { background: rgba(168, 85, 247, 0.2); }
+.dark-mode h2 { color: #f8fafc !important; }
+
+.dark-mode .flashcard-front { background: #1e293b; border-color: #334155; }
+.dark-mode .flashcard-back { background: #0f172a; border-color: #a855f7; }
+.dark-mode #fc-stem { color: #f8fafc !important; }
+.dark-mode #fc-answer { background: rgba(16, 185, 129, 0.1) !important; color: #34d399 !important; border-color: #059669 !important; }
+.dark-mode #fc-trick { background: rgba(245, 158, 11, 0.1) !important; color: #fbbf24 !important; border-color: #b45309 !important; }
