@@ -8,7 +8,8 @@ const selectionScreen = document.getElementById('fc-selection-screen');
 const trainingScreen = document.getElementById('fc-training-screen');
 const deckGrid = document.getElementById('deck-grid');
 const flashcardInner = document.getElementById('flashcard-inner');
-const controlsDiv = document.getElementById('fc-controls');
+const evalControls = document.getElementById('fc-eval-controls');
+const prevBtn = document.getElementById('btn-prev-card');
 
 // Ensure user has an active session
 const activeCourse = localStorage.getItem('edeetos_active_course');
@@ -45,9 +46,9 @@ function buildDeckSelection() {
         const cardEl = document.createElement('div');
         cardEl.className = 'deck-card';
         cardEl.innerHTML = `
-            <div style="font-size: 2.5rem; margin-bottom: 10px;">${system.icon}</div>
+            <div style="font-size: 3rem; margin-bottom: 15px;">${system.icon}</div>
             <div class="deck-title">${system.title}</div>
-            <div class="deck-count" style="font-size: 0.75rem;">Load Deck ➡</div>
+            <div class="deck-count">Load Deck ➡</div>
         `;
         
         cardEl.onclick = () => fetchAndLaunchDeck(system.id, cardEl);
@@ -61,7 +62,6 @@ async function fetchAndLaunchDeck(systemId, cardElement) {
     cardElement.style.pointerEvents = 'none';
 
     try {
-        // Constructs the filename exactly as requested: e.g., Flashcards/Cardiovascular System.json
         const fileName = `Flashcards/${systemId}.json`;
         const res = await fetch(fileName, { cache: 'no-cache' });
         
@@ -73,7 +73,7 @@ async function fetchAndLaunchDeck(systemId, cardElement) {
             throw new Error("Deck is empty");
         }
 
-        // Shuffle the deck for active recall
+        // Shuffle the deck
         activeDeck = deckData.sort(() => 0.5 - Math.random());
         currentIndex = 0;
         
@@ -95,13 +95,20 @@ function renderCard() {
     const card = activeDeck[currentIndex];
     
     flashcardInner.classList.remove('is-flipped');
-    controlsDiv.style.display = 'none'; // Hide buttons until they flip the card
+    evalControls.style.display = 'none'; 
+    
+    // Manage Previous Button Visibility
+    if (currentIndex > 0) {
+        prevBtn.style.display = 'flex';
+    } else {
+        prevBtn.style.display = 'none';
+    }
     
     document.getElementById('fc-progress-text').textContent = `${currentIndex + 1} / ${activeDeck.length}`;
     document.getElementById('fc-meta').textContent = `${card.System || 'System'} > ${card.Chapter || 'Chapter'} > ${card.Topic || 'Topic'}`;
     
     const highYieldBadge = document.getElementById('fc-high-yield');
-    highYieldBadge.style.display = card.HighYield ? 'block' : 'none';
+    highYieldBadge.style.display = card.HighYield ? 'inline-block' : 'none';
     
     document.getElementById('fc-stem').innerHTML = card.Stem || "Missing question stem.";
     document.getElementById('fc-answer').innerHTML = card.Answer || "Missing answer.";
@@ -114,7 +121,7 @@ function renderCard() {
         trickContainer.style.display = 'none';
     }
 
-    // Handle Images if they exist in your JSON
+    // Handle Images
     const imgFront = document.getElementById('fc-image-front');
     const imgBack = document.getElementById('fc-image-back');
     
@@ -132,7 +139,7 @@ function renderCard() {
 document.getElementById('flashcard-container').onclick = () => {
     if (!flashcardInner.classList.contains('is-flipped')) {
         flashcardInner.classList.add('is-flipped');
-        controlsDiv.style.display = 'flex'; // Reveal the eval buttons
+        evalControls.style.display = 'flex'; // Reveal "Got It" and "Review Again"
     }
 };
 
@@ -141,24 +148,47 @@ document.getElementById('btn-back-decks').onclick = () => {
     selectionScreen.style.display = 'block';
 };
 
-// Traversal Buttons
-document.querySelectorAll('.fc-eval-btn').forEach(btn => {
-    btn.onclick = (e) => {
-        e.stopPropagation(); // Prevent card from un-flipping when button is clicked
-        
-        if (currentIndex < activeDeck.length - 1) {
-            flashcardInner.classList.remove('is-flipped');
-            controlsDiv.style.display = 'none';
-            setTimeout(() => {
-                currentIndex++;
-                renderCard();
-            }, 300); // Wait for unflip animation
-        } else {
-            alert("Deck completed! Returning to menu.");
-            document.getElementById('btn-back-decks').click();
-        }
-    };
-});
+// --- PREVIOUS BUTTON LOGIC ---
+prevBtn.onclick = (e) => {
+    e.stopPropagation();
+    if (currentIndex > 0) {
+        flashcardInner.classList.remove('is-flipped');
+        evalControls.style.display = 'none';
+        setTimeout(() => {
+            currentIndex--;
+            renderCard();
+        }, 300);
+    }
+};
+
+// --- EVALUATION CONTROLS (GOT IT vs REVIEW AGAIN) ---
+document.getElementById('btn-eval-easy').onclick = (e) => {
+    e.stopPropagation(); 
+    moveToNextCard();
+};
+
+document.getElementById('btn-eval-hard').onclick = (e) => {
+    e.stopPropagation(); 
+    // Take the current card and push a copy to the very end of the array
+    const currentCard = activeDeck[currentIndex];
+    activeDeck.push(currentCard);
+    
+    moveToNextCard();
+};
+
+function moveToNextCard() {
+    if (currentIndex < activeDeck.length - 1) {
+        flashcardInner.classList.remove('is-flipped');
+        evalControls.style.display = 'none';
+        setTimeout(() => {
+            currentIndex++;
+            renderCard();
+        }, 300); // Wait for unflip animation
+    } else {
+        alert("Deck completed! Outstanding work.");
+        document.getElementById('btn-back-decks').click();
+    }
+}
 
 // Keyboard Navigation
 document.addEventListener('keydown', (e) => {
@@ -170,10 +200,13 @@ document.addEventListener('keydown', (e) => {
             }
         }
         if (e.key === 'ArrowRight' && flashcardInner.classList.contains('is-flipped')) {
-            document.querySelector('.fc-eval-btn[data-eval="easy"]').click();
+            document.getElementById('btn-eval-easy').click();
         }
-        if (e.key === 'ArrowLeft' && flashcardInner.classList.contains('is-flipped')) {
-            document.querySelector('.fc-eval-btn[data-eval="hard"]').click();
+        if (e.key === 'ArrowDown' && flashcardInner.classList.contains('is-flipped')) {
+            document.getElementById('btn-eval-hard').click();
+        }
+        if (e.key === 'ArrowLeft') {
+            if (currentIndex > 0) prevBtn.click();
         }
     }
 });

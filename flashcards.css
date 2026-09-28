@@ -3,32 +3,76 @@
 /* ========================================== */
 .fc-body { background-color: #f8fafc; color: #0f172a; transition: all 0.3s ease; }
 
-.deck-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.deck-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 
 .deck-card {
-    background: white; border: 2px solid #e2e8f0; border-radius: 16px; padding: 1.5rem;
+    background: white; border: 2px solid #e2e8f0; border-radius: 20px; padding: 2rem;
     cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); text-align: left;
+    box-shadow: 0 4px 15px -5px rgba(0,0,0,0.05); text-align: center;
 }
-.deck-card:hover { transform: translateY(-4px); border-color: #a855f7; box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.2); }
-.deck-title { font-size: 1.2rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; }
-.deck-count { font-size: 0.85rem; font-weight: 800; color: #a855f7; background: #f3e8ff; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+.deck-card:hover { transform: translateY(-5px); border-color: #a855f7; box-shadow: 0 15px 30px -5px rgba(168, 85, 247, 0.2); }
+.deck-title { font-size: 1.25rem; font-weight: 800; color: #1e293b; margin-bottom: 0.8rem; letter-spacing: -0.5px;}
+.deck-count { font-size: 0.85rem; font-weight: 800; color: #a855f7; background: #f3e8ff; padding: 6px 12px; border-radius: 20px; display: inline-block; }
 
-/* 3D Flip Mechanics */
-.flashcard-container { width: 100%; height: 500px; perspective: 1500px; cursor: pointer; margin-top: 1rem; }
-.flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+/* Header & Progress */
+.fc-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.fc-progress-pill { background: #f3e8ff; color: #7e22ce; padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 800; font-size: 1rem; display: flex; align-items: center; gap: 8px; border: 1px solid #e9d5ff; }
+
+/* 3D Flip Mechanics & Card Sizing */
+.flashcard-container { width: 100%; height: 500px; perspective: 2000px; cursor: pointer; }
+.flashcard-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
 .flashcard-inner.is-flipped { transform: rotateY(180deg); }
 
 .flashcard-front, .flashcard-back {
     position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-    border-radius: 24px; padding: 2.5rem; background: #ffffff; border: 2px solid #e2e8f0;
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow-y: auto;
+    border-radius: 24px; padding: 3rem; background: #ffffff; border: 1px solid #e2e8f0;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); display: flex; flex-direction: column; overflow-y: auto;
 }
 
-.flashcard-back { transform: rotateY(180deg); border-color: #a855f7; }
+.flashcard-back { transform: rotateY(180deg); border: 2px solid #a855f7; background: #f8fafc; }
 
+/* Custom Scrollbar */
 .flashcard-front::-webkit-scrollbar, .flashcard-back::-webkit-scrollbar { width: 6px; }
 .flashcard-front::-webkit-scrollbar-thumb, .flashcard-back::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* Internal Card Typography */
+.fc-meta-bar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; width: 100%; }
+#fc-meta { font-size: 0.85rem; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.high-yield-badge { background: #fef2f2; color: #ef4444; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 900; border: 1px solid #fca5a5; }
+
+.fc-content-wrapper { display: flex; flex-direction: column; justify-content: center; flex-grow: 1; }
+.fc-stem-text { font-size: 1.6rem; font-weight: 700; color: #0f172a; line-height: 1.5; text-align: center; }
+
+.fc-section-label { font-size: 0.85rem; color: #10b981; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+.fc-answer-box { font-size: 1.3rem; font-weight: 800; color: #064e3b; background: #ecfdf5; padding: 20px; border-radius: 12px; border: 1px solid #a7f3d0; line-height: 1.5; }
+.fc-trick-box { font-size: 1.1rem; color: #b45309; background: #fffbeb; padding: 20px; border-radius: 12px; border: 1px dashed #fcd34d; font-weight: 600; line-height: 1.5; }
+
+.fc-image-box { text-align: center; margin-top: 1.5rem; }
+.fc-image-box img { max-width: 100%; max-height: 250px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+.fc-flip-hint { text-align: center; font-size: 0.9rem; color: #94a3b8; font-weight: 800; margin-top: 2rem; border-top: 2px dashed #f1f5f9; padding-top: 1.5rem; }
+
+/* Bottom Controls */
+.fc-bottom-controls { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 2rem; gap: 1rem; min-height: 60px; }
+.eval-controls { display: flex; gap: 1rem; flex-grow: 1; justify-content: flex-end; }
+.control-btn { padding: 1.2rem 2rem; font-size: 1.1rem; border-radius: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; justify-content: center; }
+.prev-btn { color: #64748b; border-color: #cbd5e1; background: white; }
+.prev-btn:hover { background: #f1f5f9; color: #0f172a; border-color: #94a3b8; }
+.hard-btn { background: #fef2f2; color: #ef4444; border: 2px solid #fca5a5; }
+.hard-btn:hover { background: #fee2e2; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.3); }
+.easy-btn { background: #10b981; color: white; border: none; flex-grow: 1; max-width: 300px; }
+.easy-btn:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4); }
+
+@media (max-width: 768px) {
+    .flashcard-container { height: 450px; }
+    .flashcard-front, .flashcard-back { padding: 1.5rem; }
+    .fc-stem-text { font-size: 1.3rem; }
+    .fc-answer-box, .fc-trick-box { font-size: 1.1rem; padding: 15px; }
+    .fc-bottom-controls { flex-direction: column; }
+    .eval-controls { width: 100%; }
+    .control-btn { padding: 1rem; font-size: 1rem; width: 100%; max-width: 100%; }
+    .prev-btn { width: 100%; }
+}
 
 /* Dark Mode Overrides */
 body.dark-mode { background-color: #0f172a; color: #f8fafc; }
@@ -39,8 +83,13 @@ body.dark-mode { background-color: #0f172a; color: #f8fafc; }
 .dark-mode .deck-count { background: rgba(168, 85, 247, 0.2); }
 .dark-mode h2 { color: #f8fafc !important; }
 
+.dark-mode .fc-progress-pill { background: rgba(168, 85, 247, 0.15); border-color: #6b21a8; color: #d8b4fe; }
 .dark-mode .flashcard-front { background: #1e293b; border-color: #334155; }
 .dark-mode .flashcard-back { background: #0f172a; border-color: #a855f7; }
-.dark-mode #fc-stem { color: #f8fafc !important; }
-.dark-mode #fc-answer { background: rgba(16, 185, 129, 0.1) !important; color: #34d399 !important; border-color: #059669 !important; }
-.dark-mode #fc-trick { background: rgba(245, 158, 11, 0.1) !important; color: #fbbf24 !important; border-color: #b45309 !important; }
+.dark-mode .fc-stem-text { color: #f8fafc; }
+.dark-mode .fc-answer-box { background: rgba(16, 185, 129, 0.1); color: #34d399; border-color: #059669; }
+.dark-mode .fc-trick-box { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border-color: #b45309; }
+.dark-mode .fc-flip-hint { border-top-color: #334155; }
+.dark-mode .prev-btn { background: #1e293b; border-color: #475569; color: #cbd5e1; }
+.dark-mode .prev-btn:hover { background: #334155; color: #f8fafc; }
+.dark-mode .hard-btn { background: rgba(239, 68, 68, 0.1); color: #fca5a5; border-color: #991b1b; }
