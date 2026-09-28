@@ -107,6 +107,7 @@
     .welcome-header #user-name { font-size: 1.6rem; }
     #subscription-status { width: 100%; max-width: max-content; margin: 0.5rem auto 0 auto; }
 }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
 /* === FEATURE: 3-COLUMN DASHBOARD GRID === */
 .course-dash-grid {

@@ -67,12 +67,12 @@
                     </div>
                 </div>
 
-                <!-- Course Selection -->
+<!-- Course Selection & Exam Date -->
                 <div class="form-row">
-                    <div class="form-group" style="width: 100%;">
+                    <div class="form-group">
                         <label>Select Your Access Course</label>
                         <select id="reg-course" class="custom-select" required>
-                            <option value="" disabled selected>Select the specific course you want to access...</option>
+                            <option value="" disabled selected>Select specific course...</option>
                             <option value="mbbs_year1">MBBS 1st Year</option>
                             <option value="mbbs_year2">MBBS 2nd Year</option>
                             <option value="mbbs_year3">MBBS 3rd Year</option>
@@ -84,8 +84,15 @@
                             <option value="mrcs_part1">MRCS Part 1</option>
                             <option value="mrcs_part2">MRCS Part 2</option>
                         </select>
-                        <small style="color: #666; font-size: 0.85rem; margin-top: 5px; display: block;">
-                            Note: You will only have access to this specific course. Changing it later requires Admin approval.
+                        <small style="color: #64748b; font-size: 0.75rem; margin-top: 5px; display: block; font-weight: 600;">
+                            Note: Locked to one course. Admin approval needed to change.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Exam Date</label>
+                        <input type="date" id="reg-exam-date" required>
+                        <small style="color: #64748b; font-size: 0.75rem; margin-top: 5px; display: block; font-weight: 600;">
+                            Used to calculate your study timeline.
                         </small>
                     </div>
                 </div>

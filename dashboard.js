@@ -74,8 +74,39 @@ onAuthStateChanged(auth, async (user) => {
                     return; 
                 }				
                 
-                // 2. Set UI Elements
+// 2. Set UI Elements
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
+
+                // --- NEW: EXAM COUNTDOWN LOGIC ---
+                if (currentUserData.examDate) {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Strip time, compare dates only
+                    const examD = new Date(currentUserData.examDate);
+                    examD.setHours(0, 0, 0, 0);
+                    
+                    const diffTime = examD - today;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    const countdownContainer = document.getElementById('exam-countdown-container');
+                    const countdownText = document.getElementById('exam-countdown-text');
+                    const dashSubtitle = document.getElementById('dash-subtitle');
+                    
+                    if (countdownContainer && countdownText) {
+                        countdownContainer.style.display = 'block';
+                        if (dashSubtitle) dashSubtitle.style.display = 'none'; // Hide generic text to force focus on the clock
+                        
+                        if (diffDays > 0) {
+                            countdownText.textContent = `${diffDays} Days left until Exam Day!`;
+                        } else if (diffDays === 0) {
+                            countdownText.textContent = "Exam Day is TODAY! Go conquer it.";
+                        } else {
+                            countdownText.textContent = "Exam date has passed.";
+                            // De-escalate the colors if the exam is over
+                            document.getElementById('exam-countdown-badge').style.cssText = "background: #f1f5f9; color: #64748b; border: 2px solid #cbd5e1; padding: 0.6rem 1.5rem; border-radius: 30px; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px;";
+                        }
+                    }
+                }
+
                 
                 const userCourseCode = currentUserData.selectedCourse; 
                 const activeCourseEl = document.getElementById('active-course-name');
@@ -879,6 +910,7 @@ if (btnOpenProfile) {
         document.getElementById('prof-phone').value = currentUserData.phone || '';
         document.getElementById('prof-uni').value = currentUserData.institution || '';
         document.getElementById('prof-location').value = currentUserData.location || '';
+		document.getElementById('prof-exam-date').value = currentUserData.examDate || '';
 
         const userCourseCode = currentUserData.selectedCourse;
         const displayField = document.getElementById('prof-course-display');
@@ -980,13 +1012,15 @@ if (profileForm) {
         btnSave.disabled = true;
         
         try {
-            await updateDoc(doc(db, "users", currentUserId), {
+			await updateDoc(doc(db, "users", currentUserId), {
                 fullName: document.getElementById('prof-name').value,
                 phone: document.getElementById('prof-phone').value,
                 institution: document.getElementById('prof-uni').value,
-                location: document.getElementById('prof-location').value
+                location: document.getElementById('prof-location').value,
+                examDate: document.getElementById('prof-exam-date').value // NEW
             });
             
+            currentUserData.examDate = document.getElementById('prof-exam-date').value; // NEW
             currentUserData.fullName = document.getElementById('prof-name').value;
             currentUserData.phone = document.getElementById('prof-phone').value;
             currentUserData.institution = document.getElementById('prof-uni').value;

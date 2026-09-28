@@ -12,7 +12,7 @@ if (registerForm) {
         e.preventDefault();
 
         // 1. Gather Input Values
-        const name = document.querySelector('#reg-name').value;
+		const name = document.querySelector('#reg-name').value;
         const username = document.querySelector('#reg-username').value.toLowerCase().trim();
         const email = document.querySelector('#reg-email').value;
         const phone = document.querySelector('#reg-phone').value;
@@ -20,6 +20,7 @@ if (registerForm) {
         const location = document.querySelector('#reg-location').value;
         const password = document.querySelector('#reg-password').value;
         const course = document.querySelector('#reg-course').value;
+        const examDate = document.querySelector('#reg-exam-date').value; // NEW
 
         try {
             // 2. Create Firebase Auth User
@@ -30,7 +31,7 @@ if (registerForm) {
             const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
             localStorage.setItem("edeetos_session_id", newToken);
 
-            // 4. Write to Firestore Database
+			// 4. Write to Firestore Database
             await setDoc(doc(db, "users", user.uid), {
                 fullName: name,
                 username: username,
@@ -38,7 +39,8 @@ if (registerForm) {
                 phone: phone,
                 institution: uni,
                 location: location,
-                selectedCourse: course, // Exact file prefix mapped directly
+                selectedCourse: course, 
+                examDate: examDate, // NEW: Save to DB
                 courseChangeRequested: false, 
                 role: "student", 
                 sessionToken: newToken,
