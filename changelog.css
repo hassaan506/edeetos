@@ -5,7 +5,7 @@
 /* ========================================== */
 body.changelog-body { 
     font-family: 'Inter', sans-serif; 
-    background: #f8fafc; /* Base color, overriden by overlays */
+    background: #f8fafc; 
     margin: 0; 
     padding: 0; 
     color: #0f172a; 
@@ -36,33 +36,35 @@ body.changelog-body {
 }
 
 /* Timeline Layout */
-.timeline-container { position: relative; padding-left: 5rem; margin-top: 2rem; }
+.timeline-container { position: relative; padding-left: 8rem; margin-top: 2rem; }
 .timeline-line { 
-    position: absolute; left: 1.5rem; top: 0; bottom: 0; width: 4px; 
+    position: absolute; left: 5.5rem; top: 0; bottom: 0; width: 4px; transform: translateX(-50%);
     background: linear-gradient(to bottom, #10b981, #3b82f6, #8b5cf6, #cbd5e1); 
     border-radius: 4px; z-index: 1;
 }
 
 .timeline-row { position: relative; margin-bottom: 5rem; display: flex; align-items: flex-start; }
 
-/* Date Box (Left Side) */
+/* Date Box (Offset to the left, solid background) */
 .timeline-date-box {
-    position: absolute; left: -5rem; top: 0;
+    position: absolute; left: -8rem; top: 0;
     width: 65px; text-align: center;
-    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px);
+    background: #ffffff; 
     border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px;
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.08);
     overflow: hidden; padding-bottom: 5px;
     transition: transform 0.3s ease;
+    z-index: 5;
 }
 .timeline-row:hover .timeline-date-box { transform: scale(1.05) rotate(-2deg); border-color: #10b981; }
 .date-month { background: #10b981; color: white; font-size: 0.75rem; font-weight: 900; padding: 4px; letter-spacing: 1px; text-transform: uppercase; }
 .date-day { font-size: 1.6rem; font-weight: 900; color: #0f172a; margin-top: 4px; line-height: 1; }
 .date-year { font-size: 0.7rem; font-weight: 800; color: #64748b; }
 
-/* The Dot */
+/* The Dot (Anchored perfectly to the line) */
 .timeline-dot { 
-    position: absolute; left: -4rem; top: 1.5rem; width: 20px; height: 20px; 
+    position: absolute; left: -2.5rem; top: 1.8rem; width: 20px; height: 20px; 
+    transform: translateX(-50%);
     border-radius: 50%; background: #64748b; border: 4px solid #f8fafc; z-index: 2;
     transition: all 0.3s ease;
 }
@@ -74,7 +76,7 @@ body.changelog-body {
 
 /* The Card */
 .timeline-card { 
-    flex-grow: 1; padding: 2.5rem; margin-left: 2rem;
+    flex-grow: 1; padding: 2.5rem; margin-left: 0;
     background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     border-radius: 24px; box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05); 
     border: 1px solid rgba(255, 255, 255, 1); border-left: 6px solid #cbd5e1;
@@ -90,15 +92,15 @@ body.changelog-body {
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 10px; }
 .card-header h2 { margin: 0; color: #064e3b; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
 
-/* Lists & Badges */
+/* Lists & Badges (Flex bug fixed here) */
 .update-list { list-style: none; padding: 0; margin: 0; }
-.update-list li { margin-bottom: 1.2rem; color: #334155; font-size: 1.05rem; font-weight: 500; line-height: 1.7; display: flex; align-items: flex-start; gap: 12px; }
+.update-list li { margin-bottom: 1.2rem; color: #334155; font-size: 1.05rem; font-weight: 500; line-height: 1.7; display: block; }
 .update-list li:last-child { margin-bottom: 0; }
 
-.tag { padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
+.tag { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
 .tag-major { background: linear-gradient(135deg, #fef2f2, #fecaca); color: #dc2626; border: 1px solid #fca5a5; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.15); }
 
-.badge { flex-shrink: 0; padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; white-space: nowrap; letter-spacing: 0.5px; margin-top: 4px; }
+.badge { display: inline-block; vertical-align: middle; padding: 5px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; white-space: nowrap; letter-spacing: 0.5px; margin-right: 10px; margin-top: -3px; }
 .badge-feature { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
 .badge-perf { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
 .badge-fix { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
@@ -128,15 +130,14 @@ body.changelog-body {
 .changelog-footer a:hover { color: #10b981; }
 
 @media (max-width: 768px) {
-    .timeline-container { padding-left: 2rem; }
-    .timeline-line { left: 1rem; }
-    .timeline-card { margin-left: 1.5rem; padding: 1.5rem; }
+    .timeline-container { padding-left: 2.5rem; }
+    .timeline-line { left: 1.25rem; }
+    .timeline-card { margin-left: 0; padding: 1.5rem; }
     .timeline-date-box { position: relative; left: 0; width: auto; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 1rem; padding: 4px 12px; }
     .date-month { border-radius: 6px; }
     .date-day { margin-top: 0; font-size: 1.2rem; }
     .timeline-row { flex-direction: column; }
-    .timeline-dot { left: -3.5rem; top: 0.5rem; width: 16px; height: 16px; }
-    .update-list li { flex-direction: column; gap: 4px; }
+    .timeline-dot { left: -1.25rem; top: 3.2rem; width: 16px; height: 16px; }
     .badge { margin-top: 0; margin-bottom: 4px; }
 }
 
@@ -148,7 +149,7 @@ body.dark-mode { background: #020617; color: #f8fafc; }
 .dark-mode .changelog-header h1 { color: #f8fafc; }
 .dark-mode .timeline-line { background: linear-gradient(to bottom, #10b981, #38bdf8, #334155); }
 
-.dark-mode .timeline-date-box { background: rgba(30, 41, 59, 0.8); border-color: rgba(16, 185, 129, 0.3); }
+.dark-mode .timeline-date-box { background: #1e293b; border-color: rgba(16, 185, 129, 0.3); }
 .dark-mode .date-day { color: #f8fafc; }
 .dark-mode .timeline-row:hover .timeline-date-box { border-color: #34d399; }
 .dark-mode .timeline-dot { background: #475569; border-color: #020617; }
