@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
@@ -100,15 +100,57 @@ if (activeRoomId) {
         `;
         document.body.prepend(hostBanner);
 
-        document.getElementById('btn-exit-host-room').addEventListener('click', async () => {
-            if(confirm("Are you sure you want to close this study room? Guests will be disconnected.")) {
-                const btn = document.getElementById('btn-exit-host-room');
-                btn.textContent = "Closing...";
+        // UI FIX: Custom modal to control exit behavior
+        document.getElementById('btn-exit-host-room').addEventListener('click', () => {
+            const exitModal = document.createElement('div');
+            exitModal.id = 'host-exit-modal';
+            exitModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
+            exitModal.innerHTML = `
+                <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25);">
+                    <i class="fas fa-sign-out-alt" style="color: #ef4444; font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h2 style="color: #1e3a8a; margin-bottom: 10px; margin-top: 0;">Exit Study Room</h2>
+                    <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">You are the host of Room <strong style="color: #1e293b;">${activeRoomId}</strong>. Do you want to just leave the room, or end the session completely and kick all guests?</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button id="btn-leave-only" class="btn-outline" style="border-color: #f59e0b; color: #d97706; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s;">🚶‍♂️ Just Leave (Keep Room Active)</button>
+                        <button id="btn-end-room" class="btn-solid" style="background: #ef4444; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); transition: 0.2s;">🛑 End Room & Kick Everyone</button>
+                        <button id="btn-cancel-exit" class="btn-outline" style="border-color: #cbd5e1; color: #64748b; padding: 12px; border-radius: 8px; margin-top: 5px; cursor: pointer; transition: 0.2s;">Cancel</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(exitModal);
+
+            document.getElementById('btn-cancel-exit').onclick = () => exitModal.remove();
+
+            // OPTION 1: Just Leave
+            document.getElementById('btn-leave-only').onclick = async () => {
+                const btn = document.getElementById('btn-leave-only');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Leaving...';
                 btn.disabled = true;
-                btn.style.background = "#991b1b";
                 
                 try {
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'closed' });
+                    if (auth.currentUser) {
+                        await updateDoc(doc(db, "study_rooms", activeRoomId), {
+                            [`activeMembers.${auth.currentUser.uid}`]: deleteField()
+                        });
+                    }
+                } catch(e) {
+                    console.warn("Could not sync departure to Firebase:", e);
+                }
+                
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                hostBanner.remove();
+                exitModal.remove();
+            };
+
+            // OPTION 2: End Room & Kick Everyone
+            document.getElementById('btn-end-room').onclick = async () => {
+                const btn = document.getElementById('btn-end-room');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ending...';
+                btn.disabled = true;
+                
+                try {
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' });
                 } catch(e) {
                     console.warn("Could not sync room closure to Firebase:", e);
                 }
@@ -116,7 +158,8 @@ if (activeRoomId) {
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
                 hostBanner.remove();
-            }
+                exitModal.remove();
+            };
         });
     }
 }
@@ -186,7 +229,7 @@ globalSearch.addEventListener('input', (e) => {
     searchTimeout = setTimeout(() => {
 		const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-            if (!passesDifficultyFilter(q)) return false; // NEW: Block from search results 
+            if (!passesDifficultyFilter(q)) return false; 
             const questionText = q.Question || q.question || q.text || q.statement || "";
             const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
             return textToSearch.includes(query);
@@ -240,7 +283,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// --- NEW DIFFICULTY FILTER LOGIC ---
 function passesDifficultyFilter(q) {
     if (!diffEasyFilter || !diffMediumFilter || !diffHardFilter) return true;
     
@@ -248,7 +290,6 @@ function passesDifficultyFilter(q) {
     const medium = diffMediumFilter.checked;
     const hard = diffHardFilter.checked;
     
-    // If nothing is checked, return true (show everything)
     if (!easy && !medium && !hard) return true; 
     
     const qDiff = (q.Difficulty || q.difficulty || "").toLowerCase().trim();
@@ -264,7 +305,6 @@ function triggerFilterUpdate() {
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
     
-    // If the topic popup is currently open, we must refresh it so the question counts update live
     if (popupOverlay.style.display === 'flex') {
         const current = popupHistory[popupHistory.length - 1];
         if (current) {

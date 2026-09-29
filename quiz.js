@@ -86,6 +86,10 @@ async function loadSession() {
                     q.sessionState = null; 
                     q.historicalState = null; 
                     q.sequenceNumber = i + 1; 
+                    
+                    // CRITICAL FIX: If this queue came from a friend challenge, strip the host's answers so they don't leak.
+                    q.userSelectedAnswer = null;
+                    q.eliminatedOptions = [];
                 });
                 resolve();
             };
@@ -359,12 +363,9 @@ function loadQuestion(index) {
             questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
         }
 
-        // --- NEW: DYNAMIC DIFFICULTY TAG ---
         const diffBadge = document.getElementById('question-difficulty-badge');
         if (diffBadge) {
             const diffText = (currentQuestionData.Difficulty || "").toLowerCase().trim();
-            
-            // Note: We use strict inline styles here so the dark-mode CSS override for the standard question-pill doesn't ruin the semantic colors (green/yellow/red).
             const baseStyle = "display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.5px;";
             
             if (diffText === 'easy') {
@@ -397,7 +398,6 @@ function loadQuestion(index) {
             document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
         }
 
-        // --- NEW: Render Exam & Year Badges ONLY in Practice Mode ---
         const examYearInfo = document.getElementById('exam-year-info');
         if (examYearInfo) {
             examYearInfo.innerHTML = ''; 
@@ -411,7 +411,6 @@ function loadQuestion(index) {
             let examData = currentQuestionData.Exam || currentQuestionData.exams;
             let examList = Array.isArray(examData) ? examData : (examData ? [examData] : []);
 
-            // Strict check: Only show if data exists AND we are NOT in Exam Mode
             if ((yearList.length > 0 || examList.length > 0) && !isExamMode) {
                 examYearInfo.style.display = 'flex';
                 
@@ -427,11 +426,9 @@ function loadQuestion(index) {
                 
                 examYearInfo.innerHTML = badgesHTML;
             } else {
-                // Forces the container to hide, preventing visual ghosting during exams
                 examYearInfo.style.display = 'none';
             }
         }
-        // -----------------------------------------------------------
 
         questionTextEl.innerHTML = currentQuestionData.text || "Missing Question";
         explanationText.innerHTML = currentQuestionData.explanation || "No explanation provided.";
@@ -1067,10 +1064,10 @@ if (roomRef) {
 // 8. EXAM SUBMISSION & RESULTS
 // ==========================================
 
-// NEW FEATURE: Intentional Exit Flag
+// Intentional Exit Flag
 let isIntentionalExit = false;
 
-// NEW FEATURE: Helper function to navigate away safely without triggering backups
+// Helper function to navigate away safely without triggering backups
 function exitSafely(url) {
     isIntentionalExit = true;
     localStorage.removeItem('edeetos_aborted_session_backup');
@@ -1084,7 +1081,7 @@ function showResults() {
     let correctIds = [];
     let mistakeIds = [];
     
-quizQueue.forEach(q => {
+    quizQueue.forEach(q => {
         let correctOpt = q.options.find(o => o.isCorrect);
         if (correctOpt && q.userSelectedAnswer === correctOpt.text) {
             correctCount++;
@@ -1136,8 +1133,19 @@ quizQueue.forEach(q => {
             const code = Math.random().toString(36).substring(2, 7).toUpperCase();
             
             try {
-                // Aggressively strip undefined values so Firestore doesn't throw a permission/validation error
-                const cleanQueue = JSON.parse(JSON.stringify(quizQueue, (k, v) => v === undefined ? null : v));
+                // CRITICAL FIX: Aggressively scrub the queue so the host's answers NEVER leak to the friend.
+                const sanitizedQueue = quizQueue.map(q => {
+                    const newQ = { ...q };
+                    newQ.userSelectedAnswer = null;
+                    newQ.sessionState = null;
+                    newQ.historicalState = null;
+                    newQ.eliminatedOptions = [];
+                    newQ.isBookmarked = false;
+                    newQ.userNote = "";
+                    return newQ;
+                });
+                
+                const cleanQueue = JSON.parse(JSON.stringify(sanitizedQueue, (k, v) => v === undefined ? null : v));
                 
                 await setDoc(doc(db, "friend_challenges", code), {
                     hostName: (currentUserData && currentUserData.fullName) ? currentUserData.fullName : "A Friend",
@@ -1149,7 +1157,7 @@ quizQueue.forEach(q => {
                     timestamp: serverTimestamp()
                 });
                 
-                // Format the share message (Upgraded and expanded)
+                // Format the share message
                 const challengeText = `I just wrapped up a rigorous mock exam on EDEETOS and scored ${correctCount} out of ${total}! 🎯\n\nThink you have what it takes to beat my accuracy and time? Step up to the Friend Challenge and prove it.\n\nDrop my Challenge Code in the app: *${code}*\n\nLet's see who really knows their stuff!`;
                 
                 // Set modal values
@@ -1209,7 +1217,7 @@ quizQueue.forEach(q => {
         };
     }
 
-const returnBtn = document.getElementById('btn-return-home');
+    const returnBtn = document.getElementById('btn-return-home');
     const reviewBtn = document.getElementById('btn-review-exam-mistakes');
     
     // Core function to push the score to Firebase
@@ -1289,13 +1297,12 @@ function showPracticeCompleteModal(isGuest = false) {
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 
-document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
+    document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
         const btn = e.target;
         btn.textContent = "Saving Progress...";
         btn.disabled = true;
         
         const tasks = [updateSpacedRepetition()];
-        // Pushes the practice time to the database
         if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds));
         
         await Promise.all(tasks);
@@ -1331,12 +1338,17 @@ document.getElementById('btn-resume-quiz').onclick = () => {
 };
 
 function startTimer() {
-    if (timerDisplay && timerDisplay.parentElement && !document.getElementById('pause-btn')) {
+    // CRITICAL FIX: The Pause Button is completely blocked from generating if it is Exam Mode
+    if (!isExamMode && timerDisplay && timerDisplay.parentElement && !document.getElementById('pause-btn')) {
         const pauseBtn = document.createElement('button');
         pauseBtn.id = 'pause-btn';
         pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-        pauseBtn.style.cssText = "background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #065f46; padding: 4px 10px; border-radius: 6px; cursor: pointer; margin-left: 15px; font-size: 0.8rem; font-weight: bold; transition: all 0.2s;";
-        timerDisplay.parentElement.appendChild(pauseBtn);
+        
+        // UI FIX: Stylized to match the green pill container with proper contrast
+        pauseBtn.style.cssText = "background: white; border: 1px solid #a7f3d0; color: #065f46; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: all 0.2s; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); height: fit-content;";
+        
+        // UI FIX: Appended to the outer horizontal flex container (next to the total time block), preventing it from dropping below the numbers
+        timerDisplay.parentElement.parentElement.appendChild(pauseBtn);
         
         pauseBtn.onclick = () => {
             isPaused = true;
@@ -1359,7 +1371,7 @@ function startTimer() {
             sessionSeconds++; 
         }
 
-const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
+        const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
         const sSecs = (sessionSeconds % 60).toString().padStart(2, '0');
         if (timerDisplay) {
             timerDisplay.textContent = `${sMins}:${sSecs}`;
@@ -1376,7 +1388,8 @@ const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
                 timerDisplay.classList.remove('stress-active');
             }
         }
-const challengeDataStr = localStorage.getItem('edeetos_challenge_data');
+        
+        const challengeDataStr = localStorage.getItem('edeetos_challenge_data');
         if (challengeDataStr && isExamMode) {
             const cData = JSON.parse(challengeDataStr);
             document.getElementById('challenge-tracker-wrapper').style.display = 'block';
@@ -1797,7 +1810,7 @@ function checkAndRestoreAbortedSession() {
 }
 
 window.addEventListener('beforeunload', (e) => {
-    // UPDATED: Only save the backup if the exit flag is false
+    // Only save the backup if the exit flag is false
     if (!isIntentionalExit && quizQueue && quizQueue.length > 0 && !isExamMode && !activeRoomId) {
         localStorage.setItem('edeetos_aborted_session_backup', JSON.stringify({
             queue: quizQueue,

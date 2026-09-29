@@ -1,35 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Simple Intersection Observer to fade in changelog items as you scroll
-    const timelineItems = document.querySelectorAll('.timeline-content');
+    // 1. Intersection Observer for Scroll Animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // Triggers when 15% of the element is visible on screen
+    };
 
-    // Initial setup: hide them slightly
-    timelineItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'all 0.5s ease-out';
-    });
-
-    const observer = new IntersectionObserver((entries) => {
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+                // Add the class that triggers the CSS animation
+                entry.target.classList.add('is-visible');
+                
+                // Optional: Uncomment the next line if you only want the animation to happen ONCE
+                // observer.unobserve(entry.target); 
             }
         });
-    }, {
-        threshold: 0.1 // Triggers when 10% of the card is visible
-    });
+    }, observerOptions);
 
-    timelineItems.forEach(item => {
-        observer.observe(item);
-    });
+    // Apply observer to all elements with the animation class
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    animatedElements.forEach(el => scrollObserver.observe(el));
 
+    // 2. Dark Mode Initialization Check
+    // Ensures the changelog matches the theme selected on the main dashboard
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
 });
 
 // --- PAGINATION LOGIC ---
-// Attached to the window object so it can be called directly from the HTML onClick events
+// Attached to window so the HTML onclick="window.changePage(x)" works
 window.changePage = function(pageNum) {
     // Hide all pages
     document.querySelectorAll('.changelog-page').forEach(page => {
@@ -41,20 +42,29 @@ window.changePage = function(pageNum) {
         btn.classList.remove('active');
     });
 
-    // Show selected page and highlight the correct button
+    // Show selected page
     const selectedPage = document.getElementById(`page-${pageNum}`);
     if (selectedPage) {
         selectedPage.classList.add('active');
+        
+        // Re-trigger animations for elements on the new page
+        const newElements = selectedPage.querySelectorAll('.animate-on-scroll');
+        newElements.forEach(el => {
+            el.classList.remove('is-visible');
+            // A slight delay ensures the CSS transition resets before re-applying
+            setTimeout(() => el.classList.add('is-visible'), 50);
+        });
     }
     
+    // Highlight the correct button
     const buttons = document.querySelectorAll('.page-btn');
     if (buttons[pageNum - 1]) {
         buttons[pageNum - 1].classList.add('active');
     }
 
-    // Scroll smoothly to the top of the timeline section
-    const timeline = document.querySelector('.timeline');
+    // Smooth scroll to the top of the timeline section
+    const timeline = document.querySelector('.timeline-container');
     if (timeline) {
-        window.scrollTo({ top: timeline.offsetTop - 50, behavior: 'smooth' });
+        window.scrollTo({ top: timeline.offsetTop - 100, behavior: 'smooth' });
     }
 };
