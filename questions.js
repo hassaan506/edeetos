@@ -56,7 +56,7 @@ const availableBooks = allBooks.filter(book => {
 });
 
 // ==========================================
-// 2. DOM ELEMENTS
+// 2. DOM ELEMENTS & LEGACY CLEANUP
 // ==========================================
 const subjectsGrid = document.getElementById('subjects-grid');
 const popupOverlay = document.getElementById('popup-overlay');
@@ -76,6 +76,12 @@ const startExamBtn = document.getElementById('start-exam-btn');
 const diffEasyFilter = document.getElementById('diff-easy-filter');
 const diffMediumFilter = document.getElementById('diff-medium-filter');
 const diffHardFilter = document.getElementById('diff-hard-filter');
+
+// ERADICATE LEGACY QUICK MOCK EXAM ELEMENTS (Forcing Proper Exam Mode)
+const legacyMockBtn = document.getElementById('btn-quick-mock');
+if (legacyMockBtn) legacyMockBtn.remove();
+const legacyMockModal = document.getElementById('mock-exam-modal');
+if (legacyMockModal) legacyMockModal.remove();
 
 // ==========================================
 // 4. MULTIPLAYER & STUDY ROOMS
@@ -100,54 +106,15 @@ if (activeRoomId) {
         `;
         document.body.prepend(hostBanner);
 
-        document.getElementById('btn-exit-host-room').addEventListener('click', () => {
-            const exitModal = document.createElement('div');
-            exitModal.id = 'host-exit-modal';
-            exitModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
-            exitModal.innerHTML = `
-                <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25);">
-                    <i class="fas fa-sign-out-alt" style="color: #ef4444; font-size: 3rem; margin-bottom: 1rem;"></i>
-                    <h2 style="color: #1e3a8a; margin-bottom: 10px; margin-top: 0;">Exit Study Room</h2>
-                    <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">You are the host of Room <strong style="color: #1e293b;">${activeRoomId}</strong>. Do you want to just leave the room, or end the session completely and kick all guests?</p>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <button id="btn-leave-only" class="btn-outline" style="border-color: #f59e0b; color: #d97706; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s;">🚶‍♂️ Just Leave (Keep Room Active)</button>
-                        <button id="btn-end-room" class="btn-solid" style="background: #ef4444; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); transition: 0.2s;">🛑 End Room & Kick Everyone</button>
-                        <button id="btn-cancel-exit" class="btn-outline" style="border-color: #cbd5e1; color: #64748b; padding: 12px; border-radius: 8px; margin-top: 5px; cursor: pointer; transition: 0.2s;">Cancel</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(exitModal);
-
-            document.getElementById('btn-cancel-exit').onclick = () => exitModal.remove();
-
-            document.getElementById('btn-leave-only').onclick = async () => {
-                const btn = document.getElementById('btn-leave-only');
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Leaving...';
+        document.getElementById('btn-exit-host-room').addEventListener('click', async () => {
+            if(confirm("Are you sure you want to close this study room? Guests will be disconnected.")) {
+                const btn = document.getElementById('btn-exit-host-room');
+                btn.textContent = "Closing...";
                 btn.disabled = true;
+                btn.style.background = "#991b1b";
                 
                 try {
-                    if (auth.currentUser) {
-                        await updateDoc(doc(db, "study_rooms", activeRoomId), {
-                            [`activeMembers.${auth.currentUser.uid}`]: deleteField()
-                        });
-                    }
-                } catch(e) {
-                    console.warn("Could not sync departure to Firebase:", e);
-                }
-                
-                localStorage.removeItem('active_study_room');
-                localStorage.removeItem('is_study_guest');
-                hostBanner.remove();
-                exitModal.remove();
-            };
-
-            document.getElementById('btn-end-room').onclick = async () => {
-                const btn = document.getElementById('btn-end-room');
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ending...';
-                btn.disabled = true;
-                
-                try {
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' });
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'closed' });
                 } catch(e) {
                     console.warn("Could not sync room closure to Firebase:", e);
                 }
@@ -155,8 +122,7 @@ if (activeRoomId) {
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
                 hostBanner.remove();
-                exitModal.remove();
-            };
+            }
         });
     }
 }
@@ -214,68 +180,70 @@ function changeView(viewName, titleText) {
 // 6. GLOBAL SEARCH SYSTEM & FILTERS
 // ==========================================
 let searchTimeout;
-globalSearch.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    const query = e.target.value.toLowerCase().trim();
-    
-    if (query.length < 3) {
-        searchDropdown.style.display = 'none';
-        return;
-    }
+if (globalSearch) {
+    globalSearch.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query.length < 3) {
+            searchDropdown.style.display = 'none';
+            return;
+        }
 
-    searchTimeout = setTimeout(() => {
-        const matchedQuestions = allQuestions.filter(q => {
-            if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-            if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false; 
-            const questionText = q.Question || q.question || q.text || q.statement || "";
-            const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
-            return textToSearch.includes(query);
-        });
-
-        searchDropdown.innerHTML = '';
-        if (matchedQuestions.length === 0) {
-            searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
-        } else {
-            const quizAllBtn = document.createElement('div');
-            quizAllBtn.className = 'search-item';
-            quizAllBtn.style.cssText = 'background: #3b82f6; color: white; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid #2563eb; border-radius: 12px 12px 0 0; cursor: pointer;';
-            const limitCount = Math.min(matchedQuestions.length, 50);
-            quizAllBtn.innerHTML = `<i class="fas fa-play-circle" style="margin-right: 8px;"></i> Create Quiz from Search (${limitCount} Qs)`;
-            
-            quizAllBtn.onclick = () => {
-                searchDropdown.style.display = 'none';
-                globalSearch.value = '';
-                const pool = matchedQuestions.slice(0, 50);
-                window.launchQuiz(pool, 'practice', 0, `Search: ${query}`);
-            };
-            searchDropdown.appendChild(quizAllBtn);
-
-            matchedQuestions.slice(0, 30).forEach(q => {
-                const div = document.createElement('div');
-                div.className = 'search-item';
-                const title = `${q.Subject || 'Unknown Subject'} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
-                
+        searchTimeout = setTimeout(() => {
+            const matchedQuestions = allQuestions.filter(q => {
+                if (unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+                if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false; 
                 const questionText = q.Question || q.question || q.text || q.statement || "";
-                const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
+                const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
+                return textToSearch.includes(query);
+            });
 
-                div.innerHTML = `
-                    <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
-                    <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
-                `;
-                div.onclick = () => {
+            searchDropdown.innerHTML = '';
+            if (matchedQuestions.length === 0) {
+                searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
+            } else {
+                const quizAllBtn = document.createElement('div');
+                quizAllBtn.className = 'search-item';
+                quizAllBtn.style.cssText = 'background: #3b82f6; color: white; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid #2563eb; border-radius: 12px 12px 0 0; cursor: pointer;';
+                const limitCount = Math.min(matchedQuestions.length, 50);
+                quizAllBtn.innerHTML = `<i class="fas fa-play-circle" style="margin-right: 8px;"></i> Create Quiz from Search (${limitCount} Qs)`;
+                
+                quizAllBtn.onclick = () => {
                     searchDropdown.style.display = 'none';
                     globalSearch.value = '';
-                    window.launchQuiz([q], 'practice', 0);
+                    const pool = matchedQuestions.slice(0, 50);
+                    window.launchQuiz(pool, 'practice', 0, `Search: ${query}`);
                 };
-                searchDropdown.appendChild(div);
-            });
-        }
-        searchDropdown.style.display = 'block';
-    }, 350);
-});
+                searchDropdown.appendChild(quizAllBtn);
+
+                matchedQuestions.slice(0, 30).forEach(q => {
+                    const div = document.createElement('div');
+                    div.className = 'search-item';
+                    const title = `${q.Subject || 'Unknown Subject'} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
+                    
+                    const questionText = q.Question || q.question || q.text || q.statement || "";
+                    const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
+
+                    div.innerHTML = `
+                        <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
+                        <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
+                    `;
+                    div.onclick = () => {
+                        searchDropdown.style.display = 'none';
+                        globalSearch.value = '';
+                        window.launchQuiz([q], 'practice', 0);
+                    };
+                    searchDropdown.appendChild(div);
+                });
+            }
+            searchDropdown.style.display = 'block';
+        }, 350);
+    });
+}
 
 document.addEventListener('click', (e) => {
-    if (!globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
+    if (globalSearch && searchDropdown && !globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
         searchDropdown.style.display = 'none';
     }
 });
@@ -302,7 +270,7 @@ function triggerFilterUpdate() {
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
     
-    if (popupOverlay.style.display === 'flex') {
+    if (popupOverlay && popupOverlay.style.display === 'flex') {
         const current = popupHistory[popupHistory.length - 1];
         if (current) {
             popupHistory.pop();
@@ -332,7 +300,7 @@ function renderGrid() {
         const qCount = getQuestionCount(currentView, [cardTitle]);
         
         // Ensure filters don't hide the cards in Exam Mode
-        if (currentMode !== 'exam' && unattemptedFilter.checked && qCount === 0) return;
+        if (currentMode !== 'exam' && unattemptedFilter && unattemptedFilter.checked && qCount === 0) return;
         if (qCount === 0) return;
 
         const doneCount = getSolvedCount(currentView, [cardTitle]);
@@ -450,41 +418,47 @@ async function loadAndOpenBook(book) {
 // ==========================================
 // 8. POPUP, CART & CHECKBOXES
 // ==========================================
-popupBack.onclick = () => {
-    popupHistory.pop();
-    const prev = popupHistory[popupHistory.length - 1];
-    openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
-};
+if (popupBack) {
+    popupBack.onclick = () => {
+        popupHistory.pop();
+        const prev = popupHistory[popupHistory.length - 1];
+        openPopup(prev.title, prev.dataObj, prev.level, prev.pathArr, true);
+    };
+}
 
-popupClose.onclick = () => { 
-    popupHistory = []; 
-    popupOverlay.style.display = 'none'; 
-    activeCustomPool = null; 
-    isGlobalPopupActive = false; 
-    localStorage.removeItem('edeetos_saved_popup_path'); 
-    localStorage.removeItem('edeetos_saved_popup_title');
-};
-
-popupOverlay.onclick = (e) => { 
-    if (e.target === popupOverlay) { 
+if (popupClose) {
+    popupClose.onclick = () => { 
         popupHistory = []; 
-        popupOverlay.style.display = 'none'; 
+        if(popupOverlay) popupOverlay.style.display = 'none'; 
         activeCustomPool = null; 
         isGlobalPopupActive = false; 
-        localStorage.removeItem('edeetos_saved_popup_path');
+        localStorage.removeItem('edeetos_saved_popup_path'); 
         localStorage.removeItem('edeetos_saved_popup_title');
-    } 
-};
+    };
+}
+
+if (popupOverlay) {
+    popupOverlay.onclick = (e) => { 
+        if (e.target === popupOverlay) { 
+            popupHistory = []; 
+            popupOverlay.style.display = 'none'; 
+            activeCustomPool = null; 
+            isGlobalPopupActive = false; 
+            localStorage.removeItem('edeetos_saved_popup_path');
+            localStorage.removeItem('edeetos_saved_popup_title');
+        } 
+    };
+}
 
 function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
 
-    popupTitle.textContent = title;
+    if (popupTitle) popupTitle.textContent = title;
 	localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
     localStorage.setItem('edeetos_saved_popup_title', title);
-    popupList.innerHTML = '';
-    popupOverlay.style.display = 'flex';
-    popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
+    if (popupList) popupList.innerHTML = '';
+    if (popupOverlay) popupOverlay.style.display = 'flex';
+    if (popupBack) popupBack.style.display = popupHistory.length > 1 ? 'inline-block' : 'none';
 
     const selectAllDiv = document.createElement('div');
     selectAllDiv.className = 'list-item hero-item';
@@ -499,7 +473,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         </div>
         <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
     `;
-    popupList.appendChild(selectAllDiv);
+    if(popupList) popupList.appendChild(selectAllDiv);
 
     selectAllDiv.querySelector('.select-all-btn').onclick = () => {
         const allCbs = popupList.querySelectorAll('.item-checkbox');
@@ -571,6 +545,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
+    // Hide the mini start button when in Exam Mode to force usage of the bottom cart
     const displayInstantStart = currentMode === 'exam' ? 'none' : 'inline-block';
     const instantStartBtn = `<button class="btn-solid mini-btn" style="display: ${displayInstantStart}; margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
@@ -621,14 +596,14 @@ function renderListItem(itemName, nextData, level, itemPath) {
         itemDiv.appendChild(actionBtn);
     }
 
-    popupList.appendChild(itemDiv);
+    if (popupList) popupList.appendChild(itemDiv);
 }
 
 // ==========================================
 // 9. EXAM LAUNCH & MODES
 // ==========================================
-document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
-document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
+if (document.getElementById('mode-practice')) document.getElementById('mode-practice').addEventListener('click', () => switchMode('practice'));
+if (document.getElementById('mode-exam')) document.getElementById('mode-exam').addEventListener('click', () => switchMode('exam'));
 
 function switchMode(mode) {
     currentMode = mode;
@@ -637,21 +612,27 @@ function switchMode(mode) {
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
     
+    // Target specific inputs instead of hiding all of them
     const qCountInput = document.getElementById('exam-q-count');
     const timerInput = document.getElementById('exam-timer');
     
-    document.getElementById('exam-cart').style.display = "flex";
-    startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
+    const examCart = document.getElementById('exam-cart');
+    if (examCart) examCart.style.display = "flex";
+    if (startBtn) startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
 
     if (mode === 'practice') {
-        document.getElementById('mode-practice').className = "btn-solid active-mode";
-        document.getElementById('mode-exam').className = "btn-outline";
+        const modePracBtn = document.getElementById('mode-practice');
+        const modeExamBtn = document.getElementById('mode-exam');
+        if (modePracBtn) modePracBtn.className = "btn-solid active-mode";
+        if (modeExamBtn) modeExamBtn.className = "btn-outline";
         
+        // Show Question Count, Hide Timer
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
         
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         
+        // Show filters safely without breaking the layout
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
@@ -662,14 +643,18 @@ function switchMode(mode) {
             }
         }
     } else {
-        document.getElementById('mode-exam').className = "btn-solid active-mode";
-        document.getElementById('mode-practice').className = "btn-outline";
+        const modePracBtn = document.getElementById('mode-practice');
+        const modeExamBtn = document.getElementById('mode-exam');
+        if (modeExamBtn) modeExamBtn.className = "btn-solid active-mode";
+        if (modePracBtn) modePracBtn.className = "btn-outline";
         
+        // Show BOTH Question Count and Timer in Exam Mode
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
         
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         
+        // Hide filters safely, ensuring the grid isn't dragged down with it
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
@@ -684,7 +669,7 @@ function switchMode(mode) {
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
 
-    if (popupOverlay.style.display === 'flex') {
+    if (popupOverlay && popupOverlay.style.display === 'flex') {
         const current = popupHistory[popupHistory.length - 1];
         if (current) {
             popupHistory.pop(); 
@@ -695,44 +680,46 @@ function switchMode(mode) {
 
 if (examQInput) {
     examQInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') startExamBtn.click();
+        if (e.key === 'Enter' && startExamBtn) startExamBtn.click();
     });
 }
 if (examTimerInput) {
     examTimerInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') startExamBtn.click();
+        if (e.key === 'Enter' && startExamBtn) startExamBtn.click();
     });
 }
 
-document.getElementById('start-exam-btn').addEventListener('click', () => {
-    const paths = Array.from(selectedCart).map(str => JSON.parse(str));
-    let pool = (activeCustomPool || allQuestions).filter(q => {
-        return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
-    });
+if (startExamBtn) {
+    startExamBtn.addEventListener('click', () => {
+        const paths = Array.from(selectedCart).map(str => JSON.parse(str));
+        let pool = (activeCustomPool || allQuestions).filter(q => {
+            return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
+        });
 
-    const qCountInput = parseInt(document.getElementById('exam-q-count').value);
-    const timerInput = parseInt(document.getElementById('exam-timer').value);
+        const qCountInput = parseInt(document.getElementById('exam-q-count').value);
+        const timerInput = parseInt(document.getElementById('exam-timer').value);
 
-    if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
-        alert("Please enter a valid time in minutes for Exam Mode.");
-        return;
-    }
+        if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
+            alert("Please enter a valid time in minutes for Exam Mode.");
+            return;
+        }
 
-if (currentMode === 'exam') {
-        if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
-            pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+        if (currentMode === 'exam') {
+            if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
+                pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+            } else {
+                pool = pool.sort(() => 0.5 - Math.random());
+            }
         } else {
-            pool = pool.sort(() => 0.5 - Math.random());
+            if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
+                pool = pool.slice(0, qCountInput);
+            }
         }
-    } else {
-        if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
-            pool = pool.slice(0, qCountInput);
-        }
-    }
-    
-    const generatedTitle = generateExamTitle(paths, currentView);
-    window.launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
-});
+        
+        const generatedTitle = generateExamTitle(paths, currentView);
+        window.launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
+    });
+}
 
 window.startInstantPractice = function(encodedPath) {
     if (currentMode === 'exam') {
@@ -746,9 +733,13 @@ window.startInstantPractice = function(encodedPath) {
     
     if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
     
-    const qCountInput = parseInt(document.getElementById('exam-q-count').value);
-    if (qCountInput && qCountInput > 0 && qCountInput < finalPool.length) {
-        finalPool = finalPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+    // Apply question limit if entered in the bottom bar
+    const qCountInputEl = document.getElementById('exam-q-count');
+    if (qCountInputEl) {
+        const qCountInput = parseInt(qCountInputEl.value);
+        if (qCountInput && qCountInput > 0 && qCountInput < finalPool.length) {
+            finalPool = finalPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+        }
     }
     
     const generatedTitle = generateExamTitle([pathArr], currentView);
@@ -799,8 +790,7 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-// Prevent QuotaExceededError (5MB LocalStorage Limit)
-let safeStorageArray = questionsArray;
+    let safeStorageArray = questionsArray;
     if (safeStorageArray.length > 200) {
         if (mode === 'exam') {
             alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
@@ -960,18 +950,20 @@ function initMentorFeatures() {
                     const searchInput = document.getElementById('student-search-input');
                     const studentItems = document.querySelectorAll('.student-item');
 
-                    searchInput.addEventListener('input', (e) => {
-                        const term = e.target.value.toLowerCase();
-                        studentItems.forEach(item => {
-                            const name = item.querySelector('.student-name').textContent.toLowerCase();
-                            const email = item.querySelector('.student-email').textContent.toLowerCase();
-                            if (name.includes(term) || email.includes(term)) {
-                                item.style.display = 'flex';
-                            } else {
-                                item.style.display = 'none';
-                            }
+                    if(searchInput) {
+                        searchInput.addEventListener('input', (e) => {
+                            const term = e.target.value.toLowerCase();
+                            studentItems.forEach(item => {
+                                const name = item.querySelector('.student-name').textContent.toLowerCase();
+                                const email = item.querySelector('.student-email').textContent.toLowerCase();
+                                if (name.includes(term) || email.includes(term)) {
+                                    item.style.display = 'flex';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
                         });
-                    });
+                    }
 
                     document.getElementById('btn-cancel-assign').addEventListener('click', () => {
                         document.body.removeChild(modalOverlay);
@@ -1182,7 +1174,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
     if (paths.length === 0) {
         return pool.filter(q => {
             if (currentMode === 'exam') return true;
-            if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+            if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
             return true;
         }).length;
     }
@@ -1190,7 +1182,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
     return pool.filter(q => {
         if (currentMode !== 'exam') {
             if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false;
-            if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+            if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
         }
 
         if (isGlobalPopupActive) {
@@ -1290,12 +1282,14 @@ if (btnReset) {
         toggleSidebar(false);
         optionsContainer.style.display = 'flex';
         confirmContainer.style.display = 'none';
-        resetModal.style.display = 'flex';
+        if (resetModal) resetModal.style.display = 'flex';
     };
 }
 
 if (closeResetModal) {
-    closeResetModal.onclick = () => resetModal.style.display = 'none';
+    closeResetModal.onclick = () => {
+        if (resetModal) resetModal.style.display = 'none';
+    };
 }
 
 document.querySelectorAll('.reset-option-btn').forEach(btn => {
@@ -1358,15 +1352,15 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
                 break;
         }
 
-        optionsContainer.style.display = 'none';
-        confirmContainer.style.display = 'block';
+        if (optionsContainer) optionsContainer.style.display = 'none';
+        if (confirmContainer) confirmContainer.style.display = 'block';
     };
 });
 
 if (btnCancelReset) {
     btnCancelReset.onclick = () => {
-        confirmContainer.style.display = 'none';
-        optionsContainer.style.display = 'flex';
+        if (confirmContainer) confirmContainer.style.display = 'none';
+        if (optionsContainer) optionsContainer.style.display = 'flex';
     };
 }
 
@@ -1385,9 +1379,9 @@ if (btnConfirmReset) {
             const userRef = doc(db, "users", user.uid);
             await updateDoc(userRef, pendingUpdates);
 
-            confirmText.innerHTML = `✅ ${pendingResetMsg}`;
-            btnCancelReset.style.display = 'none';
-            btnConfirmReset.style.display = 'none';
+            if (confirmText) confirmText.innerHTML = `✅ ${pendingResetMsg}`;
+            if (btnCancelReset) btnCancelReset.style.display = 'none';
+            if (btnConfirmReset) btnConfirmReset.style.display = 'none';
 
             setTimeout(() => {
                 location.reload();
@@ -1395,7 +1389,7 @@ if (btnConfirmReset) {
 
         } catch (err) {
             console.error("Reset Error:", err);
-            confirmText.textContent = "❌ Error clearing data. Check console.";
+            if (confirmText) confirmText.textContent = "❌ Error clearing data. Check console.";
             btnConfirmReset.textContent = "Try Again";
             btnConfirmReset.disabled = false;
         }
@@ -1453,7 +1447,6 @@ function checkMilestones(currentFlawless) {
         localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
         localStorage.setItem('edeetos_unclaimed_rewards', JSON.stringify(unclaimed));
         
-        // Fix: Shows the popup only once when milestone is triggered
         showMilestonePopup(newlyUnlocked[0]);
     }
 }
@@ -1736,48 +1729,52 @@ if (btnJourney) {
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
 
-        trophiesGrid.innerHTML = processedTrophies.map(t => {
-            const isUnlocked = flawlessCount >= t.cumulativeReq;
-            
-            let progress = 0;
-            if (isUnlocked) {
-                progress = t.req;
-            } else if (flawlessCount > t.previousCum) {
-                progress = flawlessCount - t.previousCum;
-            } else {
-                progress = 0;
-            }
+        if (trophiesGrid) {
+            trophiesGrid.innerHTML = processedTrophies.map(t => {
+                const isUnlocked = flawlessCount >= t.cumulativeReq;
+                
+                let progress = 0;
+                if (isUnlocked) {
+                    progress = t.req;
+                } else if (flawlessCount > t.previousCum) {
+                    progress = flawlessCount - t.previousCum;
+                } else {
+                    progress = 0;
+                }
 
-            const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
-            const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
-            const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
-            const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
-            const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
-            
-            const rewardHtml = t.rewardValue > 0 
-                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium or Book</div>` 
-                : '';
+                const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
+                const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
+                const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
+                const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
+                const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
+                
+                const rewardHtml = t.rewardValue > 0 
+                    ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium or Book</div>` 
+                    : '';
 
-            return `
-                <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow:${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
-                    <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
-                    <div style="flex-grow: 1;">
-                        <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>${rewardHtml}
+                return `
+                    <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow:${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
+                        <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
+                        <div style="flex-grow: 1;">
+                            <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
+                            <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>${rewardHtml}
+                        </div>
+                        <div style="font-size: 1.3rem;">
+                            ${statusIcon}
+                        </div>
                     </div>
-                    <div style="font-size: 1.3rem;">
-                        ${statusIcon}
-                    </div>
-                </div>
-            `;
-        }).join('');
+                `;
+            }).join('');
+        }
 
-        journeyModal.style.display = 'flex';
+        if (journeyModal) journeyModal.style.display = 'flex';
     };
 }
 
 if (closeJourneyBtn) {
-    closeJourneyBtn.onclick = () => journeyModal.style.display = 'none';
+    closeJourneyBtn.onclick = () => {
+        if (journeyModal) journeyModal.style.display = 'none';
+    };
 }
 
 if (journeyModal) {
@@ -1785,7 +1782,6 @@ if (journeyModal) {
         if (e.target === journeyModal) journeyModal.style.display = 'none';
     };
 }
-
 
 // ==========================================
 // 14. REVISIONS & SPACED REPETITION
@@ -2061,8 +2057,9 @@ if (btnAnalytics) {
             html += `</table></div>`;
         }
 
-        body.innerHTML = html;
-        document.getElementById('analytics-modal').style.display = 'flex';
+        if (body) body.innerHTML = html;
+        const analyticsModal = document.getElementById('analytics-modal');
+        if (analyticsModal) analyticsModal.style.display = 'flex';
 
         if (userExamHistory.length > 0) {
             const ctx = document.getElementById('examScoreChart');
@@ -2147,7 +2144,10 @@ if (btnAnalytics) {
 }
 
 const closeAnalytics = document.getElementById('close-analytics');
-if (closeAnalytics) closeAnalytics.onclick = () => document.getElementById('analytics-modal').style.display = 'none';
+if (closeAnalytics) closeAnalytics.onclick = () => {
+    const modal = document.getElementById('analytics-modal');
+    if (modal) modal.style.display = 'none';
+};
 
 // ==========================================
 // 16. STATE RESTORATION
@@ -2391,10 +2391,12 @@ onAuthStateChanged(auth, async (user) => {
                     };
 
                     const closeBtn = modalOverlay.querySelector('#close-revision-popup');
-                    closeBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        modalOverlay.style.display = 'none';
-                    };
+                    if (closeBtn) {
+                        closeBtn.onclick = (e) => {
+                            e.stopPropagation();
+                            modalOverlay.style.display = 'none';
+                        };
+                    }
 
                     modalOverlay.onclick = (e) => {
                         if (e.target === modalOverlay) modalOverlay.style.display = 'none';
