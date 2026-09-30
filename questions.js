@@ -835,15 +835,16 @@ if (startExamBtn) {
             return;
         }
 
-        if (currentMode === 'exam') {
+if (currentMode === 'exam') {
             if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
             } else {
                 pool = pool.sort(() => 0.5 - Math.random());
             }
         } else {
+            // Shuffle practice mode too when a question limit is set
             if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
-                pool = pool.slice(0, qCountInput);
+                pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
             }
         }
         
@@ -886,33 +887,31 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     const roomId = localStorage.getItem('active_study_room');
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
+    // Cap massive pools to avoid memory/storage crash
+    let safeStorageArray = questionsArray;
+    if (safeStorageArray.length > 200) {
+        alert(`Your selection has ${questionsArray.length} questions. Capping to 200 to prevent browser crashes.`);
+        safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
+    }
+
+    const cleanPool = JSON.parse(JSON.stringify(safeStorageArray));
+
+    // Handle Study Room Host Sync
     if (roomId && !isGuest) {
         try {
-            document.body.style.cursor = 'wait'; 
-            
-            let safeArray = questionsArray;
-            if (questionsArray.length > 50) {
-                safeArray = questionsArray.sort(() => 0.5 - Math.random()).slice(0, 50);
-            }
-
-            const cleanPool = JSON.parse(JSON.stringify(safeArray));
+            document.body.style.cursor = 'wait';
+            let roomPool = cleanPool;
+            if (roomPool.length > 50) roomPool = roomPool.slice(0, 50);
 
             await setDoc(doc(db, "study_rooms", roomId), {
-                questions: cleanPool,
+                questions: roomPool,
                 quizConfig: { mode, timer: timerMinutes, examName },
-                status: 'playing', 
+                status: 'playing',
                 currentQuestionIndex: 0,
-                answers: {},       
+                answers: {},
                 memberAnswers: {},
-                forceReveal: {}     
+                forceReveal: {}
             }, { merge: true });
-
-            localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
-            localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-
-            document.body.style.cursor = 'default';
-            window.location.href = 'quiz.html';
-            return;
         } catch (error) {
             console.error("Failed to sync room:", error);
             alert("Firebase Error: " + error.message);
@@ -921,25 +920,72 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-    let safeStorageArray = questionsArray;
-    if (safeStorageArray.length > 200) {
-        if (mode === 'exam') {
-            alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
-            safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
-        } else {
-            alert("Your selection is massive. To prevent browser memory crashes, we have selected the first 200 questions from this pool for your current session.");
-            safeStorageArray = safeStorageArray.slice(0, 200);
-        }
+    // 1. Clear any old in-progress exam states so quiz.html doesn't resume the 174-question exam
+    const staleKeys = [
+        'edeetos_saved_quiz_state',
+        'edeetos_quiz_state',
+        'edeetos_exam_progress',
+        'edeetos_active_quiz_session',
+        'quiz_in_progress'
+    ];
+    staleKeys.forEach(key => {
+        localStorage.removeItem(key);
+        sessionStorage.removeItem(key);
+    });
+
+    // 2. Set localStorage configs for backward compatibility
+    try {
+        localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
+        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+    } catch (e) {
+        console.warn("localStorage quota warning, relying on IndexedDB:", e);
     }
 
+    // 3. Sync to IndexedDB (active_quiz_queue) where quiz.js actually reads from
+    document.body.style.cursor = 'wait';
     try {
-        localStorage.setItem('edeetos_active_quiz', JSON.stringify(safeStorageArray));
-        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-        window.location.href = 'quiz.html';
-    } catch (e) {
-        alert("Device storage full. Please clear your browser cache to load this quiz.");
-        console.error("Storage Error:", e);
+        const idbRequest = indexedDB.open("EdeetosDB", 1);
+
+        idbRequest.onupgradeneeded = (e) => {
+            const idb = e.target.result;
+            if (!idb.objectStoreNames.contains("quiz_sessions")) {
+                idb.createObjectStore("quiz_sessions");
+            }
+        };
+
+        idbRequest.onsuccess = (e) => {
+            const idb = e.target.result;
+            const tx = idb.transaction("quiz_sessions", "readwrite");
+            const store = tx.objectStore("quiz_sessions");
+
+            // Overwrite the stuck queue with the newly selected questions
+            store.put(cleanPool, "active_quiz_queue");
+
+            // Clear any persisted state inside IndexedDB
+            try {
+                store.delete("active_quiz_state");
+                store.delete("saved_session");
+            } catch (err) {}
+
+            tx.oncomplete = () => {
+                document.body.style.cursor = 'default';
+                window.location.href = 'quiz.html';
+            };
+
+            tx.onerror = () => {
+                document.body.style.cursor = 'default';
+                window.location.href = 'quiz.html';
+            };
+        };
+
+        idbRequest.onerror = () => {
+            document.body.style.cursor = 'default';
+            window.location.href = 'quiz.html';
+        };
+    } catch (err) {
+        console.error("IndexedDB write failed:", err);
         document.body.style.cursor = 'default';
+        window.location.href = 'quiz.html';
     }
 };
 
