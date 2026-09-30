@@ -56,7 +56,7 @@ const availableBooks = allBooks.filter(book => {
 });
 
 // ==========================================
-// 2. DOM ELEMENTS & LEGACY CLEANUP
+// 2. DOM ELEMENTS
 // ==========================================
 const subjectsGrid = document.getElementById('subjects-grid');
 const popupOverlay = document.getElementById('popup-overlay');
@@ -76,12 +76,6 @@ const startExamBtn = document.getElementById('start-exam-btn');
 const diffEasyFilter = document.getElementById('diff-easy-filter');
 const diffMediumFilter = document.getElementById('diff-medium-filter');
 const diffHardFilter = document.getElementById('diff-hard-filter');
-
-// ERADICATE LEGACY QUICK MOCK EXAM ELEMENTS (Forcing Proper Exam Mode)
-const legacyMockBtn = document.getElementById('btn-quick-mock');
-if (legacyMockBtn) legacyMockBtn.remove();
-const legacyMockModal = document.getElementById('mock-exam-modal');
-if (legacyMockModal) legacyMockModal.remove();
 
 // ==========================================
 // 4. MULTIPLAYER & STUDY ROOMS
@@ -106,15 +100,54 @@ if (activeRoomId) {
         `;
         document.body.prepend(hostBanner);
 
-        document.getElementById('btn-exit-host-room').addEventListener('click', async () => {
-            if(confirm("Are you sure you want to close this study room? Guests will be disconnected.")) {
-                const btn = document.getElementById('btn-exit-host-room');
-                btn.textContent = "Closing...";
+        document.getElementById('btn-exit-host-room').addEventListener('click', () => {
+            const exitModal = document.createElement('div');
+            exitModal.id = 'host-exit-modal';
+            exitModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
+            exitModal.innerHTML = `
+                <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25);">
+                    <i class="fas fa-sign-out-alt" style="color: #ef4444; font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h2 style="color: #1e3a8a; margin-bottom: 10px; margin-top: 0;">Exit Study Room</h2>
+                    <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">You are the host of Room <strong style="color: #1e293b;">${activeRoomId}</strong>. Do you want to just leave the room, or end the session completely and kick all guests?</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button id="btn-leave-only" class="btn-outline" style="border-color: #f59e0b; color: #d97706; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s;">🚶‍♂️ Just Leave (Keep Room Active)</button>
+                        <button id="btn-end-room" class="btn-solid" style="background: #ef4444; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); transition: 0.2s;">🛑 End Room & Kick Everyone</button>
+                        <button id="btn-cancel-exit" class="btn-outline" style="border-color: #cbd5e1; color: #64748b; padding: 12px; border-radius: 8px; margin-top: 5px; cursor: pointer; transition: 0.2s;">Cancel</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(exitModal);
+
+            document.getElementById('btn-cancel-exit').onclick = () => exitModal.remove();
+
+            document.getElementById('btn-leave-only').onclick = async () => {
+                const btn = document.getElementById('btn-leave-only');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Leaving...';
                 btn.disabled = true;
-                btn.style.background = "#991b1b";
                 
                 try {
-                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'closed' });
+                    if (auth.currentUser) {
+                        await updateDoc(doc(db, "study_rooms", activeRoomId), {
+                            [`activeMembers.${auth.currentUser.uid}`]: deleteField()
+                        });
+                    }
+                } catch(e) {
+                    console.warn("Could not sync departure to Firebase:", e);
+                }
+                
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                hostBanner.remove();
+                exitModal.remove();
+            };
+
+            document.getElementById('btn-end-room').onclick = async () => {
+                const btn = document.getElementById('btn-end-room');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ending...';
+                btn.disabled = true;
+                
+                try {
+                    await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' });
                 } catch(e) {
                     console.warn("Could not sync room closure to Firebase:", e);
                 }
@@ -122,7 +155,8 @@ if (activeRoomId) {
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
                 hostBanner.remove();
-            }
+                exitModal.remove();
+            };
         });
     }
 }
@@ -572,8 +606,13 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
         const cartCountEl = document.getElementById('cart-count');
         const startBtnEl = document.getElementById('start-exam-btn');
+        const examCart = document.getElementById('exam-cart');
+        
         if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
         if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
+        
+        // Hide the bottom cart entirely if no items are selected
+        if (examCart) examCart.style.display = selectedCart.size > 0 ? "flex" : "none";
     };
 
     itemDiv.style.cursor = 'pointer';
@@ -617,7 +656,9 @@ function switchMode(mode) {
     const timerInput = document.getElementById('exam-timer');
     
     const examCart = document.getElementById('exam-cart');
-    if (examCart) examCart.style.display = "flex";
+    // Only show cart if items are selected
+    if (examCart) examCart.style.display = selectedCart.size > 0 ? "flex" : "none";
+    
     if (startBtn) startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
 
     if (mode === 'practice') {
@@ -632,11 +673,12 @@ function switchMode(mode) {
         
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         
-        // Show filters safely without breaking the layout
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
-                    if (child.id !== 'subjects-grid') child.style.display = '';
+                    if (child.id !== 'subjects-grid' && child.id !== 'mock-exam-modal' && child.id !== 'exam-cart') {
+                        child.style.display = '';
+                    }
                 });
             } else {
                 searchBar.style.display = "flex";
@@ -654,11 +696,12 @@ function switchMode(mode) {
         
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         
-        // Hide filters safely, ensuring the grid isn't dragged down with it
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
-                    if (child.id !== 'subjects-grid') child.style.display = 'none';
+                    if (child.id !== 'subjects-grid' && child.id !== 'mock-exam-modal' && child.id !== 'exam-cart') {
+                        child.style.display = 'none';
+                    }
                 });
             } else {
                 searchBar.style.display = "none";
@@ -686,6 +729,94 @@ if (examQInput) {
 if (examTimerInput) {
     examTimerInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && startExamBtn) startExamBtn.click();
+    });
+}
+
+const btnQuickMock = document.getElementById('btn-quick-mock');
+const mockModal = document.getElementById('mock-exam-modal');
+const mockQCount = document.getElementById('mock-q-count');
+const btnCancelMock = document.getElementById('btn-cancel-mock');
+const btnStartMock = document.getElementById('btn-start-mock');
+const btnJoinChallenge = document.getElementById('btn-join-challenge');
+
+if (btnJoinChallenge) {
+    btnJoinChallenge.addEventListener('click', async () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to join a challenge.");
+        const code = prompt("Enter the 5-character Challenge Code from your friend:");
+        if (!code) return;
+        
+        btnJoinChallenge.textContent = "Loading...";
+        try {
+            const challengeSnap = await getDoc(doc(db, "friend_challenges", code.trim().toUpperCase()));
+            if (!challengeSnap.exists()) {
+                btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
+                return alert("Invalid or expired Challenge Code.");
+            }
+            const challengeData = challengeSnap.data();
+            localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
+            
+            document.body.style.cursor = 'wait';
+            const request = indexedDB.open("EdeetosDB", 1);
+            
+            request.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains("quiz_sessions")) db.createObjectStore("quiz_sessions");
+            };
+            
+            request.onsuccess = (e) => {
+                const idb = e.target.result;
+                const tx = idb.transaction("quiz_sessions", "readwrite");
+                tx.objectStore("quiz_sessions").put(challengeData.queue, "active_quiz_queue");
+                tx.oncomplete = () => {
+                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: challengeData.calcMinutes, examName: 'Friend Challenge vs ' + challengeData.hostName }));
+                    window.location.href = 'quiz.html';
+                };
+            };
+        } catch (err) {
+            console.error(err);
+            alert("Failed to load friend challenge.");
+            btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
+        }
+    });
+}
+
+if (btnQuickMock && mockModal) {
+    btnQuickMock.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to take mock exams.");
+        mockModal.style.display = 'flex';
+        if(mockQCount) mockQCount.focus();
+    });
+    
+    if(btnCancelMock) btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
+    
+    if(btnStartMock) btnStartMock.addEventListener('click', () => {
+        let count = parseInt(mockQCount.value);
+        if (!count || count < 5) return alert("Please enter a valid number of questions (minimum 5).");
+
+        btnStartMock.textContent = "Generating...";
+        btnStartMock.disabled = true;
+
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        let freshPool = allQuestions.filter(q => !attemptedQuestions.includes(getQID(q)) && !allMistakes.includes(getQID(q)) && !q.isBookQuestion);
+
+        if (freshPool.length < count) {
+            freshPool = allQuestions.filter(q => !q.isBookQuestion);
+        }
+
+        if (freshPool.length === 0) {
+            btnStartMock.textContent = "Start Exam";
+            btnStartMock.disabled = false;
+            return alert("No questions available for a mock exam.");
+        }
+
+        const finalPool = freshPool.sort(() => 0.5 - Math.random()).slice(0, count);
+        const calcMinutes = Math.ceil(count * 1.2);
+
+        mockModal.style.display = 'none';
+        btnStartMock.textContent = "Start Exam";
+        btnStartMock.disabled = false;
+
+        window.launchQuiz(finalPool, 'exam', calcMinutes, `Mock Exam (${count} Qs)`);
     });
 }
 
