@@ -159,7 +159,7 @@
 
 /* --- 4. BOTTOM CONTROLS --- */
 .number-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; width: 100%; background: rgba(255,255,255,0.5); padding: 15px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.8); }
-.grid-num { width: 38px; height: 38px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 0.9rem; color: #64748b; cursor: pointer; transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.grid-num { width: 28px; height: 28px; background: #ffffff; border: 2px solid #e2e8f0; border-radius: 6px; display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 0.75rem; color: #64748b; cursor: pointer; transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 .grid-num:hover { transform: translateY(-3px); border-color: #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .grid-num.active { background: #3b82f6; color: white; border-color: #3b82f6; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); transform: scale(1.1); }
 .grid-num.correct { border-color: #10b981; color: #10b981; background: #ecfdf5; }
@@ -278,12 +278,12 @@ body.mode-exam #prev-btn { display: none !important; }
 /* ========================================== */
 /* 10. COMPLETE DARK MODE SUITE               */
 /* ========================================== */
-body.dark-mode.quiz-body, .dark-mode body.quiz-body { 
+html.dark-mode body.quiz-body, body.dark-mode.quiz-body, .dark-mode body.quiz-body { 
     background: #020617 !important; 
     color: #e2e8f0 !important; 
 }
-body.dark-mode.quiz-body::before { background: rgba(16, 185, 129, 0.1) !important; }
-body.dark-mode.quiz-body::after { background: rgba(56, 189, 248, 0.08) !important; }
+html.dark-mode body.quiz-body::before, body.dark-mode.quiz-body::before { background: rgba(16, 185, 129, 0.1) !important; }
+html.dark-mode body.quiz-body::after, body.dark-mode.quiz-body::after { background: rgba(56, 189, 248, 0.08) !important; }
 
 .dark-mode h2, .dark-mode h3, .dark-mode p { color: #e2e8f0 !important; }
 

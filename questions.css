@@ -169,6 +169,7 @@ body {
 
 .filter-wrapper {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 0.6rem;
     color: #1e293b;
@@ -176,6 +177,20 @@ body {
     cursor: pointer;
     user-select: none;
     font-size: 0.95rem;
+    white-space: nowrap; /* Keeps the label text attached to the checkbox */
+    margin: 0 !important;
+}
+
+/* Forces the container holding the filters and buttons into a horizontal row */
+.search-filter-bar > div:not(.search-wrapper) {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    border: none !important; /* Removes the vertical grey line */
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .filter-wrapper input[type="checkbox"] {
@@ -697,6 +712,30 @@ body.dark-mode, .dark-mode body {
     color: #94a3b8 !important; 
 }
 
+/* --- Fix Journey Button in Dark Mode --- */
+.dark-mode #btn-view-journey {
+    background: rgba(245, 158, 11, 0.15) !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+    color: #fbbf24 !important;
+}
+.dark-mode #btn-view-journey:hover {
+    background: rgba(245, 158, 11, 0.25) !important;
+}
+
+/* --- Fix Study Mode Toggle in Dark Mode --- */
+.dark-mode .mode-toggle {
+    background: #1f2937 !important;
+    border: 1px solid #374151 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+.dark-mode .mode-toggle .btn-outline {
+    color: #94a3b8 !important;
+}
+.dark-mode .mode-toggle .btn-outline:hover {
+    background: #374151 !important;
+    color: #f8fafc !important;
+}
+
 .dark-mode .progress-container {
     background-color: #1f2937 !important;
     border: 1px solid #374151;
@@ -757,6 +796,17 @@ body.dark-mode, .dark-mode body {
 
 .dark-mode .filter-wrapper { 
     color: #cbd5e1 !important; 
+}
+
+/* Restore Difficulty Tag Colors in Dark Mode */
+.dark-mode .filter-wrapper:has(#diff-easy-filter) { 
+    color: #34d399 !important; /* Green */
+}
+.dark-mode .filter-wrapper:has(#diff-medium-filter) { 
+    color: #fbbf24 !important; /* Yellow/Amber */
+}
+.dark-mode .filter-wrapper:has(#diff-hard-filter) { 
+    color: #f87171 !important; /* Red */
 }
 
 .dark-mode .search-dropdown { 

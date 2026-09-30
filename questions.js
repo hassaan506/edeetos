@@ -568,10 +568,12 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
     
-    const safePath = encodeURIComponent(JSON.stringify(itemPath));
+const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
-    const instantStartBtn = `<button class="btn-solid mini-btn" style="margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
+    // Hide the mini start button when in Exam Mode to force usage of the bottom cart
+    const displayInstantStart = currentMode === 'exam' ? 'none' : 'inline-block';
+    const instantStartBtn = `<button class="btn-solid mini-btn" style="display: ${displayInstantStart}; margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
     labelDiv.innerHTML = `
         <div class="card-header-flex" style="align-items: center;">
@@ -635,7 +637,10 @@ function switchMode(mode) {
     const searchBar = document.querySelector('.search-filter-bar');
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
-    const inputGroups = document.querySelectorAll('.exam-action-bar .input-group');
+    
+    // Target specific inputs instead of hiding all of them
+    const qCountInput = document.getElementById('exam-q-count');
+    const timerInput = document.getElementById('exam-timer');
     
     document.getElementById('exam-cart').style.display = "flex";
     startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
@@ -643,7 +648,11 @@ function switchMode(mode) {
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
-        inputGroups.forEach(group => group.style.display = 'none');
+        
+        // Show Question Count, Hide Timer
+        if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
+        if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
+        
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         
         // Show filters safely without breaking the layout
@@ -659,7 +668,11 @@ function switchMode(mode) {
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
-        inputGroups.forEach(group => group.style.display = 'flex');
+        
+        // Show BOTH Question Count and Timer in Exam Mode
+        if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
+        if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
+        
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         
         // Hide filters safely, ensuring the grid isn't dragged down with it
@@ -815,6 +828,10 @@ if (currentMode === 'exam') {
 });
 
 window.startInstantPractice = function(encodedPath) {
+    if (currentMode === 'exam') {
+        return alert("To take an Exam, please check the box and use the Start Exam button at the bottom to set a timer.");
+    }
+
     const pathArr = JSON.parse(decodeURIComponent(encodedPath));
     let pool = activeCustomPool || allQuestions;
     
@@ -822,6 +839,11 @@ window.startInstantPractice = function(encodedPath) {
     
     if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
     
+    // Apply question limit if entered in the bottom bar
+    const qCountInput = parseInt(document.getElementById('exam-q-count').value);
+    if (qCountInput && qCountInput > 0 && qCountInput < finalPool.length) {
+        finalPool = finalPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
+    }
     
     const generatedTitle = generateExamTitle([pathArr], currentView);
     window.launchQuiz(finalPool, 'practice', 0, generatedTitle);
