@@ -1989,10 +1989,14 @@ if (btnJourney) {
         
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+        
+        // Fetch the true claimed list from the database
+        const dbClaimed = currentUserData?.claimedMilestones || [];
 
         if (trophiesGrid) {
             trophiesGrid.innerHTML = processedTrophies.map(t => {
                 const isUnlocked = flawlessCount >= t.cumulativeReq;
+                const isClaimed = dbClaimed.includes(t.title);
                 
                 let progress = 0;
                 if (isUnlocked) {
@@ -2009,9 +2013,19 @@ if (btnJourney) {
                 const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
                 const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
                 
-                const rewardHtml = t.rewardValue > 0 
-                    ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium or Book</div>` 
-                    : '';
+                let rewardHtml = '';
+                if (t.rewardValue > 0) {
+                    if (isUnlocked && !isClaimed) {
+                        // Unlocked but not claimed: Show a Claim button
+                        rewardHtml = `<button class="btn-solid claim-reward-btn" data-trophy='${JSON.stringify(t)}' style="background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; margin-top: 6px; width: 100%; box-shadow: 0 4px 6px rgba(16,185,129,0.2);"><i class="fas fa-gift"></i> Claim Reward</button>`;
+                    } else if (isClaimed) {
+                        // Already claimed successfully
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
+                    } else {
+                        // Locked target
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium</div>`;
+                    }
+                }
 
                 return `
                     <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow:${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
@@ -2026,6 +2040,18 @@ if (btnJourney) {
                     </div>
                 `;
             }).join('');
+
+            // Attach click listeners to the new dynamic Claim buttons
+            document.querySelectorAll('.claim-reward-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const targetBtn = e.target.closest('button');
+                    const trophyData = JSON.parse(targetBtn.getAttribute('data-trophy'));
+                    
+                    // Hide the Journey modal and bring up the Reward claim screen
+                    if (journeyModal) journeyModal.style.display = 'none';
+                    showMilestonePopup(trophyData);
+                });
+            });
         }
 
         if (journeyModal) journeyModal.style.display = 'flex';
