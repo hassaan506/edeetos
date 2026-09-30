@@ -323,6 +323,26 @@ function showSkippedModal() {
     };
 }
 
+function showMustAnswerModal() {
+    if (document.getElementById('must-answer-modal')) return;
+    const modal = document.createElement('div');
+    modal.id = 'must-answer-modal';
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.innerHTML = `
+        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: gentlePopIn 0.3s forwards;">
+            <i class="fas fa-exclamation-circle" style="color: #f59e0b; font-size: 4rem; margin-bottom: 1rem;"></i>
+            <h2 style="color: #1e3a8a; margin-top: 0; margin-bottom: 10px;">Select an Answer</h2>
+            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 20px;">Please select an answer to proceed. If you are stuck, use the <strong>Skip</strong> button.</p>
+            <button id="btn-understood-must-answer" class="btn-solid" style="background: #3b82f6; color: white; border: none; padding: 0.8rem 2rem; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; transition: 0.2s;">Understood (Enter)</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('btn-understood-must-answer').onclick = () => {
+        modal.remove();
+    };
+}
+
 function loadQuestion(index) {
     try { 
         currentIndex = index;
@@ -1516,7 +1536,10 @@ document.getElementById('next-btn').onclick = async () => {
         return;
     }
     if (isExamMode) {
-        if (!currentQuestionData.userSelectedAnswer) return alert("Please select an answer. If you are stuck, click Skip.");
+        if (!currentQuestionData.userSelectedAnswer) {
+            showMustAnswerModal(); // Replaced native alert()
+            return;
+        }
         if (currentIndex === quizQueue.length - 1) return showResults();
     }
 
@@ -1569,6 +1592,14 @@ document.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) return; 
 
+    // Add this block to close the Must Answer modal using Enter
+    const mustAnswerModal = document.getElementById('must-answer-modal');
+    if (mustAnswerModal && e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('btn-understood-must-answer').click();
+        return;
+    }
+
     const skippedModal = document.getElementById('skipped-popup-modal');
     if (skippedModal && e.key === 'Enter') {
         e.preventDefault();
@@ -1576,7 +1607,6 @@ document.addEventListener('keydown', (e) => {
         if (understoodBtn) understoodBtn.click();
         return; 
     }
-
     const nextBtnLocal = document.getElementById('next-btn');
     const prevBtnLocal = document.getElementById('prev-btn');
     const explanationModalLocal = document.getElementById('explanation-modal');

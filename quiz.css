@@ -169,8 +169,10 @@
 .prev-icon-btn, .next-action-btn, .skip-btn { border-radius: 14px; border: none; font-weight: 800; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 .prev-icon-btn { width: 55px; height: 55px; background: #ffffff; color: #475569; font-size: 1.2rem; border: 2px solid #e2e8f0; }
 .prev-icon-btn:hover { background: #f1f5f9; color: #0f172a; transform: translateX(-4px); }
-.next-action-btn { flex-grow: 1; background: #10b981; color: white; font-size: 1.15rem; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25); }
-.next-action-btn:hover { transform: translateX(4px); background: #059669; box-shadow: 0 12px 25px rgba(16, 185, 129, 0.35); }
+.next-action-btn { flex: 1; background: #10b981; color: white; font-size: 1.15rem; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25); }
+.next-action-btn:hover { transform: translateY(-2px); background: #059669; box-shadow: 0 12px 25px rgba(16, 185, 129, 0.35); }
+.skip-btn { flex: 1; background: #f59e0b; color: white; font-size: 1.15rem; padding: 0 2rem; display: none; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.25); }
+.skip-btn:hover { background: #d97706; transform: translateY(-2px); box-shadow: 0 12px 25px rgba(245, 158, 11, 0.35); }
 
 /* --- 5. MODAL --- */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 3000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
@@ -233,7 +235,7 @@ body.mode-exam #prev-btn { display: none !important; }
     #number-grid { 
         position: relative !important; 
         width: 100% !important; 
-        height: calc(100vh - 200px) !important; 
+        height: fit-content !important; /* Replaced fixed calc height */
         max-height: 650px !important; 
         background: rgba(255, 255, 255, 0.95); 
         backdrop-filter: blur(12px) !important; 
@@ -409,14 +411,14 @@ html.dark-mode body.quiz-body::after, body.dark-mode.quiz-body::after { backgrou
     color: #f8fafc !important; 
 }
 .dark-mode .skip-btn { 
-    background: #111827 !important; 
-    border-color: #1f2937 !important; 
-    color: #94a3b8 !important; 
+    background: #f59e0b !important; 
+    border-color: transparent !important; 
+    color: white !important; 
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2) !important;
 }
 .dark-mode .skip-btn:hover { 
-    background: rgba(239, 68, 68, 0.2) !important; 
-    color: #f87171 !important; 
-    border-color: #ef4444 !important; 
+    background: #d97706 !important; 
+    box-shadow: 0 12px 25px rgba(245, 158, 11, 0.3) !important;
 }
 
 /* Modals */
