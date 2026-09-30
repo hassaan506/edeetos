@@ -1,0 +1,33 @@
+name: Auto-Convert CSV to JSON
+on:
+  push:
+    paths:
+      - 'Data/*.csv'
+      - 'Books/*.csv'
+
+permissions:
+  contents: write
+
+jobs:
+  convert-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Python Conversion Script
+        run: |
+          python github_csv_to_json.py 
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Data/*.json Data/*.csv Books/*.json Books/*.csv
+          git diff --staged --quiet || git commit -m "Automated Sync: Converted updated CSV to JSON"
+          git push
