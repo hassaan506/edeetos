@@ -56,6 +56,7 @@ const labValuesModal = document.getElementById('lab-values-modal');
 const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
 const modalNextBtn = document.getElementById('modal-next-btn');
 const aiHintBtn = document.getElementById('ai-hint-btn');
+const copyQBtn = document.getElementById('copy-q-btn');
 
 if (isExamMode) {
     document.body.classList.add('mode-exam');
@@ -115,13 +116,16 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 currentUserData = dbData;
 
-                const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
+				const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
+				if (roleUpper === 'ADMIN' && copyQBtn) {
+					copyQBtn.style.display = 'flex';
+				}
 
-                if (activeRoomId) {
-                    await updateDoc(roomRef, {
-                        [`activeMembers.${currentUserId}`]: dbData.fullName || "Student"
-                    });
-                }
+				if (activeRoomId) {
+					await updateDoc(roomRef, {
+						[`activeMembers.${currentUserId}`]: dbData.fullName || "Student"
+					});
+				}
 
                 if (dbData.isBanned || dbData.role === 'BANNED') {
                     indexedDB.deleteDatabase("EdeetosDB");
@@ -593,6 +597,52 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 }
             };
         }
+// ==========================================
+        // ADMIN COPY QUESTION LOGIC
+        // ==========================================
+        if (copyQBtn) {
+            copyQBtn.onclick = () => {
+                if (!currentQuestionData) return;
+                
+                // Strip HTML tags from the question text for a clean copy
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = currentQuestionData.text || "Missing Question";
+                let textToCopy = tempDiv.textContent.trim() + "\n\n";
+                
+                // Append the options (A, B, C, D...)
+                if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
+                    currentQuestionData.options.forEach((opt, idx) => {
+                        const letter = String.fromCharCode(65 + idx);
+                        textToCopy += `${letter}) ${opt.text}\n`;
+                    });
+                }
+                
+                // Copy to clipboard with success animation
+                const triggerSuccess = () => {
+                    const icon = copyQBtn.querySelector('i');
+                    icon.className = 'fas fa-check';
+                    setTimeout(() => icon.className = 'far fa-copy', 1500);
+                };
+
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(textToCopy).then(triggerSuccess);
+                } else {
+                    // Fallback for older browsers
+                    const textArea = document.createElement("textarea");
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        triggerSuccess();
+                    } catch (err) {
+                        console.error("Fallback copy failed", err);
+                    }
+                    document.body.removeChild(textArea);
+                }
+            };
+        }
+
         updateGridStyles();
 
     } catch (error) { 
