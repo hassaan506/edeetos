@@ -11,7 +11,8 @@ const searchInput = document.getElementById('search-students');
 const detailsPanel = document.getElementById('report-details');
 
 let studentsData = [];
-
+let currentUserRole = 'STUDENT';
+const activeCourse = localStorage.getItem('edeetos_active_course');
 // ==========================================
 // TIME FORMATTING HELPER
 // ==========================================
@@ -36,7 +37,7 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const userData = { id: docSnap.id, ...docSnap.data() };
                 const role = (userData.role || 'STUDENT').toUpperCase();
-                
+                currentUserRole = role;
                 if (role === 'BANNED') {
                     window.location.href = 'dashboard.html';
                     return;
@@ -212,14 +213,14 @@ async function loadTargetedFileToBank(fileKey) {
         const questions = await res.json();
         if (!globalQuestionBank[fileKey]) globalQuestionBank[fileKey] = {};
 
-        questions.forEach((q, index) => {
+questions.forEach((q, index) => {
             let fallbackPrefix = isBook ? `${fileKey}-` : '';
             let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${index + 1}`);
 
             globalQuestionBank[fileKey][qId] = {
-                Subject: isBook ? (titles[fileKey] || q.Subject) : (q.Subject || 'Unknown Subject'),
-                Chapter: q.Chapter || 'Unknown Chapter',
-                Topic: q.Topic || 'Unknown Topic'
+                Subject: isBook ? (titles[fileKey] || q.Subject || q.subject) : (q.Subject || q.subject || 'Unknown Subject'),
+                Chapter: q.Chapter || q.chapter || 'Unknown System/Chapter',
+                Topic: q.Topic || q.topic || 'Pending Topic (Will be added)'
             };
         });
     } catch(e) {
@@ -259,12 +260,25 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
 	// Ensure our targeted Data Warehouse is built
 	await loadRequiredBanks(activeCourseFilter);
 
-    let filterOptions = `<option value="all">All Courses & Books</option>`;
-    filterOptions += `<optgroup label="Courses">`;
-    standardCourses.forEach(course => filterOptions += `<option value="${course}" ${activeCourseFilter === course ? 'selected' : ''}>${titles[course]}</option>`);
-    filterOptions += `</optgroup><optgroup label="Books">`;
-    referenceBooks.forEach(book => filterOptions += `<option value="${book}" ${activeCourseFilter === book ? 'selected' : ''}>${titles[book]}</option>`);
-    filterOptions += `</optgroup>`;
+let filterOptions = `<option value="all">All Courses & Books</option>`;
+
+    if (currentUserRole === 'ADMIN' || currentUserRole === 'MENTOR' || currentUserRole === 'MANAGEMENT') {
+        // Admins and Mentors see everything
+        filterOptions += `<optgroup label="Courses">`;
+        standardCourses.forEach(course => filterOptions += `<option value="${course}" ${activeCourseFilter === course ? 'selected' : ''}>${titles[course]}</option>`);
+        filterOptions += `</optgroup><optgroup label="Books">`;
+        referenceBooks.forEach(book => filterOptions += `<option value="${book}" ${activeCourseFilter === book ? 'selected' : ''}>${titles[book]}</option>`);
+        filterOptions += `</optgroup>`;
+    } else {
+        // Students only see their active course and the books
+        filterOptions += `<optgroup label="Your Course">`;
+        if (activeCourse && standardCourses.includes(activeCourse)) {
+            filterOptions += `<option value="${activeCourse}" ${activeCourseFilter === activeCourse ? 'selected' : ''}>${titles[activeCourse]}</option>`;
+        }
+        filterOptions += `</optgroup><optgroup label="Books">`;
+        referenceBooks.forEach(book => filterOptions += `<option value="${book}" ${activeCourseFilter === book ? 'selected' : ''}>${titles[book]}</option>`);
+        filterOptions += `</optgroup>`;
+    }
 
     let examHistory = [];
     let rawSolved = [];
@@ -341,10 +355,10 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
             }
         }
 
-        const sourceName = titles[sourceKey] || sourceKey || 'Unknown Source';
+const sourceName = titles[sourceKey] || sourceKey || 'Unknown Source';
         const subject = meta ? meta.Subject : 'Unknown Subject';
-        const chapter = meta ? meta.Chapter : 'Unknown Chapter';
-        const topic = meta ? meta.Topic : 'Unknown Topic';
+        const chapter = meta ? meta.Chapter : 'Unknown System/Chapter';
+        const topic = meta ? meta.Topic : 'Pending Topic (Will be added)';
 
         const key = `${subject}::${chapter}::${topic}::${sourceKey}`;
 

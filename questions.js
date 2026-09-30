@@ -332,12 +332,11 @@ function renderGrid() {
     if (currentView === 'system') activeTree = systemTree;
     if (currentView === 'exam') activeTree = examTree;
 
-    Object.keys(activeTree).forEach(cardTitle => {
+Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
-        if (unattemptedFilter.checked && qCount === 0) return;
+		if (currentMode !== 'exam' && unattemptedFilter.checked && qCount === 0) return;
 
-        const doneCount = getSolvedCount(currentView, [cardTitle]);
-        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+        const doneCount = getSolvedCount(currentView, [cardTitle]);        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
         const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
         const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
@@ -644,15 +643,35 @@ function switchMode(mode) {
     if (mode === 'practice') {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
-		inputGroups.forEach(group => group.style.display = 'none');
+        inputGroups.forEach(group => group.style.display = 'none');
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
-        if (searchBar) searchBar.style.display = "flex";
+        
+        // Show filters safely without breaking the layout
+        if (searchBar) {
+            if (searchBar.contains(document.getElementById('subjects-grid'))) {
+                Array.from(searchBar.children).forEach(child => {
+                    if (child.id !== 'subjects-grid') child.style.display = '';
+                });
+            } else {
+                searchBar.style.display = "flex";
+            }
+        }
     } else {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
-		inputGroups.forEach(group => group.style.display = 'flex');
+        inputGroups.forEach(group => group.style.display = 'flex');
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
-        if (searchBar) searchBar.style.display = "none";
+        
+        // Hide filters safely, ensuring the grid isn't dragged down with it
+        if (searchBar) {
+            if (searchBar.contains(document.getElementById('subjects-grid'))) {
+                Array.from(searchBar.children).forEach(child => {
+                    if (child.id !== 'subjects-grid') child.style.display = 'none';
+                });
+            } else {
+                searchBar.style.display = "none";
+            }
+        }
     }
     
     if (currentView === 'book') renderBooksGrid();
@@ -1504,17 +1523,11 @@ function checkMilestones(currentFlawless) {
         
         localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
         localStorage.setItem('edeetos_unclaimed_rewards', JSON.stringify(unclaimed));
+		
+		ShowMilestonePopup(newlyUnlocked[0]);
     }
-    
-    triggerNextUnclaimedPopup();
 }
 
-function triggerNextUnclaimedPopup() {
-    let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
-    if (unclaimed.length > 0) {
-        showMilestonePopup(unclaimed[0]);
-    }
-}
 
 function removeUnclaimedReward(title) {
     let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
@@ -1589,10 +1602,10 @@ function showMilestonePopup(trophy) {
                         ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You have Lifetime Course Access.</div>'}
                         
                         ${!allBooksOwned ? `
-                        <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
+							<div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
                                 <input type="radio" name="rewardChoice" value="book" ${isLifetime ? 'checked' : ''} style="transform: scale(1.2);">
-                                Claim a Study Book
+                                Claim a Study Book (+${trophy.rewardValue} ${trophy.rewardUnit})
                             </label>
                             <div id="book-selection-div" style="padding-left: 24px; ${isLifetime ? '' : 'pointer-events: none;'} transition: 0.3s;">
                                 <select id="reward-book-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
@@ -1633,7 +1646,6 @@ function showMilestonePopup(trophy) {
         closeBtn.onclick = () => {
             removeUnclaimedReward(trophy.title);
             modal.remove();
-            triggerNextUnclaimedPopup();
         };
     } else {
         // Normal dismiss leaves it in the unclaimed queue
@@ -1684,7 +1696,6 @@ function showMilestonePopup(trophy) {
                     
                     removeUnclaimedReward(trophy.title);
                     modal.remove();
-                    triggerNextUnclaimedPopup();
                     
                 } catch (err) {
                     btnConfirm.textContent = "Claim Selected Reward";
@@ -2057,8 +2068,8 @@ if (btnAnalytics) {
                     <p style="color: #64748b; font-size: 0.9rem;">Answer at least 3 questions in any topic to unlock your Smart Performance Dashboard.</p>
                 </div>
             `;
-        } else {
-            html += `<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">`;
+			} else {
+            html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 25px;">`;
             
             html += `<div style="background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 15px;">
                         <h4 style="color:#991b1b; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #fecaca; padding-bottom: 5px;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i> Priority Review</h4>`;
@@ -2101,25 +2112,25 @@ if (btnAnalytics) {
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px;">
             `;
 
-            const totalMistakesCount = allMistakes.length;
+const totalMistakesCount = allMistakes.length;
             if (totalMistakesCount > 0) {
-                html += `<button id="btn-train-redemption" class="btn-solid" style="background: #f59e0b; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
-                            <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Redemption Mode</span>
-                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px;">Revisit ${totalMistakesCount} Mistakes</span>
+                html += `<button id="btn-train-redemption" class="btn-solid" style="background: #f59e0b; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                            <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Redemption Mode</span>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">Revisit ${totalMistakesCount} Mistakes</span>
                          </button>`;
             }
 
             if (weaknesses.length > 0) {
-                html += `<button id="btn-train-focus" class="btn-solid" style="background: #ef4444; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
-                            <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-bullseye" style="margin-right: 8px;"></i> Targeted Focus</span>
-                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px;">Drill 15 Qs on Weakest Topic</span>
+                html += `<button id="btn-train-focus" class="btn-solid" style="background: #ef4444; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                            <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-bullseye" style="margin-right: 8px;"></i> Targeted Focus</span>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">Drill 15 Qs on Weakest Topic</span>
                          </button>`;
             }
 
             if (strengths.length > 0 && weaknesses.length > 0) {
-                html += `<button id="btn-train-mix" class="btn-solid" style="background: #3b82f6; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
-                            <span style="font-weight: bold; font-size: 0.95rem;"><i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Balanced Mix</span>
-                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px;">30 Qs (Strengths + Weaknesses)</span>
+                html += `<button id="btn-train-mix" class="btn-solid" style="background: #3b82f6; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                            <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Balanced Mix</span>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">30 Qs (Strengths + Weaknesses)</span>
                          </button>`;
             }
 

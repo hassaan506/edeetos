@@ -392,12 +392,23 @@ body {
 }
 
 .list-item .card-header-flex { 
-    margin-bottom: 8px; 
+    margin-bottom: 12px; 
     align-items: center; 
-    flex-wrap: wrap; 
+    flex-wrap: nowrap; /* Prevents the buttons from dropping to a new line */
     gap: 10px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.list-item .card-header-flex > span:first-child {
+    flex: 1;
+    min-width: 0; 
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+.list-item .card-header-flex > div {
+    flex-shrink: 0;
 }
 
 .list-item input[type="checkbox"] {
