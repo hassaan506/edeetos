@@ -601,6 +601,15 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
         // ADMIN COPY QUESTION LOGIC
         // ==========================================
         if (copyQBtn) {
+            // 1. Verify Role and Set Visibility
+            const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
+            if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
+                copyQBtn.style.display = 'flex';
+            } else {
+                copyQBtn.style.display = 'none';
+            }
+
+            // 2. Attach Click Handler
             copyQBtn.onclick = () => {
                 if (!currentQuestionData) return;
                 
