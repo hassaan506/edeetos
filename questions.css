@@ -187,6 +187,7 @@ body {
     flex-direction: row !important;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center !important; /* Added to center the filters and buttons */
     gap: 1.5rem;
     border: none !important; /* Removes the vertical grey line */
     padding: 0 !important;

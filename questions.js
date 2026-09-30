@@ -78,6 +78,33 @@ const diffMediumFilter = document.getElementById('diff-medium-filter');
 const diffHardFilter = document.getElementById('diff-hard-filter');
 
 // ==========================================
+// 3. DARK MODE TOGGLE LOGIC
+// ==========================================
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+// Set the initial icon on load
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+// Handle clicks
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.documentElement.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            localStorage.setItem('theme', 'light');
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
+}
+
+// ==========================================
 // 4. MULTIPLAYER & STUDY ROOMS
 // ==========================================
 const activeRoomId = localStorage.getItem('active_study_room');
@@ -740,43 +767,100 @@ const btnStartMock = document.getElementById('btn-start-mock');
 const btnJoinChallenge = document.getElementById('btn-join-challenge');
 
 if (btnJoinChallenge) {
-    btnJoinChallenge.addEventListener('click', async () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to join a challenge.");
-        const code = prompt("Enter the 5-character Challenge Code from your friend:");
-        if (!code) return;
-        
-        btnJoinChallenge.textContent = "Loading...";
-        try {
-            const challengeSnap = await getDoc(doc(db, "friend_challenges", code.trim().toUpperCase()));
-            if (!challengeSnap.exists()) {
-                btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
-                return alert("Invalid or expired Challenge Code.");
-            }
-            const challengeData = challengeSnap.data();
-            localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
-            
-            document.body.style.cursor = 'wait';
-            const request = indexedDB.open("EdeetosDB", 1);
-            
-            request.onupgradeneeded = (e) => {
-                const db = e.target.result;
-                if (!db.objectStoreNames.contains("quiz_sessions")) db.createObjectStore("quiz_sessions");
-            };
-            
-            request.onsuccess = (e) => {
-                const idb = e.target.result;
-                const tx = idb.transaction("quiz_sessions", "readwrite");
-                tx.objectStore("quiz_sessions").put(challengeData.queue, "active_quiz_queue");
-                tx.oncomplete = () => {
-                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: challengeData.calcMinutes, examName: 'Friend Challenge vs ' + challengeData.hostName }));
-                    window.location.href = 'quiz.html';
-                };
-            };
-        } catch (err) {
-            console.error(err);
-            alert("Failed to load friend challenge.");
-            btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
+    btnJoinChallenge.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+            return alert("Please register to join a challenge.");
         }
+
+        // 1. Create the custom modal overlay dynamically
+        const modalOverlay = document.createElement('div');
+        modalOverlay.id = 'join-challenge-modal';
+        modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+
+        modalOverlay.innerHTML = `
+            <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.25); animation: gentlePopIn 0.3s forwards;">
+                <h3 style="color: #9333ea; margin-top: 0; margin-bottom: 10px; font-size: 1.6rem;"><i class="fas fa-flag-checkered"></i> Join Challenge</h3>
+                <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Enter the 5-character code shared by your friend.</p>
+                
+                <input type="text" id="challenge-code-input" placeholder="e.g. A1B2C" maxlength="5" style="width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1.8rem; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; outline: none; transition: border-color 0.2s; box-sizing: border-box; color: #0f172a;">
+                
+                <div style="display: flex; gap: 10px;">
+                    <button id="btn-cancel-join" class="btn-outline" style="flex: 1; border-color: #cbd5e1; color: #64748b; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s;">Cancel</button>
+                    <button id="btn-confirm-join" class="btn-solid" style="flex: 1; background: #a855f7; border: none; padding: 12px; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3); transition: 0.2s;">Join Match</button>
+                </div>
+            </div>
+            <style>@keyframes gentlePopIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }</style>
+        `;
+
+        document.body.appendChild(modalOverlay);
+
+        const inputField = document.getElementById('challenge-code-input');
+        inputField.focus();
+
+        // Focus styling
+        inputField.addEventListener('focus', () => inputField.style.borderColor = '#a855f7');
+        inputField.addEventListener('blur', () => inputField.style.borderColor = '#e2e8f0');
+
+        // Cancel button
+        document.getElementById('btn-cancel-join').addEventListener('click', () => {
+            modalOverlay.remove();
+        });
+
+        // Core Join Logic
+        const processJoin = async () => {
+            const code = inputField.value.trim().toUpperCase();
+            if (!code || code.length !== 5) {
+                inputField.style.borderColor = '#ef4444';
+                inputField.classList.add('apply-shake'); // Reuses your existing shake animation if globally available
+                setTimeout(() => inputField.classList.remove('apply-shake'), 500);
+                return;
+            }
+
+            const confirmBtn = document.getElementById('btn-confirm-join');
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            confirmBtn.disabled = true;
+            
+            try {
+                const challengeSnap = await getDoc(doc(db, "friend_challenges", code));
+                if (!challengeSnap.exists()) {
+                    alert("Invalid or expired Challenge Code.");
+                    confirmBtn.innerHTML = 'Join Match';
+                    confirmBtn.disabled = false;
+                    return;
+                }
+                
+                const challengeData = challengeSnap.data();
+                localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
+                
+                document.body.style.cursor = 'wait';
+                const request = indexedDB.open("EdeetosDB", 1);
+                
+                request.onupgradeneeded = (e) => {
+                    const idb = e.target.result;
+                    if (!idb.objectStoreNames.contains("quiz_sessions")) idb.createObjectStore("quiz_sessions");
+                };
+                
+                request.onsuccess = (e) => {
+                    const idb = e.target.result;
+                    const tx = idb.transaction("quiz_sessions", "readwrite");
+                    tx.objectStore("quiz_sessions").put(challengeData.queue, "active_quiz_queue");
+                    tx.oncomplete = () => {
+                        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: challengeData.calcMinutes, examName: 'Friend Challenge vs ' + challengeData.hostName }));
+                        window.location.href = 'quiz.html';
+                    };
+                };
+            } catch (err) {
+                console.error(err);
+                alert("Failed to load friend challenge.");
+                confirmBtn.innerHTML = 'Join Match';
+                confirmBtn.disabled = false;
+            }
+        };
+
+        document.getElementById('btn-confirm-join').addEventListener('click', processJoin);
+        inputField.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') processJoin();
+        });
     });
 }
 
