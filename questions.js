@@ -100,7 +100,6 @@ if (activeRoomId) {
         `;
         document.body.prepend(hostBanner);
 
-        // UI FIX: Custom modal to control exit behavior
         document.getElementById('btn-exit-host-room').addEventListener('click', () => {
             const exitModal = document.createElement('div');
             exitModal.id = 'host-exit-modal';
@@ -121,7 +120,6 @@ if (activeRoomId) {
 
             document.getElementById('btn-cancel-exit').onclick = () => exitModal.remove();
 
-            // OPTION 1: Just Leave
             document.getElementById('btn-leave-only').onclick = async () => {
                 const btn = document.getElementById('btn-leave-only');
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Leaving...';
@@ -143,7 +141,6 @@ if (activeRoomId) {
                 exitModal.remove();
             };
 
-            // OPTION 2: End Room & Kick Everyone
             document.getElementById('btn-end-room').onclick = async () => {
                 const btn = document.getElementById('btn-end-room');
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ending...';
@@ -214,7 +211,7 @@ function changeView(viewName, titleText) {
 }
 
 // ==========================================
-// 6. GLOBAL SEARCH SYSTEM
+// 6. GLOBAL SEARCH SYSTEM & FILTERS
 // ==========================================
 let searchTimeout;
 globalSearch.addEventListener('input', (e) => {
@@ -227,9 +224,9 @@ globalSearch.addEventListener('input', (e) => {
     }
 
     searchTimeout = setTimeout(() => {
-		const matchedQuestions = allQuestions.filter(q => {
+        const matchedQuestions = allQuestions.filter(q => {
             if (unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-            if (!passesDifficultyFilter(q)) return false; 
+            if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false; 
             const questionText = q.Question || q.question || q.text || q.statement || "";
             const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
             return textToSearch.includes(query);
@@ -314,11 +311,10 @@ function triggerFilterUpdate() {
     }
 }
 
-unattemptedFilter.addEventListener('change', triggerFilterUpdate);
+if (unattemptedFilter) unattemptedFilter.addEventListener('change', triggerFilterUpdate);
 if (diffEasyFilter) diffEasyFilter.addEventListener('change', triggerFilterUpdate);
 if (diffMediumFilter) diffMediumFilter.addEventListener('change', triggerFilterUpdate);
 if (diffHardFilter) diffHardFilter.addEventListener('change', triggerFilterUpdate);
-
 
 // ==========================================
 // 7. CORE VIEWS & GRID RENDERING
@@ -332,11 +328,15 @@ function renderGrid() {
     if (currentView === 'system') activeTree = systemTree;
     if (currentView === 'exam') activeTree = examTree;
 
-Object.keys(activeTree).forEach(cardTitle => {
+    Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
-		if (currentMode !== 'exam' && unattemptedFilter.checked && qCount === 0) return;
+        
+        // Ensure filters don't hide the cards in Exam Mode
+        if (currentMode !== 'exam' && unattemptedFilter.checked && qCount === 0) return;
+        if (qCount === 0) return;
 
-        const doneCount = getSolvedCount(currentView, [cardTitle]);        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+        const doneCount = getSolvedCount(currentView, [cardTitle]);
+        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
         const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
         const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
@@ -562,16 +562,15 @@ function renderListItem(itemName, nextData, level, itemPath) {
     } else {
         const doneCount = getSolvedCount(currentView, itemPath);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-        countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+        countHtml = `<span class="card-count">${doneCount} /${qCount}</span>`;
         progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
     }
 
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
     
-const safePath = encodeURIComponent(JSON.stringify(itemPath));
+    const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
-    // Hide the mini start button when in Exam Mode to force usage of the bottom cart
     const displayInstantStart = currentMode === 'exam' ? 'none' : 'inline-block';
     const instantStartBtn = `<button class="btn-solid mini-btn" style="display: ${displayInstantStart}; margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
@@ -638,7 +637,6 @@ function switchMode(mode) {
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
     
-    // Target specific inputs instead of hiding all of them
     const qCountInput = document.getElementById('exam-q-count');
     const timerInput = document.getElementById('exam-timer');
     
@@ -649,13 +647,11 @@ function switchMode(mode) {
         document.getElementById('mode-practice').className = "btn-solid active-mode";
         document.getElementById('mode-exam').className = "btn-outline";
         
-        // Show Question Count, Hide Timer
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
         
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         
-        // Show filters safely without breaking the layout
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
@@ -669,13 +665,11 @@ function switchMode(mode) {
         document.getElementById('mode-exam').className = "btn-solid active-mode";
         document.getElementById('mode-practice').className = "btn-outline";
         
-        // Show BOTH Question Count and Timer in Exam Mode
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
         
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         
-        // Hide filters safely, ensuring the grid isn't dragged down with it
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
@@ -707,93 +701,6 @@ if (examQInput) {
 if (examTimerInput) {
     examTimerInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') startExamBtn.click();
-    });
-}
-const btnQuickMock = document.getElementById('btn-quick-mock');
-const mockModal = document.getElementById('mock-exam-modal');
-const mockQCount = document.getElementById('mock-q-count');
-const btnJoinChallenge = document.getElementById('btn-join-challenge');
-
-if (btnJoinChallenge) {
-    btnJoinChallenge.addEventListener('click', async () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to join a challenge.");
-        const code = prompt("Enter the 5-character Challenge Code from your friend:");
-        if (!code) return;
-        
-        btnJoinChallenge.textContent = "Loading...";
-        try {
-            const challengeSnap = await getDoc(doc(db, "friend_challenges", code.trim().toUpperCase()));
-            if (!challengeSnap.exists()) {
-                btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
-                return alert("Invalid or expired Challenge Code.");
-            }
-            const challengeData = challengeSnap.data();
-            localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
-            
-            document.body.style.cursor = 'wait';
-            const request = indexedDB.open("EdeetosDB", 1);
-            
-            request.onupgradeneeded = (e) => {
-                const db = e.target.result;
-                if (!db.objectStoreNames.contains("quiz_sessions")) db.createObjectStore("quiz_sessions");
-            };
-            
-            request.onsuccess = (e) => {
-                const idb = e.target.result;
-                const tx = idb.transaction("quiz_sessions", "readwrite");
-                tx.objectStore("quiz_sessions").put(challengeData.queue, "active_quiz_queue");
-                tx.oncomplete = () => {
-                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: challengeData.calcMinutes, examName: 'Friend Challenge vs ' + challengeData.hostName }));
-                    window.location.href = 'quiz.html';
-                };
-            };
-        } catch (err) {
-            console.error(err);
-            alert("Failed to load friend challenge.");
-            btnJoinChallenge.innerHTML = '🏁 Join Friend Challenge';
-        }
-    });
-}
-
-const btnCancelMock = document.getElementById('btn-cancel-mock');
-const btnStartMock = document.getElementById('btn-start-mock');
-
-if (btnQuickMock && mockModal) {
-    btnQuickMock.addEventListener('click', () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to take mock exams.");
-        mockModal.style.display = 'flex';
-        mockQCount.focus();
-    });
-    btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
-    
-    btnStartMock.addEventListener('click', () => {
-        let count = parseInt(mockQCount.value);
-        if (!count || count < 5) return alert("Please enter a valid number of questions (minimum 5).");
-
-        btnStartMock.textContent = "Generating...";
-        btnStartMock.disabled = true;
-
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-        let freshPool = allQuestions.filter(q => !attemptedQuestions.includes(getQID(q)) && !allMistakes.includes(getQID(q)) && !q.isBookQuestion);
-
-        if (freshPool.length < count) {
-            freshPool = allQuestions.filter(q => !q.isBookQuestion);
-        }
-
-        if (freshPool.length === 0) {
-            btnStartMock.textContent = "Start Exam";
-            btnStartMock.disabled = false;
-            return alert("No questions available for a mock exam.");
-        }
-
-        const finalPool = freshPool.sort(() => 0.5 - Math.random()).slice(0, count);
-        const calcMinutes = Math.ceil(count * 1.2);
-
-        mockModal.style.display = 'none';
-        btnStartMock.textContent = "Start Exam";
-        btnStartMock.disabled = false;
-
-        window.launchQuiz(finalPool, 'exam', calcMinutes, `Mock Exam (${count} Qs)`);
     });
 }
 
@@ -839,7 +746,6 @@ window.startInstantPractice = function(encodedPath) {
     
     if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
     
-    // Apply question limit if entered in the bottom bar
     const qCountInput = parseInt(document.getElementById('exam-q-count').value);
     if (qCountInput && qCountInput > 0 && qCountInput < finalPool.length) {
         finalPool = finalPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
@@ -893,28 +799,27 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-    document.body.style.cursor = 'wait';
-    const request = indexedDB.open("EdeetosDB", 1);
-    
-    request.onupgradeneeded = (e) => {
-        const db = e.target.result;
-        if (!db.objectStoreNames.contains("quiz_sessions")) db.createObjectStore("quiz_sessions");
-    };
-    
-    request.onsuccess = (e) => {
-        const db = e.target.result;
-        const tx = db.transaction("quiz_sessions", "readwrite");
-        tx.objectStore("quiz_sessions").put(questionsArray, "active_quiz_queue");
-        
-        tx.oncomplete = () => {
-            localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-            window.location.href = 'quiz.html';
-        };
-        tx.onerror = () => {
-            alert("Storage error. Please clear your browser cache.");
-            document.body.style.cursor = 'default';
-        };
-    };
+// Prevent QuotaExceededError (5MB LocalStorage Limit)
+let safeStorageArray = questionsArray;
+    if (safeStorageArray.length > 200) {
+        if (mode === 'exam') {
+            alert("Your selection is massive. To prevent browser memory crashes, we have randomly selected 200 questions from this pool for your current session.");
+            safeStorageArray = safeStorageArray.sort(() => 0.5 - Math.random()).slice(0, 200);
+        } else {
+            alert("Your selection is massive. To prevent browser memory crashes, we have selected the first 200 questions from this pool for your current session.");
+            safeStorageArray = safeStorageArray.slice(0, 200);
+        }
+    }
+
+    try {
+        localStorage.setItem('edeetos_active_quiz', JSON.stringify(safeStorageArray));
+        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
+        window.location.href = 'quiz.html';
+    } catch (e) {
+        alert("Device storage full. Please clear your browser cache to load this quiz.");
+        console.error("Storage Error:", e);
+        document.body.style.cursor = 'default';
+    }
 };
 
 function generateExamTitle(paths, currentView) {
@@ -1019,7 +924,7 @@ function initMentorFeatures() {
                     
                     let modalHtml = `
                         <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                            <h3 style="color: #1e3a8a; margin: 0; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
+                            <h3 style="color: #1e3a8a; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
                             <input type="text" id="student-search-input" placeholder="Search by name or email..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;">
                             <div id="student-list-container" style="overflow-y: auto; flex-grow: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
                     `;
@@ -1185,7 +1090,8 @@ async function loadDataAndBuildTree() {
 
         subjectTree = hierarchyData.subjects || {};
         systemTree = hierarchyData.systems || {};
-examTree = {};
+        examTree = {};
+        
         masterQuestions.forEach(q => {
             let qYears = [];
             if (Array.isArray(q.Year)) {
@@ -1202,11 +1108,10 @@ examTree = {};
             if (qExams.length === 0) qExams = ["Other Exams"];
 
             let subj = q.Subject || "Unknown Subject";
+            let chapter = q.Chapter || "Unknown Chapter";
             let topic = q.Topic || "Unknown Topic";
 
-            // Map each exam to its correct year based on string matching or fallback order
             qExams.forEach(exam => {
-                // Try to extract a 2-digit or 4-digit year from the exam string (e.g., "08/25" -> 2025)
                 let matchedYear = null;
                 const yearMatch = exam.match(/\/(25|26|2025|2026)\b/);
                 if (yearMatch) {
@@ -1214,15 +1119,15 @@ examTree = {};
                     matchedYear = rawY.length === 2 ? `20${rawY}` : rawY;
                 }
 
-                // Determine which year folder this exam actually belongs in
                 let targetYears = matchedYear && qYears.includes(matchedYear) ? [matchedYear] : qYears;
 
                 targetYears.forEach(year => {
                     if (!examTree[year]) examTree[year] = {};
                     if (!examTree[year][exam]) examTree[year][exam] = {};
-                    if (!examTree[year][exam][subj]) examTree[year][exam][subj] = [];
-                    if (!examTree[year][exam][subj].includes(topic)) {
-                        examTree[year][exam][subj].push(topic);
+                    if (!examTree[year][exam][subj]) examTree[year][exam][subj] = {};
+                    if (!examTree[year][exam][subj][chapter]) examTree[year][exam][subj][chapter] = [];
+                    if (!examTree[year][exam][subj][chapter].includes(topic)) {
+                        examTree[year][exam][subj][chapter].push(topic);
                     }
                 });
             });
@@ -1275,14 +1180,19 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     if (paths.length === 0) {
-        return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || !attemptedQuestions.includes(getQID(q))).length;
+        return pool.filter(q => {
+            if (currentMode === 'exam') return true;
+            if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+            return true;
+        }).length;
     }
 
-return pool.filter(q => {
-        // --- NEW: Difficulty Filter Override ---
-        if (!passesDifficultyFilter(q)) return false;
-        
-        if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+    return pool.filter(q => {
+        if (currentMode !== 'exam') {
+            if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false;
+            if (!isGlobalPopupActive && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+        }
+
         if (isGlobalPopupActive) {
             if (paths[0] === "Books") {
                 if (!q.isBookQuestion) return false;
@@ -1310,7 +1220,6 @@ return pool.filter(q => {
             if (paths[1] && q.Subject !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
 		} else if (view === 'exam') {
-            // 1. Handle Years (Split comma-separated strings into an array)
             let qYears = [];
             if (Array.isArray(q.Year)) {
                 qYears = q.Year.map(y => String(y).trim());
@@ -1324,13 +1233,12 @@ return pool.filter(q => {
             
             if (paths[0] && !qYears.includes(paths[0])) return false;
             
-            // 2. Handle Exams (Ensure it parses your JSON array correctly)
             let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
             if (paths[1] && !qExams.includes(paths[1])) return false;
             
-            // 3. Handle standard Subjects and Topics
             if (paths[2] && q.Subject !== paths[2]) return false;
-            if (paths[3] && q.Topic !== paths[3]) return false;
+            if (paths[3] && q.Chapter !== paths[3]) return false;
+            if (paths[4] && q.Topic !== paths[4]) return false;
         } else if (view === 'book') {
             if (paths[0] && q.Chapter !== paths[0]) return false;
             if (paths[1] && q.Topic !== paths[1]) return false;
@@ -1511,7 +1419,6 @@ const trophies = [
     { title: "Master", req: 5000, icon: "👑", rewardValue: 21, rewardUnit: "Days" }
 ];
 
-// Correctly accumulate requirements for delta milestones
 let cumulativeSum = 0;
 const processedTrophies = trophies.map((t) => {
     const previousCum = cumulativeSum;
@@ -1545,11 +1452,11 @@ function checkMilestones(currentFlawless) {
         
         localStorage.setItem(storageKey, JSON.stringify(unlockedTiers));
         localStorage.setItem('edeetos_unclaimed_rewards', JSON.stringify(unclaimed));
-		
-		ShowMilestonePopup(newlyUnlocked[0]);
+        
+        // Fix: Shows the popup only once when milestone is triggered
+        showMilestonePopup(newlyUnlocked[0]);
     }
 }
-
 
 function removeUnclaimedReward(title) {
     let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
@@ -1577,7 +1484,6 @@ function showMilestonePopup(trophy) {
     const isLifetime = subStatus === 'lifetime';
     const courseOptionsHtml = `<option value="${activeCourse}" selected>${activeCourse.toUpperCase().replace('_', ' ')}</option>`;
 
-    // SECURE BOOK LOGIC: Filter out books the user already owns
     let claimableBooksCount = 0;
     const bookOptionsHtml = availableBooks.map(b => {
         const hasLifetimeBook = currentUserData?.subscriptions?.[b.file] === 'lifetime';
@@ -1594,7 +1500,6 @@ function showMilestonePopup(trophy) {
     if (trophy.rewardValue > 0) {
         
         if (isLifetime && allBooksOwned) {
-            // Edge Case: The user has unlocked the course and every single book.
             rewardOptionsHtml = `
                 <div style="margin-top: 15px; text-align: center; background: #ecfdf5; padding: 15px; border-radius: 8px; border: 1px solid #a7f3d0;">
                     <div style="color: #059669; font-weight: bold; font-size: 0.95rem;">✅ You already own all available content!</div>
@@ -1602,7 +1507,6 @@ function showMilestonePopup(trophy) {
                 </div>
             `;
         } else {
-            // Standard Case: The user has at least one valid reward to claim.
             rewardOptionsHtml = `
                 <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
                     <p style="font-size: 0.95rem; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">Choose ONE Reward:</p>
@@ -1624,7 +1528,7 @@ function showMilestonePopup(trophy) {
                         ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You have Lifetime Course Access.</div>'}
                         
                         ${!allBooksOwned ? `
-							<div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
+                        <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
                                 <input type="radio" name="rewardChoice" value="book" ${isLifetime ? 'checked' : ''} style="transform: scale(1.2);">
                                 Claim a Study Book (+${trophy.rewardValue} ${trophy.rewardUnit})
@@ -1663,14 +1567,12 @@ function showMilestonePopup(trophy) {
 
     const closeBtn = modal.querySelector('#close-milestone-btn');
     
-    // If they have nothing left to claim, dismiss means permanently ignoring this milestone.
     if (isLifetime && allBooksOwned) {
         closeBtn.onclick = () => {
             removeUnclaimedReward(trophy.title);
             modal.remove();
         };
     } else {
-        // Normal dismiss leaves it in the unclaimed queue
         closeBtn.onclick = () => {
             modal.remove();
         };
@@ -1785,7 +1687,6 @@ async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBoo
         
         let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
         
-        // Date calculation logic starts here
         let currentExpiry = currentSubs[selectedBookFile];
         let newExpiryDate = new Date();
 
@@ -1803,7 +1704,6 @@ async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBoo
         }
 
         currentSubs[selectedBookFile] = newExpiryDate.toISOString();
-        // Date calculation logic ends here
 
         let claimedMilestones = currentUserData?.claimedMilestones || [];
         if (!claimedMilestones.includes(trophyTitle)) {
@@ -1835,13 +1735,9 @@ if (btnJourney) {
         
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
-        
-        // 1. We must explicitly check Firebase to see if you have already claimed this specific tier
-        const dbClaimed = currentUserData?.claimedMilestones || [];
 
         trophiesGrid.innerHTML = processedTrophies.map(t => {
             const isUnlocked = flawlessCount >= t.cumulativeReq;
-            const isClaimed = dbClaimed.includes(t.title);
             
             let progress = 0;
             if (isUnlocked) {
@@ -1858,17 +1754,9 @@ if (btnJourney) {
             const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
             const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
             
-            // 2. Dynamically render a functional Claim Button if the tier is unlocked but unredeemed
-            let rewardHtml = '';
-            if (t.rewardValue > 0) {
-                if (isUnlocked && !isClaimed) {
-                    rewardHtml = `<button class="btn-solid mini-btn manual-claim-btn" data-title="${t.title}" style="margin-top: 8px; padding: 6px 12px; font-size: 0.75rem; background: #f59e0b; border: none; cursor: pointer; width: 100%; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);"><i class="fas fa-gift"></i> Claim Reward</button>`;
-                } else if (isClaimed) {
-                    rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
-                } else {
-                    rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium or Book</div>`;
-                }
-            }
+            const rewardHtml = t.rewardValue > 0 
+                ? `<div style="font-size: 0.75rem; font-weight: bold; color: ${isUnlocked ? '#10b981' : '#f59e0b'}; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium or Book</div>` 
+                : '';
 
             return `
                 <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow:${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
@@ -1883,18 +1771,6 @@ if (btnJourney) {
                 </div>
             `;
         }).join('');
-
-        // 3. Attach the event listener to force the Reward UI to spawn when clicked
-        document.querySelectorAll('.manual-claim-btn').forEach(btn => {
-            btn.onclick = () => {
-                const targetTitle = btn.getAttribute('data-title');
-                const targetTrophy = processedTrophies.find(tr => tr.title === targetTitle);
-                if (targetTrophy) {
-                    journeyModal.style.display = 'none'; 
-                    showMilestonePopup(targetTrophy);
-                }
-            };
-        });
 
         journeyModal.style.display = 'flex';
     };
@@ -2090,7 +1966,7 @@ if (btnAnalytics) {
                     <p style="color: #64748b; font-size: 0.9rem;">Answer at least 3 questions in any topic to unlock your Smart Performance Dashboard.</p>
                 </div>
             `;
-			} else {
+        } else {
             html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 25px;">`;
             
             html += `<div style="background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 15px;">
@@ -2130,11 +2006,11 @@ if (btnAnalytics) {
             html += `</div></div>`;
 
             html += `
-                <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Performance Drills</h4>
+                <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Smart Training Hub</h4>
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px;">
             `;
 
-const totalMistakesCount = allMistakes.length;
+            const totalMistakesCount = allMistakes.length;
             if (totalMistakesCount > 0) {
                 html += `<button id="btn-train-redemption" class="btn-solid" style="background: #f59e0b; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                             <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Redemption Mode</span>
@@ -2333,7 +2209,6 @@ onAuthStateChanged(auth, async (user) => {
                 currentUserData = dbData; 
                 currentUserRole = dbData.role || 'STUDENT';
                 
-                // Initialize Mentor Tools if allowed
                 initMentorFeatures();
                 
                 isPremiumUser = false;
@@ -2385,7 +2260,6 @@ onAuthStateChanged(auth, async (user) => {
                 if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
                 if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
                 
-                // --- Spaced Repetition Block ---
                 const revisions = {
                     ...(courseData.revisions || {}),
                     ...(booksData.revisions || {})
@@ -2584,39 +2458,4 @@ onAuthStateChanged(auth, async (user) => {
             window.location.href = 'login.html';
         }
     }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const darkModeBtn = document.getElementById('dark-mode-toggle');
-    if (!darkModeBtn) return;
-
-    const icon = darkModeBtn.querySelector('i');
-    
-    // Check saved preference on load
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (icon) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        }
-    }
-
-    // Toggle logic
-    darkModeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        
-        if (isDark) {
-            if (icon) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-            localStorage.setItem('theme', 'dark');
-        } else {
-            if (icon) {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-            localStorage.setItem('theme', 'light');
-        }
-    });
 });
