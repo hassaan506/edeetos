@@ -181,15 +181,16 @@ body {
     margin: 0 !important;
 }
 
-/* Forces the container holding the filters and buttons into a horizontal row */
+/* Forces the container holding the filters and buttons into a horizontal row and centers them */
 .search-filter-bar > div:not(.search-wrapper) {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center !important; /* Added to center the filters and buttons */
+    justify-content: center !important; 
+    width: 100% !important; /* Forces the container to span full width so items can center */
     gap: 1.5rem;
-    border: none !important; /* Removes the vertical grey line */
+    border: none !important; 
     padding: 0 !important;
     margin: 0 !important;
 }
