@@ -1,10 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
-
-const functions = getFunctions();
-const updateQuestionCSV = httpsCallable(functions, "updateQuestionCSV");
 
 let currentUserId = null; 
 let currentUserData = null;
@@ -350,6 +346,8 @@ function showMustAnswerModal() {
     };
 }
 
+let quillHint, quillExplanation;
+
 function loadQuestion(index) {
     try { 
         currentIndex = index;
@@ -655,11 +653,9 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
             };
         }
 
-// ==========================================
+        // ==========================================
         // ADMIN EDIT QUESTION LOGIC & RICH TEXT
         // ==========================================
-        let quillHint, quillExplanation;
-
         if (editQBtn) {
             editQBtn.onclick = () => {
                 if (!currentQuestionData) return;
@@ -677,13 +673,25 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                     quillExplanation = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: toolbarOptions } });
                 }
 
+                // Populate Metadata
                 document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || "";
                 document.getElementById('edit-q-text').value = currentQuestionData.text || "";
+                document.getElementById('edit-q-subject').value = currentQuestionData.Subject || "";
+                document.getElementById('edit-q-chapter').value = currentQuestionData.Chapter || "";
+                document.getElementById('edit-q-topic').value = currentQuestionData.Topic || "";
+                document.getElementById('edit-q-diff').value = (currentQuestionData.Difficulty || "medium").toLowerCase();
                 
-                // Load existing HTML into the editors
+                const yearVal = Array.isArray(currentQuestionData.Year) ? currentQuestionData.Year.join(', ') : (currentQuestionData.Year || "");
+                document.getElementById('edit-q-year').value = yearVal;
+                
+                const examVal = Array.isArray(currentQuestionData.Exam) ? currentQuestionData.Exam.join(', ') : (currentQuestionData.Exam || "");
+                document.getElementById('edit-q-exam').value = examVal;
+                
+                // Load HTML into the visual editors
                 quillHint.root.innerHTML = currentQuestionData.hint || "";
                 quillExplanation.root.innerHTML = currentQuestionData.explanation || "";
 
+                // Populate Options
                 const optsContainer = document.getElementById('edit-options-container');
                 optsContainer.innerHTML = '';
                 
@@ -729,11 +737,11 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
 
                 const updatedRow = {
                     "Question id": targetId,
-                    "Year": currentQuestionData.Year || "",
-                    "Exam": Array.isArray(currentQuestionData.Exam) ? currentQuestionData.Exam.join(', ') : (currentQuestionData.Exam || ""),
-                    "Subject": currentQuestionData.Subject || "General",
-                    "Chapter": currentQuestionData.Chapter || "General",
-                    "Topic": currentQuestionData.Topic || "General",
+                    "Year": document.getElementById('edit-q-year').value.trim(),
+                    "Exam": document.getElementById('edit-q-exam').value.trim(),
+                    "Subject": document.getElementById('edit-q-subject').value.trim(),
+                    "Chapter": document.getElementById('edit-q-chapter').value.trim(),
+                    "Topic": document.getElementById('edit-q-topic').value.trim(),
                     "Question": document.getElementById('edit-q-text').value.trim(),
                     "Option A": document.getElementById('edit-opt-0')?.value.trim() || "",
                     "Option B": document.getElementById('edit-opt-1')?.value.trim() || "",
@@ -743,7 +751,7 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                     "Correct answer": correctLetter,
                     "Explanation": explanationHTML,
                     "Hint": hintHTML,
-                    "Difficulty": currentQuestionData.Difficulty || "medium"
+                    "Difficulty": document.getElementById('edit-q-diff').value
                 };
 
                 const isBook = currentQuestionData.isBookQuestion === true;
@@ -761,10 +769,15 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 
                 localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
 
-                // Instantly update the UI so you can see your changes while still studying
+                // Instantly update the UI so you can see your changes while studying
                 currentQuestionData.text = updatedRow["Question"];
                 currentQuestionData.explanation = updatedRow["Explanation"];
                 currentQuestionData.hint = updatedRow["Hint"];
+                currentQuestionData.Subject = updatedRow["Subject"];
+                currentQuestionData.Chapter = updatedRow["Chapter"];
+                currentQuestionData.Topic = updatedRow["Topic"];
+                currentQuestionData.Difficulty = updatedRow["Difficulty"];
+                
                 questionTextEl.innerHTML = currentQuestionData.text;
                 explanationText.innerHTML = currentQuestionData.explanation;
 
@@ -773,6 +786,7 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 setTimeout(() => adminEditModal.classList.add('hidden'), 300);
             };
         }
+
         updateGridStyles();
 
     } catch (error) { 
@@ -1771,6 +1785,9 @@ if (closeShortcutsBtn) closeShortcutsBtn.addEventListener('click', () => { if(sh
 document.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) return; 
+    
+    // Check if Quill editor is active
+    if (activeEl && activeEl.classList.contains('ql-editor')) return;
 
     // Add this block to close the Must Answer modal using Enter
     const mustAnswerModal = document.getElementById('must-answer-modal');
@@ -1801,7 +1818,7 @@ document.addEventListener('keydown', (e) => {
     switch(e.key) {
         case 'ArrowRight': e.preventDefault(); if(nextBtnLocal) nextBtnLocal.click(); break;
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
-        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else exitSafely('questions.html'); break; // UPDATED: Use safe exit
+        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else exitSafely('questions.html'); break; 
         case 'Enter': e.preventDefault(); if (isExplanationOpen) document.getElementById('close-explanation').click(); else if (isExamMode && nextBtnLocal) nextBtnLocal.click(); break;
         case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) document.getElementById('close-explanation').click(); else explanationBtn.click(); } break;
         case 'p': case 'P': e.preventDefault(); if (isExamMode && skipBtn) skipBtn.click(); break;
