@@ -378,6 +378,118 @@
         </div>
     </div>
 
+<!-- CRITICAL CSS OVERRIDE TO ALLOW TEXT SELECTION IN THE EDITOR -->
+<style>
+    #admin-edit-modal, #admin-edit-modal * {
+        user-select: text !important;
+        -webkit-user-select: text !important;
+    }
+    .ql-editor {
+        user-select: text !important;
+        -webkit-user-select: text !important;
+        cursor: text;
+    }
+</style>
+
+<!-- Admin Edit Modal (Imported from Quiz Design) -->
+<div id="admin-edit-modal" class="popup-overlay" style="display: none; user-select: text !important; -webkit-user-select: text !important; z-index: 2500;">
+    <div class="popup-content" style="max-width: 650px; width: 95%; max-height: 85vh; overflow-y: auto; text-align: left; user-select: text !important; -webkit-user-select: text !important;">
+        <h3 style="color: #065f46; margin-top: 0; margin-bottom: 1rem;"><i class="fas fa-edit"></i> Resolve Flagged Question</h3>
+        
+        <!-- Routing Selection (Crucial for Admin Panel) -->
+        <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.8rem; font-weight: bold; color: #ef4444;">Target Destination (Required)</label>
+            <select id="edit-q-dest" style="width: 100%; padding: 8px; border: 2px solid #ef4444; border-radius: 6px; font-weight: bold;">
+                <option value="">-- Select Destination --</option>
+                <optgroup label="Core Courses">
+                    <option value="COURSE:fcps_part1">FCPS Part 1</option>
+                    <option value="COURSE:fcps_part2">FCPS Part 2</option>
+                    <option value="COURSE:fcps_imm">FCPS IMM</option>
+                    <option value="COURSE:mrcs_part1">MRCS Part 1</option>
+                    <option value="COURSE:mrcs_part2">MRCS Part 2</option>
+                    <option value="COURSE:mbbs_year1">MBBS Year 1</option>
+                    <option value="COURSE:mbbs_year2">MBBS Year 2</option>
+                    <option value="COURSE:mbbs_year3">MBBS Year 3</option>
+                    <option value="COURSE:mbbs_year4">MBBS Year 4</option>
+                    <option value="COURSE:mbbs_year5">MBBS Year 5</option>
+                </optgroup>
+                <optgroup label="Reference Books">
+                    <option value="BOOK:firstaid_step1">First Aid Step 1</option>
+                    <option value="BOOK:firstaid_step2">First Aid Step 2</option>
+                    <option value="BOOK:im_medicine">Irfan Masood Medicine</option>
+                    <option value="BOOK:im_surgery">Irfan Masood Surgery</option>
+                    <option value="BOOK:im_pathology">Irfan Masood Pathology</option>
+                    <option value="BOOK:im_pediatrics">Irfan Masood Pediatrics</option>
+                    <option value="BOOK:brs_patho">BRS Pathology</option>
+                    <option value="BOOK:brs_physio">BRS Physiology</option>
+                    <option value="BOOK:pretest_surgery">Pretest Surgery</option>
+                    <option value="BOOK:rafiullah">Rafiullah FCPS</option>
+                    <option value="BOOK:RWR">Residents Way to Residency</option>
+                    <option value="BOOK:doubleAA">Double AA</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <!-- GRID FOR METADATA -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+            <div>
+                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question ID</label>
+                <input type="text" id="edit-q-id" disabled style="width: 100%; padding: 8px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px;">
+            </div>
+            <div>
+                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Difficulty</label>
+                <select id="edit-q-diff" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div>
+                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Subject</label>
+                <input type="text" id="edit-q-subject" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+            </div>
+            <div>
+                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Chapter</label>
+                <input type="text" id="edit-q-chapter" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+            </div>
+            <div>
+                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Topic</label>
+                <input type="text" id="edit-q-topic" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+            </div>
+            <div>
+                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Year & Exam</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="edit-q-year" placeholder="Year" style="width: 40%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+                    <input type="text" id="edit-q-exam" placeholder="Exam" style="width: 60%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+                </div>
+            </div>
+        </div>
+
+        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question Statement</label>
+        <textarea id="edit-q-text" rows="3" style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;" id="edit-options-container">
+            <!-- Options injected by JavaScript -->
+        </div>
+
+        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Hint</label>
+        <div style="background: white; margin-bottom: 15px;">
+            <div id="edit-q-hint" style="height: 100px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
+        </div>
+
+        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Explanation</label>
+        <div style="background: white; margin-bottom: 20px;">
+            <div id="edit-q-explanation" style="height: 200px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+            <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
+            <button id="btn-save-github" class="btn-solid" style="background: #10b981; border: none;"><i class="fas fa-save"></i> Save to Queue</button>
+        </div>
+    </div>
+</div>
+
+
     <!-- Receipt Modal -->
     <div id="receipt-modal" class="popup-overlay" style="display: none; z-index: 2000;">
         <div class="popup-content" style="max-width: 600px; width: 95%; padding: 1.5rem; text-align: center; position: relative;">

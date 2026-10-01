@@ -1002,9 +1002,61 @@ async function fetchReports() {
                 <p style="color:#1e293b; font-size:0.95rem;"><strong>Reason:</strong> ${data.reason}</p>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; border-top:1px solid #e2e8f0; padding-top:10px;">
                     <small style="color:#64748b;">By: ${data.userEmail}</small>
-                    <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;"><i class="fas fa-check"></i> Mark Solved</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-solid btn-edit-report" style="background: #3b82f6; border: none; padding:0.4rem 1rem; color: white;"><i class="fas fa-edit"></i> Edit Q</button>
+                        <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;"><i class="fas fa-check"></i> Mark Solved</button>
+                    </div>
                 </div>
             `;
+
+            // Route data to the new Modal when "Edit Q" is clicked
+            card.querySelector('.btn-edit-report').onclick = () => {
+                const editModal = document.getElementById('admin-edit-modal');
+                
+                if (!window.editQuillHint) {
+                    const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];
+                    window.editQuillHint = new Quill('#edit-q-hint', { theme: 'snow', modules: { toolbar: tb } });
+                    window.editQuillExp = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: tb } });
+                }
+
+                document.getElementById('edit-q-id').value = data.questionId || '';
+                document.getElementById('edit-q-text').value = data.questionText || '';
+                
+                const destSelect = document.getElementById('edit-q-dest');
+                destSelect.value = ''; 
+                if (data.courseFile) {
+                    const possibleOptions = Array.from(destSelect.options).map(o => o.value);
+                    if (possibleOptions.includes(`COURSE:${data.courseFile}`)) destSelect.value = `COURSE:${data.courseFile}`;
+                    else if (possibleOptions.includes(`BOOK:${data.courseFile}`)) destSelect.value = `BOOK:${data.courseFile}`;
+                }
+
+                document.getElementById('edit-q-subject').value = '';
+                document.getElementById('edit-q-chapter').value = '';
+                document.getElementById('edit-q-topic').value = '';
+                document.getElementById('edit-q-year').value = '';
+                document.getElementById('edit-q-exam').value = '';
+                document.getElementById('edit-q-diff').value = 'medium';
+                window.editQuillHint.root.innerHTML = '';
+                window.editQuillExp.root.innerHTML = '';
+
+                const optsContainer = document.getElementById('edit-options-container');
+                optsContainer.innerHTML = '';
+                for (let i = 0; i < 5; i++) {
+                    const letter = String.fromCharCode(65 + i);
+                    const isChecked = i === 0 ? "checked" : "";
+                    optsContainer.innerHTML += `
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="radio" name="edit-correct-opt" value="${i}" ${isChecked} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
+                            <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
+                            <input type="text" id="edit-opt-${i}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                        </div>
+                    `;
+                }
+
+                editModal.style.display = 'flex';
+            };
+
+            // Soft delete the report when resolved
             card.querySelector('.btn-res').onclick = async () => { 
                 if(confirm("Are you sure this issue is fixed?")) {
                     await updateDoc(doc(db, "reported_questions", d.id), {
