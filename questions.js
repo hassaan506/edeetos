@@ -2565,9 +2565,13 @@ onAuthStateChanged(auth, async (user) => {
                                         throw new Error(`Failed to fetch ${csvPath} from GitHub.`);
                                     }
 
-                                    const getJson = await getRes.json();
+									const getJson = await getRes.json();
                                     const currentSha = getJson.sha;
-                                    const currentCsvText = Base64.decode(getJson.content);
+                                    
+                                    const rawRes = await fetch(getJson.download_url, {
+                                        headers: { "Authorization": `Bearer ${token}` }
+                                    });
+                                    const currentCsvText = await rawRes.text();
 
                                     // Parse CSV
                                     let parsed = Papa.parse(currentCsvText, { header: true, skipEmptyLines: true });
