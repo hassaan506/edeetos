@@ -1009,51 +1009,94 @@ async function fetchReports() {
                 </div>
             `;
 
-            // Route data to the new Modal when "Edit Q" is clicked
-            card.querySelector('.btn-edit-report').onclick = () => {
-                const editModal = document.getElementById('admin-edit-modal');
+            // Route data to the new Modal and Fetch JSON data
+            card.querySelector('.btn-edit-report').onclick = async (e) => {
+                const btn = e.currentTarget;
+                const originalHtml = btn.innerHTML;
                 
-                if (!window.editQuillHint) {
-                    const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];
-                    window.editQuillHint = new Quill('#edit-q-hint', { theme: 'snow', modules: { toolbar: tb } });
-                    window.editQuillExp = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: tb } });
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                btn.disabled = true;
+
+                try {
+                    let qData = null;
+                    const knownBooks = ['firstaid_step1', 'firstaid_step2', 'im_medicine', 'im_surgery', 'im_pathology', 'im_pediatrics', 'brs_patho', 'brs_physio', 'pretest_surgery', 'rafiullah', 'RWR', 'doubleAA'];
+                    
+                    if (data.courseFile) {
+                        const isBook = knownBooks.includes(data.courseFile);
+                        const folder = isBook ? 'Books' : 'Data';
+                        const url = `${folder}/${data.courseFile}_questions.json`;
+                        
+                        const res = await fetch(url, { cache: 'no-cache' });
+                        if (res.ok) {
+                            const qs = await res.json();
+                            qData = qs.find(q => String(q.id || q.QuestionID) === String(data.questionId));
+                        }
+                    }
+
+                    const editModal = document.getElementById('admin-edit-modal');
+                    
+                    if (!window.editQuillHint) {
+                        const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];
+                        window.editQuillHint = new Quill('#edit-q-hint', { theme: 'snow', modules: { toolbar: tb } });
+                        window.editQuillExp = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: tb } });
+                    }
+
+                    // Populate fields directly from the fetched JSON
+                    document.getElementById('edit-q-id').value = qData?.id || data.questionId || '';
+                    document.getElementById('edit-q-text').value = qData?.question || data.questionText || '';
+                    document.getElementById('edit-q-subject').value = qData?.subject || '';
+                    document.getElementById('edit-q-chapter').value = qData?.chapter || '';
+                    document.getElementById('edit-q-topic').value = qData?.topic || '';
+                    
+                    let yearVal = qData?.year || '';
+                    document.getElementById('edit-q-year').value = Array.isArray(yearVal) ? yearVal.join(', ') : yearVal;
+                    
+                    let examVal = qData?.exams || qData?.exam || '';
+                    document.getElementById('edit-q-exam').value = Array.isArray(examVal) ? examVal.join(', ') : examVal;
+                    
+                    document.getElementById('edit-q-diff').value = (qData?.difficulty || 'medium').toLowerCase();
+                    
+                    window.editQuillHint.root.innerHTML = qData?.hint || '';
+                    window.editQuillExp.root.innerHTML = qData?.explanation || '';
+
+                    const destSelect = document.getElementById('edit-q-dest');
+                    destSelect.value = ''; 
+                    if (data.courseFile) {
+                        const prefix = knownBooks.includes(data.courseFile) ? 'BOOK:' : 'COURSE:';
+                        const possibleOptions = Array.from(destSelect.options).map(o => o.value);
+                        if (possibleOptions.includes(`${prefix}${data.courseFile}`)) {
+                            destSelect.value = `${prefix}${data.courseFile}`;
+                        }
+                    }
+
+                    const optsContainer = document.getElementById('edit-options-container');
+                    optsContainer.innerHTML = '';
+                    const fetchedOptions = qData?.options || {};
+                    const correctAns = (qData?.correctAnswer || 'A').toUpperCase();
+
+                    for (let i = 0; i < 5; i++) {
+                        const letter = String.fromCharCode(65 + i);
+                        const isChecked = (correctAns === letter) ? "checked" : (i === 0 && !qData ? "checked" : "");
+                        const optValue = (fetchedOptions[letter] || '').replace(/"/g, '&quot;');
+                        
+                        optsContainer.innerHTML += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="radio" name="edit-correct-opt" value="${i}" ${isChecked} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
+                                <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
+                                <input type="text" id="edit-opt-${i}" value="${optValue}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                            </div>
+                        `;
+                    }
+
+                    editModal.style.display = 'flex';
+
+                } catch (error) {
+                    console.error("Failed to load full question data:", error);
+                    alert("Network error: Could not fetch the full question details. Modal will load with limited data.");
+                } finally {
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
                 }
-
-                document.getElementById('edit-q-id').value = data.questionId || '';
-                document.getElementById('edit-q-text').value = data.questionText || '';
-                
-                const destSelect = document.getElementById('edit-q-dest');
-                destSelect.value = ''; 
-                if (data.courseFile) {
-                    const possibleOptions = Array.from(destSelect.options).map(o => o.value);
-                    if (possibleOptions.includes(`COURSE:${data.courseFile}`)) destSelect.value = `COURSE:${data.courseFile}`;
-                    else if (possibleOptions.includes(`BOOK:${data.courseFile}`)) destSelect.value = `BOOK:${data.courseFile}`;
-                }
-
-                document.getElementById('edit-q-subject').value = '';
-                document.getElementById('edit-q-chapter').value = '';
-                document.getElementById('edit-q-topic').value = '';
-                document.getElementById('edit-q-year').value = '';
-                document.getElementById('edit-q-exam').value = '';
-                document.getElementById('edit-q-diff').value = 'medium';
-                window.editQuillHint.root.innerHTML = '';
-                window.editQuillExp.root.innerHTML = '';
-
-                const optsContainer = document.getElementById('edit-options-container');
-                optsContainer.innerHTML = '';
-                for (let i = 0; i < 5; i++) {
-                    const letter = String.fromCharCode(65 + i);
-                    const isChecked = i === 0 ? "checked" : "";
-                    optsContainer.innerHTML += `
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <input type="radio" name="edit-correct-opt" value="${i}" ${isChecked} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
-                            <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
-                            <input type="text" id="edit-opt-${i}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
-                        </div>
-                    `;
-                }
-
-                editModal.style.display = 'flex';
             };
 
             // Soft delete the report when resolved
