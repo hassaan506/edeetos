@@ -2603,7 +2603,10 @@ onAuthStateChanged(auth, async (user) => {
                                         })
                                     });
 
-                                    if (!putRes.ok) throw new Error(`Failed to save ${csvPath}`);
+									if (!putRes.ok) {
+                                        const errorDetails = await putRes.json().catch(() => ({}));
+                                        throw new Error(`GitHub rejected the save. Reason: ${errorDetails.message || putRes.statusText}`);
+                                    }
                                 }
 
                                 alert(`✅ Successfully committed ${pendingQueue.length} edits to GitHub! Please allow ~60 seconds for GitHub Actions to rebuild your JSONs.`);
