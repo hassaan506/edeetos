@@ -1,7 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
@@ -2026,7 +2025,7 @@ if (btnJourney) {
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                     } else {
                         // Locked target
-                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium</div>`;
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium</div>`;
                     }
                 }
 
@@ -2505,7 +2504,9 @@ onAuthStateChanged(auth, async (user) => {
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
                     isPremiumUser = true;
                     
-                    // ADMIN BATCH PUSH LOGIC
+                    // ==========================================
+                    // NEW DIRECT-TO-GITHUB BATCH PUSH LOGIC
+                    // ==========================================
                     const queueStr = localStorage.getItem('edeetos_pending_edits');
                     let pendingQueue = [];
                     if (queueStr) {
@@ -2516,30 +2517,99 @@ onAuthStateChanged(auth, async (user) => {
                         if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
                         
                         btnPushEdits.onclick = async () => {
+                            // 1. Securely fetch or prompt for GitHub Token
+                            let token = localStorage.getItem('edeetos_github_pat');
+                            if (!token) {
+                                token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser and is never uploaded)");
+                                if (!token) return;
+                                localStorage.setItem('edeetos_github_pat', token);
+                            }
+
                             btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing...';
                             btnPushEdits.disabled = true;
 
-                            const editsByCourse = {};
-                            pendingQueue.forEach(edit => {
-                                const key = edit.courseFile;
-                                if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
-                                editsByCourse[key].rows.push(edit.row);
-                            });
-
                             try {
-                                const functions = getFunctions();
-                                const updateQuestionCSV = httpsCallable(functions, "updateQuestionCSV");
-                                
+                                // Dynamically import PapaParse and Base64 so we don't need a backend server
+                                const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+                                const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
+
+                                // Group edits by file
+                                const editsByCourse = {};
+                                pendingQueue.forEach(edit => {
+                                    const key = edit.courseFile;
+                                    if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+                                    editsByCourse[key].rows.push(edit.row);
+                                });
+
+                                // REPLACE THESE WITH YOUR REPO DETAILS
+                                const owner = "hassaan506";
+                                const repo = "edeetos";
+                                const branch = "main";
+
                                 for (const courseFile of Object.keys(editsByCourse)) {
-                                    await updateQuestionCSV({
-                                        updatedRows: editsByCourse[courseFile].rows,
-                                        courseFile: courseFile,
-                                        isBook: editsByCourse[courseFile].isBook
+                                    const isBook = editsByCourse[courseFile].isBook;
+                                    const folder = isBook ? "Books" : "Data";
+                                    const csvPath = `${folder}/${courseFile}.csv`;
+                                    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+
+                                    // GET current file from GitHub
+                                    const getRes = await fetch(url + `?ref=${branch}`, {
+                                        headers: { "Authorization": `Bearer ${token}` }
                                     });
+
+                                    if (!getRes.ok) {
+                                        if (getRes.status === 401) {
+                                            localStorage.removeItem('edeetos_github_pat');
+                                            throw new Error("Invalid GitHub Token. The saved token was removed. Please click Push to try again.");
+                                        }
+                                        throw new Error(`Failed to fetch ${csvPath} from GitHub.`);
+                                    }
+
+                                    const getJson = await getRes.json();
+                                    const currentSha = getJson.sha;
+                                    const currentCsvText = Base64.decode(getJson.content);
+
+                                    // Parse CSV
+                                    let parsed = Papa.parse(currentCsvText, { header: true, skipEmptyLines: true });
+                                    let rows = parsed.data;
+
+                                    // Apply Edits
+                                    editsByCourse[courseFile].rows.forEach(updatedRow => {
+                                        const qId = updatedRow["Question id"];
+                                        const qIndex = rows.findIndex(r => r["Question id"] === qId && qId !== "");
+                                        if (qIndex !== -1) {
+                                            rows[qIndex] = { ...rows[qIndex], ...updatedRow };
+                                        } else {
+                                            rows.push(updatedRow);
+                                        }
+                                    });
+
+                                    // Unparse and Base64 Encode
+                                    const newCsvText = Papa.unparse(rows);
+                                    const newBase64Content = Base64.encode(newCsvText);
+
+                                    // PUT updated file back to GitHub
+                                    const putRes = await fetch(url, {
+                                        method: 'PUT',
+                                        headers: {
+                                            "Authorization": `Bearer ${token}`,
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({
+                                            message: `Admin Panel: Batched update for ${editsByCourse[courseFile].rows.length} question(s)`,
+                                            content: newBase64Content,
+                                            sha: currentSha,
+                                            branch: branch
+                                        })
+                                    });
+
+                                    if (!putRes.ok) throw new Error(`Failed to save ${csvPath}`);
                                 }
-                                alert(`✅ Successfully committed ${pendingQueue.length} edits to GitHub! Allow ~60 seconds for deployment.`);
+
+                                alert(`✅ Successfully committed ${pendingQueue.length} edits to GitHub! Please allow ~60 seconds for GitHub Actions to rebuild your JSONs.`);
                                 localStorage.removeItem('edeetos_pending_edits');
                                 btnPushEdits.style.display = 'none';
+
                             } catch (error) {
                                 console.error(error);
                                 alert("❌ GitHub Push Failed: " + error.message);
