@@ -2586,15 +2586,19 @@ const getJson = await getRes.json();
                                     let rows = parsed.data;
 
                                     // Apply Edits
-                                    editsByCourse[courseFile].rows.forEach(updatedRow => {
-                                        const qId = updatedRow["Question id"];
-                                        const qIndex = rows.findIndex(r => r["Question id"] === qId && qId !== "");
-                                        if (qIndex !== -1) {
-                                            rows[qIndex] = { ...rows[qIndex], ...updatedRow };
-                                        } else {
-                                            rows.push(updatedRow);
-                                        }
-                                    });
+                                editsByCourse[courseFile].rows.forEach(updatedRow => {
+    const qId = updatedRow["QuestionID"];
+    
+    // Find the row by exactly matching QuestionID
+    const qIndex = rows.findIndex(r => String(r["QuestionID"]) === String(qId) && qId !== "");
+    
+    if (qIndex !== -1) {
+        // Since the keys now match perfectly, we can just merge the updated data over the old row
+        rows[qIndex] = { ...rows[qIndex], ...updatedRow };
+    } else {
+        rows.push(updatedRow);
+    }
+});
 
                                     // Unparse and Base64 Encode
                                     const newCsvText = Papa.unparse(rows);

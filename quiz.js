@@ -735,24 +735,24 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 const hintHTML = quillHint.root.innerHTML;
                 const explanationHTML = quillExplanation.root.innerHTML;
 
-                const updatedRow = {
-                    "Question id": targetId,
-                    "Year": document.getElementById('edit-q-year').value.trim(),
-                    "Exam": document.getElementById('edit-q-exam').value.trim(),
-                    "Subject": document.getElementById('edit-q-subject').value.trim(),
-                    "Chapter": document.getElementById('edit-q-chapter').value.trim(),
-                    "Topic": document.getElementById('edit-q-topic').value.trim(),
-                    "Question": document.getElementById('edit-q-text').value.trim(),
-                    "Option A": document.getElementById('edit-opt-0')?.value.trim() || "",
-                    "Option B": document.getElementById('edit-opt-1')?.value.trim() || "",
-                    "Option C": document.getElementById('edit-opt-2')?.value.trim() || "",
-                    "Option D": document.getElementById('edit-opt-3')?.value.trim() || "",
-                    "Option E": document.getElementById('edit-opt-4')?.value.trim() || "",
-                    "Correct answer": correctLetter,
-                    "Explanation": explanationHTML,
-                    "Hint": hintHTML,
-                    "Difficulty": document.getElementById('edit-q-diff').value
-                };
+const updatedRow = {
+    "QuestionID": targetId,
+    "Year": document.getElementById('edit-q-year').value.trim(),
+    "Exam": document.getElementById('edit-q-exam').value.trim(),
+    "Subject": document.getElementById('edit-q-subject').value.trim(),
+    "Chapter": document.getElementById('edit-q-chapter').value.trim(),
+    "Topic": document.getElementById('edit-q-topic').value.trim(),
+    "Question": document.getElementById('edit-q-text').value.trim(),
+    "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
+    "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
+    "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
+    "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "",
+    "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
+    "CorrectAnswer": correctLetter,
+    "Explanation": explanationHTML,
+    "Hint": hintHTML,
+    "Difficulty": document.getElementById('edit-q-diff').value
+};
 
                 const isBook = currentQuestionData.isBookQuestion === true;
                 const courseFile = isBook ? currentQuestionData.bookName : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
