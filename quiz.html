@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 	<script>
 		if (localStorage.getItem('theme') === 'dark') {
 			document.documentElement.classList.add('dark-mode');
@@ -332,14 +334,18 @@
             </div>
 
             <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Hint</label>
-            <textarea id="edit-q-hint" rows="2" style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+            <div style="background: white; margin-bottom: 15px;">
+                <div id="edit-q-hint" style="height: 100px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
+            </div>
 
             <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Explanation</label>
-            <textarea id="edit-q-explanation" rows="4" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+            <div style="background: white; margin-bottom: 20px;">
+                <div id="edit-q-explanation" style="height: 200px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
+            </div>
 
             <div style="display: flex; justify-content: flex-end; gap: 10px;">
                 <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
-                <button id="btn-save-github" class="btn-solid" style="background: #10b981; border: none;">Push to GitHub</button>
+                <button id="btn-save-github" class="btn-solid" style="background: #10b981; border: none;"><i class="fas fa-save"></i> Save to Queue</button>
             </div>
         </div>
     </div>
