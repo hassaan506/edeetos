@@ -84,13 +84,11 @@ const pendingEditsCount = document.getElementById('pending-edits-count');
 // ==========================================
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-// Set the initial icon on load
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
     if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
 }
 
-// Handle clicks
 if (darkModeToggle) {
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -362,7 +360,6 @@ function renderGrid() {
     Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
         
-        // Ensure filters don't hide the cards in Exam Mode
         if (currentMode !== 'exam' && unattemptedFilter && unattemptedFilter.checked && qCount === 0) return;
         if (qCount === 0) return;
 
@@ -608,7 +605,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
-    // Hide the mini start button when in Exam Mode to force usage of the bottom cart
     const displayInstantStart = currentMode === 'exam' ? 'none' : 'inline-block';
     const instantStartBtn = `<button class="btn-solid mini-btn" style="display: ${displayInstantStart}; margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
@@ -640,7 +636,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
         if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
         if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
         
-        // Hide the bottom cart entirely if no items are selected
         if (examCart) examCart.style.display = selectedCart.size > 0 ? "flex" : "none";
     };
 
@@ -680,12 +675,10 @@ function switchMode(mode) {
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
     
-    // Target specific inputs instead of hiding all of them
     const qCountInput = document.getElementById('exam-q-count');
     const timerInput = document.getElementById('exam-timer');
     
     const examCart = document.getElementById('exam-cart');
-    // Only show cart if items are selected
     if (examCart) examCart.style.display = selectedCart.size > 0 ? "flex" : "none";
     
     if (startBtn) startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
@@ -696,7 +689,6 @@ function switchMode(mode) {
         if (modePracBtn) modePracBtn.className = "btn-solid active-mode";
         if (modeExamBtn) modeExamBtn.className = "btn-outline";
         
-        // Show Question Count, Hide Timer
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
         
@@ -719,7 +711,6 @@ function switchMode(mode) {
         if (modeExamBtn) modeExamBtn.className = "btn-solid active-mode";
         if (modePracBtn) modePracBtn.className = "btn-outline";
         
-        // Show BOTH Question Count and Timer in Exam Mode
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
         
@@ -774,7 +765,6 @@ if (btnJoinChallenge) {
             return alert("Please register to join a challenge.");
         }
 
-        // 1. Create the custom modal overlay dynamically
         const modalOverlay = document.createElement('div');
         modalOverlay.id = 'join-challenge-modal';
         modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
@@ -799,21 +789,18 @@ if (btnJoinChallenge) {
         const inputField = document.getElementById('challenge-code-input');
         inputField.focus();
 
-        // Focus styling
         inputField.addEventListener('focus', () => inputField.style.borderColor = '#a855f7');
         inputField.addEventListener('blur', () => inputField.style.borderColor = '#e2e8f0');
 
-        // Cancel button
         document.getElementById('btn-cancel-join').addEventListener('click', () => {
             modalOverlay.remove();
         });
 
-        // Core Join Logic
         const processJoin = async () => {
             const code = inputField.value.trim().toUpperCase();
             if (!code || code.length !== 5) {
                 inputField.style.borderColor = '#ef4444';
-                inputField.classList.add('apply-shake'); // Reuses your existing shake animation if globally available
+                inputField.classList.add('apply-shake'); 
                 setTimeout(() => inputField.classList.remove('apply-shake'), 500);
                 return;
             }
@@ -928,7 +915,6 @@ if (currentMode === 'exam') {
                 pool = pool.sort(() => 0.5 - Math.random());
             }
         } else {
-            // Shuffle practice mode too when a question limit is set
             if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
             }
@@ -951,7 +937,6 @@ window.startInstantPractice = function(encodedPath) {
     
     if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
     
-    // Apply question limit if entered in the bottom bar
     const qCountInputEl = document.getElementById('exam-q-count');
     if (qCountInputEl) {
         const qCountInput = parseInt(qCountInputEl.value);
@@ -973,7 +958,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     const roomId = localStorage.getItem('active_study_room');
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-    // Cap massive pools to avoid memory/storage crash
     let safeStorageArray = questionsArray;
     if (safeStorageArray.length > 200) {
         alert(`Your selection has ${questionsArray.length} questions. Capping to 200 to prevent browser crashes.`);
@@ -982,7 +966,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
 
     const cleanPool = JSON.parse(JSON.stringify(safeStorageArray));
 
-    // Handle Study Room Host Sync
     if (roomId && !isGuest) {
         try {
             document.body.style.cursor = 'wait';
@@ -1006,7 +989,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-    // 1. Clear any old in-progress exam states so quiz.html doesn't resume the 174-question exam
     const staleKeys = [
         'edeetos_saved_quiz_state',
         'edeetos_quiz_state',
@@ -1019,7 +1001,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         sessionStorage.removeItem(key);
     });
 
-    // 2. Set localStorage configs for backward compatibility
     try {
         localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
         localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
@@ -1027,7 +1008,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         console.warn("localStorage quota warning, relying on IndexedDB:", e);
     }
 
-    // 3. Sync to IndexedDB (active_quiz_queue) where quiz.js actually reads from
     document.body.style.cursor = 'wait';
     try {
         const idbRequest = indexedDB.open("EdeetosDB", 1);
@@ -1044,10 +1024,8 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
             const tx = idb.transaction("quiz_sessions", "readwrite");
             const store = tx.objectStore("quiz_sessions");
 
-            // Overwrite the stuck queue with the newly selected questions
             store.put(cleanPool, "active_quiz_queue");
 
-            // Clear any persisted state inside IndexedDB
             try {
                 store.delete("active_quiz_state");
                 store.delete("saved_session");
@@ -1992,7 +1970,6 @@ if (btnJourney) {
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         
-        // Fetch the true claimed list from the database
         const dbClaimed = currentUserData?.claimedMilestones || [];
 
         if (trophiesGrid) {
@@ -2018,13 +1995,10 @@ if (btnJourney) {
                 let rewardHtml = '';
                 if (t.rewardValue > 0) {
                     if (isUnlocked && !isClaimed) {
-                        // Unlocked but not claimed: Show a Claim button
                         rewardHtml = `<button class="btn-solid claim-reward-btn" data-trophy='${JSON.stringify(t)}' style="background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; margin-top: 6px; width: 100%; box-shadow: 0 4px 6px rgba(16,185,129,0.2);"><i class="fas fa-gift"></i> Claim Reward</button>`;
                     } else if (isClaimed) {
-                        // Already claimed successfully
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                     } else {
-                        // Locked target
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium</div>`;
                     }
                 }
@@ -2043,13 +2017,10 @@ if (btnJourney) {
                 `;
             }).join('');
 
-            // Attach click listeners to the new dynamic Claim buttons
             document.querySelectorAll('.claim-reward-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const targetBtn = e.target.closest('button');
                     const trophyData = JSON.parse(targetBtn.getAttribute('data-trophy'));
-                    
-                    // Hide the Journey modal and bring up the Reward claim screen
                     if (journeyModal) journeyModal.style.display = 'none';
                     showMilestonePopup(trophyData);
                 });
@@ -2487,6 +2458,8 @@ function restoreLastState() {
 // ==========================================
 // 17. INITIALIZATION & AUTHENTICATION
 // ==========================================
+let addQuillExp, addQuillHnt; // Store rich text editors for adding questions globally
+
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         localStorage.removeItem('edeetos_guest_mode');
@@ -2505,7 +2478,171 @@ onAuthStateChanged(auth, async (user) => {
                     isPremiumUser = true;
                     
                     // ==========================================
-                    // NEW DIRECT-TO-GITHUB BATCH PUSH LOGIC
+                    // ADMIN ADD QUESTION LOGIC & UI BUILDER
+                    // ==========================================
+                    if (btnPushEdits && btnPushEdits.parentNode) {
+                        const btnAddQ = document.createElement('button');
+                        btnAddQ.id = 'btn-add-question';
+                        btnAddQ.className = 'btn-solid';
+                        btnAddQ.style.cssText = 'background: #8b5cf6; border: none; padding: 0.4rem 0.8rem; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; align-items: center; gap: 8px; font-size: 0.9rem; margin-right: 10px; display: flex;';
+                        btnAddQ.innerHTML = '<i class="fas fa-plus"></i> Add Question';
+                        btnPushEdits.parentNode.insertBefore(btnAddQ, btnPushEdits);
+
+                        // Ensure Quill is loaded so Add Modal works perfectly
+                        const loadQuill = () => {
+                            return new Promise((resolve) => {
+                                if (window.Quill) return resolve();
+                                document.head.insertAdjacentHTML('beforeend', `<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">`);
+                                const script = document.createElement('script');
+                                script.src = 'https://cdn.quilljs.com/1.3.6/quill.min.js';
+                                script.onload = resolve;
+                                document.head.appendChild(script);
+                            });
+                        };
+
+                        btnAddQ.onclick = async () => {
+                            btnAddQ.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                            await loadQuill();
+                            btnAddQ.innerHTML = '<i class="fas fa-plus"></i> Add Question';
+                            
+                            if (!document.getElementById('add-q-modal')) {
+                                let destOptions = `<option value="COURSE:${activeCourse}" selected>Course: ${activeCourse.toUpperCase().replace('_', ' ')}</option>`;
+                                availableBooks.forEach(b => {
+                                    destOptions += `<option value="BOOK:${b.file}">Book: ${b.title}</option>`;
+                                });
+
+                                document.body.insertAdjacentHTML('beforeend', `
+                                    <div id="add-q-modal" class="popup-overlay" style="display: none; z-index: 100000; align-items: center; justify-content: center; padding: 20px;">
+                                        <div class="glass-panel popup-content" style="max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; border-radius: 16px; position: relative;">
+                                            <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1.5rem;"><i class="fas fa-plus-circle"></i> Add New Question</h3>
+                                            
+                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                                                <div style="grid-column: 1 / -1;"><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Target Destination</label>
+                                                    <select id="add-q-dest" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1; background: #f8fafc; font-weight: bold; color: #0f172a;">
+                                                        ${destOptions}
+                                                    </select>
+                                                </div>
+                                                <div><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Subject</label><input type="text" id="add-q-sub" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1;"></div>
+                                                <div><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Chapter</label><input type="text" id="add-q-chap" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1;"></div>
+                                                <div><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Topic</label><input type="text" id="add-q-top" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1;"></div>
+                                                <div><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Difficulty</label>
+                                                    <select id="add-q-dif" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1; color: #0f172a;">
+                                                        <option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option>
+                                                    </select>
+                                                </div>
+                                                <div><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Year</label><input type="text" id="add-q-yr" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1;"></div>
+                                                <div><label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Exam</label><input type="text" id="add-q-exm" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1;"></div>
+                                            </div>
+
+                                            <div style="margin-bottom: 1rem;">
+                                                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question Text *</label>
+                                                <textarea id="add-q-txt" rows="3" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit; resize: vertical;"></textarea>
+                                            </div>
+
+                                            <div style="margin-bottom: 1rem;">
+                                                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Options (Select radio button for Correct Answer)</label>
+                                                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;"><input type="radio" name="add-correct-opt" value="A" checked style="transform: scale(1.2);"><span style="font-weight: bold; width: 20px; color: #1e293b;">A)</span><input type="text" id="add-opt-a" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;"></div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;"><input type="radio" name="add-correct-opt" value="B" style="transform: scale(1.2);"><span style="font-weight: bold; width: 20px; color: #1e293b;">B)</span><input type="text" id="add-opt-b" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;"></div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;"><input type="radio" name="add-correct-opt" value="C" style="transform: scale(1.2);"><span style="font-weight: bold; width: 20px; color: #1e293b;">C)</span><input type="text" id="add-opt-c" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;"></div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;"><input type="radio" name="add-correct-opt" value="D" style="transform: scale(1.2);"><span style="font-weight: bold; width: 20px; color: #1e293b;">D)</span><input type="text" id="add-opt-d" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;"></div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;"><input type="radio" name="add-correct-opt" value="E" style="transform: scale(1.2);"><span style="font-weight: bold; width: 20px; color: #1e293b;">E)</span><input type="text" id="add-opt-e" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;"></div>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-bottom: 1rem;">
+                                                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Explanation</label>
+                                                <div id="add-q-exp" style="height: 120px; background: white; border-radius: 0 0 6px 6px; color: #000;"></div>
+                                            </div>
+
+                                            <div style="margin-bottom: 1.5rem;">
+                                                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Hint</label>
+                                                <div id="add-q-hnt" style="height: 80px; background: white; border-radius: 0 0 6px 6px; color: #000;"></div>
+                                            </div>
+
+                                            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                                                <button id="btn-add-cancel" class="btn-outline">Cancel</button>
+                                                <button id="btn-add-save" class="btn-solid" style="background: #10b981; border: none;">Save to Queue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+
+                                const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];
+                                addQuillExp = new Quill('#add-q-exp', { theme: 'snow', modules: { toolbar: tb } });
+                                addQuillHnt = new Quill('#add-q-hnt', { theme: 'snow', modules: { toolbar: tb } });
+
+                                document.getElementById('btn-add-cancel').onclick = () => {
+                                    document.getElementById('add-q-modal').style.display = 'none';
+                                };
+
+                                document.getElementById('btn-add-save').onclick = () => {
+                                    if (!document.getElementById('add-q-txt').value.trim()) {
+                                        return alert("You must provide Question Text to add a new question.");
+                                    }
+
+                                    // Emulate Python generate_unique_id() Logic perfectly
+                                    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+                                    let newId = "";
+                                    for (let i = 0; i < 8; i++) newId += chars.charAt(Math.floor(Math.random() * chars.length));
+
+                                    // Ensure zero collision
+                                    while (allQuestions.some(q => q.id === newId || q.QuestionID === newId)) {
+                                        newId = "";
+                                        for (let i = 0; i < 8; i++) newId += chars.charAt(Math.floor(Math.random() * chars.length));
+                                    }
+
+                                    const targetVal = document.getElementById('add-q-dest').value.split(':');
+                                    const isBook = targetVal[0] === 'BOOK';
+                                    const courseFile = targetVal[1];
+
+                                    const correctOptNode = document.querySelector('input[name="add-correct-opt"]:checked');
+                                    const correctLetter = correctOptNode ? correctOptNode.value : 'A';
+
+                                    const newRow = {
+                                        "QuestionID": newId,
+                                        "Year": document.getElementById('add-q-yr').value.trim(),
+                                        "Exam": document.getElementById('add-q-exm').value.trim(),
+                                        "Subject": document.getElementById('add-q-sub').value.trim(),
+                                        "Chapter": document.getElementById('add-q-chap').value.trim(),
+                                        "Topic": document.getElementById('add-q-top').value.trim(),
+                                        "Question": document.getElementById('add-q-txt').value.trim(),
+                                        "OptionA": document.getElementById('add-opt-a').value.trim(),
+                                        "OptionB": document.getElementById('add-opt-b').value.trim(),
+                                        "OptionC": document.getElementById('add-opt-c').value.trim(),
+                                        "OptionD": document.getElementById('add-opt-d').value.trim(),
+                                        "OptionE": document.getElementById('add-opt-e').value.trim(),
+                                        "CorrectAnswer": correctLetter,
+                                        "Explanation": addQuillExp.root.innerHTML,
+                                        "Hint": addQuillHnt.root.innerHTML,
+                                        "Difficulty": document.getElementById('add-q-dif').value
+                                    };
+
+                                    let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+                                    pendingEditsQueue.push({ row: newRow, courseFile, isBook });
+                                    localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
+
+                                    if (pendingEditsCount) pendingEditsCount.textContent = pendingEditsQueue.length;
+                                    if (btnPushEdits) btnPushEdits.style.display = 'flex';
+
+                                    document.getElementById('add-q-modal').style.display = 'none';
+                                    alert('New question added to queue! Click "Push" in the navbar to compile and save to GitHub.');
+                                };
+                            }
+
+                            // Clear previous fields every time modal opens
+                            ['add-q-sub', 'add-q-chap', 'add-q-top', 'add-q-yr', 'add-q-exm', 'add-q-txt', 'add-opt-a', 'add-opt-b', 'add-opt-c', 'add-opt-d', 'add-opt-e'].forEach(id => document.getElementById(id).value = '');
+                            if(addQuillExp) addQuillExp.root.innerHTML = '';
+                            if(addQuillHnt) addQuillHnt.root.innerHTML = '';
+                            document.getElementById('add-q-dif').value = 'medium';
+                            document.querySelector('input[name="add-correct-opt"][value="A"]').checked = true;
+
+                            document.getElementById('add-q-modal').style.display = 'flex';
+                        };
+                    }
+                    
+                    // ==========================================
+                    // BATCH PUSH COMPILER LOGIC
                     // ==========================================
                     const queueStr = localStorage.getItem('edeetos_pending_edits');
                     let pendingQueue = [];
@@ -2516,211 +2653,199 @@ onAuthStateChanged(auth, async (user) => {
                         btnPushEdits.style.display = 'flex';
                         if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
                         
-btnPushEdits.onclick = async () => {
-    let token = localStorage.getItem('edeetos_github_pat');
-    if (!token) {
-        token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
-        if (!token) return;
-        localStorage.setItem('edeetos_github_pat', token);
-    }
+                        btnPushEdits.onclick = async () => {
+                            let token = localStorage.getItem('edeetos_github_pat');
+                            if (!token) {
+                                token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
+                                if (!token) return;
+                                localStorage.setItem('edeetos_github_pat', token);
+                            }
 
-    btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing & Converting...';
-    btnPushEdits.disabled = true;
+                            btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing & Converting...';
+                            btnPushEdits.disabled = true;
 
-    try {
-        const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
-        const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
+                            try {
+                                const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+                                const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
 
-        // Group edits by file
-        const editsByCourse = {};
-        pendingQueue.forEach(edit => {
-            const key = edit.courseFile;
-            if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
-            editsByCourse[key].rows.push(edit.row);
-        });
+                                const editsByCourse = {};
+                                pendingQueue.forEach(edit => {
+                                    const key = edit.courseFile;
+                                    if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+                                    editsByCourse[key].rows.push(edit.row);
+                                });
 
-        const owner = "hassaan506";
-        const repo = "edeetos";
-        const branch = "main";
+                                const owner = "hassaan506";
+                                const repo = "edeetos";
+                                const branch = "main";
 
-        // Reusable Helper to Upload Files via GitHub API
-        const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
-            const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
-            let currentSha = null;
-            try {
-                const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
-                if (getRes.ok) {
-                    const getJson = await getRes.json();
-                    currentSha = getJson.sha;
-                }
-            } catch(e) {}
+                                const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
+                                    const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+                                    let currentSha = null;
+                                    try {
+                                        const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                                        if (getRes.ok) {
+                                            const getJson = await getRes.json();
+                                            currentSha = getJson.sha;
+                                        }
+                                    } catch(e) {}
 
-            const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
-            if (currentSha) bodyData.sha = currentSha;
+                                    const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
+                                    if (currentSha) bodyData.sha = currentSha;
 
-            const putRes = await fetch(fileUrl, {
-                method: 'PUT',
-                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-                body: JSON.stringify(bodyData)
-            });
+                                    const putRes = await fetch(fileUrl, {
+                                        method: 'PUT',
+                                        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                                        body: JSON.stringify(bodyData)
+                                    });
 
-            if (!putRes.ok) {
-                const err = await putRes.json().catch(() => ({}));
-                throw new Error(`Failed to upload ${filePath}: ${err.message || putRes.statusText}`);
-            }
-        };
+                                    if (!putRes.ok) {
+                                        const err = await putRes.json().catch(() => ({}));
+                                        throw new Error(`Failed to upload ${filePath}: ${err.message || putRes.statusText}`);
+                                    }
+                                };
 
-        for (const courseFile of Object.keys(editsByCourse)) {
-            const isBook = editsByCourse[courseFile].isBook;
-            const folder = isBook ? "Books" : "Data";
-            const csvPath = `${folder}/${courseFile}.csv`;
-            const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
-            const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
-            
-            const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+                                for (const courseFile of Object.keys(editsByCourse)) {
+                                    const isBook = editsByCourse[courseFile].isBook;
+                                    const folder = isBook ? "Books" : "Data";
+                                    const csvPath = `${folder}/${courseFile}.csv`;
+                                    const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
+                                    const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
+                                    
+                                    const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
 
-            // GET current CSV file via Blob API
-            const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
-            if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
-            
-            const getJson = await getRes.json();
-            const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
-            const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
-            
-            if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
-            const blobJson = await blobRes.json();
-            
-            // Decode and Strip Windows BOM
-            const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
-            
-            // Parse CSV
-            let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
-            let rows = parsed.data;
+                                    const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                                    if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
+                                    
+                                    const getJson = await getRes.json();
+                                    const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
+                                    const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
+                                    
+                                    if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
+                                    const blobJson = await blobRes.json();
+                                    
+                                    const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
+                                    
+                                    let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
+                                    let rows = parsed.data;
 
-            // 1. APPLY EDITS (Strictly preserves original row position)
-            editsByCourse[courseFile].rows.forEach(updatedRow => {
-                const qId = updatedRow["QuestionID"];
-                const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
-                
-                let qIndex = -1;
-                for(let i=0; i<rows.length; i++) {
-                    if (String(rows[i][actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "") {
-                        qIndex = i; break;
-                    }
-                }
-                
-                if (qIndex !== -1) {
-                    // Update in-place so row order remains completely untouched
-                    const targetRow = rows[qIndex];
-                    Object.keys(updatedRow).forEach(newKey => {
-                        const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
-                        targetRow[originalKey || newKey] = updatedRow[newKey];
-                    });
-                } else {
-                    rows.push(updatedRow);
-                }
-            });
+                                    editsByCourse[courseFile].rows.forEach(updatedRow => {
+                                        const qId = updatedRow["QuestionID"];
+                                        const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
+                                        
+                                        let qIndex = -1;
+                                        for(let i=0; i<rows.length; i++) {
+                                            if (String(rows[i][actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "") {
+                                                qIndex = i; break;
+                                            }
+                                        }
+                                        
+                                        if (qIndex !== -1) {
+                                            const targetRow = rows[qIndex];
+                                            Object.keys(updatedRow).forEach(newKey => {
+                                                const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                                                targetRow[originalKey || newKey] = updatedRow[newKey];
+                                            });
+                                        } else {
+                                            rows.push(updatedRow);
+                                        }
+                                    });
 
-            // 2. CONVERT TO JSON IN BROWSER
-            let outQs = [];
-            let subTree = {}, sysTree = {}, exTree = {};
+                                    let outQs = [];
+                                    let subTree = {}, sysTree = {}, exTree = {};
 
-            rows.forEach(row => {
-                const getVal = (names) => {
-                    const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
-                    return key && row[key] ? String(row[key]).trim() : "";
-                };
+                                    rows.forEach(row => {
+                                        const getVal = (names) => {
+                                            const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
+                                            return key && row[key] ? String(row[key]).trim() : "";
+                                        };
 
-                const qId = getVal(['questionid', 'id']);
-                if (!qId) return;
+                                        const qId = getVal(['questionid', 'id']);
+                                        if (!qId) return;
 
-                const subject = getVal(['subject']);
-                const chapter = getVal(['chapter']);
-                const topic = getVal(['topic']);
-                const year = getVal(['year']);
-                const rawExams = getVal(['exams', 'exam']);
-                const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+                                        const subject = getVal(['subject']);
+                                        const chapter = getVal(['chapter']);
+                                        const topic = getVal(['topic']);
+                                        const year = getVal(['year']);
+                                        const rawExams = getVal(['exams', 'exam']);
+                                        const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
 
-                let qObj = {
-                    id: qId,
-                    year: year,
-                    exams: examsList,
-                    subject: subject,
-                    chapter: chapter,
-                    topic: topic,
-                    difficulty: getVal(['difficulty']),
-                    question: getVal(['question']),
-                    options: {
-                        A: getVal(['optiona']),
-                        B: getVal(['optionb']),
-                        C: getVal(['optionc']),
-                        D: getVal(['optiond']),
-                        E: getVal(['optione'])
-                    },
-                    correctAnswer: getVal(['correctanswer']).toUpperCase(),
-                    explanation: getVal(['explanation']),
-                    hint: getVal(['hint'])
-                };
+                                        let qObj = {
+                                            id: qId,
+                                            year: year,
+                                            exams: examsList,
+                                            subject: subject,
+                                            chapter: chapter,
+                                            topic: topic,
+                                            difficulty: getVal(['difficulty']),
+                                            question: getVal(['question']),
+                                            options: {
+                                                A: getVal(['optiona']),
+                                                B: getVal(['optionb']),
+                                                C: getVal(['optionc']),
+                                                D: getVal(['optiond']),
+                                                E: getVal(['optione'])
+                                            },
+                                            correctAnswer: getVal(['correctanswer']).toUpperCase(),
+                                            explanation: getVal(['explanation']),
+                                            hint: getVal(['hint'])
+                                        };
 
-                if (isBook) {
-                    qObj.isBookQuestion = true;
-                    qObj.bookName = courseFile;
-                }
+                                        if (isBook) {
+                                            qObj.isBookQuestion = true;
+                                            qObj.bookName = courseFile;
+                                        }
 
-                outQs.push(qObj);
+                                        outQs.push(qObj);
 
-                // Build Hierarchy Trees
-                if (subject) {
-                    if (!subTree[subject]) subTree[subject] = {};
-                    if (chapter) {
-                        if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
-                        if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
-                    }
-                }
-                if (chapter && chapter.toLowerCase().includes('system')) {
-                    if (!sysTree[chapter]) sysTree[chapter] = {};
-                    if (subject) {
-                        if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
-                        if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
-                    }
-                }
-                if (year) {
-                    if (!exTree[year]) exTree[year] = {};
-                    examsList.forEach(ex => {
-                        if (!exTree[year][ex]) exTree[year][ex] = {};
-                        if (subject) {
-                            if (!exTree[year][ex][subject]) exTree[year][ex][subject] = {};
-                            if (topic) exTree[year][ex][subject][topic] = (exTree[year][ex][subject][topic] || 0) + 1;
-                        }
-                    });
-                }
-            });
+                                        if (subject) {
+                                            if (!subTree[subject]) subTree[subject] = {};
+                                            if (chapter) {
+                                                if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
+                                                if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
+                                            }
+                                        }
+                                        if (chapter && chapter.toLowerCase().includes('system')) {
+                                            if (!sysTree[chapter]) sysTree[chapter] = {};
+                                            if (subject) {
+                                                if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
+                                                if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
+                                            }
+                                        }
+                                        if (year) {
+                                            if (!exTree[year]) exTree[year] = {};
+                                            examsList.forEach(ex => {
+                                                if (!exTree[year][ex]) exTree[year][ex] = {};
+                                                if (subject) {
+                                                    if (!exTree[year][ex][subject]) exTree[year][ex][subject] = {};
+                                                    if (topic) exTree[year][ex][subject][topic] = (exTree[year][ex][subject][topic] || 0) + 1;
+                                                }
+                                            });
+                                        }
+                                    });
 
-            // 3. PUSH ALL THREE FILES DIRECTLY TO GITHUB
-            const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
-            
-            // Upload CSV
-            await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
-            
-            // Upload Questions JSON
-            await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
-            
-            // Upload Hierarchy JSON
-            const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
-            await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
-        }
+                                    const commitMsg = `Admin Panel: Updated/Added ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
+                                    
+                                    await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
+                                    await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+                                    
+                                    const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
+                                    await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
+                                }
 
-        alert(`✅ Success! Edits saved and JSONs generated dynamically. Changes are live instantly!`);
-        localStorage.removeItem('edeetos_pending_edits');
-        btnPushEdits.style.display = 'none';
+                                alert(`✅ Success! Data saved and JSONs generated dynamically. Changes are live instantly!`);
+                                localStorage.removeItem('edeetos_pending_edits');
+                                btnPushEdits.style.display = 'none';
+                                const btnAddQ = document.getElementById('btn-add-question');
+                                if (btnAddQ && btnPushEdits.parentNode) btnAddQ.style.marginRight = '0'; // Keep button visible
 
-    } catch (error) {
-        console.error(error);
-        alert("❌ Push Failed: " + error.message);
-        btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
-        btnPushEdits.disabled = false;
-    }
-};
+                            } catch (error) {
+                                console.error(error);
+                                alert("❌ Push Failed: " + error.message);
+                                btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+                                btnPushEdits.disabled = false;
+                            }
+                        };
                     }
 
                 } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
