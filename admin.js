@@ -982,10 +982,14 @@ async function fetchReports() {
     unsubReps = onSnapshot(collection(db, "reported_questions"), (qSnap) => {
         const list = document.getElementById('reports-list');
         if(!list) return; list.innerHTML = '';
-        if(qSnap.empty) return list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No reported questions.</p>';
+        let hasReports = false;
         
         qSnap.forEach(d => {
             const data = d.data();
+            
+            if(data.status === 'resolved') return;
+            hasReports = true;
+
             const card = document.createElement('div');
             card.className = 'action-card';
             card.style.borderLeft = "4px solid #ef4444";
@@ -994,16 +998,25 @@ async function fetchReports() {
                     <strong>Q-ID: <span style="color:#ef4444;">${data.questionId}</span></strong>
                     <span style="color:#94a3b8; font-size:0.8rem;">${data.timestamp ? data.timestamp.toDate().toLocaleDateString() : ''}</span>
                 </div>
-                <div style="background:#f8fafc; padding:10px; border-radius:6px; font-size:0.9rem; color:#475569; font-style:italic; margin-bottom:10px;">"${data.questionText}"</div>
+                <div style="background:#f8fafc; padding:10px; border-radius:6px; font-size:0.9rem; color:#475569; font-style:italic; margin-bottom:10px;">${data.questionText}</div>
                 <p style="color:#1e293b; font-size:0.95rem;"><strong>Reason:</strong> ${data.reason}</p>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; border-top:1px solid #e2e8f0; padding-top:10px;">
                     <small style="color:#64748b;">By: ${data.userEmail}</small>
-                    <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;"><i class="fas fa-check"></i> Mark Solved & Delete</button>
+                    <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;"><i class="fas fa-check"></i> Mark Solved</button>
                 </div>
             `;
-            card.querySelector('.btn-res').onclick = () => { if(confirm("Are you sure this issue is fixed?")) deleteDoc(doc(db, "reported_questions", d.id)); };
+            card.querySelector('.btn-res').onclick = async () => { 
+                if(confirm("Are you sure this issue is fixed?")) {
+                    await updateDoc(doc(db, "reported_questions", d.id), {
+                        status: 'resolved',
+                        resolvedAt: new Date().toISOString()
+                    });
+                }
+            };
             list.appendChild(card);
         });
+
+        if(!hasReports) list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No pending reported questions.</p>';
     });
 }
 

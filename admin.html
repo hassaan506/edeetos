@@ -136,12 +136,34 @@
 
                         <div class="form-group" style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
                             <label style="color: #0f172a; font-size: 1rem; margin-bottom: 1rem;"><i class="fas fa-list"></i> Options (Select radio to set Correct Answer)</label>
-                            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="A" checked style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">A)</span><input type="text" id="add-opt-a" style="flex: 1; border-radius: 8px;"></div>
-                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="B" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">B)</span><input type="text" id="add-opt-b" style="flex: 1; border-radius: 8px;"></div>
-                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="C" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">C)</span><input type="text" id="add-opt-c" style="flex: 1; border-radius: 8px;"></div>
-                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="D" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">D)</span><input type="text" id="add-opt-d" style="flex: 1; border-radius: 8px;"></div>
-                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="E" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">E)</span><input type="text" id="add-opt-e" style="flex: 1; border-radius: 8px;"></div>
+                            
+                            <!-- THE LAYOUT FIX IS HERE -->
+                            <div style="display: flex; flex-direction: column; gap: 0.8rem; width: 100%;">
+                                <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: flex-start;">
+                                    <input type="radio" name="add-correct-opt" value="A" checked style="transform: scale(1.5); cursor: pointer; margin: 0; flex-shrink: 0;">
+                                    <span style="font-weight: 900; color: #1e293b; width: 25px; flex-shrink: 0;">A)</span>
+                                    <input type="text" id="add-opt-a" style="flex: 1 1 auto; width: 100%; min-width: 0; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: flex-start;">
+                                    <input type="radio" name="add-correct-opt" value="B" style="transform: scale(1.5); cursor: pointer; margin: 0; flex-shrink: 0;">
+                                    <span style="font-weight: 900; color: #1e293b; width: 25px; flex-shrink: 0;">B)</span>
+                                    <input type="text" id="add-opt-b" style="flex: 1 1 auto; width: 100%; min-width: 0; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: flex-start;">
+                                    <input type="radio" name="add-correct-opt" value="C" style="transform: scale(1.5); cursor: pointer; margin: 0; flex-shrink: 0;">
+                                    <span style="font-weight: 900; color: #1e293b; width: 25px; flex-shrink: 0;">C)</span>
+                                    <input type="text" id="add-opt-c" style="flex: 1 1 auto; width: 100%; min-width: 0; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: flex-start;">
+                                    <input type="radio" name="add-correct-opt" value="D" style="transform: scale(1.5); cursor: pointer; margin: 0; flex-shrink: 0;">
+                                    <span style="font-weight: 900; color: #1e293b; width: 25px; flex-shrink: 0;">D)</span>
+                                    <input type="text" id="add-opt-d" style="flex: 1 1 auto; width: 100%; min-width: 0; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: flex-start;">
+                                    <input type="radio" name="add-correct-opt" value="E" style="transform: scale(1.5); cursor: pointer; margin: 0; flex-shrink: 0;">
+                                    <span style="font-weight: 900; color: #1e293b; width: 25px; flex-shrink: 0;">E)</span>
+                                    <input type="text" id="add-opt-e" style="flex: 1 1 auto; width: 100%; min-width: 0; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none;">
+                                </div>
                             </div>
                         </div>
 
