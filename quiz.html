@@ -316,6 +316,34 @@
         </div>
     </div>
 
+    <!-- Admin Edit Modal -->
+    <div id="admin-edit-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="max-width: 600px; width: 95%; max-height: 85vh; overflow-y: auto; text-align: left;">
+            <h3 style="color: #065f46; margin-top: 0; margin-bottom: 1rem;"><i class="fas fa-edit"></i> Edit Question</h3>
+            
+            <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question ID</label>
+            <input type="text" id="edit-q-id" disabled style="width: 100%; padding: 10px; margin-bottom: 12px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px;">
+
+            <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question Statement</label>
+            <textarea id="edit-q-text" rows="3" style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;" id="edit-options-container">
+                <!-- Options injected by JavaScript -->
+            </div>
+
+            <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Hint</label>
+            <textarea id="edit-q-hint" rows="2" style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+
+            <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Explanation</label>
+            <textarea id="edit-q-explanation" rows="4" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
+                <button id="btn-save-github" class="btn-solid" style="background: #10b981; border: none;">Push to GitHub</button>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="quiz.js"></script>
 </body>
 </html>
