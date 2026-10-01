@@ -2578,23 +2578,35 @@ const getJson = await getRes.json();
                                     if (!blobRes.ok) throw new Error("Failed to download large file data from GitHub Blob API.");
                                     const blobJson = await blobRes.json();
                                     
-                                    // Blob API returns Base64, so we decode it
-                                    const currentCsvText = Base64.decode(blobJson.content);
+// Blob API returns Base64, so we decode it
+const currentCsvText = Base64.decode(blobJson.content);
 
-                                    // Parse CSV
-                                    let parsed = Papa.parse(currentCsvText, { header: true, skipEmptyLines: true });
-                                    let rows = parsed.data;
+// Strip invisible Windows BOM characters that corrupt CSV headers
+const cleanCsvText = currentCsvText.replace(/^\uFEFF/, '');
 
-                                    // Apply Edits
-                                editsByCourse[courseFile].rows.forEach(updatedRow => {
+// Parse CSV
+let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
+let rows = parsed.data;
+
+// Apply Edits
+editsByCourse[courseFile].rows.forEach(updatedRow => {
     const qId = updatedRow["QuestionID"];
     
-    // Find the row by exactly matching QuestionID
-    const qIndex = rows.findIndex(r => String(r["QuestionID"]) === String(qId) && qId !== "");
+    // Bulletproof lookup: find the actual ID key ignoring case and spaces
+    const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
+    const qIndex = rows.findIndex(r => String(r[actualIdKey]) === String(qId) && qId !== "");
     
     if (qIndex !== -1) {
-        // Since the keys now match perfectly, we can just merge the updated data over the old row
-        rows[qIndex] = { ...rows[qIndex], ...updatedRow };
+        // Bulletproof merge: map your updated data directly to the exact keys present in the CSV
+        const targetRow = rows[qIndex];
+        Object.keys(updatedRow).forEach(newKey => {
+            const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+            if (originalKey) {
+                targetRow[originalKey] = updatedRow[newKey];
+            } else {
+                targetRow[newKey] = updatedRow[newKey];
+            }
+        });
     } else {
         rows.push(updatedRow);
     }

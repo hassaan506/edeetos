@@ -757,9 +757,9 @@ const updatedRow = {
                 const isBook = currentQuestionData.isBookQuestion === true;
                 const courseFile = isBook ? currentQuestionData.bookName : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
 
-                // Add to the local Queue
-                let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
-                const existingIndex = pendingEditsQueue.findIndex(e => e.row["Question id"] === targetId);
+// Add to the local Queue
+let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+const existingIndex = pendingEditsQueue.findIndex(e => e.row["QuestionID"] === targetId);
                 
                 if (existingIndex !== -1) {
                     pendingEditsQueue[existingIndex] = { row: updatedRow, courseFile, isBook };
