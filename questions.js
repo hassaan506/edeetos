@@ -2565,13 +2565,21 @@ onAuthStateChanged(auth, async (user) => {
                                         throw new Error(`Failed to fetch ${csvPath} from GitHub.`);
                                     }
 
-									const getJson = await getRes.json();
+const getJson = await getRes.json();
                                     const currentSha = getJson.sha;
-                                    
-                                    const rawRes = await fetch(getJson.download_url, {
+
+                                    // CRITICAL FIX: Use the Git Database Blob API for large files.
+                                    // This bypasses the 1MB limit AND prevents browser CORS security blocks.
+                                    const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${currentSha}`;
+                                    const blobRes = await fetch(blobUrl, {
                                         headers: { "Authorization": `Bearer ${token}` }
                                     });
-                                    const currentCsvText = await rawRes.text();
+                                    
+                                    if (!blobRes.ok) throw new Error("Failed to download large file data from GitHub Blob API.");
+                                    const blobJson = await blobRes.json();
+                                    
+                                    // Blob API returns Base64, so we decode it
+                                    const currentCsvText = Base64.decode(blobJson.content);
 
                                     // Parse CSV
                                     let parsed = Papa.parse(currentCsvText, { header: true, skipEmptyLines: true });
