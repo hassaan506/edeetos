@@ -11,6 +11,12 @@ function getUserName(uid) {
     return user ? user.fullName : "Unknown User";
 }
 
+function updatePendingCount() {
+    const q = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+    const cntEl = document.getElementById('admin-pending-count');
+    if (cntEl) cntEl.textContent = q.length;
+}
+
 // === AUTHENTICATION & INITIALIZATION ===
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -22,17 +28,15 @@ onAuthStateChanged(auth, async (user) => {
                 alert("Unauthorized Access."); window.location.href = 'dashboard.html'; return;
             }
             
-            // Critical: Await fetching users FIRST so cross-referencing names works instantly for all other modules.
             await fetchAllUsers();
             calculateTotalQuestions();
+            updatePendingCount();
             
-            // Listeners for side modules
             fetchStudyRooms();
             fetchFriendChallenges();
             fetchAssignedExams();
             fetchRewardClaims();
 
-            // Mentor Alert Listener
             const qChats = query(collection(db, "chats"), where("status", "==", "pending"));
             onSnapshot(qChats, (snapshot) => {
                 snapshot.docChanges().forEach((change) => {
@@ -57,8 +61,16 @@ document.getElementById('open-mobile-sidebar').onclick = () => sidebar.classList
 document.getElementById('close-mobile-sidebar').onclick = () => sidebar.classList.remove('mobile-open');
 document.getElementById('btn-exit-admin').onclick = () => window.location.href = 'dashboard.html';
 
+let quillExp, quillHnt;
+function initQuillOnce() {
+    if (quillExp) return;
+    const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];
+    quillExp = new Quill('#add-q-exp', { theme: 'snow', modules: { toolbar: tb } });
+    quillHnt = new Quill('#add-q-hnt', { theme: 'snow', modules: { toolbar: tb } });
+}
+
 window.switchView = function(viewName) {
-    const views = ['database', 'users', 'studyrooms', 'challenges', 'assigned', 'rewards', 'payments', 'keys', 'promos', 'requests', 'reports', 'messages'];
+    const views = ['database', 'addq', 'users', 'studyrooms', 'challenges', 'assigned', 'rewards', 'payments', 'keys', 'promos', 'requests', 'reports', 'messages'];
     views.forEach(v => { const el = document.getElementById(`view-${v}`); if (el) el.style.display = 'none'; });
     
     document.querySelectorAll('.sidebar-link').forEach(t => t.classList.remove('active'));
@@ -71,7 +83,8 @@ window.switchView = function(viewName) {
 
     sidebar.classList.remove('mobile-open');
 
-    // Trigger on-demand fetches
+    // Trigger on-demand fetches & initialization
+    if(viewName === 'addq') initQuillOnce();
     if(viewName === 'keys') fetchKeys();
     if(viewName === 'promos') fetchPromos();
     if(viewName === 'payments') fetchPayments();
@@ -80,7 +93,7 @@ window.switchView = function(viewName) {
     if(viewName === 'messages') fetchMessages();
 };
 
-// === 1. DATABASE OVERVIEW (Default View) ===
+// === 1. DATABASE OVERVIEW ===
 async function calculateTotalQuestions() {
     const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     const referenceBooks = [
@@ -118,7 +131,213 @@ async function calculateTotalQuestions() {
     document.getElementById('database-breakdown-content').innerHTML = breakdownHtml;
 }
 
-// === 2. USER MANAGER & EDITING (GOD MODE) ===
+// === 2. ADD QUESTION & PUSH COMPILER ===
+
+document.getElementById('btn-save-new-q').onclick = () => {
+    const qText = document.getElementById('add-q-txt').value.trim();
+    if (!qText) return alert("Question text is required.");
+
+    // Generate strict 8-character ID ensuring zero whitespace
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    let newId = "";
+    for (let i = 0; i < 8; i++) newId += chars.charAt(Math.floor(Math.random() * chars.length));
+    
+    const targetVal = document.getElementById('add-q-dest').value.split(':');
+    const isBook = targetVal[0] === 'BOOK';
+    const courseFile = targetVal[1];
+
+    const correctOptNode = document.querySelector('input[name="add-correct-opt"]:checked');
+    const correctLetter = correctOptNode ? correctOptNode.value : 'A';
+
+    const newRow = {
+        "QuestionID": newId,
+        "Year": document.getElementById('add-q-yr').value.trim(),
+        "Exam": document.getElementById('add-q-exm').value.trim(),
+        "Subject": document.getElementById('add-q-sub').value.trim(),
+        "Chapter": document.getElementById('add-q-chap').value.trim(),
+        "Topic": document.getElementById('add-q-top').value.trim(),
+        "Question": qText,
+        "OptionA": document.getElementById('add-opt-a').value.trim(),
+        "OptionB": document.getElementById('add-opt-b').value.trim(),
+        "OptionC": document.getElementById('add-opt-c').value.trim(),
+        "OptionD": document.getElementById('add-opt-d').value.trim(),
+        "OptionE": document.getElementById('add-opt-e').value.trim(),
+        "CorrectAnswer": correctLetter,
+        "Explanation": quillExp.root.innerHTML,
+        "Hint": quillHnt.root.innerHTML,
+        "Difficulty": document.getElementById('add-q-dif').value
+    };
+
+    let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+    pendingEditsQueue.push({ row: newRow, courseFile, isBook });
+    localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
+    
+    updatePendingCount();
+    
+    // Reset Form
+    ['add-q-sub', 'add-q-chap', 'add-q-top', 'add-q-yr', 'add-q-exm', 'add-q-txt', 'add-opt-a', 'add-opt-b', 'add-opt-c', 'add-opt-d', 'add-opt-e'].forEach(id => document.getElementById(id).value = '');
+    quillExp.root.innerHTML = ''; quillHnt.root.innerHTML = '';
+    document.getElementById('add-q-dif').value = 'medium';
+    document.querySelector('input[name="add-correct-opt"][value="A"]').checked = true;
+
+    alert('Question added to your browser queue! Click "Push Database to GitHub" to publish it live.');
+};
+
+document.getElementById('btn-admin-push').onclick = async () => {
+    let pendingQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+    if (pendingQueue.length === 0) return alert("Queue is empty. Nothing to push.");
+
+    let token = localStorage.getItem('edeetos_github_pat');
+    if (!token) {
+        token = prompt("Please enter your GitHub Personal Access Token:");
+        if (!token) return;
+        localStorage.setItem('edeetos_github_pat', token);
+    }
+
+    const btn = document.getElementById('btn-admin-push');
+    const origHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Compiling...';
+    btn.disabled = true;
+
+    try {
+        const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+        const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
+
+        const editsByCourse = {};
+        pendingQueue.forEach(edit => {
+            const key = edit.courseFile;
+            if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+            editsByCourse[key].rows.push(edit.row);
+        });
+
+        const owner = "hassaan506"; const repo = "edeetos"; const branch = "main";
+
+        const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
+            const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+            let currentSha = null;
+            try {
+                const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                if (getRes.ok) currentSha = (await getRes.json()).sha;
+            } catch(e) {}
+
+            const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
+            if (currentSha) bodyData.sha = currentSha;
+
+            const putRes = await fetch(fileUrl, {
+                method: 'PUT', headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(bodyData)
+            });
+
+            if (!putRes.ok) throw new Error(`Failed to upload ${filePath}. Check token permissions.`);
+        };
+
+        for (const courseFile of Object.keys(editsByCourse)) {
+            const isBook = editsByCourse[courseFile].isBook;
+            const folder = isBook ? "Books" : "Data";
+            const csvPath = `${folder}/${courseFile}.csv`;
+            const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
+            const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
+            
+            const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+            const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+            if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}.`);
+            
+            const getJson = await getRes.json();
+            const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
+            const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
+            
+            const cleanCsvText = Base64.decode((await blobRes.json()).content).replace(/^\uFEFF/, '');
+            let rows = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true }).data;
+
+            editsByCourse[courseFile].rows.forEach(updatedRow => {
+                const qId = updatedRow["QuestionID"];
+                const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
+                
+                let qIndex = rows.findIndex(r => String(r[actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "");
+                
+                if (qIndex !== -1) {
+                    const targetRow = rows[qIndex];
+                    Object.keys(updatedRow).forEach(newKey => {
+                        const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                        targetRow[originalKey || newKey] = updatedRow[newKey];
+                    });
+                } else {
+                    rows.push(updatedRow);
+                }
+            });
+
+            let outQs = [];
+            let subTree = {}, sysTree = {}, exTree = {};
+
+            rows.forEach(row => {
+                const getVal = (names) => {
+                    const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
+                    return key && row[key] ? String(row[key]).trim() : "";
+                };
+
+                const qId = getVal(['questionid', 'id']);
+                if (!qId) return;
+
+                const subject = getVal(['subject']); const chapter = getVal(['chapter']); const topic = getVal(['topic']);
+                const year = getVal(['year']); const rawExams = getVal(['exams', 'exam']);
+                const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+
+                let qObj = {
+                    id: qId, year: year, exams: examsList, subject: subject, chapter: chapter, topic: topic,
+                    difficulty: getVal(['difficulty']), question: getVal(['question']),
+                    options: { A: getVal(['optiona']), B: getVal(['optionb']), C: getVal(['optionc']), D: getVal(['optiond']), E: getVal(['optione']) },
+                    correctAnswer: getVal(['correctanswer']).toUpperCase(), explanation: getVal(['explanation']), hint: getVal(['hint'])
+                };
+
+                if (isBook) { qObj.isBookQuestion = true; qObj.bookName = courseFile; }
+                outQs.push(qObj);
+
+                if (subject) {
+                    if (!subTree[subject]) subTree[subject] = {};
+                    if (chapter) {
+                        if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
+                        if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
+                    }
+                }
+                if (chapter && chapter.toLowerCase().includes('system')) {
+                    if (!sysTree[chapter]) sysTree[chapter] = {};
+                    if (subject) {
+                        if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
+                        if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
+                    }
+                }
+                if (year) {
+                    if (!exTree[year]) exTree[year] = {};
+                    examsList.forEach(ex => {
+                        if (!exTree[year][ex]) exTree[year][ex] = {};
+                        if (subject) {
+                            if (!exTree[year][ex][subject]) exTree[year][ex][subject] = {};
+                            if (topic) exTree[year][ex][subject][topic] = (exTree[year][ex][subject][topic] || 0) + 1;
+                        }
+                    });
+                }
+            });
+
+            const commitMsg = `Admin Panel: Updated live database via Web Compiler`;
+            await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
+            await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+            await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify({ subjects: subTree, systems: sysTree, exams: exTree }, null, 4), commitMsg);
+        }
+
+        localStorage.removeItem('edeetos_pending_edits');
+        updatePendingCount();
+        alert(`✅ Successfully generated new JSON and pushed to GitHub! Changes are live immediately.`);
+        
+    } catch (error) {
+        console.error(error);
+        alert("❌ Push Failed: " + error.message);
+    } finally {
+        btn.innerHTML = origHtml;
+        btn.disabled = false;
+    }
+};
+
+// === 3. USERS ===
 const usersListEl = document.getElementById('users-list');
 const userCountEl = document.getElementById('user-count');
 
@@ -240,7 +459,6 @@ document.getElementById('btn-unban-user').onclick = async () => {
     }
 };
 
-// GOD MODE NUCLEAR OPTIONS
 document.getElementById('btn-hard-delete-user').onclick = async () => {
     const confirmText = prompt(`Type DELETE to permanently erase ${editingUser.email} from Firestore. This cannot be undone.`);
     if (confirmText === 'DELETE') {
@@ -337,7 +555,7 @@ window.grantAccess = async function() {
 };
 
 
-// === 3. STUDY ROOMS ===
+// === 4. STUDY ROOMS ===
 let unsubRooms = null;
 function fetchStudyRooms() {
     if(unsubRooms) return;
@@ -368,7 +586,7 @@ function fetchStudyRooms() {
     });
 }
 
-// === 4. FRIEND CHALLENGES ===
+// === 5. FRIEND CHALLENGES ===
 let unsubChal = null;
 function fetchFriendChallenges() {
     if(unsubChal) return;
@@ -397,7 +615,7 @@ function fetchFriendChallenges() {
     });
 }
 
-// === 5. ASSIGNED EXAMS (PULLS REAL-TIME SCORE FROM STUDENT HISTORY) ===
+// === 6. ASSIGNED EXAMS (PULLS REAL-TIME SCORE FROM STUDENT HISTORY) ===
 let unsubExams = null;
 function fetchAssignedExams() {
     if(unsubExams) return;
@@ -449,7 +667,7 @@ function fetchAssignedExams() {
     });
 }
 
-// === 6. REWARD CLAIMS (GOD MODE PROCESSOR) ===
+// === 7. REWARD CLAIMS (GOD MODE PROCESSOR) ===
 let unsubRewards = null;
 function fetchRewardClaims() {
     if(unsubRewards) return;
@@ -519,10 +737,12 @@ function fetchRewardClaims() {
     });
 }
 
-// === 7. PAYMENTS ===
+// === 8. PAYMENTS ===
 let unsubscribePayments = null;
 const receiptModal = document.getElementById('receipt-modal');
-document.getElementById('btn-close-receipt').onclick = () => receiptModal.style.display = 'none';
+if (document.getElementById('btn-close-receipt')) {
+    document.getElementById('btn-close-receipt').onclick = () => receiptModal.style.display = 'none';
+}
 
 function fetchPayments() {
     const list = document.getElementById('payments-list');
@@ -634,7 +854,7 @@ function fetchPayments() {
     });
 }
 
-// === 8. KEYS ===
+// === 9. KEYS ===
 window.generateKey = async function() {
     const btn = document.getElementById('btn-generate-key');
     btn.textContent = "Generating..."; btn.disabled = true;
@@ -680,7 +900,7 @@ async function fetchKeys() {
     });
 }
 
-// === 9. PROMOS ===
+// === 10. PROMOS ===
 window.generatePromo = async function() {
     const code = document.getElementById('promo-code').value.trim().toUpperCase();
     const discount = parseInt(document.getElementById('promo-discount').value);
@@ -723,7 +943,7 @@ window.fetchPromos = async function() {
     });
 };
 
-// === 10. COURSE CHANGE REQUESTS ===
+// === 11. COURSE CHANGE REQUESTS ===
 let unsubReqs = null;
 async function fetchRequests() {
     if (unsubReqs) return;
@@ -755,7 +975,7 @@ async function fetchRequests() {
     });
 }
 
-// === 11. REPORTS (GOD MODE SOLVER) ===
+// === 12. REPORTS (GOD MODE SOLVER) ===
 let unsubReps = null;
 async function fetchReports() {
     if (unsubReps) return; 
@@ -787,7 +1007,7 @@ async function fetchReports() {
     });
 }
 
-// === 12. MESSAGES ===
+// === 13. MESSAGES ===
 let unsubMsgs = null;
 async function fetchMessages() {
     if (unsubMsgs) return; 

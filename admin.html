@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edeetos - Super Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="admin.css">
 </head>
@@ -24,7 +26,8 @@
 
             <div class="sidebar-menu">
                 <div class="menu-label">System Overview</div>
-                <button class="sidebar-link active" onclick="switchView('database')"><i class="fas fa-database"></i> Database / Questions</button>
+                <button class="sidebar-link active" onclick="switchView('database')"><i class="fas fa-database"></i> Database Status</button>
+                <button class="sidebar-link" onclick="switchView('addq')"><i class="fas fa-plus-circle"></i> Add Question</button>
                 <button class="sidebar-link" onclick="switchView('users')"><i class="fas fa-users"></i> User Manager</button>
                 
                 <div class="menu-label" style="margin-top: 1.5rem;">Study & Engagement</div>
@@ -73,7 +76,92 @@
                     </div>
                 </div>
 
-                <!-- 2. USERS VIEW -->
+                <!-- 2. ADD QUESTION VIEW -->
+                <div id="view-addq" class="admin-content" style="display: none;">
+                    <h2 class="page-title">Add New Question</h2>
+                    
+                    <div class="glass-box" style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; flex-wrap: wrap; gap: 15px;">
+                            <h3 style="margin: 0; color: #1e3a8a;"><i class="fas fa-edit"></i> Question Compiler</h3>
+                            <button id="btn-admin-push" class="btn-solid" style="background: #f59e0b; border: none; padding: 0.8rem 1.5rem;">
+                                <i class="fas fa-cloud-upload-alt" style="margin-right: 8px;"></i> Push Database to GitHub 
+                                <span id="admin-pending-count" class="badge" style="background: white; color: #f59e0b; margin-left: 10px; font-size: 0.85rem;">0</span>
+                            </button>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div style="grid-column: 1 / -1;" class="form-group">
+                                <label>Target Destination</label>
+                                <select id="add-q-dest">
+                                    <optgroup label="Core Courses">
+                                        <option value="COURSE:fcps_part1">FCPS Part 1</option>
+                                        <option value="COURSE:fcps_part2">FCPS Part 2</option>
+                                        <option value="COURSE:fcps_imm">FCPS IMM</option>
+                                        <option value="COURSE:mrcs_part1">MRCS Part 1</option>
+                                        <option value="COURSE:mrcs_part2">MRCS Part 2</option>
+                                        <option value="COURSE:mbbs_year1">MBBS Year 1</option>
+                                        <option value="COURSE:mbbs_year2">MBBS Year 2</option>
+                                        <option value="COURSE:mbbs_year3">MBBS Year 3</option>
+                                        <option value="COURSE:mbbs_year4">MBBS Year 4</option>
+                                        <option value="COURSE:mbbs_year5">MBBS Year 5</option>
+                                    </optgroup>
+                                    <optgroup label="Reference Books">
+                                        <option value="BOOK:firstaid_step1">First Aid Step 1</option>
+                                        <option value="BOOK:firstaid_step2">First Aid Step 2</option>
+                                        <option value="BOOK:im_medicine">Irfan Masood Medicine</option>
+                                        <option value="BOOK:im_surgery">Irfan Masood Surgery</option>
+                                        <option value="BOOK:im_pathology">Irfan Masood Pathology</option>
+                                        <option value="BOOK:im_pediatrics">Irfan Masood Pediatrics</option>
+                                        <option value="BOOK:brs_patho">BRS Pathology</option>
+                                        <option value="BOOK:brs_physio">BRS Physiology</option>
+                                        <option value="BOOK:pretest_surgery">Pretest Surgery</option>
+                                        <option value="BOOK:rafiullah">Rafiullah FCPS</option>
+                                        <option value="BOOK:RWR">Residents Way to Residency</option>
+                                        <option value="BOOK:doubleAA">Double AA</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>Subject</label><input type="text" id="add-q-sub" placeholder="e.g., Anatomy"></div>
+                            <div class="form-group"><label>Chapter</label><input type="text" id="add-q-chap" placeholder="e.g., Upper Limb"></div>
+                            <div class="form-group"><label>Topic</label><input type="text" id="add-q-top" placeholder="e.g., Brachial Plexus"></div>
+                            <div class="form-group"><label>Difficulty</label><select id="add-q-dif"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></div>
+                            <div class="form-group"><label>Year</label><input type="text" id="add-q-yr" placeholder="e.g., 2024"></div>
+                            <div class="form-group"><label>Exam</label><input type="text" id="add-q-exm" placeholder="e.g., Nov/2024"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Question Text *</label>
+                            <textarea id="add-q-txt" rows="5" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #e2e8f0; font-family: inherit; resize: vertical; outline: none; transition: 0.2s;" placeholder="Type the question statement here..."></textarea>
+                        </div>
+
+                        <div class="form-group" style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+                            <label style="color: #0f172a; font-size: 1rem; margin-bottom: 1rem;"><i class="fas fa-list"></i> Options (Select radio to set Correct Answer)</label>
+                            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="A" checked style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">A)</span><input type="text" id="add-opt-a" style="flex: 1; border-radius: 8px;"></div>
+                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="B" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">B)</span><input type="text" id="add-opt-b" style="flex: 1; border-radius: 8px;"></div>
+                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="C" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">C)</span><input type="text" id="add-opt-c" style="flex: 1; border-radius: 8px;"></div>
+                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="D" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">D)</span><input type="text" id="add-opt-d" style="flex: 1; border-radius: 8px;"></div>
+                                <div style="display: flex; align-items: center; gap: 15px;"><input type="radio" name="add-correct-opt" value="E" style="transform: scale(1.5); cursor: pointer;"><span style="font-weight: 900; color: #1e293b;">E)</span><input type="text" id="add-opt-e" style="flex: 1; border-radius: 8px;"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 4rem;">
+                            <label><i class="fas fa-chalkboard-teacher" style="color: #3b82f6;"></i> Explanation</label>
+                            <div id="add-q-exp" style="height: 200px; background: white; border-radius: 0 0 10px 10px; color: #000;"></div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 4rem;">
+                            <label><i class="fas fa-lightbulb" style="color: #f59e0b;"></i> Hint</label>
+                            <div id="add-q-hnt" style="height: 120px; background: white; border-radius: 0 0 10px 10px; color: #000;"></div>
+                        </div>
+
+                        <button id="btn-save-new-q" class="btn-solid" style="width: 100%; font-size: 1.1rem; padding: 1.2rem; background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i class="fas fa-save" style="margin-right: 8px;"></i> Save Question to Queue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. USERS VIEW -->
                 <div id="view-users" class="admin-content" style="display: none;">
                     <h2 class="page-title">User Manager</h2>
                     <div class="search-wrapper">
@@ -90,7 +178,7 @@
                     </div>
                 </div>
 
-                <!-- 3. STUDY ROOMS VIEW -->
+                <!-- 4. STUDY ROOMS VIEW -->
                 <div id="view-studyrooms" class="admin-content" style="display: none;">
                     <h2 class="page-title">Active Study Rooms</h2>
                     <div class="glass-box" style="padding: 0; overflow-x: auto;">
@@ -101,7 +189,7 @@
                     </div>
                 </div>
 
-                <!-- 4. FRIEND CHALLENGES VIEW -->
+                <!-- 5. FRIEND CHALLENGES VIEW -->
                 <div id="view-challenges" class="admin-content" style="display: none;">
                     <h2 class="page-title">Friend Challenges</h2>
                     <div class="glass-box" style="padding: 0; overflow-x: auto;">
@@ -112,7 +200,7 @@
                     </div>
                 </div>
 
-                <!-- 5. ASSIGNED EXAMS VIEW -->
+                <!-- 6. ASSIGNED EXAMS VIEW -->
                 <div id="view-assigned" class="admin-content" style="display: none;">
                     <h2 class="page-title">Assigned Exams (Mentors)</h2>
                     <div class="glass-box" style="padding: 0; overflow-x: auto;">
@@ -123,7 +211,7 @@
                     </div>
                 </div>
 
-                <!-- 6. REWARD CLAIMS VIEW -->
+                <!-- 7. REWARD CLAIMS VIEW -->
                 <div id="view-rewards" class="admin-content" style="display: none;">
                     <h2 class="page-title">Manual Reward Claims</h2>
                     <div id="rewards-list">
@@ -131,7 +219,7 @@
                     </div>
                 </div>
 
-                <!-- 7. PAYMENTS VIEW -->
+                <!-- 8. PAYMENTS VIEW -->
                 <div id="view-payments" class="admin-content" style="display: none;">
                     <h2 class="page-title">Payment Requests</h2>
                     <div id="payments-list">
@@ -139,7 +227,7 @@
                     </div>
                 </div>
 
-                <!-- 8. KEYS VIEW -->
+                <!-- 9. KEYS VIEW -->
                 <div id="view-keys" class="admin-content" style="display: none;">
                     <h2 class="page-title">Access Keys</h2>
                     <div class="glass-box" style="margin-bottom: 2rem;">
@@ -184,7 +272,7 @@
                     </div>
                 </div>
 
-                <!-- 9. PROMOS VIEW -->
+                <!-- 10. PROMOS VIEW -->
                 <div id="view-promos" class="admin-content" style="display: none;">
                     <h2 class="page-title">Promo Codes Manager</h2>
                     <div class="glass-box" style="margin-bottom: 2rem;">
@@ -203,19 +291,19 @@
                     </div>
                 </div>
 
-                <!-- 10. COURSE CHANGE REQUESTS VIEW -->
+                <!-- 11. COURSE CHANGE REQUESTS VIEW -->
                 <div id="view-requests" class="admin-content" style="display: none;">
                     <h2 class="page-title">Course Change Requests</h2>
                     <div id="requests-list"><p style="text-align: center; color: #94a3b8; padding: 2rem;">Loading requests...</p></div>
                 </div>
 
-                <!-- 11. REPORTS VIEW -->
+                <!-- 12. REPORTS VIEW -->
                 <div id="view-reports" class="admin-content" style="display: none;">
                     <h2 class="page-title">Flagged Questions</h2>
                     <div id="reports-list"><p style="text-align: center; color: #94a3b8; padding: 2rem;">System logs will appear here.</p></div>
                 </div>
 
-                <!-- 12. MESSAGES VIEW -->
+                <!-- 13. MESSAGES VIEW -->
                 <div id="view-messages" class="admin-content" style="display: none;">
                     <h2 class="page-title">Contact Messages</h2>
                     <div id="messages-list"><p style="text-align: center; color: #94a3b8; padding: 2rem;">Loading messages...</p></div>
