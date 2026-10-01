@@ -1,27 +1,5 @@
 [
     {
-        "id": "SJ6R5QFY",
-        "year": "2025",
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "easy",
-        "question": "A 70-year-old man has difficulty initiating urination and a weak stream. Rectal examination reveals an enlarged prostate, which of the following lobes is most likely enlarged in benign prostatic hyperplasia?",
-        "options": {
-            "A": "Posterior lobe",
-            "B": "Middle lobe",
-            "C": "Inferior lobe",
-            "D": "Anterior lobe",
-            "E": "Lateral lobe"
-        },
-        "correctAnswer": "B",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><strong style=\"color: rgb(230, 0, 0);\">Updtaed!</strong></p>"
-    },
-    {
         "id": "F484C7WL",
         "year": "2025",
         "exams": [
@@ -27263,6 +27241,28 @@
         "hint": ""
     },
     {
+        "id": "8NNJK9U6",
+        "year": "2025",
+        "exams": [
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "",
+        "difficulty": "Easy",
+        "question": "Doc in patient of ischemic heart disease and atrial fibrillation is",
+        "options": {
+            "A": "Verapamil",
+            "B": "Nitroglycerine",
+            "C": "Adenosine",
+            "D": "Digoxin",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Prefer Beta blocker. Digoxin usually given in heart failure patient with atrial fibrillation",
+        "hint": ""
+    },
+    {
         "id": "926ZW76R",
         "year": "2026, 2025",
         "exams": [
@@ -34017,28 +34017,6 @@
         },
         "correctAnswer": "C",
         "explanation": "Wound location -> mid-abdomen, right of umbilicus. Delayed hypotension -> intra-abdominal arterial bleed. SMA lies in this region -> most likely source.",
-        "hint": ""
-    },
-    {
-        "id": "8NNJK9U6",
-        "year": "2025",
-        "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Cardiovascular System",
-        "topic": "",
-        "difficulty": "Easy",
-        "question": "Doc in patient of ischemic heart disease and atrial fibrillation is",
-        "options": {
-            "A": "Verapamil",
-            "B": "Nitroglycerine",
-            "C": "Adenosine",
-            "D": "Digoxin",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Prefer Beta blocker. Digoxin usually given in heart failure patient with atrial fibrillation",
         "hint": ""
     },
     {
@@ -289729,71 +289707,5 @@
         "correctAnswer": "B",
         "explanation": "",
         "hint": ""
-    },
-    {
-        "id": "Q9P7KJGR",
-        "year": "20",
-        "exams": [
-            "Fcps"
-        ],
-        "subject": "Blah",
-        "chapter": "Blah",
-        "topic": "Blah",
-        "difficulty": "hard",
-        "question": "aondouabfouabdouandouaofoa aOBndaod aoduba doaud aod adbaodn",
-        "options": {
-            "A": "oahd",
-            "B": "ubasod",
-            "C": "ouboub",
-            "D": "oboub",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "<p>Nothing</p>",
-        "hint": "<p><strong>No</strong></p>"
-    },
-    {
-        "id": "RQKUC57S",
-        "year": "20",
-        "exams": [
-            "Kha"
-        ],
-        "subject": "Hello",
-        "chapter": "Hawar",
-        "topic": "Khana",
-        "difficulty": "medium",
-        "question": "oashdoasdnaondaifboanediajdoihnafhnaofnloandolwadhn\nUPDATED",
-        "options": {
-            "A": "Hello",
-            "B": "Hawar",
-            "C": "Khana",
-            "D": "Kha K",
-            "E": "aana"
-        },
-        "correctAnswer": "A",
-        "explanation": "<p><strong style=\"color: rgb(230, 0, 0);\">adig\t</strong></p><p><strong style=\"color: rgb(230, 0, 0);\">nasdoiands</strong></p><p><strong style=\"color: rgb(230, 0, 0);\">dawil</strong></p><p><br></p><p><strong style=\"color: rgb(230, 0, 0);\">asdjaksd</strong></p><p><strong style=\"color: rgb(230, 0, 0);\">asdnlasd</strong></p><p><br></p><p><br></p><p><strong style=\"color: rgb(230, 0, 0);\">asdkjasnd</strong></p>",
-        "hint": "<p><strong style=\"color: rgb(230, 0, 0);\">audhaodw</strong></p>"
-    },
-    {
-        "id": "R5GFH9Z7",
-        "year": "21",
-        "exams": [
-            "ibo"
-        ],
-        "subject": "ouno",
-        "chapter": "boub",
-        "topic": "oboub",
-        "difficulty": "medium",
-        "question": "obouadsboasdnoiasndobasdo",
-        "options": {
-            "A": "oubob",
-            "B": "oubouboubo",
-            "C": "bobuobohoih",
-            "D": "obououb",
-            "E": "oubobouboub"
-        },
-        "correctAnswer": "A",
-        "explanation": "<p>oubouboboboub</p>",
-        "hint": "<p>askdub</p>"
     }
 ]
