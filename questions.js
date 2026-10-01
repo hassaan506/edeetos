@@ -1,6 +1,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
@@ -76,6 +77,8 @@ const startExamBtn = document.getElementById('start-exam-btn');
 const diffEasyFilter = document.getElementById('diff-easy-filter');
 const diffMediumFilter = document.getElementById('diff-medium-filter');
 const diffHardFilter = document.getElementById('diff-hard-filter');
+const btnPushEdits = document.getElementById('btn-push-edits');
+const pendingEditsCount = document.getElementById('pending-edits-count');
 
 // ==========================================
 // 3. DARK MODE TOGGLE LOGIC
@@ -2023,7 +2026,7 @@ if (btnJourney) {
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                     } else {
                         // Locked target
-                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium</div>`;
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium</div>`;
                     }
                 }
 
@@ -2501,6 +2504,51 @@ onAuthStateChanged(auth, async (user) => {
                 isPremiumUser = false;
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
                     isPremiumUser = true;
+                    
+                    // ADMIN BATCH PUSH LOGIC
+                    const queueStr = localStorage.getItem('edeetos_pending_edits');
+                    let pendingQueue = [];
+                    if (queueStr) {
+                        try { pendingQueue = JSON.parse(queueStr); } catch(e){}
+                    }
+                    if (pendingQueue.length > 0 && btnPushEdits) {
+                        btnPushEdits.style.display = 'flex';
+                        if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
+                        
+                        btnPushEdits.onclick = async () => {
+                            btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing...';
+                            btnPushEdits.disabled = true;
+
+                            const editsByCourse = {};
+                            pendingQueue.forEach(edit => {
+                                const key = edit.courseFile;
+                                if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+                                editsByCourse[key].rows.push(edit.row);
+                            });
+
+                            try {
+                                const functions = getFunctions();
+                                const updateQuestionCSV = httpsCallable(functions, "updateQuestionCSV");
+                                
+                                for (const courseFile of Object.keys(editsByCourse)) {
+                                    await updateQuestionCSV({
+                                        updatedRows: editsByCourse[courseFile].rows,
+                                        courseFile: courseFile,
+                                        isBook: editsByCourse[courseFile].isBook
+                                    });
+                                }
+                                alert(`✅ Successfully committed ${pendingQueue.length} edits to GitHub! Allow ~60 seconds for deployment.`);
+                                localStorage.removeItem('edeetos_pending_edits');
+                                btnPushEdits.style.display = 'none';
+                            } catch (error) {
+                                console.error(error);
+                                alert("❌ GitHub Push Failed: " + error.message);
+                                btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+                                btnPushEdits.disabled = false;
+                            }
+                        };
+                    }
+
                 } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
                     const expiry = dbData.subscriptions[activeCourse];
                     if (expiry === 'lifetime') {
