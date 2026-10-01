@@ -1114,7 +1114,72 @@ async function fetchReports() {
         if(!hasReports) list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No pending reported questions.</p>';
     });
 }
+// === MODAL ACTION BUTTONS ===
 
+// Handle Modal Cancel
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'btn-cancel-edit') {
+        document.getElementById('admin-edit-modal').style.display = 'none';
+    }
+});
+
+// Handle Save to Queue from Modal
+document.addEventListener('click', (e) => {
+    const btnSaveGithub = e.target.closest('#btn-save-github');
+    if (!btnSaveGithub) return;
+
+    const destVal = document.getElementById('edit-q-dest').value;
+    if (!destVal) return alert("You must select a Target Destination.");
+
+    const targetVal = destVal.split(':');
+    const isBook = targetVal[0] === 'BOOK';
+    const courseFile = targetVal[1];
+
+    const targetId = document.getElementById('edit-q-id').value;
+    if (!targetId) return alert("Question ID is missing.");
+
+    let correctLetter = "A";
+    document.querySelectorAll('input[name="edit-correct-opt"]').forEach((radio, index) => {
+        if (radio.checked) correctLetter = String.fromCharCode(65 + index);
+    });
+
+    const updatedRow = {
+        "QuestionID": targetId,
+        "Year": document.getElementById('edit-q-year').value.trim(),
+        "Exam": document.getElementById('edit-q-exam').value.trim(),
+        "Subject": document.getElementById('edit-q-subject').value.trim(),
+        "Chapter": document.getElementById('edit-q-chapter').value.trim(),
+        "Topic": document.getElementById('edit-q-topic').value.trim(),
+        "Question": document.getElementById('edit-q-text').value.trim(),
+        "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
+        "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
+        "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
+        "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "",
+        "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
+        "CorrectAnswer": correctLetter,
+        "Explanation": window.editQuillExp ? window.editQuillExp.root.innerHTML : "",
+        "Hint": window.editQuillHint ? window.editQuillHint.root.innerHTML : "",
+        "Difficulty": document.getElementById('edit-q-diff').value
+    };
+
+    let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+    
+    // Check if we are already fixing this specific question in the queue
+    const existingIndex = pendingEditsQueue.findIndex(item => item.row["QuestionID"] === targetId);
+    if (existingIndex !== -1) {
+        pendingEditsQueue[existingIndex] = { row: updatedRow, courseFile, isBook };
+    } else {
+        pendingEditsQueue.push({ row: updatedRow, courseFile, isBook });
+    }
+    
+    // Save to local storage and update the UI counter
+    localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
+    updatePendingCount();
+
+    // Close modal and notify admin
+    document.getElementById('admin-edit-modal').style.display = 'none';
+    alert('Question fix added to your browser queue! Click "Push Database to GitHub" to publish it live.');
+});
 // === 13. MESSAGES ===
 let unsubMsgs = null;
 async function fetchMessages() {
