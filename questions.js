@@ -2516,138 +2516,211 @@ onAuthStateChanged(auth, async (user) => {
                         btnPushEdits.style.display = 'flex';
                         if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
                         
-                        btnPushEdits.onclick = async () => {
-                            // 1. Securely fetch or prompt for GitHub Token
-                            let token = localStorage.getItem('edeetos_github_pat');
-                            if (!token) {
-                                token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser and is never uploaded)");
-                                if (!token) return;
-                                localStorage.setItem('edeetos_github_pat', token);
-                            }
-
-                            btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing...';
-                            btnPushEdits.disabled = true;
-
-                            try {
-                                // Dynamically import PapaParse and Base64 so we don't need a backend server
-                                const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
-                                const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
-
-                                // Group edits by file
-                                const editsByCourse = {};
-                                pendingQueue.forEach(edit => {
-                                    const key = edit.courseFile;
-                                    if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
-                                    editsByCourse[key].rows.push(edit.row);
-                                });
-
-                                // REPLACE THESE WITH YOUR REPO DETAILS
-                                const owner = "hassaan506";
-                                const repo = "edeetos";
-                                const branch = "main";
-
-                                for (const courseFile of Object.keys(editsByCourse)) {
-                                    const isBook = editsByCourse[courseFile].isBook;
-                                    const folder = isBook ? "Books" : "Data";
-                                    const csvPath = `${folder}/${courseFile}.csv`;
-                                    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
-
-                                    // GET current file from GitHub
-                                    const getRes = await fetch(url + `?ref=${branch}`, {
-                                        headers: { "Authorization": `Bearer ${token}` }
-                                    });
-
-                                    if (!getRes.ok) {
-                                        if (getRes.status === 401) {
-                                            localStorage.removeItem('edeetos_github_pat');
-                                            throw new Error("Invalid GitHub Token. The saved token was removed. Please click Push to try again.");
-                                        }
-                                        throw new Error(`Failed to fetch ${csvPath} from GitHub.`);
-                                    }
-
-const getJson = await getRes.json();
-                                    const currentSha = getJson.sha;
-
-                                    // CRITICAL FIX: Use the Git Database Blob API for large files.
-                                    // This bypasses the 1MB limit AND prevents browser CORS security blocks.
-                                    const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${currentSha}`;
-                                    const blobRes = await fetch(blobUrl, {
-                                        headers: { "Authorization": `Bearer ${token}` }
-                                    });
-                                    
-                                    if (!blobRes.ok) throw new Error("Failed to download large file data from GitHub Blob API.");
-                                    const blobJson = await blobRes.json();
-                                    
-// Blob API returns Base64, so we decode it
-const currentCsvText = Base64.decode(blobJson.content);
-
-// Strip invisible Windows BOM characters that corrupt CSV headers
-const cleanCsvText = currentCsvText.replace(/^\uFEFF/, '');
-
-// Parse CSV
-let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
-let rows = parsed.data;
-
-// Apply Edits
-editsByCourse[courseFile].rows.forEach(updatedRow => {
-    const qId = updatedRow["QuestionID"];
-    
-    // Bulletproof lookup: find the actual ID key ignoring case and spaces
-    const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
-    const qIndex = rows.findIndex(r => String(r[actualIdKey]) === String(qId) && qId !== "");
-    
-    if (qIndex !== -1) {
-        // Bulletproof merge: map your updated data directly to the exact keys present in the CSV
-        const targetRow = rows[qIndex];
-        Object.keys(updatedRow).forEach(newKey => {
-            const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
-            if (originalKey) {
-                targetRow[originalKey] = updatedRow[newKey];
-            } else {
-                targetRow[newKey] = updatedRow[newKey];
-            }
-        });
-    } else {
-        rows.push(updatedRow);
+btnPushEdits.onclick = async () => {
+    let token = localStorage.getItem('edeetos_github_pat');
+    if (!token) {
+        token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
+        if (!token) return;
+        localStorage.setItem('edeetos_github_pat', token);
     }
-});
 
-                                    // Unparse and Base64 Encode
-                                    const newCsvText = Papa.unparse(rows);
-                                    const newBase64Content = Base64.encode(newCsvText);
+    btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing & Converting...';
+    btnPushEdits.disabled = true;
 
-                                    // PUT updated file back to GitHub
-                                    const putRes = await fetch(url, {
-                                        method: 'PUT',
-                                        headers: {
-                                            "Authorization": `Bearer ${token}`,
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify({
-                                            message: `Admin Panel: Batched update for ${editsByCourse[courseFile].rows.length} question(s)`,
-                                            content: newBase64Content,
-                                            sha: currentSha,
-                                            branch: branch
-                                        })
-                                    });
+    try {
+        const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+        const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
 
-									if (!putRes.ok) {
-                                        const errorDetails = await putRes.json().catch(() => ({}));
-                                        throw new Error(`GitHub rejected the save. Reason: ${errorDetails.message || putRes.statusText}`);
-                                    }
-                                }
+        // Group edits by file
+        const editsByCourse = {};
+        pendingQueue.forEach(edit => {
+            const key = edit.courseFile;
+            if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+            editsByCourse[key].rows.push(edit.row);
+        });
 
-                                alert(`✅ Successfully committed ${pendingQueue.length} edits to GitHub! Please allow ~60 seconds for GitHub Actions to rebuild your JSONs.`);
-                                localStorage.removeItem('edeetos_pending_edits');
-                                btnPushEdits.style.display = 'none';
+        const owner = "hassaan506";
+        const repo = "edeetos";
+        const branch = "main";
 
-                            } catch (error) {
-                                console.error(error);
-                                alert("❌ GitHub Push Failed: " + error.message);
-                                btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
-                                btnPushEdits.disabled = false;
-                            }
-                        };
+        // Reusable Helper to Upload Files via GitHub API
+        const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
+            const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+            let currentSha = null;
+            try {
+                const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                if (getRes.ok) {
+                    const getJson = await getRes.json();
+                    currentSha = getJson.sha;
+                }
+            } catch(e) {}
+
+            const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
+            if (currentSha) bodyData.sha = currentSha;
+
+            const putRes = await fetch(fileUrl, {
+                method: 'PUT',
+                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(bodyData)
+            });
+
+            if (!putRes.ok) {
+                const err = await putRes.json().catch(() => ({}));
+                throw new Error(`Failed to upload ${filePath}: ${err.message || putRes.statusText}`);
+            }
+        };
+
+        for (const courseFile of Object.keys(editsByCourse)) {
+            const isBook = editsByCourse[courseFile].isBook;
+            const folder = isBook ? "Books" : "Data";
+            const csvPath = `${folder}/${courseFile}.csv`;
+            const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
+            const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
+            
+            const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+
+            // GET current CSV file via Blob API
+            const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+            if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
+            
+            const getJson = await getRes.json();
+            const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
+            const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
+            
+            if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
+            const blobJson = await blobRes.json();
+            
+            // Decode and Strip Windows BOM
+            const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
+            
+            // Parse CSV
+            let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
+            let rows = parsed.data;
+
+            // 1. APPLY EDITS (Strictly preserves original row position)
+            editsByCourse[courseFile].rows.forEach(updatedRow => {
+                const qId = updatedRow["QuestionID"];
+                const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
+                
+                let qIndex = -1;
+                for(let i=0; i<rows.length; i++) {
+                    if (String(rows[i][actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "") {
+                        qIndex = i; break;
+                    }
+                }
+                
+                if (qIndex !== -1) {
+                    // Update in-place so row order remains completely untouched
+                    const targetRow = rows[qIndex];
+                    Object.keys(updatedRow).forEach(newKey => {
+                        const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                        targetRow[originalKey || newKey] = updatedRow[newKey];
+                    });
+                } else {
+                    rows.push(updatedRow);
+                }
+            });
+
+            // 2. CONVERT TO JSON IN BROWSER
+            let outQs = [];
+            let subTree = {}, sysTree = {}, exTree = {};
+
+            rows.forEach(row => {
+                const getVal = (names) => {
+                    const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
+                    return key && row[key] ? String(row[key]).trim() : "";
+                };
+
+                const qId = getVal(['questionid', 'id']);
+                if (!qId) return;
+
+                const subject = getVal(['subject']);
+                const chapter = getVal(['chapter']);
+                const topic = getVal(['topic']);
+                const year = getVal(['year']);
+                const rawExams = getVal(['exams', 'exam']);
+                const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+
+                let qObj = {
+                    id: qId,
+                    year: year,
+                    exams: examsList,
+                    subject: subject,
+                    chapter: chapter,
+                    topic: topic,
+                    difficulty: getVal(['difficulty']),
+                    question: getVal(['question']),
+                    options: {
+                        A: getVal(['optiona']),
+                        B: getVal(['optionb']),
+                        C: getVal(['optionc']),
+                        D: getVal(['optiond']),
+                        E: getVal(['optione'])
+                    },
+                    correctAnswer: getVal(['correctanswer']).toUpperCase(),
+                    explanation: getVal(['explanation']),
+                    hint: getVal(['hint'])
+                };
+
+                if (isBook) {
+                    qObj.isBookQuestion = true;
+                    qObj.bookName = courseFile;
+                }
+
+                outQs.push(qObj);
+
+                // Build Hierarchy Trees
+                if (subject) {
+                    if (!subTree[subject]) subTree[subject] = {};
+                    if (chapter) {
+                        if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
+                        if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
+                    }
+                }
+                if (chapter && chapter.toLowerCase().includes('system')) {
+                    if (!sysTree[chapter]) sysTree[chapter] = {};
+                    if (subject) {
+                        if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
+                        if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
+                    }
+                }
+                if (year) {
+                    if (!exTree[year]) exTree[year] = {};
+                    examsList.forEach(ex => {
+                        if (!exTree[year][ex]) exTree[year][ex] = {};
+                        if (subject) {
+                            if (!exTree[year][ex][subject]) exTree[year][ex][subject] = {};
+                            if (topic) exTree[year][ex][subject][topic] = (exTree[year][ex][subject][topic] || 0) + 1;
+                        }
+                    });
+                }
+            });
+
+            // 3. PUSH ALL THREE FILES DIRECTLY TO GITHUB
+            const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
+            
+            // Upload CSV
+            await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
+            
+            // Upload Questions JSON
+            await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+            
+            // Upload Hierarchy JSON
+            const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
+            await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
+        }
+
+        alert(`✅ Success! Edits saved and JSONs generated dynamically. Changes are live instantly!`);
+        localStorage.removeItem('edeetos_pending_edits');
+        btnPushEdits.style.display = 'none';
+
+    } catch (error) {
+        console.error(error);
+        alert("❌ Push Failed: " + error.message);
+        btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+        btnPushEdits.disabled = false;
+    }
+};
                     }
 
                 } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
