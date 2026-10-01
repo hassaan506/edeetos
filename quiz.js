@@ -1,6 +1,10 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
+
+const functions = getFunctions();
+const updateQuestionCSV = httpsCallable(functions, "updateQuestionCSV");
 
 let currentUserId = null; 
 let currentUserData = null;
@@ -57,6 +61,10 @@ const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
 const modalNextBtn = document.getElementById('modal-next-btn');
 const aiHintBtn = document.getElementById('ai-hint-btn');
 const copyQBtn = document.getElementById('copy-q-btn');
+const editQBtn = document.getElementById('edit-q-btn');
+const adminEditModal = document.getElementById('admin-edit-modal');
+const btnCancelEdit = document.getElementById('btn-cancel-edit');
+const btnSaveGithub = document.getElementById('btn-save-github');
 
 if (isExamMode) {
     document.body.classList.add('mode-exam');
@@ -115,11 +123,6 @@ onAuthStateChanged(auth, async (user) => {
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
                 currentUserData = dbData;
-
-				const roleUpper = (dbData.role || 'STUDENT').toUpperCase();
-				if (roleUpper === 'ADMIN' && copyQBtn) {
-					copyQBtn.style.display = 'flex';
-				}
 
 				if (activeRoomId) {
 					await updateDoc(roomRef, {
@@ -359,6 +362,18 @@ function loadQuestion(index) {
         const forceBtn = document.getElementById('host-force-reveal-btn');
         if (forceBtn) forceBtn.style.display = 'none';
 
+        // ==========================================
+        // ADMIN/MANAGEMENT BUTTON VISIBILITY CHECK
+        // ==========================================
+        const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
+        if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
+            if (copyQBtn) copyQBtn.style.display = 'flex';
+            if (editQBtn) editQBtn.style.display = 'flex';
+        } else {
+            if (copyQBtn) copyQBtn.style.display = 'none';
+            if (editQBtn) editQBtn.style.display = 'none';
+        }
+
         if (!currentQuestionData.options || !Array.isArray(currentQuestionData.options)) {
             quizQueue[currentIndex] = formatJSONQuestion(currentQuestionData);
             currentQuestionData = quizQueue[currentIndex];
@@ -597,28 +612,18 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 }
             };
         }
-// ==========================================
+
+        // ==========================================
         // ADMIN COPY QUESTION LOGIC
         // ==========================================
         if (copyQBtn) {
-            // 1. Verify Role and Set Visibility
-            const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
-            if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
-                copyQBtn.style.display = 'flex';
-            } else {
-                copyQBtn.style.display = 'none';
-            }
-
-            // 2. Attach Click Handler
             copyQBtn.onclick = () => {
                 if (!currentQuestionData) return;
                 
-                // Strip HTML tags from the question text for a clean copy
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = currentQuestionData.text || "Missing Question";
                 let textToCopy = tempDiv.textContent.trim() + "\n\n";
                 
-                // Append the options (A, B, C, D...)
                 if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                     currentQuestionData.options.forEach((opt, idx) => {
                         const letter = String.fromCharCode(65 + idx);
@@ -626,7 +631,6 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                     });
                 }
                 
-                // Copy to clipboard with success animation
                 const triggerSuccess = () => {
                     const icon = copyQBtn.querySelector('i');
                     icon.className = 'fas fa-check';
@@ -636,7 +640,6 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(textToCopy).then(triggerSuccess);
                 } else {
-                    // Fallback for older browsers
                     const textArea = document.createElement("textarea");
                     textArea.value = textToCopy;
                     document.body.appendChild(textArea);
@@ -648,6 +651,106 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                         console.error("Fallback copy failed", err);
                     }
                     document.body.removeChild(textArea);
+                }
+            };
+        }
+
+        // ==========================================
+        // ADMIN EDIT QUESTION LOGIC
+        // ==========================================
+        if (editQBtn) {
+            editQBtn.onclick = () => {
+                if (!currentQuestionData) return;
+
+                document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || "";
+                document.getElementById('edit-q-text').value = currentQuestionData.text || "";
+                document.getElementById('edit-q-hint').value = currentQuestionData.hint || "";
+                document.getElementById('edit-q-explanation').value = currentQuestionData.explanation || "";
+
+                const optsContainer = document.getElementById('edit-options-container');
+                optsContainer.innerHTML = '';
+                
+                if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
+                    currentQuestionData.options.forEach((opt, idx) => {
+                        const letter = String.fromCharCode(65 + idx);
+                        const isCorrect = opt.isCorrect ? "checked" : "";
+                        
+                        optsContainer.innerHTML += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="radio" name="edit-correct-opt" value="${idx}" ${isCorrect} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
+                                <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
+                                <input type="text" id="edit-opt-${idx}" value="${opt.text}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                            </div>
+                        `;
+                    });
+                }
+
+                adminEditModal.classList.remove('hidden');
+                adminEditModal.classList.add('show');
+            };
+        }
+
+        if (btnCancelEdit) {
+            btnCancelEdit.onclick = () => {
+                adminEditModal.classList.remove('show');
+                setTimeout(() => adminEditModal.classList.add('hidden'), 300);
+            };
+        }
+
+        if (btnSaveGithub) {
+            btnSaveGithub.onclick = async () => {
+                const saveBtn = document.getElementById('btn-save-github');
+                saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing to GitHub...';
+                saveBtn.disabled = true;
+
+                const targetId = document.getElementById('edit-q-id').value;
+                const radioElements = document.querySelectorAll('input[name="edit-correct-opt"]');
+                
+                let correctLetter = "A";
+                radioElements.forEach((radio, index) => {
+                    if (radio.checked) correctLetter = String.fromCharCode(65 + index);
+                });
+
+                const updatedRow = {
+                    "Question id": targetId,
+                    "Year": currentQuestionData.Year || "",
+                    "Exam": Array.isArray(currentQuestionData.Exam) ? currentQuestionData.Exam.join(', ') : (currentQuestionData.Exam || ""),
+                    "Subject": currentQuestionData.Subject || "General",
+                    "Chapter": currentQuestionData.Chapter || "General",
+                    "Topic": currentQuestionData.Topic || "General",
+                    "Question": document.getElementById('edit-q-text').value.trim(),
+                    "Option A": document.getElementById('edit-opt-0')?.value.trim() || "",
+                    "Option B": document.getElementById('edit-opt-1')?.value.trim() || "",
+                    "Option C": document.getElementById('edit-opt-2')?.value.trim() || "",
+                    "Option D": document.getElementById('edit-opt-3')?.value.trim() || "",
+                    "Option E": document.getElementById('edit-opt-4')?.value.trim() || "",
+                    "Correct answer": correctLetter,
+                    "Explanation": document.getElementById('edit-q-explanation').value.trim(),
+                    "Hint": document.getElementById('edit-q-hint').value.trim(),
+                    "Difficulty": currentQuestionData.Difficulty || "medium"
+                };
+
+                const isBook = currentQuestionData.isBookQuestion === true;
+                const courseFile = isBook ? currentQuestionData.bookName : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
+
+                try {
+                    const response = await updateQuestionCSV({
+                        updatedRow: updatedRow,
+                        courseFile: courseFile,
+                        isBook: isBook
+                    });
+
+                    if (response.data.success) {
+                        alert("✅ Saved! CSV updated on GitHub. Automated JSON conversion is running in the cloud.");
+                        adminEditModal.classList.remove('show');
+                        setTimeout(() => adminEditModal.classList.add('hidden'), 300);
+                    }
+                } catch (error) {
+                    console.error("Save failed:", error);
+                    alert("❌ Error committing to GitHub: " + error.message);
+                } finally {
+                    saveBtn.innerHTML = 'Push to GitHub';
+                    saveBtn.disabled = false;
                 }
             };
         }
