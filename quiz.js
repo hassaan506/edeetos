@@ -673,19 +673,19 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                     quillExplanation = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: toolbarOptions } });
                 }
 
-                // Populate Metadata
-                document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || "";
-                document.getElementById('edit-q-text').value = currentQuestionData.text || "";
-                document.getElementById('edit-q-subject').value = currentQuestionData.Subject || "";
-                document.getElementById('edit-q-chapter').value = currentQuestionData.Chapter || "";
-                document.getElementById('edit-q-topic').value = currentQuestionData.Topic || "";
-                document.getElementById('edit-q-diff').value = (currentQuestionData.Difficulty || "medium").toLowerCase();
+                // Populate Metadata (Checking both Uppercase and Lowercase from Python script)
+                document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || currentQuestionData.id || currentQuestionData.QuestionID || "";
+                document.getElementById('edit-q-text').value = currentQuestionData.text || currentQuestionData.question || "";
+                document.getElementById('edit-q-subject').value = currentQuestionData.Subject || currentQuestionData.subject || "";
+                document.getElementById('edit-q-chapter').value = currentQuestionData.Chapter || currentQuestionData.chapter || "";
+                document.getElementById('edit-q-topic').value = currentQuestionData.Topic || currentQuestionData.topic || "";
+                document.getElementById('edit-q-diff').value = (currentQuestionData.Difficulty || currentQuestionData.difficulty || "medium").toLowerCase();
                 
-                const yearVal = Array.isArray(currentQuestionData.Year) ? currentQuestionData.Year.join(', ') : (currentQuestionData.Year || "");
-                document.getElementById('edit-q-year').value = yearVal;
+                const yearVal = currentQuestionData.Year || currentQuestionData.year || "";
+                document.getElementById('edit-q-year').value = Array.isArray(yearVal) ? yearVal.join(', ') : yearVal;
                 
-                const examVal = Array.isArray(currentQuestionData.Exam) ? currentQuestionData.Exam.join(', ') : (currentQuestionData.Exam || "");
-                document.getElementById('edit-q-exam').value = examVal;
+                const examVal = currentQuestionData.Exam || currentQuestionData.exams || currentQuestionData.exam || "";
+                document.getElementById('edit-q-exam').value = Array.isArray(examVal) ? examVal.join(', ') : examVal;
                 
                 // Load HTML into the visual editors
                 quillHint.root.innerHTML = currentQuestionData.hint || "";
@@ -777,6 +777,8 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 currentQuestionData.Chapter = updatedRow["Chapter"];
                 currentQuestionData.Topic = updatedRow["Topic"];
                 currentQuestionData.Difficulty = updatedRow["Difficulty"];
+                currentQuestionData.Year = updatedRow["Year"];
+                currentQuestionData.Exam = updatedRow["Exam"];
                 
                 questionTextEl.innerHTML = currentQuestionData.text;
                 explanationText.innerHTML = currentQuestionData.explanation;
