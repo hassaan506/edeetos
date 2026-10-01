@@ -655,17 +655,34 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
             };
         }
 
+// ==========================================
+        // ADMIN EDIT QUESTION LOGIC & RICH TEXT
         // ==========================================
-        // ADMIN EDIT QUESTION LOGIC
-        // ==========================================
+        let quillHint, quillExplanation;
+
         if (editQBtn) {
             editQBtn.onclick = () => {
                 if (!currentQuestionData) return;
 
+                // Initialize Quill editors if they don't exist yet
+                if (!quillHint) {
+                    const toolbarOptions = [
+                        ['bold', 'italic', 'underline', 'strike'], 
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        [{ 'align': [] }],
+                        ['clean']
+                    ];
+                    quillHint = new Quill('#edit-q-hint', { theme: 'snow', modules: { toolbar: toolbarOptions } });
+                    quillExplanation = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: toolbarOptions } });
+                }
+
                 document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || "";
                 document.getElementById('edit-q-text').value = currentQuestionData.text || "";
-                document.getElementById('edit-q-hint').value = currentQuestionData.hint || "";
-                document.getElementById('edit-q-explanation').value = currentQuestionData.explanation || "";
+                
+                // Load existing HTML into the editors
+                quillHint.root.innerHTML = currentQuestionData.hint || "";
+                quillExplanation.root.innerHTML = currentQuestionData.explanation || "";
 
                 const optsContainer = document.getElementById('edit-options-container');
                 optsContainer.innerHTML = '';
@@ -698,18 +715,17 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
         }
 
         if (btnSaveGithub) {
-            btnSaveGithub.onclick = async () => {
-                const saveBtn = document.getElementById('btn-save-github');
-                saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing to GitHub...';
-                saveBtn.disabled = true;
-
+            btnSaveGithub.onclick = () => {
                 const targetId = document.getElementById('edit-q-id').value;
                 const radioElements = document.querySelectorAll('input[name="edit-correct-opt"]');
-                
                 let correctLetter = "A";
                 radioElements.forEach((radio, index) => {
                     if (radio.checked) correctLetter = String.fromCharCode(65 + index);
                 });
+
+                // Extract pure HTML tags from the visual editors
+                const hintHTML = quillHint.root.innerHTML;
+                const explanationHTML = quillExplanation.root.innerHTML;
 
                 const updatedRow = {
                     "Question id": targetId,
@@ -725,36 +741,38 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                     "Option D": document.getElementById('edit-opt-3')?.value.trim() || "",
                     "Option E": document.getElementById('edit-opt-4')?.value.trim() || "",
                     "Correct answer": correctLetter,
-                    "Explanation": document.getElementById('edit-q-explanation').value.trim(),
-                    "Hint": document.getElementById('edit-q-hint').value.trim(),
+                    "Explanation": explanationHTML,
+                    "Hint": hintHTML,
                     "Difficulty": currentQuestionData.Difficulty || "medium"
                 };
 
                 const isBook = currentQuestionData.isBookQuestion === true;
                 const courseFile = isBook ? currentQuestionData.bookName : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
 
-                try {
-                    const response = await updateQuestionCSV({
-                        updatedRow: updatedRow,
-                        courseFile: courseFile,
-                        isBook: isBook
-                    });
-
-                    if (response.data.success) {
-                        alert("✅ Saved! CSV updated on GitHub. Automated JSON conversion is running in the cloud.");
-                        adminEditModal.classList.remove('show');
-                        setTimeout(() => adminEditModal.classList.add('hidden'), 300);
-                    }
-                } catch (error) {
-                    console.error("Save failed:", error);
-                    alert("❌ Error committing to GitHub: " + error.message);
-                } finally {
-                    saveBtn.innerHTML = 'Push to GitHub';
-                    saveBtn.disabled = false;
+                // Add to the local Queue
+                let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+                const existingIndex = pendingEditsQueue.findIndex(e => e.row["Question id"] === targetId);
+                
+                if (existingIndex !== -1) {
+                    pendingEditsQueue[existingIndex] = { row: updatedRow, courseFile, isBook };
+                } else {
+                    pendingEditsQueue.push({ row: updatedRow, courseFile, isBook });
                 }
+                
+                localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
+
+                // Instantly update the UI so you can see your changes while still studying
+                currentQuestionData.text = updatedRow["Question"];
+                currentQuestionData.explanation = updatedRow["Explanation"];
+                currentQuestionData.hint = updatedRow["Hint"];
+                questionTextEl.innerHTML = currentQuestionData.text;
+                explanationText.innerHTML = currentQuestionData.explanation;
+
+                // Close the modal
+                adminEditModal.classList.remove('show');
+                setTimeout(() => adminEditModal.classList.add('hidden'), 300);
             };
         }
-
         updateGridStyles();
 
     } catch (error) { 
