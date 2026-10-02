@@ -44,7 +44,18 @@ onAuthStateChanged(auth, async (user) => {
                 mentorView.style.display = 'block';
                 listenForIncomingRequests();
             } else {
-                fetchAvailableMentors();
+                // Check if student already has an open chat before showing the mentor list
+                const chatsRef = collection(db, "chats");
+                const q = query(chatsRef, where("studentId", "==", currentUser.uid), where("status", "in", ["pending", "active"]));
+                const chatSnap = await getDocs(q);
+
+                if (!chatSnap.empty) {
+                    const existingChat = chatSnap.docs[0];
+                    studentView.style.display = 'none';
+                    openLiveChat(existingChat.id, existingChat.data().mentorName);
+                } else {
+                    fetchAvailableMentors();
+                }
             }
         }
     } else {
@@ -58,13 +69,12 @@ onAuthStateChanged(auth, async (user) => {
 async function fetchAvailableMentors() {
     try {
         const usersRef = collection(db, "users");
-        // NOTE: Make sure Firebase rules allow students to read docs where role == MENTOR
         const q = query(usersRef, where("role", "in", ["MENTOR", "MANAGEMENT"]));
         const querySnapshot = await getDocs(q);
         
         mentorsList.innerHTML = '';
         if (querySnapshot.empty) {
-            mentorsList.innerHTML = '<p style="text-align: center; color: #ef4444;">No mentors are currently online.</p>';
+            mentorsList.innerHTML = '<p style="text-align: center; color: #ef4444;">No mentors found.</p>';
             return;
         }
 
@@ -75,13 +85,13 @@ async function fetchAvailableMentors() {
             card.innerHTML = `
                 <div>
                     <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${mentorData.fullName || 'Verified Mentor'}</div>
-                    <div style="font-size: 0.8rem; color: #10b981; font-weight: bold;">🟢 Available Now</div>
+                    <div style="font-size: 0.8rem; color: #64748b; font-weight: bold;">Leave a message if offline</div>
                 </div>
                 <button class="btn-solid" style="padding: 0.6rem 1.2rem; border-radius: 8px; border: none; background: #0f172a; font-weight: bold; cursor: pointer;">
-                    Start Chat
+                    Message
                 </button>
             `;
-            // Attach click event
+            
             card.querySelector('button').onclick = () => requestChat(docSnap.id, mentorData.fullName || 'Mentor');
             mentorsList.appendChild(card);
         });
@@ -92,10 +102,8 @@ async function fetchAvailableMentors() {
 }
 
 async function requestChat(mentorId, mentorName) {
-    // Removed the "Dr." prefix from the Ringing text below
-    mentorsList.innerHTML = `<div style="text-align: center; padding: 2rem;"><p style="color: #d97706; font-weight: bold; font-size: 1.2rem;">Ringing ${mentorName}...</p><p style="color: #64748b;">Please wait for them to accept the chat.</p></div>`;
-    
     try {
+        // Create the chat and drop the user straight into it so they can leave a message immediately
         const chatRef = await addDoc(collection(db, "chats"), {
             studentId: currentUser.uid,
             studentName: currentUserData ? (currentUserData.fullName || currentUser.email) : "Student",
@@ -107,21 +115,9 @@ async function requestChat(mentorId, mentorName) {
         });
 
         currentChatId = chatRef.id;
-        
-        // Listen to see if Mentor accepts
-        chatUnsubscribe = onSnapshot(doc(db, "chats", currentChatId), (docSnap) => {
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                if (data.status === 'active') {
-                    studentView.style.display = 'none';
-                    // Removed the "Dr. " prefix from the openLiveChat call below
-                    openLiveChat(currentChatId, mentorName);
-                } else if (data.status === 'rejected' || data.status === 'ended') {
-                    alert("Mentor is currently busy or ended the chat.");
-                    window.location.reload();
-                }
-            }
-        });
+        studentView.style.display = 'none';
+        openLiveChat(currentChatId, mentorName);
+
     } catch (error) {
         console.error("Error requesting chat:", error);
     }
@@ -135,10 +131,10 @@ function listenForIncomingRequests() {
     const q = query(chatsRef, where("mentorId", "==", currentUser.uid), where("status", "==", "pending"));
     
     requestUnsubscribe = onSnapshot(q, (snapshot) => {
-        requestsList.innerHTML = ''; // Clear list
+        requestsList.innerHTML = ''; 
         
         if (snapshot.empty) {
-            requestsList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending requests.</p>';
+            requestsList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending messages or requests.</p>';
             return;
         }
 
@@ -152,13 +148,13 @@ function listenForIncomingRequests() {
             card.style.background = '#fffbeb';
             card.innerHTML = `
                 <div>
-                    <div style="font-weight: 800; color: #b45309; font-size: 1.1rem;">🔔 New Request!</div>
+                    <div style="font-weight: 800; color: #b45309; font-size: 1.1rem;">🔔 New Message!</div>
                     <div style="font-size: 0.9rem; color: #1e293b; font-weight: bold;">From: ${data.studentName}</div>
                     <div style="font-size: 0.75rem; color: #64748b;">${data.studentEmail}</div>
                 </div>
                 <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <button class="btn-outline btn-reject" style="border-color: #ef4444; color: #ef4444; padding: 0.5rem 1rem;">Decline</button>
-                    <button class="btn-solid btn-accept" style="background: #10b981; border: none; padding: 0.5rem 1rem;">Accept</button>
+                    <button class="btn-outline btn-reject" style="border-color: #ef4444; color: #ef4444; padding: 0.5rem 1rem;">Close</button>
+                    <button class="btn-solid btn-accept" style="background: #10b981; border: none; padding: 0.5rem 1rem;">Reply</button>
                 </div>
             `;
             
@@ -187,18 +183,17 @@ function openLiveChat(chatId, partnerName) {
     chatMessages.innerHTML = ''; 
     localMessages = [];
     
-    // 1. Listen for new messages
     const messagesRef = collection(db, "chats", chatId, "messages");
     const q = query(messagesRef, orderBy("timestamp", "asc"));
     
-    if (chatUnsubscribe) chatUnsubscribe(); // Clear old listeners
+    if (chatUnsubscribe) chatUnsubscribe(); 
     if (statusUnsubscribe) statusUnsubscribe(); 
     
-chatUnsubscribe = onSnapshot(q, (snapshot) => {
+    chatUnsubscribe = onSnapshot(q, (snapshot) => {
         snapshot.docChanges().forEach((change) => {
             if (change.type === "added") {
                 const msg = change.doc.data();
-                localMessages.push(msg); // Push securely into RAM for the transcript
+                localMessages.push(msg); 
                 
                 const isMe = msg.senderId === currentUser.uid;
                 const msgDiv = document.createElement('div');
@@ -207,15 +202,17 @@ chatUnsubscribe = onSnapshot(q, (snapshot) => {
                 chatMessages.appendChild(msgDiv);
             }
         });
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+        chatMessages.scrollTop = chatMessages.scrollHeight; 
     });
 
-    // 2. Listen to see if the OTHER person ended the chat
     statusUnsubscribe = onSnapshot(doc(db, "chats", chatId), (docSnap) => {
         if (docSnap.exists() && docSnap.data().status === 'ended') {
-            alert("The other person has ended the chat. A transcript text document will now download to your device.");
-            generateAndDownloadTranscript();
-            setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+            const wantDownload = confirm("The other person has ended the chat. Do you want to download a transcript of this conversation? Note: We do not save the chat on our servers.");
+            if (wantDownload) {
+                generateAndDownloadTranscript();
+            }
+            alert("Session Closed.");
+            window.location.href = 'dashboard.html';
         }
     });
 }
@@ -258,35 +255,34 @@ chatForm.addEventListener('submit', async (e) => {
     } catch (error) { console.error("Error sending message:", error); }
 });
 
-// End Chat & "Save Transcript"
+// End Chat
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
-    // Confirm and explain that it's physically removed from DB
-if (confirm("End session? A text transcript will be downloaded and the chat will be permanently erased from the network.")) {
-        
-        // 1. Alert the other user immediately
-        await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
+    const wantDownload = confirm("End session? Do you want to download a transcript of this conversation? Note: We do not save the chat permanently.");
+    
+    if (wantDownload) {
         generateAndDownloadTranscript();
-        
-        alert("Session Ended. Transcript downloaded. The room will completely purge in 3 seconds.");
-        
-        setTimeout(async () => {
-            try {
-                // 3. Delayed Database Wiping allows the student's device to catch the 'ended' state
-                const { deleteDoc, getDocs, collection } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-                
-                const messagesRef = collection(db, "chats", currentChatId, "messages");
-                const snapshot = await getDocs(messagesRef);
-                for (const d of snapshot.docs) {
-                     await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
-                }
-                
-                await deleteDoc(doc(db, "chats", currentChatId));
-            } catch(e) {
-                console.error("Cleanup Error", e);
-            }
-            window.location.href = 'dashboard.html';
-        }, 3000);
     }
+    
+    await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
+    
+    alert("Session Ended. The room will completely purge in 3 seconds.");
+    
+    setTimeout(async () => {
+        try {
+            const { deleteDoc, getDocs, collection } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+            
+            const messagesRef = collection(db, "chats", currentChatId, "messages");
+            const snapshot = await getDocs(messagesRef);
+            for (const d of snapshot.docs) {
+                 await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
+            }
+            
+            await deleteDoc(doc(db, "chats", currentChatId));
+        } catch(e) {
+            console.error("Cleanup Error", e);
+        }
+        window.location.href = 'dashboard.html';
+    }, 3000);
 });

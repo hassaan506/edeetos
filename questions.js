@@ -1283,30 +1283,50 @@ function initMentorFeatures() {
 // ==========================================
 // 11. DATA LOADING & HIERARCHY TREES
 // ==========================================
-function applyTierLimits(rawQuestions, limitPerCategory) {
+function applyTierLimits(rawQuestions, limitPerSubject) {
     let filteredList = [];
-    const questionsByCategory = {};
+    const groupedData = {};
 
+    // 1. Group questions by Subject, and then by System (Chapter)
     rawQuestions.forEach(q => {
-        const cat = q.Subject || q.Chapter || "_internal_cat_";
-        const top = q.Topic || "_internal_top_";
-        if (!questionsByCategory[cat]) questionsByCategory[cat] = {};
-        if (!questionsByCategory[cat][top]) questionsByCategory[cat][top] = [];
-        questionsByCategory[cat][top].push(q);
+        const subject = q.Subject || "Unknown Subject";
+        const chapter = q.Chapter || "Unknown System";
+
+        if (!groupedData[subject]) groupedData[subject] = {};
+        if (!groupedData[subject][chapter]) groupedData[subject][chapter] = [];
+        groupedData[subject][chapter].push(q);
     });
 
-    Object.keys(questionsByCategory).forEach(cat => {
-        const topics = Object.keys(questionsByCategory[cat]);
-        const numTopics = topics.length;
+    // 2. Distribute the quota equally across systems using a round-robin rotation
+    Object.keys(groupedData).forEach(subject => {
+        const chapters = Object.keys(groupedData[subject]);
+        let questionsAdded = 0;
+        
+        // Track the current index position for each system
+        const chapterPointers = {};
+        chapters.forEach(c => chapterPointers[c] = 0);
 
-        const baseQuota = Math.floor(limitPerCategory / numTopics);
-        let remainder = limitPerCategory % numTopics;
+        let availableChapters = [...chapters];
 
-        topics.forEach(top => {
-            const quota = baseQuota + (remainder > 0 ? 1 : 0);
-            if (remainder > 0) remainder--;
-            filteredList.push(...questionsByCategory[cat][top].slice(0, quota));
-        });
+        // Loop until we hit the limit (50 or 20) or run completely out of questions for this subject
+        while (questionsAdded < limitPerSubject && availableChapters.length > 0) {
+            
+            for (let i = availableChapters.length - 1; i >= 0; i--) {
+                if (questionsAdded >= limitPerSubject) break;
+
+                const chapter = availableChapters[i];
+                const pointer = chapterPointers[chapter];
+                const questionsInChapter = groupedData[subject][chapter];
+
+                if (pointer < questionsInChapter.length) {
+                    filteredList.push(questionsInChapter[pointer]);
+                    chapterPointers[chapter]++;
+                    questionsAdded++;
+                } else {
+                    availableChapters.splice(i, 1);
+                }
+            }
+        }
     });
 
     return filteredList;
