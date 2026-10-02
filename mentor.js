@@ -120,6 +120,7 @@ async function requestChat(mentorId, mentorName) {
 
     } catch (error) {
         console.error("Error requesting chat:", error);
+        alert("Failed to initiate chat. Check your database rules.");
     }
 }
 
@@ -203,6 +204,9 @@ function openLiveChat(chatId, partnerName) {
             }
         });
         chatMessages.scrollTop = chatMessages.scrollHeight; 
+    }, (error) => {
+        console.error("Chat sync error:", error);
+        chatMessages.innerHTML = `<div style="text-align: center; color: #ef4444; padding: 2rem; font-weight: bold;">Failed to load messages. Firebase Rules rejected the query.</div>`;
     });
 
     statusUnsubscribe = onSnapshot(doc(db, "chats", chatId), (docSnap) => {
@@ -252,7 +256,10 @@ chatForm.addEventListener('submit', async (e) => {
             text: text,
             timestamp: serverTimestamp()
         });
-    } catch (error) { console.error("Error sending message:", error); }
+    } catch (error) { 
+        console.error("Error sending message:", error); 
+        alert("Message failed to send: " + error.message);
+    }
 });
 
 // End Chat
