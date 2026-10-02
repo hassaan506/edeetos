@@ -551,23 +551,52 @@ window.grantAccess = async function() {
     try {
         const course = document.getElementById('grant-course').value;
         const days = document.getElementById('grant-duration').value;
+        
+        // Deep clone to prevent memory reference bugs
+        let subs = { ...(editingUser.subscriptions || {}) };
         let expiry = "lifetime";
         
         if (days !== "lifetime") { 
-            const d = new Date(); 
-            d.setDate(d.getDate() + parseInt(days)); 
-            expiry = d.toISOString(); 
+            const additionalDays = parseInt(days);
+            let startDate = new Date();
+            
+            // If the user already has active time, stack the new days on top of their existing future expiry
+            if (subs[course] && subs[course] !== "lifetime") {
+                const currentExpiry = new Date(subs[course]);
+                if (currentExpiry > startDate) {
+                    startDate = currentExpiry;
+                }
+            }
+            
+            startDate.setDate(startDate.getDate() + additionalDays); 
+            expiry = startDate.toISOString(); 
         }
         
-        let subs = editingUser.subscriptions || {};
         subs[course] = expiry;
         
-        await updateDoc(doc(db, "users", editingUser.uid), { subscriptions: subs, isPremium: true });
+        // 1. Push to Database
+        await updateDoc(doc(db, "users", editingUser.uid), { 
+            subscriptions: subs, 
+            isPremium: true 
+        });
         
+        // 2. Update local memory immediately to beat the cache race condition
         editingUser.subscriptions = subs; 
+        editingUser.isPremium = true;
+        
+        const userIndex = allUsersData.findIndex(u => u.uid === editingUser.uid);
+        if (userIndex !== -1) {
+            allUsersData[userIndex].subscriptions = subs;
+            allUsersData[userIndex].isPremium = true;
+        }
+
+        // 3. Redraw the UI directly without fetching from the database
         renderSubscriptions(); 
-        fetchAllUsers();
-        alert("Access granted successfully.");
+        
+        // Clicks the search button to repaint the background list while keeping current search filters active
+        document.getElementById('admin-search-btn').click(); 
+        
+        alert(`Access updated. New expiry: ${expiry === 'lifetime' ? 'Lifetime' : new Date(expiry).toLocaleDateString()}`);
     } catch (error) {
         console.error(error);
         alert("Failed to grant access. Check Firebase permissions or network connection.");
