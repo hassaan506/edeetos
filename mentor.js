@@ -44,15 +44,27 @@ onAuthStateChanged(auth, async (user) => {
                 mentorView.style.display = 'block';
                 listenForIncomingRequests();
             } else {
-                // Check if student already has an open chat before showing the mentor list
                 const chatsRef = collection(db, "chats");
                 const q = query(chatsRef, where("studentId", "==", currentUser.uid), where("status", "in", ["pending", "active"]));
                 const chatSnap = await getDocs(q);
 
                 if (!chatSnap.empty) {
-                    const existingChat = chatSnap.docs[0];
+                    // Sort memory to bypass missing indexes and find the newest chat
+                    const existingChats = chatSnap.docs.sort((a, b) => {
+                        const tA = a.data().createdAt?.toMillis() || 0;
+                        const tB = b.data().createdAt?.toMillis() || 0;
+                        return tB - tA;
+                    });
+                    
+                    const activeChat = existingChats[0];
+                    
+                    // Quietly kill any old ghost chats left behind by previous database permission bugs
+                    for (let i = 1; i < existingChats.length; i++) {
+                        updateDoc(doc(db, "chats", existingChats[i].id), { status: 'ended' }).catch(() => {});
+                    }
+
                     studentView.style.display = 'none';
-                    openLiveChat(existingChat.id, existingChat.data().mentorName);
+                    openLiveChat(activeChat.id, activeChat.data().mentorName);
                 } else {
                     fetchAvailableMentors();
                 }
@@ -103,7 +115,6 @@ async function fetchAvailableMentors() {
 
 async function requestChat(mentorId, mentorName) {
     try {
-        // Create the chat and drop the user straight into it so they can leave a message immediately
         const chatRef = await addDoc(collection(db, "chats"), {
             studentId: currentUser.uid,
             studentName: currentUserData ? (currentUserData.fullName || currentUser.email) : "Student",
@@ -211,8 +222,7 @@ function openLiveChat(chatId, partnerName) {
 
     statusUnsubscribe = onSnapshot(doc(db, "chats", chatId), (docSnap) => {
         if (docSnap.exists() && docSnap.data().status === 'ended') {
-            const wantDownload = confirm("The other person has ended the chat. Do you want to download a transcript of this conversation? Note: We do not save the chat on our servers.");
-            if (wantDownload) {
+            if (confirm("The other person has ended the chat. Do you want to download a transcript of this conversation before it is deleted?")) {
                 generateAndDownloadTranscript();
             }
             alert("Session Closed.");
@@ -262,13 +272,15 @@ chatForm.addEventListener('submit', async (e) => {
     }
 });
 
-// End Chat
+// End Chat with Separated Prompts
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
-    const wantDownload = confirm("End session? Do you want to download a transcript of this conversation? Note: We do not save the chat permanently.");
+    // Step 1: Confirm ending the chat
+    if (!confirm("Are you sure you want to end this mentorship session?")) return;
     
-    if (wantDownload) {
+    // Step 2: Give the option to download
+    if (confirm("Do you want to download a transcript of this conversation before it is permanently deleted?")) {
         generateAndDownloadTranscript();
     }
     
