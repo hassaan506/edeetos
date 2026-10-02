@@ -42,7 +42,7 @@ if (registerForm) {
                 selectedCourse: course, 
                 examDate: examDate, // NEW: Save to DB
                 courseChangeRequested: false, 
-                role: "student", 
+                role: "STUDENT", 
                 sessionToken: newToken,
                 createdAt: new Date().toISOString()
             });
