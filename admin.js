@@ -543,15 +543,38 @@ function renderSubscriptions() {
 }
 
 window.grantAccess = async function() {
-    const course = document.getElementById('grant-course').value;
-    const days = document.getElementById('grant-duration').value;
-    let expiry = "lifetime";
-    if (days !== "lifetime") { const d = new Date(); d.setDate(d.getDate() + parseInt(days)); expiry = d.toISOString(); }
-    
-    let subs = editingUser.subscriptions || {};
-    subs[course] = expiry;
-    await updateDoc(doc(db, "users", editingUser.uid), { subscriptions: subs, isPremium: true });
-    editingUser.subscriptions = subs; renderSubscriptions(); fetchAllUsers();
+    const btn = document.getElementById('btn-grant-access');
+    const originalText = btn.textContent;
+    btn.textContent = "Processing...";
+    btn.disabled = true;
+
+    try {
+        const course = document.getElementById('grant-course').value;
+        const days = document.getElementById('grant-duration').value;
+        let expiry = "lifetime";
+        
+        if (days !== "lifetime") { 
+            const d = new Date(); 
+            d.setDate(d.getDate() + parseInt(days)); 
+            expiry = d.toISOString(); 
+        }
+        
+        let subs = editingUser.subscriptions || {};
+        subs[course] = expiry;
+        
+        await updateDoc(doc(db, "users", editingUser.uid), { subscriptions: subs, isPremium: true });
+        
+        editingUser.subscriptions = subs; 
+        renderSubscriptions(); 
+        fetchAllUsers();
+        alert("Access granted successfully.");
+    } catch (error) {
+        console.error(error);
+        alert("Failed to grant access. Check Firebase permissions or network connection.");
+    } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
+    }
 };
 
 
