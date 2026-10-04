@@ -178,7 +178,15 @@
 
                 <!-- 3. USERS VIEW -->
                 <div id="view-users" class="admin-content" style="display: none;">
-                    <h2 class="page-title">User Manager</h2>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 10px;">
+                        <h2 class="page-title" style="margin-bottom: 0;">User Manager</h2>
+                        
+                        <!-- THE NEW DATA MIGRATION BUTTON -->
+                        <button id="btn-fix-usernames" class="btn-solid" style="background: #ef4444; color: white; padding: 0.8rem 1.5rem; font-size: 0.9rem;">
+                            <i class="fas fa-tools" style="margin-right: 8px;"></i> Migrate Old Usernames
+                        </button>
+                    </div>
+                    
                     <div class="search-wrapper">
                         <input type="text" id="admin-search-input" class="search-input" placeholder="Search by Name, Email, or Phone...">
                         <button id="admin-search-btn" class="search-btn">Search</button>
@@ -389,12 +397,11 @@
     }
 </style>
 
-<!-- Admin Edit Modal (Imported from Quiz Design) -->
+<!-- Admin Edit Modal -->
 <div id="admin-edit-modal" class="popup-overlay" style="display: none; user-select: text !important; -webkit-user-select: text !important; z-index: 2500;">
     <div class="popup-content" style="max-width: 650px; width: 95%; max-height: 85vh; overflow-y: auto; text-align: left; user-select: text !important; -webkit-user-select: text !important;">
         <h3 style="color: #065f46; margin-top: 0; margin-bottom: 1rem;"><i class="fas fa-edit"></i> Resolve Flagged Question</h3>
         
-        <!-- Routing Selection (Crucial for Admin Panel) -->
         <div style="margin-bottom: 12px;">
             <label style="font-size: 0.8rem; font-weight: bold; color: #ef4444;">Target Destination (Required)</label>
             <select id="edit-q-dest" style="width: 100%; padding: 8px; border: 2px solid #ef4444; border-radius: 6px; font-weight: bold;">
@@ -428,7 +435,6 @@
             </select>
         </div>
 
-        <!-- GRID FOR METADATA -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
             <div>
                 <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question ID</label>
@@ -486,7 +492,6 @@
         </div>
     </div>
 </div>
-
 
     <!-- Receipt Modal -->
     <div id="receipt-modal" class="popup-overlay" style="display: none; z-index: 2000;">

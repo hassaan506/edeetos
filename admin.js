@@ -83,7 +83,6 @@ window.switchView = function(viewName) {
 
     sidebar.classList.remove('mobile-open');
 
-    // Trigger on-demand fetches & initialization
     if(viewName === 'addq') initQuillOnce();
     if(viewName === 'keys') fetchKeys();
     if(viewName === 'promos') fetchPromos();
@@ -137,7 +136,6 @@ document.getElementById('btn-save-new-q').onclick = () => {
     const qText = document.getElementById('add-q-txt').value.trim();
     if (!qText) return alert("Question text is required.");
 
-    // Generate strict 8-character ID ensuring zero whitespace
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let newId = "";
     for (let i = 0; i < 8; i++) newId += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -174,7 +172,6 @@ document.getElementById('btn-save-new-q').onclick = () => {
     
     updatePendingCount();
     
-    // Reset Form
     ['add-q-sub', 'add-q-chap', 'add-q-top', 'add-q-yr', 'add-q-exm', 'add-q-txt', 'add-opt-a', 'add-opt-b', 'add-opt-c', 'add-opt-d', 'add-opt-e'].forEach(id => document.getElementById(id).value = '');
     quillExp.root.innerHTML = ''; quillHnt.root.innerHTML = '';
     document.getElementById('add-q-dif').value = 'medium';
@@ -337,7 +334,7 @@ document.getElementById('btn-admin-push').onclick = async () => {
     }
 };
 
-// === 3. USERS ===
+// === 3. USERS & MIGRATION ===
 const usersListEl = document.getElementById('users-list');
 const userCountEl = document.getElementById('user-count');
 
@@ -400,6 +397,40 @@ document.getElementById('admin-search-btn').onclick = () => {
     if (!query) return renderUsers(allUsersData);
     renderUsers(allUsersData.filter(u => (u.fullName||"").toLowerCase().includes(query) || (u.email||"").toLowerCase().includes(query) || u.uid.toLowerCase().includes(query)));
 };
+
+// FIX/MIGRATE USERNAMES LOGIC
+const btnFix = document.getElementById('btn-fix-usernames');
+if (btnFix) {
+    btnFix.addEventListener('click', async () => {
+        btnFix.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Migrating...';
+        btnFix.disabled = true;
+
+        try {
+            const usersSnap = await getDocs(collection(db, "users"));
+            let count = 0;
+
+            for (const userDoc of usersSnap.docs) {
+                const data = userDoc.data();
+                
+                if (data.username && data.email) {
+                    await setDoc(doc(db, "username_lookup", data.username.toLowerCase().trim()), {
+                        email: data.email,
+                        userId: userDoc.id
+                    });
+                    count++;
+                }
+            }
+            
+            alert(`Done. Successfully migrated ${count} usernames to the public lookup index.`);
+        } catch (error) {
+            console.error("Migration Error:", error);
+            alert("Migration failed. Are you logged in as an Admin?");
+        } finally {
+            btnFix.innerHTML = '<i class="fas fa-tools" style="margin-right: 8px;"></i> Migrate Old Usernames';
+            btnFix.disabled = false;
+        }
+    });
+}
 
 // USER EDITING MODAL
 const editModal = document.getElementById('edit-user-modal');
@@ -552,7 +583,6 @@ window.grantAccess = async function() {
         const course = document.getElementById('grant-course').value;
         const days = document.getElementById('grant-duration').value;
         
-        // Deep clone to prevent memory reference bugs
         let subs = { ...(editingUser.subscriptions || {}) };
         let expiry = "lifetime";
         
@@ -560,7 +590,6 @@ window.grantAccess = async function() {
             const additionalDays = parseInt(days);
             let startDate = new Date();
             
-            // If the user already has active time, stack the new days on top of their existing future expiry
             if (subs[course] && subs[course] !== "lifetime") {
                 const currentExpiry = new Date(subs[course]);
                 if (currentExpiry > startDate) {
@@ -574,13 +603,11 @@ window.grantAccess = async function() {
         
         subs[course] = expiry;
         
-        // 1. Push to Database
         await updateDoc(doc(db, "users", editingUser.uid), { 
             subscriptions: subs, 
             isPremium: true 
         });
         
-        // 2. Update local memory immediately to beat the cache race condition
         editingUser.subscriptions = subs; 
         editingUser.isPremium = true;
         
@@ -590,10 +617,8 @@ window.grantAccess = async function() {
             allUsersData[userIndex].isPremium = true;
         }
 
-        // 3. Redraw the UI directly without fetching from the database
         renderSubscriptions(); 
         
-        // Clicks the search button to repaint the background list while keeping current search filters active
         document.getElementById('admin-search-btn').click(); 
         
         alert(`Access updated. New expiry: ${expiry === 'lifetime' ? 'Lifetime' : new Date(expiry).toLocaleDateString()}`);
@@ -667,7 +692,7 @@ function fetchFriendChallenges() {
     });
 }
 
-// === 6. ASSIGNED EXAMS (PULLS REAL-TIME SCORE FROM STUDENT HISTORY) ===
+// === 6. ASSIGNED EXAMS ===
 let unsubExams = null;
 function fetchAssignedExams() {
     if(unsubExams) return;
@@ -681,7 +706,6 @@ function fetchAssignedExams() {
             const data = d.data();
             const dateStr = data.createdAt ? data.createdAt.toDate().toLocaleDateString() : 'N/A';
             
-            // Build the student completion list and map scores dynamically
             let studentsHtml = '';
             (data.assignedTo || []).forEach(uid => {
                 const sName = getUserName(uid);
@@ -696,7 +720,6 @@ function fetchAssignedExams() {
                         Object.keys(sDoc).forEach(k => {
                             if (sDoc[k] && sDoc[k].examHistory) allHist.push(...sDoc[k].examHistory);
                         });
-                        // Match the exam exactly by title
                         const match = allHist.reverse().find(ex => ex.examName === data.title);
                         if (match) foundScore = `${match.percentage}% (${match.score}/${match.totalQuestions})`;
                     }
@@ -719,7 +742,7 @@ function fetchAssignedExams() {
     });
 }
 
-// === 7. REWARD CLAIMS (GOD MODE PROCESSOR) ===
+// === 7. REWARD CLAIMS ===
 let unsubRewards = null;
 function fetchRewardClaims() {
     if(unsubRewards) return;
@@ -1027,7 +1050,7 @@ async function fetchRequests() {
     });
 }
 
-// === 12. REPORTS (GOD MODE SOLVER) ===
+// === 12. REPORTS ===
 let unsubReps = null;
 async function fetchReports() {
     if (unsubReps) return; 
@@ -1061,7 +1084,6 @@ async function fetchReports() {
                 </div>
             `;
 
-            // Route data to the new Modal and Fetch JSON data
             card.querySelector('.btn-edit-report').onclick = async (e) => {
                 const btn = e.currentTarget;
                 const originalHtml = btn.innerHTML;
@@ -1093,7 +1115,6 @@ async function fetchReports() {
                         window.editQuillExp = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: tb } });
                     }
 
-                    // Populate fields directly from the fetched JSON
                     document.getElementById('edit-q-id').value = qData?.id || data.questionId || '';
                     document.getElementById('edit-q-text').value = qData?.question || data.questionText || '';
                     document.getElementById('edit-q-subject').value = qData?.subject || '';
@@ -1151,7 +1172,6 @@ async function fetchReports() {
                 }
             };
 
-            // Soft delete the report when resolved
             card.querySelector('.btn-res').onclick = async () => { 
                 if(confirm("Are you sure this issue is fixed?")) {
                     await updateDoc(doc(db, "reported_questions", d.id), {
@@ -1166,16 +1186,14 @@ async function fetchReports() {
         if(!hasReports) list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No pending reported questions.</p>';
     });
 }
-// === MODAL ACTION BUTTONS ===
 
-// Handle Modal Cancel
+// === MODAL ACTION BUTTONS ===
 document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'btn-cancel-edit') {
         document.getElementById('admin-edit-modal').style.display = 'none';
     }
 });
 
-// Handle Save to Queue from Modal
 document.addEventListener('click', (e) => {
     const btnSaveGithub = e.target.closest('#btn-save-github');
     if (!btnSaveGithub) return;
@@ -1216,7 +1234,6 @@ document.addEventListener('click', (e) => {
 
     let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
     
-    // Check if we are already fixing this specific question in the queue
     const existingIndex = pendingEditsQueue.findIndex(item => item.row["QuestionID"] === targetId);
     if (existingIndex !== -1) {
         pendingEditsQueue[existingIndex] = { row: updatedRow, courseFile, isBook };
@@ -1224,14 +1241,13 @@ document.addEventListener('click', (e) => {
         pendingEditsQueue.push({ row: updatedRow, courseFile, isBook });
     }
     
-    // Save to local storage and update the UI counter
     localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
     updatePendingCount();
 
-    // Close modal and notify admin
     document.getElementById('admin-edit-modal').style.display = 'none';
     alert('Question fix added to your browser queue! Click "Push Database to GitHub" to publish it live.');
 });
+
 // === 13. MESSAGES ===
 let unsubMsgs = null;
 async function fetchMessages() {
