@@ -1580,6 +1580,13 @@ if (btnReset) {
         toggleSidebar(false);
         optionsContainer.style.display = 'flex';
         confirmContainer.style.display = 'none';
+        
+        // Dynamically update the modal title based on the active view
+        const resetTitle = resetModal.querySelector('.popup-header h3');
+        if (resetTitle) {
+            resetTitle.innerHTML = `<i class="fas fa-trash-alt"></i> Reset ${currentView === 'book' ? 'Book' : 'Course'} Progress`;
+        }
+        
         if (resetModal) resetModal.style.display = 'flex';
     };
 }
@@ -1594,59 +1601,79 @@ document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
         const type = btn.getAttribute('data-type'); 
         const activeCourse = localStorage.getItem('edeetos_active_course');
+        const isBook = currentView === 'book';
+
+        pendingUpdates = {};
 
         switch (type) {
             case "1":
-                pendingUpdates = {
-                    [`${activeCourse}.solvedQuestions`]: [],
-                    [`${activeCourse}.mistakes`]: [],
-                    [`${activeCourse}.examMistakes`]: [],
-                    [`${activeCourse}.bookmarks`]: [],
-                    [`${activeCourse}.examHistory`]: [],
-                    [`${activeCourse}.revisions`]: {},
-                    [`books.solvedQuestions`]: [],
-                    [`books.mistakes`]: [],
-                    [`books.examMistakes`]: [],
-                    [`books.bookmarks`]: [],
-                    [`books.examHistory`]: [],
-                    [`books.revisions`]: {} 
-                };
-                pendingResetMsg = "All progress has been fully reset!";
-                confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course and your books? This cannot be undone.";
+                if (isBook) {
+                    pendingUpdates = {
+                        [`books.solvedQuestions`]: [],
+                        [`books.mistakes`]: [],
+                        [`books.examMistakes`]: [],
+                        [`books.bookmarks`]: [],
+                        [`books.examHistory`]: [],
+                        [`books.revisions`]: {} 
+                    };
+                    pendingResetMsg = "All Book progress has been fully reset!";
+                    confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for Books? Your course progress will remain. This cannot be undone.";
+                } else {
+                    pendingUpdates = {
+                        [`${activeCourse}.solvedQuestions`]: [],
+                        [`${activeCourse}.mistakes`]: [],
+                        [`${activeCourse}.examMistakes`]: [],
+                        [`${activeCourse}.bookmarks`]: [],
+                        [`${activeCourse}.examHistory`]: [],
+                        [`${activeCourse}.revisions`]: {}
+                    };
+                    pendingResetMsg = "All Course progress has been fully reset!";
+                    confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course? Your books progress will remain. This cannot be undone.";
+                }
                 break;
             case "2":
-                pendingUpdates = { 
-                    [`${activeCourse}.mistakes`]: [], 
-                    [`${activeCourse}.examMistakes`]: [],
-                    [`books.mistakes`]: [], 
-                    [`books.examMistakes`]: [] 
-                };
-                pendingResetMsg = "All mistakes have been cleared!";
-                confirmText.textContent = "Are you sure you want to clear your Mistake history?";
+                if (isBook) {
+                    pendingUpdates = { [`books.mistakes`]: [], [`books.examMistakes`]: [] };
+                    pendingResetMsg = "All Book mistakes have been cleared!";
+                    confirmText.textContent = "Are you sure you want to clear your Book Mistake history?";
+                } else {
+                    pendingUpdates = { [`${activeCourse}.mistakes`]: [], [`${activeCourse}.examMistakes`]: [] };
+                    pendingResetMsg = "All Course mistakes have been cleared!";
+                    confirmText.textContent = "Are you sure you want to clear your Course Mistake history?";
+                }
                 break;
             case "3":
-                pendingUpdates = { 
-                    [`${activeCourse}.bookmarks`]: [],
-                    [`books.bookmarks`]: [] 
-                };
-                pendingResetMsg = "All bookmarks have been cleared!";
-                confirmText.textContent = "Are you sure you want to delete all your Bookmarks?";
+                if (isBook) {
+                    pendingUpdates = { [`books.bookmarks`]: [] };
+                    pendingResetMsg = "All Book bookmarks have been cleared!";
+                    confirmText.textContent = "Are you sure you want to delete all your Bookmarks for books?";
+                } else {
+                    pendingUpdates = { [`${activeCourse}.bookmarks`]: [] };
+                    pendingResetMsg = "All Course bookmarks have been cleared!";
+                    confirmText.textContent = "Are you sure you want to delete all your Bookmarks for this course?";
+                }
                 break;
             case "4":
-                pendingUpdates = { 
-                    [`${activeCourse}.examHistory`]: [],
-                    [`books.examHistory`]: [] 
-                };
-                pendingResetMsg = "Exam history has been cleared!";
-                confirmText.textContent = "Are you sure you want to delete your Past Exam scores?";
+                if (isBook) {
+                    pendingUpdates = { [`books.examHistory`]: [] };
+                    pendingResetMsg = "Book Exam history has been cleared!";
+                    confirmText.textContent = "Are you sure you want to delete your Past Exam scores for books?";
+                } else {
+                    pendingUpdates = { [`${activeCourse}.examHistory`]: [] };
+                    pendingResetMsg = "Course Exam history has been cleared!";
+                    confirmText.textContent = "Are you sure you want to delete your Past Exam scores for this course?";
+                }
                 break;
             case "5":
-                pendingUpdates = { 
-                    [`${activeCourse}.solvedQuestions`]: [],
-                    [`books.solvedQuestions`]: [] 
-                };
-                pendingResetMsg = "Solved questions have been cleared!";
-                confirmText.textContent = "Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.";
+                if (isBook) {
+                    pendingUpdates = { [`books.solvedQuestions`]: [] };
+                    pendingResetMsg = "Solved Book questions have been cleared!";
+                    confirmText.textContent = "Are you sure you want to clear your Solved Questions for books? Your mistakes and bookmarks will remain.";
+                } else {
+                    pendingUpdates = { [`${activeCourse}.solvedQuestions`]: [] };
+                    pendingResetMsg = "Solved Course questions have been cleared!";
+                    confirmText.textContent = "Are you sure you want to clear your Solved Questions for this course? Your mistakes and bookmarks will remain.";
+                }
                 break;
         }
 
