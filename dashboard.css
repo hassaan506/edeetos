@@ -60,7 +60,7 @@
     gap: 6px;
     text-decoration: none;
     border: none;
-    white-space: nowrap; /* Add this to prevent text wrapping */
+    white-space: nowrap; 
 }
 
 .nav-actions button:hover, .nav-actions a:hover {
@@ -243,6 +243,48 @@
 .assigned-exam-meta { font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .btn-start-exam { background: #3b82f6; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 700; cursor: pointer; transition: background 0.2s; white-space: nowrap; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2); }
 .btn-start-exam:hover { background: #2563eb; transform: translateY(-2px); }
+
+/* === FEATURE: FLOATING ALERTS === */
+.mentor-alert-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #ef4444;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.5);
+    animation: alertBounce 2s infinite;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.mentor-alert-floating:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px -5px rgba(239, 68, 68, 0.6);
+    animation: none;
+}
+
+@keyframes alertBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 768px) {
+    .mentor-alert-floating {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        justify-content: center;
+        font-size: 0.95rem;
+        padding: 12px 20px;
+    }
+}
 
 @media (max-width: 768px) {
     .popup-content { padding: 1.5rem !important; width: 92% !important; max-width: 360px !important; max-height: 85vh !important; border-radius: 16px !important; }

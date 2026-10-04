@@ -74,13 +74,12 @@ onAuthStateChanged(auth, async (user) => {
                     return; 
                 }				
                 
-// 2. Set UI Elements
+                // 2. Set UI Elements
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
 
-                // --- NEW: EXAM COUNTDOWN LOGIC ---
                 if (currentUserData.examDate) {
                     const today = new Date();
-                    today.setHours(0, 0, 0, 0); // Strip time, compare dates only
+                    today.setHours(0, 0, 0, 0); 
                     const examD = new Date(currentUserData.examDate);
                     examD.setHours(0, 0, 0, 0);
                     
@@ -93,7 +92,7 @@ onAuthStateChanged(auth, async (user) => {
                     
                     if (countdownContainer && countdownText) {
                         countdownContainer.style.display = 'block';
-                        if (dashSubtitle) dashSubtitle.style.display = 'none'; // Hide generic text to force focus on the clock
+                        if (dashSubtitle) dashSubtitle.style.display = 'none'; 
                         
                         if (diffDays > 0) {
                             countdownText.textContent = `${diffDays} Days left until Exam Day!`;
@@ -101,7 +100,6 @@ onAuthStateChanged(auth, async (user) => {
                             countdownText.textContent = "Exam Day is TODAY! Go conquer it.";
                         } else {
                             countdownText.textContent = "Exam date has passed.";
-                            // De-escalate the colors if the exam is over
                             document.getElementById('exam-countdown-badge').style.cssText = "background: #f1f5f9; color: #64748b; border: 2px solid #cbd5e1; padding: 0.6rem 1.5rem; border-radius: 30px; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px;";
                         }
                     }
@@ -132,10 +130,8 @@ onAuthStateChanged(auth, async (user) => {
                 // 3. Subscription Downgrade Check
                 const userRole = (currentUserData.role || '').toUpperCase();
                 let hasActiveSubscription = false;
-				// From your subscription downgrade check
 				if (currentUserData.isPremium && currentUserData.subscriptions) {
 					for (const expiry of Object.values(currentUserData.subscriptions)) {
-						// The code immediately grants access if 'lifetime' is detected
 						if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
 							hasActiveSubscription = true;
 							break; 
@@ -185,6 +181,7 @@ onAuthStateChanged(auth, async (user) => {
                 }
 				const btnReports = document.getElementById('btn-reports-panel');
 				if (btnReports) btnReports.style.display = 'flex';
+                
                 // 5. Mentor Specific Logic
                 if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
                     const btnReports = document.getElementById('btn-reports-panel');
@@ -199,6 +196,36 @@ onAuthStateChanged(auth, async (user) => {
                         if (cardP) cardP.textContent = "Manage incoming student chat requests.";
                     }
 
+                    // Navbar Mentor Toggle Logic
+                    const btnMentorStatus = document.getElementById('btn-mentor-status');
+                    if (btnMentorStatus) {
+                        btnMentorStatus.style.display = 'flex';
+                        let isOnline = currentUserData.isOnline || false;
+
+                        const updateStatusUI = (status) => {
+                            if (status) {
+                                btnMentorStatus.innerHTML = '🟢 Online';
+                                btnMentorStatus.style.borderColor = '#10b981';
+                                btnMentorStatus.style.color = '#10b981';
+                                btnMentorStatus.style.background = 'rgba(16, 185, 129, 0.1)';
+                            } else {
+                                btnMentorStatus.innerHTML = '⚪ Offline';
+                                btnMentorStatus.style.borderColor = '#94a3b8';
+                                btnMentorStatus.style.color = '#94a3b8';
+                                btnMentorStatus.style.background = 'transparent';
+                            }
+                        };
+
+                        updateStatusUI(isOnline);
+
+                        btnMentorStatus.onclick = async () => {
+                            isOnline = !isOnline;
+                            await updateDoc(doc(db, "users", currentUserId), { isOnline: isOnline });
+                            currentUserData.isOnline = isOnline;
+                            updateStatusUI(isOnline);
+                        };
+                    }
+
                     const chatsRef = collection(db, "chats");
                     const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
                     
@@ -209,17 +236,10 @@ onAuthStateChanged(auth, async (user) => {
                             if (!banner) {
                                 banner = document.createElement('div');
                                 banner.id = 'mentor-alert-banner';
-                                banner.style = "position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #ef4444; color: white; padding: 12px 24px; border-radius: 30px; font-weight: 800; font-size: 1.1rem; z-index: 9999; cursor: pointer; display: flex; align-items: center; gap: 10px;";
-                                banner.innerHTML = `<span>🚨</span> <span>Incoming Chat Request! Click here to answer.</span>`;
+                                banner.className = 'mentor-alert-floating';
+                                banner.innerHTML = `<span>🚨</span> <span>Incoming Chat Request! Tap to answer.</span>`;
                                 banner.onclick = () => window.location.href = 'mentor.html';
                                 document.body.appendChild(banner);
-                                
-                                if(!document.getElementById('pulse-anim-style')) {
-                                    const style = document.createElement('style');
-                                    style.id = 'pulse-anim-style';
-                                    style.innerHTML = `@keyframes alertPulse { 0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } } #mentor-alert-banner { animation: alertPulse 1.5s infinite; }`;
-                                    document.head.appendChild(style);
-                                }
                             }
                             banner.style.display = 'flex';
                         } else {
@@ -368,7 +388,7 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 const btnOpenNotes = document.getElementById('btn-open-notes');
-let cachedNotesData = []; // Store notes globally for searching
+let cachedNotesData = []; 
 
 if (btnOpenNotes) {
     btnOpenNotes.addEventListener('click', async () => {
@@ -379,7 +399,7 @@ if (btnOpenNotes) {
         const listEl = document.getElementById('notes-vault-list');
         const searchInput = document.getElementById('notes-search-input');
         modal.style.display = 'flex';
-        searchInput.value = ''; // Reset search on open
+        searchInput.value = ''; 
         
         const activeCourse = currentUserData.selectedCourse;
         const notesObj = (activeCourse && currentUserData[activeCourse] && currentUserData[activeCourse].notes) ? currentUserData[activeCourse].notes : {};
@@ -400,7 +420,6 @@ if (btnOpenNotes) {
             console.warn("Could not load question database for notes:", e);
         }
 
-        // Build a clean array of objects to render and search
         cachedNotesData = noteKeys.map(qId => {
             if (!notesObj[qId].trim()) return null;
             let questionStem = "Unknown Question / Not Found in Current Database";
@@ -450,8 +469,6 @@ function renderNotes(notesArray) {
         return;
     }
 
-    // Limit initial render to 50 to prevent DOM freezing. 
-    // You can add a "Load More" button later if needed.
     const renderLimit = Math.min(notesArray.length, 50); 
     
     for (let i = 0; i < renderLimit; i++) {
@@ -471,7 +488,6 @@ function renderNotes(notesArray) {
     }
 }
 
-// Add real-time search functionality
 const searchInput = document.getElementById('notes-search-input');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -595,9 +611,8 @@ const tabRedeem = document.getElementById('tab-redeem');
 const viewBuy = document.getElementById('view-buy');
 const viewRedeem = document.getElementById('view-redeem');
 
-// NEW: Promo Code State Variables
 let activePromoCode = null;
-let activePromoDiscount = 0; // Stored as a percentage (e.g., 20 for 20%)
+let activePromoDiscount = 0; 
 
 if(tabBuy) tabBuy.addEventListener('click', () => {
     tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab';
@@ -624,7 +639,6 @@ document.getElementById('btn-confirm-courses').addEventListener('click', () => {
     updatePrices();
 });
 
-// NEW: Promo Code Validation Logic
 const btnApplyPromo = document.getElementById('btn-apply-promo');
 if (btnApplyPromo) {
     btnApplyPromo.addEventListener('click', async () => {
@@ -649,7 +663,6 @@ if (btnApplyPromo) {
             if (promoSnap.exists()) {
                 const data = promoSnap.data();
                 
-                // Check if active and not expired
                 const isNotExpired = !data.expiryDate || new Date(data.expiryDate) > new Date();
                 
                 if (data.isActive && isNotExpired) {
@@ -678,7 +691,6 @@ if (btnApplyPromo) {
     });
 }
 
-// UPDATED: Pricing Calculator with Promo integration
 function updatePrices() {
     const courseCount = document.querySelectorAll('.course-check:checked').length;
     const bookCount = document.querySelectorAll('.book-check:checked').length;
@@ -698,7 +710,6 @@ function updatePrices() {
         
         let totalPrice = Math.round(coursePrice + discountedBookTotal);
         
-        // Apply Promo Code Discount if active
         if (activePromoDiscount > 0) {
             totalPrice = Math.round(totalPrice * (1 - (activePromoDiscount / 100)));
         }
@@ -805,7 +816,6 @@ if (btnSubmitPayment) {
 
             const userEmailToSave = currentUserData?.email || fallbackEmail;
 
-            // UPDATED: Now submits the promo code data to the database
             const submitPromise = addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId,
                 userEmail: userEmailToSave,
@@ -814,8 +824,8 @@ if (btnSubmitPayment) {
                 durationDays: durationDays,
                 planName: planName,
                 receiptUrl: receiptUrl,
-                appliedPromoCode: activePromoCode,       // NEW
-                promoDiscountApplied: activePromoDiscount, // NEW
+                appliedPromoCode: activePromoCode,      
+                promoDiscountApplied: activePromoDiscount, 
                 status: 'pending',
                 timestamp: serverTimestamp()
             });
@@ -828,7 +838,6 @@ if (btnSubmitPayment) {
             
             alert("Payment request submitted successfully! Please wait for admin approval.");
             
-            // Clean up states on success
             activePromoCode = null;
             activePromoDiscount = 0;
             document.getElementById('promo-input').value = "";
@@ -965,7 +974,6 @@ if (btnOpenProfile) {
 			if (expiry === 'lifetime') {
 				badgeHtml = '<span class="sub-tag sub-lifetime">Lifetime</span>';
 			} else {
-				// Standard date checking logic
 				const expDate = new Date(expiry);
 				if (expDate < new Date()) {
                     badgeHtml = '<span class="sub-tag sub-expired">Expired</span>';
@@ -1041,10 +1049,10 @@ if (profileForm) {
                 phone: document.getElementById('prof-phone').value,
                 institution: document.getElementById('prof-uni').value,
                 location: document.getElementById('prof-location').value,
-                examDate: document.getElementById('prof-exam-date').value // NEW
+                examDate: document.getElementById('prof-exam-date').value 
             });
             
-            currentUserData.examDate = document.getElementById('prof-exam-date').value; // NEW
+            currentUserData.examDate = document.getElementById('prof-exam-date').value; 
             currentUserData.fullName = document.getElementById('prof-name').value;
             currentUserData.phone = document.getElementById('prof-phone').value;
             currentUserData.institution = document.getElementById('prof-uni').value;
@@ -1223,7 +1231,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const icon = darkModeBtn.querySelector('i');
     
-    // Check saved preference on load
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         if (icon) {
@@ -1232,7 +1239,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Toggle logic
     darkModeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');

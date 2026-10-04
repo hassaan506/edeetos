@@ -5,130 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mentorship Hub - EDEETOS</title>
     <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="mentor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .mentor-card {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 1.5rem; border: 2px solid #e2e8f0; border-radius: 12px; margin-bottom: 1rem;
-            background: white; transition: all 0.2s ease;
-        }
-        .mentor-card:hover { border-color: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1); }
-        
-        /* Live Chat Interface Styles */
-        .chat-container { 
-            display: none; flex-direction: column; height: 65vh; 
-            background: #f8fafc; border-radius: 16px; border: 2px solid #e2e8f0; overflow: hidden; 
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        .chat-header {
-            background: white; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .chat-messages { 
-            flex-grow: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; 
-        }
-        .msg-bubble { 
-            max-width: 75%; padding: 0.8rem 1.2rem; border-radius: 18px; font-size: 0.95rem; line-height: 1.5; 
-        }
-        .msg-sent { align-self: flex-end; background: #10b981; color: white; border-bottom-right-radius: 4px; }
-        .msg-received { align-self: flex-start; background: white; color: #1e293b; border: 1px solid #cbd5e1; border-bottom-left-radius: 4px; }
-        .chat-input-area { 
-            display: flex; padding: 1rem; background: white; border-top: 1px solid #e2e8f0; gap: 0.8rem; align-items: center;
-        }
-        .chat-input-area input { 
-            flex-grow: 1; padding: 1rem 1.5rem; border: 2px solid #e2e8f0; border-radius: 30px; outline: none; font-size: 1rem; transition: border-color 0.2s;
-        }
-        .chat-input-area input:focus { border-color: #10b981; }
-        .chat-input-area button { 
-            background: #10b981; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; 
-            cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: transform 0.2s; 
-        }
-        .chat-input-area button:hover { transform: scale(1.05); }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 600px) {
-            .mentor-card {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            .mentor-card > div:first-child {
-                margin-bottom: 0.5rem;
-            }
-            .mentor-card > div:last-child {
-                justify-content: center;
-                width: 100%;
-            }
-            .mentor-card button {
-                flex: 1;
-                padding: 0.8rem !important; /* larger touch target */
-                font-size: 1rem !important;
-            }
-            .navbar-container {
-                padding: 0.5rem 1rem !important;
-            }
-            .nav-logo-img {
-                height: 30px !important;
-            }
-            #hub-title {
-                font-size: 1.7rem !important;
-            }
-            #hub-subtitle {
-                font-size: 0.9rem !important;
-            }
-            .glass-panel {
-                padding: 1rem !important;
-            }
-        }
-    </style>
 </head>
-<body style="background-color: #f0fdf4;">
+<body>
 
-    <nav class="navbar navbar-container" style="background: white; border-bottom: 1px solid #e2e8f0; padding: 0.8rem 2rem;">
+    <nav class="navbar navbar-container">
         <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;">
-            <a href="dashboard.html" class="btn-outline" style="border: none; color: #64748b; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 5px; flex: 1; padding: 0;">
+            <a href="dashboard.html" class="btn-outline" style="border: none; color: #64748b; text-decoration: none; display: flex; align-items: center; gap: 5px; flex: 1;">
                 ⬅ Back
             </a>
             <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="nav-logo-img" style="height: 40px; width: auto; max-width: 100%; object-fit: contain;">
+                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto; object-fit: contain;">
             </div>
             <div style="flex: 1;"></div>
         </div>
     </nav>
 
-    <section class="section-container" style="padding-top: 3rem; max-width: 800px;">
+    <section style="padding-top: 3rem; max-width: 800px; margin: 0 auto;">
         
         <div style="text-align: center; margin-bottom: 2rem;">
             <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🩺</div>
-            <h1 id="hub-title" style="color: #1e293b; font-size: 2rem; margin-bottom: 0.5rem;">Mentorship Hub</h1>
-            <p id="hub-subtitle" style="color: #64748b; font-size: 1rem;">Connect with a guide in real-time.</p>
+            <h1 style="color: #1e293b; font-size: 2rem; margin-bottom: 0.5rem;">Mentorship Hub</h1>
+            <p id="hub-subtitle" style="color: #64748b; font-size: 1rem;">Connect with a guide in real-time or leave a message.</p>
         </div>
 
-        <div id="student-view" class="glass-panel" style="padding: 2rem;">
-            <h3 style="color: #064e3b; margin-top: 0; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Available Mentors</h3>
-            <div id="mentors-list">
-                <p style="text-align: center; color: #94a3b8;">Loading available mentors...</p>
+        <!-- STUDENT VIEW -->
+        <div id="student-view" style="display: none;">
+            <div class="glass-panel">
+                <h3 style="color: #064e3b; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">🟢 Online Mentors</h3>
+                <div id="online-mentors-list"><p style="color: #94a3b8;">Loading...</p></div>
+            </div>
+            
+            <div class="glass-panel">
+                <h3 style="color: #475569; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">⚪ Offline Mentors (Leave a message)</h3>
+                <div id="offline-mentors-list"><p style="color: #94a3b8;">Loading...</p></div>
             </div>
         </div>
 
-        <div id="mentor-view" class="glass-panel" style="display: none; padding: 2rem;">
-            <h3 style="color: #b45309; margin-top: 0; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Incoming Chat Requests</h3>
+        <!-- MENTOR VIEW -->
+        <div id="mentor-view" class="glass-panel" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+                <h3 style="color: #b45309; margin: 0;">Student Requests & Messages</h3>
+                <button id="toggle-status-btn" class="btn-outline" style="padding: 0.5rem 1rem; border-color: #10b981; color: #10b981;">
+                    Go Online
+                </button>
+            </div>
             <div id="requests-list">
-                <p style="text-align: center; color: #94a3b8;">Waiting for students...</p>
+                <p style="text-align: center; color: #94a3b8;">No pending requests or offline messages.</p>
             </div>
         </div>
 
+        <!-- CHAT VIEW -->
         <div id="live-chat-view" class="chat-container">
             <div class="chat-header">
                 <div>
                     <h3 id="chat-partner-name" style="color: #064e3b; margin: 0;">Connected</h3>
-                    <div style="font-size: 0.75rem; color: #10b981; font-weight: bold; margin-top: 3px;">🟢 Live Session Active</div>
+                    <div id="chat-type-badge" style="font-size: 0.75rem; color: #10b981; font-weight: bold; margin-top: 3px;">🟢 Live Session</div>
                 </div>
-                <button id="btn-end-chat" class="btn-outline" style="border-color: #ef4444; color: #ef4444; font-size: 0.85rem; font-weight: bold; padding: 0.5rem 1rem;">
-                    End & Save Transcript
+                <button id="btn-end-chat" class="btn-outline" style="border-color: #ef4444; color: #ef4444; font-size: 0.85rem; padding: 0.5rem 1rem;">
+                    End & Purge Chat
                 </button>
             </div>
             

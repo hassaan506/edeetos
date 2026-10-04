@@ -1,6 +1,7 @@
+// mentor.js
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, collection, query, where, getDocs, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, collection, query, where, getDocs, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 let currentUser = null;
 let currentUserData = null;
@@ -8,145 +9,86 @@ let currentRole = 'STUDENT';
 let currentChatId = null;
 let chatUnsubscribe = null; 
 let requestUnsubscribe = null;
-let statusUnsubscribe = null;
 let localMessages = [];
 
+// DOM Elements
 const studentView = document.getElementById('student-view');
 const mentorView = document.getElementById('mentor-view');
 const liveChatView = document.getElementById('live-chat-view');
 
-const mentorsList = document.getElementById('mentors-list');
+const onlineMentorsList = document.getElementById('online-mentors-list');
+const offlineMentorsList = document.getElementById('offline-mentors-list');
 const requestsList = document.getElementById('requests-list');
-const hubSubtitle = document.getElementById('hub-subtitle');
 
 const chatPartnerName = document.getElementById('chat-partner-name');
+const chatTypeBadge = document.getElementById('chat-type-badge');
 const chatMessages = document.getElementById('chat-messages');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const btnEndChat = document.getElementById('btn-end-chat');
+const toggleStatusBtn = document.getElementById('toggle-status-btn');
 
 // ==========================================
-// 1. AUTHENTICATION & ROLE ROUTING
+// 1. INIT & ROUTING
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        currentUser = user;
-        const userRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userRef);
+    if (!user) return window.location.href = 'index.html';
+    
+    currentUser = user;
+    const userRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(userRef);
+    
+    if (docSnap.exists()) {
+        currentUserData = docSnap.data();
+        currentRole = currentUserData.role || 'STUDENT';
         
-        if (docSnap.exists()) {
-            currentUserData = docSnap.data();
-            currentRole = currentUserData.role || 'STUDENT';
-            
-            if (currentRole === 'MENTOR' || currentRole === 'MANAGEMENT') {
-                hubSubtitle.textContent = "You are online and ready to assist students.";
-                studentView.style.display = 'none';
-                mentorView.style.display = 'block';
-                listenForIncomingRequests();
-            } else {
-                const chatsRef = collection(db, "chats");
-                const q = query(chatsRef, where("studentId", "==", currentUser.uid), where("status", "in", ["pending", "active"]));
-                const chatSnap = await getDocs(q);
-
-                if (!chatSnap.empty) {
-                    // Sort memory to bypass missing indexes and find the newest chat
-                    const existingChats = chatSnap.docs.sort((a, b) => {
-                        const tA = a.data().createdAt?.toMillis() || 0;
-                        const tB = b.data().createdAt?.toMillis() || 0;
-                        return tB - tA;
-                    });
-                    
-                    const activeChat = existingChats[0];
-                    
-                    // Quietly kill any old ghost chats left behind by previous database permission bugs
-                    for (let i = 1; i < existingChats.length; i++) {
-                        updateDoc(doc(db, "chats", existingChats[i].id), { status: 'ended' }).catch(() => {});
-                    }
-
-                    studentView.style.display = 'none';
-                    openLiveChat(activeChat.id, activeChat.data().mentorName);
-                } else {
-                    fetchAvailableMentors();
-                }
-            }
+        if (currentRole === 'MENTOR' || currentRole === 'MANAGEMENT') {
+            setupMentorView();
+        } else {
+            setupStudentView();
         }
-    } else {
-        window.location.href = 'index.html';
     }
 });
 
 // ==========================================
-// 2. STUDENT LOGIC: FIND MENTOR
+// 2. MENTOR LOGIC
 // ==========================================
-async function fetchAvailableMentors() {
-    try {
-        const usersRef = collection(db, "users");
-        const q = query(usersRef, where("role", "in", ["MENTOR", "MANAGEMENT"]));
-        const querySnapshot = await getDocs(q);
-        
-        mentorsList.innerHTML = '';
-        if (querySnapshot.empty) {
-            mentorsList.innerHTML = '<p style="text-align: center; color: #ef4444;">No mentors found.</p>';
-            return;
-        }
+function setupMentorView() {
+    studentView.style.display = 'none';
+    mentorView.style.display = 'block';
+    
+    // Update button based on current DB status
+    updateStatusBtn(currentUserData.isOnline || false);
 
-        querySnapshot.forEach((docSnap) => {
-            const mentorData = docSnap.data();
-            const card = document.createElement('div');
-            card.className = 'mentor-card';
-            card.innerHTML = `
-                <div>
-                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${mentorData.fullName || 'Verified Mentor'}</div>
-                    <div style="font-size: 0.8rem; color: #64748b; font-weight: bold;">Leave a message if offline</div>
-                </div>
-                <button class="btn-solid" style="padding: 0.6rem 1.2rem; border-radius: 8px; border: none; background: #0f172a; font-weight: bold; cursor: pointer;">
-                    Message
-                </button>
-            `;
-            
-            card.querySelector('button').onclick = () => requestChat(docSnap.id, mentorData.fullName || 'Mentor');
-            mentorsList.appendChild(card);
-        });
-    } catch (error) {
-        console.error("Error fetching mentors:", error);
-        mentorsList.innerHTML = '<p style="text-align: center; color: #ef4444;">Failed to load mentors.</p>';
+    toggleStatusBtn.onclick = async () => {
+        const newStatus = !(currentUserData.isOnline || false);
+        await updateDoc(doc(db, "users", currentUser.uid), { isOnline: newStatus });
+        currentUserData.isOnline = newStatus;
+        updateStatusBtn(newStatus);
+    };
+
+    listenForRequestsAndMessages();
+}
+
+function updateStatusBtn(isOnline) {
+    if (isOnline) {
+        toggleStatusBtn.textContent = "Go Offline";
+        toggleStatusBtn.style.borderColor = "#ef4444";
+        toggleStatusBtn.style.color = "#ef4444";
+    } else {
+        toggleStatusBtn.textContent = "Go Online";
+        toggleStatusBtn.style.borderColor = "#10b981";
+        toggleStatusBtn.style.color = "#10b981";
     }
 }
 
-async function requestChat(mentorId, mentorName) {
-    try {
-        const chatRef = await addDoc(collection(db, "chats"), {
-            studentId: currentUser.uid,
-            studentName: currentUserData ? (currentUserData.fullName || currentUser.email) : "Student",
-            studentEmail: currentUser.email || "No Email",
-            mentorId: mentorId,
-            mentorName: mentorName,
-            status: 'pending', 
-            createdAt: serverTimestamp()
-        });
-
-        currentChatId = chatRef.id;
-        studentView.style.display = 'none';
-        openLiveChat(currentChatId, mentorName);
-
-    } catch (error) {
-        console.error("Error requesting chat:", error);
-        alert("Failed to initiate chat. Check your database rules.");
-    }
-}
-
-// ==========================================
-// 3. MENTOR LOGIC: INCOMING REQUESTS
-// ==========================================
-function listenForIncomingRequests() {
-    const chatsRef = collection(db, "chats");
-    const q = query(chatsRef, where("mentorId", "==", currentUser.uid), where("status", "==", "pending"));
+function listenForRequestsAndMessages() {
+    const q = query(collection(db, "chats"), where("mentorId", "==", currentUser.uid), where("status", "in", ["pending", "active", "offline_thread"]));
     
     requestUnsubscribe = onSnapshot(q, (snapshot) => {
         requestsList.innerHTML = ''; 
-        
         if (snapshot.empty) {
-            requestsList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending messages or requests.</p>';
+            requestsList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending requests or messages.</p>';
             return;
         }
 
@@ -156,28 +98,22 @@ function listenForIncomingRequests() {
             
             const card = document.createElement('div');
             card.className = 'mentor-card';
-            card.style.borderColor = '#fbbf24';
-            card.style.background = '#fffbeb';
+            card.style.borderColor = data.type === 'live' ? '#10b981' : '#94a3b8';
+            
             card.innerHTML = `
                 <div>
-                    <div style="font-weight: 800; color: #b45309; font-size: 1.1rem;">🔔 New Message!</div>
-                    <div style="font-size: 0.9rem; color: #1e293b; font-weight: bold;">From: ${data.studentName}</div>
-                    <div style="font-size: 0.75rem; color: #64748b;">${data.studentEmail}</div>
+                    <div style="font-weight: 800; color: #1e293b;">${data.type === 'live' ? '🟢 Live Request' : '⚪ Offline Message'}</div>
+                    <div style="font-size: 0.9rem; font-weight: bold;">From: ${data.studentName}</div>
                 </div>
-                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <button class="btn-outline btn-reject" style="border-color: #ef4444; color: #ef4444; padding: 0.5rem 1rem;">Close</button>
-                    <button class="btn-solid btn-accept" style="background: #10b981; border: none; padding: 0.5rem 1rem;">Reply</button>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn-solid btn-accept" style="background: #0f172a; padding: 0.5rem 1rem;">Open</button>
                 </div>
             `;
             
             card.querySelector('.btn-accept').onclick = async () => {
-                await updateDoc(doc(db, "chats", chatId), { status: 'active' });
+                if (data.status === 'pending') await updateDoc(doc(db, "chats", chatId), { status: 'active' });
                 mentorView.style.display = 'none';
-                openLiveChat(chatId, data.studentName);
-            };
-            
-            card.querySelector('.btn-reject').onclick = async () => {
-                await updateDoc(doc(db, "chats", chatId), { status: 'rejected' });
+                openChat(chatId, data.studentName, data.type);
             };
             
             requestsList.appendChild(card);
@@ -186,20 +122,109 @@ function listenForIncomingRequests() {
 }
 
 // ==========================================
-// 4. SHARED LIVE CHAT ENGINE
+// 3. STUDENT LOGIC
 // ==========================================
-function openLiveChat(chatId, partnerName) {
+async function setupStudentView() {
+    studentView.style.display = 'block';
+    
+    // Check for existing active chats (live or offline thread)
+    const q = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("status", "in", ["pending", "active", "offline_thread"]));
+    const chatSnap = await getDocs(q);
+
+    if (!chatSnap.empty) {
+        const activeChat = chatSnap.docs[0];
+        studentView.style.display = 'none';
+        openChat(activeChat.id, activeChat.data().mentorName, activeChat.data().type);
+        return;
+    }
+
+    fetchMentors();
+}
+
+async function fetchMentors() {
+    try {
+        const q = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]));
+        const snapshot = await getDocs(q);
+        
+        onlineMentorsList.innerHTML = '';
+        offlineMentorsList.innerHTML = '';
+
+        snapshot.forEach((docSnap) => {
+            const mentor = docSnap.data();
+            const isOnline = mentor.isOnline || false;
+            const targetList = isOnline ? onlineMentorsList : offlineMentorsList;
+            
+            const card = document.createElement('div');
+            card.className = 'mentor-card';
+            card.innerHTML = `
+                <div>
+                    <div style="font-weight: bold; color: #1e293b;">
+                        <span class="status-dot ${isOnline ? 'status-online' : 'status-offline'}"></span>
+                        ${mentor.fullName || 'Verified Mentor'}
+                    </div>
+                </div>
+                <button class="btn-solid" style="padding: 0.5rem 1rem; background: #0f172a; border: none;">
+                    ${isOnline ? 'Live Chat' : 'Leave Message'}
+                </button>
+            `;
+            
+            card.querySelector('button').onclick = () => initiateChat(docSnap.id, mentor.fullName, isOnline);
+            targetList.appendChild(card);
+        });
+
+        if (onlineMentorsList.innerHTML === '') onlineMentorsList.innerHTML = '<p style="color: #94a3b8;">No mentors online.</p>';
+        if (offlineMentorsList.innerHTML === '') offlineMentorsList.innerHTML = '<p style="color: #94a3b8;">No offline mentors available.</p>';
+
+    } catch (error) {
+        console.error("Error fetching mentors:", error);
+    }
+}
+
+async function initiateChat(mentorId, mentorName, isOnline) {
+    try {
+        const type = isOnline ? 'live' : 'offline';
+        const status = isOnline ? 'pending' : 'offline_thread';
+
+        const chatRef = await addDoc(collection(db, "chats"), {
+            studentId: currentUser.uid,
+            studentName: currentUserData.fullName || "Student",
+            mentorId: mentorId,
+            mentorName: mentorName || "Mentor",
+            type: type,
+            status: status,
+            createdAt: serverTimestamp()
+        });
+
+        studentView.style.display = 'none';
+        openChat(chatRef.id, mentorName, type);
+    } catch (error) {
+        console.error("Error creating chat:", error);
+        alert("Failed to start conversation.");
+    }
+}
+
+// ==========================================
+// 4. SHARED CHAT ENGINE & PURGE
+// ==========================================
+function openChat(chatId, partnerName, type) {
     currentChatId = chatId;
     chatPartnerName.textContent = partnerName;
+    
+    if (type === 'live') {
+        chatTypeBadge.innerHTML = '🟢 Live Session';
+        chatTypeBadge.style.color = '#10b981';
+    } else {
+        chatTypeBadge.innerHTML = '⚪ Offline Thread (Replies may be delayed)';
+        chatTypeBadge.style.color = '#64748b';
+    }
+
     liveChatView.style.display = 'flex';
     chatMessages.innerHTML = ''; 
     localMessages = [];
     
-    const messagesRef = collection(db, "chats", chatId, "messages");
-    const q = query(messagesRef, orderBy("timestamp", "asc"));
+    if (chatUnsubscribe) chatUnsubscribe();
     
-    if (chatUnsubscribe) chatUnsubscribe(); 
-    if (statusUnsubscribe) statusUnsubscribe(); 
+    const q = query(collection(db, "chats", chatId, "messages"), orderBy("timestamp", "asc"));
     
     chatUnsubscribe = onSnapshot(q, (snapshot) => {
         snapshot.docChanges().forEach((change) => {
@@ -215,31 +240,64 @@ function openLiveChat(chatId, partnerName) {
             }
         });
         chatMessages.scrollTop = chatMessages.scrollHeight; 
-    }, (error) => {
-        console.error("Chat sync error:", error);
-        chatMessages.innerHTML = `<div style="text-align: center; color: #ef4444; padding: 2rem; font-weight: bold;">Failed to load messages. Firebase Rules rejected the query.</div>`;
     });
 
-    statusUnsubscribe = onSnapshot(doc(db, "chats", chatId), (docSnap) => {
-        if (docSnap.exists() && docSnap.data().status === 'ended') {
-            if (confirm("The other person has ended the chat. Do you want to download a transcript of this conversation before it is deleted?")) {
-                generateAndDownloadTranscript();
-            }
-            alert("Session Closed.");
-            window.location.href = 'dashboard.html';
+    // Listen to see if the other person ended/purged the chat
+    onSnapshot(doc(db, "chats", chatId), (docSnap) => {
+        if (!docSnap.exists()) {
+            alert("This conversation has been ended and purged by the other party.");
+            window.location.reload();
         }
     });
 }
 
-function generateAndDownloadTranscript() {
-    let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
-    transcriptText += "Mentorship provided by Edeetos\n";
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = chatInput.value.trim();
+    if (!text || !currentChatId) return;
+
+    chatInput.value = ''; 
+    await addDoc(collection(db, "chats", currentChatId, "messages"), {
+        senderId: currentUser.uid,
+        text: text,
+        timestamp: serverTimestamp()
+    });
+});
+
+// Ephemeral Purge Logic
+btnEndChat.addEventListener('click', async () => {
+    if (!currentChatId) return;
     
-    const pName = chatPartnerName.textContent.replace("", "");
-    transcriptText += `Participants: ${currentUserData ? currentUserData.fullName : "Me"} & ${pName}\n\n`;
+    if (!confirm("Are you sure you want to end this session? Edeetos does not store messages. They will be deleted permanently.")) return;
+    
+    if (confirm("Do you want to download a transcript before the chat is permanently purged?")) {
+        downloadTranscript();
+    }
+    
+    alert("Purging chat data...");
+    
+    // Client-side recursive delete for ephemerality
+    try {
+        const messagesRef = collection(db, "chats", currentChatId, "messages");
+        const snapshot = await getDocs(messagesRef);
+        for (const d of snapshot.docs) {
+             await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
+        }
+        await deleteDoc(doc(db, "chats", currentChatId));
+    } catch(e) {
+        console.error("Purge Error", e);
+    }
+    
+    window.location.reload();
+});
+
+function downloadTranscript() {
+    let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
+    const pName = chatPartnerName.textContent;
+    transcriptText += `Participants: ${currentUserData.fullName} & ${pName}\n\n`;
     
     localMessages.forEach((msg) => {
-        const sender = msg.senderId === currentUser.uid ? "You" : chatPartnerName.textContent;
+        const sender = msg.senderId === currentUser.uid ? "You" : pName;
         transcriptText += `[${sender}]: ${msg.text}\n`;
     });
 
@@ -251,57 +309,3 @@ function generateAndDownloadTranscript() {
     a.click();
     document.body.removeChild(a);
 }
-
-// Send Message
-chatForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const text = chatInput.value.trim();
-    if (!text || !currentChatId) return;
-
-    chatInput.value = ''; 
-
-    try {
-        await addDoc(collection(db, "chats", currentChatId, "messages"), {
-            senderId: currentUser.uid,
-            text: text,
-            timestamp: serverTimestamp()
-        });
-    } catch (error) { 
-        console.error("Error sending message:", error); 
-        alert("Message failed to send: " + error.message);
-    }
-});
-
-// End Chat with Separated Prompts
-btnEndChat.addEventListener('click', async () => {
-    if (!currentChatId) return;
-    
-    // Step 1: Confirm ending the chat
-    if (!confirm("Are you sure you want to end this mentorship session?")) return;
-    
-    // Step 2: Give the option to download
-    if (confirm("Do you want to download a transcript of this conversation before it is permanently deleted?")) {
-        generateAndDownloadTranscript();
-    }
-    
-    await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
-    
-    alert("Session Ended. The room will completely purge in 3 seconds.");
-    
-    setTimeout(async () => {
-        try {
-            const { deleteDoc, getDocs, collection } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-            
-            const messagesRef = collection(db, "chats", currentChatId, "messages");
-            const snapshot = await getDocs(messagesRef);
-            for (const d of snapshot.docs) {
-                 await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
-            }
-            
-            await deleteDoc(doc(db, "chats", currentChatId));
-        } catch(e) {
-            console.error("Cleanup Error", e);
-        }
-        window.location.href = 'dashboard.html';
-    }, 3000);
-});
