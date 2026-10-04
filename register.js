@@ -20,7 +20,7 @@ if (registerForm) {
         const location = document.querySelector('#reg-location').value;
         const password = document.querySelector('#reg-password').value;
         const course = document.querySelector('#reg-course').value;
-        const examDate = document.querySelector('#reg-exam-date').value; // NEW
+        const examDate = document.querySelector('#reg-exam-date').value; 
 
         try {
             // 2. Create Firebase Auth User
@@ -31,7 +31,7 @@ if (registerForm) {
             const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
             localStorage.setItem("edeetos_session_id", newToken);
 
-			// 4. Write to Firestore Database
+			// 4. Write to Firestore Database (Protected User Profile)
             await setDoc(doc(db, "users", user.uid), {
                 fullName: name,
                 username: username,
@@ -40,14 +40,20 @@ if (registerForm) {
                 institution: uni,
                 location: location,
                 selectedCourse: course, 
-                examDate: examDate, // NEW: Save to DB
+                examDate: examDate, 
                 courseChangeRequested: false, 
                 role: "STUDENT", 
                 sessionToken: newToken,
                 createdAt: new Date().toISOString()
             });
 
-            // 5. Success Routing
+            // 5. Build the Public Username Lookup Index
+            await setDoc(doc(db, "username_lookup", username), {
+                email: email,
+                userId: user.uid
+            });
+
+            // 6. Success Routing
             alert("Success! Your profile has been created.");
             window.location.href = "dashboard.html"; 
 

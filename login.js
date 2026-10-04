@@ -1,7 +1,8 @@
 // === FEATURE: FIREBASE IMPORTS ===
 import { auth, db } from "./firebase-config.js";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { collection, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// Changed imports to use getDoc instead of getDocs/query
+import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // === FEATURE: DOM ELEMENTS ===
 const loginForm = document.querySelector('#login-form');
@@ -19,30 +20,22 @@ if (loginForm) {
         
         let loginEmail = identifier.toLowerCase(); 
         
-        // Show loading state
         submitBtn.textContent = "Logging in...";
         submitBtn.disabled = true;
 
         try {
-            // Nuke guest token before attempting true login
             localStorage.removeItem('edeetos_guest_mode');
 
-            // Username Resolution Logic
+            // Username Resolution Logic - Now using the public lookup index
             if (!identifier.includes('@')) {
-                const usersRef = collection(db, "users");
-                const q = query(usersRef, where("username", "==", identifier));
-                const querySnapshot = await getDocs(q);
+                const lookupRef = doc(db, "username_lookup", identifier);
+                const lookupSnap = await getDoc(lookupRef);
 
-                if (querySnapshot.empty) {
+                if (!lookupSnap.exists()) {
                     throw new Error("Username not found. Please check your spelling or log in using your email address.");
                 }
-
-                const userData = querySnapshot.docs[0].data();
-                if (!userData.email) {
-                    throw new Error("No email linked to this username.");
-                }
                 
-                loginEmail = userData.email; 
+                loginEmail = lookupSnap.data().email; 
             }
 
             // Firebase Authentication
@@ -72,7 +65,6 @@ if (loginForm) {
 // === FEATURE: GUEST MODE LOGIN ===
 if (btnGuest) {
     btnGuest.addEventListener('click', async () => {
-        // Swap out valid tokens for guest mode flag
         localStorage.removeItem('edeetos_session_id');
         localStorage.setItem('edeetos_guest_mode', 'true');
         
@@ -91,26 +83,21 @@ if (forgotPasswordLink) {
     forgotPasswordLink.addEventListener('click', async (e) => {
         e.preventDefault();
         
-        // Grab the current value from the identifier input
         const identifierInput = document.querySelector('#login-identifier').value.trim();
         let resetEmail = identifierInput;
 
-        // If the field is empty or contains a username (no '@'), explicitly ask for an email
         if (!resetEmail || !resetEmail.includes('@')) {
             resetEmail = prompt("Please enter the email address associated with your account to reset your password:");
         } else {
-            // Confirm with the user if the field already contains an email
             const confirmEmail = confirm(`Send password reset link to ${resetEmail}?`);
             if (!confirmEmail) return;
         }
 
-        // Validate that we have a functional email address before sending to Firebase
         if (!resetEmail || !resetEmail.includes('@')) {
             return alert("A valid email address is required to reset your password.");
         }
 
         try {
-            // Trigger Firebase's built-in reset email function
             await sendPasswordResetEmail(auth, resetEmail);
             alert("Password reset email sent! Please check your inbox and spam folder.");
         } catch (error) {
