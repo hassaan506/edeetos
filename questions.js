@@ -24,6 +24,10 @@ let isPremiumUser = false;
 let currentUserRole = "STUDENT";
 let currentUserData = null; 
 let isGlobalPopupActive = false;
+let viewSpecificStats = {
+    course: { solved: [], mistakes: [], bookmarks: [], accuracy: 0 },
+    book: { solved: [], mistakes: [], bookmarks: [], accuracy: 0 }
+};
 
 const loadedBooksCache = {}; 
 
@@ -211,6 +215,16 @@ document.getElementById('open-sidebar').onclick = () => toggleSidebar(true);
 document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 sidebarOverlay.onclick = () => toggleSidebar(false);
 
+window.updateDashboardUI = function() {
+    const type = currentView === 'book' ? 'book' : 'course';
+    const stats = viewSpecificStats[type];
+
+    if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = stats.solved.length;
+    if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = stats.mistakes.length;
+    if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = stats.bookmarks.length;
+    if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${stats.accuracy}%`;
+};
+
 function changeView(viewName, titleText) {
     currentView = viewName;
     activeCustomPool = null;
@@ -237,6 +251,7 @@ function changeView(viewName, titleText) {
     } else {
         renderGrid();
     }
+	if (typeof updateDashboardUI === 'function') updateDashboardUI();
 }
 
 // ==========================================
@@ -2775,19 +2790,30 @@ btnPushEdits.onclick = async () => {
 
                 userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
-                attemptedQuestions = solvedList;
+attemptedQuestions = solvedList;
 
                 await loadDataAndBuildTree();
                 restoreLastState();
 
-                const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-                const totalAttempts = solvedList.length + allMistakes.length;
-                let accuracy = totalAttempts > 0 ? Math.round((solvedList.length / totalAttempts) * 100) : 0;
+                const courseAllMistakes = [...new Set([...coursePracticeMistakes, ...courseExamMistakes])];
+                const courseAttempts = courseSolved.length + courseAllMistakes.length;
+                viewSpecificStats.course = {
+                    solved: courseSolved,
+                    mistakes: courseAllMistakes,
+                    bookmarks: courseBookmarks,
+                    accuracy: courseAttempts > 0 ? Math.round((courseSolved.length / courseAttempts) * 100) : 0
+                };
 
-                if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = solvedList.length;
-                if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = allMistakes.length;
-                if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = globalBookmarks.length;
-                if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+                const bookAllMistakes = [...new Set([...bookPracticeMistakes, ...bookExamMistakes])];
+                const bookAttempts = bookSolved.length + bookAllMistakes.length;
+                viewSpecificStats.book = {
+                    solved: bookSolved,
+                    mistakes: bookAllMistakes,
+                    bookmarks: bookBookmarks,
+                    accuracy: bookAttempts > 0 ? Math.round((bookSolved.length / bookAttempts) * 100) : 0
+                };
+
+                updateDashboardUI();
                 
                 const revisions = {
                     ...(courseData.revisions || {}),
@@ -2938,33 +2964,60 @@ btnPushEdits.onclick = async () => {
                     revisionContainer.innerHTML = '';
                 }
 				
-                const btnMistakes = document.getElementById('btn-practice-mistakes');
-                if (btnMistakes && allMistakes.length > 0) {
+const btnMistakes = document.getElementById('btn-practice-mistakes');
+                if (btnMistakes) {
                     btnMistakes.disabled = false;
                     btnMistakes.style.cursor = "pointer";
                     btnMistakes.onclick = () => {
                         isGlobalPopupActive = true;
-                        const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)));
-                        const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)));
+                        const isBook = currentView === 'book';
+                        
+                        const activeMistakes = isBook ? viewSpecificStats.book.mistakes : viewSpecificStats.course.mistakes;
+                        if (activeMistakes.length === 0) {
+                            alert(isBook ? "You don't have any book mistakes yet." : "You don't have any course mistakes yet.");
+                            return;
+                        }
+
+                        const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)) && !!q.isBookQuestion === isBook);
+                        const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)) && !!q.isBookQuestion === isBook);
+
+                        if (pPool.length === 0 && ePool.length === 0 && isBook) {
+                            alert("Book mistakes exist, but you must open the specific book first to load its questions into memory.");
+                            return;
+                        }
 
                         let combinedTree = {};
                         if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
                         if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
 
                         activeCustomPool = [...pPool, ...ePool];
-                        openPopup("⚠️ Review Mistakes", combinedTree, 'Level1', []);
+                        openPopup(isBook ? "⚠️ Book Mistakes" : "⚠️️ Course Mistakes", combinedTree, 'Level1', []);
                     };
                 }
 
                 const btnBookmarks = document.getElementById('btn-review-bookmarks');
-                if (btnBookmarks && globalBookmarks.length > 0) {
+                if (btnBookmarks) {
                     btnBookmarks.disabled = false;
                     btnBookmarks.style.cursor = "pointer";
                     btnBookmarks.onclick = () => {
                         isGlobalPopupActive = true;
-                        const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)));
+                        const isBook = currentView === 'book';
+                        
+                        const activeBookmarks = isBook ? viewSpecificStats.book.bookmarks : viewSpecificStats.course.bookmarks;
+                        if (activeBookmarks.length === 0) {
+                            alert(isBook ? "You don't have any book bookmarks yet." : "You don't have any course bookmarks yet.");
+                            return;
+                        }
+
+                        const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)) && !!q.isBookQuestion === isBook);
+
+                        if (bPool.length === 0 && isBook) {
+                            alert("Book bookmarks exist, but you must open the specific book first to load its questions into memory.");
+                            return;
+                        }
+
                         activeCustomPool = bPool;
-                        openPopup("⭐ Bookmarks", buildSubTree(bPool), 'Level1', []);
+                        openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", buildSubTree(bPool), 'Level1', []);
                     };
                 }
                 
