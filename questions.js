@@ -2783,28 +2783,32 @@ btnPushEdits.onclick = async () => {
                 const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
                 const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
 
-                const solvedList = [...new Set([...courseSolved, ...bookSolved])];
-                globalPracticeMistakes = [...new Set([...coursePracticeMistakes, ...bookPracticeMistakes])];
-                globalExamMistakes = [...new Set([...courseExamMistakes, ...bookExamMistakes])];
-                globalBookmarks = [...new Set([...courseBookmarks, ...bookBookmarks])];
-
-                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
-
-attemptedQuestions = solvedList;
+userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
                 await loadDataAndBuildTree();
-                restoreLastState();
 
                 // 1. Get all valid, currently loaded Course Question IDs
                 const validCourseIDs = new Set(allQuestions.filter(q => !q.isBookQuestion).map(q => getQID(q)));
 
-                // 2. Filter out "ghost" IDs (deleted or tier-limited questions)
-                const validCourseSolved = courseSolved.filter(id => validCourseIDs.has(id));
-                const validCoursePracticeMistakes = coursePracticeMistakes.filter(id => validCourseIDs.has(id));
-                const validCourseExamMistakes = courseExamMistakes.filter(id => validCourseIDs.has(id));
-                const validCourseBookmarks = courseBookmarks.filter(id => validCourseIDs.has(id));
+                // 2. Deduplicate arrays and filter out "ghost" IDs for the Course
+                const validCourseSolved = [...new Set(courseSolved)].filter(id => validCourseIDs.has(id));
+                const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)].filter(id => validCourseIDs.has(id));
+                const validCourseExamMistakes = [...new Set(courseExamMistakes)].filter(id => validCourseIDs.has(id));
+                const validCourseBookmarks = [...new Set(courseBookmarks)].filter(id => validCourseIDs.has(id));
 
-                // 3. Calculate Course Specific Stats based ONLY on valid IDs
+                // 3. Deduplicate Books (Cannot filter ghosts yet because books are lazy-loaded)
+                const uniqueBookSolved = [...new Set(bookSolved)];
+                const uniqueBookPracticeMistakes = [...new Set(bookPracticeMistakes)];
+                const uniqueBookExamMistakes = [...new Set(bookExamMistakes)];
+                const uniqueBookBookmarks = [...new Set(bookBookmarks)];
+
+                // 4. Update Global Variables so Grid/Popups match the Dashboard EXACTLY
+                globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
+                globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
+                globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
+                attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
+
+                // 5. Calculate Course Specific Stats based ONLY on valid, unique IDs
                 const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
                 const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
                 
@@ -2815,17 +2819,19 @@ attemptedQuestions = solvedList;
                     accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
                 };
 
-                // 4. Calculate Book Specific Stats (Keep as is, books are lazy-loaded)
-                const bookAllMistakes = [...new Set([...bookPracticeMistakes, ...bookExamMistakes])];
-                const bookAttempts = bookSolved.length + bookAllMistakes.length;
+                // 6. Calculate Book Specific Stats
+                const bookAllMistakes = [...new Set([...uniqueBookPracticeMistakes, ...uniqueBookExamMistakes])];
+                const bookAttempts = uniqueBookSolved.length + bookAllMistakes.length;
+                
                 viewSpecificStats.book = {
-                    solved: bookSolved,
+                    solved: uniqueBookSolved,
                     mistakes: bookAllMistakes,
-                    bookmarks: bookBookmarks,
-                    accuracy: bookAttempts > 0 ? Math.round((bookSolved.length / bookAttempts) * 100) : 0
+                    bookmarks: uniqueBookBookmarks,
+                    accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
                 };
 
-                // 5. Update the DOM
+                // 7. Update DOM and UI
+                restoreLastState();
                 if (typeof updateDashboardUI === 'function') updateDashboardUI();
                 
                 const revisions = {
