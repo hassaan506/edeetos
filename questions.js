@@ -2795,15 +2795,27 @@ attemptedQuestions = solvedList;
                 await loadDataAndBuildTree();
                 restoreLastState();
 
-                const courseAllMistakes = [...new Set([...coursePracticeMistakes, ...courseExamMistakes])];
-                const courseAttempts = courseSolved.length + courseAllMistakes.length;
+                // 1. Get all valid, currently loaded Course Question IDs
+                const validCourseIDs = new Set(allQuestions.filter(q => !q.isBookQuestion).map(q => getQID(q)));
+
+                // 2. Filter out "ghost" IDs (deleted or tier-limited questions)
+                const validCourseSolved = courseSolved.filter(id => validCourseIDs.has(id));
+                const validCoursePracticeMistakes = coursePracticeMistakes.filter(id => validCourseIDs.has(id));
+                const validCourseExamMistakes = courseExamMistakes.filter(id => validCourseIDs.has(id));
+                const validCourseBookmarks = courseBookmarks.filter(id => validCourseIDs.has(id));
+
+                // 3. Calculate Course Specific Stats based ONLY on valid IDs
+                const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
+                const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
+                
                 viewSpecificStats.course = {
-                    solved: courseSolved,
+                    solved: validCourseSolved,
                     mistakes: courseAllMistakes,
-                    bookmarks: courseBookmarks,
-                    accuracy: courseAttempts > 0 ? Math.round((courseSolved.length / courseAttempts) * 100) : 0
+                    bookmarks: validCourseBookmarks,
+                    accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
                 };
 
+                // 4. Calculate Book Specific Stats (Keep as is, books are lazy-loaded)
                 const bookAllMistakes = [...new Set([...bookPracticeMistakes, ...bookExamMistakes])];
                 const bookAttempts = bookSolved.length + bookAllMistakes.length;
                 viewSpecificStats.book = {
@@ -2813,7 +2825,8 @@ attemptedQuestions = solvedList;
                     accuracy: bookAttempts > 0 ? Math.round((bookSolved.length / bookAttempts) * 100) : 0
                 };
 
-                updateDashboardUI();
+                // 5. Update the DOM
+                if (typeof updateDashboardUI === 'function') updateDashboardUI();
                 
                 const revisions = {
                     ...(courseData.revisions || {}),
@@ -2990,7 +3003,7 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                         if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
                         if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
 
-                        activeCustomPool = [...pPool, ...ePool];
+                        activeCustomPool = [...new Set([...pPool, ...ePool])];
                         openPopup(isBook ? "⚠️ Book Mistakes" : "⚠️️ Course Mistakes", combinedTree, 'Level1', []);
                     };
                 }
