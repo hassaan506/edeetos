@@ -222,7 +222,11 @@ BRXX9Z7E,Nephrology,175,What is the action of Aldosterone on H+ in the kidneys?,
 2JHCTPMY,Nephrology,175,What is the action of ANP on GFR?,Increases GFR,Decreases GFR,Has no effect on GFR,Increases filtration fraction only,Decreases renal plasma flow only,A,
 4XTQFESZ,Nephrology,175,What is the action of ANP on Na+ in the kidneys?,Decreases Na+ reabsorption,Increases Na+ reabsorption,Increases Na+ secretion,Decreases Na+ secretion,Has no effect on Na+,A,
 2ZA7NGL8,Nephrology,175,What is the action of Angiotensin II on the kidneys?,Increases Na+–H+ exchange and HCO3– reabsorption in the proximal tubule,Decreases Na+–H+ exchange and HCO3– reabsorption in the proximal tubule,Increases H2O permeability in the collecting duct,Decreases GFR directly via afferent dilation,Decreases aldosterone secretion,A,
-L376FDKJ,Nephrology,175,"A patient admitted in endocrinology ward has Potassium: 3, Na: 150, and pH 7.45. He is most likely having an excess of which hormone?",Aldosterone,ADH,ANP,PTH,Insulin,A,
+L376FDKJ,Nephrology,175,"A patient admitted in endocrinology ward has:
+Potassium: 3
+Na: 150
+pH 7.45
+He is most likely having an excess of which hormone?",ADH,PTH,Insulin,Aldosterone,ANP,D,<p>No explanation provided.</p>
 Q6SV8ST6,Nephrology,175,Aldosterone causes:,Na and Cl reabsorption,Na and K reabsorption,K and Cl reabsorption,Na secretion and K reabsorption,Water secretion and Na reabsorption,A,
 YSEC3SL8,Nephrology,175,Aldosterone causes a decrease in the renal tubular secretion of:,Sodium,Potassium,Hydrogen,Creatinine,Urea,A,
 6H9D4WKE,Nephrology,175,The aldosterone:,Increases sodium reabsorption by the nephron,Decreases sodium reabsorption by the nephron,Increases potassium reabsorption by the nephron,Decreases water reabsorption by the nephron,Has no effect on sodium,A,
@@ -230,7 +234,7 @@ DM7E8G7L,Nephrology,175,The hormone responsible for sodium reabsorption in the d
 D97Q4XJC,Nephrology,175,Sodium absorption increases at DCT due to:,Aldosterone,ADH,ANP,PTH,Calcitonin,A,
 7GC8F99S,Nephrology,175,Aldosterone decreases secretion of:,Sodium,Potassium,Hydrogen,Creatinine,Uric acid,A,
 6D7ZNG8C,Nephrology,175,Most potent sodium-retaining hormone is:,Aldosterone,Cortisol,Estrogen,Progesterone,ADH,A,
-9NPLPZQA,Nephrology,175,Short term function of aldosterone:,Increases permeability of NA and K in cortical collecting tubule,Decreases permeability of NA and K in cortical collecting tubule,Increases permeability of H2O in collecting duct,Decreases permeability of H2O in collecting duct,Increases GFR,A,
+9NPLPZQA,Nephrology,175,Short term function of aldosterone:,Decreases permeability of H2O in collecting duct,Increases permeability of H2O in collecting duct,Decreases permeability of Na and K in cortical collecting tubule,Increases GFR,Increases permeability of NA and K in cortical collecting tubule,E,<p>No explanation provided.</p>
 A55ATMN4,Nephrology,175,Maximum water and Na are absorbed by the effect of:,Aldosterone,ADH,ANP,PTH,Angiotensin II,A,
 LXSBHKH3,Nephrology,175,"A person who is fasting does not take water for many hours, excretes concentrated urine due to secretion of increased amount of:",Antidiuretic hormone,Aldosterone,ANP,Renin,Angiotensin II,A,
 Y8GTY3UN,Nephrology,176,What is the most effective stimulant for aldosterone secretion?,K+ ions,Na+ ions,Ca2+ ions,Cl- ions,Mg2+ ions,A,
@@ -264,7 +268,7 @@ RS2LX55D,Nephrology,178,The most important change in renal function that tends t
 8JUPPAPQ,Nephrology,178,The main outcome of a decrease in effective circulating volume is:,Increase in renin secretion,Decrease in renin secretion,Increase in ANP secretion,Increase in GFR,Decrease in aldosterone secretion,A,
 JEZ9GUXG,Nephrology,178,A young patient with high renin levels likely has increased renin due to:,Sympathetic stimulation via renal nerve,Parasympathetic stimulation via vagus nerve,Increased NaCl delivery to macula densa,Increased renal perfusion pressure,Hypervolemia,A,
 RVH8MPFX,Nephrology,178,The most potent stimulus for secretion of renin from kidney is:,Hypotension,Hypertension,Hypernatremia,Hyperkalemia,Hypervolemia,A,
-R63YZUB2,Nephrology,178,Which of the following stimulate renin secretion?,Inc K concentration,Dec K concentration,Inc Na concentration,Inc Ca concentration,Inc Cl concentration,A,
+R63YZUB2,Nephrology,178,Which of the following stimulate renin secretion?,Increased Cl concentration,Increased Na concentration,Increased K concentration,Decreased K concentration,Increased Ca concentration,C,<p>No explanation provided.</p>
 77DF7YJL,Nephrology,178,Renin secretion by the kidney is increased by increasing:,Sympathetic nerve activity,Parasympathetic nerve activity,NaCl delivery to macula densa,Renal perfusion pressure,Atrial stretch,A,
 46RPUU6D,Nephrology,178,Decrease Na delivery to macula densa causes release of?,Renin,ANP,ADH,Aldosterone,Angiotensin II,A,
 YQTQSHRN,Nephrology,178,Diminished sodium chloride delivery to the macula densa stimulates the release of:,Renin,ANP,ADH,Aldosterone,Angiotensin II,A,
@@ -305,14 +309,14 @@ BJ9LLH3G,Nephrology,179,A Black athlete presented with 3rd degree burn; he is li
 EGLV9FUV,Nephrology,179,Athletes differ from normal individuals in having:,A higher maximum oxygen consumption,A lower maximum oxygen consumption,The same maximum oxygen consumption,A higher resting heart rate,A lower resting stroke volume,A,
 9MVU4FDA,Nephrology,179,"In athletes, maximum heat loss occurs through:",Sweating,Radiation,Conduction,Convection,Respiration,A,
 PMW7T2GN,Nephrology,179,"A 36-year-old athlete who works out excessively. During her exercise, increased water loss will be through:",Sweating,Urine,Feces,Respiration,Insensible perspiration,A,
-DNKMEKUV,Nephrology,180,HCO3 reabsorption occurs through which segments of nephron?,PCT + Collecting Ducts,PCT + Loop of Henle,Loop of Henle + DCT,DCT + Collecting Ducts,PCT + DCT,A,
+DNKMEKUV,Nephrology,180,<p>HCO3 reabsorption occurs through which segments of nephron?</p>,PCT + Loop of Henle,DCT + Collecting Ducts,PCT + Collecting Ducts,PCT + DCT,Loop of Henle + DCT,C,<h3><br></h3>
 98F79VW7,Nephrology,180,"What percentage of filtered Na+, H2O, and K+ is reabsorbed in the Proximal Tubule (PCT)?",67%,25%,50%,85%,100%,A,
 Z5BZWHSR,Nephrology,180,What percentage of filtered Urea is reabsorbed in the Proximal Tubule (PCT)?,50%,67%,25%,85%,100%,A,
 2BF72SHE,Nephrology,180,What percentage of filtered Phosphate is reabsorbed in the Proximal Tubule (PCT)?,85%,67%,50%,25%,100%,A,
 39KLEPWW,Nephrology,180,"Glomerulotubular Balance means that even if GFR increases, it maintains constant fractional reabsorption of what percentage of the filtered Na+ and H2O?","Two-thirds, or 67%","One-half, or 50%","One-quarter, or 25%","Three-quarters, or 75%","One-third, or 33%",A,
 ZZ7WLBA7,Nephrology,180,What percentage of NaCl is reabsorbed in the Loop of Henle?,25%,67%,50%,85%,100%,A,
 TWX2PEV2,Nephrology,180,What percentage of K+ is reabsorbed in the Loop of Henle?,20%,67%,25%,50%,85%,A,
-W2TUGG3M,Nephrology,180,By which transporter is K+ reabsorbed in the Loop of Henle?,Na+-K+-2Cl- cotransporter,Na+-Cl- cotransporter,Na+-H+ exchanger,Na+-glucose cotransporter,Na+-K+ ATPase,A,
+W2TUGG3M,Nephrology,180,<p>By which transporter is K+ reabsorbed in the Loop of Henle?</p>,Na<sup>+</sup>-K<sup>+</sup>-2Cl<sup>-</sup> co-transporter,Na<sup>+</sup>-Cl<sup>-</sup> cotransporter,Na<sup>+</sup>-K<sup>+</sup> ATPase,Na<sup>+</sup>-H<sup>+</sup> exchanger,Na<sup>+</sup>-glucose cotransporter,A,<p>No explanation provided.</p>
 EA5A99S5,Nephrology,180,Which substance is secreted in the Loop of Henle?,Urea,Creatinine,Potassium,Hydrogen,Bicarbonate,A,
 EU4YCSA7,Nephrology,180,Which part of the Loop of Henle is impermeable to water and is called the diluting segment?,Thick ascending limb,Thin descending limb,Thin ascending limb,Thick descending limb,Hairpin turn,A,
 WPCZX5QE,Nephrology,180,What percentage of the filtered Na+ is reabsorbed by the Distal Tubule and Collecting Duct together?,8%,25%,67%,50%,100%,A,
