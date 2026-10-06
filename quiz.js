@@ -759,9 +759,17 @@ if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                     if (radio.checked) correctLetter = String.fromCharCode(65 + index);
                 });
 
-                // Extract pure HTML tags from the visual editors
-                const hintHTML = quillHint.root.innerHTML;
-                const explanationHTML = quillExplanation.root.innerHTML;
+// Decodes structural blocks and inline styles without breaking math symbols
+                const unescapeHTML = (str) => {
+                    // 1. Target specific HTML tags and their attributes
+                    let html = str.replace(/&lt;(\/?(h[1-6]|p|strong|em|sub|sup|br|div|span|ul|li|ol|b|i|u)(?:\s+[^&>]+)?)\&gt;/gi, '<$1>');
+                    // 2. Fix the quotation marks that Quill escapes inside your style tags
+                    return html.replace(/&quot;/g, '"');
+                };
+
+                const questionHTML = unescapeHTML(quillQuestion.root.innerHTML);
+                const hintHTML = unescapeHTML(quillHint.root.innerHTML);
+                const explanationHTML = unescapeHTML(quillExplanation.root.innerHTML);
 
 const updatedRow = {
     "QuestionID": targetId,
@@ -770,7 +778,7 @@ const updatedRow = {
     "Subject": document.getElementById('edit-q-subject').value.trim(),
     "Chapter": document.getElementById('edit-q-chapter').value.trim(),
     "Topic": document.getElementById('edit-q-topic').value.trim(),
-    "Question": quillQuestion.root.innerHTML,
+    "Question": questionHTML,
     "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
     "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
     "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
