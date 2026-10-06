@@ -73,8 +73,8 @@ async function fetchAndLaunchDeck(systemId, cardElement) {
             throw new Error("Deck is empty");
         }
 
-        // Shuffle the deck
-        activeDeck = deckData.sort(() => 0.5 - Math.random());
+		// Load deck in sequential order
+		activeDeck = deckData;
         currentIndex = 0;
         
         selectionScreen.style.display = 'none';
