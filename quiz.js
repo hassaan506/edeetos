@@ -1866,13 +1866,20 @@ document.addEventListener('keydown', (e) => {
     const explanationModalLocal = document.getElementById('explanation-modal');
     const isExplanationOpen = explanationModalLocal && explanationModalLocal.classList.contains('show');
 
+// Intercept physical number keys directly to bypass OS NumLock/Shift overrides
+    if (e.code === 'Numpad1' || e.code === 'Digit1') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(0) : selectOptionByIndex(0); return; }
+    if (e.code === 'Numpad2' || e.code === 'Digit2') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(1) : selectOptionByIndex(1); return; }
+    if (e.code === 'Numpad3' || e.code === 'Digit3') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(2) : selectOptionByIndex(2); return; }
+    if (e.code === 'Numpad4' || e.code === 'Digit4') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(3) : selectOptionByIndex(3); return; }
+    if (e.code === 'Numpad5' || e.code === 'Digit5') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(4) : selectOptionByIndex(4); return; }
+
     if (isExplanationOpen) {
         const modalContent = explanationModalLocal.querySelector('.modal-content');
         if (e.key === 'ArrowUp') { e.preventDefault(); if(modalContent) modalContent.scrollTop -= 40; return; } 
         else if (e.key === 'ArrowDown') { e.preventDefault(); if(modalContent) modalContent.scrollTop += 40; return; }
     }
 
-switch(e.key) {
+    switch(e.key) {
         case 'ArrowRight': e.preventDefault(); if(nextBtnLocal) nextBtnLocal.click(); break;
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
         case 'h': case 'H': e.preventDefault(); if (aiHintBtn && aiHintBtn.style.display !== 'none') aiHintBtn.click(); break;
@@ -1900,11 +1907,11 @@ switch(e.key) {
             }
             break;
         case 's': case 'S': e.preventDefault(); if (currentQuestionData) document.getElementById('bookmark-btn').click(); break;
-case 'a': case 'A': case '1': case '!': e.shiftKey ? toggleStrikeByIndex(0) : selectOptionByIndex(0); break;
-        case 'b': case 'B': case '2': case '@': e.shiftKey ? toggleStrikeByIndex(1) : selectOptionByIndex(1); break;
-        case 'c': case 'C': case '3': case '#': e.shiftKey ? toggleStrikeByIndex(2) : selectOptionByIndex(2); break;
-        case 'd': case 'D': case '4': case '$': e.shiftKey ? toggleStrikeByIndex(3) : selectOptionByIndex(3); break;
-        case 'e': case 'E': case '5': case '%': e.shiftKey ? toggleStrikeByIndex(4) : selectOptionByIndex(4); break;
+        case 'a': case 'A': e.shiftKey ? toggleStrikeByIndex(0) : selectOptionByIndex(0); break;
+        case 'b': case 'B': e.shiftKey ? toggleStrikeByIndex(1) : selectOptionByIndex(1); break;
+        case 'c': case 'C': e.shiftKey ? toggleStrikeByIndex(2) : selectOptionByIndex(2); break;
+        case 'd': case 'D': e.shiftKey ? toggleStrikeByIndex(3) : selectOptionByIndex(3); break;
+        case 'e': case 'E': e.shiftKey ? toggleStrikeByIndex(4) : selectOptionByIndex(4); break;
     }
 });
 
