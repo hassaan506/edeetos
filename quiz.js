@@ -1884,13 +1884,15 @@ document.addEventListener('keydown', (e) => {
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
         case 'h': case 'H': e.preventDefault(); if (aiHintBtn && aiHintBtn.style.display !== 'none') aiHintBtn.click(); break;
         case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else exitSafely('questions.html'); break; 
-        case 'Enter': 
+case 'Enter': 
             e.preventDefault(); 
             const dynamicHintBtn = document.getElementById('close-dynamic-hint');
             const practiceHomeBtn = document.getElementById('btn-practice-home');
             const returnHomeBtn = document.getElementById('btn-return-home');
+            const resumeBtnLocal = document.getElementById('btn-resume-quiz');
             
-            if (dynamicHintBtn) dynamicHintBtn.click();
+            if (isPaused && resumeBtnLocal) resumeBtnLocal.click();
+            else if (dynamicHintBtn) dynamicHintBtn.click();
             else if (practiceHomeBtn && document.getElementById('practice-complete-modal')) practiceHomeBtn.click();
             else if (returnHomeBtn && !document.getElementById('exam-result-screen').classList.contains('hidden')) returnHomeBtn.click();
             else if (isExplanationOpen) document.getElementById('close-explanation').click(); 
@@ -1902,8 +1904,13 @@ document.addEventListener('keydown', (e) => {
             if (isExamMode && skipBtn) {
                 skipBtn.click(); 
             } else if (!isExamMode) {
-                const pauseBtnLocal = document.getElementById('pause-btn');
-                if (pauseBtnLocal) pauseBtnLocal.click();
+                const resumeBtnP = document.getElementById('btn-resume-quiz');
+                if (isPaused && resumeBtnP) {
+                    resumeBtnP.click();
+                } else {
+                    const pauseBtnLocal = document.getElementById('pause-btn');
+                    if (pauseBtnLocal) pauseBtnLocal.click();
+                }
             }
             break;
         case 's': case 'S': e.preventDefault(); if (currentQuestionData) document.getElementById('bookmark-btn').click(); break;
