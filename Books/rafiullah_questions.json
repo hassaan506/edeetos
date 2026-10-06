@@ -57,7 +57,7 @@
             "B": "1/3rd (20%)",
             "C": "1/4th",
             "D": "3/4th",
-            "E": "2-Jan"
+            "E": ""
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -79,7 +79,7 @@
             "B": "2/3rd (40%)",
             "C": "1/4th",
             "D": "3/4th",
-            "E": "2-Jan"
+            "E": ""
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -207,14 +207,14 @@
         "difficulty": "",
         "question": "Plasma constitutes what fraction of the extracellular fluid (ECF)?",
         "options": {
-            "A": "1/2",
-            "B": "1/3",
-            "C": "2/3",
-            "D": "1/4",
-            "E": "3/4"
+            "A": "46024",
+            "B": "46025",
+            "C": "46056",
+            "D": "46026",
+            "E": "46085"
         },
         "correctAnswer": "D",
-        "explanation": "<p>No explanation provided.</p>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -233,10 +233,10 @@
             "B": "1/3rd",
             "C": "2/3rd",
             "D": "1/4th",
-            "E": "1/2"
+            "E": "2-Jan"
         },
         "correctAnswer": "A",
-        "explanation": "<p>No explanation provided.</p>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -4922,7 +4922,7 @@
             "E": "ANP"
         },
         "correctAnswer": "D",
-        "explanation": "<p>No explanation provided.</p>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -5098,7 +5098,7 @@
             "E": "Increases permeability of NA and K in cortical collecting tubule"
         },
         "correctAnswer": "E",
-        "explanation": "<p>No explanation provided.</p>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -5846,7 +5846,7 @@
             "E": "Increased Ca concentration"
         },
         "correctAnswer": "C",
-        "explanation": "<p>No explanation provided.</p>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -6748,7 +6748,7 @@
             "E": "Loop of Henle + DCT"
         },
         "correctAnswer": "C",
-        "explanation": "<h3><br></h3>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -6902,7 +6902,7 @@
             "E": "Na+-K+ ATPase"
         },
         "correctAnswer": "B",
-        "explanation": "<p>No explanation provided.</p>",
+        "explanation": "",
         "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
@@ -7043,10 +7043,10 @@
         "id": "9LG493WK",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "180",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>In the Late DT and Collecting Duct, what do α-Intercalated cells do?</p>",
         "options": {
             "A": "Secrete Urea and Cl-",
@@ -7056,8 +7056,8 @@
             "E": "Reabsorb HCO<sub>3</sub><sup>-</sup> and Cl<sup>-</sup>"
         },
         "correctAnswer": "C",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>",
+        "explanation": "",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -7263,10 +7263,10 @@
         "id": "5G6B6QM2",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "180",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Most of the glucose that is filtered through the glomerulus undergoes reabsorption in the:</p>",
         "options": {
             "A": "Proximal Tubule",
@@ -7276,8 +7276,8 @@
             "E": "Collecting Duct."
         },
         "correctAnswer": "A",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>",
+        "explanation": "",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -7285,10 +7285,10 @@
         "id": "5RDN7KE2",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "180",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Absorption of Bicarbonate occurs in:</p>",
         "options": {
             "A": "PCT",
@@ -7298,8 +7298,8 @@
             "E": "DCT"
         },
         "correctAnswer": "A",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>",
+        "explanation": "",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -7348,35 +7348,13 @@
         "bookName": "rafiullah"
     },
     {
-        "id": "ARKV2ZCH",
-        "year": "",
-        "exams": [],
-        "subject": "Rafiullah FCPS",
-        "chapter": "Nephrology",
-        "topic": "DELETE",
-        "difficulty": "easy",
-        "question": "<p>If both PCT and Collecting ducts are in the same MCQ for bicarbonate absorption, which is preferred?</p>",
-        "options": {
-            "A": "Prefer only Collecting ducts",
-            "B": "Prefer Loop of Henle",
-            "C": "Prefer DCT",
-            "D": "Prefer PCT and Collecting ducts if both in options in same MCQ",
-            "E": "Prefer only PCT"
-        },
-        "correctAnswer": "D",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>",
-        "isBookQuestion": true,
-        "bookName": "rafiullah"
-    },
-    {
         "id": "FARNV9WA",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "180",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Renal tubules normally reabsorb:</p>",
         "options": {
             "A": "No HCO<sub>3</sub> in metabolic acidosis",
@@ -7386,8 +7364,8 @@
             "E": "No HCO<sub>3</sub> in respiratory acidosis"
         },
         "correctAnswer": "B",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>",
+        "explanation": "",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -7916,28 +7894,6 @@
         "correctAnswer": "A",
         "explanation": "",
         "hint": "",
-        "isBookQuestion": true,
-        "bookName": "rafiullah"
-    },
-    {
-        "id": "FLQRLW2J",
-        "year": "",
-        "exams": [],
-        "subject": "Rafiullah FCPS",
-        "chapter": "Nephrology",
-        "topic": "DELETE",
-        "difficulty": "medium",
-        "question": "<p>H+ secretion from PCT in exchange of:</p>",
-        "options": {
-            "A": "Cl-",
-            "B": "Na+",
-            "C": "K+",
-            "D": "NH3",
-            "E": "HCO3-"
-        },
-        "correctAnswer": "B",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -8979,10 +8935,10 @@
         "id": "VLZTE8AL",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "181",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>An important therapeutic or toxic effect of loop diuretics is:</p>",
         "options": {
             "A": "Decreased urine output",
@@ -8993,7 +8949,7 @@
         },
         "correctAnswer": "B",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Decreased blood volume</strong> - Loop diuretics inhibit the Na<sup>+</sup>-K<sup>+</sup>-2Cl<sup>−</sup> cotransporter in the thick ascending limb, causing marked sodium and water excretion. This reduces extracellular fluid and blood volume.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Decreased urine output</strong> - Loop diuretics are potent diuretics and cause a marked increase in urine output.</p></p><p><p><strong style=\"color: #CC0000;\">Increased blood volume</strong> - Loss of sodium and water decreases blood volume rather than increasing it.</p></p><p><p><strong style=\"color: #CC0000;\">Increased sodium reabsorption</strong> - Loop diuretics block sodium reabsorption in the thick ascending limb, producing natriuresis.</p></p><p><p><strong style=\"color: #CC0000;\">Increased potassium reabsorption</strong> - Increased distal sodium delivery promotes potassium secretion, which can cause hypokalemia.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Loop diuretics are the <strong>most potent diuretics</strong>. They inhibit NKCC2 in the thick ascending limb, causing loss of Na<sup>+</sup>, K<sup>+</sup>, Cl<sup>−</sup> and water.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>LOOP = Lose Na, K, Ca + Volume</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Loop diuretics cause <strong>hypokalemia</strong> and <strong>increased calcium excretion</strong>, unlike thiazides.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9177,10 +9133,10 @@
         "id": "5QYJMMEY",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "181",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Mechanism of Action of Acetazolamide:</p>",
         "options": {
             "A": "Inhibit Na/K/2Cl cotransport",
@@ -9191,7 +9147,7 @@
         },
         "correctAnswer": "B",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Decrease H<sup>+</sup> secretion and increase Na<sup>+</sup>, K<sup>+</sup> excretion</strong> - Acetazolamide inhibits <strong>carbonic anhydrase</strong> in the proximal tubule. This decreases H<sup>+</sup> secretion and reduces NaHCO<sub>3</sub> reabsorption, so Na<sup>+</sup>, K<sup>+</sup>, HCO<sub>3</sub><sup>−</sup> and water are excreted.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Inhibit Na/K/2Cl cotransport</strong> - This is the mechanism of <strong>loop diuretics</strong>, which inhibit NKCC2 in the thick ascending limb.</p></p><p><p><strong style=\"color: #CC0000;\">Inhibit Na/Cl absorption</strong> - This is the mechanism of <strong>thiazide diuretics</strong>, which inhibit the Na<sup>+</sup>/Cl<sup>−</sup> cotransporter in the distal convoluted tubule.</p></p><p><p><strong style=\"color: #CC0000;\">Osmotic diuresis</strong> - Osmotic diuretics such as <strong>mannitol</strong> increase tubular osmolarity and retain water in the renal tubule.</p></p><p><p><strong style=\"color: #CC0000;\">Increase H<sup>+</sup> secretion and decrease Na<sup>+</sup>, K<sup>+</sup> excretion</strong> - The opposite occurs with acetazolamide: H<sup>+</sup> secretion falls, while Na<sup>+</sup> and K<sup>+</sup> excretion increase.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Acetazolamide = carbonic anhydrase inhibitor</strong> acting mainly in the proximal tubule. It decreases HCO<sub>3</sub><sup>−</sup> reabsorption and produces <strong>bicarbonaturia</strong>, making the urine alkaline and causing <strong>metabolic acidosis</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Acetazolamide → CA ↓ → H<sup>+</sup> ↓ → HCO<sub>3</sub><sup>−</sup> ↓ reabsorption → alkaline urine</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Acetazolamide causes <strong>metabolic acidosis</strong>. The high-yield association is <strong>carbonic anhydrase inhibition in the proximal tubule</strong>.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9265,10 +9221,10 @@
         "id": "HBQDB9QN",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "181",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>In a person taking carbonic anhydrase inhibitors for 4 weeks now, what changes will occur?</p>",
         "options": {
             "A": "Decrease Na+ in urine",
@@ -9279,7 +9235,7 @@
         },
         "correctAnswer": "B",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Decrease HCO<sub>3</sub><sup>−</sup> in blood</strong> - Carbonic anhydrase inhibitors block HCO<sub>3</sub><sup>−</sup> reabsorption in the proximal tubule, causing persistent bicarbonate loss in urine. With continued use, this produces <strong>metabolic acidosis</strong>, so blood HCO<sub>3</sub><sup>−</sup> decreases.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Decrease Na<sup>+</sup> in urine</strong> - Acetazolamide decreases Na<sup>+</sup> reabsorption in the proximal tubule, so <strong>urinary Na<sup>+</sup> excretion increases</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Decrease K<sup>+</sup> in urine</strong> - Increased Na<sup>+</sup> delivery to the distal nephron promotes <strong>K<sup>+</sup> secretion</strong>, so urinary K<sup>+</sup> excretion increases.</p></p><p><p><strong style=\"color: #CC0000;\">Increase H<sup>+</sup> secretion</strong> - Carbonic anhydrase inhibition reduces intracellular H<sup>+</sup> generation in proximal tubular cells, causing <strong>decreased H<sup>+</sup> secretion</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Increase HCO<sub>3</sub><sup>−</sup> in blood</strong> - The opposite occurs. Bicarbonate is lost in urine, causing <strong>decreased plasma HCO<sub>3</sub><sup>−</sup></strong>.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Carbonic anhydrase inhibitors cause <strong>bicarbonaturia → alkaline urine → decreased plasma HCO<sub>3</sub><sup>−</sup> → metabolic acidosis</strong>. With prolonged use, their diuretic effect becomes weaker because bicarbonate stores are depleted.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>CA Inhibitor = HCO<sub>3</sub><sup>−</sup> OUT → HCO<sub>3</sub><sup>−</sup> DOWN</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>After chronic use, think <strong>bicarbonate depletion</strong>. The classic blood change is <strong>↓ HCO<sub>3</sub><sup>−</sup></strong>, not increased bicarbonate.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9287,10 +9243,10 @@
         "id": "JM4RUDJW",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "181",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Zinc is an essential constituent in one of the following:</p>",
         "options": {
             "A": "Osmotic diuresis",
@@ -9301,7 +9257,7 @@
         },
         "correctAnswer": "D",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Carbonic anhydrase</strong> - Carbonic anhydrase contains <strong>Zn<sup>2+</sup></strong> at its active site. Zinc allows the enzyme to rapidly convert CO<sub>2</sub> + H<sub>2</sub>O ↔ H<sup>+</sup> + HCO<sub>3</sub><sup>−</sup>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Osmotic diuresis</strong> - Osmotic diuresis is a <strong>physiological mechanism</strong>, not a zinc-containing enzyme or transporter.</p></p><p><p><strong style=\"color: #CC0000;\">Na/Cl cotransporter</strong> - This is a membrane transporter in the <strong>distal convoluted tubule</strong>; it does not contain zinc as an essential cofactor.</p></p><p><p><strong style=\"color: #CC0000;\">Na/K/2Cl cotransporter</strong> - This is the <strong>NKCC2 transporter</strong> in the thick ascending limb. Zinc is not an essential constituent of this transporter.</p></p><p><p><strong style=\"color: #CC0000;\">Na/K exchange pump</strong> - Na<sup>+</sup>/K<sup>+</sup>-ATPase is an ATP-dependent membrane pump and does not require zinc as its essential metal cofactor.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Zinc is an essential cofactor of carbonic anhydrase.</strong> It catalyzes the rapid interconversion of CO<sub>2</sub> and HCO<sub>3</sub><sup>−</sup>, which is important in acid-base balance and renal HCO<sub>3</sub><sup>−</sup> reabsorption.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Zn = CA</strong> → <strong>Zinc is in Carbonic Anhydrase</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>When you see <strong>zinc + enzyme</strong>, think <strong>carbonic anhydrase</strong>. Acetazolamide works by inhibiting this zinc-containing enzyme.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9309,10 +9265,10 @@
         "id": "A2RR6SYS",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "182",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Thiazide diuretic cause:</p>",
         "options": {
             "A": "Hypervolemia",
@@ -9323,7 +9279,7 @@
         },
         "correctAnswer": "C",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hypokalemia</strong> - Thiazides inhibit the Na<sup>+</sup>/Cl<sup>−</sup> cotransporter in the distal convoluted tubule, increasing sodium delivery to the collecting duct. This increases K<sup>+</sup> secretion and causes <strong>hypokalemia</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hypervolemia</strong> - Thiazides increase Na<sup>+</sup> and water excretion, causing a decrease in extracellular fluid volume.</p></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia</strong> - Thiazides increase distal Na<sup>+</sup> delivery and K<sup>+</sup> secretion, so they cause <strong>hypokalemia</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Hypernatremia</strong> - Thiazides increase sodium excretion and may cause <strong>hyponatremia</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Hypouricemia</strong> - Thiazides decrease uric acid excretion, causing <strong>hyperuricemia</strong> and potentially precipitating gout.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Thiazides inhibit the Na<sup>+</sup>/Cl<sup>−</sup> cotransporter in the <strong>distal convoluted tubule</strong>. Their important metabolic effects are <strong>hyperglycemia, hyperlipidemia, hyperuricemia, and hypercalcemia</strong>, with hypokalemia and hyponatremia.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>HyperGLUC = Glycemia ↑, Lipidemia ↑, Uricemia ↑, Calcemia ↑</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>GLUC</strong> helps you remember the metabolic effects, but when an MCQ asks for the classic electrolyte abnormality of thiazides, think <strong>hypokalemia</strong>.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9375,10 +9331,10 @@
         "id": "W52XAV9N",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "182",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Thiazide diuretics causes:</p>",
         "options": {
             "A": "Hypokalemia> Hyperuricemia >Hypercalcemia",
@@ -9389,7 +9345,7 @@
         },
         "correctAnswer": "A",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hypokalemia &gt; Hyperuricemia &gt; Hypercalcemia</strong> - Thiazides increase distal Na<sup>+</sup> delivery, causing increased K<sup>+</sup> secretion and hypokalemia. They decrease uric acid excretion, causing hyperuricemia, and increase Ca<sup>2+</sup> reabsorption, causing hypercalcemia.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hypokalemia &gt; Hypouricemia &gt; Hypercalcemia</strong> - Thiazides cause hyperuricemia, not hypouricemia, because uric acid excretion decreases.</p></p><p><p><strong style=\"color: #CC0000;\">Hypokalemia &gt; Hyperuricemia &gt; Hypocalcemia</strong> - Thiazides increase Ca<sup>2+</sup> reabsorption, so serum calcium tends to increase.</p></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia &gt; Hyperuricemia &gt; Hypocalcemia</strong> - Thiazides increase K<sup>+</sup> excretion and Ca<sup>2+</sup> reabsorption, so they cause hypokalemia and hypercalcemia.</p></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia &gt; Hypouricemia &gt; Hypocalcemia</strong> - These are opposite to the characteristic effects of thiazides: K<sup>+</sup> ↓, uric acid ↑, and Ca<sup>2+</sup> ↑.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Thiazides cause <strong>K<sup>+</sup> ↓, uric acid ↑, and Ca<sup>2+</sup> ↑</strong>. Their metabolic effects can be remembered with <strong>GLUC</strong>: Glycemia ↑, Lipidemia ↑, Uricemia ↑, Calcemia ↑.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>GLUC = Glycemia ↑ + Lipidemia ↑ + Uricemia ↑ + Calcemia ↑</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Thiazides retain Ca<sup>2+</sup></strong>, while loop diuretics increase Ca<sup>2+</sup> excretion.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9441,10 +9397,10 @@
         "id": "BYEH8425",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "182",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Chlorothiazide diuretics most likely produce:</p>",
         "options": {
             "A": "Hypernatremia",
@@ -9455,7 +9411,7 @@
         },
         "correctAnswer": "E",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hyperuricemia</strong> - Chlorothiazide is a thiazide diuretic. Thiazides decrease uric acid excretion by increasing its proximal tubular reabsorption, leading to <strong>hyperuricemia</strong> and potentially precipitating gout.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hypernatremia</strong> - Thiazides increase Na<sup>+</sup> excretion and may cause <strong>hyponatremia</strong>, not hypernatremia.</p></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia</strong> - Increased distal Na<sup>+</sup> delivery promotes K<sup>+</sup> secretion, causing <strong>hypokalemia</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Hypocalcemia</strong> - Thiazides increase Ca<sup>2+</sup> reabsorption in the distal convoluted tubule, causing a tendency toward <strong>hypercalcemia</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Hypouricemia</strong> - The opposite occurs. Thiazides reduce uric acid excretion, so serum uric acid <strong>increases</strong>.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Thiazides classically cause <strong>hypokalemia, hyperuricemia, and hypercalcemia</strong>. They also cause the metabolic abnormalities remembered by <strong>GLUC</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>GLUC = Glycemia ↑, Lipidemia ↑, Uricemia ↑, Calcemia ↑</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>For thiazides, remember <strong>Uricemia ↑</strong>. For loop diuretics, uric acid can also increase, so the drug class and other options must be used to distinguish the answer.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },
@@ -9463,10 +9419,10 @@
         "id": "6G9H6MQE",
         "year": "",
         "exams": [],
-        "subject": "Rafiullah FCPS",
+        "subject": "",
         "chapter": "Nephrology",
         "topic": "182",
-        "difficulty": "medium",
+        "difficulty": "",
         "question": "<p>Thrombocytopenia is a side effect of:</p>",
         "options": {
             "A": "Thiazides",
@@ -9477,7 +9433,7 @@
         },
         "correctAnswer": "A",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Thiazides</strong> - Thiazide diuretics can rarely cause <strong>thrombocytopenia</strong> as a hematologic adverse effect, usually through an immune-mediated mechanism.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Loop diuretics</strong> - Loop diuretics can cause other important adverse effects such as hypokalemia, hypocalcemia, ototoxicity, and hyperuricemia. Thrombocytopenia is not the classic association tested here.</p></p><p><p><strong style=\"color: #CC0000;\">Osmotic diuretics</strong> - Mannitol mainly causes volume-related effects and electrolyte disturbances; thrombocytopenia is not a characteristic adverse effect.</p></p><p><p><strong style=\"color: #CC0000;\">K-sparing diuretics</strong> - The major adverse effect is <strong>hyperkalemia</strong>. Spironolactone can also cause gynecomastia and menstrual disturbances.</p></p><p><p><strong style=\"color: #CC0000;\">Carbonic anhydrase inhibitors</strong> - Acetazolamide mainly causes metabolic acidosis, bicarbonaturia, hypokalemia, and renal stone formation.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Thiazides can rarely cause <strong>hematologic adverse effects</strong>, including thrombocytopenia. For exams, thrombocytopenia is a recognized adverse effect of thiazides.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>T = Thiazide = T = Thrombocytopenia</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Remember this as a rare adverse effect. The common thiazide effects are <strong>hypokalemia, hyponatremia, hyperuricemia, hyperglycemia, hyperlipidemia, and hypercalcemia</strong>.</p></p>",
-        "hint": "<p><br></p>",
+        "hint": "",
         "isBookQuestion": true,
         "bookName": "rafiullah"
     },

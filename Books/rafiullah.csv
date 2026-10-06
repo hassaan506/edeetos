@@ -1,15 +1,15 @@
-QuestionID,Chapter,Topic,Question,OptionA,OptionB,OptionC,OptionD,OptionE,CorrectAnswer,Explanation
+﻿QuestionID,Chapter,Topic,Question,OptionA,OptionB,OptionC,OptionD,OptionE,CorrectAnswer,Explanation
 HE5FPWVQ,Nephrology,166,A man has lost 2L water by sweating and replaced by 2L pure water. What will happen?,Decrease ICF osmolarity,Increase ICF osmolarity,No change in ICF osmolarity,Decrease ECF volume,Increase ECF osmolarity,A,
 L5C8X7S2,Nephrology,166,Total body water is approximately what percentage of body weight?,60%,40%,20%,80%,50%,A,
-2N7YNFD6,Nephrology,166,What fraction of total body water is intracellular fluid?,2/3rd (40%),1/3rd (20%),1/4th,3/4th,2-Jan,A,
-975CJ5V4,Nephrology,166,What fraction of total body water is extracellular fluid?,1/3rd (20%),2/3rd (40%),1/4th,3/4th,2-Jan,A,
+2N7YNFD6,Nephrology,166,What fraction of total body water is intracellular fluid?,2/3rd (40%),1/3rd (20%),1/4th,3/4th,,A,
+975CJ5V4,Nephrology,166,What fraction of total body water is extracellular fluid?,1/3rd (20%),2/3rd (40%),1/4th,3/4th,,A,
 RHQ73DWE,Nephrology,166,Intracellular fluid (ICF) constitutes what percentage of body weight?,40%,20%,60%,80%,10%,A,
 78X7A4NE,Nephrology,166,Extracellular fluid (ECF) constitutes what percentage of body weight?,20%,40%,60%,80%,10%,A,
 UMJBEHZZ,Nephrology,166,What is the total body water in litres in a 70kg person?,42 L,28 L,14 L,60 L,50 L,A,
 7FTVA3E7,Nephrology,166,What is the volume of Intracellular Fluid (ICF) in a 70kg person?,28 L,14 L,42 L,10.5 L,3.5 L,A,
 XX2V5ZLT,Nephrology,166,What is the volume of Extracellular Fluid (ECF) in a 70kg person?,14 L,28 L,42 L,10.5 L,3.5 L,A,
-HGJBUS5X,Nephrology,166,Plasma constitutes what fraction of the extracellular fluid (ECF)?,1/2,1/3,2/3,1/4,3/4,D,<p>No explanation provided.</p>
-AWPENV2W,Nephrology,166,Interstitial fluid constitutes what fraction of the extracellular fluid (ECF)?,3/4th,1/3rd,2/3rd,1/4th,1/2,A,<p>No explanation provided.</p>
+HGJBUS5X,Nephrology,166,Plasma constitutes what fraction of the extracellular fluid (ECF)?,46024,46025,46056,46026,46085,D,
+AWPENV2W,Nephrology,166,Interstitial fluid constitutes what fraction of the extracellular fluid (ECF)?,3/4th,1/3rd,2/3rd,1/4th,2-Jan,A,
 U5UY4XDT,Nephrology,166,What are the major cations of the Intracellular Fluid (ICF)?,K+ and Mg+,Na+ and Ca++,Na+ and K+,Mg+ and Ca++,Na+ and Mg+,A,
 9LUFABMP,Nephrology,166,What is the major cation of the Extracellular Fluid (ECF)?,Na+,K+,Mg+,Ca++,H+,A,
 AY73VQXG,Nephrology,166,What are the major anions of the Extracellular Fluid (ECF)?,Cl- and HCO3-,PO4- and Proteins,Cl- and PO4-,HCO3- and Proteins,SO4- and Cl-,A,
@@ -226,7 +226,7 @@ L376FDKJ,Nephrology,175,"A patient admitted in endocrinology ward has:
 Potassium: 3
 Na: 150
 pH 7.45
-He is most likely having an excess of which hormone?",ADH,PTH,Insulin,Aldosterone,ANP,D,<p>No explanation provided.</p>
+He is most likely having an excess of which hormone?",ADH,PTH,Insulin,Aldosterone,ANP,D,
 Q6SV8ST6,Nephrology,175,Aldosterone causes:,Na and Cl reabsorption,Na and K reabsorption,K and Cl reabsorption,Na secretion and K reabsorption,Water secretion and Na reabsorption,A,
 YSEC3SL8,Nephrology,175,Aldosterone causes a decrease in the renal tubular secretion of:,Sodium,Potassium,Hydrogen,Creatinine,Urea,A,
 6H9D4WKE,Nephrology,175,The aldosterone:,Increases sodium reabsorption by the nephron,Decreases sodium reabsorption by the nephron,Increases potassium reabsorption by the nephron,Decreases water reabsorption by the nephron,Has no effect on sodium,A,
@@ -234,7 +234,7 @@ DM7E8G7L,Nephrology,175,The hormone responsible for sodium reabsorption in the d
 D97Q4XJC,Nephrology,175,Sodium absorption increases at DCT due to:,Aldosterone,ADH,ANP,PTH,Calcitonin,A,
 7GC8F99S,Nephrology,175,Aldosterone decreases secretion of:,Sodium,Potassium,Hydrogen,Creatinine,Uric acid,A,
 6D7ZNG8C,Nephrology,175,Most potent sodium-retaining hormone is:,Aldosterone,Cortisol,Estrogen,Progesterone,ADH,A,
-9NPLPZQA,Nephrology,175,Short term function of aldosterone:,Decreases permeability of H2O in collecting duct,Increases permeability of H2O in collecting duct,Decreases permeability of Na and K in cortical collecting tubule,Increases GFR,Increases permeability of NA and K in cortical collecting tubule,E,<p>No explanation provided.</p>
+9NPLPZQA,Nephrology,175,Short term function of aldosterone:,Decreases permeability of H2O in collecting duct,Increases permeability of H2O in collecting duct,Decreases permeability of Na and K in cortical collecting tubule,Increases GFR,Increases permeability of NA and K in cortical collecting tubule,E,
 A55ATMN4,Nephrology,175,Maximum water and Na are absorbed by the effect of:,Aldosterone,ADH,ANP,PTH,Angiotensin II,A,
 LXSBHKH3,Nephrology,175,"A person who is fasting does not take water for many hours, excretes concentrated urine due to secretion of increased amount of:",Antidiuretic hormone,Aldosterone,ANP,Renin,Angiotensin II,A,
 Y8GTY3UN,Nephrology,176,What is the most effective stimulant for aldosterone secretion?,K+ ions,Na+ ions,Ca2+ ions,Cl- ions,Mg2+ ions,A,
@@ -268,7 +268,7 @@ RS2LX55D,Nephrology,178,The most important change in renal function that tends t
 8JUPPAPQ,Nephrology,178,The main outcome of a decrease in effective circulating volume is:,Increase in renin secretion,Decrease in renin secretion,Increase in ANP secretion,Increase in GFR,Decrease in aldosterone secretion,A,
 JEZ9GUXG,Nephrology,178,A young patient with high renin levels likely has increased renin due to:,Sympathetic stimulation via renal nerve,Parasympathetic stimulation via vagus nerve,Increased NaCl delivery to macula densa,Increased renal perfusion pressure,Hypervolemia,A,
 RVH8MPFX,Nephrology,178,The most potent stimulus for secretion of renin from kidney is:,Hypotension,Hypertension,Hypernatremia,Hyperkalemia,Hypervolemia,A,
-R63YZUB2,Nephrology,178,Which of the following stimulate renin secretion?,Increased Cl concentration,Increased Na concentration,Increased K concentration,Decreased K concentration,Increased Ca concentration,C,<p>No explanation provided.</p>
+R63YZUB2,Nephrology,178,Which of the following stimulate renin secretion?,Increased Cl concentration,Increased Na concentration,Increased K concentration,Decreased K concentration,Increased Ca concentration,C,
 77DF7YJL,Nephrology,178,Renin secretion by the kidney is increased by increasing:,Sympathetic nerve activity,Parasympathetic nerve activity,NaCl delivery to macula densa,Renal perfusion pressure,Atrial stretch,A,
 46RPUU6D,Nephrology,178,Decrease Na delivery to macula densa causes release of?,Renin,ANP,ADH,Aldosterone,Angiotensin II,A,
 YQTQSHRN,Nephrology,178,Diminished sodium chloride delivery to the macula densa stimulates the release of:,Renin,ANP,ADH,Aldosterone,Angiotensin II,A,
@@ -309,21 +309,21 @@ BJ9LLH3G,Nephrology,179,A Black athlete presented with 3rd degree burn; he is li
 EGLV9FUV,Nephrology,179,Athletes differ from normal individuals in having:,A higher maximum oxygen consumption,A lower maximum oxygen consumption,The same maximum oxygen consumption,A higher resting heart rate,A lower resting stroke volume,A,
 9MVU4FDA,Nephrology,179,"In athletes, maximum heat loss occurs through:",Sweating,Radiation,Conduction,Convection,Respiration,A,
 PMW7T2GN,Nephrology,179,"A 36-year-old athlete who works out excessively. During her exercise, increased water loss will be through:",Sweating,Urine,Feces,Respiration,Insensible perspiration,A,
-DNKMEKUV,Nephrology,180,<p>HCO3 reabsorption occurs through which segments of nephron?</p>,PCT + Loop of Henle,DCT + Collecting Ducts,PCT + Collecting Ducts,PCT + DCT,Loop of Henle + DCT,C,<h3><br></h3>
+DNKMEKUV,Nephrology,180,<p>HCO3 reabsorption occurs through which segments of nephron?</p>,PCT + Loop of Henle,DCT + Collecting Ducts,PCT + Collecting Ducts,PCT + DCT,Loop of Henle + DCT,C,
 98F79VW7,Nephrology,180,"What percentage of filtered Na+, H2O, and K+ is reabsorbed in the Proximal Tubule (PCT)?",67%,25%,50%,85%,100%,A,
 Z5BZWHSR,Nephrology,180,What percentage of filtered Urea is reabsorbed in the Proximal Tubule (PCT)?,50%,67%,25%,85%,100%,A,
 2BF72SHE,Nephrology,180,What percentage of filtered Phosphate is reabsorbed in the Proximal Tubule (PCT)?,85%,67%,50%,25%,100%,A,
 39KLEPWW,Nephrology,180,"Glomerulotubular Balance means that even if GFR increases, it maintains constant fractional reabsorption of what percentage of the filtered Na+ and H2O?","Two-thirds, or 67%","One-half, or 50%","One-quarter, or 25%","Three-quarters, or 75%","One-third, or 33%",A,
 ZZ7WLBA7,Nephrology,180,What percentage of NaCl is reabsorbed in the Loop of Henle?,25%,67%,50%,85%,100%,A,
 TWX2PEV2,Nephrology,180,What percentage of K+ is reabsorbed in the Loop of Henle?,20%,67%,25%,50%,85%,A,
-W2TUGG3M,Nephrology,180,<p>By which transporter is K+ reabsorbed in the Loop of Henle?</p>,Na<sup>+</sup>-glucose cotransporter,Na<sup>+</sup>-K<sup>+</sup>-2Cl<sup>-</sup> cotransporter,Na+-H+ exchanger,Na+-Cl- cotransporter,Na+-K+ ATPase,B,<p>No explanation provided.</p>
+W2TUGG3M,Nephrology,180,<p>By which transporter is K+ reabsorbed in the Loop of Henle?</p>,Na<sup>+</sup>-glucose cotransporter,Na<sup>+</sup>-K<sup>+</sup>-2Cl<sup>-</sup> cotransporter,Na+-H+ exchanger,Na+-Cl- cotransporter,Na+-K+ ATPase,B,
 EA5A99S5,Nephrology,180,Which substance is secreted in the Loop of Henle?,Urea,Creatinine,Potassium,Hydrogen,Bicarbonate,A,
 EU4YCSA7,Nephrology,180,Which part of the Loop of Henle is impermeable to water and is called the diluting segment?,Thick ascending limb,Thin descending limb,Thin ascending limb,Thick descending limb,Hairpin turn,A,
 WPCZX5QE,Nephrology,180,What percentage of the filtered Na+ is reabsorbed by the Distal Tubule and Collecting Duct together?,8%,25%,67%,50%,100%,A,
 TJZB3D44,Nephrology,180,Which part of the distal tubule is impermeable to water and is called the cortical diluting segment?,Early DT,Late DT,Collecting Duct,Macula densa,Connecting tubule,A,
 ECFKHV9H,Nephrology,180,What percentage of NaCl is reabsorbed in the Early DT?,8%,25%,67%,50%,100%,A,
 ZH4KNGQL,Nephrology,180,"In the Late DT and Collecting Duct, what do Principal cells do?","Reabsorb Na+ and H2O, secrete K+","Secrete Na+ and H2O, reabsorb K+",Reabsorb H+ and HCO3-,Secrete H+ and HCO3-,Reabsorb Urea and Cl-,A,
-9LG493WK,Nephrology,180,"<p>In the Late DT and Collecting Duct, what do α-Intercalated cells do?</p>",Secrete Urea and Cl-,Secrete K<sup><sup>+</sup></sup>,"Secrete H<sup>+</sup>, or reabsorb K<sup>+</sup> by an H<sup>+</sup>, K<sup>+</sup>-ATPase",Reabsorb Na<sup>+</sup> and H<sub>2</sub>O,Reabsorb HCO<sub>3</sub><sup>-</sup> and Cl<sup>-</sup>,C,<p>No explanation provided.</p>
+9LG493WK,Nephrology,180,"<p>In the Late DT and Collecting Duct, what do α-Intercalated cells do?</p>",Secrete Urea and Cl-,Secrete K<sup><sup>+</sup></sup>,"Secrete H<sup>+</sup>, or reabsorb K<sup>+</sup> by an H<sup>+</sup>, K<sup>+</sup>-ATPase",Reabsorb Na<sup>+</sup> and H<sub>2</sub>O,Reabsorb HCO<sub>3</sub><sup>-</sup> and Cl<sup>-</sup>,C,
 VX9DECZ8,Nephrology,180,The part of the nephron where the greatest fraction of water is reabsorbed:,Proximal convoluted tubule,Loop of Henle,Distal convoluted tubule,Collecting duct,Bowman's capsule,A,
 N8GSYKUL,Nephrology,180,"In dehydration, water is mainly absorbed from:",Proximal convoluted tubule (PCT),Loop of Henle,Distal convoluted tubule (DCT),Collecting duct,Macula densa,A,
 L4RF2C9R,Nephrology,180,60-80% water is absorbed from?,PCT,Loop of Henle,DCT,Collecting duct,Bowman's capsule,A,
@@ -333,12 +333,11 @@ N6A3AEV6,Nephrology,180,65% water reabsorption without ADH is done in:,PCT,Loop 
 UANE77KB,Nephrology,180,Glucose is mostly absorbed by which segment of nephron?,PCT,Loop of Henle,DCT,Collecting duct,Bowman's capsule,A,
 QWTZ2VR9,Nephrology,180,Tubular reabsorption of glucose and amino acids in nephrons occurs in:,PCT,Loop of Henle,DCT,Collecting duct,Macula densa,A,
 MUUUUF4Y,Nephrology,180,Which of the following is absorbed to maximum from PCT:,Glucose,Urea,Creatinine,Sodium,Water,A,
-5G6B6QM2,Nephrology,180,<p>Most of the glucose that is filtered through the glomerulus undergoes reabsorption in the:</p>,Proximal Tubule,Bowman's Capsule,Loop of Henle,Distal Tubule,Collecting Duct.,A,<p>No explanation provided.</p>
-5RDN7KE2,Nephrology,180,<p>Absorption of Bicarbonate occurs in:</p>,PCT,Macula densa,Collecting duct,Loop of Henle,DCT,A,<p>No explanation provided.</p>
+5G6B6QM2,Nephrology,180,<p>Most of the glucose that is filtered through the glomerulus undergoes reabsorption in the:</p>,Proximal Tubule,Bowman's Capsule,Loop of Henle,Distal Tubule,Collecting Duct.,A,
+5RDN7KE2,Nephrology,180,<p>Absorption of Bicarbonate occurs in:</p>,PCT,Macula densa,Collecting duct,Loop of Henle,DCT,A,
 Q2WVK3A5,Nephrology,180,Bicarbonate ions are reabsorbed from nephrons in:,Proximal and distal tubules,Proximal tubule and Loop of Henle,Loop of Henle and distal tubule,Distal tubule and collecting duct,Proximal tubule and collecting duct,A,
 2LE3HFA4,Nephrology,180,Bicarbonate is absorbed in which segment of nephron:,PCT and collecting duct,PCT and Loop of Henle,Loop of Henle and DCT,DCT and collecting duct,PCT and DCT,A,
-ARKV2ZCH,Nephrology,DELETE,"<p>If both PCT and Collecting ducts are in the same MCQ for bicarbonate absorption, which is preferred?</p>",Prefer only Collecting ducts,Prefer Loop of Henle,Prefer DCT,Prefer PCT and Collecting ducts if both in options in same MCQ,Prefer only PCT,D,<p>No explanation provided.</p>
-FARNV9WA,Nephrology,180,<p>Renal tubules normally reabsorb:</p>,No HCO<sub>3</sub> in metabolic acidosis,All filtered HCO<sub>3</sub> in respiratory acidosis,All filtered HCO<sub>3</sub> in metabolic alkalosis,Half of filtered HCO<sub>3</sub> in respiratory acidosis,No HCO<sub>3</sub> in respiratory acidosis,B,<p>No explanation provided.</p>
+FARNV9WA,Nephrology,180,<p>Renal tubules normally reabsorb:</p>,No HCO<sub>3</sub> in metabolic acidosis,All filtered HCO<sub>3</sub> in respiratory acidosis,All filtered HCO<sub>3</sub> in metabolic alkalosis,Half of filtered HCO<sub>3</sub> in respiratory acidosis,No HCO<sub>3</sub> in respiratory acidosis,B,
 GFBZ9QFH,Nephrology,180,Glucose absorption in tubules (PCT) occurs by which mechanism?,Secondary active transport with sodium (co-transport),Primary active transport,Facilitated diffusion,Simple diffusion,Osmosis,A,
 HHCY6TDJ,Nephrology,180,Glucose and amino acids are reabsorbed in the proximal tubule by:,Active transport (specifically secondary active transport),Primary active transport,Facilitated diffusion,Simple diffusion,Osmosis,A,
 5N3B3UM9,Nephrology,180,Luminal side of the nephron reabsorbs glucose by:,Co-transport,Counter-transport,Primary active transport,Facilitated diffusion,Simple diffusion,A,
@@ -363,7 +362,6 @@ PU22ZTFZ,Nephrology,180,Maximum sodium is absorbed in which part of nephron:,PCT
 WSUS6N36,Nephrology,180,The fluid in the distal part of the proximal convoluted tubule has:,A higher urea concentration than the fluid in Bowman's capsule,A lower urea concentration than the fluid in Bowman's capsule,The same urea concentration as the fluid in Bowman's capsule,A higher glucose concentration than the fluid in Bowman's capsule,A lower creatinine concentration than the fluid in Bowman's capsule,A,
 33XHPUGQ,Nephrology,180,The pH of the tubular fluid in the distal nephron can be lower than that in the proximal tubule because:,The tight junctions of the distal nephron are less leaky to solute than those of the proximal tubule,The tight junctions of the proximal tubule are less leaky to solute than those of the distal nephron,The distal nephron secretes more bicarbonate than the proximal tubule,The proximal tubule secretes more hydrogen ions than the distal nephron,The distal nephron reabsorbs more hydrogen ions than the proximal tubule,A,
 2P7CN983,Nephrology,180,Tubular fluid has a low pH than PCT due to:,More H ions are secreted in DCT,More H ions are secreted in PCT,More HCO3 ions are reabsorbed in DCT,More HCO3 ions are reabsorbed in PCT,More K ions are secreted in DCT,A,
-FLQRLW2J,Nephrology,DELETE,<p>H+ secretion from PCT in exchange of:</p>,Cl-,Na+,K+,NH3,HCO3-,B,<p>No explanation provided.</p>
 BK72AHBL,Nephrology,180,H+ secretion from PCT is in exchange of:,NH3.,Na+,K+,Cl-,HCO3-,A,
 7BZL43KF,Nephrology,180,"While H+ is primarily secreted in exchange for Na', secreted H+ reacts with NH3 in the tubular lumen to form what?","NH4+ (ammonium), which is then excreted in the urine.","NH4+ (ammonium), which is then reabsorbed in the proximal tubule.","NH2- (amide), which is then excreted in the urine.","NH2- (amide), which is then reabsorbed in the proximal tubule.","Urea, which is then excreted in the urine.",A,
 BRNPBEJ7,Nephrology,180,H+ ion secretion in the kidney causes:,Bicarbonate reabsorption,Bicarbonate secretion,Sodium secretion,Potassium reabsorption,Chloride secretion,A,
