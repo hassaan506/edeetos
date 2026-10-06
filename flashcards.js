@@ -2,17 +2,7 @@ import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 let activeDeck = [];
-let 
-    // Auto-resume logic: Find first unattempted card
-    let firstUnattempted = 0;
-    for (let i = 0; i < activeDeck.length; i++) {
-        if (!attemptedCards[getCardId(activeDeck[i])]) {
-            firstUnattempted = i;
-            break;
-        }
-    }
-    currentIndex = firstUnattempted;
-    
+let currentIndex = 0;
 let attemptedCards = JSON.parse(localStorage.getItem('edeetos_fc_attempts') || '{}');
 let deckCache = {};
 let currentSystem = null;
@@ -236,7 +226,6 @@ function launchFlashcards(cardsArray, title) {
     }
     currentIndex = firstUnattempted;
     
-    
     document.getElementById('fc-selection-screen').style.display = 'none';
     document.getElementById('fc-training-screen').style.display = 'block';
     
@@ -368,29 +357,36 @@ document.addEventListener('keydown', (e) => {
 
 // --- JUMP TO CARD LOGIC ---
 const jumpInput = document.getElementById('fc-jump-input');
-if (jumpInput) {
-    jumpInput.addEventListener('change', (e) => {
-        let val = parseInt(e.target.value);
-        if (isNaN(val)) val = 1;
-        if (val < 1) val = 1;
-        if (val > activeDeck.length) val = activeDeck.length;
-        
-        currentIndex = val - 1;
-        
-        // Reset flip state if jumping while flipped
-        flashcardInner.classList.remove('is-flipped');
-        evalControls.style.display = 'none';
-        
-        setTimeout(() => {
-            renderCard();
-        }, 150);
-    });
+const jumpBtn = document.getElementById('btn-jump');
+
+function executeJump() {
+    if (!jumpInput) return;
+    let val = parseInt(jumpInput.value);
+    if (isNaN(val)) val = 1;
+    if (val < 1) val = 1;
+    if (val > activeDeck.length) val = activeDeck.length;
     
-    // Trigger on enter key
+    currentIndex = val - 1;
+    
+    // Reset flip state if jumping while flipped
+    flashcardInner.classList.remove('is-flipped');
+    evalControls.style.display = 'none';
+    
+    setTimeout(() => {
+        renderCard();
+    }, 150);
+}
+
+if (jumpInput) {
     jumpInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            jumpInput.blur(); 
+            jumpInput.blur();
+            executeJump();
         }
     });
+}
+
+if (jumpBtn) {
+    jumpBtn.addEventListener('click', executeJump);
 }
