@@ -346,7 +346,7 @@ function showMustAnswerModal() {
     };
 }
 
-let quillHint, quillExplanation;
+let quillHint, quillExplanation, quillQuestion;
 
 function loadQuestion(index) {
     try { 
@@ -664,18 +664,20 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 if (!quillHint) {
                     const toolbarOptions = [
                         ['bold', 'italic', 'underline', 'strike'], 
+                        [{ 'script': 'sub'}, { 'script': 'super' }], // Added Sub/Super
                         [{ 'color': [] }, { 'background': [] }],
                         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
                         [{ 'align': [] }],
                         ['clean']
                     ];
+                    quillQuestion = new Quill('#edit-q-text', { theme: 'snow', modules: { toolbar: toolbarOptions } });
                     quillHint = new Quill('#edit-q-hint', { theme: 'snow', modules: { toolbar: toolbarOptions } });
                     quillExplanation = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: toolbarOptions } });
                 }
 
                 // Populate Metadata (Checking both Uppercase and Lowercase from Python script)
                 document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || currentQuestionData.id || currentQuestionData.QuestionID || "";
-                document.getElementById('edit-q-text').value = currentQuestionData.text || currentQuestionData.question || "";
+                quillQuestion.root.innerHTML = currentQuestionData.text || currentQuestionData.question || "";
                 document.getElementById('edit-q-subject').value = currentQuestionData.Subject || currentQuestionData.subject || "";
                 document.getElementById('edit-q-chapter').value = currentQuestionData.Chapter || currentQuestionData.chapter || "";
                 document.getElementById('edit-q-topic').value = currentQuestionData.Topic || currentQuestionData.topic || "";
@@ -695,18 +697,44 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 const optsContainer = document.getElementById('edit-options-container');
                 optsContainer.innerHTML = '';
                 
-                if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
+if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                     currentQuestionData.options.forEach((opt, idx) => {
                         const letter = String.fromCharCode(65 + idx);
                         const isCorrect = opt.isCorrect ? "checked" : "";
                         
                         optsContainer.innerHTML += `
-                            <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
                                 <input type="radio" name="edit-correct-opt" value="${idx}" ${isCorrect} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
                                 <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
                                 <input type="text" id="edit-opt-${idx}" value="${opt.text}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                                <button type="button" class="tag-inject-btn btn-outline" data-target="edit-opt-${idx}" data-tag="br" style="padding: 2px 6px; font-size: 0.75rem; min-width: auto;" title="Line Break">↵</button>
+                                <button type="button" class="tag-inject-btn btn-outline" data-target="edit-opt-${idx}" data-tag="sub" style="padding: 2px 6px; font-size: 0.75rem; min-width: auto;" title="Subscript">X₂</button>
+                                <button type="button" class="tag-inject-btn btn-outline" data-target="edit-opt-${idx}" data-tag="sup" style="padding: 2px 6px; font-size: 0.75rem; min-width: auto;" title="Superscript">X²</button>
                             </div>
                         `;
+                    });
+
+                    // Cursor-aware tag injection for Option fields
+                    document.querySelectorAll('.tag-inject-btn').forEach(btn => {
+                        btn.onclick = (e) => {
+                            e.preventDefault();
+                            const targetId = btn.getAttribute('data-target');
+                            const tag = btn.getAttribute('data-tag');
+                            const input = document.getElementById(targetId);
+                            const start = input.selectionStart;
+                            const end = input.selectionEnd;
+                            const val = input.value;
+                            
+                            if (tag === 'br') {
+                                input.value = val.slice(0, start) + '<br>' + val.slice(end);
+                                input.setSelectionRange(start + 4, start + 4);
+                            } else {
+                                const selected = val.slice(start, end);
+                                input.value = val.slice(0, start) + `<${tag}>${selected}</${tag}>` + val.slice(end);
+                                input.setSelectionRange(start + tag.length + 2, end + tag.length + 2);
+                            }
+                            input.focus();
+                        };
                     });
                 }
 
@@ -742,7 +770,7 @@ const updatedRow = {
     "Subject": document.getElementById('edit-q-subject').value.trim(),
     "Chapter": document.getElementById('edit-q-chapter').value.trim(),
     "Topic": document.getElementById('edit-q-topic').value.trim(),
-    "Question": document.getElementById('edit-q-text').value.trim(),
+    "Question": quillQuestion.root.innerHTML,
     "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
     "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
     "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
