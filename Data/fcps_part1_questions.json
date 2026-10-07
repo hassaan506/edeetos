@@ -279068,18 +279068,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Medium",
-        "question": "Fluid of choice in paradoxical aciduria?",
+        "difficulty": "medium",
+        "question": "<p>Fluid of choice in paradoxical aciduria?</p>",
         "options": {
             "A": "10%Dextrose",
-            "B": "Normal saline",
+            "B": "5% dextrose",
             "C": "Ringer lactate",
-            "D": "5% dextrose",
+            "D": "Normal saline",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><br></p><h3 style=\"color: black;\">Correct Answer:</h3><p><strong style=\"color: #008000;\">Normal saline</strong> - Paradoxical aciduria occurs in severe volume depletion with hypochloremic metabolic alkalosis, usually due to vomiting. <strong>Normal saline restores extracellular volume and chloride</strong>, allowing the kidney to excrete bicarbonate and correct the alkalosis.</p><p><br></p><h3>Wrong Answers</h3><p><strong style=\"color: #CC0000;\">10% Dextrose</strong> - A hypertonic glucose solution is not used for volume and chloride replacement in hypochloremic metabolic alkalosis.</p><p><br></p><p><strong style=\"color: #CC0000;\">5% dextrose</strong> - D5W does not provide adequate sodium or chloride for correction of the volume and chloride depletion.</p><p><br></p><p><strong style=\"color: #CC0000;\">Ringer lactate</strong> - It contains less chloride and includes lactate, so it is less appropriate than normal saline for correcting chloride-responsive metabolic alkalosis.</p><p><br></p><h3 style=\"color: #0066CC;\">Key Concept:</h3><p>Paradoxical aciduria = <strong>metabolic alkalosis + acidic urine</strong> due to severe volume depletion, hypochloremia, and potassium depletion. Treatment is primarily <strong>normal saline</strong> to correct volume and chloride depletion.</p><p><br></p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3><p><strong>Vomiting → Lose HCl → Alkalosis → Give NS</strong></p><p><br></p><h3 style=\"color: #CC6600;\">Exam Trap:</h3><p>In <strong>hypochloremic metabolic alkalosis</strong>, the key treatment is <strong>chloride replacement with normal saline</strong>.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "L3V8FRB2",
@@ -279090,18 +279090,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Hard",
-        "question": "A hypertensive patient on hydrochlorothiazide for many years, his BP is well managed but his serum Na is 119 and osmolarity is 249. Clinically he is hypovolemic. What is the initial best step",
+        "difficulty": "hard",
+        "question": "<p>A hypertensive patient on hydrochlorothiazide for many years, his BP is well managed but his serum Na is 119 and osmolarity is 249. Clinically he is hypovolemic. What is the initial best step</p>",
         "options": {
-            "A": "fluid restriction",
-            "B": "3 % nacl solution",
-            "C": "0.9 % nacl solution",
-            "D": "0.9 % nacl with furosemide",
+            "A": "0.9% NaCl with furosemide",
+            "B": "Fluid Restriction",
+            "C": "3 % NaCl solution",
+            "D": "0.9% NaCl solution",
             "E": ""
         },
         "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">0.9% NaCl solution</strong> - This patient has <strong>hypovolemic hypotonic hyponatremia</strong>, most likely due to chronic hydrochlorothiazide use. The initial treatment is <strong>0.9% NaCl</strong> to restore extracellular volume and suppress the hypovolemic stimulus for ADH secretion.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">0.9% NaCl with furosemide</strong> - Furosemide causes additional sodium and water loss and is not the initial treatment for hypovolemic hyponatremia.</p></p><p><p><strong style=\"color: #CC0000;\">Fluid Restriction</strong> - Used mainly in <strong>euvolemic hyponatremia</strong>, especially SIADH. It is inappropriate when the patient is clinically hypovolemic.</p></p><p><p><strong style=\"color: #CC0000;\">3% NaCl solution</strong> - Hypertonic saline is reserved for <strong>severe or symptomatic hyponatremia</strong>, such as seizures or severe neurological symptoms. This stem does not describe such symptoms.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Hypovolemic hyponatremia → 0.9% NaCl.</strong> Thiazide diuretics are a classic cause. Correct the volume depletion first.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Low volume + Low Na → Normal saline</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not choose 3% saline just because serum Na is <strong>119</strong>. The <strong>clinical volume status and presence of severe neurological symptoms</strong> determine the initial fluid choice.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "WATP74N5",
@@ -279112,18 +279112,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Medium",
-        "question": "Persistent hypokalemia is due to",
+        "difficulty": "medium",
+        "question": "<p>Persistent hypokalemia is due to?</p>",
         "options": {
             "A": "Low K in diet",
-            "B": "Persistent vomiting",
-            "C": "Diarrhea",
+            "B": "Diarrhea",
+            "C": "Persistent vomiting",
             "D": "Consitipation",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Persistent vomiting</strong> - Persistent vomiting causes <strong>H<sup>+</sup> and Cl<sup>−</sup> loss</strong>, leading to volume depletion and activation of RAAS. Increased aldosterone promotes <strong>renal K<sup>+</sup> wasting</strong>, producing persistent hypokalemia.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Low K in diet</strong> - Reduced potassium intake alone rarely causes significant hypokalemia because the kidneys can markedly decrease urinary K<sup>+</sup> excretion.</p></p><p><p><strong style=\"color: #CC0000;\">Diarrhea</strong> - Diarrhea can cause hypokalemia through direct gastrointestinal K<sup>+</sup> loss, but the classic cause of persistent hypokalemia due to ongoing renal potassium wasting in this context is persistent vomiting.</p></p><p><p><strong style=\"color: #CC0000;\">Consitipation</strong> - Constipation does not typically cause potassium loss and is not a usual cause of hypokalemia.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Vomiting → volume depletion → RAAS activation → increased aldosterone → increased renal K<sup>+</sup> excretion → <strong>hypokalemia</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Vomiting → Volume ↓ → Aldosterone ↑ → K<sup>+</sup> ↓</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Diarrhea also causes hypokalemia, but <strong>vomiting causes significant renal K<sup>+</sup> wasting through aldosterone</strong>, making it a classic cause of persistent hypokalemia.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "SWWWTRUL",
@@ -279134,18 +279134,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A 35-year-old man presents with progressive muscle weakness, fatigue, and occasional muscle cramps, on labs investigation he has electrolyte imbalance which of the following is most likely underlying cause?",
+        "difficulty": "easy",
+        "question": "<p>A 35-year-old man presents with progressive muscle weakness, fatigue, and occasional muscle cramps, on labs investigation he has electrolyte imbalance which of the following is most likely underlying cause?</p>",
         "options": {
-            "A": "Hypomagnesaemia",
+            "A": "Hypokalemia",
             "B": "Hyperkalemia",
-            "C": "Hyponatremia",
-            "D": "Hypernatremia",
-            "E": "Hypokalemia"
+            "C": "Hypernatremia",
+            "D": "Hyponatremia",
+            "E": "Hypomagnesaemia"
         },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hypokalemia</strong> - Hypokalemia commonly causes <strong>muscle weakness, fatigue, and muscle cramps</strong> because low extracellular K<sup>+</sup> decreases skeletal muscle excitability.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia</strong> - Hyperkalemia can cause muscle weakness, but it is more strongly associated with <strong>cardiac conduction abnormalities and arrhythmias</strong>.</p></p><p><p><strong style=\"color: #CC0000;\">Hypernatremia</strong> - Primarily causes <strong>neurological symptoms</strong> such as thirst, confusion, and altered consciousness rather than the classic muscle weakness and cramps described here.</p></p><p><p><strong style=\"color: #CC0000;\">Hyponatremia</strong> - Typically causes <strong>neurological manifestations</strong> such as headache, confusion, seizures, and altered consciousness.</p></p><p><p><strong style=\"color: #CC0000;\">Hypomagnesaemia</strong> - More commonly causes <strong>neuromuscular hyperexcitability</strong>, tremor, tetany, and seizures. It can also cause refractory hypokalemia, but it is not the best answer here.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Hypokalemia → muscle weakness + fatigue + cramps.</strong> Severe hypokalemia may also cause paralysis and cardiac arrhythmias.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Low K = Low muscle power</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Both <strong>hypokalemia</strong> and <strong>hyperkalemia</strong> can cause weakness. Hypokalemia classically causes <strong>muscle weakness, cramps, and fatigue</strong>, whereas hyperkalemia is more important for potentially fatal cardiac effects.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "PFQHNT4U",
@@ -279156,18 +279156,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "Calculate Anion Gap with the following values: Na = 144mEq/L, K 4.5 meq/L Cl = 107, HCO3 = 15",
+        "difficulty": "easy",
+        "question": "<p>Calculate Anion Gap with the following values:</p><p>Na = 144 mEq/L</p><p>K = 4.5 mEq/L</p><p>Cl = 107</p><p>HCO3 = 15</p>",
         "options": {
-            "A": "5",
+            "A": "22",
             "B": "25",
             "C": "23",
-            "D": "22",
+            "D": "5",
             "E": ""
         },
-        "correctAnswer": "D",
-        "explanation": "The formula to calculate the anion gap is: Anion gap=Na-(Cl+HCO3). {Anion Gap} = 144- (107+15). {Anion Gap} = 144-122= 22. Anion Gap = 22 mEq/L",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">22</strong> - Anion gap = Na<sup>+</sup> − (Cl<sup>−</sup> + HCO<sub>3</sub><sup>−</sup>) = 144 − (107 + 15) = <strong>22 mEq/L</strong>. Potassium is usually excluded from the standard anion gap calculation.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">25</strong> - This results from incorrectly including K<sup>+</sup> in the calculation: (Na<sup>+</sup> + K<sup>+</sup>) − (Cl<sup>−</sup> + HCO<sub>3</sub><sup>−</sup>) = 26.5, not 25.</p></p><p><p><strong style=\"color: #CC0000;\">23</strong> - This does not result from the standard anion gap formula using the given values.</p></p><p><p><strong style=\"color: #CC0000;\">5</strong> - This does not represent the calculated anion gap from the given electrolyte values.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Anion gap = Na<sup>+</sup> − (Cl<sup>−</sup> + HCO<sub>3</sub><sup>−</sup>)</strong>. Normal anion gap is approximately <strong>8–12 mEq/L</strong> without potassium.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Na − (Cl + HCO<sub>3</sub>)</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Do not include K<sup>+</sup></strong> in the standard anion gap calculation unless specifically asked. Here, 144 − (107 + 15) = <strong>22</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "Z7ZF5HDY",
@@ -279178,18 +279178,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A patient with severe vomiting - what acid base disturbance?",
+        "difficulty": "easy",
+        "question": "<p>A patient with severe vomiting. What acid base disturbance?</p>",
         "options": {
-            "A": "Metabolic acidosis",
-            "B": "Metabolic alkalosis",
-            "C": "Respiratory acidosis",
-            "D": "Respiratory alkalosis",
-            "E": "Mixed respiratory acidosis and metabolic acidosis"
+            "A": "Metabolic alkalosis",
+            "B": "Mixed respiratory acidosis and metabolic acidosis",
+            "C": "Respiratory alkalosis",
+            "D": "Respiratory acidosis",
+            "E": "Metabolic acidosis"
         },
-        "correctAnswer": "B",
-        "explanation": "Severe vomiting involves the loss of gastric contents, which are highly acidic (HCl). The loss of acid leads to a net gain of base (bicarbonate) in the blood, resulting in Metabolic Alkalosis.",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Metabolic alkalosis</strong> - Severe vomiting causes loss of gastric H<sup>+</sup> and Cl<sup>−</sup>, producing <strong>metabolic alkalosis</strong>. Volume depletion also activates RAAS, increasing renal H<sup>+</sup> and K<sup>+</sup> loss and maintaining the alkalosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Mixed respiratory acidosis and metabolic acidosis</strong> - Vomiting does not primarily cause metabolic acidosis or respiratory acidosis.</p></p><p><p><strong style=\"color: #CC0000;\">Respiratory alkalosis</strong> - Respiratory alkalosis results from hyperventilation causing excessive CO<sub>2</sub> loss, not from gastric acid loss.</p></p><p><p><strong style=\"color: #CC0000;\">Respiratory acidosis</strong> - Respiratory acidosis results from hypoventilation and CO<sub>2</sub> retention.</p></p><p><p><strong style=\"color: #CC0000;\">Metabolic acidosis</strong> - Metabolic acidosis is more typical of conditions such as diarrhea, lactic acidosis, or renal failure. Vomiting causes loss of gastric acid, producing alkalosis.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Vomiting → H<sup>+</sup> loss → metabolic alkalosis.</strong> Severe vomiting also causes volume and chloride depletion, which promotes renal retention of HCO<sub>3</sub><sup>−</sup>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Vomiting = Lose Acid = Alkalosis</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not confuse vomiting with diarrhea. <strong>Vomiting → metabolic alkalosis</strong>, whereas <strong>diarrhea → metabolic acidosis</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "33WMBZE7",
@@ -279200,18 +279200,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A patient with heart failure is on chronic furosemide therapy and develops weakness and tetany. ABG shows high pH and high HCO3. Cause?",
+        "difficulty": "easy",
+        "question": "<p>A patient with heart failure is on chronic furosemide therapy and develops weakness and tetany. ABGs shows high pH and high HCO<sub>3</sub>. What is the cause?</p>",
         "options": {
             "A": "Lactic acidosis",
-            "B": "Respiratory alkalosis",
+            "B": "Metabolic alkalosis",
             "C": "Metabolic acidosis",
-            "D": "Metabolic alkalosis",
+            "D": "Respiratory alkalosis",
             "E": ""
         },
-        "correctAnswer": "D",
-        "explanation": "Loop diuretics -> loss of Na+, K+, Cl- -> contraction alkalosis. Hypokalemia worsens alkalosis.",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Metabolic alkalosis</strong> - Chronic furosemide causes increased renal loss of Na<sup>+</sup>, Cl<sup>−</sup>, and K<sup>+</sup>, leading to volume depletion and increased aldosterone activity. This promotes H<sup>+</sup> and K<sup>+</sup> excretion, causing <strong>metabolic alkalosis</strong>. Hypokalemia and alkalosis can contribute to weakness and tetany.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Lactic acidosis</strong> - Lactic acidosis causes metabolic acidosis, with decreased pH and decreased HCO<sub>3</sub><sup>−</sup>, not the high pH and high HCO<sub>3</sub><sup>−</sup> seen here.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Metabolic acidosis</strong> - Metabolic acidosis causes decreased pH and decreased HCO<sub>3</sub><sup>−</sup>. The ABG shows the opposite pattern.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Respiratory alkalosis</strong> - Respiratory alkalosis is caused by excessive CO<sub>2</sub> loss from hyperventilation. HCO<sub>3</sub><sup>−</sup> would decrease as compensation rather than increase.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Loop diuretics → volume depletion + K<sup>+</sup>/H<sup>+</sup> loss → metabolic alkalosis.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Loop → Lose K<sup>+</sup> and H<sup>+</sup> → Alkalosis</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>High pH + high HCO<sub>3</sub><sup>−</sup> = metabolic alkalosis.</strong> High pH with low HCO<sub>3</sub><sup>−</sup> would instead indicate respiratory alkalosis.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "YNMZN3W3",
@@ -279222,18 +279222,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A patient on furosemide develops muscle cramps and ECG changes. Likely electrolyte abnormality?",
+        "difficulty": "easy",
+        "question": "<p>A patient on furosemide develops muscle cramps and ECG changes. Likely electrolyte abnormality?</p>",
         "options": {
-            "A": "Hyperkalemia",
-            "B": "Hypernatremia",
-            "C": "Hypokalemia",
-            "D": "Hypocalcemia",
+            "A": "Hypokalemia",
+            "B": "Hypocalcemia",
+            "C": "Hyperkalemia",
+            "D": "Hypernatremia",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "Loop diuretics -> inhibit Na+-K+-2Cl- cotransporter -> increased K+ excretion. Can cause arrhythmias, weakness.",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hypokalemia</strong> - Furosemide is a loop diuretic that increases renal K<sup>+</sup> excretion. Hypokalemia commonly causes <strong>muscle cramps, weakness, and ECG changes</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hypocalcemia</strong> - Loop diuretics can increase urinary Ca<sup>2+</sup> loss, but hypocalcemia is not the classic electrolyte abnormality causing this presentation.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia</strong> - Furosemide causes potassium loss, making hypokalemia much more likely. Hyperkalemia is associated with peaked T waves and other conduction abnormalities.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hypernatremia</strong> - Furosemide does not characteristically cause hypernatremia, and hypernatremia primarily produces neurological symptoms such as thirst and confusion.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Furosemide → increased urinary K<sup>+</sup> loss → hypokalemia → muscle cramps + ECG changes.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Loop diuretic = Lose K<sup>+</sup></strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Hypokalemia classically causes <strong>ST depression, flattened T waves, and prominent U waves</strong>. Hyperkalemia causes <strong>peaked T waves</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "TLJCDEKK",
@@ -279244,18 +279244,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A patient's laboratory results show the following: Na+ = 140 mEq/L, Cl- = 96 mEq/L, and HCO3- = 22 mEq/L. What is the calculated Anion Gap?",
+        "difficulty": "easy",
+        "question": "<p>A patient's laboratory results show the following:</p><p>Na<sup>+</sup> = 140 mEq/L</p><p>Cl<sup>-</sup> = 96 mEq/L</p><p>HCO<sub>3</sub><sup>-</sup> = 22 mEq/L</p><p><br></p><p>What is the calculated Anion Gap?</p>",
         "options": {
-            "A": "12",
-            "B": "10",
-            "C": "16",
+            "A": "10",
+            "B": "16",
+            "C": "12",
             "D": "22",
             "E": ""
         },
         "correctAnswer": "D",
-        "explanation": "The Anion Gap is calculated using the formula: AG = Na - (Cl + HCO3). AG = 140 - (96 + 22) = 140 - 118 = 22 mEq/L.",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">22</strong> - Anion gap = Na<sup>+</sup> − (Cl<sup>−</sup> + HCO<sub>3</sub><sup>−</sup>) = 140 − (96 + 22) = <strong>22 mEq/L</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">10</strong> - This does not result from the standard anion gap calculation.</p></p><p><p><strong style=\"color: #CC0000;\">16</strong> - This is not the calculated anion gap using the given electrolyte values.</p></p><p><p><strong style=\"color: #CC0000;\">12</strong> - This is approximately the normal anion gap, but it is not the calculated value in this patient.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Anion gap = Na<sup>+</sup> − (Cl<sup>−</sup> + HCO<sub>3</sub><sup>−</sup>)</strong>. Normal anion gap is approximately 8–12 mEq/L.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Na − (Cl + HCO<sub>3</sub>)</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not include K<sup>+</sup> in the standard anion gap calculation unless specifically asked.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "GW9VKGFV",
@@ -279266,18 +279266,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A patient's arterial blood gas (ABG) shows pH 7.2, HCO3- 18 mEq/L, and pCO2 30 mmHg. What is the most likely acid-base disorder?",
+        "difficulty": "easy",
+        "question": "<p>A patient's arterial blood gas (ABG) shows</p><p>pH 7.2</p><p>HCO<sub>3</sub><sup>-</sup> = 18 mEq/L</p><p>pCO<sub>2</sub> = 30 mmHg</p><p><br></p><p>What is the most likely acid-base disorder?</p>",
         "options": {
-            "A": "Metabolic acidosis with respiratory compensation",
-            "B": "Respiratory acidosis",
+            "A": "Normal acid-base status",
+            "B": "Metabolic acidosis with respiratory compensation",
             "C": "Metabolic alkalosis",
-            "D": "Respiratory alkalosis",
-            "E": "Normal acid-base status"
+            "D": "Respiratory acidosis",
+            "E": "Respiratory alkalosis"
         },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Metabolic acidosis with respiratory compensation</strong> - The low pH indicates acidemia and the low HCO<sub>3</sub><sup>−</sup> indicates a primary metabolic acidosis. The low pCO<sub>2</sub> represents respiratory compensation through hyperventilation.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Normal acid-base status</strong> - The pH is significantly reduced, indicating acidemia.</p></p><p><p><strong style=\"color: #CC0000;\">Metabolic alkalosis</strong> - Metabolic alkalosis causes increased HCO<sub>3</sub><sup>−</sup> and usually an increased pH.</p></p><p><p><strong style=\"color: #CC0000;\">Respiratory acidosis</strong> - Respiratory acidosis is caused by increased pCO<sub>2</sub>. Here, pCO<sub>2</sub> is decreased.</p></p><p><p><strong style=\"color: #CC0000;\">Respiratory alkalosis</strong> - Respiratory alkalosis causes decreased pCO<sub>2</sub>, but the primary change would be respiratory, with HCO<sub>3</sub><sup>−</sup> decreasing as compensation. Here, the low HCO<sub>3</sub><sup>−</sup> is the primary abnormality.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Low pH + low HCO<sub>3</sub><sup>−</sup> = metabolic acidosis.</strong> The low pCO<sub>2</sub> shows respiratory compensation.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>ROME: Respiratory Opposite, Metabolic Equal</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Always identify the <strong>primary abnormality</strong> first. Low HCO<sub>3</sub><sup>−</sup> with acidemia indicates metabolic acidosis; low pCO<sub>2</sub> is the compensatory response.</p></p>",
+        "hint": "<p>ROME - <strong>R</strong>espiratory <strong>O</strong>pposite, <strong>M</strong>etabolic <strong>E</strong>qual</p>"
     },
     {
         "id": "8P3LBALJ",
@@ -279288,18 +279288,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "Medium",
-        "question": "Drug of choice for paradoxical aciduria?",
+        "difficulty": "medium",
+        "question": "<p>Drug of choice for paradoxical aciduria?</p>",
         "options": {
-            "A": "Normal Saline",
-            "B": "R/L",
-            "C": "5% Dextrose",
-            "D": "hypertonic saline",
+            "A": "5% Dextrose",
+            "B": "hypertonic saline",
+            "C": "Normal Saline",
+            "D": "R/L",
             "E": ""
         },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Normal Saline</strong> - Paradoxical aciduria occurs in severe vomiting with <strong>volume and chloride depletion</strong> causing metabolic alkalosis. Normal saline restores volume and Cl<sup>−</sup>, allowing renal HCO<sub>3</sub><sup>−</sup> excretion and correction of the alkalosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">5% Dextrose</strong> - It does not provide sufficient Na<sup>+</sup> or Cl<sup>−</sup> to correct the volume and chloride depletion.</p></p><p><p><strong style=\"color: #CC0000;\">hypertonic saline</strong> - Hypertonic saline is used for severe symptomatic hyponatremia, not chloride-responsive metabolic alkalosis due to vomiting.</p></p><p><p><strong style=\"color: #CC0000;\">R/L</strong> - Ringer lactate is less appropriate because normal saline provides a higher chloride load, which is specifically needed to correct chloride-responsive metabolic alkalosis.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Paradoxical aciduria → severe volume + Cl<sup>−</sup> depletion → Normal Saline.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Vomiting → Lose HCl → Give NS</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Paradoxical aciduria is associated with <strong>metabolic alkalosis but acidic urine</strong>. The treatment is <strong>0.9% normal saline</strong>, not an alkalinizing or hypertonic fluid.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "WN3LMT5X",
@@ -279333,18 +279333,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "A male patient with chronic joint pain takes phenacetin for pain relief. After short-term use(1-2 days), he develops fever, hematuria, and acute renal dysfunction. The most likely diagnosis is",
+        "difficulty": "medium",
+        "question": "<p>A male patient with chronic joint pain takes phenacetin for pain relief. After short-term use (1-2 days), he develops fever, hematuria, and acute renal dysfunction. The most likely diagnosis is</p>",
         "options": {
-            "A": "Acute interstitial nephritis",
-            "B": "Renal papillary necrosis",
-            "C": "Glomerulonephritis",
-            "D": "Acute tubular necrosis",
+            "A": "Acute tubular necrosis",
+            "B": "Glomerulonephritis",
+            "C": "Acute interstitial nephritis",
+            "D": "Renal papillary necrosis",
             "E": "Pyelonephritis"
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Acute interstitial nephritis</strong> - Phenacetin can cause a hypersensitivity-type renal reaction. The combination of <strong>fever, hematuria, and acute renal dysfunction shortly after drug exposure</strong> is characteristic of acute interstitial nephritis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Acute tubular necrosis</strong> - Usually results from ischemic or nephrotoxic tubular injury and typically presents with acute kidney injury without the hypersensitivity features such as fever.</p></p><p><p><strong style=\"color: #CC0000;\">Glomerulonephritis</strong> - Typically presents with a nephritic picture including hematuria, proteinuria, hypertension, and edema rather than an acute drug hypersensitivity presentation.</p></p><p><p><strong style=\"color: #CC0000;\">Renal papillary necrosis</strong> - Phenacetin is classically associated with analgesic nephropathy and papillary necrosis, especially with <strong>chronic analgesic use</strong>, not the acute 1–2 day hypersensitivity presentation described here.</p></p><p><p><strong style=\"color: #CC0000;\">Pyelonephritis</strong> - Usually causes fever, flank pain, and urinary infection findings. The temporal relationship with phenacetin and acute renal dysfunction favors a drug-induced interstitial process.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Drug exposure + fever + acute kidney injury ± hematuria → Acute interstitial nephritis.</strong> Common triggers include antibiotics, NSAIDs, and other drugs.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>AIN = Allergy In the Nephron</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Phenacetin is also associated with <strong>papillary necrosis</strong>, but that is classically linked to <strong>chronic analgesic abuse</strong>. The acute fever and renal dysfunction after drug exposure point toward acute interstitial nephritis.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "D9RKKKW3",
@@ -279355,18 +279355,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Easy",
-        "question": "Vomiting + dehydration leading to elevated creatinine represents:",
+        "difficulty": "easy",
+        "question": "<p>Vomiting + dehydration leading to elevated creatinine represents:</p>",
         "options": {
             "A": "Intrinsic failure",
-            "B": "Pre-renal azotemia",
+            "B": "CKD",
             "C": "Post-renal",
-            "D": "CKD",
+            "D": "Pre-renal azotemia",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Pre-renal azotemia</strong> - Vomiting causes <strong>dehydration and reduced circulating volume</strong>, which decreases renal perfusion and GFR. The resulting rise in creatinine is therefore due to reduced renal blood flow rather than primary kidney damage.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Intrinsic failure</strong> - Intrinsic renal failure results from direct damage to renal structures, such as acute tubular necrosis or glomerulonephritis. Simple dehydration initially causes functional reduction in GFR without structural injury.</p></p><p><p><strong style=\"color: #CC0000;\">CKD</strong> - Chronic kidney disease is persistent renal dysfunction developing over months or years, not an acute rise in creatinine from dehydration.</p></p><p><p><strong style=\"color: #CC0000;\">Post-renal</strong> - Post-renal azotemia results from <strong>urinary tract obstruction</strong>, such as stones, prostate enlargement, or ureteric obstruction.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Dehydration → ↓ circulating volume → ↓ renal perfusion → ↓ GFR → ↑ creatinine = pre-renal azotemia.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Pre-renal = Problem before the kidney</strong> → inadequate blood flow.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Pre-renal azotemia is a <strong>functional reduction in GFR</strong>. If prolonged and severe, it can progress to intrinsic renal injury, particularly acute tubular necrosis.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "YCJ4UQ3M",
@@ -279377,18 +279377,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "A child develops acute kidney injury after bloody diarrhea. Laboratory tests reveal schistocytes and thrombocytopenia. What is the most likely diagnosis?",
+        "difficulty": "medium",
+        "question": "<p>A child develops acute kidney injury after bloody diarrhea. Laboratory tests reveal schistocytes and thrombocytopenia. What is the most likely diagnosis?</p>",
         "options": {
-            "A": "Immune thrombocytopenic purpura",
-            "B": "Hemolytic uremic syndrome",
-            "C": "Thrombotic thrombocytopenic purpura",
-            "D": "Disseminated intravascular coagulation",
+            "A": "Hemolytic uremic syndrome",
+            "B": "Immune thrombocytopenic purpura",
+            "C": "Disseminated intravascular coagulation",
+            "D": "Thrombotic thrombocytopenic purpura",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hemolytic uremic syndrome</strong> - Bloody diarrhea followed by <strong>acute kidney injury, thrombocytopenia, and schistocytes</strong> is classic for HUS, usually caused by Shiga toxin-producing <em>E. coli</em>. It produces microangiopathic hemolytic anemia, thrombocytopenia, and renal injury.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Immune thrombocytopenic purpura</strong> - ITP causes isolated thrombocytopenia due to immune platelet destruction. It does not cause schistocytes or acute kidney injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Disseminated intravascular coagulation</strong> - DIC can cause thrombocytopenia and schistocytes, but it is associated with systemic activation of coagulation, prolonged PT/aPTT, and consumption of clotting factors. Bloody diarrhea with prominent AKI is more characteristic of HUS.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Thrombotic thrombocytopenic purpura</strong> - TTP also causes microangiopathic hemolytic anemia and thrombocytopenia, but classically has prominent neurological manifestations and is associated with severe ADAMTS13 deficiency. Significant renal involvement after bloody diarrhea points to HUS.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>HUS = Hemolytic anemia + Uremia + Thrombocytopenia.</strong> Bloody diarrhea is a classic trigger for Shiga toxin-associated HUS.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>HUS = H</strong>emolysis + <strong>U</strong>remia + <strong>S</strong>mall platelets</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>HUS → kidney predominant.</strong> <strong>TTP → brain predominant.</strong> Both cause schistocytes and thrombocytopenia, but bloody diarrhea followed by AKI strongly favors HUS.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "TUVLMEPX",
@@ -279399,18 +279399,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "A young female presents with severe diarrhea and dehydration. Few days later, she develops reduced urine output and rising serum creatinine. This condition is most likely to progress to",
+        "difficulty": "medium",
+        "question": "<p>A young female presents with severe diarrhea and dehydration. Few days later, she develops reduced urine output and rising serum creatinine. This condition is most likely to progress to</p>",
         "options": {
             "A": "Acute interstitial nephritis",
-            "B": "Prerenal azotemia",
+            "B": "Acute tubular necrosis",
             "C": "Chronic kidney disease",
-            "D": "Glomerulonephritis",
-            "E": "Acute tubular necrosis"
+            "D": "Prerenal azotemia",
+            "E": "Glomerulonephritis"
         },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Acute tubular necrosis</strong> - Severe diarrhea causes marked volume depletion and renal hypoperfusion, initially producing pre-renal azotemia. If the hypoperfusion is prolonged, ischemic tubular injury develops, progressing to acute tubular necrosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Acute interstitial nephritis</strong> - Usually results from a drug-induced or infectious hypersensitivity reaction and is not the typical consequence of prolonged dehydration.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Chronic kidney disease</strong> - CKD develops from persistent renal damage over months or years, not from an acute episode of dehydration.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Prerenal azotemia</strong> - This is the <strong>initial consequence</strong> of severe dehydration. If renal hypoperfusion persists, it can progress to intrinsic renal injury, particularly acute tubular necrosis.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Glomerulonephritis</strong> - Glomerulonephritis causes primary glomerular inflammation and typically presents with hematuria, proteinuria, edema, or hypertension rather than dehydration-induced AKI.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Severe dehydration → pre-renal azotemia → prolonged hypoperfusion → ischemic acute tubular necrosis.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Low flow for Long → Tubules Lose</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>If the question asks for the <strong>initial</strong> renal problem after dehydration, think <strong>pre-renal azotemia</strong>. If it asks what prolonged severe hypoperfusion can <strong>progress to</strong>, think <strong>acute tubular necrosis</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "GDP7S3M4",
@@ -279443,18 +279443,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "A 56 year old man develops acute renal artery thrombosis. Immediate reperfusion is required to prevent irreversible ischemic injury. This should be performed within which time frame?",
+        "difficulty": "medium",
+        "question": "<p>A 56 year old man develops acute renal artery thrombosis. Immediate reperfusion is required to prevent irreversible ischemic injury. This should be performed within which time frame?</p>",
         "options": {
-            "A": "30 minutes",
+            "A": "12 hours",
             "B": "<1 hour",
             "C": "2–3 hours",
             "D": "6–8 hours",
-            "E": "12 hours"
+            "E": "30 minutes"
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">6–8 hours</strong> - Renal tissue can tolerate complete ischemia only for a limited period. <strong>Early reperfusion within several hours</strong> is required to prevent irreversible ischemic renal injury. In this MCQ, the best answer is 6–8 hours.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">12 hours</strong> - Waiting this long increases the risk of irreversible ischemic injury and loss of viable renal tissue.</p></p><p><p><strong style=\"color: #CC0000;\">&lt;1 hour</strong> - Reperfusion as early as possible is ideal, but this is not the commonly tested time window for preventing irreversible renal ischemic injury.</p></p><p><p><strong style=\"color: #CC0000;\">2–3 hours</strong> - Earlier treatment is beneficial, but this is shorter than the classic renal ischemia window tested in this question.</p></p><p><p><strong style=\"color: #CC0000;\">30 minutes</strong> - This is unnecessarily short and is not the standard time frame used for renal ischemia in this context.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Acute renal artery occlusion → renal ischemia → urgent reperfusion.</strong> Prolonged ischemia leads to irreversible renal injury.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Kidney ischemia: Think hours, not days.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>The key is <strong>urgent reperfusion before irreversible ischemic injury</strong>. Among the given choices, <strong>6–8 hours</strong> is the intended answer.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "MJDG63ZY",
@@ -279505,13 +279505,14 @@
         "id": "SCVW6E42",
         "year": "2025",
         "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Hard",
-        "question": "50-year-old patient presents with oliguria after taking quack medicine- On urine DR there was pale colour urine, with specific gravity of about 1.010, and slightly raised urea, LFTs shows slightly raised ALT other parameters of LFTs were in normal range, there was also hypercalcemia",
+        "difficulty": "hard",
+        "question": "<p>50-year-old patient presents with oliguria after taking quack medicine- On urine DR there was pale colour urine, with specific gravity of about 1.010, and slightly raised urea, LFTs shows slightly raised ALT other parameters of LFTs were in normal range, there was also hypercalcemia</p>",
         "options": {
             "A": "Acute glomerulonephritis",
             "B": "Acute icteric phase of hepatitis",
@@ -279519,9 +279520,9 @@
             "D": "Acute tubular necrosis",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Acute tubular necrosis</strong> - Quack medicines may contain nephrotoxic substances that cause direct tubular injury. <strong>Oliguria with urine specific gravity around 1.010</strong> indicates loss of tubular concentrating ability, which is characteristic of acute tubular necrosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Acute glomerulonephritis</strong> - Typically presents with hematuria, proteinuria, edema, and hypertension. A fixed specific gravity around 1.010 with oliguria points more toward tubular injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Acute icteric phase of hepatitis</strong> - Icteric hepatitis causes jaundice, dark urine, and elevated bilirubin, with more significant liver abnormalities. Pale urine and isolated mild ALT elevation do not support this diagnosis.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Nephrocalcinosis</strong> - Hypercalcemia can cause nephrocalcinosis, but nephrocalcinosis is a chronic deposition of calcium in renal tissue and does not explain the classic fixed urine specific gravity of about 1.010 following a nephrotoxic exposure.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>ATN → tubular concentrating defect → urine specific gravity approaches 1.010.</strong> This is called <strong>isosthenuria</strong> and is a classic clue to tubular dysfunction.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>ATN = Around Ten (1.010)</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>A urine specific gravity around <strong>1.010</strong> in an oliguric patient suggests <strong>intrinsic tubular damage</strong>. In pre-renal states, the kidney can still concentrate urine, so the specific gravity is usually higher.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "4R8N45H4",
@@ -279531,19 +279532,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Acute Kidney Injury",
-        "difficulty": "Hard",
-        "question": "A 50-year-old patient presents with oliguria after taking quack medicine. On urine DR there was pale colour urine, with specific gravity of about 1.010, and slightly raised urea, LFTs shows slightly raised ALT other parameters of LFTs were in normal range, there was also hypercalcemia",
+        "topic": "DELETE",
+        "difficulty": "hard",
+        "question": "<p>A 50-year-old patient presents with oliguria after taking quack medicine. On urine DR there was pale colour urine, with specific gravity of about 1.010, and slightly raised urea, LFTs shows slightly raised ALT other parameters of LFTs were in normal range, there was also hypercalcemia</p>",
         "options": {
-            "A": "Acute glomerulonephritis",
+            "A": "Acute tubular necrosis",
             "B": "Acute icteric phase of hepatitis",
             "C": "Nephrocalcinosis",
-            "D": "Acute tubular necrosis",
+            "D": "Acute glomerulonephritis",
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "C2AVTW78",
