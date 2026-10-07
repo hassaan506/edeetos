@@ -281126,18 +281126,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephritic Syndromes",
-        "difficulty": "Medium",
-        "question": "A child presented with sore throat and fever for last 2_3 days . He is passing cola colored urine. What is most likely diagnose",
+        "difficulty": "medium",
+        "question": "<p>A child presented with sore throat and fever for last 2-3 days . He is passing cola colored urine. What is most likely diagnose</p>",
         "options": {
-            "A": "PSGN",
+            "A": "HUS",
             "B": "Good pasture syndrome",
-            "C": "Increase hemoglobinuria",
-            "D": "HUS",
+            "C": "PSGN",
+            "D": "Increase hemoglobinuria",
             "E": "IgA nephropathy"
         },
         "correctAnswer": "E",
-        "explanation": "IgA Nephropathy: History of sore throat 2-3 days then hematuria. PSGN - History of sore throat 2-3 weeks ago then hematuria",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">IgA nephropathy</strong> - This question is a typical case of <strong>IgA nephropathy</strong>. The child develops cola-colored urine during an ongoing sore throat, with only 2–3 days between the infection and hematuria. IgA nephropathy classically causes <strong>synpharyngitic hematuria</strong>, meaning hematuria occurs during or within a few days of an upper respiratory infection.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">HUS</strong> - Typically follows a diarrheal illness, especially bloody diarrhea, and causes microangiopathic hemolytic anemia, thrombocytopenia, and acute kidney injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Good pasture syndrome</strong> - Causes rapidly progressive glomerulonephritis with pulmonary hemorrhage due to anti-GBM antibodies. The timing with a sore throat is not characteristic.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">PSGN</strong> - Typically develops <strong>1–3 weeks after streptococcal pharyngitis</strong>, rather than during the first few days of the infection.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Increase hemoglobinuria</strong> - Hemoglobinuria results from intravascular hemolysis and does not explain the typical synpharyngitic hematuria seen here.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>URI + hematuria within days = IgA nephropathy.</strong><br></p><p><strong>Strep throat + hematuria after 1–3 weeks = PSGN.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>IgA = Immediately after infection.</strong><br></p><p><strong>PSGN = Post-Strep Gap.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>The <strong>timing</strong> is the key. Do not choose PSGN simply because there is a sore throat + cola-colored urine. If hematuria occurs <strong>during or within a few days</strong> of the URI → <strong>IgA nephropathy</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "GN4SEYKA",
@@ -281170,18 +281170,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "A man presented with generalized body swelling for two weeks. Physical examination shows thick waxy skin hepatomegaly and enlarge kidney. 24 h/urinary protein was 4g/day. Kidney biopsy shows apple colored birefringence fibril under congo red stain. What is diagnosis",
+        "difficulty": "medium",
+        "question": "<p>A man presented with generalized body swelling for two weeks. Physical examination shows thick waxy skin hepatomegaly and enlarge kidney. 24 h/urinary protein was 4g/day. Kidney biopsy shows apple colored birefringence fibril under congo red stain. What is diagnosis</p>",
         "options": {
-            "A": "Hepatitis",
+            "A": "TB",
             "B": "SLE",
-            "C": "Malaria",
-            "D": "TB",
-            "E": "Multiple myeloma"
+            "C": "Multiple myeloma",
+            "D": "Malaria",
+            "E": "Hepatitis"
         },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Multiple myeloma</strong> - This question is a typical case of <strong>amyloidosis secondary to multiple myeloma</strong>. Generalized edema with nephrotic-range proteinuria and Congo red positivity with apple-green birefringence indicates amyloid deposition. Multiple myeloma is associated with <strong>AL (light-chain) amyloidosis</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">TB</strong> - Chronic infections such as TB can cause AA amyloidosis, but multiple myeloma is a classic cause of AL amyloidosis and is the best answer here.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">SLE</strong> - SLE can cause various forms of glomerulonephritis and proteinuria, but Congo red-positive amyloid deposition is not the typical renal lesion.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Malaria</strong> - Chronic malaria can rarely be associated with AA amyloidosis, but it is not the classic association tested here.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hepatitis</strong> - Chronic inflammatory liver disease can be associated with secondary amyloidosis in some settings, but it is not the classic cause of AL amyloidosis.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Congo red + apple-green birefringence = amyloidosis.</strong> <strong>AL amyloid</strong> is derived from immunoglobulin light chains and is classically associated with plasma-cell disorders such as multiple myeloma.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>AL = Amyloid Light-chain</strong> → <strong>plasma cell dyscrasia</strong> → multiple myeloma.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Nephrotic-range proteinuria + Congo red + apple-green birefringence</strong> identifies amyloidosis, but the underlying cause determines the type: <strong>multiple myeloma → AL</strong>; chronic inflammatory diseases such as TB → <strong>AA</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "52CGC55C",
@@ -281214,18 +281214,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "An 8 year old patient presents to the clinic with periorbital edemA- His labs showed protein greater than3.5g/ dl. What is the probable cause?",
+        "difficulty": "medium",
+        "question": "<p>An 8 year old patient presents to the clinic with periorbital edema. His labs showed protein greater than 3.5 g/dl. What is the probable cause?</p>",
         "options": {
             "A": "Potassium retention",
-            "B": "Sodium retention",
+            "B": "Calcium retention",
             "C": "Naturesis",
-            "D": "Albuminuria and sodium retention",
-            "E": "Calcium retention"
+            "D": "Sodium retention",
+            "E": "Albuminuria and sodium retention"
         },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "E",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "YMLHFAGZ",
@@ -281258,18 +281258,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "A pregnant woman presents with generalized edema and proteinuriA- What is the most likely underlying cause?",
+        "difficulty": "medium",
+        "question": "<p>A pregnant woman presents with generalized edema and proteinuria. What is the most likely underlying cause?</p>",
         "options": {
-            "A": "Decreased plasma colloid pressure",
-            "B": "Increased capillary hydrostatic pressure",
-            "C": "Increased Bowman's capsule pressure",
-            "D": "Decreased GFR",
+            "A": "Increased Bowman's capsule pressure",
+            "B": "Decreased plasma colloid pressure",
+            "C": "Decreased GFR",
+            "D": "Increased capillary hydrostatic pressure",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "GG3SLAMV",
@@ -281280,18 +281280,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "Child with generalized body edema cause is ?",
+        "difficulty": "easy",
+        "question": "<p>Child with generalized body edema cause is ?</p>",
         "options": {
-            "A": "Hypoproteinemia",
-            "B": "Increase hydrostatic pressure",
-            "C": "Decrease Sodium",
-            "D": "Increase Sodium",
-            "E": "Decrease Magnesium"
+            "A": "Increase Sodium",
+            "B": "Decrease Magnesium",
+            "C": "Increase hydrostatic pressure",
+            "D": "Decrease Sodium",
+            "E": "Hypoproteinemia"
         },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "E",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hypoproteinemia</strong> - This question is a typical case of <strong>edema due to hypoproteinemia</strong>. In a child, generalized edema is classically caused by low plasma protein, especially albumin, which decreases plasma oncotic pressure and allows fluid to move from the intravascular space into the interstitial tissues.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Increase Sodium</strong> - Sodium retention can contribute to edema by increasing extracellular fluid volume, but it is not the classic primary mechanism of generalized edema in a child.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Decrease Magnesium</strong> - Hypomagnesemia does not cause generalized edema.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Increase hydrostatic pressure</strong> - Increased hydrostatic pressure can cause edema, such as in heart failure, but generalized edema in a child classically points toward hypoproteinemia/nephrotic syndrome.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Decrease Sodium</strong> - Hyponatremia itself does not cause generalized edema.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>↓ Plasma albumin → ↓ plasma oncotic pressure → fluid leaves blood vessels → generalized edema.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Low protein → Low pull → edema.</strong> Albumin normally pulls water into the bloodstream.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>The four major mechanisms of edema are <strong>↑ hydrostatic pressure, ↓ plasma oncotic pressure, ↑ capillary permeability, and lymphatic obstruction</strong>. Here, <strong>hypoproteinemia = ↓ oncotic pressure</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "Y9Z3PN7T",
@@ -281302,18 +281302,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "A young boy presents with generalized edema and proteinuria of 6 g/day. Which renal structure is most likely damaged?",
+        "difficulty": "easy",
+        "question": "<p>A young boy presents with generalized edema and proteinuria of 6 g/day. Which renal structure is most likely damaged?</p>",
         "options": {
-            "A": "Medulla",
+            "A": "Podocytes",
             "B": "Basement membrane",
-            "C": "Podocytes",
+            "C": "Medulla",
             "D": "Interstitium",
             "E": "Cortex"
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Podocytes</strong> - This question is a typical case of <strong>nephrotic syndrome</strong>. Massive proteinuria (6 g/day) with generalized edema indicates increased glomerular permeability to proteins. In a young child, podocyte injury is classically associated with minimal change disease, causing loss of the normal filtration barrier.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Basement membrane</strong> - The glomerular basement membrane contributes to the filtration barrier, but the classic lesion in a young child with nephrotic syndrome is podocyte foot-process effacement.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Medulla</strong> - The renal medulla is mainly involved in urine concentration and does not form the primary filtration barrier.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Interstitium</strong> - The renal interstitium supports the tubules and vessels but is not the primary site responsible for massive proteinuria.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cortex</strong> - The glomeruli are located in the cortex, but “cortex” is too broad; the specific structure affected is the podocyte.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Podocyte injury → foot-process effacement → increased protein filtration → massive proteinuria → hypoalbuminemia → edema.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Podocytes = Protein gatekeepers.</strong> Damage them → protein leaks into urine.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>The glomerular filtration barrier consists of <strong>fenestrated endothelium + basement membrane + podocytes</strong>. In a young child with nephrotic syndrome, think <strong>podocyte injury/minimal change disease</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "NXAF7US6",
@@ -281412,18 +281412,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "A 42-year-old woman presents with generalized edema. Urinalysis shows 4+ proteinuria. Which initial bedside test could have detected protein in her urine?",
+        "difficulty": "easy",
+        "question": "<p>A 42-year-old woman presents with generalized edema. Urinalysis shows 4+ proteinuria. Which initial bedside test could have detected protein in her urine?</p>",
         "options": {
-            "A": "Sulfosalicylic acid test",
-            "B": "Urine dipstick test",
-            "C": "24-hour urine collection",
-            "D": "Microscopic urinalysis",
+            "A": "Urine dipstick test",
+            "B": "Sulfosalicylic acid test",
+            "C": "Microscopic urinalysis",
+            "D": "24-hour urine collection",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Urine dipstick test</strong> - This question is a typical case of <strong>proteinuria</strong>. A urine dipstick is a simple, rapid bedside screening test that detects urinary protein, mainly albumin, and reports it semiquantitatively from trace to 4+.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Sulfosalicylic acid test</strong> - This is a precipitation test that can detect a wider range of urinary proteins, but it is not the usual initial bedside screening test.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Microscopic urinalysis</strong> - Examines cells, casts, crystals, and other formed elements but does not directly quantify proteinuria.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">24-hour urine collection</strong> - Quantifies total protein excretion over 24 hours but is not a rapid bedside screening test.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Urine dipstick = rapid bedside screening for proteinuria.</strong> It is particularly sensitive to albumin.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Screening → dipstick.</strong> <strong>Quantification → urine protein/creatinine ratio or 24-hour urine collection.</strong> The sulfosalicylic acid test detects both albumin and other proteins but is not the routine first-line bedside test.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "E47P6WRF",
@@ -281455,19 +281455,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "A man presented with generalized body swelling for two weeks. Physical examination shows thick waxy skin hepatomegaly and enlarge kidney. 24 h/urinary proteins were 4g/day. Kidney biopsy shows apple colored birefringence fibril under Congo red stain. What is diagnosis?",
+        "topic": "REPEATED",
+        "difficulty": "medium",
+        "question": "<p>A man presented with generalized body swelling for two weeks. Physical examination shows thick waxy skin hepatomegaly and enlarge kidney. 24 h/urinary proteins were 4g/day. Kidney biopsy shows apple colored birefringence fibril under Congo red stain. What is diagnosis?</p>",
         "options": {
             "A": "Hepatitis",
-            "B": "SLE",
-            "C": "Malaria",
-            "D": "TB",
-            "E": "Multiple myeloma"
+            "B": "Malaria",
+            "C": "SLE",
+            "D": "Multiple myeloma",
+            "E": "TB"
         },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "79D3XH7Z",
@@ -281500,19 +281500,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "A man presents with generalized body swelling for two weeks. Physical exam shows thick-walled kidney; 24-hour urinary protein is 4g/day. Biopsy shows apple-green birefringent fibrils on Congo red stain. Diagnosis?",
+        "topic": "REPEATED",
+        "difficulty": "medium",
+        "question": "<p>A man presents with generalized body swelling for two weeks. Physical exam shows thick-walled kidney; 24-hour urinary protein is 4g/day. Biopsy shows apple-green birefringent fibrils on Congo red stain. Diagnosis?</p>",
         "options": {
-            "A": "Hepatitis",
+            "A": "HIV",
             "B": "TB",
             "C": "Malaria",
-            "D": "HIV",
+            "D": "Hepatitis",
             "E": "Multiple myeloma"
         },
         "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "VSFGUE42",
@@ -281588,19 +281588,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "A 6-year-old boy presents with periorbital edema, generalized swelling, and frothy urine. Labs show proteinuria >3.5 g/day. Diagnosis?",
+        "topic": "REPEATED",
+        "difficulty": "easy",
+        "question": "<p>A 6-year-old boy presents with periorbital edema, generalized swelling, and frothy urine. Labs show proteinuria &gt;3.5 g/day. Diagnosis?</p>",
         "options": {
-            "A": "Acute glomerulonephritis",
-            "B": "Minimal change disease",
-            "C": "Nephrotic syndrome",
-            "D": "Hemolytic uremic syndrome",
+            "A": "Minimal change disease",
+            "B": "Hemolytic uremic syndrome",
+            "C": "Acute glomerulonephritis",
+            "D": "Nephrotic syndrome",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "K8RGJ7UZ",
@@ -281610,19 +281610,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "A child presents with pedal edema and urine analysis shows 3+ proteinuriA- What is the most likely diagnosis?",
+        "topic": "REPEATED",
+        "difficulty": "easy",
+        "question": "<p>A child presents with pedal edema and urine analysis shows 3+ proteinuriA- What is the most likely diagnosis?</p>",
         "options": {
             "A": "Minimal change disease",
-            "B": "Focal segmental glomerulosclerosis",
-            "C": "Membranous nephropathy",
-            "D": "Acute glomerulonephritis",
+            "B": "Acute glomerulonephritis",
+            "C": "Focal segmental glomerulosclerosis",
+            "D": "Membranous nephropathy",
             "E": "IgA nephropathy"
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "PWGJEBP7",
@@ -281632,19 +281632,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "Edema in kidney disease with proteinuria is due to:",
+        "topic": "REPEATED",
+        "difficulty": "easy",
+        "question": "<p>Edema in kidney disease with proteinuria is due to:</p>",
         "options": {
             "A": "Increased hydrostatic pressure",
-            "B": "Decreased oncotic pressure",
-            "C": "Lymphatic obstruction",
+            "B": "Lymphatic obstruction",
+            "C": "Decreased oncotic pressure",
             "D": "Sodium wasting",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "B75TZPJL",
@@ -281853,18 +281853,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Renal Replacement Therapy",
-        "difficulty": "Medium",
-        "question": "A patient presents with repeated vomiting, confusion, and inability to pass urine. Laboratory tests show elevated urea and creatinine with fluid overload. What is the most appropriate immediate management?",
+        "difficulty": "medium",
+        "question": "<p>A patient presents with repeated vomiting, confusion, and inability to pass urine. Laboratory tests show elevated urea and creatinine with fluid overload. What is the most appropriate immediate management?</p>",
         "options": {
-            "A": "Oral rehydration",
-            "B": "Furosemide",
-            "C": "Hemodialysis",
-            "D": "Spironolactone",
+            "A": "Hemodialysis",
+            "B": "Oral rehydration",
+            "C": "Spironolactone",
+            "D": "Furosemide",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hemodialysis</strong> - This question is a typical case of <strong>severe acute kidney injury with uremia and fluid overload</strong>. The patient has inability to pass urine (anuria), elevated urea and creatinine, confusion suggesting uremic encephalopathy, and fluid overload. These are indications for urgent renal replacement therapy.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Oral rehydration</strong> - Contraindicated in significant fluid overload and anuria because additional fluid can worsen the overload.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Spironolactone</strong> - A potassium-sparing diuretic and is not appropriate for severe renal failure with anuria and fluid overload.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Furosemide</strong> - May be used to manage volume overload in selected patients, but it does not replace renal function or treat uremic encephalopathy. In severe anuric AKI with complications, dialysis is required.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>AEIOU = indications for urgent dialysis:</strong> Acidosis, Electrolyte abnormalities, Intoxication, Overload, Uremia.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>AEIOU → Dialysis.</strong> Here, <strong>O = fluid Overload</strong> and <strong>U = Uremic encephalopathy</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not choose furosemide simply because the patient has fluid overload. <strong>Fluid overload + anuria + uremic symptoms</strong> indicates a need for <strong>urgent dialysis</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "CXCPVAQW",
@@ -282095,18 +282095,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
-        "question": "A patient presents with flank pain and gross hematuria following trauma. What is the most appropriate next investigation?",
+        "difficulty": "medium",
+        "question": "<p>A patient presents with flank pain and gross hematuria following trauma. What is the most appropriate next investigation?</p>",
         "options": {
-            "A": "Complete urine examination",
-            "B": "Cystourethroscopy",
-            "C": "Ultrasound",
-            "D": "Electrocardiogram (ECG)",
+            "A": "Cystourethroscopy",
+            "B": "Complete urine examination",
+            "C": "Electrocardiogram (ECG)",
+            "D": "Ultrasound",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Ultrasound</strong> - A patient with flank pain and gross hematuria following trauma is suspected to have renal injury. Ultrasound is an appropriate initial investigation to assess the kidneys and detect renal hematoma, perinephric collection, or associated urinary tract injury.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Cystourethroscopy</strong> - Mainly evaluates the urethra and bladder. It is not the initial investigation for suspected renal trauma presenting with flank pain and hematuria.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Complete urine examination</strong> - Can confirm hematuria and detect other urinary abnormalities, but the patient already has gross hematuria. It does not assess the extent of traumatic renal injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Electrocardiogram (ECG)</strong> - Assesses cardiac electrical activity and has no role in evaluating traumatic renal injury.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Trauma + flank pain + gross hematuria → suspect <strong>renal trauma</strong> and perform imaging to assess renal injury.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>In a <strong>hemodynamically stable</strong> patient with significant renal trauma, <strong>contrast-enhanced CT abdomen</strong> is the preferred definitive imaging study. If CT is not among the options, ultrasound is the best available initial investigation.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "PJDP7M59",
@@ -282117,18 +282117,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Hard",
-        "question": "A patient is hit at the flank region and presents to emergency with gross hematuria. Best investigation at this stage?",
+        "difficulty": "hard",
+        "question": "<p>A patient is hit at the flank region and presents to emergency with gross hematuria. Best investigation at this stage?</p>",
         "options": {
-            "A": "CT pelvis",
-            "B": "Cytourethroscopy",
-            "C": "MRI",
-            "D": "Intravenous urography",
+            "A": "MRI",
+            "B": "Intravenous urography",
+            "C": "Cytourethroscopy",
+            "D": "CT pelvis",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">CT pelvis</strong> - Flank trauma with gross hematuria strongly suggests renal/urinary tract injury. CT is the preferred imaging modality in a hemodynamically stable patient to assess the extent of traumatic renal injury and associated abnormalities.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">MRI</strong> - MRI is not the initial imaging modality in acute trauma because it is slower and less practical in the emergency setting.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Intravenous urography</strong> - IVU has largely been replaced by contrast-enhanced CT for evaluating renal trauma and is not the preferred investigation.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cytourethroscopy</strong> - This evaluates the urethra and bladder. Flank trauma with hematuria primarily raises concern for renal injury, which requires imaging.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Blunt flank trauma + gross hematuria → suspect renal injury → CT is the investigation of choice in a stable patient.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not confuse <strong>renal trauma</strong> with urethral or bladder trauma. Flank pain points toward the kidney, whereas pelvic trauma with blood at the urethral meatus or inability to void raises concern for lower urinary tract injury.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "JKKGDMEV",
@@ -282250,18 +282250,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Medium",
-        "question": "Patient went through cystoscopy due to hematuria. Later developed fever and hypotension cause of hypotension:",
+        "difficulty": "medium",
+        "question": "<p>Patient went through cystoscopy due to hematuria. Later developed fever and hypotension cause of hypotension:</p>",
         "options": {
-            "A": "Hematuria",
-            "B": "Sepsis",
+            "A": "Bladder CA",
+            "B": "Hematuria",
             "C": "DIC",
-            "D": "Bladder CA",
+            "D": "Sepsis",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Sepsis</strong> - This question is a typical case of <strong>sepsis following an invasive urinary tract procedure</strong>. Cystoscopy can introduce bacteria into the urinary tract. Fever followed by hypotension suggests systemic infection causing vasodilation and distributive shock.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Bladder CA</strong> - Bladder cancer can cause hematuria, but it does not explain the acute development of fever and hypotension after cystoscopy.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hematuria</strong> - Hematuria itself does not usually cause hypotension unless there is massive blood loss, which is not suggested here.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">DIC</strong> - DIC can occur as a complication of severe sepsis, but it is not the primary cause suggested by fever and hypotension in this scenario.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Fever + hypotension after an invasive procedure → think sepsis → septic shock.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Procedure + Fever + Low BP = Sepsis.</strong></p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "XB9RB3NG",
@@ -282295,18 +282295,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Transplantation",
-        "difficulty": "Medium",
-        "question": "Most common opportunistic infection after kidney transplant is",
+        "difficulty": "medium",
+        "question": "<p>Most common opportunistic infection after kidney transplant is</p>",
         "options": {
-            "A": "EBV",
-            "B": "HSV",
-            "C": "Polyoma",
-            "D": "HIV",
-            "E": "HPV"
+            "A": "HPV",
+            "B": "Polyoma",
+            "C": "HIV",
+            "D": "EBV",
+            "E": "HSV"
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Polyoma</strong> - This question is a typical case of <strong>Polyomavirus infection after kidney transplantation</strong>. BK polyomavirus is a classic opportunistic infection in renal transplant recipients because immunosuppression allows viral reactivation. It can cause <strong>BK virus nephropathy</strong> and threaten the transplanted kidney.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">HPV</strong> - HPV can cause warts and cervical/anogenital dysplasia, with increased risk under immunosuppression, but it is not the classic most common opportunistic infection tested after kidney transplantation.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">HIV</strong> - HIV is not an opportunistic infection; it is a virus that causes acquired immunodeficiency.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">EBV</strong> - EBV reactivation is important after transplantation and is strongly associated with post-transplant lymphoproliferative disorder (PTLD), but it is not the classic answer for the most common opportunistic infection affecting the renal allograft.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">HSV</strong> - HSV can reactivate after transplantation, particularly early after transplant, but BK polyomavirus is the classic renal-transplant-specific opportunistic infection.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Kidney transplant + immunosuppression → BK polyomavirus → BK nephropathy → graft dysfunction.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>BK = Bad Kidney</strong> → BK polyomavirus can damage the transplanted kidney.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>EBV</strong> is strongly associated with <strong>PTLD</strong>, while <strong>BK polyomavirus</strong> is particularly associated with <strong>renal allograft nephropathy</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "8QWNV6CY",
@@ -282317,18 +282317,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
-        "question": "A 68 year old postmenopausal woman presents with intermittent spotting of blood and dysuria. On examination, a 1-cm, soft, reddish, fleshy growth is seen at the external urethral meatus. The lesion bleeds easily on touch. What is the most likely diagnosis?",
+        "difficulty": "medium",
+        "question": "<p>A 68 year old postmenopausal woman presents with intermittent spotting of blood and dysuria. On examination, a 1-cm, soft, reddish, fleshy growth is seen at the external urethral meatus. The lesion bleeds easily on touch. What is the most likely diagnosis?</p>",
         "options": {
-            "A": "Urethral diverticulum",
+            "A": "Urethral carcinoma",
             "B": "Urethral caruncle",
-            "C": "Urethral carcinoma",
-            "D": "Urethral prolapse",
+            "C": "Urethral prolapse",
+            "D": "Urethral diverticulum",
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Urethral caruncle</strong> - This question is a typical case of a <strong>urethral caruncle</strong>. It is a benign, fleshy, reddish lesion arising from the posterior lip of the external urethral meatus, commonly seen in postmenopausal women due to estrogen deficiency. It may cause spotting, dysuria, and bleeding on touch.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Urethral carcinoma</strong> - Can present with bleeding or a urethral mass, but the small, soft, reddish, fleshy lesion at the meatus in a postmenopausal woman is much more characteristic of a urethral caruncle.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethral prolapse</strong> - Produces a circumferential, donut-shaped eversion of the urethral mucosa rather than a small focal fleshy lesion.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethral diverticulum</strong> - Is an outpouching of the urethra, usually presenting with dysuria, post-void dribbling, and recurrent UTIs. It is not typically visible as a small red mass at the external meatus.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Postmenopausal woman + small red fleshy mass at urethral meatus + bleeding → urethral caruncle.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Caruncle = Caruncle at the meatus</strong> → small, red, fleshy, friable lesion.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Caruncle</strong> = focal red fleshy lesion; <strong>urethral prolapse</strong> = circumferential/donut-shaped mucosal protrusion.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "TTADZCAE",
@@ -282339,18 +282339,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Hard",
-        "question": "A 55 years old female patient presents in opd with a >1cm red mass protruding from the urethral meatus, which bleeds easily on touch biopsy shows both transitional and stratified epithelium, which of the following is most likely diagnosis?",
+        "difficulty": "hard",
+        "question": "<p>A 55 years old female patient presents in opd with a &gt;1cm red mass protruding from the urethral meatus, which bleeds easily on touch biopsy shows both transitional and stratified epithelium, which of the following is most likely diagnosis?</p>",
         "options": {
-            "A": "Urethral diverticulum",
-            "B": "Urethral cancer",
-            "C": "Vaginal carcinoma",
-            "D": "Vulval carcinoma",
+            "A": "Vulval carcinoma",
+            "B": "Urethral diverticulum",
+            "C": "Urethral cancer",
+            "D": "Vaginal carcinoma",
             "E": ""
         },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Urethral cancer</strong> - This question is a typical case of <strong>urethral carcinoma</strong>. A red mass protruding from the urethral meatus that bleeds easily is suspicious for malignancy, especially when it is &gt;1 cm. The biopsy showing both transitional and stratified epithelium is consistent with the mixed epithelial types that can occur in urethral carcinoma.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Vulval carcinoma</strong> - Arises from the vulval skin/mucosa rather than presenting as a mass directly protruding from the urethral meatus.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethral diverticulum</strong> - Is an outpouching of the urethral wall and typically presents with dysuria, post-void dribbling, and recurrent urinary infections rather than a friable bleeding mass at the meatus.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Vaginal carcinoma</strong> - Arises from the vaginal epithelium and would present as a vaginal lesion rather than a mass specifically protruding through the urethral meatus.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Red/fleshy urethral mass + bleeding + size &gt;1 cm + suspicious biopsy → think urethral carcinoma.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>A small, soft, red, friable lesion at the urethral meatus in a postmenopausal woman is classically a <strong>urethral caruncle</strong>. However, a <strong>&gt;1 cm mass that bleeds easily and has been biopsied for suspicious epithelial changes</strong> should raise concern for urethral carcinoma.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "NADPG6QB",
@@ -282361,18 +282361,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
-        "question": "A 7-year-old girl presents with a circumferential, reddish tissue at the urethral meatus. Histology shows normal urethral mucosa. Diagnosis?",
+        "difficulty": "medium",
+        "question": "<p>A 7-year-old girl presents with a circumferential, reddish tissue at the urethral meatus. Histology shows normal urethral mucosa. Diagnosis?</p>",
         "options": {
-            "A": "Urethral carcinoma",
-            "B": "Skene gland cyst",
+            "A": "Urethral caruncle",
+            "B": "Urethral carcinoma",
             "C": "Urethral mucosal prolapse",
-            "D": "Urethral caruncle",
+            "D": "Skene gland cyst",
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Urethral mucosal prolapse</strong> - This question is a typical case of <strong>urethral mucosal prolapse</strong>. It presents as a <strong>circumferential, reddish protrusion</strong> of the urethral mucosa through the external urethral meatus. Histology shows normal urethral mucosa because the prolapsed tissue is simply normal mucosa that has everted.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Urethral caruncle</strong> - A caruncle is a <strong>focal, small, reddish, fleshy lesion</strong>, classically seen in postmenopausal women. It is not circumferential.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethral carcinoma</strong> - Would show malignant cellular changes on histology rather than normal urethral mucosa. It is also extremely unlikely in a 7-year-old.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Skene gland cyst</strong> - Usually presents as a localized cystic swelling adjacent to the urethral opening, not as circumferential reddish tissue.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Child + circumferential red tissue at urethral meatus + normal mucosa = urethral mucosal prolapse.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Prolapse = Ring</strong> → circumferential/donut-shaped mucosa.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Caruncle = focal red fleshy lesion</strong>; <strong>mucosal prolapse = circumferential red ring</strong>. Age also helps: mucosal prolapse is commonly seen in prepubertal girls, whereas caruncles are classically seen after menopause.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "DAME59VX",
