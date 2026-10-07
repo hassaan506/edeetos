@@ -155,7 +155,8 @@
                 "General": 5,
                 "Micturition & Urinary Incontinence": 11,
                 "Nephritic Syndromes": 15,
-                "Nephrotic Syndromes": 23,
+                "Nephrotic Syndromes": 18,
+                "REPEATED": 5,
                 "Polycystic Kidney Disease": 1,
                 "Prostatic Adenocarcinoma": 1,
                 "Renal Cell Carcinoma": 7,
@@ -583,7 +584,8 @@
                 "General": 5,
                 "Micturition & Urinary Incontinence": 11,
                 "Nephritic Syndromes": 15,
-                "Nephrotic Syndromes": 23,
+                "Nephrotic Syndromes": 18,
+                "REPEATED": 5,
                 "Polycystic Kidney Disease": 1,
                 "Prostatic Adenocarcinoma": 1,
                 "Renal Cell Carcinoma": 7,
@@ -726,7 +728,7 @@
                     "Acid Base": 2,
                     "Micturition & Urinary Incontinence": 1,
                     "Nephritic Syndromes": 1,
-                    "Nephrotic Syndromes": 1,
+                    "REPEATED": 1,
                     "Prostatic Adenocarcinoma": 1,
                     "Urethra & Penis": 2
                 },
@@ -1076,7 +1078,7 @@
                 "Anesthesia": {},
                 "Embryology": {},
                 "Medicine": {
-                    "Nephrotic Syndromes": 1
+                    "REPEATED": 1
                 },
                 "Pathology": {
                     "Nephritic Syndromes": 1
@@ -1665,7 +1667,7 @@
                 "Medicine": {
                     "Acid Base": 1,
                     "Chronic Kidney Disease": 1,
-                    "Nephrotic Syndromes": 1
+                    "REPEATED": 1
                 },
                 "Obstetrics": {},
                 "Pathology": {
@@ -2103,7 +2105,7 @@
                     "Acute Kidney Injury": 1,
                     "Benign Prostatic Hyperplasia": 1,
                     "Chronic Kidney Disease": 1,
-                    "Nephrotic Syndromes": 1,
+                    "REPEATED": 1,
                     "Renal Cell Carcinoma": 1
                 },
                 "Pathology": {},
@@ -2708,7 +2710,7 @@
             "Surgery - 01/26 - January 7 - Evening": {
                 "Anatomy": {},
                 "Medicine": {
-                    "Nephrotic Syndromes": 1
+                    "REPEATED": 1
                 },
                 "Pharmacology": {},
                 "Pathology": {},
@@ -2964,7 +2966,7 @@
             },
             "Medicine - 08/25 - August 5 - Evening": {
                 "Medicine": {
-                    "Nephrotic Syndromes": 1
+                    "REPEATED": 1
                 },
                 "Microbiology": {},
                 "Pharmacology": {},
