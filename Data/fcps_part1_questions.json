@@ -279071,13 +279071,13 @@
         "difficulty": "medium",
         "question": "<p>Fluid of choice in paradoxical aciduria?</p>",
         "options": {
-            "A": "10%Dextrose",
+            "A": "Normal saline",
             "B": "5% dextrose",
-            "C": "Ringer lactate",
-            "D": "Normal saline",
+            "C": "10% Dextrose",
+            "D": "Ringer lactate",
             "E": ""
         },
-        "correctAnswer": "D",
+        "correctAnswer": "A",
         "explanation": "<p><br></p><h3 style=\"color: black;\">Correct Answer:</h3><p><strong style=\"color: #008000;\">Normal saline</strong> - Paradoxical aciduria occurs in severe volume depletion with hypochloremic metabolic alkalosis, usually due to vomiting. <strong>Normal saline restores extracellular volume and chloride</strong>, allowing the kidney to excrete bicarbonate and correct the alkalosis.</p><p><br></p><h3>Wrong Answers</h3><p><strong style=\"color: #CC0000;\">10% Dextrose</strong> - A hypertonic glucose solution is not used for volume and chloride replacement in hypochloremic metabolic alkalosis.</p><p><br></p><p><strong style=\"color: #CC0000;\">5% dextrose</strong> - D5W does not provide adequate sodium or chloride for correction of the volume and chloride depletion.</p><p><br></p><p><strong style=\"color: #CC0000;\">Ringer lactate</strong> - It contains less chloride and includes lactate, so it is less appropriate than normal saline for correcting chloride-responsive metabolic alkalosis.</p><p><br></p><h3 style=\"color: #0066CC;\">Key Concept:</h3><p>Paradoxical aciduria = <strong>metabolic alkalosis + acidic urine</strong> due to severe volume depletion, hypochloremia, and potassium depletion. Treatment is primarily <strong>normal saline</strong> to correct volume and chloride depletion.</p><p><br></p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3><p><strong>Vomiting → Lose HCl → Alkalosis → Give NS</strong></p><p><br></p><h3 style=\"color: #CC6600;\">Exam Trap:</h3><p>In <strong>hypochloremic metabolic alkalosis</strong>, the key treatment is <strong>chloride replacement with normal saline</strong>.</p>",
         "hint": "<p><br></p>"
     },
@@ -279512,11 +279512,11 @@
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
         "difficulty": "hard",
-        "question": "<p>50-year-old patient presents with oliguria after taking quack medicine- On urine DR there was pale colour urine, with specific gravity of about 1.010, and slightly raised urea, LFTs shows slightly raised ALT other parameters of LFTs were in normal range, there was also hypercalcemia</p>",
+        "question": "<p>50-year-old patient presents with oliguria after taking quack medicine- On urine DR there was pale color urine, with specific gravity of about 1.010, and slightly raised urea, LFTs shows slightly raised ALT other parameters of LFTs were in normal range, there was also hypercalcemia.</p>",
         "options": {
-            "A": "Acute glomerulonephritis",
-            "B": "Acute icteric phase of hepatitis",
-            "C": "Nephrocalcinosis",
+            "A": "Acute icteric phase of hepatitis",
+            "B": "Nephrocalcinosis",
+            "C": "Acute glomerulonephritis",
             "D": "Acute tubular necrosis",
             "E": ""
         },
@@ -279555,18 +279555,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "A patient develops hypovolemic shock due to severe blood loss. Which renal change is most likely to occur?",
+        "difficulty": "medium",
+        "question": "<p>A patient develops hypovolemic shock due to severe blood loss. Which renal change is most likely to occur?</p>",
         "options": {
-            "A": "Acute tubular necrosis",
-            "B": "Increased glomerular filtration rate",
-            "C": "Decreased renin secretion",
+            "A": "Increased glomerular filtration rate",
+            "B": "Decreased renin secretion",
+            "C": "Acute tubular necrosis",
             "D": "Increased renal blood flow",
             "E": ""
         },
-        "correctAnswer": "A",
-        "explanation": "Severe hypovolemia markedly reduces renal perfusion, causing ischemic injury to renal tubules. Prolonged ischemia leads to acute tubular necrosis (ATN). Renin secretion actually increases in hypovolemic shock.",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Acute tubular necrosis</strong> - Severe blood loss causes profound <strong>hypovolemia and renal hypoperfusion</strong>. If the ischemia is severe or prolonged, it causes ischemic tubular injury, leading to acute tubular necrosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Increased glomerular filtration rate</strong> - Hypovolemic shock decreases renal perfusion and therefore <strong>decreases GFR</strong>.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Decreased renin secretion</strong> - Reduced renal perfusion stimulates <strong>renin release</strong> through activation of the juxtaglomerular apparatus.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Increased renal blood flow</strong> - Severe blood loss causes systemic and renal vasoconstriction, resulting in <strong>decreased renal blood flow</strong>.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Severe blood loss → ↓ renal perfusion → ↓ GFR → pre-renal azotemia → prolonged ischemia → acute tubular necrosis.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Shock → Renal Flow ↓ → Tubules suffer → ATN</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>If the question asks for the <strong>initial</strong> renal response to hypovolemia, think <strong>pre-renal azotemia</strong>. If severe hypoperfusion persists, it can progress to <strong>acute tubular necrosis</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "D2YKHPQ2",
@@ -279621,30 +279621,32 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "A patient with an acute occlusion of the renal artery presents with sudden flank pain and anuria. For best chance of salvaging renal function, revascularization should be attempted within which approximate time window?",
+        "difficulty": "medium",
+        "question": "<p>A patient with an acute occlusion of the renal artery presents with sudden flank pain and anuria. For best chance of salvaging renal function, revascularization should be attempted within which approximate time window?</p>",
         "options": {
-            "A": "Less than 30 minutes",
-            "B": "Less than 2 hours",
-            "C": "Less than 1 hour",
-            "D": "More than 72 hours",
+            "A": "More than 72 hours",
+            "B": "Less than 1 hour",
+            "C": "Less than 2 hours",
+            "D": "Less than 30 minutes",
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "Wound Healing Stages: 1. Proliferative (days 5-21): Granulation tissue -> collagen III (by fibroblasts). 2. Remodeling (weeks-months): Collagen I replaces collagen III -> increased tensile strength. Collagen Types: Collagen III: Fetal/early wound (thin, flexible). Collagen I: Mature scar (strong, cross-linked). Collagen IV is in basement membranes.",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Less than 2 hours</strong> - Acute renal artery occlusion causes severe renal ischemia, so <strong>revascularization should be performed as early as possible</strong>. Renal tissue is highly sensitive to warm ischemia, and significant ischemic injury can begin within 1–2 hours. The exact salvage window is not rigid, but among the given options, less than 2 hours is the best answer.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Less than 30 minutes</strong> - Earlier reperfusion is beneficial, but 30 minutes is not the established clinical cutoff for renal artery occlusion.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Less than 1 hour</strong> - This is an excellent target if achievable, but it is too narrow as the approximate window being tested. Some renal ischemic injury begins within this period, but clinical revascularization is not restricted to less than 1 hour.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">More than 72 hours</strong> - Prolonged complete ischemia markedly reduces the likelihood of renal salvage, although delayed recovery can occasionally occur due to collateral circulation.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Acute renal artery occlusion → severe ischemia → immediate revascularization.</strong> The commonly cited clinical window is only a few hours, with some sources describing approximately <strong>3–6 hours</strong>; there is no universally fixed cutoff. :contentReference[oaicite:0]{index=0}</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Blocked renal artery = Reopen ASAP</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not memorize <strong>2 hours</strong> as an absolute biological cutoff. The important FCPS concept is <strong>urgent revascularization</strong>. The actual salvage window varies with collateral circulation, cause of occlusion, and residual renal perfusion.</p>Wound Healing Stages: 1. Proliferative (days 5-21): Granulation tissue -&gt; collagen III (by fibroblasts). 2. Remodeling (weeks-months): Collagen I replaces collagen III -&gt; increased tensile strength. Collagen Types: Collagen III: Fetal/early wound (thin, flexible). Collagen I: Mature scar (strong, cross-linked). Collagen IV is in basement membranes.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "6Q2ZBPVK",
-        "year": "2026",
+        "year": "2026, 2025",
         "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
+            "Medicine - 01/26 - January 6 - Evening",
+            "Surgery - 01/26 - January 6 - Evening",
+            "Gynecology - 05/25 - May 13 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Easy",
-        "question": "A 75 year old man has frequency, urgency, nocturia, difficulty in voiding. Organ involved?",
+        "difficulty": "easy",
+        "question": "<p>A 77 year old man presents with urinary frequency, urgency, nocturia, and difficulty voiding. Which organ is most likely involved?&nbsp;</p>",
         "options": {
             "A": "Urinary bladder",
             "B": "Prostate",
@@ -279653,8 +279655,8 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "N8GQN3F7",
@@ -279664,19 +279666,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Easy",
-        "question": "A 77 year old man presents with urinary frequency, urgency, nocturia, and difficulty voiding. Which organ is most likely involved?",
+        "topic": "DELETE",
+        "difficulty": "easy",
+        "question": "<p>A 77 year old man presents with urinary frequency, urgency, nocturia, and difficulty voiding. Which organ is most likely involved?</p>",
         "options": {
-            "A": "Urinary bladder",
-            "B": "Liver",
-            "C": "Urethra",
-            "D": "Prostate",
+            "A": "Urethra",
+            "B": "Prostate",
+            "C": "Liver",
+            "D": "Urinary bladder",
             "E": ""
         },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "A6XAD4Y5",
@@ -279708,19 +279710,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Easy",
-        "question": "An elderly male presents with urgency, nocturia, and dysuriA- Likely organ affected?",
+        "topic": "DELETE",
+        "difficulty": "easy",
+        "question": "<p>An elderly male presents with urgency, nocturia, and dysuria. Likely organ affected?</p>",
         "options": {
             "A": "Urethra",
-            "B": "Bladder",
-            "C": "Prostate",
+            "B": "Prostate",
+            "C": "Bladder",
             "D": "Kidney",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "7KRETGY4",
@@ -279754,18 +279756,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Medium",
-        "question": "An old man had urine incontinence and he did'nt do anything for treatment for few years. So what was the type of problem?",
+        "difficulty": "medium",
+        "question": "<p>An old man had urine incontinence and he didn't do anything for treatment for few years. So, what was the type of problem?</p>",
         "options": {
             "A": "Prostate CA",
-            "B": "Benign prostate hyperplasia",
-            "C": "Uretheral stricture",
+            "B": "Uretheral stricture",
+            "C": "Benign prostate hyperplasia",
             "D": "Bladder CA",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "U7BQ6ZAC",
@@ -279776,18 +279778,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Easy",
-        "question": "Most common site of BPH:",
+        "difficulty": "easy",
+        "question": "<p>Most common site of BPH:</p>",
         "options": {
-            "A": "Transitional zone",
-            "B": "Central + Transitional zone",
-            "C": "Peripheral zone",
-            "D": "Peripheral + Transitional zone",
+            "A": "Peripheral + Transitional zone",
+            "B": "Peripheral zone",
+            "C": "Transitional zone",
+            "D": "Central + Transitional zone",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Transitional zone</strong> - Benign prostatic hyperplasia (BPH) most commonly arises from the transitional zone of the prostate, surrounding the urethra. Enlargement compresses the prostatic urethra and causes lower urinary tract symptoms.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Peripheral zone</strong> - Prostate adenocarcinoma most commonly arises here, not BPH.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Peripheral + Transitional zone</strong> - BPH is classically centered in the transitional/periurethral region.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Central + Transitional zone</strong> - The central zone is mainly associated with the region around the ejaculatory ducts and is not the typical site of BPH.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>BPH → Transitional zone</strong><br></p><p><strong>Prostate cancer → Peripheral zone</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>BPH = Blocks the urethra → Transitional zone</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>If asked for the most common site of <strong>BPH</strong>, choose <strong>transitional zone</strong>. If asked for the most common site of <strong>prostate carcinoma</strong>, choose <strong>peripheral zone</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "2NPR7YEC",
@@ -279886,18 +279888,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "In a patient of CRF, there are decreased levels of calcium and increased phosphate. What is the cause?",
+        "difficulty": "medium",
+        "question": "<p>In a patient of CRF, there are decreased levels of calcium and increased phosphate. What is the cause?</p>",
         "options": {
-            "A": "Low parathormone",
-            "B": "Low 1,25 dihydroxycholcalciferol",
-            "C": "Low 25 hydroxy",
-            "D": "High potassium",
-            "E": "Low sodium"
+            "A": "Low 1,25 dihydroxycholcalciferol",
+            "B": "Low sodium",
+            "C": "High potassium",
+            "D": "Low 25 hydroxy",
+            "E": "Low parathormone"
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Low 1,25 dihydroxycholecalciferol</strong> - In CRF, the kidneys cannot adequately convert 25-hydroxyvitamin D into active 1,25-dihydroxyvitamin D (calcitriol). This decreases intestinal calcium absorption, causing hypocalcemia. Reduced renal phosphate excretion causes hyperphosphatemia, which further lowers serum calcium and stimulates secondary hyperparathyroidism.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Low sodium</strong> - Hyponatremia does not explain the characteristic hypocalcemia and hyperphosphatemia of CRF.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">High potassium</strong> - Hyperkalemia is common in advanced renal failure but is not the cause of this calcium-phosphate abnormality.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Low 25 hydroxy</strong> - 25-hydroxyvitamin D is the storage form. The key defect in CRF is reduced renal conversion to the active form, 1,25-dihydroxyvitamin D.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Low parathormone</strong> - PTH usually increases in CRF due to hypocalcemia and hyperphosphatemia, causing secondary hyperparathyroidism.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CRF → ↓ phosphate excretion + ↓ 1,25-(OH)<sub>2</sub> vitamin D → ↓ calcium → ↑ PTH</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Kidney failure = Can't activate D + Can't excrete P</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not confuse <strong>25-hydroxyvitamin D</strong> (storage form) with <strong>1,25-dihydroxyvitamin D</strong> (active form). The kidney activates vitamin D.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "SE2DZQLT",
@@ -279930,18 +279932,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A patient with long-standing diabetes presents with persistent proteinuria. Which test is considered the gold standard for quantifying protein loss in diabetic nephropathy?",
+        "difficulty": "medium",
+        "question": "<p>A patient with long-standing diabetes presents with persistent proteinuria. Which test is considered the gold standard for quantifying protein loss in diabetic nephropathy?</p>",
         "options": {
-            "A": "Dipstick urine test",
-            "B": "Spot urine protein",
-            "C": "Serum albumin",
-            "D": "24-hour urinary protein",
-            "E": "Renal ultrasound"
+            "A": "Serum albumin",
+            "B": "Renal ultrasound",
+            "C": "24-hour urinary protein",
+            "D": "Dipstick urine test",
+            "E": "Spot urine protein"
         },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">24-hour urinary protein</strong> - Traditionally, 24-hour urinary protein measurement is considered the gold standard for quantifying total protein loss. It measures the total amount of protein excreted over 24 hours and is useful for assessing the severity of proteinuria.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Serum albumin</strong> - May decrease with significant protein loss, but it does not directly quantify urinary protein excretion.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Renal ultrasound</strong> - Assesses renal size and structural abnormalities but does not quantify proteinuria.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Dipstick urine test</strong> - Provides a semi-quantitative estimate and is mainly sensitive to albumin; it is not the gold standard for measuring total protein loss.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Spot urine protein</strong> - A spot urine protein-to-creatinine ratio can estimate daily protein excretion and is much more convenient, but the traditional gold standard is 24-hour urinary protein measurement.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Quantification of total urinary protein → 24-hour urinary protein</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not confuse the <strong>gold standard</strong> with the <strong>preferred convenient clinical test</strong>. Spot urine protein/creatinine ratio is commonly used in practice, but if the question specifically asks for the traditional gold standard for quantifying protein loss, choose <strong>24-hour urinary protein</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "XD22PCCJ",
@@ -279952,18 +279954,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A patient presents with generalized bone pain and weakness. Laboratory investigations reveals: <br>Serum Calcium Low (8.1 mg/dL)<br>Serum Phosphate High (6.0 mg/dL)<br>PTH Significantly Elevated<br>Serum Urea/Creatinine Significantly Elevated<br>Which of the following is the most likely diagnosis?",
+        "difficulty": "medium",
+        "question": "<p>A patient presents with generalized bone pain and weakness. Laboratory investigations reveals: </p><ul><li>Serum Calcium Low (8.1 mg/dL)</li><li>Serum Phosphate High (6.0 mg/dL)</li><li>PTH Significantly Elevated</li><li>Serum Urea/Creatinine Significantly Elevated</li></ul><p>Which of the following is the most likely diagnosis?</p>",
         "options": {
-            "A": "Vitamin D deficiency",
-            "B": "Primary Hyperparathyroidism",
+            "A": "Hypoparathyroidism",
+            "B": "Vitamin D deficiency",
             "C": "Renal Impairment",
             "D": "Acute respiratory acidosis",
-            "E": "Hypoparathyroidism"
+            "E": "Primary Hyperparathyroidism"
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "2748QG6S",
@@ -279974,18 +279976,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "CKD patient with coarse crackles SOB should be treated with:",
+        "difficulty": "medium",
+        "question": "<p>CKD patient with coarse crackles SOB should be treated with:</p>",
         "options": {
-            "A": "Oxygen only",
-            "B": "Furosemide",
-            "C": "Morphine",
-            "D": "Antibiotics only",
+            "A": "Antibiotics only",
+            "B": "Morphine",
+            "C": "Furosemide",
+            "D": "Oxygen only",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Furosemide</strong> - In a CKD patient, shortness of breath with coarse crackles suggests pulmonary edema due to fluid overload. Furosemide promotes diuresis, reducing intravascular volume and pulmonary congestion.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Antibiotics only</strong> - Crackles can occur with pneumonia, but in a CKD patient with fluid overload, antibiotics alone will not treat pulmonary edema.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Morphine</strong> - Morphine may reduce distress in some acute pulmonary edema settings but does not remove the excess fluid and is not the primary treatment.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Oxygen only</strong> - Oxygen can correct hypoxemia but does not treat the underlying fluid overload.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CKD + SOB + coarse crackles → pulmonary edema from fluid overload → Furosemide</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Oxygen is supportive treatment. When the stem points to <strong>fluid overload/pulmonary edema</strong>, the key treatment is <strong>diuresis with furosemide</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "RQXM5J4R",
@@ -280019,18 +280021,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A CKD patient develops bleeding after nephrostomy. What is the most appropriate blood product to administer?",
+        "difficulty": "medium",
+        "question": "<p>A CKD patient develops bleeding after nephrostomy. What is the most appropriate blood product to administer?</p>",
         "options": {
-            "A": "Packed RBCs",
-            "B": "Platelets",
+            "A": "Platelets",
+            "B": "Packed RBCs",
             "C": "Fresh Frozen Plasma (FFP)",
-            "D": "Cryoprecipitate",
-            "E": "Whole blood"
+            "D": "Whole blood",
+            "E": "Cryoprecipitate"
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Platelets</strong> - CKD causes uremic platelet dysfunction, leading to impaired platelet adhesion and aggregation despite a normal platelet count. After an invasive procedure such as nephrostomy, bleeding due to uremic platelet dysfunction may require platelet support.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Packed RBCs</strong> - Used to treat significant blood loss and anemia, but they do not correct the primary platelet dysfunction causing uremic bleeding.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Fresh Frozen Plasma (FFP)</strong> - Replaces clotting factors and is indicated for coagulation factor deficiency, not isolated uremic platelet dysfunction.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Whole blood</strong> - Not the preferred treatment for uremic bleeding because it does not specifically correct the platelet dysfunction.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cryoprecipitate</strong> - Contains fibrinogen, factor VIII, von Willebrand factor, and factor XIII; it is mainly used for specific factor deficiencies such as hypofibrinogenemia.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CKD → uremia → platelet dysfunction → bleeding</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Uremia = Platelets don't Perform</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>The platelet count may be <strong>normal</strong> in uremia; the problem is <strong>platelet function</strong>. In clinical practice, desmopressin (DDAVP) is often used as a first-line treatment for significant uremic bleeding, but among the given blood products, <strong>platelets</strong> is the intended answer.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "N3YPCBLG",
@@ -280086,18 +280088,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A 52 year old man with a history of poorly controlled hypertension and diabetic nephropathy presents with progressive fatigue, dyspnea, and chest discomfort. On examination, he has a pericardial friction rub. Laboratory results show:<br>BUN: 212 mg/dL <br>Creatinine: 7.1 mg/dL <br>ECG: diffuse ST-segment elevations without reciprocal changes <br>Which of the following is the most likely cause of his pericardial findings?",
+        "difficulty": "medium",
+        "question": "<p>A 52 year old man with a history of poorly controlled hypertension and diabetic nephropathy presents with progressive fatigue, dyspnea, and chest discomfort. On examination, he has a pericardial friction rub. Laboratory results show:</p><p><br></p><p>BUN: 212 mg/dL </p><p><br></p><p>Creatinine: 7.1 mg/dL </p><p><br></p><p>ECG: diffuse ST-segment elevations without reciprocal changes </p><p><br></p><p>Which of the following is the most likely cause of his pericardial findings?</p>",
         "options": {
-            "A": "Viral infection of the pericardium",
-            "B": "Uremic inflammation secondary to advanced renal failure",
-            "C": "Autoimmune-mediated pericarditis",
-            "D": "Post-myocardial infarction Dressler syndrome",
-            "E": "Hypothyroidism-induced pericardial effusion"
+            "A": "Hypothyroidism-induced pericardial effusion",
+            "B": "Autoimmune-mediated pericarditis",
+            "C": "Post-myocardial infarction Dressler syndrome",
+            "D": "Uremic inflammation secondary to advanced renal failure",
+            "E": "Viral infection of the pericardium"
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Uremic inflammation secondary to advanced renal failure</strong> - Severe renal failure causes accumulation of uremic toxins, which can trigger inflammation of the pericardium, producing <strong>uremic pericarditis</strong>. The very high BUN and creatinine, together with a pericardial friction rub and diffuse ST-segment elevations without reciprocal changes, strongly support this diagnosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hypothyroidism-induced pericardial effusion</strong> - Hypothyroidism can cause a pericardial effusion, but it does not explain the marked uremia and typical inflammatory ECG findings.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Autoimmune-mediated pericarditis</strong> - Autoimmune diseases can cause pericarditis, but there is no history or evidence suggesting an autoimmune disorder in this patient.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Post-myocardial infarction Dressler syndrome</strong> - Dressler syndrome occurs weeks after myocardial infarction. There is no history of a recent MI, and diffuse ST elevation without reciprocal changes favors pericarditis rather than acute MI.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Viral infection of the pericardium</strong> - Viral pericarditis can cause diffuse ST elevation and a friction rub, but the severe renal failure and marked azotemia point specifically toward uremic pericarditis.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Advanced renal failure → accumulation of uremic toxins → pericardial inflammation → uremic pericarditis.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Uremia + Rub = Uremic pericarditis.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Diffuse ST elevation + no reciprocal changes</strong> suggests acute pericarditis, not STEMI. In a patient with severe renal failure, think <strong>uremic pericarditis</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "VTF8PPZB",
@@ -280263,18 +280265,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A 55-year-old man with uremic nephropathy presents with fatigue and nausea. Laboratory investigations reveal multiple metabolic derangements. Which of the following is most likely to be present?",
+        "difficulty": "medium",
+        "question": "<p>A 55-year-old man with uremic nephropathy presents with fatigue and nausea. Laboratory investigations reveal multiple metabolic derangements. Which of the following is most likely to be present?</p>",
         "options": {
-            "A": "Metabolic acidosis with anion gap",
+            "A": "Hyperkalemia",
             "B": "Low blood pressure",
             "C": "Hypophosphatemia",
-            "D": "Hyperkalemia",
+            "D": "Metabolic acidosis with anion gap",
             "E": ""
         },
         "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Metabolic acidosis with anion gap</strong> - In advanced renal failure, the kidneys cannot adequately excrete hydrogen ions or retain bicarbonate. Uremic acids accumulate, producing a <strong>high anion gap metabolic acidosis</strong>. Fatigue and nausea are common symptoms of uremia.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia</strong> - Hyperkalemia is also common in advanced renal failure, but the question asks for the metabolic derangement most characteristic of uremic nephropathy; high anion gap metabolic acidosis is the intended answer.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Low blood pressure</strong> - Advanced CKD more commonly causes hypertension due to sodium and water retention and increased RAAS activity.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hypophosphatemia</strong> - Renal failure decreases phosphate excretion, causing <strong>hyperphosphatemia</strong>.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Advanced CKD → ↓ H<sup>+</sup> excretion + ↓ HCO<sub>3</sub><sup>−</sup> regeneration → high anion gap metabolic acidosis.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>CKD = Can't Keep acids Down</strong> → acid retention → metabolic acidosis.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Both <strong>hyperkalemia</strong> and <strong>high anion gap metabolic acidosis</strong> can occur in advanced CKD. If the question specifically asks for the acid-base abnormality, choose <strong>high anion gap metabolic acidosis</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "S59UZKYX",
@@ -280285,18 +280287,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A patient presents with history of EdemA- His vitals reveal Increased Blood Pressure. Investigations reveal: Hypokalemia, decreased renin levels, Increased Sodium levels but Renin, Angiotensin 2 & Aldosterone levels are within normal limits. A diagnosis of Liddle syndrome is madE- Where is the defect located?",
+        "difficulty": "medium",
+        "question": "<p>A patient presents with history of Edema. His vitals reveal Increased Blood Pressure. Investigations reveal: Hypokalemia, decreased renin levels, Increased Sodium levels but Renin, Angiotensin 2 &amp; Aldosterone levels are within normal limits. A diagnosis of Liddle syndrome is made. Where is the defect located?</p>",
         "options": {
             "A": "Mutation in Epithelial sodium channel ENaC in the collecting duct",
-            "B": "Sodium-potassium ATPase pump",
-            "C": "Aldosterone receptor",
-            "D": "Renin-angiotensin system",
-            "E": "Na-H Cotransport"
+            "B": "Renin-angiotensin system",
+            "C": "Na-H Cotransport",
+            "D": "Sodium-potassium ATPase pump",
+            "E": "Aldosterone receptor"
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Mutation in Epithelial sodium channel ENaC in the collecting duct</strong> - Liddle syndrome is caused by a gain-of-function mutation in the epithelial sodium channel (ENaC) of the collecting duct. This causes excessive Na<sup>+</sup> reabsorption, leading to hypertension, volume expansion, hypokalemia, and suppression of renin and aldosterone.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Renin-angiotensin system</strong> - Renin and aldosterone are suppressed in Liddle syndrome because the primary problem is excessive sodium reabsorption independent of the renin-angiotensin-aldosterone system.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Na-H Cotransport</strong> - This transporter is not the defect responsible for Liddle syndrome. The defect is specifically in ENaC in the collecting duct.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Sodium-potassium ATPase pump</strong> - Na<sup>+</sup>/K<sup>+</sup>-ATPase maintains the sodium gradient across renal tubular cells but is not mutated in Liddle syndrome.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Aldosterone receptor</strong> - Liddle syndrome causes ENaC activation <strong>independent of aldosterone</strong>. A mineralocorticoid receptor defect would not produce the classic Liddle pattern.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Liddle syndrome = ENaC gain-of-function → ↑ Na<sup>+</sup> reabsorption → ↑ BP + ↓ K<sup>+</sup> + ↓ renin + ↓ aldosterone.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Liddle = ENaC is \"Little\" too active.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Liddle syndrome looks like hyperaldosteronism clinically, but <strong>aldosterone is low</strong>. The key distinction is <strong>low renin + low aldosterone + hypertension + hypokalemia</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "DQPPVRZ4",
@@ -280307,18 +280309,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "In diabetic kidney disease, persistent hyperglycemia causes renal cell injury primarily through:",
+        "difficulty": "medium",
+        "question": "<p>In diabetic kidney disease, persistent hyperglycemia causes renal cell injury primarily through:</p>",
         "options": {
             "A": "Nutritional deficiency",
-            "B": "Oxidative stress",
-            "C": "Vitamin D deficiency",
-            "D": "Autoimmune destruction",
+            "B": "Autoimmune destruction",
+            "C": "Oxidative stress",
+            "D": "Vitamin D deficiency",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Oxidative stress</strong> - Persistent hyperglycemia causes excessive glucose metabolism and formation of advanced glycation end products (AGEs), which increase reactive oxygen species (ROS). Oxidative stress contributes to glomerular endothelial injury, podocyte damage, mesangial expansion, and progression of diabetic kidney disease.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Nutritional deficiency</strong> - Nutritional deficiency is not the primary mechanism of renal cell injury in diabetes.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Autoimmune destruction</strong> - Autoimmune destruction is characteristic of type 1 diabetes itself, but it is not the main mechanism causing renal cell injury in diabetic kidney disease.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Vitamin D deficiency</strong> - Vitamin D deficiency can occur in chronic kidney disease but is a consequence/associated abnormality rather than the primary mechanism of diabetic renal injury.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Chronic hyperglycemia → AGEs + ROS → oxidative stress → glomerular/podocyte injury → diabetic nephropathy.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Hyperglycemia causes diabetic kidney injury through multiple pathways, including <strong>AGE formation, oxidative stress, PKC activation, and polyol pathway activity</strong>. Among these options, <strong>oxidative stress</strong> is the best answer.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "TZMQHZ8J",
@@ -280391,23 +280393,24 @@
         "id": "6X2DTRQT",
         "year": "2026",
         "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon"
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Easy",
-        "question": "A patient with chronic kidney disease consumes excessive amounts of oranges. Which extra cellular fluid (ECF) electrolyte is most likely to increase?",
+        "difficulty": "easy",
+        "question": "<p>A patient with chronic kidney disease consumes excessive amounts of oranges. Which extra cellular fluid (ECF) electrolyte is most likely to increase?</p>",
         "options": {
             "A": "Sodium (Na+)",
             "B": "Bicarbonate (HCO3-)",
-            "C": "Potassium (K+)",
-            "D": "Chloride",
+            "C": "Chloride",
+            "D": "Potassium (K+)",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Potassium (K+)</strong> - Oranges are rich in potassium. In chronic kidney disease, the kidneys have reduced ability to excrete potassium, so excessive potassium intake can cause an increase in ECF potassium concentration, leading to hyperkalemia.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Chloride</strong> - Oranges are not a major source of chloride, and their consumption does not typically cause a significant rise in ECF chloride.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Bicarbonate (HCO3-)</strong> - Orange juice contains citrate, which is metabolized to bicarbonate, but excessive oranges in CKD primarily raise concern for potassium accumulation.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Sodium (Na+)</strong> - Oranges contain relatively little sodium and would not be expected to significantly increase ECF sodium.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CKD + high-potassium food → ↓ renal K<sup>+</sup> excretion → ↑ ECF K<sup>+</sup> → hyperkalemia.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Orange = K<sup>+</sup> rich → Kidney can't clear K<sup>+</sup> → K<sup>+</sup> rises.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>In CKD, remember the high-risk dietary electrolytes are especially <strong>potassium and phosphate</strong> because renal excretion is impaired.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "LS2VBWJ5",
@@ -280417,19 +280420,19 @@
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
-        "topic": "Chronic Kidney Disease",
-        "difficulty": "Easy",
-        "question": "A patient with chronic kidney disease consumes excessive amounts of oranges. Which extracellularfluid (ECF) electrolyte is most likely to increase?",
+        "topic": "DELETED",
+        "difficulty": "easy",
+        "question": "<p>A patient with chronic kidney disease consumes excessive amounts of oranges. Which extracellularfluid (ECF) electrolyte is most likely to increase?</p>",
         "options": {
-            "A": "Sodium (Na+)",
-            "B": "Bicarbonate (HCO3-)",
-            "C": "Potassium (K+)",
-            "D": "Chloride",
+            "A": "Chloride",
+            "B": "Potassium (K+)",
+            "C": "Bicarbonate (HCO3-)",
+            "D": "Sodium (Na+)",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "Q5NH8WXF",
@@ -280440,18 +280443,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A patient is a known case of CKD. He has high phosphate, very high PTH, low calcium and low calcitriol. What is the most likely reason for high PTH?",
+        "difficulty": "medium",
+        "question": "<p>A patient is a known case of CKD. He has high phosphate, very high PTH, low calcium and low calcitriol. What is the most likely reason for high PTH?</p>",
         "options": {
             "A": "Parathyroids are releasing PTH on their own",
-            "B": "Kidney is losing calcium",
+            "B": "Kidney is losing vitamin D",
             "C": "Kidney cannot form vitamin D",
-            "D": "Kidney is losing vitamin D",
+            "D": "Kidney is losing calcium",
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Kidney cannot form vitamin D</strong> - In CKD, the damaged kidneys cannot adequately convert 25-hydroxyvitamin D into active 1,25-dihydroxyvitamin D (calcitriol). Low calcitriol decreases intestinal calcium absorption, while phosphate retention further lowers calcium. The resulting hypocalcemia stimulates the parathyroid glands to release more PTH, causing secondary hyperparathyroidism.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Parathyroids are releasing PTH on their own</strong> - This describes autonomous PTH secretion, which is characteristic of tertiary hyperparathyroidism. In this case, the high PTH is a compensatory response to hypocalcemia and low calcitriol.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Kidney is losing vitamin D</strong> - The main problem is not loss of vitamin D through the kidney. The kidney loses the ability to <strong>activate</strong> vitamin D by converting it to calcitriol.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Kidney is losing calcium</strong> - The kidney is not primarily causing PTH elevation by losing calcium. CKD causes phosphate retention and reduced calcitriol production, both of which contribute to hypocalcemia.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CKD → ↓ calcitriol + ↑ phosphate → ↓ calcium → ↑ PTH = secondary hyperparathyroidism.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Kidney fails → D fails → Ca falls → PTH rises.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Secondary hyperparathyroidism</strong> = compensatory ↑ PTH due to hypocalcemia/CKD. <strong>Tertiary hyperparathyroidism</strong> = autonomous PTH secretion after long-standing secondary hyperparathyroidism, often with hypercalcemia.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "TVDVTQTW",
