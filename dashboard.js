@@ -335,22 +335,54 @@ onAuthStateChanged(auth, async (user) => {
 
                             pendingExams.forEach((exam, index) => {
                                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
-                                launchBtn.addEventListener('click', async () => {
+                                launchBtn.addEventListener('click', () => {
                                     launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
                                     launchBtn.style.opacity = "0.8";
                                     launchBtn.style.pointerEvents = "none";
 
-                                    setTimeout(() => {
-                                        localStorage.setItem('edeetos_active_quiz', JSON.stringify(exam.questions));
-                                        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
-                                            mode: 'exam', 
-                                            timer: exam.timerMinutes, 
-                                            examName: exam.title 
-                                        }));
-                                        localStorage.setItem('edeetos_assigned_exam_id', exam.id);
+                                    // 1. Set standard config so quiz.js knows it is an exam
+                                    if (exam.course) {
+                                        localStorage.setItem('edeetos_active_course', exam.course);
+                                    }
+                                    
+                                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
+                                        mode: 'exam', 
+                                        timer: exam.timerMinutes, 
+                                        examName: exam.title 
+                                    }));
+                                    localStorage.setItem('edeetos_assigned_exam_id', exam.id);
+
+                                    // 2. Clear out any aborted sessions that quiz.js might try to restore
+                                    localStorage.removeItem('edeetos_aborted_session_backup');
+                                    localStorage.removeItem('edeetos_quiz_state');
+
+                                    // 3. Force the questions into IndexedDB where quiz.js actually reads them
+                                    const request = indexedDB.open("EdeetosDB", 1);
+                                    
+                                    request.onupgradeneeded = (e) => {
+                                        const db = e.target.result;
+                                        if (!db.objectStoreNames.contains("quiz_sessions")) {
+                                            db.createObjectStore("quiz_sessions");
+                                        }
+                                    };
+
+                                    request.onsuccess = (e) => {
+                                        const db = e.target.result;
+                                        const tx = db.transaction("quiz_sessions", "readwrite");
+                                        tx.objectStore("quiz_sessions").put(exam.questions, "active_quiz_queue");
                                         
-                                        window.location.href = 'quiz.html';
-                                    }, 50);
+                                        tx.oncomplete = () => {
+                                            window.location.href = 'quiz.html';
+                                        };
+                                    };
+                                    
+                                    request.onerror = (e) => {
+                                        console.error("IndexedDB error:", e);
+                                        alert("Failed to load exam data into local storage. Please try again.");
+                                        launchBtn.innerHTML = "Start Now";
+                                        launchBtn.style.opacity = "1";
+                                        launchBtn.style.pointerEvents = "auto";
+                                    };
                                 });
                             });
                         }
