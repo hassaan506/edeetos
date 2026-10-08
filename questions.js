@@ -571,29 +571,90 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     } else {
         let keys = Object.keys(dataObj);
         
-        if (currentView === 'exam' && level === 'Level1') {
-            keys.sort((a, b) => {
-                const getMonth = (str) => {
-                    const match = str.match(/\b(\d{2})\/\d{2}\b/);
-                    if (match) return parseInt(match[1], 10);
-                    const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-                    const lowerStr = str.toLowerCase();
-                    for (let i = 0; i < months.length; i++) {
-                        if (lowerStr.includes(months[i])) return i + 1;
-                    }
-                    return 99; 
-                };
-                
-                const monthA = getMonth(a);
-                const monthB = getMonth(b);
-                
-                if (monthA !== monthB) return monthA - monthB;
-                return a.localeCompare(b);
-            });
-        } else {
-            keys.sort((a, b) => a.localeCompare(b));
+if (currentView === 'exam' && level === 'Level1') {
+    const parseExamDetails = (str) => {
+        const parts = str.split('-').map(p => p.trim());
+        
+        // 1. Subject extraction (first segment before the hyphen)
+        const subject = (parts[0] || str).toLowerCase();
+        
+        let year = 9999;
+        let month = 99;
+        let day = 99;
+
+        // 2. Extract Session MM/YY or MM/YYYY (e.g. 11/25, 01/26)
+        const sessionMatch = str.match(/\b(\d{1,2})\/(\d{2,4})\b/);
+        if (sessionMatch) {
+            month = parseInt(sessionMatch[1], 10);
+            const rawYear = parseInt(sessionMatch[2], 10);
+            year = rawYear < 100 ? 2000 + rawYear : rawYear;
         }
 
+        const lowerStr = str.toLowerCase();
+
+        // Fallback for month if MM/YY was missing
+        const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+        if (month === 99) {
+            for (let i = 0; i < months.length; i++) {
+                if (lowerStr.includes(months[i])) {
+                    month = i + 1;
+                    break;
+                }
+            }
+        }
+
+        // 3. Extract Day of the Month (handles "November 13", "Feburary 8", etc.)
+        const dayMatch = lowerStr.match(/(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*[-–]?\s*(\d{1,2})\b/)
+                      || lowerStr.match(/\b(\d{1,2})\s*[-–]?\s*(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*/);
+        if (dayMatch) {
+            day = parseInt(dayMatch[1], 10);
+        } else if (parts[2]) {
+            const partDayMatch = parts[2].match(/\b(\d{1,2})\b/);
+            if (partDayMatch) day = parseInt(partDayMatch[1], 10);
+        }
+
+        // 4. Shift Priority: Morning -> Afternoon -> Evening -> Night
+        const shiftMap = {
+            'morning': 1,
+            'afternoon': 2,
+            'evening': 3,
+            'night': 4
+        };
+        let shiftPriority = 99;
+        for (const [shiftKey, priority] of Object.entries(shiftMap)) {
+            if (lowerStr.includes(shiftKey)) {
+                shiftPriority = priority;
+                break;
+            }
+        }
+
+        return { subject, year, month, day, shiftPriority };
+    };
+
+    keys.sort((a, b) => {
+        const itemA = parseExamDetails(a);
+        const itemB = parseExamDetails(b);
+
+        // Tier 1: Subject wise (A to Z)
+        if (itemA.subject !== itemB.subject) {
+            return itemA.subject.localeCompare(itemB.subject);
+        }
+
+        // Tier 2: Chronological order (Year -> Month -> Day)
+        if (itemA.year !== itemB.year) return itemA.year - itemB.year;
+        if (itemA.month !== itemB.month) return itemA.month - itemB.month;
+        if (itemA.day !== itemB.day) return itemA.day - itemB.day;
+
+        // Tier 3: Shift priority (Morning -> Afternoon -> Evening -> Night)
+        if (itemA.shiftPriority !== itemB.shiftPriority) {
+            return itemA.shiftPriority - itemB.shiftPriority;
+        }
+
+        return a.localeCompare(b);
+    });
+} else {
+    keys.sort((a, b) => a.localeCompare(b));
+}
         keys.forEach(key => renderListItem(key, dataObj[key], level, [...pathArr, key]));
     }
 }
