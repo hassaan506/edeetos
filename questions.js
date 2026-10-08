@@ -384,8 +384,25 @@ function renderGrid() {
         const doneCount = getSolvedCount(currentView, [cardTitle]);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
-        const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
         const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+
+        let cardStatsHtml = '';
+        if (currentView === 'exam') {
+            const mistakeCount = getMistakesCount(currentView, [cardTitle]);
+            const totalAttempts = doneCount + mistakeCount;
+            const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
+            const accColor = totalAttempts === 0 ? '#64748b' : (accuracy >= 75 ? '#065f46' : (accuracy >= 50 ? '#92400e' : '#991b1b'));
+            const accBg = totalAttempts === 0 ? '#f1f5f9' : (accuracy >= 75 ? '#ecfdf5' : (accuracy >= 50 ? '#fffbeb' : '#fef2f2'));
+
+            cardStatsHtml = `
+                <div style="display: flex; gap: 8px; font-size: 0.72rem; margin: 6px 0; flex-wrap: wrap;">
+                    <span style="color: #059669; font-weight: 600;"><i class="fas fa-check"></i> ${doneCount}</span>
+                    <span style="color: #dc2626; font-weight: 600;"><i class="fas fa-times"></i> ${mistakeCount}</span>
+                    <span style="color: ${accColor}; font-weight: 700; background: ${accBg}; padding: 1px 6px; border-radius: 4px;">${totalAttempts > 0 ? accuracy + '%' : '--'} Acc</span>
+                </div>
+            `;
+        }
 
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
@@ -395,6 +412,7 @@ function renderGrid() {
                 <h3 class="card-title">${cardTitle}</h3>
                 ${countHtml}
             </div>
+            ${cardStatsHtml}
             ${progressHtml}
         `;
         card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
@@ -666,17 +684,43 @@ function renderListItem(itemName, nextData, level, itemPath) {
     labelDiv.style.flexGrow = '1';
 
     const qCount = getQuestionCount(currentView, itemPath);
+    const doneCount = getSolvedCount(currentView, itemPath);
     
     let countHtml = '';
     let progressHtml = '';
+    let examStatsHtml = '';
 
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
         countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
     } else {
-        const doneCount = getSolvedCount(currentView, itemPath);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-        countHtml = `<span class="card-count">${doneCount} /${qCount}</span>`;
+        countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
         progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+    }
+
+    // Specific Paper Metrics: only calculated and rendered in Past Papers view
+    if (currentView === 'exam') {
+        const mistakeCount = getMistakesCount(currentView, itemPath);
+        const totalAttempts = doneCount + mistakeCount;
+        const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
+
+        const accColor = totalAttempts === 0 ? '#64748b' : (accuracy >= 75 ? '#065f46' : (accuracy >= 50 ? '#92400e' : '#991b1b'));
+        const accBg = totalAttempts === 0 ? '#f1f5f9' : (accuracy >= 75 ? '#ecfdf5' : (accuracy >= 50 ? '#fffbeb' : '#fef2f2'));
+        const accBorder = totalAttempts === 0 ? '#cbd5e1' : (accuracy >= 75 ? '#a7f3d0' : (accuracy >= 50 ? '#fde68a' : '#fecaca'));
+
+        examStatsHtml = `
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0 6px 28px; font-size: 0.75rem;">
+                <span style="background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 2px 8px; border-radius: 6px; font-weight: 600;">
+                    <i class="fas fa-check" style="margin-right: 4px; color: #10b981;"></i>${doneCount} Solved
+                </span>
+                <span style="background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; padding: 2px 8px; border-radius: 6px; font-weight: 600;">
+                    <i class="fas fa-times" style="margin-right: 4px; color: #ef4444;"></i>${mistakeCount} Mistakes
+                </span>
+                <span style="background: ${accBg}; color: ${accColor}; border: 1px solid ${accBorder}; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
+                    <i class="fas fa-bullseye" style="margin-right: 4px;"></i>${totalAttempts > 0 ? accuracy + '% Accuracy' : 'Unattempted'}
+                </span>
+            </div>
+        `;
     }
 
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
@@ -698,6 +742,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
                 ${countHtml}${instantStartBtn}
             </div>
         </div>
+        ${examStatsHtml}
         ${progressHtml}
     `;
     itemDiv.appendChild(labelDiv);
@@ -1539,10 +1584,10 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     return pool.filter(q => {
-        if (currentMode !== 'exam') {
-            if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false;
-            if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-        }
+if (currentMode !== 'exam' && !customPool) {
+    if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false;
+    if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
+}
 
         if (isGlobalPopupActive) {
             if (paths[0] === "Books") {
@@ -1606,6 +1651,13 @@ function getSolvedCount(view, pathArr) {
     const pool = activeCustomPool || allQuestions;
     const attemptedPool = pool.filter(q => attemptedQuestions.includes(getQID(q)));
     return getQuestionCount(view, pathArr, attemptedPool);
+}
+
+function getMistakesCount(view, pathArr) {
+    const pool = activeCustomPool || allQuestions;
+    const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+    const mistakePool = pool.filter(q => allMistakes.includes(getQID(q)));
+    return getQuestionCount(view, pathArr, mistakePool);
 }
 
 function getLeafPaths(dataObj, currentPath) {

@@ -177,18 +177,17 @@ body {
     cursor: pointer;
     user-select: none;
     font-size: 0.95rem;
-    white-space: nowrap; /* Keeps the label text attached to the checkbox */
+    white-space: nowrap;
     margin: 0 !important;
 }
 
-/* Forces the container holding the filters and buttons into a horizontal row and centers them */
 .search-filter-bar > div:not(.search-wrapper) {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center !important; 
-    width: 100% !important; /* Forces the container to span full width so items can center */
+    width: 100% !important;
     gap: 1.5rem;
     border: none !important; 
     padding: 0 !important;
@@ -380,7 +379,7 @@ body {
     padding: 1.5rem 2rem; 
     overflow-y: auto;
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
     gap: 1.2rem;
     align-items: stretch; 
     background: #f8fafc;
@@ -391,13 +390,13 @@ body {
     flex-direction: column; 
     justify-content: space-between;
     align-items: stretch; 
-    padding: 1.5rem; 
+    padding: 1.4rem; 
     background: #ffffff;
     border-radius: 16px;
     border: 1px solid #e2e8f0;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-    gap: 1rem; 
+    gap: 0.8rem; 
     user-select: none;
     box-sizing: border-box; 
 }
@@ -409,9 +408,9 @@ body {
 }
 
 .list-item .card-header-flex { 
-    margin-bottom: 12px; 
+    margin-bottom: 6px; 
     align-items: center; 
-    flex-wrap: nowrap; /* Prevents the buttons from dropping to a new line */
+    flex-wrap: nowrap; 
     gap: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -421,7 +420,8 @@ body {
     flex: 1;
     min-width: 0; 
     word-break: break-word;
-    line-height: 1.3;
+    line-height: 1.35;
+    font-size: 0.98rem;
 }
 
 .list-item .card-header-flex > div {
@@ -429,12 +429,12 @@ body {
 }
 
 .list-item input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     accent-color: #3b82f6; 
     flex-shrink: 0; 
-    margin-top: 2px;
+    margin-top: 1px;
     margin-right: 12px !important;
 }
 
@@ -452,6 +452,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Specific Paper Stats Strip (Past Papers View) */
+.exam-stats-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 4px 0 8px 34px;
+    font-size: 0.75rem;
+}
+
+.exam-stat-badge {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .hero-item {
@@ -649,6 +670,16 @@ body {
         padding-bottom: 220px !important; 
     }
     
+    .popup-body {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .exam-stats-strip {
+        margin-left: 0;
+        gap: 6px;
+    }
+
     .exam-action-bar {
         flex-direction: column; 
         gap: 1.2rem;
@@ -714,7 +745,7 @@ body.dark-mode, .dark-mode body {
     color: #94a3b8 !important; 
 }
 
-/* --- Fix Journey Button in Dark Mode --- */
+/* Journey Button */
 .dark-mode #btn-view-journey {
     background: rgba(245, 158, 11, 0.15) !important;
     border: 1px solid rgba(245, 158, 11, 0.3) !important;
@@ -724,7 +755,7 @@ body.dark-mode, .dark-mode body {
     background: rgba(245, 158, 11, 0.25) !important;
 }
 
-/* --- Fix Study Mode Toggle in Dark Mode --- */
+/* Study Mode Toggle */
 .dark-mode .mode-toggle {
     background: #1f2937 !important;
     border: 1px solid #374151 !important;
@@ -743,14 +774,14 @@ body.dark-mode, .dark-mode body {
     border: 1px solid #374151;
 }
 
-/* PRESERVED SEMANTIC STAT COLORS IN DARK MODE */
+/* Semantic Stat Colors in Dark Mode */
 .dark-mode .stat-solved,
 .dark-mode .count-green,
 .dark-mode span[style*="color: #10b981"],
 .dark-mode span[style*="color: rgb(16, 185, 129)"],
 .dark-mode div[style*="color: #10b981"],
 .dark-mode div[style*="color: rgb(16, 185, 129)"] { 
-    color: #34d399 !important; /* Vivid dark-mode emerald */
+    color: #34d399 !important;
 }
 
 .dark-mode .stat-mistakes,
@@ -760,7 +791,7 @@ body.dark-mode, .dark-mode body {
 .dark-mode span[style*="color: rgb(239, 68, 68)"],
 .dark-mode div[style*="color: #ef4444"],
 .dark-mode div[style*="color: rgb(239, 68, 68)"] { 
-    color: #f87171 !important; /* Vivid dark-mode red */
+    color: #f87171 !important;
 }
 
 .dark-mode .stat-unattempted,
@@ -769,14 +800,43 @@ body.dark-mode, .dark-mode body {
 .dark-mode span[style*="color: rgb(217, 119, 6)"],
 .dark-mode div[style*="color: #d97706"],
 .dark-mode div[style*="color: rgb(217, 119, 6)"] { 
-    color: #fbbf24 !important; /* Vivid dark-mode amber */
+    color: #fbbf24 !important;
 }
 
 .dark-mode .stat-total,
 .dark-mode .count-blue,
 .dark-mode span[style*="color: #3b82f6"],
 .dark-mode div[style*="color: #3b82f6"] { 
-    color: #38bdf8 !important; /* Vivid dark-mode sky blue */
+    color: #38bdf8 !important;
+}
+
+/* Past Paper Badges Dark Mode Support (Both CSS & Inline) */
+.dark-mode span[style*="background: #ecfdf5"],
+.dark-mode span[style*="background: rgb(236, 253, 245)"] {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.dark-mode span[style*="background: #fef2f2"],
+.dark-mode span[style*="background: rgb(254, 242, 242)"] {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #f87171 !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.dark-mode span[style*="background: #fffbeb"],
+.dark-mode span[style*="background: rgb(255, 251, 235)"] {
+    background: rgba(245, 158, 11, 0.15) !important;
+    color: #fbbf24 !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+.dark-mode span[style*="background: #f1f5f9"],
+.dark-mode span[style*="background: rgb(241, 245, 249)"] {
+    background: rgba(30, 41, 59, 0.7) !important;
+    color: #94a3b8 !important;
+    border-color: #334155 !important;
 }
 
 /* Search and Filters */
@@ -800,15 +860,14 @@ body.dark-mode, .dark-mode body {
     color: #cbd5e1 !important; 
 }
 
-/* Restore Difficulty Tag Colors in Dark Mode */
 .dark-mode .filter-wrapper:has(#diff-easy-filter) { 
-    color: #34d399 !important; /* Green */
+    color: #34d399 !important;
 }
 .dark-mode .filter-wrapper:has(#diff-medium-filter) { 
-    color: #fbbf24 !important; /* Yellow/Amber */
+    color: #fbbf24 !important;
 }
 .dark-mode .filter-wrapper:has(#diff-hard-filter) { 
-    color: #f87171 !important; /* Red */
+    color: #f87171 !important;
 }
 
 .dark-mode .search-dropdown { 
