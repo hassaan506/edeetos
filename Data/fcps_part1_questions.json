@@ -280465,18 +280465,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Medium",
-        "question": "A 40 year old patient on long-term lithium therapy for bipolar disorder presents with fine tremors, polyuria, and mild confusion. Which electrolyte disturbance is most commonly associated with this drug?",
+        "difficulty": "medium",
+        "question": "<p>A 40 year old patient on long-term lithium therapy for bipolar disorder presents with fine tremors, polyuria, and mild confusion. Which electrolyte disturbance is most commonly associated with this drug?</p>",
         "options": {
-            "A": "Hyperkalemia",
-            "B": "Hypocalcemia",
-            "C": "Nephrogenic diabetes insipidus",
-            "D": "Metabolic alkalosis",
+            "A": "Hypocalcemia",
+            "B": "Nephrogenic diabetes insipidus",
+            "C": "Metabolic alkalosis",
+            "D": "Hyperkalemia",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Nephrogenic diabetes insipidus</strong> - Long-term lithium therapy commonly causes <strong>nephrogenic diabetes insipidus</strong> by reducing the kidney's response to ADH. This leads to impaired water reabsorption, causing polyuria and polydipsia. Lithium toxicity can also cause fine tremor and confusion.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hypocalcemia</strong> - Hypocalcemia is not the characteristic renal/electrolyte abnormality associated with chronic lithium therapy.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Metabolic alkalosis</strong> - Lithium does not characteristically cause metabolic alkalosis.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hyperkalemia</strong> - Hyperkalemia is not the typical electrolyte disturbance caused by lithium. The classic renal complication is nephrogenic diabetes insipidus.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Lithium → renal resistance to ADH → ↓ water reabsorption → nephrogenic DI → polyuria + polydipsia.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Li = Loses water</strong> → nephrogenic DI.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Nephrogenic DI is not itself an electrolyte disturbance. The resulting electrolyte abnormality is typically <strong>hypernatremia</strong> if water intake does not adequately compensate for the renal water loss.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "8W2CZKDT",
@@ -280531,18 +280531,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Medium",
-        "question": "A 25-year-old man presents with signs of dehydrationzDespite administration of desmopressin (ADH analog), his urine remains hypo-osmolar and dilutE- Laboratory tests show persistent polyuria and low urine osmolality. Which part of the nephron is most likely affected?",
+        "difficulty": "medium",
+        "question": "<p>A 25-year-old man presents with signs of dehydrationzDespite administration of desmopressin (ADH analog), his urine remains hypo-osmolar and dilutE- Laboratory tests show persistent polyuria and low urine osmolality. Which part of the nephron is most likely affected?</p>",
         "options": {
-            "A": "Distal convoluted tubule",
-            "B": "Collecting duct",
-            "C": "Proximal tubule",
-            "D": "Collecting tubule",
+            "A": "Collecting tubule",
+            "B": "Proximal tubule",
+            "C": "Distal convoluted tubule",
+            "D": "Collecting duct",
             "E": ""
         },
         "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Collecting duct</strong> - Desmopressin normally acts on V2 receptors in the collecting duct, increasing aquaporin-2 insertion and water reabsorption. If urine remains dilute despite desmopressin, the collecting duct is unresponsive to ADH, as in nephrogenic diabetes insipidus.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Collecting tubule</strong> - Not the primary site responsible for ADH-mediated water reabsorption.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Proximal tubule</strong> - Reabsorbs most filtered water, but this reabsorption is largely independent of ADH.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Distal convoluted tubule</strong> - Mainly involved in electrolyte regulation; it is not the major site of ADH-dependent water reabsorption.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>ADH → V2 receptor → collecting duct → aquaporin-2 → water reabsorption → concentrated urine.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>ADH = Adds water back</strong> at the collecting duct.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>If urine concentrates after desmopressin → <strong>central DI</strong> (ADH deficiency). If urine remains dilute → <strong>nephrogenic DI</strong> (renal resistance to ADH).</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "8TZGQ8MV",
@@ -280575,18 +280575,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Medium",
-        "question": "A 60 year old man with long-standing diabetes mellitus presents with difficulty in urination, overflow incontinence, and a distended bladder on examination. He has decreased bladder sensation and poor detrusor contraction. What is the most likely diagnosis?",
+        "difficulty": "medium",
+        "question": "<p>A 60 year old man with long-standing diabetes mellitus presents with difficulty in urination, overflow incontinence, and a distended bladder on examination. He has decreased bladder sensation and poor detrusor contraction. What is the most likely diagnosis?</p>",
         "options": {
-            "A": "Stress incontinence",
+            "A": "Neurogenic bladder",
             "B": "Urge incontinence",
-            "C": "Neurogenic bladder",
+            "C": "Stress incontinence",
             "D": "Benign prostatic hyperplasia",
             "E": "Acute cystitis"
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Neurogenic bladder</strong> - Long-standing diabetes can cause autonomic neuropathy, leading to decreased bladder sensation and impaired detrusor contraction. This causes urinary retention, bladder distension, and overflow incontinence.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Urge incontinence</strong> - Caused by involuntary detrusor contractions, producing a strong urgency to urinate rather than retention with a distended bladder.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Stress incontinence</strong> - Occurs when increased intra-abdominal pressure causes urine leakage due to inadequate urethral closure.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Benign prostatic hyperplasia</strong> - Can cause bladder outlet obstruction and retention, but the decreased bladder sensation and poor detrusor contraction in a long-standing diabetic point to diabetic autonomic neuropathy.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Acute cystitis</strong> - Typically causes dysuria, frequency, urgency, and suprapubic discomfort rather than painless retention with overflow incontinence.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>Diabetic autonomic neuropathy → decreased bladder sensation + weak detrusor contraction → urinary retention → overflow incontinence.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Diabetes → “Dull bladder”</strong> → decreased sensation + weak detrusor → overflow.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Overflow incontinence + distended bladder</strong> = think urinary retention. In a long-standing diabetic with poor detrusor contraction, think <strong>neurogenic bladder</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "7LW878PK",
@@ -280641,18 +280641,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Medium",
-        "question": "A woman presents with continuous leakage of urine through the vagina following prolonged obstructed labor. The fistula is most likely between which structures?",
+        "difficulty": "medium",
+        "question": "<p>A woman presents with continuous leakage of urine through the vagina following prolonged obstructed labor. The fistula is most likely between which structures?</p>",
         "options": {
-            "A": "Urethra and vagina",
-            "B": "Bladder and uterus",
-            "C": "Bladder and vagina",
-            "D": "Ureter and vagina",
-            "E": "Cervix and bladder"
+            "A": "Bladder and uterus",
+            "B": "Ureter and vagina",
+            "C": "Cervix and bladder",
+            "D": "Urethra and vagina",
+            "E": "Bladder and vagina"
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "E",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Bladder and vagina</strong> - Prolonged obstructed labor causes pressure necrosis of the tissues between the bladder and vagina, producing a vesicovaginal fistula (VVF). It causes continuous, usually painless leakage of urine through the vagina.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Bladder and uterus</strong> - A vesicouterine fistula connects the bladder to the uterus and is not the classic fistula caused by prolonged obstructed labor.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Ureter and vagina</strong> - A ureterovaginal fistula causes continuous vaginal urine leakage, but it is more commonly associated with pelvic surgery or ureteric injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cervix and bladder</strong> - This is not the typical fistula produced by prolonged obstructed labor.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethra and vagina</strong> - A urethrovaginal fistula can cause urinary leakage, but the classic obstetric fistula is between the bladder and vagina.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Prolonged obstructed labor → pressure necrosis → vesicovaginal fistula → continuous urinary leakage through vagina.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Obstructed labor → VVF</strong> = Vesico-Vaginal Fistula.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Continuous urine leakage</strong> suggests a fistula, while stress or urge incontinence causes intermittent leakage. Obstetric fistula classically means <strong>bladder ↔ vagina</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "YRXS7APP",
@@ -280663,18 +280663,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Easy",
-        "question": "A patient experiences urinary dribbling when coughing or sneezing. What type of incontinence is this?",
+        "difficulty": "easy",
+        "question": "<p>A patient experiences urinary dribbling when coughing or sneezing. What type of incontinence is this?</p>",
         "options": {
-            "A": "Stress incontinence",
+            "A": "Reflex incontinence",
             "B": "Urge incontinence",
             "C": "Overflow incontinence",
             "D": "Functional incontinence",
-            "E": "Reflex incontinence"
+            "E": "Stress incontinence"
         },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "E",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Stress incontinence</strong> - Urine leakage occurs when increased intra-abdominal pressure from coughing, sneezing, laughing, or exercise exceeds the urethral closure pressure.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Reflex incontinence</strong> - Results from involuntary bladder emptying due to loss of normal voluntary bladder control, typically with neurological lesions.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urge incontinence</strong> - Caused by involuntary detrusor contractions and is characterized by a sudden, strong urge to urinate followed by leakage.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Overflow incontinence</strong> - Occurs when chronic urinary retention causes bladder overdistension and small amounts of urine continuously or intermittently dribble out.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Functional incontinence</strong> - Occurs when a person cannot reach or use the toilet appropriately despite having relatively normal lower urinary tract function.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Coughing/sneezing → increased intra-abdominal pressure → urine leakage = stress incontinence.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Stress = Sneeze</strong> → coughing, sneezing, laughing, exercise.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Stress</strong> = leakage with pressure. <strong>Urge</strong> = leakage preceded by urgency.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "PTUHLU97",
@@ -280685,18 +280685,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Medium",
-        "question": "A 35 years old female patient P10 presents with urinary incontinence, she said when she lifts a heavy weight or during exercise this happens, but urinary urgency and frequency is not affected. What to do next?",
+        "difficulty": "medium",
+        "question": "<p>A 35 years old female patient P10 presents with urinary incontinence, she said when she lifts a heavy weight or during exercise this happens, but urinary urgency and frequency is not affected. What to do next?</p>",
         "options": {
-            "A": "US pelvis",
-            "B": "Pad test",
-            "C": "Urine DR",
-            "D": "Bladder diary",
+            "A": "Pad test",
+            "B": "Bladder diary",
+            "C": "US pelvis",
+            "D": "Urine DR",
             "E": ""
         },
-        "correctAnswer": "D",
-        "explanation": "A bladder diary is a simple yet powerful tool. It's a record the patient keeps over a few days (typically 3 to 7) to track their bladder habits. They record: The time and volume of all fluid intake. The time and volume of each urination. The time and number of incontinence episodes. Any activities or circumstances that led to the incontinence (e.g., coughing, sneezing, exercise). Urine DR (C) and Mid stream urine analysis (E) analyze a urine sample for signs of infection (UTI) or other abnormalities.",
-        "hint": ""
+        "correctAnswer": "B",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Bladder diary</strong> - A bladder diary is commonly used during the initial assessment of urinary incontinence. The patient records fluid intake, urination, urine volume, and episodes and circumstances of leakage. This helps characterize the type and severity of incontinence.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Pad test</strong> - Can objectively measure urine loss, but it is not routinely necessary in a typical case of stress urinary incontinence diagnosed clinically.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">US pelvis</strong> - Not routinely required when the history clearly indicates uncomplicated stress urinary incontinence.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urine DR</strong> - May be performed to exclude urinary infection or other urinary abnormalities, but it does not characterize the pattern of incontinence.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Initial assessment of urinary incontinence → history + bladder diary ± urinalysis.</strong> A typical case of stress incontinence usually does not require imaging or a pad test for diagnosis.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>“What to do next?”</strong> is different from <strong>“How can you objectively quantify urine leakage?”</strong> The latter points toward a pad test; initial assessment points toward a bladder diary.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "QUGFWLS8",
@@ -280751,18 +280751,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Medium",
-        "question": "A 30 year old man is brought after a road traffic accident. He has difficulty in micturition with a distended bladder. Injury affects the neural control of the bladder. Which of the following is most likely responsible for failure of urination?",
+        "difficulty": "medium",
+        "question": "<p>A 30 year old man is brought after a road traffic accident. He has difficulty in micturition with a distended bladder. Injury affects the neural control of the bladder. Which of the following is most likely responsible for failure of urination?</p>",
         "options": {
-            "A": "Sympathetic stimulation",
-            "B": "Parasympathetic stimulation",
+            "A": "Somatic nerve injury only",
+            "B": "Sympathetic stimulation",
             "C": "Detrusor muscle failure",
-            "D": "Somatic nerve injury only",
-            "E": "Increased renal filtration"
+            "D": "Increased renal filtration",
+            "E": "Parasympathetic stimulation"
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Detrusor muscle failure</strong> - Normal urination requires parasympathetic stimulation of the detrusor muscle to contract and empty the bladder. Neural injury after trauma can impair this pathway, resulting in a poorly contracting detrusor, urinary retention, and a distended bladder.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Somatic nerve injury only</strong> - The pudendal nerve controls the external urethral sphincter, but injury to it alone does not explain failure of detrusor contraction and bladder emptying.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Sympathetic stimulation</strong> - Sympathetic activity promotes bladder storage by relaxing the detrusor and contracting the internal urethral sphincter; it does not cause bladder emptying.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Increased renal filtration</strong> - Increased filtration affects urine production, not the neural mechanism responsible for bladder emptying.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Parasympathetic stimulation</strong> - Parasympathetic activity normally causes detrusor contraction and promotes urination. Increased parasympathetic activity would therefore facilitate, not prevent, bladder emptying.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Parasympathetic → detrusor contracts → bladder empties.</strong> Neural injury can cause detrusor areflexia/underactivity → urinary retention and a distended bladder.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Para = Pee</strong> → parasympathetic stimulation helps empty the bladder.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not confuse the <strong>nerve pathway</strong> with the <strong>muscle responsible</strong>. Parasympathetic nerves trigger detrusor contraction; failure of this mechanism results in detrusor muscle failure/underactivity.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "683HK94H",
@@ -280795,18 +280795,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Medium",
-        "question": "A 58-year-old man presents with urinary urgency, urinary incontinence, and sexual dysfunction. What is the investigation of choice?",
+        "difficulty": "medium",
+        "question": "<p>A 58-year-old man presents with urinary urgency, urinary incontinence, and sexual dysfunction. What is the investigation of choice?</p>",
         "options": {
-            "A": "MRI of the spine",
-            "B": "Post-void residual (PVR) urine measurement",
+            "A": "Post-void residual (PVR) urine measurement",
+            "B": "Prostate ultrasound",
             "C": "Urodynamic studies",
-            "D": "Prostate ultrasound",
+            "D": "MRI of the spine",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "PVR measurement is a simple, non-invasive test to check how completely the bladder empties. In older men with urinary urgency or incontinence, the most common causes are benign prostatic hyperplasia (BPH) or detrusor overactivity. MRI is not first-line unless neurological deficits are suspected (e.g., weakness, sensory loss, back pain). Urodynamic studies provide detailed bladder function assessment but are usually second-line after PVR. Prostate ultrasound detects BPH but does not assess bladder emptying directly.",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Post-void residual (PVR) urine measurement</strong> - PVR is a simple, non-invasive first-line investigation to determine how completely the bladder empties. In an older man with urinary urgency or incontinence, it helps identify urinary retention due to bladder outlet obstruction such as BPH or impaired detrusor function.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Prostate ultrasound</strong> - Can assess prostate size and detect BPH, but it does not directly determine how well the bladder is emptying.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urodynamic studies</strong> - Provide detailed assessment of detrusor and sphincter function, but are generally reserved for selected or unclear cases after initial assessment.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">MRI of the spine</strong> - Not a first-line investigation unless neurological features such as weakness, sensory loss, or back pain suggest a spinal lesion.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>PVR = first-line assessment of bladder emptying.</strong> It helps distinguish incontinence associated with incomplete bladder emptying from other lower urinary tract problems.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>PVR first → Urodynamics later if needed.</strong> Don't automatically choose the most detailed investigation when the question asks for the initial/investigation of choice in a common clinical presentation.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "34V3WJEZ",
@@ -280817,18 +280817,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephritic Syndromes",
-        "difficulty": "Medium",
-        "question": "A patient has recurrent sinusitis, hematuria, and is positive for c-ANCA. What is the most likely diagnosis?",
+        "difficulty": "medium",
+        "question": "<p>A patient has recurrent sinusitis, hematuria, and is positive for c-ANCA. What is the most likely diagnosis?</p>",
         "options": {
-            "A": "Microscopic polyangiitis",
-            "B": "Granulomatosis with polyangiitis",
-            "C": "Polyarteritis nodosa",
-            "D": "Eosinophilic granulomatosis with polyangiitis",
+            "A": "Granulomatosis with polyangiitis",
+            "B": "Polyarteritis nodosa",
+            "C": "Eosinophilic granulomatosis with polyangiitis",
+            "D": "Microscopic polyangiitis",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Granulomatosis with polyangiitis</strong> - Recurrent sinusitis plus hematuria indicates upper respiratory tract and renal involvement. The classic antibody association is <strong>c-ANCA (PR3-ANCA)</strong>, making granulomatosis with polyangiitis the most likely diagnosis.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Polyarteritis nodosa</strong> - Typically affects medium-sized arteries and characteristically <strong>spares the glomeruli</strong>, so hematuria from glomerulonephritis is not typical. ANCA is usually negative.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Eosinophilic granulomatosis with polyangiitis</strong> - Classically associated with <strong>asthma, eosinophilia, and p-ANCA (MPO-ANCA)</strong> rather than c-ANCA.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Microscopic polyangiitis</strong> - Commonly causes glomerulonephritis and pulmonary capillaritis and is usually associated with <strong>p-ANCA (MPO-ANCA)</strong>. Upper respiratory granulomatous disease is not typical.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>GPA = upper respiratory tract + kidneys + c-ANCA (PR3).</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>GPA = “Granulomas, Pulmonary/ENT, ANCA (PR3)”</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>c-ANCA → GPA</strong> and <strong>p-ANCA → MPA/EGPA</strong> is the classic FCPS association. EGPA additionally has <strong>asthma + eosinophilia</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "HQBAMWB6",
@@ -280839,18 +280839,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephritic Syndromes",
-        "difficulty": "Easy",
-        "question": "A 25 year old woman with presents with pain in the small joints of both hands and increased sensitivity to sunlight she has SLE. Urinalysis reveals 3+ proteinuria. Laboratory studies show positive anti-Smith antibodies. Which of the following is the most likely diagnosis?",
+        "difficulty": "easy",
+        "question": "<p>A 25 year old woman with presents with pain in the small joints of both hands and increased sensitivity to sunlight. She has SLE. Urinalysis reveals 3+ proteinuria. Laboratory studies show positive anti-Smith antibodies. Which of the following is the most likely diagnosis?</p>",
         "options": {
-            "A": "Minimal change disease",
-            "B": "Lupus nephritis",
-            "C": "IgA nephropathy",
+            "A": "IgA nephropathy",
+            "B": "Minimal change disease",
+            "C": "Lupus nephritis",
             "D": "Membranous nephropathy",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "49VSW3B9",
@@ -280949,18 +280949,18 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephritic Syndromes",
-        "difficulty": "Medium",
-        "question": "A 26-year-old man presents with hemoptysis and progressive shortness of breath. Urinalysis reveals hematuria and red blood cell casts. Renal biopsy shows linear deposition of IgG along the glomerular basement membrane. Which of the following cell types is most likely being targeted by the immune system in this condition?",
+        "difficulty": "medium",
+        "question": "<p>A 26-year-old man presents with hemoptysis and progressive shortness of breath. Urinalysis reveals hematuria and red blood cell casts. Renal biopsy shows linear deposition of IgG along the glomerular basement membrane. Which of the following cell types is most likely being targeted by the immune system in this condition?</p>",
         "options": {
-            "A": "Podocytes",
-            "B": "Type IV collagen in basement membrane",
-            "C": "Mesangial cells",
-            "D": "Macrophages",
+            "A": "Type IV collagen in basement membrane",
+            "B": "Macrophages",
+            "C": "Podocytes",
+            "D": "Mesangial cells",
             "E": "Endothelial cells"
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Type IV collagen in basement membrane</strong> - This question is a typical case of <strong>Goodpasture syndrome (anti-GBM disease)</strong>. The immune system produces antibodies against the alpha-3 chain of type IV collagen in the glomerular and alveolar basement membranes, causing hematuria, RBC casts, and pulmonary hemorrhage. Linear IgG deposition along the GBM is characteristic.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Macrophages</strong> - Macrophages participate in inflammation but are not the primary immune target in Goodpasture syndrome.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Podocytes</strong> - Podocytes are an important component of the glomerular filtration barrier, but they are not the specific antigenic target in anti-GBM disease.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Mesangial cells</strong> - Mesangial cells provide structural support within the glomerulus but are not targeted in Goodpasture syndrome.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Endothelial cells</strong> - Glomerular endothelial cells form part of the filtration barrier but are not the specific immune target in anti-GBM disease.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Goodpasture syndrome = anti-GBM antibodies against type IV collagen → kidney + lung involvement.</strong> Immunofluorescence shows <strong>linear IgG deposition</strong> along the GBM.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Goodpasture = Type IV + 2 organs</strong> → type IV collagen in the <strong>kidneys and lungs</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Linear IgG → Goodpasture.</strong> <strong>Granular IgG → immune-complex glomerulonephritis.</strong></p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "DCU33AZ4",
