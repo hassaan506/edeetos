@@ -72640,13 +72640,13 @@
         "difficulty": "medium",
         "question": "<p>A 45 year old man with a long history of alcoholism presents with severe epigastric pain nausea vomiting fever and increase in serum amylase diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made in this condition which of the following types of necrosis is most characteristic:</p>",
         "options": {
-            "A": "Caseous",
-            "B": "Coagulative necrosis",
-            "C": "Liquefactive necrosis",
-            "D": "Fat necrosis",
-            "E": "Fibrinoid"
+            "A": "Fibrinoid",
+            "B": "Liquefactive necrosis",
+            "C": "Fat necrosis",
+            "D": "Coagulative necrosis",
+            "E": "Caseous"
         },
-        "correctAnswer": "D",
+        "correctAnswer": "C",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Fat necrosis</strong> - Acute pancreatitis causes release of pancreatic lipase, which breaks down peripancreatic fat. The released fatty acids combine with calcium, producing <strong>fat saponification</strong> and characteristic chalky calcium deposits.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>acute pancreatitis</strong>. Pancreatic enzymes, especially <strong>lipase</strong>, digest surrounding adipose tissue → fatty acids are released → they bind calcium → <strong>enzymatic fat necrosis</strong>.</p></p><p><br></p><p><h3 style=\"black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Liquefactive necrosis</strong> - Characteristic of brain infarction and abscesses, where tissue is digested into a liquid mass.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Fibrinoid necrosis</strong> - Typically occurs in blood vessel walls in conditions such as vasculitis and severe hypertension.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Caseous necrosis</strong> - Classically associated with tuberculosis and some fungal infections, producing a cheese-like appearance.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Coagulative necrosis</strong> - Typical of ischemic infarction in most solid organs such as the heart, kidney, and spleen, except the brain.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Acute pancreatitis → lipase → fat necrosis → saponification.</strong></p></p><p><p>Calcium binding to fatty acids can cause <strong>hypocalcemia</strong> in severe acute pancreatitis.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Pancreas = FAT</strong> → pancreatic lipase causes <strong>Fat necrosis</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not choose coagulative necrosis just because pancreatitis involves tissue injury. <strong>Pancreatic enzyme-mediated digestion of fat specifically produces enzymatic fat necrosis.</strong></p></p>",
         "hint": "<p><br></p>"
     },
@@ -79289,18 +79289,18 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "",
-        "difficulty": "",
-        "question": "A 55 year old man with liver cirrhosis presents with confusion, asterixis, and disorientation. He is diagnosed with hepatic encephalopathy. Which of the following is the first-line treatment to reduce ammonia levels?",
+        "difficulty": "medium",
+        "question": "<p>A 55 year old man with liver cirrhosis presents with confusion, asterixis, and disorientation. He is diagnosed with hepatic encephalopathy. Which of the following is the first-line treatment to reduce ammonia levels?</p>",
         "options": {
-            "A": "Neomycin",
-            "B": "Lactulose",
-            "C": "Rifaximin",
+            "A": "Rifaximin",
+            "B": "Neomycin",
+            "C": "Lactulose",
             "D": "Metronidazole",
             "E": "Mannitol"
         },
-        "correctAnswer": "B",
-        "explanation": "Lactulose Mechanism: Converts ammonia (NH3 ) -> ammonium (NH4 + ) in gut NH4+ is non-absorbable -> excreted in stool Also acts as a cathartic -> decreases gut ammonia production",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Lactulose</strong> - Lactulose is the <strong>first-line treatment for acute hepatic encephalopathy</strong>. It is metabolized by colonic bacteria into organic acids, which lower colonic pH and convert absorbable <strong>NH<sub>3</sub></strong> into non-absorbable <strong>NH<sub>4</sub><sup>+</sup></strong>, thereby reducing ammonia absorption.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The clues are <strong>cirrhosis + confusion + asterixis + disorientation</strong> → hepatic encephalopathy. The classic first-line drug to reduce intestinal ammonia absorption is <strong>lactulose</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Rifaximin</strong> - Reduces intestinal ammonia-producing bacteria and is very effective in preventing <strong>recurrent</strong> hepatic encephalopathy. It is generally used as an <strong>add-on to lactulose</strong>, rather than the first-line treatment alone.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Neomycin</strong> - An older non-absorbable antibiotic that reduces intestinal bacteria and ammonia production. Its use is limited because of <strong>nephrotoxicity and ototoxicity</strong>.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Metronidazole</strong> - Can reduce gut bacteria but is not preferred because prolonged use can cause <strong>neurotoxicity</strong>.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Mannitol</strong> - An osmotic diuretic used primarily to reduce <strong>intracranial pressure</strong>; it does not treat the underlying ammonia accumulation in hepatic encephalopathy.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Lactulose → acidifies colon → NH<sub>3</sub> → NH<sub>4</sub><sup>+</sup> → decreased ammonia absorption.</strong></p></p><p><p>The usual treatment target is <strong>2–3 soft stools/day</strong>. Rifaximin is commonly added for patients with recurrent episodes despite lactulose.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>LACTULOSE = “Lowers Ammonia in Colon Through Urgent Stool Elimination”</strong> → think <strong>lactulose → laxative → less ammonia</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Acute hepatic encephalopathy → Lactulose first.</strong><br></p><p><strong>Recurrent hepatic encephalopathy → Lactulose + Rifaximin.</strong></p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "MYA73DBL",
@@ -82700,18 +82700,18 @@
         "subject": "Physiology",
         "chapter": "Gastrointestinal System",
         "topic": "",
-        "difficulty": "",
-        "question": "A patient presents with severe epigastric pain radiating to back and vomiting. Diagnosed with acute pancreatitis. Serum amylase and lipase are raised above normal. Which pancreatic enzyme is primarily responsible for fat digestion?",
+        "difficulty": "medium",
+        "question": "<p>A patient presents with severe epigastric pain radiating to back and vomiting. Diagnosed with acute pancreatitis. Serum amylase and lipase are raised above normal. Which pancreatic enzyme is primarily responsible for fat digestion?</p>",
         "options": {
-            "A": "Amylase",
-            "B": "Lipase",
-            "C": "Trypsin",
-            "D": "Trypsinogen",
+            "A": "Trypsin",
+            "B": "Amylase",
+            "C": "Trypsinogen",
+            "D": "Lipase",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Lipase</strong> - Pancreatic lipase is the main enzyme responsible for <strong>fat digestion</strong>. It hydrolyzes triglycerides into free fatty acids and monoglycerides, mainly in the small intestine.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The question directly asks which pancreatic enzyme digests <strong>fat</strong>. Think of the three major pancreatic digestive enzymes: <strong>amylase → carbohydrates, trypsin → proteins, lipase → fats</strong>. Therefore, select lipase.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Trypsin</strong> - A proteolytic enzyme that digests <strong>proteins</strong> by breaking peptide bonds.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Amylase</strong> - Digests <strong>starch and other carbohydrates</strong> into smaller sugars.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Trypsinogen</strong> - An inactive pancreatic <strong>zymogen</strong> that is converted to trypsin in the duodenum. It is not itself the active digestive enzyme.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Pancreatic enzymes:</strong> Lipase → fats; Amylase → carbohydrates; Trypsin/chymotrypsin → proteins.</p></p><p><p>In acute pancreatitis, pancreatic enzymes become activated prematurely within the pancreas, causing <strong>autodigestion and inflammation</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>LiPase = Lipids</strong> → fat digestion.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Trypsinogen</strong> is inactive; <strong>trypsin</strong> is the active protease. Neither is responsible for fat digestion.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "DHD9RCFH",
@@ -84601,18 +84601,18 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "",
-        "difficulty": "",
-        "question": "A young patient has five episodes of vomiting and no other symptoms. Investigation shows an air fistula between the pancreas and the GIT. Where is the fistula most likely located?",
+        "difficulty": "medium",
+        "question": "<p>A young patient has five episodes of vomiting and no other symptoms. Investigation shows an air fistula between the pancreas and the GIT. Where is the fistula most likely located?</p>",
         "options": {
-            "A": "Colon",
-            "B": "Descending colon",
-            "C": "Stomach",
-            "D": "Duodenum",
-            "E": "Jejunum"
+            "A": "Duodenum",
+            "B": "Stomach",
+            "C": "Jejunum",
+            "D": "Descending colon",
+            "E": "Colon"
         },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Duodenum</strong> - The head of the pancreas lies intimately within the <strong>C-loop of the duodenum</strong>, particularly the second part. A localized inflammatory process, pseudocyst, or necrosis involving the pancreatic head can therefore directly erode into the adjacent duodenum and form a pancreaticoduodenal fistula.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key is the <strong>anatomical relationship</strong>: <strong>pancreatic head ↔ C-loop of duodenum</strong>. When pancreatic disease involves the head and forms a fistulous communication with the GIT, the adjacent <strong>duodenum</strong> is the logical choice.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Stomach</strong> - The stomach can develop a pancreatic fistula, especially from a pancreatic pseudocyst, but it is not the best answer when the question is testing the close relationship of the pancreatic head with the duodenum.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Jejunum</strong> - It is less intimately related to the pancreas than the duodenum.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Descending colon</strong> - Colonic fistulization can occur in severe pancreatitis but is uncommon.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Colon</strong> - Colonic involvement is possible but is not the classic anatomical relationship being tested.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Pancreatic head → C-loop of duodenum.</strong></p></p><p><p>Because of this close anatomical relationship, pancreatic head inflammation, necrosis, or a pseudocyst can directly involve the <strong>second part of the duodenum</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>“Head sits in the Duodenal C.”</strong> → Pancreatic head ↔ Duodenum.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not assume every pancreaticogastrointestinal fistula is gastric. <strong>Stomach and duodenum can both be involved.</strong> If the stem emphasizes the <strong>pancreatic head and its intimate relationship with the C-loop</strong>, choose <strong>duodenum</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "PKKAD9EU",
@@ -94211,18 +94211,18 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "",
-        "difficulty": "",
-        "question": "In hospital, heat labile instruments like plastic bottles and equipment are sterilized by which of the following?",
+        "difficulty": "medium",
+        "question": "<p>In hospital, heat labile instruments like plastic bottles and equipment are sterilized by which of the following?</p>",
         "options": {
-            "A": "Luke warm water",
-            "B": "Ethylene oxide gas",
-            "C": "Autoclave",
-            "D": "Boiling",
+            "A": "Autoclave",
+            "B": "Boiling",
+            "C": "Ethylene oxide gas",
+            "D": "Luke warm water",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "C",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Ethylene oxide gas</strong> - Ethylene oxide (ETO) is a <strong>low-temperature gaseous sterilizing agent</strong> used for heat-sensitive or heat-labile instruments and equipment, including many plastics.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key word is <strong>“heat labile.”</strong> Heat-sensitive equipment cannot tolerate the high temperatures used by autoclaving or boiling. Therefore, choose a <strong>low-temperature sterilization method</strong> such as ethylene oxide gas.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Autoclave</strong> - Uses high-pressure saturated steam, typically at <strong>121°C or 134°C</strong>, so it is unsuitable for many heat-sensitive materials.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Boiling</strong> - Uses high temperature but is <strong>disinfection rather than reliable sterilization</strong> because bacterial spores may survive.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Luke warm water</strong> - Does not provide adequate heat or sterilizing activity and cannot reliably destroy microorganisms or spores.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Heat-stable instruments → autoclave.</strong><br></p><p><strong>Heat-sensitive instruments → ethylene oxide gas.</strong></p></p><p><p>ETO penetrates packaging and complex equipment and sterilizes at relatively low temperatures.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>ETO = Easy Temperature for Objects</strong> → useful for heat-sensitive equipment.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Boiling ≠ sterilization.</strong> It can kill many vegetative organisms but does not reliably destroy bacterial spores. For true sterilization of heat-labile equipment, think <strong>ETO gas</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "7TN8G8LV",
@@ -101509,18 +101509,18 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "",
-        "difficulty": "",
-        "question": "A 70 kg patient receives 2.1 g of vancomycin and achieves a peak concentration of 30 mg/L. What is the volume of distribution?",
+        "difficulty": "medium",
+        "question": "<p>A 70 kg patient receives 2.1 g of vancomycin and achieves a peak concentration of 30 mg/L. What is the volume of distribution?</p>",
         "options": {
             "A": "0.5 L/kg",
-            "B": "1 L/kg",
-            "C": "7 L/kg",
-            "D": "14 L/kg",
+            "B": "7 L/kg",
+            "C": "14 L/kg",
+            "D": "1 L/kg",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "2.1g = 2100mg/ Vd = Dose /Peak concentration = 2100/30 = 70L. For 70kg = 70L/70kg = 1L/kg",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">1 L/kg</strong> - Volume of distribution (Vd) is calculated by dividing the administered dose by the plasma drug concentration.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>First calculate the total Vd: <strong>2100 mg ÷ 30 mg/L = 70 L</strong>. Then divide by the patient's weight: <strong>70 L ÷ 70 kg = 1 L/kg</strong>. Therefore, select <strong>1 L/kg</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">0.5 L/kg</strong> - Would give a Vd of only 35 L, which is not supported by the given dose and concentration.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">7 L/kg</strong> - Would imply a total Vd of 490 L, far higher than the calculated 70 L.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">14 L/kg</strong> - Would imply a total Vd of 980 L, which is inconsistent with the calculation.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Vd = Dose / Plasma concentration</strong>. A larger Vd means more of the drug has distributed outside the plasma into tissues.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Vd = Dose ÷ Concentration</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not forget the unit conversion: <strong>2.1 g = 2100 mg</strong>. Calculate total Vd first, then divide by body weight if the answer is requested in L/kg.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "RYPLB2AV",
@@ -106471,18 +106471,18 @@
         "subject": "Physiology",
         "chapter": "General",
         "topic": "",
-        "difficulty": "",
-        "question": "What is present between gap junctions?",
+        "difficulty": "medium",
+        "question": "<p>What is present between gap junctions?</p>",
         "options": {
             "A": "Connexin",
-            "B": "Cellular adhesion",
-            "C": "Lipid bilayer",
-            "D": "Protein layer",
+            "B": "Protein layer",
+            "C": "Cellular adhesion",
+            "D": "Lipid bilayer",
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Connexin</strong> - Gap junctions are formed by channel proteins called <strong>connexons</strong>, and each connexon is made of six <strong>connexin</strong> protein subunits. Connexons of adjacent cells dock together to form the intercellular channel.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>gap junction</strong>. Gap junctions are protein channels that directly connect the cytoplasm of adjacent cells. The protein subunits forming these channels are <strong>connexins</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Protein layer</strong> - Gap junctions are made of specific channel proteins, not a nonspecific protein layer.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cellular adhesion</strong> - Cellular adhesion is associated with junctions such as desmosomes and adherens junctions, rather than being the channel component of gap junctions.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Lipid bilayer</strong> - The cell membrane contains a lipid bilayer, but it does not form the communicating channel between cells.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Connexin → Connexon → Gap junction.</strong> Six connexin proteins assemble to form one connexon. Two connexons, one from each adjacent cell, join to create the gap-junction channel.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>CONNEXin = CONNEXion</strong> between cells.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "VR4VR2UY",
@@ -107244,18 +107244,18 @@
         "subject": "Psychiatry",
         "chapter": "General",
         "topic": "",
-        "difficulty": "",
-        "question": "A student is unable to secure admission to his desired university. After returning home, he becomes angry and verbally lashes out at his parents despite them not being responsible for the situation. Which defense mechanism is being demonstrated?",
+        "difficulty": "medium",
+        "question": "<p>A student is unable to secure admission to his desired university. After returning home, he becomes angry and verbally lashes out at his parents despite them not being responsible for the situation. Which defense mechanism is being demonstrated?</p>",
         "options": {
             "A": "Projection",
-            "B": "Displacement",
-            "C": "Regression",
-            "D": "Rationalization",
+            "B": "Regression",
+            "C": "Rationalization",
+            "D": "Displacement",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
+        "correctAnswer": "D",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Displacement</strong> - The student redirects his anger from the actual source of frustration (not getting admission) toward a safer and unrelated target (his parents).</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>Look for <strong>emotion being redirected from the original source to another person</strong>. He is angry about the university admission but takes that anger out on his parents, who are not responsible. That is <strong>displacement</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Projection</strong> - Attributing one's own unacceptable thoughts or feelings to someone else. Example: an angry person believes that everyone else is angry with him.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Regression</strong> - Reverting to behavior characteristic of an earlier developmental stage when stressed, such as an adult having a childish tantrum.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Rationalization</strong> - Creating a logical-sounding but false explanation to justify one's behavior or feelings.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Displacement = redirecting an emotion from its original source to a safer target.</strong> It commonly involves anger being taken out on family members or other less threatening people.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Displacement = “Different target.”</strong> The feeling stays the same, but the target changes.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Projection</strong> = putting your feeling onto someone else. <strong>Displacement</strong> = taking your feeling out on someone else.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "VNUMUD9W",
@@ -110887,18 +110887,18 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "",
-        "difficulty": "",
-        "question": "A 40 year old male undergoes resection of the upper small intestine due to trauma. One year later he develops fatigue, oral ulcers, and breathlessness. CBC shows MCV 110 fL. What is the most likely deficiency?",
+        "difficulty": "medium",
+        "question": "<p>A 40 year old male undergoes resection of the upper small intestine due to trauma. One year later he develops fatigue, oral ulcers, and breathlessness. CBC shows MCV 110 fL. What is the most likely deficiency?</p>",
         "options": {
-            "A": "Vitamin B12 deficiency",
-            "B": "Folate deficiency",
+            "A": "Folate deficiency",
+            "B": "Vitamin B6 deficiency",
             "C": "Iron deficiency",
-            "D": "Vitamin B6 deficiency",
+            "D": "Vitamin B12 deficiency",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "Folate absorption occurs in the proximal small intestine / jejunum. Resection here leads to folate malabsorption",
-        "hint": ""
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Folate deficiency</strong> - Folate is absorbed mainly in the <strong>proximal small intestine, especially the jejunum</strong>. Resection of the upper small intestine can therefore cause folate deficiency, leading to <strong>megaloblastic macrocytic anemia</strong> with an increased MCV of 110 fL.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>upper small intestine resection</strong> combined with <strong>MCV 110 fL</strong>. High MCV indicates megaloblastic anemia, pointing toward folate or vitamin B12 deficiency. Since folate is absorbed in the <strong>upper/proximal small intestine</strong>, folate deficiency is the best answer.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Vitamin B6 deficiency</strong> - B6 deficiency can cause sideroblastic/microcytic anemia rather than megaloblastic macrocytic anemia.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Iron deficiency</strong> - Causes <strong>microcytic hypochromic anemia</strong> with a low MCV.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Vitamin B12 deficiency</strong> - Also causes megaloblastic macrocytic anemia, but B12 is absorbed mainly in the <strong>terminal ileum</strong> after binding intrinsic factor. Upper small-intestinal resection therefore does not primarily impair B12 absorption.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Folate → proximal small intestine</strong><br></p><p><strong>Vitamin B12 → terminal ileum</strong></p></p><p><p>Both deficiencies cause <strong>megaloblastic anemia → increased MCV</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Folate = Front</strong> → absorbed in the proximal/upper small intestine.<br></p><p><strong>B12 = Bottom</strong> → absorbed in the terminal ileum.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not choose B12 just because the MCV is high. First identify the <strong>site of intestinal resection</strong>: <strong>upper/proximal small intestine → folate</strong>; <strong>terminal ileum → B12</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "F2PSG6DF",
