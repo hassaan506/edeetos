@@ -268,14 +268,14 @@ if (globalSearch) {
             return;
         }
 
-        searchTimeout = setTimeout(() => {
-            const matchedQuestions = allQuestions.filter(q => {
-                if (unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-                if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false; 
-                const questionText = q.Question || q.question || q.text || q.statement || "";
-                const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
-                return textToSearch.includes(query);
-            });
+		searchTimeout = setTimeout(() => {
+		const matchedQuestions = allQuestions.filter(q => {
+            if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+            if (!passesDifficultyFilter(q)) return false; 
+            const questionText = q.Question || q.question || q.text || q.statement || "";
+            const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
+            return textToSearch.includes(query);
+        });
 
             searchDropdown.innerHTML = '';
             if (matchedQuestions.length === 0) {
@@ -1576,19 +1576,17 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     if (paths.length === 0) {
-        return pool.filter(q => {
-            if (currentMode === 'exam') return true;
-            if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-            return true;
-        }).length;
+        // FIX: Ensure mistakes are also excluded when unattempted is checked at the root level
+        return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || (!attemptedQuestions.includes(getQID(q)) && !globalPracticeMistakes.includes(getQID(q)) && !globalExamMistakes.includes(getQID(q)))).length;
     }
 
     return pool.filter(q => {
-if (currentMode !== 'exam' && !customPool) {
-    if (typeof passesDifficultyFilter === 'function' && !passesDifficultyFilter(q)) return false;
-    if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && attemptedQuestions.includes(getQID(q))) return false;
-}
-
+        // --- NEW: Difficulty Filter Override ---
+        if (!passesDifficultyFilter(q)) return false;
+        
+        // FIX: Reject the question if it exists in correctly solved OR mistakes
+        if (!isGlobalPopupActive && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+        
         if (isGlobalPopupActive) {
             if (paths[0] === "Books") {
                 if (!q.isBookQuestion) return false;
@@ -1616,6 +1614,7 @@ if (currentMode !== 'exam' && !customPool) {
             if (paths[1] && q.Subject !== paths[1]) return false;
             if (paths[2] && q.Topic !== paths[2]) return false;
 		} else if (view === 'exam') {
+            // 1. Handle Years (Split comma-separated strings into an array)
             let qYears = [];
             if (Array.isArray(q.Year)) {
                 qYears = q.Year.map(y => String(y).trim());
@@ -1629,13 +1628,15 @@ if (currentMode !== 'exam' && !customPool) {
             
             if (paths[0] && !qYears.includes(paths[0])) return false;
             
+            // 2. Handle Exams (Ensure it parses your JSON array correctly)
             let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
             if (paths[1] && !qExams.includes(paths[1])) return false;
             
+            // 3. Handle standard Subjects and Topics
             if (paths[2] && q.Subject !== paths[2]) return false;
-            if (paths[3] && q.Chapter !== paths[3]) return false;
-            if (paths[4] && q.Topic !== paths[4]) return false;
+            if (paths[3] && q.Topic !== paths[3]) return false;
         } else if (view === 'book') {
+            if (!q.isBookQuestion) return false; // FIX: Prevent course questions from leaking into books
             if (paths[0] && q.Chapter !== paths[0]) return false;
             if (paths[1] && q.Topic !== paths[1]) return false;
         }
