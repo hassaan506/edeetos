@@ -268,14 +268,24 @@ if (globalSearch) {
             return;
         }
 
-		searchTimeout = setTimeout(() => {
-		const matchedQuestions = allQuestions.filter(q => {
-            if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
-            if (!passesDifficultyFilter(q)) return false; 
-            const questionText = q.Question || q.question || q.text || q.statement || "";
-            const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
-            return textToSearch.includes(query);
+searchTimeout = setTimeout(() => {
+    // FIX: Combine all cached chunks so search actually looks at loaded course data
+    let searchPool = [...allQuestions];
+    Object.values(window.activeChunksCache || {}).forEach(chunk => {
+        chunk.forEach(q => {
+            if (!searchPool.some(existing => (existing.QuestionID || existing.id) === (q.QuestionID || q.id))) {
+                searchPool.push(q);
+            }
         });
+    });
+
+    const matchedQuestions = searchPool.filter(q => {
+        if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+        if (!passesDifficultyFilter(q)) return false; 
+        const questionText = q.Question || q.question || q.text || q.statement || "";
+        const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
+        return textToSearch.includes(query);
+    });
 
             searchDropdown.innerHTML = '';
             if (matchedQuestions.length === 0) {
@@ -1535,6 +1545,10 @@ function getTreeCount(obj) {
 }
 
 function getQuestionCount(view, pathArr, customPool = null) {
+    if (customPool !== null && customPool.length === 0) {
+        return 0;
+    }
+    
     let pool = customPool || activeCustomPool || allQuestions;
 
     let paths = [...pathArr];
@@ -2631,6 +2645,20 @@ function restoreLastState() {
     }
 }
 
+function buildSubTree(pool) {
+    let tree = {};
+    pool.forEach(q => {
+        let s = q.Subject || 'Uncategorized';
+        let c = q.Chapter || 'General';
+        let t = q.Topic || 'General';
+        
+        if (!tree[s]) tree[s] = {};
+        if (!tree[s][c]) tree[s][c] = {};
+        tree[s][c][t] = (tree[s][c][t] || 0) + 1;
+    });
+    return tree;
+}
+
 // ==========================================
 // 17. INITIALIZATION & AUTHENTICATION
 // ==========================================
@@ -3228,3 +3256,4 @@ btnPushEdits.onclick = async () => {
         }
     }
 });
+
