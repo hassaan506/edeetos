@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-    <script>
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark-mode');
-        }
+	<script>
+		if (localStorage.getItem('theme') === 'dark') {
+			document.documentElement.classList.add('dark-mode');
+		}
     </script>
 </head>
 <body class="quiz-body">
     
-    <div id="anti-screenshot-screen" class="modal-overlay-black hidden">
-        <i class="fas fa-user-shield modal-icon-md color-slate-600"></i>
-        <h2 class="modal-title">Screenshots Prohibited</h2>
-        <p class="modal-desc">For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
-        <button onclick="document.getElementById('anti-screenshot-screen').classList.add('hidden')" class="btn-solid modal-btn-lg modal-btn-danger mt-sm">I Understand</button>
+    <div id="anti-screenshot-screen" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000000; z-index: 2147483647; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <i class="fas fa-user-shield" style="color: #475569; font-size: 4rem; margin-bottom: 1.5rem;"></i>
+        <h2 style="color: white; font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem;">Screenshots Prohibited</h2>
+        <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1rem; max-width: 400px;">For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
+        <button onclick="document.getElementById('anti-screenshot-screen').style.display='none'" class="btn-solid" style="margin-top: 2rem; background: #ef4444; border: none; padding: 0.8rem 2.5rem; border-radius: 8px; color: white; cursor: pointer; font-weight: bold;">I Understand</button>
     </div>
 
     <div class="blue-header-bg"></div>
@@ -29,53 +29,61 @@
     <div class="quiz-content-wrapper">
         <div class="top-nav">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
-            <div class="top-stats-group">
-                <button id="lab-values-btn" class="icon-btn btn-sm-icon"><i class="fas fa-flask"></i> Labs</button>
-                <button id="shortcuts-btn" class="icon-btn btn-sm-icon"><i class="fas fa-keyboard"></i> Keys</button>
-                <div class="timer-container">
-                    <div class="timer-block">
-                        <span class="timer-label">Current Q</span>
-                        <span id="question-timer-display" class="timer-value-sm">00:00</span>
+            <div class="top-stats" style="display: flex; align-items: center; gap: 10px;">
+                
+                <!-- Lab Values Button -->
+                <button id="lab-values-btn" class="icon-btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-flask"></i> Labs</button>
+                
+                <button id="shortcuts-btn" class="icon-btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;"><i class="fas fa-keyboard"></i> Keys</button>
+                
+<!-- Dual Timer Display -->
+                <div style="display: flex; align-items: center; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.2rem 0.8rem; border-radius: 8px; gap: 15px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
+                        <span style="font-size: 0.65rem; color: #065f46; text-transform: uppercase; font-weight: bold;">Current Q</span>
+                        <span id="question-timer-display" style="color: #047857; font-size: 0.9rem; font-weight: bold;">00:00</span>
                     </div>
-                    <div class="timer-divider"></div>
-                    <div class="timer-block">
-                        <span class="timer-label">Total Time</span>
-                        <span id="timer-display" class="timer-value-lg">00:00</span>
+                    <div style="width: 1px; height: 20px; background: rgba(16, 185, 129, 0.3);"></div>
+                    <div style="display: flex; flex-direction: column; align-items: center; line-height: 1.1;">
+                        <span style="font-size: 0.65rem; color: #065f46; text-transform: uppercase; font-weight: bold;">Total Time</span>
+                        <span id="timer-display" style="color: #064e3b; font-size: 1rem; font-weight: bold;">00:00</span>
                     </div>
                 </div>
             </div>
             
-            <div id="challenge-tracker-wrapper" class="challenge-tracker-wrapper hidden">
-                <div class="challenge-header">
+            <!-- CHALLENGE TRACKER -->
+            <div id="challenge-tracker-wrapper" style="display: none; width: 100%; margin-top: 15px; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #e9d5ff; font-weight: bold; margin-bottom: 6px;">
                     <span id="challenge-name-display">Challenger Pace</span>
                     <span id="challenge-target-display">Target: 0%</span>
                 </div>
-                <div class="challenge-bar-bg">
-                    <div id="challenge-bar-fill" class="challenge-bar-fill"></div>
+                <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.4); border-radius: 4px; overflow: hidden;">
+                    <div id="challenge-bar-fill" style="height: 100%; background: #a855f7; width: 0%; box-shadow: 0 0 10px rgba(168,85,247,0.8); transition: width 1s linear;"></div>
                 </div>
             </div>
         </div>
 
         <div class="question-card">
+            
             <div id="quiz-ui-container">
                 <div class="card-header">
-                    <div class="card-header-left">
+                    <div style="display: flex; gap: 10px; align-items: center;">
                         <div class="question-pill" id="question-id-badge">Question 1</div>
-                        <div id="question-difficulty-badge" class="diff-badge hidden"></div>
+                        <!-- NEW: DIFFICULTY BADGE -->
+                        <div id="question-difficulty-badge" style="display: none;"></div>
                     </div>
-                    <div class="icon-group">
-                        <button id="edit-q-btn" class="icon-btn hidden" title="Edit Question (Admin)"><i class="fas fa-edit"></i></button>
-                        <button id="copy-q-btn" class="icon-btn hidden" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
-                        <button id="note-btn" class="icon-btn" title="Your personal notes"><i class="fas fa-pen"></i></button>
-                        <button id="bookmark-btn" class="icon-btn" title="Save the question"><i class="far fa-star"></i></button>
-                        <button id="btn-report" class="icon-btn" title="Report the question"><i class="far fa-flag"></i></button>
-                    </div>
+<div class="icon-group">
+    <button id="edit-q-btn" class="icon-btn" style="display: none;" title="Edit Question (Admin)"><i class="fas fa-edit"></i></button>
+    <button id="copy-q-btn" class="icon-btn" style="display: none;" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
+    <button id="note-btn" class="icon-btn" title="Your personal notes"><i class="fas fa-pen"></i></button>
+    <button id="bookmark-btn" class="icon-btn" title="Save the question"><i class="far fa-star"></i></button>
+    <button id="btn-report" class="icon-btn" title="Report the question"><i class="far fa-flag"></i></button>
+</div>
                 </div>
 
                 <div class="feedback-tracker">
                     <span class="count-red" id="wrong-count">0 ✖</span>
                     <div class="feedback-bar-bg">
-                        <div class="feedback-bar-fill" id="feedback-fill"></div>
+                        <div class="feedback-bar-fill" id="feedback-fill" style="width: 0%;"></div>
                     </div>
                     <span class="count-green" id="right-count">0 ✔</span>
                 </div>
@@ -84,165 +92,175 @@
                     <i class="fas fa-exclamation-circle"></i> You previously skipped this question. You must answer it now.
                 </div>
 
-                <div id="exam-year-info" class="exam-year-container hidden"></div>
+				<div id="exam-year-info" style="margin-bottom: 1rem; display: none; gap: 8px; flex-wrap: wrap;"></div>
 
-                <div class="question-text" id="question-text">
+                <div class="question-text" id="question-text" style="line-height: 1.7;">
                     Loading question...
                 </div>
 
-                <div class="options-container" id="options-container"></div>
+                <div class="options-container" id="options-container">
+                </div>
                 
-                <div class="action-buttons-container">
-                    <button id="ai-hint-btn" class="btn-solid btn-ai-hint hidden"><i class="fas fa-robot"></i> AI Hint</button>
-                    <button id="show-explanation-btn" class="btn-outline btn-show-exp hidden">Show Explanation</button>
+                <!-- Action Buttons Container -->
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 1.5rem;">
+                    <button id="ai-hint-btn" class="btn-solid" style="background: #8b5cf6; border: none; padding: 0.8rem 1.5rem; display: none; align-items: center; gap: 8px; border-radius: 8px;"><i class="fas fa-robot"></i> AI Hint</button>
+                    <button id="show-explanation-btn" class="btn-outline" style="border-color: #0084ff; color: #0084ff; display: none; padding: 0.8rem 1.5rem; border-radius: 8px;">Show Explanation</button>
                 </div>
             </div>
 
-            <div id="exam-result-screen" class="result-screen-container hidden">
-                <h2 id="result-title" class="result-title"></h2>
-                <p id="result-score" class="result-score"></p>
-                <div class="result-actions">
-                    <button id="btn-challenge-friend" class="btn-solid btn-result btn-result-challenge hidden">🎯 Challenge a Friend</button>
-                    <button id="btn-review-exam-mistakes" class="btn-outline btn-result btn-result-review hidden">Review Mistakes</button>
-                    <button id="btn-return-home" class="btn-solid btn-result btn-result-return">Save & Return</button>
+<div id="exam-result-screen" class="hidden" style="text-align: center; padding: 2rem 0;">
+                <h2 id="result-title" style="font-size: 2.5rem; margin-bottom: 1rem;"></h2>
+                <p id="result-score" style="font-size: 1.5rem; font-weight: bold; color: #475569; margin-bottom: 2.5rem;"></p>
+<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <button id="btn-challenge-friend" class="btn-solid" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius: 12px; background: #a855f7; color: white; border: none; display: none; cursor: pointer; font-weight: bold; box-shadow: 0 10px 20px rgba(168,85,247,0.3);">🎯 Challenge a Friend</button>
+                    <button id="btn-review-exam-mistakes" class="btn-outline" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius: 12px; border-color: #f59e0b; color: #d97706; display: none; cursor: pointer; font-weight: bold;">Review Mistakes</button>
+                    <button id="btn-return-home" class="btn-solid" style="padding: 1rem 2.5rem; font-size: 1.2rem; border-radius: 12px; background: #10b981; color: white; border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(16,185,129,0.3);">Save & Return</button>
                 </div>
             </div>
+
         </div>
-
-        <div class="bottom-actions" id="bottom-actions-container">
+		<div class="bottom-actions" id="bottom-actions-container">
             <button id="prev-btn" class="prev-icon-btn"><i class="fas fa-arrow-left"></i></button>
             <button id="skip-btn" class="skip-btn">Skip</button>
             <button id="next-btn" class="next-action-btn">Next</button>
         </div>
         
-        <div class="number-grid-container">
-            <div class="number-grid" id="number-grid"></div>
-        </div>
+<div class="number-grid" id="number-grid" style="height: fit-content; flex-grow: 0; margin-bottom: 2rem;"></div>
+
     </div>
 
-    <!-- Explanation Modal -->
+    <!-- Explanation Modal with Next Button -->
     <div id="explanation-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content modal-content-lg">
-            <h3><i class="fas fa-book-open"></i> Explanation</h3>
-            <div id="explanation-text" class="explanation-text-box">Explanation text.</div>
-            <div class="modal-actions">
-                <button id="close-explanation" class="btn-outline">Close</button>
-                <button id="modal-next-btn" class="btn-solid modal-btn-success w-full">Next Question <i class="fas fa-arrow-right"></i></button>
+        <div class="glass-panel modal-content" style="max-width: 650px; width: 90%;">
+            <h3 style="color: #065f46; margin-bottom: 1rem;"><i class="fas fa-book-open"></i> Explanation</h3>
+            <div id="explanation-text" style="max-height: 50vh; overflow-y: auto; text-align: left; margin-bottom: 1.5rem; padding-right: 10px; line-height: 1.6;">Explanation text.</div>
+            <div style="display: flex; gap: 10px;">
+                <button id="close-explanation" class="btn-outline" style="flex: 1;">Close</button>
+                <button id="modal-next-btn" class="btn-solid" style="flex: 1; background: #10b981; border: none;">Next Question <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></button>
             </div>
         </div>
     </div>
 
-    <!-- Reference / Lab Values Sheet -->
+<!-- Reference / Lab Values Sheet -->
     <div id="lab-values-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content modal-content-md">
-            <h3 class="text-center color-blue-900 mb-md"><i class="fas fa-flask color-blue-500"></i> Normal Laboratory Values</h3>
-            <input type="text" id="lab-search-input" class="lab-search-input" placeholder="Search lab test (e.g., Sodium, pH, WBC)...">
-            <div class="lab-table-container">
-                <table id="lab-values-table">
-    <tr><th>Test</th><th>Reference Range</th></tr>
-    <tr><td class="lab-test-name">Hemoglobin (Hb)</td><td>Male: 13.5-17.5 g/dL | Female: 12.0-15.5 g/dL</td></tr>
-    <tr><td class="lab-test-name">White Blood Cells (WBC)</td><td>4,500 - 11,000 /µL</td></tr>
-    <tr><td class="lab-test-name">Platelets</td><td>150,000 - 450,000 /µL</td></tr>
-    <tr><td class="lab-test-name">Sodium (Na)</td><td>135 - 145 mEq/L</td></tr>
-    <tr><td class="lab-test-name">Potassium (K)</td><td>3.5 - 5.0 mEq/L</td></tr>
-    <tr><td class="lab-test-name">Creatinine</td><td>0.6 - 1.2 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Blood Urea Nitrogen (BUN)</td><td>7 - 20 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Glucose (Fasting)</td><td>70 - 99 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Calcium (Total)</td><td>8.5 - 10.5 mg/dL</td></tr>
-    <tr><td class="lab-test-name">pH (Arterial)</td><td>7.35 - 7.45</td></tr>
-    <tr><td class="lab-test-name">pCO2 (Arterial)</td><td>35 - 45 mmHg</td></tr>
-    <tr><td class="lab-test-name">HCO3 (Arterial)</td><td>22 - 26 mEq/L</td></tr>
-    <tr><td class="lab-test-name">pO₂ (Arterial)</td><td>80 - 100 mmHg</td></tr>
-    <tr><td class="lab-test-name">O₂ Saturation</td><td>95 - 100%</td></tr>
-    <tr><td class="lab-test-name">Base Excess</td><td>-2 to +2 mEq/L</td></tr>
-    <tr><td class="lab-test-name">Chloride (Cl)</td><td>98 - 106 mEq/L</td></tr>
-    <tr><td class="lab-test-name">Magnesium</td><td>1.7 - 2.2 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Phosphate</td><td>2.5 - 4.5 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Ionized Calcium</td><td>4.5 - 5.6 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Serum Osmolality</td><td>275 - 295 mOsm/kg</td></tr>
-    <tr><td class="lab-test-name">ALT (SGPT)</td><td>7 - 56 U/L</td></tr>
-    <tr><td class="lab-test-name">AST (SGOT)</td><td>10 - 40 U/L</td></tr>
-    <tr><td class="lab-test-name">Alkaline Phosphatase (ALP)</td><td>44 - 147 U/L</td></tr>
-    <tr><td class="lab-test-name">Gamma GT (GGT)</td><td>9 - 48 U/L</td></tr>
-    <tr><td class="lab-test-name">Total Bilirubin</td><td>0.1 - 1.2 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Direct Bilirubin</td><td>0 - 0.3 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Indirect Bilirubin</td><td>0.2 - 0.9 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Albumin</td><td>3.5 - 5.0 g/dL</td></tr>
-    <tr><td class="lab-test-name">Total Protein</td><td>6.4 - 8.3 g/dL</td></tr>
-    <tr><td class="lab-test-name">HbA1c</td><td>Normal: &lt;5.7% | Prediabetes: 5.7-6.4% | Diabetes: ≥6.5%</td></tr>
-    <tr><td class="lab-test-name">Random Blood Glucose</td><td>&lt;140 mg/dL</td></tr>
-    <tr><td class="lab-test-name">2-hour OGTT</td><td>&lt;140 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Total Cholesterol</td><td>&lt;200 mg/dL</td></tr>
-    <tr><td class="lab-test-name">LDL Cholesterol</td><td>&lt;100 mg/dL</td></tr>
-    <tr><td class="lab-test-name">HDL Cholesterol</td><td>Male: &gt;40 | Female: &gt;50 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Triglycerides</td><td>&lt;150 mg/dL</td></tr>
-    <tr><td class="lab-test-name">VLDL</td><td>5 - 40 mg/dL</td></tr>
-    <tr><td class="lab-test-name">PT</td><td>11 - 13.5 sec</td></tr>
-    <tr><td class="lab-test-name">INR</td><td>0.8 - 1.2</td></tr>
-    <tr><td class="lab-test-name">aPTT</td><td>25 - 35 sec</td></tr>
-    <tr><td class="lab-test-name">Fibrinogen</td><td>200 - 400 mg/dL</td></tr>
-    <tr><td class="lab-test-name">D-Dimer</td><td>&lt;500 ng/mL</td></tr>
-    <tr><td class="lab-test-name">Troponin I</td><td>&lt;0.04 ng/mL</td></tr>
-    <tr><td class="lab-test-name">Troponin T</td><td>&lt;14 ng/L</td></tr>
-    <tr><td class="lab-test-name">CK (CPK)</td><td>20 - 200 U/L</td></tr>
-    <tr><td class="lab-test-name">CK-MB</td><td>&lt;5 ng/mL</td></tr>
-    <tr><td class="lab-test-name">BNP</td><td>&lt;100 pg/mL</td></tr>
-    <tr><td class="lab-test-name">NT-proBNP</td><td>&lt;125 pg/mL (&lt;75 years)</td></tr>
-    <tr><td class="lab-test-name">Amylase</td><td>30 - 110 U/L</td></tr>
-    <tr><td class="lab-test-name">Lipase</td><td>10 - 140 U/L</td></tr>
-    <tr><td class="lab-test-name">Lactate</td><td>0.5 - 2.2 mmol/L</td></tr>
-    <tr><td class="lab-test-name">C-Reactive Protein (CRP)</td><td>&lt;5 mg/L</td></tr>
-    <tr><td class="lab-test-name">Procalcitonin</td><td>&lt;0.1 ng/mL</td></tr>
-    <tr><td class="lab-test-name">Ferritin</td><td>Male: 30 - 400 | Female: 15 - 150 ng/mL</td></tr>
-    <tr><td class="lab-test-name">Serum Iron</td><td>60 - 170 µg/dL</td></tr>
-    <tr><td class="lab-test-name">Total Iron Binding Capacity (TIBC)</td><td>240 - 450 µg/dL</td></tr>
-    <tr><td class="lab-test-name">Transferrin Saturation</td><td>20 - 50%</td></tr>
-    <tr><td class="lab-test-name">TSH</td><td>0.4 - 4.0 mIU/L</td></tr>
-    <tr><td class="lab-test-name">Free T4</td><td>0.8 - 1.8 ng/dL</td></tr>
-    <tr><td class="lab-test-name">Free T3</td><td>2.3 - 4.2 pg/mL</td></tr>
-    <tr><td class="lab-test-name">Vitamin B12</td><td>200 - 900 pg/mL</td></tr>
-    <tr><td class="lab-test-name">Folate</td><td>3 - 20 ng/mL</td></tr>
-    <tr><td class="lab-test-name">Vitamin D (25-OH)</td><td>30 - 100 ng/mL</td></tr>
-    <tr><td class="lab-test-name">Parathyroid Hormone (PTH)</td><td>10 - 65 pg/mL</td></tr>
-    <tr><td class="lab-test-name">Uric Acid</td><td>Male: 3.4 - 7.0 | Female: 2.4 - 6.0 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Ammonia</td><td>15 - 45 µg/dL</td></tr>
-    <tr><td class="lab-test-name">β-hCG (Non-pregnant Female)</td><td>&lt;5 mIU/mL</td></tr>
-    <tr><td class="lab-test-name">Lactate Dehydrogenase (LDH)</td><td>140 - 280 U/L</td></tr>
-    <tr><td class="lab-test-name">Haptoglobin</td><td>30 - 200 mg/dL</td></tr>
-    <tr><td class="lab-test-name">Reticulocyte Count</td><td>0.5 - 2.5%</td></tr>
-    <tr><td class="lab-test-name">Osmolal Gap</td><td>&lt;10 mOsm/kg</td></tr>
-    <tr><td class="lab-test-name">Anion Gap</td><td>8 - 12 mEq/L</td></tr>
-    <tr><td class="lab-test-name">Urine Color</td><td>Pale yellow to amber</td></tr>
-    <tr><td class="lab-test-name">Appearance</td><td>Clear</td></tr>
-    <tr><td class="lab-test-name">Specific Gravity</td><td>1.005 - 1.030</td></tr>
-    <tr><td class="lab-test-name">Urine pH</td><td>4.5 - 8.0</td></tr>
-    <tr><td class="lab-test-name">Protein</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Glucose</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Ketones</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Blood (Hemoglobin)</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Red Blood Cells (RBC)</td><td>0 - 2 /HPF</td></tr>
-    <tr><td class="lab-test-name">White Blood Cells (WBC)</td><td>0 - 5 /HPF</td></tr>
-    <tr><td class="lab-test-name">Nitrite</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Leukocyte Esterase</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Bilirubin</td><td>Negative</td></tr>
-    <tr><td class="lab-test-name">Urobilinogen</td><td>0.2 - 1.0 EU/dL</td></tr>
-    <tr><td class="lab-test-name">Casts</td><td>None to occasional hyaline casts</td></tr>
-    <tr><td class="lab-test-name">Crystals</td><td>None</td></tr>
-    <tr><td class="lab-test-name">Bacteria</td><td>None</td></tr>
-    <tr><td class="lab-test-name">Epithelial Cells</td><td>0 - 5 /HPF</td></tr>
-    <tr><td class="lab-test-name">Urine Osmolality</td><td>300 - 900 mOsm/kg</td></tr>
-    <tr><td class="lab-test-name">24-hour Urine Protein</td><td>&lt;150 mg/day</td></tr>
-</table>
+        <div class="glass-panel modal-content" style="max-width: 600px; width: 95%;">
+            <h3 style="color: #1e3a8a; margin-bottom: 1rem; text-align: center;"><i class="fas fa-flask" style="color: #3b82f6; margin-right: 8px;"></i> Normal Laboratory Values</h3>
+            
+            <input type="text" id="lab-search-input" placeholder="Search lab test (e.g., Sodium, pH, WBC)..." 
+                style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit; font-size: 1rem;">
+            
+            <div style="max-height: 60vh; overflow-y: auto; text-align: left; font-size: 0.9rem; color: #334155; padding-right: 5px;">
+                <table id="lab-values-table" style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
+                    <tr style="background: #f1f5f9; color: #1e293b;"><th style="padding: 10px; border: 1px solid #cbd5e1; text-align: left;">Test</th><th style="padding: 10px; border: 1px solid #cbd5e1; text-align: left;">Reference Range</th></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Hemoglobin (Hb)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Male: 13.5-17.5 g/dL | Female: 12.0-15.5 g/dL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">White Blood Cells (WBC)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">4,500 - 11,000 /µL</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Platelets</td><td style="padding: 10px; border: 1px solid #e2e8f0;">150,000 - 450,000 /µL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Sodium (Na)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">135 - 145 mEq/L</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Potassium (K)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">3.5 - 5.0 mEq/L</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Creatinine</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.6 - 1.2 mg/dL</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Blood Urea Nitrogen (BUN)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">7 - 20 mg/dL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Glucose (Fasting)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">70 - 99 mg/dL</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Calcium (Total)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">8.5 - 10.5 mg/dL</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">pH (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">7.35 - 7.45</td></tr>
+                    <tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">pCO2 (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">35 - 45 mmHg</td></tr>
+                    <tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">HCO3 (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">22 - 26 mEq/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">pO₂ (Arterial)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">80 - 100 mmHg</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">O₂ Saturation</td><td style="padding: 10px; border: 1px solid #e2e8f0;">95 - 100%</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Base Excess</td><td style="padding: 10px; border: 1px solid #e2e8f0;">-2 to +2 mEq/L</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Chloride (Cl)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">98 - 106 mEq/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Magnesium</td><td style="padding: 10px; border: 1px solid #e2e8f0;">1.7 - 2.2 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Phosphate</td><td style="padding: 10px; border: 1px solid #e2e8f0;">2.5 - 4.5 mg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Ionized Calcium</td><td style="padding: 10px; border: 1px solid #e2e8f0;">4.5 - 5.6 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Serum Osmolality</td><td style="padding: 10px; border: 1px solid #e2e8f0;">275 - 295 mOsm/kg</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">ALT (SGPT)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">7 - 56 U/L</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">AST (SGOT)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">10 - 40 U/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Alkaline Phosphatase (ALP)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">44 - 147 U/L</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Gamma GT (GGT)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">9 - 48 U/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Total Bilirubin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.1 - 1.2 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Direct Bilirubin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0 - 0.3 mg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Indirect Bilirubin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.2 - 0.9 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Albumin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">3.5 - 5.0 g/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Total Protein</td><td style="padding: 10px; border: 1px solid #e2e8f0;">6.4 - 8.3 g/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">HbA1c</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Normal: &lt;5.7% | Prediabetes: 5.7-6.4% | Diabetes: ≥6.5%</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Random Blood Glucose</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;140 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">2-hour OGTT</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;140 mg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Total Cholesterol</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;200 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">LDL Cholesterol</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;100 mg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">HDL Cholesterol</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Male: &gt;40 | Female: &gt;50 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Triglycerides</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;150 mg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">VLDL</td><td style="padding: 10px; border: 1px solid #e2e8f0;">5 - 40 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">PT</td><td style="padding: 10px; border: 1px solid #e2e8f0;">11 - 13.5 sec</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">INR</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.8 - 1.2</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">aPTT</td><td style="padding: 10px; border: 1px solid #e2e8f0;">25 - 35 sec</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Fibrinogen</td><td style="padding: 10px; border: 1px solid #e2e8f0;">200 - 400 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">D-Dimer</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;500 ng/mL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Troponin I</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;0.04 ng/mL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Troponin T</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;14 ng/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">CK (CPK)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">20 - 200 U/L</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">CK-MB</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;5 ng/mL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">BNP</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;100 pg/mL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">NT-proBNP</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;125 pg/mL (&lt;75 years)</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Amylase</td><td style="padding: 10px; border: 1px solid #e2e8f0;">30 - 110 U/L</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Lipase</td><td style="padding: 10px; border: 1px solid #e2e8f0;">10 - 140 U/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Lactate</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.5 - 2.2 mmol/L</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">C-Reactive Protein (CRP)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;5 mg/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Procalcitonin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;0.1 ng/mL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Ferritin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Male: 30 - 400 | Female: 15 - 150 ng/mL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Serum Iron</td><td style="padding: 10px; border: 1px solid #e2e8f0;">60 - 170 µg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Total Iron Binding Capacity (TIBC)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">240 - 450 µg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Transferrin Saturation</td><td style="padding: 10px; border: 1px solid #e2e8f0;">20 - 50%</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">TSH</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.4 - 4.0 mIU/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Free T4</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.8 - 1.8 ng/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Free T3</td><td style="padding: 10px; border: 1px solid #e2e8f0;">2.3 - 4.2 pg/mL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Vitamin B12</td><td style="padding: 10px; border: 1px solid #e2e8f0;">200 - 900 pg/mL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Folate</td><td style="padding: 10px; border: 1px solid #e2e8f0;">3 - 20 ng/mL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Vitamin D (25-OH)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">30 - 100 ng/mL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Parathyroid Hormone (PTH)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">10 - 65 pg/mL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Uric Acid</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Male: 3.4 - 7.0 | Female: 2.4 - 6.0 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Ammonia</td><td style="padding: 10px; border: 1px solid #e2e8f0;">15 - 45 µg/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">β-hCG (Non-pregnant Female)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;5 mIU/mL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Lactate Dehydrogenase (LDH)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">140 - 280 U/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Haptoglobin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">30 - 200 mg/dL</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Reticulocyte Count</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.5 - 2.5%</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Osmolal Gap</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;10 mOsm/kg</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Anion Gap</td><td style="padding: 10px; border: 1px solid #e2e8f0;">8 - 12 mEq/L</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Urine Color</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Pale yellow to amber</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Appearance</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Clear</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Specific Gravity</td><td style="padding: 10px; border: 1px solid #e2e8f0;">1.005 - 1.030</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Urine pH</td><td style="padding: 10px; border: 1px solid #e2e8f0;">4.5 - 8.0</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Protein</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Glucose</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Ketones</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Blood (Hemoglobin)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Red Blood Cells (RBC)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0 - 2 /HPF</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">White Blood Cells (WBC)</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0 - 5 /HPF</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Nitrite</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Leukocyte Esterase</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Bilirubin</td><td style="padding: 10px; border: 1px solid #e2e8f0;">Negative</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Urobilinogen</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0.2 - 1.0 EU/dL</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Casts</td><td style="padding: 10px; border: 1px solid #e2e8f0;">None to occasional hyaline casts</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Crystals</td><td style="padding: 10px; border: 1px solid #e2e8f0;">None</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Bacteria</td><td style="padding: 10px; border: 1px solid #e2e8f0;">None</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Epithelial Cells</td><td style="padding: 10px; border: 1px solid #e2e8f0;">0 - 5 /HPF</td></tr>
+					<tr><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">Urine Osmolality</td><td style="padding: 10px; border: 1px solid #e2e8f0;">300 - 900 mOsm/kg</td></tr>
+					<tr style="background: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0; font-weight: bold;">24-hour Urine Protein</td><td style="padding: 10px; border: 1px solid #e2e8f0;">&lt;150 mg/day</td></tr>
+				</table>
             </div>
-            <button id="close-lab-values-btn" class="btn-solid w-full mt-sm" style="background: #1e293b;">Close Reference</button>
+            <button id="close-lab-values-btn" class="btn-solid" style="margin-top: 1.5rem; width: 100%; background: #1e293b; border: none;">Close Reference</button>
         </div>
     </div>
-    
+	
     <div id="notes-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3 class="color-emerald-900 mb-md"><i class="fas fa-pen"></i> My Notes</h3>
-            <textarea id="note-input" class="textarea-standard textarea-notes" placeholder="Type your personal notes here..."></textarea>
-            <div class="modal-actions">
+        <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
+            <h3 style="color: #064e3b; margin-bottom: 1rem;">
+                <i class="fas fa-pen"></i> My Notes
+            </h3>
+            
+            <textarea id="note-input" placeholder="Type your personal notes here..." 
+                style="width: 100%; height: 150px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; resize: vertical; margin-bottom: 1rem; font-family: inherit;">
+            </textarea>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
                 <button id="close-notes-btn" class="btn-outline">Cancel</button>
                 <button id="save-note-btn" class="btn-solid">Save Note</button>
             </div>
@@ -250,110 +268,134 @@
     </div>
 
     <div id="shortcuts-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content text-left">
-            <h3 class="color-slate-900 border-b mb-md"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
-            <ul class="shortcut-list">
-                <li><kbd class="shortcut-kbd">⬅</kbd> / <kbd class="shortcut-kbd">➡</kbd> : Next/Prev Question</li>
-                <li><kbd class="shortcut-kbd">A-E</kbd> / <kbd class="shortcut-kbd">1-5</kbd> : Select Option</li>
-                <li><kbd class="shortcut-kbd">Shift</kbd> + <kbd class="shortcut-kbd">A-E</kbd> : Strike Out Option</li>
-                <li><kbd class="shortcut-kbd">X</kbd> : Open/Close Explanation</li>
-                <li><kbd class="shortcut-kbd">Enter</kbd> : Submit Answer / Accept Popups</li>
-                <li><kbd class="shortcut-kbd">P</kbd> : Pause (Practice) / Skip (Exam)</li>
-                <li><kbd class="shortcut-kbd">H</kbd> : Show AI Hint</li>
-                <li><kbd class="shortcut-kbd">S</kbd> : Bookmark Question</li>
-                <li><kbd class="shortcut-kbd">⬆</kbd> / <kbd class="shortcut-kbd">⬇</kbd> : Scroll Explanation</li>
-                <li><kbd class="shortcut-kbd">Esc</kbd> : Go Back / Exit</li>
-            </ul>
-            <button id="close-shortcuts-btn" class="btn-solid w-full mt-sm" style="background: #0f172a;">Got it</button>
+        <div class="glass-panel modal-content" style="max-width: 400px; width: 90%; text-align: left;">
+            <h3 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
+<ul style="list-style: none; padding: 0; margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.8;">
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">⬅</kbd> / <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">➡</kbd> : Next/Prev Question</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">A-E</kbd> / <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">1-5</kbd> : Select Option</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">Shift</kbd> + <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">A-E</kbd> : Strike Out Option</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">X</kbd> : Open/Close Explanation</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">Enter</kbd> : Submit Answer / Accept Popups</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">P</kbd> : Pause (Practice) / Skip (Exam)</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">H</kbd> : Show AI Hint</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">S</kbd> : Bookmark Question</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">⬆</kbd> / <kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">⬇</kbd> : Scroll Explanation</li>
+	<li><kbd style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #1e293b;">Esc</kbd> : Go Back / Exit</li>
+</ul>
+            <button id="close-shortcuts-btn" class="btn-solid" style="width: 100%; margin-top: 1.5rem; background: #0f172a;">Got it</button>
         </div>
     </div>
 
     <div id="report-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3 class="color-red-900 mb-md"><i class="fas fa-flag"></i> Report Question</h3>
-            <p class="color-slate-500 mb-md">Spot an error? Tell us why this question, answer, or explanation is incorrect.</p>
-            <textarea id="report-reason-input" class="textarea-standard textarea-report" placeholder="Explain the issue here..."></textarea>
-            <div class="modal-actions">
-                <button id="close-report-btn" class="btn-outline color-slate-500">Cancel</button>
-                <button id="submit-report-btn" class="btn-solid modal-btn-danger">Submit Report</button>
+        <div class="glass-panel modal-content" style="max-width: 500px; width: 90%;">
+            <h3 style="color: #991b1b; margin-bottom: 1rem;">
+                <i class="fas fa-flag"></i> Report Question
+            </h3>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Spot an error? Tell us why this question, answer, or explanation is incorrect.</p>
+            
+            <textarea id="report-reason-input" placeholder="Explain the issue here (e.g., Typo, Incorrect option marked as correct, etc.)..." 
+                style="width: 100%; height: 120px; padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; resize: vertical; margin-bottom: 1rem; font-family: inherit;"></textarea>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button id="close-report-btn" class="btn-outline" style="border-color: #94a3b8; color: #64748b;">Cancel</button>
+                <button id="submit-report-btn" class="btn-solid" style="background: #ef4444; border: none;">Submit Report</button>
             </div>
         </div>
     </div>
 
+    <!-- Share Challenge Modal -->
     <div id="share-challenge-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content text-center">
-            <h3 class="color-purple-500 mb-md"><i class="fas fa-share-alt"></i> Challenge a Friend</h3>
-            <p class="color-slate-600 mb-lg">Your challenge code is ready! Share it with your friends to see if they can beat your score.</p>
-            <div class="share-msg-box">
-                <p id="share-message-text" class="share-msg-text"></p>
+        <div class="glass-panel modal-content" style="max-width: 450px; width: 90%; text-align: center;">
+            <h3 style="color: #a855f7; margin-bottom: 1rem;"><i class="fas fa-share-alt"></i> Challenge a Friend</h3>
+            <p style="color: #475569; font-size: 0.95rem; margin-bottom: 1.5rem;">Your challenge code is ready! Share it with your friends to see if they can beat your score.</p>
+            
+            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; padding: 15px; border-radius: 12px; margin-bottom: 1.5rem; text-align: left;">
+                <p id="share-message-text" style="color: #1e293b; font-size: 1rem; line-height: 1.5; margin: 0; user-select: all;"></p>
             </div>
-            <div class="flex-col gap-sm">
-                <button id="btn-copy-share" class="btn-share-action btn-share-copy"><i class="fas fa-copy"></i> Copy Message</button>
-                <a id="btn-whatsapp-share" target="_blank" class="btn-share-action btn-share-wa"><i class="fab fa-whatsapp"></i> Share via WhatsApp</a>
-                <button id="close-share-modal" class="btn-outline w-full mt-sm">Close</button>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="btn-copy-share" class="btn-solid" style="background: #3b82f6; border: none; padding: 0.8rem; border-radius: 8px; font-weight: bold; width: 100%; cursor: pointer; transition: 0.3s;"><i class="fas fa-copy"></i> Copy Message</button>
+                <a id="btn-whatsapp-share" target="_blank" class="btn-solid" style="background: #25D366; color: white; text-decoration: none; border: none; padding: 0.8rem; border-radius: 8px; font-weight: bold; display: block; width: 100%; transition: 0.3s;"><i class="fab fa-whatsapp"></i> Share via WhatsApp</a>
+                <button id="close-share-modal" class="btn-outline" style="padding: 0.8rem; border-radius: 8px; width: 100%; margin-top: 5px;">Close</button>
             </div>
         </div>
     </div>
+
+    <!-- CRITICAL CSS OVERRIDE TO ALLOW TEXT SELECTION IN THE EDITOR -->
+    <style>
+        #admin-edit-modal, #admin-edit-modal * {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+        }
+        .ql-editor {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            cursor: text;
+        }
+    </style>
 
     <!-- Admin Edit Modal -->
-    <div id="admin-edit-modal" class="modal-overlay modal-selectable hidden">
-        <div class="glass-panel modal-content modal-content-lg modal-selectable text-left">
-            <h3 class="color-emerald-900 mb-md mt-0"><i class="fas fa-edit"></i> Edit Question</h3>
+    <div id="admin-edit-modal" class="modal-overlay hidden" style="user-select: text !important; -webkit-user-select: text !important;">
+        <div class="glass-panel modal-content" style="max-width: 650px; width: 95%; max-height: 85vh; overflow-y: auto; text-align: left; user-select: text !important; -webkit-user-select: text !important;">
+            <h3 style="color: #065f46; margin-top: 0; margin-bottom: 1rem;"><i class="fas fa-edit"></i> Edit Question</h3>
             
-            <div class="admin-grid">
+            <!-- GRID FOR METADATA -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
                 <div>
-                    <label class="admin-label">Question ID</label>
-                    <input type="text" id="edit-q-id" disabled class="admin-input">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question ID</label>
+                    <input type="text" id="edit-q-id" disabled style="width: 100%; padding: 8px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px;">
                 </div>
                 <div>
-                    <label class="admin-label">Difficulty</label>
-                    <select id="edit-q-diff" class="admin-input">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Difficulty</label>
+                    <select id="edit-q-diff" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
                     </select>
                 </div>
                 <div>
-                    <label class="admin-label">Subject</label>
-                    <input type="text" id="edit-q-subject" class="admin-input">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Subject</label>
+                    <input type="text" id="edit-q-subject" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
                 </div>
                 <div>
-                    <label class="admin-label">Chapter</label>
-                    <input type="text" id="edit-q-chapter" class="admin-input">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Chapter</label>
+                    <input type="text" id="edit-q-chapter" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
                 </div>
                 <div>
-                    <label class="admin-label">Topic</label>
-                    <input type="text" id="edit-q-topic" class="admin-input">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Topic</label>
+                    <input type="text" id="edit-q-topic" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
                 </div>
                 <div>
-                    <label class="admin-label">Year & Exam</label>
-                    <div class="admin-input-group">
-                        <input type="text" id="edit-q-year" placeholder="Year" class="admin-input" style="width: 40%;">
-                        <input type="text" id="edit-q-exam" placeholder="Exam" class="admin-input" style="width: 60%;">
+                    <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Year & Exam</label>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="edit-q-year" placeholder="Year" style="width: 40%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+                        <input type="text" id="edit-q-exam" placeholder="Exam" style="width: 60%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
                     </div>
                 </div>
             </div>
 
-            <label class="admin-label">Question Statement</label>
-            <div class="admin-editor-container">
-                <div id="edit-q-text" class="admin-editor"></div>
+			<label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question Statement</label>
+			<div style="background: white; margin-bottom: 12px;">
+				<div id="edit-q-text" style="height: 120px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
+			</div>
+
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;" id="edit-options-container">
+                <!-- Options injected by JavaScript -->
             </div>
 
-            <div id="edit-options-container" class="flex-col gap-sm mb-sm"></div>
-
-            <label class="admin-label">Hint</label>
-            <div class="admin-editor-container">
-                <div id="edit-q-hint" class="admin-editor"></div>
+            <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Hint</label>
+            <div style="background: white; margin-bottom: 15px;">
+                <div id="edit-q-hint" style="height: 100px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
             </div>
 
-            <label class="admin-label">Explanation</label>
-            <div class="admin-editor-container mb-lg">
-                <div id="edit-q-explanation" class="admin-editor admin-editor-lg"></div>
+            <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Explanation</label>
+            <div style="background: white; margin-bottom: 20px;">
+                <div id="edit-q-explanation" style="height: 200px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
             </div>
 
-            <div class="modal-actions">
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
                 <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
-                <button id="btn-save-github" class="btn-solid modal-btn-success"><i class="fas fa-save"></i> Save to Queue</button>
+                <button id="btn-save-github" class="btn-solid" style="background: #10b981; border: none;"><i class="fas fa-save"></i> Save to Queue</button>
             </div>
         </div>
     </div>
