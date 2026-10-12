@@ -483,12 +483,12 @@ async function loadAndOpenBook(book) {
             
             let bookQuestions = await response.json();
             bookQuestions.forEach(q => {
-                q.QuestionID = q.id;
+                q.QuestionID = q.QuestionID || q.id || q.ID;
                 q.Subject = book.title;
-                q.Chapter = q.chapter;
-                q.Topic = q.topic;
-                q.Exam = q.exams;
-                q.Year = q.year;
+                q.Chapter = q.Chapter || q.chapter;
+                q.Topic = q.Topic || q.topic;
+                q.Exam = q.Exam || q.exams;
+                q.Year = q.Year || q.year;
                 q.isBookQuestion = true;
                 q.bookName = book.file;
             });
@@ -1411,12 +1411,12 @@ async function loadDataAndBuildTree() {
         const hierarchyData = await hierarchyRes.json();
 
         masterQuestions.forEach(q => {
-            q.QuestionID = q.id;
-            q.Subject = q.subject;
-            q.Chapter = q.chapter;
-            q.Topic = q.topic;
-            q.Year = q.year;
-            q.Exam = q.exams; 
+            q.QuestionID = q.QuestionID || q.id || q.ID;
+            q.Subject = q.Subject || q.subject;
+            q.Chapter = q.Chapter || q.chapter;
+            q.Topic = q.Topic || q.topic;
+            q.Year = q.Year || q.year;
+            q.Exam = q.Exam || q.exams; 
         });
 
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
@@ -2219,12 +2219,12 @@ window.generateRevisionQuiz = async function(topicId) {
                 if (response.ok) {
                     let bookQuestions = await response.json();
                     bookQuestions.forEach(q => {
-                        q.QuestionID = q.id;
+                        q.QuestionID = q.QuestionID || q.id || q.ID;
                         q.Subject = book.title;
-                        q.Chapter = q.chapter;
-                        q.Topic = q.topic;
-                        q.Exam = q.exams;
-                        q.Year = q.year;
+                        q.Chapter = q.Chapter || q.chapter;
+                        q.Topic = q.Topic || q.topic;
+                        q.Exam = q.Exam || q.exams;
+                        q.Year = q.Year || q.year;
                         q.isBookQuestion = true;
                         q.bookName = book.file;
                     });
@@ -2841,16 +2841,14 @@ btnPushEdits.onclick = async () => {
                 const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
                 const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
 
-userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
+                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
                 await loadDataAndBuildTree();
 
-                const validCourseIDs = new Set(allQuestions.filter(q => !q.isBookQuestion).map(q => getQID(q)));
-
-                const validCourseSolved = [...new Set(courseSolved)].filter(id => validCourseIDs.has(id));
-                const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)].filter(id => validCourseIDs.has(id));
-                const validCourseExamMistakes = [...new Set(courseExamMistakes)].filter(id => validCourseIDs.has(id));
-                const validCourseBookmarks = [...new Set(courseBookmarks)].filter(id => validCourseIDs.has(id));
+                const validCourseSolved = [...new Set(courseSolved)];
+                const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
+                const validCourseExamMistakes = [...new Set(courseExamMistakes)];
+                const validCourseBookmarks = [...new Set(courseBookmarks)];
 
                 const uniqueBookSolved = [...new Set(bookSolved)];
                 const uniqueBookPracticeMistakes = [...new Set(bookPracticeMistakes)];
@@ -3030,7 +3028,7 @@ userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory 
                     revisionContainer.innerHTML = '';
                 }
 				
-const btnMistakes = document.getElementById('btn-practice-mistakes');
+                const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes) {
                     btnMistakes.disabled = false;
                     btnMistakes.classList.add('cursor-pointer');
@@ -3092,6 +3090,20 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                     checkMilestones(flawlessCount);
                 }, 2000);
 
+            } else {
+                currentUserData = { role: 'STUDENT' };
+                isPremiumUser = false;
+                
+                await loadDataAndBuildTree();
+                
+                globalPracticeMistakes = [];
+                globalExamMistakes = [];
+                globalBookmarks = [];
+                attemptedQuestions = [];
+                userExamHistory = [];
+                
+                restoreLastState();
+                if (typeof updateDashboardUI === 'function') updateDashboardUI();
             }
         } catch (error) { console.error("Error fetching stats:", error); }
     } else {
