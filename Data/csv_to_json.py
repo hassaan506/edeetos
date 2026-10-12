@@ -204,7 +204,8 @@ def process_directory(directory, is_book=False):
                 years_raw = get_column_value(row, {'year'})
                 years_list = clean_split(years_raw)
 
-                specialty_raw = get_column_value(row, {'specialty'})
+                # Catching multiple spellings for Specialty
+                specialty_raw = get_column_value(row, {'specialty', 'speciality', 'spec'})
                 specialty_list = clean_split(specialty_raw)
 
                 exams_raw = get_column_value(row, {'exams', 'exam'})
@@ -316,8 +317,9 @@ def process_directory(directory, is_book=False):
         # ========================================================
         # OUTPUT GENERATION
         # ========================================================
+
         if is_book:
-            # Books remain monolithic
+            # Books remain monolithic with all full text
             questions_out = os.path.join(directory, f"{base_name}_questions.json")
             with open(questions_out, 'w', encoding='utf-8') as f:
                 json.dump(questions, f, indent=4, ensure_ascii=False)
@@ -325,6 +327,24 @@ def process_directory(directory, is_book=False):
             print(f"  -> Generated {base_name}_questions.json for {len(questions)} questions.")
 
         else:
+            # Main Course: Output Lightweight Metadata Index
+            metadata_list = []
+            for q in questions:
+                metadata_list.append({
+                    "id": q["id"],
+                    "year": q["year"],
+                    "exams": q["exams"],
+                    "subject": q["subject"],
+                    "chapter": q["chapter"],
+                    "topic": q["topic"],
+                    "difficulty": q["difficulty"]
+                })
+                
+            meta_out = os.path.join(directory, f"{base_name}_metadata.json")
+            with open(meta_out, 'w', encoding='utf-8') as f:
+                # Use separators to minify the file and save maximum space
+                json.dump(metadata_list, f, separators=(',', ':'))
+
             # Main Course: Output Hierarchy File
             hierarchy_out = os.path.join(directory, f"{base_name}_hierarchy.json")
             hierarchy = {
@@ -335,10 +355,11 @@ def process_directory(directory, is_book=False):
             with open(hierarchy_out, 'w', encoding='utf-8') as f:
                 json.dump(hierarchy, f, indent=4, ensure_ascii=False)
 
-            # Create Shard Directories
-            subj_dir = os.path.join(directory, "subjects")
-            sys_dir = os.path.join(directory, "systems")
-            exam_dir = os.path.join(directory, "exams")
+            # Create Shard Directories nested inside a specific course folder (e.g., Data/fcps_part1/subjects)
+            course_dir = os.path.join(directory, base_name)
+            subj_dir = os.path.join(course_dir, "subjects")
+            sys_dir = os.path.join(course_dir, "systems")
+            exam_dir = os.path.join(course_dir, "exams")
             
             os.makedirs(subj_dir, exist_ok=True)
             os.makedirs(sys_dir, exist_ok=True)
@@ -363,8 +384,9 @@ def process_directory(directory, is_book=False):
                     json.dump(q_list, f, indent=4, ensure_ascii=False)
 
             total_shards = len(subject_chunks) + len(system_chunks) + len(exam_chunks)
+            print(f"  -> Generated {base_name}_metadata.json (Lightweight Index)")
             print(f"  -> Generated {base_name}_hierarchy.json")
-            print(f"  -> Generated {total_shards} micro-chunks (Subjects, Systems, Exams) for {len(questions)} questions.")
+            print(f"  -> Generated {total_shards} micro-chunks in {base_name}/ folder.")
 
 
 # ============================================================

@@ -88,13 +88,11 @@ const pendingEditsCount = document.getElementById('pending-edits-count');
 // ==========================================
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
-// Set the initial icon on load
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
     if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
 }
 
-// Handle clicks
 if (darkModeToggle) {
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -268,24 +266,23 @@ if (globalSearch) {
             return;
         }
 
-searchTimeout = setTimeout(() => {
-    // FIX: Combine all cached chunks so search actually looks at loaded course data
-    let searchPool = [...allQuestions];
-    Object.values(window.activeChunksCache || {}).forEach(chunk => {
-        chunk.forEach(q => {
-            if (!searchPool.some(existing => (existing.QuestionID || existing.id) === (q.QuestionID || q.id))) {
-                searchPool.push(q);
-            }
-        });
-    });
+        searchTimeout = setTimeout(() => {
+            let searchPool = [...allQuestions];
+            Object.values(window.activeChunksCache || {}).forEach(chunk => {
+                chunk.forEach(q => {
+                    if (!searchPool.some(existing => (existing.QuestionID || existing.id) === (q.QuestionID || q.id))) {
+                        searchPool.push(q);
+                    }
+                });
+            });
 
-    const matchedQuestions = searchPool.filter(q => {
-        if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
-        if (!passesDifficultyFilter(q)) return false; 
-        const questionText = q.Question || q.question || q.text || q.statement || "";
-        const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
-        return textToSearch.includes(query);
-    });
+            const matchedQuestions = searchPool.filter(q => {
+                if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+                if (!passesDifficultyFilter(q)) return false; 
+                const questionText = q.Question || q.question || q.text || q.statement || "";
+                const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
+                return textToSearch.includes(query);
+            });
 
             searchDropdown.innerHTML = '';
             if (matchedQuestions.length === 0) {
@@ -387,7 +384,6 @@ function renderGrid() {
     Object.keys(activeTree).forEach(cardTitle => {
         const qCount = getQuestionCount(currentView, [cardTitle]);
         
-        // Ensure filters don't hide the cards in Exam Mode
         if (currentMode !== 'exam' && unattemptedFilter && unattemptedFilter.checked && qCount === 0) return;
         if (qCount === 0) return;
 
@@ -535,17 +531,17 @@ async function fetchRequiredChunks(view, pathsArray) {
         if (view === 'subject' && pathArr.length >= 2) {
             const s = pathArr[0].toLowerCase().replace(/ /g, '_');
             const c = pathArr[1].toLowerCase().replace(/ /g, '_');
-            urls.add(`Data/subjects/${s}_${c}.json`);
+            urls.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
         } 
         else if (view === 'system' && pathArr.length >= 2) {
             const c = pathArr[0].toLowerCase().replace(/ /g, '_');
             const s = pathArr[1].toLowerCase().replace(/ /g, '_');
-            urls.add(`Data/systems/${c}_${s}.json`);
+            urls.add(`Data/${activeCourse}/systems/${c}_${s}.json`);
         } 
         else if (view === 'exam' && pathArr.length >= 2) {
             const y = pathArr[0];
             const spec = pathArr[1].toLowerCase().replace(/ /g, '_');
-            urls.add(`Data/exams/${y}_${spec}.json`);
+            urls.add(`Data/${activeCourse}/exams/${y}_${spec}.json`);
         }
     });
 
@@ -1132,7 +1128,7 @@ async function hydrateQuestions(metadataPool) {
     needsHydration.forEach(q => {
         const s = (q.Subject || q.subject || 'Uncategorized').toLowerCase().replace(/ /g, '_');
         const c = (q.Chapter || q.chapter || 'General').toLowerCase().replace(/ /g, '_');
-        chunksToLoad.add(`Data/subjects/${s}_${c}.json`);
+        chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
     });
 
     const fetchPromises = Array.from(chunksToLoad).map(async (chunkPath) => {
@@ -1207,7 +1203,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
     const roomId = localStorage.getItem('active_study_room');
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-    // Cap massive pools to avoid memory/storage crash
     let safeStorageArray = questionsArray;
     if (safeStorageArray.length > 200) {
         alert(`Your selection has ${questionsArray.length} questions. Capping to 200 to prevent browser crashes.`);
@@ -1216,7 +1211,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
 
     const cleanPool = JSON.parse(JSON.stringify(safeStorageArray));
 
-    // Handle Study Room Host Sync
     if (roomId && !isGuest) {
         try {
             document.body.style.cursor = 'wait';
@@ -1240,7 +1234,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         }
     }
 
-    // 1. Clear any old in-progress exam states so quiz.html doesn't resume the 174-question exam
     const staleKeys = [
         'edeetos_saved_quiz_state',
         'edeetos_quiz_state',
@@ -1253,7 +1246,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         sessionStorage.removeItem(key);
     });
 
-    // 2. Set localStorage configs for backward compatibility
     try {
         localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
         localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
@@ -1261,7 +1253,6 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         console.warn("localStorage quota warning, relying on IndexedDB:", e);
     }
 
-    // 3. Sync to IndexedDB (active_quiz_queue) where quiz.js actually reads from
     document.body.style.cursor = 'wait';
     try {
         const idbRequest = indexedDB.open("EdeetosDB", 1);
@@ -1278,10 +1269,8 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
             const tx = idb.transaction("quiz_sessions", "readwrite");
             const store = tx.objectStore("quiz_sessions");
 
-            // Overwrite the stuck queue with the newly selected questions
             store.put(cleanPool, "active_quiz_queue");
 
-            // Clear any persisted state inside IndexedDB
             try {
                 store.delete("active_quiz_state");
                 store.delete("saved_session");
@@ -1411,7 +1400,7 @@ function initMentorFeatures() {
                     
                     let modalHtml = `
                         <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                            <h3 style="color: #1e3a8a; margin-bottom: 15px;"><i class="fas fa-users"></i> Select Students</h3>
+                            <h3 style="color: #1e3a8a; margin: 0 0 15px 0;"><i class="fas fa-users"></i> Select Students</h3>
                             <input type="text" id="student-search-input" placeholder="Search by name or email..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;">
                             <div id="student-list-container" style="overflow-y: auto; flex-grow: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
                     `;
@@ -1530,6 +1519,14 @@ async function loadDataAndBuildTree() {
         systemTree = hierarchyData.systems || {};
         examTree = hierarchyData.exams || {}; 
         
+        const qsRes = await fetch(`Data/${activeCourse}_metadata.json`, { cache: 'no-cache' });
+        if (qsRes.ok) {
+            const rawQs = await qsRes.json();
+            
+            allQuestions = allQuestions.filter(q => q.isBookQuestion);
+            allQuestions.push(...rawQs);
+        }
+
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
@@ -1676,7 +1673,6 @@ if (btnReset) {
         optionsContainer.style.display = 'flex';
         confirmContainer.style.display = 'none';
         
-        // Dynamically update the modal title based on the active view
         const resetTitle = resetModal.querySelector('.popup-header h3');
         if (resetTitle) {
             resetTitle.innerHTML = `<i class="fas fa-trash-alt"></i> Reset ${currentView === 'book' ? 'Book' : 'Course'} Progress`;
@@ -2149,7 +2145,6 @@ if (btnJourney) {
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         
-        // Fetch the true claimed list from the database
         const dbClaimed = currentUserData?.claimedMilestones || [];
 
         if (trophiesGrid) {
@@ -2175,13 +2170,10 @@ if (btnJourney) {
                 let rewardHtml = '';
                 if (t.rewardValue > 0) {
                     if (isUnlocked && !isClaimed) {
-                        // Unlocked but not claimed: Show a Claim button
                         rewardHtml = `<button class="btn-solid claim-reward-btn" data-trophy='${JSON.stringify(t)}' style="background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; margin-top: 6px; width: 100%; box-shadow: 0 4px 6px rgba(16,185,129,0.2);"><i class="fas fa-gift"></i> Claim Reward</button>`;
                     } else if (isClaimed) {
-                        // Already claimed successfully
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                     } else {
-                        // Locked target
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium</div>`;
                     }
                 }
@@ -2200,13 +2192,11 @@ if (btnJourney) {
                 `;
             }).join('');
 
-            // Attach click listeners to the new dynamic Claim buttons
             document.querySelectorAll('.claim-reward-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const targetBtn = e.target.closest('button');
                     const trophyData = JSON.parse(targetBtn.getAttribute('data-trophy'));
                     
-                    // Hide the Journey modal and bring up the Reward claim screen
                     if (journeyModal) journeyModal.style.display = 'none';
                     showMilestonePopup(trophyData);
                 });
@@ -2908,10 +2898,6 @@ btnPushEdits.onclick = async () => {
 
                 userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
-                await loadDataAndBuildTree();
-
-                // allQuestions is now empty on boot, so we skip the filtering step that requires allQuestions
-                // We keep the arrays intact as pulled from Firebase.
                 const validCourseSolved = [...new Set(courseSolved)];
                 const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
                 const validCourseExamMistakes = [...new Set(courseExamMistakes)];
@@ -2947,6 +2933,8 @@ btnPushEdits.onclick = async () => {
                     accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
                 };
 
+                // FIX: Load the data ONLY AFTER stats and attemptedQuestions are populated
+                await loadDataAndBuildTree();
                 restoreLastState();
                 if (typeof updateDashboardUI === 'function') updateDashboardUI();
                 
@@ -3118,14 +3106,12 @@ btnPushEdits.onclick = async () => {
 
                         if (!isBook) {
                             document.body.style.cursor = 'wait';
-                            // Since allQuestions is empty for the course, dynamically fetch all available chunks
-                            // to reconstruct the global mistake pool
                             const allUrls = new Set();
                             Object.keys(subjectTree).forEach(s => {
                                 Object.keys(subjectTree[s]).forEach(c => {
                                     const sClean = s.toLowerCase().replace(/ /g, '_');
                                     const cClean = c.toLowerCase().replace(/ /g, '_');
-                                    allUrls.add(`Data/subjects/${sClean}_${cClean}.json`);
+                                    allUrls.add(`Data/${activeCourse}/subjects/${sClean}_${cClean}.json`);
                                 });
                             });
 
@@ -3187,7 +3173,7 @@ btnPushEdits.onclick = async () => {
                                 Object.keys(subjectTree[s]).forEach(c => {
                                     const sClean = s.toLowerCase().replace(/ /g, '_');
                                     const cClean = c.toLowerCase().replace(/ /g, '_');
-                                    allUrls.add(`Data/subjects/${sClean}_${cClean}.json`);
+                                    allUrls.add(`Data/${activeCourse}/subjects/${sClean}_${cClean}.json`);
                                 });
                             });
 
@@ -3256,4 +3242,3 @@ btnPushEdits.onclick = async () => {
         }
     }
 });
-
