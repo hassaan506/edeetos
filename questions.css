@@ -316,7 +316,7 @@ body {
     background: rgba(15, 23, 42, 0.6); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    display: none; 
+    display: flex;
     justify-content: center;
     align-items: flex-end; 
     z-index: 6000;
