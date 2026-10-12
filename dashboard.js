@@ -1,14 +1,33 @@
-// === FEATURE: FIREBASE IMPORTS & GLOBALS ===
+/*
+=========================================
+INDEX OF FEATURES
+=========================================
+1. FIREBASE IMPORTS & GLOBALS
+2. DASHBOARD INIT & ROLE BADGES
+3. NAVIGATION & UI TOGGLES
+4. DYNAMIC MODALS (Tasks, Guests, Bans)
+5. NOTES VAULT
+6. PREMIUM MODAL & COURSE SELECTOR
+7. PAYMENT UPLOAD & PROMO LOGIC
+8. REDEEM CODE
+9. USER PROFILE MANAGEMENT
+10. GROUP STUDY (Create & Join)
+11. DARK MODE TOGGLE
+=========================================
+*/
+
+// === 1. FIREBASE IMPORTS & GLOBALS ===
 import { auth, db, storage, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 let currentUserData = null;
 let currentUserId = null;
 let hasCheckedDowngrade = false;
+let cachedNotesData = []; 
 
-// === FEATURE: DASHBOARD LOAD, ROLES, & BADGES ===
+// === 2. DASHBOARD INIT & ROLE BADGES ===
 onAuthStateChanged(auth, async (user) => {
     const freeWarning = document.getElementById('free-warning-text');
     const subStatus = document.getElementById('subscription-status');
@@ -19,173 +38,95 @@ onAuthStateChanged(auth, async (user) => {
         
         const cachedUser = sessionStorage.getItem('edeetos_dash_cache');
         if (cachedUser && document.getElementById('user-name').textContent === "...") {
-            try {
-                const tempUser = JSON.parse(cachedUser);
-                document.getElementById('user-name').textContent = tempUser.fullName || "Doctor";
-            } catch (e) { console.warn("Cache parse failed"); }
+            try { document.getElementById('user-name').textContent = JSON.parse(cachedUser).fullName || "Doctor"; } 
+            catch (e) { console.warn("Cache parse failed"); }
         }
 
         try {
             const docSnap = await getDoc(userRef);
-
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
                 sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
-                
                 const userRoleUpper = (currentUserData.role || 'STUDENT').toUpperCase();
                 
-                // 1. Check Banned Status
+                // BAN CHECK
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
                     document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
-                    if (subStatus) {
-                        subStatus.textContent = "BANNED";
-                        subStatus.className = "status-badge";
-                        subStatus.style.background = "#fee2e2";
-                        subStatus.style.color = "#ef4444";
-                        subStatus.style.border = "1px solid #fca5a5";
-                    }
-                    
-                    const lockoutScreen = document.createElement('div');
-                    lockoutScreen.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);";
-                    
-                    lockoutScreen.innerHTML = `
-                        <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
-                        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; margin-top: 0;">Account Suspended</h1>
-                        <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1.1rem; max-width: 500px; line-height: 1.6; margin-bottom: 2.5rem; padding: 0 1.5rem;">
-                            Your account has been restricted due to policy violations. You no longer have access to EDEETOS materials, questions, or premium features.
-                        </p>
-                        <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); transition: transform 0.2s;">
-                            Log Out
-                        </button>
-                    `;
-                    
-                    document.body.appendChild(lockoutScreen);
-                    document.body.style.overflow = 'hidden';
-                    
-                    document.getElementById('btn-banned-logout').addEventListener('click', () => {
-                        document.getElementById('btn-banned-logout').textContent = "Logging out...";
-                        signOut(auth).then(() => {
-                            window.location.href = 'index.html';
-                        }).catch(() => {
-                            window.location.href = 'index.html';
-                        });
-                    });
-                    
+                    if (subStatus) { subStatus.textContent = "BANNED"; subStatus.className = "status-badge badge-banned"; }
+                    renderLockoutScreen();
                     return; 
-                }				
+                }               
                 
-                // 2. Set UI Elements
+                // HEADER UI
                 document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
 
                 if (currentUserData.examDate) {
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0); 
-                    const examD = new Date(currentUserData.examDate);
-                    examD.setHours(0, 0, 0, 0);
-                    
-                    const diffTime = examD - today;
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    const today = new Date(); today.setHours(0, 0, 0, 0); 
+                    const examD = new Date(currentUserData.examDate); examD.setHours(0, 0, 0, 0);
+                    const diffDays = Math.ceil((examD - today) / (1000 * 60 * 60 * 24));
                     
                     const countdownContainer = document.getElementById('exam-countdown-container');
                     const countdownText = document.getElementById('exam-countdown-text');
-                    const dashSubtitle = document.getElementById('dash-subtitle');
                     
                     if (countdownContainer && countdownText) {
-                        countdownContainer.style.display = 'block';
-                        if (dashSubtitle) dashSubtitle.style.display = 'none'; 
+                        countdownContainer.classList.remove('view-hidden');
+                        document.getElementById('dash-subtitle')?.classList.add('view-hidden');
                         
-                        if (diffDays > 0) {
-                            countdownText.textContent = `${diffDays} Days left until Exam Day!`;
-                        } else if (diffDays === 0) {
-                            countdownText.textContent = "Exam Day is TODAY! Go conquer it.";
-                        } else {
+                        if (diffDays > 0) countdownText.textContent = `${diffDays} Days left until Exam Day!`;
+                        else if (diffDays === 0) countdownText.textContent = "Exam Day is TODAY! Go conquer it.";
+                        else {
                             countdownText.textContent = "Exam date has passed.";
-                            document.getElementById('exam-countdown-badge').style.cssText = "background: #f1f5f9; color: #64748b; border: 2px solid #cbd5e1; padding: 0.6rem 1.5rem; border-radius: 30px; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px;";
+                            document.getElementById('exam-countdown-badge').className = "countdown-badge-expired";
                         }
                     }
                 }
-
                 
                 const userCourseCode = currentUserData.selectedCourse; 
                 const activeCourseEl = document.getElementById('active-course-name');
                 if (activeCourseEl) {
-                    if (userCourseCode) {
-                        activeCourseEl.textContent = courseNamesMap[userCourseCode] || "Unknown Course";
-                    } else {
-                        activeCourseEl.textContent = "No Course Assigned";
-                        activeCourseEl.style.color = "#ef4444"; 
-                    }
+                    activeCourseEl.textContent = userCourseCode ? (courseNamesMap[userCourseCode] || "Unknown Course") : "No Course Assigned";
+                    if (!userCourseCode) activeCourseEl.classList.add('text-danger');
                 }
 
                 const dynamicCourseContainer = document.getElementById('dynamic-course-container');
                 if (dynamicCourseContainer) {
                     if (userCourseCode) {
-                        const courseName = courseNamesMap[userCourseCode] || "Unknown Course";
-                        dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label" style="cursor: pointer; font-weight: bold;"><input type="checkbox" class="course-check" value="${userCourseCode}" checked> ${courseName}</label>`;
+                        dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label cursor-pointer font-bold"><input type="checkbox" class="course-check" value="${userCourseCode}" checked> ${courseNamesMap[userCourseCode] || "Unknown Course"}</label>`;
                     } else {
-                        dynamicCourseContainer.innerHTML = `<div style="color: #ef4444; font-size: 0.8rem; font-weight: bold;">Action Required: Request a course in your Profile first.</div>`;
+                        dynamicCourseContainer.innerHTML = `<div class="text-danger font-xs font-bold">Action Required: Request a course in your Profile first.</div>`;
                     }
                 }
 
-                // 3. Subscription Downgrade Check
-                const userRole = (currentUserData.role || '').toUpperCase();
+                // DOWNGRADE CHECK
                 let hasActiveSubscription = false;
-				if (currentUserData.isPremium && currentUserData.subscriptions) {
-					for (const expiry of Object.values(currentUserData.subscriptions)) {
-						if (expiry === 'lifetime' || new Date(expiry) > new Date()) {
-							hasActiveSubscription = true;
-							break; 
-						}
-					}
-				}
+                if (currentUserData.isPremium && currentUserData.subscriptions) {
+                    for (const expiry of Object.values(currentUserData.subscriptions)) {
+                        if (expiry === 'lifetime' || new Date(expiry) > new Date()) { hasActiveSubscription = true; break; }
+                    }
+                }
                 
                 if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
                     hasCheckedDowngrade = true; 
-                    updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading user:", err));
+                    updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading:", err));
                 }
 
-                // 4. Role Based Badges
-                if(subStatus) {
-                    subStatus.className = "status-badge";
-                    subStatus.style.background = "";
-                    subStatus.style.color = "";
-                    subStatus.style.border = "";
-                }
-
-                if (userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
-                    if(subStatus) {
-                        subStatus.textContent = "Admin";
-                        subStatus.style.background = "#f3e8ff";
-                        subStatus.style.color = "#8b5cf6";
-                        subStatus.style.border = "1px solid #c084fc";
-                    }
-                    document.getElementById('btn-admin-panel').style.display = 'flex';
-                    if (freeWarning) freeWarning.style.display = 'none';
-                    
+                // ROLE UI BADGES
+                if(subStatus) subStatus.className = "status-badge";
+                if (userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
+                    if(subStatus) { subStatus.textContent = "Admin"; subStatus.classList.add('badge-pro'); } // Reusing pro visually
+                    document.getElementById('btn-admin-panel').classList.remove('view-hidden');
+                    if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else if (hasActiveSubscription) { 
-                    if(subStatus) {
-                        subStatus.textContent = "Premium";
-                        subStatus.className = "status-badge badge-pro";
-                    }
-                    if (freeWarning) freeWarning.style.display = 'none';
-                    
+                    if(subStatus) { subStatus.textContent = "Premium"; subStatus.classList.add('badge-pro'); }
+                    if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else {
-                    if(subStatus) {
-                        subStatus.textContent = "Free Tier";
-                        subStatus.className = "status-badge badge-free";
-                    }
-                    if (freeWarning) {
-                        freeWarning.style.display = 'inline';
-                        freeWarning.textContent = "(Free users limited to 50Qs/subject)";
-                    }
+                    if(subStatus) { subStatus.textContent = "Free Tier"; subStatus.classList.add('badge-free'); }
+                    if (freeWarning) { freeWarning.classList.remove('view-hidden'); freeWarning.textContent = "(Free users limited to 50Qs/subject)"; }
                 }
-				const btnReports = document.getElementById('btn-reports-panel');
-				if (btnReports) btnReports.style.display = 'flex';
                 
-                // 5. Mentor Specific Logic
-                if (userRole === 'MENTOR' || userRole === 'MANAGEMENT' || userRole === 'ADMIN') {
-                    const btnReports = document.getElementById('btn-reports-panel');
-                    if (btnReports) btnReports.style.display = 'flex';
+                const btnReports = document.getElementById('btn-reports-panel');
+                if (userRoleUpper === 'MENTOR' || userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
+                    if (btnReports) btnReports.classList.remove('view-hidden');
                     
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
@@ -196,232 +137,255 @@ onAuthStateChanged(auth, async (user) => {
                         if (cardP) cardP.textContent = "Manage incoming student chat requests.";
                     }
 
-                    // Navbar Mentor Toggle Logic
-                    const btnMentorStatus = document.getElementById('btn-mentor-status');
-                    if (btnMentorStatus) {
-                        btnMentorStatus.style.display = 'flex';
-                        let isOnline = currentUserData.isOnline || false;
-
-                        const updateStatusUI = (status) => {
-                            if (status) {
-                                btnMentorStatus.innerHTML = '🟢 Online';
-                                btnMentorStatus.style.borderColor = '#10b981';
-                                btnMentorStatus.style.color = '#10b981';
-                                btnMentorStatus.style.background = 'rgba(16, 185, 129, 0.1)';
-                            } else {
-                                btnMentorStatus.innerHTML = '⚪ Offline';
-                                btnMentorStatus.style.borderColor = '#94a3b8';
-                                btnMentorStatus.style.color = '#94a3b8';
-                                btnMentorStatus.style.background = 'transparent';
-                            }
-                        };
-
-                        updateStatusUI(isOnline);
-
-                        btnMentorStatus.onclick = async () => {
-                            isOnline = !isOnline;
-                            await updateDoc(doc(db, "users", currentUserId), { isOnline: isOnline });
-                            currentUserData.isOnline = isOnline;
-                            updateStatusUI(isOnline);
-                        };
-                    }
-
-                    const chatsRef = collection(db, "chats");
-                    const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
-                    
-                    onSnapshot(q, (snapshot) => {
-                        let banner = document.getElementById('mentor-alert-banner');
-                        
-                        if (!snapshot.empty) {
-                            if (!banner) {
-                                banner = document.createElement('div');
-                                banner.id = 'mentor-alert-banner';
-                                banner.className = 'mentor-alert-floating';
-                                banner.innerHTML = `<span>🚨</span> <span>Incoming Chat Request! Tap to answer.</span>`;
-                                banner.onclick = () => window.location.href = 'mentor.html';
-                                document.body.appendChild(banner);
-                            }
-                            banner.style.display = 'flex';
-                        } else {
-                            if (banner) banner.style.display = 'none';
-                        }
-                    });
+                    setupMentorStatus();
+                    setupMentorAlerts();
                 }
 
-                // 6. Assigned Exams Logic (Dynamic Task UI)
-                if (userRole === 'STUDENT' || hasActiveSubscription) {
-                    const examsRef = collection(db, "assigned_exams");
-                    const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
-                    
-                    try {
-                        const examsSnapshot = await getDocs(assignedQuery);
-                        const pendingExams = [];
-                        
-                        examsSnapshot.forEach((docSnap) => {
-                            const data = docSnap.data();
-                            if (!data.isCompletedBy || !data.isCompletedBy.includes(currentUserId)) {
-                                pendingExams.push({ id: docSnap.id, ...data });
-                            }
-                        });
-
-                        if (pendingExams.length > 0) {
-                            const dashboardContainer = document.querySelector('.section-container') || document.body;
-                            const headerElement = document.querySelector('.dashboard-header');
-                            
-                            const notifyCard = document.createElement('div');
-                            notifyCard.className = 'glass-panel';
-                            notifyCard.style.cssText = "background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #10b981; border-radius: 16px; padding: 20px; margin-bottom: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2); transition: transform 0.2s;";
-                            
-                            notifyCard.innerHTML = `
-                                <div style="display: flex; align-items: center; gap: 15px;">
-                                    <div style="background: #10b981; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(16,185,129,0.3);">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
-                                    <div>
-                                        <h3 style="margin: 0 0 5px 0; color: #064e3b; font-weight: 800; font-size: 1.2rem;">New Mentor Assignments</h3>
-                                        <p style="margin: 0; color: #059669; font-size: 0.9rem; font-weight: 600;">You have ${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''} waiting for you.</p>
-                                    </div>
-                                </div>
-                                <button class="btn-solid" style="background: #059669; padding: 10px 20px; border-radius: 12px; border: none; font-size: 0.95rem;">View Tasks</button>
-                            `;
-
-                            notifyCard.onmouseover = () => notifyCard.style.transform = "translateY(-3px)";
-                            notifyCard.onmouseout = () => notifyCard.style.transform = "translateY(0)";
-
-                            if (headerElement && headerElement.nextSibling) {
-                                dashboardContainer.insertBefore(notifyCard, headerElement.nextSibling);
-                            } else {
-                                dashboardContainer.insertBefore(notifyCard, dashboardContainer.firstChild);
-                            }
-
-                            const taskModal = document.createElement('div');
-                            taskModal.id = 'assigned-tasks-modal';
-                            taskModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
-                            
-                            let modalHtml = `
-                                <div class="glass-panel" style="background: white; padding: 25px; border-radius: 16px; width: 90%; max-width: 550px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px;">
-                                        <h3 style="color: #064e3b; margin: 0; font-size: 1.3rem;"><i class="fas fa-clipboard-check" style="color: #10b981; margin-right: 8px;"></i> Assigned Tasks</h3>
-                                        <button id="close-tasks-modal" style="font-size: 1.5rem; color: #64748b; background: none; border: none; cursor: pointer; padding: 0;">&times;</button>
-                                    </div>
-                                    <div style="overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 15px; padding-right: 5px;">
-                            `;
-
-                            pendingExams.forEach((exam, index) => {
-                                modalHtml += `
-                                    <div style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 15px; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                                        <div>
-                                            <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem; margin-bottom: 5px;">${exam.title}</div>
-                                            <div style="display: flex; gap: 10px; font-size: 0.8rem; font-weight: 700;">
-                                                <span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px;"><i class="fas fa-clock"></i> ${exam.timerMinutes} Min</span>
-                                                <span style="background: #f3e8ff; color: #7e22ce; padding: 4px 8px; border-radius: 6px;"><i class="fas fa-layer-group"></i> ${exam.questions.length} Qs</span>
-                                            </div>
-                                        </div>
-                                        <button id="launch-assigned-${index}" class="btn-solid" style="background: #3b82f6; padding: 10px 20px; border: none; border-radius: 8px;">Start Now</button>
-                                    </div>
-                                `;
-                            });
-
-                            modalHtml += `
-                                    </div>
-                                </div>
-                            `;
-                            taskModal.innerHTML = modalHtml;
-                            document.body.appendChild(taskModal);
-
-                            notifyCard.onclick = () => taskModal.style.display = 'flex';
-                            document.getElementById('close-tasks-modal').onclick = () => taskModal.style.display = 'none';
-                            taskModal.onclick = (e) => { if(e.target === taskModal) taskModal.style.display = 'none'; };
-
-                            pendingExams.forEach((exam, index) => {
-                                const launchBtn = document.getElementById(`launch-assigned-${index}`);
-                                launchBtn.addEventListener('click', () => {
-                                    launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
-                                    launchBtn.style.opacity = "0.8";
-                                    launchBtn.style.pointerEvents = "none";
-
-                                    // 1. Set standard config so quiz.js knows it is an exam
-                                    if (exam.course) {
-                                        localStorage.setItem('edeetos_active_course', exam.course);
-                                    }
-                                    
-                                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ 
-                                        mode: 'exam', 
-                                        timer: exam.timerMinutes, 
-                                        examName: exam.title 
-                                    }));
-                                    localStorage.setItem('edeetos_assigned_exam_id', exam.id);
-
-                                    // 2. Clear out any aborted sessions that quiz.js might try to restore
-                                    localStorage.removeItem('edeetos_aborted_session_backup');
-                                    localStorage.removeItem('edeetos_quiz_state');
-
-                                    // 3. Force the questions into IndexedDB where quiz.js actually reads them
-                                    const request = indexedDB.open("EdeetosDB", 1);
-                                    
-                                    request.onupgradeneeded = (e) => {
-                                        const db = e.target.result;
-                                        if (!db.objectStoreNames.contains("quiz_sessions")) {
-                                            db.createObjectStore("quiz_sessions");
-                                        }
-                                    };
-
-                                    request.onsuccess = (e) => {
-                                        const db = e.target.result;
-                                        const tx = db.transaction("quiz_sessions", "readwrite");
-                                        tx.objectStore("quiz_sessions").put(exam.questions, "active_quiz_queue");
-                                        
-                                        tx.oncomplete = () => {
-                                            window.location.href = 'quiz.html';
-                                        };
-                                    };
-                                    
-                                    request.onerror = (e) => {
-                                        console.error("IndexedDB error:", e);
-                                        alert("Failed to load exam data into local storage. Please try again.");
-                                        launchBtn.innerHTML = "Start Now";
-                                        launchBtn.style.opacity = "1";
-                                        launchBtn.style.pointerEvents = "auto";
-                                    };
-                                });
-                            });
-                        }
-                    } catch (examErr) {
-                        console.error("Error fetching assigned exams:", examErr);
-                    }
-                }
+                // ASSIGNED EXAMS UI
+                if (userRoleUpper === 'STUDENT' || hasActiveSubscription) checkAssignedExams();
 
             }
-        } catch (error) {
-            console.error("Error fetching user data:", error);
-        }
+        } catch (error) { console.error("Error fetching user data:", error); }
     } else {
-        // 7. Handle Logged Out / Guest Mode
+        // GUEST MODE
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             document.getElementById('user-name').textContent = "Guest";
-            
-            if(subStatus) {
-                subStatus.textContent = "Guest Mode";
-                subStatus.className = "status-badge badge-free";
-                subStatus.style.background = "#e2e8f0"; 
-                subStatus.style.color = "#475569";
-                subStatus.style.borderColor = "#cbd5e1";
-            }
-            
-            if (freeWarning) {
-                freeWarning.style.display = 'inline';
-                freeWarning.textContent = "(Guests limited to 20Qs/subject)";
-                freeWarning.style.color = "#64748b"; 
-            }
+            if(subStatus) { subStatus.textContent = "Guest Mode"; subStatus.className = "status-badge badge-guest"; }
+            if (freeWarning) { freeWarning.classList.remove('view-hidden'); freeWarning.textContent = "(Guests limited to 20Qs/subject)"; freeWarning.classList.add('text-muted'); }
         } else {
             window.location.href = 'index.html'; 
         }
     }
 });
 
-const btnOpenNotes = document.getElementById('btn-open-notes');
-let cachedNotesData = []; 
+// === 3. NAVIGATION & UTILITIES ===
+document.getElementById('logout-btn').addEventListener('click', () => {
+    localStorage.removeItem('edeetos_guest_mode'); sessionStorage.removeItem('edeetos_dash_cache');
+    signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => { window.location.href = 'index.html'; });
+});
 
+document.getElementById('btn-admin-panel').addEventListener('click', () => window.location.href = 'admin.html');
+document.getElementById('btn-contact-mentor').addEventListener('click', () => {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Mentorship.");
+    window.location.href = 'mentor.html';
+});
+
+document.querySelectorAll('.btn-close-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => e.target.closest('.popup-overlay').classList.add('view-hidden'));
+});
+
+// === 4. DYNAMIC MODALS & ALERTS ===
+function renderLockoutScreen() {
+    const lockoutScreen = document.createElement('div');
+    lockoutScreen.className = "lockout-overlay";
+    lockoutScreen.innerHTML = `
+        <i class="fas fa-ban lockout-icon"></i>
+        <h1 class="lockout-title">Account Suspended</h1>
+        <p class="lockout-desc">Your account has been restricted due to policy violations. You no longer have access to EDEETOS materials, questions, or premium features.</p>
+        <button id="btn-banned-logout" class="btn-lockout">Log Out</button>
+    `;
+    document.body.appendChild(lockoutScreen);
+    document.body.style.overflow = 'hidden';
+    document.getElementById('btn-banned-logout').addEventListener('click', () => {
+        document.getElementById('btn-banned-logout').textContent = "Logging out...";
+        signOut(auth).then(() => window.location.href = 'index.html').catch(() => window.location.href = 'index.html');
+    });
+}
+
+function setupMentorStatus() {
+    const btnMentorStatus = document.getElementById('btn-mentor-status');
+    if (!btnMentorStatus) return;
+    btnMentorStatus.classList.remove('view-hidden');
+    let isOnline = currentUserData.isOnline || false;
+
+    const updateStatusUI = (status) => {
+        if (status) { btnMentorStatus.innerHTML = '🟢 Online'; btnMentorStatus.classList.add('text-emerald', 'border-emerald', 'bg-emerald-light'); } 
+        else { btnMentorStatus.innerHTML = '⚪ Offline'; btnMentorStatus.classList.remove('text-emerald', 'border-emerald', 'bg-emerald-light'); btnMentorStatus.classList.add('text-muted', 'border-slate'); }
+    };
+
+    updateStatusUI(isOnline);
+    btnMentorStatus.onclick = async () => {
+        isOnline = !isOnline;
+        await updateDoc(doc(db, "users", currentUserId), { isOnline: isOnline });
+        currentUserData.isOnline = isOnline; updateStatusUI(isOnline);
+    };
+}
+
+function setupMentorAlerts() {
+    const chatsRef = collection(db, "chats");
+    const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
+    
+    onSnapshot(q, (snapshot) => {
+        let banner = document.getElementById('mentor-alert-banner');
+        if (!snapshot.empty) {
+            if (!banner) {
+                banner = document.createElement('div'); banner.id = 'mentor-alert-banner'; banner.className = 'mentor-alert-floating';
+                banner.innerHTML = `<span>🚨</span> <span>Incoming Chat Request! Tap to answer.</span>`;
+                banner.onclick = () => window.location.href = 'mentor.html';
+                document.body.appendChild(banner);
+            }
+            banner.classList.remove('view-hidden');
+        } else {
+            if (banner) banner.classList.add('view-hidden');
+        }
+    });
+}
+
+async function checkAssignedExams() {
+    const examsRef = collection(db, "assigned_exams");
+    const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
+    
+    try {
+        const examsSnapshot = await getDocs(assignedQuery);
+        const pendingExams = [];
+        examsSnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            if (!data.isCompletedBy || !data.isCompletedBy.includes(currentUserId)) pendingExams.push({ id: docSnap.id, ...data });
+        });
+
+        if (pendingExams.length > 0) {
+            const dashboardContainer = document.querySelector('.section-container') || document.body;
+            const headerElement = document.querySelector('.dashboard-header');
+            
+            const notifyCard = document.createElement('div');
+            notifyCard.className = 'task-notify-card glass-panel';
+            notifyCard.innerHTML = `
+                <div class="flex-align-center gap-15px">
+                    <div class="task-notify-icon"><i class="fas fa-bell"></i></div>
+                    <div>
+                        <h3 class="task-notify-title">New Mentor Assignments</h3>
+                        <p class="task-notify-desc">You have ${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''} waiting for you.</p>
+                    </div>
+                </div>
+                <button class="btn-solid bg-emerald p-10px border-radius-12px border-none font-sm">View Tasks</button>
+            `;
+
+            if (headerElement && headerElement.nextSibling) dashboardContainer.insertBefore(notifyCard, headerElement.nextSibling);
+            else dashboardContainer.insertBefore(notifyCard, dashboardContainer.firstChild);
+
+            const taskModal = document.createElement('div');
+            taskModal.id = 'assigned-tasks-modal';
+            taskModal.className = "popup-overlay";
+            
+            let modalHtml = `
+                <div class="modal-task-list glass-panel">
+                    <div class="flex-between border-bottom-slate pb-15px mb-20px">
+                        <h3 class="card-title-green m-0 font-lg"><i class="fas fa-clipboard-check text-emerald mr-08"></i> Assigned Tasks</h3>
+                        <button id="close-tasks-modal" class="btn-close-clean p-0">&times;</button>
+                    </div>
+                    <div class="notes-list-container">
+            `;
+
+            pendingExams.forEach((exam, index) => {
+                modalHtml += `
+                    <div class="task-item-card">
+                        <div>
+                            <div class="task-item-title">${exam.title}</div>
+                            <div class="flex-row gap-10px font-xs font-bold">
+                                <span class="task-badge-time"><i class="fas fa-clock"></i> ${exam.timerMinutes} Min</span>
+                                <span class="task-badge-count"><i class="fas fa-layer-group"></i> ${exam.questions.length} Qs</span>
+                            </div>
+                        </div>
+                        <button id="launch-assigned-${index}" class="btn-solid bg-blue p-10px border-none border-radius-8px">Start Now</button>
+                    </div>
+                `;
+            });
+
+            modalHtml += `</div></div>`;
+            taskModal.innerHTML = modalHtml;
+            document.body.appendChild(taskModal);
+
+            notifyCard.onclick = () => taskModal.classList.remove('view-hidden');
+            document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
+            taskModal.onclick = (e) => { if(e.target === taskModal) taskModal.classList.add('view-hidden'); };
+
+            pendingExams.forEach((exam, index) => {
+                const launchBtn = document.getElementById(`launch-assigned-${index}`);
+                launchBtn.addEventListener('click', () => {
+                    launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
+                    launchBtn.style.opacity = "0.8"; launchBtn.style.pointerEvents = "none";
+                    if (exam.course) localStorage.setItem('edeetos_active_course', exam.course);
+                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: exam.timerMinutes, examName: exam.title }));
+                    localStorage.setItem('edeetos_assigned_exam_id', exam.id);
+                    localStorage.removeItem('edeetos_aborted_session_backup');
+                    localStorage.removeItem('edeetos_quiz_state');
+
+                    const request = indexedDB.open("EdeetosDB", 1);
+                    request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains("quiz_sessions")) e.target.result.createObjectStore("quiz_sessions"); };
+                    request.onsuccess = (e) => {
+                        const tx = e.target.result.transaction("quiz_sessions", "readwrite");
+                        tx.objectStore("quiz_sessions").put(exam.questions, "active_quiz_queue");
+                        tx.oncomplete = () => window.location.href = 'quiz.html';
+                    };
+                    request.onerror = (e) => { alert("Failed to load exam data."); launchBtn.innerHTML = "Start Now"; launchBtn.style.opacity = "1"; launchBtn.style.pointerEvents = "auto"; };
+                });
+            });
+        }
+    } catch (examErr) { console.error("Error fetching assigned exams:", examErr); }
+}
+
+document.getElementById('btn-launch-course').addEventListener('click', () => {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+        let guestModal = document.getElementById('guest-course-modal');
+        if (!guestModal) {
+            guestModal = document.createElement('div');
+            guestModal.id = 'guest-course-modal';
+            guestModal.className = "popup-overlay";
+            
+            guestModal.innerHTML = `
+                <div class="modal-guest-explore glass-panel">
+                    <h3 class="modal-title-blue mt-0 font-lg"><i class="fas fa-user-graduate text-blue mr-08"></i> Select Demo Course</h3>
+                    <p class="text-muted font-sm mb-20px">Which course would you like to explore as a guest today?</p>
+                    
+                    <select id="guest-course-select" class="custom-select w-100 mb-20px font-bold">
+                        <optgroup label="FCPS Series"><option value="fcps_part1">FCPS Part 1</option><option value="fcps_part2">FCPS Part 2</option><option value="fcps_imm">FCPS IMM</option></optgroup>
+                        <optgroup label="MRCS Series"><option value="mrcs_part1">MRCS Part 1</option><option value="mrcs_part2">MRCS Part 2</option></optgroup>
+                        <optgroup label="MBBS Journey"><option value="mbbs_year1">MBBS Year 1</option><option value="mbbs_year2">MBBS Year 2</option><option value="mbbs_year3">MBBS Year 3</option><option value="mbbs_year4">MBBS Year 4</option><option value="mbbs_year5">MBBS Year 5</option></optgroup>
+                    </select>
+                    
+                    <div class="flex-row gap-10px flex-center">
+                        <button id="btn-cancel-guest" class="btn-outline flex-1 m-0">Cancel</button>
+                        <button id="btn-confirm-guest" class="btn-solid flex-1 m-0 bg-emerald">Explore</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(guestModal);
+            document.getElementById('btn-cancel-guest').onclick = () => guestModal.classList.add('view-hidden');
+            document.getElementById('btn-confirm-guest').onclick = () => {
+                localStorage.setItem('edeetos_active_course', document.getElementById('guest-course-select').value);
+                window.location.href = 'questions.html';
+            };
+        }
+        guestModal.classList.remove('view-hidden');
+        return;
+    }
+
+    if (currentUserData) {
+        let activeSub = null;
+        if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) activeSub = Object.keys(currentUserData.subscriptions)[0];
+        
+        if (currentUserData.selectedCourse) { localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse); window.location.href = 'questions.html'; } 
+        else if (activeSub) { localStorage.setItem('edeetos_active_course', activeSub); window.location.href = 'questions.html'; } 
+        else { alert("Your assigned course is missing. Please request one in your Profile."); }
+    }
+});
+
+const btnOpenFlashcards = document.getElementById('btn-open-flashcards');
+if (btnOpenFlashcards) {
+    btnOpenFlashcards.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to access Flashcards.");
+        if (currentUserData) {
+            let activeSub = currentUserData.subscriptions ? Object.keys(currentUserData.subscriptions)[0] : null;
+            if (currentUserData.selectedCourse || activeSub) {
+                localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse || activeSub);
+                window.location.href = 'flashcards.html';
+            } else { alert("Your assigned course is missing. Please request one in your Profile."); }
+        }
+    });
+}
+
+// === 5. NOTES VAULT ===
+const btnOpenNotes = document.getElementById('btn-open-notes');
 if (btnOpenNotes) {
     btnOpenNotes.addEventListener('click', async () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Notes.");
@@ -430,33 +394,25 @@ if (btnOpenNotes) {
         const modal = document.getElementById('notes-vault-modal');
         const listEl = document.getElementById('notes-vault-list');
         const searchInput = document.getElementById('notes-search-input');
-        modal.style.display = 'flex';
-        searchInput.value = ''; 
+        modal.classList.remove('view-hidden'); searchInput.value = ''; 
         
         const activeCourse = currentUserData.selectedCourse;
         const notesObj = (activeCourse && currentUserData[activeCourse] && currentUserData[activeCourse].notes) ? currentUserData[activeCourse].notes : {};
         const noteKeys = Object.keys(notesObj);
         
-        if (noteKeys.length === 0) {
-            listEl.innerHTML = '<div style="color: #64748b; text-align: center; padding: 2rem;">You haven\'t saved any notes yet.</div>';
-            return;
-        }
-
-        listEl.innerHTML = '<div style="color: #64748b; text-align: center; padding: 2rem; font-weight: bold;"><i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Loading question data...</div>';
+        if (noteKeys.length === 0) return listEl.innerHTML = '<div class="text-muted text-center p-2">You haven\'t saved any notes yet.</div>';
+        listEl.innerHTML = '<div class="text-muted text-center p-2 font-bold"><i class="fas fa-spinner fa-spin mr-08"></i> Loading question data...</div>';
 
         let allQuestions = [];
         try {
             const res = await fetch(`Data/${activeCourse}_questions.json`);
             if (res.ok) allQuestions = await res.json();
-        } catch(e) {
-            console.warn("Could not load question database for notes:", e);
-        }
+        } catch(e) { console.warn("Could not load question database for notes:", e); }
 
         cachedNotesData = noteKeys.map(qId => {
             if (!notesObj[qId].trim()) return null;
             let questionStem = "Unknown Question / Not Found in Current Database";
             const matchedQ = allQuestions.find(q => String(q.QuestionID || q.id || q['Question ID'] || q.originalNumber) === String(qId));
-            
             if (matchedQ) {
                 const rawText = matchedQ.question || matchedQ.Question || matchedQ.text || matchedQ.statement || "Image/Table Based Question";
                 questionStem = rawText.substring(0, 150) + (rawText.length > 150 ? "..." : "");
@@ -468,53 +424,19 @@ if (btnOpenNotes) {
     });
 }
 
-const btnOpenFlashcards = document.getElementById('btn-open-flashcards');
-if (btnOpenFlashcards) {
-    btnOpenFlashcards.addEventListener('click', () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            alert("Please register an account to access Flashcards.");
-            return;
-        }
-        
-        if (currentUserData) {
-            let activeSub = null;
-            if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) {
-                activeSub = Object.keys(currentUserData.subscriptions)[0];
-            }
-
-            if (currentUserData.selectedCourse || activeSub) {
-                localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse || activeSub);
-                window.location.href = 'flashcards.html';
-            } else {
-                alert("Your assigned course is missing. Please request one in your Profile.");
-            }
-        }
-    });
-}
-
 function renderNotes(notesArray) {
     const listEl = document.getElementById('notes-vault-list');
     listEl.innerHTML = '';
-
-    if (notesArray.length === 0) {
-        listEl.innerHTML = '<div style="color: #64748b; text-align: center; padding: 2rem;">No matching notes found.</div>';
-        return;
-    }
-
-    const renderLimit = Math.min(notesArray.length, 50); 
+    if (notesArray.length === 0) return listEl.innerHTML = '<div class="text-muted text-center p-2">No matching notes found.</div>';
     
-    for (let i = 0; i < renderLimit; i++) {
+    for (let i = 0; i < Math.min(notesArray.length, 50); i++) {
         const data = notesArray[i];
         const noteCard = document.createElement('div');
-        noteCard.style.cssText = "background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;";
+        noteCard.className = "note-card";
         noteCard.innerHTML = `
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
-                <div style="font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase;">ID: ${data.id}</div>
-            </div>
-            <div style="font-size: 0.9rem; font-weight: 700; color: #1e3a8a; margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px dashed #cbd5e1; line-height: 1.4;">
-                "${data.stem}"
-            </div>
-            <div style="color: #334155; font-size: 0.95rem; line-height: 1.5; white-space: pre-wrap;">${data.note}</div>
+            <div class="flex-between mb-04"><div class="note-id">ID: ${data.id}</div></div>
+            <div class="note-stem">"${data.stem}"</div>
+            <div class="note-body">${data.note}</div>
         `;
         listEl.appendChild(noteCard);
     }
@@ -524,502 +446,205 @@ const searchInput = document.getElementById('notes-search-input');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
-        const filteredNotes = cachedNotesData.filter(item => 
-            item.stem.toLowerCase().includes(term) || 
-            item.note.toLowerCase().includes(term) ||
-            item.id.toLowerCase().includes(term)
-        );
-        renderNotes(filteredNotes);
+        renderNotes(cachedNotesData.filter(item => item.stem.toLowerCase().includes(term) || item.note.toLowerCase().includes(term) || item.id.toLowerCase().includes(term)));
     });
 }
 
-	document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem('edeetos_guest_mode');
-    sessionStorage.removeItem('edeetos_dash_cache');
-    signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => {
-        window.location.href = 'index.html';
-    });
-});
-
-document.getElementById('btn-admin-panel').addEventListener('click', () => {
-    window.location.href = 'admin.html';
-});
-
-document.getElementById('btn-contact-mentor').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        alert("Please register to access Mentorship.");
-        return;
-    }
-    window.location.href = 'mentor.html';
-});
-
+// === 6. PREMIUM MODAL & COURSE SELECTOR ===
 document.getElementById('btn-open-premium').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        alert("Please register to upgrade to Premium.");
-        return;
-    }
-    document.getElementById('premium-modal').style.display = 'flex';
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to upgrade to Premium.");
+    document.getElementById('premium-modal').classList.remove('view-hidden');
     updatePrices();
 });
 
-document.querySelectorAll('.btn-close-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.target.closest('.popup-overlay').style.display = 'none';
-    });
-});
+const tabBuy = document.getElementById('tab-buy'); const tabRedeem = document.getElementById('tab-redeem');
+const viewBuy = document.getElementById('view-buy'); const viewRedeem = document.getElementById('view-redeem');
 
-document.getElementById('btn-launch-course').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        let guestModal = document.getElementById('guest-course-modal');
-        if (!guestModal) {
-            guestModal = document.createElement('div');
-            guestModal.id = 'guest-course-modal';
-            guestModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
-            
-            guestModal.innerHTML = `
-                <div class="glass-panel" style="background: white; padding: 25px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                    <h3 style="color: #1e3a8a; margin-top: 0; font-size: 1.3rem;"><i class="fas fa-user-graduate" style="color: #3b82f6; margin-right: 8px;"></i> Select Demo Course</h3>
-                    <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Which course would you like to explore as a guest today?</p>
-                    
-                    <select id="guest-course-select" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; margin-bottom: 20px; font-weight: bold; color: #1e293b; outline: none;">
-                        <optgroup label="FCPS Series">
-                            <option value="fcps_part1">FCPS Part 1</option>
-                            <option value="fcps_part2">FCPS Part 2</option>
-                            <option value="fcps_imm">FCPS IMM</option>
-                        </optgroup>
-                        <optgroup label="MRCS Series">
-                            <option value="mrcs_part1">MRCS Part 1</option>
-                            <option value="mrcs_part2">MRCS Part 2</option>
-                        </optgroup>
-                        <optgroup label="MBBS Journey">
-                            <option value="mbbs_year1">MBBS Year 1</option>
-                            <option value="mbbs_year2">MBBS Year 2</option>
-                            <option value="mbbs_year3">MBBS Year 3</option>
-                            <option value="mbbs_year4">MBBS Year 4</option>
-                            <option value="mbbs_year5">MBBS Year 5</option>
-                        </optgroup>
-                    </select>
-                    
-                    <div style="display: flex; gap: 10px; justify-content: center;">
-                        <button id="btn-cancel-guest" class="btn-outline" style="flex: 1; margin: 0;">Cancel</button>
-                        <button id="btn-confirm-guest" class="btn-solid" style="flex: 1; margin: 0; background: #10b981;">Explore</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(guestModal);
-            
-            document.getElementById('btn-cancel-guest').onclick = () => guestModal.style.display = 'none';
-            document.getElementById('btn-confirm-guest').onclick = () => {
-                const selected = document.getElementById('guest-course-select').value;
-                localStorage.setItem('edeetos_active_course', selected);
-                window.location.href = 'questions.html';
-            };
-        }
-        guestModal.style.display = 'flex';
-        return;
-    }
-
-    if (currentUserData) {
-        let activeSub = null;
-        if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) {
-            activeSub = Object.keys(currentUserData.subscriptions)[0];
-        }
-
-        if (currentUserData.selectedCourse) {
-            localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse);
-            window.location.href = 'questions.html';
-        } else if (activeSub) {
-            localStorage.setItem('edeetos_active_course', activeSub);
-            window.location.href = 'questions.html';
-        } else {
-            alert("Your assigned course is missing. Please request one in your Profile.");
-        }
-    }
-});
-
-// === FEATURE: PREMIUM MODAL LOGIC & CALCULATOR ===
-const tabBuy = document.getElementById('tab-buy');
-const tabRedeem = document.getElementById('tab-redeem');
-const viewBuy = document.getElementById('view-buy');
-const viewRedeem = document.getElementById('view-redeem');
-
-let activePromoCode = null;
-let activePromoDiscount = 0; 
-
-if(tabBuy) tabBuy.addEventListener('click', () => {
-    tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab';
-    viewBuy.style.display = 'block'; viewRedeem.style.display = 'none';
-});
-
-if(tabRedeem) tabRedeem.addEventListener('click', () => {
-    tabRedeem.className = 'active-tab'; tabBuy.className = 'inactive-tab';
-    viewRedeem.style.display = 'block'; viewBuy.style.display = 'none';
-});
+if(tabBuy) tabBuy.addEventListener('click', () => { tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab'; viewBuy.classList.remove('view-hidden'); viewRedeem.classList.add('view-hidden'); });
+if(tabRedeem) tabRedeem.addEventListener('click', () => { tabRedeem.className = 'active-tab'; tabBuy.className = 'inactive-tab'; viewRedeem.classList.remove('view-hidden'); viewBuy.classList.add('view-hidden'); });
 
 const courseSelectorModal = document.getElementById('course-selector-modal');
-document.getElementById('btn-open-course-selector').addEventListener('click', () => {
-    courseSelectorModal.style.display = 'flex';
-});
-
+document.getElementById('btn-open-course-selector').addEventListener('click', () => courseSelectorModal.classList.remove('view-hidden'));
 document.getElementById('btn-confirm-courses').addEventListener('click', () => {
-    const courseCount = document.querySelectorAll('.course-check:checked').length;
-    const bookCount = document.querySelectorAll('.book-check:checked').length;
-    
-    if (courseCount === 0 && bookCount === 0) return alert("You must select at least one course or book.");
-    
-    courseSelectorModal.style.display = 'none';
-    updatePrices();
+    if (document.querySelectorAll('.course-check:checked').length === 0 && document.querySelectorAll('.book-check:checked').length === 0) return alert("You must select at least one course or book.");
+    courseSelectorModal.classList.add('view-hidden'); updatePrices();
 });
 
+let activePromoCode = null; let activePromoDiscount = 0; 
 const btnApplyPromo = document.getElementById('btn-apply-promo');
 if (btnApplyPromo) {
     btnApplyPromo.addEventListener('click', async () => {
         const codeInput = document.getElementById('promo-input').value.trim().toUpperCase();
         const msgBox = document.getElementById('promo-message');
         
-        if (!codeInput) {
-            activePromoCode = null;
-            activePromoDiscount = 0;
-            msgBox.textContent = "";
-            updatePrices();
-            return;
-        }
-
-        btnApplyPromo.textContent = "Checking...";
-        btnApplyPromo.disabled = true;
+        if (!codeInput) { activePromoCode = null; activePromoDiscount = 0; msgBox.textContent = ""; updatePrices(); return; }
+        btnApplyPromo.textContent = "Checking..."; btnApplyPromo.disabled = true;
 
         try {
-            const promoRef = doc(db, "promo_codes", codeInput);
-            const promoSnap = await getDoc(promoRef);
-            
+            const promoSnap = await getDoc(doc(db, "promo_codes", codeInput));
             if (promoSnap.exists()) {
                 const data = promoSnap.data();
-                
-                const isNotExpired = !data.expiryDate || new Date(data.expiryDate) > new Date();
-                
-                if (data.isActive && isNotExpired) {
-                    activePromoCode = codeInput;
-                    activePromoDiscount = data.discountPercentage || 0;
-                    
-                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`;
-                    msgBox.style.color = "#10b981";
+                if (data.isActive && (!data.expiryDate || new Date(data.expiryDate) > new Date())) {
+                    activePromoCode = codeInput; activePromoDiscount = data.discountPercentage || 0;
+                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`; msgBox.classList.add('text-success'); msgBox.classList.remove('text-danger');
                     updatePrices();
-                } else {
-                    throw new Error("This code is expired or inactive.");
-                }
-            } else {
-                throw new Error("Invalid promo code.");
-            }
+                } else throw new Error("Expired or inactive.");
+            } else throw new Error("Invalid promo code.");
         } catch (e) {
-            activePromoCode = null;
-            activePromoDiscount = 0;
-            msgBox.textContent = `❌ ${e.message || "Invalid code"}`;
-            msgBox.style.color = "#ef4444";
+            activePromoCode = null; activePromoDiscount = 0;
+            msgBox.textContent = `❌ ${e.message || "Invalid code"}`; msgBox.classList.add('text-danger'); msgBox.classList.remove('text-success');
             updatePrices();
-        } finally {
-            btnApplyPromo.textContent = "Apply";
-            btnApplyPromo.disabled = false;
-        }
+        } finally { btnApplyPromo.textContent = "Apply"; btnApplyPromo.disabled = false; }
     });
 }
 
 function updatePrices() {
     const courseCount = document.querySelectorAll('.course-check:checked').length;
     const bookCount = document.querySelectorAll('.book-check:checked').length;
+    const bookDiscount = bookCount >= 5 ? 0.30 : (bookCount >= 3 ? 0.20 : (bookCount >= 2 ? 0.10 : 0));
 
-    let bookDiscount = 0;
-    if (bookCount >= 5) bookDiscount = 0.30;      
-    else if (bookCount >= 3) bookDiscount = 0.20; 
-    else if (bookCount >= 2) bookDiscount = 0.10; 
-
-    const baseCoursePrices = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
-    const baseBookPrices = [20, 50, 80, 120, 250, 350, 450, 500];
+    const baseC = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
+    const baseB = [20, 50, 80, 120, 250, 350, 450, 500];
 
     for(let i = 0; i < 8; i++) {
-        let coursePrice = courseCount > 0 ? baseCoursePrices[i] : 0;
-        let rawBookTotal = bookCount * baseBookPrices[i];
-        let discountedBookTotal = rawBookTotal * (1 - bookDiscount);
-        
-        let totalPrice = Math.round(coursePrice + discountedBookTotal);
-        
-        if (activePromoDiscount > 0) {
-            totalPrice = Math.round(totalPrice * (1 - (activePromoDiscount / 100)));
-        }
-        
+        let totalPrice = Math.round((courseCount > 0 ? baseC[i] : 0) + ((bookCount * baseB[i]) * (1 - bookDiscount)));
+        if (activePromoDiscount > 0) totalPrice = Math.round(totalPrice * (1 - (activePromoDiscount / 100)));
         const priceEl = document.getElementById('price-' + i);
         if(priceEl) priceEl.textContent = 'Rs. ' + totalPrice.toLocaleString();
     }
-
     const summaryText = document.getElementById('selected-courses-text');
-    if (summaryText) {
-        summaryText.textContent = `${courseCount} Course | ${bookCount} Book${bookCount !== 1 ? 's' : ''}`;
-    }
+    if (summaryText) summaryText.textContent = `${courseCount} Course | ${bookCount} Book${bookCount !== 1 ? 's' : ''}`;
 }
 
 document.querySelectorAll('.plan-card').forEach(card => {
     card.addEventListener('click', function() {
-        document.querySelectorAll('.plan-card').forEach(c => {
-            c.classList.remove('selected');
-            const lifePrice = c.querySelector('#price-7');
-            if (lifePrice) lifePrice.style.color = '#1e293b'; 
-        });
+        document.querySelectorAll('.plan-card').forEach(c => { c.classList.remove('selected'); const lifePrice = c.querySelector('#price-7'); if (lifePrice) lifePrice.classList.remove('text-orange'); });
         this.classList.add('selected');
-        const lifePrice = this.querySelector('#price-7');
-        if (lifePrice) lifePrice.style.color = '#d97706';
+        const lifePrice = this.querySelector('#price-7'); if (lifePrice) lifePrice.classList.add('text-orange');
     });
 });
 
-// === FEATURE: PAYMENT PROOF UPLOAD ===
+// === 7. PAYMENT UPLOAD & PROMO LOGIC ===
 function compressImage(file) {
     return new Promise((resolve, reject) => {
-        if (!file) return reject(new Error("No file provided"));
-        
+        if (!file) return reject(new Error("No file"));
         const reader = new FileReader();
-        reader.onload = event => {
+        reader.onload = e => {
             const img = new Image();
             img.onload = () => {
                 try {
-                    const canvas = document.createElement('canvas');
-                    const MAX_WIDTH = 800;
-                    let scaleSize = 1;
-                    if (img.width > MAX_WIDTH) scaleSize = MAX_WIDTH / img.width;
-                    canvas.width = img.width * scaleSize;
-                    canvas.height = img.height * scaleSize;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    const canvas = document.createElement('canvas'); const MAX_WIDTH = 800; let scale = 1;
+                    if (img.width > MAX_WIDTH) scale = MAX_WIDTH / img.width;
+                    canvas.width = img.width * scale; canvas.height = img.height * scale;
+                    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
                     resolve(canvas.toDataURL('image/jpeg', 0.6));
-                } catch (e) {
-                    reject(e);
-                }
+                } catch (err) { reject(err); }
             }
-            img.onerror = () => reject(new Error("Invalid image file"));
-            img.src = event.target.result;
+            img.onerror = () => reject(new Error("Invalid image")); img.src = e.target.result;
         };
-        reader.onerror = () => reject(new Error("File read failed"));
-        reader.readAsDataURL(file);
+        reader.onerror = () => reject(new Error("Read failed")); reader.readAsDataURL(file);
     });
 }
 
 const btnSubmitPayment = document.getElementById('btn-submit-payment');
 if (btnSubmitPayment) {
     btnSubmitPayment.addEventListener('click', async () => {
-        if(!currentUserId) return alert("Authentication error. Please refresh the page.");
-
-        btnSubmitPayment.textContent = "Submitting...";
-        btnSubmitPayment.disabled = true;
+        if(!currentUserId) return alert("Authentication error.");
+        btnSubmitPayment.textContent = "Submitting..."; btnSubmitPayment.disabled = true;
 
         try {
             const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
             const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value);
-            if (courses.length === 0 && books.length === 0) {
-                alert("You must select at least one course or book to proceed.");
-                btnSubmitPayment.textContent = "Confirm & Submit Request";
-                btnSubmitPayment.disabled = false;
-                return;
-            }
+            if (courses.length === 0 && books.length === 0) { alert("Select a course or book."); return; }
 
             const selectedPlan = document.querySelector('.plan-card.selected');
             if (!selectedPlan) throw new Error("No plan selected.");
 
-            const durationDays = selectedPlan.getAttribute('data-days');
-            const planName = selectedPlan.getAttribute('data-name');
-            const fallbackEmail = auth.currentUser ? auth.currentUser.email : "Unknown Email";
-
-            const fileInput = document.getElementById('payment-proof');
-            const file = fileInput.files[0];
-            
-            if (!file) {
-                alert("Please upload your payment proof.");
-                btnSubmitPayment.textContent = "Confirm & Submit Request";
-                btnSubmitPayment.disabled = false;
-                return;
-            }
+            const file = document.getElementById('payment-proof').files[0];
+            if (!file) { alert("Upload payment proof."); return; }
 
             let receiptUrl = "";
-            try {
-                receiptUrl = await compressImage(file);
-            } catch(uploadErr) {
-                console.warn("Base64 compression failed. Error: ", uploadErr);
-                alert("Could not process the image. Please use a valid picture format (JPG/PNG).");
-                btnSubmitPayment.textContent = "Confirm & Submit Request";
-                btnSubmitPayment.disabled = false;
-                return;
-            }
-
-            const userEmailToSave = currentUserData?.email || fallbackEmail;
+            try { receiptUrl = await compressImage(file); } 
+            catch(e) { alert("Invalid picture format (JPG/PNG)."); return; }
 
             const submitPromise = addDoc(collection(db, "payment_requests"), {
-                userId: currentUserId,
-                userEmail: userEmailToSave,
-                courses: courses,
-                books: books,
-                durationDays: durationDays,
-                planName: planName,
-                receiptUrl: receiptUrl,
-                appliedPromoCode: activePromoCode,      
-                promoDiscountApplied: activePromoDiscount, 
-                status: 'pending',
-                timestamp: serverTimestamp()
+                userId: currentUserId, userEmail: currentUserData?.email || (auth.currentUser ? auth.currentUser.email : "Unknown"),
+                courses, books, durationDays: selectedPlan.getAttribute('data-days'), planName: selectedPlan.getAttribute('data-name'),
+                receiptUrl, appliedPromoCode: activePromoCode, promoDiscountApplied: activePromoDiscount, status: 'pending', timestamp: serverTimestamp()
             });
 
-            const timeoutPromise = new Promise((_, reject) => {
-                setTimeout(() => reject(new Error("Request timed out. Please check your internet connection.")), 12000);
-            });
-
-            await Promise.race([submitPromise, timeoutPromise]);
+            await Promise.race([submitPromise, new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout.")), 12000))]);
+            alert("Payment request submitted successfully!");
             
-            alert("Payment request submitted successfully! Please wait for admin approval.");
-            
-            activePromoCode = null;
-            activePromoDiscount = 0;
-            document.getElementById('promo-input').value = "";
-            document.getElementById('promo-message').textContent = "";
-            
-            document.getElementById('premium-modal').style.display = 'none';
-
-        } catch (e) {
-            console.error("Payment submission error: ", e);
-            alert("Failed to submit request: " + (e.message || "An unknown error occurred."));
-        } finally {
-            btnSubmitPayment.textContent = "Confirm & Submit Request";
-            btnSubmitPayment.disabled = false;
-        }
+            activePromoCode = null; activePromoDiscount = 0; document.getElementById('promo-input').value = ""; document.getElementById('promo-message').textContent = "";
+            document.getElementById('premium-modal').classList.add('view-hidden');
+        } catch (e) { alert("Failed to submit request: " + (e.message || "Unknown error.")); } 
+        finally { btnSubmitPayment.textContent = "Confirm & Submit Request"; btnSubmitPayment.disabled = false; }
     });
 }
 
-// === FEATURE: REDEEM CODE ===
+// === 8. REDEEM CODE ===
 const btnRedeem = document.getElementById('btn-submit-redeem');
 if (btnRedeem) {
     btnRedeem.addEventListener('click', async () => {
         const codeInput = document.getElementById('redeem-input').value.trim().toUpperCase();
         if(codeInput.length < 3) return alert("Invalid code.");
-
-        btnRedeem.textContent = "Verifying...";
-        btnRedeem.disabled = true;
+        btnRedeem.textContent = "Verifying..."; btnRedeem.disabled = true;
 
         try {
-            const keyRef = doc(db, "keys", codeInput);
-            const keySnap = await getDoc(keyRef);
-
-            if(!keySnap.exists()) {
-                alert("Code is invalid or does not exist.");
-                btnRedeem.textContent = "Redeem Now";
-                btnRedeem.disabled = false;
-                return;
-            }
+            const keyRef = doc(db, "keys", codeInput); const keySnap = await getDoc(keyRef);
+            if(!keySnap.exists()) { alert("Code invalid."); return; }
             
             const keyData = keySnap.data();
+            if(keyData.usedCount >= keyData.maxUsage) { alert("Code limit reached."); return; }
+            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) { alert("Code expired."); return; }
 
-            if(keyData.usedCount >= keyData.maxUsage) {
-                alert("This code has reached its maximum usage limit.");
-                btnRedeem.textContent = "Redeem Now";
-                btnRedeem.disabled = false;
-                return;
-            }
-            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) {
-                alert("This code has expired.");
-                btnRedeem.textContent = "Redeem Now";
-                btnRedeem.disabled = false;
-                return;
-            }
-
-            let expiryValue = "lifetime";
-            if(keyData.duration !== "lifetime") {
-                const d = new Date();
-                d.setDate(d.getDate() + parseInt(keyData.duration));
-                expiryValue = d.toISOString();
-            }
-
+            let expiryValue = keyData.duration === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(keyData.duration))).toISOString();
             let currentSubs = currentUserData.subscriptions || {};
             
-            if(keyData.course === 'ALL') {
-                 ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'].forEach(c => currentSubs[c] = expiryValue);
-            } else if (keyData.course && keyData.course !== 'NONE') {
-                currentSubs[keyData.course] = expiryValue;
-            }
+            if(keyData.course === 'ALL') ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'].forEach(c => currentSubs[c] = expiryValue);
+            else if (keyData.course && keyData.course !== 'NONE') currentSubs[keyData.course] = expiryValue;
 
-            if (keyData.books && Array.isArray(keyData.books)) {
-                keyData.books.forEach(book => currentSubs[book] = expiryValue);
-            }
+            if (keyData.books && Array.isArray(keyData.books)) keyData.books.forEach(b => currentSubs[b] = expiryValue);
 
-            await updateDoc(doc(db, "users", currentUserId), {
-                subscriptions: currentSubs,
-                isPremium: true
-            });
+            await updateDoc(doc(db, "users", currentUserId), { subscriptions: currentSubs, isPremium: true });
             await updateDoc(keyRef, { usedCount: keyData.usedCount + 1 });
-
-            alert("Code redeemed successfully! Premium access granted.");
-            window.location.reload();
-
-        } catch (e) {
-            console.error("Redemption error: ", e);
-            alert("Error redeeming code.");
-            btnRedeem.textContent = "Redeem Now";
-            btnRedeem.disabled = false;
-        }
+            alert("Code redeemed!"); window.location.reload();
+        } catch (e) { alert("Error redeeming code."); } finally { btnRedeem.textContent = "Redeem Now"; btnRedeem.disabled = false; }
     });
 }
 
-// === FEATURE: USER PROFILE MANAGEMENT ===
+// === 9. USER PROFILE MANAGEMENT ===
 const btnOpenProfile = document.getElementById('btn-open-profile');
 if (btnOpenProfile) {
     btnOpenProfile.addEventListener('click', () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access your Profile.");
-        if (!currentUserData) return alert("User data loading, please wait...");
-        document.getElementById('profile-modal').style.display = 'flex';
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register.");
+        if (!currentUserData) return alert("Loading...");
+        document.getElementById('profile-modal').classList.remove('view-hidden');
         
         document.getElementById('prof-role-badge').textContent = (currentUserData.role || 'STUDENT').toUpperCase();
-        document.getElementById('prof-name').value = currentUserData.fullName || '';
-        document.getElementById('prof-username').value = currentUserData.username || '';
-        document.getElementById('prof-email').value = currentUserData.email || '';
-        document.getElementById('prof-phone').value = currentUserData.phone || '';
-        document.getElementById('prof-uni').value = currentUserData.institution || '';
-        document.getElementById('prof-location').value = currentUserData.location || '';
-		document.getElementById('prof-exam-date').value = currentUserData.examDate || '';
+        ['name', 'username', 'email', 'phone', 'uni', 'location', 'exam-date'].forEach(id => {
+            const map = {name:'fullName', uni:'institution', 'exam-date':'examDate'};
+            if (document.getElementById(`prof-${id}`)) document.getElementById(`prof-${id}`).value = currentUserData[map[id] || id] || '';
+        });
 
-        const userCourseCode = currentUserData.selectedCourse;
         const displayField = document.getElementById('prof-course-display');
-        if(displayField) {
-            displayField.value = userCourseCode ? (courseNamesMap[userCourseCode] || "Unknown Course") : "None (Action Required)";
-        }        
+        if(displayField) displayField.value = currentUserData.selectedCourse ? (courseNamesMap[currentUserData.selectedCourse] || "Unknown Course") : "None (Action Required)";
         
         const btnChange = document.getElementById('btn-request-course-change');
-        if (btnChange && currentUserData.courseChangeRequested) {
-            btnChange.textContent = "Change Request Pending Admin Approval...";
-            btnChange.style.color = "#94a3b8";
-            btnChange.style.pointerEvents = "none";
-        }
+        if (btnChange && currentUserData.courseChangeRequested) { btnChange.textContent = "Change Request Pending Admin Approval..."; btnChange.classList.add('text-muted'); btnChange.style.pointerEvents = "none"; }
         
-        const subsList = document.getElementById('prof-subs-list');
-        subsList.innerHTML = '';
-        
-        const subs = currentUserData.subscriptions || {};
+        const subsList = document.getElementById('prof-subs-list'); subsList.innerHTML = '';
         let hasSubs = false;
 
-        for (const [key, expiry] of Object.entries(subs)) {
+        for (const [key, expiry] of Object.entries(currentUserData.subscriptions || {})) {
             hasSubs = true;
-            const name = mergedNamesMap[key] || key;
-            const item = document.createElement('div');
-            item.className = 'sub-item';
-            
-            let badgeHtml = '';
-			if (expiry === 'lifetime') {
-				badgeHtml = '<span class="sub-tag sub-lifetime">Lifetime</span>';
-			} else {
-				const expDate = new Date(expiry);
-				if (expDate < new Date()) {
-                    badgeHtml = '<span class="sub-tag sub-expired">Expired</span>';
-                } else {
-                    badgeHtml = `<span class="sub-tag sub-active">Active till ${expDate.toLocaleDateString()}</span>`;
-                }
-            }
-            item.innerHTML = `<span class="sub-name">${name}</span>${badgeHtml}`;
+            const item = document.createElement('div'); item.className = 'sub-item';
+            let badgeHtml = expiry === 'lifetime' ? '<span class="sub-tag sub-lifetime">Lifetime</span>' : (new Date(expiry) < new Date() ? '<span class="sub-tag sub-expired">Expired</span>' : `<span class="sub-tag sub-active">Active till ${new Date(expiry).toLocaleDateString()}</span>`);
+            item.innerHTML = `<span class="sub-name">${mergedNamesMap[key] || key}</span>${badgeHtml}`;
             subsList.appendChild(item);
         }
-        
-        if (!hasSubs) {
-            subsList.innerHTML = '<div style="color: #64748b; font-size: 0.9rem; text-align: center; padding: 1rem;">No active subscriptions found.</div>';
-        }
+        if (!hasSubs) subsList.innerHTML = '<div class="text-muted font-sm text-center p-1">No active subscriptions found.</div>';
     });
 }
 
@@ -1027,42 +652,20 @@ const btnRequestChange = document.getElementById('btn-request-course-change');
 const courseChangeModal = document.getElementById('course-change-modal');
 
 if (btnRequestChange && courseChangeModal) {
-    btnRequestChange.addEventListener('click', () => {
-        courseChangeModal.style.display = 'flex';
-    });
-    
+    btnRequestChange.addEventListener('click', () => courseChangeModal.classList.remove('view-hidden'));
     const btnSubmitChange = document.getElementById('btn-submit-course-change');
     if (btnSubmitChange) {
         btnSubmitChange.addEventListener('click', async () => {
             const newCourse = document.getElementById('new-course-request-select').value;
-            if (!newCourse) return alert("Please select a new course from the dropdown first.");
-            
-            btnSubmitChange.textContent = "Submitting...";
-            btnSubmitChange.disabled = true;
-            
+            if (!newCourse) return alert("Select a new course first.");
+            btnSubmitChange.textContent = "Submitting..."; btnSubmitChange.disabled = true;
             try {
-                await updateDoc(doc(db, "users", currentUserId), {
-                    courseChangeRequested: true,
-                    requestedCourse: newCourse 
-                });
-                
-                currentUserData.courseChangeRequested = true;
-                currentUserData.requestedCourse = newCourse;
-                
-                btnRequestChange.textContent = "Change Request Pending Admin Approval...";
-                btnRequestChange.style.color = "#94a3b8";
-                btnRequestChange.style.pointerEvents = "none";
-                
-                alert(`Request to switch to ${courseNamesMap[newCourse] || newCourse} submitted! An Admin will review it shortly.`);
-                courseChangeModal.style.display = 'none';
-                
-            } catch (error) {
-                console.error(error);
-                alert("Failed to submit request. Please check your internet connection.");
-            } finally {
-                btnSubmitChange.textContent = "Submit Request";
-                btnSubmitChange.disabled = false;
-            }
+                await updateDoc(doc(db, "users", currentUserId), { courseChangeRequested: true, requestedCourse: newCourse });
+                currentUserData.courseChangeRequested = true; currentUserData.requestedCourse = newCourse;
+                btnRequestChange.textContent = "Change Request Pending..."; btnRequestChange.classList.add('text-muted'); btnRequestChange.style.pointerEvents = "none";
+                alert(`Request to switch to ${courseNamesMap[newCourse] || newCourse} submitted!`);
+                courseChangeModal.classList.add('view-hidden');
+            } catch (error) { alert("Failed to submit request."); } finally { btnSubmitChange.textContent = "Submit Request"; btnSubmitChange.disabled = false; }
         });
     }
 }
@@ -1071,222 +674,106 @@ const profileForm = document.getElementById('profile-form');
 if (profileForm) {
     profileForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const btnSave = document.getElementById('btn-save-profile');
-        btnSave.textContent = "Saving...";
-        btnSave.disabled = true;
-        
+        const btnSave = document.getElementById('btn-save-profile'); btnSave.textContent = "Saving..."; btnSave.disabled = true;
         try {
-			await updateDoc(doc(db, "users", currentUserId), {
-                fullName: document.getElementById('prof-name').value,
-                phone: document.getElementById('prof-phone').value,
-                institution: document.getElementById('prof-uni').value,
-                location: document.getElementById('prof-location').value,
-                examDate: document.getElementById('prof-exam-date').value 
+            await updateDoc(doc(db, "users", currentUserId), {
+                fullName: document.getElementById('prof-name').value, phone: document.getElementById('prof-phone').value,
+                institution: document.getElementById('prof-uni').value, location: document.getElementById('prof-location').value, examDate: document.getElementById('prof-exam-date').value 
             });
-            
-            currentUserData.examDate = document.getElementById('prof-exam-date').value; 
-            currentUserData.fullName = document.getElementById('prof-name').value;
-            currentUserData.phone = document.getElementById('prof-phone').value;
-            currentUserData.institution = document.getElementById('prof-uni').value;
-            currentUserData.location = document.getElementById('prof-location').value;
-            
+            ['name', 'phone', 'uni', 'location', 'exam-date'].forEach(id => { const map = {name:'fullName', uni:'institution', 'exam-date':'examDate'}; currentUserData[map[id] || id] = document.getElementById(`prof-${id}`).value; });
             document.getElementById('user-name').textContent = currentUserData.fullName;
             sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
-            
-            alert("Profile updated successfully!");
-            document.getElementById('profile-modal').style.display = 'none';
-        } catch (error) {
-            console.error("Error updating profile: ", error);
-            alert("Failed to update profile.");
-        } finally {
-            btnSave.textContent = "Save Profile Changes";
-            btnSave.disabled = false;
-        }
+            alert("Profile updated!"); document.getElementById('profile-modal').classList.add('view-hidden');
+        } catch (error) { alert("Failed to update profile."); } finally { btnSave.textContent = "Save Profile Changes"; btnSave.disabled = false; }
     });
 }
 
-// === FEATURE: GROUP STUDY & ROOM GENERATION ===
+// === 10. GROUP STUDY (Create & Join) ===
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
     btnCreate.onclick = async () => {
-        if (!currentUserId) {
-            alert("User not loaded yet. Please wait...");
-            return;
-        }
-
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            return alert("Guest accounts cannot host Group Study sessions. Please register for an account.");
-        }
+        if (!currentUserId) return alert("Loading...");
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Guest accounts cannot host Group Study.");
 
         const roomId = Math.floor(1000 + Math.random() * 9000).toString();
         const activeCourse = localStorage.getItem('edeetos_active_course') || currentUserData.selectedCourse || 'Unknown';
-
-        btnCreate.textContent = "Creating...";
-        btnCreate.disabled = true;
+        btnCreate.textContent = "Creating..."; btnCreate.disabled = true;
 
         try {
-            await setDoc(doc(db, "study_rooms", roomId), {
-                hostId: currentUserId,
-                course: activeCourse,
-                currentQuestionIndex: 0,
-                status: "waiting",
-                createdAt: serverTimestamp()
-            });
-
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-                background: rgba(0,0,0,0.7); display: flex; justify-content: center;
-                align-items: center; z-index: 99999;
-            `;
-
+            await setDoc(doc(db, "study_rooms", roomId), { hostId: currentUserId, course: activeCourse, currentQuestionIndex: 0, status: "waiting", createdAt: serverTimestamp() });
+            
+            const modal = document.createElement('div'); modal.className = "popup-overlay";
             modal.innerHTML = `
-                <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; max-width: 350px; width: 90%;">
-                    <h2 style="margin-bottom: 10px;">Room Created 🎉</h2>
-                    <p style="margin-bottom: 15px;">Share this code:</p>
-                    <div id="room-code-box" style="font-size: 2rem; font-weight: bold; background: #f1f5f9; padding: 10px; border-radius: 8px; letter-spacing: 4px; margin-bottom: 20px;">${roomId}</div>
-                    <button id="copy-room-code" style="margin-bottom: 10px; padding: 10px 20px; border: none; background: #3b82f6; color: white; border-radius: 8px; cursor: pointer;">Copy Code</button><br>
-                    <button id="enter-room" style="padding: 10px 20px; border: none; background: #10b981; color: white; border-radius: 8px; cursor: pointer;">Enter Room</button>
+                <div class="modal-room-created glass-panel">
+                    <h2 class="mb-10px">Room Created 🎉</h2>
+                    <p class="mb-15px">Share this code:</p>
+                    <div class="room-code-box" id="room-code-box">${roomId}</div>
+                    <button id="copy-room-code" class="btn-solid bg-blue text-white border-none p-10px border-radius-8px mb-10px cursor-pointer">Copy Code</button><br>
+                    <button id="enter-room" class="btn-solid bg-emerald text-white border-none p-10px border-radius-8px cursor-pointer">Enter Room</button>
                 </div>
             `;
-
-            document.body.appendChild(modal);
-            btnCreate.textContent = "Create Room";
-            btnCreate.disabled = false;
-
-            document.getElementById('copy-room-code').onclick = () => {
-                navigator.clipboard.writeText(roomId);
-                document.getElementById('copy-room-code').textContent = "Copied ✔️";
-            };
-
-            document.getElementById('enter-room').onclick = () => {
-                localStorage.setItem('active_study_room', roomId);
-                localStorage.removeItem('is_study_guest');
-                window.location.href = 'questions.html';
-            };
-
-        } catch (error) {
-            console.error(error);
-            alert("Failed to create room.");
-            btnCreate.textContent = "Create Room";
-            btnCreate.disabled = false;
-        }
+            document.body.appendChild(modal); modal.classList.remove('view-hidden');
+            
+            document.getElementById('copy-room-code').onclick = () => { navigator.clipboard.writeText(roomId); document.getElementById('copy-room-code').textContent = "Copied ✔️"; };
+            document.getElementById('enter-room').onclick = () => { localStorage.setItem('active_study_room', roomId); localStorage.removeItem('is_study_guest'); window.location.href = 'questions.html'; };
+        } catch (error) { alert("Failed to create room."); } finally { btnCreate.textContent = "Create Room"; btnCreate.disabled = false; }
     };
 }
 
 const joinModal = document.getElementById('join-room-modal');
 const btnJoin = document.getElementById('btn-join-room');
-const btnCloseJoin = document.getElementById('btn-close-join');
 const btnSubmitJoin = document.getElementById('btn-submit-join');
 const joinInput = document.getElementById('join-room-input');
 
 if (btnJoin) {
     btnJoin.onclick = () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            alert("Guest accounts cannot join Group Study sessions. Please register for an account.");
-            return;
-        }
-        joinInput.value = ""; 
-        joinModal.style.display = 'flex';
-        joinInput.focus();
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Guest accounts cannot join Group Study.");
+        joinInput.value = ""; joinModal.classList.remove('view-hidden'); joinInput.focus();
     };
-}
-
-if (btnCloseJoin) {
-    btnCloseJoin.onclick = () => joinModal.style.display = 'none';
 }
 
 if (btnSubmitJoin) {
     btnSubmitJoin.onclick = async () => {
         const code = joinInput.value.trim();
         if (code.length !== 4) return alert("Please enter a valid 4-digit code.");
-
-        btnSubmitJoin.textContent = "Verifying...";
-        btnSubmitJoin.disabled = true;
+        btnSubmitJoin.textContent = "Verifying..."; btnSubmitJoin.disabled = true;
 
         try {
-            const roomRef = doc(db, "study_rooms", code);
-            const roomSnap = await getDoc(roomRef);
-
+            const roomSnap = await getDoc(doc(db, "study_rooms", code));
             if (roomSnap.exists()) {
-                const roomData = roomSnap.data();
-                const roomCourse = roomData.course;
-
-                let hasPremiumAccess = false;
-                const subs = currentUserData.subscriptions || {};
-                const expiry = subs[roomCourse] || subs['ALL'];
-
-                if (expiry && (expiry === 'lifetime' || new Date(expiry) > new Date())) {
-                    hasPremiumAccess = true;
-                }
-                
+                const roomCourse = roomSnap.data().course;
+                const subs = currentUserData.subscriptions || {}; const expiry = subs[roomCourse] || subs['ALL'];
                 const role = (currentUserData.role || '').toUpperCase();
-                if (role === 'ADMIN' || role === 'MANAGEMENT') hasPremiumAccess = true;
+                let hasPremiumAccess = (expiry && (expiry === 'lifetime' || new Date(expiry) > new Date())) || role === 'ADMIN' || role === 'MANAGEMENT';
 
                 if (!hasPremiumAccess) {
                     alert(`Access Denied 🛑\n\nThis room is studying the Premium Question Bank for ${courseNamesMap[roomCourse] || roomCourse}. You must have an active subscription for this course to join your friend!`);
-                    
-                    joinModal.style.display = 'none';
-                    document.getElementById('premium-modal').style.display = 'flex';
+                    joinModal.classList.add('view-hidden'); document.getElementById('premium-modal').classList.remove('view-hidden');
                     if (typeof updatePrices === 'function') updatePrices();
-                    
-                    btnSubmitJoin.textContent = "Join Room";
-                    btnSubmitJoin.disabled = false;
                     return;
                 }
 
-                localStorage.setItem('active_study_room', code);
-                localStorage.setItem('is_study_guest', 'true'); 
-                
-                btnSubmitJoin.style.background = "#10b981";
-                btnSubmitJoin.textContent = "✅ Connected!";
-                
-                setTimeout(() => {
-                    window.location.href = 'quiz.html';
-                }, 800);
-            } else {
-                alert("Room not found. Please double-check the code with your friend.");
-                btnSubmitJoin.textContent = "Join Room";
-                btnSubmitJoin.disabled = false;
-            }
-        } catch (error) {
-            console.error("Join error:", error);
-            alert("Error connecting to room. Check your connection.");
-            btnSubmitJoin.textContent = "Join Room";
-            btnSubmitJoin.disabled = false;
-        }
+                localStorage.setItem('active_study_room', code); localStorage.setItem('is_study_guest', 'true'); 
+                btnSubmitJoin.classList.replace('bg-emerald', 'bg-blue'); btnSubmitJoin.textContent = "✅ Connected!";
+                setTimeout(() => window.location.href = 'quiz.html', 800);
+            } else alert("Room not found. Please double-check the code.");
+        } catch (error) { alert("Error connecting to room."); } finally { btnSubmitJoin.textContent = "Join Room"; btnSubmitJoin.disabled = false; }
     };
 }
+
+// === 11. DARK MODE TOGGLE ===
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeBtn = document.getElementById('dark-mode-toggle');
     if (!darkModeBtn) return;
-
     const icon = darkModeBtn.querySelector('i');
     
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (icon) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        }
-    }
+    if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } }
 
     darkModeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
         
-        if (isDark) {
-            if (icon) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-            localStorage.setItem('theme', 'dark');
-        } else {
-            if (icon) {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-            localStorage.setItem('theme', 'light');
-        }
+        if (isDark) { if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } localStorage.setItem('theme', 'dark'); } 
+        else { if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); } localStorage.setItem('theme', 'light'); }
     });
 });
