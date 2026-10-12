@@ -1,0 +1,112 @@
+[
+    {
+        "id": "M4X2WT5M",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Histology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cell organalle stain dark blue or purple due to",
+        "options": {
+            "A": "Golginappratus",
+            "B": "Mitochondria",
+            "C": "Rough endoplasmic reticulum",
+            "D": "Smooth endoplasmic reticulum",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Nucleus contains acid (dna, rna) so it takes up basic stain, which are alkaline in nature, like hematoxylin this is called basophilia and it gives dark blue or purple color Cytoplasm does not contain these acids so they take up acidic stains that is eosin stain. but we do find usually some part of the cytoplasm to be dark purple, thats because of ribosomes",
+        "hint": ""
+    },
+    {
+        "id": "WM8DU7UW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cells are connected with each other through which of the following?",
+        "options": {
+            "A": "Desmosomes",
+            "B": "Gap junctions",
+            "C": "Tight junctions",
+            "D": "Hemidesmosome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BUH6QS6U",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "On microscopy, high basal infoldings are observed in a structure associated with abundant transport activity. Which of the following structures is most likely responsible for this feature?",
+        "options": {
+            "A": "Microvilli",
+            "B": "Cilia",
+            "C": "Exocrine glands",
+            "D": "Endocrine glands",
+            "E": "Na+/K+ pump"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TLFGCBT4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The nuclei for protein synthesis:",
+        "options": {
+            "A": "Are densely stained",
+            "B": "Are acidophilic",
+            "C": "Have heterochromatin",
+            "D": "Are euchromatin",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Euchromatin is a complex of DNA and proteins that makes up chromosomes - This means the genes located in euchromatin can be turned on and off to produce proteins, making it the primary site of active gene transcription. The open structure of euchromatin facilitates the binding of regulatory proteins and enzymes, such as RNA polymerase, which are necessary for synthesizing messenger RNA (mRNA) from a DNA template. This mRNA then serves as the blueprint for protein synthesis.",
+        "hint": ""
+    }
+]

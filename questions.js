@@ -384,7 +384,7 @@ function renderGrid() {
         const doneCount = getSolvedCount(currentView, [cardTitle]);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
-const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
+        const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
         const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
 
         let cardStatsHtml = '';
@@ -512,6 +512,54 @@ async function loadAndOpenBook(book) {
 }
 
 // ==========================================
+// DYNAMIC CHUNK FETCHER
+// ==========================================
+window.activeChunksCache = {};
+
+async function fetchRequiredChunks(view, pathsArray) {
+    const urls = new Set();
+    
+    pathsArray.forEach(pathArr => {
+        if (pathArr.length === 0 || pathArr[0] === "Books" || pathArr[0] === "Practice Mistakes" || pathArr[0] === "Exam Mistakes") return; 
+        
+        if (view === 'subject' && pathArr.length >= 2) {
+            const s = pathArr[0].toLowerCase().replace(/ /g, '_');
+            const c = pathArr[1].toLowerCase().replace(/ /g, '_');
+            urls.add(`Data/subjects/${s}_${c}.json`);
+        } 
+        else if (view === 'system' && pathArr.length >= 2) {
+            const c = pathArr[0].toLowerCase().replace(/ /g, '_');
+            const s = pathArr[1].toLowerCase().replace(/ /g, '_');
+            urls.add(`Data/systems/${c}_${s}.json`);
+        } 
+        else if (view === 'exam' && pathArr.length >= 2) {
+            const y = pathArr[0];
+            const spec = pathArr[1].toLowerCase().replace(/ /g, '_');
+            urls.add(`Data/exams/${y}_${spec}.json`);
+        }
+    });
+
+    document.body.style.cursor = 'wait';
+    const fetchedQs = [];
+    
+    for (let url of urls) {
+        if (!window.activeChunksCache[url]) {
+            try {
+                const res = await fetch(url);
+                if (res.ok) window.activeChunksCache[url] = await res.json();
+                else window.activeChunksCache[url] = [];
+            } catch(e) {
+                window.activeChunksCache[url] = [];
+            }
+        }
+        fetchedQs.push(...window.activeChunksCache[url]);
+    }
+    
+    document.body.style.cursor = 'default';
+    return fetchedQs;
+}
+
+// ==========================================
 // 8. POPUP, CART & CHECKBOXES
 // ==========================================
 if (popupBack) {
@@ -592,15 +640,12 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
 if (currentView === 'exam' && level === 'Level1') {
     const parseExamDetails = (str) => {
         const parts = str.split('-').map(p => p.trim());
-        
-        // 1. Subject extraction (first segment before the hyphen)
         const subject = (parts[0] || str).toLowerCase();
         
         let year = 9999;
         let month = 99;
         let day = 99;
 
-        // 2. Extract Session MM/YY or MM/YYYY (e.g. 11/25, 01/26)
         const sessionMatch = str.match(/\b(\d{1,2})\/(\d{2,4})\b/);
         if (sessionMatch) {
             month = parseInt(sessionMatch[1], 10);
@@ -609,8 +654,6 @@ if (currentView === 'exam' && level === 'Level1') {
         }
 
         const lowerStr = str.toLowerCase();
-
-        // Fallback for month if MM/YY was missing
         const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
         if (month === 99) {
             for (let i = 0; i < months.length; i++) {
@@ -621,7 +664,6 @@ if (currentView === 'exam' && level === 'Level1') {
             }
         }
 
-        // 3. Extract Day of the Month (handles "November 13", "Feburary 8", etc.)
         const dayMatch = lowerStr.match(/(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*[-–]?\s*(\d{1,2})\b/)
                       || lowerStr.match(/\b(\d{1,2})\s*[-–]?\s*(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*/);
         if (dayMatch) {
@@ -631,7 +673,6 @@ if (currentView === 'exam' && level === 'Level1') {
             if (partDayMatch) day = parseInt(partDayMatch[1], 10);
         }
 
-        // 4. Shift Priority: Morning -> Afternoon -> Evening -> Night
         const shiftMap = {
             'morning': 1,
             'afternoon': 2,
@@ -653,17 +694,12 @@ if (currentView === 'exam' && level === 'Level1') {
         const itemA = parseExamDetails(a);
         const itemB = parseExamDetails(b);
 
-        // Tier 1: Subject wise (A to Z)
         if (itemA.subject !== itemB.subject) {
             return itemA.subject.localeCompare(itemB.subject);
         }
-
-        // Tier 2: Chronological order (Year -> Month -> Day)
         if (itemA.year !== itemB.year) return itemA.year - itemB.year;
         if (itemA.month !== itemB.month) return itemA.month - itemB.month;
         if (itemA.day !== itemB.day) return itemA.day - itemB.day;
-
-        // Tier 3: Shift priority (Morning -> Afternoon -> Evening -> Night)
         if (itemA.shiftPriority !== itemB.shiftPriority) {
             return itemA.shiftPriority - itemB.shiftPriority;
         }
@@ -698,7 +734,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
         progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
     }
 
-    // Specific Paper Metrics: only calculated and rendered in Past Papers view
     if (currentView === 'exam') {
         const mistakeCount = getMistakesCount(currentView, itemPath);
         const totalAttempts = doneCount + mistakeCount;
@@ -728,7 +763,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const safePath = encodeURIComponent(JSON.stringify(itemPath));
     const pathStr = JSON.stringify(itemPath);
 
-    // Hide the mini start button when in Exam Mode to force usage of the bottom cart
     const displayInstantStart = currentMode === 'exam' ? 'none' : 'inline-block';
     const instantStartBtn = `<button class="btn-solid mini-btn" style="display: ${displayInstantStart}; margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
@@ -761,7 +795,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
         if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
         if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
         
-        // Hide the bottom cart entirely if no items are selected
         if (examCart) examCart.style.display = selectedCart.size > 0 ? "flex" : "none";
     };
 
@@ -801,12 +834,10 @@ function switchMode(mode) {
     const modeDesc = document.getElementById('mode-description');
     const startBtn = document.getElementById('start-exam-btn');
     
-    // Target specific inputs instead of hiding all of them
     const qCountInput = document.getElementById('exam-q-count');
     const timerInput = document.getElementById('exam-timer');
     
     const examCart = document.getElementById('exam-cart');
-    // Only show cart if items are selected
     if (examCart) examCart.style.display = selectedCart.size > 0 ? "flex" : "none";
     
     if (startBtn) startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
@@ -817,7 +848,6 @@ function switchMode(mode) {
         if (modePracBtn) modePracBtn.className = "btn-solid active-mode";
         if (modeExamBtn) modeExamBtn.className = "btn-outline";
         
-        // Show Question Count, Hide Timer
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
         
@@ -840,7 +870,6 @@ function switchMode(mode) {
         if (modeExamBtn) modeExamBtn.className = "btn-solid active-mode";
         if (modePracBtn) modePracBtn.className = "btn-outline";
         
-        // Show BOTH Question Count and Timer in Exam Mode
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
         
@@ -895,7 +924,6 @@ if (btnJoinChallenge) {
             return alert("Please register to join a challenge.");
         }
 
-        // 1. Create the custom modal overlay dynamically
         const modalOverlay = document.createElement('div');
         modalOverlay.id = 'join-challenge-modal';
         modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
@@ -920,21 +948,18 @@ if (btnJoinChallenge) {
         const inputField = document.getElementById('challenge-code-input');
         inputField.focus();
 
-        // Focus styling
         inputField.addEventListener('focus', () => inputField.style.borderColor = '#a855f7');
         inputField.addEventListener('blur', () => inputField.style.borderColor = '#e2e8f0');
 
-        // Cancel button
         document.getElementById('btn-cancel-join').addEventListener('click', () => {
             modalOverlay.remove();
         });
 
-        // Core Join Logic
         const processJoin = async () => {
             const code = inputField.value.trim().toUpperCase();
             if (!code || code.length !== 5) {
                 inputField.style.borderColor = '#ef4444';
-                inputField.classList.add('apply-shake'); // Reuses your existing shake animation if globally available
+                inputField.classList.add('apply-shake'); 
                 setTimeout(() => inputField.classList.remove('apply-shake'), 500);
                 return;
             }
@@ -996,7 +1021,7 @@ if (btnQuickMock && mockModal) {
     
     if(btnCancelMock) btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
     
-    if(btnStartMock) btnStartMock.addEventListener('click', () => {
+    if(btnStartMock) btnStartMock.addEventListener('click', async () => {
         let count = parseInt(mockQCount.value);
         if (!count || count < 5) return alert("Please enter a valid number of questions (minimum 5).");
 
@@ -1010,27 +1035,45 @@ if (btnQuickMock && mockModal) {
             freshPool = allQuestions.filter(q => !q.isBookQuestion);
         }
 
+        if (freshPool.length < count) {
+            const subjects = Object.keys(subjectTree);
+            if (subjects.length > 0) {
+                const randomSubj = subjects[Math.floor(Math.random() * subjects.length)];
+                const chapters = Object.keys(subjectTree[randomSubj]);
+                const randomChap = chapters[Math.floor(Math.random() * chapters.length)];
+                const chunks = await fetchRequiredChunks('subject', [[randomSubj, randomChap]]);
+                freshPool.push(...chunks);
+            }
+        }
+
         if (freshPool.length === 0) {
             btnStartMock.textContent = "Start Exam";
             btnStartMock.disabled = false;
             return alert("No questions available for a mock exam.");
         }
 
-        const finalPool = freshPool.sort(() => 0.5 - Math.random()).slice(0, count);
+        let finalPool = freshPool.sort(() => 0.5 - Math.random()).slice(0, count);
         const calcMinutes = Math.ceil(count * 1.2);
 
-        mockModal.style.display = 'none';
+		mockModal.style.display = 'none';
         btnStartMock.textContent = "Start Exam";
         btnStartMock.disabled = false;
 
+        finalPool = await hydrateQuestions(finalPool);
         window.launchQuiz(finalPool, 'exam', calcMinutes, `Mock Exam (${count} Qs)`);
     });
 }
 
 if (startExamBtn) {
-    startExamBtn.addEventListener('click', () => {
+    startExamBtn.addEventListener('click', async () => {
         const paths = Array.from(selectedCart).map(str => JSON.parse(str));
-        let pool = (activeCustomPool || allQuestions).filter(q => {
+        
+        startExamBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+        startExamBtn.disabled = true;
+
+        let sourcePool = currentView === 'book' ? (activeCustomPool || allQuestions) : await fetchRequiredChunks(currentView, paths);
+
+        let pool = sourcePool.filter(q => {
             return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0);
         });
 
@@ -1039,40 +1082,99 @@ if (startExamBtn) {
 
         if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) {
             alert("Please enter a valid time in minutes for Exam Mode.");
+            startExamBtn.textContent = 'Start Exam';
+            startExamBtn.disabled = false;
             return;
         }
 
-if (currentMode === 'exam') {
+        if (currentMode === 'exam') {
             if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
             } else {
                 pool = pool.sort(() => 0.5 - Math.random());
             }
         } else {
-            // Shuffle practice mode too when a question limit is set
             if (qCountInput && qCountInput > 0 && qCountInput < pool.length) {
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
             }
         }
         
-        const generatedTitle = generateExamTitle(paths, currentView);
+		const generatedTitle = generateExamTitle(paths, currentView);
+        pool = await hydrateQuestions(pool);
+        
+        startExamBtn.textContent = currentMode === 'practice' ? 'Start Practice' : 'Start Exam';
+        startExamBtn.disabled = false;
+
         window.launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
     });
 }
 
-window.startInstantPractice = function(encodedPath) {
+// ==========================================
+// HYDRATION ENGINE: FETCH CHUNKS ON DEMAND
+// ==========================================
+async function hydrateQuestions(metadataPool) {
+    const needsHydration = metadataPool.filter(q => !q.isBookQuestion && !q.question); 
+    if (needsHydration.length === 0) return metadataPool;
+
+    document.body.style.cursor = 'wait';
+    const chunksToLoad = new Set();
+
+    needsHydration.forEach(q => {
+        const s = (q.Subject || q.subject || 'Uncategorized').toLowerCase().replace(/ /g, '_');
+        const c = (q.Chapter || q.chapter || 'General').toLowerCase().replace(/ /g, '_');
+        chunksToLoad.add(`Data/subjects/${s}_${c}.json`);
+    });
+
+    const fetchPromises = Array.from(chunksToLoad).map(async (chunkPath) => {
+        if (!window.activeChunksCache[chunkPath]) {
+            try {
+                const res = await fetch(chunkPath);
+                if (res.ok) window.activeChunksCache[chunkPath] = await res.json();
+                else window.activeChunksCache[chunkPath] = [];
+            } catch(e) {
+                window.activeChunksCache[chunkPath] = [];
+            }
+        }
+    });
+
+    await Promise.all(fetchPromises);
+
+    const fullQuestionsMap = {};
+    Object.values(window.activeChunksCache).forEach(chunkArray => {
+        chunkArray.forEach(fullQ => {
+            const qId = fullQ.id || fullQ.QuestionID;
+            if (qId) fullQuestionsMap[String(qId)] = fullQ;
+        });
+    });
+
+    const hydratedPool = metadataPool.map(q => {
+        if (q.isBookQuestion) return q;
+        const qId = q.id || q.QuestionID;
+        const fullQ = fullQuestionsMap[String(qId)];
+        return fullQ ? { ...q, ...fullQ } : q; 
+    });
+
+    document.body.style.cursor = 'default';
+    return hydratedPool;
+}
+
+window.startInstantPractice = async function(encodedPath) {
     if (currentMode === 'exam') {
         return alert("To take an Exam, please check the box and use the Start Exam button at the bottom to set a timer.");
     }
 
     const pathArr = JSON.parse(decodeURIComponent(encodedPath));
-    let pool = activeCustomPool || allQuestions;
     
-    let finalPool = pool.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
+    let sourcePool = activeCustomPool;
+    if (currentView !== 'book') {
+        const chunks = await fetchRequiredChunks(currentView, [pathArr]);
+        sourcePool = chunks.length > 0 ? chunks : allQuestions;
+    }
+    
+    let finalPool = sourcePool.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0);
     
     if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
     
-    // Apply question limit if entered in the bottom bar
     const qCountInputEl = document.getElementById('exam-q-count');
     if (qCountInputEl) {
         const qCountInput = parseInt(qCountInputEl.value);
@@ -1082,6 +1184,7 @@ window.startInstantPractice = function(encodedPath) {
     }
     
     const generatedTitle = generateExamTitle([pathArr], currentView);
+    finalPool = await hydrateQuestions(finalPool);
     window.launchQuiz(finalPool, 'practice', 0, generatedTitle);
 };
 
@@ -1404,163 +1507,31 @@ function initMentorFeatures() {
 // ==========================================
 // 11. DATA LOADING & HIERARCHY TREES
 // ==========================================
-function applyTierLimits(rawQuestions, limitPerSubject) {
-    let filteredList = [];
-    const groupedData = {};
-
-    // 1. Group questions by Subject, and then by System (Chapter)
-    rawQuestions.forEach(q => {
-        const subject = q.Subject || "Unknown Subject";
-        const chapter = q.Chapter || "Unknown System";
-
-        if (!groupedData[subject]) groupedData[subject] = {};
-        if (!groupedData[subject][chapter]) groupedData[subject][chapter] = [];
-        groupedData[subject][chapter].push(q);
-    });
-
-    // 2. Distribute the quota equally across systems using a round-robin rotation
-    Object.keys(groupedData).forEach(subject => {
-        const chapters = Object.keys(groupedData[subject]);
-        let questionsAdded = 0;
-        
-        // Track the current index position for each system
-        const chapterPointers = {};
-        chapters.forEach(c => chapterPointers[c] = 0);
-
-        let availableChapters = [...chapters];
-
-        // Loop until we hit the limit (50 or 20) or run completely out of questions for this subject
-        while (questionsAdded < limitPerSubject && availableChapters.length > 0) {
-            
-            for (let i = availableChapters.length - 1; i >= 0; i--) {
-                if (questionsAdded >= limitPerSubject) break;
-
-                const chapter = availableChapters[i];
-                const pointer = chapterPointers[chapter];
-                const questionsInChapter = groupedData[subject][chapter];
-
-                if (pointer < questionsInChapter.length) {
-                    filteredList.push(questionsInChapter[pointer]);
-                    chapterPointers[chapter]++;
-                    questionsAdded++;
-                } else {
-                    availableChapters.splice(i, 1);
-                }
-            }
-        }
-    });
-
-    return filteredList;
-}
-
 async function loadDataAndBuildTree() {
     try {
         if (!activeCourse) return; 
         
-        const [questionsRes, hierarchyRes] = await Promise.all([
-            fetch(`Data/${activeCourse}_questions.json`, { cache: 'no-cache' }),
-            fetch(`Data/${activeCourse}_hierarchy.json`, { cache: 'no-cache' })
-        ]);
+        const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`, { cache: 'no-cache' });
+        if (!hierarchyRes.ok) throw new Error("Hierarchy file not found");
 
-        if (!questionsRes.ok || !hierarchyRes.ok) throw new Error("JSON files not found");
-
-        const masterQuestions = await questionsRes.json();
         const hierarchyData = await hierarchyRes.json();
-
-        masterQuestions.forEach(q => {
-            q.QuestionID = q.id;
-            q.Subject = q.subject;
-            q.Chapter = q.chapter;
-            q.Topic = q.topic;
-            q.Year = q.year;
-            q.Exam = q.exams; 
-        });
-
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            allQuestions = applyTierLimits(masterQuestions, 20); 
-        } else if (!isPremiumUser) {
-            allQuestions = applyTierLimits(masterQuestions, 50); 
-        } else {
-            allQuestions = [...masterQuestions]; 
-        }
 
         subjectTree = hierarchyData.subjects || {};
         systemTree = hierarchyData.systems || {};
-        examTree = {};
+        examTree = hierarchyData.exams || {}; 
         
-        masterQuestions.forEach(q => {
-            let qYears = [];
-            if (Array.isArray(q.Year)) {
-                qYears = q.Year.map(y => String(y).trim());
-            } else if (typeof q.Year === 'string') {
-                qYears = q.Year.split(',').map(y => y.trim());
-            } else if (q.Year) {
-                qYears = [String(q.Year).trim()];
-            } else {
-                qYears = ["Other Years"];
-            }
-
-            let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
-            if (qExams.length === 0) qExams = ["Other Exams"];
-
-            let subj = q.Subject || "Unknown Subject";
-            let chapter = q.Chapter || "Unknown Chapter";
-            let topic = q.Topic || "Unknown Topic";
-
-            qExams.forEach(exam => {
-                let matchedYear = null;
-                const yearMatch = exam.match(/\/(25|26|2025|2026)\b/);
-                if (yearMatch) {
-                    let rawY = yearMatch[1];
-                    matchedYear = rawY.length === 2 ? `20${rawY}` : rawY;
-                }
-
-                let targetYears = matchedYear && qYears.includes(matchedYear) ? [matchedYear] : qYears;
-
-                targetYears.forEach(year => {
-                    if (!examTree[year]) examTree[year] = {};
-                    if (!examTree[year][exam]) examTree[year][exam] = {};
-                    if (!examTree[year][exam][subj]) examTree[year][exam][subj] = {};
-                    if (!examTree[year][exam][subj][chapter]) examTree[year][exam][subj][chapter] = [];
-                    if (!examTree[year][exam][subj][chapter].includes(topic)) {
-                        examTree[year][exam][subj][chapter].push(topic);
-                    }
-                });
-            });
-        });
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
     }
 }
 
-function buildSubTree(pool) {
-    let tree = {};
-    pool.forEach(q => {
-        const Subject = q.Subject;
-        const Chapter = q.Chapter;
-        const Topic = q.Topic;
-
-        if (q.isBookQuestion) {
-            if (!tree["Books"]) tree["Books"] = {};
-            if (Subject) {
-                if (!tree["Books"][Subject]) tree["Books"][Subject] = {}; 
-                if (Chapter) {
-                    if (!tree["Books"][Subject][Chapter]) tree["Books"][Subject][Chapter] = [];
-                    if (Topic && !tree["Books"][Subject][Chapter].includes(Topic)) tree["Books"][Subject][Chapter].push(Topic);
-                }
-            }
-        } else {
-            if (Subject) {
-                if (!tree[Subject]) tree[Subject] = {};
-                if (Chapter) {
-                    if (!tree[Subject][Chapter]) tree[Subject][Chapter] = [];
-                    if (Topic && !tree[Subject][Chapter].includes(Topic)) tree[Subject][Chapter].push(Topic);
-                }
-            }
-        }
-    });
-    return tree;
+function getTreeCount(obj) {
+    if (typeof obj === 'number') return obj;
+    if (!obj || typeof obj !== 'object') return 0;
+    let sum = 0;
+    for (let k in obj) sum += getTreeCount(obj[k]);
+    return sum;
 }
 
 function getQuestionCount(view, pathArr, customPool = null) {
@@ -1575,73 +1546,69 @@ function getQuestionCount(view, pathArr, customPool = null) {
         paths.shift();
     }
 
-    if (paths.length === 0) {
-        // FIX: Ensure mistakes are also excluded when unattempted is checked at the root level
-        return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || (!attemptedQuestions.includes(getQID(q)) && !globalPracticeMistakes.includes(getQID(q)) && !globalExamMistakes.includes(getQID(q)))).length;
-    }
+    if (pool && pool.length > 0) {
+        if (paths.length === 0) {
+            return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || (!attemptedQuestions.includes(getQID(q)) && !globalPracticeMistakes.includes(getQID(q)) && !globalExamMistakes.includes(getQID(q)))).length;
+        }
 
-    return pool.filter(q => {
-        // --- NEW: Difficulty Filter Override ---
-        if (!passesDifficultyFilter(q)) return false;
-        
-        // FIX: Reject the question if it exists in correctly solved OR mistakes
-        if (!isGlobalPopupActive && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
-        
-        if (isGlobalPopupActive) {
-            if (paths[0] === "Books") {
-                if (!q.isBookQuestion) return false;
-                if (paths[1] && q.Subject !== paths[1]) return false;
-                if (paths[2] && q.Chapter !== paths[2]) return false;
-                if (paths[3] && q.Topic !== paths[3]) return false;
-                return true;
-            } else {
-                if (q.isBookQuestion) return false;
+        return pool.filter(q => {
+            if (!passesDifficultyFilter(q)) return false;
+            if (!isGlobalPopupActive && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+            
+            if (isGlobalPopupActive) {
+                if (paths[0] === "Books") {
+                    if (!q.isBookQuestion) return false;
+                    if (paths[1] && q.Subject !== paths[1]) return false;
+                    if (paths[2] && q.Chapter !== paths[2]) return false;
+                    if (paths[3] && q.Topic !== paths[3]) return false;
+                    return true;
+                } else {
+                    if (q.isBookQuestion) return false;
+                    if (paths[0] && q.Subject !== paths[0]) return false;
+                    if (paths[1] && q.Chapter !== paths[1]) return false;
+                    if (paths[2] && q.Topic !== paths[2]) return false;
+                    return true;
+                } 
+            }
+
+            if (view === 'subject') {
+                if (q.isBookQuestion) return false; 
                 if (paths[0] && q.Subject !== paths[0]) return false;
                 if (paths[1] && q.Chapter !== paths[1]) return false;
                 if (paths[2] && q.Topic !== paths[2]) return false;
-                return true;
-            } 
-        }
-
-        if (view === 'subject') {
-            if (q.isBookQuestion) return false; 
-            if (paths[0] && q.Subject !== paths[0]) return false;
-            if (paths[1] && q.Chapter !== paths[1]) return false;
-            if (paths[2] && q.Topic !== paths[2]) return false;
-        } else if (view === 'system') {
-            if (q.isBookQuestion) return false; 
-            if (paths[0] && q.Chapter !== paths[0]) return false;
-            if (paths[1] && q.Subject !== paths[1]) return false;
-            if (paths[2] && q.Topic !== paths[2]) return false;
-		} else if (view === 'exam') {
-            // 1. Handle Years (Split comma-separated strings into an array)
-            let qYears = [];
-            if (Array.isArray(q.Year)) {
-                qYears = q.Year.map(y => String(y).trim());
-            } else if (typeof q.Year === 'string') {
-                qYears = q.Year.split(',').map(y => y.trim());
-            } else if (q.Year) {
-                qYears = [String(q.Year).trim()];
-            } else {
-                qYears = ["Other Years"];
+            } else if (view === 'system') {
+                if (q.isBookQuestion) return false; 
+                if (paths[0] && q.Chapter !== paths[0]) return false;
+                if (paths[1] && q.Subject !== paths[1]) return false;
+                if (paths[2] && q.Topic !== paths[2]) return false;
+            } else if (view === 'exam') {
+                let qYears = Array.isArray(q.Year) ? q.Year.map(y => String(y).trim()) : (typeof q.Year === 'string' ? q.Year.split(',').map(y => y.trim()) : (q.Year ? [String(q.Year).trim()] : ["Other Years"]));
+                if (paths[0] && !qYears.includes(paths[0])) return false;
+                let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
+                if (paths[1] && !qExams.includes(paths[1])) return false;
+                if (paths[2] && q.Subject !== paths[2]) return false;
+                if (paths[3] && q.Topic !== paths[3]) return false;
+            } else if (view === 'book') {
+                if (!q.isBookQuestion) return false;
+                if (paths[0] && q.Chapter !== paths[0]) return false;
+                if (paths[1] && q.Topic !== paths[1]) return false;
             }
-            
-            if (paths[0] && !qYears.includes(paths[0])) return false;
-            
-            // 2. Handle Exams (Ensure it parses your JSON array correctly)
-            let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
-            if (paths[1] && !qExams.includes(paths[1])) return false;
-            
-            // 3. Handle standard Subjects and Topics
-            if (paths[2] && q.Subject !== paths[2]) return false;
-            if (paths[3] && q.Topic !== paths[3]) return false;
-        } else if (view === 'book') {
-            if (!q.isBookQuestion) return false; // FIX: Prevent course questions from leaking into books
-            if (paths[0] && q.Chapter !== paths[0]) return false;
-            if (paths[1] && q.Topic !== paths[1]) return false;
-        }
-        return true;
-    }).length;
+            return true;
+        }).length;
+    }
+
+    let tree = {};
+    if (view === 'subject') tree = subjectTree;
+    else if (view === 'system') tree = systemTree;
+    else if (view === 'exam') tree = examTree;
+    else return 0;
+
+    let current = tree;
+    for(let p of paths) {
+        if(current && current[p]) current = current[p];
+        else return 0;
+    }
+    return getTreeCount(current);
 }
 
 function getQID(q) {
@@ -2201,7 +2168,7 @@ if (btnJourney) {
                         rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                     } else {
                         // Locked target
-                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue} ${t.rewardUnit} Premium</div>`;
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium</div>`;
                     }
                 }
 
@@ -2359,6 +2326,7 @@ window.generateRevisionQuiz = async function(topicId) {
 
     if (finalQuiz.length === 0) return alert("Not enough data to generate revision.");
 
+    finalQuiz = await hydrateQuestions(finalQuiz);
     window.launchQuiz(
         finalQuiz,
         'practice',
@@ -2563,30 +2531,32 @@ if (btnAnalytics) {
 
         const btnRedemption = document.getElementById('btn-train-redemption');
         if (btnRedemption) {
-            btnRedemption.onclick = () => {
+            btnRedemption.onclick = async () => {
                 btnRedemption.textContent = "Loading...";
                 let pool = allQuestions.filter(q => allMistakes.includes(getQID(q))).sort(() => 0.5 - Math.random());
                 if (pool.length > 50) pool = pool.slice(0, 50); 
+                pool = await hydrateQuestions(pool);
                 window.launchQuiz(pool, 'practice', 0, "Redemption Mode");
             };
         }
 
         const btnFocus = document.getElementById('btn-train-focus');
         if (btnFocus) {
-            btnFocus.onclick = () => {
+            btnFocus.onclick = async () => {
                 btnFocus.textContent = "Loading...";
                 const worstTopic = weaknesses[0]; 
                 let pool = worstTopic.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
                 if (pool.length === 0) pool = worstTopic.pool; 
                 
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, 15);
+                pool = await hydrateQuestions(pool);
                 window.launchQuiz(pool, 'practice', 0, `Targeted Focus: ${worstTopic.topic}`);
             };
         }
 
         const btnMix = document.getElementById('btn-train-mix');
         if (btnMix) {
-            btnMix.onclick = () => {
+            btnMix.onclick = async () => {
                 btnMix.textContent = "Loading...";
                 let mixPool = [];
                 
@@ -2602,6 +2572,7 @@ if (btnAnalytics) {
                 });
 
                 mixPool = mixPool.sort(() => 0.5 - Math.random());
+                mixPool = await hydrateQuestions(mixPool);
                 window.launchQuiz(mixPool, 'practice', 0, "Balanced Mix (30 Qs)");
             };
         }
@@ -2680,9 +2651,6 @@ onAuthStateChanged(auth, async (user) => {
                 if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
                     isPremiumUser = true;
                     
-                    // ==========================================
-                    // NEW DIRECT-TO-GITHUB BATCH PUSH LOGIC
-                    // ==========================================
                     const queueStr = localStorage.getItem('edeetos_pending_edits');
                     let pendingQueue = [];
                     if (queueStr) {
@@ -2707,7 +2675,6 @@ btnPushEdits.onclick = async () => {
         const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
         const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
 
-        // Group edits by file
         const editsByCourse = {};
         pendingQueue.forEach(edit => {
             const key = edit.courseFile;
@@ -2719,7 +2686,6 @@ btnPushEdits.onclick = async () => {
         const repo = "edeetos";
         const branch = "main";
 
-        // Reusable Helper to Upload Files via GitHub API
         const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
             const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
             let currentSha = null;
@@ -2755,7 +2721,6 @@ btnPushEdits.onclick = async () => {
             
             const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
 
-            // GET current CSV file via Blob API
             const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
             if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
             
@@ -2766,14 +2731,11 @@ btnPushEdits.onclick = async () => {
             if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
             const blobJson = await blobRes.json();
             
-            // Decode and Strip Windows BOM
             const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
             
-            // Parse CSV
             let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
             let rows = parsed.data;
 
-            // 1. APPLY EDITS (Strictly preserves original row position)
             editsByCourse[courseFile].rows.forEach(updatedRow => {
                 const qId = updatedRow["QuestionID"];
                 const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
@@ -2786,7 +2748,6 @@ btnPushEdits.onclick = async () => {
                 }
                 
                 if (qIndex !== -1) {
-                    // Update in-place so row order remains completely untouched
                     const targetRow = rows[qIndex];
                     Object.keys(updatedRow).forEach(newKey => {
                         const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
@@ -2797,7 +2758,6 @@ btnPushEdits.onclick = async () => {
                 }
             });
 
-            // 2. CONVERT TO JSON IN BROWSER
             let outQs = [];
             let subTree = {}, sysTree = {}, exTree = {};
 
@@ -2845,7 +2805,6 @@ btnPushEdits.onclick = async () => {
 
                 outQs.push(qObj);
 
-                // Build Hierarchy Trees
                 if (subject) {
                     if (!subTree[subject]) subTree[subject] = {};
                     if (chapter) {
@@ -2872,16 +2831,11 @@ btnPushEdits.onclick = async () => {
                 }
             });
 
-            // 3. PUSH ALL THREE FILES DIRECTLY TO GITHUB
             const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
             
-            // Upload CSV
             await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
-            
-            // Upload Questions JSON
             await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
             
-            // Upload Hierarchy JSON
             const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
             await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
         }
@@ -2924,32 +2878,27 @@ btnPushEdits.onclick = async () => {
                 const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
                 const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
 
-userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
+                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
                 await loadDataAndBuildTree();
 
-                // 1. Get all valid, currently loaded Course Question IDs
-                const validCourseIDs = new Set(allQuestions.filter(q => !q.isBookQuestion).map(q => getQID(q)));
+                // allQuestions is now empty on boot, so we skip the filtering step that requires allQuestions
+                // We keep the arrays intact as pulled from Firebase.
+                const validCourseSolved = [...new Set(courseSolved)];
+                const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
+                const validCourseExamMistakes = [...new Set(courseExamMistakes)];
+                const validCourseBookmarks = [...new Set(courseBookmarks)];
 
-                // 2. Deduplicate arrays and filter out "ghost" IDs for the Course
-                const validCourseSolved = [...new Set(courseSolved)].filter(id => validCourseIDs.has(id));
-                const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)].filter(id => validCourseIDs.has(id));
-                const validCourseExamMistakes = [...new Set(courseExamMistakes)].filter(id => validCourseIDs.has(id));
-                const validCourseBookmarks = [...new Set(courseBookmarks)].filter(id => validCourseIDs.has(id));
-
-                // 3. Deduplicate Books (Cannot filter ghosts yet because books are lazy-loaded)
                 const uniqueBookSolved = [...new Set(bookSolved)];
                 const uniqueBookPracticeMistakes = [...new Set(bookPracticeMistakes)];
                 const uniqueBookExamMistakes = [...new Set(bookExamMistakes)];
                 const uniqueBookBookmarks = [...new Set(bookBookmarks)];
 
-                // 4. Update Global Variables so Grid/Popups match the Dashboard EXACTLY
                 globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
                 globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
                 globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
                 attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
 
-                // 5. Calculate Course Specific Stats based ONLY on valid, unique IDs
                 const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
                 const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
                 
@@ -2960,7 +2909,6 @@ userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory 
                     accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
                 };
 
-                // 6. Calculate Book Specific Stats
                 const bookAllMistakes = [...new Set([...uniqueBookPracticeMistakes, ...uniqueBookExamMistakes])];
                 const bookAttempts = uniqueBookSolved.length + bookAllMistakes.length;
                 
@@ -2971,7 +2919,6 @@ userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory 
                     accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
                 };
 
-                // 7. Update DOM and UI
                 restoreLastState();
                 if (typeof updateDashboardUI === 'function') updateDashboardUI();
                 
@@ -3124,11 +3071,11 @@ userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory 
                     revisionContainer.innerHTML = '';
                 }
 				
-const btnMistakes = document.getElementById('btn-practice-mistakes');
+                const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnMistakes) {
                     btnMistakes.disabled = false;
                     btnMistakes.style.cursor = "pointer";
-                    btnMistakes.onclick = () => {
+                    btnMistakes.onclick = async () => {
                         isGlobalPopupActive = true;
                         const isBook = currentView === 'book';
                         
@@ -3138,8 +3085,42 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                             return;
                         }
 
-                        const pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)) && !!q.isBookQuestion === isBook);
-                        const ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)) && !!q.isBookQuestion === isBook);
+                        let pPool = [];
+                        let ePool = [];
+
+                        if (!isBook) {
+                            document.body.style.cursor = 'wait';
+                            // Since allQuestions is empty for the course, dynamically fetch all available chunks
+                            // to reconstruct the global mistake pool
+                            const allUrls = new Set();
+                            Object.keys(subjectTree).forEach(s => {
+                                Object.keys(subjectTree[s]).forEach(c => {
+                                    const sClean = s.toLowerCase().replace(/ /g, '_');
+                                    const cClean = c.toLowerCase().replace(/ /g, '_');
+                                    allUrls.add(`Data/subjects/${sClean}_${cClean}.json`);
+                                });
+                            });
+
+                            for (let url of allUrls) {
+                                if (!window.activeChunksCache[url]) {
+                                    try {
+                                        const res = await fetch(url);
+                                        if (res.ok) window.activeChunksCache[url] = await res.json();
+                                        else window.activeChunksCache[url] = [];
+                                    } catch(e) { window.activeChunksCache[url] = []; }
+                                }
+                                const chunkQs = window.activeChunksCache[url];
+                                chunkQs.forEach(q => {
+                                    const qId = getQID(q);
+                                    if (globalPracticeMistakes.includes(qId) && !pPool.some(existing => getQID(existing) === qId)) pPool.push(q);
+                                    if (globalExamMistakes.includes(qId) && !ePool.some(existing => getQID(existing) === qId)) ePool.push(q);
+                                });
+                            }
+                            document.body.style.cursor = 'default';
+                        } else {
+                            pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)) && q.isBookQuestion);
+                            ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)) && q.isBookQuestion);
+                        }
 
                         if (pPool.length === 0 && ePool.length === 0 && isBook) {
                             alert("Book mistakes exist, but you must open the specific book first to load its questions into memory.");
@@ -3151,7 +3132,7 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                         if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
 
                         activeCustomPool = [...new Set([...pPool, ...ePool])];
-                        openPopup(isBook ? "⚠️ Book Mistakes" : "⚠️️ Course Mistakes", combinedTree, 'Level1', []);
+                        openPopup(isBook ? "⚠️ Book Mistakes" : "⚠ Course Mistakes", combinedTree, 'Level1', []);
                     };
                 }
 
@@ -3159,7 +3140,7 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                 if (btnBookmarks) {
                     btnBookmarks.disabled = false;
                     btnBookmarks.style.cursor = "pointer";
-                    btnBookmarks.onclick = () => {
+                    btnBookmarks.onclick = async () => {
                         isGlobalPopupActive = true;
                         const isBook = currentView === 'book';
                         
@@ -3169,7 +3150,37 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                             return;
                         }
 
-                        const bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)) && !!q.isBookQuestion === isBook);
+                        let bPool = [];
+
+                        if (!isBook) {
+                            document.body.style.cursor = 'wait';
+                            const allUrls = new Set();
+                            Object.keys(subjectTree).forEach(s => {
+                                Object.keys(subjectTree[s]).forEach(c => {
+                                    const sClean = s.toLowerCase().replace(/ /g, '_');
+                                    const cClean = c.toLowerCase().replace(/ /g, '_');
+                                    allUrls.add(`Data/subjects/${sClean}_${cClean}.json`);
+                                });
+                            });
+
+                            for (let url of allUrls) {
+                                if (!window.activeChunksCache[url]) {
+                                    try {
+                                        const res = await fetch(url);
+                                        if (res.ok) window.activeChunksCache[url] = await res.json();
+                                        else window.activeChunksCache[url] = [];
+                                    } catch(e) { window.activeChunksCache[url] = []; }
+                                }
+                                const chunkQs = window.activeChunksCache[url];
+                                chunkQs.forEach(q => {
+                                    const qId = getQID(q);
+                                    if (globalBookmarks.includes(qId) && !bPool.some(existing => getQID(existing) === qId)) bPool.push(q);
+                                });
+                            }
+                            document.body.style.cursor = 'default';
+                        } else {
+                            bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)) && q.isBookQuestion);
+                        }
 
                         if (bPool.length === 0 && isBook) {
                             alert("Book bookmarks exist, but you must open the specific book first to load its questions into memory.");
@@ -3186,6 +3197,20 @@ const btnMistakes = document.getElementById('btn-practice-mistakes');
                     checkMilestones(flawlessCount);
                 }, 2000);
 
+            } else {
+                currentUserData = { role: 'STUDENT' };
+                isPremiumUser = false;
+                
+                await loadDataAndBuildTree();
+                
+                globalPracticeMistakes = [];
+                globalExamMistakes = [];
+                globalBookmarks = [];
+                attemptedQuestions = [];
+                userExamHistory = [];
+                
+                restoreLastState();
+                if (typeof updateDashboardUI === 'function') updateDashboardUI();
             }
         } catch (error) { console.error("Error fetching stats:", error); }
     } else {

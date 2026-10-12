@@ -248,6 +248,7 @@ return {
         isBookQuestion: q.isBookQuestion || false,
         bookName: q.bookName || "",
         Year: q.Year || q.year || "",
+        Specialty: q.Specialty || q.specialty || [],
         Exam: q.Exam || q.exams || [],
         Difficulty: q.Difficulty || q.difficulty || ""
     };
@@ -446,14 +447,25 @@ function loadQuestion(index) {
             else if (typeof yearData === 'string' && yearData.trim() !== '') yearList = yearData.split(',');
 
             let examData = currentQuestionData.Exam || currentQuestionData.exams;
-            let examList = Array.isArray(examData) ? examData : (examData ? [examData] : []);
+            let examList = Array.isArray(examData) ? examData : (examData && typeof examData === 'string' ? examData.split(',') : (examData ? [examData] : []));
 
-            if ((yearList.length > 0 || examList.length > 0) && !isExamMode) {
+            let specData = currentQuestionData.Specialty || currentQuestionData.specialty;
+            let specList = Array.isArray(specData) ? specData : (specData && typeof specData === 'string' ? specData.split(',') : (specData ? [specData] : []));
+
+            if ((yearList.length > 0 || examList.length > 0 || specList.length > 0) && !isExamMode) {
                 examYearInfo.style.display = 'flex';
+                examYearInfo.style.flexWrap = 'wrap';
+                examYearInfo.style.gap = '8px';
                 
                 if (yearList.length > 0) {
                     badgesHTML += `<span style="background: #e2e8f0; color: #475569; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;"><i class="fas fa-history" style="margin-right: 4px;"></i> ${yearList.join(', ')}</span>`;
                 }
+
+                specList.forEach(sp => {
+                    if (sp.trim()) {
+                        badgesHTML += `<span style="background: rgba(168, 85, 247, 0.15); color: #7e22ce; border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;"><i class="fas fa-stethoscope" style="margin-right: 4px;"></i> ${sp.trim()}</span>`;
+                    }
+                });
                 
                 examList.forEach(ex => {
                     if (ex.trim()) {
@@ -704,6 +716,10 @@ optBox.innerHTML = `
                 
                 const yearVal = currentQuestionData.Year || currentQuestionData.year || "";
                 document.getElementById('edit-q-year').value = Array.isArray(yearVal) ? yearVal.join(', ') : yearVal;
+
+                const specVal = currentQuestionData.Specialty || currentQuestionData.specialty || "";
+                const editSpecEl = document.getElementById('edit-q-specialty');
+                if (editSpecEl) editSpecEl.value = Array.isArray(specVal) ? specVal.join(', ') : specVal;
                 
                 const examVal = currentQuestionData.Exam || currentQuestionData.exams || currentQuestionData.exam || "";
                 document.getElementById('edit-q-exam').value = Array.isArray(examVal) ? examVal.join(', ') : examVal;
@@ -790,9 +806,12 @@ if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                 const hintHTML = unescapeHTML(quillHint.root.innerHTML);
                 const explanationHTML = unescapeHTML(quillExplanation.root.innerHTML);
 
+                const specFallback = Array.isArray(currentQuestionData.Specialty || currentQuestionData.specialty || "") ? (currentQuestionData.Specialty || currentQuestionData.specialty).join(', ') : (currentQuestionData.Specialty || currentQuestionData.specialty || "");
+
 const updatedRow = {
     "QuestionID": targetId,
     "Year": document.getElementById('edit-q-year').value.trim(),
+    "Specialty": document.getElementById('edit-q-specialty') ? document.getElementById('edit-q-specialty').value.trim() : specFallback,
     "Exam": document.getElementById('edit-q-exam').value.trim(),
     "Subject": document.getElementById('edit-q-subject').value.trim(),
     "Chapter": document.getElementById('edit-q-chapter').value.trim(),
@@ -831,9 +850,10 @@ const existingIndex = pendingEditsQueue.findIndex(e => e.row["QuestionID"] === t
                 currentQuestionData.Subject = updatedRow["Subject"];
                 currentQuestionData.Chapter = updatedRow["Chapter"];
                 currentQuestionData.Topic = updatedRow["Topic"];
+                currentQuestionData.Specialty = updatedRow["Specialty"] ? updatedRow["Specialty"].split(',').map(s => s.trim()) : [];
                 currentQuestionData.Difficulty = updatedRow["Difficulty"];
-                currentQuestionData.Year = updatedRow["Year"];
-                currentQuestionData.Exam = updatedRow["Exam"];
+                currentQuestionData.Year = updatedRow["Year"] ? updatedRow["Year"].split(',').map(y => y.trim()) : [];
+                currentQuestionData.Exam = updatedRow["Exam"] ? updatedRow["Exam"].split(',').map(e => e.trim()) : [];
                 
                 questionTextEl.innerHTML = currentQuestionData.text;
                 explanationText.innerHTML = currentQuestionData.explanation;
