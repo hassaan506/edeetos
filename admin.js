@@ -1,12 +1,35 @@
+/*
+=========================================
+INDEX OF FEATURES
+=========================================
+1. INITIALIZATION & AUTH
+2. NAVIGATION & UI ROUTING
+3. DASHBOARD / DATABASE OVERVIEW
+4. QUESTION COMPILER & GITHUB PUSH
+5. USER MANAGER & MIGRATION
+6. STUDY ROOMS
+7. FRIEND CHALLENGES
+8. ASSIGNED EXAMS
+9. REWARD CLAIMS
+10. PAYMENTS
+11. ACCESS KEYS
+12. PROMO CODES
+13. COURSE CHANGE REQUESTS
+14. REPORTED QUESTIONS
+15. CONTACT MESSAGES
+=========================================
+*/
+
 import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { collection, getDocs, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 let allUsersData = [];
+let unsubRooms, unsubChal, unsubExams, unsubRewards, unsubscribePayments, unsubPromos, unsubReqs, unsubReps, unsubMsgs;
 
-// === HELPER: Cross-Reference UID to Real Name ===
+// === HELPER UTILITIES ===
 function getUserName(uid) {
-    if (!allUsersData || allUsersData.length === 0) return uid; 
+    if (!allUsersData.length) return uid; 
     const user = allUsersData.find(u => u.uid === uid);
     return user ? user.fullName : "Unknown User";
 }
@@ -17,7 +40,7 @@ function updatePendingCount() {
     if (cntEl) cntEl.textContent = q.length;
 }
 
-// === AUTHENTICATION & INITIALIZATION ===
+// === 1. INITIALIZATION & AUTH ===
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         try {
@@ -41,8 +64,7 @@ onAuthStateChanged(auth, async (user) => {
             onSnapshot(qChats, (snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                     if (change.type === "added") {
-                        const data = change.doc.data();
-                        alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${data.studentName}! Open the Mentorship Hub.`);
+                        alert(`🚨 EDEETOS ALERT: Incoming Mentor Request from ${change.doc.data().studentName}! Open the Mentorship Hub.`);
                     }
                 });
             });
@@ -55,7 +77,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// === LAYOUT & SIDEBAR NAVIGATION ===
+// === 2. NAVIGATION & UI ROUTING ===
 const sidebar = document.getElementById('admin-sidebar');
 document.getElementById('open-mobile-sidebar').onclick = () => sidebar.classList.add('mobile-open');
 document.getElementById('close-mobile-sidebar').onclick = () => sidebar.classList.remove('mobile-open');
@@ -70,29 +92,25 @@ function initQuillOnce() {
 }
 
 window.switchView = function(viewName) {
-    const views = ['database', 'addq', 'users', 'studyrooms', 'challenges', 'assigned', 'rewards', 'payments', 'keys', 'promos', 'requests', 'reports', 'messages'];
-    views.forEach(v => { const el = document.getElementById(`view-${v}`); if (el) el.style.display = 'none'; });
-    
+    document.querySelectorAll('.admin-content').forEach(el => { el.classList.remove('view-active'); el.classList.add('view-hidden'); });
     document.querySelectorAll('.sidebar-link').forEach(t => t.classList.remove('active'));
     
     const targetView = document.getElementById(`view-${viewName}`);
-    if (targetView) targetView.style.display = 'block';
+    if (targetView) { targetView.classList.remove('view-hidden'); targetView.classList.add('view-active'); }
     
     const activeTab = document.querySelector(`.sidebar-link[onclick*="${viewName}"]`);
     if (activeTab) activeTab.classList.add('active');
 
     sidebar.classList.remove('mobile-open');
 
-    if(viewName === 'addq') initQuillOnce();
-    if(viewName === 'keys') fetchKeys();
-    if(viewName === 'promos') fetchPromos();
-    if(viewName === 'payments') fetchPayments();
-    if(viewName === 'requests') fetchRequests();
-    if(viewName === 'reports') fetchReports();
-    if(viewName === 'messages') fetchMessages();
+    const routing = {
+        'addq': initQuillOnce, 'keys': fetchKeys, 'promos': fetchPromos, 'payments': fetchPayments,
+        'requests': fetchRequests, 'reports': fetchReports, 'messages': fetchMessages
+    };
+    if (routing[viewName]) routing[viewName]();
 };
 
-// === 1. DATABASE OVERVIEW ===
+// === 3. DASHBOARD / DATABASE OVERVIEW ===
 async function calculateTotalQuestions() {
     const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     const referenceBooks = [
@@ -112,16 +130,14 @@ async function calculateTotalQuestions() {
             if (response.ok) {
                 const data = await response.json();
                 if (Array.isArray(data) && data.length > 0) {
-                    const count = data.length;
-                    totalQuestions += count;
-                    breakdownHtml += `<span style="background: ${badgeColor}; color: ${textColor}; padding: 6px 12px; border-radius: 8px; font-weight: bold; border: 1px solid rgba(0,0,0,0.05);">${displayTitle}: ${count} Qs</span>`;
+                    totalQuestions += data.length;
+                    breakdownHtml += `<span style="background: ${badgeColor}; color: ${textColor}; padding: 6px 12px; border-radius: 8px; font-weight: bold; border: 1px solid rgba(0,0,0,0.05);">${displayTitle}: ${data.length} Qs</span>`;
                 }
             }
         } catch (e) {}
     }
 
     for (const course of standardCourses) await fetchAndCount(`Data/${course}_questions.json`, courseNamesMap[course] || course, '#f1f5f9', '#334155');
-    
     breakdownHtml += `</div><div style="margin: 20px 0 8px 0; color: #8b5cf6; font-size: 0.8rem; font-weight: 800;">Reference Books</div><div style="display: flex; flex-wrap: wrap; gap: 8px;">`;
     for (const book of referenceBooks) await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
     breakdownHtml += `</div>`;
@@ -130,8 +146,7 @@ async function calculateTotalQuestions() {
     document.getElementById('database-breakdown-content').innerHTML = breakdownHtml;
 }
 
-// === 2. ADD QUESTION & PUSH COMPILER ===
-
+// === 4. QUESTION COMPILER & GITHUB PUSH ===
 document.getElementById('btn-save-new-q').onclick = () => {
     const qText = document.getElementById('add-q-txt').value.trim();
     if (!qText) return alert("Question text is required.");
@@ -143,9 +158,7 @@ document.getElementById('btn-save-new-q').onclick = () => {
     const targetVal = document.getElementById('add-q-dest').value.split(':');
     const isBook = targetVal[0] === 'BOOK';
     const courseFile = targetVal[1];
-
     const correctOptNode = document.querySelector('input[name="add-correct-opt"]:checked');
-    const correctLetter = correctOptNode ? correctOptNode.value : 'A';
 
     const newRow = {
         "QuestionID": newId,
@@ -160,7 +173,7 @@ document.getElementById('btn-save-new-q').onclick = () => {
         "OptionC": document.getElementById('add-opt-c').value.trim(),
         "OptionD": document.getElementById('add-opt-d').value.trim(),
         "OptionE": document.getElementById('add-opt-e').value.trim(),
-        "CorrectAnswer": correctLetter,
+        "CorrectAnswer": correctOptNode ? correctOptNode.value : 'A',
         "Explanation": quillExp.root.innerHTML,
         "Hint": quillHnt.root.innerHTML,
         "Difficulty": document.getElementById('add-q-dif').value
@@ -169,7 +182,6 @@ document.getElementById('btn-save-new-q').onclick = () => {
     let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
     pendingEditsQueue.push({ row: newRow, courseFile, isBook });
     localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
-    
     updatePendingCount();
     
     ['add-q-sub', 'add-q-chap', 'add-q-top', 'add-q-yr', 'add-q-exm', 'add-q-txt', 'add-opt-a', 'add-opt-b', 'add-opt-c', 'add-opt-d', 'add-opt-e'].forEach(id => document.getElementById(id).value = '');
@@ -177,7 +189,7 @@ document.getElementById('btn-save-new-q').onclick = () => {
     document.getElementById('add-q-dif').value = 'medium';
     document.querySelector('input[name="add-correct-opt"][value="A"]').checked = true;
 
-    alert('Question added to your browser queue! Click "Push Database to GitHub" to publish it live.');
+    alert('Question added to queue!');
 };
 
 document.getElementById('btn-admin-push').onclick = async () => {
@@ -193,7 +205,7 @@ document.getElementById('btn-admin-push').onclick = async () => {
 
     const btn = document.getElementById('btn-admin-push');
     const origHtml = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Compiling...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Compiling...';
     btn.disabled = true;
 
     try {
@@ -202,13 +214,11 @@ document.getElementById('btn-admin-push').onclick = async () => {
 
         const editsByCourse = {};
         pendingQueue.forEach(edit => {
-            const key = edit.courseFile;
-            if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
-            editsByCourse[key].rows.push(edit.row);
+            if (!editsByCourse[edit.courseFile]) editsByCourse[edit.courseFile] = { isBook: edit.isBook, rows: [] };
+            editsByCourse[edit.courseFile].rows.push(edit.row);
         });
 
         const owner = "hassaan506"; const repo = "edeetos"; const branch = "main";
-
         const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
             const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
             let currentSha = null;
@@ -219,65 +229,53 @@ document.getElementById('btn-admin-push').onclick = async () => {
 
             const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
             if (currentSha) bodyData.sha = currentSha;
-
-            const putRes = await fetch(fileUrl, {
-                method: 'PUT', headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-                body: JSON.stringify(bodyData)
-            });
-
-            if (!putRes.ok) throw new Error(`Failed to upload ${filePath}. Check token permissions.`);
+            const putRes = await fetch(fileUrl, { method: 'PUT', headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(bodyData) });
+            if (!putRes.ok) throw new Error(`Failed to upload ${filePath}.`);
         };
 
         for (const courseFile of Object.keys(editsByCourse)) {
             const isBook = editsByCourse[courseFile].isBook;
             const folder = isBook ? "Books" : "Data";
-            const csvPath = `${folder}/${courseFile}.csv`;
-            const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
-            const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
+            const paths = {
+                csv: `${folder}/${courseFile}.csv`,
+                json: `${folder}/${courseFile}_questions.json`,
+                hierarchy: `${folder}/${courseFile}_hierarchy.json`
+            };
             
-            const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+            const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${paths.csv}`;
             const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
-            if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}.`);
+            if (!getRes.ok) throw new Error(`Failed to fetch ${paths.csv}.`);
             
-            const getJson = await getRes.json();
-            const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
-            const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
-            
+            const blobRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/blobs/${(await getRes.json()).sha}`, { headers: { "Authorization": `Bearer ${token}` } });
             const cleanCsvText = Base64.decode((await blobRes.json()).content).replace(/^\uFEFF/, '');
             let rows = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true }).data;
 
             editsByCourse[courseFile].rows.forEach(updatedRow => {
                 const qId = updatedRow["QuestionID"];
                 const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
-                
                 let qIndex = rows.findIndex(r => String(r[actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "");
                 
                 if (qIndex !== -1) {
-                    const targetRow = rows[qIndex];
                     Object.keys(updatedRow).forEach(newKey => {
-                        const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
-                        targetRow[originalKey || newKey] = updatedRow[newKey];
+                        const originalKey = Object.keys(rows[qIndex]).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                        rows[qIndex][originalKey || newKey] = updatedRow[newKey];
                     });
                 } else {
                     rows.push(updatedRow);
                 }
             });
 
-            let outQs = [];
-            let subTree = {}, sysTree = {}, exTree = {};
-
+            let outQs = []; let subTree = {}, sysTree = {}, exTree = {};
             rows.forEach(row => {
                 const getVal = (names) => {
                     const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
                     return key && row[key] ? String(row[key]).trim() : "";
                 };
-
                 const qId = getVal(['questionid', 'id']);
                 if (!qId) return;
 
                 const subject = getVal(['subject']); const chapter = getVal(['chapter']); const topic = getVal(['topic']);
-                const year = getVal(['year']); const rawExams = getVal(['exams', 'exam']);
-                const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+                const year = getVal(['year']); const examsList = getVal(['exams', 'exam']) ? getVal(['exams', 'exam']).split(',').map(e => e.trim()).filter(e => e) : [];
 
                 let qObj = {
                     id: qId, year: year, exams: examsList, subject: subject, chapter: chapter, topic: topic,
@@ -285,10 +283,10 @@ document.getElementById('btn-admin-push').onclick = async () => {
                     options: { A: getVal(['optiona']), B: getVal(['optionb']), C: getVal(['optionc']), D: getVal(['optiond']), E: getVal(['optione']) },
                     correctAnswer: getVal(['correctanswer']).toUpperCase(), explanation: getVal(['explanation']), hint: getVal(['hint'])
                 };
-
                 if (isBook) { qObj.isBookQuestion = true; qObj.bookName = courseFile; }
                 outQs.push(qObj);
 
+                // Hierarchy mapping
                 if (subject) {
                     if (!subTree[subject]) subTree[subject] = {};
                     if (chapter) {
@@ -315,29 +313,23 @@ document.getElementById('btn-admin-push').onclick = async () => {
                 }
             });
 
-            const commitMsg = `Admin Panel: Updated live database via Web Compiler`;
-            await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
-            await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
-            await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify({ subjects: subTree, systems: sysTree, exams: exTree }, null, 4), commitMsg);
+            const msg = `Admin Panel: Updated live database`;
+            await uploadFileToGitHub(paths.csv, Papa.unparse(rows), msg);
+            await uploadFileToGitHub(paths.json, JSON.stringify(outQs, null, 4), msg);
+            await uploadFileToGitHub(paths.hierarchy, JSON.stringify({ subjects: subTree, systems: sysTree, exams: exTree }, null, 4), msg);
         }
 
         localStorage.removeItem('edeetos_pending_edits');
         updatePendingCount();
-        alert(`✅ Successfully generated new JSON and pushed to GitHub! Changes are live immediately.`);
-        
+        alert(`✅ Push complete! Changes are live.`);
     } catch (error) {
-        console.error(error);
         alert("❌ Push Failed: " + error.message);
     } finally {
-        btn.innerHTML = origHtml;
-        btn.disabled = false;
+        btn.innerHTML = origHtml; btn.disabled = false;
     }
 };
 
-// === 3. USERS & MIGRATION ===
-const usersListEl = document.getElementById('users-list');
-const userCountEl = document.getElementById('user-count');
-
+// === 5. USER MANAGER & MIGRATION ===
 async function fetchAllUsers() {
     try {
         const querySnapshot = await getDocs(collection(db, "users"));
@@ -345,20 +337,17 @@ async function fetchAllUsers() {
         querySnapshot.forEach((doc) => { let data = doc.data(); data.uid = doc.id; allUsersData.push(data); });
         
         const rolePriority = { 'MANAGEMENT': 1, 'ADMIN': 1, 'MENTOR': 2, 'STUDENT': 3 };
-        allUsersData.sort((a, b) => {
-            const roleA = (a.role || 'STUDENT').toUpperCase();
-            const roleB = (b.role || 'STUDENT').toUpperCase();
-            return (rolePriority[roleA] || 3) - (rolePriority[roleB] || 3);
-        });
+        allUsersData.sort((a, b) => (rolePriority[(a.role || 'STUDENT').toUpperCase()] || 3) - (rolePriority[(b.role || 'STUDENT').toUpperCase()] || 3));
 
-        if(userCountEl) userCountEl.textContent = allUsersData.length;
+        if(document.getElementById('user-count')) document.getElementById('user-count').textContent = allUsersData.length;
         renderUsers(allUsersData);
-    } catch (e) { usersListEl.innerHTML = '<p style="color:red; text-align: center;">Error loading users.</p>'; }
+    } catch (e) { document.getElementById('users-list').innerHTML = '<p style="color:red; text-align: center;">Error loading users.</p>'; }
 }
 
 function renderUsers(arr) {
-    usersListEl.innerHTML = '';
-    if (arr.length === 0) return usersListEl.innerHTML = '<p style="text-align: center; color: #94a3b8; padding: 2rem;">No matching users.</p>';
+    const listEl = document.getElementById('users-list');
+    listEl.innerHTML = '';
+    if (arr.length === 0) return listEl.innerHTML = '<p class="text-center text-muted p-2">No matching users.</p>';
 
     arr.forEach(user => {
         const role = (user.role || 'STUDENT').toUpperCase();
@@ -371,16 +360,15 @@ function renderUsers(arr) {
         if (user.subscriptions) {
             Object.keys(user.subscriptions).forEach(courseKey => {
                 const expiry = user.subscriptions[courseKey];
-                let expiryText = expiry === "lifetime" ? "Lifetime" : new Date(expiry).toLocaleDateString();
-                const displayName = mergedNamesMap[courseKey] || courseKey.toUpperCase();
-                coursesHtml += `<span class="badge b-course">${displayName}</span> <span class="badge b-time">${expiryText}</span> `;
+                const expiryText = expiry === "lifetime" ? "Lifetime" : new Date(expiry).toLocaleDateString();
+                coursesHtml += `<span class="badge b-course">${mergedNamesMap[courseKey] || courseKey.toUpperCase()}</span> <span class="badge b-time">${expiryText}</span> `;
             });
         }
 
         const card = document.createElement('div');
         card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid #e2e8f0;";
         card.innerHTML = `
-            <div style="flex-grow: 1;">
+            <div class="flex-grow-1">
                 <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem; margin-bottom: 4px;">${user.fullName || "Unnamed User"}</div>
                 <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">${user.email} | ${user.phone || 'No Phone'}</div>
                 <div style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">${roleHtml} ${coursesHtml}</div>
@@ -388,7 +376,7 @@ function renderUsers(arr) {
             <button class="btn-outline btn-edit-user">Edit / Grant</button>
         `;
         card.querySelector('.btn-edit-user').onclick = () => openEditModal(user);
-        usersListEl.appendChild(card);
+        listEl.appendChild(card);
     });
 }
 
@@ -398,45 +386,31 @@ document.getElementById('admin-search-btn').onclick = () => {
     renderUsers(allUsersData.filter(u => (u.fullName||"").toLowerCase().includes(query) || (u.email||"").toLowerCase().includes(query) || u.uid.toLowerCase().includes(query)));
 };
 
-// FIX/MIGRATE USERNAMES LOGIC
-const btnFix = document.getElementById('btn-fix-usernames');
-if (btnFix) {
-    btnFix.addEventListener('click', async () => {
-        btnFix.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Migrating...';
-        btnFix.disabled = true;
-
+if (document.getElementById('btn-fix-usernames')) {
+    document.getElementById('btn-fix-usernames').addEventListener('click', async (e) => {
+        const btn = e.target;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Migrating...'; btn.disabled = true;
         try {
             const usersSnap = await getDocs(collection(db, "users"));
             let count = 0;
-
             for (const userDoc of usersSnap.docs) {
                 const data = userDoc.data();
-                
                 if (data.username && data.email) {
-                    await setDoc(doc(db, "username_lookup", data.username.toLowerCase().trim()), {
-                        email: data.email,
-                        userId: userDoc.id
-                    });
+                    await setDoc(doc(db, "username_lookup", data.username.toLowerCase().trim()), { email: data.email, userId: userDoc.id });
                     count++;
                 }
             }
-            
-            alert(`Done. Successfully migrated ${count} usernames to the public lookup index.`);
-        } catch (error) {
-            console.error("Migration Error:", error);
-            alert("Migration failed. Are you logged in as an Admin?");
-        } finally {
-            btnFix.innerHTML = '<i class="fas fa-tools" style="margin-right: 8px;"></i> Migrate Old Usernames';
-            btnFix.disabled = false;
-        }
+            alert(`Migrated ${count} usernames.`);
+        } catch (error) { alert("Migration failed."); } 
+        finally { btn.innerHTML = '<i class="fas fa-tools mr-1"></i> Migrate Old Usernames'; btn.disabled = false; }
     });
 }
 
-// USER EDITING MODAL
+// User Modal Logic
+let editingUser = null;
 const editModal = document.getElementById('edit-user-modal');
 document.getElementById('btn-close-edit-modal').onclick = () => editModal.style.display = 'none';
 
-let editingUser = null;
 function openEditModal(user) {
     editingUser = user;
     document.getElementById('edit-user-name').textContent = user.fullName || "Unnamed User";
@@ -444,212 +418,119 @@ function openEditModal(user) {
     document.getElementById('edit-user-phone').textContent = user.phone || "No Phone";
     document.getElementById('edit-user-uid').textContent = `ID: ${user.uid}`;
     
-    const banBtn = document.getElementById('btn-ban-user');
-    const unbanBtn = document.getElementById('btn-unban-user');
-    const makeStudentBtn = document.getElementById('btn-make-student');
-    const makeMentorBtn = document.getElementById('btn-make-mentor');
-    const makeAdminBtn = document.getElementById('btn-make-admin');
-    const hardDelBtn = document.getElementById('btn-hard-delete-user');
-
     const isSuperAdmin = user.uid === 'KpNtNoeNVveHO9Ga2Kc9dxuhvZp2';
     const isSelf = auth.currentUser && user.uid === auth.currentUser.uid;
+    const btns = ['btn-make-student', 'btn-make-mentor', 'btn-make-admin', 'btn-hard-delete-user', 'btn-ban-user', 'btn-unban-user'].map(id => document.getElementById(id));
 
     if (isSuperAdmin || isSelf) {
-        [banBtn, unbanBtn, makeStudentBtn, makeMentorBtn, makeAdminBtn, hardDelBtn].forEach(b => { if(b) b.style.display = 'none'; });
+        btns.forEach(b => { if(b) b.style.display = 'none'; });
     } else {
-        makeStudentBtn.style.display = 'block'; makeMentorBtn.style.display = 'block'; makeAdminBtn.style.display = 'block'; hardDelBtn.style.display = 'block';
-        if (user.isBanned || user.role === 'BANNED') { banBtn.style.display = 'none'; unbanBtn.style.display = 'block'; } 
-        else { banBtn.style.display = 'block'; unbanBtn.style.display = 'none'; }
+        btns.slice(0, 4).forEach(b => { if(b) b.style.display = 'block'; });
+        if (user.isBanned || user.role === 'BANNED') { btns[4].style.display = 'none'; btns[5].style.display = 'block'; } 
+        else { btns[4].style.display = 'block'; btns[5].style.display = 'none'; }
     }
-    
-    renderSubscriptions();
-    editModal.style.display = 'flex';
+    renderSubscriptions(); editModal.style.display = 'flex';
 }
 
+async function changeUserRole(newRole) {
+    if(confirm(`Change to ${newRole}?`)) {
+        await updateDoc(doc(db, "users", editingUser.uid), { role: newRole });
+        editingUser.role = newRole; alert(`Role updated.`); fetchAllUsers();
+    }
+}
 document.getElementById('btn-make-student').onclick = () => changeUserRole('STUDENT');
 document.getElementById('btn-make-mentor').onclick = () => changeUserRole('MENTOR');
 document.getElementById('btn-make-admin').onclick = () => changeUserRole('MANAGEMENT');
 
-async function changeUserRole(newRole) {
-    if(confirm(`Change this user's role to ${newRole}?`)) {
-        await updateDoc(doc(db, "users", editingUser.uid), { role: newRole });
-        editingUser.role = newRole; alert(`Role updated to ${newRole}.`); fetchAllUsers();
-    }
-}
-
 document.getElementById('btn-ban-user').onclick = async () => {
-    if (confirm(`🚨 BAN this user?`)) {
-        await updateDoc(doc(db, "users", editingUser.uid), { role: 'BANNED', isBanned: true });
-        alert("User banned."); editModal.style.display = 'none'; fetchAllUsers();
-    }
+    if (confirm(`🚨 BAN user?`)) { await updateDoc(doc(db, "users", editingUser.uid), { role: 'BANNED', isBanned: true }); alert("Banned."); editModal.style.display = 'none'; fetchAllUsers(); }
 };
 document.getElementById('btn-unban-user').onclick = async () => {
-    if (confirm(`✅ UNBAN this user?`)) {
-        await updateDoc(doc(db, "users", editingUser.uid), { role: 'STUDENT', isBanned: false });
-        alert("User unbanned."); editModal.style.display = 'none'; fetchAllUsers();
-    }
+    if (confirm(`✅ UNBAN user?`)) { await updateDoc(doc(db, "users", editingUser.uid), { role: 'STUDENT', isBanned: false }); alert("Unbanned."); editModal.style.display = 'none'; fetchAllUsers(); }
 };
-
 document.getElementById('btn-hard-delete-user').onclick = async () => {
-    const confirmText = prompt(`Type DELETE to permanently erase ${editingUser.email} from Firestore. This cannot be undone.`);
-    if (confirmText === 'DELETE') {
-        try {
-            await deleteDoc(doc(db, "users", editingUser.uid));
-            alert("User document permanently deleted from Firestore.");
-            editModal.style.display = 'none';
-            fetchAllUsers();
-        } catch(e) {
-            alert("Error deleting user: " + e.message);
-        }
-    } else if (confirmText !== null) {
-        alert("Deletion cancelled. Text did not match.");
+    if (prompt(`Type DELETE to permanently erase ${editingUser.email}`) === 'DELETE') {
+        try { await deleteDoc(doc(db, "users", editingUser.uid)); alert("Deleted."); editModal.style.display = 'none'; fetchAllUsers(); } catch(e) { alert(e.message); }
     }
 };
 
 document.getElementById('btn-wipe-progress').onclick = async () => {
-    const confirmText = prompt(`Type WIPE to delete ALL study progress (Mistakes, Bookmarks, Exam History) for ${editingUser.email}.`);
-    if (confirmText === 'WIPE') {
+    if (prompt(`Type WIPE to delete ALL study progress for ${editingUser.email}`) === 'WIPE') {
         try {
             const uRef = doc(db, "users", editingUser.uid);
-            const snap = await getDoc(uRef);
-            if(!snap.exists()) return;
-            const data = snap.data();
-            
+            const data = (await getDoc(uRef)).data();
             let updates = {};
-            const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5', 'books'];
-            
-            standardCourses.forEach(c => {
-                if(data[c]) {
-                    updates[`${c}.solvedQuestions`] = [];
-                    updates[`${c}.mistakes`] = [];
-                    updates[`${c}.examMistakes`] = [];
-                    updates[`${c}.bookmarks`] = [];
-                    updates[`${c}.examHistory`] = [];
-                    updates[`${c}.revisions`] = {};
-                }
+            ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5', 'books'].forEach(c => {
+                if(data[c]) { updates[`${c}.solvedQuestions`] = []; updates[`${c}.mistakes`] = []; updates[`${c}.examMistakes`] = []; updates[`${c}.bookmarks`] = []; updates[`${c}.examHistory`] = []; updates[`${c}.revisions`] = {}; }
             });
-
-            if(Object.keys(updates).length > 0) {
-                await updateDoc(uRef, updates);
-                alert("Progress successfully wiped.");
-            } else {
-                alert("User has no progress to wipe.");
-            }
-        } catch(e) {
-            alert("Error wiping progress: " + e.message);
-        }
-    } else if (confirmText !== null) {
-        alert("Wipe cancelled. Text did not match.");
+            if(Object.keys(updates).length > 0) { await updateDoc(uRef, updates); alert("Wiped."); }
+        } catch(e) { alert(e.message); }
     }
 };
 
 function renderSubscriptions() {
-    const subsListEl = document.getElementById('user-subscriptions-list');
-    subsListEl.innerHTML = '';
-    if (!editingUser.subscriptions || Object.keys(editingUser.subscriptions).length === 0) {
-        subsListEl.innerHTML = '<p style="font-size: 0.9rem; color: #94a3b8;">No active subscriptions.</p>'; return;
-    }
+    const list = document.getElementById('user-subscriptions-list');
+    list.innerHTML = '';
+    if (!editingUser.subscriptions || Object.keys(editingUser.subscriptions).length === 0) return list.innerHTML = '<p class="text-muted">No active subscriptions.</p>';
 
     Object.keys(editingUser.subscriptions).forEach(courseKey => {
         const expiry = editingUser.subscriptions[courseKey];
         const isExpired = (expiry !== "lifetime" && new Date(expiry) < new Date());
-        const expiryText = expiry === "lifetime" ? "Lifetime Access" : new Date(expiry).toLocaleDateString();
-        const displayName = mergedNamesMap[courseKey] || courseKey.toUpperCase();
-
         const box = document.createElement('div');
         box.className = `subs-box ${isExpired ? '' : 'active-sub'}`;
         box.innerHTML = `
-            <div><strong style="color:#1e293b;">${displayName}</strong><br><small style="color:#64748b;">${isExpired ? 'Expired' : 'Active till ' + expiryText}</small></div>
+            <div><strong style="color:#1e293b;">${mergedNamesMap[courseKey] || courseKey.toUpperCase()}</strong><br><small style="color:#64748b;">${isExpired ? 'Expired' : 'Active till ' + (expiry === "lifetime" ? "Lifetime" : new Date(expiry).toLocaleDateString())}</small></div>
             <button class="btn-action-del"><i class="fas fa-trash-alt"></i></button>
         `;
         box.querySelector('.btn-action-del').onclick = async () => {
-            if(confirm(`Remove access to ${displayName}?`)) {
+            if(confirm(`Remove access?`)) {
                 let newSubs = { ...editingUser.subscriptions }; delete newSubs[courseKey];
                 await updateDoc(doc(db, "users", editingUser.uid), { subscriptions: newSubs });
                 editingUser.subscriptions = newSubs; renderSubscriptions(); fetchAllUsers();
             }
         };
-        subsListEl.appendChild(box);
+        list.appendChild(box);
     });
 }
 
-window.grantAccess = async function() {
-    const btn = document.getElementById('btn-grant-access');
-    const originalText = btn.textContent;
-    btn.textContent = "Processing...";
-    btn.disabled = true;
-
+document.getElementById('btn-grant-access').onclick = async () => {
+    const btn = document.getElementById('btn-grant-access'); btn.textContent = "Processing..."; btn.disabled = true;
     try {
         const course = document.getElementById('grant-course').value;
         const days = document.getElementById('grant-duration').value;
-        
         let subs = { ...(editingUser.subscriptions || {}) };
         let expiry = "lifetime";
         
         if (days !== "lifetime") { 
-            const additionalDays = parseInt(days);
             let startDate = new Date();
-            
-            if (subs[course] && subs[course] !== "lifetime") {
-                const currentExpiry = new Date(subs[course]);
-                if (currentExpiry > startDate) {
-                    startDate = currentExpiry;
-                }
-            }
-            
-            startDate.setDate(startDate.getDate() + additionalDays); 
-            expiry = startDate.toISOString(); 
+            if (subs[course] && subs[course] !== "lifetime" && new Date(subs[course]) > startDate) startDate = new Date(subs[course]);
+            startDate.setDate(startDate.getDate() + parseInt(days)); expiry = startDate.toISOString(); 
         }
-        
         subs[course] = expiry;
-        
-        await updateDoc(doc(db, "users", editingUser.uid), { 
-            subscriptions: subs, 
-            isPremium: true 
-        });
-        
-        editingUser.subscriptions = subs; 
-        editingUser.isPremium = true;
-        
+        await updateDoc(doc(db, "users", editingUser.uid), { subscriptions: subs, isPremium: true });
+        editingUser.subscriptions = subs; editingUser.isPremium = true;
         const userIndex = allUsersData.findIndex(u => u.uid === editingUser.uid);
-        if (userIndex !== -1) {
-            allUsersData[userIndex].subscriptions = subs;
-            allUsersData[userIndex].isPremium = true;
-        }
-
-        renderSubscriptions(); 
-        
-        document.getElementById('admin-search-btn').click(); 
-        
-        alert(`Access updated. New expiry: ${expiry === 'lifetime' ? 'Lifetime' : new Date(expiry).toLocaleDateString()}`);
-    } catch (error) {
-        console.error(error);
-        alert("Failed to grant access. Check Firebase permissions or network connection.");
-    } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
-    }
+        if (userIndex !== -1) { allUsersData[userIndex].subscriptions = subs; allUsersData[userIndex].isPremium = true; }
+        renderSubscriptions(); alert(`Access granted.`);
+    } catch (e) { alert("Failed."); } finally { btn.textContent = "Grant Access"; btn.disabled = false; }
 };
 
 
-// === 4. STUDY ROOMS ===
-let unsubRooms = null;
+// === 6. STUDY ROOMS ===
 function fetchStudyRooms() {
     if(unsubRooms) return;
     unsubRooms = onSnapshot(collection(db, "study_rooms"), (snap) => {
         const list = document.getElementById('studyrooms-list');
-        if(!list) return;
-        list.innerHTML = '';
-        if(snap.empty) return list.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">No active rooms.</td></tr>';
+        if(!list) return; list.innerHTML = '';
+        if(snap.empty) return list.innerHTML = '<tr><td colspan="5" class="table-loading">No active rooms.</td></tr>';
         
         snap.forEach(d => {
             const data = d.data();
-            const hostName = getUserName(data.hostId);
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><strong>${d.id}</strong></td>
                 <td>${courseNamesMap[data.course] || data.course || 'Unknown'}</td>
-                <td>${hostName}</td>
+                <td>${getUserName(data.hostId)}</td>
                 <td><span class="badge ${data.status === 'ended' ? 'b-student' : 'b-admin'}">${data.status}</span></td>
                 <td>
                     <button class="btn-action-del btn-end-room" ${data.status === 'ended' ? 'disabled style="opacity:0.5;"' : ''}>End</button>
@@ -663,26 +544,22 @@ function fetchStudyRooms() {
     });
 }
 
-// === 5. FRIEND CHALLENGES ===
-let unsubChal = null;
+// === 7. FRIEND CHALLENGES ===
 function fetchFriendChallenges() {
     if(unsubChal) return;
     unsubChal = onSnapshot(collection(db, "friend_challenges"), (snap) => {
         const list = document.getElementById('challenges-list');
-        if(!list) return;
-        list.innerHTML = '';
-        if(snap.empty) return list.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 2rem; color: #94a3b8;">No challenges found.</td></tr>';
+        if(!list) return; list.innerHTML = '';
+        if(snap.empty) return list.innerHTML = '<tr><td colspan="6" class="table-loading">No challenges found.</td></tr>';
         
         snap.forEach(d => {
             const data = d.data();
-            const attempts = data.attemptedBy ? data.attemptedBy.length : (data.attempts || 0);
-            const examDetails = `${data.total || '?'} Qs (${data.calcMinutes || '?'} Min)`;
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><strong>${d.id}</strong></td>
                 <td>${data.hostName}</td>
-                <td><span style="background: #f1f5f9; padding: 4px 8px; border-radius: 6px; font-size: 0.85rem;">${examDetails}</span></td>
-                <td><span class="badge b-course">${attempts} Attempt(s)</span></td>
+                <td><span class="badge b-time">${data.total || '?'} Qs (${data.calcMinutes || '?'} Min)</span></td>
+                <td><span class="badge b-course">${data.attemptedBy ? data.attemptedBy.length : (data.attempts || 0)} Attempt(s)</span></td>
                 <td>${data.score} / ${data.total}</td>
                 <td><button class="btn-action-del btn-del-chal">Delete</button></td>
             `;
@@ -692,20 +569,16 @@ function fetchFriendChallenges() {
     });
 }
 
-// === 6. ASSIGNED EXAMS ===
-let unsubExams = null;
+// === 8. ASSIGNED EXAMS ===
 function fetchAssignedExams() {
     if(unsubExams) return;
     unsubExams = onSnapshot(collection(db, "assigned_exams"), (snap) => {
         const list = document.getElementById('assigned-list');
-        if(!list) return;
-        list.innerHTML = '';
-        if(snap.empty) return list.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">No assigned exams.</td></tr>';
+        if(!list) return; list.innerHTML = '';
+        if(snap.empty) return list.innerHTML = '<tr><td colspan="5" class="table-loading">No assigned exams.</td></tr>';
         
         snap.forEach(d => {
             const data = d.data();
-            const dateStr = data.createdAt ? data.createdAt.toDate().toLocaleDateString() : 'N/A';
-            
             let studentsHtml = '';
             (data.assignedTo || []).forEach(uid => {
                 const sName = getUserName(uid);
@@ -717,23 +590,21 @@ function fetchAssignedExams() {
                     const sDoc = allUsersData.find(u => u.uid === uid);
                     if (sDoc) {
                         const allHist = [];
-                        Object.keys(sDoc).forEach(k => {
-                            if (sDoc[k] && sDoc[k].examHistory) allHist.push(...sDoc[k].examHistory);
-                        });
+                        Object.keys(sDoc).forEach(k => { if (sDoc[k] && sDoc[k].examHistory) allHist.push(...sDoc[k].examHistory); });
                         const match = allHist.reverse().find(ex => ex.examName === data.title);
                         if (match) foundScore = `${match.percentage}% (${match.score}/${match.totalQuestions})`;
                     }
                     scoreText = `<span style="color:#10b981; font-weight:bold; font-size:0.75rem;">Done ${foundScore ? '- ' + foundScore : ''}</span>`;
                 }
-                studentsHtml += `<div style="margin-bottom: 4px; display:flex; justify-content:space-between; align-items:center; background:#f8fafc; padding:4px 8px; border-radius:6px; border:1px solid #e2e8f0; font-size:0.85rem;"><span>${sName}</span> ${scoreText}</div>`;
+                studentsHtml += `<div class="flex-between bg-white border-slate p-05 border-radius-6px mb-05 font-sm"><span>${sName}</span> ${scoreText}</div>`;
             });
 
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><strong>${data.title}</strong><div style="font-size:0.8rem; color:#64748b; margin-top:4px;">${data.questions?.length || 0} Qs | ${data.timerMinutes} Min</div></td>
+                <td><strong>${data.title}</strong><div class="text-muted font-sm mt-05">${data.questions?.length || 0} Qs | ${data.timerMinutes} Min</div></td>
                 <td>${getUserName(data.assignedBy)}</td>
-                <td style="min-width: 250px;">${studentsHtml || '<span style="color:#94a3b8;">No students</span>'}</td>
-                <td>${dateStr}</td>
+                <td style="min-width: 250px;">${studentsHtml || '<span class="text-muted">No students</span>'}</td>
+                <td>${data.createdAt ? data.createdAt.toDate().toLocaleDateString() : 'N/A'}</td>
                 <td><button class="btn-action-del btn-del-exam">Delete</button></td>
             `;
             tr.querySelector('.btn-del-exam').onclick = () => { if(confirm("Delete exam assignment?")) deleteDoc(doc(db, "assigned_exams", d.id)); };
@@ -742,14 +613,12 @@ function fetchAssignedExams() {
     });
 }
 
-// === 7. REWARD CLAIMS ===
-let unsubRewards = null;
+// === 9. REWARD CLAIMS ===
 function fetchRewardClaims() {
     if(unsubRewards) return;
     unsubRewards = onSnapshot(collection(db, "reward_claims"), (snap) => {
         const list = document.getElementById('rewards-list');
-        if(!list) return;
-        list.innerHTML = '';
+        if(!list) return; list.innerHTML = '';
         let hasClaims = false;
         
         snap.forEach(d => {
@@ -760,19 +629,18 @@ function fetchRewardClaims() {
             const card = document.createElement('div');
             card.className = "action-card";
             card.innerHTML = `
-                <div style="display:flex; justify-content:space-between; margin-bottom: 10px;">
+                <div class="flex-between mb-10px">
                     <strong>${data.userEmail || data.userId}</strong>
                     <span class="badge b-mentor">${data.rewardTitle || 'Reward'}</span>
                 </div>
-                <p style="color:#475569; font-size:0.9rem;">Requested Item: <strong>${mergedNamesMap[data.requestedItem] || data.requestedItem}</strong></p>
-                <div style="display:flex; gap:10px; margin-top: 15px;">
+                <p class="text-muted font-sm">Requested Item: <strong>${mergedNamesMap[data.requestedItem] || data.requestedItem}</strong></p>
+                <div class="flex-gap-10px mt-15px">
                     <button class="btn-solid btn-approve-claim">Approve & Grant Access</button>
-                    <button class="btn-outline btn-reject-claim" style="border-color:#ef4444; color:#ef4444;">Reject / Delete</button>
+                    <button class="btn-outline btn-reject-claim border-danger text-danger">Reject / Delete</button>
                 </div>
             `;
             card.querySelector('.btn-approve-claim').onclick = async () => {
-                const btn = card.querySelector('.btn-approve-claim');
-                btn.textContent = "Processing..."; btn.disabled = true;
+                const btn = card.querySelector('.btn-approve-claim'); btn.textContent = "Processing..."; btn.disabled = true;
                 try {
                     const uRef = doc(db, "users", data.userId);
                     const uSnap = await getDoc(uRef);
@@ -780,52 +648,31 @@ function fetchRewardClaims() {
                         let subs = uSnap.data().subscriptions || {};
                         let days = prompt(`Approve access to ${data.requestedItem}? Enter number of days (or 'lifetime'):`, "30");
                         if(days) {
-                            let expiry = "lifetime";
-                            if(days !== "lifetime") {
-                                const dt = new Date(); dt.setDate(dt.getDate() + parseInt(days));
-                                expiry = dt.toISOString();
-                            }
-                            subs[data.requestedItem] = expiry;
+                            subs[data.requestedItem] = days === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(days))).toISOString();
                             await updateDoc(uRef, { subscriptions: subs, isPremium: true });
                             await updateDoc(doc(db, "reward_claims", d.id), { status: 'approved' });
-                            alert("Claim approved and access granted.");
-                        } else {
-                            btn.textContent = "Approve & Grant Access"; btn.disabled = false;
-                        }
-                    } else {
-                        alert("User document not found.");
-                        btn.textContent = "Approve & Grant Access"; btn.disabled = false;
+                            alert("Claim approved.");
+                        } else { btn.textContent = "Approve & Grant Access"; btn.disabled = false; }
                     }
-                } catch(e) { 
-                    alert("Error granting reward: " + e.message); 
-                    btn.textContent = "Approve & Grant Access"; btn.disabled = false; 
-                }
+                } catch(e) { alert(e.message); btn.textContent = "Approve & Grant Access"; btn.disabled = false; }
             };
-            card.querySelector('.btn-reject-claim').onclick = async () => {
-                if(confirm("Reject and delete this claim?")) {
-                    await deleteDoc(doc(db, "reward_claims", d.id));
-                }
-            };
+            card.querySelector('.btn-reject-claim').onclick = async () => { if(confirm("Reject claim?")) await deleteDoc(doc(db, "reward_claims", d.id)); };
             list.appendChild(card);
         });
-        if(!hasClaims) list.innerHTML = '<p style="text-align:center; color: #94a3b8; padding: 2rem;">No pending claims.</p>';
+        if(!hasClaims) list.innerHTML = '<p class="table-loading">No pending claims.</p>';
     });
 }
 
-// === 8. PAYMENTS ===
-let unsubscribePayments = null;
-const receiptModal = document.getElementById('receipt-modal');
-if (document.getElementById('btn-close-receipt')) {
-    document.getElementById('btn-close-receipt').onclick = () => receiptModal.style.display = 'none';
-}
+// === 10. PAYMENTS ===
+document.getElementById('btn-close-receipt').onclick = () => document.getElementById('receipt-modal').classList.add('view-hidden');
 
 function fetchPayments() {
     const list = document.getElementById('payments-list');
     if(!list || unsubscribePayments) return;
 
-    const durationIndexMap = { "1": 0, "7": 1, "15": 2, "30": 3, "90": 4, "180": 5, "365": 6, "lifetime": 7 };
-    const baseCoursePrices = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
-    const baseBookPrices = [20, 50, 80, 120, 250, 350, 450, 500];
+    const durMap = { "1": 0, "7": 1, "15": 2, "30": 3, "90": 4, "180": 5, "365": 6, "lifetime": 7 };
+    const baseC = [100, 500, 800, 1200, 2500, 3500, 4500, 5000];
+    const baseB = [20, 50, 80, 120, 250, 350, 450, 500];
 
     unsubscribePayments = onSnapshot(collection(db, "payment_requests"), (qSnap) => {
         list.innerHTML = '';
@@ -836,66 +683,50 @@ function fetchPayments() {
             if(data.status !== 'pending') return;
             hasPending = true;
 
-            const courseCount = (data.courses || []).length;
-            const bookCount = (data.books || []).length;
-            const durationIdx = durationIndexMap[data.durationDays] !== undefined ? durationIndexMap[data.durationDays] : 7;
+            const cCount = (data.courses || []).length;
+            const bCount = (data.books || []).length;
+            const idx = durMap[data.durationDays] !== undefined ? durMap[data.durationDays] : 7;
+            const bDisc = bCount >= 5 ? 0.3 : (bCount >= 3 ? 0.2 : (bCount >= 2 ? 0.1 : 0));
 
-            let bookDiscount = 0;
-            if (bookCount >= 5) bookDiscount = 0.30;
-            else if (bookCount >= 3) bookDiscount = 0.20;
-            else if (bookCount >= 2) bookDiscount = 0.10;
-
-            let expectedTotal = Math.round((courseCount > 0 ? baseCoursePrices[durationIdx] : 0) + ((bookCount * baseBookPrices[durationIdx]) * (1 - bookDiscount)));
-            let originalTotal = expectedTotal;
+            let expectedTotal = Math.round((cCount > 0 ? baseC[idx] : 0) + ((bCount * baseB[idx]) * (1 - bDisc)));
             let promoHtml = '';
-
             if (data.appliedPromoCode && data.promoDiscountApplied > 0) {
+                promoHtml = `<div class="flex-between mt-05 p-05 bg-pink border-pink text-pink font-bold border-radius-8px font-sm"><span>🎟️ Promo: ${data.appliedPromoCode}</span><span>-${data.promoDiscountApplied}%</span></div>`;
                 expectedTotal = Math.round(expectedTotal * (1 - (data.promoDiscountApplied / 100)));
-                promoHtml = `<div style="background: #fdf2f8; border: 1px dashed #f472b6; color: #be185d; padding: 0.5rem; border-radius: 8px; font-size: 0.85rem; font-weight: 800; margin-top: 0.5rem; display: flex; justify-content: space-between;"><span>🎟️ Promo: ${data.appliedPromoCode}</span><span>-${data.promoDiscountApplied}%</span></div><div style="font-size: 0.75rem; color: #94a3b8; text-decoration: line-through; text-align: right; margin-top: 4px;">Original: Rs. ${originalTotal.toLocaleString()}</div>`;
             }
 
             const card = document.createElement('div');
             card.className = "action-card";
             card.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
-                    <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem;">${data.userEmail}</div>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        ${(data.courses || []).map(c => `<span class="badge b-admin" style="background: #1e293b; color: white;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
-                        ${(data.books || []).map(b => `<span class="badge b-admin" style="background: #5b21b6; color: white;">${b.replace('_', ' ').toUpperCase()}</span>`).join('')}
-                        <span class="badge b-course" style="background: #e0f2fe; color: #0369a1;">${data.planName}</span>
+                <div class="flex-between border-bottom-dashed pb-1 mb-1 flex-wrap gap-10px">
+                    <div class="font-bold text-lg text-slate-800">${data.userEmail}</div>
+                    <div class="flex-gap-05 flex-wrap">
+                        ${(data.courses || []).map(c => `<span class="badge b-admin bg-slate-800 text-white">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
+                        ${(data.books || []).map(b => `<span class="badge b-admin bg-purple text-white">${b.replace('_', ' ').toUpperCase()}</span>`).join('')}
                     </div>
                 </div>
-                
-                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.5rem;">
-                    <div style="font-size: 0.75rem; color: #64748b; font-weight: 800; text-transform: uppercase;">Expected Payment</div>
-                    <div style="font-size: 1.8rem; font-weight: 800; color: #10b981;">Rs. ${expectedTotal.toLocaleString()}</div>
+                <div class="bg-slate-50 border-slate border-radius-8px p-1-2 mb-1-5">
+                    <div class="font-sm font-bold text-muted text-uppercase">Expected Payment</div>
+                    <div class="font-bold text-success" style="font-size:1.8rem;">Rs. ${expectedTotal.toLocaleString()}</div>
                     ${promoHtml}
                 </div>
-
-                ${data.receiptUrl ? `
-                <div style="text-align: center; margin: 1.5rem 0;">
-                    <img src="${data.receiptUrl}" style="width: 120px; height: 160px; object-fit: cover; border-radius: 12px; border: 2px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
-                    <div style="margin-top: 0.8rem;"><span class="view-receipt-trigger" style="color: #10b981; font-weight: 800; cursor: pointer;">🔍 View Receipt</span></div>
-                </div>` : `<div style="margin-bottom: 1rem; font-size: 0.8rem; color: #ef4444; font-weight: bold;">No Receipt Attached</div>`}
-                
-                <div style="display: flex; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 150px;">
-                        <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Approve Duration:</label>
-                        <select class="approve-duration" style="width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; font-weight: bold; outline: none;">
-                            <option value="${data.durationDays}">${data.planName} (Requested)</option>
+                ${data.receiptUrl ? `<div class="text-center my-1-5"><img src="${data.receiptUrl}" class="receipt-thumbnail"><div class="mt-08"><span class="view-receipt-trigger font-bold text-success cursor-pointer">🔍 View Receipt</span></div></div>` : `<div class="mb-1 font-bold text-danger font-sm">No Receipt Attached</div>`}
+                <div class="flex-between bg-slate-50 p-1-2 border-slate border-radius-10px flex-wrap gap-1">
+                    <div class="flex-1 min-w-150px">
+                        <label class="modal-label mb-05 d-block">Approve Duration:</label>
+                        <select class="approve-duration select-standard w-100">
+                            <option value="${data.durationDays}">${data.planName}</option>
                             <option value="30">1 Month</option><option value="365">1 Year</option><option value="lifetime">Lifetime</option>
                         </select>
                     </div>
-                    <div style="display: flex; gap: 10px; flex: 1; min-width: 200px;">
-                        <button class="btn-solid btn-approve" style="flex: 1; margin-top: 1.4rem;">Approve</button>
-                        <button class="btn-outline btn-reject" style="flex: 1; margin-top: 1.4rem; border-color: #ef4444; color: #ef4444;">Reject</button>
+                    <div class="flex-gap-10px flex-1 min-w-200px mt-1-4">
+                        <button class="btn-solid btn-approve flex-1">Approve</button>
+                        <button class="btn-outline btn-reject flex-1 border-danger text-danger">Reject</button>
                     </div>
                 </div>
             `;
-
-            const viewTrigger = card.querySelector('.view-receipt-trigger');
-            if (viewTrigger) {
-                viewTrigger.onclick = () => { document.getElementById('receipt-modal-img').src = data.receiptUrl; receiptModal.style.display = 'flex'; };
+            if (card.querySelector('.view-receipt-trigger')) {
+                card.querySelector('.view-receipt-trigger').onclick = () => { document.getElementById('receipt-modal-img').src = data.receiptUrl; document.getElementById('receipt-modal').classList.remove('view-hidden'); };
             }
 
             card.querySelector('.btn-approve').onclick = async () => {
@@ -905,12 +736,10 @@ function fetchPayments() {
                     const uSnap = await getDoc(uRef);
                     if(!uSnap.exists()) return alert("User not found.");
 
-                    let expiryValue = "lifetime";
-                    if(dur !== "lifetime") { const dt = new Date(); dt.setDate(dt.getDate() + parseInt(dur)); expiryValue = dt.toISOString(); }
-
+                    let exp = dur === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(dur))).toISOString();
                     let currentSubs = uSnap.data().subscriptions || {};
-                    (data.courses || []).forEach(c => currentSubs[c] = expiryValue);
-                    (data.books || []).forEach(b => currentSubs[b] = expiryValue);
+                    (data.courses || []).forEach(c => currentSubs[c] = exp);
+                    (data.books || []).forEach(b => currentSubs[b] = exp);
 
                     await updateDoc(uRef, { subscriptions: currentSubs, isPremium: true });
                     await updateDoc(doc(db, "payment_requests", d.id), { status: 'approved' });
@@ -918,56 +747,40 @@ function fetchPayments() {
                 } catch (e) { alert("Error approving payment"); }
             };
 
-            card.querySelector('.btn-reject').onclick = async () => {
-                if(confirm("Reject this payment?")) await updateDoc(doc(db, "payment_requests", d.id), { status: 'rejected' });
-            };
-
+            card.querySelector('.btn-reject').onclick = async () => { if(confirm("Reject?")) await updateDoc(doc(db, "payment_requests", d.id), { status: 'rejected' }); };
             list.appendChild(card);
         });
-
-        if(!hasPending) list.innerHTML = '<p style="text-align: center; color: #94a3b8; padding: 2rem;">No pending payment requests.</p>';
+        if(!hasPending) list.innerHTML = '<p class="table-loading">No pending requests.</p>';
     });
 }
 
-// === 9. KEYS ===
-window.generateKey = async function() {
-    const btn = document.getElementById('btn-generate-key');
-    btn.textContent = "Generating..."; btn.disabled = true;
-
+// === 11. ACCESS KEYS ===
+document.getElementById('btn-generate-key').onclick = async function() {
+    const btn = this; btn.textContent = "Generating..."; btn.disabled = true;
     const course = document.getElementById('key-course').value;
     const duration = document.getElementById('key-duration').value;
     const usage = parseInt(document.getElementById('key-usage').value) || 1;
     const expiry = document.getElementById('key-expiry').value;
-    let customCode = document.getElementById('key-custom').value.trim().toUpperCase();
-    const selectedBooks = Array.from(document.querySelectorAll('.key-book-check:checked')).map(cb => cb.value);
-
-    if(!customCode) customCode = "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+    let code = document.getElementById('key-custom').value.trim().toUpperCase() || "KEY-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+    const books = Array.from(document.querySelectorAll('.key-book-check:checked')).map(cb => cb.value);
 
     try {
-        await setDoc(doc(db, "keys", customCode), {
-            code: customCode, course: course, books: selectedBooks, duration: duration, 
-            maxUsage: usage, usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString()
-        });
-        alert("Key Generated: " + customCode);
-        document.getElementById('key-custom').value = '';
-        document.querySelectorAll('.key-book-check').forEach(cb => cb.checked = false); 
-        fetchKeys();
-    } catch(e) { alert("Error generating key."); } 
-    finally { btn.textContent = "Generate Key"; btn.disabled = false; }
+        await setDoc(doc(db, "keys", code), { code, course, books, duration, maxUsage: usage, usedCount: 0, expiryDate: expiry || null, createdAt: new Date().toISOString() });
+        alert("Key Generated: " + code);
+        document.getElementById('key-custom').value = ''; document.querySelectorAll('.key-book-check').forEach(cb => cb.checked = false); fetchKeys();
+    } catch(e) { alert("Error generating key."); } finally { btn.textContent = "Generate Key"; btn.disabled = false; }
 };
 
 async function fetchKeys() {
     const qSnap = await getDocs(collection(db, "keys"));
     const tbody = document.getElementById('keys-table-body');
     if(!tbody) return; tbody.innerHTML = '';
-    
     qSnap.forEach(d => {
         const data = d.data();
         const tr = document.createElement('tr');
-        let booksHtml = (data.books && data.books.length > 0) ? `<div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">+ Books: ${data.books.map(b => mergedNamesMap[b] || b).join(', ')}</div>` : '';
         tr.innerHTML = `
             <td><strong>${data.code}</strong></td>
-            <td><span class="badge b-course">${mergedNamesMap[data.course] || data.course}</span>${booksHtml}</td>
+            <td><span class="badge b-course">${mergedNamesMap[data.course] || data.course}</span>${data.books?.length ? `<div class="font-sm text-muted mt-05">+ Books: ${data.books.join(', ')}</div>` : ''}</td>
             <td>${data.usedCount} / ${data.maxUsage}</td>
             <td><button class="btn-action-del" onclick="deleteDoc(doc(db, 'keys', '${data.code}')); this.closest('tr').remove();">Delete</button></td>
         `;
@@ -975,39 +788,35 @@ async function fetchKeys() {
     });
 }
 
-// === 10. PROMOS ===
-window.generatePromo = async function() {
+// === 12. PROMO CODES ===
+document.getElementById('btn-generate-promo').onclick = async function() {
     const code = document.getElementById('promo-code').value.trim().toUpperCase();
     const discount = parseInt(document.getElementById('promo-discount').value);
     const expiry = document.getElementById('promo-expiry').value;
-
-    if (!code || isNaN(discount) || discount <= 0 || discount > 100) return alert("Enter valid code and discount %.");
-
-    await setDoc(doc(db, "promo_codes", code), { code: code, discountPercentage: discount, isActive: true, expiryDate: expiry || null, createdAt: new Date().toISOString() });
-    alert("Promo Created: " + code);
-    document.getElementById('promo-code').value = ''; document.getElementById('promo-discount').value = '';
+    if (!code || isNaN(discount) || discount <= 0 || discount > 100) return alert("Enter valid code and %.");
+    await setDoc(doc(db, "promo_codes", code), { code, discountPercentage: discount, isActive: true, expiryDate: expiry || null, createdAt: new Date().toISOString() });
+    alert("Promo Created."); document.getElementById('promo-code').value = ''; document.getElementById('promo-discount').value = '';
 };
 
-let unsubPromos = null;
-window.fetchPromos = async function() {
+async function fetchPromos() {
     if (unsubPromos) return;
     unsubPromos = onSnapshot(collection(db, "promo_codes"), (qSnap) => {
         const tbody = document.getElementById('promos-table-body');
         if(!tbody) return; tbody.innerHTML = '';
-        if(qSnap.empty) return tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem; color: #94a3b8;">No promos found.</td></tr>';
+        if(qSnap.empty) return tbody.innerHTML = '<tr><td colspan="4" class="table-loading">No promos.</td></tr>';
         
         qSnap.forEach(d => {
             const data = d.data();
-            const isExpired = (data.expiryDate && new Date(data.expiryDate) < new Date());
-            const statusBadge = data.isActive && !isExpired ? `<span class="badge" style="background:#dcfce7; color:#166534;">Active</span>` : `<span class="badge" style="background:#fee2e2; color:#991b1b;">${isExpired?'Expired':'Inactive'}</span>`;
+            const isExp = (data.expiryDate && new Date(data.expiryDate) < new Date());
+            const badge = data.isActive && !isExp ? `<span class="badge bg-success text-white">Active</span>` : `<span class="badge bg-danger text-white">${isExp?'Expired':'Inactive'}</span>`;
             
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><strong>${data.code}</strong></td>
-                <td><strong style="color:#10b981;">${data.discountPercentage}% OFF</strong></td>
-                <td>${statusBadge} <small style="color:#64748b; display:block;">Exp: ${data.expiryDate ? new Date(data.expiryDate).toLocaleDateString() : 'None'}</small></td>
+                <td><strong class="text-success">${data.discountPercentage}% OFF</strong></td>
+                <td>${badge} <small class="text-muted d-block">Exp: ${data.expiryDate ? new Date(data.expiryDate).toLocaleDateString() : 'None'}</small></td>
                 <td>
-                    <button class="btn-action-del btn-toggle" style="border-color:#f59e0b; color:#f59e0b;"><i class="fas fa-power-off"></i></button>
+                    <button class="btn-action-del btn-toggle border-warning text-warning"><i class="fas fa-power-off"></i></button>
                     <button class="btn-action-del btn-del"><i class="fas fa-trash-alt"></i></button>
                 </td>
             `;
@@ -1016,32 +825,28 @@ window.fetchPromos = async function() {
             tbody.appendChild(tr);
         });
     });
-};
+}
 
-// === 11. COURSE CHANGE REQUESTS ===
-let unsubReqs = null;
+// === 13. COURSE CHANGE REQUESTS ===
 async function fetchRequests() {
     if (unsubReqs) return;
     unsubReqs = onSnapshot(query(collection(db, "users"), where("courseChangeRequested", "==", true)), (qSnap) => {
         const list = document.getElementById('requests-list');
         if(!list) return; list.innerHTML = '';
-        if(qSnap.empty) return list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No requests.</p>';
+        if(qSnap.empty) return list.innerHTML = '<p class="table-loading">No requests.</p>';
         
         qSnap.forEach(d => {
             const data = d.data();
             const card = document.createElement('div');
             card.className = 'action-card';
             card.innerHTML = `
-                <div style="font-weight: 800; font-size: 1.1rem;">${data.fullName} <span style="font-size:0.85rem; color:#64748b; font-weight:normal;">(${data.email})</span></div>
-                <div style="margin: 15px 0; background: #f8fafc; padding: 10px; border-radius: 8px;">
-                    <span style="color:#ef4444; font-weight:bold;">${courseNamesMap[data.selectedCourse] || data.selectedCourse || 'None'}</span> 
-                    <i class="fas fa-arrow-right" style="margin: 0 10px; color:#cbd5e1;"></i> 
-                    <span style="color:#10b981; font-weight:bold;">${courseNamesMap[data.requestedCourse] || data.requestedCourse}</span>
+                <div class="font-bold text-lg">${data.fullName} <span class="font-sm font-normal text-muted">(${data.email})</span></div>
+                <div class="my-15px bg-slate-50 p-10px border-radius-8px">
+                    <span class="font-bold text-danger">${courseNamesMap[data.selectedCourse] || data.selectedCourse || 'None'}</span> 
+                    <i class="fas fa-arrow-right mx-10px text-slate-300"></i> 
+                    <span class="font-bold text-success">${courseNamesMap[data.requestedCourse] || data.requestedCourse}</span>
                 </div>
-                <div style="display:flex; gap:10px;">
-                    <button class="btn-solid btn-app">Approve</button>
-                    <button class="btn-outline btn-rej" style="border-color:#ef4444; color:#ef4444;">Reject</button>
-                </div>
+                <div class="flex-gap-10px"><button class="btn-solid btn-app">Approve</button><button class="btn-outline btn-rej border-danger text-danger">Reject</button></div>
             `;
             card.querySelector('.btn-app').onclick = () => updateDoc(doc(db, "users", d.id), { selectedCourse: data.requestedCourse, courseChangeRequested: false, requestedCourse: null });
             card.querySelector('.btn-rej').onclick = () => updateDoc(doc(db, "users", d.id), { courseChangeRequested: false, requestedCourse: null });
@@ -1050,8 +855,7 @@ async function fetchRequests() {
     });
 }
 
-// === 12. REPORTS ===
-let unsubReps = null;
+// === 14. REPORTED QUESTIONS ===
 async function fetchReports() {
     if (unsubReps) return; 
     unsubReps = onSnapshot(collection(db, "reported_questions"), (qSnap) => {
@@ -1061,54 +865,38 @@ async function fetchReports() {
         
         qSnap.forEach(d => {
             const data = d.data();
-            
             if(data.status === 'resolved') return;
             hasReports = true;
 
             const card = document.createElement('div');
-            card.className = 'action-card';
-            card.style.borderLeft = "4px solid #ef4444";
+            card.className = 'action-card'; card.style.borderLeft = "4px solid #ef4444";
             card.innerHTML = `
-                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                    <strong>Q-ID: <span style="color:#ef4444;">${data.questionId}</span></strong>
-                    <span style="color:#94a3b8; font-size:0.8rem;">${data.timestamp ? data.timestamp.toDate().toLocaleDateString() : ''}</span>
+                <div class="flex-between mb-10px">
+                    <strong>Q-ID: <span class="text-danger">${data.questionId}</span></strong>
+                    <span class="text-muted font-sm">${data.timestamp ? data.timestamp.toDate().toLocaleDateString() : ''}</span>
                 </div>
-                <div style="background:#f8fafc; padding:10px; border-radius:6px; font-size:0.9rem; color:#475569; font-style:italic; margin-bottom:10px;">${data.questionText}</div>
-                <p style="color:#1e293b; font-size:0.95rem;"><strong>Reason:</strong> ${data.reason}</p>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; border-top:1px solid #e2e8f0; padding-top:10px;">
-                    <small style="color:#64748b;">By: ${data.userEmail}</small>
-                    <div style="display: flex; gap: 10px;">
-                        <button class="btn-solid btn-edit-report" style="background: #3b82f6; border: none; padding:0.4rem 1rem; color: white;"><i class="fas fa-edit"></i> Edit Q</button>
-                        <button class="btn-outline btn-res" style="border-color:#10b981; color:#10b981; padding:0.4rem 1rem;"><i class="fas fa-check"></i> Mark Solved</button>
+                <div class="bg-slate-50 p-10px border-radius-6px font-sm text-slate-600 font-italic mb-10px">${data.questionText}</div>
+                <p class="text-slate-800 font-sm"><strong>Reason:</strong> ${data.reason}</p>
+                <div class="flex-between align-center mt-15px border-top-slate pt-10px">
+                    <small class="text-muted">By: ${data.userEmail}</small>
+                    <div class="flex-gap-10px">
+                        <button class="btn-solid btn-edit-report bg-blue text-white p-04-1"><i class="fas fa-edit"></i> Edit Q</button>
+                        <button class="btn-outline btn-res border-success text-success p-04-1"><i class="fas fa-check"></i> Mark Solved</button>
                     </div>
                 </div>
             `;
 
             card.querySelector('.btn-edit-report').onclick = async (e) => {
-                const btn = e.currentTarget;
-                const originalHtml = btn.innerHTML;
-                
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-                btn.disabled = true;
-
+                const btn = e.currentTarget; const origHtml = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>'; btn.disabled = true;
                 try {
                     let qData = null;
                     const knownBooks = ['firstaid_step1', 'firstaid_step2', 'im_medicine', 'im_surgery', 'im_pathology', 'im_pediatrics', 'brs_patho', 'brs_physio', 'pretest_surgery', 'rafiullah', 'RWR', 'doubleAA'];
-                    
                     if (data.courseFile) {
-                        const isBook = knownBooks.includes(data.courseFile);
-                        const folder = isBook ? 'Books' : 'Data';
-                        const url = `${folder}/${data.courseFile}_questions.json`;
-                        
+                        const url = `${knownBooks.includes(data.courseFile) ? 'Books' : 'Data'}/${data.courseFile}_questions.json`;
                         const res = await fetch(url, { cache: 'no-cache' });
-                        if (res.ok) {
-                            const qs = await res.json();
-                            qData = qs.find(q => String(q.id || q.QuestionID) === String(data.questionId));
-                        }
+                        if (res.ok) qData = (await res.json()).find(q => String(q.id || q.QuestionID) === String(data.questionId));
                     }
 
-                    const editModal = document.getElementById('admin-edit-modal');
-                    
                     if (!window.editQuillHint) {
                         const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];
                         window.editQuillHint = new Quill('#edit-q-hint', { theme: 'snow', modules: { toolbar: tb } });
@@ -1120,158 +908,81 @@ async function fetchReports() {
                     document.getElementById('edit-q-subject').value = qData?.subject || '';
                     document.getElementById('edit-q-chapter').value = qData?.chapter || '';
                     document.getElementById('edit-q-topic').value = qData?.topic || '';
-                    
-                    let yearVal = qData?.year || '';
-                    document.getElementById('edit-q-year').value = Array.isArray(yearVal) ? yearVal.join(', ') : yearVal;
-                    
-                    let examVal = qData?.exams || qData?.exam || '';
-                    document.getElementById('edit-q-exam').value = Array.isArray(examVal) ? examVal.join(', ') : examVal;
-                    
+                    document.getElementById('edit-q-year').value = Array.isArray(qData?.year) ? qData?.year.join(', ') : (qData?.year || '');
+                    document.getElementById('edit-q-exam').value = Array.isArray(qData?.exams || qData?.exam) ? (qData?.exams || qData?.exam).join(', ') : (qData?.exams || qData?.exam || '');
                     document.getElementById('edit-q-diff').value = (qData?.difficulty || 'medium').toLowerCase();
-                    
-                    window.editQuillHint.root.innerHTML = qData?.hint || '';
-                    window.editQuillExp.root.innerHTML = qData?.explanation || '';
+                    window.editQuillHint.root.innerHTML = qData?.hint || ''; window.editQuillExp.root.innerHTML = qData?.explanation || '';
 
-                    const destSelect = document.getElementById('edit-q-dest');
-                    destSelect.value = ''; 
-                    if (data.courseFile) {
-                        const prefix = knownBooks.includes(data.courseFile) ? 'BOOK:' : 'COURSE:';
-                        const possibleOptions = Array.from(destSelect.options).map(o => o.value);
-                        if (possibleOptions.includes(`${prefix}${data.courseFile}`)) {
-                            destSelect.value = `${prefix}${data.courseFile}`;
-                        }
+                    const destSelect = document.getElementById('edit-q-dest'); destSelect.value = ''; 
+                    if (data.courseFile && Array.from(destSelect.options).map(o => o.value).includes(`${knownBooks.includes(data.courseFile) ? 'BOOK:' : 'COURSE:'}${data.courseFile}`)) {
+                        destSelect.value = `${knownBooks.includes(data.courseFile) ? 'BOOK:' : 'COURSE:'}${data.courseFile}`;
                     }
 
-                    const optsContainer = document.getElementById('edit-options-container');
-                    optsContainer.innerHTML = '';
-                    const fetchedOptions = qData?.options || {};
-                    const correctAns = (qData?.correctAnswer || 'A').toUpperCase();
+                    const optsContainer = document.getElementById('edit-options-container'); optsContainer.innerHTML = '';
+                    const fOpts = qData?.options || {}; const cAns = (qData?.correctAnswer || 'A').toUpperCase();
 
                     for (let i = 0; i < 5; i++) {
                         const letter = String.fromCharCode(65 + i);
-                        const isChecked = (correctAns === letter) ? "checked" : (i === 0 && !qData ? "checked" : "");
-                        const optValue = (fetchedOptions[letter] || '').replace(/"/g, '&quot;');
-                        
-                        optsContainer.innerHTML += `
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="radio" name="edit-correct-opt" value="${i}" ${isChecked} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
-                                <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
-                                <input type="text" id="edit-opt-${i}" value="${optValue}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
-                            </div>
-                        `;
+                        optsContainer.innerHTML += `<div class="flex-align-center gap-10px"><input type="radio" name="edit-correct-opt" value="${i}" ${cAns === letter ? "checked" : (i===0&&!qData?"checked":"")} class="radio-large"><span class="font-bold text-slate-800 w-20px">${letter})</span><input type="text" id="edit-opt-${i}" value="${(fOpts[letter] || '').replace(/"/g, '&quot;')}" class="input-standard flex-1"></div>`;
                     }
-
-                    editModal.style.display = 'flex';
-
-                } catch (error) {
-                    console.error("Failed to load full question data:", error);
-                    alert("Network error: Could not fetch the full question details. Modal will load with limited data.");
-                } finally {
-                    btn.innerHTML = originalHtml;
-                    btn.disabled = false;
-                }
+                    document.getElementById('admin-edit-modal').classList.remove('view-hidden');
+                } catch (err) { alert("Failed to fetch full data."); } finally { btn.innerHTML = origHtml; btn.disabled = false; }
             };
 
-            card.querySelector('.btn-res').onclick = async () => { 
-                if(confirm("Are you sure this issue is fixed?")) {
-                    await updateDoc(doc(db, "reported_questions", d.id), {
-                        status: 'resolved',
-                        resolvedAt: new Date().toISOString()
-                    });
-                }
-            };
+            card.querySelector('.btn-res').onclick = async () => { if(confirm("Resolved?")) await updateDoc(doc(db, "reported_questions", d.id), { status: 'resolved', resolvedAt: new Date().toISOString() }); };
             list.appendChild(card);
         });
-
-        if(!hasReports) list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No pending reported questions.</p>';
+        if(!hasReports) list.innerHTML = '<p class="table-loading">No pending reported questions.</p>';
     });
 }
 
-// === MODAL ACTION BUTTONS ===
-document.addEventListener('click', (e) => {
-    if (e.target && e.target.id === 'btn-cancel-edit') {
-        document.getElementById('admin-edit-modal').style.display = 'none';
-    }
-});
+document.getElementById('btn-cancel-edit').onclick = () => document.getElementById('admin-edit-modal').classList.add('view-hidden');
 
-document.addEventListener('click', (e) => {
-    const btnSaveGithub = e.target.closest('#btn-save-github');
-    if (!btnSaveGithub) return;
-
+document.getElementById('btn-save-github').onclick = () => {
     const destVal = document.getElementById('edit-q-dest').value;
-    if (!destVal) return alert("You must select a Target Destination.");
-
-    const targetVal = destVal.split(':');
-    const isBook = targetVal[0] === 'BOOK';
-    const courseFile = targetVal[1];
-
+    if (!destVal) return alert("Select Destination.");
     const targetId = document.getElementById('edit-q-id').value;
-    if (!targetId) return alert("Question ID is missing.");
+    if (!targetId) return alert("ID missing.");
 
     let correctLetter = "A";
-    document.querySelectorAll('input[name="edit-correct-opt"]').forEach((radio, index) => {
-        if (radio.checked) correctLetter = String.fromCharCode(65 + index);
-    });
+    document.querySelectorAll('input[name="edit-correct-opt"]').forEach((r, i) => { if (r.checked) correctLetter = String.fromCharCode(65 + i); });
 
     const updatedRow = {
-        "QuestionID": targetId,
-        "Year": document.getElementById('edit-q-year').value.trim(),
-        "Exam": document.getElementById('edit-q-exam').value.trim(),
-        "Subject": document.getElementById('edit-q-subject').value.trim(),
-        "Chapter": document.getElementById('edit-q-chapter').value.trim(),
-        "Topic": document.getElementById('edit-q-topic').value.trim(),
-        "Question": document.getElementById('edit-q-text').value.trim(),
-        "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
-        "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
-        "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
-        "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "",
-        "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
-        "CorrectAnswer": correctLetter,
-        "Explanation": window.editQuillExp ? window.editQuillExp.root.innerHTML : "",
-        "Hint": window.editQuillHint ? window.editQuillHint.root.innerHTML : "",
-        "Difficulty": document.getElementById('edit-q-diff').value
+        "QuestionID": targetId, "Year": document.getElementById('edit-q-year').value.trim(), "Exam": document.getElementById('edit-q-exam').value.trim(),
+        "Subject": document.getElementById('edit-q-subject').value.trim(), "Chapter": document.getElementById('edit-q-chapter').value.trim(), "Topic": document.getElementById('edit-q-topic').value.trim(),
+        "Question": document.getElementById('edit-q-text').value.trim(), "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "", "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
+        "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "", "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "", "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
+        "CorrectAnswer": correctLetter, "Explanation": window.editQuillExp?.root.innerHTML || "", "Hint": window.editQuillHint?.root.innerHTML || "", "Difficulty": document.getElementById('edit-q-diff').value
     };
 
-    let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+    let q = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+    const idx = q.findIndex(item => item.row["QuestionID"] === targetId);
+    const item = { row: updatedRow, courseFile: destVal.split(':')[1], isBook: destVal.split(':')[0] === 'BOOK' };
+    idx !== -1 ? q[idx] = item : q.push(item);
     
-    const existingIndex = pendingEditsQueue.findIndex(item => item.row["QuestionID"] === targetId);
-    if (existingIndex !== -1) {
-        pendingEditsQueue[existingIndex] = { row: updatedRow, courseFile, isBook };
-    } else {
-        pendingEditsQueue.push({ row: updatedRow, courseFile, isBook });
-    }
-    
-    localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
-    updatePendingCount();
+    localStorage.setItem('edeetos_pending_edits', JSON.stringify(q));
+    updatePendingCount(); document.getElementById('admin-edit-modal').classList.add('view-hidden'); alert('Fix added to queue!');
+};
 
-    document.getElementById('admin-edit-modal').style.display = 'none';
-    alert('Question fix added to your browser queue! Click "Push Database to GitHub" to publish it live.');
-});
-
-// === 13. MESSAGES ===
-let unsubMsgs = null;
+// === 15. CONTACT MESSAGES ===
 async function fetchMessages() {
     if (unsubMsgs) return; 
     unsubMsgs = onSnapshot(collection(db, "contact_messages"), (qSnap) => {
         const list = document.getElementById('messages-list');
         if(!list) return; list.innerHTML = '';
-        if(qSnap.empty) return list.innerHTML = '<p style="text-align:center; color:#94a3b8; padding: 2rem;">No messages.</p>';
+        if(qSnap.empty) return list.innerHTML = '<p class="table-loading">No messages.</p>';
         
         qSnap.forEach(d => {
             const data = d.data();
-            const cleanWhatsapp = data.whatsapp ? data.whatsapp.replace(/[^0-9]/g, '') : '';
             const card = document.createElement('div');
-            card.className = 'action-card';
-            card.style.borderLeft = "4px solid #3b82f6";
+            card.className = 'action-card'; card.style.borderLeft = "4px solid #3b82f6";
             card.innerHTML = `
-                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                    <strong>${data.name}</strong> <span style="color:#94a3b8; font-size:0.8rem;">${data.timestamp ? new Date(data.timestamp).toLocaleDateString() : ''}</span>
+                <div class="flex-between mb-5px"><strong>${data.name}</strong> <span class="text-muted font-sm">${data.timestamp ? new Date(data.timestamp).toLocaleDateString() : ''}</span></div>
+                <div class="font-sm text-blue mb-15px">
+                    <a href="mailto:${data.email}" class="mr-15px text-none text-blue">📧 ${data.email}</a>
+                    ${data.whatsapp ? `<a href="https://wa.me/${data.whatsapp.replace(/[^0-9]/g, '')}" target="_blank" class="text-none text-success">💬 ${data.whatsapp}</a>` : ''}
                 </div>
-                <div style="font-size:0.85rem; color:#3b82f6; margin-bottom:15px;">
-                    <a href="mailto:${data.email}" style="color:#3b82f6; text-decoration:none; margin-right:15px;">📧 ${data.email}</a>
-                    ${data.whatsapp ? `<a href="https://wa.me/${cleanWhatsapp}" target="_blank" style="color:#10b981; text-decoration:none;">💬 ${data.whatsapp}</a>` : ''}
-                </div>
-                <div style="background:#f8fafc; padding:15px; border-radius:8px; color:#334155; line-height:1.6; margin-bottom:15px; white-space: pre-wrap;">${data.message}</div>
+                <div class="bg-slate-50 p-15px border-radius-8px text-slate-800 line-height-1-6 mb-15px white-space-pre">${data.message}</div>
                 <button class="btn-action-del" onclick="deleteDoc(doc(db, 'contact_messages', '${d.id}'));"><i class="fas fa-trash"></i> Delete</button>
             `;
             list.appendChild(card);

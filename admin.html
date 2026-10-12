@@ -17,8 +17,8 @@
         <!-- === SIDEBAR NAVIGATION === -->
         <aside class="admin-sidebar" id="admin-sidebar">
             <div class="sidebar-brand">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-shield-alt" style="color: #ef4444; font-size: 1.5rem;"></i>
+                <div class="brand-logo">
+                    <i class="fas fa-shield-alt"></i>
                     <span>Super Admin</span>
                 </div>
                 <button id="close-mobile-sidebar" class="mobile-only-btn"><i class="fas fa-times"></i></button>
@@ -30,25 +30,25 @@
                 <button class="sidebar-link" onclick="switchView('addq')"><i class="fas fa-plus-circle"></i> Add Question</button>
                 <button class="sidebar-link" onclick="switchView('users')"><i class="fas fa-users"></i> User Manager</button>
                 
-                <div class="menu-label" style="margin-top: 1.5rem;">Study & Engagement</div>
+                <div class="menu-label mt-1-5">Study & Engagement</div>
                 <button class="sidebar-link" onclick="switchView('studyrooms')"><i class="fas fa-chalkboard-teacher"></i> Study Rooms</button>
                 <button class="sidebar-link" onclick="switchView('challenges')"><i class="fas fa-trophy"></i> Friend Challenges</button>
                 <button class="sidebar-link" onclick="switchView('assigned')"><i class="fas fa-tasks"></i> Assigned Exams</button>
                 
-                <div class="menu-label" style="margin-top: 1.5rem;">Commerce & Access</div>
+                <div class="menu-label mt-1-5">Commerce & Access</div>
                 <button class="sidebar-link" onclick="switchView('payments')"><i class="fas fa-file-invoice-dollar"></i> Payment Requests</button>
                 <button class="sidebar-link" onclick="switchView('keys')"><i class="fas fa-key"></i> Access Keys</button>
                 <button class="sidebar-link" onclick="switchView('promos')"><i class="fas fa-tags"></i> Promo Codes</button>
                 <button class="sidebar-link" onclick="switchView('rewards')"><i class="fas fa-gift"></i> Reward Claims</button>
 
-                <div class="menu-label" style="margin-top: 1.5rem;">Support & Logs</div>
+                <div class="menu-label mt-1-5">Support & Logs</div>
                 <button class="sidebar-link" onclick="switchView('requests')"><i class="fas fa-exchange-alt"></i> Course Changes</button>
                 <button class="sidebar-link" onclick="switchView('reports')"><i class="fas fa-flag"></i> Flagged Questions</button>
                 <button class="sidebar-link" onclick="switchView('messages')"><i class="fas fa-envelope"></i> Contact Messages</button>
             </div>
             
-            <div style="padding: 1.5rem; border-top: 1px solid #f1f5f9; margin-top: auto;">
-                <button class="exit-btn" id="btn-exit-admin" style="width: 100%;"><i class="fas fa-sign-out-alt"></i> Exit to Dashboard</button>
+            <div class="sidebar-footer">
+                <button class="exit-btn w-100" id="btn-exit-admin"><i class="fas fa-sign-out-alt"></i> Exit to Dashboard</button>
             </div>
         </aside>
 
@@ -63,34 +63,34 @@
 
             <div class="admin-content-wrapper">
                 
-                <!-- 1. DEFAULT VIEW: DATABASE OVERVIEW -->
-                <div id="view-database" class="admin-content" style="display: block;">
+                <!-- 1. DATABASE OVERVIEW -->
+                <div id="view-database" class="admin-content view-active">
                     <h2 class="page-title">Database Overview</h2>
                     <div id="database-breakdown-box" class="glass-box">
-                        <h3 style="margin-top: 0; color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-                            <i class="fas fa-server" style="color: #3b82f6; margin-right: 8px;"></i> Live Question Bank Status
+                        <h3 class="box-header">
+                            <i class="fas fa-server box-icon-blue"></i> Live Question Bank Status
                         </h3>
                         <div id="database-breakdown-content">
-                            <p style="color: #64748b;">Scanning JSON files...</p>
+                            <p class="text-muted">Scanning JSON files...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 2. ADD QUESTION VIEW -->
-                <div id="view-addq" class="admin-content" style="display: none;">
+                <div id="view-addq" class="admin-content view-hidden">
                     <h2 class="page-title">Add New Question</h2>
                     
-                    <div class="glass-box" style="margin-bottom: 2rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; flex-wrap: wrap; gap: 15px;">
-                            <h3 style="margin: 0; color: #1e3a8a;"><i class="fas fa-edit"></i> Question Compiler</h3>
-                            <button id="btn-admin-push" class="btn-solid" style="background: #f59e0b; border: none; padding: 0.8rem 1.5rem;">
-                                <i class="fas fa-cloud-upload-alt" style="margin-right: 8px;"></i> Push Database to GitHub 
-                                <span id="admin-pending-count" class="badge" style="background: white; color: #f59e0b; margin-left: 10px; font-size: 0.85rem;">0</span>
+                    <div class="glass-box mb-2">
+                        <div class="compiler-header">
+                            <h3 class="box-title-blue"><i class="fas fa-edit"></i> Question Compiler</h3>
+                            <button id="btn-admin-push" class="btn-solid btn-warning">
+                                <i class="fas fa-cloud-upload-alt mr-1"></i> Push Database to GitHub 
+                                <span id="admin-pending-count" class="badge badge-light-warning">0</span>
                             </button>
                         </div>
 
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-                            <div style="grid-column: 1 / -1;" class="form-group">
+                        <div class="form-grid">
+                            <div class="form-group grid-full">
                                 <label>Target Destination</label>
                                 <select id="add-q-dest">
                                     <optgroup label="Core Courses">
@@ -131,59 +131,57 @@
 
                         <div class="form-group">
                             <label>Question Text *</label>
-                            <textarea id="add-q-txt" rows="5" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #e2e8f0; font-family: inherit; resize: vertical; outline: none; transition: 0.2s;" placeholder="Type the question statement here..."></textarea>
+                            <textarea id="add-q-txt" rows="5" class="textarea-full" placeholder="Type the question statement here..."></textarea>
                         </div>
 
-                        <div class="form-group" style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-                            <label style="color: #0f172a; font-size: 1rem; margin-bottom: 1rem;"><i class="fas fa-list"></i> Options (Select radio to set Correct Answer)</label>
+                        <div class="form-group options-container">
+                            <label class="options-label"><i class="fas fa-list"></i> Options (Select radio to set Correct Answer)</label>
                             
-                            <div style="display: grid; grid-template-columns: max-content max-content 1fr; gap: 0.8rem 15px; align-items: center; width: 100%;">
-                                <input type="radio" name="add-correct-opt" value="A" checked style="transform: scale(1.5); cursor: pointer; margin: 0;">
-                                <span style="font-weight: 900; color: #1e293b;">A)</span>
-                                <input type="text" id="add-opt-a" style="width: 100%; box-sizing: border-box; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; background: rgba(255, 255, 255, 0.7);">
+                            <div class="options-grid">
+                                <input type="radio" name="add-correct-opt" value="A" checked class="radio-large">
+                                <span class="opt-letter">A)</span>
+                                <input type="text" id="add-opt-a" class="opt-input">
                                 
-                                <input type="radio" name="add-correct-opt" value="B" style="transform: scale(1.5); cursor: pointer; margin: 0;">
-                                <span style="font-weight: 900; color: #1e293b;">B)</span>
-                                <input type="text" id="add-opt-b" style="width: 100%; box-sizing: border-box; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; background: rgba(255, 255, 255, 0.7);">
+                                <input type="radio" name="add-correct-opt" value="B" class="radio-large">
+                                <span class="opt-letter">B)</span>
+                                <input type="text" id="add-opt-b" class="opt-input">
                                 
-                                <input type="radio" name="add-correct-opt" value="C" style="transform: scale(1.5); cursor: pointer; margin: 0;">
-                                <span style="font-weight: 900; color: #1e293b;">C)</span>
-                                <input type="text" id="add-opt-c" style="width: 100%; box-sizing: border-box; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; background: rgba(255, 255, 255, 0.7);">
+                                <input type="radio" name="add-correct-opt" value="C" class="radio-large">
+                                <span class="opt-letter">C)</span>
+                                <input type="text" id="add-opt-c" class="opt-input">
                                 
-                                <input type="radio" name="add-correct-opt" value="D" style="transform: scale(1.5); cursor: pointer; margin: 0;">
-                                <span style="font-weight: 900; color: #1e293b;">D)</span>
-                                <input type="text" id="add-opt-d" style="width: 100%; box-sizing: border-box; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; background: rgba(255, 255, 255, 0.7);">
+                                <input type="radio" name="add-correct-opt" value="D" class="radio-large">
+                                <span class="opt-letter">D)</span>
+                                <input type="text" id="add-opt-d" class="opt-input">
                                 
-                                <input type="radio" name="add-correct-opt" value="E" style="transform: scale(1.5); cursor: pointer; margin: 0;">
-                                <span style="font-weight: 900; color: #1e293b;">E)</span>
-                                <input type="text" id="add-opt-e" style="width: 100%; box-sizing: border-box; padding: 0.8rem; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; background: rgba(255, 255, 255, 0.7);">
+                                <input type="radio" name="add-correct-opt" value="E" class="radio-large">
+                                <span class="opt-letter">E)</span>
+                                <input type="text" id="add-opt-e" class="opt-input">
                             </div>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 4rem;">
-                            <label><i class="fas fa-chalkboard-teacher" style="color: #3b82f6;"></i> Explanation</label>
-                            <div id="add-q-exp" style="height: 200px; background: white; border-radius: 0 0 10px 10px; color: #000;"></div>
+                        <div class="form-group mb-4">
+                            <label><i class="fas fa-chalkboard-teacher icon-blue"></i> Explanation</label>
+                            <div id="add-q-exp" class="quill-container q-exp-height"></div>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 4rem;">
-                            <label><i class="fas fa-lightbulb" style="color: #f59e0b;"></i> Hint</label>
-                            <div id="add-q-hnt" style="height: 120px; background: white; border-radius: 0 0 10px 10px; color: #000;"></div>
+                        <div class="form-group mb-4">
+                            <label><i class="fas fa-lightbulb icon-warning"></i> Hint</label>
+                            <div id="add-q-hnt" class="quill-container q-hnt-height"></div>
                         </div>
 
-                        <button id="btn-save-new-q" class="btn-solid" style="width: 100%; font-size: 1.1rem; padding: 1.2rem; background: linear-gradient(135deg, #3b82f6, #2563eb);">
-                            <i class="fas fa-save" style="margin-right: 8px;"></i> Save Question to Queue
+                        <button id="btn-save-new-q" class="btn-solid btn-full-blue">
+                            <i class="fas fa-save mr-1"></i> Save Question to Queue
                         </button>
                     </div>
                 </div>
 
                 <!-- 3. USERS VIEW -->
-                <div id="view-users" class="admin-content" style="display: none;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 10px;">
-                        <h2 class="page-title" style="margin-bottom: 0;">User Manager</h2>
-                        
-                        <!-- THE NEW DATA MIGRATION BUTTON -->
-                        <button id="btn-fix-usernames" class="btn-solid" style="background: #ef4444; color: white; padding: 0.8rem 1.5rem; font-size: 0.9rem;">
-                            <i class="fas fa-tools" style="margin-right: 8px;"></i> Migrate Old Usernames
+                <div id="view-users" class="admin-content view-hidden">
+                    <div class="flex-between mb-2">
+                        <h2 class="page-title m-0">User Manager</h2>
+                        <button id="btn-fix-usernames" class="btn-solid btn-danger btn-sm">
+                            <i class="fas fa-tools mr-1"></i> Migrate Old Usernames
                         </button>
                     </div>
                     
@@ -191,71 +189,71 @@
                         <input type="text" id="admin-search-input" class="search-input" placeholder="Search by Name, Email, or Phone...">
                         <button id="admin-search-btn" class="search-btn">Search</button>
                     </div>
-                    <div class="glass-box" style="padding: 0; max-height: 600px; overflow-y: auto;">
-                        <div style="font-size: 0.8rem; color: #64748b; font-weight: 800; padding: 1rem; border-bottom: 2px solid #e2e8f0;">
+                    <div class="glass-box p-0 users-box">
+                        <div class="user-count-header">
                             <span id="user-count">0</span> Users Found
                         </div>
-                        <div id="users-list" style="padding: 0 1rem;">
-                            <p style="text-align: center; color: #94a3b8; padding: 2rem;">Loading users database...</p>
+                        <div id="users-list" class="users-list-container">
+                            <p class="text-center text-muted p-2">Loading users database...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 4. STUDY ROOMS VIEW -->
-                <div id="view-studyrooms" class="admin-content" style="display: none;">
+                <div id="view-studyrooms" class="admin-content view-hidden">
                     <h2 class="page-title">Active Study Rooms</h2>
-                    <div class="glass-box" style="padding: 0; overflow-x: auto;">
+                    <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
                             <thead><tr><th>Room Code</th><th>Course</th><th>Host Name</th><th>Status</th><th>Actions</th></tr></thead>
-                            <tbody id="studyrooms-list"><tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">Loading...</td></tr></tbody>
+                            <tbody id="studyrooms-list"><tr><td colspan="5" class="table-loading">Loading...</td></tr></tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- 5. FRIEND CHALLENGES VIEW -->
-                <div id="view-challenges" class="admin-content" style="display: none;">
+                <div id="view-challenges" class="admin-content view-hidden">
                     <h2 class="page-title">Friend Challenges</h2>
-                    <div class="glass-box" style="padding: 0; overflow-x: auto;">
+                    <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
                             <thead><tr><th>Code</th><th>Created By</th><th>Exam Details</th><th>Attempts</th><th>Target Score</th><th>Actions</th></tr></thead>
-                            <tbody id="challenges-list"><tr><td colspan="6" style="text-align:center; padding: 2rem; color: #94a3b8;">Loading...</td></tr></tbody>
+                            <tbody id="challenges-list"><tr><td colspan="6" class="table-loading">Loading...</td></tr></tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- 6. ASSIGNED EXAMS VIEW -->
-                <div id="view-assigned" class="admin-content" style="display: none;">
+                <div id="view-assigned" class="admin-content view-hidden">
                     <h2 class="page-title">Assigned Exams (Mentors)</h2>
-                    <div class="glass-box" style="padding: 0; overflow-x: auto;">
+                    <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
                             <thead><tr><th>Exam Title</th><th>Assigned By</th><th>Students & Status</th><th>Date</th><th>Actions</th></tr></thead>
-                            <tbody id="assigned-list"><tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">Loading...</td></tr></tbody>
+                            <tbody id="assigned-list"><tr><td colspan="5" class="table-loading">Loading...</td></tr></tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- 7. REWARD CLAIMS VIEW -->
-                <div id="view-rewards" class="admin-content" style="display: none;">
+                <div id="view-rewards" class="admin-content view-hidden">
                     <h2 class="page-title">Manual Reward Claims</h2>
                     <div id="rewards-list">
-                        <p style="text-align: center; color: #94a3b8; padding: 2rem;">No pending reward claims.</p>
+                        <p class="table-loading">No pending reward claims.</p>
                     </div>
                 </div>
 
                 <!-- 8. PAYMENTS VIEW -->
-                <div id="view-payments" class="admin-content" style="display: none;">
+                <div id="view-payments" class="admin-content view-hidden">
                     <h2 class="page-title">Payment Requests</h2>
                     <div id="payments-list">
-                        <p style="text-align: center; color: #94a3b8;">No pending payment requests.</p>
+                        <p class="text-center text-muted">No pending payment requests.</p>
                     </div>
                 </div>
 
                 <!-- 9. KEYS VIEW -->
-                <div id="view-keys" class="admin-content" style="display: none;">
+                <div id="view-keys" class="admin-content view-hidden">
                     <h2 class="page-title">Access Keys</h2>
-                    <div class="glass-box" style="margin-bottom: 2rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <div class="form-group" style="grid-column: span 2;">
+                    <div class="glass-box mb-2">
+                        <div class="grid-half gap-1">
+                            <div class="form-group grid-full">
                                 <label>Key for Course:</label>
                                 <select id="key-course">
                                     <option value="NONE">None (Books Only)</option>
@@ -265,19 +263,19 @@
                                     <option value="ALL">All Courses (Full Premium)</option>
                                 </select>
                             </div>
-                            <div class="form-group" style="grid-column: span 2;">
+                            <div class="form-group grid-full">
                                 <label>Include Books (Optional):</label>
-                                <div style="display: flex; flex-wrap: wrap; gap: 10px; background: #f8fafc; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="firstaid_step1"> FA Step 1</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="firstaid_step2"> FA Step 2</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="im_medicine"> IM Med</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="im_surgery"> IM Surg</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="im_pathology"> IM Path</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="im_pediatrics"> IM Peds</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="brs_patho"> BRS Path</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="brs_physio"> BRS Physio</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="rafiullah"> Rafiullah</label>
-                                    <label style="font-size: 0.8rem;"><input type="checkbox" class="key-book-check" value="doubleAA"> Double AA</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" class="key-book-check" value="firstaid_step1"> FA Step 1</label>
+                                    <label><input type="checkbox" class="key-book-check" value="firstaid_step2"> FA Step 2</label>
+                                    <label><input type="checkbox" class="key-book-check" value="im_medicine"> IM Med</label>
+                                    <label><input type="checkbox" class="key-book-check" value="im_surgery"> IM Surg</label>
+                                    <label><input type="checkbox" class="key-book-check" value="im_pathology"> IM Path</label>
+                                    <label><input type="checkbox" class="key-book-check" value="im_pediatrics"> IM Peds</label>
+                                    <label><input type="checkbox" class="key-book-check" value="brs_patho"> BRS Path</label>
+                                    <label><input type="checkbox" class="key-book-check" value="brs_physio"> BRS Physio</label>
+                                    <label><input type="checkbox" class="key-book-check" value="rafiullah"> Rafiullah</label>
+                                    <label><input type="checkbox" class="key-book-check" value="doubleAA"> Double AA</label>
                                 </div>
                             </div>
                             <div class="form-group"><label>Plan Duration</label><select id="key-duration"><option value="1">1 Day</option><option value="7">1 Week</option><option value="15">15 Days</option><option value="30">1 Month</option><option value="90">3 Months</option><option value="180">6 Months</option><option value="365">1 Year</option><option value="lifetime">Lifetime</option></select></div>
@@ -285,9 +283,9 @@
                             <div class="form-group"><label>Max Users</label><input type="number" id="key-usage" value="1"></div>
                             <div class="form-group"><label>Expires On</label><input type="date" id="key-expiry"></div>
                         </div>
-                        <button id="btn-generate-key" class="btn-solid" style="margin-top: 1rem;" onclick="generateKey()">Generate Key</button>
+                        <button id="btn-generate-key" class="btn-solid mt-1">Generate Key</button>
                     </div>
-                    <div class="glass-box" style="padding: 0; overflow-x: auto;">
+                    <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
                             <thead><tr><th>Code</th><th>Grants Access To</th><th>Usage</th><th>Action</th></tr></thead>
                             <tbody id="keys-table-body"></tbody>
@@ -296,40 +294,40 @@
                 </div>
 
                 <!-- 10. PROMOS VIEW -->
-                <div id="view-promos" class="admin-content" style="display: none;">
+                <div id="view-promos" class="admin-content view-hidden">
                     <h2 class="page-title">Promo Codes Manager</h2>
-                    <div class="glass-box" style="margin-bottom: 2rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <div class="form-group"><label>Promo Code</label><input type="text" id="promo-code" style="text-transform: uppercase;"></div>
+                    <div class="glass-box mb-2">
+                        <div class="grid-half gap-1">
+                            <div class="form-group"><label>Promo Code</label><input type="text" id="promo-code" class="text-uppercase"></div>
                             <div class="form-group"><label>Discount (%)</label><input type="number" id="promo-discount" min="1" max="100"></div>
                             <div class="form-group"><label>Expires On</label><input type="date" id="promo-expiry"></div>
-                            <div class="form-group" style="display: flex; align-items: flex-end;"><button id="btn-generate-promo" class="btn-solid" onclick="generatePromo()">Create Promo</button></div>
+                            <div class="form-group flex-end"><button id="btn-generate-promo" class="btn-solid">Create Promo</button></div>
                         </div>
                     </div>
-                    <div class="glass-box" style="padding: 0; overflow-x: auto;">
+                    <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
                             <thead><tr><th>Code</th><th>Discount</th><th>Status / Expiry</th><th>Action</th></tr></thead>
-                            <tbody id="promos-table-body"><tr><td colspan="4" style="text-align: center; padding: 2rem; color: #94a3b8;">Loading promos...</td></tr></tbody>
+                            <tbody id="promos-table-body"><tr><td colspan="4" class="table-loading">Loading promos...</td></tr></tbody>
                         </table>
                     </div>
                 </div>
 
                 <!-- 11. COURSE CHANGE REQUESTS VIEW -->
-                <div id="view-requests" class="admin-content" style="display: none;">
+                <div id="view-requests" class="admin-content view-hidden">
                     <h2 class="page-title">Course Change Requests</h2>
-                    <div id="requests-list"><p style="text-align: center; color: #94a3b8; padding: 2rem;">Loading requests...</p></div>
+                    <div id="requests-list"><p class="table-loading">Loading requests...</p></div>
                 </div>
 
                 <!-- 12. REPORTS VIEW -->
-                <div id="view-reports" class="admin-content" style="display: none;">
+                <div id="view-reports" class="admin-content view-hidden">
                     <h2 class="page-title">Flagged Questions</h2>
-                    <div id="reports-list"><p style="text-align: center; color: #94a3b8; padding: 2rem;">System logs will appear here.</p></div>
+                    <div id="reports-list"><p class="table-loading">System logs will appear here.</p></div>
                 </div>
 
                 <!-- 13. MESSAGES VIEW -->
-                <div id="view-messages" class="admin-content" style="display: none;">
+                <div id="view-messages" class="admin-content view-hidden">
                     <h2 class="page-title">Contact Messages</h2>
-                    <div id="messages-list"><p style="text-align: center; color: #94a3b8; padding: 2rem;">Loading messages...</p></div>
+                    <div id="messages-list"><p class="table-loading">Loading messages...</p></div>
                 </div>
 
             </div>
@@ -340,169 +338,138 @@
     
     <!-- User Edit Modal -->
     <div id="edit-user-modal" class="popup-overlay">
-        <div class="popup-content" style="max-width: 500px;">
-            <h2 style="color: #1e3a8a; margin: 0; font-weight: 800;">User Profile</h2>
-            <p id="edit-user-name" style="font-weight: 800; font-size: 1.2rem; color: #064e3b; margin: 0.5rem 0 0 0;">Username</p>
-            <p id="edit-user-email" style="font-weight: 700; color: #3b82f6; margin: 0.2rem 0;">user@example.com</p>
-            <p id="edit-user-phone" style="font-weight: 600; color: #475569; margin: 0.2rem 0;">Phone Number</p>
-            <p id="edit-user-uid" style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 1.5rem;">ID: ...</p>
+        <div class="popup-content modal-sm">
+            <h2 class="modal-title">User Profile</h2>
+            <p id="edit-user-name" class="profile-name">Username</p>
+            <p id="edit-user-email" class="profile-email">user@example.com</p>
+            <p id="edit-user-phone" class="profile-phone">Phone Number</p>
+            <p id="edit-user-uid" class="profile-uid">ID: ...</p>
             
-            <div style="text-align: left;">
-                <label style="font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Active Subscriptions</label>
-                <div id="user-subscriptions-list" style="margin-top: 0.5rem; margin-bottom: 1rem; max-height: 180px; overflow-y: auto;"></div>
+            <div class="text-left">
+                <label class="modal-label">Active Subscriptions</label>
+                <div id="user-subscriptions-list" class="subs-list"></div>
 
                 <div class="grant-box">
-                    <label style="font-size: 0.85rem; font-weight: 800; color: #064e3b; margin-bottom: 0.5rem; display: block;">🎁 Grant New Access</label>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <select id="grant-course" style="flex: 2; padding: 0.6rem; border: 2px solid #bbf7d0; border-radius: 6px; font-weight: bold; color: #064e3b; outline: none;">
+                    <label class="grant-label">🎁 Grant New Access</label>
+                    <div class="flex-gap-05 mb-1">
+                        <select id="grant-course" class="grant-select flex-2">
                             <optgroup label="FCPS Series"><option value="fcps_part1">FCPS Part 1</option><option value="fcps_part2">FCPS Part 2</option><option value="fcps_imm">FCPS IMM</option></optgroup>
                             <optgroup label="MRCS Series"><option value="mrcs_part1">MRCS Part 1</option><option value="mrcs_part2">MRCS Part 2</option></optgroup>
                             <optgroup label="MBBS Journey"><option value="mbbs_year1">MBBS Year 1</option><option value="mbbs_year2">MBBS Year 2</option><option value="mbbs_year3">MBBS Year 3</option><option value="mbbs_year4">MBBS Year 4</option><option value="mbbs_year5">MBBS Year 5</option></optgroup>
                             <optgroup label="Book Add-ons"><option value="firstaid_step1">First Aid 1</option><option value="firstaid_step2">First Aid 2</option><option value="im_medicine">IM Medicine</option><option value="im_surgery">IM Surgery</option><option value="im_pathology">IM Pathology</option><option value="im_pediatrics">IM Pediatrics</option><option value="brs_patho">BRS Pathology</option><option value="brs_physio">BRS Physiology</option><option value="rafiullah">Rafiullah</option><option value="doubleAA">Double AA</option></optgroup>
                         </select>
-                        <select id="grant-duration" style="flex: 1; padding: 0.6rem; border: 2px solid #bbf7d0; border-radius: 6px; font-weight: bold; color: #064e3b; outline: none;">
+                        <select id="grant-duration" class="grant-select flex-1">
                             <option value="1">1 Day</option><option value="7">1 Week</option><option value="15">15 Days</option><option value="30">1 Month</option><option value="90">3 Months</option><option value="180">6 Months</option><option value="365">1 Year</option><option value="lifetime">Lifetime</option>
                         </select>
                     </div>
-                    <button id="btn-grant-access" class="btn-solid" style="padding: 0.8rem; margin: 0; width: 100%;" onclick="grantAccess()">Grant Access</button>
+                    <button id="btn-grant-access" class="btn-solid btn-full p-08 m-0">Grant Access</button>
                 </div>
 
-                <label style="font-size: 0.75rem; font-weight: 800; color: #b45309; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">⚠️ Account Actions</label>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <div style="display: flex; gap: 0.5rem;">
-                        <button id="btn-make-student" class="btn-outline" style="flex: 1; border-color: #cbd5e1; padding: 0.5rem;">Student</button>
-                        <button id="btn-make-mentor" class="btn-outline" style="flex: 1; border-color: #fde047; color: #b45309; padding: 0.5rem;">Mentor</button>
-                        <button id="btn-make-admin" class="btn-outline" style="flex: 1; border-color: #c084fc; color: #8b5cf6; padding: 0.5rem;">Admin</button>
+                <label class="modal-label text-warning">⚠️ Account Actions</label>
+                <div class="flex-col gap-05">
+                    <div class="flex-gap-05">
+                        <button id="btn-make-student" class="btn-outline flex-1 p-05 border-slate">Student</button>
+                        <button id="btn-make-mentor" class="btn-outline flex-1 p-05 border-yellow text-yellow">Mentor</button>
+                        <button id="btn-make-admin" class="btn-outline flex-1 p-05 border-purple text-purple">Admin</button>
                     </div>
-                    <button id="btn-wipe-progress" class="btn-outline" style="border-color: #d97706; color: #d97706; margin-top: 0.5rem;">🧹 Wipe Study Progress</button>
-                    <button id="btn-ban-user" class="btn-solid" style="background: #ef4444; margin-top: 0.5rem;">⛔ Ban User</button>
-                    <button id="btn-unban-user" class="btn-solid" style="background: #10b981; margin-top: 0.5rem; display: none;">✅ Unban User</button>
-                    <button id="btn-hard-delete-user" class="btn-solid" style="background: #7f1d1d; margin-top: 0.5rem; box-shadow: 0 4px 10px rgba(127,29,29,0.3);">🔥 Delete User Record Permanently</button>
+                    <button id="btn-wipe-progress" class="btn-outline border-orange text-orange mt-05">🧹 Wipe Study Progress</button>
+                    <button id="btn-ban-user" class="btn-solid bg-danger mt-05">⛔ Ban User</button>
+                    <button id="btn-unban-user" class="btn-solid bg-success mt-05 view-hidden">✅ Unban User</button>
+                    <button id="btn-hard-delete-user" class="btn-solid bg-dark-danger mt-05 shadow-danger">🔥 Delete User Record Permanently</button>
                 </div>
             </div>
-            <button id="btn-close-edit-modal" class="btn-outline" style="width: 100%; margin-top: 1.5rem;">Close Panel</button>
+            <button id="btn-close-edit-modal" class="btn-outline w-100 mt-1-5">Close Panel</button>
         </div>
     </div>
 
-<!-- CRITICAL CSS OVERRIDE TO ALLOW TEXT SELECTION IN THE EDITOR -->
-<style>
-    #admin-edit-modal, #admin-edit-modal * {
-        user-select: text !important;
-        -webkit-user-select: text !important;
-    }
-    .ql-editor {
-        user-select: text !important;
-        -webkit-user-select: text !important;
-        cursor: text;
-    }
-</style>
-
-<!-- Admin Edit Modal -->
-<div id="admin-edit-modal" class="popup-overlay" style="display: none; user-select: text !important; -webkit-user-select: text !important; z-index: 2500;">
-    <div class="popup-content" style="max-width: 650px; width: 95%; max-height: 85vh; overflow-y: auto; text-align: left; user-select: text !important; -webkit-user-select: text !important;">
-        <h3 style="color: #065f46; margin-top: 0; margin-bottom: 1rem;"><i class="fas fa-edit"></i> Resolve Flagged Question</h3>
-        
-        <div style="margin-bottom: 12px;">
-            <label style="font-size: 0.8rem; font-weight: bold; color: #ef4444;">Target Destination (Required)</label>
-            <select id="edit-q-dest" style="width: 100%; padding: 8px; border: 2px solid #ef4444; border-radius: 6px; font-weight: bold;">
-                <option value="">-- Select Destination --</option>
-                <optgroup label="Core Courses">
-                    <option value="COURSE:fcps_part1">FCPS Part 1</option>
-                    <option value="COURSE:fcps_part2">FCPS Part 2</option>
-                    <option value="COURSE:fcps_imm">FCPS IMM</option>
-                    <option value="COURSE:mrcs_part1">MRCS Part 1</option>
-                    <option value="COURSE:mrcs_part2">MRCS Part 2</option>
-                    <option value="COURSE:mbbs_year1">MBBS Year 1</option>
-                    <option value="COURSE:mbbs_year2">MBBS Year 2</option>
-                    <option value="COURSE:mbbs_year3">MBBS Year 3</option>
-                    <option value="COURSE:mbbs_year4">MBBS Year 4</option>
-                    <option value="COURSE:mbbs_year5">MBBS Year 5</option>
-                </optgroup>
-                <optgroup label="Reference Books">
-                    <option value="BOOK:firstaid_step1">First Aid Step 1</option>
-                    <option value="BOOK:firstaid_step2">First Aid Step 2</option>
-                    <option value="BOOK:im_medicine">Irfan Masood Medicine</option>
-                    <option value="BOOK:im_surgery">Irfan Masood Surgery</option>
-                    <option value="BOOK:im_pathology">Irfan Masood Pathology</option>
-                    <option value="BOOK:im_pediatrics">Irfan Masood Pediatrics</option>
-                    <option value="BOOK:brs_patho">BRS Pathology</option>
-                    <option value="BOOK:brs_physio">BRS Physiology</option>
-                    <option value="BOOK:pretest_surgery">Pretest Surgery</option>
-                    <option value="BOOK:rafiullah">Rafiullah FCPS</option>
-                    <option value="BOOK:RWR">Residents Way to Residency</option>
-                    <option value="BOOK:doubleAA">Double AA</option>
-                </optgroup>
-            </select>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
-            <div>
-                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question ID</label>
-                <input type="text" id="edit-q-id" disabled style="width: 100%; padding: 8px; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px;">
-            </div>
-            <div>
-                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Difficulty</label>
-                <select id="edit-q-diff" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
-                    <option value="easy">Easy</option>
-                    <option value="medium" selected>Medium</option>
-                    <option value="hard">Hard</option>
+    <!-- Admin Edit Modal -->
+    <div id="admin-edit-modal" class="popup-overlay modal-selectable view-hidden z-2500">
+        <div class="popup-content modal-md text-left modal-selectable">
+            <h3 class="edit-modal-title"><i class="fas fa-edit"></i> Resolve Flagged Question</h3>
+            
+            <div class="mb-12px">
+                <label class="label-danger">Target Destination (Required)</label>
+                <select id="edit-q-dest" class="select-danger">
+                    <option value="">-- Select Destination --</option>
+                    <optgroup label="Core Courses">
+                        <option value="COURSE:fcps_part1">FCPS Part 1</option>
+                        <option value="COURSE:fcps_part2">FCPS Part 2</option>
+                        <option value="COURSE:fcps_imm">FCPS IMM</option>
+                        <option value="COURSE:mrcs_part1">MRCS Part 1</option>
+                        <option value="COURSE:mrcs_part2">MRCS Part 2</option>
+                        <option value="COURSE:mbbs_year1">MBBS Year 1</option>
+                        <option value="COURSE:mbbs_year2">MBBS Year 2</option>
+                        <option value="COURSE:mbbs_year3">MBBS Year 3</option>
+                        <option value="COURSE:mbbs_year4">MBBS Year 4</option>
+                        <option value="COURSE:mbbs_year5">MBBS Year 5</option>
+                    </optgroup>
+                    <optgroup label="Reference Books">
+                        <option value="BOOK:firstaid_step1">First Aid Step 1</option>
+                        <option value="BOOK:firstaid_step2">First Aid Step 2</option>
+                        <option value="BOOK:im_medicine">Irfan Masood Medicine</option>
+                        <option value="BOOK:im_surgery">Irfan Masood Surgery</option>
+                        <option value="BOOK:im_pathology">Irfan Masood Pathology</option>
+                        <option value="BOOK:im_pediatrics">Irfan Masood Pediatrics</option>
+                        <option value="BOOK:brs_patho">BRS Pathology</option>
+                        <option value="BOOK:brs_physio">BRS Physiology</option>
+                        <option value="BOOK:pretest_surgery">Pretest Surgery</option>
+                        <option value="BOOK:rafiullah">Rafiullah FCPS</option>
+                        <option value="BOOK:RWR">Residents Way to Residency</option>
+                        <option value="BOOK:doubleAA">Double AA</option>
+                    </optgroup>
                 </select>
             </div>
-            <div>
-                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Subject</label>
-                <input type="text" id="edit-q-subject" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
-            </div>
-            <div>
-                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Chapter</label>
-                <input type="text" id="edit-q-chapter" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
-            </div>
-            <div>
-                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Topic</label>
-                <input type="text" id="edit-q-topic" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
-            </div>
-            <div>
-                <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Year & Exam</label>
-                <div style="display: flex; gap: 5px;">
-                    <input type="text" id="edit-q-year" placeholder="Year" style="width: 40%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
-                    <input type="text" id="edit-q-exam" placeholder="Exam" style="width: 60%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+
+            <div class="grid-half gap-10px mb-12px">
+                <div><label class="label-muted">Question ID</label><input type="text" id="edit-q-id" disabled class="input-disabled"></div>
+                <div>
+                    <label class="label-muted">Difficulty</label>
+                    <select id="edit-q-diff" class="input-standard">
+                        <option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div><label class="label-muted">Subject</label><input type="text" id="edit-q-subject" class="input-standard"></div>
+                <div><label class="label-muted">Chapter</label><input type="text" id="edit-q-chapter" class="input-standard"></div>
+                <div><label class="label-muted">Topic</label><input type="text" id="edit-q-topic" class="input-standard"></div>
+                <div>
+                    <label class="label-muted">Year & Exam</label>
+                    <div class="flex-gap-05">
+                        <input type="text" id="edit-q-year" placeholder="Year" class="input-standard w-40">
+                        <input type="text" id="edit-q-exam" placeholder="Exam" class="input-standard w-60">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Question Statement</label>
-        <textarea id="edit-q-text" rows="3" style="width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;"></textarea>
+            <label class="label-muted">Question Statement</label>
+            <textarea id="edit-q-text" rows="3" class="textarea-standard"></textarea>
 
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;" id="edit-options-container">
-            <!-- Options injected by JavaScript -->
-        </div>
+            <div id="edit-options-container" class="flex-col gap-08 mb-15px"></div>
 
-        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Hint</label>
-        <div style="background: white; margin-bottom: 15px;">
-            <div id="edit-q-hint" style="height: 100px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
-        </div>
+            <label class="label-muted">Hint</label>
+            <div class="bg-white mb-15px">
+                <div id="edit-q-hint" class="quill-sm border-radius-bottom"></div>
+            </div>
 
-        <label style="font-size: 0.8rem; font-weight: bold; color: #64748b;">Explanation</label>
-        <div style="background: white; margin-bottom: 20px;">
-            <div id="edit-q-explanation" style="height: 200px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"></div>
-        </div>
+            <label class="label-muted">Explanation</label>
+            <div class="bg-white mb-20px">
+                <div id="edit-q-explanation" class="quill-md border-radius-bottom"></div>
+            </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px;">
-            <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
-            <button id="btn-save-github" class="btn-solid" style="background: #10b981; border: none;"><i class="fas fa-save"></i> Save to Queue</button>
+            <div class="flex-end gap-10px">
+                <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
+                <button id="btn-save-github" class="btn-solid bg-success border-none"><i class="fas fa-save"></i> Save to Queue</button>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Receipt Modal -->
-    <div id="receipt-modal" class="popup-overlay" style="display: none; z-index: 2000;">
-        <div class="popup-content" style="max-width: 600px; width: 95%; padding: 1.5rem; text-align: center; position: relative;">
-            <h3 style="color: #1e3a8a; margin-top: 0; margin-bottom: 1rem;">Payment Receipt</h3>
-            <div style="max-height: 70vh; overflow-y: auto; margin-bottom: 1rem; background: #f8fafc; border-radius: 8px; padding: 0.5rem; border: 1px solid #e2e8f0;">
-                <img id="receipt-modal-img" src="" alt="Full Receipt" style="max-width: 100%; height: auto; border-radius: 4px;">
+    <div id="receipt-modal" class="popup-overlay view-hidden z-2000">
+        <div class="popup-content modal-receipt">
+            <h3 class="receipt-title">Payment Receipt</h3>
+            <div class="receipt-img-container">
+                <img id="receipt-modal-img" src="" alt="Full Receipt" class="receipt-img">
             </div>
-            <button id="btn-close-receipt" class="btn-solid" style="width: 100%; background: #64748b; border: none; padding: 0.8rem; border-radius: 8px; color: white; font-weight: bold; cursor: pointer;">
-                Close Receipt
-            </button>
+            <button id="btn-close-receipt" class="btn-solid btn-close-receipt">Close Receipt</button>
         </div>
     </div>
 
