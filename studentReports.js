@@ -13,6 +13,7 @@ const detailsPanel = document.getElementById('report-details');
 let studentsData = [];
 let currentUserRole = 'STUDENT';
 const activeCourse = localStorage.getItem('edeetos_active_course');
+
 // ==========================================
 // TIME FORMATTING HELPER
 // ==========================================
@@ -198,29 +199,32 @@ const titles = {
 let globalQuestionBank = {};
 let bankLoadPromise = null;
 
-
 // Optimized lazy loader targeting only the relevant file asset
 async function loadTargetedFileToBank(fileKey) {
     if (globalQuestionBank[fileKey]) return; // Already loaded
 
     const isBook = referenceBooks.includes(fileKey);
+    
+    // Books remain monolithic JSON. Main courses use lightweight metadata maps.
     const folder = isBook ? 'Books' : 'Data';
+    const suffix = isBook ? '_questions.json' : '_metadata.json';
 
     try {
-        const res = await fetch(`${folder}/${fileKey}_questions.json`);
+        const res = await fetch(`${folder}/${fileKey}${suffix}`);
         if (!res.ok) return;
 
         const questions = await res.json();
         if (!globalQuestionBank[fileKey]) globalQuestionBank[fileKey] = {};
 
-questions.forEach((q, index) => {
+        questions.forEach((q, index) => {
             let fallbackPrefix = isBook ? `${fileKey}-` : '';
-            let qId = String(q.QuestionID || q['Question ID'] || q.ID || q.id || `${fallbackPrefix}q-${index + 1}`);
+            // Handle both uppercase book structures and lowercase metadata structures
+            let qId = String(q.id || q.QuestionID || q['Question ID'] || q.ID || `${fallbackPrefix}q-${index + 1}`);
 
             globalQuestionBank[fileKey][qId] = {
-                Subject: isBook ? (titles[fileKey] || q.Subject || q.subject) : (q.Subject || q.subject || 'Unknown Subject'),
-                Chapter: q.Chapter || q.chapter || 'Unknown System/Chapter',
-                Topic: q.Topic || q.topic || 'Pending Topic (Will be added)'
+                Subject: isBook ? (titles[fileKey] || q.Subject || q.subject) : (q.subject || q.Subject || 'Unknown Subject'),
+                Chapter: q.chapter || q.Chapter || 'Unknown System/Chapter',
+                Topic: q.topic || q.Topic || 'Pending Topic (Will be added)'
             };
         });
     } catch(e) {
@@ -252,15 +256,15 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     detailsPanel.innerHTML = `
         <div class="empty-state" style="display:flex; flex-direction:column; align-items:center; gap:15px;">
             <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #3b82f6;"></i>
-            <h3 style="color: #1e293b;">Compiling Raw Data from CSVs...</h3>
-            <p style="color: #64748b;">Mapping database IDs to original question files.</p>
+            <h3 style="color: #1e293b;">Compiling Raw Data...</h3>
+            <p style="color: #64748b;">Mapping database IDs to updated metadata structures.</p>
         </div>
     `;
 
 	// Ensure our targeted Data Warehouse is built
 	await loadRequiredBanks(activeCourseFilter);
 
-let filterOptions = `<option value="all">All Courses & Books</option>`;
+    let filterOptions = `<option value="all">All Courses & Books</option>`;
 
     if (currentUserRole === 'ADMIN' || currentUserRole === 'MENTOR' || currentUserRole === 'MANAGEMENT') {
         // Admins and Mentors see everything
@@ -355,7 +359,7 @@ let filterOptions = `<option value="all">All Courses & Books</option>`;
             }
         }
 
-const sourceName = titles[sourceKey] || sourceKey || 'Unknown Source';
+        const sourceName = titles[sourceKey] || sourceKey || 'Unknown Source';
         const subject = meta ? meta.Subject : 'Unknown Subject';
         const chapter = meta ? meta.Chapter : 'Unknown System/Chapter';
         const topic = meta ? meta.Topic : 'Pending Topic (Will be added)';

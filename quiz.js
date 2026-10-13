@@ -31,6 +31,34 @@ function isBookSession() {
     return quizQueue.length > 0 && quizQueue[0]?.isBookQuestion === true;
 }
 
+// ==========================================
+// HELPER FUNCTIONS (Carried over from questions.js)
+// ==========================================
+function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
+    const parts = String(examStr).split("-").map(p => p.trim());
+    let examYear = fallbackYear;
+    let examSpec = fallbackSpec;
+    
+    if (parts.length >= 2) {
+        const prefix = parts[0].toLowerCase();
+        if (prefix.includes("surgery")) examSpec = "Surgery & Allied";
+        else if (prefix.includes("medicine")) examSpec = "Medicine & Allied";
+        else if (prefix.includes("gynecology") || prefix.includes("gyn")) examSpec = "Gynecology & Obstetrics";
+        else if (prefix.includes("anesthesia")) examSpec = "Anesthesia";
+        else if (prefix.includes("radiology")) examSpec = "Radiology";
+        else if (prefix.includes("pathology")) examSpec = "Pathology";
+        else examSpec = parts[0];
+
+        const datePart = parts[1];
+        if (datePart && datePart.includes("/")) {
+            const yy = datePart.split("/").pop().trim();
+            if (yy.length === 2) examYear = "20" + yy;
+            else if (yy.length === 4) examYear = yy;
+        }
+    }
+    return { examYear, examSpec };
+}
+
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
 const questionTextEl = document.getElementById('question-text');
@@ -2196,3 +2224,227 @@ window.addEventListener('unload', () => {
 });
 
 checkAndRestoreAbortedSession();
+
+// ==========================================
+// ADMIN: GITHUB COMMIT HANDLER
+// ==========================================
+if (btnPushEdits) {
+    btnPushEdits.onclick = async () => {
+        let token = localStorage.getItem('edeetos_github_pat');
+        if (!token) {
+            token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
+            if (!token) return;
+            localStorage.setItem('edeetos_github_pat', token);
+        }
+
+        const pendingQueueStr = localStorage.getItem('edeetos_pending_edits');
+        if (!pendingQueueStr) return alert("No pending edits to push.");
+        const pendingQueue = JSON.parse(pendingQueueStr);
+
+        btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing & Converting...';
+        btnPushEdits.disabled = true;
+
+        try {
+            const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+            const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
+
+            const editsByCourse = {};
+            pendingQueue.forEach(edit => {
+                const key = edit.courseFile;
+                if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+                editsByCourse[key].rows.push(edit.row);
+            });
+
+            const owner = "hassaan506";
+            const repo = "edeetos";
+            const branch = "main";
+
+            const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
+                const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+                let currentSha = null;
+                try {
+                    const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                    if (getRes.ok) {
+                        const getJson = await getRes.json();
+                        currentSha = getJson.sha;
+                    }
+                } catch(e) {}
+
+                const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
+                if (currentSha) bodyData.sha = currentSha;
+
+                const putRes = await fetch(fileUrl, {
+                    method: 'PUT',
+                    headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                    body: JSON.stringify(bodyData)
+                });
+
+                if (!putRes.ok) {
+                    const err = await putRes.json().catch(() => ({}));
+                    throw new Error(`Failed to upload ${filePath}: ${err.message || putRes.statusText}`);
+                }
+            };
+
+            for (const courseFile of Object.keys(editsByCourse)) {
+                const isBook = editsByCourse[courseFile].isBook;
+                const folder = isBook ? "Books" : "Data";
+                const csvPath = `${folder}/${courseFile}.csv`;
+                const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
+                const metadataJsonPath = `${folder}/${courseFile}_metadata.json`;
+                const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
+                
+                const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+
+                const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
+                
+                const getJson = await getRes.json();
+                const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
+                const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
+                
+                if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
+                const blobJson = await blobRes.json();
+                
+                const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
+                
+                let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
+                let rows = parsed.data;
+
+                editsByCourse[courseFile].rows.forEach(updatedRow => {
+                    const qId = updatedRow["QuestionID"];
+                    const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
+                    
+                    let qIndex = -1;
+                    for(let i=0; i<rows.length; i++) {
+                        if (String(rows[i][actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "") {
+                            qIndex = i; break;
+                        }
+                    }
+                    
+                    if (qIndex !== -1) {
+                        const targetRow = rows[qIndex];
+                        Object.keys(updatedRow).forEach(newKey => {
+                            const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                            targetRow[originalKey || newKey] = updatedRow[newKey];
+                        });
+                    } else {
+                        rows.push(updatedRow);
+                    }
+                });
+
+                let outQs = [];
+                let subTree = {}, sysTree = {}, exTree = {};
+
+                rows.forEach(row => {
+                    const getVal = (names) => {
+                        const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
+                        return key && row[key] ? String(row[key]).trim() : "";
+                    };
+
+                    const qId = getVal(['questionid', 'id']);
+                    if (!qId) return;
+
+                    const subject = getVal(['subject']);
+                    const chapter = getVal(['chapter']);
+                    const topic = getVal(['topic']);
+                    const year = getVal(['year']);
+                    const rawExams = getVal(['exams', 'exam']);
+                    const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
+
+                    const yearsList = year ? year.split(',').map(e => e.trim()).filter(e => e) : [];
+                    const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+                    const specialtyList = rawSpecs ? rawSpecs.split(',').map(e => e.trim()).filter(e => e) : [];
+
+                    let qObj = {
+                        id: qId,
+                        year: yearsList,
+                        specialty: specialtyList,
+                        exams: examsList,
+                        subject: subject,
+                        chapter: chapter,
+                        topic: topic,
+                        difficulty: getVal(['difficulty']),
+                        question: getVal(['question']),
+                        options: {
+                            A: getVal(['optiona']),
+                            B: getVal(['optionb']),
+                            C: getVal(['optionc']),
+                            D: getVal(['optiond']),
+                            E: getVal(['optione'])
+                        },
+                        correctAnswer: getVal(['correctanswer']).toUpperCase(),
+                        explanation: getVal(['explanation']),
+                        hint: getVal(['hint'])
+                    };
+
+                    if (isBook) {
+                        qObj.isBookQuestion = true;
+                        qObj.bookName = courseFile;
+                    }
+
+                    outQs.push(qObj);
+
+                    if (subject) {
+                        if (!subTree[subject]) subTree[subject] = {};
+                        if (chapter) {
+                            if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
+                            if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
+                        }
+                    }
+                    if (chapter && chapter.toLowerCase().includes('system')) {
+                        if (!sysTree[chapter]) sysTree[chapter] = {};
+                        if (subject) {
+                            if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
+                            if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
+                        }
+                    }
+
+                    examsList.forEach((ex, i) => {
+                        const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
+                        const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
+                        
+                        const { examYear, examSpec } = parseExamInfo(ex, fbYear, fbSpec);
+                        
+                        if (!exTree[examYear]) exTree[examYear] = {};
+                        if (!exTree[examYear][examSpec]) exTree[examYear][examSpec] = {};
+                        if (!exTree[examYear][examSpec][ex]) exTree[examYear][examSpec][ex] = 0;
+                        exTree[examYear][examSpec][ex]++;
+                    });
+                });
+
+                const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
+                
+                await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
+                
+                if (isBook) {
+                    await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+                } else {
+                    // Generates the lightweight index for the UI
+                    const metadataList = outQs.map(q => ({
+                        id: q.id,
+                        year: q.year,
+                        exams: q.exams,
+                        subject: q.subject,
+                        chapter: q.chapter,
+                        topic: q.topic,
+                        difficulty: q.difficulty
+                    }));
+                    await uploadFileToGitHub(metadataJsonPath, JSON.stringify(metadataList), commitMsg);
+                }
+                
+                const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
+                await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
+            }
+
+            alert(`✅ Success! CSV, Metadata, and Hierarchy synced to GitHub.\n\n⚠️ IMPORTANT: You MUST run your Python script locally to generate and push the updated micro-chunks (Subjects/Systems/Exams). Frontend JS cannot generate 100+ files safely.`);
+            localStorage.removeItem('edeetos_pending_edits');
+            btnPushEdits.style.display = 'none';
+
+        } catch (error) {
+            console.error(error);
+            alert("❌ Push Failed: " + error.message);
+            btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+            btnPushEdits.disabled = false;
+        }
+    };
+}
