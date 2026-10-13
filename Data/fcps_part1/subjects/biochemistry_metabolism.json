@@ -1,0 +1,88 @@
+[
+    {
+        "id": "XWUDUQX2",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning",
+            "Medicine - 11/25 - November 14 - Evening",
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Metabolism",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 4-year-old boy presents with self-mutilating behavior, involuntary movements, and developmental delay. Laboratory testing shows hyperuricemia. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "HGPRT deficiency",
+            "B": "ADA deficiency",
+            "C": "Decreased uric acid degradation",
+            "D": "Glucose-6-phosphatase deficiency",
+            "E": "Phenylalanine hydroxylase deficiency"
+        },
+        "correctAnswer": "A",
+        "explanation": "Lesch-Nyhan syndrome: X-linked recessive; deficiency of HGPRT -> uric acid accumulation. Triad: Self-mutilation, choreoathetosis, intellectual disability.",
+        "hint": ""
+    },
+    {
+        "id": "MDTUPRMJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Metabolism",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pediatric patient has hypoketotic hypoglycemia and muscle weakness. Labs show low serum carnitine, but carnitine palmitoyltransferase activity is normal. What is the most likely defect?",
+        "options": {
+            "A": "Carnitine transport",
+            "B": "Carnitine palmitoyltransferase I",
+            "C": "Carnitine palmitoyltransferase II",
+            "D": "Beta-oxidation enzymes",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CD7J9VXK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Metabolism",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anaerobic glycolysis occurs in RBCs (no mitochondria). End product is:",
+        "options": {
+            "A": "Pyruvate",
+            "B": "Lactic acid",
+            "C": "Acetyl CoA",
+            "D": "Glucose",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    }
+]

@@ -1,0 +1,4793 @@
+[
+    {
+        "id": "WP7YCUZX",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the initial step in atherosclerosis?",
+        "options": {
+            "A": "Endothelial injury",
+            "B": "Platelet aggregation",
+            "C": "Fibrinogen polymerization",
+            "D": "Platelet migration",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Atherosclerosis, the underlying disease process that leads to MI, begins with damage or dysfunction of the vascular endothelium, the inner lining of the artery.",
+        "hint": ""
+    },
+    {
+        "id": "MXVWTG69",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with polyuria and polydipsia. A water deprivation test shows no increase in urine osmolality. After administration of desmopressin, urine osmolality dramatically increases. What is the most likely cause?",
+        "options": {
+            "A": "SIADH",
+            "B": "Central diabetes insipidus (DI)",
+            "C": "Nephrogenic diabetes insipidus",
+            "D": "Primary polydipsia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Desmopressin is an ADH analog. A dramatic increase means the kidneys are functional (they responded to the hormone), but the body was not producing ADH in the first place. This pattern confirms Central DI. In Nephrogenic DI, the kidney receptors are defective, so urine osmolality would not increase significantly after desmopressin.",
+        "hint": ""
+    },
+    {
+        "id": "WNSSG4SD",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pregnant Patient is a treated case of hyperthyroidism. Now she presented at 6 weeks of gestation with the following labs. Serum TSH is normal. Serum T4 is increased. What will be the management of this patient?",
+        "options": {
+            "A": "PTU",
+            "B": "Methimazole",
+            "C": "Iodine therapy",
+            "D": "Thyroidectomy",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "For hyperthyroidism in the first trimester of pregnancy, Propylthiouracil (PTU) is the preferred treatment due to the slightly lower risk of teratogenicity compared to methimazole, especially regarding embryopathy.",
+        "hint": ""
+    },
+    {
+        "id": "79RUHCF7",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with a history of HBV and cirrhosis presents with ascites. The serum-ascites albumin gradient (SAAG) is 1.6 g/dL. What is the most likely cause of the ascites?",
+        "options": {
+            "A": "Portal hypertension",
+            "B": "Hypoalbuminemia",
+            "C": "Decreased oncotic pressure",
+            "D": "Decreased hydrostatic pressure",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "SAAG >= 1.1 = Portal HTN. SAAG < 1.1 = Other causes i.e Infections, Kidney Problems, ovarian tumors etc.",
+        "hint": ""
+    },
+    {
+        "id": "4TKZMMBV",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning",
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female present with menorrhagia and mucosal bleeding. Laboratory investigations show: increased bleeding time (BT), normal PT and APTT, and markedly decreased von Willebrand factor (vWF) levels. Which of the following processes is primarily affected?",
+        "options": {
+            "A": "Platelet adhesion",
+            "B": "Platelet aggregation",
+            "C": "Fibrin formation",
+            "D": "Coagulation Cascade",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The primary function of von Willebrand factor (vWF) is in platelet adhesion: Platelet Adhesion: This is the first step in forming a platelet plug, where platelets stick to the damaged blood vessel wall. vWF mediates this initial sticking. Therefore, low vWF directly impairs adhesion, leading to a prolonged bleeding time (BT). Platelet Aggregation: This is the second step, where platelets stick to other platelets to build up the plug. This is primarily mediated by Fibrinogen binding to the platelet GPIIb/IIIa receptor, not vWF.",
+        "hint": ""
+    },
+    {
+        "id": "XT2L96RZ",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 01/26 - January 5 - Evening",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Person has taken increase amount of garlic as it inhibits HMG Co-A reductase. It will result in?",
+        "options": {
+            "A": "dec Cholesterol synthesis",
+            "B": "Triglycerides synthesis",
+            "C": "Increase cholesterol synthesis",
+            "D": "Ketones formation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "HMG-CoA Reductase is the rate-limiting enzyme in the cholesterol synthesis pathway. Inhibiting this enzyme, as the question suggests garlic compounds can do, will lead to a decrease in cholesterol synthesis.",
+        "hint": ""
+    },
+    {
+        "id": "6NEGHWV6",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In Muscular dystrophy, which of the following substance is impermeable to membrane due to its large size?",
+        "options": {
+            "A": "Glucose",
+            "B": "Amino acid",
+            "C": "Albumin",
+            "D": "Cholesterol",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Albumin is the most abundant protein in the plasma. It is a large molecule that is normally impermeable to a healthy cell membrane. In conditions where the cell membrane integrity is compromised, like muscular dystrophy, the membrane defect is thought to be too small for very large molecules like albumin, but too large for smaller essential ions and molecules, contributing to cellular imbalance. In a list of molecules where others (Glucose, Amino acid, Cholesterol) are generally much smaller or have specific transport mechanisms, Albumin stands out as the massive serum protein that is fundamentally non-diffusible across any intact membrane.",
+        "hint": ""
+    },
+    {
+        "id": "6U7ZF7LP",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Surgery - 04/26 - April 7 - Night",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man presents with numbness on the medial side of his hand and forearm. You also notice compromised blood supply to the forearm. What is the most likely cause?",
+        "options": {
+            "A": "Cervical rib",
+            "B": "First thoracic rib",
+            "C": "Second thoracic rib",
+            "D": "Pancoast tumor",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Cervical Rib (arising from the C7 vertebra) is a classic cause of Thoracic Outlet Syndrome, where it compresses both the lower brachial plexus and the subclavian artery, causing both neurological (numbness/pain) and vascular (compromised blood supply) symptoms.",
+        "hint": ""
+    },
+    {
+        "id": "5RVDVWJX",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A mechanic is having difficulty with his hand grip. His thumb movements are intact, but he is unable to flex his fingers at the proximal and distal phalanges. Which nerve is involved?",
+        "options": {
+            "A": "Ulnar nerve",
+            "B": "Median nerve",
+            "C": "Musculocutaneous nerve",
+            "D": "Radial nerve",
+            "E": "Axillary Nerve"
+        },
+        "correctAnswer": "B",
+        "explanation": "The inability to flex the fingers at the proximal and distal phalanges indicates paralysis of the Flexor Digitorum Superficialis and Flexor Digitorum Profundus (lateral half). These are mainly supplied by the Median Nerve. The thumb movements being intact suggests the lesion may be more distal. The Ulnar nerve supplies the Flexor Digitorum Profundus for digits 4 and 5.",
+        "hint": ""
+    },
+    {
+        "id": "ZPFYYFSL",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A receptor is being studied that responds to different stimuli of light. Which property of the receptor is being tested?",
+        "options": {
+            "A": "Transduction",
+            "B": "Modality",
+            "C": "Adaptation",
+            "D": "Selectivity",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Modality is the term used in sensory physiology to describe the type of sensation a receptor responds to light, heat, pressure, pain. Transduction is the process of converting light energy into an electrical signal. Adaptation is the decrease in receptor response over time despite constant stimulus. Selectivity (or Specificity): This refers to the receptor's ability to respond most readily to only one type of stimulus.",
+        "hint": ""
+    },
+    {
+        "id": "6372Q4WF",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Neurotransmitter at Parasympathetic Post Ganglionic fibers is?",
+        "options": {
+            "A": "Acetylcholine",
+            "B": "Nor Epinephrine",
+            "C": "Epinephrine",
+            "D": "Serotonin",
+            "E": "Glutamine"
+        },
+        "correctAnswer": "A",
+        "explanation": "The neurotransmitter released by all postganglionic parasympathetic neurons onto their target organs is Acetylcholine (ACh), acting on muscarinic receptors.",
+        "hint": ""
+    },
+    {
+        "id": "9HZQY4TD",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The nuclei responsible for hunger and satiety are located in which part of the brain?",
+        "options": {
+            "A": "Hypothalamus",
+            "B": "Thalamus",
+            "C": "Anterior pituitary",
+            "D": "Basal ganglia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The main control centers for appetite, energy expenditure, and food intake (hunger and satiety) are located within the Hypothalamus. The Lateral Hypothalamic Nucleus is often called the \"feeding center\" The Ventromedial Hypothalamic Nucleus is often called the \"satiety center\".",
+        "hint": ""
+    },
+    {
+        "id": "2V5GUE64",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following brain regions is primarily responsible for memory formation and is affected when memory is impaired?",
+        "options": {
+            "A": "Hippocampal gyrus",
+            "B": "Calcarine sulcus",
+            "C": "Cerebral cortex",
+            "D": "Midbrain",
+            "E": "Amygdala"
+        },
+        "correctAnswer": "A",
+        "explanation": "Hippocampal gyrus (hippocampus) crucial for the formation of new long-term declarative memories (facts and events).",
+        "hint": ""
+    },
+    {
+        "id": "SWA55MCZ",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pregnant woman with uterine fibroids is at risk of which type of degeneration during pregnancy?",
+        "options": {
+            "A": "Myxomatous degeneration",
+            "B": "Hydropic change",
+            "C": "Hyaline degeneration",
+            "D": "Red degeneration",
+            "E": "Gangrenous degeneration"
+        },
+        "correctAnswer": "D",
+        "explanation": "Red degeneration, also known as carneous degeneration or necrobiosis, is the most common and clinically significant type of fibroid degeneration to occur during pregnancy.",
+        "hint": ""
+    },
+    {
+        "id": "JZ7F6SLY",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anatomical site for the insertion of chest tube for thoracentesis?",
+        "options": {
+            "A": "Anterior axillary line",
+            "B": "Mid axillary line",
+            "C": "Posterior axillary line",
+            "D": "Mid clavicular line",
+            "E": "Anterior clavicular line"
+        },
+        "correctAnswer": "B",
+        "explanation": "The safe zone for chest tube insertion is often described as the \"safe triangle\", whose posterior border is the anterior margin of the latissimus dorsi muscle (near the mid-axillary line) and the 4th or 5th intercostal space. The mid-axillary line insertion is preferred to avoid the breast, pectoralis major muscle, and injury to the heart.",
+        "hint": ""
+    },
+    {
+        "id": "VC7GUYUV",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Radiology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient has a history of gunshot injury. Now he presented with the complain of swelling that appears above the clavicle while coughing or sneezing. Swelling more likely is?",
+        "options": {
+            "A": "Pleural membrane",
+            "B": "Clavicular fascia",
+            "C": "Virchow's node",
+            "D": "Pectoral fascia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "A swelling above the clavicle that appears with coughing/sneezing (Valsalva maneuver) suggests a herniation or protrusion of a structure due to increased intrathoracic pressure. This could be a defect in the fascia/muscles allowing the cervical dome of the pleura (or a viscus like the lung apex) to protrude.",
+        "hint": ""
+    },
+    {
+        "id": "7RLFDHYY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "Biostatistics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "T-Test is used for?",
+        "options": {
+            "A": "Compares two groups",
+            "B": "Compare three groups",
+            "C": "Categorical study",
+            "D": "Ordinal study",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The T-test is a type of inferential statistic used to determine if there is a significant difference between the means of two groups.",
+        "hint": ""
+    },
+    {
+        "id": "R7T5H6HU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 50-year-old hypertensive male experiences chest pain on walking. ECG shows ST depression in two leads. What is the most likely cause?",
+        "options": {
+            "A": "NSTEMI",
+            "B": "Angina pectoris",
+            "C": "Atrial fibrillation",
+            "D": "Pericarditis",
+            "E": "Acute coronary syndrome (ACS)"
+        },
+        "correctAnswer": "B",
+        "explanation": "50-year-old hypertensive male, Exertional chest pain & ECG changes best describes the diagnosis of Angina pectoris. While other options are ruled out because NSTEMI requires positive cardiac biomarkers. ACS is a wide term that includes Unstable Angina, NSTEMI, and STEMI. Atrial fibrillation is an arrhythmia with irregularly irregular QRS complex. Pericarditis is an inflammatory disease which present with pain related to positional changes.",
+        "hint": ""
+    },
+    {
+        "id": "N42PS73G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A male patient with known heart failure presents to the ER with multiple episodes of vomiting and shortness of breath. The consultant prescribed 0.9% normal saline, but 3% NaCl was mistakenly infused by the house officer. The next day, he develops swelling in the sacral region. He is now prescribed half-strength saline (0.45% NaCl). Which electrolyte abnormality is being corrected?",
+        "options": {
+            "A": "Hypernatremia",
+            "B": "Hyponatremia",
+            "C": "Hyperkalemia",
+            "D": "Hypocalcemia",
+            "E": "Hypokalemia"
+        },
+        "correctAnswer": "A",
+        "explanation": "Infusing 3% NaCl (hypertonic saline) instead of 0.9% NaCl (normal saline) in a dehydrated patient will introduce a large amount of sodium into the blood, causing a rapid increase in serum sodium concentration, leading to Hypernatremia. The subsequent prescription of half-strength saline (0.45% NaCl), which is a hypotonic solution, is the appropriate step to gradually and cautiously correct the Hypernatremia.",
+        "hint": ""
+    },
+    {
+        "id": "LN76LABB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has 1 mm ST-segment elevation in leads I and aVL with reciprocal ST-segment depression in leads III and aVF. Which type of myocardial infarction is most likely?",
+        "options": {
+            "A": "Lateral wall MI",
+            "B": "Anterior wall MI",
+            "C": "Inferior wall MI",
+            "D": "Posterior wall MI",
+            "E": "Septal wall MI"
+        },
+        "correctAnswer": "A",
+        "explanation": "The ST-segment elevation in leads I and aVL directly maps the area of injury to the high lateral wall of the left ventricle. The reciprocal ST-segment depression in leads III and aVF view the inferior wall supports this localization. The combination of STE in I and aVL with reciprocal STD in III and aVF precisely localizes the injury to the Lateral wall.",
+        "hint": ""
+    },
+    {
+        "id": "TLDFKP8Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient of stroke is presented with dyspnea. On Auscultation there are Rales bilaterally. What will be the probable cause?",
+        "options": {
+            "A": "Aspirational Pneumonia",
+            "B": "Lung CA",
+            "C": "Pulmonary Thromboembolism",
+            "D": "Asthma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "A stroke often causes varying degrees of dysphagia (difficulty swallowing) and impairment of the cough and gag reflexes. This compromises the patient's ability to protect their airway. When swallowing is impaired, saliva, food, or stomach contents can be aspirated into the lungs. This leads to an infection and inflammatory response in the lung tissue, typically presenting as aspiration pneumonia.",
+        "hint": ""
+    },
+    {
+        "id": "4VGEFA5D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient on the operation table suddenly develops ST elevation in lead II. Which coronary artery is most likely responsible for complete heart block?",
+        "options": {
+            "A": "RCA",
+            "B": "LAD",
+            "C": "LCX",
+            "D": "LCA",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "ST-segment elevation in Lead II (along with Leads III and aVF) indicates an Inferior Wall MI. RCA supplies the inferior wall of the left ventricle. An occlusion of the RCA can cause ischemia of the AV node, leading to severe conduction disturbances, such as Complete Heart Block.",
+        "hint": ""
+    },
+    {
+        "id": "WAXVXNXH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present with headache and hypertension (BP 160/90 mmHg) and is found to have an auscultatory gap of 30 mmHg. What is the most likely cause of this difference?",
+        "options": {
+            "A": "Stiffened arteries",
+            "B": "Increased afterload",
+            "C": "Decreased preload",
+            "D": "Mitral valve disease",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The gap is highly associated with severe hypertension and arteriosclerosis (stiffening of the arteries). The stiff, non-compliant arterial walls cause the Korotkoff sounds to be muffled or temporarily disappear at high pressures, only to resume as the cuff pressure is lowered.",
+        "hint": ""
+    },
+    {
+        "id": "D9XBRHYY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with mitral stenosis has an opening snap. At which point in the cardiac cycle is the opening snap best heard?",
+        "options": {
+            "A": "After S2",
+            "B": "At the start of Systole",
+            "C": "Mid-diastole",
+            "D": "At the end of diastole",
+            "E": "During systole"
+        },
+        "correctAnswer": "A",
+        "explanation": "The opening snap (OS) is a high-pitched sound heard in patients with mitral stenosis (MS). The mitral valve opens when the pressure in the left atrium exceeds the pressure in the left ventricle. Due to the high LA pressure characteristic of MS, the mitral valve opens sooner than normal, resulting in the abrupt, audible snap. Because the mitral valve opens shortly after the aortic valve closes (S2), the opening snap is heard as a rapid, sharp sound occurring a short interval after S2 (A2 component). the most accurate descriptions for the timing are \"After S2\" or \"At the start of diastole\" (A). However, since the snap follows S2 very closely and marks the true beginning of the filling phase, B) After S2 is a highly specific and commonly cited timing reference.",
+        "hint": ""
+    },
+    {
+        "id": "7GH6VMX9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hypertrophic Cardiomyopathy (HOCM) is characterized by?",
+        "options": {
+            "A": "Increase SV with Diastolic Dysfunction",
+            "B": "Decrease SV with Diastolic Dysfunction",
+            "C": "Increase SV with Systolic Dysfunction",
+            "D": "Decrease SV with Systolic Dysfunction",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Decreased Stroke Volume (SV): Due to poor filling (Diastolic Dysfunction) and, in obstructive forms, obstruction of outflow. Diastolic Dysfunction: Due to the stiff, hypertrophied ventricle.",
+        "hint": ""
+    },
+    {
+        "id": "8MGZ4J6B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented in ER with tachycardia. ECG shows irregular fast QRS complexes along with waxing and waning pattern. Twisting of points around base line. What explains it best?",
+        "options": {
+            "A": "Torsade points",
+            "B": "Cardiac tamponade",
+            "C": "Acute pericarditis",
+            "D": "Supra ventricular tachycardia",
+            "E": "Pericardial effusion"
+        },
+        "correctAnswer": "A",
+        "explanation": "Torsade's de pointes (\"twisting of the points\") is a specific form of polymorphic ventricular tachycardia characterized by a gradual change in the amplitude and axis of the QRS complexes, giving it the appearance of twisting around the isoelectric baseline. It is typically associated with a prolonged QT interval. Cardiac Tamponade/Pericardial Effusion (B, E) can cause electrical alternans (QRS amplitude alternating beat to beat), but not the waxing and waning. Acute Pericarditis (C): The classic ECG finding is diffuse ST-segment elevation and PR-segment depression.",
+        "hint": ""
+    },
+    {
+        "id": "VT8RPZ37",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "When should cardiac rehabilitation be initiated after a myocardial infarction?",
+        "options": {
+            "A": "Before hospital discharge",
+            "B": "After 1 week",
+            "C": "After 2 weeks",
+            "D": "As per patient's preference",
+            "E": "Not Needed"
+        },
+        "correctAnswer": "A",
+        "explanation": "Cardiac rehabilitation (CR) begins very early after a cardiac event. It is structured into phases. Phase I: Inpatient Cardiac Rehab (Before Hospital Discharge) as soon as the patient is medically stable typically within 24 to 48 hours. Phase II: Outpatient Cardiac Rehab (After Hospital Discharge) usually within 1-2 weeks.",
+        "hint": ""
+    },
+    {
+        "id": "PV4UFKJ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old patient has aortic valve vegetation secondary to Staphylococcus aureus. On autopsy, the spleen shows a wedge-shaped, white-tan area. What type of necrosis is most likely?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Liquefactive necrosis",
+            "C": "Caseous necrosis",
+            "D": "Fat necrosis",
+            "E": "Fibrinoid necrosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "Infarcts in solid organs (like the spleen, heart, or kidney) are usually ischemic and result in coagulative necrosis. This preserves the basic cellular architecture for a period, giving the tissue the firm, wedge-shaped, pale appearance described.",
+        "hint": ""
+    },
+    {
+        "id": "DURMQJMW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient had a myocardial infarction (MI) and percutaneous coronary intervention (PCI) was performed. What is the initial step in ischemia of the coronary vessel?",
+        "options": {
+            "A": "Endothelial injury",
+            "B": "Internal plaque formation",
+            "C": "Thrombus activation",
+            "D": "Leukocyte migration",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "MI is almost always caused by the acute occlusion of a coronary artery, typically by a thrombus. The initial trigger that leads to the thrombus formation is the rupture of an atherosclerotic plaque. Both plaque rupture and erosion directly expose the subendothelial matrix to the blood, which is a form of endothelial injury, initiating the coagulation cascade and platelet aggregation that forms the obstructive thrombus.",
+        "hint": ""
+    },
+    {
+        "id": "CGPTX66F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops chest pain and is given nitroglycerin, which relieves the pain. What is the primary mechanism of action?",
+        "options": {
+            "A": "Dilation of capacitance vessels",
+            "B": "Dilation of resistance vessels",
+            "C": "Increased blood flow in coronary arteries",
+            "D": "Increased heart rate",
+            "E": "Decreased myocardial contractility"
+        },
+        "correctAnswer": "A",
+        "explanation": "The most pronounced effect of nitroglycerin at typical therapeutic doses is venodilation, which involves the large, highly compliant capacitance vessels (veins and venules).",
+        "hint": ""
+    },
+    {
+        "id": "ET93PBD3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Low-dose aspirin inhibits the release of which of the following?",
+        "options": {
+            "A": "Thromboxane A2 (TXA2)",
+            "B": "Prostacyclin (PGI2)",
+            "C": "Leukotriene B4",
+            "D": "Prostaglandin E2 (PGE2)",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Low dose aspirin inhibits Thromboxane A2. High dose aspirin inhibits Cyclo-oxygenase.",
+        "hint": ""
+    },
+    {
+        "id": "YPNZ68V2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following drugs is most likely to cause tachycardia at normal doses?",
+        "options": {
+            "A": "Isosorbide dinitrate",
+            "B": "Guanethidine",
+            "C": "Propranolol",
+            "D": "Verapamil",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Isosorbide dinitrate is a potent nitrate drug used for angina. Nitrates are vasodilators(vein>artery) that cause systemic vasodilation, leading to a drop in blood pressure.",
+        "hint": ""
+    },
+    {
+        "id": "T227FFCM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old man comes to ER with unrecordable BP and thready pulse after RTA. Which of the following change is sensed by carotid and aortic receptors to initiate feedback?",
+        "options": {
+            "A": "Increase O2 in blood",
+            "B": "Decrease O2 in blood",
+            "C": "Increase Co2 in blood",
+            "D": "Increase pH in CSF",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The primary role of the peripheral chemoreceptors (carotid and aortic bodies) is to sense decreased PO2 (oxygen) in the blood. In severe shock with very low blood pressure (unrecordable BP), blood flow to the tissues, including the chemoreceptors themselves, is severely reduced (stagnant hypoxia). This sluggish flow leads to a massive decrease in tissue PO2 at the chemoreceptor sites. This strong hypoxic signal is then sent to the medulla to initiate a compensatory feedback loop, resulting in hyperventilation and increased sympathetic output (further increasing heart rate/pulse, which is already thready).",
+        "hint": ""
+    },
+    {
+        "id": "U7UWPFU5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In ECG, T wave shows what?",
+        "options": {
+            "A": "Atrial depolarization",
+            "B": "Atrial repolarization",
+            "C": "Ventricular depolarization",
+            "D": "Ventricular repolarization",
+            "E": "A-V nodal delay"
+        },
+        "correctAnswer": "D",
+        "explanation": "The T wave on an ECG represents the repolarization (relaxation) of the ventricles.",
+        "hint": ""
+    },
+    {
+        "id": "BHJ4YYNZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The S3 heart sound is produced by which of the following mechanisms?",
+        "options": {
+            "A": "Atrial contraction into a stiff ventricle",
+            "B": "Interruption of ventricular filling",
+            "C": "Closure of the semilunar valves",
+            "D": "Turbulent flow across the mitral valve",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The S3 sound occurs in early diastole during the rapid ventricular filling phase. It is caused by the sudden, abrupt deceleration of blood flow as it rushes into an already overfilled or poorly compliant (volume-overloaded) ventricle, causing the walls to vibrate. It is often called a \"ventricular gallop\" and is a sign of heart failure (volume overload). A) Atrial contraction into a stiff ventricle describes the S4 heart sound, which occurs in late diastole.",
+        "hint": ""
+    },
+    {
+        "id": "GRV7MJTB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man sustained a head injury and subsequently underwent brain surgery. Extra precautions should be taken to prevent which lethal complication?",
+        "options": {
+            "A": "Pulmonary embolism",
+            "B": "Air embolism",
+            "C": "Fat embolism",
+            "D": "Hemorrhage",
+            "E": "Thrombosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "During brain or neck surgery, especially in the head-up position where venous pressure is low, a negative pressure gradient can allow air to be sucked into open veins of the surgical field. This is known as a Venous Air Embolism (VAE) and is a known, rapidly lethal complication of neurosurgery.",
+        "hint": ""
+    },
+    {
+        "id": "JQCP8GNR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is presented in ER with Shock. Peripheral vessels are collapsed. Blood sample in this case will be taken from which vessel?",
+        "options": {
+            "A": "Femoral vein",
+            "B": "Great saphenous vein",
+            "C": "Small saphenous vein",
+            "D": "Popliteal vein",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The femoral vein is preferred because it is a large, central vein located deeper in the body. It is protected from the most severe effects of peripheral vasoconstriction and is more likely to remain patent for reliable, rapid access. In severe shock, peripheral vasoconstriction causes the superficial veins (like the great and small saphenous veins) to collapse, making access extremely difficult.",
+        "hint": ""
+    },
+    {
+        "id": "7KUMVQ3S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which part of the adrenal gland is primarily involved in blood pressure regulation?",
+        "options": {
+            "A": "Medulla",
+            "B": "Zona glomerulosa",
+            "C": "Zona fasciculata",
+            "D": "Zona reticularis",
+            "E": "Glomerulus"
+        },
+        "correctAnswer": "B",
+        "explanation": "The Zona glomerulosa is the outermost layer and is primarily responsible for secreting mineralocorticoids, the most important of which is aldosterone. Aldosterone acts on the kidney to increase the reabsorption of sodium and water, and the excretion of potassium which directly increases blood volume and, consequently, regulates blood pressure.",
+        "hint": ""
+    },
+    {
+        "id": "PRU9BN9P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 24-year-old female with a history of poorly controlled Type 1 Diabetes Mellitus presents to the Emergency, complaining of three days of severe nausea, vomiting, polyuria, and increasing lethargy. She admits she ran out of insulin two days ago. On physical exam, she is tachycardic (HR 115 bpm), hypotensive (BP 90/60 mmHg), and appears dehydrated. She is noted to have deep, rapid, sighing respirations (Kussmaul breathing). Her labs show BSR= 150, pH= 7.1, pCO2= 25mmHg, HCO3= 9mEq/L. What is the most likely diagnosis?",
+        "options": {
+            "A": "Metabolic Acidosis",
+            "B": "Metabolic Alkalosis",
+            "C": "Respiratory Acidosis",
+            "D": "Respiratory Alkalosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The pH is low, indicating a state of Acidosis. The bicarbonate is severely low, which is the hallmark of a Metabolic Acidosis. The low pCO2 signifies that the patient's Kussmaul breathing is an attempt to compensate by causing a Respiratory Alkalosis (blowing off acid in the form of CO2) to partially normalize the pH.",
+        "hint": ""
+    },
+    {
+        "id": "Q8W397H3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A diabetic patient presented to clinic with the complaint of fasting hyperglycemia. He is already on insulin. What changes should be done?",
+        "options": {
+            "A": "Add regular insulin daily",
+            "B": "Add intermediate insulin in morning",
+            "C": "Add regular and intermediate insulin twice daily",
+            "D": "Add long acting insulin in night",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RRQJDBFA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with the features of hirsutism and acne and pcos. On lab investigation cortisol levels are high. The cause of hirsutism will be?",
+        "options": {
+            "A": "ACTH increasing androgens production.",
+            "B": "CRH increases androgen production",
+            "C": "5 alpha reductase conversion",
+            "D": "Increase aromatase activity",
+            "E": "Cortisol increasing estrogen levels."
+        },
+        "correctAnswer": "A",
+        "explanation": "High Cortisol levels suggest Cushing's Syndrome or a similar condition. The overproduction of ACTH (either from a pituitary tumor or ectopic source) often causes the adrenal gland to simultaneously increase the production of adrenal androgens (like DHEA-S), which leads to hirsutism and acne.",
+        "hint": ""
+    },
+    {
+        "id": "7XCQ6VA9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient underwent bilateral adrenalectomy for Cushing's syndrome. After a few years, he presents with darkening of facial features. Which of the following is a complication associated with the surgery?",
+        "options": {
+            "A": "Wilson disease",
+            "B": "Hemochromatosis",
+            "C": "Chronic liver failure",
+            "D": "Chronic kidney failure",
+            "E": "Nelson syndrome"
+        },
+        "correctAnswer": "E",
+        "explanation": "Nelson syndrome is a complication that can occur after bilateral adrenalectomy for Cushing's disease. Removing the adrenal glands eliminates the cortisol feedback inhibition on the pituitary gland. This leads to the uncontrolled growth of the existing pituitary adenoma and massive oversecretion of ACTH. The high ACTH cause increased melanin synthesis, resulting in hyperpigmentation.",
+        "hint": ""
+    },
+    {
+        "id": "Y54UN84H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Increase Osteoclastic activity is mainly due to?",
+        "options": {
+            "A": "Thyroid",
+            "B": "PTH",
+            "C": "Cortisol",
+            "D": "Vitamin D",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "(PTH) is the primary hormone that stimulates osteoclast activity (bone resorption) indirectly, to increase serum calcium levels.",
+        "hint": ""
+    },
+    {
+        "id": "DEYN574W",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A diabetic patient presented to the clinic. The doctor prescribed her flozins (type of antidiabetic drugs)",
+        "options": {
+            "A": "Inhibit hepatic gluconeogenesis",
+            "B": "Increase insulin secretion",
+            "C": "Increase insulin sensitivity",
+            "D": "Inhibit glut2 transporter",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Flozins (SGLT-2 inhibitors like Canagliflozin) target the Sodium-Glucose Linked Transporter 2 (SGLT-2) in the renal tubules, not GLUT-2. However, based on the options and the mechanism related to glucose transport, the intended answer is likely a glucose transporter. SGLT-2 is the main transporter for glucose reabsorption in the kidney. GLUT-2 is primarily an intestinal and hepatic transporter. As SGLT2 is not an option, the closest related mechanism of action (glucose transporter inhibition) is the intended choice.",
+        "hint": ""
+    },
+    {
+        "id": "T9BDHUWL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female presented with irregular menstrual cycle and dark colored hair growth. How will you decrease testosterone levels?",
+        "options": {
+            "A": "Progesterone",
+            "B": "Estrogen",
+            "C": "GnRH inhibitors",
+            "D": "Danazol",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The symptoms irregular menstrual cycle (likely oligomenorrhea or amenorrhea) and dark colored hair growth (hirsutism)—are classic signs of hyperandrogenism. The primary medical approach to manage hyperandrogenism and its symptoms is often the use of Combined Oral Contraceptive Pills (COCPs), which contain both estrogen and a progestin. Estrogen causes: (i) Suppression of Ovarian Androgens by decreasing LH production and (ii) Increased Sex Hormone-Binding Globulin to decrease testosterone. Progesterone is also a component of COCPs but without an estrogen component, progesterone alone isn't the primary strategy to decrease free testosterone levels GnRH Inhibitors (Antagonists): These are potent drugs used to completely shut down ovarian hormone production They are too aggressive for first-line management of routine hirsutism and menstrual irregularity. Danazol is an androgenic drug.",
+        "hint": ""
+    },
+    {
+        "id": "75J7GQGC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening",
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Gluconeogenesis occurs in which organs?",
+        "options": {
+            "A": "Liver and pancreas",
+            "B": "Liver and adipose tissue",
+            "C": "Liver and kidney",
+            "D": "Liver",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Gluconeogenesis, the process of synthesizing glucose from non-carbohydrate precursors, primarily occurs in the liver (90%). The kidney is the second most important site, contributing about 10% overall, which increases significantly during prolonged fasting.",
+        "hint": ""
+    },
+    {
+        "id": "E6EGY6J8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which one is the seromucinous gland with demilunes?",
+        "options": {
+            "A": "Parotid gland",
+            "B": "Lingual gland",
+            "C": "Submandibular gland",
+            "D": "Lacrimal gland",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The Submandibular gland is a mixed (seromucous) gland. Histologically, its mucous acini are capped by crescents of serous cells known as serous demilunes (or demilunes of Gianuzzi).",
+        "hint": ""
+    },
+    {
+        "id": "KU9B6E86",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A known case of ulcerative colitis presents to the ER with bloody diarrhea (acute flare). His Hb is 6.5 g/dL and CRP is 30 mg/L. He has been taking mesalazine for 2 years. Which of the following is the next line of treatment?",
+        "options": {
+            "A": "Methylprednisolone",
+            "B": "Sulfasalazine",
+            "C": "Infliximab",
+            "D": "Azathioprine",
+            "E": "Mesalazine"
+        },
+        "correctAnswer": "A",
+        "explanation": "Treatment for an acute, severe flare is to induce remission with high-dose intravenous Corticosteroids (like Methylprednisolone).",
+        "hint": ""
+    },
+    {
+        "id": "XUQ6KWEC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present with episodes of diarrhea and epigastric pain relieved by meals. On further investigation, multiple ulcers are found in the 3rd part of the duodenum. What is the most likely diagnosis?",
+        "options": {
+            "A": "Crohn's disease",
+            "B": "Gastric lymphoma",
+            "C": "H. pylori infection",
+            "D": "Zollinger-Ellison syndrome",
+            "E": "Adenocarcinoma"
+        },
+        "correctAnswer": "D",
+        "explanation": "This triad (Diarrhea, Epigastric pain relieved by meals and multiple ulcers) is highly characteristic of Zollinger-Ellison Syndrome (ZES), which is caused by a gastrinoma that secretes excessive gastrin, leading to severe gastric acid hypersecretion.",
+        "hint": ""
+    },
+    {
+        "id": "5LNMCB75",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with visible jaundice, pale stools, and dark-colored urine. CT scan shows a dilated common bile duct. Which laboratory test would most accurately reflect the diagnosis?",
+        "options": {
+            "A": "Alkaline phosphatase (ALP)",
+            "B": "Direct bilirubin",
+            "C": "Indirect bilirubin",
+            "D": "AST/ALT ratio",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The patient's signs and symptoms strongly indicate an obstruction of the common bile duct. In obstructive jaundice, the liver performed the conjugation step, but the flow is blocked. The conjugated bilirubin then backs up into the blood, leading to hyperbilirubinemia. High levels of direct (conjugated) bilirubin are the hallmark of biliary obstruction. ALP is also typically significantly elevated in obstruction because it is released from the bile duct lining cells when pressure builds up. However, ALP can also be elevated in bone diseases, making it less specific than direct bilirubin for confirming bile duct obstruction.",
+        "hint": ""
+    },
+    {
+        "id": "JFPLVMQW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Alcoholic liver cells are hollow due to?",
+        "options": {
+            "A": "Steatosis",
+            "B": "Glycogen",
+            "C": "Necrosis",
+            "D": "Anaplasia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The \"hollow\" appearance of hepatocytes in alcoholic liver disease is due to steatosis (fatty change), where lipid droplets accumulate and displace the nucleus, appearing clear/empty on standard histology stains.",
+        "hint": ""
+    },
+    {
+        "id": "WEGKYMX5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pseudomyxoma peritonei spread via?",
+        "options": {
+            "A": "Lymphatics",
+            "B": "Hematogenous",
+            "C": "Direct seeding",
+            "D": "Sexual transmission",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Pseudomyxoma peritonei is the accumulation of mucinous material in the peritoneal cavity, most commonly originating from a ruptured mucinous appendiceal tumor. It spreads by direct rupture and implantation (direct seeding) of cells.",
+        "hint": ""
+    },
+    {
+        "id": "F4E2UCKC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A girl presented with severe abdominal pain and diarrhea. She was given a drug that blocks 5-HT3 receptors. Which drug was administered?",
+        "options": {
+            "A": "Alosetron",
+            "B": "Hyoscine",
+            "C": "Diphenhydramine",
+            "D": "Loperamide",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TYGT82MF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Why should sucralfate and cimetidine be taken at least 2 hours apart?",
+        "options": {
+            "A": "Sucralfate inhibits absorption of cimetidine",
+            "B": "Cimetidine inhibits metabolism of sucralfate, increasing its toxicity",
+            "C": "Sucralfate increases cimetidine absorption",
+            "D": "Sucralfate competes with receptors",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Sucralfate is a mucosal protective agent that forms a thick, viscous paste in the stomach, effectively coating the ulcer base. This coating action can physically bind to and interfere with the absorption of many other orally administered drugs, including the H2 blocker Cimetidine. Therefore, they must be taken several hours apart to ensure the absorption and efficacy of Cimetidine.",
+        "hint": ""
+    },
+    {
+        "id": "BE4BRXAK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which cranial nerves are primarily involved in the pharyngeal phase of swallowing?",
+        "options": {
+            "A": "5, 7, 9, 10",
+            "B": "5, 7, 9, 10, 12",
+            "C": "5, 9, 10, 12",
+            "D": "6, 11, 10, 12",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "25VJKF6D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which one of the following decreases intestinal motility?",
+        "options": {
+            "A": "Gastrin",
+            "B": "Secretin",
+            "C": "CCK",
+            "D": "GIP",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Gastrin increases both gastric and intestinal motility. Secretin decreases both gastric and intestinal motility. CCK increases intestinal motility while decreases gastric motility.",
+        "hint": ""
+    },
+    {
+        "id": "AMDXQVQ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is presented with Hematemesis. Which vessel will be more likely involved?",
+        "options": {
+            "A": "Left gastric vein",
+            "B": "Right gastric vein",
+            "C": "Renal vein",
+            "D": "Neck veins",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Left Gastric Vein is a key part of the portal system. In cases of portal hypertension, blood flow through the liver is obstructed, causing pressure to back up into the portal vein and its tributaries. This pressure increase leads to the development of large, dilated portosystemic collateral vessels, known as esophageal varices, in the submucosa of the lower esophagus. Rupture of these varices is the most common cause of massive hematemesis in a patient with portal hypertension.",
+        "hint": ""
+    },
+    {
+        "id": "XPCVGCZV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient requires contrast imaging of the liver. At which anatomical site should the dye be injected?",
+        "options": {
+            "A": "Ligamentum teres",
+            "B": "Median umbilical ligament",
+            "C": "Lateral umbilical ligament",
+            "D": "Round ligament of liver",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The anatomical site for injection to reach the liver circulation is Ligamentum teres (Round Ligament of the Liver). remnant of the fetal umbilical vein.",
+        "hint": ""
+    },
+    {
+        "id": "NXAWR5B6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient is presented with bleeding ulcer in the first part of duodenum. Which vessel will be most likely ligated to stop the blood loss?",
+        "options": {
+            "A": "Superior pancreaticoduodenal artery",
+            "B": "Inferior pancreaticoduodenal artery",
+            "C": "Gastroduodenal Artery",
+            "D": "Splenic Artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Gastroduodenal Artery descends posterior to the first part of the duodenum. When a posterior duodenal ulcer erodes through the wall, it most commonly penetrates and causes massive hemorrhage from the GDA. Superior/Inferior Pancreaticoduodenal Arteries (A & B) are branches of the GDA (Superior) or SMA (Inferior). While they supply the duodenum, they are smaller and less likely to be the source of a massive hemorrhage than the larger, parent GDA. Splenic Artery (D): Supplies the spleen and stomach. It is not anatomically related to the posterior wall of the first part of the duodenum.",
+        "hint": ""
+    },
+    {
+        "id": "SUZUU3UJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Genetics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A mother has Marfan's syndrome, and her partner is normal. What is the probability that their children will inherit Marfan's syndrome?",
+        "options": {
+            "A": "0%",
+            "B": "25%",
+            "C": "50%",
+            "D": "75%",
+            "E": "100%"
+        },
+        "correctAnswer": "C",
+        "explanation": "Marfan's Syndrome is inherited in an Autosomal Dominant pattern. The patient (mother) has the disease, meaning she carries one affected allele (M) and one normal allele (m). The partner is normal (mm). The cross is Mm x mm. The possible offspring genotypes are Mm and mm each with a 50% probability.",
+        "hint": ""
+    },
+    {
+        "id": "4SMCBL6A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Genetics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Allele is defined as?",
+        "options": {
+            "A": "Same genes on different locus",
+            "B": "Different genes on same locus",
+            "C": "Two parallel chromatids",
+            "D": "To sister chromatids",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "An allele is a variant form of a gene found at the same place (locus) on a chromosome.",
+        "hint": ""
+    },
+    {
+        "id": "7JX5QUAV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Genetics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Female patient presented with short stature, webbed neck, widely spaced nipples. What is the most likely chromosomal abnormality?",
+        "options": {
+            "A": "Turner Syndrome",
+            "B": "Klinefelter syndrome",
+            "C": "Down syndrome",
+            "D": "Patau syndrome",
+            "E": "Edward syndrome."
+        },
+        "correctAnswer": "A",
+        "explanation": "The presentation of short stature, webbed neck, and widely spaced nipples in a female patient is the classic triad for Turner Syndrome denoted as 45Xo.",
+        "hint": ""
+    },
+    {
+        "id": "TPAE32T9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Genetics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is autosomal dominant?",
+        "options": {
+            "A": "Familial polyposis coli",
+            "B": "Wilson's Disease",
+            "C": "Fragile X Syndrome",
+            "D": "Kartagener Syndrome",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Familial polyposis coli: Autosomal Dominant. Wilson's Disease: Autosomal Recessive. Fragile X Syndrome: X-Linked Dominant. Kartagener Syndrome: Autosomal Recessive.",
+        "hint": ""
+    },
+    {
+        "id": "K9PULCWB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Regarding hemoglobin, which of the following statements is correct?",
+        "options": {
+            "A": "Deoxygenated hemoglobin is in the 'T' (tense) conformation",
+            "B": "Each heme can bind two globin chains",
+            "C": "Heme has iron in ferric form.",
+            "D": "Severe exercise and anemia have raised p50",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The T (Tense) state is the quaternary conformation of hemoglobin that is favored when the molecule is deoxygenated. Other options are incorrect because Each heme group is bound to only one globin chain and the iron in the heme group must be in the ferrous Fe+2 form.",
+        "hint": ""
+    },
+    {
+        "id": "S9B52DE8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops pallor and jaundice following treatment for a febrile illness. Laboratory findings show hemoglobin of 7 g/dL with 8% reticulocytes and increase Unconjugated hyperbilirubinemia. What is the most likely cause?",
+        "options": {
+            "A": "G6PD deficiency",
+            "B": "Autoimmune hemolytic anemia",
+            "C": "Sickle cell anemia",
+            "D": "Hereditary spherocytosis",
+            "E": "Iron deficiency anemia"
+        },
+        "correctAnswer": "A",
+        "explanation": "Given labs following a treatment of febrile illness most probably due to antimalarial drugs represents a case of G6PD deficiency.",
+        "hint": ""
+    },
+    {
+        "id": "FPXQJDDK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has a history of pulmonary embolism (PE) and recurrent thrombosis over the past year. She is currently on oral anticoagulants. Considering her clinical state, which of the following is a risk factor for her condition?",
+        "options": {
+            "A": "Protein C deficiency",
+            "B": "Homocystinuria",
+            "C": "Factor V Leiden",
+            "D": "Oral contraceptive pills (OCPs)",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EKURFMW6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with pallor and jaundice following a febrile illness. Laboratory findings show hemoglobin of 4 g/dL, blister cells and polychromasia on peripheral smear, and splenomegaly on prior treatment. Which test is most likely to help confirm the diagnosis?",
+        "options": {
+            "A": "G6PD assay",
+            "B": "Osmotic fragility test",
+            "C": "InDirect Coombs test",
+            "D": "Hemoglobin electrophoresis",
+            "E": "Bone marrow biopsy"
+        },
+        "correctAnswer": "A",
+        "explanation": "The combination of acute hemolysis, blister cells (which can progress to bite cells), polychromasia, and a preceding febrile illness strongly points toward an enzyme deficiency that makes red cells susceptible to oxidative damage, such as G6PD deficiency. G6PD assay: This is the definitive diagnostic test for G6PD deficiency. Osmotic fragility test: This test confirms Hereditary Spherocytosis. Direct Coombs test: Used to diagnose Autoimmune Hemolytic Anemia (AIHA). Hemoglobin electrophoresis: Used to diagnose Hemoglobinopathies.",
+        "hint": ""
+    },
+    {
+        "id": "NW7GZ6ZG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-year-old girl presents with fever and petechiae on the lower limbs. Bone marrow examination shows blast cells, increased WBCs, and low platelets. Immunophenotyping reveals CD10 positivity. This condition is most commonly associated with which of the following?",
+        "options": {
+            "A": "Down syndrome",
+            "B": "Cri du chat syndrome",
+            "C": "Turner syndrome",
+            "D": "Klinefelter syndrome",
+            "E": "Patau syndrome"
+        },
+        "correctAnswer": "A",
+        "explanation": "The clinical picture points to Acute lymphoblastic leukemia. CD10 positivity also support ALL. This condition is most commonly associated with Down syndrome (Trisomy 21).",
+        "hint": ""
+    },
+    {
+        "id": "6Q2RVLEH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy is found to have decreased Factor VIII levels. Which of the following laboratory tests is most likely to be prolonged?",
+        "options": {
+            "A": "Prothrombin time (PT)",
+            "B": "Activated partial thromboplastin time (APTT)",
+            "C": "Bleeding time (BT)",
+            "D": "Clotting time (CT)",
+            "E": "Platelet count"
+        },
+        "correctAnswer": "B",
+        "explanation": "Factor VIII is a crucial component of the Intrinsic Pathway of the coagulation cascade. The APTT is the test used to measure the efficiency of the Intrinsic and Common Pathways. A decrease in Factor VIII (which causes Hemophilia A) impairs the Intrinsic Pathway, leading to a prolonged APTT. PT tests the Extrinsic and Common Pathways and would be normal in this case while BT and Platelet Count test primary hemostasis and would also be normal.",
+        "hint": ""
+    },
+    {
+        "id": "ATKA79DQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with pallor and weakness. Laboratory investigations show MCV: 70 fL and MCH: 22 pg. What type of anemia is this?",
+        "options": {
+            "A": "Microcytic hypochromic",
+            "B": "Normocytic normochromic",
+            "C": "Microcytic normochromic",
+            "D": "Megaloblastic anemia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "MCV = 70 (normal is 80-100) which is low, indicating Microcytic (small cells). MCH is 22 (normal is 27-33), which is low, indicating Hypochromic (pale cells). This pattern is classically seen in Iron Deficiency Anemia and Thalassemia.",
+        "hint": ""
+    },
+    {
+        "id": "BSFNRVKC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents to the ER after a road traffic accident (RTA) and receives a massive blood transfusion (10 units). Which of the following complications is most likely to occur?",
+        "options": {
+            "A": "Increased potassium but decreased ammonium",
+            "B": "Hypocalcemia",
+            "C": "Hypercalcemia",
+            "D": "Hypokalemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Stored blood contains citrate as an anticoagulant. When a patient receives a massive transfusion (e.g., 10 units), the large amount of citrate can chelate (bind) the patient's circulating ionized calcium Ca2+. If the liver cannot metabolize the citrate quickly enough, this can lead to acute Hypocalcemia. The high potassium from the lysis of stored red blood cells is called Hyperkalemia, not \"Increased potassium but decreased ammonium,\" making option (a) less precise. Hypocalcemia is a major and potentially lethal complication of massive transfusion.",
+        "hint": ""
+    },
+    {
+        "id": "AAVQHPLL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient is presented with malar rash, alopecia and photosensitivity. She is diagnosed as SLE. Most specific antibody for SLE will be?",
+        "options": {
+            "A": "Anti-neutrophil antibody",
+            "B": "Anti-smooth muscle antibody",
+            "C": "Anti-dsDNA antibody",
+            "D": "Anti-mitochondrial antibody",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Anti-dsDNA is highly specific. Anti-Sm most specific than anti-dsDNA but option not given. ANA are highly sensitive.",
+        "hint": ""
+    },
+    {
+        "id": "2SK6CZDW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female presents with recurrent lip swelling three times a year. There is no IgE elevation, LFTs and RFTs are normal, and no history of allergy. What is the most likely diagnosis?",
+        "options": {
+            "A": "Idiopathic angioedema",
+            "B": "Hereditary angioedema",
+            "C": "Oral allergy syndrome",
+            "D": "Drug-induced angioedema",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The key clinical findings are recurrent angioedema (lip swelling) without typical allergic features (no IgE elevation, no history of allergy, normal LFTs/RFTs). This presentation strongly suggests a bradykinin-mediated angioedema, not an allergic, mast cell-mediated one. Hereditary angioedema (HAE) is a genetic disorder usually caused by a deficiency or dysfunction of the C1 esterase inhibitor, which leads to uncontrolled activation of the complement and kinin systems, resulting in the excessive production of bradykinin.",
+        "hint": ""
+    },
+    {
+        "id": "FGRPBAQQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops a reaction after administration of an antibiotic and is treated with epinephrine. Which type of shock is most likely?",
+        "options": {
+            "A": "Septic shock",
+            "B": "Anaphylactic shock",
+            "C": "Cardiogenic shock",
+            "D": "Hypovolemic shock",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "A patient who develops a reaction after an antibiotic and is treated with epinephrine is most likely experiencing Anaphylactic shock.",
+        "hint": ""
+    },
+    {
+        "id": "MXBHP7NP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person was having blood transfusion. After 15 minutes, he develops dyspnea, hypotension (BP 60/40 mmHg), and fever. Which type of hypersensitivity reaction is this?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "This reaction is a Transfusion Reaction. The most likely type, given the rapid onset and systemic symptoms (hypotension, dyspnea, fever), is an Acute Hemolytic Transfusion Reaction, which is a Type II Hypersensitivity.",
+        "hint": ""
+    },
+    {
+        "id": "RMPN986W",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is associated with HLA B-5?",
+        "options": {
+            "A": "Behcet Syndrome",
+            "B": "Ankylosing spondylitis",
+            "C": "Reiter's Disease",
+            "D": "Rheumatoid Arthritis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Behcet Syndrome is a chronic, relapsing, systemic vasculitis characterized by recurrent oral ulcers, genital ulcers, and uveitis. It has a strong and classic association with the MHC Class I allele HLA-B 51 (a subtype of HLA-B5). Ankylosing Spondylitis and Reiter's Disease (Reactive Arthritis) are associated with HLA-B27.",
+        "hint": ""
+    },
+    {
+        "id": "9UK8AZNM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with fever and congested tonsils. A diagnosis of acute tonsillitis is made. Which of the following are the mediators responsible for the systemic effects?",
+        "options": {
+            "A": "IL-1 and TNF",
+            "B": "C3b, LTB4",
+            "C": "C5a",
+            "D": "IL-8 and interferon-y",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The two most important cytokines responsible for causing fever and systemic inflammation are IL-1 and TNF.",
+        "hint": ""
+    },
+    {
+        "id": "L2WCQDRB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Primary lymphoid organ responsible for T and B cells maturation:",
+        "options": {
+            "A": "Spleen & Thymus",
+            "B": "Thymus & Bone marrow",
+            "C": "Thymus & Lymph node",
+            "D": "Spleen, Lymph node",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "T cells maturation occurs in Thymus. B cell maturation occur in bone marrow.",
+        "hint": ""
+    },
+    {
+        "id": "5YLAAFBT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Type of cells predominant in acute inflammation caused by virus?",
+        "options": {
+            "A": "Neutrophils",
+            "B": "Macrophages",
+            "C": "Eosinophils",
+            "D": "Lymphocytes",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "While acute inflammation is generally characterized by a predominance of neutrophils, the cellular response is modified when the pathogen is a virus with Lymphocyte predominance. In the acute phase of a viral infection, the inflammatory infiltrate often shifts rapidly to a mononuclear pattern, with lymphocytes (and sometimes plasma cells) being the dominant cell type rather than the bacteria-fighting neutrophils.",
+        "hint": ""
+    },
+    {
+        "id": "W3ECVQKH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Type of Hypersensitivity in Good pasture syndrome is?",
+        "options": {
+            "A": "HSR 1",
+            "B": "HSR 2",
+            "C": "HSR 3",
+            "D": "HSR 4",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The type of Hypersensitivity Reaction involved in Good pasture Syndrome is Type 2.",
+        "hint": ""
+    },
+    {
+        "id": "2MMMKLYU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following characterizes chronic inflammation?",
+        "options": {
+            "A": "Predominant accumulation of lymphocytes",
+            "B": "Predominant exudative response",
+            "C": "Neutrophil migration",
+            "D": "Plasma cells predominance",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Lymphocytes (T and B cells) are key components of the mononuclear cell infiltrate that defines chronic inflammation, often working in concert with macrophages. Exudation (fluid leakage into tissue) and Neutrophil migration is the hallmark of acute inflammation. Plasma cells also predominate chronic inflammation but A is more specific here.",
+        "hint": ""
+    },
+    {
+        "id": "SH7ZNQ4Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is a component of innate immunity?",
+        "options": {
+            "A": "Natural Killer (NK) cells",
+            "B": "Complement",
+            "C": "Interferons",
+            "D": "T cells",
+            "E": "Immunoglobulins"
+        },
+        "correctAnswer": "A",
+        "explanation": "NK cells are lymphocytes that can recognize and kill infected or stressed cells (e.g., viral cells, tumor cells) without prior sensitization, distinguishing them from T cells, which require antigen presentation.",
+        "hint": ""
+    },
+    {
+        "id": "UKBKQC3Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the major scavenger in the inflammatory response?",
+        "options": {
+            "A": "Macrophages",
+            "B": "Neutrophils",
+            "C": "Monocytes",
+            "D": "T cells",
+            "E": "Dendritic cells"
+        },
+        "correctAnswer": "A",
+        "explanation": "Macrophages are the primary phagocytic cells responsible for scavenging (clearing) debris, apoptotic cells, and dead neutrophils at the site of inflammation.",
+        "hint": ""
+    },
+    {
+        "id": "YKG7S89L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "X-linked agammaglobulinemia is primarily due to a defect in which of the following?",
+        "options": {
+            "A": "B cells",
+            "B": "T cells",
+            "C": "Neutrophils",
+            "D": "Natural killer (NK) cells",
+            "E": "Complement system"
+        },
+        "correctAnswer": "A",
+        "explanation": "XLA is caused by a mutation in the BTK gene essential for the maturation of B cells.",
+        "hint": ""
+    },
+    {
+        "id": "TAKZJUMM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has a history of positive HCV antibodies but no evidence of liver damage. Which investigation should be done next to confirm active infection?",
+        "options": {
+            "A": "Start treatment",
+            "B": "No management needed",
+            "C": "Repeat HCV antibody test",
+            "D": "Liver biopsy",
+            "E": "HCV PCR"
+        },
+        "correctAnswer": "E",
+        "explanation": "A positive HCV antibody test means the patient has been exposed to the Hepatitis C virus. However, it does not distinguish between a past, resolved infection and a current, active infection. To confirm if the virus is currently active and replicating the next and necessary step is to test for the presence of the viral genetic material using HCV RNA Polymerase Chain Reaction.",
+        "hint": ""
+    },
+    {
+        "id": "AA2VENB3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is presented with Vivax more than three times. He is taking all the preventive measure i.e repellents, mosquito nets etc. What should be the next step?",
+        "options": {
+            "A": "Primaquine",
+            "B": "Artemether",
+            "C": "Chloroquine",
+            "D": "Mefloquine",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The patient's repeated episodes, despite taking preventive measures (repellents/nets), strongly suggest that the patient is suffering from relapses due to the reactivation of hypnozoite. P. vivax is unique among the common malaria parasites because it forms dormant liver stages called hypnozoites. Primaquine is the only widely available drug licensed for the eradication of hypnozoites. The recommended course is typically 14 days.",
+        "hint": ""
+    },
+    {
+        "id": "VCQRMAKP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with a travel history of 2 days develops watery diarrhea after meals. Anaerobic Gram-negative rods are detected. What is the drug of choice?",
+        "options": {
+            "A": "Azithromycin",
+            "B": "Doxycycline",
+            "C": "Chloramphenicol",
+            "D": "Clindamycin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Azithromycin is the current first-line drug of choice for the empirical treatment of severe or bloody Traveler's Diarrhea.",
+        "hint": ""
+    },
+    {
+        "id": "RGP7LFJP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person presents with a positive VDRL test. What is the most appropriate treatment?",
+        "options": {
+            "A": "Penicillin G",
+            "B": "Penicillin V",
+            "C": "Procaine Penicillin",
+            "D": "Ampicillin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "A positive VDRL test is a non-treponemal screening test for Syphilis. The drug of choice for treating all stages of primary, secondary, and early latent Syphilis is a single intramuscular dose of Benzathine Penicillin G.",
+        "hint": ""
+    },
+    {
+        "id": "A5DG4UKH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young female presents with a urinary tract infection. Urine culture shows a gram-negative rod with swarming motility. Which organism is most likely responsible?",
+        "options": {
+            "A": "Proteus species",
+            "B": "Escherichia coli",
+            "C": "Klebsiella species",
+            "D": "Pseudomonas aeruginosa",
+            "E": "Enterobacter species"
+        },
+        "correctAnswer": "A",
+        "explanation": "Urinary tract infection caused by a gram-negative rod with swarming motility is most likely due to Proteus species (most commonly Proteus mirabilis).",
+        "hint": ""
+    },
+    {
+        "id": "GZ9LSS3L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An HIV-positive patient notices a purple rash on the medial surface of the forearms while taking a shower. What is the most probable cause?",
+        "options": {
+            "A": "HHV8",
+            "B": "EBV",
+            "C": "CMV",
+            "D": "HSV",
+            "E": "TB"
+        },
+        "correctAnswer": "A",
+        "explanation": "The description of an HIV-positive patient with a purple/violaceous rash or lesions on the skin is the classic presentation of Kaposi's Sarcoma. KS is an AIDS-defining illness caused by HHV8.",
+        "hint": ""
+    },
+    {
+        "id": "5C6EV4W3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An HIV-positive patient presents with pneumonia. India Ink stain shows capsular halos, but Gram stain is negative. Which organism is most likely involved?",
+        "options": {
+            "A": "Cryptococcus neoformans",
+            "B": "Klebsiella",
+            "C": "Streptococcus pneumoniae",
+            "D": "Staphylococcus aureus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The most common organism responsible for pneumonia in HIV patient is Cryptococcus Neoformans. It is stained by India ink that shows capsular halos.",
+        "hint": ""
+    },
+    {
+        "id": "DSRU2ZQM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In an HIV-positive patient, reactivation of latent toxoplasmosis usually presents as:",
+        "options": {
+            "A": "Encephalitis",
+            "B": "Hepatitis",
+            "C": "Lymphadenitis",
+            "D": "Stroke",
+            "E": "Pneumonia"
+        },
+        "correctAnswer": "A",
+        "explanation": "In a patient with advanced HIV infection CD4 count usually <100 cells, reactivation of latent Toxoplasma gondii infection is the most common cause of focal central nervous system mass lesions. This typically presents as Encephalitis with symptoms such as headache, focal neurological deficits, and seizures. Imaging usually shows multiple ring-enhancing lesions.",
+        "hint": ""
+    },
+    {
+        "id": "VZ3TJWMN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Sepsis criteria",
+        "options": {
+            "A": "Pulse rate > 100/min",
+            "B": "Pulse rate > 120/min",
+            "C": "Positive bacterial blood culture",
+            "D": "WBC count of more than 15k",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The original definition of Sepsis was based on the presence of a Documented infection (Positive culture) plus at least two of the four Systemic Inflammatory Response Syndrome (SIRS) criteria.",
+        "hint": ""
+    },
+    {
+        "id": "QR2ETNJ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 5-year-old child presents with abdominal pain. Flat, white, thread-like worms are noticed in the feces. Which treatment should be given?",
+        "options": {
+            "A": "Mebendazole",
+            "B": "Praziquantel",
+            "C": "Niclosamide",
+            "D": "Azithromycin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The description of flat, white, thread-like worms in the feces of a child suggests an infection with a nematode, most commonly Pinworms (Enterobius vermicularis) or Roundworms (Ascaris lumbricoides). Mebendazole (or Albendazole) is the standard, first-line treatment for most common intestinal nematode infections. Praziquantel and Niclosamide are used for tapeworms.",
+        "hint": ""
+    },
+    {
+        "id": "TRGDY5UA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A known TB patient is taking anti-tubercular drugs. Which vitamin should be added to prevent one of the most common complication?",
+        "options": {
+            "A": "Vitamin B1",
+            "B": "Vitamin B2",
+            "C": "Vitamin B3",
+            "D": "Vitamin B5",
+            "E": "Vitamin B6"
+        },
+        "correctAnswer": "E",
+        "explanation": "Isoniazid interferes with the metabolism of Pyridoxine (Vitamin B6), leading to a functional deficiency. This deficiency often causes peripheral neuropathy (numbness, tingling, pain in hands and feet). Supplementation with Vitamin B6 (Pyridoxine) is standard practice for all patients taking Isoniazid to prevent this dose-dependent neurotoxicity.",
+        "hint": ""
+    },
+    {
+        "id": "DJDNCH8Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is receiving first-line anti-tubercular therapy (ATT). Which of the following drugs are hepatotoxic?",
+        "options": {
+            "A": "Isoniazid (INH), Pyrazinamide (PZA), Rifampin",
+            "B": "Isoniazid, Streptomycin, Ethambutol",
+            "C": "Isoniazid, Ethambutol, Rifampin",
+            "D": "Isoniazid and Rifampicin",
+            "E": "Isoniazid, Erythromycin, Pyrazinamide"
+        },
+        "correctAnswer": "A",
+        "explanation": "The three most common and potent first-line anti-tuberculosis (TB) drugs known for their potential to cause drug-induced liver injury (hepatotoxicity) are Isoniazid (INH), Rifampin (RMP), and Pyrazinamide (PZA). Ethambutol and Streptomycin are generally considered non-hepatotoxic.",
+        "hint": ""
+    },
+    {
+        "id": "L2SLWUX6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Infectious Disease",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Farmer working in fields has injury to right thigh with sickle. On examination there was a wound with crackling sound. Causative organism will be?",
+        "options": {
+            "A": "C. Perfringens",
+            "B": "C. Tetani",
+            "C": "S. Epidermidis",
+            "D": "S. Aureus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "A wound with a crackling sound (crepitus) is a hallmark of gas gangrene, caused by the gas production of Clostridium perfringens, a spore-forming bacterium found in soil.",
+        "hint": ""
+    },
+    {
+        "id": "ZSUTBJM5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person went on beach. When he came back he noticed tanning on all the exposed parts of his body but no burning or warmth. After one month it settles. Which molecule is involved is the reason behind tanning?",
+        "options": {
+            "A": "Tryptophan",
+            "B": "Tyrosine",
+            "C": "Phenylephrine",
+            "D": "Methionine",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Tanning (increased melanin production) is a delayed protective response to ultraviolet (UV) radiation. The process begins with the amino acid tyrosine, which is converted into melanin pigment via the enzyme tyrosinase in melanocytes.",
+        "hint": ""
+    },
+    {
+        "id": "BPY7AC8M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Glucocorticoids (steroids) can cause delayed wound healing primarily by affecting which of the following?",
+        "options": {
+            "A": "Fibroblast proliferation and activity",
+            "B": "Collagen synthesis and deposition",
+            "C": "Epithelial cell migration",
+            "D": "Angiogenesis",
+            "E": "Inflammatory cell recruitment"
+        },
+        "correctAnswer": "A",
+        "explanation": "Glucocorticoids are potent anti-inflammatory agents that suppress the entire inflammatory response. They directly inhibit the proliferation and function of fibroblasts, which in turn leads to impaired collagen synthesis (Option B) and a weaker, delayed scar. Since the inhibition of the cell itself (fibroblast) is the primary action, A is the best answer.",
+        "hint": ""
+    },
+    {
+        "id": "6K8Y3G8W",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "Medical Ethics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A doctor with eloquent speaking skills is offered to advertise for a cosmetic company on TV. The company claims it would be beneficial for both the doctor and patients. How should this situation be categorized?",
+        "options": {
+            "A": "Criminal",
+            "B": "Unethical",
+            "C": "Ethical as long as the product is tested and safe",
+            "D": "Ethical as long as the doctor does not ask for money",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Professional codes of ethics generally consider it unethical for a physician to endorse or promote a commercial product, even if he does not ask for money.",
+        "hint": ""
+    },
+    {
+        "id": "HMA96TG4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which muscles are primarily responsible for inversion of the foot?",
+        "options": {
+            "A": "Tibialis anterior and extensor hallucis longus",
+            "B": "Tibialis anterior and tibialis posterior",
+            "C": "Tibialis anterior and flexor hallucis longus",
+            "D": "Tibialis posterior and flexor digitorum longus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The two primary, powerful invertors of the foot are: Tibialis Anterior: The main dorsiflexor and an invertor. Tibialis Posterior: The main invertor and a plantar flexor.",
+        "hint": ""
+    },
+    {
+        "id": "F69B4KG5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Remnant of Notochord is",
+        "options": {
+            "A": "Nucleus pulposus",
+            "B": "Ligamentum teres",
+            "C": "Medial umbilical ligament",
+            "D": "Median umbilical ligament",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Notochord, an embryonic structure, persists in the adult as the gelatinous center of the intervertebral disc, the nucleus pulposus.",
+        "hint": ""
+    },
+    {
+        "id": "YGH686P8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient on long-term immunosuppressant and steroids develops osteoporosis. Which of the following mechanisms is primarily responsible?",
+        "options": {
+            "A": "Decreased fibroblast proliferation and activity",
+            "B": "Impaired collagen synthesis and deposition",
+            "C": "Increased osteoclast activity",
+            "D": "Reduced calcium absorption from the gut",
+            "E": "Suppressed inflammatory cell recruitment"
+        },
+        "correctAnswer": "C",
+        "explanation": "Glucocorticoids upset the delicate balance between bone formation osteoblasts and bone resorption osteoclasts. They increase the lifespan and activity of osteoclasts and decreasing the lifespan and activity of osteoblasts. They also reduce calcium absorption from the gut (D), leading to a secondary increase in parathyroid hormone, which further stimulates osteoclast activity.",
+        "hint": ""
+    },
+    {
+        "id": "SK8Y32WG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An Obese, Hypothyroid patient presented with Myxedema and Thenar wasting. Most common cause will be?",
+        "options": {
+            "A": "Carpal tunnel syndrome",
+            "B": "Cubital tunnel syndrome",
+            "C": "Guyon tunnel syndrome",
+            "D": "Hypothyroidism",
+            "E": "Hyperthyroidism"
+        },
+        "correctAnswer": "A",
+        "explanation": "Both Obesity and Hypothyroidism (due to mucinous deposition in the soft tissues, i.e., myxedema) are risk factors for Carpal Tunnel Syndrome (CTS). Thenar wasting is a classic sign of chronic median nerve compression in CTS.",
+        "hint": ""
+    },
+    {
+        "id": "PHM47ZWW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient after injury cannot shrug his shoulders. Which nerve is damaged most likely?",
+        "options": {
+            "A": "Spinal accessory nerve",
+            "B": "Long thoracic nerve",
+            "C": "Axillary nerve",
+            "D": "Radial nerve",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Spinal Accessory Nerve (CN XI) innervates the Trapezius muscle, which is responsible for the movement of shrugging the shoulders.",
+        "hint": ""
+    },
+    {
+        "id": "KWZA23BU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy injures his teeth and hard palate while trying to open a bottle cap, resulting in bleeding and pain. Which nerve is primarily responsible for sensation in the affected area?",
+        "options": {
+            "A": "Lesser palatine nerve",
+            "B": "Greater palatine nerve",
+            "C": "Middle superior alveolar nerve",
+            "D": "Superior alveolar nerve",
+            "E": "Nasopalatine nerve"
+        },
+        "correctAnswer": "B",
+        "explanation": "The Greater Palatine Nerve emerges from the greater palatine foramen and provides general sensation to the mucosa of the hard palate and the adjacent gums (gingiva) up to the incisor teeth.",
+        "hint": ""
+    },
+    {
+        "id": "55C4XATF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient is presented with anosmia. Doctor took nasal biopsy. Which cells will be seen in mucosa?",
+        "options": {
+            "A": "Goblet cells",
+            "B": "Basal cells",
+            "C": "Bipolar cells",
+            "D": "Columnar ciliated cells",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Anosmia (loss of smell) points to a problem with the olfactory epithelium. The nasal biopsy would reveal bipolar olfactory receptor neurons (C). These specialized neurons extend dendrites to the mucosal surface and send axons through the cribriform plate to the olfactory bulb. The other options are incorrect as goblet cells and columnar ciliated cells (A and D) are typical of respiratory mucosa, and basal cells (B) are stem cells, not the primary functional cells for olfaction.",
+        "hint": ""
+    },
+    {
+        "id": "E5E32DUN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The general visceral efferent preganglionic fibers of the vagus nerve arise from which nucleus?",
+        "options": {
+            "A": "Dorsal motor nucleus",
+            "B": "Nucleus Ambiguus",
+            "C": "Nucleus tractus solitarius",
+            "D": "Nucleus of Clarke",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Vagus nerve contains General Visceral Efferent (GVE) fibers, which are the parasympathetic preganglionic fibers that innervate the smooth muscle and glands of the thorax and abdomen (heart, lungs, gut, etc.). These fibers originate from the Dorsal Motor Nucleus of the Vagus in the medulla.",
+        "hint": ""
+    },
+    {
+        "id": "BKNAKGUN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which vein is most commonly involved in transmitting infection to the Cavernous sinus?",
+        "options": {
+            "A": "Superior ophthalmic vein",
+            "B": "Inferior ophthalmic vein",
+            "C": "Facial vein",
+            "D": "Angular vein",
+            "E": "Pterygoid venous plexus"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KRP6FS4T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is present with complaints of ptosis, miosis and anhidrosis. Damage to Sympathetic chain is being considered. What is the diagnosis?",
+        "options": {
+            "A": "Horner Syndrome",
+            "B": "Retinal Artery Occlusion",
+            "C": "Retinal Vein Occlusion",
+            "D": "Hypertensive Retinopathy",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The constellation of signs—ptosis (droopy eyelid), miosis (constricted pupil), and anhidrosis (lack of sweating) on one side of the face—is the classic triad for Horner Syndrome.",
+        "hint": ""
+    },
+    {
+        "id": "23PEBQFX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is presented with bitemporal hemianopia. Where is the lesion located?",
+        "options": {
+            "A": "Optic chiasm",
+            "B": "Optic tract",
+            "C": "Optic groove",
+            "D": "Optic radiations.",
+            "E": "Visual cortex"
+        },
+        "correctAnswer": "A",
+        "explanation": "The optic chiasm is where the nerve fibers from the nasal retinas of both eyes decussate (cross over) to the opposite side of the brain. The fibers from the temporal retinas do not cross. A lesion compresses the optic chiasm in the middle. This compression damages the crossing nasal fibers from both eyes resulting in Bitemporal Heminopia.",
+        "hint": ""
+    },
+    {
+        "id": "WPVBCCFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient of TB meningitis is presented. 15ml CSF is taken out for the purpose of investigation. Now he presented with the complaint of headache. Headache is due to the stretch/pulling of?",
+        "options": {
+            "A": "Falx cerebri",
+            "B": "Basal dura and tentorium",
+            "C": "Dural vessels",
+            "D": "Basal arteries",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Post-lumbar puncture headache is due to low CSF pressure, causing a downward pull or shift of the brain. This stretches the pain-sensitive structures, primarily the basal dura and tentorium cerebelli, leading to pain.",
+        "hint": ""
+    },
+    {
+        "id": "ASES535M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present with a furuncle on the nose, a congested red eye, and ophthalmoplegia. What is the most likely diagnosis?",
+        "options": {
+            "A": "Orbital apex syndrome",
+            "B": "Cavernous sinus thrombosis",
+            "C": "Orbital cellulitis",
+            "D": "Superior orbital fissure syndrome",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5G9P548T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present with weakness in the lower limbs following a recent respiratory infection. He is unable to sense pinpricks up to the T5 level, and no oligoclonal bands are found on CSF analysis. What is the most likely diagnosis?",
+        "options": {
+            "A": "Transverse myelitis",
+            "B": "",
+            "C": "Stroke",
+            "D": "Multiple sclerosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Transverse Myelitis is an acute inflammation across the entire width of the spinal cord, perfectly explaining the bilateral motor weakness and sharp sensory level.",
+        "hint": ""
+    },
+    {
+        "id": "GMWBMFUZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with hypertension presents with lower limb paralysis. Imaging confirms an ischemic stroke. Which area of the brain is most likely affected?",
+        "options": {
+            "A": "Primary motor cortex",
+            "B": "Associated (premotor) motor cortex",
+            "C": "Pons",
+            "D": "Midbrain",
+            "E": "Cerebellum"
+        },
+        "correctAnswer": "A",
+        "explanation": "The area controlling the lower limb and foot is located on the medial surface of the primary motor cortex (precentral gyrus).",
+        "hint": ""
+    },
+    {
+        "id": "EY72GH5Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with lung cancer develops polyuria and polydipsia after brain metastasis. Which part of the brain is most likely affected?",
+        "options": {
+            "A": "Cerebellum",
+            "B": "Diencephalon",
+            "C": "Midbrain",
+            "D": "Pons",
+            "E": "Medulla"
+        },
+        "correctAnswer": "B",
+        "explanation": "Polyuria and polydipsia developing after a brain lesion is highly suggestive of Diabetes Insipidus that results from damage to the ADH producing Supraoptic and Paraventricular nuclei. These structures are located in the Hypothalamus and the Posterior Pituitary. The Diencephalon is the general region that encompasses the Hypothalamus and the thalamus, making it the most likely anatomical region for the lesion.",
+        "hint": ""
+    },
+    {
+        "id": "4PXLSUXG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An elderly patient presents with a history of urinary incontinence twice in the past year, along with irrelevant talking and forgetting his son's name. What is the most likely diagnosis?",
+        "options": {
+            "A": "Dementia",
+            "B": "Delirium",
+            "C": "Parkinson's disease",
+            "D": "Depression",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Dementia is a chronic, progressive decline in cognitive function (memory, thinking, reasoning). The symptoms listed—forgetting familial information and irrelevant talking—are hallmarks of cognitive impairment. Incontinence: Urinary incontinence, especially with gait problems is a common feature in later-stage dementias.",
+        "hint": ""
+    },
+    {
+        "id": "8JRN2L5B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient of Myasthenia gravis presented in hospital with the complaints of ptosis and proximal muscle weakness. What will be the responsible antibody defect?",
+        "options": {
+            "A": "Antibodies attached to receptors",
+            "B": "Anti-smooth muscle antibodies",
+            "C": "Anti-mitochondrial antibodies",
+            "D": "Anti-microsomal antibody",
+            "E": "Anti-saccharomyces cerevisiae antibody"
+        },
+        "correctAnswer": "A",
+        "explanation": "Myasthenia Gravis is an autoimmune disorder where the immune system produces antibodies (IgG) that attack the body's own tissues. These antibodies primarily target the nicotinic acetylcholine receptors at the postsynaptic membrane of the neuromuscular junction.",
+        "hint": ""
+    },
+    {
+        "id": "SAWWYKXX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with the paralysis of lower limb. The affected area of brain is?",
+        "options": {
+            "A": "Internal capsule",
+            "B": "Midbrain",
+            "C": "Pons",
+            "D": "Medulla",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Example: The motor fibers (corticospinal tract) for the lower limb are located in the posterior limb of the internal capsule, and a lesion here can cause contralateral hemiparesis/paralysis, often affecting the legs most severely.",
+        "hint": ""
+    },
+    {
+        "id": "AGSNFYUM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with hemifacial spasm is treated with a medication that inhibits the release of acetylcholine at the neuromuscular junction. Which of the following side effects is most likely to occur?",
+        "options": {
+            "A": "Urinary continence",
+            "B": "Dry mouth",
+            "C": "Confusion",
+            "D": "Bradycardia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The most common treatment for hemi facial spasm is Botulinum toxin (Botox), which inhibits ACh release (like the question states). This mechanism affects cholinergic parasympathetic functions, a side effect of which is xerostomia (dry mouth), as parasympathetic stimulation...",
+        "hint": ""
+    },
+    {
+        "id": "TX3W7PR3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 18-year-old female presents with seizures that start from the finger and spread to the elbow (focal motor seizure). Liver and renal function tests are normal. Which drug should be avoided in this patient?",
+        "options": {
+            "A": "Valproate",
+            "B": "Carbamazepine",
+            "C": "Diazepam",
+            "D": "Levetiracetam",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Valproate is a very effective anti-epileptic drug but it is a major teratogen. Due to these risks, guidelines strongly recommend that Valproate be avoided in women of child-bearing age unless other treatment options are ineffective or not tolerated. b. Carbamazepine is a standard first-line treatment for focal seizures. c. Diazepam is a benzodiazepine used primarily to treat acute, prolonged seizures (status epilepticus) to stop them immediately. d. Levetiracetam is considered a first-line treatment for both focal and generalized seizures.",
+        "hint": ""
+    },
+    {
+        "id": "Z2QBV435",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with a history of neurodegenerative disease undergoes EEG. The recording shows 4-7 Hz waves per cycle. Which type of EEG waves are these?",
+        "options": {
+            "A": "Theta waves",
+            "B": "Alpha waves",
+            "C": "Beta waves",
+            "D": "Delta waves",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Electroencephalogram (EEG) waves are classified by their frequency: Delta: <4 (Deep sleep, infants). Theta: 4-7 Hz (Sleep, drowsiness, deep meditation, abnormalities in adults awake/alert). Alpha: 8-13 Hz (Relaxed, eyes closed). Beta: >13 Hz (Alert, actively thinking).",
+        "hint": ""
+    },
+    {
+        "id": "7TM6S4F6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy presented in ER after RTA with hemi section of cord. On examination which sensation will be spared on the ipsilateral side below the level of lesion.",
+        "options": {
+            "A": "Two-point discrimination",
+            "B": "Vibration",
+            "C": "Proprioception",
+            "D": "Tickle",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "This is a case Brown-Séquard syndrome resulting from the hemicord lesion. The pathway for Tickle (Spinothalamic tract) crosses immediately in the spinal cord, so the fibers for the ipsilateral side are already on the intact, opposite side of the cord. Conversely, the pathways for Two-point discrimination, Vibration, and Proprioception (Dorsal Columns) ascend ipsilaterally and are therefore lost on the side of the lesion.",
+        "hint": ""
+    },
+    {
+        "id": "WMTCNT37",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present after a road traffic accident with head injury. Which of the following is the most likely electrolyte or metabolic abnormality associated with raised intracranial pressure (ICP)?",
+        "options": {
+            "A": "Hyponatremia",
+            "B": "Hypernatremia",
+            "C": "Hypokalemia",
+            "D": "Hyperkalemia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Elevated Intracranial Pressure (ICP), often caused by head trauma, can affect the pituitary and hypothalamus, leading to the inappropriate secretion of Antidiuretic Hormone (ADH). This can cause the syndrome of Inappropriate ADH Secretion (SIADH), resulting in the retention of water and subsequent dilutional Hyponatremia.",
+        "hint": ""
+    },
+    {
+        "id": "LRR8EYRK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient sustained a road traffic accident and now presented with contralateral loss of pin prick sensation from T9 down and ipsilateral loss of two-point discrimination and proprioception T8 down. Where is the most likely site of the lesion?",
+        "options": {
+            "A": "Lesion of spinothalamic tract at the level of T9",
+            "B": "Hemi section of the spinal cord at the level of T11",
+            "C": "Hemi section of the spinal cord at the level of T12",
+            "D": "Complete transection of the spinal cord at the level of T9",
+            "E": "Cauda Equina Syndrome"
+        },
+        "correctAnswer": "A",
+        "explanation": "This is a classic presentation of Brown-Séquard syndrome. Although A only defines its one aspect (lesion of contralateral spinothalamic tract) and does not give clue to another main aspect which is lesion of ipsilateral DCML, but only this option seems correct. B & C Are too low to justify the symptoms. D would cause bilateral loss of all sensation below T9, which is not the case. E, Cauda Equina Syndrome involves damage to spinal nerves below the termination of the cord (usually L1/L2).",
+        "hint": ""
+    },
+    {
+        "id": "UBNL6FLH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person injured in RTA presented with bleeding from left ear and left pupil dilated/blown-out. Doctor doubts it to be skull fracture involving middle cranial fossa. Which of the following nerve is injured?",
+        "options": {
+            "A": "Abducent Nerve",
+            "B": "Oculomotor Nerve",
+            "C": "Ophthalmic Nerve",
+            "D": "Trochlear Nerve",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "A dilated/blown-out pupil (mydriasis) that is unresponsive to light is a classic sign of damage to the parasympathetic fibers that travel along the Oculomotor Nerve (Cranial Nerve III). These fibers normally cause pupillary constriction. The bleeding from the ear suggests a basilar skull fracture, specifically involving the middle cranial fossa, which can directly compress or damage CN III as it passes nearby.",
+        "hint": ""
+    },
+    {
+        "id": "FQZXZPP5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nutrition",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A known alcoholic and hypothyroid patient presents to the hospital. Laboratory investigations show Hb = 7 g/dL and MCV = 110 fL. Endoscopy reveals atrophic gastritis. What is the best step?",
+        "options": {
+            "A": "Alcohol cessation",
+            "B": "Vitamin B12 injection",
+            "C": "Folate supplementation",
+            "D": "Iron supplementation",
+            "E": "Proton pump inhibitor (PPI) therapy"
+        },
+        "correctAnswer": "B",
+        "explanation": "While not every case of Hb = 7 g/dL requires an immediate blood transfusion but the combination of severe anemia and the potential for permanent neurological damage from B12 deficiency (MCV=110) makes this case an urgent medical priority. Prompt vit B12 injection is the best immediate step to halt the progression of irreversible neurological damage. Initial preventive measure: Alcohol cessation. Initial treatment: IV vitamin B12.",
+        "hint": ""
+    },
+    {
+        "id": "Y6KL39GD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Nutritional Deficiency",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 4-year-old boy presented with distended abdomen. Doctor also noticed some hair changes. What is the diagnosis?",
+        "options": {
+            "A": "Kwashiorkor",
+            "B": "Marasmus",
+            "C": "Hypothyroidism",
+            "D": "Hyperthyroidism",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Kwashiorkor is a severe form of malnutrition caused by a protein deficiency with relatively adequate caloric intake. Classic signs include a distended abdomen (due to ascites/fatty liver) and characteristic hair changes (sparse, brittle, easily plucked, often reddish/blond).",
+        "hint": ""
+    },
+    {
+        "id": "ULHUEK7Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Obstetrics",
+        "chapter": "Obstetrics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the approximate risk of pre-eclampsia in a primigravida?",
+        "options": {
+            "A": "12.30%",
+            "B": "14.10%",
+            "C": "14.50%",
+            "D": "15%",
+            "E": "10%"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YF7U52KH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn present with a mass at the base of the spine, which is diagnosed as a sacrococcygeal Teratoma. What is the most likely origin of this tumor?",
+        "options": {
+            "A": "Primitive streak",
+            "B": "Notochord",
+            "C": "Neural crest",
+            "D": "Hansen's Node",
+            "E": "Nucleus Pulposus"
+        },
+        "correctAnswer": "A",
+        "explanation": "Sacrococcygeal Teratomas are believed to arise from pluripotent cells that are remnants of the primitive streak that failed to completely regress in the caudal (tail) region. These residual cells, having the potential to form all germ layers, subsequently differentiate into the various tissues found in the tumor (e.g., bone, hair, muscle, teeth). Hensen's Node (Primitive Node): This is the cranial end of the primitive streak, whereas SCTs arise from the caudal remnants.",
+        "hint": ""
+    },
+    {
+        "id": "FX4C588M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Birbeck granules are characteristic feature of which of the following conditions?",
+        "options": {
+            "A": "Langerhans cell histiocytosis",
+            "B": "Sarcoidosis",
+            "C": "Gaucher disease",
+            "D": "Niemann-Pick disease",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Birbeck granules are rod or tennis-racket shaped cytoplasmic inclusions found specifically within the abnormal Langerhans cells that proliferate in LCH.",
+        "hint": ""
+    },
+    {
+        "id": "XHFE6HYR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Nasopharyngeal carcinoma is most commonly associated with which of the following viruses?",
+        "options": {
+            "A": "Epstein-Barr virus (EBV)",
+            "B": "Cytomegalovirus (CMV)",
+            "C": "Human papillomavirus (HPV)",
+            "D": "Herpes simplex virus (HSV)",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Nasopharyngeal CA - EBV. Oropharyngeal CA - HPV. Lung CA - CMV.",
+        "hint": ""
+    },
+    {
+        "id": "C6VRDAVC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ultraviolet (UV) radiation can induce mutations in which of the following genes, leading to skin cancer?",
+        "options": {
+            "A": "P53",
+            "B": "RAS",
+            "C": "BAX",
+            "D": "RB",
+            "E": "APC"
+        },
+        "correctAnswer": "A",
+        "explanation": "The P53 gene (also known as TP53) is a crucial tumor suppressor gene often called the \"guardian of the genome.\" UV radiation frequently causes characteristic \"UV signature\" mutations. Loss of function in the P53 gene allows cells with damaged DNA (UV-induced mutations) to survive, proliferate, and become malignant, leading to the development of Basal Cell Carcinoma (BCC) and Squamous Cell Carcinoma (SCC).",
+        "hint": ""
+    },
+    {
+        "id": "96BV2CG7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 50-year-old female presents with a tumor that is estrogen and progesterone receptor positive. What is the drug of choice?",
+        "options": {
+            "A": "Tamoxifen",
+            "B": "Leuprolide",
+            "C": "Anastrozole",
+            "D": "Doxorubicin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "For pre-menopausal women with Estrogen Receptor (ER) and/or Progesterone Receptor (PR) positive breast cancer, the first-line endocrine treatment is typically Tamoxifen. Tamoxifen is a Selective Estrogen Receptor Modulator (SERM) that acts as an estrogen antagonist on breast tissue, blocking the tumor's growth stimulation by circulating estrogen.",
+        "hint": ""
+    },
+    {
+        "id": "NKYLG2YM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient is a diagnosed case of Colorectal CA. His CEA levels are raised. What will be the use of raised CEA levels?",
+        "options": {
+            "A": "Grading of tumor",
+            "B": "Staging of tumor",
+            "C": "Follow up of tumor",
+            "D": "Treatment plan",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "CEA is a tumor marker that is most valuable for post-treatment surveillance (follow-up). Elevated CEA levels following surgery and chemotherapy, particularly if the levels are persistently rising, are the single most useful marker for detecting disease recurrence.",
+        "hint": ""
+    },
+    {
+        "id": "VXMM5JXK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following tumors is the most common oral malignancy in a man with the history of chewing gutka.",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Basal cell carcinoma",
+            "D": "Melanoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Chewing smokeless tobacco products like gutka is a major, well-established risk factor for developing oral SCC.",
+        "hint": ""
+    },
+    {
+        "id": "E4C6U2XW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Ophthalmology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Silver wiring of retinal arterioles is most commonly associated with which of the following conditions?",
+        "options": {
+            "A": "Hypertension",
+            "B": "Diabetes mellitus",
+            "C": "Dyslipidemia",
+            "D": "Retinal vein occlusion",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "This finding in the indicates arteriolar sclerosis (thickening and hardening of the vessel walls) caused by chronic, uncontrolled high blood pressure.",
+        "hint": ""
+    },
+    {
+        "id": "56WGMP8X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Pharmacology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient undergoing chemotherapy develops nausea and vomiting. Which drug should be administered to control vomiting?",
+        "options": {
+            "A": "Ondansetron",
+            "B": "Metoclopramide",
+            "C": "Diphenhydramine",
+            "D": "Ampicillin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The correct drug choice for chemotherapy-induced nausea and vomiting (CINV) is a 5-HT3 receptor antagonist - Ondansetron.",
+        "hint": ""
+    },
+    {
+        "id": "35TD4WRK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Pharmacology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Malignant hyperthermia is most commonly triggered by which of the following muscle relaxant?",
+        "options": {
+            "A": "Halothane",
+            "B": "Succinylcholine",
+            "C": "Ketamine",
+            "D": "Propofol",
+            "E": "Isoflurane"
+        },
+        "correctAnswer": "B",
+        "explanation": "Succinylcholine is the only depolarizing neuromuscular blocking agent that can trigger MH. Halothane and Isoflurane are both potent volatile anesthetic agents that are primary triggers of MH but these are not muscle relaxants.",
+        "hint": ""
+    },
+    {
+        "id": "N9FXH8T4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Pharmacology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "NSAIDs act as anti-inflammatory because it primarily inhibit which of the following?",
+        "options": {
+            "A": "COX-1",
+            "B": "COX-2",
+            "C": "COX-3",
+            "D": "Lipoxygenase",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The therapeutic anti-inflammatory action of NSAIDs is directly linked to the inhibition of the Cyclooxygenase-2 (COX-2) enzyme. Inhibiting COX-2 prevents the production of prostaglandins.",
+        "hint": ""
+    },
+    {
+        "id": "LWPL9JTN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Pharmacology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Opioids cause nausea and vomiting primarily by acting on which area?",
+        "options": {
+            "A": "Chemoreceptor trigger zone (CTZ)",
+            "B": "Voming center",
+            "C": "Vestibular system",
+            "D": "Hypothalamus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Opioids cause nausea and vomiting primarily by acting on the Chemoreceptor trigger zone. The Vomiting Center (B) ultimately controls the muscular act of emesis, it is the CTZ (A) that acts as the primary sensory input area for blood-borne toxins like opioids, making it the most accurate answer for the area of action.",
+        "hint": ""
+    },
+    {
+        "id": "9Y24K22P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-year-old boy presents with an undescended testis (cryptorchidism). During development, which structure primarily guides the testis into the scrotum?",
+        "options": {
+            "A": "Gubernaculum",
+            "B": "Epididymis",
+            "C": "Vas deferens",
+            "D": "Spermatic cord",
+            "E": "Process Vaginalis"
+        },
+        "correctAnswer": "A",
+        "explanation": "The gubernaculum is a mesodermal structure that connects the caudal pole of the testis to the scrotal swelling. It is believed to guide and anchor the testis as the body grows, essentially pulling the testis through the inguinal canal and into the scrotum during the final phase of testicular descent.",
+        "hint": ""
+    },
+    {
+        "id": "6EF89T3Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient presents with primary amenorrhea. Examination reveals a hypoplastic upper vagina, absent uterus undescended testes, and absent cervix. What is the most likely diagnosis?",
+        "options": {
+            "A": "Androgen Insensitivity Syndrome (AIS)",
+            "B": "Congenital Adrenal Hyperplasia (CAH)",
+            "C": "Turner's syndrome",
+            "D": "Gonadal dysgenesis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Example: The combination of primary amenorrhea, absent uterus and cervix, and undescended testes in a patient with a female phenotype is the classic presentation of AIS. The patient has a male genotype XY and functional testes (hence the production of testosterone and Müllerian Inhibiting Substance. MIS causes the regression of the Müllerian ducts, leading to the absent uterus and cervix.",
+        "hint": ""
+    },
+    {
+        "id": "WJTFVWK9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A male patient presents with azoospermia but has normal-sized testes and normal testosterone levels. Which of the following is the most likely site of the defect?",
+        "options": {
+            "A": "Genital epithelium",
+            "B": "Epididymis",
+            "C": "Sertoli cells",
+            "D": "Interstitial cells",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Epididymis is a site of sperm maturation and the start of the efferent duct system. Obstruction in the epididymis or the vas deferens is a common cause of obstructive azoospermia. The sperm are produced normally (normal-sized testes) but cannot exit. Sertoli cells are support cells for spermatogenesis. If significantly defective, spermatogenesis would be impaired, often leading to smaller testes and non-obstructive azoospermia. Interstitial cells (Leydig cells) produce testosterone.",
+        "hint": ""
+    },
+    {
+        "id": "E6HMJBLW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Obstetrics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pregnant female presents with hypertension, proteinuria, edema, elevated AST/ALT, and lethargy. She has no fever or altered level of consciousness. What is the most likely diagnosis?",
+        "options": {
+            "A": "Preeclampsia",
+            "B": "Acute fatty liver of pregnancy (AFLP)",
+            "C": "Thrombotic thrombocytopenic purpura (TTP)",
+            "D": "ITP",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Preeclampsia is defined by new-onset hypertension and proteinuria (or signs of end-organ damage) after 20 weeks of gestation. The elevated AST/ALT suggests liver involvement, placing her close to the criteria for HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets), which is a severe form of preeclampsia.",
+        "hint": ""
+    },
+    {
+        "id": "WW2FKWE9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old female presents with delayed menses. She is 8 days late with her normal cycle. The hormone that needs to be tested is secreted from:",
+        "options": {
+            "A": "Cytotrophoblast",
+            "B": "Syncytiotrophoblast",
+            "C": "Endometrium",
+            "D": "Corpus luteum",
+            "E": "Ovary"
+        },
+        "correctAnswer": "B",
+        "explanation": "The hormone tested to confirm pregnancy is human chorionic gonadotropin (hCG). This hormone is secreted by the Syncytiotrophoblast, which is the layer of cells that forms the outer covering of the blastocyst and later becomes part of the placenta.",
+        "hint": ""
+    },
+    {
+        "id": "Q63AVKSF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old female with a history of chronic gonorrhea develops a tense cystic swelling beneath the posterior two-thirds of the labia majora and labia minora. Which gland is most likely involved?",
+        "options": {
+            "A": "Sebaceous",
+            "B": "Greater Vestibular",
+            "C": "Lesser Vestibular",
+            "D": "Sweat gland",
+            "E": "Paraurethral glands"
+        },
+        "correctAnswer": "B",
+        "explanation": "The Greater Vestibular Glands (Bartholin's glands) are located on either side of the vaginal opening, slightly posterior to the labia majora and minora. Chronic infection (such as with gonorrhea) can block the duct of this gland, leading to the accumulation of secretions and the formation of a tense, cystic swelling known as a Bartholin's cyst or abscess.",
+        "hint": ""
+    },
+    {
+        "id": "T7YYBFDM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy presents with an undescended testis on one side and a history of inguinal hernia. Which structure is most likely involved in both conditions?",
+        "options": {
+            "A": "Gubernaculum",
+            "B": "Epididymis",
+            "C": "Vas deferens",
+            "D": "Spermatic cord",
+            "E": "Process Vaginalis"
+        },
+        "correctAnswer": "E",
+        "explanation": "The Processus Vaginalis is an evagination of the peritoneum that precedes the descending testis into the scrotum, forming the inner lining of the inguinal canal. Normally, this structure closes. If it fails to close (a Patent Processus Vaginalis), it provides the pathway for abdominal contents (intestine) to herniate into the inguinal canal and scrotum, leading to a Congenital Indirect Inguinal Hernia. If the testis fails to descend (Cryptorchidism), it is often still within the patent Processus Vaginalis tract, making the two conditions frequently associated.",
+        "hint": ""
+    },
+    {
+        "id": "BSS88973",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient is presented with ovarian cyst. During its removal doctor found teeth, neural cells and hair cells in cyst. What is the most likely diagnosis?",
+        "options": {
+            "A": "Teratoma",
+            "B": "Neuroma",
+            "C": "Choriocarcinoma",
+            "D": "Dysgerminoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "An Ovarian teratoma is a germ cell tumor that differentiates into tissue from all three germ layers (ectoderm, mesoderm, endoderm), which explains the presence of teeth, hair, and neural tissue.",
+        "hint": ""
+    },
+    {
+        "id": "F3LTVYDT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A hypertensive male presents with epistaxis, with the lateral wall of the nose involved. Which artery is most likely responsible?",
+        "options": {
+            "A": "Greater palatine",
+            "B": "Sphenopalatine",
+            "C": "Lesser palatine",
+            "D": "Anterior ethmoidal",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Sphenopalatine is the major arterial supply to the lateral and posterior nasal cavity walls. It is often called the \"artery of epistaxis\" for severe, posterior nosebleeds. Since the question specifies the lateral wall and the patient has hypertension (a common systemic cause of epistaxis), the Sphenopalatine artery is the most likely vessel. The anastomosis of the Sphenopalatine artery with other arteries in the posterior lateral nasal wall is known as Woodruff's area, a common source of posterior bleeds.",
+        "hint": ""
+    },
+    {
+        "id": "BXEJKWZC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After injury to the bronchioles, which cells act as progenitor cells and help restore the airway epithelium?",
+        "options": {
+            "A": "Goblet cells",
+            "B": "Clara cells",
+            "C": "Ciliated columnar cells",
+            "D": "Type 1 Pneumocytes",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Clara cells are non-ciliated, dome-shaped secretory cells found in the terminal and respiratory bronchioles. They secrete components of the surfactant and are known to be the progenitor cells. Goblet cells are primarily secretory, not progenitor cells, in the bronchioles.",
+        "hint": ""
+    },
+    {
+        "id": "SVBWPUCR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60-year-old patient presents with a complaint of rusty sputum. A diagnosis of lobar pneumonia is made. What is the most likely causative organism?",
+        "options": {
+            "A": "Staphylococcus aureus",
+            "B": "Streptococcus pyogenes",
+            "C": "Streptococcus pneumoniae",
+            "D": "Klebsiella pneumoniae",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Lobar consolidation and the production of \"rusty\" sputum is classically associated with Streptococcus pneumoniae which is the most common cause of community-acquired pneumonia.",
+        "hint": ""
+    },
+    {
+        "id": "NNABEGQY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A 72-year-old male with a history of congestive heart failure and COPD is admitted for worsening shortness of breath. For the past week, he has had persistent vomiting due to a presumed viral gastroenteritis, which has been difficult to control. His current medications include a loop diuretic (furosemide) and an ACE inhibitor. On examination, BP= 105/60 mmHg, HR= 98, RR= 22, SPO2= 90% on room air. Initial ABG's shows pH= 7.52, PaCO2= 45mmHg, HCO3= 35mEq/L. What is the diagnosis?",
+        "options": {
+            "A": "Metabolic Acidosis",
+            "B": "Metabolic Alkalosis",
+            "C": "Respiratory Acidosis",
+            "D": "Respiratory Alkalosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The elevated pH (7.52) indicates Alkalosis. Since the Bicarbonate (HCO3) is high at 35 mEq/L, the primary acid-base disturbance is Metabolic Alkalosis. The high HCO3 is the component driving the pH into the alkaline range. The PaCO2 is 45 mmHg, which is at the upper limit of the normal range (35-45 mmHg). This indicates that the respiratory compensation...",
+        "hint": ""
+    },
+    {
+        "id": "X9SBXE2A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with epistaxis, hematuria, and a perforated nasal septum. He also has a saddle-shaped nose and a history of frequent respiratory tract infections with nasal mucosa involvement. What is the most likely diagnosis?",
+        "options": {
+            "A": "Granuloma with polyangiitis",
+            "B": "HSP",
+            "C": "Nasal Angiofibroma",
+            "D": "Kartagener Syndrome",
+            "E": "Sarcoidosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "The combination of severe upper airway destruction and kidney/bleeding symptoms is pathognomonic for Granulomatosis with polyangiitis formerly Wegener's Granulomatosis which is c-ANCA positive.",
+        "hint": ""
+    },
+    {
+        "id": "M94YFGGR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with COPD presents with an acute exacerbation. ABG shows pH 7.45, PCO2 22 mmHg, and HCO3 22 mmol/L after nebulization with ipratropium and salbutamol. He is started on 18-22% oxygen. What is the target to achieve?",
+        "options": {
+            "A": "PCO2 > 45 mmHg",
+            "B": "PCO2 < 45 mmHg",
+            "C": "PO2 > 60 mmHg",
+            "D": "PO2 > 80 mmHg",
+            "E": "SpO2 > 95%"
+        },
+        "correctAnswer": "B",
+        "explanation": "The goal of O2 therapy in COPD is critical to avoid CO2 retention. The correct target to achieve when starting low-flow oxygen (18-22%) is: PCO2 < 45 mmHg",
+        "hint": ""
+    },
+    {
+        "id": "HJK46ZYG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 80-year-old patient presents with dyspnea without cough. Imaging shows a mass invading the pleura, and histology reveals spindle and cuboidal cells. What is the most likely diagnosis?",
+        "options": {
+            "A": "Asbestosis",
+            "B": "Byssinosis",
+            "C": "Textile-related lung disease",
+            "D": "Silicosis",
+            "E": "Coal worker's pneumoconiosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "This presentation is the classic description of Malignant Mesothelioma. Mesothelioma is a tumor of the mesothelium, which lines the pleura, and is classically associated with prior exposure to asbestos. The histology (spindle cells are the sarcomatoid type, cuboidal cells are the epithelial type) is characteristic of the mixed or biphasic type of this cancer.",
+        "hint": ""
+    },
+    {
+        "id": "9JZSTWGX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A smoker with alveolar wall destruction and loss of elastic recoil most likely has deficiency of:",
+        "options": {
+            "A": "Elastin",
+            "B": "Collagen",
+            "C": "alpha-1-Antitrypsin",
+            "D": "Surfactant",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Alpha 1 Antitrypsin is a critical circulating protein that inhibits neutrophil elastase to protect the lung tissue from destruction. Smoking attracts a large number of neutrophils and macrophages to the lungs, increasing the load of elastase and directly inactivates the existing alpha 1 AT protein.",
+        "hint": ""
+    },
+    {
+        "id": "GPVYZQG8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 5-year-old boy has accidentally ingested peanuts. In which bronchus will you find it lodged most likely?",
+        "options": {
+            "A": "Right inferior lobe",
+            "B": "Right superior lobe",
+            "C": "Left lower lobe",
+            "D": "Left superior lobe",
+            "E": "Right middle lobe"
+        },
+        "correctAnswer": "A",
+        "explanation": "The right main bronchus is wider, shorter, and more vertical than the left main bronchus. When a foreign body is aspirated, it is much more likely to fall into the right main bronchus. While the inferior lobe bronchus is a common lodging site within the right lung.",
+        "hint": ""
+    },
+    {
+        "id": "4UU6DUT8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with asthma undergoes hysterectomy. Which postoperative analgesic should be given?",
+        "options": {
+            "A": "Ketamine",
+            "B": "Pethidine",
+            "C": "Ketorolac",
+            "D": "Morphine",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Pethidine (Meperidine) is generally considered less likely to induce histamine release compared to other opoids i.e Morphine, making it a safer opioid choice for analgesia in patients with asthma. While ketorolac precipitates asthma and ketamine is not a suitable for post-operative continuous analgesia.",
+        "hint": ""
+    },
+    {
+        "id": "HBMLKAFZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An asthmatic patient requires anesthesia. Which anesthetic drug of choice is also a bronchodilator?",
+        "options": {
+            "A": "Ketamine",
+            "B": "Halothane",
+            "C": "Pethidine",
+            "D": "Propofol",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Ketamine is a dissociative anesthetic that has sympathomimetic properties. This stimulation causes the release of catecholamines, leading to bronchodilation which is favorable for an asthmatic patient.",
+        "hint": ""
+    },
+    {
+        "id": "D57AH3HA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A marathon runner who lives in hilly areas and consumes a low-calorie diet always finishes in the middle of the pack. What is the most likely reason for his limited performance?",
+        "options": {
+            "A": "Decreased CO2 utilization by tissue",
+            "B": "Inability to increase cardiac output",
+            "C": "Inability to increase ventilation",
+            "D": "Inability to convert glucose to ATP",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Marathon exercise relies heavily on the oxidation of both fats and carbohydrates. Carbohydrates are the body's primary fuel and are essential for maintaining pace, especially as the race progresses. A low-calorie diet, particularly if it's low in carbohydrates, leads to depleted glycogen stores. This prevents the muscles from efficiently breaking down glucose (glycolysis) to generate the large amounts of ATP needed to sustain running speed.",
+        "hint": ""
+    },
+    {
+        "id": "7NY9Y85J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman hears shocking news and begins to hyperventilate. Which acid-base disorder is most likely occurring?",
+        "options": {
+            "A": "Respiratory Alkalosis",
+            "B": "Respiratory Acidosis",
+            "C": "Metabolic Alkalosis",
+            "D": "Metabolic Acidosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Hyperventilation means the person is breathing rapidly and/or deeply, causing an excessive expiration of CO2 leading to respiratory alkalosis. Causes include: Hyperventilation, Hysteria, Anxiety, Panic attack, Early aspirin toxicity, PE & Pregnancy.",
+        "hint": ""
+    },
+    {
+        "id": "P5TXFJGX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After a rightward shift of the oxygen-hemoglobin dissociation curve, which of the following would decrease?",
+        "options": {
+            "A": "pH",
+            "B": "2,3-DPG",
+            "C": "Temperature",
+            "D": "CO2 levels",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "A rightward shift of the O2 Hb curve signifies a decreased affinity of hemoglobin for oxygen, meaning O2 is released more easily to the tissues. The factors that cause a rightward shift (Bohr Effect) are: Increased PCO2, Increased Temperature, Increased 2,3-DPG, Decreased pH. Since the question asks which factor would decrease as a cause of a right shift, the answer is pH (A).",
+        "hint": ""
+    },
+    {
+        "id": "5EGERK28",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Regarding pulmonary circulation, which of the following statements is correct?",
+        "options": {
+            "A": "Pulmonary capillaries wash out CO2 at 21 mmol/min",
+            "B": "Pulmonary capillaries provides O2 at 15 mmol/min to tissues",
+            "C": "Normal ventilation is approximately 10 L/min",
+            "D": "Normal PCO2 is 2.4-3 kPa",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JNWNB5Y3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with a road traffic accident is being prepared for reconstructive tracheostomy. The anesthetist administers a muscle relaxant. Which of the following muscles would be spared?",
+        "options": {
+            "A": "Trachealis",
+            "B": "Inferior pharyngeal constrictor",
+            "C": "Thyrohyoid",
+            "D": "Sternohyoid",
+            "E": "Sternothyroid"
+        },
+        "correctAnswer": "A",
+        "explanation": "Muscle Relaxants are neuromuscular blocking agents that block nicotinic receptors at the neuromuscular junction, leading to paralysis of skeletal muscle. The Trachealis is a smooth muscle, not a skeletal muscle. Smooth muscle is generally not affected by these skeletal muscle relaxants. All other listed options are skeletal muscles and would be paralyzed.",
+        "hint": ""
+    },
+    {
+        "id": "6ALQ5QM5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a patient of RTA for thoracocentesis, at which location within an intercostal space should the needle be inserted?",
+        "options": {
+            "A": "Along the upper border of the rib",
+            "B": "Along the lower border of the rib",
+            "C": "At the midpoint between the upper and lower borders of the rib",
+            "D": "Just above the superior rib margin to avoid the neurovascular bundle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "To avoid the neurovascular bundle (which runs along the lower border of the rib), the needle must be inserted immediately above the superior margin of the lower rib (which corresponds to \"along the upper border of the rib\").",
+        "hint": ""
+    },
+    {
+        "id": "B25M2WHR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Toxicology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient is presented with aspirin toxicity. What will be the most likely management of this patient?",
+        "options": {
+            "A": "IV NaHCO3",
+            "B": "IV Naloxone",
+            "C": "IV Atropine",
+            "D": "IV Flumazenil",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The primary management for aspirin (salicylate) toxicity is alkalization of the urine using Intravenous Sodium Bicarbonate (NaHCO3). This increases the excretion of the weakly acidic salicylate molecule.",
+        "hint": ""
+    },
+    {
+        "id": "TEQCG9NM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Hard",
+        "question": "An elderly patient presents with hematuria. Cystoscopy reveals calcified plaques with concentric laminar deposits. What is the most likely diagnosis?",
+        "options": {
+            "A": "Xanthogranulomatous cystitis",
+            "B": "Malakoplakia",
+            "C": "Lichen planus",
+            "D": "Transitional cell carcinoma",
+            "E": "Chronic cystitis"
+        },
+        "correctAnswer": "B",
+        "explanation": "Malakoplakia is a chronic inflammatory disorder that most commonly affects the bladder (cystitis). Concentric Laminar Deposits (Michaelis-Gutmann Bodies) are pathognomonic (classic diagnostic sign) for malakoplakia. Xanthogranulomatous cystitis (XGC) is also a chronic inflammatory process with lipid-laden macrophages not concentric laminar deposits.",
+        "hint": ""
+    },
+    {
+        "id": "JLQUL67S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Urinary System",
+        "topic": "Nephritic Syndromes",
+        "difficulty": "Hard",
+        "question": "Ig A nephropathy, cell responsible for phagocytosis?",
+        "options": {
+            "A": "Monocytes",
+            "B": "Macrophages",
+            "C": "Eosinophils",
+            "D": "Lymphocyte",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "In IgA nephropathy (Berger's disease), the major phagocytic cells within the inflamed glomerulus that attempt to clear the mesangial IgA immune complexes are the mesangial cells, which are modified macrophages.",
+        "hint": ""
+    },
+    {
+        "id": "YML4443X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "A patient taking a diuretic develops hypokalemia. Which drug should be administered to prevent or correct it?",
+        "options": {
+            "A": "Thiazide",
+            "B": "Atenolol",
+            "C": "Amiloride",
+            "D": "Furosemide",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Amiloride: This is a potassium-sparing diuretic. It works by blocking the epithelial sodium channel (ENaC) in the late distal tubule and collecting duct of the kidney. While Thiazide & Furosemide are the drugs that cause hypokalemia.",
+        "hint": ""
+    },
+    {
+        "id": "PULPQ2CL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Glomerular filtration rate (GFR) is increased by which of the following?",
+        "options": {
+            "A": "Efferent arteriole constriction",
+            "B": "Afferent arteriole constriction",
+            "C": "Decreased renal plasma flow",
+            "D": "Increased plasma oncotic pressure",
+            "E": "Reduced systemic blood pressure"
+        },
+        "correctAnswer": "A",
+        "explanation": "The efferent arteriole is downstream from the glomerulus. Constricting it causes blood to back up into the glomerular capillaries. This back pressure increases the Glomerular Hydrostatic Pressure which is the main driving force for filtration, thereby increasing GFR.",
+        "hint": ""
+    },
+    {
+        "id": "Y2HQZ92Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which of the following causes an increase in serum potassium levels (hyperkalemia)?",
+        "options": {
+            "A": "Strenuous exercise",
+            "B": "Metabolic alkalosis",
+            "C": "Insulin",
+            "D": "beta-agonist",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Strenuous exercise causes the transient movement of K+ from the intracellular space (muscle cells) into the extracellular space (serum), leading to a transient but sometimes significant hyperkalemia.",
+        "hint": ""
+    },
+    {
+        "id": "5SQMQTQT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cyanide toxicity blocks:",
+        "options": {
+            "A": "Complex 1",
+            "B": "Complex 3",
+            "C": "Complex 4",
+            "D": "Complex 5",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Cyanide is a potent inhibitor that binds to the ferric ion (Fe3+) in cytochrome c oxidase (Complex IV) of the electron transport chain, blocking cellular respiration and energy production.",
+        "hint": ""
+    }
+]

@@ -1,0 +1,25 @@
+[
+    {
+        "id": "1",
+        "year": [],
+        "specialty": [],
+        "exams": [],
+        "subject": "Uncategorized",
+        "chapter": "Cardiovascular",
+        "topic": "Aneurysms",
+        "difficulty": "medium",
+        "question": "A 65-year-old male presents with a pulsating abdominal mass. The most likely cause of this abdominal aortic aneurysm is:",
+        "options": {
+            "A": "Syphilis",
+            "B": "Cystic Medial Necrosis",
+            "C": "Atherosclerosis",
+            "D": "Trauma",
+            "E": "Marfan Syndrome"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "isBookQuestion": true,
+        "bookName": "brs_physio"
+    }
+]

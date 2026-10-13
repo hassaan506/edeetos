@@ -1,0 +1,83 @@
+[
+    {
+        "id": "6R3DPMEV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tumor marker of medullary thyroid carcinoma?",
+        "options": {
+            "A": "Calcitonin",
+            "B": "Thyroglobulin",
+            "C": "CEA",
+            "D": "PSA",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E968UWRQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Oncology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the tumor marker for medullary carcinoma of the thyroid?",
+        "options": {
+            "A": "Alpha-fetoprotein (AFP)",
+            "B": "Calcitonin",
+            "C": "Carcinoembryonic antigen (CEA)",
+            "D": "Amyloid",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Medullary thyroid carcinoma arises from parafollicular C cells. These cells secrete calcitonin, making it the primary tumor marker. Serum calcitonin is useful for diagnosis and follow-up.",
+        "hint": ""
+    },
+    {
+        "id": "N8RT9LDH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Oncology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient was diagnosed with medullary carcinoma, which marker do we use to check it?",
+        "options": {
+            "A": "Calcitonin",
+            "B": "Calcium",
+            "C": "TSH",
+            "D": "PTHrp",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    }
+]

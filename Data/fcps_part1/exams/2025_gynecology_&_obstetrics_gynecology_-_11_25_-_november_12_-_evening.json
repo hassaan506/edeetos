@@ -1,0 +1,5275 @@
+[
+    {
+        "id": "B6WZY79G",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient with CHF is on furosemide. Labs show potassium 2.5 mEq/L. Which drug can be added to compensate for hypokalemia?",
+        "options": {
+            "A": "Thiazide",
+            "B": "Amiloride",
+            "C": "Spironolactone",
+            "D": "Acetazolamide",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Furosemide -> potassium-wasting loop diuretic. Spironolactone -> potassium-sparing diuretic -> prevents hypokalemia. Amiloride also potassium-sparing, but spironolactone preferred in CHF.",
+        "hint": ""
+    },
+    {
+        "id": "XHE8GR8H",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Radiology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with fatigue, hypotension, hypoglycemia, and loss of secondary sexual characteristics. Labs show low TSH, ACTH, LH, FSH, and GH. What is the most likely diagnosis?",
+        "options": {
+            "A": "Primary adrenal insufficiency",
+            "B": "Panhypopituitarism",
+            "C": "Hypothyroidism only",
+            "D": "Addison disease",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Panhypopituitarism = deficiency of all anterior pituitary hormones. Causes include pituitary tumors, Sheehan's syndrome, infarction, trauma.",
+        "hint": ""
+    },
+    {
+        "id": "T79PQZAK",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient receives gamma radiation for a solid tumor.",
+        "options": {
+            "A": "Formation of free radicals",
+            "B": "Directly destroy cells",
+            "C": "Stimulate NK cells",
+            "D": "Stop radical mechanisms",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Gamma radiation interacts with water in cells -> free radical formation -> DNA damage -> tumor cell death. Indirect effect is the main mechanism of cytotoxicity.",
+        "hint": ""
+    },
+    {
+        "id": "36288T25",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A teenage girl with primary amenorrhea, normal breast development, and absent pubic/axillary hair likely has:",
+        "options": {
+            "A": "Turner syndrome",
+            "B": "Mullerian agenesis",
+            "C": "Androgen insensitivity syndrome",
+            "D": "Kallmann syndrome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9MHNWA9Q",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 13-week pregnant woman presents for routine dating ultrasound. Her LMP is unknown. Ultrasound shows CRL = 150 mm, BPD = 30 mm. Which parameter is most accurate for gestational age estimation?",
+        "options": {
+            "A": "Biparietal diameter (BPD)",
+            "B": "Femur length",
+            "C": "Crown-rump length (CRL)",
+            "D": "Head circumference (HC)",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "C63ECNSQ",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A G3P2, 38-week pregnant woman in active labor is 8 cm dilated when a lady doctor performs ARM (artificial rupture of membranes). Immediately after ARM, the patient develops sudden heavy vaginal bleeding. Fetal heart rate begins to show decelerations. What is the NEXT best step in management?",
+        "options": {
+            "A": "Immediate vaginal delivery",
+            "B": "Expectant management",
+            "C": "Cesarean section",
+            "D": "Administration of tocolytics",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EU8J4E4J",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning",
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Obstetrics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36-week pregnant woman presents with sudden, painful vaginal bleeding and uterine tenderness. Most likely diagnosis?",
+        "options": {
+            "A": "Placenta previa",
+            "B": "Placental abruption",
+            "C": "Vasa previa",
+            "D": "Cervical ectropion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "P74XMTWL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "Biostatistics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An office worker worried about his health visit to physician and concern about development of diabetes in him. Which of these will associated with reduced risk",
+        "options": {
+            "A": "His Remote relatives are affected",
+            "B": "His siblings are affected",
+            "C": "He belongs to less affected gender",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SQEVVX5G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "Biostatistics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pregnant lady with history of smoking taken to study its effect on IHD to identify risk factor what type of study is this?",
+        "options": {
+            "A": "Case control",
+            "B": "Cross sectional",
+            "C": "Cohort",
+            "D": "Prospective",
+            "E": "Variance"
+        },
+        "correctAnswer": "C",
+        "explanation": "Case control study: Disease vs Non disease, Related to ODD Ratio. Cohort study: Group with risk factors and group without risk factors, Related to relative risk, Cause to effect, Forward study.",
+        "hint": ""
+    },
+    {
+        "id": "4Y37RBVJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "Biostatistics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Test has high false positive test should be highly:",
+        "options": {
+            "A": "Sensitive",
+            "B": "Specific",
+            "C": "Precise",
+            "D": "Accurate",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Specificity (true negative). Detect disease and rule out disease. Associated with true positive and false negative.",
+        "hint": ""
+    },
+    {
+        "id": "WDGFPYFW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Gunshot wound enters from right iliac fossa and exits from left lumbar region. Emergency laparotomy reveals peritoneal bleeding and tear at the root of small intestine mesentery. Which vessel is most likely damaged?",
+        "options": {
+            "A": "Superior mesenteric vein (SMV)",
+            "B": "Inferior mesenteric vein (IMV)",
+            "C": "Middle colic vein",
+            "D": "Right colic vein",
+            "E": "Left colic vein"
+        },
+        "correctAnswer": "A",
+        "explanation": "The root of the small intestine mesentery contains SMV and SMA. Injury to this area -> SMV bleeding is most likely cause of hemoperitoneum.",
+        "hint": ""
+    },
+    {
+        "id": "EEMMEBEA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure directly drains into the superior vena cava (SVC)?",
+        "options": {
+            "A": "Hemiazygos vein",
+            "B": "Azygos vein",
+            "C": "Jugular vein",
+            "D": "Brachiocephalic trunk",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Azygos vein -> drains thoracic wall and mediastinum directly into SVC. Hemiazygos -> drains into azygos vein. Jugular -> drains into brachiocephalic vein.",
+        "hint": ""
+    },
+    {
+        "id": "HHYGSY3Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-week pregnant woman presents with unilateral leg swelling and pain. Doppler ultrasound confirms deep vein thrombosis (DVT). What is the most likely physiological reason for increased risk of DVT in pregnancy?",
+        "options": {
+            "A": "Reduced levels of natural anticoagulants",
+            "B": "Venous stasis",
+            "C": "Increased fibrinolytic activity",
+            "D": "Arterial vasospasm",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6T2LEUTK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 7-year-old girl is diagnosed with Turner syndrome. Echocardiography is ordered to screen for common cardiovascular abnormalities. Which of the following is most likely to be found?",
+        "options": {
+            "A": "Patent ductus arteriosus",
+            "B": "Bicuspid aortic valve",
+            "C": "Atrial septal defect",
+            "D": "Mitral valve prolapse",
+            "E": "Pulmonary valve stenosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5C22W45A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has high LDL cholesterol. Which dietary component will help improve LDL levels?",
+        "options": {
+            "A": "Saturated fats",
+            "B": "Monounsaturated fats",
+            "C": "Protein",
+            "D": "Carbohydrates",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Monounsaturated fats (olive oil, nuts) -> lower LDL and maintain HDL. Saturated fats -> increase LDL.",
+        "hint": ""
+    },
+    {
+        "id": "E9FLG57V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with syncope. ECG shows P waves not followed by QRS complexes. The most likely diagnosis is:",
+        "options": {
+            "A": "2nd-degree heart block",
+            "B": "1st-degree heart block",
+            "C": "Wenckebach phenomenon",
+            "D": "Complete heart block",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "In complete (3rd-degree) heart block, atrial and ventricular contractions are independent, causing P waves not conducted to ventricles, which can lead to syncope or fainting.",
+        "hint": ""
+    },
+    {
+        "id": "8CEQG2V8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient with mitral stenosis develops an irregularly irregular pulse. What conduction abnormality is present?",
+        "options": {
+            "A": "Increased conduction velocity",
+            "B": "Increased conduction time",
+            "C": "Increased refractory period",
+            "D": "(Other option missing)",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Irregularly irregular rhythm = Atrial fibrillation, where chaotic atrial impulses reach the AV node at variable intervals -> prolonged and variable conduction time.",
+        "hint": ""
+    },
+    {
+        "id": "7WQX2LSA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is seen in aortic stenosis?",
+        "options": {
+            "A": "Decreased end-diastolic pressure",
+            "B": "Decreased pulse pressure",
+            "C": "Increased systolic ejection",
+            "D": "Decreased systolic ejection",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Aortic stenosis -> left ventricular outflow obstruction. Leads to narrow pulse pressure and slow-rising, low-amplitude pulse (pulsus parvus et tardus).",
+        "hint": ""
+    },
+    {
+        "id": "5UNJ2ZPF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most common cause of nonbacterial thrombotic endocarditis:",
+        "options": {
+            "A": "Libman-Sacks",
+            "B": "Terminal malignancy",
+            "C": "Lupus endocarditis",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Marantic endocarditis is strongly associated with advanced malignancy.",
+        "hint": ""
+    },
+    {
+        "id": "W4QKHHR3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient is on combined oral contraceptive pills.",
+        "options": {
+            "A": "DVT",
+            "B": "Cervical cancer",
+            "C": "Ovarian cancer",
+            "D": "Breast cancer",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Estrogen-containing contraceptives increase coagulation factors, raising risk of venous thromboembolism (DVT).",
+        "hint": ""
+    },
+    {
+        "id": "88266474",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient started on a lipid-lowering agent complains of diffuse muscle aches and weakness. Which drug is most likely responsible?",
+        "options": {
+            "A": "Niacin",
+            "B": "Fibrostat",
+            "C": "Atorvastatin",
+            "D": "Gemfibrozil",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "D7V6VHE6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hypotension with falling heart rate - drug to improve symptoms",
+        "options": {
+            "A": "Dopamine",
+            "B": "Norepinephrine",
+            "C": "Epinephrine",
+            "D": "Digoxin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Dopamine increases cardiac output, BP, and renal perfusion. Useful in shock with hypotension and low perfusion.",
+        "hint": ""
+    },
+    {
+        "id": "48P35JEH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient on antimalarial therapy develops long QT / torsades de pointes. Which drug?",
+        "options": {
+            "A": "Primaquine",
+            "B": "TCA",
+            "C": "Quinine",
+            "D": "Proguanil",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Quinine and quinidine prolong the QT interval -> risk of torsades.",
+        "hint": ""
+    },
+    {
+        "id": "EQND9XFZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops polyuria and excessive thirst (polydipsia) after a head trauma. Which central lesion is most likely responsible?",
+        "options": {
+            "A": "Paraventricular nucleus of hypothalamus",
+            "B": "Anterior thalamus",
+            "C": "Posterior thalamus",
+            "D": "Ventromedial nucleus of thalamus (VML)",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "After trauma, sudden onset polyuria + polydipsia strongly suggests central diabetes insipidus (CDI). ADH (vasopressin) is produced mainly by the supraoptic nucleus, But paraventricular nucleus also produces ADH, so damage here can also cause CDI.",
+        "hint": ""
+    },
+    {
+        "id": "5JCRTTG5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 3-year-old boy presents with recurrent infections, hypocalcemic tetany, and congenital heart defects. Physical examination shows facial dysmorphism including cleft palate and low-set ears. Laboratory tests reveal low parathyroid hormone (PTH) and which of the following is absent or hypoplastic in this patient?",
+        "options": {
+            "A": "Parafollicular (C) cells of thyroid",
+            "B": "Parathyroid glands",
+            "C": "Adrenal cortex",
+            "D": "Pancreatic islets",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "23S9QM3P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Long scenario: 22q11 deletion with defect in 3rd and 4th pharyngeal pouches. What will happen?",
+        "options": {
+            "A": "Tetany",
+            "B": "Hyperactivity of osteoclasts",
+            "C": "Calcium ion increased in ECF",
+            "D": "Tetanus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "DiGeorge syndrome (22q11 deletion) -> underdevelopment of parathyroid glands -> hypocalcemia -> tetany.",
+        "hint": ""
+    },
+    {
+        "id": "FGGTTAU8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman presents with excess facial and body hair (hirsutism), muscle wasting, and recent weight loss. Laboratory tests reveal elevated ACTH levels. Which is the most likely underlying condition?",
+        "options": {
+            "A": "Primary adrenal insufficiency",
+            "B": "Cushing's disease",
+            "C": "Adrenal carcinoma",
+            "D": "Congenital adrenal hyperplasia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PTVAPFUG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old woman presents with weight gain, lethargy, brittle hair, and amenorrhea. Labs show elevated TSH. What is the most likely diagnosis?",
+        "options": {
+            "A": "Hyperthyroidism",
+            "B": "Hypothyroidism",
+            "C": "Sheehan syndrome",
+            "D": "PCOS",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T3JCSAPF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old woman presents 2 months after a massive postpartum hemorrhage with fatigue, lactation failure, amenorrhea, and hypotension. Most likely diagnosis?",
+        "options": {
+            "A": "Sheehan syndrome",
+            "B": "Hypothyroidism",
+            "C": "Addison disease",
+            "D": "Pituitary adenoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YVD3LHNS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old with weight loss, palpitations, sweating, and exophthalmos. Mechanism of disease?",
+        "options": {
+            "A": "Iodine not converted to iodide",
+            "B": "TSH-receptor oversensitivity",
+            "C": "Failed organification",
+            "D": "Hypothalamic disorder",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5A6H2H4Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old patient presents with fatigue, hypotension, hyperpigmentation, and salt craving. Laboratory tests reveal hyponatremia, hyperkalemia, low cortisol, and elevated ACTH. Which of the following is the most likely cause of her condition?",
+        "options": {
+            "A": "Primary adrenal insufficiency",
+            "B": "Exogenous glucocorticoid use",
+            "C": "ACTH overproduction",
+            "D": "Pheochromocytoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Primary adrenal insufficiency (Addison's disease) occurs due to destruction of the adrenal cortex, leading to low cortisol and aldosterone, which causes hypotension, hyponatremia, hyperkalemia, and elevated ACTH. Hyperpigmentation is due to excess ACTH stimulating melanocytes.",
+        "hint": ""
+    },
+    {
+        "id": "SRM2Q37Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old patient with severe hypertension is found to have an adrenal mass on imaging. Which laboratory marker is most useful for confirming the diagnosis?",
+        "options": {
+            "A": "Proteins",
+            "B": "Amyloid proteins",
+            "C": "Methylenic acid",
+            "D": "Vanillylmandelic acid (VMA)",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "An adrenal mass with hypertension suggests pheochromocytoma. Urinary VMA is elevated due to catecholamine excess and helps confirm the diagnosis.",
+        "hint": ""
+    },
+    {
+        "id": "M7Z6LYD2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A diabetic patient presents with a chronic ulcer on the toe. Which is the main mechanism for ulcer formation?",
+        "options": {
+            "A": "Neuropathy and angiopathy",
+            "B": "Neuropathy alone",
+            "C": "Microangiopathy alone",
+            "D": "Infection",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Diabetic foot ulcers result from peripheral neuropathy (loss of sensation) + peripheral arterial disease (ischemia).",
+        "hint": ""
+    },
+    {
+        "id": "5C5EVF2U",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A teenage girl presents with primary amenorrhea, acne, and axillary/pubic hair. Which gland is most likely responsible for her androgenic features?",
+        "options": {
+            "A": "Thyroid",
+            "B": "Adrenal gland",
+            "C": "Ovaries",
+            "D": "Pituitary",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Androgenic features (acne, pubic/axillary hair) arise from adrenal androgen secretion, while amenorrhea may result from hypothalamic-pituitary-ovarian dysfunction.",
+        "hint": ""
+    },
+    {
+        "id": "UE4PQK4T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman develops postpartum pituitary necrosis (Sheehan syndrome). What is a common consequence?",
+        "options": {
+            "A": "Galactorrhea",
+            "B": "Loss of menses (amenorrhea)",
+            "C": "Hyperthyroidism",
+            "D": "Hyperprolactinemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Sheehan syndrome -> anterior pituitary infarction -> deficiency of gonadotropins -> amenorrhea and other endocrine deficiencies.",
+        "hint": ""
+    },
+    {
+        "id": "RHY6FNH6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 18-year-old female presents with excess facial hair, clitoral enlargement, and irregular menses. Which test is most appropriate first?",
+        "options": {
+            "A": "Serum testosterone",
+            "B": "Serum FSH",
+            "C": "Serum TSH",
+            "D": "Serum prolactin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DVWZLWUY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with chronic kidney disease (CKD) passes away. Autopsy reveals enlarged parathyroid glands. What is the most likely explanation?",
+        "options": {
+            "A": "Primary hyperparathyroidism",
+            "B": "Parathyroid adenoma",
+            "C": "Parathyroid hyperplasia",
+            "D": "Parathyroid carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "In CKD, impaired phosphate excretion and chronic hypocalcemia lead to secondary hyperparathyroidism, causing parathyroid gland hyperplasia.",
+        "hint": ""
+    },
+    {
+        "id": "SCXM3LN4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old woman presents with galactorrhea and amenorrhea. She is diagnosed with hyperprolactinemia due to a prolactin-secreting pituitary adenoma. She is started on bromocriptine. What is the primary mechanism of action of this drug?",
+        "options": {
+            "A": "It enhances the action of dopamine",
+            "B": "It decreases the effect of prolactin on breast tissue",
+            "C": "It decreases prolactin secretion from the anterior pituitary",
+            "D": "It decreases prolactin secretion from the hypothalamus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BZKL5ZV7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 34-year-old man with newly diagnosed Graves disease has palpitations, tremor, and anxiety. Which medication is best for rapid symptomatic control and also reduces peripheral T4->T3 conversion?",
+        "options": {
+            "A": "Propranolol",
+            "B": "Atenolol",
+            "C": "Methimazole",
+            "D": "Iodine solution (Lugol's)",
+            "E": "Levothyroxine"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7UKB652B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Growth hormone acts via transcription factors. Receptors for growth hormone are located in:",
+        "options": {
+            "A": "Nucleus",
+            "B": "Cytoplasm",
+            "C": "Plasma membrane",
+            "D": "Lysosome",
+            "E": "Golgi bodies"
+        },
+        "correctAnswer": "C",
+        "explanation": "Growth hormone binds to cell surface receptors on the plasma membrane. Receptor activation triggers JAK2/STAT signaling, which then affects nuclear transcription.",
+        "hint": ""
+    },
+    {
+        "id": "WKTNUCZV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone stimulates glycogenolysis, gluconeogenesis, and ketogenesis?",
+        "options": {
+            "A": "Cortisol",
+            "B": "Growth hormone",
+            "C": "Insulin",
+            "D": "Somatostatin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Cortisol -> catabolic, increases glucose availability via: Glycogenolysis, Gluconeogenesis, Lipolysis -> ketone production.",
+        "hint": ""
+    },
+    {
+        "id": "5ECW4TBG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Location for ascitic tap?",
+        "options": {
+            "A": "Right lower quadrant, 2 cm medial to anterior superior iliac spine",
+            "B": "Right upper quadrant, 2 cm medial",
+            "C": "Left lower quadrant, 2 cm medial",
+            "D": "Left upper quadrant, 2 cm medial",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Safer site: right lower quadrant lateral to rectus, avoids inferior epigastric vessels. Reference: Bailey & Love - Abdominal Procedures.",
+        "hint": ""
+    },
+    {
+        "id": "JRMADW4S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Where is a percutaneous liver biopsy usually performed?",
+        "options": {
+            "A": "Left 5th ICS MCL",
+            "B": "Right 6th ICS MCL",
+            "C": "Right 8th/9th ICS midaxillary line",
+            "D": "Subcostal right side flank",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UHCT3M7N",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-week-old baby has drooling + regurgitation after feeds (suggesting esophageal atresia). In which week does this structure form?",
+        "options": {
+            "A": "6 weeks",
+            "B": "8 weeks",
+            "C": "4 weeks",
+            "D": "3 weeks",
+            "E": "10 weeks"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XDKFW3TB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 20-year-old female develops abdominal bloating and diarrhea after consuming milk. She frequently uses milk-containing products at home. A test is performed in which no rise in blood glucose is observed even after 5 hours of milk ingestion. What is the most likely diagnosis?",
+        "options": {
+            "A": "Lactose intolerance",
+            "B": "Galactosemia",
+            "C": "Fructosuria",
+            "D": "Hereditary fructose intolerance",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Lactose intolerance occurs due to lactase deficiency -> lactose not broken into glucose + galactose -> no rise in blood glucose during lactose tolerance test + abdominal symptoms after milk ingestion.",
+        "hint": ""
+    },
+    {
+        "id": "PWNKCFAF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old patient presents with sudden epigastric pain radiating to the back, which worsens when lying supine. Which laboratory test is most specific for confirming the diagnosis?",
+        "options": {
+            "A": "Amylase",
+            "B": "Lipase",
+            "C": "CRP",
+            "D": "Alkaline phosphatase",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The presentation is classic for acute pancreatitis. Serum lipase is more specific than amylase and remains elevated for a longer duration, making it the preferred diagnostic test.",
+        "hint": ""
+    },
+    {
+        "id": "MSAWZTAS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60-year-old patient presents with gastric outlet obstruction and repeated vomiting. What is the expected acid-base abnormality?",
+        "options": {
+            "A": "Hypokalemic metabolic acidosis",
+            "B": "Hypokalemic metabolic alkalosis",
+            "C": "Hyperkalemic metabolic acidosis",
+            "D": "Respiratory acidosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Vomiting -> loss of gastric H+ and Cl- -> metabolic alkalosis. Renal compensation -> K+ excretion -> hypokalemia.",
+        "hint": ""
+    },
+    {
+        "id": "9BYTT6VP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with SOB, ultrasound shows ascites. What next?",
+        "options": {
+            "A": "CT abdomen",
+            "B": "Diagnostic paracentesis",
+            "C": "MRI liver",
+            "D": "Diuretics and discharge",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "First step in any new ascites is diagnostic tap.",
+        "hint": ""
+    },
+    {
+        "id": "7TU3F8YZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Newborn develops diarrhea after milk consumption. Diagnosis?",
+        "options": {
+            "A": "Lactose intolerance",
+            "B": "Fructosemia",
+            "C": "Gastrocolic reflex",
+            "D": "Celiac disease",
+            "E": "Galactosemia"
+        },
+        "correctAnswer": "A",
+        "explanation": "Lactose intolerance = inability to digest lactose -> osmotic diarrhea after milk. Symptoms appear immediately after milk feeding.",
+        "hint": ""
+    },
+    {
+        "id": "D6T6EFLJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient has history of diarrhea, then develops RHC pain + raised eosinophils. Likely diagnosis?",
+        "options": {
+            "A": "Hepatitis",
+            "B": "Cholangitis",
+            "C": "Cholecystitis",
+            "D": "Primary sclerosing cholangitis",
+            "E": "Amoebic liver abscess"
+        },
+        "correctAnswer": "E",
+        "explanation": "History of diarrhea -> amoebic infection -> liver invasion. RHC pain, fever, and eosinophilia are typical.",
+        "hint": ""
+    },
+    {
+        "id": "XBL3FLZ2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hepatitis B mode of transmission",
+        "options": {
+            "A": "Fecal-oral",
+            "B": "Sexual",
+            "C": "Aerosol",
+            "D": "Direct contact",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4E263E6V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 48-year-old man, a known case of chronic liver disease, presents to the emergency department with hematemesis. He is stabilized and treated with terlipressin, and an urgent endoscopy confirms the presence of esophageal varices. After controlling the acute bleed, you plan long-term secondary prophylaxis to prevent another episode of variceal bleeding. Which of the following is the drug of choice for prophylaxis?",
+        "options": {
+            "A": "Octreotide",
+            "B": "Atenolol",
+            "C": "Isosorbide dinitrate",
+            "D": "Propranolol",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7C7L6C43",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn has hypotonia, epicanthal folds, upslanting palpebral fissures, single palmar crease, protruding tongue. Echo shows complete AV septal defect. What is the underlying chromosomal abnormality?",
+        "options": {
+            "A": "Trisomy 13",
+            "B": "Trisomy 21",
+            "C": "Trisomy 18",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LMF29JVT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman presents with fever, rash, vomiting, and diarrhea for the last 12 hours. She reports that she has been using super-absorbent menstrual pads continuously for the past 2 days due to heavy flow. On examination, she is hypotensive, has diffuse erythematous rash, and shows skin desquamation beginning on palms. Laboratory reports show elevated liver enzymes and low platelets. What is the most likely diagnosis?",
+        "options": {
+            "A": "Scarlet fever",
+            "B": "Toxic shock syndrome",
+            "C": "Contact dermatitis",
+            "D": "Staphylococcal scalded skin syndrome",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Continuous use of high-absorbency pads or tampons can lead to Staphylococcus aureus toxin production, causing TSS. Features: fever, vomiting, diarrhea, hypotension, diffuse erythematous rash, desquamation of palms/soles, and multiorgan involvement.",
+        "hint": ""
+    },
+    {
+        "id": "LRVWKKR7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "10% formalin is used in biopsy specimens for which purpose?",
+        "options": {
+            "A": "Denaturation",
+            "B": "Sterilization",
+            "C": "Prevent autolysis",
+            "D": "Prevent dryness",
+            "E": "To enhance dye penetration"
+        },
+        "correctAnswer": "C",
+        "explanation": "Formalin fixes tissue by cross-linking proteins, preventing enzymatic autolysis and preserving morphology.",
+        "hint": ""
+    },
+    {
+        "id": "8WYC5E5Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman is found to have a mutation in the TP53 gene on genetic testing. Which of the following best explains the consequence of this mutation?",
+        "options": {
+            "A": "TP53 becomes an oncogene and promotes cell proliferation",
+            "B": "TP53 loses its tumor-suppressor function causing uncontrolled cell cycle progression",
+            "C": "TP53 increases apoptosis of normal cells",
+            "D": "TP53 increases DNA repair leading to reduced cancer risk",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KB94BGYG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old woman is receiving chemotherapy for breast cancer. After the second cycle, the oncology team explains that the goal of her regimen is to trigger controlled cancer cell death by activating intracellular pathways. What is the primary mechanism by which many chemotherapy drugs act?",
+        "options": {
+            "A": "Stimulate mitosis",
+            "B": "Induce apoptosis",
+            "C": "Enhance cell membrane stability",
+            "D": "Increase growth factor signaling",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X8BZHM9H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A researcher studies cells infected with a DNA virus. After infection, the host cells show abnormal replication, altered gene transcription, and loss of normal cell-cycle control. What cellular component is primarily altered by viruses?",
+        "options": {
+            "A": "Cell membrane lipid content",
+            "B": "Host cell DNA",
+            "C": "Mitochondrial ATP production",
+            "D": "Ribosomal protein synthesis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Many viruses-especially DNA viruses and retroviruses-integrate into or modify host cell DNA, leading to altered gene expression, uncontrolled proliferation.",
+        "hint": ""
+    },
+    {
+        "id": "Z97CWPUL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Apoptosis DNA pattern",
+        "options": {
+            "A": "Step ladder pattern",
+            "B": "Smear pattern",
+            "C": "Loading phase",
+            "D": "Programmed decrease",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Apoptosis shows characteristic DNA fragmentation, visible as a step-ladder pattern on gel electrophoresis. This distinguishes it from necrosis (smear pattern).",
+        "hint": ""
+    },
+    {
+        "id": "939WF229",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Caspases are mainly involved in which cellular process?",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Necrosis",
+            "C": "Cell injury",
+            "D": "Inflammation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "49LHSDHM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Inorganic ion causing cancer",
+        "options": {
+            "A": "Iron",
+            "B": "Zinc",
+            "C": "Asbestos",
+            "D": "Silicosis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Asbestos fibers are carcinogenic, associated with mesothelioma and lung cancer.",
+        "hint": ""
+    },
+    {
+        "id": "ZEGAD64G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most important beneficial function of apoptosis",
+        "options": {
+            "A": "Prevent crowding of cells",
+            "B": "Embryologically destroyed cells",
+            "C": "Chemotherapy uses",
+            "D": "Remove mutant cells",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Apoptosis eliminates mutant or damaged cells -> prevents malignancy. Critical for tissue homeostasis and tumor suppression.",
+        "hint": ""
+    },
+    {
+        "id": "VK8EWFQX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Viruses can cause tumors through mutation in which gene?",
+        "options": {
+            "A": "Oncogene",
+            "B": "Proto-oncogene",
+            "C": "Tumor suppressor gene",
+            "D": "NK cells",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Viral oncogenesis involves activation of proto-oncogenes or inactivation of tumor suppressor genes, leading to uncontrolled proliferation.",
+        "hint": ""
+    },
+    {
+        "id": "MST4CJGD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is started on doxycycline for atypical pneumonia. What is its mechanism of action?",
+        "options": {
+            "A": "Binds 50S ribosome",
+            "B": "Inhibits cell wall synthesis",
+            "C": "Binds 30S ribosomal subunit",
+            "D": "Inhibits DNA gyrase",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Tetracyclines block tRNA attachment to 30S subunit, inhibiting protein synthesis.",
+        "hint": ""
+    },
+    {
+        "id": "QMBDZE74",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is started on gentamicin for Gram-negative sepsis.",
+        "options": {
+            "A": "Inhibit tRNA by binding 30S subunit",
+            "B": "Inhibit tRNA by binding 50S subunit",
+            "C": "Inhibit amino acid formation",
+            "D": "Inhibit cell membrane transport",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Aminoglycosides bind 30S ribosomal subunit, block initiation of protein synthesis, cause misreading -> bacterial death.",
+        "hint": ""
+    },
+    {
+        "id": "B3MLJG3H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient on vancomycin for infective endocarditis develops decreased urine output after 2 days.",
+        "options": {
+            "A": "Send sample 2 hours after next dose",
+            "B": "Send sample just before next dose",
+            "C": "Immediately send sample",
+            "D": "Stop antibiotics",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Trough level (just before next dose) correlates with toxicity and therapeutic monitoring.",
+        "hint": ""
+    },
+    {
+        "id": "PX4LQFWW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old man underwent abdominal surgery 7 days ago. He presents with sudden serosanguinous discharge from the surgical wound, with partial separation of the wound edges. The patient has fever and mild erythema around the incision. Wound swab culture grows methicillin-resistant Staphylococcus aureus (MRSA). What is the most likely cause of the wound complication?",
+        "options": {
+            "A": "Surgical technique error",
+            "B": "MRSA infection causing wound dehiscence",
+            "C": "Vitamin C deficiency",
+            "D": "Hematoma formation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HZ4G3LGC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An obese patient consumes mostly dairy (cheese), coffee, and toast. Which nutrient deficiency is likely?",
+        "options": {
+            "A": "Vitamin B12",
+            "B": "Folate",
+            "C": "Vitamin C",
+            "D": "Vitamin D",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Diet low in green vegetables and fruits -> folate deficiency. Cheese, coffee, toast -> provide calories but poor folate content.",
+        "hint": ""
+    },
+    {
+        "id": "54PZ53AH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "30-year-old X-ray technician presents with shortness of breath and fatigue. Labs: Hb 7, normocytic normochromic anemia, decreased platelets. Likely cause?",
+        "options": {
+            "A": "Aplastic anemia",
+            "B": "Sickle cell anemia",
+            "C": "Thalassemia",
+            "D": "Megaloblastic anemia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Pancytopenia (anemia, thrombocytopenia, leukopenia) + normocytic normochromic -> aplastic anemia. Risk factor: radiation exposure (X-ray technician).",
+        "hint": ""
+    },
+    {
+        "id": "UDJKW4SF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman presents to the emergency department with heavy vaginal bleeding after a retained dead fetus for 4 days. She is pale, confused, and hypotensive. Examination shows widespread petechiae and oozing from venipuncture sites. Laboratory results show: Platelets: 40,000/mm3, PT & aPTT: prolonged, Fibrinogen: low, D-dimer / Fibrin degradation products (FDP): markedly increased. What is the most likely diagnosis?",
+        "options": {
+            "A": "Immune thrombocytopenic purpura (ITP)",
+            "B": "Von Willebrand disease",
+            "C": "Disseminated intravascular coagulation (DIC)",
+            "D": "Hemophilia A",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9XUVSQ5T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman presents with fatigue, pallor, and spoon-shaped nails. She reports heavy menstrual bleeding for 6 months. Labs show Hb: 8 g/dL, MCV: 70 fL, MCH: 22 pg. Peripheral smear: microcytic hypochromic red cells. Which is the most likely cause of her anemia?",
+        "options": {
+            "A": "Vitamin B12 deficiency",
+            "B": "Folate deficiency",
+            "C": "Iron deficiency",
+            "D": "Anemia of chronic disease",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VT3BJG6T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old woman is started on warfarin therapy for deep vein thrombosis. On the second day of therapy, she develops painful ecchymotic lesions on her breasts and thighs. Laboratory tests reveal normal platelet counts and prolonged INR. What is the most likely reason for this complication?",
+        "options": {
+            "A": "Heparin-induced thrombocytopenia",
+            "B": "Vitamin K deficiency",
+            "C": "Protein C deficiency leading to microvascular thrombosis",
+            "D": "Idiopathic purpura",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F8Q78RQ6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36-year-old woman presents suddenly with lethargy, pallor, bleeding, and infections. Labs: Hb low, platelets low, WBC low. Most likely cause?",
+        "options": {
+            "A": "Iron deficiency anemia",
+            "B": "Aplastic anemia",
+            "C": "ITP",
+            "D": "Hemolytic anemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E6JVTMXH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 3-day-old newborn presents with bleeding from the umbilicus. Which is the most likely cause?",
+        "options": {
+            "A": "Vitamin K deficiency",
+            "B": "Von Willebrand disease",
+            "C": "Hemophilia A",
+            "D": "Hemophilia B",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Early neonatal bleeding (within the first week), especially from the umbilicus, is most commonly due to vitamin K deficiency. Newborns have sterile intestines at birth -> impaired vitamin K synthesis -> decreased activity of vitamin K-dependent clotting factors (II, VII, IX, X). Inherited bleeding disorders like VWD or hemophilia usually present later or with different bleeding patterns.",
+        "hint": ""
+    },
+    {
+        "id": "QV8RQNNN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 6-month-old baby is diagnosed with beta-thalassemia major. Hemoglobin electrophoresis is performed. Which hemoglobin fraction is expected to be increased?",
+        "options": {
+            "A": "HbA",
+            "B": "HbA2",
+            "C": "HbS",
+            "D": "HbF",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7RJ8S9JB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mother Rh-negative, Father Rh-positive, female has previously delivered 2 babies and got anti-D for that. Which test we will perform now to check for antibodies",
+        "options": {
+            "A": "Indirect Coombs test for IgG Ab",
+            "B": "Indirect Coombs test for IgM Ab",
+            "C": "Direct Coombs test for IgG Ab",
+            "D": "Direct Coombs test for IgM Ab",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JVN7NU44",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58-year-old man presents with progressive fatigue, night sweats, and unintentional weight loss for 3 months. Examination shows generalized lymphadenopathy and moderate hepatosplenomegaly. CBC: Anemia, normal WBC count, mild thrombocytopenia. Peripheral smear: Atypical large lymphoid cells. LDH: Markedly elevated. Excisional lymph node biopsy: Monoclonal B-cell population. What is the most likely diagnosis?",
+        "options": {
+            "A": "Acute lymphoblastic leukemia",
+            "B": "Diffuse large B-cell lymphoma",
+            "C": "Chronic myeloid leukemia",
+            "D": "Hodgkin lymphoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2R98JRQW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with splenomegaly, skin hyperpigmentation, and serum ferritin 2000 IU/L. What is the best treatment?",
+        "options": {
+            "A": "Deferoxamine",
+            "B": "Penicillamine",
+            "C": "Splenectomy",
+            "D": "Cholestyramine",
+            "E": "Tetrathiomolybdate"
+        },
+        "correctAnswer": "A",
+        "explanation": "Iron overload (hemochromatosis or transfusion-related) -> chelation therapy. Deferoxamine binds excess iron -> excreted in urine/feces.",
+        "hint": ""
+    },
+    {
+        "id": "BZ7PP79D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mediators of inflammation, such as histamine, are derived from which amino acid?",
+        "options": {
+            "A": "Histidine",
+            "B": "Tyrosine",
+            "C": "Leucine",
+            "D": "Glycine",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Histamine is synthesized from histidine via histidine decarboxylase. Tyrosine -> catecholamines and thyroid hormones.",
+        "hint": ""
+    },
+    {
+        "id": "2VXVQ4BD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with recurrent respiratory infections, saddle-nose deformity, and crescentic glomerulonephritis on renal biopsy. What is the most likely diagnosis?",
+        "options": {
+            "A": "Granulomatosis with polyangiitis (Wegener's)",
+            "B": "IgA nephropathy",
+            "C": "Rapidly proliferative glomerulonephritis",
+            "D": "Churg-Strauss syndrome",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Saddle-nose deformity -> classic for cartilage destruction seen in GPA. Recurrent sinus/respiratory infections -> chronic granulomatous inflammation of ENT tract. Crescentic GN -> common renal manifestation (pauci-immune). Associated with c-ANCA (PR3-ANCA) positivity.",
+        "hint": ""
+    },
+    {
+        "id": "2CTJ9VUG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Leg wound after infarction with superinfection. Type of necrosis?",
+        "options": {
+            "A": "Coagulative",
+            "B": "Dry gangrene",
+            "C": "Gangrenous necrosis",
+            "D": "Fat necrosis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Ischemic infarction + infection = wet gangrene (gangrenous necrosis).",
+        "hint": ""
+    },
+    {
+        "id": "FLVGWNV3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "Medical Ethics",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a primary health care center, a patient is referred to a higher-level hospital for specialized care.",
+        "options": {
+            "A": "Communication between two health facilities",
+            "B": "Communication with patient and doctor",
+            "C": "Recommendation to higher authority",
+            "D": "Communication between patient and family",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Referral system ensures communication between lower and higher-level health facilities for optimal patient care.",
+        "hint": ""
+    },
+    {
+        "id": "HPRB6ZNV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which amino acid is non-essential?",
+        "options": {
+            "A": "Tyrosine",
+            "B": "Leucine",
+            "C": "Isoleucine",
+            "D": "Tryptophan",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "PVT TIM HALL = Phenylalanine, valine, tryptophan, threonine, isoleucine, methionine, histidine, arginine, leucine, lysine. Tyrosine, Glycine, alanine, serine, cysteine, aspartate, glutamate, glutamine, proline are non-essential. Histidine, arginine are semi-essential.",
+        "hint": ""
+    },
+    {
+        "id": "XMQK925J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old primigravida has a difficult vaginal delivery. After delivery, she complains of pelvic heaviness, difficulty controlling urination, and inability to maintain pelvic support. Examination reveals a pelvic diaphragm tear. Which muscle is most likely paralyzed?",
+        "options": {
+            "A": "Coccygeus",
+            "B": "Obturator internus",
+            "C": "Levator ani",
+            "D": "Piriformis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JWWCRUL6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A football player avulses the anterior inferior iliac spine. Which muscle is affected?",
+        "options": {
+            "A": "Sartorius",
+            "B": "Iliopsoas",
+            "C": "Rectus femoris",
+            "D": "Tensor fascia lata",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E4SYZPCF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with psoas abscess. The psoas muscle inserts into which structure?",
+        "options": {
+            "A": "Greater trochanter of femur",
+            "B": "Lesser trochanter of femur",
+            "C": "Ischium",
+            "D": "Pubis",
+            "E": "Ilium"
+        },
+        "correctAnswer": "B",
+        "explanation": "Psoas major inserts into the lesser trochanter of femur -> hip flexion.",
+        "hint": ""
+    },
+    {
+        "id": "Z2LHMJK8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with pelvic injury resulting in pelvic eversion. Which muscle originates from the anterior inferior iliac spine (AIIS)?",
+        "options": {
+            "A": "Quadratus femoris",
+            "B": "Rectus femoris",
+            "C": "Obturator internus",
+            "D": "Serratus anterior",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Rectus femoris is the only quadriceps muscle originating from AIIS (straight head). Reference: Gray's Anatomy.",
+        "hint": ""
+    },
+    {
+        "id": "SP4L74AL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Skeleton is dug out of grave. How to know it is female pelvis?",
+        "options": {
+            "A": "Everted Iliac Ala",
+            "B": "Heart Shaped Pelvis",
+            "C": "Inverted Ischial tuberosities",
+            "D": "Fused ischial spines at the Mid",
+            "E": "Suprapubic angle <90"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FEGAM4VQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which muscle forms part of pelvic diaphragm?",
+        "options": {
+            "A": "Obturator internus",
+            "B": "Piriformis",
+            "C": "Puborectalis",
+            "D": "Coccygeus only",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CADSZX8A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 12-year-old presents with disproportionately long arms and legs relative to trunk, short stature, and normal development.",
+        "options": {
+            "A": "Autosomal dominant",
+            "B": "Autosomal recessive",
+            "C": "X-linked recessive",
+            "D": "X-linked dominant",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Likely Marfan syndrome, classic autosomal dominant inheritance. Features: arm span > height, long fingers, cardiovascular involvement.",
+        "hint": ""
+    },
+    {
+        "id": "D37T287F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 12-year-old boy presents with progressive muscle weakness, exercise intolerance, and ptosis. He dies suddenly, and autopsy of skeletal muscle shows ragged-red fibers. Which cellular organelle is primarily involved in this condition?",
+        "options": {
+            "A": "Mitochondria",
+            "B": "Lysosomes",
+            "C": "Golgi bodies",
+            "D": "Nucleus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FJMT5SHQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old patient presents with a swelling around the knee joint. Imaging shows the lesion involves the metaphysis-epiphysis region of the distal femur. Histopathology reveals spindle-shaped stromal cells with numerous multinucleated giant cells. What is the most likely diagnosis?",
+        "options": {
+            "A": "Osteosarcoma",
+            "B": "Giant cell tumor",
+            "C": "Chondrosarcoma",
+            "D": "Ewing sarcoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZEHDYJGR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 7-year-old boy is diagnosed with Duchenne muscular dystrophy. Which of the following molecules would have impaired transmembrane movement due to defective dystrophin and increased membrane fragility?",
+        "options": {
+            "A": "Glucose",
+            "B": "Cholesterol",
+            "C": "Ions (e.g., calcium)",
+            "D": "Amino acids",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Duchenne muscular dystrophy (DMD) is caused by mutation in the dystrophin gene, leading to fragile sarcolemma. Membrane instability allows excessive calcium influx, triggering muscle fiber necrosis and degeneration.",
+        "hint": ""
+    },
+    {
+        "id": "WYJDNGCX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old patient on antihyperlipidemic therapy complains of difficulty standing from a chair and walking.",
+        "options": {
+            "A": "Niacin",
+            "B": "Atorvastatin",
+            "C": "Fibrates",
+            "D": "Gemfibrozil",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Statins (Atorvastatin) -> risk of myopathy, myalgia, and rarely rhabdomyolysis. Fibrates cause myopathy too but less common when monotherapy.",
+        "hint": ""
+    },
+    {
+        "id": "KMW93GV9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with compound tibial fracture after road traffic accident requires analgesia",
+        "options": {
+            "A": "Ibuprofen",
+            "B": "Piroxicam",
+            "C": "Oxycodone",
+            "D": "Sertraline",
+            "E": "Acetaminophen"
+        },
+        "correctAnswer": "C",
+        "explanation": "Oxycodone, an opioid, is preferred for severe acute pain like compound fractures. NSAIDs or acetaminophen may be insufficient for severe trauma.",
+        "hint": ""
+    },
+    {
+        "id": "B4BPDMGQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old man presents with progressive weakness of the muscles of facial expression on the right lower half of his face. He also reports reduced sensation around the external ear, difficulty maintaining balance, and tinnitus on the same side. On examination, there is ipsilateral facial paralysis, loss of taste from the anterior two-thirds of the tongue, and positive Romberg's sign due to vestibular dysfunction. Where is the most likely site of the lesion?",
+        "options": {
+            "A": "Medulla",
+            "B": "Pons",
+            "C": "Midbrain",
+            "D": "Internal acoustic meatus",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Simultaneous involvement of CN VII (facial nerve) causing facial weakness + loss of taste, and CN VIII (vestibulocochlear nerve) causing balance issues and tinnitus, strongly indicates a lesion at the internal acoustic meatus, where both nerves travel together.",
+        "hint": ""
+    },
+    {
+        "id": "LFC68HYH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 57-year-old man has dysphagia and difficulty turning head right. Uvula deviates to the left. Damage is at:",
+        "options": {
+            "A": "Foramen cecum",
+            "B": "Foramen rotundum",
+            "C": "Foramen ovale",
+            "D": "Foramen spinosum",
+            "E": "Jugular foramen"
+        },
+        "correctAnswer": "E",
+        "explanation": "Jugular foramen transmits CN IX, X, XI. Damage -> Dysphagia (CN IX, X), Uvula deviation to opposite side (CN X), Weak SCM -> difficulty turning head (CN XI).",
+        "hint": ""
+    },
+    {
+        "id": "Q5RSEZBY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has posterior dislocation of hip and pain in thigh and leg.",
+        "options": {
+            "A": "Sciatic nerve",
+            "B": "Pudendal nerve",
+            "C": "Obturator nerve",
+            "D": "Tibial nerve",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Posterior hip dislocation can stretch or compress the sciatic nerve -> sensory deficits in posterior thigh and leg and motor deficits in leg muscles.",
+        "hint": ""
+    },
+    {
+        "id": "BGWGAA72",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has waddling gait with hip tilt when standing on the left leg.",
+        "options": {
+            "A": "Superior gluteal nerve",
+            "B": "Inferior gluteal nerve",
+            "C": "Sciatic nerve",
+            "D": "Femoral nerve",
+            "E": "Saphenous nerve"
+        },
+        "correctAnswer": "A",
+        "explanation": "Superior gluteal nerve injury -> paralysis of gluteus medius and minimus. Leads to Trendelenburg sign: contralateral hip drops -> waddling gait.",
+        "hint": ""
+    },
+    {
+        "id": "3KY5GAWR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After mastectomy, a patient cannot lift objects to a high shelf.",
+        "options": {
+            "A": "Long thoracic nerve",
+            "B": "Thoracodorsal nerve",
+            "C": "Phrenic nerve",
+            "D": "Axillary nerve",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Injury to long thoracic nerve -> paralysis of serratus anterior -> difficulty raising the arm above shoulder.",
+        "hint": ""
+    },
+    {
+        "id": "AYW6J6U3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During neuroanatomy dissection, a student is asked where the facial nucleus is located in the brainstem.",
+        "options": {
+            "A": "Superior colliculus",
+            "B": "Inferior colliculus",
+            "C": "Facial colliculus",
+            "D": "Olivary nucleus",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Facial nucleus is located in the facial colliculus on the dorsal aspect of the pons. Lesion here -> ipsilateral facial paralysis.",
+        "hint": ""
+    },
+    {
+        "id": "6U2AMZZX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning",
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient sustained injuries in RTA, and then presented with gait problem. On examination he was asked to stand on his left leg, while doing so his Right pelvis sinks. Which of the following is most probably damaged?",
+        "options": {
+            "A": "Left gluteus maximus",
+            "B": "Left gluteus medius",
+            "C": "Right glutuesmedius",
+            "D": "Right gluteus minimus",
+            "E": "Right gluteus maximus"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "S43HTXW4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning",
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 62-year-old woman presents with fluent but nonsensical speech following a stroke. She is unaware of her language deficit and is unable to follow verbal commands. Which of the following cortical regions is most likely involved?",
+        "options": {
+            "A": "Broca's area",
+            "B": "Wernicke's area",
+            "C": "Supplementary motor cortex",
+            "D": "Primary motor cortex",
+            "E": "Angular gyrus"
+        },
+        "correctAnswer": "B",
+        "explanation": "Wernicke aphasia - Sensory aphasia + fluent Non sense speech + area 22 + superior temporal gyrus.",
+        "hint": ""
+    },
+    {
+        "id": "3CTEVD4N",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops a defect in superior and inferior quadrant of left visual field with homonymous hemianopia with macular sparing.",
+        "options": {
+            "A": "Homonymous hemianopia with macular sparing",
+            "B": "Heteronymous hemianopia with macular sparing",
+            "C": "Optic chiasm intact",
+            "D": "Visual cortex intact",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Lesion in contralateral occipital cortex -> homonymous hemianopia. Macular sparing occurs due to dual blood supply from MCA and PCA.",
+        "hint": ""
+    },
+    {
+        "id": "RZFXPZNS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 26-year-old male develops diplopia and respiratory paralysis after eating canned fish.",
+        "options": {
+            "A": "Organophosphate poisoning",
+            "B": "Tetanus",
+            "C": "Botulinum toxin",
+            "D": "E. coli",
+            "E": "Guillain-Barre syndrome"
+        },
+        "correctAnswer": "C",
+        "explanation": "Food-borne botulism causes descending paralysis starting with cranial nerves -> diplopia -> respiratory failure.",
+        "hint": ""
+    },
+    {
+        "id": "Y4QFXMPU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most Common Location of Extradural Hematoma",
+        "options": {
+            "A": "Parietal lobe",
+            "B": "Temporal lobe",
+            "C": "All equal",
+            "D": "Occipital",
+            "E": "Frontal"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9NRZMSNZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman presents with facial wrinkles and muscle spasms. She is treated with a drug that decreases acetylcholine release at neuromuscular junctions. Which of the following is the most likely side effect of this treatment?",
+        "options": {
+            "A": "Bradycardia",
+            "B": "Urinary incontinence",
+            "C": "Sweating",
+            "D": "Dry mouth",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BRKUM366",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cancer patient develops tingling, numbness in feet, and knee pain. Which drug is responsible?",
+        "options": {
+            "A": "Vincristine",
+            "B": "Cyclophosphamide",
+            "C": "Methotrexate",
+            "D": "Etoposide",
+            "E": "Entacapone"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BGYWXXC4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the mechanism of action of bupivacaine?",
+        "options": {
+            "A": "Chloride channel blockade",
+            "B": "Sodium channel blockade",
+            "C": "Potassium channel blockade",
+            "D": "Calcium channel blockade",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9YXUU5KV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman presents with severe dysmenorrhea. During surgery, it is noted that pain from the uterus is transmitted along specific ligaments to the spinal cord. Which of the following structures primarily carries sensory (pain) fibers from the uterus?",
+        "options": {
+            "A": "Round ligament",
+            "B": "Broad ligament",
+            "C": "Suspensory ligament of the ovary",
+            "D": "Cardinal (transverse cervical) ligament",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T4X9Z6QX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman undergoes postpartum hemorrhage surgery where both internal iliac arteries are ligated to control bleeding. Despite this, the uterus continues to remain viable. Which vessel now provides the main collateral blood supply to the uterus?",
+        "options": {
+            "A": "Inferior epigastric artery",
+            "B": "Ovarian artery",
+            "C": "Femoral artery",
+            "D": "Middle sacral artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PVPHHY47",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A lady have difficult vaginal delivery there is hematoma formation at broad ligaments due to which artery?",
+        "options": {
+            "A": "Uterine artery",
+            "B": "Vaginal branch of uterine artery",
+            "C": "Ovarian artery",
+            "D": "Inferior rectal artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AJ78NERT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Uterine prolapse with vaginal vault prolapse. Which ligament injury?",
+        "options": {
+            "A": "Transverse cervical",
+            "B": "Uterosacral",
+            "C": "Broad ligament",
+            "D": "Round ligament",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3LUT7T96",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 16-year-old adolescent presents with primary amenorrhea and ambiguous genitalia. On examination, she has a microphallus with hypospadias and a vagina with a small uterus on imaging. Both ovarian and testicular tissue are detected on histology. Karyotype analysis reveals 46, XX/46, XY chimerism. What is the most likely diagnosis?",
+        "options": {
+            "A": "Complete androgen insensitivity syndrome",
+            "B": "Turner syndrome",
+            "C": "True hermaphrodite",
+            "D": "Mixed gonadal dysgenesis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SMKETWLX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 14-year-old girl is brought to the clinic for evaluation of short stature and delayed puberty. On examination, she has a webbed neck, wide-spaced nipples, and shield chest. Her height is below the 3rd percentile, and she has not yet developed secondary sexual characteristics. You suspect Turner syndrome. What is the most appropriate initial investigation to confirm the diagnosis?",
+        "options": {
+            "A": "Pelvic ultrasound",
+            "B": "Serum FSH and LH levels",
+            "C": "Karyotyping",
+            "D": "Transvaginal ultrasound",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X9XY8ACD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old woman with family history of breast cancer wants risk assessment.",
+        "options": {
+            "A": "BRCA1 and BRCA2 testing",
+            "B": "HER2 testing",
+            "C": "Mammography",
+            "D": "Ultrasound",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Genetic testing for BRCA1/2 mutations is indicated in patients with family history to assess lifetime risk.",
+        "hint": ""
+    },
+    {
+        "id": "DUPEFJPW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female with primary amenorrhea, secondary sexual characteristics, and streak ovaries is found to have which karyotype?",
+        "options": {
+            "A": "46XX",
+            "B": "46XY",
+            "C": "47XX",
+            "D": "45XO",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E9LJTUWA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is underlying pathology for phenotype of turner syndrome?",
+        "options": {
+            "A": "Monosomy of Y",
+            "B": "Monosomy of X",
+            "C": "Trisomy",
+            "D": "Isochromosome",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZJAY8SQL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 14-year-old girl presents to the emergency department with sudden, severe, intermittent right lower abdominal pain for 6 hours. She has a normal menstrual history, and no mass is palpated on abdominal examination. Ultrasound shows an edematous ovary with decreased venous blood flow. What is the most likely diagnosis?",
+        "options": {
+            "A": "Hemorrhagic ovarian cyst",
+            "B": "Ovarian torsion",
+            "C": "Acute appendicitis",
+            "D": "Pelvic inflammatory disease",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "H3D8U2MV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 14-year-old girl presents with primary amenorrhea, monthly cyclic lower abdominal pain, and increasing pelvic pressure for the last 6 months. On examination, a bluish bulging membrane is seen at the vaginal introitus. Urine pregnancy test is negative. What is the most likely diagnosis?",
+        "options": {
+            "A": "Transverse vaginal septum",
+            "B": "Imperforate hymen",
+            "C": "Mullerian agenesis",
+            "D": "Androgen insensitivity syndrome",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F8BWWEQJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 17 years old girl presented with amenorrhea. She said she never had her menstruation. On examination, she has well-developed breasts, axillary and pubic hair. She also said that she has cyclical pain which is worsening now, and she has a bluish membrane on per vaginal examination. Which of the following is your diagnosis?",
+        "options": {
+            "A": "Imperforate hymen",
+            "B": "Androgen insensitivity syndrome",
+            "C": "Rokitansky syndrome",
+            "D": "PCOS",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Mullerian obstruction / Imperforate Hymen -> Primary Amenorrhea + worsening abdominal pain. In MRKH there would be no cyclical pain or bluish membrane on the vagina.",
+        "hint": ""
+    },
+    {
+        "id": "VBERXQ63",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 17-year-old girl presented with amenorrhea, she said she never had her menstruation, on examination, she has well developed breast, axillary and pubic hair, she also said that she has cyclical pain which is worsening now, and she has bluish membrane on per vaginal examination, which of the following is your diagnosis?",
+        "options": {
+            "A": "Imperforate hymen",
+            "B": "Androgen insensitivity syndrome",
+            "C": "Rokitansky syndrome",
+            "D": "PCOS",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XNNSDMFB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 24-year-old woman presents with continuous vaginal bleeding 1 month after a spontaneous miscarriage. On examination, the uterus is enlarged, and pelvic ultrasound shows multiple cystic areas giving a snowstorm appearance. Serum beta-hCG levels are markedly elevated. What is the most likely diagnosis?",
+        "options": {
+            "A": "Retained products of conception",
+            "B": "Invasive mole",
+            "C": "Molar pregnancy",
+            "D": "Choriocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3UE4QKKE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old woman underwent uterine evacuation for a molar pregnancy 8 days ago. She now presents with persistent irregular vaginal spotting and a soft, vascular mass protruding through the cervix. Her beta-hCG is 5-fold higher than normal, chest X-ray is clear, and initial histopathology showed a complete mole. What is the likely diagnosis?",
+        "options": {
+            "A": "Invasive mole",
+            "B": "Retained products of conception",
+            "C": "Choriocarcinoma",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GFB5SXGM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 26-year-old with mild pelvic pain and positive pregnancy test is hemodynamically stable. TVS shows no intrauterine gestation. beta-hCG is 1350 mIU/mL. What is the next best management?",
+        "options": {
+            "A": "Immediate laparoscopy",
+            "B": "Methotrexate therapy",
+            "C": "Repeat beta-hCG in 48 hours",
+            "D": "Emergency salpingectomy",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VH4CXSGU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman undergoes normal spontaneous vaginal delivery of a 3.6 kg baby. 30 minutes after delivery of the placenta, she develops heavy vaginal bleeding, soaking two pads within minutes. On examination, her uterus feels soft, boggy, and enlarged. There is no vaginal laceration, placenta is complete, and vital signs show tachycardia and hypotension. What is the most important and most common cause of her postpartum hemorrhage?",
+        "options": {
+            "A": "Retained placental fragments",
+            "B": "Uterine atony",
+            "C": "Genital tract trauma",
+            "D": "Uterine inversion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XDP3KH5R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old primigravida undergoes a forceps-assisted vaginal delivery. On examination of the perineum, the external anal sphincter is torn, approximately 70% of the thickness is disrupted, but the internal anal sphincter is intact. What is the correct classification of this perineal tear?",
+        "options": {
+            "A": "3A",
+            "B": "3B",
+            "C": "3C",
+            "D": "4th degree",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2EWTCEC7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman delivers vaginally at a peripheral hospital. Immediately after delivery of the placenta, she develops severe lower abdominal pain, profuse vaginal bleeding, and shock. On examination, the uterus is not palpable in the abdomen, and a mass is felt in the vagina. What is the next best step in management?",
+        "options": {
+            "A": "Apply hydrostatic pressure to replace the uterus",
+            "B": "Proceed directly to hysterectomy",
+            "C": "Start IV fluids and attempt manual replacement of the uterus",
+            "D": "Administer uterotonics",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AXPVYC36",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman with first-trimester bleeding and severe nausea. Ultrasound shows diffuse echogenic mass with multiple anechoic spaces; no fetal parts. What finding confirms the diagnosis?",
+        "options": {
+            "A": "Absence of fetal cardiac activity",
+            "B": "Double decidual sac sign",
+            "C": "Snowstorm appearance",
+            "D": "Bagel sign",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BWTG7JUS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman, G1P0, presents with 6 weeks of amenorrhea, a positive urine pregnancy test, and right iliac fossa (RIF) tenderness for the past several hours. She denies any vaginal bleeding. On examination, she is hemodynamically stable but has localized RIF tenderness. Which is the most likely diagnosis?",
+        "options": {
+            "A": "Appendicitis",
+            "B": "Ectopic pregnancy",
+            "C": "Ovarian torsion",
+            "D": "Threatened miscarriage",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NCWSJFJW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old with a known bleeding disorder presents with missed miscarriage at 10 weeks. She is hemodynamically stable. Ultrasound shows intrauterine gestational sac without cardiac activity. What is the best management?",
+        "options": {
+            "A": "Expectant management",
+            "B": "Misoprostol",
+            "C": "Mifepristone + misoprostol",
+            "D": "Surgical uterine evacuation",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "In women with bleeding disorders, medical or expectant management carries a higher risk of heavy, uncontrolled bleeding. Surgical evacuation (MVA/D&C) is the safest and preferred option as it offers controlled, rapid uterine emptying.",
+        "hint": ""
+    },
+    {
+        "id": "N5CP69HR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old woman at 32 weeks presents with painless vaginal bleeding. Her vitals are stable and fetal movements are normal. On abdominal exam, uterus is soft and non-tender. You suspect placenta previa. Which is the MOST appropriate investigation to confirm the diagnosis?",
+        "options": {
+            "A": "Transabdominal ultrasound",
+            "B": "Transvaginal ultrasound (TVS)",
+            "C": "MRI pelvis",
+            "D": "CT abdomen",
+            "E": "Digital vaginal examination"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3HT5ECBH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old woman develops sudden SOB, one hour after prolonged labour at term, what is most likely cause?",
+        "options": {
+            "A": "Gas Embolism",
+            "B": "Amniotic fluid embolism",
+            "C": "Fat embolism",
+            "D": "Air embolism",
+            "E": "Thromboembolism"
+        },
+        "correctAnswer": "B",
+        "explanation": "Sudden death - Thromboembolism. Death after 3.5 days - Fat embolism. Pregnant lady died during labour - Amniotic fluid embolism.",
+        "hint": ""
+    },
+    {
+        "id": "D8QCPXYG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old woman presents with hypomenorrhea, along with headache and nausea. What is the most appropriate initial assessment?",
+        "options": {
+            "A": "Serum prolactin level",
+            "B": "Thyroid profile",
+            "C": "Pregnancy test",
+            "D": "Pelvic ultrasound",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "In any woman of reproductive age presenting with menstrual changes (hypomenorrhea) plus systemic symptoms like headache and nausea, the first and most appropriate initial assessment is a urine or serum pregnancy test, to rule out early pregnancy or pregnancy-related complications.",
+        "hint": ""
+    },
+    {
+        "id": "P5CF67DF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old married woman with no symptoms visits for routine screening. She has never had a Pap smear before. Her pelvic exam is normal. What is the purpose of Pap smear screening?",
+        "options": {
+            "A": "Detect endometrial carcinoma",
+            "B": "Diagnose pelvic infections",
+            "C": "Screen for cervical intraepithelial neoplasia and cervical cancer",
+            "D": "Diagnose ovarian cancer",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X8YKXJHV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old presented with secondary subfertility. She had a history of puerperal sepsis following a vaginal delivery 2 years ago. Her hormonal profile is normal, physical exam is normal, and TVS is unremarkable. What is the most likely cause of her infertility?",
+        "options": {
+            "A": "Endometriosis",
+            "B": "PID",
+            "C": "Blocked fallopian tubes",
+            "D": "Hypogonadotrophic hypogonadism",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Puerperal sepsis is a major risk factor for tubal damage due to ascending infection, leading to tubal blockage or adhesions. Normal hormonal profile, normal physical exam, and a normal TVS rule out endocrine causes and ovarian pathology. Tubal factor infertility is the most likely cause here.",
+        "hint": ""
+    },
+    {
+        "id": "C48RV42R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old woman presents for a routine gynecologic ultrasound. She is asymptomatic and has regular menstrual cycles. Ultrasound shows a small intramural fibroid measuring 2x3 cm. No abnormal bleeding or pressure symptoms are reported. Which of the following does NOT require further investigation?",
+        "options": {
+            "A": "fibroid",
+            "B": "Endometrial polyp",
+            "C": "Thickened endometrium",
+            "D": "Ovarian complex cyst",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SP9XPZVS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old woman presents with secondary infertility for 2 years. She has a history of postpartum infection after vaginal delivery. Her hormonal profile is normal. Transvaginal ultrasound is unremarkable. Which investigation is most appropriate to assess fallopian tube patency?",
+        "options": {
+            "A": "Hysterosalpingography (HSG)",
+            "B": "Hysteroscopy",
+            "C": "Laparoscopy",
+            "D": "Saline infusion sonography",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M6HKHX42",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 33-year-old with hot flashes, night sweats, and secondary amenorrhea for 4 months. beta-hCG negative. FSH and LH elevated, estradiol low. TSH and prolactin normal. Which hormone deficiency is responsible for her symptoms?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "Cortisol",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PYSSG33S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36-week primigravida is found to have breech presentation and requests normal delivery.",
+        "options": {
+            "A": "Elective C-section",
+            "B": "External Cephalic Version",
+            "C": "Induce labor",
+            "D": "Wait for spontaneous version only",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BTTZFA87",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36-week primigravida presents with rupture of membranes 6 hours ago. She is afebrile, fetal heart rate is normal, and there is no vaginal bleeding. What is the most appropriate next step?",
+        "options": {
+            "A": "Immediate induction of labor",
+            "B": "Start antibiotics only",
+            "C": "Administer antenatal corticosteroids and monitor",
+            "D": "Elective cesarean section",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7ZKX43HA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 42-year-old woman with high-risk HPV infection undergoes colposcopy and LEEP for CIN 2. What is the recommended follow-up?",
+        "options": {
+            "A": "Repeat colposcopy within 6 months",
+            "B": "Repeat HPV testing in 6 months",
+            "C": "Repeat colposcopy within 12 months",
+            "D": "Repeat HPV testing in 12 months",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NS74NE3K",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 52-year-old woman has not had menstrual periods for 12 months. She reports hot flushes and night sweats, and her ovaries appear atrophic on ultrasound. Which definition best describes menopause?",
+        "options": {
+            "A": "12 months of amenorrhea with tropic ovaries",
+            "B": "12 months of amenorrhea with hot flushes",
+            "C": "12 months of amenorrhea regardless of history",
+            "D": "6 months of amenorrhea",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QWAHMWQV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58-year-old postmenopausal woman is diagnosed with endometrial atypical hyperplasia. She refuses hysterectomy and is started on a levonorgestrel intrauterine system (LNG-IUS). According to follow-up protocol, when should she be re-evaluated for response to therapy?",
+        "options": {
+            "A": "After 1 month",
+            "B": "After 3 months",
+            "C": "After 9 months",
+            "D": "After 12 months",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "J4D5YK3Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 65-year-old woman presents with postmenopausal bleeding. What is the first-line investigation?",
+        "options": {
+            "A": "Endometrial biopsy",
+            "B": "Abdominal ultrasound",
+            "C": "Transvaginal ultrasound (TVS)",
+            "D": "Hysterosalpingography",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PEFGMRAQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A Rh-negative mother shows 5 mL fetomaternal hemorrhage on Kleihauer test. Required dose?",
+        "options": {
+            "A": "100 IU",
+            "B": "250 IU",
+            "C": "500 IU",
+            "D": "1500 IU",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VHGAYXF3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman experiences recurrent second-trimester pregnancy losses. What is the most common cause?",
+        "options": {
+            "A": "Chromosomal abnormalities",
+            "B": "Cervical incompetence",
+            "C": "Uterine malformations",
+            "D": "Maternal infections",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CVPTUH34",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman in labor is planned for assisted vaginal delivery. The fetal head is in the occipito-anterior (OA) presentation. Which instrument is most appropriate?",
+        "options": {
+            "A": "Ventouse",
+            "B": "Kielland forceps",
+            "C": "Outlet forceps",
+            "D": "Piper forceps",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Occipito-anterior is the ideal position for forceps-assisted delivery. Kielland -> rotational; Piper -> after-coming head of breech; Ventouse also possible but forceps preferred for OA when good application is possible.",
+        "hint": ""
+    },
+    {
+        "id": "KLTYZRLA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman presents with vaginal bleeding 10 days postpartum. She was stable after normal delivery. When does secondary PPH usually occur?",
+        "options": {
+            "A": "1-3 days",
+            "B": "5-7 days",
+            "C": "12-14 days",
+            "D": "14-18 days",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "788AJ86G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Vaginal discharge with fever 1-3 weeks postpartum. Initial investigation:",
+        "options": {
+            "A": "CBC",
+            "B": "Blood culture",
+            "C": "Vaginal swab for culture",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Postpartum fever with discharge suggests endometritis. Vaginal swab and culture help guide antibiotic therapy.",
+        "hint": ""
+    },
+    {
+        "id": "PVDLCZVE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman presents with 2 years of primary infertility. Intermittent pelvic pain and menstrual cycles are regular. She has no history of PID or prior surgery. Endometrial biopsy shows granulomatous inflammation consistent with tuberculosis. Which part of the female genital tract is MOST commonly involved in genital TB?",
+        "options": {
+            "A": "Cervix",
+            "B": "Uterus",
+            "C": "Fallopian tubes",
+            "D": "Ovary",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Genital tuberculosis most commonly spreads hematogenously and primarily affects the fallopian tubes (~90%), leading to tubal obstruction, infertility, and pelvic pain.",
+        "hint": ""
+    },
+    {
+        "id": "9BS4RKYT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A women develops a rectovaginal fistula after prolonged labour which organism is most commonly isolated?",
+        "options": {
+            "A": "Candida",
+            "B": "Pseudomonas aeruginosa",
+            "C": "Staphylococcus aureus",
+            "D": "E. coli",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GFU5FHCS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36-year-old woman has a 3.5 cm cervical tumor on MRI. She undergoes CT abdomen/pelvis which shows no distant metastasis, but one pelvic lymph node is positive. What is the FIGO stage?",
+        "options": {
+            "A": "IB1",
+            "B": "IIB",
+            "C": "IIIC1",
+            "D": "IVA",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TZHMHTV9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 38-year-old woman has a 3 cm cervical tumor with involvement of the upper 1/3 vagina, no parametrial invasion. What is the FIGO stage?",
+        "options": {
+            "A": "IB1",
+            "B": "IIA1",
+            "C": "IIIB",
+            "D": "IVB",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VAQ35N3Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 42-year-old woman presents with post-coital bleeding. Speculum exam reveals a visible exophytic cervical lesion. Biopsy shows squamous cell carcinoma. MRI pelvis reports a well-defined tumor measuring 3.2 cm, confined to the cervix. No parametrial invasion. No pelvic wall involvement. What is the FIGO stage?",
+        "options": {
+            "A": "Stage IA2",
+            "B": "Stage IB1",
+            "C": "Stage IB2",
+            "D": "Stage IIA",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8AGQX4JQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman has a tumor size of 3.2 cm, but clinical exam suggests parametrial induration. MRI confirms early parametrial involvement. What is the stage?",
+        "options": {
+            "A": "IB1",
+            "B": "IIB",
+            "C": "IB2",
+            "D": "IIIA",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5WANQB22",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old had emergency hysterectomy for uterine rupture after obstructed labor. Histology shows preserved cell outlines, anuclear eosinophilic cells (ghost cells). What type of necrosis is present?",
+        "options": {
+            "A": "Liquefactive necrosis",
+            "B": "Fat necrosis",
+            "C": "Fibrinoid necrosis",
+            "D": "Coagulative necrosis",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Ischemia from obstructed labor leads to coagulative necrosis showing preserved architecture and eosinophilic anuclear \"ghost\" cells.",
+        "hint": ""
+    },
+    {
+        "id": "LMMUNLGY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old woman presents with adnexal mass. Labs: CA125 elevated. Most likely ovarian tumor type?",
+        "options": {
+            "A": "Dysgerminoma",
+            "B": "Epithelial ovarian carcinoma",
+            "C": "Yolk sac tumor",
+            "D": "Granulosa cell tumor",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "42MYGUU5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 40-year-old woman presents with heavy menstrual bleeding and pelvic pressure. Pelvic ultrasound shows a well-circumscribed hypoechoic mass arising from the uterine myometrium. What is the most common benign tumor of the uterus?",
+        "options": {
+            "A": "Endometrial polyp",
+            "B": "Leiomyoma",
+            "C": "Adenomyosis",
+            "D": "Fibrosarcoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NYTFTQ59",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman presents with gradually increasing lower abdominal fullness and discomfort. Ultrasound reveals a unilocular cystic ovarian mass with thin walls and clear serous fluid. There are no solid components or papillary projections. Tumor markers are normal. What is the most likely diagnosis?",
+        "options": {
+            "A": "Mucinous cystadenoma",
+            "B": "Serous cystadenoma",
+            "C": "Endometrioma",
+            "D": "Dermoid cyst (mature cystic teratoma)",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L4WF7K6D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is diagnosed with a complete molar pregnancy. What is the most likely chromosomal composition?",
+        "options": {
+            "A": "46XX",
+            "B": "46XY",
+            "C": "69XXY",
+            "D": "69XXX",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UY9S42L2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Parents took their child with per vaginal bleeding at age of 7 years. There is pelvic mass on examination. And tumour was diagnosed which cause precocious puberty,",
+        "options": {
+            "A": "Granulosa cell tumour",
+            "B": "Sertoli cell tumour",
+            "C": "Leydig cell tumour",
+            "D": "Dysgerminoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6LRTC9LQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The genotype of complete mole is",
+        "options": {
+            "A": "Triploid",
+            "B": "Diploid",
+            "C": "Haploid",
+            "D": "Tetraploid",
+            "E": "Mosaicism"
+        },
+        "correctAnswer": "B",
+        "explanation": "Complete mole = Diploid. Incomplete/partial mole = Triploid.",
+        "hint": ""
+    },
+    {
+        "id": "LBJJKH4R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old woman with generalized tonic-clonic seizures is diagnosed with eclampsia. What is the appropriate loading dose of magnesium sulfate?",
+        "options": {
+            "A": "2 g IV only",
+            "B": "4 g IV + 5 g IM each buttock",
+            "C": "10 g IV bolus",
+            "D": "4 g IV + 10 g IM one side",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RAAE9285",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 38-week primigravida requires cervical ripening for induction of labor. Which prostaglandin is primarily used to stimulate uterine contractions and cervical softening?",
+        "options": {
+            "A": "PGE1",
+            "B": "PGE2",
+            "C": "PGD2",
+            "D": "PGF2alpha",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QFFJ7CS7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pregnant woman with eclampsia is to be given magnesium sulfate. What is the standard IV loading dose?",
+        "options": {
+            "A": "4 g IV",
+            "B": "2 g IV",
+            "C": "0.7 g IV",
+            "D": "1 g IV",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M8VDHY22",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 10-year-old girl comes for routine checkup. Her mother notices breast budding in the past few months. Height and weight are normal. What is usually the first sign of female puberty?",
+        "options": {
+            "A": "Growth spurt",
+            "B": "Menstruation",
+            "C": "Breast development (Thelarche)",
+            "D": "Axillary hair",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VGG488VX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 23-year-old woman presents for evaluation of her menstrual cycle. During the follicular phase of her cycle, which organ is the primary source of circulating estrogen?",
+        "options": {
+            "A": "Adrenal glands",
+            "B": "Placenta",
+            "C": "Ovary",
+            "D": "Hypothalamus",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "During the follicular phase of the menstrual cycle, ovarian granulosa cells of developing follicles produce estradiol, the most potent estrogen. Estrogen is responsible for endometrial proliferation, cervical mucus changes, and regulation of FSH/LH secretion.",
+        "hint": ""
+    },
+    {
+        "id": "WJU68UTC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old woman presents for a routine checkup. Her menstrual cycles occur every 28 days, lasting 4-5 days, with moderate flow and no dysmenorrhea. She has no history of hormonal disorders or medications affecting the cycle. What term best describes her menstrual pattern?",
+        "options": {
+            "A": "Oligomenorrhea",
+            "B": "Polymenorrhea",
+            "C": "Eumenorrhea",
+            "D": "Amenorrhea",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E7QPJUDQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman is undergoing hormonal studies. On mid-luteal phase, a pre-ovulatory LH surge is observed. Which hormone primarily triggers this LH surge?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "GnRH",
+            "D": "FSH",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LN3EZE68",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman tracks her menstrual cycle. Ovulation typically occurs after the mid-cycle LH surge. How long after the LH surge does ovulation usually occur?",
+        "options": {
+            "A": "12 hours",
+            "B": "24-36 hours",
+            "C": "48-72 hours",
+            "D": "5-7 days",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4FAXPAM3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old pregnant woman at 12 weeks gestation is undergoing routine prenatal testing. Which organ is the primary source of circulating estrogen during pregnancy?",
+        "options": {
+            "A": "Corpus luteum",
+            "B": "Ovary",
+            "C": "Placenta",
+            "D": "Adrenal glands",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZVEXDRAN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A lactating woman develops amenorrhea due to breastfeeding.",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "Prolactin",
+            "D": "Oxytocin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Prolactin inhibits GnRH release from hypothalamus -> decreased FSH/LH -> lactational amenorrhea.",
+        "hint": ""
+    },
+    {
+        "id": "N4QM4K69",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 17-year-old girl presents with cyclical lower abdominal pain every month but no menstrual bleeding. On examination, blood appears to be collecting behind the cervix, and imaging shows a longitudinal vaginal septum causing obstruction of blood flow. What is the most appropriate treatment?",
+        "options": {
+            "A": "Hymenotomy",
+            "B": "Dilatation and curettage",
+            "C": "Septoplasty (resection of vaginal septum)",
+            "D": "Laparotomy",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HBZ8N8UU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old woman with a family history of ovarian cancer is concerned about her personal risk. She is otherwise healthy and wishes to reduce her risk of developing ovarian cancer. Which surgical option is most appropriate?",
+        "options": {
+            "A": "Hysterectomy",
+            "B": "Hysterectomy with salpingo-oophorectomy",
+            "C": "Bilateral oophorectomy",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TXPABNM9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 18-year-old unmarried girl presents with cyclical lower abdominal pain for 2 years, no menarche, and on exam a bulging, bluish hymen. Uterus is slightly enlarged. What is the most appropriate management?",
+        "options": {
+            "A": "Resection of transverse vaginal septum",
+            "B": "Hymenotomy / hymenectomy",
+            "C": "Hysterectomy",
+            "D": "Observation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GNZQWQKB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Histology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Biopsy of the anterior two-thirds of the vocal cords shows stratified epithelium. Which type?",
+        "options": {
+            "A": "Stratified squamous non-keratinized",
+            "B": "Non-stratified cuboidal epithelium",
+            "C": "Stratified squamous keratinized",
+            "D": "Simple squamous epithelium",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Anterior 2/3 of vocal cords is covered by non-keratinized stratified squamous epithelium, suitable for vibration.",
+        "hint": ""
+    },
+    {
+        "id": "VCHGD3J9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient involved in an RTA has dull percussion on the right chest. What is the likely diagnosis?",
+        "options": {
+            "A": "Hemothorax",
+            "B": "Tension pneumothorax",
+            "C": "Open pneumothorax",
+            "D": "Pleural effusion",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Hemothorax produces dull percussion due to accumulation of blood in the pleural space. Pneumothorax usually produces hyperresonance.",
+        "hint": ""
+    },
+    {
+        "id": "X7EE5CRF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents after long-bone fracture with respiratory distress, petechial rash, and altered mental status. Most likely diagnosis?",
+        "options": {
+            "A": "Pulmonary embolism",
+            "B": "Fat embolism syndrome",
+            "C": "DVT",
+            "D": "Septic emboli",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YWDGXDLC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A resident travels from Karachi to an altitude of 15,000 ft and develops sudden shortness of breath. The most likely cause is:",
+        "options": {
+            "A": "Pulmonary edema",
+            "B": "Alveolar rupture",
+            "C": "Increased mucus secretion",
+            "D": "Thickened alveolar walls",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Acute high-altitude exposure can cause high-altitude pulmonary edema (HAPE), due to hypoxia-induced pulmonary vasoconstriction and increased capillary permeability. It is the most common cause of acute shortness of breath at high altitudes.",
+        "hint": ""
+    },
+    {
+        "id": "XF6SSKYR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pleural biopsy from a patient with chronic chest pain shows aggregates of cells with abundant pale-pink cytoplasm, arranged in a nodule with surrounding lymphocytes. Which of the following cells are most likely predominant in this lesion?",
+        "options": {
+            "A": "Activated macrophages",
+            "B": "Neutrophils",
+            "C": "Plasma cells",
+            "D": "Fibroblasts",
+            "E": "Endothelial cells"
+        },
+        "correctAnswer": "A",
+        "explanation": "Activated macrophages -> hallmark of granulomatous inflammation (epithelioid cells).",
+        "hint": ""
+    },
+    {
+        "id": "VNAUWAKZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Chronic smoker develops complete left lung atelectasis. Most likely pathology?",
+        "options": {
+            "A": "Partial obstruction of airway",
+            "B": "Infection",
+            "C": "TB",
+            "D": "Complete obstruction of airway",
+            "E": "Chronic smoking"
+        },
+        "correctAnswer": "D",
+        "explanation": "Complete atelectasis -> complete obstruction of main bronchus by tumor or foreign body. Chronic smoker -> risk for bronchogenic carcinoma causing obstruction.",
+        "hint": ""
+    },
+    {
+        "id": "A2A3GNLX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pleural plaques on X-ray in a construction worker",
+        "options": {
+            "A": "Asbestos",
+            "B": "TB",
+            "C": "Sarcoidosis",
+            "D": "Silicosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Asbestos exposure -> classic pleural plaques on chest X-ray. Long latency period; may cause restrictive lung disease or mesothelioma.",
+        "hint": ""
+    },
+    {
+        "id": "6JYJDDE2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patients have dry cough aggravated at night. Which drug will be given?",
+        "options": {
+            "A": "Dextromethorphan",
+            "B": "Codeine",
+            "C": "Salbutamol",
+            "D": "Ipratropium",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Non-productive cough -> antitussive (dextromethorphan). Codeine is also antitussive but used less frequently due to sedation/abuse potential.",
+        "hint": ""
+    },
+    {
+        "id": "3BB58VGB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After RTA, patient has paradoxical chest movements. Diagnosis?",
+        "options": {
+            "A": "Flail chest",
+            "B": "Pneumothorax",
+            "C": "Hemothorax",
+            "D": "Cardiac tamponade",
+            "E": "Rib fracture"
+        },
+        "correctAnswer": "A",
+        "explanation": "Paradoxical movement = segment of chest wall moves inward on inspiration, outward on expiration -> flail chest (usually 2+ ribs fractured in 2 places).",
+        "hint": ""
+    },
+    {
+        "id": "JRN6PXAX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn has persistent hyaloid artery remnant in the eye. What is the cause?",
+        "options": {
+            "A": "Failure of eyelid fusion",
+            "B": "Failure of vessel degeneration",
+            "C": "Excess neural crest migration",
+            "D": "Vitreous overgrowth",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "57SVDZ27",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "Renal pelvis and calyces develop from:",
+        "options": {
+            "A": "Mesonephric (Wolffian) duct",
+            "B": "Metanephros",
+            "C": "Mesonephros",
+            "D": "Pronephros",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Metanephros -> definitive kidney -> gives rise to renal pelvis, calyces, collecting ducts. Ureteric bud (from mesonephric duct) induces metanephric blastema.",
+        "hint": ""
+    },
+    {
+        "id": "SG6FHGHM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Urinary System",
+        "topic": "Micturition & Urinary Incontinence",
+        "difficulty": "Medium",
+        "question": "A 45-year-old woman complains of urinary leakage when coughing, sneezing and frequent urination. Pelvic examination is normal. Which investigation is most appropriate to evaluate her condition?",
+        "options": {
+            "A": "Intravenous urography (IVU)",
+            "B": "Cystoscopy",
+            "C": "Cystometry / urodynamic study",
+            "D": "Urine culture",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7KRETGY4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Urinary System",
+        "topic": "Benign Prostatic Hyperplasia",
+        "difficulty": "Medium",
+        "question": "Elderly Patient With Recurrent UTIs - Most Likely Cause",
+        "options": {
+            "A": "Immunodeficiency",
+            "B": "Renal stone",
+            "C": "Prostate malignancy",
+            "D": "Obstruction due to BPH",
+            "E": "Ageing"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BF334NVH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Urinary System",
+        "topic": "Urinary Tract Infection",
+        "difficulty": "Easy",
+        "question": "A female have UTI but having no fever, on culture there were gram negative rods with swarming feature what is responsible",
+        "options": {
+            "A": "E. coli",
+            "B": "Pseudomonas",
+            "C": "Proteus",
+            "D": "Saprophyticus",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    }
+]

@@ -60,6 +60,44 @@ const availableBooks = allBooks.filter(book => {
 });
 
 // ==========================================
+// UTILITY FUNCTIONS (Sanitization & Parsers)
+// ==========================================
+function sanitizeFilename(name) {
+    if (!name) return "unknown";
+    return String(name)
+        .toLowerCase()
+        .trim()
+        .replace(/[\\/*?:"<>|\s]+/g, '_')
+        .replace(/^_+|_+$/g, '');
+}
+
+function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
+    const parts = String(examStr).split("-").map(p => p.trim());
+    let examYear = fallbackYear;
+    let examSpec = fallbackSpec;
+    
+    if (parts.length >= 2) {
+        const prefix = parts[0].toLowerCase();
+        if (prefix.includes("surgery")) examSpec = "Surgery & Allied";
+        else if (prefix.includes("medicine")) examSpec = "Medicine & Allied";
+        else if (prefix.includes("gynecology") || prefix.includes("gyn")) examSpec = "Gynecology & Obstetrics";
+        else if (prefix.includes("anesthesia")) examSpec = "Anesthesia";
+        else if (prefix.includes("radiology")) examSpec = "Radiology";
+        else if (prefix.includes("pathology")) examSpec = "Pathology";
+        else examSpec = parts[0];
+
+        const datePart = parts[1];
+        if (datePart && datePart.includes("/")) {
+            const yy = datePart.split("/").pop().trim();
+            if (yy.length === 2) examYear = "20" + yy;
+            else if (yy.length === 4) examYear = yy;
+        }
+    }
+    return { examYear, examSpec };
+}
+
+
+// ==========================================
 // 2. DOM ELEMENTS
 // ==========================================
 const subjectsGrid = document.getElementById('subjects-grid');
@@ -518,7 +556,7 @@ async function loadAndOpenBook(book) {
 }
 
 // ==========================================
-// DYNAMIC CHUNK FETCHER
+// DYNAMIC CHUNK FETCHER (Updated with Deduplication)
 // ==========================================
 window.activeChunksCache = {};
 
@@ -528,25 +566,50 @@ async function fetchRequiredChunks(view, pathsArray) {
     pathsArray.forEach(pathArr => {
         if (pathArr.length === 0 || pathArr[0] === "Books" || pathArr[0] === "Practice Mistakes" || pathArr[0] === "Exam Mistakes") return; 
         
-        if (view === 'subject' && pathArr.length >= 2) {
-            const s = pathArr[0].toLowerCase().replace(/ /g, '_');
-            const c = pathArr[1].toLowerCase().replace(/ /g, '_');
-            urls.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+        if (view === 'subject') {
+            let current = subjectTree;
+            for (let p of pathArr) { if (current[p]) current = current[p]; else return; }
+            const traverseSubj = (obj, pth) => {
+                if (pth.length >= 2) {
+                    urls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(pth[0])}_${sanitizeFilename(pth[1])}.json`);
+                    return;
+                }
+                if (typeof obj === 'number') return;
+                for (let k in obj) traverseSubj(obj[k], [...pth, k]);
+            };
+            traverseSubj(current, pathArr);
         } 
-        else if (view === 'system' && pathArr.length >= 2) {
-            const c = pathArr[0].toLowerCase().replace(/ /g, '_');
-            const s = pathArr[1].toLowerCase().replace(/ /g, '_');
-            urls.add(`Data/${activeCourse}/systems/${c}_${s}.json`);
+        else if (view === 'system') {
+            let current = systemTree;
+            for (let p of pathArr) { if (current[p]) current = current[p]; else return; }
+            const traverseSys = (obj, pth) => {
+                if (pth.length >= 2) {
+                    urls.add(`Data/${activeCourse}/systems/${sanitizeFilename(pth[0])}_${sanitizeFilename(pth[1])}.json`);
+                    return;
+                }
+                if (typeof obj === 'number') return;
+                for (let k in obj) traverseSys(obj[k], [...pth, k]);
+            };
+            traverseSys(current, pathArr);
         } 
-        else if (view === 'exam' && pathArr.length >= 2) {
-            const y = pathArr[0];
-            const spec = pathArr[1].toLowerCase().replace(/ /g, '_');
-            urls.add(`Data/${activeCourse}/exams/${y}_${spec}.json`);
+        else if (view === 'exam') {
+            let current = examTree;
+            for (let p of pathArr) { if (current[p]) current = current[p]; else return; }
+            const traverseEx = (obj, pth) => {
+                if (pth.length >= 3) {
+                    urls.add(`Data/${activeCourse}/exams/${sanitizeFilename(pth[0])}_${sanitizeFilename(pth[1])}_${sanitizeFilename(pth[2])}.json`);
+                    return;
+                }
+                if (typeof obj === 'number') return;
+                for (let k in obj) traverseEx(obj[k], [...pth, k]);
+            };
+            traverseEx(current, pathArr);
         }
     });
 
     document.body.style.cursor = 'wait';
     const fetchedQs = [];
+    const seenIds = new Set();
     
     for (let url of urls) {
         if (!window.activeChunksCache[url]) {
@@ -558,7 +621,14 @@ async function fetchRequiredChunks(view, pathsArray) {
                 window.activeChunksCache[url] = [];
             }
         }
-        fetchedQs.push(...window.activeChunksCache[url]);
+        
+        window.activeChunksCache[url].forEach(q => {
+            const qId = String(q.id || q.QuestionID);
+            if (!seenIds.has(qId)) {
+                seenIds.add(qId);
+                fetchedQs.push(q);
+            }
+        });
     }
     
     document.body.style.cursor = 'default';
@@ -644,7 +714,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         let keys = Object.keys(dataObj);
         
 if (currentView === 'exam' && level === 'Level1') {
-    const parseExamDetails = (str) => {
+    const parseSortDetails = (str) => {
         const parts = str.split('-').map(p => p.trim());
         const subject = (parts[0] || str).toLowerCase();
         
@@ -697,8 +767,8 @@ if (currentView === 'exam' && level === 'Level1') {
     };
 
     keys.sort((a, b) => {
-        const itemA = parseExamDetails(a);
-        const itemB = parseExamDetails(b);
+        const itemA = parseSortDetails(a);
+        const itemB = parseSortDetails(b);
 
         if (itemA.subject !== itemB.subject) {
             return itemA.subject.localeCompare(itemB.subject);
@@ -1126,8 +1196,8 @@ async function hydrateQuestions(metadataPool) {
     const chunksToLoad = new Set();
 
     needsHydration.forEach(q => {
-        const s = (q.Subject || q.subject || 'Uncategorized').toLowerCase().replace(/ /g, '_');
-        const c = (q.Chapter || q.chapter || 'General').toLowerCase().replace(/ /g, '_');
+        const s = sanitizeFilename(q.Subject || q.subject || 'Uncategorized');
+        const c = sanitizeFilename(q.Chapter || q.chapter || 'General');
         chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
     });
 
@@ -1593,12 +1663,38 @@ function getQuestionCount(view, pathArr, customPool = null) {
                 if (paths[1] && q.Subject !== paths[1]) return false;
                 if (paths[2] && q.Topic !== paths[2]) return false;
             } else if (view === 'exam') {
-                let qYears = Array.isArray(q.Year) ? q.Year.map(y => String(y).trim()) : (typeof q.Year === 'string' ? q.Year.split(',').map(y => y.trim()) : (q.Year ? [String(q.Year).trim()] : ["Other Years"]));
-                if (paths[0] && !qYears.includes(paths[0])) return false;
-                let qExams = Array.isArray(q.Exam) ? q.Exam : (q.Exam ? [q.Exam] : []);
-                if (paths[1] && !qExams.includes(paths[1])) return false;
-                if (paths[2] && q.Subject !== paths[2]) return false;
-                if (paths[3] && q.Topic !== paths[3]) return false;
+                const toArray = (val) => Array.isArray(val) ? val.map(v => String(v).trim()) : (typeof val === 'string' ? val.split(',').map(v => v.trim()) : (val ? [String(val).trim()] : []));
+                
+                let qYears = toArray(q.year || q.Year);
+                let qSpecs = toArray(q.specialty || q.Specialty);
+                let qExams = toArray(q.exams || q.Exam);
+
+                let matchFound = false;
+                const maxLen = Math.max(qYears.length, qSpecs.length, qExams.length);
+                
+                if (maxLen === 0) {
+                    if (paths[0] && paths[0] !== "Unknown Year") return false;
+                }
+                
+                for (let i = 0; i < maxLen; i++) {
+                    const fbYear = qYears[i] !== undefined ? qYears[i] : (qYears[qYears.length - 1] || "Unknown Year");
+                    const fbSpec = qSpecs[i] !== undefined ? qSpecs[i] : (qSpecs[qSpecs.length - 1] || "Unknown Specialty");
+                    const rawExam = qExams[i] !== undefined ? qExams[i] : (qExams[qExams.length - 1] || "Unknown Exam");
+                    
+                    const parsed = parseExamInfo(rawExam, fbYear, fbSpec);
+                    
+                    let currentMatch = true;
+                    if (paths[0] && parsed.examYear !== paths[0]) currentMatch = false;
+                    if (paths[1] && parsed.examSpec !== paths[1]) currentMatch = false;
+                    if (paths[2] && rawExam !== paths[2]) currentMatch = false;
+                    
+                    if (currentMatch) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+                if (!matchFound) return false;
+
             } else if (view === 'book') {
                 if (!q.isBookQuestion) return false;
                 if (paths[0] && q.Chapter !== paths[0]) return false;
@@ -2793,11 +2889,16 @@ btnPushEdits.onclick = async () => {
                 const topic = getVal(['topic']);
                 const year = getVal(['year']);
                 const rawExams = getVal(['exams', 'exam']);
+                const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
+
+                const yearsList = year ? year.split(',').map(e => e.trim()).filter(e => e) : [];
                 const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+                const specialtyList = rawSpecs ? rawSpecs.split(',').map(e => e.trim()).filter(e => e) : [];
 
                 let qObj = {
                     id: qId,
-                    year: year,
+                    year: yearsList,
+                    specialty: specialtyList,
                     exams: examsList,
                     subject: subject,
                     chapter: chapter,
@@ -2837,16 +2938,18 @@ btnPushEdits.onclick = async () => {
                         if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
                     }
                 }
-                if (year) {
-                    if (!exTree[year]) exTree[year] = {};
-                    examsList.forEach(ex => {
-                        if (!exTree[year][ex]) exTree[year][ex] = {};
-                        if (subject) {
-                            if (!exTree[year][ex][subject]) exTree[year][ex][subject] = {};
-                            if (topic) exTree[year][ex][subject][topic] = (exTree[year][ex][subject][topic] || 0) + 1;
-                        }
-                    });
-                }
+
+                examsList.forEach((ex, i) => {
+                    const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
+                    const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
+                    
+                    const { examYear, examSpec } = parseExamInfo(ex, fbYear, fbSpec);
+                    
+                    if (!exTree[examYear]) exTree[examYear] = {};
+                    if (!exTree[examYear][examSpec]) exTree[examYear][examSpec] = {};
+                    if (!exTree[examYear][examSpec][ex]) exTree[examYear][examSpec][ex] = 0;
+                    exTree[examYear][examSpec][ex]++;
+                });
             });
 
             const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
@@ -2933,7 +3036,6 @@ btnPushEdits.onclick = async () => {
                     accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
                 };
 
-                // FIX: Load the data ONLY AFTER stats and attemptedQuestions are populated
                 await loadDataAndBuildTree();
                 restoreLastState();
                 if (typeof updateDashboardUI === 'function') updateDashboardUI();
@@ -3107,13 +3209,15 @@ btnPushEdits.onclick = async () => {
                         if (!isBook) {
                             document.body.style.cursor = 'wait';
                             const allUrls = new Set();
+                            
                             Object.keys(subjectTree).forEach(s => {
                                 Object.keys(subjectTree[s]).forEach(c => {
-                                    const sClean = s.toLowerCase().replace(/ /g, '_');
-                                    const cClean = c.toLowerCase().replace(/ /g, '_');
-                                    allUrls.add(`Data/${activeCourse}/subjects/${sClean}_${cClean}.json`);
+                                    allUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(s)}_${sanitizeFilename(c)}.json`);
                                 });
                             });
+
+                            const pSeen = new Set();
+                            const eSeen = new Set();
 
                             for (let url of allUrls) {
                                 if (!window.activeChunksCache[url]) {
@@ -3126,8 +3230,14 @@ btnPushEdits.onclick = async () => {
                                 const chunkQs = window.activeChunksCache[url];
                                 chunkQs.forEach(q => {
                                     const qId = getQID(q);
-                                    if (globalPracticeMistakes.includes(qId) && !pPool.some(existing => getQID(existing) === qId)) pPool.push(q);
-                                    if (globalExamMistakes.includes(qId) && !ePool.some(existing => getQID(existing) === qId)) ePool.push(q);
+                                    if (globalPracticeMistakes.includes(qId) && !pSeen.has(qId)) {
+                                        pSeen.add(qId);
+                                        pPool.push(q);
+                                    }
+                                    if (globalExamMistakes.includes(qId) && !eSeen.has(qId)) {
+                                        eSeen.add(qId);
+                                        ePool.push(q);
+                                    }
                                 });
                             }
                             document.body.style.cursor = 'default';
@@ -3171,12 +3281,11 @@ btnPushEdits.onclick = async () => {
                             const allUrls = new Set();
                             Object.keys(subjectTree).forEach(s => {
                                 Object.keys(subjectTree[s]).forEach(c => {
-                                    const sClean = s.toLowerCase().replace(/ /g, '_');
-                                    const cClean = c.toLowerCase().replace(/ /g, '_');
-                                    allUrls.add(`Data/${activeCourse}/subjects/${sClean}_${cClean}.json`);
+                                    allUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(s)}_${sanitizeFilename(c)}.json`);
                                 });
                             });
 
+                            const bSeen = new Set();
                             for (let url of allUrls) {
                                 if (!window.activeChunksCache[url]) {
                                     try {
@@ -3188,7 +3297,10 @@ btnPushEdits.onclick = async () => {
                                 const chunkQs = window.activeChunksCache[url];
                                 chunkQs.forEach(q => {
                                     const qId = getQID(q);
-                                    if (globalBookmarks.includes(qId) && !bPool.some(existing => getQID(existing) === qId)) bPool.push(q);
+                                    if (globalBookmarks.includes(qId) && !bSeen.has(qId)) {
+                                        bSeen.add(qId);
+                                        bPool.push(q);
+                                    }
                                 });
                             }
                             document.body.style.cursor = 'default';
