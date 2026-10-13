@@ -15,6 +15,7 @@ let wrongAttempts = 0;
 let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
+let isPaused = false;
 
 let activeRoomId = localStorage.getItem('active_study_room');
 let roomRef = activeRoomId ? doc(db, "study_rooms", activeRoomId) : null;
@@ -36,6 +37,11 @@ function isBookSession() {
 // ==========================================
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
+const timerRingText = document.getElementById('timer-ring-text');
+const qTimerDisplay = document.getElementById('question-timer-display');
+const qTimerRingText = document.getElementById('question-timer-ring-text');
+const currentQCircle = document.getElementById('current-q-circle');
+
 const questionTextEl = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
 const wrongCountNumEl = document.getElementById('wrong-count-num');
@@ -53,7 +59,6 @@ const notesModal = document.getElementById('notes-modal');
 const noteInput = document.getElementById('note-input');
 const closeNotesBtn = document.getElementById('close-notes-btn');
 const saveNoteBtn = document.getElementById('save-note-btn');
-const qTimerDisplay = document.getElementById('question-timer-display');
 const labValuesBtn = document.getElementById('lab-values-btn');
 const labValuesModal = document.getElementById('lab-values-modal');
 const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
@@ -65,16 +70,32 @@ const adminEditModal = document.getElementById('admin-edit-modal');
 const btnCancelEdit = document.getElementById('btn-cancel-edit');
 const btnSaveGithub = document.getElementById('btn-save-github');
 const staticPauseBtn = document.getElementById('pause-btn');
+const pauseOverlay = document.getElementById('pause-overlay');
+const resumeQuizBtn = document.getElementById('btn-resume-quiz');
 
 if (isExamMode) {
     document.body.classList.add('mode-exam');
     sessionSeconds = quizConfig.timer * 60; 
     if (staticPauseBtn) staticPauseBtn.style.display = 'none';
-} else if (staticPauseBtn) {
-    staticPauseBtn.onclick = () => {
-        isPaused = true;
-        document.getElementById('pause-overlay').style.display = 'flex';
-    };
+} else {
+    if (staticPauseBtn) {
+        staticPauseBtn.onclick = () => {
+            isPaused = true;
+            if (pauseOverlay) {
+                pauseOverlay.classList.remove('hidden');
+                pauseOverlay.classList.add('show');
+            }
+        };
+    }
+    if (resumeQuizBtn) {
+        resumeQuizBtn.onclick = () => {
+            isPaused = false;
+            if (pauseOverlay) {
+                pauseOverlay.classList.remove('show');
+                setTimeout(() => pauseOverlay.classList.add('hidden'), 300);
+            }
+        };
+    }
 }
 
 function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
@@ -152,9 +173,9 @@ onAuthStateChanged(auth, async (user) => {
                 const dbData = docSnap.data();
                 currentUserData = dbData;
 
-				if (activeRoomId) {
-					await updateDoc(roomRef, { [`activeMembers.${currentUserId}`]: dbData.fullName || "Student" });
-				}
+                if (activeRoomId) {
+                    await updateDoc(roomRef, { [`activeMembers.${currentUserId}`]: dbData.fullName || "Student" });
+                }
 
                 if (dbData.isBanned || dbData.role === 'BANNED') {
                     indexedDB.deleteDatabase("EdeetosDB");
@@ -242,7 +263,7 @@ function formatJSONQuestion(q) {
         });
     }
 
-return {
+    return {
         text: q.question || q.Question || "Missing Question Text",
         options: formattedOptions,
         explanation: q.explanation || q.Explanation || "No explanation provided.",
@@ -308,16 +329,16 @@ function triggerSlideTransition(newIndex, direction) {
     const outClass = direction === 'right' ? 'slide-out-left' : 'slide-out-right';
     const inClass = direction === 'right' ? 'slide-in-right' : 'slide-in-left';
 
-    cardEl.className = 'question-card';
+    cardEl.className = 'question-card glass-panel';
     void cardEl.offsetWidth; 
     cardEl.classList.add(outClass);
     
     setTimeout(() => {
         loadQuestion(newIndex);
-        cardEl.className = 'question-card'; 
+        cardEl.className = 'question-card glass-panel'; 
         void cardEl.offsetWidth; 
         cardEl.classList.add(inClass);
-    }, 300);
+    }, 250);
 }
 
 function showSkippedModal() {
@@ -338,13 +359,13 @@ function showMustAnswerModal() {
     if (document.getElementById('must-answer-modal')) return;
     const modal = document.createElement('div');
     modal.id = 'must-answer-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
     modal.innerHTML = `
-        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: gentlePopIn 0.3s forwards;">
-            <i class="fas fa-exclamation-circle" style="color: #f59e0b; font-size: 4rem; margin-bottom: 1rem;"></i>
-            <h2 style="color: #1e3a8a; margin-top: 0; margin-bottom: 10px;">Select an Answer</h2>
-            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 20px;">Please select an answer to proceed. If you are stuck, use the <strong>Skip</strong> button.</p>
-            <button id="btn-understood-must-answer" class="btn-solid" style="background: #3b82f6; color: white; border: none; padding: 0.8rem 2rem; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; transition: 0.2s;">Understood (Enter)</button>
+        <div class="glass-panel" style="background: rgba(14, 48, 35, 0.95); padding: 30px; border-radius: 18px; max-width: 420px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.4);">
+            <i class="fas fa-exclamation-circle" style="color: #f59e0b; font-size: 3.5rem; margin-bottom: 1rem;"></i>
+            <h2 style="color: #ffffff; margin-top: 0; margin-bottom: 10px;">Select an Answer</h2>
+            <p style="color: #cbd5e1; font-size: 1rem; margin-bottom: 20px;">Please select an answer to proceed. If you are stuck, use the <strong>Skip</strong> button.</p>
+            <button id="btn-understood-must-answer" class="action-btn next-btn" style="width: 100%;">Understood (Enter)</button>
         </div>
     `;
     document.body.appendChild(modal);
@@ -365,6 +386,7 @@ function loadQuestion(index) {
         const forceBtn = document.getElementById('host-force-reveal-btn');
         if (forceBtn) forceBtn.style.display = 'none';
 
+        // 1. Copy & Edit ONLY visible for ADMIN or MANAGEMENT
         const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
         if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
             if (copyQBtn) copyQBtn.style.display = 'flex';
@@ -382,42 +404,43 @@ function loadQuestion(index) {
         wrongAttempts = 0;
         hasAnsweredCorrectly = false;
         
+        // 2. Hint button hidden initially; appears after 15s in startTimer()
         if (aiHintBtn) {
             aiHintBtn.style.display = 'none'; 
+            aiHintBtn.classList.remove('pop-in');
             aiHintBtn.innerHTML = `<i class="far fa-lightbulb"></i> Hint`; 
         }
         
-        if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; 
-        if (!isExamMode) updateFeedbackBar();
-        
-        if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
-            explanationBtn.style.display = 'flex';
-        } else {
-            explanationBtn.style.display = 'none'; 
+        // 3. Explanation button hidden initially; appears only after marking correct answer
+        if (explanationBtn) {
+            explanationBtn.style.display = 'none';
+        }
+        if (explanationModal) {
             explanationModal.classList.remove('show');
         }
 
+        if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; 
+        if (!isExamMode) updateFeedbackBar();
+
         const displayNum = currentQuestionData.sequenceNumber || (currentIndex + 1);
         if (questionIdBadge) {
-            questionIdBadge.textContent = isExamMode ? `Question ${displayNum} of ${quizQueue.length}` : `Question ${displayNum} of ${quizQueue.length}`;
+            questionIdBadge.textContent = `Question ${displayNum} of ${quizQueue.length}`;
         }
 
         const diffBadge = document.getElementById('question-difficulty-badge');
         if (diffBadge) {
-            const diffText = (currentQuestionData.Difficulty || "").toLowerCase().trim();
+            const diffText = (currentQuestionData.Difficulty || "medium").toLowerCase().trim();
             diffBadge.style.display = "inline-block";
             
             if (diffText === 'easy') {
                 diffBadge.textContent = "Easy";
-                diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.8); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);";
-            } else if (diffText === 'medium') {
-                diffBadge.textContent = "Medium";
-                diffBadge.style.cssText = "background: rgba(217, 119, 6, 0.8); box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);";
+                diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.3); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.6);";
             } else if (diffText === 'hard') {
                 diffBadge.textContent = "Hard";
-                diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.8); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);";
+                diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.3); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.6);";
             } else {
-                diffBadge.style.display = "none";
+                diffBadge.textContent = "Medium";
+                diffBadge.style.cssText = "background: rgba(217, 119, 6, 0.35); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.6);";
             }
         }
 
@@ -437,15 +460,15 @@ function loadQuestion(index) {
             document.getElementById('next-btn').innerHTML = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : 'Next Question <i class="fas fa-arrow-right"></i>';
         }
 
+        // Render Metadata Pills matching Picture 2
         const examYearInfo = document.getElementById('exam-year-info');
         if (examYearInfo) {
             examYearInfo.innerHTML = ''; 
-            let badgesHTML = '';
+            let topRowHTML = '';
+            let bottomRowHTML = '';
             
             let yearData = currentQuestionData.Year || currentQuestionData.year;
-            let yearList = [];
-            if (Array.isArray(yearData)) yearList = yearData;
-            else if (typeof yearData === 'string' && yearData.trim() !== '') yearList = yearData.split(',');
+            let yearList = Array.isArray(yearData) ? yearData : (typeof yearData === 'string' && yearData.trim() !== '' ? yearData.split(',') : []);
 
             let examData = currentQuestionData.Exam || currentQuestionData.exams;
             let examList = Array.isArray(examData) ? examData : (examData && typeof examData === 'string' ? examData.split(',') : (examData ? [examData] : []));
@@ -456,23 +479,26 @@ function loadQuestion(index) {
             if ((yearList.length > 0 || examList.length > 0 || specList.length > 0) && !isExamMode) {
                 examYearInfo.style.display = 'flex';
                 
-                if (yearList.length > 0) {
-                    badgesHTML += `<span style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6); color: #1e293b; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;">Years: ${yearList.join(', ')}</span>`;
-                }
-
                 specList.forEach(sp => {
                     if (sp.trim()) {
-                        badgesHTML += `<span style="background: #34d399; color: #064e3b; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-tag" style="margin-right: 4px;"></i> ${sp.trim()}</span>`;
+                        topRowHTML += `<span class="meta-pill-purple">${sp.trim()}</span>`;
                     }
                 });
+
+                if (yearList.length > 0) {
+                    topRowHTML += `<span class="meta-pill-year">${yearList.map(y => y.trim()).join(', ')}</span>`;
+                }
                 
                 examList.forEach(ex => {
                     if (ex.trim()) {
-                        badgesHTML += `<span style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6); color: #1e293b; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;">${ex.trim()}</span>`;
+                        bottomRowHTML += `<span class="meta-pill-sub">${ex.trim()}</span>`;
                     }
                 });
                 
-                examYearInfo.innerHTML = badgesHTML;
+                examYearInfo.innerHTML = `
+                    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px; width:100%;">${topRowHTML}</div>
+                    ${bottomRowHTML ? `<div style="display:flex; justify-content:center; flex-wrap:wrap; gap:6px; width:100%;">${bottomRowHTML}</div>` : ''}
+                `;
             } else {
                 examYearInfo.style.display = 'none';
             }
@@ -486,10 +512,8 @@ function loadQuestion(index) {
         currentQuestionData.options.forEach(opt => {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
-            optBox.style.cursor = 'pointer';
             optBox.setAttribute('role', 'button');
             optBox.setAttribute('tabindex', '0');
-            optBox.setAttribute('onclick', 'void(0);');
             
             if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
@@ -524,6 +548,17 @@ function loadQuestion(index) {
             });
             optionsContainer.appendChild(optBox);
         });
+
+        const qSpent = currentQuestionData.timeSpent || 0;
+        const qMins = Math.floor(qSpent / 60).toString().padStart(2, '0');
+        const qSecs = (qSpent % 60).toString().padStart(2, '0');
+        if (qTimerDisplay) qTimerDisplay.textContent = `${qMins}:${qSecs}`;
+        if (qTimerRingText) qTimerRingText.textContent = `${qMins}:${qSecs}`;
+
+        // If user returns to a question where >= 15 seconds was already spent in practice mode, show Hint
+        if (!isExamMode && !hasAnsweredCorrectly && qSpent >= 15 && aiHintBtn) {
+            aiHintBtn.style.display = 'flex';
+        }
 
         const bookmarkBtn = document.getElementById('bookmark-btn');
         if (bookmarkBtn) {
@@ -639,6 +674,8 @@ function loadQuestion(index) {
 
         if (copyQBtn) {
             copyQBtn.onclick = () => {
+                const roleCheck = (currentUserData?.role || 'STUDENT').toUpperCase();
+                if (roleCheck !== 'ADMIN' && roleCheck !== 'MANAGEMENT') return;
                 if (!currentQuestionData) return;
                 
                 const tempDiv = document.createElement('div');
@@ -678,6 +715,8 @@ function loadQuestion(index) {
 
         if (editQBtn) {
             editQBtn.onclick = () => {
+                const roleCheck = (currentUserData?.role || 'STUDENT').toUpperCase();
+                if (roleCheck !== 'ADMIN' && roleCheck !== 'MANAGEMENT') return;
                 if (!currentQuestionData) return;
 
                 if (!quillHint) {
@@ -725,11 +764,11 @@ function loadQuestion(index) {
                         optsContainer.innerHTML += `
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
                                 <input type="radio" name="edit-correct-opt" value="${idx}" ${isCorrect} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
-                                <span style="font-weight: bold; color: #1e293b; width: 20px;">${letter})</span>
-                                <input type="text" id="edit-opt-${idx}" value="${opt.text}" style="flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;">
-                                <button type="button" class="tag-inject-btn btn-outline" data-target="edit-opt-${idx}" data-tag="br" style="padding: 2px 6px; font-size: 0.75rem; min-width: auto;" title="Line Break">↵</button>
-                                <button type="button" class="tag-inject-btn btn-outline" data-target="edit-opt-${idx}" data-tag="sub" style="padding: 2px 6px; font-size: 0.75rem; min-width: auto;" title="Subscript">X₂</button>
-                                <button type="button" class="tag-inject-btn btn-outline" data-target="edit-opt-${idx}" data-tag="sup" style="padding: 2px 6px; font-size: 0.75rem; min-width: auto;" title="Superscript">X²</button>
+                                <span style="font-weight: bold; color: #f8fafc; width: 20px;">${letter})</span>
+                                <input type="text" id="edit-opt-${idx}" value="${opt.text}" class="glass-input" style="flex: 1; padding: 8px;">
+                                <button type="button" class="tag-inject-btn action-btn" data-target="edit-opt-${idx}" data-tag="br" style="padding: 2px 8px; height: 34px; font-size: 0.75rem;" title="Line Break">↵</button>
+                                <button type="button" class="tag-inject-btn action-btn" data-target="edit-opt-${idx}" data-tag="sub" style="padding: 2px 8px; height: 34px; font-size: 0.75rem;" title="Subscript">X₂</button>
+                                <button type="button" class="tag-inject-btn action-btn" data-target="edit-opt-${idx}" data-tag="sup" style="padding: 2px 8px; height: 34px; font-size: 0.75rem;" title="Superscript">X²</button>
                             </div>
                         `;
                     });
@@ -957,7 +996,7 @@ async function saveNoteToFirebase(questionId, noteText) {
 }
 
 function handleOptionClick(event, optionData, optionElement) {
-    if (event.target.closest('.strike-btn')) return; // Handled directly in loadQuestion listener
+    if (event.target.closest('.strike-btn')) return;
 
     if (isExamMode) {
         document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
@@ -1013,7 +1052,12 @@ function handleOptionClick(event, optionData, optionElement) {
         
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
-        explanationBtn.style.display = 'flex'; 
+        // Show Explain button ONLY now that the user marked the correct answer
+        if (explanationBtn) {
+            explanationBtn.style.display = 'flex';
+            explanationBtn.classList.add('pop-in');
+        }
+
         setTimeout(() => {
             if (explanationModal) {
                 explanationModal.classList.remove('hidden');
@@ -1124,7 +1168,6 @@ function applyTextFormat(range, selection, inlineStyles) {
         mark.appendChild(fragment);
         range.insertNode(mark);
     } catch (err) {
-        console.warn("Highlighter fallback applied for compound node layouts.");
         const mark = document.createElement('mark');
         mark.style.cssText = inlineStyles;
         range.surroundContents(mark);
@@ -1160,7 +1203,7 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     }
     
     updateFeedbackBar();
-    explanationBtn.style.display = 'flex';
+    if (explanationBtn) explanationBtn.style.display = 'flex';
     document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
 
     document.querySelectorAll('.option-box').forEach(box => {
@@ -1202,9 +1245,9 @@ if (roomRef) {
             if (!document.getElementById('mp-lobby-screen')) {
                 const lobby = document.createElement('div');
                 lobby.id = 'mp-lobby-screen';
-                lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0f172a; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
+                lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b291e; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
                 lobby.innerHTML = `
-                    <i class="fas fa-users" style="font-size: 4rem; color: #3b82f6; margin-bottom: 20px;"></i>
+                    <i class="fas fa-users" style="font-size: 4rem; color: #34d399; margin-bottom: 20px;"></i>
                     <h2 style="font-family: 'Nunito', sans-serif;">Waiting for Host...</h2>
                     <p style="color: #94a3b8; margin-top: 10px;">The host is picking the test material. Hang tight.</p>
                 `;
@@ -1239,43 +1282,11 @@ if (roomRef) {
             const answerCount = Object.keys(currentAnswers).length;
             const memberCount = Object.keys(activeMembers).length || 1;
 
-            let rosterBox = document.getElementById('mp-roster-box');
-            if (!rosterBox) {
-                rosterBox = document.createElement('div');
-                rosterBox.id = 'mp-roster-box';
-                rosterBox.style.cssText = "position: fixed; top: 100px; right: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 220px; z-index: 1000; border: 1px solid #e2e8f0;";
-                cardEl.parentElement.insertBefore(rosterBox, cardEl);
-            }
-
-            let rosterHtml = `<h4 style="margin: 0 0 15px 0; border-bottom: 2px solid rgba(255,255,255,0.5); padding-bottom: 10px; color: #0f172a; font-size: 1.1rem; text-align: center; font-weight: 800; letter-spacing: 0.5px;"><i class="fas fa-users" style="margin-right: 8px; color: #10b981;"></i>Live Roster</h4>`;
-            
-            Object.keys(activeMembers).forEach(uid => {
-                const name = activeMembers[uid];
-                const hasAnswered = currentAnswers.hasOwnProperty(uid);
-                const isMe = uid === currentUserId;
-                
-                const statusColor = hasAnswered ? "#10b981" : "#94a3b8"; 
-                const statusText = hasAnswered ? "Locked In" : "Thinking";
-                const nameWeight = isMe ? "800" : "500";
-                
-                rosterHtml += `
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; background: rgba(255,255,255,0.4); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-                        <span style="font-size: 0.95rem; font-weight: ${nameWeight}; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 110px;" title="${name}">
-                            ${name} ${isMe ? "(You)" : ""}
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #475569; font-weight: 700;">
-                            ${statusText} <div style="width: 10px; height: 10px; border-radius: 50%; background: ${statusColor}; border: 1px solid rgba(255,255,255,0.8);"></div>
-                        </span>
-                    </div>
-                `;
-            });
-            rosterBox.innerHTML = rosterHtml;
-
             let waitEl = document.getElementById('multiplayer-waiting-text');
             if (!waitEl) {
                 waitEl = document.createElement('div');
                 waitEl.id = 'multiplayer-waiting-text';
-                waitEl.style.cssText = "text-align: center; margin-top: 15px; font-weight: bold; color: #3b82f6; display: none;";
+                waitEl.style.cssText = "text-align: center; margin-top: 15px; font-weight: bold; color: #34d399; display: none;";
                 optionsContainer.parentElement.appendChild(waitEl);
             }
 
@@ -1284,22 +1295,7 @@ if (roomRef) {
                 waitEl.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Waiting for others... (${answerCount}/${memberCount} answered)`;
             }
 
-            if (!isGuest && !hasRevealedCurrentQuestion) {
-                let forceBtn = document.getElementById('host-force-reveal-btn');
-                if (!forceBtn) {
-                    forceBtn = document.createElement('button');
-                    forceBtn.id = 'host-force-reveal-btn';
-                    forceBtn.className = 'btn-outline';
-                    forceBtn.style.cssText = "margin-top: 15px; width: 100%; border-color: #ef4444; color: #ef4444;";
-                    forceBtn.innerHTML = "Force Reveal Answers (Someone disconnected?)";
-                    optionsContainer.parentElement.appendChild(forceBtn);
-                    forceBtn.onclick = () => updateDoc(roomRef, { [`forceReveal.${currentIndex}`]: true });
-                }
-                forceBtn.style.display = (answerCount > 0 && answerCount < memberCount) ? 'block' : 'none';
-            }
-
             const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
-
             if ((answerCount >= memberCount || forceReveal) && !hasRevealedCurrentQuestion && answerCount > 0) {
                 revealMultiplayerAnswers(currentAnswers, data.activeMembers);
             }
@@ -1310,7 +1306,6 @@ if (roomRef) {
 // ==========================================
 // 8. EXAM SUBMISSION & RESULTS
 // ==========================================
-
 let isIntentionalExit = false;
 
 function exitSafely(url) {
@@ -1353,10 +1348,10 @@ function showResults() {
     
     if (percentage >= 75) {
         titleEl.innerHTML = `<i class="fas fa-check-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #10b981;"></i> 🎉 Passed!`;
-        titleEl.style.color = "#065f46";
+        titleEl.style.color = "#6ee7b7";
     } else {
         titleEl.innerHTML = `<i class="fas fa-times-circle" style="font-size: 3.5rem; display: block; margin-bottom: 1rem; color: #ef4444;"></i> ❌ Failed`;
-        titleEl.style.color = "#991b1b";
+        titleEl.style.color = "#fca5a5";
     }
 
     const challengeBtn = document.getElementById('btn-challenge-friend');
@@ -1367,6 +1362,7 @@ function showResults() {
     const closeShareBtn = document.getElementById('close-share-modal');
 
     if (isExamMode && challengeBtn) {
+        challengeBtn.classList.remove('hidden');
         challengeBtn.style.display = 'inline-block';
         
         challengeBtn.onclick = async (e) => {
@@ -1404,10 +1400,7 @@ function showResults() {
                 const challengeText = `I just wrapped up a rigorous mock exam on EDEETOS and scored ${correctCount} out of ${total}! 🎯\n\nThink you have what it takes to beat my accuracy and time? Step up to the Friend Challenge and prove it.\n\nDrop my Challenge Code in the app: *${code}*\n\nLet's see who really knows their stuff!`;
                 
                 if (shareMsgEl) shareMsgEl.innerText = challengeText;
-                
-                if (whatsappShareBtn) {
-                    whatsappShareBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(challengeText)}`;
-                }
+                if (whatsappShareBtn) whatsappShareBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(challengeText)}`;
 
                 if (copyShareBtn) {
                     copyShareBtn.onclick = () => {
@@ -1416,19 +1409,6 @@ function showResults() {
                                 copyShareBtn.innerHTML = `<i class="fas fa-check"></i> Copied!`;
                                 setTimeout(() => copyShareBtn.innerHTML = `<i class="fas fa-copy"></i> Copy Message`, 2000);
                             });
-                        } else {
-                            const textArea = document.createElement("textarea");
-                            textArea.value = challengeText;
-                            document.body.appendChild(textArea);
-                            textArea.select();
-                            try {
-                                document.execCommand('copy');
-                                copyShareBtn.innerHTML = `<i class="fas fa-check"></i> Copied!`;
-                                setTimeout(() => copyShareBtn.innerHTML = `<i class="fas fa-copy"></i> Copy Message`, 2000);
-                            } catch (err) {
-                                prompt("Copy this challenge message:", challengeText);
-                            }
-                            document.body.removeChild(textArea);
                         }
                     };
                 }
@@ -1447,12 +1427,10 @@ function showResults() {
                     shareModal.classList.remove('hidden');
                     shareModal.classList.add('show');
                 }
-                
             } catch (err) {
                 console.error("Challenge Link Error:", err);
                 challengeBtn.textContent = "Error Generating Link";
                 challengeBtn.disabled = false;
-                alert("Failed to save challenge. Ensure you are connected to the internet and Firestore security rules allow writes.");
             }
         };
     }
@@ -1477,6 +1455,7 @@ function showResults() {
     };
 
     if (mistakeIds.length > 0 && reviewBtn) {
+        reviewBtn.classList.remove('hidden');
         reviewBtn.style.display = 'inline-block';
         reviewBtn.onclick = async (e) => {
             e.preventDefault();
@@ -1520,7 +1499,7 @@ function showPracticeCompleteModal(isGuest = false) {
 
     const modal = document.createElement('div');
     modal.id = 'practice-complete-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
 
     const title = isGuest ? "Session Ended" : "Practice Complete!";
     const desc = isGuest ? "The host has finished the session and closed the study room." : "Great job! You have finished all the questions.";
@@ -1528,8 +1507,8 @@ function showPracticeCompleteModal(isGuest = false) {
     modal.innerHTML = `
         <i class="fas fa-check-circle" style="color: #10b981; font-size: 5rem; margin-bottom: 1.5rem;"></i>
         <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">${title}</h1>
-        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem;">${desc}</p>
-        <button id="btn-practice-home" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Save & Return Home</button>
+        <p style="color: #cbd5e1; font-size: 1.2rem; margin-bottom: 2rem;">${desc}</p>
+        <button id="btn-practice-home" class="action-btn next-btn" style="max-width: 280px;">Save & Return Home</button>
     `;
     
     document.body.appendChild(modal);
@@ -1557,23 +1536,17 @@ function showPracticeCompleteModal(isGuest = false) {
 // ==========================================
 // 9. TIMER & MODAL NAVIGATION
 // ==========================================
-let isPaused = false;
-
 function startTimer() {
-    // Determine allowed time dynamically based on the queue length (1.2 mins/72 seconds per Q)
-    const allowedSeconds = quizQueue.length * 72; 
+    const allowedSeconds = Math.max(quizQueue.length * 72, 60); 
 
     timerInterval = setInterval(() => {
         if (isPaused) return; 
 
         if (isExamMode) {
             sessionSeconds--; 
-            
-            // Fill based on countdown for exam
             const totalExamSecs = quizConfig.timer * 60;
             const dash = Math.max(0, (sessionSeconds / totalExamSecs) * 100);
-            const totalCircle = document.querySelector('.total-q-circle');
-            if (totalCircle) totalCircle.setAttribute('stroke-dasharray', `${dash}, 100`);
+            document.querySelectorAll('.total-q-circle').forEach(c => c.setAttribute('stroke-dasharray', `${dash}, 100`));
 
             if (sessionSeconds <= 0) {
                 clearInterval(timerInterval);
@@ -1583,51 +1556,38 @@ function startTimer() {
             }
         } else { 
             sessionSeconds++; 
-            
-            // Fill based on count-up for practice
-            const dash = Math.min(100, (sessionSeconds / allowedSeconds) * 100);
-            const totalCircle = document.querySelector('.total-q-circle');
-            if (totalCircle) totalCircle.setAttribute('stroke-dasharray', `${dash}, 100`);
+            const dash = Math.min(100, Math.max(15, (sessionSeconds / allowedSeconds) * 100));
+            document.querySelectorAll('.total-q-circle').forEach(c => c.setAttribute('stroke-dasharray', `${dash}, 100`));
         }
 
         const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
         const sSecs = (sessionSeconds % 60).toString().padStart(2, '0');
-        if (timerDisplay) {
-            timerDisplay.textContent = `${sMins}:${sSecs}`;
-            
-            if (isExamMode && sessionSeconds <= 300 && sessionSeconds > 0) {
-                if (!document.getElementById('timer-stress-style')) {
-                    const style = document.createElement('style');
-                    style.id = 'timer-stress-style';
-                    style.innerHTML = `@keyframes pulseRed { 0% { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.4); transform: scale(1); } 50% { color: #f87171; text-shadow: 0 0 20px rgba(239, 68, 68, 0.8); transform: scale(1.1); } 100% { color: #ef4444; text-shadow: 0 0 10px rgba(239, 68, 68, 0.4); transform: scale(1); } } .stress-active { animation: pulseRed 1s infinite; color: #ef4444 !important; }`;
-                    document.head.appendChild(style);
-                }
-                timerDisplay.classList.add('stress-active');
-            } else {
-                timerDisplay.classList.remove('stress-active');
-            }
-        }
+        const formattedTotal = `${sMins}:${sSecs}`;
+
+        if (timerDisplay) timerDisplay.textContent = formattedTotal;
+        if (timerRingText) timerRingText.textContent = formattedTotal;
+        const examTTimer = document.getElementById('exam-t-timer');
+        if (examTTimer) examTTimer.textContent = formattedTotal;
         
-        const challengeDataStr = localStorage.getItem('edeetos_challenge_data');
-        if (challengeDataStr && isExamMode) {
-            const cData = JSON.parse(challengeDataStr);
-            document.getElementById('challenge-tracker-wrapper').style.display = 'block';
-            document.getElementById('challenge-name-display').textContent = `${cData.hostName}'s Pace`;
-            document.getElementById('challenge-target-display').textContent = `Target: ${cData.score}/${cData.total}`;
-            
-            const timePassed = (quizConfig.timer * 60) - sessionSeconds;
-            const progress = Math.min((timePassed / cData.timeTaken) * 100, 100);
-            document.getElementById('challenge-bar-fill').style.width = `${progress}%`;
-        }
-		
         if (currentQuestionData) {
             if (!currentQuestionData.timeSpent) currentQuestionData.timeSpent = 0;
             currentQuestionData.timeSpent++;
 
             const qMins = Math.floor(currentQuestionData.timeSpent / 60).toString().padStart(2, '0');
             const qSecs = (currentQuestionData.timeSpent % 60).toString().padStart(2, '0');
-            if (qTimerDisplay) qTimerDisplay.textContent = `${qMins}:${qSecs}`;
+            const formattedQ = `${qMins}:${qSecs}`;
 
+            if (qTimerDisplay) qTimerDisplay.textContent = formattedQ;
+            if (qTimerRingText) qTimerRingText.textContent = formattedQ;
+            const examQTimer = document.getElementById('exam-q-timer');
+            if (examQTimer) examQTimer.textContent = formattedQ;
+
+            if (currentQCircle) {
+                const qDash = Math.min(100, Math.max(15, (currentQuestionData.timeSpent / 72) * 100));
+                currentQCircle.setAttribute('stroke-dasharray', `${qDash}, 100`);
+            }
+
+            // Hint button pops in after 15 seconds if not yet answered in Practice Mode
             if (!isExamMode && !hasAnsweredCorrectly && currentQuestionData.timeSpent === 15) {
                 if (aiHintBtn) {
                     aiHintBtn.style.display = 'flex';
@@ -1639,7 +1599,6 @@ function startTimer() {
 }
 
 skipBtn.onclick = () => {
-    // Record state but do NOT move to the back of the queue
     if (!currentQuestionData.sessionState) {
         currentQuestionData.sessionState = 'skipped';
         currentQuestionData.hasBeenSkipped = true;
@@ -1674,17 +1633,16 @@ if (labSearchInput) {
         rows.forEach((row, index) => {
             if (index === 0) return; 
             const testName = row.cells[0]?.textContent.toLowerCase() || "";
-            if (testName.includes(query)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
+            row.style.display = testName.includes(query) ? '' : 'none';
         });
     });
 }
 
 if (closeLabValuesBtn) closeLabValuesBtn.onclick = () => {
-    if (labValuesModal) labValuesModal.classList.remove('show');
+    if (labValuesModal) {
+        labValuesModal.classList.remove('show');
+        setTimeout(() => labValuesModal.classList.add('hidden'), 300);
+    }
 };
 
 if (modalNextBtn) {
@@ -1694,8 +1652,18 @@ if (modalNextBtn) {
     };
 }
 
-if (explanationBtn) explanationBtn.onclick = () => { explanationModal.classList.remove('hidden'); explanationModal.classList.add('show'); };
-if (closeExplanationBtn) closeExplanationBtn.onclick = () => explanationModal.classList.remove('show');
+if (explanationBtn) {
+    explanationBtn.onclick = () => {
+        explanationModal.classList.remove('hidden');
+        explanationModal.classList.add('show');
+    };
+}
+if (closeExplanationBtn) {
+    closeExplanationBtn.onclick = () => {
+        explanationModal.classList.remove('show');
+        setTimeout(() => explanationModal.classList.add('hidden'), 300);
+    };
+}
 
 if (aiHintBtn) {
     aiHintBtn.onclick = () => {
@@ -1707,36 +1675,31 @@ if (aiHintBtn) {
 
         setTimeout(() => {
             let hintText = currentQuestionData.hint;
-            
             if (!hintText || hintText.trim() === "") {
-                hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, labs, and time-course carefully.";
+                hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, anatomical landmarks, and time-course carefully.";
             }
 
             const hintModal = document.createElement('div');
             hintModal.id = 'dynamic-hint-modal';
-            hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
+            hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
             
             hintModal.innerHTML = `
-                <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); padding: 30px; border-radius: 16px; max-width: 500px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
-                    <h2 style="color: #c084fc; margin-top: 0; margin-bottom: 15px; font-family: 'Nunito', sans-serif;"><i class="far fa-lightbulb"></i> Hint</h2>
-                    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; text-align: left;">
+                <div style="background: rgba(14, 48, 35, 0.95); backdrop-filter: blur(24px); border: 1px solid rgba(192, 132, 252, 0.4); padding: 28px; border-radius: 18px; max-width: 460px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
+                    <h2 style="color: #d8b4fe; margin-top: 0; margin-bottom: 15px;"><i class="far fa-lightbulb"></i> Hint</h2>
+                    <div style="color: #f1f5f9; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; text-align: left;">
                         ${hintText}
                     </div>
-                    <button id="close-dynamic-hint" style="background: rgba(139, 92, 246, 0.2); color: #d8b4fe; border: 1px solid #8b5cf6; padding: 0.8rem 2rem; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; width: 100%; transition: 0.3s;">Got it!</button>
+                    <button id="close-dynamic-hint" class="action-btn hint-btn" style="width: 100%;">Got it!</button>
                 </div>
             `;
             
             document.body.appendChild(hintModal);
-
-            document.getElementById('close-dynamic-hint').onclick = () => {
-                hintModal.remove();
-            };
+            document.getElementById('close-dynamic-hint').onclick = () => hintModal.remove();
 
             aiHintBtn.innerHTML = originalText;
             aiHintBtn.disabled = false;
-            aiHintBtn.style.display = 'none'; 
-            
-        }, 400); 
+            aiHintBtn.style.display = 'none';
+        }, 400);
     };
 }
 
@@ -1746,7 +1709,6 @@ document.getElementById('next-btn').onclick = async () => {
         return;
     }
 
-    // MANDATORY ANSWER CHECK logic
     const hasAttempted = isExamMode 
         ? currentQuestionData.userSelectedAnswer !== null 
         : (hasAnsweredCorrectly || wrongAttempts > 0 || currentQuestionData.sessionState === 'skipped');
@@ -1756,8 +1718,8 @@ document.getElementById('next-btn').onclick = async () => {
         return;
     }
 
-    if (isExamMode) {
-        if (currentIndex === quizQueue.length - 1) return showResults();
+    if (isExamMode && currentIndex === quizQueue.length - 1) {
+        return showResults();
     }
 
     if (currentIndex < quizQueue.length - 1) {
@@ -1777,7 +1739,6 @@ document.getElementById('next-btn').onclick = async () => {
                 console.error("Error resetting room:", error);
             }
         }
-        
         showPracticeCompleteModal(false);
     }
 };
@@ -1802,13 +1763,22 @@ const shortcutsBtn = document.getElementById('shortcuts-btn');
 const shortcutsModal = document.getElementById('shortcuts-modal');
 const closeShortcutsBtn = document.getElementById('close-shortcuts-btn');
 
-if (shortcutsBtn) shortcutsBtn.addEventListener('click', () => { if(shortcutsModal) { shortcutsModal.classList.remove('hidden'); shortcutsModal.classList.add('show'); shortcutsModal.style.display = 'flex'; } });
-if (closeShortcutsBtn) closeShortcutsBtn.addEventListener('click', () => { if(shortcutsModal) { shortcutsModal.classList.add('hidden'); shortcutsModal.classList.remove('show'); setTimeout(() => { shortcutsModal.style.display = 'none'; }, 300); } });
+if (shortcutsBtn) shortcutsBtn.addEventListener('click', () => {
+    if (shortcutsModal) {
+        shortcutsModal.classList.remove('hidden');
+        shortcutsModal.classList.add('show');
+    }
+});
+if (closeShortcutsBtn) closeShortcutsBtn.addEventListener('click', () => {
+    if (shortcutsModal) {
+        shortcutsModal.classList.remove('show');
+        setTimeout(() => shortcutsModal.classList.add('hidden'), 300);
+    }
+});
 
 document.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) return; 
-    
     if (activeEl && activeEl.classList.contains('ql-editor')) return;
 
     const mustAnswerModal = document.getElementById('must-answer-modal');
@@ -1825,6 +1795,7 @@ document.addEventListener('keydown', (e) => {
         if (understoodBtn) understoodBtn.click();
         return; 
     }
+
     const nextBtnLocal = document.getElementById('next-btn');
     const prevBtnLocal = document.getElementById('prev-btn');
     const explanationModalLocal = document.getElementById('explanation-modal');
@@ -1836,43 +1807,26 @@ document.addEventListener('keydown', (e) => {
     if (e.code === 'Numpad4' || e.code === 'Digit4') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(3) : selectOptionByIndex(3); return; }
     if (e.code === 'Numpad5' || e.code === 'Digit5') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(4) : selectOptionByIndex(4); return; }
 
-    if (isExplanationOpen) {
-        const modalContent = explanationModalLocal.querySelector('.modal-content');
-        if (e.key === 'ArrowUp') { e.preventDefault(); if(modalContent) modalContent.scrollTop -= 40; return; } 
-        else if (e.key === 'ArrowDown') { e.preventDefault(); if(modalContent) modalContent.scrollTop += 40; return; }
-    }
-
     switch(e.key) {
         case 'ArrowRight': e.preventDefault(); if(nextBtnLocal) nextBtnLocal.click(); break;
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
         case 'h': case 'H': e.preventDefault(); if (aiHintBtn && aiHintBtn.style.display !== 'none') aiHintBtn.click(); break;
-        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else exitSafely('questions.html'); break; 
+        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) closeShortcutsBtn.click(); else if (isExplanationOpen) closeExplanationBtn.click(); else exitSafely('questions.html'); break; 
         case 'Enter': 
             e.preventDefault(); 
             const dynamicHintBtn = document.getElementById('close-dynamic-hint');
-            const practiceHomeBtn = document.getElementById('btn-practice-home');
-            const returnHomeBtn = document.getElementById('btn-return-home');
-            const resumeBtnLocal = document.getElementById('btn-resume-quiz');
-            
-            if (isPaused && resumeBtnLocal) resumeBtnLocal.click();
+            if (isPaused && resumeQuizBtn) resumeQuizBtn.click();
             else if (dynamicHintBtn) dynamicHintBtn.click();
-            else if (practiceHomeBtn && document.getElementById('practice-complete-modal')) practiceHomeBtn.click();
-            else if (returnHomeBtn && !document.getElementById('exam-result-screen').classList.contains('hidden')) returnHomeBtn.click();
-            else if (isExplanationOpen) document.getElementById('close-explanation').click(); 
-            else if (isExamMode && nextBtnLocal) nextBtnLocal.click(); 
+            else if (isExplanationOpen) closeExplanationBtn.click(); 
+            else if (nextBtnLocal) nextBtnLocal.click(); 
             break;
-        case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) document.getElementById('close-explanation').click(); else explanationBtn.click(); } break;
+        case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) closeExplanationBtn.click(); else explanationBtn.click(); } break;
         case 'p': case 'P': 
             e.preventDefault(); 
-            if (isExamMode && skipBtn) {
-                skipBtn.click(); 
-            } else if (!isExamMode) {
-                const resumeBtnP = document.getElementById('btn-resume-quiz');
-                if (isPaused && resumeBtnP) {
-                    resumeBtnP.click();
-                } else {
-                    if (staticPauseBtn) staticPauseBtn.click();
-                }
+            if (isExamMode && skipBtn) skipBtn.click(); 
+            else if (!isExamMode) {
+                if (isPaused && resumeQuizBtn) resumeQuizBtn.click();
+                else if (staticPauseBtn) staticPauseBtn.click();
             }
             break;
         case 's': case 'S': e.preventDefault(); if (currentQuestionData) document.getElementById('bookmark-btn').click(); break;
@@ -1916,56 +1870,6 @@ function toggleStrikeByIndex(index) {
 const globalExitBtn = document.getElementById('global-exit-btn');
 
 if (globalExitBtn) {
-    if (activeRoomId) {
-        const isGuest = localStorage.getItem('is_study_guest') === 'true';
-
-        globalExitBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Leave Room';
-        globalExitBtn.style.color = '#ef4444';
-        globalExitBtn.style.borderColor = '#ef4444';
-
-        if (!isGuest) {
-            const lobbyBtn = document.createElement('button');
-            lobbyBtn.id = 'host-lobby-btn';
-            lobbyBtn.className = globalExitBtn.className; 
-            lobbyBtn.innerHTML = '<i class="fas fa-undo"></i> Return to Lobby';
-            
-            lobbyBtn.style.color = '#f59e0b';
-            lobbyBtn.style.borderColor = '#f59e0b';
-            lobbyBtn.style.marginRight = '10px';
-
-            globalExitBtn.parentNode.insertBefore(lobbyBtn, globalExitBtn);
-
-            lobbyBtn.onclick = async (e) => {
-                e.preventDefault();
-                if (!confirm("Stop the current quiz and return everyone to the lobby to pick new questions?")) return;
-
-                lobbyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Returning...';
-                lobbyBtn.disabled = true;
-                globalExitBtn.style.display = 'none';
-
-                try {
-                    const tasks = [
-                        updateSpacedRepetition(),
-                        !isExamMode ? savePracticeTime(sessionSeconds) : Promise.resolve(), 
-                        setDoc(doc(db, "study_rooms", activeRoomId), {
-                            status: "waiting",
-                            answers: {},           
-                            memberAnswers: {},     
-                            forceReveal: {},       
-                            currentQuestionIndex: 0
-                        }, { merge: true })
-                    ];
-                    await Promise.all(tasks);
-
-                    exitSafely('questions.html'); 
-                } catch (error) {
-                    console.error("🔥 Firebase Error:", error);
-                    lobbyBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
-                }
-            };
-        }
-    }
-
     globalExitBtn.onclick = async (e) => {
         e.preventDefault();
         
@@ -1986,9 +1890,7 @@ if (globalExitBtn) {
                     tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() }));
                 }
             }
-
             await Promise.all(tasks);
-
         } catch (error) { 
             console.error("Error during exit sequence:", error); 
         } finally {
@@ -2004,17 +1906,11 @@ async function updateSpacedRepetition() {
     const user = auth.currentUser;
     if (!user) return;
 
-    let targetName = quizConfig.examName || "General";
-    if (targetName.startsWith("Revision: ")) {
-        targetName = targetName.replace("Revision: ", "");
-    }
-
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
     const userRef = doc(db, "users", user.uid);
 
     try {
         const dbData = currentUserData || {};
-
         const isBookSessionLocal = isBookSession();   
         const currentRevisions = isBookSessionLocal
                 ? (dbData.books?.revisions || {})
@@ -2024,7 +1920,7 @@ async function updateSpacedRepetition() {
 
         quizQueue.forEach(question => {
             if (!question) return;
-			if (!question.userSelectedAnswer && !question.sessionState) return;
+            if (!question.userSelectedAnswer && !question.sessionState) return;
             const subject = question.Subject || question.subject || "Unknown Subject";
             const chapter = question.Chapter || question.chapter || "Unknown Chapter";
             const topic = question.Topic || question.topic || "Unknown Topic";
@@ -2089,7 +1985,7 @@ async function updateSpacedRepetition() {
 }
 
 // ==========================================
-// 12. TAB CLOSURE SAFETY & CHALLENGE USER CLEANUP
+// 12. TAB CLOSURE SAFETY & ADMIN PUSH
 // ==========================================
 function checkAndRestoreAbortedSession() {
     const backupStr = localStorage.getItem('edeetos_aborted_session_backup');
@@ -2097,7 +1993,6 @@ function checkAndRestoreAbortedSession() {
         if (confirm("We noticed your last practice session ended unexpectedly. Would you like to restore your progress?")) {
             const backup = JSON.parse(backupStr);
             quizQueue = backup.queue;
-            const restoredConfig = backup.config; 
             currentIndex = backup.index;
             sessionSeconds = backup.seconds;
             localStorage.removeItem('edeetos_aborted_session_backup');
@@ -2108,7 +2003,7 @@ function checkAndRestoreAbortedSession() {
     return false;
 }
 
-window.addEventListener('beforeunload', (e) => {
+window.addEventListener('beforeunload', () => {
     if (!isIntentionalExit && quizQueue && quizQueue.length > 0 && !isExamMode && !activeRoomId) {
         localStorage.setItem('edeetos_aborted_session_backup', JSON.stringify({
             queue: quizQueue,
@@ -2119,26 +2014,9 @@ window.addEventListener('beforeunload', (e) => {
     }
 });
 
-window.addEventListener('unload', () => {
-    if (activeRoomId) {
-        const isGuest = localStorage.getItem('is_study_guest') === 'true';
-        if (roomRef) {
-            import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js").then(({ updateDoc, deleteField }) => {
-                if (isGuest && currentUserId) {
-                    updateDoc(roomRef, { [`activeMembers.${currentUserId}`]: deleteField() });
-                } else if (!isGuest) {
-                    updateDoc(roomRef, { status: "ended" });
-                }
-            });
-        }
-    }
-});
-
 checkAndRestoreAbortedSession();
 
-// ==========================================
-// ADMIN: GITHUB COMMIT HANDLER
-// ==========================================
+const btnPushEdits = document.getElementById('btn-push-edits');
 if (btnPushEdits) {
     btnPushEdits.onclick = async () => {
         let token = localStorage.getItem('edeetos_github_pat');
@@ -2346,7 +2224,7 @@ if (btnPushEdits) {
                 await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
             }
 
-            alert(`✅ Success! CSV, Metadata, and Hierarchy synced to GitHub.\n\n⚠️ IMPORTANT: You MUST run your Python script locally to generate and push the updated micro-chunks (Subjects/Systems/Exams). Frontend JS cannot generate 100+ files safely.`);
+            alert(`✅ Success! CSV, Metadata, and Hierarchy synced to GitHub.\n\n⚠️ IMPORTANT: You MUST run your Python script locally to generate and push the updated micro-chunks (Subjects/Systems/Exams).`);
             localStorage.removeItem('edeetos_pending_edits');
             btnPushEdits.style.display = 'none';
 
