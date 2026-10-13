@@ -32,8 +32,51 @@ function isBookSession() {
 }
 
 // ==========================================
-// HELPER FUNCTIONS (Carried over from questions.js)
+// 2. DOM ELEMENTS
 // ==========================================
+const cardEl = document.querySelector('.question-card'); 
+const timerDisplay = document.getElementById('timer-display');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const wrongCountNumEl = document.getElementById('wrong-count-num');
+const rightCountNumEl = document.getElementById('right-count-num');
+const feedbackFill = document.getElementById('feedback-fill');
+const explanationBtn = document.getElementById('show-explanation-btn');
+const explanationModal = document.getElementById('explanation-modal');
+const explanationText = document.getElementById('explanation-text');
+const closeExplanationBtn = document.getElementById('close-explanation');
+const questionIdBadge = document.getElementById('question-id-badge');
+const numberGrid = document.getElementById('number-grid');
+const skipBtn = document.getElementById('skip-btn');
+const skippedWarningEl = document.getElementById('skipped-warning');
+const notesModal = document.getElementById('notes-modal');
+const noteInput = document.getElementById('note-input');
+const closeNotesBtn = document.getElementById('close-notes-btn');
+const saveNoteBtn = document.getElementById('save-note-btn');
+const qTimerDisplay = document.getElementById('question-timer-display');
+const labValuesBtn = document.getElementById('lab-values-btn');
+const labValuesModal = document.getElementById('lab-values-modal');
+const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
+const modalNextBtn = document.getElementById('modal-next-btn');
+const aiHintBtn = document.getElementById('ai-hint-btn');
+const copyQBtn = document.getElementById('copy-q-btn');
+const editQBtn = document.getElementById('edit-q-btn');
+const adminEditModal = document.getElementById('admin-edit-modal');
+const btnCancelEdit = document.getElementById('btn-cancel-edit');
+const btnSaveGithub = document.getElementById('btn-save-github');
+const staticPauseBtn = document.getElementById('pause-btn');
+
+if (isExamMode) {
+    document.body.classList.add('mode-exam');
+    sessionSeconds = quizConfig.timer * 60; 
+    if (staticPauseBtn) staticPauseBtn.style.display = 'none';
+} else if (staticPauseBtn) {
+    staticPauseBtn.onclick = () => {
+        isPaused = true;
+        document.getElementById('pause-overlay').style.display = 'flex';
+    };
+}
+
 function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     const parts = String(examStr).split("-").map(p => p.trim());
     let examYear = fallbackYear;
@@ -59,49 +102,12 @@ function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     return { examYear, examSpec };
 }
 
-const cardEl = document.querySelector('.question-card'); 
-const timerDisplay = document.getElementById('timer-display');
-const questionTextEl = document.getElementById('question-text');
-const optionsContainer = document.getElementById('options-container');
-const wrongCountEl = document.getElementById('wrong-count');
-const rightCountEl = document.getElementById('right-count');
-const feedbackFill = document.getElementById('feedback-fill');
-const explanationBtn = document.getElementById('show-explanation-btn');
-const explanationModal = document.getElementById('explanation-modal');
-const explanationText = document.getElementById('explanation-text');
-const closeExplanationBtn = document.getElementById('close-explanation');
-const questionIdBadge = document.getElementById('question-id-badge');
-const numberGrid = document.getElementById('number-grid');
-const skipBtn = document.getElementById('skip-btn');
-const skippedWarningEl = document.getElementById('skipped-warning');
-const notesModal = document.getElementById('notes-modal');
-const noteInput = document.getElementById('note-input');
-const closeNotesBtn = document.getElementById('close-notes-btn');
-const saveNoteBtn = document.getElementById('save-note-btn');
-const qTimerDisplay = document.getElementById('question-timer-display');
-const labValuesBtn = document.getElementById('lab-values-btn');
-const labValuesModal = document.getElementById('lab-values-modal');
-const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
-const modalNextBtn = document.getElementById('modal-next-btn');
-const aiHintBtn = document.getElementById('ai-hint-btn');
-const copyQBtn = document.getElementById('copy-q-btn');
-const editQBtn = document.getElementById('edit-q-btn');
-const adminEditModal = document.getElementById('admin-edit-modal');
-const btnCancelEdit = document.getElementById('btn-cancel-edit');
-const btnSaveGithub = document.getElementById('btn-save-github');
-
-if (isExamMode) {
-    document.body.classList.add('mode-exam');
-    sessionSeconds = quizConfig.timer * 60; 
-}
-
 async function loadSession() {
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') return;
-    if (quizQueue && quizQueue.length > 0) return; // Skip if a backup was already restored
+    if (quizQueue && quizQueue.length > 0) return; 
 
     return new Promise((resolve) => {
         const request = indexedDB.open("EdeetosDB", 1);
-        
         request.onupgradeneeded = (e) => { e.target.result.createObjectStore("quiz_sessions"); };
 
         request.onsuccess = (e) => {
@@ -119,8 +125,6 @@ async function loadSession() {
                     q.sessionState = null; 
                     q.historicalState = null; 
                     q.sequenceNumber = i + 1; 
-                    
-                    // CRITICAL FIX: If this queue came from a friend challenge, strip the host's answers so they don't leak.
                     q.userSelectedAnswer = null;
                     q.eliminatedOptions = [];
                 });
@@ -135,7 +139,7 @@ async function loadSession() {
 // 3. INITIALIZATION & FIREBASE AUTH
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
-    await loadSession(); // FORCE THE QUEUE TO LOAD BEFORE FIREBASE CHECKS IT
+    await loadSession(); 
     
     if (user) {
         currentUserId = user.uid; 
@@ -149,9 +153,7 @@ onAuthStateChanged(auth, async (user) => {
                 currentUserData = dbData;
 
 				if (activeRoomId) {
-					await updateDoc(roomRef, {
-						[`activeMembers.${currentUserId}`]: dbData.fullName || "Student"
-					});
+					await updateDoc(roomRef, { [`activeMembers.${currentUserId}`]: dbData.fullName || "Student" });
 				}
 
                 if (dbData.isBanned || dbData.role === 'BANNED') {
@@ -180,22 +182,10 @@ onAuthStateChanged(auth, async (user) => {
                 const courseData = dbData[activeCourse] || {};
                 const booksData = dbData.books || {};
                 const savedNotes = { ...(courseData.notes || {}), ...(booksData.notes || {}) };
-                const savedBookmarks = [
-                    ...(courseData.bookmarks || []),
-                    ...(booksData.bookmarks || [])
-                ];
-                const solvedList = [
-                    ...(courseData.solvedQuestions || []),
-                    ...(booksData.solvedQuestions || [])
-                ];
-                const mistakesList = [
-                    ...(courseData.mistakes || []),
-                    ...(booksData.mistakes || [])
-                ];
-                const examMistakesList = [
-                    ...(courseData.examMistakes || []),
-                    ...(booksData.examMistakes || [])
-                ];
+                const savedBookmarks = [...(courseData.bookmarks || []), ...(booksData.bookmarks || [])];
+                const solvedList = [...(courseData.solvedQuestions || []), ...(booksData.solvedQuestions || [])];
+                const mistakesList = [...(courseData.mistakes || []), ...(booksData.mistakes || [])];
+                const examMistakesList = [...(courseData.examMistakes || []), ...(booksData.examMistakes || [])];
 
                 quizQueue.forEach(q => {
                     q.isBookmarked = savedBookmarks.includes(q.originalNumber);
@@ -207,17 +197,14 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 });
             }
-
-        } catch (error) {
-            console.error("Firebase Load Error:", error);
-        } finally {
+        } catch (error) { console.error("Firebase Load Error:", error); } 
+        finally {
             if (quizQueue && quizQueue.length > 0) {
                 startTimer();
                 if (!isExamMode) buildNumberGrid();
                 loadQuestion(0);
             }
         }
-
     } else {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             if (quizQueue && quizQueue.length > 0) {
@@ -225,9 +212,7 @@ onAuthStateChanged(auth, async (user) => {
                 if (!isExamMode) buildNumberGrid();
                 loadQuestion(0);
             }
-        } else {
-            window.location.href = 'login.html';
-        }
+        } else { window.location.href = 'login.html'; }
     }
 });
 
@@ -297,17 +282,13 @@ function buildNumberGrid() {
         
         numBtn.onclick = () => {
             if (isExamMode) return; 
-            
             if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
                 alert("Only the host can jump to different questions.");
                 return;
             }
-            
             if(index === currentIndex) return;
             const direction = index > currentIndex ? 'right' : 'left';
-            
             if (activeRoomId) syncNextQuestion(index); 
-            
             triggerSlideTransition(index, direction);
         };
         numberGrid.appendChild(numBtn);
@@ -349,10 +330,7 @@ function showSkippedModal() {
         <button id="btn-understood-skip" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Understood (Enter)</button>
     `;
     document.body.appendChild(modal);
-
-    document.getElementById('btn-understood-skip').onclick = () => {
-        modal.remove();
-    };
+    document.getElementById('btn-understood-skip').onclick = () => modal.remove();
 }
 
 function showMustAnswerModal() {
@@ -369,10 +347,7 @@ function showMustAnswerModal() {
         </div>
     `;
     document.body.appendChild(modal);
-
-    document.getElementById('btn-understood-must-answer').onclick = () => {
-        modal.remove();
-    };
+    document.getElementById('btn-understood-must-answer').onclick = () => modal.remove();
 }
 
 let quillHint, quillExplanation, quillQuestion;
@@ -389,9 +364,6 @@ function loadQuestion(index) {
         const forceBtn = document.getElementById('host-force-reveal-btn');
         if (forceBtn) forceBtn.style.display = 'none';
 
-        // ==========================================
-        // ADMIN/MANAGEMENT BUTTON VISIBILITY CHECK
-        // ==========================================
         const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
         if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
             if (copyQBtn) copyQBtn.style.display = 'flex';
@@ -411,14 +383,14 @@ function loadQuestion(index) {
         
         if (aiHintBtn) {
             aiHintBtn.style.display = 'none'; 
-            aiHintBtn.innerHTML = `<i class="fas fa-lightbulb"></i> Hint`; 
+            aiHintBtn.innerHTML = `<i class="far fa-lightbulb"></i> Hint`; 
         }
         
         if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; 
         if (!isExamMode) updateFeedbackBar();
         
         if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
-            explanationBtn.style.display = 'inline-block';
+            explanationBtn.style.display = 'flex';
         } else {
             explanationBtn.style.display = 'none'; 
             explanationModal.classList.remove('show');
@@ -426,23 +398,23 @@ function loadQuestion(index) {
 
         const displayNum = currentQuestionData.sequenceNumber || (currentIndex + 1);
         if (questionIdBadge) {
-            questionIdBadge.textContent = isExamMode ? `Question ${displayNum} / ${quizQueue.length}` : `Question ${displayNum}`;
+            questionIdBadge.textContent = isExamMode ? `Question ${displayNum} of ${quizQueue.length}` : `Question ${displayNum} of ${quizQueue.length}`;
         }
 
         const diffBadge = document.getElementById('question-difficulty-badge');
         if (diffBadge) {
             const diffText = (currentQuestionData.Difficulty || "").toLowerCase().trim();
-            const baseStyle = "display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.5px;";
+            diffBadge.style.display = "inline-block";
             
             if (diffText === 'easy') {
                 diffBadge.textContent = "Easy";
-                diffBadge.style.cssText = `${baseStyle} background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3);`;
+                diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.8); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);";
             } else if (diffText === 'medium') {
                 diffBadge.textContent = "Medium";
-                diffBadge.style.cssText = `${baseStyle} background: rgba(245, 158, 11, 0.15); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.3);`;
+                diffBadge.style.cssText = "background: rgba(217, 119, 6, 0.8); box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);";
             } else if (diffText === 'hard') {
                 diffBadge.textContent = "Hard";
-                diffBadge.style.cssText = `${baseStyle} background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3);`;
+                diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.8); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);";
             } else {
                 diffBadge.style.display = "none";
             }
@@ -459,9 +431,9 @@ function loadQuestion(index) {
                 }
             } else {
                 skippedWarningEl.classList.add('hidden');
-                skipBtn.style.display = 'block';
+                skipBtn.style.display = 'flex';
             }
-            document.getElementById('next-btn').textContent = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : "Next";
+            document.getElementById('next-btn').innerHTML = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : 'Next Question <i class="fas fa-arrow-right"></i>';
         }
 
         const examYearInfo = document.getElementById('exam-year-info');
@@ -482,22 +454,20 @@ function loadQuestion(index) {
 
             if ((yearList.length > 0 || examList.length > 0 || specList.length > 0) && !isExamMode) {
                 examYearInfo.style.display = 'flex';
-                examYearInfo.style.flexWrap = 'wrap';
-                examYearInfo.style.gap = '8px';
                 
                 if (yearList.length > 0) {
-                    badgesHTML += `<span style="background: #e2e8f0; color: #475569; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;"><i class="fas fa-history" style="margin-right: 4px;"></i> ${yearList.join(', ')}</span>`;
+                    badgesHTML += `<span style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6); color: #1e293b; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;">Years: ${yearList.join(', ')}</span>`;
                 }
 
                 specList.forEach(sp => {
                     if (sp.trim()) {
-                        badgesHTML += `<span style="background: rgba(168, 85, 247, 0.15); color: #7e22ce; border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;"><i class="fas fa-stethoscope" style="margin-right: 4px;"></i> ${sp.trim()}</span>`;
+                        badgesHTML += `<span style="background: #34d399; color: #064e3b; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-tag" style="margin-right: 4px;"></i> ${sp.trim()}</span>`;
                     }
                 });
                 
                 examList.forEach(ex => {
                     if (ex.trim()) {
-                        badgesHTML += `<span style="background: rgba(59, 130, 246, 0.15); color: #1e3a8a; border: 1px solid rgba(59, 130, 246, 0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;"><i class="fas fa-file-signature" style="margin-right: 4px;"></i> ${ex.trim()}</span>`;
+                        badgesHTML += `<span style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6); color: #1e293b; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;">${ex.trim()}</span>`;
                     }
                 });
                 
@@ -516,11 +486,14 @@ function loadQuestion(index) {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
             optBox.style.cursor = 'pointer';
+            optBox.style.display = 'flex'; 
+            optBox.style.justifyContent = 'space-between'; 
+            optBox.style.alignItems = 'center';
             optBox.setAttribute('role', 'button');
             optBox.setAttribute('tabindex', '0');
             optBox.setAttribute('onclick', 'void(0);');
             
-if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+            if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
             } else if (!isExamMode && hasAnsweredCorrectly && !activeRoomId) {
                 if (opt.isCorrect) optBox.classList.add('correct');
@@ -531,7 +504,7 @@ if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('strikethrough');
             }
 
-optBox.innerHTML = `
+            optBox.innerHTML = `
                 <div class="option-text">${opt.text}</div>
                 <div style="display: flex; gap: 8px;">
                     <button class="strike-btn" style="background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; padding: 2px 6px; transition: 0.2s;" title="Strike out option">
@@ -723,7 +696,7 @@ optBox.innerHTML = `
                 if (!quillHint) {
                     const toolbarOptions = [
                         ['bold', 'italic', 'underline', 'strike'], 
-                        [{ 'script': 'sub'}, { 'script': 'super' }], // Added Sub/Super
+                        [{ 'script': 'sub'}, { 'script': 'super' }], 
                         [{ 'color': [] }, { 'background': [] }],
                         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
                         [{ 'align': [] }],
@@ -734,7 +707,6 @@ optBox.innerHTML = `
                     quillExplanation = new Quill('#edit-q-explanation', { theme: 'snow', modules: { toolbar: toolbarOptions } });
                 }
 
-                // Populate Metadata (Checking both Uppercase and Lowercase from Python script)
                 document.getElementById('edit-q-id').value = currentQuestionData.originalNumber || currentQuestionData.id || currentQuestionData.QuestionID || "";
                 quillQuestion.root.innerHTML = currentQuestionData.text || currentQuestionData.question || "";
                 document.getElementById('edit-q-subject').value = currentQuestionData.Subject || currentQuestionData.subject || "";
@@ -752,15 +724,13 @@ optBox.innerHTML = `
                 const examVal = currentQuestionData.Exam || currentQuestionData.exams || currentQuestionData.exam || "";
                 document.getElementById('edit-q-exam').value = Array.isArray(examVal) ? examVal.join(', ') : examVal;
                 
-                // Load HTML into the visual editors
                 quillHint.root.innerHTML = currentQuestionData.hint || "";
                 quillExplanation.root.innerHTML = currentQuestionData.explanation || "";
 
-                // Populate Options
                 const optsContainer = document.getElementById('edit-options-container');
                 optsContainer.innerHTML = '';
                 
-if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
+                if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                     currentQuestionData.options.forEach((opt, idx) => {
                         const letter = String.fromCharCode(65 + idx);
                         const isCorrect = opt.isCorrect ? "checked" : "";
@@ -777,7 +747,6 @@ if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                         `;
                     });
 
-                    // Cursor-aware tag injection for Option fields
                     document.querySelectorAll('.tag-inject-btn').forEach(btn => {
                         btn.onclick = (e) => {
                             e.preventDefault();
@@ -822,11 +791,8 @@ if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                     if (radio.checked) correctLetter = String.fromCharCode(65 + index);
                 });
 
-// Decodes structural blocks and inline styles without breaking math symbols
                 const unescapeHTML = (str) => {
-                    // 1. Target specific HTML tags and their attributes
                     let html = str.replace(/&lt;(\/?(h[1-6]|p|strong|em|sub|sup|br|div|span|ul|li|ol|b|i|u)(?:\s+[^&>]+)?)\&gt;/gi, '<$1>');
-                    // 2. Fix the quotation marks that Quill escapes inside your style tags
                     return html.replace(/&quot;/g, '"');
                 };
 
@@ -836,32 +802,31 @@ if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
 
                 const specFallback = Array.isArray(currentQuestionData.Specialty || currentQuestionData.specialty || "") ? (currentQuestionData.Specialty || currentQuestionData.specialty).join(', ') : (currentQuestionData.Specialty || currentQuestionData.specialty || "");
 
-const updatedRow = {
-    "QuestionID": targetId,
-    "Year": document.getElementById('edit-q-year').value.trim(),
-    "Specialty": document.getElementById('edit-q-specialty') ? document.getElementById('edit-q-specialty').value.trim() : specFallback,
-    "Exam": document.getElementById('edit-q-exam').value.trim(),
-    "Subject": document.getElementById('edit-q-subject').value.trim(),
-    "Chapter": document.getElementById('edit-q-chapter').value.trim(),
-    "Topic": document.getElementById('edit-q-topic').value.trim(),
-    "Question": questionHTML,
-    "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
-    "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
-    "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
-    "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "",
-    "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
-    "CorrectAnswer": correctLetter,
-    "Explanation": explanationHTML,
-    "Hint": hintHTML,
-    "Difficulty": document.getElementById('edit-q-diff').value
-};
+                const updatedRow = {
+                    "QuestionID": targetId,
+                    "Year": document.getElementById('edit-q-year').value.trim(),
+                    "Specialty": document.getElementById('edit-q-specialty') ? document.getElementById('edit-q-specialty').value.trim() : specFallback,
+                    "Exam": document.getElementById('edit-q-exam').value.trim(),
+                    "Subject": document.getElementById('edit-q-subject').value.trim(),
+                    "Chapter": document.getElementById('edit-q-chapter').value.trim(),
+                    "Topic": document.getElementById('edit-q-topic').value.trim(),
+                    "Question": questionHTML,
+                    "OptionA": document.getElementById('edit-opt-0')?.value.trim() || "",
+                    "OptionB": document.getElementById('edit-opt-1')?.value.trim() || "",
+                    "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
+                    "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "",
+                    "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
+                    "CorrectAnswer": correctLetter,
+                    "Explanation": explanationHTML,
+                    "Hint": hintHTML,
+                    "Difficulty": document.getElementById('edit-q-diff').value
+                };
 
                 const isBook = currentQuestionData.isBookQuestion === true;
                 const courseFile = isBook ? currentQuestionData.bookName : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
 
-// Add to the local Queue
-let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
-const existingIndex = pendingEditsQueue.findIndex(e => e.row["QuestionID"] === targetId);
+                let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
+                const existingIndex = pendingEditsQueue.findIndex(e => e.row["QuestionID"] === targetId);
                 
                 if (existingIndex !== -1) {
                     pendingEditsQueue[existingIndex] = { row: updatedRow, courseFile, isBook };
@@ -871,7 +836,6 @@ const existingIndex = pendingEditsQueue.findIndex(e => e.row["QuestionID"] === t
                 
                 localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
 
-                // Instantly update the UI so you can see your changes while studying
                 currentQuestionData.text = updatedRow["Question"];
                 currentQuestionData.explanation = updatedRow["Explanation"];
                 currentQuestionData.hint = updatedRow["Hint"];
@@ -886,7 +850,6 @@ const existingIndex = pendingEditsQueue.findIndex(e => e.row["QuestionID"] === t
                 questionTextEl.innerHTML = currentQuestionData.text;
                 explanationText.innerHTML = currentQuestionData.explanation;
 
-                // Close the modal
                 adminEditModal.classList.remove('show');
                 setTimeout(() => adminEditModal.classList.add('hidden'), 300);
             };
@@ -922,7 +885,7 @@ async function savePracticeProgress(questionId, isCorrect) {
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     let updates = {};
 
-if (isCorrect) {
+    if (isCorrect) {
         updates.solvedQuestions = arrayUnion(questionId); 
         if (wrongAttempts === 0) {
             updates.mistakes = arrayRemove(questionId);      
@@ -946,7 +909,6 @@ async function savePracticeTime(timeInSeconds) {
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     
     try {
-        // Uses increment to continuously add to their lifetime practice total
         await setDoc(userRef, { [rootKey]: { practiceTimeSpent: increment(timeInSeconds) } }, { merge: true });
     } catch (error) { console.error("Error saving practice time:", error); }
 }
@@ -1077,7 +1039,7 @@ function handleOptionClick(event, optionData, optionElement) {
         
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
-        explanationBtn.style.display = 'inline-block'; 
+        explanationBtn.style.display = 'flex'; 
         setTimeout(() => {
             if (explanationModal) {
                 explanationModal.classList.remove('hidden');
@@ -1088,8 +1050,9 @@ function handleOptionClick(event, optionData, optionElement) {
 }
 
 function updateFeedbackBar() {
-    wrongCountEl.textContent = `${wrongAttempts} ✖`;
-    rightCountEl.textContent = `${hasAnsweredCorrectly ? 1 : 0} ✔`;
+    if (wrongCountNumEl) wrongCountNumEl.textContent = wrongAttempts;
+    if (rightCountNumEl) rightCountNumEl.textContent = hasAnsweredCorrectly ? 1 : 0;
+    
     const totalAttempts = wrongAttempts + (hasAnsweredCorrectly ? 1 : 0);
     if (totalAttempts > 0) {
         const percentGreen = (hasAnsweredCorrectly ? 1 : 0) / totalAttempts * 100;
@@ -1121,22 +1084,18 @@ if (questionTextEl) {
     questionTextEl.style.webkitUserSelect = 'text';
 
     const handleTextSelection = () => {
-        // A short timeout ensures mobile OS native selection finishes registering
         setTimeout(() => {
             const selection = window.getSelection();
             const selectedText = selection.toString().trim();
             
-            // Ensure selection is actually inside the question text
             if (selectedText.length > 0 && questionTextEl.contains(selection.anchorNode)) {
                 const range = selection.getRangeAt(0);
                 const rect = range.getBoundingClientRect();
                 
                 floatingHighlightBtn.style.top = `${rect.top + window.scrollY - 45}px`;
-                // Center the popup over the selection
                 floatingHighlightBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
                 floatingHighlightBtn.style.display = 'flex';
                 
-                // Use mousedown/touchstart to apply styling BEFORE the browser clears the selection
                 const applyYellow = (e) => {
                     e.preventDefault(); 
                     applyTextFormat(range, selection, 'background-color: #fef08a; padding: 2px 4px; border-radius: 4px; color: #1e293b;');
@@ -1162,11 +1121,9 @@ if (questionTextEl) {
         }, 50);
     };
 
-    // Listen for desktop mouse release and mobile touch release
     questionTextEl.addEventListener('mouseup', handleTextSelection);
     questionTextEl.addEventListener('touchend', handleTextSelection);
 
-    // Actively monitor for selection changes/clears
     document.addEventListener('selectionchange', () => {
         const selection = window.getSelection();
         if (selection.toString().trim().length === 0) {
@@ -1174,7 +1131,6 @@ if (questionTextEl) {
         }
     });
 
-    // Hide toolkit when tapping/clicking elsewhere
     const hideToolkit = (e) => {
         if (e.target.closest('#floating-toolkit') === null) {
             floatingHighlightBtn.style.display = 'none';
@@ -1190,13 +1146,11 @@ function applyTextFormat(range, selection, inlineStyles) {
         const mark = document.createElement('span');
         mark.style.cssText = inlineStyles;
 
-        // Extract the selected content safely to handle compound nodes
         const fragment = range.extractContents();
         mark.appendChild(fragment);
         range.insertNode(mark);
     } catch (err) {
         console.warn("Highlighter fallback applied for compound node layouts.");
-        // Non-destructive fallback if node structure is too complex
         const mark = document.createElement('mark');
         mark.style.cssText = inlineStyles;
         range.surroundContents(mark);
@@ -1232,7 +1186,7 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     }
     
     updateFeedbackBar();
-    explanationBtn.style.display = 'inline-block';
+    explanationBtn.style.display = 'flex';
     document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
 
     document.querySelectorAll('.option-box').forEach(box => {
@@ -1383,10 +1337,8 @@ if (roomRef) {
 // 8. EXAM SUBMISSION & RESULTS
 // ==========================================
 
-// Intentional Exit Flag
 let isIntentionalExit = false;
 
-// Helper function to navigate away safely without triggering backups
 function exitSafely(url) {
     isIntentionalExit = true;
     localStorage.removeItem('edeetos_aborted_session_backup');
@@ -1452,7 +1404,6 @@ function showResults() {
             const code = Math.random().toString(36).substring(2, 7).toUpperCase();
             
             try {
-                // CRITICAL FIX: Aggressively scrub the queue so the host's answers NEVER leak to the friend.
                 const sanitizedQueue = quizQueue.map(q => {
                     const newQ = { ...q };
                     newQ.userSelectedAnswer = null;
@@ -1476,10 +1427,8 @@ function showResults() {
                     timestamp: serverTimestamp()
                 });
                 
-                // Format the share message
                 const challengeText = `I just wrapped up a rigorous mock exam on EDEETOS and scored ${correctCount} out of ${total}! 🎯\n\nThink you have what it takes to beat my accuracy and time? Step up to the Friend Challenge and prove it.\n\nDrop my Challenge Code in the app: *${code}*\n\nLet's see who really knows their stuff!`;
                 
-                // Set modal values
                 if (shareMsgEl) shareMsgEl.innerText = challengeText;
                 
                 if (whatsappShareBtn) {
@@ -1494,7 +1443,6 @@ function showResults() {
                                 setTimeout(() => copyShareBtn.innerHTML = `<i class="fas fa-copy"></i> Copy Message`, 2000);
                             });
                         } else {
-                            // Old browser/HTTP fallback
                             const textArea = document.createElement("textarea");
                             textArea.value = challengeText;
                             document.body.appendChild(textArea);
@@ -1519,9 +1467,8 @@ function showResults() {
                 }
                 
                 challengeBtn.innerHTML = `🎯 Challenge Code: <strong>${code}</strong>`;
-                challengeBtn.disabled = false; // Allow re-opening the modal
+                challengeBtn.disabled = false; 
                 
-                // Show the share modal
                 if (shareModal) {
                     shareModal.classList.remove('hidden');
                     shareModal.classList.add('show');
@@ -1539,7 +1486,6 @@ function showResults() {
     const returnBtn = document.getElementById('btn-return-home');
     const reviewBtn = document.getElementById('btn-review-exam-mistakes');
     
-    // Core function to push the score to Firebase
     const saveExamData = async () => {
         const timeTaken = (quizConfig.timer * 60) - sessionSeconds; 
         const tasks = [];
@@ -1566,7 +1512,6 @@ function showResults() {
             
             await saveExamData();
             
-            // Set up a new practice session with only the mistakes using IndexedDB
             const mistakeQuestions = quizQueue.filter(q => mistakeIds.includes(q.originalNumber));
             const request = indexedDB.open("EdeetosDB", 1);
             
@@ -1640,46 +1585,18 @@ function showPracticeCompleteModal(isGuest = false) {
 // ==========================================
 let isPaused = false;
 
-const pauseOverlay = document.createElement('div');
-pauseOverlay.id = 'pause-overlay';
-pauseOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.98); z-index: 999999; display: none; flex-direction: column; justify-content: center; align-items: center; color: white;";
-pauseOverlay.innerHTML = `
-    <i class="fas fa-pause-circle" style="font-size: 5rem; color: #3b82f6; margin-bottom: 20px;"></i>
-    <h1 style="font-family: 'Nunito', sans-serif; margin-bottom: 10px;">Session Paused</h1>
-    <p style="color: #94a3b8; margin-bottom: 30px;">Timer is frozen. Question text is hidden to prevent cheating.</p>
-    <button id="btn-resume-quiz" class="btn-solid" style="background: #10b981; border: none; padding: 15px 30px; border-radius: 12px; font-size: 1.2rem; cursor: pointer; font-weight: bold; color: white;">Resume Session</button>
-`;
-document.body.appendChild(pauseOverlay);
-
-document.getElementById('btn-resume-quiz').onclick = () => {
-    isPaused = false;
-    pauseOverlay.style.display = 'none';
-};
-
 function startTimer() {
-    // CRITICAL FIX: The Pause Button is completely blocked from generating if it is Exam Mode
-    if (!isExamMode && timerDisplay && timerDisplay.parentElement && !document.getElementById('pause-btn')) {
-        const pauseBtn = document.createElement('button');
-        pauseBtn.id = 'pause-btn';
-        pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-        
-        // UI FIX: Stylized to match the green pill container with proper contrast
-        pauseBtn.style.cssText = "background: white; border: 1px solid #a7f3d0; color: #065f46; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: all 0.2s; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); height: fit-content;";
-        
-        // UI FIX: Appended to the outer horizontal flex container (next to the total time block), preventing it from dropping below the numbers
-        timerDisplay.parentElement.parentElement.appendChild(pauseBtn);
-        
-        pauseBtn.onclick = () => {
-            isPaused = true;
-            pauseOverlay.style.display = 'flex';
-        };
-    }
-
     timerInterval = setInterval(() => {
         if (isPaused) return; 
 
         if (isExamMode) {
             sessionSeconds--; 
+            
+            const totalS = quizConfig.timer * 60;
+            const dash = Math.max(0, (sessionSeconds / totalS) * 100);
+            const totalCircle = document.querySelector('.total-q-circle');
+            if (totalCircle) totalCircle.setAttribute('stroke-dasharray', `${dash}, 100`);
+
             if (sessionSeconds <= 0) {
                 clearInterval(timerInterval);
                 alert("Time is up! Submitting exam automatically.");
@@ -1730,7 +1647,7 @@ function startTimer() {
 
             if (!isExamMode && !hasAnsweredCorrectly && currentQuestionData.timeSpent === 15) {
                 if (aiHintBtn) {
-                    aiHintBtn.style.display = 'inline-flex';
+                    aiHintBtn.style.display = 'flex';
                     aiHintBtn.classList.add('pop-in'); 
                 }
             }
@@ -1799,7 +1716,6 @@ if (aiHintBtn) {
                 hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, labs, and time-course carefully.";
             }
 
-            // Create a dynamic modal to render the HTML hint properly
             const hintModal = document.createElement('div');
             hintModal.id = 'dynamic-hint-modal';
             hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
@@ -1816,7 +1732,6 @@ if (aiHintBtn) {
             
             document.body.appendChild(hintModal);
 
-            // Close the modal and remove it from the DOM when clicked
             document.getElementById('close-dynamic-hint').onclick = () => {
                 hintModal.remove();
             };
@@ -1836,7 +1751,7 @@ document.getElementById('next-btn').onclick = async () => {
     }
     if (isExamMode) {
         if (!currentQuestionData.userSelectedAnswer) {
-            showMustAnswerModal(); // Replaced native alert()
+            showMustAnswerModal();
             return;
         }
         if (currentIndex === quizQueue.length - 1) return showResults();
@@ -1891,10 +1806,8 @@ document.addEventListener('keydown', (e) => {
     const activeEl = document.activeElement;
     if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) return; 
     
-    // Check if Quill editor is active
     if (activeEl && activeEl.classList.contains('ql-editor')) return;
 
-    // Add this block to close the Must Answer modal using Enter
     const mustAnswerModal = document.getElementById('must-answer-modal');
     if (mustAnswerModal && e.key === 'Enter') {
         e.preventDefault();
@@ -1914,7 +1827,6 @@ document.addEventListener('keydown', (e) => {
     const explanationModalLocal = document.getElementById('explanation-modal');
     const isExplanationOpen = explanationModalLocal && explanationModalLocal.classList.contains('show');
 
-// Intercept physical number keys directly to bypass OS NumLock/Shift overrides
     if (e.code === 'Numpad1' || e.code === 'Digit1') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(0) : selectOptionByIndex(0); return; }
     if (e.code === 'Numpad2' || e.code === 'Digit2') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(1) : selectOptionByIndex(1); return; }
     if (e.code === 'Numpad3' || e.code === 'Digit3') { e.preventDefault(); e.shiftKey ? toggleStrikeByIndex(2) : selectOptionByIndex(2); return; }
@@ -1932,7 +1844,7 @@ document.addEventListener('keydown', (e) => {
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
         case 'h': case 'H': e.preventDefault(); if (aiHintBtn && aiHintBtn.style.display !== 'none') aiHintBtn.click(); break;
         case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) document.getElementById('close-shortcuts-btn').click(); else if (isExplanationOpen) document.getElementById('close-explanation').click(); else exitSafely('questions.html'); break; 
-case 'Enter': 
+        case 'Enter': 
             e.preventDefault(); 
             const dynamicHintBtn = document.getElementById('close-dynamic-hint');
             const practiceHomeBtn = document.getElementById('btn-practice-home');
@@ -1956,8 +1868,7 @@ case 'Enter':
                 if (isPaused && resumeBtnP) {
                     resumeBtnP.click();
                 } else {
-                    const pauseBtnLocal = document.getElementById('pause-btn');
-                    if (pauseBtnLocal) pauseBtnLocal.click();
+                    if (staticPauseBtn) staticPauseBtn.click();
                 }
             }
             break;
@@ -2032,7 +1943,7 @@ if (globalExitBtn) {
                 try {
                     const tasks = [
                         updateSpacedRepetition(),
-                        !isExamMode ? savePracticeTime(sessionSeconds) : Promise.resolve(), // Saves practice time
+                        !isExamMode ? savePracticeTime(sessionSeconds) : Promise.resolve(), 
                         setDoc(doc(db, "study_rooms", activeRoomId), {
                             status: "waiting",
                             answers: {},           
@@ -2062,7 +1973,7 @@ if (globalExitBtn) {
 
         try {
             const tasks = [updateSpacedRepetition()];
-            if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds)); // Saves practice time
+            if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds)); 
 
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
@@ -2183,7 +2094,6 @@ function checkAndRestoreAbortedSession() {
         if (confirm("We noticed your last practice session ended unexpectedly. Would you like to restore your progress?")) {
             const backup = JSON.parse(backupStr);
             quizQueue = backup.queue;
-            // Need to parse config again to restore the object
             const restoredConfig = backup.config; 
             currentIndex = backup.index;
             sessionSeconds = backup.seconds;
@@ -2196,7 +2106,6 @@ function checkAndRestoreAbortedSession() {
 }
 
 window.addEventListener('beforeunload', (e) => {
-    // Only save the backup if the exit flag is false
     if (!isIntentionalExit && quizQueue && quizQueue.length > 0 && !isExamMode && !activeRoomId) {
         localStorage.setItem('edeetos_aborted_session_backup', JSON.stringify({
             queue: quizQueue,
@@ -2208,7 +2117,6 @@ window.addEventListener('beforeunload', (e) => {
 });
 
 window.addEventListener('unload', () => {
-    // Clean up the study room instantly if a user closes the window
     if (activeRoomId) {
         const isGuest = localStorage.getItem('is_study_guest') === 'true';
         if (roomRef) {
@@ -2419,7 +2327,6 @@ if (btnPushEdits) {
                 if (isBook) {
                     await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
                 } else {
-                    // Generates the lightweight index for the UI
                     const metadataList = outQs.map(q => ({
                         id: q.id,
                         year: q.year,
