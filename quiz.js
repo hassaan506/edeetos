@@ -276,6 +276,7 @@ function buildNumberGrid() {
         const stateToShow = q.sessionState || q.historicalState;
         if (stateToShow === 'correct') numBtn.classList.add('correct');
         else if (stateToShow === 'wrong' || stateToShow === 'wrong_then_correct') numBtn.classList.add('incorrect');
+        else if (stateToShow === 'skipped') numBtn.classList.add('skipped');
         
         numBtn.id = `grid-num-${index}`;
         numBtn.textContent = index + 1;
@@ -486,9 +487,6 @@ function loadQuestion(index) {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
             optBox.style.cursor = 'pointer';
-            optBox.style.display = 'flex'; 
-            optBox.style.justifyContent = 'space-between'; 
-            optBox.style.alignItems = 'center';
             optBox.setAttribute('role', 'button');
             optBox.setAttribute('tabindex', '0');
             optBox.setAttribute('onclick', 'void(0);');
@@ -506,11 +504,7 @@ function loadQuestion(index) {
 
             optBox.innerHTML = `
                 <div class="option-text">${opt.text}</div>
-                <div style="display: flex; gap: 8px;">
-                    <button class="strike-btn" style="background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; padding: 2px 6px; transition: 0.2s;" title="Strike out option">
-                        <i class="fas fa-strikethrough"></i>
-                    </button>
-                </div>
+                <button class="strike-btn" title="Strike out option"><i class="fas fa-strikethrough"></i></button>
             `;
             
             optBox.addEventListener('click', (e) => {
@@ -643,9 +637,6 @@ function loadQuestion(index) {
             };
         }
 
-        // ==========================================
-        // ADMIN COPY QUESTION LOGIC
-        // ==========================================
         if (copyQBtn) {
             copyQBtn.onclick = () => {
                 if (!currentQuestionData) return;
@@ -685,14 +676,10 @@ function loadQuestion(index) {
             };
         }
 
-        // ==========================================
-        // ADMIN EDIT QUESTION LOGIC & RICH TEXT
-        // ==========================================
         if (editQBtn) {
             editQBtn.onclick = () => {
                 if (!currentQuestionData) return;
 
-                // Initialize Quill editors if they don't exist yet
                 if (!quillHint) {
                     const toolbarOptions = [
                         ['bold', 'italic', 'underline', 'strike'], 
@@ -970,20 +957,7 @@ async function saveNoteToFirebase(questionId, noteText) {
 }
 
 function handleOptionClick(event, optionData, optionElement) {
-    if (event.target.classList.contains('eye-icon')) {
-        optionElement.classList.toggle('strikethrough');
-        
-        if (!currentQuestionData.eliminatedOptions) {
-            currentQuestionData.eliminatedOptions = [];
-        }
-        
-        if (optionElement.classList.contains('strikethrough')) {
-            currentQuestionData.eliminatedOptions.push(optionData.text);
-        } else {
-            currentQuestionData.eliminatedOptions = currentQuestionData.eliminatedOptions.filter(t => t !== optionData.text);
-        }
-        return; 
-    }
+    if (event.target.closest('.strike-btn')) return; // Handled directly in loadQuestion listener
 
     if (isExamMode) {
         document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
@@ -1016,7 +990,7 @@ function handleOptionClick(event, optionData, optionElement) {
         if (!currentQuestionData.sessionState) {
             currentQuestionData.sessionState = 'wrong'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) { btn.classList.remove('correct'); btn.classList.add('incorrect'); }
+            if (btn) { btn.classList.remove('correct', 'skipped'); btn.classList.add('incorrect'); }
         }
         savePracticeProgress(currentQuestionData.originalNumber, false); 
         
@@ -1029,10 +1003,10 @@ function handleOptionClick(event, optionData, optionElement) {
         document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
         updateFeedbackBar();
 
-        if (!currentQuestionData.sessionState) {
+        if (!currentQuestionData.sessionState || currentQuestionData.sessionState === 'skipped') {
             currentQuestionData.sessionState = 'correct'; 
             const btn = document.getElementById(`grid-num-${currentIndex}`);
-            if (btn) { btn.classList.remove('incorrect'); btn.classList.add('correct'); }
+            if (btn) { btn.classList.remove('incorrect', 'skipped'); btn.classList.add('correct'); }
         } else if (currentQuestionData.sessionState === 'wrong') {
             currentQuestionData.sessionState = 'wrong_then_correct';
         }
@@ -1586,14 +1560,18 @@ function showPracticeCompleteModal(isGuest = false) {
 let isPaused = false;
 
 function startTimer() {
+    // Determine allowed time dynamically based on the queue length (1.2 mins/72 seconds per Q)
+    const allowedSeconds = quizQueue.length * 72; 
+
     timerInterval = setInterval(() => {
         if (isPaused) return; 
 
         if (isExamMode) {
             sessionSeconds--; 
             
-            const totalS = quizConfig.timer * 60;
-            const dash = Math.max(0, (sessionSeconds / totalS) * 100);
+            // Fill based on countdown for exam
+            const totalExamSecs = quizConfig.timer * 60;
+            const dash = Math.max(0, (sessionSeconds / totalExamSecs) * 100);
             const totalCircle = document.querySelector('.total-q-circle');
             if (totalCircle) totalCircle.setAttribute('stroke-dasharray', `${dash}, 100`);
 
@@ -1605,6 +1583,11 @@ function startTimer() {
             }
         } else { 
             sessionSeconds++; 
+            
+            // Fill based on count-up for practice
+            const dash = Math.min(100, (sessionSeconds / allowedSeconds) * 100);
+            const totalCircle = document.querySelector('.total-q-circle');
+            if (totalCircle) totalCircle.setAttribute('stroke-dasharray', `${dash}, 100`);
         }
 
         const sMins = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
@@ -1656,10 +1639,23 @@ function startTimer() {
 }
 
 skipBtn.onclick = () => {
-    let skippedQuestion = quizQueue.splice(currentIndex, 1)[0];
-    skippedQuestion.hasBeenSkipped = true;
-    quizQueue.push(skippedQuestion);
-    triggerSlideTransition(currentIndex, 'right');
+    // Record state but do NOT move to the back of the queue
+    if (!currentQuestionData.sessionState) {
+        currentQuestionData.sessionState = 'skipped';
+        currentQuestionData.hasBeenSkipped = true;
+        const btn = document.getElementById(`grid-num-${currentIndex}`);
+        if (btn) btn.classList.add('skipped');
+    }
+
+    if (currentIndex < quizQueue.length - 1) {
+        const newIndex = currentIndex + 1;
+        syncNextQuestion(newIndex);
+        triggerSlideTransition(newIndex, 'right');
+    } else if (!isExamMode) {
+        showPracticeCompleteModal(false);
+    } else {
+        showResults();
+    }
 };
 
 if (labValuesBtn) labValuesBtn.onclick = () => {
@@ -1721,12 +1717,12 @@ if (aiHintBtn) {
             hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
             
             hintModal.innerHTML = `
-                <div style="background: white; padding: 30px; border-radius: 16px; max-width: 500px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
-                    <h2 style="color: #f59e0b; margin-top: 0; margin-bottom: 15px; font-family: 'Nunito', sans-serif;"><i class="fas fa-lightbulb"></i> Hint</h2>
-                    <div style="color: #334155; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; text-align: left;">
+                <div style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.15); padding: 30px; border-radius: 16px; max-width: 500px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
+                    <h2 style="color: #c084fc; margin-top: 0; margin-bottom: 15px; font-family: 'Nunito', sans-serif;"><i class="far fa-lightbulb"></i> Hint</h2>
+                    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; text-align: left;">
                         ${hintText}
                     </div>
-                    <button id="close-dynamic-hint" style="background: #3b82f6; color: white; border: none; padding: 0.8rem 2rem; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; width: 100%; transition: 0.3s;">Got it!</button>
+                    <button id="close-dynamic-hint" style="background: rgba(139, 92, 246, 0.2); color: #d8b4fe; border: 1px solid #8b5cf6; padding: 0.8rem 2rem; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; width: 100%; transition: 0.3s;">Got it!</button>
                 </div>
             `;
             
@@ -1749,11 +1745,18 @@ document.getElementById('next-btn').onclick = async () => {
         alert("Only the host can jump to different questions.");
         return;
     }
+
+    // MANDATORY ANSWER CHECK logic
+    const hasAttempted = isExamMode 
+        ? currentQuestionData.userSelectedAnswer !== null 
+        : (hasAnsweredCorrectly || wrongAttempts > 0 || currentQuestionData.sessionState === 'skipped');
+        
+    if (!hasAttempted) {
+        showMustAnswerModal();
+        return;
+    }
+
     if (isExamMode) {
-        if (!currentQuestionData.userSelectedAnswer) {
-            showMustAnswerModal();
-            return;
-        }
         if (currentIndex === quizQueue.length - 1) return showResults();
     }
 

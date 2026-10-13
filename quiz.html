@@ -17,10 +17,10 @@
 </head>
 <body class="quiz-body">
     
-    <div id="anti-screenshot-screen" class="hidden-overlay">
-        <i class="fas fa-user-shield"></i>
-        <h2>Screenshots Prohibited</h2>
-        <p>For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
+    <div id="anti-screenshot-screen" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000000; z-index: 2147483647; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <i class="fas fa-user-shield" style="color: #475569; font-size: 4rem; margin-bottom: 1.5rem;"></i>
+        <h2 style="color: white; font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem;">Screenshots Prohibited</h2>
+        <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1rem; max-width: 400px;">For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
         <button onclick="document.getElementById('anti-screenshot-screen').style.display='none'" class="btn-solid red-btn">I Understand</button>
     </div>
 
@@ -30,7 +30,7 @@
         <div class="top-nav-bar">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
             <div class="top-tools">
-                <button id="shortcuts-btn" class="pill-btn"><i class="fas fa-key"></i> Keys</button>
+                <button id="shortcuts-btn" class="pill-btn"><i class="fas fa-keyboard"></i> Keys</button>
                 <button id="lab-values-btn" class="pill-btn"><span class="status-dot"></span> Labs</button>
                 <button id="pause-btn" class="pill-btn">Pause</button>
             </div>
@@ -47,7 +47,7 @@
                         
                         <div class="card-header-simple">
                             <div class="header-left">
-                                <div class="question-count-text" id="question-id-badge">Question 1 of 34</div>
+                                <div class="question-count-text" id="question-id-badge">Question 1</div>
                                 <div id="question-difficulty-badge" class="difficulty-pill">Medium</div>
                             </div>
                             
@@ -104,14 +104,19 @@
                 
                 <div class="glass-panel timer-panel">
                     <div class="circular-timer">
-                        <svg viewBox="0 0 36 36" class="circular-chart"><path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /><path class="circle current-q-circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
+                        <!-- Current Q timer: ONLY background circle, no filling path -->
+                        <svg viewBox="0 0 36 36" class="circular-chart"><path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
                         <div class="timer-text">
                             <span>Current Q</span>
                             <strong id="question-timer-display">00:00</strong>
                         </div>
                     </div>
                     <div class="circular-timer">
-                        <svg viewBox="0 0 36 36" class="circular-chart"><path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /><path class="circle total-q-circle" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
+                        <!-- Total Q timer: Path starts at 0, filled dynamically by JS -->
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle total-q-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
                         <div class="timer-text">
                             <span>Total Time</span>
                             <strong id="timer-display">00:00</strong>
@@ -120,11 +125,12 @@
                 </div>
 
                 <div class="glass-panel utility-panel">
-                    <button id="edit-q-btn" class="icon-btn square-tool hidden"><i class="fas fa-edit"></i></button>
-                    <button id="copy-q-btn" class="icon-btn square-tool hidden"><i class="far fa-copy"></i></button>
-                    <button id="note-btn" class="icon-btn square-tool"><i class="fas fa-pen"></i></button>
-                    <button id="bookmark-btn" class="icon-btn square-tool"><i class="far fa-star"></i></button>
-                    <button id="btn-report" class="icon-btn square-tool"><i class="far fa-flag"></i></button>
+                    <!-- Display none added for JS visibility toggle -->
+                    <button id="edit-q-btn" class="icon-btn square-tool" style="display: none;" title="Edit Question (Admin)"><i class="fas fa-edit"></i></button>
+                    <button id="copy-q-btn" class="icon-btn square-tool" style="display: none;" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
+                    <button id="note-btn" class="icon-btn square-tool" title="Your personal notes"><i class="fas fa-pen"></i></button>
+                    <button id="bookmark-btn" class="icon-btn square-tool" title="Save the question"><i class="far fa-star"></i></button>
+                    <button id="btn-report" class="icon-btn square-tool" title="Report the question"><i class="far fa-flag"></i></button>
                 </div>
 
                 <div class="glass-panel matrix-panel">
@@ -159,7 +165,7 @@
         </div>
     </div>
 
-    <!-- Lab Values Modal -->
+    <!-- Full Lab Values Modal -->
     <div id="lab-values-modal" class="modal-overlay hidden">
         <div class="glass-panel modal-content">
             <h3><i class="fas fa-flask"></i> Normal Laboratory Values</h3>
@@ -192,8 +198,73 @@
 					<tr><td>Alkaline Phosphatase (ALP)</td><td>44 - 147 U/L</td></tr>
 					<tr><td>Gamma GT (GGT)</td><td>9 - 48 U/L</td></tr>
 					<tr><td>Total Bilirubin</td><td>0.1 - 1.2 mg/dL</td></tr>
+					<tr><td>Direct Bilirubin</td><td>0 - 0.3 mg/dL</td></tr>
+					<tr><td>Indirect Bilirubin</td><td>0.2 - 0.9 mg/dL</td></tr>
 					<tr><td>Albumin</td><td>3.5 - 5.0 g/dL</td></tr>
 					<tr><td>Total Protein</td><td>6.4 - 8.3 g/dL</td></tr>
+					<tr><td>HbA1c</td><td>Normal: &lt;5.7% | Prediabetes: 5.7-6.4% | Diabetes: ≥6.5%</td></tr>
+					<tr><td>Random Blood Glucose</td><td>&lt;140 mg/dL</td></tr>
+					<tr><td>2-hour OGTT</td><td>&lt;140 mg/dL</td></tr>
+					<tr><td>Total Cholesterol</td><td>&lt;200 mg/dL</td></tr>
+					<tr><td>LDL Cholesterol</td><td>&lt;100 mg/dL</td></tr>
+					<tr><td>HDL Cholesterol</td><td>Male: &gt;40 | Female: &gt;50 mg/dL</td></tr>
+					<tr><td>Triglycerides</td><td>&lt;150 mg/dL</td></tr>
+					<tr><td>VLDL</td><td>5 - 40 mg/dL</td></tr>
+					<tr><td>PT</td><td>11 - 13.5 sec</td></tr>
+					<tr><td>INR</td><td>0.8 - 1.2</td></tr>
+					<tr><td>aPTT</td><td>25 - 35 sec</td></tr>
+					<tr><td>Fibrinogen</td><td>200 - 400 mg/dL</td></tr>
+					<tr><td>D-Dimer</td><td>&lt;500 ng/mL</td></tr>
+					<tr><td>Troponin I</td><td>&lt;0.04 ng/mL</td></tr>
+					<tr><td>Troponin T</td><td>&lt;14 ng/L</td></tr>
+					<tr><td>CK (CPK)</td><td>20 - 200 U/L</td></tr>
+					<tr><td>CK-MB</td><td>&lt;5 ng/mL</td></tr>
+					<tr><td>BNP</td><td>&lt;100 pg/mL</td></tr>
+					<tr><td>NT-proBNP</td><td>&lt;125 pg/mL (&lt;75 years)</td></tr>
+					<tr><td>Amylase</td><td>30 - 110 U/L</td></tr>
+					<tr><td>Lipase</td><td>10 - 140 U/L</td></tr>
+					<tr><td>Lactate</td><td>0.5 - 2.2 mmol/L</td></tr>
+					<tr><td>C-Reactive Protein (CRP)</td><td>&lt;5 mg/L</td></tr>
+					<tr><td>Procalcitonin</td><td>&lt;0.1 ng/mL</td></tr>
+					<tr><td>Ferritin</td><td>Male: 30 - 400 | Female: 15 - 150 ng/mL</td></tr>
+					<tr><td>Serum Iron</td><td>60 - 170 µg/dL</td></tr>
+					<tr><td>Total Iron Binding Capacity (TIBC)</td><td>240 - 450 µg/dL</td></tr>
+					<tr><td>Transferrin Saturation</td><td>20 - 50%</td></tr>
+					<tr><td>TSH</td><td>0.4 - 4.0 mIU/L</td></tr>
+					<tr><td>Free T4</td><td>0.8 - 1.8 ng/dL</td></tr>
+					<tr><td>Free T3</td><td>2.3 - 4.2 pg/mL</td></tr>
+					<tr><td>Vitamin B12</td><td>200 - 900 pg/mL</td></tr>
+					<tr><td>Folate</td><td>3 - 20 ng/mL</td></tr>
+					<tr><td>Vitamin D (25-OH)</td><td>30 - 100 ng/mL</td></tr>
+					<tr><td>Parathyroid Hormone (PTH)</td><td>10 - 65 pg/mL</td></tr>
+					<tr><td>Uric Acid</td><td>Male: 3.4 - 7.0 | Female: 2.4 - 6.0 mg/dL</td></tr>
+					<tr><td>Ammonia</td><td>15 - 45 µg/dL</td></tr>
+					<tr><td>β-hCG (Non-pregnant Female)</td><td>&lt;5 mIU/mL</td></tr>
+					<tr><td>Lactate Dehydrogenase (LDH)</td><td>140 - 280 U/L</td></tr>
+					<tr><td>Haptoglobin</td><td>30 - 200 mg/dL</td></tr>
+					<tr><td>Reticulocyte Count</td><td>0.5 - 2.5%</td></tr>
+					<tr><td>Osmolal Gap</td><td>&lt;10 mOsm/kg</td></tr>
+					<tr><td>Anion Gap</td><td>8 - 12 mEq/L</td></tr>
+					<tr><td>Urine Color</td><td>Pale yellow to amber</td></tr>
+					<tr><td>Appearance</td><td>Clear</td></tr>
+					<tr><td>Specific Gravity</td><td>1.005 - 1.030</td></tr>
+					<tr><td>Urine pH</td><td>4.5 - 8.0</td></tr>
+					<tr><td>Protein</td><td>Negative</td></tr>
+					<tr><td>Glucose</td><td>Negative</td></tr>
+					<tr><td>Ketones</td><td>Negative</td></tr>
+					<tr><td>Blood (Hemoglobin)</td><td>Negative</td></tr>
+					<tr><td>Red Blood Cells (RBC)</td><td>0 - 2 /HPF</td></tr>
+					<tr><td>White Blood Cells (WBC)</td><td>0 - 5 /HPF</td></tr>
+					<tr><td>Nitrite</td><td>Negative</td></tr>
+					<tr><td>Leukocyte Esterase</td><td>Negative</td></tr>
+					<tr><td>Bilirubin</td><td>Negative</td></tr>
+					<tr><td>Urobilinogen</td><td>0.2 - 1.0 EU/dL</td></tr>
+					<tr><td>Casts</td><td>None to occasional hyaline casts</td></tr>
+					<tr><td>Crystals</td><td>None</td></tr>
+					<tr><td>Bacteria</td><td>None</td></tr>
+					<tr><td>Epithelial Cells</td><td>0 - 5 /HPF</td></tr>
+					<tr><td>Urine Osmolality</td><td>300 - 900 mOsm/kg</td></tr>
+					<tr><td>24-hour Urine Protein</td><td>&lt;150 mg/day</td></tr>
                 </table>
             </div>
             <button id="close-lab-values-btn" class="action-btn text-btn full-width">Close Reference</button>
