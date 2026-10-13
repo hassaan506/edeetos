@@ -318,7 +318,7 @@ if (globalSearch) {
                 if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
                 if (!passesDifficultyFilter(q)) return false; 
                 const questionText = q.Question || q.question || q.text || q.statement || "";
-                const textToSearch = `${q.Subject || ''} ${q.Chapter || ''} ${q.Topic || ''} ${questionText}`.toLowerCase();
+                const textToSearch = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic || ''} ${questionText}`.toLowerCase();
                 return textToSearch.includes(query);
             });
 
@@ -343,7 +343,7 @@ if (globalSearch) {
                 matchedQuestions.slice(0, 30).forEach(q => {
                     const div = document.createElement('div');
                     div.className = 'search-item';
-                    const title = `${q.Subject || 'Unknown Subject'} > ${q.Chapter || ''} ${q.Topic ? '> ' + q.Topic : ''}`;
+                    const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
                     
                     const questionText = q.Question || q.question || q.text || q.statement || "";
                     const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
@@ -1636,32 +1636,36 @@ function getQuestionCount(view, pathArr, customPool = null) {
             if (!passesDifficultyFilter(q)) return false;
             if (!isGlobalPopupActive && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
             
+            const qSubj = q.Subject || q.subject;
+            const qChap = q.Chapter || q.chapter;
+            const qTop = q.Topic || q.topic;
+
             if (isGlobalPopupActive) {
                 if (paths[0] === "Books") {
                     if (!q.isBookQuestion) return false;
-                    if (paths[1] && q.Subject !== paths[1]) return false;
-                    if (paths[2] && q.Chapter !== paths[2]) return false;
-                    if (paths[3] && q.Topic !== paths[3]) return false;
+                    if (paths[1] && qSubj !== paths[1]) return false;
+                    if (paths[2] && qChap !== paths[2]) return false;
+                    if (paths[3] && qTop !== paths[3]) return false;
                     return true;
                 } else {
                     if (q.isBookQuestion) return false;
-                    if (paths[0] && q.Subject !== paths[0]) return false;
-                    if (paths[1] && q.Chapter !== paths[1]) return false;
-                    if (paths[2] && q.Topic !== paths[2]) return false;
+                    if (paths[0] && qSubj !== paths[0]) return false;
+                    if (paths[1] && qChap !== paths[1]) return false;
+                    if (paths[2] && qTop !== paths[2]) return false;
                     return true;
                 } 
             }
 
             if (view === 'subject') {
                 if (q.isBookQuestion) return false; 
-                if (paths[0] && q.Subject !== paths[0]) return false;
-                if (paths[1] && q.Chapter !== paths[1]) return false;
-                if (paths[2] && q.Topic !== paths[2]) return false;
+                if (paths[0] && qSubj !== paths[0]) return false;
+                if (paths[1] && qChap !== paths[1]) return false;
+                if (paths[2] && qTop !== paths[2]) return false;
             } else if (view === 'system') {
                 if (q.isBookQuestion) return false; 
-                if (paths[0] && q.Chapter !== paths[0]) return false;
-                if (paths[1] && q.Subject !== paths[1]) return false;
-                if (paths[2] && q.Topic !== paths[2]) return false;
+                if (paths[0] && qChap !== paths[0]) return false;
+                if (paths[1] && qSubj !== paths[1]) return false;
+                if (paths[2] && qTop !== paths[2]) return false;
             } else if (view === 'exam') {
                 const toArray = (val) => Array.isArray(val) ? val.map(v => String(v).trim()) : (typeof val === 'string' ? val.split(',').map(v => v.trim()) : (val ? [String(val).trim()] : []));
                 
@@ -1694,11 +1698,13 @@ function getQuestionCount(view, pathArr, customPool = null) {
                     }
                 }
                 if (!matchFound) return false;
+                if (paths[2] && qSubj !== paths[2]) return false;
+                if (paths[3] && qTop !== paths[3]) return false;
 
             } else if (view === 'book') {
                 if (!q.isBookQuestion) return false;
-                if (paths[0] && q.Chapter !== paths[0]) return false;
-                if (paths[1] && q.Topic !== paths[1]) return false;
+                if (paths[0] && qChap !== paths[0]) return false;
+                if (paths[1] && qTop !== paths[1]) return false;
             }
             return true;
         }).length;
@@ -2452,7 +2458,7 @@ if (btnAnalytics) {
         const attemptedSet = new Set(attemptedQuestions);
 
         allQuestions.forEach(q => {
-            const topicName = q.Topic || q.Chapter || q.Subject || "Core Material";
+            const topicName = q.Topic || q.topic || q.Chapter || q.chapter || q.Subject || q.subject || "Core Material";
             const qId = getQID(q);
             
             if (!stats[topicName]) {
@@ -2734,9 +2740,9 @@ function restoreLastState() {
 function buildSubTree(pool) {
     let tree = {};
     pool.forEach(q => {
-        let s = q.Subject || 'Uncategorized';
-        let c = q.Chapter || 'General';
-        let t = q.Topic || 'General';
+        let s = q.Subject || q.subject || 'Uncategorized';
+        let c = q.Chapter || q.chapter || 'General';
+        let t = q.Topic || q.topic || 'General';
         
         if (!tree[s]) tree[s] = {};
         if (!tree[s][c]) tree[s][c] = {};
