@@ -4,7 +4,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 .quiz-body {
-    background: #0f172a; /* Deep modern dark base */
+    background: #0f172a; 
     background-image: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
                       radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 40%);
     min-height: 100vh;
@@ -17,6 +17,7 @@
 }
 
 .quiz-content-wrapper {
+    position: relative;
     max-width: 1200px; width: 100%; margin: 0 auto; 
     padding: 3vh 2rem; 
     display: flex; flex-direction: column; gap: 1.5rem;
@@ -64,7 +65,7 @@
     border-radius: 16px; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
-.question-card { padding: 2rem; }
+.question-card { padding: 2.5rem; }
 .glass-panel { padding: 1.5rem; }
 
 /* --- MAIN CARD HEADER & FEEDBACK --- */
@@ -88,26 +89,34 @@
 /* --- QUESTION TEXT --- */
 .question-text { font-size: 1.25rem; font-weight: 500; color: #ffffff; margin-bottom: 2rem; line-height: 1.6; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
 
-/* --- OPTIONS (FLEX LOCK FIX) --- */
-.options-container { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; } 
+/* --- OPTIONS (FLEX LOCK FIX & LETTERS) --- */
+.options-container { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; counter-reset: optCounter; } 
 .option-box {
     position: relative;
-    padding: 1rem 1rem 1rem 3rem; 
+    padding: 1rem 1rem 1rem 3.5rem; /* Space for the letter */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;  
     cursor: pointer; user-select: none;
     transition: all 0.2s;
+    
+    /* Strict Flex Lock */
     display: flex; justify-content: space-between; align-items: center; gap: 15px;
 }
 
+/* Dynamic Option Letters */
 .option-box::before {
-    content: ''; position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-    width: 16px; height: 16px; border-radius: 50%; 
-    border: 2px solid rgba(255,255,255,0.4); background: transparent;
+    counter-increment: optCounter;
+    content: counter(optCounter, upper-alpha);
+    position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+    width: 26px; height: 26px; border-radius: 50%; 
+    border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.2);
+    display: flex; justify-content: center; align-items: center;
+    font-size: 0.85rem; font-weight: 700; color: #cbd5e1;
     transition: all 0.2s;
 }
 .option-box:hover:not(.locked) { background: rgba(255, 255, 255, 0.1); }
+.option-box:hover:not(.locked)::before { background: rgba(255,255,255,0.15); color: #f8fafc; }
 
 .option-text { 
     font-size: 1.05rem; color: #f8fafc; font-weight: 400; pointer-events: none; 
@@ -118,7 +127,8 @@
 .strike-btn {
     background: rgba(0, 0, 0, 0.3) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: #94a3b8 !important;
     border-radius: 6px; width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;
-    flex-shrink: 0; cursor: pointer; transition: 0.2s;
+    flex-shrink: 0; /* Prevents wrapping/breaking */
+    cursor: pointer; transition: 0.2s;
 }
 .strike-btn:hover { background: rgba(255,255,255,0.1) !important; color: #f8fafc !important; }
 .option-box.strikethrough .strike-btn { background: rgba(239, 68, 68, 0.2) !important; color: #fca5a5 !important; border-color: rgba(239, 68, 68, 0.4) !important; }
@@ -126,13 +136,14 @@
 
 /* Option Selection States */
 .option-box.selected { border-color: #3b82f6; background: rgba(59, 130, 246, 0.15); }
-.option-box.selected::before { background: #3b82f6; border-color: #3b82f6; box-shadow: inset 0 0 0 3px #0f172a; }
+.option-box.selected::before { background: #3b82f6; border-color: #3b82f6; color: white; }
 
 .option-box.incorrect { border-color: #ef4444; background: rgba(239, 68, 68, 0.15); }
+.option-box.incorrect::before { background: #ef4444; border-color: #ef4444; color: white; }
 .option-box.incorrect .option-text { color: #fca5a5; }
 
 .option-box.correct { border-color: #10b981; background: rgba(16, 185, 129, 0.15); }
-.option-box.correct::before { background: #10b981; border-color: #10b981; }
+.option-box.correct::before { background: #10b981; border-color: #10b981; color: white; }
 .option-box.correct .option-text { color: #6ee7b7; font-weight: 600; }
 
 /* --- INSIDE BOTTOM ACTIONS --- */
@@ -144,24 +155,26 @@
 }
 .action-btn:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
 
-.square-btn { width: 45px; height: 45px; }
-.text-btn { padding: 0 1.2rem; height: 45px; }
+.square-btn { width: 45px; height: 45px; font-size: 1.1rem; }
+.text-btn { padding: 0 1.2rem; height: 45px; font-size: 1rem; }
 .hint-btn { border-color: #8b5cf6; background: rgba(139, 92, 246, 0.15); color: #d8b4fe; padding: 0 1.2rem; height: 45px; }
 .explain-btn { padding: 0 1.2rem; height: 45px; border-color: #3b82f6; color: #93c5fd; background: rgba(59, 130, 246, 0.1); }
 .next-btn { 
     background: linear-gradient(90deg, #10b981, #059669); border: none; color: white; 
-    padding: 0 1.5rem; height: 45px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+    padding: 0 1.5rem; height: 45px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); font-size: 1.05rem;
 }
 
 /* --- SIDEBAR TOOLS --- */
+.sidebar-column { display: flex; flex-direction: column; gap: 1.5rem; }
+
 .timer-panel { display: flex; justify-content: space-around; }
 .circular-timer { position: relative; width: 100px; height: 100px; }
 .circular-chart { max-width: 100%; max-height: 100%; }
 .circle-bg { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 3; }
 .circle { fill: none; stroke-width: 3; stroke-linecap: round; stroke: #34d399; transition: stroke-dasharray 1s linear; }
-.timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
-.timer-text span { font-size: 0.65rem; color: #94a3b8; display: block; margin-bottom: 2px; font-weight: 700; text-transform: uppercase; }
-.timer-text strong { color: #f8fafc; font-size: 1.1rem; }
+.timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; }
+.timer-text span { font-size: 0.65rem; color: #94a3b8; display: block; margin-bottom: 2px; font-weight: 800; text-transform: uppercase; }
+.timer-text strong { color: #f8fafc; font-size: 1.1rem; font-weight: 800; }
 
 .utility-panel { display: flex; justify-content: space-between; }
 .square-tool { 
@@ -173,13 +186,13 @@
 
 /* --- MATRIX --- */
 .matrix-title { margin: 0 0 1rem 0; font-size: 0.95rem; color: #f8fafc; font-weight: 700; }
-.number-grid { display: flex; flex-wrap: wrap; gap: 6px; max-height: 200px; overflow-y: auto; align-content: flex-start; padding-right: 5px; }
+.number-grid { display: flex; flex-wrap: wrap; gap: 6px; max-height: 250px; overflow-y: auto; align-content: flex-start; padding-right: 5px; }
 .number-grid::-webkit-scrollbar { width: 6px; }
 .number-grid::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 4px; }
 .number-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
 
-.grid-num { width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; font-size: 0.75rem; color: #cbd5e1; cursor: pointer; transition: 0.2s; }
-.grid-num:hover { background: rgba(255,255,255,0.1); }
+.grid-num { width: 32px; height: 32px; border-radius: 50%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; font-size: 0.75rem; color: #cbd5e1; font-weight: 800; cursor: pointer; transition: 0.2s; }
+.grid-num:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 .grid-num.active { background: #3b82f6; color: white; border-color: #3b82f6; transform: scale(1.1); box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
 .grid-num.correct { background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: #10b981; }
 .grid-num.incorrect { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border-color: #ef4444; }
@@ -259,21 +272,34 @@ kbd { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2)
 .glass-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #e2e8f0; }
 .glass-table tr:hover td { background: rgba(255,255,255,0.05); }
 
-/* Anti-Screenshot Overlay (Fixed visibility logic) */
-#anti-screenshot-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 2147483647; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; }
+/* Anti-Screenshot Overlay */
 .red-btn { background: #ef4444; color: white; padding: 1rem 2.5rem; font-size: 1.1rem; border: none; border-radius: 10px; cursor: pointer; }
 
 /* ========================================== */
 /* 11. EXAM MODE OVERRIDES                    */
 /* ========================================== */
-body.mode-exam .utility-panel, 
-body.mode-exam .matrix-panel, 
-body.mode-exam .hint-btn,
-body.mode-exam .feedback-tracker-mini { display: none !important; }
-.skipped-warning { background: rgba(217, 119, 6, 0.2); color: #fcd34d; padding: 0.8rem 1rem; border-radius: 12px; font-weight: bold; margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(217, 119, 6, 0.4); }
+body.mode-exam .practice-only { display: none !important; }
+body.mode-exam .exam-only { display: flex !important; }
+
+body.mode-exam .quiz-grid-layout { grid-template-columns: 1fr; }
+body.mode-exam .top-nav-bar { align-items: flex-start; }
+
+/* Transform Timer into Pills for Exam Mode */
+.exam-timers { display: flex; gap: 10px; }
+.exam-timer-pill {
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;
+    padding: 0.4rem 1rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;
+}
+.exam-timer-pill strong { color: #f8fafc; }
+.tiny-ring { width: 16px; height: 16px; }
+.tiny-ring .circle { fill: none; stroke-width: 4; stroke: #34d399; stroke-linecap: round; }
+
+body.mode-exam .bottom-actions .skip-btn { flex: 1; }
+body.mode-exam .bottom-actions .next-btn { flex: 1; margin-top: 0; }
 
 /* ========================================== */
-/* 12. ANIMATIONS (Restored for JS Logic)     */
+/* 12. ANIMATIONS (Crucial for JS logic)      */
 /* ========================================== */
 .apply-shake { animation: shakeError 0.5s cubic-bezier(.36,.07,.19,.97) both; }
 @keyframes shakeError { 10%, 90% { transform: translate3d(-2px, 0, 0); } 20%, 80% { transform: translate3d(4px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-8px, 0, 0); } 40%, 60% { transform: translate3d(8px, 0, 0); } }
@@ -295,18 +321,36 @@ body.mode-exam .feedback-tracker-mini { display: none !important; }
 /* ========================================== */
 /* 13. RESPONSIVE MOBILE TWEAKS               */
 /* ========================================== */
+@media (max-width: 1023px) {
+    /* Break grid so we can use order to stack items perfectly */
+    .quiz-grid-layout { display: flex; flex-direction: column; gap: 1rem; }
+    .main-column, .sidebar-column { display: contents; }
+    
+    .timer-panel { order: 1; background: transparent; border: none; box-shadow: none; padding: 0; }
+    .metadata-tags { order: 2; justify-content: center; }
+    .utility-panel { order: 3; background: transparent; border: none; box-shadow: none; padding: 0; justify-content: center; gap: 15px; }
+    .question-card { order: 4; }
+    .bottom-actions { order: 5; background: transparent; border: none; padding: 0; margin-bottom: 1rem; }
+    .matrix-panel { order: 6; }
+    
+    /* Exam Mode Mobile Timer Shift */
+    body.mode-exam .exam-timers { flex-direction: column; align-items: flex-end; }
+}
+
 @media (max-width: 768px) {
     .quiz-content-wrapper { padding: 1rem 0.5rem; padding-bottom: 90px; } 
     .question-card, .glass-panel { padding: 1.2rem; border-radius: 16px; }
     .question-text { font-size: 1.15rem; }
     
     .bottom-actions { 
-        position: fixed; bottom: 0; left: 0; width: 100%; 
-        background: rgba(15,23,42,0.9); backdrop-filter: blur(15px); 
-        padding: 10px; z-index: 100; border-top: 1px solid rgba(255,255,255,0.1); 
-        justify-content: center; 
+        position: fixed; bottom: 0; left: 0; width: 100%; flex-wrap: wrap; gap: 8px; justify-content: space-between;
+        background: rgba(15,23,42,0.95); backdrop-filter: blur(15px); border-top: 1px solid rgba(255,255,255,0.1); 
+        padding: 10px; z-index: 100; border-radius: 20px 20px 0 0;
     }
-    .action-btn { height: 48px; }
+    
+    .square-btn { flex: 0 0 45px; padding: 0; }
+    .text-btn, .hint-btn, .explain-btn { flex: 1; padding: 0; display: flex; justify-content: center; }
+    .next-btn { flex: 0 0 100%; margin-top: 5px; }
     
     .timer-panel { flex-direction: row; justify-content: center; gap: 20px; }
     .circular-timer { width: 80px; height: 80px; }

@@ -26,13 +26,34 @@
 
     <div class="quiz-content-wrapper">
         
-        <!-- TOP NAV: Exit left, Pills right -->
+        <!-- TOP NAV -->
         <div class="top-nav-bar">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
-            <div class="top-tools">
+            <div class="top-tools practice-only">
                 <button id="shortcuts-btn" class="pill-btn"><i class="fas fa-keyboard"></i> Keys</button>
                 <button id="lab-values-btn" class="pill-btn"><span class="status-dot"></span> Labs</button>
-                <button id="pause-btn" class="pill-btn">Pause</button>
+                <button id="pause-btn" class="pill-btn"><i class="fas fa-pause"></i> Pause</button>
+            </div>
+            <!-- Visible ONLY in Exam Mode -->
+            <div class="exam-timers exam-only" style="display: none;">
+                <div class="exam-timer-pill">
+                    <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
+                    Current Q: <strong id="exam-q-timer">00:00</strong>
+                </div>
+                <div class="exam-timer-pill">
+                    <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle total-q-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
+                    Total Time: <strong id="exam-t-timer">00:00</strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="challenge-tracker-wrapper" style="display: none; width: 100%; margin-bottom: 15px; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #e9d5ff; font-weight: bold; margin-bottom: 6px;">
+                <span id="challenge-name-display">Challenger Pace</span>
+                <span id="challenge-target-display">Target: 0%</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.4); border-radius: 4px; overflow: hidden;">
+                <div id="challenge-bar-fill" style="height: 100%; background: #a855f7; width: 0%; box-shadow: 0 0 10px rgba(168,85,247,0.8); transition: width 1s linear;"></div>
             </div>
         </div>
 
@@ -51,7 +72,7 @@
                                 <div id="question-difficulty-badge" class="difficulty-pill">Medium</div>
                             </div>
                             
-                            <div class="feedback-tracker-mini">
+                            <div class="feedback-tracker-mini practice-only">
                                 <span class="feedback-text red-text">Incorrect (<span id="wrong-count-num">0</span>)</span>
                                 <div class="feedback-icon red-x"><i class="fas fa-times"></i></div>
                                 <div class="feedback-bar-bg"><div class="feedback-bar-fill" id="feedback-fill" style="width: 0%;"></div></div>
@@ -79,10 +100,10 @@
 
                     <!-- Bottom Actions INSIDE the card -->
                     <div class="bottom-actions" id="bottom-actions-container">
-                        <button id="prev-btn" class="action-btn square-btn"><i class="fas fa-arrow-left"></i></button>
+                        <button id="prev-btn" class="action-btn square-btn practice-only"><i class="fas fa-arrow-left"></i></button>
                         <button id="skip-btn" class="action-btn square-btn text-btn">Skip</button>
-                        <button id="ai-hint-btn" class="action-btn hint-btn"><i class="far fa-lightbulb"></i> Hint</button>
-                        <button id="show-explanation-btn" class="action-btn explain-btn" style="display: none;">Show Explanation</button>
+                        <button id="ai-hint-btn" class="action-btn hint-btn practice-only" style="display: none;"><i class="far fa-lightbulb"></i> Hint</button>
+                        <button id="show-explanation-btn" class="action-btn explain-btn practice-only" style="display: none;">Show Explanation</button>
                         <div style="flex-grow: 1;"></div>
                         <button id="next-btn" class="action-btn next-btn">Next Question <i class="fas fa-arrow-right"></i></button>
                     </div>
@@ -100,11 +121,10 @@
             </div>
 
             <!-- RIGHT COLUMN -->
-            <div class="sidebar-column">
+            <div class="sidebar-column practice-only">
                 
                 <div class="glass-panel timer-panel">
                     <div class="circular-timer">
-                        <!-- Current Q timer: ONLY background circle, no filling path -->
                         <svg viewBox="0 0 36 36" class="circular-chart"><path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
                         <div class="timer-text">
                             <span>Current Q</span>
@@ -112,7 +132,7 @@
                         </div>
                     </div>
                     <div class="circular-timer">
-                        <!-- Total Q timer: Path starts at 0, filled dynamically by JS -->
+                        <!-- Total Q timer is filled dynamically by JS -->
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                             <path class="circle total-q-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -125,7 +145,7 @@
                 </div>
 
                 <div class="glass-panel utility-panel">
-                    <!-- Display none added for JS visibility toggle -->
+                    <!-- Inline display overrides for JS Admin role checks -->
                     <button id="edit-q-btn" class="icon-btn square-tool" style="display: none;" title="Edit Question (Admin)"><i class="fas fa-edit"></i></button>
                     <button id="copy-q-btn" class="icon-btn square-tool" style="display: none;" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
                     <button id="note-btn" class="icon-btn square-tool" title="Your personal notes"><i class="fas fa-pen"></i></button>
