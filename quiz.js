@@ -16,6 +16,7 @@ let hasAnsweredCorrectly = false;
 let sessionSeconds = 0;
 let timerInterval;
 let isPaused = false;
+let initialTotalQuestions = 0;
 
 let activeRoomId = localStorage.getItem('active_study_room');
 let roomRef = activeRoomId ? doc(db, "study_rooms", activeRoomId) : null;
@@ -37,9 +38,7 @@ function isBookSession() {
 // ==========================================
 const cardEl = document.querySelector('.question-card'); 
 const timerDisplay = document.getElementById('timer-display');
-const timerRingText = document.getElementById('timer-ring-text');
 const qTimerDisplay = document.getElementById('question-timer-display');
-const qTimerRingText = document.getElementById('question-timer-ring-text');
 const currentQCircle = document.getElementById('current-q-circle');
 
 const questionTextEl = document.getElementById('question-text');
@@ -125,7 +124,10 @@ function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
 
 async function loadSession() {
     if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') return;
-    if (quizQueue && quizQueue.length > 0) return; 
+    if (quizQueue && quizQueue.length > 0) {
+        initialTotalQuestions = quizQueue.length;
+        return;
+    }
 
     return new Promise((resolve) => {
         const request = indexedDB.open("EdeetosDB", 1);
@@ -141,6 +143,7 @@ async function loadSession() {
             req.onsuccess = () => {
                 if (!req.result || req.result.length === 0) return window.location.href = 'questions.html';
                 quizQueue = req.result;
+                initialTotalQuestions = quizQueue.length;
                 quizQueue.forEach((q, i) => {     
                     q.originalNumber = q['QuestionID'] || q['Question ID'] || q['ID'] || q['id'] || `q-${i + 1}`; 
                     q.sessionState = null; 
@@ -308,7 +311,16 @@ function buildNumberGrid() {
                 alert("Only the host can jump to different questions.");
                 return;
             }
-            if(index === currentIndex) return;
+            if (index === currentIndex) return;
+
+            const currentAttempted = hasAnsweredCorrectly || wrongAttempts > 0 || (currentQuestionData && currentQuestionData.sessionState !== null);
+            const targetAttempted = quizQueue[index] && quizQueue[index].sessionState !== null;
+
+            if (index > currentIndex && !currentAttempted && !targetAttempted) {
+                showMustAnswerModal();
+                return;
+            }
+
             const direction = index > currentIndex ? 'right' : 'left';
             if (activeRoomId) syncNextQuestion(index); 
             triggerSlideTransition(index, direction);
@@ -344,12 +356,14 @@ function triggerSlideTransition(newIndex, direction) {
 function showSkippedModal() {
     const modal = document.createElement('div');
     modal.id = 'skipped-popup-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.92); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px); padding: 20px;`;
     modal.innerHTML = `
-        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 5rem; margin-bottom: 1.5rem;"></i>
-        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Skipped Questions Phase</h1>
-        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 2rem; max-width: 500px;">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
-        <button id="btn-understood-skip" style="background: #3b82f6; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s;">Understood (Enter)</button>
+        <div class="glass-panel" style="max-width: 460px; padding: 2rem;">
+            <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 4rem; margin-bottom: 1.2rem;"></i>
+            <h2 style="color: white; margin-top: 0; margin-bottom: 0.8rem;">Skipped Questions Phase</h2>
+            <p style="color: #cbd5e1; font-size: 1.05rem; margin-bottom: 1.8rem; line-height: 1.5;">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
+            <button id="btn-understood-skip" class="action-btn next-btn" style="width: 100%;">Understood (Enter)</button>
+        </div>
     `;
     document.body.appendChild(modal);
     document.getElementById('btn-understood-skip').onclick = () => modal.remove();
@@ -386,7 +400,6 @@ function loadQuestion(index) {
         const forceBtn = document.getElementById('host-force-reveal-btn');
         if (forceBtn) forceBtn.style.display = 'none';
 
-        // 1. Copy & Edit ONLY visible for ADMIN or MANAGEMENT
         const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
         if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
             if (copyQBtn) copyQBtn.style.display = 'flex';
@@ -401,19 +414,18 @@ function loadQuestion(index) {
             currentQuestionData = quizQueue[currentIndex];
         }
 
-        wrongAttempts = 0;
-        hasAnsweredCorrectly = false;
+        const alreadySolvedInSession = !isExamMode && (currentQuestionData.sessionState === 'correct' || currentQuestionData.sessionState === 'wrong_then_correct');
+        wrongAttempts = currentQuestionData.wrongAttemptsCount || 0;
+        hasAnsweredCorrectly = alreadySolvedInSession;
         
-        // 2. Hint button hidden initially; appears after 15s in startTimer()
         if (aiHintBtn) {
             aiHintBtn.style.display = 'none'; 
             aiHintBtn.classList.remove('pop-in');
             aiHintBtn.innerHTML = `<i class="far fa-lightbulb"></i> Hint`; 
         }
         
-        // 3. Explanation button hidden initially; appears only after marking correct answer
         if (explanationBtn) {
-            explanationBtn.style.display = 'none';
+            explanationBtn.style.display = (hasAnsweredCorrectly && !isExamMode && !activeRoomId) ? 'flex' : 'none';
         }
         if (explanationModal) {
             explanationModal.classList.remove('show');
@@ -423,24 +435,32 @@ function loadQuestion(index) {
         if (!isExamMode) updateFeedbackBar();
 
         const displayNum = currentQuestionData.sequenceNumber || (currentIndex + 1);
+        const totalToShow = initialTotalQuestions || quizQueue.length;
         if (questionIdBadge) {
-            questionIdBadge.textContent = `Question ${displayNum} of ${quizQueue.length}`;
+            questionIdBadge.textContent = `Question ${displayNum} of ${totalToShow}`;
         }
 
         const diffBadge = document.getElementById('question-difficulty-badge');
+        const diffDot = document.getElementById('difficulty-dot');
         if (diffBadge) {
-            const diffText = (currentQuestionData.Difficulty || "medium").toLowerCase().trim();
-            diffBadge.style.display = "inline-block";
-            
-            if (diffText === 'easy') {
-                diffBadge.textContent = "Easy";
-                diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.3); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.6);";
-            } else if (diffText === 'hard') {
-                diffBadge.textContent = "Hard";
-                diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.3); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.6);";
+            if (isExamMode) {
+                diffBadge.style.display = "none";
+                if (diffDot) diffDot.style.display = "none";
             } else {
-                diffBadge.textContent = "Medium";
-                diffBadge.style.cssText = "background: rgba(217, 119, 6, 0.35); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.6);";
+                const diffText = (currentQuestionData.Difficulty || "medium").toLowerCase().trim();
+                diffBadge.style.display = "inline-block";
+                if (diffDot) diffDot.style.display = "inline";
+                
+                if (diffText === 'easy') {
+                    diffBadge.textContent = "Easy";
+                    diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.3); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.6);";
+                } else if (diffText === 'hard') {
+                    diffBadge.textContent = "Hard";
+                    diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.3); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.6);";
+                } else {
+                    diffBadge.textContent = "Medium";
+                    diffBadge.style.cssText = "background: rgba(217, 119, 6, 0.35); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.6);";
+                }
             }
         }
 
@@ -455,12 +475,14 @@ function loadQuestion(index) {
                 }
             } else {
                 skippedWarningEl.classList.add('hidden');
-                skipBtn.style.display = 'flex';
+                skipBtn.style.display = currentQuestionData.userSelectedAnswer ? 'none' : 'flex';
             }
             document.getElementById('next-btn').innerHTML = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : 'Next Question <i class="fas fa-arrow-right"></i>';
+        } else {
+            skippedWarningEl.classList.add('hidden');
+            skipBtn.style.display = 'flex';
         }
 
-        // Render Metadata Pills matching Picture 2
         const examYearInfo = document.getElementById('exam-year-info');
         if (examYearInfo) {
             examYearInfo.innerHTML = ''; 
@@ -508,7 +530,11 @@ function loadQuestion(index) {
         explanationText.innerHTML = currentQuestionData.explanation || "No explanation provided.";
 
         optionsContainer.innerHTML = '';
-        shuffleArray(currentQuestionData.options);
+        if (!currentQuestionData.hasShuffled) {
+            shuffleArray(currentQuestionData.options);
+            currentQuestionData.hasShuffled = true;
+        }
+
         currentQuestionData.options.forEach(opt => {
             const optBox = document.createElement('div');
             optBox.className = 'option-box';
@@ -553,9 +579,11 @@ function loadQuestion(index) {
         const qMins = Math.floor(qSpent / 60).toString().padStart(2, '0');
         const qSecs = (qSpent % 60).toString().padStart(2, '0');
         if (qTimerDisplay) qTimerDisplay.textContent = `${qMins}:${qSecs}`;
-        if (qTimerRingText) qTimerRingText.textContent = `${qMins}:${qSecs}`;
+        if (currentQCircle) {
+            const qDash = Math.min(100, (qSpent / 72) * 100);
+            currentQCircle.setAttribute('stroke-dasharray', `${qDash}, 100`);
+        }
 
-        // If user returns to a question where >= 15 seconds was already spent in practice mode, show Hint
         if (!isExamMode && !hasAnsweredCorrectly && qSpent >= 15 && aiHintBtn) {
             aiHintBtn.style.display = 'flex';
         }
@@ -1024,6 +1052,7 @@ function handleOptionClick(event, optionData, optionElement) {
         void optionElement.offsetWidth;
         optionElement.classList.add('incorrect', 'apply-shake');
         wrongAttempts++;
+        currentQuestionData.wrongAttemptsCount = wrongAttempts;
         updateFeedbackBar();
         
         if (!currentQuestionData.sessionState) {
@@ -1052,7 +1081,6 @@ function handleOptionClick(event, optionData, optionElement) {
         
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
-        // Show Explain button ONLY now that the user marked the correct answer
         if (explanationBtn) {
             explanationBtn.style.display = 'flex';
             explanationBtn.classList.add('pop-in');
@@ -1264,6 +1292,7 @@ if (roomRef) {
 
             if (isNewBatch && data.questions) {
                 quizQueue = data.questions;
+                initialTotalQuestions = quizQueue.length;
                 quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
                 
                 buildNumberGrid();
@@ -1556,7 +1585,7 @@ function startTimer() {
             }
         } else { 
             sessionSeconds++; 
-            const dash = Math.min(100, Math.max(15, (sessionSeconds / allowedSeconds) * 100));
+            const dash = Math.min(100, (sessionSeconds / allowedSeconds) * 100);
             document.querySelectorAll('.total-q-circle').forEach(c => c.setAttribute('stroke-dasharray', `${dash}, 100`));
         }
 
@@ -1565,7 +1594,6 @@ function startTimer() {
         const formattedTotal = `${sMins}:${sSecs}`;
 
         if (timerDisplay) timerDisplay.textContent = formattedTotal;
-        if (timerRingText) timerRingText.textContent = formattedTotal;
         const examTTimer = document.getElementById('exam-t-timer');
         if (examTTimer) examTTimer.textContent = formattedTotal;
         
@@ -1578,16 +1606,12 @@ function startTimer() {
             const formattedQ = `${qMins}:${qSecs}`;
 
             if (qTimerDisplay) qTimerDisplay.textContent = formattedQ;
-            if (qTimerRingText) qTimerRingText.textContent = formattedQ;
             const examQTimer = document.getElementById('exam-q-timer');
             if (examQTimer) examQTimer.textContent = formattedQ;
 
-            if (currentQCircle) {
-                const qDash = Math.min(100, Math.max(15, (currentQuestionData.timeSpent / 72) * 100));
-                currentQCircle.setAttribute('stroke-dasharray', `${qDash}, 100`);
-            }
+            const qDash = Math.min(100, (currentQuestionData.timeSpent / 72) * 100);
+            document.querySelectorAll('.current-q-circle').forEach(c => c.setAttribute('stroke-dasharray', `${qDash}, 100`));
 
-            // Hint button pops in after 15 seconds if not yet answered in Practice Mode
             if (!isExamMode && !hasAnsweredCorrectly && currentQuestionData.timeSpent === 15) {
                 if (aiHintBtn) {
                     aiHintBtn.style.display = 'flex';
@@ -1599,6 +1623,22 @@ function startTimer() {
 }
 
 skipBtn.onclick = () => {
+    if (isExamMode) {
+        if (currentQuestionData.hasBeenSkipped) return;
+        
+        currentQuestionData.sessionState = 'skipped';
+        currentQuestionData.hasBeenSkipped = true;
+
+        if (currentIndex < quizQueue.length - 1) {
+            const skippedQ = quizQueue.splice(currentIndex, 1)[0];
+            quizQueue.push(skippedQ);
+            triggerSlideTransition(currentIndex, 'right');
+        } else {
+            triggerSlideTransition(currentIndex, 'right');
+        }
+        return;
+    }
+
     if (!currentQuestionData.sessionState) {
         currentQuestionData.sessionState = 'skipped';
         currentQuestionData.hasBeenSkipped = true;
@@ -1610,10 +1650,8 @@ skipBtn.onclick = () => {
         const newIndex = currentIndex + 1;
         syncNextQuestion(newIndex);
         triggerSlideTransition(newIndex, 'right');
-    } else if (!isExamMode) {
-        showPracticeCompleteModal(false);
     } else {
-        showResults();
+        showPracticeCompleteModal(false);
     }
 };
 
@@ -1686,7 +1724,7 @@ if (aiHintBtn) {
             hintModal.innerHTML = `
                 <div style="background: rgba(14, 48, 35, 0.95); backdrop-filter: blur(24px); border: 1px solid rgba(192, 132, 252, 0.4); padding: 28px; border-radius: 18px; max-width: 460px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
                     <h2 style="color: #d8b4fe; margin-top: 0; margin-bottom: 15px;"><i class="far fa-lightbulb"></i> Hint</h2>
-                    <div style="color: #f1f5f9; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; text-align: left;">
+                    <div style="color: #f1f5f9; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; text-align: justify;">
                         ${hintText}
                     </div>
                     <button id="close-dynamic-hint" class="action-btn hint-btn" style="width: 100%;">Got it!</button>
@@ -1711,7 +1749,7 @@ document.getElementById('next-btn').onclick = async () => {
 
     const hasAttempted = isExamMode 
         ? currentQuestionData.userSelectedAnswer !== null 
-        : (hasAnsweredCorrectly || wrongAttempts > 0 || currentQuestionData.sessionState === 'skipped');
+        : (hasAnsweredCorrectly || wrongAttempts > 0 || currentQuestionData.sessionState !== null);
         
     if (!hasAttempted) {
         showMustAnswerModal();
@@ -1823,7 +1861,7 @@ document.addEventListener('keydown', (e) => {
         case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) closeExplanationBtn.click(); else explanationBtn.click(); } break;
         case 'p': case 'P': 
             e.preventDefault(); 
-            if (isExamMode && skipBtn) skipBtn.click(); 
+            if (isExamMode && skipBtn && skipBtn.style.display !== 'none') skipBtn.click(); 
             else if (!isExamMode) {
                 if (isPaused && resumeQuizBtn) resumeQuizBtn.click();
                 else if (staticPauseBtn) staticPauseBtn.click();
@@ -1993,6 +2031,7 @@ function checkAndRestoreAbortedSession() {
         if (confirm("We noticed your last practice session ended unexpectedly. Would you like to restore your progress?")) {
             const backup = JSON.parse(backupStr);
             quizQueue = backup.queue;
+            initialTotalQuestions = quizQueue.length;
             currentIndex = backup.index;
             sessionSeconds = backup.seconds;
             localStorage.removeItem('edeetos_aborted_session_backup');

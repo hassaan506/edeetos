@@ -37,11 +37,11 @@
             <!-- Visible ONLY in Exam Mode -->
             <div class="exam-timers exam-only" style="display: none;">
                 <div class="exam-timer-pill">
-                    <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
+                    <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle current-q-circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
                     Current Q: <strong id="exam-q-timer">00:00</strong>
                 </div>
                 <div class="exam-timer-pill">
-                    <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle total-q-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
+                    <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle total-q-circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
                     Total Time: <strong id="exam-t-timer">00:00</strong>
                 </div>
             </div>
@@ -62,15 +62,15 @@
             <!-- LEFT / MAIN COLUMN -->
             <div class="main-column">
                 
-                <!-- BOX 4: QUESTION CARD (Only Question & Options inside) -->
+                <!-- BOX 4: QUESTION CARD -->
                 <div class="question-card glass-panel">
                     <div id="quiz-ui-container">
                         
                         <div class="card-header-simple">
                             <div class="header-left">
                                 <span class="question-count-text" id="question-id-badge">Question 1 of 34</span>
-                                <span class="header-dot">•</span>
-                                <div id="question-difficulty-badge" class="difficulty-pill">Medium</div>
+                                <span class="header-dot practice-only" id="difficulty-dot">•</span>
+                                <div id="question-difficulty-badge" class="difficulty-pill practice-only">Medium</div>
                             </div>
                             
                             <div class="feedback-tracker-mini practice-only">
@@ -110,13 +110,13 @@
                     </div>
                 </div>
 
-                <!-- BOX 5: BOTTOM ACTIONS (Outside the Question Card, matching Picture 2) -->
+                <!-- BOX 5: BOTTOM ACTIONS -->
                 <div class="bottom-actions" id="bottom-actions-container">
                     <div class="action-row-top">
                         <button id="prev-btn" class="action-btn nav-util-btn practice-only"><i class="fas fa-arrow-left"></i></button>
                         <button id="skip-btn" class="action-btn nav-util-btn">Skip</button>
-                        <button id="ai-hint-btn" class="action-btn hint-btn practice-only"><i class="far fa-lightbulb"></i> Hint</button>
-                        <button id="show-explanation-btn" class="action-btn explain-btn practice-only">Explain</button>
+                        <button id="ai-hint-btn" class="action-btn hint-btn practice-only" style="display: none;"><i class="far fa-lightbulb"></i> Hint</button>
+                        <button id="show-explanation-btn" class="action-btn explain-btn practice-only" style="display: none;">Explain</button>
                     </div>
                     <button id="next-btn" class="action-btn next-btn">Next Question <i class="fas fa-arrow-right"></i></button>
                 </div>
@@ -126,38 +126,28 @@
             <!-- RIGHT / SIDEBAR COLUMN -->
             <div class="sidebar-column practice-only">
                 
-                <!-- BOX 2: TIMER PANEL -->
+                <!-- BOX 2: TIMER PANEL (Only Circular Rings with Green Fill, No Duplicate Digital Text) -->
                 <div class="glass-panel timer-panel">
-                    <div class="timer-side-label left-label">
-                        <span>Current Q</span>
-                        <strong id="question-timer-display">00:00</strong>
-                    </div>
-
-                    <div class="timers-rings-group">
-                        <div class="circular-timer">
-                            <svg viewBox="0 0 36 36" class="circular-chart">
-                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path class="circle current-q-circle" id="current-q-circle" stroke-dasharray="25, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                            </svg>
-                            <div class="timer-ring-inner">
-                                <strong id="question-timer-ring-text">00:00</strong>
-                            </div>
-                        </div>
-
-                        <div class="circular-timer">
-                            <svg viewBox="0 0 36 36" class="circular-chart">
-                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path class="circle total-q-circle" stroke-dasharray="25, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                            </svg>
-                            <div class="timer-ring-inner">
-                                <strong id="timer-ring-text">00:00</strong>
-                            </div>
+                    <div class="circular-timer">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle current-q-circle" id="current-q-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="timer-ring-inner">
+                            <span>Current Q</span>
+                            <strong id="question-timer-display">00:00</strong>
                         </div>
                     </div>
 
-                    <div class="timer-side-label right-label">
-                        <span>Total Time</span>
-                        <strong id="timer-display">00:00</strong>
+                    <div class="circular-timer">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle total-q-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="timer-ring-inner">
+                            <span>Total Time</span>
+                            <strong id="timer-display">00:00</strong>
+                        </div>
                     </div>
                 </div>
 
@@ -165,8 +155,8 @@
                 <div class="glass-panel meta-utility-panel">
                     <div id="exam-year-info" class="metadata-tags"></div>
                     <div class="utility-panel">
-                        <button id="edit-q-btn" class="icon-btn square-tool" title="Edit Question (Admin)"><i class="fas fa-pen"></i></button>
-                        <button id="copy-q-btn" class="icon-btn square-tool" title="Copy Question"><i class="far fa-copy"></i></button>
+                        <button id="edit-q-btn" class="icon-btn square-tool" style="display: none;" title="Edit Question (Admin)"><i class="fas fa-pen"></i></button>
+                        <button id="copy-q-btn" class="icon-btn square-tool" style="display: none;" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
                         <button id="note-btn" class="icon-btn square-tool" title="Your personal notes"><i class="fas fa-pencil-alt"></i></button>
                         <button id="bookmark-btn" class="icon-btn square-tool" title="Save the question"><i class="far fa-star"></i></button>
                         <button id="btn-report" class="icon-btn square-tool" title="Report the question"><i class="far fa-flag"></i></button>
@@ -175,7 +165,6 @@
 
                 <!-- BOX 6: QUESTION NAVIGATION MATRIX -->
                 <div class="glass-panel matrix-panel">
-                    <h4 class="matrix-title">Question Navigation</h4>
                     <div class="number-grid" id="number-grid"></div>
                     
                     <div class="matrix-legend">
@@ -192,7 +181,7 @@
     </div>
     
     <!-- ========================================== -->
-    <!-- OVERHAULED DARK MODALS                     -->
+    <!-- MODALS                                     -->
     <!-- ========================================== -->
 
     <!-- Pause Overlay Modal -->
