@@ -144,12 +144,12 @@
     <!-- OVERLAYS & MODALS                          -->
     <!-- ========================================== -->
 
-    <!-- === NEW: FLOATING MENTOR ALERT === -->
+    <!-- === FLOATING MENTOR ALERT === -->
     <div id="mentor-alert-banner" class="mentor-alert-floating view-hidden">
         <span>🚨</span> <span>Incoming Chat Request! Tap to answer.</span>
     </div>
 
-    <!-- === NEW: LOCKOUT SCREEN MODAL === -->
+    <!-- === LOCKOUT SCREEN MODAL === -->
     <div id="lockout-screen" class="popup-overlay view-hidden z-99999" style="background-color: rgba(6, 9, 17, 0.98);">
         <div class="glass-panel popup-content text-center" style="border-color: rgba(239, 68, 68, 0.4);">
              <i class="fas fa-ban text-orange icon-xl mb-1" style="color: #ef4444 !important; font-size: 5rem;"></i>
@@ -159,7 +159,7 @@
         </div>
     </div>
 
-    <!-- === NEW: ASSIGNED TASKS MODAL === -->
+    <!-- === ASSIGNED TASKS MODAL === -->
     <div id="assigned-tasks-modal" class="popup-overlay view-hidden z-9999">
         <div class="glass-panel popup-content text-left" style="max-width: 550px;">
             <div class="flex-between mb-1 modal-section-title">
@@ -172,7 +172,7 @@
         </div>
     </div>
 
-    <!-- === NEW: GUEST COURSE SELECTOR MODAL === -->
+    <!-- === GUEST COURSE SELECTOR MODAL === -->
     <div id="guest-course-modal" class="popup-overlay view-hidden z-99999">
         <div class="glass-panel popup-content text-center">
             <h3 class="modal-title-blue"><i class="fas fa-user-graduate"></i> Select Demo Course</h3>
@@ -196,13 +196,13 @@
                 </optgroup>
             </select>
             <div class="grid-half">
-                <button id="btn-cancel-guest" class="action-btn w-100">Cancel</button>
+                <button id="btn-cancel-guest" class="action-btn w-100 btn-close-modal">Cancel</button>
                 <button id="btn-confirm-guest" class="action-btn next-btn w-100">Explore</button>
             </div>
         </div>
     </div>
 
-    <!-- === NEW: ROOM CREATED MODAL === -->
+    <!-- === ROOM CREATED MODAL === -->
     <div id="room-created-modal" class="popup-overlay view-hidden z-9999">
         <div class="glass-panel popup-content text-center" style="max-width: 400px;">
             <h2 class="modal-title-dark mb-05">Room Created 🎉</h2>
@@ -216,7 +216,7 @@
     </div>
 
     <!-- === JOIN GROUP STUDY MODAL === -->
-    <div id="join-room-modal" class="popup-overlay view-hidden">
+    <div id="join-room-modal" class="popup-overlay view-hidden z-9999">
         <div class="glass-panel popup-content text-center">
             <div class="modal-icon-xl mb-1">🔑</div>
             <h2 class="modal-title-blue mt-0">Join Group Study</h2>
@@ -227,7 +227,7 @@
             <button id="btn-submit-join" class="action-btn next-btn w-100 mb-1" style="padding: 1rem; font-size: 1.1rem;">
                 Join Room
             </button>
-            <button id="btn-close-join" class="btn-text-muted">Cancel</button>
+            <button id="btn-close-join" class="btn-close-modal btn-text-muted">Cancel</button>
         </div>
     </div>
 
@@ -259,7 +259,7 @@
     </div>
 
     <!-- === USER PROFILE MODAL === -->
-    <div id="profile-modal" class="popup-overlay view-hidden">
+    <div id="profile-modal" class="popup-overlay view-hidden z-9999">
         <div class="glass-panel popup-content text-left" style="max-width: 550px;">
             <button class="btn-close-modal btn-close-corner">&times;</button>
             
@@ -375,7 +375,7 @@
     </div>
 
     <!-- === PREMIUM UNLOCK MODAL === -->
-    <div id="premium-modal" class="popup-overlay view-hidden">
+    <div id="premium-modal" class="popup-overlay view-hidden z-9999">
         <div class="glass-panel popup-content text-center" style="max-width: 450px;">
             <div class="modal-icon-xl mb-05">👑</div>
             <h2 class="modal-title-blue">Unlock Premium</h2>
@@ -454,6 +454,6 @@
         </div>
     </footer>
 
-    <script type="module" src="dashboard.js?v=4"></script>
+    <script type="module" src="dashboard.js?v=5"></script>
 </body>
 </html>

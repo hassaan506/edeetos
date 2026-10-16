@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            submitBtn.textContent = "Sending...";
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
             try {
@@ -40,14 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Initialize Theme
         if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
+            document.documentElement.classList.add('dark-mode');
             if (icon) icon.className = 'fas fa-sun';
         }
 
         // Toggle Event
         darkModeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
             
             if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');

@@ -19,7 +19,7 @@ body {
 }
 
 /* === DARK MODE OVERRIDE: OBSIDIAN SLATE === */
-body.dark-mode {
+html.dark-mode body, body.dark-mode {
     background-color: #060911;
     background-image: 
         radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
@@ -27,13 +27,13 @@ body.dark-mode {
         linear-gradient(180deg, #0f172a 0%, #020617 100%);
 }
 
-body.dark-mode .glass-panel {
+html.dark-mode .glass-panel, body.dark-mode .glass-panel {
     background: rgba(15, 23, 42, 0.72) !important;
     border: 1px solid rgba(255, 255, 255, 0.09) !important;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
 }
 
-body.dark-mode .popup-content {
+html.dark-mode .popup-content, body.dark-mode .popup-content {
     background: rgba(15, 23, 42, 0.96) !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
 }
@@ -288,3 +288,6 @@ body.dark-mode .popup-content {
 .bg-blue { background: #3b82f6 !important; color: white !important; }
 .bg-orange { background: #f59e0b !important; color: #78350f !important; }
 .bg-indigo { background: #6366f1 !important; color: white !important; }
+.z-2000 { z-index: 2000 !important; }
+.z-9999 { z-index: 9999 !important; }
+.z-99999 { z-index: 99999 !important; }

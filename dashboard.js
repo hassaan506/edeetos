@@ -347,7 +347,7 @@ if (btnOpenFlashcards) {
     });
 }
 
-// === 5. NOTES VAULT ===
+// === 5. NOTES VAULT (Updated for Dynamic Chunking) ===
 const btnOpenNotes = document.getElementById('btn-open-notes');
 if (btnOpenNotes) {
     btnOpenNotes.addEventListener('click', async () => {
@@ -368,9 +368,36 @@ if (btnOpenNotes) {
 
         let allQuestions = [];
         try {
-            const res = await fetch(`Data/${activeCourse}_questions.json`);
-            if (res.ok) allQuestions = await res.json();
-        } catch(e) { console.warn("Could not load question database for notes:", e); }
+            // 1. Fetch metadata first to locate which mini-chunks contain the user's noted questions
+            const metaRes = await fetch(`Data/${activeCourse}_metadata.json`, { cache: 'no-cache' });
+            if (metaRes.ok) {
+                const metadata = await metaRes.json();
+                
+                const requiredChunks = new Set();
+                metadata.forEach(metaQ => {
+                    const qId = String(metaQ.id || metaQ.QuestionID);
+                    if (noteKeys.includes(qId)) {
+                        const sanitize = (str) => String(str).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                        const s = sanitize(metaQ.Subject || metaQ.subject || 'Uncategorized');
+                        const c = sanitize(metaQ.Chapter || metaQ.chapter || 'General');
+                        requiredChunks.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                    }
+                });
+
+                // 2. Fetch only the specific chunks that hold the notes
+                const fetchPromises = Array.from(requiredChunks).map(async (chunkUrl) => {
+                    try {
+                        const chunkRes = await fetch(chunkUrl);
+                        if (chunkRes.ok) {
+                            const chunkData = await chunkRes.json();
+                            allQuestions.push(...chunkData);
+                        }
+                    } catch(e) { console.warn("Failed to fetch chunk:", chunkUrl); }
+                });
+
+                await Promise.all(fetchPromises);
+            }
+        } catch(e) { console.warn("Could not load question metadata for notes:", e); }
 
         cachedNotesData = noteKeys.map(qId => {
             if (!notesObj[qId].trim()) return null;

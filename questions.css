@@ -1,6 +1,8 @@
 /* ========================================== */
 /* 1. BASE UTILITIES & EMERALD THEME          */
 /* ========================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
     background-color: #0b291e; 
     background-image: 
@@ -15,7 +17,7 @@ body {
 }
 
 /* === DARK MODE OVERRIDE: OBSIDIAN SLATE === */
-body.dark-mode {
+html.dark-mode body, body.dark-mode {
     background-color: #060911;
     background-image: 
         radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
@@ -23,18 +25,33 @@ body.dark-mode {
         linear-gradient(180deg, #0f172a 0%, #020617 100%);
 }
 
-body.dark-mode .glass-panel {
+html.dark-mode .glass-panel, body.dark-mode .glass-panel {
     background: rgba(15, 23, 42, 0.72) !important;
     border: 1px solid rgba(255, 255, 255, 0.09) !important;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
 }
 
-body.dark-mode .popup-content {
+html.dark-mode .popup-content, body.dark-mode .popup-content {
     background: rgba(15, 23, 42, 0.96) !important;
     border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* Core Glass Panel */
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+
+/* ========================================== */
+/* 2. CORE GLASS PANELS & OVERRIDES           */
+/* ========================================== */
+/* Aggressively override global.css navbar */
+.navbar {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 .glass-panel {
     background: rgba(255, 255, 255, 0.07); 
     backdrop-filter: blur(20px);
@@ -60,28 +77,46 @@ body.dark-mode .popup-content {
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
-.mode-toggle {
-    display: inline-flex;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 0.4rem;
-    gap: 0.5rem;
+/* Glass Buttons to replace .btn-solid/.btn-outline */
+.action-btn { 
+    border-radius: 12px; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    padding: 0.6rem 1.2rem; 
+    cursor: pointer; 
+    color: #f8fafc;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 6px; 
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+}
+.action-btn:hover:not(:disabled) { 
+    background: rgba(255, 255, 255, 0.16); 
+    transform: translateY(-1px); 
+}
+.action-btn:disabled {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
-.active-mode {
-    pointer-events: none;
-    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.2rem; cursor: pointer; color: #f8fafc;
+    padding: 0.6rem; border-radius: 10px; transition: 0.2s;
+    display: flex; justify-content: center; align-items: center;
 }
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+.icon-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
 
 /* ========================================== */
-/* 2. PROGRESS BARS & DASHBOARD METRICS       */
+/* 3. PROGRESS BARS & DASHBOARD METRICS       */
 /* ========================================== */
 .prog-dash {
     display: flex;
@@ -92,12 +127,7 @@ body.dark-mode .popup-content {
     gap: 2rem;
 }
 
-.prog-stats {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-}
-
+.prog-stats { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
 .prog-stat-box { text-align: center; }
 .prog-stat-title {
     font-size: 0.75rem; 
@@ -109,7 +139,7 @@ body.dark-mode .popup-content {
 }
 
 .prog-stat-box div:last-child {
-    font-size: 2rem !important;
+    font-size: 2rem;
     font-weight: 800;
 }
 
@@ -117,7 +147,7 @@ body.dark-mode .popup-content {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .progress-container {
@@ -126,16 +156,33 @@ body.dark-mode .popup-content {
     height: 8px;
     border-radius: 4px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 .progress-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, #34d399, #10b981);
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.5s ease;
 }
 
 /* ========================================== */
-/* 3. SEARCH & FILTER BAR                     */
+/* 4. MODE TOGGLE                             */
+/* ========================================== */
+.mode-toggle {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.4rem;
+    gap: 0.5rem;
+}
+.active-mode {
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+/* ========================================== */
+/* 5. SEARCH, FILTER BAR & CUSTOM CHECKBOXES  */
 /* ========================================== */
 .search-filter-bar {
     display: flex;
@@ -182,6 +229,7 @@ body.dark-mode .popup-content {
     box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
 }
 
+/* Custom Checkbox Design to override solid white browser defaults */
 .filter-wrapper {
     display: flex;
     flex-direction: row;
@@ -194,21 +242,46 @@ body.dark-mode .popup-content {
     white-space: nowrap;
 }
 
-.search-filter-bar > div:not(.search-wrapper) {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center !important; 
-    width: 100% !important;
-    gap: 1.5rem;
+.filter-wrapper input[type="checkbox"],
+.item-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
-.filter-wrapper input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: #34d399;
-    cursor: pointer;
+.filter-wrapper input[type="checkbox"]:checked,
+.item-checkbox:checked {
+    background: #10b981;
+    border-color: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.filter-wrapper input[type="checkbox"]:checked::after,
+.item-checkbox:checked::after {
+    content: "✔";
+    color: #022c22;
+    font-size: 14px;
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-filter-bar > div:not(.search-wrapper) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 .search-dropdown {
@@ -238,7 +311,7 @@ body.dark-mode .popup-content {
 .search-item-snippet { font-size: 0.9rem; color: #94a3b8; }
 
 /* ========================================== */
-/* 4. MAIN SUBJECT CARDS & GRID               */
+/* 6. MAIN SUBJECT CARDS & GRID               */
 /* ========================================== */
 #subjects-grid {
     display: grid;
@@ -248,7 +321,7 @@ body.dark-mode .popup-content {
     padding-bottom: 150px; 
 }
 
-#subjects-grid .feature-card {
+.feature-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -258,16 +331,17 @@ body.dark-mode .popup-content {
     text-align: left;
 }
 
-#subjects-grid .feature-card:hover {
+.feature-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.12);
+    border-left-color: #34d399;
 }
 
 .card-header-flex {
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     gap: 12px;
 }
 
@@ -292,7 +366,7 @@ body.dark-mode .popup-content {
 }
 
 /* ========================================== */
-/* 5. POPUP MODALS & CHAPTER LIST ITEMS       */
+/* 7. POPUP MODALS & CHAPTER LIST ITEMS       */
 /* ========================================== */
 .popup-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -315,7 +389,10 @@ body.dark-mode .popup-content {
     border: 1px solid rgba(255,255,255,0.2);
 }
 
-@keyframes gentlePopIn { 0% { transform: scale(0.95) translateY(20px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+@keyframes gentlePopIn { 
+    0% { transform: scale(0.95) translateY(20px); opacity: 0; } 
+    100% { transform: scale(1) translateY(0); opacity: 1; } 
+}
 
 .popup-header {
     display: flex; justify-content: space-between; align-items: center;
@@ -325,14 +402,6 @@ body.dark-mode .popup-content {
 }
 
 .popup-header h3 { margin: 0; color: #f8fafc; font-size: 1.4rem; font-weight: 800; }
-
-.icon-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 1.2rem; cursor: pointer; color: #f8fafc;
-    padding: 0.6rem; border-radius: 10px; transition: 0.2s;
-}
-.icon-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
 
 .popup-body {
     padding: 1.5rem 2rem; 
@@ -355,8 +424,6 @@ body.dark-mode .popup-content {
     transform: translateY(-2px); 
 }
 
-.list-item input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: #34d399; margin-right: 12px !important; }
-
 .exam-stats-strip {
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px 34px; font-size: 0.75rem;
 }
@@ -368,7 +435,7 @@ body.dark-mode .popup-content {
 }
 
 /* ========================================== */
-/* 6. SIDEBAR COMPONENT                       */
+/* 8. SIDEBAR COMPONENT                       */
 /* ========================================== */
 .sidebar {
     position: fixed; top: 0; left: -300px; 
@@ -412,7 +479,7 @@ body.dark-mode .popup-content {
 }
 
 /* ========================================== */
-/* 7. UNIVERSAL EXAM CART (BOTTOM DOCK)       */
+/* 9. UNIVERSAL EXAM CART (BOTTOM DOCK)       */
 /* ========================================== */
 .exam-action-bar {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
@@ -434,6 +501,7 @@ body.dark-mode .popup-content {
     width: 120px; padding: 0.8rem; border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.3);
     text-align: center; font-weight: 800; color: #f8fafc; outline: none; font-size: 1.1rem;
+    transition: 0.2s;
 }
 .exam-action-bar input[type="number"]:focus { border-color: #34d399; }
 
@@ -445,7 +513,7 @@ body.dark-mode .popup-content {
 }
 
 /* ========================================== */
-/* 8. RESPONSIVE MEDIA QUERIES                */
+/* 10. RESPONSIVE MEDIA QUERIES               */
 /* ========================================== */
 @media (max-width: 1024px) { #subjects-grid { grid-template-columns: repeat(2, 1fr); } }
 
