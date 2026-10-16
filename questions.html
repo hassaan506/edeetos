@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Bank - EDEETOS</title>
     <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="questions.css?v=3">
+    <link rel="stylesheet" href="questions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -21,28 +21,28 @@
     <div id="sidebar" class="sidebar glass-panel">
         <div class="sidebar-header">
             <h2 style="color: #34d399; font-size: 1.5rem; margin: 0;">Menu</h2>
-            <button id="close-sidebar" class="icon-btn" style="background: transparent; font-size: 1.2rem;">✖</button>
+            <button id="close-sidebar" class="icon-btn" style="background: transparent; border:none;"><i class="fas fa-times"></i></button>
         </div>
 
         <ul class="sidebar-links">
             <li class="sidebar-category">Study Modes</li>
-            <li><a href="#" id="nav-system"><span class="icon">🧠</span> System Wise</a></li>
-            <li><a href="#" id="nav-subject" class="active-link"><span class="icon">📚</span> Subject Wise</a></li>
-            <li><a href="#" id="nav-exam"><span class="icon">📝</span> Past Papers</a></li>
-            <li><a href="#" id="nav-book"><span class="icon">📖</span> Books Library</a></li>
+            <li><a href="#" id="nav-system"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">🧠</span> System Wise</a></li>
+            <li><a href="#" id="nav-subject" class="active-link"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">📚</span> Subject Wise</a></li>
+            <li><a href="#" id="nav-exam"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">📝</span> Past Papers</a></li>
+            <li><a href="#" id="nav-book"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">📖</span> Books Library</a></li>
             
             <li class="sidebar-category" style="margin-top: 2rem;">Settings</li>
-            <li><a href="#" id="btn-reset-progress" style="color: #fca5a5;"><span class="icon">🗑️</span> Reset Progress</a></li>
+            <li><a href="#" id="btn-reset-progress" style="color: #fca5a5;"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem; background:rgba(239,68,68,0.2); border:none; color:#f87171;">🗑️</span> Reset Progress</a></li>
             <li class="sidebar-category" style="margin-top: 1rem;">Quick Links</li>
-            <li><a href="dashboard.html"><span class="icon">🏠</span> Back to Dashboard</a></li>
+            <li><a href="dashboard.html"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">🏠</span> Dashboard</a></li>
         </ul>
     </div>
     
     <!-- === NAVBAR === -->
-    <nav class="navbar" style="padding-top: 1rem; margin-bottom: 1rem;">
-        <div class="nav-container glass-panel" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0.8rem 1.5rem; border-radius: 20px; max-width: 1240px; margin: 0 auto;">
+    <nav class="navbar" style="padding-top: 1rem; margin-bottom: 1rem; background: transparent !important; border: none !important;">
+        <div class="nav-container glass-panel" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0.8rem 1.5rem; max-width: 1240px; margin: 0 auto;">
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <button id="open-sidebar" class="icon-btn" style="background: transparent; font-size: 1.5rem;">☰</button>
+                <button id="open-sidebar" class="icon-btn" style="background: transparent; border:none;"><i class="fas fa-bars"></i></button>
                 <a href="dashboard.html" class="nav-logo">
                     <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto; filter: brightness(0) invert(1);">
                 </a>
@@ -55,9 +55,7 @@
                     <i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">0</span>
                 </button>
 
-                <button id="dark-mode-toggle" class="icon-btn theme-toggle-btn" style="border-radius: 50%; width: 38px; height: 38px; display: flex; justify-content: center; align-items: center;">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <button id="dark-mode-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
             </div>
         </div>
     </nav>
@@ -70,19 +68,19 @@
             <div class="prog-stats">
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Solved</div>
-                    <div class="stat-solved" id="stat-solved">0</div>
+                    <div style="color: #34d399;" id="stat-solved">0</div>
                 </div>
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Accuracy</div>
-                    <div class="stat-total" id="stat-accuracy">0%</div>
+                    <div style="color: #38bdf8;" id="stat-accuracy">0%</div>
                 </div>
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Mistakes</div>
-                    <div class="stat-mistakes" id="stat-mistakes">0</div>
+                    <div style="color: #fca5a5;" id="stat-mistakes">0</div>
                 </div>
                 <div class="prog-stat-box">
                     <div class="prog-stat-title">Bookmarks</div>
-                    <div class="stat-unattempted" id="stat-bookmarks">0</div>
+                    <div style="color: #fde68a;" id="stat-bookmarks">0</div>
                 </div>
             </div>
 
@@ -153,7 +151,7 @@
         <!-- Exam Cart (Bottom Dock) -->
         <div id="exam-cart" class="exam-action-bar" style="display: none;">
             <div class="cart-info">
-                <span class="icon">🎯</span>
+                <span class="icon-btn" style="background:transparent; border:none; padding:0; margin:0;">🎯</span>
                 <strong id="cart-count">0 Topics Selected</strong>
             </div>
             <div class="cart-controls">
@@ -189,9 +187,9 @@
 
     <!-- Hierarchy List Popup -->
     <div id="popup-overlay" class="popup-overlay">
-        <div class="glass-panel popup-content">
+        <div class="glass-panel popup-content" style="max-width: 1000px; width: 95%;">
             <div class="popup-header">
-                <button id="popup-back" class="icon-btn" style="font-weight: bold; color: #93c5fd; border: none; background: transparent;"><i class="fas fa-arrow-left"></i> Back</button>
+                <button id="popup-back" class="action-btn" style="font-weight: bold; color: #93c5fd; border: none; background: transparent;"><i class="fas fa-arrow-left"></i> Back</button>
                 <h3 id="popup-title">Category</h3>
                 <button id="popup-close" class="icon-btn" style="border: none; background: transparent;">✖</button>
             </div>
@@ -201,7 +199,7 @@
 
     <!-- Analytics Modal -->
     <div id="analytics-modal" class="popup-overlay">
-        <div class="glass-panel popup-content" style="max-width: 700px; width: 95%;">
+        <div class="glass-panel popup-content" style="max-width: 800px; width: 95%;">
             <div class="popup-header">
                 <h3 style="color: #6ee7b7;"><i class="fas fa-chart-line"></i> Performance Report</h3>
                 <button id="close-analytics" class="icon-btn" style="border: none; background: transparent;">✖</button>
@@ -214,7 +212,7 @@
 
     <!-- Journey / Trophies Modal -->
     <div id="journey-modal" class="popup-overlay">
-        <div class="glass-panel popup-content text-center" style="max-width: 600px; width: 95%;">
+        <div class="glass-panel popup-content text-center" style="max-width: 600px; width: 95%; padding: 2rem;">
             <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
             <h2 style="color: #93c5fd; margin: 0; font-weight: 800; font-size: 1.6rem;">Your Journey</h2>
             <p style="color: #94a3b8; font-size: 0.95rem; margin-top: 0.3rem; margin-bottom: 1.5rem;">Track your progress and unlock mastery.</p>
@@ -263,6 +261,6 @@
         </div>
     </section>
 
-    <script type="module" src="questions.js?v=2"></script>
+    <script type="module" src="questions.js"></script>
 </body>
 </html>
