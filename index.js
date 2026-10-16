@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (darkModeBtn) {
         const icon = darkModeBtn.querySelector('i');
         
-        // Initialize Theme
+        // Initialize Theme (Targeting documentElement to match CSS html.dark-mode)
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark-mode');
             if (icon) icon.className = 'fas fa-sun';

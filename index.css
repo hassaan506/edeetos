@@ -1,47 +1,42 @@
-/* === FEATURE: TYPOGRAPHY & BASE LAYOUT === */
-body {
-    /* Base background handled by global.css */
-    margin: 0;
-    line-height: 1.6;
-}
-
-h1, h2, h3, h4 { margin-top: 0; transition: color 0.3s ease; }
-p { color: #cbd5e1; transition: color 0.3s ease; margin: 0; }
-
+/* === UI COMPONENTS & ALIGNMENT === */
 .bg-light { 
     background: rgba(0, 0, 0, 0.2); 
-    padding-left: 2rem; padding-right: 2rem; 
-    border-radius: 24px; margin: 2rem auto; 
+    padding: 4rem 2rem; 
+    border-radius: 32px; 
+    margin: 2rem auto; 
     border: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-.section-header { text-align: center; margin-bottom: 4rem; }
-.section-header h2 { font-size: 2.8rem; font-weight: 900; color: #f8fafc; margin-bottom: 1rem; letter-spacing: -0.5px; }
-.section-description { font-size: 1.2rem; color: #cbd5e1; max-width: 650px; margin: 0 auto; font-weight: 500; }
-.security-locked { -webkit-user-select: none; -ms-user-select: none; user-select: none; }
-
-/* === FEATURE: UI COMPONENTS (CARDS) === */
 .feature-card, .profile-card, .step-card, .faq-item, .contact-info-panel, .form-panel { 
-    padding: 3rem 2.5rem; text-align: left; 
+    padding: 3rem 2.5rem; 
+    text-align: left; 
 }
-.text-center .feature-card { text-align: center; }
 
-/* Navbar Buttons */
+/* Force perfect centering on text-center grids */
+.text-center .feature-card, .text-center .step-card { 
+    text-align: center; 
+    align-items: center; 
+    display: flex; 
+    flex-direction: column;
+}
+
+/* Navbar Overrides */
 .auth-menu { display: flex; gap: 1rem; align-items: center; list-style: none !important; padding: 0; margin: 0; }
 .auth-menu li { list-style: none !important; }
 
 .dark-mode-toggle-btn {
     display: flex; justify-content: center; align-items: center; 
-    width: 38px; height: 38px; 
+    width: 42px; height: 42px; 
     background: rgba(255, 255, 255, 0.1); 
     border: 1px solid rgba(255, 255, 255, 0.2); 
-    border-radius: 10px; cursor: pointer; font-size: 1.1rem; 
+    border-radius: 50%; /* PERFECT CIRCLE */
+    cursor: pointer; font-size: 1.1rem; 
     transition: all 0.2s; color: #f8fafc; padding: 0;
 }
 .dark-mode-toggle-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
 
-/* === FEATURE: HERO SECTION === */
-.hero-section { text-align: center; padding: 10rem 2rem 8rem; background: transparent; }
+/* === HERO SECTION === */
+.hero-section { text-align: center; padding: 8rem 2rem 6rem; background: transparent; display: flex; flex-direction: column; align-items: center; }
 .hero-content { max-width: 900px; margin: 0 auto; }
 .badge-pill { 
     display: inline-block; padding: 0.5rem 1.2rem; 
@@ -53,66 +48,67 @@ p { color: #cbd5e1; transition: color 0.3s ease; margin: 0; }
 .hero-content .subtitle { font-size: 1.5rem; font-weight: 700; color: #34d399; margin-bottom: 1.2rem; }
 .hero-desc { font-size: 1.25rem; color: #cbd5e1; margin: 0 auto 3rem auto; line-height: 1.6; max-width: 700px; }
 
-/* === FEATURE: COURSES & ICONS === */
+/* === COURSES & CIRCULAR ICONS === */
 .text-center { text-align: center; padding: 3rem; }
+
+/* FIX: PERFECT CIRCLE ICONS */
 .icon-wrapper, .feature-icon, .step-number, .info-icon { 
     display: inline-flex; align-items: center; justify-content: center; 
     background: rgba(16, 185, 129, 0.15); color: #34d399; 
-    border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; margin-bottom: 1.5rem;
+    border: 1px solid rgba(16, 185, 129, 0.3); 
+    border-radius: 50%; /* CIRCLE FIX */
+    margin-bottom: 1.5rem;
 }
 .icon-wrapper { width: 72px; height: 72px; font-size: 2rem; }
-.feature-icon { width: 70px; height: 70px; font-size: 2.2rem; border-radius: 16px; }
-.step-number { width: 45px; height: 45px; font-weight: 900; font-size: 1.3rem; border-radius: 50%; }
-.info-icon { width: 45px; height: 45px; font-size: 1.3rem; border-radius: 12px; }
+.feature-icon { width: 70px; height: 70px; font-size: 2.2rem; }
+.step-number { width: 55px; height: 55px; font-weight: 900; font-size: 1.3rem; }
+.info-icon { width: 50px; height: 50px; font-size: 1.3rem; }
 
-.course-title, .feature-card h3, .step-title, .contact-title, .faq-question { color: #f8fafc; font-weight: 900; margin-bottom: 1rem; }
-.course-title { font-size: 1.5rem; letter-spacing: -0.5px; }
-.feature-card h3 { font-size: 1.4rem; letter-spacing: -0.5px; }
-.step-title { font-size: 1.4rem; letter-spacing: -0.5px; }
+.course-title, .feature-card h3, .step-title, .contact-title, .faq-question { color: #f8fafc; font-weight: 900; margin-bottom: 1rem; letter-spacing: -0.5px; }
+.course-title { font-size: 1.5rem; }
+.feature-card h3 { font-size: 1.4rem; }
+.step-title { font-size: 1.4rem; }
 
-/* === FEATURE: ABOUT / FEATURES GRID === */
+/* === ABOUT & TEAM === */
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
-.feature-card p { font-size: 1.05rem; font-weight: 500; }
+.feature-card p { font-size: 1.05rem; font-weight: 500; color: #cbd5e1; }
 
-/* === FEATURE: TEAM SECTION === */
-.team-members { display: flex; justify-content: center; }
-.profile-card { text-align: center; width: 320px; }
+.team-members { display: flex; justify-content: center; align-items: center; }
+.profile-card { text-align: center; width: 100%; max-width: 350px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 .profile-pic { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center 10%; margin-bottom: 1.5rem; border: 4px solid rgba(255, 255, 255, 0.2); }
 .member-role { color: #34d399; font-weight: 800; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;}
 
-/* === FEATURE: STATS SECTION === */
-.stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; padding: 5rem 2rem; background: rgba(0, 0, 0, 0.3); border-radius: 32px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
+/* === STATS & FAQ === */
+.stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; padding: 4rem 2rem; background: rgba(0, 0, 0, 0.3); border-radius: 32px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem;}
 .stat-box { margin: 1.5rem; }
 .stat-number { font-size: 4rem; font-weight: 900; color: #34d399; margin-bottom: 0.5rem; letter-spacing: -1px; }
 .stat-label { color: #cbd5e1; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; }
 
-/* === FEATURE: FAQ SECTION === */
 .faq-section { max-width: 800px; margin: 0 auto; }
 .faq-container { display: flex; flex-direction: column; gap: 1.5rem; }
-.faq-item { border-left: 6px solid #10b981; background: rgba(0, 0, 0, 0.2); border-radius: 0 16px 16px 0; }
+.faq-item { border-left: 6px solid #10b981; background: rgba(0, 0, 0, 0.2); border-radius: 0 24px 24px 0; }
 .faq-question { font-size: 1.25rem; letter-spacing: -0.5px; }
-.faq-answer { color: #94a3b8; font-size: 1.05rem; font-weight: 500; }
+.faq-answer { color: #cbd5e1; font-size: 1.05rem; font-weight: 500; }
 
-/* === FEATURE: CONTACT SECTION === */
+/* === CONTACT SECTION === */
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; }
 .contact-title { font-size: 1.6rem; margin-bottom: 2.5rem; letter-spacing: -0.5px; }
 .info-item { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.8rem; }
-.info-text h4 { margin-bottom: 0.3rem; font-size: 0.95rem; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.5px; }
+.info-text h4 { margin-bottom: 0.3rem; font-size: 0.95rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
 .contact-link { color: #f8fafc; text-decoration: none; font-weight: 800; font-size: 1.15rem; transition: color 0.2s; }
 .contact-link:hover { color: #34d399; }
 
 .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-form .form-group { display: flex; flex-direction: column; gap: 0.6rem; }
 .contact-form label { color: #cbd5e1; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.contact-form .glass-input { border-radius: 16px; padding: 1.2rem; font-size: 1.05rem; }
 
-/* === FEATURE: FINAL CTA SECTION === */
-.final-cta { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5rem 2rem; text-align: center; border-radius: 24px; max-width: 1200px; margin: 0 auto 4rem auto; }
+/* === FINAL CTA SECTION === */
+.final-cta { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5rem 2rem; text-align: center; border-radius: 32px; max-width: 1240px; margin: 0 auto 4rem auto; backdrop-filter: blur(10px); }
 .cta-content h2 { color: #f8fafc; font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; }
 .cta-content p { color: #a7f3d0; font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.btn-cta { display: inline-block; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 800; color: #022c22; background-color: #6ee7b7; border-radius: 12px; text-decoration: none; transition: transform 0.2s; }
-.btn-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
 
-/* === FEATURE: RESPONSIVE QUERIES === */
+/* === RESPONSIVE QUERIES === */
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 3rem; }
     .nav-right { flex-direction: column; gap: 1.5rem; }
@@ -120,7 +116,7 @@ p { color: #cbd5e1; transition: color 0.3s ease; margin: 0; }
     .final-cta { margin: 0 1rem 3rem 1rem; }
 }
 
-/* === FEATURE: DARK MODE (LANDING PAGE OVERRIDES) === */
+/* === DARK MODE (LANDING PAGE OVERRIDES) === */
 html.dark-mode .bg-light { background: rgba(15, 23, 42, 0.4); border-color: rgba(255, 255, 255, 0.05); }
 html.dark-mode .stats-container { background: rgba(2, 6, 23, 0.6); border-color: rgba(51, 65, 85, 0.8); }
 html.dark-mode .faq-item { background: rgba(15, 23, 42, 0.6); }
