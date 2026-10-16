@@ -158,30 +158,30 @@ if (activeRoomId) {
         localStorage.removeItem('is_study_guest');
     } else {
         const hostBanner = document.createElement('div');
-        hostBanner.style.cssText = "background: #f59e0b; color: white; padding: 12px 20px; font-weight: bold; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;";
+        hostBanner.style.cssText = "background: rgba(245, 158, 11, 0.2); border-bottom: 1px solid rgba(245, 158, 11, 0.4); color: #fde68a; padding: 12px 20px; font-weight: bold; position: sticky; top: 0; z-index: 99999; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;";
         
         hostBanner.innerHTML = `
             <div style="display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-users"></i> 
-                <span>You are hosting Study Room <strong style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; letter-spacing: 1px;">${activeRoomId}</strong>. Select a topic and click Start to resume.</span>
+                <span>You are hosting Study Room <strong style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.2);">${activeRoomId}</strong>. Select a topic and click Start to resume.</span>
             </div>
-            <button id="btn-exit-host-room" style="background: #dc2626; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s; box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);">Exit Room</button>
+            <button id="btn-exit-host-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5; padding: 6px 16px;">Exit Room</button>
         `;
         document.body.prepend(hostBanner);
 
         document.getElementById('btn-exit-host-room').addEventListener('click', () => {
             const exitModal = document.createElement('div');
             exitModal.id = 'host-exit-modal';
-            exitModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
+            exitModal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 18, 12, 0.82); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
             exitModal.innerHTML = `
-                <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25);">
-                    <i class="fas fa-sign-out-alt" style="color: #ef4444; font-size: 3rem; margin-bottom: 1rem;"></i>
-                    <h2 style="color: #1e3a8a; margin-bottom: 10px; margin-top: 0;">Exit Study Room</h2>
-                    <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">You are the host of Room <strong style="color: #1e293b;">${activeRoomId}</strong>. Do you want to just leave the room, or end the session completely and kick all guests?</p>
+                <div class="glass-panel popup-content text-center" style="max-width: 450px; width: 90%;">
+                    <i class="fas fa-sign-out-alt" style="color: #fca5a5; font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h2 class="modal-title-blue" style="margin-top: 0; margin-bottom: 10px;">Exit Study Room</h2>
+                    <p class="modal-subtitle" style="margin-bottom: 20px;">You are the host of Room <strong style="color: #f8fafc;">${activeRoomId}</strong>. Do you want to just leave the room, or end the session completely and kick all guests?</p>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <button id="btn-leave-only" class="btn-outline" style="border-color: #f59e0b; color: #d97706; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s;">🚶‍♂️ Just Leave (Keep Room Active)</button>
-                        <button id="btn-end-room" class="btn-solid" style="background: #ef4444; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); transition: 0.2s;">🛑 End Room & Kick Everyone</button>
-                        <button id="btn-cancel-exit" class="btn-outline" style="border-color: #cbd5e1; color: #64748b; padding: 12px; border-radius: 8px; margin-top: 5px; cursor: pointer; transition: 0.2s;">Cancel</button>
+                        <button id="btn-leave-only" class="action-btn" style="border-color: rgba(245, 158, 11, 0.4); color: #fcd34d; background: rgba(245, 158, 11, 0.1);">🚶‍♂️ Just Leave (Keep Room Active)</button>
+                        <button id="btn-end-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5;">🛑 End Room & Kick Everyone</button>
+                        <button id="btn-cancel-exit" class="btn-text-muted" style="margin-top: 5px;">Cancel</button>
                     </div>
                 </div>
             `;
@@ -324,11 +324,11 @@ if (globalSearch) {
 
             searchDropdown.innerHTML = '';
             if (matchedQuestions.length === 0) {
-                searchDropdown.innerHTML = `<div class="search-item" style="color:#64748b;">No matches found for "${query}"</div>`;
+                searchDropdown.innerHTML = `<div class="search-item" style="color:#94a3b8;">No matches found for "${query}"</div>`;
             } else {
                 const quizAllBtn = document.createElement('div');
                 quizAllBtn.className = 'search-item';
-                quizAllBtn.style.cssText = 'background: #3b82f6; color: white; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid #2563eb; border-radius: 12px 12px 0 0; cursor: pointer;';
+                quizAllBtn.style.cssText = 'background: rgba(59, 130, 246, 0.2); color: #93c5fd; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(59, 130, 246, 0.4); border-radius: 12px 12px 0 0; cursor: pointer;';
                 const limitCount = Math.min(matchedQuestions.length, 50);
                 quizAllBtn.innerHTML = `<i class="fas fa-play-circle" style="margin-right: 8px;"></i> Create Quiz from Search (${limitCount} Qs)`;
                 
@@ -349,8 +349,8 @@ if (globalSearch) {
                     const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
 
                     div.innerHTML = `
-                        <div class="search-item-title" style="font-weight:bold; color:#064e3b; margin-bottom:5px;">${title}</div>
-                        <div class="search-item-snippet" style="font-size:0.9rem; color:#475569;">${questionSnippet}</div>
+                        <div class="search-item-title">${title}</div>
+                        <div class="search-item-snippet">${questionSnippet}</div>
                     `;
                     div.onclick = () => {
                         searchDropdown.style.display = 'none';
@@ -429,21 +429,21 @@ function renderGrid() {
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
 
         const countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
-        const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+        const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%;"></div></div>`;
 
         let cardStatsHtml = '';
         if (currentView === 'exam') {
             const mistakeCount = getMistakesCount(currentView, [cardTitle]);
             const totalAttempts = doneCount + mistakeCount;
             const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
-            const accColor = totalAttempts === 0 ? '#64748b' : (accuracy >= 75 ? '#065f46' : (accuracy >= 50 ? '#92400e' : '#991b1b'));
-            const accBg = totalAttempts === 0 ? '#f1f5f9' : (accuracy >= 75 ? '#ecfdf5' : (accuracy >= 50 ? '#fffbeb' : '#fef2f2'));
+            const accColor = totalAttempts === 0 ? '#94a3b8' : (accuracy >= 75 ? '#34d399' : (accuracy >= 50 ? '#fbbf24' : '#fca5a5'));
+            const accBg = totalAttempts === 0 ? 'rgba(255,255,255,0.1)' : (accuracy >= 75 ? 'rgba(16,185,129,0.15)' : (accuracy >= 50 ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'));
 
             cardStatsHtml = `
                 <div style="display: flex; gap: 8px; font-size: 0.72rem; margin: 6px 0; flex-wrap: wrap;">
-                    <span style="color: #059669; font-weight: 600;"><i class="fas fa-check"></i> ${doneCount}</span>
-                    <span style="color: #dc2626; font-weight: 600;"><i class="fas fa-times"></i> ${mistakeCount}</span>
-                    <span style="color: ${accColor}; font-weight: 700; background: ${accBg}; padding: 1px 6px; border-radius: 4px;">${totalAttempts > 0 ? accuracy + '%' : '--'} Acc</span>
+                    <span style="color: #6ee7b7; font-weight: 600;"><i class="fas fa-check"></i> ${doneCount}</span>
+                    <span style="color: #fca5a5; font-weight: 600;"><i class="fas fa-times"></i> ${mistakeCount}</span>
+                    <span style="color: ${accColor}; font-weight: 700; background: ${accBg}; padding: 2px 6px; border-radius: 6px; border: 1px solid ${accColor};">${totalAttempts > 0 ? accuracy + '%' : '--'} Acc</span>
                 </div>
             `;
         }
@@ -487,11 +487,11 @@ function renderBooksGrid() {
         card.style.opacity = isUnlocked ? '1' : '0.6';
         
         card.innerHTML = `
-            <div class="card-header-flex" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 10px;">
-                <h3 class="card-title" style="color: #1e3a8a;">${book.title}</h3>
-                ${isUnlocked ? '<i class="fas fa-book-open" style="color: #10b981; font-size: 1.2rem;"></i>' : '<i class="fas fa-lock" style="color: #ef4444; font-size: 1.2rem;"></i>'}
+            <div class="card-header-flex" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px;">
+                <h3 class="card-title" style="color: #93c5fd;">${book.title}</h3>
+                ${isUnlocked ? '<i class="fas fa-book-open" style="color: #34d399; font-size: 1.2rem;"></i>' : '<i class="fas fa-lock" style="color: #fca5a5; font-size: 1.2rem;"></i>'}
             </div>
-            <div style="font-size: 0.8rem; font-weight: bold; color: ${isUnlocked ? '#059669' : '#b91c1c'};">
+            <div style="font-size: 0.8rem; font-weight: bold; color: ${isUnlocked ? '#6ee7b7' : '#f87171'};">
                 ${isUnlocked ? '✅ Access Granted' : '🔒 Premium Subscription Required'}
             </div>
         `;
@@ -556,7 +556,7 @@ async function loadAndOpenBook(book) {
 }
 
 // ==========================================
-// DYNAMIC CHUNK FETCHER (Updated with Deduplication)
+// DYNAMIC CHUNK FETCHER
 // ==========================================
 window.activeChunksCache = {};
 
@@ -682,16 +682,13 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
 
     const selectAllDiv = document.createElement('div');
     selectAllDiv.className = 'list-item hero-item';
-    selectAllDiv.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
-    selectAllDiv.style.border = '1px solid #3b82f6';
-
     selectAllDiv.innerHTML = `
         <div style="flex-grow: 1;">
             <div class="card-header-flex">
-                <span style="font-weight: bold; color: #1e3a8a;">Select Full ${title}</span>
+                <span style="font-weight: bold; color: #bfdbfe;">Select Full ${title}</span>
             </div>
         </div>
-        <button class="btn-solid mini-btn select-all-btn" style="margin-left: 15px; background: #3b82f6; border: none;">Select All</button>
+        <button class="action-btn select-all-btn" style="margin-left: 15px; background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; padding: 0.5rem 1rem;">Select All</button>
     `;
     if(popupList) popupList.appendChild(selectAllDiv);
 
@@ -803,11 +800,11 @@ function renderListItem(itemName, nextData, level, itemPath) {
     let examStatsHtml = '';
 
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
-        countHtml = `<span class="card-count" style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 12px; font-weight: bold;">${qCount} Qs</span>`;
+        countHtml = `<span class="card-count">${qCount} Qs</span>`;
     } else {
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         countHtml = `<span class="card-count">${doneCount} / ${qCount}</span>`;
-        progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%; background-color: #10b981;"></div></div>`;
+        progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%;"></div></div>`;
     }
 
     if (currentView === 'exam') {
@@ -815,17 +812,17 @@ function renderListItem(itemName, nextData, level, itemPath) {
         const totalAttempts = doneCount + mistakeCount;
         const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
 
-        const accColor = totalAttempts === 0 ? '#64748b' : (accuracy >= 75 ? '#065f46' : (accuracy >= 50 ? '#92400e' : '#991b1b'));
-        const accBg = totalAttempts === 0 ? '#f1f5f9' : (accuracy >= 75 ? '#ecfdf5' : (accuracy >= 50 ? '#fffbeb' : '#fef2f2'));
-        const accBorder = totalAttempts === 0 ? '#cbd5e1' : (accuracy >= 75 ? '#a7f3d0' : (accuracy >= 50 ? '#fde68a' : '#fecaca'));
+        const accColor = totalAttempts === 0 ? '#94a3b8' : (accuracy >= 75 ? '#34d399' : (accuracy >= 50 ? '#fbbf24' : '#fca5a5'));
+        const accBg = totalAttempts === 0 ? 'rgba(255,255,255,0.1)' : (accuracy >= 75 ? 'rgba(16,185,129,0.15)' : (accuracy >= 50 ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'));
+        const accBorder = totalAttempts === 0 ? 'rgba(255,255,255,0.2)' : (accuracy >= 75 ? 'rgba(16,185,129,0.3)' : (accuracy >= 50 ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'));
 
         examStatsHtml = `
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0 6px 28px; font-size: 0.75rem;">
-                <span style="background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 2px 8px; border-radius: 6px; font-weight: 600;">
-                    <i class="fas fa-check" style="margin-right: 4px; color: #10b981;"></i>${doneCount} Solved
+                <span style="background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); padding: 2px 8px; border-radius: 6px; font-weight: 600;">
+                    <i class="fas fa-check" style="margin-right: 4px;"></i>${doneCount} Solved
                 </span>
-                <span style="background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; padding: 2px 8px; border-radius: 6px; font-weight: 600;">
-                    <i class="fas fa-times" style="margin-right: 4px; color: #ef4444;"></i>${mistakeCount} Mistakes
+                <span style="background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); padding: 2px 8px; border-radius: 6px; font-weight: 600;">
+                    <i class="fas fa-times" style="margin-right: 4px;"></i>${mistakeCount} Mistakes
                 </span>
                 <span style="background: ${accBg}; color: ${accColor}; border: 1px solid ${accBorder}; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
                     <i class="fas fa-bullseye" style="margin-right: 4px;"></i>${totalAttempts > 0 ? accuracy + '% Accuracy' : 'Unattempted'}
@@ -840,12 +837,12 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const pathStr = JSON.stringify(itemPath);
 
     const displayInstantStart = currentMode === 'exam' ? 'none' : 'inline-block';
-    const instantStartBtn = `<button class="btn-solid mini-btn" style="display: ${displayInstantStart}; margin-left: 10px; background: #10b981; border: none; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 4px;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
+    const instantStartBtn = `<button class="action-btn" style="display: ${displayInstantStart}; margin-left: 10px; padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 6px; background: rgba(16,185,129,0.2); border-color: #34d399; color: #a7f3d0;" onclick="event.stopPropagation(); startInstantPractice('${safePath}')">Start</button>`;
 
     labelDiv.innerHTML = `
         <div class="card-header-flex" style="align-items: center;">
-            <span style="font-weight: 600; display: flex; align-items: center;">
-                <input type="checkbox" class="item-checkbox" style="margin-right: 12px; transform: scale(1.3); cursor: pointer;">
+            <span style="font-weight: 600; display: flex; align-items: center; color: #f8fafc;">
+                <input type="checkbox" class="item-checkbox">
                 ${itemName}
             </span>
             <div style="display: flex; align-items: center; gap: 8px;">
@@ -884,8 +881,9 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     if (hasSubLevels) {
         const actionBtn = document.createElement('button');
-        actionBtn.className = 'btn-outline mini-btn';
+        actionBtn.className = 'action-btn';
         actionBtn.style.marginLeft = '15px';
+        actionBtn.style.padding = '0.5rem 1rem';
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = (e) => {
             e.stopPropagation(); 
@@ -921,8 +919,8 @@ function switchMode(mode) {
     if (mode === 'practice') {
         const modePracBtn = document.getElementById('mode-practice');
         const modeExamBtn = document.getElementById('mode-exam');
-        if (modePracBtn) modePracBtn.className = "btn-solid active-mode";
-        if (modeExamBtn) modeExamBtn.className = "btn-outline";
+        if (modePracBtn) { modePracBtn.classList.add('active-mode'); modePracBtn.style.background = 'rgba(16, 185, 129, 0.2)'; modePracBtn.style.borderColor = '#34d399'; modePracBtn.style.color = '#a7f3d0'; }
+        if (modeExamBtn) { modeExamBtn.classList.remove('active-mode'); modeExamBtn.style.background = 'rgba(255, 255, 255, 0.08)'; modeExamBtn.style.borderColor = 'rgba(255,255,255,0.2)'; modeExamBtn.style.color = '#f8fafc'; }
         
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
@@ -943,8 +941,8 @@ function switchMode(mode) {
     } else {
         const modePracBtn = document.getElementById('mode-practice');
         const modeExamBtn = document.getElementById('mode-exam');
-        if (modeExamBtn) modeExamBtn.className = "btn-solid active-mode";
-        if (modePracBtn) modePracBtn.className = "btn-outline";
+        if (modeExamBtn) { modeExamBtn.classList.add('active-mode'); modeExamBtn.style.background = 'rgba(59, 130, 246, 0.2)'; modeExamBtn.style.borderColor = '#3b82f6'; modeExamBtn.style.color = '#bfdbfe'; }
+        if (modePracBtn) { modePracBtn.classList.remove('active-mode'); modePracBtn.style.background = 'rgba(255, 255, 255, 0.08)'; modePracBtn.style.borderColor = 'rgba(255,255,255,0.2)'; modePracBtn.style.color = '#f8fafc'; }
         
         if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
         if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
@@ -1002,30 +1000,27 @@ if (btnJoinChallenge) {
 
         const modalOverlay = document.createElement('div');
         modalOverlay.id = 'join-challenge-modal';
-        modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+        modalOverlay.className = "popup-overlay";
+        modalOverlay.style.display = "flex";
 
         modalOverlay.innerHTML = `
-            <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.25); animation: gentlePopIn 0.3s forwards;">
-                <h3 style="color: #9333ea; margin-top: 0; margin-bottom: 10px; font-size: 1.6rem;"><i class="fas fa-flag-checkered"></i> Join Challenge</h3>
-                <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Enter the 5-character code shared by your friend.</p>
+            <div class="glass-panel popup-content text-center" style="max-width: 400px; width: 90%;">
+                <h3 style="color: #d8b4fe; margin-top: 0; margin-bottom: 10px; font-size: 1.6rem;"><i class="fas fa-flag-checkered"></i> Join Challenge</h3>
+                <p class="modal-subtitle" style="margin-bottom: 20px;">Enter the 5-character code shared by your friend.</p>
                 
-                <input type="text" id="challenge-code-input" placeholder="e.g. A1B2C" maxlength="5" style="width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1.8rem; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; outline: none; transition: border-color 0.2s; box-sizing: border-box; color: #0f172a;">
+                <input type="text" id="challenge-code-input" class="glass-input" placeholder="e.g. A1B2C" maxlength="5" style="margin-bottom: 20px; font-size: 1.8rem; text-align: center; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">
                 
                 <div style="display: flex; gap: 10px;">
-                    <button id="btn-cancel-join" class="btn-outline" style="flex: 1; border-color: #cbd5e1; color: #64748b; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s;">Cancel</button>
-                    <button id="btn-confirm-join" class="btn-solid" style="flex: 1; background: #a855f7; border: none; padding: 12px; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3); transition: 0.2s;">Join Match</button>
+                    <button id="btn-cancel-join" class="action-btn" style="flex: 1;">Cancel</button>
+                    <button id="btn-confirm-join" class="action-btn" style="flex: 1; background: rgba(168, 85, 247, 0.2); border-color: #c084fc; color: #e9d5ff;">Join Match</button>
                 </div>
             </div>
-            <style>@keyframes gentlePopIn { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }</style>
         `;
 
         document.body.appendChild(modalOverlay);
 
         const inputField = document.getElementById('challenge-code-input');
         inputField.focus();
-
-        inputField.addEventListener('focus', () => inputField.style.borderColor = '#a855f7');
-        inputField.addEventListener('blur', () => inputField.style.borderColor = '#e2e8f0');
 
         document.getElementById('btn-cancel-join').addEventListener('click', () => {
             modalOverlay.remove();
@@ -1035,8 +1030,6 @@ if (btnJoinChallenge) {
             const code = inputField.value.trim().toUpperCase();
             if (!code || code.length !== 5) {
                 inputField.style.borderColor = '#ef4444';
-                inputField.classList.add('apply-shake'); 
-                setTimeout(() => inputField.classList.remove('apply-shake'), 500);
                 return;
             }
 
@@ -1410,7 +1403,7 @@ function initMentorFeatures() {
 
         if (startBtn && startBtn.parentElement) {
             const assignBtn = document.createElement('button');
-            assignBtn.className = "btn-outline";
+            assignBtn.className = "action-btn";
             assignBtn.textContent = "Assign to Student";
             assignBtn.style.marginLeft = "10px";
             assignBtn.id = "assign-exam-btn";
@@ -1466,25 +1459,26 @@ function initMentorFeatures() {
                     });
 
                     const modalOverlay = document.createElement('div');
-                    modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+                    modalOverlay.className = "popup-overlay";
+                    modalOverlay.style.display = "flex";
                     
                     let modalHtml = `
-                        <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                            <h3 style="color: #1e3a8a; margin: 0 0 15px 0;"><i class="fas fa-users"></i> Select Students</h3>
-                            <input type="text" id="student-search-input" placeholder="Search by name or email..." style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit;">
-                            <div id="student-list-container" style="overflow-y: auto; flex-grow: 1; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <div class="glass-panel popup-content text-left" style="max-width: 500px; width: 90%;">
+                            <h3 class="modal-title-blue"><i class="fas fa-users"></i> Select Students</h3>
+                            <input type="text" id="student-search-input" class="glass-input" placeholder="Search by name or email..." style="margin-bottom: 15px;">
+                            <div id="student-list-container" class="notes-list-container" style="max-height: 40vh; overflow-y: auto; margin-bottom: 20px;">
                     `;
 
                     if (studentsList.length === 0) {
-                        modalHtml += `<div style="text-align: center; color: #64748b; padding: 20px;">No students found.</div>`;
+                        modalHtml += `<div style="text-align: center; color: #94a3b8; padding: 20px;">No students found.</div>`;
                     } else {
                         studentsList.sort((a, b) => a.name.localeCompare(b.name)).forEach(student => {
                             modalHtml += `
-                                <label class="student-item" style="display: flex; align-items: center; padding: 10px; border-radius: 6px; background: #f8fafc; cursor: pointer; transition: background 0.2s; border: 1px solid transparent;">
-                                    <input type="checkbox" class="student-checkbox" value="${student.id}" style="margin-right: 12px; transform: scale(1.2);">
+                                <label class="student-item list-item" style="flex-direction: row; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" class="student-checkbox item-checkbox" value="${student.id}">
                                     <div style="display: flex; flex-direction: column;">
-                                        <span class="student-name" style="font-weight: bold; color: #0f172a;">${student.name}</span>
-                                        <span class="student-email" style="font-size: 0.85rem; color: #64748b;">${student.email}</span>
+                                        <span class="student-name" style="font-weight: bold; color: #f8fafc;">${student.name}</span>
+                                        <span class="student-email" style="font-size: 0.85rem; color: #94a3b8;">${student.email}</span>
                                     </div>
                                 </label>
                             `;
@@ -1493,9 +1487,9 @@ function initMentorFeatures() {
 
                     modalHtml += `
                             </div>
-                            <div style="display: flex; justify-content: flex-end; gap: 12px;">
-                                <button id="btn-cancel-assign" class="btn-outline" style="padding: 10px 20px;">Cancel</button>
-                                <button id="btn-confirm-assign" class="btn-solid" style="padding: 10px 20px; background: #3b82f6; border: none;">Assign Exam</button>
+                            <div style="display: flex; gap: 12px;">
+                                <button id="btn-cancel-assign" class="action-btn" style="flex: 1;">Cancel</button>
+                                <button id="btn-confirm-assign" class="action-btn next-btn" style="flex: 1;">Assign Exam</button>
                             </div>
                         </div>
                     `;
@@ -1981,7 +1975,8 @@ function showMilestonePopup(trophy) {
 
     const modal = document.createElement('div');
     modal.id = 'milestone-reward-modal';
-    modal.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.85); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(8px);";
+    modal.className = 'popup-overlay';
+    modal.style.display = 'flex';
     
     let subStatus = "free";
     const currentSub = currentUserData?.subscriptions?.[activeCourse] || currentUserData?.subscriptions?.['ALL'];
@@ -2012,50 +2007,50 @@ function showMilestonePopup(trophy) {
         
         if (isLifetime && allBooksOwned) {
             rewardOptionsHtml = `
-                <div style="margin-top: 15px; text-align: center; background: #ecfdf5; padding: 15px; border-radius: 8px; border: 1px solid #a7f3d0;">
-                    <div style="color: #059669; font-weight: bold; font-size: 0.95rem;">✅ You already own all available content!</div>
-                    <p style="font-size: 0.8rem; color: #047857; margin-top: 5px;">There are no more rewards to claim. Amazing job!</p>
+                <div style="margin-top: 15px; text-align: center; background: rgba(16, 185, 129, 0.15); padding: 15px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <div style="color: #34d399; font-weight: bold; font-size: 0.95rem;">✅ You already own all available content!</div>
+                    <p style="font-size: 0.8rem; color: #a7f3d0; margin-top: 5px;">There are no more rewards to claim. Amazing job!</p>
                 </div>
             `;
         } else {
             rewardOptionsHtml = `
-                <div style="margin-top: 15px; text-align: left; background: #f8fafc; padding: 15px; border-radius: 8px;">
-                    <p style="font-size: 0.95rem; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">Choose ONE Reward:</p>
+                <div style="margin-top: 15px; text-align: left; background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px;">
+                    <p style="font-size: 0.95rem; color: #93c5fd; margin-bottom: 15px; font-weight: bold;">Choose ONE Reward:</p>
                     
                     <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
                         
                         ${!isLifetime ? `
-                        <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px;">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
+                        <div style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #f8fafc; margin-bottom: 8px;">
                                 <input type="radio" name="rewardChoice" value="course" checked style="transform: scale(1.2);"> 
                                 Extend Course Access (+${trophy.rewardValue} ${trophy.rewardUnit})
                             </label>
                             <div id="course-selection-div" style="padding-left: 24px; transition: 0.3s;">
-                                <select id="reward-course-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
+                                <select id="reward-course-selection" class="glass-input" style="padding: 10px;">
                                     ${courseOptionsHtml}
                                 </select>
                             </div>
                         </div>
-                        ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You have Lifetime Course Access.</div>'}
+                        ` : '<div style="color: #6ee7b7; font-weight: bold; font-size: 0.85rem; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">✅ You have Lifetime Course Access.</div>'}
                         
                         ${!allBooksOwned ? `
-                        <div style="background: white; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #334155; margin-bottom: 8px;">
+                        <div style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 8px; ${isLifetime ? '' : 'opacity: 0.6;'} transition: 0.3s;" id="book-container-div">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: bold; color: #f8fafc; margin-bottom: 8px;">
                                 <input type="radio" name="rewardChoice" value="book" ${isLifetime ? 'checked' : ''} style="transform: scale(1.2);">
                                 Claim a Study Book (+${trophy.rewardValue} ${trophy.rewardUnit})
                             </label>
                             <div id="book-selection-div" style="padding-left: 24px; ${isLifetime ? '' : 'pointer-events: none;'} transition: 0.3s;">
-                                <select id="reward-book-selection" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;">
+                                <select id="reward-book-selection" class="glass-input" style="padding: 10px;">
                                     <option value="" disabled selected>Select a Study Book...</option>
                                     ${bookOptionsHtml}
                                 </select>
                             </div>
                         </div>
-                        ` : '<div style="color: #059669; font-weight: bold; font-size: 0.85rem; padding: 10px; background: #ecfdf5; border-radius: 8px; border: 1px solid #a7f3d0;">✅ You own all available Books.</div>'}
+                        ` : '<div style="color: #6ee7b7; font-weight: bold; font-size: 0.85rem; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">✅ You own all available Books.</div>'}
 
                     </div>
 
-                    <button id="btn-confirm-reward" class="btn-solid" style="background: #10b981; width: 100%; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.2s;">
+                    <button id="btn-confirm-reward" class="action-btn next-btn w-100" style="padding: 12px; font-size: 1rem;">
                         Claim Selected Reward
                     </button>
                 </div>
@@ -2064,15 +2059,12 @@ function showMilestonePopup(trophy) {
     }
 
     modal.innerHTML = `
-        <div class="glass-panel" style="background: white; padding: 30px; border-radius: 16px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.25); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-height: 90vh; overflow-y: auto;">
+        <div class="glass-panel popup-content text-center" style="max-width: 450px; width: 90%;">
             <div style="font-size: 4.5rem; margin-bottom: 10px; line-height: 1;">${trophy.icon}</div>
-            <h2 style="color: #1e3a8a; margin-bottom: 10px; font-size: 1.6rem;">Milestone Reached!</h2>
-            <p style="color: #475569; font-size: 1.05rem; margin-bottom: 5px;">You achieved the <strong style="color: #0f172a;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>${rewardOptionsHtml}
-            <button id="close-milestone-btn" class="btn-outline" style="width: 100%; margin-top: 15px; padding: 12px; font-size: 1rem; cursor: pointer; border-radius: 8px;">Dismiss</button>
+            <h2 class="modal-title-blue" style="margin-bottom: 10px;">Milestone Reached!</h2>
+            <p class="modal-subtitle" style="margin-bottom: 5px;">You achieved the <strong style="color: #f8fafc;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>${rewardOptionsHtml}
+            <button id="close-milestone-btn" class="action-btn w-100" style="margin-top: 15px;">Dismiss</button>
         </div>
-        <style>
-            @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        </style>
     `;
     document.body.appendChild(modal);
 
@@ -2116,16 +2108,16 @@ function showMilestonePopup(trophy) {
                 btnConfirm.disabled = true;
 
                 try {
-				if (selectedType === 'course') {
-					const targetCourse = modal.querySelector('#reward-course-selection').value;
-					await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
-				} else {
-					const selectedBook = modal.querySelector('#reward-book-selection').value;
-					if (!selectedBook) {
-						btnConfirm.textContent = "Claim Selected Reward";
-						btnConfirm.disabled = false;
-						return alert("You must select a book from the dropdown first.");
-					}
+                if (selectedType === 'course') {
+                    const targetCourse = modal.querySelector('#reward-course-selection').value;
+                    await grantSubscriptionReward(trophy.rewardValue, trophy.rewardUnit, targetCourse, trophy.title);
+                } else {
+                    const selectedBook = modal.querySelector('#reward-book-selection').value;
+                    if (!selectedBook) {
+                        btnConfirm.textContent = "Claim Selected Reward";
+                        btnConfirm.disabled = false;
+                        return alert("You must select a book from the dropdown first.");
+                    }
                     await claimBookReward(trophy.rewardValue, trophy.rewardUnit, trophy.title, selectedBook);
                     }
                     
@@ -2263,29 +2255,29 @@ if (btnJourney) {
                     progress = 0;
                 }
 
-                const borderColor = isUnlocked ? '#fbbf24' : '#e2e8f0';
-                const bgColor = isUnlocked ? 'rgba(255, 255, 255, 0.9)' : 'rgba(248, 250, 252, 0.6)';
+                const borderColor = isUnlocked ? 'rgba(245, 158, 11, 0.4)' : 'rgba(255, 255, 255, 0.1)';
+                const bgColor = isUnlocked ? 'rgba(245, 158, 11, 0.1)' : 'rgba(0, 0, 0, 0.2)';
                 const iconStyle = isUnlocked ? '' : 'filter: grayscale(100%) opacity(0.4);';
-                const textColor = isUnlocked ? '#1e3a8a' : '#94a3b8';
-                const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-lock" style="color: #cbd5e1;"></i>';
+                const textColor = isUnlocked ? '#fde68a' : '#94a3b8';
+                const statusIcon = isUnlocked ? '<i class="fas fa-check-circle" style="color: #34d399;"></i>' : '<i class="fas fa-lock" style="color: #64748b;"></i>';
                 
                 let rewardHtml = '';
                 if (t.rewardValue > 0) {
                     if (isUnlocked && !isClaimed) {
-                        rewardHtml = `<button class="btn-solid claim-reward-btn" data-trophy='${JSON.stringify(t)}' style="background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; margin-top: 6px; width: 100%; box-shadow: 0 4px 6px rgba(16,185,129,0.2);"><i class="fas fa-gift"></i> Claim Reward</button>`;
+                        rewardHtml = `<button class="action-btn claim-reward-btn" data-trophy='${JSON.stringify(t)}' style="background: rgba(16, 185, 129, 0.2); border-color: #34d399; color: #a7f3d0; padding: 6px 12px; font-size: 0.75rem; margin-top: 6px; width: 100%;"><i class="fas fa-gift"></i> Claim Reward</button>`;
                     } else if (isClaimed) {
-                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #10b981; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #34d399; margin-top: 6px;"><i class="fas fa-check-double"></i> Reward Claimed</div>`;
                     } else {
-                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #f59e0b; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium</div>`;
+                        rewardHtml = `<div style="font-size: 0.75rem; font-weight: bold; color: #fcd34d; margin-top: 6px;"><i class="fas fa-gift"></i> Reward: ${t.rewardValue}${t.rewardUnit} Premium</div>`;
                     }
                 }
 
                 return `
-                    <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 2px solid ${borderColor}; box-shadow:${isUnlocked ? '0 4px 12px rgba(0,0,0,0.05)' : 'none'};">
+                    <div class="glass-panel" style="display: flex; align-items: center; padding: 0.9rem; border-radius: 12px; background: ${bgColor}; border: 1px solid${borderColor};">
                         <div style="font-size: 2.2rem; margin-right: 1rem; ${iconStyle}">${t.icon}</div>
                         <div style="flex-grow: 1;">
                             <div style="font-weight: 800; color: ${textColor}; font-size: 1.05rem; margin-bottom: 0.1rem;">${t.title}</div>
-                            <div style="font-size: 0.75rem; color: #64748b;">${progress} / ${t.req} Flawless Qs</div>${rewardHtml}
+                            <div style="font-size: 0.75rem; color: #cbd5e1;">${progress} / ${t.req} Flawless Qs</div>${rewardHtml}
                         </div>
                         <div style="font-size: 1.3rem;">
                             ${statusIcon}
@@ -2355,7 +2347,7 @@ window.generateRevisionQuiz = async function(topicId) {
         if (book && !loadedBooksCache[book.file]) {
             try {
                 document.body.style.cursor = 'wait';
-				const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+                const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
                 if (response.ok) {
                     let bookQuestions = await response.json();
                     bookQuestions.forEach(q => {
@@ -2496,88 +2488,88 @@ if (btnAnalytics) {
         if (processedTopics.length === 0) {
             html += `
                 <div style="text-align: center; padding: 30px 10px;">
-                    <i class="fas fa-chart-pie" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 15px;"></i>
-                    <h3 style="color: #334155; margin-bottom: 5px;">Not Enough Data</h3>
-                    <p style="color: #64748b; font-size: 0.9rem;">Answer at least 3 questions in any topic to unlock your Smart Performance Dashboard.</p>
+                    <i class="fas fa-chart-pie" style="font-size: 3rem; color: #64748b; margin-bottom: 15px;"></i>
+                    <h3 style="color: #94a3b8; margin-bottom: 5px;">Not Enough Data</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem;">Answer at least 3 questions in any topic to unlock your Smart Performance Dashboard.</p>
                 </div>
             `;
         } else {
             html += `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 25px;">`;
             
-            html += `<div style="background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; padding: 15px;">
-                        <h4 style="color:#991b1b; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #fecaca; padding-bottom: 5px;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i> Priority Review</h4>`;
+            html += `<div class="glass-panel" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); padding: 15px;">
+                        <h4 style="color:#fca5a5; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid rgba(239,68,68,0.3); padding-bottom: 5px;"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i> Priority Review</h4>`;
             if (weaknesses.length === 0) {
-                html += `<div style="color: #10b981; font-weight: bold; font-size: 0.85rem;"><i class="fas fa-check"></i> No critical weaknesses!</div>`;
+                html += `<div style="color: #6ee7b7; font-weight: bold; font-size: 0.85rem;"><i class="fas fa-check"></i> No critical weaknesses!</div>`;
             } else {
                 weaknesses.forEach(w => {
                     html += `
-                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #fecaca;">
-                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight: bold; color: #7f1d1d;">
+                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(239,68,68,0.2);">
+                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight: bold; color: #f87171;">
                                 <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;">${w.topic}</span>
                                 <span>${w.accuracy}%</span>
                             </div>
-                            <div style="font-size: 0.75rem; color: #b91c1c; margin-top: 4px;">${w.mistakes} mistakes / ${w.attempted} attempts</div>
+                            <div style="font-size: 0.75rem; color: #fca5a5; margin-top: 4px;">${w.mistakes} mistakes / ${w.attempted} attempts</div>
                         </div>`;
                 });
             }
             html += `</div>`;
 
-            html += `<div style="background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 12px; padding: 15px;">
-                        <h4 style="color:#065f46; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #a7f3d0; padding-bottom: 5px;"><i class="fas fa-star" style="color: #10b981; margin-right: 5px;"></i> Top Strengths</h4>`;
+            html += `<div class="glass-panel" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); padding: 15px;">
+                        <h4 style="color:#6ee7b7; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid rgba(16,185,129,0.3); padding-bottom: 5px;"><i class="fas fa-star" style="color: #34d399; margin-right: 5px;"></i> Top Strengths</h4>`;
             if (strengths.length === 0) {
-                html += `<div style="color: #64748b; font-size: 0.85rem;">Keep practicing to build your strengths!</div>`;
+                html += `<div style="color: #94a3b8; font-size: 0.85rem;">Keep practicing to build your strengths!</div>`;
             } else {
                 strengths.forEach(s => {
                     html += `
-                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #a7f3d0;">
-                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight: bold; color: #047857;">
+                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(16,185,129,0.2);">
+                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight: bold; color: #34d399;">
                                 <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;">${s.topic}</span>
                                 <span>${s.accuracy}%</span>
                             </div>
-                            <div style="font-size: 0.75rem; color: #059669; margin-top: 4px;">Mastered ${s.attempted - s.mistakes} / ${s.attempted}</div>
+                            <div style="font-size: 0.75rem; color: #a7f3d0; margin-top: 4px;">Mastered ${s.attempted - s.mistakes} / ${s.attempted}</div>
                         </div>`;
                 });
             }
             html += `</div></div>`;
 
             html += `
-                <h4 style="color:#1e3a8a; border-bottom:2px solid #bfdbfe; padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #3b82f6;"></i> Smart Training Hub</h4>
+                <h4 style="color:#93c5fd; border-bottom:1px solid rgba(59,130,246,0.3); padding-bottom:5px; margin-top: 0; margin-bottom: 15px;"><i class="fas fa-dumbbell" style="margin-right: 8px; color: #60a5fa;"></i> Smart Training Hub</h4>
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px;">
             `;
 
             const totalMistakesCount = allMistakes.length;
             if (totalMistakesCount > 0) {
-                html += `<button id="btn-train-redemption" class="btn-solid" style="background: #f59e0b; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                html += `<button id="btn-train-redemption" class="action-btn" style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); color: #fde68a; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                             <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Redemption Mode</span>
-                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">Revisit ${totalMistakesCount} Mistakes</span>
+                            <span style="font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">Revisit ${totalMistakesCount} Mistakes</span>
                          </button>`;
             }
 
             if (weaknesses.length > 0) {
-                html += `<button id="btn-train-focus" class="btn-solid" style="background: #ef4444; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                html += `<button id="btn-train-focus" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.4); color: #fca5a5; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                             <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-bullseye" style="margin-right: 8px;"></i> Targeted Focus</span>
-                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">Drill 15 Qs on Weakest Topic</span>
+                            <span style="font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">Drill 15 Qs on Weakest Topic</span>
                          </button>`;
             }
 
             if (strengths.length > 0 && weaknesses.length > 0) {
-                html += `<button id="btn-train-mix" class="btn-solid" style="background: #3b82f6; border: none; padding: 12px; border-radius: 8px; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                html += `<button id="btn-train-mix" class="action-btn" style="background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.4); color: #bfdbfe; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                             <span style="font-weight: bold; font-size: 0.95rem; flex: 1; min-width: 150px;"><i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Balanced Mix</span>
-                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">30 Qs (Strengths + Weaknesses)</span>
+                            <span style="font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 3px 8px; border-radius: 12px; white-space: nowrap;">30 Qs (Strengths + Weaknesses)</span>
                          </button>`;
             }
 
             html += `</div>`;
         }
 
-        html += `<h4 style="color:#475569; border-bottom:2px solid #e2e8f0; padding-bottom:5px; margin-top:10px;"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
+        html += `<h4 class="modal-section-title"><i class="fas fa-history" style="margin-right: 5px;"></i> Recent Exams</h4>`;
         if (userExamHistory.length === 0) {
-            html += `<p style="font-size:0.8rem; color:#64748b; text-align:center;">No exams taken yet.</p>`;
+            html += `<p style="font-size:0.8rem; color:#94a3b8; text-align:center;">No exams taken yet.</p>`;
         } else {
             html += `<div style="width: 100%; height: 200px; margin-bottom: 20px;"><canvas id="examScoreChart"></canvas></div>`;
             html += `<div style="font-size:0.85rem; max-height:180px; overflow-y:auto;">
                         <table style="width:100%; text-align:left; border-collapse: collapse;">`
-						
+                        
             userExamHistory.slice().reverse().slice(0, 10).forEach(ex => {
                 const totalSecs = ex.timeSpent || 0;
                 const totalQs = ex.totalQuestions || 1;
@@ -2586,11 +2578,11 @@ if (btnAnalytics) {
                 const remainSecs = (avgSecs % 60).toString().padStart(2, '0');
                 const timeString = totalSecs > 0 ? `${avgMins}m ${remainSecs}s` : "N/A";
                 
-                html += `<tr style="border-bottom:1px solid #f1f5f9;">
-                            <td style="padding:10px 0; color: #475569;">${new Date(ex.date).toLocaleDateString()}</td>
-                            <td style="color: #1e293b; font-weight: 500;">${ex.examName}</td>
-                            <td style="color:${ex.percentage >= 75 ? '#10b981' : '#ef4444'}; font-weight:bold;">${ex.percentage}%</td>
-                            <td style="color: #475569; font-weight: 500;">${timeString}</td>
+                html += `<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+                            <td style="padding:10px 0; color: #94a3b8;">${new Date(ex.date).toLocaleDateString()}</td>
+                            <td style="color: #f8fafc; font-weight: 500;">${ex.examName}</td>
+                            <td style="color:${ex.percentage >= 75 ? '#34d399' : '#f87171'}; font-weight:bold;">${ex.percentage}%</td>
+                            <td style="color: #94a3b8; font-weight: 500;">${timeString}</td>
                          </tr>`;
             });
             html += `</table></div>`;
@@ -2616,19 +2608,30 @@ if (btnAnalytics) {
                         datasets: [{
                             label: 'Exam Score (%)',
                             data: scores,
-                            borderColor: '#3b82f6',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderColor: '#60a5fa',
+                            backgroundColor: 'rgba(96, 165, 250, 0.2)',
                             borderWidth: 2,
                             fill: true,
                             tension: 0.3,
-                            pointBackgroundColor: '#10b981',
+                            pointBackgroundColor: '#34d399',
                             pointRadius: 4
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: { y: { beginAtZero: true, max: 100 } },
+                        scales: { 
+                            y: { 
+                                beginAtZero: true, 
+                                max: 100, 
+                                grid: { color: 'rgba(255,255,255,0.1)' },
+                                ticks: { color: '#cbd5e1' }
+                            },
+                            x: {
+                                grid: { color: 'rgba(255,255,255,0.1)' },
+                                ticks: { color: '#cbd5e1' }
+                            }
+                        },
                         plugins: { legend: { display: false } }
                     }
                 });
@@ -2974,7 +2977,7 @@ btnPushEdits.onclick = async () => {
     } catch (error) {
         console.error(error);
         alert("❌ Push Failed: " + error.message);
-        btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+        btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: rgba(255,255,255,0.2); color: #fde68a; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
         btnPushEdits.disabled = false;
     }
 };
@@ -3098,22 +3101,23 @@ btnPushEdits.onclick = async () => {
                 if (dueTopics.length > 0 && revisionContainer) {
                     const revisionCard = document.createElement('div');
                     revisionCard.className = 'glass-panel feature-card';
-                    revisionCard.style.borderColor = '#f59e0b';
-                    revisionCard.style.boxShadow = '0 10px 25px -5px rgba(245, 158, 11, 0.15)';
+                    revisionCard.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+                    revisionCard.style.background = 'rgba(245, 158, 11, 0.1)';
                     revisionCard.style.padding = '20px'; 
                     revisionCard.style.gridColumn = '1 / -1'; 
                     revisionCard.style.marginBottom = '20px';
                     revisionCard.style.cursor = 'pointer';
                     revisionCard.style.display = 'flex';
+                    revisionCard.style.flexDirection = 'row';
                     revisionCard.style.justifyContent = 'space-between';
                     revisionCard.style.alignItems = 'center';
 
                     revisionCard.innerHTML = `
                         <div>
-                            <h3 class="card-title" style="color: #92400e; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
-                            <p style="color: #b45309; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
+                            <h3 class="card-title" style="color: #fde68a; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
+                            <p style="color: #fcd34d; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
                         </div>
-                        <button class="btn-solid" style="background: #f59e0b; border: none; padding: 10px 20px;">View Plan</button>
+                        <button class="action-btn" style="background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; color: #fef3c7;">View Plan</button>
                     `;
 
                     let existingModal = document.getElementById('revision-popup-modal');
@@ -3121,13 +3125,13 @@ btnPushEdits.onclick = async () => {
 
                     const modalOverlay = document.createElement('div');
                     modalOverlay.id = 'revision-popup-modal';
-                    modalOverlay.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); z-index: 99999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px);";
+                    modalOverlay.className = "popup-overlay";
 
                     let modalHtml = `
-                        <div class="glass-panel" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 15px;">
-                                <h3 style="color: #1e3a8a; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
-                                <button id="close-revision-popup" style="font-size: 1.5rem; color: #64748b; background: none; border: none; cursor: pointer;">&times;</button>
+                        <div class="glass-panel popup-content" style="max-width: 600px; width: 90%; max-height: 85vh; display: flex; flex-direction: column;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px;">
+                                <h3 style="color: #93c5fd; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
+                                <button id="close-revision-popup" class="icon-btn" style="background: transparent; border: none;">✖</button>
                             </div>
                             <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
                     `;
@@ -3135,32 +3139,32 @@ btnPushEdits.onclick = async () => {
                     sortedDays.forEach(day => {
                         modalHtml += `
                             <div class="revision-day-group">
-                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #cbd5e1; background: #f8fafc; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = '#eff6ff'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = '#cbd5e1'; this.style.background = '#f8fafc'; }">
-                                    <div style="font-weight: 700; color: #1e293b; font-size: 1rem;">
-                                        <i class="fas fa-calendar-day" style="color: #3b82f6; margin-right: 8px;"></i> Day ${day}
+                                <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = 'rgba(59,130,246,0.15)'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = 'rgba(255,255,255,0.2)'; this.style.background = 'rgba(255,255,255,0.08)'; }">
+                                    <div style="font-weight: 700; color: #f8fafc; font-size: 1rem;">
+                                        <i class="fas fa-calendar-day" style="color: #60a5fa; margin-right: 8px;"></i> Day ${day}
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 12px;">
-                                        <span class="badge" style="background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
-                                        <i class="fas fa-chevron-down toggle-icon" style="color: #64748b; transition: transform 0.3s;"></i>
+                                        <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
+                                        <i class="fas fa-chevron-down toggle-icon" style="color: #94a3b8; transition: transform 0.3s;"></i>
                                     </div>
                                 </button>
                                 
-                                <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid #cbd5e1; margin-left: 5px;">
+                                <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid rgba(255,255,255,0.1); margin-left: 5px;">
                         `;
 
                         groupedByDay[day].forEach(item => {
                             const safeTopic = encodeURIComponent(item.id);
                             const displayPath = `
-                                <span style="color:#64748b; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:#cbd5e1; margin:0 3px;">&gt;</span></span>
-                                <span style="color:#92400e; font-size: 0.95rem;">${item.topic}</span>
+                                <span style="color:#94a3b8; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:rgba(255,255,255,0.2); margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:rgba(255,255,255,0.2); margin:0 3px;">&gt;</span></span>
+                                <span style="color:#fde68a; font-size: 0.95rem;">${item.topic}</span>
                             `;
 
                             modalHtml += `
-                                <button class="btn-outline" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; border: 1px solid #fcd34d; background: #fffbeb; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fef3c7'" onmouseout="this.style.background='#fffbeb'" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                                <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
                                     <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
                                         ${displayPath}
                                     </div>
-                                    <i class="fas fa-play-circle" style="color: #f59e0b; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
+                                    <i class="fas fa-play-circle" style="color: #fcd34d; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
                                 </button>
                             `;
                         });
