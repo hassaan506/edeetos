@@ -85,7 +85,7 @@ onAuthStateChanged(auth, async (user) => {
                 const activeCourseEl = document.getElementById('active-course-name');
                 if (activeCourseEl) {
                     activeCourseEl.textContent = userCourseCode ? (courseNamesMap[userCourseCode] || "Unknown Course") : "No Course Assigned";
-                    if (!userCourseCode) activeCourseEl.classList.add('text-danger');
+                    if (!userCourseCode) activeCourseEl.style.color = "#fca5a5";
                 }
 
                 const dynamicCourseContainer = document.getElementById('dynamic-course-container');
@@ -93,7 +93,7 @@ onAuthStateChanged(auth, async (user) => {
                     if (userCourseCode) {
                         dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label cursor-pointer font-bold"><input type="checkbox" class="course-check" value="${userCourseCode}" checked> ${courseNamesMap[userCourseCode] || "Unknown Course"}</label>`;
                     } else {
-                        dynamicCourseContainer.innerHTML = `<div class="text-danger font-xs font-bold">Action Required: Request a course in your Profile first.</div>`;
+                        dynamicCourseContainer.innerHTML = `<div class="font-xs font-bold" style="color:#fca5a5;">Action Required: Request a course in your Profile first.</div>`;
                     }
                 }
 
@@ -113,7 +113,7 @@ onAuthStateChanged(auth, async (user) => {
                 // ROLE UI BADGES
                 if(subStatus) subStatus.className = "status-badge";
                 if (userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
-                    if(subStatus) { subStatus.textContent = "Admin"; subStatus.classList.add('badge-pro'); } // Reusing pro visually
+                    if(subStatus) { subStatus.textContent = "Admin"; subStatus.classList.add('badge-pro'); }
                     document.getElementById('btn-admin-panel').classList.remove('view-hidden');
                     if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else if (hasActiveSubscription) { 
@@ -130,7 +130,7 @@ onAuthStateChanged(auth, async (user) => {
                     
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
-                        btnMentor.textContent = "Open Mentorship Hub";
+                        btnMentor.innerHTML = "Open Mentorship Hub";
                         const cardH3 = btnMentor.parentElement.querySelector('h3');
                         const cardP = btnMentor.parentElement.querySelector('p');
                         if (cardH3) cardH3.textContent = "Mentorship Hub";
@@ -151,7 +151,7 @@ onAuthStateChanged(auth, async (user) => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             document.getElementById('user-name').textContent = "Guest";
             if(subStatus) { subStatus.textContent = "Guest Mode"; subStatus.className = "status-badge badge-guest"; }
-            if (freeWarning) { freeWarning.classList.remove('view-hidden'); freeWarning.textContent = "(Guests limited to 20Qs/subject)"; freeWarning.classList.add('text-muted'); }
+            if (freeWarning) { freeWarning.classList.remove('view-hidden'); freeWarning.textContent = "(Guests limited to 20Qs/subject)"; freeWarning.style.color = "#94a3b8"; }
         } else {
             window.location.href = 'index.html'; 
         }
@@ -176,16 +176,10 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
 
 // === 4. DYNAMIC MODALS & ALERTS ===
 function renderLockoutScreen() {
-    const lockoutScreen = document.createElement('div');
-    lockoutScreen.className = "lockout-overlay";
-    lockoutScreen.innerHTML = `
-        <i class="fas fa-ban lockout-icon"></i>
-        <h1 class="lockout-title">Account Suspended</h1>
-        <p class="lockout-desc">Your account has been restricted due to policy violations. You no longer have access to EDEETOS materials, questions, or premium features.</p>
-        <button id="btn-banned-logout" class="btn-lockout">Log Out</button>
-    `;
-    document.body.appendChild(lockoutScreen);
+    const lockoutModal = document.getElementById('lockout-screen');
+    if(lockoutModal) lockoutModal.classList.remove('view-hidden');
     document.body.style.overflow = 'hidden';
+    
     document.getElementById('btn-banned-logout').addEventListener('click', () => {
         document.getElementById('btn-banned-logout').textContent = "Logging out...";
         signOut(auth).then(() => window.location.href = 'index.html').catch(() => window.location.href = 'index.html');
@@ -199,8 +193,17 @@ function setupMentorStatus() {
     let isOnline = currentUserData.isOnline || false;
 
     const updateStatusUI = (status) => {
-        if (status) { btnMentorStatus.innerHTML = '🟢 Online'; btnMentorStatus.classList.add('text-emerald', 'border-emerald', 'bg-emerald-light'); } 
-        else { btnMentorStatus.innerHTML = '⚪ Offline'; btnMentorStatus.classList.remove('text-emerald', 'border-emerald', 'bg-emerald-light'); btnMentorStatus.classList.add('text-muted', 'border-slate'); }
+        if (status) { 
+            btnMentorStatus.innerHTML = '🟢 Online'; 
+            btnMentorStatus.style.background = 'rgba(16, 185, 129, 0.2)'; 
+            btnMentorStatus.style.color = '#34d399'; 
+            btnMentorStatus.style.borderColor = '#34d399';
+        } else { 
+            btnMentorStatus.innerHTML = '⚪ Offline'; 
+            btnMentorStatus.style.background = 'transparent'; 
+            btnMentorStatus.style.color = '#94a3b8'; 
+            btnMentorStatus.style.borderColor = 'rgba(255,255,255,0.2)';
+        }
     };
 
     updateStatusUI(isOnline);
@@ -217,16 +220,13 @@ function setupMentorAlerts() {
     
     onSnapshot(q, (snapshot) => {
         let banner = document.getElementById('mentor-alert-banner');
+        if(!banner) return;
+        
         if (!snapshot.empty) {
-            if (!banner) {
-                banner = document.createElement('div'); banner.id = 'mentor-alert-banner'; banner.className = 'mentor-alert-floating';
-                banner.innerHTML = `<span>🚨</span> <span>Incoming Chat Request! Tap to answer.</span>`;
-                banner.onclick = () => window.location.href = 'mentor.html';
-                document.body.appendChild(banner);
-            }
             banner.classList.remove('view-hidden');
+            banner.onclick = () => window.location.href = 'mentor.html';
         } else {
-            if (banner) banner.classList.add('view-hidden');
+            banner.classList.add('view-hidden');
         }
     });
 }
@@ -244,8 +244,8 @@ async function checkAssignedExams() {
         });
 
         if (pendingExams.length > 0) {
-            const dashboardContainer = document.querySelector('.section-container') || document.body;
-            const headerElement = document.querySelector('.dashboard-header');
+            const container = document.getElementById('task-notify-container');
+            if(!container || container.children.length > 0) return; // already rendered
             
             const notifyCard = document.createElement('div');
             notifyCard.className = 'task-notify-card glass-panel';
@@ -257,47 +257,32 @@ async function checkAssignedExams() {
                         <p class="task-notify-desc">You have ${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''} waiting for you.</p>
                     </div>
                 </div>
-                <button class="btn-solid bg-emerald p-10px border-radius-12px border-none font-sm">View Tasks</button>
+                <button class="action-btn next-btn" style="padding: 0.5rem 1rem;">View Tasks</button>
             `;
+            container.appendChild(notifyCard);
 
-            if (headerElement && headerElement.nextSibling) dashboardContainer.insertBefore(notifyCard, headerElement.nextSibling);
-            else dashboardContainer.insertBefore(notifyCard, dashboardContainer.firstChild);
-
-            const taskModal = document.createElement('div');
-            taskModal.id = 'assigned-tasks-modal';
-            taskModal.className = "popup-overlay";
+            const taskModal = document.getElementById('assigned-tasks-modal');
+            const taskListContainer = document.getElementById('task-list-container');
             
-            let modalHtml = `
-                <div class="modal-task-list glass-panel">
-                    <div class="flex-between border-bottom-slate pb-15px mb-20px">
-                        <h3 class="card-title-green m-0 font-lg"><i class="fas fa-clipboard-check text-emerald mr-08"></i> Assigned Tasks</h3>
-                        <button id="close-tasks-modal" class="btn-close-clean p-0">&times;</button>
-                    </div>
-                    <div class="notes-list-container">
-            `;
-
+            let modalHtml = "";
             pendingExams.forEach((exam, index) => {
                 modalHtml += `
                     <div class="task-item-card">
                         <div>
                             <div class="task-item-title">${exam.title}</div>
-                            <div class="flex-row gap-10px font-xs font-bold">
+                            <div class="flex-row gap-10px">
                                 <span class="task-badge-time"><i class="fas fa-clock"></i> ${exam.timerMinutes} Min</span>
                                 <span class="task-badge-count"><i class="fas fa-layer-group"></i> ${exam.questions.length} Qs</span>
                             </div>
                         </div>
-                        <button id="launch-assigned-${index}" class="btn-solid bg-blue p-10px border-none border-radius-8px">Start Now</button>
+                        <button id="launch-assigned-${index}" class="action-btn" style="background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; color: #93c5fd;">Start Now</button>
                     </div>
                 `;
             });
-
-            modalHtml += `</div></div>`;
-            taskModal.innerHTML = modalHtml;
-            document.body.appendChild(taskModal);
+            taskListContainer.innerHTML = modalHtml;
 
             notifyCard.onclick = () => taskModal.classList.remove('view-hidden');
             document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
-            taskModal.onclick = (e) => { if(e.target === taskModal) taskModal.classList.add('view-hidden'); };
 
             pendingExams.forEach((exam, index) => {
                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
@@ -326,37 +311,15 @@ async function checkAssignedExams() {
 
 document.getElementById('btn-launch-course').addEventListener('click', () => {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-        let guestModal = document.getElementById('guest-course-modal');
-        if (!guestModal) {
-            guestModal = document.createElement('div');
-            guestModal.id = 'guest-course-modal';
-            guestModal.className = "popup-overlay";
-            
-            guestModal.innerHTML = `
-                <div class="modal-guest-explore glass-panel">
-                    <h3 class="modal-title-blue mt-0 font-lg"><i class="fas fa-user-graduate text-blue mr-08"></i> Select Demo Course</h3>
-                    <p class="text-muted font-sm mb-20px">Which course would you like to explore as a guest today?</p>
-                    
-                    <select id="guest-course-select" class="custom-select w-100 mb-20px font-bold">
-                        <optgroup label="FCPS Series"><option value="fcps_part1">FCPS Part 1</option><option value="fcps_part2">FCPS Part 2</option><option value="fcps_imm">FCPS IMM</option></optgroup>
-                        <optgroup label="MRCS Series"><option value="mrcs_part1">MRCS Part 1</option><option value="mrcs_part2">MRCS Part 2</option></optgroup>
-                        <optgroup label="MBBS Journey"><option value="mbbs_year1">MBBS Year 1</option><option value="mbbs_year2">MBBS Year 2</option><option value="mbbs_year3">MBBS Year 3</option><option value="mbbs_year4">MBBS Year 4</option><option value="mbbs_year5">MBBS Year 5</option></optgroup>
-                    </select>
-                    
-                    <div class="flex-row gap-10px flex-center">
-                        <button id="btn-cancel-guest" class="btn-outline flex-1 m-0">Cancel</button>
-                        <button id="btn-confirm-guest" class="btn-solid flex-1 m-0 bg-emerald">Explore</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(guestModal);
+        const guestModal = document.getElementById('guest-course-modal');
+        if (guestModal) {
+            guestModal.classList.remove('view-hidden');
             document.getElementById('btn-cancel-guest').onclick = () => guestModal.classList.add('view-hidden');
             document.getElementById('btn-confirm-guest').onclick = () => {
                 localStorage.setItem('edeetos_active_course', document.getElementById('guest-course-select').value);
                 window.location.href = 'questions.html';
             };
         }
-        guestModal.classList.remove('view-hidden');
         return;
     }
 
@@ -401,7 +364,7 @@ if (btnOpenNotes) {
         const noteKeys = Object.keys(notesObj);
         
         if (noteKeys.length === 0) return listEl.innerHTML = '<div class="text-muted text-center p-2">You haven\'t saved any notes yet.</div>';
-        listEl.innerHTML = '<div class="text-muted text-center p-2 font-bold"><i class="fas fa-spinner fa-spin mr-08"></i> Loading question data...</div>';
+        listEl.innerHTML = '<div class="text-muted text-center p-2 font-bold"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading question data...</div>';
 
         let allQuestions = [];
         try {
@@ -434,7 +397,7 @@ function renderNotes(notesArray) {
         const noteCard = document.createElement('div');
         noteCard.className = "note-card";
         noteCard.innerHTML = `
-            <div class="flex-between mb-04"><div class="note-id">ID: ${data.id}</div></div>
+            <div class="note-id">ID: ${data.id}</div>
             <div class="note-stem">"${data.stem}"</div>
             <div class="note-body">${data.note}</div>
         `;
@@ -478,7 +441,7 @@ if (btnApplyPromo) {
         const msgBox = document.getElementById('promo-message');
         
         if (!codeInput) { activePromoCode = null; activePromoDiscount = 0; msgBox.textContent = ""; updatePrices(); return; }
-        btnApplyPromo.textContent = "Checking..."; btnApplyPromo.disabled = true;
+        btnApplyPromo.innerHTML = "<i class='fas fa-spinner fa-spin'></i>"; btnApplyPromo.disabled = true;
 
         try {
             const promoSnap = await getDoc(doc(db, "promo_codes", codeInput));
@@ -486,13 +449,13 @@ if (btnApplyPromo) {
                 const data = promoSnap.data();
                 if (data.isActive && (!data.expiryDate || new Date(data.expiryDate) > new Date())) {
                     activePromoCode = codeInput; activePromoDiscount = data.discountPercentage || 0;
-                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`; msgBox.classList.add('text-success'); msgBox.classList.remove('text-danger');
+                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`; msgBox.style.color = '#34d399';
                     updatePrices();
                 } else throw new Error("Expired or inactive.");
             } else throw new Error("Invalid promo code.");
         } catch (e) {
             activePromoCode = null; activePromoDiscount = 0;
-            msgBox.textContent = `❌ ${e.message || "Invalid code"}`; msgBox.classList.add('text-danger'); msgBox.classList.remove('text-success');
+            msgBox.textContent = `❌ ${e.message || "Invalid code"}`; msgBox.style.color = '#fca5a5';
             updatePrices();
         } finally { btnApplyPromo.textContent = "Apply"; btnApplyPromo.disabled = false; }
     });
@@ -518,9 +481,14 @@ function updatePrices() {
 
 document.querySelectorAll('.plan-card').forEach(card => {
     card.addEventListener('click', function() {
-        document.querySelectorAll('.plan-card').forEach(c => { c.classList.remove('selected'); const lifePrice = c.querySelector('#price-7'); if (lifePrice) lifePrice.classList.remove('text-orange'); });
+        document.querySelectorAll('.plan-card').forEach(c => { 
+            c.classList.remove('selected'); 
+            const lifePrice = c.querySelector('#price-7'); 
+            if (lifePrice) lifePrice.classList.remove('text-orange'); 
+        });
         this.classList.add('selected');
-        const lifePrice = this.querySelector('#price-7'); if (lifePrice) lifePrice.classList.add('text-orange');
+        const lifePrice = this.querySelector('#price-7'); 
+        if (lifePrice) lifePrice.classList.add('text-orange');
     });
 });
 
@@ -632,7 +600,7 @@ if (btnOpenProfile) {
         if(displayField) displayField.value = currentUserData.selectedCourse ? (courseNamesMap[currentUserData.selectedCourse] || "Unknown Course") : "None (Action Required)";
         
         const btnChange = document.getElementById('btn-request-course-change');
-        if (btnChange && currentUserData.courseChangeRequested) { btnChange.textContent = "Change Request Pending Admin Approval..."; btnChange.classList.add('text-muted'); btnChange.style.pointerEvents = "none"; }
+        if (btnChange && currentUserData.courseChangeRequested) { btnChange.textContent = "Change Request Pending Admin Approval..."; btnChange.style.color = "#94a3b8"; btnChange.style.pointerEvents = "none"; }
         
         const subsList = document.getElementById('prof-subs-list'); subsList.innerHTML = '';
         let hasSubs = false;
@@ -662,7 +630,7 @@ if (btnRequestChange && courseChangeModal) {
             try {
                 await updateDoc(doc(db, "users", currentUserId), { courseChangeRequested: true, requestedCourse: newCourse });
                 currentUserData.courseChangeRequested = true; currentUserData.requestedCourse = newCourse;
-                btnRequestChange.textContent = "Change Request Pending..."; btnRequestChange.classList.add('text-muted'); btnRequestChange.style.pointerEvents = "none";
+                btnRequestChange.textContent = "Change Request Pending..."; btnRequestChange.style.color = "#94a3b8"; btnRequestChange.style.pointerEvents = "none";
                 alert(`Request to switch to ${courseNamesMap[newCourse] || newCourse} submitted!`);
                 courseChangeModal.classList.add('view-hidden');
             } catch (error) { alert("Failed to submit request."); } finally { btnSubmitChange.textContent = "Submit Request"; btnSubmitChange.disabled = false; }
@@ -702,21 +670,13 @@ if (btnCreate) {
         try {
             await setDoc(doc(db, "study_rooms", roomId), { hostId: currentUserId, course: activeCourse, currentQuestionIndex: 0, status: "waiting", createdAt: serverTimestamp() });
             
-            const modal = document.createElement('div'); modal.className = "popup-overlay";
-            modal.innerHTML = `
-                <div class="modal-room-created glass-panel">
-                    <h2 class="mb-10px">Room Created 🎉</h2>
-                    <p class="mb-15px">Share this code:</p>
-                    <div class="room-code-box" id="room-code-box">${roomId}</div>
-                    <button id="copy-room-code" class="btn-solid bg-blue text-white border-none p-10px border-radius-8px mb-10px cursor-pointer">Copy Code</button><br>
-                    <button id="enter-room" class="btn-solid bg-emerald text-white border-none p-10px border-radius-8px cursor-pointer">Enter Room</button>
-                </div>
-            `;
-            document.body.appendChild(modal); modal.classList.remove('view-hidden');
+            const modal = document.getElementById('room-created-modal');
+            document.getElementById('room-code-box').textContent = roomId;
+            modal.classList.remove('view-hidden');
             
-            document.getElementById('copy-room-code').onclick = () => { navigator.clipboard.writeText(roomId); document.getElementById('copy-room-code').textContent = "Copied ✔️"; };
+            document.getElementById('copy-room-code').onclick = () => { navigator.clipboard.writeText(roomId); document.getElementById('copy-room-code').innerHTML = "<i class='fas fa-check'></i> Copied"; };
             document.getElementById('enter-room').onclick = () => { localStorage.setItem('active_study_room', roomId); localStorage.removeItem('is_study_guest'); window.location.href = 'questions.html'; };
-        } catch (error) { alert("Failed to create room."); } finally { btnCreate.textContent = "Create Room"; btnCreate.disabled = false; }
+        } catch (error) { alert("Failed to create room."); } finally { btnCreate.textContent = "Create"; btnCreate.disabled = false; }
     };
 }
 
@@ -736,7 +696,7 @@ if (btnSubmitJoin) {
     btnSubmitJoin.onclick = async () => {
         const code = joinInput.value.trim();
         if (code.length !== 4) return alert("Please enter a valid 4-digit code.");
-        btnSubmitJoin.textContent = "Verifying..."; btnSubmitJoin.disabled = true;
+        btnSubmitJoin.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Verifying..."; btnSubmitJoin.disabled = true;
 
         try {
             const roomSnap = await getDoc(doc(db, "study_rooms", code));
@@ -754,7 +714,7 @@ if (btnSubmitJoin) {
                 }
 
                 localStorage.setItem('active_study_room', code); localStorage.setItem('is_study_guest', 'true'); 
-                btnSubmitJoin.classList.replace('bg-emerald', 'bg-blue'); btnSubmitJoin.textContent = "✅ Connected!";
+                btnSubmitJoin.style.background = '#3b82f6'; btnSubmitJoin.style.borderColor = '#3b82f6'; btnSubmitJoin.textContent = "✅ Connected!";
                 setTimeout(() => window.location.href = 'quiz.html', 800);
             } else alert("Room not found. Please double-check the code.");
         } catch (error) { alert("Error connecting to room."); } finally { btnSubmitJoin.textContent = "Join Room"; btnSubmitJoin.disabled = false; }
@@ -767,11 +727,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!darkModeBtn) return;
     const icon = darkModeBtn.querySelector('i');
     
-    if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } }
+    if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark-mode'); if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } }
 
     darkModeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode');
+        const isDark = document.documentElement.classList.contains('dark-mode');
         
         if (isDark) { if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } localStorage.setItem('theme', 'dark'); } 
         else { if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); } localStorage.setItem('theme', 'light'); }
