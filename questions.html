@@ -26,20 +26,20 @@
 
         <ul class="sidebar-links">
             <li class="sidebar-category">Study Modes</li>
-            <li><a href="#" id="nav-system"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">🧠</span> System Wise</a></li>
-            <li><a href="#" id="nav-subject" class="active-link"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">📚</span> Subject Wise</a></li>
-            <li><a href="#" id="nav-exam"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">📝</span> Past Papers</a></li>
-            <li><a href="#" id="nav-book"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">📖</span> Books Library</a></li>
+            <li><a href="#" id="nav-system"><span class="icon-wrapper" style="width:30px; height:30px; font-size:0.9rem; margin:0;">🧠</span> System Wise</a></li>
+            <li><a href="#" id="nav-subject" class="active-link"><span class="icon-wrapper" style="width:30px; height:30px; font-size:0.9rem; margin:0;">📚</span> Subject Wise</a></li>
+            <li><a href="#" id="nav-exam"><span class="icon-wrapper" style="width:30px; height:30px; font-size:0.9rem; margin:0;">📝</span> Past Papers</a></li>
+            <li><a href="#" id="nav-book"><span class="icon-wrapper" style="width:30px; height:30px; font-size:0.9rem; margin:0;">📖</span> Books Library</a></li>
             
             <li class="sidebar-category" style="margin-top: 2rem;">Settings</li>
-            <li><a href="#" id="btn-reset-progress" style="color: #fca5a5;"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem; background:rgba(239,68,68,0.2); border:none; color:#f87171;">🗑️</span> Reset Progress</a></li>
+            <li><a href="#" id="btn-reset-progress" style="color: #fca5a5;"><span class="icon-wrapper" style="width:30px; height:30px; font-size:0.9rem; margin:0; background:rgba(239,68,68,0.2); border:none; color:#f87171;">🗑️</span> Reset Progress</a></li>
             <li class="sidebar-category" style="margin-top: 1rem;">Quick Links</li>
-            <li><a href="dashboard.html"><span class="icon-btn" style="width:30px; height:30px; font-size:0.9rem;">🏠</span> Dashboard</a></li>
+            <li><a href="dashboard.html"><span class="icon-wrapper" style="width:30px; height:30px; font-size:0.9rem; margin:0;">🏠</span> Dashboard</a></li>
         </ul>
     </div>
     
     <!-- === NAVBAR === -->
-    <nav class="navbar" style="padding-top: 1rem; margin-bottom: 1rem; background: transparent !important; border: none !important;">
+    <nav class="navbar" style="padding-top: 1rem; margin-bottom: 1rem;">
         <div class="nav-container glass-panel" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0.8rem 1.5rem; max-width: 1240px; margin: 0 auto;">
             <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <button id="open-sidebar" class="icon-btn" style="background: transparent; border:none;"><i class="fas fa-bars"></i></button>
@@ -140,7 +140,7 @@
                     ⚡ Quick Mock Exam
                 </button>
                 <button id="btn-join-challenge" class="action-btn" style="border-color: #c084fc; color: #d8b4fe;">
-                    🏁 Join Friend Challenge
+                    🏁 Join Challenge
                 </button>
             </div>
         </div>
@@ -163,7 +163,7 @@
                     <label>Minutes <span style="font-size: 0.6rem; color:#94a3b8;">(Exam Only)</span></label>
                     <input type="number" id="exam-timer" placeholder="e.g. 60">
                 </div>
-                <button class="action-btn next-btn start-btn" id="start-exam-btn" disabled>Start Practice ➡</button>
+                <button class="action-btn start-btn" id="start-exam-btn" disabled>Start Practice ➡</button>
             </div>
         </div>
     </section>
@@ -174,7 +174,7 @@
 
     <!-- Quick Mock Exam Modal -->
     <div id="mock-exam-modal" class="popup-overlay" style="z-index: 9000;">
-        <div class="glass-panel popup-content text-center" style="max-width: 400px; width: 90%;">
+        <div class="glass-panel popup-content text-center" style="max-width: 400px;">
             <h3 style="color: #93c5fd; margin-top: 0; margin-bottom: 1rem;">⚡ Quick Mock Exam</h3>
             <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">Enter the number of questions. The timer will automatically be set to 1.2 minutes per question.</p>
             <input type="number" id="mock-q-count" class="glass-input mb-1-5" value="100" min="5" max="300" style="font-size: 1.2rem; text-align: center; font-weight: bold;">
@@ -187,7 +187,7 @@
 
     <!-- Hierarchy List Popup -->
     <div id="popup-overlay" class="popup-overlay">
-        <div class="glass-panel popup-content" style="max-width: 1000px; width: 95%;">
+        <div class="glass-panel popup-content" style="max-width: 1000px;">
             <div class="popup-header">
                 <button id="popup-back" class="action-btn" style="font-weight: bold; color: #93c5fd; border: none; background: transparent;"><i class="fas fa-arrow-left"></i> Back</button>
                 <h3 id="popup-title">Category</h3>
@@ -199,7 +199,7 @@
 
     <!-- Analytics Modal -->
     <div id="analytics-modal" class="popup-overlay">
-        <div class="glass-panel popup-content" style="max-width: 800px; width: 95%;">
+        <div class="glass-panel popup-content" style="max-width: 800px;">
             <div class="popup-header">
                 <h3 style="color: #6ee7b7;"><i class="fas fa-chart-line"></i> Performance Report</h3>
                 <button id="close-analytics" class="icon-btn" style="border: none; background: transparent;">✖</button>
@@ -212,7 +212,7 @@
 
     <!-- Journey / Trophies Modal -->
     <div id="journey-modal" class="popup-overlay">
-        <div class="glass-panel popup-content text-center" style="max-width: 600px; width: 95%; padding: 2rem;">
+        <div class="glass-panel popup-content text-center" style="max-width: 600px; padding: 2rem;">
             <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
             <h2 style="color: #93c5fd; margin: 0; font-weight: 800; font-size: 1.6rem;">Your Journey</h2>
             <p style="color: #94a3b8; font-size: 0.95rem; margin-top: 0.3rem; margin-bottom: 1.5rem;">Track your progress and unlock mastery.</p>
@@ -221,7 +221,7 @@
                 <!-- JS Injects Trophies Here -->
             </div>
 
-            <button id="close-journey-btn" class="action-btn next-btn w-100" style="padding: 1rem; font-size: 1.1rem;">
+            <button id="close-journey-btn" class="action-btn" style="width: 100%; padding: 1rem; font-size: 1.1rem; background: rgba(16, 185, 129, 0.2); border-color: #34d399; color: #6ee7b7;">
                 Close Journey
             </button>
         </div>
@@ -229,7 +229,7 @@
 
     <!-- Reset Progress Modal -->
     <div id="reset-modal" class="popup-overlay">
-        <div class="glass-panel popup-content" style="max-width: 450px; width: 90%;">
+        <div class="glass-panel popup-content" style="max-width: 450px;">
             <div class="popup-header">
                 <h3 style="color: #fca5a5;"><i class="fas fa-trash-alt"></i> Reset Progress</h3>
                 <button id="close-reset-modal" class="icon-btn" style="border: none; background: transparent;">✖</button>

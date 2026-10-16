@@ -1,14 +1,16 @@
 /* === BASE STYLES & EMERALD THEME === */
 html { scroll-behavior: smooth; }
 
+/* FIX: Removed font-family from the universal selector so it stops breaking FontAwesome */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* FIX: Applied font-family to body so it cascades naturally without overriding <i> tags */
 body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #0b291e; 
     background-image: 
         radial-gradient(circle at 15% 15%, rgba(45, 138, 97, 0.45) 0%, transparent 45%),
@@ -40,7 +42,7 @@ html.dark-mode .glass-panel, body.dark-mode .glass-panel {
 
 /* === UNIVERSAL GLASS UTILITIES === */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.06); 
+    background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -119,9 +121,9 @@ html.dark-mode .navbar, body.dark-mode .navbar {
 .nav-container {
     max-width: 1300px; margin: 0 auto; padding: 1rem 2rem;
     display: flex; justify-content: space-between; align-items: center; 
-    flex-wrap: nowrap; /* FIX: Prevents stacking */
+    flex-wrap: nowrap; 
 }
-.logo-img { height: 55px; width: auto; transition: transform 0.2s; filter: brightness(0) invert(1); } /* FIX: Increased logo size */
+.logo-img { height: 55px; width: auto; transition: transform 0.2s; filter: brightness(0) invert(1); } 
 .logo-img:hover { transform: scale(1.05); }
 
 .nav-links { list-style: none; display: flex; gap: 1.5rem; align-items: center; margin: 0; padding: 0; }

@@ -281,7 +281,6 @@ if (globalSearch) {
         }
 
         searchTimeout = setTimeout(async () => {
-            // Search the lightweight globalMetadata instead of waiting for chunks
             const matchedMeta = globalMetadata.filter(q => {
                 if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
                 if (!passesDifficultyFilter(q)) return false; 
@@ -605,6 +604,7 @@ async function fetchRequiredChunks(view, pathsArray) {
     document.body.style.cursor = 'default';
     return fetchedQs;
 }
+
 
 // ==========================================
 // 7. POPUP, CART & CHECKBOXES
