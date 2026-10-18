@@ -270,7 +270,9 @@ function changeView(viewName, titleText) {
 // 5. GLOBAL SEARCH SYSTEM (METADATA OPTIMIZED)
 // ==========================================
 let searchTimeout;
-if (globalSearch) {
+
+// FIX: Added searchDropdown to the safety check so it doesn't crash if the element is missing
+if (globalSearch && searchDropdown) {
     globalSearch.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
         const query = e.target.value.toLowerCase().trim();
@@ -282,8 +284,11 @@ if (globalSearch) {
 
         searchTimeout = setTimeout(async () => {
             const matchedMeta = globalMetadata.filter(q => {
-                if (unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+                // FIX: Added unattemptedFilter null check before reading .checked
+                if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+                
                 if (!passesDifficultyFilter(q)) return false; 
+                
                 const questionText = q.Question || q.question || q.text || q.statement || "";
                 const textToSearch = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic || ''} ${questionText}`.toLowerCase();
                 return textToSearch.includes(query);
