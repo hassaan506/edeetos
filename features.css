@@ -1,14 +1,21 @@
 /* === FEATURES PAGE STYLING === */
 body {
-    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 50%, #f3e8ff 100%);
+    background-color: #0b291e; 
+    background-image: radial-gradient(circle at 15% 15%, rgba(45, 138, 97, 0.45) 0%, transparent 45%), radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 50%), linear-gradient(180deg, #134230 0%, #092218 100%);
     background-attachment: fixed;
+    color: #f8fafc;
     transition: background 0.4s ease, color 0.4s ease;
 }
 
+body.dark-mode {
+    background-color: #060911;
+    background-image: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%), radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.1) 0%, transparent 45%), linear-gradient(180deg, #0f172a 0%, #020617 100%);
+}
+
 .hero-section { text-align: center; }
-.badge-pill { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(255, 255, 255, 0.6); color: #0ea5e9; font-weight: 800; border-radius: 50px; font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 4px 10px rgba(0,0,0,0.02);}
-.hero-content h1 { font-size: 4rem; font-weight: 900; color: #0f172a; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; transition: color 0.3s; }
-.hero-desc { font-size: 1.25rem; color: #475569; margin: 0 auto; line-height: 1.6; max-width: 700px; transition: color 0.3s; }
+.badge-pill { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; font-weight: 800; border-radius: 50px; font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);}
+.hero-content h1 { font-size: 4rem; font-weight: 900; color: #f8fafc; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; transition: color 0.3s; }
+.hero-desc { font-size: 1.25rem; color: #cbd5e1; margin: 0 auto; line-height: 1.6; max-width: 700px; transition: color 0.3s; }
 
 .features-grid {
     display: grid;
@@ -19,17 +26,34 @@ body {
 .feature-card {
     padding: 2.5rem;
     text-align: left;
+    background: rgba(255, 255, 255, 0.07); 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px; 
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.dark-mode .feature-card {
+    background: rgba(15, 23, 42, 0.72);
+    border-color: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .feature-card:hover {
+    background: rgba(30, 41, 59, 0.9); 
+    border-color: #10b981;
 }
 
 .feature-card h3 {
-    color: #0f172a;
+    color: #f8fafc;
     font-size: 1.3rem;
     font-weight: 800;
     margin-bottom: 1rem;
@@ -38,18 +62,11 @@ body {
 }
 
 .feature-card p {
-    color: #475569;
+    color: #cbd5e1;
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
     transition: color 0.3s ease;
 }
 
-/* === DARK MODE === */
-body.dark-mode { background: linear-gradient(135deg, #0f172a 0%, #064e3b 50%, #1e1b4b 100%); color: #f8fafc; }
-.dark-mode .hero-content h1, .dark-mode h2, .dark-mode .feature-card h3 { color: #f8fafc; }
-.dark-mode .hero-desc, .dark-mode .feature-card p { color: #cbd5e1; }
-.dark-mode .badge-pill { background: rgba(56, 189, 248, 0.1); color: #bae6fd; border-color: rgba(56, 189, 248, 0.3); }
-.dark-mode h2 { border-bottom-color: #334155 !important; }
-.dark-mode .feature-card { background: rgba(30, 41, 59, 0.7); border-color: rgba(51, 65, 85, 0.8); }
-.dark-mode .feature-card:hover { background: rgba(30, 41, 59, 0.9); border-color: #38bdf8; }
+h2 { border-bottom-color: rgba(255, 255, 255, 0.1) !important; color: #f8fafc; }

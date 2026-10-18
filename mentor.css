@@ -1,39 +1,39 @@
-/* mentor.css */
-body {
-    background-color: #f0fdf4;
-    font-family: system-ui, -apple-system, sans-serif;
-    margin: 0;
-}
+/* ========================================== */
+/* MENTOR HUB: EMERALD GLASSMORPHISM          */
+/* ========================================== */
+
+/* Removed solid body background so global.css gradients shine through */
 
 .navbar-container {
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
+    background: rgba(14, 48, 35, 0.85); 
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     padding: 0.8rem 2rem;
 }
-
-.glass-panel {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin-bottom: 2rem;
+html.dark-mode .navbar-container {
+    background: rgba(15, 23, 42, 0.85);
 }
+
+/* Note: .glass-panel is removed from here as it is handled perfectly by global.css */
 
 .mentor-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
     margin-bottom: 1rem;
-    background: white;
+    color: #f8fafc;
     transition: all 0.2s ease;
 }
 
 .mentor-card:hover {
-    border-color: #10b981;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+    border-color: #34d399;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .status-dot {
@@ -44,25 +44,27 @@ body {
     margin-right: 5px;
 }
 
-.status-online { background-color: #10b981; }
-.status-offline { background-color: #94a3b8; }
+.status-online { background-color: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.8); }
+.status-offline { background-color: #64748b; }
 
 /* Chat Interface */
 .chat-container {
     display: none;
     flex-direction: column;
     height: 65vh;
-    background: #f8fafc;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 16px;
-    border: 2px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     overflow: hidden;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 .chat-header {
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,6 +79,9 @@ body {
     gap: 1rem;
 }
 
+.chat-messages::-webkit-scrollbar { width: 6px; }
+.chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
 .msg-bubble {
     max-width: 75%;
     padding: 0.8rem 1.2rem;
@@ -87,24 +92,26 @@ body {
 
 .msg-sent {
     align-self: flex-end;
-    background: #10b981;
-    color: white;
+    background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+    color: #022c22;
     border-bottom-right-radius: 4px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
 }
 
 .msg-received {
     align-self: flex-start;
-    background: white;
-    color: #1e293b;
-    border: 1px solid #cbd5e1;
+    background: rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-bottom-left-radius: 4px;
 }
 
 .chat-input-area {
     display: flex;
     padding: 1rem;
-    background: white;
-    border-top: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     gap: 0.8rem;
     align-items: center;
 }
@@ -112,19 +119,24 @@ body {
 .chat-input-area input {
     flex-grow: 1;
     padding: 1rem 1.5rem;
-    border: 2px solid #e2e8f0;
+    background: rgba(0, 0, 0, 0.3);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
     outline: none;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.chat-input-area input:focus { border-color: #10b981; }
+.chat-input-area input:focus { 
+    border-color: #10b981; 
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
 
 .chat-input-area button {
-    background: #10b981;
-    color: white;
-    border: none;
+    background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+    color: #022c22;
+    border: 1px solid #6ee7b7;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -133,24 +145,36 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
 }
 
-.chat-input-area button:hover { transform: scale(1.05); }
+.chat-input-area button:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+}
 
 /* Buttons */
 .btn-outline {
-    background: transparent;
-    border: 2px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f8fafc;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.2s;
+}
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-solid {
+    background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+    border: 1px solid #6ee7b7;
+    color: #022c22;
     border-radius: 8px;
-    color: white;
     cursor: pointer;
+    font-weight: bold;
 }
 
 @media (max-width: 600px) {
@@ -165,4 +189,21 @@ body {
         padding: 0.8rem !important;
         font-size: 1rem !important;
     }
+}
+
+/* Dark Mode Overrides */
+html.dark-mode .mentor-card {
+    background: rgba(15, 23, 42, 0.5);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+html.dark-mode .chat-container {
+    background: rgba(2, 6, 23, 0.4);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+html.dark-mode .msg-received {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+html.dark-mode .chat-input-area input {
+    background: rgba(15, 23, 42, 0.6);
 }

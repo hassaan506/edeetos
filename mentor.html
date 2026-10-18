@@ -12,7 +12,7 @@
 
     <nav class="navbar navbar-container">
         <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;">
-            <a href="dashboard.html" class="btn-outline" style="border: none; color: #64748b; text-decoration: none; display: flex; align-items: center; gap: 5px; flex: 1;">
+            <a href="dashboard.html" class="btn-outline" style="border: none; text-decoration: none; display: flex; align-items: center; gap: 5px; flex: 1;">
                 ⬅ Back
             </a>
             <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
@@ -26,28 +26,28 @@
         
         <div style="text-align: center; margin-bottom: 2rem;">
             <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🩺</div>
-            <h1 style="color: #1e293b; font-size: 2rem; margin-bottom: 0.5rem;">Mentorship Hub</h1>
-            <p id="hub-subtitle" style="color: #64748b; font-size: 1rem;">Connect with a guide in real-time or leave a message.</p>
+            <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Mentorship Hub</h1>
+            <p id="hub-subtitle" style="color: #cbd5e1; font-size: 1rem;">Connect with a guide in real-time or leave a message.</p>
         </div>
 
         <!-- STUDENT VIEW -->
         <div id="student-view" style="display: none;">
-            <div class="glass-panel">
-                <h3 style="color: #064e3b; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">🟢 Online Mentors</h3>
+            <div class="glass-panel" style="margin-bottom: 2rem;">
+                <h3 style="margin-top: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem;">🟢 Online Mentors</h3>
                 <div id="online-mentors-list"><p style="color: #94a3b8;">Loading...</p></div>
             </div>
             
             <div class="glass-panel">
-                <h3 style="color: #475569; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">⚪ Offline Mentors (Leave a message)</h3>
+                <h3 style="margin-top: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem;">⚪ Offline Mentors (Leave a message)</h3>
                 <div id="offline-mentors-list"><p style="color: #94a3b8;">Loading...</p></div>
             </div>
         </div>
 
         <!-- MENTOR VIEW -->
         <div id="mentor-view" class="glass-panel" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                <h3 style="color: #b45309; margin: 0;">Student Requests & Messages</h3>
-                <button id="toggle-status-btn" class="btn-outline" style="padding: 0.5rem 1rem; border-color: #10b981; color: #10b981;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+                <h3 style="margin: 0;">Student Requests & Messages</h3>
+                <button id="toggle-status-btn" class="btn-outline">
                     Go Online
                 </button>
             </div>
@@ -60,10 +60,10 @@
         <div id="live-chat-view" class="chat-container">
             <div class="chat-header">
                 <div>
-                    <h3 id="chat-partner-name" style="color: #064e3b; margin: 0;">Connected</h3>
-                    <div id="chat-type-badge" style="font-size: 0.75rem; color: #10b981; font-weight: bold; margin-top: 3px;">🟢 Live Session</div>
+                    <h3 id="chat-partner-name" style="margin: 0;">Connected</h3>
+                    <div id="chat-type-badge" style="font-size: 0.75rem; color: #34d399; font-weight: bold; margin-top: 3px;">🟢 Live Session</div>
                 </div>
-                <button id="btn-end-chat" class="btn-outline" style="border-color: #ef4444; color: #ef4444; font-size: 0.85rem; padding: 0.5rem 1rem;">
+                <button id="btn-end-chat" class="btn-outline" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5; font-size: 0.85rem; padding: 0.5rem 1rem;">
                     End & Purge Chat
                 </button>
             </div>
@@ -83,3 +83,4 @@
     <script type="module" src="mentor.js"></script>
 </body>
 </html>
+
