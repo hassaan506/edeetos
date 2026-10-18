@@ -146,7 +146,7 @@ input[type="number"] {
 }
 .prog-stat-box div:last-child { font-size: 2.2rem; font-weight: 900; }
 
-.prog-actions { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem; }
+.prog-actions { display: grid; grid-template-columns: repeat(1, 4fr); gap: 1rem; }
 .prog-actions .action-btn { width: 100%; justify-content: center; }
 
 .progress-container {
