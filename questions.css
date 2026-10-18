@@ -134,11 +134,11 @@ input[type="number"] {
 /* 3. PROGRESS BARS & DASHBOARD METRICS       */
 /* ========================================== */
 .prog-dash {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; flex-direction: column; align-items: stretch;
     padding: 1.5rem 2.5rem; margin-bottom: 2rem; gap: 2rem;
 }
 
-.prog-stats { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+.prog-stats { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; width: 100%; gap: 1rem; }
 .prog-stat-box { text-align: center; }
 .prog-stat-title {
     font-size: 0.75rem; color: #94a3b8; font-weight: 800; 
@@ -146,7 +146,7 @@ input[type="number"] {
 }
 .prog-stat-box div:last-child { font-size: 2.2rem; font-weight: 900; }
 
-.prog-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.prog-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; width: 100%; }
 .prog-actions .action-btn { width: 100%; justify-content: center; }
 
 .progress-container {

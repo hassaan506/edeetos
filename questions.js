@@ -122,10 +122,14 @@ const btnPushEdits = document.getElementById('btn-push-edits');
 const pendingEditsCount = document.getElementById('pending-edits-count');
 const darkModeBtn = document.getElementById('dark-mode-toggle');
 if (darkModeBtn) {
+    const isInitiallyDark = document.documentElement.classList.contains('dark-mode');
+    darkModeBtn.innerHTML = isInitiallyDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+
     darkModeBtn.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark-mode');
         const isDark = document.documentElement.classList.contains('dark-mode');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        darkModeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
 }
 // ==========================================
@@ -351,24 +355,32 @@ searchTimeout = setTimeout(async () => {
                 };
                 searchDropdown.appendChild(quizAllBtn);
 
-                matchedMeta.slice(0, 30).forEach(q => {
-                    const div = document.createElement('div');
-                    div.className = 'search-item';
-                    const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
-                    
-                    // We don't have the question snippet in metadata anymore, so we default to a clean prompt
-                    div.innerHTML = `
-                        <div class="search-item-title">${title}</div>
-                        <div class="search-item-snippet" style="color: #64748b; font-style: italic;">Click to load question details</div>
-                    `;
-                    div.onclick = async () => {
-                        searchDropdown.style.display = 'none';
-                        globalSearch.value = '';
-                        const hydratedPool = await hydrateQuestions([q]);
-                        window.launchQuiz(hydratedPool, 'practice', 0);
-                    };
-                    searchDropdown.appendChild(div);
-                });
+matchedMeta.slice(0, 30).forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'search-item';
+    const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
+    
+    let snippetText = q.question || q.Question;
+    if (!snippetText && window.globalSearchIndex) {
+        const indexMatch = window.globalSearchIndex.find(item => String(item.id) === String(getQID(q)));
+        if (indexMatch && indexMatch.q) snippetText = indexMatch.q;
+    }
+    
+    const displayText = snippetText ? (snippetText.substring(0, 70) + '...') : 'Click to load question details';
+
+    div.innerHTML = `
+        <div class="search-item-title">${title}</div>
+        <div class="search-item-snippet" style="color: #94a3b8;">${displayText}</div>
+    `;
+    
+    div.onclick = async () => {
+        searchDropdown.style.display = 'none';
+        globalSearch.value = '';
+        const hydratedPool = await hydrateQuestions([q]);
+        window.launchQuiz(hydratedPool, 'practice', 0);
+    };
+    searchDropdown.appendChild(div);
+});
             }
             searchDropdown.style.display = 'block';
         }, 350);
@@ -2773,602 +2785,618 @@ function buildSubTree(pool) {
 // ==========================================
 // 16. INITIALIZATION & AUTHENTICATION
 // ==========================================
+window.syncUserProgress = function(updateObj) {
+    if (!currentUserData) currentUserData = {};
+    Object.assign(currentUserData, updateObj);
+    
+    const uid = auth.currentUser ? auth.currentUser.uid : null;
+    if (!uid) return;
+    
+    localStorage.setItem(`user_cache_${uid}`, JSON.stringify(currentUserData));
+    updateDoc(doc(db, 'users', uid), updateObj).catch(err => console.error("Background sync failed:", err));
+};
+
+async function hydrateUserState(dbData) {
+    currentUserData = dbData; 
+    currentUserRole = dbData.role || 'STUDENT';
+    
+    isPremiumUser = false;
+    if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
+        isPremiumUser = true;
+        
+        const queueStr = localStorage.getItem('edeetos_pending_edits');
+        let pendingQueue = [];
+        if (queueStr) {
+            try { pendingQueue = JSON.parse(queueStr); } catch(e){}
+        }
+        if (pendingQueue.length > 0 && btnPushEdits) {
+            btnPushEdits.style.display = 'flex';
+            if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
+            
+            btnPushEdits.onclick = async () => {
+                let token = localStorage.getItem('edeetos_github_pat');
+                if (!token) {
+                    token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
+                    if (!token) return;
+                    localStorage.setItem('edeetos_github_pat', token);
+                }
+
+                btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing & Converting...';
+                btnPushEdits.disabled = true;
+
+                try {
+                    const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+                    const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
+
+                    const editsByCourse = {};
+                    pendingQueue.forEach(edit => {
+                        const key = edit.courseFile;
+                        if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
+                        editsByCourse[key].rows.push(edit.row);
+                    });
+
+                    const owner = "hassaan506";
+                    const repo = "edeetos";
+                    const branch = "main";
+
+                    const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
+                        const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+                        let currentSha = null;
+                        try {
+                            const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                            if (getRes.ok) {
+                                const getJson = await getRes.json();
+                                currentSha = getJson.sha;
+                            }
+                        } catch(e) {}
+
+                        const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
+                        if (currentSha) bodyData.sha = currentSha;
+
+                        const putRes = await fetch(fileUrl, {
+                            method: 'PUT',
+                            headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+                            body: JSON.stringify(bodyData)
+                        });
+
+                        if (!putRes.ok) {
+                            const err = await putRes.json().catch(() => ({}));
+                            throw new Error(`Failed to upload ${filePath}: ${err.message || putRes.statusText}`);
+                        }
+                    };
+
+                    for (const courseFile of Object.keys(editsByCourse)) {
+                        const isBook = editsByCourse[courseFile].isBook;
+                        const folder = isBook ? "Books" : "Data";
+                        const csvPath = `${folder}/${courseFile}.csv`;
+                        const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
+                        const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
+                        
+                        const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
+
+                        const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                        if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
+                        
+                        const getJson = await getRes.json();
+                        const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
+                        const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
+                        
+                        if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
+                        const blobJson = await blobRes.json();
+                        
+                        const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
+                        
+                        let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
+                        let rows = parsed.data;
+
+                        editsByCourse[courseFile].rows.forEach(updatedRow => {
+                            const qId = updatedRow["QuestionID"];
+                            const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
+                            
+                            let qIndex = -1;
+                            for(let i=0; i<rows.length; i++) {
+                                if (String(rows[i][actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "") {
+                                    qIndex = i; break;
+                                }
+                            }
+                            
+                            if (qIndex !== -1) {
+                                const targetRow = rows[qIndex];
+                                Object.keys(updatedRow).forEach(newKey => {
+                                    const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                                    targetRow[originalKey || newKey] = updatedRow[newKey];
+                                });
+                            } else {
+                                rows.push(updatedRow);
+                            }
+                        });
+
+                        let outQs = [];
+                        let subTree = {}, sysTree = {}, exTree = {};
+
+                        rows.forEach(row => {
+                            const getVal = (names) => {
+                                const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
+                                return key && row[key] ? String(row[key]).trim() : "";
+                            };
+
+                            const qId = getVal(['questionid', 'id']);
+                            if (!qId) return;
+
+                            const subject = getVal(['subject']);
+                            const chapter = getVal(['chapter']);
+                            const topic = getVal(['topic']);
+                            const year = getVal(['year']);
+                            const rawExams = getVal(['exams', 'exam']);
+                            const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
+
+                            const yearsList = year ? year.split(',').map(e => e.trim()).filter(e => e) : [];
+                            const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+                            const specialtyList = rawSpecs ? rawSpecs.split(',').map(e => e.trim()).filter(e => e) : [];
+
+                            let qObj = {
+                                id: qId,
+                                year: yearsList,
+                                specialty: specialtyList,
+                                exams: examsList,
+                                subject: subject,
+                                chapter: chapter,
+                                topic: topic,
+                                difficulty: getVal(['difficulty']),
+                                question: getVal(['question']),
+                                options: {
+                                    A: getVal(['optiona']),
+                                    B: getVal(['optionb']),
+                                    C: getVal(['optionc']),
+                                    D: getVal(['optiond']),
+                                    E: getVal(['optione'])
+                                },
+                                correctAnswer: getVal(['correctanswer']).toUpperCase(),
+                                explanation: getVal(['explanation']),
+                                hint: getVal(['hint'])
+                            };
+
+                            if (isBook) {
+                                qObj.isBookQuestion = true;
+                                qObj.bookName = courseFile;
+                            }
+
+                            outQs.push(qObj);
+
+                            if (subject) {
+                                if (!subTree[subject]) subTree[subject] = {};
+                                if (chapter) {
+                                    if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
+                                    if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
+                                }
+                            }
+                            if (chapter && chapter.toLowerCase().includes('system')) {
+                                if (!sysTree[chapter]) sysTree[chapter] = {};
+                                if (subject) {
+                                    if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
+                                    if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
+                                }
+                            }
+
+                            examsList.forEach((ex, i) => {
+                                const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
+                                const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
+                                
+                                const { examYear, examSpec } = parseExamInfo(ex, fbYear, fbSpec);
+                                
+                                if (!exTree[examYear]) exTree[examYear] = {};
+                                if (!exTree[examYear][examSpec]) exTree[examYear][examSpec] = {};
+                                if (!exTree[examYear][examSpec][ex]) exTree[examYear][examSpec][ex] = 0;
+                                exTree[examYear][examSpec][ex]++;
+                            });
+                        });
+
+                        const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
+                        
+                        await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
+                        await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+                        
+                        const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
+                        await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
+                    }
+
+                    alert(`✅ Success! Edits saved and JSONs generated dynamically. Changes are live instantly!`);
+                    localStorage.removeItem('edeetos_pending_edits');
+                    btnPushEdits.style.display = 'none';
+
+                } catch (error) {
+                    console.error(error);
+                    alert("❌ Push Failed: " + error.message);
+                    btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: rgba(255,255,255,0.2); color: #fde68a; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+                    btnPushEdits.disabled = false;
+                }
+            };
+        }
+
+    } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
+        const expiry = dbData.subscriptions[activeCourse];
+        if (expiry === 'lifetime') {
+            isPremiumUser = true;
+        } else {
+            const expiryDate = new Date(expiry);
+            if (expiryDate >= new Date()) {
+                isPremiumUser = true;
+            }
+        }
+    }
+    
+    const courseData = dbData[activeCourse] || {};
+    const booksData = dbData.books || {};
+
+    const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
+    const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
+    const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
+    const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
+
+    const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
+    const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
+    const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
+    const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
+
+    userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
+
+    const validCourseSolved = [...new Set(courseSolved)];
+    const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
+    const validCourseExamMistakes = [...new Set(courseExamMistakes)];
+    const validCourseBookmarks = [...new Set(courseBookmarks)];
+
+    const uniqueBookSolved = [...new Set(bookSolved)];
+    const uniqueBookPracticeMistakes = [...new Set(bookPracticeMistakes)];
+    const uniqueBookExamMistakes = [...new Set(bookExamMistakes)];
+    const uniqueBookBookmarks = [...new Set(bookBookmarks)];
+
+    globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
+    globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
+    globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
+    attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
+    window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes]);
+    const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
+    const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
+    
+    viewSpecificStats.course = {
+        solved: validCourseSolved,
+        mistakes: courseAllMistakes,
+        bookmarks: validCourseBookmarks,
+        accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
+    };
+
+    const bookAllMistakes = [...new Set([...uniqueBookPracticeMistakes, ...uniqueBookExamMistakes])];
+    const bookAttempts = uniqueBookSolved.length + bookAllMistakes.length;
+    
+    viewSpecificStats.book = {
+        solved: uniqueBookSolved,
+        mistakes: bookAllMistakes,
+        bookmarks: uniqueBookBookmarks,
+        accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
+    };
+
+    await loadDataAndBuildTree();
+    restoreLastState();
+    if (typeof updateDashboardUI === 'function') updateDashboardUI();
+    
+    const revisions = {
+        ...(courseData.revisions || {}),
+        ...(booksData.revisions || {})
+    };
+    
+    const now = Date.now();
+    const dueTopics = [];
+
+    Object.keys(revisions).forEach(topicId => {
+        if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
+            let subj = "", chap = "", top = "";
+            
+            const parts = topicId.split('::');
+            if (parts.length >= 4) {
+                subj = parts[0];
+                chap = parts[1];
+                top = parts[2];
+            } else {
+                const oldParts = topicId.split('_');
+                oldParts.pop(); 
+                top = oldParts.pop() || '';
+                chap = oldParts.pop() || '';
+                subj = oldParts.join('_') || '';
+            }
+
+            subj = subj || "General";
+            chap = chap || "Section";
+            top = top || revisions[topicId].topic || "Review Topic";
+            if (top === "Unknown Topic") top = "Topic";
+
+            dueTopics.push({ 
+                id: topicId, 
+                subject: subj,
+                chapter: chap,
+                topic: top,
+                step: revisions[topicId].intervalStep || 1 
+            });
+        }
+    });
+
+    const groupedByDay = {};
+    dueTopics.forEach(item => {
+        if (!groupedByDay[item.step]) groupedByDay[item.step] = [];
+        groupedByDay[item.step].push(item);
+    });
+
+    const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
+    const revisionContainer = document.getElementById('spaced-repetition-container');
+
+    if (dueTopics.length > 0 && revisionContainer) {
+        const revisionCard = document.createElement('div');
+        revisionCard.className = 'glass-panel feature-card';
+        revisionCard.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+        revisionCard.style.background = 'rgba(245, 158, 11, 0.1)';
+        revisionCard.style.padding = '20px'; 
+        revisionCard.style.gridColumn = '1 / -1'; 
+        revisionCard.style.marginBottom = '20px';
+        revisionCard.style.cursor = 'pointer';
+        revisionCard.style.display = 'flex';
+        revisionCard.style.flexDirection = 'row';
+        revisionCard.style.justifyContent = 'space-between';
+        revisionCard.style.alignItems = 'center';
+
+        revisionCard.innerHTML = `
+            <div>
+                <h3 class="card-title" style="color: #fde68a; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
+                <p style="color: #fcd34d; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
+            </div>
+            <button class="action-btn" style="background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; color: #fef3c7;">View Plan</button>
+        `;
+
+        let existingModal = document.getElementById('revision-popup-modal');
+        if (existingModal) existingModal.remove(); 
+
+        const modalOverlay = document.createElement('div');
+        modalOverlay.id = 'revision-popup-modal';
+        modalOverlay.className = "popup-overlay";
+
+        let modalHtml = `
+            <div class="glass-panel popup-content" style="max-width: 600px; width: 90%; max-height: 85vh; display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px;">
+                    <h3 style="color: #93c5fd; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
+                    <button id="close-revision-popup" class="icon-btn" style="background: transparent; border: none;">✖</button>
+                </div>
+                <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
+        `;
+
+        sortedDays.forEach(day => {
+            modalHtml += `
+                <div class="revision-day-group">
+                    <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = 'rgba(59,130,246,0.15)'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = 'rgba(255,255,255,0.2)'; this.style.background = 'rgba(255,255,255,0.08)'; }">
+                        <div style="font-weight: 700; color: #f8fafc; font-size: 1rem;">
+                            <i class="fas fa-calendar-day" style="color: #60a5fa; margin-right: 8px;"></i> Day ${day}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
+                            <i class="fas fa-chevron-down toggle-icon" style="color: #94a3b8; transition: transform 0.3s;"></i>
+                        </div>
+                    </button>
+                    
+                    <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid rgba(255,255,255,0.1); margin-left: 5px;">
+            `;
+
+            groupedByDay[day].forEach(item => {
+                const safeTopic = encodeURIComponent(item.id);
+                const displayPath = `
+                    <span style="color:#94a3b8; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:rgba(255,255,255,0.2); margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:rgba(255,255,255,0.2); margin:0 3px;">&gt;</span></span>
+                    <span style="color:#fde68a; font-size: 0.95rem;">${item.topic}</span>
+                `;
+
+                modalHtml += `
+                    <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                        <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
+                            ${displayPath}
+                        </div>
+                        <i class="fas fa-play-circle" style="color: #fcd34d; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
+                    </button>
+                `;
+            });
+
+            modalHtml += `</div></div>`;
+        });
+
+        modalHtml += `</div></div>`;
+        modalOverlay.innerHTML = modalHtml;
+        document.body.appendChild(modalOverlay);
+
+        revisionCard.onclick = () => {
+            modalOverlay.style.display = 'flex';
+        };
+
+        const closeBtn = modalOverlay.querySelector('#close-revision-popup');
+        if (closeBtn) {
+            closeBtn.onclick = (e) => {
+                e.stopPropagation();
+                modalOverlay.style.display = 'none';
+            };
+        }
+
+        modalOverlay.onclick = (e) => {
+            if (e.target === modalOverlay) modalOverlay.style.display = 'none';
+        };
+
+        revisionContainer.innerHTML = ''; 
+        revisionContainer.appendChild(revisionCard);
+
+    } else if (revisionContainer) {
+        revisionContainer.innerHTML = '';
+    }
+    
+    const btnMistakes = document.getElementById('btn-practice-mistakes');
+    if (btnMistakes) {
+        btnMistakes.disabled = false;
+        btnMistakes.style.cursor = "pointer";
+        btnMistakes.onclick = async () => {
+            isGlobalPopupActive = true;
+            const isBook = currentView === 'book';
+            
+            const activeMistakes = isBook ? viewSpecificStats.book.mistakes : viewSpecificStats.course.mistakes;
+            if (activeMistakes.length === 0) {
+                alert(isBook ? "You don't have any book mistakes yet." : "You don't have any course mistakes yet.");
+                return;
+            }
+
+            // Use globalMetadata for mapping exactly which chunks hold mistakes
+            let pPool = [];
+            let ePool = [];
+
+            if (!isBook) {
+                document.body.style.cursor = 'wait';
+                const targetUrls = new Set();
+                
+                // Map mistakes directly to URLs via globalMetadata
+                globalMetadata.forEach(q => {
+                    const qId = getQID(q);
+                    if (!q.isBookQuestion && (globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) {
+                        targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
+                    }
+                });
+
+                const pSeen = new Set();
+                const eSeen = new Set();
+
+                for (let url of targetUrls) {
+                    if (!window.activeChunksCache[url]) {
+                        try {
+                            const res = await fetch(url);
+                            if (res.ok) window.activeChunksCache[url] = await res.json();
+                            else window.activeChunksCache[url] = [];
+                        } catch(e) { window.activeChunksCache[url] = []; }
+                    }
+                    const chunkQs = window.activeChunksCache[url];
+                    chunkQs.forEach(q => {
+                        const qId = getQID(q);
+                        if (globalPracticeMistakes.includes(qId) && !pSeen.has(qId)) {
+                            pSeen.add(qId);
+                            pPool.push(q);
+                        }
+                        if (globalExamMistakes.includes(qId) && !eSeen.has(qId)) {
+                            eSeen.add(qId);
+                            ePool.push(q);
+                        }
+                    });
+                }
+                document.body.style.cursor = 'default';
+            } else {
+                pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)) && q.isBookQuestion);
+                ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)) && q.isBookQuestion);
+            }
+
+            if (pPool.length === 0 && ePool.length === 0 && isBook) {
+                alert("Book mistakes exist, but you must open the specific book first to load its questions into memory.");
+                return;
+            }
+
+            let combinedTree = {};
+            if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
+            if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
+
+            activeCustomPool = [...new Set([...pPool, ...ePool])];
+            openPopup(isBook ? "⚠️ Book Mistakes" : "⚠ Course Mistakes", combinedTree, 'Level1', []);
+        };
+    }
+
+    const btnBookmarks = document.getElementById('btn-review-bookmarks');
+    if (btnBookmarks) {
+        btnBookmarks.disabled = false;
+        btnBookmarks.style.cursor = "pointer";
+        btnBookmarks.onclick = async () => {
+            isGlobalPopupActive = true;
+            const isBook = currentView === 'book';
+            
+            const activeBookmarks = isBook ? viewSpecificStats.book.bookmarks : viewSpecificStats.course.bookmarks;
+            if (activeBookmarks.length === 0) {
+                alert(isBook ? "You don't have any book bookmarks yet." : "You don't have any course bookmarks yet.");
+                return;
+            }
+
+            let bPool = [];
+
+            if (!isBook) {
+                document.body.style.cursor = 'wait';
+                const targetUrls = new Set();
+                
+                // Map bookmarks directly to URLs via globalMetadata
+                globalMetadata.forEach(q => {
+                    const qId = getQID(q);
+                    if (!q.isBookQuestion && globalBookmarks.includes(qId)) {
+                        targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
+                    }
+                });
+
+                const bSeen = new Set();
+                for (let url of targetUrls) {
+                    if (!window.activeChunksCache[url]) {
+                        try {
+                            const res = await fetch(url);
+                            if (res.ok) window.activeChunksCache[url] = await res.json();
+                            else window.activeChunksCache[url] = [];
+                        } catch(e) { window.activeChunksCache[url] = []; }
+                    }
+                    const chunkQs = window.activeChunksCache[url];
+                    chunkQs.forEach(q => {
+                        const qId = getQID(q);
+                        if (globalBookmarks.includes(qId) && !bSeen.has(qId)) {
+                            bSeen.add(qId);
+                            bPool.push(q);
+                        }
+                    });
+                }
+                document.body.style.cursor = 'default';
+            } else {
+                bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)) && q.isBookQuestion);
+            }
+
+            if (bPool.length === 0 && isBook) {
+                alert("Book bookmarks exist, but you must open the specific book first to load its questions into memory.");
+                return;
+            }
+
+            activeCustomPool = bPool;
+            openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", buildSubTree(bPool), 'Level1', []);
+        };
+    }
+    
+    setTimeout(() => {
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
+        checkMilestones(flawlessCount);
+    }, 2000);
+}
+
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         localStorage.removeItem('edeetos_guest_mode');
         const userRef = doc(db, "users", user.uid);
+
+        const cachedStr = localStorage.getItem(`user_cache_${user.uid}`);
+        if (cachedStr) {
+            try {
+                await hydrateUserState(JSON.parse(cachedStr));
+            } catch(e) { 
+                console.warn("Cache read error"); 
+            }
+        }
+
         try {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
-                currentUserData = dbData; 
-                currentUserRole = dbData.role || 'STUDENT';
-                
-                isPremiumUser = false;
-                if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
-                    isPremiumUser = true;
-                    
-                    const queueStr = localStorage.getItem('edeetos_pending_edits');
-                    let pendingQueue = [];
-                    if (queueStr) {
-                        try { pendingQueue = JSON.parse(queueStr); } catch(e){}
-                    }
-                    if (pendingQueue.length > 0 && btnPushEdits) {
-                        btnPushEdits.style.display = 'flex';
-                        if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
-                        
-btnPushEdits.onclick = async () => {
-    let token = localStorage.getItem('edeetos_github_pat');
-    if (!token) {
-        token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
-        if (!token) return;
-        localStorage.setItem('edeetos_github_pat', token);
-    }
-
-    btnPushEdits.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing & Converting...';
-    btnPushEdits.disabled = true;
-
-    try {
-        const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
-        const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
-
-        const editsByCourse = {};
-        pendingQueue.forEach(edit => {
-            const key = edit.courseFile;
-            if (!editsByCourse[key]) editsByCourse[key] = { isBook: edit.isBook, rows: [] };
-            editsByCourse[key].rows.push(edit.row);
-        });
-
-        const owner = "hassaan506";
-        const repo = "edeetos";
-        const branch = "main";
-
-        const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
-            const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
-            let currentSha = null;
-            try {
-                const getRes = await fetch(fileUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
-                if (getRes.ok) {
-                    const getJson = await getRes.json();
-                    currentSha = getJson.sha;
-                }
-            } catch(e) {}
-
-            const bodyData = { message: commitMsg, content: Base64.encode(contentStr), branch: branch };
-            if (currentSha) bodyData.sha = currentSha;
-
-            const putRes = await fetch(fileUrl, {
-                method: 'PUT',
-                headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
-                body: JSON.stringify(bodyData)
-            });
-
-            if (!putRes.ok) {
-                const err = await putRes.json().catch(() => ({}));
-                throw new Error(`Failed to upload ${filePath}: ${err.message || putRes.statusText}`);
-            }
-        };
-
-        for (const courseFile of Object.keys(editsByCourse)) {
-            const isBook = editsByCourse[courseFile].isBook;
-            const folder = isBook ? "Books" : "Data";
-            const csvPath = `${folder}/${courseFile}.csv`;
-            const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
-            const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
-            
-            const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
-
-            const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
-            if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
-            
-            const getJson = await getRes.json();
-            const blobUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${getJson.sha}`;
-            const blobRes = await fetch(blobUrl, { headers: { "Authorization": `Bearer ${token}` } });
-            
-            if (!blobRes.ok) throw new Error("Failed to download CSV from GitHub Blob API.");
-            const blobJson = await blobRes.json();
-            
-            const cleanCsvText = Base64.decode(blobJson.content).replace(/^\uFEFF/, '');
-            
-            let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
-            let rows = parsed.data;
-
-            editsByCourse[courseFile].rows.forEach(updatedRow => {
-                const qId = updatedRow["QuestionID"];
-                const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
-                
-                let qIndex = -1;
-                for(let i=0; i<rows.length; i++) {
-                    if (String(rows[i][actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "") {
-                        qIndex = i; break;
-                    }
-                }
-                
-                if (qIndex !== -1) {
-                    const targetRow = rows[qIndex];
-                    Object.keys(updatedRow).forEach(newKey => {
-                        const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
-                        targetRow[originalKey || newKey] = updatedRow[newKey];
-                    });
-                } else {
-                    rows.push(updatedRow);
-                }
-            });
-
-            let outQs = [];
-            let subTree = {}, sysTree = {}, exTree = {};
-
-            rows.forEach(row => {
-                const getVal = (names) => {
-                    const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
-                    return key && row[key] ? String(row[key]).trim() : "";
-                };
-
-                const qId = getVal(['questionid', 'id']);
-                if (!qId) return;
-
-                const subject = getVal(['subject']);
-                const chapter = getVal(['chapter']);
-                const topic = getVal(['topic']);
-                const year = getVal(['year']);
-                const rawExams = getVal(['exams', 'exam']);
-                const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
-
-                const yearsList = year ? year.split(',').map(e => e.trim()).filter(e => e) : [];
-                const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
-                const specialtyList = rawSpecs ? rawSpecs.split(',').map(e => e.trim()).filter(e => e) : [];
-
-                let qObj = {
-                    id: qId,
-                    year: yearsList,
-                    specialty: specialtyList,
-                    exams: examsList,
-                    subject: subject,
-                    chapter: chapter,
-                    topic: topic,
-                    difficulty: getVal(['difficulty']),
-                    question: getVal(['question']),
-                    options: {
-                        A: getVal(['optiona']),
-                        B: getVal(['optionb']),
-                        C: getVal(['optionc']),
-                        D: getVal(['optiond']),
-                        E: getVal(['optione'])
-                    },
-                    correctAnswer: getVal(['correctanswer']).toUpperCase(),
-                    explanation: getVal(['explanation']),
-                    hint: getVal(['hint'])
-                };
-
-                if (isBook) {
-                    qObj.isBookQuestion = true;
-                    qObj.bookName = courseFile;
-                }
-
-                outQs.push(qObj);
-
-                if (subject) {
-                    if (!subTree[subject]) subTree[subject] = {};
-                    if (chapter) {
-                        if (!subTree[subject][chapter]) subTree[subject][chapter] = {};
-                        if (topic) subTree[subject][chapter][topic] = (subTree[subject][chapter][topic] || 0) + 1;
-                    }
-                }
-                if (chapter && chapter.toLowerCase().includes('system')) {
-                    if (!sysTree[chapter]) sysTree[chapter] = {};
-                    if (subject) {
-                        if (!sysTree[chapter][subject]) sysTree[chapter][subject] = {};
-                        if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
-                    }
-                }
-
-                examsList.forEach((ex, i) => {
-                    const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
-                    const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
-                    
-                    const { examYear, examSpec } = parseExamInfo(ex, fbYear, fbSpec);
-                    
-                    if (!exTree[examYear]) exTree[examYear] = {};
-                    if (!exTree[examYear][examSpec]) exTree[examYear][examSpec] = {};
-                    if (!exTree[examYear][examSpec][ex]) exTree[examYear][examSpec][ex] = 0;
-                    exTree[examYear][examSpec][ex]++;
-                });
-            });
-
-            const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
-            
-            await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
-            await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
-            
-            const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
-            await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
-        }
-
-        alert(`✅ Success! Edits saved and JSONs generated dynamically. Changes are live instantly!`);
-        localStorage.removeItem('edeetos_pending_edits');
-        btnPushEdits.style.display = 'none';
-
-    } catch (error) {
-        console.error(error);
-        alert("❌ Push Failed: " + error.message);
-        btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: rgba(255,255,255,0.2); color: #fde68a; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
-        btnPushEdits.disabled = false;
-    }
-};
-                    }
-
-                } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
-                    const expiry = dbData.subscriptions[activeCourse];
-                    if (expiry === 'lifetime') {
-                        isPremiumUser = true;
-                    } else {
-                        const expiryDate = new Date(expiry);
-                        if (expiryDate >= new Date()) {
-                            isPremiumUser = true;
-                        }
-                    }
-                }
-                
-                const courseData = dbData[activeCourse] || {};
-                const booksData = dbData.books || {};
-
-                const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
-                const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
-                const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
-                const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
-
-                const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
-                const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
-                const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
-                const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
-
-                userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
-
-                const validCourseSolved = [...new Set(courseSolved)];
-                const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
-                const validCourseExamMistakes = [...new Set(courseExamMistakes)];
-                const validCourseBookmarks = [...new Set(courseBookmarks)];
-
-                const uniqueBookSolved = [...new Set(bookSolved)];
-                const uniqueBookPracticeMistakes = [...new Set(bookPracticeMistakes)];
-                const uniqueBookExamMistakes = [...new Set(bookExamMistakes)];
-                const uniqueBookBookmarks = [...new Set(bookBookmarks)];
-
-                globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
-                globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
-                globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
-                attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
-				window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes]);
-                const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
-                const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
-                
-                viewSpecificStats.course = {
-                    solved: validCourseSolved,
-                    mistakes: courseAllMistakes,
-                    bookmarks: validCourseBookmarks,
-                    accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
-                };
-
-                const bookAllMistakes = [...new Set([...uniqueBookPracticeMistakes, ...uniqueBookExamMistakes])];
-                const bookAttempts = uniqueBookSolved.length + bookAllMistakes.length;
-                
-                viewSpecificStats.book = {
-                    solved: uniqueBookSolved,
-                    mistakes: bookAllMistakes,
-                    bookmarks: uniqueBookBookmarks,
-                    accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
-                };
-
-                await loadDataAndBuildTree();
-                restoreLastState();
-                if (typeof updateDashboardUI === 'function') updateDashboardUI();
-                
-                const revisions = {
-                    ...(courseData.revisions || {}),
-                    ...(booksData.revisions || {})
-                };
-                
-                const now = Date.now();
-                const dueTopics = [];
-
-                Object.keys(revisions).forEach(topicId => {
-                    if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
-                        let subj = "", chap = "", top = "";
-                        
-                        const parts = topicId.split('::');
-                        if (parts.length >= 4) {
-                            subj = parts[0];
-                            chap = parts[1];
-                            top = parts[2];
-                        } else {
-                            const oldParts = topicId.split('_');
-                            oldParts.pop(); 
-                            top = oldParts.pop() || '';
-                            chap = oldParts.pop() || '';
-                            subj = oldParts.join('_') || '';
-                        }
-
-                        subj = subj || "General";
-                        chap = chap || "Section";
-                        top = top || revisions[topicId].topic || "Review Topic";
-                        if (top === "Unknown Topic") top = "Topic";
-
-                        dueTopics.push({ 
-                            id: topicId, 
-                            subject: subj,
-                            chapter: chap,
-                            topic: top,
-                            step: revisions[topicId].intervalStep || 1 
-                        });
-                    }
-                });
-
-                const groupedByDay = {};
-                dueTopics.forEach(item => {
-                    if (!groupedByDay[item.step]) groupedByDay[item.step] = [];
-                    groupedByDay[item.step].push(item);
-                });
-
-                const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
-                const revisionContainer = document.getElementById('spaced-repetition-container');
-
-                if (dueTopics.length > 0 && revisionContainer) {
-                    const revisionCard = document.createElement('div');
-                    revisionCard.className = 'glass-panel feature-card';
-                    revisionCard.style.borderColor = 'rgba(245, 158, 11, 0.4)';
-                    revisionCard.style.background = 'rgba(245, 158, 11, 0.1)';
-                    revisionCard.style.padding = '20px'; 
-                    revisionCard.style.gridColumn = '1 / -1'; 
-                    revisionCard.style.marginBottom = '20px';
-                    revisionCard.style.cursor = 'pointer';
-                    revisionCard.style.display = 'flex';
-                    revisionCard.style.flexDirection = 'row';
-                    revisionCard.style.justifyContent = 'space-between';
-                    revisionCard.style.alignItems = 'center';
-
-                    revisionCard.innerHTML = `
-                        <div>
-                            <h3 class="card-title" style="color: #fde68a; margin: 0 0 5px 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Due for Revision</h3>
-                            <p style="color: #fcd34d; font-size: 0.85rem; margin: 0;">You have ${dueTopics.length} topics ready for spaced repetition.</p>
-                        </div>
-                        <button class="action-btn" style="background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; color: #fef3c7;">View Plan</button>
-                    `;
-
-                    let existingModal = document.getElementById('revision-popup-modal');
-                    if (existingModal) existingModal.remove(); 
-
-                    const modalOverlay = document.createElement('div');
-                    modalOverlay.id = 'revision-popup-modal';
-                    modalOverlay.className = "popup-overlay";
-
-                    let modalHtml = `
-                        <div class="glass-panel popup-content" style="max-width: 600px; width: 90%; max-height: 85vh; display: flex; flex-direction: column;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px;">
-                                <h3 style="color: #93c5fd; margin: 0;"><i class="fas fa-sync-alt" style="color: #f59e0b; margin-right: 8px;"></i> Spaced Repetition Plan</h3>
-                                <button id="close-revision-popup" class="icon-btn" style="background: transparent; border: none;">✖</button>
-                            </div>
-                            <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
-                    `;
-
-                    sortedDays.forEach(day => {
-                        modalHtml += `
-                            <div class="revision-day-group">
-                                <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = 'rgba(59,130,246,0.15)'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = 'rgba(255,255,255,0.2)'; this.style.background = 'rgba(255,255,255,0.08)'; }">
-                                    <div style="font-weight: 700; color: #f8fafc; font-size: 1rem;">
-                                        <i class="fas fa-calendar-day" style="color: #60a5fa; margin-right: 8px;"></i> Day ${day}
-                                    </div>
-                                    <div style="display: flex; align-items: center; gap: 12px;">
-                                        <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
-                                        <i class="fas fa-chevron-down toggle-icon" style="color: #94a3b8; transition: transform 0.3s;"></i>
-                                    </div>
-                                </button>
-                                
-                                <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid rgba(255,255,255,0.1); margin-left: 5px;">
-                        `;
-
-                        groupedByDay[day].forEach(item => {
-                            const safeTopic = encodeURIComponent(item.id);
-                            const displayPath = `
-                                <span style="color:#94a3b8; font-size:0.75rem; margin-bottom: 3px;">${item.subject} <span style="color:rgba(255,255,255,0.2); margin:0 3px;">&gt;</span> ${item.chapter} <span style="color:rgba(255,255,255,0.2); margin:0 3px;">&gt;</span></span>
-                                <span style="color:#fde68a; font-size: 0.95rem;">${item.topic}</span>
-                            `;
-
-                            modalHtml += `
-                                <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
-                                    <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
-                                        ${displayPath}
-                                    </div>
-                                    <i class="fas fa-play-circle" style="color: #fcd34d; font-size: 1.3rem; flex-shrink: 0; margin-left: 10px;"></i>
-                                </button>
-                            `;
-                        });
-
-                        modalHtml += `</div></div>`;
-                    });
-
-                    modalHtml += `</div></div>`;
-                    modalOverlay.innerHTML = modalHtml;
-                    document.body.appendChild(modalOverlay);
-
-                    revisionCard.onclick = () => {
-                        modalOverlay.style.display = 'flex';
-                    };
-
-                    const closeBtn = modalOverlay.querySelector('#close-revision-popup');
-                    if (closeBtn) {
-                        closeBtn.onclick = (e) => {
-                            e.stopPropagation();
-                            modalOverlay.style.display = 'none';
-                        };
-                    }
-
-                    modalOverlay.onclick = (e) => {
-                        if (e.target === modalOverlay) modalOverlay.style.display = 'none';
-                    };
-
-                    revisionContainer.innerHTML = ''; 
-                    revisionContainer.appendChild(revisionCard);
-
-                } else if (revisionContainer) {
-                    revisionContainer.innerHTML = '';
-                }
-				
-                const btnMistakes = document.getElementById('btn-practice-mistakes');
-                if (btnMistakes) {
-                    btnMistakes.disabled = false;
-                    btnMistakes.style.cursor = "pointer";
-                    btnMistakes.onclick = async () => {
-                        isGlobalPopupActive = true;
-                        const isBook = currentView === 'book';
-                        
-                        const activeMistakes = isBook ? viewSpecificStats.book.mistakes : viewSpecificStats.course.mistakes;
-                        if (activeMistakes.length === 0) {
-                            alert(isBook ? "You don't have any book mistakes yet." : "You don't have any course mistakes yet.");
-                            return;
-                        }
-
-                        // Use globalMetadata for mapping exactly which chunks hold mistakes
-                        let pPool = [];
-                        let ePool = [];
-
-                        if (!isBook) {
-                            document.body.style.cursor = 'wait';
-                            const targetUrls = new Set();
-                            
-                            // Map mistakes directly to URLs via globalMetadata
-                            globalMetadata.forEach(q => {
-                                const qId = getQID(q);
-                                if (!q.isBookQuestion && (globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) {
-                                    targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
-                                }
-                            });
-
-                            const pSeen = new Set();
-                            const eSeen = new Set();
-
-                            for (let url of targetUrls) {
-                                if (!window.activeChunksCache[url]) {
-                                    try {
-                                        const res = await fetch(url);
-                                        if (res.ok) window.activeChunksCache[url] = await res.json();
-                                        else window.activeChunksCache[url] = [];
-                                    } catch(e) { window.activeChunksCache[url] = []; }
-                                }
-                                const chunkQs = window.activeChunksCache[url];
-                                chunkQs.forEach(q => {
-                                    const qId = getQID(q);
-                                    if (globalPracticeMistakes.includes(qId) && !pSeen.has(qId)) {
-                                        pSeen.add(qId);
-                                        pPool.push(q);
-                                    }
-                                    if (globalExamMistakes.includes(qId) && !eSeen.has(qId)) {
-                                        eSeen.add(qId);
-                                        ePool.push(q);
-                                    }
-                                });
-                            }
-                            document.body.style.cursor = 'default';
-                        } else {
-                            pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)) && q.isBookQuestion);
-                            ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)) && q.isBookQuestion);
-                        }
-
-                        if (pPool.length === 0 && ePool.length === 0 && isBook) {
-                            alert("Book mistakes exist, but you must open the specific book first to load its questions into memory.");
-                            return;
-                        }
-
-                        let combinedTree = {};
-                        if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
-                        if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
-
-                        activeCustomPool = [...new Set([...pPool, ...ePool])];
-                        openPopup(isBook ? "⚠️ Book Mistakes" : "⚠ Course Mistakes", combinedTree, 'Level1', []);
-                    };
-                }
-
-                const btnBookmarks = document.getElementById('btn-review-bookmarks');
-                if (btnBookmarks) {
-                    btnBookmarks.disabled = false;
-                    btnBookmarks.style.cursor = "pointer";
-                    btnBookmarks.onclick = async () => {
-                        isGlobalPopupActive = true;
-                        const isBook = currentView === 'book';
-                        
-                        const activeBookmarks = isBook ? viewSpecificStats.book.bookmarks : viewSpecificStats.course.bookmarks;
-                        if (activeBookmarks.length === 0) {
-                            alert(isBook ? "You don't have any book bookmarks yet." : "You don't have any course bookmarks yet.");
-                            return;
-                        }
-
-                        let bPool = [];
-
-                        if (!isBook) {
-                            document.body.style.cursor = 'wait';
-                            const targetUrls = new Set();
-                            
-                            // Map bookmarks directly to URLs via globalMetadata
-                            globalMetadata.forEach(q => {
-                                const qId = getQID(q);
-                                if (!q.isBookQuestion && globalBookmarks.includes(qId)) {
-                                    targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
-                                }
-                            });
-
-                            const bSeen = new Set();
-                            for (let url of targetUrls) {
-                                if (!window.activeChunksCache[url]) {
-                                    try {
-                                        const res = await fetch(url);
-                                        if (res.ok) window.activeChunksCache[url] = await res.json();
-                                        else window.activeChunksCache[url] = [];
-                                    } catch(e) { window.activeChunksCache[url] = []; }
-                                }
-                                const chunkQs = window.activeChunksCache[url];
-                                chunkQs.forEach(q => {
-                                    const qId = getQID(q);
-                                    if (globalBookmarks.includes(qId) && !bSeen.has(qId)) {
-                                        bSeen.add(qId);
-                                        bPool.push(q);
-                                    }
-                                });
-                            }
-                            document.body.style.cursor = 'default';
-                        } else {
-                            bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)) && q.isBookQuestion);
-                        }
-
-                        if (bPool.length === 0 && isBook) {
-                            alert("Book bookmarks exist, but you must open the specific book first to load its questions into memory.");
-                            return;
-                        }
-
-                        activeCustomPool = bPool;
-                        openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", buildSubTree(bPool), 'Level1', []);
-                    };
-                }
-                
-                setTimeout(() => {
-                    const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
-                    checkMilestones(flawlessCount);
-                }, 2000);
-
+                localStorage.setItem(`user_cache_${user.uid}`, JSON.stringify(dbData));
+                await hydrateUserState(dbData);
             } else {
-                currentUserData = { role: 'STUDENT' };
-                isPremiumUser = false;
-                
-                await loadDataAndBuildTree();
-                
-                globalPracticeMistakes = [];
-                globalExamMistakes = [];
-                globalBookmarks = [];
-                attemptedQuestions = [];
-                userExamHistory = [];
-                
-                restoreLastState();
-                if (typeof updateDashboardUI === 'function') updateDashboardUI();
+                await hydrateUserState({ role: 'STUDENT' });
             }
-        } catch (error) { console.error("Error fetching stats:", error); }
+        } catch (error) { 
+            console.error("Error fetching stats:", error); 
+        }
     } else {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             isPremiumUser = false;
