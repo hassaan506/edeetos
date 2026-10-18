@@ -120,7 +120,14 @@ const diffMediumFilter = document.getElementById('diff-medium-filter');
 const diffHardFilter = document.getElementById('diff-hard-filter');
 const btnPushEdits = document.getElementById('btn-push-edits');
 const pendingEditsCount = document.getElementById('pending-edits-count');
-
+const darkModeBtn = document.getElementById('dark-mode-toggle');
+if (darkModeBtn) {
+    darkModeBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark-mode');
+        const isDark = document.documentElement.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+}
 // ==========================================
 // 3. MULTIPLAYER & STUDY ROOMS
 // ==========================================
@@ -1624,13 +1631,17 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     if (pool && pool.length > 0) {
-        if (paths.length === 0) {
-            return pool.filter(q => !(!isGlobalPopupActive && unattemptedFilter.checked) || (!attemptedQuestions.includes(getQID(q)) && !globalPracticeMistakes.includes(getQID(q)) && !globalExamMistakes.includes(getQID(q)))).length;
-        }
+if (paths.length === 0) {
+    return pool.filter(q => {
+        if (!passesDifficultyFilter(q)) return false;
+        if (!isGlobalPopupActive && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
+        return true;
+    }).length;
+}
 
         return pool.filter(q => {
             if (!passesDifficultyFilter(q)) return false;
-            if (!isGlobalPopupActive && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+            if (!isGlobalPopupActive && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
             
             const qSubj = q.Subject || q.subject;
             const qChap = q.Chapter || q.chapter;
@@ -3027,7 +3038,7 @@ btnPushEdits.onclick = async () => {
                 globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
                 globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
                 attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
-
+				window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes]);
                 const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
                 const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
                 
