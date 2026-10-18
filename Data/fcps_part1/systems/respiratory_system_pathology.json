@@ -1,32 +1,61 @@
 [
     {
-        "id": "K3QEX3JZ",
+        "id": "WTHFUJUP",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
             "Gynecology & Obstetrics",
+            "Medicine & Allied",
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Gynecology - 05/25 - May 13 - Morning"
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning",
+            "Surgery - 02/25 - Feburary 9 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "The characteristic giant cells seen in tuberculosis are:",
+        "question": "A 12-year-old boy presents with nasal bleeding, runny nose, facial swelling, proptosis, and loss of smell. CT imaging reveals a mass which is extended into infratemporal fossa, what is likely diagnosis",
         "options": {
-            "A": "Langhans: giant cells",
-            "B": "Langerhans: cells",
-            "C": "Foreign body giant cells",
-            "D": "Reed-Sternberg cells",
-            "E": ""
+            "A": "Juvenile nasopharyngeal angiofibroma",
+            "B": "Adenoid hypertrophy",
+            "C": "Allergic rhinitis",
+            "D": "Sino-nasal polyposis",
+            "E": "Polyp"
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YN7EG4NP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old male presents to the emergency department after a road traffic accident. He sustained fractures of the femur and tibia. Two days later, he develops sudden shortness of breath, confusion, and petechial rash over his chest. Which of the following statements is most characteristic of the underlying condition?",
+        "options": {
+            "A": "Inciting event starts after 1-3 days",
+            "B": "Normal components of fats enter in circulation",
+            "C": "Inciting event is mostly trauma to long bones",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Fat embolism syndrome.",
         "hint": ""
     },
     {
@@ -138,6 +167,33 @@
         "hint": ""
     },
     {
+        "id": "3WKPF9UZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 40 year old man presents with bilateral hilar lymphadenopathy and non-caseating granulomas on biopsy. He also has hypercalcemia. What is the most likely diagnosis?",
+        "options": {
+            "A": "Sarcoidosis",
+            "B": "Tuberculosis",
+            "C": "Histoplasmosis",
+            "D": "Wegener granulomatosis",
+            "E": "Hodgkin lymphoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "8JY46ARP",
         "year": [
             "2026"
@@ -192,6 +248,87 @@
         "hint": ""
     },
     {
+        "id": "NJXVJS38",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old man presents with chronic cough and weight loss. A lung biopsy reveals multiple collections of epithelioid macrophages surrounded by lymphocytes and Langhans-type giant cells. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Tuberculosis",
+            "B": "Large cell carcinoma",
+            "C": "Adenocarcinoma",
+            "D": "Wegener granulomatosis",
+            "E": "Squamous cell carcinoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EEFE2WKD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old patient presents with nasal obstruction, epistaxis, and difficulty opening the mouth (trismus). Imaging shows a mass in the nasopharynx extending into the infratemporal fossa. What is the most likely diagnosis?",
+        "options": {
+            "A": "Nasopharyngeal carcinoma",
+            "B": "Juvenile nasopharyngeal angiofibroma",
+            "C": "Inverted papilloma",
+            "D": "Nasal polyp",
+            "E": "Sinonasal carcinoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "REF2H74T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 48-year-old heavy smoker presents with persistent hoarseness. Laryngoscopic examination reveals white, keratinized patches on the true vocal cords. Histology shows dysplastic squamous epithelium with keratin formation. Which of the following best describes the underlying epithelium in this lesion?",
+        "options": {
+            "A": "Stratified squamous keratinized epithelium",
+            "B": "Pseudostratified columnar epithelium",
+            "C": "Non-keratinized stratified squamous epithelium",
+            "D": "Ciliated columnar epithelium",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KMD7UMYE",
         "year": [
             "2026"
@@ -213,6 +350,33 @@
             "C": "Hyperplasia",
             "D": "Neoplasia",
             "E": "Atrophy"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5KKDSK6Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old man presents with chronic cough and progressive shortness of breath. He has a smoking history of 2 packs/day for 20 years. Bronchoscopic biopsy is taken. Which histological change is most likely to be seen?",
+        "options": {
+            "A": "Normal pseudostratified ciliated columnar epithelium",
+            "B": "Squamous metaplasia",
+            "C": "Adenomatous hyperplasia",
+            "D": "Goblet cell hyperplasia without epithelial change",
+            "E": "Necrotizing granulomatous inflammation"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -383,6 +547,114 @@
         "hint": ""
     },
     {
+        "id": "VTHN7XF7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old man with a long history of cigarette smoking develops chronic cough and weight loss. He is diagnosed with squamous cell carcinoma of the lung. Which of the most likely carcinogen responsible for this malignancy?",
+        "options": {
+            "A": "Polycyclic aromatic hydrocarbons",
+            "B": "Nitrosamines",
+            "C": "Aflatoxin B1",
+            "D": "Arsenic",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Benz anthracene - Skin cancer. Benzopyrene - Lung CA. Aromatic amines and azo dye - Naphthylamine - Bladder CA. Natural plant - Aflatoxin - Liver CA.",
+        "hint": ""
+    },
+    {
+        "id": "FTLM7SF9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old non-smoker presents with weight loss and persistent cough. Imaging shows a peripheral lower-lobe mass. Which carcinoma is most likely?",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "Adenocarcinoma",
+            "C": "Small cell carcinoma",
+            "D": "Carcinoid tumor",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Adenocarcinoma = peripheral, especially lower lobes. Most common in non-smokers and females. References: Robbins Pathology - Lung Adenocarcinoma.",
+        "hint": ""
+    },
+    {
+        "id": "MA6BUMRS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58 year old man with a 20-year history of smoking presents for evaluation of chronic cough and sputum production. Bronchial biopsy shows loss of cilia and replacement of pseudostratified columnar epithelium with a multilayered flat epithelium. Which of the following best describes the histological change?",
+        "options": {
+            "A": "Squamous metaplasia",
+            "B": "Dysplasia",
+            "C": "Hyperplasia of ciliated cells",
+            "D": "Neoplastic transformation",
+            "E": "Columnar metaplasia"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KZSP7TX7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 6 year old child presents with chronic product reactive cough, recurrent respiratory infections, and failure to thrive. He is diagnosed with cystic fibrosis. Which histopathological finding is classical in this condition?",
+        "options": {
+            "A": "Thickened basal lamina",
+            "B": "Decrease goblet cells",
+            "C": "Squamous metaplasia of respiratory epithelium",
+            "D": "Caseating granulomas",
+            "E": "Pulmonary capillary hemantiomatosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TFAHNE66",
         "year": [
             "2026"
@@ -406,6 +678,60 @@
             "E": "Type II pneumocyte hyperplasia"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HX6KEYGD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old chronic smoker presents with cough, weight loss, and hemoptysis. Chest X-ray reveals a large peripheral lung mass. Biopsy shows poorly differentiated giant malignant cells with prominent nucleoli, large cytoplasm, and no evident of squamous or glandular differentiation. Immunohistochemistry is negative for TTF-1, p40, and chromogranin. What is the most likely diagnosis?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Small cell carcinoma",
+            "D": "Large cell carcinoma",
+            "E": "Carcinoid tumor"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FYAVNXFM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old male patient presents with a persistent cough, chest pain, cough, hemoptysis and weight loss. Imaging reveals a centrally located lung mass and histopathological report showing keratin pearls. Which of the following type of lung cancer he has?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Large cell carcinoma",
+            "C": "Small cell carcinoma",
+            "D": "Squamous cell carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -434,6 +760,87 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LTX6CBRA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old smoker is diagnosed with lung carcinoma. Which subtype is most commonly associated with central location and cavitating lesions on imaging?",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "Adenocarcinoma",
+            "C": "Small cell carcinoma",
+            "D": "Large cell carcinoma",
+            "E": "Bronchioalveolar carcinoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "43YFCPNJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old smoker presents with a central lung mass. He develops symptoms of SIADH including hyponatremia and low serum osmolality. Which type of lung cancer is most commonly associated with this paraneoplastic syndrome?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Small cell carcinoma",
+            "D": "Large cell carcinoma",
+            "E": "Bronchial carcinoid tumor"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PP6UGSXB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60-year-old man, 20 pack-years smoking, presents with bronchial biopsy showing ciliated columnar -> squamous epithelium. Diagnosis?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Squamous metaplasia",
+            "D": "Small cell carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Chronic irritation (smoking) -> respiratory epithelium undergoes squamous metaplasia. Reversible initially, may progress to carcinoma with dysplasia.",
         "hint": ""
     },
     {
@@ -599,6 +1006,87 @@
         "hint": ""
     },
     {
+        "id": "CLPEF8JW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 65-year-old male smoker has a peripheral lower lobe lung mass, biopsy shows large undifferentiated cells. Likely tumor?",
+        "options": {
+            "A": "Small cell carcinoma",
+            "B": "Adenocarcinoma",
+            "C": "Large cell carcinoma",
+            "D": "Squamous cell carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MZQJMLFS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 65-year-old man presents with dyspnea and cough. Chest imaging reveals multiple calcified, concentric, lamellated structures within the lung parenchyma. Which of the following is the most likely histologic finding described?",
+        "options": {
+            "A": "Psammoma bodies",
+            "B": "Michaelis-Gutmann bodies",
+            "C": "Asbestos bodies",
+            "D": "Schaumann bodies",
+            "E": "Mallory bodies"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U9JLZXVM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 66 year old chronic smoker presents with low-grade fever, hemoptysis, and unintentional weight loss. Chest X-ray shows a central cavitating hilar mass located in the right upper lobe. Which of the following is the most likely histological type of lung cancer?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Small cell carcinoma",
+            "C": "Large cell carcinoma",
+            "D": "Squamous cell carcinoma",
+            "E": "Bronchioalveolar carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "LRTJPNML",
         "year": [
             "2026"
@@ -734,6 +1222,33 @@
         "hint": ""
     },
     {
+        "id": "UU3SDTWF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A biopsy from a tuberculous granuloma shows multinucleated giant cells with nuclei arranged peripherally in a horseshoe pattern. These cells are called:",
+        "options": {
+            "A": "Langhans giant cells",
+            "B": "Foreign body giant cells",
+            "C": "Touton giant cells",
+            "D": "Osteoclasts",
+            "E": "Langerhans cells"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HB5LGFZD",
         "year": [
             "2026"
@@ -815,6 +1330,33 @@
         "hint": ""
     },
     {
+        "id": "7HHWNZTK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child was brought to hospital with epistaxis. Examination and imaging revealed a fleshy mass extending from splenoparenchymal organ to left infraperitoneal fossa. What is most likely diagnosis?",
+        "options": {
+            "A": "Anchoanal polyp",
+            "B": "Inverted papilloma",
+            "C": "Juvenile nasopharyngeal angiofibroma",
+            "D": "Adenoids",
+            "E": "Hemangioma"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "N2FCZN3T",
         "year": [
             "2026"
@@ -840,6 +1382,33 @@
             "E": "Hemangioma"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VCS99X84",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A chronic smoker is diagnosed with lung cancer. Which carcinogen is most responsible?",
+        "options": {
+            "A": "Aromatic amines",
+            "B": "Hydrocarbons",
+            "C": "Alkylating agents",
+            "D": "Polyacrylamide",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -952,6 +1521,33 @@
         "hint": ""
     },
     {
+        "id": "7J9V94A5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A lung biopsy from a mass in the right lung shows large polypoidal cells with abundant cytoplasm and large nuclei. Which type of lung cancer does this most likely represent?",
+        "options": {
+            "A": "Small cell carcinoma",
+            "B": "Adenocarcinoma",
+            "C": "Squamous cell carcinoma",
+            "D": "Large cell carcinoma",
+            "E": "Carcinoid tumor"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "A9T84XW2",
         "year": [
             "2026"
@@ -975,6 +1571,62 @@
             "E": "Rheumatoid arthritis"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KXD7SQ5E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A Man smoke 20 packs per month and he works in factory and he develops lung cancer which carcinogen in Cigarette causes lung cancer?",
+        "options": {
+            "A": "Nitrosamines",
+            "B": "Hydrocarbons",
+            "C": "Vinyl chloride",
+            "D": "Azo dye",
+            "E": "Arsenic"
+        },
+        "correctAnswer": "B",
+        "explanation": "Plastic factory worker - Liver Angiosarcoma. Plastic factory worker + Smoking - Lung CA > Angiosarcoma. Hydrocarbon (tyre factory) + Aromatic amines - Bladder CA. Smoking + Hydrocarbon - Lung CA > Bladder. Liver CA - Alcohol > Aflatoxin > Smoking. Transitional bladder CA - Smoking > Amines > Hydrocarbon. Squamous cell bladder CA - Schistosoma > Stones > Indwelling.",
+        "hint": ""
+    },
+    {
+        "id": "JN5Y9A7K",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A Man smoke 20 packs per month work in factory he develops lung cancer which carcinogen in Cigarette cause lung cancer",
+        "options": {
+            "A": "Nitrosamines",
+            "B": "Hydrocarbons",
+            "C": "Vinyl chloride",
+            "D": "Azo dye",
+            "E": "Arsenic"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1035,6 +1687,114 @@
         "hint": ""
     },
     {
+        "id": "2D3EYLFC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient had orthopedic surgery for multiple fractures in RTA. He was vitally stable and shifted to ward. Suddenly he became unwell, dyspneic and disoriented. What underlying factor is the cause of his condition?",
+        "options": {
+            "A": "Air embolism",
+            "B": "Pulmonary embolism",
+            "C": "Fat embolism",
+            "D": "Pneumothorax",
+            "E": "Myocardial infarction"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L9NH5ZFK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has History of cough and hemoptysis. On X-ray a lesion seen in upper lobe of lung. Histology showed a lesion with megacells this is related to",
+        "options": {
+            "A": "Small cell lung Carcinoma",
+            "B": "Large cell lung Carcinoma",
+            "C": "Squamous cell carcinoma",
+            "D": "Adenocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ER45MV8D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has LRTI for many days. On histology of respiratory tree which of the following will be damaged.",
+        "options": {
+            "A": "Microvilli",
+            "B": "Cilia",
+            "C": "Plasmalemma Protein",
+            "D": "Desmosome",
+            "E": "Hemidesmosome"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MTG62F7R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is diagnosed with emphysema, and pulmonary function testing shows increased lung compliance. Which of the following findings is most characteristic of emphysema?",
+        "options": {
+            "A": "Increased airway resistance",
+            "B": "Decreased airway resistance",
+            "C": "Normal airway resistance",
+            "D": "Variable airway resistance",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "XKG2795N",
         "year": [
             "2026"
@@ -1085,6 +1845,33 @@
             "E": "Plastics"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZNYUXU2S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with cough and hemoptysis having Mass in the right lower lung and smoking history and giant pleomorphic cells on microscopy. What is the diagnosis?",
+        "options": {
+            "A": "SCLC",
+            "B": "Squamous cell lung carcinoma",
+            "C": "Large cell lung carcinoma",
+            "D": "Adenocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1521,6 +2308,33 @@
         "hint": ""
     },
     {
+        "id": "URUBBPFY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with Squamous Cell Carcinoma undergoes lung resection and mediastinal lymph node dissection. The hilar lymph nodes are observed to be discolored, appearing jet black to the surgeon. What is the most common and benign cause for this discoloration?",
+        "options": {
+            "A": "Melanin deposition",
+            "B": "Anthracotic substance accumulation",
+            "C": "Hemoglobin breakdown products",
+            "D": "Metastatic tumor pigment",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The jet black discoloration of hilar lymph nodes is typically due to anthracosis, which is the accumulation of inhaled carbon pigment (anthracotic substance) that has been phagocytosed by macrophages and carried to the lymph nodes, a common finding in city dwellers and smokers.",
+        "hint": ""
+    },
+    {
         "id": "UT3ZH9BE",
         "year": [
             "2026"
@@ -1548,6 +2362,93 @@
         "hint": ""
     },
     {
+        "id": "XF6SSKYR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pleural biopsy from a patient with chronic chest pain shows aggregates of cells with abundant pale-pink cytoplasm, arranged in a nodule with surrounding lymphocytes. Which of the following cells are most likely predominant in this lesion?",
+        "options": {
+            "A": "Activated macrophages",
+            "B": "Neutrophils",
+            "C": "Plasma cells",
+            "D": "Fibroblasts",
+            "E": "Endothelial cells"
+        },
+        "correctAnswer": "A",
+        "explanation": "Activated macrophages -> hallmark of granulomatous inflammation (epithelioid cells).",
+        "hint": ""
+    },
+    {
+        "id": "YTQ6VBHD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A sea diver after diving ascend rapidly then develops shortness of breath and joint pain. Cause is:",
+        "options": {
+            "A": "Lactic Acidosis",
+            "B": "Nitrogen bubble",
+            "C": "Excessive fatigue",
+            "D": "Excess CO2",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9JZSTWGX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A smoker with alveolar wall destruction and loss of elastic recoil most likely has deficiency of:",
+        "options": {
+            "A": "Elastin",
+            "B": "Collagen",
+            "C": "alpha-1-Antitrypsin",
+            "D": "Surfactant",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Alpha 1 Antitrypsin is a critical circulating protein that inhibits neutrophil elastase to protect the lung tissue from destruction. Smoking attracts a large number of neutrophils and macrophages to the lungs, increasing the load of elastase and directly inactivates the existing alpha 1 AT protein.",
+        "hint": ""
+    },
+    {
         "id": "42AJVC93",
         "year": [
             "2026"
@@ -1571,6 +2472,117 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FNLKHH7X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young male living in a populated town, he died in an RTA on the autopsy the lymph nodes of lungs are found black in color, which of the followings associated with the condition of this patient:",
+        "options": {
+            "A": "Melatonin",
+            "B": "Anthracosis",
+            "C": "Bronchogenic carcinoma",
+            "D": "Bronchial asthma",
+            "E": "TB"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TRGR2KEX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young male living in a populated town, he died in an RTA on the autopsy the lymph nodes of lungs are found black in colour, which of the followings associated with the condition of this patient:",
+        "options": {
+            "A": "Melatonin",
+            "B": "Anthracosis",
+            "C": "Bronchogenic carcinoma",
+            "D": "Bronchial asthma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VHL75KDK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young male presents with recurrent epistaxis (about 6 episodes) and having a nasal mass that is invading the infratemporal fossa. What is the most likely diagnosis?",
+        "options": {
+            "A": "Angiofibroma",
+            "B": "Inverted papilloma",
+            "C": "Nasopharyngeal carcinoma",
+            "D": "Allergic nasal polyp",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The most likely diagnosis for a young male with recurrent epistaxis and a nasal mass invading the infratemporal fossa is Juvenile Nasopharyngeal Angiofibroma.",
+        "hint": ""
+    },
+    {
+        "id": "X8KRK4Z8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young male presents with recurrent epistaxis about 6 episodes and having unilateral obstruction and a red fleshy mass in the posterior nasopharynx and concha. Which of the following is your diagnosis?",
+        "options": {
+            "A": "Angiofibroma",
+            "B": "Adenoids",
+            "C": "Nasopharyngeal carcinoma",
+            "D": "Allergic nasal polyp",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1652,6 +2664,87 @@
             "E": "Aortitis"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UWLE7F2E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "As person had an RTA which causes posterior dislocation of femur in acetabulum causing pain in his left hip and knee, which nerve is damaged?",
+        "options": {
+            "A": "Superior gluteal nerve",
+            "B": "Obturator nerve",
+            "C": "Sciatic nerve",
+            "D": "Femoral nerve",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5FKKPMVG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Asbestos and tobacco smoking can cause",
+        "options": {
+            "A": "Bladder carcinoma",
+            "B": "Bronchogenic carcinoma",
+            "C": "Lymphoma",
+            "D": "Malignant mesothelioma",
+            "E": "Liver carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E9E6U8WH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Asthma affects which of the following",
+        "options": {
+            "A": "Medium size bronchiole",
+            "B": "Terminal alveoli",
+            "C": "Respiratory bronchiole",
+            "D": "Tertiary bronchioles",
+            "E": "Secondary bronchioles"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1791,6 +2884,35 @@
         "hint": ""
     },
     {
+        "id": "VNAUWAKZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Chronic smoker develops complete left lung atelectasis. Most likely pathology?",
+        "options": {
+            "A": "Partial obstruction of airway",
+            "B": "Infection",
+            "C": "TB",
+            "D": "Complete obstruction of airway",
+            "E": "Chronic smoking"
+        },
+        "correctAnswer": "D",
+        "explanation": "Complete atelectasis -> complete obstruction of main bronchus by tumor or foreign body. Chronic smoker -> risk for bronchogenic carcinoma causing obstruction.",
+        "hint": ""
+    },
+    {
         "id": "SFR3TQW6",
         "year": [
             "2026"
@@ -1868,6 +2990,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LTRKY5X4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Due to emphysema change occur in lung is:",
+        "options": {
+            "A": "Increase elastic tendency to lungs",
+            "B": "Decrease elastic recoil tendency of lungs",
+            "C": "Decrease stifness of lung",
+            "D": "Increase Elastase in lung",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1953,6 +3102,87 @@
         "hint": ""
     },
     {
+        "id": "WRZFG6J3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In Bacillus anthracis reaction, there is a widening of lungs due to enlargement of which of the following organs?",
+        "options": {
+            "A": "Lymph nodes",
+            "B": "Heart",
+            "C": "Thymus",
+            "D": "Kidneys",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The widening of the mediastinum is due to the enlargement and hemorrhagic inflammation of the mediastinal lymph nodes. This is a hallmark sign of inhalation anthrax and is a critical finding for diagnosis.",
+        "hint": ""
+    },
+    {
+        "id": "9GDJJ229",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In pulmonary embolism, occlusion of a pulmonary artery is best classified as",
+        "options": {
+            "A": "Small vessel occlusion",
+            "B": "Medium vessel occlusion",
+            "C": "Large vessel occlusion",
+            "D": "Massive occlusion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T9SCK58R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mass near porta hepatis, structure damaged will be",
+        "options": {
+            "A": "Common hepatic artery",
+            "B": "Cystic duct",
+            "C": "Portal vein",
+            "D": "Hepatic vein",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DN34FXPC",
         "year": [
             "2026"
@@ -1974,6 +3204,33 @@
             "C": "Capillary",
             "D": "Lymphatics",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JGJXFGHS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Non-caseating granulomas are characteristic features of which one of the following.",
+        "options": {
+            "A": "Silicosis",
+            "B": "Sarcoidosis",
+            "C": "Tuberculosis",
+            "D": "Byssinosis",
+            "E": "Asbestosis"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -2003,6 +3260,114 @@
             "E": "Pulmonary Embolism"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9SQU3YBT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient had Cough and X-ray shows hilar lymphadenopathy, non caseating granuloma Present diagnoses is:",
+        "options": {
+            "A": "Sarcoidosis",
+            "B": "TB",
+            "C": "Syphilis",
+            "D": "Leprosy",
+            "E": "Asbestosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6S8WKZPY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with cough and hemoptysis having Mass in the right lower lung and smoking history and giant pleomorphic cells on microscopy. What is the diagnosis?",
+        "options": {
+            "A": "SCLC",
+            "B": "Squamous cell lung carcinoma",
+            "C": "Large cell lung carcinoma",
+            "D": "Adenocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M4XY7E49",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient suffering from increase mucus production from the last 6 months, cough and hemoptysis, what change will occur",
+        "options": {
+            "A": "Increase bronchus thickness and dilatation of bronchus",
+            "B": "Constriction of bronchi",
+            "C": "Hypertrophy of epithelial lining",
+            "D": "Atrophy of bronchi",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T5WFKKEK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient was having bronchiolar inflammation and increased productive cough. What is the progenitor cell of the structure damaged in this condition",
+        "options": {
+            "A": "Basal cell",
+            "B": "Granular cell",
+            "C": "Clara cell",
+            "D": "Goblet Cell",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -2059,6 +3424,118 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NVAJW4UX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pleural fluid with inflammatory cells, eosinophils, mesh of threads of amorphous coagulum, type of inflammation is:",
+        "options": {
+            "A": "Fibrinous inflammation",
+            "B": "Serous inflammation",
+            "C": "Chronic",
+            "D": "Acute",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XQE2EZTY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pleural fluid with inflammatory cells, eosinophils, meshl of threads of amorphous coagulum, type of inflammation is:",
+        "options": {
+            "A": "Fibrinous inflammation",
+            "B": "Serous inflammation",
+            "C": "Chronic",
+            "D": "Acute",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "A2A3GNLX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pleural plaques on X-ray in a construction worker",
+        "options": {
+            "A": "Asbestos",
+            "B": "TB",
+            "C": "Sarcoidosis",
+            "D": "Silicosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Asbestos exposure -> classic pleural plaques on chest X-ray. Long latency period; may cause restrictive lung disease or mesothelioma.",
+        "hint": ""
+    },
+    {
+        "id": "R77YDC2J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pregnant lady gets pain, swelling & redness in the left leg. Which drug should be prescribed to prevent the adverse complications?",
+        "options": {
+            "A": "Aspirin",
+            "B": "Clopidogrel",
+            "C": "Warfarin",
+            "D": "Heparin",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -2198,6 +3675,33 @@
         "hint": ""
     },
     {
+        "id": "PY2YX5WZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Smoker develops adenocarcinoma. Likely carcinogen?",
+        "options": {
+            "A": "Amines",
+            "B": "Alkylating agents",
+            "C": "Hydrocarbons",
+            "D": "Nitrosamines",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FNKC5PSY",
         "year": [
             "2026"
@@ -2221,6 +3725,36 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K3QEX3JZ",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The characteristic giant cells seen in tuberculosis are:",
+        "options": {
+            "A": "Langhans: giant cells",
+            "B": "Langerhans: cells",
+            "C": "Foreign body giant cells",
+            "D": "Reed-Sternberg cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -2279,6 +3813,33 @@
         "hint": ""
     },
     {
+        "id": "8ZVH9JT6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The primary pathophysiology of an acute asthma exacerbation, involving bronchoconstriction and inflammation, predominantly affects which part of the respiratory tree?",
+        "options": {
+            "A": "Trachea and main bronchi",
+            "B": "Bronchioles",
+            "C": "Alveolar ducts and sacs",
+            "D": "Larynx and pharynx",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Asthma is characterized by inflammation and hyper-responsiveness that leads to obstruction, primarily affecting the bronchioles (small airways) and terminal bronchi, where smooth muscle constriction significantly reduces airflow.",
+        "hint": ""
+    },
+    {
         "id": "Y4QVGTNR",
         "year": [
             "2026"
@@ -2303,6 +3864,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T8FV8B4T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is likely Cause of mesothelioma?",
+        "options": {
+            "A": "Cane fibres",
+            "B": "Asbestosis",
+            "C": "Silicosis",
+            "D": "Ammonia",
+            "E": "Sugar fibers"
+        },
+        "correctAnswer": "B",
+        "explanation": "FA+pathomA-",
         "hint": ""
     },
     {
@@ -2438,1594 +4026,6 @@
         },
         "correctAnswer": "C",
         "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WTHFUJUP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 12-year-old boy presents with nasal bleeding, runny nose, facial swelling, proptosis, and loss of smell. CT imaging reveals a mass which is extended into infratemporal fossa, what is likely diagnosis",
-        "options": {
-            "A": "Juvenile nasopharyngeal angiofibroma",
-            "B": "Adenoid hypertrophy",
-            "C": "Allergic rhinitis",
-            "D": "Sino-nasal polyposis",
-            "E": "Polyp"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YN7EG4NP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25-year-old male presents to the emergency department after a road traffic accident. He sustained fractures of the femur and tibia. Two days later, he develops sudden shortness of breath, confusion, and petechial rash over his chest. Which of the following statements is most characteristic of the underlying condition?",
-        "options": {
-            "A": "Inciting event starts after 1-3 days",
-            "B": "Normal components of fats enter in circulation",
-            "C": "Inciting event is mostly trauma to long bones",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Fat embolism syndrome.",
-        "hint": ""
-    },
-    {
-        "id": "3WKPF9UZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 40 year old man presents with bilateral hilar lymphadenopathy and non-caseating granulomas on biopsy. He also has hypercalcemia. What is the most likely diagnosis?",
-        "options": {
-            "A": "Sarcoidosis",
-            "B": "Tuberculosis",
-            "C": "Histoplasmosis",
-            "D": "Wegener granulomatosis",
-            "E": "Hodgkin lymphoma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NJXVJS38",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old man presents with chronic cough and weight loss. A lung biopsy reveals multiple collections of epithelioid macrophages surrounded by lymphocytes and Langhans-type giant cells. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Tuberculosis",
-            "B": "Large cell carcinoma",
-            "C": "Adenocarcinoma",
-            "D": "Wegener granulomatosis",
-            "E": "Squamous cell carcinoma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EEFE2WKD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old patient presents with nasal obstruction, epistaxis, and difficulty opening the mouth (trismus). Imaging shows a mass in the nasopharynx extending into the infratemporal fossa. What is the most likely diagnosis?",
-        "options": {
-            "A": "Nasopharyngeal carcinoma",
-            "B": "Juvenile nasopharyngeal angiofibroma",
-            "C": "Inverted papilloma",
-            "D": "Nasal polyp",
-            "E": "Sinonasal carcinoma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "REF2H74T",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 48-year-old heavy smoker presents with persistent hoarseness. Laryngoscopic examination reveals white, keratinized patches on the true vocal cords. Histology shows dysplastic squamous epithelium with keratin formation. Which of the following best describes the underlying epithelium in this lesion?",
-        "options": {
-            "A": "Stratified squamous keratinized epithelium",
-            "B": "Pseudostratified columnar epithelium",
-            "C": "Non-keratinized stratified squamous epithelium",
-            "D": "Ciliated columnar epithelium",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5KKDSK6Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old man presents with chronic cough and progressive shortness of breath. He has a smoking history of 2 packs/day for 20 years. Bronchoscopic biopsy is taken. Which histological change is most likely to be seen?",
-        "options": {
-            "A": "Normal pseudostratified ciliated columnar epithelium",
-            "B": "Squamous metaplasia",
-            "C": "Adenomatous hyperplasia",
-            "D": "Goblet cell hyperplasia without epithelial change",
-            "E": "Necrotizing granulomatous inflammation"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VTHN7XF7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old man with a long history of cigarette smoking develops chronic cough and weight loss. He is diagnosed with squamous cell carcinoma of the lung. Which of the most likely carcinogen responsible for this malignancy?",
-        "options": {
-            "A": "Polycyclic aromatic hydrocarbons",
-            "B": "Nitrosamines",
-            "C": "Aflatoxin B1",
-            "D": "Arsenic",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Benz anthracene - Skin cancer. Benzopyrene - Lung CA. Aromatic amines and azo dye - Naphthylamine - Bladder CA. Natural plant - Aflatoxin - Liver CA.",
-        "hint": ""
-    },
-    {
-        "id": "FTLM7SF9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old non-smoker presents with weight loss and persistent cough. Imaging shows a peripheral lower-lobe mass. Which carcinoma is most likely?",
-        "options": {
-            "A": "Squamous cell carcinoma",
-            "B": "Adenocarcinoma",
-            "C": "Small cell carcinoma",
-            "D": "Carcinoid tumor",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Adenocarcinoma = peripheral, especially lower lobes. Most common in non-smokers and females. References: Robbins Pathology - Lung Adenocarcinoma.",
-        "hint": ""
-    },
-    {
-        "id": "MA6BUMRS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58 year old man with a 20-year history of smoking presents for evaluation of chronic cough and sputum production. Bronchial biopsy shows loss of cilia and replacement of pseudostratified columnar epithelium with a multilayered flat epithelium. Which of the following best describes the histological change?",
-        "options": {
-            "A": "Squamous metaplasia",
-            "B": "Dysplasia",
-            "C": "Hyperplasia of ciliated cells",
-            "D": "Neoplastic transformation",
-            "E": "Columnar metaplasia"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KZSP7TX7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 6 year old child presents with chronic product reactive cough, recurrent respiratory infections, and failure to thrive. He is diagnosed with cystic fibrosis. Which histopathological finding is classical in this condition?",
-        "options": {
-            "A": "Thickened basal lamina",
-            "B": "Decrease goblet cells",
-            "C": "Squamous metaplasia of respiratory epithelium",
-            "D": "Caseating granulomas",
-            "E": "Pulmonary capillary hemantiomatosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HX6KEYGD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old chronic smoker presents with cough, weight loss, and hemoptysis. Chest X-ray reveals a large peripheral lung mass. Biopsy shows poorly differentiated giant malignant cells with prominent nucleoli, large cytoplasm, and no evident of squamous or glandular differentiation. Immunohistochemistry is negative for TTF-1, p40, and chromogranin. What is the most likely diagnosis?",
-        "options": {
-            "A": "Adenocarcinoma",
-            "B": "Squamous cell carcinoma",
-            "C": "Small cell carcinoma",
-            "D": "Large cell carcinoma",
-            "E": "Carcinoid tumor"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FYAVNXFM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old male patient presents with a persistent cough, chest pain, cough, hemoptysis and weight loss. Imaging reveals a centrally located lung mass and histopathological report showing keratin pearls. Which of the following type of lung cancer he has?",
-        "options": {
-            "A": "Adenocarcinoma",
-            "B": "Large cell carcinoma",
-            "C": "Small cell carcinoma",
-            "D": "Squamous cell carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LTX6CBRA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old smoker is diagnosed with lung carcinoma. Which subtype is most commonly associated with central location and cavitating lesions on imaging?",
-        "options": {
-            "A": "Squamous cell carcinoma",
-            "B": "Adenocarcinoma",
-            "C": "Small cell carcinoma",
-            "D": "Large cell carcinoma",
-            "E": "Bronchioalveolar carcinoma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "43YFCPNJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old smoker presents with a central lung mass. He develops symptoms of SIADH including hyponatremia and low serum osmolality. Which type of lung cancer is most commonly associated with this paraneoplastic syndrome?",
-        "options": {
-            "A": "Adenocarcinoma",
-            "B": "Squamous cell carcinoma",
-            "C": "Small cell carcinoma",
-            "D": "Large cell carcinoma",
-            "E": "Bronchial carcinoid tumor"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PP6UGSXB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60-year-old man, 20 pack-years smoking, presents with bronchial biopsy showing ciliated columnar -> squamous epithelium. Diagnosis?",
-        "options": {
-            "A": "Adenocarcinoma",
-            "B": "Squamous cell carcinoma",
-            "C": "Squamous metaplasia",
-            "D": "Small cell carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Chronic irritation (smoking) -> respiratory epithelium undergoes squamous metaplasia. Reversible initially, may progress to carcinoma with dysplasia.",
-        "hint": ""
-    },
-    {
-        "id": "CLPEF8JW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 65-year-old male smoker has a peripheral lower lobe lung mass, biopsy shows large undifferentiated cells. Likely tumor?",
-        "options": {
-            "A": "Small cell carcinoma",
-            "B": "Adenocarcinoma",
-            "C": "Large cell carcinoma",
-            "D": "Squamous cell carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MZQJMLFS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 65-year-old man presents with dyspnea and cough. Chest imaging reveals multiple calcified, concentric, lamellated structures within the lung parenchyma. Which of the following is the most likely histologic finding described?",
-        "options": {
-            "A": "Psammoma bodies",
-            "B": "Michaelis-Gutmann bodies",
-            "C": "Asbestos bodies",
-            "D": "Schaumann bodies",
-            "E": "Mallory bodies"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U9JLZXVM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 66 year old chronic smoker presents with low-grade fever, hemoptysis, and unintentional weight loss. Chest X-ray shows a central cavitating hilar mass located in the right upper lobe. Which of the following is the most likely histological type of lung cancer?",
-        "options": {
-            "A": "Adenocarcinoma",
-            "B": "Small cell carcinoma",
-            "C": "Large cell carcinoma",
-            "D": "Squamous cell carcinoma",
-            "E": "Bronchioalveolar carcinoma"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UU3SDTWF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A biopsy from a tuberculous granuloma shows multinucleated giant cells with nuclei arranged peripherally in a horseshoe pattern. These cells are called:",
-        "options": {
-            "A": "Langhans giant cells",
-            "B": "Foreign body giant cells",
-            "C": "Touton giant cells",
-            "D": "Osteoclasts",
-            "E": "Langerhans cells"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7HHWNZTK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child was brought to hospital with epistaxis. Examination and imaging revealed a fleshy mass extending from splenoparenchymal organ to left infraperitoneal fossa. What is most likely diagnosis?",
-        "options": {
-            "A": "Anchoanal polyp",
-            "B": "Inverted papilloma",
-            "C": "Juvenile nasopharyngeal angiofibroma",
-            "D": "Adenoids",
-            "E": "Hemangioma"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VCS99X84",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A chronic smoker is diagnosed with lung cancer. Which carcinogen is most responsible?",
-        "options": {
-            "A": "Aromatic amines",
-            "B": "Hydrocarbons",
-            "C": "Alkylating agents",
-            "D": "Polyacrylamide",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7J9V94A5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A lung biopsy from a mass in the right lung shows large polypoidal cells with abundant cytoplasm and large nuclei. Which type of lung cancer does this most likely represent?",
-        "options": {
-            "A": "Small cell carcinoma",
-            "B": "Adenocarcinoma",
-            "C": "Squamous cell carcinoma",
-            "D": "Large cell carcinoma",
-            "E": "Carcinoid tumor"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KXD7SQ5E",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A Man smoke 20 packs per month and he works in factory and he develops lung cancer which carcinogen in Cigarette causes lung cancer?",
-        "options": {
-            "A": "Nitrosamines",
-            "B": "Hydrocarbons",
-            "C": "Vinyl chloride",
-            "D": "Azo dye",
-            "E": "Arsenic"
-        },
-        "correctAnswer": "B",
-        "explanation": "Plastic factory worker - Liver Angiosarcoma. Plastic factory worker + Smoking - Lung CA > Angiosarcoma. Hydrocarbon (tyre factory) + Aromatic amines - Bladder CA. Smoking + Hydrocarbon - Lung CA > Bladder. Liver CA - Alcohol > Aflatoxin > Smoking. Transitional bladder CA - Smoking > Amines > Hydrocarbon. Squamous cell bladder CA - Schistosoma > Stones > Indwelling.",
-        "hint": ""
-    },
-    {
-        "id": "JN5Y9A7K",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A Man smoke 20 packs per month work in factory he develops lung cancer which carcinogen in Cigarette cause lung cancer",
-        "options": {
-            "A": "Nitrosamines",
-            "B": "Hydrocarbons",
-            "C": "Vinyl chloride",
-            "D": "Azo dye",
-            "E": "Arsenic"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2D3EYLFC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient had orthopedic surgery for multiple fractures in RTA. He was vitally stable and shifted to ward. Suddenly he became unwell, dyspneic and disoriented. What underlying factor is the cause of his condition?",
-        "options": {
-            "A": "Air embolism",
-            "B": "Pulmonary embolism",
-            "C": "Fat embolism",
-            "D": "Pneumothorax",
-            "E": "Myocardial infarction"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L9NH5ZFK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has History of cough and hemoptysis. On X-ray a lesion seen in upper lobe of lung. Histology showed a lesion with megacells this is related to",
-        "options": {
-            "A": "Small cell lung Carcinoma",
-            "B": "Large cell lung Carcinoma",
-            "C": "Squamous cell carcinoma",
-            "D": "Adenocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ER45MV8D",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has LRTI for many days. On histology of respiratory tree which of the following will be damaged.",
-        "options": {
-            "A": "Microvilli",
-            "B": "Cilia",
-            "C": "Plasmalemma Protein",
-            "D": "Desmosome",
-            "E": "Hemidesmosome"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MTG62F7R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is diagnosed with emphysema, and pulmonary function testing shows increased lung compliance. Which of the following findings is most characteristic of emphysema?",
-        "options": {
-            "A": "Increased airway resistance",
-            "B": "Decreased airway resistance",
-            "C": "Normal airway resistance",
-            "D": "Variable airway resistance",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZNYUXU2S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with cough and hemoptysis having Mass in the right lower lung and smoking history and giant pleomorphic cells on microscopy. What is the diagnosis?",
-        "options": {
-            "A": "SCLC",
-            "B": "Squamous cell lung carcinoma",
-            "C": "Large cell lung carcinoma",
-            "D": "Adenocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "URUBBPFY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with Squamous Cell Carcinoma undergoes lung resection and mediastinal lymph node dissection. The hilar lymph nodes are observed to be discolored, appearing jet black to the surgeon. What is the most common and benign cause for this discoloration?",
-        "options": {
-            "A": "Melanin deposition",
-            "B": "Anthracotic substance accumulation",
-            "C": "Hemoglobin breakdown products",
-            "D": "Metastatic tumor pigment",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "The jet black discoloration of hilar lymph nodes is typically due to anthracosis, which is the accumulation of inhaled carbon pigment (anthracotic substance) that has been phagocytosed by macrophages and carried to the lymph nodes, a common finding in city dwellers and smokers.",
-        "hint": ""
-    },
-    {
-        "id": "XF6SSKYR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning",
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A pleural biopsy from a patient with chronic chest pain shows aggregates of cells with abundant pale-pink cytoplasm, arranged in a nodule with surrounding lymphocytes. Which of the following cells are most likely predominant in this lesion?",
-        "options": {
-            "A": "Activated macrophages",
-            "B": "Neutrophils",
-            "C": "Plasma cells",
-            "D": "Fibroblasts",
-            "E": "Endothelial cells"
-        },
-        "correctAnswer": "A",
-        "explanation": "Activated macrophages -> hallmark of granulomatous inflammation (epithelioid cells).",
-        "hint": ""
-    },
-    {
-        "id": "YTQ6VBHD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A sea diver after diving ascend rapidly then develops shortness of breath and joint pain. Cause is:",
-        "options": {
-            "A": "Lactic Acidosis",
-            "B": "Nitrogen bubble",
-            "C": "Excessive fatigue",
-            "D": "Excess CO2",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9JZSTWGX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Morning",
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A smoker with alveolar wall destruction and loss of elastic recoil most likely has deficiency of:",
-        "options": {
-            "A": "Elastin",
-            "B": "Collagen",
-            "C": "alpha-1-Antitrypsin",
-            "D": "Surfactant",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Alpha 1 Antitrypsin is a critical circulating protein that inhibits neutrophil elastase to protect the lung tissue from destruction. Smoking attracts a large number of neutrophils and macrophages to the lungs, increasing the load of elastase and directly inactivates the existing alpha 1 AT protein.",
-        "hint": ""
-    },
-    {
-        "id": "FNLKHH7X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young male living in a populated town, he died in an RTA on the autopsy the lymph nodes of lungs are found black in color, which of the followings associated with the condition of this patient:",
-        "options": {
-            "A": "Melatonin",
-            "B": "Anthracosis",
-            "C": "Bronchogenic carcinoma",
-            "D": "Bronchial asthma",
-            "E": "TB"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TRGR2KEX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young male living in a populated town, he died in an RTA on the autopsy the lymph nodes of lungs are found black in colour, which of the followings associated with the condition of this patient:",
-        "options": {
-            "A": "Melatonin",
-            "B": "Anthracosis",
-            "C": "Bronchogenic carcinoma",
-            "D": "Bronchial asthma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VHL75KDK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young male presents with recurrent epistaxis (about 6 episodes) and having a nasal mass that is invading the infratemporal fossa. What is the most likely diagnosis?",
-        "options": {
-            "A": "Angiofibroma",
-            "B": "Inverted papilloma",
-            "C": "Nasopharyngeal carcinoma",
-            "D": "Allergic nasal polyp",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The most likely diagnosis for a young male with recurrent epistaxis and a nasal mass invading the infratemporal fossa is Juvenile Nasopharyngeal Angiofibroma.",
-        "hint": ""
-    },
-    {
-        "id": "X8KRK4Z8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young male presents with recurrent epistaxis about 6 episodes and having unilateral obstruction and a red fleshy mass in the posterior nasopharynx and concha. Which of the following is your diagnosis?",
-        "options": {
-            "A": "Angiofibroma",
-            "B": "Adenoids",
-            "C": "Nasopharyngeal carcinoma",
-            "D": "Allergic nasal polyp",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UWLE7F2E",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "As person had an RTA which causes posterior dislocation of femur in acetabulum causing pain in his left hip and knee, which nerve is damaged?",
-        "options": {
-            "A": "Superior gluteal nerve",
-            "B": "Obturator nerve",
-            "C": "Sciatic nerve",
-            "D": "Femoral nerve",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5FKKPMVG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Asbestos and tobacco smoking can cause",
-        "options": {
-            "A": "Bladder carcinoma",
-            "B": "Bronchogenic carcinoma",
-            "C": "Lymphoma",
-            "D": "Malignant mesothelioma",
-            "E": "Liver carcinoma"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E9E6U8WH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Asthma affects which of the following",
-        "options": {
-            "A": "Medium size bronchiole",
-            "B": "Terminal alveoli",
-            "C": "Respiratory bronchiole",
-            "D": "Tertiary bronchioles",
-            "E": "Secondary bronchioles"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VNAUWAKZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Chronic smoker develops complete left lung atelectasis. Most likely pathology?",
-        "options": {
-            "A": "Partial obstruction of airway",
-            "B": "Infection",
-            "C": "TB",
-            "D": "Complete obstruction of airway",
-            "E": "Chronic smoking"
-        },
-        "correctAnswer": "D",
-        "explanation": "Complete atelectasis -> complete obstruction of main bronchus by tumor or foreign body. Chronic smoker -> risk for bronchogenic carcinoma causing obstruction.",
-        "hint": ""
-    },
-    {
-        "id": "LTRKY5X4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Due to emphysema change occur in lung is:",
-        "options": {
-            "A": "Increase elastic tendency to lungs",
-            "B": "Decrease elastic recoil tendency of lungs",
-            "C": "Decrease stifness of lung",
-            "D": "Increase Elastase in lung",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WRZFG6J3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In Bacillus anthracis reaction, there is a widening of lungs due to enlargement of which of the following organs?",
-        "options": {
-            "A": "Lymph nodes",
-            "B": "Heart",
-            "C": "Thymus",
-            "D": "Kidneys",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The widening of the mediastinum is due to the enlargement and hemorrhagic inflammation of the mediastinal lymph nodes. This is a hallmark sign of inhalation anthrax and is a critical finding for diagnosis.",
-        "hint": ""
-    },
-    {
-        "id": "9GDJJ229",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In pulmonary embolism, occlusion of a pulmonary artery is best classified as",
-        "options": {
-            "A": "Small vessel occlusion",
-            "B": "Medium vessel occlusion",
-            "C": "Large vessel occlusion",
-            "D": "Massive occlusion",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T9SCK58R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Mass near porta hepatis, structure damaged will be",
-        "options": {
-            "A": "Common hepatic artery",
-            "B": "Cystic duct",
-            "C": "Portal vein",
-            "D": "Hepatic vein",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JGJXFGHS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Non-caseating granulomas are characteristic features of which one of the following.",
-        "options": {
-            "A": "Silicosis",
-            "B": "Sarcoidosis",
-            "C": "Tuberculosis",
-            "D": "Byssinosis",
-            "E": "Asbestosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9SQU3YBT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient had Cough and X-ray shows hilar lymphadenopathy, non caseating granuloma Present diagnoses is:",
-        "options": {
-            "A": "Sarcoidosis",
-            "B": "TB",
-            "C": "Syphilis",
-            "D": "Leprosy",
-            "E": "Asbestosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6S8WKZPY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient presented with cough and hemoptysis having Mass in the right lower lung and smoking history and giant pleomorphic cells on microscopy. What is the diagnosis?",
-        "options": {
-            "A": "SCLC",
-            "B": "Squamous cell lung carcinoma",
-            "C": "Large cell lung carcinoma",
-            "D": "Adenocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M4XY7E49",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient suffering from increase mucus production from the last 6 months, cough and hemoptysis, what change will occur",
-        "options": {
-            "A": "Increase bronchus thickness and dilatation of bronchus",
-            "B": "Constriction of bronchi",
-            "C": "Hypertrophy of epithelial lining",
-            "D": "Atrophy of bronchi",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T5WFKKEK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient was having bronchiolar inflammation and increased productive cough. What is the progenitor cell of the structure damaged in this condition",
-        "options": {
-            "A": "Basal cell",
-            "B": "Granular cell",
-            "C": "Clara cell",
-            "D": "Goblet Cell",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NVAJW4UX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pleural fluid with inflammatory cells, eosinophils, mesh of threads of amorphous coagulum, type of inflammation is:",
-        "options": {
-            "A": "Fibrinous inflammation",
-            "B": "Serous inflammation",
-            "C": "Chronic",
-            "D": "Acute",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XQE2EZTY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pleural fluid with inflammatory cells, eosinophils, meshl of threads of amorphous coagulum, type of inflammation is:",
-        "options": {
-            "A": "Fibrinous inflammation",
-            "B": "Serous inflammation",
-            "C": "Chronic",
-            "D": "Acute",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "A2A3GNLX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pleural plaques on X-ray in a construction worker",
-        "options": {
-            "A": "Asbestos",
-            "B": "TB",
-            "C": "Sarcoidosis",
-            "D": "Silicosis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Asbestos exposure -> classic pleural plaques on chest X-ray. Long latency period; may cause restrictive lung disease or mesothelioma.",
-        "hint": ""
-    },
-    {
-        "id": "R77YDC2J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pregnant lady gets pain, swelling & redness in the left leg. Which drug should be prescribed to prevent the adverse complications?",
-        "options": {
-            "A": "Aspirin",
-            "B": "Clopidogrel",
-            "C": "Warfarin",
-            "D": "Heparin",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PY2YX5WZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Smoker develops adenocarcinoma. Likely carcinogen?",
-        "options": {
-            "A": "Amines",
-            "B": "Alkylating agents",
-            "C": "Hydrocarbons",
-            "D": "Nitrosamines",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8ZVH9JT6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The primary pathophysiology of an acute asthma exacerbation, involving bronchoconstriction and inflammation, predominantly affects which part of the respiratory tree?",
-        "options": {
-            "A": "Trachea and main bronchi",
-            "B": "Bronchioles",
-            "C": "Alveolar ducts and sacs",
-            "D": "Larynx and pharynx",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Asthma is characterized by inflammation and hyper-responsiveness that leads to obstruction, primarily affecting the bronchioles (small airways) and terminal bronchi, where smooth muscle constriction significantly reduces airflow.",
-        "hint": ""
-    },
-    {
-        "id": "T8FV8B4T",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is likely Cause of mesothelioma?",
-        "options": {
-            "A": "Cane fibres",
-            "B": "Asbestosis",
-            "C": "Silicosis",
-            "D": "Ammonia",
-            "E": "Sugar fibers"
-        },
-        "correctAnswer": "B",
-        "explanation": "FA+pathomA-",
         "hint": ""
     }
 ]

@@ -1,31 +1,29 @@
 [
     {
-        "id": "M86NFGYU",
+        "id": "3R3T8WDR",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics"
+            "Medicine & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 7 - Evening",
-            "Gynecology - 11/25 - November 12 - Morning"
+            "Medicine - 08/25 - August 6 - Morning"
         ],
         "subject": "Community Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "After a wedding, several guests develop food poisoning. Investigators compare those who ate specific menu items versus those who did not to identify the source. What type of study is this?",
+        "question": "A 2 year old child has the following measurements: Weight-for-height: -2.5 standard deviations (SD) Mid-upper arm circumference (MUAC): 12.0 cm No edema present What is the nutritional status of this child?",
         "options": {
-            "A": "Case-control study",
-            "B": "Cohort study",
-            "C": "Cross-sectional study",
-            "D": "Randomized controlled trial",
-            "E": ""
+            "A": "Normal nutrition",
+            "B": "Moderate acute malnutrition (MAM)",
+            "C": "Severe acute malnutrition (SAM)",
+            "D": "Kwashiorkor",
+            "E": "Marasmus"
         },
         "correctAnswer": "B",
-        "explanation": "In a cohort study, participants are classified based on exposure status (e.g., food consumed) and followed to determine the outcome (e.g., food poisoning). This is typical in foodborne outbreak investigations.",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -83,6 +81,33 @@
         "hint": ""
     },
     {
+        "id": "ZRVF59QU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A doctor is conducting a cohort study to assess the relationship between periodontal disease and cardiovascular health. However, during the study, he observes that many participants are smokers, which may affect the association between the exposure and the outcome.Which type of bias is most likely present?",
+        "options": {
+            "A": "Selection bias",
+            "B": "Observer bias",
+            "C": "Confounding bias",
+            "D": "Recall bias",
+            "E": "Lead-time bias"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UH6XF3UP",
         "year": [
             "2026"
@@ -104,6 +129,60 @@
             "C": "25-30 grams",
             "D": "50-60 grams",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZLHH7NQ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A healthcare worker accidentally contacts HIV-infected blood while cleaning a floor. What is the immediate recommended course of action?",
+        "options": {
+            "A": "Ignore as risk is negligible",
+            "B": "Immediate post-exposure prophylaxis with antiretroviral therapy",
+            "C": "Vaccination against HIV",
+            "D": "Report and wait for seroconversion",
+            "E": "Start broad-spectrum antibiotics"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XV8UAQTU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A local hospital publishes a study on halothane anesthesia effects. The study follows a group of patients exposed to halothane and compares outcomes with another group not exposed, but patients were not randomly assigned. What type of study design is this, and what level of evidence does it represent?",
+        "options": {
+            "A": "Randomized controlled trial — Level 1 evidence",
+            "B": "Case series — Level 4 evidence",
+            "C": "Cohort study — Level 3 evidence",
+            "D": "Systematic review — Level 1 evidence",
+            "E": "Case-control study — Level 2 evidence"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -245,6 +324,33 @@
         "hint": ""
     },
     {
+        "id": "ANJHGCVG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A researcher wants to investigate the association between disease and non disease group this involve which study?",
+        "options": {
+            "A": "Cohort study",
+            "B": "Randomized controlled trial",
+            "C": "Case-control Study",
+            "D": "Cross sectional study",
+            "E": "Ecological study"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "CP2682QL",
         "year": [
             "2026"
@@ -272,6 +378,35 @@
         "hint": ""
     },
     {
+        "id": "M86NFGYU",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After a wedding, several guests develop food poisoning. Investigators compare those who ate specific menu items versus those who did not to identify the source. What type of study is this?",
+        "options": {
+            "A": "Case-control study",
+            "B": "Cohort study",
+            "C": "Cross-sectional study",
+            "D": "Randomized controlled trial",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "In a cohort study, participants are classified based on exposure status (e.g., food consumed) and followed to determine the outcome (e.g., food poisoning). This is typical in foodborne outbreak investigations.",
+        "hint": ""
+    },
+    {
         "id": "MUM3R6QR",
         "year": [
             "2026"
@@ -295,6 +430,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HZTDMYRQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cancer center recruits volunteers who are themselves cancer survivors to offer emotional support, practical tips, and mentorship to newly diagnosed patients. What is the most accurate occupational/role title commonly used for these individuals?",
+        "options": {
+            "A": "Case manager",
+            "B": "Peer support volunteer (peer navigator)",
+            "C": "Palliative care physician",
+            "D": "Social worker",
+            "E": "Hospice coordinator"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -407,195 +569,6 @@
         "hint": ""
     },
     {
-        "id": "AABLN7R7",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which epidemiological study design is considered the most efficient and cost-effective for investigating rare diseases or diseases with long latency periods?",
-        "options": {
-            "A": "Cohort",
-            "B": "RCT",
-            "C": "Case-control",
-            "D": "Cross-sectional",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3R3T8WDR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2 year old child has the following measurements: Weight-for-height: -2.5 standard deviations (SD) Mid-upper arm circumference (MUAC): 12.0 cm No edema present What is the nutritional status of this child?",
-        "options": {
-            "A": "Normal nutrition",
-            "B": "Moderate acute malnutrition (MAM)",
-            "C": "Severe acute malnutrition (SAM)",
-            "D": "Kwashiorkor",
-            "E": "Marasmus"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZRVF59QU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A doctor is conducting a cohort study to assess the relationship between periodontal disease and cardiovascular health. However, during the study, he observes that many participants are smokers, which may affect the association between the exposure and the outcome.Which type of bias is most likely present?",
-        "options": {
-            "A": "Selection bias",
-            "B": "Observer bias",
-            "C": "Confounding bias",
-            "D": "Recall bias",
-            "E": "Lead-time bias"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZLHH7NQ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A healthcare worker accidentally contacts HIV-infected blood while cleaning a floor. What is the immediate recommended course of action?",
-        "options": {
-            "A": "Ignore as risk is negligible",
-            "B": "Immediate post-exposure prophylaxis with antiretroviral therapy",
-            "C": "Vaccination against HIV",
-            "D": "Report and wait for seroconversion",
-            "E": "Start broad-spectrum antibiotics"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XV8UAQTU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A local hospital publishes a study on halothane anesthesia effects. The study follows a group of patients exposed to halothane and compares outcomes with another group not exposed, but patients were not randomly assigned. What type of study design is this, and what level of evidence does it represent?",
-        "options": {
-            "A": "Randomized controlled trial — Level 1 evidence",
-            "B": "Case series — Level 4 evidence",
-            "C": "Cohort study — Level 3 evidence",
-            "D": "Systematic review — Level 1 evidence",
-            "E": "Case-control study — Level 2 evidence"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ANJHGCVG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A researcher wants to investigate the association between disease and non disease group this involve which study?",
-        "options": {
-            "A": "Cohort study",
-            "B": "Randomized controlled trial",
-            "C": "Case-control Study",
-            "D": "Cross sectional study",
-            "E": "Ecological study"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HZTDMYRQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Community Medicine",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cancer center recruits volunteers who are themselves cancer survivors to offer emotional support, practical tips, and mentorship to newly diagnosed patients. What is the most accurate occupational/role title commonly used for these individuals?",
-        "options": {
-            "A": "Case manager",
-            "B": "Peer support volunteer (peer navigator)",
-            "C": "Palliative care physician",
-            "D": "Social worker",
-            "E": "Hospice coordinator"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "YNFPHB8N",
         "year": [
             "2025"
@@ -619,6 +592,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AABLN7R7",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Community Medicine",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which epidemiological study design is considered the most efficient and cost-effective for investigating rare diseases or diseases with long latency periods?",
+        "options": {
+            "A": "Cohort",
+            "B": "RCT",
+            "C": "Case-control",
+            "D": "Cross-sectional",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

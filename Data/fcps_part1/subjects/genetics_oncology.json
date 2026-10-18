@@ -1,32 +1,5 @@
 [
     {
-        "id": "MHGMAVDN",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 10 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Oncology",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Li-Fraumeni syndrome is caused by:",
-        "options": {
-            "A": "BRCA1 mutation",
-            "B": "APC mutation",
-            "C": "Germline TP53 mutation",
-            "D": "RET mutation",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "6DNF5MK8",
         "year": [
             "2025"
@@ -77,6 +50,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MHGMAVDN",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 10 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Li-Fraumeni syndrome is caused by:",
+        "options": {
+            "A": "BRCA1 mutation",
+            "B": "APC mutation",
+            "C": "Germline TP53 mutation",
+            "D": "RET mutation",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

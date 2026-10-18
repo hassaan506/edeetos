@@ -1,5 +1,32 @@
 [
     {
+        "id": "E8LVWZF7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 42 year old woman undergoes a total thyroidectomy for multinodular goitre. On the first postoperative day she notices that her voice is weak and has a new, high-pitched quality when attempting to sing or speak on higher notes. On laryngoscopic exam the vocal cord mobility is preserved but the patient cannot tense the ipsilateral vocal cord. Which nerve was most likely injured during surgery?",
+        "options": {
+            "A": "Recurrent laryngeal nerve",
+            "B": "Internal branch of the superior laryngeal nerve",
+            "C": "External branch of the superior laryngeal nerve (EBSLN)",
+            "D": "Hypoglossal nerve",
+            "E": "Glossopharyngeal nerve"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "M5V3R8DM",
         "year": [
             "2026"
@@ -27,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "EQND9XFZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops polyuria and excessive thirst (polydipsia) after a head trauma. Which central lesion is most likely responsible?",
+        "options": {
+            "A": "Paraventricular nucleus of hypothalamus",
+            "B": "Anterior thalamus",
+            "C": "Posterior thalamus",
+            "D": "Ventromedial nucleus of thalamus (VML)",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "After trauma, sudden onset polyuria + polydipsia strongly suggests central diabetes insipidus (CDI). ADH (vasopressin) is produced mainly by the supraoptic nucleus, But paraventricular nucleus also produces ADH, so damage here can also cause CDI.",
+        "hint": ""
+    },
+    {
         "id": "E7YZ3XRX",
         "year": [
             "2026"
@@ -48,6 +102,37 @@
             "C": "Thalamus",
             "D": "Pineal gland",
             "E": "Adrenal cortex"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T7UCPRZU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening",
+            "Surgery - 08/25 - August 6 - Evening",
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient undergoes thyroidectomy and postoperatively develops low pitched voice and inability to produce high pitched sounds which of the following nerve is most likely injured?",
+        "options": {
+            "A": "Recurrent laryngeal nerve",
+            "B": "External laryngeal nerve",
+            "C": "Internal laryngeal nerve",
+            "D": "Vagus nerve",
+            "E": ""
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -155,118 +240,6 @@
             "B": "Inferior thyroid artery",
             "C": "Common carotid artery",
             "D": "Lingual artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KH7QJCBY",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which nerve is endangered when vessels adjacent to the superior thyroid artery are ligated during thyroidectomy?",
-        "options": {
-            "A": "Facial nerve",
-            "B": "Recurrent laryngeal nerve",
-            "C": "External laryngeal nerve",
-            "D": "Superior laryngeal nerve",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E8LVWZF7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 42 year old woman undergoes a total thyroidectomy for multinodular goitre. On the first postoperative day she notices that her voice is weak and has a new, high-pitched quality when attempting to sing or speak on higher notes. On laryngoscopic exam the vocal cord mobility is preserved but the patient cannot tense the ipsilateral vocal cord. Which nerve was most likely injured during surgery?",
-        "options": {
-            "A": "Recurrent laryngeal nerve",
-            "B": "Internal branch of the superior laryngeal nerve",
-            "C": "External branch of the superior laryngeal nerve (EBSLN)",
-            "D": "Hypoglossal nerve",
-            "E": "Glossopharyngeal nerve"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EQND9XFZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops polyuria and excessive thirst (polydipsia) after a head trauma. Which central lesion is most likely responsible?",
-        "options": {
-            "A": "Paraventricular nucleus of hypothalamus",
-            "B": "Anterior thalamus",
-            "C": "Posterior thalamus",
-            "D": "Ventromedial nucleus of thalamus (VML)",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "After trauma, sudden onset polyuria + polydipsia strongly suggests central diabetes insipidus (CDI). ADH (vasopressin) is produced mainly by the supraoptic nucleus, But paraventricular nucleus also produces ADH, so damage here can also cause CDI.",
-        "hint": ""
-    },
-    {
-        "id": "T7UCPRZU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening",
-            "Surgery - 08/25 - August 6 - Evening",
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient undergoes thyroidectomy and postoperatively develops low pitched voice and inability to produce high pitched sounds which of the following nerve is most likely injured?",
-        "options": {
-            "A": "Recurrent laryngeal nerve",
-            "B": "External laryngeal nerve",
-            "C": "Internal laryngeal nerve",
-            "D": "Vagus nerve",
             "E": ""
         },
         "correctAnswer": "B",
@@ -382,6 +355,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KH7QJCBY",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which nerve is endangered when vessels adjacent to the superior thyroid artery are ligated during thyroidectomy?",
+        "options": {
+            "A": "Facial nerve",
+            "B": "Recurrent laryngeal nerve",
+            "C": "External laryngeal nerve",
+            "D": "Superior laryngeal nerve",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },

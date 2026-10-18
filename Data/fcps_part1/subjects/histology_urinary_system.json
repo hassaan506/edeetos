@@ -1,32 +1,28 @@
 [
     {
-        "id": "35APJXVH",
+        "id": "X3RC57KX",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Medicine & Allied"
         ],
         "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon",
-            "Surgery - 07/26 - July 09 - Afternoon",
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
+            "Medicine - 02/25 - Feburary 8 - Morning"
         ],
         "subject": "Histology",
         "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "A patient has a urinary tract infection (UTI) and thickened mucosa of the urinary bladder. What is the primary protective mechanism of the bladder against infections?",
+        "topic": "Nephrotic Syndromes",
+        "difficulty": "Medium",
+        "question": "A 10-year-old child presents with generalized body swelling and periorbital edema, urinalysis shows massive proteinuria, diagnosed as a case of minimal change disease is made, on histology pink droplets are seen in being engulfed by the cytoplasm of PCT, which of the following pink material is being engulfed?",
         "options": {
-            "A": "Glycocalyx",
-            "B": "Thickened mucosa",
-            "C": "Thickened submucosa",
-            "D": "Cuboid epithelium",
-            "E": "Infoldings"
+            "A": "Glucose",
+            "B": "Fat",
+            "C": "Protein",
+            "D": "Glycogen",
+            "E": ""
         },
-        "correctAnswer": "A",
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -58,143 +54,6 @@
         "hint": ""
     },
     {
-        "id": "QMLKT748",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "The glomerular filtration barrier prevents passage of proteins primarily due to which property?",
-        "options": {
-            "A": "Positive charge",
-            "B": "Negative charge",
-            "C": "Neutral charge",
-            "D": "Variable charge",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "J7U6T8U2",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "The glomerular filtration barrier selectively restricts which type of molecules?",
-        "options": {
-            "A": "Cations",
-            "B": "Anions",
-            "C": "Neutral molecules",
-            "D": "Water",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UBZHF94G",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon",
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Histology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "Which of the following cell types is characteristically seen on the surface of urothelium on histopathology?",
-        "options": {
-            "A": "Goblet cell",
-            "B": "Umbrella cell",
-            "C": "Dome shaped cell",
-            "D": "Ciliated columnar cell",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TWSSPP5A",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 10 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "Which type of epithelium lines the urinary bladder?",
-        "options": {
-            "A": "Stratified squamous epithelium",
-            "B": "Simple cuboidal epithelium",
-            "C": "Transitional epithelium (Urothelium)",
-            "D": "Pseudostratified columnar epithelium",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X3RC57KX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "A 10-year-old child presents with generalized body swelling and periorbital edema, urinalysis shows massive proteinuria, diagnosed as a case of minimal change disease is made, on histology pink droplets are seen in being engulfed by the cytoplasm of PCT, which of the following pink material is being engulfed?",
-        "options": {
-            "A": "Glucose",
-            "B": "Fat",
-            "C": "Protein",
-            "D": "Glycogen",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "D855KLW3",
         "year": [
             "2025"
@@ -218,6 +77,37 @@
             "E": "Na+/K+ pump"
         },
         "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "35APJXVH",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon",
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Histology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "A patient has a urinary tract infection (UTI) and thickened mucosa of the urinary bladder. What is the primary protective mechanism of the bladder against infections?",
+        "options": {
+            "A": "Glycocalyx",
+            "B": "Thickened mucosa",
+            "C": "Thickened submucosa",
+            "D": "Cuboid epithelium",
+            "E": "Infoldings"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -440,6 +330,60 @@
         "hint": ""
     },
     {
+        "id": "QMLKT748",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "The glomerular filtration barrier prevents passage of proteins primarily due to which property?",
+        "options": {
+            "A": "Positive charge",
+            "B": "Negative charge",
+            "C": "Neutral charge",
+            "D": "Variable charge",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "J7U6T8U2",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "The glomerular filtration barrier selectively restricts which type of molecules?",
+        "options": {
+            "A": "Cations",
+            "B": "Anions",
+            "C": "Neutral molecules",
+            "D": "Water",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "XWWLM4GR",
         "year": [
             "2025"
@@ -463,6 +407,35 @@
             "E": "Larger cell size"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UBZHF94G",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Histology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "Which of the following cell types is characteristically seen on the surface of urothelium on histopathology?",
+        "options": {
+            "A": "Goblet cell",
+            "B": "Umbrella cell",
+            "C": "Dome shaped cell",
+            "D": "Ciliated columnar cell",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -517,6 +490,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TWSSPP5A",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 10 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "Which type of epithelium lines the urinary bladder?",
+        "options": {
+            "A": "Stratified squamous epithelium",
+            "B": "Simple cuboidal epithelium",
+            "C": "Transitional epithelium (Urothelium)",
+            "D": "Pseudostratified columnar epithelium",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

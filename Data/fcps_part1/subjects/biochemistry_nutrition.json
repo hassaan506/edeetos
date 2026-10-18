@@ -1,32 +1,5 @@
 [
     {
-        "id": "MHGX534P",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Nutrition",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with angular cheilitis and corneal vascularization. Which vitamin deficiency is responsible?",
-        "options": {
-            "A": "Thiamine",
-            "B": "Riboflavin",
-            "C": "Vitamin B12",
-            "D": "Vitamin C",
-            "E": "Vitamin B6"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "SYKV8XG2",
         "year": [
             "2025"
@@ -106,6 +79,33 @@
             "E": "Chlamydia Pneumonia"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MHGX534P",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Nutrition",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with angular cheilitis and corneal vascularization. Which vitamin deficiency is responsible?",
+        "options": {
+            "A": "Thiamine",
+            "B": "Riboflavin",
+            "C": "Vitamin B12",
+            "D": "Vitamin C",
+            "E": "Vitamin B6"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

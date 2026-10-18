@@ -1,59 +1,5 @@
 [
     {
-        "id": "P35Z5HAT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pediatrics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 6-month-old infant presents with cyanosis, failure to thrive, and episodes of squatting. Chest X-ray shows a \"boot-shaped heart\" with decreased pulmonary vascular markings. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Transposition of great arteries",
-            "B": "Tricuspid atresia",
-            "C": "Ventricular septal defect",
-            "D": "Eisenmenger syndrome",
-            "E": "Tetralogy of Fallot (TOF)"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DCE2PZN7",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pediatrics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A preterm neonate develops a continuous machinery murmur shortly after birth. What is the most common cause of this condition?",
-        "options": {
-            "A": "Drugs",
-            "B": "Infection",
-            "C": "Prematurity",
-            "D": "Autoimmunity",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "33LP5B7J",
         "year": [
             "2025"
@@ -156,6 +102,33 @@
             "C": "Corynebacterium diphtheriae",
             "D": "Neisseria meningitidis",
             "E": "Idiopathic vasculitis"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "P35Z5HAT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 6-month-old infant presents with cyanosis, failure to thrive, and episodes of squatting. Chest X-ray shows a \"boot-shaped heart\" with decreased pulmonary vascular markings. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Transposition of great arteries",
+            "B": "Tricuspid atresia",
+            "C": "Ventricular septal defect",
+            "D": "Eisenmenger syndrome",
+            "E": "Tetralogy of Fallot (TOF)"
         },
         "correctAnswer": "E",
         "explanation": "",
@@ -266,6 +239,33 @@
             "E": "Aorta arises from left atrium and pulmonary artery from right ventricle..."
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DCE2PZN7",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A preterm neonate develops a continuous machinery murmur shortly after birth. What is the most common cause of this condition?",
+        "options": {
+            "A": "Drugs",
+            "B": "Infection",
+            "C": "Prematurity",
+            "D": "Autoimmunity",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },

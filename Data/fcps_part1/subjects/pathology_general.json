@@ -1,42 +1,7 @@
 [
     {
-        "id": "8MS6GUJB",
+        "id": "LRVWKKR7",
         "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning",
-            "Surgery - 08/25 - August 7 - Morning",
-            "Medicine - 05/25 - May 12 - Morning",
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient died of fat embolism, on autopsy fat embolism will be visualized by:",
-        "options": {
-            "A": "Trichome stain",
-            "B": "Permanent Silver stain",
-            "C": "Frozen fat sections with fat stain",
-            "D": "Permanent Fat content",
-            "E": "Frozen fat sections with silica stain"
-        },
-        "correctAnswer": "C",
-        "explanation": "Fat embolism can be identified by autopsy through microscopy by using fat stains and conducted on frozen tissues of fat emboli.",
-        "hint": ""
-    },
-    {
-        "id": "T79PQZAK",
-        "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
@@ -44,7 +9,6 @@
             "Surgery & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
             "Gynecology - 11/25 - November 12 - Evening",
             "Surgery - 11/25 - November 12 - Evening"
         ],
@@ -52,73 +16,39 @@
         "chapter": "General",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A patient receives gamma radiation for a solid tumor.",
+        "question": "10% formalin is used in biopsy specimens for which purpose?",
         "options": {
-            "A": "Formation of free radicals",
-            "B": "Directly destroy cells",
-            "C": "Stimulate NK cells",
-            "D": "Stop radical mechanisms",
-            "E": ""
+            "A": "Denaturation",
+            "B": "Sterilization",
+            "C": "Prevent autolysis",
+            "D": "Prevent dryness",
+            "E": "To enhance dye penetration"
         },
-        "correctAnswer": "A",
-        "explanation": "Gamma radiation interacts with water in cells -> free radical formation -> DNA damage -> tumor cell death. Indirect effect is the main mechanism of cytotoxicity.",
+        "correctAnswer": "C",
+        "explanation": "Formalin fixes tissue by cross-linking proteins, preventing enzymatic autolysis and preserving morphology.",
         "hint": ""
     },
     {
-        "id": "K94ZKU5N",
+        "id": "VM96MRZS",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 11/25 - November 12 - Evening"
         ],
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Councilman bodies occur in process of:",
+        "question": "17-year-old female had laceration, wound closed with sutures. Two weeks later, wound healing is delayed. What is the likely responsible factor?",
         "options": {
-            "A": "Hypertrophy",
-            "B": "Cell Injury",
-            "C": "Atrophy",
-            "D": "Yellow fever",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Occur in process of Apoptosis. Seen in disease - Yellow Fever",
-        "hint": ""
-    },
-    {
-        "id": "U5E8XVFU",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning",
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Difference between malignant and normal cells such that malignant cells repair the shortening of chromosome so that they can continue dividing. Enzyme responsible?",
-        "options": {
-            "A": "Telomerase",
-            "B": "Reverse transcriptase",
-            "C": "Isomerase",
-            "D": "Lipase",
+            "A": "Vitamin C deficiency",
+            "B": "Zinc deficiency",
+            "C": "Infection",
+            "D": "Foreign body reaction",
             "E": ""
         },
         "correctAnswer": "A",
@@ -126,70 +56,30 @@
         "hint": ""
     },
     {
-        "id": "4DHLULBT",
+        "id": "YKBTVSYU",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics",
-            "Pathology",
             "Surgery & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 7 - Evening",
-            "Surgery - 01/26 - January 7 - Evening",
-            "Gynecology - 11/25 - November 12 - Morning",
-            "Pathology - 08/25 - August 4 - Morning"
+            "Surgery - 11/25 - November 12 - Evening"
         ],
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "During autopsy of a patient who died suddenly, a clot is found in the right atrium. It has a gelatinous yellow upper part and a red lower part. Which of the following best describes this finding?",
+        "question": "A 17-year-old footballer had a knee laceration sutured. After 2 weeks, the wound is healing slower than expected. Cause?",
         "options": {
-            "A": "Ante-mortem thrombus",
-            "B": "Post-mortem clot (“chicken fat” clot)",
-            "C": "Mural thrombus",
-            "D": "Embolus",
+            "A": "Vitamin C",
+            "B": "Zinc",
+            "C": "Infection",
+            "D": "Foreign body",
             "E": ""
         },
-        "correctAnswer": "B",
-        "explanation": "Venous Thrombi vs Postmortem Clot: Venous thrombi are firm and Postmortem clot rubbery. Currant Jelly and Supernant Portion free of RBC appear as Chicken Fat.",
-        "hint": ""
-    },
-    {
-        "id": "KAUSCBRW",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening",
-            "Radiology - 07/26 - July 08 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Anesthesia - 08/25 - August 4 - Morning",
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Edema fluid due to inflammation:",
-        "options": {
-            "A": "Exudate",
-            "B": "Transudate",
-            "C": "Serous",
-            "D": "Fibrinous",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
+        "correctAnswer": "C",
+        "explanation": "Local infection is the most common cause of delayed wound healing in healthy young patients due to prolonged inflammatory phase and impaired collagen deposition.",
         "hint": ""
     },
     {
@@ -247,6 +137,87 @@
         "hint": ""
     },
     {
+        "id": "8WYC5E5Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman is found to have a mutation in the TP53 gene on genetic testing. Which of the following best explains the consequence of this mutation?",
+        "options": {
+            "A": "TP53 becomes an oncogene and promotes cell proliferation",
+            "B": "TP53 loses its tumor-suppressor function causing uncontrolled cell cycle progression",
+            "C": "TP53 increases apoptosis of normal cells",
+            "D": "TP53 increases DNA repair leading to reduced cancer risk",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7S8BVEUF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 46-year-old female underwent a hysterectomy. Histopathology shows intact parenchyma and cellular outlines. What type of necrosis is seen?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Liquefactive",
+            "C": "Gangrenous",
+            "D": "Fat necrosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Coagulative necrosis is caused by denaturation of structural proteins and enzymes, leading to the preservation of the cell's structural outline for several days, although the cell itself is dead.",
+        "hint": ""
+    },
+    {
+        "id": "XSCYFRPT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 5 year old child is diagnosed with retinoblastoma. Genetic analysis shows deletion of both alleles of the RB1 gene. Which of the following best describes how tumor suppressor genes contribute to the pathogenesis of malignancies?",
+        "options": {
+            "A": "They promote tumorigenesis when activated by gain-of-function mutations",
+            "B": "They lose their growth-inhibiting effect due to loss-of-function mutations",
+            "C": "They enhance DNA repair when mutated",
+            "D": "They increase proto-oncogene expression when activated",
+            "E": "They stimulate angiogenesis via gain-of-function mutation"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "SR3WPZPB",
         "year": [
             "2026"
@@ -267,6 +238,60 @@
             "B": "Free radicals from water radiolysis",
             "C": "Cross-linking of proteins",
             "D": "Pyrimidine base alkylation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VRFPUTB8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old man is diagnosed with carcinoma that has invaded surrounding tissues. Which histopathologic feature is most indicative of malignancy?",
+        "options": {
+            "A": "Cellular pleomorphism with invasion into adjacent structures",
+            "B": "Well-defined capsule around the tumor",
+            "C": "Presence of necrosis only",
+            "D": "Absence of mitotic figures",
+            "E": "Uniform cell size and shape"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KB94BGYG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old woman is receiving chemotherapy for breast cancer. After the second cycle, the oncology team explains that the goal of her regimen is to trigger controlled cancer cell death by activating intracellular pathways. What is the primary mechanism by which many chemotherapy drugs act?",
+        "options": {
+            "A": "Stimulate mitosis",
+            "B": "Induce apoptosis",
+            "C": "Enhance cell membrane stability",
+            "D": "Increase growth factor signaling",
             "E": ""
         },
         "correctAnswer": "B",
@@ -406,6 +431,60 @@
         },
         "correctAnswer": "B",
         "explanation": "Type III collagen is deposited early during wound healing. It forms granulation tissue. It is later replaced by stronger Type I collagen.",
+        "hint": ""
+    },
+    {
+        "id": "3MKHVW4J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A cell shows decreased replication and DNA damage over time. This represents:",
+        "options": {
+            "A": "Cellular aging",
+            "B": "Reversible injury",
+            "C": "Irreversible injury",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GPYL7RSR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A cell under the microscope shows: amorphous densities, mitochondrial shrinkage and membrane rupture.",
+        "options": {
+            "A": "Reversible cell injury",
+            "B": "Irreversible cell injury",
+            "C": "Apoptosis",
+            "D": "Necrosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -571,6 +650,60 @@
         "hint": ""
     },
     {
+        "id": "BZYST85T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A granuloma with central necrosis surrounded by epithelioid cells is seen. What type of necrosis is this?",
+        "options": {
+            "A": "Coagulative",
+            "B": "Liquefactive",
+            "C": "Caseous",
+            "D": "Fat",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XXUC7UYW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A hysterectomy specimen shows pale, firm tissue with preserved architecture. What type of necrosis is most typical?",
+        "options": {
+            "A": "Liquefactive",
+            "B": "Caseous",
+            "C": "Coagulative",
+            "D": "Fibrinoid",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Ischemic injury to solid organs (except brain) -> coagulative necrosis. Uterus, being a muscular solid organ, undergoes coagulative necrosis after infarction or torsion.",
+        "hint": ""
+    },
+    {
         "id": "CG5GZ7BQ",
         "year": [
             "2026"
@@ -706,6 +839,33 @@
         "hint": ""
     },
     {
+        "id": "FVKFFPWN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pathologist grades a tumor specimen based on the degree to which tumor cells resemble normal tissue. What parameter does this grading represent?",
+        "options": {
+            "A": "Tumor stage",
+            "B": "Tumor size",
+            "C": "Degree of differentiation",
+            "D": "Presence of metastasis",
+            "E": "Lymph node involvement"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NTJCQVMA",
         "year": [
             "2026"
@@ -760,6 +920,62 @@
         "hint": ""
     },
     {
+        "id": "FG3RSK7K",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient brought to the emergency department after accidental exposure to cyanide, lab tests shows elevated levels of lactate, which of the following hypoxia is best explains this findings?",
+        "options": {
+            "A": "Histotoxic hypoxia",
+            "B": "Hypoxic hypoxia",
+            "C": "Anemic hypoxia",
+            "D": "Stagnant hypoxia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "URYZCJPR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning",
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops a malignant tumor characterized by uncontrolled cell proliferation due to loss of function of a key regulatory protein. This protein is often called the \"guardian of the genome.\" Which of the following proteins acts as the main governor of tumor progression by maintaining genomic stability?",
+        "options": {
+            "A": "Cyclin D1",
+            "B": "Myc",
+            "C": "Ras",
+            "D": "p53",
+            "E": "CDK4"
+        },
+        "correctAnswer": "D",
+        "explanation": "Governor of genome - RB, Guardian of genome - TP53.",
+        "hint": ""
+    },
+    {
         "id": "28YUQETG",
         "year": [
             "2026"
@@ -783,6 +999,33 @@
             "E": "Thrombosis"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Q3N42FBQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops sudden SOB after a long flight from Australia, which of the following is most likely diagnosis?",
+        "options": {
+            "A": "Pneumothorax",
+            "B": "Asthma exacerbation",
+            "C": "Pneumonia",
+            "D": "PE",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -811,6 +1054,40 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8MS6GUJB",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Surgery - 08/25 - August 7 - Morning",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient died of fat embolism, on autopsy fat embolism will be visualized by:",
+        "options": {
+            "A": "Trichome stain",
+            "B": "Permanent Silver stain",
+            "C": "Frozen fat sections with fat stain",
+            "D": "Permanent Fat content",
+            "E": "Frozen fat sections with silica stain"
+        },
+        "correctAnswer": "C",
+        "explanation": "Fat embolism can be identified by autopsy through microscopy by using fat stains and conducted on frozen tissues of fat emboli.",
         "hint": ""
     },
     {
@@ -864,6 +1141,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Z7NGD7VV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented in OPD with complains of fatigue, abdominal pain, painful leg ulcers, what is likely diagnosis?",
+        "options": {
+            "A": "Hemolytic anemia",
+            "B": "Sickle cell anemia",
+            "C": "Pernicious anemia",
+            "D": "Hereditary spherocytosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -922,6 +1226,91 @@
         "hint": ""
     },
     {
+        "id": "T79PQZAK",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient receives gamma radiation for a solid tumor.",
+        "options": {
+            "A": "Formation of free radicals",
+            "B": "Directly destroy cells",
+            "C": "Stimulate NK cells",
+            "D": "Stop radical mechanisms",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Gamma radiation interacts with water in cells -> free radical formation -> DNA damage -> tumor cell death. Indirect effect is the main mechanism of cytotoxicity.",
+        "hint": ""
+    },
+    {
+        "id": "MSSWRXU3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient receiving chemotherapy for adenocarcinoma develops epithelial cell damagE- What is the most likely underlying mechanism?",
+        "options": {
+            "A": "Hypoxia",
+            "B": "Apoptosis",
+            "C": "Necrosis",
+            "D": "Inflammation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "57HCUYFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient underwent surgery 1 week ago, now presents with wound infection, foul-smelling discharge, local inflammatory signs, low blood pressure and increased heart rate. What is the cause?",
+        "options": {
+            "A": "Toxemic shock",
+            "B": "Proteolytic enzymes",
+            "C": "Endotoxin",
+            "D": "Hypovolemic shock",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Wound infection with foul-smelling discharge: This indicates a serious bacterial infection, which is the source of the toxins. The discharge, or pus, is a common sign of an infected surgical wound. The patient's symptoms are most consistent with Toxemic shock.",
+        "hint": ""
+    },
+    {
         "id": "WUJ2WTWB",
         "year": [
             "2026"
@@ -946,6 +1335,87 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GSB7HBZJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with a localized bacterial cellulitis develops marked swelling, warmth, and an exudative fluid accumulation in the interstitial space. Pathologically, what type of edema fluid is expected in infected/inflamed tissue?",
+        "options": {
+            "A": "Transudative (low protein) fluid due to hydrostatic changes",
+            "B": "Exudative (high protein) fluid due to increased vascular permeability",
+            "C": "Lymphatic edema due to lymphatic obstruction only",
+            "D": "Osmotic edema from hypoalbuminemia only",
+            "E": "Pitting edema due to deep venous thrombosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2TFKZZ4Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with fever, night sweats and weight loss. On examination lymphadenopathy. CT scan showed calcifications. Type of calcification.",
+        "options": {
+            "A": "Metastatic",
+            "B": "Dystrophic",
+            "C": "Mixed",
+            "D": "Myogenic",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Dystrophic Calcification: TB (lung and pericardium), granulomatous infections, liquefactive necrosis, fat necrosis, infarcts, thrombi, schistosomiasis, congenital CMV, toxoplasmosis, rubella, psammoma bodies, CREST syndrome, atherosclerotic plaques. Metastatic Calcification: Kidney, Lung, Gastric mucosa.",
+        "hint": ""
+    },
+    {
+        "id": "MEH98NEX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with ITP after RTA has a thigh laceration. Which factor will delay wound healing?",
+        "options": {
+            "A": "Foreign body",
+            "B": "Vitamin K",
+            "C": "Vitamin C",
+            "D": "Steroids",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Steroids inhibit macrophage activity, fibroblast proliferation, and collagen synthesis -> significantly delays all phases of wound healing.",
         "hint": ""
     },
     {
@@ -1003,6 +1473,35 @@
         "hint": ""
     },
     {
+        "id": "WYY6ESRE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A postmortem Clot is Most likely found to be resembling with:",
+        "options": {
+            "A": "Chicken Fat",
+            "B": "Butter",
+            "C": "Cheese",
+            "D": "Jelly",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EGGRHMCY",
         "year": [
             "2026"
@@ -1027,6 +1526,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X8BZHM9H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A researcher studies cells infected with a DNA virus. After infection, the host cells show abnormal replication, altered gene transcription, and loss of normal cell-cycle control. What cellular component is primarily altered by viruses?",
+        "options": {
+            "A": "Cell membrane lipid content",
+            "B": "Host cell DNA",
+            "C": "Mitochondrial ATP production",
+            "D": "Ribosomal protein synthesis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Many viruses-especially DNA viruses and retroviruses-integrate into or modify host cell DNA, leading to altered gene expression, uncontrolled proliferation.",
         "hint": ""
     },
     {
@@ -1078,6 +1604,35 @@
             "C": "Hyperplasia",
             "D": "Metaplasia",
             "E": "Atrophy"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TZTFPM27",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A scientist observes cell under light microscopy, a cell shows chromatin condensation, shrinkage and cytoplasmic blebs, the findings are most likely characteristics of which of the following?",
+        "options": {
+            "A": "Reversible cell injury",
+            "B": "Necrosis",
+            "C": "Irreversible cell injury",
+            "D": "Apoptosis",
+            "E": ""
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -1165,6 +1720,33 @@
         "hint": ""
     },
     {
+        "id": "GSZH54W2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A virologist is studying how certain viruses contribute to cancer development. She notes that some viruses cause mutations leading to activation of proto-oncogenes. Which of the following best describes this mechanism?",
+        "options": {
+            "A": "Viral DNA integrates and inactivates tumor suppressor genes only",
+            "B": "Viruses cause epigenetic silencing of oncogenes",
+            "C": "Viruses induce mutations that convert proto-oncogenes to oncogenes promoting uncontrolled cell growth.",
+            "D": "Viral infrction causes immune mediated tumor regression",
+            "E": "Viruses induce cell apoptosis through p53 activation"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KZW5SAWK",
         "year": [
             "2026"
@@ -1219,6 +1801,62 @@
         "hint": ""
     },
     {
+        "id": "54CJMLG3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "All of the following causes cell damage by one or another way, which of the following is commonly occurs in ischemic, toxic and radiation injury?",
+        "options": {
+            "A": "ATP depletion",
+            "B": "ROS production",
+            "C": "Protein Accumulation",
+            "D": "ATP depletion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4SSQNZPA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Allograft is:",
+        "options": {
+            "A": "From same species of animals",
+            "B": "From identical twin",
+            "C": "From different species of animals",
+            "D": "Self to self",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Autograft (self to self). Allograft - Graft between genetically different individual of same specie. Synergetic graft (Isograft) - graft between identical twin.",
+        "hint": ""
+    },
+    {
         "id": "P36YPVLA",
         "year": [
             "2026"
@@ -1240,6 +1878,33 @@
             "C": "Normal cells",
             "D": "Cell Injury only",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HSLYMTWK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Amorphous densities in mitochondria on electron microscopy are characteristic feature of:",
+        "options": {
+            "A": "Reversible cell injury",
+            "B": "Irreversible cell injury",
+            "C": "Apoptosis",
+            "D": "Fatty change",
+            "E": "Cellular adaptation"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1300,6 +1965,33 @@
         "hint": ""
     },
     {
+        "id": "Z97CWPUL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Apoptosis DNA pattern",
+        "options": {
+            "A": "Step ladder pattern",
+            "B": "Smear pattern",
+            "C": "Loading phase",
+            "D": "Programmed decrease",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Apoptosis shows characteristic DNA fragmentation, visible as a step-ladder pattern on gel electrophoresis. This distinguishes it from necrosis (smear pattern).",
+        "hint": ""
+    },
+    {
         "id": "4PJSDBVZ",
         "year": [
             "2026"
@@ -1327,6 +2019,33 @@
         "hint": ""
     },
     {
+        "id": "PEARZAF2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Apoptosis shows characteristic:",
+        "options": {
+            "A": "Step ladder pattern",
+            "B": "Smear pattern",
+            "C": "Loading phase",
+            "D": "Programmed decrease",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Apoptosis shows characteristic DNA fragmentation, visible as a step-ladder pattern on gel electrophoresis. This distinguishes it from necrosis (smear pattern).",
+        "hint": ""
+    },
+    {
         "id": "ZALE26Q2",
         "year": [
             "2026"
@@ -1350,6 +2069,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4QWZNDH4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Caspases are activated in which process?",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Necrosis",
+            "C": "Irreversible cell injury",
+            "D": "Reversible cell injury",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Caspases are proteases that orchestrate programmed cell death (apoptosis).",
+        "hint": ""
+    },
+    {
+        "id": "939WF229",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Caspases are mainly involved in which cellular process?",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Necrosis",
+            "C": "Cell injury",
+            "D": "Inflammation",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1408,6 +2181,60 @@
         "hint": ""
     },
     {
+        "id": "RG2WD4PP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cellular injury mediated by excessive reactive oxygen species (ROS) is primarily characterized by which type of damage?",
+        "options": {
+            "A": "DNA strand breaks",
+            "B": "Lipid peroxidation of membranes",
+            "C": "Protein cross-linking",
+            "D": "Mitochondrial swelling",
+            "E": "Lysosomal rupture"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2SKYGAXY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cellular swelling in hypoxia occurs due to:",
+        "options": {
+            "A": "Intracellular water accumulation",
+            "B": "Intracellular lipid accumulation",
+            "C": "Intracellular fat accumulation",
+            "D": "Increased ribosomal activity",
+            "E": "Cytoskeletal protein synthesis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "2CV49TKC",
         "year": [
             "2026"
@@ -1431,6 +2258,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YXNEYCBY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Chemotherapy advised for a cancer. Tumour size shrink by?",
+        "options": {
+            "A": "Necrosis",
+            "B": "Phagocytosis",
+            "C": "Apoptosis",
+            "D": "Atrophy",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1509,6 +2363,33 @@
             "B": "T1N1M0",
             "C": "T2N1M1",
             "D": "T1N0M0",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W9P2W8MC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Congenital cataract is caused by which of the following causative agent?",
+        "options": {
+            "A": "CMV",
+            "B": "Syphilis",
+            "C": "Rubella",
+            "D": "Herpes simplex",
             "E": ""
         },
         "correctAnswer": "C",
@@ -1624,6 +2505,123 @@
         "hint": ""
     },
     {
+        "id": "K94ZKU5N",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 05/25 - May 13 - Afternoon",
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Councilman bodies occur in process of:",
+        "options": {
+            "A": "Hypertrophy",
+            "B": "Cell Injury",
+            "C": "Atrophy",
+            "D": "Yellow fever",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Occur in process of Apoptosis. Seen in disease - Yellow Fever",
+        "hint": ""
+    },
+    {
+        "id": "U5RPEFR3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "CRP, Ceruloplasmin and heptoglobin are example of:",
+        "options": {
+            "A": "Chronic phase reactants",
+            "B": "Negative phase reactants",
+            "C": "Acute phase reactants",
+            "D": "Biological markers",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SF7XGW8H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Defination of desmoplasia:",
+        "options": {
+            "A": "Metastasis involvement of surrounding tissues",
+            "B": "Non neoplastic proliferation of fibrous connective tissue",
+            "C": "Change of one epithelium to another",
+            "D": "Increase in Cell Size",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U5E8XVFU",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning",
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Difference between malignant and normal cells such that malignant cells repair the shortening of chromosome so that they can continue dividing. Enzyme responsible?",
+        "options": {
+            "A": "Telomerase",
+            "B": "Reverse transcriptase",
+            "C": "Isomerase",
+            "D": "Lipase",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "G7HFCJT3",
         "year": [
             "2026"
@@ -1647,6 +2645,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KWVTVXF3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "DNA sequence is composed of",
+        "options": {
+            "A": "Nitrogenous bases + Sugar + Phosphate",
+            "B": "Nitrogenous bases only",
+            "C": "Sugar + Phosphate",
+            "D": "Amino acids",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1705,6 +2730,39 @@
         "hint": ""
     },
     {
+        "id": "4DHLULBT",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Pathology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening",
+            "Surgery - 01/26 - January 7 - Evening",
+            "Gynecology - 11/25 - November 12 - Morning",
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During autopsy of a patient who died suddenly, a clot is found in the right atrium. It has a gelatinous yellow upper part and a red lower part. Which of the following best describes this finding?",
+        "options": {
+            "A": "Ante-mortem thrombus",
+            "B": "Post-mortem clot (“chicken fat” clot)",
+            "C": "Mural thrombus",
+            "D": "Embolus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Venous Thrombi vs Postmortem Clot: Venous thrombi are firm and Postmortem clot rubbery. Currant Jelly and Supernant Portion free of RBC appear as Chicken Fat.",
+        "hint": ""
+    },
+    {
         "id": "JFRTZJ3D",
         "year": [
             "2026"
@@ -1732,6 +2790,96 @@
         "hint": ""
     },
     {
+        "id": "TUPZQVQH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Earliest sign of reversible cell injury:",
+        "options": {
+            "A": "Hydropic changes",
+            "B": "Myelin figures",
+            "C": "Pyknosis",
+            "D": "Cell membrane damage",
+            "E": "Lysosome Rupture"
+        },
+        "correctAnswer": "A",
+        "explanation": "(Robins)",
+        "hint": ""
+    },
+    {
+        "id": "LQJKYSAN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Early tensile strengthening of wound by which type of collagen?",
+        "options": {
+            "A": "Collagen 3",
+            "B": "Collagen 2",
+            "C": "Collagen 1",
+            "D": "Collagen 4",
+            "E": "Collagen 5"
+        },
+        "correctAnswer": "A",
+        "explanation": "Early wound healing + granulation tissue - Type 3 collagen. Late wound healing + wound strength - Type 1 collagen",
+        "hint": ""
+    },
+    {
+        "id": "KAUSCBRW",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening",
+            "Radiology - 07/26 - July 08 - Morning",
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Edema fluid due to inflammation:",
+        "options": {
+            "A": "Exudate",
+            "B": "Transudate",
+            "C": "Serous",
+            "D": "Fibrinous",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "SQWZ44VQ",
         "year": [
             "2026"
@@ -1755,6 +2903,170 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "94AYAYP4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "ELISA is used for checking:",
+        "options": {
+            "A": "Proteins",
+            "B": "Amino acids",
+            "C": "Antigens",
+            "D": "Glucose",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "These assays are performed in the wells of plastic microtiter dish the antigen(protein) is bound to the plastic of the dish, the probe used consists of an antibody specific for the particular protein to be measured, the antibody is covalently bound to the enzyme which will produce a colored product when exposed to its substrate the amount of protein (or antibody) in the sample to be tested.",
+        "hint": ""
+    },
+    {
+        "id": "DF8EEWK8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Fluid can be accumulated is the abdominal cavity due to increased hydrostatic pressure or decreased oncotic pressure, what type of fluid is this?",
+        "options": {
+            "A": "Transudative",
+            "B": "Exudative",
+            "C": "Fibrinous",
+            "D": "Serous",
+            "E": "Pus filled"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZJBVEF8Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Free radicals and reactive oxygen species target which organelle classicaly?",
+        "options": {
+            "A": "Mitochondria",
+            "B": "Nucleus",
+            "C": "Ribosomes",
+            "D": "Nucleolus",
+            "E": "Cytoskeleton"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9CU5NA6Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Free radicals are produced by which of the following poisoning",
+        "options": {
+            "A": "CCl4",
+            "B": "Ethanol",
+            "C": "Opioids",
+            "D": "Aspirin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "CCl4 produces free radicals and leads to hepatocytes damage.",
+        "hint": ""
+    },
+    {
+        "id": "4KV4TBFZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Free radicals are produced by which of the following poisoning:",
+        "options": {
+            "A": "CCl4",
+            "B": "Ethanol",
+            "C": "Opioids",
+            "D": "Aspirin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "CCl4 produces free radicals and leads to hepatocytes damage",
+        "hint": ""
+    },
+    {
+        "id": "WDV9YLVB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Free radicals primarily cause damage to which cellular component?",
+        "options": {
+            "A": "Endoplasmic reticulum",
+            "B": "DNA",
+            "C": "Ribosomes",
+            "D": "Lysosomes",
+            "E": "Mitochondria"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1840,6 +3152,33 @@
         "hint": ""
     },
     {
+        "id": "ATRS9AEW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "How do oncogenic viruses primarily cause cancer?",
+        "options": {
+            "A": "By inhibiting protein synthesis",
+            "B": "By integrating viral DNA into host genome and disrupting cell cycle control",
+            "C": "By causing chronic inflammation",
+            "D": "By destroying host ribosomes",
+            "E": "By inducing autoimmune reactions"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NG42H7FU",
         "year": [
             "2026"
@@ -1861,6 +3200,60 @@
             "C": "Malignancy has no mitotic figures.",
             "D": "Dysplasia always progresses to malignancy.",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CZ5XR69S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hypoxic cell injury features?",
+        "options": {
+            "A": "↓ Na+/K+ ATPase",
+            "B": "↓ Na+",
+            "C": "↓ Ca2+",
+            "D": "↓ pH",
+            "E": "↓ ATP"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GRR5GSNN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a leukemia patient undergoing chemotherapy, tumor cells decrease in size due to?",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Lysosomes",
+            "C": "Necrosis",
+            "D": "Metaplasia",
+            "E": "Atrophy"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -1921,6 +3314,35 @@
         "hint": ""
     },
     {
+        "id": "HGD6DPUZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In hypertrophic obstructive cardiomyopathy (HOCM), what hemodynamic changes are seen?",
+        "options": {
+            "A": "Increased SV and increased diastolic filling",
+            "B": "Increased SV and decreased diastolic filling",
+            "C": "Decreased SV and decreased diastolic filling",
+            "D": "Decreased SV and increased diastolic filling",
+            "E": "C"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "A3QGZTC7",
         "year": [
             "2026"
@@ -1975,6 +3397,36 @@
         "hint": ""
     },
     {
+        "id": "9SBP7ZGV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 05/25 - May 14 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In which of the following conditions a tissue cannot utilize oxygen regardless of being provided with enough oxygen",
+        "options": {
+            "A": "Hypoventilation",
+            "B": "Cyanide poisoning",
+            "C": "CO poisoning",
+            "D": "Methanol poisoning",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "JFU6EXDL",
         "year": [
             "2026"
@@ -2026,6 +3478,35 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "49LHSDHM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Inorganic ion causing cancer",
+        "options": {
+            "A": "Iron",
+            "B": "Zinc",
+            "C": "Asbestos",
+            "D": "Silicosis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Asbestos fibers are carcinogenic, associated with mesothelioma and lung cancer.",
         "hint": ""
     },
     {
@@ -2110,6 +3591,33 @@
         "hint": ""
     },
     {
+        "id": "E2YDECL9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ischemia-reperfusion injury and radiation damage both primarily occur due to:",
+        "options": {
+            "A": "Excess ATP formation",
+            "B": "Reactive oxygen species (ROS) generation",
+            "C": "Increased protein synthesis",
+            "D": "Membrane cholesterol accumulation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Ischemia-reperfusion and ionizing radiation produce free radicals (ROS) -> lipid peroxidation, DNA breaks, and protein damage.",
+        "hint": ""
+    },
+    {
         "id": "WNHS29J2",
         "year": [
             "2026"
@@ -2164,6 +3672,33 @@
         "hint": ""
     },
     {
+        "id": "CBEBJQX3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mechanism of rigor Mortis:",
+        "options": {
+            "A": "Anaerobic glycolysis",
+            "B": "Gluconeogenesis",
+            "C": "ATP depletion",
+            "D": "Glycogenolysis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "After death no oxygen -> No ATP -> Calcium ions diffuses into the cells -> Calcium binds with Troponin -> Cross bridges between actin and myosin.",
+        "hint": ""
+    },
+    {
         "id": "U5FR2F3H",
         "year": [
             "2026"
@@ -2188,6 +3723,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9NEPFURG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Microscopic examination shows nuclear shrinkage and chromatin condensation in a dying cell. This finding is termed:",
+        "options": {
+            "A": "Pyknosis",
+            "B": "Karyorrhexis",
+            "C": "Karyolysis",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Pyknosis = nuclear shrinkage and chromatin condensation. Karyorrhexis = nuclear fragmentation. Karyolysis = nuclear dissolution.",
         "hint": ""
     },
     {
@@ -2218,6 +3780,35 @@
         "hint": ""
     },
     {
+        "id": "ZEGAD64G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most important beneficial function of apoptosis",
+        "options": {
+            "A": "Prevent crowding of cells",
+            "B": "Embryologically destroyed cells",
+            "C": "Chemotherapy uses",
+            "D": "Remove mutant cells",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Apoptosis eliminates mutant or damaged cells -> prevents malignancy. Critical for tissue homeostasis and tumor suppression.",
+        "hint": ""
+    },
+    {
         "id": "TT95CCAL",
         "year": [
             "2026"
@@ -2242,6 +3833,88 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5MBFPSRN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most reliable sign of Irreversible cell injury",
+        "options": {
+            "A": "Cell membrane damage",
+            "B": "Mitochondrial damage",
+            "C": "Pyknosis",
+            "D": "Autophagy of cell",
+            "E": "Massive Ca influx"
+        },
+        "correctAnswer": "A",
+        "explanation": "(Prefer cell membrane damage)",
+        "hint": ""
+    },
+    {
+        "id": "TGPWXCEG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mutations in proto oncogene are associated with various malignancies. What are proto oncogenes?",
+        "options": {
+            "A": "Normal genes promoting cell proliferation",
+            "B": "Mutated genes promoting cell proliferation",
+            "C": "Normal genes promoting cell death",
+            "D": "Mutated genes promoting cell death",
+            "E": "Mutated genes interfering apoptosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EXW58QP7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Necrosis of solid organ with superimposed infection",
+        "options": {
+            "A": "Dry gangrene",
+            "B": "Fat necrosis",
+            "C": "Caseous necrosis",
+            "D": "Gangrenous coagulative necrosis",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Gangrenous coagulative necrosis: ischemic death of tissue followed by secondary bacterial infection. Common in limb or solid organ infarction.",
         "hint": ""
     },
     {
@@ -2299,6 +3972,33 @@
         "hint": ""
     },
     {
+        "id": "F78NT55Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "p53 acts as guardian of genomE- It is disrupted by:",
+        "options": {
+            "A": "Cell wall Damage",
+            "B": "RNA damage",
+            "C": "DNA damage",
+            "D": "Lipid peroxidation",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "5R4XUMQC",
         "year": [
             "2026"
@@ -2322,6 +4022,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TFQJWSWW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pleiomorphic adenoma, the most common benign tumor of the salivary glands, arises from which germ layer?",
+        "options": {
+            "A": "Benign tumor of endodermal origin",
+            "B": "Benign tumor of ectodermal origin",
+            "C": "Benign tumor of mesodermal origin",
+            "D": "Benign tumor of mixed origin",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -2395,6 +4122,42 @@
         "topic": "Unknown Topic",
         "difficulty": "medium",
         "question": "Protic oncogene is defined as:",
+        "options": {
+            "A": "Abnormal gene cause cell proliferation",
+            "B": "Abnormal gene cause cell Suppression",
+            "C": "Normal gene cause cell proliferation",
+            "D": "Normal gene cause cell Suppression",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "H63CPRQ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Proto oncogene is defined as",
         "options": {
             "A": "Abnormal gene cause cell proliferation",
             "B": "Abnormal gene cause cell Suppression",
@@ -2488,6 +4251,35 @@
         "hint": ""
     },
     {
+        "id": "5MHY6RPX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Seen in apoptosis on cellular level?",
+        "options": {
+            "A": "Fragmented RBCs smear",
+            "B": "Spiral DNA",
+            "C": "Proteolysis of caspases",
+            "D": "Ladder pattern DNA",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7WENH6RA",
         "year": [
             "2026"
@@ -2511,6 +4303,33 @@
             "E": "Gummatous necrosis"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M8S8G99Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The absorption of most orally administered drugs from the GIT follows?",
+        "options": {
+            "A": "Zero order kinetics",
+            "B": "First order kinetics",
+            "C": "Mixed order kinetics",
+            "D": "Nonlinear kinetics",
+            "E": "B"
+        },
+        "correctAnswer": "",
         "explanation": "",
         "hint": ""
     },
@@ -2590,6 +4409,33 @@
             "C": "BAX",
             "D": "PKL",
             "E": "BAK"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PXEKQMAB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The process of apoptosis is loss during the carcinogenic activity the following factor has antiapoptotic activity is:",
+        "options": {
+            "A": "BCL2",
+            "B": "BCL1",
+            "C": "BAX",
+            "D": "PKL",
+            "E": ""
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -2704,6 +4550,114 @@
         "hint": ""
     },
     {
+        "id": "WC8JKLGL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tp53 kill",
+        "options": {
+            "A": "DNA damage cell",
+            "B": "RNA damage cell",
+            "C": "Kill proteins",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CH6FXC8R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tumor metastasis due to:",
+        "options": {
+            "A": "Migration",
+            "B": "Degradation of extracellular matrix",
+            "C": "Degradation of E cadherin",
+            "D": "Loss of cell shape",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9KXMK8P7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tumor suppress gene:",
+        "options": {
+            "A": "BCL2",
+            "B": "APC",
+            "C": "P53",
+            "D": "BRCA",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VQMUS8YR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tumor Suppressor gene:",
+        "options": {
+            "A": "TP53",
+            "B": "KRAS",
+            "C": "BCL-2",
+            "D": "ABL",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "CV24T5QU",
         "year": [
             "2026"
@@ -2728,6 +4682,35 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "789C5AB8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Upon Postmortem autopsy, a patient was having a thrombus this is seen in:",
+        "options": {
+            "A": "Chicken fat supernatant",
+            "B": "Pre mortem thrombus",
+            "C": "Post mortem thrombus",
+            "D": "Chicken lipid thrombus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "• Line of Zahn seen in: • Coraline Thrombus • Pre mortem Thrombus • Arterial Thrombus • Chicken Fat Appearance seen in PostMortem Thrombus",
         "hint": ""
     },
     {
@@ -2758,6 +4741,33 @@
         "hint": ""
     },
     {
+        "id": "X65UHYB7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Virus causes cancer by alteration in:",
+        "options": {
+            "A": "DNA",
+            "B": "Oncogene",
+            "C": "RNA",
+            "D": "Proto-oncogene",
+            "E": "Protein"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "USQP6M3A",
         "year": [
             "2026"
@@ -2782,6 +4792,60 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2JBHP7NH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Viruses can cause tumors due to mutation in which gene?",
+        "options": {
+            "A": "Oncogene",
+            "B": "Proto-oncogene",
+            "C": "Tumor suppressor gene",
+            "D": "NK cells",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Viral oncogenesis involves activation of proto-oncogenes or inactivation of tumor suppressor genes, leading to uncontrolled proliferation.",
+        "hint": ""
+    },
+    {
+        "id": "VK8EWFQX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Viruses can cause tumors through mutation in which gene?",
+        "options": {
+            "A": "Oncogene",
+            "B": "Proto-oncogene",
+            "C": "Tumor suppressor gene",
+            "D": "NK cells",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Viral oncogenesis involves activation of proto-oncogenes or inactivation of tumor suppressor genes, leading to uncontrolled proliferation.",
         "hint": ""
     },
     {
@@ -3001,2400 +5065,6 @@
         "hint": ""
     },
     {
-        "id": "JMUDA4SG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following best describes mutations affecting tumor suppressor genes?",
-        "options": {
-            "A": "Gain of function mutation",
-            "B": "Loss of function mutation",
-            "C": "Silent mutation",
-            "D": "Frameshift only",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HKJ8DDBW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following describes metaplasia?",
-        "options": {
-            "A": "Replacement of one adult epithelium type by another",
-            "B": "Dysplasia of epithelium",
-            "C": "Hyperplasia of epithelium",
-            "D": "Neoplasia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UZ25NKHC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is a feature of reversible cell injury?",
-        "options": {
-            "A": "Plasma membrane rupture",
-            "B": "Karyolysis",
-            "C": "Cellular swelling (hydropic change)",
-            "D": "Membrane disruption with leakage of cellular enzymes",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JHBFL2V6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the initial step in the execution of Cell Injury?",
-        "options": {
-            "A": "Overexpression of BCL-2",
-            "B": "Release of cytochrome-c from mitochondria",
-            "C": "Activation of caspases",
-            "D": "DNA fragmentation",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BQAP3QLT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the most likely cause of localized edema?",
-        "options": {
-            "A": "Nephrotic syndrome",
-            "B": "Congestive heart failure",
-            "C": "Liver cirrhosis",
-            "D": "Malignancy or infection causing lymphatic obstruction/inflammation",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Localized edema is confined to a specific tissue bed or limb and is caused by localized factors like lymphatic blockade (lymphedema) or local vascular inflammation",
-        "hint": ""
-    },
-    {
-        "id": "EMF2LALC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the primary initiator of P53 activation?",
-        "options": {
-            "A": "Cell wall damage",
-            "B": "Cell membrane damage",
-            "C": "ATP depletion",
-            "D": "Mitochondrial damage",
-            "E": "DNA damage"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V9XKX5BJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning",
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the prominent step in irreversible cell injury?",
-        "options": {
-            "A": "Cell membrane damage",
-            "B": "Massive Calcium influx",
-            "C": "Cellular Swelling",
-            "D": "Mitochondrial swelling",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W5GCTDRZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following organs is a classic example where a hemorrhagic (or red) infarct occurs?",
-        "options": {
-            "A": "Spleen",
-            "B": "Kidney",
-            "C": "Brain",
-            "D": "Liver",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Red vs. Pale: Red (hemorrhagic) infarcts occur in loose tissues with dual blood supplies (lungs, liver, intestine). Pale infarcts occur in solid organs with single end-arteries (heart, kidney).",
-        "hint": ""
-    },
-    {
-        "id": "KYSZA5RJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which organ is most likely to \"escape\" ischemic damage due to vascular obstruction?",
-        "options": {
-            "A": "Spleen",
-            "B": "Liver",
-            "C": "Kidney",
-            "D": "Brain",
-            "E": "Heart"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HKSH6K9S",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which process is most likely associated with a \"smear pattern\" on histopathology?",
-        "options": {
-            "A": "Inflammation",
-            "B": "Necrosis",
-            "C": "Infection",
-            "D": "Hyperplasia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BVM29NNJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which technique uses labeled antibodies to identify specific antigens within a tissue section?",
-        "options": {
-            "A": "Flow Cytometry",
-            "B": "Western Blot",
-            "C": "PCR",
-            "D": "Immunohistochemistry",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RDDRV7EF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which type of fluid is typically produced due to increased hydrostatic pressure?",
-        "options": {
-            "A": "Transudate",
-            "B": "Serous fluid",
-            "C": "Exudate",
-            "D": "Hemorrhagic fluid",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Transudates result from increased hydrostatic pressure or decreased oncotic pressure. They are low in protein and inflammatory cells, unlike exudates.",
-        "hint": ""
-    },
-    {
-        "id": "LRVWKKR7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "10% formalin is used in biopsy specimens for which purpose?",
-        "options": {
-            "A": "Denaturation",
-            "B": "Sterilization",
-            "C": "Prevent autolysis",
-            "D": "Prevent dryness",
-            "E": "To enhance dye penetration"
-        },
-        "correctAnswer": "C",
-        "explanation": "Formalin fixes tissue by cross-linking proteins, preventing enzymatic autolysis and preserving morphology.",
-        "hint": ""
-    },
-    {
-        "id": "VM96MRZS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "17-year-old female had laceration, wound closed with sutures. Two weeks later, wound healing is delayed. What is the likely responsible factor?",
-        "options": {
-            "A": "Vitamin C deficiency",
-            "B": "Zinc deficiency",
-            "C": "Infection",
-            "D": "Foreign body reaction",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YKBTVSYU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 17-year-old footballer had a knee laceration sutured. After 2 weeks, the wound is healing slower than expected. Cause?",
-        "options": {
-            "A": "Vitamin C",
-            "B": "Zinc",
-            "C": "Infection",
-            "D": "Foreign body",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Local infection is the most common cause of delayed wound healing in healthy young patients due to prolonged inflammatory phase and impaired collagen deposition.",
-        "hint": ""
-    },
-    {
-        "id": "8WYC5E5Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45-year-old woman is found to have a mutation in the TP53 gene on genetic testing. Which of the following best explains the consequence of this mutation?",
-        "options": {
-            "A": "TP53 becomes an oncogene and promotes cell proliferation",
-            "B": "TP53 loses its tumor-suppressor function causing uncontrolled cell cycle progression",
-            "C": "TP53 increases apoptosis of normal cells",
-            "D": "TP53 increases DNA repair leading to reduced cancer risk",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7S8BVEUF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 46-year-old female underwent a hysterectomy. Histopathology shows intact parenchyma and cellular outlines. What type of necrosis is seen?",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Liquefactive",
-            "C": "Gangrenous",
-            "D": "Fat necrosis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Coagulative necrosis is caused by denaturation of structural proteins and enzymes, leading to the preservation of the cell's structural outline for several days, although the cell itself is dead.",
-        "hint": ""
-    },
-    {
-        "id": "XSCYFRPT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 5 year old child is diagnosed with retinoblastoma. Genetic analysis shows deletion of both alleles of the RB1 gene. Which of the following best describes how tumor suppressor genes contribute to the pathogenesis of malignancies?",
-        "options": {
-            "A": "They promote tumorigenesis when activated by gain-of-function mutations",
-            "B": "They lose their growth-inhibiting effect due to loss-of-function mutations",
-            "C": "They enhance DNA repair when mutated",
-            "D": "They increase proto-oncogene expression when activated",
-            "E": "They stimulate angiogenesis via gain-of-function mutation"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VRFPUTB8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old man is diagnosed with carcinoma that has invaded surrounding tissues. Which histopathologic feature is most indicative of malignancy?",
-        "options": {
-            "A": "Cellular pleomorphism with invasion into adjacent structures",
-            "B": "Well-defined capsule around the tumor",
-            "C": "Presence of necrosis only",
-            "D": "Absence of mitotic figures",
-            "E": "Uniform cell size and shape"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KB94BGYG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old woman is receiving chemotherapy for breast cancer. After the second cycle, the oncology team explains that the goal of her regimen is to trigger controlled cancer cell death by activating intracellular pathways. What is the primary mechanism by which many chemotherapy drugs act?",
-        "options": {
-            "A": "Stimulate mitosis",
-            "B": "Induce apoptosis",
-            "C": "Enhance cell membrane stability",
-            "D": "Increase growth factor signaling",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3MKHVW4J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A cell shows decreased replication and DNA damage over time. This represents:",
-        "options": {
-            "A": "Cellular aging",
-            "B": "Reversible injury",
-            "C": "Irreversible injury",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GPYL7RSR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A cell under the microscope shows: amorphous densities, mitochondrial shrinkage and membrane rupture.",
-        "options": {
-            "A": "Reversible cell injury",
-            "B": "Irreversible cell injury",
-            "C": "Apoptosis",
-            "D": "Necrosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BZYST85T",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A granuloma with central necrosis surrounded by epithelioid cells is seen. What type of necrosis is this?",
-        "options": {
-            "A": "Coagulative",
-            "B": "Liquefactive",
-            "C": "Caseous",
-            "D": "Fat",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XXUC7UYW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A hysterectomy specimen shows pale, firm tissue with preserved architecture. What type of necrosis is most typical?",
-        "options": {
-            "A": "Liquefactive",
-            "B": "Caseous",
-            "C": "Coagulative",
-            "D": "Fibrinoid",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Ischemic injury to solid organs (except brain) -> coagulative necrosis. Uterus, being a muscular solid organ, undergoes coagulative necrosis after infarction or torsion.",
-        "hint": ""
-    },
-    {
-        "id": "FVKFFPWN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A pathologist grades a tumor specimen based on the degree to which tumor cells resemble normal tissue. What parameter does this grading represent?",
-        "options": {
-            "A": "Tumor stage",
-            "B": "Tumor size",
-            "C": "Degree of differentiation",
-            "D": "Presence of metastasis",
-            "E": "Lymph node involvement"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FG3RSK7K",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient brought to the emergency department after accidental exposure to cyanide, lab tests shows elevated levels of lactate, which of the following hypoxia is best explains this findings?",
-        "options": {
-            "A": "Histotoxic hypoxia",
-            "B": "Hypoxic hypoxia",
-            "C": "Anemic hypoxia",
-            "D": "Stagnant hypoxia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "URYZCJPR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning",
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops a malignant tumor characterized by uncontrolled cell proliferation due to loss of function of a key regulatory protein. This protein is often called the \"guardian of the genome.\" Which of the following proteins acts as the main governor of tumor progression by maintaining genomic stability?",
-        "options": {
-            "A": "Cyclin D1",
-            "B": "Myc",
-            "C": "Ras",
-            "D": "p53",
-            "E": "CDK4"
-        },
-        "correctAnswer": "D",
-        "explanation": "Governor of genome - RB, Guardian of genome - TP53.",
-        "hint": ""
-    },
-    {
-        "id": "Q3N42FBQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops sudden SOB after a long flight from Australia, which of the following is most likely diagnosis?",
-        "options": {
-            "A": "Pneumothorax",
-            "B": "Asthma exacerbation",
-            "C": "Pneumonia",
-            "D": "PE",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z7NGD7VV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented in OPD with complains of fatigue, abdominal pain, painful leg ulcers, what is likely diagnosis?",
-        "options": {
-            "A": "Hemolytic anemia",
-            "B": "Sickle cell anemia",
-            "C": "Pernicious anemia",
-            "D": "Hereditary spherocytosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MSSWRXU3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient receiving chemotherapy for adenocarcinoma develops epithelial cell damagE- What is the most likely underlying mechanism?",
-        "options": {
-            "A": "Hypoxia",
-            "B": "Apoptosis",
-            "C": "Necrosis",
-            "D": "Inflammation",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "57HCUYFD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient underwent surgery 1 week ago, now presents with wound infection, foul-smelling discharge, local inflammatory signs, low blood pressure and increased heart rate. What is the cause?",
-        "options": {
-            "A": "Toxemic shock",
-            "B": "Proteolytic enzymes",
-            "C": "Endotoxin",
-            "D": "Hypovolemic shock",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Wound infection with foul-smelling discharge: This indicates a serious bacterial infection, which is the source of the toxins. The discharge, or pus, is a common sign of an infected surgical wound. The patient's symptoms are most consistent with Toxemic shock.",
-        "hint": ""
-    },
-    {
-        "id": "GSB7HBZJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with a localized bacterial cellulitis develops marked swelling, warmth, and an exudative fluid accumulation in the interstitial space. Pathologically, what type of edema fluid is expected in infected/inflamed tissue?",
-        "options": {
-            "A": "Transudative (low protein) fluid due to hydrostatic changes",
-            "B": "Exudative (high protein) fluid due to increased vascular permeability",
-            "C": "Lymphatic edema due to lymphatic obstruction only",
-            "D": "Osmotic edema from hypoalbuminemia only",
-            "E": "Pitting edema due to deep venous thrombosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2TFKZZ4Y",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with fever, night sweats and weight loss. On examination lymphadenopathy. CT scan showed calcifications. Type of calcification.",
-        "options": {
-            "A": "Metastatic",
-            "B": "Dystrophic",
-            "C": "Mixed",
-            "D": "Myogenic",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Dystrophic Calcification: TB (lung and pericardium), granulomatous infections, liquefactive necrosis, fat necrosis, infarcts, thrombi, schistosomiasis, congenital CMV, toxoplasmosis, rubella, psammoma bodies, CREST syndrome, atherosclerotic plaques. Metastatic Calcification: Kidney, Lung, Gastric mucosa.",
-        "hint": ""
-    },
-    {
-        "id": "MEH98NEX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with ITP after RTA has a thigh laceration. Which factor will delay wound healing?",
-        "options": {
-            "A": "Foreign body",
-            "B": "Vitamin K",
-            "C": "Vitamin C",
-            "D": "Steroids",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Steroids inhibit macrophage activity, fibroblast proliferation, and collagen synthesis -> significantly delays all phases of wound healing.",
-        "hint": ""
-    },
-    {
-        "id": "WYY6ESRE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A postmortem Clot is Most likely found to be resembling with:",
-        "options": {
-            "A": "Chicken Fat",
-            "B": "Butter",
-            "C": "Cheese",
-            "D": "Jelly",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X8BZHM9H",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A researcher studies cells infected with a DNA virus. After infection, the host cells show abnormal replication, altered gene transcription, and loss of normal cell-cycle control. What cellular component is primarily altered by viruses?",
-        "options": {
-            "A": "Cell membrane lipid content",
-            "B": "Host cell DNA",
-            "C": "Mitochondrial ATP production",
-            "D": "Ribosomal protein synthesis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Many viruses-especially DNA viruses and retroviruses-integrate into or modify host cell DNA, leading to altered gene expression, uncontrolled proliferation.",
-        "hint": ""
-    },
-    {
-        "id": "TZTFPM27",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A scientist observes cell under light microscopy, a cell shows chromatin condensation, shrinkage and cytoplasmic blebs, the findings are most likely characteristics of which of the following?",
-        "options": {
-            "A": "Reversible cell injury",
-            "B": "Necrosis",
-            "C": "Irreversible cell injury",
-            "D": "Apoptosis",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GSZH54W2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A virologist is studying how certain viruses contribute to cancer development. She notes that some viruses cause mutations leading to activation of proto-oncogenes. Which of the following best describes this mechanism?",
-        "options": {
-            "A": "Viral DNA integrates and inactivates tumor suppressor genes only",
-            "B": "Viruses cause epigenetic silencing of oncogenes",
-            "C": "Viruses induce mutations that convert proto-oncogenes to oncogenes promoting uncontrolled cell growth.",
-            "D": "Viral infrction causes immune mediated tumor regression",
-            "E": "Viruses induce cell apoptosis through p53 activation"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "54CJMLG3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "All of the following causes cell damage by one or another way, which of the following is commonly occurs in ischemic, toxic and radiation injury?",
-        "options": {
-            "A": "ATP depletion",
-            "B": "ROS production",
-            "C": "Protein Accumulation",
-            "D": "ATP depletion",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4SSQNZPA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning",
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Allograft is:",
-        "options": {
-            "A": "From same species of animals",
-            "B": "From identical twin",
-            "C": "From different species of animals",
-            "D": "Self to self",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Autograft (self to self). Allograft - Graft between genetically different individual of same specie. Synergetic graft (Isograft) - graft between identical twin.",
-        "hint": ""
-    },
-    {
-        "id": "HSLYMTWK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Amorphous densities in mitochondria on electron microscopy are characteristic feature of:",
-        "options": {
-            "A": "Reversible cell injury",
-            "B": "Irreversible cell injury",
-            "C": "Apoptosis",
-            "D": "Fatty change",
-            "E": "Cellular adaptation"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z97CWPUL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Apoptosis DNA pattern",
-        "options": {
-            "A": "Step ladder pattern",
-            "B": "Smear pattern",
-            "C": "Loading phase",
-            "D": "Programmed decrease",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Apoptosis shows characteristic DNA fragmentation, visible as a step-ladder pattern on gel electrophoresis. This distinguishes it from necrosis (smear pattern).",
-        "hint": ""
-    },
-    {
-        "id": "PEARZAF2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Apoptosis shows characteristic:",
-        "options": {
-            "A": "Step ladder pattern",
-            "B": "Smear pattern",
-            "C": "Loading phase",
-            "D": "Programmed decrease",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Apoptosis shows characteristic DNA fragmentation, visible as a step-ladder pattern on gel electrophoresis. This distinguishes it from necrosis (smear pattern).",
-        "hint": ""
-    },
-    {
-        "id": "4QWZNDH4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Caspases are activated in which process?",
-        "options": {
-            "A": "Apoptosis",
-            "B": "Necrosis",
-            "C": "Irreversible cell injury",
-            "D": "Reversible cell injury",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Caspases are proteases that orchestrate programmed cell death (apoptosis).",
-        "hint": ""
-    },
-    {
-        "id": "939WF229",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Caspases are mainly involved in which cellular process?",
-        "options": {
-            "A": "Apoptosis",
-            "B": "Necrosis",
-            "C": "Cell injury",
-            "D": "Inflammation",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RG2WD4PP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cellular injury mediated by excessive reactive oxygen species (ROS) is primarily characterized by which type of damage?",
-        "options": {
-            "A": "DNA strand breaks",
-            "B": "Lipid peroxidation of membranes",
-            "C": "Protein cross-linking",
-            "D": "Mitochondrial swelling",
-            "E": "Lysosomal rupture"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2SKYGAXY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cellular swelling in hypoxia occurs due to:",
-        "options": {
-            "A": "Intracellular water accumulation",
-            "B": "Intracellular lipid accumulation",
-            "C": "Intracellular fat accumulation",
-            "D": "Increased ribosomal activity",
-            "E": "Cytoskeletal protein synthesis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YXNEYCBY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Chemotherapy advised for a cancer. Tumour size shrink by?",
-        "options": {
-            "A": "Necrosis",
-            "B": "Phagocytosis",
-            "C": "Apoptosis",
-            "D": "Atrophy",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W9P2W8MC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Congenital cataract is caused by which of the following causative agent?",
-        "options": {
-            "A": "CMV",
-            "B": "Syphilis",
-            "C": "Rubella",
-            "D": "Herpes simplex",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U5RPEFR3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "CRP, Ceruloplasmin and heptoglobin are example of:",
-        "options": {
-            "A": "Chronic phase reactants",
-            "B": "Negative phase reactants",
-            "C": "Acute phase reactants",
-            "D": "Biological markers",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SF7XGW8H",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Defination of desmoplasia:",
-        "options": {
-            "A": "Metastasis involvement of surrounding tissues",
-            "B": "Non neoplastic proliferation of fibrous connective tissue",
-            "C": "Change of one epithelium to another",
-            "D": "Increase in Cell Size",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KWVTVXF3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "DNA sequence is composed of",
-        "options": {
-            "A": "Nitrogenous bases + Sugar + Phosphate",
-            "B": "Nitrogenous bases only",
-            "C": "Sugar + Phosphate",
-            "D": "Amino acids",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TUPZQVQH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Earliest sign of reversible cell injury:",
-        "options": {
-            "A": "Hydropic changes",
-            "B": "Myelin figures",
-            "C": "Pyknosis",
-            "D": "Cell membrane damage",
-            "E": "Lysosome Rupture"
-        },
-        "correctAnswer": "A",
-        "explanation": "(Robins)",
-        "hint": ""
-    },
-    {
-        "id": "LQJKYSAN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Early tensile strengthening of wound by which type of collagen?",
-        "options": {
-            "A": "Collagen 3",
-            "B": "Collagen 2",
-            "C": "Collagen 1",
-            "D": "Collagen 4",
-            "E": "Collagen 5"
-        },
-        "correctAnswer": "A",
-        "explanation": "Early wound healing + granulation tissue - Type 3 collagen. Late wound healing + wound strength - Type 1 collagen",
-        "hint": ""
-    },
-    {
-        "id": "94AYAYP4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "ELISA is used for checking:",
-        "options": {
-            "A": "Proteins",
-            "B": "Amino acids",
-            "C": "Antigens",
-            "D": "Glucose",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "These assays are performed in the wells of plastic microtiter dish the antigen(protein) is bound to the plastic of the dish, the probe used consists of an antibody specific for the particular protein to be measured, the antibody is covalently bound to the enzyme which will produce a colored product when exposed to its substrate the amount of protein (or antibody) in the sample to be tested.",
-        "hint": ""
-    },
-    {
-        "id": "DF8EEWK8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Fluid can be accumulated is the abdominal cavity due to increased hydrostatic pressure or decreased oncotic pressure, what type of fluid is this?",
-        "options": {
-            "A": "Transudative",
-            "B": "Exudative",
-            "C": "Fibrinous",
-            "D": "Serous",
-            "E": "Pus filled"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZJBVEF8Q",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Free radicals and reactive oxygen species target which organelle classicaly?",
-        "options": {
-            "A": "Mitochondria",
-            "B": "Nucleus",
-            "C": "Ribosomes",
-            "D": "Nucleolus",
-            "E": "Cytoskeleton"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9CU5NA6Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Free radicals are produced by which of the following poisoning",
-        "options": {
-            "A": "CCl4",
-            "B": "Ethanol",
-            "C": "Opioids",
-            "D": "Aspirin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "CCl4 produces free radicals and leads to hepatocytes damage.",
-        "hint": ""
-    },
-    {
-        "id": "4KV4TBFZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Free radicals are produced by which of the following poisoning:",
-        "options": {
-            "A": "CCl4",
-            "B": "Ethanol",
-            "C": "Opioids",
-            "D": "Aspirin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "CCl4 produces free radicals and leads to hepatocytes damage",
-        "hint": ""
-    },
-    {
-        "id": "WDV9YLVB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Free radicals primarily cause damage to which cellular component?",
-        "options": {
-            "A": "Endoplasmic reticulum",
-            "B": "DNA",
-            "C": "Ribosomes",
-            "D": "Lysosomes",
-            "E": "Mitochondria"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ATRS9AEW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "How do oncogenic viruses primarily cause cancer?",
-        "options": {
-            "A": "By inhibiting protein synthesis",
-            "B": "By integrating viral DNA into host genome and disrupting cell cycle control",
-            "C": "By causing chronic inflammation",
-            "D": "By destroying host ribosomes",
-            "E": "By inducing autoimmune reactions"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CZ5XR69S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hypoxic cell injury features?",
-        "options": {
-            "A": "↓ Na+/K+ ATPase",
-            "B": "↓ Na+",
-            "C": "↓ Ca2+",
-            "D": "↓ pH",
-            "E": "↓ ATP"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GRR5GSNN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In a leukemia patient undergoing chemotherapy, tumor cells decrease in size due to?",
-        "options": {
-            "A": "Apoptosis",
-            "B": "Lysosomes",
-            "C": "Necrosis",
-            "D": "Metaplasia",
-            "E": "Atrophy"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HGD6DPUZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning",
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In hypertrophic obstructive cardiomyopathy (HOCM), what hemodynamic changes are seen?",
-        "options": {
-            "A": "Increased SV and increased diastolic filling",
-            "B": "Increased SV and decreased diastolic filling",
-            "C": "Decreased SV and decreased diastolic filling",
-            "D": "Decreased SV and increased diastolic filling",
-            "E": "C"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9SBP7ZGV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 05/25 - May 14 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In which of the following conditions a tissue cannot utilize oxygen regardless of being provided with enough oxygen",
-        "options": {
-            "A": "Hypoventilation",
-            "B": "Cyanide poisoning",
-            "C": "CO poisoning",
-            "D": "Methanol poisoning",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "49LHSDHM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Inorganic ion causing cancer",
-        "options": {
-            "A": "Iron",
-            "B": "Zinc",
-            "C": "Asbestos",
-            "D": "Silicosis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Asbestos fibers are carcinogenic, associated with mesothelioma and lung cancer.",
-        "hint": ""
-    },
-    {
-        "id": "E2YDECL9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ischemia-reperfusion injury and radiation damage both primarily occur due to:",
-        "options": {
-            "A": "Excess ATP formation",
-            "B": "Reactive oxygen species (ROS) generation",
-            "C": "Increased protein synthesis",
-            "D": "Membrane cholesterol accumulation",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Ischemia-reperfusion and ionizing radiation produce free radicals (ROS) -> lipid peroxidation, DNA breaks, and protein damage.",
-        "hint": ""
-    },
-    {
-        "id": "CBEBJQX3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Mechanism of rigor Mortis:",
-        "options": {
-            "A": "Anaerobic glycolysis",
-            "B": "Gluconeogenesis",
-            "C": "ATP depletion",
-            "D": "Glycogenolysis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "After death no oxygen -> No ATP -> Calcium ions diffuses into the cells -> Calcium binds with Troponin -> Cross bridges between actin and myosin.",
-        "hint": ""
-    },
-    {
-        "id": "9NEPFURG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Microscopic examination shows nuclear shrinkage and chromatin condensation in a dying cell. This finding is termed:",
-        "options": {
-            "A": "Pyknosis",
-            "B": "Karyorrhexis",
-            "C": "Karyolysis",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Pyknosis = nuclear shrinkage and chromatin condensation. Karyorrhexis = nuclear fragmentation. Karyolysis = nuclear dissolution.",
-        "hint": ""
-    },
-    {
-        "id": "ZEGAD64G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most important beneficial function of apoptosis",
-        "options": {
-            "A": "Prevent crowding of cells",
-            "B": "Embryologically destroyed cells",
-            "C": "Chemotherapy uses",
-            "D": "Remove mutant cells",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Apoptosis eliminates mutant or damaged cells -> prevents malignancy. Critical for tissue homeostasis and tumor suppression.",
-        "hint": ""
-    },
-    {
-        "id": "5MBFPSRN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most reliable sign of Irreversible cell injury",
-        "options": {
-            "A": "Cell membrane damage",
-            "B": "Mitochondrial damage",
-            "C": "Pyknosis",
-            "D": "Autophagy of cell",
-            "E": "Massive Ca influx"
-        },
-        "correctAnswer": "A",
-        "explanation": "(Prefer cell membrane damage)",
-        "hint": ""
-    },
-    {
-        "id": "TGPWXCEG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Mutations in proto oncogene are associated with various malignancies. What are proto oncogenes?",
-        "options": {
-            "A": "Normal genes promoting cell proliferation",
-            "B": "Mutated genes promoting cell proliferation",
-            "C": "Normal genes promoting cell death",
-            "D": "Mutated genes promoting cell death",
-            "E": "Mutated genes interfering apoptosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EXW58QP7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Necrosis of solid organ with superimposed infection",
-        "options": {
-            "A": "Dry gangrene",
-            "B": "Fat necrosis",
-            "C": "Caseous necrosis",
-            "D": "Gangrenous coagulative necrosis",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Gangrenous coagulative necrosis: ischemic death of tissue followed by secondary bacterial infection. Common in limb or solid organ infarction.",
-        "hint": ""
-    },
-    {
-        "id": "F78NT55Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "p53 acts as guardian of genomE- It is disrupted by:",
-        "options": {
-            "A": "Cell wall Damage",
-            "B": "RNA damage",
-            "C": "DNA damage",
-            "D": "Lipid peroxidation",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TFQJWSWW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pleiomorphic adenoma, the most common benign tumor of the salivary glands, arises from which germ layer?",
-        "options": {
-            "A": "Benign tumor of endodermal origin",
-            "B": "Benign tumor of ectodermal origin",
-            "C": "Benign tumor of mesodermal origin",
-            "D": "Benign tumor of mixed origin",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "H63CPRQ7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Gynecology - 05/25 - May 14 - Morning",
-            "Medicine - 05/25 - May 12 - Morning",
-            "Radiology - 05/25 - May 12 - Afternoon",
-            "Surgery - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Proto oncogene is defined as",
-        "options": {
-            "A": "Abnormal gene cause cell proliferation",
-            "B": "Abnormal gene cause cell Suppression",
-            "C": "Normal gene cause cell proliferation",
-            "D": "Normal gene cause cell Suppression",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5MHY6RPX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Seen in apoptosis on cellular level?",
-        "options": {
-            "A": "Fragmented RBCs smear",
-            "B": "Spiral DNA",
-            "C": "Proteolysis of caspases",
-            "D": "Ladder pattern DNA",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M8S8G99Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The absorption of most orally administered drugs from the GIT follows?",
-        "options": {
-            "A": "Zero order kinetics",
-            "B": "First order kinetics",
-            "C": "Mixed order kinetics",
-            "D": "Nonlinear kinetics",
-            "E": "B"
-        },
-        "correctAnswer": "",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PXEKQMAB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The process of apoptosis is loss during the carcinogenic activity the following factor has antiapoptotic activity is:",
-        "options": {
-            "A": "BCL2",
-            "B": "BCL1",
-            "C": "BAX",
-            "D": "PKL",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WC8JKLGL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tp53 kill",
-        "options": {
-            "A": "DNA damage cell",
-            "B": "RNA damage cell",
-            "C": "Kill proteins",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CH6FXC8R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tumor metastasis due to:",
-        "options": {
-            "A": "Migration",
-            "B": "Degradation of extracellular matrix",
-            "C": "Degradation of E cadherin",
-            "D": "Loss of cell shape",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9KXMK8P7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tumor suppress gene:",
-        "options": {
-            "A": "BCL2",
-            "B": "APC",
-            "C": "P53",
-            "D": "BRCA",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VQMUS8YR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tumor Suppressor gene:",
-        "options": {
-            "A": "TP53",
-            "B": "KRAS",
-            "C": "BCL-2",
-            "D": "ABL",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "789C5AB8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Upon Postmortem autopsy, a patient was having a thrombus this is seen in:",
-        "options": {
-            "A": "Chicken fat supernatant",
-            "B": "Pre mortem thrombus",
-            "C": "Post mortem thrombus",
-            "D": "Chicken lipid thrombus",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "• Line of Zahn seen in: • Coraline Thrombus • Pre mortem Thrombus • Arterial Thrombus • Chicken Fat Appearance seen in PostMortem Thrombus",
-        "hint": ""
-    },
-    {
-        "id": "X65UHYB7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Virus causes cancer by alteration in:",
-        "options": {
-            "A": "DNA",
-            "B": "Oncogene",
-            "C": "RNA",
-            "D": "Proto-oncogene",
-            "E": "Protein"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2JBHP7NH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Viruses can cause tumors due to mutation in which gene?",
-        "options": {
-            "A": "Oncogene",
-            "B": "Proto-oncogene",
-            "C": "Tumor suppressor gene",
-            "D": "NK cells",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Viral oncogenesis involves activation of proto-oncogenes or inactivation of tumor suppressor genes, leading to uncontrolled proliferation.",
-        "hint": ""
-    },
-    {
-        "id": "VK8EWFQX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Viruses can cause tumors through mutation in which gene?",
-        "options": {
-            "A": "Oncogene",
-            "B": "Proto-oncogene",
-            "C": "Tumor suppressor gene",
-            "D": "NK cells",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Viral oncogenesis involves activation of proto-oncogenes or inactivation of tumor suppressor genes, leading to uncontrolled proliferation.",
-        "hint": ""
-    },
-    {
         "id": "THH3KZKH",
         "year": [
             "2025"
@@ -5418,6 +5088,33 @@
             "E": "Atrophy"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JMUDA4SG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following best describes mutations affecting tumor suppressor genes?",
+        "options": {
+            "A": "Gain of function mutation",
+            "B": "Loss of function mutation",
+            "C": "Silent mutation",
+            "D": "Frameshift only",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -5478,6 +5175,33 @@
         "hint": ""
     },
     {
+        "id": "HKJ8DDBW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following describes metaplasia?",
+        "options": {
+            "A": "Replacement of one adult epithelium type by another",
+            "B": "Dysplasia of epithelium",
+            "C": "Hyperplasia of epithelium",
+            "D": "Neoplasia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MK7TMW6C",
         "year": [
             "2025"
@@ -5528,6 +5252,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UZ25NKHC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is a feature of reversible cell injury?",
+        "options": {
+            "A": "Plasma membrane rupture",
+            "B": "Karyolysis",
+            "C": "Cellular swelling (hydropic change)",
+            "D": "Membrane disruption with leakage of cellular enzymes",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -5725,6 +5476,147 @@
         "hint": ""
     },
     {
+        "id": "JHBFL2V6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the initial step in the execution of Cell Injury?",
+        "options": {
+            "A": "Overexpression of BCL-2",
+            "B": "Release of cytochrome-c from mitochondria",
+            "C": "Activation of caspases",
+            "D": "DNA fragmentation",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BQAP3QLT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the most likely cause of localized edema?",
+        "options": {
+            "A": "Nephrotic syndrome",
+            "B": "Congestive heart failure",
+            "C": "Liver cirrhosis",
+            "D": "Malignancy or infection causing lymphatic obstruction/inflammation",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Localized edema is confined to a specific tissue bed or limb and is caused by localized factors like lymphatic blockade (lymphedema) or local vascular inflammation",
+        "hint": ""
+    },
+    {
+        "id": "EMF2LALC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the primary initiator of P53 activation?",
+        "options": {
+            "A": "Cell wall damage",
+            "B": "Cell membrane damage",
+            "C": "ATP depletion",
+            "D": "Mitochondrial damage",
+            "E": "DNA damage"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "V9XKX5BJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning",
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the prominent step in irreversible cell injury?",
+        "options": {
+            "A": "Cell membrane damage",
+            "B": "Massive Calcium influx",
+            "C": "Cellular Swelling",
+            "D": "Mitochondrial swelling",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W5GCTDRZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following organs is a classic example where a hemorrhagic (or red) infarct occurs?",
+        "options": {
+            "A": "Spleen",
+            "B": "Kidney",
+            "C": "Brain",
+            "D": "Liver",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Red vs. Pale: Red (hemorrhagic) infarcts occur in loose tissues with dual blood supplies (lungs, liver, intestine). Pale infarcts occur in solid organs with single end-arteries (heart, kidney).",
+        "hint": ""
+    },
+    {
         "id": "5FYQ4KKF",
         "year": [
             "2025"
@@ -5749,6 +5641,114 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KYSZA5RJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which organ is most likely to \"escape\" ischemic damage due to vascular obstruction?",
+        "options": {
+            "A": "Spleen",
+            "B": "Liver",
+            "C": "Kidney",
+            "D": "Brain",
+            "E": "Heart"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HKSH6K9S",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which process is most likely associated with a \"smear pattern\" on histopathology?",
+        "options": {
+            "A": "Inflammation",
+            "B": "Necrosis",
+            "C": "Infection",
+            "D": "Hyperplasia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BVM29NNJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which technique uses labeled antibodies to identify specific antigens within a tissue section?",
+        "options": {
+            "A": "Flow Cytometry",
+            "B": "Western Blot",
+            "C": "PCR",
+            "D": "Immunohistochemistry",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RDDRV7EF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which type of fluid is typically produced due to increased hydrostatic pressure?",
+        "options": {
+            "A": "Transudate",
+            "B": "Serous fluid",
+            "C": "Exudate",
+            "D": "Hemorrhagic fluid",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Transudates result from increased hydrostatic pressure or decreased oncotic pressure. They are low in protein and inflammatory cells, unlike exudates.",
         "hint": ""
     }
 ]

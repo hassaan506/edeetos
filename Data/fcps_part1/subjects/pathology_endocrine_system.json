@@ -1,64 +1,29 @@
 [
     {
-        "id": "Q7R24S7B",
+        "id": "J2BJD8VF",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "After thyroidectomy of a patient, the histology of excised tissue shows encapsulated mass. Considering the metastasis through invasion, Most likely primary lesion is?",
-        "options": {
-            "A": "Follicular carcinoma",
-            "B": "Papillary carcinoma",
-            "C": "Medullary carcinoma",
-            "D": "Anaplastic carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The description \"encapsulated\" often points toward Follicular carcinoma, which is typically a single nodule confined by a capsule, though invasive. The question structure then links this to the mode of metastasis, which is hematogenous for Follicular.",
-        "hint": ""
-    },
-    {
-        "id": "VZAHTXDU",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Gynecology & Obstetrics",
             "Medicine & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Anesthesia - 08/25 - August 4 - Morning",
-            "Medicine - 11/25 - November 14 - Evening"
+            "Medicine - 08/25 - August 6 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Which of the following is the tumor marker of Medullary CA?",
+        "question": "A 12 year old boy presents with polyuria, polydipsia, and weight loss. Laboratory tests reveal hyperglycemia and positive autoantibodies against pancreatic islet cells. Which of the following antibodies is most specific for Type 1 diabetes mellitus?",
         "options": {
-            "A": "PTHrp",
-            "B": "CA 19 – 9",
-            "C": "Calcitonin",
-            "D": "CA 15 – 5",
-            "E": "ALP"
+            "A": "Anti-glutamic acid decarboxylase (anti-GAD65) antibody",
+            "B": "Anti-thyroid peroxidase antibody",
+            "C": "Anti-nuclear antibody (ANA)",
+            "D": "Anti-insulin receptor antibody",
+            "E": "Anti-mitochondrial antibody"
         },
-        "correctAnswer": "C",
-        "explanation": "Medullary CA: Release calcitonin.",
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -170,6 +135,60 @@
         "hint": ""
     },
     {
+        "id": "GJNFCSWA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 42-year-old woman is diagnosed with a thyroid tumor. Histopathology shows cells with overlapping nuclei containing finely dispersed chromatin (\"Orphan Annie eye\" nuclei) and numerous psammoma bodies. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Papillary carcinoma",
+            "B": "Medullary carcinoma",
+            "C": "Follicular carcinoma",
+            "D": "Anaplastic carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Papillary CA: Associated with radiation. Psammoma bodies and orphan annie eye nucleus. Slow growing. Spread via lymphatic. Best prognosis. Follicular CA: Invade Capsule. Vascular Spread. 2nd Best Prognosis. Medullary CA: Release calcitonin. Aa. NEOPLASIA 278. MEN 1 and men 2 associated. Poor prognosis. Anaplastic CA: Very poor prognosis. Highly undifferentiated.",
+        "hint": ""
+    },
+    {
+        "id": "KCWQ8L7N",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old male presents with complaints of increasing shoe and ring size over the past few years, along with coarse facial features, deepening of the voice, and excessive sweating. On examination, he has prognathism, enlarged hands and feet, and frontal bossing. MRI reveals a pituitary macroadenoma. This tumor is most likely derived from which of the following pituitary cells?",
+        "options": {
+            "A": "Acidophils",
+            "B": "Basophils",
+            "C": "Chromophobes",
+            "D": "Pituicytes",
+            "E": "Gonadotrophs"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MVPCG7VZ",
         "year": [
             "2026"
@@ -197,6 +216,33 @@
         "hint": ""
     },
     {
+        "id": "B8VDT543",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 50-year-old patient had complaint of macroglossia, hyperglycemia and polyuria. MRI shows Tumor of pituitary gland. Which type of group is involved in the origin of this tumour?",
+        "options": {
+            "A": "Thyrotrophs",
+            "B": "Somatotrophs",
+            "C": "Corticotrophs",
+            "D": "Gonadotrophs",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "AHHSZHZU",
         "year": [
             "2026"
@@ -218,6 +264,33 @@
             "C": "Direct invasion into trachea",
             "D": "Perineural invasion",
             "E": "Spread through thoracic duct"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T9AF29YP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 52-year-old man presents with fatigue, arthralgias, and darkening of the skin. Laboratory studies show elevated serum ferritin and transferrin saturation. A liver biopsy reveals iron deposition. He is also found to have diabetes mellitus. Which of the following best explains the development of diabetes in this patient?",
+        "options": {
+            "A": "Iron deposition in pancreatic acini",
+            "B": "Iron deposition in pancreatic islets",
+            "C": "Sclerosis of the islets of Langerhans",
+            "D": "Amyloid deposition in the islets",
+            "E": ""
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -274,6 +347,33 @@
             "E": "Pancreas"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XLV8BCZK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58% old man dies suddenly on the 3rd day following an acute MI on autopsy, histological examination of left ventricular myocardium is most likely to show which of the following?",
+        "options": {
+            "A": "Edema, loss of striation",
+            "B": "Transmural collagen deposit",
+            "C": "Lymphocytes",
+            "D": "Necrosis, neutrophils, macrophages",
+            "E": "Perivascular and interstitial amyloid deposit"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -413,6 +513,33 @@
         "hint": ""
     },
     {
+        "id": "9EA8ZWAQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with short stature, protruded mandible and large hands and feet is most likely from the defect of:",
+        "options": {
+            "A": "Acidophilic cells",
+            "B": "Basophils cells",
+            "C": "Granulosa cells",
+            "D": "Goblet cells",
+            "E": "Kupffer cells"
+        },
+        "correctAnswer": "A",
+        "explanation": "Tall stature, protruded mandible (prognathism), and large hands/feet are classic signs of Acromegaly (if after epiphyseal plate closure) or Gigantism (if before). This condition is caused by an overproduction of Growth Hormone (GH) by an adenoma arising from Acidophilic cell in the anterior pituitary.",
+        "hint": ""
+    },
+    {
         "id": "CE4NJQCC",
         "year": [
             "2026"
@@ -433,6 +560,116 @@
             "B": "Follicular carcinoma",
             "C": "Medullary thyroid carcinoma",
             "D": "Anaplastic carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CRC36BT9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a thyroid mass. Biopsy reveals papillary bodies and Orphan Annie eye nuclei. What is the most likely diagnosis?",
+        "options": {
+            "A": "Papillary thyroid carcinoma",
+            "B": "Follicular thyroid carcinoma",
+            "C": "Medullary thyroid carcinoma",
+            "D": "Anaplastic thyroid carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W22VFW7T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a thyroid mass. Biopsy reveals psammoma bodies and Orphan Annie eye nuclei. What is the most likely diagnosis?",
+        "options": {
+            "A": "Papillary thyroid carcinoma",
+            "B": "Follicular thyroid carcinoma",
+            "C": "Medullary thyroid carcinoma",
+            "D": "Anaplastic thyroid carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DVWZLWUY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with chronic kidney disease (CKD) passes away. Autopsy reveals enlarged parathyroid glands. What is the most likely explanation?",
+        "options": {
+            "A": "Primary hyperparathyroidism",
+            "B": "Parathyroid adenoma",
+            "C": "Parathyroid hyperplasia",
+            "D": "Parathyroid carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "In CKD, impaired phosphate excretion and chronic hypocalcemia lead to secondary hyperparathyroidism, causing parathyroid gland hyperplasia.",
+        "hint": ""
+    },
+    {
+        "id": "52CL6WJG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with Hypercalcaemia and squamous cell carcinoma of lung found. Which is responsible for the symptoms?",
+        "options": {
+            "A": "Parathyroid hormone",
+            "B": "ACTH",
+            "C": "Parathyroid hormone related peptide",
+            "D": "TSH",
             "E": ""
         },
         "correctAnswer": "C",
@@ -491,6 +728,33 @@
         },
         "correctAnswer": "D",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TZP3G4VJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient's thyroid lymph node biopsy shows amyloid deposition. Which thyroid cancer is most likely?",
+        "options": {
+            "A": "Papillary carcinoma",
+            "B": "Follicular carcinoma",
+            "C": "Medullary carcinoma",
+            "D": "Anaplastic carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Medullary thyroid carcinoma arises from C cells, which produce calcitonin. Amyloid deposition in the stroma is characteristic. Reference: Robbins & Cotran, Pathology, 10th edition; Harrison's, Endocrinology.",
         "hint": ""
     },
     {
@@ -602,6 +866,90 @@
         "hint": ""
     },
     {
+        "id": "JPQEP7D8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Acromegaly, a disorder characterized by excessive growth hormone production in adulthood, is most commonly caused by a lesion originating from which organ?",
+        "options": {
+            "A": "Hypothalamus",
+            "B": "Adrenal G Cortex",
+            "C": "Pituitary Gland",
+            "D": "Pineal Gland",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Acromegaly is overwhelmingly caused by a Pituitary Adenoma in the anterior lobe that autonomously secretes excessive Growth Hormone.",
+        "hint": ""
+    },
+    {
+        "id": "Q7R24S7B",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After thyroidectomy of a patient, the histology of excised tissue shows encapsulated mass. Considering the metastasis through invasion, Most likely primary lesion is?",
+        "options": {
+            "A": "Follicular carcinoma",
+            "B": "Papillary carcinoma",
+            "C": "Medullary carcinoma",
+            "D": "Anaplastic carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The description \"encapsulated\" often points toward Follicular carcinoma, which is typically a single nodule confined by a capsule, though invasive. The question structure then links this to the mode of metastasis, which is hematogenous for Follicular.",
+        "hint": ""
+    },
+    {
+        "id": "GC668SNH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ectopic ACTH secretion is associated with which type of lung carcinoma?",
+        "options": {
+            "A": "Large cell carcinoma",
+            "B": "Small cell CA of lung",
+            "C": "Adenocarcinoma",
+            "D": "Squamous cell carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "VXVC8PB2",
         "year": [
             "2026"
@@ -683,6 +1031,37 @@
         "hint": ""
     },
     {
+        "id": "3W32BFNM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Follicular CA of thyroid feature is",
+        "options": {
+            "A": "Vascular invasion",
+            "B": "Psammoma bodies",
+            "C": "Lymphatic invasion",
+            "D": "Lymphatic Spread",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "LMFKLKEY",
         "year": [
             "2026"
@@ -706,6 +1085,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7QY9575U",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Histopathological slide made after right lobectomy and isthmusectomy for a solitary thyroid nodule, shows cell balls and amyloid deposits and foci of C cell hyperplasia most likely diagnosis is:",
+        "options": {
+            "A": "Anaplastic carcinoma",
+            "B": "Follicular carcinoma",
+            "C": "Lymphoma",
+            "D": "Medullary carcinoma",
+            "E": "Papillary carcinoma"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -788,6 +1194,89 @@
         },
         "correctAnswer": "D",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2VUZFR8S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hyperthyroid patient with thyroid swelling. Histology shows large columnar cells with little cytoplasm and overlapping nuclei. Diagnosis?",
+        "options": {
+            "A": "Thyroid follicle filled with colloid",
+            "B": "Parafollicular cells",
+            "C": "Hyperplasia",
+            "D": "Hurthle cells",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "(Papillary carcinoma)",
+        "hint": ""
+    },
+    {
+        "id": "VLV8HRXY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hyperthyroidism patient, raised t3 t4, Thyroid swelling ,histo showed large columnar cells with less cytoplasm and overlapping nuclei, histology ??",
+        "options": {
+            "A": "Thyroid follicle/cells Filled with colloid",
+            "B": "Parafollicular cells",
+            "C": "Hyperplasia",
+            "D": "Hurthle cells",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Y54UN84H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Increase Osteoclastic activity is mainly due to?",
+        "options": {
+            "A": "Thyroid",
+            "B": "PTH",
+            "C": "Cortisol",
+            "D": "Vitamin D",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "(PTH) is the primary hormone that stimulates osteoclast activity (bone resorption) indirectly, to increase serum calcium levels.",
         "hint": ""
     },
     {
@@ -950,851 +1439,6 @@
         },
         "correctAnswer": "C",
         "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7LJKGNX4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Thyroid carcinoma that spreads hematogenously to bone is:",
-        "options": {
-            "A": "Papillary",
-            "B": "Medullary",
-            "C": "Anaplastic",
-            "D": "Follicular",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2KC38W8E",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tumor marker for medullary Ca of thyroid gland:",
-        "options": {
-            "A": "Calcium",
-            "B": "PTH",
-            "C": "Alp",
-            "D": "CA 19-9",
-            "E": "Calcitonin"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "A8FGPTTU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which feature differentiates follicular adenoma from follicular carcinoma of the thyroid?",
-        "options": {
-            "A": "Increased mitotic activity",
-            "B": "Cellular pleomorphism",
-            "C": "Nuclear atypia",
-            "D": "Capsular and/or vascular invasion",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3ZT7Y3XG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which finding strongly suggests follicular carcinoma of thyroid?",
-        "options": {
-            "A": "Capsular/vascular invasion",
-            "B": "Presence of colloid",
-            "C": "Well-defined capsule",
-            "D": "Hürthle cell change",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5TEW4ECQ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which immunohistochemical marker is used to identify thyroid tissue?",
-        "options": {
-            "A": "Myeloperoxidase",
-            "B": "CD79a",
-            "C": "Thyroglobulin",
-            "D": "Toluidine blue",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MG4VWNEL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which immunohistochemical stain is used for thyroid tissue?",
-        "options": {
-            "A": "Thyroglobulin",
-            "B": "CD79",
-            "C": "HER2",
-            "D": "Toluidine blue",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7ZHH6945",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which thyroid carcinoma is classically associated with elevated calcitonin levels?",
-        "options": {
-            "A": "Papillary carcinoma",
-            "B": "Follicular carcinoma",
-            "C": "Medullary thyroid carcinoma (MTC)",
-            "D": "Anaplastic carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MT6U2Y6V",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which thyroid carcinoma is most commonly associated with endemic goiter?",
-        "options": {
-            "A": "Papillary",
-            "B": "Basal cell carcinoma",
-            "C": "Medullary",
-            "D": "Follicular",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XVZ843WZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which tumor marker is most specific for differentiated thyroid carcinoma?",
-        "options": {
-            "A": "Calcitonin",
-            "B": "CEA",
-            "C": "Thyroglobulin",
-            "D": "PSA",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "J8AFFE4V",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which tumor of the pancreas most commonly secretes excess insulin causing hypoglycemia?",
-        "options": {
-            "A": "Vipoma",
-            "B": "Gastrinoma",
-            "C": "Glucagonoma",
-            "D": "Insulinoma",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P6U2KU2E",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which type of thyroid carcinoma has the least tendency for early distant metastasis and is often associated with lymphatic spread?",
-        "options": {
-            "A": "Papillary",
-            "B": "Follicular",
-            "C": "Medullary",
-            "D": "Anaplastic",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4ACCJ9RB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which type of thyroid carcinoma is characterized by slow progression and a good prognosis?",
-        "options": {
-            "A": "Anaplastic carcinoma",
-            "B": "Medullary carcinoma",
-            "C": "Papillary thyroid carcinoma",
-            "D": "Follicular thyroid carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "J2BJD8VF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 12 year old boy presents with polyuria, polydipsia, and weight loss. Laboratory tests reveal hyperglycemia and positive autoantibodies against pancreatic islet cells. Which of the following antibodies is most specific for Type 1 diabetes mellitus?",
-        "options": {
-            "A": "Anti-glutamic acid decarboxylase (anti-GAD65) antibody",
-            "B": "Anti-thyroid peroxidase antibody",
-            "C": "Anti-nuclear antibody (ANA)",
-            "D": "Anti-insulin receptor antibody",
-            "E": "Anti-mitochondrial antibody"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GJNFCSWA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 42-year-old woman is diagnosed with a thyroid tumor. Histopathology shows cells with overlapping nuclei containing finely dispersed chromatin (\"Orphan Annie eye\" nuclei) and numerous psammoma bodies. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Papillary carcinoma",
-            "B": "Medullary carcinoma",
-            "C": "Follicular carcinoma",
-            "D": "Anaplastic carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Papillary CA: Associated with radiation. Psammoma bodies and orphan annie eye nucleus. Slow growing. Spread via lymphatic. Best prognosis. Follicular CA: Invade Capsule. Vascular Spread. 2nd Best Prognosis. Medullary CA: Release calcitonin. Aa. NEOPLASIA 278. MEN 1 and men 2 associated. Poor prognosis. Anaplastic CA: Very poor prognosis. Highly undifferentiated.",
-        "hint": ""
-    },
-    {
-        "id": "KCWQ8L7N",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old male presents with complaints of increasing shoe and ring size over the past few years, along with coarse facial features, deepening of the voice, and excessive sweating. On examination, he has prognathism, enlarged hands and feet, and frontal bossing. MRI reveals a pituitary macroadenoma. This tumor is most likely derived from which of the following pituitary cells?",
-        "options": {
-            "A": "Acidophils",
-            "B": "Basophils",
-            "C": "Chromophobes",
-            "D": "Pituicytes",
-            "E": "Gonadotrophs"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B8VDT543",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 50-year-old patient had complaint of macroglossia, hyperglycemia and polyuria. MRI shows Tumor of pituitary gland. Which type of group is involved in the origin of this tumour?",
-        "options": {
-            "A": "Thyrotrophs",
-            "B": "Somatotrophs",
-            "C": "Corticotrophs",
-            "D": "Gonadotrophs",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T9AF29YP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 52-year-old man presents with fatigue, arthralgias, and darkening of the skin. Laboratory studies show elevated serum ferritin and transferrin saturation. A liver biopsy reveals iron deposition. He is also found to have diabetes mellitus. Which of the following best explains the development of diabetes in this patient?",
-        "options": {
-            "A": "Iron deposition in pancreatic acini",
-            "B": "Iron deposition in pancreatic islets",
-            "C": "Sclerosis of the islets of Langerhans",
-            "D": "Amyloid deposition in the islets",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XLV8BCZK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58% old man dies suddenly on the 3rd day following an acute MI on autopsy, histological examination of left ventricular myocardium is most likely to show which of the following?",
-        "options": {
-            "A": "Edema, loss of striation",
-            "B": "Transmural collagen deposit",
-            "C": "Lymphocytes",
-            "D": "Necrosis, neutrophils, macrophages",
-            "E": "Perivascular and interstitial amyloid deposit"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9EA8ZWAQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with short stature, protruded mandible and large hands and feet is most likely from the defect of:",
-        "options": {
-            "A": "Acidophilic cells",
-            "B": "Basophils cells",
-            "C": "Granulosa cells",
-            "D": "Goblet cells",
-            "E": "Kupffer cells"
-        },
-        "correctAnswer": "A",
-        "explanation": "Tall stature, protruded mandible (prognathism), and large hands/feet are classic signs of Acromegaly (if after epiphyseal plate closure) or Gigantism (if before). This condition is caused by an overproduction of Growth Hormone (GH) by an adenoma arising from Acidophilic cell in the anterior pituitary.",
-        "hint": ""
-    },
-    {
-        "id": "CRC36BT9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a thyroid mass. Biopsy reveals papillary bodies and Orphan Annie eye nuclei. What is the most likely diagnosis?",
-        "options": {
-            "A": "Papillary thyroid carcinoma",
-            "B": "Follicular thyroid carcinoma",
-            "C": "Medullary thyroid carcinoma",
-            "D": "Anaplastic thyroid carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W22VFW7T",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a thyroid mass. Biopsy reveals psammoma bodies and Orphan Annie eye nuclei. What is the most likely diagnosis?",
-        "options": {
-            "A": "Papillary thyroid carcinoma",
-            "B": "Follicular thyroid carcinoma",
-            "C": "Medullary thyroid carcinoma",
-            "D": "Anaplastic thyroid carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DVWZLWUY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with chronic kidney disease (CKD) passes away. Autopsy reveals enlarged parathyroid glands. What is the most likely explanation?",
-        "options": {
-            "A": "Primary hyperparathyroidism",
-            "B": "Parathyroid adenoma",
-            "C": "Parathyroid hyperplasia",
-            "D": "Parathyroid carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "In CKD, impaired phosphate excretion and chronic hypocalcemia lead to secondary hyperparathyroidism, causing parathyroid gland hyperplasia.",
-        "hint": ""
-    },
-    {
-        "id": "52CL6WJG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with Hypercalcaemia and squamous cell carcinoma of lung found. Which is responsible for the symptoms?",
-        "options": {
-            "A": "Parathyroid hormone",
-            "B": "ACTH",
-            "C": "Parathyroid hormone related peptide",
-            "D": "TSH",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TZP3G4VJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient's thyroid lymph node biopsy shows amyloid deposition. Which thyroid cancer is most likely?",
-        "options": {
-            "A": "Papillary carcinoma",
-            "B": "Follicular carcinoma",
-            "C": "Medullary carcinoma",
-            "D": "Anaplastic carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Medullary thyroid carcinoma arises from C cells, which produce calcitonin. Amyloid deposition in the stroma is characteristic. Reference: Robbins & Cotran, Pathology, 10th edition; Harrison's, Endocrinology.",
-        "hint": ""
-    },
-    {
-        "id": "JPQEP7D8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Acromegaly, a disorder characterized by excessive growth hormone production in adulthood, is most commonly caused by a lesion originating from which organ?",
-        "options": {
-            "A": "Hypothalamus",
-            "B": "Adrenal G Cortex",
-            "C": "Pituitary Gland",
-            "D": "Pineal Gland",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Acromegaly is overwhelmingly caused by a Pituitary Adenoma in the anterior lobe that autonomously secretes excessive Growth Hormone.",
-        "hint": ""
-    },
-    {
-        "id": "GC668SNH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ectopic ACTH secretion is associated with which type of lung carcinoma?",
-        "options": {
-            "A": "Large cell carcinoma",
-            "B": "Small cell CA of lung",
-            "C": "Adenocarcinoma",
-            "D": "Squamous cell carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3W32BFNM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon",
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Follicular CA of thyroid feature is",
-        "options": {
-            "A": "Vascular invasion",
-            "B": "Psammoma bodies",
-            "C": "Lymphatic invasion",
-            "D": "Lymphatic Spread",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7QY9575U",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Histopathological slide made after right lobectomy and isthmusectomy for a solitary thyroid nodule, shows cell balls and amyloid deposits and foci of C cell hyperplasia most likely diagnosis is:",
-        "options": {
-            "A": "Anaplastic carcinoma",
-            "B": "Follicular carcinoma",
-            "C": "Lymphoma",
-            "D": "Medullary carcinoma",
-            "E": "Papillary carcinoma"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2VUZFR8S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hyperthyroid patient with thyroid swelling. Histology shows large columnar cells with little cytoplasm and overlapping nuclei. Diagnosis?",
-        "options": {
-            "A": "Thyroid follicle filled with colloid",
-            "B": "Parafollicular cells",
-            "C": "Hyperplasia",
-            "D": "Hurthle cells",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "(Papillary carcinoma)",
-        "hint": ""
-    },
-    {
-        "id": "VLV8HRXY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hyperthyroidism patient, raised t3 t4, Thyroid swelling ,histo showed large columnar cells with less cytoplasm and overlapping nuclei, histology ??",
-        "options": {
-            "A": "Thyroid follicle/cells Filled with colloid",
-            "B": "Parafollicular cells",
-            "C": "Hyperplasia",
-            "D": "Hurthle cells",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y54UN84H",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Morning",
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Increase Osteoclastic activity is mainly due to?",
-        "options": {
-            "A": "Thyroid",
-            "B": "PTH",
-            "C": "Cortisol",
-            "D": "Vitamin D",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "(PTH) is the primary hormone that stimulates osteoclast activity (bone resorption) indirectly, to increase serum calcium levels.",
         "hint": ""
     },
     {
@@ -1964,6 +1608,168 @@
         "hint": ""
     },
     {
+        "id": "7LJKGNX4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Thyroid carcinoma that spreads hematogenously to bone is:",
+        "options": {
+            "A": "Papillary",
+            "B": "Medullary",
+            "C": "Anaplastic",
+            "D": "Follicular",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2KC38W8E",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tumor marker for medullary Ca of thyroid gland:",
+        "options": {
+            "A": "Calcium",
+            "B": "PTH",
+            "C": "Alp",
+            "D": "CA 19-9",
+            "E": "Calcitonin"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "A8FGPTTU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which feature differentiates follicular adenoma from follicular carcinoma of the thyroid?",
+        "options": {
+            "A": "Increased mitotic activity",
+            "B": "Cellular pleomorphism",
+            "C": "Nuclear atypia",
+            "D": "Capsular and/or vascular invasion",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3ZT7Y3XG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which finding strongly suggests follicular carcinoma of thyroid?",
+        "options": {
+            "A": "Capsular/vascular invasion",
+            "B": "Presence of colloid",
+            "C": "Well-defined capsule",
+            "D": "Hürthle cell change",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5TEW4ECQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which immunohistochemical marker is used to identify thyroid tissue?",
+        "options": {
+            "A": "Myeloperoxidase",
+            "B": "CD79a",
+            "C": "Thyroglobulin",
+            "D": "Toluidine blue",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MG4VWNEL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which immunohistochemical stain is used for thyroid tissue?",
+        "options": {
+            "A": "Thyroglobulin",
+            "B": "CD79",
+            "C": "HER2",
+            "D": "Toluidine blue",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZXDJ2NAX",
         "year": [
             "2025"
@@ -1988,6 +1794,38 @@
         },
         "correctAnswer": "C",
         "explanation": "(FA +Pathoma). Small Cell CA - Smoking + Most aggressive + Ectopic ACTH (Cushing syndrome) + Lambert Eaton syndrome + SIADH. Squamous Cell CA Smoking + Hypercalcemia (PTHrp). Ectopic thyroid produce by - Squamous Cell CA of Larynx.",
+        "hint": ""
+    },
+    {
+        "id": "VZAHTXDU",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the tumor marker of Medullary CA?",
+        "options": {
+            "A": "PTHrp",
+            "B": "CA 19 – 9",
+            "C": "Calcitonin",
+            "D": "CA 15 – 5",
+            "E": "ALP"
+        },
+        "correctAnswer": "C",
+        "explanation": "Medullary CA: Release calcitonin.",
         "hint": ""
     },
     {
@@ -2045,6 +1883,60 @@
         "hint": ""
     },
     {
+        "id": "7ZHH6945",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which thyroid carcinoma is classically associated with elevated calcitonin levels?",
+        "options": {
+            "A": "Papillary carcinoma",
+            "B": "Follicular carcinoma",
+            "C": "Medullary thyroid carcinoma (MTC)",
+            "D": "Anaplastic carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MT6U2Y6V",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which thyroid carcinoma is most commonly associated with endemic goiter?",
+        "options": {
+            "A": "Papillary",
+            "B": "Basal cell carcinoma",
+            "C": "Medullary",
+            "D": "Follicular",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DJ7ZCPXS",
         "year": [
             "2025"
@@ -2072,6 +1964,60 @@
         "hint": ""
     },
     {
+        "id": "XVZ843WZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which tumor marker is most specific for differentiated thyroid carcinoma?",
+        "options": {
+            "A": "Calcitonin",
+            "B": "CEA",
+            "C": "Thyroglobulin",
+            "D": "PSA",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "J8AFFE4V",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which tumor of the pancreas most commonly secretes excess insulin causing hypoglycemia?",
+        "options": {
+            "A": "Vipoma",
+            "B": "Gastrinoma",
+            "C": "Glucagonoma",
+            "D": "Insulinoma",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZPPNA79W",
         "year": [
             "2025"
@@ -2095,6 +2041,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "P6U2KU2E",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which type of thyroid carcinoma has the least tendency for early distant metastasis and is often associated with lymphatic spread?",
+        "options": {
+            "A": "Papillary",
+            "B": "Follicular",
+            "C": "Medullary",
+            "D": "Anaplastic",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4ACCJ9RB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which type of thyroid carcinoma is characterized by slow progression and a good prognosis?",
+        "options": {
+            "A": "Anaplastic carcinoma",
+            "B": "Medullary carcinoma",
+            "C": "Papillary thyroid carcinoma",
+            "D": "Follicular thyroid carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

@@ -108,6 +108,33 @@
         "hint": ""
     },
     {
+        "id": "PX4LQFWW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old man underwent abdominal surgery 7 days ago. He presents with sudden serosanguinous discharge from the surgical wound, with partial separation of the wound edges. The patient has fever and mild erythema around the incision. Wound swab culture grows methicillin-resistant Staphylococcus aureus (MRSA). What is the most likely cause of the wound complication?",
+        "options": {
+            "A": "Surgical technique error",
+            "B": "MRSA infection causing wound dehiscence",
+            "C": "Vitamin C deficiency",
+            "D": "Hematoma formation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "CQW597NB",
         "year": [
             "2026"
@@ -216,6 +243,33 @@
         "hint": ""
     },
     {
+        "id": "JP4VFG6X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with an infected wound. Which of the following nursing care tasks should be the priority?",
+        "options": {
+            "A": "Give antibiotics",
+            "B": "Sterile wound care",
+            "C": "Give IV fluids",
+            "D": "Send blood C/S",
+            "E": "Pass Foley catheter"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "V64N6LED",
         "year": [
             "2026"
@@ -240,6 +294,60 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G99QVT5A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient undergoes abdominal surgery and, in the immediate postoperative period, develops hypotension, tachycardia, and cold, clammy skin. Which type of shock is most likely?",
+        "options": {
+            "A": "Cardiogenic shock",
+            "B": "Septic shock",
+            "C": "Hypovolemic shock",
+            "D": "Neurogenic shock",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8Y93VYQN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient underwent surgery, and an absorbable suture was used. On the 1st post-operative day, the drain was removed as the surgery was complicated by adhesions. The patient presented on the 7th post-operative day with complaints of a wound infection. Which of the following is the reason for his condition?",
+        "options": {
+            "A": "Incompetent surgeon",
+            "B": "Use of absorbable sutures",
+            "C": "Drain placed in the surgical site",
+            "D": "Foreign body",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Based on the scenario described, a foreign body is the correct answer because a retained or introduced foreign object is a common cause of delayed wound infection. Absorbable sutures are designed to be broken down by the body over time and are a standard part of many surgical procedures. They are not a common cause of wound infection. However, a drain can sometimes be a source of infection if not managed correctly, but a retained foreign body is a more direct cause of the described post-operative infection.",
         "hint": ""
     },
     {
@@ -351,6 +459,62 @@
         "hint": ""
     },
     {
+        "id": "DXQETW4L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After women underwent laparotomy, what will u tell her that after how much time will her scar gain Near normal strength",
+        "options": {
+            "A": "1 year",
+            "B": "6 months",
+            "C": "3 months",
+            "D": "Never",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CARZG4XW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An obese patient develops a red, open surgical wound. Absorbable suture was used. Other contributing factor?",
+        "options": {
+            "A": "Diabetes",
+            "B": "Drain insertion during surgery",
+            "C": "Infection with MRSA",
+            "D": "Hypoalbuminemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Drain placement can increase local inflammation and infection risk, contributing to wound dehiscence.",
+        "hint": ""
+    },
+    {
         "id": "CF7KYZTR",
         "year": [
             "2026"
@@ -401,6 +565,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GXBGP37C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During a surgical procedure in OT, a nurse accidentally touches a sterile instrument with an ungloved hand, what is the most appropriate step you will take in the OT?",
+        "options": {
+            "A": "Use the instrument as it is",
+            "B": "Clean the instrument with an antiseptic",
+            "C": "Sterilize the instrument for 2 mints",
+            "D": "Replace the instrument with a new sterile one",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -621,6 +812,60 @@
         "hint": ""
     },
     {
+        "id": "U5DUJDZC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient with pre auricular swelling, All examination & labs normal, only associated with otorrhea & occasional Lymphadenopathy, diagnosis by?",
+        "options": {
+            "A": "Trucut biopsy",
+            "B": "Needle biopsy",
+            "C": "Excisional biopsy",
+            "D": "Incisional biopsy",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WAG3SHZ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Rapidly growing Infraauricular swelling which is Enlarged & Painful along with Cervical Lymphadenopathy. What is the most appropriate investigation to diagnose?",
+        "options": {
+            "A": "Cone biopsy",
+            "B": "FNAC",
+            "C": "Surgical Biopsy",
+            "D": "MRI",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "RPRK3SRR",
         "year": [
             "2026"
@@ -702,278 +947,6 @@
         "hint": ""
     },
     {
-        "id": "FK3M4JY5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Why antibiotics are used preoperatively",
-        "options": {
-            "A": "it is customary to use",
-            "B": "it has better results",
-            "C": "Every human has some infection inside him",
-            "D": "kill viruses",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PX4LQFWW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old man underwent abdominal surgery 7 days ago. He presents with sudden serosanguinous discharge from the surgical wound, with partial separation of the wound edges. The patient has fever and mild erythema around the incision. Wound swab culture grows methicillin-resistant Staphylococcus aureus (MRSA). What is the most likely cause of the wound complication?",
-        "options": {
-            "A": "Surgical technique error",
-            "B": "MRSA infection causing wound dehiscence",
-            "C": "Vitamin C deficiency",
-            "D": "Hematoma formation",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JP4VFG6X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with an infected wound. Which of the following nursing care tasks should be the priority?",
-        "options": {
-            "A": "Give antibiotics",
-            "B": "Sterile wound care",
-            "C": "Give IV fluids",
-            "D": "Send blood C/S",
-            "E": "Pass Foley catheter"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G99QVT5A",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient undergoes abdominal surgery and, in the immediate postoperative period, develops hypotension, tachycardia, and cold, clammy skin. Which type of shock is most likely?",
-        "options": {
-            "A": "Cardiogenic shock",
-            "B": "Septic shock",
-            "C": "Hypovolemic shock",
-            "D": "Neurogenic shock",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8Y93VYQN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient underwent surgery, and an absorbable suture was used. On the 1st post-operative day, the drain was removed as the surgery was complicated by adhesions. The patient presented on the 7th post-operative day with complaints of a wound infection. Which of the following is the reason for his condition?",
-        "options": {
-            "A": "Incompetent surgeon",
-            "B": "Use of absorbable sutures",
-            "C": "Drain placed in the surgical site",
-            "D": "Foreign body",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Based on the scenario described, a foreign body is the correct answer because a retained or introduced foreign object is a common cause of delayed wound infection. Absorbable sutures are designed to be broken down by the body over time and are a standard part of many surgical procedures. They are not a common cause of wound infection. However, a drain can sometimes be a source of infection if not managed correctly, but a retained foreign body is a more direct cause of the described post-operative infection.",
-        "hint": ""
-    },
-    {
-        "id": "DXQETW4L",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "After women underwent laparotomy, what will u tell her that after how much time will her scar gain Near normal strength",
-        "options": {
-            "A": "1 year",
-            "B": "6 months",
-            "C": "3 months",
-            "D": "Never",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CARZG4XW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An obese patient develops a red, open surgical wound. Absorbable suture was used. Other contributing factor?",
-        "options": {
-            "A": "Diabetes",
-            "B": "Drain insertion during surgery",
-            "C": "Infection with MRSA",
-            "D": "Hypoalbuminemia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Drain placement can increase local inflammation and infection risk, contributing to wound dehiscence.",
-        "hint": ""
-    },
-    {
-        "id": "GXBGP37C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During a surgical procedure in OT, a nurse accidentally touches a sterile instrument with an ungloved hand, what is the most appropriate step you will take in the OT?",
-        "options": {
-            "A": "Use the instrument as it is",
-            "B": "Clean the instrument with an antiseptic",
-            "C": "Sterilize the instrument for 2 mints",
-            "D": "Replace the instrument with a new sterile one",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U5DUJDZC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient with pre auricular swelling, All examination & labs normal, only associated with otorrhea & occasional Lymphadenopathy, diagnosis by?",
-        "options": {
-            "A": "Trucut biopsy",
-            "B": "Needle biopsy",
-            "C": "Excisional biopsy",
-            "D": "Incisional biopsy",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WAG3SHZ7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Rapidly growing Infraauricular swelling which is Enlarged & Painful along with Cervical Lymphadenopathy. What is the most appropriate investigation to diagnose?",
-        "options": {
-            "A": "Cone biopsy",
-            "B": "FNAC",
-            "C": "Surgical Biopsy",
-            "D": "MRI",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "WWL2W7MT",
         "year": [
             "2025"
@@ -997,6 +970,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FK3M4JY5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Surgery",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Why antibiotics are used preoperatively",
+        "options": {
+            "A": "it is customary to use",
+            "B": "it has better results",
+            "C": "Every human has some infection inside him",
+            "D": "kill viruses",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

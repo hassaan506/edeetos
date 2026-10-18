@@ -1,140 +1,5 @@
 [
     {
-        "id": "7UC7ZPEH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Night"
-        ],
-        "subject": "Medicine",
-        "chapter": "Metabolic System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child is diagnosed with familial hyperlipoproteinemia type I. What is the most appropriate management?",
-        "options": {
-            "A": "High fat diet with statins",
-            "B": "Low fat diet with weight loss",
-            "C": "High carbohydrate diet",
-            "D": "Fibrate monotherapy",
-            "E": "Ezetimibe only"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L6HZF68D",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Metabolic System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is diagnosed with Type 1 Hyperlipoproteinemia. What is the mainstay of management for this condition?",
-        "options": {
-            "A": "Very low-fat diet",
-            "B": "High protein diet",
-            "C": "Statin therapy only",
-            "D": "High carbohydrate diet",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UCEGS6EE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon"
-        ],
-        "subject": "Medicine",
-        "chapter": "Metabolic System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young female presents with severe recurrent abdominal pain associated with lower limb weakness and altered mental status. Multiple episodes have occurred in the past, but extensive investigations failed to identify a surgical cause. Acute appendicitis and other abdominal pathologies are ruled out. Her partner reports similar unexplained episodes in the past. The most likely diagnosis is:",
-        "options": {
-            "A": "Neurotic disorder",
-            "B": "Acute intermittent porphyria",
-            "C": "Porphyria cutanea tarda",
-            "D": "Familial Mediterranean fever",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4CCDCGRU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Metabolic System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young patient presents with hepatic dysfunction, neurological tremors, and green-brown rings at the corneal margin. Which disorder is most likely?",
-        "options": {
-            "A": "Hemochromatosis",
-            "B": "Wilson disease",
-            "C": "Chronic hepatitis B",
-            "D": "Gilbert syndrome",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BGHXYZD5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Medicine",
-        "chapter": "Metabolic System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In a pregnant woman with a family history of Wilson's Disease, which parameters should be monitored?",
-        "options": {
-            "A": "Serum iron",
-            "B": "Serum copper or ceruloplasmin levels",
-            "C": "Blood glucose",
-            "D": "Serum calcium",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "M6LHK8Q2",
         "year": [
             "2025"
@@ -246,6 +111,60 @@
         "hint": ""
     },
     {
+        "id": "7UC7ZPEH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Night"
+        ],
+        "subject": "Medicine",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child is diagnosed with familial hyperlipoproteinemia type I. What is the most appropriate management?",
+        "options": {
+            "A": "High fat diet with statins",
+            "B": "Low fat diet with weight loss",
+            "C": "High carbohydrate diet",
+            "D": "Fibrate monotherapy",
+            "E": "Ezetimibe only"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L6HZF68D",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is diagnosed with Type 1 Hyperlipoproteinemia. What is the mainstay of management for this condition?",
+        "options": {
+            "A": "Very low-fat diet",
+            "B": "High protein diet",
+            "C": "Statin therapy only",
+            "D": "High carbohydrate diet",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BCMR4597",
         "year": [
             "2025"
@@ -269,6 +188,60 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UCEGS6EE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon"
+        ],
+        "subject": "Medicine",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young female presents with severe recurrent abdominal pain associated with lower limb weakness and altered mental status. Multiple episodes have occurred in the past, but extensive investigations failed to identify a surgical cause. Acute appendicitis and other abdominal pathologies are ruled out. Her partner reports similar unexplained episodes in the past. The most likely diagnosis is:",
+        "options": {
+            "A": "Neurotic disorder",
+            "B": "Acute intermittent porphyria",
+            "C": "Porphyria cutanea tarda",
+            "D": "Familial Mediterranean fever",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4CCDCGRU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young patient presents with hepatic dysfunction, neurological tremors, and green-brown rings at the corneal margin. Which disorder is most likely?",
+        "options": {
+            "A": "Hemochromatosis",
+            "B": "Wilson disease",
+            "C": "Chronic hepatitis B",
+            "D": "Gilbert syndrome",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -354,6 +327,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BGHXYZD5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a pregnant woman with a family history of Wilson's Disease, which parameters should be monitored?",
+        "options": {
+            "A": "Serum iron",
+            "B": "Serum copper or ceruloplasmin levels",
+            "C": "Blood glucose",
+            "D": "Serum calcium",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     }

@@ -1,38 +1,5 @@
 [
     {
-        "id": "54LMWHS2",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning",
-            "Surgery - 01/26 - January 7 - Evening",
-            "Gynecology - 05/25 - May 13 - Morning",
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with dandruff is prescribed antifungal medication. Which essential fatty acid deficiency might contribute to this condition?",
-        "options": {
-            "A": "Oleic acid",
-            "B": "Linolenic acid",
-            "C": "Palmitic acid",
-            "D": "Stearic acid",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "8UFDTCME",
         "year": [
             "2026"
@@ -83,6 +50,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "68WLB4NQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old man ingests a large quantity of ammonium hydroxide solution in a suicide attempt. Several hours later, arterial blood gas reveals: pH 7.52, PaCO2 40 mmHg, HCO3- 32 mEq/L. Which acid-base disorder is most likely present?",
+        "options": {
+            "A": "Metabolic alkalosis",
+            "B": "Metabolic acidosis",
+            "C": "Respiratory alkalosis",
+            "D": "Respiratory acidosis",
+            "E": "Mixed metabolic acidosis and respiratory alkalosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SESBTZJY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old woman is brought to the ED after being found unconscious at home. Two empty bottles of aspirin are found beside her bed. On arrival, she is tachypneic, febrile, and disoriented. Physical examination reveals rapid, deep breathing. Arterial blood gas shows pH 7.42, PaCO2 25 mmHg, HCO3- 16 mEq/L. Which of the following is the most likely explanation for these findings?",
+        "options": {
+            "A": "Acute respiratory alkalosis",
+            "B": "Acute metabolic acidosis",
+            "C": "Mixed metabolic acidosis and respiratory alkalosis",
+            "D": "Chronic respiratory alkalosis",
+            "E": "Metabolic alkalosis with respiratory compensation"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -141,6 +162,33 @@
         "hint": ""
     },
     {
+        "id": "EBHEFJAL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 48 year old man in the ICU develops worsening respiratory distress. Arterial blood gas analysis shows: pH = 7.12, PaCO2 = 60 mm Hg, HCO3- = 14 mEq/L, anion gap = 20. Which of the following best describes his acid–base disturbance?",
+        "options": {
+            "A": "Respiratory alkalosis",
+            "B": "High-anion-gap metabolic acidosis",
+            "C": "Respiratory acidosis",
+            "D": "Mixed metabolic and respiratory acidosis",
+            "E": "Metabolic alkalosis"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "SP9ZAVUB",
         "year": [
             "2026"
@@ -164,6 +212,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G2VM63ZW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 56 year old man with pooly controlled type 1 diabetes presents with 2 days of abdominal ppain, polyuria, and confusion. His wife reports fruity-smelling breath and rapid breathing. On arrival, he is tachypneic with a respiratory rate of 28/min , blood pressure 90/60 mmHg, and dry mucous membranes. Arterial blood gas shows: <br> pH: 7.15 <br>PaCO2: 24 mmHg <br>HCO3: 8 mEq/L <br>Which of the following best describes his acid-base status?",
+        "options": {
+            "A": "Uncompensated metabolic acidosis",
+            "B": "Metabolic acidosis with appropriate respiratory compensation",
+            "C": "Mixed metabolic and respiratory acidosis",
+            "D": "Respiratory acidosis with metabolic compensation",
+            "E": "Mixed metabolic acidosis and respiratory alkalosis"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -218,6 +293,33 @@
             "E": "Mixed metabolic alkalosis and respiratory alkalosis"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JSZXULUW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy faints during football practice after drinking a large amount of water. Which physiological change likely led to his collapse?",
+        "options": {
+            "A": "Increase in blood osmolality",
+            "B": "Decrease in intracellular fluid (ICF) tonicity",
+            "C": "Decrease in extracellular fluid (ECF) tonicity",
+            "D": "Decrease in plasma volume",
+            "E": "Decrease in ICF volume"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -303,6 +405,33 @@
         "hint": ""
     },
     {
+        "id": "XYEPCV2P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man weighing 70kg has a total body water of (TBW) of 42L. What is approximate volume of his ECF compartment?",
+        "options": {
+            "A": "5L",
+            "B": "11L",
+            "C": "14L",
+            "D": "28L",
+            "E": "35L"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZQTK5SFD",
         "year": [
             "2026"
@@ -357,6 +486,33 @@
         "hint": ""
     },
     {
+        "id": "6EBVRTXS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with an acid-base disturbance showing low serum bicarbonate and low pCO2. Which acid-base disorder is most consistent with this finding?",
+        "options": {
+            "A": "Metabolic acidosis with respiratory compensation",
+            "B": "Metabolic alkalosis",
+            "C": "Respiratory acidosis",
+            "D": "Normal acid-base status",
+            "E": "Respiratory alkalosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UV9E6C7X",
         "year": [
             "2026"
@@ -384,681 +540,35 @@
         "hint": ""
     },
     {
-        "id": "UP9YC563",
+        "id": "54LMWHS2",
         "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A physiology student is asked which transport mechanism is responsible for maintaining the resting membrane potential of cells and establishing ionic gradients across the plasma membrane. Which of the following best describes this mechanism?",
-        "options": {
-            "A": "Passive diffusion",
-            "B": "Facilitated diffusion",
-            "C": "Na+/K+ ATPase pump",
-            "D": "Symport glucose transport",
-            "E": "Endocytosis"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G2M7EASK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Chromosomes are first distinctly visible under light microscope in which phase of mitosis?",
-        "options": {
-            "A": "Prophase",
-            "B": "Prometaphase",
-            "C": "Metaphase",
-            "D": "Anaphase",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QZBN469E",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In which phase of the cell cycle are chromosomes most clearly visible under a light microscope?",
-        "options": {
-            "A": "Interphase",
-            "B": "Prophase",
-            "C": "Metaphase",
-            "D": "Anaphase",
-            "E": "Telophase"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LGC2YRDW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Osmolality of N/S is",
-        "options": {
-            "A": "270",
-            "B": "280",
-            "C": "310",
-            "D": "540",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BDDK7T52",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Regarding temperature measurement in clinical practice, which of the following statements is CORRECT?",
-        "options": {
-            "A": "Thermostats are based on change in electrical resistance with temperature",
-            "B": "Thermocouples generate voltage due to Seebeck effect",
-            "C": "Mercury-in-glass thermometers use expansion of liquid metal",
-            "D": "Platinum resistance thermometers are highly accurate and stable",
-            "E": "Thermistors are not used after 3 months due to loss of sensitivity"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FSCG37PZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Resting Membrane potential achieved by",
-        "options": {
-            "A": "Na K pump",
-            "B": "NA Influx",
-            "C": "K efflux",
-            "D": "K influx",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W434FPLP",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Spindle fibers attach to which part of the chromosome?",
-        "options": {
-            "A": "Kinetochore",
-            "B": "Centrosome",
-            "C": "Centromere",
-            "D": "Chromatid",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VR4VR2UY",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Stress causes which complications?",
-        "options": {
-            "A": "CVS and psychiatric problems",
-            "B": "Renal failure",
-            "C": "Hepatic failure",
-            "D": "Pulmonary fibrosis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9AU7R9CH",
-        "year": [
-            "2026"
+            "2026",
+            "2025"
         ],
         "specialty": [
             "Anesthesia",
-            "Gynecology & Obstetrics"
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 01/26 - January 5 - Morning",
-            "Gynecology - 01/26 - January 5 - Morning"
+            "Surgery - 01/26 - January 7 - Evening",
+            "Gynecology - 05/25 - May 13 - Morning",
+            "Gynecology - 08/25 - August 6 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "General",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Stress has adverse effects on which systems?",
+        "question": "A patient with dandruff is prescribed antifungal medication. Which essential fatty acid deficiency might contribute to this condition?",
         "options": {
-            "A": "Only mental health",
-            "B": "Only cardiovascular system",
-            "C": "Both mental health and cardiovascular system",
-            "D": "Digestive system only",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AE5EWM6B",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon",
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is present between gap junctions?",
-        "options": {
-            "A": "Connexin",
-            "B": "Protein layer",
-            "C": "Cellular adhesion",
-            "D": "Lipid bilayer",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Connexin</strong> - Gap junctions are formed by channel proteins called <strong>connexons</strong>, and each connexon is made of six <strong>connexin</strong> protein subunits. Connexons of adjacent cells dock together to form the intercellular channel.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>gap junction</strong>. Gap junctions are protein channels that directly connect the cytoplasm of adjacent cells. The protein subunits forming these channels are <strong>connexins</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Protein layer</strong> - Gap junctions are made of specific channel proteins, not a nonspecific protein layer.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cellular adhesion</strong> - Cellular adhesion is associated with junctions such as desmosomes and adherens junctions, rather than being the channel component of gap junctions.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Lipid bilayer</strong> - The cell membrane contains a lipid bilayer, but it does not form the communicating channel between cells.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Connexin → Connexon → Gap junction.</strong> Six connexin proteins assemble to form one connexon. Two connexons, one from each adjacent cell, join to create the gap-junction channel.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>CONNEXin = CONNEXion</strong> between cells.</p></p>",
-        "hint": "<p><br></p>"
-    },
-    {
-        "id": "29MCBGLK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the approximate difference in osmolality between plasma and interstitial fluid?",
-        "options": {
-            "A": "2 mOsm/kg",
-            "B": "1.5 mOsm/kg",
-            "C": "2.5 mOsm/kg",
-            "D": "3.5 mOsm/kg",
+            "A": "Oleic acid",
+            "B": "Linolenic acid",
+            "C": "Palmitic acid",
+            "D": "Stearic acid",
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SWZJ4TLQ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which component is higher in plasma compared to interstitial fluid contributing to oncotic pressure?",
-        "options": {
-            "A": "Potassium",
-            "B": "Protein",
-            "C": "Sodium",
-            "D": "Chloride",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "577ZR6JB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which intervention reduces cellular aging?",
-        "options": {
-            "A": "High-protein diet",
-            "B": "Resistance exercise",
-            "C": "Reduced caloric intake",
-            "D": "Smoking cessation",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VCXMJSA5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which ion contributes most to the resting membrane potential due to its high membrane permeability?",
-        "options": {
-            "A": "Sodium (Na+)",
-            "B": "Potassium (K+)",
-            "C": "Calcium (Ca2+)",
-            "D": "Chloride (Cl-)",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z2USANTG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which ion has a higher concentration in intracellular fluid compared to extracellular fluid?",
-        "options": {
-            "A": "Cl-",
-            "B": "HCO3-",
-            "C": "K+",
-            "D": "Na+",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TAF4GET2",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which ion has a higher concentration inside cells than in the extracellular fluid?",
-        "options": {
-            "A": "Ca2+",
-            "B": "K+",
-            "C": "Na+",
-            "D": "Cl-",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GNBPC879",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following can increase potassium levels temporarily?",
-        "options": {
-            "A": "Fasting",
-            "B": "Exercise",
-            "C": "Diuretics",
-            "D": "Insulin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KQWRMTDE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Night"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is CSF?",
-        "options": {
-            "A": "Intracellular fluid",
-            "B": "Plasma and interstitial fluid",
-            "C": "Transcellular fluid only",
-            "D": "Intracellular and interstitial fluid",
-            "E": "Intracellular and plasma fluid"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "68WLB4NQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old man ingests a large quantity of ammonium hydroxide solution in a suicide attempt. Several hours later, arterial blood gas reveals: pH 7.52, PaCO2 40 mmHg, HCO3- 32 mEq/L. Which acid-base disorder is most likely present?",
-        "options": {
-            "A": "Metabolic alkalosis",
-            "B": "Metabolic acidosis",
-            "C": "Respiratory alkalosis",
-            "D": "Respiratory acidosis",
-            "E": "Mixed metabolic acidosis and respiratory alkalosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SESBTZJY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old woman is brought to the ED after being found unconscious at home. Two empty bottles of aspirin are found beside her bed. On arrival, she is tachypneic, febrile, and disoriented. Physical examination reveals rapid, deep breathing. Arterial blood gas shows pH 7.42, PaCO2 25 mmHg, HCO3- 16 mEq/L. Which of the following is the most likely explanation for these findings?",
-        "options": {
-            "A": "Acute respiratory alkalosis",
-            "B": "Acute metabolic acidosis",
-            "C": "Mixed metabolic acidosis and respiratory alkalosis",
-            "D": "Chronic respiratory alkalosis",
-            "E": "Metabolic alkalosis with respiratory compensation"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EBHEFJAL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 48 year old man in the ICU develops worsening respiratory distress. Arterial blood gas analysis shows: pH = 7.12, PaCO2 = 60 mm Hg, HCO3- = 14 mEq/L, anion gap = 20. Which of the following best describes his acid–base disturbance?",
-        "options": {
-            "A": "Respiratory alkalosis",
-            "B": "High-anion-gap metabolic acidosis",
-            "C": "Respiratory acidosis",
-            "D": "Mixed metabolic and respiratory acidosis",
-            "E": "Metabolic alkalosis"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G2VM63ZW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 56 year old man with pooly controlled type 1 diabetes presents with 2 days of abdominal ppain, polyuria, and confusion. His wife reports fruity-smelling breath and rapid breathing. On arrival, he is tachypneic with a respiratory rate of 28/min , blood pressure 90/60 mmHg, and dry mucous membranes. Arterial blood gas shows: <br> pH: 7.15 <br>PaCO2: 24 mmHg <br>HCO3: 8 mEq/L <br>Which of the following best describes his acid-base status?",
-        "options": {
-            "A": "Uncompensated metabolic acidosis",
-            "B": "Metabolic acidosis with appropriate respiratory compensation",
-            "C": "Mixed metabolic and respiratory acidosis",
-            "D": "Respiratory acidosis with metabolic compensation",
-            "E": "Mixed metabolic acidosis and respiratory alkalosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JSZXULUW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A boy faints during football practice after drinking a large amount of water. Which physiological change likely led to his collapse?",
-        "options": {
-            "A": "Increase in blood osmolality",
-            "B": "Decrease in intracellular fluid (ICF) tonicity",
-            "C": "Decrease in extracellular fluid (ECF) tonicity",
-            "D": "Decrease in plasma volume",
-            "E": "Decrease in ICF volume"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XYEPCV2P",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A man weighing 70kg has a total body water of (TBW) of 42L. What is approximate volume of his ECF compartment?",
-        "options": {
-            "A": "5L",
-            "B": "11L",
-            "C": "14L",
-            "D": "28L",
-            "E": "35L"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6EBVRTXS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with an acid-base disturbance showing low serum bicarbonate and low pCO2. Which acid-base disorder is most consistent with this finding?",
-        "options": {
-            "A": "Metabolic acidosis with respiratory compensation",
-            "B": "Metabolic alkalosis",
-            "C": "Respiratory acidosis",
-            "D": "Normal acid-base status",
-            "E": "Respiratory alkalosis"
-        },
-        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1087,6 +597,33 @@
         },
         "correctAnswer": "D",
         "explanation": "Increase ICF Volume - Decrease ICF Osmolarity. Increase ECF volume - Decrease ECF osmolarity.",
+        "hint": ""
+    },
+    {
+        "id": "UP9YC563",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A physiology student is asked which transport mechanism is responsible for maintaining the resting membrane potential of cells and establishing ionic gradients across the plasma membrane. Which of the following best describes this mechanism?",
+        "options": {
+            "A": "Passive diffusion",
+            "B": "Facilitated diffusion",
+            "C": "Na+/K+ ATPase pump",
+            "D": "Symport glucose transport",
+            "E": "Endocytosis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1140,6 +677,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G2M7EASK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Chromosomes are first distinctly visible under light microscope in which phase of mitosis?",
+        "options": {
+            "A": "Prophase",
+            "B": "Prometaphase",
+            "C": "Metaphase",
+            "D": "Anaphase",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1308,6 +872,33 @@
         "hint": ""
     },
     {
+        "id": "QZBN469E",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In which phase of the cell cycle are chromosomes most clearly visible under a light microscope?",
+        "options": {
+            "A": "Interphase",
+            "B": "Prophase",
+            "C": "Metaphase",
+            "D": "Anaphase",
+            "E": "Telophase"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "R93W2AAQ",
         "year": [
             "2025"
@@ -1329,6 +920,33 @@
             "C": "Decreased both intracellular and extracellular fluids",
             "D": "Increased extracellular fluid (ECF)",
             "E": "No significant fluid loss"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LGC2YRDW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Osmolality of N/S is",
+        "options": {
+            "A": "270",
+            "B": "280",
+            "C": "310",
+            "D": "540",
+            "E": ""
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1389,6 +1007,143 @@
         "hint": ""
     },
     {
+        "id": "BDDK7T52",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Regarding temperature measurement in clinical practice, which of the following statements is CORRECT?",
+        "options": {
+            "A": "Thermostats are based on change in electrical resistance with temperature",
+            "B": "Thermocouples generate voltage due to Seebeck effect",
+            "C": "Mercury-in-glass thermometers use expansion of liquid metal",
+            "D": "Platinum resistance thermometers are highly accurate and stable",
+            "E": "Thermistors are not used after 3 months due to loss of sensitivity"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FSCG37PZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Resting Membrane potential achieved by",
+        "options": {
+            "A": "Na K pump",
+            "B": "NA Influx",
+            "C": "K efflux",
+            "D": "K influx",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W434FPLP",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Spindle fibers attach to which part of the chromosome?",
+        "options": {
+            "A": "Kinetochore",
+            "B": "Centrosome",
+            "C": "Centromere",
+            "D": "Chromatid",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VR4VR2UY",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Stress causes which complications?",
+        "options": {
+            "A": "CVS and psychiatric problems",
+            "B": "Renal failure",
+            "C": "Hepatic failure",
+            "D": "Pulmonary fibrosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9AU7R9CH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning",
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Stress has adverse effects on which systems?",
+        "options": {
+            "A": "Only mental health",
+            "B": "Only cardiovascular system",
+            "C": "Both mental health and cardiovascular system",
+            "D": "Digestive system only",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YBRHZ8MK",
         "year": [
             "2025"
@@ -1412,6 +1167,62 @@
             "E": "Ficks principle"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AE5EWM6B",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is present between gap junctions?",
+        "options": {
+            "A": "Connexin",
+            "B": "Protein layer",
+            "C": "Cellular adhesion",
+            "D": "Lipid bilayer",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Connexin</strong> - Gap junctions are formed by channel proteins called <strong>connexons</strong>, and each connexon is made of six <strong>connexin</strong> protein subunits. Connexons of adjacent cells dock together to form the intercellular channel.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>gap junction</strong>. Gap junctions are protein channels that directly connect the cytoplasm of adjacent cells. The protein subunits forming these channels are <strong>connexins</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Protein layer</strong> - Gap junctions are made of specific channel proteins, not a nonspecific protein layer.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cellular adhesion</strong> - Cellular adhesion is associated with junctions such as desmosomes and adherens junctions, rather than being the channel component of gap junctions.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Lipid bilayer</strong> - The cell membrane contains a lipid bilayer, but it does not form the communicating channel between cells.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Connexin → Connexon → Gap junction.</strong> Six connexin proteins assemble to form one connexon. Two connexons, one from each adjacent cell, join to create the gap-junction channel.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>CONNEXin = CONNEXion</strong> between cells.</p></p>",
+        "hint": "<p><br></p>"
+    },
+    {
+        "id": "29MCBGLK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the approximate difference in osmolality between plasma and interstitial fluid?",
+        "options": {
+            "A": "2 mOsm/kg",
+            "B": "1.5 mOsm/kg",
+            "C": "2.5 mOsm/kg",
+            "D": "3.5 mOsm/kg",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1445,6 +1256,141 @@
         "hint": ""
     },
     {
+        "id": "SWZJ4TLQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which component is higher in plasma compared to interstitial fluid contributing to oncotic pressure?",
+        "options": {
+            "A": "Potassium",
+            "B": "Protein",
+            "C": "Sodium",
+            "D": "Chloride",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "577ZR6JB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which intervention reduces cellular aging?",
+        "options": {
+            "A": "High-protein diet",
+            "B": "Resistance exercise",
+            "C": "Reduced caloric intake",
+            "D": "Smoking cessation",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VCXMJSA5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which ion contributes most to the resting membrane potential due to its high membrane permeability?",
+        "options": {
+            "A": "Sodium (Na+)",
+            "B": "Potassium (K+)",
+            "C": "Calcium (Ca2+)",
+            "D": "Chloride (Cl-)",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Z2USANTG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which ion has a higher concentration in intracellular fluid compared to extracellular fluid?",
+        "options": {
+            "A": "Cl-",
+            "B": "HCO3-",
+            "C": "K+",
+            "D": "Na+",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TAF4GET2",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which ion has a higher concentration inside cells than in the extracellular fluid?",
+        "options": {
+            "A": "Ca2+",
+            "B": "K+",
+            "C": "Na+",
+            "D": "Cl-",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "S8FKQZNP",
         "year": [
             "2025"
@@ -1465,6 +1411,33 @@
             "B": "Endurance",
             "C": "Power",
             "D": "Flexibility",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GNBPC879",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following can increase potassium levels temporarily?",
+        "options": {
+            "A": "Fasting",
+            "B": "Exercise",
+            "C": "Diuretics",
+            "D": "Insulin",
             "E": ""
         },
         "correctAnswer": "B",
@@ -1496,6 +1469,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Hypotonic fluids: 0.45% N/S, 0.225% N/S, 0.33% N/S, 0.25% D/W. Isotonic fluids: 0.9% N/S, Lactated ringer, Ringer's solution, 5% D/W. Hypertonic fluids: 3% N/S, 5% N/S, 3% N/S or 5% N/S + D/W, >5% D/W example D10W.",
+        "hint": ""
+    },
+    {
+        "id": "KQWRMTDE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Night"
+        ],
+        "subject": "Physiology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is CSF?",
+        "options": {
+            "A": "Intracellular fluid",
+            "B": "Plasma and interstitial fluid",
+            "C": "Transcellular fluid only",
+            "D": "Intracellular and interstitial fluid",
+            "E": "Intracellular and plasma fluid"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {

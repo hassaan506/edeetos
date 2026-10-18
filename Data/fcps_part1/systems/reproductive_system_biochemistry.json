@@ -1,32 +1,5 @@
 [
     {
-        "id": "L4JWUE4P",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The enzyme 5-α-reductase catalyzes the conversion of:",
-        "options": {
-            "A": "Testosterone to estrogen",
-            "B": "Testosterone to dihydrotestosterone (DHT)",
-            "C": "DHEA to testosterone",
-            "D": "Androstenedione to estrogen",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "5-α-reductase converts testosterone into dihydrotestosterone (DHT), which is a much more potent androgen responsible for male external genitalia development and prostate growth.",
-        "hint": ""
-    },
-    {
         "id": "D2CZV4T2",
         "year": [
             "2025"
@@ -51,6 +24,33 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L4JWUE4P",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The enzyme 5-α-reductase catalyzes the conversion of:",
+        "options": {
+            "A": "Testosterone to estrogen",
+            "B": "Testosterone to dihydrotestosterone (DHT)",
+            "C": "DHEA to testosterone",
+            "D": "Androstenedione to estrogen",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "5-α-reductase converts testosterone into dihydrotestosterone (DHT), which is a much more potent androgen responsible for male external genitalia development and prostate growth.",
         "hint": ""
     },
     {

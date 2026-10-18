@@ -27,33 +27,6 @@
         "hint": ""
     },
     {
-        "id": "VJTK2FMT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which feature is characteristic of surfactant-producing cells (Type II pneumocytes)?",
-        "options": {
-            "A": "Lamellar bodies",
-            "B": "Mucus secretion",
-            "C": "Immunoglobulin production",
-            "D": "Apical cilia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Type II pneumocytes synthesize surfactant, which is stored in lamellar bodies before secretion into the alveoli.",
-        "hint": ""
-    },
-    {
         "id": "WK6VR5P9",
         "year": [
             "2025"
@@ -329,6 +302,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VJTK2FMT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Histology",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which feature is characteristic of surfactant-producing cells (Type II pneumocytes)?",
+        "options": {
+            "A": "Lamellar bodies",
+            "B": "Mucus secretion",
+            "C": "Immunoglobulin production",
+            "D": "Apical cilia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Type II pneumocytes synthesize surfactant, which is stored in lamellar bodies before secretion into the alveoli.",
         "hint": ""
     }
 ]

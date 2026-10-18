@@ -85,6 +85,35 @@
         "hint": ""
     },
     {
+        "id": "YSKE2BQF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old man uses an antibiotic eye drop for conjunctivitis. Within seconds, he reports a sour taste in his throat. Which anatomical pathway best explains this finding?",
+        "options": {
+            "A": "Direct drainage into oropharynx",
+            "B": "Direct absorption into bloodstream",
+            "C": "Drainage through the nasolacrimal duct into the nose",
+            "D": "Passage through the nasopharynx",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Eye drops enter the puncta -> canaliculi -> lacrimal sac -> nasolacrimal duct -> inferior meatus of the nose. From the nasal cavity, the fluid reaches the oropharynx, creating the sour/metallic taste. References: Snell's Clinical Anatomy, Lacrimal apparatus - drainage of tears to the inferior nasal meatus.",
+        "hint": ""
+    },
+    {
         "id": "352PHH4T",
         "year": [
             "2026"
@@ -108,6 +137,35 @@
             "E": "Corneal epithelium"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "D2DA6657",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female was advised eye drops for eye infection. Two days later she complains of sour taste. The drops from eyes go first into?",
+        "options": {
+            "A": "Nasopharynx",
+            "B": "Oropharynx",
+            "C": "Mouth",
+            "D": "Nose",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -246,6 +304,35 @@
         },
         "correctAnswer": "B",
         "explanation": "The vestibulocochlear nerve (CN VIII) carries hearing and balance sensations. Conductive hearing loss affects sound transmission but hearing is mediated by CN VIII. The facial nerve supplies stapedius but is not the primary hearing nerve.",
+        "hint": ""
+    },
+    {
+        "id": "HTA6D6S3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Blow out fracture of orbit with Proptosis and lossof cheek sensation it's due to",
+        "options": {
+            "A": "Cheek edema",
+            "B": "Zygoma",
+            "C": "Infraorbital nerve damage",
+            "D": "Infraorbital nerve at its formen",
+            "E": "Orbital Floor fracture"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -407,93 +494,6 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YSKE2BQF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning",
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35-year-old man uses an antibiotic eye drop for conjunctivitis. Within seconds, he reports a sour taste in his throat. Which anatomical pathway best explains this finding?",
-        "options": {
-            "A": "Direct drainage into oropharynx",
-            "B": "Direct absorption into bloodstream",
-            "C": "Drainage through the nasolacrimal duct into the nose",
-            "D": "Passage through the nasopharynx",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Eye drops enter the puncta -> canaliculi -> lacrimal sac -> nasolacrimal duct -> inferior meatus of the nose. From the nasal cavity, the fluid reaches the oropharynx, creating the sour/metallic taste. References: Snell's Clinical Anatomy, Lacrimal apparatus - drainage of tears to the inferior nasal meatus.",
-        "hint": ""
-    },
-    {
-        "id": "D2DA6657",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female was advised eye drops for eye infection. Two days later she complains of sour taste. The drops from eyes go first into?",
-        "options": {
-            "A": "Nasopharynx",
-            "B": "Oropharynx",
-            "C": "Mouth",
-            "D": "Nose",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HTA6D6S3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Blow out fracture of orbit with Proptosis and lossof cheek sensation it's due to",
-        "options": {
-            "A": "Cheek edema",
-            "B": "Zygoma",
-            "C": "Infraorbital nerve damage",
-            "D": "Infraorbital nerve at its formen",
-            "E": "Orbital Floor fracture"
-        },
-        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

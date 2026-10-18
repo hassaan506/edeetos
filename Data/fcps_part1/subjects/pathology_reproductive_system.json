@@ -1,28 +1,79 @@
 [
     {
-        "id": "VJ355646",
+        "id": "ESUVD6WG",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Radiology"
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Radiology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 13 - Evening"
+            "Gynecology - 02/25 - Feburary 8 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A child presents with ovarian/testicular mass, labs show elevated AFP. Likely tumor?",
+        "question": "13-year-old girl with menarche at age 10, now presents with oligomenorrhea and a right ovarian compact mass of about 8 cm, most likely cause is",
         "options": {
-            "A": "Dysgerminoma",
-            "B": "Choriocarcinoma",
-            "C": "Yolk sac (endodermal sinus) tumor",
-            "D": "Teratoma",
+            "A": "Granulosa cell tumour",
+            "B": "Sertoli ledig cell tumour",
+            "C": "Pituitary adenoma",
+            "D": "Serous adenocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NPGVT33C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "26-year-old female presents with normal menstrual history now presents with Deepening of voice, acne, hirsutism, irregular menses, On abdominal examination right ovarian mass(both compact and cystic components) palpable likely cause is",
+        "options": {
+            "A": "Granulosa cell tumour",
+            "B": "Sertoli leydig cell tumour",
+            "C": "Pituitary adenoma",
+            "D": "Serous adenocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G2NBKXSH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 26-year-old woman presents with vaginal bleeding in early pregnancy. She reports mild abdominal discomfort and has passed grape-like vesicles per vaginum. Ultrasound shows a fetus with some cardiac activity and a thickened, cystic placenta. Histopathology of evacuated tissue reveals focally edematous chorionic villi and fetal parts. Karyotyping confirms triploidy, a chromosomal abnormality classically seen in partial molar pregnancy. What is the total number of chromosomes in this condition?",
+        "options": {
+            "A": "23",
+            "B": "47",
+            "C": "69",
+            "D": "92",
             "E": ""
         },
         "correctAnswer": "C",
@@ -30,63 +81,84 @@
         "hint": ""
     },
     {
-        "id": "TXA7BG5N",
+        "id": "LUWEHJNH",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman presents with a painless lump in her breast during lactation. Histologic examination reveals an increased number of acini and lobules in the affected area. Which of the following terms best describes this change?",
+        "options": {
+            "A": "Hyperplasia",
+            "B": "Hypertrophy",
+            "C": "Metaplasia",
+            "D": "Dysplasia",
+            "E": "Atrophy"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WHT9HK9N",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-month-old girl is found to have an ovarian mass with transient hormonal effects. The likely cause is:",
+        "options": {
+            "A": "Granulosa cell stimulation by maternal estrogen",
+            "B": "Germ cell tumor",
+            "C": "Stromal tumor",
+            "D": "Functional cyst",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Neonatal ovaries can respond to maternal estrogen, causing transient cystic enlargement and hormonal signs.",
+        "hint": ""
+    },
+    {
+        "id": "G23T2WP9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 04/26 - April 7 - Night",
-            "Medicine - 05/25 - May 15 - Morning"
+            "Surgery - 11/25 - November 11 - Evening"
         ],
         "subject": "Pathology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A Pap smear of lady done which shows dysplasia Increase N/C Ratio and Pleomorphism but basement membrane is intact what is associated with this?",
+        "question": "A 2-year-old boy presented with hard testicular mass. Investigations revealed a significantly raised AFP. Which germ cell tumor is the likely diagnosis?",
         "options": {
-            "A": "Invasion of adjacent tissue",
-            "B": "Invasion of basement membrane",
-            "C": "Carcinoma in situ",
-            "D": "Carcinoma",
+            "A": "Sertoli cell tumor",
+            "B": "Yolk sac",
+            "C": "Choriocarcinoma",
+            "D": "Embryonal carcinoma",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SWA55MCZ",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A pregnant woman with uterine fibroids is at risk of which type of degeneration during pregnancy?",
-        "options": {
-            "A": "Myxomatous degeneration",
-            "B": "Hydropic change",
-            "C": "Hyaline degeneration",
-            "D": "Red degeneration",
-            "E": "Gangrenous degeneration"
-        },
-        "correctAnswer": "D",
-        "explanation": "Red degeneration, also known as carneous degeneration or necrobiosis, is the most common and clinically significant type of fibroid degeneration to occur during pregnancy.",
+        "correctAnswer": "B",
+        "explanation": "The Yolk Sac Tumor is the most common testicular cancer in boys under 3 years old and is characterized by the production of high levels of the tumor marker AFP.",
         "hint": ""
     },
     {
@@ -117,6 +189,33 @@
         "hint": ""
     },
     {
+        "id": "5WANQB22",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old had emergency hysterectomy for uterine rupture after obstructed labor. Histology shows preserved cell outlines, anuclear eosinophilic cells (ghost cells). What type of necrosis is present?",
+        "options": {
+            "A": "Liquefactive necrosis",
+            "B": "Fat necrosis",
+            "C": "Fibrinoid necrosis",
+            "D": "Coagulative necrosis",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Ischemia from obstructed labor leads to coagulative necrosis showing preserved architecture and eosinophilic anuclear \"ghost\" cells.",
+        "hint": ""
+    },
+    {
         "id": "K56M642M",
         "year": [
             "2026"
@@ -137,6 +236,33 @@
             "B": "Chronic inflammation",
             "C": "Granulomatous inflammation",
             "D": "Fibrinous inflammation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LMMUNLGY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32-year-old woman presents with adnexal mass. Labs: CA125 elevated. Most likely ovarian tumor type?",
+        "options": {
+            "A": "Dysgerminoma",
+            "B": "Epithelial ovarian carcinoma",
+            "C": "Yolk sac tumor",
+            "D": "Granulosa cell tumor",
             "E": ""
         },
         "correctAnswer": "B",
@@ -362,6 +488,33 @@
         "hint": ""
     },
     {
+        "id": "42MYGUU5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 40-year-old woman presents with heavy menstrual bleeding and pelvic pressure. Pelvic ultrasound shows a well-circumscribed hypoechoic mass arising from the uterine myometrium. What is the most common benign tumor of the uterus?",
+        "options": {
+            "A": "Endometrial polyp",
+            "B": "Leiomyoma",
+            "C": "Adenomyosis",
+            "D": "Fibrosarcoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "WA9DT7D5",
         "year": [
             "2026"
@@ -383,6 +536,33 @@
             "C": "Caseous necrosis",
             "D": "Fat necrosis",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "26968FVV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old man presents with a painful, hard mass in the left testis. Ultrasound confirms an intratesticular lesion. Serum α-fetoprotein and β-hCG are within normal limits. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Seminoma",
+            "B": "Yolk sac tumor",
+            "C": "Embryonal carcinoma",
+            "D": "Teratoma",
+            "E": "Choriocarcinoma"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -416,6 +596,33 @@
         "hint": ""
     },
     {
+        "id": "NYTFTQ59",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman presents with gradually increasing lower abdominal fullness and discomfort. Ultrasound reveals a unilocular cystic ovarian mass with thin walls and clear serous fluid. There are no solid components or papillary projections. Tumor markers are normal. What is the most likely diagnosis?",
+        "options": {
+            "A": "Mucinous cystadenoma",
+            "B": "Serous cystadenoma",
+            "C": "Endometrioma",
+            "D": "Dermoid cyst (mature cystic teratoma)",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BQZCPH6R",
         "year": [
             "2026"
@@ -439,6 +646,141 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2SC4WACF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 52-year-old woman presents with a progressively enlarging breast mass and induration of the overlying skin, with characteristic skin changes, describing the appearance of the breast skin as resembling the surface of an orange peel. This finding is directly caused by the blockage of which structures by the tumor cells and subsequent pathological change?",
+        "options": {
+            "A": "Blockage of veins leading to congestion",
+            "B": "Malignant cell infiltration of the epidermis",
+            "C": "Blockage of lymphatics leading to skin edema and fibrosis",
+            "D": "Extensive tumor necrosis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The \"peau d'orange\" appearance is caused by the tumor invading the superficial dermal lymphatic network. This obstruction leads to lymphedema (swelling) of the skin, with the skin tethered down around the hair follicles, creating the characteristic dimpled, orange-peel texture.",
+        "hint": ""
+    },
+    {
+        "id": "MN5U8DF8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old woman is diagnosed with invasive ductal carcinoma of the breast. Six months later, she develops progressive back pain and spinal tenderness. MRI reveals multiple vertebral lesions. The spread of the tumor to the spine most likely occurred via which of the following routes?",
+        "options": {
+            "A": "Direct extension through intercostal spaces",
+            "B": "Lymphatic spread via axillary nodes",
+            "C": "Hematogenous spread",
+            "D": "Seeding across the pleural space",
+            "E": "Perineural spread through intercostal nerves"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JNP6ZBJC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old woman presents with an ovarian mass and elevated CA-125. The mass most likely arises from:",
+        "options": {
+            "A": "Germ cells",
+            "B": "Stromal cells",
+            "C": "Epithelial cells",
+            "D": "Lymphoid tissue",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LEDEVCBN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 65 year old man presents with urinary hesitancy, nocturia, and weak stream. Digital rectal exam reveals an enlarged, firm prostate. Which of the following is the most common cancer in men associated with this presentation?",
+        "options": {
+            "A": "Prostate adenocarcinoma",
+            "B": "Transitional cell carcinoma of bladder",
+            "C": "Renal cell carcinoma",
+            "D": "Testicular seminoma",
+            "E": "Squamous cell carcinoma of the penis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KWX27VNE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 68 year old man with prostate adenocarcinoma complains of new severe back pain. Bone scan shows multiple sclerotic lesions in the spine and pelvis. Which statement is most accurate?",
+        "options": {
+            "A": "Prostate cancer commonly metastasizes to the lungs only",
+            "B": "Prostate cancer commonly metastasizes to axial skeleton producing osteoblastic (sclerotic) lesions",
+            "C": "Prostate cancer metastases are purely lytic and spare the spine",
+            "D": "Prostate cancer rarely metastasizes to bone",
+            "E": "Bone metastases from prostate cancer always produce marrow suppression only"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -470,6 +812,33 @@
         "hint": ""
     },
     {
+        "id": "WQM56QD3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A biopsy from a patient's cervix shows epithelial cells with loss of uniformity in shape, size, and polarity, but without invasion into the basement membrane. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Metaplasia.",
+            "B": "Anaplasia.",
+            "C": "Neoplasia.",
+            "D": "Dysplasia.",
+            "E": "Hyperplasia"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7T98UUV4",
         "year": [
             "2026"
@@ -497,6 +866,33 @@
         "hint": ""
     },
     {
+        "id": "23E75B67",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A cell shows nuclear condensation under microscope, which of the term defines this process?",
+        "options": {
+            "A": "Karyolysis",
+            "B": "Pyknosis",
+            "C": "Karyorrhexis",
+            "D": "Apoptosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DBWQSV2H",
         "year": [
             "2026"
@@ -517,6 +913,63 @@
             "B": "Invasive carcinoma",
             "C": "Carcinoma in situ",
             "D": "Metaplasia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HJMPRRPX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A cervical smear of a 39 year old woman shows epithelial atypia involving two-thirds of the epithelial thickness, with loss of polarity and numerous mitotic figures. The basement membrane is intact. What is the most likely diagnosis?",
+        "options": {
+            "A": "Metaplasia",
+            "B": "Moderate dysplasia",
+            "C": "Carcinoma in situ",
+            "D": "Invasive carcinoma",
+            "E": "Hyperplasia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VJ355646",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with ovarian/testicular mass, labs show elevated AFP. Likely tumor?",
+        "options": {
+            "A": "Dysgerminoma",
+            "B": "Choriocarcinoma",
+            "C": "Yolk sac (endodermal sinus) tumor",
+            "D": "Teratoma",
             "E": ""
         },
         "correctAnswer": "C",
@@ -551,6 +1004,114 @@
         "hint": ""
     },
     {
+        "id": "QKX8TECH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient diagnosed with a case of fibroid uterus, histopathology shows decreased glands and stroma around it due to which of the following?",
+        "options": {
+            "A": "Atrophy",
+            "B": "Hypertrophy",
+            "C": "Hyperplasia",
+            "D": "Dysplasia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "34Y4QDBR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient known case of invasive ductal carcinoma with lymph node involved why it is called invasive",
+        "options": {
+            "A": "Skin involvement",
+            "B": "Pleomorphism",
+            "C": "Invasion of basement membrane",
+            "D": "Lymph node invasion",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8LP9CQH9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient presented with feeling of fullness in lower pelvis/abdomen diagnosed as glandular ovarian Carcinoma. All of the tissue microscopically appear abnormal it is",
+        "options": {
+            "A": "Well differentiated",
+            "B": "Poorly differentiated",
+            "C": "Moderately differentiated",
+            "D": "Variable",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7RV7CQZH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient presents with a feeling of fullness in the lower pelvis/abdomen and is diagnosed with glandular ovarian carcinoma. Histopathological examination reveals that all the tumor tissue has the same microscopic morphology. How would this tumor be classified?",
+        "options": {
+            "A": "Well-differentiated",
+            "B": "Poorly differentiated",
+            "C": "Moderately differentiated",
+            "D": "Undifferentiated",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DTKGX4LV",
         "year": [
             "2026"
@@ -571,6 +1132,90 @@
             "B": "Dysgerminoma",
             "C": "Sertoli-Leydig tumor",
             "D": "Fibroma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8QX5C7HV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female with breast mass of 5 x6 cm rubbery mass large sheets of cells and calcium spicules likely diagnose is",
+        "options": {
+            "A": "Phylloid tumor",
+            "B": "Fibroadenoma",
+            "C": "Ductal carcinoma",
+            "D": "Lobular carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NU2QAXV5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A G2P1 woman in active labor develops sudden-onset per vaginal bleeding followed by a rapid drop in oxygen saturation and cardiovascular collapsE- Histological examination of pulmonary vessels would most likely reveal:",
+        "options": {
+            "A": "Fats in peripheral vessels",
+            "B": "Amniotic fluid in peripheral vessels",
+            "C": "Air bubbles",
+            "D": "Platelet clumps",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TXA7BG5N",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night",
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A Pap smear of lady done which shows dysplasia Increase N/C Ratio and Pleomorphism but basement membrane is intact what is associated with this?",
+        "options": {
+            "A": "Invasion of adjacent tissue",
+            "B": "Invasion of basement membrane",
+            "C": "Carcinoma in situ",
+            "D": "Carcinoma",
             "E": ""
         },
         "correctAnswer": "C",
@@ -655,6 +1300,87 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L4WF7K6D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is diagnosed with a complete molar pregnancy. What is the most likely chromosomal composition?",
+        "options": {
+            "A": "46XX",
+            "B": "46XY",
+            "C": "69XXY",
+            "D": "69XXX",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UZ89FJ7G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is presented with a history of stroke followed by hysterectomy. The histopathology of the given sample shows a whorled pattern along with clear borders. Keeping in mind the given information, which type of necrosis occurs in this organ?",
+        "options": {
+            "A": "Liquefactive",
+            "B": "Coagulative",
+            "C": "Caseous",
+            "D": "Fat",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "This question is a classic presentation describing the post-infarction state of a benign tumor, most likely a uterine leiomyoma (fibroid) which was removed during the hysterectomy. \"Whorled pattern\" on histology is the classic microscopic appearance of a leiomyoma, where bundles of smooth muscle cells intersect at right angle. This along with Clear bodies confirms leiomyoma which has undergone necrosis. The characteristic type of necrosis resulting from ischemia in all solid organs is Coagulative Necrosis. \"Necrosis after stroke\" is a distractor, as stroke causes Liquefactive necrosis in the brain. While the necrosis described is in the tissue removed during the hysterectomy is coagulative.",
+        "hint": ""
+    },
+    {
+        "id": "MZVK356C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient of Breast carcinoma. On investigation mets seen in peritoneum, liver and ovaries. Route of spread?",
+        "options": {
+            "A": "Lymphatic",
+            "B": "Seeding of tumour",
+            "C": "Venous connections",
+            "D": "Subpleural lymphatic plexuses",
+            "E": "Axillary lymph nodes"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -821,6 +1547,60 @@
         "hint": ""
     },
     {
+        "id": "UGHEH4WA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pelvic ultrasound shows a mass with calcified teeth and hair in Ovary. What is the likely diagnosis?",
+        "options": {
+            "A": "Serous cystadenoma",
+            "B": "Cystic teratoma",
+            "C": "Choriocarcinoma",
+            "D": "Mucinous cystadenoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KZPCVJ4D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A postmenopausal bleeding, her endometrial biopsy was taken which shows increase endometrial thickness, increase N:C ratio, but basement membrane was intact",
+        "options": {
+            "A": "Carcinoma in situ",
+            "B": "Carcinoma",
+            "C": "Hyperplasia",
+            "D": "Dysplasia",
+            "E": "Metaplasia"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HE57YTYA",
         "year": [
             "2026"
@@ -902,6 +1682,36 @@
         "hint": ""
     },
     {
+        "id": "SWA55MCZ",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pregnant woman with uterine fibroids is at risk of which type of degeneration during pregnancy?",
+        "options": {
+            "A": "Myxomatous degeneration",
+            "B": "Hydropic change",
+            "C": "Hyaline degeneration",
+            "D": "Red degeneration",
+            "E": "Gangrenous degeneration"
+        },
+        "correctAnswer": "D",
+        "explanation": "Red degeneration, also known as carneous degeneration or necrobiosis, is the most common and clinically significant type of fibroid degeneration to occur during pregnancy.",
+        "hint": ""
+    },
+    {
         "id": "UFTWL4E3",
         "year": [
             "2026"
@@ -925,6 +1735,87 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "73TSSTFY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman and man has history of recurrent pregnancy, their clinical and genetic history is unremarkable but all pregnancy end up still birth how will you investigate",
+        "options": {
+            "A": "Southern blot",
+            "B": "Tandem mass spectroscopy",
+            "C": "Next generation sequencing",
+            "D": "Karyo typing",
+            "E": "FISH"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9YCDNQLZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman has a mature ovarian mass in the adnexa with multiple tissue types. What is the likely diagnosis?",
+        "options": {
+            "A": "Serous cystadenocarcinoma",
+            "B": "Dermoid cyst",
+            "C": "Granulosa cell tumor",
+            "D": "Mucinous adenoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "H4GPTZ2D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman presents 8 days after miscarriage with a mass protruding from cervix and rising hCG. Most likely diagnosis?",
+        "options": {
+            "A": "Retained products of conception",
+            "B": "Invasive mole",
+            "C": "Placental polyp",
+            "D": "Choriocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1010,6 +1901,60 @@
         "hint": ""
     },
     {
+        "id": "L3QEKG9A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman was asked to go for hysterectomy after endometrial biopsy because of:",
+        "options": {
+            "A": "Atypical endometrial hyperplasia",
+            "B": "Granuloma",
+            "C": "Typical Changes of Benign",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GDU8THWV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young female having bilateral ovarian mass. On histopathology mass consists of hair, teeth, epithelial cells, cartilages and gut cells. Diagnosis:",
+        "options": {
+            "A": "Sex cord tumor",
+            "B": "Endodermal sinus tumor",
+            "C": "Dermoid cyst",
+            "D": "Dysgerminoma",
+            "E": "Choriocarcinoma"
+        },
+        "correctAnswer": "C",
+        "explanation": "A dermoid cyst/Mature cystic Teratoma that originates from pluripotent cells often contains tissues from all three embryonic germ layers (ectoderm, mesoderm, and endoderm), which is why it can be composed of hair (ectoderm), teeth (mesoderm), skin cells (ectoderm), and cartilage and gut cells (mesoderm and endoderm).",
+        "hint": ""
+    },
+    {
         "id": "FX47FWN3",
         "year": [
             "2026"
@@ -1064,6 +2009,33 @@
         "hint": ""
     },
     {
+        "id": "VATF8NTH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young male presents with a painless testicular mass. Histopathology identifies a germ cell tumor. Which of the following types of testicular germ cell tumors is generally considered the most highly radiosensitive?",
+        "options": {
+            "A": "Seminoma",
+            "B": "Teratoma",
+            "C": "Embryonal Carcinoma",
+            "D": "Choriocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Seminoma is classically recognized as the most highly radiosensitive type of testicular germ cell tumor and is the type most likely to be treated with radiation therapy, even in advanced stages.",
+        "hint": ""
+    },
+    {
         "id": "4DRLFJJ7",
         "year": [
             "2026"
@@ -1085,6 +2057,33 @@
             "C": "Fibrinoid Cell Injury",
             "D": "Caseous Cell Injury",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WNFNJKX5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young patient with beta HCG increased++ and alpha fetoprotein normal and tumour treated with radiotherapy having which of following tumour?",
+        "options": {
+            "A": "Yolk Sac Tumour",
+            "B": "Mixed Germ Cell Tumour",
+            "C": "Seminoma",
+            "D": "Lymphoma",
+            "E": "Teratoma"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1199,6 +2198,33 @@
         "hint": ""
     },
     {
+        "id": "XCU7J3TD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cervical carcinoma differs from benign lesion:",
+        "options": {
+            "A": "Invasion of basement membrane",
+            "B": "Dysplasia",
+            "C": "Pleomorphic",
+            "D": "Mitosis",
+            "E": "Decrease N/C Ratio"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "G3KFBUE5",
         "year": [
             "2026"
@@ -1226,6 +2252,63 @@
         "hint": ""
     },
     {
+        "id": "AXNC33NR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning",
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Choriocarcinoma most commonly metastasizes to which organ?",
+        "options": {
+            "A": "Liver",
+            "B": "Lungs",
+            "C": "Bone",
+            "D": "Brain",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GE9MXUEU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Choriocarcinoma spreads predominately via:",
+        "options": {
+            "A": "Lymphatics",
+            "B": "Direct invasion",
+            "C": "Blood",
+            "D": "Peritoneal seeding",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "D4A32FAL",
         "year": [
             "2026"
@@ -1246,6 +2329,89 @@
             "B": "Diploid chromosomes (46,XX or 46,XY)",
             "C": "Triploid chromosomes",
             "D": "Aneuploid chromosomes",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EFP5QTWA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Counterpart of seminoma in females is",
+        "options": {
+            "A": "Embryonal cell carcinoma",
+            "B": "Immature teratoma",
+            "C": "Dysgerminoma",
+            "D": "Rete testes",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6SPQ8VV3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During a hysterectomy procedure, a nodule is excised from the uterus or surrounding tissue. Histopathological examination of the nodule reveals a disorganized structure with dead cells. Which type of necrosis is described?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Fat necrosis",
+            "C": "Caseous necrosis",
+            "D": "Liquefactive necrosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LE74NPPD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During the postpartum period, the uterus undergoes involution (regression in size). Which cellular mechanism primarily contributes to the breakdown of uterine tissue?",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Lysosomal enzyme-mediated autolysis",
+            "C": "Necrosis",
+            "D": "Fibrosis",
             "E": ""
         },
         "correctAnswer": "B",
@@ -1280,6 +2446,87 @@
         "hint": ""
     },
     {
+        "id": "BP9WEFX3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Female patient presents with vaginal discharge. Pap smear shows increased N:C ratio, pleomorphism, atypia, and increased glandular pattern. Likely diagnosis?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous metaplasia",
+            "C": "Carcinoma in situ",
+            "D": "Squamous cell carcinoma",
+            "E": "Inflammatory/infective atypia"
+        },
+        "correctAnswer": "A",
+        "explanation": "Glandular atypia + high N:C ratio -> suggests endocervical adenocarcinoma. Squamous cell carcinoma -> squamous atypia, not glandular pattern. Confirm with histopathology/colposcopy.",
+        "hint": ""
+    },
+    {
+        "id": "6UNW7CHV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Fracture of neck of femur, lead to avascular necrosis of neck, artery involved is which of following?",
+        "options": {
+            "A": "Lateral circumflex artery",
+            "B": "Descending branch lateral circumflex",
+            "C": "Medial Circumflex Artery",
+            "D": "Femoral Artery",
+            "E": "Tibial Artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QYLMWB4J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Full-thickness epithelial dysplasia with intact basement membrane is:",
+        "options": {
+            "A": "CIN I",
+            "B": "CIN II",
+            "C": "CIN III",
+            "D": "Invasive carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TJWFKMM9",
         "year": [
             "2026"
@@ -1300,6 +2547,60 @@
             "B": "Fallopian tubes",
             "C": "Ovaries",
             "D": "Vagina",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4XNHPTCZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Genotype of complete mole:",
+        "options": {
+            "A": "47,XY",
+            "B": "47,XO",
+            "C": "46,XX",
+            "D": "46,XY",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KY3XPSGE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Good's pasture Syndrome is mediated by (anti GBM antibodies) show which type of hypersensitivity?",
+        "options": {
+            "A": "Type 1",
+            "B": "Type 2",
+            "C": "Type 3",
+            "D": "Type 4",
             "E": ""
         },
         "correctAnswer": "B",
@@ -1330,6 +2631,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SX9QPENP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a patient with choriocarcinoma, which tumor marker is elevated, and the tumor originates from?",
+        "options": {
+            "A": "AFP; endoderm",
+            "B": "Beta-hCG; trophoblastic tissue",
+            "C": "CA-125; epithelial cells",
+            "D": "LDH; mesenchymal tissue",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1415,6 +2743,60 @@
         "hint": ""
     },
     {
+        "id": "3Y9XA2KS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most common cause of abortion in the 1st trimester:",
+        "options": {
+            "A": "Trisomies",
+            "B": "Monoploidy",
+            "C": "Mosaic",
+            "D": "Structural abnormalities",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RV6CV2VQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most common site of metastasis of choriocarcinoma:",
+        "options": {
+            "A": "Bone",
+            "B": "Lungs",
+            "C": "Liver",
+            "D": "Brain",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "JUUNDZ9M",
         "year": [
             "2026"
@@ -1438,6 +2820,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UY9S42L2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Parents took their child with per vaginal bleeding at age of 7 years. There is pelvic mass on examination. And tumour was diagnosed which cause precocious puberty,",
+        "options": {
+            "A": "Granulosa cell tumour",
+            "B": "Sertoli cell tumour",
+            "C": "Leydig cell tumour",
+            "D": "Dysgerminoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KEQBZBJ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Parents took their child with PV bleeding at the age of 7 years. There is a pelvic mass on examination. A tumor was diagnosed which caused precocious puberty.",
+        "options": {
+            "A": "Granulosa cell tumour",
+            "B": "Sertoli cell tumour",
+            "C": "Leydig cell tumour",
+            "D": "Dysgerminoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1577,6 +3013,33 @@
         "hint": ""
     },
     {
+        "id": "XBKZBXPC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Prostate carcinoma involves which of the following lobe",
+        "options": {
+            "A": "Anterior",
+            "B": "Posterior",
+            "C": "Lateral",
+            "D": "Median",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Prostate CA in peripheral zone and posterior Lobe and BPH in Transitional Zone and median Lobe",
+        "hint": ""
+    },
+    {
         "id": "4H4DQRZF",
         "year": [
             "2026"
@@ -1601,6 +3064,87 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U5NMKCLP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The chronic inflammatory reaction induced by the inert foreign body material of an IUCD is primarily characterized by which histological pattern?",
+        "options": {
+            "A": "Acute suppurative inflammation",
+            "B": "Serous inflammation",
+            "C": "Granulomatous inflammation",
+            "D": "Fibrinous inflammation",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XJG5CMUG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The genotype of a complete mole is:",
+        "options": {
+            "A": "Triploid",
+            "B": "Diploid",
+            "C": "Haploid",
+            "D": "Tetraploid",
+            "E": "Mosaicism"
+        },
+        "correctAnswer": "B",
+        "explanation": "Complete mole = Diploid. Incomplete/partial mole = Triploid.",
+        "hint": ""
+    },
+    {
+        "id": "6LRTC9LQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The genotype of complete mole is",
+        "options": {
+            "A": "Triploid",
+            "B": "Diploid",
+            "C": "Haploid",
+            "D": "Tetraploid",
+            "E": "Mosaicism"
+        },
+        "correctAnswer": "B",
+        "explanation": "Complete mole = Diploid. Incomplete/partial mole = Triploid.",
         "hint": ""
     },
     {
@@ -1739,1633 +3283,6 @@
         "hint": ""
     },
     {
-        "id": "GFQXKPA6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Woman had a polyp in the cervix Pap smear shows thick endothelium with pleomorphic cells and hyperchromatic nuclei showing koilocytes the change is:",
-        "options": {
-            "A": "Coxsackie virus",
-            "B": "HPV",
-            "C": "HSV",
-            "D": "Adenovirus",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AMCB7PAP",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening",
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Woman with adnexal mass containing teeth and hair: most likely diagnosis is:",
-        "options": {
-            "A": "Mature cystic teratoma (dermoid cyst)",
-            "B": "Dysgerminoma",
-            "C": "Granulosa cell tumor",
-            "D": "Sertoli-Leydig cell tumor",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "72J6P9YZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Woman's daughter diagnosed with teratoma: risk of malignancy in teratoma is:",
-        "options": {
-            "A": "1%",
-            "B": "5%",
-            "C": "10%",
-            "D": "25%",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ESUVD6WG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "13-year-old girl with menarche at age 10, now presents with oligomenorrhea and a right ovarian compact mass of about 8 cm, most likely cause is",
-        "options": {
-            "A": "Granulosa cell tumour",
-            "B": "Sertoli ledig cell tumour",
-            "C": "Pituitary adenoma",
-            "D": "Serous adenocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NPGVT33C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "26-year-old female presents with normal menstrual history now presents with Deepening of voice, acne, hirsutism, irregular menses, On abdominal examination right ovarian mass(both compact and cystic components) palpable likely cause is",
-        "options": {
-            "A": "Granulosa cell tumour",
-            "B": "Sertoli leydig cell tumour",
-            "C": "Pituitary adenoma",
-            "D": "Serous adenocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G2NBKXSH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 26-year-old woman presents with vaginal bleeding in early pregnancy. She reports mild abdominal discomfort and has passed grape-like vesicles per vaginum. Ultrasound shows a fetus with some cardiac activity and a thickened, cystic placenta. Histopathology of evacuated tissue reveals focally edematous chorionic villi and fetal parts. Karyotyping confirms triploidy, a chromosomal abnormality classically seen in partial molar pregnancy. What is the total number of chromosomes in this condition?",
-        "options": {
-            "A": "23",
-            "B": "47",
-            "C": "69",
-            "D": "92",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LUWEHJNH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 27-year-old woman presents with a painless lump in her breast during lactation. Histologic examination reveals an increased number of acini and lobules in the affected area. Which of the following terms best describes this change?",
-        "options": {
-            "A": "Hyperplasia",
-            "B": "Hypertrophy",
-            "C": "Metaplasia",
-            "D": "Dysplasia",
-            "E": "Atrophy"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WHT9HK9N",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2-month-old girl is found to have an ovarian mass with transient hormonal effects. The likely cause is:",
-        "options": {
-            "A": "Granulosa cell stimulation by maternal estrogen",
-            "B": "Germ cell tumor",
-            "C": "Stromal tumor",
-            "D": "Functional cyst",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Neonatal ovaries can respond to maternal estrogen, causing transient cystic enlargement and hormonal signs.",
-        "hint": ""
-    },
-    {
-        "id": "G23T2WP9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2-year-old boy presented with hard testicular mass. Investigations revealed a significantly raised AFP. Which germ cell tumor is the likely diagnosis?",
-        "options": {
-            "A": "Sertoli cell tumor",
-            "B": "Yolk sac",
-            "C": "Choriocarcinoma",
-            "D": "Embryonal carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "The Yolk Sac Tumor is the most common testicular cancer in boys under 3 years old and is characterized by the production of high levels of the tumor marker AFP.",
-        "hint": ""
-    },
-    {
-        "id": "5WANQB22",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30-year-old had emergency hysterectomy for uterine rupture after obstructed labor. Histology shows preserved cell outlines, anuclear eosinophilic cells (ghost cells). What type of necrosis is present?",
-        "options": {
-            "A": "Liquefactive necrosis",
-            "B": "Fat necrosis",
-            "C": "Fibrinoid necrosis",
-            "D": "Coagulative necrosis",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Ischemia from obstructed labor leads to coagulative necrosis showing preserved architecture and eosinophilic anuclear \"ghost\" cells.",
-        "hint": ""
-    },
-    {
-        "id": "LMMUNLGY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 32-year-old woman presents with adnexal mass. Labs: CA125 elevated. Most likely ovarian tumor type?",
-        "options": {
-            "A": "Dysgerminoma",
-            "B": "Epithelial ovarian carcinoma",
-            "C": "Yolk sac tumor",
-            "D": "Granulosa cell tumor",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "42MYGUU5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 40-year-old woman presents with heavy menstrual bleeding and pelvic pressure. Pelvic ultrasound shows a well-circumscribed hypoechoic mass arising from the uterine myometrium. What is the most common benign tumor of the uterus?",
-        "options": {
-            "A": "Endometrial polyp",
-            "B": "Leiomyoma",
-            "C": "Adenomyosis",
-            "D": "Fibrosarcoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "26968FVV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old man presents with a painful, hard mass in the left testis. Ultrasound confirms an intratesticular lesion. Serum α-fetoprotein and β-hCG are within normal limits. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Seminoma",
-            "B": "Yolk sac tumor",
-            "C": "Embryonal carcinoma",
-            "D": "Teratoma",
-            "E": "Choriocarcinoma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NYTFTQ59",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45-year-old woman presents with gradually increasing lower abdominal fullness and discomfort. Ultrasound reveals a unilocular cystic ovarian mass with thin walls and clear serous fluid. There are no solid components or papillary projections. Tumor markers are normal. What is the most likely diagnosis?",
-        "options": {
-            "A": "Mucinous cystadenoma",
-            "B": "Serous cystadenoma",
-            "C": "Endometrioma",
-            "D": "Dermoid cyst (mature cystic teratoma)",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2SC4WACF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 52-year-old woman presents with a progressively enlarging breast mass and induration of the overlying skin, with characteristic skin changes, describing the appearance of the breast skin as resembling the surface of an orange peel. This finding is directly caused by the blockage of which structures by the tumor cells and subsequent pathological change?",
-        "options": {
-            "A": "Blockage of veins leading to congestion",
-            "B": "Malignant cell infiltration of the epidermis",
-            "C": "Blockage of lymphatics leading to skin edema and fibrosis",
-            "D": "Extensive tumor necrosis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The \"peau d'orange\" appearance is caused by the tumor invading the superficial dermal lymphatic network. This obstruction leads to lymphedema (swelling) of the skin, with the skin tethered down around the hair follicles, creating the characteristic dimpled, orange-peel texture.",
-        "hint": ""
-    },
-    {
-        "id": "MN5U8DF8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old woman is diagnosed with invasive ductal carcinoma of the breast. Six months later, she develops progressive back pain and spinal tenderness. MRI reveals multiple vertebral lesions. The spread of the tumor to the spine most likely occurred via which of the following routes?",
-        "options": {
-            "A": "Direct extension through intercostal spaces",
-            "B": "Lymphatic spread via axillary nodes",
-            "C": "Hematogenous spread",
-            "D": "Seeding across the pleural space",
-            "E": "Perineural spread through intercostal nerves"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JNP6ZBJC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old woman presents with an ovarian mass and elevated CA-125. The mass most likely arises from:",
-        "options": {
-            "A": "Germ cells",
-            "B": "Stromal cells",
-            "C": "Epithelial cells",
-            "D": "Lymphoid tissue",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LEDEVCBN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 65 year old man presents with urinary hesitancy, nocturia, and weak stream. Digital rectal exam reveals an enlarged, firm prostate. Which of the following is the most common cancer in men associated with this presentation?",
-        "options": {
-            "A": "Prostate adenocarcinoma",
-            "B": "Transitional cell carcinoma of bladder",
-            "C": "Renal cell carcinoma",
-            "D": "Testicular seminoma",
-            "E": "Squamous cell carcinoma of the penis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KWX27VNE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 68 year old man with prostate adenocarcinoma complains of new severe back pain. Bone scan shows multiple sclerotic lesions in the spine and pelvis. Which statement is most accurate?",
-        "options": {
-            "A": "Prostate cancer commonly metastasizes to the lungs only",
-            "B": "Prostate cancer commonly metastasizes to axial skeleton producing osteoblastic (sclerotic) lesions",
-            "C": "Prostate cancer metastases are purely lytic and spare the spine",
-            "D": "Prostate cancer rarely metastasizes to bone",
-            "E": "Bone metastases from prostate cancer always produce marrow suppression only"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WQM56QD3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A biopsy from a patient's cervix shows epithelial cells with loss of uniformity in shape, size, and polarity, but without invasion into the basement membrane. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Metaplasia.",
-            "B": "Anaplasia.",
-            "C": "Neoplasia.",
-            "D": "Dysplasia.",
-            "E": "Hyperplasia"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "23E75B67",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A cell shows nuclear condensation under microscope, which of the term defines this process?",
-        "options": {
-            "A": "Karyolysis",
-            "B": "Pyknosis",
-            "C": "Karyorrhexis",
-            "D": "Apoptosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HJMPRRPX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A cervical smear of a 39 year old woman shows epithelial atypia involving two-thirds of the epithelial thickness, with loss of polarity and numerous mitotic figures. The basement membrane is intact. What is the most likely diagnosis?",
-        "options": {
-            "A": "Metaplasia",
-            "B": "Moderate dysplasia",
-            "C": "Carcinoma in situ",
-            "D": "Invasive carcinoma",
-            "E": "Hyperplasia"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QKX8TECH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient diagnosed with a case of fibroid uterus, histopathology shows decreased glands and stroma around it due to which of the following?",
-        "options": {
-            "A": "Atrophy",
-            "B": "Hypertrophy",
-            "C": "Hyperplasia",
-            "D": "Dysplasia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "34Y4QDBR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient known case of invasive ductal carcinoma with lymph node involved why it is called invasive",
-        "options": {
-            "A": "Skin involvement",
-            "B": "Pleomorphism",
-            "C": "Invasion of basement membrane",
-            "D": "Lymph node invasion",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8LP9CQH9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient presented with feeling of fullness in lower pelvis/abdomen diagnosed as glandular ovarian Carcinoma. All of the tissue microscopically appear abnormal it is",
-        "options": {
-            "A": "Well differentiated",
-            "B": "Poorly differentiated",
-            "C": "Moderately differentiated",
-            "D": "Variable",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7RV7CQZH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient presents with a feeling of fullness in the lower pelvis/abdomen and is diagnosed with glandular ovarian carcinoma. Histopathological examination reveals that all the tumor tissue has the same microscopic morphology. How would this tumor be classified?",
-        "options": {
-            "A": "Well-differentiated",
-            "B": "Poorly differentiated",
-            "C": "Moderately differentiated",
-            "D": "Undifferentiated",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8QX5C7HV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female with breast mass of 5 x6 cm rubbery mass large sheets of cells and calcium spicules likely diagnose is",
-        "options": {
-            "A": "Phylloid tumor",
-            "B": "Fibroadenoma",
-            "C": "Ductal carcinoma",
-            "D": "Lobular carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NU2QAXV5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A G2P1 woman in active labor develops sudden-onset per vaginal bleeding followed by a rapid drop in oxygen saturation and cardiovascular collapsE- Histological examination of pulmonary vessels would most likely reveal:",
-        "options": {
-            "A": "Fats in peripheral vessels",
-            "B": "Amniotic fluid in peripheral vessels",
-            "C": "Air bubbles",
-            "D": "Platelet clumps",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L4WF7K6D",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is diagnosed with a complete molar pregnancy. What is the most likely chromosomal composition?",
-        "options": {
-            "A": "46XX",
-            "B": "46XY",
-            "C": "69XXY",
-            "D": "69XXX",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UZ89FJ7G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is presented with a history of stroke followed by hysterectomy. The histopathology of the given sample shows a whorled pattern along with clear borders. Keeping in mind the given information, which type of necrosis occurs in this organ?",
-        "options": {
-            "A": "Liquefactive",
-            "B": "Coagulative",
-            "C": "Caseous",
-            "D": "Fat",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "This question is a classic presentation describing the post-infarction state of a benign tumor, most likely a uterine leiomyoma (fibroid) which was removed during the hysterectomy. \"Whorled pattern\" on histology is the classic microscopic appearance of a leiomyoma, where bundles of smooth muscle cells intersect at right angle. This along with Clear bodies confirms leiomyoma which has undergone necrosis. The characteristic type of necrosis resulting from ischemia in all solid organs is Coagulative Necrosis. \"Necrosis after stroke\" is a distractor, as stroke causes Liquefactive necrosis in the brain. While the necrosis described is in the tissue removed during the hysterectomy is coagulative.",
-        "hint": ""
-    },
-    {
-        "id": "MZVK356C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient of Breast carcinoma. On investigation mets seen in peritoneum, liver and ovaries. Route of spread?",
-        "options": {
-            "A": "Lymphatic",
-            "B": "Seeding of tumour",
-            "C": "Venous connections",
-            "D": "Subpleural lymphatic plexuses",
-            "E": "Axillary lymph nodes"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UGHEH4WA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A pelvic ultrasound shows a mass with calcified teeth and hair in Ovary. What is the likely diagnosis?",
-        "options": {
-            "A": "Serous cystadenoma",
-            "B": "Cystic teratoma",
-            "C": "Choriocarcinoma",
-            "D": "Mucinous cystadenoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KZPCVJ4D",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A postmenopausal bleeding, her endometrial biopsy was taken which shows increase endometrial thickness, increase N:C ratio, but basement membrane was intact",
-        "options": {
-            "A": "Carcinoma in situ",
-            "B": "Carcinoma",
-            "C": "Hyperplasia",
-            "D": "Dysplasia",
-            "E": "Metaplasia"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "73TSSTFY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman and man has history of recurrent pregnancy, their clinical and genetic history is unremarkable but all pregnancy end up still birth how will you investigate",
-        "options": {
-            "A": "Southern blot",
-            "B": "Tandem mass spectroscopy",
-            "C": "Next generation sequencing",
-            "D": "Karyo typing",
-            "E": "FISH"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9YCDNQLZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman has a mature ovarian mass in the adnexa with multiple tissue types. What is the likely diagnosis?",
-        "options": {
-            "A": "Serous cystadenocarcinoma",
-            "B": "Dermoid cyst",
-            "C": "Granulosa cell tumor",
-            "D": "Mucinous adenoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "H4GPTZ2D",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman presents 8 days after miscarriage with a mass protruding from cervix and rising hCG. Most likely diagnosis?",
-        "options": {
-            "A": "Retained products of conception",
-            "B": "Invasive mole",
-            "C": "Placental polyp",
-            "D": "Choriocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L3QEKG9A",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman was asked to go for hysterectomy after endometrial biopsy because of:",
-        "options": {
-            "A": "Atypical endometrial hyperplasia",
-            "B": "Granuloma",
-            "C": "Typical Changes of Benign",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GDU8THWV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young female having bilateral ovarian mass. On histopathology mass consists of hair, teeth, epithelial cells, cartilages and gut cells. Diagnosis:",
-        "options": {
-            "A": "Sex cord tumor",
-            "B": "Endodermal sinus tumor",
-            "C": "Dermoid cyst",
-            "D": "Dysgerminoma",
-            "E": "Choriocarcinoma"
-        },
-        "correctAnswer": "C",
-        "explanation": "A dermoid cyst/Mature cystic Teratoma that originates from pluripotent cells often contains tissues from all three embryonic germ layers (ectoderm, mesoderm, and endoderm), which is why it can be composed of hair (ectoderm), teeth (mesoderm), skin cells (ectoderm), and cartilage and gut cells (mesoderm and endoderm).",
-        "hint": ""
-    },
-    {
-        "id": "VATF8NTH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young male presents with a painless testicular mass. Histopathology identifies a germ cell tumor. Which of the following types of testicular germ cell tumors is generally considered the most highly radiosensitive?",
-        "options": {
-            "A": "Seminoma",
-            "B": "Teratoma",
-            "C": "Embryonal Carcinoma",
-            "D": "Choriocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Seminoma is classically recognized as the most highly radiosensitive type of testicular germ cell tumor and is the type most likely to be treated with radiation therapy, even in advanced stages.",
-        "hint": ""
-    },
-    {
-        "id": "WNFNJKX5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young patient with beta HCG increased++ and alpha fetoprotein normal and tumour treated with radiotherapy having which of following tumour?",
-        "options": {
-            "A": "Yolk Sac Tumour",
-            "B": "Mixed Germ Cell Tumour",
-            "C": "Seminoma",
-            "D": "Lymphoma",
-            "E": "Teratoma"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XCU7J3TD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cervical carcinoma differs from benign lesion:",
-        "options": {
-            "A": "Invasion of basement membrane",
-            "B": "Dysplasia",
-            "C": "Pleomorphic",
-            "D": "Mitosis",
-            "E": "Decrease N/C Ratio"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AXNC33NR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning",
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Choriocarcinoma most commonly metastasizes to which organ?",
-        "options": {
-            "A": "Liver",
-            "B": "Lungs",
-            "C": "Bone",
-            "D": "Brain",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GE9MXUEU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Choriocarcinoma spreads predominately via:",
-        "options": {
-            "A": "Lymphatics",
-            "B": "Direct invasion",
-            "C": "Blood",
-            "D": "Peritoneal seeding",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EFP5QTWA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Counterpart of seminoma in females is",
-        "options": {
-            "A": "Embryonal cell carcinoma",
-            "B": "Immature teratoma",
-            "C": "Dysgerminoma",
-            "D": "Rete testes",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6SPQ8VV3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During a hysterectomy procedure, a nodule is excised from the uterus or surrounding tissue. Histopathological examination of the nodule reveals a disorganized structure with dead cells. Which type of necrosis is described?",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Fat necrosis",
-            "C": "Caseous necrosis",
-            "D": "Liquefactive necrosis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LE74NPPD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During the postpartum period, the uterus undergoes involution (regression in size). Which cellular mechanism primarily contributes to the breakdown of uterine tissue?",
-        "options": {
-            "A": "Apoptosis",
-            "B": "Lysosomal enzyme-mediated autolysis",
-            "C": "Necrosis",
-            "D": "Fibrosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BP9WEFX3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Female patient presents with vaginal discharge. Pap smear shows increased N:C ratio, pleomorphism, atypia, and increased glandular pattern. Likely diagnosis?",
-        "options": {
-            "A": "Adenocarcinoma",
-            "B": "Squamous metaplasia",
-            "C": "Carcinoma in situ",
-            "D": "Squamous cell carcinoma",
-            "E": "Inflammatory/infective atypia"
-        },
-        "correctAnswer": "A",
-        "explanation": "Glandular atypia + high N:C ratio -> suggests endocervical adenocarcinoma. Squamous cell carcinoma -> squamous atypia, not glandular pattern. Confirm with histopathology/colposcopy.",
-        "hint": ""
-    },
-    {
-        "id": "6UNW7CHV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Fracture of neck of femur, lead to avascular necrosis of neck, artery involved is which of following?",
-        "options": {
-            "A": "Lateral circumflex artery",
-            "B": "Descending branch lateral circumflex",
-            "C": "Medial Circumflex Artery",
-            "D": "Femoral Artery",
-            "E": "Tibial Artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QYLMWB4J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Full-thickness epithelial dysplasia with intact basement membrane is:",
-        "options": {
-            "A": "CIN I",
-            "B": "CIN II",
-            "C": "CIN III",
-            "D": "Invasive carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4XNHPTCZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Genotype of complete mole:",
-        "options": {
-            "A": "47,XY",
-            "B": "47,XO",
-            "C": "46,XX",
-            "D": "46,XY",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KY3XPSGE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Good's pasture Syndrome is mediated by (anti GBM antibodies) show which type of hypersensitivity?",
-        "options": {
-            "A": "Type 1",
-            "B": "Type 2",
-            "C": "Type 3",
-            "D": "Type 4",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SX9QPENP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In a patient with choriocarcinoma, which tumor marker is elevated, and the tumor originates from?",
-        "options": {
-            "A": "AFP; endoderm",
-            "B": "Beta-hCG; trophoblastic tissue",
-            "C": "CA-125; epithelial cells",
-            "D": "LDH; mesenchymal tissue",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3Y9XA2KS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most common cause of abortion in the 1st trimester:",
-        "options": {
-            "A": "Trisomies",
-            "B": "Monoploidy",
-            "C": "Mosaic",
-            "D": "Structural abnormalities",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RV6CV2VQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most common site of metastasis of choriocarcinoma:",
-        "options": {
-            "A": "Bone",
-            "B": "Lungs",
-            "C": "Liver",
-            "D": "Brain",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UY9S42L2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Parents took their child with per vaginal bleeding at age of 7 years. There is pelvic mass on examination. And tumour was diagnosed which cause precocious puberty,",
-        "options": {
-            "A": "Granulosa cell tumour",
-            "B": "Sertoli cell tumour",
-            "C": "Leydig cell tumour",
-            "D": "Dysgerminoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KEQBZBJ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Parents took their child with PV bleeding at the age of 7 years. There is a pelvic mass on examination. A tumor was diagnosed which caused precocious puberty.",
-        "options": {
-            "A": "Granulosa cell tumour",
-            "B": "Sertoli cell tumour",
-            "C": "Leydig cell tumour",
-            "D": "Dysgerminoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XBKZBXPC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Prostate carcinoma involves which of the following lobe",
-        "options": {
-            "A": "Anterior",
-            "B": "Posterior",
-            "C": "Lateral",
-            "D": "Median",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Prostate CA in peripheral zone and posterior Lobe and BPH in Transitional Zone and median Lobe",
-        "hint": ""
-    },
-    {
-        "id": "U5NMKCLP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The chronic inflammatory reaction induced by the inert foreign body material of an IUCD is primarily characterized by which histological pattern?",
-        "options": {
-            "A": "Acute suppurative inflammation",
-            "B": "Serous inflammation",
-            "C": "Granulomatous inflammation",
-            "D": "Fibrinous inflammation",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XJG5CMUG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The genotype of a complete mole is:",
-        "options": {
-            "A": "Triploid",
-            "B": "Diploid",
-            "C": "Haploid",
-            "D": "Tetraploid",
-            "E": "Mosaicism"
-        },
-        "correctAnswer": "B",
-        "explanation": "Complete mole = Diploid. Incomplete/partial mole = Triploid.",
-        "hint": ""
-    },
-    {
-        "id": "6LRTC9LQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The genotype of complete mole is",
-        "options": {
-            "A": "Triploid",
-            "B": "Diploid",
-            "C": "Haploid",
-            "D": "Tetraploid",
-            "E": "Mosaicism"
-        },
-        "correctAnswer": "B",
-        "explanation": "Complete mole = Diploid. Incomplete/partial mole = Triploid.",
-        "hint": ""
-    },
-    {
         "id": "96G8TC32",
         "year": [
             "2025"
@@ -3470,6 +3387,89 @@
             "E": "CA 19-9"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GFQXKPA6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Woman had a polyp in the cervix Pap smear shows thick endothelium with pleomorphic cells and hyperchromatic nuclei showing koilocytes the change is:",
+        "options": {
+            "A": "Coxsackie virus",
+            "B": "HPV",
+            "C": "HSV",
+            "D": "Adenovirus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AMCB7PAP",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening",
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Woman with adnexal mass containing teeth and hair: most likely diagnosis is:",
+        "options": {
+            "A": "Mature cystic teratoma (dermoid cyst)",
+            "B": "Dysgerminoma",
+            "C": "Granulosa cell tumor",
+            "D": "Sertoli-Leydig cell tumor",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "72J6P9YZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Woman's daughter diagnosed with teratoma: risk of malignancy in teratoma is:",
+        "options": {
+            "A": "1%",
+            "B": "5%",
+            "C": "10%",
+            "D": "25%",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     }

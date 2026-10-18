@@ -1,182 +1,22 @@
 [
     {
-        "id": "RCB9ECA3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Oncology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A medical student is asked which hormone-related cancer is most commonly seen in females and is strongly influenced by hormonal factors such as estrogen exposure, early menarche, and late menopause. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Ovarian carcinoma",
-            "B": "Endometrial carcinoma",
-            "C": "Cervical carcinoma",
-            "D": "Breast carcinoma",
-            "E": "Vaginal carcinoma"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SYP8M2AJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Oncology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient receiving radiotherapy for cervical cancer develops loss of bladder control due to radiation cystitis. At what approximate radiation dose does this typically occur?",
-        "options": {
-            "A": "100 cGy",
-            "B": "1000 cGy",
-            "C": "5000 cGy",
-            "D": "10,000 cGy",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TXAR8JTW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Oncology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman undergoes surgery for a neoplasm followed by anti-hormonal therapy. Which is the most likely carcinoma?",
-        "options": {
-            "A": "Carcinoma breast",
-            "B": "Carcinoma ovary",
-            "C": "GIT carcinoma",
-            "D": "Carcinoma endometrium",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JQGZ5QM4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Oncology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "After salpingo-oophorectomy for ovarian cancer. a new mass develops. Which marker is used to monitor for recurrence?",
-        "options": {
-            "A": "LDH",
-            "B": "AFP",
-            "C": "CEA",
-            "D": "CA -125",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Upto 21 days primitive streak give signal for formation of notochord. After 21 days then notochord induce formation of vertebral column.",
-        "hint": ""
-    },
-    {
-        "id": "2Z7FBE2J",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Evening"
-        ],
-        "subject": "Oncology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "CA-125 is most commonly used as a tumor marker for?",
-        "options": {
-            "A": "Cervical carcinoma",
-            "B": "Endometrial carcinoma",
-            "C": "Epithelial ovarian carcinoma",
-            "D": "Choriocarcinoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4L9RCGMF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Oncology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which tumor marker is characteristically elevated in yolk sac tumor?",
-        "options": {
-            "A": "AFP",
-            "B": "CA-125",
-            "C": "hCG",
-            "D": "CA 19-9",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "5B4WJ2G2",
         "year": [
             "2025"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 05/25 - May 15 - Morning"
         ],
         "subject": "Oncology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "25 year old girl presented with lower abdominal pain. She is suspected of having abdominal pelvic mass upto umbilicus. Chest metastasis is also found which tumor maker is likely raised?",
+        "question": "25 year old girl presented with lowerabdominal pain. She is suspected of having abdominal pelvic mass upto umbilicus. Chest metastasis is also found. Which tumor maker is used for follow up of this patient?",
         "options": {
             "A": "CA 19-9",
             "B": "CA 15-3",
@@ -405,6 +245,87 @@
         "hint": ""
     },
     {
+        "id": "RCB9ECA3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A medical student is asked which hormone-related cancer is most commonly seen in females and is strongly influenced by hormonal factors such as estrogen exposure, early menarche, and late menopause. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Ovarian carcinoma",
+            "B": "Endometrial carcinoma",
+            "C": "Cervical carcinoma",
+            "D": "Breast carcinoma",
+            "E": "Vaginal carcinoma"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SYP8M2AJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient receiving radiotherapy for cervical cancer develops loss of bladder control due to radiation cystitis. At what approximate radiation dose does this typically occur?",
+        "options": {
+            "A": "100 cGy",
+            "B": "1000 cGy",
+            "C": "5000 cGy",
+            "D": "10,000 cGy",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TXAR8JTW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman undergoes surgery for a neoplasm followed by anti-hormonal therapy. Which is the most likely carcinoma?",
+        "options": {
+            "A": "Carcinoma breast",
+            "B": "Carcinoma ovary",
+            "C": "GIT carcinoma",
+            "D": "Carcinoma endometrium",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "3SFYSVKF",
         "year": [
             "2025"
@@ -513,6 +434,60 @@
         "hint": ""
     },
     {
+        "id": "JQGZ5QM4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After salpingo-oophorectomy for ovarian cancer. a new mass develops. Which marker is used to monitor for recurrence?",
+        "options": {
+            "A": "LDH",
+            "B": "AFP",
+            "C": "CEA",
+            "D": "CA -125",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Upto 21 days primitive streak give signal for formation of notochord. After 21 days then notochord induce formation of vertebral column.",
+        "hint": ""
+    },
+    {
+        "id": "2Z7FBE2J",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Evening"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "CA-125 is most commonly used as a tumor marker for?",
+        "options": {
+            "A": "Cervical carcinoma",
+            "B": "Endometrial carcinoma",
+            "C": "Epithelial ovarian carcinoma",
+            "D": "Choriocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "4EUAHPNP",
         "year": [
             "2025"
@@ -617,6 +592,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4L9RCGMF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Oncology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which tumor marker is characteristically elevated in yolk sac tumor?",
+        "options": {
+            "A": "AFP",
+            "B": "CA-125",
+            "C": "hCG",
+            "D": "CA 19-9",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     }

@@ -1,30 +1,28 @@
 [
     {
-        "id": "REVF8WZM",
+        "id": "3ZJDSMUZ",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics"
+            "Anesthesia"
         ],
         "exams": [
-            "Gynecology - 07/26 - July 08 - Morning",
-            "Gynecology - 11/25 - November 12 - Morning"
+            "Anesthesia - 08/25 - August 4 - Morning"
         ],
         "subject": "Embryology",
         "chapter": "Urinary System",
-        "topic": "Potter Sequence & Related Conditions",
+        "topic": "General",
         "difficulty": "Medium",
-        "question": "A pregnant woman is diagnosed with oligohydramnios on ultrasound. Which of the following is a common fetal cause?",
+        "question": "30 years old patient presented in urology opd with urinary problems so he was advised intravenous contrast imaging (IV urography). It was observed that dye is seen reaching right lumber area but no contrast visualized in the left lumber area but a shadow seen on superior aspect of bladder, the most likely cause is?",
         "options": {
-            "A": "Maternal hypertension",
-            "B": "Fetal renal agenesis",
-            "C": "Placental insufficiency",
-            "D": "Preterm labor",
-            "E": ""
+            "A": "Horseshoe kidney",
+            "B": "Renal agenesis",
+            "C": "Ectopic kidney",
+            "D": "Pelvic kidney",
+            "E": "Failure of crossing of dye"
         },
-        "correctAnswer": "B",
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -79,6 +77,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FY7RRNV9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Medium",
+        "question": "A 25 year old man undergoes imaging with contrast dye injected into his right kidney. The right kidney is visualized, but the left kidney does not show any dye. Ultrasound shows the left kidney located in the pelvis. What is the most likely diagnosis?",
+        "options": {
+            "A": "Horseshoe kidney",
+            "B": "Pelvic kidney",
+            "C": "Polycystic kidney disease",
+            "D": "Renal agenesis",
+            "E": "Duplex kidney"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "633W6Y78",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Medium",
+        "question": "A 30 year old patient presented in urology opd with urinary problems so he was advised intravenous contrast imaging(IV urography) it was observed that dye is seen reaching right lumbar area but no contrast visualized in the left lumbar area but a shadow seen on superior aspect of bladder, the most likely cause is ?",
+        "options": {
+            "A": "Horseshoe kidney",
+            "B": "Unilateral Renal agenesis",
+            "C": "Ectopic kidney",
+            "D": "Pelvic kidney",
+            "E": "Failure of crossing of dye"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -326,6 +378,33 @@
         "hint": ""
     },
     {
+        "id": "UWKBMS7X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A newborn presents with a red, moist, glistening mass in the lower abdominal wall where the bladder mucosa is visible. The umbilical cord appears normal, and the lesion represents exposure of the bladder to the outside through a defect in the abdominal wall. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Patent urachus",
+            "B": "Bladder exstrophy",
+            "C": "Omphalocele",
+            "D": "Urachal cyst",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TPJENKQ5",
         "year": [
             "2026"
@@ -352,276 +431,6 @@
         },
         "correctAnswer": "B",
         "explanation": "Intermediate mesoderm forms the urogenital ridge. It gives rise to kidneys, ureters, and genital ducts. Defects lead to renal and reproductive tract anomalies.",
-        "hint": ""
-    },
-    {
-        "id": "Q2CLW73Q",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "Potter Sequence & Related Conditions",
-        "difficulty": "Medium",
-        "question": "A pregnant woman has a low amniotic fluid index (AFI). Which fetal abnormality is the most likely cause?",
-        "options": {
-            "A": "Anencephaly",
-            "B": "Esophageal atresia",
-            "C": "Duodenal atresia",
-            "D": "Bilateral renal agenesis",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Polyhydromnios Deudenal atresia, anencephaly; both result in inability to swallow amniotic fluid), diabetes in pregnant patient, fetal anemia, multiple gestations. Oligohydromnios Associated with placental insufficiency, bilateral renal agenesis, posterior urethral valves (in males); these result in inability to excrete urine.",
-        "hint": ""
-    },
-    {
-        "id": "VENGDDVU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "As horse shoe kidney ascend from pelvis during fetal development, it remains low because get trapped under:",
-        "options": {
-            "A": "Superior mesentric artery",
-            "B": "Aorta",
-            "C": "Inferior mesenteric artery",
-            "D": "Celiac",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5NKYZAAA",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "If an ultrasound reveals a child has only a single kidney, which condition is most likely?",
-        "options": {
-            "A": "Renal agenesis",
-            "B": "Polycystic kidney disease",
-            "C": "Horseshoe kidney",
-            "D": "Ectopic kidney",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8K73Z4SH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "Metanephros is precursor of:",
-        "options": {
-            "A": "Pronephros",
-            "B": "Mesonephros",
-            "C": "Adult kidney",
-            "D": "Ureter only",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P3R8MH67",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "The ascent of a horseshoe kidney is arrested by which artery?",
-        "options": {
-            "A": "Inferior mesenteric artery",
-            "B": "Superior mesenteric artery",
-            "C": "Celiac artery",
-            "D": "Common iliac artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Fusion of the lower poles forms a horseshoe kidney. During ascent it becomes trapped beneath the inferior mesenteric artery. As a result it remains lower than normal.",
-        "hint": ""
-    },
-    {
-        "id": "4UCGCAGS",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "The urachus is the embryological remnant of the:",
-        "options": {
-            "A": "Vitelline duct",
-            "B": "Allantois",
-            "C": "Mullerian duct",
-            "D": "Wolffian duct",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "The urachus is a fibrous remnant of the allantois, a canal that drains the urinary bladder of the fetus.",
-        "hint": ""
-    },
-    {
-        "id": "3ZJDSMUZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "30 years old patient presented in urology opd with urinary problems so he was advised intravenous contrast imaging (IV urography). It was observed that dye is seen reaching right lumber area but no contrast visualized in the left lumber area but a shadow seen on superior aspect of bladder, the most likely cause is?",
-        "options": {
-            "A": "Horseshoe kidney",
-            "B": "Renal agenesis",
-            "C": "Ectopic kidney",
-            "D": "Pelvic kidney",
-            "E": "Failure of crossing of dye"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FY7RRNV9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
-        "question": "A 25 year old man undergoes imaging with contrast dye injected into his right kidney. The right kidney is visualized, but the left kidney does not show any dye. Ultrasound shows the left kidney located in the pelvis. What is the most likely diagnosis?",
-        "options": {
-            "A": "Horseshoe kidney",
-            "B": "Pelvic kidney",
-            "C": "Polycystic kidney disease",
-            "D": "Renal agenesis",
-            "E": "Duplex kidney"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "633W6Y78",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
-        "question": "A 30 year old patient presented in urology opd with urinary problems so he was advised intravenous contrast imaging(IV urography) it was observed that dye is seen reaching right lumbar area but no contrast visualized in the left lumbar area but a shadow seen on superior aspect of bladder, the most likely cause is ?",
-        "options": {
-            "A": "Horseshoe kidney",
-            "B": "Unilateral Renal agenesis",
-            "C": "Ectopic kidney",
-            "D": "Pelvic kidney",
-            "E": "Failure of crossing of dye"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UWKBMS7X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A newborn presents with a red, moist, glistening mass in the lower abdominal wall where the bladder mucosa is visible. The umbilical cord appears normal, and the lesion represents exposure of the bladder to the outside through a defect in the abdominal wall. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Patent urachus",
-            "B": "Bladder exstrophy",
-            "C": "Omphalocele",
-            "D": "Urachal cyst",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
         "hint": ""
     },
     {
@@ -679,6 +488,89 @@
         "hint": ""
     },
     {
+        "id": "Q2CLW73Q",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "Potter Sequence & Related Conditions",
+        "difficulty": "Medium",
+        "question": "A pregnant woman has a low amniotic fluid index (AFI). Which fetal abnormality is the most likely cause?",
+        "options": {
+            "A": "Anencephaly",
+            "B": "Esophageal atresia",
+            "C": "Duodenal atresia",
+            "D": "Bilateral renal agenesis",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Polyhydromnios Deudenal atresia, anencephaly; both result in inability to swallow amniotic fluid), diabetes in pregnant patient, fetal anemia, multiple gestations. Oligohydromnios Associated with placental insufficiency, bilateral renal agenesis, posterior urethral valves (in males); these result in inability to excrete urine.",
+        "hint": ""
+    },
+    {
+        "id": "REVF8WZM",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "Potter Sequence & Related Conditions",
+        "difficulty": "Medium",
+        "question": "A pregnant woman is diagnosed with oligohydramnios on ultrasound. Which of the following is a common fetal cause?",
+        "options": {
+            "A": "Maternal hypertension",
+            "B": "Fetal renal agenesis",
+            "C": "Placental insufficiency",
+            "D": "Preterm labor",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VENGDDVU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "As horse shoe kidney ascend from pelvis during fetal development, it remains low because get trapped under:",
+        "options": {
+            "A": "Superior mesentric artery",
+            "B": "Aorta",
+            "C": "Inferior mesenteric artery",
+            "D": "Celiac",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7UNJJN7W",
         "year": [
             "2025"
@@ -701,6 +593,33 @@
             "B": "Incomplete cephalocaudal folding",
             "C": "Incomplete lateral folding",
             "D": "Failed reinforcement of the cloacal membrane by underlying mesenchyme",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5NKYZAAA",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "If an ultrasound reveals a child has only a single kidney, which condition is most likely?",
+        "options": {
+            "A": "Renal agenesis",
+            "B": "Polycystic kidney disease",
+            "C": "Horseshoe kidney",
+            "D": "Ectopic kidney",
             "E": ""
         },
         "correctAnswer": "A",
@@ -764,6 +683,33 @@
         "hint": ""
     },
     {
+        "id": "8K73Z4SH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "Metanephros is precursor of:",
+        "options": {
+            "A": "Pronephros",
+            "B": "Mesonephros",
+            "C": "Adult kidney",
+            "D": "Ureter only",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "GD9GVYAN",
         "year": [
             "2025"
@@ -821,6 +767,60 @@
         },
         "correctAnswer": "B",
         "explanation": "Metanephros -> definitive kidney -> gives rise to renal pelvis, calyces, collecting ducts. Ureteric bud (from mesonephric duct) induces metanephric blastema.",
+        "hint": ""
+    },
+    {
+        "id": "P3R8MH67",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "The ascent of a horseshoe kidney is arrested by which artery?",
+        "options": {
+            "A": "Inferior mesenteric artery",
+            "B": "Superior mesenteric artery",
+            "C": "Celiac artery",
+            "D": "Common iliac artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Fusion of the lower poles forms a horseshoe kidney. During ascent it becomes trapped beneath the inferior mesenteric artery. As a result it remains lower than normal.",
+        "hint": ""
+    },
+    {
+        "id": "4UCGCAGS",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "The urachus is the embryological remnant of the:",
+        "options": {
+            "A": "Vitelline duct",
+            "B": "Allantois",
+            "C": "Mullerian duct",
+            "D": "Wolffian duct",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The urachus is a fibrous remnant of the allantois, a canal that drains the urinary bladder of the fetus.",
         "hint": ""
     },
     {

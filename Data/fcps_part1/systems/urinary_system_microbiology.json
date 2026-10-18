@@ -1,31 +1,28 @@
 [
     {
-        "id": "DY93RNWE",
+        "id": "WW7YKUJZ",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
             "Medicine & Allied"
         ],
         "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning",
-            "Medicine - 08/25 - August 5 - Morning"
+            "Medicine - 08/25 - August 4 - Evening"
         ],
         "subject": "Microbiology",
         "chapter": "Urinary System",
         "topic": "Urinary Tract Infection",
-        "difficulty": "Medium",
-        "question": "A sexually active female was diagnosed with lower urinary tract infection. Her urine culture report showed growth of an organism on chocolate and MacConkey's Agar, non-lactose fermenting, strongly urease positive, gram negative rods. Which of the following can be the likely organism?",
+        "difficulty": "Easy",
+        "question": "A 29 year old woman presents with dysuria and suprapubic pain. Urinalysis shows numerous WBCs leukocyte esterase +++ and nitrite +++, and Gram stain reveals Gram-negative bacilli. Which organism is the most likely cause?",
         "options": {
-            "A": "Pseudomonas aeruginosa",
-            "B": "E. coli",
-            "C": "Staphylococcus saprophyticus",
+            "A": "Actinomyces israelii",
+            "B": "Enterococcus faecalis",
+            "C": "Escherichia coli",
             "D": "Proteus mirabilis",
-            "E": "Enterococcus faecalis"
+            "E": "Klebsiella pneumoniae"
         },
-        "correctAnswer": "D",
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -78,114 +75,6 @@
             "C": "Proteus mirabilis",
             "D": "Pseudomonas aeruginosa",
             "E": "Staphylococcus saprophyticus"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2S8WJKC4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Urinary System",
-        "topic": "Urinary Tract Infection",
-        "difficulty": "Easy",
-        "question": "A sexually active young woman develops a urinary tract infection caused by a coagulase-negative Staphylococcus species. Which organism is the most likely cause?",
-        "options": {
-            "A": "Staphylococcus aureus",
-            "B": "Staphylococcus epidermidis",
-            "C": "Staphylococcus saprophyticus",
-            "D": "Staphylococcus lugdunensis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3GCWTMGC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Night"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Urinary System",
-        "topic": "Urinary Tract Infection",
-        "difficulty": "Medium",
-        "question": "A urine culture shows a lactose non-fermenting organism that is strongly urease positive. Which organism is most likely responsible?",
-        "options": {
-            "A": "Proteus",
-            "B": "Pseudomonas",
-            "C": "Escherichia coli",
-            "D": "Klebsiella",
-            "E": "Salmonella"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F3UZ6BJP",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Urinary System",
-        "topic": "Urinary Tract Infection",
-        "difficulty": "Easy",
-        "question": "A woman presents with burning micturition and symptoms of urinary tract infection. Urine culture shows an organism with swarming motility on agar. Which organism is the most likely cause?",
-        "options": {
-            "A": "Escherichia coli",
-            "B": "Proteus mirabilis",
-            "C": "Klebsiella pneumoniae",
-            "D": "Staphylococcus aureus",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Proteus mirabilis characteristically shows swarming motility on agar. It produces urease, predisposing to struvite stones. It is a common cause of complicated UTIs.",
-        "hint": ""
-    },
-    {
-        "id": "WW7YKUJZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Urinary System",
-        "topic": "Urinary Tract Infection",
-        "difficulty": "Easy",
-        "question": "A 29 year old woman presents with dysuria and suprapubic pain. Urinalysis shows numerous WBCs leukocyte esterase +++ and nitrite +++, and Gram stain reveals Gram-negative bacilli. Which organism is the most likely cause?",
-        "options": {
-            "A": "Actinomyces israelii",
-            "B": "Enterococcus faecalis",
-            "C": "Escherichia coli",
-            "D": "Proteus mirabilis",
-            "E": "Klebsiella pneumoniae"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -297,6 +186,117 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DY93RNWE",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning",
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Urinary System",
+        "topic": "Urinary Tract Infection",
+        "difficulty": "Medium",
+        "question": "A sexually active female was diagnosed with lower urinary tract infection. Her urine culture report showed growth of an organism on chocolate and MacConkey's Agar, non-lactose fermenting, strongly urease positive, gram negative rods. Which of the following can be the likely organism?",
+        "options": {
+            "A": "Pseudomonas aeruginosa",
+            "B": "E. coli",
+            "C": "Staphylococcus saprophyticus",
+            "D": "Proteus mirabilis",
+            "E": "Enterococcus faecalis"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2S8WJKC4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Urinary System",
+        "topic": "Urinary Tract Infection",
+        "difficulty": "Easy",
+        "question": "A sexually active young woman develops a urinary tract infection caused by a coagulase-negative Staphylococcus species. Which organism is the most likely cause?",
+        "options": {
+            "A": "Staphylococcus aureus",
+            "B": "Staphylococcus epidermidis",
+            "C": "Staphylococcus saprophyticus",
+            "D": "Staphylococcus lugdunensis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3GCWTMGC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Night"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Urinary System",
+        "topic": "Urinary Tract Infection",
+        "difficulty": "Medium",
+        "question": "A urine culture shows a lactose non-fermenting organism that is strongly urease positive. Which organism is most likely responsible?",
+        "options": {
+            "A": "Proteus",
+            "B": "Pseudomonas",
+            "C": "Escherichia coli",
+            "D": "Klebsiella",
+            "E": "Salmonella"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F3UZ6BJP",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Urinary System",
+        "topic": "Urinary Tract Infection",
+        "difficulty": "Easy",
+        "question": "A woman presents with burning micturition and symptoms of urinary tract infection. Urine culture shows an organism with swarming motility on agar. Which organism is the most likely cause?",
+        "options": {
+            "A": "Escherichia coli",
+            "B": "Proteus mirabilis",
+            "C": "Klebsiella pneumoniae",
+            "D": "Staphylococcus aureus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Proteus mirabilis characteristically shows swarming motility on agar. It produces urease, predisposing to struvite stones. It is a common cause of complicated UTIs.",
         "hint": ""
     },
     {

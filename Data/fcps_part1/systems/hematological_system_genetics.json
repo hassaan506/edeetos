@@ -1,5 +1,32 @@
 [
     {
+        "id": "983YCJPD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28 year old woman with beta-thalassemia minor and a husband who is also a carrier present for genetic counseling. They have one child diagnosed with beta-thalassemia major. What is the probability that their next child will also have beta-thalassemia major?",
+        "options": {
+            "A": "0%",
+            "B": "25%",
+            "C": "50%",
+            "D": "75%",
+            "E": "100%"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "H35UW5SA",
         "year": [
             "2026"
@@ -24,6 +51,60 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VGZUSXQK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A G6PD positive father and negative mother are planning to have a child what are chances of G6PD deficiency in their offsprings:",
+        "options": {
+            "A": "All the children affected irrespective of their gender",
+            "B": "50% affected irrespective of their gender",
+            "C": "No child affected",
+            "D": "25% of male child affected",
+            "E": "25% of female child affected"
+        },
+        "correctAnswer": "C",
+        "explanation": "G6PD deficiency is an X-linked recessive disorder. If the father (X*Y) is affected and the mother is normal (XX), all daughters will be carriers (X X*), and all sons will be unaffected (X Y). Therefore, no child will be affected (have the full deficiency).",
+        "hint": ""
+    },
+    {
+        "id": "DVHY32CE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A mother who is Thalassemia positive gave birth to child with thalassemia minor, risk of thalassemia major in upcoming generation, father's thalassemia status is unknown",
+        "options": {
+            "A": "25%",
+            "B": "50%",
+            "C": "75%",
+            "D": "100%",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "If the mother has Thalassemia minor (Tt) and their first child has Thalassemia minor (Tt), the father must have contributed a normal T allele (assuming the child is Tt and not TT). The highest risk occurs if the father also has Thalassemia minor (Tt). The cross Tt x Tt gives a 25% chance of having an offspring with Thalassemia Major (TT).",
         "hint": ""
     },
     {
@@ -135,6 +216,36 @@
         "hint": ""
     },
     {
+        "id": "Q8WMF75Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Morning",
+            "Medicine - 11/25 - November 14 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "If a G6PD deficient patient has children with a partner who has normal G6PD levels what will be the genetic outcome for their children",
+        "options": {
+            "A": "50% affected, 50% normal",
+            "B": "All children will be normal",
+            "C": "All males affected, No females affected",
+            "D": "All females affected, No males affected",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BRN9CQPG",
         "year": [
             "2026"
@@ -236,117 +347,6 @@
             "B": "25%",
             "C": "50%",
             "D": "75%",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "983YCJPD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28 year old woman with beta-thalassemia minor and a husband who is also a carrier present for genetic counseling. They have one child diagnosed with beta-thalassemia major. What is the probability that their next child will also have beta-thalassemia major?",
-        "options": {
-            "A": "0%",
-            "B": "25%",
-            "C": "50%",
-            "D": "75%",
-            "E": "100%"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VGZUSXQK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A G6PD positive father and negative mother are planning to have a child what are chances of G6PD deficiency in their offsprings:",
-        "options": {
-            "A": "All the children affected irrespective of their gender",
-            "B": "50% affected irrespective of their gender",
-            "C": "No child affected",
-            "D": "25% of male child affected",
-            "E": "25% of female child affected"
-        },
-        "correctAnswer": "C",
-        "explanation": "G6PD deficiency is an X-linked recessive disorder. If the father (X*Y) is affected and the mother is normal (XX), all daughters will be carriers (X X*), and all sons will be unaffected (X Y). Therefore, no child will be affected (have the full deficiency).",
-        "hint": ""
-    },
-    {
-        "id": "DVHY32CE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A mother who is Thalassemia positive gave birth to child with thalassemia minor, risk of thalassemia major in upcoming generation, father's thalassemia status is unknown",
-        "options": {
-            "A": "25%",
-            "B": "50%",
-            "C": "75%",
-            "D": "100%",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "If the mother has Thalassemia minor (Tt) and their first child has Thalassemia minor (Tt), the father must have contributed a normal T allele (assuming the child is Tt and not TT). The highest risk occurs if the father also has Thalassemia minor (Tt). The cross Tt x Tt gives a 25% chance of having an offspring with Thalassemia Major (TT).",
-        "hint": ""
-    },
-    {
-        "id": "Q8WMF75Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Morning",
-            "Medicine - 11/25 - November 14 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "If a G6PD deficient patient has children with a partner who has normal G6PD levels what will be the genetic outcome for their children",
-        "options": {
-            "A": "50% affected, 50% normal",
-            "B": "All children will be normal",
-            "C": "All males affected, No females affected",
-            "D": "All females affected, No males affected",
             "E": ""
         },
         "correctAnswer": "B",

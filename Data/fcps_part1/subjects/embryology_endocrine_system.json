@@ -1,35 +1,5 @@
 [
     {
-        "id": "6S555DAB",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "From which of the following embryonic structures does the thyroid gland primarily develop?",
-        "options": {
-            "A": "Third Pharyngeal Pouch",
-            "B": "Second Branchial Arch",
-            "C": "Endoderm of the Primitive Pharynx",
-            "D": "Neural Crest Cells",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The thyroid gland originates as an outpouching of the endoderm of the floor of the primitive pharynx (specifically near the foramen cecum at the base of the developing tongue) and then descends to its final position in the neck.",
-        "hint": ""
-    },
-    {
         "id": "PJUU8MP4",
         "year": [
             "2026"
@@ -53,143 +23,6 @@
             "E": "Thyroglossal duct cyst"
         },
         "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HZLG4J28",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child has a midline neck mass below the hyoid bone that moves with tongue protrusion. What is the most likely diagnosis?",
-        "options": {
-            "A": "Dermoid cyst",
-            "B": "Cervical rib",
-            "C": "Thyroglossal duct cyst",
-            "D": "Branchial cleft cyst",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZBMGG58J",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening",
-            "Radiology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with a midline neck swelling below the hyoid bone that moves with tongue protrusion. Diagnosis is:",
-        "options": {
-            "A": "Branchial Cyst",
-            "B": "Thyroglossal Duct Cyst",
-            "C": "Dermoid Cyst",
-            "D": "Lymphadenopathy",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BG82NF4Q",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with cleft palate, repeated infections with klebsiella. 22q11 deletion with defect in 3rd and 4th pharyngeal pouches. What will happen?",
-        "options": {
-            "A": "Tetany",
-            "B": "Hyperactivity of osteoclasts",
-            "C": "Calcium ion increased in ECF",
-            "D": "Tetanus",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EH562UXW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Embryologically, thyroid follicles are derived from:",
-        "options": {
-            "A": "Endoderm",
-            "B": "Ectoderm",
-            "C": "Mesoderm",
-            "D": "Neural crest",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8WMN5QPW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Midline neck swelling that moves with deglutition is likely:",
-        "options": {
-            "A": "Thyroglossal cyst",
-            "B": "Branchial cyst",
-            "C": "Lymphangioma",
-            "D": "Dermoid cyst",
-            "E": ""
-        },
-        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -329,6 +162,62 @@
         "hint": ""
     },
     {
+        "id": "HZLG4J28",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child has a midline neck mass below the hyoid bone that moves with tongue protrusion. What is the most likely diagnosis?",
+        "options": {
+            "A": "Dermoid cyst",
+            "B": "Cervical rib",
+            "C": "Thyroglossal duct cyst",
+            "D": "Branchial cleft cyst",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZBMGG58J",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening",
+            "Radiology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with a midline neck swelling below the hyoid bone that moves with tongue protrusion. Diagnosis is:",
+        "options": {
+            "A": "Branchial Cyst",
+            "B": "Thyroglossal Duct Cyst",
+            "C": "Dermoid Cyst",
+            "D": "Lymphadenopathy",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7J29YEE4",
         "year": [
             "2025"
@@ -383,6 +272,33 @@
         "hint": ""
     },
     {
+        "id": "BG82NF4Q",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with cleft palate, repeated infections with klebsiella. 22q11 deletion with defect in 3rd and 4th pharyngeal pouches. What will happen?",
+        "options": {
+            "A": "Tetany",
+            "B": "Hyperactivity of osteoclasts",
+            "C": "Calcium ion increased in ECF",
+            "D": "Tetanus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UD7SR2KR",
         "year": [
             "2025"
@@ -404,6 +320,90 @@
             "C": "Lateral neck",
             "D": "Mediastinum",
             "E": "Floor of mouth"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EH562UXW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Embryologically, thyroid follicles are derived from:",
+        "options": {
+            "A": "Endoderm",
+            "B": "Ectoderm",
+            "C": "Mesoderm",
+            "D": "Neural crest",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6S555DAB",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "From which of the following embryonic structures does the thyroid gland primarily develop?",
+        "options": {
+            "A": "Third Pharyngeal Pouch",
+            "B": "Second Branchial Arch",
+            "C": "Endoderm of the Primitive Pharynx",
+            "D": "Neural Crest Cells",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The thyroid gland originates as an outpouching of the endoderm of the floor of the primitive pharynx (specifically near the foramen cecum at the base of the developing tongue) and then descends to its final position in the neck.",
+        "hint": ""
+    },
+    {
+        "id": "8WMN5QPW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Midline neck swelling that moves with deglutition is likely:",
+        "options": {
+            "A": "Thyroglossal cyst",
+            "B": "Branchial cyst",
+            "C": "Lymphangioma",
+            "D": "Dermoid cyst",
+            "E": ""
         },
         "correctAnswer": "A",
         "explanation": "",

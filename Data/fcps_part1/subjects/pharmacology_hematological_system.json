@@ -1,31 +1,29 @@
 [
     {
-        "id": "TH445Q3R",
+        "id": "GURPVXUM",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics"
+            "Surgery & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Gynecology - 11/25 - November 12 - Morning"
+            "Surgery - 08/25 - August 7 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A neutropenic patient with Hodgkin lymphoma on chemotherapy develops fever. He is given filgrastim. What is its mechanism?",
+        "question": "A 12 year old boy presents with a long bone fracture, fracture involving which of the following areas are the most likely affect future bone growth?",
         "options": {
-            "A": "T-cell activation",
-            "B": "Stimulates neutrophil production",
-            "C": "Stimulates erythropoiesis",
-            "D": "B-cell activation",
+            "A": "Epiphyseal line",
+            "B": "Epiphyseal plate",
+            "C": "Diaphysis",
+            "D": "Metaphysis",
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "Filgrastim (G-CSF) -> stimulates bone marrow neutrophil production. Used in chemotherapy-induced neutropenia to reduce infection risk.",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -50,6 +48,87 @@
             "C": "Cyclophosphamide + Prednisolone",
             "D": "Doxorubicin + Bleomycin",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Y7TXAXZK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 29-year-old man on long-term treatment for generalized seizures presents with fatigue and pallor. Peripheral smear shows macrocytosis. Which drug effect is responsible?",
+        "options": {
+            "A": "Hemolytic anemia",
+            "B": "Aplastic anemia",
+            "C": "Megaloblastic anemia due to folate deficiency",
+            "D": "Sideroblastic anemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Phenytoin -> decreased folate absorption -> megaloblastic anemia.",
+        "hint": ""
+    },
+    {
+        "id": "FAQ3G56Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old man on long-term warfarin therapy for atrial fibrillation develops a fungal skin infection and is prescribed ketoconazole. Two days later, his PT/INR is found to be markedly increased. Which of the following best explains this finding?",
+        "options": {
+            "A": "Ketoconazole induces CYP450 → ↓ warfarin levels.",
+            "B": "Ketoconazole increases vitamin K synthesis in the gut.",
+            "C": "Ketoconazole inhibits CYP450 → ↑ warfarin levels.",
+            "D": "Ketoconazole accelerates warfarin metabolism in the liver.",
+            "E": "Ketoconazole displaces warfarin from plasma proteins → ↓ effect"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NWBK7N5G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58-year-old man with atrial fibrillation is started on warfarin. Which of the following laboratory tests should be used to monitor the effectiveness of this drug?",
+        "options": {
+            "A": "Activated partial thromboplastin time (aPTT)",
+            "B": "Prothrombin time (PT)",
+            "C": "Bleeding time",
+            "D": "Thrombin time",
+            "E": "Fibrinogen level"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -83,6 +162,114 @@
         "hint": ""
     },
     {
+        "id": "UHS75SZL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 64 year old man is admitted with a massive pulmonary embolism. He is started on an anticoagulant that works by enhancing the activity of a natural inhibitor of clotting factors IIa and Xa. Which of the following best describes the primary binding site for this drug?",
+        "options": {
+            "A": "Plasminogen",
+            "B": "Antithrombin III",
+            "C": "Tissue factor pathway inhibitor",
+            "D": "Protein C",
+            "E": "Factor VIII"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6E3VC5FM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 64-year-old man develops deep vein thrombosis and is started on warfarin therapy. Which of the following best describes warfarin's mechanism of action?",
+        "options": {
+            "A": "Inhibits gamma-glutamyl carboxylase",
+            "B": "Inhibits platelet aggregation",
+            "C": "Inhibits thromboxane A2 synthesis",
+            "D": "Activates antithrombin III",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CQK7TPGS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 64-year-old man with a deep vein thrombosis is started on warfarin therapy. Which of the following statements best describes the mechanism by which warfarin exerts its anticoagulant effect?",
+        "options": {
+            "A": "Inhibits platelet aggregation",
+            "B": "Inhibits gamma-glutamyl carboxylase",
+            "C": "Inhibits synthesis of Thromboxane A2",
+            "D": "Activates antithrombin III",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SNKU3HRK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 65 year old man is started on an oral anticoagulant that prevents recycling of vitamin K and thereby reduces γ-carboxylation of clotting factors II, VII, IX, and X. Which molecular target is inhibited by this drug?",
+        "options": {
+            "A": "Gamma-glutamyl carboxylase enzyme",
+            "B": "Vitamin K epoxide reductase complex",
+            "C": "Direct thrombin (factor IIa) inhibition",
+            "D": "Antithrombin activation",
+            "E": "Factor Xa active site"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZFN3V5MC",
         "year": [
             "2026"
@@ -106,6 +293,33 @@
             "E": "Cefalexin"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TBZ8Z97X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 6-month-old infant with focal seizures is started on an antiseizure medication. Two months later, he presents with easy bruising and bleeding gums. Laboratory results show prolonged prothrombin time. The mechanism of this adverse effect is most likely due to which of the following?",
+        "options": {
+            "A": "Decreased absorption of vitamin K due to gut flora suppression",
+            "B": "Immune-mediated platelet destruction",
+            "C": "Inhibition of clotting factor synthesis in the liver by direct toxicity",
+            "D": "Increased fibrinolytic activity",
+            "E": "Vitamin C deficiency"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -137,6 +351,33 @@
         "hint": ""
     },
     {
+        "id": "AKLJJMW3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A girl using chloramphenicol eye drops develops decreased hemoglobin. Likely cause?",
+        "options": {
+            "A": "IDA",
+            "B": "MDS",
+            "C": "Aplastic anemia",
+            "D": "Hemolytic anemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YMCN844V",
         "year": [
             "2026"
@@ -160,6 +401,64 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TH445Q3R",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A neutropenic patient with Hodgkin lymphoma on chemotherapy develops fever. He is given filgrastim. What is its mechanism?",
+        "options": {
+            "A": "T-cell activation",
+            "B": "Stimulates neutrophil production",
+            "C": "Stimulates erythropoiesis",
+            "D": "B-cell activation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Filgrastim (G-CSF) -> stimulates bone marrow neutrophil production. Used in chemotherapy-induced neutropenia to reduce infection risk.",
+        "hint": ""
+    },
+    {
+        "id": "ANSX2CFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient being treated for malaria develops megaloblastic anemia which of the following antimalarial drug is the most likely cause?",
+        "options": {
+            "A": "Quinine",
+            "B": "Hydroxychloroquine",
+            "C": "Chloroquine",
+            "D": "Proguanil",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -245,6 +544,60 @@
         "hint": ""
     },
     {
+        "id": "AXP9PNTX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is having a valvular disease for which he is put on warfarin, now he is planned for a surgical procedure. How many days before the surgery should warfarin typically be stopped?",
+        "options": {
+            "A": "9",
+            "B": "7",
+            "C": "5",
+            "D": "10",
+            "E": "4"
+        },
+        "correctAnswer": "C",
+        "explanation": "Warfarin is discontinued 5 days before surgery; this period allows the synthesis of Vitamin K-dependent clotting factors to return the INR to a safe range.",
+        "hint": ""
+    },
+    {
+        "id": "885D7NKG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is prescribed oral iron therapy for iron-deficiency anemia. To enhance absorption, which of the following should be taken concurrently?",
+        "options": {
+            "A": "Citrus fruits (Vitamin C)",
+            "B": "Dairy products",
+            "C": "Antacids",
+            "D": "Tea",
+            "E": "Calcium supplements"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "8RSU2M2X",
         "year": [
             "2026"
@@ -269,6 +622,87 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BBLFU39Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient on warfarin requires monitoring of anticoagulation status. Which lab test is used?",
+        "options": {
+            "A": "aPTT",
+            "B": "PT/INR",
+            "C": "Bleeding time",
+            "D": "Thrombin time",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Warfarin inhibits vitamin K dependent factors -> monitored by PT/INR. Reference: Katzung; Harrison Hematological System.",
+        "hint": ""
+    },
+    {
+        "id": "RPAFJSHV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient on warfarin therapy which of following drug dose should be adjusted",
+        "options": {
+            "A": "Gentamycin",
+            "B": "Heparin",
+            "C": "Cimetidine",
+            "D": "Macrolides",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2R98JRQW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with splenomegaly, skin hyperpigmentation, and serum ferritin 2000 IU/L. What is the best treatment?",
+        "options": {
+            "A": "Deferoxamine",
+            "B": "Penicillamine",
+            "C": "Splenectomy",
+            "D": "Cholestyramine",
+            "E": "Tetrathiomolybdate"
+        },
+        "correctAnswer": "A",
+        "explanation": "Iron overload (hemochromatosis or transfusion-related) -> chelation therapy. Deferoxamine binds excess iron -> excreted in urine/feces.",
         "hint": ""
     },
     {
@@ -403,6 +837,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RX8JYUC4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient was recently treated for malaria. A few days later, he presents with fatigue, dark-colored urine, and jaundice. Laboratory results show anemia and elevated LDH. Peripheral smear shows bite cells. Which of the following drugs is the most likely cause?",
+        "options": {
+            "A": "Chloroquine",
+            "B": "Artemether",
+            "C": "Quinine",
+            "D": "Primaquine",
+            "E": "Mefloquine"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -598,6 +1059,33 @@
         "hint": ""
     },
     {
+        "id": "69PMXQCG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Before starting oral anticoagulant warfarin therapy, what test should be performed in order to analyze Warfarin activity?",
+        "options": {
+            "A": "PT/APTT",
+            "B": "INR",
+            "C": "APTT",
+            "D": "PT/INR",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "VXCFW28N",
         "year": [
             "2026"
@@ -625,6 +1113,33 @@
         "hint": ""
     },
     {
+        "id": "9WXZB8XF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Enoxaparin, a Low Molecular Weight Heparin, exerts its primary anticoagulant effect by enhancing the activity of Antithrombin, which then predominantly targets and inhibits which coagulation factor?",
+        "options": {
+            "A": "Factor II (Thrombin)",
+            "B": "Factor VII",
+            "C": "Factor VIII",
+            "D": "Factor Xa",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Low Molecular Weight Heparins like Enoxaparin have a much higher affinity for inhibiting Factor Xa (part of the common pathway) than for Factor IIa (Thrombin), making Xa their primary therapeutic target.",
+        "hint": ""
+    },
+    {
         "id": "HM7TG27Y",
         "year": [
             "2026"
@@ -648,6 +1163,88 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "D7EW8K3J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Heparin activates which of the following?",
+        "options": {
+            "A": "Thrombin",
+            "B": "Factor 10",
+            "C": "Anti Thrombin 3",
+            "D": "Factor 8",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Heparin Inhibit - Factor Xa. Heparin Activates - Anti thrombin 3.",
+        "hint": ""
+    },
+    {
+        "id": "95GP48YQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Heparin is released from which on following",
+        "options": {
+            "A": "Basophils",
+            "B": "Monocytes",
+            "C": "Eosinophils",
+            "D": "Macrophages",
+            "E": "Mast cells"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DGRQTERF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Afternoon",
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Heparin is released from which on of following",
+        "options": {
+            "A": "Basophils",
+            "B": "Monocytes",
+            "C": "Eosinophils",
+            "D": "Macrophages",
+            "E": "Mast cell"
+        },
+        "correctAnswer": "E",
         "explanation": "",
         "hint": ""
     },
@@ -706,6 +1303,33 @@
         "hint": ""
     },
     {
+        "id": "AYGJB5D4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient on clopidogrel and aspirin scheduled for cardiac surgery",
+        "options": {
+            "A": "FFP",
+            "B": "Cryoprecipitate",
+            "C": "Packed platelets",
+            "D": "Whole blood",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Antiplatelet drugs inhibit platelet function -> for surgery, platelet transfusion is required to restore hemostasis.",
+        "hint": ""
+    },
+    {
         "id": "CMTSCY5J",
         "year": [
             "2026"
@@ -758,6 +1382,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SSF2UJ2B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The drug valproate causes deficiency of which of the following?",
+        "options": {
+            "A": "Folic acid",
+            "B": "Vitamin K",
+            "C": "Vitamin B1",
+            "D": "Vitamin B12",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -839,6 +1490,87 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5ZGFFEZX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Warfarin causes:",
+        "options": {
+            "A": "Decreases synthesis of clotting factors",
+            "B": "Inhibit gamma glutamyl carboxylase",
+            "C": "Increase platelet aggregation",
+            "D": "Activates vitamin k epoxide reductase",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SQFCLUJK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Warfarin therapy decreases the activity of which vitamin?",
+        "options": {
+            "A": "Vitamin K",
+            "B": "Vitamin D",
+            "C": "Vitamin C",
+            "D": "Vitamin A",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X8RJRGVS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Warfarin, an oral anticoagulant, works by interfering with the activation of Vitamin K-dependent clotting factors. What is the specific molecular step that Warfarin reduces?",
+        "options": {
+            "A": "Reduces gamma-carboxylation",
+            "B": "Activates Antithrombin III",
+            "C": "Inhibits platelet aggregation",
+            "D": "Binds directly to Thrombin",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1034,6 +1766,33 @@
         "hint": ""
     },
     {
+        "id": "H35FHXV3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of following is used for Reversal of Heparin toxicity immediately",
+        "options": {
+            "A": "Vitamin K",
+            "B": "FFP",
+            "C": "Protamine",
+            "D": "Blood",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EDG7YSMQ",
         "year": [
             "2026"
@@ -1138,765 +1897,6 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GURPVXUM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 12 year old boy presents with a long bone fracture, fracture involving which of the following areas are the most likely affect future bone growth?",
-        "options": {
-            "A": "Epiphyseal line",
-            "B": "Epiphyseal plate",
-            "C": "Diaphysis",
-            "D": "Metaphysis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y7TXAXZK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 29-year-old man on long-term treatment for generalized seizures presents with fatigue and pallor. Peripheral smear shows macrocytosis. Which drug effect is responsible?",
-        "options": {
-            "A": "Hemolytic anemia",
-            "B": "Aplastic anemia",
-            "C": "Megaloblastic anemia due to folate deficiency",
-            "D": "Sideroblastic anemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Phenytoin -> decreased folate absorption -> megaloblastic anemia.",
-        "hint": ""
-    },
-    {
-        "id": "FAQ3G56Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old man on long-term warfarin therapy for atrial fibrillation develops a fungal skin infection and is prescribed ketoconazole. Two days later, his PT/INR is found to be markedly increased. Which of the following best explains this finding?",
-        "options": {
-            "A": "Ketoconazole induces CYP450 → ↓ warfarin levels.",
-            "B": "Ketoconazole increases vitamin K synthesis in the gut.",
-            "C": "Ketoconazole inhibits CYP450 → ↑ warfarin levels.",
-            "D": "Ketoconazole accelerates warfarin metabolism in the liver.",
-            "E": "Ketoconazole displaces warfarin from plasma proteins → ↓ effect"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NWBK7N5G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58-year-old man with atrial fibrillation is started on warfarin. Which of the following laboratory tests should be used to monitor the effectiveness of this drug?",
-        "options": {
-            "A": "Activated partial thromboplastin time (aPTT)",
-            "B": "Prothrombin time (PT)",
-            "C": "Bleeding time",
-            "D": "Thrombin time",
-            "E": "Fibrinogen level"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UHS75SZL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 64 year old man is admitted with a massive pulmonary embolism. He is started on an anticoagulant that works by enhancing the activity of a natural inhibitor of clotting factors IIa and Xa. Which of the following best describes the primary binding site for this drug?",
-        "options": {
-            "A": "Plasminogen",
-            "B": "Antithrombin III",
-            "C": "Tissue factor pathway inhibitor",
-            "D": "Protein C",
-            "E": "Factor VIII"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6E3VC5FM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 64-year-old man develops deep vein thrombosis and is started on warfarin therapy. Which of the following best describes warfarin's mechanism of action?",
-        "options": {
-            "A": "Inhibits gamma-glutamyl carboxylase",
-            "B": "Inhibits platelet aggregation",
-            "C": "Inhibits thromboxane A2 synthesis",
-            "D": "Activates antithrombin III",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CQK7TPGS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 64-year-old man with a deep vein thrombosis is started on warfarin therapy. Which of the following statements best describes the mechanism by which warfarin exerts its anticoagulant effect?",
-        "options": {
-            "A": "Inhibits platelet aggregation",
-            "B": "Inhibits gamma-glutamyl carboxylase",
-            "C": "Inhibits synthesis of Thromboxane A2",
-            "D": "Activates antithrombin III",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SNKU3HRK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 65 year old man is started on an oral anticoagulant that prevents recycling of vitamin K and thereby reduces γ-carboxylation of clotting factors II, VII, IX, and X. Which molecular target is inhibited by this drug?",
-        "options": {
-            "A": "Gamma-glutamyl carboxylase enzyme",
-            "B": "Vitamin K epoxide reductase complex",
-            "C": "Direct thrombin (factor IIa) inhibition",
-            "D": "Antithrombin activation",
-            "E": "Factor Xa active site"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TBZ8Z97X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 6-month-old infant with focal seizures is started on an antiseizure medication. Two months later, he presents with easy bruising and bleeding gums. Laboratory results show prolonged prothrombin time. The mechanism of this adverse effect is most likely due to which of the following?",
-        "options": {
-            "A": "Decreased absorption of vitamin K due to gut flora suppression",
-            "B": "Immune-mediated platelet destruction",
-            "C": "Inhibition of clotting factor synthesis in the liver by direct toxicity",
-            "D": "Increased fibrinolytic activity",
-            "E": "Vitamin C deficiency"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AKLJJMW3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A girl using chloramphenicol eye drops develops decreased hemoglobin. Likely cause?",
-        "options": {
-            "A": "IDA",
-            "B": "MDS",
-            "C": "Aplastic anemia",
-            "D": "Hemolytic anemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ANSX2CFD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning",
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient being treated for malaria develops megaloblastic anemia which of the following antimalarial drug is the most likely cause?",
-        "options": {
-            "A": "Quinine",
-            "B": "Hydroxychloroquine",
-            "C": "Chloroquine",
-            "D": "Proguanil",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AXP9PNTX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is having a valvular disease for which he is put on warfarin, now he is planned for a surgical procedure. How many days before the surgery should warfarin typically be stopped?",
-        "options": {
-            "A": "9",
-            "B": "7",
-            "C": "5",
-            "D": "10",
-            "E": "4"
-        },
-        "correctAnswer": "C",
-        "explanation": "Warfarin is discontinued 5 days before surgery; this period allows the synthesis of Vitamin K-dependent clotting factors to return the INR to a safe range.",
-        "hint": ""
-    },
-    {
-        "id": "885D7NKG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is prescribed oral iron therapy for iron-deficiency anemia. To enhance absorption, which of the following should be taken concurrently?",
-        "options": {
-            "A": "Citrus fruits (Vitamin C)",
-            "B": "Dairy products",
-            "C": "Antacids",
-            "D": "Tea",
-            "E": "Calcium supplements"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BBLFU39Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient on warfarin requires monitoring of anticoagulation status. Which lab test is used?",
-        "options": {
-            "A": "aPTT",
-            "B": "PT/INR",
-            "C": "Bleeding time",
-            "D": "Thrombin time",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Warfarin inhibits vitamin K dependent factors -> monitored by PT/INR. Reference: Katzung; Harrison Hematological System.",
-        "hint": ""
-    },
-    {
-        "id": "RPAFJSHV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient on warfarin therapy which of following drug dose should be adjusted",
-        "options": {
-            "A": "Gentamycin",
-            "B": "Heparin",
-            "C": "Cimetidine",
-            "D": "Macrolides",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2R98JRQW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with splenomegaly, skin hyperpigmentation, and serum ferritin 2000 IU/L. What is the best treatment?",
-        "options": {
-            "A": "Deferoxamine",
-            "B": "Penicillamine",
-            "C": "Splenectomy",
-            "D": "Cholestyramine",
-            "E": "Tetrathiomolybdate"
-        },
-        "correctAnswer": "A",
-        "explanation": "Iron overload (hemochromatosis or transfusion-related) -> chelation therapy. Deferoxamine binds excess iron -> excreted in urine/feces.",
-        "hint": ""
-    },
-    {
-        "id": "RX8JYUC4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient was recently treated for malaria. A few days later, he presents with fatigue, dark-colored urine, and jaundice. Laboratory results show anemia and elevated LDH. Peripheral smear shows bite cells. Which of the following drugs is the most likely cause?",
-        "options": {
-            "A": "Chloroquine",
-            "B": "Artemether",
-            "C": "Quinine",
-            "D": "Primaquine",
-            "E": "Mefloquine"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "69PMXQCG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Before starting oral anticoagulant warfarin therapy, what test should be performed in order to analyze Warfarin activity?",
-        "options": {
-            "A": "PT/APTT",
-            "B": "INR",
-            "C": "APTT",
-            "D": "PT/INR",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9WXZB8XF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Enoxaparin, a Low Molecular Weight Heparin, exerts its primary anticoagulant effect by enhancing the activity of Antithrombin, which then predominantly targets and inhibits which coagulation factor?",
-        "options": {
-            "A": "Factor II (Thrombin)",
-            "B": "Factor VII",
-            "C": "Factor VIII",
-            "D": "Factor Xa",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Low Molecular Weight Heparins like Enoxaparin have a much higher affinity for inhibiting Factor Xa (part of the common pathway) than for Factor IIa (Thrombin), making Xa their primary therapeutic target.",
-        "hint": ""
-    },
-    {
-        "id": "D7EW8K3J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Heparin activates which of the following?",
-        "options": {
-            "A": "Thrombin",
-            "B": "Factor 10",
-            "C": "Anti Thrombin 3",
-            "D": "Factor 8",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Heparin Inhibit - Factor Xa. Heparin Activates - Anti thrombin 3.",
-        "hint": ""
-    },
-    {
-        "id": "95GP48YQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Heparin is released from which on following",
-        "options": {
-            "A": "Basophils",
-            "B": "Monocytes",
-            "C": "Eosinophils",
-            "D": "Macrophages",
-            "E": "Mast cells"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DGRQTERF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Afternoon",
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Heparin is released from which on of following",
-        "options": {
-            "A": "Basophils",
-            "B": "Monocytes",
-            "C": "Eosinophils",
-            "D": "Macrophages",
-            "E": "Mast cell"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AYGJB5D4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient on clopidogrel and aspirin scheduled for cardiac surgery",
-        "options": {
-            "A": "FFP",
-            "B": "Cryoprecipitate",
-            "C": "Packed platelets",
-            "D": "Whole blood",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Antiplatelet drugs inhibit platelet function -> for surgery, platelet transfusion is required to restore hemostasis.",
-        "hint": ""
-    },
-    {
-        "id": "SSF2UJ2B",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The drug valproate causes deficiency of which of the following?",
-        "options": {
-            "A": "Folic acid",
-            "B": "Vitamin K",
-            "C": "Vitamin B1",
-            "D": "Vitamin B12",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5ZGFFEZX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Warfarin causes:",
-        "options": {
-            "A": "Decreases synthesis of clotting factors",
-            "B": "Inhibit gamma glutamyl carboxylase",
-            "C": "Increase platelet aggregation",
-            "D": "Activates vitamin k epoxide reductase",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SQFCLUJK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Warfarin therapy decreases the activity of which vitamin?",
-        "options": {
-            "A": "Vitamin K",
-            "B": "Vitamin D",
-            "C": "Vitamin C",
-            "D": "Vitamin A",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X8RJRGVS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Warfarin, an oral anticoagulant, works by interfering with the activation of Vitamin K-dependent clotting factors. What is the specific molecular step that Warfarin reduces?",
-        "options": {
-            "A": "Reduces gamma-carboxylation",
-            "B": "Activates Antithrombin III",
-            "C": "Inhibits platelet aggregation",
-            "D": "Binds directly to Thrombin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "H35FHXV3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of following is used for Reversal of Heparin toxicity immediately",
-        "options": {
-            "A": "Vitamin K",
-            "B": "FFP",
-            "C": "Protamine",
-            "D": "Blood",
-            "E": ""
-        },
-        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

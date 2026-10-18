@@ -1,32 +1,87 @@
 [
     {
-        "id": "6UPDAZVF",
+        "id": "SKBXKQGD",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Surgery - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
         ],
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Patient known case of gastric ulcer now presents in OPD with complain of dental pain DOC will be:",
+        "question": "50-year-old female, diabetic for 20 years, abdominal distension after meals due to diabetic gastro-paresis, which of the following is most suitable drug for treatment?",
         "options": {
-            "A": "Naproxen",
-            "B": "Ibuprofen",
-            "C": "Acetaminophen",
-            "D": "Diclofenac",
+            "A": "Metoclopramide",
+            "B": "Omeprazole",
+            "C": "Sucralfate",
+            "D": "Ondansetron",
+            "E": "Bismuth"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9ACLPDJE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "50-years female, diabetic for 20 years, abdominal distension after meals due to diabetic gastroparesis, which of the following is most suitable drug for treatment?",
+        "options": {
+            "A": "Metoclopramide",
+            "B": "Omeprazole",
+            "C": "Sucralfate",
+            "D": "Ondensteron",
+            "E": "Bismith"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "B837TQA3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "5HT3 antagonist given to a patient for diarrhea. What drug would that be?",
+        "options": {
+            "A": "Diphenoxylate",
+            "B": "Dicyclomine",
+            "C": "Loperamide",
+            "D": "Alosetrone",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "A patient with a history of gastric ulcer should avoid NSAIDs such as naproxen, ibuprofen, and diclofenac because they inhibit cyclooxygenase and decrease protective gastric prostaglandins, increasing the risk of gastric irritation, ulceration, and GI bleeding. Acetaminophen (paracetamol) provides analgesic effect without significant inhibition of peripheral prostaglandin synthesis and therefore is the safer choice for dental pain in a patient with peptic ulcer disease.\r\n\r\nNaproxen: NSAID → increases risk of gastric ulceration.\r\nIbuprofen: NSAID → increases risk of GI irritation and bleeding.\r\nAcetaminophen: Preferred analgesic in this setting.\r\nDiclofenac: NSAID → increases GI ulcer/bleeding risk.",
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -84,6 +139,33 @@
         "hint": ""
     },
     {
+        "id": "EBEDZXS4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 12 years old boy presented with diarrhea not responding to routine anti-diarrheal treatment. Jejunal biopsy showed partial villous atrophy with many PAS positive Foamy macrophages in granules. Most likely diagnosis is",
+        "options": {
+            "A": "Celiac disease",
+            "B": "Topical sprue",
+            "C": "Giardiasis",
+            "D": "Bacterial Overgrowth",
+            "E": "Whipple disease"
+        },
+        "correctAnswer": "E",
+        "explanation": "Improved with gluten free diet: Celiac disease. Not responding to Gluten free diet: Giardiasis. PAS positive: Whipples",
+        "hint": ""
+    },
+    {
         "id": "5W3NWSG2",
         "year": [
             "2026"
@@ -138,6 +220,33 @@
         "hint": ""
     },
     {
+        "id": "WRMK8DUA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old tourist develops acute watery diarrhea. Which of the following drugs is appropriate for symptom control?",
+        "options": {
+            "A": "Diphenoxylate",
+            "B": "Aluminum hydroxide",
+            "C": "Magnesium hydroxide",
+            "D": "Ranitidine",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Antidiarrheal; antacids do not treat diarrhea.",
+        "hint": ""
+    },
+    {
         "id": "QZ4G2K49",
         "year": [
             "2026"
@@ -188,6 +297,87 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4QLXWER5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28 year old woman presents with dysentery and a history of recent travel to a tropical country. Stool microscopy shows trophozoites suggestive of Entamoeba histolytica. Which of the following is the most appropriate initial drug to eradicate the invasive form of this infection?",
+        "options": {
+            "A": "Metronidazole",
+            "B": "Ivermectin",
+            "C": "Albendazole",
+            "D": "Ciprofloxacin",
+            "E": "Trimethoprim-sulfamethoxazole"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GQY2L74T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old woman presents with bloody diarrhea, abdominal pain, and tenesmus. Colonoscopy confirms ulcerative colitis flare. Which drug is commonly used to rapidly reduce inflammation in acute flares?",
+        "options": {
+            "A": "Mesalamine",
+            "B": "Methylprednisolone",
+            "C": "Azathioprine",
+            "D": "Infliximab",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GC2UU2UM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 40 year old housewife is suffering from gastric ulcer and toothache a safe drug to give her relief from toothache would be:",
+        "options": {
+            "A": "Aspirin",
+            "B": "Ibuprofen",
+            "C": "Indomethacin",
+            "D": "Paracetamol",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -273,6 +463,60 @@
         "hint": ""
     },
     {
+        "id": "E6ZFB7EN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old diabetic man presents with chronic complaints of nausea, bloating, and early satiety, which are classic symptoms of gastroparesis. Which class of drugs is the most appropriate treatment for this patient's condition?",
+        "options": {
+            "A": "H2 receptor blockers",
+            "B": "Prokinetics",
+            "C": "Proton pump inhibitor",
+            "D": "Antispasmodic",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "365PSD2C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old woman develops jaundice and markedly elevated liver enzymes two weeks after starting antibiotic therapy for a urinary tract infection. Which of the following drugs is most likely responsible for this reaction?",
+        "options": {
+            "A": "Ampicillin",
+            "B": "Ciprofloxacin",
+            "C": "Penicillin G",
+            "D": "Erythromycin",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KWKQFGMS",
         "year": [
             "2026"
@@ -296,6 +540,89 @@
             "E": "Tranexamic acid"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4E263E6V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 48-year-old man, a known case of chronic liver disease, presents to the emergency department with hematemesis. He is stabilized and treated with terlipressin, and an urgent endoscopy confirms the presence of esophageal varices. After controlling the acute bleed, you plan long-term secondary prophylaxis to prevent another episode of variceal bleeding. Which of the following is the drug of choice for prophylaxis?",
+        "options": {
+            "A": "Octreotide",
+            "B": "Atenolol",
+            "C": "Isosorbide dinitrate",
+            "D": "Propranolol",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "D2S9VLQL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 49-year-old man with cirrhosis is admitted with hematemesis. Endoscopy reveals bleeding esophageal varices, which are treated with endoscopic band ligation and Inj: Terlipressin which of the following medications should be given prophylactically to prevent recurrence of variceal bleeding?",
+        "options": {
+            "A": "Propranolol",
+            "B": "Atenolol",
+            "C": "Amlodipine",
+            "D": "Losartan",
+            "E": "Proton Pump Inhibitors"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "D69TAVQA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 49-year-old man with cirrhosis is admitted with hematemesis. Endoscopy reveals bleeding esophageal varices, which are treated with endoscopic band ligation. Which of the following medications should be given prophylactically to prevent recurrence of variceal bleeding?",
+        "options": {
+            "A": "Propranolol",
+            "B": "Atenolol",
+            "C": "Amlodipine",
+            "D": "Losartan",
+            "E": "Proton Pump Inhibitors"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -381,6 +708,33 @@
         "correctAnswer": "C",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Lactulose</strong> - Lactulose is the <strong>first-line treatment for acute hepatic encephalopathy</strong>. It is metabolized by colonic bacteria into organic acids, which lower colonic pH and convert absorbable <strong>NH<sub>3</sub></strong> into non-absorbable <strong>NH<sub>4</sub><sup>+</sup></strong>, thereby reducing ammonia absorption.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The clues are <strong>cirrhosis + confusion + asterixis + disorientation</strong> → hepatic encephalopathy. The classic first-line drug to reduce intestinal ammonia absorption is <strong>lactulose</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Rifaximin</strong> - Reduces intestinal ammonia-producing bacteria and is very effective in preventing <strong>recurrent</strong> hepatic encephalopathy. It is generally used as an <strong>add-on to lactulose</strong>, rather than the first-line treatment alone.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Neomycin</strong> - An older non-absorbable antibiotic that reduces intestinal bacteria and ammonia production. Its use is limited because of <strong>nephrotoxicity and ototoxicity</strong>.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Metronidazole</strong> - Can reduce gut bacteria but is not preferred because prolonged use can cause <strong>neurotoxicity</strong>.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Mannitol</strong> - An osmotic diuretic used primarily to reduce <strong>intracranial pressure</strong>; it does not treat the underlying ammonia accumulation in hepatic encephalopathy.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Lactulose → acidifies colon → NH<sub>3</sub> → NH<sub>4</sub><sup>+</sup> → decreased ammonia absorption.</strong></p></p><p><p>The usual treatment target is <strong>2–3 soft stools/day</strong>. Rifaximin is commonly added for patients with recurrent episodes despite lactulose.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>LACTULOSE = “Lowers Ammonia in Colon Through Urgent Stool Elimination”</strong> → think <strong>lactulose → laxative → less ammonia</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Acute hepatic encephalopathy → Lactulose first.</strong><br></p><p><strong>Recurrent hepatic encephalopathy → Lactulose + Rifaximin.</strong></p></p>",
         "hint": "<p><br></p>"
+    },
+    {
+        "id": "NUBMTSCH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 56 year old diabetic patient has developed autonomic gastropathy with symptoms of nausea and early satiety. Which drug is effective in relieving his GI symptoms?",
+        "options": {
+            "A": "Ciprofloxacin",
+            "B": "Tetracycline",
+            "C": "Gentamicin",
+            "D": "Penicillin V",
+            "E": "Erythromycin"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
     },
     {
         "id": "TEH3BLRV",
@@ -572,6 +926,33 @@
         "hint": ""
     },
     {
+        "id": "Q8R5XAH5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A diabetic patient was brought to hospital with symptoms of bloating and discomfort. Further details revealed that he was suffering from autonomic gastropathy. Which antibiotic will be suitable for him?",
+        "options": {
+            "A": "Ciprofloxacin",
+            "B": "Azithromycin",
+            "C": "Gentamicin",
+            "D": "Erythromycin",
+            "E": "Cefixime"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NS85C3YP",
         "year": [
             "2026"
@@ -595,6 +976,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F4E2UCKC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A girl presented with severe abdominal pain and diarrhea. She was given a drug that blocks 5-HT3 receptors. Which drug was administered?",
+        "options": {
+            "A": "Alosetron",
+            "B": "Hyoscine",
+            "C": "Diphenhydramine",
+            "D": "Loperamide",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "B46P9AC9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A handicapped boy presented in hospital with abdominal pain. His stools showed white fine thread like worms. Which drug should be appropriate for his case?",
+        "options": {
+            "A": "Mebendazole",
+            "B": "Praziquantel",
+            "C": "Meronem",
+            "D": "Acyclovir",
+            "E": "Metronidazole"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -788,6 +1223,33 @@
         "hint": ""
     },
     {
+        "id": "7Z7DT979",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient had dysuria and burning micturition. She prescribed some antibiotic for her UTI. Now she comes with diarrhea and abdominal pain. Investigations revealed presence of multiple pseudomembranes on large gut. Which drug has most likely caused this?",
+        "options": {
+            "A": "Azithromycin",
+            "B": "Ciprofloxacin",
+            "C": "Clindamycin",
+            "D": "Ampicillin",
+            "E": "Gentamicin"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "F6NCVBE8",
         "year": [
             "2026"
@@ -896,6 +1358,60 @@
         "hint": ""
     },
     {
+        "id": "SGEY2HB3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient of pulmonary TB started on ATT developed GI disturbance include Nausea, vomiting, diarrhea and dyspepsia. Which of the following ATT causes GI disturbance?",
+        "options": {
+            "A": "INH",
+            "B": "Ethionamide",
+            "C": "PAAH",
+            "D": "Streptomycin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NT5VJ2M4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with complaints of diarrhea, cramping abdominal pain. Diagnosis of Crohn's disease was made. What is the best treatment to give him now?",
+        "options": {
+            "A": "Diphenhydramine",
+            "B": "Diphenoxylate",
+            "C": "Ondansetron",
+            "D": "Ursodiol",
+            "E": "Mesalamine"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TY8SR5W8",
         "year": [
             "2026"
@@ -919,6 +1435,35 @@
             "E": "Ciprofloxacin"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "S36QG49U",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with long term history of epigastric pain and vomiting, investigation reveals H.pylori infection, a specific therapy used in this case, and so which of the following drug that is used in h.pylori treatment should be contraindicated in alcoholics?",
+        "options": {
+            "A": "Metronidazole",
+            "B": "PPIs",
+            "C": "Amoxicillin",
+            "D": "Clarithromycin",
+            "E": "A"
+        },
+        "correctAnswer": "",
         "explanation": "",
         "hint": ""
     },
@@ -1247,6 +1792,90 @@
         "hint": ""
     },
     {
+        "id": "6V7HKH7Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient took 12 tablets of paracetamol 500 mg, followed by a combination of paracetamol with tramadol, and then ibuprofen. He now presents with nausea, vomiting, and epigastric pain. What is the most likely cause of his symptoms?",
+        "options": {
+            "A": "Paracetamol + Tramadol",
+            "B": "Diclofenac + Tramadol",
+            "C": "Paracetamol + Diclofenac",
+            "D": "Tramadol alone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "75G4C9YR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning",
+            "Medicine - 05/25 - May 15 - Morning",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient was started on Amikacin. Nursed asked him to inform her if he developed following symptoms",
+        "options": {
+            "A": "Blindness",
+            "B": "Jaundice",
+            "C": "Hearing loss",
+            "D": "Hair loss",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UBUTF8GT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient was taking PPI, developed a whitish lesion, the patient was prescribed Ketoconazole, but it has been shown that the blood concentration of ketoconazole in blood is low, what is the reason?",
+        "options": {
+            "A": "Enzymes for its induction",
+            "B": "GI transit time is increased due to prokinetic effect of PPI",
+            "C": "Requires acidic environment to act",
+            "D": "Competitively attached on PPI receptors",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Ketoconazole requires an acidic environment to absorb from gut. As PPIs reduce the production of Gastric acid, that's why ketoconazole is poorly absorbed from gut hence lower concentration in blood.",
+        "hint": ""
+    },
+    {
         "id": "BY69ZWVZ",
         "year": [
             "2026"
@@ -1297,6 +1926,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4L57SSLN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with acute exacerbation of ulcerative colitis is started on corticosteroids. They reduce inflammation primarily by:",
+        "options": {
+            "A": "Inhibiting cyclooxygenase",
+            "B": "Inhibiting phospholipase A2",
+            "C": "Blocking leukotriene receptors",
+            "D": "Stabilizing lysosomal membranes",
+            "E": "Suppressing NF-kB"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1382,6 +2038,60 @@
         "hint": ""
     },
     {
+        "id": "RV4A89FH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with chronic liver disease presents with ascites and peripheral edema. Which is the drug of choice for initial management?",
+        "options": {
+            "A": "Thiazide",
+            "B": "Furosemide",
+            "C": "Mannitol",
+            "D": "Spironolactone",
+            "E": "ACE inhibitors"
+        },
+        "correctAnswer": "D",
+        "explanation": "In hepatic ascites, Spironolactone, a potassium-sparing diuretic, is preferred. It is often combined with loop diuretics if needed.",
+        "hint": ""
+    },
+    {
+        "id": "WALKNZTR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with Crohn's disease is prescribed medication to reduce inflammation. Which drug is given?",
+        "options": {
+            "A": "Mesalamine",
+            "B": "Steroid",
+            "C": "DMARD",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Corticosteroids are the mainstay for inducing remission in moderate-to-severe Crohn's disease.",
+        "hint": ""
+    },
+    {
         "id": "9PL2ZAP8",
         "year": [
             "2026"
@@ -1436,6 +2146,33 @@
         "hint": ""
     },
     {
+        "id": "L688SSHJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with gastroesophageal reflux disease (GERD) is prescribed a proton pump inhibitor (PPI). What is the primary mechanism of action of PPIs?",
+        "options": {
+            "A": "Block histamine H2 receptors on parietal cells",
+            "B": "Neutralize gastric acid",
+            "C": "Irreversibly inhibit H+/K+ ATPase in gastric parietal cells",
+            "D": "Stimulate prostaglandin production",
+            "E": "Increase mucus secretion"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "X72NNK6G",
         "year": [
             "2026"
@@ -1463,6 +2200,33 @@
         "hint": ""
     },
     {
+        "id": "JL8S7KWF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young boy with ALL admitted. On chemotherapy, developed whitish patches in mouth. Diagnosed as oral thrush",
+        "options": {
+            "A": "Nystatin",
+            "B": "Penicillin",
+            "C": "Griseofulvin",
+            "D": "Amphotericin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "V2XAK2R5",
         "year": [
             "2026"
@@ -1486,6 +2250,62 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "949BW7WP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 85-year-old male patient presented to the ER room with severe pain and was treated with opioid analgesics while the pain initially subsided, the patient later developed intense right upper quadrant pain",
+        "options": {
+            "A": "Hepatocyte dysfunction",
+            "B": "Gastric irritation",
+            "C": "Intestinal inflammation",
+            "D": "Vascular compromise",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VJC6KLBJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 85-year-old male patient presented to the ER room with severe pain and was treated with opioid analgesics while the pain initially subsided, the patient later developed intense right upper quadrant pain.",
+        "options": {
+            "A": "Hepatocyte dysfunction",
+            "B": "Gastric irritation",
+            "C": "Intestinal inflammation",
+            "D": "Vascular compromise",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1571,6 +2391,143 @@
         "hint": ""
     },
     {
+        "id": "BKLRH2Y5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An HIV patient with chronic therapy-related hyperbilirubinemia and a history of gallstones asks which antiretroviral is most associated with cholelithiasis and indirect hyperbilirubinemia. Which drug is the likely culprit?",
+        "options": {
+            "A": "Efavirenz (NNRTI)",
+            "B": "Zidovudine (NRTI)",
+            "C": "Atazanavir (protease inhibitor)",
+            "D": "Lamivudine (3TC)",
+            "E": "Raltegravir (integrase inhibitor)"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MW6FA55M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 05/25 - May 14 - Morning",
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An immunocompromised patient presented with white patches in oral cavity and cheilosis. What is the treatment of choice?",
+        "options": {
+            "A": "Griseofulvin",
+            "B": "Nystatin",
+            "C": "Amphotericin B",
+            "D": "Penicillin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9XXB3RKC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Campylobacter jejuni causing diarrhea, which of the following drug should be given",
+        "options": {
+            "A": "Penicillin",
+            "B": "Erythromycin",
+            "C": "Ciprofloxacin",
+            "D": "Bismuth sulphate",
+            "E": "Azithromycin"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YN7EGCDE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "DOC of E- Histolytica:",
+        "options": {
+            "A": "Albendazol",
+            "B": "Mebendazol",
+            "C": "Praziquental",
+            "D": "Metronidazole",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TU5UVFWS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Drug of choice for diabetic gastroparesis?",
+        "options": {
+            "A": "Ondasetron",
+            "B": "Metachlopromide",
+            "C": "Omelrazole",
+            "D": "Cemitidine",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "CQA4V4EH",
         "year": [
             "2026"
@@ -1652,6 +2609,33 @@
         "hint": ""
     },
     {
+        "id": "ZEDY7EBY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Female with severe abdominal pain diagnosed as an acute biliary colic given morphine as analgesic. What additional drug beside morphine will provide good analgesic relief?",
+        "options": {
+            "A": "Pethidine",
+            "B": "Hyoscine butylbromide",
+            "C": "Diazepam",
+            "D": "Amoxicillin",
+            "E": "Paracetamol"
+        },
+        "correctAnswer": "B",
+        "explanation": "(Davidson) Drug used for Abdominal pain and Biliary colic - Hyoscine. Drug used for Acute pancreatitis - Pethidine > Morphine. Drug used postoperative - Ketorolac > Pethidine. Drug Used Postoperative in asthmatics - Pethidine.",
+        "hint": ""
+    },
+    {
         "id": "VNVTQBHL",
         "year": [
             "2026"
@@ -1675,6 +2659,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VG89UKCQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Gastroenteritis after clindamycin cause:",
+        "options": {
+            "A": "Increase motility",
+            "B": "Decrease motility",
+            "C": "Antibiotic induced Pseudomembranous colitis",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "V3G85MPK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "H2 blockers are of no benefit in which of the following conditions?",
+        "options": {
+            "A": "Gastritis",
+            "B": "Peptic ulcer disease",
+            "C": "Zollinger Ellison syndrome",
+            "D": "GERD",
+            "E": "Esophagitis"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1726,6 +2764,33 @@
             "B": "PPI",
             "C": "Clarithromycin",
             "D": "Metronidazole",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X8HWLSML",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In moderate exercise what happened?",
+        "options": {
+            "A": "Increase alveolar ventilation",
+            "B": "Arterial PO2 decrease",
+            "C": "Increased TPR",
+            "D": "Increased lactate production",
             "E": ""
         },
         "correctAnswer": "A",
@@ -1870,1456 +2935,6 @@
         "hint": ""
     },
     {
-        "id": "G2YMK7SB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Proton pump inhibitors (PPIs) reduce gastric acid secretion by inhibiting which primary active transport?",
-        "options": {
-            "A": "Na⁺/K⁺ ATPase",
-            "B": "H⁺/K⁺ ATPase",
-            "C": "Ca²⁺ ATPase",
-            "D": "Na⁺/Ca²⁺ exchanger",
-            "E": "Cl⁻/HCO₃⁻ exchanger"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2BLSNSWC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the first-line treatment for an infection with long, white roundworm?",
-        "options": {
-            "A": "Albendazole",
-            "B": "Mebendazole",
-            "C": "Ivermectin",
-            "D": "Praziquantel",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4WXNTS8S",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which anesthetic agent is classically associated with \"Hepatitis\"?",
-        "options": {
-            "A": "Isoflurane",
-            "B": "Halothane",
-            "C": "Sevoflurane",
-            "D": "Desflurane",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DFH3NZ28",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which antacid causes decreased stomach motility and constipation?",
-        "options": {
-            "A": "Cimetidine",
-            "B": "Sodium citrate",
-            "C": "Magnesium hydroxide",
-            "D": "Aluminium hydroxide",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NCGMQNGE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which anti-constipation agent works by drawing fluid into the gut lumen via osmosis to promote peristalsis?",
-        "options": {
-            "A": "Magnesium Hydroxide",
-            "B": "Methylcellulose",
-            "C": "Lactulose",
-            "D": "Both A and C",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F5GX2BVQ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which drug interaction is correctly described?",
-        "options": {
-            "A": "Sucralfate decreases cimetidine absorption",
-            "B": "Sucralfate increases cimetidine absorption",
-            "C": "Cimetidine decreases sucralfate absorption",
-            "D": "No interaction occurs",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "53APSWYQ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which medication acts as a physical barrier by binding to the base of an ulcer, protecting it from stomach acid?",
-        "options": {
-            "A": "Omeprazole",
-            "B": "Ranitidine",
-            "C": "Sucralfate",
-            "D": "Misoprostol",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "28SS6C3X",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following drugs is used to treat Crohn disease?",
-        "options": {
-            "A": "Epinephrine",
-            "B": "Loperamide",
-            "C": "Mesalamine",
-            "D": "Cholestyramine",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VQ6FTXAN",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following inhaled anesthetic agents is most significantly metabolized by the liver, potentially leading to the formation of trifluoroacetic acid and subsequent \"autoimmune-mediated\" hepatotoxicity?",
-        "options": {
-            "A": "Halothane",
-            "B": "Isoflurane",
-            "C": "Desflurane",
-            "D": "Nitrous oxide",
-            "E": "Thiopental"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UVYV55TR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following inhaled anesthetics is most notoriously associated with liver toxicity?",
-        "options": {
-            "A": "Halothane",
-            "B": "Nitrous oxide",
-            "C": "Sevoflurane",
-            "D": "Isoflurane",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YPRT52JH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 10 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is an over-the-counter stimulant laxative?",
-        "options": {
-            "A": "Lactulose",
-            "B": "Bisacodyl",
-            "C": "Psyllium",
-            "D": "Docusate sodium",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QZ34VTPR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Radiology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the most powerful transporter in the gut mucosa which causes absorbed stuff back into the gut lumen?",
-        "options": {
-            "A": "P.Glycoprotein",
-            "B": "H.Glycoprotein",
-            "C": "G.Glycoprotein",
-            "D": "C.Glycoprotein",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZR2P3YQE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following medications works by forming a viscous, paste-like physical barrier over an existing gastric ulcer to protect it from acid?",
-        "options": {
-            "A": "Omeprazole",
-            "B": "Ranitidine",
-            "C": "Misoprostol",
-            "D": "Sucralfate",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SKBXKQGD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "50-year-old female, diabetic for 20 years, abdominal distension after meals due to diabetic gastro-paresis, which of the following is most suitable drug for treatment?",
-        "options": {
-            "A": "Metoclopramide",
-            "B": "Omeprazole",
-            "C": "Sucralfate",
-            "D": "Ondansetron",
-            "E": "Bismuth"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9ACLPDJE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "50-years female, diabetic for 20 years, abdominal distension after meals due to diabetic gastroparesis, which of the following is most suitable drug for treatment?",
-        "options": {
-            "A": "Metoclopramide",
-            "B": "Omeprazole",
-            "C": "Sucralfate",
-            "D": "Ondensteron",
-            "E": "Bismith"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B837TQA3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "5HT3 antagonist given to a patient for diarrhea. What drug would that be?",
-        "options": {
-            "A": "Diphenoxylate",
-            "B": "Dicyclomine",
-            "C": "Loperamide",
-            "D": "Alosetrone",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EBEDZXS4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 12 years old boy presented with diarrhea not responding to routine anti-diarrheal treatment. Jejunal biopsy showed partial villous atrophy with many PAS positive Foamy macrophages in granules. Most likely diagnosis is",
-        "options": {
-            "A": "Celiac disease",
-            "B": "Topical sprue",
-            "C": "Giardiasis",
-            "D": "Bacterial Overgrowth",
-            "E": "Whipple disease"
-        },
-        "correctAnswer": "E",
-        "explanation": "Improved with gluten free diet: Celiac disease. Not responding to Gluten free diet: Giardiasis. PAS positive: Whipples",
-        "hint": ""
-    },
-    {
-        "id": "WRMK8DUA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25-year-old tourist develops acute watery diarrhea. Which of the following drugs is appropriate for symptom control?",
-        "options": {
-            "A": "Diphenoxylate",
-            "B": "Aluminum hydroxide",
-            "C": "Magnesium hydroxide",
-            "D": "Ranitidine",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Antidiarrheal; antacids do not treat diarrhea.",
-        "hint": ""
-    },
-    {
-        "id": "4QLXWER5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28 year old woman presents with dysentery and a history of recent travel to a tropical country. Stool microscopy shows trophozoites suggestive of Entamoeba histolytica. Which of the following is the most appropriate initial drug to eradicate the invasive form of this infection?",
-        "options": {
-            "A": "Metronidazole",
-            "B": "Ivermectin",
-            "C": "Albendazole",
-            "D": "Ciprofloxacin",
-            "E": "Trimethoprim-sulfamethoxazole"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GQY2L74T",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35-year-old woman presents with bloody diarrhea, abdominal pain, and tenesmus. Colonoscopy confirms ulcerative colitis flare. Which drug is commonly used to rapidly reduce inflammation in acute flares?",
-        "options": {
-            "A": "Mesalamine",
-            "B": "Methylprednisolone",
-            "C": "Azathioprine",
-            "D": "Infliximab",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GC2UU2UM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 40 year old housewife is suffering from gastric ulcer and toothache a safe drug to give her relief from toothache would be:",
-        "options": {
-            "A": "Aspirin",
-            "B": "Ibuprofen",
-            "C": "Indomethacin",
-            "D": "Paracetamol",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E6ZFB7EN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45-year-old diabetic man presents with chronic complaints of nausea, bloating, and early satiety, which are classic symptoms of gastroparesis. Which class of drugs is the most appropriate treatment for this patient's condition?",
-        "options": {
-            "A": "H2 receptor blockers",
-            "B": "Prokinetics",
-            "C": "Proton pump inhibitor",
-            "D": "Antispasmodic",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "365PSD2C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45-year-old woman develops jaundice and markedly elevated liver enzymes two weeks after starting antibiotic therapy for a urinary tract infection. Which of the following drugs is most likely responsible for this reaction?",
-        "options": {
-            "A": "Ampicillin",
-            "B": "Ciprofloxacin",
-            "C": "Penicillin G",
-            "D": "Erythromycin",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4E263E6V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 48-year-old man, a known case of chronic liver disease, presents to the emergency department with hematemesis. He is stabilized and treated with terlipressin, and an urgent endoscopy confirms the presence of esophageal varices. After controlling the acute bleed, you plan long-term secondary prophylaxis to prevent another episode of variceal bleeding. Which of the following is the drug of choice for prophylaxis?",
-        "options": {
-            "A": "Octreotide",
-            "B": "Atenolol",
-            "C": "Isosorbide dinitrate",
-            "D": "Propranolol",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "D2S9VLQL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 49-year-old man with cirrhosis is admitted with hematemesis. Endoscopy reveals bleeding esophageal varices, which are treated with endoscopic band ligation and Inj: Terlipressin which of the following medications should be given prophylactically to prevent recurrence of variceal bleeding?",
-        "options": {
-            "A": "Propranolol",
-            "B": "Atenolol",
-            "C": "Amlodipine",
-            "D": "Losartan",
-            "E": "Proton Pump Inhibitors"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "D69TAVQA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 49-year-old man with cirrhosis is admitted with hematemesis. Endoscopy reveals bleeding esophageal varices, which are treated with endoscopic band ligation. Which of the following medications should be given prophylactically to prevent recurrence of variceal bleeding?",
-        "options": {
-            "A": "Propranolol",
-            "B": "Atenolol",
-            "C": "Amlodipine",
-            "D": "Losartan",
-            "E": "Proton Pump Inhibitors"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NUBMTSCH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 56 year old diabetic patient has developed autonomic gastropathy with symptoms of nausea and early satiety. Which drug is effective in relieving his GI symptoms?",
-        "options": {
-            "A": "Ciprofloxacin",
-            "B": "Tetracycline",
-            "C": "Gentamicin",
-            "D": "Penicillin V",
-            "E": "Erythromycin"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q8R5XAH5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A diabetic patient was brought to hospital with symptoms of bloating and discomfort. Further details revealed that he was suffering from autonomic gastropathy. Which antibiotic will be suitable for him?",
-        "options": {
-            "A": "Ciprofloxacin",
-            "B": "Azithromycin",
-            "C": "Gentamicin",
-            "D": "Erythromycin",
-            "E": "Cefixime"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F4E2UCKC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A girl presented with severe abdominal pain and diarrhea. She was given a drug that blocks 5-HT3 receptors. Which drug was administered?",
-        "options": {
-            "A": "Alosetron",
-            "B": "Hyoscine",
-            "C": "Diphenhydramine",
-            "D": "Loperamide",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B46P9AC9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A handicapped boy presented in hospital with abdominal pain. His stools showed white fine thread like worms. Which drug should be appropriate for his case?",
-        "options": {
-            "A": "Mebendazole",
-            "B": "Praziquantel",
-            "C": "Meronem",
-            "D": "Acyclovir",
-            "E": "Metronidazole"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7Z7DT979",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient had dysuria and burning micturition. She prescribed some antibiotic for her UTI. Now she comes with diarrhea and abdominal pain. Investigations revealed presence of multiple pseudomembranes on large gut. Which drug has most likely caused this?",
-        "options": {
-            "A": "Azithromycin",
-            "B": "Ciprofloxacin",
-            "C": "Clindamycin",
-            "D": "Ampicillin",
-            "E": "Gentamicin"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SGEY2HB3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient of pulmonary TB started on ATT developed GI disturbance include Nausea, vomiting, diarrhea and dyspepsia. Which of the following ATT causes GI disturbance?",
-        "options": {
-            "A": "INH",
-            "B": "Ethionamide",
-            "C": "PAAH",
-            "D": "Streptomycin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NT5VJ2M4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with complaints of diarrhea, cramping abdominal pain. Diagnosis of Crohn's disease was made. What is the best treatment to give him now?",
-        "options": {
-            "A": "Diphenhydramine",
-            "B": "Diphenoxylate",
-            "C": "Ondansetron",
-            "D": "Ursodiol",
-            "E": "Mesalamine"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "S36QG49U",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with long term history of epigastric pain and vomiting, investigation reveals H.pylori infection, a specific therapy used in this case, and so which of the following drug that is used in h.pylori treatment should be contraindicated in alcoholics?",
-        "options": {
-            "A": "Metronidazole",
-            "B": "PPIs",
-            "C": "Amoxicillin",
-            "D": "Clarithromycin",
-            "E": "A"
-        },
-        "correctAnswer": "",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6V7HKH7Q",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient took 12 tablets of paracetamol 500 mg, followed by a combination of paracetamol with tramadol, and then ibuprofen. He now presents with nausea, vomiting, and epigastric pain. What is the most likely cause of his symptoms?",
-        "options": {
-            "A": "Paracetamol + Tramadol",
-            "B": "Diclofenac + Tramadol",
-            "C": "Paracetamol + Diclofenac",
-            "D": "Tramadol alone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "75G4C9YR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning",
-            "Medicine - 05/25 - May 15 - Morning",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient was started on Amikacin. Nursed asked him to inform her if he developed following symptoms",
-        "options": {
-            "A": "Blindness",
-            "B": "Jaundice",
-            "C": "Hearing loss",
-            "D": "Hair loss",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UBUTF8GT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient was taking PPI, developed a whitish lesion, the patient was prescribed Ketoconazole, but it has been shown that the blood concentration of ketoconazole in blood is low, what is the reason?",
-        "options": {
-            "A": "Enzymes for its induction",
-            "B": "GI transit time is increased due to prokinetic effect of PPI",
-            "C": "Requires acidic environment to act",
-            "D": "Competitively attached on PPI receptors",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Ketoconazole requires an acidic environment to absorb from gut. As PPIs reduce the production of Gastric acid, that's why ketoconazole is poorly absorbed from gut hence lower concentration in blood.",
-        "hint": ""
-    },
-    {
-        "id": "4L57SSLN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with acute exacerbation of ulcerative colitis is started on corticosteroids. They reduce inflammation primarily by:",
-        "options": {
-            "A": "Inhibiting cyclooxygenase",
-            "B": "Inhibiting phospholipase A2",
-            "C": "Blocking leukotriene receptors",
-            "D": "Stabilizing lysosomal membranes",
-            "E": "Suppressing NF-kB"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RV4A89FH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with chronic liver disease presents with ascites and peripheral edema. Which is the drug of choice for initial management?",
-        "options": {
-            "A": "Thiazide",
-            "B": "Furosemide",
-            "C": "Mannitol",
-            "D": "Spironolactone",
-            "E": "ACE inhibitors"
-        },
-        "correctAnswer": "D",
-        "explanation": "In hepatic ascites, Spironolactone, a potassium-sparing diuretic, is preferred. It is often combined with loop diuretics if needed.",
-        "hint": ""
-    },
-    {
-        "id": "WALKNZTR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with Crohn's disease is prescribed medication to reduce inflammation. Which drug is given?",
-        "options": {
-            "A": "Mesalamine",
-            "B": "Steroid",
-            "C": "DMARD",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Corticosteroids are the mainstay for inducing remission in moderate-to-severe Crohn's disease.",
-        "hint": ""
-    },
-    {
-        "id": "L688SSHJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with gastroesophageal reflux disease (GERD) is prescribed a proton pump inhibitor (PPI). What is the primary mechanism of action of PPIs?",
-        "options": {
-            "A": "Block histamine H2 receptors on parietal cells",
-            "B": "Neutralize gastric acid",
-            "C": "Irreversibly inhibit H+/K+ ATPase in gastric parietal cells",
-            "D": "Stimulate prostaglandin production",
-            "E": "Increase mucus secretion"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JL8S7KWF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young boy with ALL admitted. On chemotherapy, developed whitish patches in mouth. Diagnosed as oral thrush",
-        "options": {
-            "A": "Nystatin",
-            "B": "Penicillin",
-            "C": "Griseofulvin",
-            "D": "Amphotericin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "949BW7WP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An 85-year-old male patient presented to the ER room with severe pain and was treated with opioid analgesics while the pain initially subsided, the patient later developed intense right upper quadrant pain",
-        "options": {
-            "A": "Hepatocyte dysfunction",
-            "B": "Gastric irritation",
-            "C": "Intestinal inflammation",
-            "D": "Vascular compromise",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VJC6KLBJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An 85-year-old male patient presented to the ER room with severe pain and was treated with opioid analgesics while the pain initially subsided, the patient later developed intense right upper quadrant pain.",
-        "options": {
-            "A": "Hepatocyte dysfunction",
-            "B": "Gastric irritation",
-            "C": "Intestinal inflammation",
-            "D": "Vascular compromise",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BKLRH2Y5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An HIV patient with chronic therapy-related hyperbilirubinemia and a history of gallstones asks which antiretroviral is most associated with cholelithiasis and indirect hyperbilirubinemia. Which drug is the likely culprit?",
-        "options": {
-            "A": "Efavirenz (NNRTI)",
-            "B": "Zidovudine (NRTI)",
-            "C": "Atazanavir (protease inhibitor)",
-            "D": "Lamivudine (3TC)",
-            "E": "Raltegravir (integrase inhibitor)"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MW6FA55M",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 05/25 - May 14 - Morning",
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An immunocompromised patient presented with white patches in oral cavity and cheilosis. What is the treatment of choice?",
-        "options": {
-            "A": "Griseofulvin",
-            "B": "Nystatin",
-            "C": "Amphotericin B",
-            "D": "Penicillin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9XXB3RKC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Campylobacter jejuni causing diarrhea, which of the following drug should be given",
-        "options": {
-            "A": "Penicillin",
-            "B": "Erythromycin",
-            "C": "Ciprofloxacin",
-            "D": "Bismuth sulphate",
-            "E": "Azithromycin"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YN7EGCDE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "DOC of E- Histolytica:",
-        "options": {
-            "A": "Albendazol",
-            "B": "Mebendazol",
-            "C": "Praziquental",
-            "D": "Metronidazole",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TU5UVFWS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Drug of choice for diabetic gastroparesis?",
-        "options": {
-            "A": "Ondasetron",
-            "B": "Metachlopromide",
-            "C": "Omelrazole",
-            "D": "Cemitidine",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZEDY7EBY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Female with severe abdominal pain diagnosed as an acute biliary colic given morphine as analgesic. What additional drug beside morphine will provide good analgesic relief?",
-        "options": {
-            "A": "Pethidine",
-            "B": "Hyoscine butylbromide",
-            "C": "Diazepam",
-            "D": "Amoxicillin",
-            "E": "Paracetamol"
-        },
-        "correctAnswer": "B",
-        "explanation": "(Davidson) Drug used for Abdominal pain and Biliary colic - Hyoscine. Drug used for Acute pancreatitis - Pethidine > Morphine. Drug used postoperative - Ketorolac > Pethidine. Drug Used Postoperative in asthmatics - Pethidine.",
-        "hint": ""
-    },
-    {
-        "id": "VG89UKCQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Gastroenteritis after clindamycin cause:",
-        "options": {
-            "A": "Increase motility",
-            "B": "Decrease motility",
-            "C": "Antibiotic induced Pseudomembranous colitis",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V3G85MPK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "H2 blockers are of no benefit in which of the following conditions?",
-        "options": {
-            "A": "Gastritis",
-            "B": "Peptic ulcer disease",
-            "C": "Zollinger Ellison syndrome",
-            "D": "GERD",
-            "E": "Esophagitis"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X8HWLSML",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In moderate exercise what happened?",
-        "options": {
-            "A": "Increase alveolar ventilation",
-            "B": "Arterial PO2 decrease",
-            "C": "Increased TPR",
-            "D": "Increased lactate production",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "43RQWRLD",
         "year": [
             "2025"
@@ -3371,6 +2986,36 @@
         },
         "correctAnswer": "D",
         "explanation": "D>A",
+        "hint": ""
+    },
+    {
+        "id": "6UPDAZVF",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient known case of gastric ulcer now presents in OPD with complain of dental pain DOC will be:",
+        "options": {
+            "A": "Naproxen",
+            "B": "Ibuprofen",
+            "C": "Acetaminophen",
+            "D": "Diclofenac",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "A patient with a history of gastric ulcer should avoid NSAIDs such as naproxen, ibuprofen, and diclofenac because they inhibit cyclooxygenase and decrease protective gastric prostaglandins, increasing the risk of gastric irritation, ulceration, and GI bleeding. Acetaminophen (paracetamol) provides analgesic effect without significant inhibition of peripheral prostaglandin synthesis and therefore is the safer choice for dental pain in a patient with peptic ulcer disease.\r\n\r\nNaproxen: NSAID → increases risk of gastric ulceration.\r\nIbuprofen: NSAID → increases risk of GI irritation and bleeding.\r\nAcetaminophen: Preferred analgesic in this setting.\r\nDiclofenac: NSAID → increases GI ulcer/bleeding risk.",
         "hint": ""
     },
     {
@@ -3563,6 +3208,33 @@
         "hint": ""
     },
     {
+        "id": "G2YMK7SB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Proton pump inhibitors (PPIs) reduce gastric acid secretion by inhibiting which primary active transport?",
+        "options": {
+            "A": "Na⁺/K⁺ ATPase",
+            "B": "H⁺/K⁺ ATPase",
+            "C": "Ca²⁺ ATPase",
+            "D": "Na⁺/Ca²⁺ exchanger",
+            "E": "Cl⁻/HCO₃⁻ exchanger"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "P6TENNRB",
         "year": [
             "2025"
@@ -3623,6 +3295,143 @@
         "hint": ""
     },
     {
+        "id": "2BLSNSWC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the first-line treatment for an infection with long, white roundworm?",
+        "options": {
+            "A": "Albendazole",
+            "B": "Mebendazole",
+            "C": "Ivermectin",
+            "D": "Praziquantel",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4WXNTS8S",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which anesthetic agent is classically associated with \"Hepatitis\"?",
+        "options": {
+            "A": "Isoflurane",
+            "B": "Halothane",
+            "C": "Sevoflurane",
+            "D": "Desflurane",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DFH3NZ28",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which antacid causes decreased stomach motility and constipation?",
+        "options": {
+            "A": "Cimetidine",
+            "B": "Sodium citrate",
+            "C": "Magnesium hydroxide",
+            "D": "Aluminium hydroxide",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NCGMQNGE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which anti-constipation agent works by drawing fluid into the gut lumen via osmosis to promote peristalsis?",
+        "options": {
+            "A": "Magnesium Hydroxide",
+            "B": "Methylcellulose",
+            "C": "Lactulose",
+            "D": "Both A and C",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F5GX2BVQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which drug interaction is correctly described?",
+        "options": {
+            "A": "Sucralfate decreases cimetidine absorption",
+            "B": "Sucralfate increases cimetidine absorption",
+            "C": "Cimetidine decreases sucralfate absorption",
+            "D": "No interaction occurs",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EB7QGM52",
         "year": [
             "2025"
@@ -3646,6 +3455,33 @@
             "E": "Metoclopramide"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "53APSWYQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which medication acts as a physical barrier by binding to the base of an ulcer, protecting it from stomach acid?",
+        "options": {
+            "A": "Omeprazole",
+            "B": "Ranitidine",
+            "C": "Sucralfate",
+            "D": "Misoprostol",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -3922,6 +3758,143 @@
         "hint": ""
     },
     {
+        "id": "28SS6C3X",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following drugs is used to treat Crohn disease?",
+        "options": {
+            "A": "Epinephrine",
+            "B": "Loperamide",
+            "C": "Mesalamine",
+            "D": "Cholestyramine",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VQ6FTXAN",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following inhaled anesthetic agents is most significantly metabolized by the liver, potentially leading to the formation of trifluoroacetic acid and subsequent \"autoimmune-mediated\" hepatotoxicity?",
+        "options": {
+            "A": "Halothane",
+            "B": "Isoflurane",
+            "C": "Desflurane",
+            "D": "Nitrous oxide",
+            "E": "Thiopental"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UVYV55TR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following inhaled anesthetics is most notoriously associated with liver toxicity?",
+        "options": {
+            "A": "Halothane",
+            "B": "Nitrous oxide",
+            "C": "Sevoflurane",
+            "D": "Isoflurane",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YPRT52JH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 10 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is an over-the-counter stimulant laxative?",
+        "options": {
+            "A": "Lactulose",
+            "B": "Bisacodyl",
+            "C": "Psyllium",
+            "D": "Docusate sodium",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QZ34VTPR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Radiology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the most powerful transporter in the gut mucosa which causes absorbed stuff back into the gut lumen?",
+        "options": {
+            "A": "P.Glycoprotein",
+            "B": "H.Glycoprotein",
+            "C": "G.Glycoprotein",
+            "D": "C.Glycoprotein",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "JBR3M535",
         "year": [
             "2025"
@@ -3946,6 +3919,33 @@
         },
         "correctAnswer": "A",
         "explanation": "The correct answer for the most powerful transporter in the gut mucosa that causes absorbed substances to be transported back into the gut lumen is a P-Glycoprotein.",
+        "hint": ""
+    },
+    {
+        "id": "ZR2P3YQE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following medications works by forming a viscous, paste-like physical barrier over an existing gastric ulcer to protect it from acid?",
+        "options": {
+            "A": "Omeprazole",
+            "B": "Ranitidine",
+            "C": "Misoprostol",
+            "D": "Sucralfate",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": ""
     },
     {

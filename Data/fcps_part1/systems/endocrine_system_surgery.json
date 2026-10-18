@@ -1,35 +1,5 @@
 [
     {
-        "id": "MBY6UE3J",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 09 - Afternoon",
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young boy with a history of an enlarging goiter (thyroid swelling) now reports difficulty sleeping and lying flat, which is aggravated by flexing his neck. What is the most likely cause of his sleep difficulty?",
-        "options": {
-            "A": "Hypoglycemia from thyroid dysfunction",
-            "B": "Anxiety due to hyperthyroidism",
-            "C": "Compression of the trachea by a retrosternal goiter",
-            "D": "Sleep apnea due to obesity",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "A retrosternal (substernal) goiter grows into the chest cavity and can compress the trachea, leading to symptoms like dyspnea and orthopnea (difficulty breathing when lying down) that manifest as trouble sleeping.",
-        "hint": ""
-    },
-    {
         "id": "MLE9Y2NF",
         "year": [
             "2026"
@@ -80,60 +50,6 @@
             "E": "Hemorrhage"
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KSUJGKCG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 42 year old patient presents with headache and visual field defects. MRI shows pituitary adenoma compressing optic chiasm. Treatment of choice?",
-        "options": {
-            "A": "Bromocriptine",
-            "B": "SSRIs",
-            "C": "Surgery",
-            "D": "TCAs",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7ZH6HNV2",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a thyroid swelling suspicious for malignancy. Which investigation is most appropriate to further evaluate the thyroid tumor?",
-        "options": {
-            "A": "Thyroid function tests",
-            "B": "Ultrasound of the neck only",
-            "C": "CT scan of the neck",
-            "D": "Fine-needle aspiration cytology (FNAC)",
-            "E": "Radionuclide thyroid scan"
-        },
-        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -189,6 +105,33 @@
         },
         "correctAnswer": "D",
         "explanation": "Transsphenoidal approach -> minimally invasive, avoids brain retraction. Access through sphenoid sinus to remove adenomas in sella turcica.",
+        "hint": ""
+    },
+    {
+        "id": "KSUJGKCG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 42 year old patient presents with headache and visual field defects. MRI shows pituitary adenoma compressing optic chiasm. Treatment of choice?",
+        "options": {
+            "A": "Bromocriptine",
+            "B": "SSRIs",
+            "C": "Surgery",
+            "D": "TCAs",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -300,6 +243,33 @@
         "hint": ""
     },
     {
+        "id": "7ZH6HNV2",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a thyroid swelling suspicious for malignancy. Which investigation is most appropriate to further evaluate the thyroid tumor?",
+        "options": {
+            "A": "Thyroid function tests",
+            "B": "Ultrasound of the neck only",
+            "C": "CT scan of the neck",
+            "D": "Fine-needle aspiration cytology (FNAC)",
+            "E": "Radionuclide thyroid scan"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BLFU4RHC",
         "year": [
             "2025"
@@ -378,6 +348,36 @@
         },
         "correctAnswer": "D",
         "explanation": "Open - Posterior cricoarytenoid. Close - Lateral cricoarytenoid, Transverse arytenoid, Cricothyroid, Thyroarytenoid.",
+        "hint": ""
+    },
+    {
+        "id": "MBY6UE3J",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 09 - Afternoon",
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young boy with a history of an enlarging goiter (thyroid swelling) now reports difficulty sleeping and lying flat, which is aggravated by flexing his neck. What is the most likely cause of his sleep difficulty?",
+        "options": {
+            "A": "Hypoglycemia from thyroid dysfunction",
+            "B": "Anxiety due to hyperthyroidism",
+            "C": "Compression of the trachea by a retrosternal goiter",
+            "D": "Sleep apnea due to obesity",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "A retrosternal (substernal) goiter grows into the chest cavity and can compress the trachea, leading to symptoms like dyspnea and orthopnea (difficulty breathing when lying down) that manifest as trouble sleeping.",
         "hint": ""
     },
     {

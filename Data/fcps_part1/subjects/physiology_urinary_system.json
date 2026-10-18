@@ -1,64 +1,164 @@
 [
     {
-        "id": "K88MBJRR",
+        "id": "263NMVQ4",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Medicine & Allied",
             "Radiology"
         ],
         "exams": [
-            "Medicine - 01/26 - January 7 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Medicine - 05/25 - May 12 - Morning",
             "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Nephrotic Syndromes",
+        "difficulty": "Easy",
+        "question": "A 12-year-old boy presents with generalized body swelling. Laboratory investigations reveal proteinuria >10 g/day, hypoalbuminemia, and hyperlipidemia. What is the primary mechanism responsible for the development of edema in this patient?",
+        "options": {
+            "A": "Decreased oncotic pressure",
+            "B": "Increased capillary hydrostatic pressure",
+            "C": "Lymphatic obstruction",
+            "D": "Sodium and water retention",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WAX5A3YN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
         ],
         "subject": "Physiology",
         "chapter": "Urinary System",
         "topic": "General",
         "difficulty": "Easy",
-        "question": "GFR is measured by:",
+        "question": "A 26-year-old woman has normal glomerular filtration rate. Her urinalysis shows no glucose or amino acids in the urine. Which part of the nephron is primarily responsible for the complete reabsorption of these substances under normal physiological conditions?",
         "options": {
-            "A": "Inulin",
-            "B": "Creatinine",
-            "C": "PAH",
-            "D": "Ammonia",
-            "E": ""
+            "A": "Proximal convoluted tubule",
+            "B": "Loop of Henle",
+            "C": "Distal convoluted tubule",
+            "D": "Collecting duct",
+            "E": "Thick limb of loop of henle"
         },
         "correctAnswer": "A",
-        "explanation": "GFR Measured - Inuline. GFR Estimated/Clinically - Creatinine. Endogenous subtance to measure GFR - Creatinine. Renal plasma flow - PAH.",
+        "explanation": "",
         "hint": ""
     },
     {
-        "id": "884BSL3Z",
+        "id": "5AJD4GYR",
         "year": [
-            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "A 30-year-old man presents with polyuria and polydipsia. Laboratory tests show urine osmolality same as plasma osmolality. Which of the following is the most likely mechanism?",
+        "options": {
+            "A": "Hypoosmolar renal medulla",
+            "B": "Hyperosmolar renal medulla",
+            "C": "Excess ADH",
+            "D": "Obstructive uropathy",
+            "E": "Primary polydipsia"
+        },
+        "correctAnswer": "B",
+        "explanation": "Isosthenuria (urine osmolality approx plasma osmolality, about 300 mOsm/kg) means the kidney is unable to concentrate or dilute urine effectively. The key mechanism for concentrating urine is the high solute concentration (hyperosmolarity) in the renal medulla. If the renal medulla is hypoosmolar (or the kidney fails to respond to ADH in the setting of normal ADH), the final collecting duct fluid will equilibrate with the plasma, resulting in isosthenuria.",
+        "hint": ""
+    },
+    {
+        "id": "GPDVXZ37",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A 35-year-old man's renal function test shows: Filtration coefficient (Kf): 12 mL/min/mmHg, Net filtration pressure (NFP): 25 mmHg, Urinary clearance: 30 mL/min. What is the approximate glomerular filtration rate (GFR)?",
+        "options": {
+            "A": "150 mL/min",
+            "B": "250 mL/min",
+            "C": "300 mL/min",
+            "D": "350 mL/min",
+            "E": "400 mL/min"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MPBHU3CL",
+        "year": [
             "2025"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Surgery - 11/25 - November 11 - Evening"
+            "Surgery - 11/25 - November 12 - Evening"
         ],
         "subject": "Physiology",
         "chapter": "Urinary System",
         "topic": "General",
         "difficulty": "Medium",
-        "question": "Patient after RTA massive blood loss, part of nephron that is responsible to bring Blood pressure back to normal.",
+        "question": "A 35-year-old patient undergoes testing for renal plasma flow (RPF) using para-aminohippuric acid (PAH) clearance. Urine flow rate, urine PAH concentration, and plasma PAH concentration are measured. Which formula is used to calculate RPF?",
         "options": {
-            "A": "PTC",
-            "B": "Thick ascending loop",
-            "C": "Early DCT",
-            "D": "Collecting duct",
+            "A": "RPF = (Plasma concentration x Urine flow) / Urine concentration",
+            "B": "RPF = (Urine concentration x Urine flow) / Plasma concentration",
+            "C": "RPF = Urine flow / (Urine concentration x Plasma concentration)",
+            "D": "RPF = Plasma concentration / (Urine concentration x Urine flow)",
             "E": ""
         },
-        "correctAnswer": "C",
-        "explanation": "The response to massive blood loss (hypotension) involves the activation of the RAAS system. The Angiotensin II and Aldosterone secreted act primarily to increase Na and water reabsorption in the Proximal Convoluted Tubule and the Collecting Duct (Late DCT), but the Macula Densa in the Early DCT is crucial for sensing Na+ and triggering the initial Renin release, making the DCT key to the RAAS system's effect.",
+        "correctAnswer": "B",
+        "explanation": "PAH is almost completely cleared by the kidneys in a single pass; the clearance principle, RPF can be estimated from PAH clearance using formula: RPF = (Upah x V) / Ppah.",
+        "hint": ""
+    },
+    {
+        "id": "HL93HUVF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A 40-year-old patient has a plasma glucose of 250 mg/dL. GFR is known, urine flow is 1 mL/min, and urinary glucose is zero. How can renal glucose reabsorption be calculated?",
+        "options": {
+            "A": "Reabsorption = Filtration rate - Excretion rate",
+            "B": "Reabsorption = Excretion rate - Filtration rate",
+            "C": "Reabsorption = Filtration rate x Excretion rate",
+            "D": "Reabsorption = Plasma glucose x Urine glucose",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Renal glucose reabsorption is calculated using: R = (GFR x Pglucose) - (Uglucose x V). Since urinary glucose is zero, all filtered glucose is reabsorbed by the renal tubules.",
         "hint": ""
     },
     {
@@ -83,6 +183,60 @@
             "C": "Distal convoluted tubule (DCT)",
             "D": "Collecting duct",
             "E": "Thin descending limb"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HHN992UG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "A 45 years old patient is diagnosed with a condition causing excessive secretion of ADH, despite the ADH levels, the patient shows an unusually high urea concentration in the urine due to defect in:",
+        "options": {
+            "A": "PCT",
+            "B": "DCT",
+            "C": "LOH",
+            "D": "Inner medullary cortical ducts",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "ADH act on Collecting Ducts > Distal Convoluted Tubules (DCT) > Collecting Tubules (CT). Aldosterone act on Cortical Collecting Tubules > Distal Convoluted Tubules (DCT) > Collecting Ducts (CD).",
+        "hint": ""
+    },
+    {
+        "id": "PNZH8P7Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A 50-year-old man undergoes renal function testing. Which of the following is the best measure of glomerular filtration rate in this patient?",
+        "options": {
+            "A": "Serum urea concentration",
+            "B": "Serum creatinine concentration",
+            "C": "Creatinine clearance",
+            "D": "Urinary protein excretion",
+            "E": ""
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -116,6 +270,33 @@
         "hint": ""
     },
     {
+        "id": "Y45Y9WV9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Chronic Kidney Disease",
+        "difficulty": "Medium",
+        "question": "A 58 year old man with chronic kidney disease presents with calf pain and muscle weakness. Laboratory studies reveal elevated serum parathyroid hormone (PTH) levels. Which of the following is a direct effect of PTH on the kidneys in this patient?",
+        "options": {
+            "A": "Increased calcium excretion",
+            "B": "Increased phosphate reabsorption",
+            "C": "Increased phosphate excretion",
+            "D": "Decreased 1α-hydroxylase activity",
+            "E": "Increased bicarbonate reabsorption"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NGZ35994",
         "year": [
             "2026"
@@ -139,6 +320,33 @@
             "E": "Increased gastrointestinal potassium absorption"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GETDVDUJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Nephrotic Syndromes",
+        "difficulty": "Easy",
+        "question": "A 6-year-old presents with periorbital edema. Labs: proteinuria >3.5 g/day. Pathophysiology of edema?",
+        "options": {
+            "A": "Increased hydrostatic pressure",
+            "B": "Decreased lymphatic drainage",
+            "C": "Albumin loss -> decreased plasma oncotic pressure -> sodium and water retention",
+            "D": "Hyperaldosteronism only",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -167,6 +375,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Ammonium chloride is a systemic acidifying agent. Chronic use produces metabolic acidosis.",
+        "hint": ""
+    },
+    {
+        "id": "AFUY2KPL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Micturition & Urinary Incontinence",
+        "difficulty": "Hard",
+        "question": "A female is travelling on a bumpy road but she has no dribbling of urine. Which of the following layers of the urethra prevents it?",
+        "options": {
+            "A": "Inner muscular layer",
+            "B": "Middle muscular layer",
+            "C": "Outer muscular layer",
+            "D": "Middle and outer muscular layer",
+            "E": "Outer, middle and inner muscular layer"
+        },
+        "correctAnswer": "C",
+        "explanation": "The outer muscular layer of the urethra, specifically the external urethral sphincter, prevents the dribbling of urine. Since the question asks which layer or layers prevent the dribbling of urine during a strenuous activity like jumping, the correct answer must be the layer that provides voluntary control. That is the outer muscular layer. Including the inner and middle layers (as in option E) is incorrect because they are involuntary and are not the primary mechanism for preventing leakage under these specific conditions.",
         "hint": ""
     },
     {
@@ -224,6 +459,60 @@
         "hint": ""
     },
     {
+        "id": "ZEK6UEGD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A patient consumes high salt, but plasma Na+ remains normal. Which hormone regulates plasma osmolality?",
+        "options": {
+            "A": "Aldosterone",
+            "B": "Renin",
+            "C": "ADH (vasopressin)",
+            "D": "ANP",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "ADH regulates water reabsorption in collecting ducts, maintaining plasma osmolality. Sodium intake may vary, but plasma [Na+] is controlled by water balance.",
+        "hint": ""
+    },
+    {
+        "id": "U3JEJGCZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A patient develop Anasarca fluid distribution will occur in which compartment",
+        "options": {
+            "A": "ICF",
+            "B": "Plasma and ICF",
+            "C": "Interstitial and ECF",
+            "D": "ICF and ECF",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "4XWXRQRP",
         "year": [
             "2026"
@@ -247,6 +536,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "86S46WMM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A patient has an impairment in renal water reabsorption due to a defect in the nephron segment impermeable to water. Which part of the nephron is impermeable to water under normal physiological conditions?",
+        "options": {
+            "A": "Thick ascending limb of the loop of Henle",
+            "B": "Proximal convoluted tubule",
+            "C": "Descending limb of the loop of Henle",
+            "D": "Collecting duct",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -332,6 +648,60 @@
         "hint": ""
     },
     {
+        "id": "9L32UBBZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A patient is diagnosed with Liddle syndrome characterized by hypertension and hypokalemia. Which channel’s activity is increased in this disorder?",
+        "options": {
+            "A": "Epithelial sodium channel (ENaC)",
+            "B": "Potassium channel",
+            "C": "Calcium channel",
+            "D": "Chloride channel",
+            "E": "Sodium-potassium ATPase"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U3WENNS8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "A patient is evaluated for persistent polyuria despite administration of desmopressin. Laboratory testing shows markedly dilute urine. A defect in urea reabsorption is suspected. Which part of the nephron is most likely affected?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Thick ascending limb of loop of Henle",
+            "C": "Distal convoluted tubule",
+            "D": "Medullary collecting duct",
+            "E": "Cortical collecting duct"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "AX3Y3NXE",
         "year": [
             "2026"
@@ -355,6 +725,33 @@
             "E": "Increased peritubular capillary oncotic pressure"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M6EXWDAY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A patient is having dilute urine despite normal serum ADH level",
+        "options": {
+            "A": "SIADH",
+            "B": "DI",
+            "C": "Nephrogenic DI",
+            "D": "Water deprivation",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -440,6 +837,60 @@
         "hint": ""
     },
     {
+        "id": "FX2K8Y9W",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A patient presents with history of edema. His vitals reveal Increased Blood Pressure. Investigations reveal: Hypokalemia, decreased renin levels, Increased Sodium levels but Renin, Angiotensin 2 & Aldosterone levels are within normal limits. A diagnosis of Liddle syndrome is made. Where is the defect located?",
+        "options": {
+            "A": "Mutation in Epithelial sodium channel (ENaC) in the collecting duct",
+            "B": "Sodium-potassium ATPase pump",
+            "C": "Aldosterone receptor",
+            "D": "Renin-angiotensin system",
+            "E": "Na-H Cotransport"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PLNPUUHC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A patient shows phosphaturia. Which of the following can cause this?",
+        "options": {
+            "A": "Decreased 1,25(OH)2 vitamin D3",
+            "B": "Increased parathormone (PTH)",
+            "C": "Both A and B",
+            "D": "Hypercalcemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "PTH inhibits phosphate reabsorption in the proximal tubule. Decreased active vitamin D3 causes loss of its stimulatory effect on renal phosphate reabsorption. Both result in increased phosphate excretion.",
+        "hint": ""
+    },
+    {
         "id": "E83QDW9E",
         "year": [
             "2026"
@@ -460,6 +911,33 @@
             "B": "Calcium",
             "C": "Sodium",
             "D": "Potassium",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VRXXHVZH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "A patient with 50% renal artery stenosis - how much will renal blood flow decrease?",
+        "options": {
+            "A": "8-Jan",
+            "B": "16-Jan",
+            "C": "4-Jan",
+            "D": "Jan-32",
             "E": ""
         },
         "correctAnswer": "B",
@@ -494,6 +972,33 @@
         "hint": ""
     },
     {
+        "id": "U63PCLHF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "A patient with acid base disorder having Na 144, K+ 4.5, Cl 105 and HCO3 17. Calculate anion gap",
+        "options": {
+            "A": "24",
+            "B": "22",
+            "C": "20",
+            "D": "30",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Note: no option of 26.5 if we add Potassium then Ans will be 26.5 but there was no such option so use second formula without potassium Anion gap= Na - (Cl+HCO3) 144-(105+17) 144-122= 22.",
+        "hint": ""
+    },
+    {
         "id": "2E7NLAPC",
         "year": [
             "2026"
@@ -517,6 +1022,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JR399YGK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A patient with HTN, has increased GFR. What is the reason for increased GFR.",
+        "options": {
+            "A": "Increased glomerular hydrostatic pressure",
+            "B": "Increased glomerular oncotic pressure",
+            "C": "Increased Bowman capsule hydrostatic pressure",
+            "D": "Decrease lymphatic flow",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KK4VZF33",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Nephrotic Syndromes",
+        "difficulty": "Medium",
+        "question": "A patient with marked hypoalbuminemia secondary to nephrotic syndrome develops generalized edema and increased total body sodium and water. Which mechanism best explains the sodium retention seen in this setting?",
+        "options": {
+            "A": "Decreased plasma oncotic pressure leading to intravascular volume depletion and secondary activation of the renin-angiotensin-aldosterone system (RAAS)",
+            "B": "Direct renal tubular damage causing sodium retention",
+            "C": "Primary increase in atrial natriuretic peptide (ANP) secretion",
+            "D": "Increased capillary hydrostatic pressure from congestive heart failure",
+            "E": "Increased interstitial oncotic pressure pulling sodium into tissues"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -548,6 +1107,89 @@
         "hint": ""
     },
     {
+        "id": "KK8YGRY9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A patient with volume depletion shows decreased urinary sodium excretion, a condition called asthenuria. Which physiological mechanism best explains this finding?",
+        "options": {
+            "A": "Increased aldosterone secretion causing sodium retention.",
+            "B": "Decreased ADH secretion causing sodium loss.",
+            "C": "Increased GFR causing sodium loss.",
+            "D": "Impaired tubular sodium reabsorption.",
+            "E": "Increased natriuretic peptide secretion."
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W8SQFBZX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening",
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A patient’s urine potassium concentration is 50mmol/l and urine flow rate is 2ml/min what is the potassium excretion rate in mmol/min?",
+        "options": {
+            "A": "0.1 mmol/min",
+            "B": "0.02 mmol/min",
+            "C": "0.01 mmol/min",
+            "D": "0.4 mmol/min",
+            "E": "0.6 mmol/min"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U4HZBEWN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "A person takes part in trial and has to take sodium daily. But his serum sodium level remain 139 meq/L. What maintains it's concentration to normal",
+        "options": {
+            "A": "Aldosteron",
+            "B": "ADH",
+            "C": "TSH",
+            "D": "Cortisol",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YHFJELUP",
         "year": [
             "2026"
@@ -571,6 +1213,33 @@
             "E": "Urea"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2H8D9AUL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "A trauma patient with acute blood loss shows increased Na+ and water reabsorption. Which nephron segment compensates first?",
+        "options": {
+            "A": "Proximal tubule",
+            "B": "Thick ascending limb",
+            "C": "Distal tubule",
+            "D": "Collecting duct",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -656,6 +1325,33 @@
         "hint": ""
     },
     {
+        "id": "8JYDE39U",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "After dehydration, in which part of the nephron is the most hypotonic urine likely to be found?",
+        "options": {
+            "A": "Early Distal convoluted tubule (DCT)",
+            "B": "Proximal convoluted tubule (PCT)",
+            "C": "Cortical collecting tubule (CCT)",
+            "D": "Loop of Henle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "PW6JRTSJ",
         "year": [
             "2026"
@@ -679,6 +1375,114 @@
             "E": "No change"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FD6TSMA8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "After prolonged dehydration, a patient is found to have very concentrated urine. At which site in the nephron would the tubular fluid be most hypotonic?",
+        "options": {
+            "A": "Early distal convoluted tubule",
+            "B": "Proximal convoluted tubule",
+            "C": "Cortical collecting tubule",
+            "D": "Loop of Henle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9KCNJD3J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "After significant blood loss, which compensatory mechanism increases water intake?",
+        "options": {
+            "A": "Decreased renin",
+            "B": "Increased thirst via hypothalamus",
+            "C": "Decreased ADH",
+            "D": "Decreased aldosterone",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Hypovolemia stimulates osmoreceptors and baroreceptors, increasing thirst and ADH release to maintain blood volume.",
+        "hint": ""
+    },
+    {
+        "id": "DMV39XX6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "Ammonium chloride administration causes which of the following acid-base effect?",
+        "options": {
+            "A": "Mixed acid base",
+            "B": "Respiratory acidosis",
+            "C": "Metabolic acidosis",
+            "D": "Respiratory acidosis",
+            "E": "Respiratory alkalosis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VWKM7T6N",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Medium",
+        "question": "An edematous patient was prescribed with loop diuretics to relieve his symptoms. Which acid base disturbance is most likely to develop as a result?",
+        "options": {
+            "A": "Hyperchloremic metabolic acidosis",
+            "B": "Hypochloremic metabolic alkalosis",
+            "C": "Hypochloremic metabolic acidosis",
+            "D": "Mixed respiratory and metabolic acidosis",
+            "E": "Hyperchloremic metabolic alkalosis"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -764,6 +1568,172 @@
         "hint": ""
     },
     {
+        "id": "7ESKY2MF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Autoregulation of GFR is by:",
+        "options": {
+            "A": "Tubuloglomerulr mechanism",
+            "B": "Afferent glomerular constriction",
+            "C": "Efferent golmerular dilatation",
+            "D": "Efferent glomerular Constriction",
+            "E": "Ureteric obstruction"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KWEGLLFC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "Calculate Anion Gap with the following values: Na=135mEq/L, Cl=5, HCO3=100 pH=7.2",
+        "options": {
+            "A": "5",
+            "B": "10",
+            "C": "15",
+            "D": "30",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "The formula to calculate the anion gap is: Anion gap = Na - (Cl + HCO3). Given values: Na = 135 mEq/L, Cl = 5 mEq/L, HCO3 = 100 mEq/L. {Anion Gap} = 135 - (100+5). {Anion Gap} = 135 -105 = 30",
+        "hint": ""
+    },
+    {
+        "id": "6PXFP5CT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Calculate GFR. Glomerular hydrostatic pressure = 60 mmHg, Bowman's capsule pressure = 18 mmHg, capillary oncotic pressure = 32 mmHg.",
+        "options": {
+            "A": "10 mmHg",
+            "B": "20 mmHg",
+            "C": "12 mmHg",
+            "D": "25 mmHg",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7WQWF67E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "Calculate the anion gap.: Na+ = 144, Cl- = 101, HCO3- = 18.",
+        "options": {
+            "A": "22",
+            "B": "25",
+            "C": "23",
+            "D": "24",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JSURGS2B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Medicine - 05/25 - May 14 - Morning",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Calculate the GFR when Glomerular Hydrostatic pressure is 60mmHg, Bowman capsule Hydrostatic pressure is 18mmHg & capillary oncotic pressure is 28mmHg.",
+        "options": {
+            "A": "14",
+            "B": "84",
+            "C": "92",
+            "D": "112",
+            "E": "48"
+        },
+        "correctAnswer": "A",
+        "explanation": "GFR = (PGC - PBS) - (PiGC - PiBS). PiBS is bowman space oncotic pressure, it is usually zero. = (60 - 28) - (18 - 0) = 14",
+        "hint": ""
+    },
+    {
+        "id": "RUGR7XC4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Transplantation",
+        "difficulty": "Easy",
+        "question": "CKD patient has decreased renal GFR. Which test will help assess renal function before renal transplant?",
+        "options": {
+            "A": "Inulin clearance",
+            "B": "Creatinine clearance",
+            "C": "PAH clearance",
+            "D": "Plasma flow rate",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Creatinine clearance = practical clinical measure of GFR. Inulin clearance -> gold standard but rarely used clinically due to cost.",
+        "hint": ""
+    },
+    {
         "id": "ZX3G9G2Q",
         "year": [
             "2026"
@@ -784,6 +1754,33 @@
             "B": "Efferent arteriole",
             "C": "Afferent arteriole",
             "D": "Ureter",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VSXKB4UN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "Creatinine clearance of a patient is 135 mmol/min, K+ clearance is 65 mmol/min, after administing another drug , K+ clearance becomes 102 mmol/min , what change occured",
+        "options": {
+            "A": "Decreased K secretion in the tubules",
+            "B": "Increased K+ secretion in the tubules",
+            "C": "Increase urine osmolarity",
+            "D": "Increase H ions flow",
             "E": ""
         },
         "correctAnswer": "B",
@@ -872,6 +1869,33 @@
         "hint": ""
     },
     {
+        "id": "CNX4KYUM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "ECF osmolarity regulated by:",
+        "options": {
+            "A": "Cortisol",
+            "B": "GH",
+            "C": "ADH",
+            "D": "TSH",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "F97EHVJH",
         "year": [
             "2026"
@@ -926,6 +1950,114 @@
         "hint": ""
     },
     {
+        "id": "H48EL4HY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Following is an important regulator for fluid",
+        "options": {
+            "A": "Angiotensin 2",
+            "B": "Vasopressin",
+            "C": "Oxytocin",
+            "D": "Aldosterone",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Water & electrolytes regulated by Aldosterone. ECF Osmolarity regulated by ADH/Vasopressin.",
+        "hint": ""
+    },
+    {
+        "id": "65VFR622",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Free water clearance regulated by:",
+        "options": {
+            "A": "ADH",
+            "B": "Aldosterone",
+            "C": "ANP",
+            "D": "Angiotensin 2",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3RDS8DN8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "GFR increases & Renal blood flow decreases by which of the following mechanism?",
+        "options": {
+            "A": "Efferent arteriolar constriction",
+            "B": "Sympathetic",
+            "C": "Parasympathetic",
+            "D": "Afferent arteriole constriction",
+            "E": "Efferent arteriole dilation"
+        },
+        "correctAnswer": "A",
+        "explanation": "BRS. Increase GFR due to: Afferent arteriol dilation, Efferent arteriol constriction, Decrease plasma proteins. Decrease GFR due to: Afferent arteriole constriction, Efferent arteriole dilation, Increase plasma proteins, Ureter constriction",
+        "hint": ""
+    },
+    {
+        "id": "VY86KMB9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "GFR increases by:",
+        "options": {
+            "A": "Constricting efferent arteriole",
+            "B": "Parasympathetic",
+            "C": "Constriction of afferent arteriole",
+            "D": "Efferent arteriole constriction",
+            "E": "Efferent arteriole dilation"
+        },
+        "correctAnswer": "A",
+        "explanation": "GFR Measured – Inuline",
+        "hint": ""
+    },
+    {
         "id": "D92ZPCLN",
         "year": [
             "2026"
@@ -950,6 +2082,39 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K88MBJRR",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning",
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "GFR is measured by:",
+        "options": {
+            "A": "Inulin",
+            "B": "Creatinine",
+            "C": "PAH",
+            "D": "Ammonia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "GFR Measured - Inuline. GFR Estimated/Clinically - Creatinine. Endogenous subtance to measure GFR - Creatinine. Renal plasma flow - PAH.",
         "hint": ""
     },
     {
@@ -1007,6 +2172,170 @@
         "hint": ""
     },
     {
+        "id": "PULPQ2CL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Glomerular filtration rate (GFR) is increased by which of the following?",
+        "options": {
+            "A": "Efferent arteriole constriction",
+            "B": "Afferent arteriole constriction",
+            "C": "Decreased renal plasma flow",
+            "D": "Increased plasma oncotic pressure",
+            "E": "Reduced systemic blood pressure"
+        },
+        "correctAnswer": "A",
+        "explanation": "The efferent arteriole is downstream from the glomerulus. Constricting it causes blood to back up into the glomerular capillaries. This back pressure increases the Glomerular Hydrostatic Pressure which is the main driving force for filtration, thereby increasing GFR.",
+        "hint": ""
+    },
+    {
+        "id": "TBBJTYNB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Glucose & Amino acids are maximally absorbed via secondary active transport in:",
+        "options": {
+            "A": "Proximal Convoluted tubule",
+            "B": "Distal Convoluted tubule",
+            "C": "Loop of Henle",
+            "D": "Collecting duct",
+            "E": "Cortical collecting tubule"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GFC69ZZ3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Glucose absorbed in PCT by:",
+        "options": {
+            "A": "Simple diffusion",
+            "B": "Co transport",
+            "C": "Secondary active transport",
+            "D": "Facilitated diffusion",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EKYU827Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Glucose is absorbed in PCT through",
+        "options": {
+            "A": "Facilitated diffusion",
+            "B": "Primary active transport",
+            "C": "Simple diffusion",
+            "D": "Secondary active transport",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Glucose transport across membrane due to its concentration difference - Facilitated diffusion. Glucose is absorbed in renal tubules through - 2ndry active transport (Na-glucose Co). Glucose transported to placenta by - Facilitated diffusion. Amino acids are absorbed from kidney to blood by - 2ndry Active Transport. Chloride and Urea transported by - Passive diffusion. Oxygen taken up to lung through - Simple Diffusion > Passive diffusion. Local Anesthesia crosses Placenta by - Simple diffusion > Passive diffusion. Primary Active transport uses - Pump.",
+        "hint": ""
+    },
+    {
+        "id": "EF7L2Z9L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Glucose is primarily reabsorbed in which part of the nephron?",
+        "options": {
+            "A": "Proximal convoluted tubule (PCT)",
+            "B": "Distal convoluted tubule (DCT)",
+            "C": "Collecting duct (CD)",
+            "D": "Loop of Henle",
+            "E": "Bowman's capsule"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MQ5NNKF7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Gold-standard test to assess GFR?",
+        "options": {
+            "A": "Inulin clearance",
+            "B": "PAH",
+            "C": "Albumin",
+            "D": "Lactate",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Inulin -> freely filtered, not secreted or reabsorbed -> precise GFR measurement.",
+        "hint": ""
+    },
+    {
         "id": "SGX9EH3N",
         "year": [
             "2026"
@@ -1027,6 +2356,33 @@
             "B": "K excretion",
             "C": "K absorption",
             "D": "Cl excretion",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "R2PDR8SU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "H+ ion secretion from PCT is due to:",
+        "options": {
+            "A": "Bicarbonates Reabsorption",
+            "B": "Potassium ions excretion",
+            "C": "Ammonia exchange",
+            "D": "Bicarbonate excretion",
             "E": ""
         },
         "correctAnswer": "A",
@@ -1142,6 +2498,116 @@
         "hint": ""
     },
     {
+        "id": "S4FWEJW5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "If ureters are blocked then which of the following effect will be on GFR?",
+        "options": {
+            "A": "Increased GFR",
+            "B": "Decreased GFR",
+            "C": "Increase hydrostatic pressure",
+            "D": "Decrease capillary pressure",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Increase GFR due to: Afferent arteriol dilation, Efferent arteriol constriction, Decrease plasma proteins. Decrease GFR due to: Afferent arteriol Constriction, Efferent arteriol dilation, Increase plasma proteins, Ureter constriction.",
+        "hint": ""
+    },
+    {
+        "id": "DCJALTHU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "In a patient presenting with uncompensated Metabolic Acidosis, what compensatory mechanism is initiated by the body to try and normalize the blood pH?",
+        "options": {
+            "A": "Renal excretion of potassium.",
+            "B": "Decreased tidal volume.",
+            "C": "Increased respiratory rate.",
+            "D": "Increased renal retention of hydrogen ions.",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The primary compensation for Metabolic Acidosis is hyperventilation (e.g., Kussmaul respirations) to \"blow off\" CO2 and lower the Pco2, thereby raising the pH.",
+        "hint": ""
+    },
+    {
+        "id": "44N8RQMA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "In a patient with diabetes insipidus (with complete absence of ADH) daily GFR is 150liter without treatment; his urine flow will be approximately?",
+        "options": {
+            "A": "10 L/day",
+            "B": "30 L/day",
+            "C": "3 L/day",
+            "D": "5 L/day",
+            "E": "75 L/day"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G8TGSQ3S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "In a patient with diabetes insipidus (with complete absence of ADH. daily GFR is 150 liter. Without treatment, his urine flow will be approximately?",
+        "options": {
+            "A": "10 L/day",
+            "B": "30 L/day",
+            "C": "3 L/day",
+            "D": "5 L/day",
+            "E": "75 L/day"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "9C3WL4X6",
         "year": [
             "2026"
@@ -1169,6 +2635,35 @@
         "hint": ""
     },
     {
+        "id": "W2F87JW8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acute Kidney Injury",
+        "difficulty": "Medium",
+        "question": "In hemorrhage which part of nephron is most commonly affected?",
+        "options": {
+            "A": "DCT",
+            "B": "PCT",
+            "C": "LOH",
+            "D": "Collecting ducts",
+            "E": "Collecting tubules"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "4SL6D7XX",
         "year": [
             "2026"
@@ -1192,6 +2687,141 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QABYN8W4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "In Severe dehydration, high hypotonic fluid is found in which part of nephron?",
+        "options": {
+            "A": "Early DCT",
+            "B": "Early PCT",
+            "C": "Early LOH",
+            "D": "CD",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Dilute Urine (HypotoniC- - Early DCT (Macula Densa. > Thick Limb. In Dehydration (ADH) Concentrated Urine (HypertoniC- - CD (Vasa RectA-",
+        "hint": ""
+    },
+    {
+        "id": "JLC2P9FM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "In severe dehydration, hypotonic fluid is found in which part of nephron?",
+        "options": {
+            "A": "Early DCT",
+            "B": "Early PCT",
+            "C": "Early Loop",
+            "D": "CD",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Y4ATF4AG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "In summer, fasting man, have concentrated urine due to:",
+        "options": {
+            "A": "Aldosterone",
+            "B": "Increase ADH",
+            "C": "Decrease water intake",
+            "D": "Increase sweating",
+            "E": "Cortisol"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XMDJQ7EZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "In the presence of adh max urine osmolarity will be?",
+        "options": {
+            "A": "300",
+            "B": "600",
+            "C": "1500",
+            "D": "1200",
+            "E": "2000"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8WERMUZ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Increase potassium in urine is due to",
+        "options": {
+            "A": "Decrease K secretion in DCT",
+            "B": "Increase K secretion in DCT",
+            "C": "Increase tubular absorption of K",
+            "D": "Increase intestinal absorption of K",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1250,6 +2880,87 @@
         "hint": ""
     },
     {
+        "id": "42SX9P5C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Increased oncotic pressure of tubular fluid occurs in:",
+        "options": {
+            "A": "Increased GFR",
+            "B": "Decreased filtration",
+            "C": "Increased filtration fraction",
+            "D": "Decreased plasma oncotic pressure",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QK7UDZZT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Acid Base",
+        "difficulty": "Easy",
+        "question": "Inhibition of carbonic anhydrase (e.g., by acetazolamide) in the kidney leads to which of the following effects?",
+        "options": {
+            "A": "Decrease blood pH -> metabolic acidosis",
+            "B": "Increase plasma bicarbonate (HCO3-)",
+            "C": "Decrease potassium (K+) secretion",
+            "D": "Increase sodium reabsorption",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YS8HQS55",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Kidney function is best estimated clinically by:",
+        "options": {
+            "A": "Serum inulin",
+            "B": "Serum creatinine",
+            "C": "Creatinine clearance",
+            "D": "PAH",
+            "E": "Urea"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "P4UHNV4T",
         "year": [
             "2026"
@@ -1273,6 +2984,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MS5L4JEG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Normal filtered HCO3 by glomerulus is",
+        "options": {
+            "A": "3000mmol",
+            "B": "4000mmol",
+            "C": "50mmol",
+            "D": "150mmol",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1304,6 +3042,89 @@
         "hint": ""
     },
     {
+        "id": "884BSL3Z",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "Patient after RTA massive blood loss, part of nephron that is responsible to bring Blood pressure back to normal.",
+        "options": {
+            "A": "PTC",
+            "B": "Thick ascending loop",
+            "C": "Early DCT",
+            "D": "Collecting duct",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The response to massive blood loss (hypotension) involves the activation of the RAAS system. The Angiotensin II and Aldosterone secreted act primarily to increase Na and water reabsorption in the Proximal Convoluted Tubule and the Collecting Duct (Late DCT), but the Macula Densa in the Early DCT is crucial for sensing Na+ and triggering the initial Renin release, making the DCT key to the RAAS system's effect.",
+        "hint": ""
+    },
+    {
+        "id": "5LBTRK3J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Patient is passing dilute urine (ashenuria), there is tubuloglomerular concentrating problem, what other factor you will see in this condition?",
+        "options": {
+            "A": "Fixed specific gravity of urine",
+            "B": "Low urinary sodium",
+            "C": "High Urinary sodium",
+            "D": "High Blood urea",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SEZ76SU6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Patient is passing dilute urine (asthenuria), there is tubuloglomerular concentrating problem, what other factor you will see in this condition?",
+        "options": {
+            "A": "Fixed specific gravity of urine",
+            "B": "Low urinary sodium",
+            "C": "High Urinary sodium",
+            "D": "High Blood urea",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Clearly problem is in concentration of urine so salt that is sodium will be low in urine. In Isothenuria Ans: will be A.",
+        "hint": ""
+    },
+    {
         "id": "DR6HKH58",
         "year": [
             "2026"
@@ -1328,6 +3149,33 @@
         },
         "correctAnswer": "B",
         "explanation": "JG Cells Secrete Renin which will bring Back BP to normal Peritubular Capillaries Secrete Erythropoietin",
+        "hint": ""
+    },
+    {
+        "id": "WLTLHGCX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "Patient using SGLT2 inhibitors , increase frequency / quantity of urine is due to",
+        "options": {
+            "A": "Decrease osmotic pressure at PCT",
+            "B": "Increase osmotic pressure at PCT",
+            "C": "Increase urine flow through DCT",
+            "D": "Increase serum osmolarity",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1358,6 +3206,87 @@
         "hint": ""
     },
     {
+        "id": "SZEFLQC3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Product of GFR and plasma conc of substance?",
+        "options": {
+            "A": "Filtration fraction",
+            "B": "Filtration co-efficient",
+            "C": "Filtration load",
+            "D": "Filtered gfr",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YEQX4WM3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Protein reabsorption capacity of nephron is",
+        "options": {
+            "A": "300mg",
+            "B": "100mg",
+            "C": "30mg",
+            "D": "50mg",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KZQSTUTK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Regarding glomerular capillary pressure?",
+        "options": {
+            "A": "Increases with afferent arteriolar constriction",
+            "B": "Decrease with decreasing oncotic pressure along membrane",
+            "C": "Less than most capillaries at heart level",
+            "D": "Decrease by 10 percent when BP decrease by 10 percent",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "4CABLY69",
         "year": [
             "2026"
@@ -1382,6 +3311,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Tubuloglomerular feedback is the major autoregulatory mechanism. The macula densa adjusts afferent arteriolar tone according to NaCl delivery. It helps maintain stable renal blood flow and GFR.",
+        "hint": ""
+    },
+    {
+        "id": "DVCNBRTK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "Renal volume is preserved in a patient due to which of the following?",
+        "options": {
+            "A": "Decrease response of ADH",
+            "B": "Increased response of renin",
+            "C": "Increased renal blood flow",
+            "D": "Decrease water content",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1466,6 +3422,60 @@
         "hint": ""
     },
     {
+        "id": "5M6CWZZ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Sodium concentration and absorption controlled by?",
+        "options": {
+            "A": "Aldosterone",
+            "B": "Renin",
+            "C": "AG-2",
+            "D": "ADH",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "ECF Volume regulated by Aldosterone. Maintain and regulates ECF osmolarity - ADH. Regulates Serum osmolarity - ADH >Aldosterone. Total body Water and electrolytes balance regulated by ADH. Total body Water and electrolytes balance maintained by - Aldosterone. Maximum Water and Na absorbed by the affect of -Aldosterone.",
+        "hint": ""
+    },
+    {
+        "id": "5DPMUCMR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "The ability of the kidney to excrete concentrated urine will increase if:",
+        "options": {
+            "A": "Permeability of water decreases in the collecting duct",
+            "B": "The rate of blood flow through the medulla decreases",
+            "C": "The rate of flow through the LOH increases",
+            "D": "The activity of Na-K pump in the LOH decreases",
+            "E": "The permeability of the collecting duct to water decreases"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "3VWCSNEQ",
         "year": [
             "2026"
@@ -1520,6 +3530,33 @@
         "hint": ""
     },
     {
+        "id": "HJK7ZMRF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "The phenomenon where glucose appears in the urine, especially with SGLT2 inhibitors, is referred to as the:",
+        "options": {
+            "A": "Osmotic Diuresis effect",
+            "B": "Glomerular Filtration Load",
+            "C": "Loop of Henle effect",
+            "D": "Early Tm splay phenomenon",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "The splay phenomenon (Early Tm) refers to the gradient along the proximal tubule where some nephrons begin to excrete glucose slightly earlier than others, an effect enhanced by SGLT2 inhibitors.",
+        "hint": ""
+    },
+    {
         "id": "TJD6EJGF",
         "year": [
             "2026"
@@ -1547,6 +3584,33 @@
         "hint": ""
     },
     {
+        "id": "76ZBCQZ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Total body water measured by:",
+        "options": {
+            "A": "Inulin",
+            "B": "Tritiated water",
+            "C": "Mannitol",
+            "D": "Evan Blue E. Sulfate",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "TBW-Radioactive water (Tritiated water in new form called Tritium, 3H2O) Heavy water (Deutrium 2D2O) and Antipyrene.",
+        "hint": ""
+    },
+    {
         "id": "TCGH23XE",
         "year": [
             "2026"
@@ -1571,6 +3635,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZTCJF46V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Under normal physiological conditions, which segment of the renal tubule is the site where the maximum amount of glucose is actively reabsorbed into the bloodstream?",
+        "options": {
+            "A": "Proximal Convoluted Tubule",
+            "B": "Distal Convoluted Tubule",
+            "C": "Loop of Henle",
+            "D": "Collecting Duct",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Proximal Convoluted Tubule has the highest concentration of transport proteins, including the SGLT 2 and SGLT 1 transporters. Approximately 100% of filtered glucose is actively reabsorbed here, ensuring no glucose is normally present in the urine.",
         "hint": ""
     },
     {
@@ -1792,2259 +3883,6 @@
         "hint": ""
     },
     {
-        "id": "6VALRWSD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Which of the following is primarily responsible for sodium and water reabsorption in the kidney?",
-        "options": {
-            "A": "Renin",
-            "B": "Atrial natriuretic peptide (ANP)",
-            "C": "Antidiuretic hormone (ADH)",
-            "D": "Aldosterone",
-            "E": "Angiotensin II"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XJNMH9Z9",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Which of the following is the best clinical method to measure GFR?",
-        "options": {
-            "A": "Serum creatinine",
-            "B": "Creatinine clearance",
-            "C": "PAH clearance",
-            "D": "Blood urea",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8CD6SAH3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Which of the following would decrease GFR?",
-        "options": {
-            "A": "Afferent arteriolar vasodilation",
-            "B": "Efferent arteriolar constriction",
-            "C": "Increased sympathetic stimulation",
-            "D": "Increased renal blood flow",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6NY66FWX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Which organ receives the highest blood flow per 100 g of tissue?",
-        "options": {
-            "A": "Brain",
-            "B": "Liver",
-            "C": "Kidney",
-            "D": "Heart",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WKLRPTSJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Which specific aquaporin channel is regulated by ADH in the renal collecting ducts?",
-        "options": {
-            "A": "Aquaporin-1",
-            "B": "Aquaporin-2",
-            "C": "Aquaporin-4",
-            "D": "Aquaporin-8",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "A9R2SDTM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "With complete absence of ADH (central diabetes insipidus) and a GFR of 150 L/day, approximately how much urine would be produced each day?",
-        "options": {
-            "A": "5–10 L/day",
-            "B": "10–20 L/day",
-            "C": "1–2 L/day",
-            "D": "0.1–0.2 L/day",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "263NMVQ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "A 12-year-old boy presents with generalized body swelling. Laboratory investigations reveal proteinuria >10 g/day, hypoalbuminemia, and hyperlipidemia. What is the primary mechanism responsible for the development of edema in this patient?",
-        "options": {
-            "A": "Decreased oncotic pressure",
-            "B": "Increased capillary hydrostatic pressure",
-            "C": "Lymphatic obstruction",
-            "D": "Sodium and water retention",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WAX5A3YN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A 26-year-old woman has normal glomerular filtration rate. Her urinalysis shows no glucose or amino acids in the urine. Which part of the nephron is primarily responsible for the complete reabsorption of these substances under normal physiological conditions?",
-        "options": {
-            "A": "Proximal convoluted tubule",
-            "B": "Loop of Henle",
-            "C": "Distal convoluted tubule",
-            "D": "Collecting duct",
-            "E": "Thick limb of loop of henle"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5AJD4GYR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "A 30-year-old man presents with polyuria and polydipsia. Laboratory tests show urine osmolality same as plasma osmolality. Which of the following is the most likely mechanism?",
-        "options": {
-            "A": "Hypoosmolar renal medulla",
-            "B": "Hyperosmolar renal medulla",
-            "C": "Excess ADH",
-            "D": "Obstructive uropathy",
-            "E": "Primary polydipsia"
-        },
-        "correctAnswer": "B",
-        "explanation": "Isosthenuria (urine osmolality approx plasma osmolality, about 300 mOsm/kg) means the kidney is unable to concentrate or dilute urine effectively. The key mechanism for concentrating urine is the high solute concentration (hyperosmolarity) in the renal medulla. If the renal medulla is hypoosmolar (or the kidney fails to respond to ADH in the setting of normal ADH), the final collecting duct fluid will equilibrate with the plasma, resulting in isosthenuria.",
-        "hint": ""
-    },
-    {
-        "id": "GPDVXZ37",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A 35-year-old man's renal function test shows: Filtration coefficient (Kf): 12 mL/min/mmHg, Net filtration pressure (NFP): 25 mmHg, Urinary clearance: 30 mL/min. What is the approximate glomerular filtration rate (GFR)?",
-        "options": {
-            "A": "150 mL/min",
-            "B": "250 mL/min",
-            "C": "300 mL/min",
-            "D": "350 mL/min",
-            "E": "400 mL/min"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MPBHU3CL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A 35-year-old patient undergoes testing for renal plasma flow (RPF) using para-aminohippuric acid (PAH) clearance. Urine flow rate, urine PAH concentration, and plasma PAH concentration are measured. Which formula is used to calculate RPF?",
-        "options": {
-            "A": "RPF = (Plasma concentration x Urine flow) / Urine concentration",
-            "B": "RPF = (Urine concentration x Urine flow) / Plasma concentration",
-            "C": "RPF = Urine flow / (Urine concentration x Plasma concentration)",
-            "D": "RPF = Plasma concentration / (Urine concentration x Urine flow)",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "PAH is almost completely cleared by the kidneys in a single pass; the clearance principle, RPF can be estimated from PAH clearance using formula: RPF = (Upah x V) / Ppah.",
-        "hint": ""
-    },
-    {
-        "id": "HL93HUVF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A 40-year-old patient has a plasma glucose of 250 mg/dL. GFR is known, urine flow is 1 mL/min, and urinary glucose is zero. How can renal glucose reabsorption be calculated?",
-        "options": {
-            "A": "Reabsorption = Filtration rate - Excretion rate",
-            "B": "Reabsorption = Excretion rate - Filtration rate",
-            "C": "Reabsorption = Filtration rate x Excretion rate",
-            "D": "Reabsorption = Plasma glucose x Urine glucose",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Renal glucose reabsorption is calculated using: R = (GFR x Pglucose) - (Uglucose x V). Since urinary glucose is zero, all filtered glucose is reabsorbed by the renal tubules.",
-        "hint": ""
-    },
-    {
-        "id": "HHN992UG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "A 45 years old patient is diagnosed with a condition causing excessive secretion of ADH, despite the ADH levels, the patient shows an unusually high urea concentration in the urine due to defect in:",
-        "options": {
-            "A": "PCT",
-            "B": "DCT",
-            "C": "LOH",
-            "D": "Inner medullary cortical ducts",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "ADH act on Collecting Ducts > Distal Convoluted Tubules (DCT) > Collecting Tubules (CT). Aldosterone act on Cortical Collecting Tubules > Distal Convoluted Tubules (DCT) > Collecting Ducts (CD).",
-        "hint": ""
-    },
-    {
-        "id": "PNZH8P7Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A 50-year-old man undergoes renal function testing. Which of the following is the best measure of glomerular filtration rate in this patient?",
-        "options": {
-            "A": "Serum urea concentration",
-            "B": "Serum creatinine concentration",
-            "C": "Creatinine clearance",
-            "D": "Urinary protein excretion",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y45Y9WV9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Chronic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A 58 year old man with chronic kidney disease presents with calf pain and muscle weakness. Laboratory studies reveal elevated serum parathyroid hormone (PTH) levels. Which of the following is a direct effect of PTH on the kidneys in this patient?",
-        "options": {
-            "A": "Increased calcium excretion",
-            "B": "Increased phosphate reabsorption",
-            "C": "Increased phosphate excretion",
-            "D": "Decreased 1α-hydroxylase activity",
-            "E": "Increased bicarbonate reabsorption"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GETDVDUJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Easy",
-        "question": "A 6-year-old presents with periorbital edema. Labs: proteinuria >3.5 g/day. Pathophysiology of edema?",
-        "options": {
-            "A": "Increased hydrostatic pressure",
-            "B": "Decreased lymphatic drainage",
-            "C": "Albumin loss -> decreased plasma oncotic pressure -> sodium and water retention",
-            "D": "Hyperaldosteronism only",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AFUY2KPL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "Hard",
-        "question": "A female is travelling on a bumpy road but she has no dribbling of urine. Which of the following layers of the urethra prevents it?",
-        "options": {
-            "A": "Inner muscular layer",
-            "B": "Middle muscular layer",
-            "C": "Outer muscular layer",
-            "D": "Middle and outer muscular layer",
-            "E": "Outer, middle and inner muscular layer"
-        },
-        "correctAnswer": "C",
-        "explanation": "The outer muscular layer of the urethra, specifically the external urethral sphincter, prevents the dribbling of urine. Since the question asks which layer or layers prevent the dribbling of urine during a strenuous activity like jumping, the correct answer must be the layer that provides voluntary control. That is the outer muscular layer. Including the inner and middle layers (as in option E) is incorrect because they are involuntary and are not the primary mechanism for preventing leakage under these specific conditions.",
-        "hint": ""
-    },
-    {
-        "id": "ZEK6UEGD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A patient consumes high salt, but plasma Na+ remains normal. Which hormone regulates plasma osmolality?",
-        "options": {
-            "A": "Aldosterone",
-            "B": "Renin",
-            "C": "ADH (vasopressin)",
-            "D": "ANP",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "ADH regulates water reabsorption in collecting ducts, maintaining plasma osmolality. Sodium intake may vary, but plasma [Na+] is controlled by water balance.",
-        "hint": ""
-    },
-    {
-        "id": "U3JEJGCZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A patient develop Anasarca fluid distribution will occur in which compartment",
-        "options": {
-            "A": "ICF",
-            "B": "Plasma and ICF",
-            "C": "Interstitial and ECF",
-            "D": "ICF and ECF",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "86S46WMM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A patient has an impairment in renal water reabsorption due to a defect in the nephron segment impermeable to water. Which part of the nephron is impermeable to water under normal physiological conditions?",
-        "options": {
-            "A": "Thick ascending limb of the loop of Henle",
-            "B": "Proximal convoluted tubule",
-            "C": "Descending limb of the loop of Henle",
-            "D": "Collecting duct",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9L32UBBZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A patient is diagnosed with Liddle syndrome characterized by hypertension and hypokalemia. Which channel’s activity is increased in this disorder?",
-        "options": {
-            "A": "Epithelial sodium channel (ENaC)",
-            "B": "Potassium channel",
-            "C": "Calcium channel",
-            "D": "Chloride channel",
-            "E": "Sodium-potassium ATPase"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U3WENNS8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "A patient is evaluated for persistent polyuria despite administration of desmopressin. Laboratory testing shows markedly dilute urine. A defect in urea reabsorption is suspected. Which part of the nephron is most likely affected?",
-        "options": {
-            "A": "Proximal convoluted tubule",
-            "B": "Thick ascending limb of loop of Henle",
-            "C": "Distal convoluted tubule",
-            "D": "Medullary collecting duct",
-            "E": "Cortical collecting duct"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M6EXWDAY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A patient is having dilute urine despite normal serum ADH level",
-        "options": {
-            "A": "SIADH",
-            "B": "DI",
-            "C": "Nephrogenic DI",
-            "D": "Water deprivation",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FX2K8Y9W",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A patient presents with history of edema. His vitals reveal Increased Blood Pressure. Investigations reveal: Hypokalemia, decreased renin levels, Increased Sodium levels but Renin, Angiotensin 2 & Aldosterone levels are within normal limits. A diagnosis of Liddle syndrome is made. Where is the defect located?",
-        "options": {
-            "A": "Mutation in Epithelial sodium channel (ENaC) in the collecting duct",
-            "B": "Sodium-potassium ATPase pump",
-            "C": "Aldosterone receptor",
-            "D": "Renin-angiotensin system",
-            "E": "Na-H Cotransport"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PLNPUUHC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A patient shows phosphaturia. Which of the following can cause this?",
-        "options": {
-            "A": "Decreased 1,25(OH)2 vitamin D3",
-            "B": "Increased parathormone (PTH)",
-            "C": "Both A and B",
-            "D": "Hypercalcemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "PTH inhibits phosphate reabsorption in the proximal tubule. Decreased active vitamin D3 causes loss of its stimulatory effect on renal phosphate reabsorption. Both result in increased phosphate excretion.",
-        "hint": ""
-    },
-    {
-        "id": "VRXXHVZH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "A patient with 50% renal artery stenosis - how much will renal blood flow decrease?",
-        "options": {
-            "A": "8-Jan",
-            "B": "16-Jan",
-            "C": "4-Jan",
-            "D": "Jan-32",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U63PCLHF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "A patient with acid base disorder having Na 144, K+ 4.5, Cl 105 and HCO3 17. Calculate anion gap",
-        "options": {
-            "A": "24",
-            "B": "22",
-            "C": "20",
-            "D": "30",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Note: no option of 26.5 if we add Potassium then Ans will be 26.5 but there was no such option so use second formula without potassium Anion gap= Na - (Cl+HCO3) 144-(105+17) 144-122= 22.",
-        "hint": ""
-    },
-    {
-        "id": "JR399YGK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A patient with HTN, has increased GFR. What is the reason for increased GFR.",
-        "options": {
-            "A": "Increased glomerular hydrostatic pressure",
-            "B": "Increased glomerular oncotic pressure",
-            "C": "Increased Bowman capsule hydrostatic pressure",
-            "D": "Decrease lymphatic flow",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KK4VZF33",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
-        "question": "A patient with marked hypoalbuminemia secondary to nephrotic syndrome develops generalized edema and increased total body sodium and water. Which mechanism best explains the sodium retention seen in this setting?",
-        "options": {
-            "A": "Decreased plasma oncotic pressure leading to intravascular volume depletion and secondary activation of the renin-angiotensin-aldosterone system (RAAS)",
-            "B": "Direct renal tubular damage causing sodium retention",
-            "C": "Primary increase in atrial natriuretic peptide (ANP) secretion",
-            "D": "Increased capillary hydrostatic pressure from congestive heart failure",
-            "E": "Increased interstitial oncotic pressure pulling sodium into tissues"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KK8YGRY9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A patient with volume depletion shows decreased urinary sodium excretion, a condition called asthenuria. Which physiological mechanism best explains this finding?",
-        "options": {
-            "A": "Increased aldosterone secretion causing sodium retention.",
-            "B": "Decreased ADH secretion causing sodium loss.",
-            "C": "Increased GFR causing sodium loss.",
-            "D": "Impaired tubular sodium reabsorption.",
-            "E": "Increased natriuretic peptide secretion."
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W8SQFBZX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening",
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A patient’s urine potassium concentration is 50mmol/l and urine flow rate is 2ml/min what is the potassium excretion rate in mmol/min?",
-        "options": {
-            "A": "0.1 mmol/min",
-            "B": "0.02 mmol/min",
-            "C": "0.01 mmol/min",
-            "D": "0.4 mmol/min",
-            "E": "0.6 mmol/min"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U4HZBEWN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "A person takes part in trial and has to take sodium daily. But his serum sodium level remain 139 meq/L. What maintains it's concentration to normal",
-        "options": {
-            "A": "Aldosteron",
-            "B": "ADH",
-            "C": "TSH",
-            "D": "Cortisol",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2H8D9AUL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "A trauma patient with acute blood loss shows increased Na+ and water reabsorption. Which nephron segment compensates first?",
-        "options": {
-            "A": "Proximal tubule",
-            "B": "Thick ascending limb",
-            "C": "Distal tubule",
-            "D": "Collecting duct",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8JYDE39U",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "After dehydration, in which part of the nephron is the most hypotonic urine likely to be found?",
-        "options": {
-            "A": "Early Distal convoluted tubule (DCT)",
-            "B": "Proximal convoluted tubule (PCT)",
-            "C": "Cortical collecting tubule (CCT)",
-            "D": "Loop of Henle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FD6TSMA8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "After prolonged dehydration, a patient is found to have very concentrated urine. At which site in the nephron would the tubular fluid be most hypotonic?",
-        "options": {
-            "A": "Early distal convoluted tubule",
-            "B": "Proximal convoluted tubule",
-            "C": "Cortical collecting tubule",
-            "D": "Loop of Henle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9KCNJD3J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "After significant blood loss, which compensatory mechanism increases water intake?",
-        "options": {
-            "A": "Decreased renin",
-            "B": "Increased thirst via hypothalamus",
-            "C": "Decreased ADH",
-            "D": "Decreased aldosterone",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Hypovolemia stimulates osmoreceptors and baroreceptors, increasing thirst and ADH release to maintain blood volume.",
-        "hint": ""
-    },
-    {
-        "id": "DMV39XX6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "Ammonium chloride administration causes which of the following acid-base effect?",
-        "options": {
-            "A": "Mixed acid base",
-            "B": "Respiratory acidosis",
-            "C": "Metabolic acidosis",
-            "D": "Respiratory acidosis",
-            "E": "Respiratory alkalosis"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VWKM7T6N",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Medium",
-        "question": "An edematous patient was prescribed with loop diuretics to relieve his symptoms. Which acid base disturbance is most likely to develop as a result?",
-        "options": {
-            "A": "Hyperchloremic metabolic acidosis",
-            "B": "Hypochloremic metabolic alkalosis",
-            "C": "Hypochloremic metabolic acidosis",
-            "D": "Mixed respiratory and metabolic acidosis",
-            "E": "Hyperchloremic metabolic alkalosis"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7ESKY2MF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Autoregulation of GFR is by:",
-        "options": {
-            "A": "Tubuloglomerulr mechanism",
-            "B": "Afferent glomerular constriction",
-            "C": "Efferent golmerular dilatation",
-            "D": "Efferent glomerular Constriction",
-            "E": "Ureteric obstruction"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KWEGLLFC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "Calculate Anion Gap with the following values: Na=135mEq/L, Cl=5, HCO3=100 pH=7.2",
-        "options": {
-            "A": "5",
-            "B": "10",
-            "C": "15",
-            "D": "30",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "The formula to calculate the anion gap is: Anion gap = Na - (Cl + HCO3). Given values: Na = 135 mEq/L, Cl = 5 mEq/L, HCO3 = 100 mEq/L. {Anion Gap} = 135 - (100+5). {Anion Gap} = 135 -105 = 30",
-        "hint": ""
-    },
-    {
-        "id": "6PXFP5CT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Calculate GFR. Glomerular hydrostatic pressure = 60 mmHg, Bowman's capsule pressure = 18 mmHg, capillary oncotic pressure = 32 mmHg.",
-        "options": {
-            "A": "10 mmHg",
-            "B": "20 mmHg",
-            "C": "12 mmHg",
-            "D": "25 mmHg",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7WQWF67E",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "Calculate the anion gap.: Na+ = 144, Cl- = 101, HCO3- = 18.",
-        "options": {
-            "A": "22",
-            "B": "25",
-            "C": "23",
-            "D": "24",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JSURGS2B",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning",
-            "Medicine - 05/25 - May 14 - Morning",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Calculate the GFR when Glomerular Hydrostatic pressure is 60mmHg, Bowman capsule Hydrostatic pressure is 18mmHg & capillary oncotic pressure is 28mmHg.",
-        "options": {
-            "A": "14",
-            "B": "84",
-            "C": "92",
-            "D": "112",
-            "E": "48"
-        },
-        "correctAnswer": "A",
-        "explanation": "GFR = (PGC - PBS) - (PiGC - PiBS). PiBS is bowman space oncotic pressure, it is usually zero. = (60 - 28) - (18 - 0) = 14",
-        "hint": ""
-    },
-    {
-        "id": "RUGR7XC4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Transplantation",
-        "difficulty": "Easy",
-        "question": "CKD patient has decreased renal GFR. Which test will help assess renal function before renal transplant?",
-        "options": {
-            "A": "Inulin clearance",
-            "B": "Creatinine clearance",
-            "C": "PAH clearance",
-            "D": "Plasma flow rate",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Creatinine clearance = practical clinical measure of GFR. Inulin clearance -> gold standard but rarely used clinically due to cost.",
-        "hint": ""
-    },
-    {
-        "id": "VSXKB4UN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "Creatinine clearance of a patient is 135 mmol/min, K+ clearance is 65 mmol/min, after administing another drug , K+ clearance becomes 102 mmol/min , what change occured",
-        "options": {
-            "A": "Decreased K secretion in the tubules",
-            "B": "Increased K+ secretion in the tubules",
-            "C": "Increase urine osmolarity",
-            "D": "Increase H ions flow",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CNX4KYUM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "ECF osmolarity regulated by:",
-        "options": {
-            "A": "Cortisol",
-            "B": "GH",
-            "C": "ADH",
-            "D": "TSH",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "H48EL4HY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Following is an important regulator for fluid",
-        "options": {
-            "A": "Angiotensin 2",
-            "B": "Vasopressin",
-            "C": "Oxytocin",
-            "D": "Aldosterone",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Water & electrolytes regulated by Aldosterone. ECF Osmolarity regulated by ADH/Vasopressin.",
-        "hint": ""
-    },
-    {
-        "id": "65VFR622",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Free water clearance regulated by:",
-        "options": {
-            "A": "ADH",
-            "B": "Aldosterone",
-            "C": "ANP",
-            "D": "Angiotensin 2",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3RDS8DN8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "GFR increases & Renal blood flow decreases by which of the following mechanism?",
-        "options": {
-            "A": "Efferent arteriolar constriction",
-            "B": "Sympathetic",
-            "C": "Parasympathetic",
-            "D": "Afferent arteriole constriction",
-            "E": "Efferent arteriole dilation"
-        },
-        "correctAnswer": "A",
-        "explanation": "BRS. Increase GFR due to: Afferent arteriol dilation, Efferent arteriol constriction, Decrease plasma proteins. Decrease GFR due to: Afferent arteriole constriction, Efferent arteriole dilation, Increase plasma proteins, Ureter constriction",
-        "hint": ""
-    },
-    {
-        "id": "VY86KMB9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "GFR increases by:",
-        "options": {
-            "A": "Constricting efferent arteriole",
-            "B": "Parasympathetic",
-            "C": "Constriction of afferent arteriole",
-            "D": "Efferent arteriole constriction",
-            "E": "Efferent arteriole dilation"
-        },
-        "correctAnswer": "A",
-        "explanation": "GFR Measured – Inuline",
-        "hint": ""
-    },
-    {
-        "id": "PULPQ2CL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Morning",
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Glomerular filtration rate (GFR) is increased by which of the following?",
-        "options": {
-            "A": "Efferent arteriole constriction",
-            "B": "Afferent arteriole constriction",
-            "C": "Decreased renal plasma flow",
-            "D": "Increased plasma oncotic pressure",
-            "E": "Reduced systemic blood pressure"
-        },
-        "correctAnswer": "A",
-        "explanation": "The efferent arteriole is downstream from the glomerulus. Constricting it causes blood to back up into the glomerular capillaries. This back pressure increases the Glomerular Hydrostatic Pressure which is the main driving force for filtration, thereby increasing GFR.",
-        "hint": ""
-    },
-    {
-        "id": "TBBJTYNB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Glucose & Amino acids are maximally absorbed via secondary active transport in:",
-        "options": {
-            "A": "Proximal Convoluted tubule",
-            "B": "Distal Convoluted tubule",
-            "C": "Loop of Henle",
-            "D": "Collecting duct",
-            "E": "Cortical collecting tubule"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GFC69ZZ3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Glucose absorbed in PCT by:",
-        "options": {
-            "A": "Simple diffusion",
-            "B": "Co transport",
-            "C": "Secondary active transport",
-            "D": "Facilitated diffusion",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EKYU827Y",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Glucose is absorbed in PCT through",
-        "options": {
-            "A": "Facilitated diffusion",
-            "B": "Primary active transport",
-            "C": "Simple diffusion",
-            "D": "Secondary active transport",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Glucose transport across membrane due to its concentration difference - Facilitated diffusion. Glucose is absorbed in renal tubules through - 2ndry active transport (Na-glucose Co). Glucose transported to placenta by - Facilitated diffusion. Amino acids are absorbed from kidney to blood by - 2ndry Active Transport. Chloride and Urea transported by - Passive diffusion. Oxygen taken up to lung through - Simple Diffusion > Passive diffusion. Local Anesthesia crosses Placenta by - Simple diffusion > Passive diffusion. Primary Active transport uses - Pump.",
-        "hint": ""
-    },
-    {
-        "id": "EF7L2Z9L",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Glucose is primarily reabsorbed in which part of the nephron?",
-        "options": {
-            "A": "Proximal convoluted tubule (PCT)",
-            "B": "Distal convoluted tubule (DCT)",
-            "C": "Collecting duct (CD)",
-            "D": "Loop of Henle",
-            "E": "Bowman's capsule"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MQ5NNKF7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Gold-standard test to assess GFR?",
-        "options": {
-            "A": "Inulin clearance",
-            "B": "PAH",
-            "C": "Albumin",
-            "D": "Lactate",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Inulin -> freely filtered, not secreted or reabsorbed -> precise GFR measurement.",
-        "hint": ""
-    },
-    {
-        "id": "R2PDR8SU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "H+ ion secretion from PCT is due to:",
-        "options": {
-            "A": "Bicarbonates Reabsorption",
-            "B": "Potassium ions excretion",
-            "C": "Ammonia exchange",
-            "D": "Bicarbonate excretion",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "S4FWEJW5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "If ureters are blocked then which of the following effect will be on GFR?",
-        "options": {
-            "A": "Increased GFR",
-            "B": "Decreased GFR",
-            "C": "Increase hydrostatic pressure",
-            "D": "Decrease capillary pressure",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Increase GFR due to: Afferent arteriol dilation, Efferent arteriol constriction, Decrease plasma proteins. Decrease GFR due to: Afferent arteriol Constriction, Efferent arteriol dilation, Increase plasma proteins, Ureter constriction.",
-        "hint": ""
-    },
-    {
-        "id": "DCJALTHU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "In a patient presenting with uncompensated Metabolic Acidosis, what compensatory mechanism is initiated by the body to try and normalize the blood pH?",
-        "options": {
-            "A": "Renal excretion of potassium.",
-            "B": "Decreased tidal volume.",
-            "C": "Increased respiratory rate.",
-            "D": "Increased renal retention of hydrogen ions.",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The primary compensation for Metabolic Acidosis is hyperventilation (e.g., Kussmaul respirations) to \"blow off\" CO2 and lower the Pco2, thereby raising the pH.",
-        "hint": ""
-    },
-    {
-        "id": "44N8RQMA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "In a patient with diabetes insipidus (with complete absence of ADH) daily GFR is 150liter without treatment; his urine flow will be approximately?",
-        "options": {
-            "A": "10 L/day",
-            "B": "30 L/day",
-            "C": "3 L/day",
-            "D": "5 L/day",
-            "E": "75 L/day"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G8TGSQ3S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "In a patient with diabetes insipidus (with complete absence of ADH. daily GFR is 150 liter. Without treatment, his urine flow will be approximately?",
-        "options": {
-            "A": "10 L/day",
-            "B": "30 L/day",
-            "C": "3 L/day",
-            "D": "5 L/day",
-            "E": "75 L/day"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W2F87JW8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acute Kidney Injury",
-        "difficulty": "Medium",
-        "question": "In hemorrhage which part of nephron is most commonly affected?",
-        "options": {
-            "A": "DCT",
-            "B": "PCT",
-            "C": "LOH",
-            "D": "Collecting ducts",
-            "E": "Collecting tubules"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QABYN8W4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "In Severe dehydration, high hypotonic fluid is found in which part of nephron?",
-        "options": {
-            "A": "Early DCT",
-            "B": "Early PCT",
-            "C": "Early LOH",
-            "D": "CD",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Dilute Urine (HypotoniC- - Early DCT (Macula Densa. > Thick Limb. In Dehydration (ADH) Concentrated Urine (HypertoniC- - CD (Vasa RectA-",
-        "hint": ""
-    },
-    {
-        "id": "JLC2P9FM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "In severe dehydration, hypotonic fluid is found in which part of nephron?",
-        "options": {
-            "A": "Early DCT",
-            "B": "Early PCT",
-            "C": "Early Loop",
-            "D": "CD",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y4ATF4AG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "In summer, fasting man, have concentrated urine due to:",
-        "options": {
-            "A": "Aldosterone",
-            "B": "Increase ADH",
-            "C": "Decrease water intake",
-            "D": "Increase sweating",
-            "E": "Cortisol"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XMDJQ7EZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "In the presence of adh max urine osmolarity will be?",
-        "options": {
-            "A": "300",
-            "B": "600",
-            "C": "1500",
-            "D": "1200",
-            "E": "2000"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8WERMUZ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Increase potassium in urine is due to",
-        "options": {
-            "A": "Decrease K secretion in DCT",
-            "B": "Increase K secretion in DCT",
-            "C": "Increase tubular absorption of K",
-            "D": "Increase intestinal absorption of K",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "42SX9P5C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Increased oncotic pressure of tubular fluid occurs in:",
-        "options": {
-            "A": "Increased GFR",
-            "B": "Decreased filtration",
-            "C": "Increased filtration fraction",
-            "D": "Decreased plasma oncotic pressure",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QK7UDZZT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "Acid Base",
-        "difficulty": "Easy",
-        "question": "Inhibition of carbonic anhydrase (e.g., by acetazolamide) in the kidney leads to which of the following effects?",
-        "options": {
-            "A": "Decrease blood pH -> metabolic acidosis",
-            "B": "Increase plasma bicarbonate (HCO3-)",
-            "C": "Decrease potassium (K+) secretion",
-            "D": "Increase sodium reabsorption",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YS8HQS55",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Kidney function is best estimated clinically by:",
-        "options": {
-            "A": "Serum inulin",
-            "B": "Serum creatinine",
-            "C": "Creatinine clearance",
-            "D": "PAH",
-            "E": "Urea"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MS5L4JEG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Normal filtered HCO3 by glomerulus is",
-        "options": {
-            "A": "3000mmol",
-            "B": "4000mmol",
-            "C": "50mmol",
-            "D": "150mmol",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5LBTRK3J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Patient is passing dilute urine (ashenuria), there is tubuloglomerular concentrating problem, what other factor you will see in this condition?",
-        "options": {
-            "A": "Fixed specific gravity of urine",
-            "B": "Low urinary sodium",
-            "C": "High Urinary sodium",
-            "D": "High Blood urea",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SEZ76SU6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Patient is passing dilute urine (asthenuria), there is tubuloglomerular concentrating problem, what other factor you will see in this condition?",
-        "options": {
-            "A": "Fixed specific gravity of urine",
-            "B": "Low urinary sodium",
-            "C": "High Urinary sodium",
-            "D": "High Blood urea",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Clearly problem is in concentration of urine so salt that is sodium will be low in urine. In Isothenuria Ans: will be A.",
-        "hint": ""
-    },
-    {
-        "id": "WLTLHGCX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "Patient using SGLT2 inhibitors , increase frequency / quantity of urine is due to",
-        "options": {
-            "A": "Decrease osmotic pressure at PCT",
-            "B": "Increase osmotic pressure at PCT",
-            "C": "Increase urine flow through DCT",
-            "D": "Increase serum osmolarity",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SZEFLQC3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Product of GFR and plasma conc of substance?",
-        "options": {
-            "A": "Filtration fraction",
-            "B": "Filtration co-efficient",
-            "C": "Filtration load",
-            "D": "Filtered gfr",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YEQX4WM3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Protein reabsorption capacity of nephron is",
-        "options": {
-            "A": "300mg",
-            "B": "100mg",
-            "C": "30mg",
-            "D": "50mg",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KZQSTUTK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Regarding glomerular capillary pressure?",
-        "options": {
-            "A": "Increases with afferent arteriolar constriction",
-            "B": "Decrease with decreasing oncotic pressure along membrane",
-            "C": "Less than most capillaries at heart level",
-            "D": "Decrease by 10 percent when BP decrease by 10 percent",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DVCNBRTK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "Renal volume is preserved in a patient due to which of the following?",
-        "options": {
-            "A": "Decrease response of ADH",
-            "B": "Increased response of renin",
-            "C": "Increased renal blood flow",
-            "D": "Decrease water content",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5M6CWZZ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Sodium concentration and absorption controlled by?",
-        "options": {
-            "A": "Aldosterone",
-            "B": "Renin",
-            "C": "AG-2",
-            "D": "ADH",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "ECF Volume regulated by Aldosterone. Maintain and regulates ECF osmolarity - ADH. Regulates Serum osmolarity - ADH >Aldosterone. Total body Water and electrolytes balance regulated by ADH. Total body Water and electrolytes balance maintained by - Aldosterone. Maximum Water and Na absorbed by the affect of -Aldosterone.",
-        "hint": ""
-    },
-    {
-        "id": "5DPMUCMR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Medium",
-        "question": "The ability of the kidney to excrete concentrated urine will increase if:",
-        "options": {
-            "A": "Permeability of water decreases in the collecting duct",
-            "B": "The rate of blood flow through the medulla decreases",
-            "C": "The rate of flow through the LOH increases",
-            "D": "The activity of Na-K pump in the LOH decreases",
-            "E": "The permeability of the collecting duct to water decreases"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HJK7ZMRF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "The phenomenon where glucose appears in the urine, especially with SGLT2 inhibitors, is referred to as the:",
-        "options": {
-            "A": "Osmotic Diuresis effect",
-            "B": "Glomerular Filtration Load",
-            "C": "Loop of Henle effect",
-            "D": "Early Tm splay phenomenon",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "The splay phenomenon (Early Tm) refers to the gradient along the proximal tubule where some nephrons begin to excrete glucose slightly earlier than others, an effect enhanced by SGLT2 inhibitors.",
-        "hint": ""
-    },
-    {
-        "id": "76ZBCQZ7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Total body water measured by:",
-        "options": {
-            "A": "Inulin",
-            "B": "Tritiated water",
-            "C": "Mannitol",
-            "D": "Evan Blue E. Sulfate",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "TBW-Radioactive water (Tritiated water in new form called Tritium, 3H2O) Heavy water (Deutrium 2D2O) and Antipyrene.",
-        "hint": ""
-    },
-    {
-        "id": "ZTCJF46V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Easy",
-        "question": "Under normal physiological conditions, which segment of the renal tubule is the site where the maximum amount of glucose is actively reabsorbed into the bloodstream?",
-        "options": {
-            "A": "Proximal Convoluted Tubule",
-            "B": "Distal Convoluted Tubule",
-            "C": "Loop of Henle",
-            "D": "Collecting Duct",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The Proximal Convoluted Tubule has the highest concentration of transport proteins, including the SGLT 2 and SGLT 1 transporters. Approximately 100% of filtered glucose is actively reabsorbed here, ensuring no glucose is normally present in the urine.",
-        "hint": ""
-    },
-    {
         "id": "JGCA9HR2",
         "year": [
             "2025"
@@ -4182,6 +4020,60 @@
         "hint": ""
     },
     {
+        "id": "6VALRWSD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which of the following is primarily responsible for sodium and water reabsorption in the kidney?",
+        "options": {
+            "A": "Renin",
+            "B": "Atrial natriuretic peptide (ANP)",
+            "C": "Antidiuretic hormone (ADH)",
+            "D": "Aldosterone",
+            "E": "Angiotensin II"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XJNMH9Z9",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which of the following is the best clinical method to measure GFR?",
+        "options": {
+            "A": "Serum creatinine",
+            "B": "Creatinine clearance",
+            "C": "PAH clearance",
+            "D": "Blood urea",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "59BCH8U8",
         "year": [
             "2025"
@@ -4206,6 +4098,87 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8CD6SAH3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which of the following would decrease GFR?",
+        "options": {
+            "A": "Afferent arteriolar vasodilation",
+            "B": "Efferent arteriolar constriction",
+            "C": "Increased sympathetic stimulation",
+            "D": "Increased renal blood flow",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6NY66FWX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which organ receives the highest blood flow per 100 g of tissue?",
+        "options": {
+            "A": "Brain",
+            "B": "Liver",
+            "C": "Kidney",
+            "D": "Heart",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WKLRPTSJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which specific aquaporin channel is regulated by ADH in the renal collecting ducts?",
+        "options": {
+            "A": "Aquaporin-1",
+            "B": "Aquaporin-2",
+            "C": "Aquaporin-4",
+            "D": "Aquaporin-8",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -4288,6 +4261,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Glucose -> mostly reabsorbed -> minimal clearance. Inulin -> filtered only (high clearance). PAH -> filtered + secreted (highest clearance).",
+        "hint": ""
+    },
+    {
+        "id": "A9R2SDTM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "With complete absence of ADH (central diabetes insipidus) and a GFR of 150 L/day, approximately how much urine would be produced each day?",
+        "options": {
+            "A": "5–10 L/day",
+            "B": "10–20 L/day",
+            "C": "1–2 L/day",
+            "D": "0.1–0.2 L/day",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     }
 ]

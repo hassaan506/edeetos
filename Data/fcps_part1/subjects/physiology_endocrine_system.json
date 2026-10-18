@@ -1,62 +1,83 @@
 [
     {
-        "id": "XE4F26CW",
+        "id": "477H5YHH",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics",
             "Medicine & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 14 - Evening"
+            "Medicine - 08/25 - August 5 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A patient with hypothalamic dopamine deficiency develops galactorrhea. The likely lab finding is:",
+        "question": "A 13 year old boy came with untreated type 1 DM. Insulin injection will increase which of the following?",
         "options": {
-            "A": "Decreased prolactin",
-            "B": "Increased prolactin",
-            "C": "Decreased ACTH",
-            "D": "Increased MSH",
-            "E": ""
+            "A": "Urinary glucose",
+            "B": "Hyperkalemia",
+            "C": "Urinary ketones",
+            "D": "I+ levels",
+            "E": "Blood pH"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "D7G8J2RU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 17 year old boy participated in a long-distance marathon. At the end of the race, he is exhausted but conscious. Which of the following best describes his metabolic hormonal status at the end of the race?",
+        "options": {
+            "A": "↑ Insulin ↓ Glucagon",
+            "B": "↓ Insulin ↑ Glucagon",
+            "C": "↑ Insulin ↑ Glucagon",
+            "D": "↓ Insulin ↓ Glucagon",
+            "E": "Normal Insulin, Normal Glucagon"
         },
         "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
     {
-        "id": "MLZLT2GS",
+        "id": "PZWHAV2V",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Gynecology - 08/25 - August 6 - Morning"
+            "Medicine - 11/25 - November 14 - Evening"
         ],
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "The anterior pituitary receives inhibitory input from the hypothalamus for which hormone?",
+        "question": "A 17-year-old boy participated in a long race, he is exhausted but conscious. Which of the following best describes his metabolic hormonal status at the end of the race?",
         "options": {
-            "A": "Prolactin",
-            "B": "GH",
-            "C": "TSH",
-            "D": "ACTH",
-            "E": ""
+            "A": "Increased Insulin, Decreased Glucagon",
+            "B": "Decreased Insulin, Increased Glucagon",
+            "C": "Increased Insulin, Increased Glucagon",
+            "D": "Decreased Insulin, Decreased Glucagon",
+            "E": "Normal Insulin, Normal Glucagon"
         },
-        "correctAnswer": "A",
-        "explanation": "Dopamine from the hypothalamus inhibits prolactin secretion from the anterior pituitary.",
+        "correctAnswer": "B",
+        "explanation": "During prolonged exercise, the body enters a catabolic state. Blood glucose falls, triggering increased Glucagon and decreased Insulin to maintain glucose for brain/muscle.",
         "hint": ""
     },
     {
@@ -384,6 +405,60 @@
         "hint": ""
     },
     {
+        "id": "VS9XVP7N",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old man presents for a routine health check. He has a sedentary lifestyle and a BMI of 31 kg/m². His lipid profile reveals: triglycerides 300 mg/dL, HDL 32 mg/dL, LDL 140 mg/dL. Fasting glucose is 108 mg/dL. Which hormone is most directly implicated in the pathophysiology of his lipid abnormalities?",
+        "options": {
+            "A": "Glucagon",
+            "B": "Insulin",
+            "C": "Cortisol",
+            "D": "Growth hormone",
+            "E": "Leptin"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9A6YYAAQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old man with a sedentary lifestyle is found to have elevated triglycerides and decreased HDL cholesterol on a routine checkup. His fasting glucose is mildly elevated. Which of the following is most likely responsible for these findings?",
+        "options": {
+            "A": "Testosterone",
+            "B": "Decreased hepatic VLDL synthesis",
+            "C": "HMG CoA Lipase",
+            "D": "Insulin Resistance",
+            "E": "Glucagon"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "93ZMG6F8",
         "year": [
             "2026"
@@ -465,6 +540,33 @@
         "hint": ""
     },
     {
+        "id": "LGKHP7W3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female child presents with short stature. The physician suspects a deficiency in growth hormone action. The primary effect of Growth Hormone on systemic growth is mediated by its stimulation of the liver to produce which key factor?",
+        "options": {
+            "A": "Growth Hormone Releasing Hormone (GHRH)",
+            "B": "Insulin-like Growth Factor 1 (IGF-1)",
+            "C": "Somatostatin",
+            "D": "Thyroid Hormone",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Growth Hormone (GH) exerts its potent anabolic and growth-promoting effects indirectly by stimulating the liver (and other tissues) to synthesize and secrete Insulin-like Growth Factor 1 (IGF-1) (also called Somatomedin C). IGF-1 is the effector molecule that mediates linear growth.",
+        "hint": ""
+    },
+    {
         "id": "FYZ2NBKU",
         "year": [
             "2026"
@@ -519,6 +621,33 @@
         "hint": ""
     },
     {
+        "id": "URFM95HE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man with Type 1 Diabetes missed his insulin doses for 2 days and presented to the Emergency Room in a drowsy state, showing signs of Diabetic Ketoacidosis (DKA). Which hormone deficiency is primarily responsible for his condition?",
+        "options": {
+            "A": "Insulin",
+            "B": "Cortisol",
+            "C": "Aldosterone",
+            "D": "NorEpinephrine",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HX2JB4VG",
         "year": [
             "2026"
@@ -543,6 +672,87 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X2LVGZJK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has been fasting for 72 hours. Which hormone is primarily responsible for maintaining blood glucose levels by promoting glycogenolysis and gluconeogenesis?",
+        "options": {
+            "A": "Insulin",
+            "B": "Glucagon",
+            "C": "Cortisol",
+            "D": "Epinephrine",
+            "E": "Growth hormone"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "H9PDNVTP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient in the neurology ward underwent excision of a craniopharyngioma involving the pituitary gland. Which cells of the pituitary have the largest secretory granules?",
+        "options": {
+            "A": "Chromophobes",
+            "B": "Basophils",
+            "C": "Acidophils",
+            "D": "Folliculostellate cells",
+            "E": "Follicular cells"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "THAF7ZMV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a paradoxically high Fasting Blood Glucose of 126 mg/dL(which is in the pre-diabetic range, not hypoglycemia), low HDL (25 mg/dL), high Cholesterol (200 mg/dL), and raised Triglycerides (TGL). Which hormone, if acting in excess or insufficiency, is most responsible for this specific pattern of dyslipidemia and dysglycemia?",
+        "options": {
+            "A": "Glucagon",
+            "B": "Insulin",
+            "C": "Glucocorticoids",
+            "D": "Growth hormone",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "This clinical picture is characteristic of Insulin Resistance (Metabolic Syndrome). Tissues become resistant to insulin, causing the pancreas to secrete more, leading to hyperinsulinemia which drives TGL synthesis and VLDL production while impairing HDL maturation.",
         "hint": ""
     },
     {
@@ -708,6 +918,33 @@
         "hint": ""
     },
     {
+        "id": "PYR2EHME",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with clinical symptoms of Cushing syndrome. The doctor thought that problem is at the level of receptor. Where is the receptor of cortisol located.",
+        "options": {
+            "A": "Plasma membrane",
+            "B": "Nucleus",
+            "C": "DNA",
+            "D": "Cytoplasm",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZGCGEJJU",
         "year": [
             "2026"
@@ -755,6 +992,36 @@
             "B": "Hypokalemia",
             "C": "Hypercalcemia",
             "D": "Hypernatremia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XE4F26CW",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with hypothalamic dopamine deficiency develops galactorrhea. The likely lab finding is:",
+        "options": {
+            "A": "Decreased prolactin",
+            "B": "Increased prolactin",
+            "C": "Decreased ACTH",
+            "D": "Increased MSH",
             "E": ""
         },
         "correctAnswer": "B",
@@ -870,6 +1137,33 @@
         "hint": ""
     },
     {
+        "id": "2VHWXCNU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A researcher is studying the action of steroid hormones. She notes that these hormones alter gene expression by binding to specific transcription factors. Where are the receptors for these transcription factors primarily located?",
+        "options": {
+            "A": "Nucleus",
+            "B": "Cytoplasm",
+            "C": "Cell membrane",
+            "D": "Golgi apparatus",
+            "E": "Lysosome"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "33PYAGUC",
         "year": [
             "2026"
@@ -893,6 +1187,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GH65JQZB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Adrenal zona glomerulosa necrosis would most likely result in which of the following electrolyte abnormalities?",
+        "options": {
+            "A": "Hyponatremia",
+            "B": "Hypokalemia",
+            "C": "Metabolic alkalosis",
+            "D": "Hypernatremia",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -951,6 +1272,33 @@
         "hint": ""
     },
     {
+        "id": "5W93EG3C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Aldosterone is secreted by which of the following?",
+        "options": {
+            "A": "Zona glomerulosa",
+            "B": "Zona reticularis",
+            "C": "Zona fasciculata",
+            "D": "Adrenal medulla",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FS3VT8N4",
         "year": [
             "2026"
@@ -978,6 +1326,33 @@
         "hint": ""
     },
     {
+        "id": "8ZYAZCF7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An athlete experiences heavy sweating and drinks water frequently. Which hormone will help maintain volume?",
+        "options": {
+            "A": "Aldosterone",
+            "B": "ADH",
+            "C": "Renin",
+            "D": "Cortisol",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "3NB66FEH",
         "year": [
             "2026"
@@ -1001,6 +1376,33 @@
             "E": "Regulation of gene transcription"
         },
         "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3VWBQMMK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Carpopedal spasm occur due to",
+        "options": {
+            "A": "Hypercalcemia",
+            "B": "Hypocalcemia",
+            "C": "Hyponatremia",
+            "D": "Hypokalemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1275,6 +1677,90 @@
         "hint": ""
     },
     {
+        "id": "HYYPJEBE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Excess Glucagon leads to",
+        "options": {
+            "A": "Increase Amino Acids",
+            "B": "Inhibit insulin",
+            "C": "Actuvateadenylate cyclase",
+            "D": "Decrease fatty acids",
+            "E": "Increase growth harome"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VETLREGY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 11/25 - November 13 - Evening",
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Excessive thirst/drinking is associated with damage of which of the following nucleus of hypothalamus?",
+        "options": {
+            "A": "Supraoptic nucleus",
+            "B": "Ventromedial nucleus",
+            "C": "Dorsomedial nucleus",
+            "D": "Paraventricular nucleus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T8LKL969",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "FSH is inhibited by which of the following",
+        "options": {
+            "A": "Inhibin",
+            "B": "LH",
+            "C": "Estrogen",
+            "D": "Progesterone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "T2GTCBUZ",
         "year": [
             "2026"
@@ -1353,6 +1839,62 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7UKB652B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Growth hormone acts via transcription factors. Receptors for growth hormone are located in:",
+        "options": {
+            "A": "Nucleus",
+            "B": "Cytoplasm",
+            "C": "Plasma membrane",
+            "D": "Lysosome",
+            "E": "Golgi bodies"
+        },
+        "correctAnswer": "C",
+        "explanation": "Growth hormone binds to cell surface receptors on the plasma membrane. Receptor activation triggers JAK2/STAT signaling, which then affects nuclear transcription.",
+        "hint": ""
+    },
+    {
+        "id": "FAE2AW6R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Growth hormone is mainly stimulated by which of the following?",
+        "options": {
+            "A": "Exercise",
+            "B": "Sleep",
+            "C": "Hypoglycemia",
+            "D": "Hyperglycemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Hypoglycemia > Strenuous Exercise > Non-REM > REM.",
         "hint": ""
     },
     {
@@ -1491,6 +2033,33 @@
         "hint": ""
     },
     {
+        "id": "4FAE9LZR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Immediate action of insulin is",
+        "options": {
+            "A": "Protein synthesis",
+            "B": "K entry into cells",
+            "C": "Glucose entry in plasma",
+            "D": "Fatty acid breakdown",
+            "E": "Ketosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "Immediate action of insulin – Entry of potassium into cells; Intermediate action of insulin – protein synthesis; Late action of insulin – Lipogenesis; Action of insulin at cellular level – Entry of glucose into cells; Insulin independent glucose uptake – Exercising skeletal muscle > Brain(MTB); Anti Ketotic – Insulin; Ketogenic – Glucagon",
+        "hint": ""
+    },
+    {
         "id": "GPC5W9LG",
         "year": [
             "2026"
@@ -1569,1418 +2138,6 @@
         },
         "correctAnswer": "C",
         "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UYMU564Y",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Increase in both TRH and TSH is seen in which condition?",
-        "options": {
-            "A": "Hypothalamus disease",
-            "B": "Pituitary disease",
-            "C": "Graves disease",
-            "D": "Hashimoto",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KUTY6ZSX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Insulin deficiency causes which of the following?",
-        "options": {
-            "A": "Hypokalemia",
-            "B": "Increase muscle mass",
-            "C": "Coma and dehydration",
-            "D": "Increased glycogen synthesis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UHZJQGA3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Oxytocin and vasopressin are released from the posterior pituitary but are synthesized in which region before axonal transport?",
-        "options": {
-            "A": "Pars nervosa",
-            "B": "Posterior pituitary",
-            "C": "Hypothalamic supraoptic and paraventricular nuclei",
-            "D": "Pineal gland",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RLSD9BS5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Parathyroid hormone (PTH) increases serum calcium levels primarily by stimulating the activity of",
-        "options": {
-            "A": "Calcitonin",
-            "B": "PTH",
-            "C": "Vitamin D activation",
-            "D": "Estrogen",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2KHKY7S6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening",
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient has puffy skin and hoarse voice. Her plasma TSH concentration is low but increases markedly when she is given TRH she probably has?",
-        "options": {
-            "A": "Hyperthyroidism with problem in Thyroid",
-            "B": "Hyperthyroidism with problem in pituitary",
-            "C": "Hyperthyroidism with problem in hypothalamus",
-            "D": "Hypothyroidism with Thyroid problem",
-            "E": "Hypothyroidism with hypothalamus"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G4HQH9PX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The hormone released in darkness is:",
-        "options": {
-            "A": "Melatonin",
-            "B": "Cortisol",
-            "C": "Serotonin",
-            "D": "Dopamiine",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UYFSCSF8",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The mechanism of action of steroid hormones",
-        "options": {
-            "A": "Activation of membrane-bound G-protein-coupled receptors",
-            "B": "Opening of ligand-gated ion channels",
-            "C": "Binding to intracellular receptors and altering gene transcription",
-            "D": "Activation of second messengers via adenylate cyclase",
-            "E": "Inhibition of tyrosine kinase receptors"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "D2WM786G",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Thyroid hormones increase body temperature and basal metabolic rate. What is the primary mechanism by which thyroxine increases energy production?",
-        "options": {
-            "A": "Inhibition of glycolysis",
-            "B": "Uncoupling of oxidative phosphorylation",
-            "C": "Decreased ATP synthesis directly",
-            "D": "Blockade of electron transport chain",
-            "E": "Inhibition of fatty acid oxidation"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TLK2W99R",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Uncoupling oxidative phosphorylation",
-        "options": {
-            "A": "Thyroxin",
-            "B": "Epinephrine",
-            "C": "Dopamine",
-            "D": "N.epinephrine",
-            "E": "Serotinine"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5DZ635FK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What decreases in Graves' disease?",
-        "options": {
-            "A": "T3",
-            "B": "Iodine",
-            "C": "Cardiac output",
-            "D": "TSH",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XV8GLS5Z",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What increases in Graves' disease?",
-        "options": {
-            "A": "T3",
-            "B": "T4",
-            "C": "TSH",
-            "D": "T3 and T4",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DJVL5HJ5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the most potent stimulus for aldosterone secretion?",
-        "options": {
-            "A": "Increased sodium",
-            "B": "Decreased potassium",
-            "C": "Hyperkalemia",
-            "D": "Increased blood volume",
-            "E": "Increased atrial natriuretic peptide"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DBZ8DR7K",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What stimulus increases the secretion of antidiuretic hormone (ADH)?",
-        "options": {
-            "A": "Decreased plasma osmolarity",
-            "B": "Low plasma volume",
-            "C": "High blood pressure",
-            "D": "Hypernatremia only",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EFRD3YV3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which anterior pituitary cells contain the most secretory vacuoles?",
-        "options": {
-            "A": "Mammotroph",
-            "B": "Thyrotroph",
-            "C": "Gonadotroph",
-            "D": "Somatotroph",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MPDM27W4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which electrolyte abnormality is responsible for tetany, muscle twitching, and seizures in a patient who underwent thyroid surgery?",
-        "options": {
-            "A": "Mg",
-            "B": "Ca",
-            "C": "Phosphorus",
-            "D": "K",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "N4BP9MTR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone activates the Na+/K+-ATPase pump?",
-        "options": {
-            "A": "Cortisol",
-            "B": "Insulin",
-            "C": "T3 (Triiodothyronine)",
-            "D": "Glucagon",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CNXV2F2X",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone causes protein,carbohydrate and fats storage in the body",
-        "options": {
-            "A": "Insulin",
-            "B": "Growth hormone",
-            "C": "TSH",
-            "D": "ACTH",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5LFR72KQ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone is secreted by the parafollicular C-cells of the thyroid gland to lower blood calcium levels?",
-        "options": {
-            "A": "Thyroxine",
-            "B": "Parathyroid hormone",
-            "C": "Calcitonin",
-            "D": "Vitamin D",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XD9T82K2",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Night"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone most directly increases gluconeogenesis?",
-        "options": {
-            "A": "Cortisol",
-            "B": "Insulin",
-            "C": "Epinephrine",
-            "D": "Aldosterone",
-            "E": "Growth hormone"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XU66PNTC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone shows increased secretion during darkness?",
-        "options": {
-            "A": "Cortisol",
-            "B": "Growth hormone",
-            "C": "Melatonin",
-            "D": "Prolactin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QPKBM6X9",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which is the active form of thyroid hormone circulating in the blood?",
-        "options": {
-            "A": "Free T3",
-            "B": "Thyroglobulin",
-            "C": "Free T4",
-            "D": "Protein-bound T3",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Free T3 is the biologically active thyroid hormone. T4 is mainly a prohormone converted to T3 in peripheral tissues. Only the free hormone is biologically active.",
-        "hint": ""
-    },
-    {
-        "id": "AS7PG67F",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which metabolic effect is characteristic of Cushing syndrome?",
-        "options": {
-            "A": "Decreased gluconeogenesis",
-            "B": "Increased glycolysis",
-            "C": "Increased gluconeogenesis",
-            "D": "Increased glycogenolysis only",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FUDPCRPU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following causes the release of both insulin and glucagon from the pancreas?",
-        "options": {
-            "A": "Cholecystokinin (CCK)",
-            "B": "Catecholamines",
-            "C": "Amino acids",
-            "D": "Acetylcholine",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7LDC2PT7",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following hormones is known to have a primary anabolic effect on the liver?",
-        "options": {
-            "A": "Cortisol",
-            "B": "Epinephrine",
-            "C": "Insulin",
-            "D": "Thyroxin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SFBVR5PW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following hormones utilizes the cGMP second messenger mechanism?",
-        "options": {
-            "A": "Oxytocin",
-            "B": "ANP",
-            "C": "Prolactin",
-            "D": "Insulin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q9E5B7A5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is considered the most potent and biologically active androgen (sex hormonE) in the male body?",
-        "options": {
-            "A": "Testosterone",
-            "B": "Dihydrotestosterone (DHT)",
-            "C": "Androstenedione",
-            "D": "Dehydroepiandrosterone (DHEA)",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VLPR5Y5N",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is inhibited by dopamine?",
-        "options": {
-            "A": "Glycine",
-            "B": "Acetylcholine",
-            "C": "Prolactin",
-            "D": "Somatostatin",
-            "E": "GABA"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TY7VUW9Z",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is not a primary stress hormone released in acute stress?",
-        "options": {
-            "A": "Epinephrine",
-            "B": "Thyroid Stimulating Hormone (TSH)",
-            "C": "Adrenocorticotropic Hormone (ACTH)",
-            "D": "Norepinephrine",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LCGW8X6G",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the most potent stimulus for aldosterone secretion?",
-        "options": {
-            "A": "Hyperkalemia",
-            "B": "Hypernatremia",
-            "C": "Hypervolemia",
-            "D": "Dehydration",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B4XAP9CK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following primarily mediates decreased GnRH secretion at night?",
-        "options": {
-            "A": "Dopamine",
-            "B": "Serotonin",
-            "C": "Melatonin",
-            "D": "Cortisol",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "477H5YHH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 13 year old boy came with untreated type 1 DM. Insulin injection will increase which of the following?",
-        "options": {
-            "A": "Urinary glucose",
-            "B": "Hyperkalemia",
-            "C": "Urinary ketones",
-            "D": "I+ levels",
-            "E": "Blood pH"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "D7G8J2RU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 17 year old boy participated in a long-distance marathon. At the end of the race, he is exhausted but conscious. Which of the following best describes his metabolic hormonal status at the end of the race?",
-        "options": {
-            "A": "↑ Insulin ↓ Glucagon",
-            "B": "↓ Insulin ↑ Glucagon",
-            "C": "↑ Insulin ↑ Glucagon",
-            "D": "↓ Insulin ↓ Glucagon",
-            "E": "Normal Insulin, Normal Glucagon"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PZWHAV2V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 17-year-old boy participated in a long race, he is exhausted but conscious. Which of the following best describes his metabolic hormonal status at the end of the race?",
-        "options": {
-            "A": "Increased Insulin, Decreased Glucagon",
-            "B": "Decreased Insulin, Increased Glucagon",
-            "C": "Increased Insulin, Increased Glucagon",
-            "D": "Decreased Insulin, Decreased Glucagon",
-            "E": "Normal Insulin, Normal Glucagon"
-        },
-        "correctAnswer": "B",
-        "explanation": "During prolonged exercise, the body enters a catabolic state. Blood glucose falls, triggering increased Glucagon and decreased Insulin to maintain glucose for brain/muscle.",
-        "hint": ""
-    },
-    {
-        "id": "VS9XVP7N",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old man presents for a routine health check. He has a sedentary lifestyle and a BMI of 31 kg/m². His lipid profile reveals: triglycerides 300 mg/dL, HDL 32 mg/dL, LDL 140 mg/dL. Fasting glucose is 108 mg/dL. Which hormone is most directly implicated in the pathophysiology of his lipid abnormalities?",
-        "options": {
-            "A": "Glucagon",
-            "B": "Insulin",
-            "C": "Cortisol",
-            "D": "Growth hormone",
-            "E": "Leptin"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9A6YYAAQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old man with a sedentary lifestyle is found to have elevated triglycerides and decreased HDL cholesterol on a routine checkup. His fasting glucose is mildly elevated. Which of the following is most likely responsible for these findings?",
-        "options": {
-            "A": "Testosterone",
-            "B": "Decreased hepatic VLDL synthesis",
-            "C": "HMG CoA Lipase",
-            "D": "Insulin Resistance",
-            "E": "Glucagon"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LGKHP7W3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female child presents with short stature. The physician suspects a deficiency in growth hormone action. The primary effect of Growth Hormone on systemic growth is mediated by its stimulation of the liver to produce which key factor?",
-        "options": {
-            "A": "Growth Hormone Releasing Hormone (GHRH)",
-            "B": "Insulin-like Growth Factor 1 (IGF-1)",
-            "C": "Somatostatin",
-            "D": "Thyroid Hormone",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Growth Hormone (GH) exerts its potent anabolic and growth-promoting effects indirectly by stimulating the liver (and other tissues) to synthesize and secrete Insulin-like Growth Factor 1 (IGF-1) (also called Somatomedin C). IGF-1 is the effector molecule that mediates linear growth.",
-        "hint": ""
-    },
-    {
-        "id": "URFM95HE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A man with Type 1 Diabetes missed his insulin doses for 2 days and presented to the Emergency Room in a drowsy state, showing signs of Diabetic Ketoacidosis (DKA). Which hormone deficiency is primarily responsible for his condition?",
-        "options": {
-            "A": "Insulin",
-            "B": "Cortisol",
-            "C": "Aldosterone",
-            "D": "NorEpinephrine",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X2LVGZJK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has been fasting for 72 hours. Which hormone is primarily responsible for maintaining blood glucose levels by promoting glycogenolysis and gluconeogenesis?",
-        "options": {
-            "A": "Insulin",
-            "B": "Glucagon",
-            "C": "Cortisol",
-            "D": "Epinephrine",
-            "E": "Growth hormone"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "H9PDNVTP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient in the neurology ward underwent excision of a craniopharyngioma involving the pituitary gland. Which cells of the pituitary have the largest secretory granules?",
-        "options": {
-            "A": "Chromophobes",
-            "B": "Basophils",
-            "C": "Acidophils",
-            "D": "Folliculostellate cells",
-            "E": "Follicular cells"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "THAF7ZMV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a paradoxically high Fasting Blood Glucose of 126 mg/dL(which is in the pre-diabetic range, not hypoglycemia), low HDL (25 mg/dL), high Cholesterol (200 mg/dL), and raised Triglycerides (TGL). Which hormone, if acting in excess or insufficiency, is most responsible for this specific pattern of dyslipidemia and dysglycemia?",
-        "options": {
-            "A": "Glucagon",
-            "B": "Insulin",
-            "C": "Glucocorticoids",
-            "D": "Growth hormone",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "This clinical picture is characteristic of Insulin Resistance (Metabolic Syndrome). Tissues become resistant to insulin, causing the pancreas to secrete more, leading to hyperinsulinemia which drives TGL synthesis and VLDL production while impairing HDL maturation.",
-        "hint": ""
-    },
-    {
-        "id": "PYR2EHME",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with clinical symptoms of Cushing syndrome. The doctor thought that problem is at the level of receptor. Where is the receptor of cortisol located.",
-        "options": {
-            "A": "Plasma membrane",
-            "B": "Nucleus",
-            "C": "DNA",
-            "D": "Cytoplasm",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2VHWXCNU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A researcher is studying the action of steroid hormones. She notes that these hormones alter gene expression by binding to specific transcription factors. Where are the receptors for these transcription factors primarily located?",
-        "options": {
-            "A": "Nucleus",
-            "B": "Cytoplasm",
-            "C": "Cell membrane",
-            "D": "Golgi apparatus",
-            "E": "Lysosome"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GH65JQZB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Adrenal zona glomerulosa necrosis would most likely result in which of the following electrolyte abnormalities?",
-        "options": {
-            "A": "Hyponatremia",
-            "B": "Hypokalemia",
-            "C": "Metabolic alkalosis",
-            "D": "Hypernatremia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5W93EG3C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Aldosterone is secreted by which of the following?",
-        "options": {
-            "A": "Zona glomerulosa",
-            "B": "Zona reticularis",
-            "C": "Zona fasciculata",
-            "D": "Adrenal medulla",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8ZYAZCF7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An athlete experiences heavy sweating and drinks water frequently. Which hormone will help maintain volume?",
-        "options": {
-            "A": "Aldosterone",
-            "B": "ADH",
-            "C": "Renin",
-            "D": "Cortisol",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3VWBQMMK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Carpopedal spasm occur due to",
-        "options": {
-            "A": "Hypercalcemia",
-            "B": "Hypocalcemia",
-            "C": "Hyponatremia",
-            "D": "Hypokalemia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HYYPJEBE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Excess Glucagon leads to",
-        "options": {
-            "A": "Increase Amino Acids",
-            "B": "Inhibit insulin",
-            "C": "Actuvateadenylate cyclase",
-            "D": "Decrease fatty acids",
-            "E": "Increase growth harome"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VETLREGY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 11/25 - November 13 - Evening",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Excessive thirst/drinking is associated with damage of which of the following nucleus of hypothalamus?",
-        "options": {
-            "A": "Supraoptic nucleus",
-            "B": "Ventromedial nucleus",
-            "C": "Dorsomedial nucleus",
-            "D": "Paraventricular nucleus",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T8LKL969",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "FSH is inhibited by which of the following",
-        "options": {
-            "A": "Inhibin",
-            "B": "LH",
-            "C": "Estrogen",
-            "D": "Progesterone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7UKB652B",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Growth hormone acts via transcription factors. Receptors for growth hormone are located in:",
-        "options": {
-            "A": "Nucleus",
-            "B": "Cytoplasm",
-            "C": "Plasma membrane",
-            "D": "Lysosome",
-            "E": "Golgi bodies"
-        },
-        "correctAnswer": "C",
-        "explanation": "Growth hormone binds to cell surface receptors on the plasma membrane. Receptor activation triggers JAK2/STAT signaling, which then affects nuclear transcription.",
-        "hint": ""
-    },
-    {
-        "id": "FAE2AW6R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Growth hormone is mainly stimulated by which of the following?",
-        "options": {
-            "A": "Exercise",
-            "B": "Sleep",
-            "C": "Hypoglycemia",
-            "D": "Hyperglycemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Hypoglycemia > Strenuous Exercise > Non-REM > REM.",
-        "hint": ""
-    },
-    {
-        "id": "4FAE9LZR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Immediate action of insulin is",
-        "options": {
-            "A": "Protein synthesis",
-            "B": "K entry into cells",
-            "C": "Glucose entry in plasma",
-            "D": "Fatty acid breakdown",
-            "E": "Ketosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "Immediate action of insulin – Entry of potassium into cells; Intermediate action of insulin – protein synthesis; Late action of insulin – Lipogenesis; Action of insulin at cellular level – Entry of glucose into cells; Insulin independent glucose uptake – Exercising skeletal muscle > Brain(MTB); Anti Ketotic – Insulin; Ketogenic – Glucagon",
         "hint": ""
     },
     {
@@ -3065,6 +2222,33 @@
         "hint": ""
     },
     {
+        "id": "UYMU564Y",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Increase in both TRH and TSH is seen in which condition?",
+        "options": {
+            "A": "Hypothalamus disease",
+            "B": "Pituitary disease",
+            "C": "Graves disease",
+            "D": "Hashimoto",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YZ74A5UB",
         "year": [
             "2025"
@@ -3087,6 +2271,33 @@
             "B": "No effect on hunger",
             "C": "Decreases hunger",
             "D": "Increases hunger for carbohydrates",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KUTY6ZSX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Insulin deficiency causes which of the following?",
+        "options": {
+            "A": "Hypokalemia",
+            "B": "Increase muscle mass",
+            "C": "Coma and dehydration",
+            "D": "Increased glycogen synthesis",
             "E": ""
         },
         "correctAnswer": "C",
@@ -3145,6 +2356,60 @@
             "B": "Inhibit Na/K pump",
             "C": "Inhibit H/K pump in parietal cells",
             "D": "Inhibit PG formation",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UHZJQGA3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Oxytocin and vasopressin are released from the posterior pituitary but are synthesized in which region before axonal transport?",
+        "options": {
+            "A": "Pars nervosa",
+            "B": "Posterior pituitary",
+            "C": "Hypothalamic supraoptic and paraventricular nuclei",
+            "D": "Pineal gland",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RLSD9BS5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Parathyroid hormone (PTH) increases serum calcium levels primarily by stimulating the activity of",
+        "options": {
+            "A": "Calcitonin",
+            "B": "PTH",
+            "C": "Vitamin D activation",
+            "D": "Estrogen",
             "E": ""
         },
         "correctAnswer": "C",
@@ -3232,6 +2497,36 @@
         },
         "correctAnswer": "A",
         "explanation": "Insulin deficiency/resistance -> hyperglycemia -> polyuria, polydipsia, dyslipidemia. Characteristic of type 2 diabetes mellitus.",
+        "hint": ""
+    },
+    {
+        "id": "2KHKY7S6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening",
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient has puffy skin and hoarse voice. Her plasma TSH concentration is low but increases markedly when she is given TRH she probably has?",
+        "options": {
+            "A": "Hyperthyroidism with problem in Thyroid",
+            "B": "Hyperthyroidism with problem in pituitary",
+            "C": "Hyperthyroidism with problem in hypothalamus",
+            "D": "Hypothyroidism with Thyroid problem",
+            "E": "Hypothyroidism with hypothalamus"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -3370,6 +2665,36 @@
         "hint": ""
     },
     {
+        "id": "MLZLT2GS",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The anterior pituitary receives inhibitory input from the hypothalamus for which hormone?",
+        "options": {
+            "A": "Prolactin",
+            "B": "GH",
+            "C": "TSH",
+            "D": "ACTH",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Dopamine from the hypothalamus inhibits prolactin secretion from the anterior pituitary.",
+        "hint": ""
+    },
+    {
         "id": "HGZDLC7F",
         "year": [
             "2025"
@@ -3393,6 +2718,60 @@
             "E": "Binds to nuclear receptors like steroid hormones"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G4HQH9PX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The hormone released in darkness is:",
+        "options": {
+            "A": "Melatonin",
+            "B": "Cortisol",
+            "C": "Serotonin",
+            "D": "Dopamiine",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UYFSCSF8",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The mechanism of action of steroid hormones",
+        "options": {
+            "A": "Activation of membrane-bound G-protein-coupled receptors",
+            "B": "Opening of ligand-gated ion channels",
+            "C": "Binding to intracellular receptors and altering gene transcription",
+            "D": "Activation of second messengers via adenylate cyclase",
+            "E": "Inhibition of tyrosine kinase receptors"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -3478,6 +2857,33 @@
         "hint": ""
     },
     {
+        "id": "D2WM786G",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Thyroid hormones increase body temperature and basal metabolic rate. What is the primary mechanism by which thyroxine increases energy production?",
+        "options": {
+            "A": "Inhibition of glycolysis",
+            "B": "Uncoupling of oxidative phosphorylation",
+            "C": "Decreased ATP synthesis directly",
+            "D": "Blockade of electron transport chain",
+            "E": "Inhibition of fatty acid oxidation"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZG85ZB39",
         "year": [
             "2025"
@@ -3502,6 +2908,87 @@
         },
         "correctAnswer": "A",
         "explanation": "Cytoplasmic receptors: Glucocorticoids, Mineralocorticoids, Androgens, Estrogens, Vitamin D3. Nuclear receptors: Thyroid hormones.",
+        "hint": ""
+    },
+    {
+        "id": "TLK2W99R",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Uncoupling oxidative phosphorylation",
+        "options": {
+            "A": "Thyroxin",
+            "B": "Epinephrine",
+            "C": "Dopamine",
+            "D": "N.epinephrine",
+            "E": "Serotinine"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5DZ635FK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What decreases in Graves' disease?",
+        "options": {
+            "A": "T3",
+            "B": "Iodine",
+            "C": "Cardiac output",
+            "D": "TSH",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XV8GLS5Z",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What increases in Graves' disease?",
+        "options": {
+            "A": "T3",
+            "B": "T4",
+            "C": "TSH",
+            "D": "T3 and T4",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -3555,6 +3042,33 @@
             "E": "Low dose Dexamethasone suppression test"
         },
         "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DJVL5HJ5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the most potent stimulus for aldosterone secretion?",
+        "options": {
+            "A": "Increased sodium",
+            "B": "Decreased potassium",
+            "C": "Hyperkalemia",
+            "D": "Increased blood volume",
+            "E": "Increased atrial natriuretic peptide"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -3618,6 +3132,33 @@
         "hint": ""
     },
     {
+        "id": "DBZ8DR7K",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What stimulus increases the secretion of antidiuretic hormone (ADH)?",
+        "options": {
+            "A": "Decreased plasma osmolarity",
+            "B": "Low plasma volume",
+            "C": "High blood pressure",
+            "D": "Hypernatremia only",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BX8TR3US",
         "year": [
             "2025"
@@ -3645,6 +3186,114 @@
         "hint": ""
     },
     {
+        "id": "EFRD3YV3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which anterior pituitary cells contain the most secretory vacuoles?",
+        "options": {
+            "A": "Mammotroph",
+            "B": "Thyrotroph",
+            "C": "Gonadotroph",
+            "D": "Somatotroph",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MPDM27W4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which electrolyte abnormality is responsible for tetany, muscle twitching, and seizures in a patient who underwent thyroid surgery?",
+        "options": {
+            "A": "Mg",
+            "B": "Ca",
+            "C": "Phosphorus",
+            "D": "K",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "N4BP9MTR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone activates the Na+/K+-ATPase pump?",
+        "options": {
+            "A": "Cortisol",
+            "B": "Insulin",
+            "C": "T3 (Triiodothyronine)",
+            "D": "Glucagon",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CNXV2F2X",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone causes protein,carbohydrate and fats storage in the body",
+        "options": {
+            "A": "Insulin",
+            "B": "Growth hormone",
+            "C": "TSH",
+            "D": "ACTH",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "9WLJYMFD",
         "year": [
             "2025"
@@ -3666,6 +3315,60 @@
             "C": "Antidiuretic Hormone (ADH)",
             "D": "Oxytocin",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5LFR72KQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone is secreted by the parafollicular C-cells of the thyroid gland to lower blood calcium levels?",
+        "options": {
+            "A": "Thyroxine",
+            "B": "Parathyroid hormone",
+            "C": "Calcitonin",
+            "D": "Vitamin D",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XD9T82K2",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Night"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone most directly increases gluconeogenesis?",
+        "options": {
+            "A": "Cortisol",
+            "B": "Insulin",
+            "C": "Epinephrine",
+            "D": "Aldosterone",
+            "E": "Growth hormone"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -3726,6 +3429,33 @@
         "hint": ""
     },
     {
+        "id": "XU66PNTC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone shows increased secretion during darkness?",
+        "options": {
+            "A": "Cortisol",
+            "B": "Growth hormone",
+            "C": "Melatonin",
+            "D": "Prolactin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "WKTNUCZV",
         "year": [
             "2025"
@@ -3750,6 +3480,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Cortisol -> catabolic, increases glucose availability via: Glycogenolysis, Gluconeogenesis, Lipolysis -> ketone production.",
+        "hint": ""
+    },
+    {
+        "id": "QPKBM6X9",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which is the active form of thyroid hormone circulating in the blood?",
+        "options": {
+            "A": "Free T3",
+            "B": "Thyroglobulin",
+            "C": "Free T4",
+            "D": "Protein-bound T3",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Free T3 is the biologically active thyroid hormone. T4 is mainly a prohormone converted to T3 in peripheral tissues. Only the free hormone is biologically active.",
         "hint": ""
     },
     {
@@ -3780,6 +3537,33 @@
         "hint": ""
     },
     {
+        "id": "AS7PG67F",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which metabolic effect is characteristic of Cushing syndrome?",
+        "options": {
+            "A": "Decreased gluconeogenesis",
+            "B": "Increased glycolysis",
+            "C": "Increased gluconeogenesis",
+            "D": "Increased glycogenolysis only",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EER2ADE8",
         "year": [
             "2025"
@@ -3803,6 +3587,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FUDPCRPU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following causes the release of both insulin and glucagon from the pancreas?",
+        "options": {
+            "A": "Cholecystokinin (CCK)",
+            "B": "Catecholamines",
+            "C": "Amino acids",
+            "D": "Acetylcholine",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -3885,6 +3696,60 @@
         },
         "correctAnswer": "A",
         "explanation": "Insulin is a master anabolic hormone, meaning it promotes the building up and storage of energy. Its effects on all three macronutrients are about putting them away for later use.",
+        "hint": ""
+    },
+    {
+        "id": "7LDC2PT7",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following hormones is known to have a primary anabolic effect on the liver?",
+        "options": {
+            "A": "Cortisol",
+            "B": "Epinephrine",
+            "C": "Insulin",
+            "D": "Thyroxin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SFBVR5PW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following hormones utilizes the cGMP second messenger mechanism?",
+        "options": {
+            "A": "Oxytocin",
+            "B": "ANP",
+            "C": "Prolactin",
+            "D": "Insulin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -3971,6 +3836,33 @@
         "hint": ""
     },
     {
+        "id": "Q9E5B7A5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is considered the most potent and biologically active androgen (sex hormonE) in the male body?",
+        "options": {
+            "A": "Testosterone",
+            "B": "Dihydrotestosterone (DHT)",
+            "C": "Androstenedione",
+            "D": "Dehydroepiandrosterone (DHEA)",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YL86YAQ9",
         "year": [
             "2025"
@@ -3995,6 +3887,60 @@
         },
         "correctAnswer": "A",
         "explanation": "Stimulation of gluconeogenesis. They increase protein metabolism. They decrease glucose utilization. They increase lipolysis. Anti-inflammatory effects. Suppression of the immune response. Maintenance of vascular responsiveness to catecholamines.",
+        "hint": ""
+    },
+    {
+        "id": "VLPR5Y5N",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is inhibited by dopamine?",
+        "options": {
+            "A": "Glycine",
+            "B": "Acetylcholine",
+            "C": "Prolactin",
+            "D": "Somatostatin",
+            "E": "GABA"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TY7VUW9Z",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is not a primary stress hormone released in acute stress?",
+        "options": {
+            "A": "Epinephrine",
+            "B": "Thyroid Stimulating Hormone (TSH)",
+            "C": "Adrenocorticotropic Hormone (ACTH)",
+            "D": "Norepinephrine",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -4049,6 +3995,60 @@
         },
         "correctAnswer": "A",
         "explanation": "Maximum concentration of thyroid hormone - T4. Thyroid hormone Enter in Circulation - T4. Thyroid hormone causes fetal Brain development - T3. Active form of thyroid hormone - T3 (Free form or Unbound is Active).",
+        "hint": ""
+    },
+    {
+        "id": "LCGW8X6G",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the most potent stimulus for aldosterone secretion?",
+        "options": {
+            "A": "Hyperkalemia",
+            "B": "Hypernatremia",
+            "C": "Hypervolemia",
+            "D": "Dehydration",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "B4XAP9CK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following primarily mediates decreased GnRH secretion at night?",
+        "options": {
+            "A": "Dopamine",
+            "B": "Serotonin",
+            "C": "Melatonin",
+            "D": "Cortisol",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {

@@ -1,901 +1,5 @@
 [
     {
-        "id": "LWLTP8NY",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning",
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Medium",
-        "question": "A 50 year old patient is known case of CKD requires antibiotic therapy, from the following cephalosporins, which is the following, is best probable option for him?",
-        "options": {
-            "A": "Cefixime",
-            "B": "Cefuroxime",
-            "C": "Ceftriaxone",
-            "D": "Cephalexin",
-            "E": "Cefotaxime"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "A4U3BRAR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Medium",
-        "question": "A 40 year old patient has pedal edema and a serum calcium level of 12 mg/dL. Which diuretic is most appropriate?",
-        "options": {
-            "A": "Furosemide",
-            "B": "Acetazolamide",
-            "C": "Hydrochlorothiazide",
-            "D": "Spironolactone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HWXDK6S6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Medium",
-        "question": "A 55 year old hypertensive patient presents with bilateral pedal edema and lab findings showing hypokalemia. Which diuretic is most appropriate for this patient:",
-        "options": {
-            "A": "Thiazide",
-            "B": "Acetazolamide",
-            "C": "Spironolactone",
-            "D": "Furosemide",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UBELD68E",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Medium",
-        "question": "A 60 year old woman is treated with a thiazide diuretic for hypertension. Which part of the nephron is primarily affected, and what is its main action on sodium handling?",
-        "options": {
-            "A": "Proximal tubule - inhibits Na+/K+ ATPase",
-            "B": "Loop of Henle - inhibits Na+-K+-2Cl- transporter",
-            "C": "Distal convoluted tubule - inhibits Na+-Cl- cotransporter",
-            "D": "Collecting duct - blocks aldosterone receptors",
-            "E": "Collecting duct - blocks ENaC channels"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KYZLXEGZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "A diuretic used for hypertension (HTN) acts by inhibiting sodium reabsorption in the distal convoluted tubule. Which class does it belong to?",
-        "options": {
-            "A": "Proximal convoluted tubule diuretics",
-            "B": "Loop diuretics",
-            "C": "Thiazide diuretics",
-            "D": "Potassium-sparing diuretics",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7BDLR2GW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Replacement Therapy",
-        "difficulty": "Easy",
-        "question": "A patient is undergoing hemodialysis for end stage renal disease. Which anticoagulant is used during the procedure to prevent the blood from clotting in the dialysis circuit?",
-        "options": {
-            "A": "Dabigatran",
-            "B": "Apixaban",
-            "C": "Warfarin",
-            "D": "Heparin",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YQX82PFX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "A patient on a diuretic has normal serum calcium but low urinary calcium excretion. Which diuretic is responsible?",
-        "options": {
-            "A": "Mannitol",
-            "B": "Furosemide",
-            "C": "Thiazide",
-            "D": "Acetazolamide",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GWKHVJ97",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "A patient on acetazolamide for glaucoma presents with fatigue and rapid breathing. ABGs show a low bicarbonate level. What is the most common adverse effect?",
-        "options": {
-            "A": "Metabolic acidosis",
-            "B": "Hyperkalemia",
-            "C": "Hypertension",
-            "D": "Respiratory alkalosis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SS5JX6WS",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "A patient receiving chemotherapy develops hematuria. Which drug is responsible for this adverse effect?",
-        "options": {
-            "A": "Cyclophosphamide",
-            "B": "Methotrexate",
-            "C": "Vincristine",
-            "D": "Doxorubicin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "R44E6H89",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Easy",
-        "question": "A patient with chronic kidney disease requires an antibiotic with minimal dose adjustment. Which drug should be avoided?",
-        "options": {
-            "A": "Thiazide",
-            "B": "Gentamicin",
-            "C": "Amoxicillin",
-            "D": "Ceftriaxone",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VDBSTGWU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Easy",
-        "question": "A patient with chronic renal failure and otitis media should receive which drug with caution?",
-        "options": {
-            "A": "Amoxicillin",
-            "B": "Ceftriaxone",
-            "C": "Gentamicin",
-            "D": "Azithromycin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G4GVR94N",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Medium",
-        "question": "A patient with Type 2 Diabetes and Chronic Kidney Disease (CKD) has developed significant edema. Which class of diuretics is most effective for fluid management in patients with reduced GFR?",
-        "options": {
-            "A": "Furosemide",
-            "B": "Spironolactone",
-            "C": "Thiazide",
-            "D": "Digoxin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GFF5FTHB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Medium",
-        "question": "An HIV-positive patient with pulmonary tuberculosis has an eGFR of 35 mL/min. Which anti-tuberculous drug requires dose adjustment in renal impairment?",
-        "options": {
-            "A": "Rifabutin",
-            "B": "Rifampicin",
-            "C": "Isoniazid",
-            "D": "Pyrazinamide",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2FSCVVJC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Chronic use of which drug can lead to bicarbonate loss and metabolic acidosis?",
-        "options": {
-            "A": "Furosemide",
-            "B": "Acetazolamide",
-            "C": "Spironolactone",
-            "D": "Hydrochlorothiazide",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K2MEYUQV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Chronic Kidney Disease",
-        "difficulty": "Easy",
-        "question": "Hypertensive diabetic patient with proteinuria Which antihypertensive prevents diabetic nephropathy",
-        "options": {
-            "A": "Nifedipine",
-            "B": "Metoprolol",
-            "C": "Enalapril",
-            "D": "Loop diuretic",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YA95XZ55",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Easy",
-        "question": "In a patient with chronic renal failure being treated for otitis media, which medication requires caution?",
-        "options": {
-            "A": "Metformin",
-            "B": "Amoxicillin",
-            "C": "Gentamicin",
-            "D": "Ceftriaxone",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WHARAXYD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Medium",
-        "question": "In a patient with renal disease requiring antibiotic therapy, the drug of choice is:",
-        "options": {
-            "A": "Amoxicillin",
-            "B": "Ceftriaxone",
-            "C": "Gentamicin",
-            "D": "Ciprofloxacin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JPZMJNPB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "General",
-        "difficulty": "Hard",
-        "question": "Lithium causes renal stones by:",
-        "options": {
-            "A": "Acting on PTH",
-            "B": "Increasing calcitonin",
-            "C": "Increasing blood phosphorus",
-            "D": "Increase urinary solute concentration",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WEUAJR3R",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Mechanism of action of acetazolamide",
-        "options": {
-            "A": "Inhibits carbonic anhydrase",
-            "B": "Inhibits Na⁺/K⁺/2Cl⁻ symport",
-            "C": "Antagonizes aldosterone",
-            "D": "Inhibits cyclooxygenase",
-            "E": "Increases tubular osmotic pressure"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XR8CHCTG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Metabolic acidosis caused by which of the following:",
-        "options": {
-            "A": "Aldosterone",
-            "B": "Furosemide",
-            "C": "Thiazide",
-            "D": "Spironolactone",
-            "E": "Carbonic anhydrase inhibitor"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WQ6ZKKBF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Medium",
-        "question": "Most commonly used diuretic is",
-        "options": {
-            "A": "Sulphonamide derivative diuretics",
-            "B": "Benzothiadiazine derivatives",
-            "C": "Steroid derivatives",
-            "D": "Carbonic anhydrase inhibitors",
-            "E": "Osmotic sugar derivatives"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M3KY8EWD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "On which nephron segment do thiazide diuretics primarily exert their effect?",
-        "options": {
-            "A": "Proximal convoluted tubule",
-            "B": "Thick ascending limb",
-            "C": "Distal convoluted tubule",
-            "D": "Collecting duct",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V4G7WU8X",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Thiazide diuretics act primarily on which part of the nephron?",
-        "options": {
-            "A": "Early distal convoluted tubule",
-            "B": "Loop of Henle",
-            "C": "Proximal convoluted tubule",
-            "D": "Collecting duct",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DU6TKRSB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Thiazide diuretics exert their primary effect at which site in the nephron?",
-        "options": {
-            "A": "Early distal convoluted tubule (DCT)",
-            "B": "Collecting duct (CD)",
-            "C": "Thick ascending limb of the Loop of Henle",
-            "D": "Proximal convoluted tubule (PCT)",
-            "E": "Descending limb of the Loop of Henle"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VRAVHCRM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Medium",
-        "question": "What is the effect of chronic loop or thiazide diuretic therapy?",
-        "options": {
-            "A": "Increased potassium",
-            "B": "Increased PaCO2 (Compensatory)",
-            "C": "Decreased chloride",
-            "D": "Normal arterial pH",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JP8VQ3A9",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "Which anticancer drug is likely responsible for causing hematuria in a renal tumor patient undergoing chemotherapy?",
-        "options": {
-            "A": "Cyclophosphamide",
-            "B": "Cisplatin",
-            "C": "Bleomycin",
-            "D": "Methotrexate",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DG9ZR9JS",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "Which chemotherapeutic agent commonly causes hemorrhagic cystitis that presents with hematuria?",
-        "options": {
-            "A": "Cisplatin",
-            "B": "Methotrexate",
-            "C": "Cyclophosphamide",
-            "D": "Acetaminophen",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GWLN9L8P",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "Which chemotherapeutic drug causes hemorrhagic cystitis leading to hematuria?",
-        "options": {
-            "A": "Cisplatin",
-            "B": "Methotrexate",
-            "C": "Cyclophosphamide",
-            "D": "Vincristine",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NT3N3Z3U",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Easy",
-        "question": "Which chemotherapeutic drug is well known to cause hypomagnesemia?",
-        "options": {
-            "A": "Cyclophosphamide",
-            "B": "Methotrexate",
-            "C": "Cisplatin",
-            "D": "Vincristine",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XCU43BWX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Which diuretic can cause hyperuricemia and may precipitate an attack of gout?",
-        "options": {
-            "A": "Hydrochlorothiazide",
-            "B": "Spironolactone",
-            "C": "Furosemide",
-            "D": "Acetazolamide",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BGF5Q3EV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Renal Pharmacology",
-        "difficulty": "Easy",
-        "question": "Which drug should be avoided in patients with CKD?",
-        "options": {
-            "A": "Gentamicin",
-            "B": "Amoxicillin",
-            "C": "Ceftriaxone",
-            "D": "Piparcillin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JNFHSXTM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Which of the following causes metabolic acidosis?",
-        "options": {
-            "A": "Acetazolamide",
-            "B": "Furosemide",
-            "C": "Thiazide",
-            "D": "Spironolactone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6UBQ7Y2L",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon",
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Urinary System",
-        "topic": "Diuretics",
-        "difficulty": "Easy",
-        "question": "Which of the following is side effect of loop diuretic:",
-        "options": {
-            "A": "Hypoglycemia",
-            "B": "Hypercalcemia",
-            "C": "Hyperkelemia",
-            "D": "Metabolic alkalosis",
-            "E": "Metabolic acidosis"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "Z8X9UMAL",
         "year": [
             "2025"
@@ -950,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "A4U3BRAR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Medium",
+        "question": "A 40 year old patient has pedal edema and a serum calcium level of 12 mg/dL. Which diuretic is most appropriate?",
+        "options": {
+            "A": "Furosemide",
+            "B": "Acetazolamide",
+            "C": "Hydrochlorothiazide",
+            "D": "Spironolactone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "X5L7DSGF",
         "year": [
             "2025"
@@ -973,6 +104,36 @@
             "E": "Tenofovir"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LWLTP8NY",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning",
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Medium",
+        "question": "A 50 year old patient is known case of CKD requires antibiotic therapy, from the following cephalosporins, which is the following, is best probable option for him?",
+        "options": {
+            "A": "Cefixime",
+            "B": "Cefuroxime",
+            "C": "Ceftriaxone",
+            "D": "Cephalexin",
+            "E": "Cefotaxime"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1001,6 +162,33 @@
         },
         "correctAnswer": "C",
         "explanation": "The excretion of cefoperazone and ceftriaxone is mainly through biliary tract, and no dosage adjustment is required for renal insufficiency.",
+        "hint": ""
+    },
+    {
+        "id": "HWXDK6S6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Medium",
+        "question": "A 55 year old hypertensive patient presents with bilateral pedal edema and lab findings showing hypokalemia. Which diuretic is most appropriate for this patient:",
+        "options": {
+            "A": "Thiazide",
+            "B": "Acetazolamide",
+            "C": "Spironolactone",
+            "D": "Furosemide",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1055,6 +243,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Cyclophosphamide is an alkylating agent. Its toxic metabolite, acrolein, is concentrated in the urine and is highly toxic to the transitional epithelium of the urinary bladder, leading to inflammation, ulceration, and bleeding, known as Hemorrhagic Cystitis. This side effect is prevented by administering Mesna.",
+        "hint": ""
+    },
+    {
+        "id": "UBELD68E",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Medium",
+        "question": "A 60 year old woman is treated with a thiazide diuretic for hypertension. Which part of the nephron is primarily affected, and what is its main action on sodium handling?",
+        "options": {
+            "A": "Proximal tubule - inhibits Na+/K+ ATPase",
+            "B": "Loop of Henle - inhibits Na+-K+-2Cl- transporter",
+            "C": "Distal convoluted tubule - inhibits Na+-Cl- cotransporter",
+            "D": "Collecting duct - blocks aldosterone receptors",
+            "E": "Collecting duct - blocks ENaC channels"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1166,6 +381,33 @@
         "hint": ""
     },
     {
+        "id": "KYZLXEGZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "A diuretic used for hypertension (HTN) acts by inhibiting sodium reabsorption in the distal convoluted tubule. Which class does it belong to?",
+        "options": {
+            "A": "Proximal convoluted tubule diuretics",
+            "B": "Loop diuretics",
+            "C": "Thiazide diuretics",
+            "D": "Potassium-sparing diuretics",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "X4DAAP3D",
         "year": [
             "2025"
@@ -1220,6 +462,87 @@
         "hint": ""
     },
     {
+        "id": "7BDLR2GW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Replacement Therapy",
+        "difficulty": "Easy",
+        "question": "A patient is undergoing hemodialysis for end stage renal disease. Which anticoagulant is used during the procedure to prevent the blood from clotting in the dialysis circuit?",
+        "options": {
+            "A": "Dabigatran",
+            "B": "Apixaban",
+            "C": "Warfarin",
+            "D": "Heparin",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YQX82PFX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "A patient on a diuretic has normal serum calcium but low urinary calcium excretion. Which diuretic is responsible?",
+        "options": {
+            "A": "Mannitol",
+            "B": "Furosemide",
+            "C": "Thiazide",
+            "D": "Acetazolamide",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GWKHVJ97",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "A patient on acetazolamide for glaucoma presents with fatigue and rapid breathing. ABGs show a low bicarbonate level. What is the most common adverse effect?",
+        "options": {
+            "A": "Metabolic acidosis",
+            "B": "Hyperkalemia",
+            "C": "Hypertension",
+            "D": "Respiratory alkalosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "CSR4UD2J",
         "year": [
             "2025"
@@ -1246,6 +569,33 @@
             "E": "Loop diuretic"
         },
         "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SS5JX6WS",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "A patient receiving chemotherapy develops hematuria. Which drug is responsible for this adverse effect?",
+        "options": {
+            "A": "Cyclophosphamide",
+            "B": "Methotrexate",
+            "C": "Vincristine",
+            "D": "Doxorubicin",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1385,6 +735,60 @@
         "hint": ""
     },
     {
+        "id": "R44E6H89",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Easy",
+        "question": "A patient with chronic kidney disease requires an antibiotic with minimal dose adjustment. Which drug should be avoided?",
+        "options": {
+            "A": "Thiazide",
+            "B": "Gentamicin",
+            "C": "Amoxicillin",
+            "D": "Ceftriaxone",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VDBSTGWU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Easy",
+        "question": "A patient with chronic renal failure and otitis media should receive which drug with caution?",
+        "options": {
+            "A": "Amoxicillin",
+            "B": "Ceftriaxone",
+            "C": "Gentamicin",
+            "D": "Azithromycin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "RHMEA55R",
         "year": [
             "2025"
@@ -1439,6 +843,33 @@
         "hint": ""
     },
     {
+        "id": "G4GVR94N",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Medium",
+        "question": "A patient with Type 2 Diabetes and Chronic Kidney Disease (CKD) has developed significant edema. Which class of diuretics is most effective for fluid management in patients with reduced GFR?",
+        "options": {
+            "A": "Furosemide",
+            "B": "Spironolactone",
+            "C": "Thiazide",
+            "D": "Digoxin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "4CY85DQW",
         "year": [
             "2025"
@@ -1459,6 +890,60 @@
             "B": "Cyclophosphamide",
             "C": "Cisplatin",
             "D": "Doxorubicin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GFF5FTHB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Medium",
+        "question": "An HIV-positive patient with pulmonary tuberculosis has an eGFR of 35 mL/min. Which anti-tuberculous drug requires dose adjustment in renal impairment?",
+        "options": {
+            "A": "Rifabutin",
+            "B": "Rifampicin",
+            "C": "Isoniazid",
+            "D": "Pyrazinamide",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2FSCVVJC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Chronic use of which drug can lead to bicarbonate loss and metabolic acidosis?",
+        "options": {
+            "A": "Furosemide",
+            "B": "Acetazolamide",
+            "C": "Spironolactone",
+            "D": "Hydrochlorothiazide",
             "E": ""
         },
         "correctAnswer": "B",
@@ -1577,6 +1062,33 @@
         "hint": ""
     },
     {
+        "id": "K2MEYUQV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Chronic Kidney Disease",
+        "difficulty": "Easy",
+        "question": "Hypertensive diabetic patient with proteinuria Which antihypertensive prevents diabetic nephropathy",
+        "options": {
+            "A": "Nifedipine",
+            "B": "Metoprolol",
+            "C": "Enalapril",
+            "D": "Loop diuretic",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MJE5FXJN",
         "year": [
             "2025"
@@ -1604,6 +1116,114 @@
         "hint": ""
     },
     {
+        "id": "YA95XZ55",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Easy",
+        "question": "In a patient with chronic renal failure being treated for otitis media, which medication requires caution?",
+        "options": {
+            "A": "Metformin",
+            "B": "Amoxicillin",
+            "C": "Gentamicin",
+            "D": "Ceftriaxone",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WHARAXYD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Medium",
+        "question": "In a patient with renal disease requiring antibiotic therapy, the drug of choice is:",
+        "options": {
+            "A": "Amoxicillin",
+            "B": "Ceftriaxone",
+            "C": "Gentamicin",
+            "D": "Ciprofloxacin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JPZMJNPB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Hard",
+        "question": "Lithium causes renal stones by:",
+        "options": {
+            "A": "Acting on PTH",
+            "B": "Increasing calcitonin",
+            "C": "Increasing blood phosphorus",
+            "D": "Increase urinary solute concentration",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WEUAJR3R",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Mechanism of action of acetazolamide",
+        "options": {
+            "A": "Inhibits carbonic anhydrase",
+            "B": "Inhibits Na⁺/K⁺/2Cl⁻ symport",
+            "C": "Antagonizes aldosterone",
+            "D": "Inhibits cyclooxygenase",
+            "E": "Increases tubular osmotic pressure"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "K5WQ7TNW",
         "year": [
             "2025"
@@ -1625,6 +1245,87 @@
             "C": "Decrease H+ secretions and increase Na/K activity",
             "D": "Increase Na secretions",
             "E": "Decrease NA secretion"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XR8CHCTG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Metabolic acidosis caused by which of the following:",
+        "options": {
+            "A": "Aldosterone",
+            "B": "Furosemide",
+            "C": "Thiazide",
+            "D": "Spironolactone",
+            "E": "Carbonic anhydrase inhibitor"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WQ6ZKKBF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Medium",
+        "question": "Most commonly used diuretic is",
+        "options": {
+            "A": "Sulphonamide derivative diuretics",
+            "B": "Benzothiadiazine derivatives",
+            "C": "Steroid derivatives",
+            "D": "Carbonic anhydrase inhibitors",
+            "E": "Osmotic sugar derivatives"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M3KY8EWD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "On which nephron segment do thiazide diuretics primarily exert their effect?",
+        "options": {
+            "A": "Proximal convoluted tubule",
+            "B": "Thick ascending limb",
+            "C": "Distal convoluted tubule",
+            "D": "Collecting duct",
+            "E": ""
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1766,6 +1467,60 @@
         "hint": ""
     },
     {
+        "id": "V4G7WU8X",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Thiazide diuretics act primarily on which part of the nephron?",
+        "options": {
+            "A": "Early distal convoluted tubule",
+            "B": "Loop of Henle",
+            "C": "Proximal convoluted tubule",
+            "D": "Collecting duct",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DU6TKRSB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Thiazide diuretics exert their primary effect at which site in the nephron?",
+        "options": {
+            "A": "Early distal convoluted tubule (DCT)",
+            "B": "Collecting duct (CD)",
+            "C": "Thick ascending limb of the Loop of Henle",
+            "D": "Proximal convoluted tubule (PCT)",
+            "E": "Descending limb of the Loop of Henle"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UYP35MTD",
         "year": [
             "2025"
@@ -1790,6 +1545,60 @@
         },
         "correctAnswer": "B",
         "explanation": "Hypokalemia > Hyperglycemia > Hyperlipidemia > Hyperuricemia > Hypercalcemia",
+        "hint": ""
+    },
+    {
+        "id": "VRAVHCRM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Medium",
+        "question": "What is the effect of chronic loop or thiazide diuretic therapy?",
+        "options": {
+            "A": "Increased potassium",
+            "B": "Increased PaCO2 (Compensatory)",
+            "C": "Decreased chloride",
+            "D": "Normal arterial pH",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JP8VQ3A9",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "Which anticancer drug is likely responsible for causing hematuria in a renal tumor patient undergoing chemotherapy?",
+        "options": {
+            "A": "Cyclophosphamide",
+            "B": "Cisplatin",
+            "C": "Bleomycin",
+            "D": "Methotrexate",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1847,6 +1656,141 @@
         "hint": ""
     },
     {
+        "id": "DG9ZR9JS",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "Which chemotherapeutic agent commonly causes hemorrhagic cystitis that presents with hematuria?",
+        "options": {
+            "A": "Cisplatin",
+            "B": "Methotrexate",
+            "C": "Cyclophosphamide",
+            "D": "Acetaminophen",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GWLN9L8P",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "Which chemotherapeutic drug causes hemorrhagic cystitis leading to hematuria?",
+        "options": {
+            "A": "Cisplatin",
+            "B": "Methotrexate",
+            "C": "Cyclophosphamide",
+            "D": "Vincristine",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NT3N3Z3U",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Easy",
+        "question": "Which chemotherapeutic drug is well known to cause hypomagnesemia?",
+        "options": {
+            "A": "Cyclophosphamide",
+            "B": "Methotrexate",
+            "C": "Cisplatin",
+            "D": "Vincristine",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XCU43BWX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Which diuretic can cause hyperuricemia and may precipitate an attack of gout?",
+        "options": {
+            "A": "Hydrochlorothiazide",
+            "B": "Spironolactone",
+            "C": "Furosemide",
+            "D": "Acetazolamide",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BGF5Q3EV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Renal Pharmacology",
+        "difficulty": "Easy",
+        "question": "Which drug should be avoided in patients with CKD?",
+        "options": {
+            "A": "Gentamicin",
+            "B": "Amoxicillin",
+            "C": "Ceftriaxone",
+            "D": "Piparcillin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "PQ8D3GDW",
         "year": [
             "2025"
@@ -1870,6 +1814,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JNFHSXTM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Which of the following causes metabolic acidosis?",
+        "options": {
+            "A": "Acetazolamide",
+            "B": "Furosemide",
+            "C": "Thiazide",
+            "D": "Spironolactone",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1978,6 +1949,35 @@
             "C": "Ceftriaxone",
             "D": "Gentamicin",
             "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6UBQ7Y2L",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Urinary System",
+        "topic": "Diuretics",
+        "difficulty": "Easy",
+        "question": "Which of the following is side effect of loop diuretic:",
+        "options": {
+            "A": "Hypoglycemia",
+            "B": "Hypercalcemia",
+            "C": "Hyperkelemia",
+            "D": "Metabolic alkalosis",
+            "E": "Metabolic acidosis"
         },
         "correctAnswer": "D",
         "explanation": "",

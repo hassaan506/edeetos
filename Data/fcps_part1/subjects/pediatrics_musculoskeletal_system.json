@@ -27,33 +27,6 @@
         "hint": ""
     },
     {
-        "id": "QJ5EJTNR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Morning"
-        ],
-        "subject": "Pediatrics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with bowing of the legs, delayed growth, and bone pain. Laboratory tests show low vitamin D levels. What is the most likely diagnosis?",
-        "options": {
-            "A": "Rickets",
-            "B": "Osteoporosis",
-            "C": "Osteomalacia",
-            "D": "Paget disease of bone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "U8NWSGK2",
         "year": [
             "2025"
@@ -77,6 +50,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QJ5EJTNR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with bowing of the legs, delayed growth, and bone pain. Laboratory tests show low vitamin D levels. What is the most likely diagnosis?",
+        "options": {
+            "A": "Rickets",
+            "B": "Osteoporosis",
+            "C": "Osteomalacia",
+            "D": "Paget disease of bone",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },

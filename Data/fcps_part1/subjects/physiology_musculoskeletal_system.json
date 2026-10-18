@@ -1,32 +1,56 @@
 [
     {
-        "id": "7F29MBZH",
+        "id": "3UXE8PA2",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 04/26 - April 8 - Morning",
-            "Medicine - 11/25 - November 13 - Morning"
+            "Medicine - 08/25 - August 6 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Which type of cell is primarily responsible for the production and secretion of the lubricating components of synovial fluid?",
+        "question": "A 30 year old athlete complains of muscle weakness after intense exercise. Blood tests show a transient increase in serum potassium levels immediately following exercise. What is the most likely cause of this hyperkalemia?",
         "options": {
-            "A": "Type A Synovial Cells",
-            "B": "Chondrocytes",
-            "C": "Fibroblasts",
-            "D": "Type B Synovial Cells",
+            "A": "Increased renal potassium excretion",
+            "B": "Potassium release from contracting skeletal muscles",
+            "C": "Reduced aldosterone secretion",
+            "D": "Increased potassium uptake by muscle cells",
+            "E": "Decreased sodium-potassium ATPase activity"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LZH9XF3V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient P3+0 was alright, now presented with numbness in both legs and has carpopedal spasm. The doctor reassured her parents and asked them to do her serum levels. Which of the following ions is deficient in such a patient?",
+        "options": {
+            "A": "Ca++",
+            "B": "Na+",
+            "C": "K+",
+            "D": "Vitamin D",
             "E": ""
         },
-        "correctAnswer": "D",
-        "explanation": "Type B synovial cells are the fibroblast-like cells within the synovium that synthesize and secrete hyaluronic acid and other proteins, which are key components of synovial fluid.",
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -86,6 +110,35 @@
         "hint": ""
     },
     {
+        "id": "CXESGNDU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening",
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient got an RTA in which he sustains a pelvic fracture, tibial fracture and an avulsion of the rectus femoris muscle from the ASIS muscle repair will primarily be initiated by stem cells located in which of the following?",
+        "options": {
+            "A": "Perimysium",
+            "B": "Endomysium",
+            "C": "Capillary walls",
+            "D": "Connective tissue surrounding muscle bundles",
+            "E": "Myocytes"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "JNKQ6E59",
         "year": [
             "2026"
@@ -140,6 +193,33 @@
         "hint": ""
     },
     {
+        "id": "2F585EFN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During contraction length of following decrease:",
+        "options": {
+            "A": "A band",
+            "B": "I band and Sarcomere",
+            "C": "Acting and A Band",
+            "D": "A Band and I band",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "I Band Decrease. Sarcomere Decrease. A Band Unchanged. H zone Disappear",
+        "hint": ""
+    },
+    {
         "id": "3U9EJCVR",
         "year": [
             "2026"
@@ -164,6 +244,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7B93T36F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a reflex arc where excessive muscle tension is regulated to prevent injury, which structure provides the afferent signal about muscle force to the central nervous system?",
+        "options": {
+            "A": "Muscle Spindles",
+            "B": "Pacinian corpuscles",
+            "C": "Golgi tendon organs",
+            "D": "Meissner's corpuscles",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Golgi tendon organs are proprioceptors located in the tendons that sense changes in muscle tension or force and initiate the protective inverse myotatic reflex.",
         "hint": ""
     },
     {
@@ -242,6 +349,33 @@
             "C": "Calmodulin",
             "D": "Myosin",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RGTHR8AU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Muscle relaxation after contraction is a function of:",
+        "options": {
+            "A": "Golgi tendon organs",
+            "B": "Muscle Spindle",
+            "C": "Ruffini's Ending",
+            "D": "Merkel's disc",
+            "E": "Pacinian Corpuscle"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -410,170 +544,6 @@
         "hint": ""
     },
     {
-        "id": "3UXE8PA2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30 year old athlete complains of muscle weakness after intense exercise. Blood tests show a transient increase in serum potassium levels immediately following exercise. What is the most likely cause of this hyperkalemia?",
-        "options": {
-            "A": "Increased renal potassium excretion",
-            "B": "Potassium release from contracting skeletal muscles",
-            "C": "Reduced aldosterone secretion",
-            "D": "Increased potassium uptake by muscle cells",
-            "E": "Decreased sodium-potassium ATPase activity"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LZH9XF3V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient P3+0 was alright, now presented with numbness in both legs and has carpopedal spasm. The doctor reassured her parents and asked them to do her serum levels. Which of the following ions is deficient in such a patient?",
-        "options": {
-            "A": "Ca++",
-            "B": "Na+",
-            "C": "K+",
-            "D": "Vitamin D",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CXESGNDU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening",
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient got an RTA in which he sustains a pelvic fracture, tibial fracture and an avulsion of the rectus femoris muscle from the ASIS muscle repair will primarily be initiated by stem cells located in which of the following?",
-        "options": {
-            "A": "Perimysium",
-            "B": "Endomysium",
-            "C": "Capillary walls",
-            "D": "Connective tissue surrounding muscle bundles",
-            "E": "Myocytes"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2F585EFN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During contraction length of following decrease:",
-        "options": {
-            "A": "A band",
-            "B": "I band and Sarcomere",
-            "C": "Acting and A Band",
-            "D": "A Band and I band",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "I Band Decrease. Sarcomere Decrease. A Band Unchanged. H zone Disappear",
-        "hint": ""
-    },
-    {
-        "id": "7B93T36F",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In a reflex arc where excessive muscle tension is regulated to prevent injury, which structure provides the afferent signal about muscle force to the central nervous system?",
-        "options": {
-            "A": "Muscle Spindles",
-            "B": "Pacinian corpuscles",
-            "C": "Golgi tendon organs",
-            "D": "Meissner's corpuscles",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Golgi tendon organs are proprioceptors located in the tendons that sense changes in muscle tension or force and initiate the protective inverse myotatic reflex.",
-        "hint": ""
-    },
-    {
-        "id": "RGTHR8AU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Muscle relaxation after contraction is a function of:",
-        "options": {
-            "A": "Golgi tendon organs",
-            "B": "Muscle Spindle",
-            "C": "Ruffini's Ending",
-            "D": "Merkel's disc",
-            "E": "Pacinian Corpuscle"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "RHHBDB4W",
         "year": [
             "2025"
@@ -598,6 +568,36 @@
         },
         "correctAnswer": "A",
         "explanation": "Actin is a fundamental contractile protein in all muscle types. Myosin is present in both, but smooth muscle myosin is structurally and functionally different from skeletal muscle myosin, so actin is the safest single answer. Tropomyosin has regulatory roles, but regulation differs between skeletal and smooth muscle. Myosin light chain kinase (MLCK) is specific to smooth muscle. Tip: When a question asks for \"common to both skeletal and smooth muscle,\" actin is the best single answer.",
+        "hint": ""
+    },
+    {
+        "id": "7F29MBZH",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning",
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which type of cell is primarily responsible for the production and secretion of the lubricating components of synovial fluid?",
+        "options": {
+            "A": "Type A Synovial Cells",
+            "B": "Chondrocytes",
+            "C": "Fibroblasts",
+            "D": "Type B Synovial Cells",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Type B synovial cells are the fibroblast-like cells within the synovium that synthesize and secrete hyaluronic acid and other proteins, which are key components of synovial fluid.",
         "hint": ""
     }
 ]

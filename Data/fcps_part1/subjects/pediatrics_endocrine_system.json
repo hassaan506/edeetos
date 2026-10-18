@@ -1,32 +1,5 @@
 [
     {
-        "id": "ZRV3YQBY",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pediatrics",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with short stature, normal intelligence, and delayed bone age. IGF-1 levels are low. The most likely diagnosis is:",
-        "options": {
-            "A": "Hypothyroidism",
-            "B": "Growth hormone deficiency",
-            "C": "Cushing syndrome",
-            "D": "Turner syndrome",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "VPBEVX8J",
         "year": [
             "2025"
@@ -186,6 +159,33 @@
         },
         "correctAnswer": "C",
         "explanation": "Von Gierke disease (Type 1 Glycogen Storage Disease), caused by a deficiency of glucose-6-phosphatase, results in excessive G6P diverting metabolites toward glycolysis, increasing lactate, uric acid, and lipid production, thus causing hypoglycemia, hyperuricemia, and hypertriglyceridemia.",
+        "hint": ""
+    },
+    {
+        "id": "ZRV3YQBY",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pediatrics",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with short stature, normal intelligence, and delayed bone age. IGF-1 levels are low. The most likely diagnosis is:",
+        "options": {
+            "A": "Hypothyroidism",
+            "B": "Growth hormone deficiency",
+            "C": "Cushing syndrome",
+            "D": "Turner syndrome",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {

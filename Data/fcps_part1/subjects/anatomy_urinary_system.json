@@ -1,32 +1,110 @@
 [
     {
-        "id": "5Y498YVH",
+        "id": "JJP4YF9R",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Radiology"
+            "Medicine & Allied"
         ],
         "exams": [
-            "Radiology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 13 - Evening"
+            "Medicine - 08/25 - August 5 - Evening"
         ],
         "subject": "Anatomy",
         "chapter": "Urinary System",
-        "topic": "Urethra & Penis",
-        "difficulty": "Easy",
-        "question": "A patient presents with difficulty passing catheter due to urethral stricture. Which part of the urethra is the narrowest in males?",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Medium",
+        "question": "A 45 year old woman undergoes an elective ovarian cystectomy. During the surgery, the surgeon applies lateral retraction of the ovary. Postoperatively, the patient develops signs of ureteral injury including flank pain and decreased urine output. During which anatomical location is the ureter most commonly at risk of damage during ovarian surgery?",
         "options": {
-            "A": "Prostatic urethra",
-            "B": "Penile urethra",
-            "C": "Membranous urethra",
-            "D": "Bulbous urethra",
-            "E": ""
+            "A": "At the site of side retraction",
+            "B": "At the round ligament",
+            "C": "At the broad ligament",
+            "D": "At the uterine artery crossing",
+            "E": "At pelvic brim"
         },
         "correctAnswer": "C",
-        "explanation": "Membranous urethra is the narrowest and least distensible part, making it prone to injury during catheterization or pelvic trauma.",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U796B6P5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "Urinary Tract Infection",
+        "difficulty": "easy",
+        "question": "A 5 year old child presents with recurrent urinary tract infections and poor urinary stream. Imaging shows backward flow of urine from the bladder into the ureters during voiding. Which condition is most likely responsible?",
+        "options": {
+            "A": "Vesicoureteral reflux",
+            "B": "Renal calculi",
+            "C": "Hydronephrosis due to stone",
+            "D": "Posterior urethral valves",
+            "E": "Polycystic kidney disease"
+        },
+        "correctAnswer": "A",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><br></p>"
+    },
+    {
+        "id": "SJ6R5QFY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "Benign Prostatic Hyperplasia",
+        "difficulty": "Easy",
+        "question": "A 70 year old man has difficulty initiating urination and a weak stream. Rectal examination reveals an enlarged prostate, which of the following lobes is most likely enlarged in benign prostatic hyperplasia?",
+        "options": {
+            "A": "Anterior lobe",
+            "B": "Middle lobe",
+            "C": "Lateral lobe",
+            "D": "Posterior lobe",
+            "E": "Inferior lobe"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K8PRF3KD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "A boy had a road traffic accident with kidney injury. Which of the following fascia will be affected?",
+        "options": {
+            "A": "Buck’s fascia",
+            "B": "Sibson’s fascia",
+            "C": "Gerota’s fascia",
+            "D": "Scarpa’s fascia",
+            "E": "Camper’s fascia"
+        },
+        "correctAnswer": "C",
+        "explanation": "Buck’s fascia → penis\r\nSibson’s fascia → apex of lung/neck\r\nGerota’s fascia → kidney\r\nScarpa’s fascia → membranous layer of anterior abdominal wall\r\nCamper’s fascia → fatty layer of superficial fascia",
         "hint": ""
     },
     {
@@ -60,57 +138,30 @@
         "hint": "<p><br></p>"
     },
     {
-        "id": "U796B6P5",
+        "id": "3TB5S5AU",
         "year": [
-            "2026"
+            "2025"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Surgery & Allied"
         ],
         "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "Urinary Tract Infection",
-        "difficulty": "easy",
-        "question": "A 5 year old child presents with recurrent urinary tract infections and poor urinary stream. Imaging shows backward flow of urine from the bladder into the ureters during voiding. Which condition is most likely responsible?",
-        "options": {
-            "A": "Vesicoureteral reflux",
-            "B": "Renal calculi",
-            "C": "Hydronephrosis due to stone",
-            "D": "Posterior urethral valves",
-            "E": "Polycystic kidney disease"
-        },
-        "correctAnswer": "A",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><br></p>"
-    },
-    {
-        "id": "K8PRF3KD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
         ],
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
         "difficulty": "Easy",
-        "question": "A boy had a road traffic accident with kidney injury. Which of the following fascia will be affected?",
+        "question": "A day following hysterectomy, a patient complains of severe pain in the right upper lumbar region of the back. Which of the following structures was most likely damaged during the surgery?",
         "options": {
-            "A": "Buck’s fascia",
-            "B": "Sibson’s fascia",
-            "C": "Gerota’s fascia",
-            "D": "Scarpa’s fascia",
-            "E": "Camper’s fascia"
+            "A": "Inferior mesenteric artery",
+            "B": "Internal iliac artery",
+            "C": "Psoas major muscle",
+            "D": "Pudendal nerve",
+            "E": "Ureter"
         },
-        "correctAnswer": "C",
-        "explanation": "Buck’s fascia → penis\r\nSibson’s fascia → apex of lung/neck\r\nGerota’s fascia → kidney\r\nScarpa’s fascia → membranous layer of anterior abdominal wall\r\nCamper’s fascia → fatty layer of superficial fascia",
+        "correctAnswer": "E",
+        "explanation": "During hysterectomy ureter damage at A>B>C: A-cardinal ligament (uterine vessel), B-Behind broad ligament, C-At pelvic brim (ovarian artery). Ureter damage at pelvic brim - While crossing common iliac vessel. While removing ovary damage to - Internal iliac artery",
         "hint": ""
     },
     {
@@ -138,6 +189,63 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5Y498YVH",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "Urethra & Penis",
+        "difficulty": "Easy",
+        "question": "A patient presents with difficulty passing catheter due to urethral stricture. Which part of the urethra is the narrowest in males?",
+        "options": {
+            "A": "Prostatic urethra",
+            "B": "Penile urethra",
+            "C": "Membranous urethra",
+            "D": "Bulbous urethra",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Membranous urethra is the narrowest and least distensible part, making it prone to injury during catheterization or pelvic trauma.",
+        "hint": ""
+    },
+    {
+        "id": "AQZYCJG7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "Urethra & Penis",
+        "difficulty": "Medium",
+        "question": "A patient suffers a pelvic fracture with posterior urethral injury. During evaluation, a hematoma forms. Through which anatomical planes can the hematoma spread?",
+        "options": {
+            "A": "Superficial fascia (Camper) and deep fascia (Scarpa)",
+            "B": "Pelvic fracture spaces only",
+            "C": "Superficial and deep perineal fascia",
+            "D": "Retropubic space",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Posterior urethral injuries -> blood extravasates beneath Scarpa's fascia and Camper's fascia, spreading to anterior abdominal wall. Posterior urethra is deep, but hematoma can track along fascial planes. Important for diagnosis and management (avoid unnecessary incision).",
         "hint": ""
     },
     {
@@ -222,467 +330,6 @@
         "hint": ""
     },
     {
-        "id": "6BZPQTMM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Prostate & Seminal Vesicles",
-        "difficulty": "Hard",
-        "question": "A Urologist doing transurethral surgery, 2 arteries at 5 and 7o' clock position started bleeding and his way blocked name of those arteries is:",
-        "options": {
-            "A": "Capsular artery",
-            "B": "Uretheral artery",
-            "C": "Floch's artery",
-            "D": "Badenoch arteries",
-            "E": "Branches of superior vesicle artery"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2AVJETD4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "A woman develops flank pain following hysterectomy. The most likely injured structure is:",
-        "options": {
-            "A": "Renal artery",
-            "B": "Ureter",
-            "C": "Ovarian vein",
-            "D": "Inferior vena cava",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YDYNRKMX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Medium",
-        "question": "Bladder integrity test intraoperatively",
-        "options": {
-            "A": "Ultrasound",
-            "B": "Dye test via urethra",
-            "C": "CT scan",
-            "D": "MRI",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JDY9ZT4F",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
-        "question": "During a hysterectomy, the surgeon accidentally injures the ureter while ligating a structure. Where is the ureter most at risk?",
-        "options": {
-            "A": "Broad ligament",
-            "B": "Cardinal ligament",
-            "C": "Round ligament",
-            "D": "Ovarian ligament",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U3Q3VYEW",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "During a hysterectomy, which structure is most at risk of injury when the uterine artery is ligated",
-        "options": {
-            "A": "Ureter",
-            "B": "Bladder",
-            "C": "Obturator nerve",
-            "D": "Internal iliac artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DA8QNW3Z",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "During an oophorectomy, the ureter is at risk of damage where it crosses the iliac vessels. This occurs at the level of the?",
-        "options": {
-            "A": "Fallopian tube",
-            "B": "Pelvic brim",
-            "C": "Sacroiliac joint",
-            "D": "Uterus",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6XM7DKD3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "Transplantation",
-        "difficulty": "Easy",
-        "question": "Kidney transplantation is usually done in:",
-        "options": {
-            "A": "Iliac fossa",
-            "B": "Lumbar region",
-            "C": "Hypogastric region",
-            "D": "Pelvic cavity",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T4BYGS9F",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "Urethra & Penis",
-        "difficulty": "Medium",
-        "question": "Membranous urethra rupture causes urine to collect in:",
-        "options": {
-            "A": "Superficial perineal pouch",
-            "B": "Deep perineal pouch",
-            "C": "Retroperitoneum",
-            "D": "Scrotum",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X8DUXH2J",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Radiology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
-        "question": "Patient underwent Hysterectomy, Surgeon should know relation of ureter where it can be damage during hysterectomy",
-        "options": {
-            "A": "Pelvic brim",
-            "B": "2cm from Ischial spine",
-            "C": "When it moves upward and laterally behind Broad ligament",
-            "D": "When crosses common iliac artery",
-            "E": "At bifurcation of iliac vessels"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BMNYY2UA",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "Sharp flank pain after hysterectomy suggests injury to",
-        "options": {
-            "A": "Bladder",
-            "B": "Ureter",
-            "C": "Rectum",
-            "D": "Urethra",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "48VETXL4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Night"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "easy",
-        "question": "The right renal vein drains directly into which vessel?",
-        "options": {
-            "A": "Portal vein",
-            "B": "Inferior vena cava",
-            "C": "Azygos vein",
-            "D": "Common iliac vein",
-            "E": "Inferior mesenteric vein"
-        },
-        "correctAnswer": "B",
-        "explanation": "<p>No explanation provided.</p>",
-        "hint": "<p><strong style=\"color: rgb(230, 0, 0);\">Updated</strong></p>"
-    },
-    {
-        "id": "Z4PTFTYN",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
-        "question": "The ureters enter the bladder at the:",
-        "options": {
-            "A": "Neck",
-            "B": "Trigone (base)",
-            "C": "Dome",
-            "D": "Apex",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "The two ureters pierce the bladder wall obliquely at the upper lateral corners of this triangle (the ureteric orifices), while the internal urethral orifice forms the lower apex. This specific oblique path functions as a natural valve to prevent the backward reflux of urine.",
-        "hint": ""
-    },
-    {
-        "id": "ZPXL2Z29",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "Which of the following lymph node groups is the primary site of lymphatic drainage for the kidneys?",
-        "options": {
-            "A": "Lumbar lymph nodes",
-            "B": "Superior mesenteric lymph nodes",
-            "C": "Inferior phrenic lymph nodes",
-            "D": "Inferior thoracic lymph nodes",
-            "E": "Celiac lymph nodes"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JJP4YF9R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
-        "question": "A 45 year old woman undergoes an elective ovarian cystectomy. During the surgery, the surgeon applies lateral retraction of the ovary. Postoperatively, the patient develops signs of ureteral injury including flank pain and decreased urine output. During which anatomical location is the ureter most commonly at risk of damage during ovarian surgery?",
-        "options": {
-            "A": "At the site of side retraction",
-            "B": "At the round ligament",
-            "C": "At the broad ligament",
-            "D": "At the uterine artery crossing",
-            "E": "At pelvic brim"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SJ6R5QFY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Easy",
-        "question": "A 70 year old man has difficulty initiating urination and a weak stream. Rectal examination reveals an enlarged prostate, which of the following lobes is most likely enlarged in benign prostatic hyperplasia?",
-        "options": {
-            "A": "Anterior lobe",
-            "B": "Middle lobe",
-            "C": "Lateral lobe",
-            "D": "Posterior lobe",
-            "E": "Inferior lobe"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3TB5S5AU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
-        "question": "A day following hysterectomy, a patient complains of severe pain in the right upper lumbar region of the back. Which of the following structures was most likely damaged during the surgery?",
-        "options": {
-            "A": "Inferior mesenteric artery",
-            "B": "Internal iliac artery",
-            "C": "Psoas major muscle",
-            "D": "Pudendal nerve",
-            "E": "Ureter"
-        },
-        "correctAnswer": "E",
-        "explanation": "During hysterectomy ureter damage at A>B>C: A-cardinal ligament (uterine vessel), B-Behind broad ligament, C-At pelvic brim (ovarian artery). Ureter damage at pelvic brim - While crossing common iliac vessel. While removing ovary damage to - Internal iliac artery",
-        "hint": ""
-    },
-    {
-        "id": "AQZYCJG7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Urinary System",
-        "topic": "Urethra & Penis",
-        "difficulty": "Medium",
-        "question": "A patient suffers a pelvic fracture with posterior urethral injury. During evaluation, a hematoma forms. Through which anatomical planes can the hematoma spread?",
-        "options": {
-            "A": "Superficial fascia (Camper) and deep fascia (Scarpa)",
-            "B": "Pelvic fracture spaces only",
-            "C": "Superficial and deep perineal fascia",
-            "D": "Retropubic space",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Posterior urethral injuries -> blood extravasates beneath Scarpa's fascia and Camper's fascia, spreading to anterior abdominal wall. Posterior urethra is deep, but hematoma can track along fascial planes. Important for diagnosis and management (avoid unnecessary incision).",
-        "hint": ""
-    },
-    {
         "id": "W22QQAWQ",
         "year": [
             "2025"
@@ -764,6 +411,60 @@
         "hint": ""
     },
     {
+        "id": "6BZPQTMM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Prostate & Seminal Vesicles",
+        "difficulty": "Hard",
+        "question": "A Urologist doing transurethral surgery, 2 arteries at 5 and 7o' clock position started bleeding and his way blocked name of those arteries is:",
+        "options": {
+            "A": "Capsular artery",
+            "B": "Uretheral artery",
+            "C": "Floch's artery",
+            "D": "Badenoch arteries",
+            "E": "Branches of superior vesicle artery"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2AVJETD4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "A woman develops flank pain following hysterectomy. The most likely injured structure is:",
+        "options": {
+            "A": "Renal artery",
+            "B": "Ureter",
+            "C": "Ovarian vein",
+            "D": "Inferior vena cava",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MKRCVUUU",
         "year": [
             "2025"
@@ -818,6 +519,33 @@
         "hint": ""
     },
     {
+        "id": "YDYNRKMX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Medium",
+        "question": "Bladder integrity test intraoperatively",
+        "options": {
+            "A": "Ultrasound",
+            "B": "Dye test via urethra",
+            "C": "CT scan",
+            "D": "MRI",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "89KRDYLJ",
         "year": [
             "2025"
@@ -842,6 +570,87 @@
         },
         "correctAnswer": "A",
         "explanation": "Bulbar Urethra Rupture (Below Urogenital Diaphragm) urine into-Superficial Perineal pouch. Membranous Urethra Rupture (At Urogenital Diaphragm) urine into-Deep Perineal Pouch prostatic. Urethra Rupture (Above Urogenital Diaphragm) urine into Retro pubic Space. penile Urethra Rupture Urine into- Scrotum> Anterior Abdominal Wall",
+        "hint": ""
+    },
+    {
+        "id": "JDY9ZT4F",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Medium",
+        "question": "During a hysterectomy, the surgeon accidentally injures the ureter while ligating a structure. Where is the ureter most at risk?",
+        "options": {
+            "A": "Broad ligament",
+            "B": "Cardinal ligament",
+            "C": "Round ligament",
+            "D": "Ovarian ligament",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U3Q3VYEW",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "During a hysterectomy, which structure is most at risk of injury when the uterine artery is ligated",
+        "options": {
+            "A": "Ureter",
+            "B": "Bladder",
+            "C": "Obturator nerve",
+            "D": "Internal iliac artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DA8QNW3Z",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "During an oophorectomy, the ureter is at risk of damage where it crosses the iliac vessels. This occurs at the level of the?",
+        "options": {
+            "A": "Fallopian tube",
+            "B": "Pelvic brim",
+            "C": "Sacroiliac joint",
+            "D": "Uterus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -953,6 +762,89 @@
         "hint": ""
     },
     {
+        "id": "6XM7DKD3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "Transplantation",
+        "difficulty": "Easy",
+        "question": "Kidney transplantation is usually done in:",
+        "options": {
+            "A": "Iliac fossa",
+            "B": "Lumbar region",
+            "C": "Hypogastric region",
+            "D": "Pelvic cavity",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T4BYGS9F",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "Urethra & Penis",
+        "difficulty": "Medium",
+        "question": "Membranous urethra rupture causes urine to collect in:",
+        "options": {
+            "A": "Superficial perineal pouch",
+            "B": "Deep perineal pouch",
+            "C": "Retroperitoneum",
+            "D": "Scrotum",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X8DUXH2J",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Radiology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Medium",
+        "question": "Patient underwent Hysterectomy, Surgeon should know relation of ureter where it can be damage during hysterectomy",
+        "options": {
+            "A": "Pelvic brim",
+            "B": "2cm from Ischial spine",
+            "C": "When it moves upward and laterally behind Broad ligament",
+            "D": "When crosses common iliac artery",
+            "E": "At bifurcation of iliac vessels"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "2688LPDD",
         "year": [
             "2025"
@@ -1007,6 +899,33 @@
         "hint": ""
     },
     {
+        "id": "BMNYY2UA",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "Sharp flank pain after hysterectomy suggests injury to",
+        "options": {
+            "A": "Bladder",
+            "B": "Ureter",
+            "C": "Rectum",
+            "D": "Urethra",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HEH2AMT5",
         "year": [
             "2025"
@@ -1033,6 +952,33 @@
         "correctAnswer": "C",
         "explanation": "",
         "hint": ""
+    },
+    {
+        "id": "48VETXL4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Night"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "easy",
+        "question": "The right renal vein drains directly into which vessel?",
+        "options": {
+            "A": "Portal vein",
+            "B": "Inferior vena cava",
+            "C": "Azygos vein",
+            "D": "Common iliac vein",
+            "E": "Inferior mesenteric vein"
+        },
+        "correctAnswer": "B",
+        "explanation": "<p>No explanation provided.</p>",
+        "hint": "<p><strong style=\"color: rgb(230, 0, 0);\">Updated</strong></p>"
     },
     {
         "id": "Z29RH3ER",
@@ -1089,6 +1035,33 @@
         "hint": ""
     },
     {
+        "id": "Z4PTFTYN",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Urinary Bladder",
+        "difficulty": "Easy",
+        "question": "The ureters enter the bladder at the:",
+        "options": {
+            "A": "Neck",
+            "B": "Trigone (base)",
+            "C": "Dome",
+            "D": "Apex",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The two ureters pierce the bladder wall obliquely at the upper lateral corners of this triangle (the ureteric orifices), while the internal urethral orifice forms the lower apex. This specific oblique path functions as a natural valve to prevent the backward reflux of urine.",
+        "hint": ""
+    },
+    {
         "id": "ZP8RDP5N",
         "year": [
             "2025"
@@ -1140,6 +1113,33 @@
         },
         "correctAnswer": "A",
         "explanation": "Ureters enter posterolateral angle of bladder at trigone, obliquely to prevent reflux.",
+        "hint": ""
+    },
+    {
+        "id": "ZPXL2Z29",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Urinary System",
+        "topic": "The Kidneys & Ureters",
+        "difficulty": "Easy",
+        "question": "Which of the following lymph node groups is the primary site of lymphatic drainage for the kidneys?",
+        "options": {
+            "A": "Lumbar lymph nodes",
+            "B": "Superior mesenteric lymph nodes",
+            "C": "Inferior phrenic lymph nodes",
+            "D": "Inferior thoracic lymph nodes",
+            "E": "Celiac lymph nodes"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {

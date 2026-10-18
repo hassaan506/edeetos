@@ -1,65 +1,5 @@
 [
     {
-        "id": "9C45YABB",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Surgery - 04/26 - April 7 - Night",
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A person got a stab wound 3cm vertical on lateral right side of linea alba, initially he was fine but then developed hypotension & shock. Which vessel is most likely damaged.",
-        "options": {
-            "A": "IVC",
-            "B": "Superior mesenteric Artery",
-            "C": "Inferior Mesenteric Artery",
-            "D": "Abdominal Aorta",
-            "E": "Ileal branch of superior mesenteric artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "The inferior vena cava lies on the right side of the abdominal aorta. Therefore, a penetrating wound just lateral to the right side of the linea alba can injure the IVC. Injury to this large vessel can cause massive internal hemorrhage, hypotension, and hypovolemic shock.",
-        "hint": ""
-    },
-    {
-        "id": "R6D3G5Z7",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Referred pain from the heart is carried mainly by which structure?",
-        "options": {
-            "A": "Visceral pleura",
-            "B": "Parietal pleura",
-            "C": "Parietal layer of serous pericardium",
-            "D": "Phrenic nerve",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "VZXK6SVM",
         "year": [
             "2026"
@@ -197,6 +137,60 @@
         "hint": ""
     },
     {
+        "id": "7QGW7S7K",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36 year old man sustains a fracture of the proximal humerus and requires shoulder surgery. During the procedure, the surgeon ligates a vessel within the quadrangular space to control bleeding. Which of the following vessels was most likely ligated?",
+        "options": {
+            "A": "Anterior circumflex humeral artery",
+            "B": "Posterior circumflex humeral artery",
+            "C": "Thoracoacromial artery",
+            "D": "Suprascapular artery",
+            "E": "Subscapular artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LYHEMSB2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 42 year old woman underwent breast reconstruction surgery after mastectomy for breast cancer, the surgeon’s plans to use a flap harvested from supraclavicular region of lower abdomen, which of the following artery primarily supplies the blood to this flap and must be preserved or reconstructed to ensure flap viability?",
+        "options": {
+            "A": "Inferior mesenteric artery",
+            "B": "Internal thoracic artery",
+            "C": "Superior epigastric artery",
+            "D": "Inferior epigastric artery",
+            "E": "Supraclavicular"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7SJ3NELY",
         "year": [
             "2026"
@@ -251,6 +245,87 @@
         "hint": ""
     },
     {
+        "id": "Z45RFVNM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 50 year old man known to have hepatoma develops dependent edema with dilated abdominal walls veins. The most likely structure involved in this patient is:",
+        "options": {
+            "A": "IVC",
+            "B": "Hepatic artery",
+            "C": "Portal vein",
+            "D": "Bile duct",
+            "E": "Renal vein"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VBPFVS82",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old diabetic patient presents with pain and numbness on the sole of the foot and weakness in toe flexion. On examination, the dorsalis pedis pulse is palpable, but the posterior tibial pulse is absent. Which artery is most likely compromised?",
+        "options": {
+            "A": "posterior tibial artery",
+            "B": "anterior tibial artery",
+            "C": "Popliteal artery",
+            "D": "Femoral artery",
+            "E": "Femoral artery"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "932BP3PU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55-year-old Diabetic patient presents with chronic ischemic foot pain. Doppler ultrasound reveals occlusion of dorsalis pedis artery, with compensatory blood supply from artery of posterior leg, which artery is providing collateral circulation?",
+        "options": {
+            "A": "Anterior tibial artery",
+            "B": "Posterior tibial artery",
+            "C": "Popliteal artery",
+            "D": "Obturator artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TVKSUNTQ",
         "year": [
             "2026"
@@ -272,6 +347,33 @@
             "C": "Left circumflex artery",
             "D": "Left main coronary artery",
             "E": "Posterior descending artery only"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WKBA279H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old man presents with acute chest pain radiating to the left arm. ECG confirms myocardial infarction. During coronary angiography, which artery is the most common site for emboli causing infarction?",
+        "options": {
+            "A": "Pulmonary artery",
+            "B": "Coronary artery",
+            "C": "Femoral artery",
+            "D": "Carotid artery",
+            "E": "Renal artery"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -332,6 +434,33 @@
         "hint": ""
     },
     {
+        "id": "7Y373F2R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 7 year old girl presented with a 3 weeks H/O of horizontal diplopia on far right lateral gaze, this is most probably due to damage to which nerve:",
+        "options": {
+            "A": "Optic nerve",
+            "B": "Oculomotor nerve",
+            "C": "Trochlear nerve",
+            "D": "Nasociliary nerve",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TV2YCT53",
         "year": [
             "2026"
@@ -359,6 +488,33 @@
         "hint": "<p><br></p>"
     },
     {
+        "id": "PWHXUY7W",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A blockage in the posterior interventricular artery would most likely affect which of the following areas?",
+        "options": {
+            "A": "Right atrium",
+            "B": "Right ventricle",
+            "C": "Left atrium",
+            "D": "Inferior part of the left ventricle",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "F9247TJW",
         "year": [
             "2026"
@@ -379,6 +535,89 @@
             "B": "Right ventricle",
             "C": "Inferior vena cava",
             "D": "Left ventricle",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MLGWAAHV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child is in shock Like condition blood sample taken from which artery",
+        "options": {
+            "A": "Femoral artery",
+            "B": "Posterior tibial artery",
+            "C": "Dorsalis pedis artery",
+            "D": "Anterior tibial artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "C55UCDQM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child was undergoing tonsillectomy, during procedure, surgeon noticed bleeding from left tonsillar artery. Left tonsillar artery is a branch of?",
+        "options": {
+            "A": "Facial artery",
+            "B": "Lingual artery",
+            "C": "Ascending pharyngeal artery",
+            "D": "Maxillary artery",
+            "E": "Superior thyroid artery"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2N9GMAXE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child with a recurrent history of tonsillitis undergoes a tonsillectomy. During surgery, bleeding occurs from the right tonsillar artery. This artery is a branch of which vessel?",
+        "options": {
+            "A": "Lingual artery",
+            "B": "Facial artery",
+            "C": "Ascending pharyngeal artery",
+            "D": "Descending palatine artery",
             "E": ""
         },
         "correctAnswer": "B",
@@ -523,6 +762,90 @@
         "hint": ""
     },
     {
+        "id": "3GFNPQEP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Surgery - 08/25 - August 6 - Evening",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is suffering from Pseudomonas aeruginosa infection with fever. Which of the following cytokine is predominantly responsible for the fever?",
+        "options": {
+            "A": "IL-1",
+            "B": "PG-E",
+            "C": "TNF",
+            "D": "CD4",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Fever - IL1, IL6. TNF - fever in pseudomonas aeruginosa",
+        "hint": ""
+    },
+    {
+        "id": "MQ4KDC55",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient of MI. The artery supplying apex of heart is blocked. Which artery supply apex?",
+        "options": {
+            "A": "PDA",
+            "B": "LCX",
+            "C": "LAD",
+            "D": "Left marginal artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7LBNC8X6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with anatomical snuff box injury which is bleeding profusely; artery involved is",
+        "options": {
+            "A": "Ulnar",
+            "B": "Medial",
+            "C": "Radial",
+            "D": "Brachial",
+            "E": "Sural"
+        },
+        "correctAnswer": "C",
+        "explanation": "The Anatomical Snuff Box is formed by tendons, and its floor is crossed by the Radial Artery before it dives deep into the hand. Damage here causes profuse bleeding from the radial artery.",
+        "hint": ""
+    },
+    {
         "id": "43M9TGLE",
         "year": [
             "2026"
@@ -658,6 +981,33 @@
         "hint": ""
     },
     {
+        "id": "KERNHXMY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with severe pain, pallor, paresthesia, and pulselessness of the right leg following thromboembolism. Which of the following arteries is most likely occluded if the embolus lodged in the popliteal fossa?",
+        "options": {
+            "A": "Anterior tibial artery",
+            "B": "Posterior tibial artery",
+            "C": "Common femoral artery",
+            "D": "Popliteal artery",
+            "E": "Dorsalis pedis artery"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "QW33H454",
         "year": [
             "2026"
@@ -741,6 +1091,64 @@
         "hint": ""
     },
     {
+        "id": "PBUKCNGZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient sustained a splinter injury from a blast, resulting in damage to the pericardium. During surgery, the pericardium was found to be damaged on the inferior side. The surgeon inserted her fingers into the pericardium to locate a piece of shrapnel, moving inferiorly, then upwards and to the right, where her fingers stopped at a cul de sac near the base of the heart, formed by a fold of the pericardium. What is the most likely location of her fingers?`",
+        "options": {
+            "A": "Coronary sinus",
+            "B": "Coronary Sulcus",
+            "C": "Oblique sinus",
+            "D": "Costodiaphragmatic recess",
+            "E": "Costomediastinal recess"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Q5FL4ASX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient sustained a splinter injury from a blast, resulting in damage to the pericardium. During surgery, the pericardium was found to be damaged on the inferior side. The surgeon inserted her fingers into the pericardium to locate a piece of shrapnel, moving inferiorly, then upwards and to the right, where her fingers stopped at a cul-de-sac near the base of the heart, formed by a fold of the pericardium. What is the most likely location of her fingers?",
+        "options": {
+            "A": "Coronary sulcus",
+            "B": "Coronary sinus",
+            "C": "Oblique sinus",
+            "D": "Costodiaphragmatic recess",
+            "E": "Costomediastinal recess"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "QBS6FF8W",
         "year": [
             "2026"
@@ -795,6 +1203,35 @@
         "hint": ""
     },
     {
+        "id": "36478YNQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient sustains a stab wound 2cm deep at 5th intercostal space, 4cm from the midaxillary line which of the following structures is most likely to be damaged?",
+        "options": {
+            "A": "Intercostal artery",
+            "B": "Phrenic nerve",
+            "C": "Internal thoracic artery",
+            "D": "Thoracic duct",
+            "E": "Azygous vein"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TBZF35YF",
         "year": [
             "2026"
@@ -822,6 +1259,33 @@
         "hint": ""
     },
     {
+        "id": "66D73XLE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient sustains a wrist injury affecting the anatomical snuff box. Which major artery is most at risk in this region?",
+        "options": {
+            "A": "Ulnar artery",
+            "B": "Radial artery",
+            "C": "Median artery",
+            "D": "Brachial artery",
+            "E": "Interosseous artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "9HT6WYL3",
         "year": [
             "2026"
@@ -842,6 +1306,60 @@
             "B": "Left renal vein",
             "C": "Left common iliac vein",
             "D": "External iliac vein",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NE8DAVDQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient undergoing ascetic tap needle passed to superior surface of bladder which artery is likely in danger?",
+        "options": {
+            "A": "Superior Epigastric artery",
+            "B": "Inferior Epigastric artery",
+            "C": "Deep Circumflex artery",
+            "D": "Superficial Circumflex artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZCZ6CNTN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient who has history of trauma which results in fracture of foramen spinosum the artery runs over the mentioned site give main supply to which of the following structure?",
+        "options": {
+            "A": "Arachnoid matter",
+            "B": "Skull vault",
+            "C": "Brain parenchyma",
+            "D": "Hearing area",
             "E": ""
         },
         "correctAnswer": "B",
@@ -903,6 +1421,63 @@
         "hint": ""
     },
     {
+        "id": "7MSAQWGD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with chronic kidney disease undergoes a procedure where the artery accompanying the left anterior descending coronary artery is of concern. Which vein runs alongside the LAD artery?",
+        "options": {
+            "A": "Small cardiac vein",
+            "B": "Great cardiac vein",
+            "C": "Middle cardiac vein",
+            "D": "Coronary sinus",
+            "E": "Anterior cardiac vein"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9C45YABB",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Surgery - 04/26 - April 7 - Night",
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person got a stab wound 3cm vertical on lateral right side of linea alba, initially he was fine but then developed hypotension & shock. Which vessel is most likely damaged.",
+        "options": {
+            "A": "IVC",
+            "B": "Superior mesenteric Artery",
+            "C": "Inferior Mesenteric Artery",
+            "D": "Abdominal Aorta",
+            "E": "Ileal branch of superior mesenteric artery"
+        },
+        "correctAnswer": "A",
+        "explanation": "The inferior vena cava lies on the right side of the abdominal aorta. Therefore, a penetrating wound just lateral to the right side of the linea alba can injure the IVC. Injury to this large vessel can cause massive internal hemorrhage, hypotension, and hypovolemic shock.",
+        "hint": ""
+    },
+    {
         "id": "3QK5VEVF",
         "year": [
             "2026"
@@ -954,6 +1529,33 @@
         },
         "correctAnswer": "D",
         "explanation": "The anterior surface of the heart and its protective fibrous sac (pericardium) lie directly beneath the left parasternal 4th to 5th intercostal spaces.",
+        "hint": ""
+    },
+    {
+        "id": "FE92G3E3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A stab wound in 5th intercostal space lateral to sternum damages which structure?",
+        "options": {
+            "A": "Left lung",
+            "B": "Left pleura",
+            "C": "Pericardium",
+            "D": "Left bronchus",
+            "E": "IVC"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1011,6 +1613,141 @@
         "hint": ""
     },
     {
+        "id": "K5K4VYE9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A stab wound to the abdomen is suspected to have injured a large retroperitoneal vessel coursing on the right side of the vertebral column. Which vessel is most likely injured.",
+        "options": {
+            "A": "Inferior vena cava",
+            "B": "Abdominal aorta",
+            "C": "Portal vein",
+            "D": "Superior mesenteric artery",
+            "E": "Renal vein"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LJ9EYSVH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A surgeon performing varicose vein surgery while flush ligation of saphenous vein there is sudden gush of dark color blood, massive bleeding is most probably from:",
+        "options": {
+            "A": "Femoral vein",
+            "B": "Medial vein of thigh",
+            "C": "Small saphenous",
+            "D": "Obturator vein",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Femoral Vein lies directly deep to the greater saphenous vein at the saphenofemoral junction; an accidental, deep cut during \"flush\" ligation breaches the major deep vein, causing massive hemorrhage.",
+        "hint": ""
+    },
+    {
+        "id": "FJ8FN9AB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A trauma patient is undergoing imaging after a high-impact motor vehicle accident. The radiologist notes that the descending thoracic aorta is injured at a vertebral level corresponding to the diaphragmatic hiatus. At which vertebral level is this injury most likely located?",
+        "options": {
+            "A": "T10",
+            "B": "T12",
+            "C": "L3",
+            "D": "L1",
+            "E": "T8"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MGLP9SRQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young adult with a history of supraventricular tachycardia SVT, is found to have an accessory pathway(AVRT) that connects the atria to the ventricles bypassing the AV node. What is the name of this accessory pathway?",
+        "options": {
+            "A": "Bundle of His",
+            "B": "Bundle of Kent",
+            "C": "Purkinje fibers",
+            "D": "AV node",
+            "E": "Bachmann's bundle"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HH4YCL3B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young boy had a testicular tumor for which orchidectomy was performed and right testicular vein ligated to prevent seeding of the tumor; it drains into",
+        "options": {
+            "A": "Renal vein",
+            "B": "Portal vein",
+            "C": "IVC",
+            "D": "Azygous vein",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The Right Testicular Vein drains directly into the Inferior Vena Cava, while the left drains into the left renal vein.",
+        "hint": ""
+    },
+    {
         "id": "QFLA76JA",
         "year": [
             "2026"
@@ -1065,6 +1802,60 @@
         "hint": "<p><br></p>"
     },
     {
+        "id": "7GNUT3EC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After trauma on anatomical snuff box patient having bleed and pain due to which structure damaged?",
+        "options": {
+            "A": "Median nerve",
+            "B": "Ulnar nerve",
+            "C": "Radial artery",
+            "D": "Radial nerve",
+            "E": "Brachial artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XH9UTDY3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anterior two third interventricular septum is supplied by:",
+        "options": {
+            "A": "Right marginal artery",
+            "B": "Anterior descending artery",
+            "C": "LCX",
+            "D": "Right coronary artery",
+            "E": "Left coronary artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "Anterior 2/3 of interventricular septum is supplied by anterior interventricular artery (LADA) which is branch of left coronary artery. Posterior 1/3 is supplied via posterior interventricular artery (PDA) which is the branch of right coronary artery.",
+        "hint": ""
+    },
+    {
         "id": "JC5G6SXU",
         "year": [
             "2026"
@@ -1115,6 +1906,33 @@
             "E": "L2"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "99KZJCCY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Blood is aspirated from the nape of the neck following trauma. Which is likely injured?",
+        "options": {
+            "A": "Vertebral artery",
+            "B": "Suboccipital artery",
+            "C": "Occipital vein",
+            "D": "Superficial temporal vein",
+            "E": "Posterior compartment of Skill"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1196,6 +2014,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6AYQC5P2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Coronary sinus drains into which of the following structures?",
+        "options": {
+            "A": "Right ventricle",
+            "B": "Right atrium",
+            "C": "Inferior vena cava",
+            "D": "Right pulmonary vein",
+            "E": "Great cardiac vein"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1308,6 +2153,60 @@
         "hint": ""
     },
     {
+        "id": "ENK6RZ8G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During breast cancer surgery requiring grafting from the suprapubic region, the reconstructive surgeon must preserve which artery that supplies this donor area and may require reconstruction?",
+        "options": {
+            "A": "Superior epigastric artery",
+            "B": "Inferior epigastric artery",
+            "C": "Internal thoracic artery",
+            "D": "Thoracoacromial artery",
+            "E": "Lateral thoracic artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZXPBFVXM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During CABG planning, the surgeon identifies the origin of the LCA. From which location does it arise?",
+        "options": {
+            "A": "Right coronary sinus",
+            "B": "Posterior aortic sinus",
+            "C": "Pulmonary trunk",
+            "D": "Left aortic sinus",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DNTXVWH3",
         "year": [
             "2026"
@@ -1331,6 +2230,33 @@
             "E": "Interventricular septum"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NQRGN2HG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During cardiac surgery, a catheter is inserted into the coronary sinus for retrograde cardioplegia. Into which cardiac chamber does the coronary sinus drain?",
+        "options": {
+            "A": "Right atrium",
+            "B": "Left atrium",
+            "C": "Right ventricle",
+            "D": "Left ventricle",
+            "E": "Pulmonary artery"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1385,6 +2311,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KRFSQPFK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During coronary angiography, the left coronary artery is visualized. Which are its main branches supplying the left ventricle?",
+        "options": {
+            "A": "RCA and PDA",
+            "B": "Diagonal and obtuse marginal only",
+            "C": "LAD (left anterior descending) and circumflex arteries",
+            "D": "Posterior descending artery only",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1526,6 +2479,33 @@
         "hint": ""
     },
     {
+        "id": "HL44DU34",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Epicardium is:",
+        "options": {
+            "A": "Visceral layer of serous pericardium",
+            "B": "Visceral serous pericardium",
+            "C": "Pleural pericardium",
+            "D": "Fibrous pericardium",
+            "E": "Pleural pericardium"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "845UHC3A",
         "year": [
             "2026"
@@ -1580,6 +2560,62 @@
         "hint": ""
     },
     {
+        "id": "WDGFPYFW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Gunshot wound enters from right iliac fossa and exits from left lumbar region. Emergency laparotomy reveals peritoneal bleeding and tear at the root of small intestine mesentery. Which vessel is most likely damaged?",
+        "options": {
+            "A": "Superior mesenteric vein (SMV)",
+            "B": "Inferior mesenteric vein (IMV)",
+            "C": "Middle colic vein",
+            "D": "Right colic vein",
+            "E": "Left colic vein"
+        },
+        "correctAnswer": "A",
+        "explanation": "The root of the small intestine mesentery contains SMV and SMA. Injury to this area -> SMV bleeding is most likely cause of hemoperitoneum.",
+        "hint": ""
+    },
+    {
+        "id": "948SVJSU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "How many valves are typically present in the great saphenous vein of the lower limb?",
+        "options": {
+            "A": "8",
+            "B": "10",
+            "C": "15-20",
+            "D": "20-25",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "RDKWFYQD",
         "year": [
             "2026"
@@ -1603,6 +2639,144 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SRPWTC76",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "If the left circumflex artery is blocked, which area of the heart is most likely to be affected?",
+        "options": {
+            "A": "Left atrium and left ventricle",
+            "B": "Right atrium",
+            "C": "Right ventricle",
+            "D": "Right atrium and right ventricle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HSJFTEAJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "IgE receptor present on",
+        "options": {
+            "A": "Megakaryocyte",
+            "B": "Basophile",
+            "C": "Lymphocyte",
+            "D": "Neutrophil",
+            "E": "Monocyte"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WYW7BR5E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning",
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Important finding at angle of Louis:",
+        "options": {
+            "A": "Thoracic duct ends",
+            "B": "Opening of Azygous vein in IVC",
+            "C": "Joining of SVC with Hemiazygous Vein",
+            "D": "Joining of IVC with Hemiazygous vein",
+            "E": "Convexity of arch of aorta"
+        },
+        "correctAnswer": "E",
+        "explanation": "The sternal angle ( angle of louis ) is formed by articulation of manubrutum with the body of sternum, It is an important surface landmark and it lies at the level of. The 2nd coastal cartilage Interverteberal disc btw 4th and 5th thoracic Vertebrae Junction of ascending aorta and aortic arch and the junction of aortic arch and descending aorta. Bifurcation of trachea Junction of superior Mediastinum and inferior mediastinum",
+        "hint": ""
+    },
+    {
+        "id": "USYGTHQ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a road traffic accident patient presented with fracture of Sternoclavicular joint that is dislocated posteriorly; which vital structure deep to the joint is at greatest risk of injury?",
+        "options": {
+            "A": "Trachea",
+            "B": "Esophagus",
+            "C": "Aorta",
+            "D": "Subclavian vein",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "In a posterior sternoclavicular joint dislocation, the medial end of the clavicle moves backward. Given its immediate deep relationship to the joint, the Trachea (and, secondarily, the esophagus and great vessels) is the most vulnerable vital structure at risk of compression or laceration in this high-energy injury.",
+        "hint": ""
+    },
+    {
+        "id": "DPQP69S2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In an infection of the adductor canal, which structure is likely to be spared?",
+        "options": {
+            "A": "Femoral artery",
+            "B": "Femoral vein",
+            "C": "Saphenous nerve",
+            "D": "Great saphenous vein",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -1661,6 +2835,62 @@
         "hint": ""
     },
     {
+        "id": "WGYNEDU2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In hip surgery, if obturator artery is blocked, blood supply continues via which artery?",
+        "options": {
+            "A": "Medial circumflex femoral artery",
+            "B": "Inferior gluteal artery",
+            "C": "First perforating artery",
+            "D": "Superior gluteal artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "49JLG4D2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon",
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In the aortic opening if Diaphragm is constricted which of the following structure will be compressed along with aorta?",
+        "options": {
+            "A": "Azygous veins and both phrenic nerve",
+            "B": "Thoracic duct and vagus nerve",
+            "C": "Azygous vein and vagus nerve",
+            "D": "Inferior vena cava",
+            "E": "Thoracic duct and azygous vein"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NZB64CPQ",
         "year": [
             "2026"
@@ -1715,6 +2945,33 @@
         "hint": ""
     },
     {
+        "id": "FN7NQTRY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Injury to mandibular nerve at foramen ovale will lead to:",
+        "options": {
+            "A": "Loss of sensation of at lower face",
+            "B": "Loss of sensation at upper face",
+            "C": "Loss of sensation of forehead",
+            "D": "Loss of bitter taste",
+            "E": "Loss of bitter taste"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KW383Q2J",
         "year": [
             "2026"
@@ -1738,6 +2995,87 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FZK2AEQV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Major blood supply of perineum is from:",
+        "options": {
+            "A": "External iliac artery",
+            "B": "Common iliac artery",
+            "C": "Inferior vesical artery",
+            "D": "Internal pudendal artery",
+            "E": "Inferior mesenteric artery"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KNW9KTJF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Middle part of aorta supplied by",
+        "options": {
+            "A": "Coronary arteries",
+            "B": "Thoracic aorta + bronchial arteries",
+            "C": "Phrenic artery",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TBDDEGWA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Needle inserted above empty bladder for peritoneal fluid aspiration. Which artery can be damaged?",
+        "options": {
+            "A": "Superior mesenteric",
+            "B": "Left gastric",
+            "C": "Short gastric",
+            "D": "Inferior mesenteric",
+            "E": "Inferior epigastric"
+        },
+        "correctAnswer": "E",
         "explanation": "",
         "hint": ""
     },
@@ -1789,6 +3127,60 @@
             "B": "Left circumflex artery",
             "C": "Left anterior descending artery",
             "D": "Posterior descending artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WW6LGE6F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ovarian artery arises from which major vessel?",
+        "options": {
+            "A": "Abdominal aorta",
+            "B": "Internal iliac artery",
+            "C": "External iliac artery",
+            "D": "Renal artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K3NYBBPL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ovarian artery is a direct branch of:",
+        "options": {
+            "A": "Internal iliac artery",
+            "B": "Renal artery",
+            "C": "Abdominal aorta",
+            "D": "Common iliac artery",
             "E": ""
         },
         "correctAnswer": "C",
@@ -1850,6 +3242,33 @@
         "hint": ""
     },
     {
+        "id": "G37E2TKV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Posterior one third interventricular septum is supplied by:",
+        "options": {
+            "A": "RMA",
+            "B": "LAD",
+            "C": "LCX",
+            "D": "RCA",
+            "E": "LCA"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "68XTSTEA",
         "year": [
             "2026"
@@ -1875,6 +3294,36 @@
         "correctAnswer": "A",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Femoral vein</strong> - The femoral vein passes through the adductor canal alongside the femoral artery and is susceptible to compression by a pus collection.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Select the Answer:</h3></p><p><p>The key clue is <strong>pus within the adductor canal</strong>. Identify which listed structures actually pass through the canal. The femoral vein is present within it, whereas the popliteal artery lies distal to the adductor hiatus and the femoral nerve does not enter the canal. Therefore, the femoral vein is the best answer among these options.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Great Saphenous vein</strong> - Runs superficially in the medial leg and thigh and drains into the femoral vein near the saphenous opening; it does not pass through the adductor canal.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Popliteal artery</strong> - Begins when the femoral artery passes through the adductor hiatus and enters the popliteal fossa; it is not inside the adductor canal.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Femoral nerve</strong> - Divides in the femoral triangle. Its saphenous branch enters the adductor canal, but the main femoral nerve does not.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p>The adductor canal contains the <strong>femoral artery, femoral vein, and saphenous nerve</strong>, along with the nerve to vastus medialis.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>If the question asks which structure is compressed by pus, the anatomy alone cannot guarantee a unique answer because both the femoral artery and vein lie in the canal. However, among the options provided, the <strong>femoral vein</strong> is the best answer.</p></p>",
         "hint": "<p><br></p>"
+    },
+    {
+        "id": "R6D3G5Z7",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Referred pain from the heart is carried mainly by which structure?",
+        "options": {
+            "A": "Visceral pleura",
+            "B": "Parietal pleura",
+            "C": "Parietal layer of serous pericardium",
+            "D": "Phrenic nerve",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
     },
     {
         "id": "NWTUYMFV",
@@ -1982,6 +3431,142 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6D5PETHU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "stab wound 3 cm deep to right side of umbilicus intiliay patient vitals are normal after 2 hours patient become hypotensive source of bleed",
+        "options": {
+            "A": "IVC",
+            "B": "Aorta",
+            "C": "SMA",
+            "D": "Portal vein",
+            "E": "ileocolic artery"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W87J8QU9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Stab wound at left 5th ICS 4cm deep just lateral to sternum structure damage will be:",
+        "options": {
+            "A": "Hilum of Left lung",
+            "B": "Left pleura",
+            "C": "Pericardium",
+            "D": "Left bronchus",
+            "E": "IVC"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "N3B3S5U4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Stab wound at left 5th ICS just lateral to sternum structure damage will be:",
+        "options": {
+            "A": "Left lung",
+            "B": "Left pleura",
+            "C": "Pericardium",
+            "D": "Left bronchus",
+            "E": "IVC"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HAZGRCFR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The artery palpated between the trachea and infrahyoid is:",
+        "options": {
+            "A": "Internal carotid artery",
+            "B": "Common carotid artery",
+            "C": "Internal jugular vein",
+            "D": "External Carotid",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G8TPZVVU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The Common Carotid Artery typically bifurcates at the level of the upper border of which structure?",
+        "options": {
+            "A": "Cricoid cartilage",
+            "B": "Hyoid bone",
+            "C": "Thyroid cartilage",
+            "D": "Mandibular angle",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The common carotid artery usually divides at the level of the upper border of the thyroid cartilage, corresponding to the C3/C4 vertebral level.",
         "hint": ""
     },
     {
@@ -2117,6 +3702,33 @@
         },
         "correctAnswer": "C",
         "explanation": "Unlike the uterine artery, the paired ovarian arteries branch directly off the abdominal aorta inferior to the renal arteries",
+        "hint": ""
+    },
+    {
+        "id": "3HNSZ9FU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The posterior one-third of the interventricular septum is supplied by:",
+        "options": {
+            "A": "LAD",
+            "B": "RCA",
+            "C": "Circumflex",
+            "D": "Diagonal branch",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -2258,6 +3870,115 @@
         "hint": ""
     },
     {
+        "id": "VNLY6TR8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Through hasselbach triangle which hernia comes out?",
+        "options": {
+            "A": "Direct inguinal hernia",
+            "B": "Indirect inguinal hernia",
+            "C": "Femoral hernia",
+            "D": "Abdominal hernia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9WV9GPKD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "True regarding \"Descending thoracic aorta\":",
+        "options": {
+            "A": "Begins at Left side of upper border of body of T4",
+            "B": "Supplies pericardium, esophagus, and lungs",
+            "C": "Supplies lower 8 intercostal spaces on both sides",
+            "D": "Becomes abdominal aorta at L2",
+            "E": "Lies in middle mediastinum"
+        },
+        "correctAnswer": "B",
+        "explanation": "• The descending thoracic aorta lies in the posterior mediastinum • It begins at the lower border of the body of thoracic vertebra T4 • Posterior intercostal arteries branch off to the lower nine intercostal spaces on each side • Subcostal arteries arise on each side and run along the lower border of the 12th rib to enter the abdominal wall • Pericardial, esophageal, and bronchial arteries are small branches that distribute to these organs • it becomes abdominal aorta at the level of T12",
+        "hint": ""
+    },
+    {
+        "id": "5HDYCWL9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Uterine artery is a branch of which major artery?",
+        "options": {
+            "A": "Abdominal aorta",
+            "B": "External iliac artery",
+            "C": "Internal iliac artery",
+            "D": "Renal artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6JQVVXKX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Uterine artery is a branch of:",
+        "options": {
+            "A": "Abdominal aorta",
+            "B": "External iliac artery",
+            "C": "Internal iliac artery",
+            "D": "Common iliac artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZLF68NY7",
         "year": [
             "2026"
@@ -2282,6 +4003,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5JPKE8BC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is true about azygous vein?",
+        "options": {
+            "A": "Terminate in Extenal Jugular Vein",
+            "B": "Enters abdomen through an opening at T12 Vertebrae",
+            "C": "Continuation of Great saphenous vein",
+            "D": "Most common cause of femoral hernia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "The Azygos vein is part of the system that drains the posterior thoracic wall. It is formed in the abdomen, and ascends into the thorax through the Aortic Hiatus (opening) of the diaphragm, which is located at the level of the T12 vertebra. It ultimately arches over the root of the right lung to terminate in the Superior Vena Cava (SVC), not the External Jugular Vein.",
         "hint": ""
     },
     {
@@ -2359,6 +4107,33 @@
             "B": "Right coronary artery",
             "C": "Circumflex artery",
             "D": "Posterior interventricular artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6R8A9FFV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which artery is most likely to be damaged during suprapubic catheter insertion?",
+        "options": {
+            "A": "Inferior epigastric artery",
+            "B": "External iliac artery",
+            "C": "Femoral artery",
+            "D": "Superficial epigastric artery",
             "E": ""
         },
         "correctAnswer": "A",
@@ -2528,6 +4303,60 @@
         "hint": ""
     },
     {
+        "id": "U4B83MQC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which major cardiac vein typically runs alongside the Anterior Interventricular Artery (also known as LAD artery) in the anterior interventricular sulcus?",
+        "options": {
+            "A": "Great Cardiac Vein",
+            "B": "Middle Cardiac Vein",
+            "C": "Small Cardiac Vein",
+            "D": "Posterior Cardiac Vein",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Great Cardiac Vein travels with the LAD artery in the anterior interventricular sulcus. The Middle Cardiac Vein runs with the Posterior Interventricular Artery, and the Small Cardiac Vein usually runs with the Right Coronary Artery.",
+        "hint": ""
+    },
+    {
+        "id": "45HV4FLV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following Blood Vessel Is responsible for supplying Anterior 2/3rds of Interventricular septum?",
+        "options": {
+            "A": "Left Anterior Descending artery",
+            "B": "Posterior Interventricular Artery",
+            "C": "Left Circumflex Artery",
+            "D": "RCA",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Major portion of interventricular septum that's anterior 2/3rd is supplied by anterior interventricular septum while posterior 1/3rd is supplied by posterior interventricular artery",
+        "hint": ""
+    },
+    {
         "id": "L2SRMB2L",
         "year": [
             "2026"
@@ -2606,1970 +4435,6 @@
         },
         "correctAnswer": "B",
         "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "67HHJPUL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which statement correctly describes the origin and a major branch of the left coronary artery?",
-        "options": {
-            "A": "Arises from the right coronary sinus; gives off the posterior interventricular artery",
-            "B": "Arises from the left coronary sinus; gives off the anterior interventricular artery",
-            "C": "Arises from the pulmonary trunk; gives off the circumflex artery",
-            "D": "Arises from the left coronary sinus; gives off the posterior interventricular artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6VPLD85V",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which structure is found in the posterior mediastinum?",
-        "options": {
-            "A": "Descending aorta",
-            "B": "Thymus",
-            "C": "Parasternal lymph nodes",
-            "D": "Internal thoracic arteries",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8VAP7ZZL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which structure is located in the posterior mediastinum?",
-        "options": {
-            "A": "Heart",
-            "B": "Thymus",
-            "C": "Descending thoracic aorta",
-            "D": "Trachea",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EUKHZZHC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which structure passes through the vertebral level T12?",
-        "options": {
-            "A": "Esophagus",
-            "B": "Aorta",
-            "C": "Inferior vena cava",
-            "D": "Thoracic duct",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K74NN4YF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which vein courses over the deltoid muscle in the deltopectoral groove?",
-        "options": {
-            "A": "Cephalic vein",
-            "B": "Basilic vein",
-            "C": "Median cubital vein",
-            "D": "Axillary vein",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7QGW7S7K",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 36 year old man sustains a fracture of the proximal humerus and requires shoulder surgery. During the procedure, the surgeon ligates a vessel within the quadrangular space to control bleeding. Which of the following vessels was most likely ligated?",
-        "options": {
-            "A": "Anterior circumflex humeral artery",
-            "B": "Posterior circumflex humeral artery",
-            "C": "Thoracoacromial artery",
-            "D": "Suprascapular artery",
-            "E": "Subscapular artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LYHEMSB2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 42 year old woman underwent breast reconstruction surgery after mastectomy for breast cancer, the surgeon’s plans to use a flap harvested from supraclavicular region of lower abdomen, which of the following artery primarily supplies the blood to this flap and must be preserved or reconstructed to ensure flap viability?",
-        "options": {
-            "A": "Inferior mesenteric artery",
-            "B": "Internal thoracic artery",
-            "C": "Superior epigastric artery",
-            "D": "Inferior epigastric artery",
-            "E": "Supraclavicular"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z45RFVNM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 50 year old man known to have hepatoma develops dependent edema with dilated abdominal walls veins. The most likely structure involved in this patient is:",
-        "options": {
-            "A": "IVC",
-            "B": "Hepatic artery",
-            "C": "Portal vein",
-            "D": "Bile duct",
-            "E": "Renal vein"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VBPFVS82",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old diabetic patient presents with pain and numbness on the sole of the foot and weakness in toe flexion. On examination, the dorsalis pedis pulse is palpable, but the posterior tibial pulse is absent. Which artery is most likely compromised?",
-        "options": {
-            "A": "posterior tibial artery",
-            "B": "anterior tibial artery",
-            "C": "Popliteal artery",
-            "D": "Femoral artery",
-            "E": "Femoral artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "932BP3PU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old Diabetic patient presents with chronic ischemic foot pain. Doppler ultrasound reveals occlusion of dorsalis pedis artery, with compensatory blood supply from artery of posterior leg, which artery is providing collateral circulation?",
-        "options": {
-            "A": "Anterior tibial artery",
-            "B": "Posterior tibial artery",
-            "C": "Popliteal artery",
-            "D": "Obturator artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WKBA279H",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old man presents with acute chest pain radiating to the left arm. ECG confirms myocardial infarction. During coronary angiography, which artery is the most common site for emboli causing infarction?",
-        "options": {
-            "A": "Pulmonary artery",
-            "B": "Coronary artery",
-            "C": "Femoral artery",
-            "D": "Carotid artery",
-            "E": "Renal artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7Y373F2R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 7 year old girl presented with a 3 weeks H/O of horizontal diplopia on far right lateral gaze, this is most probably due to damage to which nerve:",
-        "options": {
-            "A": "Optic nerve",
-            "B": "Oculomotor nerve",
-            "C": "Trochlear nerve",
-            "D": "Nasociliary nerve",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PWHXUY7W",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A blockage in the posterior interventricular artery would most likely affect which of the following areas?",
-        "options": {
-            "A": "Right atrium",
-            "B": "Right ventricle",
-            "C": "Left atrium",
-            "D": "Inferior part of the left ventricle",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MLGWAAHV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child is in shock Like condition blood sample taken from which artery",
-        "options": {
-            "A": "Femoral artery",
-            "B": "Posterior tibial artery",
-            "C": "Dorsalis pedis artery",
-            "D": "Anterior tibial artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "C55UCDQM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child was undergoing tonsillectomy, during procedure, surgeon noticed bleeding from left tonsillar artery. Left tonsillar artery is a branch of?",
-        "options": {
-            "A": "Facial artery",
-            "B": "Lingual artery",
-            "C": "Ascending pharyngeal artery",
-            "D": "Maxillary artery",
-            "E": "Superior thyroid artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2N9GMAXE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child with a recurrent history of tonsillitis undergoes a tonsillectomy. During surgery, bleeding occurs from the right tonsillar artery. This artery is a branch of which vessel?",
-        "options": {
-            "A": "Lingual artery",
-            "B": "Facial artery",
-            "C": "Ascending pharyngeal artery",
-            "D": "Descending palatine artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3GFNPQEP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning",
-            "Surgery - 08/25 - August 6 - Evening",
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is suffering from Pseudomonas aeruginosa infection with fever. Which of the following cytokine is predominantly responsible for the fever?",
-        "options": {
-            "A": "IL-1",
-            "B": "PG-E",
-            "C": "TNF",
-            "D": "CD4",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Fever - IL1, IL6. TNF - fever in pseudomonas aeruginosa",
-        "hint": ""
-    },
-    {
-        "id": "MQ4KDC55",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient of MI. The artery supplying apex of heart is blocked. Which artery supply apex?",
-        "options": {
-            "A": "PDA",
-            "B": "LCX",
-            "C": "LAD",
-            "D": "Left marginal artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7LBNC8X6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with anatomical snuff box injury which is bleeding profusely; artery involved is",
-        "options": {
-            "A": "Ulnar",
-            "B": "Medial",
-            "C": "Radial",
-            "D": "Brachial",
-            "E": "Sural"
-        },
-        "correctAnswer": "C",
-        "explanation": "The Anatomical Snuff Box is formed by tendons, and its floor is crossed by the Radial Artery before it dives deep into the hand. Damage here causes profuse bleeding from the radial artery.",
-        "hint": ""
-    },
-    {
-        "id": "KERNHXMY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with severe pain, pallor, paresthesia, and pulselessness of the right leg following thromboembolism. Which of the following arteries is most likely occluded if the embolus lodged in the popliteal fossa?",
-        "options": {
-            "A": "Anterior tibial artery",
-            "B": "Posterior tibial artery",
-            "C": "Common femoral artery",
-            "D": "Popliteal artery",
-            "E": "Dorsalis pedis artery"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PBUKCNGZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient sustained a splinter injury from a blast, resulting in damage to the pericardium. During surgery, the pericardium was found to be damaged on the inferior side. The surgeon inserted her fingers into the pericardium to locate a piece of shrapnel, moving inferiorly, then upwards and to the right, where her fingers stopped at a cul de sac near the base of the heart, formed by a fold of the pericardium. What is the most likely location of her fingers?`",
-        "options": {
-            "A": "Coronary sinus",
-            "B": "Coronary Sulcus",
-            "C": "Oblique sinus",
-            "D": "Costodiaphragmatic recess",
-            "E": "Costomediastinal recess"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q5FL4ASX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient sustained a splinter injury from a blast, resulting in damage to the pericardium. During surgery, the pericardium was found to be damaged on the inferior side. The surgeon inserted her fingers into the pericardium to locate a piece of shrapnel, moving inferiorly, then upwards and to the right, where her fingers stopped at a cul-de-sac near the base of the heart, formed by a fold of the pericardium. What is the most likely location of her fingers?",
-        "options": {
-            "A": "Coronary sulcus",
-            "B": "Coronary sinus",
-            "C": "Oblique sinus",
-            "D": "Costodiaphragmatic recess",
-            "E": "Costomediastinal recess"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "36478YNQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient sustains a stab wound 2cm deep at 5th intercostal space, 4cm from the midaxillary line which of the following structures is most likely to be damaged?",
-        "options": {
-            "A": "Intercostal artery",
-            "B": "Phrenic nerve",
-            "C": "Internal thoracic artery",
-            "D": "Thoracic duct",
-            "E": "Azygous vein"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "66D73XLE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient sustains a wrist injury affecting the anatomical snuff box. Which major artery is most at risk in this region?",
-        "options": {
-            "A": "Ulnar artery",
-            "B": "Radial artery",
-            "C": "Median artery",
-            "D": "Brachial artery",
-            "E": "Interosseous artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NE8DAVDQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient undergoing ascetic tap needle passed to superior surface of bladder which artery is likely in danger?",
-        "options": {
-            "A": "Superior Epigastric artery",
-            "B": "Inferior Epigastric artery",
-            "C": "Deep Circumflex artery",
-            "D": "Superficial Circumflex artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZCZ6CNTN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient who has history of trauma which results in fracture of foramen spinosum the artery runs over the mentioned site give main supply to which of the following structure?",
-        "options": {
-            "A": "Arachnoid matter",
-            "B": "Skull vault",
-            "C": "Brain parenchyma",
-            "D": "Hearing area",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7MSAQWGD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with chronic kidney disease undergoes a procedure where the artery accompanying the left anterior descending coronary artery is of concern. Which vein runs alongside the LAD artery?",
-        "options": {
-            "A": "Small cardiac vein",
-            "B": "Great cardiac vein",
-            "C": "Middle cardiac vein",
-            "D": "Coronary sinus",
-            "E": "Anterior cardiac vein"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FE92G3E3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A stab wound in 5th intercostal space lateral to sternum damages which structure?",
-        "options": {
-            "A": "Left lung",
-            "B": "Left pleura",
-            "C": "Pericardium",
-            "D": "Left bronchus",
-            "E": "IVC"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K5K4VYE9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A stab wound to the abdomen is suspected to have injured a large retroperitoneal vessel coursing on the right side of the vertebral column. Which vessel is most likely injured.",
-        "options": {
-            "A": "Inferior vena cava",
-            "B": "Abdominal aorta",
-            "C": "Portal vein",
-            "D": "Superior mesenteric artery",
-            "E": "Renal vein"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LJ9EYSVH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A surgeon performing varicose vein surgery while flush ligation of saphenous vein there is sudden gush of dark color blood, massive bleeding is most probably from:",
-        "options": {
-            "A": "Femoral vein",
-            "B": "Medial vein of thigh",
-            "C": "Small saphenous",
-            "D": "Obturator vein",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The Femoral Vein lies directly deep to the greater saphenous vein at the saphenofemoral junction; an accidental, deep cut during \"flush\" ligation breaches the major deep vein, causing massive hemorrhage.",
-        "hint": ""
-    },
-    {
-        "id": "FJ8FN9AB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A trauma patient is undergoing imaging after a high-impact motor vehicle accident. The radiologist notes that the descending thoracic aorta is injured at a vertebral level corresponding to the diaphragmatic hiatus. At which vertebral level is this injury most likely located?",
-        "options": {
-            "A": "T10",
-            "B": "T12",
-            "C": "L3",
-            "D": "L1",
-            "E": "T8"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MGLP9SRQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young adult with a history of supraventricular tachycardia SVT, is found to have an accessory pathway(AVRT) that connects the atria to the ventricles bypassing the AV node. What is the name of this accessory pathway?",
-        "options": {
-            "A": "Bundle of His",
-            "B": "Bundle of Kent",
-            "C": "Purkinje fibers",
-            "D": "AV node",
-            "E": "Bachmann's bundle"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HH4YCL3B",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young boy had a testicular tumor for which orchidectomy was performed and right testicular vein ligated to prevent seeding of the tumor; it drains into",
-        "options": {
-            "A": "Renal vein",
-            "B": "Portal vein",
-            "C": "IVC",
-            "D": "Azygous vein",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The Right Testicular Vein drains directly into the Inferior Vena Cava, while the left drains into the left renal vein.",
-        "hint": ""
-    },
-    {
-        "id": "7GNUT3EC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "After trauma on anatomical snuff box patient having bleed and pain due to which structure damaged?",
-        "options": {
-            "A": "Median nerve",
-            "B": "Ulnar nerve",
-            "C": "Radial artery",
-            "D": "Radial nerve",
-            "E": "Brachial artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XH9UTDY3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Anterior two third interventricular septum is supplied by:",
-        "options": {
-            "A": "Right marginal artery",
-            "B": "Anterior descending artery",
-            "C": "LCX",
-            "D": "Right coronary artery",
-            "E": "Left coronary artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "Anterior 2/3 of interventricular septum is supplied by anterior interventricular artery (LADA) which is branch of left coronary artery. Posterior 1/3 is supplied via posterior interventricular artery (PDA) which is the branch of right coronary artery.",
-        "hint": ""
-    },
-    {
-        "id": "99KZJCCY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Blood is aspirated from the nape of the neck following trauma. Which is likely injured?",
-        "options": {
-            "A": "Vertebral artery",
-            "B": "Suboccipital artery",
-            "C": "Occipital vein",
-            "D": "Superficial temporal vein",
-            "E": "Posterior compartment of Skill"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6AYQC5P2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Coronary sinus drains into which of the following structures?",
-        "options": {
-            "A": "Right ventricle",
-            "B": "Right atrium",
-            "C": "Inferior vena cava",
-            "D": "Right pulmonary vein",
-            "E": "Great cardiac vein"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ENK6RZ8G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During breast cancer surgery requiring grafting from the suprapubic region, the reconstructive surgeon must preserve which artery that supplies this donor area and may require reconstruction?",
-        "options": {
-            "A": "Superior epigastric artery",
-            "B": "Inferior epigastric artery",
-            "C": "Internal thoracic artery",
-            "D": "Thoracoacromial artery",
-            "E": "Lateral thoracic artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZXPBFVXM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During CABG planning, the surgeon identifies the origin of the LCA. From which location does it arise?",
-        "options": {
-            "A": "Right coronary sinus",
-            "B": "Posterior aortic sinus",
-            "C": "Pulmonary trunk",
-            "D": "Left aortic sinus",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NQRGN2HG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During cardiac surgery, a catheter is inserted into the coronary sinus for retrograde cardioplegia. Into which cardiac chamber does the coronary sinus drain?",
-        "options": {
-            "A": "Right atrium",
-            "B": "Left atrium",
-            "C": "Right ventricle",
-            "D": "Left ventricle",
-            "E": "Pulmonary artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KRFSQPFK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During coronary angiography, the left coronary artery is visualized. Which are its main branches supplying the left ventricle?",
-        "options": {
-            "A": "RCA and PDA",
-            "B": "Diagonal and obtuse marginal only",
-            "C": "LAD (left anterior descending) and circumflex arteries",
-            "D": "Posterior descending artery only",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HL44DU34",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Epicardium is:",
-        "options": {
-            "A": "Visceral layer of serous pericardium",
-            "B": "Visceral serous pericardium",
-            "C": "Pleural pericardium",
-            "D": "Fibrous pericardium",
-            "E": "Pleural pericardium"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WDGFPYFW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Gunshot wound enters from right iliac fossa and exits from left lumbar region. Emergency laparotomy reveals peritoneal bleeding and tear at the root of small intestine mesentery. Which vessel is most likely damaged?",
-        "options": {
-            "A": "Superior mesenteric vein (SMV)",
-            "B": "Inferior mesenteric vein (IMV)",
-            "C": "Middle colic vein",
-            "D": "Right colic vein",
-            "E": "Left colic vein"
-        },
-        "correctAnswer": "A",
-        "explanation": "The root of the small intestine mesentery contains SMV and SMA. Injury to this area -> SMV bleeding is most likely cause of hemoperitoneum.",
-        "hint": ""
-    },
-    {
-        "id": "948SVJSU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "How many valves are typically present in the great saphenous vein of the lower limb?",
-        "options": {
-            "A": "8",
-            "B": "10",
-            "C": "15-20",
-            "D": "20-25",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SRPWTC76",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "If the left circumflex artery is blocked, which area of the heart is most likely to be affected?",
-        "options": {
-            "A": "Left atrium and left ventricle",
-            "B": "Right atrium",
-            "C": "Right ventricle",
-            "D": "Right atrium and right ventricle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HSJFTEAJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "IgE receptor present on",
-        "options": {
-            "A": "Megakaryocyte",
-            "B": "Basophile",
-            "C": "Lymphocyte",
-            "D": "Neutrophil",
-            "E": "Monocyte"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WYW7BR5E",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning",
-            "Surgery - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Important finding at angle of Louis:",
-        "options": {
-            "A": "Thoracic duct ends",
-            "B": "Opening of Azygous vein in IVC",
-            "C": "Joining of SVC with Hemiazygous Vein",
-            "D": "Joining of IVC with Hemiazygous vein",
-            "E": "Convexity of arch of aorta"
-        },
-        "correctAnswer": "E",
-        "explanation": "The sternal angle ( angle of louis ) is formed by articulation of manubrutum with the body of sternum, It is an important surface landmark and it lies at the level of. The 2nd coastal cartilage Interverteberal disc btw 4th and 5th thoracic Vertebrae Junction of ascending aorta and aortic arch and the junction of aortic arch and descending aorta. Bifurcation of trachea Junction of superior Mediastinum and inferior mediastinum",
-        "hint": ""
-    },
-    {
-        "id": "USYGTHQ7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In a road traffic accident patient presented with fracture of Sternoclavicular joint that is dislocated posteriorly; which vital structure deep to the joint is at greatest risk of injury?",
-        "options": {
-            "A": "Trachea",
-            "B": "Esophagus",
-            "C": "Aorta",
-            "D": "Subclavian vein",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "In a posterior sternoclavicular joint dislocation, the medial end of the clavicle moves backward. Given its immediate deep relationship to the joint, the Trachea (and, secondarily, the esophagus and great vessels) is the most vulnerable vital structure at risk of compression or laceration in this high-energy injury.",
-        "hint": ""
-    },
-    {
-        "id": "DPQP69S2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In an infection of the adductor canal, which structure is likely to be spared?",
-        "options": {
-            "A": "Femoral artery",
-            "B": "Femoral vein",
-            "C": "Saphenous nerve",
-            "D": "Great saphenous vein",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WGYNEDU2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In hip surgery, if obturator artery is blocked, blood supply continues via which artery?",
-        "options": {
-            "A": "Medial circumflex femoral artery",
-            "B": "Inferior gluteal artery",
-            "C": "First perforating artery",
-            "D": "Superior gluteal artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "49JLG4D2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon",
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In the aortic opening if Diaphragm is constricted which of the following structure will be compressed along with aorta?",
-        "options": {
-            "A": "Azygous veins and both phrenic nerve",
-            "B": "Thoracic duct and vagus nerve",
-            "C": "Azygous vein and vagus nerve",
-            "D": "Inferior vena cava",
-            "E": "Thoracic duct and azygous vein"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FN7NQTRY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Injury to mandibular nerve at foramen ovale will lead to:",
-        "options": {
-            "A": "Loss of sensation of at lower face",
-            "B": "Loss of sensation at upper face",
-            "C": "Loss of sensation of forehead",
-            "D": "Loss of bitter taste",
-            "E": "Loss of bitter taste"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FZK2AEQV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Major blood supply of perineum is from:",
-        "options": {
-            "A": "External iliac artery",
-            "B": "Common iliac artery",
-            "C": "Inferior vesical artery",
-            "D": "Internal pudendal artery",
-            "E": "Inferior mesenteric artery"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KNW9KTJF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Middle part of aorta supplied by",
-        "options": {
-            "A": "Coronary arteries",
-            "B": "Thoracic aorta + bronchial arteries",
-            "C": "Phrenic artery",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TBDDEGWA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Needle inserted above empty bladder for peritoneal fluid aspiration. Which artery can be damaged?",
-        "options": {
-            "A": "Superior mesenteric",
-            "B": "Left gastric",
-            "C": "Short gastric",
-            "D": "Inferior mesenteric",
-            "E": "Inferior epigastric"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WW6LGE6F",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ovarian artery arises from which major vessel?",
-        "options": {
-            "A": "Abdominal aorta",
-            "B": "Internal iliac artery",
-            "C": "External iliac artery",
-            "D": "Renal artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K3NYBBPL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ovarian artery is a direct branch of:",
-        "options": {
-            "A": "Internal iliac artery",
-            "B": "Renal artery",
-            "C": "Abdominal aorta",
-            "D": "Common iliac artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G37E2TKV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Posterior one third interventricular septum is supplied by:",
-        "options": {
-            "A": "RMA",
-            "B": "LAD",
-            "C": "LCX",
-            "D": "RCA",
-            "E": "LCA"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6D5PETHU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "stab wound 3 cm deep to right side of umbilicus intiliay patient vitals are normal after 2 hours patient become hypotensive source of bleed",
-        "options": {
-            "A": "IVC",
-            "B": "Aorta",
-            "C": "SMA",
-            "D": "Portal vein",
-            "E": "ileocolic artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W87J8QU9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Stab wound at left 5th ICS 4cm deep just lateral to sternum structure damage will be:",
-        "options": {
-            "A": "Hilum of Left lung",
-            "B": "Left pleura",
-            "C": "Pericardium",
-            "D": "Left bronchus",
-            "E": "IVC"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "N3B3S5U4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Stab wound at left 5th ICS just lateral to sternum structure damage will be:",
-        "options": {
-            "A": "Left lung",
-            "B": "Left pleura",
-            "C": "Pericardium",
-            "D": "Left bronchus",
-            "E": "IVC"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HAZGRCFR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The artery palpated between the trachea and infrahyoid is:",
-        "options": {
-            "A": "Internal carotid artery",
-            "B": "Common carotid artery",
-            "C": "Internal jugular vein",
-            "D": "External Carotid",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G8TPZVVU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The Common Carotid Artery typically bifurcates at the level of the upper border of which structure?",
-        "options": {
-            "A": "Cricoid cartilage",
-            "B": "Hyoid bone",
-            "C": "Thyroid cartilage",
-            "D": "Mandibular angle",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The common carotid artery usually divides at the level of the upper border of the thyroid cartilage, corresponding to the C3/C4 vertebral level.",
-        "hint": ""
-    },
-    {
-        "id": "3HNSZ9FU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The posterior one-third of the interventricular septum is supplied by:",
-        "options": {
-            "A": "LAD",
-            "B": "RCA",
-            "C": "Circumflex",
-            "D": "Diagonal branch",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VNLY6TR8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Through hasselbach triangle which hernia comes out?",
-        "options": {
-            "A": "Direct inguinal hernia",
-            "B": "Indirect inguinal hernia",
-            "C": "Femoral hernia",
-            "D": "Abdominal hernia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9WV9GPKD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "True regarding \"Descending thoracic aorta\":",
-        "options": {
-            "A": "Begins at Left side of upper border of body of T4",
-            "B": "Supplies pericardium, esophagus, and lungs",
-            "C": "Supplies lower 8 intercostal spaces on both sides",
-            "D": "Becomes abdominal aorta at L2",
-            "E": "Lies in middle mediastinum"
-        },
-        "correctAnswer": "B",
-        "explanation": "• The descending thoracic aorta lies in the posterior mediastinum • It begins at the lower border of the body of thoracic vertebra T4 • Posterior intercostal arteries branch off to the lower nine intercostal spaces on each side • Subcostal arteries arise on each side and run along the lower border of the 12th rib to enter the abdominal wall • Pericardial, esophageal, and bronchial arteries are small branches that distribute to these organs • it becomes abdominal aorta at the level of T12",
-        "hint": ""
-    },
-    {
-        "id": "5HDYCWL9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Uterine artery is a branch of which major artery?",
-        "options": {
-            "A": "Abdominal aorta",
-            "B": "External iliac artery",
-            "C": "Internal iliac artery",
-            "D": "Renal artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6JQVVXKX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning",
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Uterine artery is a branch of:",
-        "options": {
-            "A": "Abdominal aorta",
-            "B": "External iliac artery",
-            "C": "Internal iliac artery",
-            "D": "Common iliac artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5JPKE8BC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is true about azygous vein?",
-        "options": {
-            "A": "Terminate in Extenal Jugular Vein",
-            "B": "Enters abdomen through an opening at T12 Vertebrae",
-            "C": "Continuation of Great saphenous vein",
-            "D": "Most common cause of femoral hernia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "The Azygos vein is part of the system that drains the posterior thoracic wall. It is formed in the abdomen, and ascends into the thorax through the Aortic Hiatus (opening) of the diaphragm, which is located at the level of the T12 vertebra. It ultimately arches over the root of the right lung to terminate in the Superior Vena Cava (SVC), not the External Jugular Vein.",
-        "hint": ""
-    },
-    {
-        "id": "6R8A9FFV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which artery is most likely to be damaged during suprapubic catheter insertion?",
-        "options": {
-            "A": "Inferior epigastric artery",
-            "B": "External iliac artery",
-            "C": "Femoral artery",
-            "D": "Superficial epigastric artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U4B83MQC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which major cardiac vein typically runs alongside the Anterior Interventricular Artery (also known as LAD artery) in the anterior interventricular sulcus?",
-        "options": {
-            "A": "Great Cardiac Vein",
-            "B": "Middle Cardiac Vein",
-            "C": "Small Cardiac Vein",
-            "D": "Posterior Cardiac Vein",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The Great Cardiac Vein travels with the LAD artery in the anterior interventricular sulcus. The Middle Cardiac Vein runs with the Posterior Interventricular Artery, and the Small Cardiac Vein usually runs with the Right Coronary Artery.",
-        "hint": ""
-    },
-    {
-        "id": "45HV4FLV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following Blood Vessel Is responsible for supplying Anterior 2/3rds of Interventricular septum?",
-        "options": {
-            "A": "Left Anterior Descending artery",
-            "B": "Posterior Interventricular Artery",
-            "C": "Left Circumflex Artery",
-            "D": "RCA",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Major portion of interventricular septum that's anterior 2/3rd is supplied by anterior interventricular septum while posterior 1/3rd is supplied by posterior interventricular artery",
         "hint": ""
     },
     {
@@ -4654,6 +4519,33 @@
         "hint": ""
     },
     {
+        "id": "67HHJPUL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which statement correctly describes the origin and a major branch of the left coronary artery?",
+        "options": {
+            "A": "Arises from the right coronary sinus; gives off the posterior interventricular artery",
+            "B": "Arises from the left coronary sinus; gives off the anterior interventricular artery",
+            "C": "Arises from the pulmonary trunk; gives off the circumflex artery",
+            "D": "Arises from the left coronary sinus; gives off the posterior interventricular artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EEMMEBEA",
         "year": [
             "2025"
@@ -4683,6 +4575,60 @@
         "hint": ""
     },
     {
+        "id": "6VPLD85V",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure is found in the posterior mediastinum?",
+        "options": {
+            "A": "Descending aorta",
+            "B": "Thymus",
+            "C": "Parasternal lymph nodes",
+            "D": "Internal thoracic arteries",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8VAP7ZZL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure is located in the posterior mediastinum?",
+        "options": {
+            "A": "Heart",
+            "B": "Thymus",
+            "C": "Descending thoracic aorta",
+            "D": "Trachea",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "SHRS5C58",
         "year": [
             "2025"
@@ -4707,6 +4653,60 @@
         },
         "correctAnswer": "A",
         "explanation": "The structures in the popliteal fossa are arranged Nerve (Tibial/CPN) -> Vein (Popliteal) -> Artery (Popliteal); therefore, the Popliteal artery is the deepest structure.",
+        "hint": ""
+    },
+    {
+        "id": "EUKHZZHC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure passes through the vertebral level T12?",
+        "options": {
+            "A": "Esophagus",
+            "B": "Aorta",
+            "C": "Inferior vena cava",
+            "D": "Thoracic duct",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K74NN4YF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which vein courses over the deltoid muscle in the deltopectoral groove?",
+        "options": {
+            "A": "Cephalic vein",
+            "B": "Basilic vein",
+            "C": "Median cubital vein",
+            "D": "Axillary vein",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {

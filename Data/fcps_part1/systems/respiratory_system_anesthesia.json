@@ -81,6 +81,33 @@
         "hint": ""
     },
     {
+        "id": "MUKKTT3V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 40-year-old male is brought to the ER after RTA, he is conscious but complains of severe neck pain and tingling in his hands, A cervical x-ray confirms a cervical injury, After sometimes he experiences difficulty in respiration, during airway management there was difficulty in ETT What is the next best step in this patient?",
+        "options": {
+            "A": "McGrath or LUCAS video laryngoscope",
+            "B": "Direct laryngoscopy",
+            "C": "Cricothyroidectomy",
+            "D": "Nasal intubation with blind technique",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EZVYHR7N",
         "year": [
             "2026"
@@ -191,141 +218,6 @@
         "hint": ""
     },
     {
-        "id": "8ETSKATB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient under general anesthesia develops shallow breathing and hypoventilation after repeated doses of fentanyl. The most likely cause is:",
-        "options": {
-            "A": "Muscle relaxant overdose",
-            "B": "Opioid-induced depression of the respiratory center",
-            "C": "Volatile anesthetic allergy",
-            "D": "Histamine release",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L6PT4WVU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with suspected cervical spine injury requires endotracheal intubation. The preferred method is:",
-        "options": {
-            "A": "Direct laryngoscopy with neck extension",
-            "B": "Blind nasal intubation",
-            "C": "Video laryngoscopy with head extension",
-            "D": "Awake fiber-optic bronchoscopic intubation",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WEYTQD6S",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Speedily ETT pass in emergency situation, on auscultation decrease breath sounds on left side of chest",
-        "options": {
-            "A": "Endobronchial intubation",
-            "B": "ETT blockage",
-            "C": "failed intubation",
-            "D": "Unilateral bronchial atresia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KM6EGVCV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "To deliver a precise 25% oxygen concentration, which device is used?",
-        "options": {
-            "A": "Simple mask",
-            "B": "Venturi mask",
-            "C": "Nasal cannula",
-            "D": "Non-rebreather mask",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MUKKTT3V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 40-year-old male is brought to the ER after RTA, he is conscious but complains of severe neck pain and tingling in his hands, A cervical x-ray confirms a cervical injury, After sometimes he experiences difficulty in respiration, during airway management there was difficulty in ETT What is the next best step in this patient?",
-        "options": {
-            "A": "McGrath or LUCAS video laryngoscope",
-            "B": "Direct laryngoscopy",
-            "C": "Cricothyroidectomy",
-            "D": "Nasal intubation with blind technique",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "8HMCPLWG",
         "year": [
             "2025"
@@ -376,6 +268,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8ETSKATB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient under general anesthesia develops shallow breathing and hypoventilation after repeated doses of fentanyl. The most likely cause is:",
+        "options": {
+            "A": "Muscle relaxant overdose",
+            "B": "Opioid-induced depression of the respiratory center",
+            "C": "Volatile anesthetic allergy",
+            "D": "Histamine release",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L6PT4WVU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with suspected cervical spine injury requires endotracheal intubation. The preferred method is:",
+        "options": {
+            "A": "Direct laryngoscopy with neck extension",
+            "B": "Blind nasal intubation",
+            "C": "Video laryngoscopy with head extension",
+            "D": "Awake fiber-optic bronchoscopic intubation",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -511,6 +457,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WEYTQD6S",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Speedily ETT pass in emergency situation, on auscultation decrease breath sounds on left side of chest",
+        "options": {
+            "A": "Endobronchial intubation",
+            "B": "ETT blockage",
+            "C": "failed intubation",
+            "D": "Unilateral bronchial atresia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KM6EGVCV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "To deliver a precise 25% oxygen concentration, which device is used?",
+        "options": {
+            "A": "Simple mask",
+            "B": "Venturi mask",
+            "C": "Nasal cannula",
+            "D": "Non-rebreather mask",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

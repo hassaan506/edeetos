@@ -54,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "PSVRL38X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Respiratory System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A mother is a known case of cystic fibrosis and the father is normal. What happens to the children?",
+        "options": {
+            "A": "All are normal",
+            "B": "All are carriers",
+            "C": "25% affected",
+            "D": "25% carriers",
+            "E": "50% affected"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MHPV84RT",
         "year": [
             "2026"
@@ -159,33 +186,6 @@
         },
         "correctAnswer": "C",
         "explanation": "Thalassemia is globally recognized as one of the most widespread autosomal recessive blood disorders.",
-        "hint": ""
-    },
-    {
-        "id": "PSVRL38X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Respiratory System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A mother is a known case of cystic fibrosis and the father is normal. What happens to the children?",
-        "options": {
-            "A": "All are normal",
-            "B": "All are carriers",
-            "C": "25% affected",
-            "D": "25% carriers",
-            "E": "50% affected"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
         "hint": ""
     }
 ]

@@ -1,179 +1,80 @@
 [
     {
-        "id": "H7LSGCKG",
+        "id": "7ZMFURA3",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A boy presents with fatigue, easy bruising, and recurrent infections for 3 weeks. Examination shows pallor, petechiae, and mild gingival bleeding. Labs show pancytopenia with circulating blasts. What is the most likely diagnosis?",
-        "options": {
-            "A": "Acute myeloid leukemia (AML)",
-            "B": "Chronic myeloid leukemia (CML)",
-            "C": "Acute lymphoblastic leukemia (ALL)",
-            "D": "Aplastic anemia",
-            "E": "Iron deficiency anemia"
-        },
-        "correctAnswer": "C",
-        "explanation": "The rapid onset (3 weeks) of symptoms related to pancytopenia (fatigue/pallor from anemia, bruising/petechiae from thrombocytopenia, infections from neutropenia) combined with the presence of circulating blasts points to an Acute Leukemia. In a young boy, Acute Lymphoblastic Leukemia (ALL) is the most common type of acute leukemia and is therefore the most likely diagnosis.",
-        "hint": ""
-    },
-    {
-        "id": "4TKZMMBV",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
             "Medicine & Allied"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 5 - Morning",
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female present with menorrhagia and mucosal bleeding. Laboratory investigations show: increased bleeding time (BT), normal PT and APTT, and markedly decreased von Willebrand factor (vWF) levels. Which of the following processes is primarily affected?",
-        "options": {
-            "A": "Platelet adhesion",
-            "B": "Platelet aggregation",
-            "C": "Fibrin formation",
-            "D": "Coagulation Cascade",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The primary function of von Willebrand factor (vWF) is in platelet adhesion: Platelet Adhesion: This is the first step in forming a platelet plug, where platelets stick to the damaged blood vessel wall. vWF mediates this initial sticking. Therefore, low vWF directly impairs adhesion, leading to a prolonged bleeding time (BT). Platelet Aggregation: This is the second step, where platelets stick to other platelets to build up the plug. This is primarily mediated by Fibrinogen binding to the platelet GPIIb/IIIa receptor, not vWF.",
-        "hint": ""
-    },
-    {
-        "id": "VNK9BSJA",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning",
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with fatigue, pallor, and jaundice. Peripheral blood smear shows schistocytes. What is the most likely diagnosis?",
-        "options": {
-            "A": "Hemolytic anemia",
-            "B": "Iron deficiency anemia",
-            "C": "Megaloblastic anemia",
-            "D": "Aplastic anemia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6ZM2HNN2",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 09 - Afternoon",
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young boy having mass in neck biopsy of lymph node shows effaces architecture atypical mononucleosis cell with bilobed nucleus and eosinophilia and CD 15 and CD 30 positive diagnose is:",
-        "options": {
-            "A": "Non Hodgkin lymphoma",
-            "B": "Hodgkin lymphoma",
-            "C": "T cell leukemia",
-            "D": "Infectious mononucleosis",
-            "E": "Burkitt lymphoma"
-        },
-        "correctAnswer": "B",
-        "explanation": "Reed Sternberg cell is variety of Hodgking lymphoma having Bilobe cell and CD 15 and CD 30 positive.",
-        "hint": ""
-    },
-    {
-        "id": "8LVS47BU",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night",
             "Medicine - 08/25 - August 6 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Snake venom commonly contains which of the following enzymes?",
+        "question": "A 10 year old child presents with anemia, jaundice, and splenomegaly. Peripheral smear shows spherocytes. Deficiency of which red blood cell membrane protein is most commonly responsible?",
         "options": {
-            "A": "Hyaluronidase only...",
-            "B": "Phospholipase A2 only...",
-            "C": "Hyaluronidase + Phospholipase A2...",
-            "D": "Hyaluronidase + Catalase...",
-            "E": "Lipase only"
+            "A": "Ankyrin",
+            "B": "Band 3 protein",
+            "C": "Spectrin",
+            "D": "Protein 4.1",
+            "E": "Glycophorin"
         },
         "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
     {
-        "id": "H3GCBNSU",
+        "id": "2JB79KPC",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Medicine - 08/25 - August 6 - Morning",
-            "Gynecology - 01/26 - January 6 - Morning"
+            "Gynecology - 08/25 - August 6 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A 32 year old man presents with fatigue, easy bruising, and recurrent infections. CBC shows pancytopenia. Peripheral smear reveals large myeloblast with abundant cytoplasm and needle-shaped azurophilic inclusions. Which of the following is the most likely diagnosis?",
+        "question": "A 10 years old child presents with anemia, jaundice, and splenomegaly. Peripheral smear shows spherocytes. Deficiency of which red blood cell membrane protein is most commonly responsible?",
         "options": {
-            "A": "Acute lymphoblastic leukemia (ALL)",
-            "B": "Acute myeloid leukemia (AML)",
-            "C": "Chronic myeloid leukemia (CML)",
-            "D": "Chronic lymphocytic leukemia (CLL)",
-            "E": "Myelodysplastic syndrome"
+            "A": "Ankyrin",
+            "B": "Band 3 protein",
+            "C": "Spectrin",
+            "D": "Protein 4.1",
+            "E": "Glycophorin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "89WKU4FQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 12 year old boy has severe anemia with low hemoglobin, low MCV, and normal ferritin levels. Peripheral blood smear shows prickle cells and basophilic stippling. What is the most likely diagnosis?",
+        "options": {
+            "A": "Iron deficiency anemia",
+            "B": "Beta-thalassemia major",
+            "C": "Sideroblastic anemia",
+            "D": "Hereditary spherocytosis",
+            "E": "Vitamin B12 deficiency"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -204,6 +105,33 @@
         },
         "correctAnswer": "B",
         "explanation": "(Sickl cell anemia )",
+        "hint": ""
+    },
+    {
+        "id": "E8GMBU9Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 14 year old boy presents with pallor, jaundice, and splenomegaly. Peripheral smear shows spherocytes, and osmotic fragility test is positive. Which of the following proteins is most likely defective?",
+        "options": {
+            "A": "Ankyrin",
+            "B": "Spectrin",
+            "C": "Band 3 protein",
+            "D": "Glycophorin",
+            "E": "Actin"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -257,6 +185,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YHF35AWQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 15-year-old patient has history of pallor, weakness and recurrent fever. Investigation shows Translocation (t15:17). Which of the following is WHO classification?",
+        "options": {
+            "A": "Acute lymphocytic leukemia minimally differentiated",
+            "B": "Acute lymphocytic leukemia undifferentiated",
+            "C": "Acute promyelocytic leukemia",
+            "D": "Aplastic anemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6USVUSMZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 15-year-old patient presents with pallor, weakness, and fever. Laboratory tests reveal a t(15;17) translocation. According to the WHO classification, what is the most likely diagnosis?",
+        "options": {
+            "A": "Acute lymphoblastic leukemia, minimally differentiated",
+            "B": "Acute lymphoblastic leukemia, undifferentiated",
+            "C": "Acute promyelocytic leukemia (APL)",
+            "D": "Acute myeloblastic leukemia without maturation",
+            "E": "Chronic myeloid leukemia"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -396,6 +378,33 @@
         "hint": ""
     },
     {
+        "id": "UKKSZT24",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old man with a history of G6PD deficiency presents with symptoms of hemolysis three months after treatment for malaria. What is the likely cause of his hemolytic episode?",
+        "options": {
+            "A": "Oxidative stress from antimalarial drugs",
+            "B": "Viral infection",
+            "C": "Iron overload",
+            "D": "Autoimmune reaction",
+            "E": "Folate deficiency"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MY4A3F57",
         "year": [
             "2026"
@@ -419,6 +428,60 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BKS6NH2Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28 year old woman presents with weight loss, tremors, palpitation and protrusion of eyes (exophthalmos) which of the following is most likely diagnosis?",
+        "options": {
+            "A": "Hashimoto's thyroiditis",
+            "B": "Hashimoto's thyroiditis",
+            "C": "Toxic multinodular goiter",
+            "D": "Grave's disease",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QCZT2RGN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old patient presents with fatigue and pallor. Peripheral smear shows small, round basophilic inclusions within red blood cells. These inclusions are known as Howell-Jolly bodies. In which condition are they commonly seen?",
+        "options": {
+            "A": "Megaloblastic anemia",
+            "B": "Hyposplenism or asplenia",
+            "C": "Hemolytic anemia",
+            "D": "Iron deficiency anemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -477,6 +540,36 @@
         "hint": ""
     },
     {
+        "id": "H3GCBNSU",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning",
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32 year old man presents with fatigue, easy bruising, and recurrent infections. CBC shows pancytopenia. Peripheral smear reveals large myeloblast with abundant cytoplasm and needle-shaped azurophilic inclusions. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Acute lymphoblastic leukemia (ALL)",
+            "B": "Acute myeloid leukemia (AML)",
+            "C": "Chronic myeloid leukemia (CML)",
+            "D": "Chronic lymphocytic leukemia (CLL)",
+            "E": "Myelodysplastic syndrome"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UDA9JCVK",
         "year": [
             "2026"
@@ -498,6 +591,33 @@
             "C": "Metastatic gastric carcinoma",
             "D": "Infectious mononucleosis",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F7XHXZ6V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35 year old woman presents with anemia and splenomegaly. Blood smear shows spherocytes. What is the most likely diagnosis?",
+        "options": {
+            "A": "Hereditary spherocytosis",
+            "B": "Autoimmune hemolytic anemia",
+            "C": "Sickle cell anemia",
+            "D": "Thalassemia major",
+            "E": "G6PD deficiency"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -531,6 +651,33 @@
         "hint": ""
     },
     {
+        "id": "CYAUTVDP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old male with easy bruising, mucosal bleeding, thrombocytopenia, prolonged PT and APTT. Which factor is deficient?",
+        "options": {
+            "A": "Factor VII",
+            "B": "Factor II",
+            "C": "Factor VIII",
+            "D": "Factor IV",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DFV4UC6H",
         "year": [
             "2026"
@@ -555,6 +702,61 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CG5HAGK4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 47 year old male patient presents in OPD with fever, night sweats and unexplained weight loss from past 3 months. On examination there was painless bilateral cervical and inguinal lymphadenopathy. A PET CT scan reveal lymp node involvement on both sides of diaphragm, with enlargement of spleen and diagnosed as a case of hodgkin lymphoma. Which of the following is most liikely the stage of Hodgkin lymphoma?",
+        "options": {
+            "A": "Stage I",
+            "B": "Stage II",
+            "C": "Stage III",
+            "D": "Stage IV",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HZFJ93MA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 47-year-old male patient presents in OPD with fever, night sweats and unexplained weight loss from past 3 months on examination there was painless bilateral cervical and inguinal lymphadenopathy. A PET-CT scan reveals lymph node involvement on both sides of the diaphragm, but no extranodal disease, diagnose as a case of Hodgkin lymphoma, which of the following is the most likely stage of Hodgkin lymphoma?",
+        "options": {
+            "A": "Stage I",
+            "B": "Stage II",
+            "C": "Stage III",
+            "D": "Stage IV",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Clinical stages of Hodgkin Lymphoma (Ann Arbor classification). Stage I= Involvement of a single lymph node region or extralymphatic site. Stage II= Involvement of two or more lymph node region or an extralymphatic site and lymph node regions on the same side of (above or below) the diaphragm. Stage III= Involvement of lymph node regions on both sides of the diaphragm with or without localized extralymphatic involvement of the spleen or both. Stage IV= Diffuse involvement of one or more extralymphatic tissues, e.g. liver or bone marrow",
         "hint": ""
     },
     {
@@ -585,6 +787,60 @@
         "hint": ""
     },
     {
+        "id": "8CR6LKC7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old man presents with headache, dizziness, pruritus after hot showers, and a ruddy complexion. On examination, his spleen is palpable. Blood tests show elevated hemoglobin and hematocrit. Bone marrow biopsy reveals hypercellularity. What is the most likely mutation responsible for his condition of polycythemia rubra vera?",
+        "options": {
+            "A": "JAK2",
+            "B": "BCR-ABL",
+            "C": "CALR",
+            "D": "MPL",
+            "E": "TP53"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "68M3S3BD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58 year old man presents with headache, pruritus, and ruddy complexion. Laboratory investigations suggest polycythemia vera. Which of the following laboratory findings is most consistent with this condition?",
+        "options": {
+            "A": "↓ erythropoietin, ↓ RBC mass",
+            "B": "↑ erythropoietin, ↑ RBC mass",
+            "C": "↓ erythropoietin, ↑ RBC mass",
+            "D": "↑ erythropoietin, ↓ RBC mass",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "VZ3QEKG2",
         "year": [
             "2026"
@@ -609,6 +865,115 @@
         },
         "correctAnswer": "B",
         "explanation": "Malignant lymphomas disrupt normal lymph node architecture and often show features of invasion (such as through the capsule into surrounding adipose tissue), unlike reactive follicular hyperplasia which preserves node structure, shows tingible body macrophages, and maintains intact architectural boundaries.",
+        "hint": ""
+    },
+    {
+        "id": "P5TGC64M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58-year-old man presents with fatigue, weight loss, and macroglossia. Serum electrophoresis shows monoclonal light chains. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Primary systemic amyloidosis",
+            "B": "Secondary systemic amyloidosis",
+            "C": "Senile cardiac amyloidosis",
+            "D": "Islet amyloid polypeptide deposition",
+            "E": "Dialysis-related amyloidosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JVN7NU44",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58-year-old man presents with progressive fatigue, night sweats, and unintentional weight loss for 3 months. Examination shows generalized lymphadenopathy and moderate hepatosplenomegaly. CBC: Anemia, normal WBC count, mild thrombocytopenia. Peripheral smear: Atypical large lymphoid cells. LDH: Markedly elevated. Excisional lymph node biopsy: Monoclonal B-cell population. What is the most likely diagnosis?",
+        "options": {
+            "A": "Acute lymphoblastic leukemia",
+            "B": "Diffuse large B-cell lymphoma",
+            "C": "Chronic myeloid leukemia",
+            "D": "Hodgkin lymphoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EC3KJXJQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58-year-old patient has mature, prominent lymphocytes on peripheral smear and splenomegaly. What is the most likely chromosomal anomaly?",
+        "options": {
+            "A": "t(9;22)",
+            "B": "t(14;8)",
+            "C": "t(11;14)",
+            "D": "t(11;15)",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The clinical picture of a 58-year-old with prominent mature lymphocytes and splenomegaly suggests a Chronic Lymphocytic Leukemia (CLL) or another mature B-cell malignancy like Mantle Cell Lymphoma (MCL) characterized by the translocation t(11;14) involving the BCL1 gene.",
+        "hint": ""
+    },
+    {
+        "id": "NVE5GKP8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning",
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 5-day-old newborn develops persistent bleeding from the umbilical stump despite normal platelet count and normal PT & aPTT. Which factor is most likely deficient?",
+        "options": {
+            "A": "Factor VIII",
+            "B": "Factor IX",
+            "C": "Factor XIII",
+            "D": "von Willebrand factor",
+            "E": "Factor VII"
+        },
+        "correctAnswer": "C",
+        "explanation": "Factor XIII cross-links fibrin to stabilize clots; deficiency causes prolonged bleeding with normal PT & aPTT.",
         "hint": ""
     },
     {
@@ -722,6 +1087,60 @@
         "hint": ""
     },
     {
+        "id": "CD92KBWX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 64 years old female with fatigue, easy bruisability after small cuts and recurrent infection alongside fever for 2 weeks. After investigations the report shows blast cells and Auer bodies in smear. What is the likely diagnosis?",
+        "options": {
+            "A": "Acute promyelocytic leukemia",
+            "B": "Acute lymphoblastic leukemia",
+            "C": "Acute myeloid leukemia",
+            "D": "Non Hodgkin lymphoma",
+            "E": "Aplastic anemia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QHNW9J8K",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 64-year-old man is diagnosed with chronic myeloid leukemia. Cytogenetic analysis reveals the presence of the Philadelphia chromosome. Which genetic abnormality does this represent?",
+        "options": {
+            "A": "t(9;22) BCR-ABL fusion",
+            "B": "t(8;14) MYC activation",
+            "C": "t(15;17) PML-RARA fusion",
+            "D": "t(14;18) BCL2 activation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "CML: Peak incidence: 45-85 years; median age: 64 years. Philadelphia chromosome (t[9;22]), BCR-ABL. Massive Splenomegaly, Basophilia. Very low leukocyte alkaline phosphatase (LAP) vs High LAP in leukemoid reaction.",
+        "hint": ""
+    },
+    {
         "id": "APEBWTHY",
         "year": [
             "2026"
@@ -803,6 +1222,33 @@
         "hint": ""
     },
     {
+        "id": "Z9L2ZNE9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy came with history of Fever & Fatigue. O/E, cervical lymphadenopathy and splenomegaly found. Microscopic examination reveals Distinct Lymphoid tissue infiltrated by lymphocytes and plasma cells which are matured in thymus with Lymphoblast cells. Most probable Diagnosis?",
+        "options": {
+            "A": "Infectious mononucleosis",
+            "B": "T-cell leukemia",
+            "C": "Acute Leukemia",
+            "D": "Lymphoblastic Cell Proliferation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7YHVH23B",
         "year": [
             "2026"
@@ -859,6 +1305,36 @@
         "hint": ""
     },
     {
+        "id": "H7LSGCKG",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A boy presents with fatigue, easy bruising, and recurrent infections for 3 weeks. Examination shows pallor, petechiae, and mild gingival bleeding. Labs show pancytopenia with circulating blasts. What is the most likely diagnosis?",
+        "options": {
+            "A": "Acute myeloid leukemia (AML)",
+            "B": "Chronic myeloid leukemia (CML)",
+            "C": "Acute lymphoblastic leukemia (ALL)",
+            "D": "Aplastic anemia",
+            "E": "Iron deficiency anemia"
+        },
+        "correctAnswer": "C",
+        "explanation": "The rapid onset (3 weeks) of symptoms related to pancytopenia (fatigue/pallor from anemia, bruising/petechiae from thrombocytopenia, infections from neutropenia) combined with the presence of circulating blasts points to an Acute Leukemia. In a young boy, Acute Lymphoblastic Leukemia (ALL) is the most common type of acute leukemia and is therefore the most likely diagnosis.",
+        "hint": ""
+    },
+    {
         "id": "VUQKMRUZ",
         "year": [
             "2026"
@@ -882,6 +1358,60 @@
             "E": "Clotting time"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "V9LGB73J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with hepatosplenomegaly and pancytopenia Histopathology reveals \"crumbled tissue paper appearance\". It is due to accumulation of:",
+        "options": {
+            "A": "Glucocerebroside",
+            "B": "Sphingomyelinase",
+            "C": "Ganglioside",
+            "D": "Galactocerebroside",
+            "E": "Alpha 1_4 amylase"
+        },
+        "correctAnswer": "A",
+        "explanation": "Gaucher disease results from lack of the lysosomal enzyme glucocerebrosidase and accumulation of glucocerebroside in mononuclear phagocytic cells. In the most common type I variant, affected phagocytes become enlarged (Gaucher cells) and accumulate in liver, spleen, and bone marrow, causing hepatosplenomegaly and bone erosion. These phagocytes become enlarged acquire a pathognomonic cytoplasmic appearance characterized as \"wrinkled tissue paper\"",
+        "hint": ""
+    },
+    {
+        "id": "C8ZME99R",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child was presented to the hospital. His mother told about previous throat infection for which he was given a syrup containing sulfonamides. Now his lab findings show increased bilirubin, Heinz bodies and hemolysis. What deficiency could be the cause of his disease?",
+        "options": {
+            "A": "Pyruvate kinase deficiency",
+            "B": "G6PD deficiency",
+            "C": "Glutathione peroxidase deficiency",
+            "D": "Alpha-glucosidase deficiency",
+            "E": "Lactase deficiency"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -969,6 +1499,91 @@
         "hint": ""
     },
     {
+        "id": "CGT849X2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A diagnostic test that differentiates between T cells and B cell lymphomas by detecting specific surface markers is called the:",
+        "options": {
+            "A": "Tenesmus test",
+            "B": "NBT test",
+            "C": "Casoni's test",
+            "D": "RPMI test",
+            "E": "T cell receptor gene rearrangement"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HRK2SJVN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female Patient present with fatigue, easy bruisibility after small cuts and recurrent infection alongside fever from 2 weeks. After investigations the report shows blast cells, Ayer rods and Promyelocyte in smear. Suspected Diagnose is indicated by which translocation",
+        "options": {
+            "A": "09:22",
+            "B": "08:14",
+            "C": "11:14",
+            "D": "15:17",
+            "E": "14:18"
+        },
+        "correctAnswer": "D",
+        "explanation": "(Robins)-AML. AML - 8:21 and 15:17. CML - 9:22. Burkitt Lymphoma - 8:14. Mantle Cell lymphoma - 11:14. Follicular Lymphoma - 14:18. Ewing Sarcoma - 11:22. Prostatic Carcinoma - 7:21 and 17:21.",
+        "hint": ""
+    },
+    {
+        "id": "4TKZMMBV",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning",
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female present with menorrhagia and mucosal bleeding. Laboratory investigations show: increased bleeding time (BT), normal PT and APTT, and markedly decreased von Willebrand factor (vWF) levels. Which of the following processes is primarily affected?",
+        "options": {
+            "A": "Platelet adhesion",
+            "B": "Platelet aggregation",
+            "C": "Fibrin formation",
+            "D": "Coagulation Cascade",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The primary function of von Willebrand factor (vWF) is in platelet adhesion: Platelet Adhesion: This is the first step in forming a platelet plug, where platelets stick to the damaged blood vessel wall. vWF mediates this initial sticking. Therefore, low vWF directly impairs adhesion, leading to a prolonged bleeding time (BT). Platelet Aggregation: This is the second step, where platelets stick to other platelets to build up the plug. This is primarily mediated by Fibrinogen binding to the platelet GPIIb/IIIa receptor, not vWF.",
+        "hint": ""
+    },
+    {
         "id": "EWV4699J",
         "year": [
             "2026"
@@ -1046,6 +1661,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7Q3CTVNM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A male presented with fever of 104°F for 4 days and cola-colored urine for 1 day, deranged LFTs, increased unconjugated bilirubin. Bite cells seen on smear. What is the cause?",
+        "options": {
+            "A": "G6PD deficiency",
+            "B": "Blackwater fever",
+            "C": "Drug-induced jaundice",
+            "D": "Paroxysmal nocturnal hemoglobinuria",
+            "E": "Hemolytic uremic syndrome"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1212,6 +1854,33 @@
         "hint": ""
     },
     {
+        "id": "RUVHUTBC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has a hemoglobin of 6 g/dL with a normal mean corpuscular volume (MCV) and peripheral blood smear showing basophilic stippling. What is the most likely diagnosis?",
+        "options": {
+            "A": "Hemolytic anemia",
+            "B": "G6PD deficiency",
+            "C": "Lead poisoning",
+            "D": "Iron deficiency anemia",
+            "E": "Megaloblastic anemia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "E9GXBNJ6",
         "year": [
             "2026"
@@ -1263,6 +1932,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LNFT3FF3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has fever, weight loss, and WBC count 70,000/mm3. Peripheral smear shows immature myeloid blasts. Which translocation is commonly associated?",
+        "options": {
+            "A": "11:14",
+            "B": "09:22",
+            "C": "08:21",
+            "D": "15:17",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "(8;21) -> AML subtype.",
         "hint": ""
     },
     {
@@ -1319,6 +2015,33 @@
         },
         "correctAnswer": "A",
         "explanation": "BCL-2 is an anti-apoptotic protein. It prevents mitochondrial release of cytochrome c. This inhibits activation of the intrinsic apoptotic pathway.",
+        "hint": ""
+    },
+    {
+        "id": "B6FB7ZQ3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is diagnosed with G6PD deficiency. This X-linked condition causes chronic oxidative stress in red blood cells. Which clinical presentation is characteristic of this disorder?",
+        "options": {
+            "A": "Autoimmune hemolysis",
+            "B": "Drug-induced hemolytic anemia",
+            "C": "Thrombocytopenia",
+            "D": "Favism",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1594,6 +2317,36 @@
         "hint": ""
     },
     {
+        "id": "VNK9BSJA",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning",
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with fatigue, pallor, and jaundice. Peripheral blood smear shows schistocytes. What is the most likely diagnosis?",
+        "options": {
+            "A": "Hemolytic anemia",
+            "B": "Iron deficiency anemia",
+            "C": "Megaloblastic anemia",
+            "D": "Aplastic anemia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UXLPXV7L",
         "year": [
             "2026"
@@ -1783,6 +2536,33 @@
         "hint": ""
     },
     {
+        "id": "TB7JYDBS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient receiving multiple platelet transfusions develops platelet refractoriness. Which of the following is the most common cause?",
+        "options": {
+            "A": "HLA",
+            "B": "IgA antibodies",
+            "C": "ABO incompatibility",
+            "D": "Rh Incompatibility",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "6QVHAH7P",
         "year": [
             "2026"
@@ -1806,6 +2586,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EJD8BYVU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient smear reveal target cells and howel jowel bodies due to",
+        "options": {
+            "A": "Hypersplenism",
+            "B": "Megaloblastic anemia",
+            "C": "Hyposplenism",
+            "D": "Sickle cell",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -1999,6 +2806,89 @@
         "hint": ""
     },
     {
+        "id": "CE2M7RNE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person has blood group AB positive. Which statement best describes this?",
+        "options": {
+            "A": "Has both A and B antigens on the cell surface",
+            "B": "Can give blood to anyone",
+            "C": "Has no Rh antigen",
+            "D": "Has anti-A and anti-B antibodies",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "AB blood group is the classic example of codominance. The red blood cells have both the A antigen and the B antigen. People with AB blood have neither anti-A nor anti-B antibodies in their plasma.",
+        "hint": ""
+    },
+    {
+        "id": "6ZM2HNN2",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 09 - Afternoon",
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young boy having mass in neck biopsy of lymph node shows effaces architecture atypical mononucleosis cell with bilobed nucleus and eosinophilia and CD 15 and CD 30 positive diagnose is:",
+        "options": {
+            "A": "Non Hodgkin lymphoma",
+            "B": "Hodgkin lymphoma",
+            "C": "T cell leukemia",
+            "D": "Infectious mononucleosis",
+            "E": "Burkitt lymphoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "Reed Sternberg cell is variety of Hodgking lymphoma having Bilobe cell and CD 15 and CD 30 positive.",
+        "hint": ""
+    },
+    {
+        "id": "DJ2LUCEL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young patient with anemia is diagnosed with hereditary spherocytosis. Which cytoskeletal protein is primarily defective in this condition?",
+        "options": {
+            "A": "Ankyrin",
+            "B": "Spectrin",
+            "C": "Actin",
+            "D": "Myosin",
+            "E": "Dystrophin"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "9J9WUZMF",
         "year": [
             "2026"
@@ -2053,6 +2943,33 @@
         "hint": ""
     },
     {
+        "id": "PTF9WTLU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "ALL markers is which of following?",
+        "options": {
+            "A": "CD 8",
+            "B": "CD 18",
+            "C": "CD 10",
+            "D": "CD 30",
+            "E": "CD 22"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UDPWCNG3",
         "year": [
             "2026"
@@ -2080,6 +2997,141 @@
         "hint": ""
     },
     {
+        "id": "V6GFCSA5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An individual with AB blood type possesses which combination of antigens on the surface of their red blood cells?",
+        "options": {
+            "A": "Only A antigens",
+            "B": "Neither A nor B antigens",
+            "C": "Only B antigens",
+            "D": "Both A & B antigens",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Type AB blood is characterized by the presence of both the A and B surface antigens on the membrane, and neither anti-A nor Anti-B antibodies in the plasma.",
+        "hint": ""
+    },
+    {
+        "id": "ACQU3XNS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anemia associated with the finding of prickle cells on a peripheral blood smear, often due to altered red blood cell energy metabolism, is a hallmark of which deficiency?",
+        "options": {
+            "A": "Glucose-6-Phosphate Dehydrogenase Deficiency",
+            "B": "Pyruvate Kinase Deficiency",
+            "C": "Hemoglobin S Disease",
+            "D": "B12 Deficiency",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Pyruvate Kinase deficiency leads to insufficient ATP production, resulting in membrane failure and the formation of acanthocytes (prickle cells), which are prematurely cleared by the spleen.",
+        "hint": ""
+    },
+    {
+        "id": "HQDRWQKK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anemia in thalassemia is due to",
+        "options": {
+            "A": "Abnormal hemoglobinopathy",
+            "B": "Ineffective erythropoiesis",
+            "C": "Abnormal HbS",
+            "D": "Increase alpha genes",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CA6GTNP3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anti phospholipid characteristics Is",
+        "options": {
+            "A": "Anti Russel venom",
+            "B": "Anti parietal venom",
+            "C": "Bleeding tendency",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NNSADZFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Auer rods and immature granulocytes are seen in which of the following condition",
+        "options": {
+            "A": "polycythemia rubra vera",
+            "B": "CML",
+            "C": "ALL",
+            "D": "CLL",
+            "E": "AML"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "5E77XBTS",
         "year": [
             "2026"
@@ -2103,6 +3155,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZRUX5CKJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Auer rods are seen in which of the following condition",
+        "options": {
+            "A": "polycythemia rubra vera",
+            "B": "CML",
+            "C": "ALL",
+            "D": "CLL",
+            "E": "AML"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PT4EVC93",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Basophilic stippling is seen in",
+        "options": {
+            "A": "Sideroblastic anemia",
+            "B": "Iron deficiency anemia",
+            "C": "Lead poisoning",
+            "D": "Thalassemia",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -2242,6 +3348,33 @@
         "hint": ""
     },
     {
+        "id": "FJRTJH6S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "CML chromosomal abnormality:",
+        "options": {
+            "A": "08:21",
+            "B": "09:22",
+            "C": "07:21",
+            "D": "14:18",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HWCXFJVE",
         "year": [
             "2026"
@@ -2263,6 +3396,33 @@
             "C": "Chronic myeloid leukemia (CML)",
             "D": "Chronic lymphocytic leukemia",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6HGF42FX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Deficiency of the enyzme ADAMTS13 is most commonly associated with which of the following conditions?",
+        "options": {
+            "A": "Hemophilia A",
+            "B": "Immune thrombocytopenic purpura",
+            "C": "Thrombotic thrombocytopenic purpura",
+            "D": "Disseminated intravascular coagulation",
+            "E": "Von willebrand disease"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -2296,6 +3456,33 @@
         "hint": ""
     },
     {
+        "id": "NK2EFYAJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "DIC is consequence of",
+        "options": {
+            "A": "Septic shock",
+            "B": "Endotoxic shock",
+            "C": "Cardiogenic shock",
+            "D": "Hypovolumic shock",
+            "E": "Neurogenic shock"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "3VUZF6Y4",
         "year": [
             "2026"
@@ -2323,6 +3510,33 @@
         "hint": ""
     },
     {
+        "id": "56PURYXP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Duffy antibodies investigation:",
+        "options": {
+            "A": "Normal temperature saline",
+            "B": "Polyethylene glycol",
+            "C": "Polygeline something",
+            "D": "RBCs & papain stain",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HAGJBZ5P",
         "year": [
             "2026"
@@ -2347,6 +3561,90 @@
         },
         "correctAnswer": "B",
         "explanation": "Factor V Leiden causes a mutated Factor V molecule that resists inactivation by Activated Protein C (APC resistance), creating a hypercoagulable state that significantly raises the risk of deep vein thrombosis (DVT) and pulmonary embolism (PE).",
+        "hint": ""
+    },
+    {
+        "id": "35FPLG8P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Haemolytic disease of new-born is associated with",
+        "options": {
+            "A": "Direct combs test positive with raised IgG",
+            "B": "Indirect combs test positive with raised IgG",
+            "C": "Both IgG and IgM raised",
+            "D": "Direct combs test positive with raised IgM",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2Z7HSBSD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Heinz bodies and Bite Cells present in:",
+        "options": {
+            "A": "Sickle cell anemia",
+            "B": "G6PD",
+            "C": "Hemolytic anemia",
+            "D": "Thalassemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RLPS4CCZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Heinz bodies are found in:",
+        "options": {
+            "A": "Hereditary spherocytosis",
+            "B": "G6PD deficiency",
+            "C": "Pyruvate kinase deficiency",
+            "D": "Cirrhosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -2400,6 +3698,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RXCBAFEZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hereditary spherocytosis defective protein is which of following?",
+        "options": {
+            "A": "Fibrillin",
+            "B": "Titin",
+            "C": "Dystrophin",
+            "D": "Spectrin",
+            "E": "Band 3"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -2568,2011 +3893,6 @@
         "hint": ""
     },
     {
-        "id": "KKCPR3LV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Known patient of arthritis using drugs for 8 to 9 months presents with HB11g/dl, MCV 101fl, MCH = 30, bone marrow biopsy shows hyper cellular",
-        "options": {
-            "A": "Aplastic anemia",
-            "B": "Megaloblastic anemia",
-            "C": "Leukemia",
-            "D": "Lymphoma",
-            "E": "Sideroblastic anemia"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "45N6P97C",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Megaloblastic anemia, characterized by macrocytic RBCs and hypersegmented neutrophils, is primarily caused by a deficiency in",
-        "options": {
-            "A": "Iron",
-            "B": "B12/folate",
-            "C": "Vitamin C",
-            "D": "Vitamin D",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XV8PAS5U",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Osmotic fragility test is positive, indicating hereditary spherocytosis (HS). Which protein is most likely defective?",
-        "options": {
-            "A": "Spectrin",
-            "B": "Actin",
-            "C": "Hemoglobin",
-            "D": "Ankyrin only",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JLBH9N7E",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient has anisocytosis, poikilocytosis, and sickle-shaped RBCs. Sickling is enhanced by:",
-        "options": {
-            "A": "Hypertension",
-            "B": "Dehydration",
-            "C": "Hypoxia",
-            "D": "Anemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KZ8BK24Y",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient of factor v leiden mutations has inc risk of",
-        "options": {
-            "A": "Arterial thrombosis",
-            "B": "Veinous thrombosis",
-            "C": "Infarction",
-            "D": "Thrombosis if she takes ocps",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JG2P76YT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient started warfarin has petechiae and ecchymosis due to deficiency of:",
-        "options": {
-            "A": "Protein M",
-            "B": "Protein C deficiency",
-            "C": "Factor 10",
-            "D": "Factor 9",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "S89W4GND",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Reed-Sternberg cells are a hallmark of which malignancy?",
-        "options": {
-            "A": "Non-Hodgkin lymphoma",
-            "B": "Hodgkin lymphoma",
-            "C": "Leukemia",
-            "D": "Multiple myeloma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "46QNTXV4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Sickle cell crises worsened due to:",
-        "options": {
-            "A": "Infection",
-            "B": "Hypoxia",
-            "C": "Dehydration",
-            "D": "All of the above",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MBM3FZNA",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Sickling of red blood cells occurs most commonly under which condition?",
-        "options": {
-            "A": "Hypoxia",
-            "B": "Dehydration",
-            "C": "Antibiotic use",
-            "D": "Hypercalcemia",
-            "E": "Alkalosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "R5CPQHQL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Snake bite patient later develops hemoptysis and dyspnea. Toxin responsible:",
-        "options": {
-            "A": "Coagulase",
-            "B": "Hyaluronidase",
-            "C": "Proteases",
-            "D": "Metalloproteinases",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MX2UGET4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Starry sky appearance on histology is characteristic of:",
-        "options": {
-            "A": "Burkitt lymphoma",
-            "B": "Hodgkin lymphoma",
-            "C": "Multiple myeloma",
-            "D": "Acute lymphoblastic leukemia",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AQNKA2RG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Starry-sky appearance is classically associated with:",
-        "options": {
-            "A": "CLL",
-            "B": "Multiple myeloma",
-            "C": "Hodgkin lymphoma",
-            "D": "Burkitt lymphoma",
-            "E": "CML"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CDSE5C9K",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The Myc gene alteration is characteristically associated with which condition ?",
-        "options": {
-            "A": "Follicular lymphoma",
-            "B": "Burkitt lymphoma",
-            "C": "Hodgkin lymphoma",
-            "D": "Mantle cell lymphoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Translocation: Characterized by t(8;14), which moves the c-myc proto-oncogene next to the heavy-chain immunoglobulin locus. Histology: Distinctive \"starry-sky\" appearance, where tingible body macrophages (the stars) eat apoptotic tumor cells (the sky) .Viral Link: Highly associated with Epstein-Barr Virus (EBV) infection.",
-        "hint": ""
-    },
-    {
-        "id": "QVP9X7ES",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 10 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The Philadelphia chromosome t(9;22) is characteristically associated with which disease?",
-        "options": {
-            "A": "Acute lymphoblastic leukemia",
-            "B": "Chronic lymphocytic leukemia",
-            "C": "Chronic myeloid leukemia",
-            "D": "Multiple myeloma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LL87HZ8B",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Translocation between which of the following chromosomes in Burkitt lymphoma?",
-        "options": {
-            "A": "t(9;22)",
-            "B": "t(14;18)",
-            "C": "t(8;14)",
-            "D": "t(11;14)",
-            "E": "t(15;17)"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3Z3Z9Y4G",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Von Willebrand disease is primarily associated with a defect in:",
-        "options": {
-            "A": "Platelet adhesion",
-            "B": "Platelet aggregation",
-            "C": "Coagulation factor IX",
-            "D": "Fibrin polymerization",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JR4AAWMD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Von Willebrand disease primarily causes a defect in which process?",
-        "options": {
-            "A": "Platelet adhesion",
-            "B": "Platelet aggregation",
-            "C": "Platelet secretion",
-            "D": "Secondary coagulation",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TWPHHB6A",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "vWF deficiency cases:",
-        "options": {
-            "A": "Defective platelet adhesion",
-            "B": "Defective platelet aggregation",
-            "C": "Coagulation factor deficiency",
-            "D": "Vitamin K deficiency",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P7J2HGVP",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the diagnosis for a boy presenting with Heinz bodies, dark urine, and jaundice following sulfonamide therapy?",
-        "options": {
-            "A": "Hereditary spherocytosis",
-            "B": "Autoimmune hemolytic anemia",
-            "C": "G6PD deficiency",
-            "D": "Thalassemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FLHUYTG8",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the most common cause of a prolonged bleeding time?",
-        "options": {
-            "A": "Hemophilia A",
-            "B": "Thrombocytopenia",
-            "C": "Vitamin K deficiency",
-            "D": "VWD",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9JL364U7",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which chromosomal translocation is the hallmark of Chronic Myeloid Leukemia (CML)?",
-        "options": {
-            "A": "8;14",
-            "B": "9;22",
-            "C": "14;18",
-            "D": "8;21",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AAT9LLYS",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which laboratory finding is most characteristic of von Willebrand disease?",
-        "options": {
-            "A": "Decreased bleeding time",
-            "B": "Decreased PT",
-            "C": "Increased aPTT",
-            "D": "Increased thrombin time",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MCUMDZ3P",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following chromosomal translocations is the hallmark of Burkitt lymphoma?",
-        "options": {
-            "A": "t(8;14)",
-            "B": "t(22;19)",
-            "C": "t(11;14)",
-            "D": "t(9;22)",
-            "E": "t(14;18)"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ELC5AUHH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which peripheral blood smear finding is characteristic of lead poisoning?",
-        "options": {
-            "A": "Basophilic stippling",
-            "B": "Lead lines",
-            "C": "Ringed sideroblasts",
-            "D": "Howell-Jolly bodies",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7ZMFURA3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 10 year old child presents with anemia, jaundice, and splenomegaly. Peripheral smear shows spherocytes. Deficiency of which red blood cell membrane protein is most commonly responsible?",
-        "options": {
-            "A": "Ankyrin",
-            "B": "Band 3 protein",
-            "C": "Spectrin",
-            "D": "Protein 4.1",
-            "E": "Glycophorin"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2JB79KPC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 10 years old child presents with anemia, jaundice, and splenomegaly. Peripheral smear shows spherocytes. Deficiency of which red blood cell membrane protein is most commonly responsible?",
-        "options": {
-            "A": "Ankyrin",
-            "B": "Band 3 protein",
-            "C": "Spectrin",
-            "D": "Protein 4.1",
-            "E": "Glycophorin"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "89WKU4FQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 12 year old boy has severe anemia with low hemoglobin, low MCV, and normal ferritin levels. Peripheral blood smear shows prickle cells and basophilic stippling. What is the most likely diagnosis?",
-        "options": {
-            "A": "Iron deficiency anemia",
-            "B": "Beta-thalassemia major",
-            "C": "Sideroblastic anemia",
-            "D": "Hereditary spherocytosis",
-            "E": "Vitamin B12 deficiency"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E8GMBU9Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 14 year old boy presents with pallor, jaundice, and splenomegaly. Peripheral smear shows spherocytes, and osmotic fragility test is positive. Which of the following proteins is most likely defective?",
-        "options": {
-            "A": "Ankyrin",
-            "B": "Spectrin",
-            "C": "Band 3 protein",
-            "D": "Glycophorin",
-            "E": "Actin"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YHF35AWQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 15-year-old patient has history of pallor, weakness and recurrent fever. Investigation shows Translocation (t15:17). Which of the following is WHO classification?",
-        "options": {
-            "A": "Acute lymphocytic leukemia minimally differentiated",
-            "B": "Acute lymphocytic leukemia undifferentiated",
-            "C": "Acute promyelocytic leukemia",
-            "D": "Aplastic anemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6USVUSMZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 15-year-old patient presents with pallor, weakness, and fever. Laboratory tests reveal a t(15;17) translocation. According to the WHO classification, what is the most likely diagnosis?",
-        "options": {
-            "A": "Acute lymphoblastic leukemia, minimally differentiated",
-            "B": "Acute lymphoblastic leukemia, undifferentiated",
-            "C": "Acute promyelocytic leukemia (APL)",
-            "D": "Acute myeloblastic leukemia without maturation",
-            "E": "Chronic myeloid leukemia"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UKKSZT24",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old man with a history of G6PD deficiency presents with symptoms of hemolysis three months after treatment for malaria. What is the likely cause of his hemolytic episode?",
-        "options": {
-            "A": "Oxidative stress from antimalarial drugs",
-            "B": "Viral infection",
-            "C": "Iron overload",
-            "D": "Autoimmune reaction",
-            "E": "Folate deficiency"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BKS6NH2Q",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28 year old woman presents with weight loss, tremors, palpitation and protrusion of eyes (exophthalmos) which of the following is most likely diagnosis?",
-        "options": {
-            "A": "Hashimoto's thyroiditis",
-            "B": "Hashimoto's thyroiditis",
-            "C": "Toxic multinodular goiter",
-            "D": "Grave's disease",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QCZT2RGN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28-year-old patient presents with fatigue and pallor. Peripheral smear shows small, round basophilic inclusions within red blood cells. These inclusions are known as Howell-Jolly bodies. In which condition are they commonly seen?",
-        "options": {
-            "A": "Megaloblastic anemia",
-            "B": "Hyposplenism or asplenia",
-            "C": "Hemolytic anemia",
-            "D": "Iron deficiency anemia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F7XHXZ6V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35 year old woman presents with anemia and splenomegaly. Blood smear shows spherocytes. What is the most likely diagnosis?",
-        "options": {
-            "A": "Hereditary spherocytosis",
-            "B": "Autoimmune hemolytic anemia",
-            "C": "Sickle cell anemia",
-            "D": "Thalassemia major",
-            "E": "G6PD deficiency"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CYAUTVDP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old male with easy bruising, mucosal bleeding, thrombocytopenia, prolonged PT and APTT. Which factor is deficient?",
-        "options": {
-            "A": "Factor VII",
-            "B": "Factor II",
-            "C": "Factor VIII",
-            "D": "Factor IV",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CG5HAGK4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 47 year old male patient presents in OPD with fever, night sweats and unexplained weight loss from past 3 months. On examination there was painless bilateral cervical and inguinal lymphadenopathy. A PET CT scan reveal lymp node involvement on both sides of diaphragm, with enlargement of spleen and diagnosed as a case of hodgkin lymphoma. Which of the following is most liikely the stage of Hodgkin lymphoma?",
-        "options": {
-            "A": "Stage I",
-            "B": "Stage II",
-            "C": "Stage III",
-            "D": "Stage IV",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HZFJ93MA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 47-year-old male patient presents in OPD with fever, night sweats and unexplained weight loss from past 3 months on examination there was painless bilateral cervical and inguinal lymphadenopathy. A PET-CT scan reveals lymph node involvement on both sides of the diaphragm, but no extranodal disease, diagnose as a case of Hodgkin lymphoma, which of the following is the most likely stage of Hodgkin lymphoma?",
-        "options": {
-            "A": "Stage I",
-            "B": "Stage II",
-            "C": "Stage III",
-            "D": "Stage IV",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Clinical stages of Hodgkin Lymphoma (Ann Arbor classification). Stage I= Involvement of a single lymph node region or extralymphatic site. Stage II= Involvement of two or more lymph node region or an extralymphatic site and lymph node regions on the same side of (above or below) the diaphragm. Stage III= Involvement of lymph node regions on both sides of the diaphragm with or without localized extralymphatic involvement of the spleen or both. Stage IV= Diffuse involvement of one or more extralymphatic tissues, e.g. liver or bone marrow",
-        "hint": ""
-    },
-    {
-        "id": "8CR6LKC7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old man presents with headache, dizziness, pruritus after hot showers, and a ruddy complexion. On examination, his spleen is palpable. Blood tests show elevated hemoglobin and hematocrit. Bone marrow biopsy reveals hypercellularity. What is the most likely mutation responsible for his condition of polycythemia rubra vera?",
-        "options": {
-            "A": "JAK2",
-            "B": "BCR-ABL",
-            "C": "CALR",
-            "D": "MPL",
-            "E": "TP53"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "68M3S3BD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58 year old man presents with headache, pruritus, and ruddy complexion. Laboratory investigations suggest polycythemia vera. Which of the following laboratory findings is most consistent with this condition?",
-        "options": {
-            "A": "↓ erythropoietin, ↓ RBC mass",
-            "B": "↑ erythropoietin, ↑ RBC mass",
-            "C": "↓ erythropoietin, ↑ RBC mass",
-            "D": "↑ erythropoietin, ↓ RBC mass",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P5TGC64M",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58-year-old man presents with fatigue, weight loss, and macroglossia. Serum electrophoresis shows monoclonal light chains. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Primary systemic amyloidosis",
-            "B": "Secondary systemic amyloidosis",
-            "C": "Senile cardiac amyloidosis",
-            "D": "Islet amyloid polypeptide deposition",
-            "E": "Dialysis-related amyloidosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JVN7NU44",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58-year-old man presents with progressive fatigue, night sweats, and unintentional weight loss for 3 months. Examination shows generalized lymphadenopathy and moderate hepatosplenomegaly. CBC: Anemia, normal WBC count, mild thrombocytopenia. Peripheral smear: Atypical large lymphoid cells. LDH: Markedly elevated. Excisional lymph node biopsy: Monoclonal B-cell population. What is the most likely diagnosis?",
-        "options": {
-            "A": "Acute lymphoblastic leukemia",
-            "B": "Diffuse large B-cell lymphoma",
-            "C": "Chronic myeloid leukemia",
-            "D": "Hodgkin lymphoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EC3KJXJQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58-year-old patient has mature, prominent lymphocytes on peripheral smear and splenomegaly. What is the most likely chromosomal anomaly?",
-        "options": {
-            "A": "t(9;22)",
-            "B": "t(14;8)",
-            "C": "t(11;14)",
-            "D": "t(11;15)",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The clinical picture of a 58-year-old with prominent mature lymphocytes and splenomegaly suggests a Chronic Lymphocytic Leukemia (CLL) or another mature B-cell malignancy like Mantle Cell Lymphoma (MCL) characterized by the translocation t(11;14) involving the BCL1 gene.",
-        "hint": ""
-    },
-    {
-        "id": "NVE5GKP8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning",
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 5-day-old newborn develops persistent bleeding from the umbilical stump despite normal platelet count and normal PT & aPTT. Which factor is most likely deficient?",
-        "options": {
-            "A": "Factor VIII",
-            "B": "Factor IX",
-            "C": "Factor XIII",
-            "D": "von Willebrand factor",
-            "E": "Factor VII"
-        },
-        "correctAnswer": "C",
-        "explanation": "Factor XIII cross-links fibrin to stabilize clots; deficiency causes prolonged bleeding with normal PT & aPTT.",
-        "hint": ""
-    },
-    {
-        "id": "CD92KBWX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 64 years old female with fatigue, easy bruisability after small cuts and recurrent infection alongside fever for 2 weeks. After investigations the report shows blast cells and Auer bodies in smear. What is the likely diagnosis?",
-        "options": {
-            "A": "Acute promyelocytic leukemia",
-            "B": "Acute lymphoblastic leukemia",
-            "C": "Acute myeloid leukemia",
-            "D": "Non Hodgkin lymphoma",
-            "E": "Aplastic anemia"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QHNW9J8K",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 64-year-old man is diagnosed with chronic myeloid leukemia. Cytogenetic analysis reveals the presence of the Philadelphia chromosome. Which genetic abnormality does this represent?",
-        "options": {
-            "A": "t(9;22) BCR-ABL fusion",
-            "B": "t(8;14) MYC activation",
-            "C": "t(15;17) PML-RARA fusion",
-            "D": "t(14;18) BCL2 activation",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "CML: Peak incidence: 45-85 years; median age: 64 years. Philadelphia chromosome (t[9;22]), BCR-ABL. Massive Splenomegaly, Basophilia. Very low leukocyte alkaline phosphatase (LAP) vs High LAP in leukemoid reaction.",
-        "hint": ""
-    },
-    {
-        "id": "Z9L2ZNE9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A boy came with history of Fever & Fatigue. O/E, cervical lymphadenopathy and splenomegaly found. Microscopic examination reveals Distinct Lymphoid tissue infiltrated by lymphocytes and plasma cells which are matured in thymus with Lymphoblast cells. Most probable Diagnosis?",
-        "options": {
-            "A": "Infectious mononucleosis",
-            "B": "T-cell leukemia",
-            "C": "Acute Leukemia",
-            "D": "Lymphoblastic Cell Proliferation",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V9LGB73J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with hepatosplenomegaly and pancytopenia Histopathology reveals \"crumbled tissue paper appearance\". It is due to accumulation of:",
-        "options": {
-            "A": "Glucocerebroside",
-            "B": "Sphingomyelinase",
-            "C": "Ganglioside",
-            "D": "Galactocerebroside",
-            "E": "Alpha 1_4 amylase"
-        },
-        "correctAnswer": "A",
-        "explanation": "Gaucher disease results from lack of the lysosomal enzyme glucocerebrosidase and accumulation of glucocerebroside in mononuclear phagocytic cells. In the most common type I variant, affected phagocytes become enlarged (Gaucher cells) and accumulate in liver, spleen, and bone marrow, causing hepatosplenomegaly and bone erosion. These phagocytes become enlarged acquire a pathognomonic cytoplasmic appearance characterized as \"wrinkled tissue paper\"",
-        "hint": ""
-    },
-    {
-        "id": "C8ZME99R",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child was presented to the hospital. His mother told about previous throat infection for which he was given a syrup containing sulfonamides. Now his lab findings show increased bilirubin, Heinz bodies and hemolysis. What deficiency could be the cause of his disease?",
-        "options": {
-            "A": "Pyruvate kinase deficiency",
-            "B": "G6PD deficiency",
-            "C": "Glutathione peroxidase deficiency",
-            "D": "Alpha-glucosidase deficiency",
-            "E": "Lactase deficiency"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CGT849X2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A diagnostic test that differentiates between T cells and B cell lymphomas by detecting specific surface markers is called the:",
-        "options": {
-            "A": "Tenesmus test",
-            "B": "NBT test",
-            "C": "Casoni's test",
-            "D": "RPMI test",
-            "E": "T cell receptor gene rearrangement"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HRK2SJVN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female Patient present with fatigue, easy bruisibility after small cuts and recurrent infection alongside fever from 2 weeks. After investigations the report shows blast cells, Ayer rods and Promyelocyte in smear. Suspected Diagnose is indicated by which translocation",
-        "options": {
-            "A": "09:22",
-            "B": "08:14",
-            "C": "11:14",
-            "D": "15:17",
-            "E": "14:18"
-        },
-        "correctAnswer": "D",
-        "explanation": "(Robins)-AML. AML - 8:21 and 15:17. CML - 9:22. Burkitt Lymphoma - 8:14. Mantle Cell lymphoma - 11:14. Follicular Lymphoma - 14:18. Ewing Sarcoma - 11:22. Prostatic Carcinoma - 7:21 and 17:21.",
-        "hint": ""
-    },
-    {
-        "id": "7Q3CTVNM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A male presented with fever of 104°F for 4 days and cola-colored urine for 1 day, deranged LFTs, increased unconjugated bilirubin. Bite cells seen on smear. What is the cause?",
-        "options": {
-            "A": "G6PD deficiency",
-            "B": "Blackwater fever",
-            "C": "Drug-induced jaundice",
-            "D": "Paroxysmal nocturnal hemoglobinuria",
-            "E": "Hemolytic uremic syndrome"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RUVHUTBC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has a hemoglobin of 6 g/dL with a normal mean corpuscular volume (MCV) and peripheral blood smear showing basophilic stippling. What is the most likely diagnosis?",
-        "options": {
-            "A": "Hemolytic anemia",
-            "B": "G6PD deficiency",
-            "C": "Lead poisoning",
-            "D": "Iron deficiency anemia",
-            "E": "Megaloblastic anemia"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LNFT3FF3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has fever, weight loss, and WBC count 70,000/mm3. Peripheral smear shows immature myeloid blasts. Which translocation is commonly associated?",
-        "options": {
-            "A": "11:14",
-            "B": "09:22",
-            "C": "08:21",
-            "D": "15:17",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "(8;21) -> AML subtype.",
-        "hint": ""
-    },
-    {
-        "id": "B6FB7ZQ3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is diagnosed with G6PD deficiency. This X-linked condition causes chronic oxidative stress in red blood cells. Which clinical presentation is characteristic of this disorder?",
-        "options": {
-            "A": "Autoimmune hemolysis",
-            "B": "Drug-induced hemolytic anemia",
-            "C": "Thrombocytopenia",
-            "D": "Favism",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TB7JYDBS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient receiving multiple platelet transfusions develops platelet refractoriness. Which of the following is the most common cause?",
-        "options": {
-            "A": "HLA",
-            "B": "IgA antibodies",
-            "C": "ABO incompatibility",
-            "D": "Rh Incompatibility",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EJD8BYVU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient smear reveal target cells and howel jowel bodies due to",
-        "options": {
-            "A": "Hypersplenism",
-            "B": "Megaloblastic anemia",
-            "C": "Hyposplenism",
-            "D": "Sickle cell",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CE2M7RNE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A person has blood group AB positive. Which statement best describes this?",
-        "options": {
-            "A": "Has both A and B antigens on the cell surface",
-            "B": "Can give blood to anyone",
-            "C": "Has no Rh antigen",
-            "D": "Has anti-A and anti-B antibodies",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "AB blood group is the classic example of codominance. The red blood cells have both the A antigen and the B antigen. People with AB blood have neither anti-A nor anti-B antibodies in their plasma.",
-        "hint": ""
-    },
-    {
-        "id": "DJ2LUCEL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young patient with anemia is diagnosed with hereditary spherocytosis. Which cytoskeletal protein is primarily defective in this condition?",
-        "options": {
-            "A": "Ankyrin",
-            "B": "Spectrin",
-            "C": "Actin",
-            "D": "Myosin",
-            "E": "Dystrophin"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PTF9WTLU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "ALL markers is which of following?",
-        "options": {
-            "A": "CD 8",
-            "B": "CD 18",
-            "C": "CD 10",
-            "D": "CD 30",
-            "E": "CD 22"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V6GFCSA5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An individual with AB blood type possesses which combination of antigens on the surface of their red blood cells?",
-        "options": {
-            "A": "Only A antigens",
-            "B": "Neither A nor B antigens",
-            "C": "Only B antigens",
-            "D": "Both A & B antigens",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Type AB blood is characterized by the presence of both the A and B surface antigens on the membrane, and neither anti-A nor Anti-B antibodies in the plasma.",
-        "hint": ""
-    },
-    {
-        "id": "ACQU3XNS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Anemia associated with the finding of prickle cells on a peripheral blood smear, often due to altered red blood cell energy metabolism, is a hallmark of which deficiency?",
-        "options": {
-            "A": "Glucose-6-Phosphate Dehydrogenase Deficiency",
-            "B": "Pyruvate Kinase Deficiency",
-            "C": "Hemoglobin S Disease",
-            "D": "B12 Deficiency",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Pyruvate Kinase deficiency leads to insufficient ATP production, resulting in membrane failure and the formation of acanthocytes (prickle cells), which are prematurely cleared by the spleen.",
-        "hint": ""
-    },
-    {
-        "id": "HQDRWQKK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Anemia in thalassemia is due to",
-        "options": {
-            "A": "Abnormal hemoglobinopathy",
-            "B": "Ineffective erythropoiesis",
-            "C": "Abnormal HbS",
-            "D": "Increase alpha genes",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CA6GTNP3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Anti phospholipid characteristics Is",
-        "options": {
-            "A": "Anti Russel venom",
-            "B": "Anti parietal venom",
-            "C": "Bleeding tendency",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NNSADZFD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Auer rods and immature granulocytes are seen in which of the following condition",
-        "options": {
-            "A": "polycythemia rubra vera",
-            "B": "CML",
-            "C": "ALL",
-            "D": "CLL",
-            "E": "AML"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZRUX5CKJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Auer rods are seen in which of the following condition",
-        "options": {
-            "A": "polycythemia rubra vera",
-            "B": "CML",
-            "C": "ALL",
-            "D": "CLL",
-            "E": "AML"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PT4EVC93",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Basophilic stippling is seen in",
-        "options": {
-            "A": "Sideroblastic anemia",
-            "B": "Iron deficiency anemia",
-            "C": "Lead poisoning",
-            "D": "Thalassemia",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FJRTJH6S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "CML chromosomal abnormality:",
-        "options": {
-            "A": "08:21",
-            "B": "09:22",
-            "C": "07:21",
-            "D": "14:18",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6HGF42FX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Deficiency of the enyzme ADAMTS13 is most commonly associated with which of the following conditions?",
-        "options": {
-            "A": "Hemophilia A",
-            "B": "Immune thrombocytopenic purpura",
-            "C": "Thrombotic thrombocytopenic purpura",
-            "D": "Disseminated intravascular coagulation",
-            "E": "Von willebrand disease"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NK2EFYAJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "DIC is consequence of",
-        "options": {
-            "A": "Septic shock",
-            "B": "Endotoxic shock",
-            "C": "Cardiogenic shock",
-            "D": "Hypovolumic shock",
-            "E": "Neurogenic shock"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "56PURYXP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Duffy antibodies investigation:",
-        "options": {
-            "A": "Normal temperature saline",
-            "B": "Polyethylene glycol",
-            "C": "Polygeline something",
-            "D": "RBCs & papain stain",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "35FPLG8P",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Haemolytic disease of new-born is associated with",
-        "options": {
-            "A": "Direct combs test positive with raised IgG",
-            "B": "Indirect combs test positive with raised IgG",
-            "C": "Both IgG and IgM raised",
-            "D": "Direct combs test positive with raised IgM",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2Z7HSBSD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Heinz bodies and Bite Cells present in:",
-        "options": {
-            "A": "Sickle cell anemia",
-            "B": "G6PD",
-            "C": "Hemolytic anemia",
-            "D": "Thalassemia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RLPS4CCZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Heinz bodies are found in:",
-        "options": {
-            "A": "Hereditary spherocytosis",
-            "B": "G6PD deficiency",
-            "C": "Pyruvate kinase deficiency",
-            "D": "Cirrhosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RXCBAFEZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hereditary spherocytosis defective protein is which of following?",
-        "options": {
-            "A": "Fibrillin",
-            "B": "Titin",
-            "C": "Dystrophin",
-            "D": "Spectrin",
-            "E": "Band 3"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "JMGMVATK",
         "year": [
             "2025"
@@ -4708,6 +4028,33 @@
         "hint": ""
     },
     {
+        "id": "KKCPR3LV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Known patient of arthritis using drugs for 8 to 9 months presents with HB11g/dl, MCV 101fl, MCH = 30, bone marrow biopsy shows hyper cellular",
+        "options": {
+            "A": "Aplastic anemia",
+            "B": "Megaloblastic anemia",
+            "C": "Leukemia",
+            "D": "Lymphoma",
+            "E": "Sideroblastic anemia"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KPZBTQ9B",
         "year": [
             "2025"
@@ -4755,6 +4102,33 @@
             "B": "Plasma cells",
             "C": "Macrophages",
             "D": "T cell",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "45N6P97C",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Megaloblastic anemia, characterized by macrocytic RBCs and hypersegmented neutrophils, is primarily caused by a deficiency in",
+        "options": {
+            "A": "Iron",
+            "B": "B12/folate",
+            "C": "Vitamin C",
+            "D": "Vitamin D",
             "E": ""
         },
         "correctAnswer": "B",
@@ -4874,6 +4248,33 @@
         "hint": ""
     },
     {
+        "id": "XV8PAS5U",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Osmotic fragility test is positive, indicating hereditary spherocytosis (HS). Which protein is most likely defective?",
+        "options": {
+            "A": "Spectrin",
+            "B": "Actin",
+            "C": "Hemoglobin",
+            "D": "Ankyrin only",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "RXEXUDXH",
         "year": [
             "2025"
@@ -4901,6 +4302,33 @@
         "hint": ""
     },
     {
+        "id": "JLBH9N7E",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient has anisocytosis, poikilocytosis, and sickle-shaped RBCs. Sickling is enhanced by:",
+        "options": {
+            "A": "Hypertension",
+            "B": "Dehydration",
+            "C": "Hypoxia",
+            "D": "Anemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "JV33HFZV",
         "year": [
             "2025"
@@ -4922,6 +4350,60 @@
             "C": "Pituitary pathology",
             "D": "Graves disease",
             "E": "Throditis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KZ8BK24Y",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient of factor v leiden mutations has inc risk of",
+        "options": {
+            "A": "Arterial thrombosis",
+            "B": "Veinous thrombosis",
+            "C": "Infarction",
+            "D": "Thrombosis if she takes ocps",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JG2P76YT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient started warfarin has petechiae and ecchymosis due to deficiency of:",
+        "options": {
+            "A": "Protein M",
+            "B": "Protein C deficiency",
+            "C": "Factor 10",
+            "D": "Factor 9",
+            "E": ""
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -4982,6 +4464,198 @@
         "hint": ""
     },
     {
+        "id": "S89W4GND",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Reed-Sternberg cells are a hallmark of which malignancy?",
+        "options": {
+            "A": "Non-Hodgkin lymphoma",
+            "B": "Hodgkin lymphoma",
+            "C": "Leukemia",
+            "D": "Multiple myeloma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "46QNTXV4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Sickle cell crises worsened due to:",
+        "options": {
+            "A": "Infection",
+            "B": "Hypoxia",
+            "C": "Dehydration",
+            "D": "All of the above",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MBM3FZNA",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Sickling of red blood cells occurs most commonly under which condition?",
+        "options": {
+            "A": "Hypoxia",
+            "B": "Dehydration",
+            "C": "Antibiotic use",
+            "D": "Hypercalcemia",
+            "E": "Alkalosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "R5CPQHQL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Snake bite patient later develops hemoptysis and dyspnea. Toxin responsible:",
+        "options": {
+            "A": "Coagulase",
+            "B": "Hyaluronidase",
+            "C": "Proteases",
+            "D": "Metalloproteinases",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8LVS47BU",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night",
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Snake venom commonly contains which of the following enzymes?",
+        "options": {
+            "A": "Hyaluronidase only...",
+            "B": "Phospholipase A2 only...",
+            "C": "Hyaluronidase + Phospholipase A2...",
+            "D": "Hyaluronidase + Catalase...",
+            "E": "Lipase only"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MX2UGET4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Starry sky appearance on histology is characteristic of:",
+        "options": {
+            "A": "Burkitt lymphoma",
+            "B": "Hodgkin lymphoma",
+            "C": "Multiple myeloma",
+            "D": "Acute lymphoblastic leukemia",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AQNKA2RG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Starry-sky appearance is classically associated with:",
+        "options": {
+            "A": "CLL",
+            "B": "Multiple myeloma",
+            "C": "Hodgkin lymphoma",
+            "D": "Burkitt lymphoma",
+            "E": "CML"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "GUSJQH9P",
         "year": [
             "2025"
@@ -5009,6 +4683,62 @@
         "hint": ""
     },
     {
+        "id": "CDSE5C9K",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The Myc gene alteration is characteristically associated with which condition ?",
+        "options": {
+            "A": "Follicular lymphoma",
+            "B": "Burkitt lymphoma",
+            "C": "Hodgkin lymphoma",
+            "D": "Mantle cell lymphoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Translocation: Characterized by t(8;14), which moves the c-myc proto-oncogene next to the heavy-chain immunoglobulin locus. Histology: Distinctive \"starry-sky\" appearance, where tingible body macrophages (the stars) eat apoptotic tumor cells (the sky) .Viral Link: Highly associated with Epstein-Barr Virus (EBV) infection.",
+        "hint": ""
+    },
+    {
+        "id": "QVP9X7ES",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 10 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The Philadelphia chromosome t(9;22) is characteristically associated with which disease?",
+        "options": {
+            "A": "Acute lymphoblastic leukemia",
+            "B": "Chronic lymphocytic leukemia",
+            "C": "Chronic myeloid leukemia",
+            "D": "Multiple myeloma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NDSUEGFX",
         "year": [
             "2025"
@@ -5032,6 +4762,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LL87HZ8B",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Translocation between which of the following chromosomes in Burkitt lymphoma?",
+        "options": {
+            "A": "t(9;22)",
+            "B": "t(14;18)",
+            "C": "t(8;14)",
+            "D": "t(11;14)",
+            "E": "t(15;17)"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -5090,6 +4847,87 @@
         "hint": ""
     },
     {
+        "id": "3Z3Z9Y4G",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Von Willebrand disease is primarily associated with a defect in:",
+        "options": {
+            "A": "Platelet adhesion",
+            "B": "Platelet aggregation",
+            "C": "Coagulation factor IX",
+            "D": "Fibrin polymerization",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JR4AAWMD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Von Willebrand disease primarily causes a defect in which process?",
+        "options": {
+            "A": "Platelet adhesion",
+            "B": "Platelet aggregation",
+            "C": "Platelet secretion",
+            "D": "Secondary coagulation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TWPHHB6A",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "vWF deficiency cases:",
+        "options": {
+            "A": "Defective platelet adhesion",
+            "B": "Defective platelet aggregation",
+            "C": "Coagulation factor deficiency",
+            "D": "Vitamin K deficiency",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "LB44UPPD",
         "year": [
             "2025"
@@ -5114,6 +4952,60 @@
         },
         "correctAnswer": "B",
         "explanation": "Upon activation, the smooth, flat discoid platelet rapidly changes its shape to a more spherical form with multiple tentacle-like projections (pseudopods) to increase its surface area and facilitate aggregation.",
+        "hint": ""
+    },
+    {
+        "id": "P7J2HGVP",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the diagnosis for a boy presenting with Heinz bodies, dark urine, and jaundice following sulfonamide therapy?",
+        "options": {
+            "A": "Hereditary spherocytosis",
+            "B": "Autoimmune hemolytic anemia",
+            "C": "G6PD deficiency",
+            "D": "Thalassemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FLHUYTG8",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the most common cause of a prolonged bleeding time?",
+        "options": {
+            "A": "Hemophilia A",
+            "B": "Thrombocytopenia",
+            "C": "Vitamin K deficiency",
+            "D": "VWD",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -5200,6 +5092,60 @@
         "hint": ""
     },
     {
+        "id": "9JL364U7",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which chromosomal translocation is the hallmark of Chronic Myeloid Leukemia (CML)?",
+        "options": {
+            "A": "8;14",
+            "B": "9;22",
+            "C": "14;18",
+            "D": "8;21",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AAT9LLYS",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which laboratory finding is most characteristic of von Willebrand disease?",
+        "options": {
+            "A": "Decreased bleeding time",
+            "B": "Decreased PT",
+            "C": "Increased aPTT",
+            "D": "Increased thrombin time",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NA3ZGHB8",
         "year": [
             "2025"
@@ -5254,6 +5200,33 @@
         "hint": ""
     },
     {
+        "id": "MCUMDZ3P",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following chromosomal translocations is the hallmark of Burkitt lymphoma?",
+        "options": {
+            "A": "t(8;14)",
+            "B": "t(22;19)",
+            "C": "t(11;14)",
+            "D": "t(9;22)",
+            "E": "t(14;18)"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YSEW2ZXX",
         "year": [
             "2025"
@@ -5280,6 +5253,33 @@
         },
         "correctAnswer": "E",
         "explanation": "C = Hypercalcemia (from bone destruction). R = Renal failure (light chain deposition, hypercalcemia). A = Anemia (marrow infiltration). B = Bone lesions (lytic \"punched out\" lesions from osteoclast activation).",
+        "hint": ""
+    },
+    {
+        "id": "ELC5AUHH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which peripheral blood smear finding is characteristic of lead poisoning?",
+        "options": {
+            "A": "Basophilic stippling",
+            "B": "Lead lines",
+            "C": "Ringed sideroblasts",
+            "D": "Howell-Jolly bodies",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {

@@ -1,65 +1,5 @@
 [
     {
-        "id": "ZQ4KBP8D",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops ischemic colitis localized to the transverse colon. Which artery is most likely involved?",
-        "options": {
-            "A": "Middle colic artery",
-            "B": "Right colic artery",
-            "C": "Left colic artery",
-            "D": "Ileocolic artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The middle colic artery, a branch of the superior mesenteric artery, supplies the transverse colon. Obstruction or thrombosis of this artery can lead to ischemia in this segment.",
-        "hint": ""
-    },
-    {
-        "id": "A7RPKY65",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning",
-            "Medicine - 08/25 - August 5 - Morning",
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A person presented with right hypochondrial pain and progressive abdominal distension. Now, diffuse ascites is clinically evident, and a diagnostic paracentesis is planned. Which is the most appropriate site for ascitic fluid tap that minimizes risk of injury to inferior epigastric vessels?",
-        "options": {
-            "A": "Right side, below costal margin, midclavicular line...",
-            "B": "Right upper quadrant, 2 cm below and medial to anterior superior iliac spine (ASIS)...",
-            "C": "Left lower quadrant, 2 cm below and medial to ASIS...",
-            "D": "Periumbilical region...",
-            "E": "Midline above the umbilicus"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "QRMGTP7N",
         "year": [
             "2026"
@@ -81,6 +21,33 @@
             "C": "Iliocolic artery",
             "D": "Middle colic artery",
             "E": "Left colic artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RSD94YQR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old male presents with direct inguinal hernia. The hernia sac passes through which anatomical defect?",
+        "options": {
+            "A": "External oblique aponeurosis",
+            "B": "Internal oblique fascia",
+            "C": "Transversalis fascia",
+            "D": "Scarpa's fascia",
+            "E": ""
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -112,6 +79,168 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ECYXDMAD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old male is undergoing evaluation for biliary obstruction. Which of the following controls the flow of bile and pancreatic juice into the duodenum?",
+        "options": {
+            "A": "Sphincter of Oddi",
+            "B": "Lower esophageal sphincter",
+            "C": "Pyloric sphincter",
+            "D": "Ileocecal junction",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The sphincter of Oddi regulates release of bile and pancreatic secretions into the duodenum. Reference: Guyton & Hall, Textbook of Medical Physiology, 14th edition.",
+        "hint": ""
+    },
+    {
+        "id": "KFG827UP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 34 year old man sustains blunt abdominal trauma in a motor vehicle accident. Imaging reveals injury to the structure located anterior to the third part of the duodenum. Which of the following is most likely damaged?",
+        "options": {
+            "A": "Abdominal aorta",
+            "B": "Inferior vena cava",
+            "C": "Superior mesenteric artery",
+            "D": "Portal vein",
+            "E": "Celiac trunk"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NRVUD4EW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35 year old patient presented in surgical opd with complain of severe pain over left iliac fossa since morning along with constipation, investigation reveals sigmoid volvulus, that is need to be urgently operated to avoid ischemia of following arteries?",
+        "options": {
+            "A": "Left colic artery",
+            "B": "Superior mesenteric artery",
+            "C": "Sigmoidal arteries",
+            "D": "Superior rectal artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PBT7C9EU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35 year old patient presented in surgical opd with complaint of severe pain over left iliac fossa since morning along with constipation, investigation reveals sigmoid volvulus, that is need to be urgently operated to avoid ischemia of following arteries?",
+        "options": {
+            "A": "Inferior mesenteric artery",
+            "B": "Celiac artery",
+            "C": "Superior mesenteric artery",
+            "D": "Middle colic artery",
+            "E": "Marginal artery of Drummond"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2DAHAJ5Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35-year-old male presents for routine checkup. Which part of the gastrointestinal tract secretes intrinsic factor essential for vitamin B12 absorption?",
+        "options": {
+            "A": "Fundus of stomach",
+            "B": "Pylorus of stomach",
+            "C": "Duodenum",
+            "D": "Ileum",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Intrinsic factor is secreted by parietal cells located in the fundus and body of the stomach. It is essential for vitamin B12 absorption in the ileum. Reference: Guyton & Hall, Textbook of Medical Physiology, 14th edition.",
+        "hint": ""
+    },
+    {
+        "id": "HA59T7C9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 36 year old man is undergoing exploratory laparotomy after blunt abdominal trauma. The surgeon identifies the third part of the duodenum and notes a large vascular structure posterior to it. Which of the following is most likely?",
+        "options": {
+            "A": "Superior mesenteric artery",
+            "B": "Superior mesenteric vein",
+            "C": "Aorta and inferior vena cava",
+            "D": "Portal vein and splenic vein",
+            "E": "Celiac artery and portal vein"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -224,6 +353,60 @@
         "hint": ""
     },
     {
+        "id": "576AW6RG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old woman with chronic hepatitis B requires a percutaneous liver biopsy to evaluate fibrosis. Which of the following is the most appropriate site for needle insertion to minimize complications?",
+        "options": {
+            "A": "4th intercostal space, mid-clavicular line",
+            "B": "6th intercostal space, anterior axillary line",
+            "C": "8th-10th intercostal space, mid-axillary line (right side)",
+            "D": "8th-10th intercostal space, mid-scapular line (left side)",
+            "E": "10th intercostal space, paravertebral line"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3FZSRJBL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 48-year-old man undergoes pelvic surgery for a rectal mass. During the procedure, the surgeon notes that one of the arterial branches that usually arises from the anterior division of the internal iliac artery is absent bilaterally, which is considered a known congenital variation. Despite this, the rectum continues to receive adequate blood supply from the superior and inferior rectal arteries. Which artery is most likely congenitally absent in this patient?",
+        "options": {
+            "A": "Superior rectal artery",
+            "B": "Middle rectal artery",
+            "C": "Inferior rectal artery",
+            "D": "Sacral artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "N8MLXBU3",
         "year": [
             "2026"
@@ -301,6 +484,60 @@
             "E": "Inferior pancreaticoduodenal artery"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VQSDYVZU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58 year old man undergoes subtotal esophagectomy for esophageal cancer. The stomach is mobilized into the thorax to anastomose with the remaining esophagus. Which artery must be preserved to maintain the stomach's blood supply?",
+        "options": {
+            "A": "Short gastric artery",
+            "B": "Right gastric artery",
+            "C": "Left gastric artery",
+            "D": "Right gastroepiploic artery",
+            "E": "Left gastroepiploic artery"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AKFVHZ9J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old man presents with a painless ulcer at the anal verge. Biopsy confirms squamous cell carcinoma located below the dentate line. Which lymph nodes are most likely to be involved first?",
+        "options": {
+            "A": "Internal iliac nodes",
+            "B": "External iliac nodes",
+            "C": "Inferior mesenteric nodes",
+            "D": "Superficial inguinal nodes",
+            "E": "Para-aortic nodes"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -386,6 +623,33 @@
         "hint": ""
     },
     {
+        "id": "PKU4GUQA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A basin presents with a ride grand so I'd located later and infeated a pre victorical what is most likely diagnosis?",
+        "options": {
+            "A": "Hydrocele",
+            "B": "Indirect inguinal hernia",
+            "C": "Femoral hernia",
+            "D": "Varicocele",
+            "E": "Direct inguinal hernia"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MVPY8ZVH",
         "year": [
             "2026"
@@ -437,6 +701,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PYGXT3JF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient has chronic constipation and difficulty passing stool. She reports persistent difficulty during defecation, to which she is training excessively in to relieve her constipation. Which of the following muscle helps in this regard?",
+        "options": {
+            "A": "Relaxation of puborectalis muscle",
+            "B": "Relaxation of pubococcygeus muscle",
+            "C": "Contraction of Levator Ani",
+            "D": "Contraction of puborectalis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The puborectalis muscle loops around the rectum, creating a sharp angle known as the anorectal angle. This angle acts like a sling, maintaining fecal continence (preventing stool from leaving). To allow defecation (relieve constipation), this muscle must relax, which straightens the angle, allowing the contents to pass easily. Straining against a contracted puborectalis muscle is ineffective and contributes to chronic constipation and pelvic floor dysfunction.",
         "hint": ""
     },
     {
@@ -604,6 +895,33 @@
         "hint": ""
     },
     {
+        "id": "4GRUVCV7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A histological section shows lobules and serous acini, typical finding of which of the following gland?",
+        "options": {
+            "A": "Sweet gland",
+            "B": "Submandibular gland",
+            "C": "Sublingual gland",
+            "D": "Parotid gland",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "6R6X6NDM",
         "year": [
             "2026"
@@ -628,6 +946,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WB6FC7HD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A known case of cholelithiasis felt pain in neck and medical aspect of scapulae after a fatty meal. The pain is originating from?",
+        "options": {
+            "A": "Fundus of Gall Bladder",
+            "B": "Liver",
+            "C": "Gallbladder",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Gallbladder disease (cholelithiasis) can cause inflammation that irritates the adjacent structures. The parietal peritoneum lining the inferior surface of the Diaphragm is sensitive to this inflammation. The diaphragm is innervated by the Phrenic Nerve (C3, C4, C5), which shares spinal cord segments with the nerves supplying the skin of the shoulder and neck (C4 dermatome). This shared innervation pathway causes the pain to be referred to the neck and medial aspect of the scapula.",
         "hint": ""
     },
     {
@@ -685,6 +1030,33 @@
         "hint": ""
     },
     {
+        "id": "9SY5S6SQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient came with epigastric pain heartburn on endoscopy perforation of 1st part of duodenum was seen which artery is eroded in duodenal ulcer?",
+        "options": {
+            "A": "Gastroepiploic artery",
+            "B": "Gastroduodenal artery",
+            "C": "Right gastric artery",
+            "D": "Left gastric artery",
+            "E": "Splenic artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "Most common location of duodenal ulcer 1st part of duodenum. Perforation of posterior wall of duodenum bleeds by gastroduodenal artery. Most common location of gastric ulcer near incisura angularis on lesser curvature. Perforation of lesser curvature bleeds by left gastric artery. Perforation of posterior wall of stomach bleeds by splenic artery.",
+        "hint": ""
+    },
+    {
         "id": "UK64Z4WT",
         "year": [
             "2026"
@@ -708,6 +1080,33 @@
             "E": "Splenic artery"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F9WNLF5P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops bleeding from a gastric ulcer located on the posterior wall of the stomach. Which artery is most likely to be the source of bleeding?",
+        "options": {
+            "A": "Left gastric artery",
+            "B": "Right gastric artery",
+            "C": "Left gastroepiploic artery",
+            "D": "Short gastric arteries",
+            "E": "Splenic artery"
+        },
+        "correctAnswer": "E",
         "explanation": "",
         "hint": ""
     },
@@ -736,6 +1135,35 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZQ4KBP8D",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops ischemic colitis localized to the transverse colon. Which artery is most likely involved?",
+        "options": {
+            "A": "Middle colic artery",
+            "B": "Right colic artery",
+            "C": "Left colic artery",
+            "D": "Ileocolic artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The middle colic artery, a branch of the superior mesenteric artery, supplies the transverse colon. Obstruction or thrombosis of this artery can lead to ischemia in this segment.",
         "hint": ""
     },
     {
@@ -793,6 +1221,33 @@
         "hint": ""
     },
     {
+        "id": "RTHTKL3Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has liver cirrhosis. Route of hepatic biopsy is:",
+        "options": {
+            "A": "T9-10 midaxillary line",
+            "B": "T11 mid clavicular line",
+            "C": "Subcostal angle",
+            "D": "Substernal angle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NETQJQHS",
         "year": [
             "2026"
@@ -817,6 +1272,116 @@
         },
         "correctAnswer": "D",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9AFGSPE7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is lying supine on the operating table and undergoes a laparotomy. If One litre of normal saline is accidentally spilled into the open abdomen, into which anatomical spaces will the fluid most likely accumulate?",
+        "options": {
+            "A": "Right and left paracolic gutters",
+            "B": "Right and left subphrenic spaces",
+            "C": "Right and left subhepatic spaces",
+            "D": "Mid pelvis pouch",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4USRB3RE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with Boil on perineal area, Anal glands enlarged. Rupture of Boil eroding the lateral wall will lead to spread of the Pus into?",
+        "options": {
+            "A": "Ischiorectal fossa",
+            "B": "Deep perineal pouch",
+            "C": "Rectopubic space",
+            "D": "RectoVesical space",
+            "E": "Superficial perineal pouch"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2FPUHRM2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with RHC pain dermatome for cholecystitis include:",
+        "options": {
+            "A": "T3-9",
+            "B": "T10-12",
+            "C": "T7-9",
+            "D": "T8-T12",
+            "E": "T7-L1"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PGME3Y64",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with right sided inguinal hernia, cough impulse positive but deep ring occlusion test is negative, which anatomical landmark is used to differentiate between direct and indirect inguinal hernia:",
+        "options": {
+            "A": "Fascia transversalis",
+            "B": "Deep ring",
+            "C": "Lateral border of external oblique",
+            "D": "Symphysis pubis",
+            "E": "Inferior epigastric vessels"
+        },
+        "correctAnswer": "E",
+        "explanation": "The relationship to the Inferior Epigastric Vessels defines the hernia type: Indirect hernias are lateral to the vessels, and Direct hernias are medial to them (Hesselbach's triangle).",
         "hint": ""
     },
     {
@@ -929,6 +1494,60 @@
         "hint": ""
     },
     {
+        "id": "K8JTR852",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a parotid gland swelling. The majority of salivary gland tumors are located in which gland?",
+        "options": {
+            "A": "Parotid gland - 85% benign tumors",
+            "B": "Submandibular gland tumors involve facial nerve",
+            "C": "Sublingual gland most common malignancy",
+            "D": "Submandibular gland 80% benign",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Parotid gland accounts for ~85% of all salivary gland tumors, most of which are benign (e.g., pleomorphic adenoma). Submandibular and sublingual tumors are rarer, with higher chances of malignancy.",
+        "hint": ""
+    },
+    {
+        "id": "H6L43WZK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a swelling near the angle of the jaw. Biopsy reveals a tumor originating from a serous salivary gland. Which gland is the most likely primary site?",
+        "options": {
+            "A": "Parotid gland",
+            "B": "Submandibular gland",
+            "C": "Sublingual gland",
+            "D": "Minor salivary glands",
+            "E": "Lacrimal gland"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "S75YBLWS",
         "year": [
             "2026"
@@ -952,6 +1571,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CWW9MFHS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with bleeding from the first part of duodenum, embolization to control hemorrhage would most appropriately target which of the following artery?",
+        "options": {
+            "A": "Gastroepiploic artery",
+            "B": "Gastroduodenal artery",
+            "C": "Right gastric artery",
+            "D": "Left gastric artery",
+            "E": "Splenic artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8KKBYQ7C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with elevated alkaline phosphatase and obstructive jaundice. Imaging reveals a stone obstructing the common bile duct. Which artery is most at the risk of injury during surgical intervention in this area?",
+        "options": {
+            "A": "Gastroduodenal artery",
+            "B": "Left gastric artery",
+            "C": "Splenic artery",
+            "D": "Superior mesenteric artery",
+            "E": "Inferior pancreaticoduodenal artery"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1033,6 +1706,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XAHFHEHM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with right hypochondrium pain and positive Murphy's sign, on histology of affected organ, which of the following microscopic feature of involved organ you will able to see?",
+        "options": {
+            "A": "Cilia",
+            "B": "Microvilli",
+            "C": "Goblet cells",
+            "D": "Villi",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1307,6 +2007,61 @@
         "hint": ""
     },
     {
+        "id": "PHTVKR88",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with peptic ulcer has epigastric pain carried by which of following nerve?",
+        "options": {
+            "A": "Intercostal nerve",
+            "B": "Lesser splanchnic nerve",
+            "C": "Greater splanchnic nerve",
+            "D": "Left splanchnic nerve",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JECR54DN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with peptic ulcer has Epigastric pain carried by which of the following nerve?",
+        "options": {
+            "A": "Intercostal nerve",
+            "B": "Greater splanchnic nerve",
+            "C": "Lesser splanchnic nerve",
+            "D": "Least splanchnic nerve",
+            "E": "Internal Thoracic"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "D5TMRCTN",
         "year": [
             "2026"
@@ -1331,6 +2086,91 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Y68LYW37",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person presented to emergency with blood in vomitus and signs of hypovolemic shock. On opening the abdomen surgeon observed bleeding from posterior wall of duodenum. Which artery would more likely be the cause of bleeding?",
+        "options": {
+            "A": "Left and right gastric",
+            "B": "Left gastric",
+            "C": "Gastropyloric",
+            "D": "Gastroduodenal",
+            "E": "Superior mesenteric"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "A7RPKY65",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning",
+            "Medicine - 08/25 - August 5 - Morning",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person presented with right hypochondrial pain and progressive abdominal distension. Now, diffuse ascites is clinically evident, and a diagnostic paracentesis is planned. Which is the most appropriate site for ascitic fluid tap that minimizes risk of injury to inferior epigastric vessels?",
+        "options": {
+            "A": "Right side, below costal margin, midclavicular line...",
+            "B": "Right upper quadrant, 2 cm below and medial to anterior superior iliac spine (ASIS)...",
+            "C": "Left lower quadrant, 2 cm below and medial to ASIS...",
+            "D": "Periumbilical region...",
+            "E": "Midline above the umbilicus"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "DLKTCJ2J",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A person presents with abdominal pain for 2 months. On investigations there is a mass in duodenum that is found to be arising from submucosa Which of the following is secreted by this part of duodenum from where mass is arising.",
+        "options": {
+            "A": "Lactase",
+            "B": "Peptidase",
+            "C": "Acidic Mucus",
+            "D": "Urogastrone",
+            "E": "Gastrin"
+        },
+        "correctAnswer": "D",
+        "explanation": "Brunner gland located in submucosa of duodenum secrete alkaline mucus and urogastrone.",
         "hint": ""
     },
     {
@@ -1469,6 +2309,33 @@
         "hint": ""
     },
     {
+        "id": "TLXD4YGF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A surgeon was performing laparotomy and a house officer accidentally spilled normal saline into the abdominal cavity. The patient is lying supine. After passing over the pelvic brim, where will the fluid most likely accumulate?",
+        "options": {
+            "A": "Right and left paracolic gutters",
+            "B": "Subphrenic space",
+            "C": "Subhepatic (Morison's pouch)",
+            "D": "Pelvic cavity",
+            "E": "Lesser sac"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KLFMJFL3",
         "year": [
             "2026"
@@ -1519,6 +2386,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UYRKUVVL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An Elderly man with squamous CA of penis, Which of the following factor is linked with penile Carcinoma?",
+        "options": {
+            "A": "Hypospadias",
+            "B": "Phimosis",
+            "C": "Bowel disease",
+            "D": "HSV",
+            "E": "HPV"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1631,6 +2525,87 @@
         "hint": ""
     },
     {
+        "id": "JNSJACXH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "At the mid-inguinal point, an important anatomical structure is located. Which of the following is found at the midpoint of the inguinal ligament?",
+        "options": {
+            "A": "Superficial inguinal ring",
+            "B": "Deep inguinal ring",
+            "C": "Inferior epigastric artery",
+            "D": "Femoral nerve",
+            "E": "Femoral artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "C9YYSUG7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "At what level is esophageal opening present in diaphragm?",
+        "options": {
+            "A": "T8",
+            "B": "T12",
+            "C": "T10",
+            "D": "T9",
+            "E": "T6"
+        },
+        "correctAnswer": "C",
+        "explanation": "(Snell + KLM) Aortic opening (T12) - Aorta, thoracic duct and azygous vein. Esophagus opening (T10) - Esophagus, Right and left vagus, Lymphatics. Caval opening (T8) - IVC and Right phrenic.",
+        "hint": ""
+    },
+    {
+        "id": "7VSWX7D9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "At what spinal level does the rectum begin?",
+        "options": {
+            "A": "L5",
+            "B": "S3",
+            "C": "S1",
+            "D": "L1",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "W7W2WGZ3",
         "year": [
             "2026"
@@ -1685,6 +2660,62 @@
         "hint": ""
     },
     {
+        "id": "SLJHJUN7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning",
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cancer of Head of pancreas will compress which structure:",
+        "options": {
+            "A": "SMA",
+            "B": "CBD",
+            "C": "Portal vein",
+            "D": "Pancreatic duct",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ENDT4NP6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cells in intestinal folds were analysed under the microscope, which showed red granules in the cytoplasm what is the characteristic secretion of these cells?",
+        "options": {
+            "A": "Serotonin",
+            "B": "Mucin",
+            "C": "Gastrin",
+            "D": "Secretin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FVA6DFZT",
         "year": [
             "2026"
@@ -1712,6 +2743,33 @@
         "hint": "<p><br></p>"
     },
     {
+        "id": "GL4LZPFP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cystic artery is the branch of:",
+        "options": {
+            "A": "Gastroduodenal artery",
+            "B": "Right Gastric artery",
+            "C": "Right hepatic artery",
+            "D": "Left Hepatic artery",
+            "E": "Left Gastric artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "6966UPKA",
         "year": [
             "2026"
@@ -1735,6 +2793,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CVWAE4WW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Deep inguinal ring is due to defect in:",
+        "options": {
+            "A": "External intercostal",
+            "B": "External oblique",
+            "C": "Fascia transversalis",
+            "D": "Rectus abdominis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RUGBRD89",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Demarcation of Upper GIT from Lower GIT is shown by:",
+        "options": {
+            "A": "Ligament of treitz",
+            "B": "Superior mesenteric artery",
+            "C": "Falciform ligament",
+            "D": "Tail of pancreas",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1874,6 +2986,60 @@
         "hint": ""
     },
     {
+        "id": "MUAEWNWV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "During a suprapubic paracentesis for ascites performed with an empty bladder, the patient developed bleeding due to vascular injury. Which vessel is most likely to have been injured?",
+        "options": {
+            "A": "Superior vesical artery",
+            "B": "Inferior epigastric artery",
+            "C": "Obturator artery",
+            "D": "External pudendal artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "64LYPNXY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During an appendectomy, the surgeon needs to ligate the appendicular artery to control bleeding. The appendicular artery is a branch of an artery arising from the superior mesenteric artery, which supplies the terminal ileum and cecum as well. Which artery gives rise directly to the appendicular artery?",
+        "options": {
+            "A": "Right colic artery",
+            "B": "Post Cecal Artery",
+            "C": "Ileocolic artery",
+            "D": "Inferior mesenteric artery",
+            "E": "Marginal artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "8TNN6HAX",
         "year": [
             "2026"
@@ -2009,6 +3175,33 @@
         "hint": ""
     },
     {
+        "id": "FQGAKXHR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Esophageal opening passes through which vertebral level of diaphragm?",
+        "options": {
+            "A": "T8",
+            "B": "T10",
+            "C": "L5",
+            "D": "T12",
+            "E": "L2"
+        },
+        "correctAnswer": "B",
+        "explanation": "Vena caval opening - T8. Esophageal opening T10. Aortic opening - T12",
+        "hint": ""
+    },
+    {
         "id": "UV7LYBY4",
         "year": [
             "2026"
@@ -2063,6 +3256,33 @@
         "correctAnswer": "E",
         "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Pancreaticosplenic nodes</strong> - Carcinoma of the <strong>fundus and upper greater curvature</strong> of the stomach primarily drains along the <strong>short gastric and splenic vessels</strong> to the pancreaticosplenic (splenic) lymph nodes.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>“fundus” and “left upper side of the stomach.”</strong> The fundus is closely related to the spleen, and its lymphatics follow the <strong>splenic vessels</strong> toward the pancreaticosplenic nodes. Therefore, choose <strong>pancreaticosplenic nodes</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Gastroepiploic nodes</strong> - Drain lymphatics along the greater curvature, particularly from the lower parts of the greater curvature, rather than being the main first drainage for the fundus.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Inferior mesenteric nodes</strong> - Drain structures derived mainly from the hindgut, such as the descending and sigmoid colon and upper rectum. They do not drain the stomach.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Superior mesenteric nodes</strong> - Drain the midgut, including most of the small intestine and proximal colon. They do not provide the primary lymphatic drainage of the stomach.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Celiac nodes</strong> - They are the major <strong>final regional nodes</strong> for gastric lymphatic drainage, but the fundus drains first toward the pancreaticosplenic nodes.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Gastric lymphatic drainage follows the arteries:</strong></p></p><p><p>• <strong>Upper lesser curvature:</strong> Left gastric nodes<br></p><p>• <strong>Lower lesser curvature:</strong> Right gastric nodes<br></p><p>• <strong>Greater curvature:</strong> Gastroepiploic nodes<br></p><p>• <strong>Fundus:</strong> Pancreaticosplenic/splenic nodes via short gastric and splenic vessels<br></p><p>• These ultimately drain toward the <strong>celiac nodes</strong>.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Fundus → Spleen → Splenic nodes.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Celiac nodes</strong> are the important terminal/regional drainage group for the stomach, but when the question asks where a <strong>fundus carcinoma spreads first</strong>, think <strong>pancreaticosplenic nodes</strong>.</p></p>",
         "hint": "<p><br></p>"
+    },
+    {
+        "id": "Z8KWK4M3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "GastroDuodenal Artery is a branch of",
+        "options": {
+            "A": "Left Gastric Artery",
+            "B": "Right gastric artery",
+            "C": "Common hepatic artery",
+            "D": "Splenic artery",
+            "E": "Pancreatoduodenal artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
     },
     {
         "id": "D4LHHZ4K",
@@ -2173,6 +3393,87 @@
         "hint": ""
     },
     {
+        "id": "CQE96YFN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In an occlusion of the superior mesenteric artery (SMA), which portion of the large intestine is typically spared due to collateral blood supply?",
+        "options": {
+            "A": "Cecum",
+            "B": "Ascending colon",
+            "C": "Transverse colon",
+            "D": "Descending colon",
+            "E": "Sigmoid colon"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AJ6WK3SZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In appendicitis pain shift from the umbilicus to RIF through which of the following?",
+        "options": {
+            "A": "T11-12",
+            "B": "T8-10",
+            "C": "T10-11",
+            "D": "T8-9",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PDHP3Y4F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In Perforation of Posterior wall of stomach which artery is involved?",
+        "options": {
+            "A": "Gastroduodenal artery",
+            "B": "Splenic artery",
+            "C": "Superior pancreatic artery",
+            "D": "Left gastric artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MRZMG234",
         "year": [
             "2026"
@@ -2197,6 +3498,116 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T5Q8KHPL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In the region of the submandibular gland, the lingual artery is lateral to which of the following structures?",
+        "options": {
+            "A": "Hypoglossus muscle",
+            "B": "Facial artery",
+            "C": "Hyoglossus muscle",
+            "D": "Genioglossus muscle",
+            "E": "Styloglossus muscle"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KSTN97BH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Intestinal infarction due to SMA blocks which part of large intestine spared?",
+        "options": {
+            "A": "Appendix",
+            "B": "Ileum",
+            "C": "Ascending colon",
+            "D": "Descending colon",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6JTADSA2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Liver biopsy route in cirrhosis?",
+        "options": {
+            "A": "T9-T10 midclavicular line",
+            "B": "T11 midclavicular line",
+            "C": "Subcostal angle",
+            "D": "Substernal angle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5ECW4TBG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Location for ascitic tap?",
+        "options": {
+            "A": "Right lower quadrant, 2 cm medial to anterior superior iliac spine",
+            "B": "Right upper quadrant, 2 cm medial",
+            "C": "Left lower quadrant, 2 cm medial",
+            "D": "Left upper quadrant, 2 cm medial",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Safer site: right lower quadrant lateral to rectus, avoids inferior epigastric vessels. Reference: Bailey & Love - Abdominal Procedures.",
         "hint": ""
     },
     {
@@ -2416,6 +3827,87 @@
         "hint": ""
     },
     {
+        "id": "WH8DTR9S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Lymphatic drainage of tumout at anal verge below pectinate line is",
+        "options": {
+            "A": "Superficial inguinal LNs",
+            "B": "Deep inguinal LNs",
+            "C": "Lumbar lymph nodess",
+            "D": "Pelvic lymph nodes",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RNY9QGPJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most common site of ulceration at stomach",
+        "options": {
+            "A": "Antrum of stomach",
+            "B": "Pylorus of stomach",
+            "C": "Lesser curvature",
+            "D": "Greater curvature",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "W67T8CEF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Nail on wood fell down on laboers dorsum of foot between 1st and 2nd metatarsal bone, which of the following artery will be damaged?",
+        "options": {
+            "A": "Dorsalis pedis artery",
+            "B": "Medial plantar artery",
+            "C": "Lateral plantar artery",
+            "D": "Anterior tibial artery",
+            "E": "Posterior tibial artery"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "2VGQ59A6",
         "year": [
             "2026"
@@ -2470,6 +3962,33 @@
         "hint": ""
     },
     {
+        "id": "V3YLCMXA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient known case of gastric ulcer now presents in OPD with complain of B/L knee joint pain.DOC will be:",
+        "options": {
+            "A": "Meloxicam",
+            "B": "Ibuprofen",
+            "C": "Celecoxib",
+            "D": "Diclofenac",
+            "E": "PPI"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "SYTRB8UD",
         "year": [
             "2026"
@@ -2494,6 +4013,62 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "22HNSSNQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with bleeding from the post duodenal ulcer rupture which of the following artery is responsible for this?",
+        "options": {
+            "A": "Superior pancreaticoduodenal",
+            "B": "SMA",
+            "C": "Gastroduodenal artery",
+            "D": "Celiac artery",
+            "E": "Splenic"
+        },
+        "correctAnswer": "C",
+        "explanation": "Most common location of duodenalulcer 1st part of duodenum. Perforation of posterior wall of duodenum bleeds by gastroduodenal artery. Most common location of gastric ulcernear incisura angularis on lesser curvature. Perforation of lesser curvature bleedsby left gastric artery. Perforation of posterior wall ofstomach bleeds by splenic artery",
+        "hint": ""
+    },
+    {
+        "id": "FR3TXEEV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with GERD and postprandial pain that relieves on eating, on endoscopy this is minor bleed on back wall of duodenum, artery in this region with potential to bleed",
+        "options": {
+            "A": "Superior pancreaticoduodenal artery",
+            "B": "Inferior pancreaticoduodenal artery",
+            "C": "Gastric artery",
+            "D": "Splenic artery",
+            "E": "Gastroduodenal artery"
+        },
+        "correctAnswer": "E",
+        "explanation": "Duodenal ulcers, especially those located on the posterior wall of the first part of the duodenum, can erode into the highly vascular tissue behind it. The artery most at risk of severe hemorrhage in this area is the Gastroduodenal Artery (GDA).",
         "hint": ""
     },
     {
@@ -2551,6 +4126,33 @@
         "hint": "<p><br></p>"
     },
     {
+        "id": "KEKH46MC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Peptic ulcer pain is transmitted via",
+        "options": {
+            "A": "Greater Splanchnic Nerve",
+            "B": "Lesser Splanchnic Nerve",
+            "C": "Least Splanchnic Nerve",
+            "D": "Costal Nerve",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ND5V8GSZ",
         "year": [
             "2026"
@@ -2572,6 +4174,60 @@
             "C": "SMA",
             "D": "Celiac trunk",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RSR5JD5V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Posterior perforation of the posterior wall of the stomach will lead to leakage of gastric contents into?",
+        "options": {
+            "A": "Greater Sac",
+            "B": "Lesser Sac",
+            "C": "Right Subhepatic Space",
+            "D": "Right Posterior subphrenic space",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZMXKX6KT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Posterior wall gastric ulcer pain carried by:",
+        "options": {
+            "A": "Lesser Splanchnic Nerve",
+            "B": "Greater Splanchnic Nerve",
+            "C": "Least Splanchnic Nerve",
+            "D": "9th Intercostal Nerve",
+            "E": "10th Intercostal Nerve"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -2601,6 +4257,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TJNLTM5G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Regarding esophagous true is:",
+        "options": {
+            "A": "Upper 1/3rd has both striated and smooth",
+            "B": "Entire esophagus has Stratified Squamous",
+            "C": "Upper 1/3rd has columnar",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -2659,6 +4342,33 @@
         "hint": ""
     },
     {
+        "id": "EEAZGJVM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Right gastric artery is the branch of:",
+        "options": {
+            "A": "Gastroduodenal artery",
+            "B": "Right splenic artery",
+            "C": "Proper hepatic artery",
+            "D": "Left Hepatic artery",
+            "E": "Left Gastric artery"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MXDQUJW9",
         "year": [
             "2026"
@@ -2683,6 +4393,33 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5S4RY6M7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "SMA is located at",
+        "options": {
+            "A": "L1",
+            "B": "T12",
+            "C": "L3",
+            "D": "L2",
+            "E": "L5"
+        },
+        "correctAnswer": "A",
+        "explanation": "L2 - Renal Artery. L1 - Superior mesenteric artery. L3 - Inferior Mesenteric Artery. L4 -Bifurcation of Descending Aorta. L5 - Start of IVC",
         "hint": ""
     },
     {
@@ -2713,6 +4450,33 @@
         "hint": ""
     },
     {
+        "id": "6HTJGTKV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Structure damaged in fracture of sacrum and ischial spine:",
+        "options": {
+            "A": "Coccyx",
+            "B": "Anal canal",
+            "C": "Rectum",
+            "D": "Illium",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "6E79RDW7",
         "year": [
             "2026"
@@ -2734,6 +4498,33 @@
             "C": "Superior mesenteric artery",
             "D": "Common iliac artery",
             "E": "Internal iliac artery"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L222H63M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Surgeon nick hepatodudenal ligament during surgery from right side which structure Should be preserved?",
+        "options": {
+            "A": "Portal vein",
+            "B": "CBD",
+            "C": "Cystic artery",
+            "D": "Gastric artery",
+            "E": "Hepatic artery"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -2821,6 +4612,141 @@
         "hint": ""
     },
     {
+        "id": "Z64CM6QR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The lateral boundary of the deep inguinal ring is formed by:",
+        "options": {
+            "A": "Fascia transversalis",
+            "B": "Fascia transversalis and conjoint tendon",
+            "C": "Internal oblique",
+            "D": "Transversus abdominis and inguinal ligament",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9FYZYVVW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The lesser sac of the peritoneum is closely related to which important vascular structure?",
+        "options": {
+            "A": "Portal triad",
+            "B": "Inferior vena cava",
+            "C": "Abdominal aorta",
+            "D": "Renal artery",
+            "E": "Superior mesenteric artery"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CHAYZPGQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The lymphatic drainage of the anal canal below the pectinate line is primarily to which lymph nodes?",
+        "options": {
+            "A": "Para-aortic",
+            "B": "Superficial inguinal",
+            "C": "Deep inguinal",
+            "D": "Medial inguinal",
+            "E": "Internal iliac"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NQDHC8ES",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The Middle Colic Artery is the main supply to the transverse colon. An accessory or aberrant Middle Colic Artery is occasionally found. Which of the following main arteries is the Middle Colic Artery normally a branch of?",
+        "options": {
+            "A": "Superior Mesenteric Artery",
+            "B": "Inferior Mesenteric Artery",
+            "C": "Right Gastroduodenal Artery",
+            "D": "Celiac Trunk",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Middle Colic Artery is the vessel that supplies the transverse colon and is a primary, direct branch of the Superior Mesenteric Artery. The IMA supplies the left colon and rectum.",
+        "hint": ""
+    },
+    {
+        "id": "2YAN2ETZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The middle third of the esophagus receives its arterial blood supply from which source?",
+        "options": {
+            "A": "Inferior thyroid artery",
+            "B": "Celiac trunk",
+            "C": "Descending aorta",
+            "D": "Left gastric artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "VQWUJPJH",
         "year": [
             "2026"
@@ -2875,6 +4801,60 @@
         "hint": ""
     },
     {
+        "id": "39PJXAUH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The safest site for liver biopsy is:",
+        "options": {
+            "A": "12th rib, midclavicular line",
+            "B": "8th rib, anterior axillary line",
+            "C": "9th or 10th ICS, midaxillary line",
+            "D": "11th ICS, posterior axillary line",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XC9HT5JD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The Short Gastric Arteries are small vessels that supply the fundus of the stomach. From which major abdominal artery do the short gastric arteries arise?",
+        "options": {
+            "A": "Splenic Artery",
+            "B": "Right Hepatic Artery",
+            "C": "Left Gastric Artery",
+            "D": "Common Hepatic Artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The Short Gastric Arteries branch off the main trunk or distal branches of the Splenic Artery and run within the gastrosplenic ligament to supply the fundus of the stomach.",
+        "hint": ""
+    },
+    {
         "id": "49PEWDGL",
         "year": [
             "2026"
@@ -2925,6 +4905,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "68YYEDCL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The superior rectal artery, the main arterial supply to the rectum, is a direct branch of which of the following vessels?",
+        "options": {
+            "A": "Internal iliac artery",
+            "B": "Inferior mesenteric artery",
+            "C": "Middle sacral artery",
+            "D": "Internal pudendal artery",
+            "E": "Common iliac artery"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -3064,6 +5071,87 @@
         "hint": ""
     },
     {
+        "id": "VZ47TUDR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the anatomical landmark differentiating direct vs indirect inguinal hernia?",
+        "options": {
+            "A": "Inguinal nerve",
+            "B": "Deep inguinal ring",
+            "C": "Inferior epigastric vessels",
+            "D": "Superficial inguinal ring",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Indirect hernia -> lateral to inferior epigastric vessels. Direct hernia -> medial to inferior epigastric vessels.",
+        "hint": ""
+    },
+    {
+        "id": "SFXSHVY3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the main arterial supply to the middle one-third of the esophagus?",
+        "options": {
+            "A": "Inferior thyroid artery",
+            "B": "Bronchial arteries",
+            "C": "Esophageal branches of the aorta",
+            "D": "Left gastric artery",
+            "E": "Phrenic arteries"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2FHMPJ2D",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the most common and classic anatomical location for a benign peptic gastric ulcer?",
+        "options": {
+            "A": "Greater curvature",
+            "B": "Lesser curvature",
+            "C": "Upper part of the pylorus",
+            "D": "Lower part of pylorus near incisura angularis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MJPBWMFD",
         "year": [
             "2026"
@@ -3087,6 +5175,33 @@
             "E": "Transverse mesocoln"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JRMADW4S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Where is a percutaneous liver biopsy usually performed?",
+        "options": {
+            "A": "Left 5th ICS MCL",
+            "B": "Right 6th ICS MCL",
+            "C": "Right 8th/9th ICS midaxillary line",
+            "D": "Subcostal right side flank",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -3118,6 +5233,60 @@
         "hint": ""
     },
     {
+        "id": "2B3Q9RTR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which key anatomical structure, acting as a muscular suspensory ligament for the duodenum and jejunum junction, is used clinically to definitively divide the gastrointestinal tract into Upper GI Bleeding and Lower GI Bleeding?",
+        "options": {
+            "A": "Ligament of Treitz",
+            "B": "Ileocecal valve",
+            "C": "Pyloric sphincter",
+            "D": "Anal verge",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2D92BCZH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which major artery runs along the superior border of the pancreas, directly posterior to the body and tail of the stomach, making it vulnerable to injury?",
+        "options": {
+            "A": "Splenic artery",
+            "B": "Right gastroepiploic artery",
+            "C": "Gastroduodenal artery",
+            "D": "Left gastric artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "2D3HFM6S",
         "year": [
             "2026"
@@ -3145,6 +5314,87 @@
         "hint": ""
     },
     {
+        "id": "6589LWJH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which major, large retroperitoneal structure lies immediately posterior to the third part of the duodenum?",
+        "options": {
+            "A": "Inferior Vena Cava (IVC)",
+            "B": "Head of pancreas",
+            "C": "Superior Mesenteric Artery",
+            "D": "Aorta",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6ZLNV5H5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following artery is located at the Anterior of 3rd part of duodenum?",
+        "options": {
+            "A": "SMA",
+            "B": "IMA",
+            "C": "Aorta",
+            "D": "Inferior Epigastric Artery",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The third part of the duodenum passes across the midline, posterior to the SMA while SMV lie anterior to it.",
+        "hint": ""
+    },
+    {
+        "id": "N2K97VB6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following drugs will cross the placenta and effect the fetus?",
+        "options": {
+            "A": "PTU",
+            "B": "Insulin",
+            "C": "Thyroxine",
+            "D": "Penicillin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "WDRQKQU8",
         "year": [
             "2026"
@@ -3168,6 +5418,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3S8YWFVQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following structure prevent the backflow of contents from cecum to ileum?",
+        "options": {
+            "A": "Ileocecal sphincter",
+            "B": "Appendical orifice",
+            "C": "Cecal contractions",
+            "D": "Ileocecal valve",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -3415,6 +5692,60 @@
         "hint": ""
     },
     {
+        "id": "64AMT29Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure forms the medial wall of the ischiorectal (ischioanal) fossa?",
+        "options": {
+            "A": "Obturator internus muscle",
+            "B": "Levator ani muscle",
+            "C": "Sacrotuberous ligament",
+            "D": "Gluteus maximus muscle",
+            "E": "Piriformis muscle"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NXSGN5YC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure is located anterior to the second part of the duodenum?",
+        "options": {
+            "A": "Right kidney",
+            "B": "Head of pancreas",
+            "C": "Inferior Vena Cava",
+            "D": "Transverse colon",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "The transverse colon and its mesentery typically cross anteriorly to the second part of the duodenum, separating it from the abdominal wall.",
+        "hint": ""
+    },
+    {
         "id": "2GWVULRV",
         "year": [
             "2026"
@@ -3465,6 +5796,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7CR57RZ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which structure lies anterior to the pancreas?",
+        "options": {
+            "A": "Superior mesenteric vein",
+            "B": "Inferior mesenteric vein",
+            "C": "Sigmoid colon",
+            "D": "Transverse mesocolon",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -3574,2364 +5932,6 @@
         },
         "correctAnswer": "B",
         "explanation": "Esophageal varices occur at the junction of the left gastric vein (portal) and azygos vein (systemic) in portal hypertension.",
-        "hint": ""
-    },
-    {
-        "id": "RSD94YQR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25-year-old male presents with direct inguinal hernia. The hernia sac passes through which anatomical defect?",
-        "options": {
-            "A": "External oblique aponeurosis",
-            "B": "Internal oblique fascia",
-            "C": "Transversalis fascia",
-            "D": "Scarpa's fascia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ECYXDMAD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30-year-old male is undergoing evaluation for biliary obstruction. Which of the following controls the flow of bile and pancreatic juice into the duodenum?",
-        "options": {
-            "A": "Sphincter of Oddi",
-            "B": "Lower esophageal sphincter",
-            "C": "Pyloric sphincter",
-            "D": "Ileocecal junction",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The sphincter of Oddi regulates release of bile and pancreatic secretions into the duodenum. Reference: Guyton & Hall, Textbook of Medical Physiology, 14th edition.",
-        "hint": ""
-    },
-    {
-        "id": "KFG827UP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 34 year old man sustains blunt abdominal trauma in a motor vehicle accident. Imaging reveals injury to the structure located anterior to the third part of the duodenum. Which of the following is most likely damaged?",
-        "options": {
-            "A": "Abdominal aorta",
-            "B": "Inferior vena cava",
-            "C": "Superior mesenteric artery",
-            "D": "Portal vein",
-            "E": "Celiac trunk"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NRVUD4EW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35 year old patient presented in surgical opd with complain of severe pain over left iliac fossa since morning along with constipation, investigation reveals sigmoid volvulus, that is need to be urgently operated to avoid ischemia of following arteries?",
-        "options": {
-            "A": "Left colic artery",
-            "B": "Superior mesenteric artery",
-            "C": "Sigmoidal arteries",
-            "D": "Superior rectal artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PBT7C9EU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35 year old patient presented in surgical opd with complaint of severe pain over left iliac fossa since morning along with constipation, investigation reveals sigmoid volvulus, that is need to be urgently operated to avoid ischemia of following arteries?",
-        "options": {
-            "A": "Inferior mesenteric artery",
-            "B": "Celiac artery",
-            "C": "Superior mesenteric artery",
-            "D": "Middle colic artery",
-            "E": "Marginal artery of Drummond"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2DAHAJ5Y",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35-year-old male presents for routine checkup. Which part of the gastrointestinal tract secretes intrinsic factor essential for vitamin B12 absorption?",
-        "options": {
-            "A": "Fundus of stomach",
-            "B": "Pylorus of stomach",
-            "C": "Duodenum",
-            "D": "Ileum",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Intrinsic factor is secreted by parietal cells located in the fundus and body of the stomach. It is essential for vitamin B12 absorption in the ileum. Reference: Guyton & Hall, Textbook of Medical Physiology, 14th edition.",
-        "hint": ""
-    },
-    {
-        "id": "HA59T7C9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 36 year old man is undergoing exploratory laparotomy after blunt abdominal trauma. The surgeon identifies the third part of the duodenum and notes a large vascular structure posterior to it. Which of the following is most likely?",
-        "options": {
-            "A": "Superior mesenteric artery",
-            "B": "Superior mesenteric vein",
-            "C": "Aorta and inferior vena cava",
-            "D": "Portal vein and splenic vein",
-            "E": "Celiac artery and portal vein"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "576AW6RG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old woman with chronic hepatitis B requires a percutaneous liver biopsy to evaluate fibrosis. Which of the following is the most appropriate site for needle insertion to minimize complications?",
-        "options": {
-            "A": "4th intercostal space, mid-clavicular line",
-            "B": "6th intercostal space, anterior axillary line",
-            "C": "8th-10th intercostal space, mid-axillary line (right side)",
-            "D": "8th-10th intercostal space, mid-scapular line (left side)",
-            "E": "10th intercostal space, paravertebral line"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3FZSRJBL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 48-year-old man undergoes pelvic surgery for a rectal mass. During the procedure, the surgeon notes that one of the arterial branches that usually arises from the anterior division of the internal iliac artery is absent bilaterally, which is considered a known congenital variation. Despite this, the rectum continues to receive adequate blood supply from the superior and inferior rectal arteries. Which artery is most likely congenitally absent in this patient?",
-        "options": {
-            "A": "Superior rectal artery",
-            "B": "Middle rectal artery",
-            "C": "Inferior rectal artery",
-            "D": "Sacral artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VQSDYVZU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58 year old man undergoes subtotal esophagectomy for esophageal cancer. The stomach is mobilized into the thorax to anastomose with the remaining esophagus. Which artery must be preserved to maintain the stomach's blood supply?",
-        "options": {
-            "A": "Short gastric artery",
-            "B": "Right gastric artery",
-            "C": "Left gastric artery",
-            "D": "Right gastroepiploic artery",
-            "E": "Left gastroepiploic artery"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AKFVHZ9J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old man presents with a painless ulcer at the anal verge. Biopsy confirms squamous cell carcinoma located below the dentate line. Which lymph nodes are most likely to be involved first?",
-        "options": {
-            "A": "Internal iliac nodes",
-            "B": "External iliac nodes",
-            "C": "Inferior mesenteric nodes",
-            "D": "Superficial inguinal nodes",
-            "E": "Para-aortic nodes"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PKU4GUQA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A basin presents with a ride grand so I'd located later and infeated a pre victorical what is most likely diagnosis?",
-        "options": {
-            "A": "Hydrocele",
-            "B": "Indirect inguinal hernia",
-            "C": "Femoral hernia",
-            "D": "Varicocele",
-            "E": "Direct inguinal hernia"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PYGXT3JF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient has chronic constipation and difficulty passing stool. She reports persistent difficulty during defecation, to which she is training excessively in to relieve her constipation. Which of the following muscle helps in this regard?",
-        "options": {
-            "A": "Relaxation of puborectalis muscle",
-            "B": "Relaxation of pubococcygeus muscle",
-            "C": "Contraction of Levator Ani",
-            "D": "Contraction of puborectalis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The puborectalis muscle loops around the rectum, creating a sharp angle known as the anorectal angle. This angle acts like a sling, maintaining fecal continence (preventing stool from leaving). To allow defecation (relieve constipation), this muscle must relax, which straightens the angle, allowing the contents to pass easily. Straining against a contracted puborectalis muscle is ineffective and contributes to chronic constipation and pelvic floor dysfunction.",
-        "hint": ""
-    },
-    {
-        "id": "4GRUVCV7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A histological section shows lobules and serous acini, typical finding of which of the following gland?",
-        "options": {
-            "A": "Sweet gland",
-            "B": "Submandibular gland",
-            "C": "Sublingual gland",
-            "D": "Parotid gland",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WB6FC7HD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A known case of cholelithiasis felt pain in neck and medical aspect of scapulae after a fatty meal. The pain is originating from?",
-        "options": {
-            "A": "Fundus of Gall Bladder",
-            "B": "Liver",
-            "C": "Gallbladder",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Gallbladder disease (cholelithiasis) can cause inflammation that irritates the adjacent structures. The parietal peritoneum lining the inferior surface of the Diaphragm is sensitive to this inflammation. The diaphragm is innervated by the Phrenic Nerve (C3, C4, C5), which shares spinal cord segments with the nerves supplying the skin of the shoulder and neck (C4 dermatome). This shared innervation pathway causes the pain to be referred to the neck and medial aspect of the scapula.",
-        "hint": ""
-    },
-    {
-        "id": "9SY5S6SQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient came with epigastric pain heartburn on endoscopy perforation of 1st part of duodenum was seen which artery is eroded in duodenal ulcer?",
-        "options": {
-            "A": "Gastroepiploic artery",
-            "B": "Gastroduodenal artery",
-            "C": "Right gastric artery",
-            "D": "Left gastric artery",
-            "E": "Splenic artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "Most common location of duodenal ulcer 1st part of duodenum. Perforation of posterior wall of duodenum bleeds by gastroduodenal artery. Most common location of gastric ulcer near incisura angularis on lesser curvature. Perforation of lesser curvature bleeds by left gastric artery. Perforation of posterior wall of stomach bleeds by splenic artery.",
-        "hint": ""
-    },
-    {
-        "id": "F9WNLF5P",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops bleeding from a gastric ulcer located on the posterior wall of the stomach. Which artery is most likely to be the source of bleeding?",
-        "options": {
-            "A": "Left gastric artery",
-            "B": "Right gastric artery",
-            "C": "Left gastroepiploic artery",
-            "D": "Short gastric arteries",
-            "E": "Splenic artery"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RTHTKL3Y",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has liver cirrhosis. Route of hepatic biopsy is:",
-        "options": {
-            "A": "T9-10 midaxillary line",
-            "B": "T11 mid clavicular line",
-            "C": "Subcostal angle",
-            "D": "Substernal angle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9AFGSPE7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning",
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is lying supine on the operating table and undergoes a laparotomy. If One litre of normal saline is accidentally spilled into the open abdomen, into which anatomical spaces will the fluid most likely accumulate?",
-        "options": {
-            "A": "Right and left paracolic gutters",
-            "B": "Right and left subphrenic spaces",
-            "C": "Right and left subhepatic spaces",
-            "D": "Mid pelvis pouch",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4USRB3RE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with Boil on perineal area, Anal glands enlarged. Rupture of Boil eroding the lateral wall will lead to spread of the Pus into?",
-        "options": {
-            "A": "Ischiorectal fossa",
-            "B": "Deep perineal pouch",
-            "C": "Rectopubic space",
-            "D": "RectoVesical space",
-            "E": "Superficial perineal pouch"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2FPUHRM2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with RHC pain dermatome for cholecystitis include:",
-        "options": {
-            "A": "T3-9",
-            "B": "T10-12",
-            "C": "T7-9",
-            "D": "T8-T12",
-            "E": "T7-L1"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PGME3Y64",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with right sided inguinal hernia, cough impulse positive but deep ring occlusion test is negative, which anatomical landmark is used to differentiate between direct and indirect inguinal hernia:",
-        "options": {
-            "A": "Fascia transversalis",
-            "B": "Deep ring",
-            "C": "Lateral border of external oblique",
-            "D": "Symphysis pubis",
-            "E": "Inferior epigastric vessels"
-        },
-        "correctAnswer": "E",
-        "explanation": "The relationship to the Inferior Epigastric Vessels defines the hernia type: Indirect hernias are lateral to the vessels, and Direct hernias are medial to them (Hesselbach's triangle).",
-        "hint": ""
-    },
-    {
-        "id": "K8JTR852",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a parotid gland swelling. The majority of salivary gland tumors are located in which gland?",
-        "options": {
-            "A": "Parotid gland - 85% benign tumors",
-            "B": "Submandibular gland tumors involve facial nerve",
-            "C": "Sublingual gland most common malignancy",
-            "D": "Submandibular gland 80% benign",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Parotid gland accounts for ~85% of all salivary gland tumors, most of which are benign (e.g., pleomorphic adenoma). Submandibular and sublingual tumors are rarer, with higher chances of malignancy.",
-        "hint": ""
-    },
-    {
-        "id": "H6L43WZK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a swelling near the angle of the jaw. Biopsy reveals a tumor originating from a serous salivary gland. Which gland is the most likely primary site?",
-        "options": {
-            "A": "Parotid gland",
-            "B": "Submandibular gland",
-            "C": "Sublingual gland",
-            "D": "Minor salivary glands",
-            "E": "Lacrimal gland"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CWW9MFHS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with bleeding from the first part of duodenum, embolization to control hemorrhage would most appropriately target which of the following artery?",
-        "options": {
-            "A": "Gastroepiploic artery",
-            "B": "Gastroduodenal artery",
-            "C": "Right gastric artery",
-            "D": "Left gastric artery",
-            "E": "Splenic artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8KKBYQ7C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with elevated alkaline phosphatase and obstructive jaundice. Imaging reveals a stone obstructing the common bile duct. Which artery is most at the risk of injury during surgical intervention in this area?",
-        "options": {
-            "A": "Gastroduodenal artery",
-            "B": "Left gastric artery",
-            "C": "Splenic artery",
-            "D": "Superior mesenteric artery",
-            "E": "Inferior pancreaticoduodenal artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XAHFHEHM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with right hypochondrium pain and positive Murphy's sign, on histology of affected organ, which of the following microscopic feature of involved organ you will able to see?",
-        "options": {
-            "A": "Cilia",
-            "B": "Microvilli",
-            "C": "Goblet cells",
-            "D": "Villi",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PHTVKR88",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with peptic ulcer has epigastric pain carried by which of following nerve?",
-        "options": {
-            "A": "Intercostal nerve",
-            "B": "Lesser splanchnic nerve",
-            "C": "Greater splanchnic nerve",
-            "D": "Left splanchnic nerve",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JECR54DN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with peptic ulcer has Epigastric pain carried by which of the following nerve?",
-        "options": {
-            "A": "Intercostal nerve",
-            "B": "Greater splanchnic nerve",
-            "C": "Lesser splanchnic nerve",
-            "D": "Least splanchnic nerve",
-            "E": "Internal Thoracic"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y68LYW37",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A person presented to emergency with blood in vomitus and signs of hypovolemic shock. On opening the abdomen surgeon observed bleeding from posterior wall of duodenum. Which artery would more likely be the cause of bleeding?",
-        "options": {
-            "A": "Left and right gastric",
-            "B": "Left gastric",
-            "C": "Gastropyloric",
-            "D": "Gastroduodenal",
-            "E": "Superior mesenteric"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DLKTCJ2J",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A person presents with abdominal pain for 2 months. On investigations there is a mass in duodenum that is found to be arising from submucosa Which of the following is secreted by this part of duodenum from where mass is arising.",
-        "options": {
-            "A": "Lactase",
-            "B": "Peptidase",
-            "C": "Acidic Mucus",
-            "D": "Urogastrone",
-            "E": "Gastrin"
-        },
-        "correctAnswer": "D",
-        "explanation": "Brunner gland located in submucosa of duodenum secrete alkaline mucus and urogastrone.",
-        "hint": ""
-    },
-    {
-        "id": "TLXD4YGF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A surgeon was performing laparotomy and a house officer accidentally spilled normal saline into the abdominal cavity. The patient is lying supine. After passing over the pelvic brim, where will the fluid most likely accumulate?",
-        "options": {
-            "A": "Right and left paracolic gutters",
-            "B": "Subphrenic space",
-            "C": "Subhepatic (Morison's pouch)",
-            "D": "Pelvic cavity",
-            "E": "Lesser sac"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UYRKUVVL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An Elderly man with squamous CA of penis, Which of the following factor is linked with penile Carcinoma?",
-        "options": {
-            "A": "Hypospadias",
-            "B": "Phimosis",
-            "C": "Bowel disease",
-            "D": "HSV",
-            "E": "HPV"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JNSJACXH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "At the mid-inguinal point, an important anatomical structure is located. Which of the following is found at the midpoint of the inguinal ligament?",
-        "options": {
-            "A": "Superficial inguinal ring",
-            "B": "Deep inguinal ring",
-            "C": "Inferior epigastric artery",
-            "D": "Femoral nerve",
-            "E": "Femoral artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "C9YYSUG7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "At what level is esophageal opening present in diaphragm?",
-        "options": {
-            "A": "T8",
-            "B": "T12",
-            "C": "T10",
-            "D": "T9",
-            "E": "T6"
-        },
-        "correctAnswer": "C",
-        "explanation": "(Snell + KLM) Aortic opening (T12) - Aorta, thoracic duct and azygous vein. Esophagus opening (T10) - Esophagus, Right and left vagus, Lymphatics. Caval opening (T8) - IVC and Right phrenic.",
-        "hint": ""
-    },
-    {
-        "id": "7VSWX7D9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "At what spinal level does the rectum begin?",
-        "options": {
-            "A": "L5",
-            "B": "S3",
-            "C": "S1",
-            "D": "L1",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SLJHJUN7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cancer of Head of pancreas will compress which structure:",
-        "options": {
-            "A": "SMA",
-            "B": "CBD",
-            "C": "Portal vein",
-            "D": "Pancreatic duct",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ENDT4NP6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cells in intestinal folds were analysed under the microscope, which showed red granules in the cytoplasm what is the characteristic secretion of these cells?",
-        "options": {
-            "A": "Serotonin",
-            "B": "Mucin",
-            "C": "Gastrin",
-            "D": "Secretin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GL4LZPFP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cystic artery is the branch of:",
-        "options": {
-            "A": "Gastroduodenal artery",
-            "B": "Right Gastric artery",
-            "C": "Right hepatic artery",
-            "D": "Left Hepatic artery",
-            "E": "Left Gastric artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CVWAE4WW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Deep inguinal ring is due to defect in:",
-        "options": {
-            "A": "External intercostal",
-            "B": "External oblique",
-            "C": "Fascia transversalis",
-            "D": "Rectus abdominis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RUGBRD89",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Demarcation of Upper GIT from Lower GIT is shown by:",
-        "options": {
-            "A": "Ligament of treitz",
-            "B": "Superior mesenteric artery",
-            "C": "Falciform ligament",
-            "D": "Tail of pancreas",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MUAEWNWV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "Medium",
-        "question": "During a suprapubic paracentesis for ascites performed with an empty bladder, the patient developed bleeding due to vascular injury. Which vessel is most likely to have been injured?",
-        "options": {
-            "A": "Superior vesical artery",
-            "B": "Inferior epigastric artery",
-            "C": "Obturator artery",
-            "D": "External pudendal artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "64LYPNXY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During an appendectomy, the surgeon needs to ligate the appendicular artery to control bleeding. The appendicular artery is a branch of an artery arising from the superior mesenteric artery, which supplies the terminal ileum and cecum as well. Which artery gives rise directly to the appendicular artery?",
-        "options": {
-            "A": "Right colic artery",
-            "B": "Post Cecal Artery",
-            "C": "Ileocolic artery",
-            "D": "Inferior mesenteric artery",
-            "E": "Marginal artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FQGAKXHR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Esophageal opening passes through which vertebral level of diaphragm?",
-        "options": {
-            "A": "T8",
-            "B": "T10",
-            "C": "L5",
-            "D": "T12",
-            "E": "L2"
-        },
-        "correctAnswer": "B",
-        "explanation": "Vena caval opening - T8. Esophageal opening T10. Aortic opening - T12",
-        "hint": ""
-    },
-    {
-        "id": "Z8KWK4M3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "GastroDuodenal Artery is a branch of",
-        "options": {
-            "A": "Left Gastric Artery",
-            "B": "Right gastric artery",
-            "C": "Common hepatic artery",
-            "D": "Splenic artery",
-            "E": "Pancreatoduodenal artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CQE96YFN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In an occlusion of the superior mesenteric artery (SMA), which portion of the large intestine is typically spared due to collateral blood supply?",
-        "options": {
-            "A": "Cecum",
-            "B": "Ascending colon",
-            "C": "Transverse colon",
-            "D": "Descending colon",
-            "E": "Sigmoid colon"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AJ6WK3SZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In appendicitis pain shift from the umbilicus to RIF through which of the following?",
-        "options": {
-            "A": "T11-12",
-            "B": "T8-10",
-            "C": "T10-11",
-            "D": "T8-9",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PDHP3Y4F",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In Perforation of Posterior wall of stomach which artery is involved?",
-        "options": {
-            "A": "Gastroduodenal artery",
-            "B": "Splenic artery",
-            "C": "Superior pancreatic artery",
-            "D": "Left gastric artery",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T5Q8KHPL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In the region of the submandibular gland, the lingual artery is lateral to which of the following structures?",
-        "options": {
-            "A": "Hypoglossus muscle",
-            "B": "Facial artery",
-            "C": "Hyoglossus muscle",
-            "D": "Genioglossus muscle",
-            "E": "Styloglossus muscle"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KSTN97BH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Intestinal infarction due to SMA blocks which part of large intestine spared?",
-        "options": {
-            "A": "Appendix",
-            "B": "Ileum",
-            "C": "Ascending colon",
-            "D": "Descending colon",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6JTADSA2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Liver biopsy route in cirrhosis?",
-        "options": {
-            "A": "T9-T10 midclavicular line",
-            "B": "T11 midclavicular line",
-            "C": "Subcostal angle",
-            "D": "Substernal angle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5ECW4TBG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Location for ascitic tap?",
-        "options": {
-            "A": "Right lower quadrant, 2 cm medial to anterior superior iliac spine",
-            "B": "Right upper quadrant, 2 cm medial",
-            "C": "Left lower quadrant, 2 cm medial",
-            "D": "Left upper quadrant, 2 cm medial",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Safer site: right lower quadrant lateral to rectus, avoids inferior epigastric vessels. Reference: Bailey & Love - Abdominal Procedures.",
-        "hint": ""
-    },
-    {
-        "id": "WH8DTR9S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Lymphatic drainage of tumout at anal verge below pectinate line is",
-        "options": {
-            "A": "Superficial inguinal LNs",
-            "B": "Deep inguinal LNs",
-            "C": "Lumbar lymph nodess",
-            "D": "Pelvic lymph nodes",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RNY9QGPJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most common site of ulceration at stomach",
-        "options": {
-            "A": "Antrum of stomach",
-            "B": "Pylorus of stomach",
-            "C": "Lesser curvature",
-            "D": "Greater curvature",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W67T8CEF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Nail on wood fell down on laboers dorsum of foot between 1st and 2nd metatarsal bone, which of the following artery will be damaged?",
-        "options": {
-            "A": "Dorsalis pedis artery",
-            "B": "Medial plantar artery",
-            "C": "Lateral plantar artery",
-            "D": "Anterior tibial artery",
-            "E": "Posterior tibial artery"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V3YLCMXA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient known case of gastric ulcer now presents in OPD with complain of B/L knee joint pain.DOC will be:",
-        "options": {
-            "A": "Meloxicam",
-            "B": "Ibuprofen",
-            "C": "Celecoxib",
-            "D": "Diclofenac",
-            "E": "PPI"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "22HNSSNQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient presented with bleeding from the post duodenal ulcer rupture which of the following artery is responsible for this?",
-        "options": {
-            "A": "Superior pancreaticoduodenal",
-            "B": "SMA",
-            "C": "Gastroduodenal artery",
-            "D": "Celiac artery",
-            "E": "Splenic"
-        },
-        "correctAnswer": "C",
-        "explanation": "Most common location of duodenalulcer 1st part of duodenum. Perforation of posterior wall of duodenum bleeds by gastroduodenal artery. Most common location of gastric ulcernear incisura angularis on lesser curvature. Perforation of lesser curvature bleedsby left gastric artery. Perforation of posterior wall ofstomach bleeds by splenic artery",
-        "hint": ""
-    },
-    {
-        "id": "FR3TXEEV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient presented with GERD and postprandial pain that relieves on eating, on endoscopy this is minor bleed on back wall of duodenum, artery in this region with potential to bleed",
-        "options": {
-            "A": "Superior pancreaticoduodenal artery",
-            "B": "Inferior pancreaticoduodenal artery",
-            "C": "Gastric artery",
-            "D": "Splenic artery",
-            "E": "Gastroduodenal artery"
-        },
-        "correctAnswer": "E",
-        "explanation": "Duodenal ulcers, especially those located on the posterior wall of the first part of the duodenum, can erode into the highly vascular tissue behind it. The artery most at risk of severe hemorrhage in this area is the Gastroduodenal Artery (GDA).",
-        "hint": ""
-    },
-    {
-        "id": "KEKH46MC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Peptic ulcer pain is transmitted via",
-        "options": {
-            "A": "Greater Splanchnic Nerve",
-            "B": "Lesser Splanchnic Nerve",
-            "C": "Least Splanchnic Nerve",
-            "D": "Costal Nerve",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RSR5JD5V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Posterior perforation of the posterior wall of the stomach will lead to leakage of gastric contents into?",
-        "options": {
-            "A": "Greater Sac",
-            "B": "Lesser Sac",
-            "C": "Right Subhepatic Space",
-            "D": "Right Posterior subphrenic space",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZMXKX6KT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Posterior wall gastric ulcer pain carried by:",
-        "options": {
-            "A": "Lesser Splanchnic Nerve",
-            "B": "Greater Splanchnic Nerve",
-            "C": "Least Splanchnic Nerve",
-            "D": "9th Intercostal Nerve",
-            "E": "10th Intercostal Nerve"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TJNLTM5G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Regarding esophagous true is:",
-        "options": {
-            "A": "Upper 1/3rd has both striated and smooth",
-            "B": "Entire esophagus has Stratified Squamous",
-            "C": "Upper 1/3rd has columnar",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EEAZGJVM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Right gastric artery is the branch of:",
-        "options": {
-            "A": "Gastroduodenal artery",
-            "B": "Right splenic artery",
-            "C": "Proper hepatic artery",
-            "D": "Left Hepatic artery",
-            "E": "Left Gastric artery"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5S4RY6M7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "SMA is located at",
-        "options": {
-            "A": "L1",
-            "B": "T12",
-            "C": "L3",
-            "D": "L2",
-            "E": "L5"
-        },
-        "correctAnswer": "A",
-        "explanation": "L2 - Renal Artery. L1 - Superior mesenteric artery. L3 - Inferior Mesenteric Artery. L4 -Bifurcation of Descending Aorta. L5 - Start of IVC",
-        "hint": ""
-    },
-    {
-        "id": "6HTJGTKV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Structure damaged in fracture of sacrum and ischial spine:",
-        "options": {
-            "A": "Coccyx",
-            "B": "Anal canal",
-            "C": "Rectum",
-            "D": "Illium",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L222H63M",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Surgeon nick hepatodudenal ligament during surgery from right side which structure Should be preserved?",
-        "options": {
-            "A": "Portal vein",
-            "B": "CBD",
-            "C": "Cystic artery",
-            "D": "Gastric artery",
-            "E": "Hepatic artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z64CM6QR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The lateral boundary of the deep inguinal ring is formed by:",
-        "options": {
-            "A": "Fascia transversalis",
-            "B": "Fascia transversalis and conjoint tendon",
-            "C": "Internal oblique",
-            "D": "Transversus abdominis and inguinal ligament",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9FYZYVVW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The lesser sac of the peritoneum is closely related to which important vascular structure?",
-        "options": {
-            "A": "Portal triad",
-            "B": "Inferior vena cava",
-            "C": "Abdominal aorta",
-            "D": "Renal artery",
-            "E": "Superior mesenteric artery"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CHAYZPGQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The lymphatic drainage of the anal canal below the pectinate line is primarily to which lymph nodes?",
-        "options": {
-            "A": "Para-aortic",
-            "B": "Superficial inguinal",
-            "C": "Deep inguinal",
-            "D": "Medial inguinal",
-            "E": "Internal iliac"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NQDHC8ES",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The Middle Colic Artery is the main supply to the transverse colon. An accessory or aberrant Middle Colic Artery is occasionally found. Which of the following main arteries is the Middle Colic Artery normally a branch of?",
-        "options": {
-            "A": "Superior Mesenteric Artery",
-            "B": "Inferior Mesenteric Artery",
-            "C": "Right Gastroduodenal Artery",
-            "D": "Celiac Trunk",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The Middle Colic Artery is the vessel that supplies the transverse colon and is a primary, direct branch of the Superior Mesenteric Artery. The IMA supplies the left colon and rectum.",
-        "hint": ""
-    },
-    {
-        "id": "2YAN2ETZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The middle third of the esophagus receives its arterial blood supply from which source?",
-        "options": {
-            "A": "Inferior thyroid artery",
-            "B": "Celiac trunk",
-            "C": "Descending aorta",
-            "D": "Left gastric artery",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "39PJXAUH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The safest site for liver biopsy is:",
-        "options": {
-            "A": "12th rib, midclavicular line",
-            "B": "8th rib, anterior axillary line",
-            "C": "9th or 10th ICS, midaxillary line",
-            "D": "11th ICS, posterior axillary line",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XC9HT5JD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The Short Gastric Arteries are small vessels that supply the fundus of the stomach. From which major abdominal artery do the short gastric arteries arise?",
-        "options": {
-            "A": "Splenic Artery",
-            "B": "Right Hepatic Artery",
-            "C": "Left Gastric Artery",
-            "D": "Common Hepatic Artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The Short Gastric Arteries branch off the main trunk or distal branches of the Splenic Artery and run within the gastrosplenic ligament to supply the fundus of the stomach.",
-        "hint": ""
-    },
-    {
-        "id": "68YYEDCL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The superior rectal artery, the main arterial supply to the rectum, is a direct branch of which of the following vessels?",
-        "options": {
-            "A": "Internal iliac artery",
-            "B": "Inferior mesenteric artery",
-            "C": "Middle sacral artery",
-            "D": "Internal pudendal artery",
-            "E": "Common iliac artery"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VZ47TUDR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the anatomical landmark differentiating direct vs indirect inguinal hernia?",
-        "options": {
-            "A": "Inguinal nerve",
-            "B": "Deep inguinal ring",
-            "C": "Inferior epigastric vessels",
-            "D": "Superficial inguinal ring",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Indirect hernia -> lateral to inferior epigastric vessels. Direct hernia -> medial to inferior epigastric vessels.",
-        "hint": ""
-    },
-    {
-        "id": "SFXSHVY3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the main arterial supply to the middle one-third of the esophagus?",
-        "options": {
-            "A": "Inferior thyroid artery",
-            "B": "Bronchial arteries",
-            "C": "Esophageal branches of the aorta",
-            "D": "Left gastric artery",
-            "E": "Phrenic arteries"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2FHMPJ2D",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the most common and classic anatomical location for a benign peptic gastric ulcer?",
-        "options": {
-            "A": "Greater curvature",
-            "B": "Lesser curvature",
-            "C": "Upper part of the pylorus",
-            "D": "Lower part of pylorus near incisura angularis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JRMADW4S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Where is a percutaneous liver biopsy usually performed?",
-        "options": {
-            "A": "Left 5th ICS MCL",
-            "B": "Right 6th ICS MCL",
-            "C": "Right 8th/9th ICS midaxillary line",
-            "D": "Subcostal right side flank",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2B3Q9RTR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which key anatomical structure, acting as a muscular suspensory ligament for the duodenum and jejunum junction, is used clinically to definitively divide the gastrointestinal tract into Upper GI Bleeding and Lower GI Bleeding?",
-        "options": {
-            "A": "Ligament of Treitz",
-            "B": "Ileocecal valve",
-            "C": "Pyloric sphincter",
-            "D": "Anal verge",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2D92BCZH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which major artery runs along the superior border of the pancreas, directly posterior to the body and tail of the stomach, making it vulnerable to injury?",
-        "options": {
-            "A": "Splenic artery",
-            "B": "Right gastroepiploic artery",
-            "C": "Gastroduodenal artery",
-            "D": "Left gastric artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6589LWJH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which major, large retroperitoneal structure lies immediately posterior to the third part of the duodenum?",
-        "options": {
-            "A": "Inferior Vena Cava (IVC)",
-            "B": "Head of pancreas",
-            "C": "Superior Mesenteric Artery",
-            "D": "Aorta",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6ZLNV5H5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following artery is located at the Anterior of 3rd part of duodenum?",
-        "options": {
-            "A": "SMA",
-            "B": "IMA",
-            "C": "Aorta",
-            "D": "Inferior Epigastric Artery",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The third part of the duodenum passes across the midline, posterior to the SMA while SMV lie anterior to it.",
-        "hint": ""
-    },
-    {
-        "id": "N2K97VB6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following drugs will cross the placenta and effect the fetus?",
-        "options": {
-            "A": "PTU",
-            "B": "Insulin",
-            "C": "Thyroxine",
-            "D": "Penicillin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3S8YWFVQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following structure prevent the backflow of contents from cecum to ileum?",
-        "options": {
-            "A": "Ileocecal sphincter",
-            "B": "Appendical orifice",
-            "C": "Cecal contractions",
-            "D": "Ileocecal valve",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "64AMT29Y",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which structure forms the medial wall of the ischiorectal (ischioanal) fossa?",
-        "options": {
-            "A": "Obturator internus muscle",
-            "B": "Levator ani muscle",
-            "C": "Sacrotuberous ligament",
-            "D": "Gluteus maximus muscle",
-            "E": "Piriformis muscle"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NXSGN5YC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which structure is located anterior to the second part of the duodenum?",
-        "options": {
-            "A": "Right kidney",
-            "B": "Head of pancreas",
-            "C": "Inferior Vena Cava",
-            "D": "Transverse colon",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "The transverse colon and its mesentery typically cross anteriorly to the second part of the duodenum, separating it from the abdominal wall.",
-        "hint": ""
-    },
-    {
-        "id": "7CR57RZ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which structure lies anterior to the pancreas?",
-        "options": {
-            "A": "Superior mesenteric vein",
-            "B": "Inferior mesenteric vein",
-            "C": "Sigmoid colon",
-            "D": "Transverse mesocolon",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
         "hint": ""
     },
     {

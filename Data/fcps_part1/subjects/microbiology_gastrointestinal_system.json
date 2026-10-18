@@ -1,98 +1,5 @@
 [
     {
-        "id": "8SD6CPNC",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening",
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is diagnosed with active Hepatitis B infection. Which of the following serological markers indicates active infection that typically requires treatment?",
-        "options": {
-            "A": "HBsAg positive and HBeAg positive",
-            "B": "HBsAg positive and Anti-HBe positive",
-            "C": "Anti-HBs positive and Anti-HBc IgG positive",
-            "D": "Anti-HBs positive only",
-            "E": "HBeAg negative and Anti-HBc IgM positive"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UP7PGWCR",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning",
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Among patients with advanced HIV infection, which pathogen is the most frequent cause of HIV enterocolitis that involves ulcerations?",
-        "options": {
-            "A": "Salmonella",
-            "B": "Giardia lamblia",
-            "C": "Histoplasma capsulatum",
-            "D": "Cytomegalovirus",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Cryptosporidium is a protozoan parasite that causes self-limited diarrhea in immunocompetent people but can lead to severe, chronic diarrhea in those with AIDS.",
-        "hint": ""
-    },
-    {
-        "id": "SR2NZWAE",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning",
-            "Radiology - 07/26 - July 08 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the lymphatic drainage of anal canal below pectinate line?",
-        "options": {
-            "A": "Internal iliac lymph nodes",
-            "B": "External iliac lymph nodes",
-            "C": "Superficial inguinal lymph nodes",
-            "D": "Deep inguinal lymph nodes",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Internal iliac nodes drains Upper anal canal which is 2/3rd of canal (above the pectinate line). Superficial inguinal lymph nodes drains the lower anal canal which is 1/3rd of the canal (below the pectinate line).",
-        "hint": ""
-    },
-    {
         "id": "W5NH6HUZ",
         "year": [
             "2026"
@@ -143,6 +50,87 @@
             "E": "Hepatitis E virus (HEV)"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "C3UH9TCF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32 year old man with HIV presents with dysphagia. Endoscopy shows white, plaque-like lesions on the esophageal mucosa. Biopsy reveals septate pseudohyphae. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Esophageal candidiasis",
+            "B": "Aspergillosis",
+            "C": "Histoplasmosis",
+            "D": "CMV esophagitis",
+            "E": "Herpes simplex esophagitis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZPZBUPY2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 34 year old HIV-positive patient with CD4 count 50 presents with profuse watery diarrhea and wasting. Modified acid-fast staining of stool demonstrates small oocysts. Which organism is most likely?",
+        "options": {
+            "A": "Giardia lamblia",
+            "B": "Entamoeba histolytica",
+            "C": "Cryptosporidium parvum",
+            "D": "Cyclospora cayetanensis",
+            "E": "Isospora belli"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NPKR5LPE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35 year old man js diagnosed with hepatitis B infection. His lab results show positive HBsAg and HBeAg, with high HBV DNA levels. Which serologic marker best indicates that the virus is actively replicating?",
+        "options": {
+            "A": "HBeAg",
+            "B": "Anti-HBs",
+            "C": "HBsAg",
+            "D": "Anti-HBe IgM",
+            "E": "Anti-HBe"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -228,6 +216,33 @@
         "hint": ""
     },
     {
+        "id": "QFMR3QKE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old man with decompensated cirrhosis and ascites presents with fever, abdominal pain, and altered mental status. Diagnostic paracentesis shows neutrophil count >250/μL. Which organism is the most common cause of this condition?",
+        "options": {
+            "A": "Klebsiella pneumoniae.",
+            "B": "Streptococcus pneumoniae.",
+            "C": "Escherichia coli.",
+            "D": "Pseudomonas aeruginosa.",
+            "E": "Enterococcus faecalis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "8MARHWV6",
         "year": [
             "2026"
@@ -279,6 +294,60 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TWMMXEG5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A clinician noticed reports of a patient which showed the following picture 6 months ago, HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAG -ve. Now, he presents with this report; HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAC +ve. What will be the clinician's interpretation?",
+        "options": {
+            "A": "Immunized from past exposure",
+            "B": "Chronic Hep b infection",
+            "C": "Co infection of Hep B and D",
+            "D": "Immunized from vaccination",
+            "E": "Super infection of Hep D over Hep B"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Q2LNMAA9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A clinician noticed reports of a patient which showed the following picture 6 months ago, HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAg -ve. Now, he presents with this report; HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAg +ve. What will be the clinician's interpretation?",
+        "options": {
+            "A": "Immunized from vaccination",
+            "B": "Immunized from past exposure",
+            "C": "Chronic hep b infection",
+            "D": "Co infection of hep B and D",
+            "E": "Super infection of hep D over hep B"
+        },
+        "correctAnswer": "E",
+        "explanation": "Superinfection = HDV added after chronic HBV. Co-infection = simultaneous HBV + HDV -> both positive from start.",
         "hint": ""
     },
     {
@@ -357,6 +426,33 @@
             "C": "Ancylostoma duodenale",
             "D": "Strongyloides",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9SY5GD4E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female went to meet her parents. After few days she became unwell. Her investigations revealed hepatitis E infection. What could have been a cause?",
+        "options": {
+            "A": "Blood transfusion",
+            "B": "Needle stick injury",
+            "C": "Use of contaminated water",
+            "D": "Rotten eggs",
+            "E": "Cough droplets"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -467,6 +563,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T6FHXTCZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops diarrhea after intake of fatty meals which of the following is the most likely cause?",
+        "options": {
+            "A": "Osmotic diarrhea",
+            "B": "Secretory diarrhea",
+            "C": "Statorrhea",
+            "D": "IBS",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -660,6 +783,33 @@
         "hint": ""
     },
     {
+        "id": "YEFRENCP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has HbsAg + , Anti Hbc IgM + and HbeAg -ve what is likely diagnose",
+        "options": {
+            "A": "Past exposure",
+            "B": "Acute hepatitis",
+            "C": "Carrier with low replication",
+            "D": "Carrier with high replication",
+            "E": "Chronic carrier"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EERWP8CC",
         "year": [
             "2026"
@@ -684,6 +834,35 @@
         },
         "correctAnswer": "B",
         "explanation": "HBsAg + → current HBV infection\r\nAnti-HBc IgM + → acute/recent infection\r\nHBeAg − → lower replication or possibly a precore mutant; it does not override the significance of IgM anti-HBc.\r\nPast exposure → HBsAg should be negative and anti-HBs positive.\r\nChronic carrier → anti-HBc is usually IgG, not IgM.\r\nHigh replication carrier → typically HBeAg positive.",
+        "hint": ""
+    },
+    {
+        "id": "3VRLCBUG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon",
+            "Medicine - 05/25 - May 13 - Afternoon",
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has Right upper abdominal pain fever and bradycardia And rash on abdomen this is due to",
+        "options": {
+            "A": "Salmonella typhi",
+            "B": "Entamoeba histolytica",
+            "C": "Shigella",
+            "D": "Staph aureus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -738,6 +917,90 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8SD6CPNC",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening",
+            "Radiology - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is diagnosed with active Hepatitis B infection. Which of the following serological markers indicates active infection that typically requires treatment?",
+        "options": {
+            "A": "HBsAg positive and HBeAg positive",
+            "B": "HBsAg positive and Anti-HBe positive",
+            "C": "Anti-HBs positive and Anti-HBc IgG positive",
+            "D": "Anti-HBs positive only",
+            "E": "HBeAg negative and Anti-HBc IgM positive"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FZCVKVSU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is Hepatitis B surface antigen positive. Which indicates ongoing viral replication?",
+        "options": {
+            "A": "Anti-HBs positive",
+            "B": "HBeAg positive",
+            "C": "Anti-HBc IgG positive",
+            "D": "Anti-HBe positive",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "HBeAg positivity indicates active viral replication and infectivity.",
+        "hint": ""
+    },
+    {
+        "id": "SHXTBM63",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present with signs of jaundice and deranged LFTs and RFTs. Endoscopy confirms diagnosis of cholangiocarcinoma. Which of the following organism is notorious for leading to this condition?",
+        "options": {
+            "A": "Proteas mirabilus",
+            "B": "E. Coli",
+            "C": "Entamoeba Histolytica",
+            "D": "C. sinensis",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Chronic infection with the liver fluke Clonorchis sinensis causes chronic inflammation and proliferation of the biliary epithelium, making it a major risk factor for Cholangiocarcinoma.",
         "hint": ""
     },
     {
@@ -819,6 +1082,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HFSGR8EB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with fever, constipation and bradycardia, diagnosed as a case of typhoid fever. After a few days of typhoid infection, bacteria reside in:",
+        "options": {
+            "A": "Gall bladder",
+            "B": "Peyer's patches",
+            "C": "Stomach",
+            "D": "Cecum",
+            "E": "Liver"
+        },
+        "correctAnswer": "B",
+        "explanation": "Peyer's patches are the initial site of invasion and are where the infection first takes hold and then spreads systemically while the gall bladder is the primary site of long-term persistence, where the bacteria can reside quietly and be shed intermittently, leading to the chronic carrier state.",
         "hint": ""
     },
     {
@@ -1066,6 +1356,33 @@
         "hint": ""
     },
     {
+        "id": "BBKQ9PJ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with jaundice, ALT/AST/ALP elevated, present with unknown HBV exposure.",
+        "options": {
+            "A": "HBsAg",
+            "B": "Quantitative viral DNA",
+            "C": "HBeAg",
+            "D": "HBcAg",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "HBsAg is the earliest marker of active infection. Positive HBsAg confirms acute Hepatitis B infection.",
+        "hint": ""
+    },
+    {
         "id": "TJ9AQX3C",
         "year": [
             "2026"
@@ -1089,6 +1406,33 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3FHUZFEJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pregnant lady tests positive for Anti- HBc IgM. What does this serological finding specifically indicates?",
+        "options": {
+            "A": "Acute infection",
+            "B": "Recent immunization",
+            "C": "",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "",
         "explanation": "",
         "hint": ""
     },
@@ -1201,6 +1545,117 @@
         "hint": ""
     },
     {
+        "id": "7WHBRF5M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young group of boys living in daycare service, all of them are having malaise and weakness and restlessness during night, thy cant properly sleep due to perianal itching What is the cause of their symptoms?",
+        "options": {
+            "A": "Tapeworm",
+            "B": "Ascarics",
+            "C": "Enterobious vermicularis",
+            "D": "Ameobiasis",
+            "E": "Trichuris"
+        },
+        "correctAnswer": "C",
+        "explanation": "Rectal prolaspe - Trichuris trichura. Anal itching - Enterobious vermicularis",
+        "hint": ""
+    },
+    {
+        "id": "K6USBL9V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After salmonella Typhi bacteremia, the bacteria most commonly persist in which organ, leading to a carrier state?",
+        "options": {
+            "A": "Liver",
+            "B": "Spleen",
+            "C": "Gall bladder",
+            "D": "Bone marrow",
+            "E": "Lymph nodes"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UP7PGWCR",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning",
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Among patients with advanced HIV infection, which pathogen is the most frequent cause of HIV enterocolitis that involves ulcerations?",
+        "options": {
+            "A": "Salmonella",
+            "B": "Giardia lamblia",
+            "C": "Histoplasma capsulatum",
+            "D": "Cytomegalovirus",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Cryptosporidium is a protozoan parasite that causes self-limited diarrhea in immunocompetent people but can lead to severe, chronic diarrhea in those with AIDS.",
+        "hint": ""
+    },
+    {
+        "id": "YA7K6QPF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An 8-year-old boy looking pale present with respiratory symptoms with history of eating mud, he vomited and a 6 inch long worm came out of his nose, what could be the causative organism?",
+        "options": {
+            "A": "Pin-worm",
+            "B": "Taenia solium",
+            "C": "Echinococcus granlosus",
+            "D": "Ascaris",
+            "E": "Tape worm"
+        },
+        "correctAnswer": "D",
+        "explanation": "Respiratory Symptoms - Ascaris. Fisherman with anemia + Ecchymosis -Vitamin C deficiency. Fisherman with anemia - B12 Deficiency - Diphyllobothrium. Microcytic anemia - Ankylostoma. Conjunctival swelling - Loa Loa. Rectal prolapse - Trichuris Trichiura. Muscle (Myalgia) - Trichinella Spiralis.",
+        "hint": ""
+    },
+    {
         "id": "GWG9BGBQ",
         "year": [
             "2026"
@@ -1252,6 +1707,87 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Q5FXYVQ6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Asian cholangio hepatitis caused by",
+        "options": {
+            "A": "Schistosoma hematobium",
+            "B": "Clonorchis sinensis",
+            "C": "E coli",
+            "D": "HSV",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4C6EJ5GX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "cAMP is activated by which of the following?",
+        "options": {
+            "A": "Carrier protein",
+            "B": "Receptor",
+            "C": "Enzyme",
+            "D": "Intracellular Calcium",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2S5MSHPQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Child present with abdominal pain with dysentery, stool contains pus and RBCs causative agent is:",
+        "options": {
+            "A": "Campylobacter jejuni",
+            "B": "Enterotoxigenic E coli",
+            "C": "Enterohemorrhagic E coli",
+            "D": "Enteropathogenic E coli",
+            "E": "Salmonella"
+        },
+        "correctAnswer": "C",
+        "explanation": "(FA)",
         "hint": ""
     },
     {
@@ -1330,6 +1866,60 @@
             "C": "Clostridium perfringens",
             "D": "E. coli",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4JPGJBEZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Few friends went for the dinner together and they all ordered Chinese food including fried rice, shashlik sticks and chicken chilli dry. After that all developed same complaints of diarrhea, vomiting and abdominal pain. On investigation infection caused by Bacillus Cereus was revealed. Which food item can be the main culprit?",
+        "options": {
+            "A": "Chicken",
+            "B": "Oil",
+            "C": "Fried rice",
+            "D": "Hot freshly steamed rice",
+            "E": "Gravy"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "66GD8E6X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "H.pylori infection has a definite etiologic role in pathogenesis of:",
+        "options": {
+            "A": "Chronic gastritis",
+            "B": "Gastric MALT lymphoma",
+            "C": "Gastric adenocarcinoma",
+            "D": "Duodenal adenocarcinoma",
+            "E": "Peptic ulcer disease"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1417,6 +2007,35 @@
         "hint": ""
     },
     {
+        "id": "XBL3FLZ2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hepatitis B mode of transmission",
+        "options": {
+            "A": "Fecal-oral",
+            "B": "Sexual",
+            "C": "Aerosol",
+            "D": "Direct contact",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "G8LHDJRF",
         "year": [
             "2026"
@@ -1471,928 +2090,6 @@
         "hint": "<p><br></p>"
     },
     {
-        "id": "NFVED7SL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most lethal Virus transmitted by Blood transfusion",
-        "options": {
-            "A": "Hep E",
-            "B": "Hep A",
-            "C": "Hep C",
-            "D": "CMV",
-            "E": "Hep B"
-        },
-        "correctAnswer": "E",
-        "explanation": "<p><br></p><p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hepatitis B</strong> - Hepatitis B virus is efficiently transmitted through infected blood and blood products. It can cause severe acute hepatitis, fulminant hepatic failure, and chronic liver disease.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>“transmitted by blood transfusion.”</strong> Hepatitis B is a classic blood-borne virus and is highly infectious. Among the given options, it is the intended answer.</p></p><p><br></p><p><h3 style=\"black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hepatitis E</strong> - Mainly transmitted by the <strong>fecal-oral route</strong>, particularly contaminated water.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hepatitis A</strong> - Mainly transmitted by the <strong>fecal-oral route</strong> and is not a typical transfusion-transmitted infection.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hepatitis C</strong> - Hepatitis C is also efficiently transmitted through blood transfusion and is an important transfusion-transmitted virus, but this MCQ traditionally expects hepatitis B as the most lethal/important acute blood-borne hepatitis.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">CMV</strong> - Can be transmitted through blood products, particularly in immunocompromised patients, but it is not the classic answer to this question.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Blood transfusion → think HBV and HCV.</strong></p></p><p><p>HBV is particularly important because it can cause <strong>fulminant hepatitis</strong> as well as chronic hepatitis, cirrhosis, and hepatocellular carcinoma.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>HCV is also blood-borne.</strong> If the question asks specifically for the hepatitis virus most commonly associated with transfusion-transmitted infection or chronic post-transfusion hepatitis, HCV may be the intended answer. If it asks <strong>“most lethal”</strong> in the traditional FCPS context, <strong>Hepatitis B</strong> is usually intended.</p></p>",
-        "hint": "<p><br></p>"
-    },
-    {
-        "id": "MLCVGAD6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Outbreak of hepatitis causing high mortality in pregnant females. Most likely virus is:",
-        "options": {
-            "A": "Hepatitis A",
-            "B": "Hepatitis B",
-            "C": "Hepatitis E",
-            "D": "CMV",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Orofeal Route - Hep A >Hep E. Most lethal Hepatitis - Hep D. Most common in pregnancy - Hep A. Most lethal/Remote Area in pregnancy - Hep E. Most lethal/Common virus after blood transfusion - CMV >Hep B > Hep C. Most common sexual spread - Hep B. HCC - Hep B > Hep C. Cirrhosis - Alcohol >Hep C > Hep B. Needle Stick injury Risk - Hep B (30%) > C (3%) > HIV (0.3%). Hep A & E - Naked Viruses",
-        "hint": ""
-    },
-    {
-        "id": "WZESTPJM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pyogenic Ascites caused by:",
-        "options": {
-            "A": "Bacteroids",
-            "B": "E. Coli",
-            "C": "Streptococcus",
-            "D": "Staphylococcus",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y32HXEEJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Reye syndrome is associated with which of following virus",
-        "options": {
-            "A": "Para influenza",
-            "B": "Influenza A",
-            "C": "CMV",
-            "D": "EBV",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2S3KRCZG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The enterotoxin of Vibrio cholerae causes diarrhea primarily by which mechanism?",
-        "options": {
-            "A": "Inhibition of Na+ absorption",
-            "B": "Increased cAMP causing chloride secretion",
-            "C": "Increased cGMP causing bicarbonate secretion",
-            "D": "Direct mucosal ulceration",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GH6R5LJR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The parasite associated with cholangiocarcinoma is",
-        "options": {
-            "A": "Clonorchis sinensis",
-            "B": "Leishmania donovani",
-            "C": "Schistosoma Japonicum",
-            "D": "Schistosoma Mansoni",
-            "E": "Toxoplasmosis Gondii"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U4N9Y8VR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The window period of HBV infection refers to:",
-        "options": {
-            "A": "No HBsAg, no anti-HBs detectable",
-            "B": "Vaccination period",
-            "C": "Incubation period",
-            "D": "Chronic stage",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RQLSTTWX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which organ can become inflamed due to chronic infection with Clonorchis sinensis?",
-        "options": {
-            "A": "Pancreas",
-            "B": "Gallbladder",
-            "C": "Liver",
-            "D": "Spleen",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XQZTVWNT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which serological marker indicates active viral replication in Hepatitis B infection?",
-        "options": {
-            "A": "HBeAg",
-            "B": "Anti-HBs",
-            "C": "Anti-HBc IgG",
-            "D": "HBsAg alone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Condition HBsAg HBeAg Anti-HBc Anti-HBs Acute infection Positive Positive IgM positive Negative Chronic infection Positive Usually positive* IgG positive Negative Immune after previous infection Negative Negative IgG positive Positive Immune after vaccination Negative Negative Negative Positive Window period Negative Negative IgM positive Negative",
-        "hint": ""
-    },
-    {
-        "id": "HAQ6EYQE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which virus is common after blood transfusion",
-        "options": {
-            "A": "Hepatitis B (HBV)",
-            "B": "Hepatitis C(HCV)",
-            "C": "Hepatitis A (HAV)",
-            "D": "HIV",
-            "E": "Influenza"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "C3UH9TCF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 32 year old man with HIV presents with dysphagia. Endoscopy shows white, plaque-like lesions on the esophageal mucosa. Biopsy reveals septate pseudohyphae. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Esophageal candidiasis",
-            "B": "Aspergillosis",
-            "C": "Histoplasmosis",
-            "D": "CMV esophagitis",
-            "E": "Herpes simplex esophagitis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZPZBUPY2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 34 year old HIV-positive patient with CD4 count 50 presents with profuse watery diarrhea and wasting. Modified acid-fast staining of stool demonstrates small oocysts. Which organism is most likely?",
-        "options": {
-            "A": "Giardia lamblia",
-            "B": "Entamoeba histolytica",
-            "C": "Cryptosporidium parvum",
-            "D": "Cyclospora cayetanensis",
-            "E": "Isospora belli"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NPKR5LPE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35 year old man js diagnosed with hepatitis B infection. His lab results show positive HBsAg and HBeAg, with high HBV DNA levels. Which serologic marker best indicates that the virus is actively replicating?",
-        "options": {
-            "A": "HBeAg",
-            "B": "Anti-HBs",
-            "C": "HBsAg",
-            "D": "Anti-HBe IgM",
-            "E": "Anti-HBe"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QFMR3QKE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old man with decompensated cirrhosis and ascites presents with fever, abdominal pain, and altered mental status. Diagnostic paracentesis shows neutrophil count >250/μL. Which organism is the most common cause of this condition?",
-        "options": {
-            "A": "Klebsiella pneumoniae.",
-            "B": "Streptococcus pneumoniae.",
-            "C": "Escherichia coli.",
-            "D": "Pseudomonas aeruginosa.",
-            "E": "Enterococcus faecalis"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TWMMXEG5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A clinician noticed reports of a patient which showed the following picture 6 months ago, HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAG -ve. Now, he presents with this report; HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAC +ve. What will be the clinician's interpretation?",
-        "options": {
-            "A": "Immunized from past exposure",
-            "B": "Chronic Hep b infection",
-            "C": "Co infection of Hep B and D",
-            "D": "Immunized from vaccination",
-            "E": "Super infection of Hep D over Hep B"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q2LNMAA9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A clinician noticed reports of a patient which showed the following picture 6 months ago, HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAg -ve. Now, he presents with this report; HBsAg +ve, HBeAg +ve, HBsAb -ve, HDAg +ve. What will be the clinician's interpretation?",
-        "options": {
-            "A": "Immunized from vaccination",
-            "B": "Immunized from past exposure",
-            "C": "Chronic hep b infection",
-            "D": "Co infection of hep B and D",
-            "E": "Super infection of hep D over hep B"
-        },
-        "correctAnswer": "E",
-        "explanation": "Superinfection = HDV added after chronic HBV. Co-infection = simultaneous HBV + HDV -> both positive from start.",
-        "hint": ""
-    },
-    {
-        "id": "9SY5GD4E",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female went to meet her parents. After few days she became unwell. Her investigations revealed hepatitis E infection. What could have been a cause?",
-        "options": {
-            "A": "Blood transfusion",
-            "B": "Needle stick injury",
-            "C": "Use of contaminated water",
-            "D": "Rotten eggs",
-            "E": "Cough droplets"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T6FHXTCZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops diarrhea after intake of fatty meals which of the following is the most likely cause?",
-        "options": {
-            "A": "Osmotic diarrhea",
-            "B": "Secretory diarrhea",
-            "C": "Statorrhea",
-            "D": "IBS",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YEFRENCP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has HbsAg + , Anti Hbc IgM + and HbeAg -ve what is likely diagnose",
-        "options": {
-            "A": "Past exposure",
-            "B": "Acute hepatitis",
-            "C": "Carrier with low replication",
-            "D": "Carrier with high replication",
-            "E": "Chronic carrier"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3VRLCBUG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon",
-            "Medicine - 05/25 - May 13 - Afternoon",
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has Right upper abdominal pain fever and bradycardia And rash on abdomen this is due to",
-        "options": {
-            "A": "Salmonella typhi",
-            "B": "Entamoeba histolytica",
-            "C": "Shigella",
-            "D": "Staph aureus",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FZCVKVSU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is Hepatitis B surface antigen positive. Which indicates ongoing viral replication?",
-        "options": {
-            "A": "Anti-HBs positive",
-            "B": "HBeAg positive",
-            "C": "Anti-HBc IgG positive",
-            "D": "Anti-HBe positive",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "HBeAg positivity indicates active viral replication and infectivity.",
-        "hint": ""
-    },
-    {
-        "id": "SHXTBM63",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient present with signs of jaundice and deranged LFTs and RFTs. Endoscopy confirms diagnosis of cholangiocarcinoma. Which of the following organism is notorious for leading to this condition?",
-        "options": {
-            "A": "Proteas mirabilus",
-            "B": "E. Coli",
-            "C": "Entamoeba Histolytica",
-            "D": "C. sinensis",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Chronic infection with the liver fluke Clonorchis sinensis causes chronic inflammation and proliferation of the biliary epithelium, making it a major risk factor for Cholangiocarcinoma.",
-        "hint": ""
-    },
-    {
-        "id": "HFSGR8EB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with fever, constipation and bradycardia, diagnosed as a case of typhoid fever. After a few days of typhoid infection, bacteria reside in:",
-        "options": {
-            "A": "Gall bladder",
-            "B": "Peyer's patches",
-            "C": "Stomach",
-            "D": "Cecum",
-            "E": "Liver"
-        },
-        "correctAnswer": "B",
-        "explanation": "Peyer's patches are the initial site of invasion and are where the infection first takes hold and then spreads systemically while the gall bladder is the primary site of long-term persistence, where the bacteria can reside quietly and be shed intermittently, leading to the chronic carrier state.",
-        "hint": ""
-    },
-    {
-        "id": "BBKQ9PJ7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with jaundice, ALT/AST/ALP elevated, present with unknown HBV exposure.",
-        "options": {
-            "A": "HBsAg",
-            "B": "Quantitative viral DNA",
-            "C": "HBeAg",
-            "D": "HBcAg",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "HBsAg is the earliest marker of active infection. Positive HBsAg confirms acute Hepatitis B infection.",
-        "hint": ""
-    },
-    {
-        "id": "3FHUZFEJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A pregnant lady tests positive for Anti- HBc IgM. What does this serological finding specifically indicates?",
-        "options": {
-            "A": "Acute infection",
-            "B": "Recent immunization",
-            "C": "",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7WHBRF5M",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young group of boys living in daycare service, all of them are having malaise and weakness and restlessness during night, thy cant properly sleep due to perianal itching What is the cause of their symptoms?",
-        "options": {
-            "A": "Tapeworm",
-            "B": "Ascarics",
-            "C": "Enterobious vermicularis",
-            "D": "Ameobiasis",
-            "E": "Trichuris"
-        },
-        "correctAnswer": "C",
-        "explanation": "Rectal prolaspe - Trichuris trichura. Anal itching - Enterobious vermicularis",
-        "hint": ""
-    },
-    {
-        "id": "K6USBL9V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "After salmonella Typhi bacteremia, the bacteria most commonly persist in which organ, leading to a carrier state?",
-        "options": {
-            "A": "Liver",
-            "B": "Spleen",
-            "C": "Gall bladder",
-            "D": "Bone marrow",
-            "E": "Lymph nodes"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YA7K6QPF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An 8-year-old boy looking pale present with respiratory symptoms with history of eating mud, he vomited and a 6 inch long worm came out of his nose, what could be the causative organism?",
-        "options": {
-            "A": "Pin-worm",
-            "B": "Taenia solium",
-            "C": "Echinococcus granlosus",
-            "D": "Ascaris",
-            "E": "Tape worm"
-        },
-        "correctAnswer": "D",
-        "explanation": "Respiratory Symptoms - Ascaris. Fisherman with anemia + Ecchymosis -Vitamin C deficiency. Fisherman with anemia - B12 Deficiency - Diphyllobothrium. Microcytic anemia - Ankylostoma. Conjunctival swelling - Loa Loa. Rectal prolapse - Trichuris Trichiura. Muscle (Myalgia) - Trichinella Spiralis.",
-        "hint": ""
-    },
-    {
-        "id": "Q5FXYVQ6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Asian cholangio hepatitis caused by",
-        "options": {
-            "A": "Schistosoma hematobium",
-            "B": "Clonorchis sinensis",
-            "C": "E coli",
-            "D": "HSV",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4C6EJ5GX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "cAMP is activated by which of the following?",
-        "options": {
-            "A": "Carrier protein",
-            "B": "Receptor",
-            "C": "Enzyme",
-            "D": "Intracellular Calcium",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2S5MSHPQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Child present with abdominal pain with dysentery, stool contains pus and RBCs causative agent is:",
-        "options": {
-            "A": "Campylobacter jejuni",
-            "B": "Enterotoxigenic E coli",
-            "C": "Enterohemorrhagic E coli",
-            "D": "Enteropathogenic E coli",
-            "E": "Salmonella"
-        },
-        "correctAnswer": "C",
-        "explanation": "(FA)",
-        "hint": ""
-    },
-    {
-        "id": "4JPGJBEZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Few friends went for the dinner together and they all ordered Chinese food including fried rice, shashlik sticks and chicken chilli dry. After that all developed same complaints of diarrhea, vomiting and abdominal pain. On investigation infection caused by Bacillus Cereus was revealed. Which food item can be the main culprit?",
-        "options": {
-            "A": "Chicken",
-            "B": "Oil",
-            "C": "Fried rice",
-            "D": "Hot freshly steamed rice",
-            "E": "Gravy"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "66GD8E6X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "H.pylori infection has a definite etiologic role in pathogenesis of:",
-        "options": {
-            "A": "Chronic gastritis",
-            "B": "Gastric MALT lymphoma",
-            "C": "Gastric adenocarcinoma",
-            "D": "Duodenal adenocarcinoma",
-            "E": "Peptic ulcer disease"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XBL3FLZ2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hepatitis B mode of transmission",
-        "options": {
-            "A": "Fecal-oral",
-            "B": "Sexual",
-            "C": "Aerosol",
-            "D": "Direct contact",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "3SMFFS6C",
         "year": [
             "2025"
@@ -2444,6 +2141,60 @@
         },
         "correctAnswer": "C",
         "explanation": "Pyogenic peritonitis usually polymicrobial: Bacteroides fragilis, E. coli, Streptococci.",
+        "hint": ""
+    },
+    {
+        "id": "NFVED7SL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most lethal Virus transmitted by Blood transfusion",
+        "options": {
+            "A": "Hep E",
+            "B": "Hep A",
+            "C": "Hep C",
+            "D": "CMV",
+            "E": "Hep B"
+        },
+        "correctAnswer": "E",
+        "explanation": "<p><br></p><p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Hepatitis B</strong> - Hepatitis B virus is efficiently transmitted through infected blood and blood products. It can cause severe acute hepatitis, fulminant hepatic failure, and chronic liver disease.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>“transmitted by blood transfusion.”</strong> Hepatitis B is a classic blood-borne virus and is highly infectious. Among the given options, it is the intended answer.</p></p><p><br></p><p><h3 style=\"black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Hepatitis E</strong> - Mainly transmitted by the <strong>fecal-oral route</strong>, particularly contaminated water.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hepatitis A</strong> - Mainly transmitted by the <strong>fecal-oral route</strong> and is not a typical transfusion-transmitted infection.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Hepatitis C</strong> - Hepatitis C is also efficiently transmitted through blood transfusion and is an important transfusion-transmitted virus, but this MCQ traditionally expects hepatitis B as the most lethal/important acute blood-borne hepatitis.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">CMV</strong> - Can be transmitted through blood products, particularly in immunocompromised patients, but it is not the classic answer to this question.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Blood transfusion → think HBV and HCV.</strong></p></p><p><p>HBV is particularly important because it can cause <strong>fulminant hepatitis</strong> as well as chronic hepatitis, cirrhosis, and hepatocellular carcinoma.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>HCV is also blood-borne.</strong> If the question asks specifically for the hepatitis virus most commonly associated with transfusion-transmitted infection or chronic post-transfusion hepatitis, HCV may be the intended answer. If it asks <strong>“most lethal”</strong> in the traditional FCPS context, <strong>Hepatitis B</strong> is usually intended.</p></p>",
+        "hint": "<p><br></p>"
+    },
+    {
+        "id": "MLCVGAD6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Outbreak of hepatitis causing high mortality in pregnant females. Most likely virus is:",
+        "options": {
+            "A": "Hepatitis A",
+            "B": "Hepatitis B",
+            "C": "Hepatitis E",
+            "D": "CMV",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Orofeal Route - Hep A >Hep E. Most lethal Hepatitis - Hep D. Most common in pregnancy - Hep A. Most lethal/Remote Area in pregnancy - Hep E. Most lethal/Common virus after blood transfusion - CMV >Hep B > Hep C. Most common sexual spread - Hep B. HCC - Hep B > Hep C. Cirrhosis - Alcohol >Hep C > Hep B. Needle Stick injury Risk - Hep B (30%) > C (3%) > HIV (0.3%). Hep A & E - Naked Viruses",
         "hint": ""
     },
     {
@@ -2609,6 +2360,33 @@
         "hint": ""
     },
     {
+        "id": "WZESTPJM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pyogenic Ascites caused by:",
+        "options": {
+            "A": "Bacteroids",
+            "B": "E. Coli",
+            "C": "Streptococcus",
+            "D": "Staphylococcus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "DSGU648F",
         "year": [
             "2025"
@@ -2636,6 +2414,33 @@
         "hint": ""
     },
     {
+        "id": "Y32HXEEJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Reye syndrome is associated with which of following virus",
+        "options": {
+            "A": "Para influenza",
+            "B": "Influenza A",
+            "C": "CMV",
+            "D": "EBV",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "9LHWY3PQ",
         "year": [
             "2025"
@@ -2659,6 +2464,87 @@
             "E": "Bone marrow biopsy"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2S3KRCZG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The enterotoxin of Vibrio cholerae causes diarrhea primarily by which mechanism?",
+        "options": {
+            "A": "Inhibition of Na+ absorption",
+            "B": "Increased cAMP causing chloride secretion",
+            "C": "Increased cGMP causing bicarbonate secretion",
+            "D": "Direct mucosal ulceration",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GH6R5LJR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The parasite associated with cholangiocarcinoma is",
+        "options": {
+            "A": "Clonorchis sinensis",
+            "B": "Leishmania donovani",
+            "C": "Schistosoma Japonicum",
+            "D": "Schistosoma Mansoni",
+            "E": "Toxoplasmosis Gondii"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U4N9Y8VR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The window period of HBV infection refers to:",
+        "options": {
+            "A": "No HBsAg, no anti-HBs detectable",
+            "B": "Vaccination period",
+            "C": "Incubation period",
+            "D": "Chronic stage",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -2798,6 +2684,39 @@
         "hint": ""
     },
     {
+        "id": "SR2NZWAE",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Radiology - 07/26 - July 08 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the lymphatic drainage of anal canal below pectinate line?",
+        "options": {
+            "A": "Internal iliac lymph nodes",
+            "B": "External iliac lymph nodes",
+            "C": "Superficial inguinal lymph nodes",
+            "D": "Deep inguinal lymph nodes",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Internal iliac nodes drains Upper anal canal which is 2/3rd of canal (above the pectinate line). Superficial inguinal lymph nodes drains the lower anal canal which is 1/3rd of the canal (below the pectinate line).",
+        "hint": ""
+    },
+    {
         "id": "VCMJJTNT",
         "year": [
             "2025"
@@ -2822,6 +2741,87 @@
         },
         "correctAnswer": "B",
         "explanation": "Blood Culture: 1st week. Agglutination Test (Widal Test): 2nd week. Stool culture: 3rd week. Urine culture: 4th week.",
+        "hint": ""
+    },
+    {
+        "id": "RQLSTTWX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which organ can become inflamed due to chronic infection with Clonorchis sinensis?",
+        "options": {
+            "A": "Pancreas",
+            "B": "Gallbladder",
+            "C": "Liver",
+            "D": "Spleen",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XQZTVWNT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which serological marker indicates active viral replication in Hepatitis B infection?",
+        "options": {
+            "A": "HBeAg",
+            "B": "Anti-HBs",
+            "C": "Anti-HBc IgG",
+            "D": "HBsAg alone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Condition HBsAg HBeAg Anti-HBc Anti-HBs Acute infection Positive Positive IgM positive Negative Chronic infection Positive Usually positive* IgG positive Negative Immune after previous infection Negative Negative IgG positive Positive Immune after vaccination Negative Negative Negative Positive Window period Negative Negative IgM positive Negative",
+        "hint": ""
+    },
+    {
+        "id": "HAQ6EYQE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which virus is common after blood transfusion",
+        "options": {
+            "A": "Hepatitis B (HBV)",
+            "B": "Hepatitis C(HCV)",
+            "C": "Hepatitis A (HAV)",
+            "D": "HIV",
+            "E": "Influenza"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     }
 ]

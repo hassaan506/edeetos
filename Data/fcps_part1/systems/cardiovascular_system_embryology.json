@@ -1,35 +1,5 @@
 [
     {
-        "id": "GFQ235NS",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 3 months baby born to a perfectly healthy mother presented with single palmar crease, Protruded tongue & Prominent epicanthal folds. Baby was diagnosed to have congenital heart disease at birth. The heart abnormality associated with this disease is derived from which structure in embryonic life?",
-        "options": {
-            "A": "Bulbus cordis",
-            "B": "Truncus arteriosis",
-            "C": "Neural Crest Cells",
-            "D": "Primitive atria",
-            "E": "Primitive ventricle"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "BN39N332",
         "year": [
             "2026"
@@ -84,194 +54,33 @@
         "hint": ""
     },
     {
-        "id": "5J3DNY4C",
+        "id": "GFQ235NS",
         "year": [
-            "2026"
+            "2026",
+            "2025"
         ],
         "specialty": [
+            "Anesthesia",
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
+            "Surgery - 04/26 - April 8 - Morning",
+            "Anesthesia - 05/25 - May 12 - Afternoon"
         ],
         "subject": "Embryology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Ductus arteriosus that fails to close after birth results in a condition that is:",
+        "question": "A 3 months baby born to a perfectly healthy mother presented with single palmar crease, Protruded tongue & Prominent epicanthal folds. Baby was diagnosed to have congenital heart disease at birth. The heart abnormality associated with this disease is derived from which structure in embryonic life?",
         "options": {
-            "A": "Obliterated",
-            "B": "Fibrosed",
-            "C": "Atretic",
-            "D": "Patent",
-            "E": "Ruptured"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6YZC6W9L",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Failure of fusion of the medial ventricular walls in early embryonic life leads to which type of Ventricular Septal Defect (VSD)?",
-        "options": {
-            "A": "Membranous VSD",
-            "B": "Muscular VSD",
-            "C": "Inlet VSD",
-            "D": "Outlet VSD",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VYHPVX2T",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Failure of neural crest cell migration to the medial wall of the developing heart results in abnormal formation of the interventricular septum. Which of the following congenital cardiac defects is most likely to occur?",
-        "options": {
-            "A": "Muscular ventricular septal defect",
-            "B": "Membranous ventricular septal defect",
-            "C": "Transposition of great arteries",
-            "D": "Atrial septal defect",
-            "E": "Patent ductus arteriosus"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PZTNJ9SQ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ligamentum venosum is the remnant of which fetal vascular structure?",
-        "options": {
-            "A": "Ductus venosus",
-            "B": "Umbilical vein",
-            "C": "Foramen ovale",
-            "D": "Ductus arteriosus",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The ductus venosus shunts blood from the umbilical vein to the IVC. After birth it becomes the ligamentum venosum. The umbilical vein becomes the ligamentum teres.",
-        "hint": ""
-    },
-    {
-        "id": "VKQPMWST",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The pulmonary artery develops from which pharyngeal (aortic) arch?",
-        "options": {
-            "A": "1st arch",
-            "B": "3rd arch",
-            "C": "4th arch",
-            "D": "6th arch",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Arterial derivatives: 1st arch - Part of maxillary artery (branch of external carotid). 2nd arch - Stapedial artery and hyoid artery. Second = stapedial. 3rd arch - Common carotid artery and proximal part of internal carotid artery. 4th arch - On left, aortic arch, on right, proximal part of right subclavian. 6th arch - Proximal part of pulmonary arteries and (on left only) ductus arteriosus.",
-        "hint": ""
-    },
-    {
-        "id": "KHWSF2AR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which fetal structure carries oxygenated blood from umbilical vein to IVC?",
-        "options": {
-            "A": "Ductus arteriosus",
-            "B": "Foramen ovale",
-            "C": "Ductus venosus",
-            "D": "Umbilical artery",
-            "E": ""
+            "A": "Bulbus cordis",
+            "B": "Truncus arteriosis",
+            "C": "Neural Crest Cells",
+            "D": "Primitive atria",
+            "E": "Primitive ventricle"
         },
         "correctAnswer": "C",
         "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PPRAHMZU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the primary anatomical abnormality in transposition of the great arteries?",
-        "options": {
-            "A": "Aortic arch lies anterior to the pulmonary trunk",
-            "B": "Aorta arises from the right ventricle",
-            "C": "Pulmonary trunk arises from the right ventricle",
-            "D": "Aortic arch lies posterior to the pulmonary trunk",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "In transposition of the great arteries, the aorta arises from the right ventricle. The pulmonary artery arises from the left ventricle. This creates parallel rather than serial circulation.",
         "hint": ""
     },
     {
@@ -410,6 +219,33 @@
         "hint": ""
     },
     {
+        "id": "5J3DNY4C",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ductus arteriosus that fails to close after birth results in a condition that is:",
+        "options": {
+            "A": "Obliterated",
+            "B": "Fibrosed",
+            "C": "Atretic",
+            "D": "Patent",
+            "E": "Ruptured"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MRRXQ2PP",
         "year": [
             "2025"
@@ -437,6 +273,60 @@
         "hint": ""
     },
     {
+        "id": "6YZC6W9L",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Failure of fusion of the medial ventricular walls in early embryonic life leads to which type of Ventricular Septal Defect (VSD)?",
+        "options": {
+            "A": "Membranous VSD",
+            "B": "Muscular VSD",
+            "C": "Inlet VSD",
+            "D": "Outlet VSD",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VYHPVX2T",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Failure of neural crest cell migration to the medial wall of the developing heart results in abnormal formation of the interventricular septum. Which of the following congenital cardiac defects is most likely to occur?",
+        "options": {
+            "A": "Muscular ventricular septal defect",
+            "B": "Membranous ventricular septal defect",
+            "C": "Transposition of great arteries",
+            "D": "Atrial septal defect",
+            "E": "Patent ductus arteriosus"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "LTPLS25H",
         "year": [
             "2025"
@@ -461,6 +351,33 @@
         },
         "correctAnswer": "C",
         "explanation": "Max O2 - Pulmonary Capillaries. Low O2 - Pulmonary Artery > SVC > Umbilical artery. Highest O2 Saturation - Umbilical Vein.",
+        "hint": ""
+    },
+    {
+        "id": "PZTNJ9SQ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ligamentum venosum is the remnant of which fetal vascular structure?",
+        "options": {
+            "A": "Ductus venosus",
+            "B": "Umbilical vein",
+            "C": "Foramen ovale",
+            "D": "Ductus arteriosus",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The ductus venosus shunts blood from the umbilical vein to the IVC. After birth it becomes the ligamentum venosum. The umbilical vein becomes the ligamentum teres.",
         "hint": ""
     },
     {
@@ -631,6 +548,35 @@
         "hint": ""
     },
     {
+        "id": "VKQPMWST",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 08 - Afternoon",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The pulmonary artery develops from which pharyngeal (aortic) arch?",
+        "options": {
+            "A": "1st arch",
+            "B": "3rd arch",
+            "C": "4th arch",
+            "D": "6th arch",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Arterial derivatives: 1st arch - Part of maxillary artery (branch of external carotid). 2nd arch - Stapedial artery and hyoid artery. Second = stapedial. 3rd arch - Common carotid artery and proximal part of internal carotid artery. 4th arch - On left, aortic arch, on right, proximal part of right subclavian. 6th arch - Proximal part of pulmonary arteries and (on left only) ductus arteriosus.",
+        "hint": ""
+    },
+    {
         "id": "NRXWL9HZ",
         "year": [
             "2025"
@@ -654,6 +600,33 @@
             "E": "6th arch"
         },
         "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KHWSF2AR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which fetal structure carries oxygenated blood from umbilical vein to IVC?",
+        "options": {
+            "A": "Ductus arteriosus",
+            "B": "Foramen ovale",
+            "C": "Ductus venosus",
+            "D": "Umbilical artery",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -682,6 +655,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PPRAHMZU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the primary anatomical abnormality in transposition of the great arteries?",
+        "options": {
+            "A": "Aortic arch lies anterior to the pulmonary trunk",
+            "B": "Aorta arises from the right ventricle",
+            "C": "Pulmonary trunk arises from the right ventricle",
+            "D": "Aortic arch lies posterior to the pulmonary trunk",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "In transposition of the great arteries, the aorta arises from the right ventricle. The pulmonary artery arises from the left ventricle. This creates parallel rather than serial circulation.",
         "hint": ""
     }
 ]

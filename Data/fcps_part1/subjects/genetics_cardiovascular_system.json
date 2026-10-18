@@ -1,5 +1,32 @@
 [
     {
+        "id": "5ZB6NWDN",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 19 year old tall, thin male presents with long limbs, hyperextensible joints, and a history of lens dislocation. On examination, he has a high-arched palate and a diastolic murmur suggestive of aortic regurgitation. A mutation affecting which of the following proteins is most likely responsible for his condition?",
+        "options": {
+            "A": "Collagen type I",
+            "B": "Elastin",
+            "C": "Fibrillin-1",
+            "D": "Dystrophin",
+            "E": "Keratin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "S76UQL6J",
         "year": [
             "2026",
@@ -31,33 +58,6 @@
         "hint": "<p><br></p>"
     },
     {
-        "id": "5ZB6NWDN",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 19 year old tall, thin male presents with long limbs, hyperextensible joints, and a history of lens dislocation. On examination, he has a high-arched palate and a diastolic murmur suggestive of aortic regurgitation. A mutation affecting which of the following proteins is most likely responsible for his condition?",
-        "options": {
-            "A": "Collagen type I",
-            "B": "Elastin",
-            "C": "Fibrillin-1",
-            "D": "Dystrophin",
-            "E": "Keratin"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "UAPZAMQ8",
         "year": [
             "2026"
@@ -81,6 +81,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HM9MEK4V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 4 year old child is brought to the pediatric clinic for developmental assessment. He has a distinctive \"elfin\" facial appearance, an extremely friendly with strangers, and shows relatively strong verbal skills but poor visuospatial abilities. On cardiovascular exam, a systolic murmur is heard, and echocardiography reveals supravalvular aortic stenosis. Serum calcium is elevated. Which of the following proteins is most likely affected in this patient?",
+        "options": {
+            "A": "Fibroblast",
+            "B": "Dystrophin",
+            "C": "Collagen type I",
+            "D": "Elastin",
+            "E": "Laminin"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -135,170 +162,6 @@
             "E": "Polycystic kidney disease"
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7K2JFP6F",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Female Patient had aortic root dilation upto 4cm, ocular examination showed lens dislocation. mitral valve leaflet defect with a systolic click defect in which of the following?",
-        "options": {
-            "A": "Spectrin",
-            "B": "Dystrophin",
-            "C": "Laminin",
-            "D": "Fibrillin",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "(Marfan syndrome)",
-        "hint": ""
-    },
-    {
-        "id": "HG6NLE99",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Marfan syndrome results from a defect in:",
-        "options": {
-            "A": "Collagen",
-            "B": "Elastin",
-            "C": "Fibrillin-1",
-            "D": "Dystrophin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Mechanism: Marfan syndrome is an autosomal dominant connective tissue disorder caused by mutations in the FBN1 gene, which encodes the structural glycoprotein fibrillin-1. Clinical Effect: Fibrillin-1 serves as the primary scaffolding component for extracellular matrix elastic fibers. Its structural deficiency compromises tissue integrity, leading to classic systemic defects like aortic root aneurysms, lens dislocation (ectopia lentis), and tall, thin extremities.",
-        "hint": ""
-    },
-    {
-        "id": "Y2AQA5AK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most Common Cardiac Associations in Turner Syndrome",
-        "options": {
-            "A": "Bicuspid aortic valve + Coarctation of aorta + Mitral valve prolapse",
-            "B": "Coarctation",
-            "C": "Coarctation of aorta +MVP",
-            "D": "Mitral stenosis",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "38KQSS9N",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Supra-aortic valvular stenosis is often associated with Williams syndrome. A defect in which protein is responsible for this condition?",
-        "options": {
-            "A": "Collagen Type I",
-            "B": "Elastin",
-            "C": "Fibrillin",
-            "D": "Laminin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U5ZSABYV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the protein defect associated with supravalvular aortic stenosis?",
-        "options": {
-            "A": "Collagen",
-            "B": "Elastin",
-            "C": "Fibrillin",
-            "D": "Myosin",
-            "E": "Troponin"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HM9MEK4V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 4 year old child is brought to the pediatric clinic for developmental assessment. He has a distinctive \"elfin\" facial appearance, an extremely friendly with strangers, and shows relatively strong verbal skills but poor visuospatial abilities. On cardiovascular exam, a systolic murmur is heard, and echocardiography reveals supravalvular aortic stenosis. Serum calcium is elevated. Which of the following proteins is most likely affected in this patient?",
-        "options": {
-            "A": "Fibroblast",
-            "B": "Dystrophin",
-            "C": "Collagen type I",
-            "D": "Elastin",
-            "E": "Laminin"
-        },
-        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -440,6 +303,35 @@
         "hint": ""
     },
     {
+        "id": "7K2JFP6F",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Female Patient had aortic root dilation upto 4cm, ocular examination showed lens dislocation. mitral valve leaflet defect with a systolic click defect in which of the following?",
+        "options": {
+            "A": "Spectrin",
+            "B": "Dystrophin",
+            "C": "Laminin",
+            "D": "Fibrillin",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "(Marfan syndrome)",
+        "hint": ""
+    },
+    {
         "id": "TKZZH745",
         "year": [
             "2025"
@@ -490,6 +382,114 @@
             "E": "Turner syndrome"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HG6NLE99",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Marfan syndrome results from a defect in:",
+        "options": {
+            "A": "Collagen",
+            "B": "Elastin",
+            "C": "Fibrillin-1",
+            "D": "Dystrophin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Mechanism: Marfan syndrome is an autosomal dominant connective tissue disorder caused by mutations in the FBN1 gene, which encodes the structural glycoprotein fibrillin-1. Clinical Effect: Fibrillin-1 serves as the primary scaffolding component for extracellular matrix elastic fibers. Its structural deficiency compromises tissue integrity, leading to classic systemic defects like aortic root aneurysms, lens dislocation (ectopia lentis), and tall, thin extremities.",
+        "hint": ""
+    },
+    {
+        "id": "Y2AQA5AK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most Common Cardiac Associations in Turner Syndrome",
+        "options": {
+            "A": "Bicuspid aortic valve + Coarctation of aorta + Mitral valve prolapse",
+            "B": "Coarctation",
+            "C": "Coarctation of aorta +MVP",
+            "D": "Mitral stenosis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "38KQSS9N",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Supra-aortic valvular stenosis is often associated with Williams syndrome. A defect in which protein is responsible for this condition?",
+        "options": {
+            "A": "Collagen Type I",
+            "B": "Elastin",
+            "C": "Fibrillin",
+            "D": "Laminin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U5ZSABYV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the protein defect associated with supravalvular aortic stenosis?",
+        "options": {
+            "A": "Collagen",
+            "B": "Elastin",
+            "C": "Fibrillin",
+            "D": "Myosin",
+            "E": "Troponin"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

@@ -1,59 +1,5 @@
 [
     {
-        "id": "CLFB34V4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35 year old male presents with a soft, mobile, non-tender swelling on his forehead that has been slowly increasing in size over the past two years. The skin over the swelling is normal, and there is a \"slip sign\" present on palpation. What is the most likely diagnosis?",
-        "options": {
-            "A": "Lipoma",
-            "B": "Dermoid cyst",
-            "C": "Sebaceous cyst",
-            "D": "Osteoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GF55DNWZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Surgery",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A male presents with a painful, swollen lump at the lower end of lumbar vertebrae, with a visible pit and pus discharge from it What is the most likely diagnosis?",
-        "options": {
-            "A": "Anal fissure",
-            "B": "Pilonidal sinus",
-            "C": "Perianal abscess",
-            "D": "Sacrococcygeal teratoma",
-            "E": "Sebaceous cyst"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "AMGPHKXN",
         "year": [
             "2025"
@@ -77,6 +23,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CLFB34V4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35 year old male presents with a soft, mobile, non-tender swelling on his forehead that has been slowly increasing in size over the past two years. The skin over the swelling is normal, and there is a \"slip sign\" present on palpation. What is the most likely diagnosis?",
+        "options": {
+            "A": "Lipoma",
+            "B": "Dermoid cyst",
+            "C": "Sebaceous cyst",
+            "D": "Osteoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -158,6 +131,33 @@
             "E": "Abscess"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GF55DNWZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Surgery",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A male presents with a painful, swollen lump at the lower end of lumbar vertebrae, with a visible pit and pus discharge from it What is the most likely diagnosis?",
+        "options": {
+            "A": "Anal fissure",
+            "B": "Pilonidal sinus",
+            "C": "Perianal abscess",
+            "D": "Sacrococcygeal teratoma",
+            "E": "Sebaceous cyst"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

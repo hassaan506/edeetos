@@ -1,494 +1,85 @@
 {
     "subjects": {
-        "Anatomy": {
-            "Cardiovascular System": {
-                "Unknown Topic": 174
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 223
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 301
-            },
-            "Nervous System": {
-                "Unknown Topic": 768
-            },
-            "Reproductive System": {
-                "Unknown Topic": 137
-            },
-            "Respiratory System": {
-                "Unknown Topic": 143
-            },
-            "Urinary System": {
-                "Urethra & Penis": 10,
-                "Urinary Tract Infection": 1,
-                "The Kidneys & Ureters": 22,
-                "Transplantation": 2,
-                "The Prostate & Seminal Vesicles": 3,
-                "The Urinary Bladder": 3,
-                "Benign Prostatic Hyperplasia": 1,
-                "Urinary Tract Calculi": 1
-            },
-            "Endocrine System": {
-                "Unknown Topic": 16
-            },
-            "General": {
-                "Unknown Topic": 3
-            },
-            "Immune System": {
-                "Unknown Topic": 15
-            },
-            "Integumentary System": {
-                "Unknown Topic": 6
-            },
-            "Special Senses": {
-                "Unknown Topic": 18
-            },
-            "Hematological System": {
-                "Unknown Topic": 2
-            },
-            "Ophthalmology": {
-                "Unknown Topic": 1
-            }
-        },
-        "Embryology": {
-            "Cardiovascular System": {
-                "Unknown Topic": 25
-            },
-            "Endocrine System": {
-                "Unknown Topic": 17
-            },
-            "General": {
-                "Unknown Topic": 6
-            },
-            "Reproductive System": {
-                "Unknown Topic": 55
-            },
-            "Respiratory System": {
-                "Unknown Topic": 23
-            },
-            "Urinary System": {
-                "Potter Sequence & Related Conditions": 4,
-                "The Urinary Bladder": 11,
-                "The Kidneys & Ureters": 11,
-                "General": 5
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 41
-            },
-            "Hematological System": {
-                "Unknown Topic": 3
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 25
-            },
-            "Nervous System": {
-                "Unknown Topic": 29
-            },
-            "Special Senses": {
-                "Unknown Topic": 4
-            },
-            "Oncology": {
-                "Unknown Topic": 2
-            },
-            "Surgery": {
-                "Unknown Topic": 1
-            }
-        },
-        "Genetics": {
-            "Cardiovascular System": {
-                "Unknown Topic": 19
-            },
-            "Reproductive System": {
-                "Unknown Topic": 79
-            },
-            "Endocrine System": {
-                "Unknown Topic": 4
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 9
-            },
-            "General": {
-                "Unknown Topic": 75
-            },
-            "Hematological System": {
-                "Unknown Topic": 16
-            },
-            "Immune System": {
-                "Unknown Topic": 3
-            },
-            "Metabolic System": {
-                "Unknown Topic": 7
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 31
-            },
-            "Nervous System": {
-                "Unknown Topic": 18
-            },
-            "Oncology": {
-                "Unknown Topic": 3
-            },
-            "Respiratory System": {
-                "Unknown Topic": 7
-            },
-            "Special Senses": {
-                "Unknown Topic": 1
-            },
-            "Urinary System": {
-                "Polycystic Kidney Disease": 13,
-                "Nephritic Syndromes": 1
-            },
-            "Genetics": {
-                "Unknown Topic": 48
-            }
-        },
-        "Medicine": {
-            "Cardiovascular System": {
-                "Unknown Topic": 454
-            },
-            "Endocrine System": {
-                "Unknown Topic": 490
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 297
-            },
-            "General": {
-                "Unknown Topic": 59
-            },
-            "Hematological System": {
-                "Unknown Topic": 329
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 79
-            },
-            "Nervous System": {
-                "Unknown Topic": 392
-            },
-            "Reproductive System": {
-                "Unknown Topic": 440
-            },
-            "Respiratory System": {
-                "Unknown Topic": 238
-            },
-            "Urinary System": {
-                "Benign Prostatic Hyperplasia": 9,
-                "Acid Base": 12,
-                "Nephritic Syndromes": 15,
-                "Nephrotic Syndromes": 19,
-                "The Kidneys & Ureters": 8,
-                "Micturition & Urinary Incontinence": 11,
-                "Acute Kidney Injury": 13,
-                "General": 5,
-                "Urinary Tract Calculi": 9,
-                "Renal Cell Carcinoma": 7,
-                "Chronic Kidney Disease": 25,
-                "The Urinary Bladder": 4,
-                "Urethra & Penis": 4,
-                "Renal Replacement Therapy": 2,
-                "Urinary Tract Infection": 8,
-                "Transplantation": 2,
-                "Renal Tubular Acidosis": 5,
-                "Polycystic Kidney Disease": 1,
-                "Prostatic Adenocarcinoma": 1
-            },
-            "Immune System": {
-                "Unknown Topic": 67
-            },
-            "Integumentary System": {
-                "Unknown Topic": 8
-            },
-            "Metabolic System": {
-                "Unknown Topic": 13
-            },
-            "Special Senses": {
-                "Unknown Topic": 31
-            },
-            "Infectious Disease": {
-                "Unknown Topic": 119
-            },
-            "Nutrition": {
-                "Unknown Topic": 41
-            },
-            "Nutritional Deficiency": {
-                "Unknown Topic": 2
-            },
-            "Oncology": {
-                "Unknown Topic": 17
-            },
-            "Ophthalmology": {
-                "Unknown Topic": 10
-            },
-            "Toxicology": {
-                "Unknown Topic": 3
-            }
-        },
-        "Microbiology": {
-            "Cardiovascular System": {
-                "Unknown Topic": 10
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 104
-            },
-            "General": {
-                "Unknown Topic": 113
-            },
-            "Infectious Disease": {
-                "Unknown Topic": 8
-            },
-            "Integumentary System": {
-                "Unknown Topic": 23
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 6
-            },
-            "Nervous System": {
-                "Unknown Topic": 47
-            },
-            "Urinary System": {
-                "Urinary Tract Infection": 16
-            },
-            "Endocrine System": {
-                "Unknown Topic": 8
-            },
-            "Hematological System": {
-                "Unknown Topic": 8
-            },
-            "Immune System": {
-                "Unknown Topic": 19
-            },
-            "Reproductive System": {
-                "Unknown Topic": 53
-            },
-            "Respiratory System": {
-                "Unknown Topic": 51
-            },
-            "Special Senses": {
-                "Unknown Topic": 12
-            },
-            "Nutritional Deficiency": {
-                "Unknown Topic": 1
-            },
-            "Sterilization": {
-                "Unknown Topic": 1
-            }
-        },
-        "Pathology": {
-            "Cardiovascular System": {
-                "Unknown Topic": 196
-            },
-            "Endocrine System": {
-                "Unknown Topic": 77
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 223
-            },
-            "General": {
-                "Unknown Topic": 210
-            },
-            "Hematological System": {
-                "Unknown Topic": 195
-            },
-            "Immune System": {
-                "Unknown Topic": 384
-            },
-            "Metabolic System": {
-                "Unknown Topic": 10
-            },
-            "Nervous System": {
-                "Unknown Topic": 122
-            },
-            "Reproductive System": {
-                "Unknown Topic": 128
-            },
-            "Respiratory System": {
-                "Unknown Topic": 148
-            },
-            "Integumentary System": {
-                "Unknown Topic": 42
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 53
-            },
-            "Special Senses": {
-                "Unknown Topic": 3
-            },
-            "Urinary System": {
-                "Nephritic Syndromes": 19,
-                "Nephrotic Syndromes": 7,
-                "Urethra & Penis": 1,
-                "The Kidneys & Ureters": 3,
-                "Renal Cell Carcinoma": 1,
-                "Chronic Kidney Disease": 2,
-                "Transplantation": 1,
-                "The Urinary Bladder": 6,
-                "Acute Kidney Injury": 2
-            },
-            "Cell Biology": {
-                "Unknown Topic": 21
-            },
-            "Genetics": {
-                "Unknown Topic": 14
-            },
-            "Infectious Disease": {
-                "Unknown Topic": 24
-            },
-            "Nutritional Deficiency": {
-                "Unknown Topic": 1
-            },
-            "Oncology": {
-                "Unknown Topic": 53
-            },
-            "Ophthalmology": {
-                "Unknown Topic": 1
-            },
-            "Pathology": {
-                "Unknown Topic": 2
-            },
-            "Toxicology": {
-                "Unknown Topic": 1
-            }
-        },
         "Pharmacology": {
-            "Cardiovascular System": {
-                "Unknown Topic": 226
-            },
-            "Endocrine System": {
-                "Unknown Topic": 148
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 147
-            },
             "General": {
                 "Unknown Topic": 203
             },
-            "Hematological System": {
-                "Unknown Topic": 70
-            },
-            "Metabolic System": {
-                "Unknown Topic": 5
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 76
+            "Endocrine System": {
+                "Unknown Topic": 148
             },
             "Nervous System": {
                 "Unknown Topic": 220
             },
+            "Immune System": {
+                "Unknown Topic": 28
+            },
             "Reproductive System": {
                 "Unknown Topic": 83
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 147
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 76
+            },
+            "Hematological System": {
+                "Unknown Topic": 70
             },
             "Respiratory System": {
                 "Unknown Topic": 102
             },
-            "Urinary System": {
-                "Renal Pharmacology": 17,
-                "Diuretics": 30,
-                "Renal Replacement Therapy": 1,
-                "The Urinary Bladder": 13,
-                "Chronic Kidney Disease": 4,
-                "General": 1,
-                "Urinary Tract Infection": 2,
-                "Urinary Tract Calculi": 3,
-                "Micturition & Urinary Incontinence": 1,
-                "Renal Tubular Acidosis": 1
-            },
-            "Immune System": {
-                "Unknown Topic": 28
-            },
             "Integumentary System": {
                 "Unknown Topic": 6
-            },
-            "Parasitology": {
-                "Unknown Topic": 1
-            },
-            "Special Senses": {
-                "Unknown Topic": 15
             },
             "Infectious Disease": {
                 "Unknown Topic": 38
             },
-            "Neuromuscular": {
-                "Unknown Topic": 1
+            "Cardiovascular System": {
+                "Unknown Topic": 226
             },
-            "Oncology": {
-                "Unknown Topic": 8
+            "Special Senses": {
+                "Unknown Topic": 15
             },
-            "Pediatrics": {
-                "Unknown Topic": 2
+            "Toxicology": {
+                "Unknown Topic": 5
+            },
+            "Urinary System": {
+                "Urinary Tract Infection": 2,
+                "Chronic Kidney Disease": 4,
+                "Diuretics": 30,
+                "Urinary Tract Calculi": 3,
+                "Renal Pharmacology": 17,
+                "The Urinary Bladder": 13,
+                "Micturition & Urinary Incontinence": 1,
+                "Renal Replacement Therapy": 1,
+                "Renal Tubular Acidosis": 1,
+                "General": 1
             },
             "Pharmacology": {
                 "Unknown Topic": 50
             },
+            "Oncology": {
+                "Unknown Topic": 8
+            },
             "Psychiatry": {
                 "Unknown Topic": 5
             },
-            "Toxicology": {
-                "Unknown Topic": 5
-            }
-        },
-        "Physiology": {
-            "Cardiovascular System": {
-                "Unknown Topic": 254
+            "Pediatrics": {
+                "Unknown Topic": 2
             },
-            "Endocrine System": {
-                "Unknown Topic": 152
-            },
-            "General": {
-                "Unknown Topic": 57
-            },
-            "Hematological System": {
-                "Unknown Topic": 44
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 22
-            },
-            "Nervous System": {
-                "Unknown Topic": 253
-            },
-            "Reproductive System": {
-                "Unknown Topic": 180
-            },
-            "Respiratory System": {
-                "Unknown Topic": 272
-            },
-            "Special Senses": {
-                "Unknown Topic": 25
-            },
-            "Urinary System": {
-                "General": 137,
-                "Acid Base": 13,
-                "Renal Replacement Therapy": 1,
-                "Nephrotic Syndromes": 3,
-                "Chronic Kidney Disease": 1,
-                "Micturition & Urinary Incontinence": 1,
-                "Transplantation": 1,
-                "Acute Kidney Injury": 1
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 135
-            },
-            "Immune System": {
-                "Unknown Topic": 9
-            },
-            "Metabolism": {
+            "Parasitology": {
                 "Unknown Topic": 1
             },
-            "Cell Biology": {
-                "Unknown Topic": 6
-            },
             "Metabolic System": {
-                "Unknown Topic": 4
+                "Unknown Topic": 5
             },
-            "Ophthalmology": {
+            "Neuromuscular": {
                 "Unknown Topic": 1
             }
         },
         "Biochemistry": {
-            "Endocrine System": {
-                "Unknown Topic": 28
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 24
+            "Metabolic System": {
+                "Unknown Topic": 266
             },
             "General": {
                 "Unknown Topic": 82
@@ -496,11 +87,27 @@
             "Hematological System": {
                 "Unknown Topic": 41
             },
-            "Immune System": {
-                "Unknown Topic": 7
+            "Nervous System": {
+                "Unknown Topic": 19
             },
-            "Metabolic System": {
-                "Unknown Topic": 266
+            "Endocrine System": {
+                "Unknown Topic": 28
+            },
+            "Urinary System": {
+                "Acid Base": 2,
+                "Urinary Tract Calculi": 2
+            },
+            "Reproductive System": {
+                "Unknown Topic": 5
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 24
+            },
+            "Special Senses": {
+                "Unknown Topic": 16
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 16
             },
             "Metabolism": {
                 "Unknown Topic": 3
@@ -508,56 +115,28 @@
             "Musculoskeletal System": {
                 "Unknown Topic": 14
             },
-            "Cardiovascular System": {
-                "Unknown Topic": 16
-            },
             "Genetics": {
                 "Unknown Topic": 5
-            },
-            "Nervous System": {
-                "Unknown Topic": 19
             },
             "Nutrition": {
                 "Unknown Topic": 13
             },
-            "Reproductive System": {
-                "Unknown Topic": 5
-            },
-            "Special Senses": {
-                "Unknown Topic": 16
-            },
-            "Urinary System": {
-                "Urinary Tract Calculi": 2,
-                "Acid Base": 2
-            },
-            "Cell Biology": {
-                "Unknown Topic": 2
+            "Immune System": {
+                "Unknown Topic": 7
             },
             "Integumentary System": {
                 "Unknown Topic": 3
+            },
+            "Cell Biology": {
+                "Unknown Topic": 2
             }
         },
         "Surgery": {
-            "Endocrine System": {
-                "Unknown Topic": 22
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 174
-            },
-            "Cardiovascular System": {
-                "Unknown Topic": 51
-            },
-            "General": {
-                "Unknown Topic": 38
-            },
-            "Hematological System": {
-                "Unknown Topic": 12
-            },
             "Integumentary System": {
                 "Unknown Topic": 7
             },
-            "Musculoskeletal System": {
-                "Unknown Topic": 126
+            "Gastrointestinal System": {
+                "Unknown Topic": 174
             },
             "Nervous System": {
                 "Unknown Topic": 61
@@ -565,20 +144,26 @@
             "Reproductive System": {
                 "Unknown Topic": 86
             },
+            "Musculoskeletal System": {
+                "Unknown Topic": 125
+            },
+            "Endocrine System": {
+                "Unknown Topic": 22
+            },
+            "Otolaryngology": {
+                "Unknown Topic": 2
+            },
+            "General": {
+                "Unknown Topic": 38
+            },
+            "Trauma": {
+                "Unknown Topic": 10
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 51
+            },
             "Respiratory System": {
                 "Unknown Topic": 35
-            },
-            "Urinary System": {
-                "Transplantation": 2
-            },
-            "Immune System": {
-                "Unknown Topic": 4
-            },
-            "Infectious Disease": {
-                "Unknown Topic": 11
-            },
-            "Nutritional Deficiency": {
-                "Unknown Topic": 2
             },
             "Oncology": {
                 "Unknown Topic": 32
@@ -586,23 +171,301 @@
             "Ophthalmology": {
                 "Unknown Topic": 1
             },
-            "Otolaryngology": {
-                "Unknown Topic": 2
+            "Infectious Disease": {
+                "Unknown Topic": 11
             },
             "Pharmacology": {
                 "Unknown Topic": 3
             },
-            "Surgery": {
-                "Unknown Topic": 2
+            "Immune System": {
+                "Unknown Topic": 4
             },
-            "Trauma": {
-                "Unknown Topic": 10
+            "Hematological System": {
+                "Unknown Topic": 12
             },
             "Vascular System": {
                 "Unknown Topic": 3
+            },
+            "Urinary System": {
+                "Transplantation": 2
+            },
+            "Nutritional Deficiency": {
+                "Unknown Topic": 2
+            },
+            "Surgery": {
+                "Unknown Topic": 2
+            }
+        },
+        "Pathology": {
+            "General": {
+                "Unknown Topic": 210
+            },
+            "Reproductive System": {
+                "Unknown Topic": 128
+            },
+            "Nervous System": {
+                "Unknown Topic": 122
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 196
+            },
+            "Urinary System": {
+                "Nephritic Syndromes": 19,
+                "The Urinary Bladder": 6,
+                "The Kidneys & Ureters": 3,
+                "Nephrotic Syndromes": 7,
+                "Urethra & Penis": 1,
+                "Renal Cell Carcinoma": 1,
+                "Acute Kidney Injury": 2,
+                "Chronic Kidney Disease": 2,
+                "Transplantation": 1
+            },
+            "Hematological System": {
+                "Unknown Topic": 195
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 223
+            },
+            "Endocrine System": {
+                "Unknown Topic": 77
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 53
+            },
+            "Respiratory System": {
+                "Unknown Topic": 148
+            },
+            "Immune System": {
+                "Unknown Topic": 384
+            },
+            "Oncology": {
+                "Unknown Topic": 53
+            },
+            "Integumentary System": {
+                "Unknown Topic": 42
+            },
+            "Infectious Disease": {
+                "Unknown Topic": 24
+            },
+            "Genetics": {
+                "Unknown Topic": 14
+            },
+            "Metabolic System": {
+                "Unknown Topic": 10
+            },
+            "Cell Biology": {
+                "Unknown Topic": 21
+            },
+            "Special Senses": {
+                "Unknown Topic": 3
+            },
+            "Ophthalmology": {
+                "Unknown Topic": 1
+            },
+            "Pathology": {
+                "Unknown Topic": 2
+            },
+            "Nutritional Deficiency": {
+                "Unknown Topic": 1
+            },
+            "Toxicology": {
+                "Unknown Topic": 1
+            }
+        },
+        "Pediatrics": {
+            "Gastrointestinal System": {
+                "Unknown Topic": 29
+            },
+            "Genetics": {
+                "Unknown Topic": 18
+            },
+            "Surgery": {
+                "Unknown Topic": 2
+            },
+            "Infectious Disease": {
+                "Unknown Topic": 11
+            },
+            "Oncology": {
+                "Unknown Topic": 3
+            },
+            "Hematological System": {
+                "Unknown Topic": 27
+            },
+            "Nutritional Deficiency": {
+                "Unknown Topic": 7
+            },
+            "Nervous System": {
+                "Unknown Topic": 6
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 11
+            },
+            "Endocrine System": {
+                "Unknown Topic": 10
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 5
+            },
+            "Respiratory System": {
+                "Unknown Topic": 7
+            },
+            "Immune System": {
+                "Unknown Topic": 7
+            },
+            "Pharmacology": {
+                "Unknown Topic": 2
+            },
+            "General": {
+                "Unknown Topic": 1
+            },
+            "Pediatrics": {
+                "Unknown Topic": 1
+            },
+            "Metabolic System": {
+                "Unknown Topic": 1
+            },
+            "Integumentary System": {
+                "Unknown Topic": 1
+            }
+        },
+        "Medicine": {
+            "Hematological System": {
+                "Unknown Topic": 329
+            },
+            "Nervous System": {
+                "Unknown Topic": 392
+            },
+            "Oncology": {
+                "Unknown Topic": 17
+            },
+            "Endocrine System": {
+                "Unknown Topic": 490
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 453
+            },
+            "Reproductive System": {
+                "Unknown Topic": 440
+            },
+            "Immune System": {
+                "Unknown Topic": 67
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 297
+            },
+            "Respiratory System": {
+                "Unknown Topic": 238
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 79
+            },
+            "Urinary System": {
+                "Nephritic Syndromes": 15,
+                "Nephrotic Syndromes": 19,
+                "The Kidneys & Ureters": 8,
+                "General": 5,
+                "Renal Tubular Acidosis": 5,
+                "Micturition & Urinary Incontinence": 11,
+                "Acute Kidney Injury": 13,
+                "Urinary Tract Calculi": 9,
+                "Acid Base": 12,
+                "Polycystic Kidney Disease": 1,
+                "Chronic Kidney Disease": 25,
+                "Renal Cell Carcinoma": 7,
+                "Urethra & Penis": 4,
+                "Renal Replacement Therapy": 2,
+                "The Urinary Bladder": 4,
+                "Benign Prostatic Hyperplasia": 9,
+                "Prostatic Adenocarcinoma": 1,
+                "Urinary Tract Infection": 8,
+                "Transplantation": 2
+            },
+            "Special Senses": {
+                "Unknown Topic": 31
+            },
+            "General": {
+                "Unknown Topic": 59
+            },
+            "Metabolic System": {
+                "Unknown Topic": 13
+            },
+            "Infectious Disease": {
+                "Unknown Topic": 119
+            },
+            "Integumentary System": {
+                "Unknown Topic": 8
+            },
+            "Nutrition": {
+                "Unknown Topic": 41
+            },
+            "Ophthalmology": {
+                "Unknown Topic": 10
+            },
+            "Toxicology": {
+                "Unknown Topic": 3
+            },
+            "Nutritional Deficiency": {
+                "Unknown Topic": 2
+            }
+        },
+        "Anatomy": {
+            "Musculoskeletal System": {
+                "Unknown Topic": 301
+            },
+            "Respiratory System": {
+                "Unknown Topic": 143
+            },
+            "Nervous System": {
+                "Unknown Topic": 768
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 174
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 223
+            },
+            "Hematological System": {
+                "Unknown Topic": 2
+            },
+            "Special Senses": {
+                "Unknown Topic": 18
+            },
+            "Reproductive System": {
+                "Unknown Topic": 137
+            },
+            "General": {
+                "Unknown Topic": 3
+            },
+            "Endocrine System": {
+                "Unknown Topic": 16
+            },
+            "Urinary System": {
+                "The Kidneys & Ureters": 22,
+                "Urinary Tract Infection": 1,
+                "Benign Prostatic Hyperplasia": 1,
+                "Urethra & Penis": 10,
+                "Transplantation": 2,
+                "Urinary Tract Calculi": 1,
+                "The Prostate & Seminal Vesicles": 3,
+                "The Urinary Bladder": 3
+            },
+            "Integumentary System": {
+                "Unknown Topic": 6
+            },
+            "Immune System": {
+                "Unknown Topic": 15
+            },
+            "Ophthalmology": {
+                "Unknown Topic": 1
             }
         },
         "Community Medicine": {
+            "Biostatistics": {
+                "Unknown Topic": 66
+            },
+            "Behavioral Science": {
+                "Unknown Topic": 6
+            },
             "General": {
                 "Unknown Topic": 23
             },
@@ -612,137 +475,372 @@
             "Reproductive System": {
                 "Unknown Topic": 1
             },
-            "Biostatistics": {
-                "Unknown Topic": 66
-            },
             "Special Senses": {
                 "Unknown Topic": 1
-            },
-            "Behavioral Science": {
-                "Unknown Topic": 6
             }
         },
-        "Radiology": {
+        "Physiology": {
+            "Nervous System": {
+                "Unknown Topic": 253
+            },
+            "Hematological System": {
+                "Unknown Topic": 44
+            },
+            "Reproductive System": {
+                "Unknown Topic": 180
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 254
+            },
+            "Urinary System": {
+                "Nephrotic Syndromes": 3,
+                "General": 137,
+                "Chronic Kidney Disease": 1,
+                "Acid Base": 13,
+                "Micturition & Urinary Incontinence": 1,
+                "Renal Replacement Therapy": 1,
+                "Transplantation": 1,
+                "Acute Kidney Injury": 1
+            },
+            "Endocrine System": {
+                "Unknown Topic": 152
+            },
+            "Special Senses": {
+                "Unknown Topic": 25
+            },
+            "Respiratory System": {
+                "Unknown Topic": 272
+            },
             "General": {
-                "Unknown Topic": 3
+                "Unknown Topic": 57
             },
             "Gastrointestinal System": {
-                "Unknown Topic": 8
+                "Unknown Topic": 135
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 22
+            },
+            "Immune System": {
+                "Unknown Topic": 9
+            },
+            "Metabolism": {
+                "Unknown Topic": 1
+            },
+            "Metabolic System": {
+                "Unknown Topic": 4
+            },
+            "Cell Biology": {
+                "Unknown Topic": 6
+            },
+            "Ophthalmology": {
+                "Unknown Topic": 1
+            }
+        },
+        "Oncology": {
+            "Reproductive System": {
+                "Unknown Topic": 23
             },
             "Nervous System": {
                 "Unknown Topic": 2
             },
-            "Cardiovascular System": {
-                "Unknown Topic": 1
+            "General": {
+                "Unknown Topic": 12
             },
-            "Radiology": {
-                "Unknown Topic": 2
+            "Integumentary System": {
+                "Unknown Topic": 3
             },
-            "Reproductive System": {
-                "Unknown Topic": 4
+            "Gastrointestinal System": {
+                "Unknown Topic": 11
             },
-            "Respiratory System": {
+            "Hematological System": {
+                "Unknown Topic": 3
+            },
+            "Endocrine System": {
+                "Unknown Topic": 3
+            },
+            "Musculoskeletal System": {
                 "Unknown Topic": 1
             }
         },
+        "Embryology": {
+            "Cardiovascular System": {
+                "Unknown Topic": 25
+            },
+            "Respiratory System": {
+                "Unknown Topic": 23
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 25
+            },
+            "Urinary System": {
+                "General": 5,
+                "The Urinary Bladder": 11,
+                "The Kidneys & Ureters": 11,
+                "Potter Sequence & Related Conditions": 4
+            },
+            "Endocrine System": {
+                "Unknown Topic": 17
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 41
+            },
+            "Reproductive System": {
+                "Unknown Topic": 55
+            },
+            "Nervous System": {
+                "Unknown Topic": 29
+            },
+            "General": {
+                "Unknown Topic": 6
+            },
+            "Special Senses": {
+                "Unknown Topic": 4
+            },
+            "Oncology": {
+                "Unknown Topic": 2
+            },
+            "Hematological System": {
+                "Unknown Topic": 3
+            },
+            "Surgery": {
+                "Unknown Topic": 1
+            }
+        },
+        "Anesthesia": {
+            "Respiratory System": {
+                "Unknown Topic": 20
+            },
+            "Immune System": {
+                "Unknown Topic": 2
+            },
+            "Nervous System": {
+                "Unknown Topic": 21
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 17
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 7
+            },
+            "General": {
+                "Unknown Topic": 16
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 7
+            },
+            "Special Senses": {
+                "Unknown Topic": 1
+            }
+        },
+        "Genetics": {
+            "Nervous System": {
+                "Unknown Topic": 18
+            },
+            "Reproductive System": {
+                "Unknown Topic": 79
+            },
+            "Urinary System": {
+                "Polycystic Kidney Disease": 13,
+                "Nephritic Syndromes": 1
+            },
+            "Musculoskeletal System": {
+                "Unknown Topic": 31
+            },
+            "Endocrine System": {
+                "Unknown Topic": 4
+            },
+            "Genetics": {
+                "Unknown Topic": 48
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 19
+            },
+            "General": {
+                "Unknown Topic": 75
+            },
+            "Metabolic System": {
+                "Unknown Topic": 7
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 9
+            },
+            "Special Senses": {
+                "Unknown Topic": 1
+            },
+            "Hematological System": {
+                "Unknown Topic": 16
+            },
+            "Respiratory System": {
+                "Unknown Topic": 7
+            },
+            "Immune System": {
+                "Unknown Topic": 3
+            },
+            "Oncology": {
+                "Unknown Topic": 3
+            }
+        },
         "Obstetrics": {
+            "Gastrointestinal System": {
+                "Unknown Topic": 2
+            },
+            "Hematological System": {
+                "Unknown Topic": 13
+            },
+            "Pediatrics": {
+                "Unknown Topic": 4
+            },
+            "Genetics": {
+                "Unknown Topic": 6
+            },
+            "Endocrine System": {
+                "Unknown Topic": 10
+            },
             "Reproductive System": {
                 "Unknown Topic": 24
             },
             "Cardiovascular System": {
                 "Unknown Topic": 7
             },
-            "Endocrine System": {
-                "Unknown Topic": 10
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 2
-            },
-            "Genetics": {
-                "Unknown Topic": 6
-            },
-            "Hematological System": {
-                "Unknown Topic": 13
-            },
             "Musculoskeletal System": {
-                "Unknown Topic": 2
-            },
-            "Nutritional Deficiency": {
                 "Unknown Topic": 2
             },
             "Obstetrics": {
                 "Unknown Topic": 7
             },
-            "Pediatrics": {
-                "Unknown Topic": 4
-            },
-            "Pharmacology": {
-                "Unknown Topic": 1
+            "Nutritional Deficiency": {
+                "Unknown Topic": 2
             },
             "Teratology": {
                 "Unknown Topic": 2
+            },
+            "Pharmacology": {
+                "Unknown Topic": 1
             }
         },
         "Histology": {
             "Urinary System": {
+                "Nephrotic Syndromes": 1,
                 "The Urinary Bladder": 5,
-                "General": 13,
-                "Nephrotic Syndromes": 1
+                "General": 13
             },
-            "Gastrointestinal System": {
-                "Unknown Topic": 12
+            "Reproductive System": {
+                "Unknown Topic": 11
             },
-            "General": {
-                "Unknown Topic": 4
-            },
-            "Respiratory System": {
-                "Unknown Topic": 12
-            },
-            "Cardiovascular System": {
-                "Unknown Topic": 3
-            },
-            "Endocrine System": {
-                "Unknown Topic": 1
-            },
-            "Immune System": {
-                "Unknown Topic": 3
+            "Musculoskeletal System": {
+                "Unknown Topic": 11
             },
             "Integumentary System": {
                 "Unknown Topic": 3
             },
-            "Musculoskeletal System": {
-                "Unknown Topic": 11
+            "Gastrointestinal System": {
+                "Unknown Topic": 12
+            },
+            "Respiratory System": {
+                "Unknown Topic": 12
             },
             "Nervous System": {
                 "Unknown Topic": 1
             },
-            "Reproductive System": {
-                "Unknown Topic": 11
-            }
-        },
-        "Anesthesia": {
-            "Cardiovascular System": {
-                "Unknown Topic": 17
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 7
-            },
             "General": {
-                "Unknown Topic": 16
+                "Unknown Topic": 4
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 3
             },
             "Immune System": {
-                "Unknown Topic": 2
+                "Unknown Topic": 3
             },
-            "Musculoskeletal System": {
+            "Endocrine System": {
+                "Unknown Topic": 1
+            }
+        },
+        "Gynecology": {
+            "Reproductive System": {
                 "Unknown Topic": 7
+            }
+        },
+        "Microbiology": {
+            "Musculoskeletal System": {
+                "Unknown Topic": 6
+            },
+            "Hematological System": {
+                "Unknown Topic": 8
             },
             "Nervous System": {
-                "Unknown Topic": 21
+                "Unknown Topic": 47
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 10
+            },
+            "Reproductive System": {
+                "Unknown Topic": 53
+            },
+            "Integumentary System": {
+                "Unknown Topic": 23
+            },
+            "General": {
+                "Unknown Topic": 113
             },
             "Respiratory System": {
-                "Unknown Topic": 20
+                "Unknown Topic": 51
+            },
+            "Gastrointestinal System": {
+                "Unknown Topic": 104
+            },
+            "Urinary System": {
+                "Urinary Tract Infection": 16
+            },
+            "Endocrine System": {
+                "Unknown Topic": 8
             },
             "Special Senses": {
+                "Unknown Topic": 12
+            },
+            "Immune System": {
+                "Unknown Topic": 19
+            },
+            "Infectious Disease": {
+                "Unknown Topic": 8
+            },
+            "Nutritional Deficiency": {
+                "Unknown Topic": 1
+            },
+            "Sterilization": {
+                "Unknown Topic": 1
+            }
+        },
+        "Psychiatry": {
+            "General": {
+                "Unknown Topic": 17
+            },
+            "Psychiatry": {
+                "Unknown Topic": 3
+            },
+            "Nervous System": {
+                "Unknown Topic": 4
+            }
+        },
+        "Radiology": {
+            "Gastrointestinal System": {
+                "Unknown Topic": 8
+            },
+            "Reproductive System": {
+                "Unknown Topic": 4
+            },
+            "Cardiovascular System": {
+                "Unknown Topic": 1
+            },
+            "Nervous System": {
+                "Unknown Topic": 2
+            },
+            "Radiology": {
+                "Unknown Topic": 2
+            },
+            "General": {
+                "Unknown Topic": 3
+            },
+            "Respiratory System": {
                 "Unknown Topic": 1
             }
         },
@@ -750,172 +848,179 @@
             "Cardiovascular System": {
                 "Unknown Topic": 1
             }
-        },
-        "Pediatrics": {
-            "Cardiovascular System": {
-                "Unknown Topic": 11
-            },
-            "Endocrine System": {
-                "Unknown Topic": 10
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 29
-            },
-            "General": {
-                "Unknown Topic": 1
-            },
-            "Metabolic System": {
-                "Unknown Topic": 1
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 5
-            },
-            "Nervous System": {
-                "Unknown Topic": 6
-            },
-            "Genetics": {
-                "Unknown Topic": 18
-            },
-            "Hematological System": {
-                "Unknown Topic": 27
-            },
-            "Immune System": {
-                "Unknown Topic": 7
-            },
-            "Infectious Disease": {
-                "Unknown Topic": 11
-            },
-            "Integumentary System": {
-                "Unknown Topic": 1
-            },
-            "Nutritional Deficiency": {
-                "Unknown Topic": 7
-            },
-            "Oncology": {
-                "Unknown Topic": 3
-            },
-            "Pediatrics": {
-                "Unknown Topic": 1
-            },
-            "Pharmacology": {
-                "Unknown Topic": 2
-            },
-            "Respiratory System": {
-                "Unknown Topic": 7
-            },
-            "Surgery": {
-                "Unknown Topic": 2
-            }
-        },
-        "Oncology": {
-            "Endocrine System": {
-                "Unknown Topic": 3
-            },
-            "Gastrointestinal System": {
-                "Unknown Topic": 11
-            },
-            "General": {
-                "Unknown Topic": 12
-            },
-            "Hematological System": {
-                "Unknown Topic": 3
-            },
-            "Integumentary System": {
-                "Unknown Topic": 3
-            },
-            "Musculoskeletal System": {
-                "Unknown Topic": 1
-            },
-            "Nervous System": {
-                "Unknown Topic": 2
-            },
-            "Reproductive System": {
-                "Unknown Topic": 23
-            }
-        },
-        "Psychiatry": {
-            "General": {
-                "Unknown Topic": 17
-            },
-            "Nervous System": {
-                "Unknown Topic": 4
-            },
-            "Psychiatry": {
-                "Unknown Topic": 3
-            }
-        },
-        "Gynecology": {
-            "Reproductive System": {
-                "Unknown Topic": 7
-            }
         }
     },
     "systems": {
-        "Cardiovascular System": {
-            "Anatomy": {
-                "Unknown Topic": 174
-            },
-            "Embryology": {
-                "Unknown Topic": 25
+        "Metabolic System": {
+            "Biochemistry": {
+                "Unknown Topic": 266
             },
             "Genetics": {
-                "Unknown Topic": 19
-            },
-            "Medicine": {
-                "Unknown Topic": 454
-            },
-            "Microbiology": {
-                "Unknown Topic": 10
-            },
-            "Pathology": {
-                "Unknown Topic": 196
-            },
-            "Pharmacology": {
-                "Unknown Topic": 226
-            },
-            "Physiology": {
-                "Unknown Topic": 254
-            },
-            "Anesthesia": {
-                "Unknown Topic": 17
-            },
-            "Biochemistry": {
-                "Unknown Topic": 16
-            },
-            "Forensic Medicine": {
-                "Unknown Topic": 1
-            },
-            "Obstetrics": {
                 "Unknown Topic": 7
             },
-            "Pediatrics": {
-                "Unknown Topic": 11
+            "Medicine": {
+                "Unknown Topic": 13
             },
+            "Pathology": {
+                "Unknown Topic": 10
+            },
+            "Pediatrics": {
+                "Unknown Topic": 1
+            },
+            "Pharmacology": {
+                "Unknown Topic": 5
+            },
+            "Physiology": {
+                "Unknown Topic": 4
+            }
+        },
+        "Integumentary System": {
             "Surgery": {
-                "Unknown Topic": 51
+                "Unknown Topic": 7
+            },
+            "Pharmacology": {
+                "Unknown Topic": 6
+            },
+            "Microbiology": {
+                "Unknown Topic": 23
+            },
+            "Pathology": {
+                "Unknown Topic": 42
+            },
+            "Medicine": {
+                "Unknown Topic": 8
             },
             "Histology": {
                 "Unknown Topic": 3
             },
+            "Oncology": {
+                "Unknown Topic": 3
+            },
+            "Anatomy": {
+                "Unknown Topic": 6
+            },
+            "Biochemistry": {
+                "Unknown Topic": 3
+            },
+            "Pediatrics": {
+                "Unknown Topic": 1
+            }
+        },
+        "Gastrointestinal System": {
+            "Pediatrics": {
+                "Unknown Topic": 29
+            },
+            "Surgery": {
+                "Unknown Topic": 174
+            },
+            "Medicine": {
+                "Unknown Topic": 297
+            },
+            "Pharmacology": {
+                "Unknown Topic": 147
+            },
+            "Obstetrics": {
+                "Unknown Topic": 2
+            },
+            "Pathology": {
+                "Unknown Topic": 223
+            },
+            "Embryology": {
+                "Unknown Topic": 41
+            },
+            "Anatomy": {
+                "Unknown Topic": 223
+            },
+            "Genetics": {
+                "Unknown Topic": 9
+            },
+            "Physiology": {
+                "Unknown Topic": 135
+            },
+            "Microbiology": {
+                "Unknown Topic": 104
+            },
+            "Biochemistry": {
+                "Unknown Topic": 24
+            },
             "Radiology": {
+                "Unknown Topic": 8
+            },
+            "Histology": {
+                "Unknown Topic": 12
+            },
+            "Oncology": {
+                "Unknown Topic": 11
+            },
+            "Anesthesia": {
+                "Unknown Topic": 7
+            }
+        },
+        "Reproductive System": {
+            "Pathology": {
+                "Unknown Topic": 128
+            },
+            "Medicine": {
+                "Unknown Topic": 440
+            },
+            "Oncology": {
+                "Unknown Topic": 23
+            },
+            "Pharmacology": {
+                "Unknown Topic": 83
+            },
+            "Surgery": {
+                "Unknown Topic": 86
+            },
+            "Physiology": {
+                "Unknown Topic": 180
+            },
+            "Genetics": {
+                "Unknown Topic": 79
+            },
+            "Gynecology": {
+                "Unknown Topic": 7
+            },
+            "Embryology": {
+                "Unknown Topic": 55
+            },
+            "Microbiology": {
+                "Unknown Topic": 53
+            },
+            "Anatomy": {
+                "Unknown Topic": 137
+            },
+            "Biochemistry": {
+                "Unknown Topic": 5
+            },
+            "Obstetrics": {
+                "Unknown Topic": 24
+            },
+            "Histology": {
+                "Unknown Topic": 11
+            },
+            "Radiology": {
+                "Unknown Topic": 4
+            },
+            "Community Medicine": {
                 "Unknown Topic": 1
             }
         },
         "Endocrine System": {
-            "Biochemistry": {
-                "Unknown Topic": 28
-            },
-            "Embryology": {
-                "Unknown Topic": 17
+            "Pharmacology": {
+                "Unknown Topic": 148
             },
             "Medicine": {
                 "Unknown Topic": 490
             },
+            "Embryology": {
+                "Unknown Topic": 17
+            },
             "Pathology": {
                 "Unknown Topic": 77
             },
-            "Pharmacology": {
-                "Unknown Topic": 148
+            "Biochemistry": {
+                "Unknown Topic": 28
             },
             "Physiology": {
                 "Unknown Topic": 152
@@ -923,108 +1028,49 @@
             "Surgery": {
                 "Unknown Topic": 22
             },
-            "Anatomy": {
-                "Unknown Topic": 16
-            },
             "Genetics": {
                 "Unknown Topic": 4
             },
-            "Microbiology": {
-                "Unknown Topic": 8
+            "Pediatrics": {
+                "Unknown Topic": 10
             },
             "Obstetrics": {
                 "Unknown Topic": 10
             },
+            "Anatomy": {
+                "Unknown Topic": 16
+            },
+            "Microbiology": {
+                "Unknown Topic": 8
+            },
             "Oncology": {
                 "Unknown Topic": 3
-            },
-            "Pediatrics": {
-                "Unknown Topic": 10
             },
             "Histology": {
                 "Unknown Topic": 1
             }
         },
-        "Gastrointestinal System": {
-            "Anatomy": {
-                "Unknown Topic": 223
-            },
-            "Biochemistry": {
-                "Unknown Topic": 24
-            },
-            "Medicine": {
-                "Unknown Topic": 297
-            },
-            "Microbiology": {
-                "Unknown Topic": 104
-            },
-            "Pathology": {
-                "Unknown Topic": 223
-            },
-            "Pharmacology": {
-                "Unknown Topic": 147
-            },
-            "Surgery": {
-                "Unknown Topic": 174
-            },
-            "Anesthesia": {
-                "Unknown Topic": 7
-            },
-            "Embryology": {
-                "Unknown Topic": 41
-            },
-            "Genetics": {
-                "Unknown Topic": 9
-            },
-            "Histology": {
-                "Unknown Topic": 12
-            },
-            "Oncology": {
-                "Unknown Topic": 11
-            },
-            "Pediatrics": {
-                "Unknown Topic": 29
-            },
-            "Physiology": {
-                "Unknown Topic": 135
-            },
-            "Radiology": {
-                "Unknown Topic": 8
-            },
-            "Obstetrics": {
-                "Unknown Topic": 2
-            }
-        },
         "Hematological System": {
-            "Biochemistry": {
-                "Unknown Topic": 41
-            },
             "Medicine": {
                 "Unknown Topic": 329
-            },
-            "Pathology": {
-                "Unknown Topic": 195
-            },
-            "Pharmacology": {
-                "Unknown Topic": 70
             },
             "Physiology": {
                 "Unknown Topic": 44
             },
-            "Embryology": {
-                "Unknown Topic": 3
+            "Biochemistry": {
+                "Unknown Topic": 41
             },
-            "Genetics": {
-                "Unknown Topic": 16
+            "Pathology": {
+                "Unknown Topic": 195
+            },
+            "Pediatrics": {
+                "Unknown Topic": 27
+            },
+            "Pharmacology": {
+                "Unknown Topic": 70
             },
             "Microbiology": {
                 "Unknown Topic": 8
-            },
-            "Oncology": {
-                "Unknown Topic": 3
-            },
-            "Surgery": {
-                "Unknown Topic": 12
             },
             "Anatomy": {
                 "Unknown Topic": 2
@@ -1032,118 +1078,143 @@
             "Obstetrics": {
                 "Unknown Topic": 13
             },
-            "Pediatrics": {
-                "Unknown Topic": 27
-            }
-        },
-        "Immune System": {
-            "Biochemistry": {
-                "Unknown Topic": 7
-            },
-            "Pathology": {
-                "Unknown Topic": 384
-            },
-            "Anatomy": {
-                "Unknown Topic": 15
-            },
-            "Anesthesia": {
-                "Unknown Topic": 2
-            },
             "Genetics": {
-                "Unknown Topic": 3
-            },
-            "Medicine": {
-                "Unknown Topic": 67
-            },
-            "Microbiology": {
-                "Unknown Topic": 19
-            },
-            "Pharmacology": {
-                "Unknown Topic": 28
-            },
-            "Physiology": {
-                "Unknown Topic": 9
-            },
-            "Histology": {
-                "Unknown Topic": 3
-            },
-            "Pediatrics": {
-                "Unknown Topic": 7
-            },
-            "Surgery": {
-                "Unknown Topic": 4
-            }
-        },
-        "Integumentary System": {
-            "Microbiology": {
-                "Unknown Topic": 23
-            },
-            "Anatomy": {
-                "Unknown Topic": 6
-            },
-            "Medicine": {
-                "Unknown Topic": 8
+                "Unknown Topic": 16
             },
             "Oncology": {
                 "Unknown Topic": 3
             },
-            "Pathology": {
-                "Unknown Topic": 42
-            },
-            "Pharmacology": {
-                "Unknown Topic": 6
-            },
             "Surgery": {
-                "Unknown Topic": 7
+                "Unknown Topic": 12
             },
-            "Biochemistry": {
+            "Embryology": {
                 "Unknown Topic": 3
-            },
-            "Histology": {
-                "Unknown Topic": 3
-            },
-            "Pediatrics": {
-                "Unknown Topic": 1
             }
         },
-        "Metabolic System": {
-            "Biochemistry": {
-                "Unknown Topic": 266
+        "Nervous System": {
+            "Medicine": {
+                "Unknown Topic": 392
+            },
+            "Physiology": {
+                "Unknown Topic": 253
+            },
+            "Pharmacology": {
+                "Unknown Topic": 220
             },
             "Pathology": {
+                "Unknown Topic": 122
+            },
+            "Surgery": {
+                "Unknown Topic": 61
+            },
+            "Anatomy": {
+                "Unknown Topic": 768
+            },
+            "Genetics": {
+                "Unknown Topic": 18
+            },
+            "Biochemistry": {
+                "Unknown Topic": 19
+            },
+            "Pediatrics": {
+                "Unknown Topic": 6
+            },
+            "Microbiology": {
+                "Unknown Topic": 47
+            },
+            "Embryology": {
+                "Unknown Topic": 29
+            },
+            "Anesthesia": {
+                "Unknown Topic": 21
+            },
+            "Oncology": {
+                "Unknown Topic": 2
+            },
+            "Radiology": {
+                "Unknown Topic": 2
+            },
+            "Histology": {
+                "Unknown Topic": 1
+            },
+            "Psychiatry": {
+                "Unknown Topic": 4
+            }
+        },
+        "Cardiovascular System": {
+            "Medicine": {
+                "Unknown Topic": 453
+            },
+            "Embryology": {
+                "Unknown Topic": 25
+            },
+            "Pathology": {
+                "Unknown Topic": 196
+            },
+            "Anatomy": {
+                "Unknown Topic": 174
+            },
+            "Physiology": {
+                "Unknown Topic": 254
+            },
+            "Pediatrics": {
+                "Unknown Topic": 11
+            },
+            "Genetics": {
+                "Unknown Topic": 19
+            },
+            "Surgery": {
+                "Unknown Topic": 51
+            },
+            "Microbiology": {
                 "Unknown Topic": 10
             },
             "Pharmacology": {
-                "Unknown Topic": 5
+                "Unknown Topic": 226
             },
-            "Genetics": {
+            "Anesthesia": {
+                "Unknown Topic": 17
+            },
+            "Obstetrics": {
                 "Unknown Topic": 7
             },
-            "Medicine": {
-                "Unknown Topic": 13
+            "Biochemistry": {
+                "Unknown Topic": 16
             },
-            "Pediatrics": {
+            "Radiology": {
                 "Unknown Topic": 1
             },
-            "Physiology": {
-                "Unknown Topic": 4
+            "Forensic Medicine": {
+                "Unknown Topic": 1
+            },
+            "Histology": {
+                "Unknown Topic": 3
             }
         },
         "Musculoskeletal System": {
             "Anatomy": {
                 "Unknown Topic": 301
             },
-            "Biochemistry": {
-                "Unknown Topic": 14
+            "Embryology": {
+                "Unknown Topic": 25
+            },
+            "Surgery": {
+                "Unknown Topic": 125
             },
             "Medicine": {
                 "Unknown Topic": 79
             },
-            "Microbiology": {
-                "Unknown Topic": 6
-            },
             "Pharmacology": {
                 "Unknown Topic": 76
+            },
+            "Pathology": {
+                "Unknown Topic": 53
+            },
+            "Genetics": {
+                "Unknown Topic": 31
+            },
+            "Microbiology": {
+                "Unknown Topic": 6
             },
             "Physiology": {
                 "Unknown Topic": 22
@@ -1151,152 +1222,90 @@
             "Anesthesia": {
                 "Unknown Topic": 7
             },
-            "Embryology": {
-                "Unknown Topic": 25
-            },
-            "Genetics": {
-                "Unknown Topic": 31
-            },
-            "Oncology": {
-                "Unknown Topic": 1
-            },
-            "Pathology": {
-                "Unknown Topic": 53
-            },
-            "Pediatrics": {
-                "Unknown Topic": 5
-            },
-            "Surgery": {
-                "Unknown Topic": 126
-            },
             "Histology": {
                 "Unknown Topic": 11
             },
             "Obstetrics": {
                 "Unknown Topic": 2
-            }
-        },
-        "Nervous System": {
-            "Anatomy": {
-                "Unknown Topic": 768
-            },
-            "Medicine": {
-                "Unknown Topic": 392
-            },
-            "Microbiology": {
-                "Unknown Topic": 47
-            },
-            "Pathology": {
-                "Unknown Topic": 122
-            },
-            "Pharmacology": {
-                "Unknown Topic": 220
-            },
-            "Physiology": {
-                "Unknown Topic": 253
-            },
-            "Anesthesia": {
-                "Unknown Topic": 21
-            },
-            "Biochemistry": {
-                "Unknown Topic": 19
-            },
-            "Embryology": {
-                "Unknown Topic": 29
-            },
-            "Genetics": {
-                "Unknown Topic": 18
-            },
-            "Oncology": {
-                "Unknown Topic": 2
             },
             "Pediatrics": {
-                "Unknown Topic": 6
+                "Unknown Topic": 5
             },
-            "Psychiatry": {
-                "Unknown Topic": 4
+            "Biochemistry": {
+                "Unknown Topic": 14
             },
-            "Radiology": {
+            "Oncology": {
+                "Unknown Topic": 1
+            }
+        },
+        "Immune System": {
+            "Pharmacology": {
+                "Unknown Topic": 28
+            },
+            "Medicine": {
+                "Unknown Topic": 67
+            },
+            "Pathology": {
+                "Unknown Topic": 384
+            },
+            "Anesthesia": {
                 "Unknown Topic": 2
             },
             "Surgery": {
-                "Unknown Topic": 61
-            },
-            "Histology": {
-                "Unknown Topic": 1
-            }
-        },
-        "Reproductive System": {
-            "Anatomy": {
-                "Unknown Topic": 137
-            },
-            "Community Medicine": {
-                "Unknown Topic": 1
-            },
-            "Embryology": {
-                "Unknown Topic": 55
+                "Unknown Topic": 4
             },
             "Genetics": {
-                "Unknown Topic": 79
+                "Unknown Topic": 3
             },
-            "Medicine": {
-                "Unknown Topic": 440
-            },
-            "Obstetrics": {
-                "Unknown Topic": 24
-            },
-            "Pathology": {
-                "Unknown Topic": 128
-            },
-            "Pharmacology": {
-                "Unknown Topic": 83
-            },
-            "Physiology": {
-                "Unknown Topic": 180
-            },
-            "Biochemistry": {
-                "Unknown Topic": 5
-            },
-            "Gynecology": {
+            "Pediatrics": {
                 "Unknown Topic": 7
             },
             "Microbiology": {
-                "Unknown Topic": 53
+                "Unknown Topic": 19
             },
-            "Oncology": {
-                "Unknown Topic": 23
+            "Physiology": {
+                "Unknown Topic": 9
             },
-            "Surgery": {
-                "Unknown Topic": 86
+            "Anatomy": {
+                "Unknown Topic": 15
+            },
+            "Biochemistry": {
+                "Unknown Topic": 7
             },
             "Histology": {
-                "Unknown Topic": 11
-            },
-            "Radiology": {
-                "Unknown Topic": 4
+                "Unknown Topic": 3
             }
         },
         "Respiratory System": {
-            "Anatomy": {
-                "Unknown Topic": 143
-            },
             "Embryology": {
                 "Unknown Topic": 23
+            },
+            "Anatomy": {
+                "Unknown Topic": 143
             },
             "Medicine": {
                 "Unknown Topic": 238
             },
-            "Pathology": {
-                "Unknown Topic": 148
+            "Anesthesia": {
+                "Unknown Topic": 20
             },
             "Pharmacology": {
                 "Unknown Topic": 102
             },
+            "Pathology": {
+                "Unknown Topic": 148
+            },
             "Physiology": {
                 "Unknown Topic": 272
             },
-            "Anesthesia": {
-                "Unknown Topic": 20
+            "Surgery": {
+                "Unknown Topic": 35
+            },
+            "Microbiology": {
+                "Unknown Topic": 51
+            },
+            "Pediatrics": {
+                "Unknown Topic": 7
             },
             "Genetics": {
                 "Unknown Topic": 7
@@ -1304,105 +1313,96 @@
             "Histology": {
                 "Unknown Topic": 12
             },
-            "Microbiology": {
-                "Unknown Topic": 51
-            },
-            "Surgery": {
-                "Unknown Topic": 35
-            },
-            "Pediatrics": {
-                "Unknown Topic": 7
-            },
             "Radiology": {
                 "Unknown Topic": 1
             }
         },
         "Urinary System": {
-            "Anatomy": {
-                "Urethra & Penis": 10,
-                "Urinary Tract Infection": 1,
-                "The Kidneys & Ureters": 22,
-                "Transplantation": 2,
-                "The Prostate & Seminal Vesicles": 3,
-                "The Urinary Bladder": 3,
-                "Benign Prostatic Hyperplasia": 1,
-                "Urinary Tract Calculi": 1
-            },
             "Embryology": {
-                "Potter Sequence & Related Conditions": 4,
+                "General": 5,
                 "The Urinary Bladder": 11,
                 "The Kidneys & Ureters": 11,
-                "General": 5
+                "Potter Sequence & Related Conditions": 4
             },
-            "Histology": {
-                "The Urinary Bladder": 5,
-                "General": 13,
-                "Nephrotic Syndromes": 1
+            "Pathology": {
+                "Nephritic Syndromes": 19,
+                "The Urinary Bladder": 6,
+                "The Kidneys & Ureters": 3,
+                "Nephrotic Syndromes": 7,
+                "Urethra & Penis": 1,
+                "Renal Cell Carcinoma": 1,
+                "Acute Kidney Injury": 2,
+                "Chronic Kidney Disease": 2,
+                "Transplantation": 1
             },
             "Medicine": {
-                "Benign Prostatic Hyperplasia": 9,
-                "Acid Base": 12,
                 "Nephritic Syndromes": 15,
                 "Nephrotic Syndromes": 19,
                 "The Kidneys & Ureters": 8,
+                "General": 5,
+                "Renal Tubular Acidosis": 5,
                 "Micturition & Urinary Incontinence": 11,
                 "Acute Kidney Injury": 13,
-                "General": 5,
                 "Urinary Tract Calculi": 9,
-                "Renal Cell Carcinoma": 7,
+                "Acid Base": 12,
+                "Polycystic Kidney Disease": 1,
                 "Chronic Kidney Disease": 25,
-                "The Urinary Bladder": 4,
+                "Renal Cell Carcinoma": 7,
                 "Urethra & Penis": 4,
                 "Renal Replacement Therapy": 2,
+                "The Urinary Bladder": 4,
+                "Benign Prostatic Hyperplasia": 9,
+                "Prostatic Adenocarcinoma": 1,
                 "Urinary Tract Infection": 8,
-                "Transplantation": 2,
-                "Renal Tubular Acidosis": 5,
-                "Polycystic Kidney Disease": 1,
-                "Prostatic Adenocarcinoma": 1
+                "Transplantation": 2
             },
-            "Microbiology": {
-                "Urinary Tract Infection": 16
-            },
-            "Pharmacology": {
-                "Renal Pharmacology": 17,
-                "Diuretics": 30,
-                "Renal Replacement Therapy": 1,
-                "The Urinary Bladder": 13,
-                "Chronic Kidney Disease": 4,
-                "General": 1,
-                "Urinary Tract Infection": 2,
-                "Urinary Tract Calculi": 3,
-                "Micturition & Urinary Incontinence": 1,
-                "Renal Tubular Acidosis": 1
-            },
-            "Physiology": {
-                "General": 137,
-                "Acid Base": 13,
-                "Renal Replacement Therapy": 1,
-                "Nephrotic Syndromes": 3,
-                "Chronic Kidney Disease": 1,
-                "Micturition & Urinary Incontinence": 1,
-                "Transplantation": 1,
-                "Acute Kidney Injury": 1
-            },
-            "Biochemistry": {
-                "Urinary Tract Calculi": 2,
-                "Acid Base": 2
+            "Histology": {
+                "Nephrotic Syndromes": 1,
+                "The Urinary Bladder": 5,
+                "General": 13
             },
             "Genetics": {
                 "Polycystic Kidney Disease": 13,
                 "Nephritic Syndromes": 1
             },
-            "Pathology": {
-                "Nephritic Syndromes": 19,
-                "Nephrotic Syndromes": 7,
-                "Urethra & Penis": 1,
-                "The Kidneys & Ureters": 3,
-                "Renal Cell Carcinoma": 1,
-                "Chronic Kidney Disease": 2,
+            "Physiology": {
+                "Nephrotic Syndromes": 3,
+                "General": 137,
+                "Chronic Kidney Disease": 1,
+                "Acid Base": 13,
+                "Micturition & Urinary Incontinence": 1,
+                "Renal Replacement Therapy": 1,
                 "Transplantation": 1,
-                "The Urinary Bladder": 6,
-                "Acute Kidney Injury": 2
+                "Acute Kidney Injury": 1
+            },
+            "Biochemistry": {
+                "Acid Base": 2,
+                "Urinary Tract Calculi": 2
+            },
+            "Pharmacology": {
+                "Urinary Tract Infection": 2,
+                "Chronic Kidney Disease": 4,
+                "Diuretics": 30,
+                "Urinary Tract Calculi": 3,
+                "Renal Pharmacology": 17,
+                "The Urinary Bladder": 13,
+                "Micturition & Urinary Incontinence": 1,
+                "Renal Replacement Therapy": 1,
+                "Renal Tubular Acidosis": 1,
+                "General": 1
+            },
+            "Microbiology": {
+                "Urinary Tract Infection": 16
+            },
+            "Anatomy": {
+                "The Kidneys & Ureters": 22,
+                "Urinary Tract Infection": 1,
+                "Benign Prostatic Hyperplasia": 1,
+                "Urethra & Penis": 10,
+                "Transplantation": 2,
+                "Urinary Tract Calculi": 1,
+                "The Prostate & Seminal Vesicles": 3,
+                "The Urinary Bladder": 3
             },
             "Surgery": {
                 "Transplantation": 2
@@ -1417,107 +1417,107 @@
     "exams": {
         "2026": {
             "Surgery & Allied": {
-                "Surgery - 01/26 - January 7 - Evening": 163,
+                "Surgery - 01/26 - January 6 - Evening": 190,
                 "Surgery - 04/26 - April 7 - Night": 191,
+                "Surgery - 07/26 - July 08 - Afternoon": 168,
                 "Surgery - 04/26 - April 8 - Morning": 171,
                 "Surgery - 07/26 - July 09 - Afternoon": 187,
-                "Surgery - 07/26 - July 08 - Afternoon": 168,
-                "Surgery - 01/26 - January 6 - Evening": 190
+                "Surgery - 01/26 - January 7 - Evening": 163
+            },
+            "Medicine & Allied": {
+                "Medicine - 01/26 - January 6 - Evening": 189,
+                "Medicine - 07/26 - July 9 - Afternoon": 161,
+                "Medicine - 04/26 - April 8 - Night": 171,
+                "Medicine - 04/26 - April 8 - Evening": 166,
+                "Medicine - 04/26 - April 9 - Night": 180,
+                "Medicine - 04/26 - April 9 - Evening": 176,
+                "Medicine - 07/26 - July 9 - Morning": 151,
+                "Medicine - 04/26 - April 7 - Morning": 157,
+                "Medicine - 04/26 - April 9 - Morning": 174,
+                "Medicine - 07/26 - July 10 - Morning": 161,
+                "Medicine - 07/26 - July 7 - Evening": 182,
+                "Medicine - 01/26 - January 7 - Morning": 183,
+                "Medicine - 01/26 - January 8 - Morning": 147,
+                "Medicine - 01/26 - January 5 - Evening": 178
+            },
+            "Radiology": {
+                "Radiology - 07/26 - July 08 - Morning": 166,
+                "Radiology - 04/26 - April 7 - Morning": 161,
+                "Radiology - 04/26 - April 8 - Evening": 186,
+                "Radiology - 01/26 - January 6 - Morning": 153,
+                "Radiology - 01/26 - January 5 - Morning": 190,
+                "Radiology - 07/26 - July 07 - Morning": 178
             },
             "Gynecology & Obstetrics": {
                 "Gynecology - 01/26 - January 6 - Morning": 194,
-                "Gynecology - 01/26 - January 7 - Evening": 154,
-                "Gynecology - 01/26 - January 5 - Morning": 199,
-                "Gynecology - 07/26 - July 08 - Morning": 196,
-                "Gynecology - 04/26 - April 8 - Evening": 170,
                 "Gynecology - 07/26 - July 08 - Evening": 154,
-                "Gynecology - 04/26 - April 8 - Morning": 161
-            },
-            "Medicine & Allied": {
-                "Medicine - 07/26 - July 9 - Afternoon": 161,
-                "Medicine - 04/26 - April 7 - Morning": 157,
-                "Medicine - 01/26 - January 7 - Morning": 183,
-                "Medicine - 01/26 - January 6 - Evening": 189,
-                "Medicine - 01/26 - January 5 - Evening": 178,
-                "Medicine - 01/26 - January 8 - Morning": 147,
-                "Medicine - 07/26 - July 9 - Morning": 151,
-                "Medicine - 04/26 - April 8 - Evening": 166,
-                "Medicine - 04/26 - April 8 - Night": 171,
-                "Medicine - 04/26 - April 9 - Night": 180,
-                "Medicine - 07/26 - July 10 - Morning": 161,
-                "Medicine - 07/26 - July 7 - Evening": 182,
-                "Medicine - 04/26 - April 9 - Morning": 174,
-                "Medicine - 04/26 - April 9 - Evening": 176
-            },
-            "Radiology": {
-                "Radiology - 04/26 - April 7 - Morning": 161,
-                "Radiology - 01/26 - January 6 - Morning": 153,
-                "Radiology - 07/26 - July 08 - Morning": 166,
-                "Radiology - 01/26 - January 5 - Morning": 190,
-                "Radiology - 07/26 - July 07 - Morning": 178,
-                "Radiology - 04/26 - April 8 - Evening": 186
+                "Gynecology - 07/26 - July 08 - Morning": 196,
+                "Gynecology - 01/26 - January 5 - Morning": 199,
+                "Gynecology - 04/26 - April 8 - Morning": 161,
+                "Gynecology - 01/26 - January 7 - Evening": 154,
+                "Gynecology - 04/26 - April 8 - Evening": 170
             },
             "Anesthesia": {
-                "Anesthesia - 01/26 - January 5 - Morning": 158,
                 "Anesthesia - 04/26 - April 7 - Morning": 169,
+                "Anesthesia - 01/26 - January 5 - Morning": 158,
                 "Anesthesia - 07/26 - July 07 - Morning": 173,
                 "Anesthesia - 07/26 - July 07 - Evening": 132
             }
         },
         "2025": {
+            "Gynecology & Obstetrics": {
+                "Gynecology - 05/25 - May 14 - Morning": 163,
+                "Gynecology - 11/25 - November 12 - Evening": 190,
+                "Gynecology - 02/25 - Feburary 8 - Morning": 194,
+                "Gynecology - 08/25 - August 6 - Morning": 311,
+                "Gynecology - 11/25 - November 12 - Morning": 198,
+                "Gynecology - 05/25 - May 13 - Morning": 182
+            },
+            "Medicine & Allied": {
+                "Medicine - 05/25 - May 14 - Morning": 163,
+                "Medicine - 02/25 - Feburary 8 - Afternoon": 323,
+                "Medicine - 05/25 - May 13 - Morning": 193,
+                "Medicine - 05/25 - May 13 - Afternoon": 150,
+                "Medicine - 05/25 - May 15 - Morning": 194,
+                "Medicine - 05/25 - May 14 - Afternoon": 174,
+                "Medicine - 11/25 - November 11 - Evening": 191,
+                "Medicine - 08/25 - August 5 - Evening": 191,
+                "Medicine - 02/25 - Feburary 8 - Morning": 157,
+                "Medicine - 05/25 - May 12 - Morning": 188,
+                "Medicine - 02/25 - Feburary 7 - Afternoon": 154,
+                "Medicine - 08/25 - August 4 - Evening": 177,
+                "Medicine - 08/25 - August 6 - Morning": 182,
+                "Medicine - 08/25 - August 5 - Morning": 198,
+                "Medicine - 08/25 - August 6 - Evening": 196,
+                "Medicine - 11/25 - November 14 - Morning": 149,
+                "Medicine - 11/25 - November 14 - Evening": 187,
+                "Medicine - 11/25 - November 13 - Evening": 192,
+                "Medicine - 11/25 - November 11 - Morning": 173,
+                "Medicine - 11/25 - November 13 - Morning": 191,
+                "Medicine - 11/25 - November 16 - Morning": 136
+            },
             "Surgery & Allied": {
-                "Surgery - 08/25 - August 6 - Evening": 191,
+                "Surgery - 05/25 - May 14 - Morning": 164,
+                "Surgery - 02/25 - Feburary 8 - Afternoon": 197,
                 "Surgery - 11/25 - November 12 - Evening": 203,
                 "Surgery - 05/25 - May 13 - Afternoon": 178,
                 "Surgery - 08/25 - August 7 - Morning": 198,
-                "Surgery - 05/25 - May 14 - Morning": 164,
+                "Surgery - 02/25 - Feburary 9 - Morning": 157,
                 "Surgery - 11/25 - November 11 - Evening": 110,
-                "Surgery - 02/25 - Feburary 8 - Afternoon": 197,
-                "Surgery - 02/25 - Feburary 9 - Morning": 157
-            },
-            "Medicine & Allied": {
-                "Medicine - 11/25 - November 14 - Evening": 187,
-                "Medicine - 08/25 - August 5 - Morning": 198,
-                "Medicine - 08/25 - August 6 - Morning": 182,
-                "Medicine - 05/25 - May 13 - Afternoon": 150,
-                "Medicine - 05/25 - May 15 - Morning": 194,
-                "Medicine - 05/25 - May 13 - Morning": 193,
-                "Medicine - 05/25 - May 12 - Morning": 188,
-                "Medicine - 11/25 - November 11 - Morning": 173,
-                "Medicine - 08/25 - August 6 - Evening": 196,
-                "Medicine - 11/25 - November 11 - Evening": 191,
-                "Medicine - 08/25 - August 5 - Evening": 191,
-                "Medicine - 11/25 - November 13 - Morning": 191,
-                "Medicine - 11/25 - November 13 - Evening": 192,
-                "Medicine - 02/25 - Feburary 8 - Afternoon": 323,
-                "Medicine - 08/25 - August 4 - Evening": 177,
-                "Medicine - 05/25 - May 14 - Morning": 163,
-                "Medicine - 02/25 - Feburary 8 - Morning": 157,
-                "Medicine - 02/25 - Feburary 7 - Afternoon": 154,
-                "Medicine - 11/25 - November 16 - Morning": 136,
-                "Medicine - 05/25 - May 14 - Afternoon": 174,
-                "Medicine - 11/25 - November 14 - Morning": 149
-            },
-            "Anesthesia": {
-                "Anesthesia - 05/25 - May 12 - Afternoon": 170,
-                "Anesthesia - 08/25 - August 4 - Morning": 199,
-                "Anesthesia - 02/25 - Feburary 7 - Morning": 182
+                "Surgery - 08/25 - August 6 - Evening": 191
             },
             "Radiology": {
-                "Radiology - 05/25 - May 12 - Afternoon": 154,
-                "Radiology - 11/25 - November 11 - Morning": 161,
-                "Radiology - 11/25 - November 10 - Evening": 185,
                 "Radiology - 05/25 - May 12 - Morning": 148,
                 "Radiology - 08/25 - August 4 - Evening": 197,
-                "Radiology - 02/25 - Feburary 8 - Morning": 156
+                "Radiology - 05/25 - May 12 - Afternoon": 154,
+                "Radiology - 02/25 - Feburary 8 - Morning": 156,
+                "Radiology - 11/25 - November 10 - Evening": 185,
+                "Radiology - 11/25 - November 11 - Morning": 161
             },
-            "Gynecology & Obstetrics": {
-                "Gynecology - 11/25 - November 12 - Evening": 190,
-                "Gynecology - 08/25 - August 6 - Morning": 311,
-                "Gynecology - 11/25 - November 12 - Morning": 198,
-                "Gynecology - 05/25 - May 13 - Morning": 182,
-                "Gynecology - 02/25 - Feburary 8 - Morning": 194,
-                "Gynecology - 05/25 - May 14 - Morning": 163
+            "Anesthesia": {
+                "Anesthesia - 02/25 - Feburary 7 - Morning": 182,
+                "Anesthesia - 08/25 - August 4 - Morning": 199,
+                "Anesthesia - 05/25 - May 12 - Afternoon": 170
             },
             "Pathology": {
                 "Pathology - 08/25 - August 4 - Morning": 201

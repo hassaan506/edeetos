@@ -1,30 +1,28 @@
 [
     {
-        "id": "M2JVP9EN",
+        "id": "CN3JJCCX",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics"
+            "Anesthesia"
         ],
         "exams": [
-            "Gynecology - 01/26 - January 5 - Morning",
-            "Gynecology - 05/25 - May 14 - Morning"
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Which of the following is an important function of progesterone?",
+        "question": "59 years old female has amenorrhea for 1 year. What will hormone profile show?",
         "options": {
-            "A": "Inhibition of lactation",
-            "B": "Promoting fetal growth",
-            "C": "Maintenance of endometrial thickness",
-            "D": "Cervical ripening",
+            "A": "Increase in estrogen",
+            "B": "Increased FSH & LH",
+            "C": "Decreased FSH & LH",
+            "D": "Increased Testosterone",
             "E": ""
         },
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -56,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "M8VDHY22",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 10-year-old girl comes for routine checkup. Her mother notices breast budding in the past few months. Height and weight are normal. What is usually the first sign of female puberty?",
+        "options": {
+            "A": "Growth spurt",
+            "B": "Menstruation",
+            "C": "Breast development (Thelarche)",
+            "D": "Axillary hair",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KPVV8BJG",
         "year": [
             "2026"
@@ -80,6 +105,60 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K3CSGCYL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 13-year-old girl presents with irregular menstrual cycles 6 months after menarche. Most likely cause?",
+        "options": {
+            "A": "Hypothyroidism",
+            "B": "Coagulopathy",
+            "C": "Anovulatory cycles due to immature HPO axis",
+            "D": "Polycystic ovarian syndrome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "During the first 1-2 years after menarche, immature hypothalamic-pituitary-ovarian axis -> irregular, anovulatory cycles.",
+        "hint": ""
+    },
+    {
+        "id": "VGG488VX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 23-year-old woman presents for evaluation of her menstrual cycle. During the follicular phase of her cycle, which organ is the primary source of circulating estrogen?",
+        "options": {
+            "A": "Adrenal glands",
+            "B": "Placenta",
+            "C": "Ovary",
+            "D": "Hypothalamus",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "During the follicular phase of the menstrual cycle, ovarian granulosa cells of developing follicles produce estradiol, the most potent estrogen. Estrogen is responsible for endometrial proliferation, cervical mucus changes, and regulation of FSH/LH secretion.",
         "hint": ""
     },
     {
@@ -137,6 +216,60 @@
         "hint": ""
     },
     {
+        "id": "VKGFZD5G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old female patient presents with 8 weeks abortion which of the following hormonal levels are decrease in this patient?",
+        "options": {
+            "A": "Progesterone",
+            "B": "Estrogen",
+            "C": "FSH",
+            "D": "LH",
+            "E": "HCG"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WJU68UTC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old woman presents for a routine checkup. Her menstrual cycles occur every 28 days, lasting 4-5 days, with moderate flow and no dysmenorrhea. She has no history of hormonal disorders or medications affecting the cycle. What term best describes her menstrual pattern?",
+        "options": {
+            "A": "Oligomenorrhea",
+            "B": "Polymenorrhea",
+            "C": "Eumenorrhea",
+            "D": "Amenorrhea",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "AD89V9FG",
         "year": [
             "2026"
@@ -191,6 +324,60 @@
         "hint": ""
     },
     {
+        "id": "E7QPJUDQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman is undergoing hormonal studies. On mid-luteal phase, a pre-ovulatory LH surge is observed. Which hormone primarily triggers this LH surge?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "GnRH",
+            "D": "FSH",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LN3EZE68",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old woman tracks her menstrual cycle. Ovulation typically occurs after the mid-cycle LH surge. How long after the LH surge does ovulation usually occur?",
+        "options": {
+            "A": "12 hours",
+            "B": "24-36 hours",
+            "C": "48-72 hours",
+            "D": "5-7 days",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YSHCVEBP",
         "year": [
             "2026"
@@ -214,6 +401,33 @@
             "E": "Ovary"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VKAKWPXE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28 year old man presents with infertility. Semen analysis reveals azoospermia. Which of the following structures is primarily responsible for spermatogenesis?",
+        "options": {
+            "A": "Leydig cells",
+            "B": "Seminiferous tubules",
+            "C": "Germinal epithelium (seminiferous tubules; site of spermatogenesis).",
+            "D": "Sertoli cells",
+            "E": "Leydig cells"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -245,6 +459,114 @@
         "hint": ""
     },
     {
+        "id": "WW2FKWE9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old female presents with delayed menses. She is 8 days late with her normal cycle. The hormone that needs to be tested is secreted from:",
+        "options": {
+            "A": "Cytotrophoblast",
+            "B": "Syncytiotrophoblast",
+            "C": "Endometrium",
+            "D": "Corpus luteum",
+            "E": "Ovary"
+        },
+        "correctAnswer": "B",
+        "explanation": "The hormone tested to confirm pregnancy is human chorionic gonadotropin (hCG). This hormone is secreted by the Syncytiotrophoblast, which is the layer of cells that forms the outer covering of the blastocyst and later becomes part of the placenta.",
+        "hint": ""
+    },
+    {
+        "id": "2A7QJARM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman is trying to conceive and has been advised by the doctor to check temperature daily so that she can be aware of her ovulatory phase. Which hormone is primarily responsible for post-ovulatory temperature increase?",
+        "options": {
+            "A": "Follicle-stimulating hormone",
+            "B": "Luteinizing hormone",
+            "C": "Estrogen",
+            "D": "Gonadotropin-releasing hormone",
+            "E": "Progesterone"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LM8GZ5EK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28-year-old woman visits a fertility clinic to determine her fertile window. She's counselled to use a kit to track her fertile phase. The surge is which hormone?",
+        "options": {
+            "A": "Progesterone",
+            "B": "Estrogen",
+            "C": "Luteinizing hormone (LH)",
+            "D": "beta-hCG",
+            "E": "FSH"
+        },
+        "correctAnswer": "C",
+        "explanation": "The surge of Luteinizing Hormone (LH) from the anterior pituitary is the critical event that triggers ovulation. Ovulation usually occurs about 24-36 hours after the LH surge begins. Home fertility kits (ovulation predictor kits) work by detecting this surge in LH in the urine to help identify the fertile window.",
+        "hint": ""
+    },
+    {
+        "id": "KLJ8LWKP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 29-year-old woman is tracking her menstrual cycle for fertility purposes. She asks about the hormonal event that most accurately predicts ovulation. Which of the following best describes the timing of the LH surge?",
+        "options": {
+            "A": "Around day 14 of the menstrual cycle",
+            "B": "Around day 21 of the menstrual cycle",
+            "C": "Around day 1 of the menstrual cycle",
+            "D": "Around day 28 of the menstrual cycle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "UEJSR9B6",
         "year": [
             "2026"
@@ -269,6 +591,87 @@
         },
         "correctAnswer": "C",
         "explanation": "Ejaculation (especially emission) is mediated by the sympathetic nervous system (T11-L2) through the hypogastric nerves. Sympathetic stimulation causes contraction of the vas deferens, seminal vesicles, and prostate, propelling semen into the urethra.",
+        "hint": ""
+    },
+    {
+        "id": "4FAXPAM3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old pregnant woman at 12 weeks gestation is undergoing routine prenatal testing. Which organ is the primary source of circulating estrogen during pregnancy?",
+        "options": {
+            "A": "Corpus luteum",
+            "B": "Ovary",
+            "C": "Placenta",
+            "D": "Adrenal glands",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F7PMW67Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old woman is evaluated for infertility. Hormonal studies are ordered to assess her ovulatory function. Which of the following hormones is secreted by the anterior pituitary and directly stimulates ovarian follicle development?",
+        "options": {
+            "A": "Luteinizing hormone (LH)",
+            "B": "Follicle-stimulating hormone (FSH)",
+            "C": "Progesterone",
+            "D": "Prolactin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MJB5C3JZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 34 year old married male patient with normal secondary sexual characteristics, complains of infertility so he was advised for semen analysis which shows normal fluid with azoospermia where is the defect?",
+        "options": {
+            "A": "Epididymis",
+            "B": "Sertoli cell Defect",
+            "C": "Defect of Vas deferens",
+            "D": "Seminiferous tubules",
+            "E": "Germinal epithelium"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -319,6 +722,114 @@
             "B": "Dihydrotestosterone",
             "C": "Dehydroepiandrosterone",
             "D": "Androstenedione",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BQJZFE2B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 52 year old woman presents with irregular menstruation followed by cessation of periods for 12 months. Which of the following hormonal changes is most consistent with menopause?",
+        "options": {
+            "A": "Decreased FSH, decreased LH, increased estrogen",
+            "B": "Increased FSH, increased LH, decreased estrogen",
+            "C": "Increased FSH, decreased LH, increased estrogen",
+            "D": "Decreased FSH, increased LH, decreased estrogen",
+            "E": "Normal FSH, normal LH, decreased estrogen"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Z4AURKTM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 58 year old postmenopausal woman presents for a routine health check. Laboratory studies are ordered to evaluate her hormonal profile. Which of the following patterns is most consistent with menopause?",
+        "options": {
+            "A": "↑ estrogen, ↓ FSH, ↓ LH",
+            "B": "↓ estrogen, ↑ FSH, ↓ LH",
+            "C": "↓ estrogen, ↑ TSH, ↑ LH",
+            "D": "↑ estrogen, ↑ FSH, ↓ LH",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8K582WWC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old patient with type 2 DM and established heart disease requires glycemic control which of the following drug is preferred?",
+        "options": {
+            "A": "Sulfonylurea",
+            "B": "Metformin",
+            "C": "SGLT2 inhibitors",
+            "D": "DPP-4 inhibitors",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YN4N2Y4P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A couple is on ovulation induction for 3 months, they want to know the fate of all developing follicles, which of the following best describes their outcome",
+        "options": {
+            "A": "Degeneration",
+            "B": "Atresia",
+            "C": "Regression",
+            "D": "Ovulation",
             "E": ""
         },
         "correctAnswer": "B",
@@ -407,6 +918,33 @@
         "hint": ""
     },
     {
+        "id": "RWJZHX7M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A couple wants to conceive they took advice from you, you will advise them which of the following hormon will confirm the fertile period",
+        "options": {
+            "A": "LH",
+            "B": "FSH",
+            "C": "Progesterone",
+            "D": "Estrogen",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KKPZUYT6",
         "year": [
             "2026"
@@ -430,6 +968,89 @@
             "E": "endometrial stroma only"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZVEXDRAN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A lactating woman develops amenorrhea due to breastfeeding.",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "Prolactin",
+            "D": "Oxytocin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Prolactin inhibits GnRH release from hypothalamus -> decreased FSH/LH -> lactational amenorrhea.",
+        "hint": ""
+    },
+    {
+        "id": "9LD7KEAY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A Lady in last trimeste having milk discharge she was worried but it was normal, the milk production in last trimester due to",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "Prolactin",
+            "D": "Thyroid harmone",
+            "E": "Alveolar epithelial cells"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YRJU2CSL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A male has normal testosterone but damaged seminiferous tubules, leading to infertility. What lab finding is expected?",
+        "options": {
+            "A": "Decreased FSH",
+            "B": "Increased inhibin",
+            "C": "Increased FSH",
+            "D": "Decreased GnRH",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -511,6 +1132,168 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8UEG6GEG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man with subfertility has Anti-FSH antibody against FSH receptors. Which of the following increases in plasma?",
+        "options": {
+            "A": "Anti Mullerian hormone",
+            "B": "Inhibin",
+            "C": "Testosterone",
+            "D": "LH",
+            "E": "FSH"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K5AVKUZ9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A menopausal woman experiences vasomotor symptoms, such as hot flushes. This symptom is a direct result of the body's attempt to compensate for which of the following primary hormonal changes?",
+        "options": {
+            "A": "Increased FSH",
+            "B": "Decreased FSH",
+            "C": "Decreased Estrogen",
+            "D": "Decreased Progesterone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PVBLK6TU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A middle aged man is suffering from erectile dysfunction for which he came to hospital. His hormonal profile is normal. Which of the following the most biologically active form of androgen in target tissue?",
+        "options": {
+            "A": "Dihydrotestosterone(DHT)",
+            "B": "Testosterone",
+            "C": "Estrogen",
+            "D": "Dihydroepiandrosterone (DHEA)",
+            "E": "Estradiol"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4DSEADZ7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has problem in seminefrous tubules but his testosterone level is normal what other can be affected",
+        "options": {
+            "A": "Increase LH",
+            "B": "Increase FSH",
+            "C": "Decrease estrogen",
+            "D": "Decrease FSH",
+            "E": "Decrease LH"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "32W5ZTEU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has problem in seminiferous tubules but his testosterone level is normal what other can be affected",
+        "options": {
+            "A": "Increase LH",
+            "B": "Increase FSH",
+            "C": "Decrease estrogen",
+            "D": "Decrease FSH",
+            "E": "Decrease LH"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "B3RNHLWA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with chest pain that increases with respiration. After few days it becomes better and only occur while climbing stairs. What is likely cause",
+        "options": {
+            "A": "Pneumothorax",
+            "B": "MI",
+            "C": "Pleurisy",
+            "D": "Aortic dissection",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -731,6 +1514,60 @@
         "hint": ""
     },
     {
+        "id": "M3FF7DR5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman at the age of 50 years presents with amenorrhea and had hot flushes and anxiety. Which hormone is primarily responsible for this?",
+        "options": {
+            "A": "↑FSH",
+            "B": "↓FSH",
+            "C": "↑Estrogen",
+            "D": "↑Progesterone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "25UMUVBE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman in the secretory phase of her menstrual cycle has endometrial glands showing hypertrophy. Which hormone is responsible?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "FSH",
+            "D": "LH",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "Z4WLP9VC",
         "year": [
             "2026"
@@ -947,6 +1784,60 @@
         "hint": ""
     },
     {
+        "id": "6D9XLCLD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Antibodies against FSH in male will cause:",
+        "options": {
+            "A": "Increase Sperm count",
+            "B": "Decrease Sperm count",
+            "C": "Decrease Bone growth",
+            "D": "Decrease Prolactin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GJDFVVWH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Aromatase enzyme activity is present in which of the following cells of the ovary?",
+        "options": {
+            "A": "Theca externa",
+            "B": "Theca interna",
+            "C": "Interstitial cells",
+            "D": "Granulosa cells",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Theca cells produce testosterone stimulated by the first step by LH, androstenedione diffuses to the nearby granulosa cells, which contain aromatase which converts it to 17beta estradiol.",
+        "hint": ""
+    },
+    {
         "id": "ED4FRQJZ",
         "year": [
             "2026"
@@ -1055,6 +1946,33 @@
         "hint": ""
     },
     {
+        "id": "89DXLWKY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Corpus luteum secrete mainly to maintain pregnancy",
+        "options": {
+            "A": "Progesterone",
+            "B": "Inhibin",
+            "C": "BHCG",
+            "D": "Estrogen",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Corpus luteum secrete - Progesterone, Estrogen and Inhibin. Corpus luteum secrete to maintain Pregnancy - Progesterone",
+        "hint": ""
+    },
+    {
         "id": "P8N5X43R",
         "year": [
             "2026"
@@ -1136,6 +2054,33 @@
         "hint": ""
     },
     {
+        "id": "8LPAJ6NS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During ovulation induction, multiple follicles start developing. Which is the most common fate of these follicles?",
+        "options": {
+            "A": "All follicles ovulate",
+            "B": "All undergo atresia",
+            "C": "Only the dominant follicle ovulates; the rest undergo atresia",
+            "D": "Follicles remain dormant",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "In normal and induced cycles, multiple follicles start growing, but only one becomes dominant and reaches ovulation; others degenerate via atresia.",
+        "hint": ""
+    },
+    {
         "id": "7N3NHGT8",
         "year": [
             "2026"
@@ -1190,6 +2135,87 @@
         "hint": ""
     },
     {
+        "id": "YFFWZPAX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During which ovarian phase is cervical mucus abundant, thin, and watery to facilitate sperm entry?",
+        "options": {
+            "A": "Follicular phase",
+            "B": "Ovulatory phase",
+            "C": "Luteal phase",
+            "D": "Menstrual phase",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7WFAW8TS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Endometrium is full of glands and secretion due to",
+        "options": {
+            "A": "Primary follicle",
+            "B": "Secondary follicle",
+            "C": "Garaffian follicle",
+            "D": "Corpus luteum",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UNMK3DXU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Estrogen and progesterone produced in the last 7 months by:",
+        "options": {
+            "A": "Anterior pituitary",
+            "B": "Corpus luteum",
+            "C": "Hypothalamus",
+            "D": "Placenta",
+            "E": "Posterior pituitary"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "LYLPZQSJ",
         "year": [
             "2026"
@@ -1241,6 +2267,88 @@
         },
         "correctAnswer": "B",
         "explanation": "Eu- means normal or well; eumenorrhea is a normal, healthy, and regular menstrual",
+        "hint": ""
+    },
+    {
+        "id": "NJ99VCAH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Female with hot flashes, and amenorrhea for one year has following increased in which of the following in the blood?",
+        "options": {
+            "A": "Testosterone",
+            "B": "TSH",
+            "C": "FSH",
+            "D": "Estrogen",
+            "E": "Estriol"
+        },
+        "correctAnswer": "C",
+        "explanation": "A case of Polycystic Kidney Disease. Adults - Autosomal Dominant. Children - Autosomal Recessive.",
+        "hint": ""
+    },
+    {
+        "id": "7LE4MDW3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Fetal movements felt by mother at:",
+        "options": {
+            "A": "2 months",
+            "B": "4 months",
+            "C": "6 months",
+            "D": "8 months",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Fetal movement - At 2 month or 8 weeks. Fetal Quickening -At 4-5 months",
+        "hint": ""
+    },
+    {
+        "id": "QVV5UJAF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning",
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "First sign of puberty in females:",
+        "options": {
+            "A": "Thelarche",
+            "B": "Menarche",
+            "C": "Pubic hair",
+            "D": "Axillary and pubic hair",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1375,6 +2483,36 @@
             "C": "LH",
             "D": "FSH",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U6ECKKYH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "How to confirm ovulation has occurred",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "Inhibin",
+            "D": "FSH",
+            "E": "Pre ovulatory LH levels"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1570,6 +2708,60 @@
         "hint": ""
     },
     {
+        "id": "6G3FJTQW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In early pregnancy, which hormone is secreted by the Syncytiotrophoblast of the placenta and plays the critical role of maintaining the corpus luteum.",
+        "options": {
+            "A": "Human Placental Lactogen",
+            "B": "Estrogen",
+            "C": "Progesterone",
+            "D": "beta hCG",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XGDEHQUN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In females at puberty, hair follicle growth depends on androgens. Which factor is independent of androgens?",
+        "options": {
+            "A": "Pigmented hair",
+            "B": "Thickened hair",
+            "C": "Acne",
+            "D": "Sebum production",
+            "E": "Growth of hair"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BGQS4R7B",
         "year": [
             "2026"
@@ -1594,6 +2786,33 @@
         },
         "correctAnswer": "C",
         "explanation": "Clinical Landmark: Characterized by thelarche, the formation of a small, subareolar breast bud with a widened areola. Hormone Synergy: While estrogen stimulates ductal growth, full lobuloalveolar development later requires progesterone. Age: Typically the very first physical sign of female puberty, usually occurring between ages 8 and 12.",
+        "hint": ""
+    },
+    {
+        "id": "LWYL5E7E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In male erectile dysfunction (ED), which is the most potent hormone involved in maintaining erectile function?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Prolactin",
+            "C": "Testosterone",
+            "D": "Dihydrotestosterone (DHT)",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1648,6 +2867,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YC4JYHLD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In which cells is aromatase activity highest, converting androgens to estrogens?",
+        "options": {
+            "A": "Leydig cells",
+            "B": "Granulosa (germinal) cells",
+            "C": "Sertoli cells",
+            "D": "Theca interna",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Granulosa cells -> express aromatase, convert testosterone/androstenedione -> estradiol.",
         "hint": ""
     },
     {
@@ -1759,6 +3005,33 @@
         "hint": ""
     },
     {
+        "id": "5TMNZYET",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Lady is in labor, she has been administered oxytocin but she is not responding to it, the reason lies in the fact of:",
+        "options": {
+            "A": "Decrease oxytocin receptors on myometrium",
+            "B": "Resistance to oxytocin",
+            "C": "No oxytocin receptors present at all",
+            "D": "Drug interaction",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "SZE337RJ",
         "year": [
             "2026"
@@ -1782,6 +3055,91 @@
             "E": "Suppression of FSH"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F9TLLYBQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Maximum hormones in pregnancy are produced by:",
+        "options": {
+            "A": "Placenta",
+            "B": "Corpus luteum",
+            "C": "Fetal adrenal gland",
+            "D": "Maternal pituitary gland",
+            "E": "Fetal liver"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LSMTKU2C",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Menopausal woman experiences hot flushes due to which of the following hormonal change?",
+        "options": {
+            "A": "↑ FSH",
+            "B": "↓ FSH",
+            "C": "↑ Estrogen",
+            "D": "↑ Progesterone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Hormones perimenopause Early postmenopause Late menopause GnRH Increased pulsatility Progressive decrease in pulsatility Reduction in overall levels. LH and FSH increased Increased Progressive decline. Estrogens Slight decline Rapid declines Sustained very low levels. Progesterone Moderately falls unpredictable undetectable. Inhibin Slight declines Significant decline undetectable. Testosterone Progressive decline Progressive decline Sustained low levels.",
+        "hint": ""
+    },
+    {
+        "id": "K4ARJEUN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Menopausal women experiences hot flashes due to which of the following hormonal change?",
+        "options": {
+            "A": "↑ FSH",
+            "B": "↓ FSH",
+            "C": "↑ Estrogen",
+            "D": "↑ Progesterone",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1833,6 +3191,87 @@
             "B": "Increased LH",
             "C": "Loss of progesterone support",
             "D": "High FSH",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MKV5LYQH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most Important function of Beta HCG?",
+        "options": {
+            "A": "Prevents involution of Corpus Luteum",
+            "B": "Decreases in Chorio-carcinoma",
+            "C": "Mild rise in Molar Pregnancy",
+            "D": "Breast Development",
+            "E": "Causes increase in size of uterus"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "538VXSGH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Onset of puberty is due to:",
+        "options": {
+            "A": "Sensitivity to estradiol",
+            "B": "Increased production of gonadotropins",
+            "C": "Decrease in gonadal hormones",
+            "D": "FSH",
+            "E": "LH"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LYGP7LJZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ovulation has occurred. Which of the following test results best confirms this?",
+        "options": {
+            "A": "High LH",
+            "B": "High FSH",
+            "C": "High progesterone",
+            "D": "High estrogen",
             "E": ""
         },
         "correctAnswer": "C",
@@ -1948,6 +3387,87 @@
         "hint": ""
     },
     {
+        "id": "F6THAY8X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Pregnant female at 10 weeks Hb:12, after few months the Hb drops to 10. What's the cause?",
+        "options": {
+            "A": "IDA",
+            "B": "Thalassemi",
+            "C": "Physiological change",
+            "D": "Sideroblastic Anemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ULFCHG34",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Proliferation of the mammary ducts (lactiferous ducts) and fat deposition in breast is primarily by:",
+        "options": {
+            "A": "LH",
+            "B": "FSH",
+            "C": "Estrogen",
+            "D": "Progesterone",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "33EVCLVT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Puberty features starts after releasing factors from",
+        "options": {
+            "A": "Pituitary gland",
+            "B": "Hypothalmus",
+            "C": "Adrenal gland",
+            "D": "Thyroid",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KQCGVZP8",
         "year": [
             "2026"
@@ -2029,6 +3549,114 @@
         "hint": ""
     },
     {
+        "id": "69MSPV62",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Spermatogenesis stimulated by FSH secreted by:",
+        "options": {
+            "A": "Lydig cell",
+            "B": "Sertoli cell",
+            "C": "Parenchymal cell",
+            "D": "Seminiferous tubules",
+            "E": "Mullirian cell"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G7MCLUZ3",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Structure responsible for maintaining endometrium after ovulation:",
+        "options": {
+            "A": "Corpus luteum",
+            "B": "Corpus albicans",
+            "C": "Graafian follicle",
+            "D": "Secondary oocyte",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9RVXMZWP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 15 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Taste involving K+ channel is",
+        "options": {
+            "A": "Bitter",
+            "B": "Umami",
+            "C": "Sour",
+            "D": "Sweet",
+            "E": "Salty"
+        },
+        "correctAnswer": "C",
+        "explanation": "Sweet taste involves G protein- coupled receptors (T1R2/T1R3) and TRPM5 channels. Sour taste involves K+ channel specifically PKD2L1 channels. Salty taste involves ENaC (epithelial sodium channels). Bitter taste involves T2R receptors and TRPM5 channels. Umami taste involves T1R1/T1R3 receptors and TRPM5 channels.",
+        "hint": ""
+    },
+    {
+        "id": "J5A27XDD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The first appearance of pubic hair during puberty is called:",
+        "options": {
+            "A": "Thelarche",
+            "B": "Menarche",
+            "C": "Pubarche",
+            "D": "Adrenarche",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Pubarche = appearance of pubic/axillary hair due to adrenal androgen secretion. Thelarche = breast development; Menarche = first menstruation.",
+        "hint": ""
+    },
+    {
         "id": "PMDATAMX",
         "year": [
             "2026"
@@ -2053,6 +3681,33 @@
         },
         "correctAnswer": "C",
         "explanation": "Ovulation Event: This dramatic LH surge triggers the resumption of oocyte meiosis and enzymatic follicular rupture, causing ovulation to occur roughly 24 to 36 hours after the peak of the surge begins.",
+        "hint": ""
+    },
+    {
+        "id": "XVDENH9F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Uterus is most sensitive to which hormone during last trimester",
+        "options": {
+            "A": "Progesterone",
+            "B": "Oxytocin",
+            "C": "Estrogen",
+            "D": "Cortisol",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -2110,6 +3765,33 @@
         "hint": ""
     },
     {
+        "id": "CS9UJWSG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the minimum sperm count required for fertility according to WHO criteria?",
+        "options": {
+            "A": ">10 million/mL",
+            "B": ">15 million/mL",
+            "C": ">20 million/mL",
+            "D": ">25 million/mL",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "TWEPBCZR",
         "year": [
             "2026"
@@ -2137,6 +3819,60 @@
         "hint": ""
     },
     {
+        "id": "8X6LDNSE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the predominant estrogen during pregnancy?",
+        "options": {
+            "A": "Estradiol",
+            "B": "Estriol",
+            "C": "Estrone",
+            "D": "Estrogen sulfate",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9DDMJE54",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the technical term for the development of pubic and axillary hair?",
+        "options": {
+            "A": "Thelarche",
+            "B": "Menarche",
+            "C": "Gonadarche",
+            "D": "Pubarche",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Pubarche is the term used to describe the appearance of pubic and axillary hair, driven primarily by adrenal androgens, which is a key milestone of puberty.",
+        "hint": ""
+    },
+    {
         "id": "H2TF98ML",
         "year": [
             "2026"
@@ -2157,6 +3893,60 @@
             "B": "Proliferative phase",
             "C": "Secretory phase",
             "D": "Atrophic endometrium",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NUGVYGGZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What structure maintains the endometrial lining in early pregnancy?",
+        "options": {
+            "A": "Graafian follicle",
+            "B": "Corpus albicans",
+            "C": "Corpus luteum",
+            "D": "Endometrial glands",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EVFGNASD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which cells produce inhibin to inhibit FSH?",
+        "options": {
+            "A": "Lydig cell",
+            "B": "Sertoli cell",
+            "C": "Mullirian cell",
+            "D": "Endothelial cells",
             "E": ""
         },
         "correctAnswer": "B",
@@ -2188,6 +3978,60 @@
         },
         "correctAnswer": "D",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YXQSSQWL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which characteristic change in body hair development at the onset of puberty is generally considered independent of the direct action of androgens, but is instead driven by other growth factors or genetic predisposition?",
+        "options": {
+            "A": "Hair thickness",
+            "B": "Sebum production",
+            "C": "Pigmentation",
+            "D": "Acne",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KBL75N48",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which form of testosterone is most active at the target tissue?",
+        "options": {
+            "A": "Testosterone",
+            "B": "Estradiol",
+            "C": "Androstenedione",
+            "D": "Dihydrotestosterone (DHT)",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "DHT is converted from testosterone by 5-alpha reductase in tissues such as prostate, hair follicles. It binds androgen receptors more strongly than testosterone.",
         "hint": ""
     },
     {
@@ -2326,6 +4170,60 @@
         "hint": ""
     },
     {
+        "id": "FK9LJTUS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone is secreted by Sertoli cells to inhibit FSH?",
+        "options": {
+            "A": "Inhibin",
+            "B": "FSH",
+            "C": "LH",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KCUYAZZ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which hormone most affects breast ducts and alveoli?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Progesterone",
+            "C": "Testosterone",
+            "D": "Cortisol",
+            "E": "Prolactin"
+        },
+        "correctAnswer": "B",
+        "explanation": "Progesterone functions Sequence: Maintain endometrial lining pregnancy > secretory phase of menstrual cycle > Development of alveoli and lobules in breast learn it from mnemonic MESAL.",
+        "hint": ""
+    },
+    {
         "id": "9523HG9M",
         "year": [
             "2026"
@@ -2380,6 +4278,60 @@
         "hint": ""
     },
     {
+        "id": "38P9C279",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following hormonal changes is a normal physiologic response observed in early pregnancy?",
+        "options": {
+            "A": "Increased production of GnRH",
+            "B": "Decreased secretion of TSH",
+            "C": "Decreased GnRH secretion",
+            "D": "Increased sensitivity to Insulin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "High levels of placental HCG, estrogen, and progesterone suppress the hypothalamic-pituitary axis.",
+        "hint": ""
+    },
+    {
+        "id": "8R9Q4M5H",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following hormonal deficiency is responsible for early recurrent miscarriage?",
+        "options": {
+            "A": "FSH",
+            "B": "LH",
+            "C": "Progesterone",
+            "D": "Estrogen",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "3PCHCJMN",
         "year": [
             "2026"
@@ -2404,6 +4356,60 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FZPYHVGE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following hormone does the pregnancy urine test detect?",
+        "options": {
+            "A": "Estrogen",
+            "B": "Beta-HCG",
+            "C": "LH",
+            "D": "FSH",
+            "E": "Progesterone"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UC9JHXSV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following hormones is decreased in normal pregnancy?",
+        "options": {
+            "A": "Progesterone",
+            "B": "Estrogen",
+            "C": "Androgens",
+            "D": "Cortisol",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "In pregnancy, maternal androgen levels decrease due to placental aromatization to estrogens, protecting the fetus from androgen excess.",
         "hint": ""
     },
     {
@@ -2434,6 +4440,116 @@
         "hint": ""
     },
     {
+        "id": "M2JVP9EN",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning",
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is an important function of progesterone?",
+        "options": {
+            "A": "Inhibition of lactation",
+            "B": "Promoting fetal growth",
+            "C": "Maintenance of endometrial thickness",
+            "D": "Cervical ripening",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "24Q6CHPL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is normal sperm count according to WHO criteria for semen count for infertility?",
+        "options": {
+            "A": "12 million",
+            "B": "20 million",
+            "C": "15 million",
+            "D": "13 million",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "V4HU8KAA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the fate of graafian follicle after ovulation if fertilization does not occur?",
+        "options": {
+            "A": "Corpus luteum of menopause",
+            "B": "It transforms into corpus luteum",
+            "C": "It Degenerates into corpus albicans",
+            "D": "Corpus hemorrhagicum",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UR9899TS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the hormonal profile in a postmenopausal woman?",
+        "options": {
+            "A": "↑FSH, ↑LH, ↓estrogen",
+            "B": "↓FSH, ↓LH",
+            "C": "↓FSH, ↑LH, ↑ estrogen",
+            "D": "Normal FSH, LH and estrogen",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "In menopause, GnRH has a reduction in overall levels. LH and FSH have a progressive decline eventually, but are increased initially. Estrogens have sustained very low levels. Progesterone has a progressive decline. Inhibin is undetectable. Testosterone has sustained low levels.",
+        "hint": ""
+    },
+    {
         "id": "AH2YQVWA",
         "year": [
             "2026"
@@ -2457,6 +4573,60 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VQKGQR6F",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following tests is most appropriate to assess whether ovulation has occurred In a woman with 28 Day Menstrual cycle?",
+        "options": {
+            "A": "Serum progesterone on day 14 (D14)",
+            "B": "Serum progesterone on day 21 (D21)",
+            "C": "Serum luteinizing hormone (LH) on day 10",
+            "D": "Serum follicle-stimulating hormone (FSH) on day 3",
+            "E": "Serum estrogen on day 7"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3Q7L9LAC",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "which of the following will indicate ovulation has occurred?",
+        "options": {
+            "A": "Mucinous discharge",
+            "B": "Raised body temperature",
+            "C": "Corpus luteum secretion",
+            "D": "Ferning cervical mucos",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -2596,6 +4766,33 @@
         "hint": ""
     },
     {
+        "id": "79UV4TRQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which type of estrogen is predominantly produced by the placenta during pregnancy?",
+        "options": {
+            "A": "Estrone (E1)",
+            "B": "Estradiol (E2)",
+            "C": "Estriol (E3)",
+            "D": "Estradiol-17beta",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Potency: Estradiol > Estrone > Estriol. Estradiol: The strongest form, it is the main estrogen during a woman's reproductive years. Estriol: The primary form produced during pregnancy. Estrone: The main estrogen after menopause, made mostly in fat tissue.",
+        "hint": ""
+    },
+    {
         "id": "RZXQF7HM",
         "year": [
             "2026"
@@ -2647,2203 +4844,6 @@
         },
         "correctAnswer": "B",
         "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CN3JJCCX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "59 years old female has amenorrhea for 1 year. What will hormone profile show?",
-        "options": {
-            "A": "Increase in estrogen",
-            "B": "Increased FSH & LH",
-            "C": "Decreased FSH & LH",
-            "D": "Increased Testosterone",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M8VDHY22",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 10-year-old girl comes for routine checkup. Her mother notices breast budding in the past few months. Height and weight are normal. What is usually the first sign of female puberty?",
-        "options": {
-            "A": "Growth spurt",
-            "B": "Menstruation",
-            "C": "Breast development (Thelarche)",
-            "D": "Axillary hair",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K3CSGCYL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 13-year-old girl presents with irregular menstrual cycles 6 months after menarche. Most likely cause?",
-        "options": {
-            "A": "Hypothyroidism",
-            "B": "Coagulopathy",
-            "C": "Anovulatory cycles due to immature HPO axis",
-            "D": "Polycystic ovarian syndrome",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "During the first 1-2 years after menarche, immature hypothalamic-pituitary-ovarian axis -> irregular, anovulatory cycles.",
-        "hint": ""
-    },
-    {
-        "id": "VGG488VX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 23-year-old woman presents for evaluation of her menstrual cycle. During the follicular phase of her cycle, which organ is the primary source of circulating estrogen?",
-        "options": {
-            "A": "Adrenal glands",
-            "B": "Placenta",
-            "C": "Ovary",
-            "D": "Hypothalamus",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "During the follicular phase of the menstrual cycle, ovarian granulosa cells of developing follicles produce estradiol, the most potent estrogen. Estrogen is responsible for endometrial proliferation, cervical mucus changes, and regulation of FSH/LH secretion.",
-        "hint": ""
-    },
-    {
-        "id": "VKGFZD5G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25-year-old female patient presents with 8 weeks abortion which of the following hormonal levels are decrease in this patient?",
-        "options": {
-            "A": "Progesterone",
-            "B": "Estrogen",
-            "C": "FSH",
-            "D": "LH",
-            "E": "HCG"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WJU68UTC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25-year-old woman presents for a routine checkup. Her menstrual cycles occur every 28 days, lasting 4-5 days, with moderate flow and no dysmenorrhea. She has no history of hormonal disorders or medications affecting the cycle. What term best describes her menstrual pattern?",
-        "options": {
-            "A": "Oligomenorrhea",
-            "B": "Polymenorrhea",
-            "C": "Eumenorrhea",
-            "D": "Amenorrhea",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E7QPJUDQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 27-year-old woman is undergoing hormonal studies. On mid-luteal phase, a pre-ovulatory LH surge is observed. Which hormone primarily triggers this LH surge?",
-        "options": {
-            "A": "Estrogen",
-            "B": "Progesterone",
-            "C": "GnRH",
-            "D": "FSH",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LN3EZE68",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 27-year-old woman tracks her menstrual cycle. Ovulation typically occurs after the mid-cycle LH surge. How long after the LH surge does ovulation usually occur?",
-        "options": {
-            "A": "12 hours",
-            "B": "24-36 hours",
-            "C": "48-72 hours",
-            "D": "5-7 days",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VKAKWPXE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28 year old man presents with infertility. Semen analysis reveals azoospermia. Which of the following structures is primarily responsible for spermatogenesis?",
-        "options": {
-            "A": "Leydig cells",
-            "B": "Seminiferous tubules",
-            "C": "Germinal epithelium (seminiferous tubules; site of spermatogenesis).",
-            "D": "Sertoli cells",
-            "E": "Leydig cells"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WW2FKWE9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28-year-old female presents with delayed menses. She is 8 days late with her normal cycle. The hormone that needs to be tested is secreted from:",
-        "options": {
-            "A": "Cytotrophoblast",
-            "B": "Syncytiotrophoblast",
-            "C": "Endometrium",
-            "D": "Corpus luteum",
-            "E": "Ovary"
-        },
-        "correctAnswer": "B",
-        "explanation": "The hormone tested to confirm pregnancy is human chorionic gonadotropin (hCG). This hormone is secreted by the Syncytiotrophoblast, which is the layer of cells that forms the outer covering of the blastocyst and later becomes part of the placenta.",
-        "hint": ""
-    },
-    {
-        "id": "2A7QJARM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28-year-old woman is trying to conceive and has been advised by the doctor to check temperature daily so that she can be aware of her ovulatory phase. Which hormone is primarily responsible for post-ovulatory temperature increase?",
-        "options": {
-            "A": "Follicle-stimulating hormone",
-            "B": "Luteinizing hormone",
-            "C": "Estrogen",
-            "D": "Gonadotropin-releasing hormone",
-            "E": "Progesterone"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LM8GZ5EK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28-year-old woman visits a fertility clinic to determine her fertile window. She's counselled to use a kit to track her fertile phase. The surge is which hormone?",
-        "options": {
-            "A": "Progesterone",
-            "B": "Estrogen",
-            "C": "Luteinizing hormone (LH)",
-            "D": "beta-hCG",
-            "E": "FSH"
-        },
-        "correctAnswer": "C",
-        "explanation": "The surge of Luteinizing Hormone (LH) from the anterior pituitary is the critical event that triggers ovulation. Ovulation usually occurs about 24-36 hours after the LH surge begins. Home fertility kits (ovulation predictor kits) work by detecting this surge in LH in the urine to help identify the fertile window.",
-        "hint": ""
-    },
-    {
-        "id": "KLJ8LWKP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 29-year-old woman is tracking her menstrual cycle for fertility purposes. She asks about the hormonal event that most accurately predicts ovulation. Which of the following best describes the timing of the LH surge?",
-        "options": {
-            "A": "Around day 14 of the menstrual cycle",
-            "B": "Around day 21 of the menstrual cycle",
-            "C": "Around day 1 of the menstrual cycle",
-            "D": "Around day 28 of the menstrual cycle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4FAXPAM3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30-year-old pregnant woman at 12 weeks gestation is undergoing routine prenatal testing. Which organ is the primary source of circulating estrogen during pregnancy?",
-        "options": {
-            "A": "Corpus luteum",
-            "B": "Ovary",
-            "C": "Placenta",
-            "D": "Adrenal glands",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F7PMW67Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30-year-old woman is evaluated for infertility. Hormonal studies are ordered to assess her ovulatory function. Which of the following hormones is secreted by the anterior pituitary and directly stimulates ovarian follicle development?",
-        "options": {
-            "A": "Luteinizing hormone (LH)",
-            "B": "Follicle-stimulating hormone (FSH)",
-            "C": "Progesterone",
-            "D": "Prolactin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MJB5C3JZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 34 year old married male patient with normal secondary sexual characteristics, complains of infertility so he was advised for semen analysis which shows normal fluid with azoospermia where is the defect?",
-        "options": {
-            "A": "Epididymis",
-            "B": "Sertoli cell Defect",
-            "C": "Defect of Vas deferens",
-            "D": "Seminiferous tubules",
-            "E": "Germinal epithelium"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BQJZFE2B",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 52 year old woman presents with irregular menstruation followed by cessation of periods for 12 months. Which of the following hormonal changes is most consistent with menopause?",
-        "options": {
-            "A": "Decreased FSH, decreased LH, increased estrogen",
-            "B": "Increased FSH, increased LH, decreased estrogen",
-            "C": "Increased FSH, decreased LH, increased estrogen",
-            "D": "Decreased FSH, increased LH, decreased estrogen",
-            "E": "Normal FSH, normal LH, decreased estrogen"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z4AURKTM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 58 year old postmenopausal woman presents for a routine health check. Laboratory studies are ordered to evaluate her hormonal profile. Which of the following patterns is most consistent with menopause?",
-        "options": {
-            "A": "↑ estrogen, ↓ FSH, ↓ LH",
-            "B": "↓ estrogen, ↑ FSH, ↓ LH",
-            "C": "↓ estrogen, ↑ TSH, ↑ LH",
-            "D": "↑ estrogen, ↑ FSH, ↓ LH",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8K582WWC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old patient with type 2 DM and established heart disease requires glycemic control which of the following drug is preferred?",
-        "options": {
-            "A": "Sulfonylurea",
-            "B": "Metformin",
-            "C": "SGLT2 inhibitors",
-            "D": "DPP-4 inhibitors",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YN4N2Y4P",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A couple is on ovulation induction for 3 months, they want to know the fate of all developing follicles, which of the following best describes their outcome",
-        "options": {
-            "A": "Degeneration",
-            "B": "Atresia",
-            "C": "Regression",
-            "D": "Ovulation",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RWJZHX7M",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A couple wants to conceive they took advice from you, you will advise them which of the following hormon will confirm the fertile period",
-        "options": {
-            "A": "LH",
-            "B": "FSH",
-            "C": "Progesterone",
-            "D": "Estrogen",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZVEXDRAN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A lactating woman develops amenorrhea due to breastfeeding.",
-        "options": {
-            "A": "Estrogen",
-            "B": "Progesterone",
-            "C": "Prolactin",
-            "D": "Oxytocin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Prolactin inhibits GnRH release from hypothalamus -> decreased FSH/LH -> lactational amenorrhea.",
-        "hint": ""
-    },
-    {
-        "id": "9LD7KEAY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A Lady in last trimeste having milk discharge she was worried but it was normal, the milk production in last trimester due to",
-        "options": {
-            "A": "Estrogen",
-            "B": "Progesterone",
-            "C": "Prolactin",
-            "D": "Thyroid harmone",
-            "E": "Alveolar epithelial cells"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YRJU2CSL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A male has normal testosterone but damaged seminiferous tubules, leading to infertility. What lab finding is expected?",
-        "options": {
-            "A": "Decreased FSH",
-            "B": "Increased inhibin",
-            "C": "Increased FSH",
-            "D": "Decreased GnRH",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8UEG6GEG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A man with subfertility has Anti-FSH antibody against FSH receptors. Which of the following increases in plasma?",
-        "options": {
-            "A": "Anti Mullerian hormone",
-            "B": "Inhibin",
-            "C": "Testosterone",
-            "D": "LH",
-            "E": "FSH"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K5AVKUZ9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A menopausal woman experiences vasomotor symptoms, such as hot flushes. This symptom is a direct result of the body's attempt to compensate for which of the following primary hormonal changes?",
-        "options": {
-            "A": "Increased FSH",
-            "B": "Decreased FSH",
-            "C": "Decreased Estrogen",
-            "D": "Decreased Progesterone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PVBLK6TU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A middle aged man is suffering from erectile dysfunction for which he came to hospital. His hormonal profile is normal. Which of the following the most biologically active form of androgen in target tissue?",
-        "options": {
-            "A": "Dihydrotestosterone(DHT)",
-            "B": "Testosterone",
-            "C": "Estrogen",
-            "D": "Dihydroepiandrosterone (DHEA)",
-            "E": "Estradiol"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4DSEADZ7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has problem in seminefrous tubules but his testosterone level is normal what other can be affected",
-        "options": {
-            "A": "Increase LH",
-            "B": "Increase FSH",
-            "C": "Decrease estrogen",
-            "D": "Decrease FSH",
-            "E": "Decrease LH"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "32W5ZTEU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has problem in seminiferous tubules but his testosterone level is normal what other can be affected",
-        "options": {
-            "A": "Increase LH",
-            "B": "Increase FSH",
-            "C": "Decrease estrogen",
-            "D": "Decrease FSH",
-            "E": "Decrease LH"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B3RNHLWA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with chest pain that increases with respiration. After few days it becomes better and only occur while climbing stairs. What is likely cause",
-        "options": {
-            "A": "Pneumothorax",
-            "B": "MI",
-            "C": "Pleurisy",
-            "D": "Aortic dissection",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M3FF7DR5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman at the age of 50 years presents with amenorrhea and had hot flushes and anxiety. Which hormone is primarily responsible for this?",
-        "options": {
-            "A": "↑FSH",
-            "B": "↓FSH",
-            "C": "↑Estrogen",
-            "D": "↑Progesterone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "25UMUVBE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman in the secretory phase of her menstrual cycle has endometrial glands showing hypertrophy. Which hormone is responsible?",
-        "options": {
-            "A": "Estrogen",
-            "B": "Progesterone",
-            "C": "FSH",
-            "D": "LH",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6D9XLCLD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Antibodies against FSH in male will cause:",
-        "options": {
-            "A": "Increase Sperm count",
-            "B": "Decrease Sperm count",
-            "C": "Decrease Bone growth",
-            "D": "Decrease Prolactin",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GJDFVVWH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Aromatase enzyme activity is present in which of the following cells of the ovary?",
-        "options": {
-            "A": "Theca externa",
-            "B": "Theca interna",
-            "C": "Interstitial cells",
-            "D": "Granulosa cells",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Theca cells produce testosterone stimulated by the first step by LH, androstenedione diffuses to the nearby granulosa cells, which contain aromatase which converts it to 17beta estradiol.",
-        "hint": ""
-    },
-    {
-        "id": "89DXLWKY",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Corpus luteum secrete mainly to maintain pregnancy",
-        "options": {
-            "A": "Progesterone",
-            "B": "Inhibin",
-            "C": "BHCG",
-            "D": "Estrogen",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Corpus luteum secrete - Progesterone, Estrogen and Inhibin. Corpus luteum secrete to maintain Pregnancy - Progesterone",
-        "hint": ""
-    },
-    {
-        "id": "8LPAJ6NS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During ovulation induction, multiple follicles start developing. Which is the most common fate of these follicles?",
-        "options": {
-            "A": "All follicles ovulate",
-            "B": "All undergo atresia",
-            "C": "Only the dominant follicle ovulates; the rest undergo atresia",
-            "D": "Follicles remain dormant",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "In normal and induced cycles, multiple follicles start growing, but only one becomes dominant and reaches ovulation; others degenerate via atresia.",
-        "hint": ""
-    },
-    {
-        "id": "YFFWZPAX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During which ovarian phase is cervical mucus abundant, thin, and watery to facilitate sperm entry?",
-        "options": {
-            "A": "Follicular phase",
-            "B": "Ovulatory phase",
-            "C": "Luteal phase",
-            "D": "Menstrual phase",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7WFAW8TS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Endometrium is full of glands and secretion due to",
-        "options": {
-            "A": "Primary follicle",
-            "B": "Secondary follicle",
-            "C": "Garaffian follicle",
-            "D": "Corpus luteum",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UNMK3DXU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Estrogen and progesterone produced in the last 7 months by:",
-        "options": {
-            "A": "Anterior pituitary",
-            "B": "Corpus luteum",
-            "C": "Hypothalamus",
-            "D": "Placenta",
-            "E": "Posterior pituitary"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NJ99VCAH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Female with hot flashes, and amenorrhea for one year has following increased in which of the following in the blood?",
-        "options": {
-            "A": "Testosterone",
-            "B": "TSH",
-            "C": "FSH",
-            "D": "Estrogen",
-            "E": "Estriol"
-        },
-        "correctAnswer": "C",
-        "explanation": "A case of Polycystic Kidney Disease. Adults - Autosomal Dominant. Children - Autosomal Recessive.",
-        "hint": ""
-    },
-    {
-        "id": "7LE4MDW3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Fetal movements felt by mother at:",
-        "options": {
-            "A": "2 months",
-            "B": "4 months",
-            "C": "6 months",
-            "D": "8 months",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Fetal movement - At 2 month or 8 weeks. Fetal Quickening -At 4-5 months",
-        "hint": ""
-    },
-    {
-        "id": "QVV5UJAF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning",
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "First sign of puberty in females:",
-        "options": {
-            "A": "Thelarche",
-            "B": "Menarche",
-            "C": "Pubic hair",
-            "D": "Axillary and pubic hair",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U6ECKKYH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "How to confirm ovulation has occurred",
-        "options": {
-            "A": "Estrogen",
-            "B": "Progesterone",
-            "C": "Inhibin",
-            "D": "FSH",
-            "E": "Pre ovulatory LH levels"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6G3FJTQW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In early pregnancy, which hormone is secreted by the Syncytiotrophoblast of the placenta and plays the critical role of maintaining the corpus luteum.",
-        "options": {
-            "A": "Human Placental Lactogen",
-            "B": "Estrogen",
-            "C": "Progesterone",
-            "D": "beta hCG",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XGDEHQUN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In females at puberty, hair follicle growth depends on androgens. Which factor is independent of androgens?",
-        "options": {
-            "A": "Pigmented hair",
-            "B": "Thickened hair",
-            "C": "Acne",
-            "D": "Sebum production",
-            "E": "Growth of hair"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LWYL5E7E",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In male erectile dysfunction (ED), which is the most potent hormone involved in maintaining erectile function?",
-        "options": {
-            "A": "Estrogen",
-            "B": "Prolactin",
-            "C": "Testosterone",
-            "D": "Dihydrotestosterone (DHT)",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YC4JYHLD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In which cells is aromatase activity highest, converting androgens to estrogens?",
-        "options": {
-            "A": "Leydig cells",
-            "B": "Granulosa (germinal) cells",
-            "C": "Sertoli cells",
-            "D": "Theca interna",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Granulosa cells -> express aromatase, convert testosterone/androstenedione -> estradiol.",
-        "hint": ""
-    },
-    {
-        "id": "5TMNZYET",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Lady is in labor, she has been administered oxytocin but she is not responding to it, the reason lies in the fact of:",
-        "options": {
-            "A": "Decrease oxytocin receptors on myometrium",
-            "B": "Resistance to oxytocin",
-            "C": "No oxytocin receptors present at all",
-            "D": "Drug interaction",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F9TLLYBQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Maximum hormones in pregnancy are produced by:",
-        "options": {
-            "A": "Placenta",
-            "B": "Corpus luteum",
-            "C": "Fetal adrenal gland",
-            "D": "Maternal pituitary gland",
-            "E": "Fetal liver"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LSMTKU2C",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening",
-            "Anesthesia - 08/25 - August 4 - Morning",
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Menopausal woman experiences hot flushes due to which of the following hormonal change?",
-        "options": {
-            "A": "↑ FSH",
-            "B": "↓ FSH",
-            "C": "↑ Estrogen",
-            "D": "↑ Progesterone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Hormones perimenopause Early postmenopause Late menopause GnRH Increased pulsatility Progressive decrease in pulsatility Reduction in overall levels. LH and FSH increased Increased Progressive decline. Estrogens Slight decline Rapid declines Sustained very low levels. Progesterone Moderately falls unpredictable undetectable. Inhibin Slight declines Significant decline undetectable. Testosterone Progressive decline Progressive decline Sustained low levels.",
-        "hint": ""
-    },
-    {
-        "id": "K4ARJEUN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Menopausal women experiences hot flashes due to which of the following hormonal change?",
-        "options": {
-            "A": "↑ FSH",
-            "B": "↓ FSH",
-            "C": "↑ Estrogen",
-            "D": "↑ Progesterone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MKV5LYQH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most Important function of Beta HCG?",
-        "options": {
-            "A": "Prevents involution of Corpus Luteum",
-            "B": "Decreases in Chorio-carcinoma",
-            "C": "Mild rise in Molar Pregnancy",
-            "D": "Breast Development",
-            "E": "Causes increase in size of uterus"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "538VXSGH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Onset of puberty is due to:",
-        "options": {
-            "A": "Sensitivity to estradiol",
-            "B": "Increased production of gonadotropins",
-            "C": "Decrease in gonadal hormones",
-            "D": "FSH",
-            "E": "LH"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LYGP7LJZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ovulation has occurred. Which of the following test results best confirms this?",
-        "options": {
-            "A": "High LH",
-            "B": "High FSH",
-            "C": "High progesterone",
-            "D": "High estrogen",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F6THAY8X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Pregnant female at 10 weeks Hb:12, after few months the Hb drops to 10. What's the cause?",
-        "options": {
-            "A": "IDA",
-            "B": "Thalassemi",
-            "C": "Physiological change",
-            "D": "Sideroblastic Anemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ULFCHG34",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Proliferation of the mammary ducts (lactiferous ducts) and fat deposition in breast is primarily by:",
-        "options": {
-            "A": "LH",
-            "B": "FSH",
-            "C": "Estrogen",
-            "D": "Progesterone",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "33EVCLVT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Puberty features starts after releasing factors from",
-        "options": {
-            "A": "Pituitary gland",
-            "B": "Hypothalmus",
-            "C": "Adrenal gland",
-            "D": "Thyroid",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "69MSPV62",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Spermatogenesis stimulated by FSH secreted by:",
-        "options": {
-            "A": "Lydig cell",
-            "B": "Sertoli cell",
-            "C": "Parenchymal cell",
-            "D": "Seminiferous tubules",
-            "E": "Mullirian cell"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G7MCLUZ3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Structure responsible for maintaining endometrium after ovulation:",
-        "options": {
-            "A": "Corpus luteum",
-            "B": "Corpus albicans",
-            "C": "Graafian follicle",
-            "D": "Secondary oocyte",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9RVXMZWP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Taste involving K+ channel is",
-        "options": {
-            "A": "Bitter",
-            "B": "Umami",
-            "C": "Sour",
-            "D": "Sweet",
-            "E": "Salty"
-        },
-        "correctAnswer": "C",
-        "explanation": "Sweet taste involves G protein- coupled receptors (T1R2/T1R3) and TRPM5 channels. Sour taste involves K+ channel specifically PKD2L1 channels. Salty taste involves ENaC (epithelial sodium channels). Bitter taste involves T2R receptors and TRPM5 channels. Umami taste involves T1R1/T1R3 receptors and TRPM5 channels.",
-        "hint": ""
-    },
-    {
-        "id": "J5A27XDD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The first appearance of pubic hair during puberty is called:",
-        "options": {
-            "A": "Thelarche",
-            "B": "Menarche",
-            "C": "Pubarche",
-            "D": "Adrenarche",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Pubarche = appearance of pubic/axillary hair due to adrenal androgen secretion. Thelarche = breast development; Menarche = first menstruation.",
-        "hint": ""
-    },
-    {
-        "id": "XVDENH9F",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Uterus is most sensitive to which hormone during last trimester",
-        "options": {
-            "A": "Progesterone",
-            "B": "Oxytocin",
-            "C": "Estrogen",
-            "D": "Cortisol",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CS9UJWSG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the minimum sperm count required for fertility according to WHO criteria?",
-        "options": {
-            "A": ">10 million/mL",
-            "B": ">15 million/mL",
-            "C": ">20 million/mL",
-            "D": ">25 million/mL",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8X6LDNSE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the predominant estrogen during pregnancy?",
-        "options": {
-            "A": "Estradiol",
-            "B": "Estriol",
-            "C": "Estrone",
-            "D": "Estrogen sulfate",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9DDMJE54",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the technical term for the development of pubic and axillary hair?",
-        "options": {
-            "A": "Thelarche",
-            "B": "Menarche",
-            "C": "Gonadarche",
-            "D": "Pubarche",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Pubarche is the term used to describe the appearance of pubic and axillary hair, driven primarily by adrenal androgens, which is a key milestone of puberty.",
-        "hint": ""
-    },
-    {
-        "id": "NUGVYGGZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What structure maintains the endometrial lining in early pregnancy?",
-        "options": {
-            "A": "Graafian follicle",
-            "B": "Corpus albicans",
-            "C": "Corpus luteum",
-            "D": "Endometrial glands",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EVFGNASD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which cells produce inhibin to inhibit FSH?",
-        "options": {
-            "A": "Lydig cell",
-            "B": "Sertoli cell",
-            "C": "Mullirian cell",
-            "D": "Endothelial cells",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YXQSSQWL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which characteristic change in body hair development at the onset of puberty is generally considered independent of the direct action of androgens, but is instead driven by other growth factors or genetic predisposition?",
-        "options": {
-            "A": "Hair thickness",
-            "B": "Sebum production",
-            "C": "Pigmentation",
-            "D": "Acne",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KBL75N48",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which form of testosterone is most active at the target tissue?",
-        "options": {
-            "A": "Testosterone",
-            "B": "Estradiol",
-            "C": "Androstenedione",
-            "D": "Dihydrotestosterone (DHT)",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "DHT is converted from testosterone by 5-alpha reductase in tissues such as prostate, hair follicles. It binds androgen receptors more strongly than testosterone.",
-        "hint": ""
-    },
-    {
-        "id": "FK9LJTUS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone is secreted by Sertoli cells to inhibit FSH?",
-        "options": {
-            "A": "Inhibin",
-            "B": "FSH",
-            "C": "LH",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KCUYAZZ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which hormone most affects breast ducts and alveoli?",
-        "options": {
-            "A": "Estrogen",
-            "B": "Progesterone",
-            "C": "Testosterone",
-            "D": "Cortisol",
-            "E": "Prolactin"
-        },
-        "correctAnswer": "B",
-        "explanation": "Progesterone functions Sequence: Maintain endometrial lining pregnancy > secretory phase of menstrual cycle > Development of alveoli and lobules in breast learn it from mnemonic MESAL.",
-        "hint": ""
-    },
-    {
-        "id": "38P9C279",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following hormonal changes is a normal physiologic response observed in early pregnancy?",
-        "options": {
-            "A": "Increased production of GnRH",
-            "B": "Decreased secretion of TSH",
-            "C": "Decreased GnRH secretion",
-            "D": "Increased sensitivity to Insulin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "High levels of placental HCG, estrogen, and progesterone suppress the hypothalamic-pituitary axis.",
-        "hint": ""
-    },
-    {
-        "id": "8R9Q4M5H",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following hormonal deficiency is responsible for early recurrent miscarriage?",
-        "options": {
-            "A": "FSH",
-            "B": "LH",
-            "C": "Progesterone",
-            "D": "Estrogen",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FZPYHVGE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following hormone does the pregnancy urine test detect?",
-        "options": {
-            "A": "Estrogen",
-            "B": "Beta-HCG",
-            "C": "LH",
-            "D": "FSH",
-            "E": "Progesterone"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UC9JHXSV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following hormones is decreased in normal pregnancy?",
-        "options": {
-            "A": "Progesterone",
-            "B": "Estrogen",
-            "C": "Androgens",
-            "D": "Cortisol",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "In pregnancy, maternal androgen levels decrease due to placental aromatization to estrogens, protecting the fetus from androgen excess.",
-        "hint": ""
-    },
-    {
-        "id": "24Q6CHPL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is normal sperm count according to WHO criteria for semen count for infertility?",
-        "options": {
-            "A": "12 million",
-            "B": "20 million",
-            "C": "15 million",
-            "D": "13 million",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "V4HU8KAA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the fate of graafian follicle after ovulation if fertilization does not occur?",
-        "options": {
-            "A": "Corpus luteum of menopause",
-            "B": "It transforms into corpus luteum",
-            "C": "It Degenerates into corpus albicans",
-            "D": "Corpus hemorrhagicum",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UR9899TS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the hormonal profile in a postmenopausal woman?",
-        "options": {
-            "A": "↑FSH, ↑LH, ↓estrogen",
-            "B": "↓FSH, ↓LH",
-            "C": "↓FSH, ↑LH, ↑ estrogen",
-            "D": "Normal FSH, LH and estrogen",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "In menopause, GnRH has a reduction in overall levels. LH and FSH have a progressive decline eventually, but are increased initially. Estrogens have sustained very low levels. Progesterone has a progressive decline. Inhibin is undetectable. Testosterone has sustained low levels.",
-        "hint": ""
-    },
-    {
-        "id": "VQKGQR6F",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following tests is most appropriate to assess whether ovulation has occurred In a woman with 28 Day Menstrual cycle?",
-        "options": {
-            "A": "Serum progesterone on day 14 (D14)",
-            "B": "Serum progesterone on day 21 (D21)",
-            "C": "Serum luteinizing hormone (LH) on day 10",
-            "D": "Serum follicle-stimulating hormone (FSH) on day 3",
-            "E": "Serum estrogen on day 7"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3Q7L9LAC",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "which of the following will indicate ovulation has occurred?",
-        "options": {
-            "A": "Mucinous discharge",
-            "B": "Raised body temperature",
-            "C": "Corpus luteum secretion",
-            "D": "Ferning cervical mucos",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "79UV4TRQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which type of estrogen is predominantly produced by the placenta during pregnancy?",
-        "options": {
-            "A": "Estrone (E1)",
-            "B": "Estradiol (E2)",
-            "C": "Estriol (E3)",
-            "D": "Estradiol-17beta",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Potency: Estradiol > Estrone > Estriol. Estradiol: The strongest form, it is the main estrogen during a woman's reproductive years. Estriol: The primary form produced during pregnancy. Estrone: The main estrogen after menopause, made mostly in fat tissue.",
         "hint": ""
     },
     {

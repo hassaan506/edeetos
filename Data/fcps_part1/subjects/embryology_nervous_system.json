@@ -54,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "LUPB254L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A CT scan of a fetus shows a single large cerebral ventricle and fused thalami. The defect is most likely in which part of the developing brain?",
+        "options": {
+            "A": "Diencephalon",
+            "B": "Mesencephalon",
+            "C": "Telencephalon",
+            "D": "Myelencephalon",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "Q6YRCS2Q",
         "year": [
             "2026"
@@ -69,6 +96,33 @@
         "topic": "Unknown Topic",
         "difficulty": "medium",
         "question": "A female patient G3P2 presented to antenatal opd at 33 weeks gestation she had scan, which shows that there are Enlarged posterior fossa, cystic dilatation of 4th ventricle, agenesis/hypoplasia of cerebellar vermis . What is diagnosis",
+        "options": {
+            "A": "Dandy-Walker malformation",
+            "B": "Arnold-Chiari II malformation",
+            "C": "Arnold-Chiari I malformation",
+            "D": "Joubert syndrome",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "K5E8Y59G",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female patient G3P2 presented to the antenatal OPD at 33 weeks gestation. She had a scan, which shows that there is an enlarged posterior fossa, cystic dilatation of the 4th ventricle, agenesis/hypoplasia of the cerebellar vermis. What is the diagnosis?",
         "options": {
             "A": "Dandy-Walker malformation",
             "B": "Arnold-Chiari II malformation",
@@ -135,6 +189,33 @@
         "hint": ""
     },
     {
+        "id": "5HF2FVGX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn is delivered at 35 weeks gestation with absence of most of the brain and skull above the orbits. Prenatal ultrasound had shown polyhydramnios. Failure of closure of which embryologic structure is responsible for this defect?",
+        "options": {
+            "A": "Posterior neuropore",
+            "B": "Anterior neuropore",
+            "C": "Neural crest migration",
+            "D": "Lateral body folds",
+            "E": "Primitive streak"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "BCLLA3K8",
         "year": [
             "2026"
@@ -156,6 +237,33 @@
             "C": "Spina bifida occulta",
             "D": "Encephalocele",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2D7KAXAF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A pregnant woman undergoes an ultrasound at 18 weeks gestation. The imaging reveals an open spina bifida occulta. What is the most likely diagnosis?",
+        "options": {
+            "A": "Spina bifida occulta",
+            "B": "Meningocele",
+            "C": "Myelomeningocele (neural tube defect).",
+            "D": "Encephalocele",
+            "E": "Anencephaly"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -189,195 +297,6 @@
         "hint": ""
     },
     {
-        "id": "YZSQU7UF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Arnold-Chiari type II malformation causes hydrocephalus due to:",
-        "options": {
-            "A": "Descent of cerebellar vermis and tonsils",
-            "B": "Descent of pons and medulla",
-            "C": "Stenosis of aqueduct",
-            "D": "Dandy-Walker malformation",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q9EZZECE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Raised AFP is associated with failure of closure of:",
-        "options": {
-            "A": "Neural tube",
-            "B": "Palate",
-            "C": "Diaphragm",
-            "D": "Abdominal wall",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PL4PS9EV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Sacrococcygeal mass originates from:",
-        "options": {
-            "A": "Notocord",
-            "B": "Neural crest",
-            "C": "Primitive streak",
-            "D": "Somites",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LUPB254L",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A CT scan of a fetus shows a single large cerebral ventricle and fused thalami. The defect is most likely in which part of the developing brain?",
-        "options": {
-            "A": "Diencephalon",
-            "B": "Mesencephalon",
-            "C": "Telencephalon",
-            "D": "Myelencephalon",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K5E8Y59G",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient G3P2 presented to the antenatal OPD at 33 weeks gestation. She had a scan, which shows that there is an enlarged posterior fossa, cystic dilatation of the 4th ventricle, agenesis/hypoplasia of the cerebellar vermis. What is the diagnosis?",
-        "options": {
-            "A": "Dandy-Walker malformation",
-            "B": "Arnold-Chiari II malformation",
-            "C": "Arnold-Chiari I malformation",
-            "D": "Joubert syndrome",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5HF2FVGX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A newborn is delivered at 35 weeks gestation with absence of most of the brain and skull above the orbits. Prenatal ultrasound had shown polyhydramnios. Failure of closure of which embryologic structure is responsible for this defect?",
-        "options": {
-            "A": "Posterior neuropore",
-            "B": "Anterior neuropore",
-            "C": "Neural crest migration",
-            "D": "Lateral body folds",
-            "E": "Primitive streak"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2D7KAXAF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A pregnant woman undergoes an ultrasound at 18 weeks gestation. The imaging reveals an open spina bifida occulta. What is the most likely diagnosis?",
-        "options": {
-            "A": "Spina bifida occulta",
-            "B": "Meningocele",
-            "C": "Myelomeningocele (neural tube defect).",
-            "D": "Encephalocele",
-            "E": "Anencephaly"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "W7HTVKRP",
         "year": [
             "2025"
@@ -402,6 +321,33 @@
         },
         "correctAnswer": "D",
         "explanation": "Closure of anterior neuropore occurs at approximately day 25. Closure of posterior neuropore occurs at approximately day 28",
+        "hint": ""
+    },
+    {
+        "id": "YZSQU7UF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Arnold-Chiari type II malformation causes hydrocephalus due to:",
+        "options": {
+            "A": "Descent of cerebellar vermis and tonsils",
+            "B": "Descent of pons and medulla",
+            "C": "Stenosis of aqueduct",
+            "D": "Dandy-Walker malformation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -756,6 +702,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Q9EZZECE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Raised AFP is associated with failure of closure of:",
+        "options": {
+            "A": "Neural tube",
+            "B": "Palate",
+            "C": "Diaphragm",
+            "D": "Abdominal wall",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PL4PS9EV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Sacrococcygeal mass originates from:",
+        "options": {
+            "A": "Notocord",
+            "B": "Neural crest",
+            "C": "Primitive streak",
+            "D": "Somites",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },

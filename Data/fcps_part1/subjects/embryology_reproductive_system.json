@@ -1,31 +1,28 @@
 [
     {
-        "id": "396YXPDF",
+        "id": "3LUT7T96",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Medicine - 01/26 - January 6 - Evening",
-            "Surgery - 08/25 - August 7 - Morning"
+            "Gynecology - 11/25 - November 12 - Evening"
         ],
         "subject": "Embryology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "The primordial germ cells are derived from?",
+        "question": "A 16-year-old adolescent presents with primary amenorrhea and ambiguous genitalia. On examination, she has a microphallus with hypospadias and a vagina with a small uterus on imaging. Both ovarian and testicular tissue are detected on histology. Karyotype analysis reveals 46, XX/46, XY chimerism. What is the most likely diagnosis?",
         "options": {
-            "A": "Ectoderm",
-            "B": "Epiblast",
-            "C": "Endoderm",
-            "D": "Mesoderm",
-            "E": "Neural crest cell"
+            "A": "Complete androgen insensitivity syndrome",
+            "B": "Turner syndrome",
+            "C": "True hermaphrodite",
+            "D": "Mixed gonadal dysgenesis",
+            "E": ""
         },
-        "correctAnswer": "B",
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -111,6 +108,33 @@
         "hint": ""
     },
     {
+        "id": "X9DWTRTE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 22-year-old woman is found to have a bicornuate uterus on ultrasound. This condition results from which embryological defect?",
+        "options": {
+            "A": "Failure of septum resorption",
+            "B": "Failure of fusion of paramesonephric ducts",
+            "C": "Excess fusion of Mullerian ducts",
+            "D": "Abnormal Wolffian duct development",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "GPZ3RS7D",
         "year": [
             "2026"
@@ -135,6 +159,143 @@
         },
         "correctAnswer": "C",
         "explanation": "Septate uterus: 1 body, 1 cervix, septum inside. Bicornuate uterus: 2 horns/fundal indentation, 1 cervix. Uterus didelphys: 2 bodies, 2 cervices. Unicornuate uterus: 1 horn only",
+        "hint": ""
+    },
+    {
+        "id": "T2TF3BFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old woman undergoes evaluation for primary amenorrhea. Imaging reveals a bicornuate uterus. This anomaly is most likely due to failure of which of the following embryonic processess?",
+        "options": {
+            "A": "Failure of paramesonephric duct fusion",
+            "B": "Failure of ureteric bud formation",
+            "C": "Failure of mesonephric duct regression",
+            "D": "Failure of cloacal membrane rupture",
+            "E": "Failure of lateral body folding"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "3J9A5Z6S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25-year-old male patient with tall stature, small testes, and gynecomastia is diagnosed with Klinefelter syndrome (47, XXY). On examination, he is found to have rudimentary uterus and vagina. These structures develop from which embryological duct?",
+        "options": {
+            "A": "Paramesonephric (Mullerian) duct",
+            "B": "Mesonephric (Wolffian) duct",
+            "C": "Urogenital sinus",
+            "D": "Cloacal membrane",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "The presence of a rudimentary uterus and vagina indicates that the internal female reproductive structures attempted to develop. These structures (Fallopian tubes, uterus, and upper third of the vagina) are embryologically derived from the Paramesonephric (Mullerian) duct. In 47, XXY (Klinefelter), the extra X chromosome allows for sufficient estrogen effect and incomplete suppression of the Mullerian duct, leading to these rudimentary female structures alongside male external genitalia.",
+        "hint": ""
+    },
+    {
+        "id": "9Y24K22P",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Morning",
+            "Radiology - 11/25 - November 11 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-year-old boy presents with an undescended testis (cryptorchidism). During development, which structure primarily guides the testis into the scrotum?",
+        "options": {
+            "A": "Gubernaculum",
+            "B": "Epididymis",
+            "C": "Vas deferens",
+            "D": "Spermatic cord",
+            "E": "Process Vaginalis"
+        },
+        "correctAnswer": "A",
+        "explanation": "The gubernaculum is a mesodermal structure that connects the caudal pole of the testis to the scrotal swelling. It is believed to guide and anchor the testis as the body grows, essentially pulling the testis through the inguinal canal and into the scrotum during the final phase of testicular descent.",
+        "hint": ""
+    },
+    {
+        "id": "ML2D6FJK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female with a short lower vagina, absent uterus, cervix, upper vagina. Defect in which of the following embryonic origins?",
+        "options": {
+            "A": "Paramesonephric ducts",
+            "B": "Mesonephric ducts",
+            "C": "Genital folds",
+            "D": "Genital swelling",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RZQZD79X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A girl came with primary amenorrhea. On USG bicornuate uterus. What abnormality led to this?",
+        "options": {
+            "A": "Failure of fusion of paramesonephric duct",
+            "B": "Failure of fusion of mesonephric duct",
+            "C": "Abnormal division of wolfian duct",
+            "D": "Abnormal enlargement of tubules",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -300,6 +461,33 @@
         "hint": ""
     },
     {
+        "id": "DZADCDUL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with absent uterus most likely has a defect in:",
+        "options": {
+            "A": "Mesonephric duct",
+            "B": "Paramesonephric duct",
+            "C": "Urogenital sinus",
+            "D": "Genital tubercle",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "XEQXM3GR",
         "year": [
             "2026"
@@ -376,712 +564,6 @@
             "B": "Failure of paramesonephric duct fusion",
             "C": "Failure of paramesonephric duct canalization",
             "D": "Persistence of urogenital sinus",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q6JMKYYU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Radiology"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An obstetric ultrasound confirms a monochorionic, diamniotic twin pregnancy. This specific anatomical arrangement arises exclusively from which type of twinning event?",
-        "options": {
-            "A": "Dizygotic twin division",
-            "B": "Monozygotic twin division",
-            "C": "Superfecundation",
-            "D": "Polar body fertilization",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GAUVWPYC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Bicornuate uterus is associated with anomalies of",
-        "options": {
-            "A": "GI tract",
-            "B": "Urinary system",
-            "C": "Nervous system",
-            "D": "Respiratory system",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BYQRREDJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Chorion frondosum derives from:",
-        "options": {
-            "A": "Decidua capsularis",
-            "B": "Decidua basalis",
-            "C": "Decidua parietalis",
-            "D": "Amnion",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WQPWQDQN",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Clitoris arises from which embryonic structure:",
-        "options": {
-            "A": "Urogenital sinus",
-            "B": "Genital tubercle",
-            "C": "Labioscrotal swellings",
-            "D": "Mesonephric duct",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5JWEVBEA",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "From which cellular organelle is the sperm acrosome derived?",
-        "options": {
-            "A": "Mitochondria",
-            "B": "Chloroplast",
-            "C": "Golgi apparatus",
-            "D": "Lysosome",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JKXBXUFR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Gartner duct is a remnant of which embryological structure?",
-        "options": {
-            "A": "Paramesonephric (Müllerian) duct",
-            "B": "Mesonephric duct",
-            "C": "Mesonephric tubules",
-            "D": "Metanephric duct",
-            "E": "Urogenital sinus"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y3H97ZUV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Granulosa cells are derived from which embryonic layer:",
-        "options": {
-            "A": "Germinal Layer",
-            "B": "Mesonephric epithelium",
-            "C": "Endoderm",
-            "D": "Mesenchyme",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ERQGCSMB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 10 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hypospadias results from failure of fusion of the:",
-        "options": {
-            "A": "Genital tubercle",
-            "B": "Labioscrotal swellings",
-            "C": "Urethral (urogenital) folds",
-            "D": "Müllerian ducts",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LFSC5F54",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In female embryonic development, the genital tubercle gives rise to which structure?",
-        "options": {
-            "A": "Labia majora",
-            "B": "Labia minora",
-            "C": "Clitoris",
-            "D": "Ovaries",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Indifferent Stage: Before week 9, the external genitalia look identical in both sexes. Male vs. Female: In the presence of DHT, it becomes the glAns: penis. Without DHT (female path), it becomes the clitoris. Homologous Structures: The clitoris and the penis share the same embryonic tissue origin.",
-        "hint": ""
-    },
-    {
-        "id": "NHVSY9DE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In the male fetus, the development of the mesonephric duct structures, such as the epididymis and vas deferens, is stimulated by",
-        "options": {
-            "A": "Androgens",
-            "B": "Anti-Mullerian Hormone",
-            "C": "Estrogen",
-            "D": "Growth Hormone",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RZV9UX5D",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Mayer-Rokitansky-Küster-Hauser (MRKH) syndrome is characterized by",
-        "options": {
-            "A": "Absent ovaries",
-            "B": "Absent uterus",
-            "C": "Absent vagina",
-            "D": "Both B & C",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X85JDMUM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 10 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Monozygotic twins have one chorion and two amnions. Embryonic division most likely occurred during which period?",
-        "options": {
-            "A": "Days 1–3",
-            "B": "Days 4–8",
-            "C": "Days 8–13",
-            "D": "After day 13",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2PEK3E45",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Scrotal swelling with positive transilumination. Cause?",
-        "options": {
-            "A": "Tunica albuginea",
-            "B": "Gubernaculum",
-            "C": "Processus vaginalis",
-            "D": "Epididymis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2QAEDQEK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The acrosome of sperm is derived from:",
-        "options": {
-            "A": "Lysosome",
-            "B": "Endoplasmic reticulum",
-            "C": "Golgi apparatus",
-            "D": "Mitochondria",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "R7QN9KZU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The clitoris is derived from which embryological structure?",
-        "options": {
-            "A": "Genital tubercle",
-            "B": "Urogenital sinus",
-            "C": "Labioscrotal swellings",
-            "D": "Müllerian duct",
-            "E": "Wolffian duct"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PVEJVUS7",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The uterus, fallopian tubes, and upper vagina develop from which embryonic structure?",
-        "options": {
-            "A": "Paramesonephric ducts",
-            "B": "Mesonephric ducts",
-            "C": "Urogenital sinus",
-            "D": "Metanephros",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FYQXR2XA",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Ultrasound at 12 weeks of gestation shows monochorionic diamniotic twins. These twins most likely result from:",
-        "options": {
-            "A": "Dizygotic fertilization",
-            "B": "Fusion of two embryos",
-            "C": "Fertilization of one ovum by two sperms",
-            "D": "Monozygotic twinning",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Splitting Window: Monochorionic diamniotic (MCDA) twins share a single outer placenta but have individual inner amniotic sacs. They develop exclusively from a single fertilized ovum (monozygotic twinning). Timing: This specific anatomical architecture occurs when the single pre-implantation blastocyst splits between days 4 and 8 post-fertilization, after the chorion has already formed but before the amniotic sac differentiates",
-        "hint": ""
-    },
-    {
-        "id": "T3MJQ7QP",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which embryonic layer gives rise to primordial germ cells?",
-        "options": {
-            "A": "Mesoderm",
-            "B": "Epiblast",
-            "C": "Trophoblast",
-            "D": "Ectoderm",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3LUT7T96",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 16-year-old adolescent presents with primary amenorrhea and ambiguous genitalia. On examination, she has a microphallus with hypospadias and a vagina with a small uterus on imaging. Both ovarian and testicular tissue are detected on histology. Karyotype analysis reveals 46, XX/46, XY chimerism. What is the most likely diagnosis?",
-        "options": {
-            "A": "Complete androgen insensitivity syndrome",
-            "B": "Turner syndrome",
-            "C": "True hermaphrodite",
-            "D": "Mixed gonadal dysgenesis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "X9DWTRTE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 22-year-old woman is found to have a bicornuate uterus on ultrasound. This condition results from which embryological defect?",
-        "options": {
-            "A": "Failure of septum resorption",
-            "B": "Failure of fusion of paramesonephric ducts",
-            "C": "Excess fusion of Mullerian ducts",
-            "D": "Abnormal Wolffian duct development",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T2TF3BFD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old woman undergoes evaluation for primary amenorrhea. Imaging reveals a bicornuate uterus. This anomaly is most likely due to failure of which of the following embryonic processess?",
-        "options": {
-            "A": "Failure of paramesonephric duct fusion",
-            "B": "Failure of ureteric bud formation",
-            "C": "Failure of mesonephric duct regression",
-            "D": "Failure of cloacal membrane rupture",
-            "E": "Failure of lateral body folding"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3J9A5Z6S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25-year-old male patient with tall stature, small testes, and gynecomastia is diagnosed with Klinefelter syndrome (47, XXY). On examination, he is found to have rudimentary uterus and vagina. These structures develop from which embryological duct?",
-        "options": {
-            "A": "Paramesonephric (Mullerian) duct",
-            "B": "Mesonephric (Wolffian) duct",
-            "C": "Urogenital sinus",
-            "D": "Cloacal membrane",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "The presence of a rudimentary uterus and vagina indicates that the internal female reproductive structures attempted to develop. These structures (Fallopian tubes, uterus, and upper third of the vagina) are embryologically derived from the Paramesonephric (Mullerian) duct. In 47, XXY (Klinefelter), the extra X chromosome allows for sufficient estrogen effect and incomplete suppression of the Mullerian duct, leading to these rudimentary female structures alongside male external genitalia.",
-        "hint": ""
-    },
-    {
-        "id": "9Y24K22P",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Morning",
-            "Radiology - 11/25 - November 11 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2-year-old boy presents with an undescended testis (cryptorchidism). During development, which structure primarily guides the testis into the scrotum?",
-        "options": {
-            "A": "Gubernaculum",
-            "B": "Epididymis",
-            "C": "Vas deferens",
-            "D": "Spermatic cord",
-            "E": "Process Vaginalis"
-        },
-        "correctAnswer": "A",
-        "explanation": "The gubernaculum is a mesodermal structure that connects the caudal pole of the testis to the scrotal swelling. It is believed to guide and anchor the testis as the body grows, essentially pulling the testis through the inguinal canal and into the scrotum during the final phase of testicular descent.",
-        "hint": ""
-    },
-    {
-        "id": "ML2D6FJK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female with a short lower vagina, absent uterus, cervix, upper vagina. Defect in which of the following embryonic origins?",
-        "options": {
-            "A": "Paramesonephric ducts",
-            "B": "Mesonephric ducts",
-            "C": "Genital folds",
-            "D": "Genital swelling",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RZQZD79X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A girl came with primary amenorrhea. On USG bicornuate uterus. What abnormality led to this?",
-        "options": {
-            "A": "Failure of fusion of paramesonephric duct",
-            "B": "Failure of fusion of mesonephric duct",
-            "C": "Abnormal division of wolfian duct",
-            "D": "Abnormal enlargement of tubules",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DZADCDUL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with absent uterus most likely has a defect in:",
-        "options": {
-            "A": "Mesonephric duct",
-            "B": "Paramesonephric duct",
-            "C": "Urogenital sinus",
-            "D": "Genital tubercle",
             "E": ""
         },
         "correctAnswer": "B",
@@ -1197,6 +679,116 @@
         "hint": ""
     },
     {
+        "id": "Q6JMKYYU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An obstetric ultrasound confirms a monochorionic, diamniotic twin pregnancy. This specific anatomical arrangement arises exclusively from which type of twinning event?",
+        "options": {
+            "A": "Dizygotic twin division",
+            "B": "Monozygotic twin division",
+            "C": "Superfecundation",
+            "D": "Polar body fertilization",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GAUVWPYC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Bicornuate uterus is associated with anomalies of",
+        "options": {
+            "A": "GI tract",
+            "B": "Urinary system",
+            "C": "Nervous system",
+            "D": "Respiratory system",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BYQRREDJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Chorion frondosum derives from:",
+        "options": {
+            "A": "Decidua capsularis",
+            "B": "Decidua basalis",
+            "C": "Decidua parietalis",
+            "D": "Amnion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WQPWQDQN",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Clitoris arises from which embryonic structure:",
+        "options": {
+            "A": "Urogenital sinus",
+            "B": "Genital tubercle",
+            "C": "Labioscrotal swellings",
+            "D": "Mesonephric duct",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "R9PDS9RN",
         "year": [
             "2025"
@@ -1251,6 +843,33 @@
         "hint": ""
     },
     {
+        "id": "5JWEVBEA",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "From which cellular organelle is the sperm acrosome derived?",
+        "options": {
+            "A": "Mitochondria",
+            "B": "Chloroplast",
+            "C": "Golgi apparatus",
+            "D": "Lysosome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "HH95Q2MJ",
         "year": [
             "2025"
@@ -1275,6 +894,60 @@
         },
         "correctAnswer": "A",
         "explanation": "In the middle of the second month, the mesonephros forms a large ovoid organ on each side of the midline. Since the developing gonad is on its medial side, the ridge formed by both organs is known as the urogenital ridge.",
+        "hint": ""
+    },
+    {
+        "id": "JKXBXUFR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Gartner duct is a remnant of which embryological structure?",
+        "options": {
+            "A": "Paramesonephric (Müllerian) duct",
+            "B": "Mesonephric duct",
+            "C": "Mesonephric tubules",
+            "D": "Metanephric duct",
+            "E": "Urogenital sinus"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Y3H97ZUV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Granulosa cells are derived from which embryonic layer:",
+        "options": {
+            "A": "Germinal Layer",
+            "B": "Mesonephric epithelium",
+            "C": "Endoderm",
+            "D": "Mesenchyme",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1334,6 +1007,60 @@
         "hint": ""
     },
     {
+        "id": "ERQGCSMB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 10 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hypospadias results from failure of fusion of the:",
+        "options": {
+            "A": "Genital tubercle",
+            "B": "Labioscrotal swellings",
+            "C": "Urethral (urogenital) folds",
+            "D": "Müllerian ducts",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LFSC5F54",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In female embryonic development, the genital tubercle gives rise to which structure?",
+        "options": {
+            "A": "Labia majora",
+            "B": "Labia minora",
+            "C": "Clitoris",
+            "D": "Ovaries",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Indifferent Stage: Before week 9, the external genitalia look identical in both sexes. Male vs. Female: In the presence of DHT, it becomes the glAns: penis. Without DHT (female path), it becomes the clitoris. Homologous Structures: The clitoris and the penis share the same embryonic tissue origin.",
+        "hint": ""
+    },
+    {
         "id": "ZA2CJ4RB",
         "year": [
             "2025"
@@ -1358,6 +1085,87 @@
         },
         "correctAnswer": "A",
         "explanation": "Stage of development when the embryo divides: Division within 3 days = dichorionic, diamniotic (30%). Division between 4-7 days = monochorionic, diamniotic (70%). Division between 8-12 days = monochorionic, diamniotic (<1%). Division >12days = conjoined twins.",
+        "hint": ""
+    },
+    {
+        "id": "NHVSY9DE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In the male fetus, the development of the mesonephric duct structures, such as the epididymis and vas deferens, is stimulated by",
+        "options": {
+            "A": "Androgens",
+            "B": "Anti-Mullerian Hormone",
+            "C": "Estrogen",
+            "D": "Growth Hormone",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RZV9UX5D",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mayer-Rokitansky-Küster-Hauser (MRKH) syndrome is characterized by",
+        "options": {
+            "A": "Absent ovaries",
+            "B": "Absent uterus",
+            "C": "Absent vagina",
+            "D": "Both B & C",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "X85JDMUM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 10 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Monozygotic twins have one chorion and two amnions. Embryonic division most likely occurred during which period?",
+        "options": {
+            "A": "Days 1–3",
+            "B": "Days 4–8",
+            "C": "Days 8–13",
+            "D": "After day 13",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1469,6 +1277,87 @@
         "hint": ""
     },
     {
+        "id": "2PEK3E45",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Scrotal swelling with positive transilumination. Cause?",
+        "options": {
+            "A": "Tunica albuginea",
+            "B": "Gubernaculum",
+            "C": "Processus vaginalis",
+            "D": "Epididymis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2QAEDQEK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The acrosome of sperm is derived from:",
+        "options": {
+            "A": "Lysosome",
+            "B": "Endoplasmic reticulum",
+            "C": "Golgi apparatus",
+            "D": "Mitochondria",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "R7QN9KZU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The clitoris is derived from which embryological structure?",
+        "options": {
+            "A": "Genital tubercle",
+            "B": "Urogenital sinus",
+            "C": "Labioscrotal swellings",
+            "D": "Müllerian duct",
+            "E": "Wolffian duct"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MKYRCTSY",
         "year": [
             "2025"
@@ -1492,6 +1381,117 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "396YXPDF",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening",
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The primordial germ cells are derived from?",
+        "options": {
+            "A": "Ectoderm",
+            "B": "Epiblast",
+            "C": "Endoderm",
+            "D": "Mesoderm",
+            "E": "Neural crest cell"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PVEJVUS7",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The uterus, fallopian tubes, and upper vagina develop from which embryonic structure?",
+        "options": {
+            "A": "Paramesonephric ducts",
+            "B": "Mesonephric ducts",
+            "C": "Urogenital sinus",
+            "D": "Metanephros",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FYQXR2XA",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Ultrasound at 12 weeks of gestation shows monochorionic diamniotic twins. These twins most likely result from:",
+        "options": {
+            "A": "Dizygotic fertilization",
+            "B": "Fusion of two embryos",
+            "C": "Fertilization of one ovum by two sperms",
+            "D": "Monozygotic twinning",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Splitting Window: Monochorionic diamniotic (MCDA) twins share a single outer placenta but have individual inner amniotic sacs. They develop exclusively from a single fertilized ovum (monozygotic twinning). Timing: This specific anatomical architecture occurs when the single pre-implantation blastocyst splits between days 4 and 8 post-fertilization, after the chorion has already formed but before the amniotic sac differentiates",
+        "hint": ""
+    },
+    {
+        "id": "T3MJQ7QP",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Embryology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which embryonic layer gives rise to primordial germ cells?",
+        "options": {
+            "A": "Mesoderm",
+            "B": "Epiblast",
+            "C": "Trophoblast",
+            "D": "Ectoderm",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     }

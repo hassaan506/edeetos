@@ -262,6 +262,8 @@ def process_directory(directory, is_book=False):
             print(f"  -> Generated {base_name}_questions.json for {len(questions)} questions.")
         else:
             metadata_list = []
+            search_index_list = [] # Dedicated lightweight array for text searches
+            
             for q in questions:
                 metadata_list.append({
                     "id": q["id"],
@@ -272,10 +274,20 @@ def process_directory(directory, is_book=False):
                     "topic": q["topic"],
                     "difficulty": q["difficulty"]
                 })
+                # Use "q" instead of "question" to save file size
+                search_index_list.append({
+                    "id": q["id"],
+                    "q": q["question"]
+                })
                 
             meta_out = os.path.join(directory, f"{base_name}_metadata.json")
             with open(meta_out, 'w', encoding='utf-8') as f:
                 json.dump(metadata_list, f, separators=(',', ':'))
+
+            # Generate the new search index
+            search_out = os.path.join(directory, f"{base_name}_search_index.json")
+            with open(search_out, 'w', encoding='utf-8') as f:
+                json.dump(search_index_list, f, separators=(',', ':'))
 
             hierarchy_out = os.path.join(directory, f"{base_name}_hierarchy.json")
             hierarchy = {
@@ -312,6 +324,7 @@ def process_directory(directory, is_book=False):
 
             total_shards = len(subject_chunks) + len(system_chunks) + len(exam_chunks)
             print(f"  -> Generated {base_name}_metadata.json")
+            print(f"  -> Generated {base_name}_search_index.json")
             print(f"  -> Generated {base_name}_hierarchy.json")
             print(f"  -> Generated {total_shards} micro-chunks in {base_name}/ folder.")
 

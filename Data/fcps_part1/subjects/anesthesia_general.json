@@ -56,195 +56,6 @@
         "hint": ""
     },
     {
-        "id": "RF7F4PZC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A man after RTA got a head injury which is to be stitched 10 inch wound/laceration which anesthesist agent will best for suturing the wound?",
-        "options": {
-            "A": "250 ml of 2% lignocaine with adrenaline",
-            "B": "4.5% with adrenalin",
-            "C": "250 ml of 0.5% lignocaine with adrenaline",
-            "D": "150 ml lignocaine",
-            "E": "Plain lignocaine"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EENYGXVF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During general anesthesia, the oxygen supply pressure to the anesthesia machine suddenly falls because the oxygen pipeline becomes disconnected. Which safety mechanism is designed to reduce or stop the flow of nitrous oxide in this situation?",
-        "options": {
-            "A": "Oxygen flush valve",
-            "B": "Pressure relief valve",
-            "C": "Fail-safe valve",
-            "D": "Vaporizer interlock system",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P9PUJU9U",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "During surgery, electrical interference and motion artifact produce excessive noise in the pulse oximeter signal. The monitor continues to display a fixed SpO2 value of 95% despite poor signal quality. What is the most likely explanation?",
-        "options": {
-            "A": "True arterial oxygen saturation is 95%",
-            "B": "Probe is measuring venous oxygen saturation",
-            "C": "The pulse oximeter is displaying a default/held value due to inability to obtain a reliable signal",
-            "D": "The patient has methemoglobinemia",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ATX5RAC8",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "For Muscle relaxant Drug of choice in chronic liver disease (CLD)?",
-        "options": {
-            "A": "Mivacurium",
-            "B": "Cisatracurium",
-            "C": "Pancuronium",
-            "D": "Terbutaline",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4XJ8PLFB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The fail-safe mechanism in an anesthesia machine primarily detects:",
-        "options": {
-            "A": "Oxygen concentration in the inspired gas",
-            "B": "Oxygen flow rate",
-            "C": "Oxygen supply pressure",
-            "D": "Carbon dioxide concentration",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EB3BBZMF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The fail-safe valve in an anesthesia machine is designed to detect which of the following oxygen parameters?",
-        "options": {
-            "A": "Oxygen concentration",
-            "B": "Oxygen pressure",
-            "C": "Oxygen partial pressure",
-            "D": "Oxygen flow rate",
-            "E": "Oxygen saturation"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MFXWVU6A",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "You are working in a DHQ, there is no central gases supply and people rely on E. cylinders. You are using oxygen at the rate of 5L, how long will it last?",
-        "options": {
-            "A": "80-90 minutes",
-            "B": "90-110 minutes",
-            "C": "130-140 minutes",
-            "D": "140-160 minutes",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "KQ3SN8N9",
         "year": [
             "2025"
@@ -266,6 +77,33 @@
             "C": "Morphine",
             "D": "Diazepam",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RF7F4PZC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man after RTA got a head injury which is to be stitched 10 inch wound/laceration which anesthesist agent will best for suturing the wound?",
+        "options": {
+            "A": "250 ml of 2% lignocaine with adrenaline",
+            "B": "4.5% with adrenalin",
+            "C": "250 ml of 0.5% lignocaine with adrenaline",
+            "D": "150 ml lignocaine",
+            "E": "Plain lignocaine"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -326,6 +164,33 @@
         "hint": ""
     },
     {
+        "id": "EENYGXVF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During general anesthesia, the oxygen supply pressure to the anesthesia machine suddenly falls because the oxygen pipeline becomes disconnected. Which safety mechanism is designed to reduce or stop the flow of nitrous oxide in this situation?",
+        "options": {
+            "A": "Oxygen flush valve",
+            "B": "Pressure relief valve",
+            "C": "Fail-safe valve",
+            "D": "Vaporizer interlock system",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "2Z4PCJFS",
         "year": [
             "2025"
@@ -350,6 +215,60 @@
         },
         "correctAnswer": "D",
         "explanation": "Probe in distal esophagous is easy and reliable method specially in children. Probe in tympanic membrane also good method but it is invasive can perforate tympanic membrane and may give initial false reading. Pulmonary artery catheter with distal tip thermistor is invasive and gold standard method for measuring core body temperaturE-",
+        "hint": ""
+    },
+    {
+        "id": "P9PUJU9U",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "During surgery, electrical interference and motion artifact produce excessive noise in the pulse oximeter signal. The monitor continues to display a fixed SpO2 value of 95% despite poor signal quality. What is the most likely explanation?",
+        "options": {
+            "A": "True arterial oxygen saturation is 95%",
+            "B": "Probe is measuring venous oxygen saturation",
+            "C": "The pulse oximeter is displaying a default/held value due to inability to obtain a reliable signal",
+            "D": "The patient has methemoglobinemia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ATX5RAC8",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "For Muscle relaxant Drug of choice in chronic liver disease (CLD)?",
+        "options": {
+            "A": "Mivacurium",
+            "B": "Cisatracurium",
+            "C": "Pancuronium",
+            "D": "Terbutaline",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -407,6 +326,60 @@
         "hint": ""
     },
     {
+        "id": "4XJ8PLFB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The fail-safe mechanism in an anesthesia machine primarily detects:",
+        "options": {
+            "A": "Oxygen concentration in the inspired gas",
+            "B": "Oxygen flow rate",
+            "C": "Oxygen supply pressure",
+            "D": "Carbon dioxide concentration",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EB3BBZMF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The fail-safe valve in an anesthesia machine is designed to detect which of the following oxygen parameters?",
+        "options": {
+            "A": "Oxygen concentration",
+            "B": "Oxygen pressure",
+            "C": "Oxygen partial pressure",
+            "D": "Oxygen flow rate",
+            "E": "Oxygen saturation"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "AFNH6KYV",
         "year": [
             "2025"
@@ -427,6 +400,33 @@
             "B": "Administration of high concentration of anaesthetic agent",
             "C": "Rise in heart rate",
             "D": "Pupil constriction",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MFXWVU6A",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "You are working in a DHQ, there is no central gases supply and people rely on E. cylinders. You are using oxygen at the rate of 5L, how long will it last?",
+        "options": {
+            "A": "80-90 minutes",
+            "B": "90-110 minutes",
+            "C": "130-140 minutes",
+            "D": "140-160 minutes",
             "E": ""
         },
         "correctAnswer": "B",

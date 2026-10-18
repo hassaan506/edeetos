@@ -27,6 +27,60 @@
         "hint": ""
     },
     {
+        "id": "ZMYE6P4S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/25 - November 10 - Evening"
+        ],
+        "subject": "Medicine",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45-year-old man, whose father died of a similar condition, presents with recurrent blistering and fragility of sun-exposed skin and hypertrichosis. Laboratory tests show high levels of Uroporphyrin accumulating in the body.",
+        "options": {
+            "A": "Ferrochelatase",
+            "B": "Heme synthase",
+            "C": "Uroporphyrinogen decarboxylase",
+            "D": "Hydroxymethylbilane synthase",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Porphyria Cutanea Tarda is the most common porphyria and is caused by a deficiency in UROD, which leads to the accumulation of uroporphyrinogens.",
+        "hint": ""
+    },
+    {
+        "id": "4PT2R9VD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 46-year-old man presents with skin fragility and blistering on sun-exposed areas. Urine collected during an episode is dark in color. Laboratory studies show decreased activity of uroporphyrinogen decarboxylase. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Acute intermittent porphyria",
+            "B": "Porphyria cutanea tarda",
+            "C": "Erythropoietic protoporphyria",
+            "D": "Congenital erythropoietic porphyria",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "3FUZGB2T",
         "year": [
             "2026"
@@ -158,60 +212,6 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZMYE6P4S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 11/25 - November 10 - Evening"
-        ],
-        "subject": "Medicine",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45-year-old man, whose father died of a similar condition, presents with recurrent blistering and fragility of sun-exposed skin and hypertrichosis. Laboratory tests show high levels of Uroporphyrin accumulating in the body.",
-        "options": {
-            "A": "Ferrochelatase",
-            "B": "Heme synthase",
-            "C": "Uroporphyrinogen decarboxylase",
-            "D": "Hydroxymethylbilane synthase",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Porphyria Cutanea Tarda is the most common porphyria and is caused by a deficiency in UROD, which leads to the accumulation of uroporphyrinogens.",
-        "hint": ""
-    },
-    {
-        "id": "4PT2R9VD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 46-year-old man presents with skin fragility and blistering on sun-exposed areas. Urine collected during an episode is dark in color. Laboratory studies show decreased activity of uroporphyrinogen decarboxylase. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Acute intermittent porphyria",
-            "B": "Porphyria cutanea tarda",
-            "C": "Erythropoietic protoporphyria",
-            "D": "Congenital erythropoietic porphyria",
-            "E": ""
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     }

@@ -1,113 +1,5 @@
 [
     {
-        "id": "XRFG9FND",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with immune thrombocytopenic purpura undergoes splenectomy. Delayed postoperative wound healing in this patient is most likely due to:",
-        "options": {
-            "A": "Infection",
-            "B": "Thrombocytopenia",
-            "C": "Hyperlipidemia",
-            "D": "Steroid therapy",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7LRLAMGC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with immune thrombocytopenic purpura undergoes splenectomy. Delayed wound healing afterward is most likely due to?",
-        "options": {
-            "A": "Thrombocytopenia",
-            "B": "Infection",
-            "C": "Steroid Therapy",
-            "D": "Anemia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y3UQ4SYT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hypothermia in a trauma patient leads to",
-        "options": {
-            "A": "Increased platelet aggregation",
-            "B": "Decreased platelet function",
-            "C": "No effect on platelets",
-            "D": "Thrombocytosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2PG42MC5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In a patient experiencing hemorrhagic shock requiring a massive transfusion protocol (MTP), what is the traditional ratio of Packed Red Blood Cells (PRBCs) to Fresh Frozen Plasma (FFP) used to prevent dilutional coagulopathy?",
-        "options": {
-            "A": "01:01",
-            "B": "02:01",
-            "C": "04:01",
-            "D": "06:01",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "KLJH8EHC",
         "year": [
             "2025"
@@ -243,6 +135,60 @@
         "hint": ""
     },
     {
+        "id": "XRFG9FND",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with immune thrombocytopenic purpura undergoes splenectomy. Delayed postoperative wound healing in this patient is most likely due to:",
+        "options": {
+            "A": "Infection",
+            "B": "Thrombocytopenia",
+            "C": "Hyperlipidemia",
+            "D": "Steroid therapy",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7LRLAMGC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with immune thrombocytopenic purpura undergoes splenectomy. Delayed wound healing afterward is most likely due to?",
+        "options": {
+            "A": "Thrombocytopenia",
+            "B": "Infection",
+            "C": "Steroid Therapy",
+            "D": "Anemia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "PS4V4A8K",
         "year": [
             "2025"
@@ -263,6 +209,60 @@
             "B": "Tibial tuberosity",
             "C": "Sternum",
             "D": "Vertebral body",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Y3UQ4SYT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hypothermia in a trauma patient leads to",
+        "options": {
+            "A": "Increased platelet aggregation",
+            "B": "Decreased platelet function",
+            "C": "No effect on platelets",
+            "D": "Thrombocytosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2PG42MC5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In a patient experiencing hemorrhagic shock requiring a massive transfusion protocol (MTP), what is the traditional ratio of Packed Red Blood Cells (PRBCs) to Fresh Frozen Plasma (FFP) used to prevent dilutional coagulopathy?",
+        "options": {
+            "A": "01:01",
+            "B": "02:01",
+            "C": "04:01",
+            "D": "06:01",
             "E": ""
         },
         "correctAnswer": "C",

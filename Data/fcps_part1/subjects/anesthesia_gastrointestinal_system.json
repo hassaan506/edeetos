@@ -1,59 +1,5 @@
 [
     {
-        "id": "C8C7RRT9",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 07/26 - July 07 - Evening"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman requires an emergency lower-segment cesarean section under general anesthesia. Which drug is given immediately before induction to reduce gastric acidity?",
-        "options": {
-            "A": "Omeprazole",
-            "B": "Ranitidine",
-            "C": "Metoclopramide",
-            "D": "Sodium citrate",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "78CHSXPH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Anesthesia",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "For a gastric procedure, which anesthesia is used most commonly?",
-        "options": {
-            "A": "Propofol",
-            "B": "Isoflurane",
-            "C": "Sevoflurane",
-            "D": "Halothane",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Propofol</strong> - Propofol is a commonly used <strong>intravenous induction agent</strong> for general anesthesia. It produces rapid loss of consciousness, has a rapid onset, and allows relatively quick recovery.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The important clue is that the question is asking what is commonly used for <strong>induction of anesthesia</strong>. Propofol is the standard IV induction agent among these options. The other three options are <strong>volatile inhalational anesthetics</strong> mainly used for maintenance.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Isoflurane</strong> - A volatile inhalational anesthetic primarily used for maintenance of general anesthesia. It has a relatively slow onset and recovery.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Sevoflurane</strong> - A volatile anesthetic commonly used for maintenance and can also be used for inhalational induction, especially in children. However, for routine IV induction in adults, propofol is preferred.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Halothane</strong> - An older volatile anesthetic that is now rarely used because of adverse effects including hepatotoxicity and myocardial depression.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>General anesthesia sequence:</strong> Induction → airway management → maintenance → emergence.</p></p><p><p><strong>Propofol = IV induction.</strong> <strong>Sevoflurane/isoflurane = inhalational maintenance.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>PROPOFOL = PROpels you OFF</strong> → rapidly induces unconsciousness.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Sevoflurane can be used for inhalational induction</strong>, so do not memorize that it is “maintenance only.” But when an adult patient is undergoing routine general anesthesia and the question asks for the commonly used <strong>IV induction agent</strong>, choose <strong>propofol</strong>.</p></p>",
-        "hint": "<p><br></p>"
-    },
-    {
         "id": "TMU7RRBY",
         "year": [
             "2025"
@@ -133,6 +79,60 @@
         "correctAnswer": "C",
         "explanation": "",
         "hint": ""
+    },
+    {
+        "id": "C8C7RRT9",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 07/26 - July 07 - Evening"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman requires an emergency lower-segment cesarean section under general anesthesia. Which drug is given immediately before induction to reduce gastric acidity?",
+        "options": {
+            "A": "Omeprazole",
+            "B": "Ranitidine",
+            "C": "Metoclopramide",
+            "D": "Sodium citrate",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "78CHSXPH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Anesthesia",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "For a gastric procedure, which anesthesia is used most commonly?",
+        "options": {
+            "A": "Propofol",
+            "B": "Isoflurane",
+            "C": "Sevoflurane",
+            "D": "Halothane",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Propofol</strong> - Propofol is a commonly used <strong>intravenous induction agent</strong> for general anesthesia. It produces rapid loss of consciousness, has a rapid onset, and allows relatively quick recovery.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The important clue is that the question is asking what is commonly used for <strong>induction of anesthesia</strong>. Propofol is the standard IV induction agent among these options. The other three options are <strong>volatile inhalational anesthetics</strong> mainly used for maintenance.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Isoflurane</strong> - A volatile inhalational anesthetic primarily used for maintenance of general anesthesia. It has a relatively slow onset and recovery.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Sevoflurane</strong> - A volatile anesthetic commonly used for maintenance and can also be used for inhalational induction, especially in children. However, for routine IV induction in adults, propofol is preferred.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Halothane</strong> - An older volatile anesthetic that is now rarely used because of adverse effects including hepatotoxicity and myocardial depression.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>General anesthesia sequence:</strong> Induction → airway management → maintenance → emergence.</p></p><p><p><strong>Propofol = IV induction.</strong> <strong>Sevoflurane/isoflurane = inhalational maintenance.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>PROPOFOL = PROpels you OFF</strong> → rapidly induces unconsciousness.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Sevoflurane can be used for inhalational induction</strong>, so do not memorize that it is “maintenance only.” But when an adult patient is undergoing routine general anesthesia and the question asks for the commonly used <strong>IV induction agent</strong>, choose <strong>propofol</strong>.</p></p>",
+        "hint": "<p><br></p>"
     },
     {
         "id": "2G4G9WQF",

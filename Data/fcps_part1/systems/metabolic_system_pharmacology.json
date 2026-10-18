@@ -1,34 +1,5 @@
 [
     {
-        "id": "HTQEQSPX",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning",
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Metabolic System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which drug lowers serum triglycerides by activating PPAR-α, increasing fatty acid oxidation and lipoprotein lipase activity?",
-        "options": {
-            "A": "Gemfibrozil",
-            "B": "Atorvastatin",
-            "C": "Ezetimibe",
-            "D": "Niacin",
-            "E": "Cholesteramine"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "RHAFE8Z3",
         "year": [
             "2025"
@@ -134,6 +105,35 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HTQEQSPX",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning",
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Metabolic System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which drug lowers serum triglycerides by activating PPAR-α, increasing fatty acid oxidation and lipoprotein lipase activity?",
+        "options": {
+            "A": "Gemfibrozil",
+            "B": "Atorvastatin",
+            "C": "Ezetimibe",
+            "D": "Niacin",
+            "E": "Cholesteramine"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     }

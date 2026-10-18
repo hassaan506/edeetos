@@ -282,16 +282,47 @@ if (globalSearch && searchDropdown) {
             return;
         }
 
-        searchTimeout = setTimeout(async () => {
-            const matchedMeta = globalMetadata.filter(q => {
-                // FIX: Added unattemptedFilter null check before reading .checked
-                if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(getQID(q)) || globalPracticeMistakes.includes(getQID(q)) || globalExamMistakes.includes(getQID(q)))) return false;
+searchTimeout = setTimeout(async () => {
+            let searchPool = globalMetadata;
+            let isBookView = currentView === 'book';
+
+            if (isBookView) {
+                if (!activeCustomPool || activeCustomPool.length === 0) {
+                    searchDropdown.innerHTML = `<div class="search-item" style="color:#94a3b8;">Please open a book first to search its contents.</div>`;
+                    searchDropdown.style.display = 'block';
+                    return;
+                }
+                searchPool = activeCustomPool;
+            }
+
+            // 1. Scan the text index to find matching IDs
+            const matchingIds = new Set();
+            if (isBookView) {
+                searchPool.forEach(q => {
+                    const text = (q.question || q.Question || "").toLowerCase();
+                    if (text.includes(query)) matchingIds.add(String(getQID(q)));
+                });
+            } else if (window.globalSearchIndex) {
+                window.globalSearchIndex.forEach(item => {
+                    if (item.q && item.q.toLowerCase().includes(query)) {
+                        matchingIds.add(String(item.id));
+                    }
+                });
+            }
+
+            // 2. Filter metadata using matched IDs and category names
+            const matchedMeta = searchPool.filter(q => {
+                const qId = String(getQID(q));
+                const hierarchyText = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic || ''}`.toLowerCase();
                 
+                // Match if the ID is in our text-search hits OR the query matches the topic/chapter name
+                const isMatch = matchingIds.has(qId) || hierarchyText.includes(query);
+                
+                if (!isMatch) return false;
+                if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(qId) || globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) return false;
                 if (!passesDifficultyFilter(q)) return false; 
                 
-                const questionText = q.Question || q.question || q.text || q.statement || "";
-                const textToSearch = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic || ''} ${questionText}`.toLowerCase();
-                return textToSearch.includes(query);
+                return true;
             });
 
             searchDropdown.innerHTML = '';
@@ -318,12 +349,10 @@ if (globalSearch && searchDropdown) {
                     div.className = 'search-item';
                     const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter || q.chapter || ''} ${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
                     
-                    const questionText = q.Question || q.question || q.text || q.statement || "";
-                    const questionSnippet = questionText ? questionText.substring(0, 90) + "..." : "Image/Table based question (No text)";
-
+                    // We don't have the question snippet in metadata anymore, so we default to a clean prompt
                     div.innerHTML = `
                         <div class="search-item-title">${title}</div>
-                        <div class="search-item-snippet">${questionSnippet}</div>
+                        <div class="search-item-snippet" style="color: #64748b; font-style: italic;">Click to load question details</div>
                     `;
                     div.onclick = async () => {
                         searchDropdown.style.display = 'none';
@@ -1559,8 +1588,12 @@ async function loadDataAndBuildTree() {
             allQuestions = allQuestions.filter(q => q.isBookQuestion);
             allQuestions.push(...rawQs);
         }
-
-        renderGrid();
+	const searchRes = await fetch(`Data/${activeCourse}_search_index.json`, { cache: 'no-cache' });
+        if (searchRes.ok) {
+            window.globalSearchIndex = await searchRes.json();
+        }
+    
+    renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
     }

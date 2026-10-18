@@ -1,5 +1,59 @@
 [
     {
+        "id": "YPTBFN8Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Urinary System",
+        "topic": "Polycystic Kidney Disease",
+        "difficulty": "Hard",
+        "question": "A 11 year old boy faced abdominal trauma and then presented to emergency. On labs there was 1+ blood and 3+ protein in Urine. What is the pattern of inheritance?",
+        "options": {
+            "A": "Autosomal recessive",
+            "B": "Autosomal dominant",
+            "C": "X linked dominant",
+            "D": "X linked recessive",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Polycystic kidney disease",
+        "hint": ""
+    },
+    {
+        "id": "V3J4TUY4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Urinary System",
+        "topic": "Nephritic Syndromes",
+        "difficulty": "Medium",
+        "question": "A 12-year-old boy presents with progressive bilateral sensorineural hearing loss and episodes of painless hematuria since childhood. His father had similar symptoms and developed renal failure in his 30s. Fundoscopic examination reveals anterior lenticonus. Which of the following is the most likely diagnosis?",
+        "options": {
+            "A": "Goodpasture syndrome",
+            "B": "Alport syndrome",
+            "C": "IgA nephropathy",
+            "D": "Membranoproliferative glomerulonephritis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "L8NRN8ZD",
         "year": [
             "2026"
@@ -25,6 +79,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "63PDEQGP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Urinary System",
+        "topic": "Polycystic Kidney Disease",
+        "difficulty": "Easy",
+        "question": "A 30 year old male presents with hypertension and bilateral flank pain. Ultrasound shows enlarged kidneys with multiple cysts. His father died of a ruptured brain aneurysm. What is the most likely mode of inheritance?",
+        "options": {
+            "A": "Autosomal recessive",
+            "B": "Autosomal dominant",
+            "C": "X-linked recessive",
+            "D": "Mitochondrial",
+            "E": "Multifactorial"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -110,168 +191,6 @@
         "hint": ""
     },
     {
-        "id": "2ST8CJZC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Urinary System",
-        "topic": "Polycystic Kidney Disease",
-        "difficulty": "Medium",
-        "question": "A neonate presents with enlarged echogenic kidneys and hepatic fibrosis. Family history suggests a recessive inheritance pattern. What is the most likely diagnosis?",
-        "options": {
-            "A": "Autosomal dominant PKD",
-            "B": "Autosomal recessive PKD",
-            "C": "Multicystic dysplastic kidney",
-            "D": "Wilms tumor",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SC6UGZDG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Urinary System",
-        "topic": "Polycystic Kidney Disease",
-        "difficulty": "Easy",
-        "question": "Autosomal dominant polycystic kidney disease is most commonly caused by mutation of a gene located on which chromosome?",
-        "options": {
-            "A": "Chromosome 13",
-            "B": "Chromosome 16",
-            "C": "Chromosome 18",
-            "D": "Chromosome 21",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "67C6NR5H",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Urinary System",
-        "topic": "Polycystic Kidney Disease",
-        "difficulty": "Hard",
-        "question": "Patient with a adult polycystic kidney disease want to know how much risk of his child of being affected. What you will do?",
-        "options": {
-            "A": "Genome sequencing",
-            "B": "Karyotyping",
-            "C": "Southern blot",
-            "D": "Allelic sequence",
-            "E": "Microarray"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YPTBFN8Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Urinary System",
-        "topic": "Polycystic Kidney Disease",
-        "difficulty": "Hard",
-        "question": "A 11 year old boy faced abdominal trauma and then presented to emergency. On labs there was 1+ blood and 3+ protein in Urine. What is the pattern of inheritance?",
-        "options": {
-            "A": "Autosomal recessive",
-            "B": "Autosomal dominant",
-            "C": "X linked dominant",
-            "D": "X linked recessive",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Polycystic kidney disease",
-        "hint": ""
-    },
-    {
-        "id": "V3J4TUY4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Urinary System",
-        "topic": "Nephritic Syndromes",
-        "difficulty": "Medium",
-        "question": "A 12-year-old boy presents with progressive bilateral sensorineural hearing loss and episodes of painless hematuria since childhood. His father had similar symptoms and developed renal failure in his 30s. Fundoscopic examination reveals anterior lenticonus. Which of the following is the most likely diagnosis?",
-        "options": {
-            "A": "Goodpasture syndrome",
-            "B": "Alport syndrome",
-            "C": "IgA nephropathy",
-            "D": "Membranoproliferative glomerulonephritis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "63PDEQGP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Urinary System",
-        "topic": "Polycystic Kidney Disease",
-        "difficulty": "Easy",
-        "question": "A 30 year old male presents with hypertension and bilateral flank pain. Ultrasound shows enlarged kidneys with multiple cysts. His father died of a ruptured brain aneurysm. What is the most likely mode of inheritance?",
-        "options": {
-            "A": "Autosomal recessive",
-            "B": "Autosomal dominant",
-            "C": "X-linked recessive",
-            "D": "Mitochondrial",
-            "E": "Multifactorial"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "JNHKGPYZ",
         "year": [
             "2025"
@@ -328,6 +247,33 @@
         "hint": ""
     },
     {
+        "id": "2ST8CJZC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Urinary System",
+        "topic": "Polycystic Kidney Disease",
+        "difficulty": "Medium",
+        "question": "A neonate presents with enlarged echogenic kidneys and hepatic fibrosis. Family history suggests a recessive inheritance pattern. What is the most likely diagnosis?",
+        "options": {
+            "A": "Autosomal dominant PKD",
+            "B": "Autosomal recessive PKD",
+            "C": "Multicystic dysplastic kidney",
+            "D": "Wilms tumor",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "VDEGZFHS",
         "year": [
             "2025"
@@ -379,6 +325,60 @@
         },
         "correctAnswer": "A",
         "explanation": "(Pathoma)",
+        "hint": ""
+    },
+    {
+        "id": "SC6UGZDG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Urinary System",
+        "topic": "Polycystic Kidney Disease",
+        "difficulty": "Easy",
+        "question": "Autosomal dominant polycystic kidney disease is most commonly caused by mutation of a gene located on which chromosome?",
+        "options": {
+            "A": "Chromosome 13",
+            "B": "Chromosome 16",
+            "C": "Chromosome 18",
+            "D": "Chromosome 21",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "67C6NR5H",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Urinary System",
+        "topic": "Polycystic Kidney Disease",
+        "difficulty": "Hard",
+        "question": "Patient with a adult polycystic kidney disease want to know how much risk of his child of being affected. What you will do?",
+        "options": {
+            "A": "Genome sequencing",
+            "B": "Karyotyping",
+            "C": "Southern blot",
+            "D": "Allelic sequence",
+            "E": "Microarray"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": ""
     }
 ]

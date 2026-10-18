@@ -1,32 +1,165 @@
 [
     {
-        "id": "8RUTR6HB",
+        "id": "K6XH6MSB",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 04/26 - April 7 - Night",
-            "Surgery - 08/25 - August 6 - Evening",
-            "Anesthesia - 08/25 - August 4 - Morning"
+            "Gynecology - 11/25 - November 12 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "Patient presented with peripheral tingling numbness diplopia and visual disturbance diagnosed with demyelination disease what type nervous system cells are affected in this disease?",
+        "question": "29-year-old woman develops optic neuritis and weakness in her lower limbs. MRI Reveals demyelinating lesions in the brain and spinal cord. Which of the following cell types is most directly affected in this condition?",
         "options": {
-            "A": "Oligodendrocytes",
-            "B": "Schwan cells",
+            "A": "Schwann cells",
+            "B": "Oligodendrocytes",
             "C": "Astrocytes",
-            "D": "Glial cells",
+            "D": "Microglia",
+            "E": "Ependymal cells"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GKBYV5YZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "85-year-old male Patient complain of lower backache doctor during examination noticed a outgrown with tuft of hairs at L5 what is your Diagnosis ?",
+        "options": {
+            "A": "Spina bifida occulta",
+            "B": "Arnald chiari malformation",
+            "C": "Meningiomyocele",
+            "D": "Meningicele",
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4QTNG8WZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 10-year-old girl has recurrent headaches relieved by paracetamol. Imaging shows a tumor in the pineal gland. What is the most common tumor at this site?",
+        "options": {
+            "A": "Pineocytoma",
+            "B": "Pineoblastoma",
+            "C": "Germinoma",
+            "D": "Glioma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CCGRHRC2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 14-month-old male presents with vomiting, irritability, and progressive lethargyMRI reveals a midline posterior fossa mass arising from the cerebellar vermis, compressing the 4th ventricle, and causing early cerebellar tonsillar herniationWhich of the following is most characteristic of this tumor?",
+        "options": {
+            "A": "It frequently metastasizes via cerebrospinal fluid",
+            "B": "It is benign and does not recur after surgery",
+            "C": "It usually arises from the cerebral hemispheres.",
+            "D": "It originates from ependymal cells of the ventricles.",
+            "E": "It is associated with von Hippel-Lindau syndrome"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "Z8D6K6R9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old man sustains a traumatic head injury after a motor vehicle accident. CT scan reveals a biconvex, lens-shaped hyperdense lesion causing midline shift. Which of the following best describes this lesion?",
+        "options": {
+            "A": "Subdural hematoma",
+            "B": "Epidural (extradural hematoma",
+            "C": "Subarachnoid hemorrhage",
+            "D": "Intracerebral hemorrhage",
+            "E": "Chronic subdural hematoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7F7UUTN5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 28 year old woman presents with drooping of eyelids that worsens throughout the day and improves with rest. She also reports difficulty chewing after prolonged talking. On examination, muscle strength fatigues with repeated use. Which of the following is the underlying mechanism?",
+        "options": {
+            "A": "Demyelination of peripheral nerves",
+            "B": "Autoimmune destruction of presynaptic acetylcholine release",
+            "C": "Autoimmune antibodies against postsynaptic acetylcholine receptors",
+            "D": "Increased acetylcholine breakdown",
+            "E": "Muscle fiber necrosis"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -61,60 +194,29 @@
         "hint": ""
     },
     {
-        "id": "593GRF4T",
+        "id": "N8K7P939",
         "year": [
-            "2026",
             "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 6 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The lesion occurred at the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra The condition is of",
-        "options": {
-            "A": "Alzheimer's Disease",
-            "B": "Parkinsonism",
-            "C": "Homer Syndrome",
-            "D": "Retrograde Amnesia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Substantia nigra lesion -> Resting (pill-rolling) tremor of Parkinson disease. Caudate nucleus degeneration -> Chorea (sudden, jerky, purposeless movements). Basal ganglia lesion -> Athetosis (slow, writhing, snake-like movements). Hippocampal damage -> Anterograde amnesia (inability to form new memories).",
-        "hint": ""
-    },
-    {
-        "id": "7F7UUTN5",
-        "year": [
-            "2026"
         ],
         "specialty": [
             "Medicine & Allied"
         ],
         "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
+            "Medicine - 08/25 - August 6 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "A 28 year old woman presents with drooping of eyelids that worsens throughout the day and improves with rest. She also reports difficulty chewing after prolonged talking. On examination, muscle strength fatigues with repeated use. Which of the following is the underlying mechanism?",
+        "question": "A 30 year old woman presents with episodes of visual loss, weakness and sensory disturbances. MRI shows demyelinating plaques in the CNS. Which type is primarily affected in this disease?",
         "options": {
-            "A": "Demyelination of peripheral nerves",
-            "B": "Autoimmune destruction of presynaptic acetylcholine release",
-            "C": "Autoimmune antibodies against postsynaptic acetylcholine receptors",
-            "D": "Increased acetylcholine breakdown",
-            "E": "Muscle fiber necrosis"
+            "A": "Schwann cells",
+            "B": "Microglia",
+            "C": "Astrocytes",
+            "D": "Oligodendrocytes",
+            "E": "Neurons"
         },
-        "correctAnswer": "C",
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -146,6 +248,33 @@
         "hint": ""
     },
     {
+        "id": "HRJMQEN8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 30-year-old with seizures and inability to speak during episodes has a slow-growing brain lesion. Most common site?",
+        "options": {
+            "A": "Occipitoparietal",
+            "B": "Temporal lobe",
+            "C": "Parietal lobe",
+            "D": "Occipital lobe",
+            "E": "Frontal lobe"
+        },
+        "correctAnswer": "E",
+        "explanation": "Frontal lobes lesions Expressive (Broca's) aphasia, Depression and lack of motivation.",
+        "hint": ""
+    },
+    {
         "id": "TR95BG92",
         "year": [
             "2026"
@@ -169,6 +298,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZGTAVGE7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 52 year old man presents with sudden severe headache, vomiting, and loss of consciousness. CT scan of the brain reveals subarachnoid hemorrhage. Which of the following is the most common cause?",
+        "options": {
+            "A": "Ruptured berry aneurysm",
+            "B": "Hypertensive intracerebral hemorrhage",
+            "C": "Arteriovenous malformation",
+            "D": "Cavernous hemangioma",
+            "E": "Trauma"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -389,6 +545,33 @@
         "hint": ""
     },
     {
+        "id": "U88L4CQ5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 7 year old boy presents with headache, vomiting, and gait instability for 2 weeks. MRI brain shows a midline posterior fossa mass compressing the 4th ventricle. Histology reveals sheets of small, round blue cells with Homer-Wright rosettes. Which statement is correct regarding this tumor?",
+        "options": {
+            "A": "It is the most common primary brain tumor in adults",
+            "B": "It arises from astrocytes",
+            "C": "It is radiosensitive",
+            "D": "It rarely metastasizes",
+            "E": "It originates in the frontal lobe"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "63C2J52J",
         "year": [
             "2026"
@@ -412,6 +595,87 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "S2QNQ75L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 14 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 70-year-old man recovering from an ischemic stroke now has difficulty performing fine motor tasks such as buttoning his shirt and writing. Which neuronal cell type is most likely damaged?",
+        "options": {
+            "A": "Pyramidal cells",
+            "B": "Purkinje cells",
+            "C": "Martinotti cells",
+            "D": "Stellate cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SX5E4L85",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 72 year old with progressive short-term memory loss, getting lost in familiar places, and difficulty with word finding is suspected to have Alzheimer disease. Which neuropathological findings support this diagnosis?",
+        "options": {
+            "A": "Microglial nodules and multinucleated giant cells",
+            "B": "Neurofibrillary tangles composed of hyperphosphorylated tau and extracellular β-amyloid plaques",
+            "C": "Demyelination of periventricular white matter",
+            "D": "Lewy bodies (α-synuclein) in substantia nigra",
+            "E": "Pick bodies (tau) localized to frontal lobes only"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PXERHACK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 74-year-old woman with progressive memory loss and confusion is found to have widespread cortical atrophy. Brain autopsy shows intracellular neurofibrillary tangles composed of hyperphosphorylated tau protein. Which of the following diagnoses is most likely?",
+        "options": {
+            "A": "Parkinson disease",
+            "B": "Alzheimer disease",
+            "C": "Pick disease",
+            "D": "Lewy body dementia",
+            "E": "Huntington disease"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -579,6 +843,61 @@
         "hint": ""
     },
     {
+        "id": "QYGVK9Q6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female Patient with lesion in brain, present with Resting tremor, stooped posture, and shuffling gate and expressionless face, Lesion in which part of brain:",
+        "options": {
+            "A": "Cerebrum",
+            "B": "Cerebellum",
+            "C": "Substantia nigra",
+            "D": "Pons",
+            "E": "Medulla"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "GZDL2S8V",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A male patient presented to you with history of severe headache and vomiting at start of day. There was a tumor suspicion on radiography which was in cerebellar area involving granular layer what it can be?",
+        "options": {
+            "A": "Ependymoma",
+            "B": "Astrocytoma",
+            "C": "Medulloblastoma",
+            "D": "Chondroma",
+            "E": "Meningioma"
+        },
+        "correctAnswer": "C",
+        "explanation": "Medulloblastoma arise from external granular layer of cerebellum and symptoms include vomiting morning headache stumbling gait and frequent falls.",
+        "hint": ""
+    },
+    {
         "id": "J3GKW8CP",
         "year": [
             "2026"
@@ -633,6 +952,33 @@
         "hint": ""
     },
     {
+        "id": "6J3ASEU9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has a history of MI and now presented with lesions in the brain affecting motor functions. What type of necrosis is seen?",
+        "options": {
+            "A": "Liquefactive",
+            "B": "Fat",
+            "C": "Caseous",
+            "D": "Gangrenous",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Ischemic cell death in the CNS is typically followed by digestion of the tissue by hydrolytic enzymes, leading to liquefactive necrosis and the formation of a cyst.",
+        "hint": ""
+    },
+    {
         "id": "CYHSVWDR",
         "year": [
             "2026"
@@ -656,6 +1002,115 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G3WEGBWV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening",
+            "Medicine - 11/25 - November 14 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is found to have proximal muscle weakness that improves with repeated muscle use; nerve conduction studies show increment with rapid repetitive stimulation. Autoantibodies against which target best explain this syndrome?",
+        "options": {
+            "A": "Postsynaptic acetylcholine receptors",
+            "B": "Presynaptic voltage-gated calcium channels",
+            "C": "Muscle nicotinic receptor subunits (alpha2)",
+            "D": "Presynaptic acetylcholinesterase",
+            "E": "Dihydropyridine receptor"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YVST77TS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with hemiparesis, he has calcifications and necrosis in the brain, on investigation he had mitral stenosis. Which type of necrosis is seen?",
+        "options": {
+            "A": "Fat necrosis",
+            "B": "Liquefactive necrosis",
+            "C": "Coagulative necrosis",
+            "D": "Caseous necrosis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LRWDW94B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with peripheral tingling numbness diplopia and visual disturbance diagnosed with demyelination disease what type nervous system cells are affected in this disease?",
+        "options": {
+            "A": "Oligodendrocytes",
+            "B": "Schwann cells",
+            "C": "Astrocytes",
+            "D": "Glial cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "H4QWDSWP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presented with seizures, tongue movements, smacking of lips, headaches and muscle movements. His grandfather also had the same disease, where is the lesion",
+        "options": {
+            "A": "Caudate",
+            "B": "Substania nigra",
+            "C": "Cerebellum",
+            "D": "Frontal Lobe",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -710,6 +1165,60 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WDELGRMX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with flaccid paralysis of a limb, decreased muscle tone, and absent reflexes. Which type of motor neuron lesion does this indicate?",
+        "options": {
+            "A": "Upper motor neuron lesion",
+            "B": "Lower motor neuron lesion",
+            "C": "Cerebellar lesion",
+            "D": "Extrapyramidal lesion",
+            "E": "Sensory neuron lesion"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G8Z33MW6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with fluctuating muscle weakness that worsens with activity and improves with rest. Which of the following defects is responsible for this condition?",
+        "options": {
+            "A": "Presynaptic membrane dysfunction",
+            "B": "Post-synaptic receptor destruction",
+            "C": "Decreased acetylcholine release from presynaptic terminal",
+            "D": "Defective acetylcholinesterase",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -876,6 +1385,33 @@
         "hint": ""
     },
     {
+        "id": "3KGG4DMF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with a history of rheumatic mitral stenosis presents with sudden neurological deficits. Imaging of the brain shows an area of tissue destruction due to ischemia with complete digestion of the tissue architecture. What type of necrosis is most likely seen in this brain infarct?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Liquefactive necrosis",
+            "C": "Caseous necrosis",
+            "D": "Fat necrosis",
+            "E": "Gangrenous necrosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "MG4QM3K9",
         "year": [
             "2026"
@@ -897,6 +1433,33 @@
             "C": "α-Synuclein",
             "D": "Prion protein",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WS3WX3DN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with Alzheimer's disease is found to have intracellular accumulation of abnormal protein aggregates in neurons. Which protein is primarily involved?",
+        "options": {
+            "A": "Beta-amyloid",
+            "B": "Tau protein",
+            "C": "Alpha synuclein",
+            "D": "Huntingtin",
+            "E": "Prion protein"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1011,6 +1574,89 @@
         "hint": ""
     },
     {
+        "id": "BENHAKHA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman who is bedridden having SOB develop pulmonary thromboembolism most likely source is:",
+        "options": {
+            "A": "Popliteal vein",
+            "B": "Deep veins of calf",
+            "C": "Saphenous vein",
+            "D": "Tibial vein",
+            "E": ""
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EJGL87N6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young child presents with a large tumor mass arising from the posterior abdominal wall. Biopsy reveals small blue round cells forming characteristic Homer-Wright rosettes. Which diagnosis is most likely?",
+        "options": {
+            "A": "Wilms Tumor",
+            "B": "Rhabdomyosarcoma",
+            "C": "Neuroblastoma",
+            "D": "Ewing Sarcoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The presence of Homer-Wright rosettes (tumor cells arranged circularly around a central fibrillary space) is the pathognomonic histological finding for Neuroblastoma, a common cancer arising from the sympathetic nervous system/neural crest cells, often presenting as an abdominal mass in children.",
+        "hint": ""
+    },
+    {
+        "id": "BUGZ5VVG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young woman presents with diplopia and lower limb weakness. MRI shows demyelination consistent with multiple sclerosis. Which CNS cell type is primarily responsible for producing the myelin sheath affected?",
+        "options": {
+            "A": "Schwann cells",
+            "B": "Oligodendrocytes",
+            "C": "Astrocytes",
+            "D": "Microglia",
+            "E": "Epidermal cells"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "XAZAGFZH",
         "year": [
             "2026"
@@ -1088,6 +1734,33 @@
             "E": "Fibrinoid"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "8USB6QA5",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Cells responsible for repair process in the CNS?",
+        "options": {
+            "A": "Oligodendrocytes",
+            "B": "Fibroblasts",
+            "C": "Schwann cells",
+            "D": "Microglial cells",
+            "E": "Astrocytes"
+        },
+        "correctAnswer": "E",
         "explanation": "",
         "hint": ""
     },
@@ -1497,6 +2170,60 @@
         "hint": ""
     },
     {
+        "id": "Y4QFXMPU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most Common Location of Extradural Hematoma",
+        "options": {
+            "A": "Parietal lobe",
+            "B": "Temporal lobe",
+            "C": "All equal",
+            "D": "Occipital",
+            "E": "Frontal"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ASMGNGKT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Most Common Location of Extradural Hematoma:",
+        "options": {
+            "A": "Parietal lobe",
+            "B": "Temporal lobe",
+            "C": "All equal",
+            "D": "Occipital",
+            "E": "Frontal"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "5G36XFCS",
         "year": [
             "2026"
@@ -1520,6 +2247,33 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YYVVQUBU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Nerve growth rate in the case of peripheral nerve damage when nerve sheath is also damaged is?",
+        "options": {
+            "A": "0.3mm/s",
+            "B": "0.1 mm/s",
+            "C": "1mm/s",
+            "D": "300mm/s",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1578,6 +2332,60 @@
         "hint": ""
     },
     {
+        "id": "HGFKC3B2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "One month after a cerebral infarction (strokE-, which of the following cell types predominantly contributes to the repair and scarring process in the affected brain tissue?",
+        "options": {
+            "A": "Astrocytes",
+            "B": "Microglia",
+            "C": "Oligodendrocytes",
+            "D": "Neurons",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "55TVTMDZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Parkinsonism affects which of these area:",
+        "options": {
+            "A": "Nucleus Basalis",
+            "B": "Substantia Nigra",
+            "C": "Subthalamus",
+            "D": "Globus Pallidus",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "V5WXDWYH",
         "year": [
             "2026"
@@ -1632,6 +2440,33 @@
         "hint": ""
     },
     {
+        "id": "ZJ6FDUET",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient after history of stroke develops Brain necrosis and ischemia which type of necrosis will be seen?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Fibrinoid Necrosis",
+            "C": "Liquefective necrosis",
+            "D": "Fat necrosis",
+            "E": "Caseous necrosis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "AXFSDYFG",
         "year": [
             "2026"
@@ -1661,6 +2496,33 @@
         "hint": ""
     },
     {
+        "id": "DQUEF3D2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient has evening drooping of eyelid. What happens at the motor end plate? (Myasthenia Gravis)",
+        "options": {
+            "A": "Decreased action potential amplitude",
+            "B": "Decreased end-plate potential amplitude",
+            "C": "No effect on postsynaptic conduction",
+            "D": "Increased postsynaptic action potential",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "In MG, antibodies destroy ACh receptors -> decreased amplitude of end-plate potential -> fatigable weakness (e.g., ptosis).",
+        "hint": ""
+    },
+    {
         "id": "VJ68N9A7",
         "year": [
             "2026"
@@ -1684,6 +2546,118 @@
             "E": "Demyelination of peripheral motor nerves"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "XN3QUJ5Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with peripheral tingling numbness diplopia and visual disturbance diagnosed with demyelination disease what type nervous system cells are affected in this disease:",
+        "options": {
+            "A": "Oligodendrocytes",
+            "B": "Schwan cells",
+            "C": "Astrocytes",
+            "D": "Glial cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "(Multiple sclerosis)",
+        "hint": ""
+    },
+    {
+        "id": "8RUTR6HB",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night",
+            "Surgery - 08/25 - August 6 - Evening",
+            "Anesthesia - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with peripheral tingling numbness diplopia and visual disturbance diagnosed with demyelination disease what type nervous system cells are affected in this disease?",
+        "options": {
+            "A": "Oligodendrocytes",
+            "B": "Schwan cells",
+            "C": "Astrocytes",
+            "D": "Glial cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M8PF4CPW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with peripheral tingling numbness, diplopia and visual disturbance diagnosed with demyelination disease. What type of nervous system cells are affected in this disease?",
+        "options": {
+            "A": "Oligodendrocytes",
+            "B": "Schwann cells",
+            "C": "Astrocytes",
+            "D": "Glial cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Oligodendrocytes are the glial cells that produce the myelin sheath for neurons in the central nervous system (CNS), which includes the brain and spinal cord. Schwann cells are the glial cells that produce myelin for neurons in the peripheral nervous system (PNS), which consists of the nerves outside the brain and spinal cord. While Glial cells play an important role in neuronal regeneration, and oligodendrocytes are the specific glial cells responsible for myelination in the (CNS). So A is correct option.",
+        "hint": ""
+    },
+    {
+        "id": "KZP3ZWLN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient presented with peripheral tingling numbness, diplopia, and visual disturbance, diagnosed with demyelination disease. What type of nervous system cells are affected in this disease?",
+        "options": {
+            "A": "Oligodendrocytes",
+            "B": "Schwann cells",
+            "C": "Astrocytes",
+            "D": "Glial cells",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1742,6 +2716,37 @@
         "hint": ""
     },
     {
+        "id": "593GRF4T",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 6 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The lesion occurred at the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra The condition is of",
+        "options": {
+            "A": "Alzheimer's Disease",
+            "B": "Parkinsonism",
+            "C": "Homer Syndrome",
+            "D": "Retrograde Amnesia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Substantia nigra lesion -> Resting (pill-rolling) tremor of Parkinson disease. Caudate nucleus degeneration -> Chorea (sudden, jerky, purposeless movements). Basal ganglia lesion -> Athetosis (slow, writhing, snake-like movements). Hippocampal damage -> Anterograde amnesia (inability to form new memories).",
+        "hint": ""
+    },
+    {
         "id": "ZPKTYRX5",
         "year": [
             "2026"
@@ -1759,6 +2764,33 @@
         "question": "The lesion occurred at the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra. The condition is of:",
         "options": {
             "A": "Alzheimer’s Disease",
+            "B": "Parkinsonism",
+            "C": "Horner Syndrome",
+            "D": "Retrograde Amnesia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9GPZ9NVK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The lesion occurred in the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra The condition is",
+        "options": {
+            "A": "Alzheimer's Disease",
             "B": "Parkinsonism",
             "C": "Horner Syndrome",
             "D": "Retrograde Amnesia",
@@ -1852,6 +2884,33 @@
         "hint": ""
     },
     {
+        "id": "JUR7GHHS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Type of necrosis in Brain:",
+        "options": {
+            "A": "Cogulative",
+            "B": "Liquefactive",
+            "C": "Caseous",
+            "D": "Fibrinoid",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "2QHNF2UW",
         "year": [
             "2026"
@@ -1902,1229 +2961,6 @@
             "E": "Medial Cell Injury"
         },
         "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "2MQMML9E",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is a tumor marker for astrocytoma?",
-        "options": {
-            "A": "Glial fibrillary acidic protein (GFAP)",
-            "B": "Alpha-fetoprotein",
-            "C": "Desmin",
-            "D": "Vimentin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "GFAP is an intermediate filament protein expressed by astrocytes. Astrocytomas are typically GFAP-positive on immunohistochemistry, making it an important diagnostic marker.",
-        "hint": ""
-    },
-    {
-        "id": "TMGPHFSF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following tumor markers is most associated with astrocytoma?",
-        "options": {
-            "A": "AFP",
-            "B": "GFAP",
-            "C": "CEA",
-            "D": "NSE",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "J49XLWW6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon",
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which organ is most susceptible to hypoxia / ischemia?",
-        "options": {
-            "A": "Brain",
-            "B": "Kidney",
-            "C": "Liver",
-            "D": "Muscle",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Brain > 3-5 min irreversible damage Heart > 20-30 min Kidney > 30-60 min. Tubular cells especially PCT are very sensitive too Liver >1-2 hours",
-        "hint": ""
-    },
-    {
-        "id": "TD6Z6Y5S",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which protein is a key component of neurofibrillary tangles in Alzheimer's disease?",
-        "options": {
-            "A": "GFAP",
-            "B": "Tau protein",
-            "C": "Amyloid beta",
-            "D": "Alpha synuclein",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VQYWPESE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which tissue is most susceptible to injury from ischemia and hypoxia?",
-        "options": {
-            "A": "Cardiac muscle",
-            "B": "Skeletal muscle",
-            "C": "Nail plate",
-            "D": "Neurons",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HCGNU6R6",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which tissue is most vulnerable to ischemia/hypoxia?",
-        "options": {
-            "A": "Cardiac muscle",
-            "B": "Skeletal muscle",
-            "C": "Neurons",
-            "D": "Lens",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "K6XH6MSB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "29-year-old woman develops optic neuritis and weakness in her lower limbs. MRI Reveals demyelinating lesions in the brain and spinal cord. Which of the following cell types is most directly affected in this condition?",
-        "options": {
-            "A": "Schwann cells",
-            "B": "Oligodendrocytes",
-            "C": "Astrocytes",
-            "D": "Microglia",
-            "E": "Ependymal cells"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GKBYV5YZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "85-year-old male Patient complain of lower backache doctor during examination noticed a outgrown with tuft of hairs at L5 what is your Diagnosis ?",
-        "options": {
-            "A": "Spina bifida occulta",
-            "B": "Arnald chiari malformation",
-            "C": "Meningiomyocele",
-            "D": "Meningicele",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4QTNG8WZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 10-year-old girl has recurrent headaches relieved by paracetamol. Imaging shows a tumor in the pineal gland. What is the most common tumor at this site?",
-        "options": {
-            "A": "Pineocytoma",
-            "B": "Pineoblastoma",
-            "C": "Germinoma",
-            "D": "Glioma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CCGRHRC2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 14-month-old male presents with vomiting, irritability, and progressive lethargyMRI reveals a midline posterior fossa mass arising from the cerebellar vermis, compressing the 4th ventricle, and causing early cerebellar tonsillar herniationWhich of the following is most characteristic of this tumor?",
-        "options": {
-            "A": "It frequently metastasizes via cerebrospinal fluid",
-            "B": "It is benign and does not recur after surgery",
-            "C": "It usually arises from the cerebral hemispheres.",
-            "D": "It originates from ependymal cells of the ventricles.",
-            "E": "It is associated with von Hippel-Lindau syndrome"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Z8D6K6R9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old man sustains a traumatic head injury after a motor vehicle accident. CT scan reveals a biconvex, lens-shaped hyperdense lesion causing midline shift. Which of the following best describes this lesion?",
-        "options": {
-            "A": "Subdural hematoma",
-            "B": "Epidural (extradural hematoma",
-            "C": "Subarachnoid hemorrhage",
-            "D": "Intracerebral hemorrhage",
-            "E": "Chronic subdural hematoma"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "N8K7P939",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30 year old woman presents with episodes of visual loss, weakness and sensory disturbances. MRI shows demyelinating plaques in the CNS. Which type is primarily affected in this disease?",
-        "options": {
-            "A": "Schwann cells",
-            "B": "Microglia",
-            "C": "Astrocytes",
-            "D": "Oligodendrocytes",
-            "E": "Neurons"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HRJMQEN8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30-year-old with seizures and inability to speak during episodes has a slow-growing brain lesion. Most common site?",
-        "options": {
-            "A": "Occipitoparietal",
-            "B": "Temporal lobe",
-            "C": "Parietal lobe",
-            "D": "Occipital lobe",
-            "E": "Frontal lobe"
-        },
-        "correctAnswer": "E",
-        "explanation": "Frontal lobes lesions Expressive (Broca's) aphasia, Depression and lack of motivation.",
-        "hint": ""
-    },
-    {
-        "id": "ZGTAVGE7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 52 year old man presents with sudden severe headache, vomiting, and loss of consciousness. CT scan of the brain reveals subarachnoid hemorrhage. Which of the following is the most common cause?",
-        "options": {
-            "A": "Ruptured berry aneurysm",
-            "B": "Hypertensive intracerebral hemorrhage",
-            "C": "Arteriovenous malformation",
-            "D": "Cavernous hemangioma",
-            "E": "Trauma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U88L4CQ5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 7 year old boy presents with headache, vomiting, and gait instability for 2 weeks. MRI brain shows a midline posterior fossa mass compressing the 4th ventricle. Histology reveals sheets of small, round blue cells with Homer-Wright rosettes. Which statement is correct regarding this tumor?",
-        "options": {
-            "A": "It is the most common primary brain tumor in adults",
-            "B": "It arises from astrocytes",
-            "C": "It is radiosensitive",
-            "D": "It rarely metastasizes",
-            "E": "It originates in the frontal lobe"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "S2QNQ75L",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 70-year-old man recovering from an ischemic stroke now has difficulty performing fine motor tasks such as buttoning his shirt and writing. Which neuronal cell type is most likely damaged?",
-        "options": {
-            "A": "Pyramidal cells",
-            "B": "Purkinje cells",
-            "C": "Martinotti cells",
-            "D": "Stellate cells",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SX5E4L85",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 72 year old with progressive short-term memory loss, getting lost in familiar places, and difficulty with word finding is suspected to have Alzheimer disease. Which neuropathological findings support this diagnosis?",
-        "options": {
-            "A": "Microglial nodules and multinucleated giant cells",
-            "B": "Neurofibrillary tangles composed of hyperphosphorylated tau and extracellular β-amyloid plaques",
-            "C": "Demyelination of periventricular white matter",
-            "D": "Lewy bodies (α-synuclein) in substantia nigra",
-            "E": "Pick bodies (tau) localized to frontal lobes only"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PXERHACK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 74-year-old woman with progressive memory loss and confusion is found to have widespread cortical atrophy. Brain autopsy shows intracellular neurofibrillary tangles composed of hyperphosphorylated tau protein. Which of the following diagnoses is most likely?",
-        "options": {
-            "A": "Parkinson disease",
-            "B": "Alzheimer disease",
-            "C": "Pick disease",
-            "D": "Lewy body dementia",
-            "E": "Huntington disease"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QYGVK9Q6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female Patient with lesion in brain, present with Resting tremor, stooped posture, and shuffling gate and expressionless face, Lesion in which part of brain:",
-        "options": {
-            "A": "Cerebrum",
-            "B": "Cerebellum",
-            "C": "Substantia nigra",
-            "D": "Pons",
-            "E": "Medulla"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GZDL2S8V",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A male patient presented to you with history of severe headache and vomiting at start of day. There was a tumor suspicion on radiography which was in cerebellar area involving granular layer what it can be?",
-        "options": {
-            "A": "Ependymoma",
-            "B": "Astrocytoma",
-            "C": "Medulloblastoma",
-            "D": "Chondroma",
-            "E": "Meningioma"
-        },
-        "correctAnswer": "C",
-        "explanation": "Medulloblastoma arise from external granular layer of cerebellum and symptoms include vomiting morning headache stumbling gait and frequent falls.",
-        "hint": ""
-    },
-    {
-        "id": "6J3ASEU9",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has a history of MI and now presented with lesions in the brain affecting motor functions. What type of necrosis is seen?",
-        "options": {
-            "A": "Liquefactive",
-            "B": "Fat",
-            "C": "Caseous",
-            "D": "Gangrenous",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Ischemic cell death in the CNS is typically followed by digestion of the tissue by hydrolytic enzymes, leading to liquefactive necrosis and the formation of a cyst.",
-        "hint": ""
-    },
-    {
-        "id": "G3WEGBWV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening",
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is found to have proximal muscle weakness that improves with repeated muscle use; nerve conduction studies show increment with rapid repetitive stimulation. Autoantibodies against which target best explain this syndrome?",
-        "options": {
-            "A": "Postsynaptic acetylcholine receptors",
-            "B": "Presynaptic voltage-gated calcium channels",
-            "C": "Muscle nicotinic receptor subunits (alpha2)",
-            "D": "Presynaptic acetylcholinesterase",
-            "E": "Dihydropyridine receptor"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YVST77TS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with hemiparesis, he has calcifications and necrosis in the brain, on investigation he had mitral stenosis. Which type of necrosis is seen?",
-        "options": {
-            "A": "Fat necrosis",
-            "B": "Liquefactive necrosis",
-            "C": "Coagulative necrosis",
-            "D": "Caseous necrosis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LRWDW94B",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with peripheral tingling numbness diplopia and visual disturbance diagnosed with demyelination disease what type nervous system cells are affected in this disease?",
-        "options": {
-            "A": "Oligodendrocytes",
-            "B": "Schwann cells",
-            "C": "Astrocytes",
-            "D": "Glial cells",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "H4QWDSWP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presented with seizures, tongue movements, smacking of lips, headaches and muscle movements. His grandfather also had the same disease, where is the lesion",
-        "options": {
-            "A": "Caudate",
-            "B": "Substania nigra",
-            "C": "Cerebellum",
-            "D": "Frontal Lobe",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WDELGRMX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with flaccid paralysis of a limb, decreased muscle tone, and absent reflexes. Which type of motor neuron lesion does this indicate?",
-        "options": {
-            "A": "Upper motor neuron lesion",
-            "B": "Lower motor neuron lesion",
-            "C": "Cerebellar lesion",
-            "D": "Extrapyramidal lesion",
-            "E": "Sensory neuron lesion"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G8Z33MW6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with fluctuating muscle weakness that worsens with activity and improves with rest. Which of the following defects is responsible for this condition?",
-        "options": {
-            "A": "Presynaptic membrane dysfunction",
-            "B": "Post-synaptic receptor destruction",
-            "C": "Decreased acetylcholine release from presynaptic terminal",
-            "D": "Defective acetylcholinesterase",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3KGG4DMF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with a history of rheumatic mitral stenosis presents with sudden neurological deficits. Imaging of the brain shows an area of tissue destruction due to ischemia with complete digestion of the tissue architecture. What type of necrosis is most likely seen in this brain infarct?",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Liquefactive necrosis",
-            "C": "Caseous necrosis",
-            "D": "Fat necrosis",
-            "E": "Gangrenous necrosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WS3WX3DN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with Alzheimer's disease is found to have intracellular accumulation of abnormal protein aggregates in neurons. Which protein is primarily involved?",
-        "options": {
-            "A": "Beta-amyloid",
-            "B": "Tau protein",
-            "C": "Alpha synuclein",
-            "D": "Huntingtin",
-            "E": "Prion protein"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BENHAKHA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning",
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman who is bedridden having SOB develop pulmonary thromboembolism most likely source is:",
-        "options": {
-            "A": "Popliteal vein",
-            "B": "Deep veins of calf",
-            "C": "Saphenous vein",
-            "D": "Tibial vein",
-            "E": ""
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EJGL87N6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young child presents with a large tumor mass arising from the posterior abdominal wall. Biopsy reveals small blue round cells forming characteristic Homer-Wright rosettes. Which diagnosis is most likely?",
-        "options": {
-            "A": "Wilms Tumor",
-            "B": "Rhabdomyosarcoma",
-            "C": "Neuroblastoma",
-            "D": "Ewing Sarcoma",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The presence of Homer-Wright rosettes (tumor cells arranged circularly around a central fibrillary space) is the pathognomonic histological finding for Neuroblastoma, a common cancer arising from the sympathetic nervous system/neural crest cells, often presenting as an abdominal mass in children.",
-        "hint": ""
-    },
-    {
-        "id": "BUGZ5VVG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young woman presents with diplopia and lower limb weakness. MRI shows demyelination consistent with multiple sclerosis. Which CNS cell type is primarily responsible for producing the myelin sheath affected?",
-        "options": {
-            "A": "Schwann cells",
-            "B": "Oligodendrocytes",
-            "C": "Astrocytes",
-            "D": "Microglia",
-            "E": "Epidermal cells"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8USB6QA5",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Cells responsible for repair process in the CNS?",
-        "options": {
-            "A": "Oligodendrocytes",
-            "B": "Fibroblasts",
-            "C": "Schwann cells",
-            "D": "Microglial cells",
-            "E": "Astrocytes"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y4QFXMPU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most Common Location of Extradural Hematoma",
-        "options": {
-            "A": "Parietal lobe",
-            "B": "Temporal lobe",
-            "C": "All equal",
-            "D": "Occipital",
-            "E": "Frontal"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ASMGNGKT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Most Common Location of Extradural Hematoma:",
-        "options": {
-            "A": "Parietal lobe",
-            "B": "Temporal lobe",
-            "C": "All equal",
-            "D": "Occipital",
-            "E": "Frontal"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YYVVQUBU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Nerve growth rate in the case of peripheral nerve damage when nerve sheath is also damaged is?",
-        "options": {
-            "A": "0.3mm/s",
-            "B": "0.1 mm/s",
-            "C": "1mm/s",
-            "D": "300mm/s",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "HGFKC3B2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "One month after a cerebral infarction (strokE-, which of the following cell types predominantly contributes to the repair and scarring process in the affected brain tissue?",
-        "options": {
-            "A": "Astrocytes",
-            "B": "Microglia",
-            "C": "Oligodendrocytes",
-            "D": "Neurons",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "55TVTMDZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Parkinsonism affects which of these area:",
-        "options": {
-            "A": "Nucleus Basalis",
-            "B": "Substantia Nigra",
-            "C": "Subthalamus",
-            "D": "Globus Pallidus",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZJ6FDUET",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient after history of stroke develops Brain necrosis and ischemia which type of necrosis will be seen?",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Fibrinoid Necrosis",
-            "C": "Liquefective necrosis",
-            "D": "Fat necrosis",
-            "E": "Caseous necrosis"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "DQUEF3D2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient has evening drooping of eyelid. What happens at the motor end plate? (Myasthenia Gravis)",
-        "options": {
-            "A": "Decreased action potential amplitude",
-            "B": "Decreased end-plate potential amplitude",
-            "C": "No effect on postsynaptic conduction",
-            "D": "Increased postsynaptic action potential",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "In MG, antibodies destroy ACh receptors -> decreased amplitude of end-plate potential -> fatigable weakness (e.g., ptosis).",
-        "hint": ""
-    },
-    {
-        "id": "XN3QUJ5Q",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient presented with peripheral tingling numbness diplopia and visual disturbance diagnosed with demyelination disease what type nervous system cells are affected in this disease:",
-        "options": {
-            "A": "Oligodendrocytes",
-            "B": "Schwan cells",
-            "C": "Astrocytes",
-            "D": "Glial cells",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "(Multiple sclerosis)",
-        "hint": ""
-    },
-    {
-        "id": "M8PF4CPW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient presented with peripheral tingling numbness, diplopia and visual disturbance diagnosed with demyelination disease. What type of nervous system cells are affected in this disease?",
-        "options": {
-            "A": "Oligodendrocytes",
-            "B": "Schwann cells",
-            "C": "Astrocytes",
-            "D": "Glial cells",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Oligodendrocytes are the glial cells that produce the myelin sheath for neurons in the central nervous system (CNS), which includes the brain and spinal cord. Schwann cells are the glial cells that produce myelin for neurons in the peripheral nervous system (PNS), which consists of the nerves outside the brain and spinal cord. While Glial cells play an important role in neuronal regeneration, and oligodendrocytes are the specific glial cells responsible for myelination in the (CNS). So A is correct option.",
-        "hint": ""
-    },
-    {
-        "id": "KZP3ZWLN",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient presented with peripheral tingling numbness, diplopia, and visual disturbance, diagnosed with demyelination disease. What type of nervous system cells are affected in this disease?",
-        "options": {
-            "A": "Oligodendrocytes",
-            "B": "Schwann cells",
-            "C": "Astrocytes",
-            "D": "Glial cells",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9GPZ9NVK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The lesion occurred in the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra The condition is",
-        "options": {
-            "A": "Alzheimer's Disease",
-            "B": "Parkinsonism",
-            "C": "Horner Syndrome",
-            "D": "Retrograde Amnesia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JUR7GHHS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Type of necrosis in Brain:",
-        "options": {
-            "A": "Cogulative",
-            "B": "Liquefactive",
-            "C": "Caseous",
-            "D": "Fibrinoid",
-            "E": ""
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -3239,6 +3075,33 @@
         "hint": ""
     },
     {
+        "id": "2MQMML9E",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is a tumor marker for astrocytoma?",
+        "options": {
+            "A": "Glial fibrillary acidic protein (GFAP)",
+            "B": "Alpha-fetoprotein",
+            "C": "Desmin",
+            "D": "Vimentin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "GFAP is an intermediate filament protein expressed by astrocytes. Astrocytomas are typically GFAP-positive on immunohistochemistry, making it an important diagnostic marker.",
+        "hint": ""
+    },
+    {
         "id": "PGYLFKSR",
         "year": [
             "2025"
@@ -3262,6 +3125,89 @@
             "E": "Medulloblastoma"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TMGPHFSF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following tumor markers is most associated with astrocytoma?",
+        "options": {
+            "A": "AFP",
+            "B": "GFAP",
+            "C": "CEA",
+            "D": "NSE",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "J49XLWW6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which organ is most susceptible to hypoxia / ischemia?",
+        "options": {
+            "A": "Brain",
+            "B": "Kidney",
+            "C": "Liver",
+            "D": "Muscle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Brain > 3-5 min irreversible damage Heart > 20-30 min Kidney > 30-60 min. Tubular cells especially PCT are very sensitive too Liver >1-2 hours",
+        "hint": ""
+    },
+    {
+        "id": "TD6Z6Y5S",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which protein is a key component of neurofibrillary tangles in Alzheimer's disease?",
+        "options": {
+            "A": "GFAP",
+            "B": "Tau protein",
+            "C": "Amyloid beta",
+            "D": "Alpha synuclein",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -3290,6 +3236,60 @@
         },
         "correctAnswer": "D",
         "explanation": "Hyperphosphorylated Tau protein aggregates within neurons to form the intracellular neurofibrillary tangles characteristic of Alzheimer's disease.",
+        "hint": ""
+    },
+    {
+        "id": "VQYWPESE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which tissue is most susceptible to injury from ischemia and hypoxia?",
+        "options": {
+            "A": "Cardiac muscle",
+            "B": "Skeletal muscle",
+            "C": "Nail plate",
+            "D": "Neurons",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "HCGNU6R6",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which tissue is most vulnerable to ischemia/hypoxia?",
+        "options": {
+            "A": "Cardiac muscle",
+            "B": "Skeletal muscle",
+            "C": "Neurons",
+            "D": "Lens",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {

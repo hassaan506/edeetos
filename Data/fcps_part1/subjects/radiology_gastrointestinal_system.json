@@ -1,32 +1,5 @@
 [
     {
-        "id": "2J3BZLWB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Radiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient with chronic liver disease undergoes abdominal ultrasonography. Which finding is most characteristic of liver cirrhosis?",
-        "options": {
-            "A": "Smooth liver surface with homogeneous echotexture",
-            "B": "Coarse echotexture with irregular liver margins",
-            "C": "Enlarged liver with multiple simple cysts",
-            "D": "Uniform hypoechoic liver with smooth borders",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "Cirrhosis classically appears as a coarse echotexture with irregular nodular liver margins due to fibrosis and regenerative nodules.",
-        "hint": ""
-    },
-    {
         "id": "R54KPBB8",
         "year": [
             "2025"
@@ -159,6 +132,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "2J3BZLWB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Radiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient with chronic liver disease undergoes abdominal ultrasonography. Which finding is most characteristic of liver cirrhosis?",
+        "options": {
+            "A": "Smooth liver surface with homogeneous echotexture",
+            "B": "Coarse echotexture with irregular liver margins",
+            "C": "Enlarged liver with multiple simple cysts",
+            "D": "Uniform hypoechoic liver with smooth borders",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Cirrhosis classically appears as a coarse echotexture with irregular nodular liver margins due to fibrosis and regenerative nodules.",
         "hint": ""
     },
     {

@@ -1,5 +1,59 @@
 [
     {
+        "id": "KN69FYEB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old woman presents with painful eye redness, photophobia, and watery discharge (keratoconjunctivitis). Slit-lamp exam reveals dendritic ulcers on the cornea. Which antiviral medication is the most appropriate treatment?",
+        "options": {
+            "A": "Acyclovir",
+            "B": "Trifluridine",
+            "C": "Valacyclovir",
+            "D": "Oseltamivir",
+            "E": "Zidovudine"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "QN5RZ5KD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 32 year old man with newly diagnosed pulmonary tuberculosis is started on antituberculous therapy. Three months later, he complains of difficulty distinguishing between red and green colors. Which drug is responsible for his visual problems?",
+        "options": {
+            "A": "Isoniazid",
+            "B": "Pyrazinamide",
+            "C": "Ethambutol",
+            "D": "Rifampicin",
+            "E": "Streptomycin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "N9H2LJG9",
         "year": [
             "2026"
@@ -23,6 +77,60 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "M47D7YHA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 54 years old lady is taking ATT for pulmonary TB. Now she has difficulty in differentiating the color red from others. Which of the following anti-TB drugs is causing this side effect?",
+        "options": {
+            "A": "Isoniazid",
+            "B": "Rifampicin",
+            "C": "Ethambutol",
+            "D": "Pyrazinamide",
+            "E": "Streptomycin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "TZRUPTFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 70 year old woman with known narrow-angle glaucoma is scheduled for a procedure. Which of the following medications is contraindicated because it may precipitate an acute angle-closure attack by causing pupil dilation?",
+        "options": {
+            "A": "Pilocarpine (muscarinic agonist)",
+            "B": "Timolol (topical β-blocker)",
+            "C": "Atropine (antimuscarinic)",
+            "D": "Acetazolamide (carbonic anhydrase inhibitor)",
+            "E": "Latanoprost (prostaglandin analogue)"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -162,141 +270,6 @@
         "hint": ""
     },
     {
-        "id": "545CWCH3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Patient on ATT (anti-TB therapy) develops red-green color blindness: drug responsible is:",
-        "options": {
-            "A": "Isoniazid",
-            "B": "Rifampin",
-            "C": "Ethambutol",
-            "D": "Pyrazinamide",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KN69FYEB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old woman presents with painful eye redness, photophobia, and watery discharge (keratoconjunctivitis). Slit-lamp exam reveals dendritic ulcers on the cornea. Which antiviral medication is the most appropriate treatment?",
-        "options": {
-            "A": "Acyclovir",
-            "B": "Trifluridine",
-            "C": "Valacyclovir",
-            "D": "Oseltamivir",
-            "E": "Zidovudine"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QN5RZ5KD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 32 year old man with newly diagnosed pulmonary tuberculosis is started on antituberculous therapy. Three months later, he complains of difficulty distinguishing between red and green colors. Which drug is responsible for his visual problems?",
-        "options": {
-            "A": "Isoniazid",
-            "B": "Pyrazinamide",
-            "C": "Ethambutol",
-            "D": "Rifampicin",
-            "E": "Streptomycin"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M47D7YHA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 54 years old lady is taking ATT for pulmonary TB. Now she has difficulty in differentiating the color red from others. Which of the following anti-TB drugs is causing this side effect?",
-        "options": {
-            "A": "Isoniazid",
-            "B": "Rifampicin",
-            "C": "Ethambutol",
-            "D": "Pyrazinamide",
-            "E": "Streptomycin"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TZRUPTFD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Special Senses",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 70 year old woman with known narrow-angle glaucoma is scheduled for a procedure. Which of the following medications is contraindicated because it may precipitate an acute angle-closure attack by causing pupil dilation?",
-        "options": {
-            "A": "Pilocarpine (muscarinic agonist)",
-            "B": "Timolol (topical β-blocker)",
-            "C": "Atropine (antimuscarinic)",
-            "D": "Acetazolamide (carbonic anhydrase inhibitor)",
-            "E": "Latanoprost (prostaglandin analogue)"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "S25EJRMV",
         "year": [
             "2025"
@@ -348,6 +321,33 @@
         },
         "correctAnswer": "C",
         "explanation": "(Katzung) Loop diuretics occasionally cause dose-related hearing loss that is usually reversible. It is most common in patients who have diminished renal function or who are also receiving other ototoxic agents such as aminoglycoside antibiotics.",
+        "hint": ""
+    },
+    {
+        "id": "545CWCH3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Special Senses",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Patient on ATT (anti-TB therapy) develops red-green color blindness: drug responsible is:",
+        "options": {
+            "A": "Isoniazid",
+            "B": "Rifampin",
+            "C": "Ethambutol",
+            "D": "Pyrazinamide",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {

@@ -1,35 +1,5 @@
 [
     {
-        "id": "YE7DM836",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 13 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient consumes mostly bread and processed foods, no vegetables. Labs show macrocytosis. Likely deficiency?",
-        "options": {
-            "A": "Vitamin B12",
-            "B": "Vitamin C",
-            "C": "Folic acid",
-            "D": "Thiamine",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "Folic acid -> obtained from green leafy vegetables, fruits. Deficiency -> megaloblastic anemia, neuropathy less common than B12.",
-        "hint": ""
-    },
-    {
         "id": "ESFNUJ9X",
         "year": [
             "2026"
@@ -84,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "NALMV98T",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 34 year old woman with chronic alcohol use presents with fatigue and pallor. CBC reveals macrocytic anemia. Neurological examination is normal. Serum methylmalonic acid levels are within normal limits, but homocysteine levels are elevated. Which of the following deficiencies is the most likely cause?",
+        "options": {
+            "A": "Vitamin B1 (thiamine)",
+            "B": "Vitamin B2 (riboflavin)",
+            "C": "Folate",
+            "D": "Vitamin B12 (cobalamin)",
+            "E": "Niacin"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ST4XQ4M4",
         "year": [
             "2026"
@@ -113,6 +110,33 @@
         "hint": "<p><br></p>"
     },
     {
+        "id": "XEYB4XTZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old patient presents with macrocytic normochromic anemia. Laboratory tests show elevated serum homocysteine but normal methylmalonic acid levels. Which vitamin deficiency is most likely?",
+        "options": {
+            "A": "Vitamin K deficiency",
+            "B": "Folate (Vitamin B9) deficiency",
+            "C": "Vitamin C deficiency",
+            "D": "Vitamin B12 deficiency",
+            "E": "Vitamin B6 deficiency"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "4R44QN8W",
         "year": [
             "2026"
@@ -140,6 +164,33 @@
         "hint": ""
     },
     {
+        "id": "Q76R4HLV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old man presents with numbness and tingling in his hands and feet. Laboratory studies reveal macrocytic anemia with elevated mean corpuscular volume (MCV). What is the most likely cause of his peripheral neuropathy?",
+        "options": {
+            "A": "Vitamin B12 deficiency",
+            "B": "Diabetes mellitus",
+            "C": "Alcoholic neuropathy",
+            "D": "Lead poisoning",
+            "E": "Multiple sclerosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "D35GMZUN",
         "year": [
             "2026"
@@ -161,6 +212,34 @@
             "C": "Vitamin B12",
             "D": "Folate",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4NP3N5C8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening",
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 60 year old man undergoes total gastrectomy for gastric carcinoma. Which vitamin deficiency is he most likely to develop?",
+        "options": {
+            "A": "Vitamin C",
+            "B": "Vitamin D",
+            "C": "Vitamin B12",
+            "D": "Vitamin A",
+            "E": "Folate"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -194,6 +273,144 @@
         "hint": ""
     },
     {
+        "id": "CDU9NTYD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with prolonged bleeding after circumcision and laboratory testing suggests a vitamin K deficiency. Vitamin K is essential for which of the following mechanisms in clotting factor maturation?",
+        "options": {
+            "A": "Formation of gamma-carboxyglutamic acid residues",
+            "B": "Hydroxylation of proline residues on collagen",
+            "C": "Activation of fibrinogen to fibrin by thrombin",
+            "D": "Cleavage of factor X to Xa by factor VIIa",
+            "E": "Formation of clotting factors"
+        },
+        "correctAnswer": "A",
+        "explanation": "Flail Chest: >=3 adjacent ribs fractured in >=2 places -> paradoxical movement (inward during inspiration).",
+        "hint": ""
+    },
+    {
+        "id": "3D58V7DE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A fisherman from a rural area presents with easy bruising, fatigue, and pallor. Examination shows ecchymoses over both legs. Lab studies reveal macrocytic anemia and elevated methylmalonic acid levels. Which of the following deficiencies is the most likely cause?",
+        "options": {
+            "A": "Vitamin B1 (thiamine)",
+            "B": "Vitamin B2 (riboflavin)",
+            "C": "Vitamin B6 (pyridoxine)",
+            "D": "Vitamin B9 (folate)",
+            "E": "Vitamin B12 (cobalamin)"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "6DLCZELA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A girl presented with persistent cough with thick mucus, wheezing and Repeated lung infections. She is also having petechia all over body and have bleeding tendency. She is diagnosed with cystic fibrosis. Which Vit is deficient in this case?",
+        "options": {
+            "A": "Vitamin A",
+            "B": "Vitamin K",
+            "C": "Vitamin D",
+            "D": "Vitamin C",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SJZGL2RG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn infant suffers from uncontrolled bleeding for a long time after clamping of umbilical stump. This finding is highly suggestive of a deficiency of which vitamin dependent coagulation factor?",
+        "options": {
+            "A": "Factor 2",
+            "B": "Factor 7",
+            "C": "Factor 8",
+            "D": "Factor 9",
+            "E": "Factor 11"
+        },
+        "correctAnswer": "B",
+        "explanation": "Severe deficiency of the Vitamin K-dependent factors (II, VII, IX, X) causes Hemorrhagic Disease of the Newborn; Factor VII has the shortest half-life and is often the first and most severely affected, leading to a prolonged PT and early bleeding symptoms.",
+        "hint": ""
+    },
+    {
+        "id": "YE7DM836",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient consumes mostly bread and processed foods, no vegetables. Labs show macrocytosis. Likely deficiency?",
+        "options": {
+            "A": "Vitamin B12",
+            "B": "Vitamin C",
+            "C": "Folic acid",
+            "D": "Thiamine",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Folic acid -> obtained from green leafy vegetables, fruits. Deficiency -> megaloblastic anemia, neuropathy less common than B12.",
+        "hint": ""
+    },
+    {
         "id": "2Y3UCY59",
         "year": [
             "2026"
@@ -217,6 +434,33 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "94SSAW9X",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops jaundice and hemolytic anemia after taking antimalarial medication. Laboratory tests show decreased activity of an enzyme responsible for protecting red blood cells from oxidative damage. Which enzyme deficiency is most likely?",
+        "options": {
+            "A": "Pyruvate kinase",
+            "B": "Glucose-6-phosphate dehydrogenase (G6PD)",
+            "C": "Hexokinase",
+            "D": "Glutathione reductase",
+            "E": "Transketolase"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -358,6 +602,33 @@
         "hint": ""
     },
     {
+        "id": "3UWMER76",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient who is a picky eater came to hospital with ataxic gait and numbness and tingling in lower limb. What is the most likely deficiency in this patient?",
+        "options": {
+            "A": "Vitamin B1",
+            "B": "Vitamin B6",
+            "C": "Viramin B12",
+            "D": "Vitamin B9",
+            "E": "Vitamin B3"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "GEDHK2WD",
         "year": [
             "2026"
@@ -406,468 +677,6 @@
             "C": "Vitamin B12",
             "D": "Vitamin D",
             "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E3FBUPQD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Following a total gastrectomy, a patient will require lifelong supplementation of which vitamin due to the loss of Intrinsic Factor?",
-        "options": {
-            "A": "Vitamin C",
-            "B": "Vitamin B12",
-            "C": "Vitamin B6",
-            "D": "Vitamin K",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SU7TQPT8",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In Vitamin K deficiency PT is prolonged which of following factors deficiency occur",
-        "options": {
-            "A": "1,2,5,7,10",
-            "B": "2,3,8,9,10,11",
-            "C": "3,9,10",
-            "D": "2,7,9,10",
-            "E": "5,7,89, 10"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E6CCMTQ7",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 7 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Lead poisoning inhibits ferrochelatase, resulting in accumulation of which substance?",
-        "options": {
-            "A": "Protoporphyrin",
-            "B": "Hemoglobin",
-            "C": "Heme",
-            "D": "Bilirubin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "F2PSG6DF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Megaloblastic anemia with elevated homocysteine and normal methylmalonic acid levels is most suggestive of deficiency of which vitamin?",
-        "options": {
-            "A": "Vitamin B12",
-            "B": "Vitamin B6",
-            "C": "Folic acid",
-            "D": "Vitamin C",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L4LTPZHL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Megaloblastic anemia without neurological manifestations is most commonly caused by deficiency of which vitamin?",
-        "options": {
-            "A": "Vitamin B12",
-            "B": "Vitamin B6",
-            "C": "Folic acid",
-            "D": "Vitamin C",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4Q4JZ3SB",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning",
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following base pair mutation occurs in sickle cell disease:",
-        "options": {
-            "A": "Adenine to thymine",
-            "B": "Thymine to adenine",
-            "C": "Cytosine to guanine",
-            "D": "Guanine to adenine",
-            "E": "Adenine to cytosine"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5SHUFBA5",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which plasma protein primarily transports iron in the bloodstream?",
-        "options": {
-            "A": "Ferritin",
-            "B": "Hemosiderin",
-            "C": "Transferrin",
-            "D": "Hemoglobin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NALMV98T",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 34 year old woman with chronic alcohol use presents with fatigue and pallor. CBC reveals macrocytic anemia. Neurological examination is normal. Serum methylmalonic acid levels are within normal limits, but homocysteine levels are elevated. Which of the following deficiencies is the most likely cause?",
-        "options": {
-            "A": "Vitamin B1 (thiamine)",
-            "B": "Vitamin B2 (riboflavin)",
-            "C": "Folate",
-            "D": "Vitamin B12 (cobalamin)",
-            "E": "Niacin"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XEYB4XTZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old patient presents with macrocytic normochromic anemia. Laboratory tests show elevated serum homocysteine but normal methylmalonic acid levels. Which vitamin deficiency is most likely?",
-        "options": {
-            "A": "Vitamin K deficiency",
-            "B": "Folate (Vitamin B9) deficiency",
-            "C": "Vitamin C deficiency",
-            "D": "Vitamin B12 deficiency",
-            "E": "Vitamin B6 deficiency"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Q76R4HLV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old man presents with numbness and tingling in his hands and feet. Laboratory studies reveal macrocytic anemia with elevated mean corpuscular volume (MCV). What is the most likely cause of his peripheral neuropathy?",
-        "options": {
-            "A": "Vitamin B12 deficiency",
-            "B": "Diabetes mellitus",
-            "C": "Alcoholic neuropathy",
-            "D": "Lead poisoning",
-            "E": "Multiple sclerosis"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4NP3N5C8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening",
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 60 year old man undergoes total gastrectomy for gastric carcinoma. Which vitamin deficiency is he most likely to develop?",
-        "options": {
-            "A": "Vitamin C",
-            "B": "Vitamin D",
-            "C": "Vitamin B12",
-            "D": "Vitamin A",
-            "E": "Folate"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CDU9NTYD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with prolonged bleeding after circumcision and laboratory testing suggests a vitamin K deficiency. Vitamin K is essential for which of the following mechanisms in clotting factor maturation?",
-        "options": {
-            "A": "Formation of gamma-carboxyglutamic acid residues",
-            "B": "Hydroxylation of proline residues on collagen",
-            "C": "Activation of fibrinogen to fibrin by thrombin",
-            "D": "Cleavage of factor X to Xa by factor VIIa",
-            "E": "Formation of clotting factors"
-        },
-        "correctAnswer": "A",
-        "explanation": "Flail Chest: >=3 adjacent ribs fractured in >=2 places -> paradoxical movement (inward during inspiration).",
-        "hint": ""
-    },
-    {
-        "id": "3D58V7DE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A fisherman from a rural area presents with easy bruising, fatigue, and pallor. Examination shows ecchymoses over both legs. Lab studies reveal macrocytic anemia and elevated methylmalonic acid levels. Which of the following deficiencies is the most likely cause?",
-        "options": {
-            "A": "Vitamin B1 (thiamine)",
-            "B": "Vitamin B2 (riboflavin)",
-            "C": "Vitamin B6 (pyridoxine)",
-            "D": "Vitamin B9 (folate)",
-            "E": "Vitamin B12 (cobalamin)"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "6DLCZELA",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A girl presented with persistent cough with thick mucus, wheezing and Repeated lung infections. She is also having petechia all over body and have bleeding tendency. She is diagnosed with cystic fibrosis. Which Vit is deficient in this case?",
-        "options": {
-            "A": "Vitamin A",
-            "B": "Vitamin K",
-            "C": "Vitamin D",
-            "D": "Vitamin C",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SJZGL2RG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A newborn infant suffers from uncontrolled bleeding for a long time after clamping of umbilical stump. This finding is highly suggestive of a deficiency of which vitamin dependent coagulation factor?",
-        "options": {
-            "A": "Factor 2",
-            "B": "Factor 7",
-            "C": "Factor 8",
-            "D": "Factor 9",
-            "E": "Factor 11"
-        },
-        "correctAnswer": "B",
-        "explanation": "Severe deficiency of the Vitamin K-dependent factors (II, VII, IX, X) causes Hemorrhagic Disease of the Newborn; Factor VII has the shortest half-life and is often the first and most severely affected, leading to a prolonged PT and early bleeding symptoms.",
-        "hint": ""
-    },
-    {
-        "id": "94SSAW9X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops jaundice and hemolytic anemia after taking antimalarial medication. Laboratory tests show decreased activity of an enzyme responsible for protecting red blood cells from oxidative damage. Which enzyme deficiency is most likely?",
-        "options": {
-            "A": "Pyruvate kinase",
-            "B": "Glucose-6-phosphate dehydrogenase (G6PD)",
-            "C": "Hexokinase",
-            "D": "Glutathione reductase",
-            "E": "Transketolase"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3UWMER76",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient who is a picky eater came to hospital with ataxic gait and numbness and tingling in lower limb. What is the most likely deficiency in this patient?",
-        "options": {
-            "A": "Vitamin B1",
-            "B": "Vitamin B6",
-            "C": "Viramin B12",
-            "D": "Vitamin B9",
-            "E": "Vitamin B3"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -982,6 +791,33 @@
         "hint": ""
     },
     {
+        "id": "E3FBUPQD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Following a total gastrectomy, a patient will require lifelong supplementation of which vitamin due to the loss of Intrinsic Factor?",
+        "options": {
+            "A": "Vitamin C",
+            "B": "Vitamin B12",
+            "C": "Vitamin B6",
+            "D": "Vitamin K",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "57AFS9NT",
         "year": [
             "2025"
@@ -1005,6 +841,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "SU7TQPT8",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In Vitamin K deficiency PT is prolonged which of following factors deficiency occur",
+        "options": {
+            "A": "1,2,5,7,10",
+            "B": "2,3,8,9,10,11",
+            "C": "3,9,10",
+            "D": "2,7,9,10",
+            "E": "5,7,89, 10"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -1033,6 +896,87 @@
         },
         "correctAnswer": "B",
         "explanation": "Iron Transport form - Transferrin. Iron excess insoluble storage form - Hemosiderin. Iron normal storage form - Ferritin",
+        "hint": ""
+    },
+    {
+        "id": "E6CCMTQ7",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 7 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Lead poisoning inhibits ferrochelatase, resulting in accumulation of which substance?",
+        "options": {
+            "A": "Protoporphyrin",
+            "B": "Hemoglobin",
+            "C": "Heme",
+            "D": "Bilirubin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "F2PSG6DF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Megaloblastic anemia with elevated homocysteine and normal methylmalonic acid levels is most suggestive of deficiency of which vitamin?",
+        "options": {
+            "A": "Vitamin B12",
+            "B": "Vitamin B6",
+            "C": "Folic acid",
+            "D": "Vitamin C",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L4LTPZHL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Megaloblastic anemia without neurological manifestations is most commonly caused by deficiency of which vitamin?",
+        "options": {
+            "A": "Vitamin B12",
+            "B": "Vitamin B6",
+            "C": "Folic acid",
+            "D": "Vitamin C",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -1114,6 +1058,62 @@
         },
         "correctAnswer": "A",
         "explanation": "The T (Tense) state is the quaternary conformation of hemoglobin that is favored when the molecule is deoxygenated. Other options are incorrect because Each heme group is bound to only one globin chain and the iron in the heme group must be in the ferrous Fe+2 form.",
+        "hint": ""
+    },
+    {
+        "id": "4Q4JZ3SB",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning",
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following base pair mutation occurs in sickle cell disease:",
+        "options": {
+            "A": "Adenine to thymine",
+            "B": "Thymine to adenine",
+            "C": "Cytosine to guanine",
+            "D": "Guanine to adenine",
+            "E": "Adenine to cytosine"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5SHUFBA5",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which plasma protein primarily transports iron in the bloodstream?",
+        "options": {
+            "A": "Ferritin",
+            "B": "Hemosiderin",
+            "C": "Transferrin",
+            "D": "Hemoglobin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     }
 ]

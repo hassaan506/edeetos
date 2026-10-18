@@ -27,6 +27,33 @@
         "hint": ""
     },
     {
+        "id": "99HGQBZ4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 52 year old man with poorly controlled diabetes presents with facial pain, black eschar on the hard palate, and rapidly progressive proptosis. A nasal biopsy shows broad, ribbon-like, non-septate hyphae branching at wide (=90°) angles. Which organism and immediate treatment are most appropriate?",
+        "options": {
+            "A": "Aspergillus fumigatus — voriconazole",
+            "B": "Candida albicans — fluconazole",
+            "C": "Mucorales species (mucormycosis) — intravenous amphotericin B",
+            "D": "Cryptococcus neoformans — amphotericin B + flucytosine",
+            "E": "Histoplasma capsulatum — itraconazole"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "QCFXKEWN",
         "year": [
             "2026"
@@ -185,33 +212,6 @@
             "E": ""
         },
         "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "99HGQBZ4",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 4 - Evening"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 52 year old man with poorly controlled diabetes presents with facial pain, black eschar on the hard palate, and rapidly progressive proptosis. A nasal biopsy shows broad, ribbon-like, non-septate hyphae branching at wide (=90°) angles. Which organism and immediate treatment are most appropriate?",
-        "options": {
-            "A": "Aspergillus fumigatus — voriconazole",
-            "B": "Candida albicans — fluconazole",
-            "C": "Mucorales species (mucormycosis) — intravenous amphotericin B",
-            "D": "Cryptococcus neoformans — amphotericin B + flucytosine",
-            "E": "Histoplasma capsulatum — itraconazole"
-        },
-        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     }

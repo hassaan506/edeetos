@@ -1,59 +1,5 @@
 [
     {
-        "id": "95Z9G7FF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Obstetrics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A Doppler ultrasound is performed in a pregnant woman suspected of having intrauterine growth restriction. Which Doppler finding is most likely present?",
-        "options": {
-            "A": "Decreased Pulsatility index",
-            "B": "Increased pulsality index",
-            "C": "Absent diastolic flow",
-            "D": "Increase venous flow",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B9TAT2EY",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Obstetrics",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A woman develops sudden dyspnea, cyanosis, and hypotension during labor. She improves with supportive care and is discharged within 2 days. The most likely diagnosis is:",
-        "options": {
-            "A": "Pulmonary thromboembolism",
-            "B": "Amniotic fluid embolism",
-            "C": "Air embolism",
-            "D": "Aspiration pneumonitis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "PFKR7B5Z",
         "year": [
             "2025"
@@ -81,6 +27,33 @@
         "hint": ""
     },
     {
+        "id": "95Z9G7FF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Obstetrics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A Doppler ultrasound is performed in a pregnant woman suspected of having intrauterine growth restriction. Which Doppler finding is most likely present?",
+        "options": {
+            "A": "Decreased Pulsatility index",
+            "B": "Increased pulsality index",
+            "C": "Absent diastolic flow",
+            "D": "Increase venous flow",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "T24AME9H",
         "year": [
             "2025"
@@ -104,6 +77,33 @@
             "E": "Amniotic fluid Embolism"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "B9TAT2EY",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Obstetrics",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A woman develops sudden dyspnea, cyanosis, and hypotension during labor. She improves with supportive care and is discharged within 2 days. The most likely diagnosis is:",
+        "options": {
+            "A": "Pulmonary thromboembolism",
+            "B": "Amniotic fluid embolism",
+            "C": "Air embolism",
+            "D": "Aspiration pneumonitis",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

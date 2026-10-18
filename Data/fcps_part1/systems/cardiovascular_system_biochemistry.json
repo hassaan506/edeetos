@@ -162,6 +162,33 @@
         "hint": ""
     },
     {
+        "id": "M6D6ULFE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient is having chest pain which is radiating to left arm and jaw. Further work up revealed unstable angina. During hypoxic phase in affected myocardium, which metabolic processes would be occurring?",
+        "options": {
+            "A": "Aerobic glycolysis",
+            "B": "Aerobic glycolysis and glycogenolysis",
+            "C": "Gluconeogenesis",
+            "D": "Gluconeogenesis and glycogenolysis",
+            "E": "Lipolysis and beta oxidation"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "WD8KQPS2",
         "year": [
             "2026"
@@ -188,6 +215,33 @@
         },
         "correctAnswer": "D",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "AKK3XF4W",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient suffers a MI, what is the immediate metabolic shift that occur in cardiac muscle cells during the time of ischemia?",
+        "options": {
+            "A": "Oxidative phosphorylation",
+            "B": "Anaerobic glycolysis",
+            "C": "Krebs cycle",
+            "D": "HMP shunt",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "When oxygen supply is cut off (ischemia), the cardiac muscle switches from aerobic metabolism to the much less efficient anaerobic glycolysis, rapidly leading to lactate buildup and ATP depletion.",
         "hint": ""
     },
     {
@@ -299,87 +353,6 @@
         "hint": ""
     },
     {
-        "id": "UJ7WBFZV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Markedly elevated serum triglyceride levels are an important risk factor for which condition?",
-        "options": {
-            "A": "Cholecystitis",
-            "B": "Acute pancreatitis",
-            "C": "Hepatitis",
-            "D": "Gastric ulcer",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "M6D6ULFE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient is having chest pain which is radiating to left arm and jaw. Further work up revealed unstable angina. During hypoxic phase in affected myocardium, which metabolic processes would be occurring?",
-        "options": {
-            "A": "Aerobic glycolysis",
-            "B": "Aerobic glycolysis and glycogenolysis",
-            "C": "Gluconeogenesis",
-            "D": "Gluconeogenesis and glycogenolysis",
-            "E": "Lipolysis and beta oxidation"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "AKK3XF4W",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Biochemistry",
-        "chapter": "Cardiovascular System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient suffers a MI, what is the immediate metabolic shift that occur in cardiac muscle cells during the time of ischemia?",
-        "options": {
-            "A": "Oxidative phosphorylation",
-            "B": "Anaerobic glycolysis",
-            "C": "Krebs cycle",
-            "D": "HMP shunt",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "When oxygen supply is cut off (ischemia), the cardiac muscle switches from aerobic metabolism to the much less efficient anaerobic glycolysis, rapidly leading to lactate buildup and ATP depletion.",
-        "hint": ""
-    },
-    {
         "id": "3UNM7VV3",
         "year": [
             "2025"
@@ -404,6 +377,33 @@
         },
         "correctAnswer": "A",
         "explanation": "A low-fat diet directly reduces the intake of dietary fats. Therefore, a patient on a low-fat diet would have a significantly reduced number of chylomicrons in their plasma. The other options are less likely to be immediately and significantly affected by a low-fat diet.",
+        "hint": ""
+    },
+    {
+        "id": "UJ7WBFZV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Markedly elevated serum triglyceride levels are an important risk factor for which condition?",
+        "options": {
+            "A": "Cholecystitis",
+            "B": "Acute pancreatitis",
+            "C": "Hepatitis",
+            "D": "Gastric ulcer",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": ""
     },
     {

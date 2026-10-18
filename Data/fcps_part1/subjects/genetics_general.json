@@ -108,6 +108,88 @@
         "hint": ""
     },
     {
+        "id": "E78QBDJK",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-year-old child presents with microcephaly, micrognathia, hypertelorism, palpebral folds, low set ears and hypotonia. What is the type of karyotype is present in this child?",
+        "options": {
+            "A": "45XO",
+            "B": "47XXY",
+            "C": "46XY",
+            "D": "22q11",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7UD4GAXP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-year-old child presents with microcephaly, micrognathia, hypertelorism, palpebral folds, low set ears and hypotonic a. What is the type of karyotype is present in this child?",
+        "options": {
+            "A": "45XO",
+            "B": "47XXY",
+            "C": "46XY",
+            "D": "22q11",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7XKDJVDM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 35 years old pregnant woman came into the OPD for an antenatal check-up, and an intrauterine diagnosis of Down syndrome was made. Which of the following is the karyotype of Down syndrome?",
+        "options": {
+            "A": "47XXX",
+            "B": "45X",
+            "C": "47XX+21",
+            "D": "46XX",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The correct karyotype for Down syndrome is 47,XX+21 or 47,XY+21, with the option shown being 47,XX+21.",
+        "hint": ""
+    },
+    {
         "id": "JNJ9QV7C",
         "year": [
             "2026"
@@ -218,6 +300,33 @@
         "hint": ""
     },
     {
+        "id": "DM3VY9RT",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with a single palmar crease, sandal gap between first and second toes, slanting eyes, depressed nasal bridge, intellectual disability, and flat facies. Karyotyping shows 46 chromosomes. What is the likely diagnosis?",
+        "options": {
+            "A": "Patau syndrome",
+            "B": "Edwards syndrome",
+            "C": "Down syndrome",
+            "D": "Turner syndrome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "53NHYCVS",
         "year": [
             "2026"
@@ -239,6 +348,87 @@
             "C": "Karyotyping",
             "D": "ELISA",
             "E": "PCR for pathogens"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "P87P95SB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A father and his son both have an autosomal dominant disorder caused by the same gene mutation. The father has mild skin findings, while the son has severe systemic involvement. This difference in symptom severity between family members is an example of:",
+        "options": {
+            "A": "Incomplete penetrance",
+            "B": "Variable expressivity",
+            "C": "Anticipation",
+            "D": "Genetic heterogeneity",
+            "E": "Mosaicism"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "YX42ENY2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A female child presents in the OPD, has a single palmar crease, and decreased mental status. Diagnosis:",
+        "options": {
+            "A": "Klinefelter syndrome",
+            "B": "Turner syndrome",
+            "C": "Down syndrome",
+            "D": "Edwards syndrome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "4BDGTMP2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A genetic disorder is passed from mother to all her children but never from affected fathers. This type of inheritance is due to genes located in:",
+        "options": {
+            "A": "Nuclear DNA",
+            "B": "Y chromosome",
+            "C": "Mitochondrial DNA",
+            "D": "X chromosome",
+            "E": "Autosom recessive genes"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -272,6 +462,33 @@
         "hint": ""
     },
     {
+        "id": "L6ERLN6Y",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn baby presented with microcephaly, rocker bottom feet. Karyotype:",
+        "options": {
+            "A": "Down syndrome",
+            "B": "46XX/46XY",
+            "C": "47XY+18",
+            "D": "47XY+13",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "Patau syndrome findings are severe intellectual disability, rocker bottom feet, microphthalmia, microcephaly, cleft lip and palate, holoprosencephaly, polydactyly, cutis aplasia, congenital heart disease, polycystic kidney disease, omphalocele.",
+        "hint": ""
+    },
+    {
         "id": "UM58LA9P",
         "year": [
             "2026"
@@ -295,6 +512,33 @@
             "E": "47, +21"
         },
         "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "7C7L6C43",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn has hypotonia, epicanthal folds, upslanting palpebral fissures, single palmar crease, protruding tongue. Echo shows complete AV septal defect. What is the underlying chromosomal abnormality?",
+        "options": {
+            "A": "Trisomy 13",
+            "B": "Trisomy 21",
+            "C": "Trisomy 18",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -434,6 +678,33 @@
         "hint": ""
     },
     {
+        "id": "XVYEAQAQ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient present in semiconcious condition with BSR (blood sugar random) 450, PH= 7.2 HCO3=18, and PCO2=40 which is the following is the result of low insulin",
+        "options": {
+            "A": "Increased lipogenesis",
+            "B": "Ketone bodies formation",
+            "C": "Increased protein synthesis",
+            "D": "Reduced ketones",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "7WNT6SUE",
         "year": [
             "2026"
@@ -511,6 +782,60 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T7XKPWS7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After FDA approval of gene therapy, what was the first method used for gene transfer?",
+        "options": {
+            "A": "Liposome-mediated DNA transfer",
+            "B": "Retroviral DNA vector",
+            "C": "Adenoviral DNA vector",
+            "D": "Naked plasmid injection",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LSVRKXJ6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Alternate forms of the same gene at a particular locus are called?",
+        "options": {
+            "A": "Genotype",
+            "B": "Alleles",
+            "C": "Haplotypes",
+            "D": "Phenotypes",
+            "E": "Polymorphisms"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -650,6 +975,33 @@
         "hint": ""
     },
     {
+        "id": "RS6T9KZH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Hyaline cartilage is clear/transparent due to which of the following?",
+        "options": {
+            "A": "Lipofuscin",
+            "B": "Glycosaminoglycans",
+            "C": "Type 2 collagen",
+            "D": "Proteoglycans",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "YGUG2QQA",
         "year": [
             "2026"
@@ -704,6 +1056,120 @@
         "hint": ""
     },
     {
+        "id": "3D43VVC8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In Autosomal dominant diseases:",
+        "options": {
+            "A": "Only females are affected",
+            "B": "Complete penetrance",
+            "C": "Heterozygous affected",
+            "D": "Sign and symptoms appear in early life",
+            "E": "X linked recessive"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "NGWVQFLS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In autosomal dominant inheritance, what is true?",
+        "options": {
+            "A": "One parent affected",
+            "B": "Both parents affected",
+            "C": "1 of 4 children affected",
+            "D": "Variable expression",
+            "E": "50% affected and 50% unaffected children"
+        },
+        "correctAnswer": "E",
+        "explanation": "50% affected and 50% unaffected children, assuming one parent is heterozygous for the dominant allele and the other parent is unaffected (homozygous recessive). Option D refers to the range of signs and symptoms that can occur in individuals with an autosomal dominant condition; it is not the defining characteristic of the inheritance pattern itself.",
+        "hint": ""
+    },
+    {
+        "id": "CDMMEHMF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "In autosomal dominant what is True:",
+        "options": {
+            "A": "One parent effected",
+            "B": "Both parent effected",
+            "C": "1 of 4 children affected",
+            "D": "Variable expression",
+            "E": "2 in 4 siblings affected"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5BCBXWXE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Radiology - 05/25 - May 12 - Morning",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Inherited only from mother to child is",
+        "options": {
+            "A": "Imprinted DNA",
+            "B": "Mitochondrial DNA",
+            "C": "X-linked",
+            "D": "Maternal disomy",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "9DBUCYEU",
         "year": [
             "2026"
@@ -731,6 +1197,33 @@
         "hint": ""
     },
     {
+        "id": "QT44Z7UR",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Malignant feature:",
+        "options": {
+            "A": "Pleomorphism",
+            "B": "Metaplasia",
+            "C": "Desmoplasia",
+            "D": "Increase N/C ratio",
+            "E": "Invasion"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "URKRFY7V",
         "year": [
             "2026"
@@ -754,6 +1247,87 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VDW3UZP8",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Mitochondrial DNA lack which feature compare to nuclear DNA",
+        "options": {
+            "A": "Extron",
+            "B": "Intron",
+            "C": "Plasmid",
+            "D": "Genes",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "RU26JEMJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "On ultrasound, fetus shows absent nasal bridge, widened maxillary region, and protruding facial features, which of the following trisomy is most likely?",
+        "options": {
+            "A": "Trisomy 13",
+            "B": "Trisomy 18",
+            "C": "Trisomy 21",
+            "D": "Trisomy 22",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LBMBTFXJ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Part of DNA not encoding but causing mutation",
+        "options": {
+            "A": "Trinucleotides repeat",
+            "B": "Tandem repeats",
+            "C": "Dual repeat",
+            "D": "Tandem expression",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -805,6 +1379,118 @@
             "B": "95% of individuals with the mutation express the phenotype",
             "C": "95% of mutations are spontaneous",
             "D": "95% of affected individuals die early",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "MHUPKP4S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Rate of chromosomal abnormality in live births",
+        "options": {
+            "A": "Less than 1%",
+            "B": "1-5%",
+            "C": "5-10%",
+            "D": "10-15%",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LE46PERB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Regarding recombinant theory which of the following is true",
+        "options": {
+            "A": "Plasmid",
+            "B": "Paminogen",
+            "C": "Viruses",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "L5ASQTMG",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 05/25 - May 13 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "The production of synthetic human insulin using bacterial cells is an example of:",
+        "options": {
+            "A": "DNA fingerprinting",
+            "B": "DNA genetic engineering",
+            "C": "RNA splicing",
+            "D": "Gene knockout",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ZKLVWGFH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening",
+            "Surgery - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "True about Autosomal disease?",
+        "options": {
+            "A": "Skips all generations",
+            "B": "Inherited from either parent",
+            "C": "Inherited from mother",
+            "D": "Effect only half of children",
             "E": ""
         },
         "correctAnswer": "B",
@@ -947,6 +1633,33 @@
         "hint": ""
     },
     {
+        "id": "W998SJ77",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "When both alleles are fully expressed in heterozygote called?",
+        "options": {
+            "A": "Codominance",
+            "B": "Incomplete dominance",
+            "C": "Polygenic penetrance",
+            "D": "Variable expressivity",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "GZL9ZNXQ",
         "year": [
             "2026"
@@ -1028,6 +1741,60 @@
         "hint": ""
     },
     {
+        "id": "RR4ZN6Z7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following chromosomal abnormalities is the most common cause of Down syndrome?",
+        "options": {
+            "A": "Deletion of chromosome 21",
+            "B": "Duplication of chromosome 21",
+            "C": "Trisomy 21 due to nondisjunction",
+            "D": "Translocation of chromosome 21 to chromosome 13",
+            "E": "Mosaic monosomy 21"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "P4FE66CX",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following has repeated sequence of trinucleotides?",
+        "options": {
+            "A": "Down syndrome",
+            "B": "Turner syndrome",
+            "C": "Klinefelter syndrome",
+            "D": "Fragile X syndrome",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "8LGFHAJE",
         "year": [
             "2026"
@@ -1080,856 +1847,6 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "TGXTLUZ3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of these genetic conditions follows an autosomal dominant inheritance pattern?",
-        "options": {
-            "A": "Phenylketonuria",
-            "B": "Alkaptonuria",
-            "C": "Gaucher disease",
-            "D": "Marfan syndrome",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BGUXWSSC",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon",
-            "Surgery - 07/26 - July 09 - Afternoon"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "X and Y chromosomes are not fully homologous but still pair during meiosis. This pairing occurs because they are:",
-        "options": {
-            "A": "Homologous at the short arm",
-            "B": "Homologous at the long arm",
-            "C": "Homologous at the centromere",
-            "D": "Homologous along the entire length",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LCEGD25K",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "X linked disorders are more common in males because male is ?",
-        "options": {
-            "A": "Hemizygous for X",
-            "B": "Homologous for X",
-            "C": "Homozygous for Y",
-            "D": "Heterozygous for X",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E78QBDJK",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2-year-old child presents with microcephaly, micrognathia, hypertelorism, palpebral folds, low set ears and hypotonia. What is the type of karyotype is present in this child?",
-        "options": {
-            "A": "45XO",
-            "B": "47XXY",
-            "C": "46XY",
-            "D": "22q11",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7UD4GAXP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2-year-old child presents with microcephaly, micrognathia, hypertelorism, palpebral folds, low set ears and hypotonic a. What is the type of karyotype is present in this child?",
-        "options": {
-            "A": "45XO",
-            "B": "47XXY",
-            "C": "46XY",
-            "D": "22q11",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7XKDJVDM",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 35 years old pregnant woman came into the OPD for an antenatal check-up, and an intrauterine diagnosis of Down syndrome was made. Which of the following is the karyotype of Down syndrome?",
-        "options": {
-            "A": "47XXX",
-            "B": "45X",
-            "C": "47XX+21",
-            "D": "46XX",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "The correct karyotype for Down syndrome is 47,XX+21 or 47,XY+21, with the option shown being 47,XX+21.",
-        "hint": ""
-    },
-    {
-        "id": "DM3VY9RT",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with a single palmar crease, sandal gap between first and second toes, slanting eyes, depressed nasal bridge, intellectual disability, and flat facies. Karyotyping shows 46 chromosomes. What is the likely diagnosis?",
-        "options": {
-            "A": "Patau syndrome",
-            "B": "Edwards syndrome",
-            "C": "Down syndrome",
-            "D": "Turner syndrome",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P87P95SB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A father and his son both have an autosomal dominant disorder caused by the same gene mutation. The father has mild skin findings, while the son has severe systemic involvement. This difference in symptom severity between family members is an example of:",
-        "options": {
-            "A": "Incomplete penetrance",
-            "B": "Variable expressivity",
-            "C": "Anticipation",
-            "D": "Genetic heterogeneity",
-            "E": "Mosaicism"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "YX42ENY2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female child presents in the OPD, has a single palmar crease, and decreased mental status. Diagnosis:",
-        "options": {
-            "A": "Klinefelter syndrome",
-            "B": "Turner syndrome",
-            "C": "Down syndrome",
-            "D": "Edwards syndrome",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "4BDGTMP2",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A genetic disorder is passed from mother to all her children but never from affected fathers. This type of inheritance is due to genes located in:",
-        "options": {
-            "A": "Nuclear DNA",
-            "B": "Y chromosome",
-            "C": "Mitochondrial DNA",
-            "D": "X chromosome",
-            "E": "Autosom recessive genes"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L6ERLN6Y",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A newborn baby presented with microcephaly, rocker bottom feet. Karyotype:",
-        "options": {
-            "A": "Down syndrome",
-            "B": "46XX/46XY",
-            "C": "47XY+18",
-            "D": "47XY+13",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "Patau syndrome findings are severe intellectual disability, rocker bottom feet, microphthalmia, microcephaly, cleft lip and palate, holoprosencephaly, polydactyly, cutis aplasia, congenital heart disease, polycystic kidney disease, omphalocele.",
-        "hint": ""
-    },
-    {
-        "id": "7C7L6C43",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A newborn has hypotonia, epicanthal folds, upslanting palpebral fissures, single palmar crease, protruding tongue. Echo shows complete AV septal defect. What is the underlying chromosomal abnormality?",
-        "options": {
-            "A": "Trisomy 13",
-            "B": "Trisomy 21",
-            "C": "Trisomy 18",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "XVYEAQAQ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient present in semiconcious condition with BSR (blood sugar random) 450, PH= 7.2 HCO3=18, and PCO2=40 which is the following is the result of low insulin",
-        "options": {
-            "A": "Increased lipogenesis",
-            "B": "Ketone bodies formation",
-            "C": "Increased protein synthesis",
-            "D": "Reduced ketones",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T7XKPWS7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "After FDA approval of gene therapy, what was the first method used for gene transfer?",
-        "options": {
-            "A": "Liposome-mediated DNA transfer",
-            "B": "Retroviral DNA vector",
-            "C": "Adenoviral DNA vector",
-            "D": "Naked plasmid injection",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LSVRKXJ6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Alternate forms of the same gene at a particular locus are called?",
-        "options": {
-            "A": "Genotype",
-            "B": "Alleles",
-            "C": "Haplotypes",
-            "D": "Phenotypes",
-            "E": "Polymorphisms"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RS6T9KZH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Hyaline cartilage is clear/transparent due to which of the following?",
-        "options": {
-            "A": "Lipofuscin",
-            "B": "Glycosaminoglycans",
-            "C": "Type 2 collagen",
-            "D": "Proteoglycans",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3D43VVC8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In Autosomal dominant diseases:",
-        "options": {
-            "A": "Only females are affected",
-            "B": "Complete penetrance",
-            "C": "Heterozygous affected",
-            "D": "Sign and symptoms appear in early life",
-            "E": "X linked recessive"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "NGWVQFLS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In autosomal dominant inheritance, what is true?",
-        "options": {
-            "A": "One parent affected",
-            "B": "Both parents affected",
-            "C": "1 of 4 children affected",
-            "D": "Variable expression",
-            "E": "50% affected and 50% unaffected children"
-        },
-        "correctAnswer": "E",
-        "explanation": "50% affected and 50% unaffected children, assuming one parent is heterozygous for the dominant allele and the other parent is unaffected (homozygous recessive). Option D refers to the range of signs and symptoms that can occur in individuals with an autosomal dominant condition; it is not the defining characteristic of the inheritance pattern itself.",
-        "hint": ""
-    },
-    {
-        "id": "CDMMEHMF",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "In autosomal dominant what is True:",
-        "options": {
-            "A": "One parent effected",
-            "B": "Both parent effected",
-            "C": "1 of 4 children affected",
-            "D": "Variable expression",
-            "E": "2 in 4 siblings affected"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5BCBXWXE",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 14 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Radiology - 05/25 - May 12 - Morning",
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Inherited only from mother to child is",
-        "options": {
-            "A": "Imprinted DNA",
-            "B": "Mitochondrial DNA",
-            "C": "X-linked",
-            "D": "Maternal disomy",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "QT44Z7UR",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Malignant feature:",
-        "options": {
-            "A": "Pleomorphism",
-            "B": "Metaplasia",
-            "C": "Desmoplasia",
-            "D": "Increase N/C ratio",
-            "E": "Invasion"
-        },
-        "correctAnswer": "E",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VDW3UZP8",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 14 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Mitochondrial DNA lack which feature compare to nuclear DNA",
-        "options": {
-            "A": "Extron",
-            "B": "Intron",
-            "C": "Plasmid",
-            "D": "Genes",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RU26JEMJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "On ultrasound, fetus shows absent nasal bridge, widened maxillary region, and protruding facial features, which of the following trisomy is most likely?",
-        "options": {
-            "A": "Trisomy 13",
-            "B": "Trisomy 18",
-            "C": "Trisomy 21",
-            "D": "Trisomy 22",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LBMBTFXJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Part of DNA not encoding but causing mutation",
-        "options": {
-            "A": "Trinucleotides repeat",
-            "B": "Tandem repeats",
-            "C": "Dual repeat",
-            "D": "Tandem expression",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "MHUPKP4S",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Rate of chromosomal abnormality in live births",
-        "options": {
-            "A": "Less than 1%",
-            "B": "1-5%",
-            "C": "5-10%",
-            "D": "10-15%",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "LE46PERB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Regarding recombinant theory which of the following is true",
-        "options": {
-            "A": "Plasmid",
-            "B": "Paminogen",
-            "C": "Viruses",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "L5ASQTMG",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 05/25 - May 13 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The production of synthetic human insulin using bacterial cells is an example of:",
-        "options": {
-            "A": "DNA fingerprinting",
-            "B": "DNA genetic engineering",
-            "C": "RNA splicing",
-            "D": "Gene knockout",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ZKLVWGFH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening",
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "True about Autosomal disease?",
-        "options": {
-            "A": "Skips all generations",
-            "B": "Inherited from either parent",
-            "C": "Inherited from mother",
-            "D": "Effect only half of children",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "W998SJ77",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "When both alleles are fully expressed in heterozygote called?",
-        "options": {
-            "A": "Codominance",
-            "B": "Incomplete dominance",
-            "C": "Polygenic penetrance",
-            "D": "Variable expressivity",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RR4ZN6Z7",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following chromosomal abnormalities is the most common cause of Down syndrome?",
-        "options": {
-            "A": "Deletion of chromosome 21",
-            "B": "Duplication of chromosome 21",
-            "C": "Trisomy 21 due to nondisjunction",
-            "D": "Translocation of chromosome 21 to chromosome 13",
-            "E": "Mosaic monosomy 21"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "P4FE66CX",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Genetics",
-        "chapter": "General",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following has repeated sequence of trinucleotides?",
-        "options": {
-            "A": "Down syndrome",
-            "B": "Turner syndrome",
-            "C": "Klinefelter syndrome",
-            "D": "Fragile X syndrome",
-            "E": ""
-        },
-        "correctAnswer": "D",
         "explanation": "",
         "hint": ""
     },
@@ -1988,6 +1905,33 @@
         "hint": ""
     },
     {
+        "id": "TGXTLUZ3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of these genetic conditions follows an autosomal dominant inheritance pattern?",
+        "options": {
+            "A": "Phenylketonuria",
+            "B": "Alkaptonuria",
+            "C": "Gaucher disease",
+            "D": "Marfan syndrome",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "E8EQ55EL",
         "year": [
             "2025"
@@ -2012,6 +1956,62 @@
         },
         "correctAnswer": "B",
         "explanation": "Males have only one X chromosome, so the defective gene is expressed.",
+        "hint": ""
+    },
+    {
+        "id": "BGUXWSSC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon",
+            "Surgery - 07/26 - July 09 - Afternoon"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "X and Y chromosomes are not fully homologous but still pair during meiosis. This pairing occurs because they are:",
+        "options": {
+            "A": "Homologous at the short arm",
+            "B": "Homologous at the long arm",
+            "C": "Homologous at the centromere",
+            "D": "Homologous along the entire length",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "LCEGD25K",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "X linked disorders are more common in males because male is ?",
+        "options": {
+            "A": "Hemizygous for X",
+            "B": "Homologous for X",
+            "C": "Homozygous for Y",
+            "D": "Heterozygous for X",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {

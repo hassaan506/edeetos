@@ -1,88 +1,5 @@
 [
     {
-        "id": "BMHB5CX3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Radiology"
-        ],
-        "exams": [
-            "Anesthesia - 04/26 - April 7 - Morning",
-            "Radiology - 04/26 - April 7 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old male patient is admitted to the ICU after a craniotomy for a right frontal tumor. Which of the following interventions is most effective in preventing an increase in intracranial pressure (ICP) in the postoperative period?",
-        "options": {
-            "A": "Elevating the head of the bed to 30 degrees",
-            "B": "Administering prophylactic mannitol routinely in all patients",
-            "C": "Keeping the patient NPO (nil per os) for 48 hours",
-            "D": "Routine hyperventilation to PaCO2 of 25 mmHg",
-            "E": "Maintaining patient in strict supine position"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "8V2SE45D",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Morning"
-        ],
-        "subject": "Surgery",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops flushing and sweating over the cheek while eating after parotid gland surgery. Which syndrome is this?",
-        "options": {
-            "A": "Bell palsy",
-            "B": "Horner syndrome",
-            "C": "Frey syndrome",
-            "D": "Ramsay Hunt syndrome",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "3SJCEJSU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a deep penetrating wound following a stray dog bite. After irrigation with normal saline and wound debridement, what is the next most critical step in management for a patient not previously vaccinated?",
-        "options": {
-            "A": "Local immunoglobulin and vaccination",
-            "B": "IV immunoglobulin",
-            "C": "Ceftriaxone and vaccine",
-            "D": "Vaccine",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "SHJ2BKEK",
         "year": [
             "2025"
@@ -242,6 +159,35 @@
         },
         "correctAnswer": "B",
         "explanation": "Regarding sensitivity to radiotherapy: Lymph node tumor > Seminoma > Glioma > Craniopharyngioma. Old Age + Painless testicular tumor + Raised LDH - Lymphoma. Old Age + Painless testicular tumor + Mature Stem cells - Teratoma. Young + Painless testicular tumor + Raised LDH+ Radiosensitive - Seminoma. Least Radio Sensitive Blood Cell - Platlets. Most Radio Sensitive Organ - Skin. Least Radio Sensitive Organ - Vagina. Most Radio Sensitive Mucosa - Intestinal. Radiation induced Brain malignancy - Meningioma. Overall radiation induced CA - Leukemia",
+        "hint": ""
+    },
+    {
+        "id": "BMHB5CX3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning",
+            "Radiology - 04/26 - April 7 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 45 year old male patient is admitted to the ICU after a craniotomy for a right frontal tumor. Which of the following interventions is most effective in preventing an increase in intracranial pressure (ICP) in the postoperative period?",
+        "options": {
+            "A": "Elevating the head of the bed to 30 degrees",
+            "B": "Administering prophylactic mannitol routinely in all patients",
+            "C": "Keeping the patient NPO (nil per os) for 48 hours",
+            "D": "Routine hyperventilation to PaCO2 of 25 mmHg",
+            "E": "Maintaining patient in strict supine position"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -544,6 +490,33 @@
         "hint": ""
     },
     {
+        "id": "8V2SE45D",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops flushing and sweating over the cheek while eating after parotid gland surgery. Which syndrome is this?",
+        "options": {
+            "A": "Bell palsy",
+            "B": "Horner syndrome",
+            "C": "Frey syndrome",
+            "D": "Ramsay Hunt syndrome",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZE3ASFVE",
         "year": [
             "2025"
@@ -703,6 +676,33 @@
         },
         "correctAnswer": "A",
         "explanation": "The leakage of clear cerebrospinal fluid from the nose (CSF rhinorrhea) indicates a break in the meninges and the base of the skull, most commonly caused by a fracture through the cribriform plate of the ethmoid bone.",
+        "hint": ""
+    },
+    {
+        "id": "3SJCEJSU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient presents with a deep penetrating wound following a stray dog bite. After irrigation with normal saline and wound debridement, what is the next most critical step in management for a patient not previously vaccinated?",
+        "options": {
+            "A": "Local immunoglobulin and vaccination",
+            "B": "IV immunoglobulin",
+            "C": "Ceftriaxone and vaccine",
+            "D": "Vaccine",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {

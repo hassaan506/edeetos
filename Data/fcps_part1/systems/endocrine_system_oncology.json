@@ -1,5 +1,32 @@
 [
     {
+        "id": "N8RT9LDH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Oncology",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient was diagnosed with medullary carcinoma, which marker do we use to check it?",
+        "options": {
+            "A": "Calcitonin",
+            "B": "Calcium",
+            "C": "TSH",
+            "D": "PTHrp",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "6R3DPMEV",
         "year": [
             "2026"
@@ -51,33 +78,6 @@
         },
         "correctAnswer": "B",
         "explanation": "Medullary thyroid carcinoma arises from parafollicular C cells. These cells secrete calcitonin, making it the primary tumor marker. Serum calcitonin is useful for diagnosis and follow-up.",
-        "hint": ""
-    },
-    {
-        "id": "N8RT9LDH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Oncology",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient was diagnosed with medullary carcinoma, which marker do we use to check it?",
-        "options": {
-            "A": "Calcitonin",
-            "B": "Calcium",
-            "C": "TSH",
-            "D": "PTHrp",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
         "hint": ""
     }
 ]

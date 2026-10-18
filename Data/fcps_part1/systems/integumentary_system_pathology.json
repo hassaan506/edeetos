@@ -54,6 +54,33 @@
         "hint": ""
     },
     {
+        "id": "SDCFQYWL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 27-year-old man sustains a deep laceration. After 5 days, the wound shows evidence of fibroblast proliferation and increased extracellular matrix deposition. Which of the following types of collagen is most abundant in the wound at this stage?",
+        "options": {
+            "A": "Type I",
+            "B": "Type II",
+            "C": "Type III",
+            "D": "Type IV",
+            "E": "Type V"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "KG37NYLH",
         "year": [
             "2026"
@@ -104,358 +131,6 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "Y2R9FDF3",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Night"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A child presents with a raised erythematous lesion on the forehead. Histology shows proliferation of endothelial cells forming vascular channels. What is the most likely diagnosis?",
-        "options": {
-            "A": "Lipoma",
-            "B": "Hemangioma",
-            "C": "Fibroma",
-            "D": "Melanoma",
-            "E": "Squamous cell carcinoma"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FZ9TZV2U",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 7 - Morning",
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A farmer presents with hyperkeratosis, parakeratosis, atypical cells and brown color lesion on face and cheek most likely is",
-        "options": {
-            "A": "Actinic keratosis",
-            "B": "Seborrheic dermatitis",
-            "C": "Squamous cell carcinoma",
-            "D": "Basal cell carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "PAYLRPKU",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A long-term diabetic patient with peripheral vascular disease presents with a black, shriveled, and foul-smelling ulcer on his foot. The tissue is dead due to lack of blood supply followed by a bacterial superinfection. This is known as",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Liquefactive necrosis",
-            "C": "Gangrenous necrosis",
-            "D": "Caseous necrosis",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UTFTHX4L",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 07 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient has a wound on the upper arm. During healing, the scar tissue grows beyond the original boundaries of the wound. What type of scar is this?",
-        "options": {
-            "A": "Keloid",
-            "B": "Hypertrophic scar",
-            "C": "Granuloma",
-            "D": "Contracture scar",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Keloids extend beyond the original wound margins. They result from excessive collagen deposition. Hypertrophic scars remain confined to the wound.",
-        "hint": ""
-    },
-    {
-        "id": "CDXBJB7S",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 7 - Night"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A young girl with blisters on the extremities has fluid present between the dermis and epidermis. What type of fluid is present?",
-        "options": {
-            "A": "Transudative",
-            "B": "Serous",
-            "C": "Exudative",
-            "D": "Purulent",
-            "E": "Hemorrhagic"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RJWYHPEJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 07/26 - July 9 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An elderly man presents with red, scaly patches on the chest. Skin biopsy reveals a cutaneous lymphoma. Which of the following is a characteristic feature of this type of lymphoma?",
-        "options": {
-            "A": "All cases are curable",
-            "B": "Can progress to leukemia",
-            "C": "Has no specific geographic distribution",
-            "D": "Caused only by T cells",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "879EV65H",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An elderly man with diabetes has a well-demarcated black lesion on his foot; biopsy grows Staphylococcus aureus. What is the most likely type of Cell Injury?",
-        "options": {
-            "A": "Caseous Cell Injury",
-            "B": "Gangrenous Cell Injury",
-            "C": "Coagulative Cell Injury",
-            "D": "Fibrinoid Cell Injury",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CVCRK75M",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Elderly diabetic man with black well-demarcated foot lesion; biopsy shows Staph aureus. Diagnosis:",
-        "options": {
-            "A": "Coagulative Cell Injury",
-            "B": "Caseous Cell Injury",
-            "C": "Fat Cell Injury",
-            "D": "Gangrenous Cell Injury",
-            "E": ""
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WM9LGMFD",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Following a superficial thermal injury causing erythema and pain, which skin layer is affected in a first-degree burn?",
-        "options": {
-            "A": "blood vessels",
-            "B": "Epidermis",
-            "C": "Sweat gland",
-            "D": "hair bulb",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "7ARL68AZ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the characteristic feature of keloid?",
-        "options": {
-            "A": "Decreased collagen with increased elastin",
-            "B": "Normal collagen deposition",
-            "C": "Increased collagen in keloid",
-            "D": "Collagen breakdown beyond wound margins",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ESUVVJGG",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the most common skin cancer in HIV/AIDS patients?",
-        "options": {
-            "A": "Kaposi sarcoma",
-            "B": "Hodgkin Lymphoma",
-            "C": "Basal cell carcinoma",
-            "D": "Squamous cell carcinoma",
-            "E": "Multiple Myeloma"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "T6JVYVCT",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which condition predisposes strongly to skin cancer due to defective DNA repair?",
-        "options": {
-            "A": "Albinism",
-            "B": "Xeroderma pigmentosum",
-            "C": "Vitiligo",
-            "D": "Psoriasis",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "SDCFQYWL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Pathology"
-        ],
-        "exams": [
-            "Pathology - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Integumentary System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 27-year-old man sustains a deep laceration. After 5 days, the wound shows evidence of fibroblast proliferation and increased extracellular matrix deposition. Which of the following types of collagen is most abundant in the wound at this stage?",
-        "options": {
-            "A": "Type I",
-            "B": "Type II",
-            "C": "Type III",
-            "D": "Type IV",
-            "E": "Type V"
-        },
-        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -595,6 +270,88 @@
         "hint": ""
     },
     {
+        "id": "Y2R9FDF3",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Night"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A child presents with a raised erythematous lesion on the forehead. Histology shows proliferation of endothelial cells forming vascular channels. What is the most likely diagnosis?",
+        "options": {
+            "A": "Lipoma",
+            "B": "Hemangioma",
+            "C": "Fibroma",
+            "D": "Melanoma",
+            "E": "Squamous cell carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FZ9TZV2U",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 7 - Morning",
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A farmer presents with hyperkeratosis, parakeratosis, atypical cells and brown color lesion on face and cheek most likely is",
+        "options": {
+            "A": "Actinic keratosis",
+            "B": "Seborrheic dermatitis",
+            "C": "Squamous cell carcinoma",
+            "D": "Basal cell carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "PAYLRPKU",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A long-term diabetic patient with peripheral vascular disease presents with a black, shriveled, and foul-smelling ulcer on his foot. The tissue is dead due to lack of blood supply followed by a bacterial superinfection. This is known as",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Liquefactive necrosis",
+            "C": "Gangrenous necrosis",
+            "D": "Caseous necrosis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FFB52WG6",
         "year": [
             "2025"
@@ -727,6 +484,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UTFTHX4L",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 07 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient has a wound on the upper arm. During healing, the scar tissue grows beyond the original boundaries of the wound. What type of scar is this?",
+        "options": {
+            "A": "Keloid",
+            "B": "Hypertrophic scar",
+            "C": "Granuloma",
+            "D": "Contracture scar",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Keloids extend beyond the original wound margins. They result from excessive collagen deposition. Hypertrophic scars remain confined to the wound.",
         "hint": ""
     },
     {
@@ -868,6 +652,33 @@
         "hint": ""
     },
     {
+        "id": "CDXBJB7S",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A young girl with blisters on the extremities has fluid present between the dermis and epidermis. What type of fluid is present?",
+        "options": {
+            "A": "Transudative",
+            "B": "Serous",
+            "C": "Exudative",
+            "D": "Purulent",
+            "E": "Hemorrhagic"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "PXH2T4M6",
         "year": [
             "2025"
@@ -922,6 +733,60 @@
         "hint": ""
     },
     {
+        "id": "RJWYHPEJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 07/26 - July 9 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An elderly man presents with red, scaly patches on the chest. Skin biopsy reveals a cutaneous lymphoma. Which of the following is a characteristic feature of this type of lymphoma?",
+        "options": {
+            "A": "All cases are curable",
+            "B": "Can progress to leukemia",
+            "C": "Has no specific geographic distribution",
+            "D": "Caused only by T cells",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "879EV65H",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "An elderly man with diabetes has a well-demarcated black lesion on his foot; biopsy grows Staphylococcus aureus. What is the most likely type of Cell Injury?",
+        "options": {
+            "A": "Caseous Cell Injury",
+            "B": "Gangrenous Cell Injury",
+            "C": "Coagulative Cell Injury",
+            "D": "Fibrinoid Cell Injury",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FJBZQ57U",
         "year": [
             "2025"
@@ -945,6 +810,60 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "CVCRK75M",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Elderly diabetic man with black well-demarcated foot lesion; biopsy shows Staph aureus. Diagnosis:",
+        "options": {
+            "A": "Coagulative Cell Injury",
+            "B": "Caseous Cell Injury",
+            "C": "Fat Cell Injury",
+            "D": "Gangrenous Cell Injury",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WM9LGMFD",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Following a superficial thermal injury causing erythema and pain, which skin layer is affected in a first-degree burn?",
+        "options": {
+            "A": "blood vessels",
+            "B": "Epidermis",
+            "C": "Sweat gland",
+            "D": "hair bulb",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -1089,6 +1008,60 @@
         "hint": ""
     },
     {
+        "id": "7ARL68AZ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the characteristic feature of keloid?",
+        "options": {
+            "A": "Decreased collagen with increased elastin",
+            "B": "Normal collagen deposition",
+            "C": "Increased collagen in keloid",
+            "D": "Collagen breakdown beyond wound margins",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "ESUVVJGG",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the most common skin cancer in HIV/AIDS patients?",
+        "options": {
+            "A": "Kaposi sarcoma",
+            "B": "Hodgkin Lymphoma",
+            "C": "Basal cell carcinoma",
+            "D": "Squamous cell carcinoma",
+            "E": "Multiple Myeloma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "EWHJDAQG",
         "year": [
             "2025"
@@ -1112,6 +1085,33 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "T6JVYVCT",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which condition predisposes strongly to skin cancer due to defective DNA repair?",
+        "options": {
+            "A": "Albinism",
+            "B": "Xeroderma pigmentosum",
+            "C": "Vitiligo",
+            "D": "Psoriasis",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },

@@ -27,6 +27,62 @@
         "hint": ""
     },
     {
+        "id": "CADSZX8A",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/25 - November 12 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 12-year-old presents with disproportionately long arms and legs relative to trunk, short stature, and normal development.",
+        "options": {
+            "A": "Autosomal dominant",
+            "B": "Autosomal recessive",
+            "C": "X-linked recessive",
+            "D": "X-linked dominant",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Likely Marfan syndrome, classic autosomal dominant inheritance. Features: arm span > height, long fingers, cardiovascular involvement.",
+        "hint": ""
+    },
+    {
+        "id": "3CZQJXNL",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 02/25 - Feburary 7 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2 years old child with history of recurrent fractures without trauma. Same history in other members of family. What is the inheritance of the disease?",
+        "options": {
+            "A": "AR",
+            "B": "AD",
+            "C": "X linked recessive",
+            "D": "Mitochondria",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "NLFC2T7X",
         "year": [
             "2026"
@@ -47,6 +103,33 @@
             "B": "Marfan Syndrome",
             "C": "Turner Syndrome",
             "D": "Achondroplasia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "UKVD75AP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 2-year-old child with a history of recurrent fractures without trauma. Same history in other members of family. What is the inheritance of the disease",
+        "options": {
+            "A": "AR",
+            "B": "AD",
+            "C": "X linked recessive",
+            "D": "X linked dominant",
             "E": ""
         },
         "correctAnswer": "B",
@@ -108,440 +191,6 @@
         "hint": ""
     },
     {
-        "id": "R77MGJUX",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old male recently got married. He is concerned about possible congenital defects in the baby. Which syndrome is associated with advanced paternal age?",
-        "options": {
-            "A": "Down syndrome",
-            "B": "Achondroplasia",
-            "C": "Patau syndrome",
-            "D": "Edward syndrome",
-            "E": "Klinefelter syndrome"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "GQ4QP3UJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 6 year old boy is brought to the clinic with progressive difficulty in walking and frequent falls. His mother reports that he has trouble climbing stairs and uses his hands to push himself up from a sitting position. On examination, there is calf pseudohypertrophy and a positive Gowers' sign. Which of the following is the underlying molecular defect in this condition?",
-        "options": {
-            "A": "Defect in dystrophin protein",
-            "B": "Defect in fibrillin-1 protein",
-            "C": "Defect in spectrin",
-            "D": "Defect in collagen type I",
-            "E": "Defect in myosin heavy chain"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5EZ57ZWA",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 6 year old boy presents with his fourth fracture following a minor fall. On examination, he has blue sclerae and hearing loss. What is the most likely diagnosis?",
-        "options": {
-            "A": "Ehlers-Danlos Syndrome",
-            "B": "Osteogenesis Imperfecta",
-            "C": "Marfan Syndrome",
-            "D": "Achondroplasia",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B6P5LMHF",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 5 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A defect in which specific protein is responsible for Marfan's syndrome?",
-        "options": {
-            "A": "Elastin",
-            "B": "Fibrillin",
-            "C": "Collagen",
-            "D": "Actin",
-            "E": "Myosin"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "WFPFCKNJ",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A man with Achondroplasia marries a healthy woman. What is the probability that their child will inherit the condition?",
-        "options": {
-            "A": "25%",
-            "B": "50%",
-            "C": "75%",
-            "D": "100%",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "VWZ33RTE",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A newborn is noted to have small hands and feet, short upper limbs disproportionately, and a small face. These findings are most consistent with which of the following conditions?",
-        "options": {
-            "A": "Achondroplasia",
-            "B": "Marfan syndrome",
-            "C": "Turner syndrome",
-            "D": "Down syndrome",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "RW4FA34W",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A tall male patient presents with lens subluxation (ectopia lentis). What is the most likely diagnosis?",
-        "options": {
-            "A": "Marfan syndrome",
-            "B": "Klinefelter syndrome",
-            "C": "Achondroplasia",
-            "D": "Homocysteinuria",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KQ9RBA2D",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A tall patient with long fingers and ectopia lentis is diagnosed with Marfan Syndrome. Which gene is defective?",
-        "options": {
-            "A": "Fibrillin-1",
-            "B": "Elastin",
-            "C": "Albumin",
-            "D": "Cadherin",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "B3P7HUN4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 8 - Night"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Duchenne muscular dystrophy is caused by a mutation on which chromosome?",
-        "options": {
-            "A": "Chromosome 21",
-            "B": "Chromosome 18",
-            "C": "X chromosome",
-            "D": "Y chromosome",
-            "E": "Chromosome 13"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "G9S5TENK",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 8 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Duchenne muscular dystrophy is caused by mutation in dystrophin gene located on which chromosome?",
-        "options": {
-            "A": "Chromosome 7",
-            "B": "Chromosome 12",
-            "C": "X chromosome",
-            "D": "Y chromosome",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FK6F6WUL",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Marfan syndrome is an autosomal dominant connective tissue disorder caused by a defect in which protein?",
-        "options": {
-            "A": "Collagen",
-            "B": "Elastin",
-            "C": "Fibrillin",
-            "D": "Keratin",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "9FM45MP4",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 7 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tall stature with long fingers and arachnodactyly is characteristic of:",
-        "options": {
-            "A": "Achondroplasia",
-            "B": "Marfan syndrome",
-            "C": "Turner syndrome",
-            "D": "Klinefelter syndrome",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "U2NLMEBM",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 04/26 - April 8 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the underlying molecular defect in Marfan syndrome?",
-        "options": {
-            "A": "Deficiency of Fibrillin-1",
-            "B": "Defect in Type I Collagen",
-            "C": "Mutation in Elastin gene",
-            "D": "Deficiency of Vitamin C",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "CADSZX8A",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Gynecology - 11/25 - November 12 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 12-year-old presents with disproportionately long arms and legs relative to trunk, short stature, and normal development.",
-        "options": {
-            "A": "Autosomal dominant",
-            "B": "Autosomal recessive",
-            "C": "X-linked recessive",
-            "D": "X-linked dominant",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "Likely Marfan syndrome, classic autosomal dominant inheritance. Features: arm span > height, long fingers, cardiovascular involvement.",
-        "hint": ""
-    },
-    {
-        "id": "3CZQJXNL",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2 years old child with history of recurrent fractures without trauma. Same history in other members of family. What is the inheritance of the disease?",
-        "options": {
-            "A": "AR",
-            "B": "AD",
-            "C": "X linked recessive",
-            "D": "Mitochondria",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "UKVD75AP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Genetics",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 2-year-old child with a history of recurrent fractures without trauma. Same history in other members of family. What is the inheritance of the disease",
-        "options": {
-            "A": "AR",
-            "B": "AD",
-            "C": "X linked recessive",
-            "D": "X linked dominant",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
         "id": "NDYZR9AE",
         "year": [
             "2025"
@@ -565,6 +214,33 @@
             "E": "Troponin"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "R77MGJUX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 55 year old male recently got married. He is concerned about possible congenital defects in the baby. Which syndrome is associated with advanced paternal age?",
+        "options": {
+            "A": "Down syndrome",
+            "B": "Achondroplasia",
+            "C": "Patau syndrome",
+            "D": "Edward syndrome",
+            "E": "Klinefelter syndrome"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": ""
     },
@@ -654,6 +330,60 @@
         "hint": ""
     },
     {
+        "id": "GQ4QP3UJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 6 year old boy is brought to the clinic with progressive difficulty in walking and frequent falls. His mother reports that he has trouble climbing stairs and uses his hands to push himself up from a sitting position. On examination, there is calf pseudohypertrophy and a positive Gowers' sign. Which of the following is the underlying molecular defect in this condition?",
+        "options": {
+            "A": "Defect in dystrophin protein",
+            "B": "Defect in fibrillin-1 protein",
+            "C": "Defect in spectrin",
+            "D": "Defect in collagen type I",
+            "E": "Defect in myosin heavy chain"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5EZ57ZWA",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 6 year old boy presents with his fourth fracture following a minor fall. On examination, he has blue sclerae and hearing loss. What is the most likely diagnosis?",
+        "options": {
+            "A": "Ehlers-Danlos Syndrome",
+            "B": "Osteogenesis Imperfecta",
+            "C": "Marfan Syndrome",
+            "D": "Achondroplasia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "ZX7ZVZYQ",
         "year": [
             "2025"
@@ -680,6 +410,87 @@
         },
         "correctAnswer": "B",
         "explanation": "This description is a classic presentation of achondroplasia, the most common form of dwarfism.",
+        "hint": ""
+    },
+    {
+        "id": "B6P5LMHF",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A defect in which specific protein is responsible for Marfan's syndrome?",
+        "options": {
+            "A": "Elastin",
+            "B": "Fibrillin",
+            "C": "Collagen",
+            "D": "Actin",
+            "E": "Myosin"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "WFPFCKNJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A man with Achondroplasia marries a healthy woman. What is the probability that their child will inherit the condition?",
+        "options": {
+            "A": "25%",
+            "B": "50%",
+            "C": "75%",
+            "D": "100%",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "VWZ33RTE",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A newborn is noted to have small hands and feet, short upper limbs disproportionately, and a small face. These findings are most consistent with which of the following conditions?",
+        "options": {
+            "A": "Achondroplasia",
+            "B": "Marfan syndrome",
+            "C": "Turner syndrome",
+            "D": "Down syndrome",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -710,6 +521,60 @@
         "hint": ""
     },
     {
+        "id": "RW4FA34W",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A tall male patient presents with lens subluxation (ectopia lentis). What is the most likely diagnosis?",
+        "options": {
+            "A": "Marfan syndrome",
+            "B": "Klinefelter syndrome",
+            "C": "Achondroplasia",
+            "D": "Homocysteinuria",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "KQ9RBA2D",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A tall patient with long fingers and ectopia lentis is diagnosed with Marfan Syndrome. Which gene is defective?",
+        "options": {
+            "A": "Fibrillin-1",
+            "B": "Elastin",
+            "C": "Albumin",
+            "D": "Cadherin",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "F7KXS5RC",
         "year": [
             "2025"
@@ -733,6 +598,60 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "B3P7HUN4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 8 - Night"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Duchenne muscular dystrophy is caused by a mutation on which chromosome?",
+        "options": {
+            "A": "Chromosome 21",
+            "B": "Chromosome 18",
+            "C": "X chromosome",
+            "D": "Y chromosome",
+            "E": "Chromosome 13"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "G9S5TENK",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 8 - Morning"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Duchenne muscular dystrophy is caused by mutation in dystrophin gene located on which chromosome?",
+        "options": {
+            "A": "Chromosome 7",
+            "B": "Chromosome 12",
+            "C": "X chromosome",
+            "D": "Y chromosome",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": ""
     },
@@ -843,6 +762,87 @@
             "E": "Edward syndrome"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "FK6F6WUL",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Marfan syndrome is an autosomal dominant connective tissue disorder caused by a defect in which protein?",
+        "options": {
+            "A": "Collagen",
+            "B": "Elastin",
+            "C": "Fibrillin",
+            "D": "Keratin",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "9FM45MP4",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 7 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Tall stature with long fingers and arachnodactyly is characteristic of:",
+        "options": {
+            "A": "Achondroplasia",
+            "B": "Marfan syndrome",
+            "C": "Turner syndrome",
+            "D": "Klinefelter syndrome",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "U2NLMEBM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 04/26 - April 8 - Evening"
+        ],
+        "subject": "Genetics",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the underlying molecular defect in Marfan syndrome?",
+        "options": {
+            "A": "Deficiency of Fibrillin-1",
+            "B": "Defect in Type I Collagen",
+            "C": "Mutation in Elastin gene",
+            "D": "Deficiency of Vitamin C",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     }

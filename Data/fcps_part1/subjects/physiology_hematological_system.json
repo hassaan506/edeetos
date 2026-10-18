@@ -1,31 +1,85 @@
 [
     {
-        "id": "MYRBALEN",
+        "id": "KLZHW4XS",
         "year": [
-            "2026",
             "2025"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 01/26 - January 7 - Evening",
-            "Surgery - 11/25 - November 12 - Evening"
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
         "difficulty": "medium",
-        "question": "After massive blood transfusion, patient develops carpopedal spasm. Cause?",
+        "question": "41% haematocrit means:",
         "options": {
-            "A": "Low calcium",
-            "B": "High potassium",
-            "C": "High calcium",
-            "D": "Low sodium",
-            "E": ""
+            "A": "41% of formed elements are RBC",
+            "B": "41% of blood is Hb",
+            "C": "41% of blood volume is RBCs, WBCs, and platelets",
+            "D": "41% of blood volume is platelets",
+            "E": "41% of blood volume is WBC"
         },
         "correctAnswer": "A",
-        "explanation": "Stored blood contains citrate, which binds serum calcium -> acute hypocalcemia -> tetany and carpopedal spasm.",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "57M92QEP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 22-year-old medical student is reviewing the process of erythropoiesis and the associated cellular components in the bone marrow while studying lymphocyte population, he recalls that certain lymphocytes are more abundant in circulation, considering the normal distribution of lymphocyte subtypes in the peripheral smear which of the following statement is most accurate?",
+        "options": {
+            "A": "B lymphocytes are more than T lymphocytes",
+            "B": "T lymphocytes are more abundant than B lymphocytes",
+            "C": "B and T lymphocytes are present in equal quantities",
+            "D": "NK cells make up the majority of lymphocytes",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "E57TV7NH",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A 25 year old woman presents with fatigue and pallor. CBC shows Hb 8.5 g/dL, MCV 90 fL, and increased reticulocyte count. Peripheral smear shows slightly larger, bluish-red cells without a nucleus. Which of the following statements about reticulocytes is correct?",
+        "options": {
+            "A": "Reticulocytes contain DNA but no RNA",
+            "B": "Reticulocytes constitute ~7% of circulating RBCs in healthy individuals",
+            "C": "Reticulocytes are fully mature RBCs",
+            "D": "Reticulocytes still contain residual RNA",
+            "E": "Reticulocytes are not found in peripheral blood"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": ""
     },
     {
@@ -106,6 +160,33 @@
             "E": "Platelet adhesion pathway"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "BDZZ8SFD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "A patient develops deep vein thrombosis after being immobilized. Which sequence of coagulation factors is most likely involved?",
+        "options": {
+            "A": "Tissue factor → Factor VII → Factor X → Prothrombin",
+            "B": "Factor XII → Factor XI → Factor IX → Factor X",
+            "C": "Factor VIII → Factor IX → Factor X → Prothrombin",
+            "D": "Factor V → Factor VII → Factor X → Thrombin",
+            "E": "Factor X → Factor V → Prothrombin → Fibrinogen"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -301,6 +382,35 @@
         "hint": ""
     },
     {
+        "id": "MYRBALEN",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 7 - Evening",
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "After massive blood transfusion, patient develops carpopedal spasm. Cause?",
+        "options": {
+            "A": "Low calcium",
+            "B": "High potassium",
+            "C": "High calcium",
+            "D": "Low sodium",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Stored blood contains citrate, which binds serum calcium -> acute hypocalcemia -> tetany and carpopedal spasm.",
+        "hint": ""
+    },
+    {
         "id": "AUJBN853",
         "year": [
             "2026"
@@ -352,6 +462,33 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "5Y66XJ92",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Anti-sera agglutinate with A and D and plasma has anti B antibodies which blood group it is?",
+        "options": {
+            "A": "A-",
+            "B": "A+",
+            "C": "O-",
+            "D": "O+",
+            "E": "E- B+"
+        },
+        "correctAnswer": "B",
+        "explanation": "As anti-sera agglutinates A and D that means the group has A & D (Rh) Antigen and as well plasma has Anti B antibodies that's why it's A +ve that has Antigen A & Rh and antibody B-",
         "hint": ""
     },
     {
@@ -492,6 +629,33 @@
         "hint": ""
     },
     {
+        "id": "MEM7UC5Z",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Erythropoietin mechanism of action?",
+        "options": {
+            "A": "JAK STAT",
+            "B": "IRP-1 and IRP-2 (insulin regulatory pathway)",
+            "C": "Protein synthesis or something",
+            "D": "Lipid synthesis",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FQA25KJV",
         "year": [
             "2026"
@@ -596,307 +760,6 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "ALAJNJJH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Kinin and coagulation pathway after tissue injury is activated by which factor?",
-        "options": {
-            "A": "Factor II",
-            "B": "Factor III",
-            "C": "Factor XII",
-            "D": "Factor X",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "JWPWR3WH",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Main role of erythrocytes:",
-        "options": {
-            "A": "Regulating blood pH",
-            "B": "Maintaining viscosity",
-            "C": "Initiating blood clotting",
-            "D": "Producing antibodies",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "97ZP32TN",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 01/26 - January 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "What is the primary function of erythrocytes?",
-        "options": {
-            "A": "Regulating blood pH",
-            "B": "Maintaining viscosity",
-            "C": "Synthesizing insulin",
-            "D": "Producing antibodies",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "FXGSFCW9",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Anesthesia",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 01/26 - January 7 - Morning",
-            "Anesthesia - 01/26 - January 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following increases in pregnancy?",
-        "options": {
-            "A": "Transferrin",
-            "B": "Red cell mass",
-            "C": "MCH",
-            "D": "Decreased iron absorption",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "EEM96V2Z",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 07/26 - July 08 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is the initial mechanism that stops bleeding in hemostasis response",
-        "options": {
-            "A": "Platelet aggregation",
-            "B": "Degranulation",
-            "C": "Vasoconstriction",
-            "D": "PGI2 release",
-            "E": "Vasodilation"
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "KLZHW4XS",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning",
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "41% haematocrit means:",
-        "options": {
-            "A": "41% of formed elements are RBC",
-            "B": "41% of blood is Hb",
-            "C": "41% of blood volume is RBCs, WBCs, and platelets",
-            "D": "41% of blood volume is platelets",
-            "E": "41% of blood volume is WBC"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "57M92QEP",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 22-year-old medical student is reviewing the process of erythropoiesis and the associated cellular components in the bone marrow while studying lymphocyte population, he recalls that certain lymphocytes are more abundant in circulation, considering the normal distribution of lymphocyte subtypes in the peripheral smear which of the following statement is most accurate?",
-        "options": {
-            "A": "B lymphocytes are more than T lymphocytes",
-            "B": "T lymphocytes are more abundant than B lymphocytes",
-            "C": "B and T lymphocytes are present in equal quantities",
-            "D": "NK cells make up the majority of lymphocytes",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "E57TV7NH",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 5 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old woman presents with fatigue and pallor. CBC shows Hb 8.5 g/dL, MCV 90 fL, and increased reticulocyte count. Peripheral smear shows slightly larger, bluish-red cells without a nucleus. Which of the following statements about reticulocytes is correct?",
-        "options": {
-            "A": "Reticulocytes contain DNA but no RNA",
-            "B": "Reticulocytes constitute ~7% of circulating RBCs in healthy individuals",
-            "C": "Reticulocytes are fully mature RBCs",
-            "D": "Reticulocytes still contain residual RNA",
-            "E": "Reticulocytes are not found in peripheral blood"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "BDZZ8SFD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient develops deep vein thrombosis after being immobilized. Which sequence of coagulation factors is most likely involved?",
-        "options": {
-            "A": "Tissue factor → Factor VII → Factor X → Prothrombin",
-            "B": "Factor XII → Factor XI → Factor IX → Factor X",
-            "C": "Factor VIII → Factor IX → Factor X → Prothrombin",
-            "D": "Factor V → Factor VII → Factor X → Thrombin",
-            "E": "Factor X → Factor V → Prothrombin → Fibrinogen"
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": ""
-    },
-    {
-        "id": "5Y66XJ92",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Anti-sera agglutinate with A and D and plasma has anti B antibodies which blood group it is?",
-        "options": {
-            "A": "A-",
-            "B": "A+",
-            "C": "O-",
-            "D": "O+",
-            "E": "E- B+"
-        },
-        "correctAnswer": "B",
-        "explanation": "As anti-sera agglutinates A and D that means the group has A & D (Rh) Antigen and as well plasma has Anti B antibodies that's why it's A +ve that has Antigen A & Rh and antibody B-",
-        "hint": ""
-    },
-    {
-        "id": "MEM7UC5Z",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Physiology",
-        "chapter": "Hematological System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Erythropoietin mechanism of action?",
-        "options": {
-            "A": "JAK STAT",
-            "B": "IRP-1 and IRP-2 (insulin regulatory pathway)",
-            "C": "Protein synthesis or something",
-            "D": "Lipid synthesis",
-            "E": ""
-        },
-        "correctAnswer": "A",
         "explanation": "",
         "hint": ""
     },
@@ -1009,6 +872,60 @@
         "hint": ""
     },
     {
+        "id": "ALAJNJJH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Kinin and coagulation pathway after tissue injury is activated by which factor?",
+        "options": {
+            "A": "Factor II",
+            "B": "Factor III",
+            "C": "Factor XII",
+            "D": "Factor X",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "JWPWR3WH",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Main role of erythrocytes:",
+        "options": {
+            "A": "Regulating blood pH",
+            "B": "Maintaining viscosity",
+            "C": "Initiating blood clotting",
+            "D": "Producing antibodies",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "RFRJQDPZ",
         "year": [
             "2025"
@@ -1117,6 +1034,33 @@
         "hint": ""
     },
     {
+        "id": "97ZP32TN",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "What is the primary function of erythrocytes?",
+        "options": {
+            "A": "Regulating blood pH",
+            "B": "Maintaining viscosity",
+            "C": "Synthesizing insulin",
+            "D": "Producing antibodies",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": ""
+    },
+    {
         "id": "FYNW69FP",
         "year": [
             "2025"
@@ -1197,6 +1141,62 @@
         },
         "correctAnswer": "A",
         "explanation": "Prefer Protein S. Increase Factor VII Factor VIII Factor X VW Factor Fibrinogen Plasminogen a2 macroglobulin Remain same Factor V Thrombin(II) Protein C Anti-thrombin (Rarely decrease by 15%) Decrease Protein S (Fall by 50%) Anti-thrombin may fall rarely but mostly remain unchanged.",
+        "hint": ""
+    },
+    {
+        "id": "FXGSFCW9",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 7 - Morning",
+            "Anesthesia - 01/26 - January 5 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following increases in pregnancy?",
+        "options": {
+            "A": "Transferrin",
+            "B": "Red cell mass",
+            "C": "MCH",
+            "D": "Decreased iron absorption",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": ""
+    },
+    {
+        "id": "EEM96V2Z",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 07/26 - July 08 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Hematological System",
+        "topic": "Unknown Topic",
+        "difficulty": "medium",
+        "question": "Which of the following is the initial mechanism that stops bleeding in hemostasis response",
+        "options": {
+            "A": "Platelet aggregation",
+            "B": "Degranulation",
+            "C": "Vasoconstriction",
+            "D": "PGI2 release",
+            "E": "Vasodilation"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": ""
     }
 ]
