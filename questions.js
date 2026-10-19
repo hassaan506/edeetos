@@ -250,6 +250,8 @@ window.updateDashboardUI = function() {
 
 function changeView(viewName, titleText) {
     currentView = viewName;
+	cachedAttemptedPool = null;
+    cachedMistakesPool = null;
     activeCustomPool = null;
     isGlobalPopupActive = false;
     localStorage.setItem('edeetos_last_view', viewName);
@@ -1632,8 +1634,8 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
     
     let pool = customPool || activeCustomPool || globalMetadata;
-
     let paths = [...pathArr];
+
     if (paths[0] === "Practice Mistakes") {
         pool = pool.filter(q => globalPracticeMistakes.includes(getQID(q)));
         paths.shift();
@@ -1642,18 +1644,47 @@ function getQuestionCount(view, pathArr, customPool = null) {
         paths.shift();
     }
 
+    // FAST PATH: Bypass array filtering if looking at standard totals
+    const isDefaultPool = (pool === globalMetadata || pool === activeCustomPool);
+    const noFiltersActive = (!diffEasyFilter?.checked && !diffMediumFilter?.checked && !diffHardFilter?.checked && !unattemptedFilter?.checked);
+
+    if (isDefaultPool && noFiltersActive && !isGlobalPopupActive) {
+        let tree = {};
+        if (view === 'subject') tree = subjectTree;
+        else if (view === 'system') tree = systemTree;
+        else if (view === 'exam') tree = examTree;
+        else if (view === 'book') {
+            let current = activeCustomPool ? buildSubTree(activeCustomPool) : {};
+            for (let p of paths) {
+                if (current && current[p]) current = current[p];
+                else return 0;
+            }
+            return getTreeCount(current);
+        }
+        
+        if (Object.keys(tree).length > 0) {
+            let current = tree;
+            for(let p of paths) {
+                if(current && current[p]) current = current[p];
+                else return 0;
+            }
+            return getTreeCount(current);
+        }
+    }
+
+    // SLOW PATH: Execute strict filtering only when UI filters are active
     if (pool && pool.length > 0) {
-if (paths.length === 0) {
-    return pool.filter(q => {
-        if (!passesDifficultyFilter(q)) return false;
-        if (!isGlobalPopupActive && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
-        return true;
-    }).length;
-}
+        if (paths.length === 0) {
+            return pool.filter(q => {
+                if (!passesDifficultyFilter(q)) return false;
+                if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
+                return true;
+            }).length;
+        }
 
         return pool.filter(q => {
             if (!passesDifficultyFilter(q)) return false;
-            if (!isGlobalPopupActive && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
+            if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
             
             const qSubj = q.Subject || q.subject;
             const qChap = q.Chapter || q.chapter;
@@ -1729,18 +1760,7 @@ if (paths.length === 0) {
         }).length;
     }
 
-    let tree = {};
-    if (view === 'subject') tree = subjectTree;
-    else if (view === 'system') tree = systemTree;
-    else if (view === 'exam') tree = examTree;
-    else return 0;
-
-    let current = tree;
-    for(let p of paths) {
-        if(current && current[p]) current = current[p];
-        else return 0;
-    }
-    return getTreeCount(current);
+    return 0;
 }
 
 function getQID(q) {
