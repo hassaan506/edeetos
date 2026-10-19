@@ -1767,17 +1767,31 @@ function getQID(q) {
     return String(q['QuestionID'] || q['Question ID'] || q['ID'] || q['id']);
 }
 
+let cachedAttemptedPool = null;
 function getSolvedCount(view, pathArr) {
     const pool = activeCustomPool || globalMetadata;
-    const attemptedPool = pool.filter(q => attemptedQuestions.includes(getQID(q)));
-    return getQuestionCount(view, pathArr, attemptedPool);
+    
+    if (!cachedAttemptedPool || cachedAttemptedPool.poolRef !== pool) {
+        cachedAttemptedPool = {
+            poolRef: pool,
+            data: pool.filter(q => window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q)))
+        };
+    }
+    return getQuestionCount(view, pathArr, cachedAttemptedPool.data);
 }
 
+let cachedMistakesPool = null;
 function getMistakesCount(view, pathArr) {
     const pool = activeCustomPool || globalMetadata;
-    const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-    const mistakePool = pool.filter(q => allMistakes.includes(getQID(q)));
-    return getQuestionCount(view, pathArr, mistakePool);
+    
+    if (!cachedMistakesPool || cachedMistakesPool.poolRef !== pool) {
+        const allMistakesSet = new Set([...globalPracticeMistakes, ...globalExamMistakes]);
+        cachedMistakesPool = {
+            poolRef: pool,
+            data: pool.filter(q => allMistakesSet.has(getQID(q)))
+        };
+    }
+    return getQuestionCount(view, pathArr, cachedMistakesPool.data);
 }
 
 function getLeafPaths(dataObj, currentPath) {
