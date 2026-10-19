@@ -475,7 +475,7 @@ function loadQuestion(index) {
                 }
             } else {
                 skippedWarningEl.classList.add('hidden');
-                skipBtn.style.display = currentQuestionData.userSelectedAnswer ? 'none' : 'flex';
+                skipBtn.style.display = 'flex'; // Always show the skip button during the first pass
             }
             document.getElementById('next-btn').innerHTML = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : 'Next Question <i class="fas fa-arrow-right"></i>';
         } else {
@@ -1026,11 +1026,10 @@ async function saveNoteToFirebase(questionId, noteText) {
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.closest('.strike-btn')) return;
 
-    if (isExamMode) {
+if (isExamMode) {
         document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
         optionElement.classList.add('selected');
         currentQuestionData.userSelectedAnswer = optionData.text;
-        skipBtn.style.display = 'none';
         return; 
     }
 
