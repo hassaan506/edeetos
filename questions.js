@@ -2918,11 +2918,12 @@ async function hydrateUserState(dbData) {
                         }
                     };
 
-                    for (const courseFile of Object.keys(editsByCourse)) {
+for (const courseFile of Object.keys(editsByCourse)) {
                         const isBook = editsByCourse[courseFile].isBook;
                         const folder = isBook ? "Books" : "Data";
                         const csvPath = `${folder}/${courseFile}.csv`;
                         const questionsJsonPath = `${folder}/${courseFile}_questions.json`;
+                        const metadataJsonPath = `${folder}/${courseFile}_metadata.json`;
                         const hierarchyJsonPath = `${folder}/${courseFile}_hierarchy.json`;
                         
                         const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
@@ -2942,6 +2943,33 @@ async function hydrateUserState(dbData) {
                         let parsed = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true });
                         let rows = parsed.data;
 
+                        // NEW: Track which specific chunk files need updating
+                        const affectedChunks = new Set();
+                        
+                        const getChunkPaths = (row, cFile) => {
+                            const paths = [];
+                            const subj = sanitizeFilename(row["Subject"] || row["subject"]);
+                            const chap = sanitizeFilename(row["Chapter"] || row["chapter"]);
+                            paths.push(`Data/${cFile}/subjects/${subj}_${chap}.json`);
+                            
+                            if (String(row["Chapter"] || row["chapter"]).toLowerCase().includes('system')) {
+                                paths.push(`Data/${cFile}/systems/${chap}_${subj}.json`);
+                            }
+                            
+                            const years = (row["Year"] || row["year"]) ? String(row["Year"] || row["year"]).split(',').map(s=>s.trim()) : [];
+                            const specs = (row["Specialty"] || row["specialty"]) ? String(row["Specialty"] || row["specialty"]).split(',').map(s=>s.trim()) : [];
+                            const exams = (row["Exam"] || row["exam"] || row["exams"]) ? String(row["Exam"] || row["exam"] || row["exams"]).split(',').map(s=>s.trim()) : [];
+                            
+                            exams.forEach((ex, i) => {
+                                if(!ex) return;
+                                const fbYear = years[i] !== undefined ? years[i] : (years[years.length-1] || "Unknown Year");
+                                const fbSpec = specs[i] !== undefined ? specs[i] : (specs[specs.length-1] || "Unknown Specialty");
+                                const parsedEx = parseExamInfo(ex, fbYear, fbSpec); 
+                                paths.push(`Data/${cFile}/exams/${sanitizeFilename(parsedEx.examYear)}_${sanitizeFilename(parsedEx.examSpec)}_${sanitizeFilename(ex)}.json`);
+                            });
+                            return paths;
+                        };
+
                         editsByCourse[courseFile].rows.forEach(updatedRow => {
                             const qId = updatedRow["QuestionID"];
                             const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
@@ -2954,18 +2982,26 @@ async function hydrateUserState(dbData) {
                             }
                             
                             if (qIndex !== -1) {
-                                const targetRow = rows[qIndex];
+                                const oldRow = rows[qIndex];
+                                if (!isBook) {
+                                    getChunkPaths(oldRow, courseFile).forEach(p => affectedChunks.add(p));
+                                    getChunkPaths(updatedRow, courseFile).forEach(p => affectedChunks.add(p));
+                                }
                                 Object.keys(updatedRow).forEach(newKey => {
-                                    const originalKey = Object.keys(targetRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
-                                    targetRow[originalKey || newKey] = updatedRow[newKey];
+                                    const originalKey = Object.keys(oldRow).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
+                                    oldRow[originalKey || newKey] = updatedRow[newKey];
                                 });
                             } else {
+                                if (!isBook) {
+                                    getChunkPaths(updatedRow, courseFile).forEach(p => affectedChunks.add(p));
+                                }
                                 rows.push(updatedRow);
                             }
                         });
 
                         let outQs = [];
                         let subTree = {}, sysTree = {}, exTree = {};
+                        let subject_chunks = {}, system_chunks = {}, exam_chunks = {};
 
                         rows.forEach(row => {
                             const getVal = (names) => {
@@ -3035,25 +3071,77 @@ async function hydrateUserState(dbData) {
                                 const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
                                 const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
                                 
-                                const { examYear, examSpec } = parseExamInfo(ex, fbYear, fbSpec);
+                                const parsedEx = parseExamInfo(ex, fbYear, fbSpec);
                                 
-                                if (!exTree[examYear]) exTree[examYear] = {};
-                                if (!exTree[examYear][examSpec]) exTree[examYear][examSpec] = {};
-                                if (!exTree[examYear][examSpec][ex]) exTree[examYear][examSpec][ex] = 0;
-                                exTree[examYear][examSpec][ex]++;
+                                if (!exTree[parsedEx.examYear]) exTree[parsedEx.examYear] = {};
+                                if (!exTree[parsedEx.examYear][parsedEx.examSpec]) exTree[parsedEx.examYear][parsedEx.examSpec] = {};
+                                if (!exTree[parsedEx.examYear][parsedEx.examSpec][ex]) exTree[parsedEx.examYear][parsedEx.examSpec][ex] = 0;
+                                exTree[parsedEx.examYear][parsedEx.examSpec][ex]++;
                             });
+
+                            // ONLY POPULATE CHUNKS IF THEY WERE AFFECTED BY AN EDIT
+                            if (!isBook) {
+                                const s_clean = sanitizeFilename(subject);
+                                const c_clean = sanitizeFilename(chapter);
+                                const subj_path = `Data/${courseFile}/subjects/${s_clean}_${c_clean}.json`;
+                                
+                                if (affectedChunks.has(subj_path)) {
+                                    if (!subject_chunks[subj_path]) subject_chunks[subj_path] = [];
+                                    subject_chunks[subj_path].push(qObj);
+                                }
+
+                                if (chapter.toLowerCase().includes('system')) {
+                                    const sys_path = `Data/${courseFile}/systems/${c_clean}_${s_clean}.json`;
+                                    if (affectedChunks.has(sys_path)) {
+                                        if (!system_chunks[sys_path]) system_chunks[sys_path] = [];
+                                        system_chunks[sys_path].push(qObj);
+                                    }
+                                }
+
+                                examsList.forEach((ex, i) => {
+                                    const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
+                                    const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
+                                    const parsedEx = parseExamInfo(ex, fbYear, fbSpec);
+                                    
+                                    const exam_path = `Data/${courseFile}/exams/${sanitizeFilename(parsedEx.examYear)}_${sanitizeFilename(parsedEx.examSpec)}_${sanitizeFilename(ex)}.json`;
+                                    if (affectedChunks.has(exam_path)) {
+                                        if (!exam_chunks[exam_path]) exam_chunks[exam_path] = [];
+                                        exam_chunks[exam_path].push(qObj);
+                                    }
+                                });
+                            }
                         });
 
-                        const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced JSON`;
+                        const commitMsg = `Admin Panel: Updated ${editsByCourse[courseFile].rows.length} question(s) & synced micro-chunks`;
                         
                         await uploadFileToGitHub(csvPath, Papa.unparse(rows), commitMsg);
-                        await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+                        
+                        if (isBook) {
+                            await uploadFileToGitHub(questionsJsonPath, JSON.stringify(outQs, null, 4), commitMsg);
+                        } else {
+                            const metadataList = outQs.map(q => ({
+                                id: q.id,
+                                year: q.year,
+                                exams: q.exams,
+                                subject: q.subject,
+                                chapter: q.chapter,
+                                topic: q.topic,
+                                difficulty: q.difficulty
+                            }));
+                            await uploadFileToGitHub(metadataJsonPath, JSON.stringify(metadataList), commitMsg);
+                            
+                            // PUSH AFFECTED CHUNKS TO GITHUB
+                            for (const chunkPath of affectedChunks) {
+                                let chunkData = subject_chunks[chunkPath] || system_chunks[chunkPath] || exam_chunks[chunkPath] || [];
+                                await uploadFileToGitHub(chunkPath, JSON.stringify(chunkData, null, 4), commitMsg);
+                            }
+                        }
                         
                         const hierarchyObj = { subjects: subTree, systems: sysTree, exams: exTree };
                         await uploadFileToGitHub(hierarchyJsonPath, JSON.stringify(hierarchyObj, null, 4), commitMsg);
                     }
 
-                    alert(`✅ Success! Edits saved and JSONs generated dynamically. Changes are live instantly!`);
+                    alert(`✅ Success! CSV, Metadata, Hierarchy, AND affected micro-chunks synced directly to GitHub.\n\nChanges are live instantly!`);
                     localStorage.removeItem('edeetos_pending_edits');
                     btnPushEdits.style.display = 'none';
 
