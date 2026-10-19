@@ -145,6 +145,44 @@ html.dark-mode .glass-box { background: rgba(15, 23, 42, 0.72); border-color: rg
 .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; background: rgba(0,0,0,0.25); padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); }
 .checkbox-group label { font-size: 0.8rem; margin: 0; text-transform: none; font-weight: 600; color: #e2e8f0; }
 
+/* Fix Quill Toolbar Icon Colors for Dark Theme */
+.ql-toolbar.ql-snow {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px 10px 0 0;
+}
+.ql-container.ql-snow {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.ql-snow .ql-stroke {
+    stroke: #cbd5e1 !important;
+}
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: #cbd5e1 !important;
+}
+.ql-snow .ql-picker {
+    color: #cbd5e1 !important;
+}
+.ql-snow .ql-picker-options {
+    background: #0f172a !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Hover and Active States */
+.ql-snow button:hover .ql-stroke, .ql-snow button.ql-active .ql-stroke,
+.ql-snow .ql-picker-label:hover .ql-stroke, .ql-snow .ql-picker-label.ql-active .ql-stroke,
+.ql-snow .ql-picker-item:hover .ql-stroke {
+    stroke: #34d399 !important;
+}
+.ql-snow button:hover .ql-fill, .ql-snow button.ql-active .ql-fill,
+.ql-snow .ql-picker-label:hover .ql-fill, .ql-snow .ql-picker-label.ql-active .ql-fill,
+.ql-snow .ql-picker-item:hover .ql-fill {
+    fill: #34d399 !important;
+}
+.ql-snow .ql-picker-label:hover, .ql-snow .ql-picker-label.ql-active,
+.ql-snow .ql-picker-item:hover {
+    color: #34d399 !important;
+}
 /* BUTTONS */
 .btn-solid { background: linear-gradient(180deg, #34d399 0%, #10b981 100%); border: 1px solid #6ee7b7; color: #022c22 !important; padding: 1rem 2rem; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.2s; display: inline-flex; justify-content: center; align-items: center; box-shadow: 0 0 22px rgba(16, 185, 129, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4); }
 .btn-solid:hover { background: linear-gradient(180deg, #6ee7b7 0%, #10b981 100%); }

@@ -1,7 +1,29 @@
 import { db } from "./firebase-config.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 document.addEventListener('DOMContentLoaded', () => {
+    const auth = getAuth();
+
+    // AUTHENTICATION STATE OVERRIDE
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Target your login button and switch it to a Dashboard link
+            // Replace '.your-login-btn-class' with your actual button selector
+            const loginBtn = document.querySelector('.your-login-btn-class');
+            if (loginBtn) {
+                loginBtn.textContent = "Go to Dashboard";
+                loginBtn.href = "dashboard.html";
+                
+                // If it's a button element instead of an anchor link:
+                loginBtn.onclick = (e) => {
+                    e.preventDefault();
+                    window.location.href = "dashboard.html";
+                };
+            }
+        }
+    });
+
     // === FEATURE: CONTACT FORM SUBMISSION ===
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {

@@ -26,6 +26,34 @@ let currentUserData = null;
 let currentUserId = null;
 let hasCheckedDowngrade = false;
 let cachedNotesData = []; 
+const idbCache = {
+    async init() {
+        return new Promise((resolve, reject) => {
+            const req = indexedDB.open("EdeetosCacheDB", 1);
+            req.onupgradeneeded = (e) => e.target.result.createObjectStore("user_profiles");
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+        });
+    },
+    async set(uid, data) {
+        try {
+            const db = await this.init();
+            const tx = db.transaction("user_profiles", "readwrite");
+            tx.objectStore("user_profiles").put(data, uid);
+        } catch(e) { console.warn("Cache write failed", e); }
+    },
+    async get(uid) {
+        try {
+            const db = await this.init();
+            return new Promise((resolve) => {
+                const tx = db.transaction("user_profiles", "readonly");
+                const req = tx.objectStore("user_profiles").get(uid);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => resolve(null);
+            });
+        } catch(e) { return null; }
+    }
+};
 
 // === 2. DASHBOARD INIT & ROLE BADGES ===
 onAuthStateChanged(auth, async (user) => {
@@ -36,17 +64,16 @@ onAuthStateChanged(auth, async (user) => {
         currentUserId = user.uid;
         const userRef = doc(db, "users", user.uid);
         
-        const cachedUser = sessionStorage.getItem('edeetos_dash_cache');
+        const cachedUser = await idbCache.get(user.uid);
         if (cachedUser && document.getElementById('user-name').textContent === "...") {
-            try { document.getElementById('user-name').textContent = JSON.parse(cachedUser).fullName || "Doctor"; } 
-            catch (e) { console.warn("Cache parse failed"); }
+            document.getElementById('user-name').textContent = cachedUser.fullName || "Doctor";
         }
 
         try {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 currentUserData = docSnap.data();
-                sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
+                idbCache.set(user.uid, currentUserData); 
                 const userRoleUpper = (currentUserData.role || 'STUDENT').toUpperCase();
                 
                 // BAN CHECK
@@ -160,7 +187,7 @@ onAuthStateChanged(auth, async (user) => {
 
 // === 3. NAVIGATION & UTILITIES ===
 document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem('edeetos_guest_mode'); sessionStorage.removeItem('edeetos_dash_cache');
+    localStorage.removeItem('edeetos_guest_mode'); 
     signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => { window.location.href = 'index.html'; });
 });
 
@@ -677,12 +704,13 @@ if (profileForm) {
             });
             ['name', 'phone', 'uni', 'location', 'exam-date'].forEach(id => { const map = {name:'fullName', uni:'institution', 'exam-date':'examDate'}; currentUserData[map[id] || id] = document.getElementById(`prof-${id}`).value; });
             document.getElementById('user-name').textContent = currentUserData.fullName;
-            sessionStorage.setItem('edeetos_dash_cache', JSON.stringify(currentUserData)); 
+            
+            idbCache.set(currentUserId, JSON.parse(JSON.stringify(currentUserData))); 
+            
             alert("Profile updated!"); document.getElementById('profile-modal').classList.add('view-hidden');
         } catch (error) { alert("Failed to update profile."); } finally { btnSave.textContent = "Save Profile Changes"; btnSave.disabled = false; }
     });
 }
-
 // === 10. GROUP STUDY (Create & Join) ===
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {

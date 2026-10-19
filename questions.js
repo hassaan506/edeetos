@@ -1327,63 +1327,55 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
         'edeetos_quiz_state',
         'edeetos_exam_progress',
         'edeetos_active_quiz_session',
-        'quiz_in_progress'
+        'quiz_in_progress',
+        'edeetos_active_quiz' 
     ];
+    
     staleKeys.forEach(key => {
         localStorage.removeItem(key);
         sessionStorage.removeItem(key);
     });
 
-    try {
-        localStorage.setItem('edeetos_active_quiz', JSON.stringify(cleanPool));
-        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
-    } catch (e) {
-        console.warn("localStorage quota warning, relying on IndexedDB:", e);
-    }
+    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
 
     document.body.style.cursor = 'wait';
-    try {
-        const idbRequest = indexedDB.open("EdeetosDB", 1);
+    
+    const idbRequest = indexedDB.open("EdeetosDB", 1);
 
-        idbRequest.onupgradeneeded = (e) => {
-            const idb = e.target.result;
-            if (!idb.objectStoreNames.contains("quiz_sessions")) {
-                idb.createObjectStore("quiz_sessions");
-            }
-        };
+    idbRequest.onupgradeneeded = (e) => {
+        const idb = e.target.result;
+        if (!idb.objectStoreNames.contains("quiz_sessions")) {
+            idb.createObjectStore("quiz_sessions");
+        }
+    };
 
-        idbRequest.onsuccess = (e) => {
-            const idb = e.target.result;
-            const tx = idb.transaction("quiz_sessions", "readwrite");
-            const store = tx.objectStore("quiz_sessions");
+    idbRequest.onsuccess = (e) => {
+        const idb = e.target.result;
+        const tx = idb.transaction("quiz_sessions", "readwrite");
+        const store = tx.objectStore("quiz_sessions");
 
-            store.put(cleanPool, "active_quiz_queue");
+        store.put(cleanPool, "active_quiz_queue");
 
-            try {
-                store.delete("active_quiz_state");
-                store.delete("saved_session");
-            } catch (err) {}
+        try {
+            store.delete("active_quiz_state");
+            store.delete("saved_session");
+        } catch (err) {}
 
-            tx.oncomplete = () => {
-                document.body.style.cursor = 'default';
-                window.location.href = 'quiz.html';
-            };
-
-            tx.onerror = () => {
-                document.body.style.cursor = 'default';
-                window.location.href = 'quiz.html';
-            };
-        };
-
-        idbRequest.onerror = () => {
+        tx.oncomplete = () => {
             document.body.style.cursor = 'default';
             window.location.href = 'quiz.html';
         };
-    } catch (err) {
-        console.error("IndexedDB write failed:", err);
+
+        tx.onerror = () => {
+            document.body.style.cursor = 'default';
+            window.location.href = 'quiz.html';
+        };
+    };
+
+    idbRequest.onerror = () => {
         document.body.style.cursor = 'default';
         window.location.href = 'quiz.html';
-    }
+    };
 };
 
 function generateExamTitle(paths, currentView) {
@@ -2835,6 +2827,35 @@ function buildSubTree(pool) {
     return tree;
 }
 
+const idbCache = {
+    async init() {
+        return new Promise((resolve, reject) => {
+            const req = indexedDB.open("EdeetosCacheDB", 1);
+            req.onupgradeneeded = (e) => e.target.result.createObjectStore("user_profiles");
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+        });
+    },
+    async set(uid, data) {
+        try {
+            const db = await this.init();
+            const tx = db.transaction("user_profiles", "readwrite");
+            tx.objectStore("user_profiles").put(data, uid);
+        } catch(e) { console.warn("Cache write failed", e); }
+    },
+    async get(uid) {
+        try {
+            const db = await this.init();
+            return new Promise((resolve) => {
+                const tx = db.transaction("user_profiles", "readonly");
+                const req = tx.objectStore("user_profiles").get(uid);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => resolve(null);
+            });
+        } catch(e) { return null; }
+    }
+};
+
 // ==========================================
 // 16. INITIALIZATION & AUTHENTICATION
 // ==========================================
@@ -2845,7 +2866,8 @@ window.syncUserProgress = function(updateObj) {
     const uid = auth.currentUser ? auth.currentUser.uid : null;
     if (!uid) return;
     
-    localStorage.setItem(`user_cache_${uid}`, JSON.stringify(currentUserData));
+    idbCache.set(uid, JSON.parse(JSON.stringify(currentUserData)));
+    
     updateDoc(doc(db, 'users', uid), updateObj).catch(err => console.error("Background sync failed:", err));
 };
 
@@ -3517,12 +3539,12 @@ onAuthStateChanged(auth, async (user) => {
         localStorage.removeItem('edeetos_guest_mode');
         const userRef = doc(db, "users", user.uid);
 
-        const cachedStr = localStorage.getItem(`user_cache_${user.uid}`);
-        if (cachedStr) {
+        const cachedData = await idbCache.get(user.uid);
+        if (cachedData) {
             try {
-                await hydrateUserState(JSON.parse(cachedStr));
+                await hydrateUserState(cachedData);
             } catch(e) { 
-                console.warn("Cache read error"); 
+                console.warn("Cache hydration error"); 
             }
         }
 
@@ -3530,7 +3552,7 @@ onAuthStateChanged(auth, async (user) => {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
-                localStorage.setItem(`user_cache_${user.uid}`, JSON.stringify(dbData));
+                idbCache.set(user.uid, dbData);
                 await hydrateUserState(dbData);
             } else {
                 await hydrateUserState({ role: 'STUDENT' });

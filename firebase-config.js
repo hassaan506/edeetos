@@ -4,7 +4,7 @@ import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasej
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 // 0. GLOBAL UI OVERRIDE (BEAUTIFUL ALERTS)
-window.alert = function(message) {
+window.alert = function(message, onCloseCallback) {
     const overlay = document.createElement('div');
     overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; z-index:999999;';
 
@@ -22,7 +22,10 @@ window.alert = function(message) {
     btn.onclick = () => {
         box.style.opacity = '0';
         box.style.transform = 'scale(0.8)';
-        setTimeout(() => document.body.removeChild(overlay), 300);
+        setTimeout(() => {
+            document.body.removeChild(overlay);
+            if (onCloseCallback) onCloseCallback();
+        }, 300);
     };
 
     box.appendChild(msg);
@@ -97,6 +100,7 @@ function enforceSecurity() {
 }
 
 // GLOBAL MULTIPLE DEVICE LOGIN RESTRICTOR & ROLE CHECK
+// GLOBAL MULTIPLE DEVICE LOGIN RESTRICTOR & ROLE CHECK
 onAuthStateChanged(auth, (user) => {
     if (user) {
         if (!window.__sessionListenerAttached) {
@@ -104,23 +108,30 @@ onAuthStateChanged(auth, (user) => {
             onSnapshot(doc(db, "users", user.uid), (docSnap) => {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
+                    const role = (data.role || 'STUDENT').toUpperCase();
+                    
+                    // 1. Check privileges immediately. If admin/management, bypass everything.
+                    if (role === 'ADMIN' || role === 'MANAGEMENT') {
+                        console.log("Security bypassed: Admin/Management privileges recognized.");
+                        return; 
+                    }
+
+                    // 2. Enforce standard security for students
+                    enforceSecurity();
+
+                    // 3. Check for multiple device logins
                     const localToken = localStorage.getItem("edeetos_session_id");
                     const dbToken = data.sessionToken;
                     
                     if (dbToken && localToken && dbToken !== localToken) {
-                        alert("Security Alert: Your account was logged into from another device. You will now be signed out.");
                         localStorage.removeItem("edeetos_session_id");
-                        signOut(auth).then(() => {
-                            window.location.href = "login.html";
+                        
+                        // Pass the redirect as a callback so it waits for the click
+                        alert("Security Alert: Your account was logged into from another device. You will now be signed out.", () => {
+                            signOut(auth).then(() => {
+                                window.location.href = "login.html";
+                            });
                         });
-                        return;
-                    }
-
-                    const role = (data.role || 'STUDENT').toUpperCase();
-                    if (role !== 'ADMIN' && role !== 'MANAGEMENT') {
-                        enforceSecurity();
-                    } else {
-                        console.log("Security bypassed: Admin/Management privileges recognized.");
                     }
                 }
             });

@@ -137,7 +137,7 @@ async function calculateTotalQuestions() {
         } catch (e) {}
     }
 
-    for (const course of standardCourses) await fetchAndCount(`Data/${course}_questions.json`, courseNamesMap[course] || course, '#f1f5f9', '#334155');
+    for (const course of standardCourses) await fetchAndCount(`Data/${course}_metadata.json`, courseNamesMap[course] || course, '#f1f5f9', '#334155');
     breakdownHtml += `</div><div style="margin: 20px 0 8px 0; color: #8b5cf6; font-size: 0.8rem; font-weight: 800;">Reference Books</div><div style="display: flex; flex-wrap: wrap; gap: 8px;">`;
     for (const book of referenceBooks) await fetchAndCount(`Books/${book.file}_questions.json`, book.title, '#ede9fe', '#5b21b6');
     breakdownHtml += `</div>`;
@@ -151,6 +151,7 @@ document.getElementById('btn-save-new-q').onclick = () => {
     const qText = document.getElementById('add-q-txt').value.trim();
     if (!qText) return alert("Question text is required.");
 
+    // Generate a random 8-character alphanumeric ID
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let newId = "";
     for (let i = 0; i < 8; i++) newId += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -160,9 +161,11 @@ document.getElementById('btn-save-new-q').onclick = () => {
     const courseFile = targetVal[1];
     const correctOptNode = document.querySelector('input[name="add-correct-opt"]:checked');
 
+    // Build the row with the new Specialty field included
     const newRow = {
         "QuestionID": newId,
         "Year": document.getElementById('add-q-yr').value.trim(),
+        "Specialty": document.getElementById('add-q-spec').value.trim(),
         "Exam": document.getElementById('add-q-exm').value.trim(),
         "Subject": document.getElementById('add-q-sub').value.trim(),
         "Chapter": document.getElementById('add-q-chap').value.trim(),
@@ -179,13 +182,16 @@ document.getElementById('btn-save-new-q').onclick = () => {
         "Difficulty": document.getElementById('add-q-dif').value
     };
 
+    // Save to the pending queue in local storage
     let pendingEditsQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
     pendingEditsQueue.push({ row: newRow, courseFile, isBook });
     localStorage.setItem('edeetos_pending_edits', JSON.stringify(pendingEditsQueue));
     updatePendingCount();
     
-    ['add-q-sub', 'add-q-chap', 'add-q-top', 'add-q-yr', 'add-q-exm', 'add-q-txt', 'add-opt-a', 'add-opt-b', 'add-opt-c', 'add-opt-d', 'add-opt-e'].forEach(id => document.getElementById(id).value = '');
-    quillExp.root.innerHTML = ''; quillHnt.root.innerHTML = '';
+    // Clear the form fields (now including 'add-q-spec')
+    ['add-q-sub', 'add-q-chap', 'add-q-top', 'add-q-yr', 'add-q-spec', 'add-q-exm', 'add-q-txt', 'add-opt-a', 'add-opt-b', 'add-opt-c', 'add-opt-d', 'add-opt-e'].forEach(id => document.getElementById(id).value = '');
+    quillExp.root.innerHTML = ''; 
+    quillHnt.root.innerHTML = '';
     document.getElementById('add-q-dif').value = 'medium';
     document.querySelector('input[name="add-correct-opt"][value="A"]').checked = true;
 
@@ -208,6 +214,36 @@ document.getElementById('btn-admin-push').onclick = async () => {
     btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Compiling...';
     btn.disabled = true;
 
+    // Local utilities for generating accurate chunk paths
+    const sanitizeFilename = (name) => {
+        if (!name) return "unknown";
+        return String(name).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+    };
+    
+    const parseExamInfo = (examStr, fallbackYear, fallbackSpec) => {
+        const parts = String(examStr).split("-").map(p => p.trim());
+        let examYear = fallbackYear;
+        let examSpec = fallbackSpec;
+        if (parts.length >= 2) {
+            const prefix = parts[0].toLowerCase();
+            if (prefix.includes("surgery")) examSpec = "Surgery & Allied";
+            else if (prefix.includes("medicine")) examSpec = "Medicine & Allied";
+            else if (prefix.includes("gynecology") || prefix.includes("gyn")) examSpec = "Gynecology & Obstetrics";
+            else if (prefix.includes("anesthesia")) examSpec = "Anesthesia";
+            else if (prefix.includes("radiology")) examSpec = "Radiology";
+            else if (prefix.includes("pathology")) examSpec = "Pathology";
+            else examSpec = parts[0];
+
+            const datePart = parts[1];
+            if (datePart && datePart.includes("/")) {
+                const yy = datePart.split("/").pop().trim();
+                if (yy.length === 2) examYear = "20" + yy;
+                else if (yy.length === 4) examYear = yy;
+            }
+        }
+        return { examYear, examSpec };
+    };
+
     try {
         const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
         const { Base64 } = await import('https://cdn.jsdelivr.net/npm/js-base64@3.7.5/+esm');
@@ -219,6 +255,7 @@ document.getElementById('btn-admin-push').onclick = async () => {
         });
 
         const owner = "hassaan506"; const repo = "edeetos"; const branch = "main";
+        
         const uploadFileToGitHub = async (filePath, contentStr, commitMsg) => {
             const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
             let currentSha = null;
@@ -239,6 +276,7 @@ document.getElementById('btn-admin-push').onclick = async () => {
             const paths = {
                 csv: `${folder}/${courseFile}.csv`,
                 json: `${folder}/${courseFile}_questions.json`,
+                metadata: `${folder}/${courseFile}_metadata.json`,
                 hierarchy: `${folder}/${courseFile}_hierarchy.json`
             };
             
@@ -250,22 +288,59 @@ document.getElementById('btn-admin-push').onclick = async () => {
             const cleanCsvText = Base64.decode((await blobRes.json()).content).replace(/^\uFEFF/, '');
             let rows = Papa.parse(cleanCsvText, { header: true, skipEmptyLines: true }).data;
 
+            const affectedChunks = new Set();
+            
+            const getChunkPaths = (row, cFile) => {
+                const paths = [];
+                const subj = sanitizeFilename(row["Subject"] || row["subject"]);
+                const chap = sanitizeFilename(row["Chapter"] || row["chapter"]);
+                paths.push(`Data/${cFile}/subjects/${subj}_${chap}.json`);
+                
+                if (String(row["Chapter"] || row["chapter"]).toLowerCase().includes('system')) {
+                    paths.push(`Data/${cFile}/systems/${chap}_${subj}.json`);
+                }
+                
+                const years = (row["Year"] || row["year"]) ? String(row["Year"] || row["year"]).split(',').map(s=>s.trim()) : [];
+                const specs = (row["Specialty"] || row["specialty"]) ? String(row["Specialty"] || row["specialty"]).split(',').map(s=>s.trim()) : [];
+                const exams = (row["Exam"] || row["exam"] || row["exams"]) ? String(row["Exam"] || row["exam"] || row["exams"]).split(',').map(s=>s.trim()) : [];
+                
+                exams.forEach((ex, i) => {
+                    if(!ex) return;
+                    const fbYear = years[i] !== undefined ? years[i] : (years[years.length-1] || "Unknown Year");
+                    const fbSpec = specs[i] !== undefined ? specs[i] : (specs[specs.length-1] || "Unknown Specialty");
+                    const parsedEx = parseExamInfo(ex, fbYear, fbSpec); 
+                    paths.push(`Data/${cFile}/exams/${sanitizeFilename(parsedEx.examYear)}_${sanitizeFilename(parsedEx.examSpec)}_${sanitizeFilename(ex)}.json`);
+                });
+                return paths;
+            };
+
             editsByCourse[courseFile].rows.forEach(updatedRow => {
                 const qId = updatedRow["QuestionID"];
                 const actualIdKey = Object.keys(rows[0] || {}).find(k => k.toLowerCase().replace(/\s/g, '') === 'questionid' || k.toLowerCase() === 'id') || "QuestionID";
                 let qIndex = rows.findIndex(r => String(r[actualIdKey]).trim() === String(qId).trim() && String(qId).trim() !== "");
                 
                 if (qIndex !== -1) {
+                    const oldRow = rows[qIndex];
+                    if (!isBook) {
+                        getChunkPaths(oldRow, courseFile).forEach(p => affectedChunks.add(p));
+                        getChunkPaths(updatedRow, courseFile).forEach(p => affectedChunks.add(p));
+                    }
                     Object.keys(updatedRow).forEach(newKey => {
                         const originalKey = Object.keys(rows[qIndex]).find(k => k.toLowerCase().replace(/\s/g, '') === newKey.toLowerCase().replace(/\s/g, ''));
                         rows[qIndex][originalKey || newKey] = updatedRow[newKey];
                     });
                 } else {
+                    if (!isBook) {
+                        getChunkPaths(updatedRow, courseFile).forEach(p => affectedChunks.add(p));
+                    }
                     rows.push(updatedRow);
                 }
             });
 
-            let outQs = []; let subTree = {}, sysTree = {}, exTree = {};
+            let outQs = [];
+            let subTree = {}, sysTree = {}, exTree = {};
+            let subject_chunks = {}, system_chunks = {}, exam_chunks = {};
+
             rows.forEach(row => {
                 const getVal = (names) => {
                     const key = Object.keys(row).find(k => names.includes(k.toLowerCase().replace(/\s/g, '')));
@@ -275,10 +350,16 @@ document.getElementById('btn-admin-push').onclick = async () => {
                 if (!qId) return;
 
                 const subject = getVal(['subject']); const chapter = getVal(['chapter']); const topic = getVal(['topic']);
-                const year = getVal(['year']); const examsList = getVal(['exams', 'exam']) ? getVal(['exams', 'exam']).split(',').map(e => e.trim()).filter(e => e) : [];
+                const year = getVal(['year']); 
+                const rawExams = getVal(['exams', 'exam']);
+                const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
+
+                const yearsList = year ? year.split(',').map(e => e.trim()).filter(e => e) : [];
+                const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
+                const specialtyList = rawSpecs ? rawSpecs.split(',').map(e => e.trim()).filter(e => e) : [];
 
                 let qObj = {
-                    id: qId, year: year, exams: examsList, subject: subject, chapter: chapter, topic: topic,
+                    id: qId, year: yearsList, specialty: specialtyList, exams: examsList, subject: subject, chapter: chapter, topic: topic,
                     difficulty: getVal(['difficulty']), question: getVal(['question']),
                     options: { A: getVal(['optiona']), B: getVal(['optionb']), C: getVal(['optionc']), D: getVal(['optiond']), E: getVal(['optione']) },
                     correctAnswer: getVal(['correctanswer']).toUpperCase(), explanation: getVal(['explanation']), hint: getVal(['hint'])
@@ -286,7 +367,6 @@ document.getElementById('btn-admin-push').onclick = async () => {
                 if (isBook) { qObj.isBookQuestion = true; qObj.bookName = courseFile; }
                 outQs.push(qObj);
 
-                // Hierarchy mapping
                 if (subject) {
                     if (!subTree[subject]) subTree[subject] = {};
                     if (chapter) {
@@ -301,27 +381,75 @@ document.getElementById('btn-admin-push').onclick = async () => {
                         if (topic) sysTree[chapter][subject][topic] = (sysTree[chapter][subject][topic] || 0) + 1;
                     }
                 }
-                if (year) {
-                    if (!exTree[year]) exTree[year] = {};
-                    examsList.forEach(ex => {
-                        if (!exTree[year][ex]) exTree[year][ex] = {};
-                        if (subject) {
-                            if (!exTree[year][ex][subject]) exTree[year][ex][subject] = {};
-                            if (topic) exTree[year][ex][subject][topic] = (exTree[year][ex][subject][topic] || 0) + 1;
+                
+                examsList.forEach((ex, i) => {
+                    const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
+                    const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
+                    const parsedEx = parseExamInfo(ex, fbYear, fbSpec);
+                    
+                    if (!exTree[parsedEx.examYear]) exTree[parsedEx.examYear] = {};
+                    if (!exTree[parsedEx.examYear][parsedEx.examSpec]) exTree[parsedEx.examYear][parsedEx.examSpec] = {};
+                    if (!exTree[parsedEx.examYear][parsedEx.examSpec][ex]) exTree[parsedEx.examYear][parsedEx.examSpec][ex] = 0;
+                    exTree[parsedEx.examYear][parsedEx.examSpec][ex]++;
+                });
+
+                // ONLY POPULATE CHUNKS IF THEY WERE AFFECTED BY AN EDIT
+                if (!isBook) {
+                    const s_clean = sanitizeFilename(subject);
+                    const c_clean = sanitizeFilename(chapter);
+                    const subj_path = `Data/${courseFile}/subjects/${s_clean}_${c_clean}.json`;
+                    
+                    if (affectedChunks.has(subj_path)) {
+                        if (!subject_chunks[subj_path]) subject_chunks[subj_path] = [];
+                        subject_chunks[subj_path].push(qObj);
+                    }
+
+                    if (chapter.toLowerCase().includes('system')) {
+                        const sys_path = `Data/${courseFile}/systems/${c_clean}_${s_clean}.json`;
+                        if (affectedChunks.has(sys_path)) {
+                            if (!system_chunks[sys_path]) system_chunks[sys_path] = [];
+                            system_chunks[sys_path].push(qObj);
+                        }
+                    }
+
+                    examsList.forEach((ex, i) => {
+                        const fbYear = yearsList[i] !== undefined ? yearsList[i] : (yearsList[yearsList.length - 1] || "Unknown Year");
+                        const fbSpec = specialtyList[i] !== undefined ? specialtyList[i] : (specialtyList[specialtyList.length - 1] || "Unknown Specialty");
+                        const parsedEx = parseExamInfo(ex, fbYear, fbSpec);
+                        
+                        const exam_path = `Data/${courseFile}/exams/${sanitizeFilename(parsedEx.examYear)}_${sanitizeFilename(parsedEx.examSpec)}_${sanitizeFilename(ex)}.json`;
+                        if (affectedChunks.has(exam_path)) {
+                            if (!exam_chunks[exam_path]) exam_chunks[exam_path] = [];
+                            exam_chunks[exam_path].push(qObj);
                         }
                     });
                 }
             });
 
-            const msg = `Admin Panel: Updated live database`;
-            await uploadFileToGitHub(paths.csv, Papa.unparse(rows), msg);
-            await uploadFileToGitHub(paths.json, JSON.stringify(outQs, null, 4), msg);
-            await uploadFileToGitHub(paths.hierarchy, JSON.stringify({ subjects: subTree, systems: sysTree, exams: exTree }, null, 4), msg);
+            const commitMsg = `Admin Panel: Updated live database & synced micro-chunks`;
+            await uploadFileToGitHub(paths.csv, Papa.unparse(rows), commitMsg);
+            
+            if (isBook) {
+                await uploadFileToGitHub(paths.json, JSON.stringify(outQs, null, 4), commitMsg);
+            } else {
+                const metadataList = outQs.map(q => ({
+                    id: q.id, year: q.year, exams: q.exams, subject: q.subject, chapter: q.chapter, topic: q.topic, difficulty: q.difficulty
+                }));
+                await uploadFileToGitHub(paths.metadata, JSON.stringify(metadataList), commitMsg);
+                
+                // PUSH AFFECTED CHUNKS DIRECTLY TO GITHUB
+                for (const chunkPath of affectedChunks) {
+                    let chunkData = subject_chunks[chunkPath] || system_chunks[chunkPath] || exam_chunks[chunkPath] || [];
+                    await uploadFileToGitHub(chunkPath, JSON.stringify(chunkData, null, 4), commitMsg);
+                }
+            }
+            
+            await uploadFileToGitHub(paths.hierarchy, JSON.stringify({ subjects: subTree, systems: sysTree, exams: exTree }, null, 4), commitMsg);
         }
 
         localStorage.removeItem('edeetos_pending_edits');
         updatePendingCount();
-        alert(`✅ Push complete! Changes are live.`);
+        alert(`✅ Success! CSV, Metadata, Hierarchy, AND micro-chunks synced to GitHub.`);
     } catch (error) {
         alert("❌ Push Failed: " + error.message);
     } finally {
@@ -891,11 +1019,34 @@ async function fetchReports() {
                 try {
                     let qData = null;
                     const knownBooks = ['firstaid_step1', 'firstaid_step2', 'im_medicine', 'im_surgery', 'im_pathology', 'im_pediatrics', 'brs_patho', 'brs_physio', 'pretest_surgery', 'rafiullah', 'RWR', 'doubleAA'];
-                    if (data.courseFile) {
-                        const url = `${knownBooks.includes(data.courseFile) ? 'Books' : 'Data'}/${data.courseFile}_questions.json`;
-                        const res = await fetch(url, { cache: 'no-cache' });
-                        if (res.ok) qData = (await res.json()).find(q => String(q.id || q.QuestionID) === String(data.questionId));
-                    }
+if (data.courseFile) {
+    const isBook = knownBooks.includes(data.courseFile);
+    if (isBook) {
+        const res = await fetch(`Books/${data.courseFile}_questions.json`, { cache: 'no-cache' });
+        if (res.ok) qData = (await res.json()).find(q => String(q.id || q.QuestionID) === String(data.questionId));
+    } else {
+        const metaRes = await fetch(`Data/${data.courseFile}_metadata.json`, { cache: 'no-cache' });
+        if (metaRes.ok) {
+            const metadata = await metaRes.json();
+            const qMeta = metadata.find(q => String(q.id || q.QuestionID) === String(data.questionId));
+            
+            if (qMeta) {
+                const sanitizeFilename = (name) => {
+                    if (!name) return "unknown";
+                    return String(name).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                };
+                const subjClean = sanitizeFilename(qMeta.subject || qMeta.Subject);
+                const chapClean = sanitizeFilename(qMeta.chapter || qMeta.Chapter);
+                const chunkUrl = `Data/${data.courseFile}/subjects/${subjClean}_${chapClean}.json`;
+                
+                const chunkRes = await fetch(chunkUrl, { cache: 'no-cache' });
+                if (chunkRes.ok) {
+                    qData = (await chunkRes.json()).find(q => String(q.id || q.QuestionID) === String(data.questionId));
+                }
+            }
+        }
+    }
+}
 
                     if (!window.editQuillHint) {
                         const tb = [['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], [{ 'list': 'ordered'}, { 'list': 'bullet' }], [{ 'align': [] }], ['clean']];

@@ -13,7 +13,34 @@ const detailsPanel = document.getElementById('report-details');
 let studentsData = [];
 let currentUserRole = 'STUDENT';
 const activeCourse = localStorage.getItem('edeetos_active_course');
-
+const idbCache = {
+    async init() {
+        return new Promise((resolve, reject) => {
+            const req = indexedDB.open("EdeetosCacheDB", 1);
+            req.onupgradeneeded = (e) => e.target.result.createObjectStore("user_profiles");
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+        });
+    },
+    async set(uid, data) {
+        try {
+            const db = await this.init();
+            const tx = db.transaction("user_profiles", "readwrite");
+            tx.objectStore("user_profiles").put(data, uid);
+        } catch(e) { console.warn("Cache write failed", e); }
+    },
+    async get(uid) {
+        try {
+            const db = await this.init();
+            return new Promise((resolve) => {
+                const tx = db.transaction("user_profiles", "readonly");
+                const req = tx.objectStore("user_profiles").get(uid);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => resolve(null);
+            });
+        } catch(e) { return null; }
+    }
+};
 // ==========================================
 // TIME FORMATTING HELPER
 // ==========================================
@@ -33,34 +60,26 @@ onAuthStateChanged(auth, async (user) => {
     if (user) {
         try {
             const userRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(userRef);
             
-            if (docSnap.exists()) {
-                const userData = { id: docSnap.id, ...docSnap.data() };
-                const role = (userData.role || 'STUDENT').toUpperCase();
-                currentUserRole = role;
-                if (role === 'BANNED') {
-                    window.location.href = 'dashboard.html';
-                    return;
-                }
+            // 1. Instantly load from IndexedDB cache
+            let cachedData = await idbCache.get(user.uid);
+            let userData = null;
 
-                if (role === 'STUDENT') {
-                    // Hide the left sidebar (search and student list)
-                    if (searchInput) searchInput.parentElement.style.display = 'none';
-                    if (studentListContainer) studentListContainer.parentElement.style.display = 'none';
-                    
-                    // Expand the details panel to full width
-                    if (detailsPanel) {
-                        detailsPanel.style.width = '100%';
-                        detailsPanel.style.maxWidth = '100%';
-                        detailsPanel.style.flex = '1';
-                    }
-                    
-                    // Directly load the student's own data
-                    displayDetailedReport(userData);
-                } else {
-                    // Admins and Mentors get the full list (and their own profile)
-                    fetchStudents(userData);
+            if (cachedData) {
+                userData = { id: user.uid, ...cachedData };
+                processUserRole(userData); 
+            }
+
+            // 2. Fetch fresh data in the background (or immediately if cache is empty)
+            const docSnap = await getDoc(userRef);
+            if (docSnap.exists()) {
+                const freshData = docSnap.data();
+                idbCache.set(user.uid, freshData);
+                
+                // If the cache was empty, render the UI now that we have data
+                if (!cachedData) {
+                    userData = { id: docSnap.id, ...freshData };
+                    processUserRole(userData);
                 }
             }
         } catch (error) {
@@ -71,6 +90,30 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
+function processUserRole(userData) {
+    const role = (userData.role || 'STUDENT').toUpperCase();
+    currentUserRole = role;
+    
+    if (role === 'BANNED') {
+        window.location.href = 'dashboard.html';
+        return;
+    }
+
+    if (role === 'STUDENT') {
+        if (searchInput) searchInput.parentElement.style.display = 'none';
+        if (studentListContainer) studentListContainer.parentElement.style.display = 'none';
+        
+        if (detailsPanel) {
+            detailsPanel.style.width = '100%';
+            detailsPanel.style.maxWidth = '100%';
+            detailsPanel.style.flex = '1';
+        }
+        
+        displayDetailedReport(userData);
+    } else {
+        fetchStudents(userData);
+    }
+}
 // 2. Fetch all standard students & Include the logged-in Mentor
 async function fetchStudents(currentUserData) {
     try {
