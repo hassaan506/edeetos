@@ -277,6 +277,7 @@ function changeView(viewName, titleText) {
         renderGrid();
     }
     if (typeof updateDashboardUI === 'function') updateDashboardUI();
+    initMentorFeatures();
 }
 
 // ==========================================
@@ -818,7 +819,15 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const labelDiv = document.createElement('div');
     labelDiv.style.flexGrow = '1';
 
-    const qCount = getQuestionCount(currentView, itemPath);
+const qCount = getQuestionCount(currentView, itemPath);
+    
+    const filtersActive = (unattemptedFilter && unattemptedFilter.checked) || 
+                          (diffEasyFilter && diffEasyFilter.checked) || 
+                          (diffMediumFilter && diffMediumFilter.checked) || 
+                          (diffHardFilter && diffHardFilter.checked);
+                          
+    if (qCount === 0 && filtersActive) return;
+
     const doneCount = getSolvedCount(currentView, itemPath);
     
     let countHtml = '';
@@ -2629,10 +2638,20 @@ if (btnAnalytics) {
             html += `<p style="font-size:0.8rem; color:#94a3b8; text-align:center;">No exams taken yet.</p>`;
         } else {
             html += `<div style="width: 100%; height: 200px; margin-bottom: 20px;"><canvas id="examScoreChart"></canvas></div>`;
-            html += `<div style="font-size:0.85rem; max-height:180px; overflow-y:auto;">
-                        <table style="width:100%; text-align:left; border-collapse: collapse;">`
+html += `<div style="font-size:0.85rem; max-height:180px; overflow-y:auto;">
+                        <table style="width:100%; text-align:left; border-collapse: collapse; table-layout: fixed;">
+                            <thead>
+                                <tr style="color: #64748b; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                    <th style="padding: 10px 0; width: 25%;">Date</th>
+                                    <th style="width: 40%;">Exam Name</th>
+                                    <th style="width: 15%;">Score</th>
+                                    <th style="width: 20%;">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
                         
-            userExamHistory.slice().reverse().slice(0, 10).forEach(ex => {
+            // Sort explicitly by date instead of blindly reversing
+            userExamHistory.slice().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10).forEach(ex => {
                 const totalSecs = ex.timeSpent || 0;
                 const totalQs = ex.totalQuestions || 1;
                 const avgSecs = Math.round(totalSecs / totalQs);
@@ -2641,13 +2660,13 @@ if (btnAnalytics) {
                 const timeString = totalSecs > 0 ? `${avgMins}m ${remainSecs}s` : "N/A";
                 
                 html += `<tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
-                            <td style="padding:10px 0; color: #94a3b8;">${new Date(ex.date).toLocaleDateString()}</td>
-                            <td style="color: #f8fafc; font-weight: 500;">${ex.examName}</td>
+                            <td style="padding:10px 0; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${new Date(ex.date).toLocaleDateString()}</td>
+                            <td style="color: #f8fafc; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${ex.examName}</td>
                             <td style="color:${ex.percentage >= 75 ? '#34d399' : '#f87171'}; font-weight:bold;">${ex.percentage}%</td>
                             <td style="color: #94a3b8; font-weight: 500;">${timeString}</td>
                          </tr>`;
             });
-            html += `</table></div>`;
+            html += `</tbody></table></div>`;
         }
 
         if (body) body.innerHTML = html;
