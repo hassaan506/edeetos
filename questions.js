@@ -1025,8 +1025,8 @@ function getQuestionCount(view, pathArr, customPool = null) {
     } else if (paths[0] === "Skipped Questions") {
         pool = pool.filter(q => globalSkipped.includes(getQID(q)));
         paths.shift();
-    } else if (paths[0] && paths[0].startsWith("Folder: ")) {
-        const folderName = paths[0].replace("Folder: ", "");
+    } else if (paths[0] && paths[0].startsWith("\u200B")) {
+        const folderName = paths[0].replace("\u200B", "");
         pool = pool.filter(q => (globalBookmarkFolders[getQID(q)] || "For Revision") === folderName);
         paths.shift();
     }
@@ -3549,7 +3549,7 @@ async function hydrateUserState(dbData) {
             activeCustomPool = bPool;
 			let folderTree = {};
             bPool.forEach(q => {
-                let f = "Folder: " + (globalBookmarkFolders[getQID(q)] || "For Revision");
+                let f = "\u200B" + (globalBookmarkFolders[getQID(q)] || "For Revision");
                 let s = q.Subject || q.subject || 'Uncategorized';
                 let c = q.Chapter || q.chapter || 'General';
                 let t = q.Topic || q.topic || 'General';

@@ -1769,22 +1769,6 @@ skipBtn.onclick = () => {
     }
 };
 
-    if (!currentQuestionData.sessionState) {
-        currentQuestionData.sessionState = 'skipped';
-        currentQuestionData.hasBeenSkipped = true;
-        const btn = document.getElementById(`grid-num-${currentIndex}`);
-        if (btn) btn.classList.add('skipped');
-    }
-
-    if (currentIndex < quizQueue.length - 1) {
-        const newIndex = currentIndex + 1;
-        syncNextQuestion(newIndex);
-        triggerSlideTransition(newIndex, 'right');
-    } else {
-        showPracticeCompleteModal(false);
-    }
-};
-
 if (labValuesBtn) labValuesBtn.onclick = () => {
     if (labValuesModal) {
         labValuesModal.classList.remove('hidden');
