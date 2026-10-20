@@ -310,6 +310,28 @@
             <button id="close-lab-values-btn" class="action-btn text-btn full-width">Close Reference</button>
         </div>
     </div>
+
+    <!-- Bookmark Category Modal -->
+    <div id="bookmark-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content">
+            <h3 class="purple-text"><i class="fas fa-bookmark"></i> Save Bookmark</h3>
+            <p class="modal-subtext">Choose a folder to save this question into.</p>
+            
+            <select id="bookmark-folder-select" class="glass-input" style="margin-bottom: 15px;">
+                <option value="For Revision">For Revision</option>
+                <option value="High Yield Topic">High Yield Topic</option>
+                <option value="For Exam">For Exam</option>
+                <option value="custom">Custom Folder...</option>
+            </select>
+            
+            <input type="text" id="bookmark-custom-input" class="glass-input hidden" placeholder="Enter custom folder name" style="margin-bottom: 15px;">
+
+            <div class="modal-actions-row right-align">
+                <button id="close-bookmark-modal" class="action-btn text-btn">Cancel</button>
+                <button id="save-bookmark-btn" class="action-btn next-btn" style="flex: 1;">Save to Folder</button>
+            </div>
+        </div>
+    </div>
     
     <!-- Notes Modal -->
     <div id="notes-modal" class="modal-overlay hidden">
