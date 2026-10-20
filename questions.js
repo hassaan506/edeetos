@@ -466,7 +466,7 @@ if (globalSearch && searchDropdown) {
             // 2. Filter metadata using matched IDs and category names
             const matchedMeta = searchPool.filter(q => {
                 const qId = String(getQID(q));
-                const hierarchyText = `${q.Subject || q.subject || ''} ${q.Chapter \vert{}\vert{} q.chapter \vert{}\vert{} ''}${q.Topic || q.topic || ''}`.toLowerCase();
+                const hierarchyText = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''}${q.Topic || q.topic || ''}`.toLowerCase();
                 
                 // Match if the ID is in our text-search hits OR the query matches the topic/chapter name
                 const isMatch = matchingIds.has(qId) || hierarchyText.includes(query);
@@ -500,7 +500,7 @@ if (globalSearch && searchDropdown) {
                 matchedMeta.slice(0, 30).forEach(q => {
                     const div = document.createElement('div');
                     div.className = 'search-item';
-                    const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter \vert{}\vert{} q.chapter \vert{}\vert{} ''}${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
+                    const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter || q.chapter || ''}${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
                     
                     let snippetText = q.question || q.Question;
                     if (!snippetText && window.globalSearchIndex) {
