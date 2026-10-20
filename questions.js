@@ -20,14 +20,16 @@ let userExamHistory = [];
 let globalPracticeMistakes = [];
 let globalExamMistakes = [];
 let globalBookmarks = [];
+let globalBookmarkFolders = {};
+let globalSkipped = [];
 let activeCustomPool = null;
 let isPremiumUser = false;
 let currentUserRole = "STUDENT";
 let currentUserData = null; 
 let isGlobalPopupActive = false;
 let viewSpecificStats = {
-    course: { solved: [], mistakes: [], bookmarks: [], accuracy: 0 },
-    book: { solved: [], mistakes: [], bookmarks: [], accuracy: 0 }
+    course: { solved: [], mistakes: [], bookmarks: [], skipped: [], accuracy: 0 },
+    book: { solved: [], mistakes: [], bookmarks: [], skipped: [], accuracy: 0 }
 };
 
 const loadedBooksCache = {}; 
@@ -242,9 +244,10 @@ window.updateDashboardUI = function() {
     const type = currentView === 'book' ? 'book' : 'course';
     const stats = viewSpecificStats[type];
 
-    if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = stats.solved.length;
+	if (document.getElementById('stat-solved')) document.getElementById('stat-solved').textContent = stats.solved.length;
     if (document.getElementById('stat-mistakes')) document.getElementById('stat-mistakes').textContent = stats.mistakes.length;
     if (document.getElementById('stat-bookmarks')) document.getElementById('stat-bookmarks').textContent = stats.bookmarks.length;
+    if (document.getElementById('stat-skipped')) document.getElementById('stat-skipped').textContent = stats.skipped.length;
     if (document.getElementById('stat-accuracy')) document.getElementById('stat-accuracy').textContent = `${stats.accuracy}%`;
 };
 
@@ -1637,11 +1640,18 @@ function getQuestionCount(view, pathArr, customPool = null) {
     let pool = customPool || activeCustomPool || globalMetadata;
     let paths = [...pathArr];
 
-    if (paths[0] === "Practice Mistakes") {
+if (paths[0] === "Practice Mistakes") {
         pool = pool.filter(q => globalPracticeMistakes.includes(getQID(q)));
         paths.shift();
     } else if (paths[0] === "Exam Mistakes") {
         pool = pool.filter(q => globalExamMistakes.includes(getQID(q)));
+        paths.shift();
+    } else if (paths[0] === "Skipped Questions") {
+        pool = pool.filter(q => globalSkipped.includes(getQID(q)));
+        paths.shift();
+    } else if (paths[0] && paths[0].startsWith("Folder: ")) {
+        const folderName = paths[0].replace("Folder: ", "");
+        pool = pool.filter(q => (globalBookmarkFolders[getQID(q)] || "For Revision") === folderName);
         paths.shift();
     }
 
@@ -3197,15 +3207,19 @@ for (const courseFile of Object.keys(editsByCourse)) {
     const courseData = dbData[activeCourse] || {};
     const booksData = dbData.books || {};
 
-    const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
+const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
     const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
     const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
     const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
+    const courseSkipped = (courseData.skippedQuestions || []).map(id => String(id));
 
     const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
     const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
     const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
     const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
+    const bookSkipped = (booksData.skippedQuestions || []).map(id => String(id));
+
+    globalBookmarkFolders = { ...(courseData.bookmarkFolders || {}), ...(booksData.bookmarkFolders || {}) };
 
     userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
@@ -3213,17 +3227,22 @@ for (const courseFile of Object.keys(editsByCourse)) {
     const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
     const validCourseExamMistakes = [...new Set(courseExamMistakes)];
     const validCourseBookmarks = [...new Set(courseBookmarks)];
+    const uniqueCourseSkipped = [...new Set(courseSkipped)];
 
     const uniqueBookSolved = [...new Set(bookSolved)];
     const uniqueBookPracticeMistakes = [...new Set(bookPracticeMistakes)];
     const uniqueBookExamMistakes = [...new Set(bookExamMistakes)];
     const uniqueBookBookmarks = [...new Set(bookBookmarks)];
+    const uniqueBookSkipped = [...new Set(bookSkipped)];
 
     globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
     globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
     globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
+    globalSkipped = [...uniqueCourseSkipped, ...uniqueBookSkipped];
+    
     attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
-    window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes]);
+    window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes, ...globalSkipped]);
+    
     const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
     const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
     
@@ -3231,6 +3250,7 @@ for (const courseFile of Object.keys(editsByCourse)) {
         solved: validCourseSolved,
         mistakes: courseAllMistakes,
         bookmarks: validCourseBookmarks,
+        skipped: uniqueCourseSkipped,
         accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
     };
 
@@ -3241,9 +3261,10 @@ for (const courseFile of Object.keys(editsByCourse)) {
         solved: uniqueBookSolved,
         mistakes: bookAllMistakes,
         bookmarks: uniqueBookBookmarks,
+        skipped: uniqueBookSkipped,
         accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
     };
-
+	
     await loadDataAndBuildTree();
     restoreLastState();
     if (typeof updateDashboardUI === 'function') updateDashboardUI();
@@ -3532,7 +3553,21 @@ sortedDays.forEach(day => {
             }
 
             activeCustomPool = bPool;
-            openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", buildSubTree(bPool), 'Level1', []);
+			let folderTree = {};
+            bPool.forEach(q => {
+                let f = "Folder: " + (globalBookmarkFolders[getQID(q)] || "For Revision");
+                let s = q.Subject || q.subject || 'Uncategorized';
+                let c = q.Chapter || q.chapter || 'General';
+                let t = q.Topic || q.topic || 'General';
+                
+                if (!folderTree[f]) folderTree[f] = {};
+                if (!folderTree[f][s]) folderTree[f][s] = {};
+                if (!folderTree[f][s][c]) folderTree[f][s][c] = {};
+                folderTree[f][s][c][t] = (folderTree[f][s][c][t] || 0) + 1;
+            });
+
+            activeCustomPool = bPool;
+            openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", folderTree, 'Level1', []);
         };
     }
     
@@ -3543,6 +3578,63 @@ sortedDays.forEach(day => {
     }, 2000);
 }
 
+const btnSkipped = document.getElementById('btn-practice-skipped');
+    if (btnSkipped) {
+        btnSkipped.disabled = false;
+        btnSkipped.style.cursor = "pointer";
+        btnSkipped.onclick = async () => {
+            isGlobalPopupActive = true;
+            const isBook = currentView === 'book';
+            
+            const activeSkipped = isBook ? viewSpecificStats.book.skipped : viewSpecificStats.course.skipped;
+            if (activeSkipped.length === 0) {
+                alert(isBook ? "You don't have any skipped book questions." : "You don't have any skipped course questions.");
+                return;
+            }
+
+            let sPool = [];
+            if (!isBook) {
+                document.body.style.cursor = 'wait';
+                const targetUrls = new Set();
+                globalMetadata.forEach(q => {
+                    if (!q.isBookQuestion && globalSkipped.includes(getQID(q))) {
+                        targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
+                    }
+                });
+
+                const sSeen = new Set();
+                for (let url of targetUrls) {
+                    if (!window.activeChunksCache[url]) {
+                        try {
+                            const res = await fetch(url);
+                            if (res.ok) window.activeChunksCache[url] = await res.json();
+                            else window.activeChunksCache[url] = [];
+                        } catch(e) { window.activeChunksCache[url] = []; }
+                    }
+                    const chunkQs = window.activeChunksCache[url];
+                    chunkQs.forEach(q => {
+                        const qId = getQID(q);
+                        if (globalSkipped.includes(qId) && !sSeen.has(qId)) {
+                            sSeen.add(qId);
+                            sPool.push(q);
+                        }
+                    });
+                }
+                document.body.style.cursor = 'default';
+            } else {
+                sPool = allQuestions.filter(q => globalSkipped.includes(getQID(q)) && q.isBookQuestion);
+            }
+
+            if (sPool.length === 0 && isBook) {
+                alert("Skipped questions exist, but you must open the specific book first to load its questions into memory.");
+                return;
+            }
+
+            let combinedTree = { "Skipped Questions": buildSubTree(sPool) };
+            activeCustomPool = sPool;
+            openPopup(isBook ? "⏭️ Skipped Book Qs" : "⏭️ Skipped Course Qs", combinedTree, 'Level1', []);
+        };
+    }
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         localStorage.removeItem('edeetos_guest_mode');
