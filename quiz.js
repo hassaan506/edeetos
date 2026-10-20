@@ -1757,8 +1757,7 @@ skipBtn.onclick = () => {
         const btn = document.getElementById(`grid-num-${currentIndex}`);
         if (btn) btn.classList.add('skipped');
         
-        // FIX: Force the system to save skipped questions as mistakes so they return in reviews
-        savePracticeProgress(currentQuestionData.originalNumber, false);
+        saveSkippedProgress(currentQuestionData.originalNumber);
     }
 
     if (currentIndex < quizQueue.length - 1) {
@@ -1924,6 +1923,19 @@ document.getElementById('prev-btn').onclick = () => {
         triggerSlideTransition(newIndex, 'left');
     }
 };
+
+async function saveSkippedProgress(questionId) {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
+    const user = auth.currentUser;
+    if (!user) return; 
+
+    const userRef = doc(db, "users", user.uid);
+    const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
+    
+    try {
+        await setDoc(userRef, { [rootKey]: { skippedQuestions: arrayUnion(questionId) } }, { merge: true });
+    } catch (error) { console.error("Error saving skipped progress:", error); }
+}
 
 // ==========================================
 // 10. HOTKEYS & EVENT LISTENERS
