@@ -1,28 +1,28 @@
 import { db } from "./firebase-config.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const auth = getAuth();
 
     // AUTHENTICATION STATE OVERRIDE
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // Target your login button and switch it to a Dashboard link
-            // Replace '.your-login-btn-class' with your actual button selector
-            const loginBtn = document.querySelector('.your-login-btn-class');
-            if (loginBtn) {
-                loginBtn.textContent = "Go to Dashboard";
-                loginBtn.href = "dashboard.html";
-                
-                // If it's a button element instead of an anchor link:
-                loginBtn.onclick = (e) => {
-                    e.preventDefault();
-                    window.location.href = "dashboard.html";
-                };
-            }
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const authMenu = document.getElementById('auth-menu');
+        if (authMenu) {
+            authMenu.innerHTML = `
+                <li><a href="dashboard.html" class="btn-solid">My Dashboard</a></li>
+                <li><button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 1rem;">Logout</button></li>
+            `;
+            
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                signOut(auth).then(() => {
+                    window.location.reload(); 
+                });
+            });
         }
-    });
+    }
+});
 
     // === FEATURE: CONTACT FORM SUBMISSION ===
     const contactForm = document.getElementById('contact-form');

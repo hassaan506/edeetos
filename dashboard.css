@@ -102,7 +102,16 @@ html.dark-mode .popup-content, body.dark-mode .popup-content {
 }
 .nav-actions button:hover, .nav-actions a:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-1px); }
 
-.theme-toggle-btn { padding: 0.5rem !important; border-radius: 50% !important; width: 38px; justify-content: center; }
+.theme-toggle-btn { 
+    width: 38px !important; 
+    height: 38px !important; 
+    padding: 0 !important;
+    border-radius: 50% !important; 
+    justify-content: center; 
+    align-items: center;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+}
 .btn-nav-admin { background: rgba(147, 51, 234, 0.28) !important; border-color: #c084fc !important; color: #f3e8ff !important; }
 .btn-nav-premium { background: rgba(245, 158, 11, 0.28) !important; border-color: #fcd34d !important; color: #fef3c7 !important; }
 .btn-nav-reports { background: rgba(59, 130, 246, 0.28) !important; border-color: #93c5fd !important; }
