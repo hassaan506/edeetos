@@ -171,11 +171,24 @@ input[type="number"] {
 /* 5. SEARCH & FILTER BAR                     */
 /* ========================================== */
 .search-filter-bar {
-    display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;
-    justify-content: space-between; padding: 1.5rem 2.5rem; margin-bottom: 2.5rem; position: relative; z-index: 10; 
+    display: flex; 
+    flex-direction: column; /* Stacks the search bar and the filters */
+    gap: 1.5rem; 
+    align-items: center;
+    justify-content: center; 
+    padding: 1.5rem 2.5rem; 
+    margin-bottom: 2.5rem; 
+    position: relative; 
+    z-index: 10; 
 }
 
-.search-wrapper { position: relative; flex-grow: 1; min-width: 300px; z-index: 5001; }
+.search-wrapper { 
+    position: relative; 
+    width: 100%; /* Forces search bar to take full width */
+    z-index: 5001; 
+}
+
+/* Base styling for the wrapper of the search bar */
 .search-wrapper i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.2rem; }
 .search-wrapper input {
     width: 100%; padding: 1rem 1.2rem 1rem 3.5rem; border-radius: 50px;
@@ -202,6 +215,15 @@ input[type="number"] {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
 
+.search-filter-bar > div:not(.search-wrapper) { 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-content: center !important; 
+    width: 100%;
+    gap: 1.2rem; 
+}
 .search-filter-bar > div:not(.search-wrapper) { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 1.2rem; }
 
 .search-dropdown {
@@ -336,7 +358,31 @@ input[type="number"] {
     .exam-action-bar .input-group { flex: 1; min-width: 45%; }
     .exam-action-bar input[type="number"] { width: 100%; }
     .exam-action-bar .start-btn { width: 100%; margin-top: 0.5rem; }
+	.search-filter-bar > div:not(.search-wrapper) {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 1rem;
+    }
+    
+    /* Center the checkboxes inside their respective grid cells */
+    .search-filter-bar > div:not(.search-wrapper) .filter-wrapper {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Stretch the action buttons to fill their grid cells */
+    .search-filter-bar > div:not(.search-wrapper) .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Hide the inline vertical lines so they don't occupy empty grid cells */
+    .search-filter-bar > div:not(.search-wrapper) > div[style*="width: 1px"] {
+        display: none !important;
+    }
 }
+
 /* Utility Spacing */
 .mb-1-5 { margin-bottom: 1.5rem !important; }
 

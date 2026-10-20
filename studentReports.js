@@ -171,15 +171,15 @@ function renderStudentList(list) {
         const item = document.createElement('div');
         item.className = 'student-item';
         
-        // Highlight the Mentor's own profile slightly differently
+// Highlight the Mentor's own profile slightly differently
         const isMe = student.fullName.includes("(Me)");
         if (isMe) {
-            item.style.borderLeft = "4px solid #8b5cf6";
-            item.style.backgroundColor = "#f8fafc";
+            item.style.borderLeft = "4px solid #c084fc";
+            item.style.background = "rgba(147, 51, 234, 0.15)";
         }
         
         item.innerHTML = `
-            <div class="student-name" style="${isMe ? 'color: #8b5cf6;' : ''}">${student.fullName || "Unnamed User"}</div>
+            <div class="student-name" style="${isMe ? 'color: #e9d5ff;' : ''}">${student.fullName || "Unnamed User"}</div>
             <div class="student-email">${student.email || "No Email"}</div>
         `;
 

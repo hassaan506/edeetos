@@ -190,6 +190,34 @@ html.dark-mode .popup-content, body.dark-mode .popup-content {
 .btn-close-corner:hover { color: #f8fafc; }
 .btn-text-muted { background: transparent; border: none; color: #94a3b8; font-weight: 600; text-decoration: underline; width: 100%; padding: 0.8rem; cursor: pointer; }
 .btn-text-muted:hover { color: #f8fafc; }
+/* === CUSTOM FILE UPLOAD DROPZONE === */
+.custom-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    border: 2px dashed rgba(52, 211, 153, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    color: #94a3b8;
+    width: 100%;
+}
+
+.custom-file-upload:hover {
+    border-color: #34d399;
+    background: rgba(16, 185, 129, 0.1);
+    color: #f8fafc;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: #34d399;
+    margin-bottom: 0.8rem;
+}
 
 /* Premium Modal Elements */
 .tab-container { display: flex; background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 4px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }

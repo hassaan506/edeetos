@@ -416,8 +416,12 @@
                     <div class="bank-row"><span>Account No:</span><span class="bank-val">01860104738754</span></div>
                 </div>
 
-                <div class="section-label">Upload Payment Proof</div>
-                <input type="file" id="payment-proof" accept="image/*" class="glass-input mb-1-5" style="padding: 0.5rem;">
+<div class="section-label">Upload Payment Proof</div>
+<label for="payment-proof" class="custom-file-upload mb-1-5">
+    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+    <span id="file-name-display">Click to browse or drag receipt here</span>
+</label>
+<input type="file" id="payment-proof" accept="image/*" style="display: none;">
 
                 <div class="section-label">Apply Promo Code</div>
                 <div class="flex-row gap-10px mb-05">

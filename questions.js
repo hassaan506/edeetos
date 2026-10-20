@@ -1909,7 +1909,10 @@ if (btnAnalytics) {
             if (ctx) {
                 if (window.examChartInstance) window.examChartInstance.destroy();
                 
-                const recentExams = userExamHistory.slice().reverse().slice(0, 10).reverse();
+                const recentExams = userExamHistory.slice()
+    .sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort newest first
+    .slice(0, 10) // Grab the 10 most recent
+    .reverse(); // Flip it so the chart reads left-to-right (oldest to newest)
                 const labels = recentExams.map(ex => new Date(ex.date).toLocaleDateString(undefined, {month: 'short', day: 'numeric'}));
                 const scores = recentExams.map(ex => ex.percentage);
 
@@ -2281,12 +2284,13 @@ function showMilestonePopup(trophy) {
         }
     }
 
-    modal.innerHTML = `
-        <div class="glass-panel popup-content text-center" style="max-width: 450px; width: 90%;">
-            <div style="font-size: 4.5rem; margin-bottom: 10px; line-height: 1;">${trophy.icon}</div>
-            <h2 class="modal-title-blue" style="margin-bottom: 10px;">Milestone Reached!</h2>
-            <p class="modal-subtitle" style="margin-bottom: 5px;">You achieved the <strong style="color: #f8fafc;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>${rewardOptionsHtml}
-            <button id="close-milestone-btn" class="action-btn w-100" style="margin-top: 15px;">Dismiss</button>
+modal.innerHTML = `
+        <div class="glass-panel popup-content text-center" style="max-width: 380px; width: 90%; padding: 1.5rem;">
+            <div style="font-size: 3rem; margin-bottom: 5px; line-height: 1;">${trophy.icon}</div>
+            <h2 class="modal-title-blue" style="margin-bottom: 5px; font-size: 1.5rem;">Milestone Reached!</h2>
+            <p class="modal-subtitle" style="margin-bottom: 10px; font-size: 0.85rem;">You achieved the <strong style="color: #f8fafc;">${trophy.title}</strong> rank by completing ${trophy.req} flawless questions!</p>
+            ${rewardOptionsHtml}
+            <button id="close-milestone-btn" class="action-btn w-100" style="margin-top: 10px; padding: 0.8rem;">Dismiss</button>
         </div>
     `;
     document.body.appendChild(modal);

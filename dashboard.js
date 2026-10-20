@@ -487,6 +487,24 @@ document.getElementById('btn-confirm-courses').addEventListener('click', () => {
     courseSelectorModal.classList.add('view-hidden'); updatePrices();
 });
 
+// === UPDATE FILE UPLOAD NAME DISPLAY ===
+const fileInput = document.getElementById('payment-proof');
+const fileNameDisplay = document.getElementById('file-name-display');
+
+if (fileInput && fileNameDisplay) {
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            fileNameDisplay.textContent = this.files[0].name;
+            fileNameDisplay.style.color = '#34d399';
+            fileNameDisplay.style.fontWeight = 'bold';
+        } else {
+            fileNameDisplay.textContent = 'Click to browse or drag receipt here';
+            fileNameDisplay.style.color = '#94a3b8';
+            fileNameDisplay.style.fontWeight = 'normal';
+        }
+    });
+}
+
 let activePromoCode = null; let activePromoDiscount = 0; 
 const btnApplyPromo = document.getElementById('btn-apply-promo');
 if (btnApplyPromo) {
