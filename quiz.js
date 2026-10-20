@@ -58,6 +58,11 @@ const notesModal = document.getElementById('notes-modal');
 const noteInput = document.getElementById('note-input');
 const closeNotesBtn = document.getElementById('close-notes-btn');
 const saveNoteBtn = document.getElementById('save-note-btn');
+const bookmarkModal = document.getElementById('bookmark-modal');
+const bookmarkFolderSelect = document.getElementById('bookmark-folder-select');
+const bookmarkCustomInput = document.getElementById('bookmark-custom-input');
+const closeBookmarkModalBtn = document.getElementById('close-bookmark-modal');
+const saveBookmarkBtn = document.getElementById('save-bookmark-btn');
 const labValuesBtn = document.getElementById('lab-values-btn');
 const labValuesModal = document.getElementById('lab-values-modal');
 const closeLabValuesBtn = document.getElementById('close-lab-values-btn');
@@ -629,7 +634,7 @@ function loadQuestion(index) {
             aiHintBtn.style.display = 'flex';
         }
 
-        const bookmarkBtn = document.getElementById('bookmark-btn');
+const bookmarkBtn = document.getElementById('bookmark-btn');
         if (bookmarkBtn) {
             const starIcon = bookmarkBtn.querySelector('i');
             if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
@@ -638,10 +643,22 @@ function loadQuestion(index) {
             bookmarkBtn.onclick = (e) => {
                 e.preventDefault();
                 if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
-                currentQuestionData.isBookmarked = !currentQuestionData.isBookmarked;
-                if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
-                else starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
-                toggleBookmarkInFirebase(currentQuestionData.originalNumber, currentQuestionData.isBookmarked);
+                
+                if (currentQuestionData.isBookmarked) {
+                    // Turn it off immediately if already bookmarked
+                    currentQuestionData.isBookmarked = false;
+                    starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
+                    toggleBookmarkInFirebase(currentQuestionData.originalNumber, false);
+                } else {
+                    // Open the category popup instead of instantly saving
+                    if (bookmarkModal) {
+                        bookmarkFolderSelect.value = "For Revision";
+                        bookmarkCustomInput.classList.add('hidden');
+                        bookmarkCustomInput.value = "";
+                        bookmarkModal.classList.remove('hidden');
+                        bookmarkModal.classList.add('show');
+                    }
+                }
             };
         }
 
@@ -667,7 +684,45 @@ function loadQuestion(index) {
                 setTimeout(() => notesModal.classList.add('hidden'), 300);
             };
         }
+if (bookmarkFolderSelect) {
+            bookmarkFolderSelect.onchange = (e) => {
+                if (e.target.value === 'custom') {
+                    bookmarkCustomInput.classList.remove('hidden');
+                    bookmarkCustomInput.focus();
+                } else {
+                    bookmarkCustomInput.classList.add('hidden');
+                }
+            };
+        }
 
+        if (closeBookmarkModalBtn) {
+            closeBookmarkModalBtn.onclick = () => {
+                bookmarkModal.classList.remove('show');
+                setTimeout(() => bookmarkModal.classList.add('hidden'), 300);
+            };
+        }
+
+        if (saveBookmarkBtn) {
+            saveBookmarkBtn.onclick = () => {
+                let selectedFolder = bookmarkFolderSelect.value;
+                if (selectedFolder === 'custom') {
+                    selectedFolder = bookmarkCustomInput.value.trim();
+                    if (!selectedFolder) return alert("Please enter a custom folder name.");
+                }
+
+                currentQuestionData.isBookmarked = true;
+                currentQuestionData.bookmarkFolder = selectedFolder;
+                
+                const starIcon = document.getElementById('bookmark-btn').querySelector('i');
+                starIcon.classList.replace('far', 'fas');
+                starIcon.classList.add('fa-solid');
+
+                toggleBookmarkInFirebase(currentQuestionData.originalNumber, true, selectedFolder);
+
+                bookmarkModal.classList.remove('show');
+                setTimeout(() => bookmarkModal.classList.add('hidden'), 300);
+            };
+        }
         if (closeNotesBtn) {
             closeNotesBtn.onclick = () => {
                 notesModal.classList.remove('show');
@@ -1038,7 +1093,7 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     } catch (error) { console.error("Error saving exam progress:", error); }
 }
 
-async function toggleBookmarkInFirebase(questionId, isBookmarking) {
+async function toggleBookmarkInFirebase(questionId, isBookmarking, folderName = null) {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
     if (!user) return; 
@@ -1047,8 +1102,25 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking) {
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
     
     try {
-        await setDoc(userRef, { [rootKey]: { bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId) } }, { merge: true });
-    } catch (error) { console.error("Error updating bookmark:", error); }
+        let updates = {};
+        if (isBookmarking) {
+            updates[`${rootKey}.bookmarks`] = arrayUnion(questionId);
+            if (folderName) updates[`${rootKey}.bookmarkFolders.${questionId}`] = folderName;
+        } else {
+            updates[`${rootKey}.bookmarks`] = arrayRemove(questionId);
+            updates[`${rootKey}.bookmarkFolders.${questionId}`] = deleteField();
+        }
+        await updateDoc(userRef, updates);
+    } catch (error) { 
+        console.error("Error updating bookmark:", error); 
+        // Fallback if the map doesn't exist yet
+        try {
+            await setDoc(userRef, { [rootKey]: { bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId) } }, { merge: true });
+            if (isBookmarking && folderName) {
+                await setDoc(userRef, { [rootKey]: { bookmarkFolders: { [questionId]: folderName } } }, { merge: true });
+            }
+        } catch(e) {}
+    }
 }
 
 async function saveNoteToFirebase(questionId, noteText) {
@@ -1678,6 +1750,25 @@ skipBtn.onclick = () => {
         }
         return;
     }
+
+    if (!currentQuestionData.sessionState) {
+        currentQuestionData.sessionState = 'skipped';
+        currentQuestionData.hasBeenSkipped = true;
+        const btn = document.getElementById(`grid-num-${currentIndex}`);
+        if (btn) btn.classList.add('skipped');
+        
+        // FIX: Force the system to save skipped questions as mistakes so they return in reviews
+        savePracticeProgress(currentQuestionData.originalNumber, false);
+    }
+
+    if (currentIndex < quizQueue.length - 1) {
+        const newIndex = currentIndex + 1;
+        syncNextQuestion(newIndex);
+        triggerSlideTransition(newIndex, 'right');
+    } else {
+        showPracticeCompleteModal(false);
+    }
+};
 
     if (!currentQuestionData.sessionState) {
         currentQuestionData.sessionState = 'skipped';
