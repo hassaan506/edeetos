@@ -2376,93 +2376,87 @@ if (journeyModal) {
 // ==========================================
 // 13. REVISIONS & SPACED REPETITION
 // ==========================================
-window.generateRevisionQuiz = async function(topicId) {
-
-    if (!topicId) {
-        return alert("Invalid revision topic.");
+window.generateRevisionQuiz = async function(topicIdsArray, intervalDay) {
+    if (!topicIdsArray || topicIdsArray.length === 0) {
+        return alert("Invalid revision topics.");
     }
 
-    let subject, chapter, topic, sourceName;
-
-    const parts = topicId.split('::');
-    
-    if (parts.length >= 4) {
-        subject = parts[0];
-        chapter = parts[1];
-        topic = parts[2];
-        sourceName = parts[3];
-    } else {
-        const oldParts = topicId.split('_');
-        sourceName = oldParts.pop();
-        topic = oldParts.pop() || '';
-        chapter = oldParts.pop() || '';
-        subject = oldParts.join('_') || '';
-    }
-
+    let combinedPool = [];
     const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-    const isBookRevision = (sourceName !== currentActiveCourse);
 
-    if (isBookRevision) {
-        const book = availableBooks.find(b => b.file === sourceName);
-        if (book && !loadedBooksCache[book.file]) {
-            try {
-                document.body.style.cursor = 'wait';
-                const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
-                if (response.ok) {
-                    let bookQuestions = await response.json();
-                    bookQuestions.forEach(q => {
-                        q.QuestionID = q.id;
-                        q.Subject = book.title;
-                        q.Chapter = q.chapter;
-                        q.Topic = q.topic;
-                        q.Exam = q.exams;
-                        q.Year = q.year;
-                        q.isBookQuestion = true;
-                        q.bookName = book.file;
-                    });
-                    loadedBooksCache[book.file] = bookQuestions;
-                    allQuestions = allQuestions.filter(q => q.bookName !== book.file);
-                    allQuestions.push(...bookQuestions);
-                }
-            } catch(e) { 
-                console.error(e); 
-            } finally {
-                document.body.style.cursor = 'default';
+    document.body.style.cursor = 'wait';
+
+    try {
+        for (let topicId of topicIdsArray) {
+            let subject, chapter, topic, sourceName;
+            const parts = topicId.split('::');
+            
+            if (parts.length >= 4) {
+                subject = parts[0]; chapter = parts[1]; topic = parts[2]; sourceName = parts[3];
+            } else {
+                const oldParts = topicId.split('_');
+                sourceName = oldParts.pop(); topic = oldParts.pop() || ''; chapter = oldParts.pop() || ''; subject = oldParts.join('_') || '';
             }
+
+            const isBookRevision = (sourceName !== currentActiveCourse);
+
+            if (isBookRevision) {
+                const book = availableBooks.find(b => b.file === sourceName);
+                if (book && !loadedBooksCache[book.file]) {
+                    const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+                    if (response.ok) {
+                        let bookQuestions = await response.json();
+                        bookQuestions.forEach(q => {
+                            q.QuestionID = q.id; q.Subject = book.title; q.Chapter = q.chapter; q.Topic = q.topic;
+                            q.Exam = q.exams; q.Year = q.year; q.isBookQuestion = true; q.bookName = book.file;
+                        });
+                        loadedBooksCache[book.file] = bookQuestions;
+                        allQuestions = allQuestions.filter(q => q.bookName !== book.file);
+                        allQuestions.push(...bookQuestions);
+                    }
+                }
+            }
+
+            const searchSource = isBookRevision ? loadedBooksCache[sourceName] : globalMetadata;
+            const topicPool = searchSource.filter(q => {
+                const qSubject = q.Subject || q.subject || '';
+                const qChapter = q.Chapter || q.chapter || '';
+                const qTopic = q.Topic || q.topic || '';
+                const qIsBook = q.isBookQuestion || false;
+                
+                return (
+                    qSubject.trim().toLowerCase() === subject.trim().toLowerCase() &&
+                    qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() &&
+                    qTopic.trim().toLowerCase() === topic.trim().toLowerCase() &&
+                    (isBookRevision ? qIsBook : !qIsBook)
+                );
+            });
+
+            combinedPool.push(...topicPool);
         }
+    } catch (e) {
+        console.error(e);
+    } finally {
+        document.body.style.cursor = 'default';
     }
 
-    // SEARCH USING METADATA, NOT ALLQUESTIONS CHUNKS
-    const searchSource = isBookRevision ? loadedBooksCache[sourceName] : globalMetadata;
-
-    const topicPool = searchSource.filter(q => {
-        const qSubject = q.Subject || q.subject || '';
-        const qChapter = q.Chapter || q.chapter || '';
-        const qTopic = q.Topic || q.topic || '';
-        const qIsBook = q.isBookQuestion || false;
-
-        const hierarchyMatch = (
-            qSubject.trim().toLowerCase() === subject.trim().toLowerCase() &&
-            qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() &&
-            qTopic.trim().toLowerCase() === topic.trim().toLowerCase()
-        );
-
-        const sourceMatch = isBookRevision ? qIsBook : !qIsBook;
-
-        return hierarchyMatch && sourceMatch;
+    // Deduplicate in case overlapping topics were passed
+    const uniqueIds = new Set();
+    combinedPool = combinedPool.filter(q => {
+        const id = getQID(q);
+        if (uniqueIds.has(id)) return false;
+        uniqueIds.add(id);
+        return true;
     });
 
-    if (topicPool.length === 0) {
-        console.warn("No matching questions found for:", { subject, chapter, topic, sourceName });
-        return alert("No questions available for this revision topic.");
-    }
+    if (combinedPool.length === 0) return alert("No questions available for this revision.");
 
     const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
     let weakPool = [];
     let strongPool = [];
     let untouchedPool = [];
 
-    topicPool.forEach(q => {
+    combinedPool.forEach(q => {
         const qId = getQID(q);
         if (allMistakes.includes(qId)) weakPool.push(q);
         else if (attemptedQuestions.includes(qId)) strongPool.push(q);
@@ -2474,13 +2468,30 @@ window.generateRevisionQuiz = async function(topicId) {
     untouchedPool = untouchedPool.sort(() => 0.5 - Math.random());
 
     let finalQuiz = [];
-    finalQuiz.push(...weakPool.slice(0, 20));
-    finalQuiz.push(...strongPool.slice(0, 10));
-    finalQuiz.push(...untouchedPool.slice(0, 25 - finalQuiz.length));
+    const MAX_QUESTIONS = 40;
+    let weakTarget, strongTarget;
 
+    // Apply the dynamic ratio based on the revision interval
+    if (intervalDay <= 7) {
+        weakTarget = Math.round(MAX_QUESTIONS * 0.70);
+        strongTarget = Math.round(MAX_QUESTIONS * 0.30);
+    } else {
+        weakTarget = Math.round(MAX_QUESTIONS * 0.30);
+        strongTarget = Math.round(MAX_QUESTIONS * 0.70);
+    }
+
+    finalQuiz.push(...weakPool.slice(0, weakTarget));
+    finalQuiz.push(...strongPool.slice(0, strongTarget));
+
+    // Pad with untouched questions if targets fall short
+    if (finalQuiz.length < MAX_QUESTIONS) {
+        finalQuiz.push(...untouchedPool.slice(0, MAX_QUESTIONS - finalQuiz.length));
+    }
+
+    // Force 15 question minimum if possible
     if (finalQuiz.length < 15) {
-        const remaining = topicPool.filter(q => !finalQuiz.includes(q));
-        finalQuiz.push(...remaining.slice(0, 15 - finalQuiz.length));
+        const remaining = combinedPool.filter(q => !finalQuiz.includes(q));
+        finalQuiz.push(...remaining.sort(() => 0.5 - Math.random()).slice(0, 15 - finalQuiz.length));
     }
 
     finalQuiz = [...new Set(finalQuiz)].sort(() => 0.5 - Math.random());
@@ -2488,12 +2499,7 @@ window.generateRevisionQuiz = async function(topicId) {
     if (finalQuiz.length === 0) return alert("Not enough data to generate revision.");
 
     finalQuiz = await hydrateQuestions(finalQuiz);
-    window.launchQuiz(
-        finalQuiz,
-        'practice',
-        0,
-        `Revision: ${topic}`
-    );
+    window.launchQuiz(finalQuiz, 'practice', 0, `Day ${intervalDay} Spaced Revision`);
 };
 
 // ==========================================
@@ -3329,21 +3335,24 @@ for (const courseFile of Object.keys(editsByCourse)) {
                 <div style="overflow-y: auto; flex-grow: 1; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
         `;
 
-        sortedDays.forEach(day => {
+sortedDays.forEach(day => {
+            const topicsArray = groupedByDay[day].map(item => item.id);
+            const safeTopicsArray = encodeURIComponent(JSON.stringify(topicsArray));
+
             modalHtml += `
-                <div class="revision-day-group">
-                    <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center;" onclick="const content = this.nextElementSibling; const icon = this.querySelector('.toggle-icon'); if(content.style.display === 'none'){ content.style.display = 'flex'; icon.style.transform = 'rotate(180deg)'; this.style.borderColor = '#3b82f6'; this.style.background = 'rgba(59,130,246,0.15)'; } else { content.style.display = 'none'; icon.style.transform = 'rotate(0deg)'; this.style.borderColor = 'rgba(255,255,255,0.2)'; this.style.background = 'rgba(255,255,255,0.08)'; }">
-                        <div style="font-weight: 700; color: #f8fafc; font-size: 1rem;">
-                            <i class="fas fa-calendar-day" style="color: #60a5fa; margin-right: 8px;"></i> Day ${day}
+                <div class="revision-day-group" style="margin-bottom: 10px;">
+                    <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(59, 130, 246, 0.15); border-color: #3b82f6;" onclick="window.generateRevisionQuiz(JSON.parse(decodeURIComponent('${safeTopicsArray}')), ${day})">
+                        <div style="font-weight: 700; color: #f8fafc; font-size: 1rem; display: flex; align-items: center;">
+                            <i class="fas fa-calendar-day" style="color: #60a5fa; margin-right: 8px;"></i> Day ${day} Review
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics</span>
-                            <i class="fas fa-chevron-down toggle-icon" style="color: #94a3b8; transition: transform 0.3s;"></i>
+                            <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">${groupedByDay[day].length} Topics Combined</span>
+                            <i class="fas fa-play-circle" style="color: #60a5fa; font-size: 1.3rem;"></i>
                         </div>
                     </button>
-                    
-                    <div class="day-content" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-left: 10px; border-left: 2px solid rgba(255,255,255,0.1); margin-left: 5px;">
+                </div>
             `;
+        });
 
             groupedByDay[day].forEach(item => {
                 const safeTopic = encodeURIComponent(item.id);
