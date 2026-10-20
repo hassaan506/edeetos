@@ -1,21 +1,23 @@
-//----------------------------------------------------
-Configurations & Global State (Variables, Cache, Settings)
-DOM Elements (Centralized element selections)
-Utility Functions (Sanitization, Parsers, ID extractors)
-Navigation & Sidebar (View switching, UI updates)
-Core UI Rendering (Grid layouts, Books rendering)
-Search Engine (Global metadata filtering)
-Data Loading & Hierarchy (Chunks fetcher, IndexDB caching)
-Popup & Cart Logic (Modal rendering, selections)
-Exam Launch & Modes (Practice/Exam switching, timers, Mock UI)
-Analytics Engine (Smart stats, charts, recent exams)
-Revisions & Spaced Repetition (Day-interval algorithms)
-Progress Reset System (Data wiping logic)
-Trophies & Milestones (Gamification, rewards)
-Multiplayer & Study Rooms (Real-time challenge sync)
-Mentor & Admin Actions (Assigning exams, GitHub CSV push)
-Initialization & Auth (Firebase state listener, bootstrap)
-------------------------------------------------------//
+/*
+----------------------------------------------------
+1.	Configurations & Global State (Variables, Cache, Settings)
+2.	DOM Elements (Centralized element selections)
+3.	Utility Functions (Sanitization, Parsers, ID extractors)
+4.	Navigation & Sidebar (View switching, UI updates)
+5.	Core UI Rendering (Grid layouts, Books rendering)
+6.	Search Engine (Global metadata filtering)
+7.	Data Loading & Hierarchy (Chunks fetcher, IndexDB caching)
+8.	Popup & Cart Logic (Modal rendering, selections)
+9.	Exam Launch & Modes (Practice/Exam switching, timers, Mock UI)
+10.	Analytics Engine (Smart stats, charts, recent exams)
+11.	Revisions & Spaced Repetition (Day-interval algorithms)
+12.	Progress Reset System (Data wiping logic)
+13.	Trophies & Milestones (Gamification, rewards)
+14.	Multiplayer & Study Rooms (Real-time challenge sync)
+15.	Mentor & Admin Actions (Assigning exams, GitHub CSV push)
+16.	Initialization & Auth (Firebase state listener, bootstrap)
+------------------------------------------------------
+*/
 	
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
