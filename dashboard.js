@@ -201,11 +201,57 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
     btn.addEventListener('click', (e) => e.target.closest('.popup-overlay').classList.add('view-hidden'));
 });
 
-// === 4. DYNAMIC MODALS & ALERTS ===
 function renderLockoutScreen() {
-    const lockoutModal = document.getElementById('lockout-screen');
-    if(lockoutModal) lockoutModal.classList.remove('view-hidden');
+    let lockoutModal = document.getElementById('lockout-screen');
+    if (!lockoutModal) {
+        lockoutModal = document.createElement('div');
+        lockoutModal.id = 'lockout-screen';
+        lockoutModal.className = 'popup-overlay z-99999';
+        lockoutModal.style.backgroundColor = 'rgba(6, 9, 17, 0.98)';
+        document.body.appendChild(lockoutModal);
+    }
+    
+    lockoutModal.innerHTML = `
+        <div class="glass-panel popup-content text-center" style="border-color: rgba(239, 68, 68, 0.4);">
+             <i class="fas fa-ban text-orange icon-xl mb-1" style="color: #ef4444 !important; font-size: 5rem;"></i>
+             <h2 class="modal-title-dark">Account Suspended</h2>
+             <p class="modal-subtitle mb-1" style="color: #fca5a5;">Your account has been restricted due to policy violations.</p>
+             <textarea id="appeal-text" class="glass-input" placeholder="State your reason for appeal here..." style="margin-bottom: 1rem; resize: vertical; min-height: 80px;"></textarea>
+             <div style="display: flex; gap: 10px; margin-bottom: 1rem;">
+                 <button id="btn-submit-appeal" class="action-btn next-btn" style="flex: 1; background: #f59e0b; border-color: #fbbf24; color: #fff;">Submit Appeal</button>
+                 <button id="btn-banned-logout" class="action-btn bg-danger" style="flex: 1; color: #fff;">Log Out</button>
+             </div>
+        </div>
+    `;
+    
+    lockoutModal.classList.remove('view-hidden');
     document.body.style.overflow = 'hidden';
+
+    document.getElementById('btn-submit-appeal').addEventListener('click', async (e) => {
+        const text = document.getElementById('appeal-text').value.trim();
+        if (!text) return alert("Please enter a reason for your appeal.");
+        
+        const btn = e.target;
+        btn.textContent = "Submitting...";
+        btn.disabled = true;
+        
+        try {
+            const user = auth.currentUser;
+            await addDoc(collection(db, "ban_appeals"), {
+                userId: user.uid,
+                userEmail: user.email,
+                appealText: text,
+                status: 'pending',
+                timestamp: serverTimestamp()
+            });
+            alert("Appeal submitted. The admin will review it shortly.");
+            btn.textContent = "Appeal Sent";
+        } catch(err) {
+            alert("Failed to submit appeal.");
+            btn.textContent = "Submit Appeal";
+            btn.disabled = false;
+        }
+    });
     
     document.getElementById('btn-banned-logout').addEventListener('click', () => {
         document.getElementById('btn-banned-logout').textContent = "Logging out...";
