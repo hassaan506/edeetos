@@ -479,31 +479,28 @@ function renderUsers(arr) {
 
     arr.forEach(user => {
         const role = (user.role || 'STUDENT').toUpperCase();
-        let roleHtml = `<span class="badge b-student">Student</span>`;
-        if (user.isBanned || role === 'BANNED') roleHtml = `<span class="badge" style="background:#fee2e2; color:#ef4444;">Banned</span>`;
-        else if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="badge b-admin">Admin</span>`;
-        else if (role === 'MENTOR') roleHtml = `<span class="badge b-mentor">Mentor</span>`;
+        let roleHtml = `<span class="ub-role">Student</span>`;
+        if (user.isBanned || role === 'BANNED') roleHtml = `<span class="ub-role" style="background:#fee2e2; color:#ef4444;">Banned</span>`;
+        else if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="ub-role" style="background:#475569; color:#f8fafc;">Admin</span>`;
+        else if (role === 'MENTOR') roleHtml = `<span class="ub-role" style="background:#b45309; color:#f8fafc;">Mentor</span>`;
         
         let coursesHtml = '';
         if (user.subscriptions) {
             Object.keys(user.subscriptions).forEach(courseKey => {
                 const expiry = user.subscriptions[courseKey];
                 const expiryText = expiry === "lifetime" ? "Lifetime" : new Date(expiry).toLocaleDateString();
-                coursesHtml += `<span class="badge b-course">${mergedNamesMap[courseKey] || courseKey.toUpperCase()}</span> <span class="badge b-time">${expiryText}</span> `;
+                coursesHtml += `<span class="ub-course">${mergedNamesMap[courseKey] || courseKey}</span> <span class="ub-date">${expiryText}</span> `;
             });
         }
 
         const card = document.createElement('div');
-        card.style = "display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid #e2e8f0;";
+        card.className = "user-list-item";
         card.innerHTML = `
-            <div class="flex-grow-1">
-                <div style="font-weight: 800; color: #1e293b; font-size: 1.1rem; margin-bottom: 4px;">${user.fullName || "Unnamed User"}</div>
-                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">${user.email} | ${user.phone || 'No Phone'}</div>
-                <div style="display: flex; gap: 5px; flex-wrap: wrap; align-items: center;">${roleHtml} ${coursesHtml}</div>
-            </div>
-            <button class="btn-outline btn-edit-user">Edit / Grant</button>
+            <div class="user-name">${user.fullName || "Unnamed User"}</div>
+            <div class="user-contact">${user.email} <span style="opacity: 0.5; margin: 0 5px;">|</span> ${user.phone || 'No Phone'}</div>
+            <div class="user-badges-container">${roleHtml} ${coursesHtml}</div>
         `;
-        card.querySelector('.btn-edit-user').onclick = () => openEditModal(user);
+        card.onclick = () => openEditModal(user);
         listEl.appendChild(card);
     });
 }
@@ -828,7 +825,7 @@ document.getElementById('btn-manual-reward').onclick = () => {
 };
 
 // === 10. PAYMENTS ===
-document.getElementById('btn-close-receipt').onclick = () => document.getElementById('receipt-modal').classList.add('view-hidden');
+document.getElementById('btn-close-receipt').onclick = () => document.getElementById('receipt-modal').style.display = 'none';
 
 function fetchPayments() {
     const list = document.getElementById('payments-list');
@@ -896,8 +893,8 @@ function fetchPayments() {
                     </div>
                 </div>
             `;
-            if (card.querySelector('.view-receipt-trigger')) {
-                card.querySelector('.view-receipt-trigger').onclick = () => { document.getElementById('receipt-modal-img').src = data.receiptUrl; document.getElementById('receipt-modal').classList.remove('view-hidden'); };
+if (card.querySelector('.view-receipt-trigger')) {
+                card.querySelector('.view-receipt-trigger').onclick = () => { document.getElementById('receipt-modal-img').src = data.receiptUrl; document.getElementById('receipt-modal').style.display = 'flex'; };
             }
 
             card.querySelector('.btn-approve').onclick = async () => {

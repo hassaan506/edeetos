@@ -363,26 +363,34 @@ input[type="number"] {
     .exam-action-bar .input-group { flex: 1; min-width: 45%; }
     .exam-action-bar input[type="number"] { width: 100%; }
     .exam-action-bar .start-btn { width: 100%; margin-top: 0.5rem; }
-	.search-filter-bar > div:not(.search-wrapper) {
+/* Adjust overall padding for mobile to maximize screen space */
+    .search-filter-bar {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .search-filter-bar > div:not(.search-wrapper) {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
         width: 100%;
-        gap: 1rem;
+        gap: 1.2rem 0.5rem; 
     }
     
-    /* Center the checkboxes inside their respective grid cells */
+    /* Left-align checkboxes into neat columns with a slight indent */
     .search-filter-bar > div:not(.search-wrapper) .filter-wrapper {
-        justify-content: center;
+        justify-content: flex-start;
+        padding-left: 10%; 
         width: 100%;
     }
 
-    /* Stretch the action buttons to fill their grid cells */
+    /* Optimize buttons to fit side-by-side without overflowing */
     .search-filter-bar > div:not(.search-wrapper) .action-btn {
         width: 100%;
         justify-content: center;
+        padding: 0.8rem 0.2rem;
+        font-size: 0.85rem; 
     }
 
-    /* Hide the inline vertical lines so they don't occupy empty grid cells */
+    /* Hide the inline vertical lines so they don't break the grid */
     .search-filter-bar > div:not(.search-wrapper) > div[style*="width: 1px"] {
         display: none !important;
     }

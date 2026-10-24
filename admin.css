@@ -37,8 +37,9 @@ body.admin-body.dark-mode, html.dark-mode body.admin-body {
     border-right: 1px solid rgba(255, 255, 255, 0.16);
     display: flex; flex-direction: column; flex-shrink: 0;
     z-index: 100; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); overflow: hidden;
 }
+
 html.dark-mode .admin-sidebar { background: rgba(15, 23, 42, 0.72); border-color: rgba(255, 255, 255, 0.09); }
 
 .admin-sidebar::-webkit-scrollbar { width: 4px; }
@@ -50,7 +51,7 @@ html.dark-mode .admin-sidebar { background: rgba(15, 23, 42, 0.72); border-color
 .mobile-only-btn { display: none; background: transparent; border: none; font-size: 1.5rem; color: #cbd5e1; cursor: pointer; transition: 0.2s; }
 .mobile-only-btn:hover { color: #10b981; transform: scale(1.1); }
 
-.sidebar-menu { padding: 1.5rem; flex-grow: 1; }
+.sidebar-menu { padding: 1.5rem; flex-grow: 1; overflow-y: auto; }
 .menu-label { font-size: 0.75rem; font-weight: 900; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; }
 .sidebar-link {
     width: 100%; text-align: left; padding: 0.9rem 1rem; border-radius: 12px;
@@ -63,7 +64,7 @@ html.dark-mode .admin-sidebar { background: rgba(15, 23, 42, 0.72); border-color
 .sidebar-link:hover i { color: #34d399; }
 .sidebar-link.active { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; box-shadow: inset 4px 0 0 #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
 .sidebar-link.active i { color: #34d399; }
-.sidebar-footer { padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
+.sidebar-footer { padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; flex-shrink: 0; }
 
 /* === MAIN CONTENT === */
 .admin-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: transparent; }
@@ -335,6 +336,68 @@ html.dark-mode .popup-content { background: rgba(15, 23, 42, 0.96) !important; b
 .receipt-img-container { max-height: 70vh; overflow-y: auto; margin-bottom: 1rem; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1); }
 .receipt-img { max-width: 100%; height: auto; border-radius: 4px; }
 .btn-close-receipt { width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 0.8rem; border-radius: 8px; color: #f8fafc !important; }
+
+/* Users List Redesign */
+.user-list-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.2s ease;
+    cursor: pointer;
+    text-align: left;
+}
+.user-list-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    padding-left: 10px;
+}
+.user-name { font-weight: 800; font-size: 1.2rem; color: #94a3b8; margin-bottom: 6px; }
+.user-contact { font-size: 0.9rem; color: #64748b; margin-bottom: 12px; }
+.user-badges-container { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+.ub-role { background: #475569; color: #f8fafc; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+.ub-course { background: #0f766e; color: #f8fafc; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+.ub-date { background: #064e3b; color: #d1fae5; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+
+/* Grant Access Redesign */
+.grant-box { 
+    background: transparent; 
+    border: 1px dashed rgba(52, 211, 153, 0.3); 
+    border-radius: 16px; 
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem; 
+}
+.grant-label { 
+    font-size: 1.1rem; 
+    font-weight: 800; 
+    color: #34d399 !important; 
+    margin-bottom: 1rem; 
+    display: block; 
+}
+.grant-select { 
+    padding: 0.8rem 1rem; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 8px; 
+    font-weight: 700; 
+    color: #f8fafc !important; 
+    outline: none; 
+    background: #06110d !important; 
+}
+.btn-grant-glow {
+    background: #10b981;
+    color: #022c22 !important;
+    border: none;
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 900;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    margin-top: 0.5rem;
+}
+.btn-grant-glow:hover {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.7);
+    transform: translateY(-2px);
+}
 
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
