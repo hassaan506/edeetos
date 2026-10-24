@@ -352,22 +352,64 @@ html.dark-mode .popup-content { background: rgba(15, 23, 42, 0.96) !important; b
 /* Users List Redesign */
 .user-list-item {
     padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: 0.2s ease;
     cursor: pointer;
     text-align: left;
 }
 .user-list-item:hover {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     padding-left: 10px;
+    border-color: rgba(52, 211, 153, 0.3);
 }
-.user-name { font-weight: 800; font-size: 1.2rem; color: #94a3b8; margin-bottom: 6px; }
-.user-contact { font-size: 0.9rem; color: #64748b; margin-bottom: 12px; }
-.user-badges-container { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.user-name { font-weight: 900; font-size: 1.25rem; color: #f8fafc; margin-bottom: 6px; letter-spacing: -0.5px; }
+.user-contact { font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px; font-weight: 500; }
+.user-badges-container { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
-.ub-role { background: #475569; color: #f8fafc; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
-.ub-course { background: #0f766e; color: #f8fafc; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
-.ub-date { background: #064e3b; color: #d1fae5; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+/* Role Badges */
+.ub-role { 
+    background: rgba(255, 255, 255, 0.1); 
+    color: #f8fafc; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 12px; 
+    border-radius: 6px; 
+    font-size: 0.75rem; 
+    font-weight: 900; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.ub-role.admin { background: rgba(139, 92, 246, 0.2); color: #e9d5ff; border-color: rgba(168, 85, 247, 0.5); }
+.ub-role.mentor { background: rgba(245, 158, 11, 0.2); color: #fde68a; border-color: rgba(245, 158, 11, 0.5); }
+.ub-role.banned { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border-color: rgba(239, 68, 68, 0.5); }
+
+/* Subscription Split-Pills */
+.ub-sub-pill {
+    display: flex;
+    align-items: stretch;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.ub-sub-name {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #6ee7b7;
+    display: flex;
+    align-items: center;
+}
+.ub-sub-date {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    border-left: 1px solid rgba(16, 185, 129, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
 /* Grant Access Redesign */
 .grant-box { 

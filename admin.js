@@ -480,16 +480,23 @@ function renderUsers(arr) {
     arr.forEach(user => {
         const role = (user.role || 'STUDENT').toUpperCase();
         let roleHtml = `<span class="ub-role">Student</span>`;
-        if (user.isBanned || role === 'BANNED') roleHtml = `<span class="ub-role" style="background:#fee2e2; color:#ef4444;">Banned</span>`;
-        else if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="ub-role" style="background:#475569; color:#f8fafc;">Admin</span>`;
-        else if (role === 'MENTOR') roleHtml = `<span class="ub-role" style="background:#b45309; color:#f8fafc;">Mentor</span>`;
+        if (user.isBanned || role === 'BANNED') roleHtml = `<span class="ub-role banned">Banned</span>`;
+        else if (role === 'MANAGEMENT' || role === 'ADMIN') roleHtml = `<span class="ub-role admin">Admin</span>`;
+        else if (role === 'MENTOR') roleHtml = `<span class="ub-role mentor">Mentor</span>`;
         
         let coursesHtml = '';
         if (user.subscriptions) {
             Object.keys(user.subscriptions).forEach(courseKey => {
                 const expiry = user.subscriptions[courseKey];
                 const expiryText = expiry === "lifetime" ? "Lifetime" : new Date(expiry).toLocaleDateString();
-                coursesHtml += `<span class="ub-course">${mergedNamesMap[courseKey] || courseKey}</span> <span class="ub-date">${expiryText}</span> `;
+                const courseName = mergedNamesMap[courseKey] || courseKey.toUpperCase().replace('_', ' ');
+                
+                coursesHtml += `
+                    <div class="ub-sub-pill">
+                        <span class="ub-sub-name">${courseName}</span>
+                        <span class="ub-sub-date"><i class="far fa-clock"></i> ${expiryText}</span>
+                    </div>
+                `;
             });
         }
 
@@ -497,7 +504,11 @@ function renderUsers(arr) {
         card.className = "user-list-item";
         card.innerHTML = `
             <div class="user-name">${user.fullName || "Unnamed User"}</div>
-            <div class="user-contact">${user.email} <span style="opacity: 0.5; margin: 0 5px;">|</span> ${user.phone || 'No Phone'}</div>
+            <div class="user-contact">
+                <i class="fas fa-envelope" style="opacity: 0.6; margin-right: 4px;"></i> ${user.email} 
+                <span style="opacity: 0.3; margin: 0 8px;">|</span> 
+                <i class="fas fa-phone" style="opacity: 0.6; margin-right: 4px;"></i> ${user.phone || 'No Phone provided'}
+            </div>
             <div class="user-badges-container">${roleHtml} ${coursesHtml}</div>
         `;
         card.onclick = () => openEditModal(user);
