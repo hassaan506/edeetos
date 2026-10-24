@@ -29,6 +29,7 @@
                 <button class="sidebar-link active" onclick="switchView('database')"><i class="fas fa-database"></i> Database Status</button>
                 <button class="sidebar-link" onclick="switchView('addq')"><i class="fas fa-plus-circle"></i> Add Question</button>
                 <button class="sidebar-link" onclick="switchView('users')"><i class="fas fa-users"></i> User Manager</button>
+                <button class="sidebar-link" onclick="switchView('appeals')"><i class="fas fa-gavel"></i> Ban Appeals</button>
                 
                 <div class="menu-label mt-1-5">Study & Engagement</div>
                 <button class="sidebar-link" onclick="switchView('studyrooms')"><i class="fas fa-chalkboard-teacher"></i> Study Rooms</button>
@@ -233,11 +234,22 @@
                     </div>
                 </div>
 
-                <!-- 7. REWARD CLAIMS VIEW -->
+			<!-- 7. REWARD CLAIMS VIEW -->
                 <div id="view-rewards" class="admin-content view-hidden">
-                    <h2 class="page-title">Manual Reward Claims</h2>
+                    <div class="flex-between mb-2">
+                        <h2 class="page-title m-0">Manual Reward Claims</h2>
+                        <button id="btn-manual-reward" class="btn-solid btn-sm"><i class="fas fa-gift mr-1"></i> Grant Manual Reward</button>
+                    </div>
                     <div id="rewards-list">
                         <p class="table-loading">No pending reward claims.</p>
+                    </div>
+                </div>
+
+                <!-- 7.5. BAN APPEALS VIEW -->
+                <div id="view-appeals" class="admin-content view-hidden">
+                    <h2 class="page-title">Ban Appeals</h2>
+                    <div id="appeals-list">
+                        <p class="table-loading">No pending appeals.</p>
                     </div>
                 </div>
 

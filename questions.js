@@ -356,13 +356,13 @@ function renderGrid() {
             const accBg = totalAttempts === 0 ? 'rgba(255,255,255,0.1)' : (accuracy >= 75 ? 'rgba(16,185,129,0.15)' : (accuracy >= 50 ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'));
             const accBorder = totalAttempts === 0 ? 'rgba(255,255,255,0.2)' : (accuracy >= 75 ? 'rgba(16,185,129,0.3)' : (accuracy >= 50 ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'));
 
-            cardStatsHtml = `
-                <div style="display: flex; gap: 8px; font-size: 0.72rem; margin: 6px 0; flex-wrap: wrap;">
-                    <span style="color: #6ee7b7; font-weight: 600;"><i class="fas fa-check"></i> ${doneCount}</span>
-                    <span style="color: #fca5a5; font-weight: 600;"><i class="fas fa-times"></i> ${mistakeCount}</span>
-                    <span style="color: ${accColor}; font-weight: 700; background:${accBg}; padding: 2px 6px; border-radius: 6px; border: 1px solid ${accBorder};">${totalAttempts > 0 ? accuracy + '%' : '--'} Acc</span>
-                </div>
-            `;
+		cardStatsHtml = `
+            <div style="display: flex; gap: 6px; font-size: 0.75rem; margin: 10px 0 0 0; flex-wrap: wrap; align-items: center;">
+                <span style="background: rgba(16,185,129,0.15); color: #34d399; padding: 2px 8px; border-radius: 6px; font-weight: 600; border: 1px solid rgba(16,185,129,0.3);"><i class="fas fa-check"></i> ${doneCount}</span>
+                <span style="background: rgba(239,68,68,0.15); color: #f87171; padding: 2px 8px; border-radius: 6px; font-weight: 600; border: 1px solid rgba(239,68,68,0.3);"><i class="fas fa-times"></i> ${mistakeCount}</span>
+                <span style="background: ${accBg}; color: ${accColor}; padding: 2px 8px; border-radius: 6px; font-weight: 700; border: 1px solid ${accBorder};">${totalAttempts > 0 ? accuracy + '%' : '--'} Acc</span>
+            </div>
+        `;
         }
 
         const card = document.createElement('div');
@@ -2117,10 +2117,6 @@ window.generateRevisionQuiz = async function(topicIdsArray, intervalDay) {
     finalQuiz.push(...weakPool.slice(0, weakTarget));
     finalQuiz.push(...strongPool.slice(0, strongTarget));
 
-    if (finalQuiz.length < MAX_QUESTIONS) {
-        finalQuiz.push(...untouchedPool.slice(0, MAX_QUESTIONS - finalQuiz.length));
-    }
-
     if (finalQuiz.length < 15) {
         const remaining = combinedPool.filter(q => !finalQuiz.includes(q));
         finalQuiz.push(...remaining.sort(() => 0.5 - Math.random()).slice(0, 15 - finalQuiz.length));
@@ -3059,7 +3055,8 @@ async function hydrateUserState(dbData) {
                             const topic = getVal(['topic']);
                             const year = getVal(['year']);
                             const rawExams = getVal(['exams', 'exam']);
-                            const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
+const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
+                            const pointValue = getVal(['point', 'points']);
 
                             const yearsList = year ? year.split(',').map(e => e.trim()).filter(e => e) : [];
                             const examsList = rawExams ? rawExams.split(',').map(e => e.trim()).filter(e => e) : [];
@@ -3084,7 +3081,8 @@ async function hydrateUserState(dbData) {
                                 },
                                 correctAnswer: getVal(['correctanswer']).toUpperCase(),
                                 explanation: getVal(['explanation']),
-                                hint: getVal(['hint'])
+                                hint: getVal(['hint']),
+                                Point: pointValue
                             };
 
                             if (isBook) {
@@ -3225,6 +3223,10 @@ async function hydrateUserState(dbData) {
 
     userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
 
+// Extract the immutable mistake logs
+    const courseHistorical = [...new Set((courseData.historicalMistakes || []).map(id => String(id)))];
+    const bookHistorical = [...new Set((booksData.historicalMistakes || []).map(id => String(id)))];
+
     const validCourseSolved = [...new Set(courseSolved)];
     const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];
     const validCourseExamMistakes = [...new Set(courseExamMistakes)];
@@ -3246,25 +3248,33 @@ async function hydrateUserState(dbData) {
     window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes, ...globalSkipped]);
     
     const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
-    const courseAttempts = validCourseSolved.length + courseAllMistakes.length;
+    
+    // --- IMMUTABLE ACCURACY MATH FOR COURSES ---
+    const uniqueCourseAttempts = [...new Set([...validCourseSolved, ...courseAllMistakes, ...courseHistorical])];
+    const courseFirstTryCorrect = uniqueCourseAttempts.filter(id => !courseHistorical.includes(id) && !courseAllMistakes.includes(id));
+    const courseAccuracy = uniqueCourseAttempts.length > 0 ? Math.round((courseFirstTryCorrect.length / uniqueCourseAttempts.length) * 100) : 0;
     
     viewSpecificStats.course = {
         solved: validCourseSolved,
         mistakes: courseAllMistakes,
         bookmarks: validCourseBookmarks,
         skipped: uniqueCourseSkipped,
-        accuracy: courseAttempts > 0 ? Math.round((validCourseSolved.length / courseAttempts) * 100) : 0
+        accuracy: courseAccuracy
     };
 
     const bookAllMistakes = [...new Set([...uniqueBookPracticeMistakes, ...uniqueBookExamMistakes])];
-    const bookAttempts = uniqueBookSolved.length + bookAllMistakes.length;
+    
+    // --- IMMUTABLE ACCURACY MATH FOR BOOKS ---
+    const uniqueBookAttempts = [...new Set([...uniqueBookSolved, ...bookAllMistakes, ...bookHistorical])];
+    const bookFirstTryCorrect = uniqueBookAttempts.filter(id => !bookHistorical.includes(id) && !bookAllMistakes.includes(id));
+    const bookAccuracy = uniqueBookAttempts.length > 0 ? Math.round((bookFirstTryCorrect.length / uniqueBookAttempts.length) * 100) : 0;
     
     viewSpecificStats.book = {
         solved: uniqueBookSolved,
         mistakes: bookAllMistakes,
         bookmarks: uniqueBookBookmarks,
         skipped: uniqueBookSkipped,
-        accuracy: bookAttempts > 0 ? Math.round((uniqueBookSolved.length / bookAttempts) * 100) : 0
+        accuracy: bookAccuracy
     };
 	
     await loadDataAndBuildTree();
@@ -3384,7 +3394,7 @@ async function hydrateUserState(dbData) {
                 `;
 
                 modalHtml += `
-                    <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);" onclick="window.generateRevisionQuiz(decodeURIComponent('${safeTopic}'))">
+                    <button class="action-btn" style="width: 100%; text-align: left; display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);" onclick="window.generateRevisionQuiz([decodeURIComponent('${safeTopic}')])">
                         <div style="font-weight: 700; display: flex; flex-direction: column; width: 90%;">
                             ${displayPath}
                         </div>

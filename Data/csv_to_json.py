@@ -166,6 +166,9 @@ def process_directory(directory, is_book=False):
                 chapter = get_column_value(row, {'chapter'}) or "General"
                 topic = get_column_value(row, {'topic'}) or "Unknown Topic"
                 difficulty = get_column_value(row, {'difficulty'}) or "medium"
+                
+                # EXTRACT NEW POINT VALUE
+                point_value = get_column_value(row, {'point', 'points'})
 
                 years_list = clean_split(get_column_value(row, {'year'}))
                 specialty_list = clean_split(get_column_value(row, {'specialty', 'speciality', 'spec'}))
@@ -190,7 +193,8 @@ def process_directory(directory, is_book=False):
                     },
                     "correctAnswer": get_column_value(row, {'correctanswer'}).upper(),
                     "explanation": get_column_value(row, {'explanation'}),
-                    "hint": get_column_value(row, {'hint'})
+                    "hint": get_column_value(row, {'hint'}),
+                    "Point": point_value  # ADDED TO JSON STRUCTURE
                 }
 
                 if is_book:

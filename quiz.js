@@ -233,13 +233,37 @@ onAuthStateChanged(auth, async (user) => {
                     
                     const lockoutScreen = document.createElement('div');
                     lockoutScreen.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
-                    lockoutScreen.innerHTML = `
+lockoutScreen.innerHTML = `
                         <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
                         <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Account Suspended</h1>
-                        <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2.5rem; border-radius: 12px; font-weight: bold; cursor: pointer;">Log Out</button>
+                        <textarea id="appeal-text" placeholder="State your reason for appeal here..." style="width: 90%; max-width: 400px; padding: 15px; border-radius: 8px; margin-bottom: 1rem; border: none; outline: none; resize: vertical; min-height: 100px; font-family: inherit;"></textarea>
+                        <div style="display: flex; gap: 15px;">
+                            <button id="btn-submit-appeal" style="background: #f59e0b; color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: bold; cursor: pointer;">Submit Appeal</button>
+                            <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: bold; cursor: pointer;">Log Out</button>
+                        </div>
                     `;
                     document.body.appendChild(lockoutScreen);
                     document.body.style.overflow = 'hidden';
+                    
+                    document.getElementById('btn-submit-appeal').addEventListener('click', async (e) => {
+                        const text = document.getElementById('appeal-text').value.trim();
+                        if (!text) return alert("Please enter a reason for your appeal.");
+                        const btn = e.target; btn.textContent = "Submitting..."; btn.disabled = true;
+                        try {
+                            await addDoc(collection(db, "ban_appeals"), {
+                                userId: user.uid,
+                                userEmail: user.email,
+                                appealText: text,
+                                status: 'pending',
+                                timestamp: serverTimestamp()
+                            });
+                            alert("Appeal submitted. The admin will review it shortly.");
+                            btn.textContent = "Appeal Sent";
+                        } catch(err) {
+                            alert("Failed to submit appeal.");
+                            btn.textContent = "Submit Appeal"; btn.disabled = false;
+                        }
+                    });
 
                     document.getElementById('btn-banned-logout').addEventListener('click', async () => {
                         await signOut(auth);
@@ -331,9 +355,10 @@ function formatJSONQuestion(q) {
         isBookQuestion: q.isBookQuestion || false,
         bookName: q.bookName || "",
         Year: q.Year || q.year || "",
-        Specialty: q.Specialty || q.specialty || [],
+		Specialty: q.Specialty || q.specialty || [],
         Exam: q.Exam || q.exams || [],
-        Difficulty: q.Difficulty || q.difficulty || ""
+        Difficulty: q.Difficulty || q.difficulty || "",
+        Point: q.Point || q.point || ""
     };
 }
 
@@ -569,6 +594,16 @@ function loadQuestion(index) {
                 `;
             } else {
                 examYearInfo.style.display = 'none';
+            }
+        }
+
+		const pointBadge = document.getElementById('point-badge');
+        if (pointBadge) {
+            if (currentQuestionData.Point && String(currentQuestionData.Point).trim() !== "") {
+                pointBadge.style.display = 'inline-block';
+                pointBadge.innerHTML = `<i class="fas fa-thumbtack"></i> Point ${currentQuestionData.Point}`;
+            } else {
+                pointBadge.style.display = 'none';
             }
         }
 
@@ -871,8 +906,11 @@ if (bookmarkFolderSelect) {
                 const editSpecEl = document.getElementById('edit-q-specialty');
                 if (editSpecEl) editSpecEl.value = Array.isArray(specVal) ? specVal.join(', ') : specVal;
                 
-                const examVal = currentQuestionData.Exam || currentQuestionData.exams || currentQuestionData.exam || "";
+				const examVal = currentQuestionData.Exam || currentQuestionData.exams || currentQuestionData.exam || "";
                 document.getElementById('edit-q-exam').value = Array.isArray(examVal) ? examVal.join(', ') : examVal;
+                
+                const editPointEl = document.getElementById('edit-q-point');
+                if (editPointEl) editPointEl.value = currentQuestionData.Point || currentQuestionData.point || "";
                 
                 quillHint.root.innerHTML = currentQuestionData.hint || "";
                 quillExplanation.root.innerHTML = currentQuestionData.explanation || "";
@@ -966,10 +1004,11 @@ if (bookmarkFolderSelect) {
                     "OptionC": document.getElementById('edit-opt-2')?.value.trim() || "",
                     "OptionD": document.getElementById('edit-opt-3')?.value.trim() || "",
                     "OptionE": document.getElementById('edit-opt-4')?.value.trim() || "",
-                    "CorrectAnswer": correctLetter,
+					"CorrectAnswer": correctLetter,
                     "Explanation": explanationHTML,
                     "Hint": hintHTML,
-                    "Difficulty": document.getElementById('edit-q-diff').value
+                    "Difficulty": document.getElementById('edit-q-diff').value,
+                    "Point": document.getElementById('edit-q-point') ? document.getElementById('edit-q-point').value.trim() : ""
                 };
 
                 const isBook = currentQuestionData.isBookQuestion === true;
@@ -993,9 +1032,10 @@ if (bookmarkFolderSelect) {
                 currentQuestionData.Chapter = updatedRow["Chapter"];
                 currentQuestionData.Topic = updatedRow["Topic"];
                 currentQuestionData.Specialty = updatedRow["Specialty"] ? updatedRow["Specialty"].split(',').map(s => s.trim()) : [];
-                currentQuestionData.Difficulty = updatedRow["Difficulty"];
+				currentQuestionData.Difficulty = updatedRow["Difficulty"];
                 currentQuestionData.Year = updatedRow["Year"] ? updatedRow["Year"].split(',').map(y => y.trim()) : [];
                 currentQuestionData.Exam = updatedRow["Exam"] ? updatedRow["Exam"].split(',').map(e => e.trim()) : [];
+                currentQuestionData.Point = updatedRow["Point"];
                 
                 questionTextEl.innerHTML = currentQuestionData.text;
                 explanationText.innerHTML = currentQuestionData.explanation;
@@ -1037,12 +1077,15 @@ async function savePracticeProgress(questionId, isCorrect) {
 
     if (isCorrect) {
         updates.solvedQuestions = arrayUnion(questionId); 
+        // Keep clearing the active queue so Redemption Mode works
         if (wrongAttempts === 0) {
             updates.mistakes = arrayRemove(questionId);      
             updates.examMistakes = arrayRemove(questionId);   
         }
     } else {
         updates.mistakes = arrayUnion(questionId);
+        // ADDED: The immutable record for dashboard accuracy math
+        updates.historicalMistakes = arrayUnion(questionId); 
     }
 
     try {
@@ -1074,7 +1117,12 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     try {
         let updates = {};
         if (correctIds.length > 0) updates.examMistakes = arrayRemove(...correctIds);  
-        if (mistakeIds.length > 0) updates.examMistakes = arrayUnion(...mistakeIds);
+        
+        if (mistakeIds.length > 0) {
+            updates.examMistakes = arrayUnion(...mistakeIds);
+            // ADDED: The immutable record for dashboard accuracy math
+            updates.historicalMistakes = arrayUnion(...mistakeIds);
+        }
 
         const examTitle = quizConfig.examName || "Custom Exam"; 
         const examRecord = {
@@ -2327,9 +2375,10 @@ if (btnPushEdits) {
                             D: getVal(['optiond']),
                             E: getVal(['optione'])
                         },
-                        correctAnswer: getVal(['correctanswer']).toUpperCase(),
+					correctAnswer: getVal(['correctanswer']).toUpperCase(),
                         explanation: getVal(['explanation']),
-                        hint: getVal(['hint'])
+                        hint: getVal(['hint']),
+                        Point: getVal(['point'])
                     };
 
                     if (isBook) {

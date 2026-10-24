@@ -103,9 +103,9 @@ window.switchView = function(viewName) {
 
     sidebar.classList.remove('mobile-open');
 
-    const routing = {
+const routing = {
         'addq': initQuillOnce, 'keys': fetchKeys, 'promos': fetchPromos, 'payments': fetchPayments,
-        'requests': fetchRequests, 'reports': fetchReports, 'messages': fetchMessages
+        'requests': fetchRequests, 'reports': fetchReports, 'messages': fetchMessages, 'appeals': fetchAppeals
     };
     if (routing[viewName]) routing[viewName]();
 };
@@ -578,7 +578,15 @@ document.getElementById('btn-unban-user').onclick = async () => {
 };
 document.getElementById('btn-hard-delete-user').onclick = async () => {
     if (prompt(`Type DELETE to permanently erase ${editingUser.email}`) === 'DELETE') {
-        try { await deleteDoc(doc(db, "users", editingUser.uid)); alert("Deleted."); editModal.style.display = 'none'; fetchAllUsers(); } catch(e) { alert(e.message); }
+        try { 
+            await deleteDoc(doc(db, "users", editingUser.uid)); 
+            if (editingUser.username) {
+                await deleteDoc(doc(db, "username_lookup", editingUser.username.toLowerCase().trim()));
+            }
+            alert("Database record wiped completely. NOTE: To fully sever access, you must also delete their login credential from the Firebase Authentication console."); 
+            editModal.style.display = 'none'; 
+            fetchAllUsers(); 
+        } catch(e) { alert(e.message); }
     }
 };
 
@@ -741,7 +749,6 @@ function fetchAssignedExams() {
     });
 }
 
-// === 9. REWARD CLAIMS ===
 function fetchRewardClaims() {
     if(unsubRewards) return;
     unsubRewards = onSnapshot(collection(db, "reward_claims"), (snap) => {
@@ -754,14 +761,21 @@ function fetchRewardClaims() {
             if(data.status !== 'pending') return;
             hasClaims = true;
             
+            const reqUser = allUsersData.find(u => u.uid === data.userId);
+            const userName = reqUser ? reqUser.fullName : "Unknown User";
+            const userEmail = data.userEmail || (reqUser ? reqUser.email : data.userId);
+            
             const card = document.createElement('div');
             card.className = "action-card";
             card.innerHTML = `
                 <div class="flex-between mb-10px">
-                    <strong>${data.userEmail || data.userId}</strong>
+                    <div>
+                        <strong style="font-size: 1.1rem;">${userName}</strong>
+                        <div class="font-sm text-muted">${userEmail}</div>
+                    </div>
                     <span class="badge b-mentor">${data.rewardTitle || 'Reward'}</span>
                 </div>
-                <p class="text-muted font-sm">Requested Item: <strong>${mergedNamesMap[data.requestedItem] || data.requestedItem}</strong></p>
+                <p class="text-muted font-sm">Requested Item: <strong style="color: #f8fafc;">${mergedNamesMap[data.requestedItem] || data.requestedItem}</strong></p>
                 <div class="flex-gap-10px mt-15px">
                     <button class="btn-solid btn-approve-claim">Approve & Grant Access</button>
                     <button class="btn-outline btn-reject-claim border-danger text-danger">Reject / Delete</button>
@@ -791,6 +805,28 @@ function fetchRewardClaims() {
     });
 }
 
+document.getElementById('btn-manual-reward').onclick = () => {
+    const email = prompt("Enter the exact email of the user to reward:");
+    if (!email) return;
+    const user = allUsersData.find(u => (u.email || "").toLowerCase() === email.toLowerCase());
+    if (!user) return alert("User not found in database.");
+    
+    const item = prompt("Enter the exact database key to grant (e.g. 'firstaid_step1' or 'fcps_part1'):");
+    if (!item) return;
+    
+    const days = prompt("Enter days to grant (or 'lifetime'):", "30");
+    if (!days) return;
+    
+    const uRef = doc(db, "users", user.uid);
+    let subs = user.subscriptions || {};
+    subs[item] = days === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(days))).toISOString();
+    
+    updateDoc(uRef, { subscriptions: subs, isPremium: true }).then(() => {
+        alert(`Reward granted successfully to ${user.fullName} (${user.email}).`);
+        fetchAllUsers();
+    }).catch(e => alert("Error: " + e.message));
+};
+
 // === 10. PAYMENTS ===
 document.getElementById('btn-close-receipt').onclick = () => document.getElementById('receipt-modal').classList.add('view-hidden');
 
@@ -816,40 +852,47 @@ function fetchPayments() {
             const idx = durMap[data.durationDays] !== undefined ? durMap[data.durationDays] : 7;
             const bDisc = bCount >= 5 ? 0.3 : (bCount >= 3 ? 0.2 : (bCount >= 2 ? 0.1 : 0));
 
-            let expectedTotal = Math.round((cCount > 0 ? baseC[idx] : 0) + ((bCount * baseB[idx]) * (1 - bDisc)));
+            let baseTotal = (cCount > 0 ? baseC[idx] : 0) + (bCount * baseB[idx]);
+            let bookDiscountAmount = Math.round((bCount * baseB[idx]) * bDisc);
+            let subtotal = baseTotal - bookDiscountAmount;
+            let expectedTotal = subtotal;
+            
             let promoHtml = '';
             if (data.appliedPromoCode && data.promoDiscountApplied > 0) {
-                promoHtml = `<div class="flex-between mt-05 p-05 bg-pink border-pink text-pink font-bold border-radius-8px font-sm"><span>🎟️ Promo: ${data.appliedPromoCode}</span><span>-${data.promoDiscountApplied}%</span></div>`;
-                expectedTotal = Math.round(expectedTotal * (1 - (data.promoDiscountApplied / 100)));
+                let promoAmount = Math.round(subtotal * (data.promoDiscountApplied / 100));
+                expectedTotal = subtotal - promoAmount;
+                promoHtml = `<div style="color: #fca5a5; font-weight: bold; margin-top: 5px; font-size: 0.9rem;">Promo (${data.appliedPromoCode}): -Rs. ${promoAmount.toLocaleString()} (${data.promoDiscountApplied}%)</div>`;
             }
 
             const card = document.createElement('div');
             card.className = "action-card";
             card.innerHTML = `
-                <div class="flex-between border-bottom-dashed pb-1 mb-1 flex-wrap gap-10px">
-                    <div class="font-bold text-lg text-slate-800">${data.userEmail}</div>
-                    <div class="flex-gap-05 flex-wrap">
-                        ${(data.courses || []).map(c => `<span class="badge b-admin bg-slate-800 text-white">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
-                        ${(data.books || []).map(b => `<span class="badge b-admin bg-purple text-white">${b.replace('_', ' ').toUpperCase()}</span>`).join('')}
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #f8fafc;">${data.userEmail}</div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        ${(data.courses || []).map(c => `<span style="background: rgba(14, 165, 233, 0.2); color: #bae6fd; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">${c.replace('_', ' ').toUpperCase()}</span>`).join('')}
+                        ${(data.books || []).map(b => `<span style="background: rgba(168, 85, 247, 0.2); color: #d8b4fe; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: bold;">${b.replace('_', ' ').toUpperCase()}</span>`).join('')}
                     </div>
                 </div>
-                <div class="bg-slate-50 border-slate border-radius-8px p-1-2 mb-1-5">
-                    <div class="font-sm font-bold text-muted text-uppercase">Expected Payment</div>
-                    <div class="font-bold text-success" style="font-size:1.8rem;">Rs. ${expectedTotal.toLocaleString()}</div>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 15px;">
+                    <div style="color: #94a3b8; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Requested Plan: <span style="color: #f8fafc;">${data.durationDays} Days (${data.planName})</span></div>
+                    <div style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 5px;">Base Price: Rs. ${baseTotal.toLocaleString()}</div>
+                    ${bookDiscountAmount > 0 ? `<div style="color: #6ee7b7; font-size: 0.9rem; margin-bottom: 5px;">Bundle Discount: -Rs. ${bookDiscountAmount.toLocaleString()}</div>` : ''}
                     ${promoHtml}
+                    <div style="color: #34d399; font-size: 1.8rem; font-weight: 900; margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 10px;">Final Total: Rs. ${expectedTotal.toLocaleString()}</div>
                 </div>
-                ${data.receiptUrl ? `<div class="text-center my-1-5"><img src="${data.receiptUrl}" class="receipt-thumbnail"><div class="mt-08"><span class="view-receipt-trigger font-bold text-success cursor-pointer">🔍 View Receipt</span></div></div>` : `<div class="mb-1 font-bold text-danger font-sm">No Receipt Attached</div>`}
-                <div class="flex-between bg-slate-50 p-1-2 border-slate border-radius-10px flex-wrap gap-1">
-                    <div class="flex-1 min-w-150px">
-                        <label class="modal-label mb-05 d-block">Approve Duration:</label>
-                        <select class="approve-duration select-standard w-100">
+                ${data.receiptUrl ? `<div style="text-align: center; margin: 15px 0;"><img src="${data.receiptUrl}" style="max-height: 150px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);"><div style="margin-top: 10px;"><span class="view-receipt-trigger" style="color: #34d399; font-weight: bold; cursor: pointer;"><i class="fas fa-search"></i> View Full Receipt</span></div></div>` : `<div style="color: #fca5a5; font-weight: bold; margin-bottom: 15px;">No Receipt Attached</div>`}
+                <div style="display: flex; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 150px;">
+                        <label style="display: block; font-size: 0.8rem; color: #94a3b8; font-weight: bold; margin-bottom: 8px;">Approve Duration:</label>
+                        <select class="approve-duration" style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;">
                             <option value="${data.durationDays}">${data.planName}</option>
                             <option value="30">1 Month</option><option value="365">1 Year</option><option value="lifetime">Lifetime</option>
                         </select>
                     </div>
-                    <div class="flex-gap-10px flex-1 min-w-200px mt-1-4">
-                        <button class="btn-solid btn-approve flex-1">Approve</button>
-                        <button class="btn-outline btn-reject flex-1 border-danger text-danger">Reject</button>
+                    <div style="flex: 1; min-width: 200px; display: flex; gap: 10px; align-items: flex-end;">
+                        <button class="btn-solid btn-approve" style="flex: 1; padding: 10px;">Approve</button>
+                        <button class="btn-outline btn-reject" style="flex: 1; padding: 10px; border-color: #ef4444; color: #fca5a5 !important;">Reject</button>
                     </div>
                 </div>
             `;
@@ -879,6 +922,52 @@ function fetchPayments() {
             list.appendChild(card);
         });
         if(!hasPending) list.innerHTML = '<p class="table-loading">No pending requests.</p>';
+    });
+}
+
+function fetchAppeals() {
+    onSnapshot(collection(db, "ban_appeals"), (qSnap) => {
+        const list = document.getElementById('appeals-list');
+        if(!list) return; list.innerHTML = '';
+        let hasAppeals = false;
+
+        qSnap.forEach(d => {
+            const data = d.data();
+            if(data.status !== 'pending') return;
+            hasAppeals = true;
+
+            const card = document.createElement('div');
+            card.className = "action-card";
+            card.innerHTML = `
+                <div class="flex-between mb-10px">
+                    <strong style="font-size: 1.1rem; color: #f8fafc;">${data.userEmail}</strong> 
+                    <span class="text-muted font-sm">${data.timestamp ? data.timestamp.toDate().toLocaleDateString() : 'Unknown Date'}</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px;">
+                    <p style="margin: 0; color: #cbd5e1;"><strong>Reason provided:</strong><br>${data.appealText}</p>
+                </div>
+                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <button class="btn-solid bg-success btn-unban" style="flex: 1; padding: 10px; border: none; border-radius: 8px;">Unban User & Email</button>
+                    <button class="btn-outline btn-keep-banned" style="flex: 1; padding: 10px; border: 1px solid #ef4444; color: #fca5a5 !important; border-radius: 8px;">Keep Banned & Email</button>
+                </div>
+            `;
+            
+            card.querySelector('.btn-unban').onclick = async () => {
+                await updateDoc(doc(db, "users", data.userId), { isBanned: false, role: 'STUDENT' });
+                await updateDoc(doc(db, "ban_appeals", d.id), { status: 'unbanned' });
+                const body = `Hello,\n\nWe have reviewed your appeal and your account has been successfully unbanned. You may now log in and continue your studies on Edeetos.\n\nRegards,\nEdeetos Administration`;
+                window.location.href = `mailto:${data.userEmail}?subject=Account Unbanned - Edeetos&body=${encodeURIComponent(body)}`;
+            };
+            
+            card.querySelector('.btn-keep-banned').onclick = async () => {
+                await updateDoc(doc(db, "ban_appeals", d.id), { status: 'rejected' });
+                const body = `Hello,\n\nAfter reviewing your appeal, our administration team has decided to uphold your suspension. Your account will remain banned.\n\nRegards,\nEdeetos Administration`;
+                window.location.href = `mailto:${data.userEmail}?subject=Appeal Update - Edeetos&body=${encodeURIComponent(body)}`;
+            };
+            
+            list.appendChild(card);
+        });
+        if(!hasAppeals) list.innerHTML = '<p class="table-loading">No pending appeals.</p>';
     });
 }
 

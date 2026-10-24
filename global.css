@@ -163,6 +163,7 @@ html.dark-mode .navbar, body.dark-mode .navbar {
 }
 
 @media (max-width: 1024px) {
+    .navbar { position: relative !important; z-index: auto !important; }
     .nav-container { flex-wrap: wrap; gap: 1rem; }
 }
 

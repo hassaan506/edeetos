@@ -349,6 +349,11 @@ input[type="number"] {
     .prog-actions button { width: 100%; }
 }
 @media (max-width: 768px) {
+    .prog-stats { flex-wrap: wrap !important; justify-content: center !important; gap: 1.5rem 1rem !important; }
+    .prog-stat-box { flex: 1 1 28%; min-width: 80px; }
+    .prog-stat-box div:last-child { font-size: 1.4rem !important; }
+	.nav-container { flex-direction: column !important; gap: 1rem !important; padding: 1rem !important; }
+    .nav-container > div { width: 100% !important; justify-content: space-between !important; }
     #subjects-grid { grid-template-columns: repeat(1, 1fr); padding-bottom: 220px !important; }
     .popup-body { grid-template-columns: 1fr; padding: 0; }
     .popup-content { padding: 1.5rem; border-radius: 20px; }

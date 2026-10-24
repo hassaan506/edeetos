@@ -86,9 +86,11 @@
                         <span id="wrong-count" style="display:none;"></span>
                         <span id="right-count" style="display:none;"></span>
 
-                        <div id="skipped-warning" class="skipped-warning hidden">
+						<div id="skipped-warning" class="skipped-warning hidden">
                             <i class="fas fa-exclamation-circle"></i> You previously skipped this question. You must answer it now.
                         </div>
+
+                        <div id="point-badge" style="display: none; background: rgba(168, 85, 247, 0.2); border: 1px solid rgba(168, 85, 247, 0.5); color: #d8b4fe; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-bottom: 1rem; width: fit-content;"></div>
 
                         <div class="question-text" id="question-text">
                             Loading question...
@@ -417,9 +419,10 @@
                 <div><label>Subject</label><input type="text" id="edit-q-subject" class="glass-input"></div>
                 <div><label>Chapter</label><input type="text" id="edit-q-chapter" class="glass-input"></div>
                 <div><label>Topic</label><input type="text" id="edit-q-topic" class="glass-input"></div>
-                <div><label>Year</label><input type="text" id="edit-q-year" class="glass-input" placeholder="e.g. 2025"></div>
+				<div><label>Year</label><input type="text" id="edit-q-year" class="glass-input" placeholder="e.g. 2025"></div>
                 <div><label>Specialty</label><input type="text" id="edit-q-specialty" class="glass-input" placeholder="e.g. Surgery"></div>
                 <div><label>Exam</label><input type="text" id="edit-q-exam" class="glass-input" placeholder="e.g. Surgery 23 NOV AF"></div>
+                <div><label>Point (Rafiullah)</label><input type="text" id="edit-q-point" class="glass-input" placeholder="e.g. 123"></div>
             </div>
 
             <label>Question Statement</label>
