@@ -1431,8 +1431,12 @@ window.renderRoomBanner = function(data) {
         if (!banner) {
             banner = document.createElement('div');
             banner.id = 'study-room-banner';
-            banner.style.cssText = "background: rgba(14, 48, 35, 0.95); border-bottom: 1px solid #34d399; color: #f8fafc; padding: 10px 15px; font-weight: bold; position: sticky; top: 0; z-index: 99999; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.9rem;";
-            document.body.prepend(banner);
+            banner.className = 'study-room-banner'; // Applies the new CSS class
+            
+            // Prepend to the vertical wrapper so it sits on top, not on the left
+            const wrapper = document.querySelector('.quiz-content-wrapper');
+            if (wrapper) wrapper.prepend(banner);
+            else document.body.prepend(banner);
         }
 
         const activeMembers = data ? (data.activeMembers || {}) : {};
@@ -1440,15 +1444,17 @@ window.renderRoomBanner = function(data) {
         const roleText = isGuest ? 'Guest' : 'Host';
         
         const actionBtn = isGuest 
-            ? `<button id="btn-exit-guest-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5; padding: 4px 12px; font-size: 0.85rem;">Leave Room</button>`
-            : `<button id="btn-exit-host-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5; padding: 4px 12px; font-size: 0.85rem;">Exit Room</button>`;
+            ? `<button id="btn-exit-guest-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-sign-out-alt"></i> Leave Room</button>`
+            : `<button id="btn-exit-host-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-times-circle"></i> End Room</button>`;
 
         banner.innerHTML = `
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1;">
-                <i class="fas fa-users" style="color: #34d399;"></i> 
-                <span>Room: <strong style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); margin-right: 5px;">${activeRoomId}</strong> (${roleText})</span>
-                <span style="color: #cbd5e1; font-weight: normal; margin-left: 5px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
-                    <i class="fas fa-circle" style="color: #10b981; font-size: 0.6rem; margin-right: 4px;"></i> Active: <span style="color: #f8fafc;">${memberNames}</span>
+                <i class="fas fa-users" style="color: #34d399; font-size: 1.1rem;"></i> 
+                <span>Room <strong style="color: #6ee7b7; font-size: 1.05rem;">${activeRoomId}</strong> <span style="opacity: 0.7; font-size: 0.8rem; font-weight: normal;">(${roleText})</span></span>
+                <span style="color: #64748b; margin: 0 6px;">|</span>
+                <span style="display: flex; align-items: center; gap: 6px; font-weight: normal; font-size: 0.85rem;">
+                    <span class="status-dot-mini green-dot"></span> 
+                    <span style="color: #e2e8f0;">${memberNames}</span>
                 </span>
             </div>
             ${actionBtn}
