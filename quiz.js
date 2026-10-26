@@ -1418,16 +1418,116 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     });
 }
 
-if (roomRef) {
-    onSnapshot(roomRef, (snapshot) => {
-        const data = snapshot.data();
+window.renderRoomBanner = function(data) {
+        if (!activeRoomId) return;
 
-        if (!data || data.status === "ended") {
-            showPracticeCompleteModal(true);
-            return;
+        // Auto-recover host status if the DB says we created the room
+        if (data && currentUserId && (data.hostId === currentUserId || data.host === currentUserId || data.createdBy === currentUserId)) {
+            localStorage.setItem('is_study_guest', 'false');
+        }
+        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+        let banner = document.getElementById('study-room-banner');
+        if (!banner) {
+            banner = document.createElement('div');
+            banner.id = 'study-room-banner';
+            banner.style.cssText = "background: rgba(14, 48, 35, 0.95); border-bottom: 1px solid #34d399; color: #f8fafc; padding: 10px 15px; font-weight: bold; position: sticky; top: 0; z-index: 99999; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.9rem;";
+            document.body.prepend(banner);
         }
 
-        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+        const activeMembers = data ? (data.activeMembers || {}) : {};
+        const memberNames = Object.values(activeMembers).join(', ') || 'No one yet';
+        const roleText = isGuest ? 'Guest' : 'Host';
+        
+        const actionBtn = isGuest 
+            ? `<button id="btn-exit-guest-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5; padding: 4px 12px; font-size: 0.85rem;">Leave Room</button>`
+            : `<button id="btn-exit-host-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5; padding: 4px 12px; font-size: 0.85rem;">Exit Room</button>`;
+
+        banner.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1;">
+                <i class="fas fa-users" style="color: #34d399;"></i> 
+                <span>Room: <strong style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); margin-right: 5px;">${activeRoomId}</strong> (${roleText})</span>
+                <span style="color: #cbd5e1; font-weight: normal; margin-left: 5px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
+                    <i class="fas fa-circle" style="color: #10b981; font-size: 0.6rem; margin-right: 4px;"></i> Active: <span style="color: #f8fafc;">${memberNames}</span>
+                </span>
+            </div>
+            ${actionBtn}
+        `;
+
+        if (isGuest) {
+            const guestExit = document.getElementById('btn-exit-guest-room');
+            if (guestExit) guestExit.onclick = async () => {
+                guestExit.innerHTML = 'Leaving...';
+                guestExit.disabled = true;
+                try {
+                    if (currentUserId) await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
+                } catch(e) {}
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                isIntentionalExit = true;
+                window.location.href = 'questions.html';
+            };
+        } else {
+            const hostExit = document.getElementById('btn-exit-host-room');
+            if (hostExit) hostExit.onclick = () => {
+                let exitModal = document.getElementById('host-exit-modal');
+                if (!exitModal) {
+                    exitModal = document.createElement('div');
+                    exitModal.id = 'host-exit-modal';
+                    exitModal.className = "modal-overlay show";
+                    exitModal.style.zIndex = "2147483647";
+                    exitModal.innerHTML = `
+                        <div class="glass-panel modal-content center-text" style="max-width: 450px; width: 90%;">
+                            <h3 style="color: #fca5a5; margin-top: 0; margin-bottom: 10px;">Exit Study Room</h3>
+                            <p class="modal-subtext" style="margin-bottom: 20px;">Do you want to just leave (keep room active), or end the session and kick all guests?</p>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <button id="btn-leave-only" class="action-btn" style="border-color: rgba(245, 158, 11, 0.4); color: #fcd34d; background: rgba(245, 158, 11, 0.1);">🚶‍♂️ Just Leave</button>
+                                <button id="btn-end-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5;">🛑 End Room</button>
+                                <button id="btn-cancel-exit" class="action-btn text-btn" style="margin-top: 5px;">Cancel</button>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(exitModal);
+                } else {
+                    exitModal.classList.add('show');
+                }
+
+                document.getElementById('btn-cancel-exit').onclick = () => exitModal.classList.remove('show');
+                
+                document.getElementById('btn-leave-only').onclick = async () => {
+                    document.getElementById('btn-leave-only').disabled = true;
+                    try {
+                        if (currentUserId) await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
+                    } catch(e) {}
+                    localStorage.removeItem('active_study_room');
+                    localStorage.removeItem('is_study_guest');
+                    isIntentionalExit = true;
+                    window.location.href = 'questions.html';
+                };
+
+                document.getElementById('btn-end-room').onclick = async () => {
+                    document.getElementById('btn-end-room').disabled = true;
+                    try { await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' }); } catch(e) {}
+                    localStorage.removeItem('active_study_room');
+                    localStorage.removeItem('is_study_guest');
+                    isIntentionalExit = true;
+                    window.location.href = 'questions.html';
+                };
+            };
+        }
+    };
+
+    if (roomRef) {
+        onSnapshot(roomRef, (snapshot) => {
+            const data = snapshot.data();
+
+            if (!data || data.status === "ended") {
+                showPracticeCompleteModal(true);
+                return;
+            }
+
+            window.renderRoomBanner(data);
+            const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
         if (data.status === "waiting" && isGuest) {
             if (!document.getElementById('mp-lobby-screen')) {
