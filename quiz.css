@@ -432,7 +432,8 @@ html.dark-mode .modal-content {
     color: #f8fafc;
     font-weight: 400;
     pointer-events: none; 
-    flex-grow: 1;
+    flex: 1 1 0%; /* Forces text to take available space without pushing the button */
+    min-width: 0; /* Prevents overflow */
     word-break: break-word;
     line-height: 1.45;
     text-align: justify;
