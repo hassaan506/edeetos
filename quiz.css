@@ -403,6 +403,7 @@ html.dark-mode .modal-content {
     user-select: none;
     transition: all 0.2s;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
