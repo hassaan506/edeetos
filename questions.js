@@ -1547,14 +1547,15 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
             let roomPool = cleanPool;
             if (roomPool.length > 50) roomPool = roomPool.slice(0, 50);
 
-            await setDoc(doc(db, "study_rooms", roomId), {
+await setDoc(doc(db, "study_rooms", roomId), {
                 questions: roomPool,
                 quizConfig: { mode, timer: timerMinutes, examName },
                 status: 'playing',
                 currentQuestionIndex: 0,
                 answers: {},
                 memberAnswers: {},
-                forceReveal: {}
+                forceReveal: {},
+                hostId: auth.currentUser ? auth.currentUser.uid : null
             }, { merge: true });
         } catch (error) {
             console.error("Failed to sync room:", error);
