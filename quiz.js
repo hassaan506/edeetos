@@ -107,7 +107,6 @@ if (isExamMode) {
         };
     }
 }
-
 function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     const parts = String(examStr).split("-").map(p => p.trim());
     let examYear = fallbackYear;
@@ -1573,7 +1572,15 @@ window.renderRoomBanner = function(data) {
                                    (data.questions && data.questions.length > 0 && quizQueue[0].text !== data.questions[0].text);
 
                 if (isNewBatch && data.questions) {
-                    quizQueue = data.questions;
+                    let incomingQuestions = [...data.questions];
+                    // Shuffle independently for each user if it's an exam
+                    if (data.quizConfig?.mode === 'exam') {
+                        for (let i = incomingQuestions.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [incomingQuestions[i], incomingQuestions[j]] = [incomingQuestions[j], incomingQuestions[i]];
+                        }
+                    }
+                    quizQueue = incomingQuestions;
                     initialTotalQuestions = quizQueue.length;
                     quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
                     
@@ -1582,9 +1589,12 @@ window.renderRoomBanner = function(data) {
                 }
             }
 
+            // ONLY force-sync the slide transition if we are NOT in exam mode
             if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
-                const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
-                triggerSlideTransition(data.currentQuestionIndex, direction);
+                if (data.quizConfig?.mode !== 'exam') {
+                    const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
+                    triggerSlideTransition(data.currentQuestionIndex, direction);
+                }
             }
 
             if (data.status === "playing" && activeRoomId) {
@@ -1617,6 +1627,38 @@ window.renderRoomBanner = function(data) {
                 const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
                 if ((answerCount >= expectedCount || forceReveal) && !hasRevealedCurrentQuestion && totalAnswerCount > 0) {
                     revealMultiplayerAnswers(currentAnswers, data.activeMembers);
+                }
+            }
+
+            if (data.quizConfig?.mode === 'exam') {
+                const results = data.examResults || {};
+                const activeUids = Object.keys(data.activeMembers || {}).filter(uid => !(data.pausedMembers || []).includes(uid));
+                
+                const leaderboardContainer = document.getElementById('group-leaderboard-container');
+                if (leaderboardContainer) {
+                    const finishedCount = Object.keys(results).length;
+                    let html = `<h3 style="color: #93c5fd; border-bottom: 1px solid rgba(59,130,246,0.3); padding-bottom: 5px; margin-top: 0;">Live Leaderboard (${finishedCount}/${activeUids.length} finished)</h3>`;
+                    html += `<div style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto;">`;
+
+                    const sortedResults = Object.values(results).sort((a, b) => b.score - a.score || a.time - b.time);
+
+                    sortedResults.forEach((res, idx) => {
+                        const mins = Math.floor(res.time / 60);
+                        const secs = (res.time % 60).toString().padStart(2, '0');
+                        html += `
+                            <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                                <span style="font-weight: bold; color: #f8fafc;">#${idx+1} ${res.name}</span>
+                                <span style="color: #34d399; font-weight: bold;">${res.score}/${res.total} <span style="color: #94a3b8; font-size: 0.8rem; margin-left: 10px;"><i class="far fa-clock"></i> ${mins}:${secs}</span></span>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                    leaderboardContainer.innerHTML = html;
+
+                    if (finishedCount >= activeUids.length && activeUids.length > 0) {
+                        const heading = document.querySelector('#exam-result-screen h2');
+                        if (heading) heading.innerHTML = `<i class="fas fa-trophy" style="color: #f59e0b;"></i> Exam Finished!`;
+                    }
                 }
             }
         });
@@ -1655,10 +1697,42 @@ function showResults() {
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
-    const resultsEl = document.getElementById('exam-result-screen');
+const resultsEl = document.getElementById('exam-result-screen');
     resultsEl.classList.remove('hidden');
     resultsEl.classList.add('result-pop-in'); 
-    
+
+    // GROUP EXAM LOGIC
+    if (activeRoomId) {
+        resultsEl.innerHTML = `
+            <h2 style="color: #6ee7b7; margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;"><i class="fas fa-spinner fa-spin"></i> Waiting for others...</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">You scored ${correctCount} out of ${total}. The leaderboard will update as others finish.</p>
+            <div id="group-leaderboard-container" style="text-align: left; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);"></div>
+            <button id="btn-return-home" class="action-btn next-btn" style="margin-top: 20px; width: 100%;">Save & Return</button>
+        `;
+
+        document.getElementById('btn-return-home').onclick = async (e) => {
+            e.preventDefault();
+            document.getElementById('btn-return-home').disabled = true;
+            const tasks = [];
+            tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
+            tasks.push(updateSpacedRepetition());
+            await Promise.all(tasks);
+            exitSafely('questions.html');
+        };
+
+        updateDoc(roomRef, {
+            [`examResults.${currentUserId}`]: {
+                score: correctCount,
+                total: total,
+                time: timeTaken,
+                name: currentUserData?.fullName || 'Student'
+            }
+        }).catch(()=>{});
+        
+        return;
+    }
+
+    // SOLO EXAM LOGIC
     const titleEl = document.getElementById('result-title');
     const scoreEl = document.getElementById('result-score');
     
