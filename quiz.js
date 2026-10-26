@@ -89,6 +89,9 @@ if (isExamMode) {
                 pauseOverlay.classList.remove('hidden');
                 pauseOverlay.classList.add('show');
             }
+            if (activeRoomId && currentUserId) {
+                updateDoc(roomRef, { pausedMembers: arrayUnion(currentUserId) }).catch(()=>{});
+            }
         };
     }
     if (resumeQuizBtn) {
@@ -97,6 +100,9 @@ if (isExamMode) {
             if (pauseOverlay) {
                 pauseOverlay.classList.remove('show');
                 setTimeout(() => pauseOverlay.classList.add('hidden'), 300);
+            }
+            if (activeRoomId && currentUserId) {
+                updateDoc(roomRef, { pausedMembers: arrayRemove(currentUserId) }).catch(()=>{});
             }
         };
     }
@@ -1421,7 +1427,6 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
 window.renderRoomBanner = function(data) {
         if (!activeRoomId) return;
 
-        // Auto-recover host status if the DB says we created the room
         if (data && currentUserId && (data.hostId === currentUserId || data.host === currentUserId || data.createdBy === currentUserId)) {
             localStorage.setItem('is_study_guest', 'false');
         }
@@ -1431,35 +1436,40 @@ window.renderRoomBanner = function(data) {
         if (!banner) {
             banner = document.createElement('div');
             banner.id = 'study-room-banner';
-            banner.className = 'study-room-banner'; // Applies the new CSS class
-            
-            // Prepend to the vertical wrapper so it sits on top, not on the left
+            banner.className = 'study-room-banner';
             const wrapper = document.querySelector('.quiz-content-wrapper');
             if (wrapper) wrapper.prepend(banner);
             else document.body.prepend(banner);
         }
 
         const activeMembers = data ? (data.activeMembers || {}) : {};
+        const pausedMembers = data ? (data.pausedMembers || []) : [];
         
-        // Convert members to individual stylish tags instead of a comma-separated list
-        const memberTags = Object.values(activeMembers).map(name => 
-            `<span style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: #f8fafc; white-space: nowrap; box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);"><i class="fas fa-user" style="font-size: 0.65rem; margin-right: 4px; color: #6ee7b7;"></i>${name}</span>`
-        ).join('');
+        // Build individual pills with Online/Offline dots
+        const memberTags = Object.entries(activeMembers).map(([uid, name]) => {
+            const isPaused = pausedMembers.includes(uid);
+            const statusColor = isPaused ? '#f59e0b' : '#10b981'; // Yellow for paused, Green for online
+            const statusIcon = isPaused ? 'fa-pause-circle' : 'fa-circle';
+            return `<span style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 16px; font-size: 0.75rem; color: #f8fafc; white-space: nowrap; box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fas fa-user" style="font-size: 0.65rem; color: #94a3b8;"></i> 
+                ${name} 
+                <i class="fas ${statusIcon}" title="${isPaused ? 'Paused/Offline' : 'Online'}" style="color: ${statusColor}; font-size: 0.6rem; margin-left: 2px;"></i>
+            </span>`;
+        }).join('');
+        
         const memberDisplay = memberTags || '<span style="color: #94a3b8; font-size: 0.8rem;">No one yet</span>';
-        
         const roleText = isGuest ? 'Guest' : 'Host';
         
         const actionBtn = isGuest 
             ? `<button id="btn-exit-guest-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-sign-out-alt"></i> Leave Room</button>`
-            : `<button id="btn-exit-host-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-times-circle"></i> End Room</button>`;
+            : `<button id="btn-exit-host-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-cog"></i> Room Settings</button>`;
 
         banner.innerHTML = `
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1;">
                 <i class="fas fa-users" style="color: #34d399; font-size: 1.1rem;"></i> 
                 <span>Room <strong style="color: #6ee7b7; font-size: 1.05rem;">${activeRoomId}</strong> <span style="opacity: 0.7; font-size: 0.8rem; font-weight: normal;">(${roleText})</span></span>
                 <span style="color: #64748b; margin: 0 6px;">|</span>
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: normal; font-size: 0.85rem; flex-wrap: wrap;">
-                    <span class="status-dot-mini green-dot" style="margin-right: 4px;"></span> 
+                <span style="display: flex; align-items: center; gap: 6px; font-weight: normal; flex-wrap: wrap;">
                     ${memberDisplay}
                 </span>
             </div>
@@ -1541,69 +1551,76 @@ window.renderRoomBanner = function(data) {
             window.renderRoomBanner(data);
             const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-        if (data.status === "waiting" && isGuest) {
-            if (!document.getElementById('mp-lobby-screen')) {
-                const lobby = document.createElement('div');
-                lobby.id = 'mp-lobby-screen';
-                lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b291e; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
-                lobby.innerHTML = `
-                    <i class="fas fa-users" style="font-size: 4rem; color: #34d399; margin-bottom: 20px;"></i>
-                    <h2 style="font-family: 'Nunito', sans-serif;">Waiting for Host...</h2>
-                    <p style="color: #94a3b8; margin-top: 10px;">The host is picking the test material. Hang tight.</p>
-                `;
-                document.body.appendChild(lobby);
+            if (data.status === "waiting" && isGuest) {
+                if (!document.getElementById('mp-lobby-screen')) {
+                    const lobby = document.createElement('div');
+                    lobby.id = 'mp-lobby-screen';
+                    lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b291e; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
+                    lobby.innerHTML = `
+                        <i class="fas fa-users" style="font-size: 4rem; color: #34d399; margin-bottom: 20px;"></i>
+                        <h2 style="font-family: 'Nunito', sans-serif;">Waiting for Host...</h2>
+                        <p style="color: #94a3b8; margin-top: 10px;">The host is picking the test material. Hang tight.</p>
+                    `;
+                    document.body.appendChild(lobby);
+                }
+                return;
             }
-            return;
-        }
 
-        if (data.status === "playing" && isGuest) {
-            const lobby = document.getElementById('mp-lobby-screen');
-            if (lobby) lobby.remove();
-            const isNewBatch = !quizQueue || quizQueue.length === 0 || 
-                               (data.questions && data.questions.length > 0 && quizQueue[0].text !== data.questions[0].text);
+            if (data.status === "playing" && isGuest) {
+                const lobby = document.getElementById('mp-lobby-screen');
+                if (lobby) lobby.remove();
+                const isNewBatch = !quizQueue || quizQueue.length === 0 || 
+                                   (data.questions && data.questions.length > 0 && quizQueue[0].text !== data.questions[0].text);
 
-            if (isNewBatch && data.questions) {
-                quizQueue = data.questions;
-                initialTotalQuestions = quizQueue.length;
-                quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                if (isNewBatch && data.questions) {
+                    quizQueue = data.questions;
+                    initialTotalQuestions = quizQueue.length;
+                    quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                    
+                    buildNumberGrid();
+                    loadQuestion(data.currentQuestionIndex || 0);
+                }
+            }
+
+            if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
+                const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
+                triggerSlideTransition(data.currentQuestionIndex, direction);
+            }
+
+            if (data.status === "playing" && activeRoomId) {
+                const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
+                const activeMembers = data.activeMembers || {};
+                const pausedMembers = data.pausedMembers || [];
                 
-                buildNumberGrid();
-                loadQuestion(data.currentQuestionIndex || 0);
+                // Exclude paused members from expected answer count
+                const activeUids = Object.keys(activeMembers);
+                const onlineUids = activeUids.filter(uid => !pausedMembers.includes(uid));
+                const onlineAnswers = Object.keys(currentAnswers).filter(uid => !pausedMembers.includes(uid));
+                
+                const expectedCount = onlineUids.length > 0 ? onlineUids.length : 1; 
+                const answerCount = onlineAnswers.length;
+                const totalAnswerCount = Object.keys(currentAnswers).length;
+
+                let waitEl = document.getElementById('multiplayer-waiting-text');
+                if (!waitEl) {
+                    waitEl = document.createElement('div');
+                    waitEl.id = 'multiplayer-waiting-text';
+                    waitEl.style.cssText = "text-align: center; margin-top: 15px; font-weight: bold; color: #34d399; display: none;";
+                    optionsContainer.parentElement.appendChild(waitEl);
+                }
+
+                if (hasAnsweredCurrentQuestion && !hasRevealedCurrentQuestion) {
+                    waitEl.style.display = 'block';
+                    waitEl.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Waiting for others... (${answerCount}/${expectedCount} online answered)`;
+                }
+
+                const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
+                if ((answerCount >= expectedCount || forceReveal) && !hasRevealedCurrentQuestion && totalAnswerCount > 0) {
+                    revealMultiplayerAnswers(currentAnswers, data.activeMembers);
+                }
             }
-        }
-
-        if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
-            const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
-            triggerSlideTransition(data.currentQuestionIndex, direction);
-        }
-
-        if (data.status === "playing" && activeRoomId) {
-            const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
-            const activeMembers = data.activeMembers || {};
-            const answerCount = Object.keys(currentAnswers).length;
-            const memberCount = Object.keys(activeMembers).length || 1;
-
-            let waitEl = document.getElementById('multiplayer-waiting-text');
-            if (!waitEl) {
-                waitEl = document.createElement('div');
-                waitEl.id = 'multiplayer-waiting-text';
-                waitEl.style.cssText = "text-align: center; margin-top: 15px; font-weight: bold; color: #34d399; display: none;";
-                optionsContainer.parentElement.appendChild(waitEl);
-            }
-
-            if (hasAnsweredCurrentQuestion && !hasRevealedCurrentQuestion) {
-                waitEl.style.display = 'block';
-                waitEl.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Waiting for others... (${answerCount}/${memberCount} answered)`;
-            }
-
-            const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
-            if ((answerCount >= memberCount || forceReveal) && !hasRevealedCurrentQuestion && answerCount > 0) {
-                revealMultiplayerAnswers(currentAnswers, data.activeMembers);
-            }
-        }
-    });
-}
-
+        });
+    }
 // ==========================================
 // 8. EXAM SUBMISSION & RESULTS
 // ==========================================
