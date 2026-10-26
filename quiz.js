@@ -27,7 +27,8 @@ let hasShownSkipPopup = false;
 
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
-const isExamMode = (quizConfig.mode === 'exam') && !activeRoomId;
+// FIXED: Removed the `&& !activeRoomId` block to properly allow exams inside Study Rooms
+const isExamMode = (quizConfig.mode === 'exam');
 
 function isBookSession() {
     return quizQueue.length > 0 && quizQueue[0]?.isBookQuestion === true;
@@ -107,6 +108,7 @@ if (isExamMode) {
         };
     }
 }
+
 function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     const parts = String(examStr).split("-").map(p => p.trim());
     let examYear = fallbackYear;
@@ -1064,7 +1066,7 @@ async function syncNextQuestion(newIndex) {
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
     if (isGuest) return;
 
-    if (activeRoomId) {
+    if (activeRoomId && !isExamMode) {
         await updateDoc(doc(db, "study_rooms", activeRoomId), {
             currentQuestionIndex: newIndex
         });
@@ -1693,11 +1695,12 @@ function showResults() {
 
     const total = quizQueue.length;
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+    const timeTaken = (quizConfig.timer * 60) - sessionSeconds;
     
     document.getElementById('quiz-ui-container').style.display = 'none';
     document.getElementById('bottom-actions-container').style.display = 'none';
     
-const resultsEl = document.getElementById('exam-result-screen');
+    const resultsEl = document.getElementById('exam-result-screen');
     resultsEl.classList.remove('hidden');
     resultsEl.classList.add('result-pop-in'); 
 
@@ -2107,7 +2110,7 @@ if (aiHintBtn) {
 }
 
 document.getElementById('next-btn').onclick = async () => {
-    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true' && !isExamMode) {
         alert("Only the host can jump to different questions.");
         return;
     }
@@ -2147,7 +2150,7 @@ document.getElementById('next-btn').onclick = async () => {
 };
 
 document.getElementById('prev-btn').onclick = () => {
-    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true') {
+    if (activeRoomId && localStorage.getItem('is_study_guest') === 'true' && !isExamMode) {
         alert("Only the host can jump to different questions.");
         return;
     }
@@ -2520,7 +2523,7 @@ if (btnPushEdits) {
                 
                 const csvUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${csvPath}`;
 
-                const getRes = await fetch(csvUrl + `?ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
+                const getRes = await fetch(csvUrl + `ref=${branch}`, { headers: { "Authorization": `Bearer ${token}` } });
                 if (!getRes.ok) throw new Error(`Failed to fetch ${csvPath}. Check token permissions.`);
                 
                 const getJson = await getRes.json();
