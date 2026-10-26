@@ -83,8 +83,8 @@ if (isExamMode) {
     sessionSeconds = quizConfig.timer * 60; 
     if (staticPauseBtn) staticPauseBtn.style.display = 'none';
 } else {
-    if (staticPauseBtn) {
-        staticPauseBtn.onclick = () => {
+        const handlePause = (e) => {
+            e.preventDefault();
             isPaused = true;
             if (pauseOverlay) {
                 pauseOverlay.classList.remove('hidden');
@@ -94,9 +94,9 @@ if (isExamMode) {
                 updateDoc(roomRef, { pausedMembers: arrayUnion(currentUserId) }).catch(()=>{});
             }
         };
-    }
-    if (resumeQuizBtn) {
-        resumeQuizBtn.onclick = () => {
+
+        const handleResume = (e) => {
+            e.preventDefault();
             isPaused = false;
             if (pauseOverlay) {
                 pauseOverlay.classList.remove('show');
@@ -106,8 +106,16 @@ if (isExamMode) {
                 updateDoc(roomRef, { pausedMembers: arrayRemove(currentUserId) }).catch(()=>{});
             }
         };
+
+        if (staticPauseBtn) {
+            staticPauseBtn.addEventListener('click', handlePause);
+            staticPauseBtn.addEventListener('touchstart', handlePause, { passive: false });
+        }
+        if (resumeQuizBtn) {
+            resumeQuizBtn.addEventListener('click', handleResume);
+            resumeQuizBtn.addEventListener('touchstart', handleResume, { passive: false });
+        }
     }
-}
 
 function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     const parts = String(examStr).split("-").map(p => p.trim());

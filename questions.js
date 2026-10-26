@@ -1041,7 +1041,14 @@ function getQuestionCount(view, pathArr, customPool = null) {
         else if (view === 'system') tree = systemTree;
         else if (view === 'exam') tree = examTree;
         else if (view === 'book') {
+else if (view === 'book') {
             let current = activeCustomPool ? buildSubTree(activeCustomPool) : {};
+
+            const subjects = Object.keys(current);
+            if (subjects.length > 0) {
+                current = current[subjects[0]];
+            }
+            
             for (let p of paths) {
                 if (current && current[p]) current = current[p];
                 else return 0;
