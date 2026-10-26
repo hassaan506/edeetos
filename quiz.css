@@ -638,6 +638,30 @@ html.dark-mode .modal-content {
 .dot.skipped { background: #facc15; }
 .dot.unanswered { background: rgba(255, 255, 255, 0.25); }
 
+/* --- BOX 0: STUDY ROOM BANNER --- */
+.study-room-banner {
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    border-radius: 16px;
+    color: #f8fafc;
+    padding: 0.65rem 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.2rem;
+}
+
+html.dark-mode .study-room-banner {
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border-color: rgba(52, 211, 153, 0.15);
+}
+
 /* ========================================== */
 /* MODALS                                     */
 /* ========================================== */
