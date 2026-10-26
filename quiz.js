@@ -1440,7 +1440,13 @@ window.renderRoomBanner = function(data) {
         }
 
         const activeMembers = data ? (data.activeMembers || {}) : {};
-        const memberNames = Object.values(activeMembers).join(', ') || 'No one yet';
+        
+        // Convert members to individual stylish tags instead of a comma-separated list
+        const memberTags = Object.values(activeMembers).map(name => 
+            `<span style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: #f8fafc; white-space: nowrap; box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);"><i class="fas fa-user" style="font-size: 0.65rem; margin-right: 4px; color: #6ee7b7;"></i>${name}</span>`
+        ).join('');
+        const memberDisplay = memberTags || '<span style="color: #94a3b8; font-size: 0.8rem;">No one yet</span>';
+        
         const roleText = isGuest ? 'Guest' : 'Host';
         
         const actionBtn = isGuest 
@@ -1452,9 +1458,9 @@ window.renderRoomBanner = function(data) {
                 <i class="fas fa-users" style="color: #34d399; font-size: 1.1rem;"></i> 
                 <span>Room <strong style="color: #6ee7b7; font-size: 1.05rem;">${activeRoomId}</strong> <span style="opacity: 0.7; font-size: 0.8rem; font-weight: normal;">(${roleText})</span></span>
                 <span style="color: #64748b; margin: 0 6px;">|</span>
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: normal; font-size: 0.85rem;">
-                    <span class="status-dot-mini green-dot"></span> 
-                    <span style="color: #e2e8f0;">${memberNames}</span>
+                <span style="display: flex; align-items: center; gap: 6px; font-weight: normal; font-size: 0.85rem; flex-wrap: wrap;">
+                    <span class="status-dot-mini green-dot" style="margin-right: 4px;"></span> 
+                    ${memberDisplay}
                 </span>
             </div>
             ${actionBtn}
@@ -2192,7 +2198,16 @@ if (globalExitBtn) {
     globalExitBtn.onclick = async (e) => {
         e.preventDefault();
         
-        if (activeRoomId && !confirm("Are you sure you want to completely leave and end the study group?")) return;
+        if (activeRoomId) {
+            const isGuest = localStorage.getItem('is_study_guest') === 'true';
+            if (!isGuest) {
+                if (!confirm("Return to dashboard to pick new questions? (Guests will wait in the lobby)")) return;
+            } else {
+                if (!confirm("Are you sure you want to leave the study group?")) return;
+            }
+        } else {
+            if (!confirm("Are you sure you want to exit the session?")) return;
+        }
 
         globalExitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
         globalExitBtn.disabled = true;
@@ -2204,22 +2219,32 @@ if (globalExitBtn) {
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
                 if (!isGuest) {
-                    tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { status: "ended", endedAt: serverTimestamp() }));
+                    // Put room in waiting mode for guests while host picks new Qs
+                    tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { 
+                        status: "waiting",
+                        answers: {},
+                        memberAnswers: deleteField(),
+                        forceReveal: deleteField()
+                    }));
                 } else {
                     tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() }));
+                    localStorage.removeItem('active_study_room');
+                    localStorage.removeItem('is_study_guest');
                 }
             }
             await Promise.all(tasks);
         } catch (error) { 
             console.error("Error during exit sequence:", error); 
         } finally {
-            localStorage.removeItem('active_study_room');
-            localStorage.removeItem('is_study_guest');
+            // Only clear the room ID if you are NOT the host, allowing the host to keep ownership
+            if (!activeRoomId || localStorage.getItem('is_study_guest') === 'true') {
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+            }
             exitSafely('questions.html'); 
         }
     };
 }
-
 async function updateSpacedRepetition() {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
