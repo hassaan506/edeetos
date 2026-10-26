@@ -28,7 +28,7 @@ let hasShownSkipPopup = false;
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
 // FIXED: Removed the `&& !activeRoomId` block to properly allow exams inside Study Rooms
-const isExamMode = (quizConfig.mode === 'exam');
+let isExamMode = (quizConfig.mode === 'exam');
 
 function isBookSession() {
     return quizQueue.length > 0 && quizQueue[0]?.isBookQuestion === true;
@@ -1549,8 +1549,20 @@ window.renderRoomBanner = function(data) {
                 return;
             }
 
-            window.renderRoomBanner(data);
+window.renderRoomBanner(data);
             const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+            // Sync Practice/Exam mode for all players in the room
+            if (data.quizConfig && data.quizConfig.mode) {
+                isExamMode = (data.quizConfig.mode === 'exam');
+                if (isExamMode) {
+                    document.body.classList.add('mode-exam');
+                    if (staticPauseBtn) staticPauseBtn.style.display = 'none';
+                } else {
+                    document.body.classList.remove('mode-exam');
+                    if (staticPauseBtn) staticPauseBtn.style.display = 'flex';
+                }
+            }
 
             if (data.status === "waiting" && isGuest) {
                 if (!document.getElementById('mp-lobby-screen')) {
@@ -1657,9 +1669,16 @@ window.renderRoomBanner = function(data) {
                     html += `</div>`;
                     leaderboardContainer.innerHTML = html;
 
-                    if (finishedCount >= activeUids.length && activeUids.length > 0) {
+if (finishedCount >= activeUids.length && activeUids.length > 0) {
                         const heading = document.querySelector('#exam-result-screen h2');
-                        if (heading) heading.innerHTML = `<i class="fas fa-trophy" style="color: #f59e0b;"></i> Exam Finished!`;
+                        if (heading) heading.innerHTML = `<i class="fas fa-bullhorn" style="color: #f59e0b;"></i> Final Results Announced!`;
+                        
+                        const pText = document.querySelector('#exam-result-screen p');
+                        if (pText && sortedResults.length > 0) {
+                            pText.innerHTML = `<strong>${sortedResults[0].name}</strong> won 1st place with a score of ${sortedResults[0].score}!`;
+                            pText.style.color = "#fbbf24";
+                            pText.style.fontSize = "1.1rem";
+                        }
                     }
                 }
             }
