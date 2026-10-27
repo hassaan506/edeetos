@@ -7,7 +7,7 @@
     background-color: #0b291e; 
     background-image: radial-gradient(circle at 15% 15%, rgba(45, 138, 97, 0.45) 0%, transparent 45%), radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 50%), linear-gradient(180deg, #134230 0%, #092218 100%);
     color: #f8fafc; 
-    min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
     overflow-x: hidden;
     transition: all 0.4s ease;

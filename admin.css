@@ -13,7 +13,7 @@ body.admin-body {
         radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 50%),
         linear-gradient(180deg, #134230 0%, #092218 100%);
     color: #f8fafc; 
-    height: 100vh; 
+    height: 100dvh; 
     overflow: hidden; 
     position: relative;
     transition: background 0.3s ease;
@@ -27,7 +27,7 @@ body.admin-body.dark-mode, html.dark-mode body.admin-body {
         linear-gradient(180deg, #0f172a 0%, #020617 100%);
 }
 
-.admin-layout { display: flex; width: 100vw; height: 100vh; overflow: hidden; position: relative; z-index: 10; }
+.admin-layout { display: flex; width: 100vw; height: 100dvh; overflow: hidden; position: relative; z-index: 10; }
 
 /* === SIDEBAR === */
 .admin-sidebar {
@@ -217,7 +217,7 @@ html.dark-mode .glass-box { background: rgba(15, 23, 42, 0.72); border-color: rg
 .b-time { background: rgba(0, 0, 0, 0.22); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.14); }
 
 /* MODALS */
-.popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 18, 12, 0.85); backdrop-filter: blur(10px); z-index: 2000; display: none; align-items: center; justify-content: center; }
+.popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background: rgba(2, 18, 12, 0.85); backdrop-filter: blur(10px); z-index: 2000; display: none; align-items: center; justify-content: center; }
 .popup-content { 
     background: rgba(14, 48, 35, 0.96) !important; 
     backdrop-filter: blur(24px); 
@@ -462,7 +462,7 @@ html.dark-mode .popup-content { background: rgba(15, 23, 42, 0.96) !important; b
 
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
-    .admin-sidebar { position: fixed; top: 0; left: -280px; height: 100vh; }
+    .admin-sidebar { position: fixed; top: 0; left: -280px; height: 100dvh; }
     .admin-sidebar.mobile-open { left: 0; }
     .mobile-only-btn { display: block; }
     .admin-topbar { padding: 1rem; }

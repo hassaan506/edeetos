@@ -6,7 +6,7 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-s
 // 0. GLOBAL UI OVERRIDE (BEAUTIFUL ALERTS)
 window.alert = function(message, onCloseCallback) {
     const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; z-index:999999;';
+    overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100dvh; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; z-index:999999;';
 
     const box = document.createElement('div');
     box.style.cssText = 'background:white; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.2); text-align:center; width:90%; max-width:400px; transform:scale(0.8); opacity:0; transition:all 0.3s ease;';

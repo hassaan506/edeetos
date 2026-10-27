@@ -247,7 +247,7 @@ onAuthStateChanged(auth, async (user) => {
                     localStorage.removeItem('edeetos_quiz_config');
                     
                     const lockoutScreen = document.createElement('div');
-                    lockoutScreen.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+                    lockoutScreen.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
 lockoutScreen.innerHTML = `
                         <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
                         <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Account Suspended</h1>
@@ -442,7 +442,7 @@ function triggerSlideTransition(newIndex, direction) {
 function showSkippedModal() {
     const modal = document.createElement('div');
     modal.id = 'skipped-popup-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.92); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px); padding: 20px;`;
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.92); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px); padding: 20px;`;
     modal.innerHTML = `
         <div class="glass-panel" style="max-width: 460px; padding: 2rem;">
             <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 4rem; margin-bottom: 1.2rem;"></i>
@@ -459,7 +459,7 @@ function showMustAnswerModal() {
     if (document.getElementById('must-answer-modal')) return;
     const modal = document.createElement('div');
     modal.id = 'must-answer-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
     modal.innerHTML = `
         <div class="glass-panel" style="background: rgba(14, 48, 35, 0.95); padding: 30px; border-radius: 18px; max-width: 420px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.4);">
             <i class="fas fa-exclamation-circle" style="color: #f59e0b; font-size: 3.5rem; margin-bottom: 1rem;"></i>
@@ -1576,7 +1576,7 @@ window.renderRoomBanner(data);
                 if (!document.getElementById('mp-lobby-screen')) {
                     const lobby = document.createElement('div');
                     lobby.id = 'mp-lobby-screen';
-                    lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0b291e; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
+                    lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background: #0b291e; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
                     lobby.innerHTML = `
                         <i class="fas fa-users" style="font-size: 4rem; color: #34d399; margin-bottom: 20px;"></i>
                         <h2 style="font-family: 'Nunito', sans-serif;">Waiting for Host...</h2>
@@ -1921,7 +1921,7 @@ function showPracticeCompleteModal(isGuest = false) {
 
     const modal = document.createElement('div');
     modal.id = 'practice-complete-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
 
     const title = isGuest ? "Session Ended" : "Practice Complete!";
     const desc = isGuest ? "The host has finished the session and closed the study room." : "Great job! You have finished all the questions.";
@@ -2114,7 +2114,7 @@ if (aiHintBtn) {
 
             const hintModal = document.createElement('div');
             hintModal.id = 'dynamic-hint-modal';
-            hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
+            hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
             
             hintModal.innerHTML = `
                 <div style="background: rgba(14, 48, 35, 0.95); backdrop-filter: blur(24px); border: 1px solid rgba(192, 132, 252, 0.4); padding: 28px; border-radius: 18px; max-width: 460px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">

@@ -14,7 +14,7 @@ body {
     margin-top: 70px; 
     padding: 25px 35px 35px 35px;
     gap: 30px;
-    height: calc(100vh - 130px);
+    height: calc(100dvh - 130px);
     box-sizing: border-box;
 }
 
