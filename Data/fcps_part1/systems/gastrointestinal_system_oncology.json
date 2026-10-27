@@ -13,7 +13,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A medical student is asked which gastrointestinal (GIT) carcinoma is considered the most treatable (best prognosis when detected early). Which of the following is the most correct answer?",
         "options": {
             "A": "Pancreatic carcinoma",
@@ -41,7 +41,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient having alternative diarrhea and constipation habits and per rectal bleeding diagnosed as a case of colon cancer which is the tumor marker:",
         "options": {
             "A": "Alpha fetoprotein",
@@ -58,20 +58,23 @@
     {
         "id": "X6R8ZZS8",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Anesthesia - 08/25 - August 4 - Morning",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon"
         ],
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient history bloody diarrhea and weight loss with pallor. He was diagnosed as case of Colon Carcinoma and was treated for that. Now which marker is used for follow up of that patient?",
         "options": {
             "A": "AFP",
@@ -88,18 +91,21 @@
     {
         "id": "BKSZC6ZM",
         "year": [
-            "2026"
+            "2026",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 07/26 - July 08 - Afternoon"
+            "Surgery - 07/26 - July 08 - Afternoon",
+            "Medicine - 11/24 - November 20 - Morning"
         ],
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is scheduled for Cancer Radiotherapy. Which radiation intensity can cause severe GIT symptoms during radiotherapy of Cancer?",
         "options": {
             "A": "10 cGy",
@@ -127,7 +133,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with altered bowel habits, weight loss and per rectal bleed suspected of colon carcinoma. Which of the following tumor marker is responsible?",
         "options": {
             "A": "BRCA1",
@@ -155,7 +161,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with complaint of fatigue, weakness and weight loss. He gave history of Alcohol abuse in past now diagnosed as Liver carcinoma what tumor marker will be raised?",
         "options": {
             "A": "CEA",
@@ -183,7 +189,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with suspected malignancy is evaluated for tumor markers. A marker that is normally elevated in fetal life is found to be increased. Which tumor marker is most commonly associated with hepatocellular carcinoma?",
         "options": {
             "A": "Alpha-fetoprotein (AFP)",
@@ -211,7 +217,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Carcinoembryonic antigen (CEA) is elevated in a patient with colon cancer. What is its primary clinical use?",
         "options": {
             "A": "Confirming diagnosis",
@@ -239,7 +245,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Carcinoembryonic antigen (CEA) is primarily used for which purpose in colorectal carcinoma?",
         "options": {
             "A": "Screening",
@@ -249,34 +255,6 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "RCL3NTNJ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Oncology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Diagnosis of colon CA made many years back CEA was raised that time patient came for regular checkup you advised CEA now what is role of CEA?",
-        "options": {
-            "A": "For Staging",
-            "B": "For Follow up",
-            "C": "To confirm Malignancy",
-            "D": "Cell differentiation",
-            "E": ""
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -297,7 +275,7 @@
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which tumor marker is commonly used for monitoring colorectal carcinoma?",
         "options": {
             "A": "AFP",

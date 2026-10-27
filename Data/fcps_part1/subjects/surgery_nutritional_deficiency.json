@@ -13,7 +13,7 @@
         "subject": "Surgery",
         "chapter": "Nutritional Deficiency",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient undergoes a Total Gastrectomy. Which class of vitamin deficiency is the patient immediately at risk for, independent of the intrinsic factor mechanism?",
         "options": {
             "A": "Fat soluble vitamins",
@@ -24,34 +24,6 @@
         },
         "correctAnswer": "B",
         "explanation": "Total gastrectomy causes immediate achlorhydria, which impairs the release of many water-soluble vitamins (like B1, C, and minerals from food for absorption, in addition to the eventual B12 deficiency.",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "A8G98K3A",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Surgery",
-        "chapter": "Nutritional Deficiency",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient's 100cm of ileum was resected which vitamin is needed for supplementation",
-        "options": {
-            "A": "Vitamin C",
-            "B": "Vitamin K",
-            "C": "Vitamin B12",
-            "D": "Vitamin B6",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
         "hint": "",
         "Point": ""
     }

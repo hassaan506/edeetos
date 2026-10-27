@@ -13,7 +13,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "25yrs old multiparous-woman presented with lower abdominal pain, on histology it showed solid cystic areas intermixed but on Laparoscopy it was semisolid with brown Centre & diagnosed as chocolate cyst. Treatment of Choice:",
         "options": {
             "A": "Ascarid",
@@ -41,7 +41,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "5-alpha reductase inhibitors improve symptoms of benign prostatic hyperplasia by:",
         "options": {
             "A": "Blocking androgen receptors",
@@ -52,6 +52,34 @@
         },
         "correctAnswer": "B",
         "explanation": "Medications like finasteride and dutasteride inhibit the enzyme 5-alpha-reductase, which prevents the conversion of testosterone into its more potent active metabolite, dihydrotestosterone (DHT). Because DHT drives prostate growth, its reduction leads to shrinkage of the enlarged prostate gland over time.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "48LGDLY2",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "8 weeks pregnancy with affected disorder drug given should be:",
+        "options": {
+            "A": "Lithium",
+            "B": "Valporate",
+            "C": "Haloperidol",
+            "D": "Escitalopram",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -69,7 +97,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 10 weeks pregnant lady, known CKD patient, presented with hypertension 150/110 mmHg. What is the most common 1st line antihypertensive in such a patient?",
         "options": {
             "A": "Labetalol",
@@ -97,7 +125,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 22 year old sexually active male presents with urethral discharge. Gram stain shows intracellular Gram-negative diplococci suggestive of Neisseria gonorrhoeae. The physician is concerned about poor patient compliance. Which is the best treatment option?",
         "options": {
             "A": "Oral doxycycline for 7 days",
@@ -118,8 +146,8 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Radiology - 04/26 - April 7 - Morning",
@@ -128,7 +156,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 23 year old man is diagnosed with gonorrhea. Which of the following is the most appropriate treatment?",
         "options": {
             "A": "Ceftriaxone only",
@@ -156,7 +184,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 24 year old female with Polycystic Ovary Syndrome is primarily concerned with her acne and excessive facial hair. Which medication is most appropriate for her specific concerns?",
         "options": {
             "A": "Metformin",
@@ -184,7 +212,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 25 year old male presents with dysuria and urethral discharge. NAAT confirms Chlamydia trachomatis infection. Which of the following is the most appropriate treatment?",
         "options": {
             "A": "Ciprofloxacin.",
@@ -215,7 +243,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 25-year-old woman on oral isotretinoin for severe acne becomes pregnant. What is the major risk to the fetus?",
         "options": {
             "A": "Neural tube defects",
@@ -243,7 +271,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 25-year-old woman with generalized tonic-clonic seizures is diagnosed with eclampsia. What is the appropriate loading dose of magnesium sulfate?",
         "options": {
             "A": "2 g IV only",
@@ -271,7 +299,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 26 year old woman is newly diagnosed with HIV during her first trimester of pregnancy (8 weeks gestation). Antiretroviral therapy is indicated, but one of the standard drugs in nonpregnant adults is avoided in early pregnancy due to teratogenic risk, particularly neural tube defects. Which of the following drugs should be avoided?",
         "options": {
             "A": "Zidovudine",
@@ -299,7 +327,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 26 year old woman took medication for severe acne during the first trimester of pregnancy. Her baby is born with craniofacial abnormalities and congenital cardiac defects. Which of the following vitamins is most likely responsible for these congenital anomalies?",
         "options": {
             "A": "Vitamin C",
@@ -327,7 +355,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 28 year old pregnant woman with systemic lupus erythematosus requires continuation of her DMARD therapy. Which of the following drugs is safest to continue during pregnancy?",
         "options": {
             "A": "Methotrexate",
@@ -355,7 +383,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 29 year old multiparous woman chooses a Copper intrauterine contraceptive device (Cu-IUCD) for long-term reversible contraception. What is the primary mechanism by which the Copper IUCD prevents pregnancy?",
         "options": {
             "A": "Suppression of ovulation",
@@ -383,7 +411,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 29 year old woman presents with highly irregular menstrual bleeding lasting over two months. She requests the most reliable contraceptive option that will simultaneously stabilize and minimize her endometrial bleeding. What is the best clinical recommendation?",
         "options": {
             "A": "Copper Intrauterine Device (Cu-IUD)",
@@ -411,7 +439,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 35 year old female presents with heavy menstrual bleeding that interferes with her daily life. She does not wish to use hormonal contraception at this time. Which non-hormonal treatment is first-line?",
         "options": {
             "A": "Mefenamic acid",
@@ -439,7 +467,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 38-week primigravida requires cervical ripening for induction of labor. Which prostaglandin is primarily used to stimulate uterine contractions and cervical softening?",
         "options": {
             "A": "PGE1",
@@ -467,7 +495,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 50 year old female presents with a tumor that is estrogen and progesterone receptor positive. What is the drug of choice?",
         "options": {
             "A": "Tamoxifen",
@@ -495,7 +523,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 52 year old woman is diagnosed with estrogen receptor (ER)-positive and progesterone receptor (PR)-positive breast carcinoma. Which drug is most appropriate as hormonal therapy?",
         "options": {
             "A": "Trastuzumab",
@@ -523,7 +551,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 55 year old man is prescribed finasteride for benign prostatic hyperplasia. Which of the following adverse effects is most commonly associated with this drug?",
         "options": {
             "A": "Gynecomastia",
@@ -551,7 +579,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 58 year old male is taking finasteride for benign prostatic hyperplasia. Which side effect is most commonly associated?",
         "options": {
             "A": "Hypertension",
@@ -572,8 +600,8 @@
         ],
         "specialty": [
             "Medicine & Allied",
-            "Radiology",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Radiology"
         ],
         "exams": [
             "Medicine - 07/26 - July 9 - Afternoon",
@@ -584,7 +612,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 78 year old man with BPH. You advise 5-alpha reductase inhibitor. What will it do? MOA:",
         "options": {
             "A": "Relaxes bladder neck smooth muscle",
@@ -614,7 +642,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A Aethlete was given some injection on 14th day of menstrual cycle because of which her menstruation was absent injection contain",
         "options": {
             "A": "Estrogen",
@@ -642,7 +670,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A breastfeeding woman is diagnosed with a urinary tract infection. She was initially prescribed ciprofloxacin, but is concerned about drug excretion in breast milk. Which of the following is a safer alternative with minimal excretion into breast milk?",
         "options": {
             "A": "Metronidazole",
@@ -670,7 +698,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient delivered a baby with craniofacial abnormalities. She has been taking treatment for her acne during pregnancy. What is the likely cause of defects in the baby?",
         "options": {
             "A": "Folic acid",
@@ -698,7 +726,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient present in Gynae OPD for contraception, she has history of DVT and has experienced two episodes of Pulmonary embolism, which of the following is contraindicated in this patient?",
         "options": {
             "A": "Copper IUCD",
@@ -726,7 +754,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient presents with a malodorous, frothy vaginal discharge. Microscopy reveals motile, flagellated organisms. Which antibiotic is the treatment of choice?",
         "options": {
             "A": "Amoxicillin",
@@ -736,37 +764,6 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "UZDHWXS3",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon",
-            "Medicine - 05/25 - May 13 - Afternoon",
-            "Medicine - 05/25 - May 13 - Morning",
-            "Medicine - 05/25 - May 15 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female was diagnosed with pulmonary TB. She has been taking OCP for 2 years. She suddenly started vomiting and Her Beta HCG came positive. Which of following drug caused OCP failure",
-        "options": {
-            "A": "Isoniazid",
-            "B": "Pyrazinamide",
-            "C": "Rifampicin",
-            "D": "Ethambutol",
-            "E": ""
-        },
-        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -785,7 +782,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A G3P2 presented with 10 weeks gestational amenorrhea with a right adnexal mass of 4.4 cm. What is the medical treatment of ectopic pregnancy?",
         "options": {
             "A": "Methotrexate",
@@ -813,7 +810,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A hypertensive and diabetic woman comes to you seeking contraceptive advice. Which of the following methods is absolutely contraindicated?",
         "options": {
             "A": "COCPs",
@@ -841,7 +838,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A lactating mother is taking Ciprofloxacin for a UTI but she is worried about the drug secretion in her breast milk which can be dangerous for her baby. She now wants to stop this drug, so which of the following drugs is an alternative and safe?",
         "options": {
             "A": "Cefixime",
@@ -869,7 +866,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A lady has recurrent vaginal candidiasis and has been using topical cotrimazole for many months. Which systemic drug should be used?",
         "options": {
             "A": "Fluconazole",
@@ -897,7 +894,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A newborn has cleft palate, abnormal ears, and mandibular hypoplasia. The mother received treatment for severe cystic acne during pregnancy. Which drug is the most likely cause?",
         "options": {
             "A": "Vitamin A (Isotretinoin)",
@@ -925,7 +922,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A newborn is born with facial abnormalities. The mother was using treatment for acne. Which of the following is responsible for this defect?",
         "options": {
             "A": "Steroid ointment",
@@ -953,7 +950,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient diagnosed with Premenstrual Dysphoric Disorder (PMDD) does not experience clinical improvement with an SSRI. Which of the following is the next best pharmacological approach?",
         "options": {
             "A": "Progesterone-only pill (POP)",
@@ -981,13 +978,41 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient on Tamoxifen for breast cancer undergoes an ultrasound showing an endometrial thickness of 15 mm. Tamoxifen acts on the endometrium as an",
         "options": {
             "A": "Agonist",
             "B": "Antagonist",
             "C": "Neutral agent",
             "D": "Enzyme inhibitor",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "XWTRX9NS",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A patient presented with low grade fever, night sweats & productive cough. His presentation is not responding to First line drugs for TB Most likely due to:",
+        "options": {
+            "A": "MTB",
+            "B": "AIDS",
+            "C": "Sarcoidosis",
+            "D": "Histoplasmosis",
             "E": ""
         },
         "correctAnswer": "A",
@@ -1009,7 +1034,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with urethral discharge and history suggestive of gonorrhea or chlamydia infection. Which drug of the following is likely effective?",
         "options": {
             "A": "Vancomycin",
@@ -1037,7 +1062,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a foul-smelling vaginal discharge is found to have flagellated protozoa on a wet mount. What is the treatment of choice?",
         "options": {
             "A": "Azithromycin",
@@ -1065,7 +1090,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a history of gestational hypertension in her previous pregnancy is currently in early pregnancy with a normal blood pressure. What medication should be started to reduce the risk of preeclampsia?",
         "options": {
             "A": "Labetalol",
@@ -1093,7 +1118,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a history of molar pregnancy undergoes uterine evacuation. Follow-up shows persistently rising B-hCG levels. What is the most appropriate next step in management?",
         "options": {
             "A": "Methotrexate",
@@ -1121,7 +1146,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with estrogen receptor-positive breast cancer is started on hormonal therapy. Which drug is most appropriate?",
         "options": {
             "A": "Letrozole",
@@ -1149,7 +1174,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with metastatic breast cancer is prescribed a chemotherapy agent that works by stabilizing intracellular microtubules. Which of the following drugs is the most likely agent?",
         "options": {
             "A": "Methotrexate",
@@ -1177,7 +1202,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A postmenopausal woman is diagnosed with estrogen receptor (ER)-positive breast cancer. Which of the following drugs is most appropriate as hormonal therapy?",
         "options": {
             "A": "Tamoxifen",
@@ -1205,7 +1230,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant lady taking acne treatment delivers a child with cleft palate and cardiac defects. Which drug is responsible?",
         "options": {
             "A": "Isotretinoin",
@@ -1233,7 +1258,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman at 30 weeks' gestation develops chickenpox with respiratory symptoms. What is the recommended treatment?",
         "options": {
             "A": "Oral Acyclovir",
@@ -1261,7 +1286,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman at 32 weeks' gestation presents with preterm labor. Which drug can be used as a tocolytic to inhibit uterine contractions?",
         "options": {
             "A": "Diltiazem",
@@ -1282,8 +1307,8 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 01/26 - January 7 - Evening",
@@ -1292,7 +1317,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman in her first trimester was taking an anticoagulant. Ultrasound of the fetus shows nasal hypoplasia (depressed nasal bridge) and stippled epiphyses. Which drug exposure is the most likely cause?",
         "options": {
             "A": "Heparin",
@@ -1320,7 +1345,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman with a history of miscarriage due to gestational hypertension now presents at 12 weeks of amenorrhea. Which medication should be started to reduce the risk of recurrence?",
         "options": {
             "A": "Methyldopa",
@@ -1348,7 +1373,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman with eclampsia is to be given magnesium sulfate. What is the standard IV loading dose?",
         "options": {
             "A": "4 g IV",
@@ -1376,7 +1401,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman with HELLP syndrome and seizures is treated with magnesium sulfate. After administration, which of the following is the most important parameter to monitor for magnesium toxicity?",
         "options": {
             "A": "Blood pressure",
@@ -1404,7 +1429,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman with preeclampsia is at risk of seizures. Which electrolyte is used for prevention and treatment?",
         "options": {
             "A": "Potassium",
@@ -1434,7 +1459,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A sexually active woman complains of vaginal discharge with a frothy, greenish odor and pruritus. Wet mount microscopy reveals motile, flagellated organisms. Which drug is most appropriate for treatment?",
         "options": {
             "A": "Fluconazole",
@@ -1462,7 +1487,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman presents with thin white vaginal discharge and a positive whiff test. Which is the drug of choice?",
         "options": {
             "A": "Fluconazole",
@@ -1490,7 +1515,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman presents with vaginal infection and complains of metallic taste. Which drug is responsible?",
         "options": {
             "A": "Fluconazole",
@@ -1518,7 +1543,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young man with a recent travel history presents with concern for a sexually transmitted infection. There is suspicion of gonorrhea Which antibiotic regimen is used for prophylaxis",
         "options": {
             "A": "Ceftriaxone only",
@@ -1546,7 +1571,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Baby born having cleft plate, Ear & Facial abnormalities. Mother was taking drugs for treatment of cystic acne. what was it?",
         "options": {
             "A": "Vitamin D",
@@ -1574,7 +1599,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Combined oral contraceptive pills are contraindicated in a postmenopausal woman with?",
         "options": {
             "A": "Asthma",
@@ -1602,7 +1627,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Danazol is used to treat endometriosis by:",
         "options": {
             "A": "Increasing estrogen",
@@ -1610,6 +1635,92 @@
             "C": "Increasing progesterone",
             "D": "Blocking prostaglandins",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "X9VNPLQU",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Drug contraindicated in CLD:",
+        "options": {
+            "A": "Lorazepam",
+            "B": "Aspirin",
+            "C": "Paracetamol",
+            "D": "Pentazocin",
+            "E": ""
+        },
+        "correctAnswer": "D > C",
+        "explanation": "Lorazepam and oxazepam can be given but pentazocin can't be given",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "ALUGCGDT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Medicine - 08/24 - August 23 - Afternoon",
+            "Medicine - 11/24 - November 23 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "H2 receptor blocker is not of therapeutic value in which condition:",
+        "options": {
+            "A": "Uncomplicated ulcer",
+            "B": "Esophagitis",
+            "C": "Mendelson syndrome",
+            "D": "Zollinger ellison syndrome",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VXAFXHBM",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Highest no of alpha receptors are present in:",
+        "options": {
+            "A": "Trigone",
+            "B": "Neck of bladder and proximal urethra",
+            "C": "Penile urethra",
+            "D": "Membranous urethra",
+            "E": "External urethra"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1630,7 +1741,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In combined oral contraceptives, which component causes breast tenderness?",
         "options": {
             "A": "Estrogen",
@@ -1640,6 +1751,62 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "9TP9ZM6S",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "In Sequential trial, true is:",
+        "options": {
+            "A": "Single blind study investigatu doesn't know either drug or placer given",
+            "B": "Single blind study subject does know either drug or placebo given",
+            "C": "Maximum answer to questions",
+            "D": "Maxumum questions should asked",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Single blind study participants in clinical trial does know if they are receiving placebo or real treatment Double blind study both participants and doctors does know which group got the place and which got the experimer treatment. Triple blind study - randomiz experiments in which the treatm intervention is unknown to 1 patient the individual w administer the treatment intervention, and person who aco the outcomes",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "CKBWMRG6",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Main objective for screening for cervical cancer is:",
+        "options": {
+            "A": "Proper compliance of treatment",
+            "B": "Early diagnose and treatment",
+            "C": "Late treatment",
+            "D": "Late diagnose",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1658,7 +1825,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Mechanism of IUCD",
         "options": {
             "A": "Inhibit implantation",
@@ -1673,34 +1840,6 @@
         "Point": ""
     },
     {
-        "id": "YCJUE2FV",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Mechanism of IUCD:",
-        "options": {
-            "A": "Inhibit implantation",
-            "B": "Inhibit ovulation",
-            "C": "Decrease sperm motility",
-            "D": "Thick cervical mucus",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "IUCDs stimulate a local inflammatory reaction in the uterus, the concentration of macrophage and leukocytes, prostaglandins and various enzymes in both uterine and tubal fluid increases significantly. It is thought that these effects are toxic to both sperm and egg and interfere with sperm transport. If a healthy fertilized egg reaches the uterine cavity, implantation is inhibited.",
-        "hint": "",
-        "Point": ""
-    },
-    {
         "id": "EN4ALQ62",
         "year": [
             "2025"
@@ -1709,12 +1848,13 @@
             "Medicine & Allied"
         ],
         "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
+            "Medicine - 05/25 - May 15 - Morning",
+            "Medicine - 05/25 - May 14 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most potent anabolic hormone",
         "options": {
             "A": "Testosterone",
@@ -1742,11 +1882,11 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "NSAIDs relieve primary dysmenorrhea by inhibiting the synthesis of:",
         "options": {
             "A": "Leukotrienes",
-            "B": "Prostaglandin F2 α",
+            "B": "Prostaglandin F2 Î±",
             "C": "Bradykinin",
             "D": "Histamine",
             "E": ""
@@ -1770,7 +1910,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient is having history of smoking and has barrel shaped chest what is the cause",
         "options": {
             "A": "Asthma",
@@ -1798,7 +1938,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Phocomelia is a classic congenital abnormality caused by exposure to:",
         "options": {
             "A": "Isotretinoin",
@@ -1809,6 +1949,62 @@
         },
         "correctAnswer": "C",
         "explanation": "Thalidomide use during early embryonic development results in severe limb reduction anomalies like phocomelia.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "34JXYTYT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Pregnant female diagnosed with Hyperthyroidism at 20 weeks of Gestation. Which of the following drugs should be given?",
+        "options": {
+            "A": "PTU",
+            "B": "Wait till delivery",
+            "C": "Beta blocker",
+            "D": "Thyroidectomy",
+            "E": "Corticosteroids"
+        },
+        "correctAnswer": "A",
+        "explanation": "Anti-Thyroid in 1st Trimester - PTU Anti-Thyroid in 2nd & 3rd Trimester Methimazole Anti-Thyroid for Thyroid Storm -PTU Crosses Placenta and affects Fetus Methimazole > PTU",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "2GAA8C9L",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Pregnant lady diagnosed with hyperthyroidism at 20 weeks of Gestation. Drug of choice will be?",
+        "options": {
+            "A": "Propylthiouracil",
+            "B": "Beta Blocker",
+            "C": "Wait until delivery",
+            "D": "Thyroidectomy",
+            "E": "Thyroxine"
+        },
+        "correctAnswer": "A",
+        "explanation": "Anti-Thyroid in 1st Trimester PTU Anti-Thyroid in 2nd & 3rd Trimester-Methimazole Anti-Thyroid for Thyroid Storm PTU Crosses Placenta and affect Fetus Methimazole > PTU",
         "hint": "",
         "Point": ""
     },
@@ -1828,7 +2024,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Pre-menopausal women present with breast carcinoma, which of the following is drug of choice in her?",
         "options": {
             "A": "Tamoxifen",
@@ -1856,7 +2052,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Prostagalndin E2 often used clinically for cervical ripening, primarily causes:",
         "options": {
             "A": "Relaxation of uterus",
@@ -1884,7 +2080,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Rifampicin has an important drug interaction with oral contraceptive pills (OCPs). What is the mechanism of this interaction?",
         "options": {
             "A": "Increases estrogen absorption from the gut",
@@ -1912,7 +2108,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Seizures in preeclampsia are treated with",
         "options": {
             "A": "Diazepam",
@@ -1923,6 +2119,34 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "DREPWSQ5",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Tamoxifen is given to a patient who is having Ca Breast. Keeping in mind that Tamoxifen has both Estrogenic and Anti Estrogenic effects. What would be the possible side effect:",
+        "options": {
+            "A": "Infertility",
+            "B": "Indometrial hyperplasia",
+            "C": "Facial hair",
+            "D": "Contralateral Breast carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Tamoxifen is a selective estrogen receptor modulator. Anti-Estrogenic action: Reduce breast tumor size and causes hot flushes. Estrogenic Action: Endometrial proliferation, reduces cholesterol and anti resorptive effect on bones.",
         "hint": "",
         "Point": ""
     },
@@ -1940,7 +2164,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "The medical treatment of an unruptured ectopic pregnancy in a stable patient is:",
         "options": {
             "A": "Misoprostol",
@@ -1968,7 +2192,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The Mirena IUD provides contraception primarily by:",
         "options": {
             "A": "Mechanical barrier",
@@ -1996,7 +2220,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The primary mechanism of action of oral contraceptive pills is:",
         "options": {
             "A": "Prevent implantation",
@@ -2024,7 +2248,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Warfarin exposure in pregnancy causes:",
         "options": {
             "A": "Micrognathia",
@@ -2052,7 +2276,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What class of drugs is the first-line pharmacologic treatment for erectile dysfunction?",
         "options": {
             "A": "alpha-blockers",
@@ -2080,7 +2304,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What is often considered the first-line Drug of Choice (DOC) for ovulation induction in infertility?",
         "options": {
             "A": "Metformin",
@@ -2108,7 +2332,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What is the most serious or harmful side effect of estrogen-only therapy in postmenopausal women with an intact uterus?",
         "options": {
             "A": "Endometrial carcinoma",
@@ -2136,7 +2360,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What is the recommended initial treatment for heavy menstrual bleeding with no structural abnormality?",
         "options": {
             "A": "Oral contraceptives",
@@ -2164,7 +2388,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which component of oral contraceptive pills is primarily responsible for breast tenderness?",
         "options": {
             "A": "Estrogen",
@@ -2192,7 +2416,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which drug is most commonly associated with causing phocomelia in the fetus?",
         "options": {
             "A": "Thalidomide",
@@ -2220,7 +2444,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is therapeutic dose of MgSO4?",
         "options": {
             "A": "8-10mg/dl",
@@ -2248,7 +2472,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is used to prevent premature contractions in pregnancy?",
         "options": {
             "A": "Oxytocin",
@@ -2258,6 +2482,34 @@
             "E": "Methylergonovine"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "F5JSKTWB",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following TB drug is contraindicated in pregnancy",
+        "options": {
+            "A": "Isoniazid",
+            "B": "Streptomycin",
+            "C": "Ethambutol",
+            "D": "Rifampicin",
+            "E": "Pyrazinamide"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2276,7 +2528,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following tocolytics can cause maternal hyperglycemia?",
         "options": {
             "A": "Nifedipine",
@@ -2304,7 +2556,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which one these crosses the placenta and effects baby?",
         "options": {
             "A": "IgM",
@@ -2332,7 +2584,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Why Diethylstilboestrol (DES) is contraindicated in pregnancy",
         "options": {
             "A": "It can lead to feminization of male foetus",

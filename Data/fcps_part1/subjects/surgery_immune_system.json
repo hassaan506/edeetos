@@ -13,7 +13,7 @@
         "subject": "Surgery",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 62 year old man with a history of deep vein thrombosis presents with chest pain and is diagnosed with myocardial infarction (MI). The medical team is assessing risk factors for thrombosis. Which of the following is a key factor that independently increases the risk of thrombosis leading to MI?",
         "options": {
             "A": "Immobilization",
@@ -24,6 +24,34 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LR6ED65A",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A female patient presents in Surgical OPD presents with breast mass FNAC was performed which shows ductal cells with loss of polarity and adhesion, few RBCs and lymphocytes was present which of the following is ur diagnosis",
+        "options": {
+            "A": "Fibroadenoma",
+            "B": "Ductal carcinoma",
+            "C": "Fibrocystic disease",
+            "D": "Galactocele",
+            "E": "Papilloma"
+        },
+        "correctAnswer": "B",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -41,7 +69,7 @@
         "subject": "Surgery",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female patient underwent mastectomy which was extended upto medial axillary wall which of the following is most common complication associated with this procedure?",
         "options": {
             "A": "Lymphedema of the arm",
@@ -69,7 +97,7 @@
         "subject": "Surgery",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient requires a kidney transplant. Which test is crucial to assess donor-recipient compatibility?",
         "options": {
             "A": "Blood grouping only",
@@ -98,7 +126,7 @@
         "subject": "Surgery",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "For a patient awaiting kidney transplant, which tissue is best for HLA typing?",
         "options": {
             "A": "RBC",
@@ -109,6 +137,34 @@
         },
         "correctAnswer": "B",
         "explanation": "HLA molecules are expressed on nucleated cells -> WBCs. RBCs lack HLA. Important Test For Transplant - HLA typing. Best Blood Cell for HLA Sampling - WBC. Best Site for HLA Sampling - Buccal Mucosa. Best Tissue for HLA Sampling - Bone marrow.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "UB69RMSY",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "In HIV patient surgery done then which anti to use after surgery to clean floor & Walls?",
+        "options": {
+            "A": "1% hypochlorite",
+            "B": "4% hypochlorite",
+            "C": "Glutaraldehyde",
+            "D": "Soap & water",
+            "E": "Water"
+        },
+        "correctAnswer": "A",
+        "explanation": "Floor-1% Hypochlorite Instruments -2% Glutradehyde Note: Question repeated twice in exam",
         "hint": "",
         "Point": ""
     }

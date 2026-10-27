@@ -15,7 +15,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "2 groups of population having disease and another group with no disease have been studied- Type of study will be:",
         "options": {
             "A": "Cohort study",
@@ -32,18 +32,23 @@
     {
         "id": "7CTN9SP9",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Gynecology & Obstetrics",
+            "Radiology"
         ],
         "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
+            "Medicine - 05/25 - May 15 - Morning",
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "70 years old man with renal transplant 2 years back, now presented with complicated pneumonia not responding to antibiotics. Bronchoalvealar lavage shows boat shaped cyst. The organism causing the condition is:",
         "options": {
             "A": "Pneumocystic jiroveci",
@@ -71,7 +76,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A clinical trial is conducted to compare survival rates in patients receiving a new chemotherapy drug versus standard therapy. Researchers use a graph in which the probability of survival is plotted on the y-axis and time is plotted on the x-axis. Censoring is accounted for by marking patients lost to follow-up. Which of the following best describes this type of statistical method?",
         "options": {
             "A": "Kaplan-Meier survival analysis",
@@ -99,7 +104,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A Kaplan-Meier survival curve is primarily used to display which of the following?",
         "options": {
             "A": "Mean survival time only",
@@ -127,7 +132,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A key characteristic of the standard deviation (SD) in a normally distributed dataset is that the distribution curve is symmetrical. Which statement accurately describes the relationship of the SD around the mean?",
         "options": {
             "A": "SD < 0.6",
@@ -155,7 +160,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A medical officer collects the heights of 100 students from a local school. To visualize the frequency distribution and see which height range is most common among the students, which chart should be used?",
         "options": {
             "A": "Pie Chart",
@@ -185,7 +190,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presenting with lower abdominal discomfort describes their pain as variable or characterized by descriptive ranking intervals (e.g., mild, moderate, severe) rather than a distinct mathematical quantity. Which type of clinical measurement scale does this presentation represent?",
         "options": {
             "A": "Nominal scale",
@@ -205,8 +210,8 @@
             "2026"
         ],
         "specialty": [
-            "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
             "Radiology - 07/26 - July 07 - Morning",
@@ -215,7 +220,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A population is divided into age groups, and random samples are selected from each group. Which sampling technique is used?",
         "options": {
             "A": "Stratified random sampling",
@@ -243,7 +248,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A randomized controlled trial between a placebo and a drug was done. After 3 months it was found that 60 people from 250 people who received the placebo had a stroke and 30 people from 250 people with the drug had a stroke. What is the relative risk of a drug-related stroke compared with the placebo?",
         "options": {
             "A": "0.5",
@@ -271,7 +276,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher compares the presence or absence of disease between two independent groups in a clinical study. Which statistical test is most appropriate?",
         "options": {
             "A": "t-test",
@@ -299,7 +304,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher divides participants into males and females and then randomly selects subjects from each group. Which sampling method is being used?",
         "options": {
             "A": "Cluster sampling",
@@ -327,7 +332,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher follows two groups of cancer patients over time and plots the probability of survival against time, showing stepwise drops whenever a patient dies. Which statistical tool is being used?",
         "options": {
             "A": "Bell curve",
@@ -355,7 +360,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher increases the confidence level from 95% to 99% in a study. What will be the effect on the results?",
         "options": {
             "A": "Confidence interval becomes narrower",
@@ -383,7 +388,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher raises the confidence level from 95% to 99%. What effect does this have on the confidence interval?",
         "options": {
             "A": "Point estimate increases",
@@ -411,7 +416,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher reports that 95% of test results fall between 70 and 130 in an IQ study. This corresponds to which statistical concept?",
         "options": {
             "A": "Standard error",
@@ -439,7 +444,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A researcher wants to study the effect of a risk factor on disease incidence over time.",
         "options": {
             "A": "Patients with and without risk factor are followed over time",
@@ -467,7 +472,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A sampling in which every person has equal chance of selection in a population is called as",
         "options": {
             "A": "Random sampling",
@@ -495,7 +500,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A study calculates the risk of disease among exposed individuals compared with unexposed individuals. Which epidemiological measure is being assessed?",
         "options": {
             "A": "Odds ratio",
@@ -523,7 +528,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A systolic BP of 150 with a difference of 50 (likely referring to pulse pressure) suggests a wide pulse pressure. Which measure best describes the central tendency of blood pressure data?",
         "options": {
             "A": "Mean",
@@ -543,8 +548,8 @@
             "2026"
         ],
         "specialty": [
-            "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
             "Radiology - 07/26 - July 07 - Morning",
@@ -553,7 +558,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "After COVID-19 vaccination, the occurrence of deep vein thrombosis (DVT) is recorded as either present or absent. This type of response is known as:",
         "options": {
             "A": "Graded response",
@@ -581,7 +586,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "An office worker worried about his health visit to physician and concern about development of diabetes in him. Which of these will associated with reduced risk",
         "options": {
             "A": "His Remote relatives are affected",
@@ -609,7 +614,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "An office worker worried about his health visits a physician with concern about development of diabetes in him. Which of these will be associated with reduced risk?",
         "options": {
             "A": "His remote relatives are affected",
@@ -637,7 +642,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Best graph to show correlation between two variables (Age & BP)",
         "options": {
             "A": "Bar chart",
@@ -665,7 +670,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Biostatistics To study the relationship between blood pressure and height in a sample of 200 people, the most appropriate graphical method to present the data is",
         "options": {
             "A": "Bar chart",
@@ -693,7 +698,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Calculate the mean of the following data set <br> 33, 32, 34, 34, 36, 42, 44, 46, 52.",
         "options": {
             "A": "38.5",
@@ -721,7 +726,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Chi square chart used for which of following?",
         "options": {
             "A": "Nominal Data",
@@ -749,7 +754,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Following COVID-19 vaccination, a patient is concerned about thromboembolism risk. Which of the following best describes the dose-response relationship?",
         "options": {
             "A": "Quantal response (all-or-none)",
@@ -777,7 +782,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a case-control study designed to look back at exposures in patients with a specific disease, which of the following statistical measures is typically used?",
         "options": {
             "A": "Incidence",
@@ -805,7 +810,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a clinical diagnostic test, an increase in the number of false negatives results in a decrease of which parameter?",
         "options": {
             "A": "Specificity",
@@ -833,7 +838,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "In a community with population of 10,00,000(one million),there were 100,000 female in child bearing age and 100,000 children were born alive in the year 2000.A total of 50 women died due to pregnancy and related causes.the maternal mortality rate is",
         "options": {
             "A": "5/1000 females",
@@ -861,7 +866,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In a normal distribution curve, the standard deviation extends:",
         "options": {
             "A": "Only to the right of the mean",
@@ -889,7 +894,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In a normal distribution, which statistical measures are equal?",
         "options": {
             "A": "Mean and SD",
@@ -917,7 +922,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a study, 40% women have received HRT and 20% have not received HRT, best way to represent such study is:",
         "options": {
             "A": "Bar chart",
@@ -945,7 +950,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In medical research, why is statistical analysis preferred when interpreting study results?",
         "options": {
             "A": "To avoid observer bias",
@@ -973,7 +978,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In normal distribution curve which is true?",
         "options": {
             "A": "Mode > Median > Mean",
@@ -1001,7 +1006,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In which sampling method is the population divided into homogeneous subgroups and then random samples are taken from each subgroup proportionally?",
         "options": {
             "A": "Simple random sampling",
@@ -1029,7 +1034,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Kaplan-Meier curve indicates:",
         "options": {
             "A": "Incidence of disease",
@@ -1057,7 +1062,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Male and Female patients divided into groups then subgrouped on the basis of their age, which type of sampling is it?",
         "options": {
             "A": "Simple Random sampling",
@@ -1085,7 +1090,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Meta analysis done which shows small studies have more literature influence than large ones which affect overall result this is:",
         "options": {
             "A": "Publication bias",
@@ -1113,7 +1118,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most specific indicator for increased fertility rate in Pakistan",
         "options": {
             "A": "Net fertility rate",
@@ -1141,7 +1146,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Of 20 women with neonates getting Tetanus 19 had not taken Tetanus Toxoid Vaccine and of 40 whose babies did not have Tetanus 30 has taken two tetanus toxoid shots during Pregnancy. The odd ratio will be?",
         "options": {
             "A": "10",
@@ -1161,8 +1166,8 @@
             "2026"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Radiology - 01/26 - January 6 - Morning",
@@ -1171,7 +1176,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Population was divided according to age into groups and sub groups than randomly people were selected:",
         "options": {
             "A": "Random sampling",
@@ -1199,7 +1204,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Pregnant lady with history of smoking taken to study its effect on IHD to identify risk factor what type of study is this?",
         "options": {
             "A": "Case control",
@@ -1227,7 +1232,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Proportion of true positives:",
         "options": {
             "A": "Correctly identified among those with disease",
@@ -1244,28 +1249,31 @@
     {
         "id": "FXRE3FHN",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
+            "Medicine - 11/25 - November 14 - Morning",
+            "Gynecology - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Regarding measures of Central tendency, Which of the following is in the middle having equal number of values on both sides?",
         "options": {
             "A": "Mode",
             "B": "Mean",
             "C": "Variance",
             "D": "Median",
-            "E": ""
+            "E": "Variance"
         },
         "correctAnswer": "D",
-        "explanation": "",
+        "explanation": "Mean Sum of all value divided by total Median Middle num in a group of numbers Mode Most common repeated value in data",
         "hint": "",
         "Point": ""
     },
@@ -1283,7 +1291,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Relative risk is calculated as",
         "options": {
             "A": "a/(a+b)",
@@ -1313,7 +1321,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Square root of variance is:",
         "options": {
             "A": "Variation",
@@ -1341,7 +1349,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Statistical Analysis of studies Done now a days",
         "options": {
             "A": "To accept the Placebo",
@@ -1369,7 +1377,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Study of 200 guest with vomiting and diarrhea some guest presents with symptoms after 2 days study involve in this case is:",
         "options": {
             "A": "Case control",
@@ -1397,7 +1405,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Test has high false positive test should be highly:",
         "options": {
             "A": "Sensitive",
@@ -1425,7 +1433,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Test sensitivity is defined as:",
         "options": {
             "A": "True negatives among healthy individuals",
@@ -1453,7 +1461,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "The Chi-Square Test is a non-parametric statistical test commonly used to analyze categorical data to determine if there is a significant association between two variables. This test is typically applied to analyze which type of data summary?",
         "options": {
             "A": "2/2 table",
@@ -1481,7 +1489,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The population was divided into age-based groups and subgroups, and individuals were randomly selected from each group.",
         "options": {
             "A": "Stratified sampling",
@@ -1509,7 +1517,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The Student's t-test is primarily used to:",
         "options": {
             "A": "Compare the means of two groups",
@@ -1539,7 +1547,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "To find mean in height of 10 people about 33,36,36,38,45,42,40,52,36,47",
         "options": {
             "A": "40",
@@ -1567,7 +1575,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "To find the mean in the height of 10 people: 33, 36, 36, 38, 45, 42, 40, 52, 36, 47:",
         "options": {
             "A": "40",
@@ -1595,7 +1603,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "T-Test is used for?",
         "options": {
             "A": "Compares two groups",
@@ -1625,7 +1633,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "What is the median of the following values? 20, 20, 25, 25, 30, 30, 35, 40",
         "options": {
             "A": "25.2",
@@ -1653,7 +1661,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the relative risk of the drug group compared to placebo?",
         "options": {
             "A": "0.60%",
@@ -1681,7 +1689,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What type of study is used to assess morbidity rates separately in a population?",
         "options": {
             "A": "Case-control study",
@@ -1709,7 +1717,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which graph is best used to represent continuous data such as height?",
         "options": {
             "A": "Pie chart",
@@ -1737,7 +1745,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which graph is most appropriate to show the relationship between blood pressure and height?",
         "options": {
             "A": "Histogram",
@@ -1765,7 +1773,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following best describes the fundamental design of a Case-Control Study?",
         "options": {
             "A": "A group of exposed individuals is followed forward in time to see who develops a disease.",
@@ -1782,18 +1790,22 @@
     {
         "id": "EDWM8MW4",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
+            "Medicine - 11/25 - November 14 - Morning",
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning"
         ],
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is a measure of dispersion:",
         "options": {
             "A": "Standard Deviation",
@@ -1821,7 +1833,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which test compares means of two groups?",
         "options": {
             "A": "Chi-square",
@@ -1849,7 +1861,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which test is used to compare two values?",
         "options": {
             "A": "Chi square test",

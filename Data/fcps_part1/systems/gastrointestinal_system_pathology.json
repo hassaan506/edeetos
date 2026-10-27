@@ -1,5 +1,33 @@
 [
     {
+        "id": "MPUBUASC",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "30 years old female patient presented with Nausea, vomiting and gastric upset for 5 days. Biopsy of stomach shows lymphocytes neutrophils, macrophages, plasma cells but no ulceration. What is the most probable diagnosis?",
+        "options": {
+            "A": "H pylori",
+            "B": "Staph aureus septicemia",
+            "C": "Tb",
+            "D": "Gastric Ca",
+            "E": "Gastritis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "HFDEWM4Z",
         "year": [
             "2026"
@@ -13,7 +41,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 12 year old boy presented with diarrhea not responding to routine anti diarrheal treatment. Jejunal biopsy showed partial villous atrophy with mansy PAS positive macrophages. Most likely diagnosis is",
         "options": {
             "A": "Carcinoid syndrome",
@@ -41,8 +69,8 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 16 year old male presents with acute onset right lower quadrant abdominal pain, nausea, and vomiting. On examination, McBurney’s point is tender. What is the most common cause of this condition?",
+        "difficulty": "Hard",
+        "question": "A 16 year old male presents with acute onset right lower quadrant abdominal pain, nausea, and vomiting. On examination, McBurneyâ€™s point is tender. What is the most common cause of this condition?",
         "options": {
             "A": "Lymphoid hyperplasia",
             "B": "Fecolith",
@@ -69,7 +97,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 22 year old male undergoes an appendectomy for acute appendicitis. The pathology report of the specimen notes prominent lymphoid hyperplasia in the appendix wall. Which of the following is the most likely explanation for this finding?",
         "options": {
             "A": "Early malignancy in the appendix",
@@ -97,8 +125,8 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 22 year old man presents to the emergency department with right lower quadrant abdominal pain, fever, and nausea. On examination, there is tenderness at McBurney’s point. Laboratory tests reveal leukocytosis with a left shift. Which of the following is the most likely histopathological finding in the appendix?",
+        "difficulty": "Hard",
+        "question": "A 22 year old man presents to the emergency department with right lower quadrant abdominal pain, fever, and nausea. On examination, there is tenderness at McBurneyâ€™s point. Laboratory tests reveal leukocytosis with a left shift. Which of the following is the most likely histopathological finding in the appendix?",
         "options": {
             "A": "Fat necrosis with saponification",
             "B": "Inflammation primarily involving the mucosa and submucosa with neutrophilic infiltration",
@@ -125,7 +153,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 22 year old patient has Barrett esophagus. Which malignancy is most strongly associated with this condition?",
         "options": {
             "A": "Squamous cell carcinoma of the esophagus",
@@ -145,48 +173,22 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old man use to eat street foods he developed RUQ pain, fever and vomiting, Echinococcus granulosus was found on CT scan there was cysts in liver but cysts were also seen in the lower lobe of right lung, which of the following is best explanation for this?",
-        "options": {
-            "A": "Direct extension from liver",
-            "B": "By aspiration of Echinococcus trophozoites",
-            "C": "By Bile channel",
-            "D": "Via portal vein",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "UBS76FB6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
+            "Medicine & Allied",
             "Surgery & Allied"
         ],
         "exams": [
+            "Medicine - 08/25 - August 6 - Evening",
             "Surgery - 08/25 - August 6 - Evening"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 25 year old man use to eat street foods he developed RUQ pain, fever and vomiting. Echinococcus granulosus was found on CT scan there was cysts in liver but cysts were also seen in the lower lobe of right lung, which of the following is best explanation for this?",
+        "difficulty": "Hard",
+        "question": "A 25 year old man use to eat street foods he developed RUQ pain, fever and vomiting, Echinococcus granulosus was found on CT scan there was cysts in liver but cysts were also seen in the lower lobe of right lung, which of the following is best explanation for this?",
         "options": {
             "A": "Direct extension from liver",
             "B": "By aspiration of Echinococcus trophozoites",
-            "C": "By aspiration of Echinococcus cyst",
+            "C": "By Bile channel",
             "D": "Via portal vein",
             "E": ""
         },
@@ -209,7 +211,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 3 year old girl presents with chronic constipation, abdominal distension, and episodes of vomiting. A barium enema shows a narrow distal colon with a dilated proximal segment. Rectal biopsy confirms the absence of ganglion cells. Which type of neuron is missing in the affected area?",
         "options": {
             "A": "Preganglionic Sympathetic Neurons",
@@ -219,6 +221,34 @@
             "E": "Somatic Motor Neurons"
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "KM67VEAM",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 30 year old man has symptoms of reflux esophagitis esophageal biopsy revealed columnar lining with intestinal metaplasia in lower oesophagus. This patient has increased risk of developing?",
+        "options": {
+            "A": "Adenocarcinoma Stomach",
+            "B": "Adenocarcinoma Esophagus",
+            "C": "Adenocarcinoma of Lung",
+            "D": "Adenocarcinoma of Trachea",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -237,7 +267,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 30 year old man with a family history of colorectal cancer undergoes colonoscopy revealing multiple polyps with dysplastic glandular epithelium. Genetic testing confirms familial adenomatous polyposis (FAP). What type of polyp is typically seen in this condition?",
         "options": {
             "A": "Hyperplastic polyp",
@@ -265,7 +295,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 30 year old patient with a long history of gutka chewing develops an oral lesion. Which malignancy is most commonly associated with this habit?",
         "options": {
             "A": "Squamous cell carcinoma",
@@ -295,7 +325,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30-year-old man has symptoms of reflux esophagitis. Esophageal biopsy revealed columnar lining with intestinal metaplasia. This patient has increased risk of developing:",
         "options": {
             "A": "Adenocarcinoma Stomach",
@@ -323,7 +353,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 35-year-old male from Karachi suffers from a tongue lesion from past 1 year progressively increasing in size have rough everted margins and positive lymph nodes in neck:",
         "options": {
             "A": "Actinic keratosis",
@@ -351,8 +381,8 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 4 year old child presents with a “raspberry-like” growth on the anterior tongue. Histology reveals a proliferation of stratified squamous epithelium with fibrovascular cores. Which of the following is the most likely diagnosis?",
+        "difficulty": "Hard",
+        "question": "A 4 year old child presents with a â€œraspberry-likeâ€ growth on the anterior tongue. Histology reveals a proliferation of stratified squamous epithelium with fibrovascular cores. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Hemangioma",
             "B": "Papilloma",
@@ -379,7 +409,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 43 year old woman undergoes exploratory laparotomy for perforated peptic ulcer. Histopathology of the greater omentum shows areas of chalky white deposits with saponification. Which of the following types of necrosis is seen?",
         "options": {
             "A": "Coagulative",
@@ -407,7 +437,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old alcoholic man presents with severe epigastric pain radiating to the back. Serum amylase is elevated. On biopsy, areas of necrosis contain deposits of calcium soaps surrounded by inflammatory cells. Which of the following best describes this process?",
         "options": {
             "A": "Caseous necrosis",
@@ -435,7 +465,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old man dies after a severe viral hepatitis infection. Histopathological examination of his liver reveals apoptotic hepatocytes with eosinophilic, round, homogeneous cytoplasmic inclusions known as Councilman bodies. Which cellular process primarily leads to the formation of Councilman bodies in hepatocytes?",
         "options": {
             "A": "Coagulation necrosis",
@@ -463,7 +493,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old man presents with a rapidly enlarging mass in the colon. Biopsy reveals malignant cells with genomic instability and failure of DNA damage control. Normally, a key tumor suppressor protein would halt the cell cycle at the G1 to S checkpoint in response to DNA damage. Which of the following proteins is most likely defective in this patient?",
         "options": {
             "A": "Rb protein",
@@ -491,7 +521,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old man presents with burning epigastric pain that improves with food but worsens at night. Endoscopy shows a duodenal ulcer. Which of the following is the most likely underlying mechanism?",
         "options": {
             "A": "Excess bile reflux",
@@ -509,21 +539,30 @@
         "id": "K84WYAMH",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
+            "Surgery & Allied",
             "Radiology",
-            "Surgery & Allied"
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 04/26 - April 7 - Night",
             "Surgery - 07/26 - July 09 - Afternoon",
-            "Radiology - 05/25 - May 12 - Morning"
+            "Radiology - 05/25 - May 12 - Morning",
+            "Surgery - 08/25 - August 6 - Evening",
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Radiology - 08/24 - August 20 - Afternoon",
+            "Surgery - 08/24 - August 22 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old man with a long history of alcoholism presents with severe epigastric pain nausea vomiting fever and increase in serum amylase diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made in this condition which of the following types of necrosis is most characteristic:",
         "options": {
             "A": "Fibrinoid",
@@ -533,36 +572,8 @@
             "E": "Caseous"
         },
         "correctAnswer": "C",
-        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Fat necrosis</strong> - Acute pancreatitis causes release of pancreatic lipase, which breaks down peripancreatic fat. The released fatty acids combine with calcium, producing <strong>fat saponification</strong> and characteristic chalky calcium deposits.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>acute pancreatitis</strong>. Pancreatic enzymes, especially <strong>lipase</strong>, digest surrounding adipose tissue → fatty acids are released → they bind calcium → <strong>enzymatic fat necrosis</strong>.</p></p><p><br></p><p><h3 style=\"black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Liquefactive necrosis</strong> - Characteristic of brain infarction and abscesses, where tissue is digested into a liquid mass.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Fibrinoid necrosis</strong> - Typically occurs in blood vessel walls in conditions such as vasculitis and severe hypertension.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Caseous necrosis</strong> - Classically associated with tuberculosis and some fungal infections, producing a cheese-like appearance.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Coagulative necrosis</strong> - Typical of ischemic infarction in most solid organs such as the heart, kidney, and spleen, except the brain.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Acute pancreatitis → lipase → fat necrosis → saponification.</strong></p></p><p><p>Calcium binding to fatty acids can cause <strong>hypocalcemia</strong> in severe acute pancreatitis.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Pancreas = FAT</strong> → pancreatic lipase causes <strong>Fat necrosis</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not choose coagulative necrosis just because pancreatitis involves tissue injury. <strong>Pancreatic enzyme-mediated digestion of fat specifically produces enzymatic fat necrosis.</strong></p></p>",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Fat necrosis</strong> - Acute pancreatitis causes release of pancreatic lipase, which breaks down peripancreatic fat. The released fatty acids combine with calcium, producing <strong>fat saponification</strong> and characteristic chalky calcium deposits.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Pick the Answer:</h3></p><p><p>The key clue is <strong>acute pancreatitis</strong>. Pancreatic enzymes, especially <strong>lipase</strong>, digest surrounding adipose tissue â†’ fatty acids are released â†’ they bind calcium â†’ <strong>enzymatic fat necrosis</strong>.</p></p><p><br></p><p><h3 style=\"black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Liquefactive necrosis</strong> - Characteristic of brain infarction and abscesses, where tissue is digested into a liquid mass.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Fibrinoid necrosis</strong> - Typically occurs in blood vessel walls in conditions such as vasculitis and severe hypertension.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Caseous necrosis</strong> - Classically associated with tuberculosis and some fungal infections, producing a cheese-like appearance.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Coagulative necrosis</strong> - Typical of ischemic infarction in most solid organs such as the heart, kidney, and spleen, except the brain.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Acute pancreatitis â†’ lipase â†’ fat necrosis â†’ saponification.</strong></p></p><p><p>Calcium binding to fatty acids can cause <strong>hypocalcemia</strong> in severe acute pancreatitis.</p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Pancreas = FAT</strong> â†’ pancreatic lipase causes <strong>Fat necrosis</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p>Do not choose coagulative necrosis just because pancreatitis involves tissue injury. <strong>Pancreatic enzyme-mediated digestion of fat specifically produces enzymatic fat necrosis.</strong></p></p>",
         "hint": "<p><br></p>",
-        "Point": ""
-    },
-    {
-        "id": "BM2R27GU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 year old man with a long history of alcoholism presents with severe epigastric pain, nausea, vomiting, fever and increase in serum amylase. Diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made in this condition. Which of the following types of necrosis is most characteristic?",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Fat necrosis",
-            "C": "Fibrinoid necrosis",
-            "D": "Caseous necrosis",
-            "E": "Liquefactive necrosis"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
         "Point": ""
     },
     {
@@ -579,7 +590,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old woman undergoes abdominal imaging for nonspecific pain. CT scan reveals a well-defined echogenic lesion in the liver. What is the most likely diagnosis?",
         "options": {
             "A": "Hepatoma",
@@ -589,34 +600,6 @@
             "E": "Hemangioma"
         },
         "correctAnswer": "E",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "UW55DE9Q",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 08/25 - August 6 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 45 years old man with a long history of alcoholism presents with severe epigastric pain, nausea, vomiting, fever and increase in serum amylase. Diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made. In this condition which of the following types of necrosis is most characteristic:",
-        "options": {
-            "A": "Coagulative necrosis",
-            "B": "Fat necrosis",
-            "C": "Fibrinoid necrosis",
-            "D": "Caseous necrosis",
-            "E": "Liquefactive necrosis"
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -635,8 +618,36 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 years old man with a long history of alcoholism presents with severe epigastric pain, nausea, vomiting, fever, and an increase in serum amylase. A diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made. In this condition, which of the following types of necrosis is most characteristic?",
+        "options": {
+            "A": "Coagulative necrosis",
+            "B": "Fat necrosis",
+            "C": "Fibrinoid necrosis",
+            "D": "Caseous necrosis",
+            "E": "Liquefactive necrosis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "UW55DE9Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 45 years old man with a long history of alcoholism presents with severe epigastric pain, nausea, vomiting, fever and increase in serum amylase. Diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made. In this condition which of the following types of necrosis is most characteristic:",
         "options": {
             "A": "Coagulative necrosis",
             "B": "Fat necrosis",
@@ -665,7 +676,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45-year-old male patient presents with a history of chronic alcohol consumption, he reports fatigue, mild RUQ pain, and has no signs of jaundice, On examination, his liver is palpable 2 cm below the costal margin, which of the following is the most likely condition associated with chronic alcohol use in this patient ?",
         "options": {
             "A": "Fatty liver",
@@ -693,7 +704,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45-year-old man presents with sudden, severe epigastric pain radiating to the back, nausea, and vomiting. A biopsy of the pancreas reveals hemorrhage and necrotic tissue. Which of the following types of necrosis is most commonly associated with this condition?",
         "options": {
             "A": "Fat necrosis",
@@ -724,7 +735,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45-year-old man with a long history of alcoholism presents with severe epigastric pain nausea vomiting fever and increase in serum amylase diagnosis of acute pancreatitis superimposed on chronic pancreatitis was made in this condition which of the following types of necrosis is most characteristic",
         "options": {
             "A": "Coagulative necrosis",
@@ -752,7 +763,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 46 year old man presents with severe epigastric pain radiating to the back after heavy alcohol intake. Serum amylase and lipase are elevated. In acute pancreatitis, premature activation of pancreatic enzymes within the pancreas leads to autodigestion and impaired regulation of digestive enzyme activity. Which of the following enzymes is the key initiator of this enzymatic cascade?",
         "options": {
             "A": "Trypsin",
@@ -780,8 +791,8 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 48-year-old man presents with a 3-month history of progressive loss of appetite, dyspepsia, and unintentional weight loss. He has a 20-year history of heavy alcohol consumption (8–10 drinks daily). Physical examination shows hepatomegaly and mild jaundice. Laboratory studies reveal elevated AST and ALT (AST > ALT), increased gamma-glutamyl transferase, and macrocytosis. A liver biopsy is performed and shows swollen hepatocytes containing eosinophilic cytoplasmic inclusions surrounded by neutrophils, as well as areas of steatosis. Which of the following histological findings best confirms the diagnosis?",
+        "difficulty": "Hard",
+        "question": "A 48-year-old man presents with a 3-month history of progressive loss of appetite, dyspepsia, and unintentional weight loss. He has a 20-year history of heavy alcohol consumption (8â€“10 drinks daily). Physical examination shows hepatomegaly and mild jaundice. Laboratory studies reveal elevated AST and ALT (AST > ALT), increased gamma-glutamyl transferase, and macrocytosis. A liver biopsy is performed and shows swollen hepatocytes containing eosinophilic cytoplasmic inclusions surrounded by neutrophils, as well as areas of steatosis. Which of the following histological findings best confirms the diagnosis?",
         "options": {
             "A": "Councilman bodies",
             "B": "Mallory-Denk bodies",
@@ -790,7 +801,7 @@
             "E": "Lipofuscin granules"
         },
         "correctAnswer": "B",
-        "explanation": "AST > ALT and ↑GGT + macrocytosis support chronic alcohol use.",
+        "explanation": "AST > ALT and â†‘GGT + macrocytosis support chronic alcohol use.",
         "hint": "",
         "Point": ""
     },
@@ -808,7 +819,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 50 year old chronic alcoholic presents with jaundice, ascites, and signs of chronic liver disease. Liver biopsy shows hepatocyte ballooning and eosinophilic cytoplasmic inclusions composed of aggregated intermediate filaments. Which of the following is the most likely finding?",
         "options": {
             "A": "Councilman bodies",
@@ -836,7 +847,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 50 year old man with a long history of gastroesophageal reflux disease (GERD) presents for evaluation. Endoscopy shows salmon-colored mucosa extending above the gastroesophageal junction. Biopsy reveals replacement of normal squamous epithelium with columnar epithelium containing goblet cells. What is the underlying pathological process?",
         "options": {
             "A": "Dysplasia",
@@ -864,7 +875,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 50 year old man with long-standing GERD undergoes endoscopy. Biopsy from the lower esophagus shows glandular epithelium with goblet cells replacing normal squamous lining. What is the type of epithelium seen?",
         "options": {
             "A": "Stratified squamous non-keratinized epithelium",
@@ -892,7 +903,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 50-year-old man with long-standing GERD undergoes endoscopy. Biopsy from the lower esophagus shows replacement of normal squamous epithelium with intestinal-type columnar epithelium containing goblet cells. This change is best described as which of the following?",
         "options": {
             "A": "Stratified squamous epithelium",
@@ -920,7 +931,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 54-year-old man with chronic gastroesophageal reflux disease undergoes endoscopy, which reveals a change in the distal esophageal mucosa. Biopsy shows replacement of stratified squamous epithelium with nonciliated columnar epithelium containing goblet cells. Which of the following terms best describes this process?",
         "options": {
             "A": "Dysplasia",
@@ -948,7 +959,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55 year old male alcoholic presents with symptoms of liver disease and is found to have mildly elevated liver enzymes. A liver biopsy examined with a routine hematoxylin and eosin (H&E) stain reveals abnormal clear spaces in the cytoplasm of most of the hepatocytes. Which of the following is most likely cause of this:",
         "options": {
             "A": "Hemosiderin",
@@ -976,7 +987,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55 year old man with a history of early liver cirrhosis presents with ascites. His serum-ascites albumin gradient (SAAG) is 1.1. A liver biopsy is planned. Which of the following best describes the hepatocyte's phase in the cell cycle?",
         "options": {
             "A": "G0 phase",
@@ -984,6 +995,34 @@
             "C": "S phase",
             "D": "G2 phase",
             "E": "M phase"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "MEWBHFLR",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 04/26 - April 9 - Evening"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 55 year old man with chronic hepatitis B presents with weight loss, abdominal distension, and right upper quadrant pain. Imaging shows a liver mass. Serum alpha fetoprotein (AFP) is markedly elevated. What is the most likely diagnosis?",
+        "options": {
+            "A": "Hepatic adenoma",
+            "B": "Hepatocellular carcinoma",
+            "C": "Cholangiocarcinoma",
+            "D": "Liver abscess",
+            "E": "Metastatic colon cancer"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -1004,7 +1043,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55 year old man with chronic hepatitis B presents with weight loss and right upper quadrant pain. Imaging reveals a liver mass. Which tumor marker is most useful for diagnosis and monitoring of this condition?",
         "options": {
             "A": "CEA",
@@ -1014,62 +1053,6 @@
             "E": ""
         },
         "correctAnswer": "D",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "MEWBHFLR",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 04/26 - April 9 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old man with chronic hepatitis B presents with weight loss, abdominal distension, and right upper quadrant pain. Imaging shows a liver mass. Serum alpha fetoprotein (AFP) is markedly elevated. What is the most likely diagnosis?",
-        "options": {
-            "A": "Hepatic adenoma",
-            "B": "Hepatocellular carcinoma",
-            "C": "Cholangiocarcinoma",
-            "D": "Liver abscess",
-            "E": "Metastatic colon cancer"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "3CPXM486",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 08/25 - August 6 - Evening"
-        ],
-        "subject": "Pathology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55 year old patient presents with neuronal degeneration and drowsiness on EEG waves in the frequency of 4-7Hz are predominately observed which of the waves is most likely involved?",
-        "options": {
-            "A": "Alpha waves",
-            "B": "Theta waves",
-            "C": "Delta waves",
-            "D": "Beta waves",
-            "E": ""
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1088,7 +1071,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 58 year old man presents with progressive dysphagia to solids and liquids. Endoscopy shows an ulcerated mass in the mid-esophagus. Which of the following is the most important risk factor for this condition worldwide?",
         "options": {
             "A": "Smoking",
@@ -1116,7 +1099,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 58 year old man with long-standing alcohol use presents with jaundice, ascites, and hypoglycemic episodes. He is diagnosed with liver cirrhosis. His symptoms are due in part to impaired storage and metabolism of glycogen-regulating hormones in the liver. Which of the following is the most important physiological consequence of this condition?",
         "options": {
             "A": "Increased insulin secretion",
@@ -1144,7 +1127,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 60 year old man is diagnosed with adenocarcinoma of the colon. His oncologist explains that the cancer has spread to liver. Which of the following cellular events is most directly required for metastasis to occur?",
         "options": {
             "A": "Upregulation of E-cadherin expression",
@@ -1172,7 +1155,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 60 year old man presents with progressive weight loss, anorexia, and early satiety. Physical examination reveals a hard, non-tender mass in the left supraclavicular region. Which is the most likely primary tumor?",
         "options": {
             "A": "Lung carcinoma.",
@@ -1200,7 +1183,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 60 year old man with chronic GERD develops a condition where normal squamous epithelium of the distal esophagus is replaced by columnar epithelium. What is the most serious complication associated with this condition?",
         "options": {
             "A": "Squamous cell carcinoma of the esophagus",
@@ -1228,7 +1211,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 60 year-old man with atrial fibrillation suddenly developed severe left flank pain and hematuria pain. Imaging reveals wedge shape area of ischemia in the left kidney. What is most likely histropathological finding in the renal tissue?",
         "options": {
             "A": "Red infarct",
@@ -1256,7 +1239,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 62 year old man has colorectal carcinoma. Which tumor marker is most useful for monitoring treatment response and detecting recurrence?",
         "options": {
             "A": "AFP",
@@ -1286,7 +1269,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 62 year old man is diagnosed with colorectal carcinoma. Which tumor marker is most useful for monitoring treatment response and recurrence?",
         "options": {
             "A": "AFP",
@@ -1314,7 +1297,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 62 year old man presents with progressive dysphagia, initially to solid foods and later to liquids. He has a long history of smoking and chronic alcohol consumption. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Squamous cell carcinoma of the esophagus",
@@ -1342,7 +1325,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 68 year oldman who is a known case of liver cirrhosis has developed ascites. What is the mechanism for the development of ascites?",
         "options": {
             "A": "Portal HTN",
@@ -1370,7 +1353,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 68-year-old man who is a known case of liver cirrhosis has developed ascites. What is the mechanism for the development of ascites?",
         "options": {
             "A": "Decreased colloidal pressure",
@@ -1398,7 +1381,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 7 year old boy develops infectious diarrhea after eating contaminated food. The pathogen crosses the intestinal epithelium through specialized cells overlying Peyer's patches, where it is taken up and delivered to underlying immune cells for antigen sampling and initiation of the mucosal immune response. Which of the following cells is primarily responsible for this antigen transport?",
         "options": {
             "A": "B cells",
@@ -1406,6 +1389,34 @@
             "C": "Paneth cells",
             "D": "M cells",
             "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "JT25G8FN",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A child developed diarrohea, biopsy shows villous atrophy but gluten free diet does not improve his symptoms diagnose is:",
+        "options": {
+            "A": "Whipple disease",
+            "B": "Celiac disease",
+            "C": "Shigellosis",
+            "D": "Giardiasis",
+            "E": "Tropical sprue"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -1426,7 +1437,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A chronic alcoholic patient presents to the hospital in a disturbed state. He gives history of long standing ascites and cirrhosis. Now he is diagnosed with HCC. What type of capsule covers this organ normally?",
         "options": {
             "A": "Dense regular connective tissue",
@@ -1454,7 +1465,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A chronic alcoholic presents with hepatomegaly and elevated liver enzymes. Imaging shows fatty infiltration. Most likely diagnosis?",
         "options": {
             "A": "Alcoholic hepatitis",
@@ -1482,7 +1493,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A chronic alcoholic presents with hepatomegaly, jaundice, and elevated AST > ALT. Liver biopsy shows eosinophilic cytoplasmic inclusions called Mallory bodies. What is the most likely diagnosis?",
         "options": {
             "A": "Viral hepatitis",
@@ -1510,7 +1521,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A chronic alcoholic presents with jaundice and hepatomegaly. Liver biopsy reveals Mallory bodies. What is the most likely diagnosis?",
         "options": {
             "A": "Viral hepatitis",
@@ -1538,7 +1549,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A clear cytoplasm in a hepatocyte is most likely due to accumulation of which of the following molecules?",
         "options": {
             "A": "Glycogen",
@@ -1566,7 +1577,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A cystic lesion in the liver containing daughter cysts is most consistent with:",
         "options": {
             "A": "Liver abscess",
@@ -1594,7 +1605,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A factory worker diagnosed with Hepatic angiosarcoma, a rare and highly aggressive malignant vascular tumor, is most classically associated with chronic exposure to which of the following substances?",
         "options": {
             "A": "Vinyl chloride",
@@ -1622,7 +1633,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A hepatic tumor is suspected. Which tumor marker is most commonly associated with hepatocellular carcinoma?",
         "options": {
             "A": "CEA",
@@ -1650,7 +1661,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A histology slide of liver tissue from a patient with hypertriglyceridemia shows hepatocytes containing clear cytoplasmic areas where lipid droplets have been dissolved during tissue processing. This finding represents:",
         "options": {
             "A": "Steatosis",
@@ -1667,18 +1678,23 @@
     {
         "id": "UCTD2ZME",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Gynecology & Obstetrics"
+            "Gynecology & Obstetrics",
+            "Radiology",
+            "Surgery & Allied"
         ],
         "exams": [
-            "Gynecology - 05/25 - May 14 - Morning"
+            "Gynecology - 05/25 - May 14 - Morning",
+            "Radiology - 08/24 - August 20 - Afternoon",
+            "Surgery - 08/24 - August 21 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A known CLD patient developed edema, the likely mechanism is:",
         "options": {
             "A": "Decrease oncotic pressure",
@@ -1688,61 +1704,36 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "",
+        "explanation": "Peripheral edema in CLD due to loss of albumin (Low oncotic pressure) Ascities in CLD due to Portal HTN Renal origin edema due to Loss of albumin (low oncotic pressure)+ can be salt and water retention. Nephrotic syndrome edema due to - Hypoalbuminemia Nephritis syndrome edema due to - Salt and water retention. Pedal edema in CHF and HTN due to-Increase hydrostatic pressure. In CHF edema woarsen by Sodium and water retention.",
         "hint": "",
         "Point": ""
     },
     {
         "id": "H9GSXKTG",
         "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 7 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A lady with pain abdomen radiating to back. Labs showed raised amylase and lipase. On investigation a cyst with necrosis seen. Type of necrosis",
-        "options": {
-            "A": "Fat necrosis",
-            "B": "Coagulative",
-            "C": "Fibrinoid",
-            "D": "Liquefactive",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "27TXPSG7",
-        "year": [
+            "2025",
             "2026"
         ],
         "specialty": [
+            "Medicine & Allied",
             "Gynecology & Obstetrics",
             "Radiology"
         ],
         "exams": [
+            "Medicine - 02/25 - Feburary 7 - Afternoon",
             "Gynecology - 07/26 - July 08 - Morning",
             "Radiology - 07/26 - July 08 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A lady with pain abdomen radiating to back. Labs showed raised amylase and lipase. On investigation a cyst with necrosis seen. Type of necrosis:",
+        "difficulty": "Medium",
+        "question": "A lady with pain abdomen radiating to back. Labs showed raised amylase and lipase. On investigation a cyst with necrosis seen. Type of necrosis",
         "options": {
             "A": "Fat necrosis",
             "B": "Coagulative",
             "C": "Fibrinoid",
-            "D": "Liquifective",
+            "D": "Liquefactive",
             "E": ""
         },
         "correctAnswer": "A",
@@ -1764,7 +1755,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A liver biopsy from an alcoholic patient shows \"steatosis.\" Which cellular finding is characteristic of this condition?",
         "options": {
             "A": "Councilman bodies",
@@ -1792,7 +1783,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A liver biopsy shows inflammation predominantly around the portal triads with lymphocytic infiltrates and interface activity. What is the most likely diagnosis?",
         "options": {
             "A": "Cirrhosis",
@@ -1820,7 +1811,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A long-distance truck driver with a history of chronic alcohol consumption presents for evaluation. Liver biopsy is performed. Which lipid is most likely to accumulate in his hepatocytes?",
         "options": {
             "A": "Cholesterol",
@@ -1848,7 +1839,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A long-term smoker and heavy drinker develops progressive dysphagia, first to solids and then to liquids. A mass is found in the middle third of the esophagus. What is the most likely diagnosis?",
         "options": {
             "A": "Adenocarcinoma",
@@ -1876,7 +1867,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A lymphoid organ shows Eosinophils and basophils in its lamina which of the following organs is being described?",
         "options": {
             "A": "White pulp of spleen",
@@ -1904,7 +1895,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A malnourished child develops fatty liver. The primary mechanism is:",
         "options": {
             "A": "Increased fat intake",
@@ -1932,7 +1923,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A medical student is examining a slide under the microscope but he is unable to differentiate the gallbladder different from the colon; the point which will help him in \"differentiating the gallbladder from colon histologically will be?",
         "options": {
             "A": "Muscular layer arranged in 3 layers in the gallbladder wall",
@@ -1962,7 +1953,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A middle aged woman was diagnosed with moderately differentiated adenocarcinoma of stomach and she had a history of biopsy few years ago that showed premalignant condition. Most likely diagnosis is:",
         "options": {
             "A": "Atrophic gastritis",
@@ -1990,7 +1981,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A middle-aged chronic smoker presents with progressive dysphagia. He has a significant smoking history of approximately 20-30 pack-years. Clinical evaluation raises suspicion of squamous cell carcinoma of the esophagus. Which of the following is the most important carcinogenic risk factor associated with this condition?",
         "options": {
             "A": "Aflatoxin B1",
@@ -2018,7 +2009,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A middle-aged man presents with chronic diarrhea, weight loss, and joint pain. Small bowel biopsy shows foamy macrophages that stain positive with PAS. What is the most likely diagnosis?",
         "options": {
             "A": "Crohn disease",
@@ -2046,7 +2037,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A neonate presents with abdominal distension and failure to pass meconium. Biopsy shows absence of which neurons?",
         "options": {
             "A": "Sympathetic preganglionic",
@@ -2074,7 +2065,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A neonate with delayed passage of meconium, abdominal distension, and constipation undergoes contrast enema demonstrating a transition zone. To confirm the diagnosis of congenital aganglionic megacolon (Hirschsprung disease), which investigation is considered diagnostic?",
         "options": {
             "A": "Anorectal manometry showing absent rectoanal inhibitory reflex",
@@ -2102,7 +2093,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A neonate with delayed passage of meconium, abdominal distension, and constipation undergoes contrast enema demonstrating a transition zone. To confirm the diagnosis of congenital aganglionic megacolon, which investigation is considered diagnostic?",
         "options": {
             "A": "Anorectal manometry showing absent rectoanal inhibitory reflex",
@@ -2130,7 +2121,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A newborn develops vomiting and abdominal distension shortly after first feeding. Failure to pass meconium is noted. Contrast study shows a narrowed distal colon. What is the diagnosis?",
         "options": {
             "A": "Intussusception",
@@ -2158,7 +2149,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A newborn is diagnosed with Hirschsprung disease. Which of the following is the primary defect?",
         "options": {
             "A": "Absence of parasympathetic ganglion cells in the distal colon",
@@ -2168,6 +2159,34 @@
             "E": "Anal stenosis"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NN399PUJ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A pateint presented with lower abdominal pain. On examination, there is a mass in pelvic region which is extending up to the umblicus. What is tumor marker of this cancer?",
+        "options": {
+            "A": "CA19-9",
+            "B": "CA-125",
+            "C": "APC",
+            "D": "BARCA",
+            "E": "P53"
+        },
+        "correctAnswer": "B (OVARIAN CARCINOMA)",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2186,7 +2205,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A pathologist examines an esophageal biopsy from the upper third of the esophagus and finds a focal, well-defined patch of normal, gastric mucosa completely surrounded by the esophagus's native stratified squamous epithelium. The patient is otherwise asymptomatic from reflux. Which pathological term define the given scenario??",
         "options": {
             "A": "Hamartoma",
@@ -2214,7 +2233,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A pathology student is examining gallbladder pathology in a patient with chronic biliary colic. The gallbladder mucosa shows accumulation of crystals and stones formed due to imbalance of bile components. Which of the following is the most likely major component of gallstones?",
         "options": {
             "A": "Bilirubin",
@@ -2224,6 +2243,34 @@
             "E": "Uric acid"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "QAXJTGRR",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient after transplant develop visual problem and diarrhea on examination cells with intranuclear basophilic inclusion seem this is due to which of following?",
+        "options": {
+            "A": "HSV",
+            "B": "HPV",
+            "C": "EBV",
+            "D": "CMV",
+            "E": "Adenovirus"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2242,11 +2289,11 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops gastritis after surgery. Biopsy shows degeneration predominantly in mucus-secreting glands. Which gland is primarily involved?",
         "options": {
             "A": "Parietal cells",
-            "B": "Brunner’s glands",
+            "B": "Brunnerâ€™s glands",
             "C": "Chief cells",
             "D": "Goblet cells",
             "E": ""
@@ -2270,7 +2317,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient develops intestinal ischemia leading to necrosis of the bowel. On gross examination, the affected segment appears congested and hemorrhagic. What type of infarct is most likely present?",
         "options": {
             "A": "Pale infarct",
@@ -2280,6 +2327,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "DUWKM8LY",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient has a history of malignant hyperthermia. Which inhalational agent is the safest choice to administer?",
+        "options": {
+            "A": "Isoflurane",
+            "B": "Halothane",
+            "C": "Desflurane",
+            "D": "Sevoflurane",
+            "E": "Nitrous Oxide"
+        },
+        "correctAnswer": "E",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2298,7 +2373,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient has crypt abscesses and pseudopolyps on colonoscopy. The most likely diagnosis is:",
         "options": {
             "A": "Crohn's disease",
@@ -2326,7 +2401,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient in a rehabilitation centre for 8 years dies. On autopsy, a yellow greasy liver with no sign of necrosis was found. Cause?",
         "options": {
             "A": "Alcoholism",
@@ -2354,7 +2429,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient is diagnosed with multiple Adenomatous Polyps in the colon and has a strong family history of colon cancer. The gene mutation most commonly responsible for this syndrome is in the:",
         "options": {
             "A": "p53 gene",
@@ -2382,7 +2457,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A Patient of chronic Hepatitis C with increased ALT and AST the cause of increased ALT and AST is which of the following",
         "options": {
             "A": "Hepatocyte membrane damaged",
@@ -2392,6 +2467,34 @@
             "E": "Increase due to ischemia"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "7N6BPKEB",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 21 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presented with lower abdominal pain. On examination, there is a mass in pelvic region which is extending up to the umbilicus. What is tumor marker of this cancer?",
+        "options": {
+            "A": "CA19-9",
+            "B": "CA-125",
+            "C": "APC",
+            "D": "BARCA",
+            "E": "P53"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2410,7 +2513,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with sudden severe epigastric pain. Labs show increased amylase levels. What type of necrosis is in the involved organ?",
         "options": {
             "A": "Liquefactive",
@@ -2438,7 +2541,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with chronic inflammation of the stomach affecting the fundus and body, while the antrum is relatively spared. Which is the most likely underlying condition?",
         "options": {
             "A": "Alcoholic Gastritis",
@@ -2467,7 +2570,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with dysphagia. Endoscopy reveals a mass with an intact mucosa. Histology shows spindle cells and CD117 positivity. What is the most likely diagnosis?",
         "options": {
             "A": "GIST (Gastrointestinal Stromal Tumor)",
@@ -2495,7 +2598,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with dysphagia. Endoscopy reveals a mass with an intact mucosa. Small intestinal tumor with non metatstatic nature What is the most likely diagnosis?",
         "options": {
             "A": "GIST (Gastrointestinal Stromal Tumor)",
@@ -2523,7 +2626,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with LUQ pain. Imaging shows a wedge-shaped area in the spleen. Histology reveals cell preservation but loss of nuclei. What type of necrosis is this?",
         "options": {
             "A": "Liquefactive necrosis",
@@ -2534,6 +2637,34 @@
         },
         "correctAnswer": "B",
         "explanation": "Coagulative necrosis is typical in ischemic infarcts of solid organs (kidney, spleen, heart). Wedge shape corresponds to vascular territory of occluded artery. Reference: Robbins & Cotran Pathologic Basis of Disease, 10th Ed.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "7L6A2NU4",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presents with non healing ulcer in the mouth on history he states that he has been eating gutka for past 20 years doctors confirms the malignancy after investigation",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "basal cell carcinoma",
+            "C": "Adenocarcinoma",
+            "D": "verrucous carcinoma",
+            "E": "Sarcoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -2551,7 +2682,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with occult blood in the stool. Colonoscopy reveals a pedunculated polyp with tubular atypical colonic glands and a stalk covered by normal epithelium. What is the most likely diagnosis?",
         "options": {
             "A": "Adenomatous polyp",
@@ -2579,7 +2710,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient suffers from appendicitis. Peripheral blood leukocytosis. He is having fever and Pain. Pain will be mediated by",
         "options": {
             "A": "IL 1 and TNF alpha",
@@ -2607,7 +2738,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient suffers from appendicitis. Peripheral blood shows leukocytosis. He is having fever and Pain. Pain will be mediated by",
         "options": {
             "A": "IL 1 and TNF alpha",
@@ -2635,7 +2766,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient undergoes rectal cancer resection. The surgeon is concerned about possible incomplete resection based on the",
         "options": {
             "A": "Round margin",
@@ -2663,7 +2794,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient who previously underwent an appendectomy now presents years later with ascites and possible abdominal masses. The underlying pathology involves mucous-secreting tumor cells originating from the appendix that have spread to the peritoneal surface. What is the most likely mechanism of spread for this condition?",
         "options": {
             "A": "Direct spread",
@@ -2691,7 +2822,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient who was in and out of rehab 8 years ago, she had jaundice in her last days of life, on autopsy her liver had a yellow- brown pigment her liver weighs( it was 3000 or 1500g). She is having fatigue and raised sugar What will be the cause;",
         "options": {
             "A": "Alcohol",
@@ -2721,7 +2852,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a history of appendectomy for mucinous carcinoma presents with ascites, altered bowel habits, and a \"sticky\" abdomen on examination. Likely diagnosis?",
         "options": {
             "A": "Peritoneal carcinomatosis",
@@ -2749,7 +2880,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a long history of chronic alcohol use entered a rehabilitation program and stopped drinking. One year later, she died from an unrelated cause. On autopsy, what would most likely be found in her liver?",
         "options": {
             "A": "Normal liver architecture",
@@ -2777,7 +2908,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a long history of GERD undergoes endoscopy, which shows metaplasia several centimeters above the gastroesophageal junction. Which type of epithelium is most likely present?",
         "options": {
             "A": "Keratinized squamous epithelium",
@@ -2805,7 +2936,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with a mid. esophageal tumor (5cm) invading muscularis propria and involvement of para. esophageal lymph nodes is staged as:",
         "options": {
             "A": "T2N0",
@@ -2833,7 +2964,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with acute liver injury shows markedly elevated serum AST and ALT levels. What is the primary reason for the rise of these enzymes in blood?",
         "options": {
             "A": "Increased enzyme synthesis",
@@ -2861,7 +2992,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with alcoholic cirrhosis has a liver biopsy. What is the most likely finding?",
         "options": {
             "A": "Disorganized hepatic architecture",
@@ -2889,7 +3020,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with chronic alcoholism develops liver fibrosis with dense, irregular collagen deposition. This describes:",
         "options": {
             "A": "Fatty liver",
@@ -2917,7 +3048,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with chronic hepatitis B presents with weight loss and a liver mass on imaging. Which of the following tumor markers is most commonly associated with this condition?",
         "options": {
             "A": "CEA",
@@ -2945,7 +3076,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with chronic viral hepatitis undergoes autopsy. Councilman bodies are identified in the liver. These findings are most consistent with which pathological process?",
         "options": {
             "A": "Lipofuscin deposition",
@@ -2975,7 +3106,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with dysphagia undergoes an endoscopy, which reveals patches of discoloration but no ulcers. Barrett's esophagus increases the risk of which condition?",
         "options": {
             "A": "Adenocarcinoma",
@@ -3003,7 +3134,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with esophageal cancer reports high intake of pickled foods and smoked meat. Likely carcinogen?",
         "options": {
             "A": "Aflatoxin",
@@ -3033,7 +3164,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with Familial Adenomatous Polyposis (FAP) develops a fibrous central abdominal tumor. The likely diagnosis is:",
         "options": {
             "A": "Desmoid tumor",
@@ -3061,7 +3192,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with liver cirrhosis develops portal hypertension and ascites. Dilation of which of the following veins is most likely involved in portal vein",
         "options": {
             "A": "Left gastric vein",
@@ -3089,7 +3220,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with long history of betel net use. Which of the following is a premalignant lesion predisposing to squamous cell carcinoma of mouth?",
         "options": {
             "A": "Leukoplakia",
@@ -3117,7 +3248,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with long-standing liver disease undergoes examination, and the liver surface is found to be dense and irregular. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Fatty liver disease",
@@ -3145,7 +3276,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with right-sided heart failure develops hepatomegaly. Liver biopsy shows a \"nutmeg liver\" appearance. This finding is characteristic of:",
         "options": {
             "A": "Fatty liver",
@@ -3173,8 +3304,8 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient’s imaging shows calcification of the gallbladder wall and penetration of the hepatic flexure. What is the most likely diagnosis?",
+        "difficulty": "Hard",
+        "question": "A patientâ€™s imaging shows calcification of the gallbladder wall and penetration of the hepatic flexure. What is the most likely diagnosis?",
         "options": {
             "A": "Cholelithiasis",
             "B": "Acute cholecystitis",
@@ -3201,7 +3332,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A person is having history of smoking On Endoscopy there is valvety lesion in lower third of esophagus. It is risk factor for",
         "options": {
             "A": "Adenocarcinoma",
@@ -3211,6 +3342,64 @@
             "E": "Gastritis"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "2BG83832",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A person is having history of smoking On Endoscopy there is valvety lesion in Upper 1/3 third of esophagus. It is risk factor for:",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell Carcinoma",
+            "C": "Baretts esophagus",
+            "D": "Chronic esophagitis",
+            "E": "Gastritis"
+        },
+        "correctAnswer": "B",
+        "explanation": "Upper 2/3rd (Squamous cell carcinoma) Alcohol Hot Liquids Stricture Smoking Achlasia Lower 1/3rd (Adenocarcinoma) Chronic GERD Barret Esophagous Obesity Smoking Achlasia",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YE6ZQ6NP",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A person went to Thailand and on return presented with diarrhea which is Bloody and large in amount, in stool sample donut shaped cysts and Halo around organism were found. Cause is:",
+        "options": {
+            "A": "CMV",
+            "B": "EBV",
+            "C": "HPV",
+            "D": "Isosporiasis",
+            "E": "Blastocytosis"
+        },
+        "correctAnswer": "E(NO OPTION OF CRYPTOSPORIDIUM)",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3229,7 +3418,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman having parotid swelling diagnosed as Pleiomorphic adenoma, the most common benign tumor of the salivary glands, arises from which germ layer?",
         "options": {
             "A": "Benign tumor of endodermal origin",
@@ -3257,7 +3446,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A young male patient had colonic adenocarcinoma underwent tumor resection, The pathology report confirms clear proximal and distal margins. The primary surgeon is concerned because the report is lacking information about which crucial factor related to local recurrence?",
         "options": {
             "A": "Staging of the tumor",
@@ -3285,7 +3474,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A young patient presented in surgical opd with complaint of severe pain in RIF, on CBC there was raised wbc count diagnosed as a case of acute appendicitis for which appendectomy was done, on histopathology you will find?",
         "options": {
             "A": "Lymphoid hyperplasia in appendix wall",
@@ -3313,7 +3502,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Acue pancreatitis is often complicated. Which of the following best describes the pathological mechanism in this condition?",
         "options": {
             "A": "Coagulative necrosis due to ischemia",
@@ -3341,7 +3530,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "After appendectomy, a patient develops swelling at the scar. Histopathology shows granulomatous inflammation with giant cells.",
         "options": {
             "A": "Foreign body granuloma",
@@ -3352,6 +3541,62 @@
         },
         "correctAnswer": "C",
         "explanation": "Scar granuloma forms as a reaction to surgical trauma and healing, sometimes with giant cells. Differentiated from foreign body granuloma by absence of retained suture or material.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "BFE4F5YN",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "After B/L salpingo oophorectomy and total abdominal hysterectomy, forrecurrence of tumour which marker is used:",
+        "options": {
+            "A": "CEA",
+            "B": "CA 15-3",
+            "C": "CA 19-9",
+            "D": "AFP",
+            "E": "CA 125"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "X8N83BYT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "After B/L salpingo total oophorectomy and abdominal hysterectomy, which tumour marker is used forrecurrence of tumour:",
+        "options": {
+            "A": "CEA",
+            "B": "CA 15-3",
+            "C": "CA 19-9",
+            "D": "AFP",
+            "E": "CA 125"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -3369,7 +3614,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Alcoholic liver cells are hollow due to?",
         "options": {
             "A": "Steatosis",
@@ -3397,7 +3642,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Alcoholic with hepatocytes showing clear cytoplasm on H&E. Cause:",
         "options": {
             "A": "Glycogen",
@@ -3407,6 +3652,94 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "UQU9YYU4",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "An alcoholic female presented with Cough, dyspnea from 2 weeks, Weight loss & hemoptysis. Transbronchial biopsy done, what will be the findings?",
+        "options": {
+            "A": "Cells with increased N/C ratio and scanty cytoplasm",
+            "B": "Pleomorphic Cells with dark staining and angular nuclei",
+            "C": "Liver Metastasis",
+            "D": "Atrophy of Hepatocytes",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "ZLG56DP8",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning",
+            "Surgery - 08/24 - August 21 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "An old patient with a history of constipation and abdominal pain. While investigating, a mass is found in the colon which was diagnosed as adenocarcinoma. Which of the following is the risk factor for colonic adenocarcinoma?",
+        "options": {
+            "A": "Smoking",
+            "B": "Alcohol",
+            "C": "Sedentary lifestyle",
+            "D": "Entamoeba",
+            "E": "Fatty diet"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "AJUGD9VU",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Anasthetic that causes malignant hyperthermia:",
+        "options": {
+            "A": "Cisatracurium",
+            "B": "Ketamine",
+            "C": "Propofol",
+            "D": "Halothane",
+            "E": "NO"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3425,7 +3758,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Autopsy of a patient who died from cirrhosis reveals golden-brown pigment deposition within pancreatic acinar cells. Which of the following best describes this finding?",
         "options": {
             "A": "Hemochromatosis",
@@ -3453,7 +3786,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Baby with kwashiorkor: Pathophysiology of fatty liver:",
         "options": {
             "A": "Decreased apolipoprotein synthesis",
@@ -3481,7 +3814,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Barret esophagus can cause which of the following carcinoma",
         "options": {
             "A": "Adenocarcinoma",
@@ -3491,6 +3824,34 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "DN4XK5S8",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 23 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Barret esophagus is:",
+        "options": {
+            "A": "Anaplasia",
+            "B": "Dysplasia",
+            "C": "Metaplasia",
+            "D": "Desmoplasia",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3509,7 +3870,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Barrett esophagus is characterized histologically by replacement of the normal squamous lining with columnar epithelium containing intestinal-type goblet cells.",
         "options": {
             "A": "Stratified squamous epithelium",
@@ -3537,7 +3898,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Barrett's epithelium undergoes metaplasia that predisposes a patient to which malignancy?",
         "options": {
             "A": "Squamous cell carcinoma",
@@ -3565,7 +3926,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Barrett's esophagus most commonly predisposes to which malignancy?",
         "options": {
             "A": "Squamous cell carcinoma",
@@ -3575,7 +3936,91 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "Upper two-thirds of oesophagus — Squamous cell carcinoma Alcohol Hot liquids Stricture Smoking Achalasia Lower one-third of oesophagus — Adenocarcinoma Chronic GERD Barrett's oesophagus Obesity Smoking Note: Achalasia is mainly associated with squamous cell carcinoma, not adenocarcinoma.",
+        "explanation": "Upper two-thirds of oesophagus â€” Squamous cell carcinoma Alcohol Hot liquids Stricture Smoking Achalasia Lower one-third of oesophagus â€” Adenocarcinoma Chronic GERD Barrett's oesophagus Obesity Smoking Note: Achalasia is mainly associated with squamous cell carcinoma, not adenocarcinoma.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "EH6CDFKJ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Biopsy of stomach done, there was none specialized gastric tissue and scatter goblet cells this is related to:",
+        "options": {
+            "A": "Metaplasia",
+            "B": "Dysplasia",
+            "C": "Ca stomach",
+            "D": "Achalsia",
+            "E": "Hyperplasia"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "8MQ9F95U",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Biopsy of stomach done, there was none specialized gastric tissue and scattered goblet cells this is related to:",
+        "options": {
+            "A": "Metaplasia",
+            "B": "Dysplasia",
+            "C": "Ca stomach",
+            "D": "Ulcer",
+            "E": "Hyperplasia"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "CE299FNJ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Breast cancer in female metastasized to liver, peritoneum and pelvic organs route of metastasis:",
+        "options": {
+            "A": "Subpleural lymphatic plexus",
+            "B": "Subperitoneal lymphatic plexus",
+            "C": "Venous connections",
+            "D": "Axillary lymph nodes",
+            "E": "Arterial Thrombi"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -3593,7 +4038,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Carcinoma involving the upper two-thirds of the esophagus is most commonly of which histological type?",
         "options": {
             "A": "Adenocarcinoma",
@@ -3621,7 +4066,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Changes seen in liver damage include:",
         "options": {
             "A": "Dense irregular connective tissue",
@@ -3649,7 +4094,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Chemotherapy-induced diarrhea is primarily caused by loss of intestinal epithelial cells through which mechanism?",
         "options": {
             "A": "Necrosis",
@@ -3666,18 +4111,21 @@
     {
         "id": "2ZVEJX8M",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
+            "Radiology - 05/25 - May 12 - Morning",
+            "Medicine - 11/24 - November 22 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Councilman bodies are found on investigation of a patient. What is the probable diagnosis?",
         "options": {
             "A": "Apoptosis",
@@ -3705,7 +4153,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Councilman bodies are present in:",
         "options": {
             "A": "Reversible injury",
@@ -3722,20 +4170,28 @@
     {
         "id": "TD9X9MEJ",
         "year": [
-            "2026"
+            "2026",
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Anesthesia - 04/26 - April 7 - Morning",
-            "Radiology - 04/26 - April 7 - Morning"
+            "Radiology - 04/26 - April 7 - Morning",
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 05/25 - May 13 - Afternoon",
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 11/24 - November 22 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Councilman bodies occur in process of",
         "options": {
             "A": "Hypertrophy",
@@ -3745,7 +4201,7 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "Occur in process of Apoptosis. Seen in disease - Yellow Fever",
         "hint": "",
         "Point": ""
     },
@@ -3763,7 +4219,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Councilman bodies occur in proctitis of:",
         "options": {
             "A": "Hypertrophy",
@@ -3791,7 +4247,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Crohn's disease, a type of inflammatory bowel disease, is associated with the proliferation or involvement of which specific cells in the intestinal crypts?",
         "options": {
             "A": "Goblet cells",
@@ -3801,6 +4257,34 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LV8LJ6J5",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Cytokeratin is an intermediate filament found in cells but is most commonly used for detection of:",
+        "options": {
+            "A": "Degree of metaplasia or dysplasia",
+            "B": "To check rate of proliferation",
+            "C": "For staging of disease",
+            "D": "For growth",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3819,7 +4303,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Diagnosed appendicular tumor which has mucinous secretion called Pseudomyxoma peritonei will spread how?",
         "options": {
             "A": "Lymph node",
@@ -3847,7 +4331,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Diagnosis of appendix on histopathology (appendectomy specimen)?",
         "options": {
             "A": "Neutrophils in muscularis propria",
@@ -3868,8 +4352,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Surgery - 04/26 - April 7 - Night",
@@ -3878,7 +4362,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Diagnosis of colon CA made many years back CEA was raised that time pt came for regular checkup you advised CEA now what is role of CEA?",
         "options": {
             "A": "For Staging",
@@ -3888,6 +4372,62 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "686J4EZ3",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Difference between dysplasia & CA:",
+        "options": {
+            "A": "CA in situ",
+            "B": "Pleomorphism",
+            "C": "Invasion to BM",
+            "D": "Loss of Polarity",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "6PWAHVNC",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Dr and patient donot have proper communication due to",
+        "options": {
+            "A": "Hurriness and casual attitude",
+            "B": "Misconception",
+            "C": "Unprofessional attitude",
+            "D": "Mistrust",
+            "E": "Use of technical jargon"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3906,7 +4446,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During endoscopy, a patient is found to have metaplasia and intestinal mucosa in lower part of esophagus. This condition significantly increases the risk of developing which malignancy?",
         "options": {
             "A": "Gastric CA",
@@ -3934,7 +4474,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During surgical exploration, which of the following layer is immediately encountered first upon opening the hernia sac?",
         "options": {
             "A": "Fascia transversalis",
@@ -3944,6 +4484,36 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "T6JJ92C9",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Anesthesia - 11/24 - November 19 - Afternoon",
+            "Medicine - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Dysplasia differs From Cancer By.",
+        "options": {
+            "A": "CA in situ",
+            "B": "Pleomorphism",
+            "C": "Invasion to BM",
+            "D": "Loss of Polarity",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3962,7 +4532,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Feathery necrosis in liver is seen in",
         "options": {
             "A": "Hemochromatosis",
@@ -3972,6 +4542,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "JFLQEYQJ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Feature of Neoplasm:",
+        "options": {
+            "A": "Mitotic Blebs",
+            "B": "Increased Nuclear to Cytoplasmic ratio",
+            "C": "Pleomorphism",
+            "D": "Desmpolasia",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -3990,7 +4588,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "For a patient with a mid-esophageal mass and a history of smoking and alcohol use, what is the most likely histology and associated carcinogen?",
         "options": {
             "A": "Adenocarcinoma - nitrosamines",
@@ -4000,6 +4598,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "WATABQDK",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Gastric mucosa present in middle 1/3 of Esophagus: related to",
+        "options": {
+            "A": "Hamartoma",
+            "B": "Gastric metaplasia",
+            "C": "Choriostoma",
+            "D": "Choriocarcinoma",
+            "E": "Metastatic Carcinoma."
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -4018,7 +4644,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Gastric tissue in upper esophagus is related to which of following",
         "options": {
             "A": "Dysplasia",
@@ -4033,14 +4659,70 @@
         "Point": ""
     },
     {
+        "id": "F32S4KF2",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Grade 3 Carcinoma",
+        "options": {
+            "A": "50-60% dysplasia",
+            "B": "50% dysplasia",
+            "C": "90% dysplasia",
+            "D": "50-75% dysplasia",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LGE9HVUM",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Groove at lesser curvature of Stomach is called",
+        "options": {
+            "A": "Incisura Cardias",
+            "B": "Incisura Angularis",
+            "C": "Fundus",
+            "D": "Pylorus",
+            "E": "[None]"
+        },
+        "correctAnswer": "B",
+        "explanation": "[None]",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "HBAUY6D9",
         "year": [
             "2026",
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
             "Radiology - 04/26 - April 7 - Morning",
@@ -4049,7 +4731,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Hirschsprung's disease primarily affects which part of the large intestine?",
         "options": {
             "A": "Ascending colon",
@@ -4077,7 +4759,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Histological examination of the liver of an alcoholic person revealing accumulation of fat vacuoles within hepatocytes, is consistent with which condition?",
         "options": {
             "A": "Hepatic Steatosis",
@@ -4107,7 +4789,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Histology of a slide shows serous acini in connective tissue and duct this is related to",
         "options": {
             "A": "Tonsil",
@@ -4135,7 +4817,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Histology of Barrett typically shows:",
         "options": {
             "A": "Stratified squamous epithelium",
@@ -4163,7 +4845,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Histology of liver in a chronic alcoholic shows accumulation of triglycerides within hepatocytes. This condition is termed:",
         "options": {
             "A": "Fat Cell Injury",
@@ -4193,7 +4875,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "How do antigens move through the intestinal wall?",
         "options": {
             "A": "M cells",
@@ -4221,7 +4903,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Human placenta has",
         "options": {
             "A": "Amnion on its fetal side",
@@ -4249,7 +4931,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a patient diagnosed with steatohepatitis, which of the following histological findings is most characteristic in liver cells?",
         "options": {
             "A": "Bilirubin deposits",
@@ -4259,6 +4941,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RWW83JDR",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "In a patient with a gastric ulcer due to reflux, which area is most likely affected?",
+        "options": {
+            "A": "Esophagus",
+            "B": "Pylorus",
+            "C": "Fundus of the stomach",
+            "D": "Cardia of the stomach",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -4277,7 +4987,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a patient with steatohepatitis, what will be seen on liver histology?",
         "options": {
             "A": "Fatty acids",
@@ -4305,7 +5015,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a pediatric patient diagnosed with Hirsch sprung disease, which segment of the gastrointestinal tract is most commonly involved?",
         "options": {
             "A": "Duodenum",
@@ -4333,7 +5043,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In acute appendicitis, the fluid collected in the peritoneal cavity due to inflammation and capillary leak is classified as what type of fluid?",
         "options": {
             "A": "Exudative",
@@ -4361,7 +5071,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In acute pancreatitis, the predominant type of necrosis in peripancreatic tissue is:",
         "options": {
             "A": "Coagulative necrosis",
@@ -4389,7 +5099,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In case of obstructive jaundice bleeding tendency due to",
         "options": {
             "A": "Decrease Micelle formation",
@@ -4417,7 +5127,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In chronic alcoholic liver disease, the characteristic connective tissue change seen in the \"chicken wire\" fibrosis pattern is categorized as",
         "options": {
             "A": "Dense Irregular Connective Tissue",
@@ -4445,7 +5155,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In Crohn's disease, transfer of antigen and microorganisms from intestinal lumen to immune cells occurs through which of the following specialized cells?",
         "options": {
             "A": "N cells",
@@ -4473,7 +5183,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In Hirschsprung disease (congenital aganglionic megacolon), which part of the gastrointestinal tract is almost always involved?",
         "options": {
             "A": "Rectum",
@@ -4501,7 +5211,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In pancreatitis, mesenteric fat is often necrosed. What type of necrosis is this?",
         "options": {
             "A": "Lipofuscinative",
@@ -4529,7 +5239,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In patients with chronic acid reflux epithelial metaplasia of esophagus most commonly develop at:",
         "options": {
             "A": "Pyloric sphincter",
@@ -4557,7 +5267,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In the early pathological stages of acute appendicitis, the inflammatory response is typically",
         "options": {
             "A": "Suppurative",
@@ -4585,7 +5295,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In the gut-associated lymphoid tissur, which specialized epithelial cells facilitate antigen uptake and deliver them tk underlying antigen-presenting cells?",
         "options": {
             "A": "Goblet cells",
@@ -4615,7 +5325,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In the liver biopsy of chronic alcoholics, cytoplasmic vacuoles were observed in hepatocytes these vacuoles most likely contain?",
         "options": {
             "A": "Glycogen",
@@ -4643,7 +5353,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Investigation of choice for Hirschsprung disease is:",
         "options": {
             "A": "CT scan",
@@ -4671,7 +5381,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Juvenile rectal polyp is classified as:",
         "options": {
             "A": "Adenomatous",
@@ -4682,6 +5392,34 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YZXT8WAL",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 24 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Kaposi's sarcoma caused by which of the following",
+        "options": {
+            "A": "HHV8",
+            "B": "HHV6",
+            "C": "B19",
+            "D": "HHV5",
+            "E": "HHV7"
+        },
+        "correctAnswer": "A",
+        "explanation": "HHV8-kaposi's sarcoma HHV6, HHV7 Roseola infantum HHV6,HHV7= B19-parvo virus HHV5=CMV",
         "hint": "",
         "Point": ""
     },
@@ -4699,7 +5437,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Left-sided swelling above clavicle in gastric cancer patient indicates:",
         "options": {
             "A": "Left supraclavicular lymph node",
@@ -4727,7 +5465,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Liver Biopsy Showing Parenchymal Necrosis - Enzymes Raised Due To Raised ALT/AST are due to injury of:",
         "options": {
             "A": "Mitochondria",
@@ -4755,7 +5493,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Liver histology shows a central necrotic area surrounded by epithelioid cells, lymphocytes, and multinucleated giant cells. This pattern is characteristic of which type of Cell Injury?",
         "options": {
             "A": "Acute appendicitis",
@@ -4772,18 +5510,21 @@
     {
         "id": "7HKVFNFM",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
+            "Surgery - 08/25 - August 7 - Morning",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Main determinant of coronary circulation is:",
         "options": {
             "A": "Sympathetic",
@@ -4811,7 +5552,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Mallory bodies seen in",
         "options": {
             "A": "Hepatitis",
@@ -4839,7 +5580,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Marker for hepatocellular carcinoma (HCC):",
         "options": {
             "A": "CA 19-9",
@@ -4867,7 +5608,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Metaplasia of squamous to columnar epithelium in the esophagus can lead to:",
         "options": {
             "A": "Adenocarcinoma of the esophagus",
@@ -4877,6 +5618,93 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "T8KG2YKE",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Microscopic feature of malignancy is:",
+        "options": {
+            "A": "Pleomorphism",
+            "B": "N/C Ratio",
+            "C": "Invasion of surrounding tissues",
+            "D": "Infarction",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "DNE3LWRX",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Most important factor causing carcinoma?",
+        "options": {
+            "A": "Alcohol",
+            "B": "Smoking",
+            "C": "Hep. A",
+            "D": "Drug use",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YJFKJSDZ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning",
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Nasopharyngeal carcinoma is most commonly associated with:",
+        "options": {
+            "A": "HPV",
+            "B": "Hep.B",
+            "C": "Aflatoxin",
+            "D": "EBV",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -4897,7 +5725,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Nutmeg liver cause is",
         "options": {
             "A": "Peri portal congestion",
@@ -4925,7 +5753,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Nutmeg liver is most commonly caused by:",
         "options": {
             "A": "Chronic passive congestion",
@@ -4936,6 +5764,34 @@
         },
         "correctAnswer": "A",
         "explanation": "Nutmeg liver results from chronic passive venous congestion. It is commonly caused by right-sided heart failure. The liver shows mottled red and yellow appearance.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "QFFYJREY",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "Old lady with dysphagia she ignored but after 3 month came back with weight loss and dysphagia to puddings milks now on exam there is a mass in deep middle neck on palpitation malignancy of which organ involved?",
+        "options": {
+            "A": "Esophagus",
+            "B": "Larynx",
+            "C": "Trachea",
+            "D": "Tonsil",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -4953,7 +5809,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "On histology liver shows central distorted area surrounded by epithelioid cells, lymphocytes and giant cells this is related to",
         "options": {
             "A": "Coagulative Cell Injury",
@@ -4963,6 +5819,34 @@
             "E": "Acute"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3VUM7LB5",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 23 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Ovarian CA tumor Marker 18",
+        "options": {
+            "A": "CEA",
+            "B": "CA 15-3",
+            "C": "CA 19-9",
+            "D": "AFP",
+            "E": "CA 125"
+        },
+        "correctAnswer": "E",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -4981,7 +5865,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pancreatic necrosis is histologically characterized by which type of necrosis",
         "options": {
             "A": "A",
@@ -4989,6 +5873,176 @@
             "C": "Coagulative necrosis",
             "D": "Liquefactive necrosis",
             "E": "Caseous necrosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YN2KQ9PK",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient comes with tender right hypochondrium, stool with occult blood on colonoscopy, ascending colon was involved, showing ulcers while other parts of colon were spared on histology / microscopy what will be seen?",
+        "options": {
+            "A": "Necrotizing vasculitis",
+            "B": "Crypt abscess",
+            "C": "Entamoeba histolytica",
+            "D": "Carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C (ROBBINS AND HARSH MOHAN)",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "8D2UWVQ7",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient has liver cirrhosis. Route of hepatic biopsy is",
+        "options": {
+            "A": "T10 midaxillary line",
+            "B": "T11 mid clavicular line",
+            "C": "Subcostal angle",
+            "D": "Substernal angle",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "2KWPG8TS",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient has Non-healing Ulcer in mouth for 4 months. He has Gutka history for 20 years. Doctor confirms a malignancy after tests. What is the most common malignancy in this case?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Chronic ulcer",
+            "D": "Leukoplakia",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LYZFYMC2",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Medicine - 11/24 - November 24 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient having alternative diarrhea and constipation habits and per rectal bleeding diagnosed as a case of colon cancer which is the tumor marker:",
+        "options": {
+            "A": "Alpha fetoprotein",
+            "B": "CEA",
+            "C": "CA- 125",
+            "D": "BRCA -2",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "EXUH8NHP",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient HCV+, Presented To OPD with complains of Lethargy, Malaise & Weight loss. Fibrosis & Centrilobular cells involving hepatic sinusoids seen 011 morphology. HCC Tumor marker is which of the following?",
+        "options": {
+            "A": "AFP",
+            "B": "CEA",
+            "C": "CA 19-9",
+            "D": "CA 125",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "WMK5M4F3",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient HCV+, Presented To OPD with complains of Lethargy, Malaise & Weight loss. Fibrosis & Centrilobular cells involving hepatic sinusoids seen on morphology. HCC Tumor marker is which of the following?",
+        "options": {
+            "A": "AFP",
+            "B": "CEA",
+            "C": "CA 19-9",
+            "D": "CA 125",
+            "E": ""
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -5009,7 +6063,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient presents with epigastric pain radiating to the back and raised serum amylase. Diagnosis is acute pancreatitis. Type of Cell Injury:",
         "options": {
             "A": "Coagulative Cell Injury",
@@ -5037,7 +6091,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient presents with swelling at preauricular region, well-circumscribed and mobile. Likely diagnosis?",
         "options": {
             "A": "Pleomorphic adenoma",
@@ -5065,7 +6119,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient with pancreatic adenocarcinoma presents with upper GI bleed. Endoscopy shows only fundal varices. Which structure is involved?",
         "options": {
             "A": "Thrombosis of splenic artery",
@@ -5093,7 +6147,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pleomorphic adenoma (benign mixed tumor of salivary gland) histopathology shows:",
         "options": {
             "A": "Pure epithelial",
@@ -5121,7 +6175,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Portal hypertension primarily develops due to increased resistance to blood flow in the liver. At the cellular level, which is the main contributor?",
         "options": {
             "A": "Lymphatic cells",
@@ -5132,6 +6186,34 @@
         },
         "correctAnswer": "B",
         "explanation": "Hepatic stellate cells (Ito cells): When activated by injury or fibrosis, they produce collagen, causing sinusoidal fibrosis -> increases intrahepatic resistance -> portal hypertension. Endothelial dysfunction: Reduced nitric oxide production contributes, but stellate cells are primary. Vascular/sinusoidal compression (D): Describes the effect caused by fibrosis and stellate cell activation, not the primary cellular driver. Lymphatic cells: Not involved in resistance to portal blood flow. Key point: Portal hypertension is mainly due to activated stellate cells causing fibrosis and sinusoidal resistance, with vascular compromise as a secondary effect.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "SDAV8Q3F",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 23 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Primordial germ cells derived from",
+        "options": {
+            "A": "Endoderm",
+            "B": "Ectoderm",
+            "C": "Hypoblast",
+            "D": "Outer wall of yolk sac",
+            "E": "Lateral plate mesoderm"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -5149,7 +6231,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pseudomyxoma peritonei spread via?",
         "options": {
             "A": "Lymphatics",
@@ -5177,7 +6259,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Retinoic acid deficiency leads to which pathological change in the liver?",
         "options": {
             "A": "Congestive hepatomegaly",
@@ -5205,7 +6287,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Slow growing tumour of Parotid:",
         "options": {
             "A": "Warthin's tumour",
@@ -5233,7 +6315,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Source of Ascites in chronic liver disease primarily caused by which mechanism?",
         "options": {
             "A": "Hepatic vasculature",
@@ -5261,7 +6343,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The histologic change seen in Barrett esophagus is defined by the replacement of the esophageal epithelium with what specific type of lining?",
         "options": {
             "A": "Simple squamous epithelium",
@@ -5289,7 +6371,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The most common site for a carcinoid tumor is",
         "options": {
             "A": "Appendix",
@@ -5317,7 +6399,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "The patient presents with epigastric pain radiating to the back and an elevated serum amylase, consistent with acute pancreatitis. Which type of Cell Injury is seen in this condition?",
         "options": {
             "A": "Caseous Cell Injury",
@@ -5345,7 +6427,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The type of Cell Injury seen in the pancreas due to pancreatitis is:",
         "options": {
             "A": "Coagulative Cell Injury",
@@ -5373,7 +6455,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tumor Marker for hepatocellular carcinoma",
         "options": {
             "A": "CA-125",
@@ -5390,18 +6472,22 @@
     {
         "id": "B8PTCEQE",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
+            "Radiology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Type of fluid due to appendicitis is:",
         "options": {
             "A": "Exudative",
@@ -5429,7 +6515,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Type of inflammation seen in acute appendicitis:",
         "options": {
             "A": "Granulomatous",
@@ -5459,7 +6545,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Type of necrosis in omentum:",
         "options": {
             "A": "Coagulative Necrosis",
@@ -5487,7 +6573,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Velvety (salmon-colored) gastric-type mucosa in the lower esophagus is characteristic of which condition?",
         "options": {
             "A": "Achalasia",
@@ -5515,7 +6601,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the classic lesion seen in Crohn's disease?",
         "options": {
             "A": "Skip lesions",
@@ -5543,7 +6629,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the most common cause of fatty liver in Pakistan?",
         "options": {
             "A": "Increased protein intake",
@@ -5571,7 +6657,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the most common site for a benign gastric ulcer?",
         "options": {
             "A": "Upper part of lesser curvature",
@@ -5599,7 +6685,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the most common site of a gastric ulcer?",
         "options": {
             "A": "Lesser curvature near the incisura angularis",
@@ -5627,7 +6713,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the most probable histopathological finding in an appendix removed for acute appendicitis?",
         "options": {
             "A": "Serous inflammation",
@@ -5655,7 +6741,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the primary histological feature initially seen in alcohol-induced liver disease?",
         "options": {
             "A": "Fibrosis",
@@ -5683,7 +6769,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What type of inflammation is typically seen in the walls of the appendix in acute appendicitis?",
         "options": {
             "A": "Granulomatous inflammation",
@@ -5711,7 +6797,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which cells transport antigens from the intestinal lumen to the underlying lymphoid tissue in the gastrointestinal tract?",
         "options": {
             "A": "M cells",
@@ -5739,7 +6825,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which histologic type most commonly arises in carcinomas located in the upper two-thirds of the esophagus?",
         "options": {
             "A": "Adenocarcinoma",
@@ -5767,7 +6853,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which intestinal cells are responsible for antigen presentation?",
         "options": {
             "A": "Goblet cells",
@@ -5795,7 +6881,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which is the most common benign tumor of the salivary glands?",
         "options": {
             "A": "Warthin tumor",
@@ -5823,7 +6909,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which liver enzymes are predominantly elevated in hepatocellular necrosis caused by drugs?",
         "options": {
             "A": "ALP",
@@ -5851,7 +6937,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which mutation in gene cause colorectal cancer?",
         "options": {
             "A": "KRAS",
@@ -5881,7 +6967,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following carcinoma is associated with Barrett's esophagus?",
         "options": {
             "A": "Squamous cell carcinoma",
@@ -5909,7 +6995,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following connective tissue is predominately deposited in liver fibrosis?",
         "options": {
             "A": "Elastic fibers",
@@ -5937,7 +7023,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is associated with carcinoma is associated with Barrett's esophagus?",
         "options": {
             "A": "Squamous cell carcinoma",
@@ -5965,7 +7051,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is Common side effect of SSRI?",
         "options": {
             "A": "Hypotension",
@@ -5993,7 +7079,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is most common benign tumor?",
         "options": {
             "A": "Pleomorphic Adenoma",
@@ -6021,7 +7107,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is the hallmark pathological finding in acute appendicitis?",
         "options": {
             "A": "Suppurative exudate",
@@ -6042,8 +7128,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Surgery - 01/26 - January 7 - Evening",
@@ -6052,7 +7138,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is tumor marker of pancreatic adenocarcinoma?",
         "options": {
             "A": "CEA",
@@ -6080,7 +7166,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following salivary gland tumors is benign?",
         "options": {
             "A": "Warthin tumor",
@@ -6108,7 +7194,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which site is the most common location for gastrointestinal carcinoid tumors?",
         "options": {
             "A": "Stomach",
@@ -6136,7 +7222,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which structure is first affected in Hirschsprung disease?",
         "options": {
             "A": "Colon",
@@ -6164,7 +7250,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which toxin is associated with hepatocellular carcinoma?",
         "options": {
             "A": "Nitrosamines",
@@ -6192,7 +7278,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which tumor marker is most commonly used in colon cancer?",
         "options": {
             "A": "AFP",
@@ -6209,21 +7295,24 @@
     {
         "id": "33LJVNW4",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 08/25 - August 6 - Evening",
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Medicine - 05/25 - May 13 - Morning"
+            "Medicine - 05/25 - May 13 - Morning",
+            "Medicine - 08/24 - August 23 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which type of inflammation is present in appendicitis with pus cells in it?",
         "options": {
             "A": "Purulent",
@@ -6253,7 +7342,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which type of necrosis is characteristically seen in acute pancreatitis?",
         "options": {
             "A": "Coagulative necrosis",
@@ -6283,7 +7372,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which type of polyp has potential to become malignant?",
         "options": {
             "A": "Serratus",

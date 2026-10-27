@@ -13,7 +13,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 60-year-old woman presents with sudden, painful loss of vision in one eye, accompanied by severe headache, seeing halos around lights, and a red, hard eye on examination. The pupil is mid-dilated and non-reactive. What is the most likely diagnosis?",
         "options": {
             "A": "Retinal detachment",
@@ -30,20 +30,24 @@
     {
         "id": "ABJ6CU7E",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient complain of multiple areas of focus at right angles the most likely diagnosis is",
         "options": {
             "A": "Myopia",
@@ -71,7 +75,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient experiences sudden, painless vision loss in one eye. This symptom is most characteristic of an acute occlusion affecting which major ocular vessel?",
         "options": {
             "A": "Central Retinal Artery",
@@ -99,7 +103,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient who is known hypertensive and diabetic developed sudden loss of unilateral vision with cherry red spot, which phenomena lead to this condition",
         "options": {
             "A": "Thrombosis",
@@ -127,7 +131,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with long standing, poorly controlled systemic hypertension undergoes a fundoscopic examination. Which retinal vascular change is characteristic and signifies chronic, advanced damage due to high blood pressure?",
         "options": {
             "A": "Microaneurysms",
@@ -155,7 +159,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with Single palmar crease, gap between 1+2 toes, depressed nasal bridge, slanting eyes, intellectual disability, flat facies. But on karyotyping 46 chromosomes present What is diagnose",
         "options": {
             "A": "True Hermaphrodite",
@@ -183,7 +187,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Old age patient complains of difficulty in reading near things and accomodation issue what is the cause?",
         "options": {
             "A": "Lens curvature lost (or destroy)",
@@ -211,7 +215,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient having 15 years of diabetes have decreased visual acuity. O/E it showed white spots and exudates on retina. Most likely due to:",
         "options": {
             "A": "Central retinal artery occlusion",
@@ -241,7 +245,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Silver wiring of retinal arterioles is most commonly associated with which of the following conditions?",
         "options": {
             "A": "Hypertension",
@@ -269,7 +273,7 @@
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which type of conjunctivitis is commonly associated with systemic illness?",
         "options": {
             "A": "Atopic",

@@ -13,7 +13,7 @@
         "subject": "Histology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cell organalle stain dark blue or purple due to",
         "options": {
             "A": "Golginappratus",
@@ -43,7 +43,7 @@
         "subject": "Histology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cells are connected with each other through which of the following?",
         "options": {
             "A": "Desmosomes",
@@ -60,18 +60,21 @@
     {
         "id": "BUH6QS6U",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
+            "Surgery - 02/25 - Feburary 9 - Morning",
+            "Medicine - 11/24 - November 22 - Afternoon"
         ],
         "subject": "Histology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "On microscopy, high basal infoldings are observed in a structure associated with abundant transport activity. Which of the following structures is most likely responsible for this feature?",
         "options": {
             "A": "Microvilli",
@@ -99,7 +102,7 @@
         "subject": "Histology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The nuclei for protein synthesis:",
         "options": {
             "A": "Are densely stained",

@@ -13,7 +13,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 19 year old student complains of blurred and distorted vision at both near and far distances. He reports difficulty focusing on letters and headaches after reading for long periods. On examination, visual acuity improves with cylindrical lenses. Which of the following conditions is most likely responsible?",
         "options": {
             "A": "Myopia",
@@ -41,7 +41,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30 year old factory worker has been exposed to loud noise for the past 6 months and now complains of gradual hearing loss. Which structure is most likely damaged first by chronic noise exposure?",
         "options": {
             "A": "Tympanic membrane",
@@ -69,7 +69,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 35-year-old male patient presents in Eye OPD with complaint of difficulty adjusting focus when shifting gaze from near to far the defect is most likely due to problem in which of the following?",
         "options": {
             "A": "Constriction of pupillary sphincter muscle",
@@ -98,7 +98,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A man is travelling in a bus, suddenly bus stopped but person does not loose his balance because of which of the following?",
         "options": {
             "A": "Semicircular canals",
@@ -128,7 +128,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with difficulty seeing distant objects, such as a blackboard. His visual problem is corrected with a concave lens. The most likely condition he is suffering from is:",
         "options": {
             "A": "Myopia",
@@ -156,7 +156,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with progressive loss of near vision (difficulty reading books and mobile phone text). Which corrective lens is most appropriate?",
         "options": {
             "A": "Concave lens",
@@ -184,7 +184,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A person is able to distinguish between a red apple and a green apple placed side by side. This ability is specifically known as",
         "options": {
             "A": "Sensory perception",
@@ -212,7 +212,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A person when try to focusing from distant object to near object, which of the following occurs?",
         "options": {
             "A": "Relaxation of ciliary muscle",
@@ -243,7 +243,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman complains of an early morning metallic taste in her mouth. Which taste sensation, when inhibited by potassium channels, generates action potentials leading to this sensation?",
         "options": {
             "A": "Sweet",
@@ -271,7 +271,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A subject is tested on their ability to perceive differences in the intensity of light. The property of adjusting sensitivity to different light levels is called",
         "options": {
             "A": "Adaptation",
@@ -288,19 +288,24 @@
     {
         "id": "MJCMMKAE",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
             "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Medicine - 05/25 - May 15 - Morning"
+            "Medicine - 05/25 - May 15 - Morning",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Medicine - 11/24 - November 23 - Afternoon",
+            "Surgery - 08/24 - August 22 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young girl finds it hard to hear At low frequencies of sound Which type of conduction?",
         "options": {
             "A": "Sensory",
@@ -329,7 +334,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Chronic exposure to loud noise primarily damages which of the following structures in the inner ear?",
         "options": {
             "A": "Organ of Corti",
@@ -357,7 +362,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Depolarization of cochlear hair cells occurs due to influx of which ion?",
         "options": {
             "A": "Sodium",
@@ -385,7 +390,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "How will a chef differentiate between garlic flavours/taste?",
         "options": {
             "A": "Sensory stimuli",
@@ -413,7 +418,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "How will chef differentiate between garlic flavours/taste?",
         "options": {
             "A": "Sensory stimuli",
@@ -441,7 +446,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In darkness, rods are activated by:",
         "options": {
             "A": "Rhodopsin activation",
@@ -469,7 +474,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Mechanism of sweet taste perception?",
         "options": {
             "A": "Gustducin IP3 mechanism",
@@ -497,7 +502,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The ability of the human eye and brain to differentiate between red and green wavelengths is primarily an example of which of the following processes?",
         "options": {
             "A": "Modulation of sensory input",
@@ -525,7 +530,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the cause of visual acuity decrease in presbyopia?",
         "options": {
             "A": "Increased curvature of lens",
@@ -553,7 +558,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the mechanism of sweet taste receptor?",
         "options": {
             "A": "Gq coupled receptor",
@@ -581,7 +586,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the state of cones in bright light?",
         "options": {
             "A": "Hyperpolarized, color vision",
@@ -609,7 +614,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which function is performed by the retinal pigment epithelium?",
         "options": {
             "A": "Production of aqueous humor",
@@ -637,7 +642,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which ion channel is primarily responsible for the Sour taste sensation?",
         "options": {
             "A": "Potassium channels",
@@ -665,7 +670,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which ion is primarily responsible for the perception of sour taste?",
         "options": {
             "A": "Sodium",
@@ -693,7 +698,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following is the correct mechanism of action (MOA) for sweet taste transduction in taste receptor cells?",
         "options": {
             "A": "Direct opening of sodium channels",

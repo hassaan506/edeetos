@@ -13,7 +13,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 14 year old boy presents to the surgical OPD in Karachi with a midline neck swelling present for 6 months. The swelling moves upward on swallowing What is the first-line investigation you would order?",
         "options": {
             "A": "TFT",
@@ -41,7 +41,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 40 year old woman undergoes thyroidectomy for Graves disease. Which is a late postoperative complication?",
         "options": {
             "A": "Hypothyroidism",
@@ -69,7 +69,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 40-year-old female with no respiratory or cardiac problems, has swelling in front of the neck and feels difficulty with breathing while in supine position; this is due to:",
         "options": {
             "A": "Asthma",
@@ -97,7 +97,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 40-year-old woman with bitemporal hemianopia and hyperprolactinemia is diagnosed with a pituitary adenoma. What is the preferred surgical approach?",
         "options": {
             "A": "Craniotomy",
@@ -125,7 +125,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 42 year old patient presents with headache and visual field defects. MRI shows pituitary adenoma compressing optic chiasm. Treatment of choice?",
         "options": {
             "A": "Bromocriptine",
@@ -153,7 +153,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 42-year-old singer undergoes total thyroidectomy for multinodular goiter. Postoperatively, she has no difficulty speaking but cannot produce high-pitched sounds. Which nerve is most likely injured?",
         "options": {
             "A": "External branch of superior laryngeal nerve",
@@ -181,7 +181,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 42-year-old teacher presents with difficulty producing high-pitched sounds after undergoing thyroid surgery. Which nerve is most likely injured?",
         "options": {
             "A": "Superior laryngeal nerve",
@@ -191,6 +191,34 @@
             "E": "Phrenic Nerve"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "CKJ5HGGP",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A 55-year-oldnon-insulin dependent diabetic female had major abdominal surgery. On the 8th post operative day she complained of suddent onset of dyspnea, chest pain and haemoptysis. The most likely cause of her symptoms would be:",
+        "options": {
+            "A": "Mycocardial infarction",
+            "B": "Pneumonia",
+            "C": "Pulmonary embolism",
+            "D": "Septicemia",
+            "E": "Spontaneous pneumothorax"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -209,7 +237,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female present with a lump in the Midline of neck, hoarseness of voice, Dysphagia, and having diarhea, calcitonin raised diagnosis:",
         "options": {
             "A": "Papillary thyroid carcinoma",
@@ -219,6 +247,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "945XPXA8",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A female with idiopathic hypoparathyroidism underwent a C-section. During surgery, she developed carpopedal spasm. What is the most likely cause?",
+        "options": {
+            "A": "Hypocalcemia",
+            "B": "Hyperkalemia",
+            "C": "Lidocaine toxicity",
+            "D": "Idiopathic hypothyroidism",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -237,13 +293,74 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A mother noticed swelling below hyoid bone in child first presented when he was 3 year old since then it is increasing it is",
         "options": {
             "A": "Accessory thymic tissue",
             "B": "Thyroglossal cyst",
             "C": "Hyoid cyst",
             "D": "Accessory thyroid tissue",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RHSAVWC6",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning",
+            "Surgery - 08/24 - August 21 - Morning",
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A patient developed midline neck swelling which was diagnosed as Thyroid nodule. Structure most likely damaged during FNAC of this thyroid nodule?",
+        "options": {
+            "A": "Superior thyroid artery",
+            "B": "Lingual artery",
+            "C": "Inferior thyroid artery",
+            "D": "External carotid artery",
+            "E": "Sympathetic Trunk"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "5J9CWEW5",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient on phenytoin is planned for surgery. What should be the next step regarding phenytoin management?",
+        "options": {
+            "A": "Stop phenytoin before surgery as it interacts with the metabolism of other drugs in the liver",
+            "B": "Continue phenytoin and monitor blood levels",
+            "C": "Switch to an alternative anticonvulsant medication",
+            "D": "Increase the dose of phenytoin to ensure adequate seizure control during surgery",
             "E": ""
         },
         "correctAnswer": "B",
@@ -265,7 +382,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with a thyroid swelling suspicious for malignancy. Which investigation is most appropriate to further evaluate the thyroid tumor?",
         "options": {
             "A": "Thyroid function tests",
@@ -293,7 +410,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with midline neck swelling & Lumbar pain. Investigations reveal Low serum calcium levels & Elevated calcitonin levels. What is the most likely diagnosis?",
         "options": {
             "A": "MEN 1",
@@ -321,7 +438,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with midline neck swelling & Lumbar pains. Investigations reveal Low serum calcium levels & Elevated calcitonin levels. What is the most likely diagnosis?",
         "options": {
             "A": "MEN 1",
@@ -349,7 +466,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A surgeon performing a thyroidectomy is concerned about injuring the muscle that tenses the vocal cords. Which of the following muscles is most likely at risk if the external branch of the superior laryngeal nerve is damaged?",
         "options": {
             "A": "Thyroarytenoid",
@@ -364,14 +481,42 @@
         "Point": ""
     },
     {
+        "id": "JR2AQQ5M",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A Surgeon was performing adrenalectomy, he has removed left adrenal gland but surgeon does not let his junior do adrenalectomy on right side on this patient because he implies it might be difficult for him to perform surgery on right adrenal gland What relation of right adrenal makes it difficult?",
+        "options": {
+            "A": "Posterior relation to lower ribs",
+            "B": "Right renal artery",
+            "C": "IVC",
+            "D": "Aorta",
+            "E": "Left hepatic vein"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "MBY6UE3J",
         "year": [
             "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 07/26 - July 09 - Afternoon",
@@ -380,7 +525,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A young boy with a history of an enlarging goiter (thyroid swelling) now reports difficulty sleeping and lying flat, which is aggravated by flexing his neck. What is the most likely cause of his sleep difficulty?",
         "options": {
             "A": "Hypoglycemia from thyroid dysfunction",
@@ -391,6 +536,34 @@
         },
         "correctAnswer": "C",
         "explanation": "A retrosternal (substernal) goiter grows into the chest cavity and can compress the trachea, leading to symptoms like dyspnea and orthopnea (difficulty breathing when lying down) that manifest as trouble sleeping.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "N2PY8LGV",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "After thyroid surgery patient presented with carpopedal spasm and dec calcium most likely cause is",
+        "options": {
+            "A": "Iatrogenic hypoparathyroidism",
+            "B": "Tetanus",
+            "C": "secondary hypoparathyroidism",
+            "D": "Pseudohypoparathyrodism",
+            "E": "[None]"
+        },
+        "correctAnswer": "A",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -408,7 +581,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Following the surgical removal of a papillary thyroid carcinoma (with its capsule), which is the most likely first site of metastatic spread?",
         "options": {
             "A": "Lung parenchyma",
@@ -423,21 +596,53 @@
         "Point": ""
     },
     {
+        "id": "R2Q6RUBB",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "In tonsillectomy which structure should be preserved to prevent hypoparathyroidism",
+        "options": {
+            "A": "Superior thyroid artery",
+            "B": "Inferior thyroid artery",
+            "C": "Parathyroid artery",
+            "D": "Tonsillar artery",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "8HR2ZZ92",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Radiology"
         ],
         "exams": [
             "Radiology - 02/25 - Feburary 8 - Morning",
-            "Radiology - 05/25 - May 12 - Morning"
+            "Radiology - 05/25 - May 12 - Morning",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Medullary CA tumor marker is",
         "options": {
             "A": "CA 125",
@@ -465,7 +670,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Medullary carcinoma of the thyroid is diagnosed. What is the correct tumor marker?",
         "options": {
             "A": "Calcitonin",
@@ -493,7 +698,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most common nerve injured during thyroidectomy?",
         "options": {
             "A": "Recurrent laryngeal nerve",
@@ -521,7 +726,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Parathyroid gland function lost after thyroidectomy due to damage to",
         "options": {
             "A": "Superior thyroid artery",
@@ -549,7 +754,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient c/o tingling sensation post thyroidectomy due to thyroid cancer which of following is likely cause",
         "options": {
             "A": "Cretinism",
@@ -577,7 +782,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient is having neck nodules which moves on swallowing but not on tongue protrusion. Thyroid profile labs came normal next step of management is",
         "options": {
             "A": "Thyroid ultrasound",
@@ -605,7 +810,7 @@
         "subject": "Surgery",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Surgeon operated lady for enlarged thyroid, he ligated the superior and inferior thyroid artries as close to pole as possible. After 2 weeks she presented with hoarseness. Most likely cause could be injury to",
         "options": {
             "A": "Recurrent larangeal nerve",
@@ -615,6 +820,34 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "AXQJBEAE",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Surgery",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following antiarrhythmic medications is known to cause hypothyroidism?",
+        "options": {
+            "A": "Lidocaine",
+            "B": "Lithium",
+            "C": "Amiodarone",
+            "D": "Sotalol",
+            "E": "Quinidine"
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""

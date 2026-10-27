@@ -13,7 +13,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30 year old athlete complains of muscle weakness after intense exercise. Blood tests show a transient increase in serum potassium levels immediately following exercise. What is the most likely cause of this hyperkalemia?",
         "options": {
             "A": "Increased renal potassium excretion",
@@ -41,7 +41,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient P3+0 was alright, now presented with numbness in both legs and has carpopedal spasm. The doctor reassured her parents and asked them to do her serum levels. Which of the following ions is deficient in such a patient?",
         "options": {
             "A": "Ca++",
@@ -71,7 +71,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A girl is lifting heavy weights in the gym. She suddenly experiences muscle weakness and drops the weight. Which structure is responsible for this protective reflex?",
         "options": {
             "A": "Merkel disc",
@@ -82,6 +82,63 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "MYSZ9CHE",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Medicine - 08/24 - August 23 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A lady cut her finger by knife while working in kitchen which by which mechanism her vasomotor response increases",
+        "options": {
+            "A": "Post ganglionic A delta fibers",
+            "B": "Pre ganglionic alpha fibers",
+            "C": "Post ganglionic C fibers",
+            "D": "A nerve fibers",
+            "E": "Preganglionic A beta fibers"
+        },
+        "correctAnswer": "C",
+        "explanation": "Post ganglionic C fibers are autonomic fibers that cause vasomotor response to injury",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "7ZBDMDPM",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 23 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A lady cut her finger by knife while working in kitchen which vasomotor response increases by which mechanism",
+        "options": {
+            "A": "Post ganglionic A delta fibers",
+            "B": "Pre ganglionic alpha fibers",
+            "C": "Post ganglionic C fibers",
+            "D": "A nerve fibers",
+            "E": "Preganglionic A beta fibers"
+        },
+        "correctAnswer": "C",
+        "explanation": "Post ganglionic C fibers are autonomic fibers that cause vasomotor response to her injury",
         "hint": "",
         "Point": ""
     },
@@ -99,7 +156,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops sudden quadriplegia after a high-carbohydrate meal, but sensation remains intact. What is the most likely electrolyte abnormality?",
         "options": {
             "A": "Hypokalemia",
@@ -129,7 +186,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient got an RTA in which he sustains a pelvic fracture, tibial fracture and an avulsion of the rectus femoris muscle from the ASIS muscle repair will primarily be initiated by stem cells located in which of the following?",
         "options": {
             "A": "Perimysium",
@@ -157,7 +214,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has zero muscle power. Which sensory receptor related to muscle tension is involved?",
         "options": {
             "A": "Muscle spindle",
@@ -185,7 +242,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Boy after football match in hot day c/o Muscle pain due to",
         "options": {
             "A": "Transcellular K+ movement",
@@ -195,6 +252,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NQSXNY3G",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "Data of 25 with 95% confidence interval and SD 2.5 what will be normal range",
+        "options": {
+            "A": "22.5",
+            "B": "27.5",
+            "C": "22.5-27.5",
+            "D": "25",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -213,7 +298,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "During contraction length of following decrease:",
         "options": {
             "A": "A band",
@@ -241,7 +326,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Endurance athletes predominantly have which type of skeletal muscle fibers?",
         "options": {
             "A": "Type IIb fibers",
@@ -252,6 +337,62 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "8VJTDUQ2",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Glycoprotein Lahiri is produced by",
+        "options": {
+            "A": "Synovial A",
+            "B": "Synovial B",
+            "C": "Fibroblast",
+            "D": "Collagen",
+            "E": "Articular chondrocyte"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YYV6K7D7",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 21 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "In A patient loss of proprioception occur after RTA what is underlying mechanism?",
+        "options": {
+            "A": "Lateral Column lesion",
+            "B": "Lateral Inhibition",
+            "C": "Posterior inhibition",
+            "D": "Field Blockage",
+            "E": "Anterior Inhibition"
+        },
+        "correctAnswer": "B",
+        "explanation": "Loss of proprioception lesion in Posterior column (DCML) Loss of proprioception mechanism is - Lateral inhibition (Guyton)",
         "hint": "",
         "Point": ""
     },
@@ -269,7 +410,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a reflex arc where excessive muscle tension is regulated to prevent injury, which structure provides the afferent signal about muscle force to the central nervous system?",
         "options": {
             "A": "Muscle Spindles",
@@ -297,7 +438,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In skeletal muscle, for relaxation to occur, calcium must be sequestered back into the sarcoplasmic reticulum. Which protein inside the SR binds calcium to allow for high-capacity storage?",
         "options": {
             "A": "Calsequestrin",
@@ -325,7 +466,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Increased blood flow in skeletal muscles during exercise is primarily due to:",
         "options": {
             "A": "Neural factors",
@@ -353,7 +494,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Inside the sarcoplasmic reticulum of muscle cells, which protein binds and stores calcium ions to maintain a low free Ca2+ concentration?",
         "options": {
             "A": "Calsequestrin",
@@ -368,20 +509,81 @@
         "Point": ""
     },
     {
-        "id": "RGTHR8AU",
+        "id": "8MSG95ZV",
         "year": [
-            "2025"
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Loss of two point discrimination after RTA due to:",
+        "options": {
+            "A": "Lateral Column",
+            "B": "Lateral Inhibition",
+            "C": "Posterior inhibition",
+            "D": "Field Blockage",
+            "E": "PostSynaptic Inhibition"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "QCQ6EFEE",
+        "year": [
+            "2024"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
+            "Surgery - 11/24 - November 20 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
+        "question": "Mechanism by which tumor size decrease in patient undergoing chemotherapy",
+        "options": {
+            "A": "Apoptosis",
+            "B": "Direct action of Chemotherapy",
+            "C": "Necrosis",
+            "D": "Phagocytosis",
+            "E": "Pinocytosis"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RGTHR8AU",
+        "year": [
+            "2025",
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
         "question": "Muscle relaxation after contraction is a function of:",
         "options": {
             "A": "Golgi tendon organs",
@@ -409,7 +611,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Parathyroid hormone (PTH) primarily affects which bone cells?",
         "options": {
             "A": "Osteoclasts",
@@ -419,6 +621,64 @@
             "E": "Chondrocytes"
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "A7DYM3HT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient of rheumatoid arthritis has dry eyes and dry mouth. The cause is:",
+        "options": {
+            "A": "Autoimmune",
+            "B": "Infection",
+            "C": "Neoplasia",
+            "D": "idiopathic",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "79A8R288",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient with ETT heat loss is by",
+        "options": {
+            "A": "Conduction",
+            "B": "Convection",
+            "C": "Radiation",
+            "D": "Evaporation",
+            "E": ""
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -437,7 +697,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Person lifting a 5 kg weight: isometric contraction occurs due to:",
         "options": {
             "A": "Shortening of sarcomere",
@@ -465,7 +725,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Repeated stimuli causing contraction without relaxation is called:",
         "options": {
             "A": "Twitch",
@@ -473,6 +733,34 @@
             "C": "Fibrillation",
             "D": "Tonic contraction",
             "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "5QD9D62M",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Trained Athlete exercising in Humid Environment. Heat loss will be through?",
+        "options": {
+            "A": "Senseless Perspiration",
+            "B": "Convection",
+            "C": "Radiation",
+            "D": "Conduction",
+            "E": "Sweating through Evaporation"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -493,7 +781,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is muscle shortening against a constant load during football called?",
         "options": {
             "A": "Isometric",
@@ -521,7 +809,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is required for muscle contraction?",
         "options": {
             "A": "Tropomyosin",
@@ -529,6 +817,34 @@
             "C": "ATP",
             "D": "Troponin",
             "E": "Acetylcholine"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "JGXRQHV4",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "What is the volume of air required to cause clinical signs of an air embolism?",
+        "options": {
+            "A": "50cc",
+            "B": "100cc",
+            "C": "5cc",
+            "D": "10",
+            "E": "20cc"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -549,7 +865,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which hormone directly reduces osteoclastic activity in bone?",
         "options": {
             "A": "Parathyroid hormone",
@@ -577,7 +893,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is common to both vascular smooth muscle and skeletal muscle?",
         "options": {
             "A": "Actin",
@@ -592,14 +908,42 @@
         "Point": ""
     },
     {
+        "id": "Y59GU9BK",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is MAO of Tetracycline",
+        "options": {
+            "A": "Inhibition of bacterial synthesis",
+            "B": "Inhibition of Bacterial DNA",
+            "C": "Inhibition of bacterial wall synthesis",
+            "D": "Disruption of bacterial cell me",
+            "E": "Inhibition of folic acid synthesis"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "7F29MBZH",
         "year": [
             "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 04/26 - April 8 - Morning",
@@ -608,7 +952,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which type of cell is primarily responsible for the production and secretion of the lubricating components of synovial fluid?",
         "options": {
             "A": "Type A Synovial Cells",

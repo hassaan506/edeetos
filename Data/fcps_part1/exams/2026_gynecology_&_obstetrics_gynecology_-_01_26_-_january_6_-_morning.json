@@ -13,7 +13,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "32-year woman presented 6 months after complicated Post Partum hemorrhage. She has symptoms of: inability to lactate, she is low energy, etc. Which hormone is responsible for her symptoms?",
         "options": {
             "A": "ACTH",
@@ -43,7 +43,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 10 year old boy presents with fever and migratory joint pain involving the knees and ankles. He had a sore throat 3 weeks ago that resolved without treatment. On examination, his joints are warm and tender without deformity. Cardiac auscultation reveals a soft systolic murmur. Laboratory investigations show elevated ESR. Which of the following findings represents a minor criterion for the diagnosis of acute rheumatic fever?",
         "options": {
             "A": "Subcutaneous nodules",
@@ -73,7 +73,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 13-week pregnant woman presents for routine dating ultrasound. Her LMP is unknown. Ultrasound shows CRL = 150 mm, BPD = 30 mm. Which parameter is most accurate for gestational age estimation?",
         "options": {
             "A": "Biparietal diameter (BPD)",
@@ -101,7 +101,7 @@
         "subject": "Embryology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 2 year old boy presents with an undescended testis (cryptorchidism). During development, which structure primarily guides the testis into the scrotum?",
         "options": {
             "A": "Gubernaculum",
@@ -131,7 +131,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 25 year old woman presents with oligomenorrhea, infertility, obesity, and hirsutism. Which condition is most consistent with these features?",
         "options": {
             "A": "Premature ovarian failure",
@@ -159,12 +159,12 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 26 year old with mild pelvic pain and positive pregnancy test is hemodynamically stable. TVS shows no intrauterine gestation. β-hCG is 1350 mIU/mL. What is the next best management?",
+        "difficulty": "Hard",
+        "question": "A 26 year old with mild pelvic pain and positive pregnancy test is hemodynamically stable. TVS shows no intrauterine gestation. Î²-hCG is 1350 mIU/mL. What is the next best management?",
         "options": {
             "A": "Immediate laparoscopy",
             "B": "Methotrexate therapy",
-            "C": "Repeat β-hCG in 48 hours",
+            "C": "Repeat Î²-hCG in 48 hours",
             "D": "Emergency salpingectomy",
             "E": ""
         },
@@ -187,7 +187,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 27 year old woman tracks her menstrual cycle. Ovulation typically occurs after the mid-cycle LH surge. How long after the LH surge does ovulation usually occur?",
         "options": {
             "A": "12 hours",
@@ -215,7 +215,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 27 year old woman undergoes normal spontaneous vaginal delivery of a 3.6 kg baby. Ten minutes after delivery of the placenta, she develops heavy vaginal bleeding, soaking two pads within minutes. On examination, her uterus feels soft, boggy, and enlarged. There is no vaginal laceration, placenta is complete, and vital signs show tachycardia and hypotension. What is the most important and most common cause of her postpartum hemorrhage?",
         "options": {
             "A": "Retained placental fragments",
@@ -243,7 +243,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 28 year old female presents with delayed menses. She is 8 days late with her normal cycle. The hormone that needs to be tested is secreted from:",
         "options": {
             "A": "Cytotrophoblast",
@@ -271,7 +271,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 28 year old woman develops certain shortness of breath, tachycardia and mild hypoxia a few hours after an uncomplicated C section. She has no chest trauma, fever or signs of infection. Which is the most likely cause?",
         "options": {
             "A": "Pneumothorax",
@@ -279,34 +279,6 @@
             "C": "Amniotic fluid embolism",
             "D": "Aspiration pneumonia",
             "E": "Heart failure"
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "LAWW8ND8",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 28 year old woman presents with lower abdominal pain, foul vaginal discharge, and cervical tenderness. Most likely diagnosis?",
-        "options": {
-            "A": "Endometriosis",
-            "B": "Pelvic inflammatory disease (PID)",
-            "C": "Ectopic pregnancy",
-            "D": "Ovarian cyst",
-            "E": ""
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -327,13 +299,41 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 28 year old woman, G1P0, presents with 6 weeks of amenorrhea, a positive urine pregnancy test, and right iliac fossa (RIF) tenderness for the past several hours. She denies any vaginal bleeding. On examination, she is hemodynamically stable but has localized RIF tenderness. Normal leukocyte count but no history of fever. Which is the most likely diagnosis?",
         "options": {
             "A": "Appendicitis",
             "B": "Ectopic pregnancy",
             "C": "Ovarian torsion",
             "D": "Threatened miscarriage",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LAWW8ND8",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 28 year old woman presents with lower abdominal pain, foul vaginal discharge, and cervical tenderness. Most likely diagnosis?",
+        "options": {
+            "A": "Endometriosis",
+            "B": "Pelvic inflammatory disease (PID)",
+            "C": "Ectopic pregnancy",
+            "D": "Ovarian cyst",
             "E": ""
         },
         "correctAnswer": "B",
@@ -358,7 +358,7 @@
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 29 year old woman develops optic neuritis and weakness in her lower limbs. MRI Reveals demyelinating lesions in the brain and spinal cord. Which of the following cell types is most directly affected in this condition?",
         "options": {
             "A": "Schwann cells",
@@ -388,8 +388,8 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 30 year old man falls directly onto his right shoulder. After the injury, he is unable to abduct his arm beyond 15°, though he can flex and extend the elbow normally. On examination, there is flattening of the shoulder contour and loss of sensation over the lateral aspect of the upper arm. Which nerve is most likely injured?",
+        "difficulty": "Hard",
+        "question": "A 30 year old man falls directly onto his right shoulder. After the injury, he is unable to abduct his arm beyond 15Â°, though he can flex and extend the elbow normally. On examination, there is flattening of the shoulder contour and loss of sensation over the lateral aspect of the upper arm. Which nerve is most likely injured?",
         "options": {
             "A": "Axillary nerve",
             "B": "Suprascapular nerve",
@@ -416,7 +416,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 30 year old patient suffering from neurodegenerative undergones an EEG that shows waves with a frequency of 4-7 cycles per second. Which type of EEG pattern corresponds to this frequency range?",
         "options": {
             "A": "Delta waves",
@@ -437,8 +437,8 @@
             "2025"
         ],
         "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
             "Medicine - 08/25 - August 6 - Morning",
@@ -447,7 +447,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 32 year old man presents with fatigue, easy bruising, and recurrent infections. CBC shows pancytopenia. Peripheral smear reveals large myeloblast with abundant cytoplasm and needle-shaped azurophilic inclusions. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Acute lymphoblastic leukemia (ALL)",
@@ -475,7 +475,7 @@
         "subject": "Surgery",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 35 year old female with a history of smoking presents with a greenish discharge from her nipples and nipple retraction on examination. This common benign condition is?",
         "options": {
             "A": "Breast Ca",
@@ -503,7 +503,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 35 year old woman presents with recurrent episodes of headache, palpitations, and sweating for the past 3 months. During these episodes, she feels anxious and flushed. Her blood pressure during an episode is 210/110 mmHg. On physical examination, she appears anxious and diaphoretic. Her pulse is 120/min during an attack. Urine analysis is normal.",
         "options": {
             "A": "Panic disorder",
@@ -531,7 +531,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 4 year old boy presented with distended abdomen. Doctor also noticed some hair changes. What is the diagnosis?",
         "options": {
             "A": "Kwashiorkor",
@@ -559,7 +559,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 40 year old woman presents with fatigue, weight gain, cold intolerance, constipation, and dry skin, on examination, she has bradycardia, periorbital puffiness her labs shows TSH 12mIU/l, free T4=0.5ng/dl, and free T3 low normal. which of the following is most likely diagnosis?",
         "options": {
             "A": "Hypothyroidism",
@@ -589,7 +589,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 52 year old teacher presents with generalized body weakness and fatigue. He gives a history of receiving two units of blood transfusion a few months ago. On laboratory investigation, liver function tests are found to be deranged to three times the normal values. What is the most likely cause of his condition?",
         "options": {
             "A": "Hepatitis A virus",
@@ -617,7 +617,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55 year old male presents with sudden shortness of breath and chest pain. Which initial lab test can help exclude pulmonary embolism?",
         "options": {
             "A": "Arterial blood gas",
@@ -645,7 +645,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55 year old patient presents with difficulty recognizing objects placed in his tight hand with eyes closed. On examination, motor power and primary sensations (pain, temperature, touch) are intact. Which area of the brain is most likely affected?",
         "options": {
             "A": "Primary motor cortex",
@@ -673,7 +673,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 6 month married couple has visited fertility clinic with complaint of subfertility, couple states that they have been having regular unprotected intercourse for 2 to 3 times per week but has not conceived yet, what is the approximate percentage of couples who conceive within 1 year of trying?",
         "options": {
             "A": "75%",
@@ -703,7 +703,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 62 year old diabetic patient experiences sudden right-sided weakness and speech difficulty, lasting 20 minutes and fully resolving. Diagnosis?",
         "options": {
             "A": "Ischemic stroke",
@@ -731,7 +731,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 65 year old menopausal woman presents with vaginal pruritus, soreness, dyspareunia for 6 months. Which drug should be given?",
         "options": {
             "A": "Topical equine estrogen",
@@ -759,7 +759,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 68 year old smoker with bronchogenic carcinoma develops wasting and wrinkling of the right half of the tongue. Examination reveals cervical lymph adenopathy which cranial lymph nucleus is likely affected?",
         "options": {
             "A": "Corda Tympani",
@@ -789,7 +789,7 @@
         "subject": "Surgery",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 75 year old man presents with urinary hesitancy, weak stream, and nocturia and weight loss. Digital rectal exam reveals hard, nodular prostate. Most likely diagnosis?",
         "options": {
             "A": "Benign prostatic hyperplasia",
@@ -817,7 +817,7 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 9 year old boy presents with pallor, jaundice, and splenomegaly. Peripheral smear shows spherocytes. Family history is significant for similar symptoms. Which of the following protein defects is most likely responsible for his condition?",
         "options": {
             "A": "Ankyrin",
@@ -845,7 +845,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A biopsy shows granulomas with central caseous Cell Injury after chronic infection. Cause?",
         "options": {
             "A": "Sarcoidosis",
@@ -873,17 +873,17 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A boy had a road traffic accident with kidney injury. Which of the following fascia will be affected?",
         "options": {
-            "A": "Buck’s fascia",
-            "B": "Sibson’s fascia",
-            "C": "Gerota’s fascia",
-            "D": "Scarpa’s fascia",
-            "E": "Camper’s fascia"
+            "A": "Buckâ€™s fascia",
+            "B": "Sibsonâ€™s fascia",
+            "C": "Gerotaâ€™s fascia",
+            "D": "Scarpaâ€™s fascia",
+            "E": "Camperâ€™s fascia"
         },
         "correctAnswer": "C",
-        "explanation": "Buck’s fascia → penis\r\nSibson’s fascia → apex of lung/neck\r\nGerota’s fascia → kidney\r\nScarpa’s fascia → membranous layer of anterior abdominal wall\r\nCamper’s fascia → fatty layer of superficial fascia",
+        "explanation": "Buckâ€™s fascia â†’ penis\r\nSibsonâ€™s fascia â†’ apex of lung/neck\r\nGerotaâ€™s fascia â†’ kidney\r\nScarpaâ€™s fascia â†’ membranous layer of anterior abdominal wall\r\nCamperâ€™s fascia â†’ fatty layer of superficial fascia",
         "hint": "",
         "Point": ""
     },
@@ -904,10 +904,10 @@
         "subject": "Pathology",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child admitted to hospital was found to have bruises on leg, bone pains and hepatosplenomegaly. Bone marrow examination showed wrinkled cells. What is he most likely having?",
         "options": {
-            "A": "Tay Sachs’s disease",
+            "A": "Tay Sachsâ€™s disease",
             "B": "Gaucher disease",
             "C": "Fabry disease",
             "D": "Niemann-pick disease",
@@ -932,7 +932,7 @@
         "subject": "Embryology",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A child born with urine coming out from umbilicus. Doctor diagnosed this as patient lumen of allantois. Which results in which of the following?",
         "options": {
             "A": "Urachal Fistula",
@@ -960,7 +960,7 @@
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child presents with headache, visual disturbances, and hormonal deficiencies. Imaging suggests a craniopharyngioma. Histopathology shows epithelial cells with a characteristic cytoplasmic appearance. Which of the following cellular features is most consistent with craniopharyngioma?",
         "options": {
             "A": "Spindle-shaped cells",
@@ -988,7 +988,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A child with self-mutilation behavior has deficiency of, which of the following enzymes?",
         "options": {
             "A": "Phenylalanine hydroxylase",
@@ -1018,7 +1018,7 @@
         "subject": "Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A diabetic patient presents with a foot ulcer, high-grade fever, hypotension, and altered mental status. What type of shock is most likely?",
         "options": {
             "A": "Hypovolemic shock",
@@ -1048,7 +1048,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A diver develops sudden shortness of breath after rapid ascent from deep water. What is the most likely diagnosis?",
         "options": {
             "A": "Pulmonary embolism",
@@ -1078,7 +1078,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female after an RTA has difficulty opening her mouth. On examination, the mandible deviates on protrusion, and jaw protrusion is weak. Which muscle, attaching to the TMJ capsule, is affected?",
         "options": {
             "A": "Masseter",
@@ -1109,7 +1109,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient presents with ophthalmoplegia resulting in horizontal gaze diplopia and a diffusely enlarged, non-tender goiter. Laboratory tests show a normal thyroid hormone profile. What is the most likely diagnosis?",
         "options": {
             "A": "De Quervain's Thyroiditis",
@@ -1137,7 +1137,7 @@
         "subject": "Surgery",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female patient was diagnosed with carcinoma cervix and underwent radical hysterectomy. The which lymph nodes are primarily removed during this procedure?",
         "options": {
             "A": "External iliac lymph nodes",
@@ -1169,7 +1169,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female present with menorrhagia and mucosal bleeding. Laboratory investigations show: increased bleeding time (BT), normal PT and APTT, and markedly decreased von Willebrand factor (vWF) levels. Which of the following processes is primarily affected?",
         "options": {
             "A": "Platelet adhesion",
@@ -1197,7 +1197,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female presents with third-degree uterine prolapse. Which ligament is primarily responsible for support of the uterus?",
         "options": {
             "A": "Round ligament",
@@ -1225,8 +1225,8 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female’s father recently died in a tragic road accident. After some time, she developed mood swings and disturbed menstrual periods, which of the following neurotranquilizers might affect both mood and menstrual cycle regulation?",
+        "difficulty": "Medium",
+        "question": "A femaleâ€™s father recently died in a tragic road accident. After some time, she developed mood swings and disturbed menstrual periods, which of the following neurotranquilizers might affect both mood and menstrual cycle regulation?",
         "options": {
             "A": "Dopamine",
             "B": "Serotonin",
@@ -1235,34 +1235,6 @@
             "E": "GABA"
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "NLH5A3NV",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A G3P2 woman presents in labor with 3-4 uterine contractions. Cervical dilatation is 2 cm after 5 hours. What is the best management?",
-        "options": {
-            "A": "Induction of labor",
-            "B": "Anmniotomy",
-            "C": "C Section",
-            "D": "Oxytocin augmentation",
-            "E": "Expectant management"
-        },
-        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1284,7 +1256,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A G3P2, 38-week pregnant woman in active labor is 8 cm dilated when a lady doctor performs ARM (artificial rupture of membranes). Immediately after ARM, the patient develops sudden heavy vaginal bleeding. Fetal heart rate begins to show decelerations. What is the NEXT best step in management?",
         "options": {
             "A": "Immediate vaginal delivery",
@@ -1294,6 +1266,34 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NLH5A3NV",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A G3P2 woman presents in labor with 3-4 uterine contractions. Cervical dilatation is 2 cm after 5 hours. What is the best management?",
+        "options": {
+            "A": "Induction of labor",
+            "B": "Anmniotomy",
+            "C": "C Section",
+            "D": "Oxytocin augmentation",
+            "E": "Expectant management"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1314,7 +1314,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A girl is lifting heavy weights in the gym. She suddenly experiences muscle weakness and drops the weight. Which structure is responsible for this protective reflex?",
         "options": {
             "A": "Merkel disc",
@@ -1342,7 +1342,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A hypertensive female had difficulty performing precise, skilled hand movements. THE damage to which part of the brain most likely caused this deficit?",
         "options": {
             "A": "Cerebellum",
@@ -1370,7 +1370,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A known tb patient is taking anti tubercular drugs. Which vitamin should be added to prevent one of the most common complication?",
         "options": {
             "A": "Vitamin B1",
@@ -1398,7 +1398,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A lady delivered a baby of 4.5 kg went in shock something coming out of her vagina management",
         "options": {
             "A": "Manage shock and perform manual replacement",
@@ -1426,7 +1426,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A lady has recurrent vaginal candidiasis and has been using topical cotrimazole for many months. Which systemic drug should be used?",
         "options": {
             "A": "Fluconazole",
@@ -1454,8 +1454,8 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A lady presents after vaginal delivery with fever. Labs: Hb decreased, MCV 70, TLC 24,000, Platelets 5×10⁹, PT and aPTT are raised.",
+        "difficulty": "Hard",
+        "question": "A lady presents after vaginal delivery with fever. Labs: Hb decreased, MCV 70, TLC 24,000, Platelets 5Ã—10â¹, PT and aPTT are raised.",
         "options": {
             "A": "Septicemia",
             "B": "DIC",
@@ -1482,7 +1482,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A low-fat diet primarily decreases:",
         "options": {
             "A": "LDL",
@@ -1510,7 +1510,7 @@
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A male with one barr body and gynecomastia likely has?",
         "options": {
             "A": "46, XY",
@@ -1540,7 +1540,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A man has been living at a high altitude mountainous area for many years. He now presents with progressive shortness of breath on exertion. There is no history of infection or cardiac disease. What is the most likely cause of his symptoms?",
         "options": {
             "A": "Pulmonary edema",
@@ -1568,7 +1568,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A man presents with infertility. Semen analysis reveals complete absence of spermatozoa (azoospermia). A defect in which structure is most likely responsible?",
         "options": {
             "A": "Sertoli cells",
@@ -1600,7 +1600,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A marathon runner has been running continuously for several hours. His muscle and liver glycogen stores are completely depleted. Which of the following metabolic processes will now primarily provide energy for continued muscle activity?",
         "options": {
             "A": "Glycolysis",
@@ -1633,7 +1633,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A mechanic is having difficulty with his hand grip. His thumb movements are intact, but he is unable to flex his fingers at the proximal and distal phalanges. Which nerve is involved?",
         "options": {
             "A": "Ulnar nerve",
@@ -1661,7 +1661,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A multigravida at 37 weeks presents with abdominal pain. Examination suggests false labor. What is the next step?",
         "options": {
             "A": "Admit and induce labor",
@@ -1689,7 +1689,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A musician is playing piano. Which function is helping him in his performance.",
         "options": {
             "A": "Planning and execution of voluntary movements",
@@ -1719,7 +1719,7 @@
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A neutropenic patient with Hodgkin lymphoma on chemotherapy develops fever. He is given filgrastim. What is its mechanism?",
         "options": {
             "A": "T-cell activation",
@@ -1751,7 +1751,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A newborn is admitted with severe jaundice, pallor, and hepatosplenomegaly. The obstetric record shows that the mother is Rh-negative and previously delivered an Rh-positive baby without receiving Anti-D prophylaxis. The current infant is diagnosed with erythroblastosis fetalis due to hemolysis caused by maternal antibodies crossing the placenta. Which type of hypersensitivity reaction is responsible?",
         "options": {
             "A": "Type I",
@@ -1762,6 +1762,37 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "Z5YK8VTL",
+        "year": [
+            "2026",
+            "2025"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 01/26 - January 6 - Morning",
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient, a resident of the Sawat region, presents with a diffusely enlarged, non-tender goiter. The thyroid hormone profile (TSH, T3, T4 within normal limits). What is the most likely diagnosis in this geographical context?",
+        "options": {
+            "A": "Follicular Adenoma",
+            "B": "Endemic Goitre",
+            "C": "Toxic Nodular Goiter",
+            "D": "Thyroid Carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "A diffuse, non-tender goiter in a geographically defined area like Sawat (often historically iodine-deficient) with a normal thyroid profile points to a simple (colloid) goiter due to environmental factors, also known as Endemic Goitre.",
         "hint": "",
         "Point": ""
     },
@@ -1779,7 +1810,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient came to you after 24hour of unprotected sex, which of the following is the best emergency contraception?",
         "options": {
             "A": "Copps",
@@ -1810,7 +1841,7 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient consumes mostly bread and processed foods, no vegetables. Labs show macrocytosis. Likely deficiency?",
         "options": {
             "A": "Vitamin B12",
@@ -1838,7 +1869,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops elevation of one hemidiaphragm on chest X-ray after neck surgery. Injury to which nerve is responsible?",
         "options": {
             "A": "Yagus nerve",
@@ -1868,7 +1899,7 @@
         "subject": "Pharmacology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops malignant hyperthermia during anesthesia. Which drug is most likely responsible?",
         "options": {
             "A": "Succinylcholine",
@@ -1898,7 +1929,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops sudden respiratory distress after a long bone fracture. Fat embolism is suspected. Which diagnostic method confirms the presence of fat emboli?",
         "options": {
             "A": "Blood culture",
@@ -1926,7 +1957,7 @@
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient develops thrombocytopenia while on treatment for TB due to which drug",
         "options": {
             "A": "Rifampicin",
@@ -1956,14 +1987,14 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient experiences one-sided weakness (hemiplegia). Without sensory loss. Which part of the internal capsule is affected?",
         "options": {
             "A": "Genu",
-            "B": "Anterior limb – anterior part",
-            "C": "Anterior limb – posterior part",
-            "D": "Posterior limb – anterior part",
-            "E": "Posterior limb – posterior part"
+            "B": "Anterior limb â€“ anterior part",
+            "C": "Anterior limb â€“ posterior part",
+            "D": "Posterior limb â€“ anterior part",
+            "E": "Posterior limb â€“ posterior part"
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -1984,7 +2015,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has a post-avulsion injury involving the sciatic nerve. Which deficit is most likely?",
         "options": {
             "A": "Loss of knee extension",
@@ -2014,7 +2045,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has an end-diastolic volume (EDV) of 150 mL and an end-systolic volume (ESV) of 75 mL. What is the ejection fraction?",
         "options": {
             "A": "25%",
@@ -2042,7 +2073,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has bleeding tendency. Which feature is typical of von Willebrand disease (vWD)?",
         "options": {
             "A": "Prolonged PT",
@@ -2070,7 +2101,7 @@
         "subject": "Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is in septicemia and does not respond to fluid resuscitation?",
         "options": {
             "A": "Hypovolemic shock",
@@ -2100,7 +2131,7 @@
         "subject": "Biochemistry",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient present with chronic diarrhea and abdominal pain. Which vitamin deficiency is most likely?",
         "options": {
             "A": "Niacin",
@@ -2128,7 +2159,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient present with small (<1 cm) lung nodules on imaging. Histopathology shows granulomas without Cell Injury. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Tuberculosis",
@@ -2156,7 +2187,7 @@
         "subject": "Embryology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with cleft palate, repeated infections with klebsiella. 22q11 deletion with defect in 3rd and 4th pharyngeal pouches. What will happen?",
         "options": {
             "A": "Tetany",
@@ -2186,7 +2217,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presents 1 month after organ transplantation. Biopsy shows lymphocytic infiltration of the graft. What type of rejection is this?",
         "options": {
             "A": "Hyperacute rejection",
@@ -2214,7 +2245,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presents after a spinal cord injury and is unable to void urine. Which spinal segments are most likely involved?",
         "options": {
             "A": "S2, S3, S4",
@@ -2242,7 +2273,7 @@
         "subject": "Pathology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with a painless testicular mass and positive alpha-fetoprotein. Which is the most likely tumor?",
         "options": {
             "A": "Seminoma",
@@ -2273,7 +2304,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with corneal clouding, hemolytic anemia, and renal failure. On genetic testing deficiency of which enzyme?",
         "options": {
             "A": "Tangier Disease",
@@ -2301,7 +2332,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with deviation of the tongue to the right side on protrusion, with intact sensation. Which nerve is injured?",
         "options": {
             "A": "Left hypoglossal nerve",
@@ -2332,13 +2363,13 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with difficulty naming objects (anomia) but comprehension is intact. Lesion is most likely in:",
         "options": {
-            "A": "Broca’s area → expressive aphasia",
-            "B": "Wernicke’s area → receptive aphasia",
-            "C": "Angular gyrus → anomic aphasia",
-            "D": "Global cortex → global aphasia",
+            "A": "Brocaâ€™s area â†’ expressive aphasia",
+            "B": "Wernickeâ€™s area â†’ receptive aphasia",
+            "C": "Angular gyrus â†’ anomic aphasia",
+            "D": "Global cortex â†’ global aphasia",
             "E": ""
         },
         "correctAnswer": "C",
@@ -2360,7 +2391,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with diffuse esophageal spasm causing chest pain and dysphagia. Which drug is used?",
         "options": {
             "A": "Diltiazem",
@@ -2388,7 +2419,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with episodic headache, sweating, palpitations, and hypertension. Laboratory tests show elevated urinary metanephrine. What is the most likely diagnosis?",
         "options": {
             "A": "Cushing syndrome",
@@ -2416,7 +2447,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with excessive thirst and increased frequency of urination. Laboratory evaluation suggests a metabolic cause affecting glucose regulation. Which hormonal abnormality is most likely responsible for these symptoms?",
         "options": {
             "A": "ACTH",
@@ -2449,7 +2480,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with fatigue, hypotension, hypoglycemia, and loss of secondary sexual characteristics. Labs show low TSH, ACTH, LH, FSH, and GH. What is the most likely diagnosis?",
         "options": {
             "A": "Primary adrenal insufficiency",
@@ -2477,7 +2508,7 @@
         "subject": "Microbiology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with fever and sore throat and is treated empirically with amoxicillin, but symptoms do not improve. Laboratory investigations show an increase in a particular type of white blood cell, suggesting a non-bacterial etiology. Which cell type is most likely raised?",
         "options": {
             "A": "Neutrophils",
@@ -2507,14 +2538,14 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with fever due to an inflammatory process. Which cytokine is primarily responsible for mediating fever?",
         "options": {
             "A": "IL-2",
             "B": "IL-4",
             "C": "IL-1",
-            "D": "TNF-β",
-            "E": "IFN-γ"
+            "D": "TNF-Î²",
+            "E": "IFN-Î³"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -2535,7 +2566,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with massive splenomegaly (10 cm) and myeloblasts on smear. Which chromosomal translocation is most likely?",
         "options": {
             "A": "t(8;21)",
@@ -2563,7 +2594,7 @@
         "subject": "Microbiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with meningitis. CSF culture shows a gram-negative oxidase-positive diplococcus. What is the organism?",
         "options": {
             "A": "Hemophilus influenzae",
@@ -2585,8 +2616,8 @@
         ],
         "specialty": [
             "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Gynecology - 01/26 - January 6 - Morning",
@@ -2596,7 +2627,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with palpitations, heat intolerance, sweaty hands, and gritty eyes. What is the most likely diagnosis?",
         "options": {
             "A": "Graves' disease",
@@ -2627,7 +2658,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with polyuria and polydipsia. A water deprivation test shows no increase in urine osmolality. After administration of desmopressin, urine osmolality dramatically increases. What is the most likely cause?",
         "options": {
             "A": "SIADH",
@@ -2657,7 +2688,7 @@
         "subject": "Embryology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with right upper quadrant pain, and a mass is seen in the right lobe of liver. The structure is derived from which germ layer?",
         "options": {
             "A": "Ectoderm",
@@ -2687,7 +2718,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with severe chest pain radiating to the jaw. ECG confirms acute myocardial infarction, and PCI is performed to restore blood flow. Before reperfusion, which metabolic process had already occurred in ischemic myocardial cells?",
         "options": {
             "A": "Increased oxidative phosphorylation",
@@ -2715,7 +2746,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with shortness of breath and cough. Arterial blood gas results are: <br>pO2: 70 mmHg <br>pH: 7.35 <br> HCO3: 16 mmol/L <br>pCO2: 60 mmHg.<br> Identify the acid base abnormality.",
         "options": {
             "A": "Compensated Metabolic Acidosis",
@@ -2745,7 +2776,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with symptoms of hypothyroidism. Laboratory investigations show normal T3, elevated TSH, and abnormal thyroid profile. What is the most appropriate treatment?",
         "options": {
             "A": "Iodine supplementation",
@@ -2773,7 +2804,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with tingling around the mouth and painful spasms of the hands and feet (carpopedal spasm). Laboratory investigation reveals an electrolyte abnormality. Decrease of which ion is responsible for these symptoms?",
         "options": {
             "A": "Sodium",
@@ -2803,7 +2834,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with trauma and bleeding from the junction of four bones on the side of the skull.",
         "options": {
             "A": "Bregma",
@@ -2831,7 +2862,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with urethral discharge and history suggestive of gonorrhea or chlamydia infection. Which drug of the following is likely effective?",
         "options": {
             "A": "Vancomycin",
@@ -2863,7 +2894,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient receives gamma radiation for a solid tumor.",
         "options": {
             "A": "Formation of free radicals",
@@ -2891,7 +2922,7 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient reports a diet consisting mainly of chocolate, milk, bread and chicken with minimal intake of green vegetables and fruits. Over time she develops megaloblastic changes. Deficiency of which vitamin is most likely?",
         "options": {
             "A": "Vitamin B12",
@@ -2923,12 +2954,12 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient suffers a stab wound to the right side of the spinal cord at the T10 level. On examination, he has loss of proprioception and motor function on the right side below the lesion but loss of pain and temperature sensation on the left side. Which spinal cord syndrome best explains these findings?",
         "options": {
             "A": "Central cord syndrome",
             "B": "Anterior cord syndrome",
-            "C": "Brown-Séquard syndrome",
+            "C": "Brown-SÃ©quard syndrome",
             "D": "Posterior cord syndrome",
             "E": "Cauda equina syndrome"
         },
@@ -2951,7 +2982,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient using an IUD presents with excessive bleeding. What is the best management?",
         "options": {
             "A": "Immediate delivery",
@@ -2979,7 +3010,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a viral infection is treated with an antiviral drug. The drug works by interfering with viral replication inside host cells. Which of the following mechanisms best describes the action of many antiviral agents?",
         "options": {
             "A": "Inhibition of cell wall synthesis",
@@ -3007,7 +3038,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with acute liver injury shows markedly elevated serum AST and ALT levels. What is the primary reason for the rise of these enzymes in blood?",
         "options": {
             "A": "Increased enzyme synthesis",
@@ -3035,7 +3066,7 @@
         "subject": "Medicine",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with albinism presents with visual impairment since childhood. Which of the following ocular condition is most likely associated with albinism?",
         "options": {
             "A": "Glaucoma",
@@ -3065,7 +3096,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with congestive cardiac failure is receiving standard heart failure medications. He develops muscle weakness without any history of trauma. Which drug is most likely responsible?",
         "options": {
             "A": "ACE inhibitors",
@@ -3096,7 +3127,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with hypothalamic dopamine deficiency develops galactorrhea. The likely lab finding is:",
         "options": {
             "A": "Decreased prolactin",
@@ -3126,7 +3157,7 @@
         "subject": "Pharmacology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with ischemic heart disease presents with muscle weakness and myalgia without any trauma. He is taking long-term medication for dyslipidemia. Which drug is most likely responsible?",
         "options": {
             "A": "Aspirin",
@@ -3157,7 +3188,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with presents with weight loss and bilateral hilar lymphadenopathy. He is HIV-negative, with no TB contact or travel history. What is the diagnosis?",
         "options": {
             "A": "Sarcoidosis",
@@ -3185,7 +3216,7 @@
         "subject": "Pharmacology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with rheumatoid arthritis is on long-term therapy and develops whitening of the anterior shins along with dark pigmentation of bones and skin. Which drug is most likely responsible?",
         "options": {
             "A": "Prednisolone",
@@ -3213,7 +3244,7 @@
         "subject": "Microbiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with suspected meningitis is started on empiric ampicillin. Which organism is sensitive to it?",
         "options": {
             "A": "Neisseria meningitidis",
@@ -3241,7 +3272,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with systemic lupus erythematosus (SLE) is being evaluated for type of hypersensitivity involved.",
         "options": {
             "A": "Type I",
@@ -3252,37 +3283,6 @@
         },
         "correctAnswer": "C",
         "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "Z5YK8VTL",
-        "year": [
-            "2026",
-            "2025"
-        ],
-        "specialty": [
-            "Gynecology & Obstetrics",
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Gynecology - 01/26 - January 6 - Morning",
-            "Medicine - 11/25 - November 13 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient, a resident of the Sawat region, presents with a diffusely enlarged, non-tender goiter. The thyroid hormone profile (TSH, T3, T4 within normal limits). What is the most likely diagnosis in this geographical context?",
-        "options": {
-            "A": "Follicular Adenoma",
-            "B": "Endemic Goitre",
-            "C": "Toxic Nodular Goiter",
-            "D": "Thyroid Carcinoma",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "A diffuse, non-tender goiter in a geographically defined area like Sawat (often historically iodine-deficient) with a normal thyroid profile points to a simple (colloid) goiter due to environmental factors, also known as Endemic Goitre.",
         "hint": "",
         "Point": ""
     },
@@ -3302,7 +3302,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pharmacological study aims to differentiate the effects of ganglion-blocking drugs from muscarinic receptor-blocking drugs. Which combination of symptoms is most characteristic of muscarinic receptor blockade?",
         "options": {
             "A": "Bradycardia and diarrhea",
@@ -3330,7 +3330,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A postmenopausal woman presents with generalized bone pain. Laboratory investigations reveal low serum calcium levels. While evaluating the possible causes of her hypocalcemia, which of the following hormones should be kept in mind as a contributor to her low calcium levels?",
         "options": {
             "A": "Parathyroid hormone",
@@ -3358,7 +3358,7 @@
         "subject": "Pharmacology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant female was treated for tuberculosis with anti-tubercular therapy (ATT). After delivery, her newborn was found to have deafness, which drug used in her treatment most likely caused this adverse effect?",
         "options": {
             "A": "Isoniazid",
@@ -3386,7 +3386,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant patient at 15 weeks has increased amniotic fluid. AFP is elevated. Which of the following is likely cause?",
         "options": {
             "A": "Renal agenesis",
@@ -3414,7 +3414,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman has abdominal pain. Labs: HBsAg negative, Anti-HBc IgG positive, HBeAg negative. What is the mechanism behind this serological pattern?",
         "options": {
             "A": "Vaccination against HBV",
@@ -3442,7 +3442,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman is diagnosed with vasa previa. What is the next step in management?",
         "options": {
             "A": "Immediate vaginal delivery",
@@ -3473,7 +3473,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman presents with sudden passage of vesicular tissue (\"grapes\"). What is the likely marker?",
         "options": {
             "A": "AFP",
@@ -3503,7 +3503,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A pregnant woman with a family history of inborn errors of metabolism wants to know whether her unborn child is affected. Which investigation can be used for early prenatal diagnosis?",
         "options": {
             "A": "Ultrasound",
@@ -3534,7 +3534,7 @@
         "subject": "Pathology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman with uterine fibroids is at risk of which type of degeneration during pregnancy?",
         "options": {
             "A": "Myxomatous degeneration",
@@ -3562,7 +3562,7 @@
         "subject": "Community Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A public health study is conducted to determine which level of female education has the greatest positive impact on reproductive health outcomes such as reduced maternal mortality, improved family planning, and better antenatal care utilization. Which level of education is most strongly associated with improved reproductive health?",
         "options": {
             "A": "Primary level",
@@ -3595,7 +3595,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A receptor is being studied that responds to different stimuli of light. Which property of the receptor is being tested?",
         "options": {
             "A": "Transduction",
@@ -3623,7 +3623,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A reversible replacement of one differentiated (mature) cell type by another differentiated cell type, usually in response to chronic irritation, is known as:",
         "options": {
             "A": "Choriostoma",
@@ -3654,7 +3654,7 @@
         "subject": "Microbiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A woman comes with her husband and newborn complaining of him not being well. Pregnancy was spent at home where she lives with her partner and 3 cats. Imaging of the newborn reveals intracranial calcifications. What disease does the newborn most likely have?",
         "options": {
             "A": "Congenital toxoplasmosis",
@@ -3682,7 +3682,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A woman develops postpartum pituitary Cell Injury (Sheehan syndrome). What is a common consequence?",
         "options": {
             "A": "Galactorrhea",
@@ -3712,7 +3712,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman develops primary postpartum hemorrhage immediately after delivery. What is the first step in management?",
         "options": {
             "A": "Administer oxytocin",
@@ -3740,13 +3740,13 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman in active labor is given epidural anesthesia for pain relief. The anesthetic drug works by blocking nerve conduction in spinal nerves. What is the primary mechanism by which epidural anesthesia relieves pain?",
         "options": {
             "A": "Blocking potassium channels",
             "B": "Blocking hydrogen ion channels",
             "C": "Blocking sodium channels",
-            "D": "Blocking sodium–calcium channels",
+            "D": "Blocking sodiumâ€“calcium channels",
             "E": "Blocking acetylcholine release"
         },
         "correctAnswer": "C",
@@ -3768,7 +3768,7 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Micturition & Urinary Incontinence",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman presents with continuous leakage of urine through the vagina following prolonged obstructed labor. The fistula is most likely between which structures?",
         "options": {
             "A": "Bladder and uterus",
@@ -3778,7 +3778,7 @@
             "E": "Bladder and vagina"
         },
         "correctAnswer": "E",
-        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Bladder and vagina</strong> - Prolonged obstructed labor causes pressure necrosis of the tissues between the bladder and vagina, producing a vesicovaginal fistula (VVF). It causes continuous, usually painless leakage of urine through the vagina.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Bladder and uterus</strong> - A vesicouterine fistula connects the bladder to the uterus and is not the classic fistula caused by prolonged obstructed labor.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Ureter and vagina</strong> - A ureterovaginal fistula causes continuous vaginal urine leakage, but it is more commonly associated with pelvic surgery or ureteric injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cervix and bladder</strong> - This is not the typical fistula produced by prolonged obstructed labor.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethra and vagina</strong> - A urethrovaginal fistula can cause urinary leakage, but the classic obstetric fistula is between the bladder and vagina.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Prolonged obstructed labor → pressure necrosis → vesicovaginal fistula → continuous urinary leakage through vagina.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Obstructed labor → VVF</strong> = Vesico-Vaginal Fistula.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Continuous urine leakage</strong> suggests a fistula, while stress or urge incontinence causes intermittent leakage. Obstetric fistula classically means <strong>bladder ↔ vagina</strong>.</p></p>",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Bladder and vagina</strong> - Prolonged obstructed labor causes pressure necrosis of the tissues between the bladder and vagina, producing a vesicovaginal fistula (VVF). It causes continuous, usually painless leakage of urine through the vagina.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Bladder and uterus</strong> - A vesicouterine fistula connects the bladder to the uterus and is not the classic fistula caused by prolonged obstructed labor.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Ureter and vagina</strong> - A ureterovaginal fistula causes continuous vaginal urine leakage, but it is more commonly associated with pelvic surgery or ureteric injury.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Cervix and bladder</strong> - This is not the typical fistula produced by prolonged obstructed labor.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Urethra and vagina</strong> - A urethrovaginal fistula can cause urinary leakage, but the classic obstetric fistula is between the bladder and vagina.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Prolonged obstructed labor â†’ pressure necrosis â†’ vesicovaginal fistula â†’ continuous urinary leakage through vagina.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Obstructed labor â†’ VVF</strong> = Vesico-Vaginal Fistula.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Continuous urine leakage</strong> suggests a fistula, while stress or urge incontinence causes intermittent leakage. Obstetric fistula classically means <strong>bladder â†” vagina</strong>.</p></p>",
         "hint": "<p><br></p>",
         "Point": ""
     },
@@ -3796,7 +3796,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A woman presents with dysmenorrhea, cyclical pelvic pain, and blue-red nodules involving the ovaries and pelvic ligaments. Symptoms worsen during menstruation. What is the most likely diagnosis?",
         "options": {
             "A": "Endometriosis",
@@ -3824,7 +3824,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A woman presents with menstrual irregularities and milky discharge from both breasts despite not being pregnant or lactating. Laboratory evaluation reveals elevated serum prolactin levels. Which of the following clinical features is most commonly associated with hyperprolactinemia?",
         "options": {
             "A": "Hirsutism",
@@ -3852,7 +3852,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman presents with subfertility and amenorrhea. Labs: Low FSH, Low LH, normal prolactin, low estradiol. What is the most likely cause?",
         "options": {
             "A": "Prolactinoma",
@@ -3882,7 +3882,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman presents with vaginal bleeding 2 weeks after delivery. The most likely cause of secondary PPH is:",
         "options": {
             "A": "Retained placental tissue",
@@ -3910,7 +3910,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman undergoes surgical removal of the pituitary gland due to a tumor. Following surgery, which reproductive change is most likely to occur?",
         "options": {
             "A": "Early menarche",
@@ -3940,7 +3940,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman underwent salpingectomy for ectopic pregnancy. What is the approximate risk of recurrence in a subsequent pregnancy?",
         "options": {
             "A": "0.059028",
@@ -3968,7 +3968,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A woman who is G2P1 is in the second stage of labor. On examination, the cervix is fully dilated (6 cm dilatation), and there is progressive rapidity, and there is concern about perineal tearing. What is the most appropriate intervention to prevent anal sphincter injury?",
         "options": {
             "A": "Midline episiotomy",
@@ -3996,7 +3996,7 @@
         "subject": "Microbiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young male presents with neck stiffness, high-grade fever, and a widespread rash. Cause is",
         "options": {
             "A": "Streptococus pneumoniae",
@@ -4026,7 +4026,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young underweight woman presents with secondary amenorrhea. Most likely cause?",
         "options": {
             "A": "Pituitary tumor",
@@ -4056,7 +4056,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An alcoholic patient presents with lactic acidosis. Which enzyme is most likely affected?",
         "options": {
             "A": "Lactate dehydrogenase",
@@ -4089,7 +4089,7 @@
         "subject": "Microbiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An old male of 80 years age presented to hospital with fever, confusion, neck stiffness and vomiting. Kerning's and Brudzinski sign are positive. Lumbar puncture confirmed the diagnosis of acute bacterial meningitis. Which is the causative organism in this case?",
         "options": {
             "A": "Streptococus pneumoniae",
@@ -4120,7 +4120,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Anatomical site for the insertion of chest tube for thoracentesis?",
         "options": {
             "A": "Anterior axillary line",
@@ -4148,7 +4148,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Certain hormones are released directly from neurons into the bloodstream and act at distant target organs. Which of the following hormones is released via a neuroendocrine mechanism?",
         "options": {
             "A": "Insulin",
@@ -4166,13 +4166,14 @@
         "id": "T54JNAVT",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia",
             "Gynecology & Obstetrics",
-            "Medicine & Allied",
             "Radiology",
+            "Anesthesia",
+            "Medicine & Allied",
             "Surgery & Allied"
         ],
         "exams": [
@@ -4181,12 +4182,14 @@
             "Anesthesia - 05/25 - May 12 - Afternoon",
             "Medicine - 02/25 - Feburary 8 - Afternoon",
             "Radiology - 05/25 - May 12 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
+            "Surgery - 02/25 - Feburary 9 - Morning",
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Medicine - 08/24 - August 22 - Morning"
         ],
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cheliosis and corneal vascularization is due to deficiency of which of the following vitamin?",
         "options": {
             "A": "Thiamine",
@@ -4214,8 +4217,8 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Difficulty initiating shoulder abduction from 0° to 15° suggests damage to which muscle-nerve pair?",
+        "difficulty": "Medium",
+        "question": "Difficulty initiating shoulder abduction from 0Â° to 15Â° suggests damage to which muscle-nerve pair?",
         "options": {
             "A": "Supraspinatus muscle",
             "B": "Deltoid muscle",
@@ -4242,14 +4245,14 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During childbirth, a pudendal nerve block is performed for anesthesia. What is its mechanism of action?",
         "options": {
-            "A": "Blocks sensory fibers of S2–S4",
+            "A": "Blocks sensory fibers of S2â€“S4",
             "B": "Blocks motor fibers to the pelvic diaphragm",
-            "C": "Blocks sympathetic fibers of T10–L1",
-            "D": "Blocks parasympathetic fibers of S1–S3",
-            "E": "Blocks both sensory and motor fibers of L4–L5"
+            "C": "Blocks sympathetic fibers of T10â€“L1",
+            "D": "Blocks parasympathetic fibers of S1â€“S3",
+            "E": "Blocks both sensory and motor fibers of L4â€“L5"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -4270,7 +4273,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During ovarian follicular development, certain cells surround the oocyte and play a major role in estrogen production under the influence of FSH. These cells are known as granulosa cells. Where are granulosa cells normally found?",
         "options": {
             "A": "Corpus luteum",
@@ -4298,7 +4301,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During pregnancy, the breast undergoes structural changes to prepare for lactation. Which hormone is primarily responsible for development of alveoli and lobules in the breast?",
         "options": {
             "A": "Estrogen",
@@ -4326,7 +4329,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Estrogen plays a vital role in female reproductive development and physiology. Which of the following is the most important function of estrogen?",
         "options": {
             "A": "Milk secretion",
@@ -4357,7 +4360,7 @@
         "subject": "Embryology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "From which of the following embryonic structures does the thyroid gland primarily develop?",
         "options": {
             "A": "Third Pharyngeal Pouch",
@@ -4385,10 +4388,10 @@
         "subject": "Embryology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Gartner duct is a remnant of which embryological structure?",
         "options": {
-            "A": "Paramesonephric (Müllerian) duct",
+            "A": "Paramesonephric (MÃ¼llerian) duct",
             "B": "Mesonephric duct",
             "C": "Mesonephric tubules",
             "D": "Metanephric duct",
@@ -4415,7 +4418,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Hereditary spherocytosis which protein defective",
         "options": {
             "A": "Ankyrin",
@@ -4430,27 +4433,32 @@
         "Point": ""
     },
     {
-        "id": "EDN8SSUL",
+        "id": "U6ECKKYH",
         "year": [
+            "2025",
             "2026"
         ],
         "specialty": [
-            "Gynecology & Obstetrics"
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
         ],
         "exams": [
+            "Gynecology - 02/25 - Feburary 8 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 02/25 - Feburary 8 - Morning",
             "Gynecology - 01/26 - January 6 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "How to confirm ovulation has occurred?",
+        "difficulty": "Easy",
+        "question": "How to confirm ovulation has occurred",
         "options": {
             "A": "Estrogen",
             "B": "Progesterone",
             "C": "Inhibin",
             "D": "FSH",
-            "E": "Pre-ovulatory levels of LH"
+            "E": "Pre ovulatory LH levels"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -4471,8 +4479,8 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "If arterial blood is 50% saturated, what is the approximate PaO₂?",
+        "difficulty": "Easy",
+        "question": "If arterial blood is 50% saturated, what is the approximate PaOâ‚‚?",
         "options": {
             "A": "6 mmHg",
             "B": "10 mmHg",
@@ -4493,8 +4501,8 @@
         ],
         "specialty": [
             "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Gynecology - 01/26 - January 6 - Morning",
@@ -4504,7 +4512,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Improper intramuscular injection in the buttock most often injures:",
         "options": {
             "A": "Femoral nerve",
@@ -4532,7 +4540,7 @@
         "subject": "Community Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "In a community with population of 1000000 (1 million) there 100000 females in childbearing age and 100000 children were born live in the year 2000. A total of 50 women died due to pregnancy and related causes. The maternal mortality rate of this community is?",
         "options": {
             "A": "5/1000 live births",
@@ -4562,7 +4570,7 @@
         "subject": "Community Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In married couples, what is the most common cause of increased induced abortions?",
         "options": {
             "A": "Nutritional deficiency",
@@ -4590,7 +4598,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Into which category of amino acids is tyrosine classified?",
         "options": {
             "A": "Essential",
@@ -4618,8 +4626,8 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Lmone production is established. What is the primary function of β-hCG?",
+        "difficulty": "Easy",
+        "question": "Lmone production is established. What is the primary function of Î²-hCG?",
         "options": {
             "A": "Induction of ovulation",
             "B": "Maintenance of endometrium",
@@ -4646,7 +4654,7 @@
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Mother has breast carcinoma. Her daughter wants to know her predisposition. Which test is required?",
         "options": {
             "A": "Mammography",
@@ -4661,21 +4669,24 @@
         "Point": ""
     },
     {
-        "id": "W8T3RYTZ",
+        "id": "VVTWAZ66",
         "year": [
+            "2025",
             "2026"
         ],
         "specialty": [
+            "Surgery & Allied",
             "Gynecology & Obstetrics"
         ],
         "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon",
             "Gynecology - 01/26 - January 6 - Morning"
         ],
-        "subject": "Physiology",
+        "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Obstructive disease of lung increases which capacity?",
+        "difficulty": "Easy",
+        "question": "Obstructive disease of lung increases which capacity",
         "options": {
             "A": "FRC",
             "B": "FEV1",
@@ -4684,7 +4695,7 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "",
+        "explanation": "BRS",
         "hint": "",
         "Point": ""
     },
@@ -4696,8 +4707,8 @@
         ],
         "specialty": [
             "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Gynecology - 01/26 - January 6 - Morning",
@@ -4708,7 +4719,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient has a history of gunshot injury. Now he presented with the complain of swelling that appears above the clavicle while coughing or sneezing. Swelling more likely is?",
         "options": {
             "A": "Pleural membrane",
@@ -4725,21 +4736,25 @@
     {
         "id": "2KHKY7S6",
         "year": [
-            "2026"
+            "2026",
+            "2024"
         ],
         "specialty": [
             "Gynecology & Obstetrics",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Gynecology - 01/26 - January 7 - Evening",
             "Gynecology - 01/26 - January 6 - Morning",
-            "Surgery - 01/26 - January 7 - Evening"
+            "Surgery - 01/26 - January 7 - Evening",
+            "Medicine - 08/24 - August 23 - Morning",
+            "Surgery - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient has puffy skin and hoarse voice. Her plasma TSH concentration is low but increases markedly when she is given TRH she probably has?",
         "options": {
             "A": "Hyperthyroidism with problem in Thyroid",
@@ -4749,7 +4764,7 @@
             "E": "Hypothyroidism with hypothalamus"
         },
         "correctAnswer": "E",
-        "explanation": "",
+        "explanation": "BCQ Ganong",
         "hint": "",
         "Point": ""
     },
@@ -4784,34 +4799,36 @@
         "Point": ""
     },
     {
-        "id": "XT2L96RZ",
+        "id": "UTWTBUVW",
         "year": [
-            "2026",
-            "2025"
+            "2025",
+            "2026"
         ],
         "specialty": [
+            "Radiology",
             "Gynecology & Obstetrics",
             "Medicine & Allied"
         ],
         "exams": [
+            "Radiology - 11/25 - November 11 - Morning",
             "Gynecology - 01/26 - January 6 - Morning",
             "Medicine - 01/26 - January 5 - Evening",
             "Medicine - 11/25 - November 11 - Morning"
         ],
-        "subject": "Biochemistry",
-        "chapter": "Metabolic System",
+        "subject": "Pharmacology",
+        "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Person has taken increase amount of garlic as it inhibits HMG Co-A reductase. It will result in?",
+        "difficulty": "Medium",
+        "question": "Person has taken increase amount of garlic as it inhibits HMG CoA reductase. It will result in?",
         "options": {
-            "A": "dec Cholesterol synthesis",
-            "B": "Triglycerides synthesis",
-            "C": "Increase cholesterol synthesis",
-            "D": "Ketones formation",
-            "E": ""
+            "A": "Decrease cholesterol synthesis",
+            "B": "Decrease fatty acid synthesis",
+            "C": "Increases HDL",
+            "D": "Increase LDL",
+            "E": "Increase VLDL"
         },
         "correctAnswer": "A",
-        "explanation": "HMG-CoA Reductase is the rate-limiting enzyme in the cholesterol synthesis pathway. Inhibiting this enzyme, as the question suggests garlic compounds can do, will lead to a decrease in cholesterol synthesis.",
+        "explanation": "HMG-CoA Reductase is the rate limiting enzyme in the cholesterol synthesis pathway. Inhibiting this enzyme, as the question suggests garlic compounds can do, will lead to a decrease in cholesterol synthesis.",
         "hint": "",
         "Point": ""
     },
@@ -4832,7 +4849,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Pregnant Patient is a treated case of hyperthyroidism. Now she presented at 6 weeks of gestation with the following labs. Serum TSH is normal. Serum T4 is increased. What will be the management of this patient?",
         "options": {
             "A": "PTU",
@@ -4860,14 +4877,14 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Proton pump inhibitors (PPIs) reduce gastric acid secretion by inhibiting which primary active transport?",
         "options": {
-            "A": "Na⁺/K⁺ ATPase",
-            "B": "H⁺/K⁺ ATPase",
-            "C": "Ca²⁺ ATPase",
-            "D": "Na⁺/Ca²⁺ exchanger",
-            "E": "Cl⁻/HCO₃⁻ exchanger"
+            "A": "Naâº/Kâº ATPase",
+            "B": "Hâº/Kâº ATPase",
+            "C": "CaÂ²âº ATPase",
+            "D": "Naâº/CaÂ²âº exchanger",
+            "E": "Clâ»/HCOâ‚ƒâ» exchanger"
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -4888,7 +4905,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pulmonary embolism occurs due to obstruction of which vessels?",
         "options": {
             "A": "Pulmonary veins",
@@ -4916,7 +4933,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pulmonary surfactant production in the fetus begins at:",
         "options": {
             "A": "At birth",
@@ -4938,8 +4955,8 @@
         ],
         "specialty": [
             "Anesthesia",
-            "Gynecology & Obstetrics",
-            "Radiology"
+            "Radiology",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
             "Anesthesia - 04/26 - April 7 - Morning",
@@ -4952,7 +4969,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pyruvate carboxylase requires which coenzyme for its activity?",
         "options": {
             "A": "Thiamine",
@@ -4983,7 +5000,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Referred pain from the heart is carried mainly by which structure?",
         "options": {
             "A": "Visceral pleura",
@@ -5011,7 +5028,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Shock is best defined as:",
         "options": {
             "A": "Severe hypotension",
@@ -5039,13 +5056,13 @@
         "subject": "Embryology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The clitoris is derived from which embryological structure?",
         "options": {
             "A": "Genital tubercle",
             "B": "Urogenital sinus",
             "C": "Labioscrotal swellings",
-            "D": "Müllerian duct",
+            "D": "MÃ¼llerian duct",
             "E": "Wolffian duct"
         },
         "correctAnswer": "A",
@@ -5054,30 +5071,36 @@
         "Point": ""
     },
     {
-        "id": "ZPKTYRX5",
+        "id": "593GRF4T",
         "year": [
-            "2026"
+            "2026",
+            "2025"
         ],
         "specialty": [
+            "Radiology",
+            "Medicine & Allied",
             "Gynecology & Obstetrics"
         ],
         "exams": [
+            "Radiology - 01/26 - January 6 - Morning",
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 11/25 - November 13 - Evening",
             "Gynecology - 01/26 - January 6 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The lesion occurred at the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra. The condition is of:",
+        "difficulty": "Medium",
+        "question": "The lesion occurred at the caudate and globus pallidus of the brain. There was loss of GABA in Substantia Nigra The condition is of",
         "options": {
-            "A": "Alzheimer’s Disease",
+            "A": "Alzheimer's Disease",
             "B": "Parkinsonism",
-            "C": "Horner Syndrome",
+            "C": "Homer Syndrome",
             "D": "Retrograde Amnesia",
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "Substantia nigra lesion -> Resting (pill-rolling) tremor of Parkinson disease. Caudate nucleus degeneration -> Chorea (sudden, jerky, purposeless movements). Basal ganglia lesion -> Athetosis (slow, writhing, snake-like movements). Hippocampal damage -> Anterograde amnesia (inability to form new memories).",
         "hint": "",
         "Point": ""
     },
@@ -5095,7 +5118,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The levator ani muscle forms the major part of the pelvic diaphragm and plays a key role in pelvic organ support. Which nerve primarily supplies the levator ani?",
         "options": {
             "A": "Pudendal nerve",
@@ -5128,7 +5151,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The nuclei responsible for hunger and satiety are located in which part of the brain?",
         "options": {
             "A": "Hypothalamus",
@@ -5156,11 +5179,11 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The urogenital diaphragm has superior and inferior fascial layers. What is the inferior fascia of the urogenital diaphragm commonly called?",
         "options": {
-            "A": "Scarpa’s fascia",
-            "B": "Colles’ fascia",
+            "A": "Scarpaâ€™s fascia",
+            "B": "Collesâ€™ fascia",
             "C": "Perineal membrane",
             "D": "Pelvic fascia",
             "E": "Endopelvic fascia"
@@ -5184,7 +5207,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The uterine artery is a branch of which vessel?",
         "options": {
             "A": "External iliac artery",
@@ -5214,7 +5237,7 @@
         "subject": "Community Medicine",
         "chapter": "Biostatistics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "To find mean in height of 10 people about 33,36,36,38,45,42,40,52,36,47",
         "options": {
             "A": "40",
@@ -5244,7 +5267,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "U waves and flat T waves are seen in which electrolyte disturbance?",
         "options": {
             "A": "Hyperkelamia",
@@ -5272,7 +5295,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the cause of visual acuity decrease in presbyopia?",
         "options": {
             "A": "Increased curvature of lens",
@@ -5305,7 +5328,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the initial step in atherosclerosis?",
         "options": {
             "A": "Endothelial injury",
@@ -5335,7 +5358,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the mechanism of action of ciprofloxacin?",
         "options": {
             "A": "Inhibits cell wall synthesis",
@@ -5368,7 +5391,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the most common site of ectopic pregnancy?",
         "options": {
             "A": "Isthmus of fallopian tube",
@@ -5396,7 +5419,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the most important function of progesterone?",
         "options": {
             "A": "Secretory changes in endometrium",
@@ -5418,8 +5441,8 @@
         ],
         "specialty": [
             "Gynecology & Obstetrics",
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Gynecology - 01/26 - January 6 - Morning",
@@ -5429,7 +5452,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which immunoglobulin crosses the placenta?",
         "options": {
             "A": "IgG",
@@ -5457,7 +5480,7 @@
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following anticoagulant drugs acts as a direct thrombin inhibitor?",
         "options": {
             "A": "Warfarin",
@@ -5485,7 +5508,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is a predictive test for pre-eclampsia?",
         "options": {
             "A": "First-trimester blood pressure check",
@@ -5515,7 +5538,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following is the most powerful transporter in the gut mucosa which causes absorbed stuff back into the gut lumen?",
         "options": {
             "A": "P.Glycoprotein",
@@ -5536,8 +5559,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
             "Gynecology & Obstetrics",
+            "Anesthesia",
             "Medicine & Allied"
         ],
         "exams": [
@@ -5548,13 +5571,13 @@
         "subject": "Pathology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is the tumor marker of Medullary CA?",
         "options": {
             "A": "PTHrp",
-            "B": "CA 19 – 9",
+            "B": "CA 19 â€“ 9",
             "C": "Calcitonin",
-            "D": "CA 15 – 5",
+            "D": "CA 15 â€“ 5",
             "E": "ALP"
         },
         "correctAnswer": "C",
@@ -5576,7 +5599,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which part of the optic chiasm is involved in bitemporal hemianopia?",
         "options": {
             "A": "Middle part",
@@ -5604,7 +5627,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which portion of an immunoglobulin molecule is involved in phagocytosis?",
         "options": {
             "A": "Fab of IgA",
@@ -5632,7 +5655,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which structure lies in the superficial perineal pouch?",
         "options": {
             "A": "Spongy (penile) urethra",
@@ -5660,7 +5683,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which structures contribute most of the semen volume?",
         "options": {
             "A": "Testes and epididymis",

@@ -13,7 +13,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 27-year-old women requests a mammogram because both of her mother and sister died of metastatic breast cancer before 40 years of age. Which of the following would add to this patient's risk for breast Cancer?",
         "options": {
             "A": "Multiparty",
@@ -41,7 +41,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 38-year-old man from South Asia presents with inability to open his mouth fully, along with pale mucosa and loss of tongue papillae. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Oral submucous fibrosis",
@@ -69,7 +69,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 42-year-old woman presents with a slowly enlarging, painless mass on the hard palate that has been present for several months. She denies weight loss, dysphagia, or bleeding. Physical examination reveals a firm, non-tender, well-circumscribed mass. Biopsy demonstrates a mixture of epithelial and myoepithelial cells within a chondromyxoid stroma. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Pleomorphic adenoma",
@@ -97,7 +97,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45-year-old man with a history of chronic hepatitis B presents with right upper quadrant pain, weight loss, and jaundice. Ultrasound reveals a large hepatic mass, and serum studies are ordered to aid in diagnosis. Which tumor marker is most likely elevated in this patient?",
         "options": {
             "A": "CA 15-3",
@@ -125,7 +125,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 54-year-old woman with a history of breast cancer presents with progressive back pain. MRI reveals metastases to vertebral bodies. Which of the following is the most likely route of spread to the vertebrae?",
         "options": {
             "A": "Venous plexus",
@@ -136,6 +136,34 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "HYAVPFGD",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Oncology",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 55-year-old man, a chronic smoker and betel nut chewer for 20 years, presents with a non-healing ulcer with indurated raised edges on the lateral border of the tongue. What is the most likely diagnosis?",
+        "options": {
+            "A": "Squamous cell carcinoma (SCC)",
+            "B": "Pleomorphic adenoma",
+            "C": "Basal cell carcinoma (BCC)",
+            "D": "Aphthous ulcer",
+            "E": "Lichen planus"
+        },
+        "correctAnswer": "A",
+        "explanation": "The combination of a non-healing ulcer with indurated, raised edges on the lateral border of the tongue is highly characteristic of a malignant lesion, most commonly Squamous Cell Carcinoma (SCC). Chronic risk factors like smoking and betel nut chewing strongly predispose to SCC, particularly in the oral cavity.",
         "hint": "",
         "Point": ""
     },
@@ -153,7 +181,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 55-year-old man develops a perianal squamous cell carcinoma located below the dentate line. Which lymph nodes are most likely to contain metastatic cells?",
         "options": {
             "A": "Internal iliac nodes",
@@ -181,7 +209,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 55-year-old man is suspected of having colorectal carcinoma. Which tumor marker is most commonly used for diagnosis and follow-up?",
         "options": {
             "A": "CEA (Carcinoembryonic antigen)",
@@ -192,34 +220,6 @@
         },
         "correctAnswer": "A",
         "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "HYAVPFGD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 11 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Oncology",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 55-year-old man, a chronic smoker and betel nut chewer for 20 years, presents with a non-healing ulcer with indurated raised edges on the lateral border of the tongue. What is the most likely diagnosis?",
-        "options": {
-            "A": "Squamous cell carcinoma (SCC)",
-            "B": "Pleomorphic adenoma",
-            "C": "Basal cell carcinoma (BCC)",
-            "D": "Aphthous ulcer",
-            "E": "Lichen planus"
-        },
-        "correctAnswer": "A",
-        "explanation": "The combination of a non-healing ulcer with indurated, raised edges on the lateral border of the tongue is highly characteristic of a malignant lesion, most commonly Squamous Cell Carcinoma (SCC). Chronic risk factors like smoking and betel nut chewing strongly predispose to SCC, particularly in the oral cavity.",
         "hint": "",
         "Point": ""
     },
@@ -237,7 +237,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55-year-old patient presents with difficulty in urination, weight loss, on examination mild enlargement of prostrate on investigation markedly raise in PSA levels, which of the following is characteristic site for prostatic carcinoma?",
         "options": {
             "A": "Median lobe",
@@ -265,7 +265,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 56-year-old woman underwent total abdominal hysterectomy and bilateral salpingo-oophorectomy for high-grade serous ovarian carcinoma. She is in remission and follows up every 6 months. Her oncologist orders tumor marker testing to monitor for recurrence. Which of the following markers is most useful for follow-up in this patient?",
         "options": {
             "A": "CA 19-9",
@@ -293,7 +293,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 68-year-old man with newly diagnosed prostate adenocarcinoma presents with back pain. MRI shows metastases to the lumbar vertebrae. The spread of his cancer to the vertebral column most likely occurred via which of the following venous systems?",
         "options": {
             "A": "Azygos vein",
@@ -321,7 +321,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 68-year-old woman presents with painless gross hematuria. Cystoscopy reveals a papillary mass on the bladder wall. Histopathology confirms squamous cell carcinoma. Which of the following is the most important risk factor in her case?",
         "options": {
             "A": "Smoking",
@@ -349,7 +349,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 71-year-old man presents with urinary frequency and difficulty initiating urination. PSA level is 49 ng/mL. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Benign prostatic hyperplasia",
@@ -377,7 +377,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 72-year-old man presents with progressive urinary hesitancy and nocturia. Digital rectal examination reveals an asymmetrically enlarged, firm, and nodular prostate. His PSA level is 49 ng/mL. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Benign prostatic hyperplasia",
@@ -405,41 +405,13 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 74-year-old man presents with back pain and urinary hesitancy. Digital rectal exam reveals a hard, irregular prostate with loss of the median sulcus. PSA is markedly elevated. Bone scan shows sclerotic lesions in the lumbar spine. Which is the most likely diagnosis?",
         "options": {
             "A": "Benign prostatic hyperplasia",
             "B": "Prostate cancer",
             "C": "Chronic prostatitis",
             "D": "Urethral stricture",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "JNCW7DUZ",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 14 - Evening"
-        ],
-        "subject": "Surgery",
-        "chapter": "Oncology",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A lady with cervical cancer of 3.5 cm. ipsilateral and lymph nodes are enlarged with suspected metaplasia. The staging classification will be:",
-        "options": {
-            "A": "T1N2M1",
-            "B": "T2N1M1",
-            "C": "T2N1M0",
-            "D": "T1N0M0",
             "E": ""
         },
         "correctAnswer": "B",
@@ -461,7 +433,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient underwent mastectomy. Radiotherapy is planned; post surgery, what can be the side effects causing arm swelling?",
         "options": {
             "A": "Infection",
@@ -489,7 +461,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient was diagnosed with Colorectal Carcinoma few months ago with metastasis and a high level of CEA. The Level of CEA in cancer will be helpful in?",
         "options": {
             "A": "Staging",
@@ -517,7 +489,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient who underwent renal transplant 5 years ago presents for follow-up. Which malignancy is most commonly observed in post-transplant patients?",
         "options": {
             "A": "Liver cancer",
@@ -546,7 +518,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Anti hormonal therapy given after resection of a tumor, what tumor was it?",
         "options": {
             "A": "Liver",
@@ -563,18 +535,23 @@
     {
         "id": "9DAJX4NV",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Diagnosis of colon CA made many years back CEA was raised that time patient came for regular checkup you advised CEA now what is role of CEA",
         "options": {
             "A": "For Staging",
@@ -602,7 +579,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During exploratory laparotomy, a 28-year-old woman is found to have multiple small nodules studding the peritoneal surfaces along with ascitic fluid. Which primary malignancy most commonly spreads in this pattern?",
         "options": {
             "A": "Colon carcinoma",
@@ -630,7 +607,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a 65 yrs old patient, there is a palpable, firm, non-tender lymph node under the chin. Which lymph nodes are most likely involved first in the metastatic spread of lower lip carcinoma?",
         "options": {
             "A": "Parotid lymph nodes",
@@ -658,7 +635,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In the assessment and staging of breast cancer, which group of axillary lymph nodes is the first and most frequently involved (the primary draining group) that receives lymph primarily from the lateral breast quadrants?",
         "options": {
             "A": "Anterior",
@@ -686,7 +663,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Old age woman had CVA was bedridden suddenly she became dyspneic but no other symptoms. After 2 days she had left sided pleuritic pain. Had another CVA and died. On autopsy wedge shaped hemorrhagic area was seen on left lower lobe. What could be the cause in lungs?",
         "options": {
             "A": "Vasculitis",
@@ -714,7 +691,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Oncofetal tumor marker used in adenocarcinoma of colon:",
         "options": {
             "A": "CA 15-3",
@@ -742,7 +719,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient is a diagnosed case of Colorectal CA. His CEA levels are raised. What will be the use of raised CEA levels?",
         "options": {
             "A": "Grading of tumor",
@@ -770,7 +747,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient with anterior 2/3 tongue carcinoma what is the lymphatic drainage?",
         "options": {
             "A": "Juguloomohyoid",
@@ -798,7 +775,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The main purpose of sentinel lymph node biopsy in breast cancer is:",
         "options": {
             "A": "To spare axillary dissection",
@@ -826,7 +803,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tumor marker for pancreatic CA-",
         "options": {
             "A": "Free PSA",
@@ -854,7 +831,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following oncofetal tumor markers is most widely used to monitor treatment response and detect recurrence in patients diagnosed with adenocarcinoma of the colon?",
         "options": {
             "A": "CA-15-3",
@@ -882,7 +859,7 @@
         "subject": "Surgery",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following tumors is the most common oral malignancy in a man with the history of chewing gutka.",
         "options": {
             "A": "Adenocarcinoma",

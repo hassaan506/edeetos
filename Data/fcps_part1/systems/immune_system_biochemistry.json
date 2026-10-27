@@ -6,8 +6,8 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Radiology - 01/26 - January 5 - Morning",
@@ -16,7 +16,7 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with an allergic reaction is found to have increased activity of an enzyme that converts an amino acid into histamine. Which enzyme is responsible for this reaction?",
         "options": {
             "A": "Tyrosine hydroxylase",
@@ -31,7 +31,98 @@
         "Point": ""
     },
     {
-        "id": "UBBUQ8UA",
+        "id": "ERBVTNHZ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon",
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Enzyme most important for protein degradation:",
+        "options": {
+            "A": "Trypsin",
+            "B": "Pepsin",
+            "C": "Aminopeptidase",
+            "D": "Amylase",
+            "E": "Chymotrypsin"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "7WB32USF",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Afternoon",
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Enzymes involved in cell remodeling of tissue?",
+        "options": {
+            "A": "Myeloperoxidase",
+            "B": "Collagenase",
+            "C": "Lipase",
+            "D": "Caspase",
+            "E": "Elastase"
+        },
+        "correctAnswer": "B(ROBINS)",
+        "explanation": "Metalloproteinase > collagenase > elastase",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "EA57TT6W",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "GBM repels the proteins due to negative charge due to which of the following?",
+        "options": {
+            "A": "Proteoglycan",
+            "B": "Collagen type 4",
+            "C": "Fibronectin",
+            "D": "Endothelium",
+            "E": "Laminin"
+        },
+        "correctAnswer": "A",
+        "explanation": "Heparin sulphate>Proteoglycan>Laminin",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RPRNJMCQ",
         "year": [
             "2026"
         ],
@@ -44,13 +135,13 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Histamine is synthesized from which amino acid?",
+        "difficulty": "Easy",
+        "question": "Histamine, a major mediator of allergic reactions, is synthesized from which amino acid?",
         "options": {
-            "A": "Tyrosine",
+            "A": "Glutamate",
             "B": "Histidine",
-            "C": "Tryptophan",
-            "D": "Phenylalanine",
+            "C": "Arginine",
+            "D": "Tryptophan",
             "E": ""
         },
         "correctAnswer": "B",
@@ -72,7 +163,7 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Histamine is synthesized from:",
         "options": {
             "A": "Tyrosine",
@@ -87,7 +178,7 @@
         "Point": ""
     },
     {
-        "id": "RPRNJMCQ",
+        "id": "UBBUQ8UA",
         "year": [
             "2026"
         ],
@@ -100,13 +191,13 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Histamine, a major mediator of allergic reactions, is synthesized from which amino acid?",
+        "difficulty": "Easy",
+        "question": "Histamine is synthesized from which amino acid?",
         "options": {
-            "A": "Glutamate",
+            "A": "Tyrosine",
             "B": "Histidine",
-            "C": "Arginine",
-            "D": "Tryptophan",
+            "C": "Tryptophan",
+            "D": "Phenylalanine",
             "E": ""
         },
         "correctAnswer": "B",
@@ -130,7 +221,7 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In allergy, histamine is released, which of the following amino acid is precursor of histamine?",
         "options": {
             "A": "Histidine",
@@ -141,6 +232,90 @@
         },
         "correctAnswer": "A",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VK3WH5YD",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "In Dividing cell Chromosome defect cancer cause increase production of cell which enzyme is related to this?",
+        "options": {
+            "A": "Telomerase.",
+            "B": "5- transcriptase.",
+            "C": "DNA polymerase.",
+            "D": "Helicase",
+            "E": "Topoisomerase"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "EPAQFS7C",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "In the lipid bilayer, what type of bond primarily exists between proteins and lipids?",
+        "options": {
+            "A": "Hydrogen",
+            "B": "Hydrogen + Covalent",
+            "C": "Hydrophobic",
+            "D": "Ionic",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "TDMLL6QL",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Macrophages resembling crumpled tissue paper are found in deficiency of which enzyme?",
+        "options": {
+            "A": "Glucocerebrocidase",
+            "B": "Hexosaminadase",
+            "C": "Fructokinase",
+            "D": "Hexokinase",
+            "E": "Glucokinase"
+        },
+        "correctAnswer": "A(GAUCHER DISEASE)",
+        "explanation": "Gaucher disease results from lack of the lysosomal enzyme glucocerebrosidase and accumulation of glucocerebroside in mononuclear phagocytic cells. In the most common type I variant, affected phagocytes become enlarged (Gaucher cells) and accumulate in liver, spleen, and bone marrow, causing hepatosplenomegaly and bone erosion. These phagocytes Gaucher cells become enlarged acquire pathognomonic cytoplasmic appearance characterized as \"wrinkled tissue paper\"",
         "hint": "",
         "Point": ""
     },
@@ -160,7 +335,7 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Mediators of inflammation, such as histamine, are derived from which amino acid?",
         "options": {
             "A": "Histidine",
@@ -171,6 +346,64 @@
         },
         "correctAnswer": "A",
         "explanation": "Histamine is synthesized from histidine via histidine decarboxylase. Tyrosine -> catecholamines and thyroid hormones.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "XQ4XK9RD",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Where are ribosomes primarily located in the cell?",
+        "options": {
+            "A": "Smooth Endoplasmic Reticulum",
+            "B": "Granular Endoplasmic Reticulum",
+            "C": "Golgi Bodies",
+            "D": "Mitochondria",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "U8MARP3F",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following immunoglobulin is important for complement fixation?",
+        "options": {
+            "A": "IgG1",
+            "B": "IgG2",
+            "C": "IgG3",
+            "D": "IgG4",
+            "E": "IgA"
+        },
+        "correctAnswer": "C",
+        "explanation": "( IgM>IgG; IgG3>IgG1>IgG2>IgG4 )",
         "hint": "",
         "Point": ""
     },
@@ -190,7 +423,7 @@
         "subject": "Biochemistry",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is first responder in innate immunity?",
         "options": {
             "A": "Macrophages",
@@ -201,6 +434,36 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "KVUU2PKY",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning",
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Immune System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is important for protein digestion",
+        "options": {
+            "A": "Trypsinogen",
+            "B": "Pepsin",
+            "C": "Amylase",
+            "D": "Enterokinase",
+            "E": "Lipase"
+        },
+        "correctAnswer": "B",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     }

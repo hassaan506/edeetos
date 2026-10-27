@@ -13,7 +13,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A doctor was posted in karachi and he observed that residents of this city have high residents of this city have high incidence of developing malignancy of due their prevalent local habits. Which of the following cancers is most commonly associated with this population?",
         "options": {
             "A": "Oral",
@@ -41,7 +41,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A global cancer registry shows the highest incidence of malignancy in adult males worldwide. Which cancer is most common?",
         "options": {
             "A": "Lung cancer",
@@ -69,7 +69,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A public health researcher is conducting a nationwide epidemiological study to identify the most prevalent cancer in Pakistan. The aim is to prioritize cancer screening and prevention programs. Which of the following cancers is the most prevalent in Pakistan?",
         "options": {
             "A": "Oral cancer",
@@ -97,7 +97,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "According to cancer statistics in Pakistan, which is the most common malignancy in males of karachi?",
         "options": {
             "A": "Lung carcinoma",
@@ -125,7 +125,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "According to the Pakistan Cancer Registry, which is the most common cancer among males in Pakistan?",
         "options": {
             "A": "Lung carcinoma",
@@ -155,7 +155,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cancer most prevalent in male of Karachi is:",
         "options": {
             "A": "Lung CA",
@@ -183,7 +183,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Carcinoma of oropharynx most commonly spreads to which cervical lymph node groups?",
         "options": {
             "A": "Level II, III, IV",
@@ -212,7 +212,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Chromosomal analysis is most useful in which following tumor?",
         "options": {
             "A": "SCC",
@@ -240,7 +240,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most common cancer in males in Karachi:",
         "options": {
             "A": "Lung cancer",
@@ -257,18 +257,21 @@
     {
         "id": "AP52KDKB",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon"
         ],
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Staging of tumor shows:",
         "options": {
             "A": "Differentiation",
@@ -285,18 +288,22 @@
     {
         "id": "DQVSGA3R",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
-            "Medicine - 02/25 - Feburary 8 - Afternoon"
+            "Medicine - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Surgery - 08/24 - August 22 - Morning"
         ],
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tumour with good prognosis And curable is:",
         "options": {
             "A": "Germ cell",
@@ -324,7 +331,7 @@
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is the most common cancer in males?",
         "options": {
             "A": "Prostate",

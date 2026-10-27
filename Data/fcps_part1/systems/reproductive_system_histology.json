@@ -13,7 +13,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30-year-old woman presents with fever, lower abdominal pain, and cervical motion tenderness. Pelvic ultrasound suggests salpingitis. What is the normal epithelium of the fallopian tube?",
         "options": {
             "A": "Stratified squamous",
@@ -41,7 +41,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has been diagnosed with salpingitis. The structure/organ involved in this inflammation has which of the following types of epithelium?",
         "options": {
             "A": "Simple columnar epithelium",
@@ -69,7 +69,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient underwent oophorectomy and was found to have salpingitis on examination. What is the epithelium of the affected organ?",
         "options": {
             "A": "Simple columnar ciliated",
@@ -97,7 +97,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A structure consist of glandular acini stratified columnar epithelium smooth muscles and connective tissue is most likely:",
         "options": {
             "A": "Urinary bladder",
@@ -125,7 +125,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young boy has pain in spine and relieve with exercise best investigation will be",
         "options": {
             "A": "HLA B27",
@@ -153,7 +153,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Abundant antibody in breast milk",
         "options": {
             "A": "IgA",
@@ -170,18 +170,21 @@
     {
         "id": "QKYW432C",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Anesthesia - 02/25 - Feburary 7 - Morning"
+            "Anesthesia - 02/25 - Feburary 7 - Morning",
+            "Gynecology - 11/24 - November 21 - Morning"
         ],
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ovary surface epithelium is lined by:",
         "options": {
             "A": "Simple cuboidal",
@@ -209,7 +212,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The epithelium lining the fallopian tube is best described as:",
         "options": {
             "A": "Simple cuboidal epithelium",
@@ -229,72 +232,20 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 02/25 - Feburary 8 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is Epithelium of fallopian tubes/salpingitis",
-        "options": {
-            "A": "Simple columnar ciliated epithelium",
-            "B": "Stratified squamous epithelium",
-            "C": "Simple columnar non ciliated epithelium",
-            "D": "Simple cuboidal epithelium",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "6LUHDGPU",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Anesthesia"
-        ],
-        "exams": [
-            "Anesthesia - 08/25 - August 4 - Morning"
-        ],
-        "subject": "Histology",
-        "chapter": "Reproductive System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is Epithelium of fallopian tubes/salpingitis:",
-        "options": {
-            "A": "Simple columnar ciliated epithelium",
-            "B": "Stratified squamous epithelium",
-            "C": "Simple columnar non ciliated",
-            "D": "Simple cuboidal epithelium",
-            "E": ""
-        },
-        "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "KWCE6BSW",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
+            "Medicine & Allied",
+            "Anesthesia",
             "Gynecology & Obstetrics"
         ],
         "exams": [
+            "Medicine - 02/25 - Feburary 8 - Morning",
+            "Anesthesia - 08/25 - August 4 - Morning",
             "Gynecology - 02/25 - Feburary 8 - Morning"
         ],
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Which of the following is Epithelium of fallopian tubes/salpingitis?",
+        "difficulty": "Easy",
+        "question": "Which of the following is Epithelium of fallopian tubes/salpingitis",
         "options": {
             "A": "Simple columnar ciliated epithelium",
             "B": "Stratified squamous epithelium",

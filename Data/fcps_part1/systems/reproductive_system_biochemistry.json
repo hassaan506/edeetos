@@ -13,7 +13,7 @@
         "subject": "Biochemistry",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 28-year-old woman planning pregnancy visits your clinic. She has no prior history of neural tube defects. You advise her regarding folic acid supplementation to prevent neural tube defects. Which dose is recommended before conception for low-risk women?",
         "options": {
             "A": "400 mcg daily",
@@ -23,6 +23,149 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "FC5PJEX9",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning",
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "HPV is non enveloped DNA virus which has different serotypes. Which serotype is responsible for cervical cancer?",
+        "options": {
+            "A": "HPV 16,18",
+            "B": "HPV 6,8",
+            "C": "HPV 3,4",
+            "D": "HPV 5, 6",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "BU8PRX4R",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Ostium secundum defect due to:",
+        "options": {
+            "A": "Increased cell death in ostium primum",
+            "B": "Failure of endocardial cushion to fuse",
+            "C": "Endocardial cushions",
+            "D": "Increase no of primum",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NBETJ4AS",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient presented to infertility clinic.Semen Analysis shows that Sperms' progressive motility is 25% and 25% are spasmodically contracting.Cause is:",
+        "options": {
+            "A": "Sample is obtained from Epidydimis",
+            "B": "Sample is obtained from Masturbation",
+            "C": "Sample is obtained from sex with wife after she used sponge of cacl2",
+            "D": "Mishandling of Specimen by technician",
+            "E": "Sample is obtained from seminal vesicle"
+        },
+        "correctAnswer": "C",
+        "explanation": "Cacl2 is spermicidal that causes immobilization of sperms and spasmodic contractions of sperms",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "DBFZLG7F",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Reduction in prostate size is achieved by inhibiting which enzyme?",
+        "options": {
+            "A": "5-alpha reductase",
+            "B": "Testosterone",
+            "C": "DHT",
+            "D": "Cortisol",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "2UDQ3B78",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Sperm synthesis temperature:",
+        "options": {
+            "A": "28'C",
+            "B": "42Â°C",
+            "C": "36Â°C",
+            "D": "20Â°C",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -41,8 +184,8 @@
         "subject": "Biochemistry",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "The enzyme 5-α-reductase catalyzes the conversion of:",
+        "difficulty": "Easy",
+        "question": "The enzyme 5-Î±-reductase catalyzes the conversion of:",
         "options": {
             "A": "Testosterone to estrogen",
             "B": "Testosterone to dihydrotestosterone (DHT)",
@@ -51,7 +194,7 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "5-α-reductase converts testosterone into dihydrotestosterone (DHT), which is a much more potent androgen responsible for male external genitalia development and prostate growth.",
+        "explanation": "5-Î±-reductase converts testosterone into dihydrotestosterone (DHT), which is a much more potent androgen responsible for male external genitalia development and prostate growth.",
         "hint": "",
         "Point": ""
     },
@@ -69,7 +212,7 @@
         "subject": "Biochemistry",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The most effective method for the prevention of neural tube defects (NTDs) in pregnancy is:",
         "options": {
             "A": "High-dose folic acid supplementation",
@@ -79,6 +222,34 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "WZD2HY6R",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Reproductive System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "The part of sperm containing proteolytic Enzymes to digest the zona pellucida is the:",
+        "options": {
+            "A": "Capacitor",
+            "B": "Head",
+            "C": "Corona",
+            "D": "Acrosome",
+            "E": "Cumulus"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -97,7 +268,7 @@
         "subject": "Biochemistry",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which vitamin other than folate is thought to be responsible for Neural tube defects",
         "options": {
             "A": "Vitamin B6",
@@ -125,7 +296,7 @@
         "subject": "Biochemistry",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which vitamin other than folate is thought to be responsible for NTDs.",
         "options": {
             "A": "Vitamin B6 deficiency",

@@ -15,7 +15,7 @@
         "subject": "Pediatrics",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "12 Years old child presented with Profuse bloody diarrhea. Colonoscopy shows red descending and sigmoid colon. What is likely cause",
         "options": {
             "A": "Entamoeba",
@@ -45,7 +45,7 @@
         "subject": "Oncology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "25 year old girl presented with lowerabdominal pain. She is suspected of having abdominal pelvic mass upto umbilicus. Chest metastasis is also found. Which tumor maker is used for follow up of this patient?",
         "options": {
             "A": "CA 19-9",
@@ -75,7 +75,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "80yrs old male bed ridden since 1 years presented with the complain of fever and cough with sputum yellowish in colour, his lower lobe of lung was filled with pus with multiple air fluid level most commonly involve organism?",
         "options": {
             "A": "Staph Aureus",
@@ -92,18 +92,21 @@
     {
         "id": "3YBFS6QL",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 19-year-old girl presents with a lack of height increase(4 Feet 2 inches) after puberty. She has a normal blood profile and blood sugar levels, with no other issues. Which hormonal abnormality is most likely to be observed?",
         "options": {
             "A": "Increased Somatostatin",
@@ -133,7 +136,7 @@
         "subject": "Surgery",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 23-year-old male injured in an industrial explosion was found to have multiple small metal fragments in his thoracic cavity. Since the pericardium was torn inferiorly, the surgeon began to explore for fragments in the pericardial sac. Slipping her hand under the heart apex, she slid her fingers upward and to the right within the sac until they were stopped by the cul-de-sac formed by the pericardial reflection near the base of the heart. Her fingertips were then in the:",
         "options": {
             "A": "Coronary sinus",
@@ -162,7 +165,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 25 Year old male with swelling at left inguinal region with positive cough impulse it moves when ispilateral testes is pull down ward it is painful this is likely",
         "options": {
             "A": "Congenital Encysted Hydrocele",
@@ -179,20 +182,25 @@
     {
         "id": "FCL88YQZ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Radiology"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 19 - Afternoon",
+            "Radiology - 11/24 - November 20 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 40 years old obese lady presented with Jaundice. Investigations reveal high levels of Conjugated bilirubin along with High Urinary Bilirubin & normal urobilinogen. Most likely diagnosis?",
         "options": {
             "A": "Obstruction of CBD",
@@ -209,7 +217,8 @@
     {
         "id": "HDBCE9X2",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -217,12 +226,13 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 11/24 - November 21 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 40y old smoker and shipyard worker male present with cough for 5 months on chest xray there was 5cm opacity which of the following is your diagnosis",
         "options": {
             "A": "Bronchogenic carcinoma",
@@ -252,7 +262,7 @@
         "subject": "Surgery",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45-year-old woman presents with abdominal pain and vaginal bleeding. A hysterectomy is performed and shows a benign tumor of the uterus derived from a smooth muscle cell forming spindles on Histology of Endometrium. What is the appropriate diagnosis?",
         "options": {
             "A": "Angiomyolipoma",
@@ -282,7 +292,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 50 years old man who has previous history of diabetic retinopathy & MI presented with chest pain coronary occlusion occurs commonly due to:",
         "options": {
             "A": "Vasospasm",
@@ -312,7 +322,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A Aethlete was given some injection on 14th day of menstrual cycle because of which her menstruation was absent injection contain",
         "options": {
             "A": "Estrogen",
@@ -342,7 +352,7 @@
         "subject": "Surgery",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A boxer got blow and Mandibular Ramus fracture just before the mandibular foreman will cause?",
         "options": {
             "A": "Loss of taste to ant 2/3 of tongue",
@@ -359,18 +369,22 @@
     {
         "id": "8B64VCYF",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 23 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
         ],
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A boy fall by his left shoulder and then his arm is hinging and elbow is extended with arm medial rotated and Pronated due to damage of",
         "options": {
             "A": "Lateral portion of median nerve",
@@ -380,7 +394,7 @@
             "E": "Axillary nerve"
         },
         "correctAnswer": "C",
-        "explanation": "",
+        "explanation": "This is the case of Erb's Palsy (waiter'stip) resulted from traction or tear of uppertrunk of brachial plexus (C5,C6) resultedin loss of abduction, lateral rotation, flexion & supination of arm so arm position will be adducted, Medially rotataed, Extended and pronated.",
         "hint": "",
         "Point": ""
     },
@@ -400,7 +414,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A boy presented with fever, right iliac fossa pain, tenderness and rebound tenderness what is likely diagnoses",
         "options": {
             "A": "Cholycystitis",
@@ -428,7 +442,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A child is in shock Like condition blood sample taken from which artery",
         "options": {
             "A": "Femoral artery",
@@ -445,28 +459,32 @@
     {
         "id": "EUGEP6EH",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 12/24 - December 01 - Morning",
+            "Surgery - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child is present with anal itching and worms in stool which of the following laboratory finding is significant",
         "options": {
             "A": "Eosinophilia",
             "B": "Increased macrophages",
             "C": "Basophilia",
             "D": "Lymphocytosis",
-            "E": ""
+            "E": "Neutrophilia"
         },
         "correctAnswer": "A",
-        "explanation": "",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -486,7 +504,7 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A CKD patient died on autopsy Which of the following organs increases in size",
         "options": {
             "A": "Parathyroid gland",
@@ -514,8 +532,8 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A female patient presents with the history of Nose & Gum bleeds. On examination, Splenomegaly & a Bone Marrow Aspirate shows dry tap. Investigations reveal the following findings: Hemoglobin (Hb): 10.3 g/dL, Total Leukocyte Count (TLC): 14,000 and Platelet Count: 1,000,000 (10^6/µL) What is the most likely diagnosis?",
+        "difficulty": "Hard",
+        "question": "A female patient presents with the history of Nose & Gum bleeds. On examination, Splenomegaly & a Bone Marrow Aspirate shows dry tap. Investigations reveal the following findings: Hemoglobin (Hb): 10.3 g/dL, Total Leukocyte Count (TLC): 14,000 and Platelet Count: 1,000,000 (10^6/ÂµL) What is the most likely diagnosis?",
         "options": {
             "A": "Myeloproliferative Disorder",
             "B": "Polycythemia",
@@ -535,16 +553,18 @@
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Anesthesia - 08/25 - August 4 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A footballer is dribbling and running precisely. What is responsible for his dexterity and accuracy",
         "options": {
             "A": "Integration of sensory feedback during movement",
@@ -572,7 +592,7 @@
         "subject": "Oncology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A HIV patient develops lesion on skin his sex partner has similar lesions too which of following Skin CA associated with HIV?",
         "options": {
             "A": "Lymphoma",
@@ -589,18 +609,20 @@
     {
         "id": "ML74JPY7",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 11/24 - November 21 - Morning"
         ],
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A male patient was presents in OPD. On physical examination he is tall and has small testes and has gynecomastia which of the following investigation will reach the diagnosis",
         "options": {
             "A": "Bar body",
@@ -628,7 +650,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A male presented to OPD with 104 fevers for last 4 days and. He has been passing cola color urine for the last 1 day with deranged LFTs and increased unconjugated bilirubin. What is the cause?",
         "options": {
             "A": "G6PD",
@@ -656,7 +678,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A man had penetrating injury in Right lumbar region. What is sequence of layer to be pierced",
         "options": {
             "A": "Skin, Scarpa's fascia, Camper fascia external oblique aponeurosis, internal oblique aponeurosis",
@@ -673,18 +695,21 @@
     {
         "id": "BBJF75M4",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Radiology"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A newly married female came with Right iliac fossa pain Her TLC 12000 she has fever and vomiting Her LMP 3 weeks back likely diagnose:",
         "options": {
             "A": "Appendicitis",
@@ -714,7 +739,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A old patient's CBC shows Hb. 5.6 g/dL, platelets. 140,000/uL, and PT/aPTT at the upper normal limit. What is the most appropriate transfusion option?",
         "options": {
             "A": "Fresh Frozen Plasma (FFP)",
@@ -742,7 +767,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient after RTA damage to mandibular ramus and hypoglossal damage all of following muscles will be damage except",
         "options": {
             "A": "Genioglossus",
@@ -759,20 +784,24 @@
     {
         "id": "ABJ6CU7E",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Ophthalmology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient complain of multiple areas of focus at right angles the most likely diagnosis is",
         "options": {
             "A": "Myopia",
@@ -789,18 +818,20 @@
     {
         "id": "YEFRENCP",
         "year": [
-            "2025"
+            "2025",
+            "2026"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 01/26 - January 7 - Evening"
         ],
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has HbsAg + , Anti Hbc IgM + and HbeAg -ve what is likely diagnose",
         "options": {
             "A": "Past exposure",
@@ -810,7 +841,7 @@
             "E": "Chronic carrier"
         },
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "HBsAg + â†’ current HBV infection\r\nAnti-HBc IgM + â†’ acute/recent infection\r\nHBeAg âˆ’ â†’ lower replication or possibly a precore mutant; it does not override the significance of IgM anti-HBc.\r\nPast exposure â†’ HBsAg should be negative and anti-HBs positive.\r\nChronic carrier â†’ anti-HBc is usually IgG, not IgM.\r\nHigh replication carrier â†’ typically HBeAg positive.",
         "hint": "",
         "Point": ""
     },
@@ -828,7 +859,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient has history of alter bowel habits Diarrhea with history of memory lose Along with CNS defects. This is related to",
         "options": {
             "A": "Scurvy",
@@ -856,7 +887,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient has tingling sensations in his peripheral body and loss of vibration and lab investigation reveal raised MCV 112 Fl What is the most probable pathology?",
         "options": {
             "A": "Pernicious anemia",
@@ -873,7 +904,8 @@
     {
         "id": "8TZWENBU",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -881,12 +913,13 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon"
         ],
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient having retrosternal chest pain nausea and GERD from 10 years. Endoscopy reveals Pink patch in lower esophagus. Most likely diagnosis?",
         "options": {
             "A": "Esophagitis",
@@ -903,18 +936,21 @@
     {
         "id": "LZ775KWT",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 08/24 - August 21 - Afternoon",
+            "Surgery - 11/24 - November 21 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient histopathology report showing pleomorphism rete ridges loss of polarity and increased nuclear to cytoplasmic ratio what is diagnose?",
         "options": {
             "A": "Squamous cell Carcinoma",
@@ -924,27 +960,30 @@
             "E": "Bronchogenic Carcinoma"
         },
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "Verrucous carcinoma Epithelium seldom shows dysplastic features Elephant foot like rete ridges is seen Parakeratin plugging is present Squamous cell carcinoma Epithelium shows high dysplasia Elephant foot like rete ridges is not seen Parakeratin plugging is usually absent, keratin pearls are seen Breach in the basement membrane is absent Islands of dysplastic epithelium are not seen in connective tissue Breach in the basement membrane is present Islands of dysplastic epithelium are seen in connective tissue",
         "hint": "",
         "Point": ""
     },
     {
         "id": "X6R8ZZS8",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Anesthesia - 08/25 - August 4 - Morning",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon"
         ],
         "subject": "Oncology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient history bloody diarrhea and weight loss with pallor. He was diagnosed as case of Colon Carcinoma and was treated for that. Now which marker is used for follow up of that patient?",
         "options": {
             "A": "AFP",
@@ -961,18 +1000,23 @@
     {
         "id": "9W99FWQ8",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Medicine - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient is alert but relaxed with eyes closed. Upon giving a stimulus, the patient's eyes open. What is the likely change in EEG waves?",
         "options": {
             "A": "Theta to Beta",
@@ -989,7 +1033,8 @@
     {
         "id": "LH393DJZ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -997,12 +1042,13 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 14 - Morning",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient of asthma having following ABGs PH 7.23. HCO3 26 and Hypercapnea likely acid base disorder is:",
         "options": {
             "A": "Uncompensated metabolic acidosis",
@@ -1032,7 +1078,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented gas gangrene caused by clostridium perfringes drug of choice for it",
         "options": {
             "A": "Clindamycin",
@@ -1049,18 +1095,21 @@
     {
         "id": "JZT3CF8U",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with Cardiac, Facial & Corneal defects along with hypotonia & failure to thrive diagnosed as Zellweger syndrome in which there is accumulation of long- chain fatty acids caused by?",
         "options": {
             "A": "Peroxisomes",
@@ -1077,7 +1126,8 @@
     {
         "id": "4ALWZTJV",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -1085,19 +1135,20 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with Central chest pain relieved by Nitroglycerine. It acts as a:",
         "options": {
             "A": "Bronchial constriction",
             "B": "Increased Resistance Vasodilation",
             "C": "Vasodilation of capacitance vessels",
-            "D": "",
-            "E": ""
+            "D": "Vasodilation of Resistant Vessel",
+            "E": "Phosphodiesterase inhibition"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1120,7 +1171,7 @@
         "subject": "Medicine",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presented with complain of abdominal pain, low grade fever abdominal tb is diagnosed which is multidrug resistant what should be treatment plan now",
         "options": {
             "A": "Pyrazinamide + Ethambutol+ Rifampicin+ Moxifloxacin",
@@ -1150,7 +1201,7 @@
         "subject": "Medicine",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presented with fever, and knee pain . On examination knee was tender to touch and inflamed. What should be treatment option",
         "options": {
             "A": "Vancomycin",
@@ -1180,7 +1231,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presented with sign of perforated appendix surgery done after one week he developed fever , loca tenderness and discharge from wound what should be management plan",
         "options": {
             "A": "Wound dressing",
@@ -1197,20 +1248,23 @@
     {
         "id": "KSH7K5QZ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology- 08/24 - August 21 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Toxicology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with signs & symptoms of aspirin toxicity. To reduce the symptoms, HCO3 was infused. What is the mechanism by which HCO3 reduces the toxicity of aspirin?",
         "options": {
             "A": "Reduces absorption of aspirin",
@@ -1227,18 +1281,22 @@
     {
         "id": "FX2K8Y9W",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Hard",
         "question": "A patient presents with history of edema. His vitals reveal Increased Blood Pressure. Investigations reveal: Hypokalemia, decreased renin levels, Increased Sodium levels but Renin, Angiotensin 2 & Aldosterone levels are within normal limits. A diagnosis of Liddle syndrome is made. Where is the defect located?",
         "options": {
             "A": "Mutation in Epithelial sodium channel (ENaC) in the collecting duct",
@@ -1266,7 +1324,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with retrosternal pain radiating to the epigastrium lasting for 3-4 hours, accompanied by ST-segment elevation on ECG but no change in cardiac enzyme levels. There is mediastinal widening . What is the most likely diagnosis?",
         "options": {
             "A": "Aortic dissection",
@@ -1294,7 +1352,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with shortness of breath (SOB) and cough. Arterial Blood Gas (ABG) results are: pO2: 70 mmHg ,pH: 7.35 HCO3: 16 mmol/L and pCO2: 60 mmHg. Identify the acid-base abnormality:",
         "options": {
             "A": "Compensated Metabolic Acidosis",
@@ -1325,7 +1383,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient tidal volume is 500 and Respiratory rate is 12 calculate pulmonary ventilation",
         "options": {
             "A": "8L",
@@ -1353,7 +1411,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient unable to rotate foot medially but can rotate laterally which group of muscles damage:",
         "options": {
             "A": "Tibialis anterior/tibialis posterior",
@@ -1381,7 +1439,7 @@
         "subject": "Medicine",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with epistaxis, hematuria, Nasal perforation & granulomatous inflammation diagnose is:",
         "options": {
             "A": "Churg strauss syndrome",
@@ -1411,7 +1469,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with round face, abdominal striae, fat on neck, uncontrol diabetes and What is the likely cause?",
         "options": {
             "A": "Excess cortisol production",
@@ -1439,7 +1497,7 @@
         "subject": "Histology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A structure consist of glandular acini stratified columnar epithelium smooth muscles and connective tissue is most likely:",
         "options": {
             "A": "Urinary bladder",
@@ -1469,7 +1527,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A surgeon open abdomen for surgery see intestine. There were white patches at anti mesenteric border. Which part of intestine is most likely",
         "options": {
             "A": "Jejunum",
@@ -1499,7 +1557,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A surgeon performing surgery what is responsible for his dexterity and accuracy",
         "options": {
             "A": "Integration of sensory feedback during movement",
@@ -1527,7 +1585,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A wave correspond to",
         "options": {
             "A": "PR segment",
@@ -1557,7 +1615,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman presented with a ulcer on foot. Two weeks later, she was found to have platelet levels of 1000000. Most probable Diagnosis?",
         "options": {
             "A": "Essential thrombocytosis",
@@ -1588,7 +1646,7 @@
         "subject": "Obstetrics",
         "chapter": "Pediatrics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman with 5 weeks of pregnancy contracted German measles. She consulted her obstetrician worrying about the baby which is the most likely complication the baby might develop?",
         "options": {
             "A": "Aortopulmonary septal defect",
@@ -1618,7 +1676,7 @@
         "subject": "Pathology",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young boy having mass in neck biopsy of lymph node shows effaces architecture atypical mononucleosis cell with bilobed nucleus and eosinophilia and CD 15 and CD 30positive diagnose is:",
         "options": {
             "A": "Non Hodgkin lymphoma",
@@ -1646,7 +1704,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A young group of boys living in daycare service, all of them are having malaise and weakness and restlessness during night, thy cant properly sleep due to perianal itching What is the cause of their symptoms?",
         "options": {
             "A": "Tapeworm",
@@ -1676,7 +1734,7 @@
         "subject": "Pathology",
         "chapter": "Genetics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "After FDA approval of gene transfer, how was the first gene transfered (what was used)?",
         "options": {
             "A": "A liposome",
@@ -1721,13 +1779,16 @@
     {
         "id": "79D3XH7Z",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
@@ -1760,7 +1821,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Anterior dislocation of Tibia over femur ligament damaged is:",
         "options": {
             "A": "Anterior cruciate ligament",
@@ -1777,18 +1838,21 @@
     {
         "id": "PRZ5C9K3",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology- 08/24 - August 22 - Morning"
         ],
         "subject": "Embryology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "At birth a baby girl has meconium in her vagina and no anal opening. What type of birth defect does she have?",
         "options": {
             "A": "Imperforate anus",
@@ -1816,7 +1880,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Benzodiazepines, Barbiturates and other Anti-convulsant work by acting on which Neurotransmitter?",
         "options": {
             "A": "GABA",
@@ -1846,7 +1910,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Best natural anti inflammatory is",
         "options": {
             "A": "IL 1",
@@ -1876,7 +1940,7 @@
         "subject": "Physiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Bile salts absorbed from",
         "options": {
             "A": "Jejunum",
@@ -1904,7 +1968,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "Bulbar urethral rupture blood will extravasate into:",
         "options": {
             "A": "Superficial perineal pouch",
@@ -1932,7 +1996,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Carpal bone attached to distal radial joint is of which variety",
         "options": {
             "A": "Pivot",
@@ -1963,7 +2027,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Cell wall of gram positive cause septic shock which component of cell wall cause shock?",
         "options": {
             "A": "Peptidoglycan",
@@ -1978,28 +2042,34 @@
         "Point": ""
     },
     {
-        "id": "K94ZKU5N",
+        "id": "TD9X9MEJ",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Anesthesia",
+            "Radiology",
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
+            "Anesthesia - 04/26 - April 7 - Morning",
+            "Radiology - 04/26 - April 7 - Morning",
             "Surgery - 01/26 - January 7 - Evening",
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 11/24 - November 22 - Morning"
         ],
         "subject": "Pathology",
-        "chapter": "General",
+        "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Councilman bodies occur in process of:",
+        "difficulty": "Easy",
+        "question": "Councilman bodies occur in process of",
         "options": {
             "A": "Hypertrophy",
-            "B": "Cell Injury",
+            "B": "Apoptosis",
             "C": "Atrophy",
             "D": "Yellow fever",
             "E": ""
@@ -2026,7 +2096,7 @@
         "subject": "Pharmacology",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cyclophosphamide mechanism of action:",
         "options": {
             "A": "Cross linking of strands of DNA & RNA",
@@ -2043,18 +2113,21 @@
     {
         "id": "8YSGM68P",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology - 11/24 - November 21 - Morning"
         ],
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Dermatitis & diarrhea is caused by deficiency of which of the following vitamin?",
         "options": {
             "A": "Thiamine",
@@ -2102,7 +2175,8 @@
     {
         "id": "TTVFLFMP",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -2111,12 +2185,13 @@
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
             "Surgery - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Difference between the Taenia solium and taenia saginata",
         "options": {
             "A": "Saginata acid fast bacteria",
@@ -2146,7 +2221,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Duchenne muscles dystrophy is an inherited disorder, its gene is located on",
         "options": {
             "A": "Chromosome 5",
@@ -2163,18 +2238,22 @@
     {
         "id": "UWLD7DQ5",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology - 11/24 - November 21 - Morning",
+            "Surgery - 11/24 - November 21 - Morning"
         ],
         "subject": "Embryology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ductus arteriosus closes:",
         "options": {
             "A": "Just before birth",
@@ -2202,7 +2281,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "During Nerve transmission temperature dropped leading to decreased transmission, why so",
         "options": {
             "A": "Affected presynaptic neurotransmitter release",
@@ -2232,7 +2311,7 @@
         "subject": "Physiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "During pharyngeal swallowing phase:",
         "options": {
             "A": "Vocal cord abduction",
@@ -2249,18 +2328,21 @@
     {
         "id": "X3X23QRL",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 23 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "EDV depends on which one?",
         "options": {
             "A": "Venous return",
@@ -2288,7 +2370,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Esophageal opening passes through which vertebral level of diaphragm?",
         "options": {
             "A": "T8",
@@ -2316,7 +2398,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Excess Glucagon leads to",
         "options": {
             "A": "Increase Amino Acids",
@@ -2344,7 +2426,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "External spermatic fascia is derived from",
         "options": {
             "A": "External oblique",
@@ -2374,7 +2456,7 @@
         "subject": "Obstetrics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Female after normal C section, no complications, 5 days later pain in pelvis, examination shows foul smelling Lochia, tender pelvic cause is",
         "options": {
             "A": "Necrotising fasciitis",
@@ -2402,7 +2484,7 @@
         "subject": "Genetics",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Female Patient had aortic root dilation upto 4cm, ocuular examination showed lens dislocation. mitral valve leaflet defect with a systolic click defect in which of the following chromosome",
         "options": {
             "A": "22",
@@ -2430,7 +2512,7 @@
         "subject": "Medicine",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "First Ocular manifestation of vitamin A deficiency is",
         "options": {
             "A": "Xerophthalmia",
@@ -2461,7 +2543,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "First sign of irreversible injury in cardiac muscles:",
         "options": {
             "A": "Massive Na influx",
@@ -2478,7 +2560,8 @@
     {
         "id": "9HR49ZJA",
         "year": [
-            "2025"
+            "2025",
+            "2026"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -2486,12 +2569,13 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 01/26 - January 7 - Evening"
         ],
         "subject": "Anatomy",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "First web lymphatic drainage is",
         "options": {
             "A": "Supraclavicular",
@@ -2519,7 +2603,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "For carbohydrate metabolism which vitamin is neccessary?",
         "options": {
             "A": "Riboflavin",
@@ -2536,7 +2620,8 @@
     {
         "id": "9G7SW8WA",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -2544,12 +2629,13 @@
         ],
         "exams": [
             "Medicine - 02/25 - Feburary 7 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 23 - Morning"
         ],
         "subject": "Community Medicine",
         "chapter": "Medical Ethics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "For effective communication between patient and DR",
         "options": {
             "A": "Having sound medical knowledge",
@@ -2566,18 +2652,20 @@
     {
         "id": "Z8KWK4M3",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "GastroDuodenal Artery is a branch of",
         "options": {
             "A": "Left Gastric Artery",
@@ -2587,7 +2675,7 @@
             "E": "Pancreatoduodenal artery"
         },
         "correctAnswer": "C",
-        "explanation": "",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -2607,7 +2695,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Granuloma is characterized by:",
         "options": {
             "A": "Localized collection of Epitheloid cells",
@@ -2617,34 +2705,6 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "66GD8E6X",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
-        ],
-        "subject": "Microbiology",
-        "chapter": "Gastrointestinal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "H.pylori infection has a definite etiologic role in pathogenesis of:",
-        "options": {
-            "A": "Chronic gastritis",
-            "B": "Gastric MALT lymphoma",
-            "C": "Gastric adenocarcinoma",
-            "D": "Duodenal adenocarcinoma",
-            "E": "Peptic ulcer disease"
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2665,7 +2725,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Hapten, when a drug attached",
         "options": {
             "A": "T cell dependent lymphocyte reaction",
@@ -2693,7 +2753,7 @@
         "subject": "Microbiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "HIV patient presented with fever neck rigidity and meningeal irritation, ring enhancing lesion seen around the organism involving the brain tissue What is likely cause",
         "options": {
             "A": "Cryptococcus Neoformis",
@@ -2723,7 +2783,7 @@
         "subject": "Surgery",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Horse rider fall and scratches some days ago presented with lock jaw and spasm due to:",
         "options": {
             "A": "Tetanus toxin Decrease GABA",
@@ -2733,6 +2793,37 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "66GD8E6X",
+        "year": [
+            "2025",
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Gastrointestinal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "H.pylori infection has a definite etiologic role in pathogenesis of:",
+        "options": {
+            "A": "Chronic gastritis",
+            "B": "Gastric MALT lymphoma",
+            "C": "Gastric adenocarcinoma",
+            "D": "Duodenal adenocarcinoma",
+            "E": "Peptic ulcer disease"
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2751,7 +2842,7 @@
         "subject": "Pathology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Hyperthyroidism patient, raised t3 t4, Thyroid swelling ,histo showed large columnar cells with less cytoplasm and overlapping nuclei, histology ??",
         "options": {
             "A": "Thyroid follicle/cells Filled with colloid",
@@ -2768,18 +2859,22 @@
     {
         "id": "6PMPX9P9",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon",
+            "Surgery - 11/24 - November 20 - Afternoon"
         ],
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Hypervitaminosis A causes:",
         "options": {
             "A": "Jaundice",
@@ -2807,7 +2902,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "If patient is HIV seropositive what is best approach?",
         "options": {
             "A": "Repeat tests with other methods",
@@ -2838,7 +2933,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Important finding at angle of Louis:",
         "options": {
             "A": "Thoracic duct ends",
@@ -2866,7 +2961,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In case of obstructive jaundice bleeding tendency due to",
         "options": {
             "A": "Decrease Micelle formation",
@@ -2895,7 +2990,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In Restrictive lung disease, what will decrease",
         "options": {
             "A": "Residual volume",
@@ -2925,7 +3020,7 @@
         "subject": "Surgery",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In SAH few days later csf accumulation occur blockage occur at which structure",
         "options": {
             "A": "Aqueduct of sylvius",
@@ -2953,7 +3048,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In Thyrotoxicosis (inc. thyroxin) what metabolic activity happens?",
         "options": {
             "A": "Gluconeogenesis in liver",
@@ -2981,7 +3076,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In tuberculos lesion of mycobacterium?",
         "options": {
             "A": "Mycobacterium is surrounded by antibody in cell",
@@ -3009,7 +3104,7 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In usual hemoglobinopathies, what molecular change occur in it",
         "options": {
             "A": "Amino acid sequence changed",
@@ -3037,7 +3132,7 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Insoluble form of iron stored is:",
         "options": {
             "A": "Transferrin",
@@ -3065,7 +3160,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Isoniazid cannot be metabolized due to deficiency of?",
         "options": {
             "A": "N acetyl transferase",
@@ -3093,7 +3188,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Lesion of upper eyelid mostly drained by:",
         "options": {
             "A": "Superior Sagittal Sinus",
@@ -3121,7 +3216,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Lymphatic drainage of tumout at anal verge below pectinate line is",
         "options": {
             "A": "Superficial inguinal LNs",
@@ -3138,15 +3233,19 @@
     {
         "id": "YLEFYUUH",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology - 11/24 - November 21 - Afternoon",
+            "Medicine - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Embryology",
         "chapter": "Urinary System",
@@ -3181,7 +3280,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Middle ear is aerated by which of the following?",
         "options": {
             "A": "Anterior wall",
@@ -3198,7 +3297,8 @@
     {
         "id": "LKY5TKBM",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -3206,12 +3306,15 @@
         ],
         "exams": [
             "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Medicine - 11/24 - November 21 - Afternoon",
+            "Medicine - 12/24 - December 01 - Morning"
         ],
         "subject": "Oncology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most common skin cancer in HIV/AIDS patients is:",
         "options": {
             "A": "Kaposi sarcoma",
@@ -3241,7 +3344,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most common structure damaged by ischemia is:",
         "options": {
             "A": "Liver",
@@ -3258,28 +3361,33 @@
     {
         "id": "EDUU683G",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Radiology"
         ],
         "exams": [
             "Medicine - 05/25 - May 14 - Afternoon",
             "Medicine - 11/25 - November 14 - Evening",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 08/25 - August 7 - Morning",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
         ],
         "subject": "Biochemistry",
-        "chapter": "General",
+        "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most potent antioxidant:",
         "options": {
             "A": "Vitamin E",
             "B": "Vitamin A",
             "C": "Glutathione",
             "D": "Vitamin C",
-            "E": ""
+            "E": "Transferrin"
         },
         "correctAnswer": "A",
         "explanation": "Glutathione > Transferrin > Vitamin E >Vitamin C > Vitamin A.",
@@ -3300,7 +3408,7 @@
         "subject": "Embryology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Myelination of peripheral nerves in fetus occurs in which month",
         "options": {
             "A": "2nd month",
@@ -3317,18 +3425,21 @@
     {
         "id": "6T6XMUV2",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 22 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Nocardia lung abscess treatment is",
         "options": {
             "A": "Trimethoprim SMX",
@@ -3345,18 +3456,21 @@
     {
         "id": "RE5SQBYE",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology - 11/24 - November 21 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Obese female pre surgery had taken gentamycin X Bd, is likely to have impaired?",
         "options": {
             "A": "Filtration",
@@ -3373,18 +3487,21 @@
     {
         "id": "VVTWAZ66",
         "year": [
-            "2025"
+            "2025",
+            "2026"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology - 01/26 - January 6 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Obstructive disease of lung increases which capacity",
         "options": {
             "A": "FRC",
@@ -3414,7 +3531,7 @@
         "subject": "Surgery",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Old man after complicated dental surgery of last molar, developed mass in upper right neck over the upper anterior border of the sternocleidomastoid, he is febrile, cause (of infection) is which organism",
         "options": {
             "A": "Mixed anaerobes",
@@ -3444,7 +3561,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "On histology liver shows centrally distorted area surrounded by epitheloid cells, lymphocytes and giant cells this is related to",
         "options": {
             "A": "Coagulative necrosis",
@@ -3461,18 +3578,21 @@
     {
         "id": "MJQTVYUR",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Radiology"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Operating on the inguinal hernia, surgeon found that the hernia is immediately lateral to inferior epigastric artery, what type of hernia was the surgeon operating",
         "options": {
             "A": "Indirect inguinal hernia",
@@ -3489,7 +3609,8 @@
     {
         "id": "W3CE2Z3X",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -3497,12 +3618,13 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Optic nerve pass through which of the following bone",
         "options": {
             "A": "Sphenoid bone",
@@ -3512,7 +3634,7 @@
             "E": "Maxillary bone"
         },
         "correctAnswer": "A",
-        "explanation": "",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -3532,7 +3654,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patien having fever cough with sputum infiltrate on x-ray chest, gram positive, catalase negative organism and alpha hemolytic isolated on culture is likely:",
         "options": {
             "A": "Streptococcus pneumonia",
@@ -3560,7 +3682,7 @@
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient after history of stroke develops Brain necrosis and ischemia which type of necrosis will be seen?",
         "options": {
             "A": "Coagulative necrosis",
@@ -3588,7 +3710,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient Both legs paralyzed, No hot or cold temp sensation, Urinary and fecal incontinence present lesion is in",
         "options": {
             "A": "Anterior spinal artery",
@@ -3616,7 +3738,7 @@
         "subject": "Community Medicine",
         "chapter": "Medical Ethics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient diagnosed with terminal ovarian cancer. Told you not to tell their family. In a few days his son and daughter come to your clinic and ask you about the patient what do you.",
         "options": {
             "A": "Tell them nothing",
@@ -3644,7 +3766,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient had a road accident hit by a car on the left side chest shows diminished sounds and gut herniation above the diaphragm. Where is the diaphragm rupture?",
         "options": {
             "A": "Costosternal triangle",
@@ -3674,7 +3796,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient had an accident, hemorrhage, his MAP is 50 mm Hg, what mechanism will maintain his BP?",
         "options": {
             "A": "Decrease urine flow",
@@ -3702,7 +3824,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient had discomfort in chest, aching pressure, upon examination He had a dilated oesophagus. What can be the condition / cause ?",
         "options": {
             "A": "Achalasia of the cardia",
@@ -3720,7 +3842,8 @@
         "id": "J774GFQV",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -3730,12 +3853,13 @@
             "Medicine - 07/26 - July 9 - Afternoon",
             "Surgery - 07/26 - July 09 - Afternoon",
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient had MI 6 months back now presented with chest pain and SOB.ECG shows bigeminy QRS complexes and inverted T waves cause is",
         "options": {
             "A": "Premature ventricular contraction",
@@ -3745,7 +3869,7 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Premature ventricular contraction</strong> - A premature ventricular contraction (PVC) is an early ventricular beat producing a wide, abnormal QRS complex. After an MI, ventricular ectopy is common because myocardial scar and ischemic tissue create an abnormal electrical substrate.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Select the Answer:</h3></p><p><p>The key clue is <strong>bigeminy</strong>. Ventricular bigeminy means a normal beat is followed by a premature ventricular beat in a repeating pattern. The history of previous MI further supports ventricular ectopy due to myocardial scarring. Therefore, the best answer is <strong>premature ventricular contraction</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Torsades de pointes</strong> - This is a specific form of polymorphic ventricular tachycardia characterized by QRS complexes that appear to twist around the baseline. It is not simply ventricular bigeminy.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Prolong QT Syndrome</strong> - Prolonged QT increases the risk of torsades de pointes, but the stem does not describe a prolonged QT interval.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Complete heart block</strong> - Characterized by complete AV dissociation, with independent atrial and ventricular rhythms. It does not produce the characteristic alternating normal beat-PVC pattern of bigeminy.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Bigeminy = every second beat is premature.</strong> If the premature beat is ventricular in origin, it is <strong>ventricular bigeminy due to PVCs</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Bigeminy ≠ torsades.</strong> Bigeminy describes the <strong>pattern</strong> of premature beats, whereas torsades is a specific type of polymorphic ventricular tachycardia usually associated with a prolonged QT.</p></p>",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Premature ventricular contraction</strong> - A premature ventricular contraction (PVC) is an early ventricular beat producing a wide, abnormal QRS complex. After an MI, ventricular ectopy is common because myocardial scar and ischemic tissue create an abnormal electrical substrate.</p></p><p><br></p><p><h3 style=\"color: black;\">How to Select the Answer:</h3></p><p><p>The key clue is <strong>bigeminy</strong>. Ventricular bigeminy means a normal beat is followed by a premature ventricular beat in a repeating pattern. The history of previous MI further supports ventricular ectopy due to myocardial scarring. Therefore, the best answer is <strong>premature ventricular contraction</strong>.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Torsades de pointes</strong> - This is a specific form of polymorphic ventricular tachycardia characterized by QRS complexes that appear to twist around the baseline. It is not simply ventricular bigeminy.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Prolong QT Syndrome</strong> - Prolonged QT increases the risk of torsades de pointes, but the stem does not describe a prolonged QT interval.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Complete heart block</strong> - Characterized by complete AV dissociation, with independent atrial and ventricular rhythms. It does not produce the characteristic alternating normal beat-PVC pattern of bigeminy.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>Bigeminy = every second beat is premature.</strong> If the premature beat is ventricular in origin, it is <strong>ventricular bigeminy due to PVCs</strong>.</p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Bigeminy â‰  torsades.</strong> Bigeminy describes the <strong>pattern</strong> of premature beats, whereas torsades is a specific type of polymorphic ventricular tachycardia usually associated with a prolonged QT.</p></p>",
         "hint": "<p><br></p>",
         "Point": ""
     },
@@ -3756,8 +3880,8 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
             "Radiology",
+            "Medicine & Allied",
             "Surgery & Allied"
         ],
         "exams": [
@@ -3768,7 +3892,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient has weakness in flexion, supination and sensory loss on lateral side which of following nerve injury is responsible for this?",
         "options": {
             "A": "Brachial nerve",
@@ -3796,7 +3920,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient is undergoing some surgery of spleen surgeon has to take care of costo diaphragmatic recess what is the level of Costeo diaphragmatic recess?",
         "options": {
             "A": "T10 ICS midaxillary line",
@@ -3813,18 +3937,21 @@
     {
         "id": "8HCQEQTA",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient Known case of HIV diagnosed with Cryptococcus Neoformas meningitis. How will you treat this patient?",
         "options": {
             "A": "Acyclovir",
@@ -3854,7 +3981,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient mesenteric ischaemia in SMA, gut was resected and right hemicoloectomy done Jejunum was left (100 cm). What is the length of small intestine for minimal absorption of nutrients to consider the possibilty of enteral nutrition",
         "options": {
             "A": "250 cm",
@@ -3882,7 +4009,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient presented with injury in lower legs, it was fond that tibial part of sciatic nerve was damaged but still here was some flexion remained in knee, what nerve is there:",
         "options": {
             "A": "Short head of bicep femoris",
@@ -3899,7 +4026,8 @@
     {
         "id": "28ARSCYB",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -3907,12 +4035,13 @@
         ],
         "exams": [
             "Medicine - 05/25 - May 14 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 21 - Morning"
         ],
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient sways back and forth is having Ataxia and drunken gate where does neuron synapses in cerebellum and affected",
         "options": {
             "A": "Flocoborular lobe",
@@ -3942,7 +4071,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient with epilepsy on medial side of the temporal lobe. Now has developed impaired memory recall, unable to recognize faces and form , can't convert recent memory into long term memory, has impaired/improper emotional response to past memory, lesion is in ?",
         "options": {
             "A": "Arcuate",
@@ -3970,7 +4099,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient with hepatitis B history 10 years ago acute hepatitis diagnosed , delta antigens were found what does it imply?",
         "options": {
             "A": "it indicates a carrier state",
@@ -3987,18 +4116,22 @@
     {
         "id": "TVJUZXAU",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Surgery - 08/24 - August 22 - Morning"
         ],
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "People consuming polished rice as their staple food are prone to deficiency of",
         "options": {
             "A": "Riboflavin",
@@ -4026,7 +4159,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Peptic ulcer pain is transmitted via",
         "options": {
             "A": "Greater Splanchnic Nerve",
@@ -4054,7 +4187,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Player hiked to mountain, having Low PO2 and developed dyspnea the likely etiology is:",
         "options": {
             "A": "Anemic hypoxia",
@@ -4084,7 +4217,7 @@
         "subject": "Pathology",
         "chapter": "Oncology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pleomorphic adenoma?",
         "options": {
             "A": "Benign tumor of epithelial origin",
@@ -4114,7 +4247,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Primary polycythemia different from secondary because former has",
         "options": {
             "A": "Increase EPO",
@@ -4142,7 +4275,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Proprioception is taken to which nucleaus?",
         "options": {
             "A": "Nucleus proprius",
@@ -4170,7 +4303,7 @@
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Puberty features starts after releasing factors from",
         "options": {
             "A": "Pituitary gland",
@@ -4198,7 +4331,7 @@
         "subject": "Genetics",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Regarding recombinant theory which of the following is true",
         "options": {
             "A": "Plasmid",
@@ -4228,7 +4361,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Soleus muscle nerve supply is:",
         "options": {
             "A": "Femoral",
@@ -4245,18 +4378,21 @@
     {
         "id": "AP52KDKB",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon"
         ],
         "subject": "Oncology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Staging of tumor shows:",
         "options": {
             "A": "Differentiation",
@@ -4274,20 +4410,24 @@
         "id": "LBTKLYJW",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Gynecology & Obstetrics",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Gynecology - 07/26 - July 08 - Morning",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Gynecology - 11/24 - November 21 - Morning",
+            "Medicine - 08/24 - August 22 - Morning"
         ],
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Structure passing above piriformis is:",
         "options": {
             "A": "Inferior gluteal nerve",
@@ -4304,18 +4444,21 @@
     {
         "id": "G6RP3JCM",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Structure passing through Foramen Rotundum",
         "options": {
             "A": "Maxillary nerve",
@@ -4343,7 +4486,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Supinator muscle is damaged now supination will be done with the help of",
         "options": {
             "A": "Tricep",
@@ -4360,18 +4503,21 @@
     {
         "id": "AFK8C7P5",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tachyphylaxis is:",
         "options": {
             "A": "Diminished response to a drug slowly",
@@ -4399,7 +4545,7 @@
         "subject": "Physiology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "The ability of the kidney to excrete concentrated urine will increase if:",
         "options": {
             "A": "Permeability of water decreases in the collecting duct",
@@ -4427,7 +4573,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "The diabetic and hypertensive patient present in OPD he was prescribed antihypertensive and antidiabetic drugs after few days he again visit at the physician clinic and on RBS his sugar levels was 40mg/dl which of the following drugs will Mask the features of hypoglycemia",
         "options": {
             "A": "Propanolol",
@@ -4455,7 +4601,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Therapeutic dose of drug to produce desire affect indicates:",
         "options": {
             "A": "Potency",
@@ -4483,7 +4629,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "There are 2 fascia in perineum, which is the Inferior one",
         "options": {
             "A": "Colle's fascia",
@@ -4513,7 +4659,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "There is small mass in left atrium that mimic thromboembolism with involvement of heart feature of",
         "options": {
             "A": "Myxoma",
@@ -4543,7 +4689,7 @@
         "subject": "Surgery",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tumor between olive and cerebellum along tract present what will be affected",
         "options": {
             "A": "Speech control",
@@ -4571,7 +4717,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tumor suppress gene:",
         "options": {
             "A": "BCL2",
@@ -4627,7 +4773,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Urine incontinence occur due to lesion in",
         "options": {
             "A": "L1-3",
@@ -4655,7 +4801,7 @@
         "subject": "Biochemistry",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Vitamin A in retina is",
         "options": {
             "A": "Rhodopsin",
@@ -4683,7 +4829,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Vitamin B1 deficiency causes increase cardiac output this is due to:",
         "options": {
             "A": "Decrease HR",
@@ -4700,18 +4846,20 @@
     {
         "id": "42QADQ4Y",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 08/24 - August 21 - Afternoon"
         ],
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Vitamin that causes transamination of alanine and aspartate:",
         "options": {
             "A": "B6",
@@ -4741,7 +4889,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What connects WBC to endothelium?",
         "options": {
             "A": "L selectin",
@@ -4758,18 +4906,21 @@
     {
         "id": "72AYDMGK",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What does PR interval shows?",
         "options": {
             "A": "Ventricular repolarization",
@@ -4800,7 +4951,7 @@
         "subject": "Surgery",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is site of tracheostomy?",
         "options": {
             "A": "C2 ring",
@@ -4817,18 +4968,21 @@
     {
         "id": "BKZTD48C",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon"
         ],
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which drug has maximum first pass metabolism by oral route",
         "options": {
             "A": "Streptomycin",
@@ -4845,18 +4999,23 @@
     {
         "id": "HMJSYKNQ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Anesthesia - 11/24 - November 19 - Afternoon",
+            "Medicine - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which factor sees an increase in restrictive lung diseases?",
         "options": {
             "A": "FEV1/FVC",
@@ -4886,7 +5045,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which muscle is supplied by both median and ulnar nerve",
         "options": {
             "A": "Pronator teres",
@@ -4914,7 +5073,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following immunoglobulin is primarily involved in allergic reactions such as hives",
         "options": {
             "A": "IgG",
@@ -4931,18 +5090,21 @@
     {
         "id": "CJMGYU5Q",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 12/24 - December 01 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following transport have Vmax?",
         "options": {
             "A": "Co-transport",
@@ -4972,7 +5134,7 @@
         "subject": "Medicine",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the followings spread by mosquito bite:",
         "options": {
             "A": "Leishmaniasis",
@@ -5000,7 +5162,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which one is Below and latera to pubic tubercle is",
         "options": {
             "A": "Incisional hernia",
@@ -5017,18 +5179,21 @@
     {
         "id": "DBYFNVU4",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Morning"
         ],
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Hard",
+        "difficulty": "Medium",
         "question": "Which structure is characterized by a double layer of cuboidal epithelium on a basement membrane?",
         "options": {
             "A": "Cortical Collecting tubules",
@@ -5045,20 +5210,23 @@
     {
         "id": "MRT3BQSS",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Radiology"
         ],
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "While examining radiographs of 48 years patient, a physician is trying to distinguish the jeujenum from illeum. He has observed that jeujenum has",
         "options": {
             "A": "More fat in its mesentry",
@@ -5088,7 +5256,7 @@
         "subject": "Medicine",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Why we fumigate a room",
         "options": {
             "A": "Had a patient with MRSA",
@@ -5118,7 +5286,7 @@
         "subject": "Surgery",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Young boy emergency department. He can tell his name but with difficulty breathing and pallor. He has a stabbing injury in inguinal region, bleeding profusely in pulsatile form. What is the best initial step for management?",
         "options": {
             "A": "Start Antibiotics",
@@ -5146,7 +5314,7 @@
         "subject": "Microbiology",
         "chapter": "Urinary System",
         "topic": "Urinary Tract Infection",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Young patient with burning micturition and cloudy urine, No fever, No pelvic tenderness. Lactose fermenting rods on MacConkey agar. The Causative organism is:",
         "options": {
             "A": "Proteus",

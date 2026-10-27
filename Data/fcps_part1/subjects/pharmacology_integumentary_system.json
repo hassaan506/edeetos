@@ -13,7 +13,7 @@
         "subject": "Pharmacology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 22 year old woman is prescribed an antibiotic for acne vulgaris. She is advised to avoid taking the medication with milk or antacids and to use sun protection while on therapy. Which of the following drugs is most likely prescribed?",
         "options": {
             "A": "Amoxicillin",
@@ -41,7 +41,7 @@
         "subject": "Pharmacology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30-year-old woman with severe acne is prescribed a vitamin A derivative that modulates epithelial cell differentiation. Which of the following is the mechanism of action of this agent?",
         "options": {
             "A": "Binds intracellular receptors regulating gene transcription",
@@ -69,7 +69,7 @@
         "subject": "Pharmacology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 42 year old woman presents with cellulitis of the lower limb. She has a documented history of anaphylaxis to penicillin. Which of the following is the most appropriate antibiotic?",
         "options": {
             "A": "Amoxicillin-clavulanate",
@@ -97,7 +97,7 @@
         "subject": "Pharmacology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 58 year old man with poorly controlled diabetes presents with a painful, erythematous swelling of his right leg associated with fever. He was treated with IV ceftriaxone for 72 hours, but there has been no clinical improvement. Wound culture subsequently grows methicillin-resistant Staphylococcus aureus (MRSA). Which of the following is the most appropriate antibiotic?",
         "options": {
             "A": "Ceftriaxone",
@@ -107,6 +107,62 @@
             "E": "Azithromycin"
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "BYEBRFRA",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Along with thermoreceptors, pain receptors are also stimulated for sensation of:",
+        "options": {
+            "A": "Cold",
+            "B": "Hot",
+            "C": "Warmth",
+            "D": "Freezing cold",
+            "E": "Crude pressure"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "DLDRW3WV",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Along with thermoreceptors, pain receptors will carry sensation for which of the following:",
+        "options": {
+            "A": "Freezing Cold",
+            "B": "Cold",
+            "C": "Hot",
+            "D": "Warmth",
+            "E": "Crude pressure"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -125,7 +181,7 @@
         "subject": "Pharmacology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Glucocorticoids (steroids) can cause delayed wound healing primarily by affecting which of the following?",
         "options": {
             "A": "Fibroblast proliferation and activity",
@@ -136,6 +192,122 @@
         },
         "correctAnswer": "A",
         "explanation": "Glucocorticoids are potent anti-inflammatory agents that suppress the entire inflammatory response. They directly inhibit the proliferation and function of fibroblasts, which in turn leads to impaired collagen synthesis (Option B) and a weaker, delayed scar. Since the inhibition of the cell itself (fibroblast) is the primary action, A is the best answer.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "4N8CLBJH",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Highest alkaline PH is present in:",
+        "options": {
+            "A": "Saliva",
+            "B": "Gastric secretions",
+            "C": "Pancreatic secretions",
+            "D": "Prostate",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Very high PH - Pancreatic juice Pancreatic secretion per day- 1500ml Pancreatic secretion trypsin, lipase, proteases and amylase Pancreatic secretion rich in water and secreted in response to secretin Enzyme rich secretion is under control of CCK",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "W63N6NPE",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning",
+            "Radiology - 11/24 - November 19 - Afternoon",
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Histamine acts on H2 receptors and parietal cell secretions by:",
+        "options": {
+            "A": "Ach from vagus nerve",
+            "B": "Act on cAMP and secretions",
+            "C": "Acting on Na+/K+ pump",
+            "D": "IP3 Mechanism",
+            "E": ""
+        },
+        "correctAnswer": "B(KATZUNG)",
+        "explanation": "Activation of H 2 receptors, present in gastric mucosa, cardiac muscle cells, and some immune cells, increases intracellular cyclic adenosine monophosphate (cAMP) via Gs.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "GHTJ349N",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient on antirheumatic drugs develop cutaneous manifestation due to?",
+        "options": {
+            "A": "Sjogren syndrome",
+            "B": "Vitamin deficiency",
+            "C": "SLE",
+            "D": "Osteoarthritis",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "H3RMFXLT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Truncal Vagotomy will lead to which of the following",
+        "options": {
+            "A": "Decrease of Gastric Secretions",
+            "B": "Decrease of Bile Secretions",
+            "C": "No change in Secretion",
+            "D": "Delay in Gastric Emptying",
+            "E": "[None]"
+        },
+        "correctAnswer": "A",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -153,7 +325,7 @@
         "subject": "Pharmacology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following drug causes black discolouration of teeth?",
         "options": {
             "A": "Ciprofloxacin",
@@ -163,6 +335,90 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "EQ7HP2GS",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of these is parasympathetic effect",
+        "options": {
+            "A": "Ejaculation of penis",
+            "B": "Erection of penis",
+            "C": "Contraction of GIT sphincter",
+            "D": "Increase HR",
+            "E": "Dilation of pupil"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VSWW7AV5",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "With exception of sweat glands, parasympathetic system cause what?",
+        "options": {
+            "A": "Dec secretions",
+            "B": "Promote secretions",
+            "C": "Increase HR",
+            "D": "Decrease peristalsis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "A7AD6MLH",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "Integumentary System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "With the exception of sweat glands, the parasympathetic nervous system generally does what to other glands?",
+        "options": {
+            "A": "Inhibits secretions",
+            "B": "Promotes secretions",
+            "C": "Has no effect on secretions",
+            "D": "Causes contraction of glandular tissue",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""

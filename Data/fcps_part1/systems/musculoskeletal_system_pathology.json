@@ -13,7 +13,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 12 year old boy with hemophilia A has had episode of pain in his knee for past 6yrs over Tim there has been an increase. In size of his knee joint with defirmity.lab studies show decresed level of coagulation factor viii activity. Which of the followng imaterials is most likely to b seen within the joint space following episode of pain ?",
         "options": {
             "A": "Lipofuscin",
@@ -41,7 +41,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 12-year-old boy presents with progressive muscle weakness, exercise intolerance, and ptosis. He dies suddenly, and autopsy of skeletal muscle shows ragged-red fibers. Which cellular organelle is primarily involved in this condition?",
         "options": {
             "A": "Mitochondria",
@@ -69,7 +69,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 25 year old man has his leg immobilized in a plaster cast for 8 weeks following a tibial fracture. On removal of the cast, he is noted to have marked atrophy of the calf muscles. Which of the following is the most likely cellular change responsible for this finding?",
         "options": {
             "A": "Hyperplasia of muscle fibers",
@@ -99,7 +99,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 28 year old woman presents with a painless mass in the submandibular region. Imaging reveals a well-circumscribed lesion and surgical excision is performed. Histopathology shows tooth-like reticular tissue with cystic spaces filled with a yellowish, viscous, \"motor oil-like\" fluid. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Mucoepidermoid tumour",
@@ -127,7 +127,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 28-year-old patient presents with a swelling around the knee joint. Imaging shows the lesion involves the metaphysis-epiphysis region of the distal femur. Histopathology reveals spindle-shaped stromal cells with numerous multinucleated giant cells. What is the most likely diagnosis?",
         "options": {
             "A": "Osteosarcoma",
@@ -155,7 +155,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 30 year old male presents with a hard, painless lump in his thigh at the site of a severe muscle contusion sustained during a Road Traffic Accident (RTA) six months ago. An X-ray reveals localized ossification within the soft tissue. What is the most likely underlying pathologic process?",
         "options": {
             "A": "Metastatic calcification",
@@ -185,7 +185,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 30-year-old patient presents with bone pain and swelling. Diagnose as a case of Paget's disease of bone which of the following you will see on microscopy?",
         "options": {
             "A": "Modrizic's pattern",
@@ -213,7 +213,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 4 year old child presents with triade of lytic \"punched-out\" lesions in the skull on X-ray, bilateral proptosis, and Diabetes insipidus. This clinical triad is most characteristic of which syndrome?",
         "options": {
             "A": "Letterer-Siwe disease",
@@ -223,7 +223,7 @@
             "E": ""
         },
         "correctAnswer": "B",
-        "explanation": "Hand-Schüller-Christian disease is the chronic, multifocal form of Langerhans cell histiocytosis. Langerhans cells proliferate and infiltrate multiple organs. 1. Skull punched-out lytic lesions -> Bone infiltration by Langerhans cells. X-ray shows \"map-like\" lytic areas without sclerotic margin. 2. Exophthalmos. 3. Diabetes insipidus -> Infiltration of posterior pituitary/hypothalamus -> ADH deficiency -> polyuria + polydipsia",
+        "explanation": "Hand-SchÃ¼ller-Christian disease is the chronic, multifocal form of Langerhans cell histiocytosis. Langerhans cells proliferate and infiltrate multiple organs. 1. Skull punched-out lytic lesions -> Bone infiltration by Langerhans cells. X-ray shows \"map-like\" lytic areas without sclerotic margin. 2. Exophthalmos. 3. Diabetes insipidus -> Infiltration of posterior pituitary/hypothalamus -> ADH deficiency -> polyuria + polydipsia",
         "hint": "",
         "Point": ""
     },
@@ -244,13 +244,41 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45-year-old male patient presents with pelvic pain, imaging reveals focal calcifications in the iliac bones which of the following is the most likely diagnosis?",
         "options": {
             "A": "TB osteomyelitis",
             "B": "Chondroma",
             "C": "Osteosarcoma",
             "D": "Metastatic bone disease",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "9N2HUAJ9",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 50 years old patient presented with morning headache, nausea, tumor arising from external granular layer of cerebellar cortex is?",
+        "options": {
+            "A": "Ependymoma",
+            "B": "Medulloblastoma",
+            "C": "Glioma",
+            "D": "Can't remember",
             "E": ""
         },
         "correctAnswer": "B",
@@ -272,7 +300,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 60 year old man presents with bone pain. Laboratory investigations reveal elevated alkaline phosphatase levels with normal serum calcium. What is the most likely diagnosis?",
         "options": {
             "A": "Osteomalacia",
@@ -300,7 +328,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 68 year old male presents with lower urinary tract symptoms for 6 months. He now complains of persistent lower backache. On workup his PSA is markedly elevated. DRE reveals a hard, irregular prostate. By which route does prostate cancer most commonly metastasize to the skull and vertebral column?",
         "options": {
             "A": "Hematogenous via vertebral venous plexus",
@@ -328,7 +356,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 70 year old patient presents with chronic pelvic pain. Laboratory tests show elevated alkaline phosphatase (ALP), while calcium and phosphate levels are normal. X-ray reveals bone enlargement with a \"cotton wool\" appearance in the pelvis. What is the most likely diagnosis?",
         "options": {
             "A": "Osteoporosis",
@@ -356,7 +384,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 7-year-old boy is diagnosed with Duchenne muscular dystrophy. Which of the following molecules would have impaired transmembrane movement due to defective dystrophin and increased membrane fragility?",
         "options": {
             "A": "Glucose",
@@ -384,7 +412,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A child from an endemic region presents with a rapidly enlarging jaw mass. Which malignancy is the most likely diagnosis?",
         "options": {
             "A": "Hodgkin lymphoma",
@@ -412,7 +440,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A child presents with a history of multiple fractures occurring after minimal or trivial trauma. X-ray shows generalized osteopenia with old healed fractures and thin cortices. Which of the following is the most likely diagnosis?",
         "options": {
             "A": "Osteopetrosis",
@@ -440,7 +468,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A child presents with recurrent fractures and hypermobile joints. What is the most likely diagnosis?",
         "options": {
             "A": "Ehlers-Danlos syndrome",
@@ -468,7 +496,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child with a genetic disorder involving increased appositional bone growth is most likely to have which of the following findings?",
         "options": {
             "A": "Increased bone length",
@@ -496,7 +524,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child's skull examination shows a short anterior-posterior diameter and a compensatory wide, tall head shape due to the premature fusion of the coronal sutures. What is the specific term for this cranial shape?",
         "options": {
             "A": "Scaphocephaly",
@@ -524,7 +552,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient presents with proximal muscle weakness and a violaceous discoloration around the eyes. Which immune cells are primarily involved in the pathogenesis of this condition?",
         "options": {
             "A": "B cells",
@@ -552,7 +580,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient wears high heels shoes now presents with forefoot pain. Radiographic imaging reveals avascular necrosis of a metatarsal head. This condition, known as Freiberg's disease, most commonly involves which of the following bones?",
         "options": {
             "A": "1st Metatarsal",
@@ -580,7 +608,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A jaw tumor causes displacement of teeth and shows myxoid histology. What is the most likely diagnosis",
         "options": {
             "A": "Ameloblastoma",
@@ -608,7 +636,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A old male is having pain during walking in lower back and pelvic area. There is no fracture and trauma history. Investigations show following findings; ALP 998 IU/L Serum calcium 11mg/dl Serum phosphate 3 mg/dl. What is he suffering from?",
         "options": {
             "A": "Multiple myeloma",
@@ -636,7 +664,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient after RTA has knee injury. Synovial fluid has type 2 collagen it is coming from",
         "options": {
             "A": "Bone",
@@ -647,6 +675,62 @@
         },
         "correctAnswer": "B",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "XKZGZD2F",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A patient has LRTI for many days. On histology os respiratory tree which of the following will be damaged?",
+        "options": {
+            "A": "Microvilli",
+            "B": "Cilia",
+            "C": "Plasmalemma Protein",
+            "D": "Desmosome",
+            "E": "Hemidesmosome"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "N6VHBJWA",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A patient histopathology report showing pleomorphism, rete ridges with dermal invasion, loss of polarity and increased nuclear to cytoplasmic ratio what is diagnose?",
+        "options": {
+            "A": "Squamous cell Carcinoma",
+            "B": "Verrucous Carcinoma",
+            "C": "Teratoma",
+            "D": "Adenocarcinoma",
+            "E": "Bronchogenic Carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "Verrucous carcinoma: Epithelium seldom shows dysplastic features. Elephant foot like rete ridges is seen. Breach in the basement membrane is absent. Islands of dysplastic epithelium are not seen in connective tissue. Squamous cell carcinoma: Epithelium shows high dysplasia. Elephant foot like rete ridges is not seen. Breach in the basement membrane is present. Islands of dysplastic epithelium are seen in connective tissue.",
         "hint": "",
         "Point": ""
     },
@@ -664,7 +748,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient immobilized after a long bone fracture develops muscle wasting. Mechanism?",
         "options": {
             "A": "Neurogenic atrophy",
@@ -692,7 +776,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with chest pain and a pupillary muscle defect (ectopia lentis). The underlying protein defect is likely in",
         "options": {
             "A": "Elastin",
@@ -702,6 +786,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VEPGBUPS",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient with a history of smoking presents with a hilar mass. A biopsy reveals small clusters of cells. What is the most likely diagnosis?",
+        "options": {
+            "A": "Small cell carcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Large Cell carcinoma",
+            "D": "Adenocarcinoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -720,7 +832,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with impaired host defenses develops osteomyelitis of the mandible. Why is osteomyelitis more common in the mandible than in the maxilla?",
         "options": {
             "A": "Increased salivary contamination",
@@ -731,6 +843,62 @@
         },
         "correctAnswer": "B",
         "explanation": "The mandible has relatively poorer blood supply than the maxilla. Reduced vascularity predisposes it to osteomyelitis. The maxilla has rich collateral circulation.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "FV39N44L",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 23 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A person has mass on Forehead revealing Mature adipocytes on histology. Most probably it is:",
+        "options": {
+            "A": "Lipoma",
+            "B": "Adenoma",
+            "C": "Squamous Cell carcinoma",
+            "D": "Melanoma",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "49PQTD8R",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A plastic factory worker, exposed to hydrocarbons, presents with low grade fever and weight loss, What can be the cause:",
+        "options": {
+            "A": "Bladder Carcinoma",
+            "B": "Bronchogenic Carcinoma",
+            "C": "Squamous Cell Carcinoma",
+            "D": "Basal Cell Carcinoma",
+            "E": "Melanoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "If mentioned he is smoker than B",
         "hint": "",
         "Point": ""
     },
@@ -748,7 +916,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A woman who frequently wears high-heeled footwear presents with forefoot pain. Radiological examination shows hyperdense changes involving the heads of the 2nd and 3rd metatarsals. What is the most likely cause?",
         "options": {
             "A": "Tendon rupture",
@@ -776,7 +944,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young adult suffers a closed fracture of the femur in a motor vehicle accident. 12 hours later, they develop respiratory distress, a petechial rash, and confusion. What is the most likely life-threatening complication?",
         "options": {
             "A": "Avascular Necrosis",
@@ -786,6 +954,36 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "H9R9SEWV",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A young boy had fracture while playing football. Later he presents with swelling on the anterior thigh. Biopsy showed a bony trabeculae mass containing hemorrhage. This is most likely due to",
+        "options": {
+            "A": "Metaplasia",
+            "B": "Dysplasia",
+            "C": "Anaplasia",
+            "D": "Metastatic Calcification",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -804,7 +1002,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young patient with hyperelastic skin, joint hypermobility, and easy bruising develops an aortic aneurysm. Which condition is most likely associated?",
         "options": {
             "A": "Ehlers-Danlos syndrome",
@@ -832,7 +1030,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "After shoulder injury, calcification of soft tissue on X-ray indicates:",
         "options": {
             "A": "Metastatic calcification",
@@ -860,7 +1058,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An elderly male presents with a mass at the iliac bone. Imaging shows calcification within the lesion. Most likely diagnosis?",
         "options": {
             "A": "Chondroma",
@@ -888,7 +1086,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An elderly patient presents with chronic back pain. Imaging shows bone deformity and mixed lytic and sclerotic lesions with thickened, \"cotton wool\" appearance of bone. What is the most likely diagnosis?",
         "options": {
             "A": "Osteoporosis",
@@ -916,7 +1114,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An Old patient presents with enlarged prostate and there is marked increase in PSA up to 20ng/ml having weight loss MRI done and bony metastasis observed. What is the route of spread of prostate CA to vertebrae?",
         "options": {
             "A": "Lumbar plexus",
@@ -924,6 +1122,65 @@
             "C": "Vertebral venous plexus",
             "D": "Pelvic plexus",
             "E": "Sacral plexus"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "77EZCRAZ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Basal cell carcinoma most common type:",
+        "options": {
+            "A": "Squamous",
+            "B": "Sclerosing",
+            "C": "Ulcer",
+            "D": "Nodular",
+            "E": "Inflammatory"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "9ZLMCHFV",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Medicine - 11/24 - November 22 - Morning",
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Bilateral damage to hippocampus results in",
+        "options": {
+            "A": "Disappearance of recent memories",
+            "B": "Loss of working memory",
+            "C": "Loss of ability to encode events of recent past in long term memory",
+            "D": "Loss of all memories",
+            "E": "All of the above"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -944,7 +1201,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Breast cancer most commonly spreads to the vertebrae through which route?",
         "options": {
             "A": "Batson's vertebral venous plexus",
@@ -952,6 +1209,62 @@
             "C": "Internal mammary lymph nodes",
             "D": "Axillary lymph nodes",
             "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "T5JEFK86",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Cause of Fat necrosis in breast:",
+        "options": {
+            "A": "Peritonitis",
+            "B": "Trauma",
+            "C": "Fat Embolism",
+            "D": "RTA",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "9JMRD8GN",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Eating gutka leads to which of following type of oral cancer",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "basal cell carcinoma",
+            "C": "Adenocarcinoma",
+            "D": "verrucous carcinoma",
+            "E": "Sarcoma"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -972,7 +1285,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ewing sarcoma chromosomal translocation is:",
         "options": {
             "A": "t(9;22)(q34;q11)",
@@ -1000,7 +1313,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ewing sarcoma is associated with which chromosomal translocation?",
         "options": {
             "A": "t(8;14)",
@@ -1028,7 +1341,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Following a major orthopedic surgery for a femur fracture, a patient develops respiratory distress and petechiae. Which of the following is most commonly associated with a fat embolism?",
         "options": {
             "A": "It starts within 7 to 10 days",
@@ -1056,7 +1369,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Following an acute knee injury, the joint rapidly develops swelling and erythema. The immediate underlying physiological mechanism causing these signs is:",
         "options": {
             "A": "Lymphatic vessel obstruction",
@@ -1071,20 +1384,54 @@
         "Point": ""
     },
     {
-        "id": "UA79HDSV",
+        "id": "68Z3KLAE",
         "year": [
-            "2025"
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Anesthesia"
         ],
         "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
+            "Anesthesia - 08/24 - August 20 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
+        "question": "Gamma radiation sterilization use to sterilize which instrument?",
+        "options": {
+            "A": "Syringes needles",
+            "B": "Brochoscope",
+            "C": "Cystoscope",
+            "D": "Laryngoscope",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "UA79HDSV",
+        "year": [
+            "2025",
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning",
+            "Medicine - 11/24 - November 24 - Morning",
+            "Radiology - 08/24 - August 20 - Morning",
+            "Surgery - 08/24 - August 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
         "question": "Gastrocnemius size is reduced after cast applied for few weeks of fracture is most likely due to:",
         "options": {
             "A": "Decrease Blood supply",
@@ -1094,6 +1441,62 @@
             "E": ""
         },
         "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "756D7L7J",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Hearing improves in noisy environment in which of the following condition",
+        "options": {
+            "A": "Meniere's Disease",
+            "B": "Otosclerosis",
+            "C": "Tympanic membrane damage",
+            "D": "Ossicular damage",
+            "E": "Cochlear damage"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "76JEAWAC",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Latent tetany seen in:",
+        "options": {
+            "A": "Hyperparathyroidism",
+            "B": "Graves' disease",
+            "C": "Cushing disease",
+            "D": "Scleroserma",
+            "E": ""
+        },
+        "correctAnswer": "ANS. A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1112,7 +1515,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Long bone lesion - \"warmth\" tumor A teenager presents with night pain in the long bone relieved by NSAIDs. Imaging shows a small radiolucent nidus. Which tumor is most likely?",
         "options": {
             "A": "Osteoid osteoma",
@@ -1142,7 +1545,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Major Complication of Femur Fracture that can lead to death is?",
         "options": {
             "A": "Compartment syndrome",
@@ -1157,20 +1560,163 @@
         "Point": ""
     },
     {
-        "id": "VXCHYPM7",
+        "id": "FB4GRTZE",
         "year": [
-            "2025"
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Man has exertional dyspnea, dry Cough & Basal crackles likely due to",
+        "options": {
+            "A": "Edematous Bronchioles",
+            "B": "Restrictive Bronchioles",
+            "C": "Hyperinflammatory bronchioles",
+            "D": "Narrow bronchi",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "M9D86EHZ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Most abundant chorionic villi present:",
+        "options": {
+            "A": "Chorionic plate",
+            "B": "Basal plate",
+            "C": "Decidua parietalis",
+            "D": "Capsularis",
+            "E": "Chorion frondosum"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "5URRSPFF",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Most abundant chorionic villi present in:",
+        "options": {
+            "A": "Chorionic plate",
+            "B": "Basal plate",
+            "C": "Decidua paretalis",
+            "D": "Capsularis",
+            "E": "Hydatiform Mole"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "AWYTT8PE",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Most common Cancer overall in both genders?",
+        "options": {
+            "A": "Lung Carcinoma",
+            "B": "Oral Carcinoma",
+            "C": "Breast Carcinoma",
+            "D": "Hepatocellular Carcinoma:",
+            "E": "Colorectal Carcinoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "4CQX8WPX",
+        "year": [
+            "2024"
         ],
         "specialty": [
             "Surgery & Allied"
         ],
         "exams": [
-            "Surgery - 08/25 - August 7 - Morning"
+            "Surgery - 11/24 - November 22 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
+        "question": "Oat cell carcinoma produces which of the following harmon",
+        "options": {
+            "A": "ACTH",
+            "B": "TSH",
+            "C": "PTH",
+            "D": "FSH",
+            "E": "LH"
+        },
+        "correctAnswer": "A",
+        "explanation": "Oat cell tumor is also call Small cell carcinoma which produce ACTH",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VXCHYPM7",
+        "year": [
+            "2025",
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Surgery - 08/25 - August 7 - Morning",
+            "Gynecology - 11/24 - November 21 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
         "question": "Patient having right sided weakness and loss of vibration sense and tongue deviated to left side. Lesion is located in",
         "options": {
             "A": "Anterior spinal artery",
@@ -1180,7 +1726,7 @@
             "E": "Vertebral artery"
         },
         "correctAnswer": "E",
-        "explanation": "",
+        "explanation": "dial medullary syndrome tralateral paralysis - Upper and lower case contralateral proprioception hateral hypoglossal dysfunction (Tongue ate to Ipsilaterally)",
         "hint": "",
         "Point": ""
     },
@@ -1198,13 +1744,41 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient presented with pus discharge from gangrenous foot which type of necrosis seen in this patient",
         "options": {
             "A": "Caseous",
             "B": "Liquefactive",
             "C": "Fat necross",
             "D": "Coagulative",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "39EGAE29",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient was diagnosed with carcinoma breast having peu'd orange appearance due to distortion of:",
+        "options": {
+            "A": "Lobules of breast",
+            "B": "Suspensory ligament of breast",
+            "C": "Lymphatics of breast",
+            "D": "Longitudinal ligament of breast",
             "E": ""
         },
         "correctAnswer": "B",
@@ -1226,7 +1800,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient with bone pain having normal Ca level increase alkaline phosphatse cause is",
         "options": {
             "A": "Osteoarthritis",
@@ -1254,7 +1828,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient with fracture of neck of femur. Most fatal complication?",
         "options": {
             "A": "Fat embolism",
@@ -1282,7 +1856,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Patient with swelling at metaphyseal-epiphyseal junction. Histology shows spindle cells and giant cells. Diagnosis?",
         "options": {
             "A": "Osteosarcoma",
@@ -1310,7 +1884,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Prostate cancer most commonly metastasizes to:",
         "options": {
             "A": "Lung",
@@ -1338,7 +1912,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ragged fiber appearance in MELAS syndrome. Which organelle is primarily involved?",
         "options": {
             "A": "Mitochondria",
@@ -1349,6 +1923,34 @@
         },
         "correctAnswer": "A",
         "explanation": "MELAS (Mitochondrial Encephalomyopathy, Lactic Acidosis, Stroke-like episodes) -> mitochondrial dysfunction -> ragged red fibers on muscle biopsy.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "49EFBN79",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Surgeon was removing Carcinoma at tail of Pancreas. It will lead to damage of:",
+        "options": {
+            "A": "Lienorenal ligament",
+            "B": "Gastrosplenic ligament",
+            "C": "Greater Curvature",
+            "D": "Falciform ligament",
+            "E": "Gastroduodenal Ligament"
+        },
+        "correctAnswer": "A",
+        "explanation": "Falciform ligament Connects Liver to Anterior abdominal wall Contains Ligament teres Hepatoduodenal ligament Contains Portal triad: Proper hepatic artery, portal vein, common bile duct Gastrohepatic ligament Contains Gastric vessels & Part of Lesser omentum Gastrosplenic ligament Contains Short gastrics, left gastroepiploic vessels Part of Greater omentum Gastrocolic ligament Contain Gastroepiploic arteries Part of Greater omentum Splenorenal ligament Contains Splenic vessel and tail of pancreas",
         "hint": "",
         "Point": ""
     },
@@ -1366,7 +1968,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "Teacher teaches students about a tumor suppressor gene that inhibits the G1 to S phase transition of the cell cycle. He further explains that mutation of this gene is associated with tumors of long bones. Which of the following genes is responsible?",
         "options": {
             "A": "Ras",
@@ -1394,7 +1996,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The most important risk factor for fat embolism syndrome is:",
         "options": {
             "A": "Burns",
@@ -1422,7 +2024,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The notochord is the embryological precursor of which tumor?",
         "options": {
             "A": "Chondrosarcoma",
@@ -1432,6 +2034,232 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "GKQQ87AA",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Tumor in the superficial perineal pouch will damage:",
+        "options": {
+            "A": "Great vestibular gland",
+            "B": "Bulbourethral gland",
+            "C": "Sphincter urethrac",
+            "D": "Deep transverse perineal muscles",
+            "E": "Ureter"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "8LDBS7L3",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Tumor of the porta hepatis is thought likely to obstruct which of the following structure",
+        "options": {
+            "A": "Cystic duct",
+            "B": "portal vein",
+            "C": "Hepatic artery",
+            "D": "Common bile duct",
+            "E": "Hepatic duct"
+        },
+        "correctAnswer": "B",
+        "explanation": "[None]",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "V57YTP9N",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Tumour Least likely to metastasize",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "Basal cell carcinoma",
+            "C": "Melanoma",
+            "D": "Hamartoma",
+            "E": "Sebaceous Gland Tumour"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3EQACCFX",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Afternoon",
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Unknown tissue on histology examination shows dense fibrovascular structure & multiple layers of mesothelium. Which tissue it could be?",
+        "options": {
+            "A": "Lung",
+            "B": "Colon",
+            "C": "Breast tissue",
+            "D": "Thyoid",
+            "E": "Intestinal stroma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NFJ77VKG",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Unknown tissue on histology examination shows dense fibrovascular structure & multiple tufts of mesothelium. Which tissue it could be?",
+        "options": {
+            "A": "Lung",
+            "B": "Omentum",
+            "C": "Breast tissue",
+            "D": "Thyoid",
+            "E": "Intestinal stroma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "64RCUTPZ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "When thoracocentesis is done in 9th Intercostal space in mid axillary line, Which structure is at risk of damage?",
+        "options": {
+            "A": "9th Intercostal nerve",
+            "B": "Artery",
+            "C": "Vein",
+            "D": "Pleura",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "SFM48NZW",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which Carcinoma has least chance of metastasis?",
+        "options": {
+            "A": "Melanoma",
+            "B": "Retinoblastoma",
+            "C": "Basal Cell Carcinoma",
+            "D": "Sebaceous Gland Carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "TJ3XB882",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following cancer is most commonly associated with hyperthyroidism",
+        "options": {
+            "A": "Squamous cell carcinoma",
+            "B": "Small cell carcinoma",
+            "C": "Large cell carcinoma",
+            "D": "Adenocarcinoma",
+            "E": "Metastatic carcinoma"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1450,7 +2278,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following clinical characteristics is most typical for the onset of Fat Embolism Syndrome following a long bone fracture?",
         "options": {
             "A": "It occurs between 1-3 days",
@@ -1460,6 +2288,34 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "HXYU5F2N",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following embolism causing massive necrosis and severe shock and ultimately death",
+        "options": {
+            "A": "Fat embolism",
+            "B": "Myocardial embolism",
+            "C": "Thromboembolism",
+            "D": "Air embolism",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -1478,7 +2334,7 @@
         "subject": "Pathology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following involve the bones as a primary metastasizing site?",
         "options": {
             "A": "Thyroid gland",
@@ -1489,6 +2345,237 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "QXA79VF7",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is fast spreading among the following?",
+        "options": {
+            "A": "Melanoma",
+            "B": "Squamous Cell Carcinoma",
+            "C": "Ambleoblastoma",
+            "D": "Adenoid cystic carcinoma",
+            "E": "Hemartoma"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "JW3KNA7S",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is least likely metastasize",
+        "options": {
+            "A": "Melanoma",
+            "B": "Squamous Cell Carcinonma",
+            "C": "Basal cell carcinoma",
+            "D": "Renal cell carcinoma",
+            "E": "Bronchogenic carcinoma"
+        },
+        "correctAnswer": "C",
+        "explanation": "[None]",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VF2LEVU6",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is least Likely to metastasize?",
+        "options": {
+            "A": "Melanoma",
+            "B": "Squamous Cell Carcinoma",
+            "C": "BCC",
+            "D": "Adenoid cystic carcinoma",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "948AVCSX",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is local Invasive malignant tumor",
+        "options": {
+            "A": "Small cell carcinoma of lung",
+            "B": "Amloblastoma",
+            "C": "Squamous Cell Carcinoma",
+            "D": "Salivary gland tumour",
+            "E": "Renal cell carcinoma"
+        },
+        "correctAnswer": "B",
+        "explanation": "[None]",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "KHUM5WLN",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning",
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is local malignant tumor?",
+        "options": {
+            "A": "Melanoma",
+            "B": "Squamous Cell Carcinoma",
+            "C": "Ambleoblastoma",
+            "D": "Adenoid cystic carcinoma",
+            "E": "Basal Cell Carcinoma"
+        },
+        "correctAnswer": "E>C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3X5P5AT8",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Radiology",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Radiology - 11/24 - November 19 - Afternoon",
+            "Radiology - 11/24 - November 20 - Morning",
+            "Surgery - 08/24 - August 23 - Morning",
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is locally malignant tumor?",
+        "options": {
+            "A": "Melanoma",
+            "B": "Squamous Cell Carcinoma",
+            "C": "Ambleoblastoma",
+            "D": "Adenoid cystic carcinoma",
+            "E": "Hemartoma"
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "2D2JPBQT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following is true about basal cell carcinoma",
+        "options": {
+            "A": "Tumour like growth",
+            "B": "Local malignant tumour",
+            "C": "Spread in whole body",
+            "D": "Harmless tumour",
+            "E": "Highly contagious"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3GNA6S2S",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Pathology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which unpaired cartilage is affected in laryngeal Carcinoma?",
+        "options": {
+            "A": "Thyroid cartilage",
+            "B": "Arytenoud Cartilage",
+            "C": "Cuneiform Cartilage",
+            "D": "Corniculate Cartilage",
+            "E": ""
+        },
+        "correctAnswer": "A(DHINGRA)",
+        "explanation": "Larynx has three unpaired and three paired cartilages. Unpaired: Thyroid, cricoid and epiglottis. Paired: Arytenoid, corniculate and cuneiform.",
         "hint": "",
         "Point": ""
     }

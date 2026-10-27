@@ -13,7 +13,7 @@
         "subject": "Microbiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 15 year old girl was brought to hospital with complaints of fever and right leg pain. Examination showed the affected leg was swollen, tender and inflamed. X-ray confirmed the diagnosis of osteomyelitis in right tibia. Her medical history is significant for sickle cell disease.The causative organism belongs to which specie?",
         "options": {
             "A": "Enterococcus",
@@ -34,9 +34,9 @@
             "2025"
         ],
         "specialty": [
+            "Surgery & Allied",
             "Anesthesia",
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 07/26 - July 09 - Afternoon",
@@ -46,7 +46,7 @@
         "subject": "Microbiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A farmer presents with rapidly progressing painful swelling and foul-smelling discharge from a wound on his leg following a traumatic injury. On examination, crepitus is felt over the affected area. Which organism is the most common cause of this condition?",
         "options": {
             "A": "Staphylococcus aureus",
@@ -54,6 +54,92 @@
             "C": "Pseudomonas aeruginosa",
             "D": "Streptococcus pyogenes",
             "E": "Bacillus anthracis"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "XBEAZWBX",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Afternoon",
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A female patient presents with recurrent infections. On examination, the uterine lining shows abnormal cell polarity and atypia, but the basement membrane is preserved. What is the most likely diagnosis?",
+        "options": {
+            "A": "Invasive Carcinoma",
+            "B": "Ductal Carcinoma",
+            "C": "Carcinoma in Situ",
+            "D": "Dysplasia",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "W2349RTS",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A female patient was presented with recurrent infections. On histopathology, the uterine lining shows abnormal cell polarity and atypia, but the basement membrane is preserved. What is the most likely diagnosis?",
+        "options": {
+            "A": "Invasive Carcinoma",
+            "B": "Ductal Carcinoma",
+            "C": "Carcinoma in Situ",
+            "D": "Dysplasia",
+            "E": "[None]"
+        },
+        "correctAnswer": "C",
+        "explanation": "[None]",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VKPWZU56",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A female patient with multiple sexual partners has been exposed to the HPV virus. Microscopy reveals atypical cells. If left untreated, she is at risk of developing which of the following conditions?",
+        "options": {
+            "A": "Adenocarcinoma",
+            "B": "Squamous cell carcinoma",
+            "C": "Basal Cell Carcinoma",
+            "D": "Endometrial Carcinoma",
+            "E": ""
         },
         "correctAnswer": "B",
         "explanation": "",
@@ -74,7 +160,7 @@
         "subject": "Microbiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops pain and crepitus 2 days after a thigh injury. The most likely pathogen is:",
         "options": {
             "A": "Staphylococcus aureus",
@@ -102,7 +188,7 @@
         "subject": "Microbiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with severe thigh pain and crepitus after a deep stab wound. Which organism is most likely responsible?",
         "options": {
             "A": "Clostridium perfringens",
@@ -130,7 +216,7 @@
         "subject": "Microbiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with sudden onset of severe pain, extensive soft tissue swelling, and signs of gas gangrene after a deep wound injury. On examination, there is rapid progression of tissue necrosis with foul-smelling discharge. Which organism is the most likely the cause?",
         "options": {
             "A": "Clostridium perfringens",
@@ -158,7 +244,7 @@
         "subject": "Microbiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with sickle cell anemia develops osteomyelitis. Which organism is most likely responsible?",
         "options": {
             "A": "Staphylococcus aureus",
@@ -168,6 +254,90 @@
             "E": "Klebsiella"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "PBC4JA9C",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Morning"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Diptheria toxin mainly affects:",
+        "options": {
+            "A": "Skin",
+            "B": "Heart",
+            "C": "Nerves",
+            "D": "Kidney",
+            "E": "Lungs"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YWEZQXHC",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Intervertebral disc has which type of cartilage that keeps it in place:",
+        "options": {
+            "A": "Fibrous",
+            "B": "Hyaline",
+            "C": "Synovial",
+            "D": "Elliptical",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "4AXUAZFY",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 20 - Afternoon"
+        ],
+        "subject": "Microbiology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Scalp layer related to infection /pus",
+        "options": {
+            "A": "Skin",
+            "B": "Connective tissue",
+            "C": "Aponeurosis",
+            "D": "Loose areolar tissue",
+            "E": "Pericranium"
+        },
+        "correctAnswer": "D",
         "explanation": "",
         "hint": "",
         "Point": ""

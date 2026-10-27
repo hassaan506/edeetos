@@ -13,7 +13,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "Medium",
+        "difficulty": "Hard",
         "question": "A 10-year-old child presents with generalized body swelling and periorbital edema, urinalysis shows massive proteinuria, diagnosed as a case of minimal change disease is made, on histology pink droplets are seen in being engulfed by the cytoplasm of PCT, which of the following pink material is being engulfed?",
         "options": {
             "A": "Glucose",
@@ -41,7 +41,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A biopsy is taken from the lining of the urinary bladder. Which type of epithelium is characteristic of this region?",
         "options": {
             "A": "Stratified squamous epithelium",
@@ -101,7 +101,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A patient has a urinary tract infection (UTI) and thickened mucosa of the urinary bladder. What is the primary protective mechanism of the bladder against infections?",
         "options": {
             "A": "Glycocalyx",
@@ -129,7 +129,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Hard",
         "question": "A patient presents with frothy urine, Urinalysis reveals renal tubular epithelial cells with pink cytoplasm due to reabsorption of",
         "options": {
             "A": "Hemoglobin",
@@ -157,7 +157,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Acidic urine is produced by secretion of H+ ions in the kidney. Which kidney cells are primarily responsible for H+ ion secretion into urine?",
         "options": {
             "A": "Intercalated cells (Type A)",
@@ -185,7 +185,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Hydrogen ion (H+) secretion in the kidney is primarily carried out by which type of cell?",
         "options": {
             "A": "Principal cells",
@@ -258,20 +258,25 @@
     {
         "id": "2SPZYCV2",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
             "Medicine - 11/25 - November 16 - Morning",
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Medicine - 08/24 - August 21 - Morning",
+            "Surgery - 08/24 - August 21 - Morning"
         ],
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Negatively charged particles are prevented from entering renal basement membrane. Which of the following component is responsible for prevention of negative compounds?",
         "options": {
             "A": "Proteoglycan",
@@ -327,7 +332,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "The basement membrane normally carries a negative charge. This charge is important in preventing the passage of which substances?",
         "options": {
             "A": "Albumin and other plasma proteins",
@@ -441,7 +446,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Which of the following cell types is characteristically seen on the surface of urothelium on histopathology?",
         "options": {
             "A": "Goblet cell",
@@ -458,18 +463,21 @@
     {
         "id": "DBYFNVU4",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 22 - Morning"
         ],
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Hard",
+        "difficulty": "Medium",
         "question": "Which structure is characterized by a double layer of cuboidal epithelium on a basement membrane?",
         "options": {
             "A": "Cortical Collecting tubules",

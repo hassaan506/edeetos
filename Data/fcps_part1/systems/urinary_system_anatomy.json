@@ -13,7 +13,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
+        "difficulty": "Hard",
         "question": "A 45 year old woman undergoes an elective ovarian cystectomy. During the surgery, the surgeon applies lateral retraction of the ovary. Postoperatively, the patient develops signs of ureteral injury including flank pain and decreased urine output. During which anatomical location is the ureter most commonly at risk of damage during ovarian surgery?",
         "options": {
             "A": "At the site of side retraction",
@@ -41,7 +41,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urinary Tract Infection",
-        "difficulty": "easy",
+        "difficulty": "Hard",
         "question": "A 5 year old child presents with recurrent urinary tract infections and poor urinary stream. Imaging shows backward flow of urine from the bladder into the ureters during voiding. Which condition is most likely responsible?",
         "options": {
             "A": "Vesicoureteral reflux",
@@ -69,7 +69,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Benign Prostatic Hyperplasia",
-        "difficulty": "Easy",
+        "difficulty": "Hard",
         "question": "A 70 year old man has difficulty initiating urination and a weak stream. Rectal examination reveals an enlarged prostate, which of the following lobes is most likely enlarged in benign prostatic hyperplasia?",
         "options": {
             "A": "Anterior lobe",
@@ -97,17 +97,17 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A boy had a road traffic accident with kidney injury. Which of the following fascia will be affected?",
         "options": {
-            "A": "Buck’s fascia",
-            "B": "Sibson’s fascia",
-            "C": "Gerota’s fascia",
-            "D": "Scarpa’s fascia",
-            "E": "Camper’s fascia"
+            "A": "Buckâ€™s fascia",
+            "B": "Sibsonâ€™s fascia",
+            "C": "Gerotaâ€™s fascia",
+            "D": "Scarpaâ€™s fascia",
+            "E": "Camperâ€™s fascia"
         },
         "correctAnswer": "C",
-        "explanation": "Buck’s fascia → penis\r\nSibson’s fascia → apex of lung/neck\r\nGerota’s fascia → kidney\r\nScarpa’s fascia → membranous layer of anterior abdominal wall\r\nCamper’s fascia → fatty layer of superficial fascia",
+        "explanation": "Buckâ€™s fascia â†’ penis\r\nSibsonâ€™s fascia â†’ apex of lung/neck\r\nGerotaâ€™s fascia â†’ kidney\r\nScarpaâ€™s fascia â†’ membranous layer of anterior abdominal wall\r\nCamperâ€™s fascia â†’ fatty layer of superficial fascia",
         "hint": "",
         "Point": ""
     },
@@ -128,7 +128,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child fell from a monkey bar while playing. He developed scrotal swelling, penile bruising and difficulty in passing urine. What is the most likely site of urethral injury?",
         "options": {
             "A": "Membranous urethra",
@@ -145,18 +145,22 @@
     {
         "id": "3TB5S5AU",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Surgery - 02/25 - Feburary 8 - Afternoon"
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Surgery - 08/24 - August 21 - Afternoon"
         ],
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A day following hysterectomy, a patient complains of severe pain in the right upper lumbar region of the back. Which of the following structures was most likely damaged during the surgery?",
         "options": {
             "A": "Inferior mesenteric artery",
@@ -205,8 +209,8 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Radiology - 01/26 - January 6 - Morning",
@@ -215,7 +219,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Easy",
+        "difficulty": "Hard",
         "question": "A patient presents with difficulty passing catheter due to urethral stricture. Which part of the urethra is the narrowest in males?",
         "options": {
             "A": "Prostatic urethra",
@@ -271,7 +275,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A patient sustains an injury to the anterior triangle of the perineum. Extravasated urine is found limited by a fascia that is continuous with the Scarpa's fascia of the abdominal wall. What is this fascia?",
         "options": {
             "A": "Camper's Fascia",
@@ -299,10 +303,10 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A patient undergoes a posterior surgical approach to the kidney. Postoperatively, a perirenal hematoma is noted on imaging. In which fascial compartment is this hematoma most likely located?",
         "options": {
-            "A": "Gerota’s fascia (renal fascia)",
+            "A": "Gerotaâ€™s fascia (renal fascia)",
             "B": "Transversalis fascia",
             "C": "Psoas fascia",
             "D": "Thoracolumbar fascia",
@@ -327,7 +331,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Transplantation",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A patient undergoes a right renal transplant. The donor renal artery is anastomosed to which vessel in the recipient?",
         "options": {
             "A": "Internal iliac artery",
@@ -355,7 +359,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
+        "difficulty": "Hard",
         "question": "A patient with pelvic fracture presents with blood at the urethral meatus. Urinary retention is noted. Where is the bleeding likely localized?",
         "options": {
             "A": "Superficial perineal space",
@@ -439,7 +443,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Prostate & Seminal Vesicles",
-        "difficulty": "Hard",
+        "difficulty": "Medium",
         "question": "A Urologist doing transurethral surgery, 2 arteries at 5 and 7o' clock position started bleeding and his way blocked name of those arteries is:",
         "options": {
             "A": "Capsular artery",
@@ -495,7 +499,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "After hysterectomy patient complains of pain in Loin due to",
         "options": {
             "A": "Ureter Ligation",
@@ -512,13 +516,17 @@
     {
         "id": "3UXCZZB7",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
-            "Medicine - 05/25 - May 14 - Afternoon"
+            "Medicine - 05/25 - May 14 - Afternoon",
+            "Medicine - 08/24 - August 23 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
         ],
         "subject": "Anatomy",
         "chapter": "Urinary System",
@@ -551,7 +559,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "Bladder integrity test intraoperatively",
         "options": {
             "A": "Ultrasound",
@@ -579,7 +587,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "Bulbar urethral rupture blood will extravasate into:",
         "options": {
             "A": "Superficial perineal pouch",
@@ -635,7 +643,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "During a hysterectomy, which structure is most at risk of injury when the uterine artery is ligated",
         "options": {
             "A": "Ureter",
@@ -663,7 +671,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "During an oophorectomy, the ureter is at risk of damage where it crosses the iliac vessels. This occurs at the level of the?",
         "options": {
             "A": "Fallopian tube",
@@ -691,7 +699,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "During cadaveric dissection, a surgeon wants to identify what prevents the ascent of a horseshoe kidney.",
         "options": {
             "A": "Inferior mesenteric artery",
@@ -719,7 +727,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "During pelvic surgery at the pelvic brim, which structure is most at risk of injury?",
         "options": {
             "A": "External iliac artery",
@@ -775,7 +783,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "If the bulbar urethra ruptures, where does urine collect?",
         "options": {
             "A": "Thigh",
@@ -831,7 +839,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "Urethra & Penis",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "Membranous urethra rupture causes urine to collect in:",
         "options": {
             "A": "Superficial perineal pouch",
@@ -1002,7 +1010,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "easy",
+        "difficulty": "Easy",
         "question": "The right renal vein drains directly into which vessel?",
         "options": {
             "A": "Portal vein",
@@ -1170,7 +1178,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Which of the following lymph node groups is the primary site of lymphatic drainage for the kidneys?",
         "options": {
             "A": "Lumbar lymph nodes",

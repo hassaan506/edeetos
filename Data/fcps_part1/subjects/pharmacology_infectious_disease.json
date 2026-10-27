@@ -13,7 +13,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 24-year-old woman is started on doxycycline for inflammatory acne. She is counseled to avoid dairy products around the time of dosing to maximize absorption. This drug inhibits bacterial protein synthesis by binding to the 30S ribosomal subunit. Which of the following steps in translation is most directly blocked?",
         "options": {
             "A": "Formation of peptide bonds between amino acids",
@@ -41,7 +41,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 28-year-old man being treated for latent tuberculosis develops peripheral neuropathy. Which vitamin supplementation should be given to prevent this complication?",
         "options": {
             "A": "Vitamin B1 (thiamine)",
@@ -69,7 +69,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30-year-old male heart transplant patient on cyclosporine develops a Candida infection and is treated with ketoconazoll- Why is this therapy problematic?",
         "options": {
             "A": "Ketoconazole is ineffective against Candida",
@@ -97,7 +97,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 30-year-old patient being treated for P. vivax malaria develops macrocytic anemia with hypersegmented neutrophils after months of therapy. Which anti-malarial drug is responsible?",
         "options": {
             "A": "Chloroquine",
@@ -125,7 +125,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 32-year-old female patient is started on isoniazid-based therapy for pulmonary tuberculosis. She develops tingling and numbness in her hands and feet after 4 weeks. Which of the following is the most appropriate next step?",
         "options": {
             "A": "Continue isoniazid and start pyridoxine (vitamin B6) supplementation",
@@ -148,12 +148,13 @@
             "Medicine & Allied"
         ],
         "exams": [
-            "Medicine - 11/25 - November 14 - Morning"
+            "Medicine - 11/25 - November 14 - Morning",
+            "Medicine - 11/25 - November 16 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 38-year-old HIV-positive man is started on a new antiretroviral regimen. Two weeks later, he presents with severe epigastric pain radiating to the back, nausea, and vomiting. Labs show amylase and lipase levels >3x normal. Which drug in his regimen is the most likely cause of his symptoms?...",
         "options": {
             "A": "Zidovudine...",
@@ -164,34 +165,6 @@
         },
         "correctAnswer": "B",
         "explanation": "Didanosine -> pancreatitis (NRTI); zidovudine -> marrow suppression...",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "983NWY4U",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied"
-        ],
-        "exams": [
-            "Medicine - 11/25 - November 16 - Morning"
-        ],
-        "subject": "Pharmacology",
-        "chapter": "Infectious Disease",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 38-year-old HIV-positive man is started on a new antiretroviral regimen. Two weeks later, he presents with severe epigastric pain radiating to the back, nausea, and vomiting. Labs show amylase and lipase levels >3x normal. Which drug in his regimen is the most likely cause of his symptoms?",
-        "options": {
-            "A": "Zidovudine",
-            "B": "Didanosine",
-            "C": "Efavirenz",
-            "D": "Lamivudine",
-            "E": "Tenofovir"
-        },
-        "correctAnswer": "B",
-        "explanation": "Didanosine -> pancreatitis (NRTI); zidovudine -> marrow suppression.",
         "hint": "",
         "Point": ""
     },
@@ -209,7 +182,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 40-year-old HIV-positive man is started on antiretroviral therapy. He has a past history of recurrent bladder calculi. Which antiretroviral drug should be avoided due to an increased risk of nephrolithiasis?",
         "options": {
             "A": "Zidovudine",
@@ -237,7 +210,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 52-year-old man with a history of recurrent urinary tract infections is prescribed ciprofloxacin. Which of the following best describes the mechanism of action of this drug?",
         "options": {
             "A": "Inhibition of dihydropteroate synthase",
@@ -265,7 +238,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A joint aspirate shows Gram-positive cocci in clusters. The patient is known to have Methicillin-Resistant Staphylococcus aureus (MRSA), but vancomycin is not an available option. Which of the following is the most appropriate alternative antibiotic choice?",
         "options": {
             "A": "Ceftriaxone",
@@ -293,7 +266,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A known TB patient is taking anti-tubercular drugs. Which vitamin should be added to prevent one of the most common complication?",
         "options": {
             "A": "Vitamin B1",
@@ -321,7 +294,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A known tuberculosis patient is taking anti tubercular drugs. Which vitamin should be added to prevent one of the most common complication?",
         "options": {
             "A": "Vitamin B1",
@@ -349,7 +322,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has MRSA pneumonia. Which drug inhibits bacterial protein synthesis at the 50S ribosomal subunit?",
         "options": {
             "A": "Gentamicin",
@@ -377,7 +350,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is diagnosed with a MRSA skin infection. Which of the following drugs is appropriate if vancomycin and linezolid are unavailable?",
         "options": {
             "A": "Fusidic acid",
@@ -405,7 +378,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is infected with Pseudomonas aeruginosa. Which antibiotic is effective?",
         "options": {
             "A": "Amoxicillin",
@@ -433,7 +406,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is receiving first-line anti-tubercular therapy (ATT). Which of the following drugs are hepatotoxic?",
         "options": {
             "A": "Isoniazid (INH), Pyrazinamide (PZA), Rifampin",
@@ -461,7 +434,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient on antimalarial therapy develops widened QRS with crescendo-decrescendo pattern. Which drug is responsible?",
         "options": {
             "A": "Chloroquine",
@@ -489,7 +462,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient on the initial four-drug regimen for active tuberculosis develops clinical signs of drug-induced hepatitis. Which of the following drugs is generally considered the most hepatotoxic agent in the standard TB regimen?",
         "options": {
             "A": "Pyrazinamide",
@@ -519,7 +492,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented gas gangrene caused by clostridium perfringes drug of choice for it",
         "options": {
             "A": "Clindamycin",
@@ -547,7 +520,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient was on ATT what should be given to prevent peripheral neuropathy",
         "options": {
             "A": "B12",
@@ -575,7 +548,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A ventilated ICU patient grows multidrug-resistant Acinetobacter baumannii. What is the drug of choice?",
         "options": {
             "A": "Imipenem",
@@ -592,18 +565,21 @@
     {
         "id": "BHZ4UNBL",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
+            "Radiology - 05/25 - May 12 - Morning",
+            "Anesthesia - 08/24 - August 20 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cephalosporin mechanism of action:",
         "options": {
             "A": "Inhibit Protien",
@@ -631,7 +607,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "DOAC of type",
         "options": {
             "A": "Albendazol",
@@ -659,7 +635,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Drug of choice in herpes simplex keratitis",
         "options": {
             "A": "Trifluridine",
@@ -687,7 +663,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Drug used in HIV which causes peripheral neuropathy and pancreatitis?",
         "options": {
             "A": "Didanosine",
@@ -715,7 +691,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Gentamicin, an aminoglycoside antibiotic, achieves its antibacterial effect primarily by binding to and inhibiting which component of the bacterial ribosome?",
         "options": {
             "A": "50S subunit",
@@ -743,7 +719,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In the treatment of uncomplicated, non-resistant typhoid fever, which class of antibiotics is typically considered the initial DOC for effective empirical therapy?",
         "options": {
             "A": "Levofloxacin",
@@ -771,7 +747,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient developed anaphylaxis against penicillin which drug can be used instead",
         "options": {
             "A": "Amikacin + Clavulanate",
@@ -788,18 +764,21 @@
     {
         "id": "AXJGABMH",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
+            "Radiology - 05/25 - May 12 - Morning",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Peripheral neuropathy secondary to isoniazid is reversed/prevented by?",
         "options": {
             "A": "Cobalamine",
@@ -827,7 +806,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pyridoxine deficiency is caused by which of the following anti tuberculosis drug?",
         "options": {
             "A": "Isoniazid",
@@ -855,7 +834,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tetracycline's away against Helicobacter pylori results from inhibition of which target?",
         "options": {
             "A": "DNA gyrase",
@@ -883,7 +862,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The antiprotozoal drug Pyrimethamine, primarily used in the treatment of Toxoplasmosis and Malaria, exerts its effect by:",
         "options": {
             "A": "Inhibiting bacterial cell wall synthesis.",
@@ -900,18 +879,20 @@
     {
         "id": "RPMLJY3T",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied"
         ],
         "exams": [
-            "Medicine - 05/25 - May 15 - Morning"
+            "Medicine - 05/25 - May 15 - Morning",
+            "Medicine - 11/24 - November 23 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Tumour suppressor gene is",
         "options": {
             "A": "BRCA 1",
@@ -939,7 +920,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What is the standard combination of four anti-tuberculosis drugs (ATT) required for the initial two-month intensive phase of tuberculosis treatment?",
         "options": {
             "A": "INH, Rifampin, Ethambutol, streptomycin",
@@ -967,7 +948,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which anti-malarial drug causes neurological and cardiac manifestations?",
         "options": {
             "A": "Chloroquine",
@@ -995,7 +976,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which first-line anti-tubercular drug can cause peripheral neuropathy due to its interference with pyridoxine metabolism?",
         "options": {
             "A": "Rifampicin",
@@ -1023,7 +1004,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following disease modifying antirheumatic drug (DMARDs) is considered safe to use during pregnancy?",
         "options": {
             "A": "Hydroxychloroquine",
@@ -1051,7 +1032,7 @@
         "subject": "Pharmacology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which second-line drug can cause depression in XDR-TB treatment?",
         "options": {
             "A": "PZA (Pyrazinamide)",

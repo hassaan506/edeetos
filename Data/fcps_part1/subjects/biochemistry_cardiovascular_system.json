@@ -1,5 +1,93 @@
 [
     {
+        "id": "S5J48AXH",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "2nd heart sound at the beginning of:",
+        "options": {
+            "A": "Isovolumetric contraction",
+            "B": "Isovolumetric relaxation",
+            "C": "Atrial systole",
+            "D": "Ventricular filling",
+            "E": "Rapid Ejection"
+        },
+        "correctAnswer": "B (FA + BRS)",
+        "explanation": "First heart Sound - Isovolumetric contraction (Closure of mitral and tricuspid valve) Second Heart Sound - Isovolumetric relaxation (Closure of aortic and Pulmonary valve) Third Heart Sound - Rapid ventricular filling (Normal in children, pregnancy and athletes) Fourth heart Sound - Atrial Systole",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "6N7SH2NL",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "2nd heart sound due to:",
+        "options": {
+            "A": "Isovolumetric contraction",
+            "B": "Isovolumetric relaxation",
+            "C": "Atrial systole",
+            "D": "Ventricular filling",
+            "E": "Rapid Ejection"
+        },
+        "correctAnswer": "B (FA + BRS)",
+        "explanation": "First heart Sound Isovolumetric contraction (Closure of mitral and tricuspid valve) Second Heart Sound Isovolumetric relaxation (Closure of aortic and Pulmonary valve) Third Heart Sound Rapid ventricular filling (Normal in children, pregnancy and athletes) Fourth heart Sound - Atrial Systole",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "FRGGW3RZ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "3rd heart sound due to:",
+        "options": {
+            "A": "Isovolumetric contraction",
+            "B": "Isovolumetric relaxation",
+            "C": "Atrial systole",
+            "D": "Ventricular filling",
+            "E": "Rapid Ejection"
+        },
+        "correctAnswer": "D (FA + BRS)",
+        "explanation": "First heart Sound Isovolumetric contraction (Closure of mitral and tricuspid valve) Second Heart Sound Isovolumetric relaxation (Closure of aortic and Pulmonary valve) Third Heart Sound Rapid ventricular filling (Normal in children, pregnancy and athletes)",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "6EJW5B53",
         "year": [
             "2026"
@@ -13,7 +101,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 35 year old malnourished man presents with shortness of breath, bilateral pedal edema, and tachycardia. He has a history of chronic alcohol use and a diet mainly consisting of polished rice. On examination, there are signs of high-output heart failure. Which of the following vitamin deficiencies is most likely responsible for this condition?",
         "options": {
             "A": "Vitamin B2 (Riboflavin)",
@@ -41,7 +129,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 50 year old man with a family history of early myocardial infarction is advised to lower his \"bad\" cholesterol. Which lipoprotein is primarily responsible for transporting cholesterol to peripheral tissues?",
         "options": {
             "A": "HDL",
@@ -69,7 +157,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 52 year old man with hyperlipidemia prefers herbal remedies and regularly consumes garlic supplements. Which of the following mechanisms best explains garlic's effect on lowering cholesterol levels?",
         "options": {
             "A": "Inhibition of bile acid reabsorption",
@@ -77,6 +165,34 @@
             "C": "Inhibition of HMG-CoA reductase",
             "D": "Increased LDL receptor degradation",
             "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NTFAVYB4",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A 54- year-old male is seen in clinic with complaints of palpitations and light-headedness. Physical examination shows a heart rate of 200 bpm and BP of 75/40 mmHg. The most likely adjustment that has occurred in the cardiac cycle is:",
+        "options": {
+            "A": "Diastolic time decreases and systolic remain same",
+            "B": "Diastolic time increases and systolic remains the same",
+            "C": "Diastolic decreases more in proportion to systolic",
+            "D": "Diastolic decreases and systolic increases",
+            "E": "Diastolic increases and systolic decreases"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -97,7 +213,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 58 year old man is advised to increase dietary intake of vegetable oils rich in polyunsaturated fatty acids as part of lipid management therapy. After starting this dietary change, which of the following is the most likely effect associated with polyunsaturated fatty acid intake?",
         "options": {
             "A": "Increased LDL cholesterol",
@@ -125,7 +241,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A low-fat diet primarily decreases:",
         "options": {
             "A": "LDL",
@@ -136,6 +252,34 @@
         },
         "correctAnswer": "C",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LBTDJ96P",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A male presents with impaired erections and feels ashamed of his enlarged breasts. What is the most likely cause?",
+        "options": {
+            "A": "Excessive GnRH",
+            "B": "Increased melatonin production",
+            "C": "Increased growth hormone GH",
+            "D": "Excessive corticotropin",
+            "E": ""
+        },
+        "correctAnswer": "ANS. D",
+        "explanation": "Excessive corticotropin (ACTH) can lead to conditions like Cushing's syndrome, where hormonal imbalances may cause gynecomastia, erectile dysfunction, and psychological distress. Elevated cortisol levels disrupt normal gonadal hormone regulation, leading to these symptoms",
         "hint": "",
         "Point": ""
     },
@@ -153,7 +297,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A middle-aged obese patient presents with dyslipidemia. Laboratory results show elevated total cholesterol and increased LDL levels. Which of the following lipid parameters is the best indicator of a protective (cardioprotective lipid profile and improved cardiovascular prognosis?",
         "options": {
             "A": "Total cholesterol",
@@ -181,7 +325,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is having chest pain which is radiating to left arm and jaw. Further work up revealed unstable angina. During hypoxic phase in affected myocardium, which metabolic processes would be occurring?",
         "options": {
             "A": "Aerobic glycolysis",
@@ -191,6 +335,62 @@
             "E": "Lipolysis and beta oxidation"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "PD5UK8CT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presents with persistent epigastric pain and chest pain vomiting from last 4 hours. ECG shows ST elevation BP 130/80 Cardiac enzymes normal what is the diagnosis:",
+        "options": {
+            "A": "MI",
+            "B": "Acute pericarditis",
+            "C": "Myocarditis",
+            "D": "Dissectionof Aorta",
+            "E": ""
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "FPKLZQXL",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presents with retrosternal pain radiating to the epigastric lasting for 3-4 hours, accompanied by ST-segment elevation on ECG but no change in cardiac enzyme levels. What is the most likely diagnosis?",
+        "options": {
+            "A": "Aortic dissection",
+            "B": "Acute myocardial infarction (MI)",
+            "C": "Acute Pericarditis",
+            "D": "Acute Myocarditis",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -211,7 +411,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with severe chest pain radiating to the jaw. ECG confirms acute myocardial infarction, and PCI is performed to restore blood flow. Before reperfusion, which metabolic process had already occurred in ischemic myocardial cells?",
         "options": {
             "A": "Increased oxidative phosphorylation",
@@ -219,6 +419,34 @@
             "C": "Aerobic glycolysis",
             "D": "Anaerobic glycolysis",
             "E": "Fatty acid oxidation"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "LHWW5FMU",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presents with sudden onset of persistent Retrosternal epigastric pain and chest pain vomiting from last 3- 4 hours. ECG shows ST elevation BP 130/80 Cardiac enzymes normal what is the diagnosis:",
+        "options": {
+            "A": "MI",
+            "B": "Acute pericarditis",
+            "C": "Myocarditis",
+            "D": "Dissection of Aorta",
+            "E": ""
         },
         "correctAnswer": "D",
         "explanation": "",
@@ -239,7 +467,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient suffers a MI, what is the immediate metabolic shift that occur in cardiac muscle cells during the time of ischemia?",
         "options": {
             "A": "Oxidative phosphorylation",
@@ -250,6 +478,34 @@
         },
         "correctAnswer": "B",
         "explanation": "When oxygen supply is cut off (ischemia), the cardiac muscle switches from aerobic metabolism to the much less efficient anaerobic glycolysis, rapidly leading to lactate buildup and ATP depletion.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "J5BP9UA6",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient Whose ECG is normal, cardiac enzymes normal, x-ray lung field clear but on CT scan 0.5cm calcification found and ball movement of heart valves noted. What is primary heart tumor related to this is",
+        "options": {
+            "A": "Atrial myxoma",
+            "B": "Rhabdomyosarcoma",
+            "C": "Pulmojary embolism",
+            "D": "MI",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
         "hint": "",
         "Point": ""
     },
@@ -267,7 +523,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with elevated serum cholesterol is most strongly associated with increased levels of which lipoprotein fraction?",
         "options": {
             "A": "HDL",
@@ -295,7 +551,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with heart failure due to nutritional deficiency is most likely deficient in:",
         "options": {
             "A": "Thiamine",
@@ -305,6 +561,202 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "654REHG8",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A patient with Myocardial infarction. After few minutes Which of the following is most likely to occur:",
+        "options": {
+            "A": "Pericarditis",
+            "B": "Complete recovery without complications",
+            "C": "Arrhythmia",
+            "D": "Cardiac tamponade",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "4h Post MI - Arrhythmia 4-24h Post MI - Arrhythmia 1-3 Days Post MI Fibrinous Pericarditis 4-7 Days Post MI Cardiac Temponade Months Post MI -- Aneurysm",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NN4Q74RH",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A woman is allergic to hazelnuts, Peach and apricot seeds. Which lipid mediator is primarily involved in this allergic reaction?",
+        "options": {
+            "A": "PRU AR-1 Lipid",
+            "B": "PRP3",
+            "C": "Allergen to P4",
+            "D": "Allergen to L5",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "PRU AR- 1 is a lipid transfer protein (LTP) found in hazelnuts and other foods like peaches and apricot seeds. These LTPs are major allergens responsible for triggering IgE-mediated allergic reactions in sensitive individuals. This makes PRU AR-1 the most likely mediator in this case.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "KD4A27WF",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "About Clostridium Perfringes, select correct One:",
+        "options": {
+            "A": "Spore forming",
+            "B": "Produce Exotoxin",
+            "C": "Penicillin Resistance",
+            "D": "Produce endotoxin",
+            "E": "Both Aerobic & Anaerobic"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "HTAALCW6",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "AV Nodal Delay help in which of the following?",
+        "options": {
+            "A": "Atrial filling",
+            "B": "Ventricle filling",
+            "C": "Aorta filling",
+            "D": "Ventricle contraction",
+            "E": "Atrial contraction"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "BSM7XDR3",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Calculate GCS with the following responses: Eye opening to verbal stimulation, Localizes to pain, Incomprehensible speech (not sound)",
+        "options": {
+            "A": "8",
+            "B": "9",
+            "C": "10",
+            "D": "11",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "The Glasgow Coma Scale (GCS) is calculated as the sum of: Eye Response (E): 3 (to stimulation). Motor Response (M): 5 (localizes to pain). Verbal Response (V): 3 (incomprehensible speech). Total GCS = 3 + 5 + 2 = 10",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "XBS6W6HA",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Calculate the MAP when systolic BP is 132 and Diastolic is 66",
+        "options": {
+            "A": "76mmhg",
+            "B": "88mmhg",
+            "C": "80mmhg",
+            "D": "70mmhg",
+            "E": "66mmhg"
+        },
+        "correctAnswer": "B",
+        "explanation": "Mean Arterial pressure(MAP) = Can be calculated approximately as diastolic pressure +One third of pulse pressure (Systolic pressure - diastolic pressure. MAP = DP+1/3pulse pressure 66+1/3(132-66) 66+1/3 66 66+22 88",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RLDWMKUT",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Changes in the lengths of the left atrial tracing can be due to which of the following?",
+        "options": {
+            "A": "Changes in heart rate",
+            "B": "Variations in ventricular filling",
+            "C": "Changes in left atrial pressure",
+            "D": "Alterations in cardiac output",
+            "E": ""
+        },
+        "correctAnswer": "C",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -323,7 +775,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Dietary garlic is often studied for its cardiovascular benefits; it is thought to reduce cholesterol levels primarily by",
         "options": {
             "A": "Decreasing synthesis",
@@ -333,6 +785,174 @@
             "E": ""
         },
         "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "FJU4GFBX",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "DNA replication occurs in which phase?",
+        "options": {
+            "A": "Telomerase",
+            "B": "Prophase",
+            "C": "Telophase",
+            "D": "Anaphase",
+            "E": "Interphase"
+        },
+        "correctAnswer": "E",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "TYQF32RC",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "During which phase of the cardiac cycle 2/3 of ventricular filling occurs and 3rd hean sound is produced?",
+        "options": {
+            "A": "Rapid inflow",
+            "B": "Atrial contraction",
+            "C": "Slow ejection",
+            "D": "Isovolumetric relaxation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "First heart Sound Isovolumetric contraction (Closure of mitral and tricuspid valve) Second Heart Sound Isovolumetric relaxation (Closure of aortic and Pulmonary valve) Third Heart Sound Rapid ventricular filling (Normal in children, pregnancy and athletes) Fourth heart Sound - Atrial Systole",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "69ZJZPYP",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "During which phase of the cardiac cycle $2/3$ of ventricular filling occurs and 3rd heart sound is produced?",
+        "options": {
+            "A": "Rapid inflow",
+            "B": "Atrial contraction",
+            "C": "Slow ejection",
+            "D": "Isovolumetric relaxation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "ES5AS95F",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "During which phase of the cardiac cycle 2/3(60%) of ventricular filling occurs and 3rd heart sound is produced?",
+        "options": {
+            "A": "Rapid inflow",
+            "B": "Atrial contraction",
+            "C": "Slow ejection",
+            "D": "Isovolumetric relaxation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "First heart Sound Isovolumetric contraction (Closure of mitral and tricuspid valve) Second Heart Sound Isovolumetric relaxation (Closure of aortic and Pulmonary valve) Third Heart Sound Rapid ventricular filling (Normal in children, pregnancy and athletes) Fourth heart Sound - Atrial Systole",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "HKKTGHG3",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 20 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Effect of inspiration",
+        "options": {
+            "A": "Dec ventricular filling",
+            "B": "Dec right ventricular emptying",
+            "C": "Momentarily inhabited",
+            "D": "Dec left ventricular ejection",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "P3APPSW7",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Anesthesia"
+        ],
+        "exams": [
+            "Anesthesia - 11/24 - November 19 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Enzyme increase the rate of reaction by:",
+        "options": {
+            "A": "Increasing the activation energy",
+            "B": "Decreasing the activation energy",
+            "C": "Making more free energy",
+            "D": "Changing the equilibrium constant",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -351,7 +971,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Factor related to coronary arterydisease and inhibits fibrinolysia?",
         "options": {
             "A": "HDL - C",
@@ -361,6 +981,36 @@
             "E": "IDL"
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "8ZN4GA67",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 21 - Morning",
+            "Surgery - 08/24 - August 21 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Fatty acids & glycerol combine to form neutral fats in:",
+        "options": {
+            "A": "Golgi body",
+            "B": "Lysosome",
+            "C": "SER",
+            "D": "Peroxisome",
+            "E": "Mitochondria"
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -379,7 +1029,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a patient on a low-fat diet, which of the following plasma components would decrease?",
         "options": {
             "A": "Chylomicrons",
@@ -390,6 +1040,63 @@
         },
         "correctAnswer": "A",
         "explanation": "A low-fat diet directly reduces the intake of dietary fats. Therefore, a patient on a low-fat diet would have a significantly reduced number of chylomicrons in their plasma. The other options are less likely to be immediately and significantly affected by a low-fat diet.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RQ3GKAU5",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "In alcohlic Patient Steatohepatitis develops due to:",
+        "options": {
+            "A": "Acetate",
+            "B": "Cholesterol",
+            "C": "Fatty acids",
+            "D": "Phospholipid",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "WEE5L39Y",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Morning",
+            "Gynecology- 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Longest pro erythrocytic phase is:",
+        "options": {
+            "A": "P. falciparum",
+            "B": "P. Malaria",
+            "C": "P. Ovale",
+            "D": "P. vivax",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Shortest pre-erythrocytic phase is seen in Plasmodium Falciparum. Longest pre-erythrocytic phase is in Plasmodium Malariae.",
         "hint": "",
         "Point": ""
     },
@@ -407,7 +1114,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Markedly elevated serum triglyceride levels are an important risk factor for which condition?",
         "options": {
             "A": "Cholecystitis",
@@ -417,6 +1124,381 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "EDUU683G",
+        "year": [
+            "2025",
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon",
+            "Medicine - 11/25 - November 14 - Evening",
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Surgery - 08/25 - August 7 - Morning",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Most potent antioxidant:",
+        "options": {
+            "A": "Vitamin E",
+            "B": "Vitamin A",
+            "C": "Glutathione",
+            "D": "Vitamin C",
+            "E": "Transferrin"
+        },
+        "correctAnswer": "A",
+        "explanation": "Glutathione > Transferrin > Vitamin E >Vitamin C > Vitamin A.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "TGTRC2EJ",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 12/24 - December 01 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Order of cardiac enzyme elevation?",
+        "options": {
+            "A": "Myoglobin > CKMB > TROP I > LDH",
+            "B": "LDH > TROP-I > CK-MB > MYOGLOBIN",
+            "C": "Myoglobin > LDH = CKMB",
+            "D": "Myoglobin > LDH = CKMB > TROP-I",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "VSHQ3B85",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient admitted with chest pain for 5hrs. Enzyme present will be:",
+        "options": {
+            "A": "LDH",
+            "B": "CPK",
+            "C": "AST",
+            "D": "AST",
+            "E": "Phospokinase"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "868DJY78",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient after RTA has chest pain which one will be raised",
+        "options": {
+            "A": "ALT",
+            "B": "CPK",
+            "C": "LDH",
+            "D": "AST",
+            "E": "CK MB"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "S8HRB5TP",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "Patient having cough and basal crackles on examination doctor finds Enlarged shadow on X-Ray. Echo shows Ejection fraction to be 40%. Which one of them is responsible for his enlarged heart?",
+        "options": {
+            "A": "Vitamin A",
+            "B": "Vitamin B1",
+            "C": "Vitamin B3",
+            "D": "Vitamin B4",
+            "E": "Vitamin B12"
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "58HSEPUX",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/24 - November 21 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "Patient having cough and basal crackles on examination doctor finds Enlarged shadow on X-Ray On echo ejection fraction is 40% Which one of them is responsible for his enlarged heart and high",
+        "options": {
+            "A": "Vitamin C deficiency",
+            "B": "Vitamin B9 deficiency",
+            "C": "Vitamin B1 deficiency",
+            "D": "Vitamin B3 deficiency",
+            "E": "Vitamin B5 deficiency"
+        },
+        "correctAnswer": "C",
+        "explanation": "[None]",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "H65FZX4A",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/24 - August 23 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Patient with dysphagia severe chest pain difficult belching and air fluid level ECG looks normal Cardiac enzyme normal this is likely due to:",
+        "options": {
+            "A": "GERD",
+            "B": "Achlasia",
+            "C": "Erosive intake",
+            "D": "Esophagitis",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "MA2JRS48",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/24 - August 20 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Percentage of Fat needed in diet:",
+        "options": {
+            "A": "25% to 30%",
+            "B": "30%to40%",
+            "C": "10 to 15%",
+            "D": "50-60%",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Carbs/Proteins GivE- 4kcal Fats GivE- 9kcal Alcohol GivE- 7kcal Carbs Required - 50-60% Fats Required-25-35% Protiens Required - 10 - 20%",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "W3F6MEP2",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology- 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Person present with Central chest pain for 4 hrs, which cardiac enzyme will be raised?",
+        "options": {
+            "A": "ALP",
+            "B": "CK-BB",
+            "C": "LDH",
+            "D": "ALT",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "6ZJDJJ3A",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Second heart sound due to:",
+        "options": {
+            "A": "Isovolumetric contraction",
+            "B": "Isovolumetric relaxation",
+            "C": "Atrial systole",
+            "D": "Rapid Ventricular filling",
+            "E": "Rapid ejection"
+        },
+        "correctAnswer": "B(FA + BRS)",
+        "explanation": "First heart Sound - Isovolumetric contraction (Closure of mitral and tricuspid valve) Second Heart Sound - Isovolumetric relaxation (Closure of aortic and Pulmonary valve) Third Heart Sound - Rapid ventricular filling (Normal in children, pregnancy and athletes) Fourth heart Sound - Atrial Systole",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "BWF96DNE",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 08/24 - August 22 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Shortest pro erythrocytic phase is:",
+        "options": {
+            "A": "P. falciparum",
+            "B": "P. Malaria",
+            "C": "P. Ovale",
+            "D": "P. vivax",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Shortest pre-erythrocytic phase is seen in - Plasmodium Falciparum. Longest pre-erythrocytic phase is in - Plasmodium Malariae.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "K2D6KPF4",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 22 - Afternoon"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Systolic BP 132 diastolic 66.MAP will be:",
+        "options": {
+            "A": "68",
+            "B": "88",
+            "C": "78",
+            "D": "66",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "PP = 132 - 66 = 66 1/3rd of PP = 66 / 3 = 22 MAP = Diastolic BP + 1/3rd of PP MAP = 66 + 22 = 88",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YR9TPYVW",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Gynecology & Obstetrics"
+        ],
+        "exams": [
+            "Gynecology - 11/24 - November 21 - Afternoon",
+            "Gynecology- 08/24 - August 21 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Ultrasound frequency used for prenatal diagnostic purpose in obstetrics:",
+        "options": {
+            "A": "15-19mhz",
+            "B": "More than 20mHz",
+            "C": "15-29mHz",
+            "D": "1 to 10 mhz",
+            "E": ""
+        },
+        "correctAnswer": "A",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -435,7 +1517,7 @@
         "subject": "Biochemistry",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Vitamin B1 deficiency causes increase cardiac output this is due to:",
         "options": {
             "A": "Decrease HR",
@@ -445,6 +1527,34 @@
             "E": ""
         },
         "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "KQ8MP375",
+        "year": [
+            "2024"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/24 - November 23 - Morning"
+        ],
+        "subject": "Biochemistry",
+        "chapter": "Cardiovascular System",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following enzyme raised within 6 hours after STEMI",
+        "options": {
+            "A": "CK-MB",
+            "B": "LDH",
+            "C": "CPK",
+            "D": "ALP",
+            "E": ""
+        },
+        "correctAnswer": "A(PREFER TROP I)",
         "explanation": "",
         "hint": "",
         "Point": ""

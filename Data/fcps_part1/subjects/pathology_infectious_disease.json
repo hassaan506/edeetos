@@ -13,7 +13,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 36-year-old man is diagnosed with pulmonary tuberculosis. Which of the following virulence factors of Mycobacterium tuberculosis is most important for preventing its destruction inside macrophages?",
         "options": {
             "A": "Protein A",
@@ -41,7 +41,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 43-year-old man presents with chronic cough, night sweats, and weight loss. Sputum smear is positive for acid-fast bacilli. The organism's pathogenicity is primarily due to the host's immune response rather than direct toxin production. Which of the following immune mechanisms plays the most important role in controlling this infection?",
         "options": {
             "A": "Antibody-mediated opsonization",
@@ -69,7 +69,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55-year-old patient with pulmonary tuberculosis presents with a lesion containing a crumbly, cheese-like material. Which type of necrosis is?",
         "options": {
             "A": "Coagulative necrosis",
@@ -97,7 +97,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A biopsy shows granulomas with central caseous necrosis after chronic infection. Cause?",
         "options": {
             "A": "Sarcoidosis",
@@ -125,7 +125,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A lung biopsy specimen from an immunocompromised patient with pneumonia is stained with periodic acid-Schiff (PAS), revealing magenta-stained fungal cell walls. Which of the following organisms would be detected by this method?",
         "options": {
             "A": "Pneumocystis jirovecii",
@@ -153,7 +153,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A microbiology student performs Ziehl-Neelsen staining for acid-fast bacilli but forgets to apply the acid-alcohol decolorizer step. What will be the appearance of bacteria in background on microscopy?",
         "options": {
             "A": "Acid-fast bacilli red, non-acid-fast bacteria blue",
@@ -181,7 +181,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A person presented with fever and infection. Upon gram staining, G+cocci, coagulase and catalase positive were isolated. The virulence of such organism is due to?",
         "options": {
             "A": "IgA Protease",
@@ -209,7 +209,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A virologist studies how certain viruses alter host cell proteins. She finds that some viral genes integrate into the host genome and cause synthesis of altered host proteins. Which of the following mechanisms best describes this phenomenon?",
         "options": {
             "A": "Antigenic shift",
@@ -237,7 +237,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Acid-fast stain is positive in which of the following microbes?",
         "options": {
             "A": "Bacteria",
@@ -265,7 +265,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Bacterial spores can survive extreme heat due to which of the following protective features?",
         "options": {
             "A": "Presence of dipicolinic acid and thick keratin-like coat",
@@ -282,7 +282,8 @@
     {
         "id": "TTVFLFMP",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -291,12 +292,13 @@
         "exams": [
             "Medicine - 05/25 - May 13 - Afternoon",
             "Surgery - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Difference between the Taenia solium and taenia saginata",
         "options": {
             "A": "Saginata acid fast bacteria",
@@ -324,7 +326,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Germ tube test positive by which fungal species",
         "options": {
             "A": "Candida albicans",
@@ -352,7 +354,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "How does Mycobacterium tuberculosis reach the genitourinary tract?",
         "options": {
             "A": "Hematogenous spread",
@@ -380,7 +382,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Infectious mononucleosis primarily affects which cells?",
         "options": {
             "A": "B cells",
@@ -410,7 +412,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Kaposi sarcoma Cause by",
         "options": {
             "A": "HHV8",
@@ -420,7 +422,7 @@
             "E": "HHV 5"
         },
         "correctAnswer": "A",
-        "explanation": "• HHV 8 - Kaposi sarcoma • HHV 6, HHV7 - Roseola infantum • B19 - Parvo virus • HPV 5 virus - cytomegalovirus",
+        "explanation": "â€¢ HHV 8 - Kaposi sarcoma â€¢ HHV 6, HHV7 - Roseola infantum â€¢ B19 - Parvo virus â€¢ HPV 5 virus - cytomegalovirus",
         "hint": "",
         "Point": ""
     },
@@ -438,7 +440,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Langhian giant cell found in",
         "options": {
             "A": "Tuberculosis",
@@ -466,7 +468,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "MOA of gangrene caused by clostridium perfringens:",
         "options": {
             "A": "Local hypoxia",
@@ -494,7 +496,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "On histology liver shows centrally distorted area surrounded by epithelioid cells, lymphocytes and giant cells this is related to",
         "options": {
             "A": "Coagulative necrosis",
@@ -524,7 +526,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "On histology liver shows centrally distorted area surrounded by epitheloid cells, lymphocytes and giant cells this is related to",
         "options": {
             "A": "Coagulative necrosis",
@@ -552,7 +554,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Shigella causes dysentery primarily through:",
         "options": {
             "A": "Mucosal invasion",
@@ -562,34 +564,6 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "JDTLMPDD",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
-        ],
-        "subject": "Pathology",
-        "chapter": "Infectious Disease",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Tetanus toxin is?",
-        "options": {
-            "A": "Endotoxin",
-            "B": "Neurotoxin",
-            "C": "Erythrogenic toxin",
-            "D": "Toxoid",
-            "E": ""
-        },
-        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -608,7 +582,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The type of calcification seen in a healed primary tuberculous granuloma is termed as:",
         "options": {
             "A": "Metastatic calcification",
@@ -636,7 +610,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which immune cells mainly respond to EBV infection?",
         "options": {
             "A": "Antibodies neutralize B-cell invasion",
@@ -664,7 +638,7 @@
         "subject": "Pathology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following fungi is intrinsically resistant to echinocandins?",
         "options": {
             "A": "Candida albicans",

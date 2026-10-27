@@ -13,7 +13,7 @@
         "subject": "Oncology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A HIV patient develops black lesion on hand his sex partner has similar lesions too which of following Skin CA associated with HIV?",
         "options": {
             "A": "Lymphoma",
@@ -41,7 +41,7 @@
         "subject": "Oncology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A HIV patient develops lesion on skin his sex partner has similar lesions too which of following Skin CA associated with HIV?",
         "options": {
             "A": "Lymphoma",
@@ -58,7 +58,8 @@
     {
         "id": "LKY5TKBM",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Medicine & Allied",
@@ -66,12 +67,15 @@
         ],
         "exams": [
             "Medicine - 02/25 - Feburary 8 - Afternoon",
-            "Surgery - 05/25 - May 13 - Afternoon"
+            "Surgery - 05/25 - May 13 - Afternoon",
+            "Medicine - 08/24 - August 22 - Morning",
+            "Medicine - 11/24 - November 21 - Afternoon",
+            "Medicine - 12/24 - December 01 - Morning"
         ],
         "subject": "Oncology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Most common skin cancer in HIV/AIDS patients is:",
         "options": {
             "A": "Kaposi sarcoma",

@@ -15,7 +15,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old asthmatic patient with a history of myocardial infarction presents for fitness evaluation. ASA classification will be",
         "options": {
             "A": "ASA 1",
@@ -43,7 +43,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old man with a long history of generalized anxiety disorder has been taking diazepam 10 mg daily for 7 years. He is now scheduled for elective inguinal hernia repair under general anesthesia. During the pre-anesthetic assessment, he reports no recent change in his medication. He appears calm but has a slightly increased baseline heart rate. What is the most appropriate adjustment in anesthetic management for this patient?",
         "options": {
             "A": "Increase the dose of anesthetic agents",
@@ -71,7 +71,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 55 year old man with a history of chronic liver disease (CLD). Is scheduled for elective surgery. The anesthetic is concerned about drug metabolism in this patient. Which of the following would be the safest choice for preoperative analgesia/sedation?",
         "options": {
             "A": "Fentanyl",
@@ -99,7 +99,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A man after RTA got a head injury which is to be stitched 10 inch wound/laceration which anesthesist agent will best for suturing the wound?",
         "options": {
             "A": "250 ml of 2% lignocaine with adrenaline",
@@ -127,7 +127,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient came in Unconsciousness pulseless state IV line not maintained ETT passed and CPR starte D- Which drug given through ETT is ineffective",
         "options": {
             "A": "Nalaxone",
@@ -155,7 +155,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient came to emergency and he was sent to operation theatre for appendectomy. He is a young male with no co morbidities. According to American Society of Anesthesiologists (ASA) physical status classification, which category does he fall into?",
         "options": {
             "A": "1E",
@@ -183,7 +183,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "During general anesthesia, the oxygen supply pressure to the anesthesia machine suddenly falls because the oxygen pipeline becomes disconnected. Which safety mechanism is designed to reduce or stop the flow of nitrous oxide in this situation?",
         "options": {
             "A": "Oxygen flush valve",
@@ -200,18 +200,21 @@
     {
         "id": "2Z4PCJFS",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During prolong surgery of 8 hours the temperature of patient is monitored by:",
         "options": {
             "A": "Probe Near machine",
@@ -239,7 +242,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "During surgery, electrical interference and motion artifact produce excessive noise in the pulse oximeter signal. The monitor continues to display a fixed SpO2 value of 95% despite poor signal quality. What is the most likely explanation?",
         "options": {
             "A": "True arterial oxygen saturation is 95%",
@@ -267,7 +270,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "For Muscle relaxant Drug of choice in chronic liver disease (CLD)?",
         "options": {
             "A": "Mivacurium",
@@ -295,7 +298,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "High pressure system in an anaesthesia machine separated from low pressure system by?",
         "options": {
             "A": "Flowmeter control valve",
@@ -323,7 +326,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "patient was brought to ER. He had no pulse or breathing. CPR was started and he was intubated. No IV line maintained. Which of the following drugs is ineffective through ETT?",
         "options": {
             "A": "Naloxone",
@@ -351,7 +354,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The fail-safe mechanism in an anesthesia machine primarily detects:",
         "options": {
             "A": "Oxygen concentration in the inspired gas",
@@ -379,7 +382,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The fail-safe valve in an anesthesia machine is designed to detect which of the following oxygen parameters?",
         "options": {
             "A": "Oxygen concentration",
@@ -407,10 +410,10 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The maximum depth of anaesthesia is achieved by?",
         "options": {
-            "A": "↑Tidal volume",
+            "A": "â†‘Tidal volume",
             "B": "Administration of high concentration of anaesthetic agent",
             "C": "Rise in heart rate",
             "D": "Pupil constriction",
@@ -435,7 +438,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "You are working in a DHQ, there is no central gases supply and people rely on E. cylinders. You are using oxygen at the rate of 5L, how long will it last?",
         "options": {
             "A": "80-90 minutes",

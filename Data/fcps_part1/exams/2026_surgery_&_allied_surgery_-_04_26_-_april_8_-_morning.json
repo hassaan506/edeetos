@@ -13,7 +13,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "40 year old female with fever and malaise. O/E massive splenomegaly and severe anemia are seen. Serum IGM levels are also raised. Diagnosis?",
         "options": {
             "A": "Malaria",
@@ -41,7 +41,7 @@
         "subject": "Embryology",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Medium",
+        "difficulty": "Hard",
         "question": "80 year male patient complain of watery discharge from umbilicus with 4 year history of Prostate enlargement with urethral obstruction and he got treatment for that what is your diagnosis?",
         "options": {
             "A": "Malignancy",
@@ -69,7 +69,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 12 year old girl fell and presented with left abdominal pain radiating to her left shoulder. Which organ was most likely damaged?",
         "options": {
             "A": "Diaphragm",
@@ -97,7 +97,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 14 weeks pregnant female presented to the ER with RTA and femur fracture. External reduction was done and the patient was discharged. On the 4th day she collapses and dies due to respiratory difficulty. Most likely cause of death?",
         "options": {
             "A": "Fat embolism",
@@ -125,7 +125,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 14 year old girl presents with cyclical lower abdominal pain and difficulty voiding. Physical examination reveals a bulging, bluish membrane at the vaginal introitus. What is the diagnosis?",
         "options": {
             "A": "Imperforate hymen",
@@ -153,7 +153,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 18 month old baby presents to the hospital. Tracheostomy needs to be done. The surgeon should be careful about which structure lies inferior to trachea?",
         "options": {
             "A": "Aortic arch",
@@ -181,8 +181,8 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 20 year old male is found confused. <br>Vitals:<br> Temp 100.4°F<br>H/R 122bpm<br> Labs:<br> RBS 800 mg/dL<br>Creatinine 3.1<br>BUN 60<br>High anion gap<br>What is the most likely cause of the high anion gap in this condition?",
+        "difficulty": "Hard",
+        "question": "A 20 year old male is found confused. <br>Vitals:<br> Temp 100.4Â°F<br>H/R 122bpm<br> Labs:<br> RBS 800 mg/dL<br>Creatinine 3.1<br>BUN 60<br>High anion gap<br>What is the most likely cause of the high anion gap in this condition?",
         "options": {
             "A": "Increased production of ketoacids due to insulin deficiency",
             "B": "Lactic acidosis due to sepsis",
@@ -209,7 +209,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 24 year old man is brought to the trauma bay following a high-velocity motor vehicle accident. He has significant bruising and tenderness over the left upper quadrant of the abdomen. Which organ is most likely injured?",
         "options": {
             "A": "Diaphragm",
@@ -237,7 +237,7 @@
         "subject": "Pathology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 25 year old male sustains a minor abrasion while gardening. Which of the following serves as the body's first line of physical defense against the entry of microbial organisms?",
         "options": {
             "A": "Skin",
@@ -255,20 +255,23 @@
         "id": "GFQ235NS",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
+            "Surgery & Allied",
             "Anesthesia",
-            "Surgery & Allied"
+            "Radiology"
         ],
         "exams": [
             "Surgery - 04/26 - April 8 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Embryology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 3 months baby born to a perfectly healthy mother presented with single palmar crease, Protruded tongue & Prominent epicanthal folds. Baby was diagnosed to have congenital heart disease at birth. The heart abnormality associated with this disease is derived from which structure in embryonic life?",
         "options": {
             "A": "Bulbus cordis",
@@ -296,7 +299,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 32 year old female presents with tremors, unintentional weight loss, and heat intolerance. On examination, she has bilateral exophthalmos and a \"gritty\" sensation in her eyes. What is the most likely diagnosis?",
         "options": {
             "A": "Hashimoto's thyroiditis",
@@ -324,7 +327,7 @@
         "subject": "Microbiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 40 year old male patient present in OPD with Multiple painless lesions on the penis, the lesions were small, raised and papilloma-like which of the following is the causative organism",
         "options": {
             "A": "HPV",
@@ -352,7 +355,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old male presents with sudden, severe epigastric pain and a \"board-like\" rigid abdomen. An upright X-ray shows free gas under the diaphragm. Surgery confirms a perforated ulcer on the anterior wall of the duodenum. Where will the leaked contents primarily collect?",
         "options": {
             "A": "Lesser sac",
@@ -380,7 +383,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 45 year old patient with a known history of chronic peptic ulcer disease presents with a tension headache. Which of the following is the safest analgesic to recommend for pain relief?",
         "options": {
             "A": "Acetaminophen",
@@ -408,7 +411,7 @@
         "subject": "Genetics",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 55 year old male recently got married. He is concerned about possible congenital defects in the baby. Which syndrome is associated with advanced paternal age?",
         "options": {
             "A": "Down syndrome",
@@ -436,7 +439,7 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Renal Cell Carcinoma",
-        "difficulty": "Medium",
+        "difficulty": "Hard",
         "question": "A 55 year old patient presents to the Emergency Room with flank pain and hematuria. Laboratory investigations reveal an elevated Hemoglobin level and hypercalcemia. What is the most likely diagnosis?",
         "options": {
             "A": "BPH",
@@ -464,7 +467,7 @@
         "subject": "Genetics",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 6 year old boy presents with his fourth fracture following a minor fall. On examination, he has blue sclerae and hearing loss. What is the most likely diagnosis?",
         "options": {
             "A": "Ehlers-Danlos Syndrome",
@@ -492,7 +495,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 65 year old male with a history of smoking and hypertension is found to have an abdominal aortic aneurysm (AAA). What is the primary underlying pathological process in the vessel wall?",
         "options": {
             "A": "Medial cystic necrosis",
@@ -520,7 +523,7 @@
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 65 year old patient presents with resting tremors, \"pill-rolling\" movements, and significant difficulty initiating voluntary movements (akinesia). The underlying pathology is a loss of dopaminergic neurons in which structure?",
         "options": {
             "A": "Putamen",
@@ -548,7 +551,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 70 year old male presents with fatigue and significant weight loss over the last six months. Laboratory tests show microcytic anemia and a positive fecal occult blood test. What is the most likely diagnosis?",
         "options": {
             "A": "Colon carcinoma",
@@ -576,7 +579,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 70 year old woman falls on her outstretched hand and sustains a fracture of the surgical neck of the humerus. Which of the following structures is at greatest risk of injury?",
         "options": {
             "A": "Posterior circumflex humeral artery and Axillary nerve",
@@ -604,7 +607,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 70 year old woman is brought to the clinic following a fall on her shoulder. Radiographs reveal a displaced fracture of the surgical neck of the humerus. Which artery is most vulnerable to injury in this location?",
         "options": {
             "A": "Posterior circumflex humeral artery",
@@ -632,7 +635,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "The Urinary Bladder",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "A biopsy is taken from the lining of the urinary bladder. Which type of epithelium is characteristic of this region?",
         "options": {
             "A": "Stratified squamous epithelium",
@@ -660,7 +663,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A biopsy of a cervical lymph node shows a \"popcorn cell\" variant of Reed-Sternberg cells. Which subtype of Hodgkin Lymphoma is most likely?",
         "options": {
             "A": "Lymphocyte Predominant",
@@ -688,7 +691,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child experiences severe hypoglycemia, vomiting, and jaundice after being introduced to fruit juices. Which enzyme is most likely deficient?",
         "options": {
             "A": "Fructokinase",
@@ -716,7 +719,7 @@
         "subject": "Microbiology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child presents with a generalized itchy rash described as \"dew drops on a rose petal\" in various stages of healing. What is the causative agent?",
         "options": {
             "A": "Smallpox",
@@ -744,7 +747,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A child presents with recurrent pulmonary infections and malabsorption. A sweat test is performed. Which finding is diagnostic for Cystic Fibrosis?",
         "options": {
             "A": "Low sodium concentration",
@@ -772,7 +775,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A chronic alcoholic is brought to the hospital after a binge-drinking episode. Laboratory tests show an increased anion gap metabolic acidosis. This is primarily due to the accumulation of which substance?",
         "options": {
             "A": "Hydrochloric acid",
@@ -800,7 +803,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A doctor notices intercostal pulsations on a patient. Inferior rib notching is noticed. What is the diagnosis?",
         "options": {
             "A": "Aortic arch aneurysm",
@@ -828,7 +831,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A drug \"Ipratropium bromide\" is used in the management of asthma. Its cellular effect is mediated through the blockade of muscarinic receptors. What type of signaling pathway do these receptors typically use?",
         "options": {
             "A": "G-protein coupled receptors",
@@ -856,7 +859,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A drug is administered orally. In which part of the gastrointestinal pathway does the majority of drug absorption occur for most medications?",
         "options": {
             "A": "Stomach",
@@ -884,7 +887,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient delivered a baby with craniofacial abnormalities. She has been taking treatment for her acne during pregnancy. What is the likely cause of defects in the baby?",
         "options": {
             "A": "Folic acid",
@@ -912,7 +915,7 @@
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient presented with breast cancer. Her mother has a history of ovarian cancer. Which germline mutation is most likely in this case?",
         "options": {
             "A": "P53",
@@ -940,7 +943,7 @@
         "subject": "Pharmacology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A female patient presents with a malodorous, frothy vaginal discharge. Microscopy reveals motile, flagellated organisms. Which antibiotic is the treatment of choice?",
         "options": {
             "A": "Amoxicillin",
@@ -968,7 +971,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female presented in the ER with an altered level of consciousness. Her husband found an empty bottle of benzodiazepines on her bedside after a family conflict. What drug will be given?",
         "options": {
             "A": "Naloxone",
@@ -996,7 +999,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A hemodynamically unstable patient is brought to the ER following a blunt injury to the left upper abdomen. Focused Assessment with Sonography for Trauma (FAST) shows free fluid. Which organ is most likely injured?",
         "options": {
             "A": "Liver",
@@ -1024,7 +1027,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A lesion at the facial colliculus in the pons would result in which cranial nerve palsy?",
         "options": {
             "A": "Olivary nucleus",
@@ -1052,7 +1055,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A liver biopsy from an alcoholic patient shows \"steatosis.\" Which cellular finding is characteristic of this condition?",
         "options": {
             "A": "Councilman bodies",
@@ -1080,7 +1083,7 @@
         "subject": "Pathology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A long-term diabetic patient with peripheral vascular disease presents with a black, shriveled, and foul-smelling ulcer on his foot. The tissue is dead due to lack of blood supply followed by a bacterial superinfection. This is known as",
         "options": {
             "A": "Coagulative necrosis",
@@ -1108,7 +1111,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A long-term smoker and heavy drinker develops progressive dysphagia, first to solids and then to liquids. A mass is found in the middle third of the esophagus. What is the most likely diagnosis?",
         "options": {
             "A": "Adenocarcinoma",
@@ -1136,7 +1139,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A man falls from a height and injures his S2-S4 nerve roots. He is now unable to void urine. What is the mechanism of this bladder dysfunction?",
         "options": {
             "A": "Detrusor-sphincter dyssynergia",
@@ -1164,7 +1167,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A newborn girl delivered via forceps is found to have her arm hanging by her side, adducted and medially rotated, with the forearm extended and pronated. She cannot abduct, flex, or supinate the arm. Which structure was likely damaged?",
         "options": {
             "A": "Median nerve",
@@ -1192,7 +1195,7 @@
         "subject": "Pharmacology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient being treated for edema develops an acute attack of gout. Which medication is most likely responsible?",
         "options": {
             "A": "Hydrochlorothiazide",
@@ -1220,7 +1223,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient being treated for Hodgkin's lymphoma develops a dry cough and shortness of breath. Pulmonary function tests show a restrictive pattern. Which chemotherapy agent is most likely responsible for this pulmonary fibrosis?",
         "options": {
             "A": "Cisplatin",
@@ -1248,7 +1251,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops a deep surgical site infection following an abdominal and gynecological procedure. Which anaerobic organism is frequently implicated?",
         "options": {
             "A": "Staphylococcus aureus",
@@ -1276,7 +1279,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient develops an intra-abdominal abscess and fever five days after an emergency bowel resection. Which anaerobic organism is the most common cause of infections following abdominal and gynecologic surgeries?",
         "options": {
             "A": "Escherichia coli",
@@ -1304,7 +1307,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient experiences pleuritic chest pain. While the central diaphragm is innervated by the phrenic nerve, which nerve provides sensory innervation to the peripheral parts of the diaphragm?",
         "options": {
             "A": "Phrenic nerve",
@@ -1332,7 +1335,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient had epigastric pain. He is diagnosed to have gastric carcinoma. Which nerve fibers carry pain arising from gastric carcinoma.",
         "options": {
             "A": "Greater splanchnic",
@@ -1360,7 +1363,7 @@
         "subject": "Biochemistry",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient had his gastrectomy done recently. He now presents with peripheral numbness, fatigue and muscle weakness. Which enzyme deficiency is this?",
         "options": {
             "A": "Vitamin B12",
@@ -1388,7 +1391,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient had mesenteric ischemia due to SMA block. Which part of the gut will be spared?",
         "options": {
             "A": "Ascending colon",
@@ -1416,7 +1419,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has an accident after which his GCS is E4V3M5. Based on the \"Inappropriate Words\" (V3) and \"Localized Pain\" (M5), where is a likely site of neurological dysfunction?",
         "options": {
             "A": "Temporal",
@@ -1444,7 +1447,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has fever and localized swelling on her arm. Which cytokine is primarily responsible for mediating these systemic and local inflammatory effects?",
         "options": {
             "A": "IL-12",
@@ -1472,7 +1475,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient has white lesions in the oral cavity. Upon examination, the white membrane can be easily scraped off, revealing an erythematous (red) base. What is the diagnosis?",
         "options": {
             "A": "Erythroplakia",
@@ -1500,7 +1503,7 @@
         "subject": "Embryology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient in her 24th week of pregnancy presents with contractions. Tocolytics are given to delay labor to allow the fetus to reach a stage where lung development is more advanced. Which stage of lung development occurs between weeks 16 and 25?",
         "options": {
             "A": "Alveolar stage",
@@ -1528,7 +1531,7 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Chronic Kidney Disease",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is a known case of CKD. He has high phosphate, very high PTH, low calcium and low calcitriol. What is the most likely reason for high PTH?",
         "options": {
             "A": "Parathyroids are releasing PTH on their own",
@@ -1538,7 +1541,7 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Kidney cannot form vitamin D</strong> - In CKD, the damaged kidneys cannot adequately convert 25-hydroxyvitamin D into active 1,25-dihydroxyvitamin D (calcitriol). Low calcitriol decreases intestinal calcium absorption, while phosphate retention further lowers calcium. The resulting hypocalcemia stimulates the parathyroid glands to release more PTH, causing secondary hyperparathyroidism.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Parathyroids are releasing PTH on their own</strong> - This describes autonomous PTH secretion, which is characteristic of tertiary hyperparathyroidism. In this case, the high PTH is a compensatory response to hypocalcemia and low calcitriol.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Kidney is losing vitamin D</strong> - The main problem is not loss of vitamin D through the kidney. The kidney loses the ability to <strong>activate</strong> vitamin D by converting it to calcitriol.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Kidney is losing calcium</strong> - The kidney is not primarily causing PTH elevation by losing calcium. CKD causes phosphate retention and reduced calcitriol production, both of which contribute to hypocalcemia.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CKD → ↓ calcitriol + ↑ phosphate → ↓ calcium → ↑ PTH = secondary hyperparathyroidism.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Kidney fails → D fails → Ca falls → PTH rises.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Secondary hyperparathyroidism</strong> = compensatory ↑ PTH due to hypocalcemia/CKD. <strong>Tertiary hyperparathyroidism</strong> = autonomous PTH secretion after long-standing secondary hyperparathyroidism, often with hypercalcemia.</p></p>",
+        "explanation": "<p><h3 style=\"color: black;\">Correct Answer:</h3></p><p><p><strong style=\"color: #008000;\">Kidney cannot form vitamin D</strong> - In CKD, the damaged kidneys cannot adequately convert 25-hydroxyvitamin D into active 1,25-dihydroxyvitamin D (calcitriol). Low calcitriol decreases intestinal calcium absorption, while phosphate retention further lowers calcium. The resulting hypocalcemia stimulates the parathyroid glands to release more PTH, causing secondary hyperparathyroidism.</p></p><p><br></p><p><h3 style=\"color: black;\">Wrong Answers</h3></p><p><p><strong style=\"color: #CC0000;\">Parathyroids are releasing PTH on their own</strong> - This describes autonomous PTH secretion, which is characteristic of tertiary hyperparathyroidism. In this case, the high PTH is a compensatory response to hypocalcemia and low calcitriol.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Kidney is losing vitamin D</strong> - The main problem is not loss of vitamin D through the kidney. The kidney loses the ability to <strong>activate</strong> vitamin D by converting it to calcitriol.</p></p><p><br></p><p><p><strong style=\"color: #CC0000;\">Kidney is losing calcium</strong> - The kidney is not primarily causing PTH elevation by losing calcium. CKD causes phosphate retention and reduced calcitriol production, both of which contribute to hypocalcemia.</p></p><p><br></p><p><h3 style=\"color: #0066CC;\">Key Concept:</h3></p><p><p><strong>CKD â†’ â†“ calcitriol + â†‘ phosphate â†’ â†“ calcium â†’ â†‘ PTH = secondary hyperparathyroidism.</strong></p></p><p><br></p><p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3></p><p><p><strong>Kidney fails â†’ D fails â†’ Ca falls â†’ PTH rises.</strong></p></p><p><br></p><p><h3 style=\"color: #CC6600;\">Exam Trap:</h3></p><p><p><strong>Secondary hyperparathyroidism</strong> = compensatory â†‘ PTH due to hypocalcemia/CKD. <strong>Tertiary hyperparathyroidism</strong> = autonomous PTH secretion after long-standing secondary hyperparathyroidism, often with hypercalcemia.</p></p>",
         "hint": "<p><br></p>",
         "Point": ""
     },
@@ -1556,7 +1559,7 @@
         "subject": "Physiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient is brought to the ER following an acute aspirin (salicylate) overdose. ABG results show:<br> pH= 7.32<br>pCO2= 30 mmHg<br>HCO3= 6 mEq/L<br>What is the acid-base diagnosis?",
         "options": {
             "A": "Simple Metabolic acidosis",
@@ -1584,7 +1587,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is diagnosed with a myocardial infarction involving the conduction system. Which artery is primarily responsible for supplying the anterior two-thirds of the interventricular septum?",
         "options": {
             "A": "Left Anterior Descending (LAD) artery",
@@ -1612,7 +1615,7 @@
         "subject": "Oncology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient is diagnosed with Diffuse Large B-cell Lymphoma. What is the standard primary treatment approach?",
         "options": {
             "A": "Surgery only",
@@ -1640,7 +1643,7 @@
         "subject": "Medicine",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient is diagnosed with Type 1 Hyperlipoproteinemia. What is the mainstay of management for this condition?",
         "options": {
             "A": "Very low-fat diet",
@@ -1668,7 +1671,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is injured in the posterior triangle of the neck. Which structure is most likely damaged?",
         "options": {
             "A": "Spinal accessory nerve",
@@ -1696,7 +1699,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is placed in the Trendelenburg position for a pelvic surgical procedure. Which of the following respiratory parameters is most likely to increase due to the weight of abdominal viscera pressing against the diaphragm?",
         "options": {
             "A": "Functional residual capacity",
@@ -1724,7 +1727,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is placed in the Trendelenburg position for a surgical procedure. What is the most likely effect on their respiratory physiology?",
         "options": {
             "A": "Decreased Functional Residual Capacity",
@@ -1752,7 +1755,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is stabbed just below the xiphisternum on the right side. Which structure is damaged?",
         "options": {
             "A": "Right atrium",
@@ -1780,7 +1783,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is suspected of having cyanide poisoning. Cyanide is lethal because it binds to the iron in the heme group of the electron transport chain. Which specific complex and subunit does it inhibit?",
         "options": {
             "A": "Cytochrome c oxidase, Complex I",
@@ -1808,7 +1811,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is unable to flex their index finger and has lost sensation on the palmar aspect of the lateral three and a half fingers. Which nerve is involved?",
         "options": {
             "A": "Radial",
@@ -1836,7 +1839,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with a complaint of a prolonged Prothrombin Time (PT). Which of the following factors is most likely deficient?",
         "options": {
             "A": "Factor VIII",
@@ -1864,7 +1867,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with difficulty opening buttons, writing and walking. Which clinical feature is characteristic of this lesion?",
         "options": {
             "A": "Ataxia",
@@ -1892,7 +1895,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with excessive salivation, lacrimation. He had eaten mushrooms a few hours back. What drug will be given?",
         "options": {
             "A": "Atropine",
@@ -1920,7 +1923,7 @@
         "subject": "Genetics",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with Hb electrophoresis which showed high levels of HbS. Which nucleotide replacement is seen in Sickle cell anemia?",
         "options": {
             "A": "Guanine to Thiamine",
@@ -1948,7 +1951,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with night sweats, fever, and chronic cough. What type of necrosis will be seen on biopsy of the affected lung tissue?",
         "options": {
             "A": "Caseous",
@@ -1976,7 +1979,7 @@
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with symptoms of dermatitis, confusion and recurrent diarrhea. Which vitamin is deficient?",
         "options": {
             "A": "B1",
@@ -2004,41 +2007,13 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presents to the hospital within 3 hours of the onset of chest pain. What is the most specific and best test to diagnose an Acute Myocardial Infarction at this early stage?",
         "options": {
             "A": "CK-MB",
             "B": "Troponin I",
             "C": "Troponin T",
             "D": "ECG",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "P88NUVS9",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Anatomy",
-        "chapter": "Nervous System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with \"foot drop\" and is specifically unable to dorsiflex his big toe. Which nerve is involved?",
-        "options": {
-            "A": "Femoral Nerve",
-            "B": "Common Peroneal Nerve",
-            "C": "Sural Nerve",
-            "D": "Tibial Nerve",
             "E": ""
         },
         "correctAnswer": "B",
@@ -2060,41 +2035,13 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with a \"claw hand\" deformity. The physician suspects ulnar nerve damage. Which of the following is a common site for ulnar nerve entrapment or injury?",
         "options": {
             "A": "Surgical neck of the humerus",
             "B": "Medial epicondyle of the humerus",
             "C": "Spiral groove of the humerus",
             "D": "Anatomical snuffbox",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "NGJ5L96C",
-        "year": [
-            "2026"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 04/26 - April 8 - Morning"
-        ],
-        "subject": "Medicine",
-        "chapter": "Endocrine System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A patient presents with a \"moon face,\" truncal obesity, abdominal striae, hypertension, and hyperpigmentation. Which hormone is primarily responsible for this clinical picture?",
-        "options": {
-            "A": "Cortisol",
-            "B": "ACTH",
-            "C": "TSH",
-            "D": "GH",
             "E": ""
         },
         "correctAnswer": "B",
@@ -2116,7 +2063,7 @@
         "subject": "Pathology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with a firm thyroid mass. Fine-needle aspiration shows amyloid stroma and the patient has elevated serum calcitonin levels. What is the diagnosis?",
         "options": {
             "A": "Papillary carcinoma",
@@ -2126,6 +2073,34 @@
             "E": ""
         },
         "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NGJ5L96C",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Medicine",
+        "chapter": "Endocrine System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presents with a \"moon face,\" truncal obesity, abdominal striae, hypertension, and hyperpigmentation. Which hormone is primarily responsible for this clinical picture?",
+        "options": {
+            "A": "Cortisol",
+            "B": "ACTH",
+            "C": "TSH",
+            "D": "GH",
+            "E": ""
+        },
+        "correctAnswer": "B",
         "explanation": "",
         "hint": "",
         "Point": ""
@@ -2144,7 +2119,7 @@
         "subject": "Microbiology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with a slow-growing, \"woody\" hard mass on the jaw with multiple draining sinus tracts. The discharge contains \"sulfur granules.\" What is the organism?",
         "options": {
             "A": "Nocardia",
@@ -2172,7 +2147,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with a unique auditory defect while they can hear sounds perfectly clearly, they are unable to localize the direction from which a sound is coming. A lesion is suspected in the brainstem. Which nucleus is primarily responsible for sound localization?",
         "options": {
             "A": "Superior olivary nucleus",
@@ -2200,7 +2175,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with an inability to wrinkle the forehead, close the eye, or smile on the left side. Which nerve is damaged?",
         "options": {
             "A": "Left Trigeminal nerve",
@@ -2228,7 +2203,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with dark-colored urine, abdominal pain, and neuropsychiatric symptoms. Laboratory tests show elevated levels of porphobilinogen. What is the diagnosis?",
         "options": {
             "A": "Lead poisoning",
@@ -2243,14 +2218,42 @@
         "Point": ""
     },
     {
+        "id": "P88NUVS9",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 8 - Morning"
+        ],
+        "subject": "Anatomy",
+        "chapter": "Nervous System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "A patient presents with \"foot drop\" and is specifically unable to dorsiflex his big toe. Which nerve is involved?",
+        "options": {
+            "A": "Femoral Nerve",
+            "B": "Common Peroneal Nerve",
+            "C": "Sural Nerve",
+            "D": "Tibial Nerve",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
         "id": "N44BU2LW",
         "year": [
             "2026",
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 04/26 - April 8 - Morning",
@@ -2259,7 +2262,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with hypoglycemia and Hepatomegaly. A glycogen storage Disease known as von gierke disease is Diagnosed. Which enzyme is deficient in this patient?",
         "options": {
             "A": "Alpha 1,4 Glucosidase",
@@ -2287,7 +2290,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with jaundice and raised unconjugated bilirubin. A peripheral film shows spherocytes and the Coombs test is positive. What is the most likely diagnosis?",
         "options": {
             "A": "Gilbert Syndrome",
@@ -2315,7 +2318,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with jaundice, raised indirect bilirubin, low hemoglobin, and an elevated platelet count. The bone marrow shows erythroid hyperplasia. What is the diagnosis?",
         "options": {
             "A": "Aplastic anemia",
@@ -2343,7 +2346,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with sharp chest pain that is relieved by leaning forward and worsened by lying supine. What is the most likely diagnosis?",
         "options": {
             "A": "Myocardial Infarction",
@@ -2371,7 +2374,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with significant atrophy of the interosseous muscles and the hypothenar eminence. Interestingly, the thenar eminence is completely spared. Which nerve is injured?",
         "options": {
             "A": "Ulnar nerve",
@@ -2399,7 +2402,7 @@
         "subject": "Surgery",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient recently had a gastrectomy done. Which supplements should be prescribed to him lifelong?",
         "options": {
             "A": "Fat soluble vitamins",
@@ -2427,7 +2430,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient suffers a blow to the side of the head, resulting in a fracture at the pterion. Which vessel is most likely ruptured?",
         "options": {
             "A": "Middle meningeal artery",
@@ -2455,7 +2458,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient sustains a pelvic fracture resulting in a bladder injury. Which spinal nerve roots provide the parasympathetic innervation responsible for bladder contraction?",
         "options": {
             "A": "T10-L2",
@@ -2483,7 +2486,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient taking OCPs for one year presents with recurrent lip swelling. IgE levels and eosinophil counts are normal. What is the most likely cause?",
         "options": {
             "A": "Hereditary angioedema (C1 esterase inhibitor deficiency)",
@@ -2511,7 +2514,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient traveled from Thailand and presents with profuse watery diarrhea. Stool microscopy reveals \"donut-shaped\" structures. What is the diagnosis?",
         "options": {
             "A": "Giardiasis",
@@ -2539,7 +2542,7 @@
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient undergoing cardiac surgery receives a large dose of Heparin. Post-operatively, the surgeon administers Protamine sulfate to reverse the anticoagulation. What is the mechanism of action of Protamine?",
         "options": {
             "A": "Competitive inhibition of Antithrombin III",
@@ -2567,7 +2570,7 @@
         "subject": "Microbiology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient who previously underwent a splenectomy presents with a severe infection. Which of the following gram-positive organisms is the most likely cause?",
         "options": {
             "A": "Streptococcus pneumoniae",
@@ -2595,7 +2598,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a 20-pack-year smoking history presents with a chronic cough. What histological change is most likely occurring in the respiratory epithelium?",
         "options": {
             "A": "Squamous metaplasia",
@@ -2623,7 +2626,7 @@
         "subject": "Microbiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a history of old TB cavities presents with a new respiratory infection. Imaging shows a \"fungal ball\" formation within a pre-existing cavity. What is the most likely causative organism?",
         "options": {
             "A": "Aspergillus",
@@ -2651,7 +2654,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a known history of gastric ulcers requires medication for dental pain. Which of the following is the safest option?",
         "options": {
             "A": "Aspirin",
@@ -2679,7 +2682,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with a previous history of MI presents to the ER. Which ECG change is most indicative of a previous myocardial injury?",
         "options": {
             "A": "ST depression",
@@ -2707,7 +2710,7 @@
         "subject": "Medicine",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with chronic malabsorption presents with pallor, low hemoglobin, and anisocytosis. What is the likely diagnosis?",
         "options": {
             "A": "Mixed deficiency anemia",
@@ -2735,7 +2738,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with COPD is prescribed Ipratropium bromide via a nebulizer. Which of the following describes the cellular mechanism of action of this drug?",
         "options": {
             "A": "Blockade of muscarinic receptors",
@@ -2763,7 +2766,7 @@
         "subject": "Psychiatry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with personality disorder. If we want to study his personality trait objectively, what method will be used?",
         "options": {
             "A": "The Minnesota Multiphasic Personality Inventory (MMPI)",
@@ -2791,7 +2794,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with RUQ pain and a positive Murphy's sign is diagnosed with acute cholecystitis. To which dermatome is the pain from gallbladder irritation typically referred?",
         "options": {
             "A": "T4",
@@ -2819,7 +2822,7 @@
         "subject": "Pharmacology",
         "chapter": "Urinary System",
         "topic": "Diuretics",
-        "difficulty": "Medium",
+        "difficulty": "Hard",
         "question": "A patient with Type 2 Diabetes and Chronic Kidney Disease (CKD) has developed significant edema. Which class of diuretics is most effective for fluid management in patients with reduced GFR?",
         "options": {
             "A": "Furosemide",
@@ -2847,7 +2850,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A person accidentally touches a hot stove and immediately withdraws their hand before even realizing they are burnt. What determines the speed and \"suddenness\" of this withdrawal reflex?",
         "options": {
             "A": "Conscious perception in the cortex",
@@ -2875,7 +2878,7 @@
         "subject": "Embryology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant female presented to the ER. On U/S, polyhydramnios is seen but fetal growth is normal. What could be the possibility?",
         "options": {
             "A": "Duodenal atresia",
@@ -2903,7 +2906,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pregnant woman undergoes second-trimester triple screening for Down Syndrome (Trisomy 21). Which of the following result patterns is typically seen in a Down Syndrome pregnancy?",
         "options": {
             "A": "Decreased Alpha-fetoprotein",
@@ -2931,7 +2934,7 @@
         "subject": "Community Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A study compares a group of people with a disease to a group without the disease to look for past exposures. This is a?",
         "options": {
             "A": "Cohort",
@@ -2959,7 +2962,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A surgeon is performing a procedure at the base of the skull. Which of the following structures is a primary content of the foramen ovale?",
         "options": {
             "A": "Ophthalmic nerve",
@@ -2987,7 +2990,7 @@
         "subject": "Genetics",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A tall male patient presents with lens subluxation (ectopia lentis). What is the most likely diagnosis?",
         "options": {
             "A": "Marfan syndrome",
@@ -3015,7 +3018,7 @@
         "subject": "Microbiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A tissue biopsy from an immunocompromised patient with a pulmonary infection shows septate hyphae that branch at acute angles (45). What is the most likely organism?",
         "options": {
             "A": "Aspergillus fumigatus",
@@ -3043,7 +3046,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A tubular structure shows stratified squamous non-keratinized epithelium, circular/longitudinal muscle layers, and abundant elastic fibers. What is it?",
         "options": {
             "A": "Uterus",
@@ -3071,7 +3074,7 @@
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A woman presented to the clinic with complaints of chronic cough and bilateral hilar lymphadenopathy. Upon further investigation, granuloma formation was seen without central necrosis. What is the most likely diagnosis?",
         "options": {
             "A": "TB",
@@ -3099,7 +3102,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young boy has a RR of 12 breaths/min and tidal volume 500mL. What is pulmonary ventilation?",
         "options": {
             "A": "5L/min",
@@ -3127,7 +3130,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young child presents with Altered Level of Consciousness and neck rigidity. CSF analysis shows low glucose, high TLC (neutrophils), and high protein. Which antibiotic should be started empirically?",
         "options": {
             "A": "Cefixime",
@@ -3155,7 +3158,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A young female presents with amenorrhea, vaginal bleeding, and severe lower abdominal pain. During examination, \"grape-like\" vesicles are expelled from the vagina. Which laboratory finding is expected?",
         "options": {
             "A": "Elevated Alpha-fetoprotein",
@@ -3183,7 +3186,7 @@
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A young girl brought her mother to the clinic for treatment of her breast cancer. The daughter wants to know her risk of breast cancer. Which marker should be tested?",
         "options": {
             "A": "P53",
@@ -3211,7 +3214,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "After solid organ or bone marrow transplantation, which type of malignancy has the highest increased tendency to occur due to immunosuppression?",
         "options": {
             "A": "Lymphoproliferative",
@@ -3239,7 +3242,7 @@
         "subject": "Embryology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An 8-month-old baby girl is brought to the OPD with occasional cyanosis that improves when she is held in an upright position. An X-ray reveals the presence of intestinal loops within the thoracic cavity. What is the most likely underlying embryological defect?",
         "options": {
             "A": "Incomplete pleuroperitoneal membrane",
@@ -3267,7 +3270,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An AIDS patient presents with chronic, profuse watery diarrhea. Which virus is a common opportunistic cause of gastrointestinal disease in this population?",
         "options": {
             "A": "CMV",
@@ -3295,7 +3298,7 @@
         "subject": "Medicine",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An elderly man presents with chronic back pain, lower urinary tract symptoms, and a pathological vertebral fracture. Which investigation is most critical to rule out metastasis?",
         "options": {
             "A": "Parathyroid Hormone",
@@ -3323,7 +3326,7 @@
         "subject": "Microbiology",
         "chapter": "Integumentary System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An HIV-positive patient presents with multiple 1-2 cm bluish-red, non-pruritic skin lesions and oral thrush. Which organism is responsible for the skin lesions?",
         "options": {
             "A": "Candidiasis",
@@ -3351,7 +3354,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "An unconscious patient vomits while lying in the supine position. In which lung segment is the aspirated material most likely to settle?",
         "options": {
             "A": "Right Middle Lobe",
@@ -3379,7 +3382,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Bacterial spores are highly resistant to heat and environmental stress. Which chemical component is primarily responsible for this resistance?",
         "options": {
             "A": "Dipicolinic acid in membrane only",
@@ -3407,7 +3410,7 @@
         "subject": "Pathology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Breast cancer often metastasizes to the vertebral column. This occurs through which mechanism?",
         "options": {
             "A": "Venous connections",
@@ -3435,7 +3438,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Chemotherapy causes which of the following effects in cancer cells to induce cell death?",
         "options": {
             "A": "Oxidation",
@@ -3463,7 +3466,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During a hernia repair, the surgeon notes the hernial sac is lateral to the inferior epigastric vessels. What is the diagnosis?",
         "options": {
             "A": "Indirect Inguinal Hernia",
@@ -3491,7 +3494,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During a laparotomy for blunt trauma, the surgeon notes active bleeding from the splenic artery. Which ligament must be carefully dissected to safely access the splenic vessels at the hilum?",
         "options": {
             "A": "Gastrosplenic ligament",
@@ -3519,7 +3522,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During a microbiology lecture on bacterial endospores, the professor discusses the composition of the spore wall that contributes to its heat resistance. Which substances are primarily responsible for this characteristic?",
         "options": {
             "A": "Teichoic acid",
@@ -3547,7 +3550,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "During a physical examination, a physician asks a patient to stand on his right leg. The physician observes that the left side of the patient's pelvis drops significantly. This finding indicates weakness in which muscle?",
         "options": {
             "A": "Gluteus maximus",
@@ -3575,7 +3578,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During a seizure, a patient aspirates gastric contents. What is the first anatomical landmark that protects the airway but can catch aspirated material?",
         "options": {
             "A": "True vocal cords",
@@ -3603,7 +3606,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During a surgical procedure under general anesthesia, the anesthesiologist uses a combination of volatile and gaseous agents. Which of the following would increase the anesthetic effect of Halothane?",
         "options": {
             "A": "Nitrous Oxide",
@@ -3631,7 +3634,7 @@
         "subject": "Anatomy",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During a thyroidectomy, the surgeon ligates the inferior thyroid artery. Which nerve is most at risk of injury due to its close proximity to this vessel?",
         "options": {
             "A": "Recurrent laryngeal",
@@ -3659,7 +3662,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During an autopsy, the pathologist finds a blood clot in the femoral vein. To determine if the thrombus formed before death or after death, what finding would suggest a postmortem clot?",
         "options": {
             "A": "Presence of Lines of Zahn",
@@ -3687,7 +3690,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During an experiment on autoregulation of blood flow, a researcher observes that an increase in transmural pressure causes immediate vasoconstriction of the small arteries. This \"Myogenic Mechanism\" is primarily triggered by",
         "options": {
             "A": "Accumulation of CO2",
@@ -3715,7 +3718,7 @@
         "subject": "Anatomy",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "During an oophorectomy, the ureter is at risk of damage where it crosses the iliac vessels. This occurs at the level of the?",
         "options": {
             "A": "Fallopian tube",
@@ -3743,7 +3746,7 @@
         "subject": "Physiology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "During the process of platelet activation, which of the following physical changes occurs first?",
         "options": {
             "A": "Spherical to flat shape change",
@@ -3771,7 +3774,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Following a RTA, an elderly man exhibits profound short-term memory loss. Imaging suggests a lesion in the medial temporal lobe. Which specific structure is most likely involved?",
         "options": {
             "A": "Postcentral gyrus",
@@ -3799,7 +3802,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Following a severe injury at the knee joint, the primary flexors (hamstrings) are paralyzed. However, some level of knee flexion is still possible. Which muscle is contributing to this movement?",
         "options": {
             "A": "Long head of biceps femoris",
@@ -3855,7 +3858,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "How much air is needed for air embolism?",
         "options": {
             "A": "1cc",
@@ -3883,7 +3886,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In modern anesthesia, Sevoflurane is commonly administered alongside which other agent to facilitate smooth induction?",
         "options": {
             "A": "Halothane",
@@ -3911,7 +3914,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In skeletal muscle, for relaxation to occur, calcium must be sequestered back into the sarcoplasmic reticulum. Which protein inside the SR binds calcium to allow for high-capacity storage?",
         "options": {
             "A": "Calsequestrin",
@@ -3939,7 +3942,7 @@
         "subject": "Microbiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In Trichomonas infection, which Investigation is required to Diagnose",
         "options": {
             "A": "Blood sample",
@@ -3967,7 +3970,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In Zellweger syndrome which organelle function is defected?",
         "options": {
             "A": "Mitochondria",
@@ -3995,7 +3998,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Inferior rectal vein drains into which vein?",
         "options": {
             "A": "Internal iliac vein",
@@ -4023,7 +4026,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ketosis is best described as a metabolic state resulting from",
         "options": {
             "A": "Ketogenicity of pyruvate in liver",
@@ -4051,7 +4054,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Microscopic examination of a fungal culture reveals hyphae with cross-walls. How are these described?",
         "options": {
             "A": "Coenocytic hyphae",
@@ -4079,7 +4082,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient on OT table in supine position. Vomit in which segment?",
         "options": {
             "A": "Apical segment of right lower lobe",
@@ -4107,7 +4110,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Sterilization by dry heat (such as an oven) kills bacteria primarily through which mechanism?",
         "options": {
             "A": "Lysis",
@@ -4135,7 +4138,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Superior rectal artery branch of?",
         "options": {
             "A": "External iliac artery",
@@ -4191,7 +4194,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The superior rectal artery is the direct continuation of which vessel?",
         "options": {
             "A": "Internal iliac artery",
@@ -4219,7 +4222,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Through which structure is Cerebrospinal Fluid (CSF) primarily absorbed into the dural venous sinuses?",
         "options": {
             "A": "Choroid plexus",
@@ -4247,7 +4250,7 @@
         "subject": "Genetics",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Trinucleotide sequence repeat is seen in?",
         "options": {
             "A": "Down syndrome",
@@ -4275,7 +4278,7 @@
         "subject": "Biochemistry",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Trypsin acts on",
         "options": {
             "A": "C-terminal carboxyl side of amino acids",
@@ -4303,7 +4306,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the enzyme deficiency seen in Phenylketonuria?",
         "options": {
             "A": "Glycogen phosphorylase",
@@ -4331,7 +4334,7 @@
         "subject": "Pharmacology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the primary mechanism of action of Diphenhydramine?",
         "options": {
             "A": "H1 blocker",
@@ -4359,7 +4362,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What is the primary role of high-dose corticosteroids when administered to a patient in septic or anaphylactic shock?",
         "options": {
             "A": "Direct vasoconstriction",
@@ -4387,7 +4390,7 @@
         "subject": "Genetics",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "What is the underlying genetic mechanism usually responsible for the phenotype in Down Syndrome (Trisomy 21)?",
         "options": {
             "A": "Overexpression of genes",
@@ -4415,7 +4418,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which bone forms the majority of the floor of the middle cranial fossa?",
         "options": {
             "A": "Greater wing of sphenoid",
@@ -4443,7 +4446,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which cells act as the primary progenitor cells for the regeneration of the ciliated epithelium in the bronchioles?",
         "options": {
             "A": "Clara cells",
@@ -4471,7 +4474,7 @@
         "subject": "Pathology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which chromosomal translocation is the hallmark of Chronic Myeloid Leukemia (CML)?",
         "options": {
             "A": "8;14",
@@ -4527,7 +4530,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which lipoprotein contains the highest percentage of cholesterol?",
         "options": {
             "A": "LDL",
@@ -4555,7 +4558,7 @@
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which lymph node group primarily drains a lump in the upper outer (lateral) quadrant of the breast?",
         "options": {
             "A": "Apical",
@@ -4583,7 +4586,7 @@
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following components are essential for the process of translation (protein synthesis) in a human cell?",
         "options": {
             "A": "Ribosomes and mRNA only",
@@ -4611,7 +4614,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following mediators is primarily responsible for the chemotaxis and release of leukocytes from the bone marrow?",
         "options": {
             "A": "IL-1",
@@ -4639,7 +4642,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following medications works by forming a viscous, paste-like physical barrier over an existing gastric ulcer to protect it from acid?",
         "options": {
             "A": "Omeprazole",
@@ -4667,7 +4670,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the structures are part of the anterior mediastinum?",
         "options": {
             "A": "Thymus",
@@ -4695,7 +4698,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which segment of the lung is associated with eparterial bronchus?",
         "options": {
             "A": "Left superior lobe",
@@ -4723,7 +4726,7 @@
         "subject": "Anatomy",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which structure is found in the posterior mediastinum?",
         "options": {
             "A": "Descending aorta",
@@ -4744,8 +4747,8 @@
             "2025"
         ],
         "specialty": [
-            "Medicine & Allied",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Medicine & Allied"
         ],
         "exams": [
             "Surgery - 04/26 - April 8 - Morning",
@@ -4754,7 +4757,7 @@
         "subject": "Physiology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which type of cell is primarily responsible for the production and secretion of the lubricating components of synovial fluid?",
         "options": {
             "A": "Type A Synovial Cells",
@@ -4782,7 +4785,7 @@
         "subject": "Genetics",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "X linked disorders are more common in males because male is ?",
         "options": {
             "A": "Hemizygous for X",

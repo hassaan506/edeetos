@@ -13,7 +13,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 55-year-old man undergoes chemotherapy. Damaged cells activate a protein that triggers mitochondrial cytochrome c release and programmed cell death. Which of the following is responsible for initiating this apoptosis?",
         "options": {
             "A": "BCL-2 activation",
@@ -41,7 +41,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A biopsy specimen shows cells exhibiting cell swelling, loss of microvilli, mitochondrial swelling, and the appearance of amorphous densities within the mitochondria. This constellation of findings is characteristic of which type of cell injury?",
         "options": {
             "A": "Reversible injury",
@@ -52,36 +52,6 @@
         },
         "correctAnswer": "C",
         "explanation": "The presence of intramitochondrial amorphous densities is the critical morphological sign that marks the point of irreversible injury and impending cell death (necrosis).",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "PANTN4F6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Medicine & Allied",
-            "Radiology"
-        ],
-        "exams": [
-            "Medicine - 05/25 - May 12 - Morning",
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Pathology",
-        "chapter": "Cell Biology",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A cell was on microscopic examination large mitochondrial densities are found indicating:",
-        "options": {
-            "A": "Irreversible cell injury",
-            "B": "Reversible cell injury",
-            "C": "Necrosis",
-            "D": "",
-            "E": ""
-        },
-        "correctAnswer": "B",
-        "explanation": "(Robins)",
         "hint": "",
         "Point": ""
     },
@@ -99,7 +69,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pathologist examines a tissue sample and wants to identify features of reversible cell injury. Which of the following cellular changes is most characteristic of reversible injury?",
         "options": {
             "A": "Cytoplasmic blebs",
@@ -127,7 +97,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A pathology slide shows cells with severe mitochondrial swelling, plasma membrane rupture, and nuclear fragmentation. This combination of findings is most characteristic of:",
         "options": {
             "A": "Reversible cell injury",
@@ -155,7 +125,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient has history of abdominal pain, hematocmesis. On examination his abdomen was distended with positive shifting dullness. His SAAG ratio is 1.1 hepatocytes is in which phase of cell cycle",
         "options": {
             "A": "G2",
@@ -172,18 +142,22 @@
     {
         "id": "DCGAT92J",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
-            "Radiology - 02/25 - Feburary 8 - Morning"
+            "Radiology - 02/25 - Feburary 8 - Morning",
+            "Anesthesia - 11/24 - November 19 - Afternoon",
+            "Radiology - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with Cardiac, Facial & Corneal defects along with hypotonia & failure to thrive diagnosed as Zellweger syndrome in which there is accumulation of long-chain fatty acids caused by?",
         "options": {
             "A": "Peroxisomes",
@@ -211,7 +185,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A slide shows individual cells with shrinkage, dense eosinophilic cytoplasm, and formation of cytoplasmic blebs. What is the most likely process involved?",
         "options": {
             "A": "Apoptosis",
@@ -239,7 +213,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Apoptosis is associated with:",
         "options": {
             "A": "No host inflammation",
@@ -256,18 +230,26 @@
     {
         "id": "2ZJXTG5B",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Surgery & Allied",
+            "Anesthesia",
+            "Radiology"
         ],
         "exams": [
-            "Medicine - 05/25 - May 12 - Morning"
+            "Medicine - 05/25 - May 12 - Morning",
+            "Surgery - 08/25 - August 7 - Morning",
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Apoptosis is induced by activation of",
         "options": {
             "A": "Caspases",
@@ -295,7 +277,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "CCL4 causes damage to cells by which of the following mechanism?",
         "options": {
             "A": "Oxygen",
@@ -312,18 +294,23 @@
     {
         "id": "ZTSGYYPL",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Radiology - 05/25 - May 12 - Morning"
+            "Radiology - 05/25 - May 12 - Morning",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Medicine - 11/24 - November 22 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
         ],
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cell stain basophilia due to:",
         "options": {
             "A": "Ribosome",
@@ -351,7 +338,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In hypoxic cellular injury, cell swelling primarily occurs due to:",
         "options": {
             "A": "Increased intracellular water",
@@ -379,7 +366,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In the process of cell death, what is the characteristic pattern of DNA fragmentation seen on gel electrophoresis that is commonly associated with necrosis?",
         "options": {
             "A": "DNA Laddering",
@@ -407,7 +394,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Mechanism of reduction in size of organ of a patient undergoing chemotherapy is",
         "options": {
             "A": "Atrophy",
@@ -436,7 +423,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Reactive oxygen species affect",
         "options": {
             "A": "RNA",
@@ -464,7 +451,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The cytoplasm of a cell undergoing irreversible injury becomes more eosinophilic on H&E staining primarily due to:",
         "options": {
             "A": "Increased glycogen stores",
@@ -492,7 +479,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which gene is an anti-apoptotic gene?",
         "options": {
             "A": "BCL-1",
@@ -520,7 +507,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following cellular structures contains microtubules?",
         "options": {
             "A": "Centrioles",
@@ -548,7 +535,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is the initial step in the execution of apoptosis?",
         "options": {
             "A": "Overexpression of BCL-2",
@@ -576,7 +563,7 @@
         "subject": "Pathology",
         "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Zellweger syndrome is an autosomal recessive disorder caused by a defect in the biogenesis or function of which cellular organelle?",
         "options": {
             "A": "Lysosomes",

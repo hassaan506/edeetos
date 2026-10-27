@@ -2,7 +2,8 @@
     {
         "id": "9ACLPDJE",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
@@ -10,12 +11,13 @@
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Medicine - 05/25 - May 15 - Morning"
+            "Medicine - 05/25 - May 15 - Morning",
+            "Anesthesia - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "50-years female, diabetic for 20 years, abdominal distension after meals due to diabetic gastroparesis, which of the following is most suitable drug for treatment?",
         "options": {
             "A": "Metoclopramide",
@@ -30,27 +32,29 @@
         "Point": ""
     },
     {
-        "id": "KB3WUJRQ",
+        "id": "ZHN3833W",
         "year": [
             "2025"
         ],
         "specialty": [
+            "Surgery & Allied",
             "Anesthesia",
             "Radiology"
         ],
         "exams": [
+            "Surgery - 08/25 - August 6 - Evening",
             "Anesthesia - 05/25 - May 12 - Afternoon",
             "Radiology - 05/25 - May 12 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 19-year- old girl presents with a lack of height increase (4 Feet 2 inches) after puberty. She has a normal blood profile and blood sugar levels, with no other issues. Which hormonal abnormality is most likely to be observed?",
+        "difficulty": "Hard",
+        "question": "A 19-year old girl presents with a lack of height increase (4 Feet 2 inches) after puberty. She has a normal blood profile and blood sugar levels, with no other issues. Which hormonal abnormality is most likely to be observed?",
         "options": {
             "A": "Increased Somatostatin",
-            "B": "Decreased IGF- 1",
-            "C": "Deranged T3 & T4",
+            "B": "Decreased IGF-1",
+            "C": "Decreased T3 & T4",
             "D": "Increased Insulin",
             "E": ""
         },
@@ -73,7 +77,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 2 year old boy present to you he was operated for acute abdomen and found intestinal obstruction with intucception his small bowl surgery done with removal of Whole ileum & part of Jejunum.He is now presented to you with anemia and angluar glossitis. Most likely deficiency?",
         "options": {
             "A": "Vitamin B 12 deficiency",
@@ -101,7 +105,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 2-year-old child presents with meconium ileus at birth, chronic foul-smelling diarrhea, and persistent cough. Which vitamin deficiency is most likely associated with this condition?",
         "options": {
             "A": "Vitamin A",
@@ -119,20 +123,23 @@
         "id": "GFQ235NS",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
+            "Surgery & Allied",
             "Anesthesia",
-            "Surgery & Allied"
+            "Radiology"
         ],
         "exams": [
             "Surgery - 04/26 - April 8 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Embryology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 3 months baby born to a perfectly healthy mother presented with single palmar crease, Protruded tongue & Prominent epicanthal folds. Baby was diagnosed to have congenital heart disease at birth. The heart abnormality associated with this disease is derived from which structure in embryonic life?",
         "options": {
             "A": "Bulbus cordis",
@@ -160,7 +167,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 40 year old housewife is suffering from gastric ulcer and toothache a safe drug to give her relief from toothache would be:",
         "options": {
             "A": "Aspirin",
@@ -188,7 +195,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A 65-year-old male is resuscitated using hydroxyethyl starch (hetastarch). Which of the following adverse effects is most commonly associated with hetastarch use?",
         "options": {
             "A": "Thrombotic thrombocytopenic purpura",
@@ -205,13 +212,15 @@
     {
         "id": "YMLHFAGZ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Anesthesia - 08/24 - August 20 - Morning"
         ],
         "subject": "Medicine",
         "chapter": "Urinary System",
@@ -246,7 +255,7 @@
         "subject": "Genetics",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female had aortic root dilation upto 4cm, ocuular examination showed lens dislocation. mitral valve leaflet defect with a systolic click defect in which of the following?",
         "options": {
             "A": "Acquired deficiency of fibrillin",
@@ -280,12 +289,14 @@
             "Medicine - 02/25 - Feburary 8 - Morning",
             "Radiology - 05/25 - May 12 - Afternoon",
             "Radiology - 05/25 - May 12 - Morning",
-            "Surgery - 05/25 - May 14 - Morning"
+            "Surgery - 05/25 - May 14 - Morning",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 02/25 - Feburary 8 - Morning"
         ],
         "subject": "Anatomy",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A female patient presents in Gynae OPD with third degree UV prolapse, which occurs due to damage of uterosacral ligament Which of the following structure attaches the uterosacral ligament to the cervix?",
         "options": {
             "A": "Anterior pelvic wall",
@@ -313,7 +324,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A girl plucks a rose and pricks her finger on a thorn. She immediately withdraws her hanD- Which neural pathway is primarily responsible for mediating this withdrawal reflex?",
         "options": {
             "A": "Dorsal column-medial lemniscus (DCML) pathway",
@@ -330,20 +341,25 @@
     {
         "id": "98DWWXMS",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
         ],
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A Girl presented to her physician with concern both her mother and sister died of metastatic breast cancer before 40 year agE- She is worried about herself which of the following gene is mutated",
         "options": {
             "A": "Multiparity",
@@ -371,7 +387,7 @@
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "A good buffer works well when:",
         "options": {
             "A": "The pKa of the buffer is near the pH of the solution",
@@ -399,7 +415,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A hypertensive patient with asthma presents with dry cough, wheezing, and a heart rate of 55 bpm. Which of the following drugs is the most likely cause?",
         "options": {
             "A": "Metoprolol",
@@ -427,7 +443,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A lady presents with tremors and difficulty walking. There is a family history of similar complaints. What is the most appropriate treatment?",
         "options": {
             "A": "Trihexyphenidyl",
@@ -455,7 +471,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A man presents with pain radiating from the maxilla to the inferior orbit and temporal region. Which nerve is most likely involved?",
         "options": {
             "A": "Auricular nerve",
@@ -483,7 +499,7 @@
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient came in Unconsciousness pulseless state IV line not maintained ETT passed and CPR starte D- Which drug given through ETT is ineffective",
         "options": {
             "A": "Nalaxone",
@@ -511,7 +527,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient develops pharyngitis and myalgia two weeks after treatment for middle lobe pneumonia. Which of the following antibiotics is Drug of choice in this case?",
         "options": {
             "A": "Doxycycline",
@@ -539,7 +555,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient experiences diplopia, ptosis that worsens when looking down stairs. Which cranial nerve palsy is most likely responsible?",
         "options": {
             "A": "Cranial nerve III palsy",
@@ -567,7 +583,7 @@
         "subject": "Anesthesia",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has CLD- no other co morbids. The choice of anesthetic would be?",
         "options": {
             "A": "Ketamine",
@@ -595,7 +611,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient has hoarseness of voice and a mass on base of the skull which nerve is involved",
         "options": {
             "A": "Auditory",
@@ -623,7 +639,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient hears about a sudden death of a close relative and then develops sudden sweating, dizziness, bradycardia, and hypotension. What is the most likely cause of this shock?",
         "options": {
             "A": "Hypovolemic shock",
@@ -655,7 +671,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is having difficulty from sitting to standing Position.What muscle will be likely injured?",
         "options": {
             "A": "Gluetal muscles",
@@ -684,7 +700,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient is taking a high dose of corticosteroids. She suddenly stops taking steroids.Which of the following is most likely to occur?",
         "options": {
             "A": "ACTH suppression",
@@ -712,7 +728,7 @@
         "subject": "Pharmacology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient of burn given Succinylcholine after which ECG shows Tall T wave due to",
         "options": {
             "A": "Hyponatremia",
@@ -740,7 +756,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with acute left ventricular failure & dyspnea which of the following is the drug of choice?",
         "options": {
             "A": "IV Furosemide",
@@ -757,21 +773,24 @@
     {
         "id": "4JZCYMGY",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Medicine & Allied"
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
             "Medicine - 05/25 - May 14 - Afternoon",
-            "Medicine - 05/25 - May 14 - Morning"
+            "Medicine - 05/25 - May 14 - Morning",
+            "Surgery - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient presented with paralysis of right limb and right lower face along with homonymous hemianopia lesion present in which of following?",
         "options": {
             "A": "Basilar pons",
@@ -781,7 +800,7 @@
             "E": "Thalamus"
         },
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "[None]",
         "hint": "",
         "Point": ""
     },
@@ -800,7 +819,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A Patient presented with severe asthma FEV1 less than 50 and he is cyanosed treatment given B2 agonist but not working what is next treatment?",
         "options": {
             "A": "Octerotide",
@@ -828,7 +847,7 @@
         "subject": "Pharmacology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient presents with sore throat and runny nose before exams. Which of the following drugs is most appropriate to relieve allergic symptoms?",
         "options": {
             "A": "Loratadine",
@@ -856,7 +875,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient suspects they have diabetes mellitus. The best initial step is to:",
         "options": {
             "A": "Assess risk factors and order appropriate screening tests",
@@ -884,7 +903,7 @@
         "subject": "Anesthesia",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient sustains a cervical spine hyperextension injury leading to communited fracturE- During airway management, which of the following is most appropriate to prevent further injury and ensure safe intubation?",
         "options": {
             "A": "Use of McCoy laryngoscope",
@@ -912,7 +931,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient took 12 tablets of paracetamol 500 mg, followed by a combination of paracetamol with tramadol, and then ibuprofen. He now presents with nausea, vomiting, and epigastric pain. What is the most likely cause of his symptoms?",
         "options": {
             "A": "Paracetamol + Tramadol",
@@ -940,7 +959,7 @@
         "subject": "Medicine",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with asthma undergoes spirometry. Which of the following FEV1/FVC ratios is most consistent with obstructive airway disease?",
         "options": {
             "A": "0.85",
@@ -968,7 +987,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A patient with hyperthyroidism is experiencing a thyroid storm. Which drug is the preferred treatment?",
         "options": {
             "A": "Propylthiouracil (PTU)",
@@ -996,7 +1015,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A patient with obesity is most likely to develop which of the following metabolic abnormalities?",
         "options": {
             "A": "Insulin resistance and hyperinsulinemia",
@@ -1025,7 +1044,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A warfare worker developed the signs and symptoms of OP toxicity, what is used for the organophosphate poisoning?",
         "options": {
             "A": "Pralidoxime",
@@ -1042,18 +1061,21 @@
     {
         "id": "49GDMFXX",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Surgery & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Surgery - 08/24 - August 21 - Afternoon"
         ],
         "subject": "Genetics",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman and man has history of recurrent pregnancy , their clinical and genetic history is unremarkable but all pregnancies end up still birth how will you investigate",
         "options": {
             "A": "Southern blot",
@@ -1081,7 +1103,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Administration of haloperidol can cause side effects that may be treated with:",
         "options": {
             "A": "Atropine and glycopyrrolate",
@@ -1109,7 +1131,7 @@
         "subject": "Physiology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Adrenal zona glomerulosa necrosis would most likely result in which of the following electrolyte abnormalities?",
         "options": {
             "A": "Hyponatremia",
@@ -1165,7 +1187,7 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Nephrotic Syndromes",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An 8 year old patient presents to the clinic with periorbital edema. His labs showed protein greater than 3.5 g/dl. What is the probable cause?",
         "options": {
             "A": "Potassium retention",
@@ -1193,7 +1215,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An 82-year-old man with a history of multiple myocardial infarctions presents with B/L Pedal edema. Lung examination reveals bilateral crackles, and neck examination shows distended neck veins. In the acute setting, which of the following drugs is most indicated?",
         "options": {
             "A": "Lisinopril",
@@ -1208,31 +1230,35 @@
         "Point": ""
     },
     {
-        "id": "XRMARSXK",
+        "id": "2ZJXTG5B",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
+            "Medicine & Allied",
+            "Surgery & Allied",
             "Anesthesia",
-            "Radiology",
-            "Surgery & Allied"
+            "Radiology"
         ],
         "exams": [
+            "Medicine - 05/25 - May 12 - Morning",
             "Surgery - 08/25 - August 7 - Morning",
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
-        "subject": "Anatomy",
-        "chapter": "Nervous System",
+        "subject": "Pathology",
+        "chapter": "Cell Biology",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "Apoptosis is induced by activation of:",
+        "difficulty": "Easy",
+        "question": "Apoptosis is induced by activation of",
         "options": {
             "A": "Caspases",
             "B": "Oncosuppressors",
             "C": "Bcl 2 activation",
             "D": "P53",
-            "E": ""
+            "E": "Nucleases"
         },
         "correctAnswer": "A",
         "explanation": "",
@@ -1257,7 +1283,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Atherosclerois plaque which of following 3 found?",
         "options": {
             "A": "Smooth muscle, C-T neutrophil",
@@ -1285,7 +1311,7 @@
         "subject": "Pharmacology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Atracurium can cause hypotension. What is the primary mechanism responsible?",
         "options": {
             "A": "Release of histamine",
@@ -1343,7 +1369,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Beta blockers can cause arrhythmias by affecting which ion channel primarily?",
         "options": {
             "A": "Sodium (Na+) ion channels",
@@ -1360,7 +1386,8 @@
     {
         "id": "HTA6D6S3",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
@@ -1368,12 +1395,13 @@
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Radiology - 08/24 - August 20 - Morning"
         ],
         "subject": "Anatomy",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Blow out fracture of orbit with Proptosis and lossof cheek sensation it's due to",
         "options": {
             "A": "Cheek edema",
@@ -1394,8 +1422,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Surgery - 01/26 - January 7 - Evening",
@@ -1404,7 +1432,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Broca's area located in:",
         "options": {
             "A": "Inferior frontal lobe",
@@ -1432,7 +1460,7 @@
         "subject": "Microbiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Cardiac defects in fetus of mother suffering from rubella infection, infection will Occur in which time",
         "options": {
             "A": "2nd to 3rd week",
@@ -1460,7 +1488,7 @@
         "subject": "Medicine",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cause of raised anion gap:",
         "options": {
             "A": "Uncontrolled DM",
@@ -1488,7 +1516,7 @@
         "subject": "Pathology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cervical carcinoma differs from benign lesion:",
         "options": {
             "A": "Invasion of basement membrane",
@@ -1506,13 +1534,14 @@
         "id": "T54JNAVT",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia",
             "Gynecology & Obstetrics",
-            "Medicine & Allied",
             "Radiology",
+            "Anesthesia",
+            "Medicine & Allied",
             "Surgery & Allied"
         ],
         "exams": [
@@ -1521,12 +1550,14 @@
             "Anesthesia - 05/25 - May 12 - Afternoon",
             "Medicine - 02/25 - Feburary 8 - Afternoon",
             "Radiology - 05/25 - May 12 - Afternoon",
-            "Surgery - 02/25 - Feburary 9 - Morning"
+            "Surgery - 02/25 - Feburary 9 - Morning",
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Medicine - 08/24 - August 22 - Morning"
         ],
         "subject": "Biochemistry",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cheliosis and corneal vascularization is due to deficiency of which of the following vitamin?",
         "options": {
             "A": "Thiamine",
@@ -1556,7 +1587,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Child with hepatospleenomegaly streaks on hair and face abdomen protruded cause:",
         "options": {
             "A": "Kawashiorkor",
@@ -1573,18 +1604,21 @@
     {
         "id": "UN7DWSN8",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Gynecology & Obstetrics"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Gynecology - 11/24 - November 21 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Child with machinery like murmur likely due to",
         "options": {
             "A": "AS",
@@ -1616,7 +1650,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Chloramphenicol causes Gray baby syndrome by which of the following pathways?",
         "options": {
             "A": "Glucuronidation",
@@ -1645,7 +1679,7 @@
         "subject": "Physiology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Chronic exposure to loud noise primarily damages which of the following structures in the inner ear?",
         "options": {
             "A": "Organ of Corti",
@@ -1673,7 +1707,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Cimetidine interaction with warfarin:",
         "options": {
             "A": "Increase hepatic clearance of warfarin",
@@ -1701,7 +1735,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Circadian rhythm is primarily regulated by:",
         "options": {
             "A": "Body temperature fluctuations only",
@@ -1718,18 +1752,20 @@
     {
         "id": "SQFLRNC3",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Anesthesia - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Critical temperature of oxygen is:",
         "options": {
             "A": "-30",
@@ -1739,7 +1775,7 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
+        "explanation": "It is the temperature below which a gas can be stored in liquid form. Any gas can be stored in liquid form below its critical temperature. The critical temperature of oxygen is - 119^{\\circ}C therefore oxygen reservoirs storing oxygen in liquid form has to maintain a temperature below - 9Â°C",
         "hint": "",
         "Point": ""
     },
@@ -1750,8 +1786,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Surgery - 04/26 - April 7 - Night",
@@ -1760,7 +1796,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Diagnosis of colon CA made many years back CEA was raised that time pt came for regular checkup you advised CEA now what is role of CEA?",
         "options": {
             "A": "For Staging",
@@ -1777,26 +1813,29 @@
     {
         "id": "GG6Q9JY5",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied"
         ],
         "exams": [
             "Anesthesia - 02/25 - Feburary 7 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Diagnostic test for pheochromocytoma:",
         "options": {
             "A": "Increase cortisol",
             "B": "Dexamethasone suppression test",
             "C": "VMA in urine",
             "D": "Urine dipstick test",
-            "E": ""
+            "E": "VMA in blood"
         },
         "correctAnswer": "C",
         "explanation": "",
@@ -1817,7 +1856,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Digoxin toxicity increases by concurrent use of digoxin with?",
         "options": {
             "A": "Thiazide diuretics",
@@ -1845,7 +1884,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "DOC of E- Histolytica:",
         "options": {
             "A": "Albendazol",
@@ -1873,7 +1912,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Drug used in dextroamphetamine withdrawal:",
         "options": {
             "A": "Lorazepam",
@@ -1901,7 +1940,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "During Direct inguinal hernia repair surgery, which nerve is most at verge of injury?",
         "options": {
             "A": "Ilioinguinal nerve, iliohypogastric nerve, and genital branch of the genitofemoral nerve",
@@ -1929,7 +1968,7 @@
         "subject": "Anesthesia",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During endotracheal intubation in an unconscious patient when the tube cannot be passed, the recommended maneuver is:",
         "options": {
             "A": "Manual neck placement to align airway axes",
@@ -1957,7 +1996,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "During pregnancy, which of the following pulmonary function test parameters typically decreases?",
         "options": {
             "A": "FEV1/FVC ratio",
@@ -1974,18 +2013,21 @@
     {
         "id": "2Z4PCJFS",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 11/24 - November 24 - Morning"
         ],
         "subject": "Anesthesia",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During prolong surgery of 8 hours the temperature of patient is monitored by:",
         "options": {
             "A": "Probe Near machine",
@@ -2006,9 +2048,9 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
             "Gynecology & Obstetrics",
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
             "Gynecology - 01/26 - January 7 - Evening",
@@ -2020,7 +2062,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Edema fluid due to inflammation:",
         "options": {
             "A": "Exudate",
@@ -2048,7 +2090,7 @@
         "subject": "Histology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Elastin plays a key structural role in preventing rupture of arteries such as the abdominal aorta by contributing to which of the following components?",
         "options": {
             "A": "Elastic lamina",
@@ -2065,23 +2107,25 @@
     {
         "id": "JPZZLBK6",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia",
             "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Anesthesia"
         ],
         "exams": [
             "Medicine - 05/25 - May 12 - Morning",
             "Radiology - 05/25 - May 12 - Afternoon",
             "Medicine - 05/25 - May 15 - Morning",
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 11/24 - November 19 - Afternoon"
         ],
         "subject": "Surgery",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Elder patient has head injury due to fall. He cant recall past memory due to damage of:",
         "options": {
             "A": "Parietal lobe",
@@ -2109,7 +2153,7 @@
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Ethylene oxide gas requires how many hours to effectively sterilize medical equipment?",
         "options": {
             "A": "1 hour",
@@ -2126,17 +2170,21 @@
     {
         "id": "W2NZGD62",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
             "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
             "Medicine - 05/25 - May 15 - Morning",
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Medicine - 08/24 - August 23 - Morning"
         ],
         "subject": "Microbiology",
         "chapter": "Urinary System",
@@ -2172,7 +2220,7 @@
         "subject": "Medicine",
         "chapter": "Urinary System",
         "topic": "Acid Base",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Fluid of choice in paradoxical aciduria?",
         "options": {
             "A": "Normal saline",
@@ -2182,7 +2230,7 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "<p><br></p><h3 style=\"color: black;\">Correct Answer:</h3><p><strong style=\"color: #008000;\">Normal saline</strong> - Paradoxical aciduria occurs in severe volume depletion with hypochloremic metabolic alkalosis, usually due to vomiting. <strong>Normal saline restores extracellular volume and chloride</strong>, allowing the kidney to excrete bicarbonate and correct the alkalosis.</p><p><br></p><h3>Wrong Answers</h3><p><strong style=\"color: #CC0000;\">10% Dextrose</strong> - A hypertonic glucose solution is not used for volume and chloride replacement in hypochloremic metabolic alkalosis.</p><p><br></p><p><strong style=\"color: #CC0000;\">5% dextrose</strong> - D5W does not provide adequate sodium or chloride for correction of the volume and chloride depletion.</p><p><br></p><p><strong style=\"color: #CC0000;\">Ringer lactate</strong> - It contains less chloride and includes lactate, so it is less appropriate than normal saline for correcting chloride-responsive metabolic alkalosis.</p><p><br></p><h3 style=\"color: #0066CC;\">Key Concept:</h3><p>Paradoxical aciduria = <strong>metabolic alkalosis + acidic urine</strong> due to severe volume depletion, hypochloremia, and potassium depletion. Treatment is primarily <strong>normal saline</strong> to correct volume and chloride depletion.</p><p><br></p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3><p><strong>Vomiting → Lose HCl → Alkalosis → Give NS</strong></p><p><br></p><h3 style=\"color: #CC6600;\">Exam Trap:</h3><p>In <strong>hypochloremic metabolic alkalosis</strong>, the key treatment is <strong>chloride replacement with normal saline</strong>.</p>",
+        "explanation": "<p><br></p><h3 style=\"color: black;\">Correct Answer:</h3><p><strong style=\"color: #008000;\">Normal saline</strong> - Paradoxical aciduria occurs in severe volume depletion with hypochloremic metabolic alkalosis, usually due to vomiting. <strong>Normal saline restores extracellular volume and chloride</strong>, allowing the kidney to excrete bicarbonate and correct the alkalosis.</p><p><br></p><h3>Wrong Answers</h3><p><strong style=\"color: #CC0000;\">10% Dextrose</strong> - A hypertonic glucose solution is not used for volume and chloride replacement in hypochloremic metabolic alkalosis.</p><p><br></p><p><strong style=\"color: #CC0000;\">5% dextrose</strong> - D5W does not provide adequate sodium or chloride for correction of the volume and chloride depletion.</p><p><br></p><p><strong style=\"color: #CC0000;\">Ringer lactate</strong> - It contains less chloride and includes lactate, so it is less appropriate than normal saline for correcting chloride-responsive metabolic alkalosis.</p><p><br></p><h3 style=\"color: #0066CC;\">Key Concept:</h3><p>Paradoxical aciduria = <strong>metabolic alkalosis + acidic urine</strong> due to severe volume depletion, hypochloremia, and potassium depletion. Treatment is primarily <strong>normal saline</strong> to correct volume and chloride depletion.</p><p><br></p><h3 style=\"color: #8A2BE2;\">Mnemonic:</h3><p><strong>Vomiting â†’ Lose HCl â†’ Alkalosis â†’ Give NS</strong></p><p><br></p><h3 style=\"color: #CC6600;\">Exam Trap:</h3><p>In <strong>hypochloremic metabolic alkalosis</strong>, the key treatment is <strong>chloride replacement with normal saline</strong>.</p>",
         "hint": "<p><br></p>",
         "Point": ""
     },
@@ -2193,8 +2241,8 @@
         ],
         "specialty": [
             "Anesthesia",
-            "Medicine & Allied",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied"
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
@@ -2204,7 +2252,7 @@
         "subject": "Pathology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Follicular CA of thyroid feature is",
         "options": {
             "A": "Vascular invasion",
@@ -2221,18 +2269,23 @@
     {
         "id": "S8XWK7Y6",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied",
+            "Radiology"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 08/24 - August 20 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "For nutritional assessment of patient we assess nutrition from his weight loss by:",
         "options": {
             "A": "Traces elements",
@@ -2253,8 +2306,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
             "Medicine & Allied",
+            "Anesthesia",
             "Radiology"
         ],
         "exams": [
@@ -2294,7 +2347,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Granulomatous inflammation is characterized by:",
         "options": {
             "A": "Macrophages and Epitheloid cells",
@@ -2322,7 +2375,7 @@
         "subject": "Anesthesia",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Halothane Anesthesia given to patient before surgery. His temperature rises and other symptoms. What was the cause?",
         "options": {
             "A": "Skeletal muscles heat production",
@@ -2350,7 +2403,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Hexamethonium is a:",
         "options": {
             "A": "Pure agonist at nicotinic acetylcholine receptors",
@@ -2378,7 +2431,7 @@
         "subject": "Histology",
         "chapter": "Urinary System",
         "topic": "General",
-        "difficulty": "Easy",
+        "difficulty": "Medium",
         "question": "Hydrogen ion (H+) secretion in the kidney is primarily carried out by which type of cell?",
         "options": {
             "A": "Principal cells",
@@ -2408,7 +2461,7 @@
         "subject": "Microbiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In 1918 H influenza pandemic was the worst pandemic and killed many people why was it so lethal?",
         "options": {
             "A": "It was resistant to antibiotics",
@@ -2436,13 +2489,13 @@
         "subject": "Anesthesia",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a breathing circuit or airway tubing, maximum resistance to gas flow is encountered at which of the following?",
         "options": {
-            "A": "A right-angle (90°) connector",
+            "A": "A right-angle (90Â°) connector",
             "B": "A smooth, straight tube",
-            "C": "A connector with an angle more than 90°",
-            "D": "A connector with an angle less than 90°",
+            "C": "A connector with an angle more than 90Â°",
+            "D": "A connector with an angle less than 90Â°",
             "E": ""
         },
         "correctAnswer": "A",
@@ -2465,7 +2518,7 @@
         "subject": "Surgery",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a hypovolemic patient with an impalpable femoral pulse where venous cannulation is difficult, what is the best next step to secure central venous access?",
         "options": {
             "A": "Insert a central venous catheter via the internal jugular vein",
@@ -2493,7 +2546,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a patient with angina and left ventricular hypertrophy (LVH), the preferred drug to manage angina is:",
         "options": {
             "A": "Beta blockers",
@@ -2521,7 +2574,7 @@
         "subject": "Medicine",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "In a patient with diabetic ketoacidosis (DKA) presenting with diarrhea, the initial management should include:",
         "options": {
             "A": "Isotonic saline (0.9% NaCl) infusion plus insulin therapy",
@@ -2549,7 +2602,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a patient with hepatitis B infection, the presence of HBeAg and elevated ALT indicates:",
         "options": {
             "A": "Active viral replication and liver inflammation",
@@ -2577,7 +2630,7 @@
         "subject": "Pharmacology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In a patient with SLE on long-term corticosteroids, which strategy is most important to prevent side effects?",
         "options": {
             "A": "Using the lowest effective dose",
@@ -2605,7 +2658,7 @@
         "subject": "Microbiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In child cause of rheumatic fever is:",
         "options": {
             "A": "Group A Streptococcus",
@@ -2633,7 +2686,7 @@
         "subject": "Physiology",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In diabetic ketoacidosis (DKA), the characteristic arterial blood gas finding is metabolic acidosis. Which of the following best explains the change in PaCO2?",
         "options": {
             "A": "PaCO2 is increased due to hypoventilation",
@@ -2651,21 +2704,25 @@
         "id": "7MZY5MUL",
         "year": [
             "2026",
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 01/26 - January 5 - Morning",
             "Anesthesia - 04/26 - April 7 - Morning",
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Anesthesia - 08/25 - August 4 - Morning"
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Anesthesia - 11/24 - November 19 - Afternoon",
+            "Surgery - 08/24 - August 21 - Afternoon"
         ],
         "subject": "Microbiology",
         "chapter": "Infectious Disease",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In HIV patient surgery done then which antiseptic to use after surgery to clean floor?",
         "options": {
             "A": "1% hypochlorite",
@@ -2693,7 +2750,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "In pregnancy, the typical changes in cardiac output (CO) and total peripheral resistance (TPR) are:",
         "options": {
             "A": "Both CO and TPR decrease",
@@ -2721,7 +2778,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In Pudendal block which roots are blocked?",
         "options": {
             "A": "S2 S3 S4",
@@ -2749,7 +2806,7 @@
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "In viral meningitis, cerebrospinal fluid (CSF) analysis typically shows which of the following findings?",
         "options": {
             "A": "Raised neutrophils",
@@ -2777,7 +2834,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Knee reflex involve which of following",
         "options": {
             "A": "Merkel disc",
@@ -2807,7 +2864,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Left pons connection with:",
         "options": {
             "A": "Right cereum and right cerebru",
@@ -2835,7 +2892,7 @@
         "subject": "Anesthesia",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Local Anesthesia is contraindicated in",
         "options": {
             "A": "Penetrating eye injury",
@@ -2865,7 +2922,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Management of aspirin toxicity includes administration of:",
         "options": {
             "A": "Strong base",
@@ -2893,7 +2950,7 @@
         "subject": "Embryology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Mid trimester erythropoiesis occurs in:",
         "options": {
             "A": "Liver",
@@ -2925,7 +2982,7 @@
         "subject": "Embryology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Myelination during intrauterine life begins at:",
         "options": {
             "A": "Just before birth",
@@ -2953,7 +3010,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Myelination of Corticospinal tract by",
         "options": {
             "A": "Schwan cells",
@@ -2985,7 +3042,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Myxoid degeneration associated with",
         "options": {
             "A": "Mitral valve prolapses",
@@ -3002,18 +3059,21 @@
     {
         "id": "K2DVV6XR",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 08/24 - August 22 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Neurotransmitter in slow wave sleep is",
         "options": {
             "A": "Acetylcholine",
@@ -3028,25 +3088,29 @@
         "Point": ""
     },
     {
-        "id": "ZZS75DKC",
+        "id": "65ADENAH",
         "year": [
             "2025"
         ],
         "specialty": [
+            "Medicine & Allied",
+            "Radiology",
             "Anesthesia"
         ],
         "exams": [
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 05/25 - May 12 - Afternoon",
             "Anesthesia - 05/25 - May 12 - Afternoon"
         ],
-        "subject": "Medicine",
+        "subject": "Pediatrics",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "One year old child presented with diarrhea after 1 year History of some milk intake is given by mother Doctor asked her to stop giving milk to baby Cause is:",
+        "difficulty": "Hard",
+        "question": "One year old child presented with diarrhea after 1 year History of some milk intake is given by mother Doctor asked her to stop giving milk to baby Cause is",
         "options": {
             "A": "Sprue disease",
-            "B": "Lactose intoleranxe",
-            "C": "Hirshsprung disease",
+            "B": "Lactose intolerance",
+            "C": "Hirschsprung disease",
             "D": "Celiac disease",
             "E": "Whipple disease"
         },
@@ -3097,7 +3161,7 @@
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Parkinsonism affects which of these area:",
         "options": {
             "A": "Nucleus Basalis",
@@ -3125,7 +3189,7 @@
         "subject": "Medicine",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient brought to ER unconscious there is breathing problem Empty bottle of Aspirin found how to enhance eliminate aspirin from body?",
         "options": {
             "A": "IV bicarbonate administration",
@@ -3153,7 +3217,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient came with complain of sinking of heart, muscle weakness and ECG shows T waves. What is the cause?",
         "options": {
             "A": "Hyponatremia",
@@ -3181,7 +3245,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient developed Tb taking anti tb now developed deranged LFTS which drug is responsible?",
         "options": {
             "A": "Isoniazid",
@@ -3209,7 +3273,7 @@
         "subject": "Medicine",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient had an MI on ECG ST elevations in lead II, III and AVF are seen, vessel involved?",
         "options": {
             "A": "RCA",
@@ -3237,7 +3301,7 @@
         "subject": "Microbiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient had eaten fried rice 6 hours ago now presented with nausea vomiting and diarrhea cause is:",
         "options": {
             "A": "Staph aureus",
@@ -3265,7 +3329,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient Has given Injection pencillin after which He develop SOB bronchoconstriction. Which of the following is the most appropriate alternative antibiotic?",
         "options": {
             "A": "Erythromycin",
@@ -3282,18 +3346,24 @@
     {
         "id": "NXNSU6BA",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon",
+            "Surgery - 11/24 - November 20 - Afternoon"
         ],
         "subject": "Medicine",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient is suffering from dysphagia, dysarthria, analgesia and thermoanesthesia on ipsilateral side of the face and ipsilateral horner's syndromE- Occlusion of which of the following artery will produce these sign & symptoms:",
         "options": {
             "A": "Posterior inferior cerebellar artery",
@@ -3321,7 +3391,7 @@
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient on chemotherapy c previous history positive for Motion sickness.For vomiting which drug is suitable?",
         "options": {
             "A": "Metoclopramide",
@@ -3349,7 +3419,7 @@
         "subject": "Medicine",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Patient showing no improvement with H2 blocker is likely due to",
         "options": {
             "A": "Gastric Ulcer",
@@ -3366,20 +3436,25 @@
     {
         "id": "NVAJW4UX",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Medicine & Allied",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Medicine - 11/24 - November 20 - Afternoon",
+            "Surgery - 11/24 - November 20 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Pleural fluid with inflammatory cells, eosinophils, mesh of threads of amorphous coagulum, type of inflammation is:",
         "options": {
             "A": "Fibrinous inflammation",
@@ -3407,7 +3482,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Potency of volatile anesthetic depends on:",
         "options": {
             "A": "Mac",
@@ -3435,7 +3510,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Propylthiouracil is the drug of choice in?",
         "options": {
             "A": "Graves disease with liver dysfunction",
@@ -3472,7 +3547,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Proto oncogene is defined as",
         "options": {
             "A": "Abnormal gene cause cell proliferation",
@@ -3501,7 +3576,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pulse oximeter will show erroneous reading in:",
         "options": {
             "A": "Patient with dark skin pigmanetation",
@@ -3533,7 +3608,7 @@
         "subject": "Histology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Pure mucinous glands are:",
         "options": {
             "A": "Submandibular",
@@ -3554,9 +3629,9 @@
             "2025"
         ],
         "specialty": [
+            "Radiology",
             "Anesthesia",
-            "Medicine & Allied",
-            "Radiology"
+            "Medicine & Allied"
         ],
         "exams": [
             "Radiology - 07/26 - July 08 - Morning",
@@ -3566,7 +3641,7 @@
         "subject": "Community Medicine",
         "chapter": "Medical Ethics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Regarding Medical Ethics:",
         "options": {
             "A": "Moral code of conduct of doctor professional life",
@@ -3596,7 +3671,7 @@
         "subject": "Pathology",
         "chapter": "Urinary System",
         "topic": "The Kidneys & Ureters",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "question": "Renal papillary necrosis occur due to:",
         "options": {
             "A": "Paracetamol",
@@ -3624,7 +3699,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Right Lower lobe has foreign body because it is:",
         "options": {
             "A": "It Is wider shorter vertical",
@@ -3645,8 +3720,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Surgery - 07/26 - July 09 - Afternoon",
@@ -3655,7 +3730,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Right Shift of O2 dissociation curve is due to:",
         "options": {
             "A": "Increase PH",
@@ -3683,7 +3758,7 @@
         "subject": "Physiology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Steatorrhea secondary to chronic pancreatitis is due to pancreatic enzyme deficiency. How does the body adapt?",
         "options": {
             "A": "Decreased cholecystokinin (CCK) release",
@@ -3713,7 +3788,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Subarachnoid space in adults ends at:",
         "options": {
             "A": "S2",
@@ -3730,22 +3805,27 @@
     {
         "id": "8WEX9DPF",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
-            "Radiology"
+            "Radiology",
+            "Gynecology & Obstetrics",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 02/25 - Feburary 7 - Morning",
             "Anesthesia - 05/25 - May 12 - Afternoon",
             "Radiology - 02/25 - Feburary 8 - Morning",
-            "Radiology - 05/25 - May 12 - Afternoon"
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Gynecology- 08/24 - August 22 - Morning",
+            "Surgery - 08/24 - August 22 - Morning"
         ],
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Sulphur granules containing",
         "options": {
             "A": "Staph Aureus",
@@ -3762,18 +3842,20 @@
     {
         "id": "9BUCV26L",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Anesthesia - 08/24 - August 20 - Morning"
         ],
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Temperature at which pressure becomes equal to atmospheric pressure and liquids starts vaporizing:",
         "options": {
             "A": "Boiling point",
@@ -3801,7 +3883,7 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The capillaries can withstand high internal pressures without bursting is explained using:",
         "options": {
             "A": "Bernoulli's principle",
@@ -3829,7 +3911,7 @@
         "subject": "Anatomy",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The lymphatic drainage of the anal canal below the pectinate line is primarily to which lymph nodes?",
         "options": {
             "A": "Para-aortic",
@@ -3857,10 +3939,10 @@
         "subject": "Physiology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The main protein responsible for cardiac muscle contraction is:",
         "options": {
-            "A": "Myosin light chain (3-5 µm)",
+            "A": "Myosin light chain (3-5 Âµm)",
             "B": "Actin thin filament only",
             "C": "Troponin T",
             "D": "Titin",
@@ -3885,7 +3967,7 @@
         "subject": "Biochemistry",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The most effective method for the prevention of neural tube defects (NTDs) in pregnancy is:",
         "options": {
             "A": "High-dose folic acid supplementation",
@@ -3913,7 +3995,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The primary target site of opioid analgesics in the central nervous system is:",
         "options": {
             "A": "Dopamine receptors in the nucleus accumbens",
@@ -3941,7 +4023,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The process of rapidly converting a liquid to vapor/gas without heat is explained by which gas law?",
         "options": {
             "A": "Graham's Law",
@@ -3969,7 +4051,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The rate of flow through the tube depends upon",
         "options": {
             "A": "Mostly on viscosity",
@@ -3997,7 +4079,7 @@
         "subject": "Physiology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The somestheticassociation area responsible for interpreting tactile sensations is located in which part of the brain?",
         "options": {
             "A": "Parietal lobe",
@@ -4025,7 +4107,7 @@
         "subject": "Physiology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The water content of alveolar gas primarily depends on:",
         "options": {
             "A": "Temperature of inhaled air",
@@ -4046,10 +4128,10 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
             "Medicine & Allied",
+            "Surgery & Allied",
             "Radiology",
-            "Surgery & Allied"
+            "Anesthesia"
         ],
         "exams": [
             "Medicine - 07/26 - July 9 - Afternoon",
@@ -4062,7 +4144,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "True about fat embolism",
         "options": {
             "A": "Symptoms before 12 h",
@@ -4090,7 +4172,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "True regarding Nitrous Oxide:",
         "options": {
             "A": "It is combustible Like Oxygen",
@@ -4120,7 +4202,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Upon Postmortem autopsy, a patient was having a thrombus this is seen in:",
         "options": {
             "A": "Chicken fat supernatant",
@@ -4130,25 +4212,28 @@
             "E": ""
         },
         "correctAnswer": "A",
-        "explanation": "• Line of Zahn seen in: • Coraline Thrombus • Pre mortem Thrombus • Arterial Thrombus • Chicken Fat Appearance seen in PostMortem Thrombus",
+        "explanation": "â€¢ Line of Zahn seen in: â€¢ Coraline Thrombus â€¢ Pre mortem Thrombus â€¢ Arterial Thrombus â€¢ Chicken Fat Appearance seen in PostMortem Thrombus",
         "hint": "",
         "Point": ""
     },
     {
         "id": "XVDENH9F",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Radiology"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 08/24 - August 20 - Afternoon"
         ],
         "subject": "Physiology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Uterus is most sensitive to which hormone during last trimester",
         "options": {
             "A": "Progesterone",
@@ -4165,19 +4250,22 @@
     {
         "id": "JZBFS2F5",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Surgery & Allied"
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Anesthesia - 08/25 - August 4 - Morning"
+            "Anesthesia - 08/25 - August 4 - Morning",
+            "Surgery - 08/24 - August 23 - Morning"
         ],
         "subject": "Microbiology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Virulence of staph aureus strain Measured by",
         "options": {
             "A": "Ability to hemolyze",
@@ -4205,7 +4293,7 @@
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Warfarin therapy decreases the activity of which vitamin?",
         "options": {
             "A": "Vitamin K",
@@ -4237,7 +4325,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the mechanism of action of Pioglitazone?",
         "options": {
             "A": "SGLT2 inhibitor",
@@ -4267,7 +4355,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What is the mechanism of action of tetracycline?",
         "options": {
             "A": "Blocks aminoacyl tRNA binding",
@@ -4284,18 +4372,25 @@
     {
         "id": "GX9FVBGZ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied",
+            "Radiology",
+            "Surgery & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 05/25 - May 12 - Morning",
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Surgery - 08/24 - August 21 - Afternoon"
         ],
         "subject": "Pathology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "What type of necrosis is seen in Brain",
         "options": {
             "A": "Fat necrosis",
@@ -4323,7 +4418,7 @@
         "subject": "Genetics",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "When both alleles are fully expressed in heterozygote called?",
         "options": {
             "A": "Codominance",
@@ -4351,7 +4446,7 @@
         "subject": "Pharmacology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which antihypertensive drug is given in Asthmatic patient during surgery?",
         "options": {
             "A": "Hydralazine",
@@ -4379,7 +4474,7 @@
         "subject": "Anatomy",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which bronchopulmonary segment is absent in the left inferior lobe of the lung?",
         "options": {
             "A": "Anterobasal",
@@ -4407,7 +4502,7 @@
         "subject": "Pathology",
         "chapter": "Cardiovascular System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which coronary artery is most commonly thrombosed in myocardial infarction (MI)?",
         "options": {
             "A": "Left Anterior Descending (LAD) artery",
@@ -4435,7 +4530,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which drug has action similar to atropine:",
         "options": {
             "A": "Succinylcholine",
@@ -4463,7 +4558,7 @@
         "subject": "Anatomy",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which muscle of the levator ani group is most important for pelvic organ support?",
         "options": {
             "A": "Pubococcygeus",
@@ -4491,7 +4586,7 @@
         "subject": "Pharmacology",
         "chapter": "Hematological System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of following is used for Reversal of Heparin toxicity immediately",
         "options": {
             "A": "Vitamin K",
@@ -4551,7 +4646,7 @@
         "subject": "Pharmacology",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following DPP-4 inhibitors is primarily excreted in feces and does not require dose adjustment in patients with renal impairment?",
         "options": {
             "A": "Sitagliptin",
@@ -4579,7 +4674,7 @@
         "subject": "Pharmacology",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following drugs can cause ototoxicity?",
         "options": {
             "A": "acetazolamide",
@@ -4607,7 +4702,7 @@
         "subject": "Pathology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is a feature of irreversible cell injury on electron microscopy?",
         "options": {
             "A": "Blebbing of the cell membrane",
@@ -4636,7 +4731,7 @@
         "subject": "Anatomy",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is most commonly associated with median nerve injury?",
         "options": {
             "A": "Thenar eminence wasting",
@@ -4664,7 +4759,7 @@
         "subject": "Pathology",
         "chapter": "Immune System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is pain mediator in inflammation",
         "options": {
             "A": "Macrophages",
@@ -4685,8 +4780,8 @@
             "2025"
         ],
         "specialty": [
-            "Anesthesia",
-            "Surgery & Allied"
+            "Surgery & Allied",
+            "Anesthesia"
         ],
         "exams": [
             "Surgery - 01/26 - January 7 - Evening",
@@ -4695,7 +4790,7 @@
         "subject": "Pathology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following is tumor marker of pancreatic adenocarcinoma?",
         "options": {
             "A": "CEA",
@@ -4723,7 +4818,7 @@
         "subject": "Pharmacology",
         "chapter": "Nervous System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following local anesthetics has the longest duration of action?",
         "options": {
             "A": "Bupivacaine with adrenaline",
@@ -4751,7 +4846,7 @@
         "subject": "Oncology",
         "chapter": "Reproductive System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following tumor marker is positive in Ca Ovary?",
         "options": {
             "A": "CA-123",
@@ -4768,18 +4863,21 @@
     {
         "id": "DB2XU2TP",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
-            "Anesthesia"
+            "Anesthesia",
+            "Medicine & Allied"
         ],
         "exams": [
-            "Anesthesia - 05/25 - May 12 - Afternoon"
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Medicine - 11/24 - November 22 - Afternoon"
         ],
         "subject": "Biochemistry",
         "chapter": "Special Senses",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which of the following vitamin deficiency causes night blindness?",
         "options": {
             "A": "Vitamin C",
@@ -4789,7 +4887,7 @@
             "E": ""
         },
         "correctAnswer": "C",
-        "explanation": "",
+        "explanation": "Vitamin A deficiency causes Bitot spots Night blindness Corneal squamous metaplasia Corneal degeneration Night blindness Teratogenic in excess (cleft palate, cardiac abnormalities)",
         "hint": "",
         "Point": ""
     },
@@ -4807,7 +4905,7 @@
         "subject": "Biochemistry",
         "chapter": "Metabolic System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following vitamins is a precursor or essential cofactor in the synthesis of both GABA and dopamine?",
         "options": {
             "A": "Vitamin B6",
@@ -4835,7 +4933,7 @@
         "subject": "Anatomy",
         "chapter": "Endocrine System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which part of the pancreas contains the greatest number of islets of Langerhans?",
         "options": {
             "A": "Tail",
@@ -4863,7 +4961,7 @@
         "subject": "Pharmacology",
         "chapter": "Respiratory System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which property is characteristic of the anesthetic gas N2O?",
         "options": {
             "A": "Increased blood-gas pressure",
@@ -4880,7 +4978,8 @@
     {
         "id": "EMC4MGBQ",
         "year": [
-            "2025"
+            "2025",
+            "2024"
         ],
         "specialty": [
             "Anesthesia",
@@ -4888,12 +4987,13 @@
         ],
         "exams": [
             "Anesthesia - 05/25 - May 12 - Afternoon",
-            "Medicine - 05/25 - May 13 - Afternoon"
+            "Medicine - 05/25 - May 13 - Afternoon",
+            "Medicine - 12/24 - December 01 - Morning"
         ],
         "subject": "Pharmacology",
         "chapter": "Gastrointestinal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Why cimetidine and sucralfate should be administered at about 2hours of gap in patient of peptic ulcer?",
         "options": {
             "A": "Because sucralfate inhibits cimetidine absorption",
@@ -4924,7 +5024,7 @@
         "subject": "Pharmacology",
         "chapter": "General",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Why does carbamazepine reduce nifedipine's effect?",
         "options": {
             "A": "It induces cytochrome P450",

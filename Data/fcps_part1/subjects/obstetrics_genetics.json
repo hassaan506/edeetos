@@ -13,7 +13,7 @@
         "subject": "Obstetrics",
         "chapter": "Genetics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 29-year-old pregnant woman has been diagnosed with thalassemia minor. She is concerned about the risk of her baby inheriting a severe form of the diseasE- What is the most appropriate next step to assess the fetal status during pregnancy?",
         "options": {
             "A": "Chorionic villus sampling (CVS)",
@@ -33,47 +33,21 @@
             "2025"
         ],
         "specialty": [
-            "Radiology"
-        ],
-        "exams": [
-            "Radiology - 05/25 - May 12 - Afternoon"
-        ],
-        "subject": "Obstetrics",
-        "chapter": "Genetics",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 37-year-old pregnant woman presents for antenatal screening. Her husband has a family history of Down syndromE- What is the most appropriate next step to assess the risk of chromosomal abnormality in the fetus?",
-        "options": {
-            "A": "Alpha-fetoprotein (AFP)",
-            "B": "Serum B-hCG",
-            "C": "Chorionic villus sampling (CVS)",
-            "D": "Karyotyping of parents",
-            "E": ""
-        },
-        "correctAnswer": "C",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "RQ3ZDWZ6",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
+            "Radiology",
             "Medicine & Allied"
         ],
         "exams": [
+            "Radiology - 05/25 - May 12 - Afternoon",
             "Medicine - 11/25 - November 16 - Morning"
         ],
         "subject": "Obstetrics",
         "chapter": "Genetics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "A 37-year-old pregnant woman presents for antenatal screening. Her husband has a family history of Down syndrome. What is the most appropriate next step to assess the risk of chromosomal abnormality in the fetus?",
+        "difficulty": "Medium",
+        "question": "A 37-year-old pregnant woman presents for antenatal screening. Her husband has a family history of Down syndromE- What is the most appropriate next step to assess the risk of chromosomal abnormality in the fetus?",
         "options": {
             "A": "Alpha-fetoprotein (AFP)",
-            "B": "Serum beta-hCG",
+            "B": "Serum B-hCG",
             "C": "Chorionic villus sampling (CVS)",
             "D": "Karyotyping of parents",
             "E": ""
@@ -97,7 +71,7 @@
         "subject": "Obstetrics",
         "chapter": "Genetics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A mother P2+0 who's beta thalassemia trait, previous child diagnosed as thalassemia major, doesn't know about the status of the father. What would be the possibility of thalassemia major in the child?",
         "options": {
             "A": "50%",
@@ -125,7 +99,7 @@
         "subject": "Obstetrics",
         "chapter": "Genetics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A woman with beta-thalassemia minor is pregnant. Her husband's thalassemia status is unknown. If he is later found to also have beta-thalassemia minor, what is the chance that their next child will have beta-thalassemia major?",
         "options": {
             "A": "0%",
@@ -153,7 +127,7 @@
         "subject": "Obstetrics",
         "chapter": "Genetics",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An 8-week pregnant couple, both known carriers of Thalassemia Minor, seek early prenatal diagnosis to determine the thalassemia status of the fetus. Which is the earliest and most appropriate invasive test that can be performed to obtain fetal genetic material for diagnosis at this gestational age?",
         "options": {
             "A": "Amniocentesis",

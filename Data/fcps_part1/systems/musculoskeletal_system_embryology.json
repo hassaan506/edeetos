@@ -13,7 +13,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "2nd pharyngeal arch derivative is:",
         "options": {
             "A": "Platysma",
@@ -41,7 +41,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A 5 year old child presents with rectal prolapse, organism responsible is:",
         "options": {
             "A": "Ascaris",
@@ -69,7 +69,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "A medical student is studying embryology and is asked which embryonic structure gives rise to the body wall muscles, limb muscles, and the serous membranes of the body cavities. Which of the following is the most likely embryonic origin?",
         "options": {
             "A": "Paraxial mesoderm",
@@ -97,7 +97,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A midline skull base chordoma shows physaliphorous cells on histology. The lesion is derived from which embryological structure?",
         "options": {
             "A": "Neural crest",
@@ -128,7 +128,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "A newborn is born with severely underdeveloped or rudimentary limbs, resembling flipper like appendages, which of the following condition by which the newborn is suffering from?",
         "options": {
             "A": "Phocomelia",
@@ -156,7 +156,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Absence of a limb (Amelia) is due to maldevelopment of which of these?",
         "options": {
             "A": "Somites",
@@ -186,7 +186,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Absence of limb is due to mal development of which of these?",
         "options": {
             "A": "Somites",
@@ -214,36 +214,8 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Hard",
         "question": "An experiment conducted on mice ro analyze sclerotome development, involving somites, somitomeres and epimeres. The experiment led to destruction of specific cells. If the mice survive until birth, which muscle will be absent due to its failure to derive from the somite?",
-        "options": {
-            "A": "Latissimus dorsi",
-            "B": "Rhomboid",
-            "C": "Serratus anterior",
-            "D": "Longissimus",
-            "E": "Pectoralis Major"
-        },
-        "correctAnswer": "D",
-        "explanation": "",
-        "hint": "",
-        "Point": ""
-    },
-    {
-        "id": "J3HEDZRB",
-        "year": [
-            "2025"
-        ],
-        "specialty": [
-            "Surgery & Allied"
-        ],
-        "exams": [
-            "Surgery - 02/25 - Feburary 9 - Morning"
-        ],
-        "subject": "Embryology",
-        "chapter": "Musculoskeletal System",
-        "topic": "Unknown Topic",
-        "difficulty": "medium",
-        "question": "An experiment was conducted on mice to analyze sclerotome development, involving somites, somitomeres, and epimeres. The experiment led to the destruction of specific cells. If the mice survive until birth, which muscle will be absent due to its failure to derive from the somite?",
         "options": {
             "A": "Latissimus dorsi",
             "B": "Rhomboid",
@@ -270,7 +242,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "An experiment was conducted on mice to analyze sclerotome development. If specific somite cells are destroyed, which muscle will be absent?",
         "options": {
             "A": "Latissimus dorsi",
@@ -298,7 +270,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "An experiment was conducted on mice to analyze sclerotome development. If the mice survive until birth, which muscle will be absent due to its failure to derive from the somite?",
         "options": {
             "A": "Latissimus dorsi",
@@ -309,6 +281,39 @@
         },
         "correctAnswer": "D",
         "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "J3HEDZRB",
+        "year": [
+            "2025",
+            "2024"
+        ],
+        "specialty": [
+            "Surgery & Allied",
+            "Medicine & Allied",
+            "Radiology"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 9 - Morning",
+            "Medicine - 11/24 - November 20 - Morning",
+            "Radiology - 11/24 - November 20 - Morning"
+        ],
+        "subject": "Embryology",
+        "chapter": "Musculoskeletal System",
+        "topic": "Unknown Topic",
+        "difficulty": "Hard",
+        "question": "An experiment was conducted on mice to analyze sclerotome development, involving somites, somitomeres, and epimeres. The experiment led to the destruction of specific cells. If the mice survive until birth, which muscle will be absent due to its failure to derive from the somite?",
+        "options": {
+            "A": "Latissimus dorsi",
+            "B": "Rhomboid",
+            "C": "Serratus anterior",
+            "D": "Longissimus",
+            "E": "Pectoralis Major"
+        },
+        "correctAnswer": "D",
+        "explanation": "The longissimus muscle, part of the erector spinae group, is derived from the epimere of somites. The destruction of cells involved in somite and epimere development would specifically affect the formation of muscles derived from the epimere, including the longissimus. Other muscles, like the latissimus dorsi, rhomboid, serratus anterior, and pectoralis major, are derived from the hypomere, which is unaffected in this case.",
         "hint": "",
         "Point": ""
     },
@@ -326,7 +331,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "During embryonic development, which of the following structures is the primary derivative of the first pharyngeal (branchial) arch?",
         "options": {
             "A": "Mandibular arch",
@@ -354,7 +359,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Facial nerve and parotid gland relation",
         "options": {
             "A": "Lies superficial to parotid",
@@ -382,7 +387,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Failure of fusion of the frontonasal prominence with the maxillary prominence may result in:",
         "options": {
             "A": "Cleft lip",
@@ -410,7 +415,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Newborn with amelia. This defect is due to:",
         "options": {
             "A": "Failure of neural tube closure",
@@ -438,7 +443,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Nucleus pulposus present in intervertebral disc. This is actually derived from?",
         "options": {
             "A": "Epiblast",
@@ -466,7 +471,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Remnant of Notochord is",
         "options": {
             "A": "Nucleus pulposus",
@@ -496,7 +501,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Skeletal system derived from:",
         "options": {
             "A": "Mesoderm and neural crest cells",
@@ -524,7 +529,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Stylopharyngeus muscle dervied from which arch",
         "options": {
             "A": "1st pharyngeal pouch",
@@ -552,7 +557,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "The mesenchyme from which bone and connective tissue arise, is primarily derived from which of the following embryonic sources?",
         "options": {
             "A": "Ectoderm",
@@ -580,7 +585,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The muscles of facial expression are derived from which pharyngeal arch?",
         "options": {
             "A": "First",
@@ -608,7 +613,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The notochord is remanent of:",
         "options": {
             "A": "Annulus fibrosus",
@@ -636,7 +641,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "The nucleus pulposus develops from the midline during embryonic life",
         "options": {
             "A": "Neural crest",
@@ -664,7 +669,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Easy",
         "question": "Which muscle arises from the third pharyngeal arch?",
         "options": {
             "A": "Stylopharyngeus",
@@ -692,7 +697,7 @@
         "subject": "Embryology",
         "chapter": "Musculoskeletal System",
         "topic": "Unknown Topic",
-        "difficulty": "medium",
+        "difficulty": "Medium",
         "question": "Which of the following embryological structures primarily gives rise to most facial bones and connective tissue of the scalp?",
         "options": {
             "A": "Paraxial mesoderm",
