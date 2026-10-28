@@ -72,6 +72,14 @@ def parse_exam_info(exam_str, fallback_year, fallback_spec):
                 
     return exam_year, exam_spec
 
+def save_paginated(base_dir, file_prefix, q_list):
+    CHUNK_LIMIT = 200
+    for i in range(0, len(q_list), CHUNK_LIMIT):
+        page = (i // CHUNK_LIMIT) + 1
+        chunk_path = os.path.join(base_dir, f"{file_prefix}_{page}.json")
+        with open(chunk_path, 'w', encoding='utf-8') as f:
+            json.dump(q_list[i:i + CHUNK_LIMIT], f, indent=4, ensure_ascii=False)
+
 # ============================================================
 # ASSIGN IDs TO CSV
 # ============================================================
@@ -167,7 +175,6 @@ def process_directory(directory, is_book=False):
                 topic = get_column_value(row, {'topic'}) or "Unknown Topic"
                 difficulty = get_column_value(row, {'difficulty'}) or "medium"
                 
-                # EXTRACT NEW POINT VALUE
                 point_value = get_column_value(row, {'point', 'points'})
 
                 years_list = clean_split(get_column_value(row, {'year'}))
@@ -194,7 +201,7 @@ def process_directory(directory, is_book=False):
                     "correctAnswer": get_column_value(row, {'correctanswer'}).upper(),
                     "explanation": get_column_value(row, {'explanation'}),
                     "hint": get_column_value(row, {'hint'}),
-                    "Point": point_value  # ADDED TO JSON STRUCTURE
+                    "Point": point_value  
                 }
 
                 if is_book:
@@ -202,7 +209,6 @@ def process_directory(directory, is_book=False):
                     question_obj["bookName"] = base_name
                 questions.append(question_obj)
 
-                # BUILD HIERARCHY TREES & CHUNKS
                 if subject not in subjects_tree:
                     subjects_tree[subject] = {}
                 if chapter not in subjects_tree[subject]:
@@ -216,7 +222,6 @@ def process_directory(directory, is_book=False):
                         systems_tree[chapter][subject] = {}
                     systems_tree[chapter][subject][topic] = systems_tree[chapter][subject].get(topic, 0) + 1
 
-                # Parse directly from Exam strings to prevent mismatched column contamination
                 for i, exam in enumerate(exams_list):
                     fb_year = years_list[i] if i < len(years_list) else (years_list[-1] if years_list else "Unknown Year")
                     fb_spec = specialty_list[i] if i < len(specialty_list) else (specialty_list[-1] if specialty_list else "Unknown Specialty")
@@ -237,7 +242,6 @@ def process_directory(directory, is_book=False):
                         if exam_key not in exam_chunks:
                             exam_chunks[exam_key] = []
                         
-                        # Prevent exact ID duplicates in the same exam file
                         if not any(q['id'] == q_id for q in exam_chunks[exam_key]):
                             exam_chunks[exam_key].append(question_obj)
 
@@ -258,7 +262,6 @@ def process_directory(directory, is_book=False):
                         if not any(q['id'] == q_id for q in system_chunks[sys_key]):
                             system_chunks[sys_key].append(question_obj)
 
-        # OUTPUT GENERATION
         if is_book:
             questions_out = os.path.join(directory, f"{base_name}_questions.json")
             with open(questions_out, 'w', encoding='utf-8') as f:
@@ -266,7 +269,7 @@ def process_directory(directory, is_book=False):
             print(f"  -> Generated {base_name}_questions.json for {len(questions)} questions.")
         else:
             metadata_list = []
-            search_index_list = [] # Dedicated lightweight array for text searches
+            search_index_list = [] 
             
             for q in questions:
                 metadata_list.append({
@@ -278,7 +281,6 @@ def process_directory(directory, is_book=False):
                     "topic": q["topic"],
                     "difficulty": q["difficulty"]
                 })
-                # Use "q" instead of "question" to save file size
                 search_index_list.append({
                     "id": q["id"],
                     "q": q["question"]
@@ -288,7 +290,6 @@ def process_directory(directory, is_book=False):
             with open(meta_out, 'w', encoding='utf-8') as f:
                 json.dump(metadata_list, f, separators=(',', ':'))
 
-            # Generate the new search index
             search_out = os.path.join(directory, f"{base_name}_search_index.json")
             with open(search_out, 'w', encoding='utf-8') as f:
                 json.dump(search_index_list, f, separators=(',', ':'))
@@ -311,15 +312,6 @@ def process_directory(directory, is_book=False):
             os.makedirs(sys_dir, exist_ok=True)
             os.makedirs(exam_dir, exist_ok=True)
 
-CHUNK_LIMIT = 200
-
-            def save_paginated(base_dir, file_prefix, q_list):
-                for i in range(0, len(q_list), CHUNK_LIMIT):
-                    page = (i // CHUNK_LIMIT) + 1
-                    chunk_path = os.path.join(base_dir, f"{file_prefix}_{page}.json")
-                    with open(chunk_path, 'w', encoding='utf-8') as f:
-                        json.dump(q_list[i:i + CHUNK_LIMIT], f, indent=4, ensure_ascii=False)
-
             for (s_clean, c_clean), q_list in subject_chunks.items():
                 save_paginated(subj_dir, f"{s_clean}_{c_clean}", q_list)
 
@@ -333,7 +325,7 @@ CHUNK_LIMIT = 200
             print(f"  -> Generated {base_name}_metadata.json")
             print(f"  -> Generated {base_name}_search_index.json")
             print(f"  -> Generated {base_name}_hierarchy.json")
-            print(f"  -> Generated {total_shards} micro-chunks in {base_name}/ folder.")
+            print(f"  -> Generated {total_shards} paginated micro-chunks in {base_name}/ folder.")
 
 # ============================================================
 # COMPILE EVERYTHING

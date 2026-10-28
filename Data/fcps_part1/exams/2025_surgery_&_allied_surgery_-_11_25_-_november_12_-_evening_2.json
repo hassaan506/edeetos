@@ -1,0 +1,86 @@
+[
+    {
+        "id": "RUGR7XC4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "Transplantation",
+        "difficulty": "Medium",
+        "question": "CKD patient has decreased renal GFR. Which test will help assess renal function before renal transplant?",
+        "options": {
+            "A": "Inulin clearance",
+            "B": "Creatinine clearance",
+            "C": "PAH clearance",
+            "D": "Plasma flow rate",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Creatinine clearance = practical clinical measure of GFR. Inulin clearance -> gold standard but rarely used clinically due to cost.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "MQ5NNKF7",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Gold-standard test to assess GFR?",
+        "options": {
+            "A": "Inulin clearance",
+            "B": "PAH",
+            "C": "Albumin",
+            "D": "Lactate",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Inulin -> freely filtered, not secreted or reabsorbed -> precise GFR measurement.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "QE7Q7RGA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 11/25 - November 12 - Evening"
+        ],
+        "subject": "Surgery",
+        "chapter": "Urinary System",
+        "topic": "Transplantation",
+        "difficulty": "Medium",
+        "question": "A patient requires renal transplant. Donor options: identical twin, stepbrother, sister, husband, daughter.",
+        "options": {
+            "A": "Identical twin",
+            "B": "Husband",
+            "C": "Sister",
+            "D": "Daughter",
+            "E": "Stepbrother"
+        },
+        "correctAnswer": "A",
+        "explanation": "Identical twin -> perfect HLA match, minimal risk of rejection. Other related donors require immunosuppression.",
+        "hint": "",
+        "Point": ""
+    }
+]

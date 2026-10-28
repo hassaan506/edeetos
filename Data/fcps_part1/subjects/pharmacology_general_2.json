@@ -1,0 +1,566 @@
+[
+    {
+        "id": "A565NYTM",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Anesthesia",
+            "Radiology"
+        ],
+        "exams": [
+            "Anesthesia - 05/25 - May 12 - Afternoon",
+            "Radiology - 05/25 - May 12 - Afternoon",
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Why does carbamazepine reduce nifedipine's effect?",
+        "options": {
+            "A": "It induces cytochrome P450",
+            "B": "Decreases absorption",
+            "C": "Blocks receptors",
+            "D": "Reduces renal excretion",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "H6PFP7BC",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 04/26 - April 7 - Night"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "With the steroid what will be the effect on wound healing",
+        "options": {
+            "A": "Increase healing",
+            "B": "Delayed wound healing",
+            "C": "Increase collagen",
+            "D": "Increase fibrin",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "AJR3YP22",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 08/25 - August 6 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A newborn develops vomiting, abdominal distension, cyanosis, and hypotension after receiving an antibiotic. Which drug is most likely responsible for this condition known as \"Grey Baby Syndrome\"?",
+        "options": {
+            "A": "Gentamicin.",
+            "B": "Vancomycin.",
+            "C": "Amoxicillin.",
+            "D": "Chloramphenicol.",
+            "E": "Cefotaxime"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "V85GBPLW",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Gray baby syndrome is caused by which of the following drug?",
+        "options": {
+            "A": "Tetracycline",
+            "B": "Vancomycin",
+            "C": "Amoxicillin",
+            "D": "Azithromycin",
+            "E": "Chloramphenicol"
+        },
+        "correctAnswer": "E",
+        "explanation": "Gray Baby Syndrome - Chloramphenicol. Grey Man Syndrome - Amiodarone. Red Man Syndrome - Vancomycin",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "9DK45DV2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 08/25 - August 4 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A 45-year-old man on ciprofloxacin therapy for prostatitis develops decreased urine output after 2 days. To evaluate for drug toxicity, when should serum drug levels be measured?",
+        "options": {
+            "A": "Immediately send blood drug levels",
+            "B": "2 hours after the next dose",
+            "C": "1 hour after the next dose",
+            "D": "At steady state",
+            "E": "After 1 half life of the drug"
+        },
+        "correctAnswer": "D",
+        "explanation": "First trimester: PTU is given because methimazole is teratogenic. Second trimester onwards: Methimazole is safe.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "PUU8DK4M",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A drug has a half-life of 16 hours. Assuming standard therapeutic protocols, what is the most appropriate minimum dosing frequency for this drug to maintain a stable therapeutic concentration over a 24-hour period?",
+        "options": {
+            "A": "Twice daily",
+            "B": "Once daily",
+            "C": "Three times daily",
+            "D": "Four times daily",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "For most drugs, the dosing interval is often set to be approximately equal to the drug's half-life (t1/2) or slightly longer. Since t1/2 = 16 hours, once daily (24-hour interval) is often the minimum effective dosing frequency.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "V9L7BLPZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A drug is given multiple times per day to maintain plasma concentration within therapeutic range. Which pharmacokinetic principle is being applied?",
+        "options": {
+            "A": "Zero-order kinetics",
+            "B": "Steady-state principle",
+            "C": "First-pass metabolism",
+            "D": "Drug bioavailability",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "Repeated dosing -> maintains plasma levels -> steady-state depends on half-life and dosing interval.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "G89DUDKY",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Pathology"
+        ],
+        "exams": [
+            "Pathology - 08/25 - August 4 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "A new chemotherapeutic drug is in Phase I clinical trials. Which of the following is the primary objective of this phase?",
+        "options": {
+            "A": "Compare the drug to existing treatments",
+            "B": "Determine the maximum tolerated dose, therapeutic range, and assess safety profile",
+            "C": "Establish drug efficacy in large populations",
+            "D": "Detect rare adverse effects",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "USMBWAWU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Acetaminophen undergoes which metabolic process to appear in urine?",
+        "options": {
+            "A": "Glucuronidation",
+            "B": "Oxidation",
+            "C": "Reduction",
+            "D": "Acetylation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3354B4DS",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Bioavailability of drug becomes important determining factor when administered through which route",
+        "options": {
+            "A": "Orally",
+            "B": "Sub lingual",
+            "C": "Rectal",
+            "D": "As a dermal patch",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "KESJWN7S",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 02/25 - Feburary 8 - Afternoon",
+            "Surgery - 02/25 - Feburary 9 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Carbamazepine primarily affects the cytochrome P450 system by which of the following",
+        "options": {
+            "A": "Inhibition",
+            "B": "Induction",
+            "C": "No any effect",
+            "D": "Acting as competitive inhibitor",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "YCWRT8FP",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Emax of drug shows:",
+        "options": {
+            "A": "Potency",
+            "B": "Efficacy",
+            "C": "Bioavailability",
+            "D": "Excretion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "L9M8R7Q4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "In phenobarbital overdose drug is excreted through body via",
+        "options": {
+            "A": "Alkalization of blood",
+            "B": "Alkalization of urine",
+            "C": "Acidification of urine",
+            "D": "Via Sweating",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "H5XJVBMA",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Phase 1 reaction of drug metabolism is?",
+        "options": {
+            "A": "Methylation",
+            "B": "Oxidation",
+            "C": "Glucronidation",
+            "D": "Acetylation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "7HMZGH4E",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Solubility of drug through git increases if it is",
+        "options": {
+            "A": "Hydrophobic",
+            "B": "Lipid soluble",
+            "C": "Hydrophilic",
+            "D": "Protein bound",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3N6V88SV",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Steep curve of dose-response graph indicate which property of drug",
+        "options": {
+            "A": "More drugs required to produce effect",
+            "B": "Small dose produce changes",
+            "C": "More Potency",
+            "D": "More excretion",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "ECQQKMHN",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "The majority of Phase I drug metabolism reactions in the liver involve the cytochrome P450 enzyme system and are classified as:",
+        "options": {
+            "A": "Oxidation",
+            "B": "Hydrolysis",
+            "C": "Reduction",
+            "D": "Conjugation",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Linear deposition of IgG C3 at the dermal-epidermal junction is characteristic of Bullous Pemphigoid (or potentially anti-GBM disease), where autoantibodies form complexes that deposit along the basement membrane.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "X4DNHAXU",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "True regarding Adverse effect of drug",
+        "options": {
+            "A": "Depend on mechanism",
+            "B": "Depend on potency",
+            "C": "Almost all drugs have adverse effects",
+            "D": "Adverse effect occur at low dose",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "HY9D3CCF",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "What is the approximate volume of distribution (VD) for most drugs?",
+        "options": {
+            "A": "3 liters",
+            "B": "10 liters",
+            "C": "15 liters",
+            "D": "40 liters",
+            "E": "70 liters"
+        },
+        "correctAnswer": "D",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "RN57YNAB",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Pharmacology",
+        "chapter": "General",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following drug is distributed mostly in extracellular space",
+        "options": {
+            "A": "Mannitol",
+            "B": "Cholroquine",
+            "C": "Lidocaine",
+            "D": "Captopril",
+            "E": "Losartan"
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    }
+]

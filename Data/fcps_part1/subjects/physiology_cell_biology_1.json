@@ -1,0 +1,170 @@
+[
+    {
+        "id": "QZQ9PWK4",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Afternoon"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cell Biology",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Cell membrane composition is",
+        "options": {
+            "A": "Proteins only",
+            "B": "Lipid bilayer with carbs and protein",
+            "C": "Single lipid layer with embedded Proteins",
+            "D": "Carbs & Lipid layers",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "R49J8C8L",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Radiology"
+        ],
+        "exams": [
+            "Radiology - 05/25 - May 12 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cell Biology",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Two solutions A with 1 mole of glucose and B with 1 mole of NACL. What would be the osmotic pressure",
+        "options": {
+            "A": "Initiating movement of solute from A to B",
+            "B": "Initiating movement of solvent from B to A",
+            "C": "Stopping movement of solute from B to B",
+            "D": "Stopping movement of slotted from B to A",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "3ZWFY76Q",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 05/25 - May 14 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cell Biology",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "What transport is affect by membrane thickness",
+        "options": {
+            "A": "Facilitated diffusion",
+            "B": "Simple diffusion",
+            "C": "Osmosis",
+            "D": "Evaporation",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NU6RN2E9",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cell Biology",
+        "topic": "Unknown Topic",
+        "difficulty": "Medium",
+        "question": "Which change will decrease the rate of diffusion of a substance across a cell membrane?",
+        "options": {
+            "A": "Increased surface area",
+            "B": "Increased concentration gradient",
+            "C": "Increased membrane thickness",
+            "D": "Increased permeability",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "According to Fick's Law of Diffusion: Diffusion rate proportion (A x delta C) / T. Where A = area, delta C = concentration gradient, T = membrane thickness. As thickness (T) increases, diffusion decreases. Reference: Guyton & Hall, Ch. 4: \"Diffusion through the Cell Membrane.\" Costanzo Physiology, Ch. 2: Fick's Law.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "BKT7RHV2",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cell Biology",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which of the following statements regarding osmosis is TRUE?",
+        "options": {
+            "A": "Osmosis is an active process",
+            "B": "Osmolality depends on the size of solute particles",
+            "C": "Passive process",
+            "D": "Uses transmembrane proteins",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Osmosis is the net movement of water across a semipermeable membrane from an area of high water concentration (low solute concentration) to an area of low water concentration (high solute concentration). This movement occurs down the water's concentration gradient and does not require cellular energy (ATP), making it a passive process.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "PCHGXATZ",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 11 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Cell Biology",
+        "topic": "Unknown Topic",
+        "difficulty": "Easy",
+        "question": "Which statement accurately describes the phenomenon of osmosis or a related physical principle?",
+        "options": {
+            "A": "Osmosis is an active process that requires the input of ATP.",
+            "B": "Osmolality is the measure of solute concentration per of solvent.",
+            "C": "Water movement across a semipermeable membrane generates osmotic pressure.",
+            "D": "Osmosis occurs when water moves from an area of higher solute concentration to an area of lower solute concentration.",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    }
+]

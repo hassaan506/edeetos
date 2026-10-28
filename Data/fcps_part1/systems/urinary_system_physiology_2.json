@@ -1,0 +1,170 @@
+[
+    {
+        "id": "6NY66FWX",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which organ receives the highest blood flow per 100 g of tissue?",
+        "options": {
+            "A": "Brain",
+            "B": "Liver",
+            "C": "Kidney",
+            "D": "Heart",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "WKLRPTSJ",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 01/26 - January 5 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which specific aquaporin channel is regulated by ADH in the renal collecting ducts?",
+        "options": {
+            "A": "Aquaporin-1",
+            "B": "Aquaporin-2",
+            "C": "Aquaporin-4",
+            "D": "Aquaporin-8",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "ER5GMN9B",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 13 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which statement is correct about Tm for glucose in the kidney?",
+        "options": {
+            "A": "Below Tm -> all glucose excreted",
+            "B": "Above Tm -> proportional increase in reabsorption",
+            "C": "Tm represents a maximum rate of reabsorption; beyond this, glucose appears in urine",
+            "D": "Tm only applies to urea",
+            "E": ""
+        },
+        "correctAnswer": "C",
+        "explanation": "Tm = maximum transport rate of solute (e.g., glucose) in proximal tubule. Exceeding Tm -> Glucosuria.",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "5YNLQCHE",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which structure primarily controls vasopressin secretion?",
+        "options": {
+            "A": "Osmoreceptors in hypothalamus",
+            "B": "Chemoreceptors",
+            "C": "Right atrium stretch receptors",
+            "D": "Carotid body",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "NFNLSEY6",
+        "year": [
+            "2025"
+        ],
+        "specialty": [
+            "Medicine & Allied"
+        ],
+        "exams": [
+            "Medicine - 11/25 - November 16 - Morning"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Easy",
+        "question": "Which substance has the lowest renal clearance?",
+        "options": {
+            "A": "Glucose",
+            "B": "PAH",
+            "C": "Inulin",
+            "D": "",
+            "E": ""
+        },
+        "correctAnswer": "A",
+        "explanation": "Glucose -> mostly reabsorbed -> minimal clearance. Inulin -> filtered only (high clearance). PAH -> filtered + secreted (highest clearance).",
+        "hint": "",
+        "Point": ""
+    },
+    {
+        "id": "A9R2SDTM",
+        "year": [
+            "2026"
+        ],
+        "specialty": [
+            "Surgery & Allied"
+        ],
+        "exams": [
+            "Surgery - 01/26 - January 6 - Evening"
+        ],
+        "subject": "Physiology",
+        "chapter": "Urinary System",
+        "topic": "General",
+        "difficulty": "Medium",
+        "question": "With complete absence of ADH (central diabetes insipidus) and a GFR of 150 L/day, approximately how much urine would be produced each day?",
+        "options": {
+            "A": "5â€“10 L/day",
+            "B": "10â€“20 L/day",
+            "C": "1â€“2 L/day",
+            "D": "0.1â€“0.2 L/day",
+            "E": ""
+        },
+        "correctAnswer": "B",
+        "explanation": "",
+        "hint": "",
+        "Point": ""
+    }
+]
