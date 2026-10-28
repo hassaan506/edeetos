@@ -311,20 +311,23 @@ def process_directory(directory, is_book=False):
             os.makedirs(sys_dir, exist_ok=True)
             os.makedirs(exam_dir, exist_ok=True)
 
+CHUNK_LIMIT = 200
+
+            def save_paginated(base_dir, file_prefix, q_list):
+                for i in range(0, len(q_list), CHUNK_LIMIT):
+                    page = (i // CHUNK_LIMIT) + 1
+                    chunk_path = os.path.join(base_dir, f"{file_prefix}_{page}.json")
+                    with open(chunk_path, 'w', encoding='utf-8') as f:
+                        json.dump(q_list[i:i + CHUNK_LIMIT], f, indent=4, ensure_ascii=False)
+
             for (s_clean, c_clean), q_list in subject_chunks.items():
-                chunk_path = os.path.join(subj_dir, f"{s_clean}_{c_clean}.json")
-                with open(chunk_path, 'w', encoding='utf-8') as f:
-                    json.dump(q_list, f, indent=4, ensure_ascii=False)
+                save_paginated(subj_dir, f"{s_clean}_{c_clean}", q_list)
 
             for (c_clean, s_clean), q_list in system_chunks.items():
-                chunk_path = os.path.join(sys_dir, f"{c_clean}_{s_clean}.json")
-                with open(chunk_path, 'w', encoding='utf-8') as f:
-                    json.dump(q_list, f, indent=4, ensure_ascii=False)
+                save_paginated(sys_dir, f"{c_clean}_{s_clean}", q_list)
 
             for exam_key, q_list in exam_chunks.items():
-                chunk_path = os.path.join(exam_dir, f"{exam_key}.json")
-                with open(chunk_path, 'w', encoding='utf-8') as f:
-                    json.dump(q_list, f, indent=4, ensure_ascii=False)
+                save_paginated(exam_dir, exam_key, q_list)
 
             total_shards = len(subject_chunks) + len(system_chunks) + len(exam_chunks)
             print(f"  -> Generated {base_name}_metadata.json")
