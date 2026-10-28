@@ -426,6 +426,21 @@ function renderBooksGrid() {
 // 6. GLOBAL SEARCH SYSTEM (METADATA OPTIMIZED)
 // ==========================================
 if (globalSearch && searchDropdown) {
+    let isSearchIndexLoading = false;
+    
+    globalSearch.addEventListener('focus', async () => {
+        if (!window.globalSearchIndex && !isSearchIndexLoading && currentView !== 'book') {
+            isSearchIndexLoading = true;
+            globalSearch.placeholder = "Loading search index...";
+            try {
+                const searchRes = await fetch(`Data/${activeCourse}_search_index.json`, { cache: 'force-cache' });
+                if (searchRes.ok) window.globalSearchIndex = await searchRes.json();
+            } catch(e) { console.error("Search index failed to load"); }
+            globalSearch.placeholder = "Search questions...";
+            isSearchIndexLoading = false;
+        }
+    });
+
     globalSearch.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
         const query = e.target.value.toLowerCase().trim();
@@ -596,11 +611,6 @@ async function loadDataAndBuildTree() {
             allQuestions = allQuestions.filter(q => q.isBookQuestion);
             allQuestions.push(...rawQs);
         }
-	    const searchRes = await fetch(`Data/${activeCourse}_search_index.json`, { cache: 'no-cache' });
-        if (searchRes.ok) {
-            window.globalSearchIndex = await searchRes.json();
-        }
-    
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
@@ -705,24 +715,40 @@ async function fetchRequiredChunks(view, pathsArray) {
     const fetchedQs = [];
     const seenIds = new Set();
     
-    for (let url of urls) {
-        if (!window.activeChunksCache[url]) {
-            try {
-                const res = await fetch(url);
-                if (res.ok) window.activeChunksCache[url] = await res.json();
-                else window.activeChunksCache[url] = [];
-            } catch(e) {
-                window.activeChunksCache[url] = [];
-            }
-        }
+for (let baseUrl of urls) {
+        let page = 1;
+        let keepFetching = true;
         
-        window.activeChunksCache[url].forEach(q => {
-            const qId = String(q.id || q.QuestionID);
-            if (!seenIds.has(qId)) {
-                seenIds.add(qId);
-                fetchedQs.push(q);
+        while (keepFetching) {
+            const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+            if (!window.activeChunksCache[pageUrl]) {
+                try {
+                    const res = await fetch(pageUrl);
+                    if (res.ok) {
+                        window.activeChunksCache[pageUrl] = await res.json();
+                    } else {
+                        window.activeChunksCache[pageUrl] = [];
+                        keepFetching = false;
+                    }
+                } catch(e) {
+                    window.activeChunksCache[pageUrl] = [];
+                    keepFetching = false;
+                }
+            } else if (window.activeChunksCache[pageUrl].length === 0) {
+                keepFetching = false;
             }
-        });
+            
+            if (window.activeChunksCache[pageUrl]) {
+                window.activeChunksCache[pageUrl].forEach(q => {
+                    const qId = String(q.id || q.QuestionID);
+                    if (!seenIds.has(qId)) {
+                        seenIds.add(qId);
+                        fetchedQs.push(q);
+                    }
+                });
+            }
+            page++;
+        }
     }
     
     document.body.style.cursor = 'default';
@@ -1468,15 +1494,21 @@ async function hydrateQuestions(metadataPool) {
         chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
     });
 
-    const fetchPromises = Array.from(chunksToLoad).map(async (chunkPath) => {
-        if (!window.activeChunksCache[chunkPath]) {
-            try {
-                const res = await fetch(chunkPath);
-                if (res.ok) window.activeChunksCache[chunkPath] = await res.json();
-                else window.activeChunksCache[chunkPath] = [];
-            } catch(e) {
-                window.activeChunksCache[chunkPath] = [];
+const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
+        let page = 1;
+        let keepFetching = true;
+        while (keepFetching) {
+            const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+            if (!window.activeChunksCache[pageUrl]) {
+                try {
+                    const res = await fetch(pageUrl);
+                    if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
+                    else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+            } else if (window.activeChunksCache[pageUrl].length === 0) {
+                keepFetching = false;
             }
+            page++;
         }
     });
 
