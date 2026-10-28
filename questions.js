@@ -1065,9 +1065,8 @@ function getQuestionCount(view, pathArr, customPool = null) {
         let tree = {};
         if (view === 'subject') tree = subjectTree;
         else if (view === 'system') tree = systemTree;
-        else if (view === 'exam') tree = examTree;
+else if (view === 'exam') tree = examTree;
         else if (view === 'book') {
-else if (view === 'book') {
             let current = activeCustomPool ? buildSubTree(activeCustomPool) : {};
 
             const subjects = Object.keys(current);
@@ -3504,26 +3503,36 @@ const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
                 const pSeen = new Set();
                 const eSeen = new Set();
 
-                for (let url of targetUrls) {
-                    if (!window.activeChunksCache[url]) {
-                        try {
-                            const res = await fetch(url);
-                            if (res.ok) window.activeChunksCache[url] = await res.json();
-                            else window.activeChunksCache[url] = [];
-                        } catch(e) { window.activeChunksCache[url] = []; }
+for (let baseUrl of targetUrls) {
+                    let page = 1;
+                    let keepFetching = true;
+                    while (keepFetching) {
+                        const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                        if (!window.activeChunksCache[pageUrl]) {
+                            try {
+                                const res = await fetch(pageUrl);
+                                if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
+                                else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                            } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                        } else if (window.activeChunksCache[pageUrl].length === 0) {
+                            keepFetching = false;
+                        }
+                        
+                        if (window.activeChunksCache[pageUrl]) {
+                            window.activeChunksCache[pageUrl].forEach(q => {
+                                const qId = getQID(q);
+                                if (globalPracticeMistakes.includes(qId) && !pSeen.has(qId)) {
+                                    pSeen.add(qId);
+                                    pPool.push(q);
+                                }
+                                if (globalExamMistakes.includes(qId) && !eSeen.has(qId)) {
+                                    eSeen.add(qId);
+                                    ePool.push(q);
+                                }
+                            });
+                        }
+                        page++;
                     }
-                    const chunkQs = window.activeChunksCache[url];
-                    chunkQs.forEach(q => {
-                        const qId = getQID(q);
-                        if (globalPracticeMistakes.includes(qId) && !pSeen.has(qId)) {
-                            pSeen.add(qId);
-                            pPool.push(q);
-                        }
-                        if (globalExamMistakes.includes(qId) && !eSeen.has(qId)) {
-                            eSeen.add(qId);
-                            ePool.push(q);
-                        }
-                    });
                 }
                 document.body.style.cursor = 'default';
             } else {
@@ -3573,22 +3582,32 @@ const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
                 });
 
                 const bSeen = new Set();
-                for (let url of targetUrls) {
-                    if (!window.activeChunksCache[url]) {
-                        try {
-                            const res = await fetch(url);
-                            if (res.ok) window.activeChunksCache[url] = await res.json();
-                            else window.activeChunksCache[url] = [];
-                        } catch(e) { window.activeChunksCache[url] = []; }
-                    }
-                    const chunkQs = window.activeChunksCache[url];
-                    chunkQs.forEach(q => {
-                        const qId = getQID(q);
-                        if (globalBookmarks.includes(qId) && !bSeen.has(qId)) {
-                            bSeen.add(qId);
-                            bPool.push(q);
+for (let baseUrl of targetUrls) {
+                    let page = 1;
+                    let keepFetching = true;
+                    while (keepFetching) {
+                        const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                        if (!window.activeChunksCache[pageUrl]) {
+                            try {
+                                const res = await fetch(pageUrl);
+                                if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
+                                else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                            } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                        } else if (window.activeChunksCache[pageUrl].length === 0) {
+                            keepFetching = false;
                         }
-                    });
+                        
+                        if (window.activeChunksCache[pageUrl]) {
+                            window.activeChunksCache[pageUrl].forEach(q => {
+                                const qId = getQID(q);
+                                if (globalBookmarks.includes(qId) && !bSeen.has(qId)) {
+                                    bSeen.add(qId);
+                                    bPool.push(q);
+                                }
+                            });
+                        }
+                        page++;
+                    }
                 }
                 document.body.style.cursor = 'default';
             } else {
@@ -3651,22 +3670,32 @@ const btnSkipped = document.getElementById('btn-practice-skipped');
                 });
 
                 const sSeen = new Set();
-                for (let url of targetUrls) {
-                    if (!window.activeChunksCache[url]) {
-                        try {
-                            const res = await fetch(url);
-                            if (res.ok) window.activeChunksCache[url] = await res.json();
-                            else window.activeChunksCache[url] = [];
-                        } catch(e) { window.activeChunksCache[url] = []; }
-                    }
-                    const chunkQs = window.activeChunksCache[url];
-                    chunkQs.forEach(q => {
-                        const qId = getQID(q);
-                        if (globalSkipped.includes(qId) && !sSeen.has(qId)) {
-                            sSeen.add(qId);
-                            sPool.push(q);
+for (let baseUrl of targetUrls) {
+                    let page = 1;
+                    let keepFetching = true;
+                    while (keepFetching) {
+                        const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                        if (!window.activeChunksCache[pageUrl]) {
+                            try {
+                                const res = await fetch(pageUrl);
+                                if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
+                                else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                            } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                        } else if (window.activeChunksCache[pageUrl].length === 0) {
+                            keepFetching = false;
                         }
-                    });
+                        
+                        if (window.activeChunksCache[pageUrl]) {
+                            window.activeChunksCache[pageUrl].forEach(q => {
+                                const qId = getQID(q);
+                                if (globalSkipped.includes(qId) && !sSeen.has(qId)) {
+                                    sSeen.add(qId);
+                                    sPool.push(q);
+                                }
+                            });
+                        }
+                        page++;
+                    }
                 }
                 document.body.style.cursor = 'default';
             } else {
