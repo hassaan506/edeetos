@@ -22,7 +22,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { createDbWorker } from "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/index.js";
+import { createDbWorker } from "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/+esm";
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
@@ -341,28 +341,14 @@ function renderGrid() {
         if (currentMode !== 'exam' && unattemptedFilter && unattemptedFilter.checked && qCount === 0) return;
         if (qCount === 0) return;
 
-        const doneCount = getSolvedCount(currentView, [cardTitle]);
-        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-
-        const countHtml = `<span class="card-count">${doneCount} /${qCount}</span>`;
-        const progressHtml = `<div class="progress-container"><div class="progress-bar-fill" style="width: ${percent}%;"></div></div>`;
+// We killed the massive global metadata payload to save RAM.
+        // Therefore, exact progress stats will only render inside the popup AFTER a user clicks and loads the specific topic.
+        const countHtml = `<span class="card-count">${qCount} Qs</span>`;
+        const progressHtml = ``;
 
         let cardStatsHtml = '';
         if (currentView === 'exam') {
-            const mistakeCount = getMistakesCount(currentView, [cardTitle]);
-            const totalAttempts = doneCount + mistakeCount;
-            const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
-            const accColor = totalAttempts === 0 ? '#94a3b8' : (accuracy >= 75 ? '#34d399' : (accuracy >= 50 ? '#fbbf24' : '#fca5a5'));
-            const accBg = totalAttempts === 0 ? 'rgba(255,255,255,0.1)' : (accuracy >= 75 ? 'rgba(16,185,129,0.15)' : (accuracy >= 50 ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'));
-            const accBorder = totalAttempts === 0 ? 'rgba(255,255,255,0.2)' : (accuracy >= 75 ? 'rgba(16,185,129,0.3)' : (accuracy >= 50 ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)'));
-
-		cardStatsHtml = `
-            <div style="display: flex; gap: 6px; font-size: 0.75rem; margin: 10px 0 0 0; flex-wrap: wrap; align-items: center;">
-                <span style="background: rgba(16,185,129,0.15); color: #34d399; padding: 2px 8px; border-radius: 6px; font-weight: 600; border: 1px solid rgba(16,185,129,0.3);"><i class="fas fa-check"></i> ${doneCount}</span>
-                <span style="background: rgba(239,68,68,0.15); color: #f87171; padding: 2px 8px; border-radius: 6px; font-weight: 600; border: 1px solid rgba(239,68,68,0.3);"><i class="fas fa-times"></i> ${mistakeCount}</span>
-                <span style="background: ${accBg}; color: ${accColor}; padding: 2px 8px; border-radius: 6px; font-weight: 700; border: 1px solid ${accBorder};">${totalAttempts > 0 ? accuracy + '%' : '--'} Acc</span>
-            </div>
-        `;
+            cardStatsHtml = `<div style="font-size: 0.75rem; margin-top: 10px; color: #94a3b8; font-weight: 600;"><i class="fas fa-chart-bar" style="margin-right: 5px;"></i> Click to load exam statistics</div>`;
         }
 
         const card = document.createElement('div');
@@ -374,23 +360,22 @@ function renderGrid() {
             </div>
             ${cardStatsHtml}${progressHtml}
         `;
-        card.onclick = async () => {
-            if (currentView === 'subject' && !window.activeChunksCache[`meta_${cardTitle}`]) {
+card.onclick = async () => {
+            if (currentView !== 'book') {
                 document.body.style.cursor = 'wait';
                 try {
-                    const res = await fetch(`Data/${activeCourse}/metadata/${sanitizeFilename(cardTitle)}.json`);
-                    if (res.ok) {
-                        const subjMeta = await res.json();
-                        window.activeChunksCache[`meta_${cardTitle}`] = subjMeta;
-                        const newIds = new Set(globalMetadata.map(q => String(q.id || q.QuestionID)));
-                        subjMeta.forEach(q => {
-                            if (!newIds.has(String(q.id || q.QuestionID))) {
-                                globalMetadata.push(q);
-                                if (!q.isBookQuestion) allQuestions.push(q);
-                            }
-                        });
-                    }
-                } catch(e) {}
+                    const chunks = await fetchRequiredChunks(currentView, [[cardTitle]]);
+                    const uniqueIds = new Set();
+                    const deduplicated = [];
+                    chunks.forEach(q => {
+                        const qId = String(q.id || q.QuestionID);
+                        if (!uniqueIds.has(qId)) {
+                            uniqueIds.add(qId);
+                            deduplicated.push(q);
+                        }
+                    });
+                    activeCustomPool = deduplicated;
+                } catch(e) { console.error("Error loading chunks for popup:", e); }
                 document.body.style.cursor = 'default';
             }
             openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
@@ -479,7 +464,7 @@ if (globalSearch && searchDropdown) {
         }
     });
 
-    globalSearch.addEventListener('input', (e) => {
+globalSearch.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
         const query = e.target.value.toLowerCase().trim();
         
@@ -515,13 +500,11 @@ if (globalSearch && searchDropdown) {
                 return;
             }
 
-            if (!sqlWorker) return;
+            if (!window.sqlWorker) return;
 
-            // Escape quotes to prevent SQL syntax errors
             const safeQuery = query.replace(/"/g, '""');
             
             try {
-                // Execute FTS5 MATCH query over the network
                 const sqlQuery = `
                     SELECT id, snippet(search_data, 1, '<b>', '</b>', '...', 15) as snippet, subject, chapter, topic, difficulty 
                     FROM search_data 
@@ -529,9 +512,8 @@ if (globalSearch && searchDropdown) {
                     LIMIT 100
                 `;
                 
-                const results = await sqlWorker.db.query(sqlQuery);
+                const results = await window.sqlWorker.db.query(sqlQuery);
                 
-                // Cross-check with frontend filters and build mock metadata for the quiz launcher
                 const matchedMeta = results.map(r => {
                     if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(r.id) || globalPracticeMistakes.includes(r.id) || globalExamMistakes.includes(r.id))) return null;
                     
@@ -658,7 +640,18 @@ async function loadDataAndBuildTree() {
         systemTree = hierarchyData.systems || {};
         examTree = hierarchyData.exams || {}; 
         
-	// Global metadata is now loaded dynamically per subject to prevent memory crashes.
+        // Boot SQLite Engine Silently for Search and Mock Exams
+        if (!window.sqlWorker) {
+            try {
+                const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sqlite.worker.js";
+                const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sql-wasm.wasm";
+                window.sqlWorker = await createDbWorker(
+                    [{ from: "inline", config: { serverMode: "full", url: `Data/${activeCourse}_search_index.sqlite`, requestChunkSize: 4096 } }],
+                    workerUrl, wasmUrl, 10 * 1024 * 1024 
+                );
+            } catch(e) { console.warn("SQLite boot failed", e); }
+        }
+
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
@@ -1105,23 +1098,21 @@ function getQuestionCount(view, pathArr, customPool = null) {
         paths.shift();
     }
 
-    // FAST PATH: Bypass array filtering if looking at standard totals
     const isDefaultPool = (pool === globalMetadata || pool === activeCustomPool);
+    
+    // NEW: Ignore filters for the root dashboard grid so it never blanks out
+    const isRootGrid = (!isGlobalPopupActive && paths.length === 1 && view !== 'book');
     const noFiltersActive = (!diffEasyFilter?.checked && !diffMediumFilter?.checked && !diffHardFilter?.checked && !unattemptedFilter?.checked);
 
-    if (isDefaultPool && noFiltersActive && !isGlobalPopupActive) {
+    if (isDefaultPool && (noFiltersActive || isRootGrid) && !isGlobalPopupActive) {
         let tree = {};
         if (view === 'subject') tree = subjectTree;
         else if (view === 'system') tree = systemTree;
-else if (view === 'exam') tree = examTree;
+        else if (view === 'exam') tree = examTree;
         else if (view === 'book') {
             let current = activeCustomPool ? buildSubTree(activeCustomPool) : {};
-
             const subjects = Object.keys(current);
-            if (subjects.length > 0) {
-                current = current[subjects[0]];
-            }
-            
+            if (subjects.length > 0) current = current[subjects[0]];
             for (let p of paths) {
                 if (current && current[p]) current = current[p];
                 else return 0;
@@ -1450,36 +1441,59 @@ if (btnQuickMock && mockModal) {
     
     if(btnCancelMock) btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
     
-    if(btnStartMock) btnStartMock.addEventListener('click', async () => {
+if(btnStartMock) btnStartMock.addEventListener('click', async () => {
         let count = parseInt(mockQCount.value);
         if (!count || count < 5) return alert("Please enter a valid number of questions (minimum 5).");
 
         btnStartMock.textContent = "Generating...";
         btnStartMock.disabled = true;
 
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-        
-        let metaPool = globalMetadata.filter(q => !attemptedQuestions.includes(getQID(q)) && !allMistakes.includes(getQID(q)) && !q.isBookQuestion);
-
-        if (metaPool.length < count) {
-            metaPool = globalMetadata.filter(q => !q.isBookQuestion);
-        }
-
-        if (metaPool.length < count) {
+        if (!window.sqlWorker) {
             btnStartMock.textContent = "Start Exam";
             btnStartMock.disabled = false;
-            return alert("Not enough questions available for a mock exam.");
+            return alert("Database is still booting. Please try again in a few seconds.");
         }
 
-        let finalPool = metaPool.sort(() => 0.5 - Math.random()).slice(0, count);
-        const calcMinutes = Math.ceil(count * 1.2);
+        try {
+            // Fetch random pool directly from SQLite to bypass empty globalMetadata
+            const sqlQuery = `SELECT id, subject, chapter, topic, difficulty FROM search_data ORDER BY RANDOM() LIMIT 500`;
+            const results = await window.sqlWorker.db.query(sqlQuery);
+            
+            const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+            
+            let metaPool = results.map(r => ({
+                id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, 
+                Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false
+            })).filter(q => !attemptedQuestions.includes(q.id) && !allMistakes.includes(q.id));
 
-		mockModal.style.display = 'none';
-        btnStartMock.textContent = "Start Exam";
-        btnStartMock.disabled = false;
+            if (metaPool.length < count) {
+                metaPool = results.map(r => ({
+                    id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, 
+                    Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false
+                }));
+            }
 
-        finalPool = await hydrateQuestions(finalPool);
-        window.launchQuiz(finalPool, 'exam', calcMinutes, `Mock Exam (${count} Qs)`);
+            if (metaPool.length < count) {
+                btnStartMock.textContent = "Start Exam";
+                btnStartMock.disabled = false;
+                return alert("Not enough questions available for a mock exam.");
+            }
+
+            let finalPool = metaPool.sort(() => 0.5 - Math.random()).slice(0, count);
+            const calcMinutes = Math.ceil(count * 1.2);
+
+            mockModal.style.display = 'none';
+            btnStartMock.textContent = "Start Exam";
+            btnStartMock.disabled = false;
+
+            finalPool = await hydrateQuestions(finalPool);
+            window.launchQuiz(finalPool, 'exam', calcMinutes, `Mock Exam (${count} Qs)`);
+        } catch (e) {
+            console.error("Mock Exam Error:", e);
+            btnStartMock.textContent = "Start Exam";
+            btnStartMock.disabled = false;
+            alert("Failed to generate mock exam from database.");
+        }
     });
 }
 
