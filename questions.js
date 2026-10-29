@@ -3718,6 +3718,58 @@ for (let baseUrl of targetUrls) {
             openPopup(isBook ? "⏭️ Skipped Book Qs" : "⏭️ Skipped Course Qs", combinedTree, 'Level1', []);
         };
     }
+	
+async function migrateOldUserData(userRef, uid, dbData) {
+    let requiresUpdate = false;
+    let rootUpdates = {};
+
+    const migrateCategory = async (key) => {
+        if (!dbData[key]) return;
+        const data = dbData[key];
+        
+        // If solvedQuestions exists, this user hasn't been migrated yet
+        if (data.solvedQuestions || data.mistakes || data.bookmarks || data.skippedQuestions || data.examHistory) {
+            requiresUpdate = true;
+            console.log(`Migrating old data for ${key}...`);
+            
+            if (data.solvedQuestions) await setDoc(doc(db, "users", uid, key, "solved"), { list: data.solvedQuestions }, { merge: true });
+            if (data.mistakes || data.examMistakes || data.historicalMistakes) {
+                await setDoc(doc(db, "users", uid, key, "mistakes"), { 
+                    practice: data.mistakes || [], 
+                    exam: data.examMistakes || [],
+                    historical: data.historicalMistakes || []
+                }, { merge: true });
+            }
+            if (data.bookmarks) await setDoc(doc(db, "users", uid, key, "bookmarks"), { list: data.bookmarks, folders: data.bookmarkFolders || {} }, { merge: true });
+            if (data.skippedQuestions) await setDoc(doc(db, "users", uid, key, "skipped"), { list: data.skippedQuestions }, { merge: true });
+            if (data.examHistory) await setDoc(doc(db, "users", uid, key, "history"), { list: data.examHistory }, { merge: true });
+            if (data.notes) await setDoc(doc(db, "users", uid, key, "notes"), { data: data.notes }, { merge: true });
+            if (data.revisions) await setDoc(doc(db, "users", uid, key, "revisions"), data.revisions, { merge: true });
+
+            // Mark old arrays for deletion to permanently free up the 1MB limit
+            rootUpdates[`${key}.solvedQuestions`] = deleteField();
+            rootUpdates[`${key}.mistakes`] = deleteField();
+            rootUpdates[`${key}.examMistakes`] = deleteField();
+            rootUpdates[`${key}.historicalMistakes`] = deleteField();
+            rootUpdates[`${key}.bookmarks`] = deleteField();
+            rootUpdates[`${key}.bookmarkFolders`] = deleteField();
+            rootUpdates[`${key}.skippedQuestions`] = deleteField();
+            rootUpdates[`${key}.examHistory`] = deleteField();
+            rootUpdates[`${key}.notes`] = deleteField();
+            rootUpdates[`${key}.revisions`] = deleteField();
+        }
+    };
+
+    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+    await migrateCategory(activeCourse);
+    await migrateCategory('books');
+
+    if (requiresUpdate) {
+        await updateDoc(userRef, rootUpdates);
+        console.log("Migration complete. Root document cleaned.");
+    }
+}
+	
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         localStorage.removeItem('edeetos_guest_mode');
@@ -3732,16 +3784,20 @@ onAuthStateChanged(auth, async (user) => {
             }
         }
 
-        try {
+try {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
+                
+                // Fire the migration check
+                await migrateOldUserData(userRef, user.uid, dbData);
+                
                 idbCache.set(user.uid, dbData);
                 await hydrateUserState(dbData);
             } else {
                 await hydrateUserState({ role: 'STUDENT' });
             }
-        } catch (error) { 
+        } catch (error) {
             console.error("Error fetching stats:", error); 
         }
     } else {
