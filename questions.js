@@ -22,7 +22,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { createDbWorker } from "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/+esm";
+import { createDbWorker } from "https://unpkg.com/sql.js-httpvfs@8.4.0/dist/index.js";
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
