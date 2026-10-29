@@ -3340,10 +3340,10 @@ const uid = auth.currentUser ? auth.currentUser.uid : null;
     restoreLastState();
     if (typeof updateDashboardUI === 'function') updateDashboardUI();
     
-    const revisions = {
-        ...(courseData.revisions || {}),
-        ...(booksData.revisions || {})
-    };
+const revisions = {
+    ...(currentUserData[activeCourse]?.revisions || {}),
+    ...(currentUserData.books?.revisions || {})
+};
     
     const now = Date.now();
     const dueTopics = [];
