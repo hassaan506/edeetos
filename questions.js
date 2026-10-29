@@ -69,11 +69,14 @@ let searchTimeout;
 let cachedAttemptedPool = null;
 let cachedMistakesPool = null;
 
-const savedCourse = localStorage.getItem('edeetos_active_course');
-if (!savedCourse) {
-    window.location.href = 'dashboard.html';
+let activeCourse = localStorage.getItem('edeetos_active_course');
+if (!activeCourse) {
+    activeCourse = 'fcps_part1'; // Safe fallback to prevent fatal null crashes
+    localStorage.setItem('edeetos_active_course', activeCourse);
+    if (!window.location.pathname.includes('dashboard.html')) {
+        window.location.href = 'dashboard.html';
+    }
 }
-const activeCourse = savedCourse;
 
 const allBooks = [
     { file: "brs_patho", title: "BRS - Pathology" },
@@ -665,9 +668,31 @@ async function loadDataAndBuildTree() {
         }
 
         renderGrid();
+		fetchAllMetadata();
     } catch (error) {
         console.error("Data Load Error:", error);
     }
+}
+
+async function fetchAllMetadata() {
+    if (!subjectTree || Object.keys(subjectTree).length === 0) return;
+    
+    const subjects = Object.keys(subjectTree);
+    const promises = subjects.map(async (subj) => {
+        const subjClean = sanitizeFilename(subj);
+        try {
+            const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+            if (res.ok) {
+                return await res.json();
+            }
+        } catch (e) { 
+            console.warn(`Could not load metadata for ${subjClean}`); 
+        }
+        return [];
+    });
+    
+    const results = await Promise.all(promises);
+    globalMetadata = results.flat();
 }
 
 async function loadAndOpenBook(book) {
