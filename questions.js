@@ -22,7 +22,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { createDbWorker } from "https://esm.sh/sql.js-httpvfs@8.4.0";
+import { createDbWorker } from "https://cdn.jsdelivr.net/npm/sql.js-httpvfs/+esm";
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
@@ -452,8 +452,8 @@ if (globalSearch && searchDropdown) {
             isSearchEngineLoading = true;
             globalSearch.placeholder = "Booting Search Engine...";
             try {
-                const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sqlite.worker.js";
-                const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sql-wasm.wasm";
+const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs/dist/sqlite.worker.js";
+const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs/dist/sql-wasm.wasm";
                 
                 sqlWorker = await createDbWorker(
                     [{
@@ -657,8 +657,8 @@ async function loadDataAndBuildTree() {
         if (!window.sqlWorker && !window.isSearchEngineLoading) {
             window.isSearchEngineLoading = true;
             try {
-                const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sqlite.worker.js";
-                const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sql-wasm.wasm";
+const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs/dist/sqlite.worker.js";
+const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs/dist/sql-wasm.wasm";
                 window.sqlWorker = await createDbWorker(
                     [{ from: "inline", config: { serverMode: "full", url: `Data/${activeCourse}_search_index.sqlite`, requestChunkSize: 4096 } }],
                     workerUrl, wasmUrl, 10 * 1024 * 1024 
