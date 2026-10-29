@@ -22,7 +22,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+import { createDbWorker } from "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/index.js";
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
@@ -374,7 +374,27 @@ function renderGrid() {
             </div>
             ${cardStatsHtml}${progressHtml}
         `;
-        card.onclick = () => openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
+        card.onclick = async () => {
+            if (currentView === 'subject' && !window.activeChunksCache[`meta_${cardTitle}`]) {
+                document.body.style.cursor = 'wait';
+                try {
+                    const res = await fetch(`Data/${activeCourse}/metadata/${sanitizeFilename(cardTitle)}.json`);
+                    if (res.ok) {
+                        const subjMeta = await res.json();
+                        window.activeChunksCache[`meta_${cardTitle}`] = subjMeta;
+                        const newIds = new Set(globalMetadata.map(q => String(q.id || q.QuestionID)));
+                        subjMeta.forEach(q => {
+                            if (!newIds.has(String(q.id || q.QuestionID))) {
+                                globalMetadata.push(q);
+                                if (!q.isBookQuestion) allQuestions.push(q);
+                            }
+                        });
+                    }
+                } catch(e) {}
+                document.body.style.cursor = 'default';
+            }
+            openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
+        };
         subjectsGrid.appendChild(card);
     });
 }
@@ -423,21 +443,39 @@ function renderBooksGrid() {
 }
 
 // ==========================================
-// 6. GLOBAL SEARCH SYSTEM (METADATA OPTIMIZED)
+// 6. GLOBAL SEARCH SYSTEM (SQLITE HTTP-VFS)
 // ==========================================
 if (globalSearch && searchDropdown) {
-    let isSearchIndexLoading = false;
+    let sqlWorker = null;
+    let isSearchEngineLoading = false;
     
     globalSearch.addEventListener('focus', async () => {
-        if (!window.globalSearchIndex && !isSearchIndexLoading && currentView !== 'book') {
-            isSearchIndexLoading = true;
-            globalSearch.placeholder = "Loading search index...";
+        if (!sqlWorker && !isSearchEngineLoading && currentView !== 'book') {
+            isSearchEngineLoading = true;
+            globalSearch.placeholder = "Booting Search Engine...";
             try {
-                const searchRes = await fetch(`Data/${activeCourse}_search_index.json`, { cache: 'force-cache' });
-                if (searchRes.ok) window.globalSearchIndex = await searchRes.json();
-            } catch(e) { console.error("Search index failed to load"); }
-            globalSearch.placeholder = "Search questions...";
-            isSearchIndexLoading = false;
+                const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sqlite.worker.js";
+                const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@8.4.0/dist/sql-wasm.wasm";
+                
+                sqlWorker = await createDbWorker(
+                    [{
+                        from: "inline",
+                        config: {
+                            serverMode: "full",
+                            url: `Data/${activeCourse}_search_index.sqlite`,
+                            requestChunkSize: 4096,
+                        }
+                    }],
+                    workerUrl,
+                    wasmUrl,
+                    10 * 1024 * 1024 
+                );
+                globalSearch.placeholder = "Search 40,000+ questions...";
+            } catch(e) {
+                console.error("Search engine boot failed", e);
+                globalSearch.placeholder = "Search unavailable";
+            }
+            isSearchEngineLoading = false;
         }
     });
 
@@ -451,7 +489,6 @@ if (globalSearch && searchDropdown) {
         }
 
         searchTimeout = setTimeout(async () => {
-            let searchPool = globalMetadata;
             let isBookView = currentView === 'book';
 
             if (isBookView) {
@@ -460,88 +497,114 @@ if (globalSearch && searchDropdown) {
                     searchDropdown.style.display = 'block';
                     return;
                 }
-                searchPool = activeCustomPool;
-            }
-
-            // 1. Scan the text index to find matching IDs
-            const matchingIds = new Set();
-            if (isBookView) {
-                searchPool.forEach(q => {
+                
+                const matchedMeta = activeCustomPool.filter(q => {
+                    const qId = String(getQID(q));
                     const text = (q.question || q.Question || "").toLowerCase();
-                    if (text.includes(query)) matchingIds.add(String(getQID(q)));
+                    const hierarchyText = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''}${q.Topic || q.topic || ''}`.toLowerCase();
+                    
+                    const isMatch = text.includes(query) || hierarchyText.includes(query);
+                    if (!isMatch) return false;
+                    if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(qId) || globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) return false;
+                    if (!passesDifficultyFilter(q)) return false; 
+                    
+                    return true;
                 });
-            } else if (window.globalSearchIndex) {
-                window.globalSearchIndex.forEach(item => {
-                    if (item.q && item.q.toLowerCase().includes(query)) {
-                        matchingIds.add(String(item.id));
-                    }
-                });
+                
+                renderSearchResults(matchedMeta, query);
+                return;
             }
 
-            // 2. Filter metadata using matched IDs and category names
-            const matchedMeta = searchPool.filter(q => {
-                const qId = String(getQID(q));
-                const hierarchyText = `${q.Subject || q.subject || ''} ${q.Chapter || q.chapter || ''}${q.Topic || q.topic || ''}`.toLowerCase();
-                
-                // Match if the ID is in our text-search hits OR the query matches the topic/chapter name
-                const isMatch = matchingIds.has(qId) || hierarchyText.includes(query);
-                
-                if (!isMatch) return false;
-                if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(qId) || globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) return false;
-                if (!passesDifficultyFilter(q)) return false; 
-                
-                return true;
-            });
+            if (!sqlWorker) return;
 
-            searchDropdown.innerHTML = '';
-            if (matchedMeta.length === 0) {
-                searchDropdown.innerHTML = `<div class="search-item" style="color:#94a3b8;">No matches found for "${query}"</div>`;
-            } else {
-                const limitCount = Math.min(matchedMeta.length, 50);
-                const quizAllBtn = document.createElement('div');
-                quizAllBtn.className = 'search-item';
-                quizAllBtn.style.cssText = 'background: rgba(59, 130, 246, 0.2); color: #93c5fd; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(59, 130, 246, 0.4); border-radius: 12px 12px 0 0; cursor: pointer;';
-                quizAllBtn.innerHTML = `<i class="fas fa-play-circle" style="margin-right: 8px;"></i> Create Quiz from Search (${limitCount} Qs)`;
+            // Escape quotes to prevent SQL syntax errors
+            const safeQuery = query.replace(/"/g, '""');
+            
+            try {
+                // Execute FTS5 MATCH query over the network
+                const sqlQuery = `
+                    SELECT id, snippet(search_data, 1, '<b>', '</b>', '...', 15) as snippet, subject, chapter, topic, difficulty 
+                    FROM search_data 
+                    WHERE search_data MATCH '"${safeQuery}" *'
+                    LIMIT 100
+                `;
                 
-                quizAllBtn.onclick = async () => {
-                    searchDropdown.style.display = 'none';
-                    globalSearch.value = '';
-                    const pool = matchedMeta.slice(0, 50);
-                    const hydratedPool = await hydrateQuestions(pool);
-                    window.launchQuiz(hydratedPool, 'practice', 0, `Search: ${query}`);
-                };
-                searchDropdown.appendChild(quizAllBtn);
-
-                matchedMeta.slice(0, 30).forEach(q => {
-                    const div = document.createElement('div');
-                    div.className = 'search-item';
-                    const title = `${q.Subject || q.subject || 'Unknown Subject'} > ${q.Chapter || q.chapter || ''}${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
+                const results = await sqlWorker.db.query(sqlQuery);
+                
+                // Cross-check with frontend filters and build mock metadata for the quiz launcher
+                const matchedMeta = results.map(r => {
+                    if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(r.id) || globalPracticeMistakes.includes(r.id) || globalExamMistakes.includes(r.id))) return null;
                     
-                    let snippetText = q.question || q.Question;
-                    if (!snippetText && window.globalSearchIndex) {
-                        const indexMatch = window.globalSearchIndex.find(item => String(item.id) === String(getQID(q)));
-                        if (indexMatch && indexMatch.q) snippetText = indexMatch.q;
+                    if (diffEasyFilter || diffMediumFilter || diffHardFilter) {
+                        const easy = diffEasyFilter?.checked;
+                        const medium = diffMediumFilter?.checked;
+                        const hard = diffHardFilter?.checked;
+                        if (easy || medium || hard) {
+                            const diff = (r.difficulty || "").toLowerCase().trim();
+                            if (!(easy && diff === 'easy') && !(medium && diff === 'medium') && !(hard && diff === 'hard')) {
+                                return null;
+                            }
+                        }
                     }
-                    
-                    const displayText = snippetText ? (snippetText.substring(0, 70) + '...') : 'Click to load question details';
 
-                    div.innerHTML = `
-                        <div class="search-item-title">${title}</div>
-                        <div class="search-item-snippet" style="color: #94a3b8;">${displayText}</div>
-                    `;
-                    
-                    div.onclick = async () => {
-                        searchDropdown.style.display = 'none';
-                        globalSearch.value = '';
-                        const hydratedPool = await hydrateQuestions([q]);
-                        window.launchQuiz(hydratedPool, 'practice', 0);
+                    return {
+                        id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, 
+                        Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false, _snippet: r.snippet
                     };
-                    searchDropdown.appendChild(div);
-                });
+                }).filter(q => q !== null);
+                
+                renderSearchResults(matchedMeta, query);
+
+            } catch (e) {
+                console.error("SQL Search Error:", e);
             }
-            searchDropdown.style.display = 'block';
-        }, 350);
+        }, 300);
     });
+}
+
+function renderSearchResults(matchedMeta, query) {
+    searchDropdown.innerHTML = '';
+    if (matchedMeta.length === 0) {
+        searchDropdown.innerHTML = `<div class="search-item" style="color:#94a3b8;">No matches found for "${query}"</div>`;
+    } else {
+        const limitCount = Math.min(matchedMeta.length, 50);
+        const quizAllBtn = document.createElement('div');
+        quizAllBtn.className = 'search-item';
+        quizAllBtn.style.cssText = 'background: rgba(59, 130, 246, 0.2); color: #93c5fd; font-weight: bold; text-align: center; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(59, 130, 246, 0.4); border-radius: 12px 12px 0 0; cursor: pointer;';
+        quizAllBtn.innerHTML = `<i class="fas fa-play-circle" style="margin-right: 8px;"></i> Create Quiz from Search (${limitCount} Qs)`;
+        
+        quizAllBtn.onclick = async () => {
+            searchDropdown.style.display = 'none';
+            globalSearch.value = '';
+            const pool = matchedMeta.slice(0, 50);
+            const hydratedPool = await hydrateQuestions(pool);
+            window.launchQuiz(hydratedPool, 'practice', 0, `Search: ${query}`);
+        };
+        searchDropdown.appendChild(quizAllBtn);
+
+        matchedMeta.slice(0, 30).forEach(q => {
+            const div = document.createElement('div');
+            div.className = 'search-item';
+            const title = `${q.Subject || q.subject || 'Unknown'} > ${q.Chapter || q.chapter || ''}${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
+            
+            let snippetText = q._snippet || q.question || q.Question || "Click to load question details";
+            if (!q._snippet && snippetText.length > 80) snippetText = snippetText.substring(0, 80) + '...';
+
+            div.innerHTML = `
+                <div class="search-item-title">${title}</div>
+                <div class="search-item-snippet" style="color: #94a3b8;">${snippetText}</div>
+            `;
+            
+            div.onclick = async () => {
+                searchDropdown.style.display = 'none';
+                globalSearch.value = '';
+                const hydratedPool = await hydrateQuestions([q]);
+                window.launchQuiz(hydratedPool, 'practice', 0);
+            };
+            searchDropdown.appendChild(div);
+        });
+    }
+    searchDropdown.style.display = 'block';
 }
 
 document.addEventListener('click', (e) => {
@@ -552,19 +615,12 @@ document.addEventListener('click', (e) => {
 
 function passesDifficultyFilter(q) {
     if (!diffEasyFilter || !diffMediumFilter || !diffHardFilter) return true;
-    
-    const easy = diffEasyFilter.checked;
-    const medium = diffMediumFilter.checked;
-    const hard = diffHardFilter.checked;
-    
+    const easy = diffEasyFilter.checked, medium = diffMediumFilter.checked, hard = diffHardFilter.checked;
     if (!easy && !medium && !hard) return true; 
-    
     const qDiff = (q.Difficulty || q.difficulty || "").toLowerCase().trim();
-    
     if (easy && qDiff === 'easy') return true;
     if (medium && qDiff === 'medium') return true;
     if (hard && qDiff === 'hard') return true;
-    
     return false;
 }
 
@@ -602,15 +658,7 @@ async function loadDataAndBuildTree() {
         systemTree = hierarchyData.systems || {};
         examTree = hierarchyData.exams || {}; 
         
-        const qsRes = await fetch(`Data/${activeCourse}_metadata.json`, { cache: 'no-cache' });
-        if (qsRes.ok) {
-            const rawQs = await qsRes.json();
-            
-            globalMetadata = rawQs;
-            
-            allQuestions = allQuestions.filter(q => q.isBookQuestion);
-            allQuestions.push(...rawQs);
-        }
+	// Global metadata is now loaded dynamically per subject to prevent memory crashes.
         renderGrid();
     } catch (error) {
         console.error("Data Load Error:", error);
@@ -2587,7 +2635,7 @@ const btnCancelReset = document.getElementById('btn-cancel-reset');
 const btnConfirmReset = document.getElementById('btn-confirm-reset');
 const confirmText = document.getElementById('reset-confirm-text');
 
-let pendingUpdates = {};
+let pendingDocsToClear = [];
 let pendingResetMsg = "";
 
 if (btnReset) {
@@ -2598,97 +2646,43 @@ if (btnReset) {
         confirmContainer.style.display = 'none';
         
         const resetTitle = resetModal.querySelector('.popup-header h3');
-        if (resetTitle) {
-            resetTitle.innerHTML = `<i class="fas fa-trash-alt"></i> Reset ${currentView === 'book' ? 'Book' : 'Course'} Progress`;
-        }
-        
+        if (resetTitle) resetTitle.innerHTML = `<i class="fas fa-trash-alt"></i> Reset ${currentView === 'book' ? 'Book' : 'Course'} Progress`;
         if (resetModal) resetModal.style.display = 'flex';
     };
 }
 
-if (closeResetModal) {
-    closeResetModal.onclick = () => {
-        if (resetModal) resetModal.style.display = 'none';
-    };
-}
+if (closeResetModal) closeResetModal.onclick = () => { if (resetModal) resetModal.style.display = 'none'; };
 
 document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
         const type = btn.getAttribute('data-type'); 
-        const activeCourse = localStorage.getItem('edeetos_active_course');
         const isBook = currentView === 'book';
-
-        pendingUpdates = {};
 
         switch (type) {
             case "1":
-                if (isBook) {
-                    pendingUpdates = {
-                        [`books.solvedQuestions`]: [],
-                        [`books.mistakes`]: [],
-                        [`books.examMistakes`]: [],
-                        [`books.bookmarks`]: [],
-                        [`books.examHistory`]: [],
-                        [`books.revisions`]: {} 
-                    };
-                    pendingResetMsg = "All Book progress has been fully reset!";
-                    confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for Books? Your course progress will remain. This cannot be undone.";
-                } else {
-                    pendingUpdates = {
-                        [`${activeCourse}.solvedQuestions`]: [],
-                        [`${activeCourse}.mistakes`]: [],
-                        [`${activeCourse}.examMistakes`]: [],
-                        [`${activeCourse}.bookmarks`]: [],
-                        [`${activeCourse}.examHistory`]: [],
-                        [`${activeCourse}.revisions`]: {}
-                    };
-                    pendingResetMsg = "All Course progress has been fully reset!";
-                    confirmText.textContent = "Are you sure you want to completely wipe ALL your progress for this course? Your books progress will remain. This cannot be undone.";
-                }
+                pendingDocsToClear = ["solved", "mistakes", "bookmarks", "history", "revisions", "skipped", "stats"];
+                pendingResetMsg = `All ${isBook ? 'Book' : 'Course'} progress has been fully reset!`;
+                confirmText.textContent = `Are you sure you want to completely wipe ALL your progress for ${isBook ? 'Books' : 'this course'}? This cannot be undone.`;
                 break;
             case "2":
-                if (isBook) {
-                    pendingUpdates = { [`books.mistakes`]: [], [`books.examMistakes`]: [] };
-                    pendingResetMsg = "All Book mistakes have been cleared!";
-                    confirmText.textContent = "Are you sure you want to clear your Book Mistake history?";
-                } else {
-                    pendingUpdates = { [`${activeCourse}.mistakes`]: [], [`${activeCourse}.examMistakes`]: [] };
-                    pendingResetMsg = "All Course mistakes have been cleared!";
-                    confirmText.textContent = "Are you sure you want to clear your Course Mistake history?";
-                }
+                pendingDocsToClear = ["mistakes"];
+                pendingResetMsg = `All ${isBook ? 'Book' : 'Course'} mistakes have been cleared!`;
+                confirmText.textContent = `Are you sure you want to clear your Mistake history?`;
                 break;
             case "3":
-                if (isBook) {
-                    pendingUpdates = { [`books.bookmarks`]: [] };
-                    pendingResetMsg = "All Book bookmarks have been cleared!";
-                    confirmText.textContent = "Are you sure you want to delete all your Bookmarks for books?";
-                } else {
-                    pendingUpdates = { [`${activeCourse}.bookmarks`]: [] };
-                    pendingResetMsg = "All Course bookmarks have been cleared!";
-                    confirmText.textContent = "Are you sure you want to delete all your Bookmarks for this course?";
-                }
+                pendingDocsToClear = ["bookmarks"];
+                pendingResetMsg = `All ${isBook ? 'Book' : 'Course'} bookmarks have been cleared!`;
+                confirmText.textContent = `Are you sure you want to delete all your Bookmarks?`;
                 break;
             case "4":
-                if (isBook) {
-                    pendingUpdates = { [`books.examHistory`]: [] };
-                    pendingResetMsg = "Book Exam history has been cleared!";
-                    confirmText.textContent = "Are you sure you want to delete your Past Exam scores for books?";
-                } else {
-                    pendingUpdates = { [`${activeCourse}.examHistory`]: [] };
-                    pendingResetMsg = "Course Exam history has been cleared!";
-                    confirmText.textContent = "Are you sure you want to delete your Past Exam scores for this course?";
-                }
+                pendingDocsToClear = ["history"];
+                pendingResetMsg = `${isBook ? 'Book' : 'Course'} Exam history has been cleared!`;
+                confirmText.textContent = `Are you sure you want to delete your Past Exam scores?`;
                 break;
             case "5":
-                if (isBook) {
-                    pendingUpdates = { [`books.solvedQuestions`]: [] };
-                    pendingResetMsg = "Solved Book questions have been cleared!";
-                    confirmText.textContent = "Are you sure you want to clear your Solved Questions for books? Your mistakes and bookmarks will remain.";
-                } else {
-                    pendingUpdates = { [`${activeCourse}.solvedQuestions`]: [] };
-                    pendingResetMsg = "Solved Course questions have been cleared!";
-                    confirmText.textContent = "Are you sure you want to clear your Solved Questions for this course? Your mistakes and bookmarks will remain.";
-                }
+                pendingDocsToClear = ["solved"];
+                pendingResetMsg = `Solved ${isBook ? 'Book' : 'Course'} questions have been cleared!`;
+                confirmText.textContent = `Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.`;
                 break;
         }
 
@@ -2707,26 +2701,25 @@ if (btnCancelReset) {
 if (btnConfirmReset) {
     btnConfirmReset.onclick = async () => {
         const user = auth.currentUser;
-        if (!user) {
-            alert("You must be logged in to reset progress.");
-            return;
-        }
+        if (!user) return alert("You must be logged in to reset progress.");
 
         btnConfirmReset.textContent = "Clearing...";
         btnConfirmReset.disabled = true;
 
         try {
-            const userRef = doc(db, "users", user.uid);
-            await updateDoc(userRef, pendingUpdates);
+            const rootKey = currentView === 'book' ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
+            
+            // Overwriting the document with an empty object efficiently wipes the arrays
+            const wipePromises = pendingDocsToClear.map(docName => 
+                setDoc(doc(db, "users", user.uid, rootKey, docName), {})
+            );
+            await Promise.all(wipePromises);
 
             if (confirmText) confirmText.innerHTML = `✅ ${pendingResetMsg}`;
             if (btnCancelReset) btnCancelReset.style.display = 'none';
             if (btnConfirmReset) btnConfirmReset.style.display = 'none';
 
-            setTimeout(() => {
-                location.reload();
-            }, 1500);
-
+            setTimeout(() => { location.reload(); }, 1500);
         } catch (err) {
             console.error("Reset Error:", err);
             if (confirmText) confirmText.textContent = "❌ Error clearing data. Check console.";
@@ -3243,28 +3236,41 @@ const rawSpecs = getVal(['specialty', 'speciality', 'spec']);
         }
     }
     
-    const courseData = dbData[activeCourse] || {};
-    const booksData = dbData.books || {};
+const uid = auth.currentUser ? auth.currentUser.uid : null;
+    const fetchShard = async (folder, docName) => {
+        try {
+            const snap = await getDoc(doc(db, "users", uid, folder, docName));
+            return snap.exists() ? snap.data() : {};
+        } catch(e) { return {}; }
+    };
 
-    const courseSolved = (courseData.solvedQuestions || []).map(id => String(id));
-    const coursePracticeMistakes = (courseData.mistakes || []).map(id => String(id));
-    const courseExamMistakes = (courseData.examMistakes || []).map(id => String(id));
-    const courseBookmarks = (courseData.bookmarks || []).map(id => String(id));
-    const courseSkipped = (courseData.skippedQuestions || []).map(id => String(id));
+    const [
+        cSol, cMis, cBkm, cSkp, cHis, cRev, cNot,
+        bSol, bMis, bBkm, bSkp, bHis, bRev, bNot
+    ] = await Promise.all([
+        fetchShard(activeCourse, "solved"), fetchShard(activeCourse, "mistakes"), fetchShard(activeCourse, "bookmarks"), fetchShard(activeCourse, "skipped"), fetchShard(activeCourse, "history"), fetchShard(activeCourse, "revisions"), fetchShard(activeCourse, "notes"),
+        fetchShard("books", "solved"), fetchShard("books", "mistakes"), fetchShard("books", "bookmarks"), fetchShard("books", "skipped"), fetchShard("books", "history"), fetchShard("books", "revisions"), fetchShard("books", "notes")
+    ]);
 
-    const bookSolved = (booksData.solvedQuestions || []).map(id => String(id));
-    const bookPracticeMistakes = (booksData.mistakes || []).map(id => String(id));
-    const bookExamMistakes = (booksData.examMistakes || []).map(id => String(id));
-    const bookBookmarks = (booksData.bookmarks || []).map(id => String(id));
-    const bookSkipped = (booksData.skippedQuestions || []).map(id => String(id));
+    const courseSolved = (cSol.list || []).map(String);
+    const coursePracticeMistakes = (cMis.practice || []).map(String);
+    const courseExamMistakes = (cMis.exam || []).map(String);
+    const courseHistorical = (cMis.historical || []).map(String);
+    const courseBookmarks = (cBkm.list || []).map(String);
+    const courseSkipped = (cSkp.list || []).map(String);
 
-    globalBookmarkFolders = { ...(courseData.bookmarkFolders || {}), ...(booksData.bookmarkFolders || {}) };
+    const bookSolved = (bSol.list || []).map(String);
+    const bookPracticeMistakes = (bMis.practice || []).map(String);
+    const bookExamMistakes = (bMis.exam || []).map(String);
+    const bookHistorical = (bMis.historical || []).map(String);
+    const bookBookmarks = (bBkm.list || []).map(String);
+    const bookSkipped = (bSkp.list || []).map(String);
 
-    userExamHistory = [...(courseData.examHistory || []), ...(booksData.examHistory || [])];
-
-// Extract the immutable mistake logs
-    const courseHistorical = [...new Set((courseData.historicalMistakes || []).map(id => String(id)))];
-    const bookHistorical = [...new Set((booksData.historicalMistakes || []).map(id => String(id)))];
+    globalBookmarkFolders = { ...(cBkm.folders || {}), ...(bBkm.folders || {}) };
+    userExamHistory = [...(cHis.list || []), ...(bHis.list || [])];
+    
+    currentUserData[activeCourse] = { revisions: cRev, notes: cNot.data || {} };
+    currentUserData.books = { revisions: bRev, notes: bNot.data || {} };
 
     const validCourseSolved = [...new Set(courseSolved)];
     const validCoursePracticeMistakes = [...new Set(coursePracticeMistakes)];

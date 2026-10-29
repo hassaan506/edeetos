@@ -4,7 +4,7 @@ import os
 import glob
 import random
 import re
-
+import sqlite3
 # ============================================================
 # PATHS
 # ============================================================
@@ -268,31 +268,43 @@ def process_directory(directory, is_book=False):
                 json.dump(questions, f, indent=4, ensure_ascii=False)
             print(f"  -> Generated {base_name}_questions.json for {len(questions)} questions.")
         else:
-            metadata_list = []
-            search_index_list = [] 
+            subject_metadata = {}
+            
+            # Setup SQLite FTS5 Database
+            db_path = os.path.join(directory, f"{base_name}_search_index.sqlite")
+            if os.path.exists(db_path):
+                os.remove(db_path)
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+            cursor.execute('CREATE VIRTUAL TABLE search_data USING fts5(id UNINDEXED, q, subject, chapter, topic, difficulty UNINDEXED)')
             
             for q in questions:
-                metadata_list.append({
-                    "id": q["id"],
-                    "year": q["year"],
-                    "exams": q["exams"],
-                    "subject": q["subject"],
-                    "chapter": q["chapter"],
-                    "topic": q["topic"],
-                    "difficulty": q["difficulty"]
-                })
-                search_index_list.append({
-                    "id": q["id"],
-                    "q": q["question"]
+                # Group Metadata
+                subj_clean = sanitize_filename(q["subject"])
+                if subj_clean not in subject_metadata:
+                    subject_metadata[subj_clean] = []
+                    
+                subject_metadata[subj_clean].append({
+                    "id": q["id"], "year": q["year"], "exams": q["exams"],
+                    "subject": q["subject"], "chapter": q["chapter"], 
+                    "topic": q["topic"], "difficulty": q["difficulty"]
                 })
                 
-            meta_out = os.path.join(directory, f"{base_name}_metadata.json")
-            with open(meta_out, 'w', encoding='utf-8') as f:
-                json.dump(metadata_list, f, separators=(',', ':'))
-
-            search_out = os.path.join(directory, f"{base_name}_search_index.json")
-            with open(search_out, 'w', encoding='utf-8') as f:
-                json.dump(search_index_list, f, separators=(',', ':'))
+                # Insert into SQLite
+                cursor.execute('INSERT INTO search_data (id, q, subject, chapter, topic, difficulty) VALUES (?, ?, ?, ?, ?, ?)',
+                               (q["id"], q["question"], q["subject"], q["chapter"], q["topic"], q["difficulty"]))
+                
+            conn.commit()
+            conn.close()
+                
+            course_dir = os.path.join(directory, base_name)
+            meta_dir = os.path.join(course_dir, "metadata")
+            os.makedirs(meta_dir, exist_ok=True)
+            
+            for subj_clean, meta_list in subject_metadata.items():
+                meta_out = os.path.join(meta_dir, f"{subj_clean}.json")
+                with open(meta_out, 'w', encoding='utf-8') as f:
+                    json.dump(meta_list, f, separators=(',', ':'))
 
             hierarchy_out = os.path.join(directory, f"{base_name}_hierarchy.json")
             hierarchy = {
@@ -303,7 +315,6 @@ def process_directory(directory, is_book=False):
             with open(hierarchy_out, 'w', encoding='utf-8') as f:
                 json.dump(hierarchy, f, indent=4, ensure_ascii=False)
 
-            course_dir = os.path.join(directory, base_name)
             subj_dir = os.path.join(course_dir, "subjects")
             sys_dir = os.path.join(course_dir, "systems")
             exam_dir = os.path.join(course_dir, "exams")
@@ -322,11 +333,10 @@ def process_directory(directory, is_book=False):
                 save_paginated(exam_dir, exam_key, q_list)
 
             total_shards = len(subject_chunks) + len(system_chunks) + len(exam_chunks)
-            print(f"  -> Generated {base_name}_metadata.json")
-            print(f"  -> Generated {base_name}_search_index.json")
+            print(f"  -> Generated {len(subject_metadata)} metadata files in metadata/ folder.")
+            print(f"  -> Generated {base_name}_search_index.sqlite")
             print(f"  -> Generated {base_name}_hierarchy.json")
             print(f"  -> Generated {total_shards} paginated micro-chunks in {base_name}/ folder.")
-
 # ============================================================
 # COMPILE EVERYTHING
 # ============================================================

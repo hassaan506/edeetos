@@ -287,14 +287,25 @@ lockoutScreen.innerHTML = `
                     return; 
                 }
 
-                const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-                const courseData = dbData[activeCourse] || {};
-                const booksData = dbData.books || {};
-                const savedNotes = { ...(courseData.notes || {}), ...(booksData.notes || {}) };
-                const savedBookmarks = [...(courseData.bookmarks || []), ...(booksData.bookmarks || [])];
-                const solvedList = [...(courseData.solvedQuestions || []), ...(booksData.solvedQuestions || [])];
-                const mistakesList = [...(courseData.mistakes || []), ...(booksData.mistakes || [])];
-                const examMistakesList = [...(courseData.examMistakes || []), ...(booksData.examMistakes || [])];
+const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                
+                const fetchShard = async (folder, docName) => {
+                    try {
+                        const snap = await getDoc(doc(db, "users", user.uid, folder, docName));
+                        return snap.exists() ? snap.data() : {};
+                    } catch(e) { return {}; }
+                };
+
+                const [cSol, cMis, cBkm, cNot, bSol, bMis, bBkm, bNot] = await Promise.all([
+                    fetchShard(activeCourse, "solved"), fetchShard(activeCourse, "mistakes"), fetchShard(activeCourse, "bookmarks"), fetchShard(activeCourse, "notes"),
+                    fetchShard("books", "solved"), fetchShard("books", "mistakes"), fetchShard("books", "bookmarks"), fetchShard("books", "notes")
+                ]);
+
+                const savedNotes = { ...(cNot.data || {}), ...(bNot.data || {}) };
+                const savedBookmarks = [...(cBkm.list || []), ...(bBkm.list || [])].map(String);
+                const solvedList = [...(cSol.list || []), ...(bSol.list || [])].map(String);
+                const mistakesList = [...(cMis.practice || []), ...(bMis.practice || [])].map(String);
+                const examMistakesList = [...(cMis.exam || []), ...(bMis.exam || [])].map(String);
 
                 quizQueue.forEach(q => {
                     q.isBookmarked = savedBookmarks.includes(q.originalNumber);
@@ -1067,9 +1078,6 @@ if (bookmarkFolderSelect) {
     }
 }
 
-// ==========================================
-// 5. DATABASE SYNC FUNCTIONS
-// ==========================================
 async function syncNextQuestion(newIndex) {
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
     if (isGuest) return;
@@ -1086,25 +1094,17 @@ async function savePracticeProgress(questionId, isCorrect) {
     const user = auth.currentUser;
     if (!user) return; 
 
-    const userRef = doc(db, "users", user.uid);
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
-    let updates = {};
-
-    if (isCorrect) {
-        updates.solvedQuestions = arrayUnion(questionId); 
-        // Keep clearing the active queue so Redemption Mode works
-        if (wrongAttempts === 0) {
-            updates.mistakes = arrayRemove(questionId);      
-            updates.examMistakes = arrayRemove(questionId);   
-        }
-    } else {
-        updates.mistakes = arrayUnion(questionId);
-        // ADDED: The immutable record for dashboard accuracy math
-        updates.historicalMistakes = arrayUnion(questionId); 
-    }
 
     try {
-        await setDoc(userRef, { [rootKey]: updates }, { merge: true });
+        if (isCorrect) {
+            await setDoc(doc(db, "users", user.uid, rootKey, "solved"), { list: arrayUnion(questionId) }, { merge: true });
+            if (wrongAttempts === 0) {
+                await setDoc(doc(db, "users", user.uid, rootKey, "mistakes"), { practice: arrayRemove(questionId), exam: arrayRemove(questionId) }, { merge: true });
+            }
+        } else {
+            await setDoc(doc(db, "users", user.uid, rootKey, "mistakes"), { practice: arrayUnion(questionId), historical: arrayUnion(questionId) }, { merge: true });
+        }
     } catch (error) { console.error("Error saving practice progress:", error); }
 }
 
@@ -1113,12 +1113,10 @@ async function savePracticeTime(timeInSeconds) {
     const user = auth.currentUser;
     if (!user || timeInSeconds <= 0) return; 
 
-    const userRef = doc(db, "users", user.uid);
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
-    
     try {
-        await setDoc(userRef, { [rootKey]: { practiceTimeSpent: increment(timeInSeconds) } }, { merge: true });
-    } catch (error) { console.error("Error saving practice time:", error); }
+        await setDoc(doc(db, "users", user.uid, rootKey, "stats"), { practiceTimeSpent: increment(timeInSeconds) }, { merge: true });
+    } catch (error) {}
 }
 
 async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuestions, timeSpent) {
@@ -1126,33 +1124,17 @@ async function saveExamProgress(correctIds, mistakeIds, correctCount, totalQuest
     const user = auth.currentUser;
     if (!user) return; 
 
-    const userRef = doc(db, "users", user.uid);
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
-    
     try {
-        let updates = {};
-        if (correctIds.length > 0) updates.examMistakes = arrayRemove(...correctIds);  
-        
+        if (correctIds.length > 0) {
+            await setDoc(doc(db, "users", user.uid, rootKey, "mistakes"), { exam: arrayRemove(...correctIds) }, { merge: true });
+        }
         if (mistakeIds.length > 0) {
-            updates.examMistakes = arrayUnion(...mistakeIds);
-            // ADDED: The immutable record for dashboard accuracy math
-            updates.historicalMistakes = arrayUnion(...mistakeIds);
+            await setDoc(doc(db, "users", user.uid, rootKey, "mistakes"), { exam: arrayUnion(...mistakeIds), historical: arrayUnion(...mistakeIds) }, { merge: true });
         }
 
-        const examTitle = quizConfig.examName || "Custom Exam"; 
-        const examRecord = {
-            examName: examTitle,
-            score: correctCount,
-            totalQuestions: totalQuestions, 
-            percentage: Math.round((correctCount / totalQuestions) * 100),
-            timeSpent: timeSpent, 
-            date: new Date().toISOString() 
-        };
-        updates.examHistory = arrayUnion(examRecord);
-
-        if (Object.keys(updates).length > 0) {
-            await setDoc(userRef, { [rootKey]: updates }, { merge: true });
-        }
+        const examRecord = { examName: quizConfig.examName || "Custom Exam", score: correctCount, totalQuestions: totalQuestions, percentage: Math.round((correctCount / totalQuestions) * 100), timeSpent: timeSpent, date: new Date().toISOString() };
+        await setDoc(doc(db, "users", user.uid, rootKey, "history"), { list: arrayUnion(examRecord) }, { merge: true });
     } catch (error) { console.error("Error saving exam progress:", error); }
 }
 
@@ -1161,28 +1143,15 @@ async function toggleBookmarkInFirebase(questionId, isBookmarking, folderName = 
     const user = auth.currentUser;
     if (!user) return; 
     
-    const userRef = doc(db, "users", user.uid);
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
-    
     try {
-        let updates = {};
         if (isBookmarking) {
-            updates[`${rootKey}.bookmarks`] = arrayUnion(questionId);
-            if (folderName) updates[`${rootKey}.bookmarkFolders.${questionId}`] = folderName;
+            await setDoc(doc(db, "users", user.uid, rootKey, "bookmarks"), { list: arrayUnion(questionId), [`folders.${questionId}`]: folderName || "For Revision" }, { merge: true });
         } else {
-            updates[`${rootKey}.bookmarks`] = arrayRemove(questionId);
-            updates[`${rootKey}.bookmarkFolders.${questionId}`] = deleteField();
+            await updateDoc(doc(db, "users", user.uid, rootKey, "bookmarks"), { list: arrayRemove(questionId), [`folders.${questionId}`]: deleteField() });
         }
-        await updateDoc(userRef, updates);
-    } catch (error) { 
-        console.error("Error updating bookmark:", error); 
-        // Fallback if the map doesn't exist yet
-        try {
-            await setDoc(userRef, { [rootKey]: { bookmarks: isBookmarking ? arrayUnion(questionId) : arrayRemove(questionId) } }, { merge: true });
-            if (isBookmarking && folderName) {
-                await setDoc(userRef, { [rootKey]: { bookmarkFolders: { [questionId]: folderName } } }, { merge: true });
-            }
-        } catch(e) {}
+    } catch (error) {
+        if (isBookmarking) await setDoc(doc(db, "users", user.uid, rootKey, "bookmarks"), { list: arrayUnion(questionId), folders: { [questionId]: folderName || "For Revision" } }, { merge: true });
     }
 }
 
@@ -1191,12 +1160,10 @@ async function saveNoteToFirebase(questionId, noteText) {
     const user = auth.currentUser;
     if (!user) return; 
     
-    const userRef = doc(db, "users", user.uid);
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
-    
     try {
-        await setDoc(userRef, { [rootKey]: { notes: { [questionId]: noteText } } }, { merge: true });
-    } catch (error) { console.error("Error saving note:", error); }
+        await setDoc(doc(db, "users", user.uid, rootKey, "notes"), { [`data.${questionId}`]: noteText }, { merge: true });
+    } catch (error) {}
 }
 
 function handleOptionClick(event, optionData, optionElement) {
@@ -2194,12 +2161,10 @@ async function saveSkippedProgress(questionId) {
     const user = auth.currentUser;
     if (!user) return; 
 
-    const userRef = doc(db, "users", user.uid);
     const rootKey = isBookSession() ? "books" : (localStorage.getItem('edeetos_active_course') || 'fcps_part1');
-    
     try {
-        await setDoc(userRef, { [rootKey]: { skippedQuestions: arrayUnion(questionId) } }, { merge: true });
-    } catch (error) { console.error("Error saving skipped progress:", error); }
+        await setDoc(doc(db, "users", user.uid, rootKey, "skipped"), { list: arrayUnion(questionId) }, { merge: true });
+    } catch (error) {}
 }
 
 // ==========================================
@@ -2439,10 +2404,10 @@ async function updateSpacedRepetition() {
             data.updatedAt = Date.now();
         });
 
-        if (isBookSessionLocal) {
-            await setDoc(userRef, { books: { revisions: revisionsData } }, { merge: true });
+if (isBookSessionLocal) {
+            await setDoc(doc(db, "users", user.uid, "books", "revisions"), revisionsData, { merge: true });
         } else {
-            await setDoc(userRef, { [activeCourse]: { revisions: revisionsData } }, { merge: true });
+            await setDoc(doc(db, "users", user.uid, activeCourse, "revisions"), revisionsData, { merge: true });
         }
     } catch (error) {
         console.error("❌ Failed to update spaced repetition:", error);
