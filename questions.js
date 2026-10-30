@@ -136,12 +136,12 @@ const darkModeBtn = document.getElementById('dark-mode-toggle');
 const joinChallengeModal = document.getElementById('join-challenge-modal');
 const hostExitModal = document.getElementById('host-exit-modal');
 const assignExamModal = document.getElementById('assign-exam-modal');
-const mockModal = document.getElementById('mock-exam-modal');
 const journeyModal = document.getElementById('journey-modal');
 const milestoneModal = document.getElementById('milestone-reward-modal');
 const revisionModal = document.getElementById('revision-popup-modal');
 const resetModal = document.getElementById('reset-modal');
 const analyticsModal = document.getElementById('analytics-modal');
+const mockModal = document.getElementById('mock-exam-modal');
 
 if (darkModeBtn) {
     const updateIcon = () => {
@@ -1271,14 +1271,6 @@ if (examTimerInput) {
         if (e.key === 'Enter' && startExamBtn) startExamBtn.click();
     });
 }
-
-const btnQuickMock = document.getElementById('btn-quick-mock');
-const mockModal = document.getElementById('mock-exam-modal');
-const mockQCount = document.getElementById('mock-q-count');
-const btnCancelMock = document.getElementById('btn-cancel-mock');
-const btnStartMock = document.getElementById('btn-start-mock');
-const btnJoinChallenge = document.getElementById('btn-join-challenge');
-const joinChallengeModal = document.getElementById('join-challenge-modal');
 
 if (btnJoinChallenge) {
     btnJoinChallenge.addEventListener('click', () => {
@@ -2719,10 +2711,9 @@ async function hydrateUserState(dbData) {
     
     viewSpecificStats.book = { solved: uniqueBookSolved, mistakes: bookAllMistakes, bookmarks: uniqueBookBookmarks, skipped: uniqueBookSkipped, accuracy: bookAccuracy };
 	
-    // These functions are locally scoped or global in Part 1
-    if (window.loadDataAndBuildTree) await window.loadDataAndBuildTree();
-    if (window.restoreLastState) window.restoreLastState();
-    if (window.updateDashboardUI) window.updateDashboardUI();
+await loadDataAndBuildTree();
+restoreLastState();
+if (window.updateDashboardUI) window.updateDashboardUI();
     
     const revisions = { ...(currentUserData[activeCourse]?.revisions || {}), ...(currentUserData.books?.revisions || {}) };
     const now = Date.now();
