@@ -452,10 +452,10 @@ if (globalSearch && searchDropdown) {
             isSearchEngineLoading = true;
             globalSearch.placeholder = "Booting Search Engine...";
             try {
-const workerUrl = "./assets/sqlite/sqlite.worker.js";
-const wasmUrl = "./assets/sqlite/sql-wasm.wasm";
+const workerUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sqlite.worker.js";
+const wasmUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sql-wasm.wasm";
                 
-                sqlWorker = await createDbWorker(
+sqlWorker = await createDbWorker(
                     [{
                         from: "inline",
                         config: {
@@ -657,9 +657,9 @@ async function loadDataAndBuildTree() {
         if (!window.sqlWorker && !window.isSearchEngineLoading) {
             window.isSearchEngineLoading = true;
             try {
-const workerUrl = "./assets/sqlite/sqlite.worker.js";
-const wasmUrl = "./assets/sqlite/sql-wasm.wasm";
-                window.sqlWorker = await createDbWorker(
+const workerUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sqlite.worker.js";
+const wasmUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sql-wasm.wasm";
+window.sqlWorker = await createDbWorker(
                     [{ from: "inline", config: { serverMode: "full", url: `Data/${activeCourse}_search_index.sqlite`, requestChunkSize: 4096 } }],
                     workerUrl, wasmUrl, 10 * 1024 * 1024 
                 );
