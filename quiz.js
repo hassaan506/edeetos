@@ -1558,26 +1558,96 @@ window.renderRoomBanner(data);
                 const lobby = document.getElementById('mp-lobby-screen');
                 if (lobby) lobby.remove();
                 const isNewBatch = !quizQueue || quizQueue.length === 0 || 
-                                   (data.questions && data.questions.length > 0 && quizQueue[0].text !== data.questions[0].text);
+                                   (data.questionIds && data.questionIds.length > 0 && String(quizQueue[0]?.originalNumber) !== String(data.questionIds[0]));
 
-                if (isNewBatch && data.questions) {
-                    let incomingQuestions = [...data.questions];
-                    // Shuffle independently for each user if it's an exam
-                    if (data.quizConfig?.mode === 'exam') {
-                        for (let i = incomingQuestions.length - 1; i > 0; i--) {
-                            const j = Math.floor(Math.random() * (i + 1));
-                            [incomingQuestions[i], incomingQuestions[j]] = [incomingQuestions[j], incomingQuestions[i]];
+                if (isNewBatch && data.questionIds) {
+                    const processGuestQuestions = async () => {
+                        document.body.style.cursor = 'wait';
+                        let incomingQuestions = [];
+                        try {
+                            const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                            
+                            // 1. Fetch Hierarchy to get all subjects
+                            const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                            const hierarchyData = await hierarchyRes.json();
+                            const subjects = Object.keys(hierarchyData.subjects || {});
+                            
+                            // 2. Fetch all metadata to cross-reference IDs to their Subject/Chapter
+                            const metaPromises = subjects.map(async (subj) => {
+                                const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                try {
+                                    const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                                    if (res.ok) return await res.json();
+                                } catch(e) {}
+                                return [];
+                            });
+                            
+                            const allMetaArrays = await Promise.all(metaPromises);
+                            const globalMetadata = allMetaArrays.flat();
+                            
+                            // 3. Map IDs to specific JSON chunks
+                            const chunksToLoad = new Set();
+                            data.questionIds.forEach(id => {
+                                const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
+                                if (meta) {
+                                    const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                    const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                    chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                                }
+                            });
+
+                            // 4. Download required chunks
+                            const activeChunksCache = {};
+                            const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
+                                let page = 1;
+                                let keepFetching = true;
+                                while (keepFetching) {
+                                    const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                                    try {
+                                        const res = await fetch(pageUrl);
+                                        if (res.ok) activeChunksCache[pageUrl] = await res.json();
+                                        else keepFetching = false;
+                                    } catch(e) { keepFetching = false; }
+                                    page++;
+                                }
+                            });
+                            await Promise.all(fetchPromises);
+
+                            // 5. Reconstruct full questions from cache
+                            const fullQuestionsMap = {};
+                            Object.values(activeChunksCache).forEach(chunkArray => {
+                                chunkArray.forEach(fullQ => {
+                                    const qId = fullQ.id || fullQ.QuestionID;
+                                    if (qId) fullQuestionsMap[String(qId)] = fullQ;
+                                });
+                            });
+
+                            incomingQuestions = data.questionIds.map(id => fullQuestionsMap[String(id)]).filter(q => q);
+
+                        } catch (err) {
+                            console.error("Hydration Error:", err);
                         }
-                    }
-                    quizQueue = incomingQuestions;
-                    initialTotalQuestions = quizQueue.length;
-                    quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                        
+                        document.body.style.cursor = 'default';
+                        if (incomingQuestions.length === 0) return alert("Failed to load questions from host.");
+                        
+                        if (data.quizConfig?.mode === 'exam') {
+                            for (let i = incomingQuestions.length - 1; i > 0; i--) {
+                                const j = Math.floor(Math.random() * (i + 1));
+                                [incomingQuestions[i], incomingQuestions[j]] = [incomingQuestions[j], incomingQuestions[i]];
+                            }
+                        }
+                        quizQueue = incomingQuestions;
+                        initialTotalQuestions = quizQueue.length;
+                        quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                        
+                        buildNumberGrid();
+                        loadQuestion(data.currentQuestionIndex || 0);
+                    };
                     
-                    buildNumberGrid();
-                    loadQuestion(data.currentQuestionIndex || 0);
+                    processGuestQuestions();
                 }
             }
-
             // ONLY force-sync the slide transition if we are NOT in exam mode
             if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
                 if (data.quizConfig?.mode !== 'exam') {
@@ -1774,7 +1844,7 @@ function showResults() {
                     return newQ;
                 });
                 
-                const cleanQueue = JSON.parse(JSON.stringify(sanitizedQueue, (k, v) => v === undefined ? null : v));
+const questionIdsOnly = sanitizedQueue.map(q => String(q.originalNumber || q.id || q.QuestionID));
                 
                 await setDoc(doc(db, "friend_challenges", code), {
                     hostName: (currentUserData && currentUserData.fullName) ? currentUserData.fullName : "A Friend",
@@ -1782,7 +1852,7 @@ function showResults() {
                     total: total,
                     timeTaken: timeTaken,
                     calcMinutes: quizConfig.timer,
-                    queue: cleanQueue,
+                    questionIds: questionIdsOnly,
                     timestamp: serverTimestamp()
                 });
                 
