@@ -1667,7 +1667,6 @@ function generateExamTitle(paths, currentView) {
 // ==========================================
 const activeRoomId = localStorage.getItem('active_study_room');
 const isGuest = localStorage.getItem('is_study_guest') === 'true';
-const hostExitModal = document.getElementById('host-exit-modal');
 
 if (activeRoomId) {
     if (isGuest) {
