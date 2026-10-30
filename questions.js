@@ -354,42 +354,44 @@ function renderGrid() {
         if (currentMode !== 'exam' && unattemptedFilter && unattemptedFilter.checked && qCount === 0) return;
         if (qCount === 0) return;
 
-// We killed the massive global metadata payload to save RAM.
-        // Therefore, exact progress stats will only render inside the popup AFTER a user clicks and loads the specific topic.
-        const countHtml = `<span class="card-count">${qCount} Qs</span>`;
-        const progressHtml = ``;
+const doneCount = getSolvedCount(currentView, [cardTitle]);
+        const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
+        const countHtml = `<span class="card-count" style="white-space: nowrap;">${doneCount} / ${qCount}</span>`;
+        const progressHtml = `<div class="progress-container" style="margin-top: 12px; background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden;"><div class="progress-bar-fill" style="width: ${percent}%; background: #34d399; height: 100%;"></div></div>`;
 
         let cardStatsHtml = '';
         if (currentView === 'exam') {
-            cardStatsHtml = `<div style="font-size: 0.75rem; margin-top: 10px; color: #94a3b8; font-weight: 600;"><i class="fas fa-chart-bar" style="margin-right: 5px;"></i> Click to load exam statistics</div>`;
+            const mistakeCount = getMistakesCount(currentView, [cardTitle]);
+            const totalAttempts = doneCount + mistakeCount;
+            const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
+            const accColor = totalAttempts === 0 ? '#94a3b8' : (accuracy >= 75 ? '#34d399' : (accuracy >= 50 ? '#fbbf24' : '#fca5a5'));
+            const accBg = totalAttempts === 0 ? 'rgba(255,255,255,0.1)' : (accuracy >= 75 ? 'rgba(16,185,129,0.15)' : (accuracy >= 50 ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)'));
+            cardStatsHtml = `
+            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 12px; font-size: 0.75rem;">
+                <span style="background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px;">${doneCount} Solved</span>
+                <span style="background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">${mistakeCount} Mistake</span>
+                <span style="background: ${accBg}; color: ${accColor}; border: 1px solid rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">${totalAttempts > 0 ? accuracy + '% Acc' : '0%'}</span>
+            </div>`;
         }
 
         const card = document.createElement('div');
         card.className = 'glass-panel feature-card';
         card.style.cursor = 'pointer';
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.justifyContent = 'space-between';
         card.innerHTML = `
-            <div class="card-header-flex">
-                <h3 class="card-title">${cardTitle}</h3>${countHtml}
+            <div>
+                <div class="card-header-flex" style="align-items: flex-start; gap: 10px;">
+                    <h3 class="card-title" style="margin: 0; flex: 1; line-height: 1.3;">${cardTitle}</h3>${countHtml}
+                </div>
+                ${cardStatsHtml}
             </div>
-            ${cardStatsHtml}${progressHtml}
+            ${progressHtml}
         `;
 card.onclick = async () => {
             if (currentView !== 'book') {
-                document.body.style.cursor = 'wait';
-                try {
-                    const chunks = await fetchRequiredChunks(currentView, [[cardTitle]]);
-                    const uniqueIds = new Set();
-                    const deduplicated = [];
-                    chunks.forEach(q => {
-                        const qId = String(q.id || q.QuestionID);
-                        if (!uniqueIds.has(qId)) {
-                            uniqueIds.add(qId);
-                            deduplicated.push(q);
-                        }
-                    });
-                    activeCustomPool = deduplicated;
-                } catch(e) { console.error("Error loading chunks for popup:", e); }
-                document.body.style.cursor = 'default';
+                activeCustomPool = null;
             }
             openPopup(cardTitle, activeTree[cardTitle], 'Level1', [cardTitle], false);
         };
@@ -1137,11 +1139,9 @@ function getQuestionCount(view, pathArr, customPool = null) {
 
     const isDefaultPool = (pool === globalMetadata || pool === activeCustomPool);
     
-    // NEW: Ignore filters for the root dashboard grid so it never blanks out
-    const isRootGrid = (!isGlobalPopupActive && paths.length === 1 && view !== 'book');
-    const noFiltersActive = (!diffEasyFilter?.checked && !diffMediumFilter?.checked && !diffHardFilter?.checked && !unattemptedFilter?.checked);
+   const noFiltersActive = (!diffEasyFilter?.checked && !diffMediumFilter?.checked && !diffHardFilter?.checked && !unattemptedFilter?.checked);
 
-    if (isDefaultPool && (noFiltersActive || isRootGrid) && !isGlobalPopupActive) {
+    if (isDefaultPool && noFiltersActive && !isGlobalPopupActive) {
         let tree = {};
         if (view === 'subject') tree = subjectTree;
         else if (view === 'system') tree = systemTree;
@@ -1678,14 +1678,16 @@ window.launchQuiz = async function (questionsArray, mode = 'practice', timerMinu
 
     const cleanPool = JSON.parse(JSON.stringify(safeStorageArray));
 
-    if (roomId && !isGuest) {
+if (roomId && !isGuest) {
         try {
             document.body.style.cursor = 'wait';
             let roomPool = cleanPool;
             if (roomPool.length > 50) roomPool = roomPool.slice(0, 50);
+            
+            const questionIdsOnly = roomPool.map(q => String(q.id || q.QuestionID));
 
 await setDoc(doc(db, "study_rooms", roomId), {
-                questions: roomPool,
+                questionIds: questionIdsOnly,
                 quizConfig: { mode, timer: timerMinutes, examName },
                 status: 'playing',
                 currentQuestionIndex: 0,
@@ -2920,14 +2922,14 @@ function initMentorFeatures() {
                         confirmBtn.disabled = true;
 
                         try {
-                            const hydratedExamPool = await hydrateQuestions(examPool);
-                            const cleanExamPool = JSON.parse(JSON.stringify(hydratedExamPool));
+try {
+                            const questionIdsOnly = examPool.map(q => String(q.id || q.QuestionID));
 
                             await addDoc(collection(db, "assigned_exams"), {
                                 title: generatedTitle,
                                 assignedBy: auth.currentUser.uid,
                                 assignedTo: selectedStudentIds, 
-                                questions: cleanExamPool,
+                                questionIds: questionIdsOnly,
                                 mode: currentMode,
                                 timerMinutes: finalTimer,
                                 isCompletedBy: [],
