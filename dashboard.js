@@ -357,9 +357,9 @@ async function checkAssignedExams() {
             notifyCard.onclick = () => taskModal.classList.remove('view-hidden');
             document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
 
-            pendingExams.forEach((exam, index) => {
+pendingExams.forEach((exam, index) => {
                 const launchBtn = document.getElementById(`launch-assigned-${index}`);
-                launchBtn.addEventListener('click', () => {
+                launchBtn.addEventListener('click', async () => {
                     launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
                     launchBtn.style.opacity = "0.8"; launchBtn.style.pointerEvents = "none";
                     if (exam.course) localStorage.setItem('edeetos_active_course', exam.course);
@@ -368,11 +368,79 @@ async function checkAssignedExams() {
                     localStorage.removeItem('edeetos_aborted_session_backup');
                     localStorage.removeItem('edeetos_quiz_state');
 
+                    let hydratedQueue = [];
+                    try {
+                        const activeCourse = exam.course || localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                        
+                        const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                        const hierarchyData = await hierarchyRes.json();
+                        const subjects = Object.keys(hierarchyData.subjects || {});
+                        
+                        const metaPromises = subjects.map(async (subj) => {
+                            const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                            try {
+                                const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                                if (res.ok) return await res.json();
+                            } catch(e) {}
+                            return [];
+                        });
+                        
+                        const allMetaArrays = await Promise.all(metaPromises);
+                        const globalMetadata = allMetaArrays.flat();
+                        
+                        const chunksToLoad = new Set();
+                        if (exam.questionIds) {
+                            exam.questionIds.forEach(id => {
+                                const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
+                                if (meta) {
+                                    const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                    const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                    chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                                }
+                            });
+                        }
+
+                        const activeChunksCache = {};
+                        const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
+                            let page = 1;
+                            let keepFetching = true;
+                            while (keepFetching) {
+                                const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                                try {
+                                    const res = await fetch(pageUrl);
+                                    if (res.ok) activeChunksCache[pageUrl] = await res.json();
+                                    else keepFetching = false;
+                                } catch(e) { keepFetching = false; }
+                                page++;
+                            }
+                        });
+                        await Promise.all(fetchPromises);
+
+                        const fullQuestionsMap = {};
+                        Object.values(activeChunksCache).forEach(chunkArray => {
+                            chunkArray.forEach(fullQ => {
+                                const qId = fullQ.id || fullQ.QuestionID;
+                                if (qId) fullQuestionsMap[String(qId)] = fullQ;
+                            });
+                        });
+
+                        hydratedQueue = (exam.questionIds || []).map(id => fullQuestionsMap[String(id)]).filter(q => q);
+                    } catch (err) {
+                        console.error("Hydration Error:", err);
+                    }
+
+                    if (hydratedQueue.length === 0) {
+                        launchBtn.innerHTML = "Start Now"; 
+                        launchBtn.style.opacity = "1"; 
+                        launchBtn.style.pointerEvents = "auto";
+                        return alert("Failed to load exam questions.");
+                    }
+
                     const request = indexedDB.open("EdeetosDB", 1);
                     request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains("quiz_sessions")) e.target.result.createObjectStore("quiz_sessions"); };
                     request.onsuccess = (e) => {
                         const tx = e.target.result.transaction("quiz_sessions", "readwrite");
-                        tx.objectStore("quiz_sessions").put(exam.questions, "active_quiz_queue");
+                        tx.objectStore("quiz_sessions").put(hydratedQueue, "active_quiz_queue");
                         tx.oncomplete = () => window.location.href = 'quiz.html';
                     };
                     request.onerror = (e) => { alert("Failed to load exam data."); launchBtn.innerHTML = "Start Now"; launchBtn.style.opacity = "1"; launchBtn.style.pointerEvents = "auto"; };
