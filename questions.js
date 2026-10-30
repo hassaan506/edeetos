@@ -22,7 +22,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { createDbWorker } from "https://esm.sh/sql.js-httpvfs@0.8.12";
+import { createDbWorker } from "https://esm.sh/sql.js-httpvfs@0.8.12?bundle";
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
@@ -444,7 +444,7 @@ function renderBooksGrid() {
 // 6. GLOBAL SEARCH SYSTEM (SQLITE HTTP-VFS)
 // ==========================================
 if (globalSearch && searchDropdown) {
-    let sqlWorker = null;
+    let sqlWorker = window.sqlWorker || null;
     let isSearchEngineLoading = false;
     
     globalSearch.addEventListener('focus', async () => {
@@ -455,7 +455,7 @@ if (globalSearch && searchDropdown) {
 const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/dist/sqlite.worker.js";
 const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/dist/sql-wasm.wasm";
                 
-                sqlWorker = await createDbWorker(
+                sqlWorker = window.sqlWorker = await createDbWorker(
                     [{
                         from: "inline",
                         config: {
