@@ -1434,10 +1434,76 @@ if (btnJoinChallenge) {
                     return;
                 }
                 
-                const challengeData = challengeSnap.data();
+const challengeData = challengeSnap.data();
                 localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
                 
                 document.body.style.cursor = 'wait';
+                
+                let hydratedQueue = [];
+                try {
+                    const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                    const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                    const hierarchyData = await hierarchyRes.json();
+                    const subjects = Object.keys(hierarchyData.subjects || {});
+                    
+                    const metaPromises = subjects.map(async (subj) => {
+                        const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                        try {
+                            const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                            if (res.ok) return await res.json();
+                        } catch(e) {}
+                        return [];
+                    });
+                    
+                    const allMetaArrays = await Promise.all(metaPromises);
+                    const globalMetadata = allMetaArrays.flat();
+                    
+                    const chunksToLoad = new Set();
+                    challengeData.questionIds.forEach(id => {
+                        const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
+                        if (meta) {
+                            const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                            const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                            chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                        }
+                    });
+
+                    const activeChunksCache = {};
+                    const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
+                        let page = 1;
+                        let keepFetching = true;
+                        while (keepFetching) {
+                            const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                            try {
+                                const res = await fetch(pageUrl);
+                                if (res.ok) activeChunksCache[pageUrl] = await res.json();
+                                else keepFetching = false;
+                            } catch(e) { keepFetching = false; }
+                            page++;
+                        }
+                    });
+                    await Promise.all(fetchPromises);
+
+                    const fullQuestionsMap = {};
+                    Object.values(activeChunksCache).forEach(chunkArray => {
+                        chunkArray.forEach(fullQ => {
+                            const qId = fullQ.id || fullQ.QuestionID;
+                            if (qId) fullQuestionsMap[String(qId)] = fullQ;
+                        });
+                    });
+
+                    hydratedQueue = challengeData.questionIds.map(id => fullQuestionsMap[String(id)]).filter(q => q);
+                } catch (err) {
+                    console.error("Hydration Error:", err);
+                }
+
+                if (hydratedQueue.length === 0) {
+                    document.body.style.cursor = 'default';
+                    confirmBtn.innerHTML = 'Join Match';
+                    confirmBtn.disabled = false;
+                    return alert("Failed to load challenge questions.");
+                }
+                
                 const request = indexedDB.open("EdeetosDB", 1);
                 
                 request.onupgradeneeded = (e) => {
@@ -1448,7 +1514,7 @@ if (btnJoinChallenge) {
                 request.onsuccess = (e) => {
                     const idb = e.target.result;
                     const tx = idb.transaction("quiz_sessions", "readwrite");
-                    tx.objectStore("quiz_sessions").put(challengeData.queue, "active_quiz_queue");
+                    tx.objectStore("quiz_sessions").put(hydratedQueue, "active_quiz_queue");
                     tx.oncomplete = () => {
                         localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: challengeData.calcMinutes, examName: 'Friend Challenge vs ' + challengeData.hostName }));
                         window.location.href = 'quiz.html';
