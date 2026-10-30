@@ -17,6 +17,10 @@
 </head>
 <body>
 
+    <!-- AMBIENT BACKGROUND GLOWS -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -27,12 +31,11 @@
                 <ul class="nav-links">
                     <li><a href="#courses">Programs</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
                 </ul>
                 
                 <ul id="auth-menu" class="auth-menu">
-                    <!-- Controlled by index.js -->
                     <li><a href="login.html" class="nav-link-subtle">Log In</a></li>
                     <li><a href="register.html" class="btn-primary">Get Started</a></li>
                 </ul>
@@ -44,183 +47,233 @@
         </div>
     </nav>
 
-    <!-- HIGH CONVERSION HERO -->
+    <!-- HERO: HIGH IMPACT -->
     <header class="hero-section">
-        <div class="hero-grid">
-            <div class="hero-text">
-                <span class="badge-pill">FCPS • MBBS • MRCS</span>
-                <h1>Master your medical exams with precision.</h1>
-                <p class="hero-desc">Stop guessing what to study. Get access to 20,000+ high-yield MCQs, intelligent spaced repetition, and 1-on-1 mentorship from doctors who already cleared the exam.</p>
-                <div class="hero-cta-group">
-                    <a href="register.html" class="btn-primary btn-large">Start Practicing Now</a>
-                    <a href="#courses" class="btn-secondary btn-large">View Programs</a>
-                </div>
-                
-                <!-- STATS MOVED TO HERO FOR IMMEDIATE TRUST -->
-                <div class="hero-social-proof">
-                    <div class="proof-item">
-                        <span class="proof-number">20k+</span>
-                        <span class="proof-label">Practice MCQs</span>
-                    </div>
-                    <div class="proof-item">
-                        <span class="proof-number">24/7</span>
-                        <span class="proof-label">Expert Support</span>
-                    </div>
-                    <div class="proof-item">
-                        <span class="proof-number">3</span>
-                        <span class="proof-label">Expert Mentors</span>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-content text-center">
+            <div class="badge-pill pulse-border">Trusted by 10,000+ Medical Students</div>
+            <h1>Stop guessing. Start <span class="text-highlight">clearing exams.</span></h1>
+            <p class="hero-desc">The only data-driven platform for FCPS, MBBS, and MRCS. Get 20,000+ targeted MCQs, spaced repetition algorithms, and 1-on-1 mentorship from doctors who already beat the curve.</p>
             
-            <!-- DEVICE MOCKUPS -->
-            <div class="hero-visuals">
-                <div class="device-composition">
-                    <div class="laptop-frame">
-                        <img src="Pictures/laptop-ss.jpg" alt="Desktop Dashboard" class="screen-img">
-                    </div>
-                    <div class="mobile-frame">
-                        <img src="Pictures/mobile-ss.jpg" alt="Mobile App" class="screen-img">
+            <div class="hero-cta-group justify-center">
+                <a href="register.html" class="btn-primary btn-large">Claim Your Free Trial</a>
+                <a href="#courses" class="btn-secondary btn-large"><i class="fas fa-play-circle"></i> See How It Works</a>
+            </div>
+        </div>
+
+        <!-- FLOATING MOCKUPS -->
+        <div class="hero-mockups">
+            <div class="laptop-frame main-mockup">
+                <img src="Pictures/laptop-ss.png" alt="EDEETOS Desktop" class="screen-img">
+                
+                <!-- FLOATING STAT CARD -->
+                <div class="floating-stat glass-card">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-data">
+                        <span class="stat-num">94%</span>
+                        <span class="stat-text">Pass Rate</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="courses" class="section-block bg-alt">
+    <!-- TRUST BANNER -->
+    <section class="trust-banner border-y">
+        <p class="trust-label">STUDENTS FROM TOP INSTITUTIONS TRUST EDEETOS</p>
+        <div class="logo-strip">
+            <i class="fas fa-university"></i>
+            <i class="fas fa-hospital"></i>
+            <i class="fas fa-clinic-medical"></i>
+            <i class="fas fa-microscope"></i>
+            <i class="fas fa-heartbeat"></i>
+        </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="courses" class="section-block relative">
         <div class="section-header text-center">
-            <h2>Select Your Path</h2>
-            <p>Targeted resource banks designed specifically for your next major milestone.</p>
+            <h2>Specialized Pathways</h2>
+            <p>Engineered strictly for your current milestone. No generic content.</p>
         </div>
         
-        <div class="path-grid">
-            <div class="path-card">
-                <div class="path-icon"><i class="fas fa-stethoscope"></i></div>
+        <div class="pathway-grid">
+            <a href="fcps.html" class="pathway-card">
+                <div class="card-header">
+                    <div class="icon-box"><i class="fas fa-stethoscope"></i></div>
+                    <span class="path-badge">Part 1 & 2</span>
+                </div>
                 <h3>FCPS Prep</h3>
-                <p>Comprehensive preparation for Part 1, IMM, and Part 2. High-yield notes and strict topic tests to guarantee retention.</p>
-            </div>
-            <div class="path-card">
-                <div class="path-icon"><i class="fas fa-dna"></i></div>
+                <p>Dominate IMM and Part 2 with high-yield notes, strictly timed topic tests, and targeted case studies.</p>
+                <span class="card-link">Explore Program &rarr;</span>
+            </a>
+            
+            <a href="mbbs.html" class="pathway-card active-card">
+                <div class="card-header">
+                    <div class="icon-box"><i class="fas fa-dna"></i></div>
+                    <span class="path-badge">Years 1-5</span>
+                </div>
                 <h3>MBBS Core</h3>
-                <p>Complete guidance from 1st to 5th year. Build an unbreakable conceptual foundation across all modules.</p>
-            </div>
-            <div class="path-card">
-                <div class="path-icon"><i class="fas fa-hospital-user"></i></div>
+                <p>Build an unbreakable foundation. Module-by-module breakdown of anatomy, physio, and clinicals.</p>
+                <span class="card-link">Explore Program &rarr;</span>
+            </a>
+
+            <a href="mrcs.html" class="pathway-card">
+                <div class="card-header">
+                    <div class="icon-box"><i class="fas fa-hospital-user"></i></div>
+                    <span class="path-badge">Royal College</span>
+                </div>
                 <h3>MRCS / MRCP</h3>
-                <p>Targeted practice materials, advanced video lectures, and live sessions tailored for royal college formats.</p>
-            </div>
+                <p>Advanced video lectures, UK-standard clinical vignettes, and live peer study rooms.</p>
+                <span class="card-link">Explore Program &rarr;</span>
+            </a>
         </div>
     </section>
 
-    <!-- RESTORED: PATH TO SUCCESS -->
-    <section class="section-block">
+    <!-- FEATURES BENTO -->
+    <section id="features" class="section-block bg-alt border-y">
         <div class="section-header text-center">
-            <h2>Your Path to Success</h2>
-            <p>A proven, 3-step methodology to clear your medical exams.</p>
-        </div>
-        <div class="process-grid">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <h4>Choose Your Path</h4>
-                <p>Select your target exam (FCPS, MBBS, MRCS) and access customized study materials.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <h4>Practice & Learn</h4>
-                <p>Attempt high-yield MCQs, review detailed explanations, and watch video lectures.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <h4>Track Progress</h4>
-                <p>Use our analytics to identify weak areas and get 1-on-1 mentor guidance.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="section-block bg-alt">
-        <div class="section-header text-center">
-            <h2>Built for peak retention.</h2>
-            <p>We eliminated the fluff so you can focus strictly on what clears the cut-line.</p>
+            <h2>An unfair advantage.</h2>
+            <p>We built the tools that traditional medical schools refuse to adapt.</p>
         </div>
         
         <div class="bento-grid">
-            <div class="bento-card span-2">
-                <div class="bento-content">
-                    <h3>Spaced Repetition Algorithm</h3>
-                    <p>Our system tracks your accuracy down to the specific anatomical system and forces you to review your weakest topics right before the forgetting curve hits.</p>
-                </div>
-            </div>
-            <div class="bento-card">
-                <div class="bento-content">
-                    <h3>Live Study Rooms</h3>
-                    <p>Sync your screen and solve complex case studies with your peers in real-time.</p>
-                </div>
-            </div>
-            <div class="bento-card">
-                <div class="bento-content">
-                    <h3>Targeted Analytics</h3>
-                    <p>Instantly generate automated quizzes focusing exclusively on the MCQs you previously failed.</p>
-                </div>
-            </div>
-            <div class="bento-card span-2">
-                <div class="bento-content">
-                    <h3>1-on-1 Mentorship</h3>
-                    <p>Stop guessing your schedule. Get custom timetables and direct access to specialists who have beaten this exact exam.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RESTORED: TEAM SECTION -->
-    <section id="team" class="section-block">
-        <div class="section-header text-center">
-            <h2>Meet Our Leadership</h2>
-            <p>Mentorship from experienced medical professionals.</p>
-        </div>
-        <div class="team-container text-center">
-            <div class="team-card">
-                <img src="Pictures/Hassaan.jpeg" alt="Dr. Hassaan Shahid" class="team-pic">
-                <h3>Dr. Hassaan Shahid</h3>
-                <p class="team-role">Founder / President</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- RESTORED: FAQ SECTION -->
-    <section id="faq" class="section-block bg-alt">
-        <div class="section-header text-center">
-            <h2>Frequently Asked Questions</h2>
-            <p>Everything you need to know about the EDEETOS platform.</p>
-        </div>
-        <div class="faq-wrapper">
-            <div class="faq-item">
-                <h4>Are the MCQs up to date?</h4>
-                <p>Yes, our medical professionals regularly update the question banks to reflect the latest exam patterns and guidelines.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Can I access this on my phone?</h4>
-                <p>Absolutely. The EDEETOS platform is fully optimized for mobile devices, so you can study anywhere, anytime.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Do I get access to mentors?</h4>
-                <p>Yes, our premium plans include 1-on-1 guidance from specialists who have successfully cleared the exams you are preparing for.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section-block">
-        <div class="split-contact">
-            <div class="contact-text">
-                <h2>Got questions? Let's talk.</h2>
-                <p>Whether you need advice on which tier to pick or guidance on your study timeline, drop us a line.</p>
-                
-                <div class="direct-contact-methods">
-                    <a href="mailto:edeetos@gmail.com" class="contact-pill"><i class="fas fa-envelope"></i> edeetos@gmail.com</a>
-                    <a href="https://wa.me/923202289180" class="contact-pill"><i class="fab fa-whatsapp"></i> +92 320 2289180</a>
+            <div class="bento-box feature-large">
+                <div class="bento-text">
+                    <div class="bento-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Algorithmic Spaced Repetition</h3>
+                    <p>Stop forgetting what you read last month. Our system tracks your accuracy by anatomical system and forces reviews right before the memory decays.</p>
                 </div>
             </div>
             
-            <div class="contact-form-wrapper">
+            <div class="bento-box">
+                <div class="bento-icon"><i class="fas fa-users"></i></div>
+                <h3>Live Study Rooms</h3>
+                <p>Sync screens and solve complex MCQs with peers in real-time.</p>
+            </div>
+            
+            <div class="bento-box">
+                <div class="bento-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Targeted Analytics</h3>
+                <p>Instantly generate automated quizzes focusing exclusively on failed topics.</p>
+            </div>
+            
+            <div class="bento-box feature-wide">
+                <div class="bento-text">
+                    <div class="bento-icon"><i class="fas fa-user-md"></i></div>
+                    <h3>1-on-1 Mentorship & Timetabling</h3>
+                    <p>Stop guessing your schedule. Get custom, week-by-week timetables and direct access to specialists like Dr. Hassaan Shahid to keep you accountable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="reviews" class="section-block">
+        <div class="section-header text-center">
+            <h2>Don't just take our word for it.</h2>
+            <p>Real results from doctors who used our system.</p>
+        </div>
+        
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"The spaced repetition completely changed how I retain pharma. Cleared my FCPS Part 1 on the first attempt."</p>
+                <div class="reviewer">
+                    <strong>Dr. Ahmed R.</strong>
+                    <span>FCPS Candidate</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"The targeted analytics showed me exactly where I was bleeding marks. The custom timetables kept me sane."</p>
+                <div class="reviewer">
+                    <strong>Dr. Sarah M.</strong>
+                    <span>MRCS Prep</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"Live study rooms are a game-changer. Discussing tricky vignettes with peers in real-time made everything stick."</p>
+                <div class="reviewer">
+                    <strong>Dr. Bilal K.</strong>
+                    <span>Final Year MBBS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section-block bg-alt border-y">
+        <div class="section-header text-center">
+            <h2>Straightforward Pricing.</h2>
+            <p>Invest in your career. Cheaper than retaking the exam.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Basic</h3>
+                <div class="price">Free</div>
+                <p class="price-desc">Perfect to test the waters.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 500 Practice MCQs</li>
+                    <li><i class="fas fa-check"></i> Basic Analytics</li>
+                    <li><i class="fas fa-times text-muted"></i> No Mentorship</li>
+                </ul>
+                <a href="register.html" class="btn-secondary w-100 mt-auto">Get Started</a>
+            </div>
+            
+            <div class="price-card premium-card">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Pro Tier</h3>
+                <div class="price">$29<span>/mo</span></div>
+                <p class="price-desc">Everything you need to clear.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 20,000+ MCQs</li>
+                    <li><i class="fas fa-check"></i> Spaced Repetition</li>
+                    <li><i class="fas fa-check"></i> Custom Timetabling</li>
+                    <li><i class="fas fa-check"></i> Live Study Rooms</li>
+                </ul>
+                <a href="register.html" class="btn-primary w-100 mt-auto">Start Free Trial</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Elite</h3>
+                <div class="price">$89<span>/mo</span></div>
+                <p class="price-desc">Maximum accountability.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> All Pro Features</li>
+                    <li><i class="fas fa-check"></i> 1-on-1 Mentor Calls</li>
+                    <li><i class="fas fa-check"></i> Essay/Thesis Review</li>
+                    <li><i class="fas fa-check"></i> Priority Support</li>
+                </ul>
+                <a href="register.html" class="btn-secondary w-100 mt-auto">Upgrade to Elite</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & CONTACT SPLIT -->
+    <section id="contact" class="section-block relative">
+        <div class="split-layout">
+            <div class="faq-side">
+                <h2>Got Questions?</h2>
+                <div class="faq-accordion">
+                    <div class="faq-box">
+                        <h4>Are the MCQs up to date?</h4>
+                        <p>Yes. Our board of medical professionals updates the banks weekly based on the latest clinical guidelines and exam patterns.</p>
+                    </div>
+                    <div class="faq-box">
+                        <h4>Can I access this on my phone?</h4>
+                        <p>Absolutely. The entire platform, including mock exams and spaced repetition flashcards, is mobile-optimized.</p>
+                    </div>
+                    <div class="faq-box">
+                        <h4>How does mentorship work?</h4>
+                        <p>Elite tier users get mapped to a specialist who cleared their specific exam. You get monthly calls and direct WhatsApp access.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-side glass-card">
+                <h3>Drop us a line.</h3>
                 <form id="contact-form" class="clean-form">
                     <div class="input-row">
                         <div class="form-group">
@@ -238,7 +291,7 @@
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea id="contact-msg" rows="3" required></textarea>
+                        <textarea id="contact-msg" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="btn-primary w-100">Send Message</button>
                 </form>
@@ -246,9 +299,47 @@
         </div>
     </section>
 
-    <footer class="site-footer">
+    <!-- MEGA FOOTER -->
+    <footer class="mega-footer border-y">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="Pictures/logo_transparent.png" alt="EDEETOS" class="footer-logo">
+                <p>The premier ecosystem for serious medical students. Build your foundation, clear your exams, advance your career.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/923202289180"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#courses">FCPS Prep</a></li>
+                    <li><a href="#courses">MBBS Core</a></li>
+                    <li><a href="#courses">MRCS / MRCP</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#reviews">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Get in Touch</h4>
+                <p><i class="fas fa-envelope"></i> edeetos@gmail.com</p>
+                <p><i class="fab fa-whatsapp"></i> +92 320 2289180</p>
+            </div>
+        </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 EDEETOS. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+            <p>&copy; 2026 EDEETOS. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
         </div>
     </footer>
     
