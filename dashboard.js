@@ -26,6 +26,7 @@ let currentUserData = null;
 let currentUserId = null;
 let hasCheckedDowngrade = false;
 let cachedNotesData = []; 
+
 const idbCache = {
     async init() {
         return new Promise((resolve, reject) => {
@@ -59,14 +60,15 @@ const idbCache = {
 onAuthStateChanged(auth, async (user) => {
     const freeWarning = document.getElementById('free-warning-text');
     const subStatus = document.getElementById('subscription-status');
+    const userNameEl = document.getElementById('user-name');
 
     if (user) {
         currentUserId = user.uid;
         const userRef = doc(db, "users", user.uid);
         
         const cachedUser = await idbCache.get(user.uid);
-        if (cachedUser && document.getElementById('user-name').textContent === "...") {
-            document.getElementById('user-name').textContent = cachedUser.fullName || "Doctor";
+        if (cachedUser && userNameEl.textContent === "...") {
+            userNameEl.textContent = cachedUser.fullName || "Doctor";
         }
 
         try {
@@ -78,14 +80,17 @@ onAuthStateChanged(auth, async (user) => {
                 
                 // BAN CHECK
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
-                    document.getElementById('user-name').textContent = "ACCOUNT SUSPENDED";
-                    if (subStatus) { subStatus.textContent = "BANNED"; subStatus.className = "status-badge badge-banned"; }
+                    userNameEl.textContent = "ACCOUNT SUSPENDED";
+                    if (subStatus) { 
+                        subStatus.textContent = "BANNED"; 
+                        subStatus.className = "status-badge badge-banned"; 
+                    }
                     renderLockoutScreen();
                     return; 
                 }               
                 
                 // HEADER UI
-                document.getElementById('user-name').textContent = currentUserData.fullName || "Doctor";
+                userNameEl.textContent = currentUserData.fullName || "Doctor";
 
                 if (currentUserData.examDate) {
                     const today = new Date(); today.setHours(0, 0, 0, 0); 
@@ -112,15 +117,30 @@ onAuthStateChanged(auth, async (user) => {
                 const activeCourseEl = document.getElementById('active-course-name');
                 if (activeCourseEl) {
                     activeCourseEl.textContent = userCourseCode ? (courseNamesMap[userCourseCode] || "Unknown Course") : "No Course Assigned";
-                    if (!userCourseCode) activeCourseEl.style.color = "#fca5a5";
+                    if (!userCourseCode) activeCourseEl.classList.add('text-danger');
                 }
 
                 const dynamicCourseContainer = document.getElementById('dynamic-course-container');
                 if (dynamicCourseContainer) {
+                    dynamicCourseContainer.innerHTML = '';
                     if (userCourseCode) {
-                        dynamicCourseContainer.innerHTML = `<label class="course-checkbox-label cursor-pointer font-bold"><input type="checkbox" class="course-check" value="${userCourseCode}" checked> ${courseNamesMap[userCourseCode] || "Unknown Course"}</label>`;
+                        const label = document.createElement('label');
+                        label.className = 'course-checkbox-label cursor-pointer font-bold';
+                        
+                        const input = document.createElement('input');
+                        input.type = 'checkbox';
+                        input.className = 'course-check';
+                        input.value = userCourseCode;
+                        input.checked = true;
+                        
+                        label.appendChild(input);
+                        label.appendChild(document.createTextNode(` ${courseNamesMap[userCourseCode] || "Unknown Course"}`));
+                        dynamicCourseContainer.appendChild(label);
                     } else {
-                        dynamicCourseContainer.innerHTML = `<div class="font-xs font-bold" style="color:#fca5a5;">Action Required: Request a course in your Profile first.</div>`;
+                        const div = document.createElement('div');
+                        div.className = 'font-xs font-bold text-danger';
+                        div.textContent = 'Action Required: Request a course in your Profile first.';
+                        dynamicCourseContainer.appendChild(div);
                     }
                 }
 
@@ -148,7 +168,10 @@ onAuthStateChanged(auth, async (user) => {
                     if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else {
                     if(subStatus) { subStatus.textContent = "Free Tier"; subStatus.classList.add('badge-free'); }
-                    if (freeWarning) { freeWarning.classList.remove('view-hidden'); freeWarning.textContent = "(Free users limited to 50Qs/subject)"; }
+                    if (freeWarning) { 
+                        freeWarning.classList.remove('view-hidden'); 
+                        freeWarning.textContent = "(Free users limited to 50Qs/subject)"; 
+                    }
                 }
                 
                 const btnReports = document.getElementById('btn-reports-panel');
@@ -157,9 +180,9 @@ onAuthStateChanged(auth, async (user) => {
                     
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
-                        btnMentor.innerHTML = "Open Mentorship Hub";
-                        const cardH3 = btnMentor.parentElement.querySelector('h3');
-                        const cardP = btnMentor.parentElement.querySelector('p');
+                        btnMentor.textContent = "Open Mentorship Hub";
+                        const cardH3 = document.getElementById('mentor-card-title');
+                        const cardP = document.getElementById('mentor-card-desc');
                         if (cardH3) cardH3.textContent = "Mentorship Hub";
                         if (cardP) cardP.textContent = "Manage incoming student chat requests.";
                     }
@@ -176,53 +199,53 @@ onAuthStateChanged(auth, async (user) => {
     } else {
         // GUEST MODE
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            document.getElementById('user-name').textContent = "Guest";
-            if(subStatus) { subStatus.textContent = "Guest Mode"; subStatus.className = "status-badge badge-guest"; }
-            if (freeWarning) { freeWarning.classList.remove('view-hidden'); freeWarning.textContent = "(Guests limited to 20Qs/subject)"; freeWarning.style.color = "#94a3b8"; }
+            userNameEl.textContent = "Guest";
+            if(subStatus) { 
+                subStatus.textContent = "Guest Mode"; 
+                subStatus.className = "status-badge badge-guest"; 
+            }
+            if (freeWarning) { 
+                freeWarning.classList.remove('view-hidden'); 
+                freeWarning.textContent = "(Guests limited to 20Qs/subject)"; 
+                freeWarning.classList.add('text-muted'); 
+            }
         } else {
             window.location.href = 'index.html'; 
         }
     }
 });
 
-// === 3. NAVIGATION & UTILITIES ===
+// === 3. NAVIGATION & UI TOGGLES ===
 document.getElementById('logout-btn').addEventListener('click', () => {
     localStorage.removeItem('edeetos_guest_mode'); 
     signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => { window.location.href = 'index.html'; });
 });
 
-document.getElementById('btn-admin-panel').addEventListener('click', () => window.location.href = 'admin.html');
-document.getElementById('btn-contact-mentor').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Mentorship.");
-    window.location.href = 'mentor.html';
-});
+const btnAdminPanel = document.getElementById('btn-admin-panel');
+if (btnAdminPanel) btnAdminPanel.addEventListener('click', () => window.location.href = 'admin.html');
+
+const btnReportsPanel = document.getElementById('btn-reports-panel');
+if (btnReportsPanel) btnReportsPanel.addEventListener('click', () => window.location.href = 'reports.html?v=7');
+
+const btnStudyVault = document.getElementById('btn-study-vault');
+if (btnStudyVault) btnStudyVault.addEventListener('click', () => alert('Study Vault is Coming Soon!'));
+
+const btnContactMentor = document.getElementById('btn-contact-mentor');
+if (btnContactMentor) {
+    btnContactMentor.addEventListener('click', () => {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Mentorship.");
+        window.location.href = 'mentor.html';
+    });
+}
 
 document.querySelectorAll('.btn-close-modal').forEach(btn => {
     btn.addEventListener('click', (e) => e.target.closest('.popup-overlay').classList.add('view-hidden'));
 });
 
+// === 4. DYNAMIC MODALS (Tasks, Guests, Bans) ===
 function renderLockoutScreen() {
-    let lockoutModal = document.getElementById('lockout-screen');
-    if (!lockoutModal) {
-        lockoutModal = document.createElement('div');
-        lockoutModal.id = 'lockout-screen';
-        lockoutModal.className = 'popup-overlay z-99999';
-        lockoutModal.style.backgroundColor = 'rgba(6, 9, 17, 0.98)';
-        document.body.appendChild(lockoutModal);
-    }
-    
-    lockoutModal.innerHTML = `
-        <div class="glass-panel popup-content text-center" style="border-color: rgba(239, 68, 68, 0.4);">
-             <i class="fas fa-ban text-orange icon-xl mb-1" style="color: #ef4444 !important; font-size: 5rem;"></i>
-             <h2 class="modal-title-dark">Account Suspended</h2>
-             <p class="modal-subtitle mb-1" style="color: #fca5a5;">Your account has been restricted due to policy violations.</p>
-             <textarea id="appeal-text" class="glass-input" placeholder="State your reason for appeal here..." style="margin-bottom: 1rem; resize: vertical; min-height: 80px;"></textarea>
-             <div style="display: flex; gap: 10px; margin-bottom: 1rem;">
-                 <button id="btn-submit-appeal" class="action-btn next-btn" style="flex: 1; background: #f59e0b; border-color: #fbbf24; color: #fff;">Submit Appeal</button>
-                 <button id="btn-banned-logout" class="action-btn bg-danger" style="flex: 1; color: #fff;">Log Out</button>
-             </div>
-        </div>
-    `;
+    const lockoutModal = document.getElementById('lockout-screen');
+    if (!lockoutModal) return;
     
     lockoutModal.classList.remove('view-hidden');
     document.body.style.overflow = 'hidden';
@@ -263,19 +286,22 @@ function setupMentorStatus() {
     const btnMentorStatus = document.getElementById('btn-mentor-status');
     if (!btnMentorStatus) return;
     btnMentorStatus.classList.remove('view-hidden');
+    
+    const iconSpan = btnMentorStatus.querySelector('.status-icon');
+    const textSpan = btnMentorStatus.querySelector('.status-text');
     let isOnline = currentUserData.isOnline || false;
 
     const updateStatusUI = (status) => {
         if (status) { 
-            btnMentorStatus.innerHTML = '🟢 Online'; 
-            btnMentorStatus.style.background = 'rgba(16, 185, 129, 0.2)'; 
-            btnMentorStatus.style.color = '#34d399'; 
-            btnMentorStatus.style.borderColor = '#34d399';
+            iconSpan.textContent = '🟢';
+            textSpan.textContent = 'Online';
+            btnMentorStatus.classList.remove('mentor-offline');
+            btnMentorStatus.classList.add('mentor-online');
         } else { 
-            btnMentorStatus.innerHTML = '⚪ Offline'; 
-            btnMentorStatus.style.background = 'transparent'; 
-            btnMentorStatus.style.color = '#94a3b8'; 
-            btnMentorStatus.style.borderColor = 'rgba(255,255,255,0.2)';
+            iconSpan.textContent = '⚪';
+            textSpan.textContent = 'Offline';
+            btnMentorStatus.classList.remove('mentor-online');
+            btnMentorStatus.classList.add('mentor-offline');
         }
     };
 
@@ -292,7 +318,7 @@ function setupMentorAlerts() {
     const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
     
     onSnapshot(q, (snapshot) => {
-        let banner = document.getElementById('mentor-alert-banner');
+        const banner = document.getElementById('mentor-alert-banner');
         if(!banner) return;
         
         if (!snapshot.empty) {
@@ -318,134 +344,152 @@ async function checkAssignedExams() {
 
         if (pendingExams.length > 0) {
             const container = document.getElementById('task-notify-container');
-            if(!container || container.children.length > 0) return; // already rendered
+            if(!container || container.children.length > 0) return; 
             
-            const notifyCard = document.createElement('div');
-            notifyCard.className = 'task-notify-card glass-panel';
-            notifyCard.innerHTML = `
-                <div class="flex-align-center gap-15px">
-                    <div class="task-notify-icon"><i class="fas fa-bell"></i></div>
-                    <div>
-                        <h3 class="task-notify-title">New Mentor Assignments</h3>
-                        <p class="task-notify-desc">You have ${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''} waiting for you.</p>
-                    </div>
-                </div>
-                <button class="action-btn next-btn" style="padding: 0.5rem 1rem;">View Tasks</button>
-            `;
-            container.appendChild(notifyCard);
+            const tmpl = document.getElementById('task-notify-template');
+            if(tmpl) {
+                const clone = tmpl.content.cloneNode(true);
+                const countSpan = clone.querySelector('.task-count');
+                const btnView = clone.querySelector('button');
+                
+                countSpan.textContent = `${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''}`;
+                container.appendChild(clone);
+                
+                const taskModal = document.getElementById('assigned-tasks-modal');
+                const taskListContainer = document.getElementById('task-list-container');
+                taskListContainer.innerHTML = '';
+                
+                pendingExams.forEach((exam, index) => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'task-item-card';
+                    
+                    const infoDiv = document.createElement('div');
+                    
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'task-item-title';
+                    titleDiv.textContent = exam.title;
+                    
+                    const badgeRow = document.createElement('div');
+                    badgeRow.className = 'flex-row gap-10px';
+                    
+                    const timeBadge = document.createElement('span');
+                    timeBadge.className = 'task-badge-time';
+                    timeBadge.textContent = `⏱ ${exam.timerMinutes} Min`;
+                    
+                    const countBadge = document.createElement('span');
+                    countBadge.className = 'task-badge-count';
+                    countBadge.textContent = `📚 ${exam.questions.length} Qs`;
+                    
+                    badgeRow.appendChild(timeBadge);
+                    badgeRow.appendChild(countBadge);
+                    
+                    infoDiv.appendChild(titleDiv);
+                    infoDiv.appendChild(badgeRow);
+                    
+                    const launchBtn = document.createElement('button');
+                    launchBtn.id = `launch-assigned-${index}`;
+                    launchBtn.className = 'action-btn task-start-btn';
+                    launchBtn.textContent = 'Start Now';
+                    
+                    cardDiv.appendChild(infoDiv);
+                    cardDiv.appendChild(launchBtn);
+                    taskListContainer.appendChild(cardDiv);
+                });
 
-            const taskModal = document.getElementById('assigned-tasks-modal');
-            const taskListContainer = document.getElementById('task-list-container');
-            
-            let modalHtml = "";
-            pendingExams.forEach((exam, index) => {
-                modalHtml += `
-                    <div class="task-item-card">
-                        <div>
-                            <div class="task-item-title">${exam.title}</div>
-                            <div class="flex-row gap-10px">
-                                <span class="task-badge-time"><i class="fas fa-clock"></i> ${exam.timerMinutes} Min</span>
-                                <span class="task-badge-count"><i class="fas fa-layer-group"></i> ${exam.questions.length} Qs</span>
-                            </div>
-                        </div>
-                        <button id="launch-assigned-${index}" class="action-btn" style="background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; color: #93c5fd;">Start Now</button>
-                    </div>
-                `;
-            });
-            taskListContainer.innerHTML = modalHtml;
+                container.firstElementChild.onclick = () => taskModal.classList.remove('view-hidden');
+                document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
 
-            notifyCard.onclick = () => taskModal.classList.remove('view-hidden');
-            document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
+                pendingExams.forEach((exam, index) => {
+                    const launchBtn = document.getElementById(`launch-assigned-${index}`);
+                    launchBtn.addEventListener('click', async () => {
+                        launchBtn.textContent = 'Loading...';
+                        launchBtn.classList.add('btn-loading');
+                        
+                        if (exam.course) localStorage.setItem('edeetos_active_course', exam.course);
+                        localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: exam.timerMinutes, examName: exam.title }));
+                        localStorage.setItem('edeetos_assigned_exam_id', exam.id);
+                        localStorage.removeItem('edeetos_aborted_session_backup');
+                        localStorage.removeItem('edeetos_quiz_state');
 
-pendingExams.forEach((exam, index) => {
-                const launchBtn = document.getElementById(`launch-assigned-${index}`);
-                launchBtn.addEventListener('click', async () => {
-                    launchBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading...`;
-                    launchBtn.style.opacity = "0.8"; launchBtn.style.pointerEvents = "none";
-                    if (exam.course) localStorage.setItem('edeetos_active_course', exam.course);
-                    localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: 'exam', timer: exam.timerMinutes, examName: exam.title }));
-                    localStorage.setItem('edeetos_assigned_exam_id', exam.id);
-                    localStorage.removeItem('edeetos_aborted_session_backup');
-                    localStorage.removeItem('edeetos_quiz_state');
+                        let hydratedQueue = [];
+                        try {
+                            const activeCourse = exam.course || localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                            const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                            const hierarchyData = await hierarchyRes.json();
+                            const subjects = Object.keys(hierarchyData.subjects || {});
+                            
+                            const metaPromises = subjects.map(async (subj) => {
+                                const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                try {
+                                    const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                                    if (res.ok) return await res.json();
+                                } catch(e) {}
+                                return [];
+                            });
+                            
+                            const allMetaArrays = await Promise.all(metaPromises);
+                            const globalMetadata = allMetaArrays.flat();
+                            
+                            const chunksToLoad = new Set();
+                            if (exam.questionIds) {
+                                exam.questionIds.forEach(id => {
+                                    const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
+                                    if (meta) {
+                                        const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                        const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                        chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                                    }
+                                });
+                            }
 
-                    let hydratedQueue = [];
-                    try {
-                        const activeCourse = exam.course || localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-                        
-                        const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
-                        const hierarchyData = await hierarchyRes.json();
-                        const subjects = Object.keys(hierarchyData.subjects || {});
-                        
-                        const metaPromises = subjects.map(async (subj) => {
-                            const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
-                            try {
-                                const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
-                                if (res.ok) return await res.json();
-                            } catch(e) {}
-                            return [];
-                        });
-                        
-                        const allMetaArrays = await Promise.all(metaPromises);
-                        const globalMetadata = allMetaArrays.flat();
-                        
-                        const chunksToLoad = new Set();
-                        if (exam.questionIds) {
-                            exam.questionIds.forEach(id => {
-                                const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
-                                if (meta) {
-                                    const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                    const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                    chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                            const activeChunksCache = {};
+                            const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
+                                let page = 1;
+                                let keepFetching = true;
+                                while (keepFetching) {
+                                    const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                                    try {
+                                        const res = await fetch(pageUrl);
+                                        if (res.ok) activeChunksCache[pageUrl] = await res.json();
+                                        else keepFetching = false;
+                                    } catch(e) { keepFetching = false; }
+                                    page++;
                                 }
                             });
+                            await Promise.all(fetchPromises);
+
+                            const fullQuestionsMap = {};
+                            Object.values(activeChunksCache).forEach(chunkArray => {
+                                chunkArray.forEach(fullQ => {
+                                    const qId = fullQ.id || fullQ.QuestionID;
+                                    if (qId) fullQuestionsMap[String(qId)] = fullQ;
+                                });
+                            });
+
+                            hydratedQueue = (exam.questionIds || []).map(id => fullQuestionsMap[String(id)]).filter(q => q);
+                        } catch (err) { console.error("Hydration Error:", err); }
+
+                        if (hydratedQueue.length === 0) {
+                            launchBtn.textContent = "Start Now"; 
+                            launchBtn.classList.remove('btn-loading');
+                            return alert("Failed to load exam questions.");
                         }
 
-                        const activeChunksCache = {};
-                        const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
-                            let page = 1;
-                            let keepFetching = true;
-                            while (keepFetching) {
-                                const pageUrl = baseUrl.replace('.json', `_${page}.json`);
-                                try {
-                                    const res = await fetch(pageUrl);
-                                    if (res.ok) activeChunksCache[pageUrl] = await res.json();
-                                    else keepFetching = false;
-                                } catch(e) { keepFetching = false; }
-                                page++;
-                            }
-                        });
-                        await Promise.all(fetchPromises);
-
-                        const fullQuestionsMap = {};
-                        Object.values(activeChunksCache).forEach(chunkArray => {
-                            chunkArray.forEach(fullQ => {
-                                const qId = fullQ.id || fullQ.QuestionID;
-                                if (qId) fullQuestionsMap[String(qId)] = fullQ;
-                            });
-                        });
-
-                        hydratedQueue = (exam.questionIds || []).map(id => fullQuestionsMap[String(id)]).filter(q => q);
-                    } catch (err) {
-                        console.error("Hydration Error:", err);
-                    }
-
-                    if (hydratedQueue.length === 0) {
-                        launchBtn.innerHTML = "Start Now"; 
-                        launchBtn.style.opacity = "1"; 
-                        launchBtn.style.pointerEvents = "auto";
-                        return alert("Failed to load exam questions.");
-                    }
-
-                    const request = indexedDB.open("EdeetosDB", 1);
-                    request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains("quiz_sessions")) e.target.result.createObjectStore("quiz_sessions"); };
-                    request.onsuccess = (e) => {
-                        const tx = e.target.result.transaction("quiz_sessions", "readwrite");
-                        tx.objectStore("quiz_sessions").put(hydratedQueue, "active_quiz_queue");
-                        tx.oncomplete = () => window.location.href = 'quiz.html';
-                    };
-                    request.onerror = (e) => { alert("Failed to load exam data."); launchBtn.innerHTML = "Start Now"; launchBtn.style.opacity = "1"; launchBtn.style.pointerEvents = "auto"; };
+                        const request = indexedDB.open("EdeetosDB", 1);
+                        request.onupgradeneeded = (e) => { if (!e.target.result.objectStoreNames.contains("quiz_sessions")) e.target.result.createObjectStore("quiz_sessions"); };
+                        request.onsuccess = (e) => {
+                            const tx = e.target.result.transaction("quiz_sessions", "readwrite");
+                            tx.objectStore("quiz_sessions").put(hydratedQueue, "active_quiz_queue");
+                            tx.oncomplete = () => window.location.href = 'quiz.html';
+                        };
+                        request.onerror = (e) => { 
+                            alert("Failed to load exam data."); 
+                            launchBtn.textContent = "Start Now"; 
+                            launchBtn.classList.remove('btn-loading'); 
+                        };
+                    });
                 });
-            });
+            }
         }
     } catch (examErr) { console.error("Error fetching assigned exams:", examErr); }
 }
@@ -468,9 +512,15 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
         let activeSub = null;
         if (currentUserData.subscriptions && Object.keys(currentUserData.subscriptions).length > 0) activeSub = Object.keys(currentUserData.subscriptions)[0];
         
-        if (currentUserData.selectedCourse) { localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse); window.location.href = 'questions.html'; } 
-        else if (activeSub) { localStorage.setItem('edeetos_active_course', activeSub); window.location.href = 'questions.html'; } 
-        else { alert("Your assigned course is missing. Please request one in your Profile."); }
+        if (currentUserData.selectedCourse) { 
+            localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse); 
+            window.location.href = 'questions.html'; 
+        } else if (activeSub) { 
+            localStorage.setItem('edeetos_active_course', activeSub); 
+            window.location.href = 'questions.html'; 
+        } else { 
+            alert("Your assigned course is missing. Please request one in your Profile."); 
+        }
     }
 });
 
@@ -498,23 +548,34 @@ if (btnOpenNotes) {
         const modal = document.getElementById('notes-vault-modal');
         const listEl = document.getElementById('notes-vault-list');
         const searchInput = document.getElementById('notes-search-input');
-        modal.classList.remove('view-hidden'); searchInput.value = ''; 
+        
+        modal.classList.remove('view-hidden'); 
+        searchInput.value = ''; 
+        listEl.innerHTML = '';
         
         const activeCourse = currentUserData.selectedCourse;
         const notesObj = (activeCourse && currentUserData[activeCourse] && currentUserData[activeCourse].notes) ? currentUserData[activeCourse].notes : {};
         const noteKeys = Object.keys(notesObj);
         
-        if (noteKeys.length === 0) return listEl.innerHTML = '<div class="text-muted text-center p-2">You haven\'t saved any notes yet.</div>';
-        listEl.innerHTML = '<div class="text-muted text-center p-2 font-bold"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading question data...</div>';
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'text-muted text-center p-2 font-bold';
+
+        if (noteKeys.length === 0) {
+            msgDiv.textContent = "You haven't saved any notes yet.";
+            listEl.appendChild(msgDiv);
+            return;
+        }
+
+        msgDiv.textContent = "Loading question data...";
+        listEl.appendChild(msgDiv);
 
         let allQuestions = [];
         try {
-            // 1. Fetch metadata first to locate which mini-chunks contain the user's noted questions
             const metaRes = await fetch(`Data/${activeCourse}_metadata.json`, { cache: 'no-cache' });
             if (metaRes.ok) {
                 const metadata = await metaRes.json();
-                
                 const requiredChunks = new Set();
+                
                 metadata.forEach(metaQ => {
                     const qId = String(metaQ.id || metaQ.QuestionID);
                     if (noteKeys.includes(qId)) {
@@ -525,7 +586,6 @@ if (btnOpenNotes) {
                     }
                 });
 
-                // 2. Fetch only the specific chunks that hold the notes
                 const fetchPromises = Array.from(requiredChunks).map(async (chunkUrl) => {
                     try {
                         const chunkRes = await fetch(chunkUrl);
@@ -558,17 +618,37 @@ if (btnOpenNotes) {
 function renderNotes(notesArray) {
     const listEl = document.getElementById('notes-vault-list');
     listEl.innerHTML = '';
-    if (notesArray.length === 0) return listEl.innerHTML = '<div class="text-muted text-center p-2">No matching notes found.</div>';
+
+    if (notesArray.length === 0) {
+        const div = document.createElement('div');
+        div.className = 'text-muted text-center p-2';
+        div.textContent = 'No matching notes found.';
+        listEl.appendChild(div);
+        return;
+    }
     
     for (let i = 0; i < Math.min(notesArray.length, 50); i++) {
         const data = notesArray[i];
+        
         const noteCard = document.createElement('div');
         noteCard.className = "note-card";
-        noteCard.innerHTML = `
-            <div class="note-id">ID: ${data.id}</div>
-            <div class="note-stem">"${data.stem}"</div>
-            <div class="note-body">${data.note}</div>
-        `;
+        
+        const idDiv = document.createElement('div');
+        idDiv.className = "note-id";
+        idDiv.textContent = `ID: ${data.id}`;
+        
+        const stemDiv = document.createElement('div');
+        stemDiv.className = "note-stem";
+        stemDiv.textContent = `"${data.stem}"`;
+        
+        const bodyDiv = document.createElement('div');
+        bodyDiv.className = "note-body";
+        bodyDiv.textContent = data.note;
+        
+        noteCard.appendChild(idDiv);
+        noteCard.appendChild(stemDiv);
+        noteCard.appendChild(bodyDiv);
+        
         listEl.appendChild(noteCard);
     }
 }
@@ -588,11 +668,24 @@ document.getElementById('btn-open-premium').addEventListener('click', () => {
     updatePrices();
 });
 
-const tabBuy = document.getElementById('tab-buy'); const tabRedeem = document.getElementById('tab-redeem');
-const viewBuy = document.getElementById('view-buy'); const viewRedeem = document.getElementById('view-redeem');
+const tabBuy = document.getElementById('tab-buy'); 
+const tabRedeem = document.getElementById('tab-redeem');
+const viewBuy = document.getElementById('view-buy'); 
+const viewRedeem = document.getElementById('view-redeem');
 
-if(tabBuy) tabBuy.addEventListener('click', () => { tabBuy.className = 'active-tab'; tabRedeem.className = 'inactive-tab'; viewBuy.classList.remove('view-hidden'); viewRedeem.classList.add('view-hidden'); });
-if(tabRedeem) tabRedeem.addEventListener('click', () => { tabRedeem.className = 'active-tab'; tabBuy.className = 'inactive-tab'; viewRedeem.classList.remove('view-hidden'); viewBuy.classList.add('view-hidden'); });
+if(tabBuy) tabBuy.addEventListener('click', () => { 
+    tabBuy.className = 'active-tab'; 
+    tabRedeem.className = 'inactive-tab'; 
+    viewBuy.classList.remove('view-hidden'); 
+    viewRedeem.classList.add('view-hidden'); 
+});
+
+if(tabRedeem) tabRedeem.addEventListener('click', () => { 
+    tabRedeem.className = 'active-tab'; 
+    tabBuy.className = 'inactive-tab'; 
+    viewRedeem.classList.remove('view-hidden'); 
+    viewBuy.classList.add('view-hidden'); 
+});
 
 const courseSelectorModal = document.getElementById('course-selector-modal');
 document.getElementById('btn-open-course-selector').addEventListener('click', () => courseSelectorModal.classList.remove('view-hidden'));
@@ -600,52 +693,6 @@ document.getElementById('btn-confirm-courses').addEventListener('click', () => {
     if (document.querySelectorAll('.course-check:checked').length === 0 && document.querySelectorAll('.book-check:checked').length === 0) return alert("You must select at least one course or book.");
     courseSelectorModal.classList.add('view-hidden'); updatePrices();
 });
-
-// === UPDATE FILE UPLOAD NAME DISPLAY ===
-const fileInput = document.getElementById('payment-proof');
-const fileNameDisplay = document.getElementById('file-name-display');
-
-if (fileInput && fileNameDisplay) {
-    fileInput.addEventListener('change', function() {
-        if (this.files && this.files[0]) {
-            fileNameDisplay.textContent = this.files[0].name;
-            fileNameDisplay.style.color = '#34d399';
-            fileNameDisplay.style.fontWeight = 'bold';
-        } else {
-            fileNameDisplay.textContent = 'Click to browse or drag receipt here';
-            fileNameDisplay.style.color = '#94a3b8';
-            fileNameDisplay.style.fontWeight = 'normal';
-        }
-    });
-}
-
-let activePromoCode = null; let activePromoDiscount = 0; 
-const btnApplyPromo = document.getElementById('btn-apply-promo');
-if (btnApplyPromo) {
-    btnApplyPromo.addEventListener('click', async () => {
-        const codeInput = document.getElementById('promo-input').value.trim().toUpperCase();
-        const msgBox = document.getElementById('promo-message');
-        
-        if (!codeInput) { activePromoCode = null; activePromoDiscount = 0; msgBox.textContent = ""; updatePrices(); return; }
-        btnApplyPromo.innerHTML = "<i class='fas fa-spinner fa-spin'></i>"; btnApplyPromo.disabled = true;
-
-        try {
-            const promoSnap = await getDoc(doc(db, "promo_codes", codeInput));
-            if (promoSnap.exists()) {
-                const data = promoSnap.data();
-                if (data.isActive && (!data.expiryDate || new Date(data.expiryDate) > new Date())) {
-                    activePromoCode = codeInput; activePromoDiscount = data.discountPercentage || 0;
-                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`; msgBox.style.color = '#34d399';
-                    updatePrices();
-                } else throw new Error("Expired or inactive.");
-            } else throw new Error("Invalid promo code.");
-        } catch (e) {
-            activePromoCode = null; activePromoDiscount = 0;
-            msgBox.textContent = `❌ ${e.message || "Invalid code"}`; msgBox.style.color = '#fca5a5';
-            updatePrices();
-        } finally { btnApplyPromo.textContent = "Apply"; btnApplyPromo.disabled = false; }
-    });
-}
 
 function updatePrices() {
     const courseCount = document.querySelectorAll('.course-check:checked').length;
@@ -679,6 +726,59 @@ document.querySelectorAll('.plan-card').forEach(card => {
 });
 
 // === 7. PAYMENT UPLOAD & PROMO LOGIC ===
+const fileInput = document.getElementById('payment-proof');
+const fileNameDisplay = document.getElementById('file-name-display');
+
+if (fileInput && fileNameDisplay) {
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            fileNameDisplay.textContent = this.files[0].name;
+            fileNameDisplay.classList.add('file-uploaded');
+        } else {
+            fileNameDisplay.textContent = 'Click to browse or drag receipt here';
+            fileNameDisplay.classList.remove('file-uploaded');
+        }
+    });
+}
+
+let activePromoCode = null; let activePromoDiscount = 0; 
+const btnApplyPromo = document.getElementById('btn-apply-promo');
+if (btnApplyPromo) {
+    btnApplyPromo.addEventListener('click', async () => {
+        const codeInput = document.getElementById('promo-input').value.trim().toUpperCase();
+        const msgBox = document.getElementById('promo-message');
+        
+        if (!codeInput) { 
+            activePromoCode = null; activePromoDiscount = 0; 
+            msgBox.textContent = ""; 
+            updatePrices(); 
+            return; 
+        }
+        
+        btnApplyPromo.textContent = "Loading..."; 
+        btnApplyPromo.disabled = true;
+
+        try {
+            const promoSnap = await getDoc(doc(db, "promo_codes", codeInput));
+            if (promoSnap.exists()) {
+                const data = promoSnap.data();
+                if (data.isActive && (!data.expiryDate || new Date(data.expiryDate) > new Date())) {
+                    activePromoCode = codeInput; 
+                    activePromoDiscount = data.discountPercentage || 0;
+                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`; 
+                    msgBox.className = 'font-xs font-bold text-left mb-1-5 text-emerald';
+                    updatePrices();
+                } else throw new Error("Expired or inactive.");
+            } else throw new Error("Invalid promo code.");
+        } catch (e) {
+            activePromoCode = null; activePromoDiscount = 0;
+            msgBox.textContent = `❌ ${e.message || "Invalid code"}`; 
+            msgBox.className = 'font-xs font-bold text-left mb-1-5 text-danger';
+            updatePrices();
+        } finally { btnApplyPromo.textContent = "Apply"; btnApplyPromo.disabled = false; }
+    });
+}
+
 function compressImage(file) {
     return new Promise((resolve, reject) => {
         if (!file) return reject(new Error("No file"));
@@ -730,7 +830,9 @@ if (btnSubmitPayment) {
             await Promise.race([submitPromise, new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout.")), 12000))]);
             alert("Payment request submitted successfully!");
             
-            activePromoCode = null; activePromoDiscount = 0; document.getElementById('promo-input').value = ""; document.getElementById('promo-message').textContent = "";
+            activePromoCode = null; activePromoDiscount = 0; 
+            document.getElementById('promo-input').value = ""; 
+            document.getElementById('promo-message').textContent = "";
             document.getElementById('premium-modal').classList.add('view-hidden');
         } catch (e) { alert("Failed to submit request: " + (e.message || "Unknown error.")); } 
         finally { btnSubmitPayment.textContent = "Confirm & Submit Request"; btnSubmitPayment.disabled = false; }
@@ -786,19 +888,46 @@ if (btnOpenProfile) {
         if(displayField) displayField.value = currentUserData.selectedCourse ? (courseNamesMap[currentUserData.selectedCourse] || "Unknown Course") : "None (Action Required)";
         
         const btnChange = document.getElementById('btn-request-course-change');
-        if (btnChange && currentUserData.courseChangeRequested) { btnChange.textContent = "Change Request Pending Admin Approval..."; btnChange.style.color = "#94a3b8"; btnChange.style.pointerEvents = "none"; }
+        if (btnChange && currentUserData.courseChangeRequested) { 
+            btnChange.textContent = "Change Request Pending Admin Approval..."; 
+            btnChange.classList.add('btn-pending'); 
+        }
         
-        const subsList = document.getElementById('prof-subs-list'); subsList.innerHTML = '';
+        const subsList = document.getElementById('prof-subs-list'); 
+        subsList.innerHTML = '';
         let hasSubs = false;
 
         for (const [key, expiry] of Object.entries(currentUserData.subscriptions || {})) {
             hasSubs = true;
-            const item = document.createElement('div'); item.className = 'sub-item';
-            let badgeHtml = expiry === 'lifetime' ? '<span class="sub-tag sub-lifetime">Lifetime</span>' : (new Date(expiry) < new Date() ? '<span class="sub-tag sub-expired">Expired</span>' : `<span class="sub-tag sub-active">Active till ${new Date(expiry).toLocaleDateString()}</span>`);
-            item.innerHTML = `<span class="sub-name">${mergedNamesMap[key] || key}</span>${badgeHtml}`;
+            const item = document.createElement('div'); 
+            item.className = 'sub-item';
+            
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'sub-name';
+            nameSpan.textContent = mergedNamesMap[key] || key;
+            
+            const badgeSpan = document.createElement('span');
+            if (expiry === 'lifetime') {
+                badgeSpan.className = 'sub-tag sub-lifetime';
+                badgeSpan.textContent = 'Lifetime';
+            } else if (new Date(expiry) < new Date()) {
+                badgeSpan.className = 'sub-tag sub-expired';
+                badgeSpan.textContent = 'Expired';
+            } else {
+                badgeSpan.className = 'sub-tag sub-active';
+                badgeSpan.textContent = `Active till ${new Date(expiry).toLocaleDateString()}`;
+            }
+            
+            item.appendChild(nameSpan);
+            item.appendChild(badgeSpan);
             subsList.appendChild(item);
         }
-        if (!hasSubs) subsList.innerHTML = '<div class="text-muted font-sm text-center p-1">No active subscriptions found.</div>';
+        if (!hasSubs) {
+            const p = document.createElement('div');
+            p.className = 'text-muted font-sm text-center p-1';
+            p.textContent = 'No active subscriptions found.';
+            subsList.appendChild(p);
+        }
     });
 }
 
@@ -816,7 +945,8 @@ if (btnRequestChange && courseChangeModal) {
             try {
                 await updateDoc(doc(db, "users", currentUserId), { courseChangeRequested: true, requestedCourse: newCourse });
                 currentUserData.courseChangeRequested = true; currentUserData.requestedCourse = newCourse;
-                btnRequestChange.textContent = "Change Request Pending..."; btnRequestChange.style.color = "#94a3b8"; btnRequestChange.style.pointerEvents = "none";
+                btnRequestChange.textContent = "Change Request Pending..."; 
+                btnRequestChange.classList.add('btn-pending');
                 alert(`Request to switch to ${courseNamesMap[newCourse] || newCourse} submitted!`);
                 courseChangeModal.classList.add('view-hidden');
             } catch (error) { alert("Failed to submit request."); } finally { btnSubmitChange.textContent = "Submit Request"; btnSubmitChange.disabled = false; }
@@ -843,6 +973,7 @@ if (profileForm) {
         } catch (error) { alert("Failed to update profile."); } finally { btnSave.textContent = "Save Profile Changes"; btnSave.disabled = false; }
     });
 }
+
 // === 10. GROUP STUDY (Create & Join) ===
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
@@ -861,7 +992,10 @@ if (btnCreate) {
             document.getElementById('room-code-box').textContent = roomId;
             modal.classList.remove('view-hidden');
             
-            document.getElementById('copy-room-code').onclick = () => { navigator.clipboard.writeText(roomId); document.getElementById('copy-room-code').innerHTML = "<i class='fas fa-check'></i> Copied"; };
+            document.getElementById('copy-room-code').onclick = () => { 
+                navigator.clipboard.writeText(roomId); 
+                document.getElementById('copy-room-code').textContent = "Copied"; 
+            };
             document.getElementById('enter-room').onclick = () => { localStorage.setItem('active_study_room', roomId); localStorage.removeItem('is_study_guest'); window.location.href = 'questions.html'; };
         } catch (error) { alert("Failed to create room."); } finally { btnCreate.textContent = "Create"; btnCreate.disabled = false; }
     };
@@ -883,7 +1017,8 @@ if (btnSubmitJoin) {
     btnSubmitJoin.onclick = async () => {
         const code = joinInput.value.trim();
         if (code.length !== 4) return alert("Please enter a valid 4-digit code.");
-        btnSubmitJoin.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Verifying..."; btnSubmitJoin.disabled = true;
+        btnSubmitJoin.textContent = "Verifying..."; 
+        btnSubmitJoin.disabled = true;
 
         try {
             const roomSnap = await getDoc(doc(db, "study_rooms", code));
@@ -900,8 +1035,10 @@ if (btnSubmitJoin) {
                     return;
                 }
 
-                localStorage.setItem('active_study_room', code); localStorage.setItem('is_study_guest', 'true'); 
-                btnSubmitJoin.style.background = '#3b82f6'; btnSubmitJoin.style.borderColor = '#3b82f6'; btnSubmitJoin.textContent = "✅ Connected!";
+                localStorage.setItem('active_study_room', code); 
+                localStorage.setItem('is_study_guest', 'true'); 
+                btnSubmitJoin.classList.add('btn-connected'); 
+                btnSubmitJoin.textContent = "Connected!";
                 setTimeout(() => window.location.href = 'quiz.html', 800);
             } else alert("Room not found. Please double-check the code.");
         } catch (error) { alert("Error connecting to room."); } finally { btnSubmitJoin.textContent = "Join Room"; btnSubmitJoin.disabled = false; }
@@ -914,13 +1051,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!darkModeBtn) return;
     const icon = darkModeBtn.querySelector('i');
     
-    if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark-mode'); if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } }
+    if (localStorage.getItem('theme') === 'dark') { 
+        document.documentElement.classList.add('dark-mode'); 
+        if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
+    }
 
     darkModeBtn.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark-mode');
         const isDark = document.documentElement.classList.contains('dark-mode');
         
-        if (isDark) { if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } localStorage.setItem('theme', 'dark'); } 
-        else { if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); } localStorage.setItem('theme', 'light'); }
+        if (isDark) { 
+            if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
+            localStorage.setItem('theme', 'dark'); 
+        } else { 
+            if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); } 
+            localStorage.setItem('theme', 'light'); 
+        }
     });
 });

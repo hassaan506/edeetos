@@ -27,7 +27,6 @@ let hasShownSkipPopup = false;
 
 const configStr = localStorage.getItem('edeetos_quiz_config');
 const quizConfig = configStr ? JSON.parse(configStr) : { mode: 'practice', timer: 0 };
-// FIXED: Removed the `&& !activeRoomId` block to properly allow exams inside Study Rooms
 let isExamMode = (quizConfig.mode === 'exam');
 
 function isBookSession() {
@@ -77,45 +76,46 @@ const btnSaveGithub = document.getElementById('btn-save-github');
 const staticPauseBtn = document.getElementById('pause-btn');
 const pauseOverlay = document.getElementById('pause-overlay');
 const resumeQuizBtn = document.getElementById('btn-resume-quiz');
+const floatingHighlightBtn = document.getElementById('floating-toolkit');
 
 if (isExamMode) {
     document.body.classList.add('mode-exam');
     sessionSeconds = quizConfig.timer * 60; 
-    if (staticPauseBtn) staticPauseBtn.style.display = 'none';
+    if (staticPauseBtn) staticPauseBtn.classList.add('hidden');
 } else {
-        const handlePause = (e) => {
-            e.preventDefault();
-            isPaused = true;
-            if (pauseOverlay) {
-                pauseOverlay.classList.remove('hidden');
-                pauseOverlay.classList.add('show');
-            }
-            if (activeRoomId && currentUserId) {
-                updateDoc(roomRef, { pausedMembers: arrayUnion(currentUserId) }).catch(()=>{});
-            }
-        };
-
-        const handleResume = (e) => {
-            e.preventDefault();
-            isPaused = false;
-            if (pauseOverlay) {
-                pauseOverlay.classList.remove('show');
-                setTimeout(() => pauseOverlay.classList.add('hidden'), 300);
-            }
-            if (activeRoomId && currentUserId) {
-                updateDoc(roomRef, { pausedMembers: arrayRemove(currentUserId) }).catch(()=>{});
-            }
-        };
-
-        if (staticPauseBtn) {
-            staticPauseBtn.addEventListener('click', handlePause);
-            staticPauseBtn.addEventListener('touchstart', handlePause, { passive: false });
+    const handlePause = (e) => {
+        e.preventDefault();
+        isPaused = true;
+        if (pauseOverlay) {
+            pauseOverlay.classList.remove('hidden');
+            pauseOverlay.classList.add('show');
         }
-        if (resumeQuizBtn) {
-            resumeQuizBtn.addEventListener('click', handleResume);
-            resumeQuizBtn.addEventListener('touchstart', handleResume, { passive: false });
+        if (activeRoomId && currentUserId) {
+            updateDoc(roomRef, { pausedMembers: arrayUnion(currentUserId) }).catch(()=>{});
         }
+    };
+
+    const handleResume = (e) => {
+        e.preventDefault();
+        isPaused = false;
+        if (pauseOverlay) {
+            pauseOverlay.classList.remove('show');
+            setTimeout(() => pauseOverlay.classList.add('hidden'), 300);
+        }
+        if (activeRoomId && currentUserId) {
+            updateDoc(roomRef, { pausedMembers: arrayRemove(currentUserId) }).catch(()=>{});
+        }
+    };
+
+    if (staticPauseBtn) {
+        staticPauseBtn.addEventListener('click', handlePause);
+        staticPauseBtn.addEventListener('touchstart', handlePause, { passive: false });
     }
+    if (resumeQuizBtn) {
+        resumeQuizBtn.addEventListener('click', handleResume);
+        resumeQuizBtn.addEventListener('touchstart', handleResume, { passive: false });
+    }
+}
 
 function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     const parts = String(examStr).split("-").map(p => p.trim());
@@ -221,7 +221,6 @@ onAuthStateChanged(auth, async (user) => {
         try {
             let dbData = await idbCache.get(user.uid);
             
-            // If cache is missing, fetch immediately. If cache exists, use it and fetch in background.
             if (!dbData) {
                 const docSnap = await getDoc(userRef);
                 if (docSnap.exists()) {
@@ -246,48 +245,41 @@ onAuthStateChanged(auth, async (user) => {
                     localStorage.removeItem('edeetos_active_quiz');
                     localStorage.removeItem('edeetos_quiz_config');
                     
-                    const lockoutScreen = document.createElement('div');
-                    lockoutScreen.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(15, 23, 42, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
-lockoutScreen.innerHTML = `
-                        <i class="fas fa-ban" style="color: #ef4444; font-size: 5rem; margin-bottom: 1.5rem;"></i>
-                        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">Account Suspended</h1>
-                        <textarea id="appeal-text" placeholder="State your reason for appeal here..." style="width: 90%; max-width: 400px; padding: 15px; border-radius: 8px; margin-bottom: 1rem; border: none; outline: none; resize: vertical; min-height: 100px; font-family: inherit;"></textarea>
-                        <div style="display: flex; gap: 15px;">
-                            <button id="btn-submit-appeal" style="background: #f59e0b; color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: bold; cursor: pointer;">Submit Appeal</button>
-                            <button id="btn-banned-logout" style="background: #ef4444; color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-weight: bold; cursor: pointer;">Log Out</button>
-                        </div>
-                    `;
-                    document.body.appendChild(lockoutScreen);
-                    document.body.style.overflow = 'hidden';
-                    
-                    document.getElementById('btn-submit-appeal').addEventListener('click', async (e) => {
-                        const text = document.getElementById('appeal-text').value.trim();
-                        if (!text) return alert("Please enter a reason for your appeal.");
-                        const btn = e.target; btn.textContent = "Submitting..."; btn.disabled = true;
-                        try {
-                            await addDoc(collection(db, "ban_appeals"), {
-                                userId: user.uid,
-                                userEmail: user.email,
-                                appealText: text,
-                                status: 'pending',
-                                timestamp: serverTimestamp()
-                            });
-                            alert("Appeal submitted. The admin will review it shortly.");
-                            btn.textContent = "Appeal Sent";
-                        } catch(err) {
-                            alert("Failed to submit appeal.");
-                            btn.textContent = "Submit Appeal"; btn.disabled = false;
-                        }
-                    });
+                    const lockoutScreen = document.getElementById('account-suspended-modal');
+                    if(lockoutScreen) {
+                        lockoutScreen.classList.remove('hidden');
+                        lockoutScreen.classList.add('show');
+                        document.body.style.overflow = 'hidden';
 
-                    document.getElementById('btn-banned-logout').addEventListener('click', async () => {
-                        await signOut(auth);
-                        window.location.href = 'index.html';
-                    });
+                        document.getElementById('btn-submit-appeal').addEventListener('click', async (e) => {
+                            const text = document.getElementById('appeal-text').value.trim();
+                            if (!text) return alert("Please enter a reason for your appeal.");
+                            const btn = e.target; btn.textContent = "Submitting..."; btn.disabled = true;
+                            try {
+                                await addDoc(collection(db, "ban_appeals"), {
+                                    userId: user.uid,
+                                    userEmail: user.email,
+                                    appealText: text,
+                                    status: 'pending',
+                                    timestamp: serverTimestamp()
+                                });
+                                alert("Appeal submitted. The admin will review it shortly.");
+                                btn.textContent = "Appeal Sent";
+                            } catch(err) {
+                                alert("Failed to submit appeal.");
+                                btn.textContent = "Submit Appeal"; btn.disabled = false;
+                            }
+                        });
+
+                        document.getElementById('btn-banned-logout').addEventListener('click', async () => {
+                            await signOut(auth);
+                            window.location.href = 'index.html';
+                        });
+                    }
                     return; 
                 }
 
-const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+                const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 
                 const fetchShard = async (folder, docName) => {
                     try {
@@ -451,36 +443,27 @@ function triggerSlideTransition(newIndex, direction) {
 }
 
 function showSkippedModal() {
-    const modal = document.createElement('div');
-    modal.id = 'skipped-popup-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.92); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px); padding: 20px;`;
-    modal.innerHTML = `
-        <div class="glass-panel" style="max-width: 460px; padding: 2rem;">
-            <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 4rem; margin-bottom: 1.2rem;"></i>
-            <h2 style="color: white; margin-top: 0; margin-bottom: 0.8rem;">Skipped Questions Phase</h2>
-            <p style="color: #cbd5e1; font-size: 1.05rem; margin-bottom: 1.8rem; line-height: 1.5;">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
-            <button id="btn-understood-skip" class="action-btn next-btn" style="width: 100%;">Understood (Enter)</button>
-        </div>
-    `;
-    document.body.appendChild(modal);
-    document.getElementById('btn-understood-skip').onclick = () => modal.remove();
+    const modal = document.getElementById('skipped-popup-modal');
+    if(modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('show');
+        document.getElementById('btn-understood-skip').onclick = () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+    }
 }
 
 function showMustAnswerModal() {
-    if (document.getElementById('must-answer-modal')) return;
-    const modal = document.createElement('div');
-    modal.id = 'must-answer-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
-    modal.innerHTML = `
-        <div class="glass-panel" style="background: rgba(14, 48, 35, 0.95); padding: 30px; border-radius: 18px; max-width: 420px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.4);">
-            <i class="fas fa-exclamation-circle" style="color: #f59e0b; font-size: 3.5rem; margin-bottom: 1rem;"></i>
-            <h2 style="color: #ffffff; margin-top: 0; margin-bottom: 10px;">Select an Answer</h2>
-            <p style="color: #cbd5e1; font-size: 1rem; margin-bottom: 20px;">Please select an answer to proceed. If you are stuck, use the <strong>Skip</strong> button.</p>
-            <button id="btn-understood-must-answer" class="action-btn next-btn" style="width: 100%;">Understood (Enter)</button>
-        </div>
-    `;
-    document.body.appendChild(modal);
-    document.getElementById('btn-understood-must-answer').onclick = () => modal.remove();
+    const modal = document.getElementById('must-answer-modal');
+    if(modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('show');
+        document.getElementById('btn-understood-must-answer').onclick = () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+    }
 }
 
 let quillHint, quillExplanation, quillQuestion;
@@ -492,18 +475,19 @@ function loadQuestion(index) {
 
         hasRevealedCurrentQuestion = false;
         hasAnsweredCurrentQuestion = false;
+        
         const waitEl = document.getElementById('multiplayer-waiting-text');
-        if (waitEl) waitEl.style.display = 'none';
+        if (waitEl) waitEl.classList.add('hidden');
         const forceBtn = document.getElementById('host-force-reveal-btn');
-        if (forceBtn) forceBtn.style.display = 'none';
+        if (forceBtn) forceBtn.classList.add('hidden');
 
         const roleUpper = (currentUserData?.role || 'STUDENT').toUpperCase();
         if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') {
-            if (copyQBtn) copyQBtn.style.display = 'flex';
-            if (editQBtn) editQBtn.style.display = 'flex';
+            if (copyQBtn) copyQBtn.classList.remove('hidden');
+            if (editQBtn) editQBtn.classList.remove('hidden');
         } else {
-            if (copyQBtn) copyQBtn.style.display = 'none';
-            if (editQBtn) editQBtn.style.display = 'none';
+            if (copyQBtn) copyQBtn.classList.add('hidden');
+            if (editQBtn) editQBtn.classList.add('hidden');
         }
 
         if (!currentQuestionData.options || !Array.isArray(currentQuestionData.options)) {
@@ -516,19 +500,23 @@ function loadQuestion(index) {
         hasAnsweredCorrectly = alreadySolvedInSession;
         
         if (aiHintBtn) {
-            aiHintBtn.style.display = 'none'; 
+            aiHintBtn.classList.add('hidden'); 
             aiHintBtn.classList.remove('pop-in');
             aiHintBtn.innerHTML = `<i class="far fa-lightbulb"></i> Hint`; 
         }
         
         if (explanationBtn) {
-            explanationBtn.style.display = (hasAnsweredCorrectly && !isExamMode && !activeRoomId) ? 'flex' : 'none';
+            if (hasAnsweredCorrectly && !isExamMode && !activeRoomId) {
+                explanationBtn.classList.remove('hidden');
+            } else {
+                explanationBtn.classList.add('hidden');
+            }
         }
         if (explanationModal) {
             explanationModal.classList.remove('show');
         }
 
-        if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none'; 
+        if (floatingHighlightBtn) floatingHighlightBtn.classList.add('hidden'); 
         if (!isExamMode) updateFeedbackBar();
 
         const displayNum = currentQuestionData.sequenceNumber || (currentIndex + 1);
@@ -541,13 +529,15 @@ function loadQuestion(index) {
         const diffDot = document.getElementById('difficulty-dot');
         if (diffBadge) {
             if (isExamMode) {
-                diffBadge.style.display = "none";
-                if (diffDot) diffDot.style.display = "none";
+                diffBadge.classList.add('hidden');
+                if (diffDot) diffDot.classList.add('hidden');
             } else {
                 const diffText = (currentQuestionData.Difficulty || "medium").toLowerCase().trim();
-                diffBadge.style.display = "inline-block";
-                if (diffDot) diffDot.style.display = "inline";
+                diffBadge.classList.remove('hidden');
+                if (diffDot) diffDot.classList.remove('hidden');
                 
+                // Clear inline styles/classes
+                diffBadge.style.cssText = "";
                 if (diffText === 'easy') {
                     diffBadge.textContent = "Easy";
                     diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.3); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.6);";
@@ -564,7 +554,7 @@ function loadQuestion(index) {
         if (isExamMode) {
             if (currentQuestionData.hasBeenSkipped) {
                 skippedWarningEl.classList.remove('hidden');
-                skipBtn.style.display = 'none'; 
+                skipBtn.classList.add('hidden'); 
                 
                 if (!hasShownSkipPopup) {
                     showSkippedModal();
@@ -572,19 +562,17 @@ function loadQuestion(index) {
                 }
             } else {
                 skippedWarningEl.classList.add('hidden');
-                skipBtn.style.display = 'flex'; // Always show the skip button during the first pass
+                skipBtn.classList.remove('hidden'); 
             }
             document.getElementById('next-btn').innerHTML = (currentIndex === quizQueue.length - 1) ? "Submit Exam" : 'Next Question <i class="fas fa-arrow-right"></i>';
         } else {
             skippedWarningEl.classList.add('hidden');
-            skipBtn.style.display = 'flex';
+            skipBtn.classList.remove('hidden');
         }
 
         const examYearInfo = document.getElementById('exam-year-info');
         if (examYearInfo) {
             examYearInfo.innerHTML = ''; 
-            let topRowHTML = '';
-            let bottomRowHTML = '';
             
             let yearData = currentQuestionData.Year || currentQuestionData.year;
             let yearList = Array.isArray(yearData) ? yearData : (typeof yearData === 'string' && yearData.trim() !== '' ? yearData.split(',') : []);
@@ -596,40 +584,53 @@ function loadQuestion(index) {
             let specList = Array.isArray(specData) ? specData : (specData && typeof specData === 'string' ? specData.split(',') : (specData ? [specData] : []));
 
             if ((yearList.length > 0 || examList.length > 0 || specList.length > 0) && !isExamMode) {
-                examYearInfo.style.display = 'flex';
+                examYearInfo.classList.remove('hidden');
+                
+                const topRow = document.createElement('div');
+                topRow.style.cssText = "display:flex; justify-content:center; flex-wrap:wrap; gap:8px; width:100%;";
                 
                 specList.forEach(sp => {
                     if (sp.trim()) {
-                        topRowHTML += `<span class="meta-pill-purple">${sp.trim()}</span>`;
+                        const s = document.createElement('span');
+                        s.className = 'meta-pill-purple';
+                        s.textContent = sp.trim();
+                        topRow.appendChild(s);
                     }
                 });
 
                 if (yearList.length > 0) {
-                    topRowHTML += `<span class="meta-pill-year">${yearList.map(y => y.trim()).join(', ')}</span>`;
+                    const y = document.createElement('span');
+                    y.className = 'meta-pill-year';
+                    y.textContent = yearList.map(yr => yr.trim()).join(', ');
+                    topRow.appendChild(y);
                 }
+                examYearInfo.appendChild(topRow);
                 
-                examList.forEach(ex => {
-                    if (ex.trim()) {
-                        bottomRowHTML += `<span class="meta-pill-sub">${ex.trim()}</span>`;
-                    }
-                });
-                
-                examYearInfo.innerHTML = `
-                    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px; width:100%;">${topRowHTML}</div>
-                    ${bottomRowHTML ? `<div style="display:flex; justify-content:center; flex-wrap:wrap; gap:6px; width:100%;">${bottomRowHTML}</div>` : ''}
-                `;
+                if (examList.length > 0) {
+                    const bottomRow = document.createElement('div');
+                    bottomRow.style.cssText = "display:flex; justify-content:center; flex-wrap:wrap; gap:6px; width:100%;";
+                    examList.forEach(ex => {
+                        if (ex.trim()) {
+                            const e = document.createElement('span');
+                            e.className = 'meta-pill-sub';
+                            e.textContent = ex.trim();
+                            bottomRow.appendChild(e);
+                        }
+                    });
+                    examYearInfo.appendChild(bottomRow);
+                }
             } else {
-                examYearInfo.style.display = 'none';
+                examYearInfo.classList.add('hidden');
             }
         }
 
 		const pointBadge = document.getElementById('point-badge');
         if (pointBadge) {
             if (currentQuestionData.Point && String(currentQuestionData.Point).trim() !== "") {
-                pointBadge.style.display = 'inline-block';
+                pointBadge.classList.remove('hidden');
                 pointBadge.innerHTML = `<i class="fas fa-thumbtack"></i> Point ${currentQuestionData.Point}`;
             } else {
-                pointBadge.style.display = 'none';
+                pointBadge.classList.add('hidden');
             }
         }
 
@@ -642,12 +643,16 @@ function loadQuestion(index) {
             currentQuestionData.hasShuffled = true;
         }
 
+        const templateOption = document.getElementById('template-option-box');
+
         currentQuestionData.options.forEach(opt => {
-            const optBox = document.createElement('div');
-            optBox.className = 'option-box';
-            optBox.setAttribute('role', 'button');
-            optBox.setAttribute('tabindex', '0');
-            
+            const clone = templateOption.content.cloneNode(true);
+            const optBox = clone.querySelector('.option-box');
+            const optTextElement = clone.querySelector('.option-text');
+            const strikeBtn = clone.querySelector('.strike-btn');
+
+            optTextElement.textContent = opt.text;
+
             if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
                 optBox.classList.add('selected');
             } else if (!isExamMode && hasAnsweredCorrectly && !activeRoomId) {
@@ -658,11 +663,6 @@ function loadQuestion(index) {
             if (currentQuestionData.eliminatedOptions && currentQuestionData.eliminatedOptions.includes(opt.text)) {
                 optBox.classList.add('strikethrough');
             }
-
-            optBox.innerHTML = `
-                <div class="option-text">${opt.text}</div>
-                <button class="strike-btn" title="Strike out option"><i class="fas fa-strikethrough"></i></button>
-            `;
             
             optBox.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -692,10 +692,10 @@ function loadQuestion(index) {
         }
 
         if (!isExamMode && !hasAnsweredCorrectly && qSpent >= 15 && aiHintBtn) {
-            aiHintBtn.style.display = 'flex';
+            aiHintBtn.classList.remove('hidden');
         }
 
-const bookmarkBtn = document.getElementById('bookmark-btn');
+        const bookmarkBtn = document.getElementById('bookmark-btn');
         if (bookmarkBtn) {
             const starIcon = bookmarkBtn.querySelector('i');
             if (currentQuestionData.isBookmarked) starIcon.classList.replace('far', 'fas'), starIcon.classList.add('fa-solid');
@@ -706,12 +706,10 @@ const bookmarkBtn = document.getElementById('bookmark-btn');
                 if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to bookmark questions.");
                 
                 if (currentQuestionData.isBookmarked) {
-                    // Turn it off immediately if already bookmarked
                     currentQuestionData.isBookmarked = false;
                     starIcon.classList.replace('fas', 'far'), starIcon.classList.remove('fa-solid');
                     toggleBookmarkInFirebase(currentQuestionData.originalNumber, false);
                 } else {
-                    // Open the category popup instead of instantly saving
                     if (bookmarkModal) {
                         bookmarkFolderSelect.value = "For Revision";
                         bookmarkCustomInput.classList.add('hidden');
@@ -745,7 +743,8 @@ const bookmarkBtn = document.getElementById('bookmark-btn');
                 setTimeout(() => notesModal.classList.add('hidden'), 300);
             };
         }
-if (bookmarkFolderSelect) {
+
+        if (bookmarkFolderSelect) {
             bookmarkFolderSelect.onchange = (e) => {
                 if (e.target.value === 'custom') {
                     bookmarkCustomInput.classList.remove('hidden');
@@ -784,6 +783,7 @@ if (bookmarkFolderSelect) {
                 setTimeout(() => bookmarkModal.classList.add('hidden'), 300);
             };
         }
+
         if (closeNotesBtn) {
             closeNotesBtn.onclick = () => {
                 notesModal.classList.remove('show');
@@ -846,7 +846,10 @@ if (bookmarkFolderSelect) {
                     });
                     
                     alert("Report submitted successfully. Thank you!");
-                    if (reportModal) reportModal.classList.remove('show');
+                    if (reportModal) {
+                        reportModal.classList.remove('show');
+                        setTimeout(() => reportModal.classList.add('hidden'), 300);
+                    }
                 } catch (e) {
                     console.error("Error reporting question: ", e);
                     alert("Failed to submit report. Please check your internet connection or try again later.");
@@ -943,44 +946,48 @@ if (bookmarkFolderSelect) {
 
                 const optsContainer = document.getElementById('edit-options-container');
                 optsContainer.innerHTML = '';
+                const templateEditOption = document.getElementById('template-edit-option');
                 
                 if (currentQuestionData.options && Array.isArray(currentQuestionData.options)) {
                     currentQuestionData.options.forEach((opt, idx) => {
                         const letter = String.fromCharCode(65 + idx);
-                        const isCorrect = opt.isCorrect ? "checked" : "";
+                        const clone = templateEditOption.content.cloneNode(true);
                         
-                        optsContainer.innerHTML += `
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
-                                <input type="radio" name="edit-correct-opt" value="${idx}" ${isCorrect} style="transform: scale(1.2); cursor: pointer;" title="Mark as Correct">
-                                <span style="font-weight: bold; color: #f8fafc; width: 20px;">${letter})</span>
-                                <input type="text" id="edit-opt-${idx}" value="${opt.text}" class="glass-input" style="flex: 1; padding: 8px;">
-                                <button type="button" class="tag-inject-btn action-btn" data-target="edit-opt-${idx}" data-tag="br" style="padding: 2px 8px; height: 34px; font-size: 0.75rem;" title="Line Break">↵</button>
-                                <button type="button" class="tag-inject-btn action-btn" data-target="edit-opt-${idx}" data-tag="sub" style="padding: 2px 8px; height: 34px; font-size: 0.75rem;" title="Subscript">X₂</button>
-                                <button type="button" class="tag-inject-btn action-btn" data-target="edit-opt-${idx}" data-tag="sup" style="padding: 2px 8px; height: 34px; font-size: 0.75rem;" title="Superscript">X²</button>
-                            </div>
-                        `;
-                    });
-
-                    document.querySelectorAll('.tag-inject-btn').forEach(btn => {
-                        btn.onclick = (e) => {
-                            e.preventDefault();
-                            const targetId = btn.getAttribute('data-target');
-                            const tag = btn.getAttribute('data-tag');
-                            const input = document.getElementById(targetId);
-                            const start = input.selectionStart;
-                            const end = input.selectionEnd;
-                            const val = input.value;
-                            
-                            if (tag === 'br') {
-                                input.value = val.slice(0, start) + '<br>' + val.slice(end);
-                                input.setSelectionRange(start + 4, start + 4);
-                            } else {
-                                const selected = val.slice(start, end);
-                                input.value = val.slice(0, start) + `<${tag}>${selected}</${tag}>` + val.slice(end);
-                                input.setSelectionRange(start + tag.length + 2, end + tag.length + 2);
-                            }
-                            input.focus();
-                        };
+                        const radio = clone.querySelector('.edit-radio');
+                        radio.value = idx;
+                        radio.checked = opt.isCorrect;
+                        
+                        const label = clone.querySelector('.edit-letter');
+                        label.textContent = `${letter})`;
+                        
+                        const textInput = clone.querySelector('.edit-text-input');
+                        textInput.id = `edit-opt-${idx}`;
+                        textInput.value = opt.text;
+                        
+                        const injectBtns = clone.querySelectorAll('.tag-inject-btn');
+                        injectBtns.forEach(btn => {
+                            btn.setAttribute('data-target', `edit-opt-${idx}`);
+                            btn.onclick = (e) => {
+                                e.preventDefault();
+                                const tag = btn.getAttribute('data-tag');
+                                const input = document.getElementById(`edit-opt-${idx}`);
+                                const start = input.selectionStart;
+                                const end = input.selectionEnd;
+                                const val = input.value;
+                                
+                                if (tag === 'br') {
+                                    input.value = val.slice(0, start) + '<br>' + val.slice(end);
+                                    input.setSelectionRange(start + 4, start + 4);
+                                } else {
+                                    const selected = val.slice(start, end);
+                                    input.value = val.slice(0, start) + `<${tag}>${selected}</${tag}>` + val.slice(end);
+                                    input.setSelectionRange(start + tag.length + 2, end + tag.length + 2);
+                                }
+                                input.focus();
+                            };
+                        });
+                        
+                        optsContainer.appendChild(clone);
                     });
                 }
 
@@ -1077,7 +1084,9 @@ if (bookmarkFolderSelect) {
         console.error("🚨 CRASH inside loadQuestion:", error);
     }
 }
-
+// ==========================================
+// 5. DATA SYNC & PROGRESS SAVING
+// ==========================================
 async function syncNextQuestion(newIndex) {
     const isGuest = localStorage.getItem('is_study_guest') === 'true';
     if (isGuest) return;
@@ -1169,7 +1178,7 @@ async function saveNoteToFirebase(questionId, noteText) {
 function handleOptionClick(event, optionData, optionElement) {
     if (event.target.closest('.strike-btn')) return;
 
-if (isExamMode) {
+    if (isExamMode) {
         document.querySelectorAll('.option-box').forEach(b => b.classList.remove('selected'));
         optionElement.classList.add('selected');
         currentQuestionData.userSelectedAnswer = optionData.text;
@@ -1224,7 +1233,7 @@ if (isExamMode) {
         savePracticeProgress(currentQuestionData.originalNumber, true); 
         
         if (explanationBtn) {
-            explanationBtn.style.display = 'flex';
+            explanationBtn.classList.remove('hidden');
             explanationBtn.classList.add('pop-in');
         }
 
@@ -1253,21 +1262,9 @@ function updateFeedbackBar() {
 // ==========================================
 // 6. CLINICAL HIGHLIGHTER & STRIKETHROUGH
 // ==========================================
-let floatingHighlightBtn = document.getElementById('floating-toolkit');
+const floatingToolkit = document.getElementById('floating-toolkit');
 
-if (!floatingHighlightBtn) {
-    floatingHighlightBtn = document.createElement('div');
-    floatingHighlightBtn.id = 'floating-toolkit';
-    floatingHighlightBtn.style.cssText = 'position: absolute; display: none; background: #1e293b; padding: 6px; border-radius: 8px; z-index: 1000; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); gap: 6px;';
-    
-    floatingHighlightBtn.innerHTML = `
-        <button id="tool-hl-yellow" style="background: #eab308; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;" title="Highlight"><i class="fas fa-highlighter"></i></button>
-        <button id="tool-hl-strike" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: line-through;" title="Strike">S</button>
-    `;
-    document.body.appendChild(floatingHighlightBtn);
-}
-
-if (questionTextEl) {
+if (questionTextEl && floatingToolkit) {
     questionTextEl.style.userSelect = 'text';
     questionTextEl.style.webkitUserSelect = 'text';
 
@@ -1280,18 +1277,18 @@ if (questionTextEl) {
                 const range = selection.getRangeAt(0);
                 const rect = range.getBoundingClientRect();
                 
-                floatingHighlightBtn.style.top = `${rect.top + window.scrollY - 45}px`;
-                floatingHighlightBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
-                floatingHighlightBtn.style.display = 'flex';
+                floatingToolkit.style.top = `${rect.top + window.scrollY - 45}px`;
+                floatingToolkit.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 45}px`;
+                floatingToolkit.classList.remove('hidden');
                 
                 const applyYellow = (e) => {
                     e.preventDefault(); 
-                    applyTextFormat(range, selection, 'background-color: #fef08a; padding: 2px 4px; border-radius: 4px; color: #1e293b;');
+                    applyTextFormat(range, selection, 'highlight-yellow');
                 };
                 
                 const applyStrike = (e) => {
                     e.preventDefault(); 
-                    applyTextFormat(range, selection, 'text-decoration: line-through; color: #94a3b8;');
+                    applyTextFormat(range, selection, 'highlight-strike');
                 };
 
                 const toolYellow = document.getElementById('tool-hl-yellow');
@@ -1304,7 +1301,7 @@ if (questionTextEl) {
                 toolStrike.ontouchstart = applyStrike;
 
             } else {
-                floatingHighlightBtn.style.display = 'none';
+                floatingToolkit.classList.add('hidden');
             }
         }, 50);
     };
@@ -1315,13 +1312,13 @@ if (questionTextEl) {
     document.addEventListener('selectionchange', () => {
         const selection = window.getSelection();
         if (selection.toString().trim().length === 0) {
-             floatingHighlightBtn.style.display = 'none';
+             floatingToolkit.classList.add('hidden');
         }
     });
 
     const hideToolkit = (e) => {
         if (e.target.closest('#floating-toolkit') === null) {
-            floatingHighlightBtn.style.display = 'none';
+            floatingToolkit.classList.add('hidden');
         }
     };
 
@@ -1329,21 +1326,21 @@ if (questionTextEl) {
     document.addEventListener('touchstart', hideToolkit, { passive: true });
 }
 
-function applyTextFormat(range, selection, inlineStyles) {
+function applyTextFormat(range, selection, className) {
     try {
         const mark = document.createElement('span');
-        mark.style.cssText = inlineStyles;
+        mark.className = className;
 
         const fragment = range.extractContents();
         mark.appendChild(fragment);
         range.insertNode(mark);
     } catch (err) {
         const mark = document.createElement('mark');
-        mark.style.cssText = inlineStyles;
+        mark.className = className;
         range.surroundContents(mark);
     }
     selection.removeAllRanges();
-    if (floatingHighlightBtn) floatingHighlightBtn.style.display = 'none';
+    if (floatingToolkit) floatingToolkit.classList.add('hidden');
 }
 
 // ==========================================
@@ -1353,10 +1350,10 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     hasRevealedCurrentQuestion = true;
 
     const waitEl = document.getElementById('multiplayer-waiting-text');
-    if (waitEl) waitEl.style.display = 'none';
+    if (waitEl) waitEl.classList.add('hidden');
 
     const forceBtn = document.getElementById('host-force-reveal-btn');
-    if (forceBtn) forceBtn.style.display = 'none';
+    if (forceBtn) forceBtn.classList.add('hidden');
 
     const myAnswerText = answersObj[currentUserId];
     if (myAnswerText) {
@@ -1373,8 +1370,10 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
     }
     
     updateFeedbackBar();
-    if (explanationBtn) explanationBtn.style.display = 'flex';
+    if (explanationBtn) explanationBtn.classList.remove('hidden');
     document.querySelectorAll('.option-box').forEach(box => box.classList.add('locked'));
+
+    const templateVoterTag = document.getElementById('template-voter-tag');
 
     document.querySelectorAll('.option-box').forEach(box => {
         const textDiv = box.querySelector('.option-text');
@@ -1385,15 +1384,24 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
         else if (Object.values(answersObj).includes(optText)) box.classList.add('incorrect');
 
         const voters = Object.keys(answersObj).filter(uid => answersObj[uid] === optText);
-        if (voters.length > 0) {
+        if (voters.length > 0 && templateVoterTag) {
             const tagContainer = document.createElement('div');
-            tagContainer.style.cssText = "display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; width: 100%;";
+            tagContainer.className = "voter-tag";
+            
             voters.forEach(uid => {
                 const name = activeMembersMap[uid] || "Student";
                 const isMe = uid === currentUserId;
-                const bg = isMe ? "#3b82f6" : "rgba(0,0,0,0.1)";
-                const color = isMe ? "white" : "inherit";
-                tagContainer.innerHTML += `<span style="background: ${bg}; color: ${color}; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold;">${name}</span>`;
+                const clone = templateVoterTag.content.cloneNode(true);
+                const span = clone.querySelector('span');
+                span.textContent = name;
+                if (isMe) {
+                    span.style.background = "#3b82f6";
+                    span.style.color = "white";
+                } else {
+                    span.style.background = "rgba(0,0,0,0.1)";
+                    span.style.color = "inherit";
+                }
+                tagContainer.appendChild(clone);
             });
             box.appendChild(tagContainer);
         }
@@ -1401,62 +1409,84 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
 }
 
 window.renderRoomBanner = function(data) {
-        if (!activeRoomId) return;
+    if (!activeRoomId) return;
 
-        if (data && currentUserId && (data.hostId === currentUserId || data.host === currentUserId || data.createdBy === currentUserId)) {
-            localStorage.setItem('is_study_guest', 'false');
+    if (data && currentUserId && (data.hostId === currentUserId || data.host === currentUserId || data.createdBy === currentUserId)) {
+        localStorage.setItem('is_study_guest', 'false');
+    }
+    const isGuest = localStorage.getItem('is_study_guest') === 'true';
+
+    const banner = document.getElementById('study-room-banner');
+    if (!banner) return;
+    banner.classList.remove('hidden');
+
+    const activeMembers = data ? (data.activeMembers || {}) : {};
+    const pausedMembers = data ? (data.pausedMembers || []) : [];
+    
+    const bannerRoomId = document.getElementById('banner-room-id');
+    if(bannerRoomId) bannerRoomId.textContent = activeRoomId;
+    
+    const bannerRoleText = document.getElementById('banner-role-text');
+    if(bannerRoleText) bannerRoleText.textContent = `(${isGuest ? 'Guest' : 'Host'})`;
+
+    const membersContainer = document.getElementById('banner-members-container');
+    const templateMemberTag = document.getElementById('template-member-tag');
+    
+    if (membersContainer && templateMemberTag) {
+        membersContainer.innerHTML = '';
+        const memberEntries = Object.entries(activeMembers);
+        
+        if (memberEntries.length > 0) {
+            memberEntries.forEach(([uid, name]) => {
+                const isPaused = pausedMembers.includes(uid);
+                const clone = templateMemberTag.content.cloneNode(true);
+                clone.querySelector('.member-name').textContent = name;
+                
+                const statusIcon = clone.querySelector('.member-status-icon');
+                if (isPaused) {
+                    statusIcon.classList.add('fa-pause-circle', 'yellow-text');
+                    statusIcon.title = 'Paused/Offline';
+                } else {
+                    statusIcon.classList.add('fa-circle', 'green-text');
+                    statusIcon.title = 'Online';
+                }
+                membersContainer.appendChild(clone);
+            });
+        } else {
+            membersContainer.innerHTML = '<span class="text-slate" style="font-size: 0.8rem;">No one yet</span>';
         }
-        const isGuest = localStorage.getItem('is_study_guest') === 'true';
+    }
 
-        let banner = document.getElementById('study-room-banner');
-        if (!banner) {
-            banner = document.createElement('div');
-            banner.id = 'study-room-banner';
-            banner.className = 'study-room-banner';
-            const wrapper = document.querySelector('.quiz-content-wrapper');
-            if (wrapper) wrapper.prepend(banner);
-            else document.body.prepend(banner);
-        }
-
-        const activeMembers = data ? (data.activeMembers || {}) : {};
-        const pausedMembers = data ? (data.pausedMembers || []) : [];
+    const guestExit = document.getElementById('btn-exit-guest-room');
+    const hostExit = document.getElementById('btn-exit-host-room');
+    
+    if (isGuest) {
+        if(guestExit) guestExit.classList.remove('hidden');
+        if(hostExit) hostExit.classList.add('hidden');
         
-        // Build individual pills with Online/Offline dots
-        const memberTags = Object.entries(activeMembers).map(([uid, name]) => {
-            const isPaused = pausedMembers.includes(uid);
-            const statusColor = isPaused ? '#f59e0b' : '#10b981'; // Yellow for paused, Green for online
-            const statusIcon = isPaused ? 'fa-pause-circle' : 'fa-circle';
-            return `<span style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 16px; font-size: 0.75rem; color: #f8fafc; white-space: nowrap; box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); display: inline-flex; align-items: center; gap: 6px;">
-                <i class="fas fa-user" style="font-size: 0.65rem; color: #94a3b8;"></i> 
-                ${name} 
-                <i class="fas ${statusIcon}" title="${isPaused ? 'Paused/Offline' : 'Online'}" style="color: ${statusColor}; font-size: 0.6rem; margin-left: 2px;"></i>
-            </span>`;
-        }).join('');
+        if (guestExit) guestExit.onclick = async () => {
+            guestExit.innerHTML = 'Leaving...';
+            guestExit.disabled = true;
+            try {
+                if (currentUserId) await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
+            } catch(e) {}
+            localStorage.removeItem('active_study_room');
+            localStorage.removeItem('is_study_guest');
+            isIntentionalExit = true;
+            window.location.href = 'questions.html';
+        };
+    } else {
+        if(hostExit) hostExit.classList.remove('hidden');
+        if(guestExit) guestExit.classList.add('hidden');
         
-        const memberDisplay = memberTags || '<span style="color: #94a3b8; font-size: 0.8rem;">No one yet</span>';
-        const roleText = isGuest ? 'Guest' : 'Host';
-        
-        const actionBtn = isGuest 
-            ? `<button id="btn-exit-guest-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-sign-out-alt"></i> Leave Room</button>`
-            : `<button id="btn-exit-host-room" class="exit-btn" style="padding: 0.45rem 1rem;"><i class="fas fa-cog"></i> Room Settings</button>`;
-
-        banner.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1;">
-                <i class="fas fa-users" style="color: #34d399; font-size: 1.1rem;"></i> 
-                <span>Room <strong style="color: #6ee7b7; font-size: 1.05rem;">${activeRoomId}</strong> <span style="opacity: 0.7; font-size: 0.8rem; font-weight: normal;">(${roleText})</span></span>
-                <span style="color: #64748b; margin: 0 6px;">|</span>
-                <span style="display: flex; align-items: center; gap: 6px; font-weight: normal; flex-wrap: wrap;">
-                    ${memberDisplay}
-                </span>
-            </div>
-            ${actionBtn}
-        `;
-
-        if (isGuest) {
-            const guestExit = document.getElementById('btn-exit-guest-room');
-            if (guestExit) guestExit.onclick = async () => {
-                guestExit.innerHTML = 'Leaving...';
-                guestExit.disabled = true;
+        if (hostExit) hostExit.onclick = () => {
+            const exitModal = document.getElementById('host-exit-modal');
+            if (exitModal) exitModal.classList.add('show');
+            
+            document.getElementById('btn-cancel-exit').onclick = () => exitModal.classList.remove('show');
+            
+            document.getElementById('btn-leave-only').onclick = async () => {
+                document.getElementById('btn-leave-only').disabled = true;
                 try {
                     if (currentUserId) await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
                 } catch(e) {}
@@ -1465,270 +1495,226 @@ window.renderRoomBanner = function(data) {
                 isIntentionalExit = true;
                 window.location.href = 'questions.html';
             };
-        } else {
-            const hostExit = document.getElementById('btn-exit-host-room');
-            if (hostExit) hostExit.onclick = () => {
-                let exitModal = document.getElementById('host-exit-modal');
-                if (!exitModal) {
-                    exitModal = document.createElement('div');
-                    exitModal.id = 'host-exit-modal';
-                    exitModal.className = "modal-overlay show";
-                    exitModal.style.zIndex = "2147483647";
-                    exitModal.innerHTML = `
-                        <div class="glass-panel modal-content center-text" style="max-width: 450px; width: 90%;">
-                            <h3 style="color: #fca5a5; margin-top: 0; margin-bottom: 10px;">Exit Study Room</h3>
-                            <p class="modal-subtext" style="margin-bottom: 20px;">Do you want to just leave (keep room active), or end the session and kick all guests?</p>
-                            <div style="display: flex; flex-direction: column; gap: 10px;">
-                                <button id="btn-leave-only" class="action-btn" style="border-color: rgba(245, 158, 11, 0.4); color: #fcd34d; background: rgba(245, 158, 11, 0.1);">🚶‍♂️ Just Leave</button>
-                                <button id="btn-end-room" class="action-btn" style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5;">🛑 End Room</button>
-                                <button id="btn-cancel-exit" class="action-btn text-btn" style="margin-top: 5px;">Cancel</button>
-                            </div>
-                        </div>
-                    `;
-                    document.body.appendChild(exitModal);
-                } else {
-                    exitModal.classList.add('show');
-                }
 
-                document.getElementById('btn-cancel-exit').onclick = () => exitModal.classList.remove('show');
-                
-                document.getElementById('btn-leave-only').onclick = async () => {
-                    document.getElementById('btn-leave-only').disabled = true;
-                    try {
-                        if (currentUserId) await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${currentUserId}`]: deleteField() });
-                    } catch(e) {}
-                    localStorage.removeItem('active_study_room');
-                    localStorage.removeItem('is_study_guest');
-                    isIntentionalExit = true;
-                    window.location.href = 'questions.html';
-                };
-
-                document.getElementById('btn-end-room').onclick = async () => {
-                    document.getElementById('btn-end-room').disabled = true;
-                    try { await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' }); } catch(e) {}
-                    localStorage.removeItem('active_study_room');
-                    localStorage.removeItem('is_study_guest');
-                    isIntentionalExit = true;
-                    window.location.href = 'questions.html';
-                };
+            document.getElementById('btn-end-room').onclick = async () => {
+                document.getElementById('btn-end-room').disabled = true;
+                try { await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' }); } catch(e) {}
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+                isIntentionalExit = true;
+                window.location.href = 'questions.html';
             };
+        };
+    }
+};
+
+if (roomRef) {
+    onSnapshot(roomRef, (snapshot) => {
+        const data = snapshot.data();
+
+        if (!data || data.status === "ended") {
+            showPracticeCompleteModal(true);
+            return;
         }
-    };
 
-    if (roomRef) {
-        onSnapshot(roomRef, (snapshot) => {
-            const data = snapshot.data();
+        window.renderRoomBanner(data);
+        const isGuest = localStorage.getItem('is_study_guest') === 'true';
 
-            if (!data || data.status === "ended") {
-                showPracticeCompleteModal(true);
-                return;
+        // Sync Practice/Exam mode for all players in the room
+        if (data.quizConfig && data.quizConfig.mode) {
+            isExamMode = (data.quizConfig.mode === 'exam');
+            if (isExamMode) {
+                document.body.classList.add('mode-exam');
+                if (staticPauseBtn) staticPauseBtn.classList.add('hidden');
+            } else {
+                document.body.classList.remove('mode-exam');
+                if (staticPauseBtn) staticPauseBtn.classList.remove('hidden');
             }
+        }
 
-window.renderRoomBanner(data);
-            const isGuest = localStorage.getItem('is_study_guest') === 'true';
-
-            // Sync Practice/Exam mode for all players in the room
-            if (data.quizConfig && data.quizConfig.mode) {
-                isExamMode = (data.quizConfig.mode === 'exam');
-                if (isExamMode) {
-                    document.body.classList.add('mode-exam');
-                    if (staticPauseBtn) staticPauseBtn.style.display = 'none';
-                } else {
-                    document.body.classList.remove('mode-exam');
-                    if (staticPauseBtn) staticPauseBtn.style.display = 'flex';
-                }
+        if (data.status === "waiting" && isGuest) {
+            const lobby = document.getElementById('mp-lobby-screen');
+            if (lobby) {
+                lobby.classList.remove('hidden');
+                lobby.classList.add('show');
             }
+            return;
+        }
 
-            if (data.status === "waiting" && isGuest) {
-                if (!document.getElementById('mp-lobby-screen')) {
-                    const lobby = document.createElement('div');
-                    lobby.id = 'mp-lobby-screen';
-                    lobby.style.cssText = "position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background: #0b291e; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;";
-                    lobby.innerHTML = `
-                        <i class="fas fa-users" style="font-size: 4rem; color: #34d399; margin-bottom: 20px;"></i>
-                        <h2 style="font-family: 'Nunito', sans-serif;">Waiting for Host...</h2>
-                        <p style="color: #94a3b8; margin-top: 10px;">The host is picking the test material. Hang tight.</p>
-                    `;
-                    document.body.appendChild(lobby);
-                }
-                return;
+        if (data.status === "playing" && isGuest) {
+            const lobby = document.getElementById('mp-lobby-screen');
+            if (lobby) {
+                lobby.classList.remove('show');
+                setTimeout(() => lobby.classList.add('hidden'), 300);
             }
+            const isNewBatch = !quizQueue || quizQueue.length === 0 || 
+                               (data.questionIds && data.questionIds.length > 0 && String(quizQueue[0]?.originalNumber) !== String(data.questionIds[0]));
 
-            if (data.status === "playing" && isGuest) {
-                const lobby = document.getElementById('mp-lobby-screen');
-                if (lobby) lobby.remove();
-                const isNewBatch = !quizQueue || quizQueue.length === 0 || 
-                                   (data.questionIds && data.questionIds.length > 0 && String(quizQueue[0]?.originalNumber) !== String(data.questionIds[0]));
-
-                if (isNewBatch && data.questionIds) {
-                    const processGuestQuestions = async () => {
-                        document.body.style.cursor = 'wait';
-                        let incomingQuestions = [];
-                        try {
-                            const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-                            
-                            // 1. Fetch Hierarchy to get all subjects
-                            const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
-                            const hierarchyData = await hierarchyRes.json();
-                            const subjects = Object.keys(hierarchyData.subjects || {});
-                            
-                            // 2. Fetch all metadata to cross-reference IDs to their Subject/Chapter
-                            const metaPromises = subjects.map(async (subj) => {
-                                const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                try {
-                                    const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
-                                    if (res.ok) return await res.json();
-                                } catch(e) {}
-                                return [];
-                            });
-                            
-                            const allMetaArrays = await Promise.all(metaPromises);
-                            const globalMetadata = allMetaArrays.flat();
-                            
-                            // 3. Map IDs to specific JSON chunks
-                            const chunksToLoad = new Set();
-                            data.questionIds.forEach(id => {
-                                const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
-                                if (meta) {
-                                    const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                    const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                    chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
-                                }
-                            });
-
-                            // 4. Download required chunks
-                            const activeChunksCache = {};
-                            const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
-                                let page = 1;
-                                let keepFetching = true;
-                                while (keepFetching) {
-                                    const pageUrl = baseUrl.replace('.json', `_${page}.json`);
-                                    try {
-                                        const res = await fetch(pageUrl);
-                                        if (res.ok) activeChunksCache[pageUrl] = await res.json();
-                                        else keepFetching = false;
-                                    } catch(e) { keepFetching = false; }
-                                    page++;
-                                }
-                            });
-                            await Promise.all(fetchPromises);
-
-                            // 5. Reconstruct full questions from cache
-                            const fullQuestionsMap = {};
-                            Object.values(activeChunksCache).forEach(chunkArray => {
-                                chunkArray.forEach(fullQ => {
-                                    const qId = fullQ.id || fullQ.QuestionID;
-                                    if (qId) fullQuestionsMap[String(qId)] = fullQ;
-                                });
-                            });
-
-                            incomingQuestions = data.questionIds.map(id => fullQuestionsMap[String(id)]).filter(q => q);
-
-                        } catch (err) {
-                            console.error("Hydration Error:", err);
-                        }
+            if (isNewBatch && data.questionIds) {
+                const processGuestQuestions = async () => {
+                    document.body.style.cursor = 'wait';
+                    let incomingQuestions = [];
+                    try {
+                        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                         
-                        document.body.style.cursor = 'default';
-                        if (incomingQuestions.length === 0) return alert("Failed to load questions from host.");
+                        // Fetch Hierarchy to get all subjects
+                        const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                        const hierarchyData = await hierarchyRes.json();
+                        const subjects = Object.keys(hierarchyData.subjects || {});
                         
-                        if (data.quizConfig?.mode === 'exam') {
-                            for (let i = incomingQuestions.length - 1; i > 0; i--) {
-                                const j = Math.floor(Math.random() * (i + 1));
-                                [incomingQuestions[i], incomingQuestions[j]] = [incomingQuestions[j], incomingQuestions[i]];
+                        const metaPromises = subjects.map(async (subj) => {
+                            const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                            try {
+                                const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                                if (res.ok) return await res.json();
+                            } catch(e) {}
+                            return [];
+                        });
+                        
+                        const allMetaArrays = await Promise.all(metaPromises);
+                        const globalMetadata = allMetaArrays.flat();
+                        
+                        const chunksToLoad = new Set();
+                        data.questionIds.forEach(id => {
+                            const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
+                            if (meta) {
+                                const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
                             }
-                        }
-                        quizQueue = incomingQuestions;
-                        initialTotalQuestions = quizQueue.length;
-                        quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
-                        
-                        buildNumberGrid();
-                        loadQuestion(data.currentQuestionIndex || 0);
-                    };
+                        });
+
+                        const activeChunksCache = {};
+                        const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
+                            let page = 1;
+                            let keepFetching = true;
+                            while (keepFetching) {
+                                const pageUrl = baseUrl.replace('.json', `_${page}.json`);
+                                try {
+                                    const res = await fetch(pageUrl);
+                                    if (res.ok) activeChunksCache[pageUrl] = await res.json();
+                                    else keepFetching = false;
+                                } catch(e) { keepFetching = false; }
+                                page++;
+                            }
+                        });
+                        await Promise.all(fetchPromises);
+
+                        const fullQuestionsMap = {};
+                        Object.values(activeChunksCache).forEach(chunkArray => {
+                            chunkArray.forEach(fullQ => {
+                                const qId = fullQ.id || fullQ.QuestionID;
+                                if (qId) fullQuestionsMap[String(qId)] = fullQ;
+                            });
+                        });
+
+                        incomingQuestions = data.questionIds.map(id => fullQuestionsMap[String(id)]).filter(q => q);
+
+                    } catch (err) {
+                        console.error("Hydration Error:", err);
+                    }
                     
-                    processGuestQuestions();
-                }
-            }
-            // ONLY force-sync the slide transition if we are NOT in exam mode
-            if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
-                if (data.quizConfig?.mode !== 'exam') {
-                    const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
-                    triggerSlideTransition(data.currentQuestionIndex, direction);
-                }
-            }
-
-            if (data.status === "playing" && activeRoomId) {
-                const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
-                const activeMembers = data.activeMembers || {};
-                const pausedMembers = data.pausedMembers || [];
-                
-                // Exclude paused members from expected answer count
-                const activeUids = Object.keys(activeMembers);
-                const onlineUids = activeUids.filter(uid => !pausedMembers.includes(uid));
-                const onlineAnswers = Object.keys(currentAnswers).filter(uid => !pausedMembers.includes(uid));
-                
-                const expectedCount = onlineUids.length > 0 ? onlineUids.length : 1; 
-                const answerCount = onlineAnswers.length;
-                const totalAnswerCount = Object.keys(currentAnswers).length;
-
-                let waitEl = document.getElementById('multiplayer-waiting-text');
-                if (!waitEl) {
-                    waitEl = document.createElement('div');
-                    waitEl.id = 'multiplayer-waiting-text';
-                    waitEl.style.cssText = "text-align: center; margin-top: 15px; font-weight: bold; color: #34d399; display: none;";
-                    optionsContainer.parentElement.appendChild(waitEl);
-                }
-
-                if (hasAnsweredCurrentQuestion && !hasRevealedCurrentQuestion) {
-                    waitEl.style.display = 'block';
-                    waitEl.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Waiting for others... (${answerCount}/${expectedCount} online answered)`;
-                }
-
-                const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
-                if ((answerCount >= expectedCount || forceReveal) && !hasRevealedCurrentQuestion && totalAnswerCount > 0) {
-                    revealMultiplayerAnswers(currentAnswers, data.activeMembers);
-                }
-            }
-
-            if (data.quizConfig?.mode === 'exam') {
-                const results = data.examResults || {};
-                const activeUids = Object.keys(data.activeMembers || {}).filter(uid => !(data.pausedMembers || []).includes(uid));
-                
-                const leaderboardContainer = document.getElementById('group-leaderboard-container');
-                if (leaderboardContainer) {
-                    const finishedCount = Object.keys(results).length;
-                    let html = `<h3 style="color: #93c5fd; border-bottom: 1px solid rgba(59,130,246,0.3); padding-bottom: 5px; margin-top: 0;">Live Leaderboard (${finishedCount}/${activeUids.length} finished)</h3>`;
-                    html += `<div style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto;">`;
-
-                    const sortedResults = Object.values(results).sort((a, b) => b.score - a.score || a.time - b.time);
-
-                    sortedResults.forEach((res, idx) => {
-                        const mins = Math.floor(res.time / 60);
-                        const secs = (res.time % 60).toString().padStart(2, '0');
-                        html += `
-                            <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                                <span style="font-weight: bold; color: #f8fafc;">#${idx+1} ${res.name}</span>
-                                <span style="color: #34d399; font-weight: bold;">${res.score}/${res.total} <span style="color: #94a3b8; font-size: 0.8rem; margin-left: 10px;"><i class="far fa-clock"></i> ${mins}:${secs}</span></span>
-                            </div>
-                        `;
-                    });
-                    html += `</div>`;
-                    leaderboardContainer.innerHTML = html;
-
-if (finishedCount >= activeUids.length && activeUids.length > 0) {
-                        const heading = document.querySelector('#exam-result-screen h2');
-                        if (heading) heading.innerHTML = `<i class="fas fa-bullhorn" style="color: #f59e0b;"></i> Final Results Announced!`;
-                        
-                        const pText = document.querySelector('#exam-result-screen p');
-                        if (pText && sortedResults.length > 0) {
-                            pText.innerHTML = `<strong>${sortedResults[0].name}</strong> won 1st place with a score of ${sortedResults[0].score}!`;
-                            pText.style.color = "#fbbf24";
-                            pText.style.fontSize = "1.1rem";
+                    document.body.style.cursor = 'default';
+                    if (incomingQuestions.length === 0) return alert("Failed to load questions from host.");
+                    
+                    if (data.quizConfig?.mode === 'exam') {
+                        for (let i = incomingQuestions.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [incomingQuestions[i], incomingQuestions[j]] = [incomingQuestions[j], incomingQuestions[i]];
                         }
+                    }
+                    quizQueue = incomingQuestions;
+                    initialTotalQuestions = quizQueue.length;
+                    quizQueue.forEach((q, i) => { if (!q.originalNumber) q.originalNumber = q['QuestionID'] || `q-${i + 1}`; });
+                    
+                    buildNumberGrid();
+                    loadQuestion(data.currentQuestionIndex || 0);
+                };
+                
+                processGuestQuestions();
+            }
+        }
+        if (quizQueue && quizQueue.length > 0 && data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentIndex) {
+            if (data.quizConfig?.mode !== 'exam') {
+                const direction = data.currentQuestionIndex > currentIndex ? 'right' : 'left';
+                triggerSlideTransition(data.currentQuestionIndex, direction);
+            }
+        }
+
+        if (data.status === "playing" && activeRoomId) {
+            const currentAnswers = (data.answers && data.answers[currentIndex]) ? data.answers[currentIndex] : {};
+            const activeMembers = data.activeMembers || {};
+            const pausedMembers = data.pausedMembers || [];
+            
+            const activeUids = Object.keys(activeMembers);
+            const onlineUids = activeUids.filter(uid => !pausedMembers.includes(uid));
+            const onlineAnswers = Object.keys(currentAnswers).filter(uid => !pausedMembers.includes(uid));
+            
+            const expectedCount = onlineUids.length > 0 ? onlineUids.length : 1; 
+            const answerCount = onlineAnswers.length;
+            const totalAnswerCount = Object.keys(currentAnswers).length;
+
+            const waitEl = document.getElementById('multiplayer-waiting-text');
+            const mpAnsweredCount = document.getElementById('mp-answered-count');
+            const mpExpectedCount = document.getElementById('mp-expected-count');
+            
+            if (hasAnsweredCurrentQuestion && !hasRevealedCurrentQuestion) {
+                waitEl.classList.remove('hidden');
+                mpAnsweredCount.textContent = answerCount;
+                mpExpectedCount.textContent = expectedCount;
+            }
+
+            const forceReveal = data.forceReveal && data.forceReveal[currentIndex];
+            if ((answerCount >= expectedCount || forceReveal) && !hasRevealedCurrentQuestion && totalAnswerCount > 0) {
+                revealMultiplayerAnswers(currentAnswers, data.activeMembers);
+            }
+        }
+
+        if (data.quizConfig?.mode === 'exam') {
+            const results = data.examResults || {};
+            const activeUids = Object.keys(data.activeMembers || {}).filter(uid => !(data.pausedMembers || []).includes(uid));
+            
+            const leaderboardContainer = document.getElementById('group-leaderboard-container');
+            const leaderboardList = document.getElementById('group-leaderboard-list');
+            const finishedCountEl = document.getElementById('mp-finished-count');
+            const totalCountEl = document.getElementById('mp-total-count');
+            const templateLbRow = document.getElementById('template-leaderboard-row');
+            
+            if (leaderboardContainer && templateLbRow) {
+                const finishedCount = Object.keys(results).length;
+                if(finishedCountEl) finishedCountEl.textContent = finishedCount;
+                if(totalCountEl) totalCountEl.textContent = activeUids.length;
+
+                leaderboardList.innerHTML = '';
+                const sortedResults = Object.values(results).sort((a, b) => b.score - a.score || a.time - b.time);
+
+                sortedResults.forEach((res, idx) => {
+                    const mins = Math.floor(res.time / 60);
+                    const secs = (res.time % 60).toString().padStart(2, '0');
+                    
+                    const clone = templateLbRow.content.cloneNode(true);
+                    clone.querySelector('.lb-rank-name').textContent = `#${idx+1} ${res.name}`;
+                    clone.querySelector('.lb-score').textContent = `${res.score}/${res.total}`;
+                    clone.querySelector('.lb-time-text').textContent = `${mins}:${secs}`;
+                    leaderboardList.appendChild(clone);
+                });
+
+                if (finishedCount >= activeUids.length && activeUids.length > 0) {
+                    const heading = document.querySelector('#exam-result-screen h2');
+                    if (heading) heading.innerHTML = `<i class="fas fa-bullhorn yellow-text"></i> Final Results Announced!`;
+                    
+                    const pText = document.querySelector('#exam-result-screen p');
+                    if (pText && sortedResults.length > 0) {
+                        pText.innerHTML = `<strong>${sortedResults[0].name}</strong> won 1st place with a score of ${sortedResults[0].score}!`;
+                        pText.style.color = "#fbbf24";
+                        pText.style.fontSize = "1.1rem";
                     }
                 }
             }
-        });
-    }
+        }
+    });
+}
+
 // ==========================================
 // 8. EXAM SUBMISSION & RESULTS
 // ==========================================
@@ -1761,31 +1747,38 @@ function showResults() {
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     const timeTaken = (quizConfig.timer * 60) - sessionSeconds;
     
-    document.getElementById('quiz-ui-container').style.display = 'none';
-    document.getElementById('bottom-actions-container').style.display = 'none';
+    document.getElementById('quiz-ui-container').classList.add('hidden');
+    document.getElementById('bottom-actions-container').classList.add('hidden');
     
     const resultsEl = document.getElementById('exam-result-screen');
     resultsEl.classList.remove('hidden');
     resultsEl.classList.add('result-pop-in'); 
 
+    const titleEl = document.getElementById('result-title');
+    const scoreEl = document.getElementById('result-score');
+    const returnBtn = document.getElementById('btn-return-home');
+    const leaderboardContainer = document.getElementById('group-leaderboard-container');
+
     // GROUP EXAM LOGIC
     if (activeRoomId) {
-        resultsEl.innerHTML = `
-            <h2 style="color: #6ee7b7; margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px;"><i class="fas fa-spinner fa-spin"></i> Waiting for others...</h2>
-            <p style="color: #cbd5e1; margin-bottom: 20px;">You scored ${correctCount} out of ${total}. The leaderboard will update as others finish.</p>
-            <div id="group-leaderboard-container" style="text-align: left; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);"></div>
-            <button id="btn-return-home" class="action-btn next-btn" style="margin-top: 20px; width: 100%;">Save & Return</button>
-        `;
+        titleEl.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Waiting for others...`;
+        titleEl.style.color = "#6ee7b7";
+        scoreEl.textContent = `You scored ${correctCount} out of ${total}. The leaderboard will update as others finish.`;
+        
+        if (leaderboardContainer) leaderboardContainer.classList.remove('hidden');
+        if (returnBtn) returnBtn.classList.remove('hidden');
 
-        document.getElementById('btn-return-home').onclick = async (e) => {
-            e.preventDefault();
-            document.getElementById('btn-return-home').disabled = true;
-            const tasks = [];
-            tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
-            tasks.push(updateSpacedRepetition());
-            await Promise.all(tasks);
-            exitSafely('questions.html');
-        };
+        if (returnBtn) {
+            returnBtn.onclick = async (e) => {
+                e.preventDefault();
+                returnBtn.disabled = true;
+                const tasks = [];
+                tasks.push(saveExamProgress(correctIds, mistakeIds, correctCount, total, timeTaken));
+                tasks.push(updateSpacedRepetition());
+                await Promise.all(tasks);
+                exitSafely('questions.html');
+            };
+        }
 
         updateDoc(roomRef, {
             [`examResults.${currentUserId}`]: {
@@ -1800,9 +1793,6 @@ function showResults() {
     }
 
     // SOLO EXAM LOGIC
-    const titleEl = document.getElementById('result-title');
-    const scoreEl = document.getElementById('result-score');
-    
     scoreEl.textContent = `You scored ${correctCount} out of ${total} (${percentage}%)`;
     
     if (percentage >= 75) {
@@ -1819,10 +1809,10 @@ function showResults() {
     const copyShareBtn = document.getElementById('btn-copy-share');
     const whatsappShareBtn = document.getElementById('btn-whatsapp-share');
     const closeShareBtn = document.getElementById('close-share-modal');
+    const reviewBtn = document.getElementById('btn-review-exam-mistakes');
 
     if (isExamMode && challengeBtn) {
         challengeBtn.classList.remove('hidden');
-        challengeBtn.style.display = 'inline-block';
         
         challengeBtn.onclick = async (e) => {
             e.preventDefault();
@@ -1844,7 +1834,7 @@ function showResults() {
                     return newQ;
                 });
                 
-const questionIdsOnly = sanitizedQueue.map(q => String(q.originalNumber || q.id || q.QuestionID));
+                const questionIdsOnly = sanitizedQueue.map(q => String(q.originalNumber || q.id || q.QuestionID));
                 
                 await setDoc(doc(db, "friend_challenges", code), {
                     hostName: (currentUserData && currentUserData.fullName) ? currentUserData.fullName : "A Friend",
@@ -1894,9 +1884,6 @@ const questionIdsOnly = sanitizedQueue.map(q => String(q.originalNumber || q.id 
         };
     }
 
-    const returnBtn = document.getElementById('btn-return-home');
-    const reviewBtn = document.getElementById('btn-review-exam-mistakes');
-    
     const saveExamData = async () => {
         const timeTaken = (quizConfig.timer * 60) - sessionSeconds; 
         const tasks = [];
@@ -1915,7 +1902,6 @@ const questionIdsOnly = sanitizedQueue.map(q => String(q.originalNumber || q.id 
 
     if (mistakeIds.length > 0 && reviewBtn) {
         reviewBtn.classList.remove('hidden');
-        reviewBtn.style.display = 'inline-block';
         reviewBtn.onclick = async (e) => {
             e.preventDefault();
             reviewBtn.textContent = "Loading Review...";
@@ -1954,42 +1940,38 @@ const questionIdsOnly = sanitizedQueue.map(q => String(q.originalNumber || q.id 
 }
 
 function showPracticeCompleteModal(isGuest = false) {
-    if (document.getElementById('practice-complete-modal')) return; 
+    const modal = document.getElementById('practice-complete-modal');
+    if (!modal) return; 
 
-    const modal = document.createElement('div');
-    modal.id = 'practice-complete-modal';
-    modal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.95); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(10px);`;
+    const titleEl = document.getElementById('practice-complete-title');
+    const descEl = document.getElementById('practice-complete-desc');
+    const btn = document.getElementById('btn-practice-home');
 
-    const title = isGuest ? "Session Ended" : "Practice Complete!";
-    const desc = isGuest ? "The host has finished the session and closed the study room." : "Great job! You have finished all the questions.";
+    if (titleEl) titleEl.textContent = isGuest ? "Session Ended" : "Practice Complete!";
+    if (descEl) descEl.textContent = isGuest ? "The host has finished the session and closed the study room." : "Great job! You have finished all the questions.";
 
-    modal.innerHTML = `
-        <i class="fas fa-check-circle" style="color: #10b981; font-size: 5rem; margin-bottom: 1.5rem;"></i>
-        <h1 style="color: white; font-family: 'Nunito', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">${title}</h1>
-        <p style="color: #cbd5e1; font-size: 1.2rem; margin-bottom: 2rem;">${desc}</p>
-        <button id="btn-practice-home" class="action-btn next-btn" style="max-width: 280px;">Save & Return Home</button>
-    `;
-    
-    document.body.appendChild(modal);
+    modal.classList.remove('hidden');
+    modal.classList.add('show');
     document.body.style.overflow = 'hidden';
 
-    document.getElementById('btn-practice-home').addEventListener('click', async (e) => {
-        const btn = e.target;
-        btn.textContent = "Saving Progress...";
-        btn.disabled = true;
-        
-        const tasks = [updateSpacedRepetition()];
-        if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds));
-        
-        await Promise.all(tasks);
-        
-        if (!activeRoomId) {
-            localStorage.removeItem('active_study_room');
-            localStorage.removeItem('is_study_guest');
-        }
-        
-        exitSafely('questions.html'); 
-    });
+    if (btn) {
+        btn.addEventListener('click', async (e) => {
+            btn.textContent = "Saving Progress...";
+            btn.disabled = true;
+            
+            const tasks = [updateSpacedRepetition()];
+            if (!isExamMode) tasks.push(savePracticeTime(sessionSeconds));
+            
+            await Promise.all(tasks);
+            
+            if (!activeRoomId) {
+                localStorage.removeItem('active_study_room');
+                localStorage.removeItem('is_study_guest');
+            }
+            
+            exitSafely('questions.html'); 
+        });
+    }
 }
 
 // ==========================================
@@ -2044,7 +2026,7 @@ function startTimer() {
 
             if (!isExamMode && !hasAnsweredCorrectly && currentQuestionData.timeSpent === 15) {
                 if (aiHintBtn) {
-                    aiHintBtn.style.display = 'flex';
+                    aiHintBtn.classList.remove('hidden');
                     aiHintBtn.classList.add('pop-in'); 
                 }
             }
@@ -2052,40 +2034,42 @@ function startTimer() {
     }, 1000);
 }
 
-skipBtn.onclick = () => {
-    if (isExamMode) {
-        if (currentQuestionData.hasBeenSkipped) return;
-        
-        currentQuestionData.sessionState = 'skipped';
-        currentQuestionData.hasBeenSkipped = true;
+if (skipBtn) {
+    skipBtn.onclick = () => {
+        if (isExamMode) {
+            if (currentQuestionData.hasBeenSkipped) return;
+            
+            currentQuestionData.sessionState = 'skipped';
+            currentQuestionData.hasBeenSkipped = true;
+
+            if (currentIndex < quizQueue.length - 1) {
+                const skippedQ = quizQueue.splice(currentIndex, 1)[0];
+                quizQueue.push(skippedQ);
+                triggerSlideTransition(currentIndex, 'right');
+            } else {
+                triggerSlideTransition(currentIndex, 'right');
+            }
+            return;
+        }
+
+        if (!currentQuestionData.sessionState) {
+            currentQuestionData.sessionState = 'skipped';
+            currentQuestionData.hasBeenSkipped = true;
+            const btn = document.getElementById(`grid-num-${currentIndex}`);
+            if (btn) btn.classList.add('skipped');
+            
+            saveSkippedProgress(currentQuestionData.originalNumber);
+        }
 
         if (currentIndex < quizQueue.length - 1) {
-            const skippedQ = quizQueue.splice(currentIndex, 1)[0];
-            quizQueue.push(skippedQ);
-            triggerSlideTransition(currentIndex, 'right');
+            const newIndex = currentIndex + 1;
+            syncNextQuestion(newIndex);
+            triggerSlideTransition(newIndex, 'right');
         } else {
-            triggerSlideTransition(currentIndex, 'right');
+            showPracticeCompleteModal(false);
         }
-        return;
-    }
-
-    if (!currentQuestionData.sessionState) {
-        currentQuestionData.sessionState = 'skipped';
-        currentQuestionData.hasBeenSkipped = true;
-        const btn = document.getElementById(`grid-num-${currentIndex}`);
-        if (btn) btn.classList.add('skipped');
-        
-        saveSkippedProgress(currentQuestionData.originalNumber);
-    }
-
-    if (currentIndex < quizQueue.length - 1) {
-        const newIndex = currentIndex + 1;
-        syncNextQuestion(newIndex);
-        triggerSlideTransition(newIndex, 'right');
-    } else {
-        showPracticeCompleteModal(false);
-    }
-};
+    };
+}
 
 if (labValuesBtn) labValuesBtn.onclick = () => {
     if (labValuesModal) {
@@ -2124,14 +2108,18 @@ if (modalNextBtn) {
 
 if (explanationBtn) {
     explanationBtn.onclick = () => {
-        explanationModal.classList.remove('hidden');
-        explanationModal.classList.add('show');
+        if(explanationModal) {
+            explanationModal.classList.remove('hidden');
+            explanationModal.classList.add('show');
+        }
     };
 }
 if (closeExplanationBtn) {
     closeExplanationBtn.onclick = () => {
-        explanationModal.classList.remove('show');
-        setTimeout(() => explanationModal.classList.add('hidden'), 300);
+        if(explanationModal) {
+            explanationModal.classList.remove('show');
+            setTimeout(() => explanationModal.classList.add('hidden'), 300);
+        }
     };
 }
 
@@ -2149,26 +2137,26 @@ if (aiHintBtn) {
                 hintText = "No specific hint available for this question. Analyze the patient's primary symptoms, anatomical landmarks, and time-course carefully.";
             }
 
-            const hintModal = document.createElement('div');
-            hintModal.id = 'dynamic-hint-modal';
-            hintModal.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: rgba(2, 18, 12, 0.85); z-index: 2147483647; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(8px); padding: 20px; box-sizing: border-box;`;
+            const dynamicHintModal = document.getElementById('dynamic-hint-modal');
+            const dynamicHintText = document.getElementById('dynamic-hint-text');
+            const closeDynamicHint = document.getElementById('close-dynamic-hint');
             
-            hintModal.innerHTML = `
-                <div style="background: rgba(14, 48, 35, 0.95); backdrop-filter: blur(24px); border: 1px solid rgba(192, 132, 252, 0.4); padding: 28px; border-radius: 18px; max-width: 460px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
-                    <h2 style="color: #d8b4fe; margin-top: 0; margin-bottom: 15px;"><i class="far fa-lightbulb"></i> Hint</h2>
-                    <div style="color: #f1f5f9; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; text-align: justify;">
-                        ${hintText}
-                    </div>
-                    <button id="close-dynamic-hint" class="action-btn hint-btn" style="width: 100%;">Got it!</button>
-                </div>
-            `;
-            
-            document.body.appendChild(hintModal);
-            document.getElementById('close-dynamic-hint').onclick = () => hintModal.remove();
+            if (dynamicHintModal && dynamicHintText) {
+                dynamicHintText.innerHTML = hintText;
+                dynamicHintModal.classList.remove('hidden');
+                dynamicHintModal.classList.add('show');
+                
+                if(closeDynamicHint) {
+                    closeDynamicHint.onclick = () => {
+                        dynamicHintModal.classList.remove('show');
+                        setTimeout(() => dynamicHintModal.classList.add('hidden'), 300);
+                    };
+                }
+            }
 
             aiHintBtn.innerHTML = originalText;
             aiHintBtn.disabled = false;
-            aiHintBtn.style.display = 'none';
+            aiHintBtn.classList.add('hidden');
         }, 400);
     };
 }
@@ -2263,14 +2251,14 @@ document.addEventListener('keydown', (e) => {
     if (activeEl && activeEl.classList.contains('ql-editor')) return;
 
     const mustAnswerModal = document.getElementById('must-answer-modal');
-    if (mustAnswerModal && e.key === 'Enter') {
+    if (mustAnswerModal && mustAnswerModal.classList.contains('show') && e.key === 'Enter') {
         e.preventDefault();
         document.getElementById('btn-understood-must-answer').click();
         return;
     }
 
     const skippedModal = document.getElementById('skipped-popup-modal');
-    if (skippedModal && e.key === 'Enter') {
+    if (skippedModal && skippedModal.classList.contains('show') && e.key === 'Enter') {
         e.preventDefault();
         const understoodBtn = document.getElementById('btn-understood-skip');
         if (understoodBtn) understoodBtn.click();
@@ -2291,20 +2279,21 @@ document.addEventListener('keydown', (e) => {
     switch(e.key) {
         case 'ArrowRight': e.preventDefault(); if(nextBtnLocal) nextBtnLocal.click(); break;
         case 'ArrowLeft': e.preventDefault(); if(prevBtnLocal) prevBtnLocal.click(); break;
-        case 'h': case 'H': e.preventDefault(); if (aiHintBtn && aiHintBtn.style.display !== 'none') aiHintBtn.click(); break;
-        case 'Escape': e.preventDefault(); if (shortcutsModal && !shortcutsModal.classList.contains('hidden')) closeShortcutsBtn.click(); else if (isExplanationOpen) closeExplanationBtn.click(); else exitSafely('questions.html'); break; 
+        case 'h': case 'H': e.preventDefault(); if (aiHintBtn && !aiHintBtn.classList.contains('hidden')) aiHintBtn.click(); break;
+        case 'Escape': e.preventDefault(); if (shortcutsModal && shortcutsModal.classList.contains('show')) closeShortcutsBtn.click(); else if (isExplanationOpen) closeExplanationBtn.click(); else exitSafely('questions.html'); break; 
         case 'Enter': 
             e.preventDefault(); 
-            const dynamicHintBtn = document.getElementById('close-dynamic-hint');
+            const dynamicHintModal = document.getElementById('dynamic-hint-modal');
+            const closeDynamicHint = document.getElementById('close-dynamic-hint');
             if (isPaused && resumeQuizBtn) resumeQuizBtn.click();
-            else if (dynamicHintBtn) dynamicHintBtn.click();
+            else if (dynamicHintModal && dynamicHintModal.classList.contains('show')) { if(closeDynamicHint) closeDynamicHint.click(); }
             else if (isExplanationOpen) closeExplanationBtn.click(); 
             else if (nextBtnLocal) nextBtnLocal.click(); 
             break;
-        case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) closeExplanationBtn.click(); else explanationBtn.click(); } break;
+        case 'x': case 'X': e.preventDefault(); if (hasAnsweredCorrectly && !isExamMode) { if (isExplanationOpen) closeExplanationBtn.click(); else if(explanationBtn) explanationBtn.click(); } break;
         case 'p': case 'P': 
             e.preventDefault(); 
-            if (isExamMode && skipBtn && skipBtn.style.display !== 'none') skipBtn.click(); 
+            if (isExamMode && skipBtn && !skipBtn.classList.contains('hidden')) skipBtn.click(); 
             else if (!isExamMode) {
                 if (isPaused && resumeQuizBtn) resumeQuizBtn.click();
                 else if (staticPauseBtn) staticPauseBtn.click();
@@ -2375,7 +2364,6 @@ if (globalExitBtn) {
             if (activeRoomId) {
                 const isGuest = localStorage.getItem('is_study_guest') === 'true';
                 if (!isGuest) {
-                    // Put room in waiting mode for guests while host picks new Qs
                     tasks.push(updateDoc(doc(db, "study_rooms", activeRoomId), { 
                         status: "waiting",
                         answers: {},
@@ -2392,7 +2380,6 @@ if (globalExitBtn) {
         } catch (error) { 
             console.error("Error during exit sequence:", error); 
         } finally {
-            // Only clear the room ID if you are NOT the host, allowing the host to keep ownership
             if (!activeRoomId || localStorage.getItem('is_study_guest') === 'true') {
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
@@ -2407,7 +2394,6 @@ async function updateSpacedRepetition() {
     if (!user) return;
 
     const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-    const userRef = doc(db, "users", user.uid);
 
     try {
         const dbData = currentUserData || {};
@@ -2474,7 +2460,7 @@ async function updateSpacedRepetition() {
             data.updatedAt = Date.now();
         });
 
-if (isBookSessionLocal) {
+        if (isBookSessionLocal) {
             await setDoc(doc(db, "users", user.uid, "books", "revisions"), revisionsData, { merge: true });
         } else {
             await setDoc(doc(db, "users", user.uid, activeCourse, "revisions"), revisionsData, { merge: true });
@@ -2728,12 +2714,13 @@ if (btnPushEdits) {
 
             alert(`✅ Success! CSV, Metadata, and Hierarchy synced to GitHub.\n\n⚠️ IMPORTANT: You MUST run your Python script locally to generate and push the updated micro-chunks (Subjects/Systems/Exams).`);
             localStorage.removeItem('edeetos_pending_edits');
-            btnPushEdits.style.display = 'none';
+            btnPushEdits.classList.add('hidden');
 
         } catch (error) {
             console.error(error);
             alert("❌ Push Failed: " + error.message);
-            btnPushEdits.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" style="background: white; color: #f59e0b; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem;">${pendingQueue.length}</span>`;
+            const pendingEditsCount = document.getElementById('pending-edits-count');
+            if (pendingEditsCount) pendingEditsCount.textContent = pendingQueue.length;
             btnPushEdits.disabled = false;
         }
     };

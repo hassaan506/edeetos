@@ -3,31 +3,48 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-// 0. GLOBAL UI OVERRIDE (BEAUTIFUL ALERTS)
+// 0. GLOBAL UI OVERRIDE (CLINICAL SAAS ALERTS)
 window.alert = function(message, onCloseCallback) {
     const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100dvh; background:rgba(0,0,0,0.4); backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:center; z-index:999999;';
+    overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100dvh; background:rgba(3, 4, 7, 0.8); backdrop-filter:blur(8px); display:flex; justify-content:center; align-items:center; z-index:999999;';
 
     const box = document.createElement('div');
-    box.style.cssText = 'background:white; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.2); text-align:center; width:90%; max-width:400px; transform:scale(0.8); opacity:0; transition:all 0.3s ease;';
+    const isDark = document.documentElement.classList.contains('dark-mode');
+    
+    // Applying rigid enterprise styling to alerts
+    const bgCol = isDark ? '#0A0C10' : '#ffffff';
+    const textCol = isDark ? '#E2E2E2' : '#030407';
+    const borderCol = isDark ? 'rgba(21, 88, 201, 0.3)' : 'rgba(21, 70, 217, 0.15)';
+    const btnBg = isDark ? '#D4FF24' : '#1546D9';
+    const btnText = isDark ? '#030407' : '#ffffff';
+
+    box.style.cssText = `background:${bgCol}; padding:3rem; border-radius:4px; border:1px solid ${borderCol}; box-shadow:0 24px 48px rgba(0,0,0,0.5); text-align:center; width:90%; max-width:450px; transform:scale(0.95); opacity:0; transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);`;
+
+    const header = document.createElement('p');
+    header.textContent = 'SYSTEM NOTIFICATION';
+    header.style.cssText = `font-family:'Courier New', monospace; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; color:${isDark ? '#D4FF24' : '#1546D9'}; margin-bottom:1rem;`;
 
     const msg = document.createElement('p');
     msg.textContent = message;
-    msg.style.cssText = 'color:#334155; font-size:1.1rem; font-weight:bold; margin-bottom:1.5rem;';
+    msg.style.cssText = `color:${textCol}; font-family:'Inter', sans-serif; font-size:1.1rem; font-weight:600; margin-bottom:2.5rem; line-height:1.6;`;
 
     const btn = document.createElement('button');
-    btn.textContent = 'Understood';
-    btn.style.cssText = 'background:#059669; color:white; border:none; padding:0.6rem 2rem; border-radius:8px; cursor:pointer; font-weight:bold; font-size:1rem;';
+    btn.textContent = 'Acknowledge';
+    btn.style.cssText = `background:${btnBg}; color:${btnText}; border:none; padding:1rem 2.5rem; border-radius:4px; cursor:pointer; font-family:'Inter', sans-serif; font-weight:800; font-size:1rem; width:100%; transition:all 0.2s;`;
     
+    btn.onmouseover = () => btn.style.filter = 'brightness(1.1)';
+    btn.onmouseout = () => btn.style.filter = 'none';
+
     btn.onclick = () => {
         box.style.opacity = '0';
-        box.style.transform = 'scale(0.8)';
+        box.style.transform = 'scale(0.95)';
         setTimeout(() => {
             document.body.removeChild(overlay);
             if (onCloseCallback) onCloseCallback();
-        }, 300);
+        }, 200);
     };
 
+    box.appendChild(header);
     box.appendChild(msg);
     box.appendChild(btn);
     overlay.appendChild(box);
@@ -64,7 +81,7 @@ function enforceSecurity() {
     document.addEventListener('contextmenu', e => e.preventDefault()); 
     document.addEventListener('copy', e => { 
         e.preventDefault(); 
-        alert("Copying text is strictly disabled for security."); 
+        alert("Extraction blocked. Copying text is strictly disabled."); 
     }); 
     document.addEventListener('cut', e => e.preventDefault()); 
 
@@ -72,7 +89,7 @@ function enforceSecurity() {
         if (e.key === 'PrintScreen') {
             navigator.clipboard.writeText(''); 
             document.body.style.display = 'none'; 
-            alert("Screenshots are strictly prohibited.");
+            alert("Security Protocol: Screenshots are strictly prohibited.");
             setTimeout(() => document.body.style.display = 'block', 500);
         }
     });
@@ -100,7 +117,6 @@ function enforceSecurity() {
 }
 
 // GLOBAL MULTIPLE DEVICE LOGIN RESTRICTOR & ROLE CHECK
-// GLOBAL MULTIPLE DEVICE LOGIN RESTRICTOR & ROLE CHECK
 onAuthStateChanged(auth, (user) => {
     if (user) {
         if (!window.__sessionListenerAttached) {
@@ -110,24 +126,20 @@ onAuthStateChanged(auth, (user) => {
                     const data = docSnap.data();
                     const role = (data.role || 'STUDENT').toUpperCase();
                     
-                    // 1. Check privileges immediately. If admin/management, bypass everything.
                     if (role === 'ADMIN' || role === 'MANAGEMENT') {
                         console.log("Security bypassed: Admin/Management privileges recognized.");
                         return; 
                     }
 
-                    // 2. Enforce standard security for students
                     enforceSecurity();
 
-                    // 3. Check for multiple device logins
                     const localToken = localStorage.getItem("edeetos_session_id");
                     const dbToken = data.sessionToken;
                     
                     if (dbToken && localToken && dbToken !== localToken) {
                         localStorage.removeItem("edeetos_session_id");
                         
-                        // Pass the redirect as a callback so it waits for the click
-                        alert("Security Alert: Your account was logged into from another device. You will now be signed out.", () => {
+                        alert("Security Alert: Your account was accessed from another node. You will now be disconnected.", () => {
                             signOut(auth).then(() => {
                                 window.location.href = "login.html";
                             });

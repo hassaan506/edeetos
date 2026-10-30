@@ -10,9 +10,13 @@ const registerForm = document.querySelector('#register-form');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        const submitBtn = registerForm.querySelector('button[type="submit"]');
+        submitBtn.textContent = "Creating account...";
+        submitBtn.disabled = true;
 
-        // 1. Gather Input Values
-		const name = document.querySelector('#reg-name').value;
+        // Gather Input Values
+        const name = document.querySelector('#reg-name').value;
         const username = document.querySelector('#reg-username').value.toLowerCase().trim();
         const email = document.querySelector('#reg-email').value;
         const phone = document.querySelector('#reg-phone').value;
@@ -23,15 +27,15 @@ if (registerForm) {
         const examDate = document.querySelector('#reg-exam-date').value; 
 
         try {
-            // 2. Create Firebase Auth User
+            // Create Firebase Auth User
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // 3. Generate Session Token
+            // Generate Session Token
             const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
             localStorage.setItem("edeetos_session_id", newToken);
 
-			// 4. Write to Firestore Database (Protected User Profile)
+            // Write to Firestore Database (Protected User Profile)
             await setDoc(doc(db, "users", user.uid), {
                 fullName: name,
                 username: username,
@@ -47,18 +51,20 @@ if (registerForm) {
                 createdAt: new Date().toISOString()
             });
 
-            // 5. Build the Public Username Lookup Index
+            // Build the Public Username Lookup Index
             await setDoc(doc(db, "username_lookup", username), {
                 email: email,
                 userId: user.uid
             });
 
-            // 6. Success Routing
-            alert("Success! Your profile has been created.");
+            // Success Routing
+            alert("Account created successfully! Opening your dashboard...");
             window.location.href = "dashboard.html"; 
 
         } catch (error) {
             alert("Registration failed: " + error.message);
+            submitBtn.textContent = "Create Account";
+            submitBtn.disabled = false;
         }
     });
 }

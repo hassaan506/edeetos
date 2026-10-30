@@ -3,35 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form - EDEETOS</title>
+    <title>Sign Up - EDEETOS</title>
     
-    <!-- === FEATURE: STYLES === -->
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="auth.css">
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');</script>
 </head>
 <body>
 
-    <!-- === FEATURE: NAVIGATION === -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
-            </a>
+            <a href="index.html" class="nav-logo">EDEETOS.</a>
             <ul class="nav-links">
                 <li><a href="index.html">Back to Home</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- === FEATURE: AUTHENTICATION FORM === -->
-    <section class="section-container auth-wrapper">
-        <div class="glass-panel auth-card wide-card">
-            <h2>Registration Form</h2>
-            <p class="section-description">Help us tailor your EDEETOS mentorship experience.</p>
+    <section class="auth-wrapper">
+        <div class="auth-card wide-card">
+            <h2>Create Account</h2>
+            <p class="section-description">Set up your profile to get started.</p>
             
             <form id="register-form" class="contact-form">
                 
-                <!-- Identity Inputs -->
                 <div class="form-row">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -43,36 +38,33 @@
                     </div>
                 </div>
 
-                <!-- Contact Inputs -->
                 <div class="form-row">
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" id="reg-email" placeholder="hassaan@example.com" required>
                     </div>
                     <div class="form-group">
-                        <label>Phone / WhatsApp</label>
+                        <label>WhatsApp Number</label>
                         <input type="tel" id="reg-phone" placeholder="+92 300 0000000" required>
                     </div>
                 </div>
 
-                <!-- Location Inputs -->
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Current Institution / University</label>
+                        <label>Medical College / University</label>
                         <input type="text" id="reg-uni" placeholder="Aga Khan University" required>
                     </div>
                     <div class="form-group">
-                        <label>City / Country</label>
+                        <label>City & Country</label>
                         <input type="text" id="reg-location" placeholder="Karachi, Pakistan" required>
                     </div>
                 </div>
 
-<!-- Course Selection & Exam Date -->
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Select Your Access Course</label>
+                        <label>Select Your Course</label>
                         <select id="reg-course" class="custom-select" required>
-                            <option value="" disabled selected>Select specific course...</option>
+                            <option value="" disabled selected>Choose an exam...</option>
                             <option value="mbbs_year1">MBBS 1st Year</option>
                             <option value="mbbs_year2">MBBS 2nd Year</option>
                             <option value="mbbs_year3">MBBS 3rd Year</option>
@@ -84,34 +76,27 @@
                             <option value="mrcs_part1">MRCS Part 1</option>
                             <option value="mrcs_part2">MRCS Part 2</option>
                         </select>
-                        <small style="color: #94a3b8; font-size: 0.75rem; margin-top: 5px; display: block; font-weight: 600;">
-                            Note: Locked to one course. Admin approval needed to change.
-                        </small>
+                        <span class="form-note">You can only pick one course for now.</span>
                     </div>
                     <div class="form-group">
-                        <label>Target Exam Date</label>
+                        <label>Expected Exam Date</label>
                         <input type="date" id="reg-exam-date" required>
-                        <small style="color: #94a3b8; font-size: 0.75rem; margin-top: 5px; display: block; font-weight: 600;">
-                            Used to calculate your study timeline.
-                        </small>
+                        <span class="form-note">Used to build your study schedule.</span>
                     </div>
                 </div>
 
-                <!-- Security Inputs -->
                 <div class="form-group" style="margin-top: 1rem;">
                     <label>Password</label>
                     <input type="password" id="reg-password" placeholder="Create a strong password" required>
                 </div>
 
-                <button type="submit" class="btn-solid form-btn">Create EDEETOS Account</button>
+                <button type="submit" class="form-btn btn-solid">Create Account</button>
             </form>
 
-            <!-- Authentication Footer -->
-            <p class="auth-footer">Already have an account? <a href="login.html">Log In</a></p>
+            <p class="auth-footer">Already have an account? <a href="login.html">Log In Here</a></p>
         </div>
     </section>
 
-    <!-- === FEATURE: SCRIPTS === -->
     <script type="module" src="register.js"></script>
 </body>
 </html>
