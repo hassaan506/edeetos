@@ -456,18 +456,18 @@ const workerUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sqlite.wor
 const wasmUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sql-wasm.wasm";
                 
 sqlWorker = await createDbWorker(
-                    [{
-                        from: "inline",
-                        config: {
-                            serverMode: "full",
-                            url: `Data/${activeCourse}_search_index.sqlite`,
-                            requestChunkSize: 4096,
-                        }
-                    }],
-                    workerUrl,
-                    wasmUrl,
-                    10 * 1024 * 1024 
-                );
+    [{
+        from: "inline",
+        config: {
+            serverMode: "full",
+            url: `https://hassaan506.github.io/edeetos/Data/${activeCourse}_search_index.sqlite`,
+            requestChunkSize: 4096,
+        }
+    }],
+    workerUrl,
+    wasmUrl,
+    10 * 1024 * 1024 
+);
                 globalSearch.placeholder = "Search 40,000+ questions...";
             } catch(e) {
                 console.error("Search engine boot failed", e);
@@ -660,9 +660,9 @@ async function loadDataAndBuildTree() {
 const workerUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sqlite.worker.js";
 const wasmUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sql-wasm.wasm";
 window.sqlWorker = await createDbWorker(
-                    [{ from: "inline", config: { serverMode: "full", url: `Data/${activeCourse}_search_index.sqlite`, requestChunkSize: 4096 } }],
-                    workerUrl, wasmUrl, 10 * 1024 * 1024 
-                );
+    [{ from: "inline", config: { serverMode: "full", url: `https://hassaan506.github.io/edeetos/Data/${activeCourse}_search_index.sqlite`, requestChunkSize: 4096 } }],
+    workerUrl, wasmUrl, 10 * 1024 * 1024 
+);
 		} catch(e) { console.warn("SQLite boot failed", e); }
             window.isSearchEngineLoading = false;
         }
