@@ -1752,7 +1752,7 @@ if (roomId && !isGuest) {
             
             const questionIdsOnly = roomPool.map(q => String(q.id || q.QuestionID));
 
-await setDoc(doc(db, "study_rooms", roomId), {
+            await setDoc(doc(db, "study_rooms", roomId), {
                 questionIds: questionIdsOnly,
                 quizConfig: { mode, timer: timerMinutes, examName },
                 status: 'playing',
@@ -2987,7 +2987,6 @@ function initMentorFeatures() {
                         confirmBtn.textContent = "Assigning...";
                         confirmBtn.disabled = true;
 
-                        try {
 try {
                             const questionIdsOnly = examPool.map(q => String(q.id || q.QuestionID));
 
