@@ -22,28 +22,7 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-async function getCreateDbWorker() {
-    const cdnUrls = [
-        "https://esm.sh/sql.js-httpvfs@0.8.12",
-        "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/+esm"
-    ];
-
-    for (const url of cdnUrls) {
-        try {
-            const module = await import(url);
-
-            if (typeof module.createDbWorker === "function") {
-                return module.createDbWorker;
-            }
-
-            console.warn("createDbWorker export missing:", url);
-        } catch (error) {
-            console.warn("SQLite module failed to load:", url, error);
-        }
-    }
-
-    throw new Error("SQLite search engine could not load from either CDN.");
-}
+import { createDbWorker } from './assets/sqlite/sql-vfs-bundle.js';
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
@@ -473,10 +452,10 @@ if (globalSearch && searchDropdown) {
             isSearchEngineLoading = true;
             globalSearch.placeholder = "Booting Search Engine...";
             try {
-const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/dist/sqlite.worker.js";
-const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/dist/sql-wasm.wasm";
+const workerUrl = "./assets/sqlite/sqlite.worker.js";
+const wasmUrl = "./assets/sqlite/sql-wasm.wasm";
                 
-                sqlWorker = await (await getCreateDbWorker())(
+                sqlWorker = await createDbWorker(
                     [{
                         from: "inline",
                         config: {
@@ -678,9 +657,9 @@ async function loadDataAndBuildTree() {
         if (!window.sqlWorker && !window.isSearchEngineLoading) {
             window.isSearchEngineLoading = true;
             try {
-const workerUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/dist/sqlite.worker.js";
-const wasmUrl = "https://cdn.jsdelivr.net/npm/sql.js-httpvfs@0.8.12/dist/sql-wasm.wasm";
-                window.sqlWorker = await (await getCreateDbWorker())(
+const workerUrl = "./assets/sqlite/sqlite.worker.js";
+const wasmUrl = "./assets/sqlite/sql-wasm.wasm";
+                window.sqlWorker = await createDbWorker(
                     [{ from: "inline", config: { serverMode: "full", url: `Data/${activeCourse}_search_index.sqlite`, requestChunkSize: 4096 } }],
                     workerUrl, wasmUrl, 10 * 1024 * 1024 
                 );
