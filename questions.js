@@ -470,7 +470,7 @@ sqlWorker = await createDbWorker(
     wasmUrl,
     10 * 1024 * 1024 
 );
-                globalSearch.placeholder = "Search 40,000+ questions...";
+                globalSearch.placeholder = "Search keywords among questions...";
             } catch(e) {
                 console.error("Search engine boot failed", e);
                 globalSearch.placeholder = "Search unavailable";
