@@ -536,17 +536,17 @@ function loadQuestion(index) {
                 diffBadge.classList.remove('hidden');
                 if (diffDot) diffDot.classList.remove('hidden');
                 
-                // Clear inline styles/classes
+// Strict Clinical Status Badges
                 diffBadge.style.cssText = "";
                 if (diffText === 'easy') {
-                    diffBadge.textContent = "Easy";
-                    diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.3); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.6);";
+                    diffBadge.textContent = "EASY";
+                    diffBadge.style.cssText = "background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #10b981;";
                 } else if (diffText === 'hard') {
-                    diffBadge.textContent = "Hard";
-                    diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.3); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.6);";
+                    diffBadge.textContent = "HARD";
+                    diffBadge.style.cssText = "background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444;";
                 } else {
-                    diffBadge.textContent = "Medium";
-                    diffBadge.style.cssText = "background: rgba(217, 119, 6, 0.35); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.6);";
+                    diffBadge.textContent = "MEDIUM";
+                    diffBadge.style.cssText = "background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid #f59e0b;";
                 }
             }
         }
@@ -583,18 +583,16 @@ function loadQuestion(index) {
             let specData = currentQuestionData.Specialty || currentQuestionData.specialty;
             let specList = Array.isArray(specData) ? specData : (specData && typeof specData === 'string' ? specData.split(',') : (specData ? [specData] : []));
 
-            if ((yearList.length > 0 || examList.length > 0 || specList.length > 0) && !isExamMode) {
+if ((yearList.length > 0 || examList.length > 0 || specList.length > 0) && !isExamMode) {
                 examYearInfo.classList.remove('hidden');
                 
-                const topRow = document.createElement('div');
-                topRow.style.cssText = "display:flex; justify-content:center; flex-wrap:wrap; gap:8px; width:100%;";
-                
+                // Render directly into the wrapping flex container
                 specList.forEach(sp => {
                     if (sp.trim()) {
                         const s = document.createElement('span');
                         s.className = 'meta-pill-purple';
                         s.textContent = sp.trim();
-                        topRow.appendChild(s);
+                        examYearInfo.appendChild(s);
                     }
                 });
 
@@ -602,23 +600,17 @@ function loadQuestion(index) {
                     const y = document.createElement('span');
                     y.className = 'meta-pill-year';
                     y.textContent = yearList.map(yr => yr.trim()).join(', ');
-                    topRow.appendChild(y);
+                    examYearInfo.appendChild(y);
                 }
-                examYearInfo.appendChild(topRow);
                 
-                if (examList.length > 0) {
-                    const bottomRow = document.createElement('div');
-                    bottomRow.style.cssText = "display:flex; justify-content:center; flex-wrap:wrap; gap:6px; width:100%;";
-                    examList.forEach(ex => {
-                        if (ex.trim()) {
-                            const e = document.createElement('span');
-                            e.className = 'meta-pill-sub';
-                            e.textContent = ex.trim();
-                            bottomRow.appendChild(e);
-                        }
-                    });
-                    examYearInfo.appendChild(bottomRow);
-                }
+                examList.forEach(ex => {
+                    if (ex.trim()) {
+                        const e = document.createElement('span');
+                        e.className = 'meta-pill-sub';
+                        e.textContent = ex.trim();
+                        examYearInfo.appendChild(e);
+                    }
+                });
             } else {
                 examYearInfo.classList.add('hidden');
             }
@@ -653,12 +645,16 @@ function loadQuestion(index) {
 
             optTextElement.textContent = opt.text;
 
-            if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
-                optBox.classList.add('selected');
-            } else if (!isExamMode && hasAnsweredCorrectly && !activeRoomId) {
-                if (opt.isCorrect) optBox.classList.add('correct');
-                optBox.classList.add('locked');
-            }
+if (isExamMode && currentQuestionData.userSelectedAnswer === opt.text) {
+            optBox.classList.add('selected');
+        } else if (!isExamMode && hasAnsweredCorrectly && !activeRoomId) {
+            if (opt.isCorrect) optBox.classList.add('correct');
+            optBox.classList.add('locked');
+        }
+
+        if (!isExamMode && currentQuestionData.selectedWrongOptions && currentQuestionData.selectedWrongOptions.includes(opt.text)) {
+            optBox.classList.add('incorrect');
+        }
 
             if (currentQuestionData.eliminatedOptions && currentQuestionData.eliminatedOptions.includes(opt.text)) {
                 optBox.classList.add('strikethrough');
@@ -1198,12 +1194,18 @@ function handleOptionClick(event, optionData, optionElement) {
 
     if (hasAnsweredCorrectly || optionElement.classList.contains('incorrect')) return; 
 
-    if (!optionData.isCorrect) {
+if (!optionData.isCorrect) {
         optionElement.classList.remove('apply-shake');
         void optionElement.offsetWidth;
         optionElement.classList.add('incorrect', 'apply-shake');
         wrongAttempts++;
         currentQuestionData.wrongAttemptsCount = wrongAttempts;
+        
+        if (!currentQuestionData.selectedWrongOptions) currentQuestionData.selectedWrongOptions = [];
+        if (!currentQuestionData.selectedWrongOptions.includes(optionData.text)) {
+            currentQuestionData.selectedWrongOptions.push(optionData.text);
+        }
+
         updateFeedbackBar();
         
         if (!currentQuestionData.sessionState) {
@@ -1211,8 +1213,12 @@ function handleOptionClick(event, optionData, optionElement) {
             const btn = document.getElementById(`grid-num-${currentIndex}`);
             if (btn) { btn.classList.remove('correct', 'skipped'); btn.classList.add('incorrect'); }
         }
-        savePracticeProgress(currentQuestionData.originalNumber, false); 
+        savePracticeProgress(currentQuestionData.originalNumber, false);
         
+        if (explanationBtn) {
+            explanationBtn.classList.remove('hidden');
+            explanationBtn.classList.add('pop-in');
+        }
     } else {
         optionElement.classList.remove('apply-pop');
         void optionElement.offsetWidth; 
@@ -2724,4 +2730,49 @@ if (btnPushEdits) {
             btnPushEdits.disabled = false;
         }
     };
+}
+
+// ==========================================
+// 13. HARDWARE-ACCELERATED RADIAL GLOW
+// ==========================================
+document.addEventListener('mousemove', (e) => {
+    document.querySelectorAll('.glass-panel, .question-card, .option-box').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+});
+
+// ==========================================
+// 14. DARK MODE TOGGLE LOGIC
+// ==========================================
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+if (themeToggleBtn) {
+    const icon = themeToggleBtn.querySelector('i');
+    
+    // Set initial icon based on root element state
+    if (document.documentElement.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Toggle class on root and body
+        document.documentElement.classList.toggle('dark-mode');
+        document.body.classList.toggle('dark-mode');
+        
+        // Save state to localStorage
+        const isDark = document.documentElement.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        // Swap icon visually
+        if (isDark) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+        }
+    });
 }

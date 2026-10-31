@@ -1,10 +1,11 @@
-<!-- questions.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Bank - EDEETOS</title>
+    <!-- Core Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="questions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,15 +16,15 @@
         }
     </script>
 </head>
-<body>
+<body class="dashboard-body">
     
-    <!-- === HOST BANNER (Hidden by default) === -->
-    <div id="host-banner" class="host-banner" style="display: none;">
+    <!-- === HOST BANNER === -->
+    <div id="host-banner" class="host-banner glass-panel" style="display: none;">
         <div class="host-banner-info">
             <i class="fas fa-users"></i> 
-            <span>You are hosting Study Room <strong id="host-room-id" class="host-room-tag"></strong>. Select a topic and click Start to resume.</span>
+            <span>You are hosting Study Room <strong id="host-room-id" class="host-room-tag"></strong>. Select a topic and click Start.</span>
         </div>
-        <button id="btn-exit-host-room" class="action-btn host-exit-btn">Exit Room</button>
+        <button id="btn-exit-host-room" class="btn-outline host-exit-btn">Exit Room</button>
     </div>
 
     <!-- === SIDEBAR === -->
@@ -59,7 +60,7 @@
             </div>
             <div class="nav-right">
                 <h3 id="current-view-title" class="view-title">Subject Wise</h3>
-                <button id="btn-push-edits" class="action-btn push-edits-btn" style="display: none;">
+                <button id="btn-push-edits" class="btn-solid push-edits-btn" style="display: none;">
                     <i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" class="pending-count">0</span>
                 </button>
                 <button id="dark-mode-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
@@ -71,85 +72,91 @@
     <section class="section-container" id="selection-screen">
 
         <!-- Progress Dashboard -->
-        <div class="glass-panel prog-dash">
-            <div class="prog-stats">
-                <div class="prog-stat-box">
-                    <div class="prog-stat-title">Solved</div>
-                    <div class="stat-value text-emerald" id="stat-solved">0</div>
+        <div class="glass-panel prog-dash bento-card">
+            <div class="card-content" style="width: 100%;">
+                <div class="prog-stats">
+                    <div class="prog-stat-box">
+                        <div class="prog-stat-title">Solved</div>
+                        <div class="stat-value text-emerald" id="stat-solved">0</div>
+                    </div>
+                    <div class="prog-stat-box">
+                        <div class="prog-stat-title">Accuracy</div>
+                        <div class="stat-value text-blue" id="stat-accuracy">0%</div>
+                    </div>
+                    <div class="prog-stat-box">
+                        <div class="prog-stat-title">Mistakes</div>
+                        <div class="stat-value text-red" id="stat-mistakes">0</div>
+                    </div>
+                    <div class="prog-stat-box">
+                        <div class="prog-stat-title">Bookmarks</div>
+                        <div class="stat-value text-yellow" id="stat-bookmarks">0</div>
+                    </div>
+                    <div class="prog-stat-box">
+                        <div class="prog-stat-title">Skipped</div>
+                        <div class="stat-value text-amber" id="stat-skipped">0</div>
+                    </div>
                 </div>
-                <div class="prog-stat-box">
-                    <div class="prog-stat-title">Accuracy</div>
-                    <div class="stat-value text-blue" id="stat-accuracy">0%</div>
-                </div>
-                <div class="prog-stat-box">
-                    <div class="prog-stat-title">Mistakes</div>
-                    <div class="stat-value text-red" id="stat-mistakes">0</div>
-                </div>
-				<div class="prog-stat-box">
-                    <div class="prog-stat-title">Bookmarks</div>
-                    <div class="stat-value text-yellow" id="stat-bookmarks">0</div>
-                </div>
-                <div class="prog-stat-box">
-                    <div class="prog-stat-title">Skipped</div>
-                    <div class="stat-value text-amber" id="stat-skipped">0</div>
-                </div>
-            </div>
 
-            <div class="prog-actions">
-				<button id="btn-practice-mistakes" class="action-btn btn-outline-red" disabled>⚠️ Mistakes</button>
-                <button id="btn-review-bookmarks" class="action-btn btn-outline-amber" disabled>⭐ Bookmarks</button>
-                <button id="btn-practice-skipped" class="action-btn btn-outline-yellow" disabled>⏭️ Skipped</button>
-                <button id="btn-view-journey" class="action-btn btn-filled-amber">🏆 Journey</button>
-                <button id="btn-view-analytics" class="action-btn btn-filled-blue">📈 Performance</button>
+                <div class="prog-actions">
+                    <button id="btn-practice-mistakes" class="action-btn btn-outline-red" disabled>⚠️ Mistakes</button>
+                    <button id="btn-review-bookmarks" class="action-btn btn-outline-amber" disabled>⭐ Bookmarks</button>
+                    <button id="btn-practice-skipped" class="action-btn btn-outline-yellow" disabled>⏭️ Skipped</button>
+                    <button id="btn-view-journey" class="action-btn btn-filled-amber">🏆 Journey</button>
+                    <button id="btn-view-analytics" class="action-btn btn-filled-blue">📈 Performance</button>
+                </div>
             </div>
         </div>
         
         <div id="spaced-repetition-container"></div>
 
         <!-- Mode Toggle -->
-        <div class="glass-panel mode-toggle-panel">
-            <h2 class="mode-title">Select Study Mode</h2>
-            <div class="mode-toggle">
-                <button id="mode-practice" class="action-btn active-mode btn-mode-practice">Practice Mode</button>
-                <button id="mode-exam" class="action-btn">Exam Mode</button>
+        <div class="glass-panel mode-toggle-panel bento-card">
+            <div class="card-content">
+                <h2 class="mode-title">Select Study Mode</h2>
+                <div class="mode-toggle">
+                    <button id="mode-practice" class="action-btn active-mode btn-mode-practice">Practice Mode</button>
+                    <button id="mode-exam" class="action-btn">Exam Mode</button>
+                </div>
+                <p id="mode-description" class="mode-desc">
+                    Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.
+                </p>
             </div>
-            <p id="mode-description" class="mode-desc">
-                Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.
-            </p>
         </div>
         
         <!-- Search & Filter Bar -->
-        <div class="glass-panel search-filter-bar">
-            <div class="search-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="global-search" placeholder="Search subject, topic, or question text...">
-                <div id="search-dropdown" class="search-dropdown" style="display: none;"></div>
-            </div>
-            <div class="filter-controls">
-                <label class="filter-wrapper">
-                    <input type="checkbox" id="unattempted-filter">
-                    <span>Unattempted</span>
-                </label>
-                
-                <div class="vertical-divider"></div>
-                
-                <label class="filter-wrapper filter-easy">
-                    <input type="checkbox" id="diff-easy-filter" value="easy">
-                    <span>Easy</span>
-                </label>
-                <label class="filter-wrapper filter-medium">
-                    <input type="checkbox" id="diff-medium-filter" value="medium">
-                    <span>Medium</span>
-                </label>
-                <label class="filter-wrapper filter-hard">
-                    <input type="checkbox" id="diff-hard-filter" value="hard">
-                    <span>Hard</span>
-                </label>
+        <div class="glass-panel search-filter-bar bento-card">
+            <div class="card-content" style="width: 100%;">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="global-search" class="glass-input" placeholder="Search subject, topic, or question text...">
+                    <div id="search-dropdown" class="search-dropdown glass-panel" style="display: none;"></div>
+                </div>
+                <div class="filter-controls">
+                    <label class="filter-wrapper">
+                        <input type="checkbox" id="unattempted-filter" class="item-checkbox">
+                        <span>Unattempted</span>
+                    </label>
+                    
+                    <div class="vertical-divider"></div>
+                    
+                    <label class="filter-wrapper filter-easy">
+                        <input type="checkbox" id="diff-easy-filter" value="easy" class="item-checkbox">
+                        <span>Easy</span>
+                    </label>
+                    <label class="filter-wrapper filter-medium">
+                        <input type="checkbox" id="diff-medium-filter" value="medium" class="item-checkbox">
+                        <span>Medium</span>
+                    </label>
+                    <label class="filter-wrapper filter-hard">
+                        <input type="checkbox" id="diff-hard-filter" value="hard" class="item-checkbox">
+                        <span>Hard</span>
+                    </label>
 
-                <div class="vertical-divider"></div>
+                    <div class="vertical-divider"></div>
 
-                <button id="btn-quick-mock" class="action-btn btn-filled-purple">⚡ Quick Mock Exam</button>
-                <button id="btn-join-challenge" class="action-btn btn-outline-purple">🏁 Join Challenge</button>
+                    <button id="btn-quick-mock" class="action-btn btn-filled-purple">⚡ Quick Mock Exam</button>
+                    <button id="btn-join-challenge" class="action-btn btn-outline-purple">🏁 Join Challenge</button>
+                </div>
             </div>
         </div>
 
@@ -157,7 +164,7 @@
         <div id="subjects-grid"></div>
 
         <!-- Exam Cart (Bottom Dock) -->
-        <div id="exam-cart" class="exam-action-bar" style="display: none;">
+        <div id="exam-cart" class="exam-action-bar glass-panel" style="display: none;">
             <div class="cart-info">
                 <span class="icon-btn cart-icon">🎯</span>
                 <strong id="cart-count">0 Topics Selected</strong>
@@ -165,14 +172,13 @@
             <div class="cart-controls">
                 <div class="input-group">
                     <label>Questions</label>
-                    <input type="number" id="exam-q-count" placeholder="e.g. 50">
+                    <input type="number" id="exam-q-count" class="glass-input" placeholder="e.g. 50">
                 </div>
                 <div class="input-group" id="timer-wrapper">
-                    <label>Minutes <span class="timer-desc">(Exam Only)</span></label>
-                    <input type="number" id="exam-timer" placeholder="e.g. 60">
+                    <label>Minutes <span class="timer-desc">(Exam)</span></label>
+                    <input type="number" id="exam-timer" class="glass-input" placeholder="e.g. 60">
                 </div>
-                <button class="action-btn start-btn" id="start-exam-btn" disabled>Start Practice ➡</button>
-                <!-- Admin Assign Button injects here dynamically via JS template -->
+                <button class="btn-solid start-btn" id="start-exam-btn" disabled>Start Practice ➡</button>
             </div>
         </div>
     </section>
@@ -188,26 +194,26 @@
             <p class="mock-desc">Enter the number of questions. The timer will automatically be set to 1.2 minutes per question.</p>
             <input type="number" id="mock-q-count" class="glass-input mb-1-5 mock-input" value="100" min="5" max="300">
             <div class="flex-gap-10">
-                <button id="btn-cancel-mock" class="action-btn flex-1">Cancel</button>
-                <button id="btn-start-mock" class="action-btn flex-1 btn-filled-purple-alt">Start Exam</button>
+                <button id="btn-cancel-mock" class="action-btn btn-outline flex-1">Cancel</button>
+                <button id="btn-start-mock" class="action-btn btn-solid flex-1">Start Exam</button>
             </div>
         </div>
     </div>
 
-    <!-- Join Challenge Modal (Extracted from JS) -->
+    <!-- Join Challenge Modal -->
     <div id="join-challenge-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content text-center max-w-400">
             <h3 class="challenge-title"><i class="fas fa-flag-checkered"></i> Join Challenge</h3>
             <p class="modal-subtitle">Enter the 5-character code shared by your friend.</p>
             <input type="text" id="challenge-code-input" class="glass-input challenge-input" placeholder="e.g. A1B2C" maxlength="5">
             <div class="flex-gap-10">
-                <button id="btn-cancel-join" class="action-btn flex-1">Cancel</button>
-                <button id="btn-confirm-join" class="action-btn flex-1 btn-filled-purple-alt">Join Match</button>
+                <button id="btn-cancel-join" class="action-btn btn-outline flex-1">Cancel</button>
+                <button id="btn-confirm-join" class="action-btn btn-solid flex-1">Join Match</button>
             </div>
         </div>
     </div>
 
-    <!-- Host Exit Modal (Extracted from JS) -->
+    <!-- Host Exit Modal -->
     <div id="host-exit-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content text-center max-w-450">
             <i class="fas fa-sign-out-alt exit-icon"></i>
@@ -221,17 +227,15 @@
         </div>
     </div>
 
-    <!-- Assign Exam Modal (Extracted from JS) -->
+    <!-- Assign Exam Modal -->
     <div id="assign-exam-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content text-left max-w-500">
             <h3 class="modal-title-blue"><i class="fas fa-users"></i> Select Students</h3>
             <input type="text" id="student-search-input" class="glass-input mb-15" placeholder="Search by name or email...">
-            <div id="student-list-container" class="notes-list-container assign-list">
-                <!-- Students injected here -->
-            </div>
+            <div id="student-list-container" class="notes-list-container assign-list"></div>
             <div class="flex-gap-12">
-                <button id="btn-cancel-assign" class="action-btn flex-1">Cancel</button>
-                <button id="btn-confirm-assign" class="action-btn next-btn flex-1">Assign Exam</button>
+                <button id="btn-cancel-assign" class="action-btn btn-outline flex-1">Cancel</button>
+                <button id="btn-confirm-assign" class="action-btn btn-solid flex-1">Assign Exam</button>
             </div>
         </div>
     </div>
@@ -240,9 +244,9 @@
     <div id="popup-overlay" class="popup-overlay">
         <div class="glass-panel popup-content max-w-1000">
             <div class="popup-header">
-                <button id="popup-back" class="action-btn popup-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                <button id="popup-back" class="action-btn btn-outline popup-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
                 <h3 id="popup-title">Category</h3>
-                <button id="popup-close" class="icon-btn popup-close-btn">✖</button>
+                <button id="popup-close" class="icon-btn popup-close-btn"><i class="fas fa-times"></i></button>
             </div>
             <div class="popup-body" id="popup-list"></div>
         </div>
@@ -253,11 +257,9 @@
         <div class="glass-panel popup-content max-w-800">
             <div class="popup-header">
                 <h3 class="analytics-title"><i class="fas fa-chart-line"></i> Performance Report</h3>
-                <button id="close-analytics" class="icon-btn popup-close-btn">✖</button>
+                <button id="close-analytics" class="icon-btn popup-close-btn"><i class="fas fa-times"></i></button>
             </div>
-            <div class="popup-body analytics-body" id="analytics-body">
-                <!-- JS Injects Analytics Here -->
-            </div>
+            <div class="popup-body analytics-body" id="analytics-body"></div>
         </div>
     </div>
 
@@ -268,31 +270,29 @@
             <h2 class="journey-title">Your Journey</h2>
             <p class="journey-desc">Track your progress and unlock mastery.</p>
             <div id="trophies-grid" class="trophies-grid"></div>
-            <button id="close-journey-btn" class="action-btn journey-close-btn">Close Journey</button>
+            <button id="close-journey-btn" class="action-btn btn-outline journey-close-btn">Close Journey</button>
         </div>
     </div>
 
-    <!-- Milestone Reward Modal (Extracted from JS) -->
+    <!-- Milestone Reward Modal -->
     <div id="milestone-reward-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content text-center max-w-380 milestone-padding">
             <div id="milestone-icon" class="milestone-icon"></div>
             <h2 class="modal-title-blue milestone-title">Milestone Reached!</h2>
             <p class="modal-subtitle milestone-desc">You achieved the <strong id="milestone-rank" class="text-white"></strong> rank by completing <span id="milestone-req"></span> flawless questions!</p>
             <div id="milestone-reward-container"></div>
-            <button id="close-milestone-btn" class="action-btn w-100 mt-10 p-8">Dismiss</button>
+            <button id="close-milestone-btn" class="action-btn btn-solid w-100 mt-10 p-8">Dismiss</button>
         </div>
     </div>
 
-    <!-- Revision Popup Modal (Extracted from JS) -->
+    <!-- Revision Popup Modal -->
     <div id="revision-popup-modal" class="popup-overlay" style="display: none;">
         <div class="glass-panel popup-content max-w-600 flex-col rev-modal">
             <div class="rev-header">
                 <h3 class="rev-title"><i class="fas fa-sync-alt text-amber"></i> Spaced Repetition Plan</h3>
-                <button id="close-revision-popup" class="icon-btn rev-close-btn">✖</button>
+                <button id="close-revision-popup" class="icon-btn rev-close-btn"><i class="fas fa-times"></i></button>
             </div>
-            <div id="revision-list-container" class="rev-list">
-                <!-- Revision plan injected here -->
-            </div>
+            <div id="revision-list-container" class="rev-list"></div>
         </div>
     </div>
 
@@ -301,7 +301,7 @@
         <div class="glass-panel popup-content max-w-450">
             <div class="popup-header">
                 <h3 class="reset-title"><i class="fas fa-trash-alt"></i> Reset Progress</h3>
-                <button id="close-reset-modal" class="icon-btn popup-close-btn">✖</button>
+                <button id="close-reset-modal" class="icon-btn popup-close-btn"><i class="fas fa-times"></i></button>
             </div>
             
             <div class="popup-body reset-options" id="reset-options-container">
@@ -316,8 +316,8 @@
             <div class="popup-body reset-confirm" id="reset-confirm-container" style="display: none;">
                 <p class="reset-confirm-text" id="reset-confirm-text">Are you sure?</p>
                 <div class="flex-gap-1rem-center">
-                    <button class="action-btn flex-1" id="btn-cancel-reset">Cancel</button>
-                    <button class="action-btn flex-1 btn-filled-red-alt" id="btn-confirm-reset">Yes, Delete It</button>
+                    <button class="action-btn btn-outline flex-1" id="btn-cancel-reset">Cancel</button>
+                    <button class="action-btn btn-filled-red-alt flex-1" id="btn-confirm-reset">Yes, Delete It</button>
                 </div>
             </div>
         </div>
@@ -343,16 +343,16 @@
 
     <!-- Template: Feature Card -->
     <template id="tpl-feature-card">
-        <div class="glass-panel feature-card card-pointer">
-            <div>
+        <div class="glass-panel feature-card bento-card card-pointer">
+            <div class="card-content">
                 <div class="card-header-flex card-align-start">
                     <h3 class="card-title card-flex-1"></h3>
                     <span class="card-count card-nowrap"></span>
                 </div>
                 <div class="card-stats-container"></div>
-            </div>
-            <div class="progress-container prog-cont-alt">
-                <div class="progress-bar-fill prog-fill-alt"></div>
+                <div class="progress-container prog-cont-alt">
+                    <div class="progress-bar-fill prog-fill-alt"></div>
+                </div>
             </div>
         </div>
     </template>
@@ -374,7 +374,7 @@
                     <span class="popup-select-title"></span>
                 </div>
             </div>
-            <button class="action-btn select-all-btn popup-select-btn">Select All</button>
+            <button class="action-btn select-all-btn popup-select-btn btn-solid">Select All</button>
         </div>
     </template>
 
@@ -387,7 +387,7 @@
             </span>
             <div class="flex-center-gap8">
                 <span class="count-wrapper"></span>
-                <button class="action-btn instant-start-btn">Start</button>
+                <button class="action-btn instant-start-btn btn-solid">Start</button>
             </div>
         </div>
         <div class="stats-wrapper"></div>
@@ -424,7 +424,7 @@
     <!-- Template: Revision Day Group -->
     <template id="tpl-revision-day">
         <div class="revision-day-group mb-10">
-            <button class="action-btn rev-day-btn">
+            <button class="action-btn btn-outline rev-day-btn">
                 <div class="rev-day-title">
                     <i class="fas fa-calendar-day rev-day-icon"></i> <span class="day-text"></span>
                 </div>

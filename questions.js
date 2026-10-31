@@ -1,5 +1,3 @@
-/* questions.js - PART 1 of 2 (Sections 1 - 8) */
-
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -477,10 +475,12 @@ if (globalSearch && searchDropdown) {
             isSearchEngineLoading = true;
             globalSearch.placeholder = "Booting Search Engine...";
             try {
-                const workerUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sqlite.worker.js";
-                const wasmUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sql-wasm.wasm";
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const baseUrl = isLocal ? '.' : 'https://hassaan506.github.io/edeetos';
+                const workerUrl = `${baseUrl}/assets/sqlite/sqlite.worker.js`;
+                const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
                 sqlWorker = await createDbWorker(
-                    [{ from: "inline", config: { serverMode: "full", url: `https://hassaan506.github.io/edeetos/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
+                    [{ from: "inline", config: { serverMode: "full", url: `${baseUrl}/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
                     workerUrl, wasmUrl, 10 * 1024 * 1024 
                 );
                 globalSearch.placeholder = "Search keywords among questions...";
@@ -669,10 +669,12 @@ async function loadDataAndBuildTree() {
         if (!window.sqlWorker && !window.isSearchEngineLoading) {
             window.isSearchEngineLoading = true;
             try {
-                const workerUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sqlite.worker.js";
-                const wasmUrl = "https://hassaan506.github.io/edeetos/assets/sqlite/sql-wasm.wasm";
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const baseUrl = isLocal ? '.' : 'https://hassaan506.github.io/edeetos';
+                const workerUrl = `${baseUrl}/assets/sqlite/sqlite.worker.js`;
+                const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
                 window.sqlWorker = await createDbWorker(
-                    [{ from: "inline", config: { serverMode: "full", url: `https://hassaan506.github.io/edeetos/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
+                    [{ from: "inline", config: { serverMode: "full", url: `${baseUrl}/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
                     workerUrl, wasmUrl, 10 * 1024 * 1024 
                 );
             } catch(e) {}
@@ -3026,7 +3028,7 @@ onAuthStateChanged(auth, async (user) => {
             } else { await hydrateUserState({ role: 'STUDENT' }); }
         } catch (error) {}
     } else {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             isPremiumUser = false;
             if (window.loadDataAndBuildTree) await window.loadDataAndBuildTree(); // defined in Part 1
             const lockUI = () => alert("Please register an account to access this feature.");
@@ -3038,4 +3040,18 @@ onAuthStateChanged(auth, async (user) => {
             window.location.href = 'login.html';
         }
     }
+});
+
+// ==========================================
+// 17. BRUTALIST UI HOVER TRACKING
+// ==========================================
+document.addEventListener("mousemove", (e) => {
+    // Utilize event delegation for performance; map mouse coordinates to cards for radial glow
+    document.querySelectorAll('.glass-panel, .feature-card, .list-item').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
 });
