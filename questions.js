@@ -143,6 +143,13 @@ const resetModal = document.getElementById('reset-modal');
 const analyticsModal = document.getElementById('analytics-modal');
 const mockModal = document.getElementById('mock-exam-modal');
 
+// Missing action buttons defined properly
+const btnJoinChallenge = document.getElementById('btn-join-challenge');
+const btnQuickMock = document.getElementById('btn-quick-mock');
+const mockQCount = document.getElementById('mock-q-count');
+const btnCancelMock = document.getElementById('btn-cancel-mock');
+const btnStartMock = document.getElementById('btn-start-mock');
+
 if (darkModeBtn) {
     const updateIcon = () => {
         const isDark = document.documentElement.classList.contains('dark-mode');
@@ -1722,7 +1729,6 @@ if (activeRoomId) {
 // 11. SMART ANALYTICS ENGINE
 // ==========================================
 const btnAnalytics = document.getElementById('btn-view-analytics');
-const analyticsModal = document.getElementById('analytics-modal');
 
 if (btnAnalytics) {
     btnAnalytics.onclick = () => {
@@ -2058,8 +2064,6 @@ function generateRevisionQuiz(topicIdsArray, intervalDay) {
 const btnJourney = document.getElementById('btn-view-journey');
 const closeJourneyBtn = document.getElementById('close-journey-btn');
 const trophiesGrid = document.getElementById('trophies-grid');
-const milestoneModal = document.getElementById('milestone-reward-modal');
-const journeyModal = document.getElementById('journey-modal');
 
 const trophies = [
     { title: "Novice", req: 10, icon: "👶", rewardValue: 1, rewardUnit: "Hour" },
@@ -2391,7 +2395,6 @@ const confirmContainer = document.getElementById('reset-confirm-container');
 const btnCancelReset = document.getElementById('btn-cancel-reset');
 const btnConfirmReset = document.getElementById('btn-confirm-reset');
 const confirmText = document.getElementById('reset-confirm-text');
-const resetModal = document.getElementById('reset-modal'); // Re-selecting for clear reference locally
 
 let pendingDocsToClear = [];
 let pendingResetMsg = "";
