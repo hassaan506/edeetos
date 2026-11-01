@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edeetos - Super Admin</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
@@ -18,8 +18,7 @@
         <aside class="admin-sidebar" id="admin-sidebar">
             <div class="sidebar-brand">
                 <div class="brand-logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Super Admin</span>
+                    <span>Admin Panel</span>
                 </div>
                 <button id="close-mobile-sidebar" class="mobile-only-btn"><i class="fas fa-times"></i></button>
             </div>
@@ -27,38 +26,38 @@
             <div class="sidebar-menu">
                 <div class="menu-label">System Overview</div>
                 <button class="sidebar-link active" onclick="switchView('database')"><i class="fas fa-database"></i> Database Status</button>
-                <button class="sidebar-link" onclick="switchView('addq')"><i class="fas fa-plus-circle"></i> Add Question</button>
-                <button class="sidebar-link" onclick="switchView('users')"><i class="fas fa-users"></i> User Manager</button>
+                <button class="sidebar-link" onclick="switchView('addq')"><i class="fas fa-plus-square"></i> Add Question</button>
+                <button class="sidebar-link" onclick="switchView('users')"><i class="fas fa-id-badge"></i> User Manager</button>
                 <button class="sidebar-link" onclick="switchView('appeals')"><i class="fas fa-gavel"></i> Ban Appeals</button>
                 
                 <div class="menu-label mt-1-5">Study & Engagement</div>
-                <button class="sidebar-link" onclick="switchView('studyrooms')"><i class="fas fa-chalkboard-teacher"></i> Study Rooms</button>
-                <button class="sidebar-link" onclick="switchView('challenges')"><i class="fas fa-trophy"></i> Friend Challenges</button>
+                <button class="sidebar-link" onclick="switchView('studyrooms')"><i class="fas fa-desktop"></i> Study Rooms</button>
+                <button class="sidebar-link" onclick="switchView('challenges')"><i class="fas fa-stopwatch"></i> Friend Challenges</button>
                 <button class="sidebar-link" onclick="switchView('assigned')"><i class="fas fa-tasks"></i> Assigned Exams</button>
                 
                 <div class="menu-label mt-1-5">Commerce & Access</div>
-                <button class="sidebar-link" onclick="switchView('payments')"><i class="fas fa-file-invoice-dollar"></i> Payment Requests</button>
+                <button class="sidebar-link" onclick="switchView('payments')"><i class="fas fa-file-invoice"></i> Payment Requests</button>
                 <button class="sidebar-link" onclick="switchView('keys')"><i class="fas fa-key"></i> Access Keys</button>
                 <button class="sidebar-link" onclick="switchView('promos')"><i class="fas fa-tags"></i> Promo Codes</button>
                 <button class="sidebar-link" onclick="switchView('rewards')"><i class="fas fa-gift"></i> Reward Claims</button>
 
                 <div class="menu-label mt-1-5">Support & Logs</div>
                 <button class="sidebar-link" onclick="switchView('requests')"><i class="fas fa-exchange-alt"></i> Course Changes</button>
-                <button class="sidebar-link" onclick="switchView('reports')"><i class="fas fa-flag"></i> Flagged Questions</button>
+                <button class="sidebar-link" onclick="switchView('reports')"><i class="fas fa-flag"></i> Reported Questions</button>
                 <button class="sidebar-link" onclick="switchView('messages')"><i class="fas fa-envelope"></i> Contact Messages</button>
             </div>
             
             <div class="sidebar-footer">
-                <button class="exit-btn w-100" id="btn-exit-admin"><i class="fas fa-sign-out-alt"></i> Exit to Dashboard</button>
+                <button class="exit-btn w-100" id="btn-exit-admin">Exit to Dashboard</button>
             </div>
         </aside>
 
         <!-- === MAIN CONTENT AREA === -->
         <main class="admin-main">
             <div class="admin-topbar">
-                <button id="open-mobile-sidebar" class="mobile-only-btn"><i class="fas fa-bars"></i> Menu</button>
-                <div class="topbar-right">
-                    <span class="q-count-badge" id="total-q-count">Questions: Loading...</span>
+                <button id="open-mobile-sidebar" class="mobile-only-btn"><i class="fas fa-bars"></i></button>
+                <div class="topbar-right flex-end">
+                    <span class="q-count-badge" id="total-q-count">Loading...</span>
                 </div>
             </div>
 
@@ -68,11 +67,9 @@
                 <div id="view-database" class="admin-content view-active">
                     <h2 class="page-title">Database Overview</h2>
                     <div id="database-breakdown-box" class="glass-box">
-                        <h3 class="box-header">
-                            <i class="fas fa-server box-icon-blue"></i> Live Question Bank Status
-                        </h3>
+                        <h3 class="box-header">Live Question Bank Status</h3>
                         <div id="database-breakdown-content">
-                            <p class="text-muted">Scanning JSON files...</p>
+                            <p class="text-muted tech-font">Scanning Database...</p>
                         </div>
                     </div>
                 </div>
@@ -82,11 +79,10 @@
                     <h2 class="page-title">Add New Question</h2>
                     
                     <div class="glass-box mb-2">
-                        <div class="compiler-header">
-                            <h3 class="box-title-blue"><i class="fas fa-edit"></i> Question Compiler</h3>
+                        <div class="flex-between mb-1">
+                            <h3 class="box-title-blue m-0">Question Details</h3>
                             <button id="btn-admin-push" class="btn-solid btn-warning">
-                                <i class="fas fa-cloud-upload-alt mr-1"></i> Push Database to GitHub 
-                                <span id="admin-pending-count" class="badge badge-light-warning">0</span>
+                                Push to GitHub <span id="admin-pending-count" class="badge" style="background:var(--surface); color:var(--text-main); border:1px solid var(--border); margin-left:8px;">0</span>
                             </button>
                         </div>
 
@@ -122,73 +118,55 @@
                                     </optgroup>
                                 </select>
                             </div>
-                            <div class="form-group"><label>Subject</label><input type="text" id="add-q-sub" placeholder="e.g., Anatomy"></div>
-                            <div class="form-group"><label>Chapter</label><input type="text" id="add-q-chap" placeholder="e.g., Upper Limb"></div>
-                            <div class="form-group"><label>Topic</label><input type="text" id="add-q-top" placeholder="e.g., Brachial Plexus"></div>
+                            <div class="form-group"><label>Subject</label><input type="text" id="add-q-sub"></div>
+                            <div class="form-group"><label>Chapter</label><input type="text" id="add-q-chap"></div>
+                            <div class="form-group"><label>Topic</label><input type="text" id="add-q-top"></div>
                             <div class="form-group"><label>Difficulty</label><select id="add-q-dif"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></div>
-							<div class="form-group"><label>Year</label><input type="text" id="add-q-yr" placeholder="e.g., 2024"></div>
-							<div class="form-group"><label>Specialty</label><input type="text" id="add-q-spec" placeholder="e.g., Surgery"></div>
-							<div class="form-group"><label>Exam</label><input type="text" id="add-q-exm" placeholder="e.g., Surgery 23 NOV AF"></div>
+							<div class="form-group"><label>Year</label><input type="text" id="add-q-yr"></div>
+							<div class="form-group"><label>Specialty</label><input type="text" id="add-q-spec"></div>
+							<div class="form-group"><label>Exam</label><input type="text" id="add-q-exm"></div>
                         </div>
 
                         <div class="form-group">
-                            <label>Question Text *</label>
-                            <textarea id="add-q-txt" rows="5" class="textarea-full" placeholder="Type the question statement here..."></textarea>
+                            <label>Question Text</label>
+                            <textarea id="add-q-txt" rows="5" class="textarea-full"></textarea>
                         </div>
 
                         <div class="form-group options-container">
-                            <label class="options-label"><i class="fas fa-list"></i> Options (Select radio to set Correct Answer)</label>
-                            
+                            <label class="modal-label mt-0">Options (Select Correct)</label>
                             <div class="options-grid">
                                 <input type="radio" name="add-correct-opt" value="A" checked class="radio-large">
-                                <span class="opt-letter">A)</span>
-                                <input type="text" id="add-opt-a" class="opt-input">
+                                <span class="opt-letter">A)</span> <input type="text" id="add-opt-a" class="opt-input">
                                 
                                 <input type="radio" name="add-correct-opt" value="B" class="radio-large">
-                                <span class="opt-letter">B)</span>
-                                <input type="text" id="add-opt-b" class="opt-input">
+                                <span class="opt-letter">B)</span> <input type="text" id="add-opt-b" class="opt-input">
                                 
                                 <input type="radio" name="add-correct-opt" value="C" class="radio-large">
-                                <span class="opt-letter">C)</span>
-                                <input type="text" id="add-opt-c" class="opt-input">
+                                <span class="opt-letter">C)</span> <input type="text" id="add-opt-c" class="opt-input">
                                 
                                 <input type="radio" name="add-correct-opt" value="D" class="radio-large">
-                                <span class="opt-letter">D)</span>
-                                <input type="text" id="add-opt-d" class="opt-input">
+                                <span class="opt-letter">D)</span> <input type="text" id="add-opt-d" class="opt-input">
                                 
                                 <input type="radio" name="add-correct-opt" value="E" class="radio-large">
-                                <span class="opt-letter">E)</span>
-                                <input type="text" id="add-opt-e" class="opt-input">
+                                <span class="opt-letter">E)</span> <input type="text" id="add-opt-e" class="opt-input">
                             </div>
                         </div>
 
-                        <div class="form-group mb-4">
-                            <label><i class="fas fa-chalkboard-teacher icon-blue"></i> Explanation</label>
-                            <div id="add-q-exp" class="quill-container q-exp-height"></div>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label><i class="fas fa-lightbulb icon-warning"></i> Hint</label>
-                            <div id="add-q-hnt" class="quill-container q-hnt-height"></div>
-                        </div>
-
-                        <button id="btn-save-new-q" class="btn-solid btn-full-blue">
-                            <i class="fas fa-save mr-1"></i> Save Question to Queue
-                        </button>
+                        <div class="form-group mb-1"><label>Explanation</label><div id="add-q-exp" class="quill-container q-exp-height"></div></div>
+                        <div class="form-group mb-1"><label>Hint</label><div id="add-q-hnt" class="quill-container q-hnt-height"></div></div>
+                        <button id="btn-save-new-q" class="btn-solid btn-full-blue">Save Question to Queue</button>
                     </div>
                 </div>
 
                 <!-- 3. USERS VIEW -->
                 <div id="view-users" class="admin-content view-hidden">
-                    <div class="flex-between mb-2">
+                    <div class="flex-between mb-1">
                         <h2 class="page-title m-0">User Manager</h2>
-                        <button id="btn-fix-usernames" class="btn-solid btn-danger btn-sm">
-                            <i class="fas fa-tools mr-1"></i> Migrate Old Usernames
-                        </button>
+                        <button id="btn-fix-usernames" class="btn-solid btn-warning btn-sm">Migrate Old Usernames</button>
                     </div>
                     
                     <div class="search-wrapper">
-                        <input type="text" id="admin-search-input" class="search-input" placeholder="Search by Name, Email, or Phone...">
+                        <input type="text" id="admin-search-input" class="search-input" placeholder="Search by ID, Email, or Name...">
                         <button id="admin-search-btn" class="search-btn">Search</button>
                     </div>
                     <div class="glass-box p-0 users-box">
@@ -196,17 +174,20 @@
                             <span id="user-count">0</span> Users Found
                         </div>
                         <div id="users-list" class="users-list-container">
-                            <p class="text-center text-muted p-2">Loading users database...</p>
+                            <p class="text-center text-muted p-2 tech-font">Scanning Users...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 4. STUDY ROOMS VIEW -->
                 <div id="view-studyrooms" class="admin-content view-hidden">
-                    <h2 class="page-title">Active Study Rooms</h2>
+                    <div class="flex-between mb-2">
+                        <h2 class="page-title m-0">Study Rooms</h2>
+                        <button id="btn-delete-all-rooms" class="btn-solid btn-danger btn-sm">Delete All Rooms</button>
+                    </div>
                     <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
-                            <thead><tr><th>Room Code</th><th>Course</th><th>Host Name</th><th>Status</th><th>Actions</th></tr></thead>
+                            <thead><tr><th>Room Code</th><th>Course</th><th>Host</th><th>Status</th><th>Actions</th></tr></thead>
                             <tbody id="studyrooms-list"><tr><td colspan="5" class="table-loading">Loading...</td></tr></tbody>
                         </table>
                     </div>
@@ -217,7 +198,7 @@
                     <h2 class="page-title">Friend Challenges</h2>
                     <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
-                            <thead><tr><th>Code</th><th>Created By</th><th>Exam Details</th><th>Attempts</th><th>Target Score</th><th>Actions</th></tr></thead>
+                            <thead><tr><th>Code</th><th>Created By</th><th>Details</th><th>Attempts</th><th>Score</th><th>Actions</th></tr></thead>
                             <tbody id="challenges-list"><tr><td colspan="6" class="table-loading">Loading...</td></tr></tbody>
                         </table>
                     </div>
@@ -225,23 +206,42 @@
 
                 <!-- 6. ASSIGNED EXAMS VIEW -->
                 <div id="view-assigned" class="admin-content view-hidden">
-                    <h2 class="page-title">Assigned Exams (Mentors)</h2>
+                    <h2 class="page-title">Assigned Exams</h2>
                     <div class="glass-box p-0 overflow-x">
                         <table class="admin-table">
-                            <thead><tr><th>Exam Title</th><th>Assigned By</th><th>Students & Status</th><th>Date</th><th>Actions</th></tr></thead>
+                            <thead><tr><th>Title</th><th>Assigned By</th><th>Students & Status</th><th>Date</th><th>Actions</th></tr></thead>
                             <tbody id="assigned-list"><tr><td colspan="5" class="table-loading">Loading...</td></tr></tbody>
                         </table>
                     </div>
                 </div>
 
-			<!-- 7. REWARD CLAIMS VIEW -->
+			    <!-- 7. REWARD CLAIMS VIEW -->
                 <div id="view-rewards" class="admin-content view-hidden">
                     <div class="flex-between mb-2">
-                        <h2 class="page-title m-0">Manual Reward Claims</h2>
-                        <button id="btn-manual-reward" class="btn-solid btn-sm"><i class="fas fa-gift mr-1"></i> Grant Manual Reward</button>
+                        <h2 class="page-title m-0">Reward Claims</h2>
+                        <button id="btn-manual-reward" class="btn-solid btn-sm">Grant Manual Reward</button>
                     </div>
-                    <div id="rewards-list">
-                        <p class="table-loading">No pending reward claims.</p>
+                    <div id="rewards-list" class="mb-2">
+                        <p class="table-loading">No pending claims.</p>
+                    </div>
+
+                    <!-- NEW: Scan for Eligible Users -->
+                    <div class="glass-box p-0">
+                        <div class="box-header" style="padding: 1.5rem 1.5rem 0 1.5rem; border: none;">Find Eligible Users</div>
+                        <div style="padding: 0 1.5rem 1.5rem 1.5rem;">
+                            <p class="text-muted font-sm mb-1">Search for users who solved a specific number of questions but haven't claimed a reward.</p>
+                            <div class="flex-gap-10px mb-1" style="align-items: center;">
+                                <label class="font-bold">Total Solved Questions:</label>
+                                <input type="number" id="scan-reward-threshold" value="500" class="input-standard" style="width: 100px;">
+                                <button id="btn-scan-eligible" class="btn-solid">Scan Users</button>
+                            </div>
+                            <div class="overflow-x">
+                                <table class="admin-table">
+                                    <thead><tr><th>Name & Email</th><th>Total Solved</th><th>Action</th></tr></thead>
+                                    <tbody id="eligible-users-list"><tr><td colspan="3" class="table-loading">Click scan to search users.</td></tr></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -257,7 +257,7 @@
                 <div id="view-payments" class="admin-content view-hidden">
                     <h2 class="page-title">Payment Requests</h2>
                     <div id="payments-list">
-                        <p class="text-center text-muted">No pending payment requests.</p>
+                        <p class="table-loading">No pending payment requests.</p>
                     </div>
                 </div>
 
@@ -267,7 +267,7 @@
                     <div class="glass-box mb-2">
                         <div class="grid-half gap-1">
                             <div class="form-group grid-full">
-                                <label>Key for Course:</label>
+                                <label>Target Course</label>
                                 <select id="key-course">
                                     <option value="NONE">None (Books Only)</option>
                                     <optgroup label="FCPS Series"><option value="fcps_part1">FCPS Part 1</option><option value="fcps_part2">FCPS Part 2</option><option value="fcps_imm">FCPS IMM</option></optgroup>
@@ -277,7 +277,7 @@
                                 </select>
                             </div>
                             <div class="form-group grid-full">
-                                <label>Include Books (Optional):</label>
+                                <label>Include Books (Optional)</label>
                                 <div class="checkbox-group">
                                     <label><input type="checkbox" class="key-book-check" value="firstaid_step1"> FA Step 1</label>
                                     <label><input type="checkbox" class="key-book-check" value="firstaid_step2"> FA Step 2</label>
@@ -291,9 +291,9 @@
                                     <label><input type="checkbox" class="key-book-check" value="doubleAA"> Double AA</label>
                                 </div>
                             </div>
-                            <div class="form-group"><label>Plan Duration</label><select id="key-duration"><option value="1">1 Day</option><option value="7">1 Week</option><option value="15">15 Days</option><option value="30">1 Month</option><option value="90">3 Months</option><option value="180">6 Months</option><option value="365">1 Year</option><option value="lifetime">Lifetime</option></select></div>
-                            <div class="form-group"><label>Custom Code (Optional)</label><input type="text" id="key-custom" placeholder="E.G. SALE2026"></div>
-                            <div class="form-group"><label>Max Users</label><input type="number" id="key-usage" value="1"></div>
+                            <div class="form-group"><label>Duration</label><select id="key-duration"><option value="1">1 Day</option><option value="7">1 Week</option><option value="15">15 Days</option><option value="30">1 Month</option><option value="90">3 Months</option><option value="180">6 Months</option><option value="365">1 Year</option><option value="lifetime">Lifetime</option></select></div>
+                            <div class="form-group"><label>Custom Code (Optional)</label><input type="text" id="key-custom"></div>
+                            <div class="form-group"><label>Max Uses</label><input type="number" id="key-usage" value="1"></div>
                             <div class="form-group"><label>Expires On</label><input type="date" id="key-expiry"></div>
                         </div>
                         <button id="btn-generate-key" class="btn-solid mt-1">Generate Key</button>
@@ -308,10 +308,10 @@
 
                 <!-- 10. PROMOS VIEW -->
                 <div id="view-promos" class="admin-content view-hidden">
-                    <h2 class="page-title">Promo Codes Manager</h2>
+                    <h2 class="page-title">Promo Codes</h2>
                     <div class="glass-box mb-2">
                         <div class="grid-half gap-1">
-                            <div class="form-group"><label>Promo Code</label><input type="text" id="promo-code" class="text-uppercase"></div>
+                            <div class="form-group"><label>Promo Code</label><input type="text" id="promo-code"></div>
                             <div class="form-group"><label>Discount (%)</label><input type="number" id="promo-discount" min="1" max="100"></div>
                             <div class="form-group"><label>Expires On</label><input type="date" id="promo-expiry"></div>
                             <div class="form-group flex-end"><button id="btn-generate-promo" class="btn-solid">Create Promo</button></div>
@@ -333,7 +333,7 @@
 
                 <!-- 12. REPORTS VIEW -->
                 <div id="view-reports" class="admin-content view-hidden">
-                    <h2 class="page-title">Flagged Questions</h2>
+                    <h2 class="page-title">Reported Questions</h2>
                     <div id="reports-list"><p class="table-loading">System logs will appear here.</p></div>
                 </div>
 
@@ -354,7 +354,7 @@
         <div class="popup-content modal-sm">
             <h2 class="modal-title">User Profile</h2>
             <p id="edit-user-name" class="profile-name">Username</p>
-            <p id="edit-user-email" class="profile-email">user@example.com</p>
+            <p id="edit-user-email" class="profile-email">Email</p>
             <p id="edit-user-phone" class="profile-phone">Phone Number</p>
             <p id="edit-user-uid" class="profile-uid">ID: ...</p>
             
@@ -363,7 +363,7 @@
                 <div id="user-subscriptions-list" class="subs-list"></div>
 
                 <div class="grant-box">
-                    <label class="grant-label">🎁 Grant New Access</label>
+                    <label class="grant-label">Grant New Access</label>
                     <div class="flex-gap-05 mb-1">
                         <select id="grant-course" class="grant-select flex-2">
                             <optgroup label="FCPS Series"><option value="fcps_part1">FCPS Part 1</option><option value="fcps_part2">FCPS Part 2</option><option value="fcps_imm">FCPS IMM</option></optgroup>
@@ -378,17 +378,17 @@
                     <button id="btn-grant-access" class="btn-grant-glow">Grant Access</button>
                 </div>
 
-                <label class="modal-label text-warning">⚠️ Account Actions</label>
+                <label class="modal-label text-danger">Account Actions</label>
                 <div class="flex-col gap-05">
                     <div class="flex-gap-05">
                         <button id="btn-make-student" class="btn-outline flex-1 p-05 border-slate">Student</button>
-                        <button id="btn-make-mentor" class="btn-outline flex-1 p-05 border-yellow text-yellow">Mentor</button>
-                        <button id="btn-make-admin" class="btn-outline flex-1 p-05 border-purple text-purple">Admin</button>
+                        <button id="btn-make-mentor" class="btn-outline flex-1 p-05 border-warning text-warning">Mentor</button>
+                        <button id="btn-make-admin" class="btn-outline flex-1 p-05 border-primary text-primary">Admin</button>
                     </div>
-                    <button id="btn-wipe-progress" class="btn-outline border-orange text-orange mt-05">🧹 Wipe Study Progress</button>
-                    <button id="btn-ban-user" class="btn-solid bg-danger mt-05">⛔ Ban User</button>
-                    <button id="btn-unban-user" class="btn-solid bg-success mt-05 view-hidden">✅ Unban User</button>
-                    <button id="btn-hard-delete-user" class="btn-solid bg-dark-danger mt-05 shadow-danger">🔥 Delete User Record Permanently</button>
+                    <button id="btn-wipe-progress" class="btn-outline border-warning text-warning mt-05 w-100">Wipe Study Progress</button>
+                    <button id="btn-ban-user" class="btn-solid btn-danger mt-05 w-100">Ban User</button>
+                    <button id="btn-unban-user" class="btn-solid btn-success mt-05 w-100 view-hidden">Unban User</button>
+                    <button id="btn-hard-delete-user" class="btn-solid btn-danger mt-05 w-100">Delete User Record</button>
                 </div>
             </div>
             <button id="btn-close-edit-modal" class="btn-outline w-100 mt-1-5">Close Panel</button>
@@ -396,13 +396,13 @@
     </div>
 
     <!-- Admin Edit Modal -->
-    <div id="admin-edit-modal" class="popup-overlay modal-selectable view-hidden z-2500">
-        <div class="popup-content modal-md text-left modal-selectable">
-            <h3 class="edit-modal-title"><i class="fas fa-edit"></i> Resolve Flagged Question</h3>
+    <div id="admin-edit-modal" class="popup-overlay view-hidden z-2500">
+        <div class="popup-content modal-md text-left">
+            <h3 class="edit-modal-title">Resolve Flagged Question</h3>
             
             <div class="mb-12px">
-                <label class="label-danger">Target Destination (Required)</label>
-                <select id="edit-q-dest" class="select-danger">
+                <label class="label-danger">Target Destination</label>
+                <select id="edit-q-dest" class="select-danger input-standard">
                     <option value="">-- Select Destination --</option>
                     <optgroup label="Core Courses">
                         <option value="COURSE:fcps_part1">FCPS Part 1</option>
@@ -434,43 +434,34 @@
             </div>
 
             <div class="grid-half gap-10px mb-12px">
-                <div><label class="label-muted">Question ID</label><input type="text" id="edit-q-id" disabled class="input-disabled"></div>
-                <div>
-                    <label class="label-muted">Difficulty</label>
-                    <select id="edit-q-diff" class="input-standard">
-                        <option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option>
-                    </select>
-                </div>
+                <div><label class="label-muted">Question ID</label><input type="text" id="edit-q-id" disabled class="input-standard input-disabled"></div>
+                <div><label class="label-muted">Difficulty</label><select id="edit-q-diff" class="input-standard"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></div>
                 <div><label class="label-muted">Subject</label><input type="text" id="edit-q-subject" class="input-standard"></div>
                 <div><label class="label-muted">Chapter</label><input type="text" id="edit-q-chapter" class="input-standard"></div>
                 <div><label class="label-muted">Topic</label><input type="text" id="edit-q-topic" class="input-standard"></div>
                 <div>
                     <label class="label-muted">Year & Exam</label>
                     <div class="flex-gap-05">
-                        <input type="text" id="edit-q-year" placeholder="Year" class="input-standard w-40">
-                        <input type="text" id="edit-q-exam" placeholder="Exam" class="input-standard w-60">
+                        <input type="text" id="edit-q-year" class="input-standard w-40">
+                        <input type="text" id="edit-q-exam" class="input-standard w-60">
                     </div>
                 </div>
             </div>
 
-            <label class="label-muted">Question Statement</label>
+            <label class="label-muted">Question Text</label>
             <textarea id="edit-q-text" rows="3" class="textarea-standard"></textarea>
 
-            <div id="edit-options-container" class="flex-col gap-08 mb-15px"></div>
+            <div id="edit-options-container" class="flex-col gap-08 mb-15px mt-1"></div>
 
             <label class="label-muted">Hint</label>
-            <div class="bg-white mb-15px">
-                <div id="edit-q-hint" class="quill-sm border-radius-bottom"></div>
-            </div>
+            <div class="bg-white mb-15px"><div id="edit-q-hint" class="quill-container border-none q-hnt-height"></div></div>
 
             <label class="label-muted">Explanation</label>
-            <div class="bg-white mb-20px">
-                <div id="edit-q-explanation" class="quill-md border-radius-bottom"></div>
-            </div>
+            <div class="bg-white mb-20px"><div id="edit-q-explanation" class="quill-container border-none q-exp-height"></div></div>
 
             <div class="flex-end gap-10px">
                 <button id="btn-cancel-edit" class="btn-outline">Cancel</button>
-                <button id="btn-save-github" class="btn-solid bg-success border-none"><i class="fas fa-save"></i> Save to Queue</button>
+                <button id="btn-save-github" class="btn-solid btn-success">Save to Queue</button>
             </div>
         </div>
     </div>
@@ -482,7 +473,7 @@
             <div class="receipt-img-container">
                 <img id="receipt-modal-img" src="" alt="Full Receipt" class="receipt-img">
             </div>
-            <button id="btn-close-receipt" class="btn-solid btn-close-receipt">Close Receipt</button>
+            <button id="btn-close-receipt" class="btn-outline btn-close-receipt">Close Receipt</button>
         </div>
     </div>
 

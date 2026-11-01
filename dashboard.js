@@ -1,31 +1,29 @@
 /*
 =========================================
-INDEX OF FEATURES
+INDEX OF FEATURES - ENTERPRISE SAAS
 =========================================
 1. FIREBASE IMPORTS & GLOBALS
 2. DASHBOARD INIT & ROLE BADGES
-3. NAVIGATION & UI TOGGLES
-4. DYNAMIC MODALS (Tasks, Guests, Bans)
-5. NOTES VAULT
+3. SYSTEM TELEMETRY (NEW METRICS INTEGRATION)
+4. NAVIGATION & UI TOGGLES
+5. DYNAMIC MODALS (Tasks, Guests, Bans)
 6. PREMIUM MODAL & COURSE SELECTOR
 7. PAYMENT UPLOAD & PROMO LOGIC
 8. REDEEM CODE
 9. USER PROFILE MANAGEMENT
 10. GROUP STUDY (Create & Join)
-11. DARK MODE TOGGLE
+11. HARDWARE-ACCELERATED PHYSICS (MAGNETIC & GLOW)
 =========================================
 */
 
 // === 1. FIREBASE IMPORTS & GLOBALS ===
-import { auth, db, storage, courseNamesMap, mergedNamesMap } from './firebase-config.js';
+import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 let currentUserData = null;
 let currentUserId = null;
 let hasCheckedDowngrade = false;
-let cachedNotesData = []; 
 
 const idbCache = {
     async init() {
@@ -67,8 +65,10 @@ onAuthStateChanged(auth, async (user) => {
         const userRef = doc(db, "users", user.uid);
         
         const cachedUser = await idbCache.get(user.uid);
-        if (cachedUser && userNameEl.textContent === "...") {
-            userNameEl.textContent = cachedUser.fullName || "Doctor";
+        if (cachedUser && userNameEl.textContent === "Doctor") {
+            let fName = cachedUser.fullName || "User";
+            fName = fName.replace(/^Dr\.?\s*/i, '');
+            userNameEl.textContent = `Dr. ${fName}`;
         }
 
         try {
@@ -80,7 +80,7 @@ onAuthStateChanged(auth, async (user) => {
                 
                 // BAN CHECK
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
-                    userNameEl.textContent = "ACCOUNT SUSPENDED";
+                    userNameEl.textContent = "Account Suspended";
                     if (subStatus) { 
                         subStatus.textContent = "BANNED"; 
                         subStatus.className = "status-badge badge-banned"; 
@@ -90,7 +90,9 @@ onAuthStateChanged(auth, async (user) => {
                 }               
                 
                 // HEADER UI
-                userNameEl.textContent = currentUserData.fullName || "Doctor";
+                let cleanName = currentUserData.fullName || "User";
+                cleanName = cleanName.replace(/^Dr\.?\s*/i, '');
+                userNameEl.textContent = `Dr. ${cleanName}`;
 
                 if (currentUserData.examDate) {
                     const today = new Date(); today.setHours(0, 0, 0, 0); 
@@ -104,10 +106,10 @@ onAuthStateChanged(auth, async (user) => {
                         countdownContainer.classList.remove('view-hidden');
                         document.getElementById('dash-subtitle')?.classList.add('view-hidden');
                         
-                        if (diffDays > 0) countdownText.textContent = `${diffDays} Days left until Exam Day!`;
-                        else if (diffDays === 0) countdownText.textContent = "Exam Day is TODAY! Go conquer it.";
+                        if (diffDays > 0) countdownText.textContent = `${diffDays} Days until Exam Day`;
+                        else if (diffDays === 0) countdownText.textContent = "Exam Day is Today! Good Luck.";
                         else {
-                            countdownText.textContent = "Exam date has passed.";
+                            countdownText.textContent = "Exam Date has passed";
                             document.getElementById('exam-countdown-badge').className = "countdown-badge-expired";
                         }
                     }
@@ -139,7 +141,8 @@ onAuthStateChanged(auth, async (user) => {
                     } else {
                         const div = document.createElement('div');
                         div.className = 'font-xs font-bold text-danger';
-                        div.textContent = 'Action Required: Request a course in your Profile first.';
+                        div.style.fontFamily = "'Courier New', monospace";
+                        div.textContent = 'Action Required: Please select a course in your Profile.';
                         dynamicCourseContainer.appendChild(div);
                     }
                 }
@@ -154,23 +157,23 @@ onAuthStateChanged(auth, async (user) => {
                 
                 if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
                     hasCheckedDowngrade = true; 
-                    updateDoc(userRef, { isPremium: false }).catch(err => console.error("Error auto-downgrading:", err));
+                    updateDoc(userRef, { isPremium: false }).catch(err => console.error("Downgrade failed:", err));
                 }
 
                 // ROLE UI BADGES
                 if(subStatus) subStatus.className = "status-badge";
                 if (userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
-                    if(subStatus) { subStatus.textContent = "Admin"; subStatus.classList.add('badge-pro'); }
+                    if(subStatus) { subStatus.textContent = "ADMIN"; subStatus.classList.add('badge-pro'); }
                     document.getElementById('btn-admin-panel').classList.remove('view-hidden');
                     if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else if (hasActiveSubscription) { 
-                    if(subStatus) { subStatus.textContent = "Premium"; subStatus.classList.add('badge-pro'); }
+                    if(subStatus) { subStatus.textContent = "PREMIUM"; subStatus.classList.add('badge-pro'); }
                     if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else {
-                    if(subStatus) { subStatus.textContent = "Free Tier"; subStatus.classList.add('badge-free'); }
+                    if(subStatus) { subStatus.textContent = "FREE TIER"; subStatus.classList.add('badge-free'); }
                     if (freeWarning) { 
                         freeWarning.classList.remove('view-hidden'); 
-                        freeWarning.textContent = "(Free users limited to 50Qs/subject)"; 
+                        freeWarning.textContent = "(Free Tier Limit: 50 Questions / Subject)"; 
                     }
                 }
                 
@@ -180,11 +183,11 @@ onAuthStateChanged(auth, async (user) => {
                     
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
-                        btnMentor.textContent = "Open Mentorship Hub";
+                        btnMentor.textContent = "Open Mentor Dashboard";
                         const cardH3 = document.getElementById('mentor-card-title');
                         const cardP = document.getElementById('mentor-card-desc');
-                        if (cardH3) cardH3.textContent = "Mentorship Hub";
-                        if (cardP) cardP.textContent = "Manage incoming student chat requests.";
+                        if (cardH3) cardH3.textContent = "Mentor Hub";
+                        if (cardP) cardP.textContent = "Manage incoming messages from students.";
                     }
 
                     setupMentorStatus();
@@ -193,20 +196,23 @@ onAuthStateChanged(auth, async (user) => {
 
                 // ASSIGNED EXAMS UI
                 if (userRoleUpper === 'STUDENT' || hasActiveSubscription) checkAssignedExams();
+                
+                // POPULATE SYSTEM TELEMETRY (METRICS)
+                await loadSystemTelemetry(user.uid, currentUserData.selectedCourse);
 
             }
-        } catch (error) { console.error("Error fetching user data:", error); }
+        } catch (error) { console.error("Data fetch failed:", error); }
     } else {
         // GUEST MODE
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
-            userNameEl.textContent = "Guest";
+            userNameEl.textContent = "Guest User";
             if(subStatus) { 
-                subStatus.textContent = "Guest Mode"; 
-                subStatus.className = "status-badge badge-guest"; 
+                subStatus.textContent = "GUEST MODE"; 
+                subStatus.className = "status-badge badge-free"; 
             }
             if (freeWarning) { 
                 freeWarning.classList.remove('view-hidden'); 
-                freeWarning.textContent = "(Guests limited to 20Qs/subject)"; 
+                freeWarning.textContent = "(Guest Limit: 20 Questions / Subject)"; 
                 freeWarning.classList.add('text-muted'); 
             }
         } else {
@@ -215,7 +221,47 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// === 3. NAVIGATION & UI TOGGLES ===
+// === 3. SYSTEM TELEMETRY (NEW METRICS INTEGRATION) ===
+async function loadSystemTelemetry(uid, activeCourse) {
+    if (!activeCourse) activeCourse = 'fcps_part1';
+    
+    try {
+        const fetchShard = async (folder, docName) => {
+            try { 
+                const snap = await getDoc(doc(db, "users", uid, folder, docName)); 
+                return snap.exists() ? snap.data() : {}; 
+            } catch(e) { return {}; }
+        };
+
+        const [cSol, cMis, cBkm, cHis, bSol, bMis, bBkm, bHis] = await Promise.all([
+            fetchShard(activeCourse, "solved"), fetchShard(activeCourse, "mistakes"), 
+            fetchShard(activeCourse, "bookmarks"), fetchShard(activeCourse, "history"),
+            fetchShard("books", "solved"), fetchShard("books", "mistakes"), 
+            fetchShard("books", "bookmarks"), fetchShard("books", "history")
+        ]);
+
+        const solvedList = [...new Set([...(cSol.list || []), ...(bSol.list || [])])];
+        const practiceMistakes = [...(cMis.practice || []), ...(bMis.practice || [])];
+        const examMistakes = [...(cMis.exam || []), ...(bMis.exam || [])];
+        const historicalMistakes = [...(cMis.historical || []), ...(bMis.historical || [])];
+        const allMistakesUnique = [...new Set([...practiceMistakes, ...examMistakes])];
+        const bookmarksList = [...new Set([...(cBkm.list || []), ...(bBkm.list || [])])];
+
+        const uniqueAttempts = [...new Set([...solvedList, ...allMistakesUnique, ...historicalMistakes])];
+        const firstTryCorrect = uniqueAttempts.filter(id => !historicalMistakes.includes(id) && !allMistakesUnique.includes(id));
+        const accuracy = uniqueAttempts.length > 0 ? Math.round((firstTryCorrect.length / uniqueAttempts.length) * 100) : 0;
+
+        document.getElementById('stat-solved').textContent = solvedList.length;
+        document.getElementById('stat-mistakes').textContent = allMistakesUnique.length;
+        document.getElementById('stat-bookmarks').textContent = bookmarksList.length;
+        document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+
+    } catch (err) {
+        console.error("Telemetry failure:", err);
+    }
+}
+
+// === 4. NAVIGATION & UI TOGGLES ===
 document.getElementById('logout-btn').addEventListener('click', () => {
     localStorage.removeItem('edeetos_guest_mode'); 
     signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => { window.location.href = 'index.html'; });
@@ -228,12 +274,12 @@ const btnReportsPanel = document.getElementById('btn-reports-panel');
 if (btnReportsPanel) btnReportsPanel.addEventListener('click', () => window.location.href = 'reports.html?v=7');
 
 const btnStudyVault = document.getElementById('btn-study-vault');
-if (btnStudyVault) btnStudyVault.addEventListener('click', () => alert('Study Vault is Coming Soon!'));
+if (btnStudyVault) btnStudyVault.addEventListener('click', () => alert('The Study Vault is currently under construction. Check back soon!'));
 
 const btnContactMentor = document.getElementById('btn-contact-mentor');
 if (btnContactMentor) {
     btnContactMentor.addEventListener('click', () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Mentorship.");
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to contact a mentor.");
         window.location.href = 'mentor.html';
     });
 }
@@ -242,7 +288,7 @@ document.querySelectorAll('.btn-close-modal').forEach(btn => {
     btn.addEventListener('click', (e) => e.target.closest('.popup-overlay').classList.add('view-hidden'));
 });
 
-// === 4. DYNAMIC MODALS (Tasks, Guests, Bans) ===
+// === 5. DYNAMIC MODALS (Tasks, Guests, Bans) ===
 function renderLockoutScreen() {
     const lockoutModal = document.getElementById('lockout-screen');
     if (!lockoutModal) return;
@@ -252,7 +298,7 @@ function renderLockoutScreen() {
 
     document.getElementById('btn-submit-appeal').addEventListener('click', async (e) => {
         const text = document.getElementById('appeal-text').value.trim();
-        if (!text) return alert("Please enter a reason for your appeal.");
+        if (!text) return alert("Please explain the situation before submitting.");
         
         const btn = e.target;
         btn.textContent = "Submitting...";
@@ -267,7 +313,7 @@ function renderLockoutScreen() {
                 status: 'pending',
                 timestamp: serverTimestamp()
             });
-            alert("Appeal submitted. The admin will review it shortly.");
+            alert("Your appeal has been sent. The admin team will review it shortly.");
             btn.textContent = "Appeal Sent";
         } catch(err) {
             alert("Failed to submit appeal.");
@@ -293,12 +339,12 @@ function setupMentorStatus() {
 
     const updateStatusUI = (status) => {
         if (status) { 
-            iconSpan.textContent = '🟢';
-            textSpan.textContent = 'Online';
+            iconSpan.innerHTML = '<i class="fa-solid fa-circle text-success"></i>';
+            textSpan.textContent = 'Available';
             btnMentorStatus.classList.remove('mentor-offline');
             btnMentorStatus.classList.add('mentor-online');
         } else { 
-            iconSpan.textContent = '⚪';
+            iconSpan.innerHTML = '<i class="fa-solid fa-circle text-muted"></i>';
             textSpan.textContent = 'Offline';
             btnMentorStatus.classList.remove('mentor-online');
             btnMentorStatus.classList.add('mentor-offline');
@@ -350,9 +396,8 @@ async function checkAssignedExams() {
             if(tmpl) {
                 const clone = tmpl.content.cloneNode(true);
                 const countSpan = clone.querySelector('.task-count');
-                const btnView = clone.querySelector('button');
                 
-                countSpan.textContent = `${pendingExams.length} task${pendingExams.length > 1 ? 's' : ''}`;
+                countSpan.textContent = `${pendingExams.length}`;
                 container.appendChild(clone);
                 
                 const taskModal = document.getElementById('assigned-tasks-modal');
@@ -366,19 +411,21 @@ async function checkAssignedExams() {
                     const infoDiv = document.createElement('div');
                     
                     const titleDiv = document.createElement('div');
-                    titleDiv.className = 'task-item-title';
+                    titleDiv.className = 'task-item-title m-0 mb-05';
                     titleDiv.textContent = exam.title;
                     
                     const badgeRow = document.createElement('div');
                     badgeRow.className = 'flex-row gap-10px';
                     
                     const timeBadge = document.createElement('span');
-                    timeBadge.className = 'task-badge-time';
-                    timeBadge.textContent = `⏱ ${exam.timerMinutes} Min`;
+                    timeBadge.className = 'task-badge-time font-xs p-1 border-radius';
+                    timeBadge.style.border = "1px solid var(--border-color)";
+                    timeBadge.textContent = `⏱ ${exam.timerMinutes} MIN`;
                     
                     const countBadge = document.createElement('span');
-                    countBadge.className = 'task-badge-count';
-                    countBadge.textContent = `📚 ${exam.questions.length} Qs`;
+                    countBadge.className = 'task-badge-count font-xs p-1 border-radius';
+                    countBadge.style.border = "1px solid var(--border-color)";
+                    countBadge.textContent = `📋 ${exam.questions.length} Q`;
                     
                     badgeRow.appendChild(timeBadge);
                     badgeRow.appendChild(countBadge);
@@ -388,8 +435,8 @@ async function checkAssignedExams() {
                     
                     const launchBtn = document.createElement('button');
                     launchBtn.id = `launch-assigned-${index}`;
-                    launchBtn.className = 'action-btn task-start-btn';
-                    launchBtn.textContent = 'Start Now';
+                    launchBtn.className = 'action-btn next-btn';
+                    launchBtn.textContent = 'Start';
                     
                     cardDiv.appendChild(infoDiv);
                     cardDiv.appendChild(launchBtn);
@@ -467,12 +514,12 @@ async function checkAssignedExams() {
                             });
 
                             hydratedQueue = (exam.questionIds || []).map(id => fullQuestionsMap[String(id)]).filter(q => q);
-                        } catch (err) { console.error("Hydration Error:", err); }
+                        } catch (err) { console.error("Failed to load questions:", err); }
 
                         if (hydratedQueue.length === 0) {
-                            launchBtn.textContent = "Start Now"; 
+                            launchBtn.textContent = "Start"; 
                             launchBtn.classList.remove('btn-loading');
-                            return alert("Failed to load exam questions.");
+                            return alert("Failed to load the questions for this exam.");
                         }
 
                         const request = indexedDB.open("EdeetosDB", 1);
@@ -483,15 +530,15 @@ async function checkAssignedExams() {
                             tx.oncomplete = () => window.location.href = 'quiz.html';
                         };
                         request.onerror = (e) => { 
-                            alert("Failed to load exam data."); 
-                            launchBtn.textContent = "Start Now"; 
+                            alert("Storage error. Please try again."); 
+                            launchBtn.textContent = "Start"; 
                             launchBtn.classList.remove('btn-loading'); 
                         };
                     });
                 });
             }
         }
-    } catch (examErr) { console.error("Error fetching assigned exams:", examErr); }
+    } catch (examErr) { console.error("Error fetching tasks:", examErr); }
 }
 
 document.getElementById('btn-launch-course').addEventListener('click', () => {
@@ -519,7 +566,7 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
             localStorage.setItem('edeetos_active_course', activeSub); 
             window.location.href = 'questions.html'; 
         } else { 
-            alert("Your assigned course is missing. Please request one in your Profile."); 
+            alert("You don't have a course assigned. Please select one in your Profile."); 
         }
     }
 });
@@ -527,143 +574,20 @@ document.getElementById('btn-launch-course').addEventListener('click', () => {
 const btnOpenFlashcards = document.getElementById('btn-open-flashcards');
 if (btnOpenFlashcards) {
     btnOpenFlashcards.addEventListener('click', () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to access Flashcards.");
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please create an account to access Flashcards.");
         if (currentUserData) {
             let activeSub = currentUserData.subscriptions ? Object.keys(currentUserData.subscriptions)[0] : null;
             if (currentUserData.selectedCourse || activeSub) {
                 localStorage.setItem('edeetos_active_course', currentUserData.selectedCourse || activeSub);
                 window.location.href = 'flashcards.html';
-            } else { alert("Your assigned course is missing. Please request one in your Profile."); }
+            } else { alert("You don't have a course assigned. Please select one in your Profile."); }
         }
-    });
-}
-
-// === 5. NOTES VAULT (Updated for Dynamic Chunking) ===
-const btnOpenNotes = document.getElementById('btn-open-notes');
-if (btnOpenNotes) {
-    btnOpenNotes.addEventListener('click', async () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to access Notes.");
-        if (!currentUserData) return alert("User data loading, please wait...");
-        
-        const modal = document.getElementById('notes-vault-modal');
-        const listEl = document.getElementById('notes-vault-list');
-        const searchInput = document.getElementById('notes-search-input');
-        
-        modal.classList.remove('view-hidden'); 
-        searchInput.value = ''; 
-        listEl.innerHTML = '';
-        
-        const activeCourse = currentUserData.selectedCourse;
-        const notesObj = (activeCourse && currentUserData[activeCourse] && currentUserData[activeCourse].notes) ? currentUserData[activeCourse].notes : {};
-        const noteKeys = Object.keys(notesObj);
-        
-        const msgDiv = document.createElement('div');
-        msgDiv.className = 'text-muted text-center p-2 font-bold';
-
-        if (noteKeys.length === 0) {
-            msgDiv.textContent = "You haven't saved any notes yet.";
-            listEl.appendChild(msgDiv);
-            return;
-        }
-
-        msgDiv.textContent = "Loading question data...";
-        listEl.appendChild(msgDiv);
-
-        let allQuestions = [];
-        try {
-            const metaRes = await fetch(`Data/${activeCourse}_metadata.json`, { cache: 'no-cache' });
-            if (metaRes.ok) {
-                const metadata = await metaRes.json();
-                const requiredChunks = new Set();
-                
-                metadata.forEach(metaQ => {
-                    const qId = String(metaQ.id || metaQ.QuestionID);
-                    if (noteKeys.includes(qId)) {
-                        const sanitize = (str) => String(str).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
-                        const s = sanitize(metaQ.Subject || metaQ.subject || 'Uncategorized');
-                        const c = sanitize(metaQ.Chapter || metaQ.chapter || 'General');
-                        requiredChunks.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
-                    }
-                });
-
-                const fetchPromises = Array.from(requiredChunks).map(async (chunkUrl) => {
-                    try {
-                        const chunkRes = await fetch(chunkUrl);
-                        if (chunkRes.ok) {
-                            const chunkData = await chunkRes.json();
-                            allQuestions.push(...chunkData);
-                        }
-                    } catch(e) { console.warn("Failed to fetch chunk:", chunkUrl); }
-                });
-
-                await Promise.all(fetchPromises);
-            }
-        } catch(e) { console.warn("Could not load question metadata for notes:", e); }
-
-        cachedNotesData = noteKeys.map(qId => {
-            if (!notesObj[qId].trim()) return null;
-            let questionStem = "Unknown Question / Not Found in Current Database";
-            const matchedQ = allQuestions.find(q => String(q.QuestionID || q.id || q['Question ID'] || q.originalNumber) === String(qId));
-            if (matchedQ) {
-                const rawText = matchedQ.question || matchedQ.Question || matchedQ.text || matchedQ.statement || "Image/Table Based Question";
-                questionStem = rawText.substring(0, 150) + (rawText.length > 150 ? "..." : "");
-            }
-            return { id: qId, stem: questionStem, note: notesObj[qId] };
-        }).filter(item => item !== null);
-
-        renderNotes(cachedNotesData);
-    });
-}
-
-function renderNotes(notesArray) {
-    const listEl = document.getElementById('notes-vault-list');
-    listEl.innerHTML = '';
-
-    if (notesArray.length === 0) {
-        const div = document.createElement('div');
-        div.className = 'text-muted text-center p-2';
-        div.textContent = 'No matching notes found.';
-        listEl.appendChild(div);
-        return;
-    }
-    
-    for (let i = 0; i < Math.min(notesArray.length, 50); i++) {
-        const data = notesArray[i];
-        
-        const noteCard = document.createElement('div');
-        noteCard.className = "note-card";
-        
-        const idDiv = document.createElement('div');
-        idDiv.className = "note-id";
-        idDiv.textContent = `ID: ${data.id}`;
-        
-        const stemDiv = document.createElement('div');
-        stemDiv.className = "note-stem";
-        stemDiv.textContent = `"${data.stem}"`;
-        
-        const bodyDiv = document.createElement('div');
-        bodyDiv.className = "note-body";
-        bodyDiv.textContent = data.note;
-        
-        noteCard.appendChild(idDiv);
-        noteCard.appendChild(stemDiv);
-        noteCard.appendChild(bodyDiv);
-        
-        listEl.appendChild(noteCard);
-    }
-}
-
-const searchInput = document.getElementById('notes-search-input');
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        renderNotes(cachedNotesData.filter(item => item.stem.toLowerCase().includes(term) || item.note.toLowerCase().includes(term) || item.id.toLowerCase().includes(term)));
     });
 }
 
 // === 6. PREMIUM MODAL & COURSE SELECTOR ===
 document.getElementById('btn-open-premium').addEventListener('click', () => {
-    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to upgrade to Premium.");
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please create an account to get Premium.");
     document.getElementById('premium-modal').classList.remove('view-hidden');
     updatePrices();
 });
@@ -690,7 +614,7 @@ if(tabRedeem) tabRedeem.addEventListener('click', () => {
 const courseSelectorModal = document.getElementById('course-selector-modal');
 document.getElementById('btn-open-course-selector').addEventListener('click', () => courseSelectorModal.classList.remove('view-hidden'));
 document.getElementById('btn-confirm-courses').addEventListener('click', () => {
-    if (document.querySelectorAll('.course-check:checked').length === 0 && document.querySelectorAll('.book-check:checked').length === 0) return alert("You must select at least one course or book.");
+    if (document.querySelectorAll('.course-check:checked').length === 0 && document.querySelectorAll('.book-check:checked').length === 0) return alert("Please select at least one course or book.");
     courseSelectorModal.classList.add('view-hidden'); updatePrices();
 });
 
@@ -709,19 +633,15 @@ function updatePrices() {
         if(priceEl) priceEl.textContent = 'Rs. ' + totalPrice.toLocaleString();
     }
     const summaryText = document.getElementById('selected-courses-text');
-    if (summaryText) summaryText.textContent = `${courseCount} Course | ${bookCount} Book${bookCount !== 1 ? 's' : ''}`;
+    if (summaryText) summaryText.textContent = `${courseCount} Course | ${bookCount} Books`;
 }
 
 document.querySelectorAll('.plan-card').forEach(card => {
     card.addEventListener('click', function() {
         document.querySelectorAll('.plan-card').forEach(c => { 
             c.classList.remove('selected'); 
-            const lifePrice = c.querySelector('#price-7'); 
-            if (lifePrice) lifePrice.classList.remove('text-orange'); 
         });
         this.classList.add('selected');
-        const lifePrice = this.querySelector('#price-7'); 
-        if (lifePrice) lifePrice.classList.add('text-orange');
     });
 });
 
@@ -735,7 +655,7 @@ if (fileInput && fileNameDisplay) {
             fileNameDisplay.textContent = this.files[0].name;
             fileNameDisplay.classList.add('file-uploaded');
         } else {
-            fileNameDisplay.textContent = 'Click to browse or drag receipt here';
+            fileNameDisplay.textContent = 'Click to upload receipt image';
             fileNameDisplay.classList.remove('file-uploaded');
         }
     });
@@ -755,7 +675,7 @@ if (btnApplyPromo) {
             return; 
         }
         
-        btnApplyPromo.textContent = "Loading..."; 
+        btnApplyPromo.textContent = "Checking..."; 
         btnApplyPromo.disabled = true;
 
         try {
@@ -765,15 +685,15 @@ if (btnApplyPromo) {
                 if (data.isActive && (!data.expiryDate || new Date(data.expiryDate) > new Date())) {
                     activePromoCode = codeInput; 
                     activePromoDiscount = data.discountPercentage || 0;
-                    msgBox.textContent = `✅ Promo applied: ${activePromoDiscount}% off!`; 
-                    msgBox.className = 'font-xs font-bold text-left mb-1-5 text-emerald';
+                    msgBox.textContent = `Promo applied! You get ${activePromoDiscount}% off.`; 
+                    msgBox.className = 'font-sm font-bold text-left mb-1-5 text-success';
                     updatePrices();
-                } else throw new Error("Expired or inactive.");
+                } else throw new Error("This promo code has expired.");
             } else throw new Error("Invalid promo code.");
         } catch (e) {
             activePromoCode = null; activePromoDiscount = 0;
-            msgBox.textContent = `❌ ${e.message || "Invalid code"}`; 
-            msgBox.className = 'font-xs font-bold text-left mb-1-5 text-danger';
+            msgBox.textContent = e.message || "Invalid code"; 
+            msgBox.className = 'font-sm font-bold text-left mb-1-5 text-danger';
             updatePrices();
         } finally { btnApplyPromo.textContent = "Apply"; btnApplyPromo.disabled = false; }
     });
@@ -781,7 +701,7 @@ if (btnApplyPromo) {
 
 function compressImage(file) {
     return new Promise((resolve, reject) => {
-        if (!file) return reject(new Error("No file"));
+        if (!file) return reject(new Error("No file selected"));
         const reader = new FileReader();
         reader.onload = e => {
             const img = new Image();
@@ -794,32 +714,32 @@ function compressImage(file) {
                     resolve(canvas.toDataURL('image/jpeg', 0.6));
                 } catch (err) { reject(err); }
             }
-            img.onerror = () => reject(new Error("Invalid image")); img.src = e.target.result;
+            img.onerror = () => reject(new Error("Invalid image format")); img.src = e.target.result;
         };
-        reader.onerror = () => reject(new Error("Read failed")); reader.readAsDataURL(file);
+        reader.onerror = () => reject(new Error("Failed to read file")); reader.readAsDataURL(file);
     });
 }
 
 const btnSubmitPayment = document.getElementById('btn-submit-payment');
 if (btnSubmitPayment) {
     btnSubmitPayment.addEventListener('click', async () => {
-        if(!currentUserId) return alert("Authentication error.");
-        btnSubmitPayment.textContent = "Submitting..."; btnSubmitPayment.disabled = true;
+        if(!currentUserId) return alert("You must be logged in.");
+        btnSubmitPayment.textContent = "Submitting Request..."; btnSubmitPayment.disabled = true;
 
         try {
             const courses = Array.from(document.querySelectorAll('.course-check:checked')).map(cb => cb.value);
             const books = Array.from(document.querySelectorAll('.book-check:checked')).map(cb => cb.value);
-            if (courses.length === 0 && books.length === 0) { alert("Select a course or book."); return; }
+            if (courses.length === 0 && books.length === 0) { alert("Please select a course or book to purchase."); return; }
 
             const selectedPlan = document.querySelector('.plan-card.selected');
-            if (!selectedPlan) throw new Error("No plan selected.");
+            if (!selectedPlan) throw new Error("Please select a plan duration.");
 
             const file = document.getElementById('payment-proof').files[0];
-            if (!file) { alert("Upload payment proof."); return; }
+            if (!file) { alert("Please upload a picture of your receipt."); return; }
 
             let receiptUrl = "";
             try { receiptUrl = await compressImage(file); } 
-            catch(e) { alert("Invalid picture format (JPG/PNG)."); return; }
+            catch(e) { alert("Invalid picture format. Please upload a JPG or PNG."); return; }
 
             const submitPromise = addDoc(collection(db, "payment_requests"), {
                 userId: currentUserId, userEmail: currentUserData?.email || (auth.currentUser ? auth.currentUser.email : "Unknown"),
@@ -827,15 +747,15 @@ if (btnSubmitPayment) {
                 receiptUrl, appliedPromoCode: activePromoCode, promoDiscountApplied: activePromoDiscount, status: 'pending', timestamp: serverTimestamp()
             });
 
-            await Promise.race([submitPromise, new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout.")), 12000))]);
-            alert("Payment request submitted successfully!");
+            await Promise.race([submitPromise, new Promise((_, reject) => setTimeout(() => reject(new Error("Connection timeout. Please check your internet.")), 12000))]);
+            alert("Your request has been submitted successfully! We will review it shortly.");
             
             activePromoCode = null; activePromoDiscount = 0; 
             document.getElementById('promo-input').value = ""; 
             document.getElementById('promo-message').textContent = "";
             document.getElementById('premium-modal').classList.add('view-hidden');
         } catch (e) { alert("Failed to submit request: " + (e.message || "Unknown error.")); } 
-        finally { btnSubmitPayment.textContent = "Confirm & Submit Request"; btnSubmitPayment.disabled = false; }
+        finally { btnSubmitPayment.textContent = "Submit Payment Request"; btnSubmitPayment.disabled = false; }
     });
 }
 
@@ -844,16 +764,16 @@ const btnRedeem = document.getElementById('btn-submit-redeem');
 if (btnRedeem) {
     btnRedeem.addEventListener('click', async () => {
         const codeInput = document.getElementById('redeem-input').value.trim().toUpperCase();
-        if(codeInput.length < 3) return alert("Invalid code.");
-        btnRedeem.textContent = "Verifying..."; btnRedeem.disabled = true;
+        if(codeInput.length < 3) return alert("Please enter a valid code.");
+        btnRedeem.textContent = "Checking Code..."; btnRedeem.disabled = true;
 
         try {
             const keyRef = doc(db, "keys", codeInput); const keySnap = await getDoc(keyRef);
-            if(!keySnap.exists()) { alert("Code invalid."); return; }
+            if(!keySnap.exists()) { alert("That code doesn't exist."); return; }
             
             const keyData = keySnap.data();
-            if(keyData.usedCount >= keyData.maxUsage) { alert("Code limit reached."); return; }
-            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) { alert("Code expired."); return; }
+            if(keyData.usedCount >= keyData.maxUsage) { alert("This code has already been used the maximum number of times."); return; }
+            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) { alert("This code has expired."); return; }
 
             let expiryValue = keyData.duration === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(keyData.duration))).toISOString();
             let currentSubs = currentUserData.subscriptions || {};
@@ -865,8 +785,8 @@ if (btnRedeem) {
 
             await updateDoc(doc(db, "users", currentUserId), { subscriptions: currentSubs, isPremium: true });
             await updateDoc(keyRef, { usedCount: keyData.usedCount + 1 });
-            alert("Code redeemed!"); window.location.reload();
-        } catch (e) { alert("Error redeeming code."); } finally { btnRedeem.textContent = "Redeem Now"; btnRedeem.disabled = false; }
+            alert("Success! Code redeemed. Reloading your dashboard."); window.location.reload();
+        } catch (e) { alert("There was an error redeeming your code."); } finally { btnRedeem.textContent = "Redeem Code"; btnRedeem.disabled = false; }
     });
 }
 
@@ -874,8 +794,8 @@ if (btnRedeem) {
 const btnOpenProfile = document.getElementById('btn-open-profile');
 if (btnOpenProfile) {
     btnOpenProfile.addEventListener('click', () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register.");
-        if (!currentUserData) return alert("Loading...");
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to set up your profile.");
+        if (!currentUserData) return alert("Loading your profile data...");
         document.getElementById('profile-modal').classList.remove('view-hidden');
         
         document.getElementById('prof-role-badge').textContent = (currentUserData.role || 'STUDENT').toUpperCase();
@@ -885,11 +805,11 @@ if (btnOpenProfile) {
         });
 
         const displayField = document.getElementById('prof-course-display');
-        if(displayField) displayField.value = currentUserData.selectedCourse ? (courseNamesMap[currentUserData.selectedCourse] || "Unknown Course") : "None (Action Required)";
+        if(displayField) displayField.value = currentUserData.selectedCourse ? (courseNamesMap[currentUserData.selectedCourse] || "Unknown Course") : "None Selected";
         
         const btnChange = document.getElementById('btn-request-course-change');
         if (btnChange && currentUserData.courseChangeRequested) { 
-            btnChange.textContent = "Change Request Pending Admin Approval..."; 
+            btnChange.textContent = "Change Pending Admin Approval"; 
             btnChange.classList.add('btn-pending'); 
         }
         
@@ -907,15 +827,20 @@ if (btnOpenProfile) {
             nameSpan.textContent = mergedNamesMap[key] || key;
             
             const badgeSpan = document.createElement('span');
+            badgeSpan.className = "font-xs font-bold p-1 border-radius sub-tag";
+            
             if (expiry === 'lifetime') {
-                badgeSpan.className = 'sub-tag sub-lifetime';
-                badgeSpan.textContent = 'Lifetime';
+                badgeSpan.style.color = "var(--primary-ui)";
+                badgeSpan.style.borderColor = "var(--primary-ui)";
+                badgeSpan.textContent = 'Lifetime Access';
             } else if (new Date(expiry) < new Date()) {
-                badgeSpan.className = 'sub-tag sub-expired';
+                badgeSpan.style.color = "var(--danger)";
+                badgeSpan.style.borderColor = "var(--danger)";
                 badgeSpan.textContent = 'Expired';
             } else {
-                badgeSpan.className = 'sub-tag sub-active';
-                badgeSpan.textContent = `Active till ${new Date(expiry).toLocaleDateString()}`;
+                badgeSpan.style.color = "var(--success)";
+                badgeSpan.style.borderColor = "var(--success)";
+                badgeSpan.textContent = `Valid until ${new Date(expiry).toLocaleDateString()}`;
             }
             
             item.appendChild(nameSpan);
@@ -924,7 +849,8 @@ if (btnOpenProfile) {
         }
         if (!hasSubs) {
             const p = document.createElement('div');
-            p.className = 'text-muted font-sm text-center p-1';
+            p.className = 'text-muted font-sm text-center p-1 font-bold';
+            p.style.fontFamily = "'Courier New', monospace";
             p.textContent = 'No active subscriptions found.';
             subsList.appendChild(p);
         }
@@ -940,16 +866,16 @@ if (btnRequestChange && courseChangeModal) {
     if (btnSubmitChange) {
         btnSubmitChange.addEventListener('click', async () => {
             const newCourse = document.getElementById('new-course-request-select').value;
-            if (!newCourse) return alert("Select a new course first.");
-            btnSubmitChange.textContent = "Submitting..."; btnSubmitChange.disabled = true;
+            if (!newCourse) return alert("Please select the course you want to switch to.");
+            btnSubmitChange.textContent = "Sending Request..."; btnSubmitChange.disabled = true;
             try {
                 await updateDoc(doc(db, "users", currentUserId), { courseChangeRequested: true, requestedCourse: newCourse });
                 currentUserData.courseChangeRequested = true; currentUserData.requestedCourse = newCourse;
-                btnRequestChange.textContent = "Change Request Pending..."; 
+                btnRequestChange.textContent = "Change Pending Admin Approval"; 
                 btnRequestChange.classList.add('btn-pending');
-                alert(`Request to switch to ${courseNamesMap[newCourse] || newCourse} submitted!`);
+                alert(`Your request to switch to ${courseNamesMap[newCourse] || newCourse} has been sent!`);
                 courseChangeModal.classList.add('view-hidden');
-            } catch (error) { alert("Failed to submit request."); } finally { btnSubmitChange.textContent = "Submit Request"; btnSubmitChange.disabled = false; }
+            } catch (error) { alert("Failed to send request."); } finally { btnSubmitChange.textContent = "Submit Request"; btnSubmitChange.disabled = false; }
         });
     }
 }
@@ -965,12 +891,15 @@ if (profileForm) {
                 institution: document.getElementById('prof-uni').value, location: document.getElementById('prof-location').value, examDate: document.getElementById('prof-exam-date').value 
             });
             ['name', 'phone', 'uni', 'location', 'exam-date'].forEach(id => { const map = {name:'fullName', uni:'institution', 'exam-date':'examDate'}; currentUserData[map[id] || id] = document.getElementById(`prof-${id}`).value; });
-            document.getElementById('user-name').textContent = currentUserData.fullName;
+            
+            let cleanName = currentUserData.fullName;
+            cleanName = cleanName.replace(/^Dr\.?\s*/i, '');
+            document.getElementById('user-name').textContent = `Dr. ${cleanName}`;
             
             idbCache.set(currentUserId, JSON.parse(JSON.stringify(currentUserData))); 
             
-            alert("Profile updated!"); document.getElementById('profile-modal').classList.add('view-hidden');
-        } catch (error) { alert("Failed to update profile."); } finally { btnSave.textContent = "Save Profile Changes"; btnSave.disabled = false; }
+            alert("Profile saved successfully!"); document.getElementById('profile-modal').classList.add('view-hidden');
+        } catch (error) { alert("Failed to save profile."); } finally { btnSave.textContent = "Save Profile"; btnSave.disabled = false; }
     });
 }
 
@@ -978,8 +907,8 @@ if (profileForm) {
 const btnCreate = document.getElementById('btn-create-room');
 if (btnCreate) {
     btnCreate.onclick = async () => {
-        if (!currentUserId) return alert("Loading...");
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Guest accounts cannot host Group Study.");
+        if (!currentUserId) return alert("Loading your details...");
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Guest users cannot host Group Study sessions.");
 
         const roomId = Math.floor(1000 + Math.random() * 9000).toString();
         const activeCourse = localStorage.getItem('edeetos_active_course') || currentUserData.selectedCourse || 'Unknown';
@@ -994,7 +923,7 @@ if (btnCreate) {
             
             document.getElementById('copy-room-code').onclick = () => { 
                 navigator.clipboard.writeText(roomId); 
-                document.getElementById('copy-room-code').textContent = "Copied"; 
+                document.getElementById('copy-room-code').innerHTML = '<i class="fas fa-check"></i> Copied'; 
             };
             document.getElementById('enter-room').onclick = () => { localStorage.setItem('active_study_room', roomId); localStorage.removeItem('is_study_guest'); window.location.href = 'questions.html'; };
         } catch (error) { alert("Failed to create room."); } finally { btnCreate.textContent = "Create"; btnCreate.disabled = false; }
@@ -1008,7 +937,7 @@ const joinInput = document.getElementById('join-room-input');
 
 if (btnJoin) {
     btnJoin.onclick = () => {
-        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Guest accounts cannot join Group Study.");
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Guest users cannot join Group Study sessions.");
         joinInput.value = ""; joinModal.classList.remove('view-hidden'); joinInput.focus();
     };
 }
@@ -1017,7 +946,7 @@ if (btnSubmitJoin) {
     btnSubmitJoin.onclick = async () => {
         const code = joinInput.value.trim();
         if (code.length !== 4) return alert("Please enter a valid 4-digit code.");
-        btnSubmitJoin.textContent = "Verifying..."; 
+        btnSubmitJoin.textContent = "Connecting..."; 
         btnSubmitJoin.disabled = true;
 
         try {
@@ -1029,7 +958,7 @@ if (btnSubmitJoin) {
                 let hasPremiumAccess = (expiry && (expiry === 'lifetime' || new Date(expiry) > new Date())) || role === 'ADMIN' || role === 'MANAGEMENT';
 
                 if (!hasPremiumAccess) {
-                    alert(`Access Denied 🛑\n\nThis room is studying the Premium Question Bank for ${courseNamesMap[roomCourse] || roomCourse}. You must have an active subscription for this course to join your friend!`);
+                    alert(`Access Denied\n\nThis room is studying the Premium Question Bank for ${courseNamesMap[roomCourse] || roomCourse}. You must have an active subscription for this course to join!`);
                     joinModal.classList.add('view-hidden'); document.getElementById('premium-modal').classList.remove('view-hidden');
                     if (typeof updatePrices === 'function') updatePrices();
                     return;
@@ -1040,32 +969,58 @@ if (btnSubmitJoin) {
                 btnSubmitJoin.classList.add('btn-connected'); 
                 btnSubmitJoin.textContent = "Connected!";
                 setTimeout(() => window.location.href = 'quiz.html', 800);
-            } else alert("Room not found. Please double-check the code.");
+            } else alert("Room not found. Please check the code and try again.");
         } catch (error) { alert("Error connecting to room."); } finally { btnSubmitJoin.textContent = "Join Room"; btnSubmitJoin.disabled = false; }
     };
 }
 
-// === 11. DARK MODE TOGGLE ===
+// === 11. HARDWARE-ACCELERATED PHYSICS (MAGNETIC & GLOW) ===
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeBtn = document.getElementById('dark-mode-toggle');
-    if (!darkModeBtn) return;
-    const icon = darkModeBtn.querySelector('i');
-    
-    if (localStorage.getItem('theme') === 'dark') { 
-        document.documentElement.classList.add('dark-mode'); 
-        if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
+    if (darkModeBtn) {
+        const icon = darkModeBtn.querySelector('i');
+        
+        if (localStorage.getItem('theme') === 'dark') { 
+            document.documentElement.classList.add('dark-mode'); 
+            if (icon) { icon.classList.replace('fa-moon', 'fa-sun'); icon.classList.add('text-accent-color'); } 
+        }
+
+        darkModeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            
+            if (isDark) { 
+                if (icon) { icon.classList.replace('fa-moon', 'fa-sun'); icon.classList.add('text-accent-color'); } 
+                localStorage.setItem('theme', 'dark'); 
+            } else { 
+                if (icon) { icon.classList.replace('fa-sun', 'fa-moon'); icon.classList.remove('text-accent-color'); } 
+                localStorage.setItem('theme', 'light'); 
+            }
+        });
     }
 
-    darkModeBtn.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark-mode');
-        const isDark = document.documentElement.classList.contains('dark-mode');
+    // Dynamic Radial Glow Tracking for Bento Grid
+    document.addEventListener('mousemove', (e) => {
+        document.querySelectorAll('.feature-card, .popup-content').forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Magnetic Button Physics
+    document.querySelectorAll('.action-btn, .nav-btn-base').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
         
-        if (isDark) { 
-            if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
-            localStorage.setItem('theme', 'dark'); 
-        } else { 
-            if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); } 
-            localStorage.setItem('theme', 'light'); 
-        }
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0px, 0px)`;
+        });
     });
 });

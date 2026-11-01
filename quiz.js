@@ -1481,15 +1481,21 @@ window.renderRoomBanner = function(data) {
             isIntentionalExit = true;
             window.location.href = 'questions.html';
         };
-    } else {
+} else {
         if(hostExit) hostExit.classList.remove('hidden');
         if(guestExit) guestExit.classList.add('hidden');
         
         if (hostExit) hostExit.onclick = () => {
             const exitModal = document.getElementById('host-exit-modal');
-            if (exitModal) exitModal.classList.add('show');
+            if (exitModal) {
+                exitModal.classList.remove('hidden'); // Fix: Remove hidden first
+                exitModal.classList.add('show');
+            }
             
-            document.getElementById('btn-cancel-exit').onclick = () => exitModal.classList.remove('show');
+            document.getElementById('btn-cancel-exit').onclick = () => {
+                exitModal.classList.remove('show');
+                setTimeout(() => exitModal.classList.add('hidden'), 300); // Fix: Re-apply hidden after transition
+            };
             
             document.getElementById('btn-leave-only').onclick = async () => {
                 document.getElementById('btn-leave-only').disabled = true;

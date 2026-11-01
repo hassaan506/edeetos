@@ -2825,8 +2825,8 @@ if (window.updateDashboardUI) window.updateDashboardUI();
                 document.body.style.cursor = 'wait';
                 const targetUrls = new Set();
                 globalMetadata.forEach(q => {
-                    const qId = window.getQID ? window.getQID(q) : q.id;
-                    if (!q.isBookQuestion && (globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) targetUrls.add(`Data/${activeCourse}/subjects/${window.sanitizeFilename(q.Subject || q.subject)}_${window.sanitizeFilename(q.Chapter || q.chapter)}.json`);
+                    const qId = getQID(q);
+                    if (!q.isBookQuestion && (globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
                 });
 
                 const pSeen = new Set(); const eSeen = new Set();
@@ -2844,7 +2844,7 @@ if (window.updateDashboardUI) window.updateDashboardUI();
                         
                         if (window.activeChunksCache[pageUrl]) {
                             window.activeChunksCache[pageUrl].forEach(q => {
-                                const qId = window.getQID ? window.getQID(q) : q.id;
+                                const qId = getQID(q);
                                 if (globalPracticeMistakes.includes(qId) && !pSeen.has(qId)) { pSeen.add(qId); pPool.push(q); }
                                 if (globalExamMistakes.includes(qId) && !eSeen.has(qId)) { eSeen.add(qId); ePool.push(q); }
                             });
@@ -2854,16 +2854,16 @@ if (window.updateDashboardUI) window.updateDashboardUI();
                 }
                 document.body.style.cursor = 'default';
             } else {
-                pPool = allQuestions.filter(q => globalPracticeMistakes.includes(window.getQID ? window.getQID(q) : q.id) && q.isBookQuestion);
-                ePool = allQuestions.filter(q => globalExamMistakes.includes(window.getQID ? window.getQID(q) : q.id) && q.isBookQuestion);
+                pPool = allQuestions.filter(q => globalPracticeMistakes.includes(getQID(q)) && q.isBookQuestion);
+                ePool = allQuestions.filter(q => globalExamMistakes.includes(getQID(q)) && q.isBookQuestion);
             }
 
             if (pPool.length === 0 && ePool.length === 0 && isBook) return alert("Book mistakes exist, but you must open the specific book first to load its questions into memory.");
             let combinedTree = {};
-            if (pPool.length > 0) combinedTree["Practice Mistakes"] = window.buildSubTree ? window.buildSubTree(pPool) : {};
-            if (ePool.length > 0) combinedTree["Exam Mistakes"] = window.buildSubTree ? window.buildSubTree(ePool) : {};
+            if (pPool.length > 0) combinedTree["Practice Mistakes"] = buildSubTree(pPool);
+            if (ePool.length > 0) combinedTree["Exam Mistakes"] = buildSubTree(ePool);
             activeCustomPool = [...new Set([...pPool, ...ePool])];
-            if (window.openPopup) window.openPopup(isBook ? "⚠️ Book Mistakes" : "⚠ Course Mistakes", combinedTree, 'Level1', []);
+            openPopup(isBook ? "⚠️ Book Mistakes" : "⚠ Course Mistakes", combinedTree, 'Level1', []);
         };
     }
 
@@ -2881,8 +2881,8 @@ if (window.updateDashboardUI) window.updateDashboardUI();
                 document.body.style.cursor = 'wait';
                 const targetUrls = new Set();
                 globalMetadata.forEach(q => {
-                    const qId = window.getQID ? window.getQID(q) : q.id;
-                    if (!q.isBookQuestion && globalBookmarks.includes(qId)) targetUrls.add(`Data/${activeCourse}/subjects/${window.sanitizeFilename(q.Subject || q.subject)}_${window.sanitizeFilename(q.Chapter || q.chapter)}.json`);
+                    const qId = getQID(q);
+                    if (!q.isBookQuestion && globalBookmarks.includes(qId)) targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
                 });
 
                 const bSeen = new Set();
@@ -2900,7 +2900,7 @@ if (window.updateDashboardUI) window.updateDashboardUI();
                         
                         if (window.activeChunksCache[pageUrl]) {
                             window.activeChunksCache[pageUrl].forEach(q => {
-                                const qId = window.getQID ? window.getQID(q) : q.id;
+                                const qId = getQID(q);
                                 if (globalBookmarks.includes(qId) && !bSeen.has(qId)) { bSeen.add(qId); bPool.push(q); }
                             });
                         }
@@ -2908,20 +2908,20 @@ if (window.updateDashboardUI) window.updateDashboardUI();
                     }
                 }
                 document.body.style.cursor = 'default';
-            } else { bPool = allQuestions.filter(q => globalBookmarks.includes(window.getQID ? window.getQID(q) : q.id) && q.isBookQuestion); }
+            } else { bPool = allQuestions.filter(q => globalBookmarks.includes(getQID(q)) && q.isBookQuestion); }
 
             if (bPool.length === 0 && isBook) return alert("Book bookmarks exist, but you must open the specific book first to load its questions into memory.");
 
             let folderTree = {};
             bPool.forEach(q => {
-                let qId = window.getQID ? window.getQID(q) : q.id;
+                let qId = getQID(q);
                 let f = "\u200B" + (globalBookmarkFolders[qId] || "For Revision"); let s = q.Subject || q.subject || 'Uncategorized'; let c = q.Chapter || q.chapter || 'General'; let t = q.Topic || q.topic || 'General';
                 if (!folderTree[f]) folderTree[f] = {}; if (!folderTree[f][s]) folderTree[f][s] = {}; if (!folderTree[f][s][c]) folderTree[f][s][c] = {};
                 folderTree[f][s][c][t] = (folderTree[f][s][c][t] || 0) + 1;
             });
 
             activeCustomPool = bPool;
-            if (window.openPopup) window.openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", folderTree, 'Level1', []);
+            openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", folderTree, 'Level1', []);
         };
     }
     
@@ -2930,6 +2930,7 @@ if (window.updateDashboardUI) window.updateDashboardUI();
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         checkMilestones(flawlessCount);
     }, 2000);
+// Note: This closes the initMentorFeatures bracket, leave untouched.
 }
 
 const btnSkipped = document.getElementById('btn-practice-skipped');
@@ -2946,7 +2947,7 @@ if (btnSkipped) {
             document.body.style.cursor = 'wait';
             const targetUrls = new Set();
             globalMetadata.forEach(q => {
-                if (!q.isBookQuestion && globalSkipped.includes(window.getQID ? window.getQID(q) : q.id)) targetUrls.add(`Data/${activeCourse}/subjects/${window.sanitizeFilename(q.Subject || q.subject)}_${window.sanitizeFilename(q.Chapter || q.chapter)}.json`);
+                if (!q.isBookQuestion && globalSkipped.includes(getQID(q))) targetUrls.add(`Data/${activeCourse}/subjects/${sanitizeFilename(q.Subject || q.subject)}_${sanitizeFilename(q.Chapter || q.chapter)}.json`);
             });
 
             const sSeen = new Set();
@@ -2964,7 +2965,7 @@ if (btnSkipped) {
                     
                     if (window.activeChunksCache[pageUrl]) {
                         window.activeChunksCache[pageUrl].forEach(q => {
-                            const qId = window.getQID ? window.getQID(q) : q.id;
+                            const qId = getQID(q);
                             if (globalSkipped.includes(qId) && !sSeen.has(qId)) { sSeen.add(qId); sPool.push(q); }
                         });
                     }
@@ -2972,12 +2973,12 @@ if (btnSkipped) {
                 }
             }
             document.body.style.cursor = 'default';
-        } else { sPool = allQuestions.filter(q => globalSkipped.includes(window.getQID ? window.getQID(q) : q.id) && q.isBookQuestion); }
+        } else { sPool = allQuestions.filter(q => globalSkipped.includes(getQID(q)) && q.isBookQuestion); }
 
         if (sPool.length === 0 && isBook) return alert("Skipped questions exist, but you must open the specific book first to load its questions into memory.");
-        let combinedTree = { "Skipped Questions": window.buildSubTree ? window.buildSubTree(sPool) : {} };
+        let combinedTree = { "Skipped Questions": buildSubTree(sPool) };
         activeCustomPool = sPool;
-        if (window.openPopup) window.openPopup(isBook ? "⏭️ Skipped Book Qs" : "⏭️ Skipped Course Qs", combinedTree, 'Level1', []);
+        openPopup(isBook ? "⏭️ Skipped Book Qs" : "⏭️ Skipped Course Qs", combinedTree, 'Level1', []);
     };
 }
 	

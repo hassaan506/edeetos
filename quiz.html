@@ -24,17 +24,6 @@
         <button id="btn-understand-screenshot" class="action-btn next-btn full-width">I Understand</button>
     </div>
 
-    <div id="study-room-banner" class="study-room-banner hidden">
-        <div class="banner-info">
-            <i class="fas fa-users accent-text"></i> 
-            <span>Room <strong id="banner-room-id" class="primary-text"></strong> <span id="banner-role-text" class="role-text"></span></span>
-            <span class="divider">|</span>
-            <span id="banner-members-container" class="members-container"></span>
-        </div>
-        <button id="btn-exit-guest-room" class="exit-btn hidden"><i class="fas fa-sign-out-alt"></i> Leave Room</button>
-        <button id="btn-exit-host-room" class="exit-btn hidden"><i class="fas fa-cog"></i> Room Settings</button>
-    </div>
-
     <div class="quiz-content-wrapper">
         <div class="top-nav-bar glass-panel">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
@@ -55,6 +44,18 @@
                     Total Time: <strong id="exam-t-timer">00:00</strong>
                 </div>
             </div>
+        </div>
+
+        <!-- STUDY ROOM BANNER (Moved Here) -->
+        <div id="study-room-banner" class="study-room-banner hidden">
+            <div class="banner-info">
+                <i class="fas fa-users accent-text"></i> 
+                <span>Room <strong id="banner-room-id" class="primary-text"></strong> <span id="banner-role-text" class="role-text"></span></span>
+                <span class="divider">|</span>
+                <span id="banner-members-container" class="members-container"></span>
+            </div>
+            <button id="btn-exit-guest-room" class="exit-btn hidden"><i class="fas fa-sign-out-alt"></i> Leave Room</button>
+            <button id="btn-exit-host-room" class="exit-btn hidden"><i class="fas fa-cog"></i> Room Settings</button>
         </div>
 
         <div id="challenge-tracker-wrapper" class="challenge-tracker hidden">
@@ -499,7 +500,6 @@
         </div>
     </div>
 
-    <!-- NOTE: Removed content-relative from this template to stop conflict with CSS pseudo-elements -->
     <template id="template-option-box">
         <div class="option-box" role="button" tabindex="0">
             <div class="option-text"></div>

@@ -289,9 +289,22 @@ html.dark-mode .btn-filled-purple, html.dark-mode .btn-filled-purple-alt { backg
 /* .subjects-grid: The master container for all subject cards */
 .subjects-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Controls how many cards fit per row */
-    gap: 0.5rem; /* Space between cards */
+    grid-template-columns: repeat(3, 1fr); /* <--- CHANGED: Forces exactly 3 columns */
+    gap: 1.2rem; /* <--- CHANGED: Adjusted gap so 3 columns look balanced */
     padding-bottom: 120px; 
+}
+
+/* Responsive fixes so the 3 columns don't squish on smaller screens */
+@media (max-width: 1200px) {
+    .subjects-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller laptops/tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .subjects-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile phones */
+    }
 }
 
 /* .feature-card: The individual subject card itself */
@@ -516,7 +529,7 @@ html.dark-mode .rev-play-icon { color: var(--accent); }
 html.dark-mode .search-hero-btn { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); }
 
 /* Host Banner */
-.host-banner { background: color-mix(in srgb, var(--warning) 15%, transparent) !important; border: 1px solid var(--warning) !important; color: var(--text-main) !important; padding: 16px 24px; font-weight: bold; position: sticky; top: 0; z-index: 99999; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 0; border-radius: 0 !important; }
+.host-banner { background: color-mix(in srgb, var(--warning) 15%, transparent) !important; border: 1px solid var(--warning) !important; color: var(--text-main) !important; padding: 16px 24px; font-weight: bold; position: sticky; top: 0; z-index: 99999; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 0; border-radius: 0 !important; margin-left: 260px; width: calc(100% - 260px); }
 .host-banner-info { display: flex; align-items: center; gap: 12px; }
 .host-room-tag { background: var(--surface-card); padding: 4px 10px; border-radius: 6px; letter-spacing: 1px; border: 1px solid var(--warning); color: var(--warning); }
 .host-exit-btn { border-color: var(--warning) !important; color: var(--warning) !important; }
@@ -535,6 +548,7 @@ select.glass-input option { background: var(--surface-card); color: var(--text-m
     
     .main-content { margin-left: 0; width: 100%; max-width: 100%; padding: 1.5rem; }
     .exam-action-bar { left: 50%; }
+    .host-banner { margin-left: 0; width: 100%; }
 }
 
 @media (max-width: 768px) {

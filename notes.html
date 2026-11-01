@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Hub - EDEETOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="notes.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+<body>
+
+    <!-- === DASHBOARD NAVIGATION === -->
+    <nav class="dashboard-nav">
+        <div class="nav-inner">
+            <div class="nav-logo-box">
+                <a href="index.html"><img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="nav-logo-img"></a>
+            </div>
+            <div class="nav-actions">               
+                <a href="dashboard.html"><i class="fa-solid fa-arrow-left"></i> Return to Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notes-container">
+        <div class="notes-header">
+            <h1 class="notes-title">Personal Notes Hub</h1>
+            <div class="notes-meta" id="notes-meta-count">Loading Notes...</div>
+        </div>
+
+        <input type="text" id="notes-search-bar" class="search-input" placeholder="Search by keyword, subject, or question ID...">
+
+        <div id="notes-content-area">
+            <div class="loading-state">
+                <i class="fas fa-spinner fa-spin" style="color: var(--primary-ui); font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                Synchronizing Database...
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="notes.js?v=2"></script>
+</body>
+</html>

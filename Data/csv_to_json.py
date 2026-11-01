@@ -5,6 +5,8 @@ import glob
 import random
 import re
 import sqlite3
+import zipfile
+
 # ============================================================
 # PATHS
 # ============================================================
@@ -285,9 +287,14 @@ def process_directory(directory, is_book=False):
                     subject_metadata[subj_clean] = []
                     
                 subject_metadata[subj_clean].append({
-                    "id": q["id"], "year": q["year"], "exams": q["exams"],
-                    "subject": q["subject"], "chapter": q["chapter"], 
-                    "topic": q["topic"], "difficulty": q["difficulty"]
+                    "id": q["id"], 
+                    "year": q["year"], 
+                    "specialty": q["specialty"], 
+                    "exams": q["exams"],
+                    "subject": q["subject"], 
+                    "chapter": q["chapter"], 
+                    "topic": q["topic"], 
+                    "difficulty": q["difficulty"]
                 })
                 
                 # Insert into SQLite
@@ -296,6 +303,14 @@ def process_directory(directory, is_book=False):
                 
             conn.commit()
             conn.close()
+            
+            # Zip the SQLite file (Required by sql.js-httpvfs on frontend)
+            zip_path = f"{db_path}.zip"
+            with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                zipf.write(db_path, os.path.basename(db_path))
+            
+            # Cleanup raw unzipped sqlite file to keep Data folder clean
+            os.remove(db_path)
                 
             course_dir = os.path.join(directory, base_name)
             meta_dir = os.path.join(course_dir, "metadata")
@@ -334,9 +349,10 @@ def process_directory(directory, is_book=False):
 
             total_shards = len(subject_chunks) + len(system_chunks) + len(exam_chunks)
             print(f"  -> Generated {len(subject_metadata)} metadata files in metadata/ folder.")
-            print(f"  -> Generated {base_name}_search_index.sqlite")
+            print(f"  -> Generated {base_name}_search_index.sqlite.zip")
             print(f"  -> Generated {base_name}_hierarchy.json")
             print(f"  -> Generated {total_shards} paginated micro-chunks in {base_name}/ folder.")
+
 # ============================================================
 # COMPILE EVERYTHING
 # ============================================================

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - EDEETOS</title>
+    <title>System Dashboard - EDEETOS</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
@@ -26,26 +26,26 @@
                 <button id="dark-mode-toggle" class="icon-btn theme-toggle-btn">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button id="btn-mentor-status" class="nav-btn-base view-hidden">
-                    <span class="status-icon">⚪</span> <span class="status-text">Offline</span>
+                <button id="btn-mentor-status" class="view-hidden">
+                    <span class="status-icon"><i class="fa-solid fa-circle text-muted"></i></span> <span class="status-text">Offline</span>
                 </button>
-                <button id="btn-admin-panel" class="btn-nav-admin nav-btn-base view-hidden">
-                    🛡️ Admin
+                <button id="btn-admin-panel" class="view-hidden">
+                    <i class="fa-solid fa-shield"></i> Admin
                 </button>
-                <button id="btn-reports-panel" class="btn-nav-reports nav-btn-base view-hidden">
-                    📊 Reports
+                <button id="btn-reports-panel" class="view-hidden">
+                    <i class="fa-solid fa-chart-simple"></i> Reports
                 </button>
-                <button id="btn-open-notes" class="nav-btn-base" style="background: rgba(16, 185, 129, 0.28); border-color: #34d399; color: #a7f3d0;">
-                    📝 Notes
+                <a href="notes.html" id="btn-open-notes">
+                    <i class="fa-solid fa-file-lines"></i> Notes
+                </a>
+                <button id="btn-open-profile">
+                    <i class="fa-solid fa-user"></i> Profile
                 </button>
-                <button id="btn-open-profile" class="btn-nav-profile nav-btn-base">
-                    👤 Profile
+                <button id="btn-open-premium" class="btn-nav-premium">
+                    <i class="fa-solid fa-crown"></i> Premium
                 </button>
-                <button id="btn-open-premium" class="btn-nav-premium nav-btn-base">
-                    👑 Premium
-                </button>
-                <button id="logout-btn" class="btn-nav-logout nav-btn-base">
-                    Logout
+                <button id="logout-btn">
+                    Log Out
                 </button>
             </div>
         </div>
@@ -55,116 +55,291 @@
         <!-- === DYNAMIC TASK NOTIFICATIONS CONTAINER === -->
         <div id="task-notify-container"></div>
 
-        <!-- === USER WELCOME HEADER === -->
+        <!-- === CENTERED USER WELCOME HEADER === -->
         <div class="dashboard-header">
-            <h1 class="welcome-header">
-                <span>Welcome,</span>
-                <span id="user-name" class="highlight-text">...</span>
+            <div class="flex-align-center gap-10px mb-1">
                 <span class="status-badge badge-free" id="subscription-status">Free Tier</span>
+            </div>
+            <h1 class="welcome-header">
+                Welcome back, <span id="user-name" class="highlight-text">Doctor</span>
             </h1>
             
-            <div id="exam-countdown-container" class="view-hidden mt-1-5">
+            <div id="exam-countdown-container" class="view-hidden mt-1">
                 <span id="exam-countdown-badge" class="countdown-badge-danger">
                     <i class="fas fa-stopwatch pulse-anim"></i> 
-                    <span id="exam-countdown-text">Calculating timeline...</span>
+                    <span id="exam-countdown-text">Calculating...</span>
                 </span>
             </div>
             
-            <p id="dash-subtitle" class="card-desc mt-1">Here is your personalized study dashboard.</p>
+            <p id="dash-subtitle" class="card-desc mt-1 font-bold text-muted" style="font-family: 'Courier New', monospace;">Your study materials and progress are ready.</p>
         </div>
 
-        <!-- === MAIN DASHBOARD CARDS === -->
+        <!-- === MAIN DASHBOARD CARDS (BENTO GRID) === -->
         <div class="course-dash-grid">
+            
+            <!-- SYSTEM TELEMETRY (Imported from Quiz Engine) -->
+            <div class="glass-panel feature-card telemetry-card">
+                <div class="stat-header"><i class="fas fa-chart-line" style="margin-right: 8px;"></i> Performance Metrics</div>
+                <div class="telemetry-grid">
+                    <div class="stat-box">
+                        <i class="fas fa-check-circle stat-icon text-emerald"></i>
+                        <div><div class="stat-value" id="stat-solved">0</div><div class="prog-stat-title">Solved</div></div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-bullseye stat-icon text-blue"></i>
+                        <div><div class="stat-value" id="stat-accuracy">0%</div><div class="prog-stat-title">Accuracy</div></div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-times-circle stat-icon text-red"></i>
+                        <div><div class="stat-value" id="stat-mistakes">0</div><div class="prog-stat-title">Mistakes</div></div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-bookmark stat-icon text-warning"></i>
+                        <div><div class="stat-value" id="stat-bookmarks">0</div><div class="prog-stat-title">Saved</div></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="glass-panel feature-card">
-                <div class="icon">📚</div>
+                <div class="icon"><i class="fa-solid fa-book"></i></div>
                 <h3 class="card-title-green">Study Vault</h3>
-                <p class="card-desc">Access notes and lectures for your specific exam.</p>
+                <p class="card-desc">Access reference materials, lectures, and structural notes.</p>
                 <button id="btn-study-vault" class="action-btn btn-disabled w-100">Coming Soon</button>
             </div>
 
-            <div class="glass-panel feature-card card-highlight">
-                <div class="icon mb-1">✍️</div>
+            <div class="glass-panel feature-card">
+                <div class="icon mb-1"><i class="fa-solid fa-pen-nib"></i></div>
                 <h3 class="card-title-green">Question Bank</h3>
                 <p class="card-desc mb-1-5">
-                    Your access is locked to your enrolled course. <br>
-                    <span id="free-warning-text" class="text-warning font-xs font-bold">(Free users limited to 50Qs/subject)</span>
+                    Your access is linked to your enrolled course. <br>
+                    <span id="free-warning-text" class="text-warning font-xs font-bold" style="font-family: 'Courier New', monospace;">(Free Tier Limit: 50 Questions / Subject)</span>
                 </p>
                 
-                <div id="course-display-wrapper" class="course-display-box w-100 flex-col-center text-center">
+                <div id="course-display-wrapper" class="course-display-box w-100 flex-col-center">
                     <div class="course-display-label">Assigned Course</div>
                     <div id="active-course-name" class="course-display-val">Loading...</div>
                 </div>
 
                 <button id="btn-launch-course" class="action-btn next-btn w-100 p-1 font-lg">
-                    Launch Questions ➡
+                    Start Question Bank <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
 
             <div class="glass-panel feature-card">
-                <div class="icon">🩺</div>
+                <div class="icon"><i class="fa-solid fa-stethoscope"></i></div>
                 <h3 id="mentor-card-title" class="card-title-green">My Mentor</h3>
-                <p id="mentor-card-desc" class="card-desc">Book a session or message your dedicated guide.</p>
+                <p id="mentor-card-desc" class="card-desc">Schedule a session or message your dedicated guide.</p>
                 <button id="btn-contact-mentor" class="action-btn w-100">Contact Mentor</button>
             </div>
             
             <div class="glass-panel feature-card">
-                <div class="icon">👥</div>
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
                 <h3 class="card-title-green">Group Study</h3>
-                <p class="card-desc">Study with friends in real-time.</p>
+                <p class="card-desc">Study with friends in real-time synchronized sessions.</p>
                 <div class="grid-half w-100">
-                    <button id="btn-create-room" class="action-btn w-100" style="border-color: #34d399; color: #34d399;">Create</button>
-                    <button id="btn-join-room" class="action-btn w-100" style="border-color: #60a5fa; color: #60a5fa;">Join</button>
+                    <button id="btn-create-room" class="action-btn w-100">Create</button>
+                    <button id="btn-join-room" class="action-btn w-100">Join</button>
                 </div>
             </div>
 
-            <div class="glass-panel feature-card" style="border-color: #c084fc;">
-                <div class="icon mb-1">🃏</div>
+            <div class="glass-panel feature-card">
+                <div class="icon mb-1"><i class="fa-solid fa-clone"></i></div>
                 <h3 class="card-title-purple">Active Recall</h3>
-                <p class="card-desc">High-speed flashcard decks for rapid memorization.</p>
-                <button id="btn-open-flashcards" class="action-btn w-100" style="background: rgba(147, 51, 234, 0.28); border-color: #c084fc; color: #f3e8ff;">Open Decks</button>
+                <p class="card-desc">High-speed spaced repetition flashcards for rapid memorization.</p>
+                <button id="btn-open-flashcards" class="action-btn w-100">Open Decks</button>
             </div>
         </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- OVERLAYS & MODALS                          -->
+    <!-- OVERLAYS & MODALS (Z-INDEX TIERED)         -->
     <!-- ========================================== -->
 
-    <!-- === LOCKOUT MODAL === -->
-    <div id="lockout-screen" class="popup-overlay z-99999 view-hidden">
-        <div class="glass-panel popup-content text-center lockout-modal-content">
-             <i class="fas fa-ban lockout-icon"></i>
-             <h2 class="modal-title-dark">Account Suspended</h2>
-             <p class="modal-subtitle mb-1 text-danger">Your account has been restricted due to policy violations.</p>
-             <textarea id="appeal-text" class="glass-input appeal-textarea" placeholder="State your reason for appeal here..."></textarea>
-             <div class="appeal-btn-row">
-                 <button id="btn-submit-appeal" class="action-btn next-btn btn-submit-appeal">Submit Appeal</button>
-                 <button id="btn-banned-logout" class="action-btn btn-banned-logout">Log Out</button>
-             </div>
-        </div>
-    </div>
-
-    <!-- === FLOATING MENTOR ALERT === -->
-    <div id="mentor-alert-banner" class="mentor-alert-floating view-hidden">
-        <span>🚨</span> <span>Incoming Chat Request! Tap to answer.</span>
-    </div>
-
-    <!-- === ASSIGNED TASKS MODAL === -->
-    <div id="assigned-tasks-modal" class="popup-overlay view-hidden z-9999">
+    <!-- === ASSIGNED TASKS MODAL (BASE: z-9000) === -->
+    <div id="assigned-tasks-modal" class="popup-overlay view-hidden z-9000">
         <div class="glass-panel popup-content text-left" style="max-width: 550px;">
             <div class="flex-between mb-1 modal-section-title">
-                <h3 class="modal-title-green m-0 text-emerald"><i class="fas fa-clipboard-check"></i> Assigned Tasks</h3>
+                <h3 class="m-0"><i class="fas fa-clipboard-check" style="color: var(--primary-ui);"></i> Assigned Tasks</h3>
                 <button id="close-tasks-modal" class="btn-close-corner" style="position:relative; top:0; right:0;">&times;</button>
             </div>
             <div id="task-list-container" class="notes-list-container"></div>
         </div>
     </div>
 
-    <!-- === GUEST COURSE SELECTOR MODAL === -->
-    <div id="guest-course-modal" class="popup-overlay view-hidden z-99999">
+    <!-- === ROOM CREATED MODAL (BASE: z-9000) === -->
+    <div id="room-created-modal" class="popup-overlay view-hidden z-9000">
+        <div class="glass-panel popup-content text-center" style="max-width: 400px;">
+            <h2 class="modal-title-dark mb-05">Room Created</h2>
+            <p class="modal-subtitle mb-1">Share this access code with your friends:</p>
+            <div class="input-room-code" id="room-code-box">0000</div>
+            <div class="grid-half">
+                <button id="copy-room-code" class="action-btn w-100"><i class="fas fa-copy"></i> Copy</button>
+                <button id="enter-room" class="action-btn next-btn w-100">Enter Room</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === JOIN GROUP STUDY MODAL (BASE: z-9000) === -->
+    <div id="join-room-modal" class="popup-overlay view-hidden z-9000">
         <div class="glass-panel popup-content text-center">
-            <h3 class="modal-title-blue"><i class="fas fa-user-graduate"></i> Select Demo Course</h3>
-            <p class="modal-subtitle mb-1">Which course would you like to explore as a guest today?</p>
+            <div class="modal-icon-xl mb-1"><i class="fa-solid fa-users" style="font-size: 2.5rem; color: var(--primary-ui);"></i></div>
+            <h2 class="modal-title-blue mt-0">Join Group Study</h2>
+            <p class="modal-subtitle mt-05 mb-1-5">Enter the 4-digit code provided by your friend to join their session.</p>
+            <input type="text" id="join-room-input" placeholder="0000" class="input-room-code" maxlength="4">
+            <button id="btn-submit-join" class="action-btn next-btn w-100 mb-1 p-1 font-lg">Join Room</button>
+            <button id="btn-close-join" class="btn-close-modal btn-text-muted">Cancel</button>
+        </div>
+    </div>
+
+    <!-- === USER PROFILE MODAL (BASE: z-9000) === -->
+    <div id="profile-modal" class="popup-overlay view-hidden z-9000">
+        <div class="glass-panel popup-content text-left" style="max-width: 550px;">
+            <button class="btn-close-modal btn-close-corner">&times;</button>
+            <div class="text-center mb-1-5">
+                <div class="modal-icon-xl mb-05"><i class="fa-solid fa-user-circle" style="font-size:3rem; color: var(--primary-ui);"></i></div>
+                <h2 class="modal-title-dark">My Profile</h2>
+                <div id="prof-role-badge" class="status-badge badge-pro mt-05">Student</div>
+            </div>
+            <form id="profile-form">
+                <div class="grid-half mb-1">
+                    <div><label class="prof-label">Full Name</label><input type="text" id="prof-name" class="glass-input" required></div>
+                    <div><label class="prof-label">Username</label><input type="text" id="prof-username" class="glass-input input-disabled" disabled></div>
+                </div>
+                <div class="mb-1"><label class="prof-label">Email Address</label><input type="email" id="prof-email" class="glass-input input-disabled" disabled></div>
+                <div class="grid-half mb-1">
+                    <div><label class="prof-label">Phone Number</label><input type="text" id="prof-phone" class="glass-input"></div>
+                    <div><label class="prof-label">Institution</label><input type="text" id="prof-uni" class="glass-input"></div>
+                </div>
+                <div class="grid-half mb-2">
+                    <div><label class="prof-label">Location (City)</label><input type="text" id="prof-location" class="glass-input"></div>
+                    <div>
+                        <label class="prof-label">Assigned Course</label>
+                        <div class="flex-col">
+                            <input type="text" id="prof-course-display" class="glass-input input-disabled" disabled value="Loading...">
+                            <button type="button" id="btn-request-course-change" class="btn-link-orange text-left">Request Change</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-1"><label class="prof-label">Target Exam Date</label><input type="date" id="prof-exam-date" class="glass-input"></div>
+                <button type="submit" id="btn-save-profile" class="action-btn next-btn w-100 p-1">Save Profile</button>
+            </form>
+            <div class="modal-section-title mt-2">Active Subscriptions</div>
+            <div id="prof-subscriptions"><div id="prof-subs-list" class="flex-col gap-08"></div></div>
+        </div>
+    </div>
+
+    <!-- === PREMIUM UNLOCK MODAL (BASE: z-9000) === -->
+    <div id="premium-modal" class="popup-overlay view-hidden z-9000">
+        <div class="glass-panel popup-content text-left" style="max-width: 450px;">
+            <h2 class="modal-title-blue"><i class="fa-solid fa-crown" style="color: var(--primary-ui);"></i> Get Premium</h2>
+            <p class="modal-subtitle mb-1-5">Unlock full access to the Question Bank and features.</p>
+            <div class="tab-container">
+                <div id="tab-buy" class="active-tab">Buy Plan</div>
+                <div id="tab-redeem" class="inactive-tab">Redeem Code</div>
+            </div>
+            <div id="view-buy">
+                <div class="section-label">1. Select Content</div>
+                <button id="btn-open-course-selector" class="action-btn w-100 flex-between mb-1-5">
+                    <span id="selected-courses-text" class="font-bold">1 Course | 0 Books</span>
+                    <span class="font-sm"><i class="fas fa-cog"></i> Edit</span>
+                </button>
+                <div class="section-label">2. Choose Duration</div>
+                <div class="premium-grid">
+                    <div class="plan-card" data-days="1" data-name="1 Day"><div class="plan-duration">1 Day</div><div class="plan-price" id="price-0">...</div></div>
+                    <div class="plan-card" data-days="7" data-name="1 Week"><div class="plan-duration">1 Week</div><div class="plan-price" id="price-1">...</div></div>
+                    <div class="plan-card" data-days="15" data-name="15 Days"><div class="plan-duration">15 Days</div><div class="plan-price" id="price-2">...</div></div>
+                    <div class="plan-card" data-days="30" data-name="1 Month"><div class="plan-duration">1 Month</div><div class="plan-price" id="price-3">...</div></div>
+                    <div class="plan-card" data-days="90" data-name="3 Months"><div class="plan-duration">3 Months</div><div class="plan-price" id="price-4">...</div></div>
+                    <div class="plan-card" data-days="180" data-name="6 Months"><div class="plan-duration">6 Months</div><div class="plan-price" id="price-5">...</div></div>
+                    <div class="plan-card" data-days="365" data-name="1 Year"><div class="plan-duration">1 Year</div><div class="plan-price" id="price-6">...</div></div>
+                </div>
+                <div class="plan-card selected mb-1-5" data-days="lifetime" data-name="Lifetime Access">
+                    <div class="plan-duration">Lifetime Access <span class="badge-best">RECOMMENDED</span></div>
+                    <div class="plan-price text-primary" id="price-7">...</div>
+                </div>
+                <div class="bank-details mb-1-5">
+                    <div class="bank-header"><i class="fa-solid fa-building-columns"></i> Bank Transfer Details</div>
+                    <div class="bank-row"><span>EasyPaisa/JazzCash:</span><span class="bank-val">0334 341 2168</span></div>
+                    <div class="bank-row"><span>Bank:</span><span class="bank-val">Meezan Bank</span></div>
+                    <div class="bank-row"><span>Account No:</span><span class="bank-val">01860104738754</span></div>
+                </div>
+                <div class="section-label">3. Upload Receipt</div>
+                <label for="payment-proof" class="custom-file-upload mb-1-5">
+                    <i class="fa-solid fa-arrow-up-from-bracket upload-icon"></i>
+                    <span id="file-name-display" style="font-family: 'Courier New', monospace; font-weight: 700;">Click to upload receipt image</span>
+                </label>
+                <input type="file" id="payment-proof" accept="image/*" class="view-hidden">
+                <div class="section-label">Promo Code</div>
+                <div class="flex-row gap-10px mb-05">
+                    <input type="text" id="promo-input" placeholder="e.g. WINTER20" class="glass-input flex-1">
+                    <button id="btn-apply-promo" class="action-btn">Apply</button>
+                </div>
+                <div id="promo-message" class="font-sm font-bold text-left mb-1-5" style="min-height: 20px; font-family: 'Courier New', monospace;"></div>
+                <button id="btn-submit-payment" class="action-btn w-100 mb-05 next-btn p-1 font-lg">Submit Payment Request</button>
+                <div class="font-sm text-muted mb-1 text-center font-bold" style="font-family: 'Courier New', monospace;">Access is usually granted within 30 minutes.</div>
+            </div>
+            <div id="view-redeem" class="view-hidden text-left">
+                <p class="modal-subtitle text-left mb-1-5">Have an access code from your mentor or institution? Enter it below to instantly unlock your courses.</p>
+                <label class="section-label">Access Code</label>
+                <input type="text" id="redeem-input" placeholder="e.g. XXXX-XXXX" class="glass-input mb-1-5 text-center" style="text-transform: uppercase;">
+                <button id="btn-submit-redeem" class="action-btn next-btn w-100 mb-1 p-1 font-lg">Redeem Code</button>
+            </div>
+            <button class="btn-close-modal btn-text-muted">Cancel</button>
+        </div>
+    </div>
+
+    <!-- === COURSE SELECTOR MODAL (SUB-MODAL: z-9500) === -->
+    <div id="course-selector-modal" class="popup-overlay view-hidden z-9500">
+        <div class="glass-panel popup-content text-left">
+            <h3 class="modal-title-blue text-left mt-0">Select Resources</h3>
+            <div class="selector-list-container">
+                <div class="selector-header-blue">BASE COURSE</div>
+                <div id="dynamic-course-container" class="mt-05 mb-1"><div class="text-muted font-sm font-bold" style="font-family: 'Courier New', monospace;">Loading...</div></div>
+                <div class="selector-header-orange">BOOK ADD-ONS</div>
+                <div class="font-xs text-muted mb-05 font-bold" style="font-family: 'Courier New', monospace;">Buy 2+ (10% Off) | Buy 3+ (20% Off) | Buy 5+ (30% Off)</div>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="firstaid_step1"> First Aid Step 1</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="firstaid_step2"> First Aid Step 2</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_medicine"> IM Medicine</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_surgery"> IM Surgery</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_pathology"> IM Pathology</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_pediatrics"> IM Pediatrics</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="brs_patho"> BRS Pathology</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="brs_physio"> BRS Physiology</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="rafiullah"> Rafiullah</label>
+                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="doubleAA"> Double AA</label>
+            </div>
+            <button id="btn-confirm-courses" class="action-btn next-btn w-100">Confirm Selection</button>
+        </div>
+    </div>
+
+    <!-- === COURSE CHANGE MODAL (SUB-MODAL: z-9500) === -->
+    <div id="course-change-modal" class="popup-overlay view-hidden z-9500">
+        <div class="glass-panel popup-content text-left">
+            <h3 class="modal-title-blue mt-0">Request Course Change</h3>
+            <p class="modal-subtitle mb-1-5">Select the new course you want to switch to. Our team will review your request shortly.</p>
+            <select id="new-course-request-select" class="glass-input mb-1-5">
+                <option value="" disabled selected>Select new course...</option>
+                <option value="mbbs_year1">MBBS 1st Year</option>
+                <option value="mbbs_year2">MBBS 2nd Year</option>
+                <option value="mbbs_year3">MBBS 3rd Year</option>
+                <option value="mbbs_year4">MBBS 4th Year</option>
+                <option value="mbbs_year5">MBBS 5th Year</option>
+                <option value="fcps_imm">FCPS IMM</option>
+                <option value="fcps_part1">FCPS Part 1</option>
+                <option value="fcps_part2">FCPS Part 2</option>
+                <option value="mrcs_part1">MRCS Part 1</option>
+                <option value="mrcs_part2">MRCS Part 2</option>
+            </select>
+            <button id="btn-submit-course-change" class="action-btn w-100 mb-05 next-btn">Submit Request</button>
+            <button class="btn-close-modal btn-text-muted">Cancel</button>
+        </div>
+    </div>
+
+    <!-- === GUEST COURSE SELECTOR MODAL (SUB-MODAL: z-9500) === -->
+    <div id="guest-course-modal" class="popup-overlay view-hidden z-9500">
+        <div class="glass-panel popup-content text-left">
+            <h3 class="modal-title-blue"><i class="fas fa-user-graduate" style="color: var(--primary-ui);"></i> Select Demo Course</h3>
+            <p class="modal-subtitle mb-1">Which course would you like to explore today?</p>
             <select id="guest-course-select" class="glass-input mb-1-5">
                 <optgroup label="FCPS Series">
                     <option value="fcps_part1">FCPS Part 1</option>
@@ -185,216 +360,51 @@
             </select>
             <div class="grid-half">
                 <button id="btn-cancel-guest" class="action-btn w-100 btn-close-modal">Cancel</button>
-                <button id="btn-confirm-guest" class="action-btn next-btn w-100">Explore</button>
+                <button id="btn-confirm-guest" class="action-btn next-btn w-100">Continue</button>
             </div>
         </div>
     </div>
 
-    <!-- === ROOM CREATED MODAL === -->
-    <div id="room-created-modal" class="popup-overlay view-hidden z-9999">
-        <div class="glass-panel popup-content text-center" style="max-width: 400px;">
-            <h2 class="modal-title-dark mb-05">Room Created 🎉</h2>
-            <p class="modal-subtitle mb-1">Share this code with your friends:</p>
-            <div class="room-code-box" id="room-code-box">0000</div>
-            <div class="grid-half">
-                <button id="copy-room-code" class="action-btn w-100"><i class="fas fa-copy"></i> Copy</button>
-                <button id="enter-room" class="action-btn next-btn w-100">Enter Room</button>
-            </div>
+    <!-- === LOCKOUT MODAL (TOP TIER: z-9999) === -->
+    <div id="lockout-screen" class="popup-overlay z-9999 view-hidden">
+        <div class="glass-panel popup-content text-center" style="border-top: 4px solid var(--danger);">
+             <i class="fas fa-ban" style="color: var(--danger); font-size: 3rem; margin-bottom: 1rem;"></i>
+             <h2 class="modal-title-dark">Account Suspended</h2>
+             <p class="modal-subtitle mb-1 text-danger font-bold">Access has been restricted due to a policy violation.</p>
+             <textarea id="appeal-text" class="glass-input mb-1" placeholder="Please state your reason for appeal here..." style="min-height: 80px; resize: vertical;"></textarea>
+             <div class="grid-half mb-1">
+                 <button id="btn-submit-appeal" class="action-btn next-btn w-100">Submit Appeal</button>
+                 <button id="btn-banned-logout" class="action-btn w-100">Log Out</button>
+             </div>
         </div>
     </div>
 
-    <!-- === JOIN GROUP STUDY MODAL === -->
-    <div id="join-room-modal" class="popup-overlay view-hidden z-9999">
-        <div class="glass-panel popup-content text-center">
-            <div class="modal-icon-xl mb-1">🔑</div>
-            <h2 class="modal-title-blue mt-0">Join Group Study</h2>
-            <p class="modal-subtitle mt-05 mb-1-5">Enter the 4-digit code provided by your friend to sync your screens.</p>
-            <input type="text" id="join-room-input" placeholder="e.g. 1234" class="input-room-code">
-            <button id="btn-submit-join" class="action-btn next-btn w-100 mb-1 p-1 font-lg">Join Room</button>
-            <button id="btn-close-join" class="btn-close-modal btn-text-muted">Cancel</button>
-        </div>
-    </div>
-
-    <!-- === COURSE CHANGE MODAL === -->
-    <div id="course-change-modal" class="popup-overlay view-hidden z-9999">
-        <div class="glass-panel popup-content text-center">
-            <h3 class="modal-title-blue mt-0">Request Course Change</h3>
-            <p class="modal-subtitle mb-1-5">Select the new course you want to switch to. An Admin will review your request.</p>
-            <select id="new-course-request-select" class="glass-input mb-1-5">
-                <option value="" disabled selected>Select new course...</option>
-                <option value="mbbs_year1">MBBS 1st Year</option>
-                <option value="mbbs_year2">MBBS 2nd Year</option>
-                <option value="mbbs_year3">MBBS 3rd Year</option>
-                <option value="mbbs_year4">MBBS 4th Year</option>
-                <option value="mbbs_year5">MBBS 5th Year</option>
-                <option value="fcps_imm">FCPS IMM</option>
-                <option value="fcps_part1">FCPS Part 1</option>
-                <option value="fcps_part2">FCPS Part 2</option>
-                <option value="mrcs_part1">MRCS Part 1</option>
-                <option value="mrcs_part2">MRCS Part 2</option>
-            </select>
-            <button id="btn-submit-course-change" class="action-btn w-100 mb-05 bg-orange text-warning border-warning">Submit Request</button>
-            <button class="btn-close-modal btn-text-muted">Cancel</button>
-        </div>
-    </div>
-
-    <!-- === USER PROFILE MODAL === -->
-    <div id="profile-modal" class="popup-overlay view-hidden z-9999">
-        <div class="glass-panel popup-content text-left" style="max-width: 550px;">
-            <button class="btn-close-modal btn-close-corner">&times;</button>
-            <div class="text-center mb-1-5">
-                <div class="modal-icon-xl mb-05">👤</div>
-                <h2 class="modal-title-dark">My Profile</h2>
-                <div id="prof-role-badge" class="status-badge badge-pro mt-05">STUDENT</div>
-            </div>
-            <form id="profile-form">
-                <div class="grid-half mb-1">
-                    <div><label class="prof-label">Full Name</label><input type="text" id="prof-name" class="glass-input" required></div>
-                    <div><label class="prof-label">Username</label><input type="text" id="prof-username" class="glass-input input-disabled" disabled></div>
-                </div>
-                <div class="mb-1"><label class="prof-label">Email Address</label><input type="email" id="prof-email" class="glass-input input-disabled" disabled></div>
-                <div class="grid-half mb-1">
-                    <div><label class="prof-label">Phone</label><input type="text" id="prof-phone" class="glass-input"></div>
-                    <div><label class="prof-label">Institution</label><input type="text" id="prof-uni" class="glass-input"></div>
-                </div>
-                <div class="grid-half mb-2">
-                    <div><label class="prof-label">Location</label><input type="text" id="prof-location" class="glass-input"></div>
-                    <div>
-                        <label class="prof-label">Assigned Course</label>
-                        <div class="flex-col">
-                            <input type="text" id="prof-course-display" class="glass-input input-disabled" disabled value="Loading...">
-                            <button type="button" id="btn-request-course-change" class="btn-link-orange text-left">Request Course Change</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-1"><label class="prof-label">Target Exam Date</label><input type="date" id="prof-exam-date" class="glass-input"></div>
-                <button type="submit" id="btn-save-profile" class="action-btn next-btn w-100 p-1">Save Profile Changes</button>
-            </form>
-            <div class="modal-section-title mt-1-5">Active Subscriptions</div>
-            <div id="prof-subscriptions"><div id="prof-subs-list" class="flex-col gap-08"></div></div>
-        </div>
-    </div>
-
-    <!-- === NOTES VAULT MODAL === -->
-    <div id="notes-vault-modal" class="popup-overlay view-hidden z-2000">
-        <div class="glass-panel popup-content text-left" style="max-width: 650px; display: flex; flex-direction: column; max-height: 85vh;">
-            <div class="flex-between mb-1 modal-section-title">
-                <h3 class="modal-title-blue m-0">📝 My Notes Vault</h3>
-                <button class="btn-close-modal btn-close-corner" style="position:relative; top:0; right:0;">&times;</button>
-            </div>
-            <input type="text" id="notes-search-input" placeholder="Search your notes or questions..." class="glass-input mb-1">
-            <div id="notes-vault-list" class="notes-list-container" style="overflow-y: auto; flex-grow: 1;">
-                <div class="text-muted text-center p-2">Loading notes...</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- === COURSE SELECTOR MODAL === -->
-    <div id="course-selector-modal" class="popup-overlay view-hidden z-99999">
-        <div class="glass-panel popup-content text-left">
-            <h3 class="modal-title-blue text-center mt-0">Select Your Resources</h3>
-            <div class="selector-list-container">
-                <div class="selector-header-blue">ASSIGNED EXAM COURSE</div>
-                <div id="dynamic-course-container" class="mt-05 mb-1"><div class="text-muted font-sm">Loading your course...</div></div>
-                <div class="selector-header-orange">BOOK ADD-ONS</div>
-                <div class="font-xs text-muted mb-05">Buy 2+ (10% Off) | Buy 3+ (20% Off) | Buy 5+ (30% Off)</div>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="firstaid_step1"> First Aid Step 1</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="firstaid_step2"> First Aid Step 2</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_medicine"> IM Medicine</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_surgery"> IM Surgery</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_pathology"> IM Pathology</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="im_pediatrics"> IM Pediatrics</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="brs_patho"> BRS Pathology</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="brs_physio"> BRS Physiology</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="rafiullah"> Rafiullah</label>
-                <label class="course-checkbox-label"><input type="checkbox" class="book-check" value="doubleAA"> Double AA</label>
-            </div>
-            <button id="btn-confirm-courses" class="action-btn w-100" style="background: rgba(255,255,255,0.15);">Calculate Price & Confirm</button>
-        </div>
-    </div>
-
-    <!-- === PREMIUM UNLOCK MODAL === -->
-    <div id="premium-modal" class="popup-overlay view-hidden z-9999">
-        <div class="glass-panel popup-content text-center" style="max-width: 450px;">
-            <div class="modal-icon-xl mb-05">👑</div>
-            <h2 class="modal-title-blue">Unlock Premium</h2>
-            <p class="modal-subtitle mb-1-5">Get unlimited access to your content.</p>
-            <div class="tab-container">
-                <div id="tab-buy" class="active-tab">Buy Plan</div>
-                <div id="tab-redeem" class="inactive-tab">Redeem Code</div>
-            </div>
-            <div id="view-buy">
-                <div class="section-label">1. Select Content to Unlock</div>
-                <button id="btn-open-course-selector" class="action-btn w-100 flex-between mb-1-5">
-                    <span id="selected-courses-text" class="font-bold">1 Course | 0 Books</span>
-                    <span class="font-sm"><i class="fas fa-cog"></i> Edit</span>
-                </button>
-                <div class="section-label">2. Choose Duration</div>
-                <div class="premium-grid">
-                    <div class="plan-card" data-days="1" data-name="1 Day"><div class="plan-duration">1 Day</div><div class="plan-price" id="price-0">...</div></div>
-                    <div class="plan-card" data-days="7" data-name="1 Week"><div class="plan-duration">1 Week</div><div class="plan-price" id="price-1">...</div></div>
-                    <div class="plan-card" data-days="15" data-name="15 Days"><div class="plan-duration">15 Days</div><div class="plan-price" id="price-2">...</div></div>
-                    <div class="plan-card" data-days="30" data-name="1 Month"><div class="plan-duration">1 Month</div><div class="plan-price" id="price-3">...</div></div>
-                    <div class="plan-card" data-days="90" data-name="3 Months"><div class="plan-duration">3 Months</div><div class="plan-price" id="price-4">...</div></div>
-                    <div class="plan-card" data-days="180" data-name="6 Months"><div class="plan-duration">6 Months</div><div class="plan-price" id="price-5">...</div></div>
-                    <div class="plan-card" data-days="365" data-name="1 Year"><div class="plan-duration">1 Year</div><div class="plan-price" id="price-6">...</div></div>
-                </div>
-                <div class="plan-card selected mb-1-5" data-days="lifetime" data-name="Lifetime Access">
-                    <div class="plan-duration text-orange">Lifetime Access <span class="badge-best">BEST</span></div>
-                    <div class="plan-price text-orange" id="price-7">...</div>
-                </div>
-                <div class="bank-details mb-1-5">
-                    <div class="bank-header">🏦 Bank Transfer Details</div>
-                    <div class="bank-row"><span>EasyPaisa/JazzCash:</span><span class="bank-val">0334 341 2168</span></div>
-                    <div class="bank-row"><span>Bank:</span><span class="bank-val">Meezan Bank</span></div>
-                    <div class="bank-row"><span>Account No:</span><span class="bank-val">01860104738754</span></div>
-                </div>
-                <div class="section-label">Upload Payment Proof</div>
-                <label for="payment-proof" class="custom-file-upload mb-1-5">
-                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                    <span id="file-name-display">Click to browse or drag receipt here</span>
-                </label>
-                <input type="file" id="payment-proof" accept="image/*" class="view-hidden">
-                <div class="section-label">Apply Promo Code</div>
-                <div class="flex-row gap-10px mb-05">
-                    <input type="text" id="promo-input" placeholder="e.g. WINTER20" class="glass-input flex-1">
-                    <button id="btn-apply-promo" class="action-btn bg-blue">Apply</button>
-                </div>
-                <div id="promo-message" class="font-xs font-bold text-left mb-1-5" style="min-height: 15px;"></div>
-                <button id="btn-submit-payment" class="action-btn w-100 mb-05 bg-orange text-warning border-warning p-1 font-lg">Confirm & Submit Request</button>
-                <div class="font-xs text-muted mb-1">Access usually granted within 30 minutes.</div>
-            </div>
-            <div id="view-redeem" class="view-hidden text-left">
-                <p class="modal-subtitle text-center mb-1-5">Have an access code from your mentor or institution? Enter it below to instantly unlock your courses.</p>
-                <label class="section-label">Access Code</label>
-                <input type="text" id="redeem-input" placeholder="e.g. EDEETOS-XXXX-XXXX" class="glass-input mb-1-5 text-center" style="text-transform: uppercase;">
-                <button id="btn-submit-redeem" class="action-btn next-btn w-100 mb-1 p-1 font-lg">Redeem Now</button>
-            </div>
-            <button class="btn-close-modal btn-text-muted">Cancel</button>
-        </div>
+    <!-- === FLOATING MENTOR ALERT (TOP TIER: z-9999) === -->
+    <div id="mentor-alert-banner" class="mentor-alert-floating view-hidden">
+        <i class="fa-solid fa-message text-primary"></i> <span>New chat request from a student. Click to open.</span>
     </div>
 
     <!-- === HTML TEMPLATES (HIDDEN) === -->
     <template id="task-notify-template">
         <div class="task-notify-card glass-panel">
             <div class="flex-align-center gap-15px">
-                <div class="task-notify-icon"><i class="fas fa-bell"></i></div>
+                <div class="icon"><i class="fas fa-bell text-primary" style="font-size:1.5rem;"></i></div>
                 <div>
-                    <h3 class="task-notify-title">New Mentor Assignments</h3>
-                    <p class="task-notify-desc">You have <span class="task-count"></span> waiting for you.</p>
+                    <h3 class="m-0 mb-05" style="font-size:1.1rem; color: var(--text-primary); font-weight: 800;">New Task Assigned</h3>
+                    <p class="m-0 text-muted" style="font-family: 'Courier New', monospace; font-size:0.85rem; font-weight: 800;">You have <span class="task-count"></span> pending assignments.</p>
                 </div>
             </div>
-            <button class="action-btn next-btn p-08">View Tasks</button>
+            <button class="action-btn next-btn p-1">View</button>
         </div>
     </template>
 
     <!-- === FOOTER === -->
-    <footer class="site-footer mt-2">
+    <footer class="site-footer mt-2 mb-2">
         <div class="footer-container text-center">
-            <p class="text-muted font-sm">&copy; 2026 EDEETOS. All rights reserved. | <a href="changelog.html" style="color:#60a5fa;">Changelog</a> | <a href="privacy.html" style="color:#60a5fa;">Privacy Policy</a></p>
+            <p class="text-muted font-sm font-bold" style="font-family: 'Courier New', monospace;">&copy; 2026 EDEETOS | <a href="changelog.html" style="color:var(--primary-ui); text-decoration: none;">Changelog</a> | <a href="privacy.html" style="color:var(--primary-ui); text-decoration: none;">Privacy</a></p>
         </div>
     </footer>
 
-    <script type="module" src="dashboard.js?v=5"></script>
+    <script type="module" src="dashboard.js?v=12"></script>
 </body>
 </html>
