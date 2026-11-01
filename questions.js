@@ -957,16 +957,15 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const statsWrapper = clone.querySelector('.stats-wrapper');
 
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
-        const cBadge = document.createElement('span');
-        cBadge.className = 'card-count';
+const cBadge = document.createElement('span');
+        cBadge.className = 'badge gray-badge';
         cBadge.textContent = `${qCount} Qs`;
         countWrapper.appendChild(cBadge);
     } else {
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         const cBadge = document.createElement('span');
-        cBadge.className = 'card-count';
+        cBadge.className = 'badge gray-badge';
         cBadge.textContent = `${doneCount} /${qCount}`;
-        countWrapper.appendChild(cBadge);
 
         const progCont = document.createElement('div');
         progCont.className = 'progress-container';
@@ -1036,11 +1035,10 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
     itemDiv.appendChild(clone);
 
-    if (hasSubLevels) {
+if (hasSubLevels) {
         const actionBtn = document.createElement('button');
-        actionBtn.className = 'action-btn';
-        actionBtn.style.marginLeft = '15px';
-        actionBtn.style.padding = '0.5rem 1rem';
+        actionBtn.className = 'btn-outline w-100 mt-10';
+        actionBtn.style.padding = '0.8rem 1rem';
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = (e) => {
             e.stopPropagation(); 
@@ -2325,47 +2323,52 @@ if (btnJourney) {
                 if (isUnlocked) progress = t.req;
                 else if (flawlessCount > t.previousCum) progress = flawlessCount - t.previousCum;
 
-                const borderColor = isUnlocked ? 'rgba(245, 158, 11, 0.4)' : 'rgba(255, 255, 255, 0.1)';
-                const bgColor = isUnlocked ? 'rgba(245, 158, 11, 0.1)' : 'rgba(0, 0, 0, 0.2)';
-                const textColor = isUnlocked ? '#fde68a' : '#94a3b8';
+const card = document.createElement('div');
+                card.className = `trophy-card ${isUnlocked ? 'unlocked' : 'locked'}`;
                 
-                const card = document.createElement('div');
-                card.className = 'glass-panel';
-                card.style.display = 'flex'; card.style.alignItems = 'center'; card.style.padding = '0.9rem'; card.style.borderRadius = '12px'; card.style.background = bgColor; card.style.border = `1px solid ${borderColor}`;
-                
-                const iconDiv = document.createElement('div'); iconDiv.style.fontSize = '2.2rem'; iconDiv.style.marginRight = '1rem';
-                if (!isUnlocked) iconDiv.style.filter = 'grayscale(100%) opacity(0.4)';
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'trophy-icon';
                 iconDiv.textContent = t.icon;
                 
-                const contDiv = document.createElement('div'); contDiv.style.flexGrow = '1';
-                const titleDiv = document.createElement('div'); titleDiv.style.fontWeight = '800'; titleDiv.style.color = textColor; titleDiv.style.fontSize = '1.05rem'; titleDiv.style.marginBottom = '0.1rem'; titleDiv.textContent = t.title;
-                const progDiv = document.createElement('div'); progDiv.style.fontSize = '0.75rem'; progDiv.style.color = '#cbd5e1'; progDiv.textContent = `${progress} / ${t.req} Flawless Qs`;
-                contDiv.appendChild(titleDiv); contDiv.appendChild(progDiv);
+                const contDiv = document.createElement('div');
+                contDiv.className = 'trophy-content';
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'trophy-title';
+                titleDiv.textContent = t.title;
+                
+                const progDiv = document.createElement('div');
+                progDiv.className = 'trophy-progress';
+                progDiv.textContent = `${progress} / ${t.req} Flawless Qs`;
+                
+                contDiv.appendChild(titleDiv);
+                contDiv.appendChild(progDiv);
 
                 if (t.rewardValue > 0) {
                     if (isUnlocked && !isClaimed) {
-                        const btn = document.createElement('button'); btn.className = 'action-btn claim-reward-btn'; btn.setAttribute('data-trophy', JSON.stringify(t));
-                        btn.style.background = 'rgba(16, 185, 129, 0.2)'; btn.style.borderColor = '#34d399'; btn.style.color = '#a7f3d0'; btn.style.padding = '6px 12px'; btn.style.fontSize = '0.75rem'; btn.style.marginTop = '6px'; btn.style.width = '100%';
-                        const iconBtn = document.createElement('i'); iconBtn.className = 'fas fa-gift'; iconBtn.style.marginRight = '5px';
-                        btn.appendChild(iconBtn); btn.appendChild(document.createTextNode('Claim Reward'));
+                        const btn = document.createElement('button');
+                        btn.className = 'btn-solid claim-reward-btn mt-10';
+                        btn.style.padding = '6px 12px'; btn.style.fontSize = '0.8rem'; btn.style.width = '100%';
+                        btn.setAttribute('data-trophy', JSON.stringify(t));
+                        btn.innerHTML = `<i class="fas fa-gift mr-10"></i>Claim Reward`;
                         contDiv.appendChild(btn);
                     } else if (isClaimed) {
-                        const msg = document.createElement('div'); msg.style.fontSize = '0.75rem'; msg.style.fontWeight = 'bold'; msg.style.color = '#34d399'; msg.style.marginTop = '6px';
-                        const iconMsg = document.createElement('i'); iconMsg.className = 'fas fa-check-double'; iconMsg.style.marginRight = '5px';
-                        msg.appendChild(iconMsg); msg.appendChild(document.createTextNode('Reward Claimed'));
+                        const msg = document.createElement('div');
+                        msg.className = 'text-emerald font-bold text-sm mt-10';
+                        msg.innerHTML = `<i class="fas fa-check-double mr-10"></i>Reward Claimed`;
                         contDiv.appendChild(msg);
                     } else {
-                        const msg = document.createElement('div'); msg.style.fontSize = '0.75rem'; msg.style.fontWeight = 'bold'; msg.style.color = '#fcd34d'; msg.style.marginTop = '6px';
-                        const iconMsg = document.createElement('i'); iconMsg.className = 'fas fa-gift'; iconMsg.style.marginRight = '5px';
-                        msg.appendChild(iconMsg); msg.appendChild(document.createTextNode(`Reward: ${t.rewardValue}${t.rewardUnit} Premium`));
+                        const msg = document.createElement('div');
+                        msg.className = 'text-muted font-bold text-sm mt-10';
+                        msg.innerHTML = `<i class="fas fa-lock mr-10"></i>Reward: ${t.rewardValue}${t.rewardUnit} Premium`;
                         contDiv.appendChild(msg);
                     }
                 }
 
-                const statusDiv = document.createElement('div'); statusDiv.style.fontSize = '1.3rem';
+                const statusDiv = document.createElement('div');
+                statusDiv.className = 'trophy-status-icon';
                 const sIcon = document.createElement('i');
-                if (isUnlocked) { sIcon.className = 'fas fa-check-circle'; sIcon.style.color = '#34d399'; }
-                else { sIcon.className = 'fas fa-lock'; sIcon.style.color = '#64748b'; }
+                sIcon.className = isUnlocked ? 'fas fa-check-circle' : 'fas fa-lock';
                 statusDiv.appendChild(sIcon);
                 
                 card.appendChild(iconDiv); card.appendChild(contDiv); card.appendChild(statusDiv);
@@ -3043,15 +3046,18 @@ if (localStorage.getItem('edeetos_guest_mode') === 'true') {
 });
 
 // ==========================================
-// 17. BRUTALIST UI HOVER TRACKING
+// 17. BOTTOM SHEET MODAL FIX
 // ==========================================
-document.addEventListener("mousemove", (e) => {
-    // Utilize event delegation for performance; map mouse coordinates to cards for radial glow
-    document.querySelectorAll('.glass-panel, .feature-card, .list-item').forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+// Locks background scroll on mobile/desktop when immersive modals open
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.target.classList.contains('popup-overlay')) {
+            const anyOpen = Array.from(document.querySelectorAll('.popup-overlay')).some(modal => modal.style.display === 'flex' || modal.classList.contains('show'));
+            document.body.style.overflow = anyOpen ? 'hidden' : '';
+        }
     });
+});
+
+document.querySelectorAll('.popup-overlay').forEach(modal => {
+    observer.observe(modal, { attributes: true, attributeFilter: ['style', 'class'] });
 });
