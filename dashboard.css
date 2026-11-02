@@ -342,50 +342,78 @@ html.dark-mode .hamburger-btn { color: var(--text-primary); }
         position: fixed;
         top: 0;
         right: -300px; /* Hide off-screen */
-        width: 260px;
+        width: 280px;
         height: 100dvh;
         background: var(--surface-color) !important;
         border-left: 2px solid var(--primary-ui);
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-        padding: 4rem 1.5rem 2rem 1.5rem;
-        gap: 1rem;
+        padding: 5rem 1.5rem 2rem 1.5rem; /* Increased top padding */
+        gap: 0.75rem;
         transition: right 0.3s ease;
         z-index: 9999;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
     
     html.dark-mode .nav-actions { border-left-color: var(--accent-color); }
-
-    /* Active Class applied via JS */
     .nav-actions.sidebar-active { right: 0; }
 
-    /* Restyle buttons for sidebar layout */
-    .nav-actions button, .nav-actions a { 
+    /* Restyle buttons for sidebar layout (EXCLUDING CLOSE BUTTON) */
+    .nav-actions button:not(.close-sidebar-btn), .nav-actions a { 
         width: 100%;
         justify-content: flex-start;
         padding: 1rem;
         font-size: 0.95rem;
         color: var(--text-primary) !important;
         border: 1px solid var(--border-color) !important;
+        background: var(--bg-color) !important;
+        border-radius: var(--radius);
     }
     
-    /* Keep Premium button black in light mode */
-    .nav-actions .btn-nav-premium { color: #000 !important; }
+    /* Keep Premium button colored */
+    .nav-actions .btn-nav-premium { 
+        background: var(--accent-color) !important; 
+        color: #000 !important; 
+        border-color: var(--accent-color) !important; 
+    }
     
-    /* Close Button Styling */
+    /* Fix Dark Mode Button shape in mobile */
+    .theme-toggle-btn { 
+        width: 100% !important; 
+        height: auto !important; 
+        padding: 1rem !important; 
+        justify-content: flex-start !important; 
+        border-radius: var(--radius) !important;
+    }
+    
+    /* Inject text into Dark Mode Button for mobile */
+    .theme-toggle-btn::after {
+        content: "Toggle Theme";
+        margin-left: 8px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+    
+    /* Dedicated Close Button Styling */
     .close-sidebar-btn {
         display: block;
         position: absolute;
         top: 1rem;
         right: 1.5rem;
-        background: transparent;
-        border: none;
-        font-size: 2rem;
-        color: var(--text-secondary);
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        border: none !important;
+        font-size: 2.5rem;
+        line-height: 1;
+        color: var(--text-secondary) !important;
         cursor: pointer;
-        padding: 0;
+        padding: 0 !important;
+        box-shadow: none !important;
     }
     
     /* Welcome Header Fixes */
