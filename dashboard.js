@@ -267,6 +267,22 @@ document.getElementById('logout-btn').addEventListener('click', () => {
     signOut(auth).then(() => { window.location.href = 'index.html'; }).catch(() => { window.location.href = 'index.html'; });
 });
 
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const navActionsMenu = document.getElementById('nav-actions-menu');
+const closeMenuBtn = document.getElementById('close-menu-btn');
+
+if (mobileMenuBtn && navActionsMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navActionsMenu.classList.add('sidebar-active');
+    });
+}
+
+if (closeMenuBtn && navActionsMenu) {
+    closeMenuBtn.addEventListener('click', () => {
+        navActionsMenu.classList.remove('sidebar-active');
+    });
+}
+
 const btnAdminPanel = document.getElementById('btn-admin-panel');
 if (btnAdminPanel) btnAdminPanel.addEventListener('click', () => window.location.href = 'admin.html');
 
