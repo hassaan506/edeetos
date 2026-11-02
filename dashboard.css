@@ -142,7 +142,6 @@ html.dark-mode .nav-actions button:hover, html.dark-mode .nav-actions a:hover { 
 .theme-toggle-btn { width: 38px !important; height: 38px !important; padding: 0 !important; justify-content: center; border: 1px solid rgba(255,255,255,0.2) !important; }
 html.dark-mode .theme-toggle-btn { border-color: var(--border-color) !important; }
 
-/* Protect Premium button from the transparent overrides */
 .nav-actions .btn-nav-premium { background: var(--accent-color) !important; color: #000 !important; border-color: var(--accent-color) !important; }
 .nav-actions .btn-nav-premium:hover { background: #fff !important; color: var(--primary-ui) !important; }
 html.dark-mode .nav-actions .btn-nav-premium { background: var(--accent-color) !important; color: #000 !important; border-color: var(--accent-color) !important; }
@@ -324,24 +323,70 @@ html.dark-mode .popup-content { border-top-color: var(--accent-color); }
 .font-lg { font-size: 1.125rem; }
 .font-bold { font-weight: 700; }
 
+.hamburger-btn { display: none; background: transparent; border: none; color: #FFF; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+html.dark-mode .hamburger-btn { color: var(--text-primary); }
+.close-sidebar-btn { display: none; }
+
 /* === MOBILE RESPONSIVENESS FIXES === */
 @media (max-width: 768px) { 
-    /* Nav Header Fixes */
-    .dashboard-nav { padding: 0.75rem 1rem; }
-    .nav-inner { flex-direction: column; align-items: center; gap: 0.75rem; }
-    .nav-logo-box { width: 100%; justify-content: center; }
+    .dashboard-nav { padding: 0.75rem 1.25rem; }
+    .nav-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+    .nav-logo-box { width: auto; }
     .nav-logo-img { height: 28px; }
+    
+    /* Show Hamburger */
+    .hamburger-btn { display: block; }
+    
+    /* Sidebar Styling */
     .nav-actions { 
-        width: 100%; 
-        overflow-x: auto; 
-        justify-content: flex-start; 
-        flex-wrap: nowrap; 
-        padding-bottom: 0.5rem; 
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
+        position: fixed;
+        top: 0;
+        right: -300px; /* Hide off-screen */
+        width: 260px;
+        height: 100dvh;
+        background: var(--surface-color) !important;
+        border-left: 2px solid var(--primary-ui);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 4rem 1.5rem 2rem 1.5rem;
+        gap: 1rem;
+        transition: right 0.3s ease;
+        z-index: 9999;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
-    .nav-actions::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-    .nav-actions button, .nav-actions a { white-space: nowrap; flex-shrink: 0; padding: 0.4rem 0.75rem; font-size: 0.75rem; }
+    
+    html.dark-mode .nav-actions { border-left-color: var(--accent-color); }
+
+    /* Active Class applied via JS */
+    .nav-actions.sidebar-active { right: 0; }
+
+    /* Restyle buttons for sidebar layout */
+    .nav-actions button, .nav-actions a { 
+        width: 100%;
+        justify-content: flex-start;
+        padding: 1rem;
+        font-size: 0.95rem;
+        color: var(--text-primary) !important;
+        border: 1px solid var(--border-color) !important;
+    }
+    
+    /* Keep Premium button black in light mode */
+    .nav-actions .btn-nav-premium { color: #000 !important; }
+    
+    /* Close Button Styling */
+    .close-sidebar-btn {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0;
+    }
     
     /* Welcome Header Fixes */
     .dashboard-header { margin-bottom: 2rem; padding-top: 1rem; }
@@ -359,7 +404,6 @@ html.dark-mode .popup-content { border-top-color: var(--accent-color); }
     .stat-value { font-size: 1.25rem; }
     .prog-stat-title { font-size: 0.65rem; }
     
-    /* Modals & Others */
     .popup-content { padding: 1.5rem; width: 95%; }
     .modal-title-blue, .modal-title-dark { font-size: 1.25rem; }
     .premium-grid { grid-template-columns: 1fr; }
