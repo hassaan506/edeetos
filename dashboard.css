@@ -334,14 +334,12 @@ html.dark-mode .hamburger-btn { color: var(--text-primary); }
     .nav-logo-box { width: auto; }
     .nav-logo-img { height: 28px; }
     
-    /* Show Hamburger */
     .hamburger-btn { display: block; }
     
-    /* Sidebar Styling */
     .nav-actions { 
         position: fixed;
         top: 0;
-        right: -300px; /* Hide off-screen */
+        right: -300px; 
         width: 280px;
         height: 100dvh;
         background: var(--surface-color) !important;
@@ -349,7 +347,7 @@ html.dark-mode .hamburger-btn { color: var(--text-primary); }
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-        padding: 5rem 1.5rem 2rem 1.5rem; /* Increased top padding */
+        padding: 5rem 1.5rem 2rem 1.5rem; 
         gap: 0.75rem;
         transition: right 0.3s ease;
         z-index: 9999;
@@ -359,36 +357,35 @@ html.dark-mode .hamburger-btn { color: var(--text-primary); }
     html.dark-mode .nav-actions { border-left-color: var(--accent-color); }
     .nav-actions.sidebar-active { right: 0; }
 
-    /* Restyle buttons for sidebar layout (EXCLUDING CLOSE BUTTON) */
-    .nav-actions button:not(.close-sidebar-btn), .nav-actions a { 
-        width: 100%;
-        justify-content: flex-start;
-        padding: 1rem;
-        font-size: 0.95rem;
+    .nav-actions > button:not(.close-sidebar-btn), 
+    .nav-actions > a { 
+        width: 100% !important;
+        justify-content: flex-start !important;
+        padding: 1rem !important;
+        font-size: 0.95rem !important;
         color: var(--text-primary) !important;
         border: 1px solid var(--border-color) !important;
         background: var(--bg-color) !important;
-        border-radius: var(--radius);
+        border-radius: var(--radius) !important;
     }
     
-    /* Keep Premium button colored */
     .nav-actions .btn-nav-premium { 
         background: var(--accent-color) !important; 
         color: #000 !important; 
         border-color: var(--accent-color) !important; 
     }
     
-    /* Fix Dark Mode Button shape in mobile */
-    .theme-toggle-btn { 
+    .nav-actions .theme-toggle-btn { 
         width: 100% !important; 
         height: auto !important; 
         padding: 1rem !important; 
         justify-content: flex-start !important; 
         border-radius: var(--radius) !important;
+        border: 1px solid var(--border-color) !important;
+        background: var(--bg-color) !important;
     }
     
-    /* Inject text into Dark Mode Button for mobile */
-    .theme-toggle-btn::after {
+    .nav-actions .theme-toggle-btn::after {
         content: "Toggle Theme";
         margin-left: 8px;
         font-family: 'Inter', sans-serif;
@@ -398,30 +395,31 @@ html.dark-mode .hamburger-btn { color: var(--text-primary); }
         text-transform: uppercase;
     }
     
-    /* Dedicated Close Button Styling */
-    .close-sidebar-btn {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-        width: auto !important;
-        height: auto !important;
+    /* COMPLETELY REWRITTEN CLOSE BUTTON FOR MOBILE SIDEBAR */
+    .nav-actions .close-sidebar-btn {
+        display: block !important;
+        position: absolute !important;
+        top: 15px !important;
+        right: 15px !important;
+        width: 44px !important;
+        height: 44px !important;
         background: transparent !important;
         border: none !important;
-        font-size: 2.5rem;
-        line-height: 1;
-        color: var(--text-secondary) !important;
-        cursor: pointer;
+        font-family: Arial, sans-serif !important; /* Force standard font to prevent glyph shrinking */
+        font-size: 2.5rem !important;
+        font-weight: 400 !important;
+        line-height: 44px !important;
+        color: var(--text-primary) !important; /* Force high contrast in both themes */
         padding: 0 !important;
+        text-align: center !important;
+        cursor: pointer;
         box-shadow: none !important;
     }
     
-    /* Welcome Header Fixes */
     .dashboard-header { margin-bottom: 2rem; padding-top: 1rem; }
     .welcome-header { font-size: 1.85rem; line-height: 1.2; margin-bottom: 0.75rem; }
     .status-badge { padding: 0.25rem 0.5rem; font-size: 0.7rem; }
     
-    /* Performance Metrics & Grid Fixes */
     .course-dash-grid { gap: 16px; margin-bottom: 2rem; }
     .feature-card { padding: 1.25rem; }
     .feature-card.telemetry-card { padding: 1.25rem; }
