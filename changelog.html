@@ -3,517 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changelog & Updates - EDEETOS</title>
-    <link rel="stylesheet" href="global.css">
+    <title>System Updates - EDEETOS</title>
     <link rel="stylesheet" href="changelog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="changelog-body">
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <div class="mono-text">EDEETOS // CLINICAL LOG</div>
+            <a href="index.html" class="btn-solid">Return to Dashboard</a>
+        </nav>
 
-    <!-- OVERLAYS FOR THEME EFFECTS -->
-    <div class="theme-overlay overlay-green"></div>
-    <div class="theme-overlay overlay-blue"></div>
+        <header class="header">
+            <h1>System Updates</h1>
+            <p class="mono-text">Track platform modifications, performance upgrades, and fixes.</p>
+        </header>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;">
-            </a>
-            <ul class="nav-links">
-                <li>
-                    <a href="index.html" class="btn-solid" style="padding: 0.5rem 1.2rem; border-radius: 12px; font-weight: 800;">
-                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back to Home
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="changelog-header section-container animate-on-scroll">
-        <div class="header-content" style="text-align: center;">
-            <div class="icon-pulse">
-                <i class="fas fa-rocket"></i>
-            </div>
-            <h1 style="font-size: 3rem; font-weight: 900; margin-bottom: 1rem; letter-spacing: -1px; color: #0f172a;">
-                Platform Evolution
-            </h1>
-            <p style="color: #64748b; font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.6; font-weight: 500;">
-                Track the continuous improvements, new features, and performance upgrades shaping the future of EDEETOS.
-            </p>
-        </div>
-    </header>
-
-    <section class="section-container" style="max-width: 900px; margin: 0 auto; padding-bottom: 4rem;">
-        
-        <div class="timeline-container">
-            <div class="timeline-line"></div>
-
-            <!-- === PAGE 1 === -->
-            <div id="page-1" class="changelog-page active">
-
-                <!-- OCTOBER 26 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">OCT</div>
-                        <div class="date-day">26</div>
-                        <div class="date-year">2026</div>
+        <!-- PAGE 1 (Max 3: 1 Full Width, 2 Columns) -->
+        <div id="page-1" class="changelog-page active">
+            <div class="bento-grid">
+                <div class="bento-card major-update">
+                    <div class="card-meta">
+                        <div class="version">v1.3.0 — Clinical Redesign & 19k Expansion</div>
+                        <div class="date-badge mono-text">NOV 2026</div>
                     </div>
-                    <div class="timeline-dot glow-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.2.2 - Advanced Group Study Upgrades</h2>
-                            <span class="tag tag-major"><i class="fas fa-users" style="margin-right: 4px;"></i> Feature Update</span>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Live Group Exams:</strong> Study groups can now launch full mock exams. Everyone gets an independently shuffled test, and a live leaderboard shows exactly who finished first and their scores.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Online Status Indicators:</strong> Members in a study room now have a colored dot next to their name. Green means they are online and active, while yellow means they have paused or disconnected.</li>
-                            <li><span class="badge badge-update">System</span><strong>Smart Skip for Offline Members:</strong> If someone loses connection or pauses their practice session, the system automatically recognizes they are offline and will no longer force the rest of the group to wait for their answer before revealing the correct option.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Sticky Member Banner:</strong> The top-left corner of the quiz now features a beautiful, sticky frosted-glass banner that instantly displays everyone's name and connection status.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Seamless Rejoining:</strong> Fixed an issue where the room host would accidentally lose their host privileges if they temporarily left or refreshed the page.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Accidental Room Deletion:</strong> Host users now have the choice to just "leave" the room to select new questions without accidentally kicking everyone out and destroying the active room.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Option Sizing Bug:</strong> Fixed an issue on smaller screens where excessively long multiple-choice options could push the "strikethrough" button off the edge of the card.</li>
-                        </ul>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>19,000 Question Bank:</strong> We added over 19,000 verified FCPS Part 1 MCQs. Every question is fully categorized by subject, chapter, difficulty, and past exam dates.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Clinical SaaS Design:</strong> We completely rebuilt the interface. All soft, blurry designs are gone. The platform now uses a strict, sharp grid that looks and feels like a professional medical instrument.</li>
+                        <li><span class="tag system mono-text">PERF</span><strong>Lightning Fast Loading:</strong> We changed how the database stores your study data. Even with 19,000 questions, your dashboard and subjects now load instantly without freezing your phone or browser.</li>
+                        <li><span class="tag system mono-text">PERF</span><strong>Instant Search:</strong> Searching for a specific topic or keyword is now instant. It runs entirely in your browser without waiting for a server response.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>High-Contrast Colors:</strong> We introduced a new Cobalt Blue (Light Mode) and Electric Lime (Dark Mode) color scheme to make reading and navigation crystal clear.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Better Reading Fonts:</strong> Medical cases are now displayed in a highly readable 'Inter' font, while test data and timers use a technical 'Courier New' font for precision.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Mechanical Buttons:</strong> Buttons now simulate a physical mechanical press when you click them, and dashboard cards smoothly track your mouse movement.</li>
+                    </ul>
+                </div>
+                
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.2.2 — Group Study Upgrades</div>
+                        <div class="date-badge mono-text">OCT 26, 2026</div>
                     </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Group Exams:</strong> Study groups can take mock exams together. Everyone gets shuffled questions, and a live board shows who finishes first and their scores.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Online Status:</strong> A green dot shows if a group member is online. Yellow means they disconnected or paused.</li>
+                        <li><span class="tag system mono-text">SYSTEM</span><strong>Smart Skip:</strong> If someone loses internet, the system stops waiting for them and lets the rest of the group continue.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Member Banner:</strong> The top-left corner now clearly shows who is in the room and if they are connected.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Rejoining:</strong> Room hosts no longer lose their controls if they refresh the page.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Room Deletion:</strong> Hosts can exit to pick new questions without accidentally closing the room for everyone.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Text Size:</strong> Fixed an issue where long text options broke the layout on small screens.</li>
+                    </ul>
                 </div>
 
-                <!-- OCTOBER 24 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">OCT</div>
-                        <div class="date-day">24</div>
-                        <div class="date-year">2026</div>
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.2.1 — Accuracy & Admin</div>
+                        <div class="date-badge mono-text">OCT 24, 2026</div>
                     </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.2.1 - System Accuracy & Admin Upgrades</h2>
-                            <span class="tag tag-major"><i class="fas fa-shield-alt" style="margin-right: 4px;"></i> System Update</span>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-fix">Fixed</span><strong>True Accuracy Math:</strong> Fixed a loophole where re-taking a missed question would erase the mistake and push your accuracy to 100%. Accuracy is now strictly calculated based on your very first try.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Cleaner Stats Design:</strong> The Past Papers screen now displays your Solved, Mistakes, and Accuracy scores in neat, color-coded badges instead of floating text.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Spaced Repetition:</strong> Fixed a bug that caused the Spaced Repetition engine to sometimes load unattempted questions or fail to launch the quiz when clicking a specific topic.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Ban Appeals System:</strong> Suspended students can now submit an appeal directly from the blocked screen. Admins can review the reason, unban the account, or reject the appeal with an automatic email notification.</li>
-                            <li><span class="badge badge-update">Admin</span><strong>Total Progress Wipe & Deletion:</strong> Admins now have the power to completely wipe a student's study progress to give them a fresh start, or permanently erase their account from the database entirely.</li>
-                            <li><span class="badge badge-update">Admin</span><strong>Clearer Payment Receipts:</strong> The payment approval screen now breaks down exactly how much the base price is, how much was saved through bundle discounts, and exactly how much the promo code deducted.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Manual Rewards:</strong> Admins can now manually grant milestone rewards to students directly from the dashboard if the student accidentally missed or skipped their reward popup.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Mobile Header Bug:</strong> The top navigation bar on the landing page will no longer stay stuck to the screen and block your view when scrolling on mobile phones.</li>
-                        </ul>
-                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag fix mono-text">FIX</span><strong>True Accuracy:</strong> Accuracy is calculated only on your first attempt. Retaking missed questions no longer fakes a 100% score.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Clearer Stats:</strong> Past papers show simple color badges for your correct, missed, and accuracy scores.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Revision Bug:</strong> Fixed an issue that stopped revision quizzes from loading properly.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Ban Appeals:</strong> Suspended users can appeal. Admins can unban or reject the appeal.</li>
+                        <li><span class="tag system mono-text">ADMIN</span><strong>Data Wipe:</strong> Admins can fully reset a student's progress or delete their account permanently.</li>
+                        <li><span class="tag system mono-text">ADMIN</span><strong>Payment Receipts:</strong> Receipts clearly break down base price, bundle discounts, and promo codes.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Manual Rewards:</strong> Admins can give rewards manually if a user missed their notification popup.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Mobile Menu:</strong> The top menu no longer blocks the screen when scrolling on mobile.</li>
+                    </ul>
                 </div>
-
-                <!-- OCTOBER 20 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">OCT</div>
-                        <div class="date-day">20</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.2.0 - Dark Glass & Performance Engine</h2>
-                            <span class="tag tag-major"><i class="fas fa-bolt" style="margin-right: 4px;"></i> Major Upgrade</span>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Dark Emerald Theme:</strong> We replaced all the old light backgrounds with a clean, dark obsidian and frosted glass design across the entire website to reduce eye strain.</li>
-                            <li><span class="badge badge-perf">Performance</span><strong>Massive Speed Boost:</strong> We completely changed how the website saves your study data. It will no longer freeze your browser or crash from storage limits, and the dashboard now loads instantly.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Mobile Layout Fixed:</strong> The quiz screen is now perfectly split into clear sections. Navigation buttons and popups will no longer overlap or block your view on mobile phones.</li>
-                            <li><span class="badge badge-update">System</span><strong>Stricter Exam Rules:</strong> When you skip a question in Exam Mode, it is now automatically moved to the very end of your test. You are also blocked from clicking ahead to bypass unanswered questions.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Smart Hints & Explanations:</strong> During Practice Mode, hints now appear exactly after 15 seconds. Explanations will only show up after you select the correct answer.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Synced Timers:</strong> The quiz timers are now perfectly synced into a single circular display, and pausing your exam works smoothly without glitches.</li>
-                            <li><span class="badge badge-update">Admin</span><strong>Admin Controls:</strong> Admins can now stay logged in across multiple devices at the same time, and database updates are saved instantly and securely in the background.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> <!-- End Page 1 -->
-
-            <!-- === PAGE 2 === -->
-            <div id="page-2" class="changelog-page">
-
-                <!-- SEPTEMBER 30 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">SEP</div>
-                        <div class="date-day">30</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.5 - UI Polish, Privacy & Bug Fixes</h2>
-                            <span class="tag tag-major"><i class="fas fa-wrench" style="margin-right: 4px;"></i> System Update</span>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-update">UI/UX</span><strong>Mobile Optimization:</strong> The Performance Report and Smart Training drill buttons now stack and display perfectly on mobile devices.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Topic Layout Fix:</strong> Long subject and chapter names will no longer push the "Start" button and question count badges out of alignment.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Filter Bar Alignment:</strong> Difficulty filters (Easy, Medium, Hard) and quick action buttons now align perfectly in a horizontal row on the dashboard.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Compact Quiz Navigation:</strong> Resized the question number grid inside quizzes to be more compact and visually balanced.</li>
-                            <li><span class="badge badge-update">UI/UX</span><strong>Dark Mode Colors:</strong> Restored semantic colors for difficulty tags and improved button contrast while in Dark Mode.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Quiz Theme Flashing:</strong> Fixed an issue where the quiz screen would briefly flash white before correctly applying Dark Mode.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Exam Mode Controls:</strong> Restored the Question Count setting for Practice Mode and properly hid instant "Start" buttons during Exam Mode to ensure strict timers are used.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Exam Mode Missing Topics:</strong> Fixed an issue where switching to Exam Mode would cause subjects to disappear if certain hidden filters were previously selected.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Past Papers Hierarchy:</strong> Past exams now correctly display their Chapters instead of jumping straight from Subjects to Topics.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Milestone Popup Loop:</strong> Milestone reward popups will now strictly appear only once when achieved, preventing repetitive popups on page reload.</li>
-                            <li><span class="badge badge-update">System</span><strong>Clearer Book Rewards:</strong> The milestone reward claim screen now explicitly shows the exact time duration (+1 Hour, +7 Days, etc.) you will receive for unlocking a book.</li>
-                            <li><span class="badge badge-security">Security</span><strong>Student Report Privacy:</strong> Students viewing their Performance Report can now only access analytics for their assigned course and books. Full database access remains restricted to Admins and Mentors.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Report Topic Mapping:</strong> Fixed a case-sensitivity issue that caused some topics in the Performance Report to incorrectly display as "Unknown." Missing topics will now clearly show as "Pending".</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- SEPTEMBER 29 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">SEP</div>
-                        <div class="date-day">29</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.4 - Active Recall & Admin God-Mode</h2>
-                            <span class="tag tag-major"><i class="fas fa-star" style="margin-right: 4px;"></i> Major Release</span>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Active Recall Flashcards:</strong> Practice any system with focused flashcard decks designed for quick revision and better memory retention.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Exam Date Countdown:</strong> During registration, students now set their target exam date. A live urgency counter is displayed directly on the dashboard so they always track remaining days.</li>
-                            <li><span class="badge badge-update">Admin</span><strong>Admin Panel:</strong> The admin panel has been completely redesigned. Admins now have direct management access.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- SEPTEMBER 28 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">SEP</div>
-                        <div class="date-day">28</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.3 - Dark Mode & Design Overhaul</h2>
-                            <span class="tag tag-major"><i class="fas fa-paint-brush" style="margin-right: 4px;"></i> UI Overhaul</span>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Dark Mode:</strong> You can now use EDEETOS in Dark Mode, making studying more comfortable in low-light environments.</li>
-                            <li><span class="badge badge-update">Design</span><strong>New Look:</strong> The website has been given a completely refreshed design with cleaner text, better colours, smoother animations, and a more modern appearance.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Claim Your Rewards Manually:</strong> Rewards are no longer shown through a popup that disappears. You now have a permanent "Claim Reward" button in the Journey section, so you can collect your reward whenever you're ready.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Notes Vault:</strong> Your saved notes now show the related question and clinical case directly above your notes, making revision easier.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Copying Text on Mobile:</strong> Fixed an issue where copying text could sometimes cause the quiz to crash on certain mobile browsers.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Offline Data Loading:</strong> Fixed an issue where bookmarks, mistakes, and notes might not load before a quiz started. Your saved study data should now be ready when you begin.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> <!-- End Page 2 -->
-
-            <!-- === PAGE 3 === -->
-            <div id="page-3" class="changelog-page">
-
-                <!-- SEPTEMBER 27 UPDATE v1.1.3 -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">SEP</div>
-                        <div class="date-day">27</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.3 - Challenge a Friend & Mock Exams</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Challenge a Friend:</strong> After finishing an exam, you can now create a 5-letter challenge code. Share the code with a friend and challenge them to take the same exam and compare your performance.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Quick Mock Exams:</strong> You can now create a mock exam directly from the search bar. EDEETOS will automatically select a custom mix of questions you have not attempted yet and add a timer.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Better Performance Charts:</strong> Your Performance Report now includes interactive graphs so you can easily see how your exam scores change over time.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Review Your Mistakes:</strong> After finishing an exam, you can now press "Review Mistakes" to start a practice session containing only the questions you got wrong.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Search and Practice:</strong> Search for any topic or keyword and quickly turn the results into a 50-question practice session.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Exam Stress Timer:</strong> When less than 5 minutes remain in an exam, the timer now turns red and starts pulsing to create a more realistic exam-pressure experience.</li>
-                            <li><span class="badge badge-perf">Performance</span><strong>Faster Question Loading:</strong> EDEETOS can now handle very large question banks much more reliably. This helps prevent mobile browsers from crashing when working with 10,000+ questions.</li>
-                            <li><span class="badge badge-security">Security</span><strong>Offline Access Protection:</strong> If an account is banned, its saved offline study data is automatically removed from the device to prevent continued unauthorized access.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- SEPTEMBER 27 UPDATE v1.1.2 -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">SEP</div>
-                        <div class="date-day">27</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.2 - Better Tracking & Session Pausing</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">Content</span><strong>Huge FCPS Question Bank Expansion:</strong> The FCPS question bank has increased from 7,350 to <strong>13,102</strong> high-yield questions.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Pause During Exams:</strong> You can now properly pause an exam. The timer stops and the question is hidden while you take a break.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Your Eliminated Options Are Saved:</strong> When you cross out an option and move to another question, your crossed-out choices are remembered when you come back.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Average Time Per Question:</strong> Recent Exams now shows how much time you spent on each question on average.</li>
-                            <li><span class="badge badge-perf">Performance</span><strong>Faster Analytics and Chat:</strong> Large amounts of study data can now be processed more efficiently, and Mentor Chat has been improved so new messages appear without the screen repeatedly flashing.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>More Accurate Statistics:</strong> Fixed several issues that could give incorrect study statistics, including unattempted questions affecting revision, unanswered questions at exam timeout, and corrected answers being counted incorrectly on a second attempt.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Session Safety:</strong> Fixed issues with Mentor assignments, saving an exam halfway through, and Ghost study rooms when the host closes the browser.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- SEPTEMBER 13 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">SEP</div>
-                        <div class="date-day">13</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.1 - FCPS Expansion & History</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">Content</span><strong>FCPS Question Bank Expanded:</strong> The main FCPS question bank has been expanded and verified to contain <strong>7,350</strong> high-yield questions.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Past Exam History:</strong> In Practice Mode, you can now see which past exams and years a question appeared in before. These details remain hidden during Exam Mode.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Past Paper Organization:</strong> Questions that appeared in multiple years are now placed correctly under all relevant past-paper years without creating duplicate questions in the main Subject or System sections.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> <!-- End Page 3 -->
-
-            <!-- === PAGE 4 === -->
-            <div id="page-4" class="changelog-page">
-
-                <!-- JULY 14 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">14</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.1.0 - Rewards & Account Recovery</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Instant Book Rewards:</strong> When you unlock a book as a milestone reward, it is now added to your account immediately without waiting for an admin.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Smarter Reward Choices:</strong> The reward screen now checks what you already own and hides books or courses you already have lifetime access to.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Forgot Password:</strong> You can now reset your password directly from the login page using your email.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Correct Milestone Counting:</strong> Fixed the way flawless answers are counted so milestone rewards are triggered correctly.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>False Session Warnings:</strong> Fixed an issue where leaving a quiz normally could incorrectly show an "unexpected session ended" warning the next time you visited.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- JULY 12 UPDATE v1.0.9 -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">12</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.9 - Journey Rewards</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Journey Rewards:</strong> Your Trophy progress can now unlock Premium Subscription time when you reach certain milestones by answering questions without making mistakes. Rewards can reach up to 3 weeks.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Milestone Notifications:</strong> When you reach a flawless-answer milestone, EDEETOS now shows your unlocked reward and achievement.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Mentor Session Setup:</strong> Fixed an issue where creating a Mentor Practice Session could incorrectly ask for an exam time limit.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- JULY 12 UPDATE v1.0.8 -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">12</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.8 - Clinical Tools & Lab Values</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Highlight and Cross Out Text:</strong> You can now highlight important parts of a clinical case and cross out distracting information while solving questions.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Better Time Tracking:</strong> EDEETOS now keeps track of both your total session time and the time spent on each individual question.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Better Hints:</strong> Hints are now specific to the question instead of being generic. A useful clue can appear after 15 seconds.</li>
-                            <li><span class="badge badge-feature">Content</span><strong>Clinical Lab Reference:</strong> A complete FCPS/MRCS-level reference for CBC, LFTs, ABGs, electrolytes, and other common laboratory values is now available directly during quizzes.</li>
-                            <li><span class="badge badge-security">Security</span><strong>Admin Access Improved:</strong> Admin users can now copy text and take screenshots when needed for administrative work, while these actions remain restricted for students during quizzes.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> <!-- End Page 4 -->
-
-            <!-- === PAGE 5 === -->
-            <div id="page-5" class="changelog-page">
-
-                <!-- JULY 10 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">10</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.7 - Smart Training & Security</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Smart Training Hub:</strong> EDEETOS can now identify your strengths and weaknesses and lets you start focused quizzes based on your performance.</li>
-                            <li><span class="badge badge-security">Security</span><strong>Quiz Content Protection:</strong> Copying, selecting text, right-clicking, and screenshot attempts are now restricted during student quizzes to protect the question bank.</li>
-                            <li><span class="badge badge-update">Admin</span><strong>Improved Admin Dashboard:</strong> The admin database screen has been redesigned so it works better on mobile devices.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- JULY 9 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">09</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.6 - Spaced Repetition Organization</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-update">Design</span><strong>Better Revision List:</strong> Questions due for revision are now grouped by day inside expandable sections, making your revision list easier to understand.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Mobile Screen Issue:</strong> Fixed an issue where the exam cart could cover the bottom row of subjects on mobile phones.</li>
-                            <li><span class="badge badge-update">Design</span><strong>Cleaner Practice Mode:</strong> When Practice Mode is selected, exam-only settings such as the timer and question-count controls are now hidden to keep the screen simple.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- JULY 8 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">08</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.5 - Improved UI & New Books</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Start Quizzes Directly:</strong> You can now start a quiz directly from a Chapter or Topic without first adding it to the cart.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Select Whole Chapters:</strong> You can now select an entire chapter at once instead of choosing each topic separately.</li>
-                            <li><span class="badge badge-perf">Performance</span><strong>Better Search:</strong> The search bar is now smoother while typing, and question previews in the search results now load correctly.</li>
-                            <li><span class="badge badge-feature">Content</span><strong>More Study Material:</strong> Added First Aid Step 2, Irfan Masood Pathology, and Irfan Masood Pediatrics to the library.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> <!-- End Page 5 -->
-            
-            <!-- === PAGE 6 === -->
-            <div id="page-6" class="changelog-page">
-            
-                <!-- JULY 7 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">07</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.4 - Study Cart Engine</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-perf">Performance</span><strong>Faster Loading:</strong> Books and large question banks now load only when you need them, making the dashboard load much faster.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Study Cart:</strong> Practice and Exam modes now use the same selection cart, allowing you to choose topics from multiple subjects together.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Book Access Status:</strong> Books in the library now clearly show whether they are available through your current subscription.</li>
-                            <li><span class="badge badge-fix">Fixed</span>Fixed an issue where changing between Practice and Exam modes inside a book could remove your selected topics.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- JULY 6 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">06</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.3 - Course Control & Promo Codes</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Course Change Requests:</strong> Students can now request an admin to change their assigned exam course directly from the Profile section.</li>
-                            <li><span class="badge badge-update">System</span><strong>Book Bundle Discounts:</strong> Buying multiple books together now automatically applies the available 10%, 20%, or 30% discount.</li>
-                            <li><span class="badge badge-security">Security</span><strong>Premium Study Room Protection:</strong> Free users can no longer use room codes to bypass Premium access and join Premium study sessions.</li>
-                            <li><span class="badge badge-feature">New</span><strong>Book Access Codes:</strong> Admins can now create redeem codes that give access to individual books as well as full courses.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- JULY 5 UPDATE -->
-                <div class="timeline-row animate-on-scroll">
-                    <div class="timeline-date-box">
-                        <div class="date-month">JUL</div>
-                        <div class="date-day">05</div>
-                        <div class="date-year">2026</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="card-header">
-                            <h2>v1.0.2 - Initial Core Fixes</h2>
-                        </div>
-                        <ul class="update-list">
-                            <li><span class="badge badge-feature">New</span><strong>Course-Specific Question Banks:</strong> Your Question Bank now only shows the course assigned to your account, reducing the chance of opening the wrong exam material.</li>
-                            <li><span class="badge badge-update">Design</span><strong>Simpler Registration:</strong> Removed unnecessary registration questions and replaced them with one simple "Access Course" selection.</li>
-                            <li><span class="badge badge-fix">Fixed</span><strong>Incorrect Course Access:</strong> Fixed an issue where some older accounts without an assigned course were automatically sent to the FCPS Part 1 question bank.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> <!-- End Page 6 -->
-
-        </div> <!-- End Timeline Container -->
-
-        <!-- PAGINATION CONTROLS -->
-        <div class="pagination-wrapper animate-on-scroll">
-            <div class="pagination">
-                <button class="page-btn active" onclick="window.changePage(1)">1</button>
-                <button class="page-btn" onclick="window.changePage(2)">2</button>
-                <button class="page-btn" onclick="window.changePage(3)">3</button>
-                <button class="page-btn" onclick="window.changePage(4)">4</button>
-                <button class="page-btn" onclick="window.changePage(5)">5</button>
-                <button class="page-btn" onclick="window.changePage(6)">6</button>
             </div>
         </div>
 
-    </section>
+        <!-- PAGE 2 (Max 4: 2 Columns) -->
+        <div id="page-2" class="changelog-page">
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.2.0 — Dark Mode & Speed</div>
+                        <div class="date-badge mono-text">OCT 20, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Dark Theme:</strong> Added a dark interface across the platform to reduce eye strain.</li>
+                        <li><span class="tag system mono-text">PERF</span><strong>Speed Boost:</strong> Saved study data loads instantly without crashing the browser.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Mobile Layout:</strong> Quiz screen is organized better on mobile. Menus and popups no longer overlap.</li>
+                        <li><span class="tag system mono-text">SYSTEM</span><strong>Strict Rules:</strong> Skipped exam questions move to the end. You cannot click ahead without answering.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Smart Hints:</strong> Hints appear after 15 seconds. Explanations only appear after selecting the right answer.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Synced Timers:</strong> Timers are combined into one display. Pausing works correctly.</li>
+                        <li><span class="tag system mono-text">ADMIN</span><strong>Admin Controls:</strong> Admins stay logged in across devices with instant background saves.</li>
+                    </ul>
+                </div>
+                
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.5 — UI & Privacy</div>
+                        <div class="date-badge mono-text">SEP 30, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag system mono-text">UI</span><strong>Mobile Buttons:</strong> Drill and report buttons now stack properly on phones.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Layout Fix:</strong> Long text no longer pushes the start buttons out of place.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Filters:</strong> Difficulty filters align perfectly in a row.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Quiz Grid:</strong> The question number grid is smaller and cleaner.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Dark Mode Colors:</strong> Fixed button and tag colors in Dark Mode for better reading.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Screen Flash:</strong> Stopped the screen from flashing white before loading Dark Mode.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Exam Buttons:</strong> Hid instant start buttons in Exam Mode to enforce strict timers.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Missing Topics:</strong> Fixed a bug where switching to Exam Mode hid subjects.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Past Papers:</strong> Past exams show chapters instead of jumping straight to topics.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Popup Loop:</strong> Reward popups only show once.</li>
+                        <li><span class="tag system mono-text">SYSTEM</span><strong>Book Rewards:</strong> The claim screen shows exactly how long you get access to a book.</li>
+                        <li><span class="tag security mono-text">SECURITY</span><strong>Report Privacy:</strong> Students can only see their own stats. Database access is restricted.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Topic Errors:</strong> Fixed text cases causing topics to show as "Unknown".</li>
+                    </ul>
+                </div>
 
-    <footer class="changelog-footer">
-        <div class="footer-content">
-            <p>
-                &copy; 2026 EDEETOS. All rights reserved. <br>
-                <a href="changelog.html">Changelog</a> |
-                <a href="privacy.html">Privacy Policy</a> |
-                <a href="terms.html">Terms of Service</a>
-            </p>
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.4 — Flashcards & Timers</div>
+                        <div class="date-badge mono-text">SEP 29, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Flashcards:</strong> Added active recall flashcards for fast memory revision.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Exam Countdown:</strong> Set your target exam date to see a live countdown on your dashboard.</li>
+                        <li><span class="tag system mono-text">ADMIN</span><strong>Admin Panel:</strong> Completely rebuilt the admin panel for direct management.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.3 — Notes & Fixes</div>
+                        <div class="date-badge mono-text">SEP 28, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Manual Rewards:</strong> Claim rewards via a permanent button instead of a disappearing popup.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Notes Vault:</strong> Saved notes now display the original question and case above your text.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Copy Crash:</strong> Fixed mobile browsers crashing when copying text.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Offline Data:</strong> Fixed saved data not loading before starting a quiz.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </footer>
+
+        <!-- PAGE 3 (Max 4: 2 Columns) -->
+        <div id="page-3" class="changelog-page">
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.3 — Challenges & Mocks</div>
+                        <div class="date-badge mono-text">SEP 27, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Challenge a Friend:</strong> Generate a 5-letter code to challenge friends to take the exact same exam.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Quick Mocks:</strong> Create timed mock exams directly from the search bar using unattempted questions.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Charts:</strong> Performance reports now include graphs to track score changes over time.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Review Mistakes:</strong> Press one button to start a session containing only the questions you got wrong.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Search Practice:</strong> Turn any search keyword into a 50-question practice run.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Stress Timer:</strong> The timer turns red and pulses when less than 5 minutes remain.</li>
+                        <li><span class="tag system mono-text">PERF</span><strong>Question Loading:</strong> Better handling for massive question banks to prevent mobile crashing.</li>
+                        <li><span class="tag security mono-text">SECURITY</span><strong>Data Protection:</strong> Banned accounts lose access to offline study data automatically.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.2 — Tracking & Content</div>
+                        <div class="date-badge mono-text">SEP 27, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Bank Expansion:</strong> FCPS question bank increased to 13,102 questions.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Pause Exam:</strong> You can pause tests. The timer stops and questions hide.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Saved Cross-Outs:</strong> Eliminated choices remain crossed out if you navigate away and return.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Time Average:</strong> Past exams show your average time spent per question.</li>
+                        <li><span class="tag system mono-text">PERF</span><strong>Chat Speed:</strong> Mentor chat messages load without flashing the screen.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Statistics:</strong> Fixed bugs causing inaccurate stats, like counting unattempted questions incorrectly.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Session Safety:</strong> Fixed mentor assignment issues and ghost rooms staying open.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.1 — History Context</div>
+                        <div class="date-badge mono-text">SEP 13, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Bank Update:</strong> FCPS bank hit 7,350 verified questions.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Exam History:</strong> Practice mode now shows which past exams a question appeared in.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Paper Organization:</strong> Questions from multiple years organize properly without duplicates.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.1.0 — Rewards & Recovery</div>
+                        <div class="date-badge mono-text">JUL 14, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Instant Rewards:</strong> Unlocked book rewards are added instantly without admin approval.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Smart Choices:</strong> The reward screen hides books you already have lifetime access to.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Password Reset:</strong> Reset forgotten passwords from the login screen.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Milestone Counting:</strong> Flawless answers are counted accurately for rewards.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Session Errors:</strong> Stopped false "unexpected session ended" warnings after normal exits.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4 (Max 4: 2 Columns) -->
+        <div id="page-4" class="changelog-page">
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.9 — Journey Perks</div>
+                        <div class="date-badge mono-text">JUL 12, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Journey Rewards:</strong> Answering questions flawlessly earns up to 3 weeks of Premium time.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Notifications:</strong> The system tells you immediately when you unlock an achievement.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Mentor Prep:</strong> Mentor practice sessions no longer incorrectly demand time limits.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.8 — Clinical Tools</div>
+                        <div class="date-badge mono-text">JUL 12, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Highlighter:</strong> Highlight important clinical text and cross out distractions.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Time Tracking:</strong> Track both overall session time and time spent on specific questions.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Targeted Hints:</strong> Hints are specific to the question.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Lab Values:</strong> Access standard CBC, LFT, and ABG lab references during a quiz.</li>
+                        <li><span class="tag security mono-text">SECURITY</span><strong>Admin Copying:</strong> Admins can copy text for support issues, but students cannot.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.7 — Smart Training</div>
+                        <div class="date-badge mono-text">JUL 10, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Smart Hub:</strong> Identify weaknesses and launch targeted quizzes automatically.</li>
+                        <li><span class="tag security mono-text">SECURITY</span><strong>Content Protection:</strong> Copying, right-clicking, and highlighting are blocked during student exams.</li>
+                        <li><span class="tag system mono-text">ADMIN</span><strong>Dashboard Upgrade:</strong> The database screen works smoothly on mobile.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.6 — Spaced Repetition</div>
+                        <div class="date-badge mono-text">JUL 09, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag system mono-text">UI</span><strong>Revision List:</strong> Due questions are grouped by day in clear, expandable lists.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Mobile Cart:</strong> Fixed exam cart blocking bottom subjects on mobile.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Practice Cleaner:</strong> Timer and exam settings are hidden in Practice Mode to clear clutter.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5 (Max 4: 2 Columns) -->
+        <div id="page-5" class="changelog-page">
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.5 — UX & Books</div>
+                        <div class="date-badge mono-text">JUL 08, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Direct Start:</strong> Launch quizzes straight from a topic without using the cart.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Chapter Select:</strong> Add an entire chapter to your test at once.</li>
+                        <li><span class="tag system mono-text">PERF</span><strong>Better Search:</strong> Search loads faster and question previews display correctly.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>More Content:</strong> Added First Aid Step 2, Irfan Masood Pathology, and Pediatrics.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.4 — Study Cart Engine</div>
+                        <div class="date-badge mono-text">JUL 07, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag system mono-text">PERF</span><strong>Faster Loading:</strong> Heavy question banks only load when requested. Dashboard speed increased.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Study Cart:</strong> Cart handles both practice and exam modes across multiple subjects.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Access Status:</strong> Books clearly display if they are covered by your current subscription.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Mode Switching:</strong> Topics stay selected when switching between Practice and Exam modes.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.3 — Course Control</div>
+                        <div class="date-badge mono-text">JUL 06, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Course Change:</strong> Request an assigned course change from your profile.</li>
+                        <li><span class="tag system mono-text">SYSTEM</span><strong>Bundle Discounts:</strong> Buying multiple books applies 10-30% discounts automatically.</li>
+                        <li><span class="tag security mono-text">SECURITY</span><strong>Room Protection:</strong> Free accounts cannot bypass premium blocks using room codes.</li>
+                        <li><span class="tag feature mono-text">NEW</span><strong>Redeem Codes:</strong> Admins can generate access codes for individual books.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-meta">
+                        <div class="version">v1.0.2 — Initial Fixes</div>
+                        <div class="date-badge mono-text">JUL 05, 2026</div>
+                    </div>
+                    <ul class="update-list">
+                        <li><span class="tag feature mono-text">NEW</span><strong>Specific Banks:</strong> Your view is locked to your assigned course to prevent accessing the wrong material.</li>
+                        <li><span class="tag system mono-text">UI</span><strong>Simple Registration:</strong> Trimmed down registration forms to just basic course selection.</li>
+                        <li><span class="tag fix mono-text">FIX</span><strong>Access Routing:</strong> Older accounts are routed to the correct material instead of defaulting to FCPS Part 1.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="btn-solid active page-btn" onclick="window.changePage(1)">1</button>
+            <button class="btn-solid page-btn" onclick="window.changePage(2)">2</button>
+            <button class="btn-solid page-btn" onclick="window.changePage(3)">3</button>
+            <button class="btn-solid page-btn" onclick="window.changePage(4)">4</button>
+            <button class="btn-solid page-btn" onclick="window.changePage(5)">5</button>
+        </div>
+    </div>
 
     <script src="changelog.js"></script>
-
 </body>
 </html>

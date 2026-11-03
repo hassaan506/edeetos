@@ -182,6 +182,10 @@ html.dark-mode .text-blue { color: var(--accent); }
 .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 .action-grid button { width: 100%; padding: 0.6rem; font-size: 0.9rem;}
 
+.spaced-rep-bento {
+    grid-column: 1 / -1;
+}
+
 /* ========================================== */
 /* --- 6. UNIFIED CONTROL BAR (SEARCH & FILTERS) --- */
 /* ========================================== */

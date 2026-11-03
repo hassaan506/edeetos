@@ -166,7 +166,7 @@
     <div id="assigned-tasks-modal" class="popup-overlay view-hidden z-9000">
         <div class="glass-panel popup-content text-left" style="max-width: 550px;">
             <div class="flex-between mb-1 modal-section-title">
-                <h3 class="m-0"><i class="fas fa-clipboard-check" style="color: var(--primary-ui);"></i> Assigned Tasks</h3>
+                <div class="m-0" style="font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 900;"><i class="fas fa-clipboard-check" style="color: var(--primary-ui);"></i> Assigned Tasks</div>
                 <button id="close-tasks-modal" class="btn-close-corner" style="position:relative; top:0; right:0;">&times;</button>
             </div>
             <div id="task-list-container" class="notes-list-container"></div>
@@ -391,17 +391,17 @@
         <i class="fa-solid fa-message text-primary"></i> <span>New chat request from a student. Click to open.</span>
     </div>
 
-    <!-- === HTML TEMPLATES (HIDDEN) === -->
+<!-- === HTML TEMPLATES (HIDDEN) === -->
     <template id="task-notify-template">
-        <div class="task-notify-card glass-panel">
+        <div class="task-notify-card glass-panel w-100">
             <div class="flex-align-center gap-15px">
-                <div class="icon"><i class="fas fa-bell text-primary" style="font-size:1.5rem;"></i></div>
+                <div class="notify-icon-box"><i class="fas fa-bell text-primary"></i></div>
                 <div>
-                    <h3 class="m-0 mb-05" style="font-size:1.1rem; color: var(--text-primary); font-weight: 800;">New Task Assigned</h3>
-                    <p class="m-0 text-muted" style="font-family: 'Courier New', monospace; font-size:0.85rem; font-weight: 800;">You have <span class="task-count"></span> pending assignments.</p>
+                    <h3 class="m-0 mb-05 font-bold text-primary" style="font-size:1.1rem; letter-spacing: -0.02em;">New Task Assigned</h3>
+                    <p class="m-0 text-muted font-bold font-sm" style="font-family: 'Courier New', monospace;">You have <span class="task-count"></span> pending assignments.</p>
                 </div>
             </div>
-            <button class="action-btn next-btn p-1">View</button>
+            <button class="action-btn next-btn font-bold p-1">View Task</button>
         </div>
     </template>
 

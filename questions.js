@@ -2743,22 +2743,26 @@ if (window.updateDashboardUI) window.updateDashboardUI();
         groupedByDay[item.step].push(item);
     });
     const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
-    const revisionContainer = document.getElementById('spaced-repetition-container');
+const revisionContainer = document.getElementById('spaced-repetition-container');
     const revisionModal = document.getElementById('revision-popup-modal');
 
-    if (dueTopics.length > 0 && revisionContainer) {
+    if (revisionContainer) revisionContainer.innerHTML = '';
+
+if (dueTopics.length > 0 && revisionContainer) {
         const revisionCard = document.createElement('div');
-        revisionCard.className = 'glass-panel feature-card card-pointer';
-        revisionCard.style.borderColor = 'rgba(245, 158, 11, 0.4)'; revisionCard.style.background = 'rgba(245, 158, 11, 0.1)'; revisionCard.style.padding = '20px'; revisionCard.style.gridColumn = '1 / -1'; revisionCard.style.marginBottom = '20px'; revisionCard.style.flexDirection = 'row'; revisionCard.style.justifyContent = 'space-between'; revisionCard.style.alignItems = 'center';
+        revisionCard.className = 'glass-panel feature-card card-pointer rev-bento-card';
+        // Removed hardcoded light-mode-breaking backgrounds, relying on CSS vars and strict borders
+        revisionCard.style.width = '100%'; revisionCard.style.marginBottom = '20px'; revisionCard.style.flexDirection = 'row'; revisionCard.style.justifyContent = 'space-between'; revisionCard.style.alignItems = 'center'; revisionCard.style.padding = '1.5rem 2rem'; revisionCard.style.borderLeft = '4px solid var(--warning)';
         
         const infoDiv = document.createElement('div');
-        const h3 = document.createElement('h3'); h3.className = 'card-title'; h3.style.color = '#fde68a'; h3.style.margin = '0 0 5px 0';
-        const h3I = document.createElement('i'); h3I.className = 'fas fa-sync-alt'; h3I.style.color = '#f59e0b'; h3I.style.marginRight = '8px';
+        const h3 = document.createElement('h3'); h3.className = 'card-title'; h3.style.color = 'var(--text-main)'; h3.style.margin = '0 0 5px 0'; h3.style.fontWeight = '900'; h3.style.fontSize = '1.25rem';
+        const h3I = document.createElement('i'); h3I.className = 'fas fa-sync-alt'; h3I.style.color = 'var(--warning)'; h3I.style.marginRight = '10px';
         h3.appendChild(h3I); h3.appendChild(document.createTextNode(' Due for Revision'));
-        const pDesc = document.createElement('p'); pDesc.style.color = '#fcd34d'; pDesc.style.fontSize = '0.85rem'; pDesc.style.margin = '0'; pDesc.textContent = `You have ${dueTopics.length} topics ready for spaced repetition.`;
+        
+        const pDesc = document.createElement('p'); pDesc.style.color = 'var(--text-muted)'; pDesc.style.fontSize = '0.95rem'; pDesc.style.margin = '0'; pDesc.style.fontWeight = '600'; pDesc.textContent = `You have ${dueTopics.length} topics ready for spaced repetition.`;
         infoDiv.appendChild(h3); infoDiv.appendChild(pDesc);
         
-        const btnView = document.createElement('button'); btnView.className = 'action-btn btn-filled-amber'; btnView.textContent = 'View Plan';
+        const btnView = document.createElement('button'); btnView.className = 'btn-solid btn-filled-amber'; btnView.textContent = 'View Plan';
         revisionCard.appendChild(infoDiv); revisionCard.appendChild(btnView);
 
         if (revisionModal) {
