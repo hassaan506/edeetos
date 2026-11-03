@@ -84,10 +84,10 @@ function setupMentorView() {
 
 function updateStatusBtn(isOnline) {
     if (isOnline) {
-        toggleStatusBtn.textContent = "Status: Online (Click to Offline)";
+        toggleStatusBtn.textContent = "You are Online (Click to go Offline)";
         toggleStatusBtn.classList.add('btn-danger');
     } else {
-        toggleStatusBtn.textContent = "Status: Offline (Click to Online)";
+        toggleStatusBtn.textContent = "You are Offline (Click to go Online)";
         toggleStatusBtn.classList.remove('btn-danger');
     }
 }
@@ -98,7 +98,7 @@ function listenForRequestsAndMessages() {
     requestUnsubscribe = onSnapshot(q, (snapshot) => {
         requestsList.innerHTML = ''; 
         if (snapshot.empty) {
-            requestsList.innerHTML = '<span class="mono-label" style="text-align: center; display: block; width: 100%;">No active requests found.</span>';
+            requestsList.innerHTML = '<span class="mono-label" style="text-align: center; display: block; width: 100%;">No pending requests.</span>';
             return;
         }
 
@@ -112,10 +112,10 @@ function listenForRequestsAndMessages() {
             card.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div class="mono-label">${data.type === 'live' ? 'LIVE REQUEST' : 'OFFLINE LOG'}</div>
-                        <div style="font-size: 1.1rem; font-weight: bold; margin-top: 0.25rem;">ID: ${data.studentName}</div>
+                        <div class="mono-label">${data.type === 'live' ? 'LIVE REQUEST' : 'OFFLINE MESSAGE'}</div>
+                        <div style="font-size: 1.1rem; font-weight: bold; margin-top: 0.25rem;">${data.studentName}</div>
                     </div>
-                    <button class="btn-solid btn-accept">Access</button>
+                    <button class="btn-solid btn-accept">Open</button>
                 </div>
             `;
             
@@ -149,11 +149,11 @@ async function setupStudentView() {
     fetchMentors();
 }
 
-async function fetchMentors() {
-    try {
-        const q = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]));
-        const snapshot = await getDocs(q);
-        
+// FIXED: Now uses onSnapshot so mentor list updates in real-time
+function fetchMentors() {
+    const q = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]));
+    
+    onSnapshot(q, (snapshot) => {
         onlineMentorsList.innerHTML = '';
         offlineMentorsList.innerHTML = '';
 
@@ -173,11 +173,11 @@ async function fetchMentors() {
                 <div style="flex-grow: 1;">
                     <div style="font-weight: 800; font-size: 1.1rem; display: flex; align-items: center;">
                         <span class="status-indicator ${isOnline ? 'status-online' : 'status-offline'}"></span>
-                        ${mentor.fullName || 'Verified ID'}
+                        ${mentor.fullName || 'Verified Mentor'}
                     </div>
                 </div>
                 <button class="btn-solid" style="padding: 0.5rem 1rem;">
-                    ${isOnline ? 'Connect' : 'Leave Log'}
+                    ${isOnline ? 'Live Chat' : 'Leave Message'}
                 </button>
             `;
             
@@ -185,12 +185,12 @@ async function fetchMentors() {
             targetList.appendChild(card);
         });
 
-        if (onlineMentorsList.innerHTML === '') onlineMentorsList.innerHTML = '<span class="mono-label">No active personnel found.</span>';
-        if (offlineMentorsList.innerHTML === '') offlineMentorsList.innerHTML = '<span class="mono-label">No offline personnel found.</span>';
+        if (onlineMentorsList.innerHTML === '') onlineMentorsList.innerHTML = '<span class="mono-label">No mentors online.</span>';
+        if (offlineMentorsList.innerHTML === '') offlineMentorsList.innerHTML = '<span class="mono-label">No offline mentors.</span>';
 
-    } catch (error) {
-        console.error("Error fetching personnel:", error);
-    }
+    }, (error) => {
+        console.error("Error fetching mentors:", error);
+    });
 }
 
 async function initiateChat(mentorId, mentorName, isOnline) {
@@ -211,8 +211,8 @@ async function initiateChat(mentorId, mentorName, isOnline) {
         studentView.style.display = 'none';
         openChat(chatRef.id, mentorName, type);
     } catch (error) {
-        console.error("Error creating connection:", error);
-        alert("Connection failed. Retry.");
+        console.error("Error starting chat:", error);
+        alert("Failed to start chat. Please try again.");
     }
 }
 
@@ -221,13 +221,13 @@ async function initiateChat(mentorId, mentorName, isOnline) {
 // ==========================================
 function openChat(chatId, partnerName, type) {
     currentChatId = chatId;
-    chatPartnerName.textContent = `ID: ${partnerName}`;
+    chatPartnerName.textContent = partnerName;
     
     if (type === 'live') {
-        chatTypeBadge.innerHTML = 'STATUS: LIVE CONNECTION';
+        chatTypeBadge.innerHTML = 'Live Session';
         chatTypeBadge.style.color = 'var(--status-success)';
     } else {
-        chatTypeBadge.innerHTML = 'STATUS: OFFLINE LOG';
+        chatTypeBadge.innerHTML = 'Offline Message (Replies may be delayed)';
         chatTypeBadge.style.color = 'var(--accent)';
     }
 
@@ -249,10 +249,11 @@ function openChat(chatId, partnerName, type) {
                 const msgDiv = document.createElement('div');
                 msgDiv.className = `msg-log ${isMe ? 'msg-sent' : 'msg-received'}`;
                 
-                const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString() : new Date().toLocaleTimeString();
-                
+                const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                const senderName = isMe ? 'You' : partnerName;
+
                 msgDiv.innerHTML = `
-                    <span class="msg-sender">[${timeString}] ${isMe ? 'LOCAL' : 'REMOTE'}:</span>
+                    <span class="msg-sender">[${timeString}] ${senderName}:</span>
                     <div class="msg-text">${msg.text}</div>
                 `;
                 chatMessages.appendChild(msgDiv);
@@ -263,7 +264,7 @@ function openChat(chatId, partnerName, type) {
 
     onSnapshot(doc(db, "chats", chatId), (docSnap) => {
         if (!docSnap.exists()) {
-            alert("Connection terminated by remote user.");
+            alert("This chat was ended by the other person.");
             window.location.reload();
         }
     });
@@ -282,16 +283,20 @@ chatForm.addEventListener('submit', async (e) => {
     });
 });
 
-// Ephemeral Logic
+// FIXED: Clearer logic for ending and downloading chat
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
-    if (!confirm("Terminate session and wipe logs? This action is irreversible.")) return;
+    if (!confirm("Are you sure you want to end this chat? All messages will be permanently deleted.")) {
+        return; // User clicked Cancel, do nothing
+    }
     
-    if (confirm("Export log data before termination?")) {
+    // User agreed to delete. Now ask if they want a copy first.
+    if (confirm("Do you want to download a copy of this chat before it is deleted?")) {
         downloadTranscript();
     }
     
+    // Delete the chat regardless of whether they downloaded it
     try {
         const messagesRef = collection(db, "chats", currentChatId, "messages");
         const snapshot = await getDocs(messagesRef);
@@ -300,26 +305,25 @@ btnEndChat.addEventListener('click', async () => {
         }
         await deleteDoc(doc(db, "chats", currentChatId));
     } catch(e) {
-        console.error("Data wipe failed:", e);
+        console.error("Failed to delete chat:", e);
     }
     
     window.location.reload();
 });
 
 function downloadTranscript() {
-    let transcriptText = "=== CLINICAL SYSTEM EXPORT ===\n";
-    const pName = chatPartnerName.textContent.replace('ID: ', '');
-    transcriptText += `LOCAL: ${currentUserData.fullName}\nREMOTE: ${pName}\nTIMESTAMP: ${new Date().toISOString()}\n\n`;
+    let transcriptText = "=== EDEETOS CHAT TRANSCRIPT ===\n";
+    transcriptText += `Date: ${new Date().toLocaleString()}\n\n`;
     
     localMessages.forEach((msg) => {
-        const sender = msg.senderId === currentUser.uid ? "LOCAL" : "REMOTE";
+        const sender = msg.senderId === currentUser.uid ? "You" : chatPartnerName.textContent;
         transcriptText += `[${sender}]: ${msg.text}\n`;
     });
 
     const blob = new Blob([transcriptText], { type: "text/plain" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `system_log_${new Date().getTime()}.txt`;
+    a.download = `Edeetos_Chat_${new Date().getTime()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
