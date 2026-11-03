@@ -29,6 +29,19 @@ const btnEndChat = document.getElementById('btn-end-chat');
 const toggleStatusBtn = document.getElementById('toggle-status-btn');
 
 // ==========================================
+// 0. BENTO CARD MOUSE TRACKING
+// ==========================================
+document.addEventListener("mousemove", (e) => {
+    document.querySelectorAll(".bento-card").forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+    });
+});
+
+// ==========================================
 // 1. INIT & ROUTING
 // ==========================================
 onAuthStateChanged(auth, async (user) => {
@@ -57,7 +70,6 @@ function setupMentorView() {
     studentView.style.display = 'none';
     mentorView.style.display = 'block';
     
-    // Update button based on current DB status
     updateStatusBtn(currentUserData.isOnline || false);
 
     toggleStatusBtn.onclick = async () => {
@@ -72,13 +84,11 @@ function setupMentorView() {
 
 function updateStatusBtn(isOnline) {
     if (isOnline) {
-        toggleStatusBtn.textContent = "Go Offline";
-        toggleStatusBtn.style.borderColor = "#ef4444";
-        toggleStatusBtn.style.color = "#ef4444";
+        toggleStatusBtn.textContent = "Status: Online (Click to Offline)";
+        toggleStatusBtn.classList.add('btn-danger');
     } else {
-        toggleStatusBtn.textContent = "Go Online";
-        toggleStatusBtn.style.borderColor = "#10b981";
-        toggleStatusBtn.style.color = "#10b981";
+        toggleStatusBtn.textContent = "Status: Offline (Click to Online)";
+        toggleStatusBtn.classList.remove('btn-danger');
     }
 }
 
@@ -88,7 +98,7 @@ function listenForRequestsAndMessages() {
     requestUnsubscribe = onSnapshot(q, (snapshot) => {
         requestsList.innerHTML = ''; 
         if (snapshot.empty) {
-            requestsList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No pending requests or messages.</p>';
+            requestsList.innerHTML = '<span class="mono-label" style="text-align: center; display: block; width: 100%;">No active requests found.</span>';
             return;
         }
 
@@ -97,16 +107,15 @@ function listenForRequestsAndMessages() {
             const chatId = docSnap.id;
             
             const card = document.createElement('div');
-            card.className = 'mentor-card';
-            card.style.borderColor = data.type === 'live' ? '#10b981' : '#94a3b8';
+            card.className = `bento-card ${data.type === 'live' ? 'card-success' : 'card-primary'}`;
             
             card.innerHTML = `
-                <div>
-                    <div style="font-weight: 800; color: #1e293b;">${data.type === 'live' ? '🟢 Live Request' : '⚪ Offline Message'}</div>
-                    <div style="font-size: 0.9rem; font-weight: bold;">From: ${data.studentName}</div>
-                </div>
-                <div style="display: flex; gap: 0.5rem;">
-                    <button class="btn-solid btn-accept" style="background: #0f172a; padding: 0.5rem 1rem;">Open</button>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div class="mono-label">${data.type === 'live' ? 'LIVE REQUEST' : 'OFFLINE LOG'}</div>
+                        <div style="font-size: 1.1rem; font-weight: bold; margin-top: 0.25rem;">ID: ${data.studentName}</div>
+                    </div>
+                    <button class="btn-solid btn-accept">Access</button>
                 </div>
             `;
             
@@ -127,7 +136,6 @@ function listenForRequestsAndMessages() {
 async function setupStudentView() {
     studentView.style.display = 'block';
     
-    // Check for existing active chats (live or offline thread)
     const q = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("status", "in", ["pending", "active", "offline_thread"]));
     const chatSnap = await getDocs(q);
 
@@ -155,16 +163,21 @@ async function fetchMentors() {
             const targetList = isOnline ? onlineMentorsList : offlineMentorsList;
             
             const card = document.createElement('div');
-            card.className = 'mentor-card';
+            card.className = 'bento-card';
+            card.style.display = 'flex';
+            card.style.flexDirection = 'row';
+            card.style.alignItems = 'center';
+            card.style.padding = '1rem';
+            
             card.innerHTML = `
-                <div>
-                    <div style="font-weight: bold; color: #1e293b;">
-                        <span class="status-dot ${isOnline ? 'status-online' : 'status-offline'}"></span>
-                        ${mentor.fullName || 'Verified Mentor'}
+                <div style="flex-grow: 1;">
+                    <div style="font-weight: 800; font-size: 1.1rem; display: flex; align-items: center;">
+                        <span class="status-indicator ${isOnline ? 'status-online' : 'status-offline'}"></span>
+                        ${mentor.fullName || 'Verified ID'}
                     </div>
                 </div>
-                <button class="btn-solid" style="padding: 0.5rem 1rem; background: #0f172a; border: none;">
-                    ${isOnline ? 'Live Chat' : 'Leave Message'}
+                <button class="btn-solid" style="padding: 0.5rem 1rem;">
+                    ${isOnline ? 'Connect' : 'Leave Log'}
                 </button>
             `;
             
@@ -172,11 +185,11 @@ async function fetchMentors() {
             targetList.appendChild(card);
         });
 
-        if (onlineMentorsList.innerHTML === '') onlineMentorsList.innerHTML = '<p style="color: #94a3b8;">No mentors online.</p>';
-        if (offlineMentorsList.innerHTML === '') offlineMentorsList.innerHTML = '<p style="color: #94a3b8;">No offline mentors available.</p>';
+        if (onlineMentorsList.innerHTML === '') onlineMentorsList.innerHTML = '<span class="mono-label">No active personnel found.</span>';
+        if (offlineMentorsList.innerHTML === '') offlineMentorsList.innerHTML = '<span class="mono-label">No offline personnel found.</span>';
 
     } catch (error) {
-        console.error("Error fetching mentors:", error);
+        console.error("Error fetching personnel:", error);
     }
 }
 
@@ -198,24 +211,24 @@ async function initiateChat(mentorId, mentorName, isOnline) {
         studentView.style.display = 'none';
         openChat(chatRef.id, mentorName, type);
     } catch (error) {
-        console.error("Error creating chat:", error);
-        alert("Failed to start conversation.");
+        console.error("Error creating connection:", error);
+        alert("Connection failed. Retry.");
     }
 }
 
 // ==========================================
-// 4. SHARED CHAT ENGINE & PURGE
+// 4. SHARED CHAT ENGINE
 // ==========================================
 function openChat(chatId, partnerName, type) {
     currentChatId = chatId;
-    chatPartnerName.textContent = partnerName;
+    chatPartnerName.textContent = `ID: ${partnerName}`;
     
     if (type === 'live') {
-        chatTypeBadge.innerHTML = '🟢 Live Session';
-        chatTypeBadge.style.color = '#10b981';
+        chatTypeBadge.innerHTML = 'STATUS: LIVE CONNECTION';
+        chatTypeBadge.style.color = 'var(--status-success)';
     } else {
-        chatTypeBadge.innerHTML = '⚪ Offline Thread (Replies may be delayed)';
-        chatTypeBadge.style.color = '#64748b';
+        chatTypeBadge.innerHTML = 'STATUS: OFFLINE LOG';
+        chatTypeBadge.style.color = 'var(--accent)';
     }
 
     liveChatView.style.display = 'flex';
@@ -234,18 +247,23 @@ function openChat(chatId, partnerName, type) {
                 
                 const isMe = msg.senderId === currentUser.uid;
                 const msgDiv = document.createElement('div');
-                msgDiv.className = `msg-bubble ${isMe ? 'msg-sent' : 'msg-received'}`;
-                msgDiv.textContent = msg.text;
+                msgDiv.className = `msg-log ${isMe ? 'msg-sent' : 'msg-received'}`;
+                
+                const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString() : new Date().toLocaleTimeString();
+                
+                msgDiv.innerHTML = `
+                    <span class="msg-sender">[${timeString}] ${isMe ? 'LOCAL' : 'REMOTE'}:</span>
+                    <div class="msg-text">${msg.text}</div>
+                `;
                 chatMessages.appendChild(msgDiv);
             }
         });
         chatMessages.scrollTop = chatMessages.scrollHeight; 
     });
 
-    // Listen to see if the other person ended/purged the chat
     onSnapshot(doc(db, "chats", chatId), (docSnap) => {
         if (!docSnap.exists()) {
-            alert("This conversation has been ended and purged by the other party.");
+            alert("Connection terminated by remote user.");
             window.location.reload();
         }
     });
@@ -264,19 +282,16 @@ chatForm.addEventListener('submit', async (e) => {
     });
 });
 
-// Ephemeral Purge Logic
+// Ephemeral Logic
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
     
-    if (!confirm("Are you sure you want to end this session? Edeetos does not store messages. They will be deleted permanently.")) return;
+    if (!confirm("Terminate session and wipe logs? This action is irreversible.")) return;
     
-    if (confirm("Do you want to download a transcript before the chat is permanently purged?")) {
+    if (confirm("Export log data before termination?")) {
         downloadTranscript();
     }
     
-    alert("Purging chat data...");
-    
-    // Client-side recursive delete for ephemerality
     try {
         const messagesRef = collection(db, "chats", currentChatId, "messages");
         const snapshot = await getDocs(messagesRef);
@@ -285,26 +300,26 @@ btnEndChat.addEventListener('click', async () => {
         }
         await deleteDoc(doc(db, "chats", currentChatId));
     } catch(e) {
-        console.error("Purge Error", e);
+        console.error("Data wipe failed:", e);
     }
     
     window.location.reload();
 });
 
 function downloadTranscript() {
-    let transcriptText = "=== EDEETOS MENTORSHIP TRANSCRIPT ===\n";
-    const pName = chatPartnerName.textContent;
-    transcriptText += `Participants: ${currentUserData.fullName} & ${pName}\n\n`;
+    let transcriptText = "=== CLINICAL SYSTEM EXPORT ===\n";
+    const pName = chatPartnerName.textContent.replace('ID: ', '');
+    transcriptText += `LOCAL: ${currentUserData.fullName}\nREMOTE: ${pName}\nTIMESTAMP: ${new Date().toISOString()}\n\n`;
     
     localMessages.forEach((msg) => {
-        const sender = msg.senderId === currentUser.uid ? "You" : pName;
+        const sender = msg.senderId === currentUser.uid ? "LOCAL" : "REMOTE";
         transcriptText += `[${sender}]: ${msg.text}\n`;
     });
 
     const blob = new Blob([transcriptText], { type: "text/plain" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `Edeetos_Chat_${new Date().toISOString().split('T')[0]}.txt`;
+    a.download = `system_log_${new Date().getTime()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

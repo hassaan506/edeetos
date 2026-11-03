@@ -3,298 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDEETOS - Go Beyond Yourself!</title>
-    
+    <title>EDEETOS | Go Beyond Yourself!</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="EDEETOS">
-    <link rel="apple-touch-icon" href="/Pictures/icon-192.png">
-    <script>
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark-mode');
-        }
-    </script>
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');</script>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
-            </a>
+            <a href="index.html" class="nav-logo">EDEETOS.</a>
             
-            <div class="nav-actions">
+            <!-- Mobile Hamburger -->
+            <button id="index-mobile-menu-btn" class="hamburger-btn-index">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-actions" id="index-nav-actions">
+                <!-- Mobile Close Button -->
+                <button id="index-close-menu-btn" class="close-sidebar-btn-index">&times;</button>
+                
                 <ul class="nav-links">
                     <li><a href="#courses">Courses</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#features">Features</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                
-                <ul id="auth-menu" class="auth-menu">
-                    <!-- Default state (logged out), replaced by index.js if logged in -->
-                    <li><a href="register.html" class="btn-outline">Register</a></li>
-                    <li><a href="login.html" class="btn-solid">Log In</a></li>
-                </ul>
-
-                <button id="dark-mode-toggle" class="dark-mode-toggle-btn">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <div class="nav-buttons-wrap">
+                    <button id="dark-mode-toggle" class="btn-outline theme-btn"><i class="fas fa-moon"></i></button>
+                    <a href="login.html" class="btn-outline">Log In</a>
+                    <a href="register.html" class="btn-solid">Sign Up Free</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <header class="hero-section">
-        <div class="hero-content">
-            <span class="badge-pill">The Elite Medical Prep Platform</span>
-            <h1>Welcome to EDEETOS</h1>
-            <p class="subtitle">Created by medical professionals, for medical students.</p>
-            <p class="hero-desc">Guiding, encouraging, and mentoring you through FCPS, MBBS, and MRCS/MRCP to reach your highest potential.</p>
-            <div class="hero-actions">
-                <a href="#courses" class="btn-large">Explore Programs</a>
+        <div class="hero-grid">
+            <div class="hero-content reveal is-visible">
+                <div class="tag-system">
+                    <i class="fas fa-bolt"></i> Elite Medical Prep
+                </div>
+                <h1>Pass Your Medical Exams Faster.</h1>
+                <p>Stop wasting time. Get the right practice questions, expert mentors, and exact progress tracking for FCPS, MBBS, and MRCS.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="register.html" class="btn-solid">Start Studying Now</a>
+                    <a href="#courses" class="btn-outline">View Courses</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual reveal delay-1 is-visible">
+                <div class="floating-card">
+                    <i class="fas fa-chart-pie floating-icon"></i>
+                    <div class="floating-number count-up" data-target="30000">0</div>
+                    <div class="floating-label">+ Practice MCQs</div>
+                    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Updated for latest exam patterns.</p>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="courses" class="section-container">
-        <div class="section-header">
-            <h2>Our Core Programs</h2>
-            <p class="section-description">Select your path and get access to tailored resources and expert mentorship.</p>
+    <section id="courses" class="section-wrapper">
+        <div class="text-center reveal">
+            <h2>Choose Your Exam</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Select your goal and start practicing with questions that actually show up on the real test.</p>
         </div>
         
-        <div class="grid-container">
-            <div class="glass-panel text-center">
-                <div class="icon-wrapper"><i class="fas fa-stethoscope"></i></div>
-                <h3 class="course-title">FCPS</h3>
-                <p>Comprehensive preparation for Part 1, IMM, and Part 2. Access high-yield notes and topic tests.</p>
-            </div>
-            <div class="glass-panel text-center">
-                <div class="icon-wrapper"><i class="fas fa-dna"></i></div>
-                <h3 class="course-title">MBBS</h3>
-                <p>Complete guidance from 1st to 5th year. Build a strong conceptual understanding of core modules.</p>
-            </div>
-            <div class="glass-panel text-center">
-                <div class="icon-wrapper"><i class="fas fa-hospital-user"></i></div>
-                <h3 class="course-title">MRCS / MRCP</h3>
-                <p>Targeted practice materials, video lectures, and live sessions for your royal college exams.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section-container bg-light">
-        <div class="section-header">
-            <h2>Why Choose EDEETOS?</h2>
-            <p class="section-description">A powerful, data-driven ecosystem designed for ultimate medical exam success.</p>
-        </div>
-        
-        <div class="features-grid">
-            <div class="glass-panel feature-card">
-                <div class="feature-icon"><i class="fas fa-user-md"></i></div>
-                <h3>Expert Mentorship</h3>
-                <p>Get personalized guidance, custom timetabling, and progress tracking from specialists who have successfully cleared your exact exams.</p>
-            </div>
-            <div class="glass-panel feature-card">
-                <div class="feature-icon"><i class="fas fa-satellite-dish"></i></div>
-                <h3>Live Group Study</h3>
-                <p>Create private study rooms, synchronize your screen, and solve complex MCQs with your peers in real-time.</p>
-            </div>
-            <div class="glass-panel feature-card">
-                <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                <h3>Spaced Repetition</h3>
-                <p>Our intelligent algorithms track your accuracy and force you to review difficult topics right before you forget them.</p>
-            </div>
-            <div class="glass-panel feature-card">
-                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Targeted Analytics</h3>
-                <p>Identify your exact weaknesses instantly. Our system generates automated quizzes focusing strictly on your previous mistakes.</p>
-            </div>
-            <div class="glass-panel feature-card">
-                <div class="feature-icon"><i class="fas fa-book-medical"></i></div>
-                <h3>High-Yield Resources</h3>
-                <p>Gain access to over 20,000 constantly updated practice MCQs, highly detailed notes, and comprehensive video lectures.</p>
-            </div>
-            <div class="glass-panel feature-card">
-                <div class="feature-icon"><i class="fas fa-microscope"></i></div>
-                <h3>Research & Proposals</h3>
-                <p>Receive expert assistance and structured guidance with medical research methodologies, thesis writing, and proposal development.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="section-container">
-        <div class="section-header">
-            <h2>Meet Our Leadership</h2>
-            <p class="section-description">Mentorship from experienced medical professionals.</p>
-        </div>
-        
-        <div class="team-members">
-            <div class="glass-panel profile-card">
-                <img src="Pictures/Hassaan.jpeg" alt="Hassaan Shahid" class="profile-pic">
-                <h3>Dr. Hassaan Shahid</h3>
-                <p class="member-role">Founder / President</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-container">
-        <div class="stats-container glass-panel">
-            <div class="stat-box">
-                <h3 class="stat-number">20,000+</h3>
-                <p class="stat-label">Practice MCQs</p>
-            </div>
-            <div class="stat-box">
-                <h3 class="stat-number">24/7</h3>
-                <p class="stat-label">Mentor Support</p>
-            </div>
-            <div class="stat-box">
-                <h3 class="stat-number">3</h3>
-                <p class="stat-label">Expert Mentors</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-container bg-light">
-        <div class="section-header">
-            <h2>Your Path to Success</h2>
-            <p class="section-description">A proven methodology to help you clear your medical exams.</p>
-        </div>
-        
-        <div class="grid-container">
-            <div class="glass-panel step-card text-center">
-                <div class="step-number">1</div>
-                <h4 class="step-title">Choose Your Path</h4>
-                <p>Select your target exam (FCPS, MBBS, MRCS) and access customized study materials.</p>
-            </div>
-            <div class="glass-panel step-card text-center">
-                <div class="step-number">2</div>
-                <h4 class="step-title">Practice & Learn</h4>
-                <p>Attempt high-yield MCQs, review detailed explanations, and watch video lectures.</p>
-            </div>
-            <div class="glass-panel step-card text-center">
-                <div class="step-number">3</div>
-                <h4 class="step-title">Track Progress</h4>
-                <p>Use our analytics to identify weak areas and get 1-on-1 mentor guidance.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="section-container faq-section">
-        <div class="section-header">
-            <h2>Frequently Asked Questions</h2>
-            <p class="section-description">Everything you need to know about the EDEETOS platform.</p>
-        </div>
-        
-        <div class="faq-container">
-            <div class="glass-panel faq-item">
-                <h4 class="faq-question">Are the MCQs up to date?</h4>
-                <p class="faq-answer">Yes, our medical professionals regularly update the question banks to reflect the latest exam patterns and guidelines.</p>
-            </div>
-            <div class="glass-panel faq-item">
-                <h4 class="faq-question">Can I access this on my phone?</h4>
-                <p class="faq-answer">Absolutely. The EDEETOS platform is fully optimized for mobile devices, so you can study anywhere, anytime.</p>
-            </div>
-            <div class="glass-panel faq-item">
-                <h4 class="faq-question">Do I get access to mentors?</h4>
-                <p class="faq-answer">Yes, our premium plans include 1-on-1 guidance from specialists who have successfully cleared the exams you are preparing for.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section-container">
-        <div class="section-header">
-            <h2>Get In Touch</h2>
-            <p class="section-description">Have questions? Our team is here to help you succeed.</p>
-        </div>
-        
-        <div class="contact-grid">
-            <div class="glass-panel contact-info-panel">
-                <h3 class="contact-title">Reach Out Directly</h3>
-                
-                <div class="info-item">
-                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                    <div class="info-text">
-                        <h4>Email</h4>
-                        <p><a href="mailto:edeetos@gmail.com" class="contact-link">edeetos@gmail.com</a></p>
-                    </div>
+        <div class="bento-grid">
+            <div class="bento-card reveal">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>FCPS Preparation</h3>
+                    <p>Study for Part 1, IMM, and Part 2. Get high-yield notes and practice tests organized by body system.</p>
                 </div>
-                
-                <div class="info-item">
-                    <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
-                    <div class="info-text">
-                        <h4>WhatsApp / Phone</h4>
-                        <p><a href="https://wa.me/923202289180" class="contact-link" target="_blank">+92 320 2289180</a></p>
+            </div>
+            <div class="bento-card reveal delay-1">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-dna"></i></div>
+                    <h3>MBBS Guide</h3>
+                    <p>Help for 1st to 5th-year medical students. Build a strong foundation so you don't struggle later.</p>
+                </div>
+            </div>
+            <div class="bento-card reveal delay-2">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-hospital-user"></i></div>
+                    <h3>MRCS / MRCP</h3>
+                    <p>Video lessons and specific practice questions made exactly for the Royal College exams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The ID "features" triggers the JS mouse tracking for the glow effect -->
+    <section id="features" class="section-wrapper">
+        <div class="text-center reveal">
+            <h2>Why Use EDEETOS?</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">We give you the exact tools you need to clear your boards on the first try.</p>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-card reveal">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Smart Review</h3>
+                    <p>Our app remembers what you get wrong and asks you again right before you forget it.</p>
+                </div>
+            </div>
+            <div class="bento-card reveal delay-1">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Clear Analytics</h3>
+                    <p>See exactly which topics you are bad at. Take quizzes made entirely of your past mistakes.</p>
+                </div>
+            </div>
+            <div class="bento-card reveal delay-2">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-user-md"></i></div>
+                    <h3>Real Mentors</h3>
+                    <p>Talk to doctors who already passed your exam. Get a real study schedule that works.</p>
+                </div>
+            </div>
+            <div class="bento-card reveal">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Group Study Rooms</h3>
+                    <p>Study with your friends online. Share your screen and solve hard questions together.</p>
+                </div>
+            </div>
+            <div class="bento-card reveal delay-1">
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Research Help</h3>
+                    <p>Get step-by-step help writing your medical thesis or research proposals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-wrapper">
+        <div class="info-grid">
+            <div>
+                <div class="reveal">
+                    <h2>Our Team</h2>
+                </div>
+                <div class="team-card reveal">
+                    <img src="Pictures/Hassaan.jpeg" alt="Dr. Hassaan Shahid" class="team-img">
+                    <h3>Dr. Hassaan Shahid</h3>
+                    <p class="team-role">Founder & President</p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="reveal">
+                    <h2>Common Questions</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-row reveal">
+                        <h4>Are the questions up to date?</h4>
+                        <p style="color: var(--text-muted);">Yes. We update the question bank often to match the real exams.</p>
+                    </div>
+                    <div class="faq-row reveal">
+                        <h4>Can I use this on my phone?</h4>
+                        <p style="color: var(--text-muted);">Yes. The website works perfectly on phones and tablets.</p>
+                    </div>
+                    <div class="faq-row reveal">
+                        <h4>Can I talk to a mentor?</h4>
+                        <p style="color: var(--text-muted);">Yes. If you sign up for premium, you can chat directly with a mentor.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="glass-panel form-panel">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" id="contact-name" class="glass-input" placeholder="Dr. Hassaan" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="contact-email" class="glass-input" placeholder="hassaan@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>WhatsApp Number</label>
-                        <input type="tel" id="contact-whatsapp" class="glass-input" placeholder="+923001234567" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea id="contact-msg" rows="4" class="glass-input" placeholder="How can we help you?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-solid" style="width: 100%; border: none; font-size: 1.1rem; padding: 1.2rem;">Send Message</button>
-                </form>
-            </div>
         </div>
     </section>
 
-    <section class="final-cta">
-        <div class="cta-content">
-            <h2>Ready to Ace Your Exams?</h2>
-            <p>Join our community of medical professionals and gain access to premium resources today.</p>
-            <a href="register.html" class="btn-cta">Create Free Account</a>
+    <section id="contact" class="section-wrapper" style="margin-bottom: 4rem;">
+        <div class="contact-grid reveal">
+            <div>
+                <h2>Contact Us</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Have a question? Send us a message and we will help you out right away.</p>
+                
+                <div style="margin-bottom: 1rem;">
+                    <a href="mailto:edeetos@gmail.com" style="color: var(--text-main); font-weight: 700; text-decoration: none;">
+                        <i class="fas fa-envelope" style="color: var(--primary-ui); margin-right: 10px;"></i> edeetos@gmail.com
+                    </a>
+                </div>
+                <div>
+                    <a href="https://wa.me/923202289180" target="_blank" style="color: var(--text-main); font-weight: 700; text-decoration: none;">
+                        <i class="fab fa-whatsapp" style="color: var(--primary-ui); margin-right: 10px;"></i> +92 320 2289180
+                    </a>
+                </div>
+            </div>
+            <form id="contact-form">
+                <input type="text" id="contact-name" class="form-input" placeholder="Your Name" required>
+                <input type="email" id="contact-email" class="form-input" placeholder="Your Email" required>
+                <input type="tel" id="contact-whatsapp" class="form-input" placeholder="WhatsApp Number">
+                <textarea id="contact-msg" class="form-input" rows="4" placeholder="How can we help?" required></textarea>
+                <button type="submit" class="btn-solid" style="width: 100%;">Send Message</button>
+            </form>
         </div>
     </section>
 
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-brand">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="footer-logo">
-                <p>Guiding medical students to reach their highest potential through expert mentorship and targeted practice.</p>
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">EDEETOS.</h3>
+                <p style="color: var(--text-muted); max-width: 300px;">Helping medical students pass their exams with the right tools and mentors.</p>
             </div>
-            
             <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
+                <h4>Links</h4>
+                <ul><li><a href="#courses">Courses</a></li><li><a href="#features">Features</a></li></ul>
             </div>
-            
-            <div class="footer-social">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>  
-                    <a href="https://wa.me/923202289180" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2026 EDEETOS. All rights reserved. | <a href="features.html">Features</a> | <a href="changelog.html">Changelog</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2026 EDEETOS. All rights reserved.</p></div>
     </footer>
+    
+    <!-- Mobile Sidebar Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('index-mobile-menu-btn');
+            const navMenu = document.getElementById('index-nav-actions');
+            const closeBtn = document.getElementById('index-close-menu-btn');
+            
+            if (mobileBtn && navMenu) {
+                mobileBtn.addEventListener('click', () => navMenu.classList.add('sidebar-active'));
+            }
+            if (closeBtn && navMenu) {
+                closeBtn.addEventListener('click', () => navMenu.classList.remove('sidebar-active'));
+            }
+            // Auto-close menu when clicking any anchor link
+            if (navMenu) {
+                navMenu.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => navMenu.classList.remove('sidebar-active'));
+                });
+            }
+        });
+    </script>
     
     <script type="module" src="index.js"></script>
 </body>
