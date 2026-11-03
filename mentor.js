@@ -75,7 +75,6 @@ function setupMentorView() {
     
     updateStatusBtn(currentUserData.isOnline || false);
 
-    // Auto-Offline Heartbeat Hooks
     window.addEventListener('beforeunload', forceOffline);
     document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') forceOffline(); });
 
@@ -158,7 +157,7 @@ function listenToTicketQueue() {
             el.innerHTML = `
                 <div class="mono-label" style="margin-bottom: 0.5rem;">From: ${data.studentName}</div>
                 <div class="ticket-q">${data.question}</div>
-                <button class="btn-outline btn-claim-ticket" style="margin-top: 0.5rem; width: 100%;">Claim & Answer</button>
+                <button class="btn-outline btn-claim-ticket" style="margin-top: 0.5rem; width: 100%;">Answer Question</button>
             `;
             el.querySelector('.btn-claim-ticket').onclick = () => {
                 activeTicketId = docSnap.id;
@@ -171,20 +170,19 @@ function listenToTicketQueue() {
     });
 }
 
-// Modal Logic
 btnCancelReply.onclick = () => replyModal.classList.add('view-hidden');
 btnSubmitReply.onclick = async () => {
     const replyText = modalReplyInput.value.trim();
     if (!replyText) return alert("Explanation cannot be empty.");
     
-    btnSubmitReply.textContent = "Resolving...";
+    btnSubmitReply.textContent = "Sending...";
     btnSubmitReply.disabled = true;
     
     try {
         await updateDoc(doc(db, "chats", activeTicketId), {
             status: 'resolved',
             mentorId: currentUser.uid,
-            mentorName: currentUserData.fullName || "Mentor",
+            mentorName: currentUserData.fullName || "Doctor",
             answer: replyText,
             resolvedAt: serverTimestamp()
         });
@@ -203,7 +201,6 @@ btnSubmitReply.onclick = async () => {
 async function setupStudentView() {
     studentView.style.display = 'block';
     
-    // Check for existing pending/active live session
     const qLive = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "live"), where("status", "in", ["pending", "active"]));
     
     onSnapshot(qLive, (snapshot) => {
@@ -225,41 +222,52 @@ async function setupStudentView() {
         }
     });
 
-    // Track Online Mentors Count
     const qMentors = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]), where("isOnline", "==", true));
     onSnapshot(qMentors, (snapshot) => {
-        onlineCountBadge.textContent = `${snapshot.size} Mentors Online`;
+        onlineCountBadge.textContent = `${snapshot.size} Doctors Online`;
         if (snapshot.size === 0) {
             btnRequestLive.disabled = true;
             btnRequestLive.style.opacity = '0.5';
-            btnRequestLive.textContent = "No Mentors Online";
+            btnRequestLive.textContent = "No Doctors Online";
         } else {
             btnRequestLive.disabled = false;
             btnRequestLive.style.opacity = '1';
-            btnRequestLive.textContent = "Request Live Mentor";
+            btnRequestLive.textContent = "Request Live Doctor";
         }
+    }, (error) => {
+        console.error("Index missing for mentors count:", error);
     });
 
-    // Populate Study Inbox
-    const qTickets = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "ticket"), where("status", "==", "resolved"), orderBy("resolvedAt", "desc"));
+    // FIXED: Now fetches both Open and Resolved tickets
+    const qTickets = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "ticket"), orderBy("createdAt", "desc"));
     onSnapshot(qTickets, (snapshot) => {
         studentInboxList.innerHTML = '';
         if (snapshot.empty) {
-            studentInboxList.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No resolved questions found.</span>';
+            studentInboxList.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No questions asked yet.</span>';
             return;
         }
 
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
+            const isResolved = data.status === 'resolved';
+            
             const el = document.createElement('div');
-            el.className = 'ticket-item resolved';
+            el.className = `ticket-item ${isResolved ? 'resolved' : ''}`;
+            
+            // Adjust border color based on status
+            if (!isResolved) el.style.borderLeftColor = 'var(--accent)';
+
             el.innerHTML = `
-                <div class="mono-label" style="margin-bottom: 0.5rem; color: var(--status-success);">Resolved by ${data.mentorName}</div>
+                <div class="mono-label" style="margin-bottom: 0.5rem; color: ${isResolved ? 'var(--status-success)' : 'var(--accent)'};">
+                    ${isResolved ? `Answered by ${data.mentorName}` : 'Pending Doctor Review...'}
+                </div>
                 <div class="ticket-q">Q: ${data.question}</div>
-                <div class="ticket-a">A: ${data.answer}</div>
+                ${isResolved ? `<div class="ticket-a">A: ${data.answer}</div>` : ''}
             `;
             studentInboxList.appendChild(el);
         });
+    }, (error) => {
+        console.error("Index missing for tickets list:", error);
     });
 }
 
@@ -303,7 +311,6 @@ btnSubmitTicket.onclick = async () => {
             createdAt: serverTimestamp()
         });
         ticketInput.value = "";
-        alert("Question submitted to the global queue.");
     } catch (e) {
         alert("Failed to submit ticket.");
     } finally {
@@ -311,7 +318,6 @@ btnSubmitTicket.onclick = async () => {
         btnSubmitTicket.disabled = false;
     }
 };
-
 
 // ==========================================
 // 4. EPHEMERAL LIVE CHAT ENGINE
@@ -336,7 +342,9 @@ function openChat(chatId, partnerName) {
                 msgDiv.className = `msg-log ${isMe ? 'msg-sent' : 'msg-received'}`;
                 
                 const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                const senderName = isMe ? 'LOCAL' : 'REMOTE';
+                
+                // FIXED: Direct naming
+                const senderName = isMe ? 'You' : (partnerName || "Doctor");
 
                 msgDiv.innerHTML = `
                     <span class="msg-sender">[${timeString}] ${senderName}:</span>
@@ -350,7 +358,7 @@ function openChat(chatId, partnerName) {
 
     onSnapshot(doc(db, "chats", chatId), (docSnap) => {
         if (!docSnap.exists() || docSnap.data().status === 'ended') {
-            alert("The connection was terminated by the remote user.");
+            alert("The session was ended.");
             window.location.reload();
         }
     });
@@ -371,7 +379,7 @@ chatForm.addEventListener('submit', async (e) => {
 
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
-    if (!confirm("End this session? All live chat records will be permanently wiped.")) return;
+    if (!confirm("End this session? Chat records will be deleted.")) return;
     
     try {
         const messagesRef = collection(db, "chats", currentChatId, "messages");
