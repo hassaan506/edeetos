@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentorship | EDEETOS</title>
+    <title>Clinical Support | EDEETOS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="mentor.css">
@@ -11,74 +11,119 @@
 <body>
 
     <nav class="navbar-container">
-        <a href="dashboard.html" class="btn-outline">Back</a>
-        <div class="mono-label" style="font-size: 1rem;">MENTORSHIP</div>
-        <div style="width: 80px;"></div>
+        <a href="dashboard.html" class="btn-outline">Return to Dashboard</a>
+        <div class="mono-label" style="font-size: 1rem;">CLINICAL OPERATIONS</div>
+        <div style="width: 150px;"></div>
     </nav>
 
-    <main style="padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto;">
+    <main style="padding: 3rem 1.5rem; max-width: 1000px; margin: 0 auto;">
         
         <header style="margin-bottom: 2rem;">
-            <h1 style="font-size: 2.5rem;">Mentorship Hub</h1>
-            <p style="color: var(--primary-ui); font-family: var(--font-secondary); font-size: 0.85rem;">Connect with a guide in real-time or leave a message.</p>
+            <div class="mono-label" id="role-header-tag">Module: Support Queue</div>
+            <h1 style="font-size: 2.5rem;">Connection Terminal</h1>
         </header>
 
-        <!-- STUDENT VIEW -->
+        <!-- ================= STUDENT VIEW ================= -->
         <div id="student-view" style="display: none;">
-            <div class="bento-grid">
+            
+            <div id="active-waiting-state" class="bento-card card-accent" style="display: none; text-align: center; margin-bottom: 2rem;">
+                <h3 class="mono-label" style="font-size: 1rem; color: var(--accent);">Waiting for Mentor...</h3>
+                <p style="margin: 1rem 0; font-weight: 600;">Your live request is in the queue. A mentor will connect shortly.</p>
+                <button id="btn-cancel-request" class="btn-danger" style="margin: 0 auto;">Cancel Request</button>
+            </div>
+
+            <div class="bento-grid-half" id="student-actions-grid">
+                <!-- Live Connect -->
                 <div class="bento-card card-success">
-                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Online Mentors</h3>
-                    <div id="online-mentors-list" style="display: grid; gap: 0.5rem;">
-                        <span class="mono-label">Loading mentors...</span>
+                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Live Connection</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Connect instantly with the first available mentor for real-time guidance.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="mono-label" id="online-count-badge">System Checking...</span>
+                        <button id="btn-request-live" class="btn-success">Request Live Mentor</button>
                     </div>
                 </div>
                 
+                <!-- Ticket System -->
                 <div class="bento-card card-primary">
-                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Offline Mentors (Leave a Message)</h3>
-                    <div id="offline-mentors-list" style="display: grid; gap: 0.5rem;">
-                        <span class="mono-label">Loading mentors...</span>
+                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Offline Question Queue</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Drop a complex question. A mentor will claim it and provide a detailed written explanation.</p>
+                    <textarea id="ticket-input" rows="3" placeholder="Enter your clinical query or concept confusion here..."></textarea>
+                    <button id="btn-submit-ticket" class="btn-solid" style="width: 100%;">Submit to Queue</button>
+                </div>
+            </div>
+
+            <!-- Study Inbox -->
+            <div class="bento-card card-primary">
+                <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">My Study Inbox</h3>
+                <div id="student-inbox-list">
+                    <span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No resolved questions found.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= MENTOR VIEW ================= -->
+        <div id="mentor-view" style="display: none;">
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 1.5rem;">
+                <button id="toggle-status-btn" class="btn-outline">Go Online</button>
+            </div>
+
+            <div class="bento-grid-half">
+                <!-- Live Queue -->
+                <div class="bento-card card-success">
+                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Live Requests (Pending)</h3>
+                    <div id="mentor-live-queue">
+                        <span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">Queue Empty</span>
+                    </div>
+                </div>
+
+                <!-- Ticket Queue -->
+                <div class="bento-card card-primary">
+                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Global Ticket Queue (Open)</h3>
+                    <div id="mentor-ticket-queue">
+                        <span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">Inbox Zero</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- MENTOR VIEW -->
-        <div id="mentor-view" style="display: none;">
-            <div class="bento-card card-primary" style="margin-bottom: 1rem;">
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
-                    <h3 class="mono-label">Student Requests & Messages</h3>
-                    <button id="toggle-status-btn" class="btn-outline">Go Online</button>
-                </div>
-                <div id="requests-list" class="bento-grid">
-                    <span class="mono-label" style="text-align: center; display: block; width: 100%;">No pending requests.</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- CHAT VIEW -->
+        <!-- ================= LIVE CHAT INTERFACE ================= -->
         <div id="live-chat-view" class="chat-container">
             <div class="chat-header">
                 <div>
-                    <h3 id="chat-partner-name" style="margin: 0; font-size: 1.25rem;">Connected</h3>
-                    <div id="chat-type-badge" class="mono-label" style="margin-top: 4px;">Live Session</div>
+                    <h3 id="chat-partner-name" style="margin: 0; font-size: 1.25rem;">Live Connection</h3>
+                    <div class="mono-label" style="margin-top: 4px; color: var(--status-success);">SECURE SESSION ACTIVE</div>
                 </div>
-                <button id="btn-end-chat" class="btn-outline btn-danger">
-                    End Chat
-                </button>
+                <button id="btn-end-chat" class="btn-danger">End & Wipe Chat</button>
             </div>
             
             <div id="chat-messages" class="chat-messages">
-                <div class="mono-label" style="text-align: center; margin-top: auto; opacity: 0.5;">Chat Started</div>
+                <div class="mono-label" style="text-align: center; margin-top: auto; opacity: 0.5;">Session Started</div>
             </div>
             
             <form id="chat-form" class="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Type a message..." required autocomplete="off">
+                <input type="text" id="chat-input" placeholder="Transmit message..." required autocomplete="off" class="glass-input" style="margin: 0;">
                 <button type="submit" class="btn-solid">Send</button>
             </form>
         </div>
 
+        <!-- ================= TICKET REPLY MODAL (MENTOR) ================= -->
+        <div id="ticket-reply-modal" class="popup-overlay view-hidden">
+            <div class="popup-content">
+                <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Resolve Ticket</h3>
+                <div class="ticket-item" style="margin-bottom: 1.5rem;">
+                    <span class="mono-label">Student Question:</span>
+                    <div id="modal-student-question" class="ticket-q" style="margin-top: 0.5rem;">...</div>
+                </div>
+                <textarea id="modal-mentor-reply" rows="6" placeholder="Provide a clear, detailed explanation..."></textarea>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button id="btn-cancel-reply" class="btn-outline">Cancel</button>
+                    <button id="btn-submit-reply" class="btn-solid">Resolve & Send</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <script type="module" src="mentor.js"></script>
+    <script type="module" src="mentor_2.js"></script>
 </body>
 </html>

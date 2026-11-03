@@ -376,16 +376,20 @@ function setupMentorStatus() {
 }
 
 function setupMentorAlerts() {
+    // NEW LOGIC: Listen for ANY pending live requests in the global pool
     const chatsRef = collection(db, "chats");
-    const q = query(chatsRef, where("mentorId", "==", currentUserId), where("status", "==", "pending"));
+    const q = query(chatsRef, where("type", "==", "live"), where("status", "==", "pending"));
     
     onSnapshot(q, (snapshot) => {
         const banner = document.getElementById('mentor-alert-banner');
         if(!banner) return;
         
         if (!snapshot.empty) {
+            banner.innerHTML = '<i class="fa-solid fa-message text-primary"></i> <span>Live student request waiting in the global pool. Click to claim.</span>';
             banner.classList.remove('view-hidden');
-            banner.onclick = () => window.location.href = 'mentor.html';
+            
+            // NOTE: Make sure this points to your new mentor HTML file
+            banner.onclick = () => window.location.href = 'mentor.html'; 
         } else {
             banner.classList.add('view-hidden');
         }

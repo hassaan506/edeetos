@@ -1,45 +1,48 @@
-// mentor.js
+// mentor_2.js
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, collection, query, where, getDocs, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, collection, query, where, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 let currentUser = null;
 let currentUserData = null;
 let currentRole = 'STUDENT';
 let currentChatId = null;
 let chatUnsubscribe = null; 
-let requestUnsubscribe = null;
-let localMessages = [];
 
 // DOM Elements
 const studentView = document.getElementById('student-view');
 const mentorView = document.getElementById('mentor-view');
 const liveChatView = document.getElementById('live-chat-view');
 
-const onlineMentorsList = document.getElementById('online-mentors-list');
-const offlineMentorsList = document.getElementById('offline-mentors-list');
-const requestsList = document.getElementById('requests-list');
+// Student DOM
+const btnRequestLive = document.getElementById('btn-request-live');
+const btnSubmitTicket = document.getElementById('btn-submit-ticket');
+const ticketInput = document.getElementById('ticket-input');
+const studentInboxList = document.getElementById('student-inbox-list');
+const activeWaitingState = document.getElementById('active-waiting-state');
+const studentActionsGrid = document.getElementById('student-actions-grid');
+const btnCancelRequest = document.getElementById('btn-cancel-request');
+const onlineCountBadge = document.getElementById('online-count-badge');
 
-const chatPartnerName = document.getElementById('chat-partner-name');
-const chatTypeBadge = document.getElementById('chat-type-badge');
+// Mentor DOM
+const toggleStatusBtn = document.getElementById('toggle-status-btn');
+const mentorLiveQueue = document.getElementById('mentor-live-queue');
+const mentorTicketQueue = document.getElementById('mentor-ticket-queue');
+
+// Chat DOM
 const chatMessages = document.getElementById('chat-messages');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const btnEndChat = document.getElementById('btn-end-chat');
-const toggleStatusBtn = document.getElementById('toggle-status-btn');
+const chatPartnerName = document.getElementById('chat-partner-name');
 
-// ==========================================
-// 0. BENTO CARD MOUSE TRACKING
-// ==========================================
-document.addEventListener("mousemove", (e) => {
-    document.querySelectorAll(".bento-card").forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-    });
-});
+// Modal DOM
+const replyModal = document.getElementById('ticket-reply-modal');
+const modalQuestionText = document.getElementById('modal-student-question');
+const modalReplyInput = document.getElementById('modal-mentor-reply');
+const btnCancelReply = document.getElementById('btn-cancel-reply');
+const btnSubmitReply = document.getElementById('btn-submit-reply');
+let activeTicketId = null;
 
 // ==========================================
 // 1. INIT & ROUTING
@@ -64,13 +67,17 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 // ==========================================
-// 2. MENTOR LOGIC
+// 2. MENTOR LOGIC (GLOBAL POOLS)
 // ==========================================
 function setupMentorView() {
     studentView.style.display = 'none';
     mentorView.style.display = 'block';
     
     updateStatusBtn(currentUserData.isOnline || false);
+
+    // Auto-Offline Heartbeat Hooks
+    window.addEventListener('beforeunload', forceOffline);
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') forceOffline(); });
 
     toggleStatusBtn.onclick = async () => {
         const newStatus = !(currentUserData.isOnline || false);
@@ -79,56 +86,116 @@ function setupMentorView() {
         updateStatusBtn(newStatus);
     };
 
-    listenForRequestsAndMessages();
+    listenToLiveRequests();
+    listenToTicketQueue();
+}
+
+function forceOffline() {
+    if (currentUserData && currentUserData.isOnline) {
+        updateDoc(doc(db, "users", currentUser.uid), { isOnline: false }).catch(()=>{});
+        currentUserData.isOnline = false;
+    }
 }
 
 function updateStatusBtn(isOnline) {
     if (isOnline) {
-        toggleStatusBtn.textContent = "You are Online (Click to go Offline)";
+        toggleStatusBtn.textContent = "Status: Online (Click to Offline)";
         toggleStatusBtn.classList.add('btn-danger');
     } else {
-        toggleStatusBtn.textContent = "You are Offline (Click to go Online)";
+        toggleStatusBtn.textContent = "Status: Offline (Click to Online)";
         toggleStatusBtn.classList.remove('btn-danger');
     }
 }
 
-function listenForRequestsAndMessages() {
-    const q = query(collection(db, "chats"), where("mentorId", "==", currentUser.uid), where("status", "in", ["pending", "active", "offline_thread"]));
+function listenToLiveRequests() {
+    const q = query(collection(db, "chats"), where("type", "==", "live"), where("status", "==", "pending"));
     
-    requestUnsubscribe = onSnapshot(q, (snapshot) => {
-        requestsList.innerHTML = ''; 
+    onSnapshot(q, (snapshot) => {
+        mentorLiveQueue.innerHTML = ''; 
         if (snapshot.empty) {
-            requestsList.innerHTML = '<span class="mono-label" style="text-align: center; display: block; width: 100%;">No pending requests.</span>';
+            mentorLiveQueue.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No Live Requests</span>';
             return;
         }
 
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
-            const chatId = docSnap.id;
-            
-            const card = document.createElement('div');
-            card.className = `bento-card ${data.type === 'live' ? 'card-success' : 'card-primary'}`;
-            
-            card.innerHTML = `
+            const el = document.createElement('div');
+            el.className = 'ticket-item';
+            el.style.borderLeftColor = 'var(--status-success)';
+            el.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div class="mono-label">${data.type === 'live' ? 'LIVE REQUEST' : 'OFFLINE MESSAGE'}</div>
-                        <div style="font-size: 1.1rem; font-weight: bold; margin-top: 0.25rem;">${data.studentName}</div>
+                        <div class="mono-label">LIVE REQUEST</div>
+                        <div style="font-weight: bold; margin-top: 4px;">Student: ${data.studentName}</div>
                     </div>
-                    <button class="btn-solid btn-accept">Open</button>
+                    <button class="btn-success btn-accept-live">Accept</button>
                 </div>
             `;
-            
-            card.querySelector('.btn-accept').onclick = async () => {
-                if (data.status === 'pending') await updateDoc(doc(db, "chats", chatId), { status: 'active' });
+            el.querySelector('.btn-accept-live').onclick = async () => {
+                await updateDoc(docSnap.ref, { status: 'active', mentorId: currentUser.uid, mentorName: currentUserData.fullName });
                 mentorView.style.display = 'none';
-                openChat(chatId, data.studentName, data.type);
+                openChat(docSnap.id, data.studentName);
             };
-            
-            requestsList.appendChild(card);
+            mentorLiveQueue.appendChild(el);
         });
     });
 }
+
+function listenToTicketQueue() {
+    const q = query(collection(db, "chats"), where("type", "==", "ticket"), where("status", "==", "open"));
+    
+    onSnapshot(q, (snapshot) => {
+        mentorTicketQueue.innerHTML = ''; 
+        if (snapshot.empty) {
+            mentorTicketQueue.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">Inbox Zero</span>';
+            return;
+        }
+
+        snapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            const el = document.createElement('div');
+            el.className = 'ticket-item';
+            el.innerHTML = `
+                <div class="mono-label" style="margin-bottom: 0.5rem;">From: ${data.studentName}</div>
+                <div class="ticket-q">${data.question}</div>
+                <button class="btn-outline btn-claim-ticket" style="margin-top: 0.5rem; width: 100%;">Claim & Answer</button>
+            `;
+            el.querySelector('.btn-claim-ticket').onclick = () => {
+                activeTicketId = docSnap.id;
+                modalQuestionText.textContent = data.question;
+                modalReplyInput.value = "";
+                replyModal.classList.remove('view-hidden');
+            };
+            mentorTicketQueue.appendChild(el);
+        });
+    });
+}
+
+// Modal Logic
+btnCancelReply.onclick = () => replyModal.classList.add('view-hidden');
+btnSubmitReply.onclick = async () => {
+    const replyText = modalReplyInput.value.trim();
+    if (!replyText) return alert("Explanation cannot be empty.");
+    
+    btnSubmitReply.textContent = "Resolving...";
+    btnSubmitReply.disabled = true;
+    
+    try {
+        await updateDoc(doc(db, "chats", activeTicketId), {
+            status: 'resolved',
+            mentorId: currentUser.uid,
+            mentorName: currentUserData.fullName || "Mentor",
+            answer: replyText,
+            resolvedAt: serverTimestamp()
+        });
+        replyModal.classList.add('view-hidden');
+    } catch (e) {
+        alert("Failed to resolve ticket.");
+    } finally {
+        btnSubmitReply.textContent = "Resolve & Send";
+        btnSubmitReply.disabled = false;
+    }
+};
 
 // ==========================================
 // 3. STUDENT LOGIC
@@ -136,104 +203,125 @@ function listenForRequestsAndMessages() {
 async function setupStudentView() {
     studentView.style.display = 'block';
     
-    const q = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("status", "in", ["pending", "active", "offline_thread"]));
-    const chatSnap = await getDocs(q);
-
-    if (!chatSnap.empty) {
-        const activeChat = chatSnap.docs[0];
-        studentView.style.display = 'none';
-        openChat(activeChat.id, activeChat.data().mentorName, activeChat.data().type);
-        return;
-    }
-
-    fetchMentors();
-}
-
-// FIXED: Now uses onSnapshot so mentor list updates in real-time
-function fetchMentors() {
-    const q = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]));
+    // Check for existing pending/active live session
+    const qLive = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "live"), where("status", "in", ["pending", "active"]));
     
-    onSnapshot(q, (snapshot) => {
-        onlineMentorsList.innerHTML = '';
-        offlineMentorsList.innerHTML = '';
+    onSnapshot(qLive, (snapshot) => {
+        if (!snapshot.empty) {
+            const activeDoc = snapshot.docs[0];
+            currentChatId = activeDoc.id;
+            
+            if (activeDoc.data().status === 'pending') {
+                studentActionsGrid.style.display = 'none';
+                activeWaitingState.style.display = 'block';
+                liveChatView.style.display = 'none';
+            } else if (activeDoc.data().status === 'active') {
+                studentView.style.display = 'none';
+                openChat(activeDoc.id, activeDoc.data().mentorName);
+            }
+        } else {
+            studentActionsGrid.style.display = 'grid';
+            activeWaitingState.style.display = 'none';
+        }
+    });
+
+    // Track Online Mentors Count
+    const qMentors = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]), where("isOnline", "==", true));
+    onSnapshot(qMentors, (snapshot) => {
+        onlineCountBadge.textContent = `${snapshot.size} Mentors Online`;
+        if (snapshot.size === 0) {
+            btnRequestLive.disabled = true;
+            btnRequestLive.style.opacity = '0.5';
+            btnRequestLive.textContent = "No Mentors Online";
+        } else {
+            btnRequestLive.disabled = false;
+            btnRequestLive.style.opacity = '1';
+            btnRequestLive.textContent = "Request Live Mentor";
+        }
+    });
+
+    // Populate Study Inbox
+    const qTickets = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "ticket"), where("status", "==", "resolved"), orderBy("resolvedAt", "desc"));
+    onSnapshot(qTickets, (snapshot) => {
+        studentInboxList.innerHTML = '';
+        if (snapshot.empty) {
+            studentInboxList.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No resolved questions found.</span>';
+            return;
+        }
 
         snapshot.forEach((docSnap) => {
-            const mentor = docSnap.data();
-            const isOnline = mentor.isOnline || false;
-            const targetList = isOnline ? onlineMentorsList : offlineMentorsList;
-            
-            const card = document.createElement('div');
-            card.className = 'bento-card';
-            card.style.display = 'flex';
-            card.style.flexDirection = 'row';
-            card.style.alignItems = 'center';
-            card.style.padding = '1rem';
-            
-            card.innerHTML = `
-                <div style="flex-grow: 1;">
-                    <div style="font-weight: 800; font-size: 1.1rem; display: flex; align-items: center;">
-                        <span class="status-indicator ${isOnline ? 'status-online' : 'status-offline'}"></span>
-                        ${mentor.fullName || 'Verified Mentor'}
-                    </div>
-                </div>
-                <button class="btn-solid" style="padding: 0.5rem 1rem;">
-                    ${isOnline ? 'Live Chat' : 'Leave Message'}
-                </button>
+            const data = docSnap.data();
+            const el = document.createElement('div');
+            el.className = 'ticket-item resolved';
+            el.innerHTML = `
+                <div class="mono-label" style="margin-bottom: 0.5rem; color: var(--status-success);">Resolved by ${data.mentorName}</div>
+                <div class="ticket-q">Q: ${data.question}</div>
+                <div class="ticket-a">A: ${data.answer}</div>
             `;
-            
-            card.querySelector('button').onclick = () => initiateChat(docSnap.id, mentor.fullName, isOnline);
-            targetList.appendChild(card);
+            studentInboxList.appendChild(el);
         });
-
-        if (onlineMentorsList.innerHTML === '') onlineMentorsList.innerHTML = '<span class="mono-label">No mentors online.</span>';
-        if (offlineMentorsList.innerHTML === '') offlineMentorsList.innerHTML = '<span class="mono-label">No offline mentors.</span>';
-
-    }, (error) => {
-        console.error("Error fetching mentors:", error);
     });
 }
 
-async function initiateChat(mentorId, mentorName, isOnline) {
+btnRequestLive.onclick = async () => {
+    btnRequestLive.disabled = true;
     try {
-        const type = isOnline ? 'live' : 'offline';
-        const status = isOnline ? 'pending' : 'offline_thread';
-
-        const chatRef = await addDoc(collection(db, "chats"), {
+        await addDoc(collection(db, "chats"), {
+            type: 'live',
+            status: 'pending',
             studentId: currentUser.uid,
             studentName: currentUserData.fullName || "Student",
-            mentorId: mentorId,
-            mentorName: mentorName || "Mentor",
-            type: type,
-            status: status,
+            mentorId: null,
             createdAt: serverTimestamp()
         });
-
-        studentView.style.display = 'none';
-        openChat(chatRef.id, mentorName, type);
     } catch (error) {
-        console.error("Error starting chat:", error);
-        alert("Failed to start chat. Please try again.");
+        alert("Failed to submit request.");
+        btnRequestLive.disabled = false;
     }
-}
+};
 
-// ==========================================
-// 4. SHARED CHAT ENGINE
-// ==========================================
-function openChat(chatId, partnerName, type) {
-    currentChatId = chatId;
-    chatPartnerName.textContent = partnerName;
+btnCancelRequest.onclick = async () => {
+    if (!currentChatId) return;
+    await deleteDoc(doc(db, "chats", currentChatId));
+    currentChatId = null;
+};
+
+btnSubmitTicket.onclick = async () => {
+    const text = ticketInput.value.trim();
+    if (!text) return alert("Please enter a question.");
     
-    if (type === 'live') {
-        chatTypeBadge.innerHTML = 'Live Session';
-        chatTypeBadge.style.color = 'var(--status-success)';
-    } else {
-        chatTypeBadge.innerHTML = 'Offline Message (Replies may be delayed)';
-        chatTypeBadge.style.color = 'var(--accent)';
+    btnSubmitTicket.textContent = "Submitting...";
+    btnSubmitTicket.disabled = true;
+    
+    try {
+        await addDoc(collection(db, "chats"), {
+            type: 'ticket',
+            status: 'open',
+            studentId: currentUser.uid,
+            studentName: currentUserData.fullName || "Student",
+            question: text,
+            createdAt: serverTimestamp()
+        });
+        ticketInput.value = "";
+        alert("Question submitted to the global queue.");
+    } catch (e) {
+        alert("Failed to submit ticket.");
+    } finally {
+        btnSubmitTicket.textContent = "Submit to Queue";
+        btnSubmitTicket.disabled = false;
     }
+};
 
+
+// ==========================================
+// 4. EPHEMERAL LIVE CHAT ENGINE
+// ==========================================
+function openChat(chatId, partnerName) {
+    currentChatId = chatId;
+    chatPartnerName.textContent = partnerName || "Connected";
+    
     liveChatView.style.display = 'flex';
-    chatMessages.innerHTML = ''; 
-    localMessages = [];
+    chatMessages.innerHTML = '<div class="mono-label" style="text-align: center; margin-top: auto; opacity: 0.5;">Session Started</div>'; 
     
     if (chatUnsubscribe) chatUnsubscribe();
     
@@ -243,14 +331,12 @@ function openChat(chatId, partnerName, type) {
         snapshot.docChanges().forEach((change) => {
             if (change.type === "added") {
                 const msg = change.doc.data();
-                localMessages.push(msg); 
-                
                 const isMe = msg.senderId === currentUser.uid;
                 const msgDiv = document.createElement('div');
                 msgDiv.className = `msg-log ${isMe ? 'msg-sent' : 'msg-received'}`;
                 
                 const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                const senderName = isMe ? 'You' : partnerName;
+                const senderName = isMe ? 'LOCAL' : 'REMOTE';
 
                 msgDiv.innerHTML = `
                     <span class="msg-sender">[${timeString}] ${senderName}:</span>
@@ -263,8 +349,8 @@ function openChat(chatId, partnerName, type) {
     });
 
     onSnapshot(doc(db, "chats", chatId), (docSnap) => {
-        if (!docSnap.exists()) {
-            alert("This chat was ended by the other person.");
+        if (!docSnap.exists() || docSnap.data().status === 'ended') {
+            alert("The connection was terminated by the remote user.");
             window.location.reload();
         }
     });
@@ -283,20 +369,10 @@ chatForm.addEventListener('submit', async (e) => {
     });
 });
 
-// FIXED: Clearer logic for ending and downloading chat
 btnEndChat.addEventListener('click', async () => {
     if (!currentChatId) return;
+    if (!confirm("End this session? All live chat records will be permanently wiped.")) return;
     
-    if (!confirm("Are you sure you want to end this chat? All messages will be permanently deleted.")) {
-        return; // User clicked Cancel, do nothing
-    }
-    
-    // User agreed to delete. Now ask if they want a copy first.
-    if (confirm("Do you want to download a copy of this chat before it is deleted?")) {
-        downloadTranscript();
-    }
-    
-    // Delete the chat regardless of whether they downloaded it
     try {
         const messagesRef = collection(db, "chats", currentChatId, "messages");
         const snapshot = await getDocs(messagesRef);
@@ -305,26 +381,8 @@ btnEndChat.addEventListener('click', async () => {
         }
         await deleteDoc(doc(db, "chats", currentChatId));
     } catch(e) {
-        console.error("Failed to delete chat:", e);
+        console.error("Purge failure:", e);
     }
     
     window.location.reload();
 });
-
-function downloadTranscript() {
-    let transcriptText = "=== EDEETOS CHAT TRANSCRIPT ===\n";
-    transcriptText += `Date: ${new Date().toLocaleString()}\n\n`;
-    
-    localMessages.forEach((msg) => {
-        const sender = msg.senderId === currentUser.uid ? "You" : chatPartnerName.textContent;
-        transcriptText += `[${sender}]: ${msg.text}\n`;
-    });
-
-    const blob = new Blob([transcriptText], { type: "text/plain" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `Edeetos_Chat_${new Date().getTime()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-}
