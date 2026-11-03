@@ -107,17 +107,17 @@ function updateStatusBtn(isOnline) {
 }
 
 function listenToLiveRequests() {
-    const q = query(collection(db, "chats"), where("type", "==", "live"), where("status", "==", "pending"));
+    const q = query(collection(db, "chats"), where("status", "==", "pending"));
     
     onSnapshot(q, (snapshot) => {
         mentorLiveQueue.innerHTML = ''; 
-        if (snapshot.empty) {
-            mentorLiveQueue.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No Live Requests</span>';
-            return;
-        }
+        let found = false;
 
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
+            if (data.type !== 'live') return;
+            found = true;
+
             const el = document.createElement('div');
             el.className = 'ticket-item';
             el.style.borderLeftColor = 'var(--status-success)';
@@ -137,21 +137,23 @@ function listenToLiveRequests() {
             };
             mentorLiveQueue.appendChild(el);
         });
+
+        if (!found) mentorLiveQueue.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No Live Requests</span>';
     });
 }
 
 function listenToTicketQueue() {
-    const q = query(collection(db, "chats"), where("type", "==", "ticket"), where("status", "==", "open"));
+    const q = query(collection(db, "chats"), where("status", "==", "open"));
     
     onSnapshot(q, (snapshot) => {
         mentorTicketQueue.innerHTML = ''; 
-        if (snapshot.empty) {
-            mentorTicketQueue.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">Inbox Zero</span>';
-            return;
-        }
+        let found = false;
 
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
+            if (data.type !== 'ticket') return;
+            found = true;
+
             const el = document.createElement('div');
             el.className = 'ticket-item';
             el.innerHTML = `
@@ -167,6 +169,8 @@ function listenToTicketQueue() {
             };
             mentorTicketQueue.appendChild(el);
         });
+
+        if (!found) mentorTicketQueue.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">Inbox Zero</span>';
     });
 }
 
@@ -201,31 +205,40 @@ btnSubmitReply.onclick = async () => {
 async function setupStudentView() {
     studentView.style.display = 'block';
     
-    const qLive = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "live"), where("status", "in", ["pending", "active"]));
-    
+    const qLive = query(collection(db, "chats"), where("studentId", "==", currentUser.uid));
     onSnapshot(qLive, (snapshot) => {
-        if (!snapshot.empty) {
-            const activeDoc = snapshot.docs[0];
-            currentChatId = activeDoc.id;
-            
-            if (activeDoc.data().status === 'pending') {
-                studentActionsGrid.style.display = 'none';
-                activeWaitingState.style.display = 'block';
-                liveChatView.style.display = 'none';
-            } else if (activeDoc.data().status === 'active') {
-                studentView.style.display = 'none';
-                openChat(activeDoc.id, activeDoc.data().mentorName);
+        let hasActiveLive = false;
+        
+        snapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            if (data.type === 'live' && (data.status === 'pending' || data.status === 'active')) {
+                hasActiveLive = true;
+                currentChatId = docSnap.id;
+                
+                if (data.status === 'pending') {
+                    studentActionsGrid.style.display = 'none';
+                    activeWaitingState.style.display = 'block';
+                    liveChatView.style.display = 'none';
+                } else if (data.status === 'active') {
+                    studentView.style.display = 'none';
+                    openChat(docSnap.id, data.mentorName);
+                }
             }
-        } else {
+        });
+
+        if (!hasActiveLive) {
             studentActionsGrid.style.display = 'grid';
             activeWaitingState.style.display = 'none';
         }
     });
 
-    const qMentors = query(collection(db, "users"), where("role", "in", ["MENTOR", "MANAGEMENT"]), where("isOnline", "==", true));
+    const qMentors = query(collection(db, "users"), where("isOnline", "==", true));
     onSnapshot(qMentors, (snapshot) => {
-        onlineCountBadge.textContent = `${snapshot.size} Doctors Online`;
-        if (snapshot.size === 0) {
+        let count = 0;
+        snapshot.forEach(d => { if(d.data().role === 'MENTOR' || d.data().role === 'MANAGEMENT') count++; });
+        
+        onlineCountBadge.textContent = `${count} Doctors Online`;
+        if (count === 0) {
             btnRequestLive.disabled = true;
             btnRequestLive.style.opacity = '0.5';
             btnRequestLive.textContent = "No Doctors Online";
@@ -234,27 +247,35 @@ async function setupStudentView() {
             btnRequestLive.style.opacity = '1';
             btnRequestLive.textContent = "Request Live Doctor";
         }
-    }, (error) => {
-        console.error("Index missing for mentors count:", error);
     });
 
-    // FIXED: Now fetches both Open and Resolved tickets
-    const qTickets = query(collection(db, "chats"), where("studentId", "==", currentUser.uid), where("type", "==", "ticket"), orderBy("createdAt", "desc"));
+    const qTickets = query(collection(db, "chats"), where("studentId", "==", currentUser.uid));
     onSnapshot(qTickets, (snapshot) => {
         studentInboxList.innerHTML = '';
-        if (snapshot.empty) {
+        const tickets = [];
+
+        snapshot.forEach((docSnap) => {
+            if (docSnap.data().type === 'ticket') {
+                tickets.push(docSnap.data());
+            }
+        });
+
+        tickets.sort((a, b) => {
+            const tA = a.createdAt ? a.createdAt.toMillis() : 0;
+            const tB = b.createdAt ? b.createdAt.toMillis() : 0;
+            return tB - tA;
+        });
+
+        if (tickets.length === 0) {
             studentInboxList.innerHTML = '<span class="mono-label" style="display: block; text-align: center; opacity: 0.5;">No questions asked yet.</span>';
             return;
         }
 
-        snapshot.forEach((docSnap) => {
-            const data = docSnap.data();
+        tickets.forEach((data) => {
             const isResolved = data.status === 'resolved';
-            
             const el = document.createElement('div');
             el.className = `ticket-item ${isResolved ? 'resolved' : ''}`;
             
-            // Adjust border color based on status
             if (!isResolved) el.style.borderLeftColor = 'var(--accent)';
 
             el.innerHTML = `
@@ -266,8 +287,6 @@ async function setupStudentView() {
             `;
             studentInboxList.appendChild(el);
         });
-    }, (error) => {
-        console.error("Index missing for tickets list:", error);
     });
 }
 
@@ -308,7 +327,8 @@ btnSubmitTicket.onclick = async () => {
             studentId: currentUser.uid,
             studentName: currentUserData.fullName || "Student",
             question: text,
-            createdAt: serverTimestamp()
+            createdAt: serverTimestamp(),
+            mentorId: null 
         });
         ticketInput.value = "";
     } catch (e) {
@@ -342,8 +362,6 @@ function openChat(chatId, partnerName) {
                 msgDiv.className = `msg-log ${isMe ? 'msg-sent' : 'msg-received'}`;
                 
                 const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                
-                // FIXED: Direct naming
                 const senderName = isMe ? 'You' : (partnerName || "Doctor");
 
                 msgDiv.innerHTML = `
@@ -382,11 +400,17 @@ btnEndChat.addEventListener('click', async () => {
     if (!confirm("End this session? Chat records will be deleted.")) return;
     
     try {
+        // Step 1: Update status to trigger the reload alert on the remote client
+        await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
+        
+        // Step 2: Wipe messages
         const messagesRef = collection(db, "chats", currentChatId, "messages");
         const snapshot = await getDocs(messagesRef);
         for (const d of snapshot.docs) {
              await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
         }
+        
+        // Step 3: Remove the document
         await deleteDoc(doc(db, "chats", currentChatId));
     } catch(e) {
         console.error("Purge failure:", e);

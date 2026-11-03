@@ -376,26 +376,28 @@ function setupMentorStatus() {
 }
 
 function setupMentorAlerts() {
-    // NEW LOGIC: Listen for ANY pending live requests in the global pool
+    // Query only by status to avoid Firebase composite index errors, filter 'live' client-side
     const chatsRef = collection(db, "chats");
-    const q = query(chatsRef, where("type", "==", "live"), where("status", "==", "pending"));
+    const q = query(chatsRef, where("status", "==", "pending"));
     
     onSnapshot(q, (snapshot) => {
         const banner = document.getElementById('mentor-alert-banner');
         if(!banner) return;
         
-        if (!snapshot.empty) {
+        let hasLiveRequest = false;
+        snapshot.forEach(docSnap => {
+            if (docSnap.data().type === 'live') hasLiveRequest = true;
+        });
+        
+        if (hasLiveRequest) {
             banner.innerHTML = '<i class="fa-solid fa-message text-primary"></i> <span>Live student request waiting in the global pool. Click to claim.</span>';
             banner.classList.remove('view-hidden');
-            
-            // NOTE: Make sure this points to your new mentor HTML file
             banner.onclick = () => window.location.href = 'mentor.html'; 
         } else {
             banner.classList.add('view-hidden');
         }
     });
 }
-
 async function checkAssignedExams() {
     const examsRef = collection(db, "assigned_exams");
     const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
