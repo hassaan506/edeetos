@@ -1,7 +1,6 @@
 // === FEATURE: FIREBASE IMPORTS ===
 import { auth, db } from "./firebase-config.js";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-// Changed imports to use getDoc instead of getDocs/query
 import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // === FEATURE: DOM ELEMENTS ===
@@ -26,7 +25,7 @@ if (loginForm) {
         try {
             localStorage.removeItem('edeetos_guest_mode');
 
-            // Username Resolution Logic - Now using the public lookup index
+            // Username Resolution Logic
             if (!identifier.includes('@')) {
                 const lookupRef = doc(db, "username_lookup", identifier);
                 const lookupSnap = await getDoc(lookupRef);
@@ -48,10 +47,10 @@ if (loginForm) {
             try {
                 await updateDoc(doc(db, "users", userCred.user.uid), { sessionToken: newToken });
             } catch (authErr) {
-                console.warn("Session token update skipped due to database rules. Login continuing...", authErr);
+                console.warn("Session token update skipped. Login continuing...", authErr);
             }
             
-            alert("Login Successful! Opening your Dashboard...");
+            alert("Login successful. Opening your dashboard...");
             window.location.href = "dashboard.html"; 
 
         } catch (error) {
@@ -73,7 +72,7 @@ if (btnGuest) {
             await signOut(auth);
         } catch(e) { }
 
-        alert("Entering Guest Mode. You will have limited access to questions.");
+        alert("Continuing as a guest. Your access will be limited.");
         window.location.href = "dashboard.html";
     });
 }
@@ -87,7 +86,7 @@ if (forgotPasswordLink) {
         let resetEmail = identifierInput;
 
         if (!resetEmail || !resetEmail.includes('@')) {
-            resetEmail = prompt("Please enter the email address associated with your account to reset your password:");
+            resetEmail = prompt("Please enter your email address to reset your password:");
         } else {
             const confirmEmail = confirm(`Send password reset link to ${resetEmail}?`);
             if (!confirmEmail) return;
@@ -99,7 +98,7 @@ if (forgotPasswordLink) {
 
         try {
             await sendPasswordResetEmail(auth, resetEmail);
-            alert("Password reset email sent! Please check your inbox and spam folder.");
+            alert("Password reset link sent! Check your inbox.");
         } catch (error) {
             console.error("Password Reset Error:", error);
             alert("Failed to send reset email: " + error.message);

@@ -1,10 +1,17 @@
 {
     "configurations": [
         {
+<<<<<<< HEAD
             "type": "chrome",
             "name": "http://127.0.0.1:3000/index.html",
             "request": "launch",
             "url": "http://127.0.0.1:3000/index.html"
+=======
+            "type": "msedge",
+            "name": "http://127.0.0.1:3000/login.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/login.html"
+>>>>>>> 27983a924be47f8447ae9483d9850f9356b83d37
         }
     ]
 }

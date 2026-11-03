@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session - EDEETOS</title>
+    <title>Session - EDEETOS Clinical</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="quiz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,25 +17,24 @@
 </head>
 <body class="quiz-body">
     
-    <div id="anti-screenshot-screen" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh; background-color: #000000; z-index: 2147483647; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <i class="fas fa-user-shield" style="color: #475569; font-size: 4rem; margin-bottom: 1.5rem;"></i>
-        <h2 style="color: white; font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem;">Screenshots Prohibited</h2>
-        <p style="color: #94a3b8; font-family: 'Nunito', sans-serif; font-size: 1rem; max-width: 400px;">For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
-        <button onclick="document.getElementById('anti-screenshot-screen').style.display='none'" class="btn-solid red-btn">I Understand</button>
+    <div id="anti-screenshot-screen" class="hidden full-screen-overlay">
+        <i class="fas fa-user-shield overlay-icon accent-text"></i>
+        <h2>Screenshots Prohibited</h2>
+        <p>For copyright protection, taking screenshots is not allowed on EDEETOS. Please rely on the bookmark and notes features.</p>
+        <button id="btn-understand-screenshot" class="action-btn next-btn full-width">I Understand</button>
     </div>
 
     <div class="quiz-content-wrapper">
-        
-        <!-- BOX 1: TOP NAV BAR -->
         <div class="top-nav-bar glass-panel">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
             <div class="top-tools practice-only">
+                <button id="theme-toggle-btn" class="pill-btn" title="Toggle Theme"><i class="fas fa-moon accent-text"></i> Theme</button>
                 <button id="shortcuts-btn" class="pill-btn">Keys ⌨️</button>
                 <button id="lab-values-btn" class="pill-btn">Labs 🔬</button>
-                <button id="pause-btn" class="pill-btn">Pause <i class="fas fa-pause"></i></button>
+                <button id="pause-btn" class="pill-btn">Pause <i class="fas fa-pause accent-text"></i></button>
             </div>
-            <!-- Visible ONLY in Exam Mode -->
-            <div class="exam-timers exam-only" style="display: none;">
+            
+            <div class="exam-timers exam-only hidden">
                 <div class="exam-timer-pill">
                     <svg class="tiny-ring" viewBox="0 0 36 36"><path class="circle current-q-circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" /></svg>
                     Current Q: <strong id="exam-q-timer">00:00</strong>
@@ -47,25 +46,32 @@
             </div>
         </div>
 
-        <div id="challenge-tracker-wrapper" style="display: none; width: 100%; background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 12px;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #e9d5ff; font-weight: bold; margin-bottom: 6px;">
+        <!-- STUDY ROOM BANNER (Moved Here) -->
+        <div id="study-room-banner" class="study-room-banner hidden">
+            <div class="banner-info">
+                <i class="fas fa-users accent-text"></i> 
+                <span>Room <strong id="banner-room-id" class="primary-text"></strong> <span id="banner-role-text" class="role-text"></span></span>
+                <span class="divider">|</span>
+                <span id="banner-members-container" class="members-container"></span>
+            </div>
+            <button id="btn-exit-guest-room" class="exit-btn hidden"><i class="fas fa-sign-out-alt"></i> Leave Room</button>
+            <button id="btn-exit-host-room" class="exit-btn hidden"><i class="fas fa-cog"></i> Room Settings</button>
+        </div>
+
+        <div id="challenge-tracker-wrapper" class="challenge-tracker hidden">
+            <div class="challenge-tracker-header">
                 <span id="challenge-name-display">Challenger Pace</span>
                 <span id="challenge-target-display">Target: 0%</span>
             </div>
-            <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.4); border-radius: 4px; overflow: hidden;">
-                <div id="challenge-bar-fill" style="height: 100%; background: #a855f7; width: 0%; box-shadow: 0 0 10px rgba(168,85,247,0.8); transition: width 1s linear;"></div>
+            <div class="challenge-bar-bg">
+                <div id="challenge-bar-fill" class="challenge-bar-fill"></div>
             </div>
         </div>
 
         <div class="quiz-grid-layout">
-            
-            <!-- LEFT / MAIN COLUMN -->
             <div class="main-column">
-                
-                <!-- BOX 4: QUESTION CARD -->
-                <div class="question-card glass-panel">
+                <div class="question-card glass-panel content-relative">
                     <div id="quiz-ui-container">
-                        
                         <div class="card-header-simple">
                             <div class="header-left">
                                 <span class="question-count-text" id="question-id-badge">Question 1 of 34</span>
@@ -74,62 +80,63 @@
                             </div>
                             
                             <div class="feedback-tracker-mini practice-only">
-                                <span class="feedback-text red-text">Incorrect <span id="wrong-count-num">0</span></span>
+                                <span class="feedback-text clinical-red-text">Incorrect <span id="wrong-count-num">0</span></span>
                                 <span class="status-dot-mini red-dot"></span>
-                                <div class="feedback-bar-bg"><div class="feedback-bar-fill" id="feedback-fill" style="width: 0%;"></div></div>
+                                <div class="feedback-bar-bg"><div class="feedback-bar-fill" id="feedback-fill"></div></div>
                                 <span class="status-dot-mini green-dot"></span>
                                 <span class="feedback-text green-text"><span id="right-count-num">0</span> Correct</span>
                             </div>
                         </div>
 
-                        <!-- Secret hidden tags for JS backwards compatibility -->
-                        <span id="wrong-count" style="display:none;"></span>
-                        <span id="right-count" style="display:none;"></span>
+                        <span id="wrong-count" class="hidden"></span>
+                        <span id="right-count" class="hidden"></span>
 
 						<div id="skipped-warning" class="skipped-warning hidden">
-                            <i class="fas fa-exclamation-circle"></i> You previously skipped this question. You must answer it now.
+                            <i class="fas fa-exclamation-circle accent-text"></i> You previously skipped this question. You must answer it now.
                         </div>
 
-                        <div id="point-badge" style="display: none; background: rgba(168, 85, 247, 0.2); border: 1px solid rgba(168, 85, 247, 0.5); color: #d8b4fe; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-bottom: 1rem; width: fit-content;"></div>
+                        <div id="point-badge" class="point-badge hidden"></div>
 
                         <div class="question-text" id="question-text">
                             Loading question...
                         </div>
 
                         <div class="options-container" id="options-container">
-                            <!-- JS injects options here -->
+                        </div>
+                        
+                        <div id="multiplayer-waiting-text" class="multiplayer-waiting hidden">
+                            <i class="fas fa-spinner fa-spin primary-text"></i> Waiting for others... (<span id="mp-answered-count">0</span>/<span id="mp-expected-count">0</span> online answered)
                         </div>
                     </div>
 
                     <div id="exam-result-screen" class="hidden result-screen">
                         <h2 id="result-title"></h2>
                         <p id="result-score"></p>
-                        <div class="result-actions">
-                            <button id="btn-challenge-friend" class="btn-solid purple-btn hidden">🎯 Challenge a Friend</button>
-                            <button id="btn-review-exam-mistakes" class="btn-outline yellow-btn hidden">Review Mistakes</button>
-                            <button id="btn-return-home" class="btn-solid green-btn">Save & Return</button>
+                        <div id="group-leaderboard-container" class="group-leaderboard hidden">
+                            <h3 class="leaderboard-title">Live Leaderboard (<span id="mp-finished-count">0</span>/<span id="mp-total-count">0</span> finished)</h3>
+                            <div id="group-leaderboard-list" class="leaderboard-list"></div>
+                        </div>
+                        <div class="result-actions mt-24">
+                            <button id="btn-challenge-friend" class="action-btn purple-btn hidden full-width mt-10">🎯 Challenge a Friend</button>
+                            <button id="btn-review-exam-mistakes" class="action-btn hint-btn hidden full-width mt-10">Review Mistakes</button>
+                            <button id="btn-return-home" class="action-btn next-btn full-width mt-10">Save & Return</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- BOX 5: BOTTOM ACTIONS -->
                 <div class="bottom-actions" id="bottom-actions-container">
                     <div class="action-row-top">
                         <button id="prev-btn" class="action-btn nav-util-btn practice-only"><i class="fas fa-arrow-left"></i></button>
                         <button id="skip-btn" class="action-btn nav-util-btn">Skip</button>
-                        <button id="ai-hint-btn" class="action-btn hint-btn practice-only" style="display: none;"><i class="far fa-lightbulb"></i> Hint</button>
-                        <button id="show-explanation-btn" class="action-btn explain-btn practice-only" style="display: none;">Explain</button>
+                        <button id="ai-hint-btn" class="action-btn hint-btn practice-only hidden"><i class="far fa-lightbulb accent-text"></i> Hint</button>
+                        <button id="show-explanation-btn" class="action-btn explain-btn practice-only hidden">Explain</button>
                     </div>
                     <button id="next-btn" class="action-btn next-btn">Next Question <i class="fas fa-arrow-right"></i></button>
                 </div>
-
             </div>
 
-            <!-- RIGHT / SIDEBAR COLUMN -->
             <div class="sidebar-column practice-only">
-                
-                <!-- BOX 2: TIMER PANEL (Only Circular Rings with Green Fill, No Duplicate Digital Text) -->
-                <div class="glass-panel timer-panel">
+                <div class="glass-panel timer-panel content-relative">
                     <div class="circular-timer">
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -153,22 +160,19 @@
                     </div>
                 </div>
 
-                <!-- BOX 3: COMBINED METADATA TAGS & UTILITY ICONS PANEL -->
-                <div class="glass-panel meta-utility-panel">
-                    <div id="exam-year-info" class="metadata-tags"></div>
+                <div class="glass-panel meta-utility-panel content-relative">
+                    <div id="exam-year-info" class="metadata-tags hidden"></div>
                     <div class="utility-panel">
-                        <button id="edit-q-btn" class="icon-btn square-tool" style="display: none;" title="Edit Question (Admin)"><i class="fas fa-pen"></i></button>
-                        <button id="copy-q-btn" class="icon-btn square-tool" style="display: none;" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
+                        <button id="edit-q-btn" class="icon-btn square-tool hidden" title="Edit Question (Admin)"><i class="fas fa-pen"></i></button>
+                        <button id="copy-q-btn" class="icon-btn square-tool hidden" title="Copy Question (Admin)"><i class="far fa-copy"></i></button>
                         <button id="note-btn" class="icon-btn square-tool" title="Your personal notes"><i class="fas fa-pencil-alt"></i></button>
-                        <button id="bookmark-btn" class="icon-btn square-tool" title="Save the question"><i class="far fa-star"></i></button>
-                        <button id="btn-report" class="icon-btn square-tool" title="Report the question"><i class="far fa-flag"></i></button>
+                        <button id="bookmark-btn" class="icon-btn square-tool" title="Save the question"><i class="far fa-star accent-text"></i></button>
+                        <button id="btn-report" class="icon-btn square-tool" title="Report the question"><i class="far fa-flag clinical-red-text"></i></button>
                     </div>
                 </div>
 
-                <!-- BOX 6: QUESTION NAVIGATION MATRIX -->
-                <div class="glass-panel matrix-panel">
+                <div class="glass-panel matrix-panel content-relative">
                     <div class="number-grid" id="number-grid"></div>
-                    
                     <div class="matrix-legend">
                         <span><span class="dot current"></span>Current</span>
                         <span><span class="dot correct"></span>Correct</span>
@@ -177,41 +181,105 @@
                         <span><span class="dot unanswered"></span>Unanswered</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
     
-    <!-- ========================================== -->
-    <!-- MODALS                                     -->
-    <!-- ========================================== -->
+    <div id="floating-toolkit" class="hidden floating-toolkit">
+        <button id="tool-hl-yellow" class="hl-btn yellow-hl" title="Highlight"><i class="fas fa-highlighter accent-text"></i></button>
+        <button id="tool-hl-strike" class="hl-btn strike-hl" title="Strike">S</button>
+    </div>
 
-    <!-- Pause Overlay Modal -->
-    <div id="pause-overlay" class="modal-overlay hidden" style="z-index: 9999;">
-        <div class="glass-panel modal-content center-text">
-            <h3 style="color: #6ee7b7; justify-content: center;"><i class="fas fa-pause-circle" style="font-size: 2.5rem;"></i> Session Paused</h3>
+    <div id="pause-overlay" class="modal-overlay hidden z-top">
+        <div class="modal-content center-text">
+            <h3 class="flex-center"><i class="fas fa-pause-circle pause-icon primary-text"></i> Session Paused</h3>
             <p class="modal-subtext">Your timer is paused. Take a breather and click below when you are ready to continue.</p>
             <button id="btn-resume-quiz" class="action-btn next-btn full-width">Resume Session</button>
         </div>
     </div>
 
-    <!-- Explanation Modal -->
-    <div id="explanation-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content wide-modal">
-            <h3><i class="fas fa-book-open"></i> Explanation</h3>
-            <div id="explanation-text" class="modal-body-text">Explanation text.</div>
+    <div id="account-suspended-modal" class="modal-overlay hidden full-screen-overlay">
+        <div class="modal-content center-text">
+            <i class="fas fa-ban clinical-red-text overlay-icon"></i>
+            <h1 class="modal-title">Account Suspended</h1>
+            <textarea id="appeal-text" class="glass-input large-textarea" placeholder="State your reason for appeal here..."></textarea>
             <div class="modal-actions-row">
+                <button id="btn-submit-appeal" class="action-btn hint-btn full-width">Submit Appeal</button>
+                <button id="btn-banned-logout" class="action-btn exit-btn full-width">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="skipped-popup-modal" class="modal-overlay hidden full-screen-overlay">
+        <div class="modal-content center-text">
+            <i class="fas fa-exclamation-triangle accent-text overlay-icon"></i>
+            <h2 class="modal-title">Skipped Questions Phase</h2>
+            <p class="modal-subtext">You are now returning to the questions you skipped. You must answer them now and can no longer skip.</p>
+            <button id="btn-understood-skip" class="action-btn next-btn full-width">Understood (Enter)</button>
+        </div>
+    </div>
+
+    <div id="must-answer-modal" class="modal-overlay hidden full-screen-overlay">
+        <div class="modal-content center-text shadow-panel">
+            <i class="fas fa-exclamation-circle accent-text overlay-icon"></i>
+            <h2 class="modal-title">Select an Answer</h2>
+            <p class="modal-subtext">Please select an answer to proceed. If you are stuck, use the <strong>Skip</strong> button.</p>
+            <button id="btn-understood-must-answer" class="action-btn next-btn full-width">Understood (Enter)</button>
+        </div>
+    </div>
+    
+    <div id="practice-complete-modal" class="modal-overlay hidden full-screen-overlay">
+        <div class="modal-content center-text">
+            <i class="fas fa-check-circle green-text overlay-icon"></i>
+            <h1 id="practice-complete-title" class="modal-title">Practice Complete!</h1>
+            <p id="practice-complete-desc" class="modal-subtext practice-desc">Great job! You have finished all the questions.</p>
+            <button id="btn-practice-home" class="action-btn next-btn complete-btn full-width mt-24">Save & Return Home</button>
+        </div>
+    </div>
+
+    <div id="dynamic-hint-modal" class="modal-overlay hidden full-screen-overlay">
+        <div class="modal-content shadow-panel border-accent">
+            <h2 class="hint-title accent-text"><i class="far fa-lightbulb"></i> Hint</h2>
+            <div id="dynamic-hint-text" class="hint-body justify-text"></div>
+            <button id="close-dynamic-hint" class="action-btn hint-btn full-width mt-24">Got it!</button>
+        </div>
+    </div>
+
+    <div id="mp-lobby-screen" class="modal-overlay hidden full-screen-overlay">
+        <div class="center-text">
+            <i class="fas fa-users primary-text overlay-icon"></i>
+            <h2 class="modal-title">Waiting for Host...</h2>
+            <p class="modal-subtext">The host is picking the test material. Hang tight.</p>
+        </div>
+    </div>
+
+    <div id="host-exit-modal" class="modal-overlay hidden z-top">
+        <div class="modal-content center-text">
+            <h3 class="clinical-red-text mb-10">Exit Study Room</h3>
+            <p class="modal-subtext mb-20">Do you want to just leave (keep room active), or end the session and kick all guests?</p>
+            <div class="modal-actions-col gap-10">
+                <button id="btn-leave-only" class="action-btn hint-btn">🚶‍♂️ Just Leave</button>
+                <button id="btn-end-room" class="action-btn exit-btn">🛑 End Room</button>
+                <button id="btn-cancel-exit" class="action-btn text-btn mt-5">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="explanation-modal" class="modal-overlay hidden">
+        <div class="modal-content wide-modal">
+            <h3 class="primary-text"><i class="fas fa-book-open"></i> Explanation</h3>
+            <div id="explanation-text" class="modal-body-text">Explanation text.</div>
+            <div class="modal-actions-row mt-24">
                 <button id="close-explanation" class="action-btn text-btn">Close</button>
                 <button id="modal-next-btn" class="action-btn next-btn" style="flex: 1;">Next Question <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
 
-    <!-- Full Lab Values Modal -->
     <div id="lab-values-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3><i class="fas fa-flask"></i> Normal Laboratory Values</h3>
-            <input type="text" id="lab-search-input" class="glass-input" placeholder="Search lab test (e.g., Sodium, pH, WBC)..." style="margin-bottom: 12px;">
+        <div class="modal-content wide-modal">
+            <h3 class="primary-text"><i class="fas fa-flask"></i> Normal Laboratory Values</h3>
+            <input type="text" id="lab-search-input" class="glass-input mb-12" placeholder="Search lab test (e.g., Sodium, pH, WBC)...">
             <div class="table-container">
                 <table id="lab-values-table" class="glass-table">
                     <tr><th>Test</th><th>Reference Range</th></tr>
@@ -309,49 +377,46 @@
                     <tr><td>24-hour Urine Protein</td><td>&lt;150 mg/day</td></tr>
                 </table>
             </div>
-            <button id="close-lab-values-btn" class="action-btn text-btn full-width">Close Reference</button>
+            <button id="close-lab-values-btn" class="action-btn text-btn full-width mt-10">Close Reference</button>
         </div>
     </div>
 
-    <!-- Bookmark Category Modal -->
     <div id="bookmark-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3 class="purple-text"><i class="fas fa-bookmark"></i> Save Bookmark</h3>
+        <div class="modal-content">
+            <h3 class="primary-text"><i class="fas fa-bookmark accent-text"></i> Save Bookmark</h3>
             <p class="modal-subtext">Choose a folder to save this question into.</p>
             
-            <select id="bookmark-folder-select" class="glass-input" style="margin-bottom: 15px;">
+            <select id="bookmark-folder-select" class="glass-input mb-15 mt-10">
                 <option value="For Revision">For Revision</option>
                 <option value="High Yield Topic">High Yield Topic</option>
                 <option value="For Exam">For Exam</option>
                 <option value="custom">Custom Folder...</option>
             </select>
             
-            <input type="text" id="bookmark-custom-input" class="glass-input hidden" placeholder="Enter custom folder name" style="margin-bottom: 15px;">
+            <input type="text" id="bookmark-custom-input" class="glass-input hidden mb-15 mt-10" placeholder="Enter custom folder name">
 
-            <div class="modal-actions-row right-align">
+            <div class="modal-actions-row right-align mt-24">
                 <button id="close-bookmark-modal" class="action-btn text-btn">Cancel</button>
                 <button id="save-bookmark-btn" class="action-btn next-btn" style="flex: 1;">Save to Folder</button>
             </div>
         </div>
     </div>
     
-    <!-- Notes Modal -->
     <div id="notes-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3><i class="fas fa-pen"></i> My Notes</h3>
-            <textarea id="note-input" class="glass-input large-textarea" placeholder="Type your personal notes here..."></textarea>
-            <div class="modal-actions-row right-align">
+        <div class="modal-content wide-modal">
+            <h3 class="primary-text"><i class="fas fa-pen accent-text"></i> My Notes</h3>
+            <textarea id="note-input" class="glass-input large-textarea mt-10" placeholder="Type your personal notes here..."></textarea>
+            <div class="modal-actions-row right-align mt-24">
                 <button id="close-notes-btn" class="action-btn text-btn">Cancel</button>
-                <button id="save-note-btn" class="action-btn next-btn">Save Note</button>
+                <button id="save-note-btn" class="action-btn next-btn" style="flex: 1;">Save Note</button>
             </div>
         </div>
     </div>
 
-    <!-- Shortcuts Modal -->
     <div id="shortcuts-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
-            <ul class="shortcuts-list">
+        <div class="modal-content">
+            <h3 class="primary-text"><i class="fas fa-keyboard accent-text"></i> Keyboard Shortcuts</h3>
+            <ul class="shortcuts-list mt-10">
                 <li><kbd>⬅</kbd> / <kbd>➡</kbd> : Next/Prev Question</li>
                 <li><kbd>A-E</kbd> / <kbd>1-5</kbd> : Select Option</li>
                 <li><kbd>Shift</kbd> + <kbd>A-E</kbd> : Strike Out Option</li>
@@ -363,52 +428,44 @@
                 <li><kbd>⬆</kbd> / <kbd>⬇</kbd> : Scroll Explanation</li>
                 <li><kbd>Esc</kbd> : Go Back / Exit</li>
             </ul>
-            <button id="close-shortcuts-btn" class="action-btn text-btn full-width">Got it</button>
+            <button id="close-shortcuts-btn" class="action-btn text-btn full-width mt-24">Got it</button>
         </div>
     </div>
 
-    <!-- Report Modal -->
     <div id="report-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content">
-            <h3 class="red-text"><i class="fas fa-flag"></i> Report Question</h3>
+        <div class="modal-content wide-modal">
+            <h3 class="clinical-red-text"><i class="fas fa-flag"></i> Report Question</h3>
             <p class="modal-subtext">Spot an error? Tell us why this question, answer, or explanation is incorrect.</p>
-            <textarea id="report-reason-input" class="glass-input large-textarea" placeholder="Explain the issue here..."></textarea>
-            <div class="modal-actions-row right-align">
+            <textarea id="report-reason-input" class="glass-input large-textarea mt-10" placeholder="Explain the issue here..."></textarea>
+            <div class="modal-actions-row right-align mt-24">
                 <button id="close-report-btn" class="action-btn text-btn">Cancel</button>
-                <button id="submit-report-btn" class="action-btn text-btn" style="background: rgba(239,68,68,0.3); color: #fca5a5;">Submit Report</button>
+                <button id="submit-report-btn" class="action-btn exit-btn">Submit Report</button>
             </div>
         </div>
     </div>
 
-    <!-- Share Challenge Modal -->
     <div id="share-challenge-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content center-text">
-            <h3 class="purple-text"><i class="fas fa-share-alt"></i> Challenge a Friend</h3>
+        <div class="modal-content center-text wide-modal">
+            <h3 class="primary-text"><i class="fas fa-share-alt accent-text"></i> Challenge a Friend</h3>
             <p class="modal-subtext">Your challenge code is ready! Share it with your friends.</p>
             
-            <div class="share-msg-box">
+            <div class="share-msg-box mt-10">
                 <p id="share-message-text"></p>
             </div>
             
-            <div class="modal-actions-col">
-                <button id="btn-copy-share" class="action-btn text-btn full-width blue-btn"><i class="fas fa-copy"></i> Copy Message</button>
-                <a id="btn-whatsapp-share" target="_blank" class="action-btn text-btn full-width whatsapp-btn"><i class="fab fa-whatsapp"></i> Share via WhatsApp</a>
-                <button id="close-share-modal" class="action-btn text-btn full-width">Close</button>
+            <div class="modal-actions-row mt-24">
+                <button id="btn-copy-share" class="action-btn purple-btn"><i class="fas fa-copy"></i> Copy Message</button>
+                <a id="btn-whatsapp-share" target="_blank" class="action-btn next-btn"><i class="fab fa-whatsapp"></i> Share via WhatsApp</a>
+                <button id="close-share-modal" class="action-btn text-btn">Close</button>
             </div>
         </div>
     </div>
 
-    <style>
-        #admin-edit-modal, #admin-edit-modal * { user-select: text !important; -webkit-user-select: text !important; }
-        .ql-editor { user-select: text !important; -webkit-user-select: text !important; cursor: text; }
-    </style>
-
-    <!-- Admin Edit Modal -->
-    <div id="admin-edit-modal" class="modal-overlay hidden">
-        <div class="glass-panel modal-content wide-modal scrollable-modal">
-            <h3><i class="fas fa-edit"></i> Edit Question</h3>
+    <div id="admin-edit-modal" class="modal-overlay hidden text-selectable">
+        <div class="modal-content wide-modal scrollable-modal">
+            <h3 class="primary-text"><i class="fas fa-edit accent-text"></i> Edit Question</h3>
             
-<div class="admin-grid">
+            <div class="admin-grid mt-10">
                 <div><label>Question ID</label><input type="text" id="edit-q-id" class="glass-input" disabled></div>
                 <div>
                     <label>Difficulty</label>
@@ -425,23 +482,63 @@
                 <div><label>Point (Rafiullah)</label><input type="text" id="edit-q-point" class="glass-input" placeholder="e.g. 123"></div>
             </div>
 
-            <label>Question Statement</label>
+            <label class="mt-10 mb-10" style="display:block; font-family: var(--font-secondary); font-size: 0.75rem; font-weight: 800; color: var(--text-color); text-transform: uppercase;">Question Statement</label>
             <div class="editor-container"><div id="edit-q-text"></div></div>
 
-            <div id="edit-options-container" class="admin-options-container"></div>
+            <div id="edit-options-container" class="admin-options-container mt-10 mb-10"></div>
 
-            <label>Hint</label>
+            <label class="mt-10 mb-10" style="display:block; font-family: var(--font-secondary); font-size: 0.75rem; font-weight: 800; color: var(--text-color); text-transform: uppercase;">Hint</label>
             <div class="editor-container"><div id="edit-q-hint"></div></div>
 
-            <label>Explanation</label>
-            <div class="editor-container"><div id="edit-q-explanation" style="height: 200px;"></div></div>
+            <label class="mt-10 mb-10" style="display:block; font-family: var(--font-secondary); font-size: 0.75rem; font-weight: 800; color: var(--text-color); text-transform: uppercase;">Explanation</label>
+            <div class="editor-container"><div id="edit-q-explanation" class="h-200"></div></div>
 
-            <div class="modal-actions-row right-align">
+            <div class="modal-actions-row right-align mt-24">
                 <button id="btn-cancel-edit" class="action-btn text-btn">Cancel</button>
                 <button id="btn-save-github" class="action-btn next-btn"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
     </div>
+
+    <template id="template-option-box">
+        <div class="option-box" role="button" tabindex="0">
+            <div class="option-text"></div>
+            <button class="strike-btn" title="Strike out option"><i class="fas fa-strikethrough"></i></button>
+        </div>
+    </template>
+
+    <template id="template-voter-tag">
+        <span class="voter-tag"></span>
+    </template>
+
+    <template id="template-leaderboard-row">
+        <div class="leaderboard-row">
+            <span class="lb-rank-name"></span>
+            <span class="lb-score-time">
+                <span class="lb-score"></span>
+                <span class="lb-time"><i class="far fa-clock"></i> <span class="lb-time-text"></span></span>
+            </span>
+        </div>
+    </template>
+
+    <template id="template-edit-option">
+        <div class="edit-option-row">
+            <input type="radio" name="edit-correct-opt" class="edit-radio" title="Mark as Correct">
+            <span class="edit-letter"></span>
+            <input type="text" class="glass-input edit-text-input">
+            <button type="button" class="tag-inject-btn action-btn" data-tag="br" title="Line Break">↵</button>
+            <button type="button" class="tag-inject-btn action-btn" data-tag="sub" title="Subscript">X₂</button>
+            <button type="button" class="tag-inject-btn action-btn" data-tag="sup" title="Superscript">X²</button>
+        </div>
+    </template>
+    
+    <template id="template-member-tag">
+        <span class="member-tag">
+            <i class="fas fa-user member-icon"></i> 
+            <span class="member-name"></span> 
+            <i class="fas member-status-icon" title=""></i>
+        </span>
+    </template>
 
     <script type="module" src="quiz.js"></script>
 </body>

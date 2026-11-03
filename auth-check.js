@@ -9,13 +9,11 @@ const authMenu = document.getElementById('auth-menu');
 if (authMenu) {
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // STATE: LOGGED IN - Render Dashboard & Logout controls
             authMenu.innerHTML = `
-                <li><a href="dashboard.html" class="btn-solid">My Dashboard</a></li>
-                <li><button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 1rem;">Logout</button></li>
+                <li><a href="dashboard.html" class="btn-solid">Console</a></li>
+                <li><button id="logout-btn" class="btn-outline" style="font-family: inherit; font-size: 0.95rem;">Disconnect</button></li>
             `;
 
-            // FEATURE: LOGOUT LOGIC
             document.getElementById('logout-btn').addEventListener('click', () => {
                 signOut(auth).then(() => {
                     window.location.reload(); 
@@ -23,10 +21,9 @@ if (authMenu) {
             });
 
         } else {
-            // STATE: LOGGED OUT - Render Register & Login controls
             authMenu.innerHTML = `
-                <li><a href="register.html" class="btn-outline">Register</a></li>
-                <li><a href="login.html" class="btn-solid">Log In</a></li>
+                <li><a href="login.html" class="btn-outline">Authenticate</a></li>
+                <li><a href="register.html" class="btn-solid">Initialize</a></li>
             `;
         }
     });

@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Reports - EDEETOS</title>
+    <title>Student Reports</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="reports.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Injecting Chart.js for Graph generation -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body style="margin: 0; height: 100dvh; display: flex; flex-direction: column;">
+<body>
 
-    <nav class="dashboard-nav" style="background: rgba(14, 48, 35, 0.85); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 100; box-sizing: border-box;">
-        <div class="nav-inner" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;">
-            <div class="nav-logo-box">
-                <a href="dashboard.html"><img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" style="height: 40px; width: auto;"></a>
+    <nav class="dashboard-nav">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;">
+            <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--primary);">
+                REPORT SYSTEM
             </div>
-            <div class="nav-actions">
-                <button onclick="window.location.href='dashboard.html'" class="btn-outline" style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; cursor: pointer;">
-                    ⬅ Back to Dashboard
+            <div>
+                <button onclick="window.location.href='dashboard.html'" class="btn-outline">
+                    Back to Dashboard
                 </button>
             </div>
         </div>
@@ -27,27 +29,36 @@
         
         <aside class="reports-sidebar">
             <div class="sidebar-header">
-                <h2><i class="fas fa-users"></i> Students</h2>
+                <h2>Users</h2>
                 <input type="text" id="search-students" class="search-input" placeholder="Search by name or email...">
             </div>
             <div id="student-list" class="student-list">
-                <div class="loading-state">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <p>Loading records...</p>
+                <div class="empty-state">
+                    <p class="tech-font font-bold">Loading records...</p>
                 </div>
             </div>
         </aside>
 
         <main id="report-details" class="reports-main">
             <div class="empty-state">
-                <i class="fas fa-chart-pie"></i>
-                <h3>Select a Student</h3>
-                <p>Click on a student from the list to view their detailed performance report.</p>
+                <i class="fas fa-chart-bar"></i>
+                <h3>Select a User</h3>
+                <p class="tech-font">Click a user from the list to load performance data.</p>
             </div>
         </main>
         
     </div>
 
+    <!-- Mouse Tracking Script for Bento Cards -->
+    <script>
+        document.addEventListener('mousemove', e => {
+            document.querySelectorAll('.bento-card, .stat-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+    </script>
     <script type="module" src="studentReports.js"></script>
 </body>
 </html>

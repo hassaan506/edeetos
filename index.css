@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* === NAVBAR BASE FIXES === */
 .navbar { padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; background: var(--bg-main); border-bottom: 1px solid var(--surface-border); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
@@ -14,6 +15,8 @@ html.dark-mode .nav-links a:hover { color: var(--accent); }
 .hamburger-btn-index { display: none; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); padding: 0.5rem; }
 .close-sidebar-btn-index { display: none; }
 
+=======
+>>>>>>> 27983a924be47f8447ae9483d9850f9356b83d37
 /* === LAYOUT UTILITIES === */
 .section-wrapper { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
 .reveal { opacity: 0; transform: translateY(20px); transition: all 0.5s ease-out; }
@@ -49,7 +52,11 @@ html.dark-mode .floating-icon { color: var(--accent); }
 .floating-label { font-size: 1rem; color: var(--text-muted); font-weight: 600; }
 
 /* === DYNAMIC BENTO GRID === */
+<<<<<<< HEAD
 .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+=======
+.bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+>>>>>>> 27983a924be47f8447ae9483d9850f9356b83d37
 
 /* The Hover Glow Effect */
 #features { position: relative; }
@@ -104,6 +111,7 @@ html.dark-mode .team-role { color: var(--accent); }
 .form-input:focus { outline: none; border-color: var(--primary-ui); }
 html.dark-mode .form-input:focus { border-color: var(--accent); }
 
+<<<<<<< HEAD
 /* === MOBILE RESPONSIVENESS (INDEX / LANDING PAGE) === */
 @media (max-width: 900px) {
     .navbar { padding: 1rem 1.25rem; }
@@ -196,4 +204,9 @@ html.dark-mode .form-input:focus { border-color: var(--accent); }
     .hero-grid, .info-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .floating-card { max-width: 100%; }
     .contact-grid { padding: 2.5rem; }
+=======
+@media (max-width: 900px) {
+    .hero-grid, .info-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .floating-card { max-width: 100%; }
+>>>>>>> 27983a924be47f8447ae9483d9850f9356b83d37
 }
