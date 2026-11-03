@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinical Dashboard | System Ops</title>
+    <title>Mentorship | EDEETOS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="mentor.css">
@@ -11,33 +11,32 @@
 <body>
 
     <nav class="navbar-container">
-        <a href="dashboard.html" class="btn-outline">Return</a>
-        <div class="mono-label" style="font-size: 1rem;">CLINICAL OPERATIONS</div>
-        <div style="width: 80px;"></div> <!-- Spacer for flex alignment -->
+        <a href="dashboard.html" class="btn-outline">Back</a>
+        <div class="mono-label" style="font-size: 1rem;">MENTORSHIP</div>
+        <div style="width: 80px;"></div>
     </nav>
 
     <main style="padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto;">
         
         <header style="margin-bottom: 2rem;">
-            <div class="mono-label">Module: Mentorship Hub</div>
-            <h1 style="font-size: 2.5rem;">Connection Terminal</h1>
-            <p style="color: var(--primary-ui); font-family: var(--font-secondary); font-size: 0.85rem;">[ SYS.READY ] SELECT A PROFILE OR REVIEW LOGS</p>
+            <h1 style="font-size: 2.5rem;">Mentorship Hub</h1>
+            <p style="color: var(--primary-ui); font-family: var(--font-secondary); font-size: 0.85rem;">Connect with a guide in real-time or leave a message.</p>
         </header>
 
         <!-- STUDENT VIEW -->
         <div id="student-view" style="display: none;">
             <div class="bento-grid">
                 <div class="bento-card card-success">
-                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Active Personnel (Online)</h3>
+                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Online Mentors</h3>
                     <div id="online-mentors-list" style="display: grid; gap: 0.5rem;">
-                        <span class="mono-label">Querying database...</span>
+                        <span class="mono-label">Loading mentors...</span>
                     </div>
                 </div>
                 
                 <div class="bento-card card-primary">
-                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Standby Personnel (Offline)</h3>
+                    <h3 class="mono-label" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Offline Mentors (Leave a Message)</h3>
                     <div id="offline-mentors-list" style="display: grid; gap: 0.5rem;">
-                        <span class="mono-label">Querying database...</span>
+                        <span class="mono-label">Loading mentors...</span>
                     </div>
                 </div>
             </div>
@@ -47,11 +46,11 @@
         <div id="mentor-view" style="display: none;">
             <div class="bento-card card-primary" style="margin-bottom: 1rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
-                    <h3 class="mono-label">Incoming Requests & Logs</h3>
-                    <button id="toggle-status-btn" class="btn-outline">Set Status</button>
+                    <h3 class="mono-label">Student Requests & Messages</h3>
+                    <button id="toggle-status-btn" class="btn-outline">Go Online</button>
                 </div>
                 <div id="requests-list" class="bento-grid">
-                    <span class="mono-label" style="text-align: center; display: block; width: 100%;">No active requests found.</span>
+                    <span class="mono-label" style="text-align: center; display: block; width: 100%;">No pending requests.</span>
                 </div>
             </div>
         </div>
@@ -60,21 +59,21 @@
         <div id="live-chat-view" class="chat-container">
             <div class="chat-header">
                 <div>
-                    <h3 id="chat-partner-name" style="margin: 0; font-size: 1.25rem;">Connection Active</h3>
-                    <div id="chat-type-badge" class="mono-label" style="margin-top: 4px;">Status: LIVE</div>
+                    <h3 id="chat-partner-name" style="margin: 0; font-size: 1.25rem;">Connected</h3>
+                    <div id="chat-type-badge" class="mono-label" style="margin-top: 4px;">Live Session</div>
                 </div>
                 <button id="btn-end-chat" class="btn-outline btn-danger">
-                    End Session
+                    End Chat
                 </button>
             </div>
             
             <div id="chat-messages" class="chat-messages">
-                <div class="mono-label" style="text-align: center; margin-top: auto; opacity: 0.5;">[ SECURE LOG INITIATED ]</div>
+                <div class="mono-label" style="text-align: center; margin-top: auto; opacity: 0.5;">Chat Started</div>
             </div>
             
             <form id="chat-form" class="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Enter data..." required autocomplete="off">
-                <button type="submit" class="btn-solid">Transmit</button>
+                <input type="text" id="chat-input" placeholder="Type a message..." required autocomplete="off">
+                <button type="submit" class="btn-solid">Send</button>
             </form>
         </div>
 
