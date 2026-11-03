@@ -136,7 +136,7 @@ button {
     background: var(--primary-ui);
     color: #FFFFFF;
     border: 1px solid var(--primary-ui);
-    border-bottom: 3px solid #0C2E9A; /* Hardcoded darker bottom for press */
+    border-bottom: 3px solid #0C2E9A;
 }
 html.dark-mode .btn-solid { border-bottom: 3px solid #0B398C; }
 
@@ -251,7 +251,7 @@ html.dark-mode .btn-solid { border-bottom: 3px solid #0B398C; }
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-radius: 0; /* Razor sharp square indicator */
+    border-radius: 0;
     margin-right: 0.5rem;
 }
 .status-online { background-color: var(--status-success); }
