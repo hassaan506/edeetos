@@ -372,8 +372,16 @@ function renderGrid() {
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         
         titleEl.textContent = cardTitle;
-        countEl.textContent = `${doneCount} / ${qCount}`;
-        progFill.style.width = `${percent}%`;
+
+        // MODIFIED: Bug 1 - Hide progress in exam mode
+        if (currentMode === 'exam') {
+            countEl.textContent = `${qCount} Qs`;
+            progFill.parentElement.style.display = 'none';
+        } else {
+            countEl.textContent = `${doneCount} / ${qCount}`;
+            progFill.style.width = `${percent}%`;
+            progFill.parentElement.style.display = 'block';
+        }
 
         if (currentView === 'exam') {
             const mistakeCount = getMistakesCount(currentView, [cardTitle]);
@@ -394,6 +402,13 @@ function renderGrid() {
             badgeCont.appendChild(mistakeBadge);
             badgeCont.appendChild(accBadge);
             statsContainer.appendChild(badgeCont);
+
+            // MODIFIED: Bug 1 - Hide stats accuracy row in exam mode
+            if (currentMode === 'exam') {
+                statsContainer.style.display = 'none';
+            } else {
+                statsContainer.style.display = 'flex';
+            }
         }
 
         card.onclick = async () => {
@@ -956,8 +971,9 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const progWrapper = clone.querySelector('.progress-wrapper');
     const statsWrapper = clone.querySelector('.stats-wrapper');
 
+    // MODIFIED: Bug 1 - Hide progress and solved data in exam mode inside popup
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
-const cBadge = document.createElement('span');
+        const cBadge = document.createElement('span');
         cBadge.className = 'badge gray-badge';
         cBadge.textContent = `${qCount} Qs`;
         countWrapper.appendChild(cBadge);
@@ -965,15 +981,23 @@ const cBadge = document.createElement('span');
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         const cBadge = document.createElement('span');
         cBadge.className = 'badge gray-badge';
-        cBadge.textContent = `${doneCount} /${qCount}`;
+        
+        if (currentMode === 'exam') {
+            cBadge.textContent = `${qCount} Qs`;
+        } else {
+            cBadge.textContent = `${doneCount} / ${qCount}`;
+        }
+        countWrapper.appendChild(cBadge);
 
-        const progCont = document.createElement('div');
-        progCont.className = 'progress-container';
-        const progFill = document.createElement('div');
-        progFill.className = 'progress-bar-fill';
-        progFill.style.width = `${percent}%`;
-        progCont.appendChild(progFill);
-        progWrapper.appendChild(progCont);
+        if (currentMode !== 'exam') {
+            const progCont = document.createElement('div');
+            progCont.className = 'progress-container';
+            const progFill = document.createElement('div');
+            progFill.className = 'progress-bar-fill';
+            progFill.style.width = `${percent}%`;
+            progCont.appendChild(progFill);
+            progWrapper.appendChild(progCont);
+        }
     }
 
     if (currentView === 'exam') {
@@ -995,6 +1019,11 @@ const cBadge = document.createElement('span');
         badgeCont.appendChild(mistakeBadge);
         badgeCont.appendChild(accBadge);
         statsWrapper.appendChild(badgeCont);
+
+        // MODIFIED: Bug 1 - Hide accuracy badge in exam mode inside popup
+        if (currentMode === 'exam') {
+            statsWrapper.style.display = 'none';
+        }
     }
 
     const pathStr = JSON.stringify(itemPath);
@@ -1815,11 +1844,13 @@ if (btnAnalytics) {
 
             const smartHubActions = clone.querySelector('.smart-hub-actions');
             const totalMistakesCount = allMistakes.length;
+            
+            // MODIFIED: Bug 3 - Set wrap options to nowrap to display correctly
             if (totalMistakesCount > 0) {
                 const btn = document.createElement('button');
                 btn.id = 'btn-train-redemption';
                 btn.className = 'action-btn btn-outline-amber-alt';
-                btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'wrap'; btn.style.gap = '8px';
+                btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'nowrap'; btn.style.alignItems = 'center'; btn.style.gap = '8px';
                 
                 const span1 = document.createElement('span'); span1.style.fontWeight = 'bold'; span1.style.flex = '1';
                 const i = document.createElement('i'); i.className = 'fas fa-sync-alt'; i.style.marginRight = '8px';
@@ -1833,7 +1864,7 @@ if (btnAnalytics) {
                 const btn = document.createElement('button');
                 btn.id = 'btn-train-focus';
                 btn.className = 'action-btn btn-filled-red';
-                btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'wrap'; btn.style.gap = '8px';
+                btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'nowrap'; btn.style.alignItems = 'center'; btn.style.gap = '8px';
                 
                 const span1 = document.createElement('span'); span1.style.fontWeight = 'bold'; span1.style.flex = '1';
                 const i = document.createElement('i'); i.className = 'fas fa-bullseye'; i.style.marginRight = '8px';
@@ -1847,7 +1878,7 @@ if (btnAnalytics) {
                 const btn = document.createElement('button');
                 btn.id = 'btn-train-mix';
                 btn.className = 'action-btn btn-filled-blue';
-                btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'wrap'; btn.style.gap = '8px';
+                btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'nowrap'; btn.style.alignItems = 'center'; btn.style.gap = '8px';
                 
                 const span1 = document.createElement('span'); span1.style.fontWeight = 'bold'; span1.style.flex = '1';
                 const i = document.createElement('i'); i.className = 'fas fa-balance-scale'; i.style.marginRight = '8px';
