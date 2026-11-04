@@ -7,15 +7,15 @@
 
 :root {
     /* Strict Color Matrix */
-    --bg-color: #EDECE6;
+    --bg-color: #FAF8F3;
     --surface-color: #FFFFFF;
-    --text-primary: #030407;
+    --text-primary: #08090B;
     --text-secondary: #52525B;
     
     /* VIBRANT BRAND COLORS */
-    --primary-ui: #1546D9; /* Cobalt Blue */
+    --primary-ui: #08090B; /* Cobalt Blue */
     --primary-ui-hover: #1038b0;
-    --accent-color: #F9B318; /* Sun Yellow */
+    --accent-color: #FFC900; /* Sun Yellow */
     
     --border-color: #D1D0C9;
     --grid-line: rgba(21, 70, 217, 0.08);
@@ -32,14 +32,14 @@
 }
 
 html.dark-mode, body.dark-mode {
-    --bg-color: #030407;
-    --surface-color: #0A0C10;
-    --text-primary: #E2E2E2;
+    --bg-color: #08090B;
+    --surface-color: #121418;
+    --text-primary: #F5F3EF;
     --text-secondary: #A1A1AA;
     
-    --primary-ui: #1558C9;
+    --primary-ui: #FFC900;
     --primary-ui-hover: #2563EB;
-    --accent-color: #D4FF24;
+    --accent-color: #FFC900;
     
     --border-color: #1F2229;
     --grid-line: rgba(212, 255, 36, 0.04);
@@ -225,6 +225,18 @@ html.dark-mode .course-display-val { color: var(--text-primary); }
 html.dark-mode .badge-pro { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
 .badge-banned { background: rgba(220, 38, 38, 0.1); color: var(--danger); border: 1px solid rgba(220, 38, 38, 0.2); }
 
+/* Status Badge Role Overrides (Theme Independent) */
+.badge-role-admin { background: #9333EA !important; color: #FFF !important; border: 1px solid #7E22CE !important; }
+.badge-role-mentor { background: #0284C7 !important; color: #FFF !important; border: 1px solid #0369A1 !important; }
+.badge-role-student { background: #16A34A !important; color: #FFF !important; border: 1px solid #15803D !important; }
+
+/* Performance Metrics Icons */
+.text-emerald { color: var(--success) !important; }
+.text-blue { color: var(--primary-ui) !important; }
+html.dark-mode .text-blue { color: var(--accent-color) !important; }
+.text-red { color: var(--danger) !important; }
+.text-warning { color: var(--warning) !important; }
+
 /* === ACTION BUTTONS === */
 .action-btn { border-radius: var(--radius); border: 1px solid var(--border-color); background: var(--surface-color); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 0.8rem 1.2rem; cursor: pointer; color: var(--text-primary); display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s ease, border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; box-shadow: var(--shadow-sm); text-transform: uppercase; letter-spacing: 0.05em; will-change: transform;}
 .action-btn:hover { border-color: var(--primary-ui); color: var(--primary-ui); }
@@ -302,7 +314,6 @@ html.dark-mode .task-item-card { border-left-color: var(--accent-color); }
 html.dark-mode .task-item-card:hover { border-color: var(--accent-color); }
 .task-item-title { font-weight: 800; color: var(--text-primary); font-size: 1rem; margin-bottom: 8px; letter-spacing: -0.01em;}
 .task-badge-time, .task-badge-count { font-family: 'Courier New', monospace; background: var(--bg-color); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 2px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 800;}
-
 
 /* === UTILITY CLASSES === */
 .view-hidden { display: none !important; }
@@ -444,6 +455,7 @@ html.dark-mode .hamburger-btn { color: var(--text-primary); }
     .modal-title-blue, .modal-title-dark { font-size: 1.25rem; }
     .premium-grid { grid-template-columns: 1fr; }
 }
+
 /* === FLOATING MENTOR ALERT === */
 .mentor-alert-floating {
     position: fixed;
@@ -472,4 +484,12 @@ html.dark-mode .mentor-alert-floating {
 .mentor-alert-floating:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px -8px rgba(21, 70, 217, 0.2);
+}
+.site-footer a {
+    color: var(--primary-ui);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
 }

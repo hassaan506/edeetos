@@ -27,11 +27,11 @@
     <div class="quiz-content-wrapper">
         <div class="top-nav-bar glass-panel">
             <button class="exit-btn" id="global-exit-btn">Exit Session</button>
-            <div class="top-tools practice-only">
+<div class="top-tools">
                 <button id="theme-toggle-btn" class="pill-btn" title="Toggle Theme"><i class="fas fa-moon accent-text"></i> Theme</button>
                 <button id="shortcuts-btn" class="pill-btn">Keys ⌨️</button>
                 <button id="lab-values-btn" class="pill-btn">Labs 🔬</button>
-                <button id="pause-btn" class="pill-btn">Pause <i class="fas fa-pause accent-text"></i></button>
+                <button id="pause-btn" class="pill-btn practice-only">Pause <i class="fas fa-pause accent-text"></i></button>
             </div>
             
             <div class="exam-timers exam-only hidden">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <!-- STUDY ROOM BANNER (Moved Here) -->
+        <!-- STUDY ROOM BANNER -->
         <div id="study-room-banner" class="study-room-banner hidden">
             <div class="banner-info">
                 <i class="fas fa-users accent-text"></i> 
@@ -261,6 +261,17 @@
                 <button id="btn-leave-only" class="action-btn hint-btn">🚶‍♂️ Just Leave</button>
                 <button id="btn-end-room" class="action-btn exit-btn">🛑 End Room</button>
                 <button id="btn-cancel-exit" class="action-btn text-btn mt-5">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-exit-modal" class="modal-overlay hidden z-top">
+        <div class="modal-content center-text">
+            <h3 class="clinical-red-text mb-10"><i class="fas fa-sign-out-alt"></i> Exit Session</h3>
+            <p id="exit-modal-desc" class="modal-subtext mb-20">Are you sure you want to exit the session?</p>
+            <div class="modal-actions-col gap-10">
+                <button id="btn-confirm-exit" class="action-btn exit-btn">🛑 Yes, Exit</button>
+                <button id="btn-cancel-custom-exit" class="action-btn text-btn mt-5">Cancel</button>
             </div>
         </div>
     </div>

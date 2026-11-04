@@ -3,6 +3,29 @@ import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, collection, query, where, addDoc, updateDoc, onSnapshot, orderBy, serverTimestamp, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// ==========================================
+// THEME TOGGLE LOGIC
+// ==========================================
+function attachDarkMode() {
+    const darkModeBtn = document.getElementById('dark-mode-toggle');
+    if (darkModeBtn) {
+        const icon = darkModeBtn.querySelector('i');
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (icon) icon.className = 'fas fa-sun';
+        }
+
+        darkModeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', attachDarkMode);
+
 let currentUser = null;
 let currentUserData = null;
 let currentRole = 'STUDENT';
@@ -400,17 +423,14 @@ btnEndChat.addEventListener('click', async () => {
     if (!confirm("End this session? Chat records will be deleted.")) return;
     
     try {
-        // Step 1: Update status to trigger the reload alert on the remote client
         await updateDoc(doc(db, "chats", currentChatId), { status: 'ended' });
         
-        // Step 2: Wipe messages
         const messagesRef = collection(db, "chats", currentChatId, "messages");
         const snapshot = await getDocs(messagesRef);
         for (const d of snapshot.docs) {
              await deleteDoc(doc(db, "chats", currentChatId, "messages", d.id));
         }
         
-        // Step 3: Remove the document
         await deleteDoc(doc(db, "chats", currentChatId));
     } catch(e) {
         console.error("Purge failure:", e);

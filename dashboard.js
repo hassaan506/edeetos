@@ -133,7 +133,7 @@ onAuthStateChanged(auth, async (user) => {
                         input.type = 'checkbox';
                         input.className = 'course-check';
                         input.value = userCourseCode;
-                        input.checked = true;
+                        input.checked = false; // Bug fix: Removed default checking behavior
                         
                         label.appendChild(input);
                         label.appendChild(document.createTextNode(` ${courseNamesMap[userCourseCode] || "Unknown Course"}`));
@@ -163,14 +163,17 @@ onAuthStateChanged(auth, async (user) => {
                 // ROLE UI BADGES
                 if(subStatus) subStatus.className = "status-badge";
                 if (userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
-                    if(subStatus) { subStatus.textContent = "ADMIN"; subStatus.classList.add('badge-pro'); }
+                    if(subStatus) { subStatus.textContent = "ADMIN"; subStatus.classList.add('badge-role-admin'); }
                     document.getElementById('btn-admin-panel').classList.remove('view-hidden');
                     if (freeWarning) freeWarning.classList.add('view-hidden');
+                } else if (userRoleUpper === 'MENTOR') {
+                    if(subStatus) { subStatus.textContent = "MENTOR"; subStatus.classList.add('badge-role-mentor'); }
+                    if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else if (hasActiveSubscription) { 
-                    if(subStatus) { subStatus.textContent = "PREMIUM"; subStatus.classList.add('badge-pro'); }
+                    if(subStatus) { subStatus.textContent = "PREMIUM"; subStatus.classList.add('badge-role-student'); }
                     if (freeWarning) freeWarning.classList.add('view-hidden');
                 } else {
-                    if(subStatus) { subStatus.textContent = "FREE TIER"; subStatus.classList.add('badge-free'); }
+                    if(subStatus) { subStatus.textContent = "FREE TIER"; subStatus.classList.add('badge-role-student'); }
                     if (freeWarning) { 
                         freeWarning.classList.remove('view-hidden'); 
                         freeWarning.textContent = "(Free Tier Limit: 50 Questions / Subject)"; 
@@ -820,7 +823,14 @@ if (btnOpenProfile) {
         if (!currentUserData) return alert("Loading your profile data...");
         document.getElementById('profile-modal').classList.remove('view-hidden');
         
-        document.getElementById('prof-role-badge').textContent = (currentUserData.role || 'STUDENT').toUpperCase();
+        const roleUpper = (currentUserData.role || 'STUDENT').toUpperCase();
+        const badgeEl = document.getElementById('prof-role-badge');
+        badgeEl.textContent = roleUpper;
+        badgeEl.className = "status-badge mt-05";
+        if (roleUpper === 'ADMIN' || roleUpper === 'MANAGEMENT') badgeEl.classList.add('badge-role-admin');
+        else if (roleUpper === 'MENTOR') badgeEl.classList.add('badge-role-mentor');
+        else badgeEl.classList.add('badge-role-student');
+
         ['name', 'username', 'email', 'phone', 'uni', 'location', 'exam-date'].forEach(id => {
             const map = {name:'fullName', uni:'institution', 'exam-date':'examDate'};
             if (document.getElementById(`prof-${id}`)) document.getElementById(`prof-${id}`).value = currentUserData[map[id] || id] || '';

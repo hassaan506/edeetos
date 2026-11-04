@@ -1,6 +1,29 @@
 import { auth } from './firebase-config.js';
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+// ==========================================
+// THEME TOGGLE LOGIC
+// ==========================================
+function attachDarkMode() {
+    const darkModeBtn = document.getElementById('dark-mode-toggle');
+    if (darkModeBtn) {
+        const icon = darkModeBtn.querySelector('i');
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (icon) icon.className = 'fas fa-sun';
+        }
+
+        darkModeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', attachDarkMode);
+
 let activeDeck = [];
 let currentIndex = 0;
 let attemptedCards = JSON.parse(localStorage.getItem('edeetos_fc_attempts') || '{}');
@@ -40,9 +63,21 @@ document.getElementById('deck-grid').onmousemove = e => {
     }
 };
 
+async function prefetchAllDecks() {
+    const promises = medicalSystems.map(async sys => {
+        try {
+            const res = await fetch(`Flashcards/${sys.id}.json`);
+            if (res.ok) deckCache[sys.id] = await res.json();
+        } catch(e) {}
+    });
+    await Promise.all(promises);
+    buildSystemSelection(); // Re-render with actual data populated
+}
+
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-        buildSystemSelection();
+        buildSystemSelection(); // Renders placeholder "Loading" states first
+        await prefetchAllDecks(); // Fetches all decks in background and re-renders true progress
     } else {
         window.location.href = 'login.html';
     }
@@ -86,7 +121,7 @@ function buildSystemSelection() {
             <div class="bento-content">
                 <div class="card-header">
                     <h3 class="card-title">${system.title}</h3>
-                    <span class="meta-text">${isLoaded ? `${attemptedQs} / ${totalQs}` : 'Not Started'}</span>
+                    <span class="meta-text">${isLoaded ? `${attemptedQs} / ${totalQs}` : 'Loading...'}</span>
                 </div>
                 <div class="progress-track">
                     <div class="progress-fill" style="width: ${percent}%; ${!isLoaded ? 'background: transparent;' : ''}"></div>
@@ -133,7 +168,6 @@ function renderTopics(systemId, systemTitle) {
     const fullDeck = deckCache[systemId];
     
     fullDeck.forEach(card => {
-        // Fix applied here: Group by Chapter first, then Topic, then Full Deck.
         const category = card.Chapter || card.Topic || 'Full Deck';
         if (!topicsMap[category]) topicsMap[category] = [];
         topicsMap[category].push(card);
@@ -183,7 +217,6 @@ function renderCard() {
     document.getElementById('fc-jump-input').value = currentIndex + 1;
     document.getElementById('fc-progress-total').textContent = `of ${activeDeck.length}`;
     
-    // Breadcrumbs updated to reflect Chapter logic
     const activeCategory = card.Chapter || card.Topic || 'General';
     document.getElementById('fc-meta').textContent = `${card.System || 'System'} > ${activeCategory}`;
     
@@ -235,15 +268,12 @@ prevBtn.onclick = (e) => {
 
 document.getElementById('btn-eval-easy').onclick = (e) => {
     e.stopPropagation(); 
-    // Only mark it complete when you actually know it
     markCardAttempted(activeDeck[currentIndex]);
     moveToNextCard();
 };
 
 document.getElementById('btn-eval-hard').onclick = (e) => {
     e.stopPropagation(); 
-    // Do NOT mark as attempted.
-    // Push the failed card to the back of the deck and move forward.
     activeDeck.push(activeDeck[currentIndex]);
     moveToNextCard();
 };

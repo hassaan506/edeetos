@@ -2350,22 +2350,43 @@ function toggleStrikeByIndex(index) {
 // 11. EXIT LOGIC (Solo & Group Study)
 // ==========================================
 const globalExitBtn = document.getElementById('global-exit-btn');
+const customExitModal = document.getElementById('custom-exit-modal');
+const btnConfirmExit = document.getElementById('btn-confirm-exit');
+const btnCancelCustomExit = document.getElementById('btn-cancel-custom-exit');
+const exitModalDesc = document.getElementById('exit-modal-desc');
 
 if (globalExitBtn) {
-    globalExitBtn.onclick = async (e) => {
+    globalExitBtn.onclick = (e) => {
         e.preventDefault();
         
         if (activeRoomId) {
             const isGuest = localStorage.getItem('is_study_guest') === 'true';
             if (!isGuest) {
-                if (!confirm("Return to dashboard to pick new questions? (Guests will wait in the lobby)")) return;
+                exitModalDesc.textContent = "Return to dashboard to pick new questions? (Guests will wait in the lobby)";
             } else {
-                if (!confirm("Are you sure you want to leave the study group?")) return;
+                exitModalDesc.textContent = "Are you sure you want to leave the study group?";
             }
         } else {
-            if (!confirm("Are you sure you want to exit the session?")) return;
+            exitModalDesc.textContent = "Are you sure you want to exit the session?";
         }
+        
+        customExitModal.classList.remove('hidden');
+        customExitModal.classList.add('show');
+    };
+}
 
+if (btnCancelCustomExit) {
+    btnCancelCustomExit.onclick = () => {
+        customExitModal.classList.remove('show');
+        setTimeout(() => customExitModal.classList.add('hidden'), 300);
+    };
+}
+
+if (btnConfirmExit) {
+    btnConfirmExit.onclick = async () => {
+        customExitModal.classList.remove('show');
+        setTimeout(() => customExitModal.classList.add('hidden'), 300);
+        
         globalExitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
         globalExitBtn.disabled = true;
 
@@ -2400,6 +2421,7 @@ if (globalExitBtn) {
         }
     };
 }
+
 async function updateSpacedRepetition() {
     if (localStorage.getItem('edeetos_guest_mode') === 'true') return;
     const user = auth.currentUser;
@@ -2758,23 +2780,25 @@ const themeToggleBtn = document.getElementById('theme-toggle-btn');
 if (themeToggleBtn) {
     const icon = themeToggleBtn.querySelector('i');
     
-    // Set initial icon based on root element state
-    if (document.documentElement.classList.contains('dark-mode')) {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.documentElement.classList.add('dark-mode');
         icon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+        document.body.classList.remove('dark-mode');
+        document.documentElement.classList.remove('dark-mode');
+        icon.classList.replace('fa-sun', 'fa-moon');
     }
 
     themeToggleBtn.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Toggle class on root and body
         document.documentElement.classList.toggle('dark-mode');
         document.body.classList.toggle('dark-mode');
         
-        // Save state to localStorage
         const isDark = document.documentElement.classList.contains('dark-mode');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
         
-        // Swap icon visually
         if (isDark) {
             icon.classList.replace('fa-moon', 'fa-sun');
         } else {

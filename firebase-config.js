@@ -12,17 +12,17 @@ window.alert = function(message, onCloseCallback) {
     const isDark = document.documentElement.classList.contains('dark-mode');
     
     // Applying rigid enterprise styling to alerts
-    const bgCol = isDark ? '#0A0C10' : '#ffffff';
-    const textCol = isDark ? '#E2E2E2' : '#030407';
+    const bgCol = isDark ? '#121418' : '#ffffff';
+    const textCol = isDark ? '#F5F3EF' : '#08090B';
     const borderCol = isDark ? 'rgba(21, 88, 201, 0.3)' : 'rgba(21, 70, 217, 0.15)';
-    const btnBg = isDark ? '#D4FF24' : '#1546D9';
-    const btnText = isDark ? '#030407' : '#ffffff';
+    const btnBg = isDark ? '#FFC900' : '#08090B';
+    const btnText = isDark ? '#08090B' : '#ffffff';
 
     box.style.cssText = `background:${bgCol}; padding:3rem; border-radius:4px; border:1px solid ${borderCol}; box-shadow:0 24px 48px rgba(0,0,0,0.5); text-align:center; width:90%; max-width:450px; transform:scale(0.95); opacity:0; transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);`;
 
     const header = document.createElement('p');
     header.textContent = 'SYSTEM NOTIFICATION';
-    header.style.cssText = `font-family:'Courier New', monospace; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; color:${isDark ? '#D4FF24' : '#1546D9'}; margin-bottom:1rem;`;
+    header.style.cssText = `font-family:'Courier New', monospace; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; color:${isDark ? '#FFC900' : '#08090B'}; margin-bottom:1rem;`;
 
     const msg = document.createElement('p');
     msg.textContent = message;

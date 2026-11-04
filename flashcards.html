@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Active Recall - EDEETOS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="flashcards.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="brand-title">EDEETOS | Active Recall</div>
-        <button onclick="window.location.href='dashboard.html'" class="btn">Exit</button>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <button id="dark-mode-toggle" class="btn"><i class="fas fa-moon"></i></button>
+            <button onclick="window.location.href='dashboard.html'" class="btn">Exit</button>
+        </div>
     </nav>
 
     <!-- SYSTEM / TOPIC SELECTION -->
@@ -95,4 +104,4 @@
 
     <script type="module" src="flashcards.js"></script>
 </body>
-</html> 
+</html>

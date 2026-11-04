@@ -3,18 +3,18 @@
 /* ========================================== */
 :root {
     /* Main Backgrounds */
-    --bg-main: #EDECE6; /* Background of the entire app */
+    --bg-main: #FAF8F3; /* Background of the entire app */
     --surface-card: #ffffff; /* Background color of all cards/panels */
     --surface-border: rgba(21, 70, 217, 0.15); /* Color of card borders */
     --grid-line: rgba(3, 4, 7, 0.04); /* Faint blueprint grid lines on background */
     
     /* Text Colors */
-    --text-main: #030407; /* Primary dark text */
+    --text-main: #08090B; /* Primary dark text */
     --text-muted: #555555; /* Secondary/gray text */
     
     /* Brand & Status Colors */
-    --primary-ui: #1546D9; /* Main EDEETOS Blue */
-    --accent: #F9B318; /* Accent Yellow */
+    --primary-ui: #08090B; /* Main EDEETOS Blue */
+    --accent: #FFC900; /* Accent Yellow */
     --success: #10b981; /* Green for Correct/Solved */
     --error: #ef4444; /* Red for Mistakes/Errors */
     --warning: #f59e0b; /* Orange/Yellow for Bookmarks/Skipped */
@@ -27,14 +27,14 @@
 
 /* Dark Mode Overrides */
 html.dark-mode, body.dark-mode {
-    --bg-main: #030407;
-    --surface-card: #0A0C10;
+    --bg-main: #08090B;
+    --surface-card: #121418;
     --surface-border: rgba(21, 88, 201, 0.3);
     --grid-line: rgba(226, 226, 226, 0.03);
-    --text-main: #E2E2E2;
+    --text-main: #F5F3EF;
     --text-muted: #8892B0;
-    --primary-ui: #1558C9;
-    --accent: #D4FF24;
+    --primary-ui: #FFC900;
+    --accent: #FFC900;
     --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
@@ -252,6 +252,74 @@ html.dark-mode .filter-pill input[type="checkbox"]:checked { background: var(--a
 .glass-input:focus { border-color: var(--primary-ui) !important; box-shadow: 0 0 0 4px rgba(21, 70, 217, 0.1); }
 html.dark-mode .glass-input:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 4px rgba(212, 255, 36, 0.1); }
 
+/* FANCY NUMBER INPUTS (Replaces default arrows with sleek buttons) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.fancy-number-input {
+    display: flex;
+    align-items: center;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    border-radius: 50px;
+    overflow: hidden;
+    width: fit-content;
+    transition: 0.2s;
+}
+.fancy-number-input:focus-within {
+    border-color: var(--primary-ui);
+    box-shadow: 0 0 0 4px rgba(21, 70, 217, 0.1);
+}
+html.dark-mode .fancy-number-input:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(212, 255, 36, 0.1);
+}
+
+.fancy-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fancy-btn:hover {
+    color: var(--primary-ui);
+    background: var(--bg-main);
+}
+html.dark-mode .fancy-btn:hover {
+    color: var(--accent);
+}
+
+.fancy-number-input input[type="number"] {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.6rem 0.5rem !important;
+    width: 60px !important; /* Forces fixed width inside wrapper */
+    text-align: center;
+    font-weight: 800;
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+.fancy-number-input.w-100 { width: 100%; }
+
+.action-buttons-flex {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 /* Global Buttons */
 .btn-solid, .btn-outline, .action-btn { 
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -259,7 +327,7 @@ html.dark-mode .glass-input:focus { border-color: var(--accent) !important; box-
     transition: all 0.2s; cursor: pointer; font-size: 0.95rem; font-family: inherit;
 }
 .btn-solid { background: var(--primary-ui) !important; color: #ffffff !important; border: 1px solid var(--primary-ui) !important; }
-html.dark-mode .btn-solid { background: var(--accent) !important; color: #030407 !important; border-color: var(--accent) !important; }
+html.dark-mode .btn-solid { background: var(--accent) !important; color: #08090B !important; border-color: var(--accent) !important; }
 .btn-solid:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: var(--shadow-float); }
 
 .btn-outline, .action-btn { background: var(--surface-card) !important; color: var(--text-main) !important; border: 1px solid var(--surface-border) !important; }
@@ -359,7 +427,6 @@ html.dark-mode .cart-icon { color: var(--accent); }
 .exam-action-bar .input-group { display: flex; flex-direction: column; gap: 0.3rem; }
 .exam-action-bar .input-group label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
 .timer-desc { font-size: 0.7rem; color: var(--text-muted); opacity: 0.7; }
-.exam-action-bar input[type="number"] { width: 100px; padding: 0.6rem 1rem !important; text-align: center; font-weight: 800; border-radius: 50px !important; }
 
 /* ========================================== */
 /* --- 10. POPUPS & MODALS --- */
@@ -430,7 +497,7 @@ html.dark-mode .item-checkbox:checked::after { color: #000; }
 
 /* Modal Max-Width Utils (Adjust these to constrain modal widths) */
 .z-9000 { z-index: 9000; } .max-w-380 { max-width: 380px; } .max-w-400 { max-width: 400px; } .max-w-450 { max-width: 450px; } .max-w-500 { max-width: 500px; } .max-w-600 { max-width: 600px; } .max-w-800 { max-width: 800px; } .max-w-1000 { max-width: 1000px; }
-.text-center { text-align: center; } .text-left { text-align: left; } .flex-1 { flex: 1; }
+.text-center { text-align: center; } .text-left { text-align: left; } .flex-1 { flex: 1; } .align-center { align-items: center; }
 .flex-gap-10 { display: flex; gap: 10px; } .flex-col-gap-10 { display: flex; flex-direction: column; gap: 10px; } .flex-gap-12 { display: flex; gap: 12px; } .flex-gap-1rem-center { display: flex; gap: 1rem; justify-content: center; }
 .mb-1-5 { margin-bottom: 1.5rem !important; } .mb-10 { margin-bottom: 10px; } .mb-15 { margin-bottom: 15px; } .mb-20 { margin-bottom: 20px; } .mt-5 { margin-top: 5px; } .mt-10 { margin-top: 10px; } .mt-20 { margin-top: 20px; } .p-8 { padding: 0.8rem; }
 .flex-col { display: flex; flex-direction: column; } .w-100 { width: 100% !important; }
@@ -578,7 +645,6 @@ select.glass-input option { background: var(--surface-card); color: var(--text-m
     .exam-action-bar { flex-direction: column; gap: 1.5rem; padding: 1.5rem; bottom: 0; width: 100%; border-radius: 0; border-left: none; border-right: none; border-bottom: none; }
     .exam-action-bar .cart-controls { flex-wrap: wrap; width: 100%; justify-content: space-between; gap: 1rem; }
     .exam-action-bar .input-group { flex: 1; min-width: 45%; }
-    .exam-action-bar input[type="number"] { width: 100%; }
     
     .popup-content { padding: 0; border-radius: 12px; }
     .popup-header { padding: 1.5rem; }

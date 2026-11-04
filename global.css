@@ -1,10 +1,10 @@
 /* === THEME VARIABLES === */
 :root {
-    --bg-main: #EDECE6;
-    --text-main: #030407;
+    --bg-main: #FAF8F3;
+    --text-main: #08090B;
     --text-muted: #555555;
-    --primary-ui: #1546D9;
-    --accent: #F9B318;
+    --primary-ui: #08090B;
+    --accent: #FFC900;
     
     --surface-card: #ffffff;
     --surface-border: rgba(21, 70, 217, 0.15);
@@ -14,13 +14,13 @@
 }
 
 html.dark-mode {
-    --bg-main: #030407;
-    --text-main: #E2E2E2;
+    --bg-main: #08090B;
+    --text-main: #F5F3EF;
     --text-muted: #8892B0;
-    --primary-ui: #1558C9;
-    --accent: #D4FF24;
+    --primary-ui: #FFC900;
+    --accent: #FFC900;
     
-    --surface-card: #0A0C10;
+    --surface-card: #121418;
     --surface-border: rgba(21, 88, 201, 0.3);
     --grid-line: rgba(226, 226, 226, 0.03);
     
@@ -60,7 +60,7 @@ h3 { font-size: 1.4rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
     background: var(--primary-ui); color: #ffffff !important; border: 1px solid var(--primary-ui); 
 }
 html.dark-mode .btn-solid { 
-    background: var(--accent); color: #030407 !important; border-color: var(--accent); 
+    background: var(--accent); color: #08090B !important; border-color: var(--accent); 
 }
 .btn-solid:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: var(--shadow-float); }
 

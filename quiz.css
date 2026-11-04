@@ -2,12 +2,12 @@
 
 /* 1. BASE THEMES & STRICT COLOR MATRIX */
 :root {
-  --bg-color: #EDECE6;
+  --bg-color: #FAF8F3;
   --surface-color: #FFFFFF;
   --border-color: #D1D5DB;
-  --text-color: #030407;
-  --primary-ui: #1546D9; /* Cobalt Blue */
-  --accent: #F9B318; /* Sun Yellow */
+  --text-color: #08090B;
+  --primary-ui: #08090B; /* Cobalt Blue */
+  --accent: #FFC900; /* Sun Yellow */
   --clinical-red: #D91515; /* Strict red reserved solely for hard errors */
   --success: #10b981; /* Success Green */
   --warning: #f59e0b;
@@ -17,12 +17,12 @@
 }
 
 html.dark-mode, body.dark-mode, body.dark-mode.quiz-body {
-  --bg-color: #030407;
-  --surface-color: #0A0C10;
+  --bg-color: #08090B;
+  --surface-color: #121418;
   --border-color: #1F2937;
-  --text-color: #E2E2E2;
-  --primary-ui: #1558C9; /* Electric Cobalt */
-  --accent: #D4FF24; /* Acid Lime */
+  --text-color: #F5F3EF;
+  --primary-ui: #FFC900; /* Electric Cobalt */
+  --accent: #FFC900; /* Acid Lime */
   --clinical-red: #B91C1C;
 }
 
@@ -284,7 +284,7 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 .grid-num.active { background: var(--primary-ui); color: #FFFFFF; border-color: var(--primary-ui); }
 .grid-num.correct { background: var(--success); color: #FFFFFF; border-color: var(--success); }
 .grid-num.incorrect { background: var(--clinical-red); color: #FFFFFF; border-color: var(--clinical-red); }
-.grid-num.skipped { background: var(--accent); color: #030407; border-color: var(--accent); }
+.grid-num.skipped { background: var(--accent); color: #08090B; border-color: var(--accent); }
 
 .matrix-legend { 
     display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); font-family: var(--font-secondary); font-size: 0.72rem; color: var(--text-color); font-weight: 800; justify-content: center; text-transform: uppercase; 
@@ -369,7 +369,7 @@ html.dark-mode .next-btn { border-bottom-color: color-mix(in srgb, var(--primary
 .whatsapp-btn { background: color-mix(in srgb, var(--primary-ui) 15%, var(--bg-color)); border-color: var(--primary-ui); color: var(--primary-ui); text-decoration: none; }
 .whatsapp-btn:hover { background: var(--primary-ui); color: #fff; }
 .yellow-btn { background: color-mix(in srgb, var(--accent) 15%, var(--bg-color)); border-color: var(--accent); color: var(--text-color); }
-.yellow-btn:hover { background: var(--accent); color: #030407; }
+.yellow-btn:hover { background: var(--accent); color: #08090B; }
 .red-btn, .report-submit-btn { background: var(--clinical-red); border-color: var(--clinical-red); color: #fff; border-bottom-color: color-mix(in srgb, var(--clinical-red) 50%, #000); }
 
 .shortcuts-list { list-style: none; padding: 0; margin: 0 0 24px 0; color: var(--text-color); font-size: 0.95rem; line-height: 2; }
@@ -414,6 +414,10 @@ body.mode-exam .practice-only,
 body.mode-exam #question-difficulty-badge,
 body.mode-exam #difficulty-dot { display: none !important; }
 body.mode-exam .exam-only { display: flex !important; }
+
+@media (min-width: 1024px) {
+    body.mode-exam .quiz-grid-layout { grid-template-columns: 1fr; }
+}
 
 .exam-timers { display: flex; gap: 12px; flex-wrap: wrap; }
 .exam-timer-pill { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 6px 12px; color: var(--text-color); font-family: var(--font-secondary); font-weight: 800; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; text-transform: uppercase; }

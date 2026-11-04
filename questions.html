@@ -154,13 +154,24 @@
         <div class="cart-controls">
             <div class="input-group">
                 <label>Total Qs</label>
-                <input type="number" id="exam-q-count" class="glass-input" placeholder="e.g. 50">
+                <div class="fancy-number-input">
+                    <button type="button" class="fancy-btn minus-btn" data-target="exam-q-count"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="exam-q-count" class="glass-input" placeholder="50">
+                    <button type="button" class="fancy-btn plus-btn" data-target="exam-q-count"><i class="fas fa-plus"></i></button>
+                </div>
             </div>
             <div class="input-group" id="timer-wrapper">
                 <label>Mins (Exam)</label>
-                <input type="number" id="exam-timer" class="glass-input" placeholder="60">
+                <div class="fancy-number-input">
+                    <button type="button" class="fancy-btn minus-btn" data-target="exam-timer"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="exam-timer" class="glass-input" placeholder="60">
+                    <button type="button" class="fancy-btn plus-btn" data-target="exam-timer"><i class="fas fa-plus"></i></button>
+                </div>
             </div>
-            <button class="btn-solid start-btn" id="start-exam-btn" disabled>Execute ➡</button>
+            <div class="action-buttons-flex">
+                <button class="btn-outline action-btn" id="assign-exam-btn" style="display: none;">Assign to Student</button>
+                <button class="btn-solid start-btn" id="start-exam-btn" disabled>Execute ➡</button>
+            </div>
         </div>
     </div>
 
@@ -175,9 +186,13 @@
                 <h3 class="mock-title m-0">⚡ Quick Mock</h3>
                 <button id="btn-cancel-mock" class="icon-btn"><i class="fas fa-times"></i></button>
             </div>
-            <div class="popup-body text-center">
+            <div class="popup-body text-center flex-col align-center">
                 <p class="mock-desc">Enter the number of questions. Timer auto-sets to 1.2 mins per question.</p>
-                <input type="number" id="mock-q-count" class="glass-input mb-1-5 mock-input text-center" value="100" min="5" max="300">
+                <div class="fancy-number-input w-100 justify-center mb-1-5">
+                    <button type="button" class="fancy-btn minus-btn" data-target="mock-q-count"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="mock-q-count" class="glass-input mock-input text-center" value="100" min="5" max="300">
+                    <button type="button" class="fancy-btn plus-btn" data-target="mock-q-count"><i class="fas fa-plus"></i></button>
+                </div>
             </div>
             <div class="popup-footer">
                 <button id="btn-start-mock" class="btn-solid w-100">Start Exam</button>

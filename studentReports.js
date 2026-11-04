@@ -11,7 +11,7 @@ const detailsPanel = document.getElementById('report-details');
 
 let studentsData = [];
 let currentUserRole = 'STUDENT';
-let chartInstance = null; // Track chart to destroy on re-render
+let chartInstance = null; 
 
 const activeCourse = localStorage.getItem('edeetos_active_course');
 const idbCache = {
@@ -42,6 +42,39 @@ const idbCache = {
         } catch(e) { return null; }
     }
 };
+
+// ==========================================
+// THEME TOGGLE LOGIC
+// ==========================================
+function attachDarkMode() {
+    const darkModeBtn = document.getElementById('dark-mode-toggle');
+    if (darkModeBtn) {
+        const icon = darkModeBtn.querySelector('i');
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            if (icon) icon.className = 'fas fa-sun';
+        }
+
+        darkModeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            // Re-render chart strictly for color swap
+            if(chartInstance) {
+                const activeStudentId = document.querySelector('.student-item.active');
+                if(activeStudentId) {
+                    const activeFilter = document.getElementById('course-filter')?.value || 'all';
+                    const studentObj = studentsData.find(s => s.id === activeStudentId.dataset.uid);
+                    if(studentObj) displayDetailedReport(studentObj, activeFilter);
+                }
+            }
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', attachDarkMode);
 
 // ==========================================
 // TIME FORMATTING HELPER
@@ -152,11 +185,12 @@ function renderStudentList(list) {
     list.forEach(student => {
         const item = document.createElement('div');
         item.className = 'student-item';
+        item.dataset.uid = student.id; 
         
         const isMe = student.fullName.includes("(Me)");
         if (isMe) {
-            item.style.borderLeft = "4px solid var(--primary)";
-            item.style.background = "var(--bg)";
+            item.style.borderLeft = "4px solid var(--primary-ui)";
+            item.style.background = "var(--bg-color)";
         }
         
         item.innerHTML = `
@@ -274,17 +308,14 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         return;
     }
 
-    // Show loading state
     detailsPanel.innerHTML = `
         <div class="empty-state">
             <h3 class="tech-font text-primary">Loading Data...</h3>
         </div>
     `;
 
-    // 1. Ensure databases are loaded
 	await loadRequiredBanks(activeCourseFilter);
 
-    // 2. Fetch Sharded Progress Data
     const uid = student.id;
     const fetchShard = async (folder, docName) => {
         try { 
@@ -313,7 +344,6 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     
     await Promise.all(fetchTasks);
 
-    // 3. Build UI Selection
     let filterOptions = `<option value="all">All Courses & Books</option>`;
     if (currentUserRole === 'ADMIN' || currentUserRole === 'MENTOR' || currentUserRole === 'MANAGEMENT') {
         filterOptions += `<optgroup label="Courses">`;
@@ -454,7 +484,6 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     const overallAccuracy = absoluteAttempts > 0 ? Math.round((absoluteSolved / absoluteAttempts) * 100) : 0;
     const combinedTime = formatTime(totalPracticeTime + totalExamTime);
 
-    // Deep Analysis
     let weakestTopic = 'N/A';
     let weakestAccuracy = 100;
     let strongestTopic = 'N/A';
@@ -462,19 +491,18 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     let reviewNeededCount = 0;
 
     Object.entries(topicStats).forEach(([topic, stats]) => {
-        if (stats.solved + stats.mistakes >= 5) { // Only count if they actually practiced it
+        if (stats.solved + stats.mistakes >= 5) { 
             if (stats.accuracy < weakestAccuracy) { weakestAccuracy = stats.accuracy; weakestTopic = topic; }
             if (stats.accuracy > strongestAccuracy) { strongestAccuracy = stats.accuracy; strongestTopic = topic; }
             if (stats.accuracy < 60) { reviewNeededCount++; }
         }
     });
     
-    // Sort Exams for Chart and Table
-    examHistory.sort((a, b) => new Date(a.date) - new Date(b.date)); // Ascending for Chart
+    examHistory.sort((a, b) => new Date(a.date) - new Date(b.date)); 
     const chartLabels = examHistory.slice(-10).map(e => new Date(e.date).toLocaleDateString(undefined, {month: 'short', day: 'numeric'}));
     const chartScores = examHistory.slice(-10).map(e => e.percentage || 0);
 
-    const reversedHistory = [...examHistory].reverse(); // Descending for Table
+    const reversedHistory = [...examHistory].reverse();
     let historyHtml = reversedHistory.length === 0 ? `<p class="empty-data-text">No Exam History</p>` : `
         <div class="overflow-x">
             <table class="history-table">
@@ -501,7 +529,6 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
             </table>
         </div>`;
 
-    // 4. Inject Strict Bento Layout
     detailsPanel.innerHTML = `
         <div class="details-header">
             <div>
@@ -572,20 +599,36 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         </div>
 
         <div class="bento-card">
-            <h3>Detailed Topic Mastery</h3>
-            ${topicHtml || '<p class="empty-data-text">No topic data available for this selection.</p>'}
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                <h3 style="margin: 0; border: none; padding: 0;">Detailed Topic Mastery</h3>
+                <input type="text" id="topic-search" class="search-input" placeholder="Search topics, subjects..." style="width: 250px; padding: 0.5rem 0.75rem; font-size: 0.8rem;">
+            </div>
+            <div class="topic-mastery-list" id="topic-mastery-list">
+                ${topicHtml || '<p class="empty-data-text">No topic data available for this selection.</p>'}
+            </div>
         </div>
     `;
 
-    // 5. Initialize Chart.js safely after injection
+    // Hook up real-time search filtering logic
+    const topicSearch = document.getElementById('topic-search');
+    if (topicSearch) {
+        topicSearch.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('#topic-mastery-list .topic-row').forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(term) ? 'flex' : 'none';
+            });
+        });
+    }
+
     setTimeout(() => {
         const ctx = document.getElementById('progressChart');
         if (ctx && chartLabels.length > 0) {
             if (chartInstance) chartInstance.destroy();
             
             const isDark = document.documentElement.classList.contains('dark-mode');
-            const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
-            const textColor = isDark ? '#888888' : '#555555';
+            const gridColor = isDark ? '#1F2229' : '#D1D0C9'; 
+            const textColor = isDark ? '#A1A1AA' : '#52525B'; 
+            const chartAccent = isDark ? '#FFC900' : '#08090B'; 
 
             chartInstance = new Chart(ctx, {
                 type: 'line',
@@ -594,12 +637,12 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
                     datasets: [{
                         label: 'Exam Score (%)',
                         data: chartScores,
-                        borderColor: '#1546D9',
-                        backgroundColor: 'rgba(21, 70, 217, 0.1)',
+                        borderColor: chartAccent,
+                        backgroundColor: isDark ? 'rgba(255, 201, 0, 0.1)' : 'rgba(8, 9, 11, 0.1)',
                         borderWidth: 2,
                         tension: 0.1,
                         fill: true,
-                        pointBackgroundColor: '#1546D9',
+                        pointBackgroundColor: chartAccent,
                         pointRadius: 4,
                         pointHoverRadius: 6
                     }]
@@ -610,10 +653,10 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
                     plugins: {
                         legend: { display: false },
                         tooltip: {
-                            backgroundColor: isDark ? '#0A0C10' : '#FFFFFF',
-                            titleColor: isDark ? '#E2E2E2' : '#030407',
-                            bodyColor: isDark ? '#E2E2E2' : '#030407',
-                            borderColor: isDark ? 'rgba(226, 226, 226, 0.15)' : 'rgba(3, 4, 7, 0.15)',
+                            backgroundColor: isDark ? '#121418' : '#FFFFFF',
+                            titleColor: isDark ? '#F5F3EF' : '#08090B',
+                            bodyColor: isDark ? '#F5F3EF' : '#08090B',
+                            borderColor: gridColor,
                             borderWidth: 1,
                             padding: 10,
                             displayColors: false
@@ -640,7 +683,6 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         displayDetailedReport(student, e.target.value);
     });
 
-    // Re-attach Mouse Tracking
     document.querySelectorAll('.bento-card, .stat-card').forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();

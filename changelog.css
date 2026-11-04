@@ -2,12 +2,12 @@
 
 :root {
     /* Light Mode Variables */
-    --bg-color: #EDECE6;
+    --bg-color: #FAF8F3;
     --card-bg: #FFFFFF;
-    --text-main: #030407;
+    --text-main: #08090B;
     --text-muted: #555555;
-    --primary: #1546D9;
-    --accent: #F9B318;
+    --primary: #08090B;
+    --accent: #FFC900;
     
     --success: #16A34A;
     --danger: #DC2626;
@@ -22,12 +22,12 @@
 
 body.dark-mode {
     /* Dark Mode Variables */
-    --bg-color: #030407;
-    --card-bg: #0A0C10;
-    --text-main: #E2E2E2;
+    --bg-color: #08090B;
+    --card-bg: #121418;
+    --text-main: #F5F3EF;
     --text-muted: #888888;
-    --primary: #1558C9;
-    --accent: #D4FF24;
+    --primary: #FFC900;
+    --accent: #FFC900;
     
     --success: #22C55E;
     --danger: #EF4444;

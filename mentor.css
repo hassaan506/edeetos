@@ -3,11 +3,11 @@
 /* ========================================== */
 
 :root {
-    --bg-color: #EDECE6;
+    --bg-color: #FAF8F3;
     --card-bg: #FFFFFF;
-    --text-color: #030407;
-    --primary-ui: #1546D9;
-    --accent: #F9B318;
+    --text-color: #08090B;
+    --primary-ui: #08090B;
+    --accent: #FFC900;
     
     --status-success: #16A34A;
     --status-danger: #DC2626;
@@ -22,11 +22,11 @@
 }
 
 html.dark-mode {
-    --bg-color: #030407;
-    --card-bg: #0A0C10;
-    --text-color: #E2E2E2;
-    --primary-ui: #1558C9;
-    --accent: #D4FF24;
+    --bg-color: #08090B;
+    --card-bg: #121418;
+    --text-color: #F5F3EF;
+    --primary-ui: #FFC900;
+    --accent: #FFC900;
     --border-color: #1A1F29;
 }
 
@@ -82,6 +82,8 @@ html.dark-mode .btn-solid { border-bottom: 3px solid #0B398C; }
 .btn-outline { background: transparent; color: var(--text-color); border: 1px solid var(--border-color); border-bottom: 3px solid var(--border-color); }
 .btn-danger { color: var(--status-danger); border-color: var(--status-danger); border-bottom: 3px solid var(--status-danger); }
 .btn-success { background: var(--status-success); color: #FFF; border: 1px solid var(--status-success); border-bottom: 3px solid #14532d; }
+
+.theme-btn { padding: 0.5rem 0.75rem; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
 
 .glass-input, textarea {
     width: 100%; background: var(--bg-color); color: var(--text-color);

@@ -138,8 +138,8 @@ const journeyModal = document.getElementById('journey-modal');
 const milestoneModal = document.getElementById('milestone-reward-modal');
 const revisionModal = document.getElementById('revision-popup-modal');
 const resetModal = document.getElementById('reset-modal');
-const analyticsModal = document.getElementById('analytics-modal');
 const mockModal = document.getElementById('mock-exam-modal');
+const analyticsModal = document.getElementById('analytics-modal');
 
 // Missing action buttons defined properly
 const btnJoinChallenge = document.getElementById('btn-join-challenge');
@@ -163,6 +163,33 @@ if (darkModeBtn) {
         updateIcon();
     });
 }
+
+// FANCY NUMBER INPUTS LOGIC
+document.querySelectorAll('.fancy-number-input').forEach(wrapper => {
+    const minusBtn = wrapper.querySelector('.minus-btn');
+    const plusBtn = wrapper.querySelector('.plus-btn');
+    const input = wrapper.querySelector('input[type="number"]');
+
+    if (minusBtn && plusBtn && input) {
+        minusBtn.addEventListener('click', () => {
+            let val = parseInt(input.value) || 0;
+            let min = parseInt(input.getAttribute('min')) || 1;
+            let step = parseInt(input.getAttribute('step')) || (val >= 20 ? 5 : 1);
+            if (val - step >= min) { input.value = val - step; } 
+            else { input.value = min; }
+            input.dispatchEvent(new Event('change'));
+        });
+        plusBtn.addEventListener('click', () => {
+            let val = parseInt(input.value) || 0;
+            let max = parseInt(input.getAttribute('max')) || 999;
+            let step = parseInt(input.getAttribute('step')) || (val >= 10 ? 5 : 1);
+            if (val + step <= max) { input.value = val + step; }
+            else { input.value = max; }
+            input.dispatchEvent(new Event('change'));
+        });
+    }
+});
+
 
 // ==========================================
 // 3. UTILITY FUNCTIONS (Sanitization & Parsers)
@@ -488,7 +515,7 @@ if (globalSearch && searchDropdown) {
             isSearchEngineLoading = true;
             globalSearch.placeholder = "Booting Search Engine...";
             try {
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
                 const baseUrl = isLocal ? '.' : 'https://hassaan506.github.io/edeetos';
                 const workerUrl = `${baseUrl}/assets/sqlite/sqlite.worker.js`;
                 const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
@@ -1065,7 +1092,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const hasSubLevels = typeof nextData === 'object' && nextData !== null && Object.keys(nextData).length > 0;
     itemDiv.appendChild(clone);
 
-if (hasSubLevels) {
+    if (hasSubLevels) {
         const actionBtn = document.createElement('button');
         actionBtn.className = 'btn-outline w-100 mt-10';
         actionBtn.style.padding = '0.8rem 1rem';
@@ -1129,7 +1156,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     if (pool && pool.length > 0) {
-        // MODIFIED: Universal Normalizer that ignores casing and trims trailing empty spaces 
+        // Universal Normalizer that ignores casing and trims trailing empty spaces 
         // to prevent false-negative filters causing massive question drops
         const norm = (val) => String(val || "").trim().toLowerCase();
 
@@ -1260,8 +1287,8 @@ function switchMode(mode) {
         if (modePracBtn) { modePracBtn.classList.add('active-mode', 'btn-mode-practice'); }
         if (modeExamBtn) { modeExamBtn.classList.remove('active-mode', 'btn-filled-blue'); }
         
-        if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
-        if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'none';
+        if (qCountInput && qCountInput.closest('.input-group')) qCountInput.closest('.input-group').style.display = 'flex';
+        if (timerInput && timerInput.closest('.input-group')) timerInput.closest('.input-group').style.display = 'none';
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
         
         if (searchBar) {
@@ -1275,8 +1302,8 @@ function switchMode(mode) {
         if (modeExamBtn) { modeExamBtn.classList.add('active-mode', 'btn-filled-blue'); }
         if (modePracBtn) { modePracBtn.classList.remove('active-mode', 'btn-mode-practice'); }
         
-        if (qCountInput && qCountInput.parentElement) qCountInput.parentElement.style.display = 'flex';
-        if (timerInput && timerInput.parentElement) timerInput.parentElement.style.display = 'flex';
+        if (qCountInput && qCountInput.closest('.input-group')) qCountInput.closest('.input-group').style.display = 'flex';
+        if (timerInput && timerInput.closest('.input-group')) timerInput.closest('.input-group').style.display = 'flex';
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
         
         if (searchBar) {
@@ -1778,7 +1805,7 @@ if (btnAnalytics) {
 
         globalMetadata.forEach(q => {
             const topicName = q.Topic || q.topic || q.Chapter || q.chapter || q.Subject || q.subject || "Core Material";
-            const qId = getQID(q); // getQID is in Part 1
+            const qId = getQID(q); 
             if (!stats[topicName]) { stats[topicName] = { total: 0, attempted: 0, mistakes: 0, questions: [] }; }
             stats[topicName].total++;
             stats[topicName].questions.push(q);
@@ -2358,7 +2385,7 @@ if (btnJourney) {
                 if (isUnlocked) progress = t.req;
                 else if (flawlessCount > t.previousCum) progress = flawlessCount - t.previousCum;
 
-const card = document.createElement('div');
+                const card = document.createElement('div');
                 card.className = `trophy-card ${isUnlocked ? 'unlocked' : 'locked'}`;
                 
                 const iconDiv = document.createElement('div');
@@ -2536,117 +2563,148 @@ if (btnConfirmReset) {
 window.initMentorFeatures = initMentorFeatures;
 
 function initMentorFeatures() {
+    const assignBtn = document.getElementById('assign-exam-btn');
+    if (!assignBtn) return; // Wait for DOM if missing, but it is statically in HTML now.
+
     if (currentUserRole === 'MENTOR' || currentUserRole === 'ADMIN' || currentUserRole === 'MANAGEMENT') {
-        const startBtn = document.getElementById('start-exam-btn');
-        if (document.getElementById('assign-exam-btn')) return;
-        const assignExamModal = document.getElementById('assign-exam-modal'); // local scope for clarity
+        // Show the pre-existing button from HTML
+        assignBtn.style.display = 'inline-flex';
 
-        if (startBtn && startBtn.parentElement) {
-            const assignBtn = document.createElement('button');
-            assignBtn.className = "action-btn";
-            assignBtn.textContent = "Assign to Student";
-            assignBtn.style.marginLeft = "10px";
-            assignBtn.id = "assign-exam-btn";
-            startBtn.parentElement.appendChild(assignBtn);
+        // Strip old listeners to prevent multi-firing if function called twice
+        const clonedBtn = assignBtn.cloneNode(true);
+        assignBtn.parentNode.replaceChild(clonedBtn, assignBtn);
 
-            assignBtn.addEventListener('click', async () => {
-                const paths = Array.from(selectedCart).map(str => JSON.parse(str));
-                let examPool = globalMetadata.filter(q => { return paths.some(pathArr => window.getQuestionCount(currentView, pathArr, [q]) > 0); }); // getQuestionCount is globally scoped in Part 1
+        clonedBtn.addEventListener('click', async () => {
+            const paths = Array.from(selectedCart).map(str => JSON.parse(str));
+            let examPool = globalMetadata.filter(q => { return paths.some(pathArr => getQuestionCount(currentView, pathArr, [q]) > 0); });
 
-                const qCountInput = parseInt(document.getElementById('exam-q-count').value);
-                const timerInput = parseInt(document.getElementById('exam-timer').value);
-                if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) return alert("Please enter a valid time in minutes for Exam mode.");
+            const qCountInput = parseInt(document.getElementById('exam-q-count').value);
+            const timerInput = parseInt(document.getElementById('exam-timer').value);
+            if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) return alert("Please enter a valid time in minutes for Exam mode.");
 
-                const finalTimer = currentMode === 'exam' ? timerInput : 0;
-                if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) { examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput); } 
-                else { examPool = examPool.sort(() => 0.5 - Math.random()); }
-                if (examPool.length === 0) return alert("No questions selected!");
+            const finalTimer = currentMode === 'exam' ? timerInput : 0;
+            if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) { examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput); } 
+            else { examPool = examPool.sort(() => 0.5 - Math.random()); }
+            if (examPool.length === 0) return alert("No questions selected!");
 
-                const generatedTitle = generateExamTitle(paths, currentView) + (currentMode === 'practice' ? " (Practice Assignment)" : " (Exam Assignment)");
+            const generatedTitle = generateExamTitle(paths, currentView) + (currentMode === 'practice' ? " (Practice Assignment)" : " (Exam Assignment)");
 
-                assignBtn.textContent = "Loading Students...";
-                assignBtn.disabled = true;
+            clonedBtn.textContent = "Loading Students...";
+            clonedBtn.disabled = true;
 
-                try {
-                    const usersRef = collection(db, "users");
-                    const userSnap = await getDocs(usersRef);
-                    
-                    let studentsList = [];
-                    userSnap.forEach(docSnap => {
-                        const data = docSnap.data();
-                        const role = (data.role || 'STUDENT').toUpperCase();
-                        if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
-                            studentsList.push({ id: docSnap.id, name: data.fullName || "Unnamed User", email: data.email || "No Email" });
-                        }
-                    });
-
-                    if (assignExamModal) {
-                        const listCont = document.getElementById('student-list-container');
-                        if (listCont) {
-                            listCont.textContent = '';
-                            if (studentsList.length === 0) {
-                                const msg = document.createElement('div'); msg.style.textAlign = 'center'; msg.style.color = '#94a3b8'; msg.style.padding = '20px'; msg.textContent = 'No students found.';
-                                listCont.appendChild(msg);
-                            } else {
-                                studentsList.sort((a, b) => a.name.localeCompare(b.name)).forEach(student => {
-                                    const lbl = document.createElement('label'); lbl.className = 'student-item list-item';
-                                    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.className = 'student-checkbox item-checkbox'; cb.value = student.id;
-                                    const textDiv = document.createElement('div'); textDiv.style.display = 'flex'; textDiv.style.flexDirection = 'column';
-                                    const nSpan = document.createElement('span'); nSpan.className = 'student-name'; nSpan.style.fontWeight = 'bold'; nSpan.style.color = '#f8fafc'; nSpan.textContent = student.name;
-                                    const eSpan = document.createElement('span'); eSpan.className = 'student-email'; eSpan.style.fontSize = '0.85rem'; eSpan.style.color = '#94a3b8'; eSpan.textContent = student.email;
-                                    textDiv.appendChild(nSpan); textDiv.appendChild(eSpan);
-                                    lbl.appendChild(cb); lbl.appendChild(textDiv);
-                                    listCont.appendChild(lbl);
-                                });
-                            }
-                        }
-                        
-                        const searchInput = document.getElementById('student-search-input');
-                        if (searchInput) {
-                            searchInput.value = '';
-                            searchInput.oninput = (e) => {
-                                const term = e.target.value.toLowerCase();
-                                const items = document.querySelectorAll('.student-item');
-                                items.forEach(item => {
-                                    const n = item.querySelector('.student-name').textContent.toLowerCase();
-                                    const em = item.querySelector('.student-email').textContent.toLowerCase();
-                                    item.style.display = (n.includes(term) || em.includes(term)) ? 'flex' : 'none';
-                                });
-                            };
-                        }
-
-                        document.getElementById('btn-cancel-assign').onclick = () => { assignExamModal.style.display = 'none'; };
-                        
-                        document.getElementById('btn-confirm-assign').onclick = async () => {
-                            const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
-                            const selectedStudentIds = Array.from(checkedBoxes).map(cb => cb.value);
-                            if (selectedStudentIds.length === 0) return alert("Please select at least one student!");
-
-                            const confirmBtn = document.getElementById('btn-confirm-assign');
-                            confirmBtn.textContent = "Assigning...";
-                            confirmBtn.disabled = true;
-
-                            try {
-                                const questionIdsOnly = examPool.map(q => String(q.id || q.QuestionID));
-                                await addDoc(collection(db, "assigned_exams"), {
-                                    title: generatedTitle, assignedBy: auth.currentUser.uid, assignedTo: selectedStudentIds, 
-                                    questionIds: questionIdsOnly, mode: currentMode, timerMinutes: finalTimer, isCompletedBy: [], createdAt: serverTimestamp()
-                                });
-                                alert(`Exam successfully assigned to ${selectedStudentIds.length} student(s)!`);
-                                assignExamModal.style.display = 'none';
-                            } catch (error) {
-                                confirmBtn.textContent = "Assign Exam";
-                                confirmBtn.disabled = false;
-                            }
-                        };
-                        assignExamModal.style.display = 'flex';
+            try {
+                const usersRef = collection(db, "users");
+                const userSnap = await getDocs(usersRef);
+                
+                let studentsList = [];
+                userSnap.forEach(docSnap => {
+                    const data = docSnap.data();
+                    const role = (data.role || 'STUDENT').toUpperCase();
+                    if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
+                        studentsList.push({ id: docSnap.id, name: data.fullName || "Unnamed User", email: data.email || "No Email" });
                     }
-                } catch (error) {} finally {
-                    assignBtn.textContent = "Assign to Student";
-                    assignBtn.disabled = false;
+                });
+
+                const assignExamModal = document.getElementById('assign-exam-modal');
+                if (assignExamModal) {
+                    const listCont = document.getElementById('student-list-container');
+                    if (listCont) {
+                        listCont.textContent = '';
+                        if (studentsList.length === 0) {
+                            const msg = document.createElement('div'); msg.style.textAlign = 'center'; msg.style.color = '#94a3b8'; msg.style.padding = '20px'; msg.textContent = 'No students found.';
+                            listCont.appendChild(msg);
+                        } else {
+                            // FIXED LAYOUT GENERATION logic to match the new image
+                            studentsList.sort((a, b) => a.name.localeCompare(b.name)).forEach(student => {
+                                const lbl = document.createElement('label'); 
+                                lbl.className = 'student-item list-item';
+                                lbl.style.flexDirection = 'row';
+                                lbl.style.alignItems = 'center';
+                                lbl.style.gap = '15px';
+                                lbl.style.padding = '12px';
+                                
+                                const cb = document.createElement('input'); 
+                                cb.type = 'checkbox'; 
+                                cb.className = 'student-checkbox item-checkbox'; 
+                                cb.value = student.id;
+                                
+                                const textDiv = document.createElement('div'); 
+                                textDiv.style.display = 'flex'; 
+                                textDiv.style.flexDirection = 'column';
+                                
+                                const nSpan = document.createElement('span'); 
+                                nSpan.className = 'student-name'; 
+                                nSpan.style.fontWeight = 'bold'; 
+                                nSpan.style.color = 'var(--text-main)'; // Fixed missing visibility 
+                                nSpan.textContent = student.name;
+                                
+                                const eSpan = document.createElement('span'); 
+                                eSpan.className = 'student-email'; 
+                                eSpan.style.fontSize = '0.85rem'; 
+                                eSpan.style.color = 'var(--text-muted)'; // Fixed missing visibility
+                                eSpan.textContent = student.email;
+                                
+                                textDiv.appendChild(nSpan); textDiv.appendChild(eSpan);
+                                lbl.appendChild(cb); lbl.appendChild(textDiv);
+                                listCont.appendChild(lbl);
+                            });
+                        }
+                    }
+                    
+                    const searchInput = document.getElementById('student-search-input');
+                    if (searchInput) {
+                        searchInput.value = '';
+                        searchInput.oninput = (e) => {
+                            const term = e.target.value.toLowerCase();
+                            const items = document.querySelectorAll('.student-item');
+                            items.forEach(item => {
+                                const n = item.querySelector('.student-name').textContent.toLowerCase();
+                                const em = item.querySelector('.student-email').textContent.toLowerCase();
+                                item.style.display = (n.includes(term) || em.includes(term)) ? 'flex' : 'none';
+                            });
+                        };
+                    }
+
+                    document.getElementById('btn-cancel-assign').onclick = () => { assignExamModal.style.display = 'none'; };
+                    
+                    document.getElementById('btn-confirm-assign').onclick = async () => {
+                        const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
+                        const selectedStudentIds = Array.from(checkedBoxes).map(cb => cb.value);
+                        if (selectedStudentIds.length === 0) return alert("Please select at least one student!");
+
+                        const confirmBtn = document.getElementById('btn-confirm-assign');
+                        confirmBtn.textContent = "Assigning...";
+                        confirmBtn.disabled = true;
+
+                        try {
+                            const questionIdsOnly = examPool.map(q => String(q.id || q.QuestionID));
+                            await addDoc(collection(db, "assigned_exams"), {
+                                title: generatedTitle, assignedBy: auth.currentUser.uid, assignedTo: selectedStudentIds, 
+                                questionIds: questionIdsOnly, mode: currentMode, timerMinutes: finalTimer, isCompletedBy: [], createdAt: serverTimestamp()
+                            });
+                            alert(`Exam successfully assigned to ${selectedStudentIds.length} student(s)!`);
+                            assignExamModal.style.display = 'none';
+                        } catch (error) {
+                            console.error(error);
+                            alert("Error: " + error.message);
+                        } finally {
+                            confirmBtn.textContent = "Assign Exam";
+                            confirmBtn.disabled = false;
+                        }
+                    };
+                    assignExamModal.style.display = 'flex';
                 }
-            });
-        }
+            } catch (error) {
+                console.error(error);
+                alert("Error: " + error.message);
+            } finally {
+                clonedBtn.textContent = "Assign to Student";
+                clonedBtn.disabled = false;
+            }
+        });
+    } else {
+        // If not mentor/admin, ensure button stays hidden
+        assignBtn.style.display = 'none';
     }
 }
 
@@ -2753,9 +2811,9 @@ async function hydrateUserState(dbData) {
     
     viewSpecificStats.book = { solved: uniqueBookSolved, mistakes: bookAllMistakes, bookmarks: uniqueBookBookmarks, skipped: uniqueBookSkipped, accuracy: bookAccuracy };
 	
-await loadDataAndBuildTree();
-restoreLastState();
-if (window.updateDashboardUI) window.updateDashboardUI();
+    await loadDataAndBuildTree();
+    restoreLastState();
+    if (window.updateDashboardUI) window.updateDashboardUI();
     
     const revisions = { ...(currentUserData[activeCourse]?.revisions || {}), ...(currentUserData.books?.revisions || {}) };
     const now = Date.now();
@@ -2778,12 +2836,12 @@ if (window.updateDashboardUI) window.updateDashboardUI();
         groupedByDay[item.step].push(item);
     });
     const sortedDays = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b);
-const revisionContainer = document.getElementById('spaced-repetition-container');
+    const revisionContainer = document.getElementById('spaced-repetition-container');
     const revisionModal = document.getElementById('revision-popup-modal');
 
     if (revisionContainer) revisionContainer.innerHTML = '';
 
-if (dueTopics.length > 0 && revisionContainer) {
+    if (dueTopics.length > 0 && revisionContainer) {
         const revisionCard = document.createElement('div');
         revisionCard.className = 'glass-panel feature-card card-pointer rev-bento-card';
         // Removed hardcoded light-mode-breaking backgrounds, relying on CSS vars and strict borders
@@ -2969,7 +3027,6 @@ if (dueTopics.length > 0 && revisionContainer) {
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         checkMilestones(flawlessCount);
     }, 2000);
-// Note: This closes the initMentorFeatures bracket, leave untouched.
 }
 
 const btnSkipped = document.getElementById('btn-practice-skipped');
@@ -3071,7 +3128,7 @@ onAuthStateChanged(auth, async (user) => {
             } else { await hydrateUserState({ role: 'STUDENT' }); }
         } catch (error) {}
     } else {
-if (localStorage.getItem('edeetos_guest_mode') === 'true') {
+        if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             isPremiumUser = false;
             if (window.loadDataAndBuildTree) await window.loadDataAndBuildTree(); // defined in Part 1
             const lockUI = () => alert("Please register an account to access this feature.");
