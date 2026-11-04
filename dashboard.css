@@ -336,7 +336,7 @@ html.dark-mode .task-item-card:hover { border-color: var(--accent-color); }
 
 .hamburger-btn { display: none; background: transparent; border: none; color: #FFF; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
 html.dark-mode .hamburger-btn { color: var(--text-primary); }
-.close-sidebar-btn { display: none; }
+.close-sidebar-btn { display: none !important; }
 
 /* === MOBILE RESPONSIVENESS FIXES === */
 @media (max-width: 768px) { 
