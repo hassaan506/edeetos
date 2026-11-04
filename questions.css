@@ -562,9 +562,18 @@ select.glass-input option { background: var(--surface-card); color: var(--text-m
     
     .control-row-1 { flex-direction: column; align-items: stretch; }
     .control-row-2 { flex-direction: column; align-items: stretch; }
+    .search-wrapper { width: 100%; }
+    
+    /* MODIFIED: Fixed Mode Toggle White space */
+    .mode-toggle { display: flex; width: 100%; }
+    .mode-toggle button { flex: 1; text-align: center; justify-content: center; }
+    
     .filter-controls { flex-wrap: wrap; justify-content: center; }
     .multiplayer-controls { display: flex; width: 100%; }
     .multiplayer-controls button { flex: 1; }
+
+    /* MODIFIED: Fixed the cart blocking the last items in the grid */
+    .subjects-grid { grid-template-columns: 1fr; padding-bottom: 260px; }
 
     .exam-action-bar { flex-direction: column; gap: 1.5rem; padding: 1.5rem; bottom: 0; width: 100%; border-radius: 0; border-left: none; border-right: none; border-bottom: none; }
     .exam-action-bar .cart-controls { flex-wrap: wrap; width: 100%; justify-content: space-between; gap: 1rem; }
