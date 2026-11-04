@@ -170,13 +170,18 @@ async function calculateTotalQuestions() {
         } catch (e) {}
     }
 
-    for (const course of standardCourses) {
+    const coursePromises = standardCourses.map(course => {
         const displayName = (courseNamesMap && courseNamesMap[course]) ? courseNamesMap[course] : course;
-        await fetchAndCountCourse(course, displayName, 'var(--surface)', 'var(--text-main)', 'var(--border)');
-    }
+        return fetchAndCountCourse(course, displayName, 'var(--surface)', 'var(--text-main)', 'var(--border)');
+    });
+    await Promise.all(coursePromises);
     
     breakdownHtml += `</div><div class="menu-label mb-1 mt-1">Reference Books</div><div class="flex-gap-1 mb-1" style="flex-wrap: wrap;">`;
-    for (const book of referenceBooks) await fetchAndCountBook(`Books/${book.file}_questions.json`, book.title, 'var(--primary)', '#fff', 'var(--primary-dark)');
+    
+    const bookPromises = referenceBooks.map(book => 
+        fetchAndCountBook(`Books/${book.file}_questions.json`, book.title, 'var(--primary)', '#fff', 'var(--primary-dark)')
+    );
+    await Promise.all(bookPromises);
     breakdownHtml += `</div>`;
 
     document.getElementById('total-q-count').innerHTML = `Total: ${totalQuestions.toLocaleString()} Qs`;
@@ -872,25 +877,8 @@ function fetchRewardClaims() {
 }
 
 document.getElementById('btn-manual-reward').onclick = () => {
-    const email = prompt("Enter exact email of user:");
-    if (!email) return;
-    const user = allUsersData.find(u => (u.email || "").toLowerCase() === email.toLowerCase());
-    if (!user) return alert("User not found in database.");
-    
-    const item = prompt("Enter database key (e.g. 'firstaid_step1' or 'fcps_part1'):");
-    if (!item) return;
-    
-    const days = prompt("Enter days to grant (or 'lifetime'):", "30");
-    if (!days) return;
-    
-    const uRef = doc(db, "users", user.uid);
-    let subs = user.subscriptions || {};
-    subs[item] = days === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(days))).toISOString();
-    
-    updateDoc(uRef, { subscriptions: subs, isPremium: true }).then(() => {
-        alert(`Access granted to ${user.email}.`);
-        fetchAllUsers();
-    }).catch(e => alert("Error: " + e.message));
+    alert("To manually grant a reward, go to the 'User Manager' tab, search for the user, and use the 'Grant New Access' panel.");
+    switchView('users');
 };
 
 document.getElementById('btn-scan-eligible').onclick = () => {
@@ -934,20 +922,7 @@ document.getElementById('btn-scan-eligible').onclick = () => {
         `;
         
         tr.querySelector('.btn-grant-eligible').onclick = () => {
-            const item = prompt(`Grant reward to ${user.fullName} (${user.email}).\nEnter course code (e.g. fcps_part1):`);
-            if (!item) return;
-            
-            const days = prompt("Enter days to grant (or 'lifetime'):", "30");
-            if (!days) return;
-            
-            const uRef = doc(db, "users", user.uid);
-            let subs = user.subscriptions || {};
-            subs[item] = days === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(days))).toISOString();
-            
-            updateDoc(uRef, { subscriptions: subs, isPremium: true }).then(() => {
-                alert(`Reward granted to ${user.email}.`);
-                fetchAllUsers();
-            }).catch(e => alert("Error: " + e.message));
+            openEditModal(user);
         };
         
         tbody.appendChild(tr);
@@ -955,7 +930,11 @@ document.getElementById('btn-scan-eligible').onclick = () => {
 };
 
 // === 10. PAYMENTS ===
-document.getElementById('btn-close-receipt').onclick = () => document.getElementById('receipt-modal').style.display = 'none';
+document.getElementById('btn-close-receipt').onclick = () => {
+    const modal = document.getElementById('receipt-modal');
+    modal.style.display = 'none';
+    modal.classList.add('view-hidden');
+};
 
 function fetchPayments() {
     const list = document.getElementById('payments-list');
@@ -1023,8 +1002,13 @@ function fetchPayments() {
                     </div>
                 </div>
             `;
-if (card.querySelector('.view-receipt-trigger')) {
-                card.querySelector('.view-receipt-trigger').onclick = () => { document.getElementById('receipt-modal-img').src = data.receiptUrl; document.getElementById('receipt-modal').style.display = 'flex'; };
+            if (card.querySelector('.view-receipt-trigger')) {
+                card.querySelector('.view-receipt-trigger').onclick = () => {
+                    document.getElementById('receipt-modal-img').src = data.receiptUrl;
+                    const modal = document.getElementById('receipt-modal');
+                    modal.classList.remove('view-hidden');
+                    modal.style.display = 'flex';
+                };
             }
 
             card.querySelector('.btn-approve').onclick = async () => {
