@@ -373,7 +373,6 @@ function renderGrid() {
         
         titleEl.textContent = cardTitle;
 
-        // MODIFIED: Bug 1 - Hide progress in exam mode
         if (currentMode === 'exam') {
             countEl.textContent = `${qCount} Qs`;
             progFill.parentElement.style.display = 'none';
@@ -403,7 +402,6 @@ function renderGrid() {
             badgeCont.appendChild(accBadge);
             statsContainer.appendChild(badgeCont);
 
-            // MODIFIED: Bug 1 - Hide stats accuracy row in exam mode
             if (currentMode === 'exam') {
                 statsContainer.style.display = 'none';
             } else {
@@ -642,7 +640,7 @@ function passesDifficultyFilter(q) {
     if (!diffEasyFilter || !diffMediumFilter || !diffHardFilter) return true;
     const easy = diffEasyFilter.checked, medium = diffMediumFilter.checked, hard = diffHardFilter.checked;
     if (!easy && !medium && !hard) return true; 
-    const qDiff = (q.Difficulty || q.difficulty || "").toLowerCase().trim();
+    const qDiff = String(q.Difficulty || q.difficulty || "").toLowerCase().trim();
     if (easy && qDiff === 'easy') return true;
     if (medium && qDiff === 'medium') return true;
     if (hard && qDiff === 'hard') return true;
@@ -681,23 +679,28 @@ async function loadDataAndBuildTree() {
         systemTree = hierarchyData.systems || {};
         examTree = hierarchyData.exams || {}; 
         
+        // MODIFIED: Await the fetching of metadata before we render the grid
+        // to ensure manual filters process the full dataset reliably.
+        await fetchAllMetadata();
+
         if (!window.sqlWorker && !window.isSearchEngineLoading) {
             window.isSearchEngineLoading = true;
-            try {
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const baseUrl = isLocal ? '.' : 'https://hassaan506.github.io/edeetos';
-                const workerUrl = `${baseUrl}/assets/sqlite/sqlite.worker.js`;
-                const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
-                window.sqlWorker = await createDbWorker(
-                    [{ from: "inline", config: { serverMode: "full", url: `${baseUrl}/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
-                    workerUrl, wasmUrl, 10 * 1024 * 1024 
-                );
-            } catch(e) {}
-            window.isSearchEngineLoading = false;
+            (async () => {
+                try {
+                    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                    const baseUrl = isLocal ? '.' : 'https://hassaan506.github.io/edeetos';
+                    const workerUrl = `${baseUrl}/assets/sqlite/sqlite.worker.js`;
+                    const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
+                    window.sqlWorker = await createDbWorker(
+                        [{ from: "inline", config: { serverMode: "full", url: `${baseUrl}/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
+                        workerUrl, wasmUrl, 10 * 1024 * 1024 
+                    );
+                } catch(e) {}
+                window.isSearchEngineLoading = false;
+            })();
         }
 
         renderGrid();
-        fetchAllMetadata();
     } catch (error) {}
 }
 
@@ -971,7 +974,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
     const progWrapper = clone.querySelector('.progress-wrapper');
     const statsWrapper = clone.querySelector('.stats-wrapper');
 
-    // MODIFIED: Bug 1 - Hide progress and solved data in exam mode inside popup
     if (typeof isGlobalPopupActive !== 'undefined' && isGlobalPopupActive) {
         const cBadge = document.createElement('span');
         cBadge.className = 'badge gray-badge';
@@ -1020,7 +1022,6 @@ function renderListItem(itemName, nextData, level, itemPath) {
         badgeCont.appendChild(accBadge);
         statsWrapper.appendChild(badgeCont);
 
-        // MODIFIED: Bug 1 - Hide accuracy badge in exam mode inside popup
         if (currentMode === 'exam') {
             statsWrapper.style.display = 'none';
         }
@@ -1128,6 +1129,10 @@ function getQuestionCount(view, pathArr, customPool = null) {
     }
 
     if (pool && pool.length > 0) {
+        // MODIFIED: Universal Normalizer that ignores casing and trims trailing empty spaces 
+        // to prevent false-negative filters causing massive question drops
+        const norm = (val) => String(val || "").trim().toLowerCase();
+
         if (paths.length === 0) {
             return pool.filter(q => {
                 if (!passesDifficultyFilter(q)) return false;
@@ -1140,36 +1145,36 @@ function getQuestionCount(view, pathArr, customPool = null) {
             if (!passesDifficultyFilter(q)) return false;
             if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
             
-            const qSubj = q.Subject || q.subject;
-            const qChap = q.Chapter || q.chapter;
-            const qTop = q.Topic || q.topic;
+            const qSubj = norm(q.Subject || q.subject);
+            const qChap = norm(q.Chapter || q.chapter);
+            const qTop = norm(q.Topic || q.topic);
 
             if (isGlobalPopupActive) {
                 if (paths[0] === "Books") {
                     if (!q.isBookQuestion) return false;
-                    if (paths[1] && qSubj !== paths[1]) return false;
-                    if (paths[2] && qChap !== paths[2]) return false;
-                    if (paths[3] && qTop !== paths[3]) return false;
+                    if (paths[1] && qSubj !== norm(paths[1])) return false;
+                    if (paths[2] && qChap !== norm(paths[2])) return false;
+                    if (paths[3] && qTop !== norm(paths[3])) return false;
                     return true;
                 } else {
                     if (q.isBookQuestion) return false;
-                    if (paths[0] && qSubj !== paths[0]) return false;
-                    if (paths[1] && qChap !== paths[1]) return false;
-                    if (paths[2] && qTop !== paths[2]) return false;
+                    if (paths[0] && qSubj !== norm(paths[0])) return false;
+                    if (paths[1] && qChap !== norm(paths[1])) return false;
+                    if (paths[2] && qTop !== norm(paths[2])) return false;
                     return true;
                 } 
             }
 
             if (view === 'subject') {
                 if (q.isBookQuestion) return false; 
-                if (paths[0] && qSubj !== paths[0]) return false;
-                if (paths[1] && qChap !== paths[1]) return false;
-                if (paths[2] && qTop !== paths[2]) return false;
+                if (paths[0] && qSubj !== norm(paths[0])) return false;
+                if (paths[1] && qChap !== norm(paths[1])) return false;
+                if (paths[2] && qTop !== norm(paths[2])) return false;
             } else if (view === 'system') {
                 if (q.isBookQuestion) return false; 
-                if (paths[0] && qChap !== paths[0]) return false;
-                if (paths[1] && qSubj !== paths[1]) return false;
-                if (paths[2] && qTop !== paths[2]) return false;
+                if (paths[0] && qChap !== norm(paths[0])) return false;
+                if (paths[1] && qSubj !== norm(paths[1])) return false;
+                if (paths[2] && qTop !== norm(paths[2])) return false;
             } else if (view === 'exam') {
                 const toArray = (val) => Array.isArray(val) ? val.map(v => String(v).trim()) : (typeof val === 'string' ? val.split(',').map(v => v.trim()) : (val ? [String(val).trim()] : []));
                 let qYears = toArray(q.year || q.Year);
@@ -1187,19 +1192,19 @@ function getQuestionCount(view, pathArr, customPool = null) {
                     
                     const parsed = parseExamInfo(rawExam, fbYear, fbSpec);
                     let currentMatch = true;
-                    if (paths[0] && parsed.examYear !== paths[0]) currentMatch = false;
+                    if (paths[0] && String(parsed.examYear) !== String(paths[0])) currentMatch = false;
                     if (paths[1] && parsed.examSpec !== paths[1]) currentMatch = false;
                     if (paths[2] && rawExam !== paths[2]) currentMatch = false;
                     
                     if (currentMatch) { matchFound = true; break; }
                 }
                 if (!matchFound) return false;
-                if (paths[2] && qSubj !== paths[2]) return false;
-                if (paths[3] && qTop !== paths[3]) return false;
+                if (paths[2] && qSubj !== norm(paths[2])) return false;
+                if (paths[3] && qTop !== norm(paths[3])) return false;
             } else if (view === 'book') {
                 if (!q.isBookQuestion) return false;
-                if (paths[0] && qChap !== paths[0]) return false;
-                if (paths[1] && qTop !== paths[1]) return false;
+                if (paths[0] && qChap !== norm(paths[0])) return false;
+                if (paths[1] && qTop !== norm(paths[1])) return false;
             }
             return true;
         }).length;
@@ -1845,7 +1850,6 @@ if (btnAnalytics) {
             const smartHubActions = clone.querySelector('.smart-hub-actions');
             const totalMistakesCount = allMistakes.length;
             
-            // MODIFIED: Bug 3 - Set wrap options to nowrap to display correctly
             if (totalMistakesCount > 0) {
                 const btn = document.createElement('button');
                 btn.id = 'btn-train-redemption';
