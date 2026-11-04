@@ -1,61 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dark Mode Logic
+    
+    // === 1. DARK MODE LOGIC ===
     const darkModeBtn = document.getElementById('dark-mode-toggle');
-    const icon = darkModeBtn ? darkModeBtn.querySelector('i') : null;
     
-    // Check saved preference on load
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (icon) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        }
-    }
-
-    if (darkModeBtn) {
-        darkModeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
+    const attachDarkMode = () => {
+        if (darkModeBtn) {
+            const icon = darkModeBtn.querySelector('i');
             
-            if (isDark) {
-                if (icon) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                }
-                localStorage.setItem('theme', 'dark');
-            } else {
-                if (icon) {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
-                localStorage.setItem('theme', 'light');
+            // Set initial icon based on root element state
+            if (document.documentElement.classList.contains('dark-mode')) {
+                if (icon) icon.className = 'fas fa-sun';
             }
-        });
-    }
 
-    // 2. Scroll Animation (Fade In Cards)
-    const featureCards = document.querySelectorAll('.feature-card');
-    
-    // Initial hide
-    featureCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.5s ease-out';
-    });
+            darkModeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
+    };
+    attachDarkMode();
 
-    const observer = new IntersectionObserver((entries) => {
+    // === 2. SCROLL REVEAL ANIMATIONS ===
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target); 
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    featureCards.forEach(card => {
-        observer.observe(card);
+    // === 3. RADIAL GLOW MOUSE TRACKING ===
+    // Syncs with the Enterprise Clinical SaaS V6 Bento Grid CSS
+    document.addEventListener('mousemove', (e) => {
+        document.querySelectorAll('.feature-card').forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
 });

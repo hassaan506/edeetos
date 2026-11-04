@@ -1,72 +1,183 @@
-/* === FEATURES PAGE STYLING === */
-body {
-    background-color: #0b291e; 
-    background-image: radial-gradient(circle at 15% 15%, rgba(45, 138, 97, 0.45) 0%, transparent 45%), radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 50%), linear-gradient(180deg, #134230 0%, #092218 100%);
-    background-attachment: fixed;
-    color: #f8fafc;
-    transition: background 0.4s ease, color 0.4s ease;
+/* === ENTERPRISE CLINICAL SAAS V6 - FEATURES MODULE === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* Inherits variables from global.css, but we define specifics for this page */
+
+.hero-section {
+    text-align: center;
+    padding: 10rem 2rem 5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50dvh;
+    justify-content: center;
 }
 
-body.dark-mode {
-    background-color: #060911;
-    background-image: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%), radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.1) 0%, transparent 45%), linear-gradient(180deg, #0f172a 0%, #020617 100%);
+.badge-pill {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--surface-card);
+    color: var(--primary-ui);
+    font-family: 'Courier New', monospace;
+    font-weight: 800;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--primary-ui);
+    box-shadow: 0 4px 6px rgba(21, 70, 217, 0.05);
 }
 
-.hero-section { text-align: center; }
-.badge-pill { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; font-weight: 800; border-radius: 50px; font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);}
-.hero-content h1 { font-size: 4rem; font-weight: 900; color: #f8fafc; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -2px; transition: color 0.3s; }
-.hero-desc { font-size: 1.25rem; color: #cbd5e1; margin: 0 auto; line-height: 1.6; max-width: 700px; transition: color 0.3s; }
+html.dark-mode .badge-pill {
+    background: var(--surface-card);
+    color: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+}
+
+.hero-desc {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin: 0 auto;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.category-header {
+    text-align: left;
+    border-bottom: 2px solid var(--surface-border);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-icon {
+    color: var(--primary-ui);
+}
+
+html.dark-mode .category-icon {
+    color: var(--accent);
+}
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    gap: 24px;
+    margin-bottom: 5rem;
 }
 
+/* === BENTO BOX GRID OVERRIDES === */
 .feature-card {
     padding: 2.5rem;
     text-align: left;
-    background: rgba(255, 255, 255, 0.07); 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 18px; 
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    border-top: 4px solid var(--primary-ui);
+    border-radius: 4px;
+    box-shadow: var(--shadow-float);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.dark-mode .feature-card {
-    background: rgba(15, 23, 42, 0.72);
-    border-color: rgba(255, 255, 255, 0.09);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+html.dark-mode .feature-card {
+    border-top-color: var(--primary-ui);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
-    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px -8px rgba(21, 70, 217, 0.2);
+    border-color: var(--primary-ui);
 }
 
-.dark-mode .feature-card:hover {
-    background: rgba(30, 41, 59, 0.9); 
-    border-color: #10b981;
+html.dark-mode .feature-card:hover {
+    box-shadow: 0 15px 30px -8px rgba(212, 255, 36, 0.1);
+    border-color: var(--accent);
+}
+
+/* Hardware-Accelerated Radial Glow Tracking */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(21, 70, 217, 0.06), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+html.dark-mode .feature-card::before {
+    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(212, 255, 36, 0.06), transparent 40%);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .feature-card h3 {
-    color: #f8fafc;
+    color: var(--text-main);
     font-size: 1.3rem;
-    font-weight: 800;
+    font-weight: 900;
     margin-bottom: 1rem;
     letter-spacing: -0.5px;
-    transition: color 0.3s ease;
 }
 
 .feature-card p {
-    color: #cbd5e1;
+    color: var(--text-muted);
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-    transition: color 0.3s ease;
+    flex-grow: 1;
 }
 
-h2 { border-bottom-color: rgba(255, 255, 255, 0.1) !important; color: #f8fafc; }
+.feature-icon-wrapper {
+    font-size: 2rem;
+    color: var(--primary-ui);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+html.dark-mode .feature-icon-wrapper {
+    color: var(--accent);
+}
+
+/* Reveal Animation */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.5s ease-out; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }

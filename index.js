@@ -15,18 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // === 2. VERCEL-STYLE CARD GLOW TRACKING ===
+    // === 2. HARDWARE-ACCELERATED CARD GLOW TRACKING ===
+    // Syncs with the Enterprise V6 Bento CSS logic
     const featuresSection = document.getElementById("features");
     if (featuresSection) {
-        featuresSection.onmousemove = e => {
-            for (const card of document.querySelectorAll(".bento-card")) {
-                const rect = card.getBoundingClientRect(),
-                      x = e.clientX - rect.left,
-                      y = e.clientY - rect.top;
+        featuresSection.addEventListener('mousemove', (e) => {
+            document.querySelectorAll(".bento-card").forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 card.style.setProperty("--mouse-x", `${x}px`);
                 card.style.setProperty("--mouse-y", `${y}px`);
-            }
-        };
+            });
+        });
     }
 
     // === 3. NUMBER COUNTER ANIMATION ===
@@ -49,14 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateCount, 500); 
     });
 
-    // === 4. FIREBASE AUTHENTICATION ===
+    // === 4. FIREBASE AUTHENTICATION (NAV RENDER) ===
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            const authMenu = document.querySelector('.nav-actions div');
+            const authMenu = document.querySelector('.nav-buttons-wrap');
             if (authMenu) {
                 authMenu.innerHTML = `
-                    <button id="dark-mode-toggle" class="btn-outline" style="padding: 0.6rem; border-radius: 6px;"><i class="fas fa-moon"></i></button>
+                    <button id="dark-mode-toggle" class="btn-outline theme-btn"><i class="fas fa-moon"></i></button>
                     <a href="dashboard.html" class="btn-solid">Dashboard</a>
                     <button id="logout-btn" class="btn-outline">Log Out</button>
                 `;
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === 6. THEME TOGGLE ===
+    // === 6. THEME TOGGLE (SYNC MATRIX) ===
     function attachDarkMode() {
         const darkModeBtn = document.getElementById('dark-mode-toggle');
         if (darkModeBtn) {

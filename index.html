@@ -15,18 +15,16 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">EDEETOS.</a>
             
-            <!-- Mobile Hamburger -->
             <button id="index-mobile-menu-btn" class="hamburger-btn-index">
                 <i class="fas fa-bars"></i>
             </button>
 
             <div class="nav-actions" id="index-nav-actions">
-                <!-- Mobile Close Button -->
                 <button id="index-close-menu-btn" class="close-sidebar-btn-index">&times;</button>
                 
                 <ul class="nav-links">
+                    <li><a href="features.html">Features</a></li>
                     <li><a href="#courses">Courses</a></li>
-                    <li><a href="#features">Features</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="nav-buttons-wrap">
@@ -42,22 +40,22 @@
         <div class="hero-grid">
             <div class="hero-content reveal is-visible">
                 <div class="tag-system">
-                    <i class="fas fa-bolt"></i> Elite Medical Prep
+                    <i class="fas fa-bolt"></i> Enterprise Medical Prep
                 </div>
                 <h1>Pass Your Medical Exams Faster.</h1>
-                <p>Stop wasting time. Get the right practice questions, expert mentors, and exact progress tracking for FCPS, MBBS, and MRCS.</p>
+                <p>Stop wasting time. Get the right practice questions, expert mentors, and exact progress tracking for FCPS, MBBS, and MRCS in one secure platform.</p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="register.html" class="btn-solid">Start Studying Now</a>
-                    <a href="#courses" class="btn-outline">View Courses</a>
+                    <a href="features.html" class="btn-outline">Explore Platform</a>
                 </div>
             </div>
             
             <div class="hero-visual reveal delay-1 is-visible">
                 <div class="floating-card">
-                    <i class="fas fa-chart-pie floating-icon"></i>
+                    <i class="fas fa-database floating-icon"></i>
                     <div class="floating-number count-up" data-target="30000">0</div>
-                    <div class="floating-label">+ Practice MCQs</div>
-                    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Updated for latest exam patterns.</p>
+                    <div class="floating-label">+ Verified MCQs</div>
+                    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">Constantly updated clinical metadata.</p>
                 </div>
             </div>
         </div>
@@ -94,7 +92,6 @@
         </div>
     </section>
 
-    <!-- The ID "features" triggers the JS mouse tracking for the glow effect -->
     <section id="features" class="section-wrapper">
         <div class="text-center reveal">
             <h2>Why Use EDEETOS?</h2>
@@ -205,22 +202,28 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">EDEETOS.</h3>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: 900; letter-spacing: -0.5px;">EDEETOS.</h3>
                 <p style="color: var(--text-muted); max-width: 300px;">Helping medical students pass their exams with the right tools and mentors.</p>
             </div>
             <div class="footer-links">
-                <h4>Links</h4>
-                <ul><li><a href="#courses">Courses</a></li><li><a href="#features">Features</a></li></ul>
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="features.html">All Features</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="changelog.html">System Updates</a></li>
+                </ul>
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
-                <ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom"><p>&copy; 2026 EDEETOS. All rights reserved.</p></div>
     </footer>
     
-    <!-- Mobile Sidebar Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileBtn = document.getElementById('index-mobile-menu-btn');
@@ -233,7 +236,6 @@
             if (closeBtn && navMenu) {
                 closeBtn.addEventListener('click', () => navMenu.classList.remove('sidebar-active'));
             }
-            // Auto-close menu when clicking any anchor link
             if (navMenu) {
                 navMenu.querySelectorAll('.nav-links a').forEach(link => {
                     link.addEventListener('click', () => navMenu.classList.remove('sidebar-active'));

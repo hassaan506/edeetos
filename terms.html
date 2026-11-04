@@ -6,57 +6,100 @@
     <title>Terms of Service - EDEETOS</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');</script>
+    <style>
+        .legal-body {
+            background-color: var(--bg-main, #EDECE6);
+            background-image: 
+                linear-gradient(to right, var(--grid-line, rgba(21, 70, 217, 0.08)) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line, rgba(21, 70, 217, 0.08)) 1px, transparent 1px);
+            background-size: 40px 40px;
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100dvh;
+        }
+        .legal-hero { padding: 4rem 2rem 2rem; text-align: center; }
+        .legal-hero h1 { font-weight: 900; font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 0.5rem; color: var(--text-main); }
+        .mono-subtitle { font-family: 'Courier New', monospace; font-weight: 800; color: var(--primary-ui, #1546D9); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        html.dark-mode .mono-subtitle { color: var(--accent, #D4FF24); }
+        
+        .legal-content {
+            background: var(--surface-card, #FFFFFF);
+            border: 1px solid var(--surface-border, rgba(21, 70, 217, 0.15));
+            border-top: 4px solid var(--primary-ui, #1546D9);
+            border-radius: 4px;
+            padding: 3rem;
+            box-shadow: var(--shadow-float, 0 12px 32px rgba(21, 70, 217, 0.08));
+            line-height: 1.8;
+            margin-bottom: 4rem;
+        }
+        html.dark-mode .legal-content {
+            border-top-color: var(--primary-ui, #1558C9);
+        }
+        .legal-content h3 { font-size: 1.25rem; font-weight: 800; border-bottom: 1px solid var(--surface-border); padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--text-main); letter-spacing: -0.5px; }
+        .legal-content h3:first-child { margin-top: 0; }
+        .legal-content p, .legal-content ul { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.05rem; }
+        .legal-content li { margin-bottom: 0.5rem; }
+        .legal-content strong { color: var(--text-main); font-weight: 800; }
+        
+        .legal-link { color: var(--primary-ui); font-weight: 800; text-decoration: none; font-family: 'Courier New', monospace; text-transform: uppercase; font-size: 0.9rem; }
+        .legal-link:hover { text-decoration: underline; }
+        html.dark-mode .legal-link { color: var(--accent); }
+    </style>
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100dvh;">
+<body class="legal-body">
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="Pictures/logo_transparent.png" alt="EDEETOS Logo" class="logo-img">
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Back to Home</a></li>
-            </ul>
+    <nav class="navbar" style="padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; background: var(--surface-card); border-bottom: 1px solid var(--surface-border);">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;">
+            <a href="index.html" style="font-size: 1.5rem; font-weight: 900; color: var(--text-main); text-decoration: none; letter-spacing: -0.05em;">EDEETOS.</a>
+            <a href="index.html" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: 4px; font-weight: 800; text-decoration: none; color: var(--text-main); border: 1px solid var(--surface-border);">Back to Home</a>
         </div>
     </nav>
 
-    <header class="legal-hero" style="text-align: center; padding: 4rem 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Terms of Service</h1>
-        <p class="subtitle" style="color: #34d399; font-weight: bold;">Last Updated: September 2026</p>
+    <header class="legal-hero">
+        <h1>Terms of Service</h1>
+        <p class="mono-subtitle">Last Updated: November 2026</p>
     </header>
 
     <main class="section-container" style="flex-grow: 1; max-width: 800px; margin: 0 auto; padding: 0 1.5rem;">
-        <div class="glass-panel legal-content" style="padding: 2.5rem; line-height: 1.7;">
+        <div class="legal-content">
             
-            <h3 style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-top: 0;">1. Acceptance of Terms</h3>
-            <p>By using the EDEETOS platform, you agree to these Terms of Service. If you do not agree with these rules, please do not use the platform.</p>
+            <h3>1. The Rules</h3>
+            <p>By using the EDEETOS website, you agree to follow these rules. If you don't agree with them, please do not use the website.</p>
 
-            <h3 style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-top: 2rem;">2. Medical Disclaimer</h3>
-            <p>The question banks, explanations, and mentor advice provided on EDEETOS are for exam preparation and studying only. They are not official medical advice and must never be used to diagnose or treat actual patients.</p>
+            <h3>2. Medical Warning</h3>
+            <p>The questions, explanations, hints, and advice from our mentors are for studying for exams only. <strong>Do not use this information to treat real patients.</strong> Always consult official medical guidelines in real life.</p>
 
-            <h3 style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-top: 2rem;">3. Protecting Our Questions (Anti-Piracy)</h3>
-            <p>All questions, explanations, and platform designs belong to EDEETOS. To protect the hard work of our doctors and developers, we have strict security rules:</p>
-            <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
-                <li><strong>No Screenshots or Copying:</strong> You are not allowed to copy text, use Snipping Tools, or take screenshots or screen recordings. Our system actively watches for screenshot keyboard shortcuts and blocks copying.</li>
-                <li><strong>Strict Bans:</strong> If you try to bypass our security using developer tools or third-party software, your account will be permanently banned without a refund. If banned, our system is authorized to automatically delete the offline study data saved on your device to immediately revoke your access to our materials.</li>
+            <h3>3. Do Not Steal Our Content</h3>
+            <p>All the questions and text on this website belong to EDEETOS. To protect the hard work of our doctors, we have strict rules against copying:</p>
+            <ul style="padding-left: 1.5rem;">
+                <li><strong>No Screenshots:</strong> You are not allowed to take screenshots, screen recordings, or try to copy and paste text. The website actively watches for screenshot keyboard shortcuts.</li>
+                <li><strong>Bans and Data Deletion:</strong> If you try to bypass our security or steal our questions, your account will be permanently banned with no refund. If this happens, our system will automatically delete the offline study data saved on your device so you can no longer access our content.</li>
             </ul>
 
-            <h3 style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-top: 2rem;">4. Accounts, Access, & Mentorship</h3>
-            <p><strong>One Course Per Account:</strong> When you register, your account is locked to the specific exam course you choose. Changing your course later requires admin approval.</p>
-            <p><strong>Free vs. Premium:</strong> Free and Guest accounts have strict limits on how many questions they can solve. Premium subscriptions unlock full courses and extra study books for a set amount of time. Advanced tools like the "Smart Training Hub" require you to answer enough questions first so the system can accurately learn your weaknesses.</p>
-            <p><strong>Mentorship Rules:</strong> If you work with an EDEETOS Mentor, they can see your exam scores and mistakes. Mentor chat sessions are completely private and are permanently deleted from our servers the second the chat ends. We cannot recover old messages, so make sure you save the automatic text transcript that downloads to your device after a chat.</p>
+            <h3>4. Payments and Refunds</h3>
+            <p><strong>No Refunds:</strong> Because buying a subscription gives you immediate digital access to all our study materials, we do not offer refunds.</p>
+            <p><strong>What "Lifetime" Means:</strong> If you buy a "Lifetime" package, it means you have access for as long as EDEETOS is operating and providing that course, not for your entire life.</p>
+            <p><strong>Promo Codes:</strong> If you have a discount code, you must use it when you buy. We cannot add discounts after you have already paid.</p>
 
-            <h3 style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-top: 2rem;">5. Group Study & Challenges</h3>
-            <p>We built Group Study and Friend Challenges so you can learn with your peers. However, you cannot use these tools to bypass paywalls. <strong>You cannot join a Group Study room that is testing Premium material unless you also have an active Premium subscription for that course.</strong> Spamming challenge codes or abusing the study rooms will result in an account ban.</p>
+            <h3>5. How We Use Your Feedback</h3>
+            <p>If you report an error in a question, or if you are a mentor writing a custom explanation, we can use that text to fix and improve the website for everyone else.</p>
 
-            <h3 style="border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; margin-top: 2rem;">6. Account Termination</h3>
-            <p>We reserve the right to suspend or delete your account at any time, without warning, if you violate these Terms of Service.</p>
+            <h3>6. Accounts and Mentors</h3>
+            <p><strong>One Course Per Account:</strong> When you sign up, you pick one exam course. If you want to change it later, you have to ask an admin for permission.</p>
+            <p><strong>Mentor Advice:</strong> Our mentors give great advice, but we cannot guarantee you will pass your exam just because you talked to them. Also, chat sessions are deleted permanently as soon as you close them. We cannot get old messages back.</p>
+
+            <h3>7. Group Study and Cheating</h3>
+            <p>We built Group Study so you can learn with your friends. <strong>You cannot use group study to share Premium questions with friends who only have Free accounts.</strong> You can only join a Premium room if you also paid for Premium. If you abuse the room system, we will suspend your account.</p>
+
+            <h3>8. Keeping the Website Online</h3>
+            <p>We try our best to keep EDEETOS online 24/7, but we cannot promise it will never crash or have bugs. We are not responsible if the website goes down while you are trying to study.</p>
         </div>
     </main>
 
-    <footer class="site-footer" style="text-align: center; margin-top: 3rem;">
-        <div class="footer-bottom">
-            <p>&copy; 2026 EDEETOS. All rights reserved. | <a href="changelog.html" style="color: #34d399;">Changelog</a> | <a href="privacy.html" style="color: #34d399;">Privacy Policy</a> | <a href="terms.html" style="color: #34d399;">Terms of Service</a></p>
+    <footer class="site-footer" style="padding: 3rem 2rem; border-top: 1px solid var(--surface-border); background: var(--surface-card);">
+        <div class="footer-bottom" style="text-align: center; color: var(--text-muted); font-size: 0.9rem; font-weight: 600;">
+            <p>&copy; 2026 EDEETOS. All rights reserved. | <a href="changelog.html" class="legal-link">Changelog</a> | <a href="privacy.html" class="legal-link">Privacy Policy</a> | <a href="terms.html" class="legal-link">Terms of Service</a></p>
         </div>
     </footer>
 
