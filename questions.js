@@ -1,6 +1,7 @@
-import { auth, db } from './firebase-config.js';
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc, setDoc, updateDoc, addDoc, collection, serverTimestamp, getDocs, deleteField } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { auth, db, functions } from './firebase-config.js';
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 import { createDbWorker } from './assets/sqlite/sql-vfs-bundle.js';
 
 // ==========================================
@@ -2322,49 +2323,36 @@ function showMilestonePopup(trophy) {
 async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, milestoneTitle) {
     try {
         if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
-        const userRef = doc(db, "users", auth.currentUser.uid);
-        let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
-        let currentExpiry = currentSubs[targetCourse];
-        let newExpiryDate = new Date();
-        if (currentExpiry && currentExpiry !== 'lifetime') {
-            const existingDate = new Date(currentExpiry);
-            if (existingDate > newExpiryDate) { newExpiryDate = existingDate; }
+        
+        const claimRewardCall = httpsCallable(functions, 'claimMilestoneReward');
+        const result = await claimRewardCall({
+            rewardType: 'course', targetItem: targetCourse, rewardValue, rewardUnit, milestoneTitle
+        });
+        
+        if (currentUserData) { 
+            currentUserData.subscriptions = result.data.newSubscriptions; 
+            currentUserData.isPremium = true; 
+            currentUserData.claimedMilestones = result.data.claimedMilestones; 
         }
-        if (rewardUnit === "Hour") { newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue); } 
-        else { newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue); }
-
-        currentSubs[targetCourse] = newExpiryDate.toISOString();
-        let claimedMilestones = currentUserData?.claimedMilestones || [];
-        if (!claimedMilestones.includes(milestoneTitle)) claimedMilestones.push(milestoneTitle);
-
-        await updateDoc(userRef, { subscriptions: currentSubs, isPremium: true, claimedMilestones: claimedMilestones });
-        if (currentUserData) { currentUserData.subscriptions = currentSubs; currentUserData.isPremium = true; currentUserData.claimedMilestones = claimedMilestones; }
         alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue}${rewardUnit}.`);
-    } catch (err) { alert("Firebase Error: " + err.message); }
+    } catch (err) { alert("Reward Error: " + err.message); }
 }
 
 async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBookFile) {
     try {
         if (!auth?.currentUser?.uid) return alert('Authentication error: Session lost.');
-        const userRef = doc(db, 'users', auth.currentUser.uid);
-        let currentSubs = currentUserData?.subscriptions ? { ...currentUserData.subscriptions } : {};
-        let currentExpiry = currentSubs[selectedBookFile];
-        let newExpiryDate = new Date();
-        if (currentExpiry && currentExpiry !== 'lifetime') {
-            const existingDate = new Date(currentExpiry);
-            if (existingDate > newExpiryDate) { newExpiryDate = existingDate; }
+        
+        const claimRewardCall = httpsCallable(functions, 'claimMilestoneReward');
+        const result = await claimRewardCall({
+            rewardType: 'book', targetItem: selectedBookFile, rewardValue, rewardUnit, milestoneTitle: trophyTitle
+        });
+        
+        if (currentUserData) { 
+            currentUserData.subscriptions = result.data.newSubscriptions; 
+            currentUserData.claimedMilestones = result.data.claimedMilestones; 
         }
-        if (rewardUnit === "Hour") { newExpiryDate.setHours(newExpiryDate.getHours() + rewardValue); } 
-        else { newExpiryDate.setDate(newExpiryDate.getDate() + rewardValue); }
-
-        currentSubs[selectedBookFile] = newExpiryDate.toISOString();
-        let claimedMilestones = currentUserData?.claimedMilestones || [];
-        if (!claimedMilestones.includes(trophyTitle)) claimedMilestones.push(trophyTitle);
-
-        await updateDoc(userRef, { subscriptions: currentSubs, claimedMilestones: claimedMilestones });
-        if (currentUserData) { currentUserData.subscriptions = currentSubs; currentUserData.claimedMilestones = claimedMilestones; }
         alert(`Success! Your book is unlocked for ${rewardValue}${rewardUnit}.`);
-    } catch (err) { alert('Firebase Error: ' + err.message); }
+    } catch (err) { alert("Reward Error: " + err.message); }
 }
 
 if (btnJourney) {

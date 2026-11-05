@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+import { getFunctions } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 
 // 0. GLOBAL UI OVERRIDE (CLINICAL SAAS ALERTS)
 window.alert = function(message, onCloseCallback) {
@@ -71,6 +72,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
+const functions = getFunctions(app);
 
 // SECURITY & ANTI-CHEAT ENGINE
 function enforceSecurity() {
@@ -153,7 +155,7 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-export { auth, db, storage };
+export { auth, db, storage, functions };
 
 export const courseNamesMap = {
     'mbbs_year1': 'MBBS 1st Year', 'mbbs_year2': 'MBBS 2nd Year', 'mbbs_year3': 'MBBS 3rd Year', 'mbbs_year4': 'MBBS 4th Year', 'mbbs_year5': 'MBBS 5th Year',

@@ -17,7 +17,8 @@ INDEX OF FEATURES - ENTERPRISE SAAS
 */
 
 // === 1. FIREBASE IMPORTS & GLOBALS ===
-import { auth, db, courseNamesMap, mergedNamesMap } from './firebase-config.js';
+import { auth, db, functions, courseNamesMap, mergedNamesMap } from './firebase-config.js';
+import { httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, getDoc, updateDoc, addDoc, collection, setDoc, serverTimestamp, query, where, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -180,10 +181,10 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
                 
-                const btnReports = document.getElementById('btn-reports-panel');
+const btnReports = document.getElementById('btn-reports-panel');
+                if (btnReports) btnReports.classList.remove('view-hidden');
+                
                 if (userRoleUpper === 'MENTOR' || userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
-                    if (btnReports) btnReports.classList.remove('view-hidden');
-                    
                     const btnMentor = document.getElementById('btn-contact-mentor');
                     if (btnMentor) {
                         btnMentor.textContent = "Open Mentor Dashboard";
@@ -429,13 +430,14 @@ async function checkAssignedExams() {
                 const taskListContainer = document.getElementById('task-list-container');
                 taskListContainer.innerHTML = '';
                 
-                pendingExams.forEach((exam, index) => {
-                    const cardDiv = document.createElement('div');
-                    cardDiv.className = 'task-item-card';
-                    
-                    const infoDiv = document.createElement('div');
-                    
-                    const titleDiv = document.createElement('div');
+pendingExams.forEach((exam, index) => {
+                            const cardDiv = document.createElement('div');
+                            cardDiv.className = 'task-item-card';
+                            
+                            const infoDiv = document.createElement('div');
+                            infoDiv.className = 'flex-1 text-left';
+                            
+                            const titleDiv = document.createElement('div');
                     titleDiv.className = 'task-item-title m-0 mb-05';
                     titleDiv.textContent = exam.title;
                     
@@ -466,10 +468,15 @@ async function checkAssignedExams() {
                     cardDiv.appendChild(infoDiv);
                     cardDiv.appendChild(launchBtn);
                     taskListContainer.appendChild(cardDiv);
-                });
+});
 
-                container.firstElementChild.onclick = () => taskModal.classList.remove('view-hidden');
-                document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
+// Bulletproof click binding: catches the button and the card reliably
+                        container.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            taskModal.classList.remove('view-hidden');
+                        });
+                        
+                        document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
 
                 pendingExams.forEach((exam, index) => {
                     const launchBtn = document.getElementById(`launch-assigned-${index}`);
