@@ -2601,7 +2601,12 @@ function initMentorFeatures() {
                     const data = docSnap.data();
                     const role = (data.role || 'STUDENT').toUpperCase();
                     if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
-                        studentsList.push({ id: docSnap.id, name: data.fullName || "Unnamed User", email: data.email || "No Email" });
+                        studentsList.push({ 
+                            id: docSnap.id, 
+                            name: data.fullName || "Unnamed User", 
+                            email: data.email || "No Email",
+                            course: data.activeCourse || data.course || "No Course"
+                        });
                     }
                 });
 
@@ -2635,16 +2640,28 @@ function initMentorFeatures() {
                                 const nSpan = document.createElement('span'); 
                                 nSpan.className = 'student-name'; 
                                 nSpan.style.fontWeight = 'bold'; 
-                                nSpan.style.color = 'var(--text-main)'; // Fixed missing visibility 
+                                nSpan.style.color = 'var(--text-main)';
                                 nSpan.textContent = student.name;
+                                
+                                const cSpan = document.createElement('span');
+                                cSpan.className = 'student-course';
+                                cSpan.style.fontSize = '0.75rem';
+                                cSpan.style.fontWeight = '700';
+                                cSpan.style.color = 'var(--primary-ui)';
+                                cSpan.style.marginTop = '2px';
+                                cSpan.style.marginBottom = '2px';
+                                cSpan.style.textTransform = 'uppercase';
+                                cSpan.innerHTML = `<i class="fas fa-book" style="margin-right: 4px;"></i>${student.course.replace(/_/g, ' ')}`;
                                 
                                 const eSpan = document.createElement('span'); 
                                 eSpan.className = 'student-email'; 
                                 eSpan.style.fontSize = '0.85rem'; 
-                                eSpan.style.color = 'var(--text-muted)'; // Fixed missing visibility
+                                eSpan.style.color = 'var(--text-muted)';
                                 eSpan.textContent = student.email;
                                 
-                                textDiv.appendChild(nSpan); textDiv.appendChild(eSpan);
+                                textDiv.appendChild(nSpan); 
+                                textDiv.appendChild(cSpan);
+                                textDiv.appendChild(eSpan);
                                 lbl.appendChild(cb); lbl.appendChild(textDiv);
                                 listCont.appendChild(lbl);
                             });
@@ -2660,7 +2677,8 @@ function initMentorFeatures() {
                             items.forEach(item => {
                                 const n = item.querySelector('.student-name').textContent.toLowerCase();
                                 const em = item.querySelector('.student-email').textContent.toLowerCase();
-                                item.style.display = (n.includes(term) || em.includes(term)) ? 'flex' : 'none';
+                                const cr = item.querySelector('.student-course').textContent.toLowerCase();
+                                item.style.display = (n.includes(term) || em.includes(term) || cr.includes(term)) ? 'flex' : 'none';
                             });
                         };
                     }
