@@ -1588,8 +1588,8 @@ if (roomRef) {
                         const hierarchyData = await hierarchyRes.json();
                         const subjects = Object.keys(hierarchyData.subjects || {});
                         
-                        const metaPromises = subjects.map(async (subj) => {
-                            const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+const metaPromises = subjects.map(async (subj) => {
+                            const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
                             try {
                                 const res = await fetch(`${basePath}/${activeCourse}/metadata/${subjClean}.json`);
                                 if (res.ok) return await res.json();
@@ -1604,8 +1604,8 @@ if (roomRef) {
                         data.questionIds.forEach(id => {
                             const meta = globalMetadata.find(q => String(q.id || q.QuestionID) === String(id));
                             if (meta) {
-                                const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
+                                const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
                                 chunksToLoad.add(`${basePath}/${activeCourse}/subjects/${s}_${c}.json`);
                             }
                         });
