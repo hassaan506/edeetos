@@ -21,6 +21,7 @@ let userExamHistory = [];
 
 let globalPracticeMistakes = [];
 let globalExamMistakes = [];
+let globalHistoricalMistakes = [];
 let globalBookmarks = [];
 let globalBookmarkFolders = {};
 let globalSkipped = [];
@@ -2359,7 +2360,7 @@ if (btnJourney) {
     btnJourney.onclick = () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to track your Journey and unlock trophies.");
         
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes, ...globalHistoricalMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         const dbClaimed = currentUserData?.claimedMilestones || [];
 
@@ -2795,8 +2796,9 @@ async function hydrateUserState(dbData) {
     const uniqueBookBookmarks = [...new Set(bookBookmarks)];
     const uniqueBookSkipped = [...new Set(bookSkipped)];
 
-    globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
+globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
     globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
+    globalHistoricalMistakes = [...new Set([...courseHistorical, ...bookHistorical])];
     globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
     globalSkipped = [...uniqueCourseSkipped, ...uniqueBookSkipped];
     
@@ -3028,8 +3030,8 @@ async function hydrateUserState(dbData) {
         };
     }
     
-    setTimeout(() => {
-        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
+setTimeout(() => {
+        const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes, ...globalHistoricalMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         checkMilestones(flawlessCount);
     }, 2000);
