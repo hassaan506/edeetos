@@ -208,7 +208,7 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 .option-box {
     padding: 14px 16px; background: var(--surface-color); border: 1px solid var(--border-color);
     border-radius: var(--radius); cursor: pointer; user-select: none; transition: transform 0.1s, border-color 0.1s; 
-    display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px;
+    display: grid; grid-template-columns: 24px 1fr 28px; align-items: center; gap: 16px; min-height: 56px;
 }
 
 .option-box::before {
@@ -221,7 +221,7 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 
 .option-text { 
     font-size: 1rem; color: var(--text-color); font-weight: 500; pointer-events: none; 
-    flex: 1; word-break: break-word; line-height: 1.45; text-align: left;
+    word-break: break-word; line-height: 1.45; text-align: left;
 }
 
 .option-text * { margin: 0 !important; padding: 0 !important; display: inline !important; }
@@ -242,7 +242,7 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 .option-box.correct { border-color: var(--success); background: color-mix(in srgb, var(--success) 10%, var(--surface-color)); border-width: 2px; }
 .option-box.correct::before { color: var(--success); opacity: 1; }
 
-.voter-tag { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; width: 100%; font-family: var(--font-secondary); }
+.voter-tag { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; width: 100%; grid-column: 1 / -1; font-family: var(--font-secondary); }
 .voter-tag span { padding: 4px 8px; border-radius: var(--radius); font-size: 0.75rem; font-weight: 800; border: 1px solid var(--border-color); }
 
 .skipped-warning {

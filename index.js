@@ -72,18 +72,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 5. SECURE CONTACT FORM ===
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const whatsapp = document.getElementById('contact-whatsapp').value.trim() || "None";
+            const msg = document.getElementById('contact-msg').value.trim();
+
+            const nameRegex = /^[A-Za-z\s]+$/;
+            const phoneRegex = /^[0-9+\-\s()]+$/;
+            const illegalChars = /[<>{}[\];'"`/\\]/;
+
+            if (!nameRegex.test(name)) { alert("Invalid name: Letters and spaces only."); return; }
+            if (whatsapp !== "None" && !phoneRegex.test(whatsapp)) { alert("Invalid number format."); return; }
+            if (illegalChars.test(email) || illegalChars.test(msg)) { alert("Special characters not allowed."); return; }
+
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
             try {
                 await addDoc(collection(db, "contact_messages"), {
-                    name: document.getElementById('contact-name').value,
-                    email: document.getElementById('contact-email').value,
-                    whatsapp: document.getElementById('contact-whatsapp').value || "None",
-                    message: document.getElementById('contact-msg').value,
+                    name: name,
+                    email: email,
+                    whatsapp: whatsapp,
+                    message: msg,
                     timestamp: new Date().toISOString()
                 });
                 alert("Message sent successfully!");

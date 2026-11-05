@@ -449,10 +449,12 @@ pendingExams.forEach((exam, index) => {
                     timeBadge.style.border = "1px solid var(--border-color)";
                     timeBadge.textContent = `⏱ ${exam.timerMinutes} MIN`;
                     
-                    const countBadge = document.createElement('span');
+const countBadge = document.createElement('span');
                     countBadge.className = 'task-badge-count font-xs p-1 border-radius';
                     countBadge.style.border = "1px solid var(--border-color)";
-                    countBadge.textContent = `📋 ${exam.questions.length} Q`;
+                    // Safely check both potential schema names and default to an empty array to prevent crashes
+                    const qCount = (exam.questionIds || exam.questions || []).length;
+                    countBadge.textContent = `📋 ${qCount} Q`;
                     
                     badgeRow.appendChild(timeBadge);
                     badgeRow.appendChild(countBadge);
@@ -465,18 +467,29 @@ pendingExams.forEach((exam, index) => {
                     launchBtn.className = 'action-btn next-btn';
                     launchBtn.textContent = 'Start';
                     
-                    cardDiv.appendChild(infoDiv);
+cardDiv.appendChild(infoDiv);
                     cardDiv.appendChild(launchBtn);
                     taskListContainer.appendChild(cardDiv);
-});
+                });
 
-// Bulletproof click binding: catches the button and the card reliably
-                        container.addEventListener('click', (e) => {
-                            e.preventDefault();
+                // Explicitly grab the card and button from the DOM to guarantee the click registers
+                const notifyCard = container.querySelector('.task-notify-card');
+                if (notifyCard) {
+                    notifyCard.addEventListener('click', () => taskModal.classList.remove('view-hidden'));
+                    
+                    const actionBtn = notifyCard.querySelector('button');
+                    if (actionBtn) {
+                        actionBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
                             taskModal.classList.remove('view-hidden');
                         });
-                        
-                        document.getElementById('close-tasks-modal').onclick = () => taskModal.classList.add('view-hidden');
+                    }
+                }
+                
+                const closeModalBtn = document.getElementById('close-tasks-modal');
+                if (closeModalBtn) {
+                    closeModalBtn.addEventListener('click', () => taskModal.classList.add('view-hidden'));
+                }
 
                 pendingExams.forEach((exam, index) => {
                     const launchBtn = document.getElementById(`launch-assigned-${index}`);

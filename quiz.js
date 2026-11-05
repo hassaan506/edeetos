@@ -1389,12 +1389,17 @@ function revealMultiplayerAnswers(answersObj, activeMembersMap) {
         if (isOptCorrect) box.classList.add('correct', 'apply-pop');
         else if (Object.values(answersObj).includes(optText)) box.classList.add('incorrect');
 
-        const voters = Object.keys(answersObj).filter(uid => answersObj[uid] === optText);
-        if (voters.length > 0 && templateVoterTag) {
-            const tagContainer = document.createElement('div');
-            tagContainer.className = "voter-tag";
-            
-            voters.forEach(uid => {
+const voters = Object.keys(answersObj).filter(uid => answersObj[uid] === optText);
+            if (voters.length > 0 && templateVoterTag) {
+                // HARD-OVERRIDE CSS CACHING ISSUES
+                box.style.flexWrap = 'wrap'; 
+                if (textDiv) textDiv.style.minWidth = '50%';
+                
+                const tagContainer = document.createElement('div');
+                tagContainer.className = "voter-tag";
+                tagContainer.style.width = '100%';
+                
+                voters.forEach(uid => {
                 const name = activeMembersMap[uid] || "Student";
                 const isMe = uid === currentUserId;
                 const clone = templateVoterTag.content.cloneNode(true);
@@ -1567,17 +1572,26 @@ if (roomRef) {
                     document.body.style.cursor = 'wait';
                     let incomingQuestions = [];
                     try {
-                        const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
+// Check for host's courseFile first
+                        const activeCourse = data.courseFile || localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                         
-                        // Fetch Hierarchy to get all subjects
-                        const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                        // Check if it's a Book or a Data course
+                        let basePath = 'Data';
+                        let hierarchyRes = await fetch(`${basePath}/${activeCourse}_hierarchy.json`);
+                        if (!hierarchyRes.ok) {
+                            basePath = 'Books';
+                            hierarchyRes = await fetch(`${basePath}/${activeCourse}_hierarchy.json`);
+                        }
+                        
+                        if (!hierarchyRes.ok) throw new Error("Hierarchy file not found");
+
                         const hierarchyData = await hierarchyRes.json();
                         const subjects = Object.keys(hierarchyData.subjects || {});
                         
                         const metaPromises = subjects.map(async (subj) => {
                             const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
                             try {
-                                const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                                const res = await fetch(`${basePath}/${activeCourse}/metadata/${subjClean}.json`);
                                 if (res.ok) return await res.json();
                             } catch(e) {}
                             return [];
@@ -1592,10 +1606,9 @@ if (roomRef) {
                             if (meta) {
                                 const s = String(meta.Subject || meta.subject).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
                                 const c = String(meta.Chapter || meta.chapter).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
-                                chunksToLoad.add(`Data/${activeCourse}/subjects/${s}_${c}.json`);
+                                chunksToLoad.add(`${basePath}/${activeCourse}/subjects/${s}_${c}.json`);
                             }
                         });
-
                         const activeChunksCache = {};
                         const fetchPromises = Array.from(chunksToLoad).map(async (baseUrl) => {
                             let page = 1;

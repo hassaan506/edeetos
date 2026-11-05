@@ -190,9 +190,9 @@
                 </div>
             </div>
             <form id="contact-form">
-                <input type="text" id="contact-name" class="form-input" placeholder="Your Name" required>
+<input type="text" id="contact-name" class="form-input" placeholder="Your Name" pattern="[A-Za-z\s]+" title="Letters only" required>
                 <input type="email" id="contact-email" class="form-input" placeholder="Your Email" required>
-                <input type="tel" id="contact-whatsapp" class="form-input" placeholder="WhatsApp Number">
+                <input type="tel" id="contact-whatsapp" class="form-input" placeholder="WhatsApp Number" pattern="[0-9+\-\s()]+">
                 <textarea id="contact-msg" class="form-input" rows="4" placeholder="How can we help?" required></textarea>
                 <button type="submit" class="btn-solid" style="width: 100%;">Send Message</button>
             </form>

@@ -1,7 +1,26 @@
 /* === NAVBAR BASE FIXES === */
 .navbar { padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; background: var(--bg-main); border-bottom: 1px solid var(--surface-border); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
-.nav-logo { font-size: 1.5rem; font-weight: 900; color: var(--text-main); text-decoration: none; letter-spacing: -0.05em; }
+.nav-logo { 
+    font-size: clamp(1rem, 3vw, 20rem); 
+    font-weight: 900; 
+    text-decoration: none; 
+    letter-spacing: -0.05em; 
+    
+    /* The Gradient Mask */
+    background: linear-gradient(135deg, var(--primary-ui) 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+/* Add a subtle hover interaction */
+.nav-logo:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.3));
+}
 .nav-actions { display: flex; align-items: center; gap: 2.5rem; }
 .nav-links { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
 .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 1rem; transition: color 0.2s; }
