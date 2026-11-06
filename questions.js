@@ -196,6 +196,12 @@ document.querySelectorAll('.fancy-number-input').forEach(wrapper => {
 // ==========================================
 // 3. UTILITY FUNCTIONS (Sanitization & Parsers)
 // ==========================================
+function getQuestionLimit() {
+    if (localStorage.getItem('edeetos_guest_mode') === 'true') return 20;
+    if (!isPremiumUser) return 50;
+    return Infinity;
+}
+
 function sanitizeFilename(name) {
     if (!name) return "unknown";
     return String(name).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
@@ -736,11 +742,16 @@ async function loadDataAndBuildTree() {
 async function fetchAllMetadata() {
     if (!subjectTree || Object.keys(subjectTree).length === 0) return;
     const subjects = Object.keys(subjectTree);
+    const limit = getQuestionLimit();
+
     const promises = subjects.map(async (subj) => {
         const subjClean = sanitizeFilename(subj);
         try {
             const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
-            if (res.ok) { return await res.json(); }
+            if (res.ok) { 
+                const data = await res.json(); 
+                return data.slice(0, limit);
+            }
         } catch (e) {}
         return [];
     });
@@ -758,6 +769,9 @@ async function loadAndOpenBook(book) {
             if (!response.ok) throw new Error("JSON file not found");
             
             let bookQuestions = await response.json();
+            const limit = getQuestionLimit();
+            bookQuestions = bookQuestions.slice(0, limit);
+            
             bookQuestions.forEach(q => {
                 q.QuestionID = q.id;
                 q.Subject = book.title;
@@ -861,8 +875,17 @@ async function fetchRequiredChunks(view, pathsArray) {
         }
     }
     
+    const limit = getQuestionLimit();
+    const subjectCounts = {};
+    const clampedQs = [];
+    fetchedQs.forEach(q => {
+        const s = q.Subject || q.subject || 'Uncategorized';
+        subjectCounts[s] = (subjectCounts[s] || 0) + 1;
+        if (subjectCounts[s] <= limit) clampedQs.push(q);
+    });
+
     document.body.style.cursor = 'default';
-    return fetchedQs;
+    return clampedQs;
 }
 
 // ==========================================
@@ -1508,8 +1531,23 @@ if (btnQuickMock && mockModal) {
             const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
             
             let metaPool = results.map(r => ({ id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false })).filter(q => !attemptedQuestions.includes(q.id) && !allMistakes.includes(q.id));
+            
+            const limit = getQuestionLimit();
+            const subCounts = {};
+            metaPool = metaPool.filter(q => {
+                const s = q.Subject || 'Uncategorized';
+                subCounts[s] = (subCounts[s] || 0) + 1;
+                return subCounts[s] <= limit;
+            });
+            
             if (metaPool.length < count) {
                 metaPool = results.map(r => ({ id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false }));
+                const fbCounts = {};
+                metaPool = metaPool.filter(q => {
+                    const s = q.Subject || 'Uncategorized';
+                    fbCounts[s] = (fbCounts[s] || 0) + 1;
+                    return fbCounts[s] <= limit;
+                });
             }
             if (metaPool.length < count) {
                 btnStartMock.textContent = "Start Exam";
