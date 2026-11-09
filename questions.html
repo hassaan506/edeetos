@@ -110,30 +110,31 @@
                 <div id="spaced-repetition-container" class="spaced-rep-bento"></div>
             </section>
 
-            <section class="control-bar glass-panel sticky-control">
-<div class="control-row-1">
-                    <button id="btn-open-search-modal" class="icon-btn" title="Search Database"><i class="fas fa-search"></i></button>
+<section class="control-bar glass-panel sticky-control">
+                <div class="control-actions-wrapper">
                     
-                    <div class="mode-toggle">
-                    
-                    <div class="mode-toggle">
-                        <button id="mode-practice" class="btn-outline active-mode btn-mode-practice">Practice</button>
-                        <button id="mode-exam" class="btn-outline">Exam</button>
+                    <div class="control-left">
+                        <button id="btn-open-search-modal" class="icon-btn" title="Search Database"><i class="fas fa-search"></i></button>
+                        <div class="mode-toggle">
+                            <button id="mode-practice" class="btn-outline active-mode btn-mode-practice">Practice</button>
+                            <button id="mode-exam" class="btn-outline">Exam</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="control-row-2">
-                    <div class="filter-controls">
-                        <label class="filter-pill"><input type="checkbox" id="unattempted-filter" class="item-checkbox"><span>Unattempted</span></label>
-                        <div class="vertical-divider"></div>
-                        <label class="filter-pill easy"><input type="checkbox" id="diff-easy-filter" value="easy" class="item-checkbox"><span>Easy</span></label>
-                        <label class="filter-pill medium"><input type="checkbox" id="diff-medium-filter" value="medium" class="item-checkbox"><span>Medium</span></label>
-                        <label class="filter-pill hard"><input type="checkbox" id="diff-hard-filter" value="hard" class="item-checkbox"><span>Hard</span></label>
+                    <div class="control-right">
+                        <div class="filter-controls">
+                            <label class="filter-pill"><input type="checkbox" id="unattempted-filter" class="item-checkbox"><span>Unattempted</span></label>
+                            <div class="vertical-divider"></div>
+                            <label class="filter-pill easy"><input type="checkbox" id="diff-easy-filter" value="easy" class="item-checkbox"><span>Easy</span></label>
+                            <label class="filter-pill medium"><input type="checkbox" id="diff-medium-filter" value="medium" class="item-checkbox"><span>Medium</span></label>
+                            <label class="filter-pill hard"><input type="checkbox" id="diff-hard-filter" value="hard" class="item-checkbox"><span>Hard</span></label>
+                        </div>
+                        <div class="multiplayer-controls">
+                            <button id="btn-quick-mock" class="btn-solid btn-filled-purple"><i class="fas fa-bolt"></i> Mock</button>
+                            <button id="btn-join-challenge" class="btn-outline btn-outline-purple"><i class="fas fa-link"></i> Join</button>
+                        </div>
                     </div>
-                    <div class="multiplayer-controls">
-                        <button id="btn-quick-mock" class="btn-solid btn-filled-purple"><i class="fas fa-bolt"></i> Mock</button>
-                        <button id="btn-join-challenge" class="btn-outline btn-outline-purple"><i class="fas fa-link"></i> Join</button>
-                    </div>
+
                 </div>
                 <p id="mode-description" class="mode-desc">Practice Mode: Instant feedback and detailed explanations enabled.</p>
             </section>
