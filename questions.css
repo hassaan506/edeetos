@@ -207,8 +207,8 @@ html.dark-mode .text-blue { color: var(--accent); }
 html.dark-mode .mode-toggle button.active-mode { background: var(--accent) !important; color: #000 !important; }
 
 /* Modern Flex Control Layout */
-.control-main-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
-.control-group { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.control-main-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.5rem; }
+.control-group { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
 
 .filter-controls { display: flex; align-items: center; gap: 1rem; background: var(--bg-main); padding: 0.5rem 1.2rem; border-radius: 50px; border: 1px solid var(--surface-border); flex-wrap: wrap; justify-content: center;}
 .filter-pill { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
@@ -232,7 +232,7 @@ html.dark-mode .filter-pill input[type="checkbox"]:checked::after { color: #000;
 .filter-pill input[type="checkbox"]:checked { background: var(--primary-ui); border-color: var(--primary-ui); }
 html.dark-mode .filter-pill input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
 
-.mode-desc { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 600;}
+.mode-desc { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 600; text-align: center; width: 100%; }
 
 /* ========================================== */
 /* --- 7. BUTTONS, INPUTS & GENERAL UTILS --- */
