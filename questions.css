@@ -192,7 +192,7 @@ html.dark-mode .text-blue { color: var(--accent); }
 /* .sticky-control: The bar that sticks to the top when scrolling */
 .sticky-control {
     position: sticky; top: 1rem; z-index: 50; 
-    padding: 1.5rem; /* <--- REDUCE THIS to shrink the search bar height */
+    padding: 1.5rem; 
     display: flex; flex-direction: column; gap: 1.5rem;
 }
 
@@ -205,11 +205,12 @@ html.dark-mode .text-blue { color: var(--accent); }
 .mode-toggle button { border: none; background: transparent; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: 0.2s;}
 .mode-toggle button.active-mode { background: var(--primary-ui) !important; color: #fff !important; box-shadow: var(--shadow-float); pointer-events: none;}
 html.dark-mode .mode-toggle button.active-mode { background: var(--accent) !important; color: #000 !important; }
-.control-actions-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; }
-.control-left { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
-.control-right { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
 
-.filter-controls { display: flex; align-items: center; gap: 1rem; background: var(--bg-main); padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid var(--surface-border); }
+/* Modern Flex Control Layout */
+.control-main-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+.control-group { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+
+.filter-controls { display: flex; align-items: center; gap: 1rem; background: var(--bg-main); padding: 0.5rem 1.2rem; border-radius: 50px; border: 1px solid var(--surface-border); flex-wrap: wrap; justify-content: center;}
 .filter-pill { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
 .vertical-divider { width: 1px; height: 18px; background: var(--text-muted); opacity: 0.3; }
 
@@ -231,7 +232,6 @@ html.dark-mode .filter-pill input[type="checkbox"]:checked::after { color: #000;
 .filter-pill input[type="checkbox"]:checked { background: var(--primary-ui); border-color: var(--primary-ui); }
 html.dark-mode .filter-pill input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
 
-.multiplayer-controls { display: flex; gap: 1rem; }
 .mode-desc { font-size: 0.85rem; color: var(--text-muted); margin: 0; font-weight: 600;}
 
 /* ========================================== */
@@ -629,17 +629,14 @@ select.glass-input option { background: var(--surface-card); color: var(--text-m
     .bento-command-center { grid-template-columns: 1fr; }
     .stat-grid { grid-template-columns: 1fr 1fr; }
     
-.control-actions-wrapper { flex-direction: column; align-items: stretch; gap: 1.5rem; }
-    .control-left, .control-right { justify-content: center; width: 100%; }
-    .search-wrapper { width: 100%; }
+    .control-main-row { flex-direction: column; align-items: stretch; }
+    .control-group { justify-content: center; width: 100%; }
     
     /* MODIFIED: Fixed Mode Toggle White space */
     .mode-toggle { display: flex; width: 100%; }
     .mode-toggle button { flex: 1; text-align: center; justify-content: center; }
     
-    .filter-controls { flex-wrap: wrap; justify-content: center; }
-    .multiplayer-controls { display: flex; width: 100%; }
-    .multiplayer-controls button { flex: 1; }
+    .filter-controls { flex-wrap: wrap; justify-content: center; width: 100%; }
 
     /* MODIFIED: Fixed the cart blocking the last items in the grid */
     .subjects-grid { grid-template-columns: 1fr; padding-bottom: 260px; }
