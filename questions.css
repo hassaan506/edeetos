@@ -196,7 +196,6 @@ html.dark-mode .text-blue { color: var(--accent); }
     display: flex; flex-direction: column; gap: 1.5rem;
 }
 
-.control-row-1 { display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; }
 .search-wrapper { position: relative; flex: 1; display: flex; align-items: center;}
 .search-icon { position: absolute; left: 1.2rem; color: var(--text-muted); font-size: 1.2rem;}
 .search-wrapper input { width: 100%; padding-left: 3rem !important; border-radius: 50px !important; }
@@ -206,8 +205,10 @@ html.dark-mode .text-blue { color: var(--accent); }
 .mode-toggle button { border: none; background: transparent; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: 0.2s;}
 .mode-toggle button.active-mode { background: var(--primary-ui) !important; color: #fff !important; box-shadow: var(--shadow-float); pointer-events: none;}
 html.dark-mode .mode-toggle button.active-mode { background: var(--accent) !important; color: #000 !important; }
+.control-actions-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; }
+.control-left { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.control-right { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
 
-.control-row-2 { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .filter-controls { display: flex; align-items: center; gap: 1rem; background: var(--bg-main); padding: 0.4rem 1rem; border-radius: 50px; border: 1px solid var(--surface-border); }
 .filter-pill { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
 .vertical-divider { width: 1px; height: 18px; background: var(--text-muted); opacity: 0.3; }
@@ -628,8 +629,8 @@ select.glass-input option { background: var(--surface-card); color: var(--text-m
     .bento-command-center { grid-template-columns: 1fr; }
     .stat-grid { grid-template-columns: 1fr 1fr; }
     
-    .control-row-1 { flex-direction: column; align-items: stretch; }
-    .control-row-2 { flex-direction: column; align-items: stretch; }
+.control-actions-wrapper { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+    .control-left, .control-right { justify-content: center; width: 100%; }
     .search-wrapper { width: 100%; }
     
     /* MODIFIED: Fixed Mode Toggle White space */
