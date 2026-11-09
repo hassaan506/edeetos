@@ -10,8 +10,8 @@ import { createDbWorker } from './assets/sqlite/sql-vfs-bundle.js';
 let subjectTree = {};
 let systemTree = {};
 let examTree = {};
-let allQuestions = []; 
-let globalMetadata = []; 
+let allQuestions = [];
+let globalMetadata = [];
 let currentView = "subject";
 let currentMode = "practice";
 let selectedCart = new Set();
@@ -28,17 +28,17 @@ let globalSkipped = [];
 let activeCustomPool = null;
 let isPremiumUser = false;
 let currentUserRole = "STUDENT";
-let currentUserData = null; 
+let currentUserData = null;
 let isGlobalPopupActive = false;
 let viewSpecificStats = {
     course: { solved: [], mistakes: [], bookmarks: [], skipped: [], accuracy: 0 },
     book: { solved: [], mistakes: [], bookmarks: [], skipped: [], accuracy: 0 }
 };
 
-const loadedBooksCache = {}; 
+const loadedBooksCache = {};
 window.isSearchEngineLoading = false;
 window.activeChunksCache = new Proxy({}, {
-    set: function(target, prop, value) {
+    set: function (target, prop, value) {
         target[prop] = value;
         const keys = Object.keys(target);
         if (keys.length > 30) { delete target[keys[0]]; } // Keep memory under control
@@ -51,7 +51,7 @@ let cachedMistakesPool = null;
 
 let activeCourse = localStorage.getItem('edeetos_active_course');
 if (!activeCourse) {
-    activeCourse = 'fcps_part1'; 
+    activeCourse = 'fcps_part1';
     localStorage.setItem('edeetos_active_course', activeCourse);
     if (!window.location.pathname.includes('dashboard.html')) {
         window.location.href = 'dashboard.html';
@@ -74,8 +74,8 @@ const allBooks = [
 ];
 
 const availableBooks = allBooks.filter(book => {
-    if (book.file === "rafiullah") { return activeCourse && activeCourse.startsWith("fcps_part1"); }    
-    return true; 
+    if (book.file === "rafiullah") { return activeCourse && activeCourse.startsWith("fcps_part1"); }
+    return true;
 });
 
 const idbCache = {
@@ -92,7 +92,7 @@ const idbCache = {
             const db = await this.init();
             const tx = db.transaction("user_profiles", "readwrite");
             tx.objectStore("user_profiles").put(data, uid);
-        } catch(e) { console.warn("Cache write failed", e); }
+        } catch (e) { console.warn("Cache write failed", e); }
     },
     async get(uid) {
         try {
@@ -103,7 +103,7 @@ const idbCache = {
                 req.onsuccess = () => resolve(req.result);
                 req.onerror = () => resolve(null);
             });
-        } catch(e) { return null; }
+        } catch (e) { return null; }
     }
 };
 
@@ -156,7 +156,7 @@ const btnStartMock = document.getElementById('btn-start-mock');
 if (darkModeBtn) {
     const updateIcon = () => {
         const isDark = document.documentElement.classList.contains('dark-mode');
-        darkModeBtn.innerHTML = ''; 
+        darkModeBtn.innerHTML = '';
         const icon = document.createElement('i');
         icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         darkModeBtn.appendChild(icon);
@@ -180,7 +180,7 @@ document.querySelectorAll('.fancy-number-input').forEach(wrapper => {
             let val = parseInt(input.value) || 0;
             let min = parseInt(input.getAttribute('min')) || 1;
             let step = parseInt(input.getAttribute('step')) || (val >= 20 ? 5 : 1);
-            if (val - step >= min) { input.value = val - step; } 
+            if (val - step >= min) { input.value = val - step; }
             else { input.value = min; }
             input.dispatchEvent(new Event('change'));
         });
@@ -214,7 +214,7 @@ function parseExamInfo(examStr, fallbackYear, fallbackSpec) {
     const parts = String(examStr).split("-").map(p => p.trim());
     let examYear = fallbackYear;
     let examSpec = fallbackSpec;
-    
+
     if (parts.length >= 2) {
         const prefix = parts[0].toLowerCase();
         if (prefix.includes("surgery")) examSpec = "Surgery & Allied";
@@ -249,7 +249,7 @@ function buildSubTree(pool) {
         let s = q.Subject || q.subject || 'Uncategorized';
         let c = q.Chapter || q.chapter || 'General';
         let t = q.Topic || q.topic || 'General';
-        
+
         if (!tree[s]) tree[s] = {};
         if (!tree[s][c]) tree[s][c] = {};
         tree[s][c][t] = (tree[s][c][t] || 0) + 1;
@@ -282,7 +282,7 @@ if (document.getElementById('open-sidebar')) document.getElementById('open-sideb
 if (document.getElementById('close-sidebar')) document.getElementById('close-sidebar').onclick = () => toggleSidebar(false);
 if (sidebarOverlay) sidebarOverlay.onclick = () => toggleSidebar(false);
 
-window.updateDashboardUI = function() {
+window.updateDashboardUI = function () {
     const type = currentView === 'book' ? 'book' : 'course';
     const stats = viewSpecificStats[type];
 
@@ -317,7 +317,7 @@ function changeView(viewName, titleText) {
     if (searchDropdown) searchDropdown.style.display = 'none';
 
     if (viewName === 'book') {
-        renderBooksGrid();    
+        renderBooksGrid();
     } else {
         renderGrid();
     }
@@ -331,10 +331,10 @@ function restoreLastState() {
     if (window.switchMode) window.switchMode('practice');
     const lastView = localStorage.getItem('edeetos_last_view') || 'subject';
     const lastTitle = localStorage.getItem('edeetos_last_title') || 'Subject Wise';
-    
+
     changeView(lastView, lastTitle);
 
-    if (lastView === 'book') return; 
+    if (lastView === 'book') return;
 
     const savedPathStr = localStorage.getItem('edeetos_saved_popup_path');
     const savedTitle = localStorage.getItem('edeetos_saved_popup_title');
@@ -351,7 +351,7 @@ function restoreLastState() {
 
             let dataObj = currentTree;
             let isValid = true;
-            
+
             for (let i = 0; i < pathArr.length; i++) {
                 if (dataObj[pathArr[i]]) {
                     dataObj = dataObj[pathArr[i]];
@@ -408,7 +408,7 @@ function renderGrid() {
 
         const doneCount = getSolvedCount(currentView, [cardTitle]);
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
-        
+
         titleEl.textContent = cardTitle;
 
         if (currentMode === 'exam') {
@@ -424,12 +424,12 @@ function renderGrid() {
             const mistakeCount = getMistakesCount(currentView, [cardTitle]);
             const totalAttempts = doneCount + mistakeCount;
             const accuracy = totalAttempts > 0 ? Math.round((doneCount / totalAttempts) * 100) : 0;
-            
+
             const accClass = totalAttempts === 0 ? 'badge-gray' : (accuracy >= 75 ? 'badge-green' : (accuracy >= 50 ? 'badge-yellow' : 'badge-red'));
-            
+
             const badgeCont = document.createElement('div');
             badgeCont.className = 'acc-badge-container';
-            
+
             const solvedBadge = createBadge('fas fa-check', `${doneCount} Solved`, 'badge-green');
             const mistakeBadge = createBadge('fas fa-times', `${mistakeCount} Mistake${mistakeCount !== 1 ? 's' : ''}`, 'badge-red');
             const accBadgeStr = totalAttempts > 0 ? `${accuracy}% Acc` : '0%';
@@ -472,7 +472,7 @@ function renderBooksGrid() {
 
     availableBooks.forEach(book => {
         const isUnlocked = checkPremiumAccess(book.file);
-        
+
         const clone = template.content.cloneNode(true);
         const card = clone.querySelector('.feature-card');
         card.textContent = ''; // Clear default feature content
@@ -483,7 +483,7 @@ function renderBooksGrid() {
         const statusEl = bookClone.querySelector('.book-access-status');
 
         titleEl.textContent = book.title;
-        
+
         const icon = document.createElement('i');
         if (isUnlocked) {
             icon.className = 'fas fa-book-open';
@@ -504,12 +504,12 @@ function renderBooksGrid() {
         }
         iconWrapper.appendChild(icon);
         card.appendChild(bookClone);
-        
+
         card.onclick = () => {
-            if (isUnlocked) { loadAndOpenBook(book); } 
+            if (isUnlocked) { loadAndOpenBook(book); }
             else { alert(`You do not have premium access to ${book.title}. Please visit the Dashboard to unlock it.`); }
         };
-        
+
         subjectsGrid.appendChild(card);
     });
 }
@@ -539,7 +539,7 @@ if (searchModal) {
 if (globalSearch && searchDropdown) {
     let sqlWorker = window.sqlWorker || null;
     let isSearchEngineLoading = false;
-    
+
     globalSearch.addEventListener('focus', async () => {
         if (!sqlWorker && !isSearchEngineLoading && currentView !== 'book') {
             isSearchEngineLoading = true;
@@ -551,10 +551,10 @@ if (globalSearch && searchDropdown) {
                 const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
                 sqlWorker = await createDbWorker(
                     [{ from: "inline", config: { serverMode: "full", url: `${baseUrl}/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
-                    workerUrl, wasmUrl, 10 * 1024 * 1024 
+                    workerUrl, wasmUrl, 10 * 1024 * 1024
                 );
                 globalSearch.placeholder = "Search keywords among questions...";
-            } catch(e) {
+            } catch (e) {
                 globalSearch.placeholder = "Search unavailable";
             }
             isSearchEngineLoading = false;
@@ -564,7 +564,7 @@ if (globalSearch && searchDropdown) {
     globalSearch.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
         const query = e.target.value.toLowerCase().trim();
-        
+
         if (query.length < 3) {
             searchDropdown.style.display = 'none';
             return;
@@ -584,7 +584,7 @@ if (globalSearch && searchDropdown) {
                     searchDropdown.style.display = 'block';
                     return;
                 }
-                
+
                 const matchedMeta = activeCustomPool.filter(q => {
                     const qId = String(getQID(q));
                     const text = (q.question || q.Question || "").toLowerCase();
@@ -592,21 +592,21 @@ if (globalSearch && searchDropdown) {
                     const isMatch = text.includes(query) || hierarchyText.includes(query);
                     if (!isMatch) return false;
                     if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(qId) || globalPracticeMistakes.includes(qId) || globalExamMistakes.includes(qId))) return false;
-                    if (!passesDifficultyFilter(q)) return false; 
+                    if (!passesDifficultyFilter(q)) return false;
                     return true;
                 });
-                
+
                 renderSearchResults(matchedMeta, query);
                 return;
             }
 
             if (!window.sqlWorker) return;
             const safeQuery = query.replace(/"/g, '""');
-            
+
             try {
                 const sqlQuery = `SELECT id, snippet(search_data, 1, '<b>', '</b>', '...', 15) as snippet, subject, chapter, topic, difficulty FROM search_data WHERE search_data MATCH '"${safeQuery}" *' LIMIT 100`;
                 const results = await window.sqlWorker.db.query(sqlQuery);
-                
+
                 const matchedMeta = results.map(r => {
                     if (unattemptedFilter && unattemptedFilter.checked && (attemptedQuestions.includes(r.id) || globalPracticeMistakes.includes(r.id) || globalExamMistakes.includes(r.id))) return null;
                     if (diffEasyFilter || diffMediumFilter || diffHardFilter) {
@@ -618,9 +618,9 @@ if (globalSearch && searchDropdown) {
                     }
                     return { id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false, _snippet: r.snippet };
                 }).filter(q => q !== null);
-                
+
                 renderSearchResults(matchedMeta, query);
-            } catch (e) {}
+            } catch (e) { }
         }, 300);
     });
 }
@@ -639,8 +639,8 @@ function renderSearchResults(matchedMeta, query) {
         const heroClone = heroTemplate.content.cloneNode(true);
         const heroBtn = heroClone.querySelector('.search-hero-btn');
         heroClone.querySelector('.search-hero-text').textContent = `Create Quiz from Search (${limitCount} Qs)`;
-        
-heroBtn.onclick = async () => {
+
+        heroBtn.onclick = async () => {
             searchDropdown.style.display = 'none';
             if (searchModal) searchModal.style.display = 'none';
             globalSearch.value = '';
@@ -654,11 +654,11 @@ heroBtn.onclick = async () => {
             const div = document.createElement('div');
             div.className = 'search-item';
             const titleText = `${q.Subject || q.subject || 'Unknown'} > ${q.Chapter || q.chapter || ''}${q.Topic || q.topic ? '> ' + (q.Topic || q.topic) : ''}`;
-            
+
             const titleDiv = document.createElement('div');
             titleDiv.className = 'search-item-title';
             titleDiv.textContent = titleText;
-            
+
             const snippetDiv = document.createElement('div');
             snippetDiv.className = 'search-item-snippet';
             snippetDiv.style.color = '#94a3b8';
@@ -675,8 +675,8 @@ heroBtn.onclick = async () => {
 
             div.appendChild(titleDiv);
             div.appendChild(snippetDiv);
-            
-div.onclick = async () => {
+
+            div.onclick = async () => {
                 searchDropdown.style.display = 'none';
                 if (searchModal) searchModal.style.display = 'none';
                 globalSearch.value = '';
@@ -699,7 +699,7 @@ document.addEventListener('click', (e) => {
 function passesDifficultyFilter(q) {
     if (!diffEasyFilter || !diffMediumFilter || !diffHardFilter) return true;
     const easy = diffEasyFilter.checked, medium = diffMediumFilter.checked, hard = diffHardFilter.checked;
-    if (!easy && !medium && !hard) return true; 
+    if (!easy && !medium && !hard) return true;
     const qDiff = String(q.Difficulty || q.difficulty || "").toLowerCase().trim();
     if (easy && qDiff === 'easy') return true;
     if (medium && qDiff === 'medium') return true;
@@ -710,7 +710,7 @@ function passesDifficultyFilter(q) {
 function triggerFilterUpdate() {
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
-    
+
     if (popupOverlay && popupOverlay.style.display === 'flex') {
         const current = popupHistory[popupHistory.length - 1];
         if (current) {
@@ -730,15 +730,15 @@ if (diffHardFilter) diffHardFilter.addEventListener('change', triggerFilterUpdat
 // ==========================================
 async function loadDataAndBuildTree() {
     try {
-        if (!activeCourse) return; 
+        if (!activeCourse) return;
         const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`, { cache: 'no-cache' });
         if (!hierarchyRes.ok) throw new Error("Hierarchy file not found");
 
         const hierarchyData = await hierarchyRes.json();
         subjectTree = hierarchyData.subjects || {};
         systemTree = hierarchyData.systems || {};
-        examTree = hierarchyData.exams || {}; 
-        
+        examTree = hierarchyData.exams || {};
+
         // MODIFIED: Await the fetching of metadata before we render the grid
         // to ensure manual filters process the full dataset reliably.
         await fetchAllMetadata();
@@ -753,15 +753,15 @@ async function loadDataAndBuildTree() {
                     const wasmUrl = `${baseUrl}/assets/sqlite/sql-wasm.wasm`;
                     window.sqlWorker = await createDbWorker(
                         [{ from: "inline", config: { serverMode: "full", url: `${baseUrl}/Data/${activeCourse}_search_index.sqlite.zip`, requestChunkSize: 4096 } }],
-                        workerUrl, wasmUrl, 10 * 1024 * 1024 
+                        workerUrl, wasmUrl, 10 * 1024 * 1024
                     );
-                } catch(e) {}
+                } catch (e) { }
                 window.isSearchEngineLoading = false;
             })();
         }
 
         renderGrid();
-    } catch (error) {}
+    } catch (error) { }
 }
 
 async function fetchAllMetadata() {
@@ -773,14 +773,14 @@ async function fetchAllMetadata() {
         const subjClean = sanitizeFilename(subj);
         try {
             const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
-            if (res.ok) { 
-                const data = await res.json(); 
+            if (res.ok) {
+                const data = await res.json();
                 return data.slice(0, limit);
             }
-        } catch (e) {}
+        } catch (e) { }
         return [];
     });
-    
+
     const results = await Promise.all(promises);
     globalMetadata = results.flat();
 }
@@ -788,15 +788,15 @@ async function fetchAllMetadata() {
 async function loadAndOpenBook(book) {
     try {
         document.body.style.cursor = 'wait';
-        
+
         if (!loadedBooksCache[book.file]) {
             const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
             if (!response.ok) throw new Error("JSON file not found");
-            
+
             let bookQuestions = await response.json();
             const limit = getQuestionLimit();
             bookQuestions = bookQuestions.slice(0, limit);
-            
+
             bookQuestions.forEach(q => {
                 q.QuestionID = q.id;
                 q.Subject = book.title;
@@ -833,8 +833,8 @@ async function loadAndOpenBook(book) {
 async function fetchRequiredChunks(view, pathsArray) {
     const urls = new Set();
     pathsArray.forEach(pathArr => {
-        if (pathArr.length === 0 || pathArr[0] === "Books" || pathArr[0] === "Practice Mistakes" || pathArr[0] === "Exam Mistakes") return; 
-        
+        if (pathArr.length === 0 || pathArr[0] === "Books" || pathArr[0] === "Practice Mistakes" || pathArr[0] === "Exam Mistakes") return;
+
         if (view === 'subject') {
             let current = subjectTree;
             for (let p of pathArr) { if (current[p]) current = current[p]; else return; }
@@ -844,7 +844,7 @@ async function fetchRequiredChunks(view, pathsArray) {
                 for (let k in obj) traverseSubj(obj[k], [...pth, k]);
             };
             traverseSubj(current, pathArr);
-        } 
+        }
         else if (view === 'system') {
             let current = systemTree;
             for (let p of pathArr) { if (current[p]) current = current[p]; else return; }
@@ -854,7 +854,7 @@ async function fetchRequiredChunks(view, pathsArray) {
                 for (let k in obj) traverseSys(obj[k], [...pth, k]);
             };
             traverseSys(current, pathArr);
-        } 
+        }
         else if (view === 'exam') {
             let current = examTree;
             for (let p of pathArr) { if (current[p]) current = current[p]; else return; }
@@ -870,23 +870,23 @@ async function fetchRequiredChunks(view, pathsArray) {
     document.body.style.cursor = 'wait';
     const fetchedQs = [];
     const seenIds = new Set();
-    
+
     for (let baseUrl of urls) {
         let page = 1;
         let keepFetching = true;
-        
+
         while (keepFetching) {
             const pageUrl = baseUrl.replace('.json', `_${page}.json`);
             if (!window.activeChunksCache[pageUrl]) {
                 try {
                     const res = await fetch(pageUrl);
-                    if (res.ok) { window.activeChunksCache[pageUrl] = await res.json(); } 
+                    if (res.ok) { window.activeChunksCache[pageUrl] = await res.json(); }
                     else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
-                } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
             } else if (window.activeChunksCache[pageUrl].length === 0) {
                 keepFetching = false;
             }
-            
+
             if (window.activeChunksCache[pageUrl]) {
                 window.activeChunksCache[pageUrl].forEach(q => {
                     const qId = String(q.id || q.QuestionID);
@@ -899,7 +899,7 @@ async function fetchRequiredChunks(view, pathsArray) {
             page++;
         }
     }
-    
+
     const limit = getQuestionLimit();
     const subjectCounts = {};
     const clampedQs = [];
@@ -929,26 +929,26 @@ if (popupBack) {
 }
 
 if (popupClose) {
-    popupClose.onclick = () => { 
-        popupHistory = []; 
-        if(popupOverlay) popupOverlay.style.display = 'none'; 
-        activeCustomPool = null; 
-        isGlobalPopupActive = false; 
-        localStorage.removeItem('edeetos_saved_popup_path'); 
+    popupClose.onclick = () => {
+        popupHistory = [];
+        if (popupOverlay) popupOverlay.style.display = 'none';
+        activeCustomPool = null;
+        isGlobalPopupActive = false;
+        localStorage.removeItem('edeetos_saved_popup_path');
         localStorage.removeItem('edeetos_saved_popup_title');
     };
 }
 
 if (popupOverlay) {
-    popupOverlay.onclick = (e) => { 
-        if (e.target === popupOverlay) { 
-            popupHistory = []; 
-            popupOverlay.style.display = 'none'; 
-            activeCustomPool = null; 
-            isGlobalPopupActive = false; 
+    popupOverlay.onclick = (e) => {
+        if (e.target === popupOverlay) {
+            popupHistory = [];
+            popupOverlay.style.display = 'none';
+            activeCustomPool = null;
+            isGlobalPopupActive = false;
             localStorage.removeItem('edeetos_saved_popup_path');
             localStorage.removeItem('edeetos_saved_popup_title');
-        } 
+        }
     };
 }
 
@@ -956,7 +956,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
     if (!isBackNav) popupHistory.push({ title, dataObj, level, pathArr });
 
     if (popupTitle) popupTitle.textContent = title;
-	localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
+    localStorage.setItem('edeetos_saved_popup_path', JSON.stringify(pathArr));
     localStorage.setItem('edeetos_saved_popup_title', title);
     if (popupList) popupList.textContent = '';
     if (popupOverlay) popupOverlay.style.display = 'flex';
@@ -967,7 +967,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
         const clone = tplSelectAll.content.cloneNode(true);
         clone.querySelector('.popup-select-title').textContent = `Select Full ${title}`;
         const selectBtn = clone.querySelector('.popup-select-btn');
-        
+
         selectBtn.onclick = () => {
             const allCbs = popupList.querySelectorAll('.item-checkbox');
             let allAreChecked = true;
@@ -1005,7 +1005,7 @@ function openPopup(title, dataObj, level, pathArr, isBackNav = false) {
                     }
                 }
                 const dayMatch = lowerStr.match(/(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s*[-–]?\s*(\d{1,2})\b/) || lowerStr.match(/\b(\d{1,2})\s*[-–]?\s*(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*/);
-                if (dayMatch) { day = parseInt(dayMatch[1], 10); } 
+                if (dayMatch) { day = parseInt(dayMatch[1], 10); }
                 else if (parts[2]) {
                     const partDayMatch = parts[2].match(/\b(\d{1,2})\b/);
                     if (partDayMatch) day = parseInt(partDayMatch[1], 10);
@@ -1041,11 +1041,11 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
     const doneCount = getSolvedCount(currentView, itemPath);
     const template = document.getElementById('tpl-list-item-content');
-    
+
     const itemDiv = document.createElement('div');
     itemDiv.className = 'list-item';
     const clone = template.content.cloneNode(true);
-    
+
     clone.querySelector('.item-name').textContent = itemName;
     const countWrapper = clone.querySelector('.count-wrapper');
     const progWrapper = clone.querySelector('.progress-wrapper');
@@ -1060,7 +1060,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
         const percent = qCount > 0 ? Math.round((doneCount / qCount) * 100) : 0;
         const cBadge = document.createElement('span');
         cBadge.className = 'badge gray-badge';
-        
+
         if (currentMode === 'exam') {
             cBadge.textContent = `${qCount} Qs`;
         } else {
@@ -1126,7 +1126,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
         const cartCountEl = document.getElementById('cart-count');
         const startBtnEl = document.getElementById('start-exam-btn');
         const examCart = document.getElementById('exam-cart');
-        
+
         if (cartCountEl) cartCountEl.textContent = `${selectedCart.size} Topics Selected`;
         if (startBtnEl) startBtnEl.disabled = selectedCart.size === 0;
         if (examCart) examCart.style.display = (currentMode === 'exam' || selectedCart.size > 0) ? "flex" : "none";
@@ -1148,7 +1148,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
         actionBtn.style.padding = '0.8rem 1rem';
         actionBtn.textContent = 'View ➡';
         actionBtn.onclick = (e) => {
-            e.stopPropagation(); 
+            e.stopPropagation();
             openPopup(itemName, nextData, 'Chapter', itemPath, false);
         };
         itemDiv.appendChild(actionBtn);
@@ -1159,7 +1159,7 @@ function renderListItem(itemName, nextData, level, itemPath) {
 
 function getQuestionCount(view, pathArr, customPool = null) {
     if (customPool !== null && customPool.length === 0) return 0;
-    
+
     let pool = customPool || activeCustomPool || globalMetadata;
     let paths = [...pathArr];
 
@@ -1195,11 +1195,11 @@ function getQuestionCount(view, pathArr, customPool = null) {
             }
             return getTreeCount(current);
         }
-        
+
         if (Object.keys(tree).length > 0) {
             let current = tree;
-            for(let p of paths) {
-                if(current && current[p]) current = current[p]; else return 0;
+            for (let p of paths) {
+                if (current && current[p]) current = current[p]; else return 0;
             }
             return getTreeCount(current);
         }
@@ -1221,7 +1221,7 @@ function getQuestionCount(view, pathArr, customPool = null) {
         return pool.filter(q => {
             if (!passesDifficultyFilter(q)) return false;
             if (!isGlobalPopupActive && unattemptedFilter && unattemptedFilter.checked && window.fastAttemptedSet && window.fastAttemptedSet.has(getQID(q))) return false;
-            
+
             const qSubj = norm(q.Subject || q.subject);
             const qChap = norm(q.Chapter || q.chapter);
             const qTop = norm(q.Topic || q.topic);
@@ -1239,16 +1239,16 @@ function getQuestionCount(view, pathArr, customPool = null) {
                     if (paths[1] && qChap !== norm(paths[1])) return false;
                     if (paths[2] && qTop !== norm(paths[2])) return false;
                     return true;
-                } 
+                }
             }
 
             if (view === 'subject') {
-                if (q.isBookQuestion) return false; 
+                if (q.isBookQuestion) return false;
                 if (paths[0] && qSubj !== norm(paths[0])) return false;
                 if (paths[1] && qChap !== norm(paths[1])) return false;
                 if (paths[2] && qTop !== norm(paths[2])) return false;
             } else if (view === 'system') {
-                if (q.isBookQuestion) return false; 
+                if (q.isBookQuestion) return false;
                 if (paths[0] && qChap !== norm(paths[0])) return false;
                 if (paths[1] && qSubj !== norm(paths[1])) return false;
                 if (paths[2] && qTop !== norm(paths[2])) return false;
@@ -1261,18 +1261,18 @@ function getQuestionCount(view, pathArr, customPool = null) {
                 let matchFound = false;
                 const maxLen = Math.max(qYears.length, qSpecs.length, qExams.length);
                 if (maxLen === 0) { if (paths[0] && paths[0] !== "Unknown Year") return false; }
-                
+
                 for (let i = 0; i < maxLen; i++) {
                     const fbYear = qYears[i] !== undefined ? qYears[i] : (qYears[qYears.length - 1] || "Unknown Year");
                     const fbSpec = qSpecs[i] !== undefined ? qSpecs[i] : (qSpecs[qSpecs.length - 1] || "Unknown Specialty");
                     const rawExam = qExams[i] !== undefined ? qExams[i] : (qExams[qExams.length - 1] || "Unknown Exam");
-                    
+
                     const parsed = parseExamInfo(rawExam, fbYear, fbSpec);
                     let currentMatch = true;
                     if (paths[0] && String(parsed.examYear) !== String(paths[0])) currentMatch = false;
                     if (paths[1] && parsed.examSpec !== paths[1]) currentMatch = false;
                     if (paths[2] && rawExam !== paths[2]) currentMatch = false;
-                    
+
                     if (currentMatch) { matchFound = true; break; }
                 }
                 if (!matchFound) return false;
@@ -1326,7 +1326,7 @@ function switchMode(mode) {
     const qCountInput = document.getElementById('exam-q-count');
     const timerInput = document.getElementById('exam-timer');
     const examCart = document.getElementById('exam-cart');
-    
+
     if (examCart) examCart.style.display = (mode === 'exam' || selectedCart.size > 0) ? "flex" : "none";
     if (startBtn) startBtn.textContent = mode === 'practice' ? 'Start Practice' : 'Start Exam';
 
@@ -1336,11 +1336,11 @@ function switchMode(mode) {
     if (mode === 'practice') {
         if (modePracBtn) { modePracBtn.classList.add('active-mode', 'btn-mode-practice'); }
         if (modeExamBtn) { modeExamBtn.classList.remove('active-mode', 'btn-filled-blue'); }
-        
+
         if (qCountInput && qCountInput.closest('.input-group')) qCountInput.closest('.input-group').style.display = 'flex';
         if (timerInput && timerInput.closest('.input-group')) timerInput.closest('.input-group').style.display = 'none';
         if (modeDesc) modeDesc.textContent = "Practice Mode: Select your topics below. Enjoy instant feedback and detailed explanations.";
-        
+
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
@@ -1351,11 +1351,11 @@ function switchMode(mode) {
     } else {
         if (modeExamBtn) { modeExamBtn.classList.add('active-mode', 'btn-filled-blue'); }
         if (modePracBtn) { modePracBtn.classList.remove('active-mode', 'btn-mode-practice'); }
-        
+
         if (qCountInput && qCountInput.closest('.input-group')) qCountInput.closest('.input-group').style.display = 'flex';
         if (timerInput && timerInput.closest('.input-group')) timerInput.closest('.input-group').style.display = 'flex';
         if (modeDesc) modeDesc.textContent = "Exam Mode: Strict timer, no instant feedback, skipped questions appear at the end.";
-        
+
         if (searchBar) {
             if (searchBar.contains(document.getElementById('subjects-grid'))) {
                 Array.from(searchBar.children).forEach(child => {
@@ -1364,7 +1364,7 @@ function switchMode(mode) {
             } else { searchBar.style.display = "none"; }
         }
     }
-    
+
     // Note: renderBooksGrid and renderGrid are declared in Part 1
     if (currentView === 'book') renderBooksGrid();
     else renderGrid();
@@ -1372,7 +1372,7 @@ function switchMode(mode) {
     if (popupOverlay && popupOverlay.style.display === 'flex') {
         const current = popupHistory[popupHistory.length - 1];
         if (current) {
-            popupHistory.pop(); 
+            popupHistory.pop();
             // Note: openPopup is declared in Part 1
             openPopup(current.title, current.dataObj, current.level, current.pathArr, true);
         }
@@ -1422,7 +1422,7 @@ if (document.getElementById('btn-confirm-join')) {
         const confirmBtn = document.getElementById('btn-confirm-join');
         confirmBtn.textContent = 'Loading...';
         confirmBtn.disabled = true;
-        
+
         try {
             const challengeSnap = await getDoc(doc(db, "friend_challenges", code));
             if (!challengeSnap.exists()) {
@@ -1431,30 +1431,30 @@ if (document.getElementById('btn-confirm-join')) {
                 confirmBtn.disabled = false;
                 return;
             }
-            
+
             const challengeData = challengeSnap.data();
             localStorage.setItem('edeetos_challenge_data', JSON.stringify(challengeData));
             document.body.style.cursor = 'wait';
-            
+
             let hydratedQueue = [];
             try {
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
                 const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
                 const hierarchyData = await hierarchyRes.json();
                 const subjects = Object.keys(hierarchyData.subjects || {});
-                
+
                 const metaPromises = subjects.map(async (subj) => {
                     const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
                     try {
                         const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
                         if (res.ok) return await res.json();
-                    } catch(e) {}
+                    } catch (e) { }
                     return [];
                 });
-                
+
                 const allMetaArrays = await Promise.all(metaPromises);
                 const globalMetadataLocal = allMetaArrays.flat();
-                
+
                 const chunksToLoad = new Set();
                 challengeData.questionIds.forEach(id => {
                     const meta = globalMetadataLocal.find(q => String(q.id || q.QuestionID) === String(id));
@@ -1475,7 +1475,7 @@ if (document.getElementById('btn-confirm-join')) {
                             const res = await fetch(pageUrl);
                             if (res.ok) activeChunksCacheLocal[pageUrl] = await res.json();
                             else keepFetching = false;
-                        } catch(e) { keepFetching = false; }
+                        } catch (e) { keepFetching = false; }
                         page++;
                     }
                 });
@@ -1490,7 +1490,7 @@ if (document.getElementById('btn-confirm-join')) {
                 });
 
                 hydratedQueue = challengeData.questionIds.map(id => fullQuestionsMap[String(id)]).filter(q => q);
-            } catch (err) {}
+            } catch (err) { }
 
             if (hydratedQueue.length === 0) {
                 document.body.style.cursor = 'default';
@@ -1498,7 +1498,7 @@ if (document.getElementById('btn-confirm-join')) {
                 confirmBtn.disabled = false;
                 return alert("Failed to load challenge questions.");
             }
-            
+
             const request = indexedDB.open("EdeetosDB", 1);
             request.onupgradeneeded = (e) => {
                 const idb = e.target.result;
@@ -1519,7 +1519,7 @@ if (document.getElementById('btn-confirm-join')) {
             confirmBtn.disabled = false;
         }
     };
-    
+
     document.getElementById('btn-confirm-join').addEventListener('click', processJoin);
     if (document.getElementById('challenge-code-input')) {
         document.getElementById('challenge-code-input').addEventListener('keydown', (e) => {
@@ -1532,12 +1532,12 @@ if (btnQuickMock && mockModal) {
     btnQuickMock.addEventListener('click', () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register to take mock exams.");
         mockModal.style.display = 'flex';
-        if(mockQCount) mockQCount.focus();
+        if (mockQCount) mockQCount.focus();
     });
-    
-    if(btnCancelMock) btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
-    
-    if(btnStartMock) btnStartMock.addEventListener('click', async () => {
+
+    if (btnCancelMock) btnCancelMock.addEventListener('click', () => mockModal.style.display = 'none');
+
+    if (btnStartMock) btnStartMock.addEventListener('click', async () => {
         let count = parseInt(mockQCount.value);
         if (!count || count < 5) return alert("Please enter a valid number of questions (minimum 5).");
 
@@ -1554,9 +1554,9 @@ if (btnQuickMock && mockModal) {
             const sqlQuery = `SELECT id, subject, chapter, topic, difficulty FROM search_data ORDER BY RANDOM() LIMIT 500`;
             const results = await window.sqlWorker.db.query(sqlQuery);
             const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
-            
+
             let metaPool = results.map(r => ({ id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false })).filter(q => !attemptedQuestions.includes(q.id) && !allMistakes.includes(q.id));
-            
+
             const limit = getQuestionLimit();
             const subCounts = {};
             metaPool = metaPool.filter(q => {
@@ -1564,7 +1564,7 @@ if (btnQuickMock && mockModal) {
                 subCounts[s] = (subCounts[s] || 0) + 1;
                 return subCounts[s] <= limit;
             });
-            
+
             if (metaPool.length < count) {
                 metaPool = results.map(r => ({ id: r.id, QuestionID: r.id, Subject: r.subject, Chapter: r.chapter, Topic: r.topic, Difficulty: r.difficulty, isBookQuestion: false }));
                 const fbCounts = {};
@@ -1626,10 +1626,10 @@ if (startExamBtn) {
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, qCountInput);
             }
         }
-        
-		const generatedTitle = generateExamTitle(paths, currentView);
+
+        const generatedTitle = generateExamTitle(paths, currentView);
         pool = await hydrateQuestions(pool);
-        
+
         startExamBtn.textContent = currentMode === 'practice' ? 'Start Practice' : 'Start Exam';
         startExamBtn.disabled = false;
         launchQuiz(pool, currentMode, currentMode === 'exam' ? timerInput : 0, generatedTitle);
@@ -1637,7 +1637,7 @@ if (startExamBtn) {
 }
 
 async function hydrateQuestions(metadataPool) {
-    const needsHydration = metadataPool.filter(q => !q.isBookQuestion && !q.question); 
+    const needsHydration = metadataPool.filter(q => !q.isBookQuestion && !q.question);
     if (needsHydration.length === 0) return metadataPool;
 
     document.body.style.cursor = 'wait';
@@ -1658,7 +1658,7 @@ async function hydrateQuestions(metadataPool) {
                     const res = await fetch(pageUrl);
                     if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                     else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
-                } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
             } else if (window.activeChunksCache[pageUrl].length === 0) { keepFetching = false; }
             page++;
         }
@@ -1677,7 +1677,7 @@ async function hydrateQuestions(metadataPool) {
         if (q.isBookQuestion) return q;
         const qId = q.id || q.QuestionID;
         const fullQ = fullQuestionsMap[String(qId)];
-        return fullQ ? { ...q, ...fullQ } : q; 
+        return fullQ ? { ...q, ...fullQ } : q;
     });
 
     document.body.style.cursor = 'default';
@@ -1687,7 +1687,7 @@ async function hydrateQuestions(metadataPool) {
 function startInstantPractice(encodedPath) {
     if (currentMode === 'exam') return alert("To take an Exam, please check the box and use the Start Exam button at the bottom to set a timer.");
     const pathArr = JSON.parse(decodeURIComponent(encodedPath));
-    
+
     (async () => {
         let sourcePool = activeCustomPool;
         if (currentView !== 'book') {
@@ -1696,7 +1696,7 @@ function startInstantPractice(encodedPath) {
         }
         let finalPool = sourcePool.filter(q => getQuestionCount(currentView, pathArr, [q]) > 0); // getQuestionCount in Part 1
         if (finalPool.length === 0) return alert("No unattempted questions left in this topic!");
-        
+
         const qCountInputEl = document.getElementById('exam-q-count');
         if (qCountInputEl) {
             const qCountInput = parseInt(qCountInputEl.value);
@@ -1746,11 +1746,11 @@ function launchQuiz(questionsArray, mode = 'practice', timerMinutes = 0, examNam
     }
 
     function proceedToQuiz() {
-        const staleKeys = [ 'edeetos_saved_quiz_state', 'edeetos_quiz_state', 'edeetos_exam_progress', 'edeetos_active_quiz_session', 'quiz_in_progress', 'edeetos_active_quiz' ];
+        const staleKeys = ['edeetos_saved_quiz_state', 'edeetos_quiz_state', 'edeetos_exam_progress', 'edeetos_active_quiz_session', 'quiz_in_progress', 'edeetos_active_quiz'];
         staleKeys.forEach(key => { localStorage.removeItem(key); sessionStorage.removeItem(key); });
         localStorage.setItem('edeetos_quiz_config', JSON.stringify({ mode: mode, timer: timerMinutes, examName: examName }));
         document.body.style.cursor = 'wait';
-        
+
         const idbRequest = indexedDB.open("EdeetosDB", 1);
         idbRequest.onupgradeneeded = (e) => {
             const idb = e.target.result;
@@ -1762,7 +1762,7 @@ function launchQuiz(questionsArray, mode = 'practice', timerMinutes = 0, examNam
             const tx = idb.transaction("quiz_sessions", "readwrite");
             const store = tx.objectStore("quiz_sessions");
             store.put(cleanPool, "active_quiz_queue");
-            try { store.delete("active_quiz_state"); store.delete("saved_session"); } catch (err) {}
+            try { store.delete("active_quiz_state"); store.delete("saved_session"); } catch (err) { }
             tx.oncomplete = () => { document.body.style.cursor = 'default'; window.location.href = 'quiz.html'; };
             tx.onerror = () => { document.body.style.cursor = 'default'; window.location.href = 'quiz.html'; };
         };
@@ -1781,9 +1781,9 @@ function generateExamTitle(paths, currentView) {
     if (currentView === 'exam') {
         if (topArr.length === 1) {
             if (subArr.length === 0) return `${topArr[0]} (All Papers)`;
-            return `${topArr[0]} -${subArr.join(" + ")}`; 
+            return `${topArr[0]} -${subArr.join(" + ")}`;
         } else {
-            return subArr.length > 0 ? subArr.join(" + ") : topArr.join(" + "); 
+            return subArr.length > 0 ? subArr.join(" + ") : topArr.join(" + ");
         }
     }
     if (topArr.length === 1) {
@@ -1811,17 +1811,17 @@ if (activeRoomId) {
         if (hostBanner && hostRoomIdEl) {
             hostRoomIdEl.textContent = activeRoomId;
             hostBanner.style.display = 'flex';
-            
+
             document.getElementById('btn-exit-host-room').addEventListener('click', () => {
                 const exitRoomIdEl = document.getElementById('exit-room-id');
                 if (exitRoomIdEl) exitRoomIdEl.textContent = activeRoomId;
                 if (hostExitModal) hostExitModal.style.display = 'flex';
             });
-            
+
             document.getElementById('btn-cancel-exit').onclick = () => {
                 if (hostExitModal) hostExitModal.style.display = 'none';
             };
-            
+
             document.getElementById('btn-leave-only').onclick = async () => {
                 const btn = document.getElementById('btn-leave-only');
                 btn.textContent = 'Leaving...';
@@ -1830,7 +1830,7 @@ if (activeRoomId) {
                     if (auth.currentUser) {
                         await updateDoc(doc(db, "study_rooms", activeRoomId), { [`activeMembers.${auth.currentUser.uid}`]: deleteField() });
                     }
-                } catch(e) {}
+                } catch (e) { }
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
                 hostBanner.style.display = 'none';
@@ -1841,7 +1841,7 @@ if (activeRoomId) {
                 const btn = document.getElementById('btn-end-room');
                 btn.textContent = 'Ending...';
                 btn.disabled = true;
-                try { await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' }); } catch(e) {}
+                try { await updateDoc(doc(db, "study_rooms", activeRoomId), { status: 'ended' }); } catch (e) { }
                 localStorage.removeItem('active_study_room');
                 localStorage.removeItem('is_study_guest');
                 hostBanner.style.display = 'none';
@@ -1861,7 +1861,7 @@ if (btnAnalytics) {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to view detailed Analytics.");
         const body = document.getElementById('analytics-body');
         if (!body) return;
-        body.textContent = ''; 
+        body.textContent = '';
 
         let stats = {};
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes])];
@@ -1870,7 +1870,7 @@ if (btnAnalytics) {
 
         globalMetadata.forEach(q => {
             const topicName = q.Topic || q.topic || q.Chapter || q.chapter || q.Subject || q.subject || "Core Material";
-            const qId = getQID(q); 
+            const qId = getQID(q);
             if (!stats[topicName]) { stats[topicName] = { total: 0, attempted: 0, mistakes: 0, questions: [] }; }
             stats[topicName].total++;
             stats[topicName].questions.push(q);
@@ -1894,7 +1894,7 @@ if (btnAnalytics) {
         } else {
             const tplContent = document.getElementById('tpl-analytics-content');
             const clone = tplContent.content.cloneNode(true);
-            
+
             const priorityCont = clone.querySelector('.priority-content');
             if (weaknesses.length === 0) {
                 const emptyMsg = document.createElement('div');
@@ -1941,17 +1941,17 @@ if (btnAnalytics) {
 
             const smartHubActions = clone.querySelector('.smart-hub-actions');
             const totalMistakesCount = allMistakes.length;
-            
+
             if (totalMistakesCount > 0) {
                 const btn = document.createElement('button');
                 btn.id = 'btn-train-redemption';
                 btn.className = 'action-btn btn-outline-amber-alt';
                 btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'nowrap'; btn.style.alignItems = 'center'; btn.style.gap = '8px';
-                
+
                 const span1 = document.createElement('span'); span1.style.fontWeight = 'bold'; span1.style.flex = '1';
                 const i = document.createElement('i'); i.className = 'fas fa-sync-alt'; i.style.marginRight = '8px';
                 span1.appendChild(i); span1.appendChild(document.createTextNode(' Redemption Mode'));
-                
+
                 const span2 = document.createElement('span'); span2.className = 'rev-day-badge'; span2.textContent = `Revisit ${totalMistakesCount} Mistakes`;
                 btn.appendChild(span1); btn.appendChild(span2);
                 smartHubActions.appendChild(btn);
@@ -1961,11 +1961,11 @@ if (btnAnalytics) {
                 btn.id = 'btn-train-focus';
                 btn.className = 'action-btn btn-filled-red';
                 btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'nowrap'; btn.style.alignItems = 'center'; btn.style.gap = '8px';
-                
+
                 const span1 = document.createElement('span'); span1.style.fontWeight = 'bold'; span1.style.flex = '1';
                 const i = document.createElement('i'); i.className = 'fas fa-bullseye'; i.style.marginRight = '8px';
                 span1.appendChild(i); span1.appendChild(document.createTextNode(' Targeted Focus'));
-                
+
                 const span2 = document.createElement('span'); span2.className = 'rev-day-badge'; span2.textContent = `Drill 15 Qs on Weakest Topic`;
                 btn.appendChild(span1); btn.appendChild(span2);
                 smartHubActions.appendChild(btn);
@@ -1975,11 +1975,11 @@ if (btnAnalytics) {
                 btn.id = 'btn-train-mix';
                 btn.className = 'action-btn btn-filled-blue';
                 btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.flexWrap = 'nowrap'; btn.style.alignItems = 'center'; btn.style.gap = '8px';
-                
+
                 const span1 = document.createElement('span'); span1.style.fontWeight = 'bold'; span1.style.flex = '1';
                 const i = document.createElement('i'); i.className = 'fas fa-balance-scale'; i.style.marginRight = '8px';
                 span1.appendChild(i); span1.appendChild(document.createTextNode(' Balanced Mix'));
-                
+
                 const span2 = document.createElement('span'); span2.className = 'rev-day-badge'; span2.textContent = `30 Qs (Strengths + Weaknesses)`;
                 btn.appendChild(span1); btn.appendChild(span2);
                 smartHubActions.appendChild(btn);
@@ -1994,11 +1994,11 @@ if (btnAnalytics) {
                 const canvas = document.createElement('canvas'); canvas.id = 'examScoreChart';
                 chartWrap.appendChild(canvas);
                 recentExamsCont.appendChild(chartWrap);
-                
+
                 const tableWrap = document.createElement('div'); tableWrap.style.fontSize = '0.85rem'; tableWrap.style.maxHeight = '180px'; tableWrap.style.overflowY = 'auto';
                 const table = document.createElement('table'); table.style.width = '100%'; table.style.textAlign = 'left'; table.style.borderCollapse = 'collapse'; table.style.tableLayout = 'fixed';
                 const thead = document.createElement('thead');
-                const trHead = document.createElement('tr'); trHead.style.color = '#64748b'; trHead.style.fontWeight = 'bold'; trHead.style.borderBottom = '1px solid rgba(255,255,255,0.2)';
+const trHead = document.createElement('tr'); 
                 const thArr = [ {txt:'Date', w:'25%'}, {txt:'Exam Name', w:'40%'}, {txt:'Score', w:'15%'}, {txt:'Time', w:'20%'} ];
                 thArr.forEach(h => {
                     const th = document.createElement('th'); th.style.padding = '10px 0'; th.style.width = h.w; th.textContent = h.txt; trHead.appendChild(th);
@@ -2010,11 +2010,11 @@ if (btnAnalytics) {
                     const avgMins = Math.floor(avgSecs / 60); const remainSecs = (avgSecs % 60).toString().padStart(2, '0');
                     const timeString = totalSecs > 0 ? `${avgMins}m ${remainSecs}s` : "N/A";
                     
-                    const tr = document.createElement('tr'); tr.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
-                    const tdDate = document.createElement('td'); tdDate.style.padding = '10px 0'; tdDate.style.color = '#94a3b8'; tdDate.style.whiteSpace = 'nowrap'; tdDate.style.overflow = 'hidden'; tdDate.style.textOverflow = 'ellipsis'; tdDate.textContent = new Date(ex.date).toLocaleDateString();
-                    const tdName = document.createElement('td'); tdName.style.color = '#f8fafc'; tdName.style.whiteSpace = 'nowrap'; tdName.style.overflow = 'hidden'; tdName.style.textOverflow = 'ellipsis'; tdName.textContent = ex.examName;
-                    const tdScore = document.createElement('td'); tdScore.style.color = ex.percentage >= 75 ? '#34d399' : '#f87171'; tdScore.style.fontWeight = 'bold'; tdScore.textContent = `${ex.percentage}%`;
-                    const tdTime = document.createElement('td'); tdTime.style.color = '#94a3b8'; tdTime.textContent = timeString;
+                    const tr = document.createElement('tr'); 
+                    const tdDate = document.createElement('td'); tdDate.style.padding = '10px 0'; tdDate.style.color = 'var(--text-muted)'; tdDate.style.whiteSpace = 'nowrap'; tdDate.style.overflow = 'hidden'; tdDate.style.textOverflow = 'ellipsis'; tdDate.textContent = new Date(ex.date).toLocaleDateString();
+                    const tdName = document.createElement('td'); tdName.style.color = 'var(--text-main)'; tdName.style.whiteSpace = 'nowrap'; tdName.style.overflow = 'hidden'; tdName.style.textOverflow = 'ellipsis'; tdName.textContent = ex.examName;
+                    const tdScore = document.createElement('td'); tdScore.style.color = ex.percentage >= 75 ? 'var(--success)' : 'var(--error)'; tdScore.style.fontWeight = 'bold'; tdScore.textContent = `${ex.percentage}%`;
+                    const tdTime = document.createElement('td'); tdTime.style.color = 'var(--text-muted)'; tdTime.textContent = timeString;
                     tr.appendChild(tdDate); tr.appendChild(tdName); tr.appendChild(tdScore); tr.appendChild(tdTime);
                     tbody.appendChild(tr);
                 });
@@ -2032,8 +2032,12 @@ if (btnAnalytics) {
             if (ctx) {
                 if (window.examChartInstance) window.examChartInstance.destroy();
                 const recentExams = userExamHistory.slice().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10).reverse();
-                const labels = recentExams.map(ex => new Date(ex.date).toLocaleDateString(undefined, {month: 'short', day: 'numeric'}));
+                const labels = recentExams.map(ex => new Date(ex.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }));
                 const scores = recentExams.map(ex => ex.percentage);
+
+const rootStyles = getComputedStyle(document.documentElement);
+                const gridColor = rootStyles.getPropertyValue('--surface-border').trim() || 'rgba(128, 128, 128, 0.2)';
+                const tickColor = rootStyles.getPropertyValue('--text-muted').trim() || '#8892B0';
 
                 window.examChartInstance = new Chart(ctx, {
                     type: 'line',
@@ -2044,8 +2048,8 @@ if (btnAnalytics) {
                     options: {
                         responsive: true, maintainAspectRatio: false,
                         scales: { 
-                            y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cbd5e1' } },
-                            x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cbd5e1' } }
+                            y: { beginAtZero: true, max: 100, grid: { color: gridColor }, ticks: { color: tickColor } },
+                            x: { grid: { color: gridColor }, ticks: { color: tickColor } }
                         },
                         plugins: { legend: { display: false } }
                     }
@@ -2059,7 +2063,7 @@ if (btnAnalytics) {
                 const btnText = btnRedemption.querySelector('span:first-child');
                 if (btnText) btnText.textContent = "Loading...";
                 let pool = globalMetadata.filter(q => allMistakes.includes(getQID(q))).sort(() => 0.5 - Math.random());
-                if (pool.length > 50) pool = pool.slice(0, 50); 
+                if (pool.length > 50) pool = pool.slice(0, 50);
                 pool = await hydrateQuestions(pool);
                 launchQuiz(pool, 'practice', 0, "Redemption Mode");
             };
@@ -2070,9 +2074,9 @@ if (btnAnalytics) {
             btnFocus.onclick = async () => {
                 const btnText = btnFocus.querySelector('span:first-child');
                 if (btnText) btnText.textContent = "Loading...";
-                const worstTopic = weaknesses[0]; 
+                const worstTopic = weaknesses[0];
                 let pool = worstTopic.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
-                if (pool.length === 0) pool = worstTopic.pool; 
+                if (pool.length === 0) pool = worstTopic.pool;
                 pool = pool.sort(() => 0.5 - Math.random()).slice(0, 15);
                 pool = await hydrateQuestions(pool);
                 launchQuiz(pool, 'practice', 0, `Targeted Focus: ${worstTopic.topic}`);
@@ -2087,12 +2091,12 @@ if (btnAnalytics) {
                 let mixPool = [];
                 weaknesses.slice(0, 2).forEach(w => {
                     let q = w.pool.filter(q => !attemptedQuestions.includes(getQID(q)) || allMistakes.includes(getQID(q)));
-                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 10)); 
+                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 10));
                 });
                 strengths.slice(0, 2).forEach(s => {
                     let q = s.pool.filter(q => !attemptedQuestions.includes(getQID(q)));
-                    if (q.length === 0) q = s.pool; 
-                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 5)); 
+                    if (q.length === 0) q = s.pool;
+                    mixPool.push(...q.sort(() => 0.5 - Math.random()).slice(0, 5));
                 });
                 mixPool = mixPool.sort(() => 0.5 - Math.random());
                 mixPool = await hydrateQuestions(mixPool);
@@ -2110,7 +2114,7 @@ if (closeAnalytics && analyticsModal) closeAnalytics.onclick = () => { analytics
 // ==========================================
 function generateRevisionQuiz(topicIdsArray, intervalDay) {
     if (!topicIdsArray || topicIdsArray.length === 0) return alert("Invalid revision topics.");
-    
+
     (async () => {
         let combinedPool = [];
         const currentActiveCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
@@ -2120,7 +2124,7 @@ function generateRevisionQuiz(topicIdsArray, intervalDay) {
             for (let topicId of topicIdsArray) {
                 let subject, chapter, topic, sourceName;
                 const parts = topicId.split('::');
-                if (parts.length >= 4) { subject = parts[0]; chapter = parts[1]; topic = parts[2]; sourceName = parts[3]; } 
+                if (parts.length >= 4) { subject = parts[0]; chapter = parts[1]; topic = parts[2]; sourceName = parts[3]; }
                 else { const oldParts = topicId.split('_'); sourceName = oldParts.pop(); topic = oldParts.pop() || ''; chapter = oldParts.pop() || ''; subject = oldParts.join('_') || ''; }
                 const isBookRevision = (sourceName !== currentActiveCourse);
 
@@ -2141,11 +2145,11 @@ function generateRevisionQuiz(topicIdsArray, intervalDay) {
                 const searchSource = isBookRevision ? loadedBooksCache[sourceName] : globalMetadata;
                 const topicPool = searchSource.filter(q => {
                     const qSubject = q.Subject || q.subject || ''; const qChapter = q.Chapter || q.chapter || ''; const qTopic = q.Topic || q.topic || ''; const qIsBook = q.isBookQuestion || false;
-                    return ( qSubject.trim().toLowerCase() === subject.trim().toLowerCase() && qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() && qTopic.trim().toLowerCase() === topic.trim().toLowerCase() && (isBookRevision ? qIsBook : !qIsBook) );
+                    return (qSubject.trim().toLowerCase() === subject.trim().toLowerCase() && qChapter.trim().toLowerCase() === chapter.trim().toLowerCase() && qTopic.trim().toLowerCase() === topic.trim().toLowerCase() && (isBookRevision ? qIsBook : !qIsBook));
                 });
                 combinedPool.push(...topicPool);
             }
-        } catch (e) {} finally { document.body.style.cursor = 'default'; }
+        } catch (e) { } finally { document.body.style.cursor = 'default'; }
 
         const uniqueIds = new Set();
         combinedPool = combinedPool.filter(q => { const id = getQID(q); if (uniqueIds.has(id)) return false; uniqueIds.add(id); return true; });
@@ -2168,7 +2172,7 @@ function generateRevisionQuiz(topicIdsArray, intervalDay) {
         const MAX_QUESTIONS = 40;
         let weakTarget, strongTarget;
 
-        if (intervalDay <= 7) { weakTarget = Math.round(MAX_QUESTIONS * 0.70); strongTarget = Math.round(MAX_QUESTIONS * 0.30); } 
+        if (intervalDay <= 7) { weakTarget = Math.round(MAX_QUESTIONS * 0.70); strongTarget = Math.round(MAX_QUESTIONS * 0.30); }
         else { weakTarget = Math.round(MAX_QUESTIONS * 0.30); strongTarget = Math.round(MAX_QUESTIONS * 0.70); }
 
         finalQuiz.push(...weakPool.slice(0, weakTarget));
@@ -2214,7 +2218,7 @@ function checkMilestones(currentFlawless) {
     let unlockedTiers = JSON.parse(localStorage.getItem(storageKey)) || [];
     const dbClaimed = currentUserData?.claimedMilestones || [];
 
-    const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title) && !dbClaimed.includes(t.title) );
+    const newlyUnlocked = processedTrophies.filter(t => currentFlawless >= t.cumulativeReq && !unlockedTiers.includes(t.title) && !dbClaimed.includes(t.title));
     if (newlyUnlocked.length > 0) {
         let unclaimed = JSON.parse(localStorage.getItem('edeetos_unclaimed_rewards')) || [];
         newlyUnlocked.forEach(t => {
@@ -2235,17 +2239,17 @@ function removeUnclaimedReward(title) {
 
 function showMilestonePopup(trophy) {
     if (!milestoneModal) return;
-    
+
     document.getElementById('milestone-icon').textContent = trophy.icon;
     document.getElementById('milestone-rank').textContent = trophy.title;
     document.getElementById('milestone-req').textContent = trophy.req;
 
     const rewardContainer = document.getElementById('milestone-reward-container');
     rewardContainer.textContent = '';
-    
+
     let subStatus = "free";
     const currentSub = currentUserData?.subscriptions?.[activeCourse] || currentUserData?.subscriptions?.['ALL'];
-    if (currentSub === 'lifetime') { subStatus = 'lifetime'; } 
+    if (currentSub === 'lifetime') { subStatus = 'lifetime'; }
     else if (currentSub && new Date(currentSub) > new Date()) { subStatus = 'active'; }
     const isLifetime = subStatus === 'lifetime';
 
@@ -2271,15 +2275,15 @@ function showMilestonePopup(trophy) {
             wrapDiv.style.marginTop = '15px'; wrapDiv.style.textAlign = 'left'; wrapDiv.style.background = 'rgba(255, 255, 255, 0.05)'; wrapDiv.style.padding = '15px'; wrapDiv.style.borderRadius = '8px';
             const promptP = document.createElement('p'); promptP.style.fontSize = '0.95rem'; promptP.style.color = '#93c5fd'; promptP.style.marginBottom = '15px'; promptP.style.fontWeight = 'bold'; promptP.textContent = 'Choose ONE Reward:';
             wrapDiv.appendChild(promptP);
-            
+
             const optionsCont = document.createElement('div'); optionsCont.style.display = 'flex'; optionsCont.style.flexDirection = 'column'; optionsCont.style.gap = '15px'; optionsCont.style.marginBottom = '20px';
-            
+
             if (!isLifetime) {
                 const opt1 = document.createElement('div'); opt1.style.background = 'rgba(0, 0, 0, 0.2)'; opt1.style.border = '1px solid rgba(255, 255, 255, 0.2)'; opt1.style.padding = '12px'; opt1.style.borderRadius = '8px';
                 const lbl = document.createElement('label'); lbl.style.display = 'flex'; lbl.style.alignItems = 'center'; lbl.style.gap = '8px'; lbl.style.cursor = 'pointer'; lbl.style.fontWeight = 'bold'; lbl.style.color = '#f8fafc'; lbl.style.marginBottom = '8px';
                 const radio = document.createElement('input'); radio.type = 'radio'; radio.name = 'rewardChoice'; radio.value = 'course'; radio.checked = true; radio.style.transform = 'scale(1.2)';
                 lbl.appendChild(radio); lbl.appendChild(document.createTextNode(` Extend Course Access (+${trophy.rewardValue}${trophy.rewardUnit})`));
-                
+
                 const selDiv = document.createElement('div'); selDiv.id = 'course-selection-div'; selDiv.style.paddingLeft = '24px'; selDiv.style.transition = '0.3s';
                 const sel = document.createElement('select'); sel.id = 'reward-course-selection'; sel.className = 'glass-input'; sel.style.padding = '10px';
                 const opt = document.createElement('option'); opt.value = activeCourse; opt.selected = true; opt.textContent = activeCourse.toUpperCase().replace('_', ' ');
@@ -2293,16 +2297,16 @@ function showMilestonePopup(trophy) {
 
             if (!allBooksOwned) {
                 const opt2 = document.createElement('div'); opt2.id = 'book-container-div'; opt2.style.background = 'rgba(0, 0, 0, 0.2)'; opt2.style.border = '1px solid rgba(255, 255, 255, 0.2)'; opt2.style.padding = '12px'; opt2.style.borderRadius = '8px'; opt2.style.transition = '0.3s';
-                if (isLifetime) {} else { opt2.style.opacity = '0.6'; }
-                
+                if (isLifetime) { } else { opt2.style.opacity = '0.6'; }
+
                 const lbl = document.createElement('label'); lbl.style.display = 'flex'; lbl.style.alignItems = 'center'; lbl.style.gap = '8px'; lbl.style.cursor = 'pointer'; lbl.style.fontWeight = 'bold'; lbl.style.color = '#f8fafc'; lbl.style.marginBottom = '8px';
                 const radio = document.createElement('input'); radio.type = 'radio'; radio.name = 'rewardChoice'; radio.value = 'book'; radio.style.transform = 'scale(1.2)';
                 if (isLifetime) radio.checked = true;
                 lbl.appendChild(radio); lbl.appendChild(document.createTextNode(` Claim a Study Book (+${trophy.rewardValue}${trophy.rewardUnit})`));
-                
+
                 const selDiv = document.createElement('div'); selDiv.id = 'book-selection-div'; selDiv.style.paddingLeft = '24px'; selDiv.style.transition = '0.3s';
                 if (!isLifetime) selDiv.style.pointerEvents = 'none';
-                
+
                 const sel = document.createElement('select'); sel.id = 'reward-book-selection'; sel.className = 'glass-input'; sel.style.padding = '10px';
                 const defOpt = document.createElement('option'); defOpt.value = ''; defOpt.disabled = true; defOpt.selected = true; defOpt.textContent = 'Select a Study Book...';
                 sel.appendChild(defOpt);
@@ -2356,7 +2360,7 @@ function showMilestonePopup(trophy) {
             btnConfirm.onclick = async () => {
                 const selectedRadio = milestoneModal.querySelector('input[name="rewardChoice"]:checked');
                 const selectedType = selectedRadio ? selectedRadio.value : (isLifetime ? 'book' : 'course');
-                
+
                 btnConfirm.textContent = "Processing...";
                 btnConfirm.disabled = true;
 
@@ -2387,16 +2391,16 @@ function showMilestonePopup(trophy) {
 async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, milestoneTitle) {
     try {
         if (!auth?.currentUser?.uid) return alert("Authentication error: Session lost.");
-        
+
         const claimRewardCall = httpsCallable(functions, 'claimMilestoneReward');
         const result = await claimRewardCall({
             rewardType: 'course', targetItem: targetCourse, rewardValue, rewardUnit, milestoneTitle
         });
-        
-        if (currentUserData) { 
-            currentUserData.subscriptions = result.data.newSubscriptions; 
-            currentUserData.isPremium = true; 
-            currentUserData.claimedMilestones = result.data.claimedMilestones; 
+
+        if (currentUserData) {
+            currentUserData.subscriptions = result.data.newSubscriptions;
+            currentUserData.isPremium = true;
+            currentUserData.claimedMilestones = result.data.claimedMilestones;
         }
         alert(`Success! Your access to ${targetCourse.replace('_', ' ').toUpperCase()} has been extended by ${rewardValue}${rewardUnit}.`);
     } catch (err) { alert("Reward Error: " + err.message); }
@@ -2405,15 +2409,15 @@ async function grantSubscriptionReward(rewardValue, rewardUnit, targetCourse, mi
 async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBookFile) {
     try {
         if (!auth?.currentUser?.uid) return alert('Authentication error: Session lost.');
-        
+
         const claimRewardCall = httpsCallable(functions, 'claimMilestoneReward');
         const result = await claimRewardCall({
             rewardType: 'book', targetItem: selectedBookFile, rewardValue, rewardUnit, milestoneTitle: trophyTitle
         });
-        
-        if (currentUserData) { 
-            currentUserData.subscriptions = result.data.newSubscriptions; 
-            currentUserData.claimedMilestones = result.data.claimedMilestones; 
+
+        if (currentUserData) {
+            currentUserData.subscriptions = result.data.newSubscriptions;
+            currentUserData.claimedMilestones = result.data.claimedMilestones;
         }
         alert(`Success! Your book is unlocked for ${rewardValue}${rewardUnit}.`);
     } catch (err) { alert("Reward Error: " + err.message); }
@@ -2422,7 +2426,7 @@ async function claimBookReward(rewardValue, rewardUnit, trophyTitle, selectedBoo
 if (btnJourney) {
     btnJourney.onclick = () => {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') return alert("Please register an account to track your Journey and unlock trophies.");
-        
+
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes, ...globalHistoricalMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         const dbClaimed = currentUserData?.claimedMilestones || [];
@@ -2432,29 +2436,29 @@ if (btnJourney) {
             processedTrophies.forEach(t => {
                 const isUnlocked = flawlessCount >= t.cumulativeReq;
                 const isClaimed = dbClaimed.includes(t.title);
-                
+
                 let progress = 0;
                 if (isUnlocked) progress = t.req;
                 else if (flawlessCount > t.previousCum) progress = flawlessCount - t.previousCum;
 
                 const card = document.createElement('div');
                 card.className = `trophy-card ${isUnlocked ? 'unlocked' : 'locked'}`;
-                
+
                 const iconDiv = document.createElement('div');
                 iconDiv.className = 'trophy-icon';
                 iconDiv.textContent = t.icon;
-                
+
                 const contDiv = document.createElement('div');
                 contDiv.className = 'trophy-content';
-                
+
                 const titleDiv = document.createElement('div');
                 titleDiv.className = 'trophy-title';
                 titleDiv.textContent = t.title;
-                
+
                 const progDiv = document.createElement('div');
                 progDiv.className = 'trophy-progress';
                 progDiv.textContent = `${progress} / ${t.req} Flawless Qs`;
-                
+
                 contDiv.appendChild(titleDiv);
                 contDiv.appendChild(progDiv);
 
@@ -2484,7 +2488,7 @@ if (btnJourney) {
                 const sIcon = document.createElement('i');
                 sIcon.className = isUnlocked ? 'fas fa-check-circle' : 'fas fa-lock';
                 statusDiv.appendChild(sIcon);
-                
+
                 card.appendChild(iconDiv); card.appendChild(contDiv); card.appendChild(statusDiv);
                 trophiesGrid.appendChild(card);
             });
@@ -2522,11 +2526,11 @@ if (btnReset) {
     btnReset.onclick = (e) => {
         if (e) e.preventDefault();
         // toggleSidebar is in Part 1
-        if (window.toggleSidebar) window.toggleSidebar(false); 
-        
+        if (window.toggleSidebar) window.toggleSidebar(false);
+
         if (optionsContainer) optionsContainer.style.display = 'flex';
         if (confirmContainer) confirmContainer.style.display = 'none';
-        
+
         const resetTitle = resetModal ? resetModal.querySelector('.reset-title') : null;
         if (resetTitle) {
             resetTitle.textContent = '';
@@ -2541,34 +2545,34 @@ if (closeResetModal && resetModal) closeResetModal.onclick = () => { resetModal.
 
 document.querySelectorAll('.reset-option-btn').forEach(btn => {
     btn.onclick = (e) => {
-        const type = btn.getAttribute('data-type'); 
+        const type = btn.getAttribute('data-type');
         const isBook = currentView === 'book';
 
         switch (type) {
             case "1":
                 pendingDocsToClear = ["solved", "mistakes", "bookmarks", "history", "revisions", "skipped", "stats"];
                 pendingResetMsg = `All ${isBook ? 'Book' : 'Course'} progress has been fully reset!`;
-                if(confirmText) confirmText.textContent = `Are you sure you want to completely wipe ALL your progress for ${isBook ? 'Books' : 'this course'}? This cannot be undone.`;
+                if (confirmText) confirmText.textContent = `Are you sure you want to completely wipe ALL your progress for ${isBook ? 'Books' : 'this course'}? This cannot be undone.`;
                 break;
             case "2":
                 pendingDocsToClear = ["mistakes"];
                 pendingResetMsg = `All ${isBook ? 'Book' : 'Course'} mistakes have been cleared!`;
-                if(confirmText) confirmText.textContent = `Are you sure you want to clear your Mistake history?`;
+                if (confirmText) confirmText.textContent = `Are you sure you want to clear your Mistake history?`;
                 break;
             case "3":
                 pendingDocsToClear = ["bookmarks"];
                 pendingResetMsg = `All ${isBook ? 'Book' : 'Course'} bookmarks have been cleared!`;
-                if(confirmText) confirmText.textContent = `Are you sure you want to delete all your Bookmarks?`;
+                if (confirmText) confirmText.textContent = `Are you sure you want to delete all your Bookmarks?`;
                 break;
             case "4":
                 pendingDocsToClear = ["history"];
                 pendingResetMsg = `${isBook ? 'Book' : 'Course'} Exam history has been cleared!`;
-                if(confirmText) confirmText.textContent = `Are you sure you want to delete your Past Exam scores?`;
+                if (confirmText) confirmText.textContent = `Are you sure you want to delete your Past Exam scores?`;
                 break;
             case "5":
                 pendingDocsToClear = ["solved"];
                 pendingResetMsg = `Solved ${isBook ? 'Book' : 'Course'} questions have been cleared!`;
-                if(confirmText) confirmText.textContent = `Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.`;
+                if (confirmText) confirmText.textContent = `Are you sure you want to clear your Solved Questions? Your mistakes and bookmarks will remain.`;
                 break;
         }
 
@@ -2635,7 +2639,7 @@ function initMentorFeatures() {
             if (currentMode === 'exam' && (!timerInput || timerInput <= 0 || isNaN(timerInput))) return alert("Please enter a valid time in minutes for Exam mode.");
 
             const finalTimer = currentMode === 'exam' ? timerInput : 0;
-            if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) { examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput); } 
+            if (qCountInput && qCountInput > 0 && qCountInput < examPool.length) { examPool = examPool.sort(() => 0.5 - Math.random()).slice(0, qCountInput); }
             else { examPool = examPool.sort(() => 0.5 - Math.random()); }
             if (examPool.length === 0) return alert("No questions selected!");
 
@@ -2647,15 +2651,15 @@ function initMentorFeatures() {
             try {
                 const usersRef = collection(db, "users");
                 const userSnap = await getDocs(usersRef);
-                
+
                 let studentsList = [];
                 userSnap.forEach(docSnap => {
                     const data = docSnap.data();
                     const role = (data.role || 'STUDENT').toUpperCase();
                     if (role !== 'ADMIN' && role !== 'MENTOR' && role !== 'MANAGEMENT' && role !== 'BANNED') {
-                        studentsList.push({ 
-                            id: docSnap.id, 
-                            name: data.fullName || "Unnamed User", 
+                        studentsList.push({
+                            id: docSnap.id,
+                            name: data.fullName || "Unnamed User",
                             email: data.email || "No Email",
                             course: data.activeCourse || data.course || "No Course"
                         });
@@ -2673,28 +2677,28 @@ function initMentorFeatures() {
                         } else {
                             // FIXED LAYOUT GENERATION logic to match the new image
                             studentsList.sort((a, b) => a.name.localeCompare(b.name)).forEach(student => {
-                                const lbl = document.createElement('label'); 
+                                const lbl = document.createElement('label');
                                 lbl.className = 'student-item list-item';
                                 lbl.style.flexDirection = 'row';
                                 lbl.style.alignItems = 'center';
                                 lbl.style.gap = '15px';
                                 lbl.style.padding = '12px';
-                                
-                                const cb = document.createElement('input'); 
-                                cb.type = 'checkbox'; 
-                                cb.className = 'student-checkbox item-checkbox'; 
+
+                                const cb = document.createElement('input');
+                                cb.type = 'checkbox';
+                                cb.className = 'student-checkbox item-checkbox';
                                 cb.value = student.id;
-                                
-                                const textDiv = document.createElement('div'); 
-                                textDiv.style.display = 'flex'; 
+
+                                const textDiv = document.createElement('div');
+                                textDiv.style.display = 'flex';
                                 textDiv.style.flexDirection = 'column';
-                                
-                                const nSpan = document.createElement('span'); 
-                                nSpan.className = 'student-name'; 
-                                nSpan.style.fontWeight = 'bold'; 
+
+                                const nSpan = document.createElement('span');
+                                nSpan.className = 'student-name';
+                                nSpan.style.fontWeight = 'bold';
                                 nSpan.style.color = 'var(--text-main)';
                                 nSpan.textContent = student.name;
-                                
+
                                 const cSpan = document.createElement('span');
                                 cSpan.className = 'student-course';
                                 cSpan.style.fontSize = '0.75rem';
@@ -2704,14 +2708,14 @@ function initMentorFeatures() {
                                 cSpan.style.marginBottom = '2px';
                                 cSpan.style.textTransform = 'uppercase';
                                 cSpan.innerHTML = `<i class="fas fa-book" style="margin-right: 4px;"></i>${student.course.replace(/_/g, ' ')}`;
-                                
-                                const eSpan = document.createElement('span'); 
-                                eSpan.className = 'student-email'; 
-                                eSpan.style.fontSize = '0.85rem'; 
+
+                                const eSpan = document.createElement('span');
+                                eSpan.className = 'student-email';
+                                eSpan.style.fontSize = '0.85rem';
                                 eSpan.style.color = 'var(--text-muted)';
                                 eSpan.textContent = student.email;
-                                
-                                textDiv.appendChild(nSpan); 
+
+                                textDiv.appendChild(nSpan);
                                 textDiv.appendChild(cSpan);
                                 textDiv.appendChild(eSpan);
                                 lbl.appendChild(cb); lbl.appendChild(textDiv);
@@ -2719,7 +2723,7 @@ function initMentorFeatures() {
                             });
                         }
                     }
-                    
+
                     const searchInput = document.getElementById('student-search-input');
                     if (searchInput) {
                         searchInput.value = '';
@@ -2736,7 +2740,7 @@ function initMentorFeatures() {
                     }
 
                     document.getElementById('btn-cancel-assign').onclick = () => { assignExamModal.style.display = 'none'; };
-                    
+
                     document.getElementById('btn-confirm-assign').onclick = async () => {
                         const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
                         const selectedStudentIds = Array.from(checkedBoxes).map(cb => cb.value);
@@ -2749,7 +2753,7 @@ function initMentorFeatures() {
                         try {
                             const questionIdsOnly = examPool.map(q => String(q.id || q.QuestionID));
                             await addDoc(collection(db, "assigned_exams"), {
-                                title: generatedTitle, assignedBy: auth.currentUser.uid, assignedTo: selectedStudentIds, 
+                                title: generatedTitle, assignedBy: auth.currentUser.uid, assignedTo: selectedStudentIds,
                                 questionIds: questionIdsOnly, mode: currentMode, timerMinutes: finalTimer, isCompletedBy: [], createdAt: serverTimestamp()
                             });
                             alert(`Exam successfully assigned to ${selectedStudentIds.length} student(s)!`);
@@ -2781,26 +2785,26 @@ function initMentorFeatures() {
 // ==========================================
 // 16. INITIALIZATION & AUTHENTICATION
 // ==========================================
-window.syncUserProgress = function(updateObj) {
+window.syncUserProgress = function (updateObj) {
     if (!currentUserData) currentUserData = {};
     Object.assign(currentUserData, updateObj);
     const uid = auth.currentUser ? auth.currentUser.uid : null;
     if (!uid) return;
     idbCache.set(uid, JSON.parse(JSON.stringify(currentUserData)));
-    updateDoc(doc(db, 'users', uid), updateObj).catch(err => {});
+    updateDoc(doc(db, 'users', uid), updateObj).catch(err => { });
 };
 
 async function hydrateUserState(dbData) {
-    currentUserData = dbData; 
+    currentUserData = dbData;
     currentUserRole = dbData.role || 'STUDENT';
     isPremiumUser = false;
-    
+
     if (dbData.role === 'ADMIN' || dbData.role === 'MANAGEMENT') {
         isPremiumUser = true;
         const queueStr = localStorage.getItem('edeetos_pending_edits');
         let pendingQueue = [];
-        if (queueStr) { try { pendingQueue = JSON.parse(queueStr); } catch(e){} }
-        
+        if (queueStr) { try { pendingQueue = JSON.parse(queueStr); } catch (e) { } }
+
         const btnPushEdits = document.getElementById('btn-push-edits');
         const pendingEditsCount = document.getElementById('pending-edits-count');
         if (pendingQueue.length > 0 && btnPushEdits) {
@@ -2809,20 +2813,20 @@ async function hydrateUserState(dbData) {
             btnPushEdits.onclick = async () => {
                 alert("SECURITY WARNING: Direct GitHub edits from the client browser have been disabled to prevent XSS vulnerabilities and data loss. Please use your secure backend Admin Panel to push updates.");
                 btnPushEdits.style.display = 'none';
-            };        
+            };
         }
     } else if (dbData.subscriptions && dbData.subscriptions[activeCourse]) {
         const expiry = dbData.subscriptions[activeCourse];
-        if (expiry === 'lifetime') { isPremiumUser = true; } 
+        if (expiry === 'lifetime') { isPremiumUser = true; }
         else { if (new Date(expiry) >= new Date()) isPremiumUser = true; }
     }
-    
+
     const uid = auth.currentUser ? auth.currentUser.uid : null;
     const fetchShard = async (folder, docName) => {
-        try { const snap = await getDoc(doc(db, "users", uid, folder, docName)); return snap.exists() ? snap.data() : {}; } catch(e) { return {}; }
+        try { const snap = await getDoc(doc(db, "users", uid, folder, docName)); return snap.exists() ? snap.data() : {}; } catch (e) { return {}; }
     };
 
-    const [ cSol, cMis, cBkm, cSkp, cHis, cRev, cNot, bSol, bMis, bBkm, bSkp, bHis, bRev, bNot ] = await Promise.all([
+    const [cSol, cMis, cBkm, cSkp, cHis, cRev, cNot, bSol, bMis, bBkm, bSkp, bHis, bRev, bNot] = await Promise.all([
         fetchShard(activeCourse, "solved"), fetchShard(activeCourse, "mistakes"), fetchShard(activeCourse, "bookmarks"), fetchShard(activeCourse, "skipped"), fetchShard(activeCourse, "history"), fetchShard(activeCourse, "revisions"), fetchShard(activeCourse, "notes"),
         fetchShard("books", "solved"), fetchShard("books", "mistakes"), fetchShard("books", "bookmarks"), fetchShard("books", "skipped"), fetchShard("books", "history"), fetchShard("books", "revisions"), fetchShard("books", "notes")
     ]);
@@ -2843,7 +2847,7 @@ async function hydrateUserState(dbData) {
 
     globalBookmarkFolders = { ...(cBkm.folders || {}), ...(bBkm.folders || {}) };
     userExamHistory = [...(cHis.list || []), ...(bHis.list || [])];
-    
+
     currentUserData[activeCourse] = { revisions: cRev, notes: cNot.data || {} };
     currentUserData.books = { revisions: bRev, notes: bNot.data || {} };
 
@@ -2859,33 +2863,33 @@ async function hydrateUserState(dbData) {
     const uniqueBookBookmarks = [...new Set(bookBookmarks)];
     const uniqueBookSkipped = [...new Set(bookSkipped)];
 
-globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
+    globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeMistakes];
     globalExamMistakes = [...validCourseExamMistakes, ...uniqueBookExamMistakes];
     globalHistoricalMistakes = [...new Set([...courseHistorical, ...bookHistorical])];
     globalBookmarks = [...validCourseBookmarks, ...uniqueBookBookmarks];
     globalSkipped = [...uniqueCourseSkipped, ...uniqueBookSkipped];
-    
+
     attemptedQuestions = [...validCourseSolved, ...uniqueBookSolved];
     window.fastAttemptedSet = new Set([...attemptedQuestions, ...globalPracticeMistakes, ...globalExamMistakes, ...globalSkipped]);
-    
+
     const courseAllMistakes = [...new Set([...validCoursePracticeMistakes, ...validCourseExamMistakes])];
     const uniqueCourseAttempts = [...new Set([...validCourseSolved, ...courseAllMistakes, ...courseHistorical])];
     const courseFirstTryCorrect = uniqueCourseAttempts.filter(id => !courseHistorical.includes(id) && !courseAllMistakes.includes(id));
     const courseAccuracy = uniqueCourseAttempts.length > 0 ? Math.round((courseFirstTryCorrect.length / uniqueCourseAttempts.length) * 100) : 0;
-    
+
     viewSpecificStats.course = { solved: validCourseSolved, mistakes: courseAllMistakes, bookmarks: validCourseBookmarks, skipped: uniqueCourseSkipped, accuracy: courseAccuracy };
 
     const bookAllMistakes = [...new Set([...uniqueBookPracticeMistakes, ...uniqueBookExamMistakes])];
     const uniqueBookAttempts = [...new Set([...uniqueBookSolved, ...bookAllMistakes, ...bookHistorical])];
     const bookFirstTryCorrect = uniqueBookAttempts.filter(id => !bookHistorical.includes(id) && !bookAllMistakes.includes(id));
     const bookAccuracy = uniqueBookAttempts.length > 0 ? Math.round((bookFirstTryCorrect.length / uniqueBookAttempts.length) * 100) : 0;
-    
+
     viewSpecificStats.book = { solved: uniqueBookSolved, mistakes: bookAllMistakes, bookmarks: uniqueBookBookmarks, skipped: uniqueBookSkipped, accuracy: bookAccuracy };
-	
+
     await loadDataAndBuildTree();
     restoreLastState();
     if (window.updateDashboardUI) window.updateDashboardUI();
-    
+
     const revisions = { ...(currentUserData[activeCourse]?.revisions || {}), ...(currentUserData.books?.revisions || {}) };
     const now = Date.now();
     const dueTopics = [];
@@ -2894,7 +2898,7 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
         if (revisions[topicId].dueDate <= now && revisions[topicId].status !== 'missed') {
             let subj = "", chap = "", top = "";
             const parts = topicId.split('::');
-            if (parts.length >= 4) { subj = parts[0]; chap = parts[1]; top = parts[2]; } 
+            if (parts.length >= 4) { subj = parts[0]; chap = parts[1]; top = parts[2]; }
             else { const oldParts = topicId.split('_'); oldParts.pop(); top = oldParts.pop() || ''; chap = oldParts.pop() || ''; subj = oldParts.join('_') || ''; }
             subj = subj || "General"; chap = chap || "Section"; top = top || revisions[topicId].topic || "Review Topic"; if (top === "Unknown Topic") top = "Topic";
             dueTopics.push({ id: topicId, subject: subj, chapter: chap, topic: top, step: revisions[topicId].intervalStep || 1 });
@@ -2917,15 +2921,15 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
         revisionCard.className = 'glass-panel feature-card card-pointer rev-bento-card';
         // Removed hardcoded light-mode-breaking backgrounds, relying on CSS vars and strict borders
         revisionCard.style.width = '100%'; revisionCard.style.marginBottom = '20px'; revisionCard.style.flexDirection = 'row'; revisionCard.style.justifyContent = 'space-between'; revisionCard.style.alignItems = 'center'; revisionCard.style.padding = '1.5rem 2rem'; revisionCard.style.borderLeft = '4px solid var(--warning)';
-        
+
         const infoDiv = document.createElement('div');
         const h3 = document.createElement('h3'); h3.className = 'card-title'; h3.style.color = 'var(--text-main)'; h3.style.margin = '0 0 5px 0'; h3.style.fontWeight = '900'; h3.style.fontSize = '1.25rem';
         const h3I = document.createElement('i'); h3I.className = 'fas fa-sync-alt'; h3I.style.color = 'var(--warning)'; h3I.style.marginRight = '10px';
         h3.appendChild(h3I); h3.appendChild(document.createTextNode(' Due for Revision'));
-        
+
         const pDesc = document.createElement('p'); pDesc.style.color = 'var(--text-muted)'; pDesc.style.fontSize = '0.95rem'; pDesc.style.margin = '0'; pDesc.style.fontWeight = '600'; pDesc.textContent = `You have ${dueTopics.length} topics ready for spaced repetition.`;
         infoDiv.appendChild(h3); infoDiv.appendChild(pDesc);
-        
+
         const btnView = document.createElement('button'); btnView.className = 'btn-solid btn-filled-amber'; btnView.textContent = 'View Plan';
         revisionCard.appendChild(infoDiv); revisionCard.appendChild(btnView);
 
@@ -2934,41 +2938,41 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
             if (listCont) {
                 listCont.textContent = '';
                 const tplDay = document.getElementById('tpl-revision-day');
-                
+
                 sortedDays.forEach(day => {
                     const topicsArray = groupedByDay[day].map(item => item.id);
                     const clone = tplDay.content.cloneNode(true);
                     clone.querySelector('.day-text').textContent = `Day ${day} Review`;
                     clone.querySelector('.rev-day-badge').textContent = `${groupedByDay[day].length} Topics Combined`;
-                    
+
                     const masterBtn = clone.querySelector('.rev-day-btn');
                     masterBtn.onclick = () => window.generateRevisionQuiz(topicsArray, day);
                     listCont.appendChild(clone);
-                    
+
                     groupedByDay[day].forEach(item => {
                         const btn = document.createElement('button');
                         btn.className = 'action-btn'; btn.style.width = '100%'; btn.style.textAlign = 'left'; btn.style.display = 'flex'; btn.style.justifyContent = 'space-between'; btn.style.alignItems = 'center'; btn.style.background = 'rgba(245, 158, 11, 0.1)'; btn.style.borderColor = 'rgba(245, 158, 11, 0.3)';
                         btn.onclick = () => window.generateRevisionQuiz([item.id]);
-                        
+
                         const textCont = document.createElement('div'); textCont.style.fontWeight = '700'; textCont.style.display = 'flex'; textCont.style.flexDirection = 'column'; textCont.style.width = '90%';
-                        
+
                         const pathSpan = document.createElement('span'); pathSpan.style.color = '#94a3b8'; pathSpan.style.fontSize = '0.75rem'; pathSpan.style.marginBottom = '3px';
                         const ar1 = document.createElement('span'); ar1.style.color = 'rgba(255,255,255,0.2)'; ar1.style.margin = '0 3px'; ar1.textContent = '>';
                         const ar2 = document.createElement('span'); ar2.style.color = 'rgba(255,255,255,0.2)'; ar2.style.margin = '0 3px'; ar2.textContent = '>';
                         pathSpan.appendChild(document.createTextNode(item.subject + ' ')); pathSpan.appendChild(ar1); pathSpan.appendChild(document.createTextNode(' ' + item.chapter + ' ')); pathSpan.appendChild(ar2);
-                        
+
                         const tSpan = document.createElement('span'); tSpan.style.color = '#fde68a'; tSpan.style.fontSize = '0.95rem'; tSpan.textContent = item.topic;
-                        
+
                         textCont.appendChild(pathSpan); textCont.appendChild(tSpan);
-                        
+
                         const iPlay = document.createElement('i'); iPlay.className = 'fas fa-play-circle'; iPlay.style.color = '#fcd34d'; iPlay.style.fontSize = '1.3rem'; iPlay.style.flexShrink = '0'; iPlay.style.marginLeft = '10px';
-                        
+
                         btn.appendChild(textCont); btn.appendChild(iPlay);
                         listCont.appendChild(btn);
                     });
                 });
             }
-            
+
             revisionCard.onclick = () => { revisionModal.style.display = 'flex'; };
             const closeBtn = document.getElementById('close-revision-popup');
             if (closeBtn) closeBtn.onclick = (e) => { e.stopPropagation(); revisionModal.style.display = 'none'; };
@@ -2978,7 +2982,7 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
     } else if (revisionContainer) {
         revisionContainer.textContent = '';
     }
-    
+
     const btnMistakes = document.getElementById('btn-practice-mistakes');
     if (btnMistakes) {
         btnMistakes.disabled = false; btnMistakes.style.cursor = "pointer";
@@ -3007,9 +3011,9 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
                                 const res = await fetch(pageUrl);
                                 if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                                 else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
-                            } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                            } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                         } else if (window.activeChunksCache[pageUrl].length === 0) { keepFetching = false; }
-                        
+
                         if (window.activeChunksCache[pageUrl]) {
                             window.activeChunksCache[pageUrl].forEach(q => {
                                 const qId = getQID(q);
@@ -3063,9 +3067,9 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
                                 const res = await fetch(pageUrl);
                                 if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                                 else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
-                            } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                            } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                         } else if (window.activeChunksCache[pageUrl].length === 0) { keepFetching = false; }
-                        
+
                         if (window.activeChunksCache[pageUrl]) {
                             window.activeChunksCache[pageUrl].forEach(q => {
                                 const qId = getQID(q);
@@ -3092,8 +3096,8 @@ globalPracticeMistakes = [...validCoursePracticeMistakes, ...uniqueBookPracticeM
             openPopup(isBook ? "⭐ Book Bookmarks" : "⭐ Course Bookmarks", folderTree, 'Level1', []);
         };
     }
-    
-setTimeout(() => {
+
+    setTimeout(() => {
         const allMistakes = [...new Set([...globalPracticeMistakes, ...globalExamMistakes, ...globalHistoricalMistakes])];
         const flawlessCount = attemptedQuestions.filter(id => !allMistakes.includes(id)).length;
         checkMilestones(flawlessCount);
@@ -3127,9 +3131,9 @@ if (btnSkipped) {
                             const res = await fetch(pageUrl);
                             if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                             else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
-                        } catch(e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
+                        } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                     } else if (window.activeChunksCache[pageUrl].length === 0) { keepFetching = false; }
-                    
+
                     if (window.activeChunksCache[pageUrl]) {
                         window.activeChunksCache[pageUrl].forEach(q => {
                             const qId = getQID(q);
@@ -3148,7 +3152,7 @@ if (btnSkipped) {
         openPopup(isBook ? "⏭️ Skipped Book Qs" : "⏭️ Skipped Course Qs", combinedTree, 'Level1', []);
     };
 }
-	
+
 async function migrateOldUserData(userRef, uid, dbData) {
     let requiresUpdate = false;
     let rootUpdates = {};
@@ -3181,23 +3185,23 @@ async function migrateOldUserData(userRef, uid, dbData) {
 
     if (requiresUpdate) { await updateDoc(userRef, rootUpdates); }
 }
-	
+
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         localStorage.removeItem('edeetos_guest_mode');
         const userRef = doc(db, "users", user.uid);
         const cachedData = await idbCache.get(user.uid);
-        if (cachedData) { try { await hydrateUserState(cachedData); } catch(e) {} }
+        if (cachedData) { try { await hydrateUserState(cachedData); } catch (e) { } }
 
         try {
             const docSnap = await getDoc(userRef);
             if (docSnap.exists()) {
                 const dbData = docSnap.data();
-                try { await migrateOldUserData(userRef, user.uid, dbData); } catch (err) {}
+                try { await migrateOldUserData(userRef, user.uid, dbData); } catch (err) { }
                 idbCache.set(user.uid, dbData);
                 await hydrateUserState(dbData);
             } else { await hydrateUserState({ role: 'STUDENT' }); }
-        } catch (error) {}
+        } catch (error) { }
     } else {
         if (localStorage.getItem('edeetos_guest_mode') === 'true') {
             isPremiumUser = false;

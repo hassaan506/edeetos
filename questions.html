@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Bank - EDEETOS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="questions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');</script>
 </head>
+
 <body class="dashboard-body">
 
     <!-- === HOST BANNER === -->
@@ -23,7 +26,7 @@
 
     <!-- === LAYOUT WRAPPER === -->
     <div class="dashboard-layout">
-        
+
         <!-- SIDEBAR (Fixed Full Height) -->
         <div id="sidebar-overlay" class="sidebar-overlay" style="display: none;"></div>
         <aside id="sidebar" class="sidebar">
@@ -35,19 +38,21 @@
             <ul class="sidebar-links">
                 <li class="sidebar-category">Study Modules</li>
                 <li><a href="#" id="nav-system"><i class="fas fa-brain"></i> Systems</a></li>
-                <li><a href="#" id="nav-subject" class="active-link"><i class="fas fa-book-medical"></i> Subjects</a></li>
+                <li><a href="#" id="nav-subject" class="active-link"><i class="fas fa-book-medical"></i> Subjects</a>
+                </li>
                 <li><a href="#" id="nav-exam"><i class="fas fa-file-signature"></i> Past Exams</a></li>
                 <li><a href="#" id="nav-book"><i class="fas fa-swatchbook"></i> Library</a></li>
-                
+
                 <li class="sidebar-category sidebar-margin-top">Data Control</li>
-                <li><a href="#" id="btn-reset-progress" class="reset-link"><i class="fas fa-trash-alt"></i> Wipe Data</a></li>
+                <li><a href="#" id="btn-reset-progress" class="reset-link"><i class="fas fa-trash-alt"></i> Wipe
+                        Data</a></li>
                 <li><a href="dashboard.html"><i class="fas fa-home"></i> Home</a></li>
             </ul>
         </aside>
 
         <!-- MAIN CONTENT AREA -->
         <main class="main-content">
-            
+
             <header class="top-header">
                 <div class="header-left">
                     <button id="open-sidebar" class="icon-btn mobile-only"><i class="fas fa-bars"></i></button>
@@ -55,7 +60,8 @@
                 </div>
                 <div class="header-right">
                     <button id="btn-push-edits" class="btn-solid push-edits-btn" style="display: none;">
-                        <i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count" class="pending-count">0</span>
+                        <i class="fas fa-cloud-upload-alt"></i> Push <span id="pending-edits-count"
+                            class="pending-count">0</span>
                     </button>
                     <button id="dark-mode-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
                 </div>
@@ -99,14 +105,19 @@
                 <div class="glass-panel action-bento">
                     <div class="stat-header">Quick Actions</div>
                     <div class="action-grid">
-                        <button id="btn-practice-mistakes" class="btn-outline btn-outline-red" disabled>Review Mistakes</button>
-                        <button id="btn-review-bookmarks" class="btn-outline btn-outline-amber" disabled>Saved Qs</button>
-                        <button id="btn-practice-skipped" class="btn-outline btn-outline-yellow" disabled>Skipped</button>
-                        <button id="btn-view-journey" class="btn-solid btn-filled-amber"><i class="fas fa-trophy"></i> Journey</button>
-                        <button id="btn-view-analytics" class="btn-solid btn-filled-blue" style="grid-column: 1 / -1;"><i class="fas fa-chart-pie"></i> Detailed Analytics</button>
+                        <button id="btn-practice-mistakes" class="btn-outline btn-outline-red" disabled>Review
+                            Mistakes</button>
+                        <button id="btn-review-bookmarks" class="btn-outline btn-outline-amber" disabled>Saved
+                            Qs</button>
+                        <button id="btn-practice-skipped" class="btn-outline btn-outline-yellow"
+                            disabled>Skipped</button>
+                        <button id="btn-view-journey" class="btn-solid btn-filled-amber"><i class="fas fa-trophy"></i>
+                            Journey</button>
+                        <button id="btn-view-analytics" class="btn-solid btn-filled-blue"
+                            style="grid-column: 1 / -1;"><i class="fas fa-chart-pie"></i> Detailed Analytics</button>
                     </div>
                 </div>
-                
+
                 <div id="spaced-repetition-container" class="spaced-rep-bento"></div>
             </section>
 
@@ -116,24 +127,33 @@
                     <!-- Left Side: Buttons & Search -->
                     <div class="control-group">
                         <div class="mode-toggle">
-                            <button id="mode-practice" class="btn-outline active-mode btn-mode-practice">Practice</button>
+                            <button id="mode-practice"
+                                class="btn-outline active-mode btn-mode-practice">Practice</button>
                             <button id="mode-exam" class="btn-outline">Exam</button>
                         </div>
-                        <button id="btn-quick-mock" class="btn-solid btn-filled-purple"><i class="fas fa-bolt"></i> Mock</button>
-                        <button id="btn-join-challenge" class="btn-outline btn-outline-purple"><i class="fas fa-link"></i> Join</button>
-                        <button id="btn-open-search-modal" class="btn-outline" title="Search Database"><i class="fas fa-search"></i> Search Questions</button>
+                        <button id="btn-quick-mock" class="btn-solid btn-filled-purple"><i class="fas fa-bolt"></i>
+                            Mock</button>
+                        <button id="btn-join-challenge" class="btn-outline btn-outline-purple"><i
+                                class="fas fa-link"></i> Join</button>
+                        <button id="btn-open-search-modal" class="btn-outline" title="Search Database"><i
+                                class="fas fa-search"></i> Search Questions</button>
                     </div>
 
                     <!-- Right Side: Filters -->
                     <div class="filter-controls">
-                        <label class="filter-pill"><input type="checkbox" id="unattempted-filter" class="item-checkbox"><span>Unattempted</span></label>
+                        <label class="filter-pill"><input type="checkbox" id="unattempted-filter"
+                                class="item-checkbox"><span>Unattempted</span></label>
                         <div class="vertical-divider"></div>
-                        <label class="filter-pill easy"><input type="checkbox" id="diff-easy-filter" value="easy" class="item-checkbox"><span>Easy</span></label>
-                        <label class="filter-pill medium"><input type="checkbox" id="diff-medium-filter" value="medium" class="item-checkbox"><span>Medium</span></label>
-                        <label class="filter-pill hard"><input type="checkbox" id="diff-hard-filter" value="hard" class="item-checkbox"><span>Hard</span></label>
+                        <label class="filter-pill easy"><input type="checkbox" id="diff-easy-filter" value="easy"
+                                class="item-checkbox"><span>Easy</span></label>
+                        <label class="filter-pill medium"><input type="checkbox" id="diff-medium-filter" value="medium"
+                                class="item-checkbox"><span>Medium</span></label>
+                        <label class="filter-pill hard"><input type="checkbox" id="diff-hard-filter" value="hard"
+                                class="item-checkbox"><span>Hard</span></label>
                     </div>
                 </div>
-                <p id="mode-description" class="mode-desc">Practice Mode: Instant feedback and detailed explanations enabled.</p>
+                <p id="mode-description" class="mode-desc">Practice Mode: Instant feedback and detailed explanations
+                    enabled.</p>
             </section>
 
             <!-- SUBJECTS GRID -->
@@ -151,21 +171,26 @@
             <div class="input-group">
                 <label>Total Qs</label>
                 <div class="fancy-number-input">
-                    <button type="button" class="fancy-btn minus-btn" data-target="exam-q-count"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="fancy-btn minus-btn" data-target="exam-q-count"><i
+                            class="fas fa-minus"></i></button>
                     <input type="number" id="exam-q-count" class="glass-input" placeholder="50">
-                    <button type="button" class="fancy-btn plus-btn" data-target="exam-q-count"><i class="fas fa-plus"></i></button>
+                    <button type="button" class="fancy-btn plus-btn" data-target="exam-q-count"><i
+                            class="fas fa-plus"></i></button>
                 </div>
             </div>
             <div class="input-group" id="timer-wrapper">
                 <label>Mins (Exam)</label>
                 <div class="fancy-number-input">
-                    <button type="button" class="fancy-btn minus-btn" data-target="exam-timer"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="fancy-btn minus-btn" data-target="exam-timer"><i
+                            class="fas fa-minus"></i></button>
                     <input type="number" id="exam-timer" class="glass-input" placeholder="60">
-                    <button type="button" class="fancy-btn plus-btn" data-target="exam-timer"><i class="fas fa-plus"></i></button>
+                    <button type="button" class="fancy-btn plus-btn" data-target="exam-timer"><i
+                            class="fas fa-plus"></i></button>
                 </div>
             </div>
             <div class="action-buttons-flex">
-                <button class="btn-outline action-btn" id="assign-exam-btn" style="display: none;">Assign to Student</button>
+                <button class="btn-outline action-btn" id="assign-exam-btn" style="display: none;">Assign to
+                    Student</button>
                 <button class="btn-solid start-btn" id="start-exam-btn" disabled>Execute ➡</button>
             </div>
         </div>
@@ -177,17 +202,21 @@
 
     <!-- Search Modal -->
     <div id="search-modal" class="popup-overlay" style="display: none;">
-        <div class="popup-content max-w-800" style="height: 85vh; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
+        <div class="popup-content max-w-800"
+            style="height: 85vh; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
             <div class="popup-header">
                 <h3 class="m-0"><i class="fas fa-search text-blue"></i> Search Database</h3>
                 <button id="btn-close-search-modal" class="icon-btn"><i class="fas fa-times"></i></button>
             </div>
-            <div class="popup-body flex-col" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; overflow: hidden;">
+            <div class="popup-body flex-col"
+                style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; overflow: hidden;">
                 <div class="search-wrapper" style="flex-shrink: 0; width: 100%; position: relative;">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="global-search" class="glass-input" placeholder="Search keywords among questions..." autocomplete="off">
+                    <input type="text" id="global-search" class="glass-input"
+                        placeholder="Search keywords among questions..." autocomplete="off">
                 </div>
-                <div id="search-dropdown" class="search-dropdown-modal glass-panel" style="display: none; flex-grow: 1; overflow-y: auto; padding: 0; margin: 0;"></div>
+                <div id="search-dropdown" class="search-dropdown-modal glass-panel"
+                    style="display: none; flex-grow: 1; overflow-y: auto; padding: 0; margin: 0;"></div>
             </div>
         </div>
     </div>
@@ -202,9 +231,12 @@
             <div class="popup-body text-center flex-col align-center">
                 <p class="mock-desc">Enter the number of questions. Timer auto-sets to 1.2 mins per question.</p>
                 <div class="fancy-number-input w-100 justify-center mb-1-5">
-                    <button type="button" class="fancy-btn minus-btn" data-target="mock-q-count"><i class="fas fa-minus"></i></button>
-                    <input type="number" id="mock-q-count" class="glass-input mock-input text-center" value="100" min="5" max="300">
-                    <button type="button" class="fancy-btn plus-btn" data-target="mock-q-count"><i class="fas fa-plus"></i></button>
+                    <button type="button" class="fancy-btn minus-btn" data-target="mock-q-count"><i
+                            class="fas fa-minus"></i></button>
+                    <input type="number" id="mock-q-count" class="glass-input mock-input text-center" value="100"
+                        min="5" max="300">
+                    <button type="button" class="fancy-btn plus-btn" data-target="mock-q-count"><i
+                            class="fas fa-plus"></i></button>
                 </div>
             </div>
             <div class="popup-footer">
@@ -222,7 +254,8 @@
             </div>
             <div class="popup-body text-center">
                 <p class="modal-subtitle">Enter the 5-character code shared by your friend.</p>
-                <input type="text" id="challenge-code-input" class="glass-input challenge-input text-center" placeholder="e.g. A1B2C" maxlength="5">
+                <input type="text" id="challenge-code-input" class="glass-input challenge-input text-center"
+                    placeholder="e.g. A1B2C" maxlength="5">
             </div>
             <div class="popup-footer">
                 <button id="btn-confirm-join" class="btn-solid w-100">Join Match</button>
@@ -239,10 +272,13 @@
             </div>
             <div class="popup-body text-center">
                 <i class="fas fa-sign-out-alt exit-icon text-red"></i>
-                <p class="modal-subtitle mb-20">You are the host of Room <strong id="exit-room-id" class="text-main"></strong>. Do you want to just leave the room, or end the session completely?</p>
+                <p class="modal-subtitle mb-20">You are the host of Room <strong id="exit-room-id"
+                        class="text-main"></strong>. Do you want to just leave the room, or end the session completely?
+                </p>
             </div>
             <div class="popup-footer flex-col gap-10">
-                <button id="btn-leave-only" class="btn-outline btn-outline-amber-alt w-100">🚶‍♂️ Just Leave (Keep Room Active)</button>
+                <button id="btn-leave-only" class="btn-outline btn-outline-amber-alt w-100">🚶‍♂️ Just Leave (Keep Room
+                    Active)</button>
                 <button id="btn-end-room" class="btn-solid btn-filled-red w-100">🛑 End Room & Kick Everyone</button>
             </div>
         </div>
@@ -256,7 +292,8 @@
                 <button id="btn-cancel-assign" class="icon-btn"><i class="fas fa-times"></i></button>
             </div>
             <div class="popup-body text-left">
-                <input type="text" id="student-search-input" class="glass-input mb-15" placeholder="Search by name or email...">
+                <input type="text" id="student-search-input" class="glass-input mb-15"
+                    placeholder="Search by name or email...">
                 <div id="student-list-container" class="notes-list-container assign-list"></div>
             </div>
             <div class="popup-footer">
@@ -269,7 +306,8 @@
     <div id="popup-overlay" class="popup-overlay">
         <div class="popup-content max-w-1000">
             <div class="popup-header">
-                <button id="popup-back" class="btn-outline popup-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                <button id="popup-back" class="btn-outline popup-back-btn"><i class="fas fa-arrow-left"></i>
+                    Back</button>
                 <h3 id="popup-title" class="m-0">Category</h3>
                 <button id="popup-close" class="icon-btn"><i class="fas fa-times"></i></button>
             </div>
@@ -310,7 +348,9 @@
             </div>
             <div class="popup-body text-center">
                 <div id="milestone-icon" class="milestone-icon"></div>
-                <p class="modal-subtitle milestone-desc">You achieved the <strong id="milestone-rank" class="text-main"></strong> rank by completing <span id="milestone-req"></span> flawless questions!</p>
+                <p class="modal-subtitle milestone-desc">You achieved the <strong id="milestone-rank"
+                        class="text-main"></strong> rank by completing <span id="milestone-req"></span> flawless
+                    questions!</p>
                 <div id="milestone-reward-container" class="mt-15"></div>
             </div>
             <div class="popup-footer">
@@ -339,25 +379,31 @@
                 <h3 class="reset-title text-red m-0"><i class="fas fa-trash-alt"></i> Wipe Data</h3>
                 <button id="close-reset-modal" class="icon-btn"><i class="fas fa-times"></i></button>
             </div>
-            
+
             <div class="popup-body reset-options flex-col" id="reset-options-container">
                 <p class="reset-desc mb-20">Select what you would like to clear. This cannot be undone.</p>
-                
+
                 <div class="flex-col gap-10">
-                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="1">1️⃣ Wipe Everything</button>
-                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="2">2️⃣ Clear Mistakes</button>
-                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="3">3️⃣ Clear Bookmarks</button>
-                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="4">4️⃣ Clear Exam History</button>
-                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="5">5️⃣ Clear Solved</button>
+                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="1">1️⃣ Wipe
+                        Everything</button>
+                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="2">2️⃣ Clear
+                        Mistakes</button>
+                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="3">3️⃣ Clear
+                        Bookmarks</button>
+                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="4">4️⃣ Clear Exam
+                        History</button>
+                    <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="5">5️⃣ Clear
+                        Solved</button>
                 </div>
             </div>
-            
+
             <div class="popup-footer reset-confirm text-center" id="reset-confirm-container" style="display: none;">
                 <div class="w-100 text-center">
                     <p class="reset-confirm-text mb-15 font-bold" id="reset-confirm-text">Are you sure?</p>
                     <div class="flex-gap-1rem-center">
                         <button class="action-btn btn-outline flex-1" id="btn-cancel-reset">Cancel</button>
-                        <button class="action-btn btn-filled-red-alt flex-1" id="btn-confirm-reset">Yes, Delete It</button>
+                        <button class="action-btn btn-filled-red-alt flex-1" id="btn-confirm-reset">Yes, Delete
+                            It</button>
                     </div>
                 </div>
             </div>
@@ -365,12 +411,17 @@
     </div>
 
     <section class="section-container" id="quiz-screen" style="display: none;">
-        <div class="glass-panel transition-panel text-center p-40 mt-40"><h2 class="transition-title m-0"><i class="fas fa-spinner fa-spin text-blue"></i> Routing...</h2></div>
+        <div class="glass-panel transition-panel text-center p-40 mt-40">
+            <h2 class="transition-title m-0"><i class="fas fa-spinner fa-spin text-blue"></i> Routing...</h2>
+        </div>
     </section>
 
     <!-- TEMPLATES -->
-    <template id="tpl-search-hero"><div class="search-item search-hero-btn"><i class="fas fa-play-circle search-hero-icon"></i> <span class="search-hero-text"></span></div></template>
-    
+    <template id="tpl-search-hero">
+        <div class="search-item search-hero-btn"><i class="fas fa-play-circle search-hero-icon"></i> <span
+                class="search-hero-text"></span></div>
+    </template>
+
     <template id="tpl-feature-card">
         <div class="glass-panel feature-card bento-card card-pointer">
             <div class="card-content">
@@ -396,7 +447,9 @@
 
     <template id="tpl-popup-select-all">
         <div class="list-item hero-item">
-            <div class="flex-grow-1"><div class="card-header-flex m-0"><span class="popup-select-title"></span></div></div>
+            <div class="flex-grow-1">
+                <div class="card-header-flex m-0"><span class="popup-select-title"></span></div>
+            </div>
             <button class="select-all-btn popup-select-btn btn-solid">Select All</button>
         </div>
     </template>
@@ -417,13 +470,23 @@
     </template>
 
     <template id="tpl-analytics-empty">
-        <div class="analytics-empty"><i class="fas fa-chart-pie empty-icon"></i><h3 class="empty-title">Not Enough Data</h3><p class="empty-desc">Answer at least 3 questions in any topic to unlock.</p></div>
+        <div class="analytics-empty"><i class="fas fa-chart-pie empty-icon"></i>
+            <h3 class="empty-title">Not Enough Data</h3>
+            <p class="empty-desc">Answer at least 3 questions in any topic to unlock.</p>
+        </div>
     </template>
 
     <template id="tpl-analytics-content">
         <div class="analytics-grid">
-            <div class="glass-panel priority-panel"><h4 class="priority-title"><i class="fas fa-exclamation-triangle priority-icon"></i> Priority Review</h4><div class="priority-content"></div></div>
-            <div class="glass-panel strength-panel"><h4 class="strength-title"><i class="fas fa-star strength-icon"></i> Top Strengths</h4><div class="strength-content"></div></div>
+            <div class="glass-panel priority-panel">
+                <h4 class="priority-title"><i class="fas fa-exclamation-triangle priority-icon"></i> Priority Review
+                </h4>
+                <div class="priority-content"></div>
+            </div>
+            <div class="glass-panel strength-panel">
+                <h4 class="strength-title"><i class="fas fa-star strength-icon"></i> Top Strengths</h4>
+                <div class="strength-content"></div>
+            </div>
         </div>
         <h4 class="smart-hub-title"><i class="fas fa-dumbbell smart-hub-icon"></i> Smart Training Hub</h4>
         <div class="smart-hub-actions"></div>
@@ -434,12 +497,15 @@
     <template id="tpl-revision-day">
         <div class="revision-day-group mb-10">
             <button class="btn-outline rev-day-btn">
-                <div class="rev-day-title"><i class="fas fa-calendar-day rev-day-icon"></i> <span class="day-text"></span></div>
-                <div class="rev-day-meta"><span class="rev-day-badge"></span><i class="fas fa-play-circle rev-play-icon"></i></div>
+                <div class="rev-day-title"><i class="fas fa-calendar-day rev-day-icon"></i> <span
+                        class="day-text"></span></div>
+                <div class="rev-day-meta"><span class="rev-day-badge"></span><i
+                        class="fas fa-play-circle rev-play-icon"></i></div>
             </button>
         </div>
     </template>
 
     <script type="module" src="questions.js"></script>
 </body>
+
 </html>
