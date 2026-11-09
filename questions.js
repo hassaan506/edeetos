@@ -118,6 +118,9 @@ const popupBack = document.getElementById('popup-back');
 const popupClose = document.getElementById('popup-close');
 const globalSearch = document.getElementById('global-search');
 const searchDropdown = document.getElementById('search-dropdown');
+const searchModal = document.getElementById('search-modal');
+const btnOpenSearchModal = document.getElementById('btn-open-search-modal');
+const btnCloseSearchModal = document.getElementById('btn-close-search-modal');
 const unattemptedFilter = document.getElementById('unattempted-filter');
 const sidebarEl = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -514,6 +517,25 @@ function renderBooksGrid() {
 // ==========================================
 // 6. GLOBAL SEARCH SYSTEM (SQLITE HTTP-VFS)
 // ==========================================
+if (btnOpenSearchModal) {
+    btnOpenSearchModal.addEventListener('click', () => {
+        if (searchModal) searchModal.style.display = 'flex';
+        if (globalSearch) setTimeout(() => globalSearch.focus(), 100);
+    });
+}
+
+if (btnCloseSearchModal) {
+    btnCloseSearchModal.addEventListener('click', () => {
+        if (searchModal) searchModal.style.display = 'none';
+    });
+}
+
+if (searchModal) {
+    searchModal.addEventListener('click', (e) => {
+        if (e.target === searchModal) searchModal.style.display = 'none';
+    });
+}
+
 if (globalSearch && searchDropdown) {
     let sqlWorker = window.sqlWorker || null;
     let isSearchEngineLoading = false;
@@ -618,8 +640,9 @@ function renderSearchResults(matchedMeta, query) {
         const heroBtn = heroClone.querySelector('.search-hero-btn');
         heroClone.querySelector('.search-hero-text').textContent = `Create Quiz from Search (${limitCount} Qs)`;
         
-        heroBtn.onclick = async () => {
+heroBtn.onclick = async () => {
             searchDropdown.style.display = 'none';
+            if (searchModal) searchModal.style.display = 'none';
             globalSearch.value = '';
             const pool = matchedMeta.slice(0, 50);
             const hydratedPool = await window.hydrateQuestions(pool); // Reference global scoped
@@ -653,8 +676,9 @@ function renderSearchResults(matchedMeta, query) {
             div.appendChild(titleDiv);
             div.appendChild(snippetDiv);
             
-            div.onclick = async () => {
+div.onclick = async () => {
                 searchDropdown.style.display = 'none';
+                if (searchModal) searchModal.style.display = 'none';
                 globalSearch.value = '';
                 const hydratedPool = await window.hydrateQuestions([q]); // Reference global scoped
                 window.launchQuiz(hydratedPool, 'practice', 0);
@@ -667,6 +691,7 @@ function renderSearchResults(matchedMeta, query) {
 
 document.addEventListener('click', (e) => {
     if (globalSearch && searchDropdown && !globalSearch.contains(e.target) && !searchDropdown.contains(e.target)) {
+        if (searchModal && searchModal.style.display === 'flex') return;
         searchDropdown.style.display = 'none';
     }
 });
