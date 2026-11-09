@@ -196,7 +196,7 @@ html.dark-mode .text-blue { color: var(--accent); }
     display: flex; flex-direction: column; gap: 1.5rem;
 }
 
-.control-row-1 { display: flex; gap: 1.5rem; align-items: center; }
+.control-row-1 { display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; }
 .search-wrapper { position: relative; flex: 1; display: flex; align-items: center;}
 .search-icon { position: absolute; left: 1.2rem; color: var(--text-muted); font-size: 1.2rem;}
 .search-wrapper input { width: 100%; padding-left: 3rem !important; border-radius: 50px !important; }
@@ -591,6 +591,7 @@ html.dark-mode .rev-play-icon { color: var(--accent); }
 /* --- 11. SEARCH DROPDOWN & MISC --- */
 /* ========================================== */
 .search-dropdown { position: absolute; top: calc(100% + 8px); left: 0; width: 100%; max-height: 400px; overflow-y: auto; z-index: 9999; padding: 0; }
+.search-dropdown-modal { position: relative; width: 100%; overflow-y: auto; padding: 0; background: var(--surface-card); }
 .search-item { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--surface-border); cursor: pointer; transition: 0.2s; }
 .search-item:last-child { border-bottom: none; }
 .search-item:hover { background: var(--bg-main); padding-left: 1.8rem; }
