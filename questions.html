@@ -110,31 +110,28 @@
                 <div id="spaced-repetition-container" class="spaced-rep-bento"></div>
             </section>
 
-<section class="control-bar glass-panel sticky-control">
-                <div class="control-actions-wrapper">
-                    
-                    <div class="control-left">
-                        <button id="btn-open-search-modal" class="icon-btn" title="Search Database"><i class="fas fa-search"></i></button>
+            <!-- REDESIGNED CONTROL BAR -->
+            <section class="control-bar glass-panel sticky-control">
+                <div class="control-main-row">
+                    <!-- Left Side: Buttons & Search -->
+                    <div class="control-group">
                         <div class="mode-toggle">
                             <button id="mode-practice" class="btn-outline active-mode btn-mode-practice">Practice</button>
                             <button id="mode-exam" class="btn-outline">Exam</button>
                         </div>
+                        <button id="btn-quick-mock" class="btn-solid btn-filled-purple"><i class="fas fa-bolt"></i> Mock</button>
+                        <button id="btn-join-challenge" class="btn-outline btn-outline-purple"><i class="fas fa-link"></i> Join</button>
+                        <button id="btn-open-search-modal" class="btn-outline" title="Search Database"><i class="fas fa-search"></i> Search Questions</button>
                     </div>
 
-                    <div class="control-right">
-                        <div class="filter-controls">
-                            <label class="filter-pill"><input type="checkbox" id="unattempted-filter" class="item-checkbox"><span>Unattempted</span></label>
-                            <div class="vertical-divider"></div>
-                            <label class="filter-pill easy"><input type="checkbox" id="diff-easy-filter" value="easy" class="item-checkbox"><span>Easy</span></label>
-                            <label class="filter-pill medium"><input type="checkbox" id="diff-medium-filter" value="medium" class="item-checkbox"><span>Medium</span></label>
-                            <label class="filter-pill hard"><input type="checkbox" id="diff-hard-filter" value="hard" class="item-checkbox"><span>Hard</span></label>
-                        </div>
-                        <div class="multiplayer-controls">
-                            <button id="btn-quick-mock" class="btn-solid btn-filled-purple"><i class="fas fa-bolt"></i> Mock</button>
-                            <button id="btn-join-challenge" class="btn-outline btn-outline-purple"><i class="fas fa-link"></i> Join</button>
-                        </div>
+                    <!-- Right Side: Filters -->
+                    <div class="filter-controls">
+                        <label class="filter-pill"><input type="checkbox" id="unattempted-filter" class="item-checkbox"><span>Unattempted</span></label>
+                        <div class="vertical-divider"></div>
+                        <label class="filter-pill easy"><input type="checkbox" id="diff-easy-filter" value="easy" class="item-checkbox"><span>Easy</span></label>
+                        <label class="filter-pill medium"><input type="checkbox" id="diff-medium-filter" value="medium" class="item-checkbox"><span>Medium</span></label>
+                        <label class="filter-pill hard"><input type="checkbox" id="diff-hard-filter" value="hard" class="item-checkbox"><span>Hard</span></label>
                     </div>
-
                 </div>
                 <p id="mode-description" class="mode-desc">Practice Mode: Instant feedback and detailed explanations enabled.</p>
             </section>
@@ -174,11 +171,11 @@
         </div>
     </div>
 
-<!-- ========================================== -->
+    <!-- ========================================== -->
     <!-- RESTRUCTURED SCROLL-SAFE MODALS            -->
     <!-- ========================================== -->
 
-<!-- Search Modal -->
+    <!-- Search Modal -->
     <div id="search-modal" class="popup-overlay" style="display: none;">
         <div class="popup-content max-w-800" style="height: 85vh; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
             <div class="popup-header">
@@ -335,7 +332,7 @@
         </div>
     </div>
 
-<!-- Reset Progress Modal -->
+    <!-- Reset Progress Modal -->
     <div id="reset-modal" class="popup-overlay">
         <div class="popup-content max-w-450">
             <div class="popup-header">
@@ -343,11 +340,9 @@
                 <button id="close-reset-modal" class="icon-btn"><i class="fas fa-times"></i></button>
             </div>
             
-            <!-- Added flex-col to force vertical stacking -->
             <div class="popup-body reset-options flex-col" id="reset-options-container">
                 <p class="reset-desc mb-20">Select what you would like to clear. This cannot be undone.</p>
                 
-                <!-- Grouped buttons in a tight flex column -->
                 <div class="flex-col gap-10">
                     <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="1">1️⃣ Wipe Everything</button>
                     <button class="action-btn btn-outline reset-option-btn text-left w-100" data-type="2">2️⃣ Clear Mistakes</button>
