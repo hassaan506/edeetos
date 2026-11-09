@@ -111,12 +111,10 @@
             </section>
 
             <section class="control-bar glass-panel sticky-control">
-                <div class="control-row-1">
-                    <div class="search-wrapper">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="global-search" class="glass-input" placeholder="Search database...">
-                        <div id="search-dropdown" class="search-dropdown glass-panel" style="display: none;"></div>
-                    </div>
+<div class="control-row-1">
+                    <button id="btn-open-search-modal" class="icon-btn" title="Search Database"><i class="fas fa-search"></i></button>
+                    
+                    <div class="mode-toggle">
                     
                     <div class="mode-toggle">
                         <button id="mode-practice" class="btn-outline active-mode btn-mode-practice">Practice</button>
@@ -175,9 +173,26 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
+<!-- ========================================== -->
     <!-- RESTRUCTURED SCROLL-SAFE MODALS            -->
     <!-- ========================================== -->
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="popup-overlay" style="display: none;">
+        <div class="popup-content max-w-800" style="height: 80vh; display: flex; flex-direction: column;">
+            <div class="popup-header">
+                <h3 class="m-0"><i class="fas fa-search text-blue"></i> Search Database</h3>
+                <button id="btn-close-search-modal" class="icon-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="popup-body flex-col" style="padding: 1rem; overflow: hidden; display: flex;">
+                <div class="search-wrapper" style="width: 100%; margin-bottom: 1rem; position: relative;">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="global-search" class="glass-input" placeholder="Search keywords among questions..." autocomplete="off">
+                </div>
+                <div id="search-dropdown" class="search-dropdown-modal" style="display: none; flex: 1; overflow-y: auto; border-radius: 8px;"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Quick Mock Exam Modal -->
     <div id="mock-exam-modal" class="popup-overlay z-9000">
