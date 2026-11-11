@@ -89,6 +89,7 @@ body {
 }
 
 /* === NAVIGATION (STRICT OVERRIDES) === */
+/* === NAVIGATION STYLES === */
 .dashboard-nav {
     padding: 1rem 2rem;
     position: sticky;
@@ -96,26 +97,62 @@ body {
     z-index: 1000;
     border-radius: 0;
     border-bottom: 2px solid var(--accent-color);
-    background: var(--primary-ui) !important;
-    box-shadow: 0 4px 15px rgba(21, 70, 217, 0.2);
+    background: var(--surface-color) !important; /* Clean light background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
+
 html.dark-mode .dashboard-nav {
     background: var(--surface-color) !important;
     border-bottom: 1px solid var(--border-color);
     box-shadow: none;
 }
 
-.nav-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 0 auto; width: 100%; }
-.nav-logo-box { flex: 1; display: flex; justify-content: flex-start; }
+.nav-inner { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* Fixed invalid 'left' value */
+    max-width: 1240px; 
+    margin: 0 auto; 
+    width: 100%; 
+}
+.nav-logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0; /* Prevents the navbar from squishing the logo */
+  width: auto;
+}
+.nav-logo { 
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem); 
+    font-weight: 900; 
+    text-decoration: none; 
+    letter-spacing: -0.03em; 
+    white-space: nowrap; 
+    
+    /* Light Mode High-Contrast Gradient */
+    color: #08090B; /* Fallback for browsers lacking background-clip support */
+    background: linear-gradient(135deg, #08090B 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
 
-.nav-logo-img { height: 32px; width: auto; filter: brightness(0) invert(1); }
+/* Dark Mode Logo Gradient Override */
+html.dark-mode .nav-logo {
+    background: linear-gradient(135deg, var(--primary-ui) 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 html.dark-mode .nav-logo-img { filter: invert(1) grayscale(1); }
 
 .nav-actions { flex: 2; display: flex; justify-content: flex-end; align-items: center; gap: 0.75rem; list-style: none; margin: 0; padding: 0; }
 
 .nav-actions button, .nav-actions a {
     background: transparent !important; 
-    color: rgba(255, 255, 255, 0.85) !important; 
+    color: var(--text-primary) !important; /* Fixed text color for light mode */
     border: 1px solid transparent !important;
     padding: 0.5rem 1rem;
     border-radius: var(--radius);
@@ -131,11 +168,12 @@ html.dark-mode .nav-logo-img { filter: invert(1) grayscale(1); }
     text-decoration: none;
     box-shadow: none !important;
 }
-.nav-actions button:hover, .nav-actions a:hover { 
-    color: var(--accent-color) !important; 
-    background: rgba(0, 0, 0, 0.2) !important; 
-}
 
+.nav-actions button:hover, .nav-actions a:hover { 
+    color: var(--primary-ui) !important; 
+    background: var(--bg-color) !important; 
+    border-color: var(--border-color) !important;
+}
 html.dark-mode .nav-actions button, html.dark-mode .nav-actions a { color: var(--text-secondary) !important; }
 html.dark-mode .nav-actions button:hover, html.dark-mode .nav-actions a:hover { color: var(--text-primary) !important; background: var(--bg-color) !important; border-color: var(--border-color) !important; }
 
@@ -345,7 +383,15 @@ html.dark-mode .task-item-card:hover { border-color: var(--accent-color); }
 .font-lg { font-size: 1.125rem; }
 .font-bold { font-weight: 700; }
 
-.hamburger-btn { display: none; background: transparent; border: none; color: #FFF; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+.hamburger-btn { 
+    display: none; 
+    background: transparent; 
+    border: none; 
+    color: var(--text-primary); /* Uses dark text in light mode, auto-switches in dark mode */
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    padding: 0.5rem; 
+}
 html.dark-mode .hamburger-btn { color: var(--text-primary); }
 .close-sidebar-btn { display: none !important; }
 
@@ -485,11 +531,37 @@ html.dark-mode .mentor-alert-floating {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px -8px rgba(21, 70, 217, 0.2);
 }
+.site-footer {
+    width: 100%;
+    text-align: center !important;
+    padding: 1rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center !important;
+}
+
+.site-footer p {
+    font-family: 'Inter', -apple-system, sans-serif !important;
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    text-align: center !important;
+    margin: 0 auto;
+    display: inline-block;
+}
+
 .site-footer a {
-    color: var(--primary-ui);
+    color: var(--text-primary) !important;
     text-decoration: none;
+    font-weight: 700;
+    transition: color 0.15s ease;
 }
 
 .site-footer a:hover {
+    color: var(--primary-ui) !important;
     text-decoration: underline;
 }

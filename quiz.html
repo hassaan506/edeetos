@@ -30,7 +30,7 @@
 <div class="top-tools">
                 <button id="theme-toggle-btn" class="pill-btn" title="Toggle Theme"><i class="fas fa-moon accent-text"></i> Theme</button>
                 <button id="shortcuts-btn" class="pill-btn">Keys ⌨️</button>
-                <button id="lab-values-btn" class="pill-btn">Labs 🔬</button>
+               <button id="lab-values-btn" class="pill-btn practice-only">Labs 🔬</button>
                 <button id="pause-btn" class="pill-btn practice-only">Pause <i class="fas fa-pause accent-text"></i></button>
             </div>
             
@@ -70,57 +70,56 @@
 
         <div class="quiz-grid-layout">
             <div class="main-column">
-                <div class="question-card glass-panel content-relative">
-                    <div id="quiz-ui-container">
-                        <div class="card-header-simple">
-                            <div class="header-left">
-                                <span class="question-count-text" id="question-id-badge">Question 1 of 34</span>
-                                <span class="header-dot practice-only" id="difficulty-dot">•</span>
-                                <div id="question-difficulty-badge" class="difficulty-pill practice-only">Medium</div>
-                            </div>
-                            
-                            <div class="feedback-tracker-mini practice-only">
-                                <span class="feedback-text clinical-red-text">Incorrect <span id="wrong-count-num">0</span></span>
-                                <span class="status-dot-mini red-dot"></span>
-                                <div class="feedback-bar-bg"><div class="feedback-bar-fill" id="feedback-fill"></div></div>
-                                <span class="status-dot-mini green-dot"></span>
-                                <span class="feedback-text green-text"><span id="right-count-num">0</span> Correct</span>
-                            </div>
-                        </div>
-
-                        <span id="wrong-count" class="hidden"></span>
-                        <span id="right-count" class="hidden"></span>
-
-						<div id="skipped-warning" class="skipped-warning hidden">
-                            <i class="fas fa-exclamation-circle accent-text"></i> You previously skipped this question. You must answer it now.
-                        </div>
-
-                        <div id="point-badge" class="point-badge hidden"></div>
-
-                        <div class="question-text" id="question-text">
-                            Loading question...
-                        </div>
-
-                        <div class="options-container" id="options-container">
+                <div class="question-card glass-panel content-relative" id="quiz-ui-container">
+                    <div class="card-header-simple">
+                        <div class="header-left">
+                            <span class="question-count-text" id="question-id-badge">Question 1 of 34</span>
+                            <span class="header-dot practice-only" id="difficulty-dot">•</span>
+                            <div id="question-difficulty-badge" class="difficulty-pill practice-only">Medium</div>
                         </div>
                         
-                        <div id="multiplayer-waiting-text" class="multiplayer-waiting hidden">
-                            <i class="fas fa-spinner fa-spin primary-text"></i> Waiting for others... (<span id="mp-answered-count">0</span>/<span id="mp-expected-count">0</span> online answered)
+                        <div class="feedback-tracker-mini practice-only">
+                            <span class="feedback-text clinical-red-text">Incorrect <span id="wrong-count-num">0</span></span>
+                            <span class="status-dot-mini red-dot"></span>
+                            <div class="feedback-bar-bg"><div class="feedback-bar-fill" id="feedback-fill"></div></div>
+                            <span class="status-dot-mini green-dot"></span>
+                            <span class="feedback-text green-text"><span id="right-count-num">0</span> Correct</span>
                         </div>
                     </div>
 
-                    <div id="exam-result-screen" class="hidden result-screen">
-                        <h2 id="result-title"></h2>
-                        <p id="result-score"></p>
-                        <div id="group-leaderboard-container" class="group-leaderboard hidden">
-                            <h3 class="leaderboard-title">Live Leaderboard (<span id="mp-finished-count">0</span>/<span id="mp-total-count">0</span> finished)</h3>
-                            <div id="group-leaderboard-list" class="leaderboard-list"></div>
-                        </div>
-                        <div class="result-actions mt-24">
-                            <button id="btn-challenge-friend" class="action-btn purple-btn hidden full-width mt-10">🎯 Challenge a Friend</button>
-                            <button id="btn-review-exam-mistakes" class="action-btn hint-btn hidden full-width mt-10">Review Mistakes</button>
-                            <button id="btn-return-home" class="action-btn next-btn full-width mt-10">Save & Return</button>
-                        </div>
+                    <span id="wrong-count" class="hidden"></span>
+                    <span id="right-count" class="hidden"></span>
+
+                    <div id="skipped-warning" class="skipped-warning hidden">
+                        <i class="fas fa-exclamation-circle accent-text"></i> You previously skipped this question. You must answer it now.
+                    </div>
+
+                    <div id="point-badge" class="point-badge hidden"></div>
+
+                    <div class="question-text" id="question-text">
+                        Loading question...
+                    </div>
+
+                    <div class="options-container" id="options-container">
+                    </div>
+                    
+                    <div id="multiplayer-waiting-text" class="multiplayer-waiting hidden">
+                        <i class="fas fa-spinner fa-spin primary-text"></i> Waiting for others... (<span id="mp-answered-count">0</span>/<span id="mp-expected-count">0</span> online answered)
+                    </div>
+                </div>
+
+                <!-- MOVED EXAM RESULT SCREEN OUTSIDE QUESTION CARD -->
+                <div id="exam-result-screen" class="hidden result-screen">
+                    <h2 id="result-title"></h2>
+                    <p id="result-score"></p>
+                    <div id="group-leaderboard-container" class="group-leaderboard hidden">
+                        <h3 class="leaderboard-title">Live Leaderboard (<span id="mp-finished-count">0</span>/<span id="mp-total-count">0</span> finished)</h3>
+                        <div id="group-leaderboard-list" class="leaderboard-list"></div>
+                    </div>
+                    <div class="result-actions mt-24">
+                        <button id="btn-challenge-friend" class="action-btn purple-btn hidden full-width mt-10">🎯 Challenge a Friend</button>
+                        <button id="btn-review-exam-mistakes" class="action-btn hint-btn hidden full-width mt-10">Review Mistakes</button>
+                        <button id="btn-return-home" class="action-btn next-btn full-width mt-10">Save & Return</button>
                     </div>
                 </div>
 

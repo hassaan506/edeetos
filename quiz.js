@@ -1768,16 +1768,17 @@ function showResults() {
         }
     });
 
-    const total = quizQueue.length;
+const total = quizQueue.length;
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     const timeTaken = (quizConfig.timer * 60) - sessionSeconds;
     
-    document.getElementById('quiz-ui-container').classList.add('hidden');
+    // Hide the question card entirely, not just its inner container
+    document.querySelector('.question-card').classList.add('hidden');
     document.getElementById('bottom-actions-container').classList.add('hidden');
     
     const resultsEl = document.getElementById('exam-result-screen');
     resultsEl.classList.remove('hidden');
-    resultsEl.classList.add('result-pop-in'); 
+    resultsEl.classList.add('result-pop-in');
 
     const titleEl = document.getElementById('result-title');
     const scoreEl = document.getElementById('result-score');

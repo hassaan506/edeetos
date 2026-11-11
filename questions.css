@@ -148,12 +148,29 @@ body.dashboard-body {
 }
 
 /* .nav-logo: EDEETOS text size */
-.nav-logo {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--text-main);
-    text-decoration: none;
-    letter-spacing: -1px;
+.nav-logo { 
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem); 
+    font-weight: 900; 
+    text-decoration: none; 
+    letter-spacing: -0.03em; 
+    white-space: nowrap; 
+    
+    /* Light Mode High-Contrast Gradient */
+    color: #08090B; 
+    background: linear-gradient(135deg, #08090B 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+/* Dark Mode Logo Gradient Override */
+html.dark-mode .nav-logo {
+    background: linear-gradient(135deg, var(--primary-ui) 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* .sidebar-category: "Study Modules", "Data Control" titles */

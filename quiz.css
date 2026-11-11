@@ -81,7 +81,6 @@ html.dark-mode, body.dark-mode, body.dark-mode.quiz-body {
     
     .main-column { display: flex; flex-direction: column; gap: 16px; }
     
-    /* THE CSS GRID KILLSWITCH: height: 1px forces the Grid Engine to ignore the right column's content when calculating page size, allowing the left column to be in total control */
     .sidebar-column { 
         display: flex; 
         flex-direction: column; 
@@ -128,7 +127,6 @@ html.dark-mode, body.dark-mode, body.dark-mode.quiz-body {
 .pill-btn:active { transform: translateY(2px); border-bottom-width: 1px; }
 .pill-btn:hover { border-color: var(--primary-ui); }
 
-/* MULTIPLAYER BANNER & TAGS */
 .study-room-banner {
     background: var(--surface-color); border: 1px solid var(--primary-ui); border-radius: var(--radius); color: var(--text-color);
     padding: 12px 16px; font-family: var(--font-secondary); font-weight: 800; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
@@ -143,17 +141,46 @@ html.dark-mode, body.dark-mode, body.dark-mode.quiz-body {
 }
 
 /* 5. SIDEBARS & META PANELS */
-.meta-utility-panel { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 16px; }
+.meta-utility-panel { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 12px; 
+    padding: 16px; 
+    height: auto !important; 
+    min-height: fit-content;
+}
 
 .metadata-tags { 
-    display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; width: 100%; 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 6px; 
+    width: 100%; 
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .meta-pill-purple, .meta-pill-year, .meta-pill-sub {
-    font-family: var(--font-secondary); padding: 6px 12px; border-radius: var(--radius); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
-    display: inline-flex; align-items: center; justify-content: center; text-align: center; line-height: 1.4; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    font-family: var(--font-secondary); 
+    padding: 5px 10px; 
+    border-radius: var(--radius); 
+    font-size: 0.7rem; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    line-height: 1.3; 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-
 .meta-pill-purple { background: var(--primary-ui); border: 1px solid var(--primary-ui); color: #FFFFFF; }
 .meta-pill-year { background: var(--surface-color); border: 1px solid var(--text-color); color: var(--text-color); }
 .meta-pill-sub { background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); }
@@ -185,7 +212,6 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 .card-header-simple { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
 .header-left { display: flex; gap: 6px; align-items: center; }
 
-/* BOLD MONOSPACE BADGE */
 .question-count-text { font-family: var(--font-secondary); font-size: 1.05rem; font-weight: 900 !important; color: var(--text-color); text-transform: uppercase; letter-spacing: 0.5px; }
 .header-dot { color: var(--border-color); font-size: 0.85rem; }
 
@@ -202,7 +228,6 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 .feedback-bar-fill { height: 100%; background: var(--success); transition: width 0.3s; width: 0%; }
 
 .question-text { font-size: 1.1rem; font-weight: 500; color: var(--text-color); margin-bottom: 24px; line-height: 1.6; text-align: justify; }
-
 .options-container { display: flex; flex-direction: column; gap: 12px; counter-reset: optCounter; margin-bottom: auto; }
 
 .option-box {
@@ -251,7 +276,95 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 }
 .multiplayer-waiting { text-align: center; margin-top: 15px; font-weight: 800; font-family: var(--font-secondary); color: var(--primary-ui); text-transform: uppercase; }
 
-/* 8. MATRIX PANEL - THE PERFECT NESTED SCROLL */
+
+/* === 8. EXAM RESULT SCREEN OVERHAUL === */
+/* === 8. EXAM RESULT SCREEN OVERHAUL === */
+.result-screen {
+    display: flex; /* Removed the !important tag here */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--surface-color);
+    border-radius: var(--radius);
+}
+
+.result-screen h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+}
+
+/* Metric Card for the Score */
+.result-screen p#result-score {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--text-color);
+    background: var(--bg-color);
+    border: 2px dashed var(--border-color);
+    padding: 16px 32px;
+    border-radius: var(--radius);
+    margin: 16px 0 32px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+/* Button Layout & Hierarchy */
+.result-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 360px; /* Stops buttons from stretching endlessly */
+    margin: 0 auto;
+}
+
+/* Primary Action (Save & Return) */
+.result-actions .next-btn {
+    background: var(--primary-ui);
+    border-color: var(--primary-ui);
+    color: #FFF;
+    height: 56px;
+    font-size: 1.1rem;
+    order: 1; /* Forces it to the top of the stack */
+    border-bottom-width: 3px;
+}
+
+/* Secondary Action (Review Mistakes) */
+.result-actions .hint-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    height: 50px;
+    order: 2;
+    box-shadow: none;
+    border-bottom-width: 3px;
+}
+.result-actions .hint-btn:hover {
+    border-color: var(--text-color);
+    background: var(--bg-color);
+}
+
+/* Tertiary Action (Challenge) */
+.result-actions .purple-btn {
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    border: 2px solid var(--accent);
+    color: var(--text-color);
+    height: 50px;
+    border-bottom-width: 4px;
+    order: 3;
+}
+.result-actions .purple-btn:hover {
+    background: var(--accent);
+    color: #08090B;
+}
+
+/* 9. MATRIX PANEL - THE PERFECT NESTED SCROLL */
 .matrix-panel { 
     padding: 16px; 
     display: flex; 
@@ -260,7 +373,6 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
     min-height: 250px;
 }
 
-/* THE FLEX/SCROLL KILLSWITCH: Limits height strictly to parent space */
 .number-grid {
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(27px, 1fr)); 
@@ -268,9 +380,9 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
     justify-items: center; 
     align-content: start;
     
-    flex: 1 1 0px; /* Absorbs remaining space without blowing up */
+    flex: 1 1 0px; 
     min-height: 0; 
-    height: 0; /* Zeroes intrinsic footprint */
+    height: 0; 
     overflow-y: auto; 
     padding: 2px 4px 2px 2px;
 }
@@ -281,22 +393,35 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 }
 .grid-num:active { transform: translateY(1px); border-bottom-width: 1px; }
 .grid-num:hover { background: var(--bg-color); border-color: var(--primary-ui); color: var(--primary-ui); }
-.grid-num.active { background: var(--primary-ui); color: #FFFFFF; border-color: var(--primary-ui); }
+
+.grid-num.active { 
+    background: #3B82F6 !important; /* Distinct Electric Blue for Current Active */
+    color: #FFFFFF !important; 
+    border-color: #3B82F6 !important; 
+}
 .grid-num.correct { background: var(--success); color: #FFFFFF; border-color: var(--success); }
 .grid-num.incorrect { background: var(--clinical-red); color: #FFFFFF; border-color: var(--clinical-red); }
-.grid-num.skipped { background: var(--accent); color: #08090B; border-color: var(--accent); }
+.grid-num.skipped { 
+    background: var(--accent) !important; /* Sun Yellow / Acid Lime for Skipped */
+    color: #08090B !important; 
+    border-color: var(--accent) !important; 
+}
 
 .matrix-legend { 
     display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); font-family: var(--font-secondary); font-size: 0.72rem; color: var(--text-color); font-weight: 800; justify-content: center; text-transform: uppercase; 
 }
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
-.dot.current { background: var(--primary-ui); }
+.dot.current { 
+    background: #3B82F6 !important; 
+}
 .dot.correct { background: var(--success); }
 .dot.wrong { background: var(--clinical-red); }
-.dot.skipped { background: var(--accent); }
+.dot.skipped { 
+    background: var(--accent) !important; 
+}
 .dot.unanswered { background: var(--border-color); }
 
-/* 9. BOTTOM ACTIONS */
+/* 10. BOTTOM ACTIONS */
 .bottom-actions { display: flex; flex-direction: column; gap: 12px; width: 100%; }
 .action-row-top { display: flex; gap: 12px; width: 100%; }
 .action-row-top .action-btn { flex: 1; }
@@ -320,10 +445,7 @@ html.dark-mode .meta-pill-sub { color: var(--text-color); }
 .next-btn:hover { background: color-mix(in srgb, var(--primary-ui) 80%, #000); color: #fff; border-color: var(--primary-ui); }
 html.dark-mode .next-btn { border-bottom-color: color-mix(in srgb, var(--primary-ui) 30%, #000); }
 
-.purple-btn { background: var(--primary-ui); border-color: var(--primary-ui); border-bottom: 3px solid color-mix(in srgb, var(--primary-ui) 50%, #000); color: #fff; }
-.purple-btn:hover { background: color-mix(in srgb, var(--primary-ui) 80%, #000); color: #fff; }
-
-/* 10. FLOATING TOOLS */
+/* 11. FLOATING TOOLS */
 .floating-toolkit { position: absolute; display: flex; background: var(--surface-color); border: 1px solid var(--border-color); padding: 6px; border-radius: var(--radius); z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); gap: 6px; }
 .hl-btn { color: var(--text-color); background: var(--bg-color); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: var(--radius); cursor: pointer; font-weight: 800; font-family: var(--font-secondary); border-bottom-width: 3px; transition: 0.1s; }
 .hl-btn:active { transform: translateY(2px); border-bottom-width: 1px; }
@@ -332,7 +454,7 @@ html.dark-mode .next-btn { border-bottom-color: color-mix(in srgb, var(--primary
 .highlight-yellow { background-color: color-mix(in srgb, var(--accent) 30%, transparent); border-bottom: 2px solid var(--accent); padding: 0 2px; }
 .highlight-strike { text-decoration: line-through; opacity: 0.5; }
 
-/* 11. MODALS, TABLES & ADMIN GRIDS */
+/* 12. MODALS, TABLES & ADMIN GRIDS */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 4, 7, 0.85); display: flex; justify-content: center; align-items: center; z-index: 3000; opacity: 0; visibility: hidden; transition: opacity 0.2s; }
 .modal-overlay.show { opacity: 1; visibility: visible; }
 .full-screen-overlay { flex-direction: column; text-align: center; }
@@ -439,7 +561,7 @@ body.mode-exam .exam-only { display: flex !important; }
 @keyframes slideInLeft { from { transform: translateX(-40%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .pop-in { animation: gentlePopIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 @keyframes gentlePopIn { 0% { transform: scale(0.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-.result-pop-in { display: block !important; animation: resultPopIn 0.5s ease forwards; }
+.result-pop-in { display: flex !important; animation: resultPopIn 0.5s ease forwards; }
 @keyframes resultPopIn { 0% { transform: scale(0.9) translateY(20px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
 
 @media (max-width: 1023px) {
