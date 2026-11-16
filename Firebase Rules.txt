@@ -1,0 +1,151 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // --- CORE SECURITY FUNCTIONS ---
+    function isAdmin() {
+      return request.auth != null && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['MANAGEMENT', 'ADMIN'];
+    }
+
+    function isMentor() {
+      return request.auth != null && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['MENTOR', 'MANAGEMENT', 'ADMIN'];
+    }
+
+    function isLoggedIn() {
+      return request.auth != null;
+    }
+
+    // ==========================================
+    // 1. USERS COLLECTION
+    // ==========================================
+    match /users/{userId} {
+      allow read: if isLoggedIn() && (request.auth.uid == userId || isAdmin() || isMentor()); 
+      
+      allow create: if isLoggedIn() && request.auth.uid == userId
+                    && request.resource.data.role == 'STUDENT'
+                    && (!request.resource.data.keys().hasAny(['isPremium', 'subscriptions']) || request.resource.data.isPremium == false);
+
+      // WARNING: isPremium and subscriptions are now exposed to client-side manipulation.
+      allow update: if (isLoggedIn() && request.auth.uid == userId
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'isBanned'])
+      ) || isAdmin();
+
+      match /{courseId}/{progressDoc} {
+          allow read, write: if isLoggedIn() && request.auth.uid == userId || isAdmin();
+      }
+    } 
+
+    // ==========================================
+    // 2. COMMERCE & ACCESS LOGIC
+    // ==========================================
+match /keys/{keyCode} {
+      allow get: if isLoggedIn();
+      allow list, write: if isAdmin();
+      
+      // Allows any user to increment the usage count of a key
+      allow update: if isLoggedIn() 
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['usedCount'])
+        && request.resource.data.usedCount == resource.data.usedCount + 1
+        && resource.data.usedCount <= resource.data.maxUsage;
+    }
+
+    match /promo_codes/{promoCode} {
+      allow get: if isLoggedIn();
+      allow list, write: if isAdmin();
+    }
+
+    match /payment_requests/{requestId} {
+      allow create: if isLoggedIn() && request.resource.data.userId == request.auth.uid;
+      allow read, write: if isAdmin();
+    }
+    
+    match /reward_claims/{claimId} {
+      allow create: if isLoggedIn() && request.resource.data.userId == request.auth.uid;
+      allow read, write: if isAdmin();
+    }
+
+    // ==========================================
+    // 3. SOCIAL & STUDY ROOMS
+    // ==========================================
+    match /chats/{chatId} {
+      allow create: if isLoggedIn() && request.resource.data.studentId == request.auth.uid;
+      allow read, update, delete: if isLoggedIn() && 
+          (resource.data.studentId == request.auth.uid || 
+           resource.data.mentorId == request.auth.uid || 
+           isMentor());
+
+      // FIX: Locks subcollection messages to parent chat participants
+      match /messages/{messageId} {
+        allow read, write: if isLoggedIn() && (
+          get(/databases/$(database)/documents/chats/$(chatId)).data.studentId == request.auth.uid ||
+          get(/databases/$(database)/documents/chats/$(chatId)).data.mentorId == request.auth.uid ||
+          isMentor()
+        ); 
+      }
+    }
+
+    match /study_rooms/{roomId} {
+      allow create, read: if isLoggedIn();
+      // FIX: Only host can update or delete
+      allow update: if isLoggedIn() && resource.data.hostId == request.auth.uid; 
+      allow delete: if isLoggedIn() && resource.data.hostId == request.auth.uid || isAdmin();
+    }
+
+    match /friend_challenges/{challengeId} {
+      allow read, create: if isLoggedIn();
+      allow update, delete: if isAdmin();
+    }
+
+match /assigned_exams/{examId} {
+      // SECURED BOLA: Verifies the user is actually in the assignedTo array before allowing reads or updates
+      allow read: if isLoggedIn() && (request.auth.uid in resource.data.assignedTo || isMentor() || isAdmin());
+      allow create: if isLoggedIn() && isMentor();
+      allow update: if isLoggedIn() && (request.auth.uid in resource.data.assignedTo) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isCompletedBy']);
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // 4. SYSTEM LOGS & LOOKUPS
+    // ==========================================
+match /contact_messages/{messageId} {
+      // Payload size limits on all fields to prevent Denial of Wallet attacks
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message', 'timestamp']) 
+                    && request.resource.data.message is string && request.resource.data.message.size() < 1000
+                    && request.resource.data.name is string && request.resource.data.name.size() < 100
+                    && request.resource.data.email is string && request.resource.data.email.size() < 150;
+      allow read, write: if isAdmin();
+    }
+
+    match /reported_questions/{reportId} {
+      allow create: if isLoggedIn();
+      allow read, write: if isAdmin();
+    }
+
+    match /username_lookup/{username} {
+      allow get: if true; 
+      allow list: if false;
+      allow write: if (isLoggedIn() && request.resource.data.userId == request.auth.uid && !exists(/databases/$(database)/documents/username_lookup/$(username))) || isAdmin();
+    }
+
+    match /ban_appeals/{appealId} {
+      allow create: if isLoggedIn() && request.resource.data.userId == request.auth.uid;
+      allow read, write: if isAdmin();
+    }
+
+    // ==========================================
+    // 5. SYSTEM CONFIG & DECRYPTION KEYS
+    // ==========================================
+    match /system_config/{docId} {
+      allow read: if isLoggedIn() && (
+        isAdmin() || 
+        isMentor() || 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isPremium == true
+      );
+      allow write: if isAdmin();
+    }
+  }
+}

@@ -262,11 +262,11 @@ document.getElementById('btn-admin-push').onclick = async () => {
     let pendingQueue = JSON.parse(localStorage.getItem('edeetos_pending_edits')) || [];
     if (pendingQueue.length === 0) return alert("Queue empty.");
 
-    let token = localStorage.getItem('edeetos_github_pat');
+let token = sessionStorage.getItem('edeetos_github_pat');
     if (!token) {
         token = prompt("Enter GitHub Personal Access Token:");
         if (!token) return;
-        localStorage.setItem('edeetos_github_pat', token);
+        sessionStorage.setItem('edeetos_github_pat', token);
     }
 
     const btn = document.getElementById('btn-admin-push');
@@ -1362,15 +1362,34 @@ async function fetchMessages() {
             const data = d.data();
             const card = document.createElement('div');
             card.className = 'action-card';
+// Secure static HTML structure
             card.innerHTML = `
-                <div class="flex-between mb-05"><strong>${data.name}</strong> <span class="text-muted font-sm tech-font">${data.timestamp ? new Date(data.timestamp).toLocaleDateString() : ''}</span></div>
+                <div class="flex-between mb-05"><strong class="msg-name"></strong> <span class="text-muted font-sm tech-font msg-date"></span></div>
                 <div class="font-sm mb-15px tech-font" style="color: var(--primary);">
-                    <a href="mailto:${data.email}" class="text-none" style="margin-right:15px; color:inherit; text-decoration:none;">Email: ${data.email}</a>
-                    ${data.whatsapp ? `<a href="https://wa.me/${data.whatsapp.replace(/[^0-9]/g, '')}" target="_blank" class="text-none" style="color:var(--success); text-decoration:none;">WhatsApp: ${data.whatsapp}</a>` : ''}
+                    <a href="#" class="text-none msg-email" style="margin-right:15px; color:inherit; text-decoration:none;"></a>
+                    <a href="#" target="_blank" class="text-none msg-wa view-hidden" style="color:var(--success); text-decoration:none;"></a>
                 </div>
-                <div class="p-15px border-radius-8px mb-15px" style="background:var(--bg); border:1px solid var(--border); white-space:pre-wrap;">${data.message}</div>
-                <button class="btn-action-del" onclick="deleteDoc(doc(db, 'contact_messages', '${d.id}'));">Delete Message</button>
+                <div class="p-15px border-radius-8px mb-15px message-content-box" style="background:var(--bg); border:1px solid var(--border); white-space:pre-wrap;"></div>
+                <button class="btn-action-del">Delete Message</button>
             `;
+            
+            // Safely inject dynamic data via textContent
+            card.querySelector('.msg-name').textContent = data.name || "Unknown";
+            card.querySelector('.msg-date').textContent = data.timestamp ? new Date(data.timestamp).toLocaleDateString() : '';
+            
+            const emailEl = card.querySelector('.msg-email');
+            emailEl.href = `mailto:${encodeURIComponent(data.email || '')}`;
+            emailEl.textContent = `Email: ${data.email || 'N/A'}`;
+            
+            if (data.whatsapp) {
+                const waEl = card.querySelector('.msg-wa');
+                waEl.href = `https://wa.me/${String(data.whatsapp).replace(/[^0-9]/g, '')}`;
+                waEl.textContent = `WhatsApp: ${data.whatsapp}`;
+                waEl.classList.remove('view-hidden');
+            }
+            
+            card.querySelector('.message-content-box').textContent = data.message || '';
+            card.querySelector('.btn-action-del').onclick = () => deleteDoc(doc(db, 'contact_messages', d.id));
             list.appendChild(card);
         });
     });

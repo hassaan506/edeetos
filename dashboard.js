@@ -79,16 +79,13 @@ onAuthStateChanged(auth, async (user) => {
                 idbCache.set(user.uid, currentUserData); 
                 const userRoleUpper = (currentUserData.role || 'STUDENT').toUpperCase();
                 
-                // BAN CHECK
+// BAN CHECK
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
-                    userNameEl.textContent = "Account Suspended";
-                    if (subStatus) { 
-                        subStatus.textContent = "BANNED"; 
-                        subStatus.className = "status-badge badge-banned"; 
-                    }
+                    document.querySelector('.course-dash-grid').innerHTML = '';
+                    document.querySelector('.dashboard-nav').innerHTML = '';
                     renderLockoutScreen();
                     return; 
-                }               
+                }
                 
                 // HEADER UI
                 let cleanName = currentUserData.fullName || "User";
@@ -156,10 +153,11 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
                 
-                if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
-                    hasCheckedDowngrade = true; 
-                    updateDoc(userRef, { isPremium: false }).catch(err => console.error("Downgrade failed:", err));
-                }
+// Server rules correctly block client-side modifications to isPremium. Update local UI state only.
+        if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
+            hasCheckedDowngrade = true; 
+            currentUserData.isPremium = false; 
+        }
 
                 // ROLE UI BADGES
                 if(subStatus) subStatus.className = "status-badge";
@@ -752,11 +750,15 @@ function compressImage(file) {
             const img = new Image();
             img.onload = () => {
                 try {
-                    const canvas = document.createElement('canvas'); const MAX_WIDTH = 800; let scale = 1;
+                    const canvas = document.createElement('canvas'); 
+                    const MAX_WIDTH = 600; // Reduced from 800 to ensure safety margin
+                    let scale = 1;
                     if (img.width > MAX_WIDTH) scale = MAX_WIDTH / img.width;
-                    canvas.width = img.width * scale; canvas.height = img.height * scale;
+                    canvas.width = img.width * scale; 
+                    canvas.height = img.height * scale;
                     canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-                    resolve(canvas.toDataURL('image/jpeg', 0.6));
+                    // Reduced quality from 0.6 to 0.4 to aggressively shrink the Base64 string
+                    resolve(canvas.toDataURL('image/jpeg', 0.4));
                 } catch (err) { reject(err); }
             }
             img.onerror = () => reject(new Error("Invalid image format")); img.src = e.target.result;
@@ -816,9 +818,19 @@ if (btnRedeem) {
             const keyRef = doc(db, "keys", codeInput); const keySnap = await getDoc(keyRef);
             if(!keySnap.exists()) { alert("That code doesn't exist."); return; }
             
-            const keyData = keySnap.data();
-            if(keyData.usedCount >= keyData.maxUsage) { alert("This code has already been used the maximum number of times."); return; }
-            if(keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) { alert("This code has expired."); return; }
+const keyData = keySnap.data();
+            
+            // 1. Global limit check
+            if (keyData.usedCount >= keyData.maxUsage) { alert("This code has already been used the maximum number of times."); return; }
+            
+            // 2. Expiry check
+            if (keyData.expiryDate && new Date(keyData.expiryDate) < new Date()) { alert("This code has expired."); return; }
+            
+            // 3. One-use-per-user check
+            if (currentUserData.redeemedKeys && currentUserData.redeemedKeys.includes(codeInput)) { 
+                alert("You have already used this code."); 
+                return; 
+            }
 
             let expiryValue = keyData.duration === "lifetime" ? "lifetime" : new Date(new Date().setDate(new Date().getDate() + parseInt(keyData.duration))).toISOString();
             let currentSubs = currentUserData.subscriptions || {};
@@ -828,8 +840,19 @@ if (btnRedeem) {
 
             if (keyData.books && Array.isArray(keyData.books)) keyData.books.forEach(b => currentSubs[b] = expiryValue);
 
-            await updateDoc(doc(db, "users", currentUserId), { subscriptions: currentSubs, isPremium: true });
+            // 4. Save the code to the user's local array
+            let updatedRedeemedKeys = currentUserData.redeemedKeys || [];
+            updatedRedeemedKeys.push(codeInput);
+
+            // 5. Update user and key documents
+            await updateDoc(doc(db, "users", currentUserId), { 
+                subscriptions: currentSubs, 
+                isPremium: true,
+                redeemedKeys: updatedRedeemedKeys 
+            });
+            
             await updateDoc(keyRef, { usedCount: keyData.usedCount + 1 });
+            
             alert("Success! Code redeemed. Reloading your dashboard."); window.location.reload();
         } catch (e) { alert("There was an error redeeming your code."); } finally { btnRedeem.textContent = "Redeem Code"; btnRedeem.disabled = false; }
     });

@@ -4,6 +4,31 @@ import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, ad
 import { httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-functions.js";
 import { createDbWorker } from './assets/sqlite/sql-vfs-bundle.js';
 
+async function fetchDecrypted(path, options = {}) {
+    // 1. Try fetching locally first to see if it is plaintext JSON
+    const res = await fetch(path, options);
+    if (!res.ok) return res;
+    const text = await res.text();
+
+    if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
+        return new Response(text, { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    // 2. If it is encrypted base64, offload to the secure backend
+    try {
+        const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
+        const result = await secureFetch({ path: path });
+        
+        // Wrap the returned JSON back into a standard Response object so the rest of your app doesn't break
+        return new Response(JSON.stringify(result.data), { 
+            status: 200, 
+            headers: { 'Content-Type': 'application/json' } 
+        });
+    } catch (e) {
+        console.error("Backend decryption failed. Access denied.", e);
+        throw e;
+    }
+}
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
@@ -731,7 +756,7 @@ if (diffHardFilter) diffHardFilter.addEventListener('change', triggerFilterUpdat
 async function loadDataAndBuildTree() {
     try {
         if (!activeCourse) return;
-        const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`, { cache: 'no-cache' });
+        const hierarchyRes = await fetchDecrypted(`Data/${activeCourse}_hierarchy.json`, { cache: 'no-cache' });
         if (!hierarchyRes.ok) throw new Error("Hierarchy file not found");
 
         const hierarchyData = await hierarchyRes.json();
@@ -772,7 +797,7 @@ async function fetchAllMetadata() {
     const promises = subjects.map(async (subj) => {
         const subjClean = sanitizeFilename(subj);
         try {
-            const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+            const res = await fetchDecrypted(`Data/${activeCourse}/metadata/${subjClean}.json`);
             if (res.ok) {
                 const data = await res.json();
                 return data.slice(0, limit);
@@ -790,7 +815,7 @@ async function loadAndOpenBook(book) {
         document.body.style.cursor = 'wait';
 
         if (!loadedBooksCache[book.file]) {
-            const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+            const response = await fetchDecrypted(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
             if (!response.ok) throw new Error("JSON file not found");
 
             let bookQuestions = await response.json();
@@ -879,7 +904,7 @@ async function fetchRequiredChunks(view, pathsArray) {
             const pageUrl = baseUrl.replace('.json', `_${page}.json`);
             if (!window.activeChunksCache[pageUrl]) {
                 try {
-                    const res = await fetch(pageUrl);
+                    const res = await fetchDecrypted(pageUrl);
                     if (res.ok) { window.activeChunksCache[pageUrl] = await res.json(); }
                     else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                 } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
@@ -1439,14 +1464,14 @@ if (document.getElementById('btn-confirm-join')) {
             let hydratedQueue = [];
             try {
                 const activeCourse = localStorage.getItem('edeetos_active_course') || 'fcps_part1';
-                const hierarchyRes = await fetch(`Data/${activeCourse}_hierarchy.json`);
+                const hierarchyRes = await fetchDecrypted(`Data/${activeCourse}_hierarchy.json`);
                 const hierarchyData = await hierarchyRes.json();
                 const subjects = Object.keys(hierarchyData.subjects || {});
 
                 const metaPromises = subjects.map(async (subj) => {
                     const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\\s]+/g, '_').replace(/^_+|_+$/g, '');
                     try {
-                        const res = await fetch(`Data/${activeCourse}/metadata/${subjClean}.json`);
+                        const res = await fetchDecrypted(`Data/${activeCourse}/metadata/${subjClean}.json`);
                         if (res.ok) return await res.json();
                     } catch (e) { }
                     return [];
@@ -1472,7 +1497,7 @@ if (document.getElementById('btn-confirm-join')) {
                     while (keepFetching) {
                         const pageUrl = baseUrl.replace('.json', `_${page}.json`);
                         try {
-                            const res = await fetch(pageUrl);
+                            const res = await fetchDecrypted(pageUrl);
                             if (res.ok) activeChunksCacheLocal[pageUrl] = await res.json();
                             else keepFetching = false;
                         } catch (e) { keepFetching = false; }
@@ -1655,7 +1680,7 @@ async function hydrateQuestions(metadataPool) {
             const pageUrl = baseUrl.replace('.json', `_${page}.json`);
             if (!window.activeChunksCache[pageUrl]) {
                 try {
-                    const res = await fetch(pageUrl);
+                    const res = await fetchDecrypted(pageUrl);
                     if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                     else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                 } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
@@ -2131,7 +2156,7 @@ function generateRevisionQuiz(topicIdsArray, intervalDay) {
                 if (isBookRevision) {
                     const book = availableBooks.find(b => b.file === sourceName);
                     if (book && !loadedBooksCache[book.file]) {
-                        const response = await fetch(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
+                        const response = await fetchDecrypted(`Books/${book.file}_questions.json`, { cache: 'no-cache' });
                         if (response.ok) {
                             let bookQuestions = await response.json();
                             bookQuestions.forEach(q => { q.QuestionID = q.id; q.Subject = book.title; q.Chapter = q.chapter; q.Topic = q.topic; q.Exam = q.exams; q.Year = q.year; q.isBookQuestion = true; q.bookName = book.file; });
@@ -2699,7 +2724,7 @@ function initMentorFeatures() {
                                 nSpan.style.color = 'var(--text-main)';
                                 nSpan.textContent = student.name;
 
-                                const cSpan = document.createElement('span');
+const cSpan = document.createElement('span');
                                 cSpan.className = 'student-course';
                                 cSpan.style.fontSize = '0.75rem';
                                 cSpan.style.fontWeight = '700';
@@ -2707,7 +2732,8 @@ function initMentorFeatures() {
                                 cSpan.style.marginTop = '2px';
                                 cSpan.style.marginBottom = '2px';
                                 cSpan.style.textTransform = 'uppercase';
-                                cSpan.innerHTML = `<i class="fas fa-book" style="margin-right: 4px;"></i>${student.course.replace(/_/g, ' ')}`;
+                                cSpan.innerHTML = `<i class="fas fa-book" style="margin-right: 4px;"></i>`;
+                                cSpan.appendChild(document.createTextNode(student.course.replace(/_/g, ' ')));
 
                                 const eSpan = document.createElement('span');
                                 eSpan.className = 'student-email';
@@ -3008,7 +3034,7 @@ async function hydrateUserState(dbData) {
                         const pageUrl = baseUrl.replace('.json', `_${page}.json`);
                         if (!window.activeChunksCache[pageUrl]) {
                             try {
-                                const res = await fetch(pageUrl);
+                                const res = await fetchDecrypted(pageUrl);
                                 if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                                 else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                             } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
@@ -3064,7 +3090,7 @@ async function hydrateUserState(dbData) {
                         const pageUrl = baseUrl.replace('.json', `_${page}.json`);
                         if (!window.activeChunksCache[pageUrl]) {
                             try {
-                                const res = await fetch(pageUrl);
+                                const res = await fetchDecrypted(pageUrl);
                                 if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                                 else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                             } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
@@ -3128,7 +3154,7 @@ if (btnSkipped) {
                     const pageUrl = baseUrl.replace('.json', `_${page}.json`);
                     if (!window.activeChunksCache[pageUrl]) {
                         try {
-                            const res = await fetch(pageUrl);
+                            const res = await fetchDecrypted(pageUrl);
                             if (res.ok) window.activeChunksCache[pageUrl] = await res.json();
                             else { window.activeChunksCache[pageUrl] = []; keepFetching = false; }
                         } catch (e) { window.activeChunksCache[pageUrl] = []; keepFetching = false; }

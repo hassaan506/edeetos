@@ -2,6 +2,29 @@ import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { doc, setDoc, updateDoc, getDoc, arrayUnion, arrayRemove, onSnapshot, addDoc, collection, serverTimestamp, deleteField, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+async function fetchDecrypted(path, options = {}) {
+    const res = await fetch(path, options);
+    if (!res.ok) return res;
+    const text = await res.text();
+
+    if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
+        return new Response(text, { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    try {
+        const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
+        const result = await secureFetch({ path: path });
+        
+        return new Response(JSON.stringify(result.data), { 
+            status: 200, 
+            headers: { 'Content-Type': 'application/json' } 
+        });
+    } catch (e) {
+        console.error("Backend decryption failed. Access denied.", e);
+        throw e;
+    }
+}
+
 let currentUserId = null; 
 let currentUserData = null;
 
@@ -1577,10 +1600,10 @@ if (roomRef) {
                         
                         // Check if it's a Book or a Data course
                         let basePath = 'Data';
-                        let hierarchyRes = await fetch(`${basePath}/${activeCourse}_hierarchy.json`);
+let hierarchyRes = await fetchDecrypted(`${basePath}/${activeCourse}_hierarchy.json`);
                         if (!hierarchyRes.ok) {
                             basePath = 'Books';
-                            hierarchyRes = await fetch(`${basePath}/${activeCourse}_hierarchy.json`);
+                            hierarchyRes = await fetchDecrypted(`${basePath}/${activeCourse}_hierarchy.json`);
                         }
                         
                         if (!hierarchyRes.ok) throw new Error("Hierarchy file not found");
@@ -1591,7 +1614,7 @@ if (roomRef) {
 const metaPromises = subjects.map(async (subj) => {
                             const subjClean = String(subj).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
                             try {
-                                const res = await fetch(`${basePath}/${activeCourse}/metadata/${subjClean}.json`);
+                                const res = await fetchDecrypted(`${basePath}/${activeCourse}/metadata/${subjClean}.json`);
                                 if (res.ok) return await res.json();
                             } catch(e) {}
                             return [];
@@ -1616,7 +1639,7 @@ const metaPromises = subjects.map(async (subj) => {
                             while (keepFetching) {
                                 const pageUrl = baseUrl.replace('.json', `_${page}.json`);
                                 try {
-                                    const res = await fetch(pageUrl);
+                                    const res = await fetchDecrypted(pageUrl);
                                     if (res.ok) activeChunksCache[pageUrl] = await res.json();
                                     else keepFetching = false;
                                 } catch(e) { keepFetching = false; }
@@ -1728,9 +1751,13 @@ const metaPromises = subjects.map(async (subj) => {
                     const heading = document.querySelector('#exam-result-screen h2');
                     if (heading) heading.innerHTML = `<i class="fas fa-bullhorn yellow-text"></i> Final Results Announced!`;
                     
-                    const pText = document.querySelector('#exam-result-screen p');
+const pText = document.querySelector('#exam-result-screen p');
                     if (pText && sortedResults.length > 0) {
-                        pText.innerHTML = `<strong>${sortedResults[0].name}</strong> won 1st place with a score of ${sortedResults[0].score}!`;
+                        pText.textContent = '';
+                        const strongName = document.createElement('strong');
+                        strongName.textContent = sortedResults[0].name;
+                        pText.appendChild(strongName);
+                        pText.appendChild(document.createTextNode(` won 1st place with a score of ${sortedResults[0].score}!`));
                         pText.style.color = "#fbbf24";
                         pText.style.fontSize = "1.1rem";
                     }
@@ -2554,11 +2581,11 @@ checkAndRestoreAbortedSession();
 const btnPushEdits = document.getElementById('btn-push-edits');
 if (btnPushEdits) {
     btnPushEdits.onclick = async () => {
-        let token = localStorage.getItem('edeetos_github_pat');
+let token = sessionStorage.getItem('edeetos_github_pat');
         if (!token) {
-            token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely in your browser)");
+            token = prompt("Please enter your GitHub Personal Access Token to push edits:\n(This saves securely for this session)");
             if (!token) return;
-            localStorage.setItem('edeetos_github_pat', token);
+            sessionStorage.setItem('edeetos_github_pat', token);
         }
 
         const pendingQueueStr = localStorage.getItem('edeetos_pending_edits');

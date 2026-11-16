@@ -6,11 +6,25 @@ import random
 import re
 import sqlite3
 import zipfile
+import base64
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+# This is your AES-256 Master Key in Base64 format. 
+# Keep this exact string to put into your Firestore database later.
+MASTER_KEY_B64 = "T/xX+LqH8kM3vN7bP4eR9sW2cY5fA1gU6jK0zD8mQvE="
+MASTER_KEY_BYTES = base64.b64decode(MASTER_KEY_B64)
+
+def encrypt_data(data_dict):
+    """Encrypts a Python dictionary into a Base64 ciphertext string."""
+    aesgcm = AESGCM(MASTER_KEY_BYTES)
+    nonce = os.urandom(12)
+    json_bytes = json.dumps(data_dict, ensure_ascii=False, separators=(',', ':')).encode('utf-8')
+    ciphertext = aesgcm.encrypt(nonce, json_bytes, None)
+    return base64.b64encode(nonce + ciphertext).decode('utf-8')
 
 # ============================================================
 # PATHS
 # ============================================================
-
 DATA_DIR = r"D:\6 - FCPS\FCPS WEBSITE\edeetos\Data"
 BOOKS_DIR = r"D:\6 - FCPS\FCPS WEBSITE\edeetos\Books"
 
@@ -79,8 +93,12 @@ def save_paginated(base_dir, file_prefix, q_list):
     for i in range(0, len(q_list), CHUNK_LIMIT):
         page = (i // CHUNK_LIMIT) + 1
         chunk_path = os.path.join(base_dir, f"{file_prefix}_{page}.json")
+        
+        # Scramble the data before saving
+        encrypted_string = encrypt_data(q_list[i:i + CHUNK_LIMIT])
+        
         with open(chunk_path, 'w', encoding='utf-8') as f:
-            json.dump(q_list[i:i + CHUNK_LIMIT], f, indent=4, ensure_ascii=False)
+            f.write(encrypted_string)
 
 # ============================================================
 # ASSIGN IDs TO CSV
@@ -266,8 +284,9 @@ def process_directory(directory, is_book=False):
 
         if is_book:
             questions_out = os.path.join(directory, f"{base_name}_questions.json")
+            encrypted_string = encrypt_data(questions)
             with open(questions_out, 'w', encoding='utf-8') as f:
-                json.dump(questions, f, indent=4, ensure_ascii=False)
+                f.write(encrypted_string)
             print(f"  -> Generated {base_name}_questions.json for {len(questions)} questions.")
         else:
             subject_metadata = {}

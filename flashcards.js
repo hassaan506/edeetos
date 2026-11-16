@@ -220,12 +220,18 @@ function renderCard() {
     const activeCategory = card.Chapter || card.Topic || 'General';
     document.getElementById('fc-meta').textContent = `${card.System || 'System'} > ${activeCategory}`;
     
-    document.getElementById('fc-stem').innerHTML = card.Stem || "No question provided.";
-    document.getElementById('fc-answer').innerHTML = card.Answer || "No answer provided.";
+// Use textContent to prevent XSS script injection
+    document.getElementById('fc-stem').textContent = card.Stem || "No question provided.";
+    document.getElementById('fc-answer').textContent = card.Answer || "No answer provided.";
     
     const trickContainer = document.getElementById('fc-trick-container');
     if (card.Trick && card.Trick.trim() !== "") {
-        document.getElementById('fc-trick').innerHTML = `<strong>Trick:</strong> ${card.Trick}`;
+        const trickEl = document.getElementById('fc-trick');
+        trickEl.textContent = ""; 
+        const strongTag = document.createElement('strong');
+        strongTag.textContent = "Trick: ";
+        trickEl.appendChild(strongTag);
+        trickEl.appendChild(document.createTextNode(card.Trick));
         trickContainer.style.display = 'block';
     } else {
         trickContainer.style.display = 'none';

@@ -183,18 +183,20 @@ function renderNotesHierarchy(notesArray) {
         const subjDiv = document.createElement('div');
         subjDiv.className = 'subject-group';
         
-        const subjTitle = document.createElement('h2');
+const subjTitle = document.createElement('h2');
         subjTitle.className = 'subject-title';
-        subjTitle.innerHTML = `<i class="fa-solid fa-folder-open" style="margin-right:12px; font-size: 1.5rem;"></i>${subject}`;
+        subjTitle.innerHTML = `<i class="fa-solid fa-folder-open" style="margin-right:12px; font-size: 1.5rem;"></i>`;
+        subjTitle.appendChild(document.createTextNode(subject));
         subjDiv.appendChild(subjTitle);
 
         Object.keys(tree[subject]).sort().forEach(chapter => {
             const chapDiv = document.createElement('div');
             chapDiv.className = 'chapter-group';
             
-            const chapTitle = document.createElement('h3');
+const chapTitle = document.createElement('h3');
             chapTitle.className = 'chapter-title';
-            chapTitle.innerHTML = `<i class="fa-solid fa-layer-group" style="margin-right:8px; font-size: 1rem; color: var(--text-muted);"></i>${chapter}`;
+            chapTitle.innerHTML = `<i class="fa-solid fa-layer-group" style="margin-right:8px; font-size: 1rem; color: var(--text-muted);"></i>`;
+            chapTitle.appendChild(document.createTextNode(chapter));
             chapDiv.appendChild(chapTitle);
 
             Object.keys(tree[subject][chapter]).sort().forEach(topic => {

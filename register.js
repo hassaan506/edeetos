@@ -26,7 +26,19 @@ if (registerForm) {
         const course = document.querySelector('#reg-course').value;
         const examDate = document.querySelector('#reg-exam-date').value; 
 
-        try {
+try {
+            // Check if username exists FIRST
+            const { getDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+            const usernameRef = doc(db, "username_lookup", username);
+            const usernameSnap = await getDoc(usernameRef);
+            
+            if (usernameSnap.exists()) {
+                alert("That username is already taken. Please choose another one.");
+                submitBtn.textContent = "Create Account";
+                submitBtn.disabled = false;
+                return;
+            }
+
             // Create Firebase Auth User
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;

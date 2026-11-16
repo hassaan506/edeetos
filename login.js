@@ -40,9 +40,9 @@ if (loginForm) {
             // Firebase Authentication
             const userCred = await signInWithEmailAndPassword(auth, loginEmail, password);
             
-            // Session Token Generation
+// Session Token Generation
             const newToken = Date.now().toString() + Math.random().toString(36).substring(2);
-            localStorage.setItem("edeetos_session_id", newToken);
+            sessionStorage.setItem("edeetos_session_id", newToken);
             
             try {
                 await updateDoc(doc(db, "users", userCred.user.uid), { sessionToken: newToken });
@@ -64,7 +64,7 @@ if (loginForm) {
 // === FEATURE: GUEST MODE LOGIN ===
 if (btnGuest) {
     btnGuest.addEventListener('click', async () => {
-        localStorage.removeItem('edeetos_session_id');
+        sessionStorage.removeItem('edeetos_session_id');
         localStorage.setItem('edeetos_guest_mode', 'true');
         
         try {

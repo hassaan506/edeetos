@@ -141,18 +141,19 @@ function listenToLiveRequests() {
             if (data.type !== 'live') return;
             found = true;
 
-            const el = document.createElement('div');
+const el = document.createElement('div');
             el.className = 'ticket-item';
             el.style.borderLeftColor = 'var(--status-success)';
             el.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div class="mono-label">LIVE REQUEST</div>
-                        <div style="font-weight: bold; margin-top: 4px;">Student: ${data.studentName}</div>
+                        <div class="req-student-name" style="font-weight: bold; margin-top: 4px;"></div>
                     </div>
                     <button class="btn-success btn-accept-live">Accept</button>
                 </div>
             `;
+            el.querySelector('.req-student-name').textContent = `Student: ${data.studentName}`;
             el.querySelector('.btn-accept-live').onclick = async () => {
                 await updateDoc(docSnap.ref, { status: 'active', mentorId: currentUser.uid, mentorName: currentUserData.fullName });
                 mentorView.style.display = 'none';
@@ -177,13 +178,15 @@ function listenToTicketQueue() {
             if (data.type !== 'ticket') return;
             found = true;
 
-            const el = document.createElement('div');
+const el = document.createElement('div');
             el.className = 'ticket-item';
             el.innerHTML = `
-                <div class="mono-label" style="margin-bottom: 0.5rem;">From: ${data.studentName}</div>
-                <div class="ticket-q">${data.question}</div>
+                <div class="mono-label req-student-name" style="margin-bottom: 0.5rem;"></div>
+                <div class="ticket-q"></div>
                 <button class="btn-outline btn-claim-ticket" style="margin-top: 0.5rem; width: 100%;">Answer Question</button>
             `;
+            el.querySelector('.req-student-name').textContent = `From: ${data.studentName}`;
+            el.querySelector('.ticket-q').textContent = data.question;
             el.querySelector('.btn-claim-ticket').onclick = () => {
                 activeTicketId = docSnap.id;
                 modalQuestionText.textContent = data.question;
@@ -301,13 +304,14 @@ async function setupStudentView() {
             
             if (!isResolved) el.style.borderLeftColor = 'var(--accent)';
 
-            el.innerHTML = `
-                <div class="mono-label" style="margin-bottom: 0.5rem; color: ${isResolved ? 'var(--status-success)' : 'var(--accent)'};">
-                    ${isResolved ? `Answered by ${data.mentorName}` : 'Pending Doctor Review...'}
-                </div>
-                <div class="ticket-q">Q: ${data.question}</div>
-                ${isResolved ? `<div class="ticket-a">A: ${data.answer}</div>` : ''}
+el.innerHTML = `
+                <div class="mono-label msg-status" style="margin-bottom: 0.5rem; color: ${isResolved ? 'var(--status-success)' : 'var(--accent)'};"></div>
+                <div class="ticket-q"></div>
+                ${isResolved ? `<div class="ticket-a"></div>` : ''}
             `;
+            el.querySelector('.msg-status').textContent = isResolved ? `Answered by ${data.mentorName}` : 'Pending Doctor Review...';
+            el.querySelector('.ticket-q').textContent = `Q: ${data.question}`;
+            if (isResolved) el.querySelector('.ticket-a').textContent = `A: ${data.answer}`;
             studentInboxList.appendChild(el);
         });
     });
@@ -387,10 +391,12 @@ function openChat(chatId, partnerName) {
                 const timeString = msg.timestamp ? new Date(msg.timestamp.toMillis()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 const senderName = isMe ? 'You' : (partnerName || "Doctor");
 
-                msgDiv.innerHTML = `
-                    <span class="msg-sender">[${timeString}] ${senderName}:</span>
-                    <div class="msg-text">${msg.text}</div>
+msgDiv.innerHTML = `
+                    <span class="msg-sender"></span>
+                    <div class="msg-text"></div>
                 `;
+                msgDiv.querySelector('.msg-sender').textContent = `[${timeString}] ${senderName}:`;
+                msgDiv.querySelector('.msg-text').textContent = msg.text;
                 chatMessages.appendChild(msgDiv);
             }
         });

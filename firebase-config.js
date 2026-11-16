@@ -135,7 +135,7 @@ onAuthStateChanged(auth, (user) => {
 
                     enforceSecurity();
 
-                    const localToken = localStorage.getItem("edeetos_session_id");
+                    sessionStorage.getItem
                     const dbToken = data.sessionToken;
                     
                     if (dbToken && localToken && dbToken !== localToken) {
