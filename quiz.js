@@ -11,15 +11,21 @@ async function fetchDecrypted(path, options = {}) {
         return new Response(text, { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
 
-    try {
-        const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
-        const result = await secureFetch({ path: path });
-        
-        return new Response(JSON.stringify(result.data), { 
-            status: 200, 
-            headers: { 'Content-Type': 'application/json' } 
-        });
-    } catch (e) {
+try {
+    const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
+    const result = await secureFetch({ path: path });
+    
+    // Check if the backend nested it inside a 'data' property (common with Firebase)
+    let payload = (result.data && result.data.data) ? result.data.data : result.data;
+    
+    // If it's already a string, don't double-stringify it
+    const bodyStr = typeof payload === 'string' ? payload : JSON.stringify(payload);
+    
+    return new Response(bodyStr, { 
+        status: 200, 
+        headers: { 'Content-Type': 'application/json' } 
+    });
+} catch (e) {
         console.error("Backend decryption failed. Access denied.", e);
         throw e;
     }
