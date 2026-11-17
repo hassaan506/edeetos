@@ -5,35 +5,81 @@ import { httpsCallable } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { createDbWorker } from './assets/sqlite/sql-vfs-bundle.js';
 
 async function fetchDecrypted(path, options = {}) {
-    // 1. Try fetching locally first to see if it is plaintext JSON
     const res = await fetch(path, options);
     if (!res.ok) return res;
-    const text = await res.text();
+    
+    let text = await res.text();
+    text = text.trim().replace(/^\uFEFF/, ''); 
 
-    if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
+    if (text.startsWith('{') || text.startsWith('[')) {
         return new Response(text, { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
 
-    // 2. If it is encrypted base64, offload to the secure backend
-try {
-    const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
-    const result = await secureFetch({ path: path });
-    
-    // Check if the backend nested it inside a 'data' property (common with Firebase)
-    let payload = (result.data && result.data.data) ? result.data.data : result.data;
-    
-    // If it's already a string, don't double-stringify it
-    const bodyStr = typeof payload === 'string' ? payload : JSON.stringify(payload);
-    
-    return new Response(bodyStr, { 
-        status: 200, 
-        headers: { 'Content-Type': 'application/json' } 
-    });
-} catch (e) {
-        console.error("Backend decryption failed. Access denied.", e);
-        throw e;
+    const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
+
+    if (isLocal) {
+        // --- LOCAL DEV MODE (No pushing to GitHub required) ---
+        try {
+            let keyB64 = sessionStorage.getItem('edeetos_dev_key');
+            if (!keyB64) {
+                keyB64 = prompt("Local Dev Mode:\nEnter your AES Master Key to decrypt files locally.");
+                if (!keyB64) throw new Error("No key provided.");
+                sessionStorage.setItem('edeetos_dev_key', keyB64);
+            }
+
+            const keyStr = atob(keyB64);
+            const keyBytes = new Uint8Array(keyStr.length);
+            for (let i = 0; i < keyStr.length; i++) keyBytes[i] = keyStr.charCodeAt(i);
+            
+            const cipherStr = atob(text.replace(/\s+/g, ''));
+            const cipherBytes = new Uint8Array(cipherStr.length);
+            for (let i = 0; i < cipherStr.length; i++) cipherBytes[i] = cipherStr.charCodeAt(i);
+            
+            const nonce = cipherBytes.slice(0, 12);
+            const data = cipherBytes.slice(12);
+            
+            const cryptoKey = await crypto.subtle.importKey("raw", keyBytes, { name: "AES-GCM" }, false, ["decrypt"]);
+            const decryptedBuffer = await crypto.subtle.decrypt({ name: "AES-GCM", iv: nonce }, cryptoKey, data);
+            
+            const jsonString = new TextDecoder('utf-8').decode(decryptedBuffer).trim().replace(/^\uFEFF/, '');
+            return new Response(jsonString, { status: 200, headers: { 'Content-Type': 'application/json' } });
+            
+        } catch (e) {
+            console.error("🚨 LOCAL DECRYPTION FAILED. Did you enter the correct key?", e);
+            sessionStorage.removeItem('edeetos_dev_key'); // Clear bad key to re-prompt next time
+            return new Response("[]", { status: 200, headers: { 'Content-Type': 'application/json' } });
+        }
+    } else {
+        // --- PRODUCTION MODE (Secure Cloud Function) ---
+        try {
+            const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
+            const absoluteUrl = new URL(path, window.location.href).href;
+            
+            const result = await secureFetch({ path: absoluteUrl });
+            let payload = result.data?.data || result.data; 
+            
+            let jsonString = "";
+            if (typeof payload === 'string') {
+                jsonString = payload.trim().replace(/^\uFEFF/, '');
+                try {
+                    const testParse = JSON.parse(jsonString);
+                    if (typeof testParse === 'string') {
+                        jsonString = testParse.trim().replace(/^\uFEFF/, '');
+                    }
+                } catch (e) { /* Keep as is */ }
+            } else {
+                jsonString = JSON.stringify(payload);
+            }
+
+            return new Response(jsonString, { status: 200, headers: { 'Content-Type': 'application/json' } });
+            
+        } catch (e) {
+            console.error(`🚨 SECURE DECRYPTION FAILED FOR ${path}:`, e);
+            return new Response("[]", { status: 200, headers: { 'Content-Type': 'application/json' } });
+        }
     }
 }
+
 // ==========================================
 // 1. STATE VARIABLES & CONFIGURATION
 // ==========================================
