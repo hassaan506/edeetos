@@ -9,23 +9,26 @@ async function fetchDecrypted(path, options = {}) {
     let text = await res.text();
     text = text.trim().replace(/^\uFEFF/, ''); 
 
+    // 1. If it's already plain JSON (hierarchy/metadata), parse immediately
     if (text.startsWith('{') || text.startsWith('[')) {
         return new Response(text, { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
 
-    const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
-
-    if (isLocal) {
-        // --- LOCAL DEV MODE (No pushing to GitHub required) ---
-        try {
-            let keyB64 = sessionStorage.getItem('edeetos_dev_key');
-            if (!keyB64) {
-                keyB64 = prompt("Local Dev Mode:\nEnter your AES Master Key to decrypt files locally.");
-                if (!keyB64) throw new Error("No key provided.");
-                sessionStorage.setItem('edeetos_dev_key', keyB64);
+    try {
+        // 2. Fetch Master Key securely from Firestore using the CORRECT path
+        let keyB64 = sessionStorage.getItem('edeetos_master_key');
+        
+        if (!keyB64) {
+            const keyDoc = await getDoc(doc(db, 'system_config', 'security')); 
+            if (keyDoc.exists()) {
+                keyB64 = keyDoc.data().masterKey; 
+                if (keyB64) sessionStorage.setItem('edeetos_master_key', keyB64);
             }
+        }
 
-            const keyStr = atob(keyB64);
+        // 3. Client-Side WebCrypto Decryption
+        if (keyB64) {
+            const keyStr = atob(keyB64.trim());
             const keyBytes = new Uint8Array(keyStr.length);
             for (let i = 0; i < keyStr.length; i++) keyBytes[i] = keyStr.charCodeAt(i);
             
@@ -41,40 +44,27 @@ async function fetchDecrypted(path, options = {}) {
             
             const jsonString = new TextDecoder('utf-8').decode(decryptedBuffer).trim().replace(/^\uFEFF/, '');
             return new Response(jsonString, { status: 200, headers: { 'Content-Type': 'application/json' } });
-            
-        } catch (e) {
-            console.error("🚨 LOCAL DECRYPTION FAILED. Did you enter the correct key?", e);
-            sessionStorage.removeItem('edeetos_dev_key'); // Clear bad key to re-prompt next time
-            return new Response("[]", { status: 200, headers: { 'Content-Type': 'application/json' } });
         }
-    } else {
-        // --- PRODUCTION MODE (Secure Cloud Function) ---
-        try {
-            const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
-            const absoluteUrl = new URL(path, window.location.href).href;
-            
-            const result = await secureFetch({ path: absoluteUrl });
-            let payload = result.data?.data || result.data; 
-            
-            let jsonString = "";
-            if (typeof payload === 'string') {
-                jsonString = payload.trim().replace(/^\uFEFF/, '');
-                try {
-                    const testParse = JSON.parse(jsonString);
-                    if (typeof testParse === 'string') {
-                        jsonString = testParse.trim().replace(/^\uFEFF/, '');
-                    }
-                } catch (e) { /* Keep as is */ }
-            } else {
-                jsonString = JSON.stringify(payload);
-            }
 
-            return new Response(jsonString, { status: 200, headers: { 'Content-Type': 'application/json' } });
-            
-        } catch (e) {
-            console.error(`🚨 SECURE DECRYPTION FAILED FOR ${path}:`, e);
-            return new Response("[]", { status: 200, headers: { 'Content-Type': 'application/json' } });
-        }
+        // 4. Fallback to Cloud Function if key not found
+        const secureFetch = httpsCallable(functions, 'secureFetchAndDecrypt');
+        const absoluteUrl = new URL(path, window.location.href).href;
+        const result = await secureFetch({ path: absoluteUrl });
+        
+        let payload = result.data?.data || result.data; 
+        let jsonString = typeof payload === 'string' ? payload : JSON.stringify(payload);
+        jsonString = jsonString.trim().replace(/^\uFEFF/, '');
+        
+        try {
+            const testParse = JSON.parse(jsonString);
+            if (typeof testParse === 'string') jsonString = testParse.trim().replace(/^\uFEFF/, '');
+        } catch (e) {}
+
+        return new Response(jsonString, { status: 200, headers: { 'Content-Type': 'application/json' } });
+        
+    } catch (e) {
+        console.error(`🚨 DECRYPTION FAILED FOR ${path}:`, e);
+        return new Response("[]", { status: 200, headers: { 'Content-Type': 'application/json' } });
     }
 }
 

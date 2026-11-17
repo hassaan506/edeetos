@@ -79,12 +79,57 @@ onAuthStateChanged(auth, async (user) => {
                 idbCache.set(user.uid, currentUserData); 
                 const userRoleUpper = (currentUserData.role || 'STUDENT').toUpperCase();
                 
-// BAN CHECK
+                // BAN CHECK
                 if (currentUserData.isBanned || currentUserData.role === 'BANNED') {
                     document.querySelector('.course-dash-grid').innerHTML = '';
                     document.querySelector('.dashboard-nav').innerHTML = '';
                     renderLockoutScreen();
                     return; 
+                }
+
+                // === NEW: PROFILE COMPLETION LOCK ===
+                if (currentUserData.profileCompleted === false) {
+                    const setupModal = document.getElementById('profile-setup-modal');
+                    if (setupModal) {
+                        setupModal.classList.remove('view-hidden');
+                        document.body.style.overflow = 'hidden'; 
+
+                        const setupForm = document.getElementById('profile-setup-form');
+                        setupForm.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            const btn = document.getElementById('btn-submit-setup');
+                            btn.textContent = "Saving Configuration...";
+                            btn.disabled = true;
+
+                            try {
+                                const newName = document.getElementById('setup-name').value.trim();
+                                const newPhone = document.getElementById('setup-phone').value.trim();
+                                const newUni = document.getElementById('setup-uni').value.trim();
+                                const newLocation = document.getElementById('setup-location').value.trim();
+                                const newCourse = document.getElementById('setup-course').value;
+                                const newExamDate = document.getElementById('setup-exam-date').value;
+
+                                await updateDoc(doc(db, "users", user.uid), {
+                                    fullName: newName,
+                                    phone: newPhone,
+                                    institution: newUni,
+                                    location: newLocation,
+                                    selectedCourse: newCourse,
+                                    examDate: newExamDate,
+                                    profileCompleted: true
+                                });
+
+                                alert("Profile configured! Welcome to the dashboard.");
+                                window.location.reload(); 
+                            } catch (error) {
+                                console.error(error);
+                                alert("Failed to save profile details.");
+                                btn.textContent = "Complete Setup & Enter Dashboard";
+                                btn.disabled = false;
+                            }
+                        });
+                    }
+                    return; // Stop the rest of the dashboard from hydrating
                 }
                 
                 // HEADER UI
@@ -131,7 +176,7 @@ onAuthStateChanged(auth, async (user) => {
                         input.type = 'checkbox';
                         input.className = 'course-check';
                         input.value = userCourseCode;
-                        input.checked = false; // Bug fix: Removed default checking behavior
+                        input.checked = false; 
                         
                         label.appendChild(input);
                         label.appendChild(document.createTextNode(` ${courseNamesMap[userCourseCode] || "Unknown Course"}`));
@@ -153,11 +198,10 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
                 
-// Server rules correctly block client-side modifications to isPremium. Update local UI state only.
-        if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
-            hasCheckedDowngrade = true; 
-            currentUserData.isPremium = false; 
-        }
+                if (!hasCheckedDowngrade && currentUserData.isPremium && !hasActiveSubscription) {
+                    hasCheckedDowngrade = true; 
+                    currentUserData.isPremium = false; 
+                }
 
                 // ROLE UI BADGES
                 if(subStatus) subStatus.className = "status-badge";
@@ -179,7 +223,7 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 }
                 
-const btnReports = document.getElementById('btn-reports-panel');
+                const btnReports = document.getElementById('btn-reports-panel');
                 if (btnReports) btnReports.classList.remove('view-hidden');
                 
                 if (userRoleUpper === 'MENTOR' || userRoleUpper === 'MANAGEMENT' || userRoleUpper === 'ADMIN') {
@@ -378,7 +422,6 @@ function setupMentorStatus() {
 }
 
 function setupMentorAlerts() {
-    // Query only by status to avoid Firebase composite index errors, filter 'live' client-side
     const chatsRef = collection(db, "chats");
     const q = query(chatsRef, where("status", "==", "pending"));
     
@@ -400,6 +443,7 @@ function setupMentorAlerts() {
         }
     });
 }
+
 async function checkAssignedExams() {
     const examsRef = collection(db, "assigned_exams");
     const assignedQuery = query(examsRef, where("assignedTo", "array-contains", currentUserId));
@@ -428,14 +472,14 @@ async function checkAssignedExams() {
                 const taskListContainer = document.getElementById('task-list-container');
                 taskListContainer.innerHTML = '';
                 
-pendingExams.forEach((exam, index) => {
-                            const cardDiv = document.createElement('div');
-                            cardDiv.className = 'task-item-card';
-                            
-                            const infoDiv = document.createElement('div');
-                            infoDiv.className = 'flex-1 text-left';
-                            
-                            const titleDiv = document.createElement('div');
+                pendingExams.forEach((exam, index) => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'task-item-card';
+                    
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'flex-1 text-left';
+                    
+                    const titleDiv = document.createElement('div');
                     titleDiv.className = 'task-item-title m-0 mb-05';
                     titleDiv.textContent = exam.title;
                     
@@ -447,10 +491,9 @@ pendingExams.forEach((exam, index) => {
                     timeBadge.style.border = "1px solid var(--border-color)";
                     timeBadge.textContent = `⏱ ${exam.timerMinutes} MIN`;
                     
-const countBadge = document.createElement('span');
+                    const countBadge = document.createElement('span');
                     countBadge.className = 'task-badge-count font-xs p-1 border-radius';
                     countBadge.style.border = "1px solid var(--border-color)";
-                    // Safely check both potential schema names and default to an empty array to prevent crashes
                     const qCount = (exam.questionIds || exam.questions || []).length;
                     countBadge.textContent = `📋 ${qCount} Q`;
                     
@@ -465,12 +508,11 @@ const countBadge = document.createElement('span');
                     launchBtn.className = 'action-btn next-btn';
                     launchBtn.textContent = 'Start';
                     
-cardDiv.appendChild(infoDiv);
+                    cardDiv.appendChild(infoDiv);
                     cardDiv.appendChild(launchBtn);
                     taskListContainer.appendChild(cardDiv);
                 });
 
-                // Explicitly grab the card and button from the DOM to guarantee the click registers
                 const notifyCard = container.querySelector('.task-notify-card');
                 if (notifyCard) {
                     notifyCard.addEventListener('click', () => taskModal.classList.remove('view-hidden'));
@@ -751,13 +793,12 @@ function compressImage(file) {
             img.onload = () => {
                 try {
                     const canvas = document.createElement('canvas'); 
-                    const MAX_WIDTH = 600; // Reduced from 800 to ensure safety margin
+                    const MAX_WIDTH = 600; 
                     let scale = 1;
                     if (img.width > MAX_WIDTH) scale = MAX_WIDTH / img.width;
                     canvas.width = img.width * scale; 
                     canvas.height = img.height * scale;
                     canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-                    // Reduced quality from 0.6 to 0.4 to aggressively shrink the Base64 string
                     resolve(canvas.toDataURL('image/jpeg', 0.4));
                 } catch (err) { reject(err); }
             }
@@ -818,7 +859,7 @@ if (btnRedeem) {
             const keyRef = doc(db, "keys", codeInput); const keySnap = await getDoc(keyRef);
             if(!keySnap.exists()) { alert("That code doesn't exist."); return; }
             
-const keyData = keySnap.data();
+            const keyData = keySnap.data();
             
             // 1. Global limit check
             if (keyData.usedCount >= keyData.maxUsage) { alert("This code has already been used the maximum number of times."); return; }

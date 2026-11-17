@@ -21,9 +21,10 @@ if (authMenu) {
             });
 
         } else {
+            // Updated to point to the new unified auth file
             authMenu.innerHTML = `
-                <li><a href="login.html" class="btn-outline">Authenticate</a></li>
-                <li><a href="register.html" class="btn-solid">Initialize</a></li>
+                <li><a href="auth.html" class="btn-outline">Log In</a></li>
+                <li><a href="auth.html" class="btn-solid">Sign Up</a></li>
             `;
         }
     });

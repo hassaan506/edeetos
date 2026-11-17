@@ -295,6 +295,13 @@ html.dark-mode .next-btn { color: #FFF; }
 .popup-content { background: var(--surface-color); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border-color); border-top: 6px solid var(--primary-ui); width: 92%; max-width: 550px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); }
 html.dark-mode .popup-content { border-top-color: var(--accent-color); }
 
+/* === PROFILE LOCK SCREEN === */
+.setup-overlay {
+    background: var(--bg-color) !important; 
+    backdrop-filter: none !important;
+    z-index: 10000 !important;
+}
+
 .modal-title-blue, .modal-title-dark { color: var(--text-primary); margin-top: 0; margin-bottom: 0.5rem; font-weight: 900; letter-spacing: -0.02em; font-size: 1.5rem; }
 .modal-subtitle { color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5; }
 .modal-section-title { color: var(--text-primary); font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: 800; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-ui); padding-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;}

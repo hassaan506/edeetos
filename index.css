@@ -216,3 +216,6 @@ html.dark-mode .form-input:focus { border-color: var(--accent); }
     .floating-card { max-width: 100%; }
     .contact-grid { padding: 2.5rem; }
 }
+body {
+    touch-action: pan-y;
+}

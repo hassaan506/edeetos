@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication - EDEETOS</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="EDEETOS">
+    <link rel="apple-touch-icon" href="/Pictures/icon-192.png">
+    <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');</script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">EDEETOS.</a>
+            <ul class="nav-links" style="display: flex; align-items: center; gap: 1.5rem;">
+                <li>
+                    <button id="dark-mode-toggle" class="btn-outline theme-btn" style="padding: 0.5rem 0.8rem; border-radius: 6px;">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+                <li><a href="index.html">Back to Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="auth-wrapper">
+        <div class="auth-container" id="auth-container">
+            
+            <!-- MOBILE TABS (Visible only on phones) -->
+            <div class="mobile-tabs">
+                <button class="mobile-tab-btn active" id="mobile-login-btn">Log In</button>
+                <button class="mobile-tab-btn" id="mobile-signup-btn">Sign Up</button>
+            </div>
+
+            <!-- SIGN UP FORM -->
+            <div class="form-container sign-up-container">
+                <form id="register-form" class="auth-form">
+                    <h2>Create Account</h2>
+                    <p class="section-description">Basic details to get started.</p>
+                    
+                    <div class="form-group">
+                        <input type="email" id="reg-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="reg-username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="reg-password" placeholder="Password" required>
+                    </div>
+
+                    <button type="submit" class="form-btn btn-solid">Sign Up</button>
+                    <button type="button" class="form-btn btn-guest guest-btn-trigger">Continue as Guest</button>
+                </form>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div class="form-container sign-in-container">
+                <form id="login-form" class="auth-form">
+                    <h2>Welcome Back</h2>
+                    <p class="section-description">Log in to access your dashboard.</p>
+                    
+                    <div class="form-group">
+                        <input type="text" id="login-identifier" placeholder="Email or Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="login-password" placeholder="Password" required>
+                        <a href="#" id="forgot-password-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="form-btn btn-solid">Log In</button>
+                    <button type="button" class="form-btn btn-guest guest-btn-trigger">Continue as Guest</button>
+                </form>
+            </div>
+
+            <!-- SLIDING OVERLAY (Visible only on desktop) -->
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h2>Welcome Back, Doctor!</h2>
+                        <p>Log in to pick up right where you left off and conquer your next exam.</p>
+                        <button class="btn-outline overlay-btn" id="signInBtn">Log In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h2>New Here?</h2>
+                        <p>Create an account to track progress, access premium MCQs, and join study rooms.</p>
+                        <button class="btn-outline overlay-btn" id="signUpBtn">Sign Up Free</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

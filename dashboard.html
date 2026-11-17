@@ -162,6 +162,72 @@
     <!-- OVERLAYS & MODALS (Z-INDEX TIERED)         -->
     <!-- ========================================== -->
 
+<!-- === PROFILE SETUP LOCK SCREEN (TOP TIER: z-10000) === -->
+    <div id="profile-setup-modal" class="popup-overlay setup-overlay view-hidden">
+        <div class="glass-panel popup-content text-left" style="max-width: 650px; border-top: 6px solid var(--primary-ui); padding: 3.5rem 3rem;">
+            
+            <div class="text-center mb-2">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 50%; background: rgba(21, 70, 217, 0.08); color: var(--primary-ui); font-size: 2.2rem; margin-bottom: 1rem; border: 1px solid rgba(21, 70, 217, 0.15);">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <div style="font-family: 'Courier New', monospace; font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Final Step</div>
+                <h2 class="modal-title-dark" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Complete Your Profile</h2>
+                <p class="modal-subtitle" style="font-size: 1.05rem;">Configure your dashboard and personalize your study plan.</p>
+            </div>
+
+            <form id="profile-setup-form">
+                <div class="grid-half mb-1-5">
+                    <div>
+                        <label class="prof-label"><i class="fa-solid fa-id-badge" style="opacity: 0.5; margin-right: 5px;"></i> Full Name</label>
+                        <input type="text" id="setup-name" class="glass-input" placeholder="Dr. Hassaan Shahid" required>
+                    </div>
+                    <div>
+                        <label class="prof-label"><i class="fa-brands fa-whatsapp" style="opacity: 0.5; margin-right: 5px;"></i> Phone Number</label>
+                        <input type="tel" id="setup-phone" class="glass-input" placeholder="+92 300 0000000" required>
+                    </div>
+                </div>
+
+                <div class="grid-half mb-1-5">
+                    <div>
+                        <label class="prof-label"><i class="fa-solid fa-building-columns" style="opacity: 0.5; margin-right: 5px;"></i> Institution</label>
+                        <input type="text" id="setup-uni" class="glass-input" placeholder="Aga Khan University" required>
+                    </div>
+                    <div>
+                        <label class="prof-label"><i class="fa-solid fa-location-dot" style="opacity: 0.5; margin-right: 5px;"></i> Location (City)</label>
+                        <input type="text" id="setup-location" class="glass-input" placeholder="Karachi, Pakistan" required>
+                    </div>
+                </div>
+
+                <div class="grid-half mb-2">
+                    <div>
+                        <label class="prof-label"><i class="fa-solid fa-book-medical" style="opacity: 0.5; margin-right: 5px;"></i> Target Course</label>
+                        <select id="setup-course" class="glass-input" required style="cursor: pointer;">
+                            <option value="" disabled selected>Choose your exam...</option>
+                            <option value="mbbs_year1">MBBS 1st Year</option>
+                            <option value="mbbs_year2">MBBS 2nd Year</option>
+                            <option value="mbbs_year3">MBBS 3rd Year</option>
+                            <option value="mbbs_year4">MBBS 4th Year</option>
+                            <option value="mbbs_year5">MBBS 5th Year</option>
+                            <option value="fcps_imm">FCPS IMM</option>
+                            <option value="fcps_part1">FCPS Part 1</option>
+                            <option value="fcps_part2">FCPS Part 2</option>
+                            <option value="mrcs_part1">MRCS Part 1</option>
+                            <option value="mrcs_part2">MRCS Part 2</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="prof-label"><i class="fa-solid fa-calendar-check" style="opacity: 0.5; margin-right: 5px;"></i> Expected Exam Date</label>
+                        <input type="date" id="setup-exam-date" class="glass-input" required>
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-submit-setup" class="action-btn next-btn w-100 p-1 font-lg" style="box-shadow: 0 8px 24px rgba(21, 70, 217, 0.25); border-radius: 8px;">
+                    <i class="fa-solid fa-rocket" style="margin-right: 8px;"></i> Enter Dashboard
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- === ASSIGNED TASKS MODAL (BASE: z-9000) === -->
     <div id="assigned-tasks-modal" class="popup-overlay view-hidden z-9000">
         <div class="glass-panel popup-content text-left" style="max-width: 550px;">
